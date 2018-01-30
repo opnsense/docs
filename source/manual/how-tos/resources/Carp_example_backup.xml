@@ -1,0 +1,701 @@
+<?xml version="1.0"?>
+<opnsense>
+  <version>11.2</version>
+  <lastchange/>
+  <theme>opnsense</theme>
+  <sysctl>
+    <item>
+      <descr>Disable the pf ftp proxy handler.</descr>
+      <tunable>debug.pfftpproxy</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Increase UFS read-ahead speeds to match current state of hard drives and NCQ. More information here: http://ivoras.sharanet.org/blog/tree/2010-11-19.ufs-read-ahead.html</descr>
+      <tunable>vfs.read_max</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Set the ephemeral port range to be lower.</descr>
+      <tunable>net.inet.ip.portrange.first</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Drop packets to closed TCP ports without returning a RST</descr>
+      <tunable>net.inet.tcp.blackhole</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Do not send ICMP port unreachable messages for closed UDP ports</descr>
+      <tunable>net.inet.udp.blackhole</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Randomize the ID field in IP packets (default is 0: sequential IP IDs)</descr>
+      <tunable>net.inet.ip.random_id</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Drop SYN-FIN packets (breaks RFC1379, but nobody uses it anyway)</descr>
+      <tunable>net.inet.tcp.drop_synfin</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Enable sending IPv4 redirects</descr>
+      <tunable>net.inet.ip.redirect</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Enable sending IPv6 redirects</descr>
+      <tunable>net.inet6.ip6.redirect</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Enable privacy settings for IPv6 (RFC 4941)</descr>
+      <tunable>net.inet6.ip6.use_tempaddr</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Prefer privacy addresses and use them over the normal addresses</descr>
+      <tunable>net.inet6.ip6.prefer_tempaddr</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Generate SYN cookies for outbound SYN-ACK packets</descr>
+      <tunable>net.inet.tcp.syncookies</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Maximum incoming/outgoing TCP datagram size (receive)</descr>
+      <tunable>net.inet.tcp.recvspace</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Maximum incoming/outgoing TCP datagram size (send)</descr>
+      <tunable>net.inet.tcp.sendspace</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>IP Fastforwarding</descr>
+      <tunable>net.inet.ip.fastforwarding</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Do not delay ACK to try and piggyback it onto a data packet</descr>
+      <tunable>net.inet.tcp.delayed_ack</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Maximum outgoing UDP datagram size</descr>
+      <tunable>net.inet.udp.maxdgram</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Handling of non-IP packets which are not passed to pfil (see if_bridge(4))</descr>
+      <tunable>net.link.bridge.pfil_onlyip</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Set to 0 to disable filtering on the incoming and outgoing member interfaces.</descr>
+      <tunable>net.link.bridge.pfil_member</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Set to 1 to enable filtering on the bridge interface</descr>
+      <tunable>net.link.bridge.pfil_bridge</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Allow unprivileged access to tap(4) device nodes</descr>
+      <tunable>net.link.tap.user_open</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Randomize PID's (see src/sys/kern/kern_fork.c: sysctl_kern_randompid())</descr>
+      <tunable>kern.randompid</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Maximum size of the IP input queue</descr>
+      <tunable>net.inet.ip.intr_queue_maxlen</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Disable CTRL+ALT+Delete reboot from keyboard.</descr>
+      <tunable>hw.syscons.kbd_reboot</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Enable TCP extended debugging</descr>
+      <tunable>net.inet.tcp.log_debug</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Set ICMP Limits</descr>
+      <tunable>net.inet.icmp.icmplim</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>TCP Offload Engine</descr>
+      <tunable>net.inet.tcp.tso</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>UDP Checksums</descr>
+      <tunable>net.inet.udp.checksum</tunable>
+      <value>default</value>
+    </item>
+    <item>
+      <descr>Maximum socket buffer size</descr>
+      <tunable>kern.ipc.maxsockbuf</tunable>
+      <value>default</value>
+    </item>
+  </sysctl>
+  <system>
+    <optimization>normal</optimization>
+    <hostname>OPNsense</hostname>
+    <domain>localdomain</domain>
+    <group>
+      <name>all</name>
+      <description>All Users</description>
+      <scope>system</scope>
+      <gid>1998</gid>
+      <member>0</member>
+    </group>
+    <group>
+      <name>admins</name>
+      <description>System Administrators</description>
+      <scope>system</scope>
+      <gid>1999</gid>
+      <member>0</member>
+      <priv>page-all</priv>
+    </group>
+    <user>
+      <name>root</name>
+      <descr>System Administrator</descr>
+      <scope>system</scope>
+      <groupname>admins</groupname>
+      <password>$6$$Y8Et6wWDdXO2tJZRabvSfQvG2Lc8bAS6D9COIsMXEJ2KjA27wqDuAyd/CdazBQc3H3xQX.JXMKxJeRz2OqTkl.</password>
+      <uid>0</uid>
+      <priv>user-shell-access</priv>
+      <nt-hash>6236393534643264633361623266386435346633383365643836616631626133</nt-hash>
+    </user>
+    <nextuid>2000</nextuid>
+    <nextgid>2000</nextgid>
+    <timezone>Africa/Abidjan</timezone>
+    <time-update-interval/>
+    <timeservers>0.nl.pool.ntp.org</timeservers>
+    <webgui>
+      <protocol>https</protocol>
+      <loginautocomplete>1</loginautocomplete>
+      <ssl-certref>549a859fe5a0a</ssl-certref>
+      <port/>
+      <max_procs>2</max_procs>
+    </webgui>
+    <disablenatreflection>yes</disablenatreflection>
+    <disableconsolemenu>1</disableconsolemenu>
+    <disablesegmentationoffloading/>
+    <disablelargereceiveoffloading/>
+    <ipv6allow/>
+    <powerd_ac_mode>hadp</powerd_ac_mode>
+    <powerd_battery_mode>hadp</powerd_battery_mode>
+    <powerd_normal_mode>hadp</powerd_normal_mode>
+    <bogons>
+      <interval>monthly</interval>
+    </bogons>
+    <kill_states/>
+    <enableserial>1</enableserial>
+    <ssh>
+      <passwordauth>1</passwordauth>
+      <permitrootlogin>enabled</permitrootlogin>
+      <enabled>enabled</enabled>
+    </ssh>
+    <serialspeed>115200</serialspeed>
+    <primaryconsole>serial</primaryconsole>
+    <language>en_US</language>
+    <dnsserver>8.8.8.8</dnsserver>
+    <dnsallowoverride>1</dnsallowoverride>
+    <dns1gw>none</dns1gw>
+    <dns2gw>none</dns2gw>
+    <dns3gw>none</dns3gw>
+    <dns4gw>none</dns4gw>
+  </system>
+  <interfaces>
+    <wan>
+      <enable>1</enable>
+      <if>em1</if>
+      <ipaddr>172.18.0.102</ipaddr>
+      <ipaddrv6>dhcpv6</ipaddrv6>
+      <subnet>24</subnet>
+      <gateway>WANGW</gateway>
+      <media/>
+      <mediaopt/>
+      <dhcp6-duid/>
+      <dhcp6-ia-pd-len>0</dhcp6-ia-pd-len>
+    </wan>
+    <lan>
+      <enable>1</enable>
+      <if>em0</if>
+      <ipaddr>192.168.1.20</ipaddr>
+      <subnet>24</subnet>
+      <ipaddrv6>track6</ipaddrv6>
+      <subnetv6>64</subnetv6>
+      <media/>
+      <mediaopt/>
+      <track6-interface>wan</track6-interface>
+      <track6-prefix-id>0</track6-prefix-id>
+    </lan>
+    <opt1>
+      <descr>PFSYNC</descr>
+      <if>em2</if>
+      <enable>1</enable>
+      <ipaddr>10.0.0.2</ipaddr>
+      <subnet>24</subnet>
+      <spoofmac/>
+    </opt1>
+  </interfaces>
+  <dhcpd>
+    <lan>
+      <enable>1</enable>
+      <range>
+        <from>192.168.1.10</from>
+        <to>192.168.1.245</to>
+      </range>
+      <failover_peerip>192.168.1.10</failover_peerip>
+      <dhcpleaseinlocaltime/>
+      <defaultleasetime/>
+      <maxleasetime/>
+      <netmask/>
+      <gateway>192.168.1.1</gateway>
+      <domain/>
+      <domainsearchlist/>
+      <ddnsdomain/>
+      <ddnsdomainprimary/>
+      <ddnsdomainkeyname/>
+      <ddnsdomainkey/>
+      <mac_allow/>
+      <mac_deny/>
+      <tftp/>
+      <ldap/>
+      <nextserver/>
+      <filename/>
+      <filename32/>
+      <filename64/>
+      <rootpath/>
+      <dnsserver>192.168.1.1</dnsserver>
+    </lan>
+  </dhcpd>
+  <pptpd>
+    <mode/>
+    <redir/>
+    <localip/>
+    <remoteip/>
+  </pptpd>
+  <dnsmasq>
+    <enable/>
+  </dnsmasq>
+  <snmpd>
+    <syslocation/>
+    <syscontact/>
+    <rocommunity>public</rocommunity>
+  </snmpd>
+  <diag>
+    <ipv6nat>
+      <ipaddr/>
+    </ipv6nat>
+  </diag>
+  <bridge>
+		
+	</bridge>
+  <syslog>
+    <reverse/>
+  </syslog>
+  <nat>
+    <outbound>
+      <mode>advanced</mode>
+      <rule>
+        <interface>wan</interface>
+        <source>
+          <network>127.0.0.0/8</network>
+        </source>
+        <dstport>500</dstport>
+        <target/>
+        <destination>
+          <any>1</any>
+        </destination>
+        <staticnatport>1</staticnatport>
+        <descr>Auto created rule for ISAKMP - localhost to WAN</descr>
+        <created>
+          <time>1436974583</time>
+          <username>Manual Outbound NAT Switch</username>
+        </created>
+      </rule>
+      <rule>
+        <interface>wan</interface>
+        <source>
+          <network>127.0.0.0/8</network>
+        </source>
+        <sourceport/>
+        <target/>
+        <destination>
+          <any>1</any>
+        </destination>
+        <natport/>
+        <descr>Auto created rule - localhost to WAN</descr>
+        <created>
+          <time>1436974583</time>
+          <username>Manual Outbound NAT Switch</username>
+        </created>
+      </rule>
+      <rule>
+        <source>
+          <network>192.168.1.0/24</network>
+        </source>
+        <sourceport/>
+        <descr>Auto created rule for ISAKMP - LAN to WAN</descr>
+        <target>172.18.0.100</target>
+        <targetip/>
+        <targetip_subnet>0</targetip_subnet>
+        <interface>wan</interface>
+        <poolopts/>
+        <staticnatport>1</staticnatport>
+        <destination>
+          <any>1</any>
+        </destination>
+        <dstport>500</dstport>
+        <created>
+          <time>1436974583</time>
+          <username>Manual Outbound NAT Switch</username>
+        </created>
+        <updated>
+          <time>1436978113</time>
+          <username>root@192.168.1.127</username>
+        </updated>
+      </rule>
+      <rule>
+        <source>
+          <network>192.168.1.0/24</network>
+        </source>
+        <sourceport/>
+        <descr>Auto created rule - LAN to WAN</descr>
+        <target>172.18.0.100</target>
+        <targetip/>
+        <targetip_subnet>0</targetip_subnet>
+        <interface>wan</interface>
+        <poolopts/>
+        <destination>
+          <any>1</any>
+        </destination>
+        <created>
+          <time>1436974583</time>
+          <username>Manual Outbound NAT Switch</username>
+        </created>
+        <updated>
+          <time>1436974663</time>
+          <username>root@192.168.1.100</username>
+        </updated>
+      </rule>
+      <rule>
+        <interface>wan</interface>
+        <source>
+          <network>10.0.0.1/32</network>
+        </source>
+        <dstport>500</dstport>
+        <target/>
+        <destination>
+          <any>1</any>
+        </destination>
+        <staticnatport>1</staticnatport>
+        <descr>Auto created rule for ISAKMP - PFSYNC to WAN</descr>
+        <created>
+          <time>1436974583</time>
+          <username>Manual Outbound NAT Switch</username>
+        </created>
+      </rule>
+      <rule>
+        <interface>wan</interface>
+        <source>
+          <network>10.0.0.1/32</network>
+        </source>
+        <sourceport/>
+        <target/>
+        <destination>
+          <any>1</any>
+        </destination>
+        <natport/>
+        <descr>Auto created rule - PFSYNC to WAN</descr>
+        <created>
+          <time>1436974583</time>
+          <username>Manual Outbound NAT Switch</username>
+        </created>
+      </rule>
+    </outbound>
+  </nat>
+  <filter>
+    <rule>
+      <id/>
+      <type>pass</type>
+      <interface>wan</interface>
+      <ipprotocol>inet</ipprotocol>
+      <tag/>
+      <tagged/>
+      <max/>
+      <max-src-nodes/>
+      <max-src-conn/>
+      <max-src-states/>
+      <statetimeout/>
+      <statetype>keep state</statetype>
+      <os/>
+      <protocol>carp</protocol>
+      <source>
+        <any>1</any>
+      </source>
+      <destination>
+        <any>1</any>
+      </destination>
+      <descr/>
+      <updated>
+        <time>1437033188</time>
+        <username>root@192.168.1.127</username>
+      </updated>
+      <created>
+        <time>1437033188</time>
+        <username>root@192.168.1.127</username>
+      </created>
+    </rule>
+    <rule>
+      <type>pass</type>
+      <ipprotocol>inet</ipprotocol>
+      <descr>Default allow LAN to any rule</descr>
+      <interface>lan</interface>
+      <source>
+        <network>lan</network>
+      </source>
+      <destination>
+        <any/>
+      </destination>
+    </rule>
+    <rule>
+      <type>pass</type>
+      <ipprotocol>inet6</ipprotocol>
+      <descr>Default allow LAN IPv6 to any rule</descr>
+      <interface>lan</interface>
+      <source>
+        <network>lan</network>
+      </source>
+      <destination>
+        <any/>
+      </destination>
+    </rule>
+    <rule>
+      <id/>
+      <type>pass</type>
+      <interface>opt1</interface>
+      <ipprotocol>inet</ipprotocol>
+      <tag/>
+      <tagged/>
+      <max/>
+      <max-src-nodes/>
+      <max-src-conn/>
+      <max-src-states/>
+      <statetimeout/>
+      <statetype>keep state</statetype>
+      <os/>
+      <source>
+        <any>1</any>
+      </source>
+      <destination>
+        <any>1</any>
+      </destination>
+      <descr/>
+      <created>
+        <time>1436974315</time>
+        <username>root@192.168.1.100</username>
+      </created>
+      <updated>
+        <time>1436974971</time>
+        <username>root@192.168.1.100</username>
+      </updated>
+    </rule>
+  </filter>
+  <ipsec>
+		
+		
+	</ipsec>
+  <aliases>
+		
+	</aliases>
+  <proxyarp>
+		
+	</proxyarp>
+  <cron>
+    <item>
+      <minute>1,31</minute>
+      <hour>0-5</hour>
+      <mday>*</mday>
+      <month>*</month>
+      <wday>*</wday>
+      <who>root</who>
+      <command>adjkerntz -a</command>
+    </item>
+    <item>
+      <minute>1</minute>
+      <hour>3</hour>
+      <mday>1</mday>
+      <month>*</month>
+      <wday>*</wday>
+      <who>root</who>
+      <command>/usr/local/etc/rc.update_bogons</command>
+    </item>
+    <item>
+      <minute>*/60</minute>
+      <hour>*</hour>
+      <mday>*</mday>
+      <month>*</month>
+      <wday>*</wday>
+      <who>root</who>
+      <command>/usr/local/sbin/expiretable -v -t 3600 sshlockout</command>
+    </item>
+    <item>
+      <minute>1</minute>
+      <hour>1</hour>
+      <mday>*</mday>
+      <month>*</month>
+      <wday>*</wday>
+      <who>root</who>
+      <command>/usr/local/etc/rc.dyndns.update</command>
+    </item>
+    <item>
+      <minute>*/60</minute>
+      <hour>*</hour>
+      <mday>*</mday>
+      <month>*</month>
+      <wday>*</wday>
+      <who>root</who>
+      <command>/usr/local/sbin/expiretable -v -t 3600 virusprot</command>
+    </item>
+    <item>
+      <minute>30</minute>
+      <hour>12</hour>
+      <mday>*</mday>
+      <month>*</month>
+      <wday>*</wday>
+      <who>root</who>
+      <command>/usr/local/etc/rc.update_urltables</command>
+    </item>
+  </cron>
+  <wol>
+		
+	</wol>
+  <rrd>
+    <enable/>
+  </rrd>
+  <load_balancer>
+    <monitor_type>
+      <name>ICMP</name>
+      <type>icmp</type>
+      <descr>ICMP</descr>
+      <options/>
+    </monitor_type>
+    <monitor_type>
+      <name>TCP</name>
+      <type>tcp</type>
+      <descr>Generic TCP</descr>
+      <options/>
+    </monitor_type>
+    <monitor_type>
+      <name>HTTP</name>
+      <type>http</type>
+      <descr>Generic HTTP</descr>
+      <options>
+        <path>/</path>
+        <host/>
+        <code>200</code>
+      </options>
+    </monitor_type>
+    <monitor_type>
+      <name>HTTPS</name>
+      <type>https</type>
+      <descr>Generic HTTPS</descr>
+      <options>
+        <path>/</path>
+        <host/>
+        <code>200</code>
+      </options>
+    </monitor_type>
+    <monitor_type>
+      <name>SMTP</name>
+      <type>send</type>
+      <descr>Generic SMTP</descr>
+      <options>
+        <send/>
+        <expect>220 *</expect>
+      </options>
+    </monitor_type>
+  </load_balancer>
+  <widgets>
+    <sequence>system_information-container:col1:show,captive_portal_status-container:col1:close,carp_status-container:col1:close,cpu_graphs-container:col1:close,gateways-container:col1:close,gmirror_status-container:col1:close,installed_packages-container:col1:close,interface_statistics-container:col1:close,interface_list-container:col2:show,ipsec-container:col2:close,load_balancer_status-container:col2:close,log-container:col2:close,picture-container:col2:close,rss-container:col2:close,services_status-container:col2:close,traffic_graphs-container:col2:close</sequence>
+  </widgets>
+  <revision>
+    <time>1437058743</time>
+    <description>(system)@10.0.0.1: Merged in config (staticroutes,gateways,virtualip,schedules,filter,nat,dhcpd sections) from XMLRPC client.</description>
+    <username>(system)@10.0.0.1</username>
+  </revision>
+  <cert>
+    <refid>549a859fe5a0a</refid>
+    <descr>webConfigurator default</descr>
+    <crt>LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUZiekNDQTFlZ0F3SUJBZ0lKQUo0Y2VGS2U1RGF0TUEwR0NTcUdTSWIzRFFFQkN3VUFNRTR4Q3pBSkJnTlYKQkFZVEFrNU1NUlV3RXdZRFZRUUlEQXhhZFdsa0xVaHZiR3hoYm1ReEZUQVRCZ05WQkFjTURFMXBaR1JsYkdoaApjbTVwY3pFUk1BOEdBMVVFQ2d3SVQxQk9jMlZ1YzJVd0hoY05NVFF4TWpJME1Ea3lNVE00V2hjTk1UVXhNakkwCk1Ea3lNVE00V2pCT01Rc3dDUVlEVlFRR0V3Sk9UREVWTUJNR0ExVUVDQXdNV25WcFpDMUliMnhzWVc1a01SVXcKRXdZRFZRUUhEQXhOYVdSa1pXeG9ZWEp1YVhNeEVUQVBCZ05WQkFvTUNFOVFUbk5sYm5ObE1JSUNJakFOQmdrcQpoa2lHOXcwQkFRRUZBQU9DQWc4QU1JSUNDZ0tDQWdFQXovalZKNlRSZUJDUDV5UFo4aU5IL0h6aSt0UUh5UEd1CmVMUVkxb2c4TWJVa1JYZm94bGtKN0VxQTQzR2ZRRXphZzdsQ3c0Q1dBMVRqYnNNdmFpUnZFaFBta3IwYTZlUUgKOU1HdDl2cjdUZGlTdmxSei9zZUc5bkR4Q2JRSnh6OUs5NEtpQWl3aE1rcUhyYmpBNVBGTFlrNGVVRW13NU9WSAp5ajZjSU55eit2alFGKy9rY3MwZ3k1VGF4V0tvcnZVM1RtNFJOTm9rblE3Mmd5R2Z2T3Bydi9ibnEvQ3pYRWovCmsrNmM5bzQ5MTRhZ2Z6RmJYQ0s5c3M2Z1VRZFlDNHBBcTAzSHllMk9EUHhWRnVCS3JuN01kd3RNdUFTc1ViUmIKL1A1UTRmdjNzSmhhZGhrd05MaE15LzNUNkpvZ0pzN29DUVI1WEZPUXFJMVpKcWlkRWp2MFB5aW02bGhHVXVEZQpTa2wrekhnMzAvZFY5Y05HblhlRzBkdGNLN3p5OVdIc3Z3bzNqUU12aXY2bDVjekEySGFGQzQvWmJQU21GRVdaCnpIZ2Fmam9KSjhMMVNoUWtDU1JGV2s4SHFqdG92ajRoR0lBSTBtb1h0eUtQNTQwT1EvQ2wzelJMM1MydmMrb0gKamtnQmRrWWIvTjIzbkUxb1UvbkhnRHgvalhmOHQ1Zm9XNXpJZ1RMdm1QN01RSWhhVWIxbk01ZjRzVU1hVk00cQpZN2g4UURRUElsT3NrUk9lYXRsNkZFSnVMQWRpVkcrNGY0b21DK1Azc1JOK2RxRTZUSVF4NENJSG5GMXZTZ2Q3ClYrOHptL0M3SnhQdXNRR1R6L3JraG5LeFB6T2VxMzNKSU90a2s2REwwOXNrbGs3RmlxWnhNaFVwVjRSM2FTSFIKVW1GOTJQb2FVeEVDQXdFQUFhTlFNRTR3SFFZRFZSME9CQllFRkNkeG1Pdytya1c3UFg3RXBOQWxidENjaWNnMgpNQjhHQTFVZEl3UVlNQmFBRkNkeG1Pdytya1c3UFg3RXBOQWxidENjaWNnMk1Bd0dBMVVkRXdRRk1BTUJBZjh3CkRRWUpLb1pJaHZjTkFRRUxCUUFEZ2dJQkFNSUtMd2tjalcrRWxNVS82VXZORFh0ZnppOTVualQ1ZmJsby94RGoKdDFXUDlVbkd4bmF6aFl2eUs5bEdLdFJUSGRaRER3bSthemJicklmOXFSdUo4ZzdSZ1VxSTZoWHQ2VjkremlDYgpNdVcvZnBvMmxDVlNPYUZsV2dnMzVHblZyeTJDNU5iZi9ZeXJFSi9VaU1Ed2Q4QUZyaStITHNkMU4xWGh3M1grCk53M0JlTEx6QmcvaFF5Wi9ZZ08wVW9ma0h6SFQ1T2UyeHM3a2xMUFZab2dGT3JCM0lJYmkrdFBWN1RuK3RGUmYKWFJ4ZkR6R0xwcTlIb1dxVDFtU0xjVjRGem5iUUhnSmoveitsVGxMRFc0OG83WGpWSUIyTnRNUjJVc1BEN24wOAo0aGZJcUNWbWFmT1lFUFplYk45VUNJdG54SXJ4NUFzRjZVRGVGK2Y1Tnh4ZnNkdENxMmd2SXM5WUsxN3BiZXZlCkZ2QkZYWUt0dnVJRTRwSDU2OGhGT0dtdDVSM3RDcTByeGVQanQ2cERTc1Q2cFRmUE9qMlZUSUNMaEU3MFBXQUkKTVZkOWRMd2I1bm9FaHYvK20zU083aGZlVll4MHZURGlNOGNvV3hoZ3VacUdhVUZmQjNwNjQyNEFMaGtTVXd3eApuSGxTbHZjYW1KRTB3bmdkT1pXM243TnU2YUM5QTRWaStlTkNONUZ3UWVma0VMVTVDcmlVNkttOUg1elJoaFZECmZBMUN2N1NZNEYreWxBZ0pjc2s0aGpoMWxYc2x1YWY1SzNwSHZFYVREZng3R0JvRXhxZWgvYitiZEZNMU5PZnUKb1FKU3NmT3poS2ZrMTB5QWNZa0dBcFVjRkVrb1Y4MFp3dk5uVW5tenB6WlBncGxON0MrOHI2M1hFQ3JWSGs4OApUNlJ6Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K</crt>
+    <prv>LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUpRZ0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQ1N3d2dna29BZ0VBQW9JQ0FRRFArTlVucE5GNEVJL24KSTlueUkwZjhmT0w2MUFmSThhNTR0QmpXaUR3eHRTUkZkK2pHV1Fuc1NvRGpjWjlBVE5xRHVVTERnSllEVk9OdQp3eTlxSkc4U0UrYVN2UnJwNUFmMHdhMzIrdnROMkpLK1ZIUCt4NGIyY1BFSnRBbkhQMHIzZ3FJQ0xDRXlTb2V0CnVNRGs4VXRpVGg1UVNiRGs1VWZLUHB3ZzNMUDYrTkFYNytSeXpTRExsTnJGWXFpdTlUZE9iaEUwMmlTZER2YUQKSVorODZtdS85dWVyOExOY1NQK1Q3cHoyamozWGhxQi9NVnRjSXIyeXpxQlJCMWdMaWtDclRjZko3WTRNL0ZVVwo0RXF1ZnN4M0MweTRCS3hSdEZ2OC9sRGgrL2V3bUZwMkdUQTB1RXpML2RQb21pQW16dWdKQkhsY1U1Q29qVmttCnFKMFNPL1EvS0ticVdFWlM0TjVLU1g3TWVEZlQ5MVgxdzBhZGQ0YlIyMXdydlBMMVlleS9DamVOQXkrSy9xWGwKek1EWWRvVUxqOWxzOUtZVVJabk1lQnArT2drbnd2VktGQ1FKSkVWYVR3ZXFPMmkrUGlFWWdBalNhaGUzSW8vbgpqUTVEOEtYZk5FdmRMYTl6NmdlT1NBRjJSaHY4M2JlY1RXaFQrY2VBUEgrTmQveTNsK2hibk1pQk11K1kvc3hBCmlGcFJ2V2N6bC9peFF4cFV6aXBqdUh4QU5BOGlVNnlSRTU1cTJYb1VRbTRzQjJKVWI3aC9paVlMNC9leEUzNTIKb1RwTWhESGdJZ2VjWFc5S0IzdFg3ek9iOExzbkUrNnhBWlBQK3VTR2NyRS9NNTZyZmNrZzYyU1RvTXZUMnlTVwpUc1dLcG5FeUZTbFhoSGRwSWRGU1lYM1kraHBURVFJREFRQUJBb0lDQUNwaUg2NlFuRS9Ic0V2K3RtL3VXTUZRCkFrSHo3Qkk3anI3eWxRMURmbUR5OVkxaXZvR05xOFFIK3ZSZk40RTNLR0VuNUQ5TGVVYjhpYzBNNGlEVGcvOC8KSndKSW42K0MxVXhBSEYvMURqbnpKUlM4eVZibStzNUdmaGpvSkFZREZCZ1UrMGRPRHdYY3dvSFk0UmJIUmdHbQp3ZTdDMWRZUUUrMVhqU0gxV0lpUkpIZDhZQ1kxUDdXOWhFZ3Ryd3JZMW9pWlRkQmpsSXFkZmdlRFZyWjlYN0FqCmRWdEpGb1I4Sy9uTjZ4Y2tMZDQ2aFlMbVlDUUt3SFlzUGVmRmcxLzJzTzg0VHJzTU9xTFMyZFJycVV5ZWNyVGcKREthRDdVcEpZMlhQdmxRUHNZNi92Yy9MbWxOa0srSjJ2RFR2RkJaVW5GMGFHRkdFaGpxVGM5TzVFU21pSmtoSwp4N0ZMME9sTGxmbXlLV0lzSWhhbW9sZTVYWm9VZWxqckxDSGJXdUhsOG5tb2puMTl4cDN1TVA5WHY2MUtmelJTCm1HdjNGbkRGWC9pNVRkZExxUGVMUThpaUYxZXE4OGkrTWRVZDFVb2lteXlQdXZhcWFndjhBM3VaektwYzd3clMKMHZWSGc2ekRmTmNsL0NIMGh6SXZYNXU5QzFiMmdiTXdJbFpwV3JnL2JvaE9SMGNPTVdlZGh4STFOTmFmbDZYNwpMZGNXbzZvRElKT0FHWWpua0R1OGI4OXdVem85WUZRQkpvMU03WFRTdnh0cmF4TnBHUnIxR2VHeXd3MGJ4Z3dsCkV4UkxZM0hhU0dnSlcxanpNMzZhWFkvdi84RU1TVGZsWEFLSWxSWHF3QndUVWcvV1ZTNDJyb0VyRzZ5bjZjbi8KckF5bS9IWS9IR2lXVmdKdjY1Y0JBb0lCQVFEb2N4citOL01JQ281RkJTdUtmcmtSREYzdE9vVUlkQ1p1TGoxMwpKVzREOVgxNkY0NHlqcHowaHcrMENGVURwK1dJTTNGS3VhOWMwT2tNRXhoaCtqRDcvNFlYdkpMbE00dnlxWkRqCm0wOVY4cUxhb1NCbHBlTjRwbzVTcnhSNGovTHNYdk4ySFg2OFJ5a1hLNzR0UVZXU1JtNThuMVRVcm9ORktYNnQKekVPdmtCZ0RKd09GNnF0ZmlwcGl3cVozZXIrL0VOaTJydzVmYkh3YXRmMjROTXFOTmhJRDhwN1dEVDlCL0NBSQo2RXdJWDVrUTdOZFduVU5PR0RnTlBDRndPWXFrdlVmMlAyRzFqRE5EZGh5alBJczVhVUQwS01XZVh4Ym5veDMrClo2NkNmeUlzWUowQU5zeWJOVFhCY3dMcE5nRmJTNnZmNjR1Wm0xSDZ0WW5kZU9pNUFvSUJBUURsQ3QzdHJmcTEKelpPSWhKWURMNEdmZ0pqREFmeFZPaUN6c2dOS1BFcmIyYXRQR3pQZGdjNitLVStHNmZJS2xXaUxiZU55RDlGNgpJdHU3QnJKQlBvT3hDNTVPSW16czQrTUdFSmxqUWIzZzh3NTRRWGZNZGszcGpydCtjd290VGtlaXF3MCtrUytLClZuYkZSL1ZFVGNKaThnQkM0eVFRZGZTNk00SDBHeHVlbktpTysxSjdqdm5Cb1M4NkZOKzArWFRLTUVGWXhJR1IKYkc1amZGUzF5eGxhY2Fza3grS3lMc2VpQkNIYTJXQlhCSmxMb2tQaC9KV0ZOZmN2c2M3S1RvTWY2K3hRcHJqQQpjdEU0Y053dGNDa0xJR3RzSEc4YXhaclA2QWJtR1ZpSFA3NXVaUXNYSzZ4NXV2QWZsNG1XVUJXaU5sNzkyRnVwCmIwZVRNM3A0U2VFWkFvSUJBSGJKazhyRUpzTStPYlFWejBsb053VDZUK21TVlRlYnU2UGtwMjZDeHpUb3VDV3oKY2V4dUt0RmZUK3dOc2Z3N1NiWVBxOTZuQTNHb0pPQVJ4ZzBUd1FLV2N4MGdOZVZCTVV4aDBQUXZneHlGOFNsTwoyL0oyRXNldVBkOE5MNlhvMGhodThYV3ozdmN5V2xKSC9WaTlJWkN0dzNxV0pkREdHYmszV2xCUXFXcEhkYTN1CnV3TXRpRVE3M1dlSTEyOEpZSUd3aHo3Y09Ma1ZCRnJXRkFHVm9Na0hENi9LeGRiWFVETlZONzIxa0YxYkZTcXMKRGVOcVhHSEZTS2VpeWVmQzBCSWQxRytIdGxRRGdKTUNBZUo5Wnh5QXFEdmR0aGVYdW1uSFZ1V1NjSUNwblhvVwpLVVZadTdlNU9tNVFhdlZvcnNyTDRkcDlVWXErNytieDdMRXNQNmtDZ2dFQVJRdGRrMFNiQ3lzSmltSE5odkJQCk52SGhHd2dDTlA3czFMNlkxMHdObFBDcy80L0h0c0ptdkZSZnNOL2RJdXVmTkVqUUE1WlpJMlJXc0s1NEZjcnUKai9SY3FGa2dWTmp0bXVwdUVzbkNuNGtsbDRMRXhsSHpjckNnUEtJWk0wY2h1UnV2Um1rbDE2SHc4OCtaVkJuTQp1MThRVFJtRHlhS0ZQNHcvWklLM2RMenM0dzFIOUE5Sm91RWdCM1k3YWFhNVdpbnB5UVNUdW03aGFBUVcxU2FBCllnOVo5Q0I5YWhGSUJNTVNJWkxkdzkyVENJWEZ5TjRIaEx5YjR6aktpWm5aVlVvZFZzS3Jkdmdsc2NuejFZNjIKRUxDWk1XSHc3RFVkVWdjejdURSt5cWFnbFU3SVpSZTVTb2piMGVvd2c2dG9taG1oMFF2anRkUGgwN0gwL1VYbwpJUUtDQVFFQTRlaHM3M2IzUnlxNGw1RWZOTVhxNmlkeEEraXMzbi9vbnpMN2RZdXhNaG04RG1nYVg4V3hDckNLCmQzY3ZtMDNYWld4QUlsdEhNRk52Rzh5Sk0yb1hEQ3VmclNhOGhHYkdCM2hBclZXNWdXRUdvdCtvSS82Z1grV2EKcEE0TWZ0THRCbFFYVE1va3FvdktMbnZDQ3JqWEtuUW5YV1ZBNENlYUp4alNPNkhlNWxLaXlqZHhod3hYWTJPbAowV1ltN0xTM01pUkVHc1VvMFdTeHNwSmtkMVpwcGRleThkWDloVmVrV0t1UDZwcVJZZXQvZkV4b205U1ZxcmJkCkFINUVZbzNRM3l5VURzY2NOQXRJK0xHY3hFQmp0c21UVEFFV2ZWZ3hXNE5XZnJIQVNWbmFiWDdrSy9EOFQ5TG0KNXIrMGFXaG1La0xpUXdNcmRQSlNZT1VFTkh1S25nPT0KLS0tLS1FTkQgUFJJVkFURSBLRVktLS0tLQo=</prv>
+  </cert>
+  <ppps/>
+  <gateways>
+    <gateway_item>
+      <interface>wan</interface>
+      <gateway>172.18.0.250</gateway>
+      <name>WANGW</name>
+      <weight>1</weight>
+      <ipprotocol>inet</ipprotocol>
+      <interval/>
+      <avg_delay_samples/>
+      <avg_loss_samples/>
+      <avg_loss_delay_samples/>
+      <descr>WAN Gateway</descr>
+      <monitor_disable>1</monitor_disable>
+      <defaultgw>1</defaultgw>
+    </gateway_item>
+  </gateways>
+  <virtualip>
+    <vip>
+      <mode>carp</mode>
+      <interface>wan</interface>
+      <vhid>1</vhid>
+      <advskew>100</advskew>
+      <advbase>1</advbase>
+      <password>opnsense</password>
+      <descr>VIP WANx</descr>
+      <type>single</type>
+      <subnet_bits>24</subnet_bits>
+      <subnet>172.18.0.100</subnet>
+    </vip>
+    <vip>
+      <mode>carp</mode>
+      <interface>lan</interface>
+      <vhid>3</vhid>
+      <advskew>100</advskew>
+      <advbase>1</advbase>
+      <password>opnsense</password>
+      <descr>VIP LAN</descr>
+      <type>single</type>
+      <subnet_bits>24</subnet_bits>
+      <subnet>192.168.1.1</subnet>
+    </vip>
+  </virtualip>
+  <hasync>
+    <pfsyncpeerip>10.0.0.1</pfsyncpeerip>
+    <pfsyncinterface>opt1</pfsyncinterface>
+    <synchronizetoip/>
+    <username/>
+    <password/>
+    <pfsyncenabled>on</pfsyncenabled>
+  </hasync>
+  <staticroutes/>
+</opnsense>

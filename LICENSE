@@ -1,4 +1,6 @@
-# docs
+# OPNsense documentation
+The documentation is licensed under a 2-clause BSD Licnse:
+
 Copyright (c) Deciso B.V.
 Copyright (c) 2017-2018 Fabian Franz
 Copyright (c) 2017-2018 Michael Muenz
@@ -28,3 +30,14 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS DOCUMENTATION, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# Pictures
+Some pictures are licensed under the Creative Commons Zero (CC0) license:
+
+https://creativecommons.org/publicdomain/zero/1.0/
+
+# Logo's
+Logo's may be subject to additional copyrights, property
+rights, trademarks etc. and may require the consent of a third party or the
+license of these rights. Deciso B.V. does not represent or make any warranties
+that it owns or licenses any of the mentioned, nor does it grant them.
