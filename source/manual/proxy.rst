@@ -87,6 +87,18 @@ scheduled for release in version 16.7.
     allowed by the services you use, for instance e-banking.
 
 
+------------
+WPAD And PAC
+------------
+If a transparent proxy cannot be used, OPNsense still supports automatic proxy
+configuration via WPAD / PAC.
+
+.. Warning::
+    WPAD via DNS requires the web interface to run on the default HTTP port
+    (TCP/80) which is also a security risk (MITM attacks). In such cases you
+    should proxy the connection or avoid configuring the applicance from an
+    untrusted network.
+
 ------------------------
 Configuration / HOW-TO's
 ------------------------
@@ -103,6 +115,10 @@ Setup Web Filtering
 Setup Transparent Mode (including SSL)
 --------------------------------------
 :doc:`how-tos/proxytransparent`
+
+Setup WPAD/PAC
+--------------
+:doc:`how-tos/pac`
 
 Setup ICAP Anti Virus/Malware Engine
 ------------------------------------
