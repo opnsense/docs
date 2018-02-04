@@ -167,7 +167,7 @@ Network interface cards
 .. rubric:: Supported hardware
    :name: supported-hardware
 
-The FreeBSD 10.2-RELEASE is the base of OPNsense. All FreeBSD drivers
+The FreeBSD 11.1-RELEASE is the base of OPNsense. All FreeBSD drivers
 are included in the OPNsense kernel, and the hardware compatibility is
 the same.
 
@@ -177,8 +177,8 @@ the same.
 
 For further help and support, see
 
--  `FreeBSD 10.2-RELEASE Hardware Compatibility
-   List <https://www.freebsd.org/releases/10.2R/hardware.html>`__
+-  `FreeBSD 11.1-RELEASE Hardware Compatibility
+   List <https://www.freebsd.org/releases/11.1R/hardware.html>`__
 -  `OPNsense Forum <https://forum.opnsense.org/>`__
 
 .. rubric:: List of references
