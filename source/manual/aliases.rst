@@ -22,6 +22,8 @@ OPNsense offers the following alias types:
 +------------+------------------------------------------------------+
 | URL Tables | A table of ip addresses that can be fetched          |
 +------------+------------------------------------------------------+
+| GeoIP      | Select countries or whole regions                    |
++------------+------------------------------------------------------+
 
 -----
 Hosts
@@ -65,6 +67,18 @@ URL Tables
 URL tables can be used to fetch a list of ip addresses from a remote server.
 There are several IP lists available for free, most notably are the "Don't Route
 Or Peer" lists from Spamhaus.
+
+-----
+GeoIP
+-----
+With GeoIP alias you can select one or more countries or whole continents to block
+or allow. Use the *toggle all* checkbox to select all countries within the given
+region. 
+
+This feature was reworked with 17.7.7 and supersedes the GeoIP blocking via IPS.
+
+  .. image:: images/firewall_geoip_alias.png
+      :scale: 100%
 
 --------------
 Import Feature
