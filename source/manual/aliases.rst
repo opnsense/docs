@@ -76,6 +76,9 @@ or allow. Use the *toggle all* checkbox to select all countries within the given
 region. This feature was reworked with 17.7.7 and supersedes the GeoIP blocking via
 IPS.
 
+  .. image:: images/firewall_geoip_alias.png
+      :scale: 100%
+
 --------------
 Import Feature
 --------------
