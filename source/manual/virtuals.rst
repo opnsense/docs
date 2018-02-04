@@ -23,7 +23,7 @@ For optimum performance and compatibility, these guides are given:
 VMware ESXi
 -----------
 VMware offers full instructions for installing FreeBSD, these can be found
-`here <http://partnerweb.vmware.com/GOSIG/FreeBSD_10x.html>`__.
+`here <http://partnerweb.vmware.com/GOSIG/FreeBSD_11x.html>`__.
 
 To install the VMware tools just goto **System->Firmware->Plugins** and install
 **os-vmware** by clicking on the **+** sign next to it.
@@ -48,15 +48,8 @@ To install the Xen tools just goto **System->Firmware->Plugins** and install
 
 HyperV
 ------
-HyperV is supported out of the box, no additional drivers or tools are needed.
-
-.. attention::
-        FreeBSD version 10.2 was released with a HyperV bug, therefore OPNsense
-        version 16.1 of the installation media will not function correctly.
-        The bug will be resolved in later installation media. The solution for
-        new installations are (till new media is released) to install the 15.7
-        version ( https://pkg.opnsense.org/releases/15.7/ )and upgrade to the
-        latest using the GUI or opnsense-update cli tool.
+HyperV Generation 1 and 2 are supported out of the box, no additional drivers
+or tools are needed.
 
 Others
 ------
@@ -81,7 +74,7 @@ It will automatically pick up the latest available version and build a chain of
 trust by using current package fingerprints -> CA root certificates -> HTTPS -> OPNsense
 package fingerprints.
 
-What it will also do is turn a supported stock FreeBSD 10 release into an OPNsense
+What it will also do is turn a supported stock FreeBSD release into an OPNsense
 installation, given that UFS was used to install the root file system.
 
 opnsense bootstrap is available for our

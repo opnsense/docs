@@ -318,7 +318,7 @@ By default you have to log in to enter the console.
 
     * * * Welcome to OPNsense [OPNsense 15.7.25 (amd64/OpenSSL) on OPNsense * * *
      
-    WAN (em1)     -> 
+    WAN (em1)     -> v4/DHCP4: 192.168.2.100/24
     LAN (em0)     -> v4: 192.168.1.1/24
      
     FreeBSD/10.1 (OPNsense.localdomain) (ttyv0)

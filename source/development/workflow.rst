@@ -105,7 +105,7 @@ enough before you attempt this.
 
 `VirtualBox <https://www.virtualbox.org/>`__ is a solid tool for the
 job, but be sure to check out `FreeBSD’s Bhyve <http://bhyve.org/>`__ as
-well (it was added in FreeBSD 10). However, If you are only interested
+well (it was added in FreeBSD 10.0). However, If you are only interested
 in GUI coding, you can skip all the build parts and directly download an
 image and spin it up. Because…
 
