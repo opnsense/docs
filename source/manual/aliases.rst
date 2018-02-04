@@ -22,7 +22,7 @@ OPNsense offers the following alias types:
 +------------+------------------------------------------------------+
 | URL Tables | A table of ip addresses that can be fetched          |
 +------------+------------------------------------------------------+
-| GeoIP      | Select countries or whole continents                 |
+| GeoIP      | Select countries or whole regions                    |
 +------------+------------------------------------------------------+
 
 -----
