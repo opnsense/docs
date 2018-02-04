@@ -71,7 +71,6 @@ OPNsense Core Features
   - Road warrior
   - IPsec
   - OpenVPN
-  - Legacy PPTP support (via plugins)
 
 - High Availability & Hardware Failover
 
