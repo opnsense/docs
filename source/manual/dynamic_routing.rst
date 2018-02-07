@@ -7,7 +7,7 @@ Dynamic Routing
     If you want to disable a running routing daemon, make sure, you don't lose routes which are
     required by your connection to this machine (for example when using SSH)
 
-Dynamic Routing (using routing protocos) is supported via an external plugin. Routing protocols are used to make your network equipment find the best path where your packets should be sent to.
+Dynamic Routing (using routing protocols) is supported via an external plugin. Routing protocols are used to make your network equipment find the best path where your packets should be sent to.
 
 Routing protocols are used to
 
@@ -37,7 +37,7 @@ First of all, select Plugins in the menu:
 
 .. image:: images/menu_plugins.png
 
-On this page, you can install the quagga plugin by clicking the `+` icon:
+On this page, you can install the frr plugin by clicking the `+` icon:
 
 .. image:: images/plugins_quagga.png
 
