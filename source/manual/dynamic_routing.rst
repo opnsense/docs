@@ -39,7 +39,7 @@ First of all, select Plugins in the menu:
 
 On this page, you can install the frr plugin by clicking the `+` icon:
 
-.. image:: images/plugins_quagga.png
+.. image:: images/plugins_frr.png
 
 
 -------------
