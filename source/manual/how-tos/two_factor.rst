@@ -3,7 +3,7 @@ Configure 2FA TOTP & Google Authenticator
 =========================================
 This how-to will show you how to setup a One-time Password 2 Factor Authentication
 using OPNsense and Google's Authenticator. All services of OPNsense can be used
-with this 2FA solution, with the exception of console/ssh access.
+with this 2FA solution.
 
 .. image:: /manual/images/two_factor_authentication.png
    :scale: 100%
