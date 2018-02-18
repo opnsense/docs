@@ -3,7 +3,7 @@ Configure 2FA TOTP & Google Authenticator
 =========================================
 This how-to will show you how to setup a One-time Password 2 Factor Authentication
 using OPNsense and Google's Authenticator. All services of OPNsense can be used
-with this 2FA solution, with the exception of console/ssh access.
+with this 2FA solution.
 
 .. image:: /manual/images/two_factor_authentication.png
    :scale: 100%
@@ -65,11 +65,42 @@ Now it will show a QR code:
     to calculate the token. **KEEP YOUR SEED/QR CODE SAFE !**
 
 
-Now open your Google Authenticator application and select the option to start the
-configuration and then scan the QR code or alternatively enter the seed directly.
+Now open your Google Authenticator compatible application and select the option to
+start the configuration and then scan the QR code or alternatively enter the seed
+directly.
 
-.. image:: images/iphone_qr_scan.png
+In case of SailOTP the configuration works like this:
+
+.. image:: images/sailotp_menu.jpg
    :scale: 100%
+
+Pull down to open the application menu and choose the entry to add a new Token.
+
+.. image:: images/sailotp_scan_qr.jpg
+   :scale: 100%
+
+In the next step, you have to scan the previously created QR code by clicking
+on the screen.
+
+.. image:: images/sailotp_scanresult.jpg
+   :scale: 100%
+
+When the QR code is scanned, a new view will open where you can
+see the details of the result. This view can be used to check if the generated
+key and OTP settings of the scan results do match your settings.
+Confirm if everything is ok by clicking "Add".
+
+After this step, you will be back on the home screen of the app and will get
+a Token for 30 Seconds.
+
+Please note that there are many apps to generate the token. Some well known are:
+
+==================== ======================= =====================================
+Name                 Platform                URL
+==================== ======================= =====================================
+FreeOTP              Android, iOS            https://freeotp.github.io/
+Google Authenticator Android, iOS            https://www.google.com/landing/2step/
+==================== ======================= =====================================
 
 -----------------------
 Step 5 - Test the token
@@ -83,7 +114,9 @@ is token and then password **in the same field**.
 
 .. Note::
     Password field should be used to enter both token and your password, like:
-    **Password:** 123456PASSWORD
+    **Password:** 123456PASSWORD when the default configuration is used.
+    The OTP authentication server can also be configured to have it in the
+    reverse order like PASSWORD123456.
 
 
 Hit the test button and if all goes well you should see *successfully authenticated*.
@@ -98,9 +131,9 @@ To use the token in any application/service that you have configured, just open
 the Google Authenticator and add the created token/key **before** your regular password.
 
 .. Warning::
-   Remember, you need to enter the token **before** you password!
-   And the password field should be used to enter both token and your password,
-   like: **Password:** 123456PASSWORD
+   Remember, you need to enter the token **before** or **after** you password 
+   (depending on your configuration)! And the password field should be used to enter 
+   both token and your password, like: **Password:** 123456PASSWORD
 
 
 The code will change every 30 seconds.
