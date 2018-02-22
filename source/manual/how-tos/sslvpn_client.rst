@@ -211,8 +211,6 @@ compatible app. To do so click in the **Click to unhide** button in the
 **OTP QR code** row and you will get a QR code to scan with your smartphone.
 See also: :doc:`/manual/how-tos/two_factor`
 
-**Save** the new user to complete this step.
-
 -----------------------------
 
 ------------------------
