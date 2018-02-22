@@ -208,9 +208,8 @@ For the first step we enter:
 Click **Save** and you will be redirected to the User page.
 Now we will activate your newly created seed with your Google Authenticator
 compatible app. To do so click in the **Click to unhide** button in the 
-**OTP QR code** row and you will get a QR code to scan with your phone.
-This image can be scanned with you smartphone. See also: 
-:doc:`/manual/how-tos/two_factor`
+**OTP QR code** row and you will get a QR code to scan with your smartphone.
+See also: :doc:`/manual/how-tos/two_factor`
 
 **Save** the new user to complete this step.
 
