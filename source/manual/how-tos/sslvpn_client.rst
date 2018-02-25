@@ -179,7 +179,8 @@ the lower right corner of the form.
 
 Creating a user will be done in two steps, the first one is adding a basic user
 with a username, password, TOTP seed and user certificate. The second step
-(after saving) will be to activate the generated OTP seed with Google Authenticator.
+(after saving) will be to activate the generated OTP seed with a Google
+Authenticator compatible app.
 
 For the first step we enter:
 
@@ -205,13 +206,10 @@ For the first step we enter:
 =========================== ========================================
 
 Click **Save** and you will be redirected to the User page.
-Now we will activate your newly created seed with Google Authenticator.
-To do so click in the **(i)** symbol on the left of **OTP seed** now you will
-see a link to the google authenticator image. Click on it and it will open in a
-new browser window and an image will be displayed. This image can be scanned with
-you mobile see also: :doc:`/manual/how-tos/two_factor`
-
-**Save** the new user to complete this step.
+Now we will activate your newly created seed with your Google Authenticator
+compatible app. To do so click in the **Click to unhide** button in the 
+**OTP QR code** row and you will get a QR code to scan with your smartphone.
+See also: :doc:`/manual/how-tos/two_factor`
 
 -----------------------------
 
