@@ -17,3 +17,5 @@ Fill in the form:
 ============================== =============== ========================================================
 
 Use the tester under **System->Access->Tester** to test the Radius server.
+
+If you want to use the FreeRADIUS plugin set up the server as 127.0.0.1 and don't forget to add a **Client** in the FreeRADIUS configuration.
