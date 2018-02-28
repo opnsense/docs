@@ -66,6 +66,10 @@ IPsec Site-to-Site
 -----------------------
 :doc:`how-tos/ipsec-s2s`
 
+IPsec Site-to-Site with BINAT
+-----------------------
+:doc:`how-tos/ipsec-s2s-binat`
+
 OpenVPN/SSL Road Warrior
 ------------------------
 :doc:`how-tos/sslvpn_client`
