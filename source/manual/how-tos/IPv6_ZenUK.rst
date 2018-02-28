@@ -26,14 +26,14 @@ connection type and set the username and password for the PPPoE
 connection, for IPv6 using DHCP, select DHCPv6 in the IPv6 connection as
 shown below.
 
-.. image:: images/ZenUK_image0.png
+.. image:: images/ZenUK_image1.png
 	:scale: 100%
 
 The next step is to configure the parameters required for DHCPv6, these
 are located in the DHCPv6 client configuration section of the WAN
 interface shown below.
 
-.. image:: images/ZenUK_image1.png
+.. image:: images/ZenUK_image2.png
 	:scale: 100%
 
 As stated before, Zen provide a /48 prefix, so select the prefix size
@@ -45,7 +45,7 @@ connectivity’, this is because the IPv6 traffic is routed over the PPPoE
 link.
 
 In the example above, ‘Enable debug’ is selected, this adds extra dhcp6c
-logging information to the dhcpd logs, this is optional.
+logging information to the DHCP logs, this is optional.
 
 Click ‘Save’ and then ‘Apply’.
 
@@ -58,14 +58,14 @@ IPv6 prefix.
 Select Interfaces->LAN and set the IPv6 Configuration Type to ‘Track
 Interface’
 
-.. image:: images/ZenUK_image2.png
+.. image:: images/ZenUK_image3.png
 	:scale: 100%
 
 Finally, set the Track IPv6 Interface to WAN, unless there is a special
 requirement which this document does not cover, set the IPv6 Prefix ID
 to 0.
 
-.. image:: images/ZenUK_image3.png
+.. image:: images/ZenUK_image4.png
 	:scale: 100%
 
 Click ‘Save’ and then ‘Apply’.
@@ -106,7 +106,7 @@ to the Internet.
 Set up the gateway like this:
 
 
-.. image:: images/ZenUK_image4.png
+.. image:: images/ZenUK_image5.png
 	:scale: 100%
 
 Click Save.
@@ -118,7 +118,7 @@ Select Interfaces->WAN.
 
 Go to IPv6 Configuration Type and Select Static IPv6.
 
-.. image:: images/ZenUK_image5.png
+.. image:: images/ZenUK_image6.png
 	:scale: 100%
 
 Go to Static IPv6 Configuration and set the IPv6 Static address:
@@ -126,7 +126,7 @@ Go to Static IPv6 Configuration and set the IPv6 Static address:
 **Tip Use the same address as found when setting the system up to use
 DHCPv6.**
 
-.. image:: images/ZenUK_image6.png
+.. image:: images/ZenUK_image7.png
 	:scale: 100%
 
 Select Use IPv4 connectivity, all IPv6 traffic goes via the PPPoE link.
@@ -134,7 +134,7 @@ Select Use IPv4 connectivity, all IPv6 traffic goes via the PPPoE link.
 Finally, select the IPv6 Upstream Gateway, this is the gateway you
 created earlier.
 
-.. image:: images/ZenUK_image7.png
+.. image:: images/ZenUK_image8.png
 	:scale: 100%
 
 Click Save and Apply.
@@ -145,7 +145,7 @@ Click Save and Apply.
 The LAN interface is very simple to set up, all we need to do is set the
 IPv6 Configuration Type to Static, and enter our static address.
 
-.. image:: images/ZenUK_image8.png
+.. image:: images/ZenUK_image9.png
 	:scale: 100%
 
 Zen give us a /48 prefix to use on the LAN, so pick an address from that
@@ -157,7 +157,7 @@ So
 
 2a02:8242:55AB:0:4:3:2:1 would suffice.
 
-.. image:: images/ZenUK_image9.png
+.. image:: images/ZenUK_image10.png
 	:scale: 100%
 
 We want to use a /64 prefix on this interface.
@@ -176,7 +176,7 @@ Services->DHCPv6[LAN]
 
 Firstly, enable the server.
 
-.. image:: images/ZenUK_image10.png
+.. image:: images/ZenUK_image11.png
 	:scale: 100%
 
 You will notice that the subnet already has a range, and the subnet mask
@@ -191,7 +191,7 @@ Enter the upper – end range that the server will use.
 
 2a02:8231:d256::eeee:ffff:ffff:ffff
 
-.. image:: images/ZenUK_image11.png
+.. image:: images/ZenUK_image12.png
 	:scale: 100%
 
 This should cover most LAN subnets, the range given here gives
@@ -203,7 +203,7 @@ prefixes, we are only interested in the upper 64 bits, as in this
 example we will only be giving out 64 bit prefixes. We know we have been
 given a /48 prefix by Zen, so we enter our prefix range like this:
 
-.. image:: images/ZenUK_image12.png
+.. image:: images/ZenUK_image13.png
 	:scale: 100%
 
 Our prefix range is the upper 48 bits, plus some of the next 16 bits,
