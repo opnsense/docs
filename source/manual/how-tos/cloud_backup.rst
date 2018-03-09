@@ -136,6 +136,8 @@ Close the modal dialog and remove the default files.
 Then open the Settings menu (also in the menu top right).
 Switch to security and generate a App password.
 
+.. image:: images/nextcloud_create_token.png
+
 Copy and store the generated password.
 
 3. Step Connect OPNsense with Nextcloud
