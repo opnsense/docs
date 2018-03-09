@@ -99,7 +99,7 @@ Pick an address, we’ll use ‘1’, so our WAN address
 
 We will also add a target IP for our monitor, the target will be a
 global WAN address of something. You can use the Google v6 DNS server
-address if you wish. If no monitor is given the gateway address is used, 
+address if you wish. If no monitor is given the gateway address is used,
 which can check gateway health status but may or may not indicate access
 to the Internet.
 
@@ -151,7 +151,7 @@ IPv6 Configuration Type to Static, and enter our static address.
 Zen give us a /48 prefix to use on the LAN, so pick an address from that
 range. For example our prefix is:
 
-2a02:8242:55AB::
+2a02:8242:55AB:\:
 
 So
 
