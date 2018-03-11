@@ -35,7 +35,6 @@ privileges to the users they need to be imported in OPNsense's local user manage
 This way one can validate a user against its externally stored password and have
 a fine grained control over the configuration pages that user may access.
 
-* Graphical User Interface (Web Configurator)
 
 Users, Groups & Privileges
 --------------------------
@@ -44,6 +43,26 @@ external authentication server one can define groups to combine a set of privile
 for a specific user group. A user should be an individual, a group needs to be
 specific in such a way that anyone of that group can be granted the same access
 rights, called privileges.
+
+Services
+----------------------------------
+
+The authentication service to use can be configured using the settings in **System->Access->Settings**.
+Here you can also find timeout settings for the user sessions and for local user accounts you will have the option
+to improve security using password policy constraints.
+
+Below an overview of the settings, which are available:
+
+=====================================  ============================================================================================
+ **Session Timeout**                   Session timeout if other then our default.
+ **Authentication Server**             Primary authentication method to use.
+ **Authentication Server (fallback)**  Fallback option if primary service fails.
+ **Policy**                            Enable password policy constraints.
+ **Duration**                          [Policy] Password duration, optionally define how often the user should change his or her password.
+ **Length**                            [Policy] Minimum password length to require.
+ **Complexity**                        [Policy] Enforce password complexity checks.
+=====================================  ============================================================================================
+
 
 
 Configuration
