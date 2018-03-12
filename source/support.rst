@@ -47,8 +47,10 @@ Tier 3 – Plugins (Community)
 - When accepting a Tier 3 feature into the code base, it will come with a number of limits and conditions:
 
   *  Submitter must commit to maintaining it:
+  
     - make sure code compiles and correctly functions after OPNsense and/or external (e.g. library) changes,
     - support users when they encounter problems (forum / git issue tracker – all related issues will be assigned to the maintainer).
+
 - The code is offered as plugin and will not be part of the default OPNsense installation. The OPNsense core team will not be responsible for QA,
 - If the feature get lots of traction, and/or if the team just considers it very useful, it may get 'promoted' to being officially supported (Tier 2),
 - The feature will be removed if the submitter stops maintaining it and no-one steps up to take over.
