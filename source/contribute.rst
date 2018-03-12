@@ -66,7 +66,7 @@ To get enlisted as partner of the OPNsense project means a minimum annual invest
 of € 2500.Partners that made an exceptional contribution to the project are assigned
 the Platinum Partner status.
 
----------------
+----------------
 Support Contract
 ----------------
 with a support contract we support you and you support us as OPNsense is fully
@@ -86,6 +86,11 @@ Contributing to the ongoing development of OPNsense can be done by:
 * Help fixing issues as well as by
 * Contributing new functionality
 * Share your code with the project by manner of a pull request.
+
+.. Note::
+
+  Before you send in your pull request, please read our :doc:`development/guidelines` and see the community support levels in the
+  :doc:`support`. It is important for plugin developers to maintain their plugin and interact with users for QA.
 
 ---------------
 
