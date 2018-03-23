@@ -26,10 +26,10 @@ Here you can see all the kernels for version 18.1. Be aware to change the versio
 As an example you updated from 18.1.4 to 18.1.5 you have now installed kernel-18.1.5. 
 To revert back to the last stable you can see kernel-18.1 so the syntax would be:
 
-```
+``
 opnsense-update -kr 18.1
 /usr/local/etc/rc.reboot
-```
+``
 
 Where -k only touches the kernel and -r takes the version number.
 
