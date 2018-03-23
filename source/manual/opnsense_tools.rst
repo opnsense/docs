@@ -90,9 +90,10 @@ For a complete list of options look at the manpage on the system.
 Example 1:
 ----------
 In the Traffic Shaper a newly introduced typo prevents the system from setting the correct ipfw ruleset.
-You were asked by the developer to test a fresh patch c33343aa:
+You were asked by the developer to test a fresh patch https://github.com/opnsense/core/commit/63cfe0a96c83eee0e8aea0caa841f4fc7b92a8d0
+At the end of the page there's the short version 63cfe0a so the command would be:
 
-# opnsense-patch c33343aa
+# opnsense-patch 63cfe0a
 
 If it doesn't fix your issue of make it even worse, you can just reapply the command 
 to revert it.
@@ -100,9 +101,9 @@ to revert it.
 Example 2:
 ----------
 You need a special feature for a plugin and ask in Github for it.
-A developer adds it and ask you to install the patch df45fdac for testing.
+A developer adds it and ask you to install the patch df45fda for testing.
 
-# opnsense-patch -c plugins df45fdac
+# opnsense-patch -c plugins df45fda
 
 The -c changes the default core to plugin repo and adds the patch to the system. 
 
