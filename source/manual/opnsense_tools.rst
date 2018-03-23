@@ -15,8 +15,8 @@ The opnsense-update utility offers combined kernel and base system upgrades
 using remotely fetched binary sets, as well as package upgrades via pkg.
 For a complete list of options look at the manpage on the system.
 
-Example 1:
-----------
+Example:
+--------
 A minor update also updated the kernel and you experience some driver issues with your NIC.
 Open your browser and go to 
 
@@ -26,130 +26,75 @@ Here you can see all the kernels for version 18.1. Be aware to change the versio
 As an example you updated from 18.1.4 to 18.1.5 you have now installed kernel-18.1.5. 
 To revert back to the last stable you can see kernel-18.1 so the syntax would be:
 
-``
-opnsense-update -kr 18.1
-/usr/local/etc/rc.reboot
-``
+
+# opnsense-update -kr 18.1
+
+# /usr/local/etc/rc.reboot
+
 
 Where -k only touches the kernel and -r takes the version number.
 
 
+To switch back to the current kernel just use
+
+# opnsense-update -k
+
+# /usr/local/etc/rc.reboot
 
 ------------------
 
-VMware ESXi
------------
-VMware offers full instructions for installing FreeBSD, these can be found
-`here <http://partnerweb.vmware.com/GOSIG/FreeBSD_11x.html>`__.
 
-To install the VMware tools just goto **System->Firmware->Plugins** and install
-**os-vmware** by clicking on the **+** sign next to it.
+opnsense-revert
+---------------
+The opnsense-revert utility offers to securely install previous versions of packages
+found in an OPNsense release as long as the selected mirror caches said release.
+For a complete list of options look at the manpage on the system.
 
-.. image:: images/os-vmware.png
+Example 1:
+----------
+The latest update of OPNsense to version 18.1.5 did da minor jump for the IPSec package stronswan.
+From this moment your VPNs are unstable and only a restart helps.
 
-.. Note::
+To check if the update of the package is the reason you can easily revert the package
+to it's previous state while running the latest OPNsense version itself
 
-        While other network setups may work fine, the e1000 driver seems to work
-        best, certainly when utilizing the traffic shaper.
+# opnsense-revert -r 18.1.4 strongswan
 
-------------------
+With this command you will on e.g. 18.1.5 while reverting the package strongswan to it's version it was in 18.1.4.
 
-Xen
----
-To install the Xen tools just goto **System->Firmware->Plugins** and install
-**os-xen** by clicking on the **+** sign next to it.
 
-.. image:: images/os-xen.png
+Example 2:
+----------
+The previous revert of strongswan was not the solution you expected so you try to completely revert to the previous
+OPNsense version:
 
-------------------
+# opnsense-revert -r 18.1.4 opnsense
 
-HyperV
-------
-HyperV Generation 1 and 2 are supported out of the box, no additional drivers
-or tools are needed.
+Be aware to also check if there were kernel updates like above to also downgrad the kernel if needed!
 
-Others
-------
-OPNsense can be installed on all virtual machines that support FreeBSD (such as
-KVM, Bhyve, VirtualBox).
 
 ------------------
 
-------
-Hosted
-------
-For hosted installations where you can't install using the cdrom iso an alternative
-approach is available in  the form of **opnsense-bootstrap**.
 
-opnsense-bootstrap
-------------------
-opnsense-bootstrap(8) is a tool that can completely reinstall a running system
-in place for a thorough factory reset or to restore consistency of all the OPNsense
-files. It can also wipe the configuration directory, but won't do that by default.
 
-It will automatically pick up the latest available version and build a chain of
-trust by using current package fingerprints -> CA root certificates -> HTTPS -> OPNsense
-package fingerprints.
+opnsense-patch
+--------------
+The opnsense-patch utility treats all arguments as upstream git repository commit hashes,
+downloads them and finally applies them in order.
+Patches can also be reversed by reapplying them, but multiple patches must be given in reverse order to succeed.
+For a complete list of options look at the manpage on the system.
 
-What it will also do is turn a supported stock FreeBSD release into an OPNsense
-installation, given that UFS was used to install the root file system.
 
-opnsense bootstrap is available for our
-`github source repository <https://github.com/opnsense/update/tree/master/bootstrap>`__
+Example 1:
+----------
+You need a special feature for a plugin and ask in Github for it.
+A developer adds it and ask you to install the patch df45fdac for testing.
 
-------------------
+# opnsense-patch -c plugins df45fdac
 
---------------------
-Amazon AWS EC2 Cloud
---------------------
-.. image:: how-tos/images/amazon-web-services.png
-    :scale: 100%
+The -c changes the default core to plugin repo and adds the patch to the system. 
+If it doesn't fix your issue of make it even worse, you can just reapply the command 
+to revert it.
 
-Installing OPNsense into the Amazon cloud can be a dounting task as no console is
-offered. As part of Deciso's support packages (see `OPNsense commercial Support
-<https://opnsense.org/support-overview/commercial-support/>`__), deciso offer free
-access to its OPNsense Amazon Machine Image (AMI).
+It is also possible to add patches from differnt users, just add -a githubusername before -c
 
-See also our how-to for :doc:`how-tos/installaws`.
-
--------------
-Common Issues
--------------
-Some common issues have been reported for different virtual environments.
-You can find known solutions to these problems below.
-
-If you problem is not listed always try the General tips as mentioned in the
-article first.
-
-------------------
-
-File copy failed during installation
-------------------------------------
-This issue is most likely caused by low memory setting. Make sure your virtual
-OPNsense installation has a minimum of 1GB of RAM.
-
-------------------
-
-Disk Errors on VMware
------------------------
-This issue can be caused by a defective drive. Changing drive mode to IDE has
-been reported to help for certain ESXi versions.
-
-------------------
-
-Installation failure on KVM
----------------------------
-If you are using virtio for the root disk then try switching to sata mode.
-
-------------------
-
-NAT issues on XenServer
------------------------
-This issue has been reported to be solved by disabling cheksum offloading on both
-OPNsense domU and Vifs.
-
-------------------
-
-Traffic Shaper does not work on VMware
---------------------------------------
-If you are using vmxnet3 drivers try to switch to E1000.
