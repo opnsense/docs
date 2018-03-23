@@ -45,9 +45,10 @@ In reality we forked a system that went without code maintenance for a very long
 time and we needed to transition that into something more structured.
 
 One of the first things (on the programming part of the system) we did was build
-components around an existing framework (Phalcon) to create new modules, which
-could use validated configuration data (from the config.xml), supply a RESTful
-API and generate html output using standard templates (Volt).
+components around an existing framework (`Phalcon <https://phalconphp.com/>`_)
+to create new modules, which could use validated configuration data (from the
+config.xml), supply a RESTful API and generate html output using standard
+templates (Volt).
 
 We created the configd system, which can generate system configuration and
 execute system calls using predefined templates. And then we started using those
