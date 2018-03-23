@@ -89,7 +89,7 @@ templates to describe configuration data.
 Our guidelines somewhat depend of the stage the code is in, when writing new code,
 all actions should use the api system for actually changing configuration and
 performing configuration tasks. They should, of course, use the normal PSR coding
-standards for php code and follow the python peps.
+standards for PHP code and follow the Python PEPs.
 
 When moving to the legacy part of the system, our goal is to stick as close to
 PSR1/2 as possible, knowing it will never be perfect.
