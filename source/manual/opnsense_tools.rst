@@ -89,14 +89,22 @@ For a complete list of options look at the manpage on the system.
 
 Example 1:
 ----------
+In the Traffic Shaper a newly introduced typo prevents the system from setting the correct ipfw ruleset.
+You were asked by the developer to test a fresh patch c33343aa:
+
+# opnsense-patch c33343aa
+
+If it doesn't fix your issue of make it even worse, you can just reapply the command 
+to revert it.
+
+Example 2:
+----------
 You need a special feature for a plugin and ask in Github for it.
 A developer adds it and ask you to install the patch df45fdac for testing.
 
 # opnsense-patch -c plugins df45fdac
 
 The -c changes the default core to plugin repo and adds the patch to the system. 
-If it doesn't fix your issue of make it even worse, you can just reapply the command 
-to revert it.
 
 It is also possible to add patches from differnt users, just add -a githubusername before -c
 
