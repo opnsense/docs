@@ -10,7 +10,8 @@ differences between new and legacy code.
 --------
 PHP code
 --------
-For PHP code the PSR1 and PSR2 Coding Standard apply.
+For PHP code the `PSR-1 <https://www.php-fig.org/psr/psr-1/>`_ and
+`PSR-2 <https://www.php-fig.org/psr/psr-2/>`_ Coding Standard apply.
 
 ------
 Python
