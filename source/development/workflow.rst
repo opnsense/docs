@@ -72,7 +72,8 @@ images–only to stop working some time in the future. No, no, no.
 
 You can also “cross-build” between FreeBSD versions. We’ve successfully
 built images on FreeBSD 10.1 when OPNsense was still running on FreeBSD 10.0.
-(version 16.1 now runs on FreeBSD 10.2) That’s not a huge gap and the ABI is the
+(version 16.1 now runs on FreeBSD 10.2) That’s not a huge gap and the
+`ABI <https://en.wikipedia.org/wiki/Application_binary_interface>`_ is the
 same, but we expect this to work with FreeBSD 11 and beyond as well so that if
 you have a FreeBSD box you will always be able to produce your own images if you
 desire–without spinning up extra machines, jails or virtual machines.
