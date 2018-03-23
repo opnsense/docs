@@ -4,8 +4,9 @@ Basics and Future
 
 This article explains the basic coding guidelines that apply and put the
 development effort into perspective by explaining the difficulties of legacy
-code and the interaction/migration to new MVC-based code. It also explains guideline
-differences between new and legacy code.
+code and the interaction/migration to new
+`MVC-based <https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller>`_
+code. It also explains guideline differences between new and legacy code.
 
 --------
 PHP code
