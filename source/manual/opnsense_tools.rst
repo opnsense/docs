@@ -1,10 +1,6 @@
 ==============
 OPNsense Tools
 ==============
-
-------------
-Introduction
-------------
 The OPNsense project offers a bunch of tools to instantly patch the system,
 revert a package to a previous (older version) state or revert the whole kernel. 
 
@@ -41,9 +37,8 @@ To switch back to the current kernel just use
 
 # /usr/local/etc/rc.reboot
 
-------------------
 
-
+---------------
 opnsense-revert
 ---------------
 The opnsense-revert utility offers to securely install previous versions of packages
@@ -75,10 +70,7 @@ OPNsense version:
 Be aware to also check if there were kernel updates like above to also downgrad the kernel if needed!
 
 
-------------------
-
-
-
+--------------
 opnsense-patch
 --------------
 The opnsense-patch utility treats all arguments as upstream git repository commit hashes,
