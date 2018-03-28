@@ -37,6 +37,10 @@ To switch back to the current kernel just use
 
 # /usr/local/etc/rc.reboot
 
+.. Warning::
+    Before reverting a kernel please consult the forums or open an issue via Github. 
+    You should only revert kernels on test   machines or when qualified team members advise you to do so!
+
 
 ---------------
 opnsense-revert
@@ -82,7 +86,7 @@ For a complete list of options look at the manpage on the system.
 Example 1:
 ----------
 In the Traffic Shaper a newly introduced typo prevents the system from setting the correct ipfw ruleset.
-You were asked by the developer to test a fresh patch https://github.com/opnsense/core/commit/63cfe0a96c83eee0e8aea0caa841f4fc7b92a8d0
+You were asked by the developer to test a fresh patch 63cfe0a at URL https://github.com/opnsense/core/commit/63cfe0a96c83eee0e8aea0caa841f4fc7b92a8d0
 At the end of the page there's the short version 63cfe0a so the command would be:
 
 # opnsense-patch 63cfe0a
@@ -93,7 +97,8 @@ to revert it.
 Example 2:
 ----------
 You need a special feature for a plugin and ask in Github for it.
-A developer adds it and ask you to install the patch df45fda for testing.
+A developer adds it and ask you to install the patch 699f1f2 for testing.
+The full link to it would be https://github.com/opnsense/plugins/commit/699f1f28a33ce0122fa0e2f5e6e1f48eb3c4f074
 
 # opnsense-patch -c plugins df45fda
 
