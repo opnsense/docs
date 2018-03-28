@@ -32,4 +32,5 @@ User Manual
    manual/hacarp
    manual/captiveportal
    manual/dynamic_routing
+   manual/opnsense_tools
    manual/howtos
