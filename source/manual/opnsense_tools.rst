@@ -100,7 +100,7 @@ You need a special feature for a plugin and ask in Github for it.
 A developer adds it and ask you to install the patch 699f1f2 for testing.
 The full link to it would be https://github.com/opnsense/plugins/commit/699f1f28a33ce0122fa0e2f5e6e1f48eb3c4f074
 
-# opnsense-patch -c plugins df45fda
+# opnsense-patch -c plugins 699f1f2
 
 The -c changes the default core to plugin repo and adds the patch to the system. 
 
