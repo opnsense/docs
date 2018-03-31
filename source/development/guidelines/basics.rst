@@ -4,13 +4,15 @@ Basics and Future
 
 This article explains the basic coding guidelines that apply and put the
 development effort into perspective by explaining the difficulties of legacy
-code and the interaction/migration to new MVC-based code. It also explains guideline
-differences between new and legacy code.
+code and the interaction/migration to new
+`MVC-based <https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller>`_
+code. It also explains guideline differences between new and legacy code.
 
 --------
 PHP code
 --------
-For PHP code the PSR1 and PSR2 Coding Standard apply.
+For PHP code the `PSR-1 <https://www.php-fig.org/psr/psr-1/>`_ and
+`PSR-2 <https://www.php-fig.org/psr/psr-2/>`_ Coding Standard apply.
 
 ------
 Python
@@ -45,9 +47,10 @@ In reality we forked a system that went without code maintenance for a very long
 time and we needed to transition that into something more structured.
 
 One of the first things (on the programming part of the system) we did was build
-components around an existing framework (Phalcon) to create new modules, which
-could use validated configuration data (from the config.xml), supply a RESTful
-API and generate html output using standard templates (Volt).
+components around an existing framework (`Phalcon <https://phalconphp.com/>`_)
+to create new modules, which could use validated configuration data (from the
+config.xml), supply a RESTful API and generate html output using standard
+templates (Volt).
 
 We created the configd system, which can generate system configuration and
 execute system calls using predefined templates. And then we started using those
@@ -86,7 +89,7 @@ templates to describe configuration data.
 Our guidelines somewhat depend of the stage the code is in, when writing new code,
 all actions should use the api system for actually changing configuration and
 performing configuration tasks. They should, of course, use the normal PSR coding
-standards for php code and follow the python peps.
+standards for PHP code and follow the Python PEPs.
 
 When moving to the legacy part of the system, our goal is to stick as close to
 PSR1/2 as possible, knowing it will never be perfect.
