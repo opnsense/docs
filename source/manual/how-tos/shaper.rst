@@ -228,7 +228,7 @@ Create Pipe For Upload
  **enabled**            Checked          *Check to enable the pipe*
  **bandwidth**          1                *Numeric value of the desired bandwidth*
  **bandwidth Metric**   Mbit/s           *Metric to use with the numeric value*
- **mask**               destination      *Select destination to share the bandwidth*
+ **mask**               empty            *Select destination to share the bandwidth*
  **description**        PipeUp-1Mbps     *Free field, enter something descriptive*
 ====================== ================ ================================================
 
@@ -239,12 +239,37 @@ Create Pipe For Download
  **enabled**            Checked            *Check to enable the pipe*
  **bandwidth**          10                 *Numeric value of the desired bandwidth*
  **bandwidth Metric**   Mbit/s             *Metric to use with the numeric value*
- **mask**               destination        *Select destination to share the bandwidth*
+ **mask**               empty              *Select destination to share the bandwidth*
  **description**        PipeDown-10Mbps    *Free field, enter something descriptive*
 ====================== ================== ================================================
 
+Step 2 - Create a Queues
+----------------------
+On the **Queues** tab click the **+** button in the lower right corner.
+An empty **Edit queue** screen will popup.
 
-Step 2 - Create Rules
+Create Queue for Upload
+
+====================== ================== ================================================
+ **enabled**            Checked            *Check to enable the pipe*
+ **pipe**               PipeUp-1Mbps       *Select our Pipe*
+ **weight**             100                *Weight to use with the numeric value*
+ **mask**               source             *Every source creates a match*
+ **description**        QueueUp-1Mbps      *Free field, enter something descriptive*
+====================== ================== ================================================
+
+Create Queue for Download
+
+====================== ================== ================================================
+ **enabled**            Checked            *Check to enable the pipe*
+ **pipe**               PipeDown-10Mbps    *Select our Pipe*
+ **weight**             100                *Weight to use with the numeric value*
+ **mask**               destination        *Every source creates a match*
+ **description**        QueueDown-10Mbps   *Free field, enter something descriptive*
+====================== ================== ================================================
+
+
+Step 3 - Create Rules
 ----------------------
 On the **Rules** tab click the **+** button in the lower right corner.
 An empty **Edit rule** screen will popup.
@@ -259,7 +284,7 @@ Create a rule for traffic directed towards the internet (Upload).
  **src-port**            any              *The source port to shape, leave on any*
  **destination**         any              *The destination to shape, leave on any*
  **dst-port**            any              *Use any of the destination port if static*
- **target**             PipeUp-1Mbps      *Select the Upload 256Kbps Pipe*
+ **target**             QueueUp-1Mbps     *Select the Upload 1Mbps Queue*
  **description**        ShapeUpload       *Enter a descriptive name*
 ====================== ================= =====================================================
 
@@ -274,7 +299,7 @@ Create a rule for traffic coming from the internet (Download).
  **src-port**            any              *The source port to shape, leave on any*
  **destination**         192.168.1.0/24   *The destination ip to shape, select LAN network*
  **dst-port**            any              *The destination port to shape, leave on any*
- **target**             PipeDown-10Mbps   *Select the Download 256Kbps Pipe*
+ **target**             QueueDown-10Mbps  *Select the Download 10Mbps Queue*
  **description**        ShapeDownload     *Enter a descriptive name*
 ====================== ================= =====================================================
 
@@ -332,7 +357,7 @@ Create Pipe For Download
  **enabled**            Checked          *Check to enable the pipe*
  **bandwidth**          1                *Numeric value of the desired bandwidth*
  **bandwidth Metric**   Mbit/s           *Metric to use with the numeric value*
- **mask**               source           *Select source to limit bandwidth per client*
+ **mask**               destination      *Select source to limit bandwidth per client*
  **description**        PipeDown-1Mbps   *Free field, enter something descriptive*
 ====================== ================ ================================================
 
