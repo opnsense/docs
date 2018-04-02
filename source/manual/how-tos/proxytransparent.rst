@@ -165,4 +165,17 @@ like this:
     is no problem, but if any one can get a get a hold of it then all traffic
     can be decrypted except those in the *do not bump* list. You have been warned!
 
+.. Note::
+    On Android devices, you may get notified about the device being unable to access
+    the internet. This happens because the certificates are pinned to protect the
+    connection against man in the middle attacks otherwise trusted certificates.
+    If you want to make the connection work again, you have to whitelist the following
+    Google domains in your "No Bump Hosts" settings.
+    
+    * Your local Google domain (for example: google.at for Austria, google.de for Germany, …)
+    * .google.com
+    * .googleapis.com
+    * .gstatic.com
+    * .1e100.net
+
 **DONE**
