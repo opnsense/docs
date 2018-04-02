@@ -244,7 +244,7 @@ Create Pipe For Download
 ====================== ================== ================================================
 
 Step 2 - Create a Queues
-----------------------
+------------------------
 On the **Queues** tab click the **+** button in the lower right corner.
 An empty **Edit queue** screen will popup.
 
