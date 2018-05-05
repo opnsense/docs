@@ -53,7 +53,7 @@ Examples:
 
 .. code-block:: sh
 
-    curl -k -u "$key":"$secret" https://10.1.0.205/api/core/firmware/getfirmwareconfig -v
+    curl -k -u "$key":"$secret" https://opnsense.local/api/core/firmware/getfirmwareconfig -v
 
 .. code-block:: sh
 
@@ -61,7 +61,7 @@ Examples:
 
 .. code-block:: sh
 
-    curl -d '' -k -u "$key":"$secret" https://10.1.0.205/api/core/firmware/changelog/18.1 -v
+    curl -d '' -k -u "$key":"$secret" https://opnsense.local/api/core/firmware/changelog/18.1 -v
 
 
 Menu
