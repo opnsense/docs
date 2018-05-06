@@ -28,7 +28,6 @@ to use as possible.
    development/components
    development/examples
    development/howtos
-   development/*
 
 -------
 Sources

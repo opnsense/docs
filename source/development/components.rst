@@ -15,4 +15,3 @@ tasks, this page indexes those components which aren't directly related to the
 
    components/menusystem
    components/acl
-   components/*

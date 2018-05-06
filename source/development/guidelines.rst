@@ -15,4 +15,3 @@ Coding Guidelines
    guidelines/psr1
    guidelines/psr2
    guidelines/peps
-   guidelines/*
