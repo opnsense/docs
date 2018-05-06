@@ -81,7 +81,7 @@ Action properties
 +-----------------------+------------------------+--------------------------------------------------------+
 | message               | text                   | Message to send to syslog (you can use %s parameters)  |
 +-----------------------+------------------------+--------------------------------------------------------+
-| description           | text                   | User friendly description, also allows Cron GUI use    |
+| description           | text                   | User-friendly description, also allows Cron GUI use    |
 +-----------------------+------------------------+--------------------------------------------------------+
 
 
