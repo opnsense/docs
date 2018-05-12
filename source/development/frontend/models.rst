@@ -113,8 +113,18 @@ From top to bottom we find the following nodes in our tree:
 -  someText, not part of the entity tag and also defined as text without
    validation
 
-The fieldtypes are easily extendable in the base system and they all live in
+The fieldtypes are easily extendable in the base system and all common ones live in
 their own namespace at *OPNsense\\Base\\FieldTypes* deriving from *BaseField*.
+
+.. Note::
+
+   When designing application specific fieldtypes, you can point to a field
+   type within the application namespace using a full or partial path. 
+
+   For example using *Vendor\\Component\\FieldTypes\\MyFieldType* to point to a specific non
+   common field type or *.\\MyFieldType* when linked from the application model itself (which assumes a namespace FieldTypes
+   exists)
+
 
 -------------
 Usage example
