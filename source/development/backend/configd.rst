@@ -50,7 +50,7 @@ Our ssh service has two actions available:
     message:starting sshd
 
     [stop]
-    command:/bin/pkill -TERM sshd || exit 0
+    command:/bin/pkill -TERM sshd; exit 0
     parameters:
     type:script
     message:stop sshd
@@ -81,7 +81,7 @@ Action properties
 +-----------------------+------------------------+--------------------------------------------------------+
 | message               | text                   | Message to send to syslog (you can use %s parameters)  |
 +-----------------------+------------------------+--------------------------------------------------------+
-| description           | text                   | User-friendly description, also allows Cron GUI use    |
+| description           | text                   | User-friendly description, also allows GUI usage       |
 +-----------------------+------------------------+--------------------------------------------------------+
 
 
