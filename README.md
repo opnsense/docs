@@ -59,7 +59,7 @@ Install required stylesheets using bower
 bower install wyrm
 bower install robotoslab-googlefont
 bower install inconsolata-googlefont
-bower install font-awesome
+bower install font-awesome#4.7.0
 ```
 (for font-awesome, choose newest)
 
