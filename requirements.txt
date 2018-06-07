@@ -4,5 +4,4 @@ sphinxcontrib-blockdiag
 sphinxcontrib-nwdiag
 sphinxcontrib-seqdiag
 sphinxcontrib-actdiag
-sphinxcontrib-inheritance
 blockdiagcontrib-cisco
