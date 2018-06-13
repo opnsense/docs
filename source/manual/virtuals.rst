@@ -5,7 +5,7 @@ Virtual & Cloud based Installation
 ------------
 Local/Server
 ------------
-Installing OPNsense on a virtual machine can be done by using the cdrom iso image.
+Installing OPNsense on a virtual machine can be done by using the DVD ISO image.
 Full instructions are available in chapter :doc:`install` .
 
 General tips
@@ -61,8 +61,8 @@ KVM, Bhyve, VirtualBox).
 ------
 Hosted
 ------
-For hosted installations where you can't install using the cdrom iso an alternative
-approach is available in  the form of **opnsense-bootstrap**.
+For hosted installations where you can't install using the DVD ISO an alternative
+approach is available in the form of **opnsense-bootstrap**.
 
 opnsense-bootstrap
 ------------------

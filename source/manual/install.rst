@@ -77,7 +77,7 @@ Depending on you hardware and use case different installation media are provided
 +--------+-----------------------------------------------------+
 |Type    | | Description                                       |
 +========+=====================================================+
-| cdrom  | | ISO installer image with live system capabilities |
+| dvd    | | ISO installer image with live system capabilities |
 |        | | running in VGA-only mode                          |
 +--------+-----------------------------------------------------+
 | vga    | | USB installer image with live system capabilities |
@@ -118,14 +118,14 @@ Media Filename Composition
      platform_1 [label = "i386-" ];
      platform_2 [label = "amd64-" ];
 
-    OS -> cdrom-;
+    OS -> dvd-;
 
     group {
        orientation = portrait
        label = "Type";
        fontsize = 20;
 
-       cdrom- -> nano- -> serial- -> vga-;
+       dvd- -> nano- -> serial- -> vga-;
 
      }
 
@@ -147,7 +147,7 @@ Media Filename Composition
 
      }
 
-     cdrom- -> platform_1 -> "iso.bz2";
+     dvd- -> platform_1 -> "iso.bz2";
 
    }
 
@@ -159,9 +159,9 @@ Media Filename Composition
   More information on our release schedule is available from our package
   repository see `README <https://pkg.opnsense.org/releases/16.1/README>`__
 
-------------------
-OpenSSL & LibreSSL
-------------------
+--------------------
+OpenSSL and LibreSSL
+--------------------
 
 OPNsense images are provided based upon `OpenSSL <https://www.openssl.org>`__.
 The `LibreSSL <http://www.libressl.org>`__ flavor can be selected from within
@@ -256,25 +256,37 @@ was used previously on an existing installation, the system will boot up with a
 fully functional setup, but will not overwrite the previous installation. Use
 this feature for safely previewing upgrades.
 
-If you have used a CD-ROM, VGA, Serial image without a config import you are by
-default able to (a) log into the root shell using the user "root" with password
-"opnsense", or (b) log into the installer using the user "installer" with
-password "opnsense". The GUI will listen on https://192.168.1.1/ for user "root"
-with password "opnsense". Using SSH, the "root" and "installer" users are
-available as well on IP 192.168.1.1. Note that these install medias are
-read-only, which means your current live configuration will be lost after reboot.
+If you have used a DVD, VGA, Serial image you are by default able to log into
+the root shell using the user "root" with password "opnsense" to operate the
+live environment.
+
+The GUI will listen on https://192.168.1.1/ for user "root" with password
+"opnsense" by default unless a previous configuration was imported. Using SSH,
+the "root" and "installer" users are available as well on IP 192.168.1.1. Note
+that these install medias are read-only, which means your current live
+configuration will be lost after reboot.
+
+Installer Usage
+---------------
+If you have used a DVD, VGA, Serial image you are by default able to start the
+installer using the user "installer" with password "opnsense". On a previously
+imported configuration the password will be the same as root's password.
+
+Should the installer user not work for any reason, log in as user "root", select
+option 8 from the menu and type "opnsense-installer". The "opnsense-importer" can
+be run this way as well should you require to run the import again.
+
+The installer can always be run to clone an existing system, even for Nano
+images. This can be useful for creating live backups for later recovery.
 
 Nano Image
 ----------
 If you have used a Nano image, your system is already up and running as it is
 designed as such. It is set to read-write attempting to minimise write cycles by
-mounting relevant partitions as memory file systems. If you should require an
-installer anyway, log in as user "root", select option 8 from the menu and type
-"opnsense-installer". The "opnsense-importer" can be run this way as well should
-you require to run the import again.
+mounting relevant partitions as memory file systems and reporting features
+disabled by default.
 
-
-Create a bootable USB flash drive with the downloaded and unpacked img
+Create a bootable USB flash drive with the downloaded and unpacked image
 file. Configure your system to boot from USB.
 
 Installation Steps
