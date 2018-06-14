@@ -266,8 +266,18 @@ the "root" and "installer" users are available as well on IP 192.168.1.1. Note
 that these install medias are read-only, which means your current live
 configuration will be lost after reboot.
 
-Installer Usage
----------------
+Nano image
+----------
+If you have used a Nano image, your system is already up and running as it is
+designed as such. It is set to read-write attempting to minimise write cycles by
+mounting relevant partitions as memory file systems and reporting features
+disabled by default.
+
+Create a bootable USB flash drive with the downloaded and unpacked image
+file. Configure your system to boot from USB.
+
+Install to target system
+------------------------
 If you have used a DVD, VGA, Serial image you are by default able to start the
 installer using the user "installer" with password "opnsense". On a previously
 imported configuration the password will be the same as root's password.
@@ -279,18 +289,6 @@ be run this way as well should you require to run the import again.
 The installer can always be run to clone an existing system, even for Nano
 images. This can be useful for creating live backups for later recovery.
 
-Nano Image
-----------
-If you have used a Nano image, your system is already up and running as it is
-designed as such. It is set to read-write attempting to minimise write cycles by
-mounting relevant partitions as memory file systems and reporting features
-disabled by default.
-
-Create a bootable USB flash drive with the downloaded and unpacked image
-file. Configure your system to boot from USB.
-
-Installation Steps
-------------------
 The installation process involves a few simple steps.
 
 .. Note::
