@@ -6,22 +6,30 @@ Bootup / autorun options
 syshook
 -------
 
-OPNsense offers an easy method to plugin shell scripts during (early) boot stage.
+OPNsense offers an easy method to plug in custom scripts during boot stages and assorted system events.
 
-Syshook scripts should be installed in :
+Syshook scripts should be installed in:
 
 ::
 
-    /usr/local/etc/rc.syshook.d/
+    /usr/local/etc/rc.syshook.d/<subdir>/
 
-They can contain regular shell scripts using the following extensions:
+They can contain any executable file (e.g. shell scripts) in the following subdirectories:
 
-- start
-    - start script after normal system startup
+- backup
+    - scripts used for peroidic backup and restore
+- carp
+    - scripts used for CARP MASTER / BACKUP events
 - early
-    - start script before normal system startup.
+    - start script before system network startup
+- start
+    - start script after system network startup
+- stop
+    - stop script before normal system shutdown
 
-Example (vmware guestd start, filename /usr/local/etc/rc.syshook.d/vmware.early)
+File names can use a number prefix "XX-" to retain a particular order.  "20-" is typically used for core scripts, while "50-" is used for plugins.
+
+Example (vmware guestd start, filename /usr/local/etc/rc.syshook.d/early/50-vmware)
 
 ::
 
@@ -34,6 +42,7 @@ Example (vmware guestd start, filename /usr/local/etc/rc.syshook.d/vmware.early)
 
     /usr/local/etc/rc.d/vmware-kmod start
 
+Do not forget to set executable permissions on your syshook files.
 
 -----
 rc(8)
