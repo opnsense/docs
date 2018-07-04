@@ -154,14 +154,6 @@ Then concatenate both by defining a new list:
 
 The end result will be a list with all ip addresses in one alias list (servers).
 
--------
-GeoIP's
--------
-While it is possible to use geoIP lists in aliases by importing or using the url
-feature, OPNsense has a much more advanced way of blocking or allowing traffic based
-on the geographical location (country) by utilizing the netmap enabled
-:doc:`ips` see also :doc:`how-tos/ips-geoip`
-
 ------------------------------
 Configure DROP and EDROP lists
 ------------------------------
