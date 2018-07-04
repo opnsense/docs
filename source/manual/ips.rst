@@ -81,6 +81,15 @@ Finger Printing
 OPNsense includes a very polished solution to block protected sites based on
 their SSL fingerprint.
 
+-------------------
+App detection rules
+-------------------
+With OPNsense version 18.1.11 we introduced the app detection ruleset. 
+Since about 80 percent of traffic are web applications these rules focused on 
+blocking web services and the URLs behind them. 
+
+If you want to contribute to the ruleset see: https://github.com/opnsense/rules
+
 --------
 How-to's
 --------
