@@ -32,7 +32,7 @@ a list of "bad" SSL certificates identified by abuse.ch to be associated with
 malware or botnet activities. SSLBL relies on SHA1 fingerprints of malicious SSL
 certificates and offers various blacklists.
 
-See fore details: https://sslbl.abuse.ch/
+See for details: https://sslbl.abuse.ch/
 
 Feodo Tracker
 -------------
@@ -56,6 +56,13 @@ Feodo (also known as Cridex or Bugat) is a Trojan used to commit ebanking fraud 
     *Successor of Cridex. This version is also known as Dridex*
 
 See for details: https://feodotracker.abuse.ch/
+
+URLHaus List
+-------------
+With OPNsense version 18.1.7 we inroduced the URLHaus List from abuse.ch which collects
+compromised sites distributing malware.
+
+See for details: https://urlhaus.abuse.ch/
 
 ------------------------
 Maxmind GeoLite2 Country
