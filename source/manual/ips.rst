@@ -32,7 +32,7 @@ a list of "bad" SSL certificates identified by abuse.ch to be associated with
 malware or botnet activities. SSLBL relies on SHA1 fingerprints of malicious SSL
 certificates and offers various blacklists.
 
-See fore details: https://sslbl.abuse.ch/
+See for details: https://sslbl.abuse.ch/
 
 Feodo Tracker
 -------------
@@ -57,6 +57,13 @@ Feodo (also known as Cridex or Bugat) is a Trojan used to commit ebanking fraud 
 
 See for details: https://feodotracker.abuse.ch/
 
+URLHaus List
+-------------
+With OPNsense version 18.1.7 we inroduced the URLHaus List from abuse.ch which collects
+compromised sites distributing malware.
+
+See for details: https://urlhaus.abuse.ch/
+
 ------------------------
 Maxmind GeoLite2 Country
 ------------------------
@@ -73,6 +80,15 @@ Finger Printing
 ---------------
 OPNsense includes a very polished solution to block protected sites based on
 their SSL fingerprint.
+
+-------------------
+App detection rules
+-------------------
+With OPNsense version 18.1.11 we introduced the app detection ruleset. 
+Since about 80 percent of traffic are web applications these rules are focused on 
+blocking web services and the URLs behind them. 
+
+If you want to contribute to the ruleset see: https://github.com/opnsense/rules
 
 --------
 How-to's
