@@ -23,3 +23,4 @@ Configuring
 
 - :doc:`/manual/how-tos/IPv6_ZenUK`
 - :doc:`/manual/how-tos/ipv6_tunnelbroker`
+- :doc:`/manual/how-tos/ipv6_dsl`
