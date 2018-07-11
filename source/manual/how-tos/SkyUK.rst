@@ -19,6 +19,40 @@ Set both IPv4 and IPv6 configuration type to DHCP and DHCPv6 respectively.
 .. image:: images/skyuk_wan_1.png
 	:scale: 100%
 
+**Option61 - dhcp-client-identifier**
+-------------------------------------
+
+We now need to send the Sky login credentials. When using VDSL we do not
+need to use specific credentials, as long as they are correctly formatted
+anything will do.     
+
+Under DHCP Client Configuration select the Advanced button.
+
+.. image:: images/skyuk_lan_2.png
+	:scale: 100%
+
+There is an entry 'Send Options', enter the UserID & Password here in the
+format:
+
+dhcp-client-identifier "user_ID@skydsl|password"
+
+It is said that it doesn't matter what is sent in the option61 string, which
+is what this is, as long as something is sent, I prefer to play it safe so
+stick with the format as shown. For example, the following will work quite
+happily.
+
+dhcp-client-identifier "12345678@skydsl|12345678"
+
+The other part of the ID is called Option60, there are varying thoughts on
+whether this is needed anymore, it does no harm to include it so we'll do so.
+
+dhcp-class-identifier "7.16a4N_UNI|PCBAFAST2504Nv1.0"
+
+So the full entry for the 'Lease Requirements' Send Options would be:
+
+*dhcp-client-identifier "12345678@skydsl|12345678",dhcp-class-identifier "7.16a4N_UNI|PCBAFAST2504Nv1.0"*
+
+    
 The next step is to configure the parameters required for DHCPv6, these
 are located in the DHCPv6 client configuration section of the WAN
 interface shown below.
