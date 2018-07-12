@@ -1,5 +1,5 @@
 ==================================================
-Setup self signed certificate chains with OPNsense
+Setup Self Signed Certificate Chains with OPNsense
 ==================================================
 
 
@@ -9,11 +9,12 @@ with the help of OPNsense which has all the tools available to do so.
 Chains give the possibility to verify certificates where a single one is nothing
 more than that, a single certificate.
 
-Look at the default install, one certificate is created for the webgui/dashboard. There's
+Look at the default install, one certificate is created for the webgui/dashboard. There is
 nothing wrong with that certificate if we use a real world CA, but we don't. We
 create our own chain so that one has no purpose once done.
 
-Should you even consider using **self signed certificate chains**? in this age of free available certificates?
+Should you even consider using **self signed certificate chains**? in this age of free available 
+certificates?
 
    * Self signed certificate are just as secure as real world certificates.
    * They are trustworthy chains, you **know** all parties
@@ -31,17 +32,27 @@ What you shouldn't do with single self signed certs
 
    * Install them from unknown parties at all.
 
-A chain will need at least the next ingredients:
+A chain will need at least a CA and certificate, an intermediate CA is not needed, but in case of a 
+compromise the CA key would be compromised too.
+
+The chain we are going to create will be made with the following ingredients:
 
   * **CA** ``=`` certificate authority ``=`` root certificate ``-->`` signs intermediate certificates
   * **Intermediate CA** ``=`` subordinate certificate ``=`` signed by CA  ``-->`` signs certificates
-  * **Certificate** ``=`` signed by Intermediate CA ``=`` used for different services
+  * **Certificate** ``=`` signed by Intermediate CA ``=`` can be used for different services
+
+.. Note::
+
+    This ducument uses **CN - Common Name** should be read as: **SAN - Subject Alternative Name** and 
+    will be used if present.
 
 Please backup before you procede.
 
+
 ---------------------------
-Create a chain for OPNsense
+Create a Chain for OPNsense
 ---------------------------
+
 
 The Authority
 -------------
@@ -49,7 +60,10 @@ The Authority
 The first certificate to create is the **CA**. The only thing this CA
 does is sign the **intermediate CA** next in the line of trust.
 
-Go to **trust/Authorities** and add a new CA.
+Go to **Trust/Authorities**
+
+.. image:: images/trust.png
+
 Some entries in the form are showed here. Click on the thumbnail for a picture.
 
 When you are done save the form, the CA is now generated.
@@ -64,17 +78,21 @@ When you are done save the form, the CA is now generated.
    :scale: 15%
 
 .. Tip::
+
     Use valid email addresses for your certificates always.
     Bogus addresses can pose a security risk not only for certificates btw. ;-)
 
 
-The intermediate
+The Intermediate
 ----------------
+
 
 Time to create the second CA which is an **intermediate CA** this certificate will be signed
 by the root CA we just created. In return it will sign the sever certificate for OPNsense.
 
-Have a look at the form create one and save it.
+Go to **Trust/Authorities**
+
+Have a look at the form create an intermediate CA and save it.
 
 ====================== =================================== ========================================
  **Descriptive name**   opnsense-ca-intermediate            *Choose a name that makes sense to you*
@@ -85,13 +103,17 @@ Have a look at the form create one and save it.
 .. image:: images/CA-inter.png
    :scale: 15%
 
-The certificate
+
+The Certificate
 ---------------
+
 
 The thirth certificate will be a **server certificate** signed by the intermediate CA we just created.
 This will also be the last one we create for this chain.
 
-Have a look at the next form and notice the common name, create one and save it.
+Go to **Trust/Certificates**
+
+Have a look at the next form and notice the common name, create a server certificate and save it.
 
 ====================== =================================== ========================================
  **Descriptive name**   opnsense-ca-intermediate            *Choose a name that makes sense to you*
@@ -103,26 +125,30 @@ Have a look at the next form and notice the common name, create one and save it.
    :scale: 15%
 
 .. Tip::
+
     When creating the server certificate make sure the **CN - common name**
-    is in fact the the **FQDN - fully qualified domain name**.
+    is in fact the the **FQDN - Fully Qualified Domain Name**.
     You can find it on **Linux/Unix** with this command ``hostname -f``
 
 Now we need to start using the chain
 
-  * Download the intermediate CA. 
-  * Open your browser and go to **preferences/certificate/authorities**
+  * Download the intermediate CA.
+
+.. image:: images/export_CA_cert.png
+
+- * Open your browser and go to **Preferences/Certificate/Authorities**
   * Import the downloaded CA.
-  * Go back to the dashboard & open **system/settings/Administration**.
+  * Go back to the dashboard & open **System/Settings/Administration**.
   * Set **SSL-Certificate** to use the new server certificate.
 
 Open your browser and open the OPNsense page. You should be presented with a certificate that is 
 verified by your intermediate CA.
 
 
+---------------------------------------
+A Chain for Your Local Nextcloud Server
+---------------------------------------
 
----------------------------------------
-A chain for your local Nextcloud server
----------------------------------------
 
 The local chain for Nextcloud server so we can use OPNsense backup to Nextcloud.
 
@@ -137,7 +163,7 @@ Let's create a new chain **CA -- intermediate CA -- server cert.**
 
     | Performing a **Health audit** would raise an alert after adding the CA to the store:
     | alert: **checksum mismatch for /usr/local/share/certs/ca-root-nss.crt**
-    | The sum of the file doesn't match the sum saved in the system after adding the CA.
+    | The sum of the file does not match the sum saved in the system after adding the CA.
 
 .. Tip::
 
@@ -152,7 +178,10 @@ Let's create a new chain **CA -- intermediate CA -- server cert.**
 The Nextcloud Authority
 -----------------------
 
-Go to **trust/Authorities** create a new CA for Nextcloud and save it.
+
+Go to **Trust/Authorities** create a new CA for Nextcloud and save it.
+
+.. image:: images/trust.png
 
 ====================== =================================== ========================================
  **Descriptive name**   nextcloud-ca                        *Choose a name that makes sense*
@@ -166,7 +195,10 @@ Go to **trust/Authorities** create a new CA for Nextcloud and save it.
 OPNsense needs to be made aware of the Nextcloud chain we are creating.
 
    * Download the **CA.crt** and upload it back to OPNsense in a secure way.
-   * For this you can use ``scp`` see ``man scp``
+
+.. image:: images/export_CA_cert.png
+
+-  * For this you can use ``scp`` (see) ``man scp``
    * Install the **CA.crt** with ``cat``, you cannot just copy it to the store because it is a single file.
 
 **The following command will append it to the store**
@@ -184,11 +216,15 @@ OPNsense needs to be made aware of the Nextcloud chain we are creating.
     Remove the CA from the store? Use ``vi``, the added CA will be the
     last one below **#End of file**
 
-The Nextcloud intermediate CA
+
+The Nextcloud Intermediate CA
 -----------------------------
 
+
 Next in line will be the **intermediate CA** which will be signed by the root CA we did just create.
-This intermediate CA will sign the Nextcloud server certificate, create one and save it.
+This intermediate CA will sign the Nextcloud server certificate.
+
+Go to **Trust/Authorities** and create an intermediate CA
 
 ====================== =================================== ========================================
  **Descriptive name**   nextcloud-intermediate-ca           *Choose a name that makes sense to you*
@@ -201,14 +237,18 @@ This intermediate CA will sign the Nextcloud server certificate, create one and 
 
 Download the intermediate CA and install it to your browser
 
-   * Head to the webgui **trust/Authorities** export **nextcloud-intermediate-ca**
-   * Back to the browser, open **preferences/certificate/authorities**
+   * Head to the webgui **Trust/Authorities** export **nextcloud-intermediate-ca.crt**
+   * Back to the browser, open **Preferences/Certificate/Authorities**
    * Import the intermediate CA into the certificate store from your browser.
 
-The Nextcloud server certificate
+
+The Nextcloud Server Certificate
 --------------------------------
 
+
 Next we create the server certificate for the Nextcloud server.
+
+Go to **Trust/Certificates** create a server certificate
 
 ====================== =================================== ========================================
  **Descriptive name**   cloudserver-cert                    *Choose a name that makes sense to you*
@@ -219,8 +259,20 @@ Next we create the server certificate for the Nextcloud server.
 .. image:: images/cloud-cert.png
    :scale: 15%
 
-We need to install this certificate to our Nextcloud server.
+We need to install this certificate and key to our Nextcloud server, two ways are shown here.
 
+   * Upload the ***.p12** archive to your Nextcloud server in a safe way.
+   * Extact the archive into a single **PEM** file and create a certificate and a key.
+   * Use the following commands for a key and certificate:
+
+::
+
+   openssl pkcs12 -in nextcloud-crt.p12 -nodes -out nextcloud.key -nocerts
+   openssl pkcs12 -in nextcloud-crt.p12 -clcerts -nokeys -out nextcloud.pem
+   cp nextcloud.pem nextcloud.crt
+
+   
+-  * Or use the next quick and dirty method for a single key/certificate file:
    * Upload the ***.p12**  archive to your Nextcloud server, in a safe way..
    * Extact the archive into a single **PEM** file and create a certificate. 
 
@@ -229,10 +281,12 @@ We need to install this certificate to our Nextcloud server.
     openssl pkcs12 -in nextcloud-crt.p12 -out nextcloud-crt.pem -nodes
     cp nextcloud-crt.pem nextcloud-crt.crt
 
--  * **/etc/ssl/localcerts** will be alright or choose your own prefered location.
-   * Edit the webserver config to use the certificate, the key is included in the ***.crt**
-   * There are other ways to do this.
-   * Sane permissions, '400' read only owner is sufficent.
+-  * **/etc/ssl/localcerts** will be alright for the certificate or choose your own prefered location.
+   * If the key was extracted separatly, **/etc/ssl/private** would be a good choice.
+   * Be sure to set sane permissions on the private directory, ``700`` would do it. 
+   * You could set ``umask`` too (see) ``man umask`` - on your Linux box.
+   * Edit the webserver config to use the certificate and key or single key-cert file.
+   * Sane permissions, ``400`` read only owner is sufficent.
 
 You should now be able to backup to nextcloud and have a verified page.
 
@@ -240,10 +294,17 @@ You should now be able to backup to nextcloud and have a verified page.
 
  After setting up the Nextcloud backup everything should work.
 
+Troubleshooting:
+
+| The backup to Nextcloud fails and recieve error:``verify_result 2`` in **System/LogFiles**
+| Issuer unknown because of an incomplete chain: the CA (issuer!) is missing
+| The Nextcloud CA was not installed to OPNsense certificate store **ca-root-nss**
+
 
 -----------------------------
-Chain for the local webserver
+Chain for the Local Webserver
 -----------------------------
+
 
 This following **chain** we create is basically the same as the previous chain for Nextcloud server.
 
@@ -254,8 +315,16 @@ Create a chain for your server **CA - intermediate CA - server cert.**.
 Once done go through the following points:
 
    * Download the server.p12 archive.
-   * Upload it to the server **/etc/ssl/localcerts** or where ever you want them
-   * Extract the archive and create the certificate with the next commands
+   * Upload it to the server and extract the archive
+   * Use the following commands to store them in **/etc/ssl/localcerts** and **/etc/ssl/private**
+
+::
+
+   openssl pkcs12 -in server.p12 -nodes -out server.key -nocerts
+   openssl pkcs12 -in server.p12 -clcerts -nokeys -out server.pem
+   cp server.pem server.crt
+
+Or if you want to use a single file:
 
 ::
 
@@ -267,5 +336,4 @@ Once done go through the following points:
    * Download the intermediate CA
    * Install it in your browser
    * Head to the webservers page and be presented with a verified certificate.
-
 
