@@ -78,6 +78,9 @@ OpenVPN/SSL Site-to-Site
 ------------------------
 :doc:`how-tos/sslvpn_s2s`
 
+OpenConnect Client
+------------------
+:doc:`how-tos/openconnect`
 
 Zerotier
 --------
