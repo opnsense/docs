@@ -39,9 +39,7 @@ Look out for errors like
 
 ``
 Reason: unable to get local issuer certificate
-
-To trust this server in future, perhaps add this to your command line:
---servercert sha256:9f97a3395d18093a14f0d8e768dabee231af34d9ba35432dfe838d58dd633333
+To trust this server in future, perhaps add this to your command line: --servercert sha256:9f97a3395d18093a14f0d8e768dabee231af34d9ba35432dfe838d58dd633333
 ``
     
 Now the field **Certificate Hash** comes into play, so please insert the string above without
