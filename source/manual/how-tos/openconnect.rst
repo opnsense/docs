@@ -6,7 +6,7 @@ OpenConnect Setup
 Introduction
 ------------
 
-OpenConnect is an SSL VPN client initially created to support Cisco's AnyConnect SSL VPN.
+OpenConnect is a SSL VPN client initially created to support Cisco's AnyConnect SSL VPN.
 It has since been ported to support the Juniper SSL VPN which is now known as Pulse Connect Secure.
 Palo Altos Global Protect will also be supported in future and of course the own OpenConnect Server.
 
