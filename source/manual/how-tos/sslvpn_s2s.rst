@@ -310,6 +310,13 @@ The Connection Status can be viewed under **VPN->OpenVPN->Connection Status**
 .. image:: images/sslvpn_connection_status.png
    :scale: 100%
 
+
+.. Note::
+
+   If you want to allow the VPN server network to connect to the VPN client network,
+   you have to go in **Firewall->NAT->Outbound** menu, set to **Hybrid outbound NAT rule generation**
+   and add a rule with OpenVPN interface.
+
 ------------------------------
 Step 5 - Client Firewall Rules
 ------------------------------
