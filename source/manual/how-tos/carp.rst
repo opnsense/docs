@@ -69,7 +69,7 @@ Setup interfaces & basic firewall rules
 .. Warning::
     Make sure you are using the same drivers on both machines so that
     e.g. WAN is igb0 on both sides. Also Assigment needs to be identical.
-    Via **Interfaces->Overview you can check if e.g. DMZ is opt1 on 
+    Via **Interfaces->Overview** you can check if e.g. DMZ is opt1 on 
     both machines. When the Assigments are mixed you will have mixed 
     Master and Backup IPs on both machines.
 
