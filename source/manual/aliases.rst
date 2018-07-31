@@ -36,13 +36,13 @@ Sample
   Lets say we want to create an alias table for **www.youtube.com**
 
   .. image:: images/aliases_host.png
-      :scale: 100%
+      :width: 100%
 
 **Apply changes** and look at the content of our newly created pf table.
 Go to **Firewall->Diagnostics->pfTables** and select our newly created youtube table.
 
 .. image:: images/pftable_youtube.png
-    :scale: 100%
+    :width: 100%
 
 As you can see there are multiple ip addresses for this domain.
 
@@ -73,12 +73,12 @@ GeoIP
 -----
 With GeoIP alias you can select one or more countries or whole continents to block
 or allow. Use the *toggle all* checkbox to select all countries within the given
-region. 
+region.
 
 This feature was reworked with 17.7.7 and supersedes the GeoIP blocking via IPS.
 
   .. image:: images/firewall_geoip_alias.png
-      :scale: 100%
+      :width: 100%
 
 --------------
 Import Feature
@@ -131,12 +131,12 @@ the ipsec server for a site to site tunnel connection:
 * 192.168.300.3
 
 .. image:: images/alias_remote_ipsec.png
-    :scale: 100%
+    :width: 100%
 
 We call our list remote_ipsec and update our firewall rules accordingly.
 
 .. image:: images/alias_firewall_rules.png
-    :scale: 100%
+    :width: 100%
 
 Notice the list icon to identify a rule with an alias (list).
 

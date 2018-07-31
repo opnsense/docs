@@ -3,7 +3,7 @@ Netflow Export & Analyses
 =========================
 
 .. image:: images/netflow_analyzer_insight.png
-   :scale: 100%
+   :width: 100%
 
 Netflow is a monitoring feature, invented by Cisco, it is implemented in the FreeBSD
 kernel with ng_netflow (Netgraph). Since Netgraph is a kernel implementation it
@@ -59,7 +59,7 @@ and multiple destinations including local capture for analysis by Insight (OPNse
 Netflow Analyzer).
 
 .. image:: images/netflow_exporter.png
-   :scale: 100%
+   :width: 100%
 
 --------------------------
 Netflow Analyzer - Insight

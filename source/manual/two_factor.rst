@@ -3,7 +3,7 @@ Two-factor authentication
 =========================
 
 .. image:: images/two_factor_authentication.png
-   :scale: 100%
+   :width: 100%
 
 Two-factor authentication also known as 2FA or 2-Step Verification is an authentication
 method that requires two components, such as a pin/password + a token.
@@ -27,7 +27,7 @@ has a default fallback to the local database. In case of 2FA for the GUI one nee
 to disable the fallback option to make sure no local user can gain access without 2FA.
 
 .. image:: images/auth_server_fallback.png
-   :scale: 100%
+   :width: 100%
 
 
 ----------------------------

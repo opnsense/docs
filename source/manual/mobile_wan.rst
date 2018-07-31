@@ -3,7 +3,7 @@ Mobile Networking
 =================
 
 .. image:: images/OPNsense_4G_new.png
-   :scale: 100%
+   :width: 100%
 
 OPNsense supports 3G and 4G (LTE) cellular modems as failsafe or primary WAN
 interface. Both USB and (mini)PCIe cards are supported.

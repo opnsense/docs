@@ -181,7 +181,7 @@ sites:
 * UDP Traffic on Port 4500 (NAT-T)
 
 .. image:: images/ipsec_wan_rules.png
-    :scale: 100%
+    :width: 100%
 
 .. Note::
 
@@ -191,7 +191,7 @@ To allow traffic passing to your LAN subnet you need to add a rule to the IPsec
 interface.
 
 .. image:: images/ipsec_ipsec_lan_rule.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------
 Step 1 - Phase 1 Site A
@@ -245,12 +245,12 @@ Advanced Options
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
+    :width: 100%
 
 Now you should see the following screen:
 
 .. image:: images/ipsec_s2s_vpn_p1a_4.png
-    :scale: 100%
+    :width: 100%
 
 
 -----------------------
@@ -259,12 +259,12 @@ Step 2 - Phase 2 Site A
 Press the button that says '+ Show 0 Phase-2 entries'
 
 .. image:: images/ipsec_s2s_vpn_p1a_show_p2.png
-    :scale: 100%
+    :width: 100%
 
 You will see an empty list:
 
 .. image:: images/ipsec_s2s_vpn_p1a_p2_empty.png
-    :scale: 100%
+    :width: 100%
 
 Now press the *+* at the right of this list to add a Phase 2 entry.
 
@@ -302,29 +302,29 @@ Phase 2 proposal (SA/Key Exchange)
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------------
 
 Enable IPsec for Site A, Select:
 
 .. image:: images/ipsec_s2s_vpn_p1a_enable.png
-    :scale: 100%
+    :width: 100%
 
 Save:
 
 .. image:: images/btn_save.png
-    :scale: 100%
+    :width: 100%
 
 And Apply changes:
 
 .. image:: images/ipsec_s2s_vpn_p1a_apply.png
-    :scale: 100%
+    :width: 100%
 
 ------------------
 
 .. image:: images/ipsec_s2s_vpn_p1a_success.png
-    :scale: 100%
+    :width: 100%
 
 **You are done configuring Site A.**
 
@@ -382,12 +382,12 @@ Advanced Options
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
+    :width: 100%
 
 Now you should see the following screen:
 
 .. image:: images/ipsec_s2s_vpn_p1b_4.png
-    :scale: 100%
+    :width: 100%
 
 
 -----------------------
@@ -401,7 +401,7 @@ Press the button that says '+ Show 0 Phase-2 entries'
 You will see an empty list:
 
 .. image:: images/ipsec_s2s_vpn_p1a_p2_empty.png
-    :scale: 100%
+    :width: 100%
 
 Now press the *+* at the right of this list to add a Phase 2 entry.
 
@@ -441,29 +441,29 @@ Phase 2 proposal (SA/Key Exchange)
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------------
 
 Enable IPsec for Site B, Select:
 
 .. image:: images/ipsec_s2s_vpn_p1a_enable.png
-    :scale: 100%
+    :width: 100%
 
 Save:
 
 .. image:: images/btn_save.png
-    :scale: 100%
+    :width: 100%
 
 And Apply changes:
 
 .. image:: images/ipsec_s2s_vpn_p1a_apply.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------------
 
 .. image:: images/ipsec_s2s_vpn_p1a_success.png
-    :scale: 100%
+    :width: 100%
 
 **You are done configuring Site B.**
 
@@ -477,7 +477,7 @@ Go to **VPN->IPsec->Status Overview** to see current status.
 Press on the **(i)** to see the details of the phase 2 tunnel(s), like this:
 
 .. image:: images/ipsec_status.png
-    :scale: 100%
+    :width: 100%
 
 .. Note::
 
@@ -491,7 +491,7 @@ cross-cable between the WAN ports.
 
 .. image:: images/OPN20322R_870px.png
    :target: https://www.deciso.com/product-catalog/opn20322r/
-   :scale: 100%
+   :width: 100%
 
 To route traffic the WAN interfaces have been configured to use a /16 segment and
 they are each others default gateway. Other than that the sample is equal to this

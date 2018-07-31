@@ -40,11 +40,11 @@ If you need to enter a PIN number then click on **Advanced Options**
 Click **Save** to apply the settings.
 
 .. image:: images/4g_configure_ppp.png
-   :scale: 100%
+   :width: 100%
 
 
 .. image:: images/ppp_celular_configured.png
-   :scale: 100%
+   :width: 100%
 
 ---------------------------------
 Step 2 - Assign the WAN interface
@@ -60,7 +60,7 @@ If everything went fine then your are all setup and the default gateway will be
 the one of you cellular connection.
 
 .. image:: images/Interface_assignment_4g.png
-   :scale: 100%
+   :width: 100%
 
 -------------------------
 Step 3 - Trouble shooting

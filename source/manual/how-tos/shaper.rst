@@ -176,7 +176,7 @@ Now press |apply| to activate the traffic shaping rules.
 *Screenshot Rules*
 
 .. image:: images/shaping_rules_s1.png
-    :scale: 100%
+    :width: 100%
 
 .. |apply| image:: images/applybtn.png
 
@@ -308,7 +308,7 @@ Now press |apply| to activate the traffic shaping rules.
 *Screenshot Rules*
 
 .. image:: images/shaping_rules_s2.png
-    :scale: 100%
+    :width: 100%
 
 ------------------------
 Limit bandwidth per user
@@ -392,7 +392,7 @@ Now press |apply| to activate the traffic shaping rules.
 *Screenshot Rules*
 
 .. image:: images/shaping_rules_s3.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------
 Prioritize using Queues
@@ -522,7 +522,7 @@ Now press |apply| to activate the traffic shaping rules.
 *Screenshot Rules*
 
 .. image:: images/shaping_rules_s4.png
-  :scale: 100%
+  :width: 100%
 
 --------------------------------------
 Multi Interface shaping for a GuestNet

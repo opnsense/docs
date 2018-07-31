@@ -6,7 +6,7 @@ Guest Networks are widely used to allow guests controlled internet access at
 hotels, RV Parks or businesses.
 
 .. image:: images/opnsense_hotspot_controller.png
-    :scale: 100%
+    :width: 100%
 
 .. Note::
     For the example we expect the GUESTNET interface to be connected with your
@@ -190,7 +190,7 @@ Click **Save** and then **Apply changes**
 Your rules should look similar to the screenshot below:
 
 .. image:: images/guestnet_fwrules.png
-    :scale: 100%
+    :width: 100%
 
 
 ------------------------------
@@ -232,13 +232,13 @@ Lets create a custom landing page, to do so click on the tab **Templates** and
 click on the download icon in the lower right corner ( |download| ).
 
 .. image:: images/template_download.png
-    :scale: 100%
+    :width: 100%
 
 Now download the default template, we will use this to create our own.
 Unpack the template zip file, you should have something similar to this:
 
 .. image:: images/template_filelisting.png
-    :scale: 100%
+    :width: 100%
 
 Most files of the template can be modified, but some are default and may not be
 changes. Upon upload any changes to the files listed in **exclude.list** will be
@@ -247,7 +247,7 @@ ignored. Currently these include the bootstrap java scripting and some fonts.
 With the captive portal enabled the default screen looks like:
 
 .. image:: images/default_login_no_authenticator.png
-    :scale: 100%
+    :width: 100%
 
 Lets change this default with a new logo and a welcome message, to this:
 
@@ -305,10 +305,10 @@ Enter a **Template Name**, for this example we use **Company**.
 Hit Upload ( |upload| )
 
 .. |download| image:: images/btn_download.png
-      :scale: 100%
+      :width: 100%
 
 .. |upload| image:: images/btn_upload.png
-      :scale: 100%
+      :width: 100%
 
 To enable the captive portal on the GUESTNET interface just click on **Apply**.
 
@@ -393,7 +393,7 @@ After testing your result should be similar to this (if your internet connection
 has sufficient bandwidth).
 
  .. image:: images/cp-traffic-shaping.png
-    :scale: 100%
+    :width: 100%
 
 .. Note::
     Keep in mind we have only one connected client in this test, so all reserved
@@ -431,7 +431,7 @@ Click on **Create Vouchers** in the lower right corner of the form.
 Lets create 1 Day vouchers for our guests:
 
 .. image:: images/create_vouchers.png
-    :scale: 100%
+    :width: 100%
 
 
 Enter the Validity (1 day), the number of Vouchers and a Groupname (Wifi day pass f.i.).
@@ -474,7 +474,7 @@ the cvs data with word, open office or any other dtp/text editor.
 Create something like this:
 
 .. image:: images/cp_royalhotel_voucher.png
-    :scale: 100%
+    :width: 100%
 
 You can select a database to and remove it entirely. This way you can
 create a voucher database for the arrival date of guest per guest group
@@ -501,7 +501,7 @@ When done click **Save changes** and the **Apply** to apply the new settings.
 Now users will see the login form as part of your template:
 
 .. image:: images/cp_voucher_login.png
-    :scale: 100%
+    :width: 100%
 
 --------------
 Check Sessions
@@ -510,7 +510,7 @@ To check the active sessions go to **Services->Captive Portal->Sessions**
 Our current session looks like this:
 
 .. image:: images/cp_active_sessions.png
-    :scale: 100%
+    :width: 100%
 
 You can drop an active session by clicking on the trashcan.
 
@@ -527,7 +527,7 @@ page of the captive portal (**Services->Captive Protal->Vouchers**) and select
 the correct database (Wifi day pass in our example).
 
 .. image:: images/cp_active_vouchers.png
-    :scale: 100%
+    :width: 100%
 
 .. Note::
     The state valid means it is activated but still valid.
@@ -583,7 +583,7 @@ like this (shown with a bit of context):
       window.open("session_popup.html","Session Status & Logout","width=400, height=400");
 
 .. image:: images/captiveportal_popup.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------------
 Advanced - CLI Session Status
@@ -601,4 +601,4 @@ Type the following on the cli prompt to do so (for zone id 0):
 The output will be something similar to this:
 
 .. image:: images/cli_list_captiveportalsessions.png
-    :scale: 100%
+    :width: 100%

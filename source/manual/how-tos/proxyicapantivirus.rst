@@ -17,7 +17,7 @@ support ICAP will work just as well.
     forms of infection such as through emails or usb stick.
 
 .. image:: images/SPE_home.png
-    :scale: 100%
+    :width: 100%
 
 Step 1 - Setup the Proxy
 ------------------------
@@ -36,7 +36,7 @@ full installation and configuration instructions.
 We installed the Engine for Web Proxy purpose and enabled ICAP with its default settings.
 
 .. image:: images/SPE_ICAP.png
-    :scale: 100%
+    :width: 100%
 
 Step 4 - Connect the Engine
 ---------------------------

@@ -3,7 +3,7 @@ Setup SSL VPN Road Warrior
 ==========================
 
 .. image:: images/sslvpn_image_new.png
-   :scale: 100%
+   :width: 100%
 
 Road Warriors are remote users who need secure access to the companies infrastructure.
 OPNsense uses OpenVPN for its SSL VPN Road Warrior setup and offers OTP (One Time Password)
@@ -107,7 +107,7 @@ and click on **Add server** in the top right corner of the form.
   configuration. Try it by typing *Ac...* and see for yourself:
 
   .. image:: images/qs-access_server.png
-     :scale: 100%
+     :width: 100%
      :align: center
 
 Now first change the **Type** to **Local + Timebased One time Password**
@@ -207,7 +207,7 @@ For the first step we enter:
 
 Click **Save** and you will be redirected to the User page.
 Now we will activate your newly created seed with your Google Authenticator
-compatible app. To do so click in the **Click to unhide** button in the 
+compatible app. To do so click in the **Click to unhide** button in the
 **OTP QR code** row and you will get a QR code to scan with your smartphone.
 See also: :doc:`/manual/how-tos/two_factor`
 
@@ -280,7 +280,7 @@ For our example will use the following settings:
 Click **Save** to add the new server.
 
 .. image:: images/sslvpn_server.png
-   :scale: 100%
+   :width: 100%
 
 ----------------------
 
@@ -293,14 +293,14 @@ port on the WAN interface. When using multiple servers we need to open up each p
 For our configuration we only use one server accessible on udp port 1194.
 
 .. image:: images/sslvpn_wan_rule.png
-    :scale: 100%
+    :width: 100%
 
 Next we also need to allow traffic from the VPN clients to our LAN interface.
 For our example we will allow client to access anything on our local area network,
 however you may decide just to allow traffic to one or more servers.
 
 .. image:: images/sslvpn_openvpn_rule.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------------
 
@@ -324,25 +324,25 @@ to open the file with search and select Viscosity.
 Some sample screenshots (Mac OSX):
 
 .. image:: images/viscosity_files.png
-   :scale: 100%
+   :width: 100%
 
 
 **Import Configuration**
 
 .. image:: images/viscosity_imported.png
-   :scale: 100%
+   :width: 100%
 
 **Connect & login**
 
 In the password field enter your TOTP token first followed by your password.
 
 .. image:: images/viscosity_login.png
-   :scale: 100%
+   :width: 100%
 
 **Connected**
 
 .. image:: images/viscosity_connected.png
-   :scale: 100%
+   :width: 100%
 
 -----------------------------
 
@@ -400,4 +400,4 @@ exactly the same as before, the only difference is that each user requires a Use
 and therefore their own configuration.
 
 .. image:: images/sslvpn_client_certificate.png
-   :scale: 100%
+   :width: 100%

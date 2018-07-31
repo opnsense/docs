@@ -21,7 +21,7 @@ GUI Layout & Main Components
 The GUI consists out of the following main components:
 
 .. image:: images/gui_layout.png
-  :scale: 100%
+  :width: 100%
 
 
 Logo & Link to Lobby

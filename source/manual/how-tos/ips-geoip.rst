@@ -14,7 +14,7 @@ Prerequisites
   **System->Firmware: Fetch updates**
 
 .. image:: images/firmware.png
-    :scale: 100%
+    :width: 100%
 
 * Minimum Advisable Memory is 2 Gigabyte and sufficient free disk space for
   logging (>10GB advisable).
@@ -23,7 +23,7 @@ Prerequisites
   Under **Interface-Settings**
 
 .. image:: images/disable_offloading.png
-    :scale: 100%
+    :width: 100%
 
 .. warning::
 
@@ -51,7 +51,7 @@ Select |add| to add a new rule.
 Select Country:
 
 .. image:: images/ips_rule_add_geoip.png
-    :scale: 100%
+    :width: 100%
 
 We selected **Netherlands(not)** as this server needs to be accessible within
 The Netherlands, this will drop all other traffic in both directions.
@@ -59,12 +59,12 @@ The Netherlands, this will drop all other traffic in both directions.
 Select the Action (Alert or Drop):
 
 .. image:: images/ips_action.png
-    :scale: 100%
+    :width: 100%
 
 Add a description:
 
 .. image:: images/ips_description_country.png
-    :scale: 100%
+    :width: 100%
 
 
 And click **Save changes** |save|
@@ -79,7 +79,7 @@ detection system too run on. For our example we will use the WAN interface, as
 that will most likely be you connection with the public Internet.
 
 ..  image:: images/idps.png
-    :scale: 100%
+    :width: 100%
 
 -------------------
 Apply configuration
@@ -87,13 +87,13 @@ Apply configuration
 If this is the first GeoIP rule you add then you need to **Download & Update Rules**
 
 .. image:: images/downloadbtn.png
-    :scale: 100%
+    :width: 100%
 
 Then apply the configuration by pressing the **Apply** button at the bottom of
 the form.
 
 .. image:: images/applybtn.png
-    :scale: 100%
+    :width: 100%
 
 
 ------------
@@ -102,7 +102,7 @@ Sample Alert
 See a sample of an alert message below.
 
 .. image:: images/ips_geoip_alert.png
-    :scale: 100%
+    :width: 100%
 
 
 .. |save| image:: images/ips_save.png

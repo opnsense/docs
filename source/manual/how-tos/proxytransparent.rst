@@ -37,7 +37,7 @@ A simple way to add the NAT/Firewall Rule is to click on the **(i)** icon on the
 left of the **Enable Transparent HTTP proxy** option and click on **add a new firewall rule**.
 
 .. image:: images/screenshot_enable_transparent_http.png
-    :scale: 100%
+    :width: 100%
 
 **For reference, these are the default settings:**
 
@@ -65,7 +65,7 @@ Authority. Go to **System->Trust->Authorities** or use the search box to get the
 fast.
 
 .. image:: images/search_ca.png
-    :scale: 100%
+    :width: 100%
 
 Click on **add or import ca** in the upper right corner of the screen to create
 a new CA.
@@ -121,7 +121,7 @@ A simple way to add the NAT/Firewall Rule is to click on the **(i)** icon on the
 left of the **Enable SSL mode** option and click on **add a new firewall rule**.
 
 .. image:: images/screenshot_enable_transparent_http.png
-    :scale: 100%
+    :width: 100%
 
 **For reference, these are the default settings:**
 
@@ -151,13 +151,13 @@ certificate for each page manually, but for some pages that may not work well un
 not bumped.
 
 .. image:: images/export_CA_cert.png
-    :scale: 100%
+    :width: 100%
 
 Import and change trust settings on your favorite OS. Per example on OSX it looks
 like this:
 
 .. image:: images/Trust_Settings_OSX.png
-    :scale: 100%
+    :width: 100%
 
 .. Warning::
     Again be very careful with this as your system will accept any page signed with
@@ -171,7 +171,7 @@ like this:
     connection against man in the middle attacks otherwise trusted certificates.
     If you want to make the connection work again, you have to whitelist the following
     Google domains in your "No Bump Hosts" settings.
-    
+
     * Your local Google domain (for example: google.at for Austria, google.de for Germany, …)
     * .google.com
     * .googleapis.com

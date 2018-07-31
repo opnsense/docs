@@ -7,7 +7,7 @@ extends the private network into the public network such as internet. With a VPN
 you can create large secure networks that can act as one private network.
 
 .. image:: images/Virtual_Private_Network_overview.png
-    :scale: 100%
+    :width: 100%
 
 (picture from `wikipedia <https://en.wikipedia.org/wiki/File:Virtual_Private_Network_overview.svg>`__)
 
@@ -29,7 +29,7 @@ well known IPsec as well as older (now considered insecure) legacy options such 
 L2TP and PPTP.
 
 .. image:: images/vpn.png
-    :scale: 100%
+    :width: 100%
 
 .. Note::
 

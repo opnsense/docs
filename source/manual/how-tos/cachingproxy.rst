@@ -3,7 +3,7 @@ Setup Caching Proxy
 ===================
 
 .. image:: images/proxy_basics.png
-    :scale: 100%
+    :width: 100%
 
 ----------------
 Enable / Disable
@@ -36,7 +36,7 @@ To enable caching click on the arrow next to the **General Proxy Settings** to
 see the dropdown menu and click on **Local Cache Settings**.
 
 .. image:: images/proxy_cache.png
-    :scale: 100%
+    :width: 100%
 
 Check the **Enable local cache** and click **Apply**.
 
@@ -137,7 +137,7 @@ Fill in:
 Looks like (screenshots of version 16.1.4):
 
 .. image:: images/proxy_blacklist.png
-    :scale: 100%
+    :width: 100%
 
 **Save changes**
 
@@ -177,7 +177,7 @@ And one more rule to block HTTPS access:
 **Save** & **Apply changes**
 
 .. image:: images/proxy_firewall.png
-    :scale: 100%
+    :width: 100%
 
 -------------------------
 Configure Browser/Firefox
@@ -186,7 +186,7 @@ To configure you browser for use with the proxy, just go to your network setting
 and configure a proxy like this in firefox:
 
 .. image:: images/proxy_firefox.png
-    :scale: 100%
+    :width: 100%
 
 
 For a set-for-step guide on full category based web filtering see :doc:`proxywebfilter`.

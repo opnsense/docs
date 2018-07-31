@@ -53,7 +53,7 @@ Set the update frequency to 1 for each day.
 Press **Save** and then **Apply changes**.
 
 .. image:: images/spamhaus_drop_edrop.png
-    :scale: 100%
+    :width: 100%
 
 ---------------------------------------
 Step 2 - Firewall Rules Inbound Traffic
@@ -87,7 +87,7 @@ Enter the following configuration and leave all other parameters on default valu
 =================== =============== =============================================
 
 .. image:: images/spamhaus_wan_rules.png
-    :scale: 100%
+    :width: 100%
 
 
 **Save**
@@ -123,7 +123,7 @@ lower right corner.
 **Save** and **Apply changes**
 
 .. image:: images/spamhaus_lan.png
-    :scale: 100%
+    :width: 100%
 
 **DONE**
 
@@ -134,4 +134,4 @@ To list the ip addresses that are currently in the DROP and EDROP lists go to
 **Firewall->Diagnostics->pfTables** and select the list you want to see:
 
 .. image:: images/spamhaus_pftable.png
-    :scale: 100%
+    :width: 100%

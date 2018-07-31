@@ -50,7 +50,7 @@ Enter the following information:
    something similar to will show up:
 
    .. image:: images/ldap_selectcontainer.png
-      :scale: 100%
+      :width: 100%
 
 .. TIP::
    The **Extended Query** can be used to select users who are member of a specific
@@ -61,7 +61,7 @@ Enter the following information:
    **Members**.
 
    .. image:: images/ldap_mygroup_properties.png
-      :scale: 100%
+      :width: 100%
 
 
 Step 2 - Test
@@ -71,7 +71,7 @@ and select your LDAP server and enter a valid username + password. Click on
 **Test** and if everything is setup correctly it will show:
 
 .. image:: images/ldap_testok.png
-   :scale: 100%
+   :width: 100%
 
 .. Note::
   When limited to just one group, the group name will not be shown in the listing.
@@ -79,7 +79,7 @@ and select your LDAP server and enter a valid username + password. Click on
 If not (or your entered invalid credentials) it shows:
 
 .. image:: images/ldap_testfail.png
-   :scale: 100%
+   :width: 100%
 
 Step 3 - Import Users
 ---------------------
@@ -88,7 +88,7 @@ to import the users into the local user manager. Go to **System->Access->Users**
 you will see a cloud import icon at the lower right corner of the form.
 
 .. image:: images/user_cloudimport.png
-   :scale: 100%
+   :width: 100%
 
 Click on the cloud import icon to start importing users.
 
@@ -105,7 +105,7 @@ notice the difference as the **User Distinguished name** will be shown from the
 LDAP server, just like this:
 
 .. image:: images/user_ldap_distinguishedname.png
-    :scale: 100%
+    :width: 100%
 
 .. TIP::
    See :doc:`user-local` for more information on User, Groups and privileges.
@@ -122,4 +122,4 @@ Go to **System->Access->Settings** and change the Authentication Server from
 The test result should look like this:
 
 .. image:: images/user_testresult_ldap.png
-   :scale: 80%
+   :width: 80%

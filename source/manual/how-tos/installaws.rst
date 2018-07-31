@@ -2,7 +2,7 @@
 Installing OPNsense AWS image
 =============================
 .. image:: images/amazon-web-services.png
-    :scale: 100%
+    :width: 100%
 
 To apply for access to the OPNsense Amazon AWS EC2 cloud image, you need:
 
@@ -24,7 +24,7 @@ Step 2 - Select Type
 Choose an instance type
 
 .. image:: images/aws_launch_new_image.png
-    :scale: 100%
+    :width: 100%
 
 ---------------------------------
 Step 3 - Configure security group
@@ -32,7 +32,7 @@ Step 3 - Configure security group
 To configure security group, make sure you allow https access from your own network.
 
 .. image:: images/aws_configure_security_group.png
-    :scale: 100%
+    :width: 100%
 
 
 -------------------------
@@ -40,7 +40,7 @@ Step 4 - Configure a disk
 -------------------------
 
 .. image:: images/aws_choose_disc.png
-    :scale: 100%
+    :width: 100%
 
 
 -----------------------------
@@ -48,7 +48,7 @@ Step 5 - Review your settings
 -----------------------------
 
 .. image:: images/aws_review_settings.png
-    :scale: 100%
+    :width: 100%
 
 --------------------
 Step 6 - SSH keypair
@@ -56,14 +56,14 @@ Step 6 - SSH keypair
 Select ssh keypair or skip, the ssh key isn’t used for OPNsense, ssh is disabled by default.
 
 .. image:: images/aws_ssh_keypair.png
-    :scale: 100%
+    :width: 100%
 
 ---------------------------
 Step 7 - Review status page
 ---------------------------
 
 .. image:: images/aws_status.png
-    :scale: 100%
+    :width: 100%
 
 ----------------------
 Step 8 - AWS instances
@@ -71,7 +71,7 @@ Step 8 - AWS instances
 Go to your AWS instances
 
 .. image:: images/aws_instances.png
-    :scale: 100%
+    :width: 100%
 
 Select the image, go to “image settings” then “get system log” to obtain the
 initial password
@@ -82,14 +82,14 @@ Step 9 - Initial root password
 Copy your initial root password (line ** set initial….)
 
 .. image:: images/aws_capture_initial_password.png
-    :scale: 100%
+    :width: 100%
 
 --------------------------------
 Step 10 - Search current address
 --------------------------------
 
 .. image:: images/aws_search_current_ip.png
-    :scale: 100%
+    :width: 100%
 
 
 Login to OPNsense using the address provided.

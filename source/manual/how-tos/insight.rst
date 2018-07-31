@@ -12,7 +12,7 @@ Insight is a fully integrated part of OPNsense. Its User Interface is simple yet
 powerful.
 
 .. image:: images/insight_gui.png
-   :scale: 100%
+   :width: 100%
 
 
 Insight offers a full set of analysis tools, ranging from a graphical overview to
@@ -40,17 +40,17 @@ to compare usage with different interfaces.
 **Stacked**
 
 .. image:: images/stacked_view.png
-   :scale: 100%
+   :width: 100%
 
 **Stream**
 
 .. image:: images/stream_view.png
-   :scale: 100%
+   :width: 100%
 
 **Expanded**
 
 .. image:: images/expanded_view.png
-   :scale: 100%
+   :width: 100%
 
 Interfaces
 ----------
@@ -74,10 +74,10 @@ view by clicking or double clicking on one of the shown port names/numbers.
 Clicking on a piece of the pie will open a detailed view for further analysis.
 
 .. image:: images/pie_piece.png
-   :scale: 100%
+   :width: 100%
 
 .. image:: images/pie_details.png
-   :scale: 100%
+   :width: 100%
 
 
 IP Addresses Pie Chart
@@ -103,14 +103,14 @@ click on the tab **Details**.
 When opening the details view by clicking on the tab one can make a new query.
 
 .. image:: images/insight_details_view.png
-   :scale: 100%
+   :width: 100%
 
 After selecting a valid date range (form/to) and interface one can further limit
 the output by filtering on port or ip address. Select the refresh icon to update
 the detailed output. Leave Port and Address empty for a full detailed listing.
 
 .. image:: images/insight_full_details.png
-   :scale: 100%
+   :width: 100%
 
 
 -----------
@@ -120,7 +120,7 @@ The **Export** view allows you to export the data for further analysis in your f
 spreadsheet or other data analysis application.
 
 .. image:: images/insight_export_view.png
-   :scale: 100%
+   :width: 100%
 
 To export data, select a **Collection** :
 
@@ -134,4 +134,4 @@ Select the **Resolution** in seconds (300,3600,86400)
 Then select a date range (from/to) and click the **export** button.
 
 .. image:: images/insight_export.png
-   :scale: 100%
+   :width: 100%

@@ -15,7 +15,7 @@ will be used for the internal network and 172.8.0.0/24 will be used to
 route our traffic to the internet.
 
 .. image:: ./images/900px-Carp_setup_example.png
-  :scale: 100%
+  :width: 100%
 
 When using CARP ( `FreeBSD handbook on CARP <https://www.freebsd.org/doc/handbook/carp.html>`__ ), all
 fail-safe interfaces should have a dedicated ip address which will be

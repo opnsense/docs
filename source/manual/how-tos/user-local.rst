@@ -3,7 +3,7 @@ Creating Users & Groups
 =======================
 
 .. image:: images/usermanager_groups.png
-   :scale: 100%
+   :width: 100%
 
 With the local user manager of OPNsense one can add users and groups and define
 the privileges for granting access to certain parts of the GUI (Web Configurator).
@@ -47,6 +47,6 @@ The search bottom at the top of this form can be used to quickly find the right
 page.
 
 .. image:: images/user_privileges.png
-   :scale: 100%
+   :width: 100%
 
 After making the right selection click on **Save** to store the new settings.

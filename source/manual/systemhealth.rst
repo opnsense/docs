@@ -3,7 +3,7 @@ System Health & Round Robin Data
 ================================
 
 .. image:: images/systemhealth_sample.png
-    :scale: 100%
+    :width: 100%
 
 System Health is a dynamic view on RRD data gathered by the system. It allows you
 to dive into different statistics that show the overall health and performance of
@@ -41,7 +41,7 @@ Please see the screenshot below for all element of the system health module.
 Each element will be explained in the next chapters.
 
 .. image:: images/systemhealth_gui.png
-  :scale: 100%
+  :width: 100%
 
 Toggle menu collapse
 --------------------
@@ -68,7 +68,7 @@ this is especially useful for traffic flows where you can plot ingoing and outgo
 in different directions.
 
 .. image:: images/systemhealth_inverse.png
-    :scale: 100%
+    :width: 100%
 
 Resolution
 ----------
@@ -94,7 +94,7 @@ and show you the current detail level in this area.
 Label filter
 ------------
 .. image:: images/systemhealth_labelfilter.png
-  :scale: 100%
+  :width: 100%
 
 The label filter can be used to filer out data you do not want to see. Click once
 to disable or double click to select only this set.
@@ -102,13 +102,13 @@ to disable or double click to select only this set.
 A nice sample can be seen here, where the *processes* obscure all other data.
 
 .. image:: images/systemhealth_obscureddata.png
-  :scale: 100%
+  :width: 100%
 
 Just click once on *processes* to hide this data set, notice that the scales will
 adapt as well.
 
 .. image:: images/systemhealth_filtered.png
-  :scale: 100%
+  :width: 100%
 
 Main graph area
 ---------------
@@ -131,13 +131,13 @@ selected area.
 A sample selection:
 
 .. image:: images/systemhealt_selection.png
-  :scale: 100%
+  :width: 100%
 
 
 And the result:
 
 .. image:: images/systemhealth_zoomed.png
-  :scale: 100%
+  :width: 100%
 
 Min/max/average table
 ---------------------
@@ -155,4 +155,4 @@ values and export the data to as comma separated file (.CSV).
 The exported dataset can be used for your own reporting.
 
 .. image:: images/systemhealth_excel.png
-    :scale: 100%
+    :width: 100%

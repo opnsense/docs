@@ -368,7 +368,7 @@ Minimum installation actions
 **Enable RAM disk manually**
 
 .. image:: ./images/Screenshot_Use_RAMdisks.png
-   :scale: 100%
+   :width: 100%
 
 Then via console, check your /etc/fstab and make sure your primary
 partition has **rw,noatime** instead of just **rw**.
@@ -410,4 +410,4 @@ The other method to upgrade the system is via console option **12) Upgrade from 
 An update can be done through the GUI via **System⇒Firmware⇒Updates**.
 
 .. image:: ./images/firmware-update.png
-   :scale: 100%
+   :width: 100%

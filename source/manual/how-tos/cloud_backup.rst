@@ -101,7 +101,7 @@ Now we can put it all together, login to your OPNsense firewall and go
 to the backup feature (default : https://192.168.1.1/diag_backup.php )
 
 .. image:: ./images/600px-Google_Drive_Backup_screenshot.png
-  :scale: 100%
+  :width: 100%
 
 On the bottom of the page are the options for the Google Drive backup,
 enable the feature and fill in the parameters. Email address is acquired

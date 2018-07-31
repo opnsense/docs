@@ -54,7 +54,7 @@ The URL of the full compressed UT1 category based list is:
   ftp://ftp.ut-capitole.fr/pub/reseau/cache/squidguard_contrib/blacklists.tar.gz
 
 .. image:: images/proxy_ut1.png
-    :scale: 100%
+    :width: 100%
 
 Press **Save Changes**.
 
@@ -72,13 +72,13 @@ to the description of the list. This will open the edit window again, but now yo
 will see all available categories extracted from the list.
 
 .. image:: images/proxy_categories.png
-    :scale: 100%
+    :width: 100%
 
 For our example we will filter ads and adult content. The easiest way to do so is
 clear the list and select the following from the drop down list:
 
 .. image:: images/proxy_catgegory.png
-    :scale: 100%
+    :width: 100%
 
 Now **Save changes** and press **Download ACLs** again to download and reconstruct
 the list with only the selected categories. This will take roughly the same amount
@@ -128,4 +128,4 @@ And one more rule to block HTTPS access:
 **Save** & **Apply changes**
 
 .. image:: images/proxy_firewall.png
-    :scale: 100%
+    :width: 100%

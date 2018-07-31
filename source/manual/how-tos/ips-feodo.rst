@@ -17,7 +17,7 @@ Prerequisites
   **System->Firmware: Fetch updates**
 
 .. image:: images/firmware.png
-    :scale: 100%
+    :width: 100%
 
 * Minimum Advisable Memory is 2 Gigabyte and sufficient free disk space for
   logging (>10GB advisable).
@@ -26,7 +26,7 @@ Prerequisites
   Under **Interface-Settings**
 
 .. image:: images/disable_offloading.png
-    :scale: 100%
+    :width: 100%
 
 .. warning::
 
@@ -48,7 +48,7 @@ detection system too run on. For our example we will use the WAN interface, as
 that will most likely be you connection with the public Internet.
 
 ..  image:: images/idps.png
-    :scale: 100%
+    :width: 100%
 
 -------------------
 Apply configuration
@@ -57,7 +57,7 @@ First apply the configuration by pressing the **Apply** button at the bottom of
 the form.
 
 .. image:: images/applybtn.png
-    :scale: 100%
+    :width: 100%
 
 ---------------
 Fetch Rule sets
@@ -66,12 +66,12 @@ For this example we will only fetch the abuse.ch SSL & Dodo Tracker rulesets.
 To do so: select Enabled after each one.
 
 .. image:: images/rulesets_enable.png
-    :scale: 100%
+    :width: 100%
 
 To download the rule sets press **Download & Update Rules**.
 
 .. image:: images/downloadbtn.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------
 Change default behavior
@@ -80,12 +80,12 @@ Now click on the info button   right after each rule and change Input Filter
 from none to drop actions.
 
 .. image:: images/changefilter.png
-    :scale: 100%
+    :width: 100%
 
 When done it should like this:
 
 .. image:: images/rulesdrop.png
-    :scale: 100%
+    :width: 100%
 
 ------------------------
 Apply fraud drop actions
@@ -93,7 +93,7 @@ Apply fraud drop actions
 Now press **Download & Update Rules** again to change the behavior to drop.
 
 .. image:: images/downloadbtn.png
-    :scale: 100%
+    :width: 100%
 
 ---------------
 Keep up to date
@@ -103,7 +103,7 @@ Now schedule a regular fetch to keep your server up to date.
 Click on schedule, a popup window will appear:
 
 .. image:: images/schedule.png
-    :scale: 100%
+    :width: 100%
 
 Select **enabled** and choose a time. For the example it is set to each day at 11:12.
 Select **Save changes** and wait until you have returned to the IDS screen.
@@ -122,4 +122,4 @@ Currently there is no test service available to check your block rules against,
 however here is a sample of an actual alert that has been blocked:
 
 .. image:: images/alerts.jpg
-    :scale: 100%
+    :width: 100%

@@ -212,7 +212,7 @@ For our example will use the following settings (leave everything else on its de
     Click **Save** to add the new server.
 
     .. image:: images/sslvpn_server.png
-       :scale: 100%
+       :width: 100%
 
 ----------------------
 
@@ -261,14 +261,14 @@ port on the WAN interface. When using multiple servers we need to open up each p
 For our configuration we only use one server accessible on UDP port 1194.
 
 .. image:: images/sslvpn_wan_rule.png
-    :scale: 100%
+    :width: 100%
 
 Next we also need to allow traffic from the VPN client network (192.168.2.0/24).
 For our example we will allow client to access anything on our local network(s),
 however you may decide just to allow traffic to one or more IP's.
 
 .. image:: images/sslvpn_openvpn_rule.png
-    :scale: 100%
+    :width: 100%
 
 **You are done configuring Site A.**
 
@@ -308,7 +308,7 @@ Now click on **Save**  to apply your settings.
 The Connection Status can be viewed under **VPN->OpenVPN->Connection Status**
 
 .. image:: images/sslvpn_connection_status.png
-   :scale: 100%
+   :width: 100%
 
 ------------------------------
 Step 5 - Client Firewall Rules
@@ -317,7 +317,7 @@ To allow traffic from the remote network just add a rule under **Firewall->Rules
 OpenVPN tab.
 
 .. image:: images/sslvpn_firewall_rule_client.png
-   :scale: 100%
+   :width: 100%
 
 
 **Done**

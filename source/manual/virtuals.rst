@@ -86,7 +86,7 @@ opnsense bootstrap is available for our
 Amazon AWS EC2 Cloud
 --------------------
 .. image:: how-tos/images/amazon-web-services.png
-    :scale: 100%
+    :width: 100%
 
 Installing OPNsense into the Amazon cloud can be a dounting task as no console is
 offered. As part of Deciso's support packages (see `OPNsense commercial Support

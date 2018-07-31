@@ -3,7 +3,7 @@
 ===================
 
 .. image:: images/eye_on_virus_new.jpg
-    :scale: 100%
+    :width: 100%
 
 **OPNsense** offers the industry standard ICAP to protect http and https
 connections against ransomware, trojans, viruses and other malware .

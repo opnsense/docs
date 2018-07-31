@@ -3,7 +3,7 @@ Open Source Initiative
 ======================
 
 .. image:: ./images/osi_standard_logo.png
-    :scale: 25%
+    :width: 25%
 
 -----------------------
 

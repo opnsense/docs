@@ -3,7 +3,7 @@
 =================
 
 .. image:: images/user_manager.png
-   :scale: 100%
+   :width: 100%
 
 The user manager of OPNsense allows for controlling access to the different
 part (pages) of the configurator as well as controlling access to particular

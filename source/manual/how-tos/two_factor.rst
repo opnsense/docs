@@ -6,7 +6,7 @@ using OPNsense and Google's Authenticator. All services of OPNsense can be used
 with this 2FA solution.
 
 .. image:: /manual/images/two_factor_authentication.png
-   :scale: 100%
+   :width: 100%
 
 .. Note::
 
@@ -52,12 +52,12 @@ To activate your new OTP seed on the Google Authenticator, first reopen the user
 you just created by clicking on the pencil icon.
 
 .. image:: images/OTP_seed.png
-   :scale: 100%
+   :width: 100%
 
 Now it will show a QR code:
 
 .. image:: images/otp_qr_code.png
-   :scale: 100%
+   :width: 100%
 
 .. Warning::
 
@@ -72,18 +72,18 @@ directly.
 In case of SailOTP the configuration works like this:
 
 .. image:: images/sailotp_menu.jpg
-   :scale: 100%
+   :width: 100%
 
 Pull down to open the application menu and choose the entry to add a new Token.
 
 .. image:: images/sailotp_scan_qr.jpg
-   :scale: 100%
+   :width: 100%
 
 In the next step, you have to scan the previously created QR code by clicking
 on the screen.
 
 .. image:: images/sailotp_scanresult.jpg
-   :scale: 100%
+   :width: 100%
 
 When the QR code is scanned, a new view will open where you can
 see the details of the result. This view can be used to check if the generated
@@ -122,7 +122,7 @@ is token and then password **in the same field**.
 Hit the test button and if all goes well you should see *successfully authenticated*.
 
 .. image:: images/system_access_tester.png
-   :scale: 100%
+   :width: 100%
 
 ------------------------
 Step 6 - Using the token
@@ -131,8 +131,8 @@ To use the token in any application/service that you have configured, just open
 the Google Authenticator and add the created token/key **before** your regular password.
 
 .. Warning::
-   Remember, you need to enter the token **before** or **after** you password 
-   (depending on your configuration)! And the password field should be used to enter 
+   Remember, you need to enter the token **before** or **after** you password
+   (depending on your configuration)! And the password field should be used to enter
    both token and your password, like: **Password:** 123456PASSWORD
 
 
@@ -140,4 +140,4 @@ The code will change every 30 seconds.
 Sample code:
 
 .. image:: images/google_token_sample.png
-   :scale: 25%
+   :width: 25%

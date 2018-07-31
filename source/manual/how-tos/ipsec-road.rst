@@ -83,13 +83,13 @@ To allow IPsec Tunnel Connections, the following should be allowed on WAN.
 * UDP Traffic on Port 4500 (NAT-T)
 
 .. image:: images/ipsec_wan_rules.png
-    :scale: 100%
+    :width: 100%
 
 To allow traffic passing to your LAN subnet you need to add a rule to the IPsec
 interface.
 
 .. image:: images/ipsec_ipsec_lan_rule.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------
 Step 1 - Mobile Clients
@@ -163,12 +163,12 @@ Advanced Options
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
+    :width: 100%
 
 Now you should see the following screen:
 
 .. image:: images/ipsec_road_vpn_p1a.png
-    :scale: 100%
+    :width: 100%
 
 
 -------------------------------
@@ -177,12 +177,12 @@ Step 3 - Phase 2 Mobile Clients
 Press the button that says '+ Show 0 Phase-2 entries'
 
 .. image:: images/ipsec_s2s_vpn_p1a_show_p2.png
-    :scale: 100%
+    :width: 100%
 
 You will see an empty list:
 
 .. image:: images/ipsec_s2s_vpn_p1a_p2_empty.png
-    :scale: 100%
+    :width: 100%
 
 Now press the *+* at the right of this list to add a Phase 2 entry.
 
@@ -212,29 +212,29 @@ Phase 2 proposal (SA/Key Exchange)
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------------
 
 Enable IPsec, Select:
 
 .. image:: images/ipsec_s2s_vpn_p1a_enable.png
-    :scale: 100%
+    :width: 100%
 
 Save:
 
 .. image:: images/btn_save.png
-    :scale: 100%
+    :width: 100%
 
 And Apply changes:
 
 .. image:: images/ipsec_s2s_vpn_p1a_apply.png
-    :scale: 100%
+    :width: 100%
 
 ------------------
 
 .. image:: images/ipsec_s2s_vpn_p1a_success.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------------
 
@@ -282,24 +282,24 @@ Add a new network by pressing the + in the lower left corner.
 Now select **VPN** and **Cisco IPSec**, give your connection a name and press **Create**.
 
 .. image:: images/osx-ipsec-new.png
-    :scale: 100%
+    :width: 100%
 
 Now enter the details for our connection:
 
 .. image:: images/osx-ipsec-conf1.png
-    :scale: 100%
+    :width: 100%
 
 Next press **Authentication Settings** to add the group name and pre-shared key.
 
 .. image:: images/osx-ipsec-conf2.png
-    :scale: 100%
+    :width: 100%
 
 Press **OK** to save these settings and then **Apply** to apply them.
 
 Now test the connection by selecting it from the list and hit **Connect**.
 
 .. image:: images/osx-ipsec-connected.png
-    :scale: 100%
+    :width: 100%
 
 **Done**
 

@@ -13,7 +13,7 @@ Prerequisites
   **System->Firmware: Fetch updates**
 
 .. image:: images/firmware.png
-    :scale: 100%
+    :width: 100%
 
 * Minimum Advisable Memory is 2 Gigabyte and sufficient free disk space for
   logging (>10GB advisable).
@@ -22,7 +22,7 @@ Prerequisites
   Under **Interface-Settings**
 
 .. image:: images/disable_offloading.png
-    :scale: 100%
+    :width: 100%
 
 .. warning::
 
@@ -58,13 +58,13 @@ next to the address : |lock|.
 Now you will see something similar to:
 
 .. image:: images/facebook_click.png
-    :scale: 100%
+    :width: 100%
 
 Click on the arrow ( **>** ) and then Select **More Information**
 Now open the certificate details and you will see something that looks like this:
 
 .. image:: images/certificate.png
-    :scale: 100%
+    :width: 100%
 
 Copy the SHA1 certificate fingerprint (A0:4E:AF:B3:48:C2:6B:15:A8:C1:AA:87:A3:33:CA:A3:CD:EE:C9:C9).
 
@@ -72,17 +72,17 @@ Copy the SHA1 certificate fingerprint (A0:4E:AF:B3:48:C2:6B:15:A8:C1:AA:87:A3:33
 Paste this into the new rule:
 
 .. image:: images/ips_rule_details.png
-    :scale: 100%
+    :width: 100%
 
 Select the Action (Alert or Drop):
 
 .. image:: images/ips_action.png
-    :scale: 100%
+    :width: 100%
 
 Add a description:
 
 .. image:: images/ips_description.png
-    :scale: 100%
+    :width: 100%
 
 
 And click **Save changes** |save|
@@ -97,7 +97,7 @@ detection system too run on. For our example we will use the WAN interface, as
 that will most likely be you connection with the public Internet.
 
 ..  image:: images/idps.png
-    :scale: 100%
+    :width: 100%
 
 -------------------
 Apply configuration
@@ -106,7 +106,7 @@ First apply the configuration by pressing the **Apply** button at the bottom of
 the form.
 
 .. image:: images/applybtn.png
-    :scale: 100%
+    :width: 100%
 
 ----------------------------
 Clear Browser Cache and test
@@ -115,7 +115,7 @@ Since your browser has cached the ssl certificate you will need to clear your
 cache first. After that you can test and will see the following in **Alerts**:
 
 .. image:: images/ips_facebook_alert.png
-    :scale: 100%
+    :width: 100%
 
 .. Note::
 

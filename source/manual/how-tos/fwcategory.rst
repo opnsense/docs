@@ -16,7 +16,7 @@ Then just add you category, if this is the first rule with a category no selecti
 options will be visible.
 
 .. image:: images/Rule_Category.png
-    :scale: 100%
+    :width: 100%
 
 ---------------------------------
 Firewall Rules Filter by category
@@ -27,7 +27,7 @@ becomes visible at the bottom of the table.
 If you click it is will look like this:
 
 .. image:: images/Filter_by_Category.png
-    :scale: 100%
+    :width: 100%
 
 If you have a large number of categories, then just start typing and in search
 box to make a quick selection.
@@ -38,7 +38,7 @@ Before Selection
 Take a look at this simple rule set before selecting our "My IP's" category.
 
 .. image:: images/Rules_Full.png
-    :scale: 100%
+    :width: 100%
 
 --------------------
  And after selection
@@ -46,7 +46,7 @@ Take a look at this simple rule set before selecting our "My IP's" category.
 Now when selecting our  test category it will look like this:
 
 .. image:: images/Filter_Category_Result.png
-    :scale: 100%
+    :width: 100%
 
 That is all there is to it to organize your rules without messing anything up.
 
@@ -59,4 +59,4 @@ This features makes it possible to select rules from more than one category.
 Example:
 
 .. image:: images/fw_category_multiselect.png
-    :scale: 100%
+    :width: 100%

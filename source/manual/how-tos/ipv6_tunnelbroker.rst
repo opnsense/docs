@@ -34,7 +34,7 @@ individual /64 slices to each network. Once configured, your tunnel settings
 should look like this:
 
 .. image:: images/tunnelbroker_setup.png
-  :scale: 100%
+  :width: 100%
 
 -----------------------
 Step 1 - Add GIF tunnel
@@ -61,7 +61,7 @@ Use the following settings and copy in the IPv4&6 addresses from your TunnelBrok
   Make sure to include the **/64** prefixes!
 
 .. image:: images/opnsense_add_gif.png
-   :scale: 100%
+   :width: 100%
 
 ----------------------------------------------------
 Step 2 - Configure the GIF tunnel as a new interface
@@ -88,7 +88,7 @@ have servers on LAN whereas most of my clients are on WLAN (Wireless LAN).
 I block all incoming to LAN and WLAN. Of course, outbound connections are fine.
 
 .. image:: images/tunnelbroker_fw_rules.png
-   :scale: 100%
+   :width: 100%
 
 --------------------------------
 Step 4 - Configure LAN interface
@@ -100,7 +100,7 @@ because it's the very same. You'll repeat the same process for further networks,
 but assigning the next interface a separate **/64** address.
 
 .. image:: images/tunnelbroker_configure_lan.png
-   :scale: 100%
+   :width: 100%
 
 -------------------------------
 Step 5 - Configure DHCPv6 SLAAC
@@ -114,7 +114,7 @@ Router Advertisements sub tab on that same page. Set the **Router Advertisements
 setting to *Assisted* and the **Router Priority** setting to *Normal*.
 
 .. image:: images/tunnelbroker_dhcpv6.png
-   :scale: 100%
+   :width: 100%
 
 Save your settings.
 
