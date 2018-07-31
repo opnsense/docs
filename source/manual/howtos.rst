@@ -7,26 +7,55 @@ How to's
    :titlesonly:
    :glob:
 
-
+   how-tos/accounting
+   how-tos/c-icap
+   how-tos/cachingproxy
+   how-tos/carp
+   how-tos/cellular
+   how-tos/clamav
    how-tos/cloud_backup
+   how-tos/dynamicrouting_howto
+   how-tos/dynamicrouting_ospf
+   how-tos/dynamicrouting_rip
+   how-tos/dynamicrouting_zebra
+   how-tos/edrop
+   how-tos/freeradius
    how-tos/fwcategory
-   how-tos/transparent_bridge
+   how-tos/guestnet
+   how-tos/haproxy
+   how-tos/haproxy_howtos
+   how-tos/insight
+   how-tos/installaws
    how-tos/ips-feodo
    how-tos/ips-geoip
    how-tos/ips-sslfingerprint
-   how-tos/cachingproxy
-   how-tos/proxytransparent
-   how-tos/proxywebfilter
-   how-tos/proxyicapantivirus
-   how-tos/carp
    how-tos/ipsec-road
    how-tos/ipsec-s2s
+   how-tos/ipsec-s2s-binat
+   how-tos/ipv6_dsl
+   how-tos/ipv6_tunnelbroker
+   how-tos/IPv6_ZenUK
+   how-tos/mailgateway
+   how-tos/multicast-dns
+   how-tos/multiwan
+   how-tos/netflow_exporter
+   how-tos/nginx
+   how-tos/openconnect
+   how-tos/orange_fr_fttp
+   how-tos/pac
+   how-tos/proxyicapantivirus
+   how-tos/proxyicapantivirusinternal
+   how-tos/proxytransparent
+   how-tos/proxywebfilter
+   how-tos/self-signed-chain
+   how-tos/shaper
+   how-tos/SkyUK
    how-tos/sslvpn_client
    how-tos/sslvpn_s2s
-   how-tos/accounting
-   how-tos/shaper
-   how-tos/insight
-   how-tos/netflow_exporter
+   how-tos/tor
+   how-tos/transparent_bridge
    how-tos/two_factor
-   how-tos/cellular
-   how-tos/*
+   how-tos/user-ldap
+   how-tos/user-local
+   how-tos/user-radius
+   how-tos/zerotier

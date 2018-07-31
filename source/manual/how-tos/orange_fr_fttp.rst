@@ -40,6 +40,7 @@ select options DHCP and DHCPv6 in general configuration
 * user-class "+FSVDSL_livebox.Internet.softathome.Livebox3"
 * option-90 00:00:00:00:00:00:00:00:00:00:00:66:74:69:2f:65:77:74:FF:AB:XX:XX 
   (hex conversion of the the userid supplied by Orange which looks like fti/xxxxxxx)
+
 .. Note::
     The eleven leading hex 00 pairs to be prefixed to the converted userID
 
@@ -66,6 +67,7 @@ Now for the regional specific part.
 
 Some areas of France require that the DHCP and DHCP6 requests are made with a VLAN-PCP of 6. If you are in one of these regions then 
 this can be done via the 'Option Modifiers'. 
+
 .. Note::
     The vlan-parent is the physical WAN interface - igb0, em0 etc.
 
@@ -87,6 +89,7 @@ then add the following options in the 'Send Options' field
 * raw-option 16 00:00:04:0e:00:05:73:61:67:65:6d
 * raw-option 11 00:00:00:00:00:00:00:00:00:00:00:66:74:69:2f:65:77:74:FF:AB:XX:XX 
   (hex conversion of the the userid supplied by Orange which looks like fti/xxxxxxx)
+
 .. Note::
     The eleven leading hex 00 pairs to be prefixed to the converted userID
 
