@@ -49,7 +49,9 @@ Plugin VPN options
 Via plugins additional VPN technologies are offered, including:
 
 * **Legacy L2TP & PPTP**
+* **OpenConnect** - SSLVPN client, initially build to connect to commercial vendor appliances like Cisco ASA or Juniper.
 * **Tinc** - Automatic Full Mesh Routing
+* **WireGuard** - Very simple and fast VPN wokring with public and private keys.
 * **Zerotier** - seamlessly connect everything, requires account from zerotier.com, free for up to 100 devices.
 
 
@@ -81,6 +83,10 @@ OpenVPN/SSL Site-to-Site
 OpenConnect Client
 ------------------
 :doc:`how-tos/openconnect`
+
+WireGuard Site-to-Site
+------------------
+:doc:`how-tos/wireguard-s2s`
 
 Zerotier
 --------
