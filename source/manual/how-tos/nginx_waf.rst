@@ -4,7 +4,9 @@ nginx: Web Application Firewall
 
 .. Warning::
 
-    This page is for advanced users only. A misconfiguration here may break your page.
+    This page is for advanced users only. A misconfiguration here may block requests to your API endpoints or website.
+    
+    A web application firewall is no replacement for properly implemented security in front- and backend.
 
 Background Information
 ======================
@@ -15,13 +17,24 @@ NAXSI has two rule types:
 .. _NAXSI: https://github.com/nbs-system/naxsi
 .. _nginx: https://nginx.org/
 
-* Main Rules: This rules are globally valid. Usual use case: Blocking stuff.
+* Main Rules: This rules are globally valid. Usual use case: Blocking code fragments that may be used to gain access to the server without permission (for example SQL_-/XPATH_-injection for data access) or to gain control over a foreign client (for example XSS_).
 * Basic Rules: This rules are usually used in the locations to whitelist stuff inside a location or for additional rules.
+
+.. _SQL: https://www.owasp.org/index.php/SQL_Injection
+.. _XPATH: https://www.owasp.org/index.php/XPATH_Injection
+.. _XSS: https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)
+
+.. Note::
+
+    A good place to start are the OWASP_ Cheat Sheets.
+
+.. _OWASP: https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series
+
 
 In addition to the self defined rules, NAXSI contains libinjection which is available directly in the location configuration.
 The NAXSI project itself has a high quality documentation for the module online_.
 A good ruleset_ to start can be found at GitHub on the project page.
-It cannot be provided by the plugin because if license issues (GPL cannot be used in BSD 2 Clause code),
+It cannot be provided by the plugin because of license issues (GPL cannot be used in BSD 2 Clause code),
 but you may enter it manually by yourself.
 
 .. _online: https://github.com/nbs-system/naxsi/wiki
@@ -43,7 +56,7 @@ WAF Rules
 
 WAF rules are used to trigger an action if a condition evaluates to true or false (negated).
 The usual use case is increasing a score which can be checked afterwards, but a rule can for example also block instantly (the plugin only supports a score).
-WAF rules are grouped to a WAF policy. which then can evaluate the aggregated score.
+WAF rules are grouped to a WAF policy, which then can evaluate the aggregated score.
 
 The description will be shown in the GUI and the Message will appear in the log. Negate will switch the condition form "if" to "unless". The ID must be unique. You should use a scheme like 1000 to 2000 are SQL injection or similar because that improves log evaluation if needed (for example you could create pie charts because you can group by the id range).
 
@@ -75,7 +88,7 @@ As an (incomplete) example:
 
 ======== ===============================================================
 Name     block SQLi
-Rules    contains select, contains from, contains union, containd delete
+Rules    contains select, contains from, contains union, contains delete
 Value    16
 Operator bigger or equal
 Action   block
