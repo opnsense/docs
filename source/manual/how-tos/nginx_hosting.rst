@@ -6,8 +6,8 @@ nginx: Local Website Hosting
 
     Even if you can host websites directly from OPNsense, it is not recommended for security reasons - especially when
     sending requests to a local PHP interpreter. Do NOT consider using the feature to serve PHP content locally in
-    enterprise networks. It is intendet for home users who want to save money by saving power and know what they are
-    doing. If you do not know how to handle a webserver properly, DO NOT ENABLE THIS FEATURE.
+    enterprise networks. It is intended for home users who want to save money by saving power and know what they are
+    doing. If you do not know how to handle a web server properly, do not enable this feature.
     
 Prepare
 =======
@@ -16,6 +16,32 @@ First of all, a directory has to be created. For example `/srv/web_application1`
 accessable by nginx and PHP (both running as `www`).
 
 For example, you can chmod it (+rx for directories, +r for files for this user) or `chown` it.
+
+.. code-block:: sh
+
+    # create a directory
+    mkdir -p /srv/web_application1
+    cd /srv
+    stat webapp1
+    # Example Result:
+    # 86 18009 drwxr-xr-x 2 root wheel 14050 512 "Aug 31 18:28:19 2018" 
+    #  "Aug 31 18:28:19 2018" "Aug 31 18:28:19 2018" "Aug 31 18:28:19 2018"
+    #  32768 8 0 webapp1
+    #
+    # as you can see, everyone can read (r) and switch into the directory (x))
+    #
+    # do this if the directory is not readable or excutable:
+    chmod +rx web_application1
+    
+.. Warning::
+
+    Never use chmod 777 and be careful with write permissions. the most secure way is to
+    change the owner to www (`chown www filename`) and give write permission only to the
+    web server user (`chmod o+w filename`). The same is valid for directories. It would be
+    a good idea not to execute anything in those directories (for example via a special
+    location block in nginx).
+    If you write your own applications, it is recommended to store such data outside of
+    your web root.
 
 When the directory exists, you can create a file in this directory. Let's say, it should be called test.php and should show
 some information about PHP:
@@ -32,6 +58,16 @@ Press control + d to end the input.
 
     you can also use vim if you install vim-lite via pkg.
 
+.. code-block:: sh
+
+    # If needed, change the permission to make it readable:
+    chmod +r test.php
+
+.. Note::
+
+    In a real world scenario, you would probably copy an archive (.tar.gz, .tar.xz, .tar.bz or .zip) via SFTP or SCP on the
+    firewall and execute a command to extract it. Read the man pages for tar, the compression tool or unzip for more detailed
+    instructions.
 
 Configure Locations
 ===================
