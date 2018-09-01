@@ -26,7 +26,7 @@ For example, you can chmod it (+rx for directories, +r for files for this user) 
     # Example Result:
     # 86 18009 drwxr-xr-x 2 root wheel 14050 512 "Aug 31 18:28:19 2018" 
     #  "Aug 31 18:28:19 2018" "Aug 31 18:28:19 2018" "Aug 31 18:28:19 2018"
-    #  32768 8 0 webapp1
+    #  32768 8 0 web_application1
     #
     # as you can see, everyone can read (r) and switch into the directory (x))
     #
