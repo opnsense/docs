@@ -41,6 +41,8 @@ How to's
    how-tos/netflow_exporter
    how-tos/nginx
    how-tos/nginx_hosting
+   how-tos/nginx_basic_auth
+   how-tos/nginx_tls_auth
    how-tos/nginx_waf
    how-tos/openconnect
    how-tos/orange_fr_fttp
