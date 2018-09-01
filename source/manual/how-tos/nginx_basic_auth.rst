@@ -4,9 +4,9 @@ nginx: Basic Authentication & Authorization
 
 .. Warning::
 
-    Passwords in password files are not stored secure because this is not supported.
+    Passwords in password files cannot be stored securely.
     Your passwords are stored in plain text in the configuration and as md5 in the
-    nginx password files. Password hashes designed as such like bcrypt_, scrypt_ or
+    nginx password files. Secure password hashes like bcrypt_, scrypt_ or
     Argon_ 2 are currently not supported by nginx.
     
     Please also note that basic authentication transfers the credentials in plain text
