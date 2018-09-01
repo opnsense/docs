@@ -40,6 +40,8 @@ How to's
    how-tos/multiwan
    how-tos/netflow_exporter
    how-tos/nginx
+   how-tos/nginx_hosting
+   how-tos/nginx_waf
    how-tos/openconnect
    how-tos/orange_fr_fttp
    how-tos/pac
