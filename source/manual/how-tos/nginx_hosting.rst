@@ -22,7 +22,7 @@ For example, you can chmod it (+rx for directories, +r for files for this user) 
     # create a directory
     mkdir -p /srv/web_application1
     cd /srv
-    stat webapp1
+    stat web_application1
     # Example Result:
     # 86 18009 drwxr-xr-x 2 root wheel 14050 512 "Aug 31 18:28:19 2018" 
     #  "Aug 31 18:28:19 2018" "Aug 31 18:28:19 2018" "Aug 31 18:28:19 2018"
