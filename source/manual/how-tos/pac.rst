@@ -40,7 +40,9 @@ Go to 'Services' -> Proxy -> Configuration and open Match
 .. image:: images/pac_menu_match.png
 
 Enter a name for the match and an optional description.
-Then choose what to match on.
+Then choose what to match on. In our example we want to achieve
+that hostnames without a FQDN (like server01) and also our 
+internal domain (example.com) will be excluded from the proxy.
 
 =========== ==================================================
 Name        A unique name for the match to call it from rules.
