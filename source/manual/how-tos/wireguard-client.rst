@@ -77,11 +77,21 @@ balance traffic via different VPN providers or do more complex routing scenarios
 To do this, go to **System->Gateways->Single** and add a new gateway. Choose your WireGuard interface
 and set the Gateway to **dynamic**.
 
--------------------------
-Step 4 - Routing networks
--------------------------
+--------------------------------
+Step 3a - Setup WireGuard Client
+--------------------------------
 
-If you want to route your internal networks via this VPN just add the network in the 
-**Tunnel Address** in **Endpoints** tab (e.g. 10.0.1.0/24). 
+The development of WireGuard is very dynamic so this howto won't include any screenshots since 
+features are added rapidly or naming might change. 
+If we have OPNsense also at the client side the configuration is similar to step 3a but you have to
+choose a **Tunnel Address** within the range of the server side and exchange public keys after 
+the creation of a new instance. Then networks which should be routed via WireGuard have to be 
+added to your **Tunnel Address** in the endpoint configuration of your client (e.g. 192.168.0.0/24 
+when this is the LAN of WireGuard server). For pushing all network traffic via VPN you can add 
+0.0.0.0/0. If you do this it's important to also specifiy a DNS server which will be added to your
+interface. Therefore go to **Server**, edit your instance and fill in one or more IP addresses to 
+the **DNS** field. 
+
+
 
 That's it!
