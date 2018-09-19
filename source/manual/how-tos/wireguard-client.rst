@@ -76,9 +76,9 @@ balance traffic via different VPN providers or do more complex routing scenarios
 To do this, go to **System->Gateways->Single** and add a new gateway. Choose your WireGuard interface
 and set the Gateway to **dynamic**.
 
---------------------------------
-Step 3a - Setup WireGuard Client
---------------------------------
+-------------------------------
+Step 3 - Setup WireGuard Client
+-------------------------------
 
 The development of WireGuard is very dynamic so this howto won't include any screenshots since 
 features are added rapidly or naming might change. 
