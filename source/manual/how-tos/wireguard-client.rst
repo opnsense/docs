@@ -3,14 +3,13 @@ WireGuard Road Warrior Setup
 ============================
 
 .. Warning::
-    **IMPORTANT NOTE** :
     WireGuard Plugin is still in development, use at your own risk!
     
 ------------
 Introduction
 ------------
 
-WireGuard is a simple and fast modern VPN. It aims to be faster and simpler than IPSec. It intends to be
+WireGuard is a simple, fast and modern VPN. It aims to be faster and simpler than IPSec. It intends to be
 considerably more performant than OpenVPN. Initially released for the Linux kernel, it is now cross-platform
 and widely deployable. It is currently under heavy development. We will describe here how to set up
 WireGuard as a central server or just as a client.
@@ -30,11 +29,11 @@ Step 2a - Setup WireGuard Server
 
 The setup of a central VPN server is very simple. Just go to tab **Server** and create a new instance.
 Give it a **Name** and set a desired **Listen Port**. If you have more than one server instance be 
-aware that you can use the **Listen Port** only once. For **Tunnel Address** choose a new virtual 
-network to run communication over it, just like with OpenVPN or GRE (e.g. 192.168.0.1/24).
+aware that you can use the **Listen Port** only once. For **Tunnel Address** choose an unused network
+to tunnel all clients just like with OpenVPN or GRE (e.g. 192.168.0.1/24).
 **Peers** can not be chosen yet since we have not created them yet. 
 After hitting **Save changes** you can reopen the newly created instance, write down your new public
-key and give it to the other side. 
+key and give it to the other side in a secure way (e.g. PGP encrypted or via SMS). 
 
 Now go to tab **Endpoints** and add the fist road warrior, give it a **Name**, insert the **Public
 Key** and the **Tunnel Address** (e.g. 192.168.0.2/24). **Endpoint Address** and  **Endpoint Port**
@@ -42,7 +41,7 @@ can be left empty since they are mostly dynamic, now hit **Save changes**.
 
 Go back to tab **Server**, open the instance and choose the newly created endpoint in **Peers**.
 
-Now we can **Enable** the VPN in tab **General** and go on with the setup.
+Now we can **Enable** the VPN in tab **General** and continue with the setup.
 
 If you want to add more users just add them in **Endpoints** and link them via **Peers**.
 
