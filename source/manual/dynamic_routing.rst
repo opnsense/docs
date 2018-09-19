@@ -3,6 +3,12 @@ Dynamic Routing
 ===============
 
 .. Warning::
+    With OPNsense version 18.7.5 the frr package was updated to version 5. It's strongly advised to higher
+    the kern.ipc.maxsockbuf value via **Tunables**. Go to **System->Settings->Tunables** and check if there
+    is already a tunable for maxsockbuf and set it to 16777216 if it's lower. Otherwise add a new one with 
+    name above and the specified value.
+
+.. Warning::
     Disabling a running routing daemon can be dangerous as it can lead to an inaccessible machine.
     If you want to disable a running routing daemon, make sure, you don't lose routes which are
     required by your connection to this machine (for example when using SSH)
