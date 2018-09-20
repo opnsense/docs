@@ -26,12 +26,12 @@ wireguard
    "``GET``","wireguard","client","searchclient",""
    "``POST``","wireguard","client","setclient","$uuid"
    "``POST``","wireguard","client","toggleclient","$uuid"
-   "``POST``","wireguard","user","addserver",""
-   "``POST``","wireguard","user","delserver","$uuid"
-   "``GET``","wireguard","user","getserver","$uuid"
-   "``GET``","wireguard","user","searchserver",""
-   "``POST``","wireguard","user","setserver","$uuid"
-   "``POST``","wireguard","user","toggleserver","$uuid"
+   "``POST``","wireguard","server","addserver",""
+   "``POST``","wireguard","server","delserver","$uuid"
+   "``GET``","wireguard","server","getserver","$uuid"
+   "``GET``","wireguard","server","searchserver",""
+   "``POST``","wireguard","server","setserver","$uuid"
+   "``POST``","wireguard","server","toggleserver","$uuid"
 
 .. csv-table:: Other
    :header: "Method", "Module", "Controller", "Command", "Parameters"
