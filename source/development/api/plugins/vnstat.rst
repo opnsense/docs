@@ -16,3 +16,12 @@ vnstat
    "``POST``","vnstat","service","start",""
    "``POST``","vnstat","service","status",""
    "``POST``","vnstat","service","stop",""
+
+.. csv-table:: Other
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+   "","vnstat","service","hourly",""
+   "","vnstat","service","daily",""
+   "","vnstat","service","weekly",""
+   "","vnstat","service","monthly",""
