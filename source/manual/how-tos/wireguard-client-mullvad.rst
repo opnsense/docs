@@ -13,23 +13,6 @@ MullvadVPN is a cloud-based VPN provider, offering secure tunneling in respect t
 To set up a WireGuard VPN to MullvadVPN we assume you are familiar with the concepts of WireGuard you that
 you have read the basic howto :doc:`how-tos/wireguard-client`.
 
--------------------------------------
-Step 1 - Get MullvadVPN configuration
--------------------------------------
-
-For an automated rollout of configuration, AzireVPN has to create a private key for you in order to 
-already configure their servers with the public key. This is quite a security risk since they can 
-decrypt your traffic, but they should also be able to do this without the key too.
-To get a configuration login to your account_
-
-.. _account: https://www.azirevpn.com/cfg/wireguard
-
-Via **Options** you can select the country where you want to break out, choose a port (default ist fine),
-and set the protocol to tunnel (we only cover IPv4).
-
-Hit **Download** at the end of the page to get the preconfigured text file and open it in your
-favorite text editor. 
-
 ----------------------------------
 Step 1 - Setup WireGuard Instance
 ----------------------------------
@@ -55,8 +38,10 @@ the **Tunnel Address** you used when setting up and change it to the one you got
 On **Endpoint** tab create a new Endpoint, give it a **Name**, set 0.0.0.0/0 in **Tunnel Address** and set
 the **DNS** to 193.138.219.228. This is the one MulladVPN provides for privacy.
 
-Now go to the WireGuard server list and choose the one you like to use as your breakout. Write down it's
+Now go to the WireGuard server list_ and choose the one you like to use as your breakout. Write down it's
 public key and set it as **Public Key**. Also don't forget **Endpoint Address** and **Endpoint Port**.
+
+.. _list: https://www.mullvad.net/en/servers/#wireguard
 
 Go back to tab **Server**, open the instance and choose the newly created endpoint in **Peers**.
 
