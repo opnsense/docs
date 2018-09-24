@@ -64,7 +64,7 @@ But what if you want to push all traffic via VPN in order to filter some streams
 Then we have to assign the interface via **Interface->Assignments**, choose our instance (e.g. instance
 0 is interface wg0), enable it, hit **Prevent Interface Removal** and don't configure an IP address.
 
-After ths we can go to **Firewall->NAT->Outbound** and add a rule. Check that rule generation is set
+After this we can go to **Firewall->NAT->Outbound** and add a rule. Check that rule generation is set
 to manual or hybrid. Add a rule and select your WAN as **Interface**. **Source** should be the Tunnel
 Network you use and **Translation / target** set to WAN address.
 
