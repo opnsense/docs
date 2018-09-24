@@ -20,7 +20,9 @@ Step 1 - Get AzireVPN configuration
 For an automated rollout of configuration, AzireVPN has to create a private key for you in order to 
 already configure their servers with the public key. This is quite a security risk since they can 
 decrypt your traffic, but they should also be able to do this without the key too.
-To get a configuration login to your account at https://www.azirevpn.com/cfg/wireguard
+To get a configuration login to your account_
+
+.. _account: https://www.azirevpn.com/cfg/wireguard
 
 Via **Options** you can select the country where you want to break out, choose a port (default ist fine),
 and set the protocol to tunnel (we only cover IPv4).
