@@ -91,6 +91,7 @@ WireGuard Site-to-Site
 WireGuard Road Warrior
 ------------------
 :doc:`how-tos/wireguard-client`
+
 :doc:`how-tos/wireguard-client-azire`
 
 
