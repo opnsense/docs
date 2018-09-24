@@ -88,6 +88,10 @@ WireGuard Site-to-Site
 ------------------
 :doc:`how-tos/wireguard-s2s`
 
+WireGuard Road Warrior
+------------------
+:doc:`how-tos/wireguard-client`
+
 Zerotier
 --------
 :doc:`how-tos/zerotier`
