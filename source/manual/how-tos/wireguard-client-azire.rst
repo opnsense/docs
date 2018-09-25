@@ -9,17 +9,16 @@ WireGuard AzireVPN Road Warrior Setup
 Introduction
 ------------
 
-AzireVPN is a cloud-based VPN provider, offering secure tunneling in respect to privacy. 
-To set up a WireGuard VPN to AzireVPN we assume you are familiar with the concepts of WireGuard you that
-you have read the basic howto :doc:`how-tos/wireguard-client`.
+AzireVPN is an international VPN provider, co-locating in multiple datacenters and offering secure
+tunneling in respect to privacy. To set up a WireGuard VPN to AzireVPN we assume you are familiar
+with the concepts of WireGuard you that you have read the basic howto :doc:`how-tos/wireguard-client`.
 
 -----------------------------------
 Step 1 - Get AzireVPN configuration
 -----------------------------------
 
-For an automated rollout of configuration, AzireVPN has to create a private key for you in order to 
-already configure their servers with the public key. This is quite a security risk since they can 
-decrypt your traffic, but they should also be able to do this without the key too.
+For an automated rollout of configuration, AzireVPN will create a private key in your browser and send
+the public key via an API call to their servers.
 To get a configuration login to your account_
 
 .. _account: https://www.azirevpn.com/cfg/wireguard
