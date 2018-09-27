@@ -8,6 +8,7 @@ How to's
    :glob:
 
    how-tos/accounting
+   how-tos/bind
    how-tos/c-icap
    how-tos/cachingproxy
    how-tos/carp
