@@ -38,15 +38,7 @@ General Settings
 :Listen Port:
     Set the port the daemon should listen on. Per default the port is 53530 to not
     interfere with existing Unbound/dnsmasq setups. If you want to switch to BIND 
-    only, make sure to stop Unbound and dnsmasq. Maybe you want to stick with Unbound
-    as your primary DNS and only use BIND for blacklisting, you can set in 
-    **Services->Unbound DNS->General->Custom Options**
-    
-    .. code-block:: sh
-        do-not-query-localhost: no   
-        forward-zone:    
-        name: „.“    
-        forward-addr: 127.0.0.1@53530
+    only, make sure to stop Unbound and dnsmasq.
     
     
 :DNS Forwarders:
@@ -90,3 +82,17 @@ ACLs
 
 On tab ACLs you can create ACLs used for configuration options like **Recursion**. Add
 a new ACL via **+**, give it a **Name** and add as many networks as you wish in **Network List**.
+
+
+--------
+Advanced
+--------
+
+Maybe you want to stick with Unbound as your primary DNS and only use BIND for blacklisting, 
+you can set in **Services->Unbound DNS->General->Custom Options**
+    
+    .. code-block:: sh
+        do-not-query-localhost: no   
+        forward-zone:    
+        name: „.“    
+        forward-addr: 127.0.0.1@53530
