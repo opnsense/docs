@@ -42,12 +42,9 @@ General Settings
     as your primary DNS and only use BIND for blacklisting, you can set in 
     **Services->Unbound DNS->General->Custom Options**
     
-    do-not-query-localhost: no
-    
-    forward-zone:
-    
-    name: „.“
-    
+    do-not-query-localhost: no   
+    forward-zone:    
+    name: „.“    
     forward-addr: 127.0.0.1@53530
     
     
