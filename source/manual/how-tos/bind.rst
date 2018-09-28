@@ -38,7 +38,15 @@ General Settings
 :Listen Port:
     Set the port the daemon should listen on. Per default the port is 53530 to not
     interfere with existing Unbound/dnsmasq setups. If you want to switch to BIND 
-    only, make sure to stop Unbound and dnsmasq.
+    only, make sure to stop Unbound and dnsmasq. Maybe you want to stick with Unbound
+    as your primary DNS and only use BIND for blacklisting, you can set in 
+    **Services->Unbound DNS->General->Custom Options**
+    
+    do-not-query-localhost: no
+    forward-zone:
+    name: „.“
+    forward-addr: 127.0.0.1@53530
+    
 :DNS Forwarders:
     A list of IP addresses BIND will forward unknown dns request to. If empty BIND
     tries to resolve directly via the root servers.
@@ -57,28 +65,26 @@ General Settings
 DNSBL
 -----
 
-.. image:: images/c-icap_av.png
+:Enable DNSBL:
+    Enable the DNSBL service. BIND will be configured for Reverse Policy Zones to 
+    blacklist domains. Choose below the lists to use for blacklist categories.
+:Type of DNSBL:
+    Here you can select the lists to use. Do not just select all and save. There are
+    websites don't loading content when nested Ad's are not loaded.
+:Whitelist Domains:
+    When a website is blocked due to a false positiv you can enter the domain name here
+    so it get's whitelisted before the blacklists come into play.
 
-:Enable ClamAV:
-    Enables the virus
-    -scan plugin of c-icap-modules using ClamAV
-:Scan for filetypes:
-    The type of files which should be analyzed.
-    You should scan as many file types as possible but keep in mind that
-    scanning requires resources which have to be available.
-:Send percentage data:
-    Amount of Data of the original file which should be included in the preview.
-    More Data will have better scanning results and is better for security while
-    a lower value improves performance.
-:Allow 204 response:
-    A 204 response has the advantage, that the data don't have
-    to be sent over the wire again. In case of a preview, no more data
-    will be sent to the ICAP server and the data will be forwarded to
-    the client. In case of all data has been received by the ICAP server,
-    the data does not need to be sent back. Please note, that the ICAP client
-    has to support 204 responses.
-:Pass on error:
-    In case the scan fails, the file can be passed through.
-    This is less secure but keeps the business running in case of failure.
-    Keep in mind that this may put your network at risk.
+The Blacklists are downloaded and updated with every **Save** within BIND configuration.
+For production use you can go to **System->Settings->Cron** and add a cronjob. On the 
+dropdown list you'll find the corret task under **Command**. Set the refresh interval
+as you wish and save. This will trigger an update of the selected lists and reload 
+BIND.
 
+
+----
+ACLs
+----
+
+On tab ACLs you can create ACLs used for configuration options like **Recursion**. Add
+a new ACL via **+**, give it a **Name** and add as many networks as you wish in **Network List**.
