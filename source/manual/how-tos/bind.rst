@@ -29,33 +29,33 @@ You will finde the plugin at **Services->BIND**.
 General Settings
 ----------------
 
-:Enable c-icap service:
-    Enable the C-ICAP service to handle ICAP requests.
-:Timeout:
-    The time after which the socket will be closed.
-:Max keepalive timeout:
-    The time after which the socket will be closed if it stays inactive.
-:Start servers:
-    The count of the server processes which will be spawned.
-:Max servers:
-    Limit the count of processes
-:Listen address:
-    The address in which the server should be bound.
-    This address is usually the loopback address (\:\:1 for IPv6 or
-    127.0.0.1 for IPv4). The default value is \:\:1.
-:Server admin:
-    This field should be set to an email address which acts as a contact
-    for users, who are having issues with the server.
-    A good idea would be an address, which converts the mails to your internal
-    ticket system.
-:Servername:
-    If you want to override the server name (displayed on error pages),
-    you can enter it here.
+:Enable BIND Daemon:
+    Enable the BIND service.
+:Listen IPs:
+    Set the IP addresses the daemon should listen on.
+:Listen IPv6:
+    Set the IPv6 addresses the daemon should listen on.
+:Listen Port:
+    Set the port the daemon should listen on. Per default the port is 53530 to not
+    interfere with existing Unbound/dnsmasq setups. If you want to switch to BIND 
+    only, make sure to stop Unbound and dnsmasq.
+:DNS Forwarders:
+    A list of IP addresses BIND will forward unknown dns request to. If empty BIND
+    tries to resolve directly via the root servers.
+:Logsize in MB:
+    The amount for each logfile it can grow.
+:Maximum Cache Size:
+    This is the amount of RAM (in percent) the daemon can use for caching. 
+:Recursion:
+    You have to set a list of networks via **ACL** tab to allow them using recursion
+    against BIND.
+:DNSSec Validation:
+    Wheter to enable or disable DNSSec validation. 
 
     
----------
-Antivirus
----------
+-----
+DNSBL
+-----
 
 .. image:: images/c-icap_av.png
 
