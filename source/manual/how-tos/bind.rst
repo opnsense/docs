@@ -91,7 +91,7 @@ Advanced
 Maybe you want to stick with Unbound as your primary DNS and only use BIND for blacklisting, 
 you can set in **Services->Unbound DNS->General->Custom Options**.
     
-.. code-block:: sh
+.. code-block::
     do-not-query-localhost: no   
     forward-zone:    
     name: „.“    
