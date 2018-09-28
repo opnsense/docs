@@ -18,7 +18,7 @@ Open your browser and go to
 
 https://pkg.opnsense.org/FreeBSD:11:amd64/18.1/sets/
 
-Here you can see all the kernels for version 18.1. Be aware to change the version if you're on a newer version.
+Here you can see all the kernels for version 18.1. Be aware to change the version if you are on a newer version.
 As an example you updated from 18.1.4 to 18.1.5 you have now installed kernel-18.1.5. 
 To revert back to the last stable you can see kernel-18.1 so the syntax would be:
 
