@@ -92,6 +92,7 @@ Maybe you want to stick with Unbound as your primary DNS and only use BIND for b
 you can set in **Services->Unbound DNS->General->Custom Options**.
     
 .. code-block:: none
+
     do-not-query-localhost: no   
     forward-zone:    
     name: „.“    
