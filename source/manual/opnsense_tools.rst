@@ -18,7 +18,7 @@ Open your browser and go to
 
 https://pkg.opnsense.org/FreeBSD:11:amd64/18.1/sets/
 
-Here you can see all the kernels for version 18.1. Be aware to change the version if you driver a newer version.
+Here you can see all the kernels for version 18.1. Be aware to change the version if you're on a newer version.
 As an example you updated from 18.1.4 to 18.1.5 you have now installed kernel-18.1.5. 
 To revert back to the last stable you can see kernel-18.1 so the syntax would be:
 
@@ -51,7 +51,7 @@ For a complete list of options look at the manpage on the system.
 
 Example 1:
 ----------
-The latest update of OPNsense to version 18.1.5 did da minor jump for the IPSec package stronswan.
+The latest update of OPNsense to version 18.1.5 did a minor jump for the IPSec package strongswan.
 From this moment your VPNs are unstable and only a restart helps.
 
 To check if the update of the package is the reason you can easily revert the package
@@ -71,7 +71,7 @@ OPNsense version:
 
 # opnsense-revert -r 18.1.4 opnsense
 
-Be aware to also check if there were kernel updates like above to also downgrad the kernel if needed!
+Be aware to also check if there were kernel updates like above to also downgrade the kernel if needed!
 
 
 --------------
@@ -91,7 +91,7 @@ At the end of the page there's the short version 63cfe0a so the command would be
 
 # opnsense-patch 63cfe0a
 
-If it doesn't fix your issue of make it even worse, you can just reapply the command 
+If it doesn't fix your issue or makes it even worse, you can just reapply the command 
 to revert it.
 
 Example 2:
