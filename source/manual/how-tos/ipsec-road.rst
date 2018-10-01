@@ -238,6 +238,12 @@ And Apply changes:
 
 -----------------------------
 
+.. Note::
+
+   If you already had IPsec enabled and added Road Warrior setup, it's important to 
+   restart the whole service via **System->Diagnostics->Services->Strogswan** since applying
+   configuration only reloads it, but a restart also loads the required modules of strongswan.
+
 ------------------------
 Step 4 - Add IPsec Users
 ------------------------
