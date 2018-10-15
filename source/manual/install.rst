@@ -157,7 +157,7 @@ Media Filename Composition
   correspond with the latest released version. OPNsense installation images are
   provided on a regular bases together with mayor versions in January and July.
   More information on our release schedule is available from our package
-  repository see `README <https://pkg.opnsense.org/releases/16.1/README>`__
+  repository see `README <https://pkg.opnsense.org/releases/mirror/README>`__
 
 --------------------
 OpenSSL and LibreSSL
