@@ -52,7 +52,7 @@ General Settings
     You have to set a list of networks via **ACL** tab to allow them using recursion
     against BIND.
 :DNSSec Validation:
-    Wheter to enable or disable DNSSec validation. 
+    Whether to enable or disable DNSSec validation. 
 
     
 -----
