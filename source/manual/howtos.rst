@@ -44,6 +44,7 @@ How to's
    how-tos/nginx_basic_auth
    how-tos/nginx_tls_auth
    how-tos/nginx_waf
+   how-tos/ntopng
    how-tos/openconnect
    how-tos/orange_fr_fttp
    how-tos/pac
