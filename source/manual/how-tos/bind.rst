@@ -8,7 +8,7 @@ History
 
 The history of the Bind plugin was a user request on OPNsense subreddit to create a 
 plugin with a full-featured DNS server, also able to manage zonefiles with the most
-popular ressource records. In the beginning the plugin was build with only general 
+popular resource records. In the beginning the plugin was built with only general 
 features so the community can contribute and adding wished features with a friendly
 review of the OPNsense Team.
 
