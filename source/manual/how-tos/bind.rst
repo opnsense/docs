@@ -67,7 +67,7 @@ DNSBL
     websites not loading content when nested ads are not loaded.
 :Whitelist Domains:
     When a website is blocked due to a false positiv you can enter the domain name here
-    so it get's whitelisted before the blacklists come into play.
+    so it is whitelisted before the blacklists come into play.
 
 The Blacklists are downloaded and updated with every **Save** within BIND configuration.
 For production use you can go to **System->Settings->Cron** and add a cronjob. On the 
