@@ -64,7 +64,7 @@ DNSBL
     blacklist domains. Choose below the lists to use for blacklist categories.
 :Type of DNSBL:
     Here you can select the lists to use. Do not just select all and save. There are
-    websites don't loading content when nested Ad's are not loaded.
+    websites not loading content when nested ads are not loaded.
 :Whitelist Domains:
     When a website is blocked due to a false positiv you can enter the domain name here
     so it get's whitelisted before the blacklists come into play.
