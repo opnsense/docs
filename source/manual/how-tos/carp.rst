@@ -236,6 +236,21 @@ connection. Next try to pull the network plug from the master firewall
 and it should move over to the backup without loosing (or freezing) the
 ssh connection.
 
+------------------------
+Adding multiple CARP IPs
+------------------------
+
+If your provider offers you a subnet of public IP addresses and you 
+want to expose them for NAT or different services running on your 
+Firewall, you will also have to add them to your HA setup. 
+Since adding a VHID for every IP would make the CARP traffic very noisy,
+you can also add a new IP Alias and choose the correct VHID where the
+first CARP IP is configured. 
+
+.. Note::
+   IP Alias is not synchronized to slave, be sure to also add it to your
+   second machine.
+
 ---------
 Resources
 ---------
