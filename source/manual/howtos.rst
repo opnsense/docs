@@ -36,6 +36,7 @@ How to's
    how-tos/ipv6_dsl
    how-tos/ipv6_tunnelbroker
    how-tos/IPv6_ZenUK
+   how-tos/lan_bridge
    how-tos/mailgateway
    how-tos/multicast-dns
    how-tos/multiwan
