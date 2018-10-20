@@ -124,8 +124,8 @@ For a very quick overview of the Zerotier network information, click on the
 ``Information`` icon. A more detailed view of the network can be found under
 the ``Overview...Networks`` menu item.
 
-Overview
-========
+ZeroTier Overview
+-----------------
 
 The following 3 tabs reveal Global, Network and Peer information. They can
 only be viewed if the Zerotier plugin is enabled, so please ensure that the
@@ -153,7 +153,7 @@ This tab shows the peers (leaf, planets and moons - Zerotier terminology) known
 by this node.
 
 Interface Assignment
-====================
+--------------------
 
 .. WARNING::
     It is **highly** recommended that the interface have auto-assignment of IP
