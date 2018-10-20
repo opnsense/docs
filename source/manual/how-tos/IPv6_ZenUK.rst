@@ -1,5 +1,5 @@
-**IPv6 For Zen UK**
-===================
+IPv6 For Zen UK
+===============
 
 **Original Author:** Martin Wasley
 
