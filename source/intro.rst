@@ -75,7 +75,7 @@ OPNsense Core Features
 - High Availability & Hardware Failover
 
   - Includes configuration synchronization & synchronized state tables
-  - Can be combined with Traffic Shaping
+  - Moving virtual IPs
 
 - Intrusion Detection and Inline Prevention
 
@@ -87,6 +87,7 @@ OPNsense Core Features
 
   - System Health, the modern take on RRD Graphs
   - Packet Capture
+  - Netflow
 
 - Support for plugins
 - DNS Server & DNS Forwarder
@@ -94,7 +95,7 @@ OPNsense Core Features
 - Dynamic DNS
 - Backup & Restore
 
-  - Encrypted cloud backup to Google Drive
+  - Encrypted cloud backup to Google Drive and Nextcloud
   - Configuration history with colored diff support
   - Local drive backup & restore
 
