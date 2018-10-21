@@ -30,27 +30,27 @@ Community Support Levels
 
 Tier 1 – Core (Critical)
 ============================================
-* Core team develops and supports,
-* Compiler errors or functional failures block git merges and releases,
-* Functionality is part of the standard installation.
+* Core team develops and supports
+* Compiler errors or functional failures block git merges and releases
+* Functionality is part of the standard installation
 
 Tier 2 – Plugins (Non-Critical)
 =====================================================
 * Core team develops and supports, sometimes with help from community members
-* Compiler errors or functional failures block git merges,
-* Functionality problems such as 'known issues' or might still going into releases,
-* Features require user to install the plugin / functionality not installed by default.
+* Compiler errors or functional failures block git merges
+* Functionality problems such as 'known issues' or might still going into releases
+* Features require user to install the plugin / functionality not installed by default
 
 Tier 3 – Plugins (Community)
 ============================
-- Tier 3 is community supported, this means the OPNsense core development team won't support it to avoid overloading the team,
+- Tier 3 is community supported, this means the OPNsense core development team won't support it to avoid overloading the team
 - When accepting a Tier 3 feature into the code base, it will come with a number of limits and conditions:
 
   *  Submitter must commit to maintaining it:
   
-    - make sure code compiles and correctly functions after OPNsense and/or external (e.g. library) changes,
-    - support users when they encounter problems (forum / git issue tracker – all related issues will be assigned to the maintainer).
+    - Make sure code compiles and correctly functions after OPNsense and/or external (e.g. library) changes
+    - Support users when they encounter problems (forum / git issue tracker – all related issues will be assigned to the maintainer)
 
-- The code is offered as plugin and will not be part of the default OPNsense installation. The OPNsense core team will not be responsible for QA,
-- If the feature get lots of traction, and/or if the team just considers it very useful, it may get 'promoted' to being officially supported (Tier 2),
-- The feature will be removed if the submitter stops maintaining it and no-one steps up to take over.
+- The code is offered as plugin and will not be part of the default OPNsense installation. The OPNsense core team will not be responsible for QA
+- If the feature get lots of traction, and/or if the team just considers it very useful, it may get 'promoted' to being officially supported (Tier 2)
+- The feature will be removed if the submitter stops maintaining it and no-one steps up to take over
