@@ -67,6 +67,7 @@ of € 2500.Partners that made an exceptional contribution to the project are as
 the Platinum Partner status.
 
 ----------------
+
 Support Contract
 ----------------
 with a support contract we support you and you support us as OPNsense is fully
