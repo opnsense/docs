@@ -1,9 +1,9 @@
-
-
+VPN compatibility table
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. csv-table:: VPN combinations
    :header: "VPN Method", "Win7", "Win10", "Linux", "Mac OS X", "IOS", "Android"
-   :widths: 4, 15, 15, 30, 40
+   :widths: 30, 15, 15, 30, 30, 30, 30
 
    "IKEv1 Hybrid RSA + XAuth","Yes","Yes","Yes","Yes","Yes","Yes"
    "IKEv1 Mutual RSA + XAuth","Yes","Yes","Yes","Yes","Yes","Yes"
