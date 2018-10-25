@@ -104,7 +104,7 @@ app installed to have a broader compatibility for all systems.
 
    "IKEv1 Hybrid RSA + XAuth","N","N","Yes","Yes","Yes","Yes","Link"
    "IKEv1 Mutual RSA + XAuth","N","N","Yes","Yes","Yes","Yes","Link"
-   "IKEv1 Hybrid PSK + XAuth","N","N","tbd","tbd","tbd","tbd","Link"
+   "IKEv1 Mutual PSK + XAuth","N","N","tbd","tbd","tbd","tbd","Link"
    "IKEv2 EAP-TLS","tbd","tbd","tbd","tbd","tbd","tbd","Link"
    "IKEv2 RSA local + EAP remote","tbd","tbd","tbd","tbd","tbd","tbd","Link"
    "IKEv2 EAP-MSCHAPv2","Y","Y","Y","Y","Y","Y, w/ Strongswan","Link"
