@@ -1,18 +1,17 @@
-======================================
-Setup IPsec Road-Warrior on Serverside
-======================================
+=========================
+Setup IPsec Remote Access
+=========================
 Road Warriors are remote users who need secure access to the companies infrastructure.
 IPsec Mobile Clients offer a solution that is easy to setup and comptabile with most current devices.
-Please see our compatibility list: 
-:doc:`how-tos/ipsec-table`
 
-With this example we'll show you how to configure the server side on OPNsense with the different
+With this guide we'll show you how to configure the server side on OPNsense with the different
 authentication methods e.g.
 
 * EAP-MSCHAPv2
 * Mutual-PSK + XAuth
 * Mutual-RSA + XAuth
 * ...
+
 
 .. Note::
 
@@ -28,7 +27,8 @@ authentication methods e.g.
 ------------
 Sample Setup
 ------------
-For the sample configuration we configure OPNsense
+All configuration examples are based on the following setup, please read this carefully
+as all guides depend on it
 
 **Company Network with Remote Client**
 
@@ -91,223 +91,25 @@ interface.
 .. image:: images/ipsec_ipsec_lan_rule.png
     :width: 100%
 
------------------------
-Step 1 - Mobile Clients
------------------------
-First we will need to setup the mobile clients network and authentication methods.
-Go to **VPN->IPsec->Mobile Clients**
 
-For our example will use the following settings:
+In the next table you can see the existing VPN authentication mechanisms and which client 
+operating systems supports it with links to their configurations.
+For Linux testing was done with Ubuntu 18.4 Desktop and XdebX installed. 
+As Andoid doe not support IKEv2 yet we added notes for combinations with strongswan
+app installed to have a broader compatibility for all systems.
 
-IKE Extensions
---------------
-========================= ================ ================================================
-**Enable**                 checked          *check to enable mobile clients*
-**User Authentication**    Local Database   *For the example we use the Local Database*
-**Group Authentication**   none             *Leave on none*
-**Virtual Address Pool**   10.0.0.0/24      *Enter the IP range for the remote clients*
-========================= ================ ================================================
+.. csv-table:: VPN combinations
+   :header: "VPN Method", "Win7", "Win10", "Linux", "Mac OS X", "IOS", "Android", "OPNsense config"
+   :widths: 40, 10, 10, 10, 10, 10, 20, 20
 
-You can select other options, but we will leave them all unchecked for this
-example.
+   "IKEv1 Hybrid RSA + XAuth","N","N","Yes","Yes","Yes","Yes","Link"
+   "IKEv1 Mutual RSA + XAuth","N","N","Yes","Yes","Yes","Yes","Link"
+   "IKEv1 Hybrid PSK + XAuth","N","N","tbd","tbd","tbd","tbd","Link"
+   "IKEv2 EAP-TLS","tbd","tbd","tbd","tbd","tbd","tbd","Link"
+   "IKEv2 RSA local + EAP remote","tbd","tbd","tbd","tbd","tbd","tbd","Link"
+   "IKEv2 EAP-MSCHAPv2","Y","Y","Y","Y","Y","Y, w/ Strongswan","Link"
+   "IKEv2 Mutual RSA + EAP-MSCHAPv2","tbd","tbd","tbd","tbd","tbd","tbd","Link"
+   "IKEv2 EAP-RADIUS","Y","Y","Y","Y","Y","Y, w/ Strongswan","Link"
+   "IKEv1 Mutual RSA","N","N","N","N","N","N","Link"
+   "IKEv1 Mutual PSK","N","N","N","N","N","N","Link"
 
-**Save** your settings and select **Create Phase1** when it appears.
-Then enter the Mobile Client Phase 1 setting.
-
--------------------------------
-Step 2 - Phase 1 Mobile Clients
--------------------------------
-
-Phase 1 General information
----------------------------
-========================= ============= ================================================
-**Connection method**      default       *default is 'Start on traffic'*
-**Key Exchange version**   V1            *only V1 is supported for mobile clients*
-**Internet Protocol**      IPv4
-**Interface**              WAN           *choose the interface connected to the internet*
-**Description**            MobileIPsec   *freely chosen description*
-========================= ============= ================================================
-
-Phase 1 proposal (Authentication)
----------------------------------
-=========================== ====================== ======================================
- **Authentication method**   Mutual PSK +Xauth      *Using a Pre-shared Key and Login*
- **Negotiation mode**        Agressive              *Select Aggressive*
- **My identifier**           My IP address          *Simple identification for fixed ip*
- **Peer identifier**         User distinguished     *Identification for peer*
- *Peer identifier*           vpnuser@example.com    *Our freely chosen identifier*
- **Pre-Shared Key**          At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!**
-=========================== ====================== ======================================
-
-
-Phase 1 proposal (Algorithms)
------------------------------
-========================== ============= ===========================================================
- **Encryption algorithm**   AES           *For our sample we will Use AES/256 bits*
- **Hash algoritm**          SHA1          *SHA1 for compatibility, you can try a stronger hash*
- **DH key group**           1024 bit      *1024 bit for compatibility, you can try stronger group*
- **Lifetime**               28800 sec     *lifetime before renegotiation*
-========================== ============= ===========================================================
-
-
-Advanced Options
-----------------
-======================= =========== ===================================================
-**Disable Rekey**        Unchecked   *Renegotiate when connection is about to expire*
-**Disable Reauth**       Unchecked   *For IKEv2 only re-authenticate peer on rekeying*
-**NAT Traversal**        Enabled     *Enable for IKEv1*
-**Dead Peer Detection**  Unchecked
-======================= =========== ===================================================
-
-
-Save your configuration.
-
-----------------------
-Phase 2 Mobile Clients
-----------------------
-Press the button that says '+ Show 0 Phase-2 entries'
-
-.. image:: images/ipsec_s2s_vpn_p1a_show_p2.png
-    :width: 100%
-
-You will see an empty list:
-
-.. image:: images/ipsec_s2s_vpn_p1a_p2_empty.png
-    :width: 100%
-
-Now press the *+* at the right of this list to add a Phase 2 entry.
-
-General information
--------------------
-======================= ================== =============================
- **Mode**                Tunnel IPv4        *Select Tunnel mode*
- **Description**         MobileIPsecP2      *Freely chosen description*
-======================= ================== =============================
-
-Local Network
--------------
-======================= ================== ==============================
- **Local Network**       LAN subnet        *Route the local LAN subnet*
-======================= ================== ==============================
-
-Phase 2 proposal (SA/Key Exchange)
-----------------------------------
-=========================== ============ =============================================
-**Protocol**                 ESP           *Choose ESP for encryption*
-**Encryption algorithms**    AES / 256     *AES 256 is default for most systems*
-**Hash algorithms**          SHA1,SHA256   *To reach a broader compatibility use both*
-**PFS Key group**            off           *Most clients doesn't support PFS in P2*
-**Lifetime**                 3600 sec      *Keep default*
-=========================== ============ =============================================
-
-Save your configuration and Enable IPsec:
-
-.. image:: images/ipsec_s2s_vpn_p1a_enable.png
-    :width: 100%
-
-.. Note::
-
-   If you already had IPsec enabled and added Road Warrior setup, it's important to 
-   restart the whole service via services widget in the upper right corner of IPSec pages
-   or via **System->Diagnostics->Services->Strogswan** since applying configuration only
-   reloads it, but a restart also loads the required modules of strongswan.
-
----------------
-Add IPsec Users
----------------
-For this example we will create a new user who may access the mobile IPsec vpn.
-
-Go to **System->Access->Users** and press the **+** sign in the lower right corner
-to add a new user.
-
-Enter the following into the form:
-
-=============== ==========
- **User Name**   expert
- **Password**    &test!9T
-=============== ==========
-
-**Save** this user and reopen in edit mode to add privileges.
-
-Add privilege **User - VPN - IPsec xauth Dialin** by pressing the **+** under
-**Effective Privileges**.
-
-**Save** to apply.
-
-----------------------
-
--------------------------
-Step 5 - Configure Client
--------------------------
-To illustrate the client setup we will look at the configuration under OSX, including
-some screenshots. The configurations for Android and iOS will be settings only.
-
-.. Note::
-      Configuration samples listed here where created using latest OSX, iOS and
-      Android devices on time of publication in February 2016.
-
---------------------
-Configure OSX Client
---------------------
-
-Start with opening your network settings (System Preferences -> Network) and
-Add a new network by pressing the + in the lower left corner.
-
-Now select **VPN** and **Cisco IPSec**, give your connection a name and press **Create**.
-
-.. image:: images/osx-ipsec-new.png
-    :width: 100%
-
-Now enter the details for our connection:
-
-.. image:: images/osx-ipsec-conf1.png
-    :width: 100%
-
-Next press **Authentication Settings** to add the group name and pre-shared key.
-
-.. image:: images/osx-ipsec-conf2.png
-    :width: 100%
-
-Press **OK** to save these settings and then **Apply** to apply them.
-
-Now test the connection by selecting it from the list and hit **Connect**.
-
-.. image:: images/osx-ipsec-connected.png
-    :width: 100%
-
-**Done**
-
---------------------
-Configure iOS Client
---------------------
-To add a VPN connection on an iOS device go to **Setting->General->VPN**.
-Select **Add VPN Configuration** chose **IPsec** and use the Following Settings:
-
-========================== ======================= ========================================
-  **Description**           IPsec OPNsense          *Freely chosen description*
-  **Server**                172.18.0.164            *Our server address*
-  **Account**               expert                  *Username of the remote account*
-  **Password**              &test!9T                *Leave blank to be prompted every time*
-  **IPsec-id**              vpnuser@example.com     *The peer identity we chose*
-  **Preshared IPsec-key**   At4aDMOAOub2NwT6gMHA    *Our PSK*
-========================== ======================= ========================================
-
-------------------------
-Configure Android Client
-------------------------
-To add a VPN connection on an Android device go to **Settings -> Connections ->
-more networks** , select **VPN**. Press the **+** in the top right corner to add
-a new vpn connection.
-
-Use the Following Settings:
-
-========================== ======================= =============================
-  **Name**                  IPsec OPNsense         *Freely chosen name*
-  **Type**                  IPSec Xauth PSK        *As configured in OPNsense*
-  **Server address**        172.18.0.164           *Our server address*
-  **IPsec-id**              vpnuser@example.com    *The peer identity we chose*
-  **Preshared IPsec-key**   At4aDMOAOub2NwT6gMHA   *Our PSK*
-========================== ======================= =============================
-
-**Save** and try connecting. To connect enter Username and Password for the user
-*expert* we created in this example.
