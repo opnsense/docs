@@ -112,42 +112,18 @@ Local Network
 
 Phase 2 proposal (SA/Key Exchange)
 ----------------------------------
-=========================== ============ ==========================================
+=========================== ============ =============================================
 **Protocol**                 ESP           *Choose ESP for encryption*
 **Encryption algorithms**    AES / 256     *For the sample we use AES 256*
-**Hash algorithms**          SHA1          *You may also try stronger SHA512*
-**PFS Key group**            off           *Enable a group fro stronger security*
+**Hash algorithms**          SHA1,SHA256   *Same as before, mix SHA1 and SHA256*
+**PFS Key group**            off           *Most systems do not support PFS in Phase2*
 **Lifetime**                 3600 sec
-=========================== ============ ==========================================
+=========================== ============ =============================================
 
-Save your setting by pressing:
-
-.. image:: images/btn_save.png
-    :width: 100%
-
------------------------------
-
-Enable IPsec, Select:
+**Save** your setting **Enable IPsec**, Select:
 
 .. image:: images/ipsec_s2s_vpn_p1a_enable.png
     :width: 100%
-
-Save:
-
-.. image:: images/btn_save.png
-    :width: 100%
-
-And Apply changes:
-
-.. image:: images/ipsec_s2s_vpn_p1a_apply.png
-    :width: 100%
-
-------------------
-
-.. image:: images/ipsec_s2s_vpn_p1a_success.png
-    :width: 100%
-
------------------------------
 
 .. Note::
 
@@ -159,23 +135,18 @@ And Apply changes:
 ------------------------
 Step 4 - Add IPsec Users
 ------------------------
-For this example we will create a new user who may access the mobile IPsec vpn.
 
-Go to **System->Access->Users** and press the **+** sign in the lower right corner
-to add a new user.
+Go to **VPN->IPsec->Pre-Shared Keys** and press **Add**.
 
 Enter the following into the form:
 
-=============== ==========
- **User Name**   expert
- **Password**    &test!9T
-=============== ==========
+===================   ==========
+ **Identifier**        expert
+ **Pre-Shared Key**    &test!9T
+ **Type**              EAP
+===================   ==========
 
-**Save** this user and reopen in edit mode to add privileges.
 
-Add privilege **User - VPN - IPsec xauth Dialin** by pressing the **+** under
-**Effective Privileges**.
-
-**Save** to apply.
+**Save** to apply and you're done here.
 
 ----------------------
