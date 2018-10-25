@@ -1,0 +1,181 @@
+=====================================
+Setup OPNsense for IKEv2 EAP-MSCHAPv2
+=====================================
+
+EAP-MSCHAPv2 via IKEv2 is the most compatible combination.
+We assume you have read the first part at :doc:`how-tos/ipsec-rw`
+
+----------------------------
+Step 1 - Create Certificates
+----------------------------
+
+For EAPMSCHAPv2 with IKEv2 you need to create a Root CA and create a server certificate
+for your Firewall. 
+
+Go to **System->Trust->Authorities** and click **Add**. Give it a **Descriptive Name** and as **Method**
+choose **Create internal Certificate Authority**. Increase the **Lifetime** and fill in the fields 
+matching your local values. No go to **System->Trust->Certificates** and create a new certificate for 
+the Firewall itself. Important is to change the **Type** to server. The Common Name can be the hostname
+of the Firewall and please set as **Alternative Name** the FQDN your Firewall is known to the public.
+This is most important as you VPN will drop when the FQDN does not match the ones of the Firewall.
+
+If you already have a CA roll out a server certificate and import 
+the CA via **System->Trust->Authorities** and the certificate with the key in 
+**System->Trust->Certificates**.
+
+-----------------------
+Step 2 - Mobile Clients
+-----------------------
+First we will need to setup the mobile clients network and authentication methods.
+Go to **VPN->IPsec->Mobile Clients**
+
+For our example will use the following settings:
+
+IKE Extensions
+--------------
+========================= ================ ================================================
+**Enable**                 checked          *check to enable mobile clients*
+**User Authentication**    Local Database   *For the example we use the Local Database*
+**Group Authentication**   none             *Leave on none*
+**Virtual Address Pool**   10.10.0.0/24      *Enter the IP range for the remote clients*
+========================= ================ ================================================
+
+You can select other options, but we will leave them all unchecked for this
+example.
+
+**Save** your settings and select **Create Phase1** when it appears.
+Then enter the Mobile Client Phase 1 setting.
+
+-------------------------------
+Step 2 - Phase 1 Mobile Clients
+-------------------------------
+
+Phase 1 General information
+---------------------------
+========================= ============= ================================================
+**Connection method**      default       *default is 'Start on traffic'*
+**Key Exchange version**   V2            *only V2 is supported for EAP-MSCHAPv2*
+**Internet Protocol**      IPv4
+**Interface**              WAN           *choose the interface connected to the internet*
+**Description**            MobileIPsec   *freely chosen description*
+========================= ============= ================================================
+
+Phase 1 proposal (Authentication)
+---------------------------------
+=========================== ====================== ============================================
+ **Authentication method**   EAP-MSCHAPv2           *Using a Pre-shared Key and Login*
+ **My identifier**           Distinguished Name     *Set the FQDN you used within certificate*
+ **My Certificate**          Certificate            *Choose the certificate from dropdown list*
+=========================== ====================== ============================================
+
+
+Phase 1 proposal (Algorithms)
+-----------------------------
+========================== ============= ===========================================================
+ **Encryption algorithm**   AES           *For our sample we will Use AES/256 bits*
+ **Hash algoritm**          SHA1,SHA256   *SHA1 and SHA256 for compatibility*
+ **DH key group**           1024+2048 bit *1024 and 2048 bit for compatibility*
+ **Lifetime**               28800 sec     *lifetime before renegotiation*
+========================== ============= ===========================================================
+
+Advanced Options are fine by default.
+
+**Save** your setting.
+
+-------------------------------
+Step 3 - Phase 2 Mobile Clients
+-------------------------------
+Press the button that says '+ Show 0 Phase-2 entries'
+
+.. image:: images/ipsec_s2s_vpn_p1a_show_p2.png
+    :width: 100%
+
+You will see an empty list:
+
+.. image:: images/ipsec_s2s_vpn_p1a_p2_empty.png
+    :width: 100%
+
+Now press the *+* at the right of this list to add a Phase 2 entry.
+
+General information
+-------------------
+======================= ================== =============================
+ **Mode**                Tunnel IPv4        *Select Tunnel mode*
+ **Description**         MobileIPsecP2      *Freely chosen description*
+======================= ================== =============================
+
+Local Network
+-------------
+======================= ================== ==============================
+ **Local Network**       LAN subnet        *Route the local LAN subnet*
+======================= ================== ==============================
+
+Phase 2 proposal (SA/Key Exchange)
+----------------------------------
+=========================== ============ ==========================================
+**Protocol**                 ESP           *Choose ESP for encryption*
+**Encryption algorithms**    AES / 256     *For the sample we use AES 256*
+**Hash algorithms**          SHA1          *You may also try stronger SHA512*
+**PFS Key group**            off           *Enable a group fro stronger security*
+**Lifetime**                 3600 sec
+=========================== ============ ==========================================
+
+Save your setting by pressing:
+
+.. image:: images/btn_save.png
+    :width: 100%
+
+-----------------------------
+
+Enable IPsec, Select:
+
+.. image:: images/ipsec_s2s_vpn_p1a_enable.png
+    :width: 100%
+
+Save:
+
+.. image:: images/btn_save.png
+    :width: 100%
+
+And Apply changes:
+
+.. image:: images/ipsec_s2s_vpn_p1a_apply.png
+    :width: 100%
+
+------------------
+
+.. image:: images/ipsec_s2s_vpn_p1a_success.png
+    :width: 100%
+
+-----------------------------
+
+.. Note::
+
+   If you already had IPsec enabled and added Road Warrior setup, it's important to 
+   restart the whole service via services widget in the upper right corner of IPSec pages
+   or via **System->Diagnostics->Services->Strogswan** since applying configuration only
+   reloads it, but a restart also loads the required modules of strongswan.
+
+------------------------
+Step 4 - Add IPsec Users
+------------------------
+For this example we will create a new user who may access the mobile IPsec vpn.
+
+Go to **System->Access->Users** and press the **+** sign in the lower right corner
+to add a new user.
+
+Enter the following into the form:
+
+=============== ==========
+ **User Name**   expert
+ **Password**    &test!9T
+=============== ==========
+
+**Save** this user and reopen in edit mode to add privileges.
+
+Add privilege **User - VPN - IPsec xauth Dialin** by pressing the **+** under
+**Effective Privileges**.
+
+**Save** to apply.
+
+----------------------
