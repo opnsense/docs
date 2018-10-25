@@ -56,10 +56,6 @@ Use the following settings and copy in the IPv4&6 addresses from your TunnelBrok
  **Description**                *Tunnel Broker*
 ============================== ============================
 
-.. Note::
-
-  Make sure to include the **/64** prefixes!
-
 .. image:: images/opnsense_add_gif.png
    :width: 100%
 
