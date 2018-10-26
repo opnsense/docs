@@ -2,7 +2,7 @@
 IPsec: Setup OPNsense for IKEv2 EAP-RADIUS
 ==========================================
 
-EAP-MSCHAPv2 via IKEv2 is the most compatible combination.
+EAP-RADIUS via IKEv2 is nearly the same as EAP-MSCHAPv2, but authentication is agains a Radius instance.
 We assume you have read the first part at 
 :doc:`how-tos/ipsec-rw`
 
@@ -10,7 +10,7 @@ We assume you have read the first part at
 Step 1 - Create Certificates
 ----------------------------
 
-For EAP-MSCHAPv2 with IKEv2 you need to create a Root CA and a server certificate
+For EAP-RADIUS with IKEv2 you need to create a Root CA and a server certificate
 for your Firewall. 
 
 Go to **System->Trust->Authorities** and click **Add**. Give it a **Descriptive Name** and as **Method**
