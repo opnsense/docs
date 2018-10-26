@@ -3,13 +3,14 @@ Setup OPNsense for IKEv2 EAP-MSCHAPv2
 =====================================
 
 EAP-MSCHAPv2 via IKEv2 is the most compatible combination.
-We assume you have read the first part at :doc:`how-tos/ipsec-rw`
+We assume you have read the first part at 
+:doc:`how-tos/ipsec-rw`
 
 ----------------------------
 Step 1 - Create Certificates
 ----------------------------
 
-For EAPMSCHAPv2 with IKEv2 you need to create a Root CA and create a server certificate
+For EAP-MSCHAPv2 with IKEv2 you need to create a Root CA and a server certificate
 for your Firewall. 
 
 Go to **System->Trust->Authorities** and click **Add**. Give it a **Descriptive Name** and as **Method**
