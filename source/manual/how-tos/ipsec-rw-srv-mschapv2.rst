@@ -15,19 +15,19 @@ for your Firewall.
 
 Go to **System->Trust->Authorities** and click **Add**. Give it a **Descriptive Name** and as **Method**
 choose **Create internal Certificate Authority**. Increase the **Lifetime** and fill in the fields 
-matching your local values. No go to **System->Trust->Certificates** and create a new certificate for 
+matching your local values. Now go to **System->Trust->Certificates** and create a new certificate for 
 the Firewall itself. Important is to change the **Type** to server. The Common Name can be the hostname
-of the Firewall and please set as **Alternative Name** the FQDN your Firewall is known to the public.
-This is most important as you VPN will drop when the FQDN does not match the ones of the Firewall.
+of the Firewall and set as **Alternative Name** the FQDN your Firewall how it is known to the WAN side.
+This is most important as your VPN will drop when the FQDN does not match the ones of the certificate.
 
 If you already have a CA roll out a server certificate and import 
-the CA via **System->Trust->Authorities** and the certificate with the key in 
+the CA itself via **System->Trust->Authorities** and the certificate with the key in 
 **System->Trust->Certificates**.
 
 -----------------------
 Step 2 - Mobile Clients
 -----------------------
-First we will need to setup the mobile clients network and authentication methods.
+First we will need to setup the mobile clients network and authentication source.
 Go to **VPN->IPsec->Mobile Clients**
 
 For our example will use the following settings:
@@ -48,7 +48,7 @@ example.
 Then enter the Mobile Client Phase 1 setting.
 
 -------------------------------
-Step 2 - Phase 1 Mobile Clients
+Step 3 - Phase 1 Mobile Clients
 -------------------------------
 
 Phase 1 General information
@@ -64,7 +64,7 @@ Phase 1 General information
 Phase 1 proposal (Authentication)
 ---------------------------------
 =========================== ====================== ============================================
- **Authentication method**   EAP-MSCHAPv2           *Using a Pre-shared Key and Login*
+ **Authentication method**   EAP-MSCHAPv2           *This is the method we want here*
  **My identifier**           Distinguished Name     *Set the FQDN you used within certificate*
  **My Certificate**          Certificate            *Choose the certificate from dropdown list*
 =========================== ====================== ============================================
@@ -73,9 +73,9 @@ Phase 1 proposal (Authentication)
 Phase 1 proposal (Algorithms)
 -----------------------------
 ========================== ============= ===========================================================
- **Encryption algorithm**   AES           *For our sample we will Use AES/256 bits*
+ **Encryption algorithm**   AES           *For our example we will use AES/256 bits*
  **Hash algoritm**          SHA1,SHA256   *SHA1 and SHA256 for compatibility*
- **DH key group**           1024+2048 bit *1024 and 2048 bit for compatibility*
+ **DH key group**           1024,2048 bit *1024 and 2048 bit for compatibility*
  **Lifetime**               28800 sec     *lifetime before renegotiation*
 ========================== ============= ===========================================================
 
@@ -113,13 +113,13 @@ Local Network
 
 Phase 2 proposal (SA/Key Exchange)
 ----------------------------------
-=========================== ============ =============================================
+=========================== ============ ====================================================
 **Protocol**                 ESP           *Choose ESP for encryption*
-**Encryption algorithms**    AES / 256     *For the sample we use AES 256*
+**Encryption algorithms**    AES / 256     *For this example we use AES 256*
 **Hash algorithms**          SHA1,SHA256   *Same as before, mix SHA1 and SHA256*
-**PFS Key group**            off           *Most systems do not support PFS in Phase2*
+**PFS Key group**            off           *Most mobile systems do not support PFS in Phase2*
 **Lifetime**                 3600 sec
-=========================== ============ =============================================
+=========================== ============ ====================================================
 
 **Save** your setting **Enable IPsec**, Select:
 
