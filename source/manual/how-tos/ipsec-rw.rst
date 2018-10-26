@@ -107,7 +107,7 @@ app installed to have a broader compatibility for all systems.
    "IKEv1 Mutual PSK + XAuth","N","N","tbd","tbd","tbd","tbd","Link"
    "IKEv2 EAP-TLS","tbd","tbd","tbd","tbd","tbd","tbd","Link"
    "IKEv2 RSA local + EAP remote","tbd","tbd","tbd","tbd","tbd","tbd","Link"
-   "IKEv2 EAP-MSCHAPv2","Y","Y","Y","Y","Y","Y, w/ Strongswan","Link"
+   "IKEv2 EAP-MSCHAPv2","Y","Y","Y","Y","Y","Y, w/ Strongswan",":doc:`how-tos/ipsec-rw-srv-mschapv2`"
    "IKEv2 Mutual RSA + EAP-MSCHAPv2","tbd","tbd","tbd","tbd","tbd","tbd","Link"
    "IKEv2 EAP-RADIUS","Y","Y","Y","Y","Y","Y, w/ Strongswan","Link"
    "IKEv1 Mutual RSA","N","N","N","N","N","N","Link"
