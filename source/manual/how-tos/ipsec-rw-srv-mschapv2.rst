@@ -1,6 +1,6 @@
-=====================================
-Setup OPNsense for IKEv2 EAP-MSCHAPv2
-=====================================
+============================================
+IPsec: Setup OPNsense for IKEv2 EAP-MSCHAPv2
+============================================
 
 EAP-MSCHAPv2 via IKEv2 is the most compatible combination.
 We assume you have read the first part at 
