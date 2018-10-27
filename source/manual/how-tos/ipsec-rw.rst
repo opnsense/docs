@@ -1,5 +1,5 @@
 =========================
-Setup IPsec Remote Access
+IPsec: Setup Remote Access
 =========================
 Road Warriors are remote users who need secure access to the companies infrastructure.
 IPsec Mobile Clients offer a solution that is easy to setup and comptabile with most current devices.
@@ -95,21 +95,20 @@ interface.
 In the next table you can see the existing VPN authentication mechanisms and which client 
 operating systems supports it with links to their configurations.
 For Linux testing was done with Ubuntu 18.4 Desktop and XdebX installed. 
-As Andoid doe not support IKEv2 yet we added notes for combinations with strongswan
+As Andoid dos not support IKEv2 yet we added notes for combinations with strongswan
 app installed to have a broader compatibility for all systems.
+Mutual RSA and PSK without XAuth requires L2TP, since this legacy technology is 
+very error prone we will not cover it here.
 
 .. csv-table:: VPN combinations
    :header: "VPN Method", "Win7", "Win10", "Linux", "Mac OS X", "IOS", "Android", "OPNsense config"
    :widths: 40, 10, 10, 10, 10, 10, 20, 20
 
-   "IKEv1 Hybrid RSA + XAuth","N","N","Yes","Yes","Yes","Yes","Link"
-   "IKEv1 Mutual RSA + XAuth","N","N","Yes","Yes","Yes","Yes","Link"
-   "IKEv1 Mutual PSK + XAuth","N","N","tbd","tbd","tbd","tbd","Link"
+   "IKEv1 Hybrid RSA + XAuth","N","N","tbd","Yes","Yes","tbd","Link"
+   "IKEv1 Mutual RSA + XAuth","N","N","tbd","Yes","Yes","Yes","Link"
+   "IKEv1 Mutual PSK + XAuth","N","N","tbd","tbd","tbd","Yes","Link"
    "IKEv2 EAP-TLS","tbd","tbd","tbd","tbd","tbd","Y, w/ Strongswan",":doc:`how-tos/ipsec-rw-srv-eaptls`"
    "IKEv2 RSA local + EAP remote","tbd","tbd","tbd","tbd","tbd","Y, w/ Strongswan",":doc:`how-tos/ipsec-rw-srv-eaptls`"
    "IKEv2 EAP-MSCHAPv2","Y","Y","Y","Y","Y","Y, w/ Strongswan",":doc:`how-tos/ipsec-rw-srv-mschapv2`"
    "IKEv2 Mutual RSA + EAP-MSCHAPv2","tbd","tbd","tbd","tbd","tbd","Y, w/ Strongswan",":doc:`how-tos/ipsec-rw-srv-rsamschapv2`"
    "IKEv2 EAP-RADIUS","Y","Y","Y","Y","Y","Y, w/ Strongswan",":doc:`how-tos/ipsec-rw-srv-eapradius`"
-   "IKEv1 Mutual RSA","N","N","N","N","N","N","Link"
-   "IKEv1 Mutual PSK","N","N","N","N","N","N","Link"
-
