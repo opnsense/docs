@@ -91,6 +91,9 @@ interface.
 .. image:: images/ipsec_ipsec_lan_rule.png
     :width: 100%
 
+-----------------
+VPN compatibility
+-----------------
 
 In the next table you can see the existing VPN authentication mechanisms and which client 
 operating systems supports it with links to their configurations.
