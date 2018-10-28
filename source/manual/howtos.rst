@@ -46,9 +46,11 @@ How to's
    how-tos/nginx_basic_auth
    how-tos/nginx_tls_auth
    how-tos/nginx_waf
+   how-tos/nginx_streams
    how-tos/ntopng
    how-tos/openconnect
    how-tos/orange_fr_fttp
+   how-tos/orange_fr_tvf
    how-tos/pac
    how-tos/proxyicapantivirus
    how-tos/proxyicapantivirusinternal
@@ -65,4 +67,7 @@ How to's
    how-tos/user-ldap
    how-tos/user-local
    how-tos/user-radius
+   how-tos/wireguard-client
+   how-tos/wireguard-client-azire
+   how-tos/wireguard-client-mullvad
    how-tos/zerotier
