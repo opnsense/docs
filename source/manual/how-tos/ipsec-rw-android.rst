@@ -51,9 +51,9 @@ Mutual RSA + XAuth
 .. image:: images/ipsec_rw_android_mutualrsa2.png
    :width: 60%
 
---------------------
-IKEv2 + EAP-MSCHAPv2
---------------------
+----------------------------------
+IKEv2 + EAP-MSCHAPv2 or EAP-RADIUS
+----------------------------------
 
 .. image:: images/ipsec_rw_android_ikev2-mschap1.png
    :width: 60%
@@ -63,3 +63,22 @@ IKEv2 + EAP-MSCHAPv2
    
 .. image:: images/ipsec_rw_android_ikev2-mschap3.png
    :width: 60%
+
+---------------
+IKEv2 + EAP-TLS
+---------------
+
+For EAP-TLS choose RSA (local)+ EAP-TLS (remote) in your OPNsense configuration.
+
+.. image:: images/ipsec_rw_android_ikev2-cert.png
+   :width: 60%
+   
+---------------------------------------------
+IKEv2 + Certificate + EAP (Username/Password)
+---------------------------------------------
+
+This is the most secure combination!
+
+.. image:: images/ipsec_rw_android_ikev2-certeap.png
+   :width: 60%
+   
