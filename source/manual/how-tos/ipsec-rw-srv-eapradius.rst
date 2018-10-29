@@ -2,6 +2,8 @@
 IPsec: Setup OPNsense for IKEv2 EAP-RADIUS
 ==========================================
 
+.. contents:: Index
+
 EAP-RADIUS via IKEv2 is nearly the same as EAP-MSCHAPv2, but authentication is agains a Radius instance.
 We assume you have read the first part at 
 :doc:`how-tos/ipsec-rw`
