@@ -105,7 +105,7 @@ very error prone we will not cover it here.
 
 .. csv-table:: VPN combinations
    :header: "VPN Method", "Win7", "Win10", "Linux", "Mac OS X", "IOS", "Android", "OPNsense config"
-   :widths: 40, 10, 10, 10, 10, 10, 20, 20
+   :widths: 40, 20, 20, 20, 20, 20, 20, 20
 
    "IKEv1 Hybrid RSA + XAuth","N","N","tbd","Yes","Yes","N",":doc:`how-tos/ipsec-rw-srv-ikev1xauth`"
    "IKEv1 Mutual RSA + XAuth","N","N","tbd","Yes","Yes","Y :doc:`how-tos/ipsec-rw-android`",":doc:`how-tos/ipsec-rw-srv-ikev1xauth`"
