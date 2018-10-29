@@ -2,6 +2,14 @@
 IPsec: Setup Android Remote Access
 ====================================
 
+.. contents:: Step 1 - Install Certificte
+.. contents:: Step 2 - Add VPN Connection
+.. contents:: Mutual PSK + XAuth
+.. contents:: Mutual RSA + XAuth
+.. contents:: IKEv2 + EAP-MSCHAPv2 or EAP-RADIUS
+.. contents:: IKEv2 + EAP-TLS
+.. contents:: IKEv2 + Mutual RSA + EAP-MSCHAPv2
+
 Here you can see the configuration options for all compatible VPN types.
 We assume that you are familiar with adding a new VPN connection.
 
