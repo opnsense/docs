@@ -76,8 +76,10 @@ Phase 1 General information
 Phase 1 proposal (Authentication)
 ---------------------------------
 =========================== ====================== =========================================================================
- **Authentication method**   XAuth                  *Choos one of the three available options*
+ **Authentication method**   XAuth                  *Choose one of the three available options*
+ **Negotiation mode**        Main Mode              *Use Main Mode here*
  **My identifier**           Distinguished Name     *Set the FQDN you used within certificate, for PSK use "My IP address"*
+ **Pre-shared Key**          Shared secret          *For Mutual PSK + XAuth use this PSK, otherwise certificate below*
  **My Certificate**          Certificate            *Choose the certificate from dropdown list, only valid for RSA variants*
 =========================== ====================== =========================================================================
 
