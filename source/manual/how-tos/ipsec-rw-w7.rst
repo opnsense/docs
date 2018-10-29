@@ -2,6 +2,8 @@
 IPsec: Setup Windows 7 Remote Access
 ====================================
 
+.. contents:: Index
+
 Here you can see the configuration options for all compatible VPN types.
 We assume that you are familiar with adding a new VPN connection.
 
