@@ -36,26 +36,30 @@ Mutual PSK + XAuth
 ------------------
 
 .. image:: images/ipsec_rw_android_mutualpsk1.png
-   :width: 100%
+   :width: 60%
+   
 .. image:: images/ipsec_rw_android_mutualpsk2.png
-   :width: 100%
+   :width: 60%
    
 ------------------
 Mutual RSA + XAuth
 ------------------
 
 .. image:: images/ipsec_rw_android_mutualrsa1.png
-   :width: 100%
+   :width: 60%
+   
 .. image:: images/ipsec_rw_android_mutualrsa2.png
-   :width: 100%
+   :width: 60%
 
 --------------------
 IKEv2 + EAP-MSCHAPv2
 --------------------
 
 .. image:: images/ipsec_rw_android_ikev2-mschap1.png
-   :width: 100%
+   :width: 60%
+   
 .. image:: images/ipsec_rw_android_ikev2-mschap2.png
-   :width: 100%
+   :width: 60%
+   
 .. image:: images/ipsec_rw_android_ikev2-mschap3.png
-   :width: 100%
+   :width: 60%
