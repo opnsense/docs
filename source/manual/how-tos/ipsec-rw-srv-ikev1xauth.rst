@@ -2,6 +2,8 @@
 IPsec: Setup OPNsense for IKEv1 using XAuth
 ===========================================
 
+.. contents:: Index
+
 XAuth was an addition to IKEv1 supporting user authentication credentials additionally to 
 pre-shared keys or certificates. There are three different types supported by OPNsense which
 we will describe here.
