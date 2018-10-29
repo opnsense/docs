@@ -2,6 +2,8 @@
 IPsec: Setup OPNsense for IKEv2 EAP-TLS
 =======================================
 
+.. contents:: Index
+
 EAP-TLS via IKEv2 is based on client certificate authentication. 
 Be sure to install the client certificate on your enduser device.
 
