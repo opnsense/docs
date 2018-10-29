@@ -151,15 +151,17 @@ Phase 2 proposal (SA/Key Exchange)
 Step 4 - Add IPsec Users
 ------------------------
 
-Go to **VPN->IPsec->Pre-Shared Keys** and press **Add**.
+Go to **System->Access->Users** and press the **+** sign in the lower right corner
+to add a new user.
 
 Enter the following into the form:
 
-===================   ==========
- **Identifier**        expert
- **Pre-Shared Key**    &test!9T
- **Type**              PSK
-===================   ==========
+=============== ==========
+ **User Name**   expert
+ **Password**    &test!9T
+=============== ==========
+
+**Save** to apply.
 
 ------------------------------------------------
 Step 5 - Add client certificate (for Mutual RSA)
