@@ -73,9 +73,9 @@ For EAP-TLS choose RSA (local)+ EAP-TLS (remote) in your OPNsense configuration.
 .. image:: images/ipsec_rw_android_ikev2-cert.png
    :width: 60%
    
----------------------------------------------
-IKEv2 + Certificate + EAP (Username/Password)
----------------------------------------------
+---------------------------------
+IKEv2 + Mutual RSA + EAP-MSCHAPv2
+---------------------------------
 
 This is the most secure combination!
 
