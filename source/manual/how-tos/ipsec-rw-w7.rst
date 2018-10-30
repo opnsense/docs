@@ -52,4 +52,10 @@ to set specific routes sent via VPN.
 .. image:: images/ipsec-rw-w7-2.png
    :width: 60%
 
+----------------------------------
+IKEv2 + EAP-MSCHAPv2 or EAP-RADIUS
+----------------------------------
 
+.. image:: images/ipsec_rw_w7-eapmschap.png
+   :width: 60%
+   
