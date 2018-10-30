@@ -25,6 +25,7 @@ User Manual
    manual/vpnet
    manual/ips
    manual/proxy
+   manual/reverse_proxy
    manual/antivirus
    manual/shaping
    manual/multiwan
