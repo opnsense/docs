@@ -56,6 +56,6 @@ to set specific routes sent via VPN.
 IKEv2 + EAP-MSCHAPv2 or EAP-RADIUS
 ----------------------------------
 
-.. image:: images/ipsec_rw_w7-eapmschap.png
+.. image:: images/ipsec-rw-w7-eapmschap.png
    :width: 60%
    
