@@ -172,3 +172,7 @@ see the details.
 You should see an IP address, Gateway IP and ISP DNS server(s).
 If all is filled in, then either your firewall is blocking the traffic or the
 network connection is not working well.
+
+In case you were not successful, you might have to check manually what is going
+on. Read the `Troubleshooting PPP Connections <https://www.freebsd.org/doc/handbook/ppp-troubleshoot.html>`_ section in the FreeBSD manual for more information and
+consult the OPNsense support forum.
