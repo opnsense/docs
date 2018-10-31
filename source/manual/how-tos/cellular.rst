@@ -168,6 +168,12 @@ providers required factory resets (for whatever reason) to get them to work prop
   As mentioned above, the SIM card needs to be available. See the hints
   in the first step of this tutorial to make sure everything is prepared properly.
 
+.. Note::
+  
+  Some Sierra Wireless modems still seem to need a specific init string to work
+  properly. One that seems to work for multiple users and LTE cards is ``&F0E1Q0 +CMEE=2``. In any case you should first try without init string and only give it
+  a try if you could not get any connection without. You can add this in **Interfaces->Point-to-Point->Devices->Your particular device->Advanced Options->Init String**.
+
 When the device seems to work properly then checkout if the interface was assigned
 an IP address, go to **Interfaces->Overview** and click on the WAN interface to
 see the details.
