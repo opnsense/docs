@@ -27,6 +27,6 @@ the **Address** to the FQDN matching the one of the certificate at your Firewall
 IKEv2 + EAP-MSCHAPv2 or EAP-RADIUS
 ----------------------------------
 
-.. image:: images/ipsec-rw-linux-eapmschap.png
+.. image:: images/ipsec-rw-linux-eapmschap.PNG
    :width: 60%
    
