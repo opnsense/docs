@@ -28,6 +28,53 @@ postfix   SMTP (e-mail)
 relayd    TCP and UDP Streams
 ========= ==========================
 
+Terms
+=====
+
+**Forward Proxy**
+
+A Proxy which is used by a client to connect to the internet. It is usually
+used in companies to scan traffic for malware. See the more specific pages
+(:doc:`proxy`) for more background information.
+
+**Reverse Proxy**
+
+A software which takes a request or a connection from a client and sends is to an upstream server.
+It may change some data if needed (for exmaple inject HTTP header).
+
+**Webserver**
+
+A webserver in contrast to a reverse proxy sends an answer to the reverse
+proxy sends out the answer to the request which may be modified or cached
+by a reverse or forward proxy.
+
+**Upstream, Backend**
+
+A single or multiple servers which can be used for load balancing the client
+request to. All servers used in an upstram must act equally (same protocol
+etc.) but do not need to run on the same port.
+
+**Upstream Server, Backend Server**
+
+This is your listening application like an nginx on port 80 for HTTP or your
+LDAP server on TCP/389.
+
+**Frontends (HAProxy) and HTTP(S)/Stream Servers (nginx)**
+
+This are the the configurations for the ports used for incoming connections.
+For example, if you bind a port to TCP/80 (standard port of HTTP), you can
+decide, what is going to be done with this request. The same is true for
+connections.
+
+**TLS and SSL**
+
+TLS replaced SSL and it is used to protect the application protocol against a broad
+range of attacks like snooping, data manipulation (for example ad injection,
+redirects, manipulation of downloaded files like executables).
+
+Modern clients and servers should support TLS 1.2 and TLS 1.3. All others should
+be disabled.
+
 TLS - Diffenent ways to use it
 ==============================
 
