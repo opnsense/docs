@@ -104,7 +104,7 @@ VPN compatibility
 
 In the next table you can see the existing VPN authentication mechanisms and which client 
 operating systems supports it with links to their configurations.
-For Linux testing was done with Ubuntu 18.4 Desktop and XdebX installed. 
+For Linux testing was done with Ubuntu 18.4 Desktop and *network-manager-strongswan* installed. 
 As Andoid dos not support IKEv2 yet we added notes for combinations with strongswan
 app installed to have a broader compatibility for all systems.
 Mutual RSA and PSK without XAuth requires L2TP, since this legacy technology is 
