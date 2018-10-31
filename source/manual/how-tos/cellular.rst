@@ -64,12 +64,7 @@ back, enter ``~.`` to quit and try the next device. In this particular example, 
 Sierra Wireless MC7430 card was used and ``/dev/cuaU0.2`` is the only device where
 we get ``OK`` back.
 
-So once you get ``Connected`` type ``AT``. If you do not get an ``OK``
-back, enter ``~.`` to quit and try the next device. For my card the only
-device where I get ``OK`` back is ``/dev/cuaU0.2``. Quit ``cu`` with
-``~.``.
-
-Check if SIM card is available and can be accessed:
+Now, check if SIM card is available and can be accessed:
 
 .. code::
 
