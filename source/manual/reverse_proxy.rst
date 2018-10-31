@@ -2,6 +2,9 @@
 Reverse Proxy and Webserver
 ===========================
 
+.. Note::
+    All reverse proxies are plugins and need to be installed first.
+
 Why should a reverse proxy be used?
 ===================================
 
