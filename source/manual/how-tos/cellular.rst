@@ -17,9 +17,6 @@ have to tweak your card with specific AT commands, for example in the init strin
 
 The screenshots in this guide are for a Huawei ME909u-521 miniPCIe cellular modem.
 
-.. Note::
-   Support for the ME909u-521 will be added in OPNsense 16.1.18.
-
 ---------------------------
 Choosing the right hardware
 ---------------------------
@@ -49,7 +46,7 @@ First, we need to figure out what device is accepting AT commands on your modem.
 the Huawei modem used in this example the device is ``/dev/cuaU0.0``, other modems
 might provide the AT interface on another device.
 
-On FreeBSD, ``/dev/cuauN``devices are call-out ports that are used for modems instead
+On FreeBSD, ``/dev/cuauN`` devices are call-out ports that are used for modems instead
 of terminals, see section `26.2.1 <https://www.freebsd.org/doc/handbook/serial.html>`_ in the FreeBSD manual. 
 
 The best way to locate the correct port is to send AT commands to it. This can be
