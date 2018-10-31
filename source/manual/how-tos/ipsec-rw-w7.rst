@@ -7,7 +7,7 @@ IPsec: Setup Windows Remote Access
 Here you can see the configuration options for all compatible VPN types.
 We assume that you are familiar with adding a new VPN connection.
 
-The tests were done with Windows 7 and 10
+The tests were done with Windows 7 and 10.
 
 All screenshot were taken from **Network and Sharing Center->Change adapter settings**.
 
