@@ -71,7 +71,6 @@ Now, check if SIM card is available and can be accessed:
    cu -l /dev/cuaU0.2
    Connected
    AT+CPIN?
-   OK
    +CPIN: READY
 
 There are multiple things that can go wrong here, the SIM card might not
