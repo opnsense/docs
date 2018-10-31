@@ -10,15 +10,63 @@ used as primary WAN connection.
 -----------------
 Supported devices
 -----------------
-For this how-to we used a `Deciso Netboard A10 desktop appliance <https://www.deciso.com/product-catalog/opn20076b/>`__
-and a Huawei ME909u-521 miniPCIe cellular modem provided by `OSNet <https://www.osnet.eu/>`__.
+
+In general OPNsense should support all cellular modems that are supported by the
+respective FreeBSD kernel. However, not all devices behave the same way, you might
+have to tweak your card with specific AT commands, for example in the init string.
+
+The screenshots in this guide are for a Huawei ME909u-521 miniPCIe cellular modem.
 
 .. Note::
    Support for the ME909u-521 will be added in OPNsense 16.1.18.
 
+--------------------------------------
+Step 1 - Talking to the cellular modem
+--------------------------------------
+
+First we need to figure out what device is accepting AT commands on your modem. For
+the Huawei modem used in this example the device is ``/dev/cuaU0.0``, other modems
+might provide the AT interface on another device.
+
+On FreeBSD, ``/dev/cuauN``devices are call-out ports that are used for modems instead
+of terminals, see section `26.2.1 <https://www.freebsd.org/doc/handbook/serial.html>`_ in the FreeBSD manual. 
+
+The best way to locate the correct port is to send AT commands to it. This can be
+tested using the utility ``cu``:
+
+.. code::
+
+   cu -l /dev/cuaU0.2
+   Connected
+   AT (<-type that)
+   OK 
+
+So once you get ``Connected`` type ``AT``. If you do not get an ``OK``
+back, enter ``~.`` to quit and try the next device. In this particular example, a
+Sierra Wireless MC7430 card was used and ``/dev/cuaU0.2`` is the only device where
+we get ``OK`` back.
+
+Once you found the correct device we want to see if the modem does see the SIM
+card. Connect to the device again and enter:
+
+
+
+
+
+Quit ``cu`` with ``~.``, we are ready for the next step.
+
+
+
+
 ----------------------------------------
 Step 1 - Configure Point to Point device
 ----------------------------------------
+
+
+
+
+
+
 Go to **Interfaces->Point-to-Point->Devices** and click on **Add** in the upper
 right corner of the form.
 
