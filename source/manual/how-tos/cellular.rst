@@ -7,9 +7,9 @@ as primary internet (WAN) connection or as failover for a fixed/ethernet connect
 With this guide we show you how to easily add a new modem and configure it to be
 used as primary WAN connection.
 
-----------------------------
-Devices used for this How-to
-----------------------------
+-----------------
+Supported devices
+-----------------
 For this how-to we used a `Deciso Netboard A10 desktop appliance <https://www.deciso.com/product-catalog/opn20076b/>`__
 and a Huawei ME909u-521 miniPCIe cellular modem provided by `OSNet <https://www.osnet.eu/>`__.
 
