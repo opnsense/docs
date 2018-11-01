@@ -54,7 +54,7 @@ by a reverse or forward proxy.
 **Upstream, Backend**
 
 A single or multiple servers which can be used for load balancing the client
-request to. All servers used in an upstram must act equally (same protocol
+request to. All servers used in an upstream must act equally (same protocol
 etc.) but do not need to run on the same port.
 
 **Upstream Server, Backend Server**
