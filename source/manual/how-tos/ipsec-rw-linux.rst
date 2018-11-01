@@ -26,7 +26,7 @@ Download the Root CA from the OPNsense Firewall since it's needed for all EAP ty
 Step 2 - Add VPN Connection
 ---------------------------
 
-Open the network manager and add a new VPN connction. Choose **IPSec/IKEv2**, give it a **Name** and set
+Open the network manager and add a new VPN connction. Choose **IPSec/IKEv2**, enter a **Name** and set
 the **Address** to the FQDN matching the one of the certificate at your Firewall.
 
 ----------------------------------
