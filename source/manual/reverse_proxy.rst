@@ -16,9 +16,14 @@ as well as other checks to protect the application behind. Such checks are malwa
 spam, web attack detection and so on.
 
 .. Warning::
-    This tools support you to prevent some bad things from happening but will never
-    provide a 100% success rate. Do not use them as a replacement / excuse for (not)
-    fixing the upstream.
+    Reverse proxies support you to prevent common attacks to your
+    web application by bots but will never provide a 100% success rate.
+    Especially a targeted attack will very likely be not detected because a lot of
+    effort has been taken to prevent detection.
+    Do not use a reverse proxy as a replacement / excuse for (not) fixing the main
+    problems like known vulnerabilities in libraries, outdated software, or
+    vulnerabilities in your own code.
+
 
 Supported Reverse Proxies in OPNsense
 =====================================
@@ -183,6 +188,15 @@ You may use some extension headers like SNI to decide, which upstream is used.
 This setup is recommended if you only want some improved routing decisions
 better than plain NAT.
 
+.. Note::
+    A reverse proxy can still get access to the encrypted content if it has the
+    private Key of the server and a cipher without PFS_ is used. In other cases
+    the connection can only be decrypted if one of the peers escrows the key.
+    Firefox supports this via the environment SSLKEYLOGFILE_.
+    This is not supported by OPNsense plugins.
+
+.. _SSLKEYLOGFILE: https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/Key_Log_Format
+.. _PFS: https://en.wikipedia.org/wiki/Forward_secrecy
 
 Tutorials
 =========
