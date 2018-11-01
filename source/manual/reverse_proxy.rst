@@ -59,7 +59,7 @@ etc.) but do not need to run on the same port.
 
 **Upstream Server, Backend Server**
 
-This is your listening application like an nginx on port 80 for HTTP or your
+This is your listening application like nginx on port 80 for HTTP or your
 LDAP server on TCP/389.
 
 **Frontends (HAProxy) and HTTP(S)/Stream Servers (nginx)**
