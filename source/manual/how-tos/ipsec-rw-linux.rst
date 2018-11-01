@@ -20,7 +20,7 @@ It can be installed using the following command on the command line:
 Step 1 - Download Certificte
 ----------------------------
 
-Download the Root CA from the OPNsense Firewall since it's needed for all EAP types with IKEv2.
+Download the Root CA from the OPNsense Firewall since it is needed for all EAP types with IKEv2.
 
 ---------------------------
 Step 2 - Add VPN Connection
