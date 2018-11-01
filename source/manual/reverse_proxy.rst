@@ -40,16 +40,64 @@ A Proxy which is used by a client to connect to the internet. It is usually
 used in companies to scan traffic for malware. See the more specific pages
 (:doc:`proxy`) for more background information.
 
-**Reverse Proxy**
+**Reverse Proxy and Webserver**
 
-A software which takes a request or a connection from a client and sends is to an upstream server.
-It may change some data if needed (for exmaple inject HTTP header).
+A reverse proxy is software which takes a request or a connection from a client
+and sends is to an upstream server. It may change some data if needed (for
+exmaple inject HTTP header or perform access control). A reverse proxy can be
+generic for any protocol, but is often used for HTTP(S).
 
-**Webserver**
+A reverse proxy does not need to by fully aware of data it is transferring it needs
+to know, which upstream is responsible to process it and some metadata to know
+what it sould do (like for caching a Cache-Control header and for
+Authorization an Authentication header in HTTP).
 
-A webserver in contrast to a reverse proxy sends an answer to the reverse
-proxy sends out the answer to the request which may be modified or cached
-by a reverse or forward proxy.
+A webserver, in contrast to a reverse proxy, finally processes the request
+(the webserver contains the business logic in the web application) and sends
+a response depending on the request, which may be modified or cached
+by a reverse (for example Varnish_, nginx_) or forward proxy
+(see :doc:`how-tos/proxyicapantivirus`, :doc:`how-tos/cachingproxy`).
+For example, a webserver serves a file called index.html from the local file
+system or processes an API endpoint and returns the result.
+A web server usually has an API for calling external interpreters:
+
+============ ========================== =================================================
+**API**      **Typical Use Case**       **Implemented at (examples)**
+============ ========================== =================================================
+FastCGI      PHP, Rails                 PHP-FPM, nginx, Apache HTTPd
+AJP          Java application servers   Tomcat, JBoss, WildFly, Apache HTTPd (mod_jk_)
+(U)WSGI      Python                     Django_ via UWSGI
+============ ========================== =================================================
+
+Others include the interpreter directly into the webserver,
+are written in this language or in a C/C++ extension:
+
+============================================= ================================================
+**Technology**                                **Used for**
+============================================= ================================================
+Passenger                                      Application Server for differnet Languages
+nginx Unit_                                    Application Server for differnet Languages
+Undertow_ (Raw, JBoss, WildFly)                Java application server
+Apache Tomcat                                  Java application server
+unit_, puma_, unicorn_                         Many Rack_ based frameworks (RoR_, Sinatrarb_, …)       
+gunicorn_                                      Python application server
+Apache HTTPd (with modules like mod_php)       Webserver with interpreter modules
+============================================= ================================================
+
+
+.. _Varnish: https://varnish-cache.org/
+.. _nginx: https://www.nginx.com/resources/wiki/start/topics/examples/reverseproxycachingexample/
+.. _Unit: https://unit.nginx.org/
+.. _puma: https://github.com/puma/puma
+.. _unicorn: https://bogomips.org/unicorn/
+.. _gunicorn: https://gunicorn.org/
+.. _Django: https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html
+.. _Rack: https://rack.github.io/
+.. _UWSGI: https://uwsgi-docs.readthedocs.io/en/latest/
+.. _mod_jk: https://tomcat.apache.org/connectors-doc/webserver_howto/apache.html
+.. _Undertow: http://undertow.io/
+.. _RoR: https://rubyonrails.org/
+.. _sinatrarb: http://sinatrarb.com/
 
 **Upstream, Backend**
 
