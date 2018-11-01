@@ -83,7 +83,7 @@ Phase 1 proposal (Algorithms)
 
 Advanced Options are fine by default.
 
-**Save** your setting.
+**Save** your settings.
 
 -------------------------------
 Step 3 - Phase 2 Mobile Clients
