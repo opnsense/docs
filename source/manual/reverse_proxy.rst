@@ -64,7 +64,7 @@ LDAP server on TCP/389.
 
 **Frontends (HAProxy) and HTTP(S)/Stream Servers (nginx)**
 
-This are the the configurations for the ports used for incoming connections.
+These are the the configurations for the ports used for incoming connections.
 For example, if you bind a port to TCP/80 (standard port of HTTP), you can
 decide, what is going to be done with this request. The same is true for
 connections.
