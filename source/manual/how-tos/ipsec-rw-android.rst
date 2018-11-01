@@ -16,7 +16,7 @@ Step 1 - Install Certificte
 For all RSA or IKEv2 related VPN configuration we need to install the Root CA and sometimes also
 the client certificate. The easiest way is to send yourself the client certificate and Root CA per
 e-mail and download the files. Under settings search for "cert" and you will be prompted for 
-**Install certificates**. Navigate to the download folder and install the Root CA and - when configured - 
+**Install certificates**. Navigate to the download directory and install the Root CA and - when configured - 
 the client certificate.
 
 ---------------------------
