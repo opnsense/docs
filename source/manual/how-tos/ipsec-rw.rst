@@ -1,6 +1,6 @@
-=========================
+==========================
 IPsec: Setup Remote Access
-=========================
+==========================
 
 .. contents:: Index
 
@@ -28,8 +28,6 @@ authentication methods e.g.
    *(Dont forget to save and apply)*
 
    .. image:: images/block_private_networks.png
-
------------------------------
 
 ------------
 Sample Setup
