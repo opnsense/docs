@@ -72,7 +72,7 @@ connections.
 **TLS and SSL**
 
 TLS replaced SSL and it is used to protect the application protocol against a broad
-range of attacks like snooping, data manipulation (for example ad injection,
+range of attacks like snooping or data manipulation (for example ad injection,
 redirects, manipulation of downloaded files like executables).
 
 Modern clients and servers should support TLS 1.2 and TLS 1.3. All others should
