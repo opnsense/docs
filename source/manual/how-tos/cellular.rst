@@ -28,14 +28,15 @@ Use websites like `FrequencyCheck <https://www.frequencycheck.com/>`_ to find th
 frequency band(s) used and get a cellular modem that supports these frequencies.
 
 You should also buy an appropriate pigtail antenna cable and LTE antenna. Note
-that LTE antennas often have different plugs than WIFI antennas, chose your
+that LTE antennas often have different connectors than WIFI antennas, chose your
 equipment accordingly. Getting the right antenna has a big impact on the quality
-of your signal.
+of your signal. For LTE, MIMO (multiple input, multiple output) antennas should
+be considered, see for example `this guide <https://www.specialistantennas.co.uk/news/lte-antenna-choices-considerations>`_.
 
 .. Note::
 
   Make sure to connect the antenna to the cellular modem once you start 
-  configuring the modem in OPNsense. There is very little chance that you
+  configuring the modem in OPNsense. There is little chance that you
   get any signal without antenna.
 
 --------------------------------------
