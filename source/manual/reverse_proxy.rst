@@ -17,12 +17,14 @@ spam, web attack detection and so on.
 
 .. Warning::
     Reverse proxies support you to prevent common attacks to your
-    web application by bots but will never provide a 100% success rate.
+    web application by bots but will never provide a 100% success rate in detection ob
+    bad traffic.
     Especially a targeted attack will very likely be not detected because a lot of
     effort has been taken to prevent detection.
     Do not use a reverse proxy as a replacement / excuse for (not) fixing the main
     problems like known vulnerabilities in libraries, outdated software, or
-    vulnerabilities in your own code.
+    vulnerabilities in your own code by updating / removing them or by changeing
+    your own code.
 
 
 Supported Reverse Proxies in OPNsense
