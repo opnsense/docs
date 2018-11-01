@@ -6,7 +6,7 @@ IPsec: Setup OPNsense for IKEv2 Mutual RSA + MSCHAPv2
 
 Mutual RSA + MSCHAPv2 via IKEv2 is based on client certificate authentication combined with username
 and password via MSCHAPv2.
-Be sure to install the client certificate on your enduser device.
+Be sure that the client certificate is installed on your users device.
 
 ----------------------------
 Step 1 - Create Certificates
