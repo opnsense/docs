@@ -60,12 +60,12 @@ tested using the utility ``cu``:
    AT (<-type that)
    OK 
 
-So once you get ``Connected`` type ``AT``. If you do not get an ``OK``
+Once you see ``Connected`` type ``AT``. If you do not get an ``OK``
 back, enter ``~.`` to quit and try the next device. In this particular example, a
 Sierra Wireless MC7430 card was used and ``/dev/cuaU0.2`` is the only device where
 we get ``OK`` back.
 
-Now, check if SIM card is available and can be accessed:
+Now, check if a SIM card is available and can be accessed:
 
 .. code::
 
