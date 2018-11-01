@@ -40,7 +40,7 @@ IKE Extensions
 **Enable**                 checked          *check to enable mobile clients*
 **User Authentication**    Local Database   *For the example we use the Local Database*
 **Group Authentication**   none             *Leave on none*
-**Virtual Address Pool**   10.10.0.0/24      *Enter the IP range for the remote clients*
+**Virtual Address Pool**   10.10.0.0/24    *Enter the IP range for the remote clients*
 ========================= ================ ================================================
 
 You can select other options, but we will leave them all unchecked for this
