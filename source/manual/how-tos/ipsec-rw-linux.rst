@@ -10,6 +10,12 @@ We assume that you are familiar with adding a new VPN connection.
 The tests were done with Ubuntu 18.04 and network-manager-stronswan installed, Ubuntu only supports
 OpenVPN and PPTP with the default install.
 
+It can be installed using the following command on the command line:
+
+.. code-block:: sh
+
+    apt install network-manager-stronswan
+
 ----------------------------
 Step 1 - Download Certificte
 ----------------------------
