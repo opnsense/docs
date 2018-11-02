@@ -57,7 +57,7 @@ generic for any protocol, but is often used for HTTP(S).
 A reverse proxy does not need to by fully aware of data it is transferring it needs
 to know, which upstream is responsible to process it and some metadata to know
 what it sould do (like for caching a Cache-Control header and for
-Authorization an Authentication header in HTTP).
+authorizing an Authentication header in HTTP).
 
 A webserver, in contrast to a reverse proxy, finally processes the request
 (the webserver contains the business logic in the web application) and sends
