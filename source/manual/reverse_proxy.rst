@@ -50,7 +50,7 @@ used in companies to scan traffic for malware. See the more specific pages
 **Reverse Proxy and Webserver**
 
 A reverse proxy is software which takes a request or a connection from a client
-and sends is to an upstream server. It may change some data if needed (for
+and sends it to an upstream server. It may change some data if needed (for
 exmaple inject HTTP header or perform access control). A reverse proxy can be
 generic for any protocol, but is commonly used for HTTP(S).
 
