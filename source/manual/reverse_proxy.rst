@@ -17,7 +17,7 @@ spam, web attack detection and so on.
 
 .. Warning::
     Reverse proxies support you to prevent common attacks to your
-    web application by bots but will never provide a 100% success rate in detection ob
+    web application by bots but will never provide a 100% success rate in detection of
     bad traffic.
     Especially a targeted attack will very likely be not detected because a lot of
     effort has been taken to prevent detection.
