@@ -23,7 +23,7 @@ spam, web attack detection and so on.
     effort has been taken to prevent detection.
     Do not use a reverse proxy as a replacement / excuse for (not) fixing the main
     problems like known vulnerabilities in libraries, outdated software, or
-    vulnerabilities in your own code by updating / removing them or by changeing
+    vulnerabilities in your own code by updating / removing them or by changing
     your own code.
 
 
