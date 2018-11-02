@@ -157,5 +157,5 @@ Step 6 - Add IPsec Users
 ------------------------
 
 Go to your Radius Management Console and start adding users!
-If you are using our FreeRADIUS Plugin follow the official guide:
+If you are using our FreeRADIUS plugin follow the official guide:
 :doc:`how-tos/freeradius`
