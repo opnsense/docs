@@ -35,7 +35,7 @@ ftp-proxy Makes FTP work
 nginx     HTTP, TCP- and UDP streams
 HAProxy   HTTP and TCP streams
 postfix   SMTP (e-mail)
-relayd    TCP and UDP Streams
+relayd    TCP streams
 ========= ==========================
 
 Terms
