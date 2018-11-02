@@ -156,6 +156,6 @@ Phase 2 proposal (SA/Key Exchange)
 Step 6 - Add IPsec Users
 ------------------------
 
-Go to your Radius Management Console and start adding users!
+Go to your RADIUS management console and start adding users!
 If you are using our FreeRADIUS plugin follow the official guide:
 :doc:`how-tos/freeradius`
