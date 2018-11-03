@@ -85,13 +85,15 @@ OpenConnect Client
 :doc:`how-tos/openconnect`
 
 WireGuard Site-to-Site
-------------------
+----------------------------
 :doc:`how-tos/wireguard-s2s`
 
 WireGuard Road Warrior
 ----------------------
 :doc:`how-tos/wireguard-client`
+
 :doc:`how-tos/wireguard-client-azire`
+
 :doc:`how-tos/wireguard-client-mullvad`
 
 Zerotier

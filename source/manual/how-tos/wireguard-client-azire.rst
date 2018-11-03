@@ -11,7 +11,7 @@ Introduction
 
 AzireVPN is an international VPN provider, co-locating in multiple datacenters and offering secure
 tunneling in respect to privacy. To set up a WireGuard VPN to AzireVPN we assume you are familiar
-with the concepts of WireGuard you that you have read the basic howto :doc:`how-tos/wireguard-client`.
+with the concepts of WireGuard you that you have read the basic howto :doc:`wireguard-client`.
 
 -----------------------------------
 Step 1 - Get AzireVPN configuration

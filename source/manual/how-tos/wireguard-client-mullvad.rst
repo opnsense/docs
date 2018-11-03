@@ -11,7 +11,7 @@ Introduction
 
 MullvadVPN is a cloud-based VPN provider, offering secure tunneling in respect to privacy. 
 To set up a WireGuard VPN to MullvadVPN we assume you are familiar with the concepts of WireGuard you that
-you have read the basic howto :doc:`how-tos/wireguard-client`.
+you have read the basic howto :doc:`wireguard-client`.
 
 ----------------------------------
 Step 1 - Setup WireGuard Instance
