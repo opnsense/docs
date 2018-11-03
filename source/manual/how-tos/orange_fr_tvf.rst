@@ -15,14 +15,14 @@ Orange uses two VLANs for TV. VLAN 838 and 840
 Create and assign them as shown.
 
 .. image:: images/tv_image01.png
-	:scale: 100%
+    :width: 100%
 
 Take note of the PCP values
 
 Assign the VLANs as shown and also assign TVLAN for use later.
 
 .. image:: images/tv_image02.png
-	:scale: 100%
+    :width: 100%
 
 igb0 is the WAN in this example. Select the interface that corresponds to WAN in your setup.
 
@@ -33,10 +33,10 @@ TVLAN is assigned to a free port on your router which the TVDecoder is plugged i
 ------------------
 
 .. image:: images/tv_image03.png
-	:scale: 100%
+    :width: 100%
 
 .. image:: images/tv_image04.png
-	:scale: 100%
+    :width: 100%
 
 SEND OPTIONS
 
@@ -58,10 +58,10 @@ subnet-mask,routers, ntp-servers, www-server, classless-routes
 ------------------
 
 .. image:: images/tv_image05.png
-	:scale: 100%
+    :width: 100%
 
 .. image:: images/tv_image06.png
-	:scale: 100%
+    :width: 100%
 
 The dummy IP address is important or IGMPproxy does not start
 
@@ -73,11 +73,11 @@ The dummy IP address is important or IGMPproxy does not start
 
 
 .. image:: images/tv_image07.png
-	:scale: 100%
+    :width: 100%
 
 
 .. image:: images/tv_image08.png
-	:scale: 100%
+    :width: 100%
 
 
 Use a different subnet to current LAN
@@ -87,7 +87,7 @@ Turn on the DHCP service for TVLAN
 NOTE YOU MUST specify the ORANGE DNS servers for the TV to work
 
 .. image:: images/tv_image09.png
-	:scale: 100%
+    :width: 100%
 
 Now reboot and you should have an IP address on VLAN 838 of 10.x.x.x
 
@@ -100,16 +100,16 @@ Ensure you are running OPNsense 18.7.4 or later
 Then configure IGMPproxy as follows
 
 .. image:: images/tv_image10.png
-	:scale: 100%
+    :width: 100%
 
 .. image:: images/tv_image11.png
-	:scale: 100%
+    :width: 100%
 
 
 NOTE: downstream interface is TVLAN
 
 .. image:: images/tv_image12.png
-	:scale: 100%
+    :width: 100%
 
 
 **FIREWALL setup**
@@ -118,20 +118,20 @@ NOTE: downstream interface is TVLAN
 We need to allow traffic to flow on the VLANs and TVLAN and also to connect with Orange servers
 
 .. image:: images/tv_image13.png
-	:scale: 100%
+    :width: 100%
 
 .. image:: images/tv_image14.png
-	:scale: 100%
+    :width: 100%
 
 NOTE the Source is "*"
 
 .. image:: images/tv_image15.png
-	:scale: 100%
+    :width: 100%
 
 And finally the outbound
 
 .. image:: images/tv_image16.png
-	:scale: 100%
+    :width: 100%
 
 Make sure you have clicked Save & Apply
 
