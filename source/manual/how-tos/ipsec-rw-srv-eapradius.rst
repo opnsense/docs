@@ -4,7 +4,7 @@ IPsec: Setup OPNsense for IKEv2 EAP-RADIUS
 
 .. contents:: Index
 
-EAP-RADIUS via IKEv2 is nearly the same as EAP-MSCHAPv2, but authentication is agains a Radius instance.
+EAP-RADIUS via IKEv2 is nearly the same as EAP-MSCHAPv2, but authentication is dont against a Radius instance.
 We assume you have read the first part at 
 :doc:`how-tos/ipsec-rw`
 
@@ -12,8 +12,7 @@ We assume you have read the first part at
 Step 1 - Create Certificates
 ----------------------------
 
-For EAP-RADIUS with IKEv2 you need to create a Root CA and a server certificate
-for your Firewall. 
+For EAP-RADIUS with IKEv2 you need to create a Root CA and a server certificate for your Firewall. 
 
 Go to **System->Trust->Authorities** and click **Add**. Give it a **Descriptive Name** and as **Method**
 choose **Create internal Certificate Authority**. Increase the **Lifetime** and fill in the fields 
@@ -60,8 +59,7 @@ IKE Extensions
  **Virtual Address Pool**   10.10.0.0/24   *Enter the IP range for the remote clients*
 ========================== ============== ================================================
 
-You can select other options, but we will leave them all unchecked for this
-example.
+You can select other options, but we will leave them all unchecked for this example.
 
 **Save** your settings and select **Create Phase1** when it appears.
 Then enter the Mobile Client Phase 1 setting.
@@ -87,7 +85,6 @@ Phase 1 proposal (Authentication)
  **My identifier**           Distinguished Name   *Set the FQDN you used within certificate*
  **My Certificate**          Certificate          *Choose the certificate from dropdown list*
 =========================== ==================== =============================================
-
 
 Phase 1 proposal (Algorithms)
 -----------------------------
