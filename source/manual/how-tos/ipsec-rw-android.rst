@@ -9,9 +9,9 @@ We assume that you are familiar with adding a new VPN connection.
 
 All screenshot were taken from Android version 7.
 
----------------------------
-Step 1 - Install Certificte
----------------------------
+----------------------------
+Step 1 - Install Certificate
+----------------------------
 
 For all RSA or IKEv2 related VPN configuration we need to install the Root CA and sometimes also
 the client certificate. The easiest way is to send yourself the client certificate and Root CA per
