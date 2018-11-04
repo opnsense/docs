@@ -36,15 +36,14 @@ For our example will use the following settings:
 
 IKE Extensions
 --------------
-========================= ================ =============================================
-**Enable**                 checked          *check to enable mobile clients*
-**User Authentication**    Local Database   *For the example we use the Local Database*
-**Group Authentication**   none             *Leave on none*
-**Virtual Address Pool**   10.10.0.0/24     *Enter the IP range for the remote clients*
-========================= ================ =============================================
+========================== ================ =============================================
+ **Enable**                 checked          *check to enable mobile clients*
+ **User Authentication**    Local Database   *For the example we use the Local Database*
+ **Group Authentication**   none             *Leave on none*
+ **Virtual Address Pool**   10.10.0.0/24     *Enter the IP range for the remote clients*
+========================== ================ =============================================
 
-You can select other options, but we will leave them all unchecked for this
-example.
+You can select other options, but we will leave them all unchecked for this example.
 
 **Save** your settings and select **Create Phase1** when it appears.
 Then enter the Mobile Client Phase 1 setting.
@@ -55,13 +54,13 @@ Step 3 - Phase 1 Mobile Clients
 
 Phase 1 General information
 ---------------------------
-========================= ============= ==================================================
-**Connection method**      default       *default is 'Start on traffic'*
-**Key Exchange version**   V2            *only V2 is supported for EAP-MSCHAPv2*
-**Internet Protocol**      IPv4
-**Interface**              WAN           *choose the interface connected to the internet*
-**Description**            MobileIPsec   *freely chosen description*
-========================= ============= ==================================================
+========================== ============= ==================================================
+ **Connection method**      default       *default is 'Start on traffic'*
+ **Key Exchange version**   V2            *only V2 is supported for EAP-MSCHAPv2*
+ **Internet Protocol**      IPv4
+ **Interface**              WAN           *choose the interface connected to the internet*
+ **Description**            MobileIPsec   *freely chosen description*
+========================== ============= ==================================================
 
 Phase 1 proposal (Authentication)
 ---------------------------------
@@ -71,15 +70,14 @@ Phase 1 proposal (Authentication)
  **My Certificate**          Certificate          *Choose the certificate from dropdown list*
 =========================== ==================== =============================================
 
-
 Phase 1 proposal (Algorithms)
 -----------------------------
-========================== ================ ===========================================================
+========================== ================ ============================================
  **Encryption algorithm**   AES              *For our example we will use AES/256 bits*
  **Hash algoritm**          SHA1, SHA256     *SHA1 and SHA256 for compatibility*
  **DH key group**           1024, 2048 bit   *1024 and 2048 bit for compatibility*
  **Lifetime**               28800 sec        *lifetime before renegotiation*
-========================== ================ ===========================================================
+========================== ================ ============================================
 
 Advanced Options are fine by default.
 
@@ -102,25 +100,25 @@ Now press the *+* at the right of this list to add a Phase 2 entry.
 
 General information
 -------------------
-======================= ================== =============================
- **Mode**                Tunnel IPv4        *Select Tunnel mode*
- **Description**         MobileIPsecP2      *Freely chosen description*
-======================= ================== =============================
+================= =============== =============================
+ **Mode**          Tunnel IPv4     *Select Tunnel mode*
+ **Description**   MobileIPsecP2   *Freely chosen description*
+================= =============== =============================
 
 Local Network
 -------------
-======================= ================== ==============================
- **Local Network**       LAN subnet        *Route the local LAN subnet*
-======================= ================== ==============================
+=================== ============ ==============================
+ **Local Network**   LAN subnet   *Route the local LAN subnet*
+=================== ============ ==============================
 
 Phase 2 proposal (SA/Key Exchange)
 ----------------------------------
 =========================== ============== ====================================================
-**Protocol**                 ESP            *Choose ESP for encryption*
-**Encryption algorithms**    AES / 256      *For this example we use AES 256*
-**Hash algorithms**          SHA1, SHA256   *Same as before, mix SHA1 and SHA256*
-**PFS Key group**            off            *Most mobile systems do not support PFS in Phase2*
-**Lifetime**                 3600 sec
+ **Protocol**                ESP            *Choose ESP for encryption*
+ **Encryption algorithms**   AES / 256      *For this example we use AES 256*
+ **Hash algorithms**         SHA1, SHA256   *Same as before, mix SHA1 and SHA256*
+ **PFS Key group**           off            *Most mobile systems do not support PFS in Phase2*
+ **Lifetime**                3600 sec
 =========================== ============== ====================================================
 
 **Save** your settings and **Enable IPsec**, Select:
