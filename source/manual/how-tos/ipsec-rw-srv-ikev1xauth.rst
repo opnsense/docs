@@ -15,7 +15,7 @@ the connection plus XAuth for authentication. This is the most secure variant fo
 with the most work to do.
 Hybrid RSA + XAuth: Hybrid RSA is the same as Mutual, without the need for a client certificate. Only 
 the server will be authenticated (like using https) to prevent man-in-the-middle attacks like with 
-Mutual PSK. It is more secure than PSK but does not need the complete roll-out process lie with Mutual RSA.
+Mutual PSK. It is more secure than PSK but does not need the complete roll-out process like with Mutual RSA.
 
 We assume you have read the first part at 
 :doc:`how-tos/ipsec-rw`
@@ -55,8 +55,7 @@ IKE Extensions
  **Virtual Address Pool**   10.10.0.0/24     *Enter the IP range for the remote clients*
 ========================== ================ =============================================
 
-You can select other options, but we will leave them all unchecked for this
-example.
+You can select other options, but we will leave them all unchecked for this example.
 
 **Save** your settings and select **Create Phase1** when it appears.
 Then enter the Mobile Client Phase 1 setting.
@@ -84,7 +83,6 @@ Phase 1 proposal (Authentication)
  **Pre-shared Key**          Shared secret        *For Mutual PSK + XAuth use this PSK, otherwise certificate below*
  **My Certificate**          Certificate          *Choose the certificate from dropdown list, only valid for RSA variants*
 =========================== ==================== ==========================================================================
-
 
 Phase 1 proposal (Algorithms)
 -----------------------------
