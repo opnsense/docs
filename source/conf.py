@@ -22,12 +22,9 @@ subprocess_params = {'stderr': open(os.devnull, 'w')}
 if sys.version_info[0] == 3:
     subprocess_params['encoding'] = 'utf-8'
 try:
-    __repo__version = subprocess.check_output(["git", "describe", "--tags"], **subprocess_params)
+    __repo__version = subprocess.check_output(["git", "describe", "--always"], **subprocess_params)
 except subprocess.CalledProcessError:
-    try:
-        __repo__version = subprocess.check_output(["git", "rev-parse", "--short", "HEAD"], **subprocess_params)
-    except subprocess.CalledProcessError:
-        __repo__version = ""
+    __repo__version = ""
 
 
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
