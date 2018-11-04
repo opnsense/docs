@@ -8,7 +8,7 @@ IPsec: Setup Remote Access
 Intro
 -----
 
-Road Warriors are remote users who need secure access to the companies infrastructure.
+Road Warriors are remote users who need secure access to the company's infrastructure.
 IPsec Mobile Clients offer a solution that is easy to setup and comptabile with most current devices.
 
 With this guide we will show you how to configure the server side on OPNsense with the different
