@@ -13,9 +13,9 @@ All screenshot were taken from Android version 7.
 Step 1 - Install Certificate
 ----------------------------
 
-For all RSA or IKEv2 related VPN configuration we need to install the Root CA and sometimes also
-the client certificate. The easiest way is to send yourself the client certificate and Root CA per
-e-mail and download the files. Under settings search for "cert" and you will be prompted for 
+For all RSA or IKEv2 related VPN configurations we need to install the Root CA and sometimes also
+the client certificate. Please export it do your device in a secure way like with an USB stick or a
+local file exchange service like Nextcloud. Under settings search for "cert" and you will be prompted for 
 **Install certificates**. Navigate to the download directory and install the Root CA and - when configured - 
 the client certificate.
 
@@ -28,7 +28,7 @@ Under **Server address** use your FQDN of the Firewall. Also keep in mind that i
 CN of your certificate! Opening **Advanced options** you can set **DNS search domains**, **DNS servers**
 or **Forwarding routes**, which is the network you configures in Phase2 of your mobile VPN.
 
-If you want to use IKEv2 you have to use the strongswan app_ via App Store, as Android stock VPN only 
+If you want to use IKEv2 you have to use the strongSwan app_ via App Store, as Android stock VPN only 
 supports IKEv1.
 
 .. _app: https://play.google.com/store/apps/details?id=org.strongswan.android
