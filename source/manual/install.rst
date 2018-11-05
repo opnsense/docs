@@ -153,11 +153,11 @@ Media Filename Composition
 
 .. Note::
 
-  **Please** be ware that the latest installation media does not always
+  **Please** be aware that the latest installation media does not always
   correspond with the latest released version. OPNsense installation images are
-  provided on a regular bases together with mayor versions in January and July.
+  provided on a regular basis together with major versions in January and July.
   More information on our release schedule is available from our package
-  repository see `README <https://pkg.opnsense.org/releases/mirror/README>`__
+  repository, see `README <https://pkg.opnsense.org/releases/mirror/README>`__
 
 --------------------
 OpenSSL and LibreSSL
