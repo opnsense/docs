@@ -2,7 +2,7 @@
 Hardware sizing & setup
 =======================
 
-The **harware setup** requires a careful preparation and selection of
+The **hardware setup** requires a careful preparation and selection of
 the standard PC hardware components for the intended installation of
 OPNsense.
 
@@ -12,7 +12,7 @@ pre-installed can be purchased directly from various (online) stores.
 .. TIP::
   The OPNsense development team encourage everyone looking for a turn-key solution
   to buy from `Deciso <https://www.deciso.com>`__ or one of the other partners listed at our partner page.
-  **Listed partners make significant contributions back to the project**
+  **Listed partners make significant contributions back to the project.**
 
 --------------------------------
 Supported hardware architectures
@@ -112,7 +112,7 @@ feature set.
 Impact of Feature set
 ---------------------
 
-While most features do not effect hardware dimensioning, a few features
+While most features do not affect hardware dimensioning, a few features
 have massive impact on it. The candidates are:
 
 `Squid <https://en.wikipedia.org/wiki/Squid_(software)>`__ 
