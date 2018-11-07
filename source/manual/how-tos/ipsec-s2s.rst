@@ -203,7 +203,7 @@ General information
 -------------------
 ========================= ============= ================================================
 **Connection method**      default       *default is 'Start on traffic'*
-**Key Exchange version**   V2            *both V1 and V2 are supported*
+**Key Exchange version**   V2
 **Internet Protocol**      IPv4
 **Interface**              WAN           *choose the interface connected to the internet*
 **Remote gateway**         172.10.2.1    *the public ip address of your remote OPNsense*
@@ -215,7 +215,6 @@ Phase 1 proposal (Authentication)
 ---------------------------------
 =========================== ====================== ======================================
  **Authentication method**   Mutual PSK             *Using a Pre-shared Key*
- **Negotiation mode**        Main                   *Use Main. Aggressive is insecure*
  **My identifier**           My IP address          *Simple identification for fixed ip*
  **Peer identifier**         Peer IP address        *Simple identification for fixed ip*
  **Pre-Shared Key**          At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!**
@@ -340,7 +339,7 @@ General information
 -------------------
 ========================= ============= ================================================
 **Connection method**      default       *default is 'Start on traffic'*
-**Key Exchange version**   V2            *both V1 and V2 are supported*
+**Key Exchange version**   V2
 **Internet Protocol**      IPv4
 **Interface**              WAN           *choose the interface connected to the internet*
 **Remote gateway**         172.10.1.1    *the public ip address of your remote OPNsense*
@@ -352,7 +351,6 @@ Phase 1 proposal (Authentication)
 ---------------------------------
 =========================== ====================== ======================================
  **Authentication method**   Mutual PSK             *Using a Pre-shared Key*
- **Negotiation mode**        Main                   *Use Main. Aggressive is insecure*
  **My identifier**           My IP address          *Simple identification for fixed ip*
  **Peer identifier**         Peer IP address        *Simple identification for fixed ip*
  **Pre-Shared Key**          At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!**
