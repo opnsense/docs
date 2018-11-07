@@ -48,7 +48,7 @@ of your newly created adapter. Check that the FQDN is correct:
    :width: 60%
 
 On tab **Networking** in IPv4 configuration under **Advanced** is the option **Use defaut gateway on remote network**.
-If this option is enabled, all traffic will be send through the VPN (if IPsec SA matches). When unchecked, you have
+If this option is enabled, all traffic will be sent through the VPN (if IPsec SA matches). When unchecked, you have
 to set specific routes sent via VPN. 
 
 .. image:: images/ipsec-rw-w7-2.png
