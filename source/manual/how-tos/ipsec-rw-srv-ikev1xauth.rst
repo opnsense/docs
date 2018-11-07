@@ -10,7 +10,7 @@ we will describe here.
 
 Mutual PSK + XAuth: You define a pre-shared key which is the same for every user and after securing
 the channel the user authentication via XAuth comes into play.
-Mutual RSA + XAuth: Instead for using a pre-shared key, every device need a client certificte to secure 
+Mutual RSA + XAuth: Instead of using a pre-shared key, every device needs a client certificate to secure 
 the connection plus XAuth for authentication. This is the most secure variant for IKEv1/XAuth but also
 with the most work to do.
 Hybrid RSA + XAuth: Hybrid RSA is the same as Mutual, without the need for a client certificate. Only 
