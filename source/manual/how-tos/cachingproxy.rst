@@ -36,7 +36,7 @@ To enable caching click on the arrow next to the **General Proxy Settings** to
 see the dropdown menu and click on **Local Cache Settings**.
 
 .. image:: images/proxy_cache.png
-    :width: 100%
+    :scale: 100%
 
 Check the **Enable local cache** and click **Apply**.
 
@@ -87,7 +87,7 @@ You can setup ACL's by clicking on the arrow next to **Forward Proxy**  and sele
 **Access Control List**. Here you can:
 
 * Setup Allowed Subnets (By default the proxy interfaces will be allowed)
-* Add Unrestricted IP addresses (Unrestricted means just that, no authentication and no blacklisting for those IP's)
+* Add Unrestricted IP addresses (Unrestricted means just that, no authentication and no blacklisting for those IPs)
 * Add Banned hosts IP address (A ban will stop this client from being able to use the proxy)
 * Whitelist (Click on the (i) to see examples, whitelist prevail above blacklists)
 * Blacklist (If not allowed by a whitelist, this will block traffic based upon a regular expression)

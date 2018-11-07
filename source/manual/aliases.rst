@@ -33,7 +33,7 @@ When using a fully qualified domain name, the name will we resolved periodically
 (default is each 300 seconds).
 
 Sample
-  Lets say we want to create an alias table for **www.youtube.com**
+  Let's say we want to create an alias table for **www.youtube.com**
 
   .. image:: images/aliases_host.png
       :width: 100%
@@ -120,10 +120,10 @@ Downloads
 Using Aliases in pf Firewall Rules
 ----------------------------------
 Aliases can be used in the firewall rules to make administration of large lists
-easy. For instance we could have a list of remote ip's that should have access to
+easy. For instance we could have a list of remote IPs that should have access to
 certain services, when anything changes we only need to update the list.
 
-Lets create a simple alias list and assume we have 3 remote ip's that may access
+Let's create a simple alias list and assume we have 3 remote IPs that may access
 the ipsec server for a site to site tunnel connection:
 
 * 192.168.100.1

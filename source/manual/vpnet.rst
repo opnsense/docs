@@ -29,7 +29,7 @@ well known IPsec as well as older (now considered insecure) legacy options such 
 L2TP and PPTP.
 
 .. image:: images/vpn.png
-    :width: 100%
+    :scale: 100%
 
 .. Note::
 

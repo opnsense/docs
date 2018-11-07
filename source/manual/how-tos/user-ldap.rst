@@ -88,7 +88,7 @@ to import the users into the local user manager. Go to **System->Access->Users**
 you will see a cloud import icon at the lower right corner of the form.
 
 .. image:: images/user_cloudimport.png
-   :width: 100%
+   :scale: 100%
 
 Click on the cloud import icon to start importing users.
 

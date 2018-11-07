@@ -142,7 +142,7 @@ Create a rule for all other internet upload traffic
  **sequence**            31               *Auto generated number, overwrite only when needed*
  **interface**           WAN              *Select the interface connected to the internet*
  **proto**               ip               *Select the protocol, ip in our example*
- **source**              192.168.1.0/24   *The source ip's to shape, our LAN network*
+ **source**              192.168.1.0/24   *The source IPs to shape, our LAN network*
  **src-port**            any              *The source port to shape, leave on any*
  **destination**         any              *the destination address, leave in any*
  **dst-port**            any              *Use any of the destination port if static*
@@ -159,7 +159,7 @@ Create a rule for all other internet download traffic
  **proto**               ip                 *Select the protocol, ip in our example*
  **source**              any                *The source ip to shape, leave on any*
  **src-port**            any                *The source port to shape, leave on any*
- **destination**         192.168.1.0/24     *The destination ip's to shape, our LAN network*
+ **destination**         192.168.1.0/24     *The destination IPs to shape, our LAN network*
  **dst-port**            any                *The destination port to shape, leave on any*
  **target**             PipeDown-9984Kbps   *Select the Download 256Kbps Pipe*
  **description**        ShapeDown           *Enter a descriptive name*

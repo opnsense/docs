@@ -7,7 +7,7 @@ but is also widely used in corporate networks for an additional layer of securit
 on wireless or Internet access.
 
 .. image:: images/hotspot_login.png
-    :width: 100%
+    :scale: 100%
 
 --------------------
 Typical Applications
@@ -27,7 +27,7 @@ task. At the same time it offers additional functionalities, such as:
 * Custom Splash page
 
 .. image:: images/captiveportal_template_folder.png
-    :width: 100%
+    :scale: 100%
 
 ---------------
 Zone Management

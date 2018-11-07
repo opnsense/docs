@@ -85,7 +85,7 @@ The content area is used to display:
 ----------
 Form View
 ----------
-Lets take a look at how an advanced form may look like:
+Let's take a look at how an advanced form may look like:
 
 .. image:: images/proxy_form.png
 

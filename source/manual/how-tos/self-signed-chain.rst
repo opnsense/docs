@@ -79,17 +79,17 @@ When you are done save the form, the CA is now generated.
 ====================== =================================== ========================================
 
 .. image:: images/CA.png
-   :width: 15%
+   :width: 100%
 
 .. Tip::
 
-    Use valid email addresses for your certificates always.
-    Bogus addresses can pose a security risk not only for certificates btw. ;-)
+    Always use valid email addresses for your certificates.
+    Bogus addresses can pose a security risk – and not only for certificates.
 
 The Intermediate
 ----------------
 
-Time to create the second CA which is an **intermediate CA**. This certificate will be signed
+Time to create the second CA, which is an **intermediate CA**. This certificate will be signed
 by the root CA we just created. In return it will sign the sever certificate for OPNsense.
 
 Go to **Trust/Authorities**
@@ -103,7 +103,7 @@ Have a look at the form, create an intermediate CA and save it.
 ====================== =================================== ========================================
 
 .. image:: images/CA-inter.png
-   :width: 15%
+   :width: 100%
 
 The Certificate
 ---------------
@@ -122,7 +122,7 @@ Have a look at the next form and notice the common name, create a server certifi
 ====================== =================================== ========================================
 
 .. image:: images/webgui-cert.png
-   :width: 15%
+   :width: 100%
 
 .. Tip::
 
@@ -189,7 +189,7 @@ Go to **Trust/Authorities** create a new CA for Nextcloud and save it.
 ====================== =================================== ========================================
 
 .. image:: images/CA-cloud.png
-   :width: 15%
+   :width: 100%
 
 OPNsense needs to be made aware of the Nextcloud chain we are creating.
 
@@ -231,7 +231,7 @@ Go to **Trust/Authorities** and create an intermediate CA.
 ====================== =================================== ========================================
 
 .. image:: images/CA-cloud-inter.png
-   :width: 15%
+   :width: 100%
 
 Download the intermediate CA and install it to your browser:
 
@@ -253,7 +253,7 @@ Go to **Trust/Certificates** create a server certificate.
 ====================== =================================== ========================================
 
 .. image:: images/cloud-cert.png
-   :width: 15%
+   :width: 100%
 
 We need to install this certificate and key to our Nextcloud server, two ways are shown here.
 

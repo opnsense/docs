@@ -2,7 +2,7 @@
 IPS GeoIP Blocking
 ==================
 
-This tutorial explains how to setup the IPS system to block ip's based on their
+This tutorial explains how to setup the IPS system to block IPs based on their
 geographic location. This option is made possible by the integration of the
 Maxmind GeoLite2 Country database. More information can be found here: http://dev.maxmind.com/geoip/geoip2/geolite2/
 
@@ -87,13 +87,13 @@ Apply configuration
 If this is the first GeoIP rule you add then you need to **Download & Update Rules**
 
 .. image:: images/downloadbtn.png
-    :width: 100%
+    :scale: 100%
 
 Then apply the configuration by pressing the **Apply** button at the bottom of
 the form.
 
 .. image:: images/applybtn.png
-    :width: 100%
+    :scale: 100%
 
 
 ------------

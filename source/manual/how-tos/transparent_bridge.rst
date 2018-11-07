@@ -107,7 +107,7 @@ and fill-in the ip/netmask.
 5. Disable Block private networks & bogon
 -----------------------------------------
 
-For the WAN interface we nee to disable blocking of private networks & bogus ip's.
+For the WAN interface we nee to disable blocking of private networks & bogus IPs.
 
 Goto **Interfaces** -> **WAN** and unselect **Block private networks**
 and **Block bogon networks**.

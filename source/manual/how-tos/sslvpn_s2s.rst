@@ -265,7 +265,7 @@ For our configuration we only use one server accessible on UDP port 1194.
 
 Next we also need to allow traffic from the VPN client network (192.168.2.0/24).
 For our example we will allow client to access anything on our local network(s),
-however you may decide just to allow traffic to one or more IP's.
+however you may decide just to allow traffic to one or more IPs.
 
 .. image:: images/sslvpn_openvpn_rule.png
     :width: 100%

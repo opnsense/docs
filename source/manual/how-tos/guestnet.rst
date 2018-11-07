@@ -88,7 +88,7 @@ Fill in the following to setup the DHCP server for our guest net (leave everythi
 
 ================ ==================================== =======================================
  **Enable**       Checked                               *Enable the DCHP server on GUESTNET*
- **Range**        192.168.200.100 to 192.168.200.200    *Serve ip's from this range*
+ **Range**        192.168.200.100 to 192.168.200.200    *Serve IPs from this range*
  **DNS servers**  192.168.200.1                         *Supply a DNS with the lease*
  **Gateway**      192.168.200.1                         *Supply a gateway with the lease*
 ================ ==================================== =======================================
@@ -228,11 +228,11 @@ Step 5 - Create Template
 The template feature is one of the most powerful features of OPNsense's Captive
 Portal solution and it's very easy to work with.
 
-Lets create a custom landing page, to do so click on the tab **Templates** and
+Let's create a custom landing page, to do so click on the tab **Templates** and
 click on the download icon in the lower right corner ( |download| ).
 
 .. image:: images/template_download.png
-    :width: 100%
+    :scale: 100%
 
 Now download the default template, we will use this to create our own.
 Unpack the template zip file, you should have something similar to this:
@@ -249,14 +249,14 @@ With the captive portal enabled the default screen looks like:
 .. image:: images/default_login_no_authenticator.png
     :width: 100%
 
-Lets change this default with a new logo and a welcome message, to this:
+Let's change this default with a new logo and a welcome message, to this:
 
 .. image:: images/mycompany_login.png
 
 To do so use your favourite editor and open the **index.html** file to make the
 changes.
 
-Lets make the following changes to the template:
+Let's make the following changes to the template:
 
 #. Change the logo to **company-logo.png**
 #. Remove the navigation bar on the top
@@ -308,7 +308,7 @@ Hit Upload ( |upload| )
       :width: 100%
 
 .. |upload| image:: images/btn_upload.png
-      :width: 100%
+      :scale: 100%
 
 To enable the captive portal on the GUESTNET interface just click on **Apply**.
 
@@ -428,7 +428,7 @@ Step 9 - Create Vouchers
 Go back to the Captive portal and select Vouchers (**Services->Captive Portal->Vouchers**).
 Click on **Create Vouchers** in the lower right corner of the form.
 
-Lets create 1 Day vouchers for our guests:
+Let's create 1 Day vouchers for our guests:
 
 .. image:: images/create_vouchers.png
     :width: 100%
@@ -501,7 +501,7 @@ When done click **Save changes** and the **Apply** to apply the new settings.
 Now users will see the login form as part of your template:
 
 .. image:: images/cp_voucher_login.png
-    :width: 100%
+    :scale: 100%
 
 --------------
 Check Sessions
@@ -538,7 +538,7 @@ the correct database (Wifi day pass in our example).
 ------------------------
 Advanced - Session popup
 ------------------------
-Lets create a Session Popup so user can see some details about there session and
+Let's create a Session Popup so user can see some details about there session and
 Logout. For this feature we will use OPNsense's build-in api calls.
 
 In particular we will use the following api call (for zone id 0):
