@@ -14,7 +14,7 @@ Mutual RSA + XAuth: Instead of using a pre-shared key, every device needs a clie
 the connection plus XAuth for authentication. This is the most secure variant for IKEv1/XAuth but also
 with the most work to do.
 Hybrid RSA + XAuth: Hybrid RSA is the same as Mutual, without the need for a client certificate. Only 
-the server will be authenticated (like using https) to prevent man-in-the-middle attacks like with 
+the server will be authenticated (like using HTTPS) to prevent man-in-the-middle attacks like with 
 Mutual PSK. It is more secure than PSK but does not need the complete roll-out process like with Mutual RSA.
 
 We assume you have read the first part at 
