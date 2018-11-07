@@ -143,4 +143,4 @@ Step 4 - Add IPsec Users
 Go to **System->Trust->Certificates** and create a new client certificate.
 Just click **Add**, choose your CA and probably increase the lifetime. Everything else besides
 the CN can be left default. Give a **Common Name** and **Save**. Download the newly created
-certificate as PKCS12 and export it to you enduser device.
+certificate as PKCS12 and export it to your end user device.
