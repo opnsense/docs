@@ -44,7 +44,7 @@ select options DHCP and DHCPv6 in general configuration
 .. Note::
     The eleven leading hex 00 pairs to be prefixed to the converted userID
 
-These parameters should be passed as comma separated options in the 'Send Options' area of there WAN DHCP request
+These parameters should be passed as comma separated options in the 'Send Options' area of their WAN DHCP request
 
 .. image:: images/OF_image3.png
 	:width: 100%
@@ -61,7 +61,7 @@ These parameters should be passed as comma separated options in the 'Send Option
 * domain-name-servers
 * option-90
 
-These parameters should be passed as comma separated options in the 'Request Options' area of there WAN DHCP request
+These parameters should be passed as comma separated options in the 'Request Options' area of their WAN DHCP request
 
 Now for the regional specific part.
 

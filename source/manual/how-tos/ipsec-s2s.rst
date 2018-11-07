@@ -203,7 +203,7 @@ General information
 -------------------
 ========================= ============= ================================================
 **Connection method**      default       *default is 'Start on traffic'*
-**Key Exchange version**   V2            *both V1 and V2 are supported*
+**Key Exchange version**   V2
 **Internet Protocol**      IPv4
 **Interface**              WAN           *choose the interface connected to the internet*
 **Remote gateway**         172.10.2.1    *the public ip address of your remote OPNsense*
@@ -215,7 +215,6 @@ Phase 1 proposal (Authentication)
 ---------------------------------
 =========================== ====================== ======================================
  **Authentication method**   Mutual PSK             *Using a Pre-shared Key*
- **Negotiation mode**        Main                   *Use Main. Aggressive is insecure*
  **My identifier**           My IP address          *Simple identification for fixed ip*
  **Peer identifier**         Peer IP address        *Simple identification for fixed ip*
  **Pre-Shared Key**          At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!**
@@ -224,12 +223,12 @@ Phase 1 proposal (Authentication)
 
 Phase 1 proposal (Algorithms)
 -----------------------------
-========================== ============= ===========================================
- **Encryption algorithm**   AES           *For our sample we will Use AES/256 bits*
- **Hash algoritm**          SHA512        *Use a strong hash like SHA512*
- **DH key group**           2048 bit      *2048 bit should be sufficient*
- **Lifetime**               28800 sec     *lifetime before renegotiation*
-========================== ============= ===========================================
+========================== =============== ===========================================
+ **Encryption algorithm**   AES             *For our sample we will Use AES/256 bits*
+ **Hash algoritm**          SHA512          *Use a strong hash like SHA512*
+ **DH key group**           14 (2048 bit)   *2048 bit should be sufficient*
+ **Lifetime**               28800 sec       *lifetime before renegotiation*
+========================== =============== ===========================================
 
 
 Advanced Options
@@ -245,7 +244,6 @@ Advanced Options
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :width: 100%
 
 Now you should see the following screen:
 
@@ -259,7 +257,6 @@ Step 2 - Phase 2 Site A
 Press the button that says '+ Show 0 Phase-2 entries'
 
 .. image:: images/ipsec_s2s_vpn_p1a_show_p2.png
-    :width: 100%
 
 You will see an empty list:
 
@@ -291,30 +288,27 @@ Remote Network
 
 Phase 2 proposal (SA/Key Exchange)
 ----------------------------------
-=========================== ============ =======================================
-**Protocol**                 ESP           *Choose ESP for encryption*
-**Encryption algorithms**    AES / 256     *For the sample we use AES 256*
-**Hash algortihms**          SHA512        *Choose a strong hash like SHA512*
-**PFS Key group**            2048 bit      *Not required but enhanced security*
+=========================== =============== =======================================
+**Protocol**                 ESP             *Choose ESP for encryption*
+**Encryption algorithms**    AES / 256       *For the sample we use AES 256*
+**Hash algortihms**          SHA512          *Choose a strong hash like SHA512*
+**PFS Key group**            14 (2048 bit)   *Not required but enhanced security*
 **Lifetime**                 3600 sec
-=========================== ============ =======================================
+=========================== =============== =======================================
 
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :width: 100%
 
 -----------------------------
 
 Enable IPsec for Site A, Select:
 
 .. image:: images/ipsec_s2s_vpn_p1a_enable.png
-    :width: 100%
 
 Save:
 
 .. image:: images/btn_save.png
-    :width: 100%
 
 And Apply changes:
 
@@ -340,7 +334,7 @@ General information
 -------------------
 ========================= ============= ================================================
 **Connection method**      default       *default is 'Start on traffic'*
-**Key Exchange version**   V2            *both V1 and V2 are supported*
+**Key Exchange version**   V2
 **Internet Protocol**      IPv4
 **Interface**              WAN           *choose the interface connected to the internet*
 **Remote gateway**         172.10.1.1    *the public ip address of your remote OPNsense*
@@ -352,7 +346,6 @@ Phase 1 proposal (Authentication)
 ---------------------------------
 =========================== ====================== ======================================
  **Authentication method**   Mutual PSK             *Using a Pre-shared Key*
- **Negotiation mode**        Main                   *Use Main. Aggressive is insecure*
  **My identifier**           My IP address          *Simple identification for fixed ip*
  **Peer identifier**         Peer IP address        *Simple identification for fixed ip*
  **Pre-Shared Key**          At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!**
@@ -361,12 +354,12 @@ Phase 1 proposal (Authentication)
 
 Phase 1 proposal (Algorithms)
 -----------------------------
-========================== ============= ===========================================
- **Encryption algorithm**   AES           *For our sample we will Use AES/256 bits*
- **Hash algoritm**          SHA512        *Use a strong hash like SHA512*
- **DH key group**           2048 bit      *2048 bit should be sufficient*
- **Lifetime**               28800 sec     *lifetime before renegotiation*
-========================== ============= ===========================================
+========================== =============== ===========================================
+ **Encryption algorithm**   AES             *For our sample we will Use AES/256 bits*
+ **Hash algoritm**          SHA512          *Use a strong hash like SHA512*
+ **DH key group**           14 (2048 bit)   *2048 bit should be sufficient*
+ **Lifetime**               28800 sec       *lifetime before renegotiation*
+========================== =============== ===========================================
 
 
 Advanced Options
@@ -382,7 +375,6 @@ Advanced Options
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :width: 100%
 
 Now you should see the following screen:
 
@@ -429,19 +421,18 @@ Remote Network
 
 Phase 2 proposal (SA/Key Exchange)
 ----------------------------------
-=========================== ============ =======================================
-**Protocol**                 ESP           *Choose ESP for encryption*
-**Encryption algorithms**    AES / 256     *For the sample we use AES 256*
-**Hash algortihms**          SHA512        *Choose a strong hash like SHA512*
-**PFS Key group**            2048 bit      *Not required but enhanced security*
+=========================== =============== =======================================
+**Protocol**                 ESP             *Choose ESP for encryption*
+**Encryption algorithms**    AES / 256       *For the sample we use AES 256*
+**Hash algortihms**          SHA512          *Choose a strong hash like SHA512*
+**PFS Key group**            14 (2048 bit)   *Not required but enhanced security*
 **Lifetime**                 3600 sec
-=========================== ============ =======================================
+=========================== =============== =======================================
 
 
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :width: 100%
 
 -----------------------------
 
@@ -453,7 +444,6 @@ Enable IPsec for Site B, Select:
 Save:
 
 .. image:: images/btn_save.png
-    :width: 100%
 
 And Apply changes:
 
@@ -530,4 +520,4 @@ Common issues are unequal settings. Both ends must use the same encryption stand
 
   If you are testing locally with your pc connected to one of the two test boxes
   as in the sample configuration, then make sure you have no other network
-  connections (f.i. wifi).
+  connections (Wi-Fi, for example).

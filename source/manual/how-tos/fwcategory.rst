@@ -35,7 +35,7 @@ box to make a quick selection.
 ----------------
 Before Selection
 ----------------
-Take a look at this simple rule set before selecting our "My IP's" category.
+Take a look at this simple rule set before selecting our "My IPs" category.
 
 .. image:: images/Rules_Full.png
     :width: 100%

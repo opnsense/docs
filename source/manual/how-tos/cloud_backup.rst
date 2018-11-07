@@ -67,7 +67,7 @@ First we need to have a project in the google developer console:
 
    -  In the left menu APIs -> "Drive API" -> Enable
 
--  Open the project and start to create an api key
+-  Open the project and start to create an API key
 
    -  In the left menu : APIs & auth -> Credentials
    -  Click on the button "Create new Client ID"

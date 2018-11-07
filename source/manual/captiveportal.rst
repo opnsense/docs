@@ -7,13 +7,12 @@ but is also widely used in corporate networks for an additional layer of securit
 on wireless or Internet access.
 
 .. image:: images/hotspot_login.png
-    :width: 100%
 
 --------------------
 Typical Applications
 --------------------
 * Guest Network
-* Hotel & Camping Wifi Access
+* Hotel & Camping Wi-Fi Access
 * Bring Your Own Device (BOYD)
 
 -------------------
@@ -27,7 +26,6 @@ task. At the same time it offers additional functionalities, such as:
 * Custom Splash page
 
 .. image:: images/captiveportal_template_folder.png
-    :width: 100%
 
 ---------------
 Zone Management
@@ -69,7 +67,7 @@ the user can resume its active session.
 --------------------
 Bandwidth Management
 --------------------
-The Build-in traffic shaper can be utilized to:
+The Built-in traffic shaper can be utilized to:
 
 * Share bandwidth evenly
 * Give priority to protocols port numbers and/or ip addresses

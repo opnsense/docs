@@ -28,7 +28,7 @@ Use websites like `FrequencyCheck <https://www.frequencycheck.com/>`_ to find th
 frequency band(s) used and get a cellular modem that supports these frequencies.
 
 You should also buy an appropriate pigtail antenna cable and LTE antenna. Note
-that LTE antennas often have different connectors than WIFI antennas, chose your
+that LTE antennas often have different connectors than Wi-Fi antennas, chose your
 equipment accordingly. Getting the right antenna has a big impact on the quality
 of your signal. For LTE, MIMO (multiple input, multiple output) antennas should
 be considered, see for example `this guide <https://www.specialistantennas.co.uk/news/lte-antenna-choices-considerations>`_.

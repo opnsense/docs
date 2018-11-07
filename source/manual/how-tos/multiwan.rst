@@ -24,7 +24,7 @@ Configure Failover
 ------------------
 To setup Failover the following step will be taken:
 
-#. Add monitor IP's to the gateways
+#. Add monitor IPs to the gateways
 #. Add a gateway group
 #. Configure DNS for each gateway
 #. Use policy based routing to utilize our gateway group
@@ -40,12 +40,12 @@ To setup Failover the following step will be taken:
 Example configuration
 ---------------------
 Our example utilized two previous configured WAN gateways that both are confirmed
-to function separately. As DNS's and monitor ip's we will utilize google's DNS
+to function separately. As DNS's and monitor IPs we will utilize google's DNS
 services 8.8.8.8 and 8.8.4.4, of course you can use your own 'known good' setting.
 
 We defined WAN and WAN2, where WAN will be our primary (default) gateway.
 
-Step 1 - Add monitor IP's
+Step 1 - Add monitor IPs
 -------------------------
 You may skip this step if you already have setup the monitoring ip and both gateways
 are shown as online.
@@ -185,7 +185,7 @@ gateways.
 
 Sticky Connection
 -----------------
-Some web sites don't like changing request ip's for the same session, this may
+Some web sites don't like changing request IPs for the same session, this may
 lead to unexpected behavior. To solve this you can use the option **Sticky Connections**,
 this will make sure each subsequent request from the same user to the same website
 is send through the same gateway.
@@ -196,7 +196,7 @@ Unequal Balancing (Weight)
 --------------------------
 If you have a non symmetric setup with one IPS having a much higher
 bandwidth that the other then you can set a weight on each gateway to change the
-load balance. For instance if you have one line of 10Mbps and one of 20Mbps then
+load balance. For instance if you have one line of 10 Mbps and one of 20 Mbps then
 set the weight of the first one to 1 and the second one to 2. This way the second
 gateway will get twice as many traffic to handle than the first.
 

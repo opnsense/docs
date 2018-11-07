@@ -17,9 +17,9 @@ In this scenario we will create a pipe dedicated for traffic going to and coming
 from our realtime application. For the sample we presume a SIP trunk or hosted
 Voice Over IP (VOIP) server.
 
-For this example we presume a requirement of 4 uncompressed voice channels of 64Kbps,
-resulting in a total bandwidth of 256Kbps. The internet connection in this example
-has 10Mbps Download and 1Mbps Upload.
+For this example we presume a requirement of 4 uncompressed voice channels of 64 kbps,
+resulting in a total bandwidth of 256 kbps. The internet connection in this example
+has 10 Mbps Download and 1 Mbps Upload.
 
 
 
@@ -69,17 +69,17 @@ Create Pipe For Upload (To our VOIP Server)
  **bandwidth**          256              *Numeric value of the desired bandwidth*
  **bandwidth Metric**   Kbit/s           *Metric to use with the numeric value*
  **mask**               (Empty)          *Used for auto queueing, empty for our sample*
- **description**        PipeUp-256Kbps   *Free field, enter something descriptive*
+ **description**        PipeUp-256kbps   *Free field, enter something descriptive*
 ====================== ================ ================================================
 
-Create Pipe For Upload (Other Traffic = 1024Kbps - 256Kbps = 768Kbps)
+Create Pipe For Upload (Other Traffic = 1024 kbps - 256 kbps = 768 kbps)
 
 ====================== ================ ================================================
  **enabled**            Checked          *Check to enable the pipe*
  **bandwidth**          768              *Numeric value of the desired bandwidth*
  **bandwidth Metric**   Kbit/s           *Metric to use with the numeric value*
  **mask**               (Empty)          *Used for auto queueing, empty for our sample*
- **description**        PipeUp-768Kbps   *Free field, enter something descriptive*
+ **description**        PipeUp-768kbps   *Free field, enter something descriptive*
 ====================== ================ ================================================
 
 Create Pipe For Download (From our VOIP Server)
@@ -89,17 +89,17 @@ Create Pipe For Download (From our VOIP Server)
  **bandwidth**          256                *Numeric value of the desired bandwidth*
  **bandwidth Metric**   Kbit/s             *Metric to use with the numeric value*
  **mask**               (Empty)            *Used for auto queueing, empty for our sample*
- **description**        PipeDown-256Kbps   *Free field, enter something descriptive*
+ **description**        PipeDown-256kbps   *Free field, enter something descriptive*
 ====================== ================== ================================================
 
-Create Pipe For Download (Other Traffic = 10240Kbps - 256Kbps = 9984Kbps )
+Create Pipe For Download (Other Traffic = 10240 kbps - 256 kbps = 9984 kbps )
 
 ====================== =================== ================================================
  **enabled**            Checked             *Check to enable the pipe*
  **bandwidth**          9984                *Numeric value of the desired bandwidth*
  **bandwidth Metric**   Kbit/s              *Metric to use with the numeric value*
  **mask**               (Empty)             *Used for auto queueing, empty for our sample*
- **description**        PipeDown-9984Kbps   *Free field, enter something descriptive*
+ **description**        PipeDown-9984kbps   *Free field, enter something descriptive*
 ====================== =================== ================================================
 
 Step 2 - Create Rules
@@ -117,7 +117,7 @@ Create a rule for traffic directed towards the VOIP Server (Upload).
  **src-port**            any              *The source port to shape, leave on any*
  **destination**        172.10.2.1        *The ip address of our VOIP server*
  **dst-port**            any              *Use any of the destination port if static*
- **target**             PipeUP-256Kbps    *Select the Upload 256Kbps Pipe*
+ **target**             PipeUP-256kbps    *Select the Upload 256 kbps Pipe*
  **description**        ShapeVOIPUpload   *Enter a descriptive name*
 ====================== ================= =====================================================
 
@@ -132,7 +132,7 @@ Create a rule for traffic coming from the VOIP Server (Download).
  **src-port**            any              *The source port to shape, leave on any*
  **destination**         any              *The destination ip to shape, leave on any*
  **dst-port**            any              *The destination port to shape, leave on any*
- **target**             PipeDown256Kbps   *Select the Download 256Kbps Pipe*
+ **target**             PipeDown256kbps   *Select the Download 256 kbps Pipe*
  **description**        ShapeVOIPDown     *Enter a descriptive name*
 ====================== ================= =====================================================
 
@@ -142,11 +142,11 @@ Create a rule for all other internet upload traffic
  **sequence**            31               *Auto generated number, overwrite only when needed*
  **interface**           WAN              *Select the interface connected to the internet*
  **proto**               ip               *Select the protocol, ip in our example*
- **source**              192.168.1.0/24   *The source ip's to shape, our LAN network*
+ **source**              192.168.1.0/24   *The source IPs to shape, our LAN network*
  **src-port**            any              *The source port to shape, leave on any*
  **destination**         any              *the destination address, leave in any*
  **dst-port**            any              *Use any of the destination port if static*
- **target**             PipeUp-768Kbps    *Select the Upload 256Kbps Pipe*
+ **target**             PipeUp-768kbps    *Select the Upload 768 kbps Pipe*
  **description**        ShapeUpload       *Enter a descriptive name*
 ====================== ================= =====================================================
 
@@ -159,9 +159,9 @@ Create a rule for all other internet download traffic
  **proto**               ip                 *Select the protocol, ip in our example*
  **source**              any                *The source ip to shape, leave on any*
  **src-port**            any                *The source port to shape, leave on any*
- **destination**         192.168.1.0/24     *The destination ip's to shape, our LAN network*
+ **destination**         192.168.1.0/24     *The destination IPs to shape, our LAN network*
  **dst-port**            any                *The destination port to shape, leave on any*
- **target**             PipeDown-9984Kbps   *Select the Download 256Kbps Pipe*
+ **target**             PipeDown-9984kbps   *Select the Download 256Kbps Pipe*
  **description**        ShapeDown           *Enter a descriptive name*
 ====================== =================== =====================================================
 
@@ -185,8 +185,8 @@ Now press |apply| to activate the traffic shaping rules.
 Share bandwidth evenly
 ----------------------
 
-For this example we presume an internet connection of 10Mbps Download and 1Mbps
-Upload that we want to share evenly over all users.
+For this example we presume an internet connection of 10 Mbps Download and 1 Mbps
+Upload that we want to share evenly between all users.
 
 .. nwdiag::
   :scale: 100%
@@ -299,7 +299,7 @@ Create a rule for traffic coming from the internet (Download).
  **src-port**            any              *The source port to shape, leave on any*
  **destination**         192.168.1.0/24   *The destination ip to shape, select LAN network*
  **dst-port**            any              *The destination port to shape, leave on any*
- **target**             QueueDown-10Mbps  *Select the Download 10Mbps Queue*
+ **target**             QueueDown-10Mbps  *Select the Download 10 Mbps Queue*
  **description**        ShapeDownload     *Enter a descriptive name*
 ====================== ================= =====================================================
 
@@ -315,7 +315,7 @@ Limit bandwidth per user
 ------------------------
 
 For this example we will divide the internet Download traffic between the connected
-users in such manner that each user will receive up to a maximum of 1Mbps.
+users in such manner that each user will receive up to a maximum of 1 Mbps.
 
 .. nwdiag::
   :scale: 100%
@@ -378,7 +378,7 @@ Create a rule for traffic coming from the internet (Download).
  **src-port**            any              *The source port to shape, leave on any*
  **destination**         192.168.1.0/24   *The destination ip to shape, select LAN network*
  **dst-port**            any              *The destination port to shape, leave on any*
- **target**             PipeDown-1Mbps   *Select the Download 256Kbps Pipe*
+ **target**             PipeDown-1Mbps   *Select the Download 1 Mbps Pipe*
  **description**        ShapeDownload     *Enter a descriptive name*
 ====================== ================= =====================================================
 
@@ -401,11 +401,11 @@ By utilizing queues we can influence the bandwidth within a pipe and give certai
 applications more bandwidth than others based on a weighted algorithm.
 
 The idea is simple:
-Let presume we have a pipe of 10Mbps and 2 applications for instance smtp (email)
+Let presume we have a pipe of 10 Mbps and 2 applications for instance smtp (email)
 and http(s). The http(s) traffic will get a weight of 1 and the smtp traffic a
 weight of 9, then when all capacity of our pipe is in use the email traffic will
-get 9x more bandwidth than our http(s) traffic, resulting in 1Mbps for http(s)
-and 9Mbps for smtp.
+get 9x more bandwidth than our http(s) traffic, resulting in 1 Mbps for http(s)
+and 9 Mbps for smtp.
 
 For our example we only look at download traffic, but the exact same can be done
 for the upload traffic.
@@ -413,10 +413,10 @@ for the upload traffic.
 +----------------+--------+-------------------+
 | Application    | Weight | Minimum Bandwidth |
 +================+========+===================+
-| SMTP (port 25) | 9      | 9Mbps             |
+| SMTP (port 25) | 9      | 9 Mbps            |
 +----------------+--------+-------------------+
 | HTTP (80)      |        |                   |
-+----------------+ 1      | 1Mbps             |
++----------------+ 1      | 1 Mbps            |
 | HTTPS (443)    |        |                   |
 +----------------+--------+-------------------+
 
@@ -428,7 +428,7 @@ On the **Pipes** tab click the **+** button in the lower right corner.
 An empty **Edit Pipe** screen will popup.
 
 
-Create Pipe For Download (10Mbps)
+Create Pipe For Download (10 Mbps)
 
 ====================== ================= ===============================================
  **enabled**            Checked          *Check to enable the pipe*
@@ -515,7 +515,7 @@ Adding an extra rule for https traffic is simple as we can use the same http que
  **description**        ShapeHTTPSDownload   *Enter a descriptive name*
 ====================== ==================== =====================================================
 
-This way http and https traffic will be treated the same (total max of 1Mbps).
+This way http and https traffic will be treated the same (total max of 1 Mbps).
 
 Now press |apply| to activate the traffic shaping rules.
 
@@ -532,11 +532,11 @@ One of the options with OPNsense's traffic shaper is its ability to add shaping
 rules based upon two interfaces. This option allows you to shape traffic
 differently based on the direction the traffic is moving between interfaces.
 
-For this example we will use this functionality to share a symmetric 10Mbps internet
+For this example we will use this functionality to share a symmetric 10 Mbps internet
 connection between a primary LAN network and a Guest Network.
 
 The LAN network will not be limited, traffic from users on our Guest Network will
-be limited to a total of 2Mbps Download and 1Mbps Upload.
+be limited to a total of 2 Mbps Download and 1 Mbps Upload.
 
 .. nwdiag::
   :scale: 100%
@@ -636,7 +636,7 @@ Create a rule for the upload traffic
  **sequence**            21                 *Auto generated number, overwrite only when needed*
  **interface**           WAN                *Select the interface that matches your GuestNet*
  **interface2**          GuestNet           *Select the interface connected to the internet*
- **proto**               ip                 *Select the protocol, ip in our example*
+ **proto**               ip                 *Select the protocol, IP in our example*
  **source**              any                *The source address, leave on any*
  **src-port**            any                *The source port to shape, leave on any*
  **destination**         any                *The destination ip to shape, leave on any*

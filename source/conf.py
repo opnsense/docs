@@ -340,7 +340,7 @@ epub_copyright = copyright
 # A unique identification for the text.
 #epub_uid = ''
 
-# A tuple containing the cover image and cover page html template filenames.
+# A tuple containing the cover image and cover page HTML template filenames.
 #epub_cover = ()
 
 # A sequence of (type, uri, title) tuples for the guide element of content.opf.

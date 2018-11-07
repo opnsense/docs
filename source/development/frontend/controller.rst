@@ -86,7 +86,7 @@ A simple index controller to echo a request back looks like this:
         }
     }
 
-When placed inside the api directory of Vendor/Sample can be called by sending a
+When placed inside the API directory of Vendor/Sample can be called by sending a
 post request to /api/sample/test/echo, using jquery:
 
 .. code-block:: javascript

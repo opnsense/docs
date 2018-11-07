@@ -87,7 +87,7 @@ Depending on you hardware and use case different installation media are provided
 |        | | running in serial console (115200) mode with      |
 |        | | secondary VGA support (no kernel messages though) |
 +--------+-----------------------------------------------------+
-| nano   | | a preinstalled serial image for 4GB USB sticks,   |
+| nano   | | a preinstalled serial image for 4 GB USB sticks,  |
 |        | | SD or CF cards for use with embedded devices      |
 +--------+-----------------------------------------------------+
 
@@ -104,7 +104,6 @@ Depending on you hardware and use case different installation media are provided
 Media Filename Composition
 ------------------------------
 .. blockdiag::
-  :scale: 100%
 
    diagram {
      default_shape = roundedbox;
@@ -182,7 +181,7 @@ your target platform has a serial interface choose the "serial image.
 64-bit and 32-bit install images are provided. The following examples
 apply to both.
 
-Write the image to a USB flash drive (>= 1GB) or an IDE hard disk,
+Write the image to a USB flash drive (>=1 GB) or an IDE hard disk,
 either with dd under FreeBSD or under Windows with physdiskwrite
 
 Before writing an (iso) image you need to unpack it first (use bunzip2).

@@ -2,7 +2,7 @@
 IPS GeoIP Blocking
 ==================
 
-This tutorial explains how to setup the IPS system to block ip's based on their
+This tutorial explains how to setup the IPS system to block IPs based on their
 geographic location. This option is made possible by the integration of the
 Maxmind GeoLite2 Country database. More information can be found here: http://dev.maxmind.com/geoip/geoip2/geolite2/
 
@@ -17,7 +17,7 @@ Prerequisites
     :width: 100%
 
 * Minimum Advisable Memory is 2 Gigabyte and sufficient free disk space for
-  logging (>10GB advisable).
+  logging (>10 GB advisable).
 
 * Disable all Hardware Offloading
   Under **Interface-Settings**
@@ -87,13 +87,11 @@ Apply configuration
 If this is the first GeoIP rule you add then you need to **Download & Update Rules**
 
 .. image:: images/downloadbtn.png
-    :width: 100%
 
 Then apply the configuration by pressing the **Apply** button at the bottom of
 the form.
 
 .. image:: images/applybtn.png
-    :width: 100%
 
 
 ------------

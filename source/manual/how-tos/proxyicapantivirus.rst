@@ -4,7 +4,7 @@ Setup Anti Virus Protection
 OPNsense can offer http and https protection by utilizing its highly flexible
 proxy and the industry standard ICAP. An external engine from one of the known
 vendors is used to offer maximum protection against malware, such as ransomware,
-trojans and viruses. This protection can be further enhanced by the build-in Intrusion
+trojans and viruses. This protection can be further enhanced by the built-in Intrusion
 Prevention System and Category Based Web filtering.
 
 This How To will utilize Symantec's Protection Engine, but any other vendor that

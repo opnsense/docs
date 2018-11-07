@@ -79,11 +79,11 @@ OPNsense Core Features
 
 - Intrusion Detection and Inline Prevention
 
-  - Build-in support for Emerging Treats rules
+  - Built-in support for Emerging Treats rules
   - Simple setup by use of rule categories
   - Scheduler for period automatic updates
 
-- Build-in reporting and monitoring tools
+- Built-in reporting and monitoring tools
 
   - System Health, the modern take on RRD Graphs
   - Packet Capture

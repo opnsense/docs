@@ -15,7 +15,7 @@ There are some myths surrounding our project offered mostly by pfSense enthusias
 if you have read their comments on us then we'd recommend to just ignore them and
 install OPNsense, if you have not already done so.
 
-.. sidebar:: Lets fork and lift the project!
+.. sidebar:: Let's fork and lift the project!
 
     .. image:: images/fork-lift_new.jpg
 

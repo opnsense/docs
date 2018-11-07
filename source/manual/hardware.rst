@@ -53,13 +53,13 @@ for the ones that require disk writes, e.g. a caching proxy (cache) or intrusion
 and prevention (alert database).
 
 +------------------+--------------------------------------------------------------------------+
-| Processor        | 500MHz single core cpu                                                   |
+| Processor        | 500 MHz single core cpu                                                  |
 +------------------+--------------------------------------------------------------------------+
 | RAM              | 512 MB                                                                   |
 +------------------+--------------------------------------------------------------------------+
 | Install method   | Serial console or video (vga)                                            |
 +------------------+--------------------------------------------------------------------------+
-| Install target   | SD or CF card with a minimum of 4GB, use nano images for installation.   |
+| Install target   | SD or CF card with a minimum of 4 GB, use nano images for installation.  |
 +------------------+--------------------------------------------------------------------------+
 
 Table:  *Minimum hardware requirements*
@@ -78,7 +78,7 @@ or high loads.
 +------------------+--------------------------------------------------------------------------+
 | Install method   | Serial console or video (vga)                                            |
 +------------------+--------------------------------------------------------------------------+
-| Install target   | 40 GB SSD, a minimum of 1GB memory is needed for the installer to run.   |
+| Install target   | 40 GB SSD, a minimum of 1 GB memory is needed for the installer to run.  |
 +------------------+--------------------------------------------------------------------------+
 
 Table:  *Reasonable hardware requirements*
@@ -126,9 +126,9 @@ have massive impact on it. The candidates are:
     displayed below.
 
 `State transition tables <https://en.wikipedia.org/wiki/State_transition_table>`__
-    it is a known fact, that each state table entry requires about 1KB
-    (kilo bytes) of RAM. The average state table, filled with 1000
-    entries will occupy about ~10MB (mega bytes) of
+    it is a known fact, that each state table entry requires about 1 kB
+    (kilobytes) of RAM. The average state table, filled with 1000
+    entries will occupy about ~10 MB (megabytes) of
     `RAM <https://en.wikipedia.org/wiki/Random-access_memory>`__.
     OPNsense usage settings with hundred of thousands of connections
     will require memory accordingly.

@@ -16,7 +16,7 @@ ip and port number.
 OPNsense offers full support for exporting Netflow data to external collectors as
 well as a comprehensive Analyzer for on-the-box analysis and live monitoring.
 
-OPNsense is the only open source solution with a build-in Netflow analyzer integrated
+OPNsense is the only open source solution with a built-in Netflow analyzer integrated
 into it's Graphical User Interface.
 
 ------------------

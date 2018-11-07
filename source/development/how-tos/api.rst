@@ -23,7 +23,7 @@ Creating keys
 
 API keys are managed in the user manager (system\_usermanager.php), go
 to the user manager page and select a user. Somewhere down the page you
-will find the api section for this user.
+will find the API section for this user.
 
 |Usermanager add api key.png|
 

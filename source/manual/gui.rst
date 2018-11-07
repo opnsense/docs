@@ -85,13 +85,13 @@ The content area is used to display:
 ----------
 Form View
 ----------
-Lets take a look at how an advanced form may look like:
+Let's take a look at how an advanced form may look like:
 
 .. image:: images/proxy_form.png
 
 Full Help
 ---------
-Many forms are equipped with build-in help. In the upper right corner of the form
+Many forms are equipped with built-in help. In the upper right corner of the form
 you can select to view all help messages at once. The toggle will color green when
 enabled and show the help messages beneath the input items.
 

@@ -13,7 +13,7 @@ General tips
 For optimum performance and compatibility, these guides are given:
 
 * Minimum required RAM is 1 GB
-* Minimum recommended virtual disk size of 8GB
+* Minimum recommended virtual disk size of 8 GB
 * Disable all off-loading settings in **Interfaces->Settings**
 
 .. image:: images/disableoffloading.png
@@ -109,7 +109,7 @@ article first.
 File copy failed during installation
 ------------------------------------
 This issue is most likely caused by low memory setting. Make sure your virtual
-OPNsense installation has a minimum of 1GB of RAM.
+OPNsense installation has a minimum of 1 GB of RAM.
 
 ------------------
 
