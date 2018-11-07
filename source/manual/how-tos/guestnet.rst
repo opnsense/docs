@@ -313,13 +313,13 @@ To enable the captive portal on the GUESTNET interface just click on **Apply**.
 -------------------------------
 Step 6 - Limit Guests Bandwidth
 -------------------------------
-For our example we will reserve 10Mbps down and 1Mbps Up for the Guest Network's
+For our example we will reserve 10 Mbps down and 1 Mbps Up for the Guest Network's
 Internet Access. This bandwidth will be shared evenly between connected clients.
 
 .. Note::
       With sharing evenly we mean that if 10 users at the same time try to use
       as much bandwidth as possible then everyone gets 1/10th. So in our example
-      that would be 1Mbps down stream (download). It is also possible to limit
+      that would be 1 Mbps down stream (download). It is also possible to limit
       the traffic per user see also :doc:`shaper`
 
 Go to: **Firewall->Traffic Shaper->Settings**.
@@ -361,7 +361,7 @@ the following details (leave everything not specified on defaults):
  **interface 2**   GUESTNET
  **direction**     in
  **target**        pipe_10Mbps_down
- **description**   Limit Guests download to 10Mbps
+ **description**   Limit Guests download to 10 Mbps
 ================= ==================================
 
 Click **Save changes**.
@@ -372,7 +372,7 @@ Click **Save changes**.
  **interface 2**   GUESTNET
  **direction**     out
  **target**        pipe_1Mbps_up
- **description**   Limit Guests upload to 1Mbps
+ **description**   Limit Guests upload to 1 Mbps
 ================= ==================================
 
 Click **Save changes**.

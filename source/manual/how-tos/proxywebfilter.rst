@@ -62,7 +62,7 @@ Press **Save Changes**.
 Step 3 - Download the Categories
 --------------------------------
 Now press Download ACL's, please note that this will take a while (can be several
-minutes) as the full list (>19MB) will be converted to squid acl's.
+minutes) as the full list (>19 MB) will be converted to squid acl's.
 
 -------------------------
 Step 4 - Setup Categories
@@ -82,7 +82,7 @@ clear the list and select the following from the drop down list:
 
 Now **Save changes** and press **Download ACLs** again to download and reconstruct
 the list with only the selected categories. This will take roughly the same amount
-of time as the first fetch as the adult alone section is ~15MB.
+of time as the first fetch as the adult alone section is ~15 MB.
 
 ---------------------
 Step 5 - Enable Proxy

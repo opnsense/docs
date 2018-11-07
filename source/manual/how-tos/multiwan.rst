@@ -196,7 +196,7 @@ Unequal Balancing (Weight)
 --------------------------
 If you have a non symmetric setup with one IPS having a much higher
 bandwidth that the other then you can set a weight on each gateway to change the
-load balance. For instance if you have one line of 10Mbps and one of 20Mbps then
+load balance. For instance if you have one line of 10 Mbps and one of 20 Mbps then
 set the weight of the first one to 1 and the second one to 2. This way the second
 gateway will get twice as many traffic to handle than the first.
 

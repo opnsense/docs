@@ -48,7 +48,7 @@ Advanced
 --------
 Under the advanced settings (see mode switch on left top of the form) you can
 change the cache size, directory structure and max object size to keep in cache.
-Again defaults are fine for normal browsing and creates a 100MB cache with max 4MB
+Again defaults are fine for normal browsing and creates a 100 MB cache with max 4 MB
 object size.
 
 

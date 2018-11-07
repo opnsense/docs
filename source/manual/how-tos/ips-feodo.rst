@@ -20,7 +20,7 @@ Prerequisites
     :width: 100%
 
 * Minimum Advisable Memory is 2 Gigabyte and sufficient free disk space for
-  logging (>10GB advisable).
+  logging (>10 GB advisable).
 
 * Disable all Hardware Offloading
   Under **Interface-Settings**
