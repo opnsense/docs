@@ -30,7 +30,7 @@ Step 2 - Mobile Clients
 First we will need to setup the mobile clients network and authentication source.
 Go to **VPN->IPsec->Mobile Clients**
 
-For our example will use the following settings:
+For our example we will use the following settings:
 
 IKE Extensions
 --------------
