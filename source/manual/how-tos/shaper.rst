@@ -636,7 +636,7 @@ Create a rule for the upload traffic
  **sequence**            21                 *Auto generated number, overwrite only when needed*
  **interface**           WAN                *Select the interface that matches your GuestNet*
  **interface2**          GuestNet           *Select the interface connected to the internet*
- **proto**               ip                 *Select the protocol, ip in our example*
+ **proto**               ip                 *Select the protocol, IP in our example*
  **source**              any                *The source address, leave on any*
  **src-port**            any                *The source port to shape, leave on any*
  **destination**         any                *The destination ip to shape, leave on any*
