@@ -33,7 +33,7 @@ authentication methods e.g.
 Sample Setup
 ------------
 All configuration examples are based on the following setup, please read this carefully
-as all guides depend on it
+as all guides depend on it.
 
 **Company Network with Remote Client**
 
