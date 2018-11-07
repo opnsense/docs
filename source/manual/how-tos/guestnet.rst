@@ -535,7 +535,7 @@ the correct database (Wifi day pass in our example).
 ------------------------
 Advanced - Session popup
 ------------------------
-Let's create a Session Popup so user can see some details about their session and
+Let's create a Session Popup so users can see some details about their session and
 Logout. For this feature we will use OPNsense's built-in api calls.
 
 In particular we will use the following api call (for zone id 0):
