@@ -665,7 +665,7 @@ What have we accomplished now, we can input data, validate it and save
 it to the corresponding format of the actual service or application,
 which uses this data. So if you have a third party application, which
 you want to integrate into the user interface. You should be able to
-generate what it needs now. (there’s more to learn, but these are the
+generate what it needs now. (There’s more to learn, but these are the
 basics).
 
 But how do should we control that third part program now? That’s the

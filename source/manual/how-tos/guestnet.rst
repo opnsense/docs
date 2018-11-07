@@ -26,7 +26,7 @@ Hotels and RV Parks
 -------------------
 Hotels and RV parks usually utilize a captive portal to allow guests (paid) access
 to internet for a limited duration. Guests need to login using a voucher they can
-either buy or obtain for free at the reception. OPNsense has build-in support for
+either buy or obtain for free at the reception. OPNsense has built-in support for
 vouchers and can easily create them on the fly. With this example we will show
 you how to setup the Guest Network for this purpose and setup a reception account
 for creating new vouchers.
@@ -535,8 +535,8 @@ the correct database (Wifi day pass in our example).
 ------------------------
 Advanced - Session popup
 ------------------------
-Let's create a Session Popup so user can see some details about there session and
-Logout. For this feature we will use OPNsense's build-in api calls.
+Let's create a Session Popup so user can see some details about their session and
+Logout. For this feature we will use OPNsense's built-in api calls.
 
 In particular we will use the following api call (for zone id 0):
 

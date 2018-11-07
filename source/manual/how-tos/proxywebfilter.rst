@@ -1,7 +1,7 @@
 ====================
 Setup Web Filtering
 ====================
-Category based web filtering in OPNsense is done by utilizing the build-in proxy
+Category based web filtering in OPNsense is done by utilizing the built-in proxy
 and one of the freely available or commercial blacklists.
 
 For this this How-to we will utilize the `UT1 "web categorization list" <https://dsi.ut-capitole.fr/blacklists/index_en.php>`__ from the

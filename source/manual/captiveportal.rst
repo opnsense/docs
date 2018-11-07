@@ -67,7 +67,7 @@ the user can resume its active session.
 --------------------
 Bandwidth Management
 --------------------
-The Build-in traffic shaper can be utilized to:
+The Built-in traffic shaper can be utilized to:
 
 * Share bandwidth evenly
 * Give priority to protocols port numbers and/or ip addresses

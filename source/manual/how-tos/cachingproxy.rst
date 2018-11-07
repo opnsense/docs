@@ -26,7 +26,7 @@ select from the list).
 Change Proxy Listening Port
 ---------------------------
 By default the proxy will listen at port 3128, you can change this by clicking
-on the tab **Forward Proxy** and fill in the port in the **Proxy port** feild.
+on the tab **Forward Proxy** and fill in the port in the **Proxy port** field.
 Don't forget to **Apply** your changes.
 
 ------------

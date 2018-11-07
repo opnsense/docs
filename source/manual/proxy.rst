@@ -25,7 +25,7 @@ Features include:
 --------------
 Authenticators
 --------------
-User authentication can be done using OPNsense standard and build-in authenticators.
+User authentication can be done using OPNsense standard and built-in authenticators.
 Currently these include:
 
 * LDAP (incl. Microsoft Active Directory)
@@ -61,13 +61,13 @@ shaping features.Additionally it includes its own options:
 -------------------------
 Category Based Web Filter
 -------------------------
-No need for additional plugins, such as squidGuard - as OPNsense has build-in
+No need for additional plugins, such as squidGuard - as OPNsense has built-in
 category based web filter support. Main features include:
 
 * Fetch from a remote URL
 * Supports flat file list and category based compressed lists
 * Automatically convert category based blacklists to squid ACL's
-* Keep up to date with the build-in scheduler
+* Keep up to date with the built-in scheduler
 * Compatible with most popular blacklist
 
 ----------------
