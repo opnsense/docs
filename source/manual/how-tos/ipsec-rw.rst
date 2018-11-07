@@ -25,7 +25,7 @@ authentication methods e.g.
    For the sample we will use a private ip for our WAN connection.
    This requires us to disable the default block rule on WAN to allow private traffic.
    To do so, go to the **Interfaces->[WAN]** and uncheck "Block private networks".
-   *(Dont forget to save and apply)*
+   *(Don't forget to save and apply)*
 
    .. image:: images/block_private_networks.png
 
