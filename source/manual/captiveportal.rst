@@ -12,7 +12,7 @@ on wireless or Internet access.
 Typical Applications
 --------------------
 * Guest Network
-* Hotel & Camping Wifi Access
+* Hotel & Camping Wi-Fi Access
 * Bring Your Own Device (BOYD)
 
 -------------------

@@ -520,4 +520,4 @@ Common issues are unequal settings. Both ends must use the same encryption stand
 
   If you are testing locally with your pc connected to one of the two test boxes
   as in the sample configuration, then make sure you have no other network
-  connections (f.i. wifi).
+  connections (Wi-Fi, for example).

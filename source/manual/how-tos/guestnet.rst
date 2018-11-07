@@ -432,25 +432,25 @@ Let's create 1 Day vouchers for our guests:
     :width: 100%
 
 
-Enter the Validity (1 day), the number of Vouchers and a Groupname (Wifi day pass f.i.).
+Enter the Validity (1 day), the number of Vouchers and a Groupname (Wi-Fi day pass f.i.).
 For the example we create 10 vouchers. Click on **Generate**.
 
-A file will be generated called **wifi day pass.csv**.
+A file will be generated called **Wi-Fi day pass.csv**.
 The content of this file looks like this:
 
 .. code-block:: guess
 
     username,password,vouchergroup,validity
-    "IgJw@Pqf","MLi+Sb7Ak#","Wifi day pass","86400"
-    "++?f[@i[","!m*)e(@;F,","Wifi day pass","86400"
-    "bbtK9mBk","f/jCDL3:)b","Wifi day pass","86400"
-    "iD%L[jLJ","I#FoZ#g!AY","Wifi day pass","86400"
-    "+4bA\E[I","CNavt@0ck+","Wifi day pass","86400"
-    "+,fg/\Sv","#22iIL-iQA","Wifi day pass","86400"
-    ":;Pc\N#s","Y\HuG9vAN$","Wifi day pass","86400"
-    "00nLb=0Q","0*C_\_Nb_x","Wifi day pass","86400"
-    "PA$J0YHF","kp!q%9;m)g","Wifi day pass","86400"
-    "a,mCxbya","LcnCb#g/di","Wifi day pass","86400"
+    "IgJw@Pqf","MLi+Sb7Ak#","Wi-Fi day pass","86400"
+    "++?f[@i[","!m*)e(@;F,","Wi-Fi day pass","86400"
+    "bbtK9mBk","f/jCDL3:)b","Wi-Fi day pass","86400"
+    "iD%L[jLJ","I#FoZ#g!AY","Wi-Fi day pass","86400"
+    "+4bA\E[I","CNavt@0ck+","Wi-Fi day pass","86400"
+    "+,fg/\Sv","#22iIL-iQA","Wi-Fi day pass","86400"
+    ":;Pc\N#s","Y\HuG9vAN$","Wi-Fi day pass","86400"
+    "00nLb=0Q","0*C_\_Nb_x","Wi-Fi day pass","86400"
+    "PA$J0YHF","kp!q%9;m)g","Wi-Fi day pass","86400"
+    "a,mCxbya","LcnCb#g/di","Wi-Fi day pass","86400"
 
 The content are:
 
@@ -521,7 +521,7 @@ Check Voucher Status
 --------------------
 You can check the validity and active status of a voucher by going to the voucher
 page of the captive portal (**Services->Captive Protal->Vouchers**) and select
-the correct database (Wifi day pass in our example).
+the correct database (Wi-Fi day pass in our example).
 
 .. image:: images/cp_active_vouchers.png
     :width: 100%
