@@ -70,8 +70,8 @@ To do so: select Enabled after each one.
 
 To download the rule sets press **Download & Update Rules**.
 
-.. scale:: images/downloadbtn.png
-    :width: 100%
+.. image:: images/downloadbtn.png
+    :scale: 100%
 
 -----------------------
 Change default behavior
