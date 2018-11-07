@@ -101,7 +101,7 @@ VPN compatibility
 -----------------
 
 In the next table you can see the existing VPN authentication mechanisms and which client 
-operating systems supports it with links to their configurations.
+operating systems support it, with links to their configurations.
 For Linux testing was done with Ubuntu 18.4 Desktop and *network-manager-strongswan* and
 *libcharon-extra-plugins* installed. 
 As Andoid does not support IKEv2 yet we added notes for combinations with strongSwan
