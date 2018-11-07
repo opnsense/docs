@@ -106,7 +106,6 @@ First apply the configuration by pressing the **Apply** button at the bottom of
 the form.
 
 .. image:: images/applybtn.png
-    :scale: 100%
 
 ----------------------------
 Clear Browser Cache and test

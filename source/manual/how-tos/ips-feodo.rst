@@ -57,7 +57,6 @@ First apply the configuration by pressing the **Apply** button at the bottom of
 the form.
 
 .. image:: images/applybtn.png
-    :scale: 100%
 
 ---------------
 Fetch Rule sets
@@ -71,7 +70,6 @@ To do so: select Enabled after each one.
 To download the rule sets press **Download & Update Rules**.
 
 .. image:: images/downloadbtn.png
-    :scale: 100%
 
 -----------------------
 Change default behavior
@@ -93,7 +91,6 @@ Apply fraud drop actions
 Now press **Download & Update Rules** again to change the behavior to drop.
 
 .. image:: images/downloadbtn.png
-    :scale: 100%
 
 ---------------
 Keep up to date

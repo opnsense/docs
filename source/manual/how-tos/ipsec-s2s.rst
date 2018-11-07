@@ -244,7 +244,6 @@ Advanced Options
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
 
 Now you should see the following screen:
 
@@ -258,7 +257,6 @@ Step 2 - Phase 2 Site A
 Press the button that says '+ Show 0 Phase-2 entries'
 
 .. image:: images/ipsec_s2s_vpn_p1a_show_p2.png
-    :scale: 100%
 
 You will see an empty list:
 
@@ -301,19 +299,16 @@ Phase 2 proposal (SA/Key Exchange)
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
 
 -----------------------------
 
 Enable IPsec for Site A, Select:
 
 .. image:: images/ipsec_s2s_vpn_p1a_enable.png
-    :scale: 100%
 
 Save:
 
 .. image:: images/btn_save.png
-    :scale: 100%
 
 And Apply changes:
 
@@ -380,7 +375,6 @@ Advanced Options
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
 
 Now you should see the following screen:
 
@@ -439,7 +433,6 @@ Phase 2 proposal (SA/Key Exchange)
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
 
 -----------------------------
 
@@ -451,7 +444,6 @@ Enable IPsec for Site B, Select:
 Save:
 
 .. image:: images/btn_save.png
-    :scale: 100%
 
 And Apply changes:
 

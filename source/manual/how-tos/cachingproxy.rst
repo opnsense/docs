@@ -36,7 +36,6 @@ To enable caching click on the arrow next to the **General Proxy Settings** to
 see the dropdown menu and click on **Local Cache Settings**.
 
 .. image:: images/proxy_cache.png
-    :scale: 100%
 
 Check the **Enable local cache** and click **Apply**.
 

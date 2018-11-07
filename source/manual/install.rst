@@ -104,7 +104,6 @@ Depending on you hardware and use case different installation media are provided
 Media Filename Composition
 ------------------------------
 .. blockdiag::
-  :scale: 100%
 
    diagram {
      default_shape = roundedbox;

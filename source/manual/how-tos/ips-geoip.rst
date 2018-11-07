@@ -87,13 +87,11 @@ Apply configuration
 If this is the first GeoIP rule you add then you need to **Download & Update Rules**
 
 .. image:: images/downloadbtn.png
-    :scale: 100%
 
 Then apply the configuration by pressing the **Apply** button at the bottom of
 the form.
 
 .. image:: images/applybtn.png
-    :scale: 100%
 
 
 ------------

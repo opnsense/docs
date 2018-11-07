@@ -151,7 +151,6 @@ certificate for each page manually, but for some pages that may not work well un
 not bumped.
 
 .. image:: images/export_CA_cert.png
-    :scale: 100%
 
 Import and change trust settings on your favorite OS. For example, on macOS it looks
 like this:

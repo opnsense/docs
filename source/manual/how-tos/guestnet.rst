@@ -232,7 +232,6 @@ Let's create a custom landing page, to do so click on the tab **Templates** and
 click on the download icon in the lower right corner ( |download| ).
 
 .. image:: images/template_download.png
-    :scale: 100%
 
 Now download the default template, we will use this to create our own.
 Unpack the template zip file, you should have something similar to this:
@@ -308,7 +307,6 @@ Hit Upload ( |upload| )
       :width: 100%
 
 .. |upload| image:: images/btn_upload.png
-      :scale: 100%
 
 To enable the captive portal on the GUESTNET interface just click on **Apply**.
 
@@ -501,7 +499,6 @@ When done click **Save changes** and the **Apply** to apply the new settings.
 Now users will see the login form as part of your template:
 
 .. image:: images/cp_voucher_login.png
-    :scale: 100%
 
 --------------
 Check Sessions
