@@ -241,7 +241,7 @@ Unpack the template zip file, you should have something similar to this:
 
 Most files of the template can be modified, but some are default and may not be
 changes. Upon upload any changes to the files listed in **exclude.list** will be
-ignored. Currently these include the bootstrap java scripting and some fonts.
+ignored. Currently these include the bootstrap JavaScript and some fonts.
 
 With the captive portal enabled the default screen looks like:
 
@@ -536,15 +536,15 @@ the correct database (Wifi day pass in our example).
 Advanced - Session popup
 ------------------------
 Let's create a Session Popup so users can see some details about their session and
-Logout. For this feature we will use OPNsense's built-in api calls.
+Logout. For this feature we will use OPNsense's built-in API calls.
 
-In particular we will use the following api call (for zone id 0):
+In particular we will use the following API call (for zone id 0):
 
 .. code-block:: guess
 
   /api/captiveportal/access/status/0/
 
-The response on this api call looks like this (for an active session):
+The response on this API call looks like this (for an active session):
 
 .. code-block:: json
 
@@ -563,7 +563,7 @@ The response on this api call looks like this (for an active session):
   "packets_in":3181,
   "clientState":"AUTHORIZED"}
 
-It would go a bit to far to explain standard html and java scripting used for
+It would go a bit to far to explain standard HTML and JavaScript used for
 our simple popup, but a full demo template can be downloaded:
 
 :download:`Download the example Template (with popup) <resources/template_popup.zip>`

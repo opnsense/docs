@@ -66,7 +66,7 @@ Architecture
 
 Always make sure there's a clear separation of concerns, back-end calls
 (like shell scripts) should be implemented using the configd system, all
-communication to the client should be handled from an api endpoint. (the
+communication to the client should be handled from an API endpoint. (the
 example provides more insights on how this works).
 
 Back-end programs should not access the config.xml directly, if data is
@@ -215,7 +215,7 @@ retrieval/changing of configuration data.
 They should live in a subdirectory of the controller called Api and
 extend the corresponding class.
 
-For our modules we create two api controllers, one for controlling
+For our modules we create two API controllers, one for controlling
 settings and one for performing service actions. (Named
 SettingsController.php and ServiceController.php) Both should look like
 this (replace Settings with Service for the other one):
@@ -377,7 +377,7 @@ something like this:
     {{ partial("layout_partials/base_form",['fields':generalForm,'id':'frm_GeneralSettings'])}}
 
 This tells the template system to add a form using the contents of
-generalForm and name it frm\_GeneralSettings in the html page. Based on
+generalForm and name it frm\_GeneralSettings in the HTML page. Based on
 a standard template part which is already part of the standard system,
 named base\_form.volt.
 
@@ -760,7 +760,7 @@ elements:
         });
     });
 
-(in html section)
+(in HTML section)
 
 .. code-block:: xml
 
@@ -868,7 +868,7 @@ content in it:
     </acl>
 
 This creates an acl key named “page-user-helloworld” which authorizes
-access to both the ui and api urls of this application. You can now
+access to both the ui and API urls of this application. You can now
 grant access to this module from the system user manager.
 
 |
