@@ -349,7 +349,7 @@ And add another pipe for the upload traffic.
 Click on **Save changes**.
 
 
-Create the traffic shaper rules.Click on the tab **Rules** and press the  **+**
+Create the traffic shaper rules. Click on the tab **Rules** and press the  **+**
 to do so.
 
 First toggle the advanced mode (upper left corner of the form) and then fill in
@@ -432,7 +432,7 @@ Let's create 1 Day vouchers for our guests:
     :width: 100%
 
 
-Enter the Validity (1 day), the number of Vouchers and a Groupname (Wi-Fi day pass f.i.).
+Enter the Validity (1 day), the number of Vouchers and a Groupname (Wi-Fi day pass, for example).
 For the example we create 10 vouchers. Click on **Generate**.
 
 A file will be generated called **Wi-Fi day pass.csv**.
@@ -463,11 +463,11 @@ The content are:
 
 .. Warning::
 
-    For security reasons the plain text password for the vouchers are NOT stored
+    For security reasons the plain text passwords for the vouchers are NOT stored
     on the firewall.
 
 This file can be used for creating nice guest vouchers (on paper) by just merging
-the cvs data with word, open office or any other dtp/text editor.
+the CSV data with Microsoft Word, LibreOffice or any other DTP/text editor.
 
 Create something like this:
 
@@ -520,7 +520,7 @@ You can drop an active session by clicking on the trashcan.
 Check Voucher Status
 --------------------
 You can check the validity and active status of a voucher by going to the voucher
-page of the captive portal (**Services->Captive Protal->Vouchers**) and select
+page of the captive portal (**Services->Captive Portal->Vouchers**) and select
 the correct database (Wi-Fi day pass in our example).
 
 .. image:: images/cp_active_vouchers.png
