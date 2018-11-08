@@ -2,7 +2,7 @@
 Setup Traffic Shaping
 =====================
 
-For this how-to we will look into these scenario's:
+For this how-to we will look into these scenarios:
 
 #. Reserve dedicated bandwidth for a realtime traffic such as (hosted) Voice Over IP (VOIP) server.
 #. Share internet bandwidth amongst users evenly
@@ -112,10 +112,10 @@ Create a rule for traffic directed towards the VOIP Server (Upload).
 ====================== ================= =====================================================
  **sequence**            11               *Auto generated number, overwrite only when needed*
  **interface**           WAN              *Select the interface connected to the internet*
- **proto**               ip               *Select the protocol, ip in our example*
- **source**              any              *The source ip to shape, leave on any*
+ **proto**               ip               *Select the protocol, IP in our example*
+ **source**              any              *The source IP to shape, leave on any*
  **src-port**            any              *The source port to shape, leave on any*
- **destination**        172.10.2.1        *The ip address of our VOIP server*
+ **destination**        172.10.2.1        *The IP address of our VOIP server*
  **dst-port**            any              *Use any of the destination port if static*
  **target**             PipeUP-256kbps    *Select the Upload 256 kbps Pipe*
  **description**        ShapeVOIPUpload   *Enter a descriptive name*
@@ -127,10 +127,10 @@ Create a rule for traffic coming from the VOIP Server (Download).
 ====================== ================= =====================================================
  **sequence**            21               *Auto generated number, overwrite only when needed*
  **interface**           WAN              *Select the interface connected to the internet*
- **proto**               ip               *Select the protocol, ip in our example*
- **source**              172.10.2.1       *The ip address of our VOIP server*
+ **proto**               ip               *Select the protocol, IP in our example*
+ **source**              172.10.2.1       *The IP address of our VOIP server*
  **src-port**            any              *The source port to shape, leave on any*
- **destination**         any              *The destination ip to shape, leave on any*
+ **destination**         any              *The destination IP to shape, leave on any*
  **dst-port**            any              *The destination port to shape, leave on any*
  **target**             PipeDown256kbps   *Select the Download 256 kbps Pipe*
  **description**        ShapeVOIPDown     *Enter a descriptive name*
@@ -141,7 +141,7 @@ Create a rule for all other internet upload traffic
 ====================== ================= =====================================================
  **sequence**            31               *Auto generated number, overwrite only when needed*
  **interface**           WAN              *Select the interface connected to the internet*
- **proto**               ip               *Select the protocol, ip in our example*
+ **proto**               ip               *Select the protocol, IP in our example*
  **source**              192.168.1.0/24   *The source IPs to shape, our LAN network*
  **src-port**            any              *The source port to shape, leave on any*
  **destination**         any              *the destination address, leave in any*
@@ -156,8 +156,8 @@ Create a rule for all other internet download traffic
 ====================== =================== =====================================================
  **sequence**            41                 *Auto generated number, overwrite only when needed*
  **interface**           WAN                *Select the interface connected to the internet*
- **proto**               ip                 *Select the protocol, ip in our example*
- **source**              any                *The source ip to shape, leave on any*
+ **proto**               ip                 *Select the protocol, IP in our example*
+ **source**              any                *The source IP to shape, leave on any*
  **src-port**            any                *The source port to shape, leave on any*
  **destination**         192.168.1.0/24     *The destination IPs to shape, our LAN network*
  **dst-port**            any                *The destination port to shape, leave on any*
@@ -279,8 +279,8 @@ Create a rule for traffic directed towards the internet (Upload).
 ====================== ================= =====================================================
  **sequence**            11               *Auto generated number, overwrite only when needed*
  **interface**           WAN              *Select the interface connected to the internet*
- **proto**               ip               *Select the protocol, ip in our example*
- **source**              192.168.1.0/24   *The source ip to shape, select the LAN network*
+ **proto**               ip               *Select the protocol, IP in our example*
+ **source**              192.168.1.0/24   *The source IP to shape, select the LAN network*
  **src-port**            any              *The source port to shape, leave on any*
  **destination**         any              *The destination to shape, leave on any*
  **dst-port**            any              *Use any of the destination port if static*
@@ -294,10 +294,10 @@ Create a rule for traffic coming from the internet (Download).
 ====================== ================= =====================================================
  **sequence**            21               *Auto generated number, overwrite only when needed*
  **interface**           WAN              *Select the interface connected to the internet*
- **proto**               ip               *Select the protocol, ip in our example*
+ **proto**               ip               *Select the protocol, IP in our example*
  **source**              any              *The source address, leave on any*
  **src-port**            any              *The source port to shape, leave on any*
- **destination**         192.168.1.0/24   *The destination ip to shape, select LAN network*
+ **destination**         192.168.1.0/24   *The destination IP to shape, select LAN network*
  **dst-port**            any              *The destination port to shape, leave on any*
  **target**             QueueDown-10Mbps  *Select the Download 10 Mbps Queue*
  **description**        ShapeDownload     *Enter a descriptive name*
@@ -373,10 +373,10 @@ Create a rule for traffic coming from the internet (Download).
 ====================== ================= =====================================================
  **sequence**            21               *Auto generated number, overwrite only when needed*
  **interface**           WAN              *Select the interface connected to the internet*
- **proto**               ip               *Select the protocol, ip in our example*
+ **proto**               ip               *Select the protocol, IP in our example*
  **source**              any              *The source address, leave on any*
  **src-port**            any              *The source port to shape, leave on any*
- **destination**         192.168.1.0/24   *The destination ip to shape, select LAN network*
+ **destination**         192.168.1.0/24   *The destination IP to shape, select LAN network*
  **dst-port**            any              *The destination port to shape, leave on any*
  **target**             PipeDown-1Mbps   *Select the Download 1 Mbps Pipe*
  **description**        ShapeDownload     *Enter a descriptive name*
@@ -384,7 +384,7 @@ Create a rule for traffic coming from the internet (Download).
 
 .. Note::
 
-        If you want to limit traffic for a single ip then just enter the ip address
+        If you want to limit traffic for a single IP then just enter the IP address
         in the destination field instead of the full LAN network range.
 
 Now press |apply| to activate the traffic shaping rules.
@@ -476,46 +476,46 @@ Create a rule for smtp download traffic (email)
 ====================== =================== =====================================================
  **sequence**            11                 *Auto generated number, overwrite only when needed*
  **interface**           WAN                *Select the interface connected to the internet*
- **proto**               ip                 *Select the protocol, ip in our example*
+ **proto**               ip                 *Select the protocol, IP in our example*
  **source**              any                *The source address, leave on any*
  **src-port**            smtp               *The source port to shape, smtp or 25*
- **destination**         any                *The destination ip to shape, leave on any*
+ **destination**         any                *The destination IP to shape, leave on any*
  **dst-port**            any                *The destination port to shape, leave on any*
  **target**             Queue-SMTP          *Select the SMTP queue*
  **description**        ShapeSMTPDownload   *Enter a descriptive name*
 ====================== =================== =====================================================
 
 
-Create a rule for http download traffic
+Create a rule for HTTP download traffic
 
 ====================== =================== =====================================================
  **sequence**            21                 *Auto generated number, overwrite only when needed*
  **interface**           WAN                *Select the interface connected to the internet*
- **proto**               ip                 *Select the protocol, ip in our example*
+ **proto**               ip                 *Select the protocol, IP in our example*
  **source**              any                *The source address, leave on any*
  **src-port**            http               *The source port to shape, http or 80*
- **destination**         any                *The destination ip to shape, leave on any*
+ **destination**         any                *The destination IP to shape, leave on any*
  **dst-port**            any                *The destination port to shape, leave on any*
  **target**             Queue-HTTP          *Select the HTTP queue*
  **description**        ShapeHTTPDownload   *Enter a descriptive name*
 ====================== =================== =====================================================
 
 
-Adding an extra rule for https traffic is simple as we can use the same http queue if we like:
+Adding an extra rule for HTTPS traffic is simple as we can use the same HTTP queue if we like:
 
 ====================== ==================== =====================================================
  **sequence**            31                  *Auto generated number, overwrite only when needed*
  **interface**           WAN                 *Select the interface connected to the internet*
- **proto**               ip                  *Select the protocol, ip in our example*
+ **proto**               ip                  *Select the protocol, IP in our example*
  **source**              any                 *The source address, leave on any*
  **src-port**            https               *The source port to shape, https or 443*
- **destination**         any                 *The destination ip to shape, leave on any*
+ **destination**         any                 *The destination IP to shape, leave on any*
  **dst-port**            any                 *The destination port to shape, leave on any*
  **target**             Queue-HTTP           *Select the HTTP queue*
  **description**        ShapeHTTPSDownload   *Enter a descriptive name*
 ====================== ==================== =====================================================
 
-This way http and https traffic will be treated the same (total max of 1 Mbps).
+This way HTTP and HTTPS traffic will be treated the same (total max of 1 Mbps).
 
 Now press |apply| to activate the traffic shaping rules.
 
@@ -620,10 +620,10 @@ Create a rule for the download traffic
  **sequence**            11                 *Auto generated number, overwrite only when needed*
  **interface**           WAN                *Select the interface connected to the internet*
  **interface2**          GuestNet           *Select the interface that matches your GuestNet*
- **proto**               ip                 *Select the protocol, ip in our example*
+ **proto**               ip                 *Select the protocol, IP in our example*
  **source**              any                *The source address, leave on any*
  **src-port**            any                *The source port to shape, leave on any*
- **destination**         any                *The destination ip to shape, leave on any*
+ **destination**         any                *The destination IP to shape, leave on any*
  **dst-port**            any                *The destination port to shape, leave on any*
  **direction**           in                 *Match incoming packages (download)*
  **target**             PipeDown-2Mbps      *Select the Download pipe*
@@ -639,7 +639,7 @@ Create a rule for the upload traffic
  **proto**               ip                 *Select the protocol, IP in our example*
  **source**              any                *The source address, leave on any*
  **src-port**            any                *The source port to shape, leave on any*
- **destination**         any                *The destination ip to shape, leave on any*
+ **destination**         any                *The destination IP to shape, leave on any*
  **dst-port**            any                *The destination port to shape, leave on any*
  **direction**           out                *Match incoming packages (download)*
  **target**             PipeUp-1Mbps        *Select the Download pipe*

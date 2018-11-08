@@ -18,5 +18,5 @@ For local analysis using Insight also enable **Capture local**.
 Depending on the application you would like to use select **Version** 5 or 9.
 Remember that version 5 does not support IPv6.
 
-Add your **Destinations** (ip:port then enter) local ip will be added automatic
+Add your **Destinations** (ip:port then enter) local IP will be added automatic
 if Capture local is selected.

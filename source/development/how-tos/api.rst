@@ -41,7 +41,7 @@ Code sample (python)
 --------------------
 
 For the python code sample we use the nice "requests" library
-(http://docs.python-requests.org/en/latest/), which makes http calls
+(http://docs.python-requests.org/en/latest/), which makes HTTP calls
 very easy.
 
 Before you can start, make sure your OPNsense has a valid SSL
@@ -102,7 +102,7 @@ Using curl
 ----------
 
 Simple testing with curl is also possible, the sample below uses the
-same credentials, but ignores the ssl certificate check (-k) for
+same credentials, but ignores the SSL certificate check (-k) for
 testing.
 
 .. code-block:: sh

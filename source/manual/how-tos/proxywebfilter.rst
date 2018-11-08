@@ -61,8 +61,8 @@ Press **Save Changes**.
 --------------------------------
 Step 3 - Download the Categories
 --------------------------------
-Now press Download ACL's, please note that this will take a while (can be several
-minutes) as the full list (>19 MB) will be converted to squid acl's.
+Now press Download ACLs, please note that this will take a while (can be several
+minutes) as the full list (>19 MB) will be converted to squid ACLs.
 
 -------------------------
 Step 4 - Setup Categories
@@ -108,7 +108,7 @@ LAN interface (if LAN is where your clients and proxy are on).
  **Source**                   LAN net
  **Destination Port Range**   HTTP
  **Category**                 Block Proxy Bypass
- **Description**              Block http bypass
+ **Description**              Block HTTP bypass
 ============================ =====================
 
 **Save**
@@ -122,7 +122,7 @@ And one more rule to block HTTPS access:
  **Source**                   LAN net
  **Destination Port Range**   HTTPS
  **Category**                 Block Proxy Bypass
- **Description**              Block https bypass
+ **Description**              Block HTTPS bypass
 ============================ =====================
 
 **Save** & **Apply changes**

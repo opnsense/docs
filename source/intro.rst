@@ -102,4 +102,4 @@ OPNsense Core Features
 - Stateful inspection firewall
 - Granular control over state table
 - 802.1Q VLAN support
-- and more..
+- and more…

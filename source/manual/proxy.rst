@@ -66,7 +66,7 @@ category based web filter support. Main features include:
 
 * Fetch from a remote URL
 * Supports flat file list and category based compressed lists
-* Automatically convert category based blacklists to squid ACL's
+* Automatically convert category based blacklists to squid ACLs
 * Keep up to date with the built-in scheduler
 * Compatible with most popular blacklist
 
@@ -75,11 +75,11 @@ Transparent Mode
 ----------------
 The transparent mode means all request will be diverted to the proxy without any
 configuration on your client. Transparent mode works very well with unsecured http
-requests, however with secured (SSL) https connection the proxy will become a
+requests, however with secured (SSL) HTTPS connection the proxy will become a
 man-in-the-middle as the client will "talk" to the proxy and the proxy will encrypt
 the traffic with its master key that the client is required to trust.
 
-While we do not encourage the use of https in transparent mode, this feature is
+While we do not encourage the use of HTTPS in transparent mode, this feature is
 scheduled for release in version 16.7.
 
 .. Warning::

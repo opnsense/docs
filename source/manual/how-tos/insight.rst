@@ -83,8 +83,8 @@ Clicking on a piece of the pie will open a detailed view for further analysis.
 IP Addresses Pie Chart
 ----------------------
 The IP addresses pie chart works the same as the ports pie chart and shows the
-percentage per ip number. One can change the view by clicking or double clicking
-on one of the shown ip numbers.
+percentage per IP number. One can change the view by clicking or double clicking
+on one of the shown IP numbers.
 
 Clicking on a piece of the pie will open a detailed view for further analysis.
 
@@ -106,7 +106,7 @@ When opening the details view by clicking on the tab one can make a new query.
    :width: 100%
 
 After selecting a valid date range (form/to) and interface one can further limit
-the output by filtering on port or ip address. Select the refresh icon to update
+the output by filtering on port or IP address. Select the refresh icon to update
 the detailed output. Leave Port and Address empty for a full detailed listing.
 
 .. image:: images/insight_full_details.png

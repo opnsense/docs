@@ -344,8 +344,8 @@ By default you have to log in to enter the console.
 VLANs and assigning interfaces
     If choose to do manual interface assignment or when no config file can be
     found then you are asked to assign Interfaces and VLANs. VLANs are optional.
-    If you do not need VLAN's then choose **no**. You can always configure
-    VLAN's at a later time.
+    If you do not need VLANs then choose **no**. You can always configure
+    VLANs at a later time.
 
 LAN, WAN and optional interfaces
     The first interface is the LAN interface. Type the appropriate

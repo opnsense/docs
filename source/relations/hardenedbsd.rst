@@ -43,4 +43,4 @@ HardenedBSD's core team consists of Oliver Pinter and Shawn Webb.
 Cooperation with OPNsense
 -------------------------
 In May 2015, HardenedBSD announced their cooperation with OPNsense.
-A HardenedBSD-flavored versions of OPNsense is available as of June 2015.
+A HardenedBSD-flavored version of OPNsense is available as of June 2015.

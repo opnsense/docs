@@ -1,7 +1,7 @@
 ===============
 Setup Multi WAN
 ===============
-Multi WAN scenario's are commonly used for failover or load balancing, but combinations
+Multi WAN scenarios are commonly used for failover or load balancing, but combinations
 are also possible with OPNsense.
 
 .. blockdiag::
@@ -47,10 +47,10 @@ We defined WAN and WAN2, where WAN will be our primary (default) gateway.
 
 Step 1 - Add monitor IPs
 -------------------------
-You may skip this step if you already have setup the monitoring ip and both gateways
+You may skip this step if you already have setup the monitoring IP and both gateways
 are shown as online.
 
-To add a monitoring ip go to **System->Gateways->All** and click on the first pencil
+To add a monitoring IP go to **System->Gateways->All** and click on the first pencil
 symbol to edit the first gateway.
 
 Now make sure the following is configured:
@@ -208,4 +208,4 @@ Combining Balancing & Failover
 ------------------------------
 To combine Load Balancing with Failover you will have 2 or more WAN connections
 for Balancing purposes and 1 or more for Failover. OPNsense offers 5 tiers
-(Failover groups) each tier can hold multiple ISP's/WAN gateways.
+(Failover groups) each tier can hold multiple ISPs/WAN gateways.

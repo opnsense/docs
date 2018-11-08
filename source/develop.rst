@@ -7,7 +7,7 @@ Development Manual
 The OPNsense® project invites developers to start developing with OPNsense:
 "For your own purpose or even better to join us in creating the best FreeBSD
 based open source firewall available!" The development workflow & build process
-has been redesigned to make it more straightforward and easy for developers to
+have been redesigned to make it more straightforward and easy for developers to
 build OPNsense.
 
 Being able to get the sources and build it yourself is one of the key factors of

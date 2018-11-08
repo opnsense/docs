@@ -17,9 +17,9 @@ community-recognized body for reviewing and approving licenses as OSD-conformant
 
 -----------------------
 
-------------------
-Relations OPNsense
-------------------
+--------------------
+Relation to OPNsense
+--------------------
 OPNsense is licensed under an Open Source Initiative `approved license <http://opensource.org/licenses>`__. OPNsense
 is and will be available with the simple 2-clause BSD license. We believe an
 open source project should provide the sources and the tools to build it.

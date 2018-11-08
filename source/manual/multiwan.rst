@@ -1,7 +1,7 @@
 =========
 Multi WAN
 =========
-Multi WAN scenario's are commonly used for failover or load balancing, but combinations
+Multi WAN scenarios are commonly used for failover or load balancing, but combinations
 are also possible with OPNsense.
 
 .. blockdiag::
@@ -30,7 +30,7 @@ connectivity is fully restored so will the routing switch back to the primary IS
 ------------------
 WAN Load Balancing
 ------------------
-Load balancing can be used to split the load between two (or more) ISP's. This
+Load balancing can be used to split the load between two (or more) ISPs. This
 enhances the total available bandwidth and/or lowers the load on each ISP.
 
 The principle is simple: Each WAN connection (gateway) gets a portion of the traffic.
@@ -39,10 +39,10 @@ The traffic can be divided equally or weighted.
 ------------------------------
 Combining Balancing & Failover
 ------------------------------
-It is also possible to combine Load Balancing with Failover in such scenario's
+It is also possible to combine Load Balancing with Failover in such scenarios
 you will have 2 or more WAN connections for Balancing purposes and 1 or more for
 Failover. OPNsense offers 5 tiers (Failover groups) each tier can hold multiple
-ISP's/WAN gateways.
+ISPs/WAN gateways.
 
 -------------
 Configuration

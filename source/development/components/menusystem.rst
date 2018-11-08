@@ -37,8 +37,8 @@ An example of how to create a menu, is given below:
     // test, print menu as structured named array
     print_r($menu->getItems("/testpage.php"));
 
-The current version only implements a static menu defined by one xml file
-(models/OPNsense/Base/Menu/Menu.xml), but extending with additional xml files
+The current version only implements a static menu defined by one XML file
+(models/OPNsense/Base/Menu/Menu.xml), but extending with additional XML files
 is already supported in the component for future use.
 
 --------

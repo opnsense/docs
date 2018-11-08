@@ -6,15 +6,15 @@ is easy just go to **System->Access->Servers** and click on **Add server** in th
 
 Fill in the form:
 
-============================== =============== ========================================================
+============================== =============== =========================================================
 **Descriptive name**            radius_test    *Enter a descriptive name*
 **Type**                        Radius         *Select Radius*
 **Hostname or IP address**      10.10.10.1     *Enter the IP of your Radius server*
 **Shared Secret**               secret         *Shared secret for your Radius server*
 **Services offered**            Authentication *Select Authentication,for Captive portal + accounting*
-**Authentication port value**   1812           *Port number, 1812 is default for accounting it's 1813*
+**Authentication port value**   1812           *Port number, 1812 is default; for accounting it's 1813*
 **Authentication Timeout**      5              *Timeout for Radius to respond on requests*
-============================== =============== ========================================================
+============================== =============== =========================================================
 
 Use the tester under **System->Access->Tester** to test the Radius server.
 

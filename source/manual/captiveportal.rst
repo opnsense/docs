@@ -70,7 +70,7 @@ Bandwidth Management
 The Built-in traffic shaper can be utilized to:
 
 * Share bandwidth evenly
-* Give priority to protocols port numbers and/or ip addresses
+* Give priority to protocols port numbers and/or IP addresses
 
 See also: :doc:`/manual/shaping`
 

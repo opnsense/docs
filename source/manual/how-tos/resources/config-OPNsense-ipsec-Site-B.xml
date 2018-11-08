@@ -144,7 +144,7 @@
       <value>default</value>
     </item>
     <item>
-      <descr>Randomize PID's (see src/sys/kern/kern_fork.c: sysctl_kern_randompid())</descr>
+      <descr>Randomize PIDs (see src/sys/kern/kern_fork.c: sysctl_kern_randompid())</descr>
       <tunable>kern.randompid</tunable>
       <value>default</value>
     </item>

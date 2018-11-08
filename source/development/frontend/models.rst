@@ -4,7 +4,7 @@ Creating Models
 
 A model represents the data which the application will use and takes
 care of the interaction to that data. In OPNsense most of the relevant
-data is physically stored in an xml structure (config.xml). The primary
+data is physically stored in an XML structure (config.xml). The primary
 goal for OPNsense models is to structure the use of configuration data,
 by creating a clear abstraction layer.
 
@@ -44,7 +44,7 @@ When you design a model, the next thing to do is to figure out what data is
 relevant for your application or module and think of the rules it should comply
 to (for example, if you need an email address you might want to validate the
 input). Designing the actual model is as simple as creating an xml file and
-putting in your structure, the name of our xml file should be the same as the
+putting in your structure, the name of our XML file should be the same as the
 base name of our model suffixed by .xml.
 
 Using the same model, we would create the following file:
@@ -91,7 +91,7 @@ Now let's explain what's happing here one tag at a time.
 The content of a items tag describes the full tree based structure which holds
 our data, in theory this could be as large as you want it to be, but keep in
 mind that the content for your model should be logical and understandable. Every
-node in the tree could have a type, which defines it's behavior, nodes without a
+node in the tree could have a type, which defines its behavior, nodes without a
 type are just containers.
 
 From top to bottom we find the following nodes in our tree:
