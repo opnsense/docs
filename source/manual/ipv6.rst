@@ -6,7 +6,7 @@ Using IPv6
    :width: 100%
 
 OPNsense fully supports IPv6 for routing and firewall. However there are lots of
-different options to utilize IPv6. Currently these scenario's are known to work:
+different options to utilize IPv6. Currently these scenarios are known to work:
 
 * Native IPv6 only
 * Dual Stack IPv4 + IPv6

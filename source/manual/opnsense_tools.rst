@@ -55,12 +55,12 @@ The latest update of OPNsense to version 18.1.5 did a minor jump for the IPSec p
 From this moment your VPNs are unstable and only a restart helps.
 
 To check if the update of the package is the reason you can easily revert the package
-to it's previous state while running the latest OPNsense version itself
+to its previous state while running the latest OPNsense version itself.
 
 # opnsense-revert -r 18.1.4 strongswan
 
-With this command you will on e.g. 18.1.5 while reverting the package strongswan to it's version it was in 18.1.4.
-If you want to go back to the current release version just just 
+With this command you can, for example, run OPNsense 18.1.5 while using the 18.1.4 version of strongswan.
+If you want to go back to the current release version just do
 
 # opnsense-revert strongswan
 

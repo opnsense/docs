@@ -120,7 +120,7 @@ Not all modules contain additional code in the php class, sometimes all
 the standard behaviour is already sufficient for your
 modules/application.
 
-Which is the model xml template, our skeleton starts with something like
+Which is the model XML template, our skeleton starts with something like
 this:
 
 .. code-block:: xml
@@ -266,9 +266,9 @@ Adding Fields
 .. rubric:: Adding fields to your model
    :name: adding-fields-to-your-model
 
-When building the skeleton, we have created an empty model (xml), which
+When building the skeleton, we have created an empty model (XML), which
 we are going to fill with some attributes now. The items section of the
-model xml should contain the structure you want to use for your
+model XML should contain the structure you want to use for your
 application, you can create trees to hold data in here. All leaves
 should contain a field type to identify and validate it’s content. The
 list of attributes for our application can be translated to this:
@@ -310,12 +310,12 @@ Enabled).
 Presentation XML
 ----------------
 
-.. rubric:: Create a presentation xml to feed your template
+.. rubric:: Create a presentation XML to feed your template
    :name: create-a-presentation-xml-to-feed-your-template
 
 Because creating forms is one of the key assets of the system, we have
 build some easy to use wrappers to guide you through the process. First
-we create an xml file for the presentation, which defines fields to use
+we create an XML file for the presentation, which defines fields to use
 and adds some information for your template to render. Create a file in
 your controller directory using the sub directory forms and name it
 general.xml. Next copy in the following content:
@@ -392,7 +392,7 @@ Create API calls
    :name: create-api-calls-to-retrieve-and-store-data
 
 The framework provides some helpful utilities to get and set data from
-and to the configuration xml by using your defined model. First step in
+and to the configuration XML by using your defined model. First step in
 binding your model to the system is to add a method to the
 SettingsController to fetch the data from our configuration (or provide
 the defaults if there is no content).
@@ -530,7 +530,7 @@ Let’s give it a try and save our data, without modifying it first.
 
 Next correct the errors and save again, on successful save the data
 should be stored in the config.xml. If you want to change validation
-messages, just edit the model xml and add your message in the
+messages, just edit the model XML and add your message in the
 ValidationMessage tag. For example:
 
 .. code-block:: xml
@@ -848,15 +848,15 @@ automatically picks up this new information.
 Plugin to access control (ACL)
 ------------------------------
 
-If we want to authorize users to access this module, we can add an acl
+If we want to authorize users to access this module, we can add an ACL
 to this module. Without it, only admin users can access it. Create an
-xml file in the model directory name ACL/ACL.xml and place the following
+XML file in the model directory name ACL/ACL.xml and place the following
 content in it:
 
 .. code-block:: xml
 
     <acl>
-        <!-- unique acl key, must be globally unique for all acl's  -->
+        <!-- unique acl key, must be globally unique for all ACLs  -->
         <page-user-helloworld>
             <name>WebCfg - Users: Hello World! </name>
             <description>Allow access to the Hello World! module</description>
@@ -867,7 +867,7 @@ content in it:
         </page-user-helloworld>
     </acl>
 
-This creates an acl key named “page-user-helloworld” which authorizes
+This creates an ACL key named “page-user-helloworld” which authorizes
 access to both the ui and API urls of this application. You can now
 grant access to this module from the system user manager.
 

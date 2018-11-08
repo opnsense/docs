@@ -11,13 +11,13 @@ is very fast with little overhead compared to softflowd or pfflowd.
 
 While many monitoring solutions such as Nagios, Cacti and vnstat only capture traffic
 statistics, Netflow captures complete packet flows including source, destination
-ip and port number.
+IP and port number.
 
 OPNsense offers full support for exporting Netflow data to external collectors as
 well as a comprehensive Analyzer for on-the-box analysis and live monitoring.
 
 OPNsense is the only open source solution with a built-in Netflow analyzer integrated
-into it's Graphical User Interface.
+into its Graphical User Interface.
 
 ------------------
 Supported Versions

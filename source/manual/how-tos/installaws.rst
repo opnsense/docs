@@ -29,7 +29,7 @@ Choose an instance type
 ---------------------------------
 Step 3 - Configure security group
 ---------------------------------
-To configure security group, make sure you allow https access from your own network.
+To configure security group, make sure you allow HTTPS access from your own network.
 
 .. image:: images/aws_configure_security_group.png
     :width: 100%

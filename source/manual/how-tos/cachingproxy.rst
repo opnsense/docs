@@ -82,7 +82,7 @@ interfaces in the **FTP proxy interfaces** field and **Apply**.
 -------------------
 Access Control List
 -------------------
-You can setup ACL's by clicking on the arrow next to **Forward Proxy**  and select
+You can setup ACLs by clicking on the arrow next to **Forward Proxy**  and select
 **Access Control List**. Here you can:
 
 * Setup Allowed Subnets (By default the proxy interfaces will be allowed)
@@ -156,7 +156,7 @@ LAN interface (if LAN is where your clients and proxy are on).
  **Source**                   LAN net
  **Destination Port Range**   HTTP
  **Category**                 Block Proxy Bypass
- **Description**              Block http bypass
+ **Description**              Block HTTP bypass
 ============================ =====================
 
 **Save**
@@ -170,7 +170,7 @@ And one more rule to block HTTPS access:
  **Source**                   LAN net
  **Destination Port Range**   HTTPS
  **Category**                 Block Proxy Bypass
- **Description**              Block https bypass
+ **Description**              Block HTTPS bypass
 ============================ =====================
 
 **Save** & **Apply changes**

@@ -18,12 +18,12 @@ route our traffic to the internet.
   :width: 100%
 
 When using CARP ( `FreeBSD handbook on CARP <https://www.freebsd.org/doc/handbook/carp.html>`__ ), all
-fail-safe interfaces should have a dedicated ip address which will be
-combined with one shared virtual ip address to communicate to both
+fail-safe interfaces should have a dedicated IP address which will be
+combined with one shared virtual IP address to communicate to both
 networks. In the picture above the dashed lines are used to mark the
 virtual addresses.
 
-The configuration file (xml) for both firewalls can be downloaded from
+The configuration file (XML) for both firewalls can be downloaded from
 the wiki.
 
 -----------
@@ -37,7 +37,7 @@ we will explain briefly first:
     :name: carp
 
 Common Address Redundancy Protocol uses IP protocol 112, is derived from
-OpenBSD and uses multicast packets to signal it's neighbours about it's
+OpenBSD and uses multicast packets to signal its neighbours about its
 status. Always make sure that each interface can receive carp packets.
 Every virtual interface must have a unique Virtual Host ID (vhid), which
 is shared across the physical machines. To determine which physical
@@ -100,7 +100,7 @@ pfSync protocol.
 .. rubric:: Backup
     :name: backup
 
-The backup server needs it's own dedicated addresses, we will use these:
+The backup server needs its own dedicated addresses, we will use these:
 
 +----------+-------------------+
 | LAN      | 192.168.1.20/24   |
@@ -180,7 +180,7 @@ consider. All clients should use the virtual address in stead of the
 physical address it's normally propagating. Next thing to consider is
 there will be two servers active at the same time, which should know of
 each others pools. If dns requests are also forwarded by OPNsense, make
-sure the dhcp server sends the right ip address. These are settings used
+sure the dhcp server sends the right IP address. These are settings used
 in our example (on the master server):
 
 +--------------------+----------------+
@@ -197,7 +197,7 @@ Setup HA sync (xmlrpc) and pfSync
 
 First we should enable pfSync using our dedicated interface using the
 master firewall. Go to System -> High Availability, enable pfsync and
-select the interface used for pfSync. Next setup the peer ip to the
+select the interface used for pfSync. Next setup the peer IP to the
 other hosts address (10.0.0.2).
 
 Now we need to configure the settings we want to duplicating to the

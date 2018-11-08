@@ -2,7 +2,7 @@
 Setup SSL VPN site to site tunnel
 =================================
 
-Site to site VPN's connect two locations with static public IP addresses and allow
+Site to site VPNs connect two locations with static public IP addresses and allow
 traffic to be routed between the two networks. This is most commonly used to
 connect an organization's branch offices back to its main office, so branch users
 can access network resources in the main office.
@@ -16,7 +16,7 @@ connection (you local network need to different than that of the remote network)
 
 .. Note::
 
-   For the sample we will use a private ip for our WAN connection.
+   For the sample we will use a private IP for our WAN connection.
    This requires us to disable the default block rule on wan to allow private traffic.
    To do so, go to the **Interfaces->[WAN]** and uncheck "Block private networks".
    *(Don't forget to save and apply)*

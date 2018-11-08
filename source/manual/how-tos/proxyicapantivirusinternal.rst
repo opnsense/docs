@@ -1,7 +1,7 @@
 ==================================================
 Setup Anti Virus Protection using OPNsense Plugins
 ==================================================
-OPNsense can offer http and https protection by utilizing its highly flexible
+OPNsense can offer HTTP and HTTPS protection by utilizing its highly flexible
 proxy and the industry standard ICAP. An external engine from one of the known
 vendors is used to offer maximum protection against malware, such as ransomware,
 trojans and viruses. This protection can be further enhanced by the built-in Intrusion
@@ -62,8 +62,8 @@ Step 5 - Test using EICAR
 To test if the engine is operational and functional go to http://www.eicar.org/85-0-Download.html
 on this page you will find several files you can test.
 
-First test the http protocol version and if that works the https version if you
-have also configured the transparent ssl proxy mode.
+First test the HTTP protocol version. If that works, test the HTTPS version if you
+have also configured the transparent SSL proxy mode.
 
 .. Warning::
     **IMPORTANT NOTE** :

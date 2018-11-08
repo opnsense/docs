@@ -20,7 +20,7 @@ OPNsense offers the following alias types:
 +------------+------------------------------------------------------+
 | Ports      | Port numbers or a port range like 20:30              |
 +------------+------------------------------------------------------+
-| URL Tables | A table of ip addresses that can be fetched          |
+| URL Tables | A table of IP addresses that can be fetched          |
 +------------+------------------------------------------------------+
 | GeoIP      | Select countries or whole regions                    |
 +------------+------------------------------------------------------+
@@ -44,7 +44,7 @@ Go to **Firewall->Diagnostics->pfTables** and select our newly created youtube t
 .. image:: images/pftable_youtube.png
     :width: 100%
 
-As you can see there are multiple ip addresses for this domain.
+As you can see there are multiple IP addresses for this domain.
 
 --------
 Networks
@@ -64,7 +64,7 @@ section.
 ----------
 URL Tables
 ----------
-URL tables can be used to fetch a list of ip addresses from a remote server.
+URL tables can be used to fetch a list of IP addresses from a remote server.
 There are several IP lists available for free, most notably are the "Don't Route
 Or Peer" lists from Spamhaus.
 
@@ -152,7 +152,7 @@ Then concatenate both by defining a new list:
 
 * servers { critical_servers , other_servers}.
 
-The end result will be a list with all ip addresses in one alias list (servers).
+The end result will be a list with all IP addresses in one alias list (servers).
 
 ------------------------------
 Configure DROP and EDROP lists

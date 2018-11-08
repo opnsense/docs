@@ -16,7 +16,7 @@ connection (you local network need to different than that of the remote network)
 
 .. Note::
 
-   For the sample we will use a private ip for our WAN connection.
+   For the sample we will use a private IP for our WAN connection.
    This requires us to disable the default block rule on wan to allow private traffic.
    To do so, go to the **Interfaces->[WAN]** and uncheck "Block private networks".
    *(Dont forget to save and apply)*
@@ -170,11 +170,11 @@ Full Network Diagram Including IPsec Tunnel
 
     }
 
-------------------------------
-Firewall Rules Site A & Site B
-------------------------------
+---------------------------------------
+Firewall Rules Site A & Site B (part 1)
+---------------------------------------
 To allow IPsec Tunnel Connections, the following should be allowed on WAN for on
-sites:
+sites (under **Firewall->Rules->WAN**):
 
 * Protocol ESP
 * UDP Traffic on Port 500 (ISAKMP)
@@ -185,13 +185,7 @@ sites:
 
 .. Note::
 
-    You can further limit the traffic by the source ip of the remote host.
-
-To allow traffic passing to your LAN subnet you need to add a rule to the IPsec
-interface.
-
-.. image:: images/ipsec_ipsec_lan_rule.png
-    :width: 100%
+    You can further limit the traffic by the source IP of the remote host.
 
 -----------------------
 Step 1 - Phase 1 Site A
@@ -206,7 +200,7 @@ General information
 **Key Exchange version**   V2
 **Internet Protocol**      IPv4
 **Interface**              WAN           *choose the interface connected to the internet*
-**Remote gateway**         172.10.2.1    *the public ip address of your remote OPNsense*
+**Remote gateway**         172.10.2.1    *the public IP address of your remote OPNsense*
 **Description**            Site B        *freely chosen description*
 ========================= ============= ================================================
 
@@ -320,7 +314,8 @@ And Apply changes:
 .. image:: images/ipsec_s2s_vpn_p1a_success.png
     :width: 100%
 
-**You are done configuring Site A.**
+**You are almost done configuring Site A (only some firewall settings remain, which we'll address later).**
+**We will now proceed setting up Site B**
 
 -----------------------------
 
@@ -337,7 +332,7 @@ General information
 **Key Exchange version**   V2
 **Internet Protocol**      IPv4
 **Interface**              WAN           *choose the interface connected to the internet*
-**Remote gateway**         172.10.1.1    *the public ip address of your remote OPNsense*
+**Remote gateway**         172.10.1.1    *the public IP address of your remote OPNsense*
 **Description**            Site A        *freely chosen description*
 ========================= ============= ================================================
 
@@ -455,8 +450,15 @@ And Apply changes:
 .. image:: images/ipsec_s2s_vpn_p1a_success.png
     :width: 100%
 
-**You are done configuring Site B.**
+---------------------------------------
+Firewall Rules Site A & Site B (part 2)
+---------------------------------------
 
+To allow traffic passing to your LAN subnet you need to add a rule to the IPsec
+interface (under **Firewall->Rules->IPsec**).
+
+.. image:: images/ipsec_ipsec_lan_rule.png
+    :width: 100%
 
 ------------------
 IPsec Tunnel Ready
@@ -511,7 +513,7 @@ Phase 1 works but no phase 2 tunnels are connected
 ---------------------------------------------------
 
 Did you set the correct local and remote networks. A common mistake is to fill in
-the ip address of the remote host in stead of its network ending with **x.x.x.0**
+the IP address of the remote host in stead of its network ending with **x.x.x.0**
 
 Common issues are unequal settings. Both ends must use the same encryption standard.
 

@@ -24,7 +24,7 @@ OPNsense traffic shaping is a reliable solution to limit bandwidth or prioritize
 traffic and can be combined with other functions such as captive portal or high
 availability (CARP).
 
-Bandwidth limitations can be defined based upon the interface(s), ip source &
+Bandwidth limitations can be defined based upon the interface(s), IP source &
 destination, direction of traffic (in/out) and port numbers (application).
 
 Available bandwidth can be shared evenly over all users, this allows for

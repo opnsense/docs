@@ -45,7 +45,7 @@ Using the system from php is rather simple:
 Usage in Volt templates
 -----------------------
 
-The acl scheme is bound to the default UI controller, and can be used by
+The ACL scheme is bound to the default UI controller, and can be used by
 using the acl keyword:
 
 .. code-block:: jinja

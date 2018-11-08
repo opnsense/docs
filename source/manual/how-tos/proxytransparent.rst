@@ -7,14 +7,14 @@ can be configured to run in transparent mode, this mean the clients browser does
 not have to be configured for the web proxy, but all traffic is diverted to the
 proxy automatically by utilizing Network Address Translation.
 
-In this How To, we will explain the basic http as well as https (ssl bump) transparent
+In this How To, we will explain the basic HTTP as well as HTTPS (SSL bump) transparent
 proxy modes.
 
 .. Warning::
     The Transparent SSL/HTTPS proxy mode uses a technique also called man-in-the-middle,
-    only configure and use this if your know what you are doing. When configured wrong
-    you may end up in lessing your security defenses significantly instead of enhancing
-    them. Using a transparent https proxy can be a dangerous practice and may not be
+    only configure and use this if you know what you are doing. When configured incorrectly
+    you may end up in lessening your security defenses significantly instead of enhancing
+    them. Using a transparent HTTPS proxy can be a dangerous practice and may not be
     allowed by the services you use, for instance e-banking.
 
 Step 1 - Basic Proxy Setup
@@ -33,7 +33,7 @@ And Click **Apply**.
 
 Step 3 - NAT/Firewall Rule
 ---------------------------------
-A simple way to add the NAT/Firewall Rule is to click on the **(i)** icon on the
+A simple way to add the NAT/Firewall Rule is to click the **(i)** icon on the
 left of the **Enable Transparent HTTP proxy** option and click on **add a new firewall rule**.
 
 .. image:: images/screenshot_enable_transparent_http.png

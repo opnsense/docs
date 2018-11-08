@@ -130,7 +130,7 @@ lower right corner.
 ---------------
 Check pf Tables
 ---------------
-To list the ip addresses that are currently in the DROP and EDROP lists go to
+To list the IP addresses that are currently in the DROP and EDROP lists go to
 **Firewall->Diagnostics->pfTables** and select the list you want to see:
 
 .. image:: images/spamhaus_pftable.png

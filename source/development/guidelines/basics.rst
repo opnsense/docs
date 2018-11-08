@@ -78,7 +78,7 @@ implementation is one example of this stage.
 
 **3)** Moving on
 (re)build new parts, using our new modules, which provide a layered development
-system to automatically support API calls from other systems and xml based model
+system to automatically support API calls from other systems and XML based model
 templates to describe configuration data.
 
 *See also:*
