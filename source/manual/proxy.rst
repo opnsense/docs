@@ -79,9 +79,6 @@ requests, however with secured (SSL) HTTPS connection the proxy will become a
 man-in-the-middle as the client will "talk" to the proxy and the proxy will encrypt
 the traffic with its master key that the client is required to trust.
 
-While we do not encourage the use of HTTPS in transparent mode, this feature is
-scheduled for release in version 16.7.
-
 .. Warning::
     Using a transparent HTTPS proxy can be a dangerous practice and may not be
     allowed by the services you use, for instance e-banking.
