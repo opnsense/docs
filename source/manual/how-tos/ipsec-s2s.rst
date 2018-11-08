@@ -170,11 +170,11 @@ Full Network Diagram Including IPsec Tunnel
 
     }
 
-------------------------------
-Firewall Rules Site A & Site B
-------------------------------
+---------------------------------------
+Firewall Rules Site A & Site B (part 1)
+---------------------------------------
 To allow IPsec Tunnel Connections, the following should be allowed on WAN for on
-sites:
+sites (under **Firewall->Rules->WAN**):
 
 * Protocol ESP
 * UDP Traffic on Port 500 (ISAKMP)
@@ -186,12 +186,6 @@ sites:
 .. Note::
 
     You can further limit the traffic by the source IP of the remote host.
-
-To allow traffic passing to your LAN subnet you need to add a rule to the IPsec
-interface.
-
-.. image:: images/ipsec_ipsec_lan_rule.png
-    :width: 100%
 
 -----------------------
 Step 1 - Phase 1 Site A
@@ -320,7 +314,8 @@ And Apply changes:
 .. image:: images/ipsec_s2s_vpn_p1a_success.png
     :width: 100%
 
-**You are done configuring Site A.**
+**You are almost done configuring Site A (only some firewall settings remain, which we'll address later).**
+**We will now proceed setting up Site B**
 
 -----------------------------
 
@@ -455,8 +450,15 @@ And Apply changes:
 .. image:: images/ipsec_s2s_vpn_p1a_success.png
     :width: 100%
 
-**You are done configuring Site B.**
+---------------------------------------
+Firewall Rules Site A & Site B (part 2)
+---------------------------------------
 
+To allow traffic passing to your LAN subnet you need to add a rule to the IPsec
+interface (under **Firewall->Rules->IPsec**).
+
+.. image:: images/ipsec_ipsec_lan_rule.png
+    :width: 100%
 
 ------------------
 IPsec Tunnel Ready
