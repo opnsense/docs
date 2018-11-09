@@ -211,7 +211,7 @@ The device must be the ENTIRE device (in Windows/DOS language: the 'C'
 partition), and a raw I/O device (the 'r' in front of the device "sd6"),
 not a block mode device.
 
-**Mac OS X**
+**macOS**
 
 ::
 

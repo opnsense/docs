@@ -92,7 +92,7 @@ Use the following settings:
     * Member Down
         *Triggers when the gateway has 100% packet loss.*
     * Packet Loss
-        *Triggers when the packet loss to a gateway is higher then the defined threshold.*
+        *Triggers when the packet loss to a gateway is higher than the defined threshold.*
     * High Latency
         *Triggers when the latency to a gateway higher than its defined threshold.*
     * Packet Loss or High Latency
@@ -195,7 +195,7 @@ To set this option can be set under **Firewall->Settings->Advanced**.
 Unequal Balancing (Weight)
 --------------------------
 If you have a non symmetric setup with one IPS having a much higher
-bandwidth that the other then you can set a weight on each gateway to change the
+bandwidth than the other then you can set a weight on each gateway to change the
 load balance. For instance if you have one line of 10 Mbps and one of 20 Mbps then
 set the weight of the first one to 1 and the second one to 2. This way the second
 gateway will get twice as many traffic to handle than the first.

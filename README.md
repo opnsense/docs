@@ -43,7 +43,7 @@ make html
 
 
 #### Changing theme
-* Install Sass (http://sass-lang.com/),  on OSX via ```/Library/Ruby/Gems```
+* Install Sass (http://sass-lang.com/). On macOS, this is done via ```/Library/Ruby/Gems```
 ```
 gem install --no-user-install sass
 ```

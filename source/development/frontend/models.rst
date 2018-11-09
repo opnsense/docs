@@ -16,7 +16,7 @@ Designing the model
 
 Creating models for OPNsense is divided into two separate blocks:
 
-#. A php class describing the actions on our data (also acts as a
+#. A PHP class describing the actions on our data (also acts as a
    wrapper to our data),
 #. The definition of the data and the rules it should apply to.
 
@@ -130,7 +130,7 @@ their own namespace at *OPNsense\\Base\\FieldTypes* deriving from *BaseField*.
 Usage example
 -------------
 
-Now let's test our model using a small php script (in /usr/local/opnsense/mvc/script/ ):
+Now let's test our model using a small PHP script (in /usr/local/opnsense/mvc/script/ ):
 
 .. code-block:: php
 

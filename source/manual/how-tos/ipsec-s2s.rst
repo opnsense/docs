@@ -513,7 +513,7 @@ Phase 1 works but no phase 2 tunnels are connected
 ---------------------------------------------------
 
 Did you set the correct local and remote networks. A common mistake is to fill in
-the IP address of the remote host in stead of its network ending with **x.x.x.0**
+the IP address of the remote host instead of its network ending with **x.x.x.0**
 
 Common issues are unequal settings. Both ends must use the same encryption standard.
 

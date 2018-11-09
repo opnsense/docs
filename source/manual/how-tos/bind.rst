@@ -42,7 +42,7 @@ General Settings
     
     
 :DNS Forwarders:
-    A list of IP addresses BIND will forward unknown dns request to. If empty BIND
+    A list of IP addresses BIND will forward unknown DNS request to. If empty BIND
     tries to resolve directly via the root servers.
 :Logsize in MB:
     The amount for each logfile it can grow.
