@@ -426,7 +426,7 @@ Step 9 - Create Vouchers
 Go back to the Captive portal and select Vouchers (**Services->Captive Portal->Vouchers**).
 Click on **Create Vouchers** in the lower right corner of the form.
 
-Let's create 1 Day vouchers for our guests:
+Let's create 1-day vouchers for our guests:
 
 .. image:: images/create_vouchers.png
     :width: 100%

@@ -57,7 +57,7 @@ Via plugins additional VPN technologies are offered, including:
 -------------
 Configuration
 -------------
-Please read our how-to's for configuration examples and more detailed information.
+Please read our how-tos for configuration examples and more detailed information.
 
 IPsec Road Warrior
 -------------------

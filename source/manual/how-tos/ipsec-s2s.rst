@@ -315,7 +315,7 @@ And Apply changes:
     :width: 100%
 
 **You are almost done configuring Site A (only some firewall settings remain, which we'll address later).**
-**We will now proceed setting up Site B**
+**We will now proceed setting up Site B.**
 
 -----------------------------
 
