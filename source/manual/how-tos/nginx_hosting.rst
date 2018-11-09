@@ -80,9 +80,9 @@ For a location, the following directives are important:
 Directive                       Description                                                           
 =============================== ======================================================================
 Match Type and URL Pattern      How to match the location and the pattern                             
-File System Root                directory of web applicaton                                           
+File System Root                Directory of web applicaton
 Upstream Servers                Send it to a remote interpreter instead of using the local one        
-Pass Request To PHP Interpreter Check if you want to enable php (runs locally as user www) or remotely
+Pass Request To PHP Interpreter Check if you want to enable PHP (runs locally as user www) or remotely
 Router Script                   Sends all request to a specific script (entry point of application)   
 =============================== ======================================================================
 

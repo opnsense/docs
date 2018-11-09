@@ -116,7 +116,7 @@ automatically understands the second file.
 
 (/usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.php)
 
-Not all modules contain additional code in the php class, sometimes all
+Not all modules contain additional code in the PHP class, sometimes all
 the standard behaviour is already sufficient for your
 modules/application.
 
@@ -176,7 +176,7 @@ Every OPNsense module should separate presentation from logic, that’s
 why there should always be multiple controllers per module.
 
 Our first controller handles the template rendering to the user and
-connects the user view we just created. We start by creating a php file
+connects the user view we just created. We start by creating a PHP file
 in controllers/OPNsense/HelloWorld/ with the following name
 IndexController.php and contents:
 
@@ -630,8 +630,8 @@ code:
 (/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php)
 
 This validates the type of action (it should always be POST to enable
-csrf protection) and adds a backend action for reloading the template.
-When successful the action will return “status”:”ok” as json object back
+CSRF protection) and adds a backend action for reloading the template.
+When successful the action will return "status":"ok" as json object back
 to the client.
 
 Now we are able to refresh the template content, but the user interface
@@ -675,9 +675,9 @@ next step.
 Controlling the sample
 ----------------------
 
-In stead of running all kinds of shell commands directly from the php
+Instead of running all kinds of shell commands directly from the PHP
 code, which very often need root access (starting/stopping services,
-etc), we should always communicate to our backend process which holds
+etc.), we should always communicate to our backend process which holds
 templates of possible things to run and protects your system from
 executing arbitrary commands.
 
@@ -785,7 +785,7 @@ This works because we are using the gettext library which is available to all GU
 While the XML based user interfaces are supporting it automatically,
 there may still the need to call it manually (buttons, tabs etc.).
 
-If you have a static string, you should add it like this into a classic php page:
+If you have a static string, you should add it like this into a classic PHP page:
 
 .. code-block:: php
 

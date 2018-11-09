@@ -25,7 +25,7 @@ and give you configuration examples for:
 
 * Two Factor Authentication (2FA)
 * Multi Factor Authentication ( Client Certificate + Password + OTP )
-* Client configuration on Windows, OSX, iOS and Android
+* Client configuration on Windows, macOS, iOS and Android
 
 .. Note::
 
@@ -308,9 +308,9 @@ however you may decide just to allow traffic to one or more servers.
 Step 3 - Export Client Configuration
 -------------------------------------
 
-Mac OSX & Windows
+macOS & Windows
 -----------------
-For Mac OSX & Windows users we recommend using Viscosity from Sparklabs (https://www.sparklabs.com/viscosity/).
+For macOS & Windows users we recommend using Viscosity from Sparklabs (https://www.sparklabs.com/viscosity/).
 Viscosity is very easy to setup and use and works well on both platforms.
 
 Go to **VPN->OpenVPN->Client Export** and select the newly created VPN server from
@@ -321,7 +321,7 @@ Now on your Mac or Windows PC unpack the bundle and import the Viscosity.visc fi
 Double clicking it should be enough to get it imported. When asked for an application
 to open the file with search and select Viscosity.
 
-Some sample screenshots (Mac OSX):
+Some sample screenshots (macOS):
 
 .. image:: images/viscosity_files.png
    :width: 100%

@@ -2,15 +2,15 @@
 Setup IPsec Road-Warrior
 ========================
 Road Warriors are remote users who need secure access to the companies infrastructure.
-IPsec Mobile Clients offer a solution that is easy to setup with OSX (native)
+IPsec Mobile Clients offer a solution that is easy to setup with macOS (native)
 and is know to work with iOS as well as many Android devices.
 
-For more flexibility use SSL VPN's, OPNsense utilizes OpenVPN for this purpose.
+For more flexibility use SSL VPNs, OPNsense utilizes OpenVPN for this purpose.
 
 With this example we'll show you how to configure the Mobile Client Setup in
 OPNsense and give you configuration examples for:
 
-* OSX
+* macOS
 * iOS
 * Android
 
@@ -272,16 +272,16 @@ Add privilege **User - VPN - IPsec xauth Dialin** by pressing the **+** under
 -------------------------
 Step 5 - Configure Client
 -------------------------
-To illustrate the client setup we will look at the configuration under OSX, including
+To illustrate the client setup we will look at the configuration under macOS, including
 some screenshots. The configurations for Android and iOS will be settings only.
 
 .. Note::
-      Configuration samples listed here where created using latest OSX, iOS and
+      Configuration samples listed here where created using latest macOS, iOS and
       Android devices on time of publication in February 2016.
 
---------------------
-Configure OSX Client
---------------------
+----------------------
+Configure macOS Client
+----------------------
 
 Start with opening your network settings (System Preferences -> Network) and
 Add a new network by pressing the + in the lower left corner.

@@ -38,7 +38,7 @@ we will explain briefly first:
 
 Common Address Redundancy Protocol uses IP protocol 112, is derived from
 OpenBSD and uses multicast packets to signal its neighbours about its
-status. Always make sure that each interface can receive carp packets.
+status. Always make sure that each interface can receive CARP packets.
 Every virtual interface must have a unique Virtual Host ID (vhid), which
 is shared across the physical machines. To determine which physical
 machine has a higher priority, the advertised skew is used. A lower skew
@@ -59,7 +59,7 @@ security reasons (state injection) as for performance.
     :name: xmlrpc-sync
 
 OPNsense includes a mechanism to keep the configuration of the backup
-server in sync with the master. This mechanism is called xmlrpc sync and
+server in sync with the master. This mechanism is called XMLRPC sync and
 can be found under System -> High Availability.
 
 -----------------------------------------
@@ -91,7 +91,7 @@ setup the following addresses and subnets:
 
 Next we need to make sure the appropriate protocols can be used on the
 different interfaces, go to firewall -> rules and make sure both LAN and
-WAN accept at least carp packets (see protocol selection). Because we're
+WAN accept at least CARP packets (see protocol selection). Because we're
 connecting both firewalls using a direct cable connection, we will add a
 single rule to accept all traffic on all protocols for that specific
 interface. Another option is to only accept traffic to the GUI port and
@@ -111,7 +111,7 @@ The backup server needs its own dedicated addresses, we will use these:
 +----------+-------------------+
 
 Because we are going to synchronize firewall settings between both
-hosts, we only need to make sure that the pfsync interface can accept
+hosts, we only need to make sure that the pfSync interface can accept
 data from the master for the initial setup. Use the same rule as used
 for the master on this interface.
 
@@ -175,12 +175,12 @@ nat on this page and change the rules originating from the
 (optional) Setup DHCP server
 ----------------------------
 
-When using dhcp for the local area network, there are some things to
-consider. All clients should use the virtual address in stead of the
+When using DHCP for the local area network, there are some things to
+consider. All clients should use the virtual address instead of the
 physical address it's normally propagating. Next thing to consider is
 there will be two servers active at the same time, which should know of
-each others pools. If dns requests are also forwarded by OPNsense, make
-sure the dhcp server sends the right IP address. These are settings used
+each others pools. If DNS requests are also forwarded by OPNsense, make
+sure the DHCP server sends the right IP address. These are settings used
 in our example (on the master server):
 
 +--------------------+----------------+
@@ -196,7 +196,7 @@ Setup HA sync (xmlrpc) and pfSync
 ---------------------------------
 
 First we should enable pfSync using our dedicated interface using the
-master firewall. Go to System -> High Availability, enable pfsync and
+master firewall. Go to System -> High Availability, enable pfSync and
 select the interface used for pfSync. Next setup the peer IP to the
 other hosts address (10.0.0.2).
 

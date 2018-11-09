@@ -2,7 +2,7 @@
 Setup IPsec site to site tunnel
 ================================
 
-Site to site VPN's connect two locations with static public IP addresses and allow
+Site to site VPNs connect two locations with static public IP addresses and allow
 traffic to be routed between the two networks. This is most commonly used to
 connect an organization's branch offices back to its main office, so branch users
 can access network resources in the main office.
@@ -513,7 +513,7 @@ Phase 1 works but no phase 2 tunnels are connected
 ---------------------------------------------------
 
 Did you set the correct local and remote networks. A common mistake is to fill in
-the IP address of the remote host in stead of its network ending with **x.x.x.0**
+the IP address of the remote host instead of its network ending with **x.x.x.0**
 
 Common issues are unequal settings. Both ends must use the same encryption standard.
 

@@ -24,7 +24,7 @@ utility makes the client configuration a breeze.
 --------------------------
 Supported VPN technologies
 --------------------------
-OPNsense offers a wide range of VPN technologies ranging from modern SSL VPN's to
+OPNsense offers a wide range of VPN technologies ranging from modern SSL VPNs to
 well known IPsec as well as older (now considered insecure) legacy options such as
 L2TP and PPTP.
 
