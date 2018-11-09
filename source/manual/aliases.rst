@@ -68,6 +68,8 @@ URL tables can be used to fetch a list of IP addresses from a remote server.
 There are several IP lists available for free, most notably are the "Don't Route
 Or Peer" lists from Spamhaus.
 
+.. _aliases-geoip:
+
 -----
 GeoIP
 -----
