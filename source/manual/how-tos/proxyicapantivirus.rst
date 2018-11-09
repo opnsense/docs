@@ -55,8 +55,8 @@ Step 5 - Configure ICAP
 To configure ICAP go to **Services->Proxy->Administration** And select **ICAP Settings**
 for the **Forward Proxy** tab.
 
-Select enable ICAP and filling the Request and Response URL's.
-For Symantecs Protection Engine the look like this:
+Select enable ICAP and filling the Request and Response URLs.
+For Symantecs Protection Engine they look like this:
 
 ======================== ===================================
  **Request Modify URL**   icap://192.168.2.1:1344/avscanreq

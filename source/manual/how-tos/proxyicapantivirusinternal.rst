@@ -47,7 +47,7 @@ Step 4 - Configure ICAP
 To configure ICAP go to **Services->Proxy->Administration** And select **ICAP Settings**
 for the **Forward Proxy** tab.
 
-Select enable ICAP and filling the Request and Response URL's.
+Select enable ICAP and filling the Request and Response URLs.
 For the C-ICAP plugin, the default URLs will be:
 
 ======================== =========================

@@ -5,7 +5,7 @@ Road Warriors are remote users who need secure access to the companies infrastru
 IPsec Mobile Clients offer a solution that is easy to setup with OSX (native)
 and is know to work with iOS as well as many Android devices.
 
-For more flexibility use SSL VPN's, OPNsense utilizes OpenVPN for this purpose.
+For more flexibility use SSL VPNs, OPNsense utilizes OpenVPN for this purpose.
 
 With this example we'll show you how to configure the Mobile Client Setup in
 OPNsense and give you configuration examples for:
