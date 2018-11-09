@@ -96,9 +96,9 @@ configuration via WPAD / PAC.
     should proxy the connection or avoid configuring the applicance from an
     untrusted network.
 
-------------------------
-Configuration / HOW-TO's
-------------------------
+-----------------------
+Configuration / How-tos
+-----------------------
 More information on how to utilize OPNsense's proxy service can be found in:
 
 Proxy Basic Setup

@@ -90,9 +90,9 @@ blocking web services and the URLs behind them.
 
 If you want to contribute to the ruleset see: https://github.com/opnsense/rules
 
---------
-How-to's
---------
+-------
+How-tos
+-------
 
 .. toctree::
    :maxdepth: 2
