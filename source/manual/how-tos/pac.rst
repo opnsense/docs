@@ -213,7 +213,7 @@ created:
 .. Warning::
     If you have **HTTP Redirect** enabled via **System->Settings->Administration**,
     be sure your browser accepts the certificate presented by OPNsense, as it wont
-    download wpad.dat when untrusted.
+    download wpad.dat if the certificate is untrusted.
 
 Variant 2: Manual Configuration
 -------------------------------
