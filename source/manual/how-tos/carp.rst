@@ -260,12 +260,12 @@ downtime. To keep the downtime at a minimum when running updates just follow
 these steps:
 
 - Update your secondary unit and wait until it is online again
-- On your primary unit go to **Firewall->Virtual IP's->Status** and hit **Enter Persistant CARP Maintenance Mode**
+- On your primary unit go to **Firewall->Virtual IP's->Status** and hit **Enter Persistent CARP Maintenance Mode**
 - You secondary unit is now *MASTER*, check if all services like DHCP, VPN, NAT are working correct
-- If you ensured the update was fine update your primary unit and hit **Leave Persistant CARP Maintenance Mode**
+- If you ensured the update was fine update your primary unit and hit **Leave Persistent CARP Maintenance Mode**
 
-With these steps you will not loose much packets and also your existing connection will be transfered. 
-Also note that entering persistant mode survives a reboot.
+With these steps you will not lose much packets and also your existing connection will be transfered.
+Also note that entering persistent mode survives a reboot.
 
 ---------
 Resources
