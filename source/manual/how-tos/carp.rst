@@ -251,6 +251,22 @@ first CARP IP is configured.
    IP Alias is not synchronized to slave, be sure to also add it to your
    second machine.
 
+-----------------------------------
+Example: Updating a CARP HA Cluster
+-----------------------------------
+
+Running a redundant Active/Passive cluster leads to the expectation to have zero 
+downtime. To keep the downtime at a minimum when running updates just follow
+these steps:
+
+- Update your secondary unit and wait until it is online again
+- On your primary unit go to **Firewall->Virtual IP's->Status** and hit **Enter Persistant CARP Maintenance Mode**
+- You secondary unit is now *MASTER*, check if all services like DHCP, VPN, NAT are working correct
+- If you ensured the update was fine update your primary unit and hit **Leave Persistant CARP Maintenance Mode**
+
+With these steps you will not loose much packets and also your existing connection will be transfered. 
+Also note that entering persistant mode survives a reboot.
+
 ---------
 Resources
 ---------
