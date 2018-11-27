@@ -261,10 +261,10 @@ these steps:
 
 - Update your secondary unit and wait until it is online again
 - On your primary unit go to **Firewall->Virtual IP's->Status** and hit **Enter Persistent CARP Maintenance Mode**
-- You secondary unit is now *MASTER*, check if all services like DHCP, VPN, NAT are working correct
-- If you ensured the update was fine update your primary unit and hit **Leave Persistent CARP Maintenance Mode**
+- You secondary unit is now *MASTER*, check if all services like DHCP, VPN, NAT are working correctly
+- If you ensured the update was fine, update your primary unit and hit **Leave Persistent CARP Maintenance Mode**
 
-With these steps you will not lose much packets and also your existing connection will be transfered.
+With these steps you will not lose too many packets and your existing connection will be transferred as well.
 Also note that entering persistent mode survives a reboot.
 
 ---------

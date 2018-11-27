@@ -13,7 +13,7 @@ this setup, a different operating system might result in some paths
 being different.
 
 User limits on the OPNsense firewall are set right after login, the
-Radius server should tell the firewall how much resources are left for
+Radius server should tell the firewall how many resources are left for
 the user that logged in successfully. A normal login sequence look like
 this:
 

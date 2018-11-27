@@ -51,8 +51,8 @@ given page Different sources can be used to authenticate a user in a zone:
 Voucher Manager
 ---------------
 OPNsense's Captive Portal has an easy voucher creation system that exports the
-vouchers to a csv file for use with you favorite application. The export allows
-you to print vouchers by merging them with your word or open office template and
+vouchers to a csv file for use with your favorite application. The export allows
+you to print vouchers by merging them with your Microsoft Word or LibreOffice template and
 create a good looking handout with your logo and company style.
 
 -----------------------
