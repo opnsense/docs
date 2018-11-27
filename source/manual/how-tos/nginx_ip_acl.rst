@@ -16,9 +16,9 @@ Background Information
 IP based ACLs can be externally used to allow access (whitelist strategy) to a
 specific web service only by customers so you can easily get rid of most of the
 malicious traffic to the application server.
-This also has some downsides like the site is probably
-not visible to search engines and will not be indexed.
-On the other hand you can also blacklist (blacklist strategy) some bot IPs,
+This also has some downsides: For example, the site will probably
+not be visible to search engines and will therefore not be indexed.
+On the other hand you can also blacklist (blacklist strategy) some bot IPs and
 some bulletproof_ hosting ranges.
 
 .. _bulletproof: https://en.wikipedia.org/wiki/Bulletproof_hosting
@@ -39,16 +39,16 @@ Click the + button to create a new ACL.
 
 Next enter a reasonable title, for example here "Allow Private IPs" was used.
 Now the different IP addresses or IP ranges can be entered. In this case some
-common private IP ranges were allowd and the default rule was set to block.
-A new line can be added by clicking the + icon while trash can deletes the row.
-This means that this searvice should be only visible internally.
+common private IP ranges were allowed and the default rule was set to block.
+A new line can be added by clicking the + icon while the trash can icon deletes the row.
+This means that this service should be only visible internally.
 
 .. Warning::
-    Keep in mind that carrier grade NAT (CGN) may cause some trouble with this
+    Keep in mind that carrier grade NAT (CGN) may cause some trouble with these
     ACLs too. Please check how your traffic is handled first.
 
 
-Assign it to a Location, HTTP- or Stream-Server
+Assign it to a Location, HTTP or Stream-Server
 -----------------------------------------------
 
 In the last step, the user list must be added to the object, that supports it.
