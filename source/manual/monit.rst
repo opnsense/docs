@@ -2,16 +2,16 @@
 Monit
 =====
 
-OPNsense uses Monit for monitoring services. Monit has quite extensive monitoring capatibilities, which can make the
-settings panel look a bit daunting at first. This guide will do a quick walk through the setup, with the
+OPNsense uses Monit for monitoring services. Monit has quite extensive monitoring capatibilities, which is why the
+configuration options are extensive as well. This guide will do a quick walk through the setup, with the
 configuration options explained in more detail afterwards, along with some caveats.
 
 ------------
 Global setup
 ------------
 
-On the “General Settings” tab, turn on Monit and fill in the details of your SMTP server. Save the changes.
-Then, navigate to the Alert settings and add one for your e-mail address. If your mail server requires the “From” field
+Navigate to **Services->Monit->Settings**. On the “General Settings” tab, turn on Monit and fill in the details of your SMTP server. Save the changes.
+Then, navigate to the “Alert settings” and add one for your e-mail address. If your mail server requires the “From” field
 to be properly set, enter ``From: sender@example.com`` in the “Mail format” field. Save the alert and apply the changes.
 
 ---------------
@@ -20,12 +20,12 @@ Adding an alert
 
 First, you have to decide what you want to monitor and what constitutes a failure. It helps if you have some knowledge
 about how Monit alerts are set up. This is described in the
-`Monit documentation <https://mmonit.com/monit/documentation/monit.html>`_.
+`Monit documentation <https://mmonit.com/monit/documentation/monit.html#ALERT-MESSAGES>`_.
 
 If you have done that, you have to add the condition first. Navigate to the 'Service Test Settings' tab and look if the
 condition you want to add already exists. If it doesn't, click the + button to add it.
 
-Now navigate to the 'Service Test' tab and click the + icon. In the dialog, you can now add your alert. If you're done,
+Now navigate to the 'Service Test' tab and click the + icon. In the dialog, you can now add your service test. If you're done,
 save it, then apply the changes.
 
 The fields in the dialogs are described in more detail below.
@@ -129,14 +129,14 @@ set the From address. For example::
 
     From: sender@example.com
     Reply-To: support@example.com
-    Subject: A problem for you to solve
+    Subject: $SERVICE at $HOST failed
 
 
 ^^^^^^^^^^^^^^^^
 Service Settings
 ^^^^^^^^^^^^^^^^
 
-This lists the alerts that are set. There are some alerts precreated, but you add as many as you like. Click the Edit
+This lists the services that are set. There are some services precreated, but you add as many as you like. Click the Edit
 icon of a pre-existing entry or the Add icon (a plus sign in the lower right corner) to see the options listed below.
 
 +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
@@ -186,3 +186,10 @@ These include:
 +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
 | ChangedStatus                 | The returned status code has changed since the last it the script was run.                                                              |
 +-------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------+
+
+------
+Status
+------
+
+The Monit status panel can be accessed via **Services->Monit->Status**. For every active service, it will show the status,
+along with extra information if the service provides it.
