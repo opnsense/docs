@@ -37,9 +37,10 @@ Interfaces
  **Point-to-Point**   **Interfaces->Point-to-Point->Log File**   *PPP dialup logs like PPPoE get's here*
 ==================== ========================================== ===================================================================
 
-Log files on file system:
-/var/log/wireless.log (clog)
-/var/log/ppps.log (clog)
+.. Note::
+   Log files on file system:
+   /var/log/wireless.log (clog)
+   /var/log/ppps.log (clog)
 
 --------
 Firewall 
@@ -50,8 +51,9 @@ Firewall
  **Plain View**   **Firewall->Log Files->Plain View**   *Just the plain contents how **pf** logs into **filter.log** *
 ================ ===================================== =============================================================================
 
-Log files on file system:
-/var/log/filter.log (clog)
+.. Note::
+   Log files on file system:
+   /var/log/filter.log (clog)
 
 ---
 VPN
@@ -62,9 +64,10 @@ VPN
  **OpenVPN Log**   **VPN->OpenVPN->Log File**   *OpenVPN logs everything here*
 ================= ============================ =====================================
 
-Log files on file system:
-/var/log/ipsec.log (clog)
-/var/log/openvpn.log (clog)
+.. Note::
+   Log files on file system:
+   /var/log/ipsec.log (clog)
+   /var/log/openvpn.log (clog)
 
 --------
 Services
@@ -81,19 +84,20 @@ Services
  **Web Proxy**             **Services->Web Proxy->Log File**             *Squid logs can be found here, three tabs available*
 ========================= ============================================= ======================================================
 
-Log files on file system:
-/var/log/portalauth.log (clog)
-/var/log/dhcpd.log (clog)
-/var/log/dnsmasq.log (clog)
-/var/log/haproxy.log (clog)
-/var/log/ntpd.log (clog)
-/var/log/suricata.log (text)
-/var/log/suricata.syskig.log (clog)
-/var/log/resolver.log (clog)
-/var/log/squid.syslog.log (clog)
-/var/log/squid/access.log (text)
-/var/log/squid/cache.log (text)
-/var/log/squid/store.log (text)
+.. Note::
+   Log files on file system:
+   /var/log/portalauth.log (clog)
+   /var/log/dhcpd.log (clog)
+   /var/log/dnsmasq.log (clog)
+   /var/log/haproxy.log (clog)
+   /var/log/ntpd.log (clog)
+   /var/log/suricata.log (text)
+   /var/log/suricata.syskig.log (clog)
+   /var/log/resolver.log (clog)
+   /var/log/squid.syslog.log (clog)
+   /var/log/squid/access.log (text)
+   /var/log/squid/cache.log (text)
+   /var/log/squid/store.log (text)
 
 ------------
 Circular Log
