@@ -123,7 +123,7 @@ or follow the contents via:
 Syslog
 ------
 
-In **System->Settings->Logging** you can also set a remote log server where to send
+In **System->Settings->Logging** you can also set a remote log server to send
 your log files. Choose a **Source Address** if needed and set a **Remote Syslog Server**.
 Via **Remote Syslog Contents** you can choose which kinds of logs to send.
 
