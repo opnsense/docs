@@ -125,7 +125,7 @@ Syslog
 
 In **System->Settings->Logging** you can also set a remote log server to send
 your log files to. Choose a **Source Address** if needed and fill in the **Remote Syslog Server** field.
-Via **Remote Syslog Contents** you can choose which kinds of logs to send.
+Via **Remote Syslog Contents** you can choose which kind of logs to send.
 
 -----------
 Plugin Logs
