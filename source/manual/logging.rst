@@ -93,7 +93,6 @@ Services
    /var/log/ntpd.log (clog)
    /var/log/suricata.log (clog)
    /var/log/resolver.log (clog)
-   /var/log/squid.syslog.log (clog)
    /var/log/squid/access.log (text)
    /var/log/squid/cache.log (text)
    /var/log/squid/store.log (text)
