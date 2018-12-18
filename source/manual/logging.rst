@@ -74,7 +74,7 @@ Services
 --------
 
 ========================= ============================================= ======================================================
- **Captive Portal**        **Services->Captive Portal->Log File**        *Events from Captive Portal goes here*
+ **Captive Portal**        **Services->Captive Portal->Log File**        *Events from Captive Portal go here*
  **DHCPv4**                **Services->DHCPv4->Log File**                *DHCP events get logged here*
  **Dnsmasq DNS**           **Services->Dnsmasq DNS->Log File**           *The DNSmasq Forwarder logs*
  **HAProxy**               **Services->HAProxy->Log File**               *The logs of the Reverse Proxy*
