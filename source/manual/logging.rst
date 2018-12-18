@@ -47,7 +47,7 @@ Firewall
 --------
 
 ================ ===================================== =============================================================================
- **Live View**    **Firewall->Log Files->Live View**    *Dynamically updateing windows of logs services search filter and coloring*
+ **Live View**    **Firewall->Log Files->Live View**    *View firewall logs in realtime, smart filtering can be applied*
  **Plain View**   **Firewall->Log Files->Plain View**   *Just the plain contents how **pf** logs into **filter.log** *
 ================ ===================================== =============================================================================
 
@@ -73,7 +73,7 @@ VPN
 Services
 --------
 
-========================= ============================================= ======================================================
+========================= ============================================= =============================================
  **Captive Portal**        **Services->Captive Portal->Log File**        *Events from Captive Portal go here*
  **DHCPv4**                **Services->DHCPv4->Log File**                *DHCP events get logged here*
  **Dnsmasq DNS**           **Services->Dnsmasq DNS->Log File**           *The DNSmasq Forwarder logs*
@@ -81,8 +81,8 @@ Services
  **Intrusion Detection**   **Services->Intrusion Detection->Log File**   *Suricata Logs are here*
  **Network Time**          **Services->Network Time->Log File**          *NTP daemon logs*
  **Unbound DNS**           **Services->Unbound DNS->Log File**           *Unbound resolver logs can be found here*
- **Web Proxy**             **Services->Web Proxy->Log File**             *Squid logs can be found here, three tabs available*
-========================= ============================================= ======================================================
+ **Web Proxy**             **Services->Web Proxy->Log File**             *Squid access.log, store.log and cache.log*
+========================= ============================================= =============================================
 
 .. Note::
    Log files on file system:
