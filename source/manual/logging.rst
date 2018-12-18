@@ -104,7 +104,7 @@ Circular Log
 ------------
 
 Most of the core features log to circular log files so they will not grow bigger
-then a predefined size. You can tune this value via **System->Settings->Logging**.
+than a predefined size. You can tune this value via **System->Settings->Logging**.
 There, you can also disable the writing of logs to disk or reset them all.
 
 You can view the contents via CLI with:
