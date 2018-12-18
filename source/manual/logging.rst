@@ -131,5 +131,5 @@ Via **Remote Syslog Contents** you can choose which kind of logs to send.
 Plugin Logs
 -----------
 
-Many plugins have their own logs, via GUI you can find them it their own menu.
+Many plugins have their own logs. In the UI, they are grouped with the settings of that plugin.
 They mostly log to /var/log/ in text format, so you can view or follow them with *tail*.
