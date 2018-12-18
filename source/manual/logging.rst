@@ -34,7 +34,7 @@ Interfaces
 
 ==================== ========================================== ===================================================================
  **Wireless**         **Interfaces->Wireless->Log File**         *When using wireless features of OPNsense you find the logs here*
- **Point-to-Point**   **Interfaces->Point-to-Point->Log File**   *PPP dialup logs like PPPoE get's here*
+ **Point-to-Point**   **Interfaces->Point-to-Point->Log File**   *PPP dialup logs like PPPoE are found here*
 ==================== ========================================== ===================================================================
 
 .. Note::
