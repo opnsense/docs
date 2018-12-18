@@ -2,7 +2,7 @@
 System Logging
 ==============
 
-When troubleshooting problems with your Firewall you are heavily constrained to 
+When troubleshooting problems with your firewall, it is very likely you have to check
 the logs available on your system. Via the UI you can find them distributed within 
 the depending Menues which are:
 
