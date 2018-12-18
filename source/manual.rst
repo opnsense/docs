@@ -21,6 +21,7 @@ User Manual
    manual/two_factor
    manual/systemhealth
    manual/netflow
+   manual/logging
    manual/aliases
    manual/vpnet
    manual/ips
