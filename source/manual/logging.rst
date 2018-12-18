@@ -3,7 +3,7 @@ System Logging
 ==============
 
 When troubleshooting problems with your firewall, it is very likely you have to check
-the logs available on your system. Via the UI you can find them distributed within 
+the logs available on your system. In the UI of OPNsense, the log files are generally grouped
 the depending Menues which are:
 
 ------
