@@ -3671,6 +3671,9 @@ code, .rst-content tt, .rst-content code {
 @media print {
   .wy-breadcrumbs li.wy-breadcrumbs-aside {
     display: none; } }
+body {
+  overflow-wrap: break-word; }
+
 .wy-affix {
   position: fixed;
   top: 1.618em; }
