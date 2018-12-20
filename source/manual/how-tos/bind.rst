@@ -97,3 +97,5 @@ you can set in **Services->Unbound DNS->General->Custom Options**.
     forward-zone:    
     name: „.“    
     forward-addr: 127.0.0.1@53530
+
+Do not forget to set **Services->Unbound DNS->General->Outgoing Interfaces** to **Localhost** in order to direct the traffic to BIND.
