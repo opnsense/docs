@@ -28,7 +28,58 @@ condition you want to add already exists. If it doesn't, click the + button to a
 Now navigate to the 'Service Test' tab and click the + icon. In the dialog, you can now add your service test. If you're done,
 save it, then apply the changes.
 
-The fields in the dialogs are described in more detail below.
+The fields in the dialogs are described in more detail in the “Settings overview” section of this document.
+
+-------
+Example
+-------
+
+In this example, we'll add a service to restart the FTP proxy (running on port 8021) if it has stopped. To avoid an
+eternal loop in case something is wrong, we'll also add a provision to stop trying if the FTP proxy has had to be
+restarted five times in a row.
+
+First, make sure you have followed the steps under “Global setup”. Then, navigate to the “Service Tests Settings” tab.
+Here, you need to add two tests:
+
++-----------+------------------------------------------+
+| Setting   | Value                                    |
++===========+==========================================+
+| Name      | FTPProxy8021                             |
++-----------+------------------------------------------+
+| Condition | failed host 127.0.0.1 port 8021 type tcp |
++-----------+------------------------------------------+
+| Action    | Restart                                  |
++-----------+------------------------------------------+
+
++-----------+----------------------------+
+| Setting   | Value                      |
++===========+============================+
+| Name      | RestartLimit5              |
++-----------+----------------------------+
+| Condition | 5 restarts within 5 cycles |
++-----------+----------------------------+
+| Action    | Unmonitor                  |
++-----------+----------------------------+
+
+Now, navigate to the “Service Settings” tab. Here, add the following service:
+
++-----------+---------------------------------------------------------+
+| Setting   | Value                                                   |
++===========+=========================================================+
+| Name      | FTPProxy8021                                            |
++-----------+---------------------------------------------------------+
+| Type      | Process                                                 |
++-----------+---------------------------------------------------------+
+| PID File  | /var/run/osftpproxy.127_0_0_1_8021.pid                  |
++-----------+---------------------------------------------------------+
+| Start     | /usr/local/sbin/configctl ftpproxy start 127_0_0_1_8021 |
++-----------+---------------------------------------------------------+
+| Stop      | /usr/local/sbin/configctl ftpproxy start 127_0_0_1_8021 |
++-----------+---------------------------------------------------------+
+| Tests     | FTPProxy8021, RestartLimit5                             |
++-----------+---------------------------------------------------------+
+
+Save and apply.
 
 -----------------
 Settings overview
