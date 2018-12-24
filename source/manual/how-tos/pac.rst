@@ -209,7 +209,11 @@ the OPNsense web interface on port 80 with HTTP. The following URL will be
 created:
 
     http://wpad.example.com:80/wpad.dat
-
+    
+.. Warning::
+    If you have **HTTP Redirect** enabled via **System->Settings->Administration**,
+    make sure your browser accepts the certificate presented by OPNsense, as it won't
+    download wpad.dat if the certificate is untrusted.
 
 Variant 2: Manual Configuration
 -------------------------------
