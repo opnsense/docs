@@ -15,6 +15,7 @@ How-tos
    how-tos/cellular
    how-tos/clamav
    how-tos/cloud_backup
+   how-tos/dnscrypt-proxy
    how-tos/dynamicrouting_howto
    how-tos/dynamicrouting_ospf
    how-tos/dynamicrouting_rip
