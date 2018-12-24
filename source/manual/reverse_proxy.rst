@@ -214,6 +214,7 @@ Basic Reverse Proxy Setup
 Setup Authentication
 --------------------
 * :doc:`how-tos/nginx_basic_auth`
+* :doc:`how-tos/nginx_ip_acl`
 * :doc:`how-tos/nginx_tls_auth`
 
 Firewalling
