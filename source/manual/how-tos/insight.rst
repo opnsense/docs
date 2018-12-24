@@ -16,7 +16,7 @@ powerful.
 
 
 Insight offers a full set of analysis tools, ranging from a graphical overview to
-a csv exporter for further analysis with you favorite spreadsheet.
+a csv exporter for further analysis with your favorite spreadsheet.
 
 
 ---------------

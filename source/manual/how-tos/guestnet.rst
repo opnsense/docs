@@ -72,7 +72,7 @@ Select **Enable Interface** and fill in the following data for our example:
  **MSS**                        (Leave Blank)
  **Speed and duplex**           Default           *You may also select the speed when known*
  **Static IPv4 address**        192.168.200.1/24  *We will use this segment for our guests*
- **IPv4 Upstream Gateway**      None
+ **IPv4 Upstream Gateway**      Auto-detect
 ============================== ================= ==============================================
 
 Press **Save** and then **Apply changes**.
@@ -80,7 +80,7 @@ Press **Save** and then **Apply changes**.
 ------------------------------
 Step 2 - Configure DHCP Server
 ------------------------------
-Go to **Services->DHCP->Server** and click on the tab **GUESTNET**.
+Go to **Services->DHCPv4->[GUESTNET]**.
 
 Fill in the following to setup the DHCP server for our guest net (leave everything
  else on its default setting):
@@ -335,7 +335,7 @@ the form and enter the following details:
  **Description**        pipe_10Mbps_down
 ====================== ===================
 
-Click on **Save changes**.
+Click **Save changes**.
 And add another pipe for the upload traffic.
 
 ====================== ===================
