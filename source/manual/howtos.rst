@@ -46,6 +46,7 @@ How-tos
    how-tos/nginx_hosting
    how-tos/nginx_basic_auth
    how-tos/nginx_ip_acl
+   how-tos/nginx_tls_fingerprints
    how-tos/nginx_tls_auth
    how-tos/nginx_waf
    how-tos/nginx_streams
