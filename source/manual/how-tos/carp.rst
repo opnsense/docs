@@ -11,7 +11,7 @@ Overview
 One of the more powerful features of OPNsense is to set-up a redundant
 firewall with automatic fail-over option. This chapter describes step by
 step how to create a set-up based on two networks. The 192.168.1.0/24
-will be used for the internal network and 172.8.0.0/24 will be used to
+will be used for the internal network and 172.18.0.0/24 will be used to
 route our traffic to the internet.
 
 .. image:: ./images/900px-Carp_setup_example.png
