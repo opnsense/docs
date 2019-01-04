@@ -69,6 +69,70 @@ Download
 The OPNsense distribution can be `downloaded <https://opnsense.org/download>`__
 from one of our `mirrors <https://opnsense.org/download>`__.
 
+-----------
+Verification
+-----------
+
+The openssl tool is used for file verification.
+
+4 files are needed for verification:
+- The bzip compressed ISO file (<filename>.iso.bz2)
+- The SHA-256 checksum file (<filename>.sha256)
+- The signature file (<filename>.sig)
+- The openssl public key (<filename>.pub)
+
+These files can be downloaded from one of the download mirrors. To download them:
+
+1. Go to the OPNSense `download <https://opnsense.org/download>`__ page.
+2. After selecting a mirror, right click the download button and click "open in new tab".
+3. A popup will appear asking if you want to download the image. Say no for now.
+4. Remove the file name after the last slash in the URL bar, and press enter. This will take you to the directory listing for that mirror.
+
+I.e. If you wanted to download from the US East Coast mirror:
+
+Opening the link in a new tab would take you to this link:
+`mirror.wdc1.us.leaseweb.net/opnsense/releases/18.7/OPNsense-18.7-OpenSSL-dvd-amd64.iso.bz2`
+
+You should take off the file name at the end, like this:
+`mirror.wdc1.us.leaseweb.net/opnsense/releases/18.7/`
+
+The openssl public key is required to verify against. This file is also on the mirror directory listing page, however you should not trust the copy there. Download it, open it up, and verify that the public key matches the one from other sources. If it does not, the mirror may have been hacked, or you may be the victim of a Man In The Middle attack. Some other sources to get the public key from include:
+
+- https://pkg.opnsense.org/releases/mirror/README
+- https://forum.opnsense.org/index.php?board=11.0
+- https://opnsense.org (Scroll down to bottom of page, see "Latest News" for release announcements)
+- https://github.com/opnsense/changelog/tree/master/doc
+- https://lists.opnsense.org/pipermail/announce/ (also available via mail so your HTTP(S) is not intercepted)
+- https://pkg.opnsense.org (/<FreeBSD version & archtecture>/<release version>/sets/changelog.txz) (lands signed and verified in the GUI of the running software)
+
+For completeness, the key is also listed here:
+
+# -----BEGIN PUBLIC KEY-----
+# MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvkEFA2+DAhWXfucsgdvZ
+# 8xxkuzNt0nYttTmbRtLVJRKREysOj3/nqBcFWtvLr3ooVhkbxVY7HPLEoicqFdG/
+# +m5lLR2kI7hnZ2mpkl+/NKSixJaZkqXi5cQCp8KUlE7oOu3d6O5ZtTg4g40Ms8Dp
+# bQw8oZo3NpBrQK3gEEEzNYgChkZwTrEZ1Y8v8+/3zggh44sqg4vA1j5g9jq3Ldms
+# 3KnulBgettpHIapeAmbtCokaLaXxf4lgQxyUsy077aeNRptDpGG3D5ZQgtIjaYeE
+# h3u51PaVTL5OY/2uvcTnxR/ZrrHpppkIutUGzGJo9KK0gfrXLi31r9e+xtBJYBdC
+# FtdefujlV3Cfw1OFpUY/Y1p921xgHftNnrVDk+C9kl+FKf3qvFeyGCbd9V2k1JM2
+# uXHDwbsjZNPhbxbqtCoCDMbsUjBsfWyAOIoZfXOSmqJQt3jBUvwXKwLKncVh4Tvu
+# wxJGXNZXk/OCHVQYlx/uzwf5/ly/ApIwMKqr66E7mo0OVkPaME0uCCUJolugu9lI
+# tW8TJVZryBCQMQ4XhPZkcny22I2oRI5nCu7baRrFNJ8gB8UYUnrIPTIJIhrjrVOg
+# pFOxSb/tZAqtutFOE8F5+KwcgGlOBOKXPaNrdQ79X4kH7egChPrhm283rfW1oEG6
+# 8rHzvP45S09L8o7OXUddo8UCAwEAAQ==
+# -----END PUBLIC KEY-----
+
+Note that only the release announcements for major versions contain the public key. I.e. 18.7 would have a copy of the public key in the release announcement, but 18.7.9 would not.
+
+Once you have downloaded all the required files and a copy of the public key, and VERIFIED that the public key matches the public key from the alternate sources listed above, you can be relatively certain that the key has not been tampered with. To verify the downloaded image, run the following commands (substituting the names in brackets for the files you downloaded):
+
+`openssl base64 -d -in <filename>.sig -out /tmp/image.sig`
+`openssl dgst -sha256 -verify <key>.pub -signature /tmp/image.sig <image>.iso.bz2`
+
+Make sure to change the "iso" to "img" in the second line if you downloaded a different installer type.
+
+If the output of the second command is "Verified OK", your image was verified successfully, and you can install it. If it has any other output, you may have made an error using the commands, or the image may have been compromised.
+
 ------------------
 Installation Media
 ------------------
