@@ -8,13 +8,6 @@ security platform with leading innovations such as weekly security updates for
 all components, a REST API, inline Intrusion Prevention and intuitive modern user
 interface.
 
--------------------
-Debunking the Myths
--------------------
-There are some myths surrounding our project offered mostly by pfSense enthusiasts,
-if you have read their comments on us then we'd recommend to just ignore them and
-install OPNsense, if you have not already done so.
-
 .. sidebar:: Let's fork and lift the project!
 
     .. image:: images/fork-lift_new.jpg

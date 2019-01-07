@@ -21,7 +21,6 @@ Table of Contents
   .. toctree::
      :maxdepth: 2
 
-     fork/thefork
      intro
      manual
      develop
@@ -29,3 +28,4 @@ Table of Contents
      legal
      support
      contribute
+     history
