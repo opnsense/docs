@@ -71,7 +71,7 @@ Then under **Interfaces->[OPTX]** check **Enable Interface** and change the
 description to e.g. TUNNELBROKER before hitting **Save**.
 
 The newly created interface must now be set as the default IPv6 gateway
-under **System->Gateways->All** by editing the new gateway entry
+under **System->Gateways->Single** by editing the new gateway entry
 TUNNELBROKER_TUNNELV6 and checking **Default Gateway** before saving.
 
 -----------------------------
