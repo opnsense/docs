@@ -68,7 +68,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OPNsense'
-copyright = u'2016, Deciso B.V'
+copyright = u'2016-2019, Deciso B.V'
 author = u'Deciso B.V.'
 
 # The version info for the project you're documenting, acts as replacement for

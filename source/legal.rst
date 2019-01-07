@@ -28,7 +28,7 @@ want to do with the code, even fork it and take it from there.
 OPNsense is available under the BSD 2-Clause “Simplified” or “FreeBSD”
 license:
 
-`OPNsense® <http://opnsense.org>`__ is Copyright © 2014 – 2016 by
+`OPNsense® <http://opnsense.org>`__ is Copyright © 2014 – 2019 by
 Deciso B.V.
 All rights reserved.
 Redistribution and use in source and binary forms, with or without
