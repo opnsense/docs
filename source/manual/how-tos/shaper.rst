@@ -55,7 +55,7 @@ has 10 Mbps Download and 1 Mbps Upload.
       }
     }
 
-To start go to **Firewall->Traffic Shaper->Settings**.
+To start go to **Firewall->Shaper->Settings**.
 
 Step 1 - Create Upload and Download Pipes
 -----------------------------------------
