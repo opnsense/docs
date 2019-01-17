@@ -6,6 +6,8 @@ by selecting the alias name in the various supported sections of the firewall.
 These aliases are particularly useful to condense firewall rules and minimize
 changes.
 
+Aliases can be added, modified and removed via **Firewall->Aliases**.
+
 -----------
 Alias Types
 -----------
