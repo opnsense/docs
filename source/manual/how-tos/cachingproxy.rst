@@ -9,7 +9,7 @@ Setup Caching Proxy
 Enable / Disable
 ----------------
 The proxy is delivered with sane default settings for easy setup.
-To enable the proxy just go to **Services->Proxy Server->Administration** and
+To enable the proxy just go to **Services->Web Proxy->Administration** and
 check **Enable proxy** en click on **Apply**. The default will enable the proxy
 with User Authentication based on the local user database and runs on port 3128
 of the lan interface.
@@ -118,7 +118,7 @@ This list is a simple flat list that looks like this:
     207.net
     247media.com
 
-Go to **Services->Proxy Server->Administration** and click on the tab **Remote
+Go to **Services->Web Proxy->Administration** and click on the tab **Remote
 Access Control Lists**
 
 Now click on the **+** at the bottom right corner of the form to add a new list.
