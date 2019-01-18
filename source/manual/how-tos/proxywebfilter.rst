@@ -28,7 +28,7 @@ For this tutorial we will assume:
 -------------------------------
 Step 1 - Disable Authentication
 -------------------------------
-To start go to **Services->Proxy->Administration**.
+To start go to **Services->Web Proxy->Administration**.
 
 Click on the arrow next to the **Forward Proxy** tab to show the drop down menu.
 Now select **Authentication Settings** and click on **Clear All** to disable user
