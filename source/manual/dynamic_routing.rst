@@ -11,14 +11,14 @@ Dynamic Routing
 .. Warning::
     Disabling a running routing daemon can be dangerous as it can lead to an inaccessible machine.
     If you want to disable a running routing daemon, make sure, you don't lose routes which are
-    required by your connection to this machine (for example when using SSH)
+    required by your connection to this machine (for example when using SSH).
 
 Dynamic Routing (using routing protocols) is supported via an external plugin. Routing protocols are used to make your network equipment find the best path where your packets should be sent to.
 
 Routing protocols are used to
 
 * improve fault tolerance (if a connection breaks, a new route will be found if possible)
-* simplify administration (You have to add less routes manually)
+* simplify administration (you have to add fewer routes manually)
 
 You should not use routing protocols if
 
