@@ -14,6 +14,7 @@ User Manual
 
    manual/hardware
    manual/install
+   manual/updates
    manual/dashboard
    manual/virtuals
    manual/gui
