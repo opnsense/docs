@@ -27,6 +27,6 @@ In the upper right corner of every widget, there are three buttons:
 
 In the upper right corner of the page, there are two or three buttons:
 
-* **Add widget:** Opens a dialog window with a list of widgets that can be added to the Dashboard. Simply click on an entry in the list to add it to the Dashboard.
+* **Add widget:** Opens a dialog window with a list of widgets that can be added to the Dashboard. Simply click on an entry in the list to add it to the Dashboard. Do note that its contents will only show up after you click **Save Settings**.
 * **1/2/3/4/6 columns:** Changes the amount of columns to show widgets in. By default, this is set to **2**. Do not forget to click **Save Settings** afterwards.
 * **Save Settings:** When you change the amount of columns or collapse a widget, you can make that change persistent by clicking this button. Otherwise the changes will be discarded as soon as you reload the page.
