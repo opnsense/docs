@@ -2,7 +2,7 @@
 Updates
 =======
 
-OPNsense's update schedule consists of two major releases each year, which are updated every two weeks. The major
+OPNsense's update schedule consists of two major releases each year, which are updated about every two weeks. The major
 releases' version number consists of the year and months of release (e.g. 19.1 for the January 2019 release), with
 the fortnightly updates adding a third number (e.g. 19.1.3 for the third update to 19.1).
 
