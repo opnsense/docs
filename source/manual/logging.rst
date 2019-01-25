@@ -16,7 +16,7 @@ System
  **Web GUI**                   **System->Log Files->Web GUI**   *Lighttpd, the webserver of OPNsense itself, logs here*
  **Firmware**                  **System->Firmware->Log File**   *Updates from the packaging system go here*
  **Gateways**                  **System->Gateways->Log File**   *All about gateway tracking*
- **Routing**                   **Routing->Log Files**           *Routing changes or interface events*
+ **Routing**                   **System->Routes->Log File**     *Routing changes or interface events*
 ============================= ================================ ============================================================= 
 
 .. Note::
