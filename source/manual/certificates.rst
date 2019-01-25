@@ -10,6 +10,8 @@ avoiding the need to use the ``openssl`` command line tool. Certificates in OPNs
 Examples of OPNsense components that use certificates:
 * OpenVPN
 * IPsec
+* Captive Portal
+* Web Proxy
 
 -----------------
 Certificate types
