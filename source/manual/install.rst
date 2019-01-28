@@ -240,7 +240,8 @@ Download the installation image from one of the mirrors listed on the `OPNsense
 The easiest method of installation is the USB-memstick installer. If
 your target platform has a serial interface choose the "serial image.
 64-bit and 32-bit install images are provided. The following examples
-apply to both.
+apply to both. If you need to know more about using the serial interface,
+consult the :doc:`serial access how-to<how-tos/serial_access>`.
 
 Write the image to a USB flash drive (>=1 GB) or an IDE hard disk,
 either with dd under FreeBSD or under Windows with physdiskwrite
