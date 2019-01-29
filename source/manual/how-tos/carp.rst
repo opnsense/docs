@@ -54,6 +54,11 @@ connections to make the migration seamless. It's highly advisable to use
 a dedicated interface for pfSync packets between the hosts, both for
 security reasons (state injection) as for performance.
 
+.. Warning::
+    When using different network drivers on both machines, like running a HA 
+    setup with one physical machine as master and a second machine as slave, 
+    states can not be synced as interface names differ. The only workaround
+    would be to set up a LAGG.
 
 .. rubric:: XMLRPC sync
     :name: xmlrpc-sync
