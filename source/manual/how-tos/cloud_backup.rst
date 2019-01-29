@@ -98,7 +98,7 @@ Next thing is to create a folder in Google Drive and share it to the
    :name: setup-the-account-in-opnsense
 
 Now we can put it all together, login to your OPNsense firewall and go
-to the backup feature (default : https://192.168.1.1/diag_backup.php )
+to the backup feature. It is located at **System->Configuration->Backups**.
 
 .. image:: ./images/600px-Google_Drive_Backup_screenshot.png
   :width: 100%
