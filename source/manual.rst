@@ -25,6 +25,7 @@ User Manual
    manual/netflow
    manual/logging
    manual/aliases
+   manual/certificates
    manual/vpnet
    manual/ips
    manual/proxy
