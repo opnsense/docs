@@ -29,6 +29,6 @@ executing the following instruction:
 If OPNsense is running, you will now be asked for your username and password. The credentials are the same as those
 used for SSH.
 
-A thing to note is that, unlike SSH, you will not be able to scroll (but you can pipe the output through a pager like
-``more`` or ``less``), and the screen won't always auto-update. If you connect and see no output, try pressing `Enter`
-first before checking the other (more complex) possibilities.
+A thing to note is that the screen won't always auto-update. If you connect and see no output, try pressing `Enter`
+first before checking the other (more complex) possibilities. Another things is that, when connecting via ``screen``,
+you might not be able to scroll (but you can still pipe the output through a pager like ``more`` or ``less``).
