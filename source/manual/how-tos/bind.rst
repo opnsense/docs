@@ -95,5 +95,5 @@ you can set in **Services->Unbound DNS->General->Custom Options**.
 
     do-not-query-localhost: no   
     forward-zone:    
-    name: „.“    
+    name: "."
     forward-addr: 127.0.0.1@53530
