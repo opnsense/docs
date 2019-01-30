@@ -74,7 +74,7 @@ Now, navigate to the “Service Settings” tab. Here, add the following service
 +-----------+---------------------------------------------------------+
 | Start     | /usr/local/sbin/configctl ftpproxy start 127_0_0_1_8021 |
 +-----------+---------------------------------------------------------+
-| Stop      | /usr/local/sbin/configctl ftpproxy start 127_0_0_1_8021 |
+| Stop      | /usr/local/sbin/configctl ftpproxy stop 127_0_0_1_8021  |
 +-----------+---------------------------------------------------------+
 | Tests     | FTPProxy8021, RestartLimit5                             |
 +-----------+---------------------------------------------------------+
@@ -116,7 +116,7 @@ Click 'advanced mode' to see all the settings.
 +-------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | Verify SSL Certificates       | Checks the TLS certificate for validity. If you use a self-signed certificate, turn this option off.                  |
 +-------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| Log File                      | The log file of the Monit process. This can be the keyword syslog or a path to a file.                                |
+| Log File                      | The log file of the Monit process. This can be the keyword ``syslog`` or a path to a file.                            |
 +-------------------------------+-----------------------------------------------------------------------------------------------------------------------+
 | State File                    | The state file of the Monit process.                                                                                  |
 +-------------------------------+-----------------------------------------------------------------------------------------------------------------------+
