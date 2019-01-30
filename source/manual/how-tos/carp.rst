@@ -115,6 +115,12 @@ The backup server needs its own dedicated addresses, we will use these:
 | PFSYNC   | 10.0.0.2          |
 +----------+-------------------+
 
+.. Note::
+    Per default the dropdown menu for subnet mask only fits for IPv4
+    addresses (up to 32). If you want to add an IPv6 CARP address,
+    write you v6 address and the dropdown list will auto-update to  
+    itself up to 128.
+    
 Because we are going to synchronize firewall settings between both
 hosts, we only need to make sure that the pfSync interface can accept
 data from the master for the initial setup. Use the same rule as used
