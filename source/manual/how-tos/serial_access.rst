@@ -18,9 +18,17 @@ use the serial installer to do so. In all other cases (accessing BIOS, running t
 installation that was done via serial), serial access is already available.
 
 On Unix-like systems, you can connect to the serial console using the ``screen`` program, with a baud rate of 115200.
-The device name can differ per system and per serial device. For example, on the Deciso DEC630, accessed from macOS,
-the device is named ``/dev/tty.usbmodem1112421``. Entering the serial console thus involves opening a terminal and
-executing the following instruction:
+The device name can differ per system and per serial device. Examples of names are:
+
+* /dev/ttyS0 (serial port, Linux)
+* /dev/ttyUSB0 (usb-to-serial, Linux)
+* /dev/cuau0 (serial port, FreeBSD)
+* /dev/cuaU0 (usb-to-serial, FreeBSD)
+* /dev/tty.usbmodem1112421 (usb-to-serial, macOS)
+* COM1, COM2, ... (Windows)
+
+For example, on the Deciso DEC630, accessed from macOS, the device is named ``/dev/tty.usbmodem1112421``. Entering
+the serial console thus involves opening a terminal and executing the following instruction:
 
 ::
 
