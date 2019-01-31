@@ -5,8 +5,8 @@ nginx: TLS Authentication & Authorization
 .. Warning::
 
     Even if this is probably the most secure way to authenticate,
-    a lot of clients do not support it or I may be hard for users
-    to configure it.
+    a lot of clients do not support it. In addition, configuring
+    client certificates can also be hard to do for users.
     
     This authentication mechanism is recommended for machine to
     machine communication and experienced users.
