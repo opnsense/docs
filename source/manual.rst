@@ -38,5 +38,6 @@ User Manual
    manual/captiveportal
    manual/dynamic_routing
    manual/opnsense_tools
+   manual/diagnostics
    manual/monit
    manual/howtos
