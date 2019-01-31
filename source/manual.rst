@@ -28,6 +28,7 @@ User Manual
    manual/certificates
    manual/vpnet
    manual/ips
+   manual/etpro_telemetry
    manual/proxy
    manual/reverse_proxy
    manual/antivirus
