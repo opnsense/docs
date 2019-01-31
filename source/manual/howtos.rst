@@ -7,6 +7,7 @@ How-tos
    :titlesonly:
    :glob:
 
+   how-tos/serial_access
    how-tos/accounting
    how-tos/bind
    how-tos/c-icap
