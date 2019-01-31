@@ -1,6 +1,6 @@
-=======================
-ETPRO Telemetry edition
-=======================
+=========================
+ET Pro Telemetry edition
+=========================
 
 Todays cybersecurity engineers need timely and accurate data about eminent threats and how they spread around the globe.
 With this data cybersecurity researchers and analysts can improve the detection of malicious network traffic.
@@ -16,12 +16,12 @@ This open source IDS/IPS engine has proven its value in OPNsense, especially in 
 
 The need for valuable threat detection data and the increasing importance of additional network security
 has brought Proofpoint and OPNsense together.
-Our joined efforts resulted in the ETPro Telemetry edition.
+Our joined efforts resulted in the ET Pro Telemetry edition.
 
-The ETPro Telemetry edition embraces our vision that sharing knowledge leads to better products.
+The ET Pro Telemetry edition embraces our vision that sharing knowledge leads to better products.
 
 When you allow your OPNsense system to share anonymized information about detected threats - the alerts -
-you are able to use the ETPro ruleset free of charge.
+you are able to use the ET Pro ruleset free of charge.
 
 ..
 
@@ -39,11 +39,11 @@ We will register your sensor(s) anonymized at Proofpoint.
 
 .. Note::
 
-    When ETPro Telemetry is activated, your OPNsense system sends data to Proofpoint. Proofpoint does not know who you are, they
+    When ET Pro Telemetry is activated, your OPNsense system sends data to Proofpoint. Proofpoint does not know who you are, they
     only know how many sensors an account owns. Your network statistics received by Proofpoint won’t be shared with us.
 
 
-Sign up for ETPRO Telemetry edition `here <https://shop.opnsense.com/>`__
+Sign up for ET Pro Telemetry edition `here <https://shop.opnsense.com/>`__
 
 
 --------------------------------------
@@ -54,7 +54,7 @@ After registration, we can proceed to the installation steps, which are describe
 
 .. Note::
 
-    To use ETPRO Telemetry, you will need to have OPNsense 19.1 or higher installed. When using an older version,
+    To use ET Pro Telemetry, you will need to have OPNsense 19.1 or higher installed. When using an older version,
     please upgrade to the latest first.
 
 
@@ -63,7 +63,7 @@ plugin
 ....................
 
 First we need to install the required plugin, which is responsible for collecting the telemetry data and provides access
-to the ETPRO ruleset.
+to the ET Pro ruleset.
 
 1.  Go to **System->Firmware->Updates**
 2.  press "Check for updates" in the upper right corner.
@@ -114,7 +114,7 @@ When everything is setup properly and the plugin can reach Proofpoint, it will s
 
 .. image:: images/ETPRO_telemetry_widget_active.png
 
-The status determines which ruleset your sensor will receive, **ACTIVE** or **DORMANT** your sensor will receive ETPRO rule,
+The status determines which ruleset your sensor will receive, **ACTIVE** or **DORMANT** your sensor will receive ET Pro rule,
 when **DISABLED** the license conditions are not met and ET Open will be served.
 
 All timestamps underneath the status provide you with information when data was send or received from Proofpoint.
@@ -139,7 +139,7 @@ Information sent to Proofpoint ©
 --------------------------------------
 
 When the intrusion detection system logs events, they will be (partially) sent to Proofpoint in return for using the
-ETPRO Telemetry edition.
+ET Pro Telemetry edition.
 
 This paragraph describes the attributes from the
 `eve.json <https://suricata.readthedocs.io/en/suricata-4.1.0/output/eve/eve-json-format.html>`__ log file
