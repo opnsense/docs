@@ -83,9 +83,9 @@ Much work had already been done before the `first official release <https://opns
 * The build-tools had been completely rewritten from the ground up
   with clear and easy to read build scripts that are portable and small,
 
-* OPNsense is now a package that can be installed on top of our custom FreeBSD
+* OPNsense is now a package that can be installed on top of our custom HardenedBSD
   build (you can literally do pkg remove opnsense and are left with an almost
-  standard FreeBSD base system),
+  standard HardenedBSD base system),
 
 * The firmware upgrade process is now done with pkgng,
 

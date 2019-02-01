@@ -5,7 +5,7 @@ Development Manual
 .. image:: /development/images/ideas_join_the_development.jpg
 
 The OPNsense® project invites developers to start developing with OPNsense:
-"For your own purpose or even better to join us in creating the best FreeBSD
+"For your own purpose or even better to join us in creating the best HardenedBSD
 based open source firewall available!" The development workflow & build process
 have been redesigned to make it more straightforward and easy for developers to
 build OPNsense.

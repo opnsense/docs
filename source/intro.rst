@@ -13,7 +13,7 @@ how to :doc:`contribute`.
 Welcome to OPNsense's documentation!
 ------------------------------------
 `OPNsense® <https://opnsense.org>`__ is an open source,
-easy-to-use and easy-to-build FreeBSD based firewall and routing platform.
+easy-to-use and easy-to-build HardenedBSD based firewall and routing platform.
 
 **OPNsense** includes most of the features available in expensive commercial
 firewalls, and more in many cases. It brings the rich feature set of commercial
@@ -39,10 +39,10 @@ Feature set
 
 The feature set of OPNsense includes high-end features such as forward caching
 proxy, traffic shaping, intrusion detection and easy OpenVPN client setup.
-The latest release is based on a recent FreeBSD for long-term support and uses a
+The latest release is based on a recent HardenedBSD for long-term support and uses a
 newly developed MVC-framework based on Phalcon. OPNsense’s focus on security
 brings unique features such as the option to use LibreSSL instead of OpenSSL
-(selectable in the GUI) and a custom version based on HardenedBSD.
+(selectable in the GUI).
 
 The robust and reliable update mechanism gives OPNsense the ability to provide
 important security updates in a timely fashion.

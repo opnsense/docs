@@ -12,7 +12,7 @@ interface. Both USB and (mini)PCIe cards are supported.
 -----------------
 Supported Devices
 -----------------
-While all devices supported by FreeBSD will likely function under OPNsense their
+While all devices supported by HardenedBSD will likely function under OPNsense their
 configuration depends on a AT command string that can differ from device to device.
 To make thing easier some of these strings are part of a easy selectable profile.
 

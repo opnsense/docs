@@ -38,7 +38,7 @@ The main differences between an embedded image and a full image are:
 +-----------------------+-----------------------+
 | Embedded              | Full                  |
 +=======================+=======================+
-| Uses NanoBSD          | Uses FreeBSD          |
+| Uses NanoBSD          | Uses HardenedBSD      |
 +-----------------------+-----------------------+
 | Writes to RAM disk    | Writes to local disk  |
 +-----------------------+-----------------------+
@@ -106,7 +106,7 @@ to get the public key from include:
 * https://opnsense.org/blog/
 * https://github.com/opnsense/changelog/tree/master/doc
 * https://lists.opnsense.org/pipermail/announce/ (also available via mail so your HTTP(S) is not intercepted)
-* https://pkg.opnsense.org (/<FreeBSD version & archtecture>/<release version>/sets/changelog.txz) (lands signed and verified in the GUI of the running software)
+* https://pkg.opnsense.org (/<HardenedBSD version & architecture>/<release version>/sets/changelog.txz) (lands signed and verified in the GUI of the running software)
 
 Note that only release announcements with images (typically all major
 releases) contain the public key. I.e. 18.7 would have a copy of the public
@@ -244,11 +244,11 @@ apply to both. If you need to know more about using the serial interface,
 consult the :doc:`serial access how-to<how-tos/serial_access>`.
 
 Write the image to a USB flash drive (>=1 GB) or an IDE hard disk,
-either with dd under FreeBSD or under Windows with physdiskwrite
+either with dd under FreeBSD, HardenedBSD or under Windows with physdiskwrite
 
 Before writing an (iso) image you need to unpack it first (use bunzip2).
 
-**FreeBSD**
+**FreeBSD, HardenedBSD**
 ::
 
   dd if=OPNsense-##.#.##-[Type]-[Architecture].img of=/dev/daX bs=16k

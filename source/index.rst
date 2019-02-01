@@ -8,7 +8,7 @@
 Welcome to OPNsense's documentation!
 ====================================
 `OPNsense® <https://opnsense.org>`__ is an open source,
-easy-to-use and easy-to-build FreeBSD based firewall and routing platform.
+easy-to-use and easy-to-build HardenedBSD based firewall and routing platform.
 
 **OPNsense** includes most of the features available in expensive commercial
 firewalls, and more in many cases. It brings the rich feature set of commercial

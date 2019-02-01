@@ -12,7 +12,7 @@ Supported devices
 -----------------
 
 In general, OPNsense should support all cellular modems that are supported by the
-respective FreeBSD kernel. However, not all devices behave the same way, you might
+respective HardenedBSD kernel. However, not all devices behave the same way, you might
 have to tweak your card with specific AT commands, for example in the init string.
 
 The screenshots in this guide are for a Huawei ME909u-521 miniPCIe cellular modem.
@@ -35,7 +35,7 @@ be considered, see for example `this guide <https://www.specialistantennas.co.uk
 
 .. Note::
 
-  Make sure to connect the antenna to the cellular modem once you start 
+  Make sure to connect the antenna to the cellular modem once you start
   configuring the modem in OPNsense. There is little chance that you
   get any signal without antenna.
 
@@ -47,8 +47,8 @@ First, we need to figure out what device is accepting AT commands on your modem.
 the Huawei modem used in this example the device is ``/dev/cuaU0.0``, other modems
 might provide the AT interface on another device.
 
-On FreeBSD, ``/dev/cuauN`` devices are call-out ports that are used for modems instead
-of terminals, see section `26.2.1 <https://www.freebsd.org/doc/handbook/serial.html>`_ in the FreeBSD manual. 
+On HardenedBSD, ``/dev/cuauN`` devices are call-out ports that are used for modems instead
+of terminals, see section `26.2.1 <https://www.freebsd.org/doc/handbook/serial.html>`_ in the FreeBSD manual.
 
 The best way to locate the correct port is to send AT commands to it. This can be
 tested using the utility ``cu``:
@@ -58,7 +58,7 @@ tested using the utility ``cu``:
    cu -l /dev/cuaU0.2
    Connected
    AT (<-type that)
-   OK 
+   OK
 
 Once you see ``Connected`` type ``AT``. If you do not get an ``OK``
 back, enter ``~.`` to quit and try the next device. In this particular example, a
@@ -80,7 +80,7 @@ have been detected or you might have a pin on the SIM.
 Once the SIM card is ready, quit ``cu`` with ``~.``.
 
 .. Note::
-  
+
   To get rid of the pin, first check if it is valid with ``AT+CPIN="1234"``
   where ``1234`` is the pin of your SIM card. To get rid of the pin, enter
   ``AT+CLCK="SC",0,"1234"``. The pin should now be gone.
@@ -161,7 +161,7 @@ providers required factory resets (for whatever reason) to get them to work prop
   in the first step of this tutorial to make sure everything is prepared properly.
 
 .. Note::
-  
+
   Some Sierra Wireless modems still seem to need a specific init string to work
   properly. One that seems to work for multiple users and LTE cards is ``&F0E1Q0 +CMEE=2``. In any case you should first try without init string and only give it
   a try if you could not get any connection without. You can add this in **Interfaces->Point-to-Point->Devices->Your particular device->Advanced Options->Init String**.

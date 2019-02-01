@@ -30,7 +30,7 @@ and used :doc:`components </development/components>`.
 -----------------
 Ideal Development
 -----------------
-Our ideal OPNsense system looks like a standard FreeBSD system using our
+Our ideal OPNsense system looks like a standard HardenedBSD system using our
 pluggable user interface for management, which supports both real users as "machine"
 users (REST).
 

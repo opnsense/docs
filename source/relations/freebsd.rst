@@ -23,8 +23,8 @@ maintained by a large community.
 -----------------------
 Relations with OPNsense
 -----------------------
-OPNsense is build on top of FreeBSD. The aim of the OPNsense team is to stay as
-close to the original FreeBSD source as possible. OPNsense can be installed on
+OPNsense is build on top of HardenedBSD which is a fork of FreeBSD. The aim of the OPNsense team is to stay as
+close to the original HardenedBSD source as possible. OPNsense can be installed on
 a standard FreeBSD installation, this way a hosted system can be converted
 easily to run OPNsense. A bootstrap script is available to make the installation
 process a joy full experience.
