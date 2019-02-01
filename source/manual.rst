@@ -19,6 +19,7 @@ User Manual
    manual/virtuals
    manual/gui
    manual/users
+   manual/dhcp
    manual/ipv6
    manual/two_factor
    manual/systemhealth
