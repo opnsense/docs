@@ -23,3 +23,25 @@ By navigating to **System->Firmware->Settings**, you can influence the firmware 
 * **Firmware Flavour:** OPNsense is available in different flavours. Currently, these flavours influence which cryptographic library to use: OpenSSL (the default) or its drop-in replacement LibreSSL.
 * **Release Type:** With this setting, you can switch between the regular fortnightly schedule of tested releases (Production) or the newest, not fully tested code (Development). **Please leave this setting on "Production", unless you fully understand the implications of switching.**
 
+--------------
+Major Upgrades
+--------------
+
+Major upgrades are recommended to do via VGA display, serial or at least by SSH because you can easier see what is going on.
+
+
+.. Note::
+    You can find some documentation about serial access under :doc:`how-tos/serial_access`
+
+.. Warning::
+    Major updates are installed offline. So no web interface or SSH is running to monitor the upgrade.
+    If something fails, you need a second connection or direct access to revert the VM or repair the installation.
+
+If you choose option 12 on the console menu on latest release, you are asked if you want to upgrade to the newest
+version or to the next major release. Type in the major release number (for example "19.1") and press enter.
+OPNsense will download all release files for an offline upgrade (kernel, packages etc.) and will reboot afterwards.
+    
+.. image:: images/upgrade_boot.png
+
+After a reboot, it will install all updates and when it is done, it will reboot again, then you should be on the
+desired release.
