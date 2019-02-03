@@ -12,6 +12,7 @@ How-tos
    how-tos/bind
    how-tos/c-icap
    how-tos/cachingproxy
+   how-tos/changelog
    how-tos/carp
    how-tos/cellular
    how-tos/clamav
