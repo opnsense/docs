@@ -40,8 +40,6 @@ Major upgrades are recommended to do via VGA display or serial because you can s
 If you choose option 12 on the console menu on latest release, you are asked if you want to upgrade to the newest
 version or to the next major release. Type in the major release number (for example "19.1") and press enter.
 OPNsense will download all release files for an offline upgrade (kernel, packages etc.) and will reboot afterwards.
-    
-.. image:: images/upgrade_boot.png
 
 After a reboot, it will install all updates and when it is done, it will reboot again, then you should be on the
 desired release.
