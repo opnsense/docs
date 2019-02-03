@@ -27,7 +27,7 @@ By navigating to **System->Firmware->Settings**, you can influence the firmware 
 Major Upgrades
 --------------
 
-Major upgrades are recommended to do via VGA display, serial or at least by SSH because you can easier see what is going on.
+Major upgrades are recommended to do via VGA display or serial because you can see what is going on.
 
 
 .. Note::
