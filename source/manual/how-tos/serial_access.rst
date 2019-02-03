@@ -19,7 +19,7 @@ Requirements
 For a bare metal installation, you also need the following (unless provided though a management interface differently,
 please refer your server manual):
 
-*  a null modem cable
+* a null modem cable
 * if you don't have an RS232 port on your computer, you need an USB to RS232 converter
 
 --------------------------------
