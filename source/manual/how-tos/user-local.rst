@@ -69,7 +69,7 @@ Under the "Secure Shell" heading, the following options are available:
                               This option enables root login.
  **Permit password login**    The recommended login method is using SSH keys as it's more secure,
                               but this option will also enable password logins.
- **SSH Port**                 Is 22 by default, but can be changed.
+ **SSH Port**                 Defaults to 22, but can be changed to make port scanning less effective.
  **Listen interfaces**        By default, SSH listens on all interfaces. You can limit this
                               (to just the LAN, for example) for additional security
                               at the cost of availability.
