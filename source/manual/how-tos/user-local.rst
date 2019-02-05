@@ -62,7 +62,7 @@ the "shell account access" privilege (see previous paragraph).
 In order to access OPNsense via SSH, SSH access will need to be configured via **System->Settings->Administration**.
 Under the "Secure Shell" heading, the following options are available:
 
-============================ =====================================================================
+============================ ==========================================================================
  **Enable secure shell**      Global on/off switch.
  **Login Group**              Which user groups can access OPNsense via SSH.
  **Permit root user login**   Normally, only non-root accounts are allowed for security reasons.
@@ -73,5 +73,5 @@ Under the "Secure Shell" heading, the following options are available:
  **Listen interfaces**        By default, SSH listens on all interfaces. You can limit this
                               (to just the LAN, for example) for additional security
                               at the cost of availability.
-============================ =====================================================================
+============================ ==========================================================================
 
