@@ -71,6 +71,7 @@ Under the "Secure Shell" heading, the following options are available:
                               but this option will also enable password logins.
  **SSH Port**                 Is 22 by default, but can be changed.
  **Listen interfaces**        By default, SSH listens on all interfaces. You can limit this
-                              (to just the LAN, for example) for additional security.
+                              (to just the LAN, for example) for additional security
+                              at the cost of availability.
 ============================ =====================================================================
 
