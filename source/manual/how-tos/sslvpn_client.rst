@@ -184,13 +184,13 @@ Authenticator compatible app.
 
 For the first step we enter:
 
-================== ===================
+================== ==============================================
  **Username**       *Donald*
  **Password** (2x)  *S3cr3tP@ssw0rd*
  **Full name**      *Donald Duck*
  **Certificate**    *Check “Click to create a user certificate”*
  **OTP seed**       *Check “Generate new secret”*
-================== ===================
+================== ==============================================
 
  Click **Save** and you will be redirected to create the User Certificate.
  Fill in the Certificate form with the following for our example (leave anything
