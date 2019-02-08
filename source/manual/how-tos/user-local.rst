@@ -40,9 +40,8 @@ After creating a group the privileges can be added by editing the group.
 Go to **System->Access-Groups** and click on the edit symbol (pencil) right next
 to the group you like to change.
 
-To assign privileges, just click on the pencil icon on the right of **Assigned
-Privileges** a form will be shown where each page can be either selected or deselected;
-here it's also possible to allow a user shell account access (console).
+To assign privileges, just click on the pencil icon on the right of **Assigned Privileges**.
+A form will be shown where each page can be either selected or deselected.
 
 The search bottom at the top of this form can be used to quickly find the right
 page.
@@ -56,8 +55,8 @@ SSH and console login
 ---------------------
 
 User accounts can be used for logging in to the web frontend, as well as for logging in to the console (via VGA,
-serial or SSH). The latter will only work if the user's shell is not set to ``/sbin/nologin`` and if the user has
-the "shell account access" privilege (see previous paragraph).
+serial or SSH). The latter will only work if the user's shell is not set to ``/sbin/nologin`` and if group the user is
+part of is allowed SSH access.
 
 In order to access OPNsense via SSH, SSH access will need to be configured via **System->Settings->Administration**.
 Under the "Secure Shell" heading, the following options are available:
