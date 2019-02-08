@@ -29,8 +29,8 @@ Using DHCPv4
 
 A typical DHCPv4 usage scenario is using it on your LAN with an IP range of 192.168.1.x, where x can be a number from 1
 through 254. This means a subnet mask of 255.255.255.0. The range can also be written as 192.168.1.0/24. (The “1” in
-the third group can also be another number, and there are also other ranges available for internal usage, such as
-10.0.0.0/24.)
+the third group can also be another number, and there are also other ranges available for private use. These are
+described in `RFC 1918 <https://tools.ietf.org/html/rfc1918#section-3>`_.)
 
 The LAN IP of the OPNsense device that serves DHCP to the LAN should fall in the same DHCP IP range. Typically, it gets
 the address ending in .1 (so 192.168.1.1) in this example.
