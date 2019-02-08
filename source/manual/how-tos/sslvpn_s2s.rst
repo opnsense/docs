@@ -180,7 +180,7 @@ Adding a new SSL VPN server is relatively simple. We'll start by adding a server
 that uses a shared key. This setup offers a good protection and it is
 easy to setup.
 
-Go to **VPN->OpenVPN->Servers** and click on **add server** in to top right corner
+Go to **VPN->OpenVPN->Servers** and click on click **Add** in the top right corner
 of the form.
 
 For our example will use the following settings (leave everything else on its default):

@@ -99,7 +99,7 @@ For completeness of this how-to we will also prepare a user.
 Configure TOTP server
 ---------------------
 To configure a Time based One Time Password server go to **System->Access->Servers**
-and click on **Add server** in the top right corner of the form.
+and click **Add** in the top right corner of the form.
 
 .. TIP::
 
@@ -126,7 +126,7 @@ Add Certificate Authority
 The VPN server needs a certificate authority to sign client or server certificates.
 
 To setup a new certificate authority go to **System->Trust->Authorities** and click
-on **add or import ca** in the top right corner of the form.
+**Add** in the top right corner of the form.
 
 For our example we will use the following setting:
 
@@ -136,12 +136,12 @@ For our example we will use the following setting:
  **Key length (bits)**      *4096*
  **Digest Algorithm**       *SHA512*
  **Lifetime (days)**        *365*
- **Country Code :**         *NL*
- **State or Province :**    *ZH*
- **City :**                 *Middelharnis*
- **Organization :**         *OPNsense*
- **Email Address :**       *spam@opnsense.org*
- **Common Name :**          *internal-sslvpn-ca*
+ **Country Code**           *NL*
+ **State or Province**      *ZH*
+ **City**                   *Middelharnis*
+ **Organization**           *OPNsense*
+ **Email Address**          *spam@opnsense.org*
+ **Common Name**            *internal-sslvpn-ca*
 ========================= ================================================
 
 Click **Save** to add the new Certificate Authority.
@@ -150,7 +150,7 @@ Create a Certificate
 ---------------------
 After creating the Authority we will also need a certificate.
 To create a new certificate, go to **System->Trust->Certificates** and click
-**add or import certificate** in the upper right corner of the form.
+**Add** in the upper right corner of the form.
 
 Fill in the form with (leave the rest default):
 
@@ -162,20 +162,20 @@ Fill in the form with (leave the rest default):
  **Key length (bits)**      *4096*
  **Digest Algorithm**       *SHA512*
  **Lifetime (days)**        *365*
- **Country Code :**         *NL*
- **State or Province :**    *ZH*
- **City :**                 *Middelharnis*
- **Organization :**         *OPNsense*
- **Email Address :**        *spam@opnsense.org*
- **Common Name :**          *SSLVPN Server Certificate*
+ **Country Code**           *NL*
+ **State or Province**      *ZH*
+ **City**                   *Middelharnis*
+ **Organization**           *OPNsense*
+ **Email Address**          *spam@opnsense.org*
+ **Common Name**            *SSLVPN Server Certificate*
 =========================== ================================================
 
 Click **Save** to create the certificate.
 
 Adding a User
 -------------
-To add a new user go to **System->Access->Users** and click on the plus sign in
-the lower right corner of the form.
+To add a new user go to **System->Access->Users** and click **Add** in the top
+right corner.
 
 Creating a user will be done in two steps, the first one is adding a basic user
 with a username, password, TOTP seed and user certificate. The second step
@@ -184,13 +184,13 @@ Authenticator compatible app.
 
 For the first step we enter:
 
-================== ===================
+================== ==============================================
  **Username**       *Donald*
  **Password** (2x)  *S3cr3tP@ssw0rd*
  **Full name**      *Donald Duck*
- **Certificate**    *True*
- **OTP seed**       *True*
-================== ===================
+ **Certificate**    *Check “Click to create a user certificate”*
+ **OTP seed**       *Check “Generate new secret”*
+================== ==============================================
 
  Click **Save** and you will be redirected to create the User Certificate.
  Fill in the Certificate form with the following for our example (leave anything
@@ -220,29 +220,29 @@ Adding a new SSL VPN server is relatively simple. We'll start by adding one that
 uses our two factor authentication. This setup offers a good protection and it is
 easy to setup on the clients as each client can use the same configuration.
 
-Go to **VPN->OpenVPN->Servers** and click on **add server** in to top right corner
+Go to **VPN->OpenVPN->Servers** and click **Add** in the top right corner
 of the form.
 
 For our example will use the following settings:
 
 .. Note::
 
-   The setting **Hardware Crypto** is not used for new systems equipped with **AESNI**,
+   The setting **Hardware Crypto** is not used for new systems equipped with **AES-NI**,
    when the aesni module is loaded it will be used automatically.
 
 ===================================== ===============================================
+ **Description**                       *My SSL VPN Server*
  **Server Mode**                       *Remote Access (User Auth)*
  **Backend for authentication**        *TOTP VPN Access Server*
  **Protocol**                          *UDP*
  **Device Mode**                       *tun*
  **Interface**                         *WAN*
  **Local port**                        *1194*
- **Description**                       *My SSL VPN Server*
  **TLS Authentication**                *Leave both on enabled (checked)*
  **Peer Certificate Revocation List**  *N/A*
  **Server Certificate**                *SSLVPN Server Certificate (CA: SSL VPN CA)*
- **DH Parameters Length**              *4096*
- **Encryption algorithm**              *AES-256-CBC (256-bit)*
+ **DH Parameters Length**              *4096 bit*
+ **Encryption algorithm**              *AES-256-CBC (256-bit key, 128-bit block)*
  **Auth Digest Algorithm**             *SHA512 (512-bit)*
  **Hardware Crypto**                   *No Hardware Crypto Acceleration*
  **Certificate Depth**                 *One (Client+Server)*
@@ -290,7 +290,7 @@ Step 2 - Firewall Rules
 To allow SSL VPN client connections, we should allow access to the OpenVPN server
 port on the WAN interface. When using multiple servers we need to open up each port.
 
-For our configuration we only use one server accessible on udp port 1194.
+For our configuration we only use one server, accessible on UDP port 1194.
 
 .. image:: images/sslvpn_wan_rule.png
     :width: 100%
@@ -356,7 +356,7 @@ the list. Leave everything default and Download the inline **Android** configura
 list of export options under **Client Install Packages**.
 
 Import the hostname-udp-1194-ios-config.ovpn file into OpenVPN for Android.
-Clicking on the file should be enough to get it imported. When asked for an application
+Clicking the file should be enough to get it imported. When asked for an application
 to open the file with, select OpenVPN for Android.
 
 -----------------------------
@@ -371,7 +371,7 @@ the list. Leave everything default and Download the inline **OpenVPN Connect** c
 list of export options under **Client Install Packages**.
 
 Import the hostname-udp-1194-andoroid-config.ovpn file into OpenVPN Connect.
-Clicking on the file should be enough to get it imported. When asked for an application
+Clicking the file should be enough to get it imported. When asked for an application
 to open the file with, select OpenVPN Connect.
 
 -----------------------------
@@ -388,7 +388,7 @@ factors are:
 * Username/Password
 * Token (TOTP)
 
-Go to **VPN->OpenVPN->Servers** and click on the pencil icon next to the server
+Go to **VPN->OpenVPN->Servers** and click the pencil icon next to the server
 we just created to change the 2FA to multi factor authentication.
 
 Now change **Server Mode** to *Remote Access (SSL/TLS + User Auth)* and leave
