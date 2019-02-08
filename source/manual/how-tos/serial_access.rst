@@ -6,7 +6,7 @@ Serial Access
 
 Besides the web frontend, SSH and a locally connected monitor (if your device supports it), OPNsense can also be
 controlled via serial. Accessing OPNsense via serial is similar to accessing via SSH, but unlike SSH, the system can
-be accessed at any time, even when OPNsense is not running. This makes it especially useful for installing OPNsense,
+be accessed at any time, even when OPNsense is not accessible over the network. This makes it especially useful for installing OPNsense,
 for emergency troubleshooting when you accidentally cut off internet access as well as for major system upgrades.
 
 ------------
@@ -14,7 +14,7 @@ Requirements
 ------------
 
 * OPNsense installation must provide a serial interface (virtual or hardware)
-* a software which can be used to access the serial interface (screen, minicom, PuTTY etc.)
+* Software which can be used to access the serial interface (screen, minicom, PuTTY etc.)
 
 For a bare metal installation, you also need the following (unless provided though a management interface differently,
 please refer your server manual):
