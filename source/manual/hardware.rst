@@ -180,6 +180,7 @@ For further help and support, see
 -  `FreeBSD 11.2-RELEASE Hardware Compatibility
    List <https://www.freebsd.org/releases/11.2R/hardware.html>`__
 -  `OPNsense Forum <https://forum.opnsense.org/>`__
+- :doc:`communityhardware`
 
 .. rubric:: List of references
    :name: list-of-references
