@@ -61,7 +61,7 @@ Timeouts & Welcome Back
 Connection can be terminated after the user has been idle for a certain amount
 of time (idle timeout) and/or force a disconnect when a number of minutes
 have passed even if the user is still active (hard timeout). In case a user
-reconnect within the idle timeout and/or hard timeout no login is required and
+reconnects within the idle timeout and/or hard timeout no login is required and
 the user can resume its active session.
 
 --------------------
