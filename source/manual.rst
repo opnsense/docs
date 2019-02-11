@@ -42,4 +42,5 @@ User Manual
    manual/opnsense_tools
    manual/diagnostics
    manual/monit
+   manual/nptv6
    manual/howtos
