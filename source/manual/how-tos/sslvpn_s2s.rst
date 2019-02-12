@@ -11,13 +11,14 @@ can access network resources in the main office.
 Before you start
 ----------------
 Before starting with the configuration of an OpenVPN SSL tunnel you need to have a
-working OPNsense installation wit a unique LAN IP subnet for each side of your
-connection (you local network need to different than that of the remote network).
+working OPNsense installation with a unique LAN IP subnet for each side of your
+connection (your local network needs to be different than that of the remote
+network).
 
 .. Note::
 
    For the sample we will use a private IP for our WAN connection.
-   This requires us to disable the default block rule on wan to allow private traffic.
+   This requires us to disable the default block rule on WAN to allow private traffic.
    To do so, go to the **Interfaces->[WAN]** and uncheck "Block private networks".
    *(Don't forget to save and apply)*
 
