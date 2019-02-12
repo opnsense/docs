@@ -355,7 +355,7 @@ Go to **VPN->OpenVPN->Client Export** and select the newly created VPN server fr
 the list. Leave everything default and Download the inline **Android** configuration from the
 list of export options under **Client Install Packages**.
 
-Import the hostname-udp-1194-ios-config.ovpn file into OpenVPN for Android.
+Import the hostname-udp-1194-android-config.ovpn file into OpenVPN for Android.
 Clicking the file should be enough to get it imported. When asked for an application
 to open the file with, select OpenVPN for Android.
 
@@ -370,7 +370,7 @@ Go to **VPN->OpenVPN->Client Export** and select the newly created VPN server fr
 the list. Leave everything default and Download the inline **OpenVPN Connect** configuration from the
 list of export options under **Client Install Packages**.
 
-Import the hostname-udp-1194-andoroid-config.ovpn file into OpenVPN Connect.
+Import the hostname-udp-1194-ios-config.ovpn file into OpenVPN Connect.
 Clicking the file should be enough to get it imported. When asked for an application
 to open the file with, select OpenVPN Connect.
 
