@@ -101,5 +101,5 @@ you can set in **Services->Unbound DNS->General->Custom Options**.
 .. Note::
    When you are using Overrides in Unbound you can not use ``do-not-query-localhost``.
    Please remove the line and let Bind listen to your LAN IP with port 53530 instead of localhost.
-   After this you can set the LAN IP in *forward-addr*.
+   After this you can set the LAN IP in ``forward-addr``.
    
