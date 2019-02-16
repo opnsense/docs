@@ -99,7 +99,7 @@ you can set in **Services->Unbound DNS->General->Custom Options**.
     forward-addr: 127.0.0.1@53530
 
 .. Note::
-   When you are using Overrides in Unbound you can not use *do-not-query-localhost*.
+   When you are using Overrides in Unbound you can not use ``do-not-query-localhost``.
    Please remove the line and let Bind listen to your LAN IP with port 53530 instead of localhost.
    After this you can set the LAN IP in *forward-addr*.
    
