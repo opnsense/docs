@@ -39,6 +39,8 @@ succeed since the firewall will not know where to send the traffic. This can be 
 forwarding rules. For example, for a web server behind the firewall to be accessible, ports 80 and 443 need to
 be redirected to it.
 
+Port forwarding is also referred to as “Destination NAT” or “DNAT”.
+
 In OPNsense, port forwarding can be set up by navigating to **Firewall->NAT->Port Forward**. Here, you will see
 an overview of port forwarding rules. New rules can be added by clicking **Add** in the upper right corner.
 
@@ -98,6 +100,8 @@ Outbound
 
 When a client on an internal network makes an outbound request, the gateway will have to change the source IP to
 the external IP of the gateway, since the outside server will not be able to send an answer back otherwise.
+
+Outbound NAT is also referred to as “Source NAT” or “SNAT”.
 
 If you only have one external IP, then you leave the Outbound NAT options on automatic. However, if you have
 multiple IP addresses, you might want to change the settings and add some custom rules.
