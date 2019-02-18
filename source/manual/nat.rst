@@ -15,6 +15,11 @@ addresses are used for the following:
  Redirect      Where the traffic should be redirected.
 ============= ===========================================================================================================
 
+.. warning::
+
+    - Network Address Translation should not be relied upon as a security measure.
+    - Disabling pf will also disable NAT.
+
 --------------------
 Some terms explained
 --------------------
