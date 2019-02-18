@@ -3,8 +3,8 @@ Network Address Translation
 ===========================
 
 Network Address Translation (abbreviated to NAT) is a way to separate external and internal networks (WANs and LANs),
-and to share an external IP between clients on the interal network. NAT only works on IPv4. For IPv6,
-:doc:`Network Prefix Translation <nptv6>` can be used instead.
+and to share an external IP between clients on the interal network. NAT can be used on IPv4 and IPv6. For IPv6,
+:doc:`Network Prefix Translation <nptv6>` is also available.
 
 Most of the options below use three different addresses: the source, destination and redirect address. These
 addresses are used for the following:
