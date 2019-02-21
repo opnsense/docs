@@ -458,7 +458,7 @@ OPNsense features a command line
 interface (CLI) tool "opnsense-update". Via menu option **8) Shell**, the user can
 get to the shell and use opnsense-update.
 
-For help type *opnsense-update -help* and [Enter]
+For help, type *man opnsense-update* and press [Enter].
 
 .. rubric:: Upgrade from console
    :name: upgrade-from-console
