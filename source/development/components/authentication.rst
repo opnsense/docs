@@ -48,7 +48,7 @@ Services
 We strive to use :code:`pam` to define our services, in which case we adopt to existing standards.
 OPNsense comes with a pam module, which connects our service definitions with the services defined using pam.
 
-A simple example of a service named **opnsense-auth-test** is defined as follows in a file with the name :code:`/etc/pam.d/opnsense-auth-test`
+A simple example of a service named **opnsense-auth-test** is defined as follows in a file with the name :code:`/usr/local/etc/pam.d/opnsense-auth-test`
 
 .. code-block:: sh
 
@@ -77,7 +77,6 @@ For every service defined in pam, the factory method :code:`getService()` expect
 
 .. Note::
 
-    Not every service uses pam already, in that case it is defined as a script handling the authentication. Conceptually
-    it delivers the same functionally, but has some downsides in terms of required rights for the script.
+    Not every service uses pam already, in that case it is defined as a script handling the authentication.
 
 The interface :code:`IService` is quite easy to read and should be self explanatory.
