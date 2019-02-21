@@ -456,9 +456,10 @@ Table:  *The console menu*
 
 OPNsense features a command line
 interface (CLI) tool "opnsense-update". Via menu option **8) Shell**, the user can
-get to the shell and use opnsense-update.
+get to the shell and use opnsense-update. Using this tool, you can also do OS
+upgrades. To do this, use the `-ur` switch, e.g. ``opnsense-update -ur 19.1``.
 
-For help type *opnsense-update -help* and [Enter]
+For help type *man opnsense-update* and press `[Enter]`. You can exit the help by pressing `q`.
 
 .. rubric:: Upgrade from console
    :name: upgrade-from-console
