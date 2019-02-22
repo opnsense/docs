@@ -8,7 +8,8 @@ Interfaces: Wireless Networks (INTERNAL)
     FreeBSD supports wireless adapters in access point (infrastructure) mode,
     but this functionality is limited to some drivers and there may be some,
     which do not support all options available via the web interface.
-    Please make sure that you buy a wireless card, which is supported to avoid 
+    Please make sure that you buy a wireless card that is supported to avoid 
+    these problems.
 
 
 Configuration
