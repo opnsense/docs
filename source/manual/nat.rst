@@ -74,6 +74,14 @@ When adding a rule, the following fields are available:
  Filter rule association   Associate this with a regular firewall rule.
 ========================= =========================================================================================================
 
+.. Note:
+
+   In OPNsense, this feature is also used to implement transparent proxies. A connection needs to be forwarded to a
+   daemon (listening on localhost), which then tries to get the original destination IP from the `/dev/pf` device.
+
+   For example, a transparent proxy that handles HTTP traffic needs a rule that forwards traffic from TCP port 80,
+   IPv4 to 127.0.0.1:3128 (in the default configuration).
+
 ----------
 One-to-one
 ----------
