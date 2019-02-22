@@ -10,7 +10,7 @@ the privileges for granting access to certain parts of the GUI (Web Configurator
 
 Adding Users
 ------------
-To add a new user go to **System->Access->Users** and click on the **+** sign at
+To add a new user go to :menuselection:`System --> Access --> Users` and click on the **+** sign at
 the bottom right corner of the form.
 
 ========================== =========== =========================================================
@@ -29,7 +29,7 @@ the bottom right corner of the form.
 
 Creating Groups
 ---------------
-Go to **System->Access->Groups** and click on the **+** sign in the lower right
+Go to :menuselection:`System --> Access --> Groups` and click on the **+** sign in the lower right
 corner of the form.
 
 Enter a **Group name** and a **Description** and add users to the group.
@@ -37,7 +37,7 @@ Enter a **Group name** and a **Description** and add users to the group.
 Add privileges to a group
 -------------------------
 After creating a group the privileges can be added by editing the group.
-Go to **System->Access-Groups** and click on the edit symbol (pencil) right next
+Go to :menuselection:`System --> Access --> Groups` and click on the edit symbol (pencil) right next
 to the group you like to change.
 
 To assign privileges, just click on the pencil icon on the right of **Assigned Privileges**.
@@ -58,7 +58,7 @@ User accounts can be used for logging in to the web frontend, as well as for log
 serial or SSH). The latter will only work if the user's shell is not set to ``/sbin/nologin`` and if group the user is
 part of is allowed SSH access.
 
-In order to access OPNsense via SSH, SSH access will need to be configured via **System->Settings->Administration**.
+In order to access OPNsense via SSH, SSH access will need to be configured via :menuselection:`System --> Settings --> Administration`.
 Under the "Secure Shell" heading, the following options are available:
 
 ============================ ==========================================================================

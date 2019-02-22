@@ -4,7 +4,7 @@ Dynamic Routing
 
 .. Warning::
     With OPNsense version 19.1 the FRR package was updated to version 5. It's strongly advised to increase
-    the kern.ipc.maxsockbuf value via **Tunables**. Go to **System->Settings->Tunables** and check if there
+    the kern.ipc.maxsockbuf value via **Tunables**. Go to :menuselection:`System --> Settings --> Tunables` and check if there
     is already a tunable for maxsockbuf and set it to 16777216 if it's lower. Otherwise add a new one with 
     name above and the specified value.
 

@@ -2,7 +2,7 @@
 Configuring Radius
 ==================
 Configuring a Radius server for user authentication in services like vpn or captive portal
-is easy just go to **System->Access->Servers** and click on **Add server** in the top right corner.
+is easy just go to :menuselection:`System --> Access --> Servers` and click on **Add server** in the top right corner.
 
 Fill in the form:
 
@@ -16,6 +16,6 @@ Fill in the form:
 **Authentication Timeout**      5              *Timeout for Radius to respond on requests*
 ============================== =============== =========================================================
 
-Use the tester under **System->Access->Tester** to test the Radius server.
+Use the tester under :menuselection:`System --> Access --> Tester` to test the Radius server.
 
 If you want to use the FreeRADIUS plugin set up the server as 127.0.0.1 and don't forget to add a **Client** in the FreeRADIUS configuration.

@@ -20,7 +20,7 @@ You OPNsense firewall need to be fully configured and able to access the LDAP se
 
 Step 1 - Add New LDAP server
 ----------------------------
-To add a new LDAP server as authentication source, go to **System->Access->Servers**
+To add a new LDAP server as authentication source, go to :menuselection:`System --> Access --> Servers`
 and click on **Add server** the top right corner, just above the form.
 
 Enter the following information:
@@ -66,7 +66,7 @@ Enter the following information:
 
 Step 2 - Test
 --------------
-To test if the server is configured correctly, go to **System->Access->Tester**
+To test if the server is configured correctly, go to :menuselection:`System --> Access --> Tester`
 and select your LDAP server and enter a valid username + password. Click on
 **Test** and if everything is setup correctly it will show:
 
@@ -84,7 +84,7 @@ If not (or your entered invalid credentials) it shows:
 Step 3 - Import Users
 ---------------------
 If you would like to give LDAP/Active Directory users access to the GUI, you need
-to import the users into the local user manager. Go to **System->Access->Users**
+to import the users into the local user manager. Go to :menuselection:`System --> Access --> Users`
 you will see a cloud import icon at the lower right corner of the form.
 
 .. image:: images/user_cloudimport.png
@@ -97,7 +97,7 @@ A new form will be show with the individual users, select the ones you like to i
 
 Step 4 - Update ldap user privileges
 ------------------------------------
-Now if you go to **System->Access->Users** you will see all users including the
+Now if you go to :menuselection:`System --> Access --> Users` you will see all users including the
 newly imported ldap users. You can create a specific group for these users to
 easily manage the privileges or use one of your earlier created groups.
 
@@ -116,7 +116,7 @@ Step 5 - Update system access settings
 Now we have configures, verified and imported the users from our LDAP server, we
 need to change the default settings to allow LDAP users to login.
 
-Go to **System->Access->Settings** and change the Authentication Server from
+Go to :menuselection:`System --> Access --> Settings` and change the Authentication Server from
 **Local Database** to your newly created **LDAP** server. Leave the fallback on
 **Local Database** and click on **Save and Test**.
 

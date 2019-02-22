@@ -14,23 +14,23 @@ Step 1 - Create Certificates
 
 For EAP-RADIUS with IKEv2 you need to create a Root CA and a server certificate for your Firewall. 
 
-Go to **System->Trust->Authorities** and click **Add**. Give it a **Descriptive Name** and as **Method**
+Go to :menuselection:`System --> Trust --> Authorities` and click **Add**. Give it a **Descriptive Name** and as **Method**
 choose **Create internal Certificate Authority**. Increase the **Lifetime** and fill in the fields 
-matching your local values. Now go to **System->Trust->Certificates** and create a new certificate for 
+matching your local values. Now go to :menuselection:`System --> Trust --> Certificates` and create a new certificate for
 the Firewall itself. Important is to change the **Type** to server. The Common Name can be the hostname
 of the Firewall and set as **Alternative Name** the FQDN your Firewall how it is known to the WAN side.
 This is most important as your VPN will drop when the FQDN does not match the ones of the certificate.
 
 If you already have a CA roll out a server certificate and import 
-the CA itself via **System->Trust->Authorities** and the certificate with the key in 
-**System->Trust->Certificates**.
+the CA itself via :menuselection:`System --> Trust --> Authorities` and the certificate with the key in
+:menuselection:`System --> Trust --> Certificates`.
 
 ---------------------
 Step 2 - Setup Radius
 ---------------------
 
 If you already have a local Radius server, add a new client with the IP address of your Firewall,
-set a shared secret, go to OPNsense UI to **System->Access->Servers** and add a new instance:
+set a shared secret, go to OPNsense UI to :menuselection:`System --> Access --> Servers` and add a new instance:
 
 ============================ ================ ====================================
  **Descriptive Name**         Name             *Give it a name*
@@ -46,7 +46,7 @@ When you do not have an own Radius instance just use the OPNsense plugin and fol
 Step 3 - Mobile Clients
 -----------------------
 First we will need to setup the mobile clients network and authentication source.
-Go to **VPN->IPsec->Mobile Clients**
+Go to :menuselection:`VPN --> IPsec --> Mobile Clients`
 
 For our example will use the following settings:
 
@@ -146,7 +146,7 @@ Phase 2 proposal (SA/Key Exchange)
 
    If you already had IPsec enabled and added Road Warrior setup, it is important to 
    restart the whole service via services widget in the upper right corner of IPSec pages
-   or via **System->Diagnostics->Services->Strongswan** since applying configuration only
+   or via :menuselection:`System --> Diagnostics --> Services --> Strongswan` since applying configuration only
    reloads it, but a restart also loads the required modules of strongSwan.
 
 ------------------------

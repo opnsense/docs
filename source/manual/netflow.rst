@@ -17,7 +17,7 @@ OPNsense offers full support for exporting Netflow data to external collectors a
 well as a comprehensive Analyzer for on-the-box analysis and live monitoring.
 
 OPNsense is the only open source solution with a built-in Netflow analyzer integrated
-into its Graphical User Interface. It can be accessed via **Reporting->Netflow**.
+into its Graphical User Interface. It can be accessed via :menuselection:`Reporting --> Netflow`.
 
 ------------------
 Supported Versions

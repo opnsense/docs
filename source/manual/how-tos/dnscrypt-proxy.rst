@@ -7,7 +7,7 @@ Installation
 ------------
 
 First of all, you have to install the dnscrypt-proxy plugin (os-dnscrypt-proxy) from the plugins view
-reachable via **System->Firmware->Plugins**.
+reachable via :menuselection:`System --> Firmware --> Plugins`.
 
 After a page reload you will get a new menu entry under **Services** for DNSCrypt-Proxy. 
 

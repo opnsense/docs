@@ -4495,3 +4495,7 @@ span[id*='MathJax-Span'] {
   font-style: normal;
   font-weight: 700;
   src: local("Roboto Slab Bold"), local("RobotoSlab-Bold"), url(../fonts/RobotoSlab-Bold.ttf) format("truetype"); }
+
+.menuselection {
+  font-weight: bold;
+}

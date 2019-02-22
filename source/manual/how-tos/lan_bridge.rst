@@ -20,7 +20,7 @@ It's a good idea to add the extra NIC interfaces ( OPTx ) during installation.
 
 **Step Two**
 -----------------
-Create the bridge itself. Select Interfaces->Other Types->Bridge and ADD a new bridge. Select
+Create the bridge itself. Select :menuselection:`Interfaces --> Other Types --> Bridge` and ADD a new bridge. Select
 from the member interfaces the unused interfaces you wish to add to the bridge, OPT2,OPT3 etc.
     
 .. image:: images/lan_bridge_1.png
@@ -37,7 +37,7 @@ Now Save the new bridge.
 
 **Step Three**
 -----------------
-Select Interfaces->Assignments and for the LAN interface, select the bridge previously created
+Select :menuselection:`Interfaces --> Assignments` and for the LAN interface, select the bridge previously created
 and Save.
 
 .. image:: images/lan_bridge_3.png
@@ -50,7 +50,7 @@ time for the interface to come back up, but keep refreshing the web interface un
 **Step Four**
 -----------------
 The Original LAN interface is now unassigned and will need to be re-assigned. Go to
-Interfaces->Assignments and in the New Interface box you will see the NIC itself ( igb*, em* ),
+:menuselection:`Interfaces --> Assignments` and in the New Interface box you will see the NIC itself ( igb*, em* ),
 select it and hit the '+' button to add an assignment, then click Save.
 
 .. image:: images/lan_bridge_5.png
@@ -58,7 +58,7 @@ select it and hit the '+' button to add an assignment, then click Save.
 
 **Step Five**
 -----------------
-Select Interfaces->Other Types->Bridge and add the interface created in Step Four to the bridge
+Select :menuselection:`Interfaces --> Other Types --> Bridge` and add the interface created in Step Four to the bridge
 and Save, remember to check the new interface and ensure it is enabled as in Step Two.
 
 .. image:: images/lan_bridge_4.png
@@ -67,7 +67,7 @@ and Save, remember to check the new interface and ensure it is enabled as in Ste
 **Step Six**
 -----------------    
 We now need to make two changes to the System Tunables to ensure that filtering is carried
-out on the bridge itself, and not on the member interfaces. Go to System->Settings->Tunables
+out on the bridge itself, and not on the member interfaces. Go to :menuselection:`System --> Settings --> Tunables`
 and select using the pen button net.link.bridge.pfil_member and set the value to 0.
 
 .. image:: images/lan_bridge_6.png
@@ -80,7 +80,7 @@ Select the tunable net.link.bridge.pfil_bridge and set the value to 1
 
 **Final**
 -----------------    
-Once complete, the Interface->Assignments should look similar to this:
+Once complete, the :menuselection:`Interface --> Assignments` page should look similar to this:
 
 .. image:: images/lan_bridge_8.png
 	:width: 100%

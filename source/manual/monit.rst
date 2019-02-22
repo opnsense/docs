@@ -10,7 +10,7 @@ configuration options explained in more detail afterwards, along with some cavea
 Global setup
 ------------
 
-Navigate to **Services->Monit->Settings**. On the “General Settings” tab, turn on Monit and fill in the details of your SMTP server. Save the changes.
+Navigate to :menuselection:`Services --> Monit --> Settings`. On the “General Settings” tab, turn on Monit and fill in the details of your SMTP server. Save the changes.
 Then, navigate to the “Alert settings” and add one for your e-mail address. If your mail server requires the “From” field
 to be properly set, enter ``From: sender@example.com`` in the “Mail format” field. Save the alert and apply the changes.
 
@@ -85,7 +85,7 @@ Save and apply.
 Settings overview
 -----------------
 
-Navigate to **Services->Monit->Settings**. You will see four tabs, which we will describe in more detail below
+Navigate to :menuselection:`Services --> Monit --> Settings`. You will see four tabs, which we will describe in more detail below
 
 ^^^^^^^^^^^^^^^^
 General Settings
@@ -242,5 +242,5 @@ These include:
 Status
 ------
 
-The Monit status panel can be accessed via **Services->Monit->Status**. For every active service, it will show the status,
+The Monit status panel can be accessed via :menuselection:`Services --> Monit --> Status`. For every active service, it will show the status,
 along with extra information if the service provides it.

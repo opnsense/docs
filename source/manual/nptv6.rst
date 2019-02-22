@@ -6,7 +6,7 @@ Network Prefix Translation, shortened to NPTv6, is used to translate IPv6 addres
 is to translate global ("WAN") IPs to local ones. In this regard, it is similar to NAT, although NPTv6 can only be
 used to map addresses one-to-one, unlike NAT which typically translates one external IP to several internal ones.
 
-NPTv6 routes are listed at **Firewall->NAT->NPTv6**. New rules can be added by clicking **Add** in the upper right
+NPTv6 routes are listed at :menuselection:`Firewall --> NAT --> NPTv6`. New rules can be added by clicking **Add** in the upper right
 corner. A quick overview of the fields:
 
 ============================= =======================================================================================================================================================================

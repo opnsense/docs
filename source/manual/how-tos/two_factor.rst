@@ -17,7 +17,7 @@ with this 2FA solution.
 --------------------------------------
 Step 1 - Add New Authentication Server
 --------------------------------------
-To add a TOTP server go to **System->Access-Servers** and press **Add server** in
+To add a TOTP server go to :menuselection:`System --> Access --> Servers` and press **Add server** in
 the top right corner. Then fill in the form as follows:
 
 ====================== =================================== ========================================
@@ -37,7 +37,7 @@ Install using the normal procedure for your device.
 ---------------------------
 Step 3 - Add or modify user
 ---------------------------
-For this example we will create a new user, go to **System->Access-Users** and click
+For this example we will create a new user, go to :menuselection:`System --> Access --> Users` and click
 on the plus sign in the lower right corner.
 
 Enter a **Username** and **Password** and fill in the other fields just as you would
@@ -106,7 +106,7 @@ Google Authenticator Android, iOS            https://www.google.com/landing/2ste
 Step 5 - Test the token
 -----------------------
 For testing the user authentication, OPNsense offers a simple tester.
-Go to **System->Access->Tester**
+Go to :menuselection:`System --> Access --> Tester`
 
 Select the Authentication server you have configured, and enter the user name.
 Then enter the ***token** + **password**, remember the order

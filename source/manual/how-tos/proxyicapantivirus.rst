@@ -52,7 +52,7 @@ traffic to make sure the unencrypted ICAP traffic can't be tapped.
 
 Step 5 - Configure ICAP
 -----------------------
-To configure ICAP go to **Services->Proxy->Administration** And select **ICAP Settings**
+To configure ICAP go to :menuselection:`Services --> Proxy --> Administration` and select **ICAP Settings**
 for the **Forward Proxy** tab.
 
 Select enable ICAP and filling the Request and Response URLs.

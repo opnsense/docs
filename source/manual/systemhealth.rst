@@ -5,7 +5,7 @@ System Health & Round Robin Data
 .. image:: images/systemhealth_sample.png
     :width: 100%
 
-System Health is a dynamic view on RRD data gathered by the system. It can be accessed via **Reporting->Health**. It allows you
+System Health is a dynamic view on RRD data gathered by the system. It can be accessed via :menuselection:`Reporting --> Health`. It allows you
 to dive into different statistics that show the overall health and performance of
 the system over time.
 

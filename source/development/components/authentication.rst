@@ -29,7 +29,7 @@ Authenticators & Connections
 ------------------------------
 
 
-Services within OPNsense can use different authentication methods, for which connections can be configured in **System-->Access-->Servers**
+Services within OPNsense can use different authentication methods, for which connections can be configured in :menuselection:`System --> Access --> Servers`
 (e.g. the method can be **radius** which is offered through a server at a location).
 All of these methods use the same api defined in :code:`\OPNSense\Auth\IAuthConnector`, which comes with some simple to use handles.
 
@@ -37,7 +37,7 @@ If a class in :code:`\OPNSense\Auth` implements :code:`IAuthConnector` it is con
 for the authenticator factory named :code:`AuthenticationFactory`.
 
 The factory provides a layer of abstraction around the different authentication concepts, for example a server defined in
-**System-->Access-->Servers** can be requested using a simple :code:`(new AuthenticationFactory())->get('name');`
+:menuselection:`System --> Access --> Servers` can be requested using a simple :code:`(new AuthenticationFactory())->get('name');`
 This connects the authenticator to the configured servers and the response object is ready to handle authentication requests.
 
 

@@ -65,7 +65,7 @@ security reasons (state injection) as for performance.
 
 OPNsense includes a mechanism to keep the configuration of the backup
 server in sync with the master. This mechanism is called XMLRPC sync and
-can be found under System -> High Availability.
+can be found under :menuselection:`System --> High Availability --> Settings`.
 
 -----------------------------------------
 Setup interfaces & basic firewall rules
@@ -73,7 +73,7 @@ Setup interfaces & basic firewall rules
 
 .. Warning::
     Make sure the interface assignments on both systems are identical!
-    Via **Interfaces->Overview** you can check if e.g. DMZ is opt1 on 
+    Via :menuselection:`Interfaces --> Overview` you can check if e.g. DMZ is opt1 on
     both machines. When the assigments differ you will have mixed 
     Master and Backup IPs on both machines.
 
@@ -95,7 +95,7 @@ setup the following addresses and subnets:
 +-----------------------+
 
 Next we need to make sure the appropriate protocols can be used on the
-different interfaces, go to firewall -> rules and make sure both LAN and
+different interfaces, go to :menuselection:`Firewall --> Rules` and make sure both LAN and
 WAN accept at least CARP packets (see protocol selection). Because we're
 connecting both firewalls using a direct cable connection, we will add a
 single rule to accept all traffic on all protocols for that specific
@@ -132,7 +132,7 @@ Setup Virtual IPs
 
 On the master node we are going to setup our Virtual IP addresses, which
 will also be used for the backup node after synchronisation. Go to
-Firewall -> Virtual IPs and add a new one with the following
+:menuselection:`Firewall --> Virtual IPs` and add a new one with the following
 characteristics:
 
 +-------------------------+------------------------------------+
@@ -178,7 +178,7 @@ IP address to make a seamless migration possible. The default for
 OPNsense is to use the interfaces IP address, which is in our case the
 wrong one.
 
-Go to Firewall -> NAT and select outbound nat. Choose manual outbound
+Go to :menuselection:`Firewall --> NAT --> Outbound`. Choose manual outbound
 nat on this page and change the rules originating from the
 192.168.1.0/24 network to use the CARP virtual interface (172.18.0.100).
 
@@ -207,7 +207,7 @@ Setup HA sync (xmlrpc) and pfSync
 ---------------------------------
 
 First we should enable pfSync using our dedicated interface using the
-master firewall. Go to System -> High Availability, enable pfSync and
+master firewall. Go to :menuselection:`System --> High Availability --> Settings`, enable pfSync and
 select the interface used for pfSync. Next setup the peer IP to the
 other hosts address (10.0.0.2).
 
@@ -236,13 +236,13 @@ firewalls before testing.
 Testing setup
 -------------
 
-First go to Status -> Carp in the OPNsense webinterface and check if
+First go to :menuselection:`System --> High availability --> Status` in the OPNsense webinterface and check if
 both machines are properly initialized.
 
 To test our setup, we will connect a client to the local area network
 and open a ssh connection to a host behind both firewalls. Now when
 connected you should be able to look at the state table on both OPNsense
-firewalls (Diagnostics -> States) and they should both display the same
+firewalls (:menuselection:`Firewall --> Diagnostics --> States Dump`) and they should both display the same
 connection. Next try to pull the network plug from the master firewall
 and it should move over to the backup without loosing (or freezing) the
 ssh connection.
@@ -271,7 +271,7 @@ downtime. To keep the downtime at a minimum when running updates just follow
 these steps:
 
 - Update your secondary unit and wait until it is online again
-- On your primary unit go to **Firewall->Virtual IP's->Status** and hit **Enter Persistent CARP Maintenance Mode**
+- On your primary unit go to :menuselection:`Firewall --> Virtual IPs --> Status` and click **Enter Persistent CARP Maintenance Mode**
 - You secondary unit is now *MASTER*, check if all services like DHCP, VPN, NAT are working correctly
 - If you ensured the update was fine, update your primary unit and hit **Leave Persistent CARP Maintenance Mode**
 

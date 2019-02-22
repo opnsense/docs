@@ -9,7 +9,7 @@ of Netflow data. To do so take a look at :doc:`netflow_exporter`.
 User Interface
 --------------
 Insight is a fully integrated part of OPNsense. Its User Interface is simple yet
-powerful. It can be accessed via **Reporting->Insight**.
+powerful. It can be accessed via :menuselection:`Reporting --> Insight`.
 
 .. image:: images/insight_gui.png
    :width: 100%

@@ -3,7 +3,7 @@ Dashboard
 =========
 
 The Dashboard is the first page you will see after you log into OPNsense.
-Additionally, it can be accessed via **Lobby->Dashboard**. The Dashboard provides an overview of your system status.
+Additionally, it can be accessed via :menuselection:`Lobby --> Dashboard`. The Dashboard provides an overview of your system status.
 
 -------------
 Configuration

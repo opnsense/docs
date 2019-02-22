@@ -14,7 +14,7 @@ Prerequisites
 -------------
 * Always upgrade to latest release first.
   See :doc:`/manual/install` and/or upgrade to latest release:
-  **System->Firmware: Fetch updates**
+  :menuselection:`System --> Firmware --> Fetch updates`
 
 .. image:: images/firmware.png
     :width: 100%
@@ -42,8 +42,8 @@ Prerequisites
 --------------------------------------
 Setup Intrusion Detection & Prevention
 --------------------------------------
-To enable IDS/IPS just go to Services->Intrusion Detection and select **enabled
-& IPS mode**. Make sure you have selected the right interface for the intrusion
+To enable IDS/IPS just go to :menuselection:`Services -> Intrusion Detection` and select
+**enabled & IPS mode**. Make sure you have selected the right interface for the intrusion
 detection system too run on. For our example we will use the WAN interface, as
 that will most likely be you connection with the public Internet.
 

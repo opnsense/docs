@@ -6,7 +6,7 @@ by selecting the alias name in the various supported sections of the firewall.
 These aliases are particularly useful to condense firewall rules and minimize
 changes.
 
-Aliases can be added, modified and removed via **Firewall->Aliases**.
+Aliases can be added, modified and removed via :menuselection:`Firewall --> Aliases`.
 
 -----------
 Alias Types
@@ -41,7 +41,7 @@ Sample
       :width: 100%
 
 **Apply changes** and look at the content of our newly created pf table.
-Go to **Firewall->Diagnostics->pfTables** and select our newly created youtube table.
+Go to :menuselection:`Firewall --> Diagnostics --> pfTables` and select our newly created youtube table.
 
 .. image:: images/pftable_youtube.png
     :width: 100%

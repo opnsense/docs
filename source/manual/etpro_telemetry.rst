@@ -65,7 +65,7 @@ plugin
 First we need to install the required plugin, which is responsible for collecting the telemetry data and provides access
 to the ET Pro ruleset.
 
-1.  Go to **System->Firmware->Updates**
+1.  Go to :menuselection:`System --> Firmware --> Updates`
 2.  press "Check for updates" in the upper right corner.
 3.  open the tab "Plugins" and search for `os-etpro-telemetry`
 4.  when found, click on the [+] sign on the right to install the plugin
@@ -78,7 +78,7 @@ register token
 
 Next step is to register your token in OPNsense and enable rulesets.
 
-1.  Go to **Services->Intrusion Detection->Administration**
+1.  Go to :menuselection:`Services --> Intrusion Detection --> Administration`
 2.  Click on the "Download" tab, which should show you a list of available rules.
 3.  Enable all categories you would like to monitor in the "ET telemetry" section,
     if in doubt enable all and monitor the alerts later (select on the right and use the enable selected button on top)
@@ -93,7 +93,7 @@ Schedule updates
 
 To download the rulesets automatically on a daily bases, you can add a schedule for this task.
 
-1.  Go to **Services->Intrusion Detection->Administration**
+1.  Go to :menuselection:`Services --> Intrusion Detection --> Administration`
 2.  Click on the "Schedule" tab
 3.  A popup for the update task appears, enable it using the checkbox on top, and click "save changes"
 
@@ -104,10 +104,10 @@ Subscription status
 
 To validate your subscription, we recommend to add the widget to the dashboard.
 
-1.  Go to the dashboard **Lobby->Dashboard**
+1.  Go to the dashboard :menuselection:`Lobby --> Dashboard`
 2.  Click on "Add widget" in the top right corner, click "Telemetry status" in the list
 3.  Close dialog and click "Save settings" on the right top of the dashboard
-4.  Open **Lobby->Dashboard** again to refresh the content
+4.  Open :menuselection:`Lobby --> Dashboard` again to refresh the content
 
 When everything is setup properly and the plugin can reach Proofpoint, it will show something like:
 
@@ -131,7 +131,7 @@ In case your sensor can't communicate to the outside world, the widget shows an 
 
 .. Note::
 
-    The system log (**System->Log Files->General**) might contain more information, search for *emergingthreats*
+    The system log (:menuselection:`System --> Log Files --> General`) might contain more information, search for *emergingthreats*
 
 
 --------------------------------------

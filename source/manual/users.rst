@@ -47,17 +47,17 @@ rights, called privileges.
 Authentication services
 ----------------------------------
 
-Authentication services can be configured using the settings in **System->Access->Servers**.
+Authentication services can be configured using the settings in :menuselection:`System --> Access --> Servers`.
 This includes both local accounts and remote authentication.
 
 By default, OPNsense GUI login will use local accounts. This can be changed, however,
-by going to **System->Settings->Administration**, scrolling down to the "Authentication" group,
+by going to :menuselection:`System --> Settings --> Administration`, scrolling down to the "Authentication" group,
 and changing the 'Server' option.
 
 Local account configuration
 ---------------------------
 
-Settings for handling login via local accounts can be set by going to **System->Access->Servers**,
+Settings for handling login via local accounts can be set by going to :menuselection:`System --> Access --> Servers`,
 then clicking the 'Edit' icon (a pencil) for 'Local Database'. Here, you can improve security of
 local user accounts by setting password length and complexity constraints.
 

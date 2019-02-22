@@ -18,10 +18,10 @@ WireGuard as a central server or just as a client.
 Step 1 - Installation
 ---------------------
 
-Since WireGuard Plugin is still in development you have to switch via **System->Firmware->Settings** 
-the **Release Type** to **Development**. After this go to **System->Firmware->Plugins->** and search 
+Since WireGuard Plugin is still in development you have to switch via :menuselection:`System --> Firmware --> Settings`
+the **Release Type** to **Development**. After this go to :menuselection:`System --> Firmware --> Plugins` and search
 for **os-wireguard-devel**.  Install the plugin as usual, refresh and page and the you'll find the client 
-via **VPN->WireGuard**.
+via :menuselection:`VPN --> WireGuard`.
 
 --------------------------------
 Step 2a - Setup WireGuard Server
@@ -49,7 +49,7 @@ If you want to add more users just add them in **Endpoints** and link them via *
 Step 2b - Setup Firewall
 ------------------------
 
-On **Firewall->Rules** add a new rule on your WAN interface allowing the port you set in your
+On :menuselection:`Firewall --> Rules` add a new rule on your WAN interface allowing the port you set in your
 instance (Protocol UDP). You also have a new interace **Wireguard** in rules, where you can 
 set granular rules on connection inside your tunnel.
 
@@ -61,10 +61,10 @@ Step 2c - Assignments and Routing
 
 With this setup your clients can reach your internal networks when they add it vial **Tunnel Address**.
 But what if you want to push all traffic via VPN in order to filter some streams out of it?
-Then we have to assign the interface via **Interface->Assignments**, choose our instance (e.g. instance
+Then we have to assign the interface via :menuselection:`Interface --> Assignments`, choose our instance (e.g. instance
 0 is interface wg0), enable it, hit **Prevent Interface Removal** and don't configure an IP address.
 
-After this we can go to **Firewall->NAT->Outbound** and add a rule. Check that rule generation is set
+After this we can go to :menuselection:`Firewall --> NAT --> Outbound` and add a rule. Check that rule generation is set
 to manual or hybrid. Add a rule and select your WAN as **Interface**. **Source** should be the Tunnel
 Network you use and **Translation / target** set to WAN address.
 
@@ -73,7 +73,7 @@ Internet via your VPN.
 
 When assigning interfaces we can also add gateways to them. This would  offer you the chance to 
 balance traffic via different VPN providers or do more complex routing scenarios. 
-To do this, go to **System->Gateways->Single** and add a new gateway. Choose your WireGuard interface
+To do this, go to :menuselection:`System --> Gateways --> Single` and add a new gateway. Choose your WireGuard interface
 and set the Gateway to **dynamic**.
 
 -------------------------------

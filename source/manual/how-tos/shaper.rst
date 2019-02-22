@@ -55,7 +55,7 @@ has 10 Mbps Download and 1 Mbps Upload.
       }
     }
 
-To start go to **Firewall->Shaper->Settings**.
+To start go to :menuselection:`Firewall --> Shaper --> Settings`.
 
 Step 1 - Create Upload and Download Pipes
 -----------------------------------------
@@ -215,7 +215,7 @@ Upload that we want to share evenly between all users.
 
     }
 
-To start go to **Firewall->Traffic Shaper->Settings**.
+To start go to :menuselection:`Firewall --> Traffic Shaper --> Settings`.
 
 Step 1 - Create Upload and Download Pipes
 -----------------------------------------
@@ -344,7 +344,7 @@ users in such manner that each user will receive up to a maximum of 1 Mbps.
 
     }
 
-To start go to **Firewall->Traffic Shaper->Settings**.
+To start go to :menuselection:`Firewall --> Traffic Shaper --> Settings`.
 
 Step 1 - Create Upload and Download Pipes
 -----------------------------------------
@@ -420,7 +420,7 @@ for the upload traffic.
 | HTTPS (443)    |        |                   |
 +----------------+--------+-------------------+
 
-To start go to **Firewall->Traffic Shaper->Settings**.
+To start go to :menuselection:`Firewall --> Traffic Shaper --> Settings`.
 
 Step 1 - Create Download Pipe
 ------------------------------

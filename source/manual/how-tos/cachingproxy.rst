@@ -9,7 +9,7 @@ Setup Caching Proxy
 Enable / Disable
 ----------------
 The proxy is delivered with sane default settings for easy setup.
-To enable the proxy just go to **Services->Web Proxy->Administration** and
+To enable the proxy just go to :menuselection:`Services --> Web Proxy --> Administration` and
 check **Enable proxy** en click on **Apply**. The default will enable the proxy
 with User Authentication based on the local user database and runs on port 3128
 of the lan interface.
@@ -42,7 +42,7 @@ Check the **Enable local cache** and click **Apply**.
 .. Important::
 
   As the cache is not created by default you will need to stop and start the service
-  under **Services->Diagnostics**, this will ensure correct creation of the cache.
+  under :menuselection:`Services --> Diagnostics`, this will ensure correct creation of the cache.
 
 Advanced
 --------
@@ -60,7 +60,7 @@ Now select **Authentication Settings** and select the desired Authenticator(s) i
 the field **Authentication method**. Click on **Clear All** if you do not want to
 use any authentication.
 
-Depending on the Authentication Servers you have setup under **System->Access->Servers**
+Depending on the Authentication Servers you have setup under :menuselection:`System --> Access --> Servers`
 You can select one or more of the following:
 
 * No Authentication (leave field blank)
@@ -118,7 +118,7 @@ This list is a simple flat list that looks like this:
     207.net
     247media.com
 
-Go to **Services->Web Proxy->Administration** and click on the tab **Remote
+Go to :menuselection:`Services --> Web Proxy --> Administration` and click on the tab **Remote
 Access Control Lists**
 
 Now click on the **+** at the bottom right corner of the form to add a new list.
@@ -146,7 +146,7 @@ Now click on **Download ACLSs & Apply** to enable the blacklist/ad blocker.
 Firewall Rule No Proxy Bypass
 -----------------------------
 To make sure no-one can bypass the proxy you need to add a firewall rule.
-Go to **Firewall->Rules** and add the following to the top of the list rule on the
+Go to :menuselection:`Firewall --> Rules` and add the following to the top of the list rule on the
 LAN interface (if LAN is where your clients and proxy are on).
 
 ============================ =====================

@@ -50,7 +50,7 @@ Step 1 - Add monitor IPs
 You may skip this step if you already have setup the monitoring IP and both gateways
 are shown as online.
 
-To add a monitoring IP go to **System->Gateways->Single** and click on the first pencil
+To add a monitoring IP go to :menuselection:`System --> Gateways --> Single` and click on the first pencil
 symbol to edit the first gateway.
 
 Now make sure the following is configured:
@@ -73,7 +73,7 @@ Now make sure the following is configured:
 
 Step 2 - Add Gateway Group
 --------------------------
-Go to **System->Gateways->Group** and press **+ Add Group** in the upper right
+Go to :menuselection:`System --> Gateways --> Group` and press **+ Add Group** in the upper right
 corner.
 
 Use the following settings:
@@ -100,7 +100,7 @@ Use the following settings:
 
 Step 3 - Configure DNS for each gateway
 ---------------------------------------
-Go to **System->Settings->General** and make sure each gateway has its own DNS
+Go to :menuselection:`System --> Settings --> General` and make sure each gateway has its own DNS
 setup: like this:
 
 DNS servers
@@ -112,7 +112,7 @@ DNS servers
 
 Step 4 - Policy based routing
 -----------------------------
-Go to **Firewall->Rules**
+Go to :menuselection:`Firewall --> Rules`
 
 For our example we will update the default LAN pass rule. Click on the pencil
 next to this rule (*Default allow LAN to any rule*).
@@ -155,7 +155,7 @@ Advanced Options
 ----------------
 For each gateway there are several advanced options you can use to change the
 default behavior/thresholds. These option can be changed under
-**System->Gateways->Single**, press the pencil icon next to the Gateway you want
+:menuselection:`System --> Gateways --> Single`, press the pencil icon next to the Gateway you want
 to update.
 
 The current options are:
@@ -190,7 +190,7 @@ lead to unexpected behavior. To solve this you can use the option **Sticky Conne
 this will make sure each subsequent request from the same user to the same website
 is send through the same gateway.
 
-To set this option can be set under **Firewall->Settings->Advanced**.
+To set this option can be set under :menuselection:`Firewall --> Settings --> Advanced`.
 
 Unequal Balancing (Weight)
 --------------------------
@@ -200,7 +200,7 @@ load balance. For instance if you have one line of 10 Mbps and one of 20 Mbps th
 set the weight of the first one to 1 and the second one to 2. This way the second
 gateway will get twice as many traffic to handle than the first.
 
-To do so, go to **System->Gateways->Single** and press the pencil icon next to the
+To do so, go to :menuselection:`System --> Gateways --> Single` and press the pencil icon next to the
 Gateway you want to update. The weight is defined under the advanced section.
 
 ------------------------------
