@@ -33,9 +33,9 @@ The secret is later used in the wireless settings.
 
 .. image:: images/interface_wireless_radius_4.png
 
-Next, swtich to the users menu and create s new user (for example for yourself).
+Next, switch to the users menu and create a new user (for example for yourself).
 The username and the password are used to authenticate later.
-The rest can stay at the default.
+The rest of the settings can be left on their defaults.
 
 
 Step 3 - Prepare WLAN
@@ -58,7 +58,7 @@ IPv4 Upstream Gateway   WLAN
 
 ================================ ==========================================================
 Persist common settings          Check (save for all clones)
-Standard                         802.11g or whatever your adapter supports
+Standard                         802.11g or another standard your adapter supports
 Regulatory settings              Choose your country
 Mode                             Access Point
 SSID                             Name of the wireless network
@@ -78,13 +78,13 @@ Step 4 - Connect
 ----------------
 
 .. Info::
-    This is system specific - this screenshot is for a Linux with
-    KDE Plasma Workspaces 5 in the german version.
+    This is system specific - this screenshot is for a Linux distribution with
+    KDE Plasma Workspaces 5, with the system language set to German.
 
 .. image:: images/interface_wireless_radius_3.png
 
 
-To connect against the network, choose the security setting "WPA/WPA2 Enterprise"
-and authentication "Protected EAP (PEAP)".
-The inner authentication can be MSCHAPv2 and enter the username and passwort you
+To connect to the network, set the security setting to "WPA/WPA2 Enterprise" 
+and the authentication setting to "Protected EAP (PEAP)".
+The inner authentication should be set to MSCHAPv2, and the username and password are the ones you
 set up in the RADIUS plugin.
