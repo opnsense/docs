@@ -45,6 +45,7 @@ How-tos
    how-tos/multiwan
    how-tos/netflow_exporter
    how-tos/nginx
+   how-tos/nginx_header_hardening
    how-tos/nginx_hosting
    how-tos/nginx_basic_auth
    how-tos/nginx_ip_acl
