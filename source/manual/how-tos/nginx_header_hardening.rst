@@ -116,3 +116,15 @@ You can read about the headers in the Mozilla Wiki_ or in the RFCs.
 .. Warning::
 
    Not all headers are supported by all browsers.
+
+In short, the headers are:
+   
+========================= =============================================================
+Referrer                  Control what a page sees when you link on it
+XSS Protection            Enable or disable the detection for (reflected) XSS
+Don't Sniff Content Type  Disable content type detection when the original is incorrect
+Strict Transport Security TLS only and enforce valid certificate
+HPKP                      Pin the public key, not widely used and dangerous
+Content Security Policy   Controls resources and JS functions
+========================= =============================================================
+
