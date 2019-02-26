@@ -191,6 +191,10 @@ dest_port      Destination port number
 proto          Protocol
 alert          Alert details, such as the signature_id, action taken
                and associated message.
+tls            TLS details, such as certificate subject and serial.
+http           HTTP detail information such as the host, but omitting
+               sensitive details such as path and user-agent.
+app_proto      Application protocol (if known)
 ============== ======================================================
 
 *Threats change often, to keep statistics valuable, the list of fields is subject to change*
