@@ -109,9 +109,7 @@ header configuration:
 If you set a setting here, it will override what the webserver sets.
 You can inject this security setting into a location or HTTP server.
 
-You can read about the headers in the Mozilla Wiki_ or in the RFCs.
-
-.. _Wiki: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+You can read about the headers in the `Mozilla Wiki <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers>`_ or in the RFCs.
 
 .. Warning::
 
@@ -119,12 +117,16 @@ You can read about the headers in the Mozilla Wiki_ or in the RFCs.
 
 In short, the headers are:
    
-========================= =============================================================
+========================= ======================================================================
 Referrer                  Control what a page sees when you link on it
 XSS Protection            Enable or disable the detection for (reflected) XSS
 Don't Sniff Content Type  Disable content type detection when the original is incorrect
 Strict Transport Security TLS only and enforce valid certificate
-HPKP                      Pin the public key, not widely used and dangerous if misconfigured
+HPKP                      Pin the public key, not widely used and dangerous [1]_ if misconfigured
 Content Security Policy   Controls resources and JS functions
-========================= =============================================================
+========================= ======================================================================
 
+.. [1] If you switch the certificate without announcing its public key first
+    via this header in a rollover time span, you will lock this clients out
+    because they expect being targetted by a mitm attack and refuse the connection
+    and it is hard to reset this pin in the browser.
