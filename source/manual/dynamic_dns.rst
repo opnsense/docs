@@ -58,7 +58,7 @@ Provider-specific info
 +------------------------------+------------------------------------------------------------------------------------------+
 | FreeDNS (freedns.afraid.org) | Password field: Enter your “Authentication Token”.                                       |
 +------------------------------+------------------------------------------------------------------------------------------+
-| he.net tunnelbroker          | Hostname field: Enter your “Tunnel ID”.
+| he.net tunnelbroker          | Hostname field: Enter your “Tunnel ID”.                                                  |
 +------------------------------+------------------------------------------------------------------------------------------+
 | Route 53                     | Username field: Enter your “Access Key ID”. |br|                                         |
 |                              | Password field: Enter your “Secret Access Key”.                                          |
