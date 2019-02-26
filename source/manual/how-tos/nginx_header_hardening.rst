@@ -4,7 +4,7 @@ nginx: Header Hardening
 
 .. Note::
 
-    Except some specific configuration directives, this is **NOT**
+    Except for some specific configuration directives, this is **NOT**
     specific to the nginx plugin. Please note that you can also debug your
     frontend code this way.
 
@@ -12,7 +12,7 @@ nginx: Header Hardening
 Background Information
 ======================
 
-HTTP headers can control, what a web application is allowd to do and what it is
+HTTP headers can control what a web application is allowed to do and what it is
 not. This can be used to harden the web application against some **client side risks**.
 
 
@@ -49,8 +49,8 @@ When it is unpacked, you need to run it. In case of ZAP, doubleclick the
 ``zap.sh`` or ``zap.bat`` depending on your operating system.
 
 Next regenerate and export the certificate under
-``Tools -> Options -> Dynamic SSL certificates`` and import it into the Firefox
-key store (Preferences -> Data Protection & Security -> Show Certificates) with
+:menuselection:`Tools --> Options --> Dynamic SSL certificates` and import it into the Firefox
+key store (:menuselection:`Preferences --> Data Protection & Security --> Show Certificates`) with
 full trust.
 
 Start Testing
@@ -69,16 +69,16 @@ could look like this one:
 .. image:: images/zap_response.png
 
 You can see a lot of important information here like the used protocol (HTTP/1.1),
-the Status 200, which means it was successful and a lot of headers.
+the status code 200 (which means it was successful) and a lot of headers.
 Some of those headers impact security and ZAP will try to make a recommendation,
 which may not be always correct but it may help you to find some (forgotten)
 issues:
 
 .. image:: images/zap_warnings.png
 
-The colors of the flags show how high the risk is rated so the more red it is,
-the more impact it has on security. The left view conteins a list of the
-findings, the right view a detailed description of them.
+The colors of the flags show how high the risk is rated so the redder it is,
+the more impact it has on security. The left view contains a list of the
+findings, the right view contains a detailed description of them.
 Based on this information, you have to decide your further actions.
 
 
@@ -124,7 +124,7 @@ Referrer                  Control what a page sees when you link on it
 XSS Protection            Enable or disable the detection for (reflected) XSS
 Don't Sniff Content Type  Disable content type detection when the original is incorrect
 Strict Transport Security TLS only and enforce valid certificate
-HPKP                      Pin the public key, not widely used and dangerous
+HPKP                      Pin the public key, not widely used and dangerous if misconfigured
 Content Security Policy   Controls resources and JS functions
 ========================= =============================================================
 
