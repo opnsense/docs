@@ -15,7 +15,7 @@ System
  **Backend / config daemon**   **System->Log Files->Backend**   *Here you can find logs for config generation of API usage*
  **Web GUI**                   **System->Log Files->Web GUI**   *Lighttpd, the webserver of OPNsense itself, logs here*
  **Firmware**                  **System->Firmware->Log File**   *Updates from the packaging system go here*
- **Gateways**                  **System->Gateways->Log File**   *Apinger/Dpinger gateway tracking related log messages are shere*
+ **Gateways**                  **System->Gateways->Log File**   *Lists Dpinger gateway tracking related log messages*
  **Routing**                   **System->Routes->Log File**     *Routing changes or interface events*
 ============================= ================================ ============================================================= 
 
