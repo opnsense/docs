@@ -94,6 +94,7 @@ Now configure your LAN interface. The static IPv6 address we'll give it is a
 **/64** address from your assigned **/48**. I won't show the WLAN settings simply
 because it's the very same. You'll repeat the same process for further networks,
 but assigning the next interface a separate **/64** address.
+ Set the MTU to 1480.
 
 .. image:: images/tunnelbroker_configure_lan.png
    :width: 100%
