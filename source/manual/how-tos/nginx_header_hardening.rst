@@ -128,5 +128,5 @@ Content Security Policy   Controls resources and JS functions
 
 .. [1] If you switch the certificate without announcing its public key first
     via this header in a rollover time span, you will lock this clients out
-    because they expect being targetted by a mitm attack and refuse the connection
+    because they expect being targetted by a MITM attack and refuse the connection
     and it is hard to reset this pin in the browser.
