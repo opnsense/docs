@@ -55,25 +55,46 @@ A simple example of a service named **opnsense-auth-test** is defined as follows
     auth		sufficient	pam_opnsense.so
     account		sufficient	pam_opnsense.so
 
-To test authentication, you can use opnsense-auth-test for any configured service. The following example
-tries to authenticate user *root* for service *opnsense-auth-test*.
+To test authentication, you can use opnsense-login for any configured service. The following example
+tries to authenticate user *root* for service *opnsense-login* (the default when no options are specified).
 
 .. code-block:: sh
 
-    /usr/local/sbin/opnsense-auth-test -s opnsense-auth-test -u root
+    /usr/local/sbin/opnsense-login
 
 .. Note::
 
     **opnsense-auth-test** inherits from the standard system authentication used for console and webgui login.
+    See :code:`man opnsense-login` for a list of available options
 
 
-Internally pam calls :code:`/usr/local/sbin/opnsense-auth` which then uses our factory class to perform authentication using
+Internally pam calls :code:`/usr/local/libexec/opnsense-pam` which acts as a stepping stone into the
+authentication sequence served by :code:`/usr/local/libexec/opnsense-auth`. Since :code:`opnsense-auth` is written
+in php and needs elevated privileges for this task, the stepping stone makes sure it has them granted before executing
+using the *setuid* bit.
+
+
+.. blockdiag::
+    :scale: 100%
+
+    diagram init {
+        pam_opnsense [label = "pam_opnsense.so"];
+        opnsense_pam [label = "opnsense-pam"];
+        opnsense_auth [label = "opnsense-auth"];
+        pam_opnsense -> opnsense_pam -> opnsense_auth;
+    }
+
+
+The authentication script :code:`opnsense_auth` utilizes our factory class to perform the actual authentication using
 the connections defined in the service.
 
 For this purpose we expose a *services* namespace in :code:`\OPNSense\Auth\Services` where the required options can be read
 from the OPNsense configuration.
 
-For every service defined in pam, the factory method :code:`getService()` expects a class implementing :code:`OPNsense\Auth\IService`
+For every service defined in pam, the factory method :code:`getService()` expects a class implementing :code:`OPNsense\Auth\IService`.
+Using the :code:`aliases()` static method service classes can support multiple pam services at once if needed
+(e.g. System can also be used for ssh).
+
 
 .. Note::
 
