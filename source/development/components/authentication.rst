@@ -45,10 +45,10 @@ This connects the authenticator to the configured servers and the response objec
 Services
 -----------------------------
 
-We strive to use :code:`pam` to define our services, in which case we adopt to existing standards.
-OPNsense comes with a pam module, which connects our service definitions with the services defined using pam.
+We strive to use :code:`PAM` to define our services, in which case we adopt to existing standards.
+OPNsense comes with a PAM module, which connects our service definitions with the services defined using PAM.
 
-A simple example of a service named **opnsense-auth-test** is defined as follows in a file with the name :code:`/usr/local/etc/pam.d/opnsense-auth-test`
+A simple example of a service named **opnsense-login** is defined as follows in a file with the name :code:`/usr/local/etc/pam.d/opnsense-login`
 
 .. code-block:: sh
 
@@ -62,13 +62,13 @@ tries to authenticate user *root* for service *opnsense-login* (the default when
 
     /usr/local/sbin/opnsense-login
 
+See :code:`man opnsense-login` for a list of available command line options.
+
 .. Note::
 
-    **opnsense-auth-test** inherits from the standard system authentication used for console and webgui login.
-    See :code:`man opnsense-login` for a list of available options
+    **opnsense-login** inherits from the standard system authentication used for console and web GUI login unless otherwise specified.
 
-
-Internally pam calls :code:`/usr/local/libexec/opnsense-pam` which acts as a stepping stone into the
+Internally PAM calls :code:`/usr/local/libexec/opnsense-pam` which acts as a stepping stone into the
 authentication sequence served by :code:`/usr/local/libexec/opnsense-auth`. Since :code:`opnsense-auth` is written
 in php and needs elevated privileges for this task, the stepping stone makes sure it has them granted before executing
 using the *setuid* bit.
@@ -91,13 +91,13 @@ the connections defined in the service.
 For this purpose we expose a *services* namespace in :code:`\OPNSense\Auth\Services` where the required options can be read
 from the OPNsense configuration.
 
-For every service defined in pam, the factory method :code:`getService()` expects a class implementing :code:`OPNsense\Auth\IService`.
-Using the :code:`aliases()` static method service classes can support multiple pam services at once if needed
+For every service defined in PAM, the factory method :code:`getService()` expects a class implementing :code:`OPNsense\Auth\IService`.
+Using the :code:`aliases()` static method service classes can support multiple PAM services at once if needed
 (e.g. System can also be used for ssh).
 
 
 .. Note::
 
-    Not every service uses pam already, in that case it is defined as a script handling the authentication.
+    Not every service uses PAM already, in that case it is defined as a script handling the authentication.
 
 The interface :code:`IService` is quite easy to read and should be self explanatory.
