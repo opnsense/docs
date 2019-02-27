@@ -25,7 +25,7 @@ System
    /var/log/configd.log (clog)
    /var/log/lighttpd.log (clog)
    /var/log/pkg.log (clog)
-   /var/log/gateways.log (clog) Note: By default gateway monitoring is disabled, the log is empty
+   /var/log/gateways.log (clog) Note: By default gateway monitoring is disabled, so the log will be empty.
    /var/log/routing.log (clog)
 
 ----------
