@@ -162,7 +162,7 @@ Advanced Options
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :width: 100%
+
 
 Now you should see the following screen:
 
