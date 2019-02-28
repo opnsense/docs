@@ -22,7 +22,7 @@ the following options are available:
 =========================== ===================================================================================================================================================
  **General configuration**
  Enable interface            Disable the interface without needing to remove its assignment altogether.
- Prevent interface removal   Can be especially useful for important interfaces that rarely ever change, like WAN and LAN.
+ Prevent interface removal   Avoids accidentally removing an interface (has to be turned off and saved before an interface can be removed).
  **General configuration**
  Description                 A short description for clarifaction, if the name does not suffice.
  Block private networks      Block traffic claiming to come from private addresses. On WAN interfaces, this kind of traffic should not happen legitimately.
