@@ -135,7 +135,6 @@ Phase 1 proposal (Authentication)
  **Negotiation mode**        Agressive              *Select Aggressive*
  **My identifier**           My IP address          *Simple identification for fixed ip*
  **Peer identifier**         User distinguished     *Identification for peer*
- *Peer identifier*           vpnuser@example.com    *Our freely chosen identifier*
  **Pre-Shared Key**          At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!**
 =========================== ====================== ======================================
 
@@ -321,7 +320,6 @@ Select **Add VPN Configuration** chose **IPsec** and use the Following Settings:
   **Server**                172.18.0.164            *Our server address*
   **Account**               expert                  *Username of the remote account*
   **Password**              &test!9T                *Leave blank to be prompted every time*
-  **IPsec-id**              vpnuser@example.com     *The peer identity we chose*
   **Preshared IPsec-key**   At4aDMOAOub2NwT6gMHA    *Our PSK*
 ========================== ======================= ========================================
 
@@ -338,7 +336,6 @@ Use the Following Settings:
   **Name**                  IPsec OPNsense         *Freely chosen name*
   **Type**                  IPSec Xauth PSK        *As configured in OPNsense*
   **Server address**        172.18.0.164           *Our server address*
-  **IPsec-id**              vpnuser@example.com    *The peer identity we chose*
   **Preshared IPsec-key**   At4aDMOAOub2NwT6gMHA   *Our PSK*
 ========================== ======================= =============================
 
