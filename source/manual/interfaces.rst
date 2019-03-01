@@ -17,23 +17,23 @@ created here as well, using a non-occupied physical port.
 When creating a new interfaces or changing an existing one (which can be done by clicking its name in the overview),
 the following options are available:
 
-=========================== ===================================================================================================================================================
+=========================== ============================================================================================================================================================
  Option                      Explanation
-=========================== ===================================================================================================================================================
+=========================== ============================================================================================================================================================
  **General configuration**
  Enable interface            Disable the interface without needing to remove its assignment altogether.
  Prevent interface removal   Avoids accidentally removing an interface (has to be turned off and saved before an interface can be removed).
  **General configuration**
  Description                 A short description for clarifaction, if the name does not suffice.
  Block private networks      Block traffic claiming to come from private addresses. On WAN interfaces, this kind of traffic should not happen legitimately.
- Block bogon networks        Block traffic claiming to come from invalid (reserved) addresses (Martian packets). This kind of traffic should not happen legitimately.
+ Block bogon networks        Block traffic claiming to come from invalid or reserved addresses (Martian packets). Note that this also includes multicast traffic over OSPF and RTMP.
  IPv4 Configuration type     How to obtain the IPv4 address for this connection.
  IPv6 Configuration type     How to obtain the IPv6 address for this connection.
  MAC Address                 Can be used to spoof the MAC address. Can usually be left blank (in which case it will use the actual MAC address of the hardware).
  MTU                         `Maximum Transfer Unit <https://en.wikipedia.org/wiki/Maximum_transmission_unit>`_.
  MSS                         `Maximum Segment Size <https://en.wikipedia.org/wiki/Maximum_segment_size>`_.
  Speed and duplex            It is recommended to leave this on the default, unless you know what you are doing and the setting you pick matches the one on the physical port.
-=========================== ===================================================================================================================================================
+=========================== ============================================================================================================================================================
 
 In addition to these settings, the following blocks will be enabled depending on what is configured under
 “IPv4 Configuration type” and “IPv6 Configuration type”.
