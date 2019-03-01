@@ -150,9 +150,9 @@ An overview of the remote settings:
 ======================= ===============================================================================================
 Setting                 Explanation
 ======================= ===============================================================================================
+Enable Remote Logging   Master on/off switch
 Source Address          Which interface to bind to. Select “any” if you want to use a mix of IPv4 and IPv6 servers.
 IP Protocol             Preferred IP version (it will this first). Will only be used if “Source Address” is not an IP.
-Enable Remote Logging   Master on/off switch
 Remote Syslog Servers   IP addresses of remote syslog servers, or IP:port combinations.
 Remote Syslog Contents  Can be used to selectively log event categories
 ======================= ===============================================================================================
