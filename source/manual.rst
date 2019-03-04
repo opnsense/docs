@@ -44,5 +44,6 @@ User Manual
    manual/diagnostics
    manual/monit
    manual/nptv6
+   manual/settingsmenu
    manual/dynamic_dns
    manual/howtos
