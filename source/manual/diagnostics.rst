@@ -7,7 +7,7 @@ In order to get more insight into your network, and to help solve problems, OPNs
 The tools can be found in three places:
 
 * :menuselection:`System --> Diagnostics`
-* :menuselection:`Interfaces --> Diagnostics`
+* :menuselection:`Interfaces --> Diagnostics` (plus one under :menuselection:`Interfaces --> Overview`
 * :menuselection:`Firewall --> Diagnostics`
 
 The following tools are available:
@@ -22,6 +22,7 @@ The following tools are available:
  :menuselection:`Interfaces --> Diagnostics --> Ping`               Ping a hostname or IP address
  :menuselection:`Interfaces --> Diagnostics --> Port Probe`         Test if a host has a certain TCP port open and accepts connections on it
  :menuselection:`Interfaces --> Diagnostics --> Trace Route`        Trace route to a hostname or IP address
+ :menuselection:`Interfaces --> Overview`                           Shows status, addresses, packet counts, etc. per interface
  :menuselection:`Firewall --> Diagnostics --> pfInfo`               General information and statistics for pf
  :menuselection:`Firewall --> Diagnostics --> pfTop`                Currently active pf states and routes
  :menuselection:`Firewall --> Diagnostics --> pfTables`             Shows IP addresses belonging to aliases
