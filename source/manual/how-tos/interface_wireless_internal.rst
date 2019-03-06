@@ -2,6 +2,12 @@
 Interfaces: Wireless Networks (INTERNAL)
 ========================================
 
+This page is about setting up a wireless interface in access point mode to
+create your own WLAN. In this mode, your Laptops and handhelds can connect
+to your OPNsense without an external access point.
+For external access point, just create a cabled network (usually Ethernet)
+and connect the access point to the other end.
+
 
 .. Warning::
 
@@ -46,7 +52,7 @@ Step 3 - Prepare WLAN
 ======================= ========================================
 Enable                  Check
 Description             WLAN
-IPv4 Configuration Type Staic IPv4
+IPv4 Configuration Type Static IPv4
 ======================= ========================================
 
 
