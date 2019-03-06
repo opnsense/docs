@@ -21,6 +21,7 @@ User Manual
    manual/users
    manual/dhcp
    manual/ipv6
+   manual/nat
    manual/two_factor
    manual/systemhealth
    manual/netflow
