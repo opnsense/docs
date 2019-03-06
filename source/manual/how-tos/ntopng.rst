@@ -7,11 +7,11 @@ Installation
 ------------
 
 First of all, you have to install the ntopng plugin (os-ntopng) from the plugins view
-reachable via **System->Firmware->Plugins**.
+reachable via :menuselection:`System --> Firmware --> Plugins`.
 
 After a page reload you will get a new menu entry under **Services** for ntopng. If you
 don't have Redis plugin installed, you'll receive a warning in ntopng main menu. Please
-go back to **System->Firmware->Plugins**, install os-redis, change to **Services->Redis**
+go back to :menuselection:`System --> Firmware --> Plugins`, install os-redis, change to :menuselection:`Services --> Redis`
 and just enable the service. That's enough to run ntopng.
 
 ----------------

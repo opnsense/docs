@@ -8,7 +8,7 @@ if they are growing rapidly so the changelog does not fit into core anymore.
 Core
 ====
 
-Core offers a changelog section in the area **System -> Firmware** as an own menu or the dialog will
+Core offers a changelog section in the area :menuselection:`System --> Firmware` as an own menu or the dialog will
 automatically open in case of an available update.
 
 To open a changelog manually, you can open the Changelog tab, and click the book:

@@ -29,7 +29,7 @@ Configuration
 Create Users
 ------------
 
-Navigate to the "Accss -> IP ACL" tab.
+Navigate to the :menuselection:`Access --> IP ACL` tab.
 
 .. image:: images/nginx_ip_acl_01_list_view.png
 

@@ -44,7 +44,7 @@ Step 3 - Install and Configure the ClamAV and the C-ICAP plugins
 
 Step 4 - Configure ICAP
 -----------------------
-To configure ICAP go to **Services->Proxy->Administration** And select **ICAP Settings**
+To configure ICAP go to :menuselection:`Services --> Proxy --> Administration` and select **ICAP Settings**
 for the **Forward Proxy** tab.
 
 Select enable ICAP and filling the Request and Response URLs.

@@ -28,7 +28,7 @@ For this tutorial we will assume:
 -------------------------------
 Step 1 - Disable Authentication
 -------------------------------
-To start go to **Services->Web Proxy->Administration**.
+To start go to :menuselection:`Services --> Web Proxy --> Administration`.
 
 Click on the arrow next to the **Forward Proxy** tab to show the drop down menu.
 Now select **Authentication Settings** and click on **Clear All** to disable user
@@ -87,7 +87,7 @@ of time as the first fetch as the adult alone section is ~15 MB.
 ---------------------
 Step 5 - Enable Proxy
 ---------------------
-To enable the proxy just go to **Services->Proxy Server->Administration** and
+To enable the proxy just go to :menuselection:`Services --> Proxy Server --> Administration` and
 check **Enable proxy** en click on **Apply**. The proxy will bind to LAN and port 3128.
 
 It may take a while for the proxy to start and the play icon on the top right corner
@@ -98,7 +98,7 @@ of the screen will turn red. Refresh the page to see if the proxy is done loadin
 Step 6 - Disable Proxy Bypass
 -----------------------------
 To make sure no-one can bypass the proxy you need to add a firewall rule.
-Go to **Firewall->Rules** and add the following to the top of the list rule on the
+Go to :menuselection:`Firewall --> Rules` and add the following to the top of the list rule on the
 LAN interface (if LAN is where your clients and proxy are on).
 
 ============================ =====================

@@ -4,7 +4,7 @@ Configure Netflow Exporter
 
 .. image:: images/netflow_exporter.png
 
-Configuring the Netflow Exporter is a simple task. Go to **Reporting->NetFlow**.
+Configuring the Netflow Exporter is a simple task. Go to :menuselection:`Reporting --> NetFlow`.
 
 Select all **Interfaces** you want to collect/export data from, usually one would
 select all available interfaces here.

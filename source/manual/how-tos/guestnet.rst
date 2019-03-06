@@ -54,7 +54,7 @@ with that and after finishing add/change the specifics to match the Hotel Guest 
 Step 1 - Configure Interface
 ----------------------------
 For the Guest Network we will add a new interface.
-Go to **Interfaces->Assignments** And use the **+** to add a new interface.
+Go to :menuselection:`Interfaces --> Assignments` And use the **+** to add a new interface.
 Press **Save**. The new interface will be called **OPT1**, click on [OPT1] in the
 left menu to change its settings.
 
@@ -80,7 +80,7 @@ Press **Save** and then **Apply changes**.
 ------------------------------
 Step 2 - Configure DHCP Server
 ------------------------------
-Go to **Services->DHCPv4->[GUESTNET]**.
+Go to :menuselection:`Services --> DHCPv4 --> [GUESTNET]`.
 
 Fill in the following to setup the DHCP server for our guest net (leave everything
  else on its default setting):
@@ -98,7 +98,7 @@ Click **Save**.
 ---------------------------
 Step 3 - Add Firewall Rules
 ---------------------------
-Go to **Firewall->Rules** to add a new rule.
+Go to :menuselection:`Firewall --> Rules` to add a new rule.
 
 Now add the following rules (in order of prevalence):
 
@@ -196,7 +196,7 @@ Your rules should look similar to the screenshot below:
 ------------------------------
 Step 4 - Create Captive Portal
 ------------------------------
-Go to **Services->Captive Portal->Administration**
+Go to :menuselection:`Services --> Captive Portal --> Administration`
 
 To add a new Zone press the **+** in the lower right corner of the form.
 
@@ -322,7 +322,7 @@ Internet Access. This bandwidth will be shared evenly between connected clients.
       that would be 1 Mbps down stream (download). It is also possible to limit
       the traffic per user see also :doc:`shaper`
 
-Go to: **Firewall->Traffic Shaper->Settings**.
+Go to: :menuselection:`Firewall --> Traffic Shaper --> Settings`.
 
 Create a pipe for the Download by pressing the **+** in the lower right corner of
 the form and enter the following details:
@@ -408,7 +408,7 @@ This example will be for our "Royal Hotel".
 ---------------------------
 Step 8 - Add Voucher Server
 ---------------------------
-To add a Voucher Server go to: **System->Access->Servers** and click on
+To add a Voucher Server go to: :menuselection:`System --> Access --> Servers` and click on
 **Add server** in the top right corner of the screen.
 
 Fill in:
@@ -423,7 +423,7 @@ Click on **Save**.
 ------------------------
 Step 9 - Create Vouchers
 ------------------------
-Go back to the Captive portal and select Vouchers (**Services->Captive Portal->Vouchers**).
+Go back to the Captive portal and select Vouchers (:menuselection:`Services --> Captive Portal --> Vouchers`).
 Click on **Create Vouchers** in the lower right corner of the form.
 
 Let's create 1-day vouchers for our guests:
@@ -503,7 +503,7 @@ Now users will see the login form as part of your template:
 --------------
 Check Sessions
 --------------
-To check the active sessions go to **Services->Captive Portal->Sessions**
+To check the active sessions go to :menuselection:`Services --> Captive Portal --> Sessions`
 Our current session looks like this:
 
 .. image:: images/cp_active_sessions.png
@@ -520,7 +520,7 @@ You can drop an active session by clicking on the trashcan.
 Check Voucher Status
 --------------------
 You can check the validity and active status of a voucher by going to the voucher
-page of the captive portal (**Services->Captive Portal->Vouchers**) and select
+page of the captive portal (:menuselection:`Services --> Captive Portal --> Vouchers`) and select
 the correct database (Wi-Fi day pass in our example).
 
 .. image:: images/cp_active_vouchers.png

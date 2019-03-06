@@ -15,9 +15,9 @@ Palo Altos Global Protect will also be supported in future and of course the own
 Step 1 - Installation
 ---------------------
 
-Go to **System->Firmware->Plugins->** and search for **os-openconnect**. 
+Go to :menuselection:`System --> Firmware --> Plugins` and search for **os-openconnect**.
 Install the plugin as usual, refresh and page and the you'll find the client via
-**VPN->OpenConnect**.
+:menuselection:`VPN --> OpenConnect`.
 
 --------------
 Step 2 - Setup

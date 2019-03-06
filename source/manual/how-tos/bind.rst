@@ -22,8 +22,8 @@ For version 2.0 it is planned to offer full zone-file management.
 Installation
 ------------
 
-First of all, go to **System->Firmware->Plugins** and install **os-bind**.
-You will finde the plugin at **Services->BIND**.
+First of all, go to :menuselection:`System --> Firmware --> Plugins` and install **os-bind**.
+You will finde the plugin at :menuselection:`Services --> BIND`.
 
 ----------------
 General Settings
@@ -70,7 +70,7 @@ DNSBL
     so it is whitelisted before the blacklists come into play.
 
 The Blacklists are downloaded and updated with every **Save** within BIND configuration.
-For production use you can go to **System->Settings->Cron** and add a cronjob. On the 
+For production use you can go to :menuselection:`System --> Settings --> Cron` and add a cronjob. On the
 dropdown list you'll find the corret task under **Command**. Set the refresh interval
 as you wish and save. This will trigger an update of the selected lists and reload 
 BIND.
@@ -89,7 +89,7 @@ Advanced
 --------
 
 Maybe you want to stick with Unbound as your primary DNS and only use BIND for blacklisting, 
-you can set in **Services->Unbound DNS->General->Custom Options**.
+you can set in :menuselection:`Services --> Unbound DNS --> General --> Custom Options`.
     
 .. code-block:: none
 

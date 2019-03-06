@@ -88,7 +88,7 @@ shown in the following screenshot:
 Configuration Page
 ==================
 
-Now in the configuration page under HTTP -> TLS Fingerprints there will be an
+Now in the configuration page under :menuselection:`HTTP --> TLS Fingerprints` there will be an
 entry for the created fingerprint, so it can be edited:
 
 .. image:: images/nginx_fingerprint_settings.png

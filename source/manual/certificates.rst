@@ -5,7 +5,7 @@ Using certificates
 In OPNsense, certificates are used for ensuring trust between peers. To make using them easier, OPNsense allows creating
 certificates from the front-end. In addition to that, it also allows creating certificates for other purposes,
 avoiding the need to use the ``openssl`` command line tool. Certificates in OPNsense can be managed from
-**System->Trust->Certificates**.
+:menuselection:`System --> Trust --> Certificates`.
 
 Examples of OPNsense components that use certificates:
 * OpenVPN

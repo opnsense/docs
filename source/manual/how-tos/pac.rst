@@ -35,7 +35,7 @@ Configuring PAC
 First Step: Creating Matches
 ----------------------------
 
-Go to 'Services' -> Proxy -> Configuration and open Match
+Go to :menuselection:`Services --> Proxy --> Configuration` and open Match
 
 .. image:: images/pac_menu_match.png
 
@@ -81,7 +81,7 @@ Host Pattern Wildcard for your internal domain
 Second Step: Create Proxy Servers
 ---------------------------------
 
-Now switch to PAC -> Proxies and add new proxy servers.
+Now switch to :menuselection:`PAC --> Proxies` and add new proxy servers.
 
 =========== ================================================================
 Name        Enter a name which will be shown at the rules view for selection
@@ -124,7 +124,7 @@ Third Step: Create Rules
 ------------------------
 
 Now as the matches and the proxies exist, rules can be built.
-For that, switching to PAC -> Rules is required.
+For that, switching to :menuselection:`PAC --> Rules` is required.
 
 Now the following rule needs to be created:
 
@@ -175,7 +175,7 @@ Variant 2: Manual Configuration
 .. Warning::
     When DNS is used, OPNsense must respond via HTTP on port 80.
 
-Open the page Services -> Unbound DNS -> Overrides and add a new host override
+Open the page :menuselection:`Services --> Unbound DNS --> Overrides` and add a new host override
 for the `wpad` host:
 
 .. image:: images/wpad_dns_unbound.png
@@ -211,14 +211,14 @@ created:
     http://wpad.example.com:80/wpad.dat
     
 .. Warning::
-    If you have **HTTP Redirect** enabled via **System->Settings->Administration**,
+    If you have **HTTP Redirect** enabled via :menuselection:`System --> Settings --> Administration`,
     make sure your browser accepts the certificate presented by OPNsense, as it won't
     download wpad.dat if the certificate is untrusted.
 
 Variant 2: Manual Configuration
 -------------------------------
 
-Open the page Services -> DHCP -> Server, select the correct interface and
+Open the page :menuselection:`Services --> DHCP --> Server`, select the correct interface and
 scroll down to the "Additional Options".
 
 Add this line and save:

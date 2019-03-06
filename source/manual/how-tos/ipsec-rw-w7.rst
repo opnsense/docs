@@ -9,15 +9,15 @@ We assume that you are familiar with adding a new VPN connection.
 
 The tests were done with Windows 7 and 10.
 
-All screenshot were taken from **Network and Sharing Center->Change adapter settings**.
+All screenshot were taken from :menuselection:`Network and Sharing Center --> Change adapter settings`.
 
 ---------------------------
 Step 1 - Install Certificte
 ---------------------------
 
 Since Windows 7 also supports IKEv2 we need to install your Root Certificate Authority.
-Hit the Windows Start button and type *mmc* in search box. Go to **File->Add/Remove Snap-In**.
-Choose **Certificates->Add->Computer account**.
+Hit the Windows Start button and type *mmc* in search box. Go to :menuselection:`File --> Add/Remove Snap-In`.
+Choose :menuselection:`Certificates --> Add --> Computer account`.
 Open **Certificate** and navigate to **Trusted Root Certificate Authorities**, right click,
 **All taks** and import. Select the Root CA and install. 
 

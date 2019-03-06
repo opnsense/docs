@@ -15,22 +15,22 @@ Step 1 - Create Certificates
 For Mutual RSA + MSCHAPv2 with IKEv2 you need to create a Root CA and a server certificate
 for your Firewall. 
 
-Go to **System->Trust->Authorities** and click **Add**. Give it a **Descriptive Name** and as **Method**
+Go to :menuselection:`System --> Trust --> Authorities` and click **Add**. Give it a **Descriptive Name** and as **Method**
 choose **Create internal Certificate Authority**. Increase the **Lifetime** and fill in the fields 
-matching your local values. Now go to **System->Trust->Certificates** and create a new certificate for 
+matching your local values. Now go to :menuselection:`System --> Trust --> Certificates` and create a new certificate for
 the Firewall itself. Important is to change the **Type** to server. The Common Name can be the hostname
 of the Firewall and set as **Alternative Name** the FQDN your Firewall how it is known to the WAN side.
 This is most important as your VPN will drop when the FQDN does not match the ones of the certificate.
 
 If you already have a CA roll out a server certificate and import 
-the CA itself via **System->Trust->Authorities** and the certificate with the key in 
-**System->Trust->Certificates**.
+the CA itself via :menuselection:`System --> Trust --> Authorities` and the certificate with the key in
+:menuselection:`System --> Trust --> Certificates`.
 
 -----------------------
 Step 2 - Mobile Clients
 -----------------------
 First we will need to setup the mobile clients network and authentication source.
-Go to **VPN->IPsec->Mobile Clients**
+Go to :menuselection:`VPN --> IPsec --> Mobile Clients`
 
 For our example will use the following settings:
 
@@ -131,20 +131,20 @@ Phase 2 proposal (SA/Key Exchange)
 
    If you already had IPsec enabled and added Road Warrior setup, it is important to 
    restart the whole service via services widget in the upper right corner of IPSec pages
-   or via **System->Diagnostics->Services->Strongswan** since applying configuration only
+   or via :menuselection:`System --> Diagnostics --> Services --> Strongswan` since applying configuration only
    reloads it, but a restart also loads the required modules of strongSwan.
 
 ------------------------
 Step 4 - Add IPsec Users
 ------------------------
 
-Go to **System->Trust->Certificates** and create a new client certificate.
+Go to :menuselection:`System --> Trust --> Certificates` and create a new client certificate.
 Just click **Add**, choose your CA and probably increase the lifetime. Everything else besides
 the CN can be left default. Give a **Common Name** and **Save**. Download the newly created
 certificate as PKCS12 and export it to you enduser device.
 
 
-Switch to **VPN->IPsec->Pre-Shared Keys** and press **Add**.
+Switch to :menuselection:`VPN -> IPsec -> Pre-Shared Keys` and press **Add**.
 Enter the following into the form:
 
 ====================   ==========

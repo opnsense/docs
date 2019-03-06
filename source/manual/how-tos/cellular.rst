@@ -99,7 +99,7 @@ Once the SIM card is ready, quit ``cu`` with ``~.``.
 Step 2 - Configure Point to Point device
 ----------------------------------------
 
-Go to **Interfaces->Point-to-Point->Devices** and click on **Add** in the upper
+Go to :menuselection:`Interfaces --> Point-to-Point --> Devices` and click on **Add** in the upper
 right corner of the form.
 
 Fill in the form like this (Example is for Dutch Mobile 4G KPN Subscription):
@@ -129,7 +129,7 @@ Click **Save** to apply the settings.
 ---------------------------------
 Step 3 - Assign the WAN interface
 ---------------------------------
-To assign the interface go to **Interfaces->Assignments** in our case we will make
+To assign the interface go to :menuselection:`Interfaces --> Assignments` in our case we will make
 this our primary internet connection and change the WAN assignment accordingly.
 
 To do so just change the **Network port** for **WAN** to **ppp0 (/dev/cuaU0.0) - 4G Cellular Network**.
@@ -145,7 +145,8 @@ the one of you cellular connection.
 ------------------------
 Step 4 - Troubleshooting
 ------------------------
-In case it still does not work, first look at the log of the cellular device's PPP connection, to do so go to: **Interfaces->Point-to-Point->Log File**. If you are
+In case it still does not work, first look at the log of the cellular device's PPP connection, to do so go to:
+:menuselection:`Interfaces --> Point-to-Point --> Log File`. If you are
 lucky you can see what went wrong directly in the log. Unfortunately, the PPP log is
 not very informative so it might not help at all.
 
@@ -164,10 +165,11 @@ providers required factory resets (for whatever reason) to get them to work prop
 
   Some Sierra Wireless modems still seem to need a specific init string to work
   properly. One that seems to work for multiple users and LTE cards is ``&F0E1Q0 +CMEE=2``. In any case you should first try without init string and only give it
-  a try if you could not get any connection without. You can add this in **Interfaces->Point-to-Point->Devices->Your particular device->Advanced Options->Init String**.
+  a try if you could not get any connection without. You can add this in
+  :menuselection:`Interfaces --> Point-to-Point --> Devices --> Your particular device --> Advanced Options --> Init String`.
 
 When the device seems to work properly then checkout if the interface was assigned
-an IP address, go to **Interfaces->Overview** and click on the WAN interface to
+an IP address, go to :menuselection:`Interfaces --> Overview` and click on the WAN interface to
 see the details.
 
 You should see an IP address, Gateway IP and ISP DNS server(s).

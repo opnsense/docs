@@ -41,7 +41,7 @@ Step 1 - Add GIF tunnel
 -----------------------
 
 To configure OPNsense start with adding a new gif interface.
-Go to **Interfaces->Other Types->GIF** and click on **Add** in the upper tight corner
+Go to :menuselection:`Interfaces --> Other Types --> GIF` and click on **Add** in the upper tight corner
 of the form.
 
 Use the following settings and copy in the IPv4&6 addresses from your TunnelBroker's UI.
@@ -64,14 +64,14 @@ Step 2 - Configure the GIF tunnel as a new interface
 ----------------------------------------------------
 
 The newly created GIF tunnel must now be assigned as a new interface.
-Go to **Interfaces->Assignments**, select the GIF tunnel for **New interface**
+Go to :menuselection:`Interfaces --> Assignments`, select the GIF tunnel for **New interface**
 and click the **+** sign next to it.
 
-Then under **Interfaces->[OPTX]** check **Enable Interface** and change the
+Then under :menuselection:`Interfaces -> [OPTX]` check **Enable Interface** and change the
 description to e.g. TUNNELBROKER before hitting **Save**.
 
 The newly created interface must now be set as the default IPv6 gateway
-under **System->Gateways->Single** by editing the new gateway entry
+under :menuselection:`System --> Gateways --> Single` by editing the new gateway entry
 TUNNELBROKER_TUNNELV6 and checking **Default Gateway** before saving.
 
 -----------------------------
@@ -103,7 +103,7 @@ Step 5 - Configure DHCPv6 SLAAC
 -------------------------------
 
 We'll next configure OPNsense for Stateless Address Auto Configuration (SLAAC).
-We're going to set up the DHCPv6 service. Go to **Services->DHCPv6->Server**.
+We're going to set up the DHCPv6 service. Go to :menuselection:`Services --> DHCPv6 --> Server`.
 
 Simply choose a range for clients to use. Save your settings. Next go to the
 Router Advertisements sub tab on that same page. Set the **Router Advertisements**

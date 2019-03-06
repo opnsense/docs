@@ -31,7 +31,7 @@ and give you configuration examples for:
 
    For the sample we will use a private IP for our WAN connection.
    This requires us to disable the default block rule on wan to allow private traffic.
-   To do so, go to the **Interfaces->[WAN]** and uncheck "Block private networks".
+   To do so, go to :menuselection:`Interfaces --> [WAN]` and uncheck "Block private networks".
    *(Dont forget to save and apply)*
 
    .. image:: images/block_private_networks.png
@@ -98,7 +98,7 @@ For completeness of this how-to we will also prepare a user.
 
 Configure TOTP server
 ---------------------
-To configure a Time based One Time Password server go to **System->Access->Servers**
+To configure a Time based One Time Password server go to :menuselection:`System --> Access --> Servers`
 and click **Add** in the top right corner of the form.
 
 .. TIP::
@@ -125,7 +125,7 @@ Add Certificate Authority
 -------------------------
 The VPN server needs a certificate authority to sign client or server certificates.
 
-To setup a new certificate authority go to **System->Trust->Authorities** and click
+To setup a new certificate authority go to :menuselection:`System --> Trust --> Authorities` and click
 **Add** in the top right corner of the form.
 
 For our example we will use the following setting:
@@ -149,7 +149,7 @@ Click **Save** to add the new Certificate Authority.
 Create a Certificate
 ---------------------
 After creating the Authority we will also need a certificate.
-To create a new certificate, go to **System->Trust->Certificates** and click
+To create a new certificate, go to :menuselection:`System --> Trust --> Certificates` and click
 **Add** in the upper right corner of the form.
 
 Fill in the form with (leave the rest default):
@@ -174,7 +174,7 @@ Click **Save** to create the certificate.
 
 Adding a User
 -------------
-To add a new user go to **System->Access->Users** and click **Add** in the top
+To add a new user go to :menuselection:`System --> Access --> Users` and click **Add** in the top
 right corner.
 
 Creating a user will be done in two steps, the first one is adding a basic user
@@ -220,7 +220,7 @@ Adding a new SSL VPN server is relatively simple. We'll start by adding one that
 uses our two factor authentication. This setup offers a good protection and it is
 easy to setup on the clients as each client can use the same configuration.
 
-Go to **VPN->OpenVPN->Servers** and click **Add** in the top right corner
+Go to :menuselection:`VPN --> OpenVPN --> Servers` and click **Add** in the top right corner
 of the form.
 
 For our example will use the following settings:
@@ -313,7 +313,7 @@ macOS & Windows
 For macOS & Windows users we recommend using Viscosity from Sparklabs (https://www.sparklabs.com/viscosity/).
 Viscosity is very easy to setup and use and works well on both platforms.
 
-Go to **VPN->OpenVPN->Client Export** and select the newly created VPN server from
+Go to :menuselection:`VPN --> OpenVPN --> Client Export` and select the newly created VPN server from
 the list. Leave everything default and Download the **Viscosity Bundle** from the
 list of export options under **Client Install Packages**.
 
@@ -351,7 +351,7 @@ Android
 For Android users we recommend using OpenVPN for Android (https://play.google.com/store/apps/details?id=de.blinkt.openvpn)
 from Arne Schwabe.
 
-Go to **VPN->OpenVPN->Client Export** and select the newly created VPN server from
+Go to :menuselection:`VPN --> OpenVPN --> Client Export` and select the newly created VPN server from
 the list. Leave everything default and Download the inline **Android** configuration from the
 list of export options under **Client Install Packages**.
 
@@ -366,7 +366,7 @@ iOS
 For iOS users we recommend using OpenVPN Connect (https://itunes.apple.com/us/app/openvpn-connect/id590379981)
 from OpenVPN Technologies.
 
-Go to **VPN->OpenVPN->Client Export** and select the newly created VPN server from
+Go to :menuselection:`VPN --> OpenVPN --> Client Export` and select the newly created VPN server from
 the list. Leave everything default and Download the inline **OpenVPN Connect** configuration from the
 list of export options under **Client Install Packages**.
 
@@ -388,7 +388,7 @@ factors are:
 * Username/Password
 * Token (TOTP)
 
-Go to **VPN->OpenVPN->Servers** and click the pencil icon next to the server
+Go to :menuselection:`VPN --> OpenVPN --> Servers` and click the pencil icon next to the server
 we just created to change the 2FA to multi factor authentication.
 
 Now change **Server Mode** to *Remote Access (SSL/TLS + User Auth)* and leave

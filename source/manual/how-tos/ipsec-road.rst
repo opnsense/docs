@@ -18,7 +18,7 @@ OPNsense and give you configuration examples for:
 
    For the sample we will use a private IP for our WAN connection.
    This requires us to disable the default block rule on wan to allow private traffic.
-   To do so, go to the **Interfaces->[WAN]** and uncheck "Block private networks".
+   To do so, go to the :menuselection:`Interfaces --> [WAN]` and uncheck "Block private networks".
    *(Dont forget to save and apply)*
 
    .. image:: images/block_private_networks.png
@@ -95,7 +95,7 @@ interface.
 Step 1 - Mobile Clients
 -----------------------
 First we will need to setup the mobile clients network and authentication methods.
-Go to **VPN->IPsec->Mobile Clients**
+Go to :menuselection:`VPN --> IPsec --> Mobile Clients`
 
 For our example will use the following settings:
 
@@ -241,7 +241,7 @@ And Apply changes:
 
    If you already had IPsec enabled and added Road Warrior setup, it's important to 
    restart the whole service via services widget in the upper right corner of IPSec pages
-   or via **System->Diagnostics->Services->Strongswan** since applying configuration only
+   or via :menuselection:`System --> Diagnostics --> Services --> Strongswan` since applying configuration only
    reloads it, but a restart also loads the required modules of strongswan.
 
 ------------------------
@@ -249,7 +249,7 @@ Step 4 - Add IPsec Users
 ------------------------
 For this example we will create a new user who may access the mobile IPsec vpn.
 
-Go to **System->Access->Users** and press the **+** sign in the lower right corner
+Go to :menuselection:`System --> Access --> Users` and press the **+** sign in the lower right corner
 to add a new user.
 
 Enter the following into the form:
@@ -282,7 +282,7 @@ some screenshots. The configurations for Android and iOS will be settings only.
 Configure macOS Client
 ----------------------
 
-Start with opening your network settings (System Preferences -> Network) and
+Start with opening your network settings (:menuselection:`System Preferences --> Network)` and
 Add a new network by pressing the + in the lower left corner.
 
 Now select **VPN** and **Cisco IPSec**, give your connection a name and press **Create**.
@@ -312,7 +312,7 @@ Now test the connection by selecting it from the list and hit **Connect**.
 --------------------
 Configure iOS Client
 --------------------
-To add a VPN connection on an iOS device go to **Setting->General->VPN**.
+To add a VPN connection on an iOS device go to :menuselection:`Settings --> General --> VPN`.
 Select **Add VPN Configuration** chose **IPsec** and use the Following Settings:
 
 ========================== ======================= ========================================
@@ -326,9 +326,8 @@ Select **Add VPN Configuration** chose **IPsec** and use the Following Settings:
 ------------------------
 Configure Android Client
 ------------------------
-To add a VPN connection on an Android device go to **Settings -> Connections ->
-more networks** , select **VPN**. Press the **+** in the top right corner to add
-a new vpn connection.
+To add a VPN connection on an Android device go to :menuselection:`Settings --> Connections --> more networks`,
+select **VPN**. Press the **+** in the top right corner to add a new VPN connection.
 
 Use the Following Settings:
 

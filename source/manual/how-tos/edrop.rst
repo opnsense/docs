@@ -20,7 +20,7 @@ The lists for this example are located here:
 -------------------------------------
 Step 1 - Create an Alias for Spamhaus
 -------------------------------------
-Go to **Firewall->Aliases->All** and press the **Add a new alias** button in the
+Go to :menuselection:`Firewall --> Aliases --> All` and press the **Add a new alias** button in the
 top right corner of the form.
 
 Enter the following data:
@@ -60,7 +60,7 @@ Step 2 - Firewall Rules Inbound Traffic
 ---------------------------------------
 We will block incoming connections and outgoing connections for the drop and edrop lists.
 To do so we will start with inbound traffic on the WAN interface.
-Go to **Firewall->Rules** Select the **WAN** tab and press the **+** icon in the
+Go to :menuselection:`Firewall --> Rules` Select the **WAN** tab and press the **+** icon in the
 lower right corner.
 
 
@@ -97,7 +97,7 @@ Step 3 - Firewall Rules Outbound Traffic
 ----------------------------------------
 
 Now do the same for outbound traffic traffic on the LAN interface.
-Go to **Firewall->Rules** Select the **LAN** tab and press the **+** icon in the
+Go to :menuselection:`Firewall --> Rules` Select the **LAN** tab and press the **+** icon in the
 lower right corner.
 
 =================== ============== =============================================
@@ -131,7 +131,7 @@ lower right corner.
 Check pf Tables
 ---------------
 To list the IP addresses that are currently in the DROP and EDROP lists go to
-**Firewall->Diagnostics->pfTables** and select the list you want to see:
+:menuselection:`Firewall --> Diagnostics --> pfTables` and select the list you want to see:
 
 .. image:: images/spamhaus_pftable.png
     :width: 100%

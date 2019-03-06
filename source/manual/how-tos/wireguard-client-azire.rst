@@ -51,7 +51,7 @@ Step 3 - Assignments and Routing
 --------------------------------
 
 To let you internal clients go through the tunnel you have to add a NAT entry. Go to 
-**Firewall->NAT->Outbound** and add a rule. Check that rule generation is set to manual 
+:menuselection:`Firewall --> NAT --> Outbound` and add a rule. Check that rule generation is set to manual
 or hybrid. Add a rule and select Wireguard as **Interface**. **Source** should be your
 LAN network and set **Translation / target** to **interface address**.
 

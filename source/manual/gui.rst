@@ -70,7 +70,7 @@ User & Local domain
 -------------------
 In the right corner just to the left of the quick navigation you will see your
 username and the full domain name the firewall is configured with
-(to change firewall name, go to **System->Setting->General**).
+(to change firewall name, go to :menuselection:`System --> Setting --> General`).
 
 
 Content Area

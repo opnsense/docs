@@ -19,7 +19,7 @@ network).
 
    For the sample we will use a private IP for our WAN connection.
    This requires us to disable the default block rule on WAN to allow private traffic.
-   To do so, go to the **Interfaces->[WAN]** and uncheck "Block private networks".
+   To do so, go to :menuselection:`Interfaces --> [WAN]` and uncheck "Block private networks".
    *(Don't forget to save and apply)*
 
    .. image:: images/block_private_networks.png
@@ -181,7 +181,7 @@ Adding a new SSL VPN server is relatively simple. We'll start by adding a server
 that uses a shared key. This setup offers a good protection and it is
 easy to setup.
 
-Go to **VPN->OpenVPN->Servers** and click on click **Add** in the top right corner
+Go to :menuselection:`VPN --> OpenVPN --> Servers` and click on click **Add** in the top right corner
 of the form.
 
 For our example will use the following settings (leave everything else on its default):
@@ -279,7 +279,7 @@ however you may decide just to allow traffic to one or more IPs.
 Step 4 - Site B Client
 ----------------------
 Now we will have to setup the client.
-Login to the second firewall, go to **VPN->OpenVPN->Clients** and click on
+Login to the second firewall, go to :menuselection:`VPN --> OpenVPN --> Clients` and click on
 **add client** in the upper right corner of the form.
 
 Now enter the following into the form (and leave everything else default):
@@ -306,7 +306,7 @@ Now enter the following into the form (and leave everything else default):
 
 Now click on **Save**  to apply your settings.
 
-The Connection Status can be viewed under **VPN->OpenVPN->Connection Status**
+The Connection Status can be viewed under :menuselection:`VPN --> OpenVPN --> Connection Status`
 
 .. image:: images/sslvpn_connection_status.png
    :width: 100%
@@ -314,7 +314,7 @@ The Connection Status can be viewed under **VPN->OpenVPN->Connection Status**
 ------------------------------
 Step 5 - Client Firewall Rules
 ------------------------------
-To allow traffic from the remote network just add a rule under **Firewall->Rules**
+To allow traffic from the remote network just add a rule under :menuselection:`Firewall --> Rules`
 OpenVPN tab.
 
 .. image:: images/sslvpn_firewall_rule_client.png

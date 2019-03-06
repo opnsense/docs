@@ -27,7 +27,7 @@ Connecting to the serial console
 --------------------------------
 
 If you already installed OPNsense via a non-serial installer, serial access needs to be turned on. To do this, open
-the web interface, navigate to **System->Settings->Administration**, scroll down to 'Console' and set the primary or
+the web interface, navigate to :menuselection:`System --> Settings --> Administration`, scroll down to 'Console' and set the primary or
 secondary console to 'Serial console'. Note: this is **only** necessary if you already installed OPNsense, and did not
 use the serial installer to do so. In all other cases (accessing BIOS, running the serial installer, connecting to an
 installation that was done via serial), serial access is already available.

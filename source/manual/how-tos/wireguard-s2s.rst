@@ -20,10 +20,10 @@ and widely deployable. It is currently under heavy development.
 Step 1 - Installation
 ---------------------
 
-Since WireGuard Plugin is still in development you have to switch via **System->Firmware->Settings** 
-the **Release Type** to **Development**. After this go to **System->Firmware->Plugins->** and search 
+Since WireGuard Plugin is still in development you have to switch via :menuselection:`System --> Firmware --> Settings`
+the **Release Type** to **Development**. After this go to :menuselection:`System --> Firmware --> Plugins` and search
 for **os-wireguard-devel**.  Install the plugin as usual, refresh and page and the you'll find the client 
-via **VPN->WireGuard**.
+via :menuselection:`VPN --> WireGuard`.
 
 ------------------------
 Step 2 - Setup WireGuard
@@ -50,7 +50,7 @@ Now we can **Enable** the VPN in tab **General** and go on with the setup.
 Step 3 - Setup Firewall
 -----------------------
 
-On **Firewall->Rules** add a new rule on your WAN interface allowing the port you set in your
+On :menuselection:`Firewall --> Rules` add a new rule on your WAN interface allowing the port you set in your
 instance (Protocol UDP). You also have a new interace **Wireguard** in rules, where you can 
 set granular rules on connection inside your tunnel.
 

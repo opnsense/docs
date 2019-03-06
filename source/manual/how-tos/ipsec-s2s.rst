@@ -18,7 +18,7 @@ connection (you local network need to different than that of the remote network)
 
    For the sample we will use a private IP for our WAN connection.
    This requires us to disable the default block rule on wan to allow private traffic.
-   To do so, go to the **Interfaces->[WAN]** and uncheck "Block private networks".
+   To do so, go to :menuselection:`Interfaces --> [WAN]` and uncheck “Block private networks”.
    *(Dont forget to save and apply)*
 
    .. image:: images/block_private_networks.png
@@ -174,7 +174,7 @@ Full Network Diagram Including IPsec Tunnel
 Firewall Rules Site A & Site B (part 1)
 ---------------------------------------
 To allow IPsec Tunnel Connections, the following should be allowed on WAN for on
-sites (under **Firewall->Rules->WAN**):
+sites (under :menuselection:`Firewall --> Rules --> WAN`):
 
 * Protocol ESP
 * UDP Traffic on Port 500 (ISAKMP)
@@ -190,7 +190,7 @@ sites (under **Firewall->Rules->WAN**):
 -----------------------
 Step 1 - Phase 1 Site A
 -----------------------
-(Under **VPN->IPsec->Tunnel Settings** Press **+**)
+(Under :menuselection:`VPN --> IPsec --> Tunnel Settings` Press **+**)
 We will use the following settings:
 
 General information
@@ -322,7 +322,7 @@ And Apply changes:
 -----------------------
 Step 3 - Phase 1 Site B
 -----------------------
-(Under **VPN->IPsec->Tunnel Settings** Press **+**)
+(Under :menuselection:`VPN --> IPsec --> Tunnel Settings` Press **+**)
 We will use the following settings:
 
 General information
@@ -455,7 +455,7 @@ Firewall Rules Site A & Site B (part 2)
 ---------------------------------------
 
 To allow traffic passing to your LAN subnet you need to add a rule to the IPsec
-interface (under **Firewall->Rules->IPsec**).
+interface (under :menuselection:`Firewall --> Rules --> IPsec`).
 
 .. image:: images/ipsec_ipsec_lan_rule.png
     :width: 100%
@@ -465,7 +465,7 @@ IPsec Tunnel Ready
 ------------------
 
 The tunnel should now be up and routing the both networks.
-Go to **VPN->IPsec->Status Overview** to see current status.
+Go to :menuselection:`VPN --> IPsec --> Status Overview` to see current status.
 Press on the **(i)** to see the details of the phase 2 tunnel(s), like this:
 
 .. image:: images/ipsec_status.png

@@ -105,8 +105,8 @@ Click ‘Save’ and then ‘Apply’.
 -----------------
 
 
-Select Interfaces->LAN and set IPV4 to "Static IPv4" and IPv6 Configuration Type to ‘Track
-Interface’
+Select :menuselection:`Interfaces --> [LAN]` and set IPv4 to “Static IPv4” and IPv6 Configuration Type to
+“Track Interface”.
 
 .. image:: images/OF_image7.png
 	:width: 100%

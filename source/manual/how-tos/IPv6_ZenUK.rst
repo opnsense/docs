@@ -55,7 +55,7 @@ Click ‘Save’ and then ‘Apply’.
 All that is required now is to set the LAN interface to use assigned
 IPv6 prefix.
 
-Select Interfaces->LAN and set the IPv6 Configuration Type to ‘Track
+Select :menuselection:`Interfaces --> [LAN]` and set the IPv6 Configuration Type to ‘Track
 Interface’
 
 .. image:: images/ZenUK_image3.png
@@ -88,7 +88,7 @@ servers.
 **Create Gateway**
 ------------------
 Firstly, we do need to set up a gateway, this is for monitoring more
-than anything else. Select Gateways->All then click ‘Add Gateway’.
+than anything else. Select :menuselection:`Gateways --> All` then click ‘Add Gateway’.
 
 Now, we know that Zen give us a /64 on our WAN interface, for example.
 
@@ -114,9 +114,9 @@ Click Save.
 **WAN Interface**
 -----------------
 Once we have our gateway in place we can then set up the WAN interface.
-Select Interfaces->WAN.
+Select :menuselection:`Interfaces --> [WAN]`.
 
-Go to IPv6 Configuration Type and Select Static IPv6.
+Go to IPv6 Configuration Type and select Static IPv6.
 
 .. image:: images/ZenUK_image6.png
 	:width: 100%
@@ -171,8 +171,8 @@ Click Save and Apply.
 -----------------
 
 When using DHCPv6 on the WAN, our DHCPv6 LAN server is set
-automatically, however when using statics, we need to set it up. Goto
-Services->DHCPv6[LAN]
+automatically, however when using statics, we need to set it up. Go to
+:menuselection:`Services --> DHCPv6[LAN]`.
 
 Firstly, enable the server.
 

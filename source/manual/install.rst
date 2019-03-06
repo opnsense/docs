@@ -158,8 +158,8 @@ Depending on you hardware and use case different installation media are provided
   and re-writes. For embedded (nano) versions memory disks for /var and /tmp are
   applied by default to prolong CF (flash) card lifetimes.
 
-  To enable for non embedded versions: Enable **System⇒Settings⇒Miscellaneous⇒RAM** Disk
-  Settings; afterwards reboot. Consider to enable an external syslog server as well.
+  To enable for non embedded versions: Go to :menuselection:`System --> Settings --> Miscellaneous --> Disk / Memory Settings`,
+  change the setting, then reboot. Consider to enable an external syslog server as well.
 
 ------------------------------
 Media Filename Composition
@@ -225,7 +225,7 @@ OpenSSL and LibreSSL
 
 OPNsense images are provided based upon `OpenSSL <https://www.openssl.org>`__.
 The `LibreSSL <http://www.libressl.org>`__ flavor can be selected from within
-the GUI ( System⇒Firmware⇒Settings ). In order to apply your choice an update
+the GUI (:menuselection:`System --> Firmware --> Settings`). In order to apply your choice an update
 must be performed after save, which can include a reboot of the system.
 
 .. image:: ./images/firmware_flavour.png
@@ -422,7 +422,7 @@ Minimum installation actions
     In case of a minimum install setup (i.e. on CF cards), OPNsense can
     be run with all standard features, expect for the ones that require
     disk writes, e.g. a caching proxy like Squid. Do not create a swap
-    slice, but a RAM Disk instead. In the GUI enable **System⇒Settings⇒Miscellaneous⇒RAM Disk Settings**
+    slice, but a RAM Disk instead. In the GUI enable :menuselection:`System --> Settings --> Miscellaneous --> RAM Disk Settings`*
     and set the size to 100-128 MB or more, depending on your available RAM.
     Afterwards reboot.
 
@@ -468,7 +468,7 @@ The other method to upgrade the system is via console option **12) Upgrade from 
 .. rubric:: GUI
    :name: gui
 
-An update can be done through the GUI via **System⇒Firmware⇒Updates**.
+An update can be done through the GUI via :menuselection:`System --> Firmware --> Updates`.
 
 .. image:: ./images/firmware-update.png
    :width: 100%

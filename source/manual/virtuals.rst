@@ -14,7 +14,7 @@ For optimum performance and compatibility, these guides are given:
 
 * Minimum required RAM is 1 GB
 * Minimum recommended virtual disk size of 8 GB
-* Disable all off-loading settings in **Interfaces->Settings**
+* Disable all off-loading settings in :menuselection:`Interfaces --> Settings`
 
 .. image:: images/disableoffloading.png
 
@@ -25,7 +25,7 @@ VMware ESXi
 VMware offers full instructions for installing FreeBSD, these can be found
 `here <http://partnerweb.vmware.com/GOSIG/FreeBSD_11x.html>`__.
 
-To install the VMware tools just goto **System->Firmware->Plugins** and install
+To install the VMware tools just goto :menuselection:`System --> Firmware --> Plugins` and install
 **os-vmware** by clicking on the **+** sign next to it.
 
 .. image:: images/os-vmware.png
@@ -39,7 +39,7 @@ To install the VMware tools just goto **System->Firmware->Plugins** and install
 
 Xen
 ---
-To install the Xen tools just goto **System->Firmware->Plugins** and install
+To install the Xen tools just goto :menuselection:`System --> Firmware --> Plugins` and install
 **os-xen** by clicking on the **+** sign next to it.
 
 .. image:: images/os-xen.png

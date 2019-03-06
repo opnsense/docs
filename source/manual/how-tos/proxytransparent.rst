@@ -24,7 +24,7 @@ For basic configuration please refer to :doc:`cachingproxy`.
 
 Step 2 - Transparent HTTP
 --------------------------------
-Go to **Services->Proxy->Administration**
+Go to :menuselection:`Services --> Proxy --> Administration`
 
 Then select **General Forward Settings** under the **Forward Proxy Tab**.
 
@@ -61,7 +61,7 @@ The defaults should be alright, just press **Save** and **Apply Changes**.
 Step 4 - CA for Transparent SSL
 --------------------------------------
 Before we can setup transparent SSL/HTTPS proxy we need to create a Certificate
-Authority. Go to **System->Trust->Authorities** or use the search box to get there
+Authority. Go to :menuselection:`System --> Trust --> Authorities` or use the search box to get there
 fast.
 
 .. image:: images/search_ca.png
@@ -90,7 +90,7 @@ For our example we use the following data:
 
 Step 5 - Transparent SSL
 -------------------------------------
-Go to **Services->Proxy->Administration**
+Go to :menuselection:`Services --> Proxy --> Administration`
 Then select **General Forward Settings** under the **Forward Proxy Tab**.
 
 Select **Enable SSL mode** and set **CA to use** to the CA you have just created.
@@ -145,7 +145,7 @@ Step 8 - Configure OS/Browser
 -----------------------------
 Since the CA is not trusted by your browser, you will get a message about this
 for each page you visit. To solve this you can import the Key into your OS and
-set as trusted. To export the Key go to **System->Trust->Authorities** and click
+set as trusted. To export the Key go to :menuselection:`System --> Trust --> Authorities` and click
 on the icon to export the CA certificate. Of course one may choose to accept the
 certificate for each page manually, but for some pages that may not work well unless
 not bumped.

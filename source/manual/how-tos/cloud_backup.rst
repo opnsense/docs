@@ -65,11 +65,11 @@ First we need to have a project in the google developer console:
    doesn't really matter for this.
 -  Enable the Drive API
 
-   -  In the left menu APIs -> "Drive API" -> Enable
+   -  In the left menu :menuselection:`APIs --> "Drive API" --> Enable`
 
 -  Open the project and start to create an API key
 
-   -  In the left menu : APIs & auth -> Credentials
+   -  In the left menu: :menuselection:`APIs & auth --> Credentials`
    -  Click on the button "Create new Client ID"
    -  Choose "Service account", followed by "Create Client ID"
 
@@ -98,7 +98,7 @@ Next thing is to create a folder in Google Drive and share it to the
    :name: setup-the-account-in-opnsense
 
 Now we can put it all together, login to your OPNsense firewall and go
-to the backup feature. It is located at **System->Configuration->Backups**.
+to the backup feature. It is located at :menuselection:`System --> Configuration --> Backups`.
 
 .. image:: ./images/600px-Google_Drive_Backup_screenshot.png
   :width: 100%
@@ -145,7 +145,7 @@ Copy and store the generated password.
 
 .. image:: images/nextcloud_config.png
 
-Scroll to the Nextcloud Section in System -> Config -> Backup and enter the
+Scroll to the Nextcloud Section in :menuselection:`System --> Config --> Backup` and enter the
 following values:
 
 ================ ======================================================================
