@@ -26,7 +26,7 @@ the following options are available:
  **General configuration**
  Description                 A short description for clarifaction, if the name does not suffice.
  Block private networks      Block traffic claiming to come from private addresses. On WAN interfaces, this kind of traffic should not happen legitimately.
- Block bogon networks        Block traffic claiming to come from invalid or reserved addresses (Martian packets). Note that this also includes multicast traffic over OSPF and RTMP.
+ Block bogon networks        Block traffic claiming to come from invalid or reserved addresses (Martian packets). Note that this also includes multicast traffic using OSPF and RTMP.
  IPv4 Configuration type     How to obtain the IPv4 address for this connection.
  IPv6 Configuration type     How to obtain the IPv6 address for this connection.
  MAC Address                 Can be used to spoof the MAC address. Can usually be left blank (in which case it will use the actual MAC address of the hardware).
