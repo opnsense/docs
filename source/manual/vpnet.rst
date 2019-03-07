@@ -71,10 +71,6 @@ IPsec Site-to-Site (route-based)
 ---------------------------------
 :doc:`how-tos/ipsec-s2s-route`
 
-IPsec Site-to-Site
------------------------
-:doc:`how-tos/ipsec-s2s`
-
 IPsec Site-to-Site with BINAT
 -----------------------------
 :doc:`how-tos/ipsec-s2s-binat`
