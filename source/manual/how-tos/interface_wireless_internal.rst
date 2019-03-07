@@ -4,7 +4,9 @@ Interfaces: Wireless Networks (INTERNAL)
 
 This page is about setting up a wireless interface in access point mode to
 create your own WLAN. In this mode, your Laptops and handhelds can connect
-to your OPNsense without an external access point.
+to your OPNsense without an external access point for home and enterprise
+environments. For home networks step over step two and don't setup the
+802.1X service in the network settings.
 For external access point, just create a cabled network (usually Ethernet)
 and connect the access point to the other end.
 
