@@ -43,7 +43,7 @@ First of all, select Plugins in the menu:
 
 .. image:: images/menu_plugins.png
 
-On this page, you can install the frr plugin by clicking the `+` icon:
+On this page, you can install the FRR plugin by clicking the `+` icon:
 
 .. image:: images/plugins_frr.png
 
