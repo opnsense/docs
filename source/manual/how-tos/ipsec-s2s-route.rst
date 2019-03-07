@@ -234,11 +234,6 @@ Save your setting by pressing:
 
 .. image:: images/btn_save.png
 
-Now you should see the following screen:
-
-.. image:: images/ipsec_s2s_vpn_p1a_4.png
-    :width: 100%
-
 
 -----------------------
 Step 2 - Phase 2 Site A
@@ -362,11 +357,6 @@ Advanced Options
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-
-Now you should see the following screen:
-
-.. image:: images/ipsec_s2s_vpn_p1b_4.png
-    :width: 100%
 
 
 -----------------------
