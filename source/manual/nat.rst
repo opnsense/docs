@@ -46,7 +46,7 @@ be redirected to it.
 
 Port forwarding is also referred to as “Destination NAT” or “DNAT”.
 
-In OPNsense, port forwarding can be set up by navigating to **Firewall->NAT->Port Forward**. Here, you will see
+In OPNsense, port forwarding can be set up by navigating to :menuselection:`Firewall --> NAT --> Port Forward`. Here, you will see
 an overview of port forwarding rules. New rules can be added by clicking **Add** in the upper right corner.
 
 When adding a rule, the following fields are available:
@@ -89,7 +89,7 @@ One-to-one
 One-to-one NAT will, as the name implies, translate two IPs one-to-one, rather than one-to-many as is most common.
 In this respect, it is similar to what NPT does for IPv6.
 
-In OPNsense, one-to-one NAT can be set up by navigating to **Firewall->NAT->One-to-one**. Here, you will see an
+In OPNsense, one-to-one NAT can be set up by navigating to :menuselection:`Firewall --> NAT --> One-to-one`. Here, you will see an
 overview of one-to-one rules. New rules can be added by clicking **Add** in the upper right corner.
 
 When adding a rule, the following fields are available:
