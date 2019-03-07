@@ -42,7 +42,7 @@ Prerequisites
 --------------------------------------
 Setup Intrusion Detection & Prevention
 --------------------------------------
-To enable IDS/IPS just go to :menuselection:`Services -> Intrusion Detection` and select
+To enable IDS/IPS just go to :menuselection:`Services --> Intrusion Detection` and select
 **enabled & IPS mode**. Make sure you have selected the right interface for the intrusion
 detection system too run on. For our example we will use the WAN interface, as
 that will most likely be you connection with the public Internet.
