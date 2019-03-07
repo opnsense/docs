@@ -43,12 +43,12 @@ The device name can differ per system and per serial device. Examples of names a
 * COM1, COM2, ... (Windows)
 
 .. Note::
-    If you have multiple devices of the same type  like shown here:
+    If you have multiple devices of the same type, as shown here:
+    ::
 
-        :code:`# ls /dev/ttyUSB*`
-
-        :code:`/dev/ttyUSB0  /dev/ttyUSB1`
-
+        ls /dev/ttyUSB*
+        /dev/ttyUSB0  /dev/ttyUSB1
+    
     You can disconnect one of them to see which one is left or you can read the ``dmesg`` log to get the vendor information
     for the device node.
     You can search for a message containing "now attached to ttyUSB1" to find out which device it is. Afterwards you can
