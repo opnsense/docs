@@ -107,6 +107,52 @@ share the same syntax:
 - Specifying multiple values is possible using the comma: ``1,4,9``
 - Ranges can be specified using a dash: ``4-9``
 
+-------
+General
+-------
+
+The general settings mainly concern network-related settings like the hostname. The general setting can be set by
+going to :menuselection:`System --> Settings --> General`. The following settings are available:
+
++---------------------------------+------------------------------------------------------------------------------------+
+| Setting                         | Explanation                                                                        |
++=================================+====================================================================================+
+| **System**                                                                                                           |
++---------------------------------+------------------------------------------------------------------------------------+
+| Hostname                        | Hostname without domain, e.g.: ``firewall``                                        |
++---------------------------------+------------------------------------------------------------------------------------+
+| Domain                          | The domain, e.g. ``mycorp.com``, ``home``, ``office``, ``private``, etc. Do not    |
+|                                 | use 'local' as a domain name. It will cause local hosts running mDNS (avahi,       |
+|                                 | bonjour, etc.) to be unable to resolve local hosts not running mDNS.               |
++---------------------------------+------------------------------------------------------------------------------------+
+| Time zone                       |                                                                                    |
++---------------------------------+------------------------------------------------------------------------------------+
+| Language                        |                                                                                    |
++---------------------------------+------------------------------------------------------------------------------------+
+| Theme                           | More themes can be installed via plug-ins.                                         |
++---------------------------------+------------------------------------------------------------------------------------+
+| **Networking**                                                                                                       |
++---------------------------------+------------------------------------------------------------------------------------+
+| Prefer to use IPv4 even         |                                                                                    |
+| if IPv6 is available            |                                                                                    |
++---------------------------------+------------------------------------------------------------------------------------+
+| DNS servers                     | A list of DNS servers, optionally with a gateway. These DNS servers are also used  |
+|                                 | for the DHCP service, DNS services and for PPTP VPN clients. When using multiple   |
+|                                 | WAN connections there should be at least one unique DNS server per gateway.        |
++---------------------------------+------------------------------------------------------------------------------------+
+| Allow DNS server list to be     | If this option is set, DNS servers assigned by a DHCP/PPP server on the WAN will   |
+| overridden by DHCP/PPP on WAN   | be used for their own purposes (including the DNS services). However, they will    |
+|                                 | not be assigned to DHCP and PPTP VPN clients.                                      |
++---------------------------------+------------------------------------------------------------------------------------+
+| Do not use the local DNS        | When enabling local DNS services such as Dnsmasq and Unbound, OPNsense will use    |
+| service as a nameserver for     | these as a nameserver. Check this option to prevent this.                          |
+| this system                     |                                                                                    |
++---------------------------------+------------------------------------------------------------------------------------+
+| Allow default gateway switching | If the link where the default gateway resides fails switch the default gateway to  |
+|                                 | another available one.                                                             |
++---------------------------------+------------------------------------------------------------------------------------+
+
+
 --------
 Tunables
 --------
