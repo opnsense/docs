@@ -13,7 +13,7 @@ Typical Applications
 --------------------
 * Guest Network
 * Hotel & Camping Wi-Fi Access
-* Bring Your Own Device (BOYD)
+* Bring Your Own Device (BYOD)
 
 -------------------
 Template Management
