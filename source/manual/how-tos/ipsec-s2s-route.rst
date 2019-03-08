@@ -11,7 +11,8 @@ The difference is that local and remote network is just 0.0.0.0/0, so anything c
 through the tunnel, it just needs a route. A new Virtual Tunnel Interface (VTI) has to be used
 for this. 
 
-There are two huge benefits for this kind of VPN.
+There are two benefits for this kind of VPN:
+
 First, you can set up two tunnels to the same gateway and failover when one line goes down.
 Second, you can run dynamic routing protocols over the tunnel to create more redundant,
 or software-defined networks.
