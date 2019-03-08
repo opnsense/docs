@@ -281,7 +281,7 @@ Phase 2 proposal (SA/Key Exchange)
 **Lifetime**                 3600 sec
 =========================== =============== =======================================
 
-Save your setting by pressing:
+Save your settings by pressing:
 
 .. image:: images/btn_save.png
 
