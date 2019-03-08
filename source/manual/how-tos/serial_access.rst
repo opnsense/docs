@@ -43,11 +43,12 @@ The device name can differ per system and per serial device. Examples of names a
 * COM1, COM2, ... (Windows)
 
 .. Note::
-    If you have multiple devices of the same type like shown here:
-    ::
-        ls /dev/ttyUSB*
-        /dev/ttyUSB0  /dev/ttyUSB1
-    
+    If you have multiple devices of the same type  like shown here:
+
+        :code:`# ls /dev/ttyUSB*`
+
+        :code:`/dev/ttyUSB0  /dev/ttyUSB1`
+
     You can disconnect one of them to see which one is left or you can read the ``dmesg`` log to get the vendor information
     for the device node.
     You can search for a message containing "now attached to ttyUSB1" to find out which device it is. Afterwards you can
@@ -65,7 +66,7 @@ the serial console thus involves opening a terminal and executing the following 
 .. Note::
     Access to the device is likely to be access restricted. You should run the command as root because running it as
     a user may lead to an access denied error on Linux / BSD.
-  
+
 If OPNsense is running, you will now be asked for your username and password if authentication is enabled. Otherwise
 the menu is displayed (at least after pressing enter). The credentials are the same as those used for SSH.
 

@@ -422,7 +422,7 @@ Minimum installation actions
     In case of a minimum install setup (i.e. on CF cards), OPNsense can
     be run with all standard features, expect for the ones that require
     disk writes, e.g. a caching proxy like Squid. Do not create a swap
-    slice, but a RAM Disk instead. In the GUI enable :menuselection:`System --> Settings --> Miscellaneous --> RAM Disk Settings`*
+    slice, but a RAM Disk instead. In the GUI enable :menuselection:`System --> Settings --> Miscellaneous --> RAM Disk Settings`
     and set the size to 100-128 MB or more, depending on your available RAM.
     Afterwards reboot.
 

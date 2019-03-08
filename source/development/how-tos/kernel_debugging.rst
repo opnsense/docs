@@ -53,7 +53,7 @@ With the build finished, we should have a kernel package on the build machine av
 
 Copy this package to the test vm and install it using our :code:`opnsense-update` command:
 
-.. code-block::
+.. code-block:: sh
 
       opnsense-update -ikfr [version] -l /location/from/
 
@@ -70,14 +70,14 @@ To be able to connect to the test machine using :code:`kgdb`, you need to make s
 
 Edit :code:`/boot/device.hints` and change or add :code:`hint.uart.0.flags` to the following:
 
-.. code-block::
+.. code-block:: sh
 
     hint.uart.0.flags="0xc0"
 
 
 Also /boot/loader.conf.local should have a baud-rate configured for the serial device:
 
-.. code-block::
+.. code-block:: sh
 
     comconsole_speed="115200"
 
