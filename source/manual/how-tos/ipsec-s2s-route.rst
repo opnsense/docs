@@ -490,4 +490,4 @@ Gateway Site-B
 ===================== ================ =============================
 
 
-Now you are set!
+Now you are all set!
