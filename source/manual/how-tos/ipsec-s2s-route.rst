@@ -172,12 +172,12 @@ Full Network Diagram Including IPsec Tunnel
 ---------------------------------------
 Firewall Rules Site A & Site B (part 1)
 ---------------------------------------
-To allow IPsec Tunnel Connections, the following should be allowed on WAN for on
+To allow IPsec tunnel connections, the following should be allowed on WAN for on
 sites (under :menuselection:`Firewall --> Rules --> WAN`):
 
 * Protocol ESP
-* UDP Traffic on Port 500 (ISAKMP)
-* UDP Traffic on Port 4500 (NAT-T)
+* UDP Traffic on port 500 (ISAKMP)
+* UDP Traffic on port 4500 (NAT-T)
 
 .. image:: images/ipsec_wan_rules.png
     :width: 100%
@@ -273,13 +273,13 @@ Tunnel Network
 
 Phase 2 proposal (SA/Key Exchange)
 ----------------------------------
-=========================== =============== =======================================
+========================== ================ ===================================
 **Protocol**                 ESP             *Choose ESP for encryption*
 **Encryption algorithms**    AES / 256       *For the sample we use AES 256*
 **Hash algortihms**          SHA512          *Choose a strong hash like SHA512*
 **PFS Key group**            14 (2048 bit)   *Not required but enhanced security*
 **Lifetime**                 3600 sec
-=========================== =============== =======================================
+========================== ================ =======================================
 
 Save your settings by pressing:
 
@@ -287,7 +287,7 @@ Save your settings by pressing:
 
 -----------------------------
 
-Enable IPsec for Site A, Select:
+Enable IPsec for Site A, select:
 
 .. image:: images/ipsec_s2s_vpn_p1a_enable.png
 
@@ -295,7 +295,7 @@ Save:
 
 .. image:: images/btn_save.png
 
-And Apply changes:
+And apply changes:
 
 .. image:: images/ipsec_s2s_vpn_p1a_apply.png
     :width: 100%
@@ -318,14 +318,14 @@ We will use the following settings:
 
 General information
 -------------------
-========================= ============= ================================================
-**Connection method**      default       *default is 'Start on traffic'*
+========================= ============= ==================================================
+**Connection method**      Default       *Default is 'Start on traffic'*
 **Key Exchange version**   V2
 **Internet Protocol**      IPv4
-**Interface**              WAN           *choose the interface connected to the internet*
-**Remote gateway**         1.2.3.4       *the public IP address of your remote OPNsense*
-**Description**            Site A        *freely chosen description*
-========================= ============= ================================================
+**Interface**              WAN           *Choose the interface connected to the internet*
+**Remote gateway**         1.2.3.4       *The public IP address of your remote OPNsense*
+**Description**            Site A        *Freely chosen description*
+========================= ============= ==================================================
 
 
 Phase 1 proposal (Authentication)
@@ -344,7 +344,7 @@ Phase 1 proposal (Algorithms)
  **Encryption algorithm**   AES             *For our sample we will use AES/256 bits*
  **Hash algoritm**          SHA512          *Use a strong hash like SHA512*
  **DH key group**           14 (2048 bit)   *2048 bit should be sufficient*
- **Lifetime**               28800 sec       *lifetime before renegotiation*
+ **Lifetime**               28800 sec       *Lifetime before renegotiation*
 ========================== =============== ===========================================
 
 
@@ -420,7 +420,7 @@ Save:
 
 .. image:: images/btn_save.png
 
-And Apply changes:
+And apply changes:
 
 .. image:: images/ipsec_s2s_vpn_p1a_apply.png
     :width: 100%
@@ -460,7 +460,7 @@ Gateway Site-A
  **Name**          VPNGW        *Set a name for your gateway*
  **Interface**     IPSEC1000    *Choose the IPsec interface*
  **IP Address**    10.111.1.2   *Set the peer IP address*
- **Far Gateway**   checked      *This has to be checked as it is a point-to-point connection*
+ **Far Gateway**   Checked      *This has to be checked as it is a point-to-point connection*
 ================= ============ ===============================================================
 
 Gateway Site-B
