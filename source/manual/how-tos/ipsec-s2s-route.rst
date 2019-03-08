@@ -209,7 +209,7 @@ Phase 1 proposal (Authentication)
 =========================== ====================== ======================================
  **Authentication method**   Mutual PSK             *Using a Pre-shared Key*
  **My identifier**           My IP address          *Simple identification for fixed IP*
- **Peer identifier**         Peer IP address        *Simple identification for fixed ip*
+ **Peer identifier**         Peer IP address        *Simple identification for fixed IP*
  **Pre-Shared Key**          At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!**
 =========================== ====================== ======================================
 
