@@ -8,7 +8,7 @@ VPN tunnel. As the demands for more complex and fault tolerant VPN scenarios gro
 years, most major router vendors implemented a kind of VPN, the route-based IPSec. 
 The difference is that local and remote network is just 0.0.0.0/0, so anything can travel 
 through the tunnel, it just needs a route. There are two huge benefits for this kind of VPN.
-First, you can setup two tunnel to the same gateway and failover when one line goes down.
+First, you can set up two tunnels to the same gateway and failover when one line goes down.
 Second, you can run dynamic routing protocols over the tunnel to create more redundant,
 or software-defined networks.
 
