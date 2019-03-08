@@ -189,14 +189,14 @@ We will use the following settings:
 
 General information
 -------------------
-========================= ============= ================================================
+========================= ============= ==================================================
 **Connection method**      default       *default is 'Start on traffic'*
 **Key Exchange version**   V2
 **Internet Protocol**      IPv4
 **Interface**              WAN           *choose the interface connected to the internet*
 **Remote gateway**         4.3.2.1       *the public IP address of your remote OPNsense*
 **Description**            Site B        *freely chosen description*
-========================= ============= ================================================
+========================= ============= ==================================================
 
 
 Phase 1 proposal (Authentication)
