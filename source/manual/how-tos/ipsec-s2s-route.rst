@@ -200,7 +200,7 @@ General information
 **Internet Protocol**      IPv4
 **Interface**              WAN           *Choose the interface connected to the internet*
 **Remote gateway**         4.3.2.1       *The public IP address of your remote OPNsense*
-**Description**            Site B        *freely chosen description*
+**Description**            Site B        *Freely chosen description*
 ========================= ============= ==================================================
 
 
