@@ -305,7 +305,7 @@ And Apply changes:
 .. image:: images/ipsec_s2s_vpn_p1a_success.png
     :width: 100%
 
-**You are almost done configuring Site A (only some firewall settings remain, which we'll address later).**
+**You are almost done configuring Site A (only some firewall settings remain, which will be addressed later).**
 **We will now proceed setting up Site B.**
 
 -----------------------------
