@@ -252,7 +252,7 @@ You will see an empty list:
 .. image:: images/ipsec_s2s_vpn_p1a_p2_empty.png
     :width: 100%
 
-Now press the *+* at the right of this list to add a Phase 2 entry.
+Now press the **+** at the right of this list to add a Phase 2 entry.
 As we do not define a local and remote network, we just use tunnel addresses,
 you might already know from OpenVPN. In this example we use ``10.111.1.1`` and 
 ``10.111.1.2``. These will be the gateway addresses used for routing
