@@ -26,8 +26,9 @@ The settings on this page concerns logging into OPNsense. The “Secure Shell”
 |                                              | are undesired. Note that restrictive use may lead to an inaccessible  |
 |                                              | web GUI.                                                              |
 +----------------------------------------------+-----------------------------------------------------------------------+
-| Enable HTTP Strict Transport Security        | Avoids ever loading the web interface over HTTPS, even when the       |
-|                                              | connection is hijacked (man-in-the-middle attack).                    |
+| Enable HTTP Strict Transport Security        | Enforces loading the web GUI over HTTPS, even when the connection     |
+|                                              | is hijacked (man-in-the-middle attack), and do not allow the user to  |
+|                                              | trust an invalid certificate for the web GUI.                         |
 +----------------------------------------------+-----------------------------------------------------------------------+
 | TCP port                                     | Can be useful if there are other services that are reachable via port |
 |                                              | 80/443 of the external IP, for example.                               |
@@ -53,7 +54,7 @@ The settings on this page concerns logging into OPNsense. The “Secure Shell”
 | Enable access log                            | Log all access to the Web GUI (for debuggin/analysis)                 |
 +----------------------------------------------+-----------------------------------------------------------------------+
 | Listen interfaces                            | Can be used to limit interfaces on which the Web GUI can be accessed. |
-|                                              | Doing so can increase security but also the risk of lock-out.         |
+|                                              | This allows freeing the interface for other services, such as HAProxy.|
 +----------------------------------------------+-----------------------------------------------------------------------+
 | Disable HTTP_REFERER enforcement check       | The origins of requests are checked in order to provide some          |
 |                                              | protection against CSRF. You can turn this off of it interferes with  |
@@ -61,7 +62,7 @@ The settings on this page concerns logging into OPNsense. The “Secure Shell”
 +----------------------------------------------+-----------------------------------------------------------------------+
 | **Console**                                                                                                          |
 +----------------------------------------------+-----------------------------------------------------------------------+
-| Use the virtual terminal driver (vt)         | When unchecked, OPNsense will use the older sc    driver.             |
+| Use the virtual terminal driver (vt)         | When unchecked, OPNsense will use the older sc driver.                |
 +----------------------------------------------+-----------------------------------------------------------------------+
 | Primary Console                              | The primary console will show boot script output. All consoles display|
 |                                              | OS boot messages, console messages, and the console menu.             |
@@ -73,7 +74,7 @@ The settings on this page concerns logging into OPNsense. The “Secure Shell”
 | Use USB-based serial ports                   | Listen on ``/dev/ttyU0``, ``/dev/ttyU1``, … instead of ``/dev/ttyu0``.|
 +----------------------------------------------+-----------------------------------------------------------------------+
 | Password protect the console menu            | Can be unchecked to allow physical console access without password.   |
-|                                              | This can avoid lock-out, but at the cost of an attacker being able to |
+|                                              | This can avoid lock-out, but at the cost of attackers being able to   |
 |                                              | do anything if they gain physical access to your system.              |
 +----------------------------------------------+-----------------------------------------------------------------------+
 | **Authentication**                                                                                                   |
@@ -127,7 +128,7 @@ going to :menuselection:`System --> Settings --> General`. The following setting
 +---------------------------------+------------------------------------------------------------------------------------+
 | Time zone                       |                                                                                    |
 +---------------------------------+------------------------------------------------------------------------------------+
-| Language                        |                                                                                    |
+| Language                        | Default language. Can be overridden by users.                                      |
 +---------------------------------+------------------------------------------------------------------------------------+
 | Theme                           | More themes can be installed via plug-ins.                                         |
 +---------------------------------+------------------------------------------------------------------------------------+
