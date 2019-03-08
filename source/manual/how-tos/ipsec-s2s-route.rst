@@ -195,7 +195,7 @@ We will use the following settings:
 General information
 -------------------
 ========================= ============= ==================================================
-**Connection method**      default       *default is 'Start on traffic'*
+**Connection method**      default       *Default is “Start on traffic”*
 **Key Exchange version**   V2
 **Internet Protocol**      IPv4
 **Interface**              WAN           *choose the interface connected to the internet*
