@@ -135,22 +135,22 @@ Installation Media
 
 Depending on you hardware and use case different installation media are provided:
 
-+--------+-----------------------------------------------------+
-|Type    | | Description                                       |
-+========+=====================================================+
-| dvd    | | ISO installer image with live system capabilities |
-|        | | running in VGA-only mode                          |
-+--------+-----------------------------------------------------+
-| vga    | | USB installer image with live system capabilities |
-|        | | running in VGA-only mode                          |
-+--------+-----------------------------------------------------+
-| serial | | USB installer image with live system capabilities |
-|        | | running in serial console (115200) mode with      |
-|        | | secondary VGA support (no kernel messages though) |
-+--------+-----------------------------------------------------+
-| nano   | | a preinstalled serial image for 4 GB USB sticks,  |
-|        | | SD or CF cards for use with embedded devices      |
-+--------+-----------------------------------------------------+
++--------+---------------------------------------------------+
+|Type    | Description                                       |
++========+===================================================+
+| dvd    | ISO installer image with live system capabilities |
+|        | running in VGA-only mode                          |
++--------+---------------------------------------------------+
+| vga    | USB installer image with live system capabilities |
+|        | running in VGA-only mode                          |
++--------+---------------------------------------------------+
+| serial | USB installer image with live system capabilities |
+|        | running in serial console (115200) mode with      |
+|        | secondary VGA support (no kernel messages though) |
++--------+---------------------------------------------------+
+| nano   | a preinstalled serial image for 4 GB USB sticks,  |
+|        | SD or CF cards for use with embedded devices      |
++--------+---------------------------------------------------+
 
 .. Warning::
 
