@@ -98,7 +98,7 @@ Login to the test machine and force a debug session in gdb, using the following 
       db> c (continue)
 
 
-The go to the build machine, make sure gdb is installed (:code:`pkg install gdb`) and go to the directory where
+Then go to the build machine, make sure gdb is installed (:code:`pkg install gdb`) and go to the directory where
 the debug symbols are and start a session, ask a backtrace :code:`bt` and continue normal operation :code:`c`:
 
 .. code-block: sh:
