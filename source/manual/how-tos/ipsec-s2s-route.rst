@@ -442,3 +442,52 @@ IPsec Tunnel Ready
 The tunnel should now be up and routing the both networks.
 Go to :menuselection:`VPN --> IPsec --> Status Overview` to see current status.
 
+------------------------
+Step 5 - Define Gateways
+------------------------
+
+Now that you have the VPN up and running you have to set up a gateway.
+Go to :menuselection:`System --> Gateways --> Single` and add a new gateway.
+
+Gateway Site-A
+--------------
+================= ============ ===============================================================
+ **Name**          VPNGW        *Set a name for your gateway*
+ **Interface**     IPSEC1000    *Choose the IPsec interface*
+ **IP Address**    10.111.1.2   *Set the peer IP address*
+ **Far Gateway**   checked      *This has to be checked as it is a point-to-point connection*
+================= ============ ===============================================================
+
+Gateway Site-B
+--------------
+================= ============ ===============================================================
+ **Name**          VPNGW        *Set a name for your gateway*
+ **Interface**     IPSEC1000    *Choose the IPsec interface*
+ **IP Address**    10.111.1.1   *Set the peer IP address*
+ **Far Gateway**   checked      *This has to be checked as it is a point-to-point connection*
+================= ============ ===============================================================
+
+--------------------------
+Step 5 - Add Static Routes
+--------------------------
+
+When gateways are set up you can add a route for the remote network pointing to the new gateway.
+On Site-A add a route to Site-B and vice versa.
+Go to :menuselection:`System --> Routes --> Configuration`.
+
+Route Site-A
+------------
+===================== ================ =============================
+ **Network Address**   192.168.2.0/24   *Set the network of Site-B*
+ **Gateway**           VPNGW            *Select the VPN gateway*
+===================== ================ =============================
+
+Gateway Site-B
+------------
+===================== ================ =============================
+ **Network Address**   192.168.1.0/24   *Set the network of Site-A*
+ **Gateway**           VPNGW            *Select the VPN gateway*
+===================== ================ =============================
+
+
+Now you are set!
