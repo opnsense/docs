@@ -199,7 +199,7 @@ General information
 **Key Exchange version**   V2
 **Internet Protocol**      IPv4
 **Interface**              WAN           *Choose the interface connected to the internet*
-**Remote gateway**         4.3.2.1       *the public IP address of your remote OPNsense*
+**Remote gateway**         4.3.2.1       *The public IP address of your remote OPNsense*
 **Description**            Site B        *freely chosen description*
 ========================= ============= ==================================================
 
