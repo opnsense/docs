@@ -29,6 +29,7 @@ How-tos
    how-tos/haproxy
    how-tos/haproxy_howtos
    how-tos/insight
+   how-tos/interface_wireless_internal
    how-tos/installaws
    how-tos/ips-feodo
    how-tos/ips-geoip
