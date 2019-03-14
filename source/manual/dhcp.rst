@@ -14,13 +14,13 @@ DHCPv4 settings can be found at :menuselection:`Services --> DHCPv4`. DHCPv6 set
 The DHCPv4 submenu further consists of:
 
 * An entry per interface of general settings, like a toggle to enable/disable DHCPv4 for this interface, DHCP range, DNS servers…
-* **Relay**: DHCP requests can be "forwarded" to another server. This is called relaying.
+* **Relay**: DHCP requests can be “forwarded” to a DHCP server on another interface. This is called relaying.
 * **Leases**: Shows all IP addresses that are handed out to clients (can be filtered to only show active and static leases).
 * **Log File**: Shows the log file of the DHCPv4 server.
 
 The DHCPv6 submenu further consists of:
 
-* **Relay**: DHCP requests can be "forwarded" to another server. This is called relaying.
+* **Relay**: DHCP requests can be “forwarded” to a DHCP server on another interface. This is called relaying.
 * **Leases**: Shows all IP addresses that are handed out to clients (can be filtered to only show active and static leases).
 
 ------------
@@ -41,3 +41,28 @@ To set the LAN IP, go to :menuselection:`Interfaces --> [LAN]`, set “IPv4 Conf
 To set the DHCP settings, go to :menuselection:`Services  -->  DHCPv4  -->  [LAN]`. Under “Gateway”, put ``192.168.1.1``. Under range,
 put ``192.168.1.100`` as the start address and ``192.168.1.200`` as the end address. Then click Save. After saving,
 click the “Apply Settings” button.
+
+-------------
+DHCP relaying
+-------------
+
+DHCP relaying is the forwarding of DHCP requests received on one interface to the DHCP server on another. DHCP
+relaying is available for both DHCPv4 and DHCPv6. The DHCPv4 settings can be found at
+:menuselection:`Services --> DHCPv4 --> Relay`. The DHCPv6 settings can be found at
+:menuselection:`Services --> DHCPv6 --> Relay`.
+
+When setting up DHCP relaying (both DHCPv4 and DHCPv6 relaying have the same settings), the following options are
+available:
+
++-----------------------+----------------------------------------------------------------------------------------------+
+| Setting               | Explanation                                                                                  |
++=======================+==============================================================================================+
+| Enable                |                                                                                              |
++-----------------------+----------------------------------------------------------------------------------------------+
+| Interface(s)          | Which interfaces to apply relaying to. Only interfaces with an IP can be selected.           |
++-----------------------+----------------------------------------------------------------------------------------------+
+| Append circuit ID and | If this is checked, the DHCP relay will append the circuit ID (interface number) and the     |
+| agent ID to requests  | agent ID to the DHCP request.                                                                |
++-----------------------+----------------------------------------------------------------------------------------------+
+| Destination servers   | A comma separated list of IPs to which the requests should be forwarded.                     |
++-----------------------+----------------------------------------------------------------------------------------------+
