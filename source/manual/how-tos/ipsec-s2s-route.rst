@@ -22,7 +22,7 @@ Before you start
 ----------------
 Before starting with the configuration of an IPsec tunnel you need to have a
 working OPNsense installation wit a unique LAN IP subnet for each side of your
-connection (you local network need to different than that of the remote network).
+connection (your local network needs a different one than the remote network).
 
 ------------
 Sample Setup
