@@ -63,9 +63,13 @@ IPsec Road Warrior
 -------------------
 :doc:`how-tos/ipsec-road`
 
-IPsec Site-to-Site
------------------------
+IPsec Site-to-Site (policy-based)
+---------------------------------
 :doc:`how-tos/ipsec-s2s`
+
+IPsec Site-to-Site (route-based)
+---------------------------------
+:doc:`how-tos/ipsec-s2s-route`
 
 IPsec Site-to-Site with BINAT
 -----------------------------
