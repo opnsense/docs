@@ -51,6 +51,8 @@ page.
 
 After making the right selection click on **Save** to store the new settings.
 
+.. _SSH and console login:
+
 SSH and console login
 ---------------------
 
