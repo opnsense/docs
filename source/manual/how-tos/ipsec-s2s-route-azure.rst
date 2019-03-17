@@ -1,6 +1,6 @@
-===================================================
-Setup a route-based IPSec Tunnel to Microsoft Azure
-===================================================
+===============================
+Microsoft Azure Route-based VPN
+===============================
 
 Microsoft Azure offers three VPN types:
 
@@ -162,13 +162,13 @@ Tunnel Network
 
 Phase 2 proposal (SA/Key Exchange)
 ----------------------------------
-========================== ================ ===================================
-**Protocol**                 ESP             *Choose ESP for encryption*
-**Encryption algorithms**    AES / 256       *refer to Azure docs for details*
-**Hash algortihms**          SHA256          
-**PFS Key group**            off             *Not supported*
-**Lifetime**                 27000 sec
-========================== ================ =======================================
+========================== =========== ===================================
+**Protocol**                ESP         *Choose ESP for encryption*
+**Encryption algorithms**   AES / 256   *refer to Azure docs for details*
+**Hash algortihms**         SHA256
+**PFS Key group**           off         *Not supported*
+**Lifetime**                27000 sec
+========================== =========== ===================================
 
 Save your settings by pressing:
 
@@ -206,6 +206,8 @@ Setup
 **MSS**                              1350                   *Required*
 =================================== ====================== ==================================================
 
+Leave the other settings as per default.
+
 Save:
 
 .. image:: images/btn_save.png
@@ -230,7 +232,7 @@ Setup
 **Address space**                    10.111.1.1/32          *Local Tunnel IP*
 =================================== ====================== ==================================================
 
-Create:
+Press the button that says 'Create':
 
 .. image:: images/ipsec_s2s_route_azure_lng.png
 
@@ -247,10 +249,10 @@ General setup
 **Connection type**                  Site-to-site (IPsec)
 **Virtual network gateway**          vpn.gw                 *Select virtual network gateway*
 **Local network gateway**            lng.opnsense           *Select local network gateway*
-**Shared Key (PSK)**                 At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!***The public IP address of your remote OPNsense*
+**Shared Key (PSK)**                 At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!**
 =================================== ====================== ==================================================
 
-OK:
+Press the button that says 'OK':
 
 .. image:: images/ipsec_s2s_route_azure_conn.png
 
