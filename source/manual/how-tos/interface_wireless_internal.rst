@@ -16,7 +16,7 @@ and connect the access point to the other end.
     FreeBSD supports wireless adapters in access point (infrastructure) mode,
     but this functionality is limited to some drivers and there may be some,
     which do not support all options available via the web interface.
-    Please make sure that you buy a wireless card that is supported to avoid 
+    Please make sure that you buy a wireless card that is supported to avoid
     these problems.
 
 
@@ -85,14 +85,14 @@ Enable IEEE802.1X Authentication Check if you want to use RADIUS authentication
 Step 4 - Connect
 ----------------
 
-.. Info::
+.. Note::
     This is system specific - this screenshot is for a Linux distribution with
     KDE Plasma Workspaces 5, with the system language set to German.
 
 .. image:: images/interface_wireless_radius_3.png
 
 
-To connect to the network, set the security setting to "WPA/WPA2 Enterprise" 
+To connect to the network, set the security setting to "WPA/WPA2 Enterprise"
 and the authentication setting to "Protected EAP (PEAP)".
 The inner authentication should be set to MSCHAPv2, and the username and password are the ones you
 set up in the RADIUS plugin.
