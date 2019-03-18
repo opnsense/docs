@@ -3,13 +3,13 @@ Setup a routed IPSec Tunnel
 ===========================
 
 Most Site-to-Site VPNs are policy-based, which means you define a local and a remote
-network (or group of networks). Only traffic matching the defined policy is pushed into the 
-VPN tunnel. As the demands for more complex and fault tolerant VPN scenarios growed over the 
-years, most major router vendors implemented a kind of VPN, the route-based IPSec. 
+network (or group of networks). Only traffic matching the defined policy is pushed into the
+VPN tunnel. As the demands for more complex and fault tolerant VPN scenarios growed over the
+years, most major router vendors implemented a kind of VPN, the route-based IPSec.
 
-The difference is that local and remote network is just 0.0.0.0/0, so anything can travel 
+The difference is that local and remote network is just 0.0.0.0/0, so anything can travel
 through the tunnel, it just needs a route. A new Virtual Tunnel Interface (VTI) has to be used
-for this. 
+for this.
 
 There are two benefits for this kind of VPN:
 
@@ -254,7 +254,7 @@ You will see an empty list:
 
 Now press the **+** at the right of this list to add a Phase 2 entry.
 As we do not define a local and remote network, we just use tunnel addresses,
-you might already know from OpenVPN. In this example we use ``10.111.1.1`` and 
+you might already know from OpenVPN. In this example we use ``10.111.1.1`` and
 ``10.111.1.2``. These will be the gateway addresses used for routing
 
 General information
@@ -273,7 +273,8 @@ Tunnel Network
 
 Phase 2 proposal (SA/Key Exchange)
 ----------------------------------
-========================== ================ ===================================
+
+========================== ================ =======================================
 **Protocol**                 ESP             *Choose ESP for encryption*
 **Encryption algorithms**    AES / 256       *For the sample we use AES 256*
 **Hash algortihms**          SHA512          *Choose a strong hash like SHA512*
@@ -488,7 +489,7 @@ Route Site-A
 ===================== ================ =============================
 
 Gateway Site-B
-------------
+---------------
 ===================== ================ =============================
  **Network Address**   192.168.1.0/24   *Set the network of Site-A*
  **Gateway**           VPNGW            *Select the VPN gateway*
