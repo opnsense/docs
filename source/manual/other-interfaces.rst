@@ -34,7 +34,7 @@ LAGG
 ----
 
 LAGG (``lagg(4)``) allows for link aggregation, bonding and fault tolerance. This works best if your network switches
-support . Only unassigned interfaces can be added to LAGG. More information about LAGG can be found in
+support. Only unassigned interfaces can be added to LAGG. More information about LAGG can be found in
 `the FreeBSD manual <https://www.freebsd.org/doc/handbook/network-aggregation.html>`_.
 
 ----
