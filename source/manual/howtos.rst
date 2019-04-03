@@ -31,6 +31,7 @@ How-tos
    how-tos/insight
    how-tos/interface_wireless_internal
    how-tos/installaws
+   how-tos/installova
    how-tos/ips-feodo
    how-tos/ips-geoip
    how-tos/ips-sslfingerprint
