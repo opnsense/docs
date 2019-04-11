@@ -33,8 +33,9 @@ Enter the following information:
  **Transport**                    TCP - Standard           *Select Standard or Encrypted*
  **Peer Certificate Authority**                            *When using SSL Encryption, select the CA*
  **Protocol version**             3                        *Select protocol version*
- **Bind credentials**             cn=testusr,CN=Users,
-  User DN:                        DC=opnsense,DC=local     *Enter your credentials*
+ **Bind credentials**
+  User DN:                        cn=testusr,CN=Users,     *Enter your credentials*
+                                  DC=opnsense,DC=local
   Password:                       secret                   *alway use a strong password*
  **Search scope**
   Level:                          Entire Subtree           *Select Entire Subtree to retrieve all*
