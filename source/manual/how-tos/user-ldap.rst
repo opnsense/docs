@@ -10,7 +10,7 @@ LDAP for the GUI the privileges have to be defined with the local user manager,
 to do so an import of the users from the LDAP source is required.
 
 In this how-to we will show you how to configure both using Microsoft Active Directory
-Server. If you only need LDAP for services like vpn, then you can skip step 3-5.
+Server. If you only need LDAP for services like VPN, then you can skip step 3-5.
 
 -------------
 Prerequisites
@@ -96,13 +96,13 @@ Click on the cloud import icon to start importing users.
 
 A new form will be show with the individual users, select the ones you like to import.
 
-Step 4 - Update ldap user privileges
+Step 4 - Update LDAP user privileges
 ------------------------------------
 Now if you go to :menuselection:`System --> Access --> Users` you will see all users including the
-newly imported ldap users. You can create a specific group for these users to
+newly imported LDAP users. You can create a specific group for these users to
 easily manage the privileges or use one of your earlier created groups.
 
-When opening a ldap user (edit) via the pecil icon right next to the name, you will
+When opening a LDAP user (edit) via the pecil icon right next to the name, you will
 notice the difference as the **User Distinguished name** will be shown from the
 LDAP server, just like this:
 
