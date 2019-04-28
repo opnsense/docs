@@ -22,6 +22,8 @@ Table of Contents
      :maxdepth: 2
 
      intro
+     setup
+     lobby
      manual
      develop
      relations

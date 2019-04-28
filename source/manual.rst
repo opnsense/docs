@@ -12,12 +12,6 @@ User Manual
    :maxdepth: 2
    :titlesonly:
 
-   manual/hardware
-   manual/install
-   manual/updates
-   manual/dashboard
-   manual/virtuals
-   manual/gui
    manual/users
    manual/dhcp
    manual/ipv6
