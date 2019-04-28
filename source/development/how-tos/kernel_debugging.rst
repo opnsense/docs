@@ -27,7 +27,7 @@ Use our toolchain described in detail `here <https://github.com/opnsense/tools>`
 to your :code:`SMP` file in :code:`/usr/tools/config/[VERSION]/SMP`
 
 
-.. code-block:: c
+.. code-block:: sh
 
     #nomakeoptions DEBUG
     options        GDB                     # Support remote GDB.
