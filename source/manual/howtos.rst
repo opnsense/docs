@@ -30,6 +30,7 @@ How-tos
    how-tos/haproxy_howtos
    how-tos/insight
    how-tos/interface_wireless_internal
+   how-tos/installazure
    how-tos/installaws
    how-tos/installova
    how-tos/ips-feodo
