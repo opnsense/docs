@@ -8,7 +8,7 @@ captive portal and filtering web proxy. The optional high availability setup ens
 with automatic failover and synchronised states, minimising disruption.
 Keep your network secure and the good packets flowing.
 
-The Virtual Appliance is available on the Microsoft Azure Marketplace.
+The Virtual Appliance is available on the Microsoft Azure Marketplace (`here <https://azuremarketplace.microsoft.com/nl-nl/marketplace/apps/decisosalesbv.opnsense?tab=Overview>`__).
 
 .. image:: images/azure_offer.png
     :width: 100%
