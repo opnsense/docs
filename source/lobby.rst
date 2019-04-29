@@ -7,6 +7,9 @@ Lobby
     :align: center
 
 
+The lobby is the entrance to your (virtual) security appliance, where you can find your dashboard, change your password
+and end your session. After initial installation, this is the first place you will visit.
+
 ----------------
 
 .. toctree::
