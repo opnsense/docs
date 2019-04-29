@@ -53,6 +53,9 @@ A screen will popup, enter the following details:
 The URL of the full compressed UT1 category based list is:
   ftp://ftp.ut-capitole.fr/pub/reseau/cache/squidguard_contrib/blacklists.tar.gz
 
+.. Note::
+    If you want to add self-hosted lists, be sure to not use the file extensions .doc, .pdf or .txt.
+    
 .. image:: images/proxy_ut1.png
     :width: 100%
 
