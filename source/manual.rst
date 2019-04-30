@@ -18,10 +18,6 @@ User Manual
    manual/interfaces
    manual/nat
    manual/two_factor
-   manual/systemhealth
-   manual/netflow
-   manual/reporting_settings
-   manual/reporting_traffic
    manual/logging
    manual/aliases
    manual/certificates

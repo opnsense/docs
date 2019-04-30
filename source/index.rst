@@ -24,6 +24,7 @@ Table of Contents
      intro
      setup
      lobby
+     reporting
      manual
      develop
      relations

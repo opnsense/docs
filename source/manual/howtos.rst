@@ -28,7 +28,6 @@ How-tos
    how-tos/guestnet
    how-tos/haproxy
    how-tos/haproxy_howtos
-   how-tos/insight
    how-tos/interface_wireless_internal
    how-tos/installazure
    how-tos/installaws
