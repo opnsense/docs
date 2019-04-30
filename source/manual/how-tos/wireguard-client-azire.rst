@@ -33,7 +33,7 @@ favorite text editor.
 Step 2 - Setup WireGuard Instance
 ----------------------------------
 
-Go to tab **Server** and create a new instance. Give it a **Name** and set a desired **Listen Port**. 
+Go to tab **Local** and create a new instance. Give it a **Name** and set a desired **Listen Port**. 
 If you have more than one server instance be aware that you can use the **Listen Port** only once. In 
 the field **Private Key** insert the value from your text file and leave **Public Key** empty. **DNS** 
 and **Tunnel Address** has also to be taken from the configuration. Hit **Save** and go to **Endpoint** 
@@ -42,7 +42,7 @@ tab.
 On **Endpoint** tab create a new Endpoint, give it a **Name**, set 0.0.0.0/0 in **Tunnel Address** and set
 the DNS name from your configuration in **Endpoint Address**. Don't forget to do this also for the port.
 
-Go back to tab **Server**, open the instance and choose the newly created endpoint in **Peers**.
+Go back to tab **Local**, open the instance and choose the newly created endpoint in **Peers**.
 
 Now we can **Enable** the VPN in tab **General** and continue with the setup.
 
