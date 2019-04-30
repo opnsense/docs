@@ -29,8 +29,8 @@ via :menuselection:`VPN --> WireGuard`.
 Step 2 - Setup WireGuard
 ------------------------
 
-The setup of a Site-2-Site VPN is very simple. Just go to tab **Server** and create a new instance.
-Give it a **Name** and set a desired **Listen Port**. If you have more than one server instance be 
+The setup of a Site-2-Site VPN is very simple. Just go to tab **Local** and create a new instance.
+Give it a **Name** and set a desired **Listen Port**. If you have more than one service instance be 
 aware that you can use the **Listen Port** only once. For **Tunnel Address** choose a new virtual 
 network to run communication over it, just like with OpenVPN or GRE (e.g. 192.168.0.1/24).
 **Peers** can not be chosen yet since we have not created them yet. 
@@ -42,7 +42,7 @@ keys. Now go to tab **Endpoints** and add the remote site, give it a **Name**, i
 Key** and the **Tunnel Address** (e.g. 192.168.0.2/24). **Endpoint Address** is the public IP of the
 remote site and you can also set optionally the **Endpoint Port**, now hit **Save changes**.
 
-Go back to tab **Server**, open the instance and choose the newly created endpoint in **Peers**.
+Go back to tab **Local**, open the instance and choose the newly created endpoint in **Peers**.
 
 Now we can **Enable** the VPN in tab **General** and go on with the setup.
 
