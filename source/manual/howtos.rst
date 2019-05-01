@@ -16,7 +16,6 @@ How-tos
    how-tos/carp
    how-tos/cellular
    how-tos/clamav
-   how-tos/cloud_backup
    how-tos/dnscrypt-proxy
    how-tos/dynamicrouting_howto
    how-tos/dynamicrouting_ospf
@@ -44,7 +43,6 @@ How-tos
    how-tos/lan_bridge
    how-tos/mailgateway
    how-tos/multicast-dns
-   how-tos/multiwan
    how-tos/netflow_exporter
    how-tos/nginx
    how-tos/nginx_header_hardening
@@ -72,9 +70,6 @@ How-tos
    how-tos/tor
    how-tos/transparent_bridge
    how-tos/two_factor
-   how-tos/user-ldap
-   how-tos/user-local
-   how-tos/user-radius
    how-tos/wireguard-client
    how-tos/wireguard-client-azire
    how-tos/wireguard-client-mullvad

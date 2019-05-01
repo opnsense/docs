@@ -1,5 +1,5 @@
 =======================
-Creating Users & Groups
+Users & Groups
 =======================
 
 .. image:: images/usermanager_groups.png
@@ -75,4 +75,3 @@ Under the "Secure Shell" heading, the following options are available:
                               (to just the LAN, for example) for additional security
                               at the cost of availability.
 ============================ ==========================================================================
-

@@ -1,6 +1,6 @@
-===============
-Setup Multi WAN
-===============
+=============================
+Gateways and gateway-groups
+=============================
 Multi WAN scenarios are commonly used for failover or load balancing, but combinations
 are also possible with OPNsense.
 

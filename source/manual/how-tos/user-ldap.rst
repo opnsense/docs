@@ -1,6 +1,7 @@
-================
-Configuring LDAP
-================
+=====================================
+Access / Servers / LDAP
+=====================================
+
 LDAP is the light weight directory access protocol used by Microsoft Active Directory,
 OpenLDAP and Novell eDirectory, to name a few.
 

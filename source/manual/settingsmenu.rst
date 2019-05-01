@@ -1,5 +1,5 @@
 =============
-Settings menu
+Settings
 =============
 
 Besides the configuration options that every component has, OPNsense also contains a lot of general settings

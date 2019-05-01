@@ -28,15 +28,12 @@ User Manual
    manual/reverse_proxy
    manual/antivirus
    manual/shaping
-   manual/multiwan
    manual/mobile_wan
-   manual/hacarp
    manual/captiveportal
    manual/dynamic_routing
    manual/opnsense_tools
    manual/diagnostics
    manual/monit
    manual/nptv6
-   manual/settingsmenu
    manual/dynamic_dns
    manual/howtos

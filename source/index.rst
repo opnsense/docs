@@ -25,6 +25,7 @@ Table of Contents
      setup
      lobby
      reporting
+     system
      manual
      develop
      relations
