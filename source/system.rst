@@ -24,3 +24,5 @@ activities.
    manual/how-tos/multiwan
    manual/hacarp
    manual/settingsmenu
+   manual/certificates
+   manual/diagnostics

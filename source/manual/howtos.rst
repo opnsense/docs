@@ -62,7 +62,6 @@ How-tos
    how-tos/proxyicapantivirusinternal
    how-tos/proxytransparent
    how-tos/proxywebfilter
-   how-tos/self-signed-chain
    how-tos/shaper
    how-tos/SkyUK
    how-tos/sslvpn_client

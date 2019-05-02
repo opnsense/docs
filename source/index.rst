@@ -26,6 +26,7 @@ Table of Contents
      lobby
      reporting
      system
+     interfaces
      manual
      develop
      relations

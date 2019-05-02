@@ -1,6 +1,6 @@
-==========
-Interfaces
-==========
+=========================
+Interface configuration
+=========================
 
 All traffic in OPNsense travels via interfaces. By default, WAN and LAN are assigned, but many more are possible, like
 GUESTNET (:doc:`captive portal </manual/captiveportal>`) and PFSYNC (:doc:`high availability </manual/hacarp>`).
