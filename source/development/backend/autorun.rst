@@ -22,6 +22,8 @@ They can contain any executable file (e.g. shell scripts) in the following subdi
     - scripts used for CARP MASTER / BACKUP events
 - early
     - start script before system network startup
+- monitor
+    - scripts handling gateway monitoring events
 - start
     - start script after system network startup
 - stop

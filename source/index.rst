@@ -22,6 +22,11 @@ Table of Contents
      :maxdepth: 2
 
      intro
+     setup
+     lobby
+     reporting
+     system
+     interfaces
      manual
      develop
      relations

@@ -1,6 +1,7 @@
-==================
-Configuring Radius
-==================
+=====================================
+Access / Servers / Radius
+=====================================
+
 Configuring a Radius server for user authentication in services like vpn or captive portal
 is easy just go to :menuselection:`System --> Access --> Servers` and click on **Add server** in the top right corner.
 

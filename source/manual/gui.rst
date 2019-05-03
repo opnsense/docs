@@ -1,5 +1,5 @@
 ===========================
-The OPNsense User Interface
+General User Interface
 ===========================
 
 This article explains the basics of the OPNsense Graphical User Interface or GUI

@@ -17,7 +17,7 @@ you have read the basic howto :doc:`wireguard-client`.
 Step 1 - Setup WireGuard Instance
 ----------------------------------
 
-Go to tab **Server** and create a new instance. Give it a **Name** and set a desired **Listen Port**. 
+Go to tab **Local** and create a new instance. Give it a **Name** and set a desired **Listen Port**. 
 If you have more than one server instance be aware that you can use the **Listen Port** only once. In 
 the field **Tunnel Address** insert an unsused private IP address and subnet mask. We don't need it in
 the first step, but as it is required we can't go on without it. Every other field can be left blank.
@@ -26,7 +26,7 @@ Hit **Save** and open your instance again to write down your public key. You nee
 of the configuration from the Mullvad API servers. 
 
 Now change to your OPNsense CLI via SSH or Console and execute the curl string below. Please replace the
-**account** data with your own ID you got from MullvadVPN and **pubkey** with the one in your **Server**
+**account** data with your own ID you got from MullvadVPN and **pubkey** with the one in your **Local**
 
 .. code-block:: sh
 
@@ -43,7 +43,7 @@ public key and set it as **Public Key**. Also don't forget **Endpoint Address** 
 
 .. _list: https://www.mullvad.net/en/servers/#wireguard
 
-Go back to tab **Server**, open the instance and choose the newly created endpoint in **Peers**.
+Go back to tab **Local**, open the instance and choose the newly created endpoint in **Peers**.
 
 Now we can **Enable** the VPN in tab **General** and continue with the setup.
 

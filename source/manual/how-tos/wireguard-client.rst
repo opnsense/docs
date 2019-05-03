@@ -27,8 +27,8 @@ via :menuselection:`VPN --> WireGuard`.
 Step 2a - Setup WireGuard Server
 --------------------------------
 
-The setup of a central VPN server is very simple. Just go to tab **Server** and create a new instance.
-Give it a **Name** and set a desired **Listen Port**. If you have more than one server instance be 
+The setup of a central VPN server is very simple. Just go to tab **Local** and create a new instance.
+Give it a **Name** and set a desired **Listen Port**. If you have more than one service instance be 
 aware that you can use the **Listen Port** only once. For **Tunnel Address** choose an unused network
 to tunnel all clients just like with OpenVPN or GRE (e.g. 192.168.0.1/24).
 **Peers** can not be chosen yet since we have not created them yet. 
@@ -39,7 +39,7 @@ Now go to tab **Endpoints** and add the fist road warrior, give it a **Name**, i
 Key** and the **Tunnel Address** (e.g. 192.168.0.2/24). **Endpoint Address** and  **Endpoint Port**
 can be left empty since they are mostly dynamic, now hit **Save changes**.
 
-Go back to tab **Server**, open the instance and choose the newly created endpoint in **Peers**.
+Go back to tab **Local**, open the instance and choose the newly created endpoint in **Peers**.
 
 Now we can **Enable** the VPN in tab **General** and continue with the setup.
 
@@ -88,7 +88,7 @@ the creation of a new instance. Then networks which should be routed via WireGua
 added to your **Tunnel Address** in the endpoint configuration of your client (e.g. 192.168.0.0/24 
 when this is the LAN of WireGuard server). For pushing all network traffic via VPN you can add 
 0.0.0.0/0. If you do this it's important to also specifiy a DNS server which will be added to your
-interface. Therefore go to **Server**, edit your instance and fill in one or more IP addresses to 
+interface. Therefore go to **Local**, edit your instance and fill in one or more IP addresses to 
 the **DNS** field. 
 
 

@@ -86,14 +86,25 @@ opnsense bootstrap is available for our
 Amazon AWS EC2 Cloud
 --------------------
 .. image:: how-tos/images/amazon-web-services.png
-    :width: 100%
+    :height: 80px
 
 Installing OPNsense into the Amazon cloud can be a dounting task as no console is
 offered. As part of Deciso's support packages (see `OPNsense commercial Support
-<https://opnsense.org/support-overview/commercial-support/>`__), deciso offer free
+<https://opnsense.org/support-overview/commercial-support/>`__), Deciso offer free
 access to its OPNsense Amazon Machine Image (AMI).
 
 See also our how-to for :doc:`how-tos/installaws`.
+
+
+--------------------
+Microsoft Azure
+--------------------
+.. image:: how-tos/images/Azure.png
+    :height: 80px
+
+OPNsense is also available in the Microsoft Azure Marketplace as an easy installable virtual appliance.
+
+See also our how-to for :doc:`how-tos/installazure`.
 
 -------------
 Common Issues
