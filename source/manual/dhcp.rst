@@ -42,6 +42,8 @@ To set the DHCP settings, go to :menuselection:`Services --> DHCPv4 --> [LAN]`. 
 put ``192.168.1.100`` as the start address and ``192.168.1.200`` as the end address. Then click Save. After saving,
 click the “Apply Settings” button.
 
+.. _dhcp-relaying:
+
 -------------
 DHCP relaying
 -------------
