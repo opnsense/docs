@@ -27,7 +27,7 @@ Setup guides
    :maxdepth: 2
    :titlesonly:
 
-   manual/how-tos/how-tos/changelog
+   manual/how-tos/changelog
    manual/how-tos/serial_access
    manual/how-tos/installaws
    manual/how-tos/installova

@@ -75,14 +75,12 @@ An overview of available settings:
 Configuration
 -------------
 
-Local User Manager
-------------------
-:doc:`how-tos/user-local`
 
-LDAP
-----
-:doc:`how-tos/user-ldap`
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
 
-Radius
-------
-:doc:`how-tos/user-radius`
+   how-tos/user-local
+   how-tos/user-ldap
+   how-tos/user-radius
+   two_factor

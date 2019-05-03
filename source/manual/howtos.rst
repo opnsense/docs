@@ -11,7 +11,6 @@ How-tos
    how-tos/bind
    how-tos/c-icap
    how-tos/cachingproxy
-   how-tos/carp
    how-tos/clamav
    how-tos/dnscrypt-proxy
    how-tos/dynamicrouting_howto
@@ -48,7 +47,6 @@ How-tos
    how-tos/proxyicapantivirusinternal
    how-tos/proxytransparent
    how-tos/proxywebfilter
-   how-tos/shaper
    how-tos/sslvpn_client
    how-tos/sslvpn_s2s
    how-tos/tor

@@ -27,6 +27,7 @@ Table of Contents
      reporting
      system
      interfaces
+     firewall
      manual
      develop
      relations

@@ -12,12 +12,9 @@ User Manual
    :maxdepth: 2
    :titlesonly:
 
-   manual/users
    manual/dhcp
    manual/ipv6
-   manual/nat
    manual/logging
-   manual/aliases
    manual/vpnet
    manual/ips
    manual/etpro_telemetry
@@ -30,6 +27,5 @@ User Manual
    manual/dynamic_routing
    manual/opnsense_tools
    manual/monit
-   manual/nptv6
    manual/dynamic_dns
    manual/howtos

@@ -21,3 +21,13 @@ into these.
    manual/netflow
    manual/reporting_settings
    manual/reporting_traffic
+
+---------------
+Setup guides
+---------------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   manual/how-tos/netflow_exporter

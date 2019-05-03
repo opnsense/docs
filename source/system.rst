@@ -17,12 +17,14 @@ activities.
    :maxdepth: 2
    :titlesonly:
 
+   manual/users
    manual/how-tos/user-local
    manual/how-tos/user-ldap
    manual/how-tos/user-radius
    manual/two_factor
    manual/how-tos/cloud_backup
    manual/how-tos/multiwan
+   manual/multiwan.rst
    manual/hacarp
    manual/settingsmenu
    manual/certificates
@@ -38,3 +40,4 @@ Setup guides
    :titlesonly:
 
    manual/how-tos/two_factor
+   manual/how-tos/self-signed-chain
