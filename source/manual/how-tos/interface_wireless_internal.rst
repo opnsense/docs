@@ -19,6 +19,9 @@ and connect the access point to the other end.
     Please make sure that you buy a wireless card that is supported to avoid
     these problems.
 
+.. Note::
+
+    This guide requires the FreeRADIUS plugin to be installed and enabled (via :menuselection:`System --> Firmware --> Plugins` and :menuselection:`Services --> FreeRADIUS --> General`) .
 
 Configuration
 =============
@@ -31,7 +34,6 @@ Create a wireless clone interface and assign it.
 
 Step 2 - Prepare RADIUS
 -----------------------
-
 
 .. image:: images/interface_wireless_radius_2.png
 

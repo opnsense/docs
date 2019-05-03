@@ -1,5 +1,5 @@
 ================
-Other interfaces
+Other Types
 ================
 
 Besides wired, wireless and VPN interfaces, there are also some other, virtual interfaces, as well as some

@@ -16,3 +16,19 @@ Installation and setup
    manual/install
    manual/virtuals
    manual/updates
+
+
+
+---------------
+Setup guides
+---------------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   manual/how-tos/how-tos/changelog
+   manual/how-tos/serial_access
+   manual/how-tos/installaws
+   manual/how-tos/installova
+   manual/how-tos/installazure
