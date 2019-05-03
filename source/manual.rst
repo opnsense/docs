@@ -16,7 +16,6 @@ User Manual
    manual/dhcp
    manual/ipv6
    manual/nat
-   manual/two_factor
    manual/logging
    manual/aliases
    manual/vpnet

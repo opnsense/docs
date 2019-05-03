@@ -52,7 +52,6 @@ How-tos
    how-tos/sslvpn_client
    how-tos/sslvpn_s2s
    how-tos/tor
-   how-tos/two_factor
    how-tos/wireguard-client
    how-tos/wireguard-client-azire
    how-tos/wireguard-client-mullvad

@@ -20,9 +20,21 @@ activities.
    manual/how-tos/user-local
    manual/how-tos/user-ldap
    manual/how-tos/user-radius
+   manual/two_factor
    manual/how-tos/cloud_backup
    manual/how-tos/multiwan
    manual/hacarp
    manual/settingsmenu
    manual/certificates
    manual/diagnostics
+
+
+---------------
+Setup guides
+---------------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   manual/how-tos/two_factor
