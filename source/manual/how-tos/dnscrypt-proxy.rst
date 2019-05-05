@@ -88,3 +88,22 @@ General Settings
     Minimum TTL for negatively cached entries.
 :Cache Negative Max TTL:
     Maximum TTL for negatively cached entries.
+
+-----------------------
+Example: Standalone DNS
+-----------------------
+
+You can use the DNSCrypt-Proxy as a full-featured standalone DNS instead of Unbound or dnsmasq.
+This setup has the advantage that you don't need a forwarder solution for encrypting DNS requests
+or the usage of DNSBL. 
+
+To do so go to **Services->Unbound DNS->General** and uncheck *Enable*. If you are using dnsmasq
+go to **Services->Dnsmasq DNS->Settings** and uncheck *Enable*. Now change to **Services->DNSCrypt-Proxy->Configuration**
+and add your Local LAN IP address to the *Listen Address* field, e.g. 192.168.2.1:53. 
+
+For IPv6 with dynamic prefixes you can work around this with ::1:53 as *Listen Address* and add
+a Port Forward rule, matching every IPv6 UDP traffic, port 53, redirect to ::1.
+
+Now you can go on with your configuration task, like choosing which servers to use, privacy policy or caching.
+Also cloaking (overrides) or DNSBL can be used without any workarounds.
+
