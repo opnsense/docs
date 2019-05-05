@@ -19,5 +19,20 @@ These are all combined in the firewall section.
    manual/nat
    manual/aliases
    manual/nptv6
+   manual/shaping
    manual/how-tos/shaper
    manual/how-tos/carp
+   manual/diagnostics
+   manual/logging
+
+
+---------------
+Setup guides
+---------------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   manual/how-tos/fwcategory
+   manual/how-tos/edrop

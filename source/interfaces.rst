@@ -19,6 +19,8 @@ All traffic flowing through your appliance is using (virtual) interfaces, this i
    manual/diagnostics
    manual/interfaces_settings
    manual/other-interfaces
+   manual/mobile_wan
+   manual/ipv6
 
 ---------------
 Setup guides

@@ -59,46 +59,20 @@ Configuration
 -------------
 Please read our how-tos for configuration examples and more detailed information.
 
-IPsec Road Warrior
--------------------
-:doc:`how-tos/ipsec-road`
 
-IPsec Site-to-Site (policy-based)
----------------------------------
-:doc:`how-tos/ipsec-s2s`
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
 
-IPsec Site-to-Site (route-based)
----------------------------------
-:doc:`how-tos/ipsec-s2s-route`
-
-IPsec Site-to-Site with BINAT
------------------------------
-:doc:`how-tos/ipsec-s2s-binat`
-
-OpenVPN/SSL Road Warrior
-------------------------
-:doc:`how-tos/sslvpn_client`
-
-OpenVPN/SSL Site-to-Site
-------------------------
-:doc:`how-tos/sslvpn_s2s`
-
-OpenConnect Client
-------------------
-:doc:`how-tos/openconnect`
-
-WireGuard Site-to-Site
-----------------------------
-:doc:`how-tos/wireguard-s2s`
-
-WireGuard Road Warrior
-----------------------
-:doc:`how-tos/wireguard-client`
-
-:doc:`how-tos/wireguard-client-azire`
-
-:doc:`how-tos/wireguard-client-mullvad`
-
-Zerotier
---------
-:doc:`how-tos/zerotier`
+   how-tos/ipsec-road
+   how-tos/ipsec-s2s
+   how-tos/ipsec-s2s-route
+   how-tos/ipsec-s2s-binat
+   how-tos/sslvpn_client
+   how-tos/sslvpn_s2s
+   how-tos/openconnect
+   how-tos/wireguard-s2s
+   how-tos/wireguard-client
+   how-tos/wireguard-client-azire
+   how-tos/wireguard-client-mullvad
+   how-tos/zerotier

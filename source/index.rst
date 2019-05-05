@@ -28,7 +28,9 @@ Table of Contents
      system
      interfaces
      firewall
-     manual
+     manual/vpnet
+     services
+     plugins
      develop
      relations
      legal
