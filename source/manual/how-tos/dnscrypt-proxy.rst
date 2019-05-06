@@ -94,7 +94,7 @@ Example: Standalone DNS
 -----------------------
 
 You can use the DNSCrypt-Proxy as a full-featured standalone DNS instead of Unbound or dnsmasq.
-This setup has the advantage that you don't need a forwarder solution for encrypting DNS requests
+This setup has the advantage that you do not need a forwarder solution for encrypting DNS requests
 or the usage of DNSBL. 
 
 To do so go to **Services->Unbound DNS->General** and uncheck *Enable*. If you are using Dnsmasq
