@@ -97,7 +97,7 @@ You can use the DNSCrypt-Proxy as a full-featured standalone DNS instead of Unbo
 This setup has the advantage that you don't need a forwarder solution for encrypting DNS requests
 or the usage of DNSBL. 
 
-To do so go to **Services->Unbound DNS->General** and uncheck *Enable*. If you are using dnsmasq
+To do so go to **Services->Unbound DNS->General** and uncheck *Enable*. If you are using Dnsmasq
 go to **Services->Dnsmasq DNS->Settings** and uncheck *Enable*. Now change to **Services->DNSCrypt-Proxy->Configuration**
 and add your Local LAN IP address to the *Listen Address* field, e.g. 192.168.2.1:53. 
 
