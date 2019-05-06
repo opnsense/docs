@@ -104,6 +104,8 @@ and add your Local LAN IP address to the *Listen Address* field, e.g. 192.168.2.
 For IPv6 with dynamic prefixes you can work around this with ::1:53 as *Listen Address* and add
 a Port Forward rule, matching every IPv6 UDP traffic, port 53, redirect to ::1.
 
+Optionally you can set :53 to listen on all addresses like the default behaviour in Unbound.
+
 Now you can go on with your configuration task, like choosing which servers to use, privacy policy or caching.
 Also cloaking (overrides) or DNSBL can be used without any workarounds.
 
