@@ -42,6 +42,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx_sitemap',
     'sphinx.ext.todo',
     'sphinxcontrib.blockdiag',
     'sphinxcontrib.nwdiag',
@@ -49,6 +50,8 @@ extensions = [
     'sphinxcontrib.actdiag',
 
 ]
+
+html_baseurl = 'https://docs.opnsense.org/'
 
 blockdiag_fontpath = '/Library/Fonts/Arial.ttf'
 nwdiag_fontpath = '/Library/Fonts/Arial.ttf'
