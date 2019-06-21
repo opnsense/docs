@@ -20,7 +20,7 @@ Step 1 - Installation
 
 Since WireGuard Plugin is still in development you have to switch via :menuselection:`System --> Firmware --> Settings`
 the **Release Type** to **Development**. After this go to :menuselection:`System --> Firmware --> Plugins` and search
-for **os-wireguard-devel**.  Install the plugin as usual, refresh and page and the you'll find the client 
+for **os-wireguard-devel**.  Install the plugin as usual, refresh the page and you will find the client 
 via :menuselection:`VPN --> WireGuard`. If you do not want to switch to **Development** you can also go to console 
 and type 
 
