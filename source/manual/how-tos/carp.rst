@@ -56,7 +56,7 @@ security reasons (state injection) as for performance.
 
 .. Warning::
     When using different network drivers on both machines, like running a HA 
-    setup with one physical machine as master and a second machine as slave, 
+    setup with one physical machine as master and a virtual machine as slave, 
     states can not be synced as interface names differ. The only workaround
     would be to set up a LAGG.
 
