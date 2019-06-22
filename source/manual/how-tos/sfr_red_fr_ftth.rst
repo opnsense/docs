@@ -77,6 +77,9 @@ Click ‘Save’ and then ‘Apply’.
 **Configuring the LAN Interface**
 ---------------------------------
 
+Interfaces / Parameters
++++++++++++++++++++++++
+
 Select :menuselection:`Interfaces --> Parameters` and set your DUID
 
 .. image:: images/SFRRED_interfaces_parameters.png
@@ -86,6 +89,9 @@ Select :menuselection:`Interfaces --> Parameters` and set your DUID
     The DUID is based on the SFR/RED Box MAC address : 00:03:00:01:xx:xx:xx:xx:xx:xx
 
 Click ‘Save’ and then ‘Apply’.
+
+Interfaces / [LAN]
+++++++++++++++++++
 
 Select :menuselection:`Interfaces --> [LAN]` and set IPv4 to “Static IPv4” and IPv6 Configuration Type to
 “Track Interface”.
@@ -149,32 +155,44 @@ In this directory create a file **index.php**
 .. Warning::
     Code cannot be copy / paste, you have to adjust the parameters and make it consistant with your own parameters
 
+Services / Nginx / Configuration
+++++++++++++++++++++++++++++++++
+
 Select :menuselection:`Services --> Nginx --> Configuration`
 
 Activate NGINX
 
-.. image:: SFRRED_services_nginx_configuration_1.png
+.. image:: images/SFRRED_services_nginx_configuration_1.png
 	:width: 100%
+
+Services / Nginx / Configuration / HTTP(s)
+++++++++++++++++++++++++++++++++++++++++++
 
 Select :menuselection:`Services --> Nginx --> Configuration --> HTTP(s)`
 
 Create a new config
 
-.. image:: SFRRED_services_nginx_configuration_2.png
+.. image:: images/SFRRED_services_nginx_configuration_2.png
 	:width: 100%
+
+Services / Nginx / Configuration / HTTP(s) / URL Rewriting
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Select :menuselection:`Services --> Nginx --> Configuration --> HTTP(s) --> URL Rewriting`
 
 Add a new rewrite rule
 
-.. image:: SFRRED_services_nginx_configuration_3.png
+.. image:: images/SFRRED_services_nginx_configuration_3.png
 	:width: 100%
+
+Services / Nginx / Configuration / HTTP(s) / HTTP Server
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Select :menuselection:`Services --> Nginx --> Configuration --> HTTP(s) --> HTTP Server`
 
 Add a new rewrite rule
 
-.. image:: SFRRED_services_nginx_configuration_4.png
+.. image:: images/SFRRED_services_nginx_configuration_4.png
 	:width: 100%
 
 .. Note::
@@ -186,42 +204,54 @@ Add a new rewrite rule
 
 To allow phone to work, the easiest way is to set Siproxd on the firewall.
 
+Services / Unbound DNS / General
+++++++++++++++++++++++++++++++++
+
 Select :menuselection:`Services --> Unbound DNS --> General`
 
 Add parameters to let SFR/RED Box discover the SIP proxy
 
-.. image:: SFRRED_services_unbound_configuration_1.png
+.. image:: images/SFRRED_services_unbound_configuration_1.png
 	:width: 100%
 
 .. Warning::
     It appears OPNSense will drop support of functionnality of **advanced** parameters so I don't know if it will be possible in future releases
     to define the DNS stuff using local-data: **"_sip._udp.firewall.localdomain.intra. 180 IN SRV 10 60 5060  firewall.localdomain.intra."**
 
+Services / Siproxd
+++++++++++++++++++
 
 Select :menuselection:`Services --> Siproxd`
 
 Define basic parameters
 
-.. image:: SFRRED_services_siproxd_configuration_1.png
+.. image:: images/SFRRED_services_siproxd_configuration_1.png
 	:width: 100%
 
+Services / Siproxd / Outbound Domains
++++++++++++++++++++++++++++++++++++++
 
-Select :menuselection:`Services --> Siproxd`
+Select :menuselection:`Services --> Siproxd --> Outbound Domains`
 
 Create the configuration for outbound domain
 
-.. image:: SFRRED_services_siproxd_configuration_2.png
+.. image:: images/SFRRED_services_siproxd_configuration_2.png
 	:width: 100%
 
 .. Note::
     The IP address and the port of outbound domain was discovered using an **host** request on the proxy returned by SFR/RED while provisionning the box.
     check the <proxy></proxy> fields of **voip2.xml**
 
-.. code-block:: shell
+.. highlights::
     host -t SRV _sip._udp.residential.p-cscf.sfr.net
 
 .. Note::
     the host request result gives available SIP servers with the port to use (in my case 5062)
+
+.. highlights::
+    _sip._udp.residential.p-cscf.sfr.net has SRV record 10 0 5062 mitry.p-cscf.sfr.net.
+    _sip._udp.residential.p-cscf.sfr.net has SRV record 10 0 5062 corbas.p-cscf.sfr.net.
+    _sip._udp.residential.p-cscf.sfr.net has SRV record 10 0 5062 trappes.p-cscf.sfr.net.
 
 
 **Configuring NAT to redirect SFR/RED BOX calls to NGINX**
@@ -229,19 +259,24 @@ Create the configuration for outbound domain
 
 To allow correct port forwarding, we will configure OPNSense to affect a **static** IP to the SFR/RED Box and we will create an alias for it.
 
+Services / DHCPv4 / [LAN]
++++++++++++++++++++++++++
+
 Select :menuselection:`Services --> DHCPv4 --> [LAN]`
 
 Click on `[+]` to add a static mapping
 
-.. image:: SFRRED_services_dhcp_lan.png
+.. image:: images/SFRRED_services_dhcp_lan.png
 	:width: 100%
 
+Firewall / NAT / Port Forward
++++++++++++++++++++++++++++++
 
 Select :menuselection:`Firewall --> NAT --> Port Forward`
 
 Add a new forwarding rule
 
-.. image:: SFRRED_lan_port_forwarding.png
+.. image:: images/SFRRED_lan_port_forwarding.png
 	:width: 100%
 
 
