@@ -186,6 +186,18 @@ Add a new rewrite rule
 
 To allow phone to work, the easiest way is to set Siproxd on the firewall.
 
+Select :menuselection:`Services --> Unbound DNS --> General`
+
+Add parameters to let SFR/RED Box discover the SIP proxy
+
+.. image:: SFRRED_services_unbound_configuration_1.png
+	:width: 100%
+
+.. Warning::
+    It appears OPNSense will drop support of functionnality of **advanced** parameters so I don't know if it will be possible in future releases
+    to define the DNS stuff using local-data: **"_sip._udp.firewall.localdomain.intra. 180 IN SRV 10 60 5060  firewall.localdomain.intra."**
+
+
 Select :menuselection:`Services --> Siproxd`
 
 Define basic parameters
