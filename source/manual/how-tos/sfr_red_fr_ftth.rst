@@ -166,7 +166,7 @@ In this directory create a file **index.php**
 
 
 .. Warning::
-    Code cannot be copied / pasted as-is, you will have to adjust the parameters and make it consistant with your own settings.
+    Code cannot be copied / pasted as-is, you will have to adjust the parameters and make it consistent with your own settings.
 
 Services / Nginx / Configuration
 ++++++++++++++++++++++++++++++++
