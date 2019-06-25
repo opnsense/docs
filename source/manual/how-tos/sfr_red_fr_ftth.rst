@@ -69,7 +69,16 @@ Select options:
 
     * domain-name-servers, domain-name
 
-Finally set the Identity Association and Prefix interface as shown.
+.. Note::
+    Set Identity Association options to:
+
+    * Delegate prefix: checked,
+    * id-assoc pd ID: 1,
+    * Prefix: ::/0.
+
+    Set Prefix Interface option to:
+
+    * Prefix Interface: 8.
 
 Click ”Save” and then ”Apply”.
 
