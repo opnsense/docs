@@ -30,7 +30,10 @@ Select :menuselection:`Interfaces --> [WAN]`
 In order to establish the IPv4 and IPv6 connection, SFR/RED requires that the correct parameters are passed for the DHCPv4 and DHCPv6
 requests respectively.
 
-select options DHCPv4 and DHCPv6 in general configuration:
+Select options:
+
+* IPv4 configuration: DHCPv4,
+* IPv6 configuration: DHCPv6.
 
 .. image:: images/SFRRED_WAN_configuration_1.png
 	:width: 100%
