@@ -41,7 +41,7 @@ After hitting **Save changes** you can reopen the newly created instance, write 
 key and give it to the other side in a secure way (e.g. PGP encrypted or via SMS). 
 
 Now go to tab **Endpoints** and add the fist road warrior, give it a **Name**, insert the **Public
-Key** and the **Tunnel Address** (e.g. 192.168.0.2/24). **Endpoint Address** and  **Endpoint Port**
+Key** and **Allowed IPs** (e.g. 192.168.0.2/24, 10.10.10.0/24). **Endpoint Address** and  **Endpoint Port**
 can be left empty since they are mostly dynamic, now hit **Save changes**.
 
 Go back to tab **Local**, open the instance and choose the newly created endpoint in **Peers**.
@@ -64,7 +64,7 @@ Your tunnel is now up and running.
 Step 2c - Assignments and Routing
 ---------------------------------
 
-With this setup your clients can reach your internal networks when they add it vial **Tunnel Address**.
+With this setup your clients can reach your internal networks when they add it vial **Allowed IPs**.
 But what if you want to push all traffic via VPN in order to filter some streams out of it?
 Then we have to assign the interface via :menuselection:`Interface --> Assignments`, choose our instance (e.g. instance
 0 is interface wg0), enable it, hit **Prevent Interface Removal** and don't configure an IP address.
@@ -88,9 +88,9 @@ Step 3 - Setup WireGuard Client
 The development of WireGuard is very dynamic so this howto won't include any screenshots since 
 features are added rapidly or naming might change. 
 If we have OPNsense also at the client side the configuration is similar to step 3a but you have to
-choose a **Tunnel Address** within the range of the server side and exchange public keys after 
+choose **Allowed IPs** within the range of the server side and exchange public keys after 
 the creation of a new instance. Then networks which should be routed via WireGuard have to be 
-added to your **Tunnel Address** in the endpoint configuration of your client (e.g. 192.168.0.0/24 
+added to your **Allowed IPs** in the endpoint configuration of your client (e.g. 192.168.0.0/24 
 when this is the LAN of WireGuard server). For pushing all network traffic via VPN you can add 
 0.0.0.0/0. If you do this it's important to also specifiy a DNS server which will be added to your
 interface. Therefore go to **Local**, edit your instance and fill in one or more IP addresses to 
