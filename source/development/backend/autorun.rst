@@ -28,6 +28,8 @@ They can contain any executable file (e.g. shell scripts) in the following subdi
     - start script after system network startup
 - stop
     - stop script before normal system shutdown
+- update
+    - update script after core package update
 
 File names can use a number prefix "XX-" to retain a particular order.  "20-" is typically used for core scripts, while "50-" is used for plugins.
 
