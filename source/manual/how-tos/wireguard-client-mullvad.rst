@@ -32,10 +32,10 @@ Now change to your OPNsense CLI via SSH or Console and execute the curl string b
 
     curl -sSL https://api.mullvad.net/wg/ -d account=123 --data-urlencode pubkey=PUBKEY
     
-What you receive it the **Tunnel Addres** for your server instance, so edit your instance again, remove
-the **Tunnel Address** you used when setting up and change it to the one you got.
+What you receive is what WireGuard calls **Allowed IP** for your local instance, so edit your instance again, remove
+the value of **Allowed IPs** you used when setting up and change it to the one you got.
 
-On **Endpoint** tab create a new Endpoint, give it a **Name**, set 0.0.0.0/0 in **Tunnel Address** and set
+On **Endpoint** tab create a new Endpoint, give it a **Name**, set 0.0.0.0/0 in **Allowed IPs** and set
 the **DNS** to 193.138.219.228. This is the one MulladVPN provides for privacy.
 
 Now go to the WireGuard server list_ and choose the one you like to use as your breakout. Write down it's
