@@ -39,7 +39,7 @@ the field **Private Key** insert the value from your text file and leave **Publi
 and **Tunnel Address** has also to be taken from the configuration. Hit **Save** and go to **Endpoint** 
 tab.
 
-On **Endpoint** tab create a new Endpoint, give it a **Name**, set 0.0.0.0/0 in **Tunnel Address** and set
+On **Endpoint** tab create a new Endpoint, give it a **Name**, set 0.0.0.0/0 in **Allowed IPs** and set
 the DNS name from your configuration in **Endpoint Address**. Don't forget to do this also for the port.
 
 Go back to tab **Local**, open the instance and choose the newly created endpoint in **Peers**.
