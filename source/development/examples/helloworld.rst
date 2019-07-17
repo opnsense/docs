@@ -952,6 +952,7 @@ directory, which results in the following file listing:
 
     src/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
     src/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
+    src/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SimplifiedSettingsController.php
     src/opnsense/mvc/app/controllers/OPNsense/HelloWorld/IndexController.php
     src/opnsense/mvc/app/controllers/OPNsense/HelloWorld/forms/general.xml
     src/opnsense/mvc/app/models/OPNsense/HelloWorld/ACL/ACL.xml
