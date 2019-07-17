@@ -485,6 +485,36 @@ And include the Config class from our base system by adding this to the
     use \OPNsense\Core\Config;
 
 
+[Create API calls] Simplify a recurring pattern
+.................................................
+
+As one can imagine, retrieving and setting data is a pattern that is used quite often and for which we would like to
+minimize the amount of work needed to incorporate.
+
+The API example can be simplified by using one of our base classes (:code:`ApiMutableModelControllerBase`), which would
+lead to the same result. For comparison we have added a different endpoint in :code:`SimplifiedSettingsController.php`
+
+.. code-block:: php
+
+    class SimplifiedSettingsController extends ApiMutableModelControllerBase
+    {
+        protected static $internalModelName = 'helloworld';
+        protected static $internalModelClass = 'OPNsense\HelloWorld\HelloWorld';
+    }
+
+
+The "magic" is hidden underneath, but equals the example previously given. :code:`$internalModelName` declares the root
+of the returned array structure, :code:`$internalModelClass` tells the controller which model it should use.
+
+We recommend using (:code:`ApiMutableModelControllerBase`) in most cases,
+but to better understand the components and their responsibilities we choose to explain the separate steps.
+
+
+.. Note::
+
+      :code:`ApiMutableModelControllerBase` contains more shared functionality for grid like operations as well, most of
+      our api controllers use this as a base.
+
 Support jQuery API calls
 ------------------------
 
@@ -542,6 +572,11 @@ ValidationMessage tag. For example:
 
 Changes the “email address invalid” into “please specify a valid email
 address”
+
+.. Tip::
+
+    replace :code:`/api/helloworld/settings` with :code:`/api/helloworld/simplifiedsettings` to use the simplified
+    api controller as explained in  "Simplify a recurring pattern" earlier.
 
 Add actions
 -----------
