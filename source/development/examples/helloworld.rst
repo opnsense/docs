@@ -103,6 +103,8 @@ contain model specific methods and (by deriving it from BaseModel)
 automatically understands the second file.
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.php
+    :name: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.php
 
     <?php
     namespace OPNsense\HelloWorld;
@@ -114,8 +116,6 @@ automatically understands the second file.
     }
 
 
-(/usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.php)
-
 Not all modules contain additional code in the PHP class, sometimes all
 the standard behaviour is already sufficient for your
 modules/application.
@@ -124,6 +124,8 @@ Which is the model XML template, our skeleton starts with something like
 this:
 
 .. code-block:: xml
+    :caption: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.xml
+    :name: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.xml
 
     <model>
         <mount>//OPNsense/helloworld</mount>
@@ -134,7 +136,6 @@ this:
         </items>
     </model>
 
-(/usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.xml)
 
 The content of the mount tag is very important, this is the location
 within the config.xml file where this model is responsible. Other models
@@ -160,10 +161,11 @@ directory containing the following data:
 
 
 .. code-block:: html
+    :caption: /usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
+    :name: /usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
 
     <h1>Hello World!</h1>
 
-(/usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt)
 
 Controller
 ----------
@@ -181,6 +183,8 @@ in controllers/OPNsense/HelloWorld/ with the following name
 IndexController.php and contents:
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/IndexController.php
+    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/IndexController.php
 
     <?php
     namespace OPNsense\HelloWorld;
@@ -193,7 +197,6 @@ IndexController.php and contents:
         }
     }
 
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/IndexController.php)
 
 At this point you should be able to test if your work so far was
 successful, by going to the following location (after being logged in to
@@ -221,6 +224,8 @@ SettingsController.php and ServiceController.php) Both should look like
 this (replace Settings with Service for the other one):
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
+    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
 
     <?php
     namespace OPNsense\HelloWorld\Api;
@@ -230,7 +235,6 @@ this (replace Settings with Service for the other one):
     {
     }
 
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php)
 
 ----------------
 First Input Form
@@ -321,6 +325,8 @@ your controller directory using the sub directory forms and name it
 general.xml. Next copy in the following content:
 
 .. code-block:: xml
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/forms/general.xml
+    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/forms/general.xml
 
     <form>
         <field>
@@ -353,7 +359,6 @@ general.xml. Next copy in the following content:
         </field>
      </form>
 
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/forms/general.xml)
 
 All items should contain at least an id (where to map data from/to), a
 type (how to display) and a label, which identifies it to the user.
@@ -409,6 +414,8 @@ to get data from our system, and put it into a json object for the
 client (browser) to parse, by using the wrappers already in our model.
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
+    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
 
     * retrieve HelloWorld general settings
      * @return array general settings
@@ -423,8 +430,6 @@ client (browser) to parse, by using the wrappers already in our model.
         }
         return $result;
     }
-
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php)
 
 You will probably notice the return value of the action, it's a standard
 array which uses "helloworld" for all attributes from getNodes() which
@@ -443,6 +448,8 @@ For saving the data back, we need a similar kind of call, let’s name it
 “set” and add this to the same php file:
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
+    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
 
     /**
      * update HelloWorld settings
@@ -475,7 +482,6 @@ For saving the data back, we need a similar kind of call, let’s name it
         return $result;
     }
 
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php)
 
 And include the Config class from our base system by adding this to the
 “use” section:
@@ -648,6 +654,8 @@ add a new action to the class called “reloadAction” using this piece of
 code:
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
+    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
 
     public function reloadAction()
     {
@@ -661,8 +669,6 @@ code:
         }
         return array("status" => $status);
     }
-
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php)
 
 This validates the type of action (it should always be POST to enable
 CSRF protection) and adds a backend action for reloading the template.
@@ -762,6 +768,8 @@ testAction and let it pass json data to our clients when using a POST
 type request.
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
+    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
 
     public function testAction()
     {
@@ -776,7 +784,6 @@ type request.
         return array("message" => "unable to run config action");
     }
 
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php)
 
 And now we can make our user interface aware of the action, place a
 button and link an action in the index.volt. Using the following
@@ -798,13 +805,14 @@ elements:
 (in HTML section)
 
 .. code-block:: xml
+    :caption: /usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
+    :name: /usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
 
     <div class="alert alert-info hidden" role="alert" id="responseMsg">
      
     </div>
     <button class="btn btn-primary"  id="testAct" type="button"><b>{{ lang._('Test') }}</b></button>
 
-(/usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt)
 
 Now go back to the page and save some data using the save button, next
 press test to see some results.
@@ -906,7 +914,6 @@ This creates an ACL key named “page-user-helloworld” which authorizes
 access to both the ui and API urls of this application. You can now
 grant access to this module from the system user manager.
 
-|
 
 ----------------------------
 Create an installable plugin
