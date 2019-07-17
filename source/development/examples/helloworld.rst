@@ -104,7 +104,6 @@ automatically understands the second file.
 
 .. code-block:: php
     :caption: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.php
-    :name: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.php
 
     <?php
     namespace OPNsense\HelloWorld;
@@ -125,7 +124,6 @@ this:
 
 .. code-block:: xml
     :caption: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.xml
-    :name: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.xml
 
     <model>
         <mount>//OPNsense/helloworld</mount>
@@ -162,7 +160,6 @@ directory containing the following data:
 
 .. code-block:: html
     :caption: /usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
-    :name: /usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
 
     <h1>Hello World!</h1>
 
@@ -184,7 +181,6 @@ IndexController.php and contents:
 
 .. code-block:: php
     :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/IndexController.php
-    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/IndexController.php
 
     <?php
     namespace OPNsense\HelloWorld;
@@ -225,7 +221,6 @@ this (replace Settings with Service for the other one):
 
 .. code-block:: php
     :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
-    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
 
     <?php
     namespace OPNsense\HelloWorld\Api;
@@ -326,7 +321,6 @@ general.xml. Next copy in the following content:
 
 .. code-block:: xml
     :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/forms/general.xml
-    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/forms/general.xml
 
     <form>
         <field>
@@ -415,7 +409,6 @@ client (browser) to parse, by using the wrappers already in our model.
 
 .. code-block:: php
     :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
-    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
 
     * retrieve HelloWorld general settings
      * @return array general settings
@@ -449,7 +442,6 @@ For saving the data back, we need a similar kind of call, let’s name it
 
 .. code-block:: php
     :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
-    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
 
     /**
      * update HelloWorld settings
@@ -655,7 +647,6 @@ code:
 
 .. code-block:: php
     :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
-    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
 
     public function reloadAction()
     {
@@ -769,7 +760,6 @@ type request.
 
 .. code-block:: php
     :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
-    :name: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
 
     public function testAction()
     {
@@ -806,7 +796,6 @@ elements:
 
 .. code-block:: xml
     :caption: /usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
-    :name: /usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
 
     <div class="alert alert-info hidden" role="alert" id="responseMsg">
      
