@@ -994,6 +994,7 @@ prefixed with os-, our new package file will be called:
 -  source of this example :
    https://github.com/opnsense/plugins/tree/master/devel/helloworld
 -  build instructions : https://github.com/opnsense/tools
+-  practical frontend development : https://github.com/opnsense/ui_devtools
 -  frontend template language reference (Volt) :
    https://docs.phalconphp.com/en/latest/reference/volt.html
 -  configuration template language reference (mostly the same as Volt) :
