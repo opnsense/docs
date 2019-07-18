@@ -111,9 +111,10 @@ Select :menuselection:`Interfaces --> [LAN]` and set IPv4 to “Static IPv4” a
 
 And define the IPv6 Prefix ID to ”0”
 Finally, set the following parameters as shown:
- * the IPv4 address to the one wanted,
- * the IPv6 interfacet to ”WAN”,
- * the IPv6 Prefix ID to ”0”.
+
+* the IPv4 address to the one wanted,
+* the IPv6 interfacet to ”WAN”,
+* the IPv6 Prefix ID to ”0”.
 
 
 .. image:: images/SFRRED_LAN_configuration_2.png
