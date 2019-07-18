@@ -3,10 +3,6 @@
 ============================
 WireGuard Site-to-Site Setup
 ============================
-
-.. Warning::
-    **IMPORTANT NOTE** :
-    WireGuard Plugin is still in development, use at your own risk!
     
 ------------
 Introduction
@@ -20,9 +16,7 @@ and widely deployable. It is currently under heavy development.
 Step 1 - Installation
 ---------------------
 
-Since WireGuard Plugin is still in development you have to switch via :menuselection:`System --> Firmware --> Settings`
-the **Release Type** to **Development**. After this go to :menuselection:`System --> Firmware --> Plugins` and search
-for **os-wireguard-devel**.  Install the plugin as usual, refresh and page and the you'll find the client 
+Install the plugin as usual, refresh and page and the you'll find the client 
 via :menuselection:`VPN --> WireGuard`.
 
 ------------------------
