@@ -2,9 +2,6 @@
 WireGuard Road Warrior Setup
 ============================
 
-.. Warning::
-    WireGuard Plugin is still in development, use at your own risk!
-    
 ------------
 Introduction
 ------------
@@ -18,15 +15,7 @@ WireGuard as a central server or just as a client.
 Step 1 - Installation
 ---------------------
 
-Since WireGuard Plugin is still in development you have to switch via :menuselection:`System --> Firmware --> Settings`
-the **Release Type** to **Development**. After this go to :menuselection:`System --> Firmware --> Plugins` and search
-for **os-wireguard-devel**.  Install the plugin as usual, refresh the page and you will find the client 
-via :menuselection:`VPN --> WireGuard`. If you do not want to switch to **Development** you can also go to console 
-and type 
-
-.. code-block:: sh
-
-    pkg install os-wireguard-devel
+Install the plugin as usual, refresh the page and you will find the client via :menuselection:`VPN --> WireGuard`. 
 
 --------------------------------
 Step 2a - Setup WireGuard Server

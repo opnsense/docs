@@ -1,9 +1,6 @@
 =====================================
 WireGuard AzireVPN Road Warrior Setup
 =====================================
-
-.. Warning::
-    WireGuard Plugin is still in development, use at your own risk!
     
 ------------
 Introduction
