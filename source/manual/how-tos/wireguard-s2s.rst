@@ -16,7 +16,7 @@ and widely deployable. It is currently under heavy development.
 Step 1 - Installation
 ---------------------
 
-Install the plugin as usual, refresh and page and the you'll find the client 
+Install the plugin as usual, refresh and page and the you will find the client 
 via :menuselection:`VPN --> WireGuard`.
 
 ------------------------
