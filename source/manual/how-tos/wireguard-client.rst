@@ -30,8 +30,9 @@ After hitting **Save changes** you can reopen the newly created instance, write 
 key and give it to the other side in a secure way (e.g. PGP encrypted or via SMS). 
 
 Now go to tab **Endpoints** and add the fist road warrior, give it a **Name**, insert the **Public
-Key** and **Allowed IPs** (e.g. 192.168.0.2/24, 10.10.10.0/24). **Endpoint Address** and  **Endpoint Port**
-can be left empty since they are mostly dynamic, now hit **Save changes**.
+Key** and **Allowed IPs** e.g. *192.168.0.2/32, 10.10.10.0/24* (it is important to use /32 for the
+tunnel address when using multiple endpoints). **Endpoint Address** and  **Endpoint Port** can be left
+empty since they are mostly dynamic, now hit **Save changes**.
 
 Go back to tab **Local**, open the instance and choose the newly created endpoint in **Peers**.
 
