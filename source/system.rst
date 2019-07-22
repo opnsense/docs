@@ -28,6 +28,7 @@ activities.
    manual/hacarp
    manual/settingsmenu
    manual/certificates
+   manual/logging
    manual/diagnostics
 
 
