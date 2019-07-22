@@ -23,7 +23,6 @@ These are all combined in the firewall section.
    manual/how-tos/shaper
    manual/how-tos/carp
    manual/diagnostics
-   manual/logging
 
 
 ---------------

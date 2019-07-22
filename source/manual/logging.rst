@@ -171,7 +171,7 @@ Disable writing log files to the local disk  Useful to avoid wearing out flash m
 Reset Logs                                   Clear all logs. Note that this will also restart the DHCP server, so make sure any DHCP settings are saved first.
 ============================================ ====================================================================================================================
 
-An overview of the remote settings:
+An overview of the remote settings (superseded by new Logging/target syslog-ng menu):
 
 ======================= ===============================================================================================
 Setting                 Explanation
@@ -182,3 +182,25 @@ IP Protocol             Preferred IP version (it will this first). Will only be 
 Remote Syslog Servers   IP addresses of remote syslog servers, or IP:port combinations.
 Remote Syslog Contents  Can be used to selectively log event categories
 ======================= ===============================================================================================
+
+-------------
+Remote Syslog
+-------------
+
+With OPNsense version 19.7, syslog-ng for remote logging was introduced. 
+If you want to benefit from all new features and already have the legacy system available,
+please remove all remote logging from **System->Settings->Logging** and go to
+**System->Settings->Logging / targets** and *Add* a new *Destination*.
+
+============== ===============================================================================================
+Setting                 Explanation
+============== ================================================================================
+ Enabled        Master on/off switch.
+ Transport      Protocol to use for syslog.
+ Applications   Select a list of applications to send to remote syslog. Leave empty for *all*.
+ Levels         Choose which levels to include, omit to select all.
+ Facilities     Choose which facilities to include, omit to select all.
+ Hostname       Hostname or IP address where to send logs to.
+ Port           Port to use, usually 514.
+ Description    Set a description for you own use.
+============== ================================================================================
