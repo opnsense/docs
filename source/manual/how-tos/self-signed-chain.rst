@@ -13,7 +13,7 @@ Look at the default install, one certificate is created for the webgui/dashboard
 nothing wrong with that certificate if we use a real world CA, but we do not. We
 create our own chain so that one has no purpose once done.
 
-Should you even consider using **self-signed certificate chains** in this age of free available 
+Should you even consider using **self-signed certificate chains** in this age of free available
 certificates?
 
    * Self-signed certificate are just as secure as real world certificates.
@@ -32,7 +32,7 @@ What you should know about self-signed certificates:
    * They are **only** as trustworty as the person, company or organization signing it.
    * Using these certificates **can** be a security risk if you are the one trusting them and not a CA.
 
-A chain will need at least a CA and certificate; an intermediate CA is not needed, but in case of a 
+A chain will need at least a CA and certificate; an intermediate CA is not needed, but in case of a
 compromise the CA key would be compromised too.
 
 The chain we are going to create will be made with the following ingredients:
@@ -43,7 +43,7 @@ The chain we are going to create will be made with the following ingredients:
 
 .. Note::
 
-    This document uses **CN - Common Name** should be read as: **SAN - Subject Alternative Name** and 
+    This document uses **CN - Common Name** should be read as: **SAN - Subject Alternative Name** and
     will be used if present.
 
 Please backup before you proceed.
@@ -79,17 +79,17 @@ When you are done save the form, the CA is now generated.
 ====================== =================================== ========================================
 
 .. image:: images/CA.png
-   :scale: 15%
+   :width: 100%
 
 .. Tip::
 
-    Use valid email addresses for your certificates always.
-    Bogus addresses can pose a security risk not only for certificates btw. ;-)
+    Always use valid email addresses for your certificates.
+    Bogus addresses can pose a security risk – and not only for certificates.
 
 The Intermediate
 ----------------
 
-Time to create the second CA which is an **intermediate CA**. This certificate will be signed
+Time to create the second CA, which is an **intermediate CA**. This certificate will be signed
 by the root CA we just created. In return it will sign the sever certificate for OPNsense.
 
 Go to **Trust/Authorities**
@@ -103,7 +103,7 @@ Have a look at the form, create an intermediate CA and save it.
 ====================== =================================== ========================================
 
 .. image:: images/CA-inter.png
-   :scale: 15%
+   :width: 100%
 
 The Certificate
 ---------------
@@ -122,7 +122,7 @@ Have a look at the next form and notice the common name, create a server certifi
 ====================== =================================== ========================================
 
 .. image:: images/webgui-cert.png
-   :scale: 15%
+   :width: 100%
 
 .. Tip::
 
@@ -141,7 +141,7 @@ Now we need to start using the chain:
   * Go back to the dashboard & open **System/Settings/Administration**
   * Set **SSL-Certificate** to use the new server certificate.
 
-Open your browser and open the OPNsense/webgui page. You should be presented with a certificate that is 
+Open your browser and open the OPNsense/webgui page. You should be presented with a certificate that is
 verified by your intermediate CA.
 
 
@@ -152,22 +152,30 @@ A Chain for Your Local Nextcloud Server
 
 The local chain for Nextcloud server so we can use OPNsense backup to Nextcloud.
 
+.. Note::
+
+    | In this part for the Nextcloud chain are pieces which are valid for OPNsense before version 19.7.1.
+    | If you encounter such piece you will be noted!
+
 Go ahead and create a new chain **CA -- intermediate CA -- server cert.**.
 
 .. Note::
 
-    The certicate store on your OPNsense **ca-root-nss** is not aware of the CA
-    we are generating that is why we need to add this CA to the store.
+    | Valid for versions before 19.7.1.
+    | The certicate store on your OPNsense **ca-root-nss** is not aware of the CA
+    | we are generating that is why we need to add this CA to the store.
 
 .. Note::
 
+    | Valid for versions before 19.7.1.
     | Performing a Health audit **System/Firmware** raises an alert after adding the CA to the store:
     | alert: **checksum mismatch for /usr/local/share/certs/ca-root-nss.crt**
     | The sum of the file does not match the sum saved in the system after adding the CA.
 
 .. Tip::
 
-    | You can check if **ca-root-nss** has changed: 
+    | Valid for versions before 19.7.1, though, still usable in a CLI environment!
+    | You can check if **ca-root-nss** has changed:
     | Do a health check before you add the CA.
     | If the check was okay add the CA to the store.
     | Create a new checksum & save it :
@@ -189,7 +197,11 @@ Go to **Trust/Authorities** create a new CA for Nextcloud and save it.
 ====================== =================================== ========================================
 
 .. image:: images/CA-cloud.png
-   :scale: 15%
+   :width: 100%
+
+The next part is only neccessarry to perform if your version is before 19.7.1.
+
+| Begin-part-perform-before-19.7.1
 
 OPNsense needs to be made aware of the Nextcloud chain we are creating.
 
@@ -216,6 +228,8 @@ OPNsense needs to be made aware of the Nextcloud chain we are creating.
     Remove the CA from the store? Use ``vi``, the added CA will be the
     last one below **#End of file**
 
+| End-part-perform-before-19.7.1
+
 The Nextcloud Intermediate CA
 -----------------------------
 
@@ -231,7 +245,7 @@ Go to **Trust/Authorities** and create an intermediate CA.
 ====================== =================================== ========================================
 
 .. image:: images/CA-cloud-inter.png
-   :scale: 15%
+   :width: 100%
 
 Download the intermediate CA and install it to your browser:
 
@@ -253,7 +267,7 @@ Go to **Trust/Certificates** create a server certificate.
 ====================== =================================== ========================================
 
 .. image:: images/cloud-cert.png
-   :scale: 15%
+   :width: 100%
 
 We need to install this certificate and key to our Nextcloud server, two ways are shown here.
 
@@ -266,10 +280,10 @@ We need to install this certificate and key to our Nextcloud server, two ways ar
    openssl pkcs12 -in nextcloud-crt.p12 -nodes -out nextcloud.key -nocerts
    openssl pkcs12 -in nextcloud-crt.p12 -clcerts -nokeys -out nextcloud.pem
    cp nextcloud.pem nextcloud.crt
-   
+
 -  * Or use the next quick and dirty method for a single key/certificate file:
    * Upload the ***.p12**  archive to your Nextcloud server, in a safe way..
-   * Extact the archive into a single **PEM** file and create a certificate. 
+   * Extact the archive into a single **PEM** file and create a certificate.
 
 ::
 
@@ -278,7 +292,7 @@ We need to install this certificate and key to our Nextcloud server, two ways ar
 
 -  * **/etc/ssl/localcerts** will be alright for the certificate or choose your own prefered location.
    * If the key was extracted separatly, **/etc/ssl/private** would be a good choice.
-   * Be sure to set sane permissions on the private directory, ``700`` would do it. 
+   * Be sure to set sane permissions on the private directory, ``700`` would do it.
    * You could set ``umask`` too (see) ``man umask`` - on your Linux box.
    * Edit the webserver config to use the certificate and key or single key-cert file.
    * Sane permissions, ``400`` read only owner is sufficent.
@@ -289,7 +303,7 @@ You should now be able to backup to nextcloud and have a verified page.
 
  After setting up the Nextcloud backup everything should work.
 
-Troubleshooting:
+Troubleshooting (valid for versions before 19.7.1):
 
 | The backup to Nextcloud fails and recieve error:``verify_result 2`` in **System/LogFiles**
 | Issuer unknown because of an incomplete chain: the CA (issuer!) is missing.
