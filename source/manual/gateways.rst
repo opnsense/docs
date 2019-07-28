@@ -30,7 +30,7 @@ When a gateway is generated automatically, you still have the ability to change 
 names like :code:`WAN_DHCP`.
 
 In cases where you need to forward specific networks to a specific target, you can use static routes, which can be configured in
-:menuselection:`System->Routes->Configuration` and are depended on the entries shown in the gateway page.
+:menuselection:`System->Routes->Configuration` and depend on the entries shown in the gateway page.
 
 A specific kind of route is the :code:`default` route, this is where all traffic is being send when no other static route is configured.
 There can only be one default at a time per ip protocol (ipv4, ipv6) in the system routing table.
@@ -61,7 +61,7 @@ case you can enable "Gateway switching" in :menuselection:`System->Settings->Gen
 .. Tip::
 
     In case you have multiple (dynamic) gateways, which should fall over in a specific order on failure, just set a **priority** and **upstream** flag.
-    (e.g. favour fiber optics above 4g) You choices should be reflected accordingly in the gateway grid (most important first).
+    (e.g. favour fiber optics above 4g) Your choices should be reflected accordingly in the gateway grid (most important first).
 
 
 ----------------------------
