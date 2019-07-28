@@ -23,6 +23,7 @@ activities.
    manual/how-tos/user-radius
    manual/two_factor
    manual/how-tos/cloud_backup
+   manual/gateways
    manual/how-tos/multiwan
    manual/multiwan.rst
    manual/hacarp
