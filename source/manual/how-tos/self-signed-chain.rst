@@ -299,7 +299,7 @@ We need to install this certificate and key to our Nextcloud server, two ways ar
    * Edit the webserver config to use the certificate and key or single key-cert file.
    * Sane permissions, ``400`` read only owner is sufficent.
 
-You should now be able to backup to nextcloud and have a verified page.
+You should now be able to backup to Nextcloud and have a verified page.
 
  - :doc:`cloud_backup`
 
