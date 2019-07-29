@@ -22,6 +22,7 @@ certificates?
    * Depending on what you do with your network/servers this is a good solution.
    * Creating your own chain will give some insight in the process.
    * Only use them if you are sure you can. Read about the concept in common there is a lot of info on the net.
+   * They are required for intercepted connections (see proxy chapter)
 
 What you should not do with a self-signed chain:
 
