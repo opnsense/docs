@@ -27,6 +27,7 @@ certificates?
 What you should not do with a self-signed chain:
 
    * Use them for a web-facing server.
+   * Intercept encrypted traffic on a public wireless network (for example if you provide access in a hotel)
 
 What you should know about self-signed certificates:
 
