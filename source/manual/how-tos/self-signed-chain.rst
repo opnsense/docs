@@ -31,22 +31,19 @@ What you should not do with a self-signed chain:
 
 What you should know about self-signed certificates:
 
-   * They are **only** as trustworty as the person, company or organization signing it.
+   * They are **only** as trustworty as the person, company or organization signing it, this is also true for trusted certificates.
    * Using these certificates **can** be a security risk if you are the one trusting them and not a CA.
 
 A chain will need at least a CA and certificate; an intermediate CA is not needed, but in case of a
 compromise the CA key would be compromised too.
+The CA private key should be stored offline on an USB stick/HD and put in a safe, not reachable by malicious software or criminals/burglers.
+The intermediate CA, which is intended for a shorter lifetime can be kept on the firewall host.
 
 The chain we are going to create will be made with the following ingredients:
 
   * **CA** ``=`` certificate authority ``=`` root certificate ``-->`` signs intermediate certificates
   * **Intermediate CA** ``=`` subordinate certificate ``=`` signed by CA  ``-->`` signs certificates
   * **Certificate** ``=`` signed by Intermediate CA ``=`` can be used for different services
-
-.. Note::
-
-    This document uses **CN - Common Name** should be read as: **SAN - Subject Alternative Name** and
-    will be used if present.
 
 Please backup before you proceed.
 
@@ -78,6 +75,7 @@ When you are done save the form, the CA is now generated.
  **Descriptive name**   opnsense-ca                         *Choose a name that makes sense to you*
  **Method**             create an internal ca               *Main purpose of CA*
  **Common Name**        internal-ca                         *Default is fine, change to liking*
+ **Lifetime(days)**     3650                                *Longer is also no problem for CA*
 ====================== =================================== ========================================
 
 .. image:: images/CA.png
@@ -86,7 +84,8 @@ When you are done save the form, the CA is now generated.
 .. Tip::
 
     Always use valid email addresses for your certificates.
-    Bogus addresses can pose a security risk – and not only for certificates.
+    Bogus addresses can pose a security risk - and not only for certificates.
+    F.I.: If one should use user@example.com and someone claims example.com mail will be send there!
 
 The Intermediate
 ----------------
@@ -120,7 +119,7 @@ Have a look at the next form and notice the common name, create a server certifi
 ====================== =================================== ========================================
  **Descriptive name**   opnsense-ca-intermediate            *Choose a name that makes sense to you*
  **Method**             create a server certificate         *Main purpose of certificate*
- **Common Name**        opnsense.localdomain                *This should reflect the FQDN see Tip*
+ **SAN**                opnsense.localdomain                *This should reflect the FQDN see Tip*
 ====================== =================================== ========================================
 
 .. image:: images/webgui-cert.png
@@ -128,7 +127,7 @@ Have a look at the next form and notice the common name, create a server certifi
 
 .. Tip::
 
-    When creating the server certificate make sure the **CN - common name**
+    When creating the server certificate make sure the **SAN - Subject Alternative Name**
     is in fact the the **FQDN - Fully Qualified Domain Name**.
     You can find it on **Linux/Unix** with this command ``hostname -f``
 
@@ -154,36 +153,7 @@ A Chain for Your Local Nextcloud Server
 
 The local chain for Nextcloud server so we can use OPNsense backup to Nextcloud.
 
-.. Note::
-
-    | In this part for the Nextcloud chain are pieces which are valid for OPNsense before version 19.7.1.
-    | If you encounter such piece you will be noted!
-
 Go ahead and create a new chain **CA -- intermediate CA -- server cert.**.
-
-.. Note::
-
-    | Valid for versions before 19.7.1.
-    | The certicate store on your OPNsense **ca-root-nss** is not aware of the CA
-    | we are generating that is why we need to add this CA to the store.
-
-.. Note::
-
-    | Valid for versions before 19.7.1.
-    | Performing a Health audit **System/Firmware** raises an alert after adding the CA to the store:
-    | alert: **checksum mismatch for /usr/local/share/certs/ca-root-nss.crt**
-    | The sum of the file does not match the sum saved in the system after adding the CA.
-
-.. Tip::
-
-    | Valid for versions before 19.7.1, though, still usable in a CLI environment!
-    | You can check if **ca-root-nss** has changed:
-    | Do a health check before you add the CA.
-    | If the check was okay add the CA to the store.
-    | Create a new checksum & save it :
-    | ``cksum /usr/local/share/certs/ca-root-nss.crt > sum.txt``
-    | You can now 'always' check the sum against the result you have stored
-    | ``cksum /usr/local/share/ca-root-nss.crt | sort | diff sum.txt -``
 
 The Nextcloud Authority
 -----------------------
@@ -196,41 +166,11 @@ Go to **Trust/Authorities** create a new CA for Nextcloud and save it.
  **Descriptive name**   nextcloud-ca                        *Choose a name that makes sense*
  **Method**             create a ca                         *Main purpose of CA*
  **Common Name**        nextcloud-ca                        *Change to liking*
+ **Lifetime(days)**     3650                                *Longer is also no problem for CA*
 ====================== =================================== ========================================
 
 .. image:: images/CA-cloud.png
    :width: 100%
-
-The next part is only neccessarry to perform if your version is before 19.7.1.
-
-| Begin-part-perform-before-19.7.1
-
-OPNsense needs to be made aware of the Nextcloud chain we are creating.
-
-   * Download the **CA.crt** and upload it back to OPNsense in a secure way.
-
-.. image:: images/export_CA_cert.png
-
--  * For this you can use ``scp`` (see) ``man scp``
-   * Install the **CA.crt** with ``cat``, you cannot just copy it to the store because it is a single file.
-
-**The following command will append it to the store**
-
-::
-
-    cat nextcloud-ca.crt >> /usr/local/share/certs/ca-root-nss.crt
-
-.. Warning::
-
-    If **ca_root_nss** is updated your certificate is removed and needs to be added overnew.
-    If you created a **sum.txt** you need to create it again, see previous Tip.
-
-.. Tip::
-
-    Remove the CA from the store? Use ``vi``, the added CA will be the
-    last one below **#End of file**
-
-| End-part-perform-before-19.7.1
 
 The Nextcloud Intermediate CA
 -----------------------------
@@ -265,7 +205,7 @@ Go to **Trust/Certificates** create a server certificate.
 ====================== =================================== ========================================
  **Descriptive name**   cloudserver-cert                    *Choose a name that makes sense to you*
  **Method**             create a server certificate         *Main purpose of certificate*
- **Common Name**        cloud.localdomain                   *Should reflect the FQDN*
+ **SAN**                cloud.localdomain                   *Should reflect the FQDN*
 ====================== =================================== ========================================
 
 .. image:: images/cloud-cert.png
@@ -283,6 +223,14 @@ We need to install this certificate and key to our Nextcloud server, two ways ar
    openssl pkcs12 -in nextcloud-crt.p12 -clcerts -nokeys -out nextcloud.pem
    cp nextcloud.pem nextcloud.crt
 
+-  * Or download the key and certificate separately from OPNsense.
+   * If SSH is used '-i private-key' is not needed.
+
+::
+
+   scp -i ~/id_ed25519 /path/to/private/nextcloud.key /etc/ssl/keys/nextcloud.key
+   scp -i ~/id_ed25519 /path/to/nextcloud.pem /etc/ssl/localcerts/nextcloud.pem
+
 -  * Or use the next quick and dirty method for a single key/certificate file:
    * Upload the ***.p12**  archive to your Nextcloud server, in a safe way..
    * Extact the archive into a single **PEM** file and create a certificate.
@@ -294,7 +242,7 @@ We need to install this certificate and key to our Nextcloud server, two ways ar
 
 -  * **/etc/ssl/localcerts** will be alright for the certificate or choose your own prefered location.
    * If the key was extracted separatly, **/etc/ssl/private** would be a good choice.
-   * Be sure to set sane permissions on the private directory, ``700`` would do it.
+   * Be sure to set sane permissions on the private directory, ``755`` would do it.
    * You could set ``umask`` too (see) ``man umask`` - on your Linux box.
    * Edit the webserver config to use the certificate and key or single key-cert file.
    * Sane permissions, ``400`` read only owner is sufficent.
@@ -304,12 +252,6 @@ You should now be able to backup to Nextcloud and have a verified page.
  - :doc:`cloud_backup`
 
  After setting up the Nextcloud backup everything should work.
-
-Troubleshooting (valid for versions before 19.7.1):
-
-| The backup to Nextcloud fails and recieve error:``verify_result 2`` in **System/LogFiles**
-| Issuer unknown because of an incomplete chain: the CA (issuer!) is missing.
-| The Nextcloud CA was not installed to OPNsense certificate store **ca-root-nss**.
 
 
 -----------------------------
@@ -336,7 +278,15 @@ Once done go through the following points:
    openssl pkcs12 -in server.p12 -clcerts -nokeys -out server.pem
    cp server.pem server.crt
 
-Or if you want to use a single file:
+-  * Or download the key and certificate separately from OPNsense.
+   * If SSH is used '-i private-key' is not needed.
+
+::
+
+   scp -i ~/id_ed25519 /path/to/private/server.key /etc/ssl/keys/server.key
+   scp -i ~/id_ed25519 /path/to/server.pem /etc/ssl/localcerts/server.pem
+
+-  * Or if you want to use a single file:
 
 ::
 
