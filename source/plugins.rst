@@ -71,6 +71,19 @@ Web
    manual/how-tos/nginx_streams
 
 ----------------
+Vendor Plugins
+----------------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   manual/sensei
+   manual/how-tos/sensei_hardwarerequirements
+   manual/how-tos/sensei_prepareyourfirewall
+   manual/how-tos/sensei_install
+
+----------------
 Other
 ----------------
 
