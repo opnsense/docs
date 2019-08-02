@@ -20,5 +20,5 @@ Enable Secure Shell
    2. Permit root user login
    3. Permit password login
 
-.. image:: images/sensei/opnsense-admin-secure-shell-settings.png
+.. image:: images/opnsense-admin-secure-shell-settings.png
     :width: 100%

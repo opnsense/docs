@@ -18,7 +18,7 @@ Connect to Your Firewall
 
 After a successful login, enter "8" as the option to drop to the shell
 
-.. image:: images/sensei/opnsense-terminal-1.png
+.. image:: images/opnsense-terminal-1.png
     :width: 100%
 
 -----------------------------
@@ -32,7 +32,7 @@ Run the following one-liner command to download and invoke the installer script.
     root@fw:~ # curl https://updates.sunnyvalley.io/getsensei | sh
 
 
-.. image:: images/sensei/opnsense-terminal-3-getsensei-1.png
+.. image:: images/opnsense-terminal-3-getsensei-1.png
     :width: 100%
 
 Hence we passed the downloaded script to ``sh``, it will automatically run the installer script.
@@ -49,7 +49,7 @@ Depending on your computer setup and your internet connection speed, it might ta
 
     You can get detailed info about suggested hardware on :doc:`sensei_hardwarerequirements`
 
-.. image:: images/sensei/opnsense-terminal-3-getsensei-2.png
+.. image:: images/opnsense-terminal-3-getsensei-2.png
     :width: 100%
 
 Once the install is completed, you can disconnect from your terminal, and disable your firewall's ssh service by unchecking the checkboxes mentioned above.
@@ -76,7 +76,7 @@ To start your "Initial Configuration Wizard";
 * Accept the End User License Agreement *(Scroll & read the terms to get to the next button)*.
 * Click :menuselection:`Next` and get to the :menuselection:`Interface Selection` section.
 
-.. image:: images/sensei/sensei-0-wizard-tab1-welcome-1.png
+.. image:: images/sensei-0-wizard-tab1-welcome-1.png
     :width: 100%
 
 -----------------------------
@@ -86,7 +86,7 @@ To start your "Initial Configuration Wizard";
 * Select the Ethernet Interfaces to protect. To do that, click on an interface and use the right/left arrow buttons to move it to protected/unprotected interfaces combo box.
 * Click :menuselection:`Next` and get to the :menuselection:`Cloud Reputation` section.
 
-.. image:: images/sensei/sensei-0-wizard-tab2-interface-selection-2.png
+.. image:: images/sensei-0-wizard-tab2-interface-selection-2.png
     :width: 100%
 
 --------------------------
@@ -102,7 +102,7 @@ Cloud Threat Intel settings let you;
 * Enable/Disable the cloud reputation & web categorization engine
 * Set local domain settings to be excluded from cloud queries
 
-.. image:: images/sensei/sensei-0-wizard-tab3-cloud-reputation-2.png
+.. image:: images/sensei-0-wizard-tab3-cloud-reputation-2.png
     :width: 100%
 
 --------------------------------
@@ -112,7 +112,7 @@ Cloud Threat Intel settings let you;
 * Set your TCP Service password. This password protects the command line based CLI access to the packet engine. It is highly recommended to set this with a secure one.
 * Click "Next" and get to the "Updates" .
 
-.. image:: images/sensei/sensei-0-wizard-tab4-sensei-cli.png
+.. image:: images/sensei-0-wizard-tab4-sensei-cli.png
     :width: 100%
 
 -------------------------------
@@ -128,7 +128,7 @@ Cloud Threat Intel settings let you;
 * **Update Databases and Threat Intelligence Data Automatically:** Checks automatically for the updates and creates a notification on the status page .
 * **Enable Generation of Support Data:** If enabled, Sensei collects supporting data during unusual events and crashes. You can share this data while opening a ticket with us.
 
-.. image:: images/sensei/sensei-0-wizard-tab5-updates-health-check.png
+.. image:: images/sensei-0-wizard-tab5-updates-health-check.png
     :width: 100%
 
 --------------------------
@@ -141,7 +141,7 @@ Sensei supports up to 1,000 concurrent users on an everyday PC. You can set your
 .. Note::
     You can get detailed info about suggested hardware on [Getting Started &gt; Hardware Requirements​](getting-ready.md)
 
-.. image:: images/sensei/sensei-0-wizard-tab6-deployment-size-1.png
+.. image:: images/sensei-0-wizard-tab6-deployment-size-1.png
     :width: 100%
 
 ---------------
@@ -150,7 +150,7 @@ Sensei supports up to 1,000 concurrent users on an everyday PC. You can set your
 
 Click the Finish button to save your initial configuration data and start using Sensei.
 
-.. image:: images/sensei/sensei-0-wizard-tab7-finish-1.png
+.. image:: images/sensei-0-wizard-tab7-finish-1.png
     :width: 100%
 
 -------------------

@@ -1,5 +1,5 @@
 ====================================
-Plugins
+Community Plugins
 ====================================
 
 .. image:: images/manual_guy.png
@@ -69,19 +69,6 @@ Web
    manual/how-tos/nginx_tls_auth
    manual/how-tos/nginx_waf
    manual/how-tos/nginx_streams
-
-----------------
-Vendor Plugins
-----------------
-
-.. toctree::
-   :maxdepth: 2
-   :titlesonly:
-
-   manual/sensei
-   manual/how-tos/sensei_hardwarerequirements
-   manual/how-tos/sensei_prepareyourfirewall
-   manual/how-tos/sensei_install
 
 ----------------
 Other

@@ -1,5 +1,5 @@
 ===================
- Sensei
+Sensei: Overview
 ===================
 
 About
@@ -14,7 +14,7 @@ Sensei is a plugin for firewalls complementing them with state of the art next g
 
 Features
 ----------------------------
-Sensei empowers your firewall with the following next generation features 
+Sensei empowers your firewall with the following next generation features
 
 1. Application Control
 2. Cloud Application Control \(Web 2.0 Controls\)
@@ -30,9 +30,9 @@ Sensei empowers your firewall with the following next generation features
 Getting Started
 ----------------------------
 
-- :doc:`how-tos/sensei_hardwarerequirements`
-- :doc:`how-tos/sensei_prepareyourfirewall`
-- :doc:`how-tos/sensei_install`
+- :doc:`sensei_hardwarerequirements`
+- :doc:`sensei_prepareyourfirewall`
+- :doc:`sensei_install`
 
 ----------------------------
 
@@ -61,7 +61,7 @@ If you need help for anything; there is an active discussion about Sensei on OPN
 
 You can also issue bug reports from `Gitlab <https://gitlab.com/svn-community/opnsense-sensei-plugin/issues>`_
 
-With its in-depth coverage, `Sensei Documentation <https://help.sunnyvalley.io/>`_ is always available for reference. 
+With its in-depth coverage, `Sensei Documentation <https://help.sunnyvalley.io/>`_ is always available for reference.
 
 * `OPNsense Forum <https://forum.opnsense.org/index.php?topic=9521.new;topicseen#new>`_
 * `Users' Manual <https://help.sunnyvalley.io/>`_
@@ -83,7 +83,6 @@ Sunny Valley Networks provides Tier 3 Support Options for Sensei Channel Partner
 
 **Connect via Social Media**
 
-* **Twitter**: `@sunnyvalley <https://twitter.com/sunnyvalley>`_  
+* **Twitter**: `@sunnyvalley <https://twitter.com/sunnyvalley>`_
 * **Youtube**: `Sunny Valley Networks Hands-on videos <https://www.youtube.com/channel/UCBmMJAnuUW5qxAN23kLPuPA>`_
 * **Sunny Valley Blog**: https://sunnyvalley.io/blog/
-
