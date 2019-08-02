@@ -4,13 +4,13 @@ Sensei: Installing
 
 .. Note::
 
-    Sensei Freemium Edition is **forever free-of-charge**. We strongly recommend you register to keep in touch with updates and new features. You can register at `https://www.sunnyvalley.io/sensei <https://www.sunnyvalley.io/sensei>`_ 
+    Sensei Freemium Edition is **forever free-of-charge**. We strongly recommend you register to keep in touch with updates and new features. You can register at `https://www.sunnyvalley.io/sensei <https://www.sunnyvalley.io/sensei>`_
 
 -----------------------------
 
 
 Connect to Your Firewall
-------------
+-----------------------------
 
 .. code-block:: bash
 
@@ -24,8 +24,8 @@ After a successful login, enter "8" as the option to drop to the shell
 -----------------------------
 
 Download & Run Sensei Installer
-------------
-Run the following one-liner command to download and invoke the installer script. 
+--------------------------------
+Run the following one-liner command to download and invoke the installer script.
 
 .. code-block:: bash
 
@@ -46,7 +46,7 @@ Install script will copy the installation files onto the filesystem and will add
 Depending on your computer setup and your internet connection speed, it might take 1-4 minutes to complete.
 
 .. Note::
-    
+
     You can get detailed info about suggested hardware on :doc:`sensei_hardwarerequirements`
 
 .. image:: images/sensei/opnsense-terminal-3-getsensei-2.png
@@ -57,13 +57,13 @@ Once the install is completed, you can disconnect from your terminal, and disabl
 -----------------------------
 
 Initial Configuration Wizard
-------------
+------------------------------
 
 .. Note::
-    
+
     To start using Sensei, first, you need to go through the Wizard which will guide you to start with the best initial configuration.
 
-To start your "Initial Configuration Wizard"; 
+To start your "Initial Configuration Wizard";
 
 * Log in to your OPNsense Web UI,
 * Click Sensei from the left menu,
@@ -79,9 +79,9 @@ To start your "Initial Configuration Wizard";
 .. image:: images/sensei/sensei-0-wizard-tab1-welcome-1.png
     :width: 100%
 
-------------
+-----------------------------
 **2- Interface Selection**
-------------
+-----------------------------
 
 * Select the Ethernet Interfaces to protect. To do that, click on an interface and use the right/left arrow buttons to move it to protected/unprotected interfaces combo box.
 * Click :menuselection:`Next` and get to the :menuselection:`Cloud Reputation` section.
@@ -89,9 +89,9 @@ To start your "Initial Configuration Wizard";
 .. image:: images/sensei/sensei-0-wizard-tab2-interface-selection-2.png
     :width: 100%
 
-------------
+--------------------------
 **3- Cloud Reputation**
-------------
+--------------------------
 
 The Cloud Threat Intelligence data is queried real time when anyone makes a connection through your network. It enables us to respond to malware and wireless outbreaks in real time and very fast.
 
@@ -104,20 +104,20 @@ Cloud Threat Intel settings let you;
 
 .. image:: images/sensei/sensei-0-wizard-tab3-cloud-reputation-2.png
     :width: 100%
-    
-------------
+
+--------------------------------
 **4- Sensei CLI (Security)**
-------------
+--------------------------------
 
 * Set your TCP Service password. This password protects the command line based CLI access to the packet engine. It is highly recommended to set this with a secure one.
 * Click "Next" and get to the "Updates" .
 
 .. image:: images/sensei/sensei-0-wizard-tab4-sensei-cli.png
     :width: 100%
-    
-------------
+
+-------------------------------
 **5- Updates & Health Check**
-------------
+-------------------------------
 
 .. Note::
     Sensei uses OPNsense package system to deliver its updates. Configure the way you receive your Sensei updates as you feel convenient.
@@ -126,14 +126,14 @@ Cloud Threat Intel settings let you;
 * **Self Health Check:** If enabled, "Self Health Check" monitors the system's memory, CPU, disk usage and core services if they're working correctly, and raises alerts if anything goes wrong. Self Health Check also stops the relevant services if they're consuming excessive system resources.
 * **Check for Updates Automatically:** Checks automatically for the updates and creates a notification on the status page.
 * **Update Databases and Threat Intelligence Data Automatically:** Checks automatically for the updates and creates a notification on the status page .
-* **Enable Generation of Support Data:** If enabled, Sensei collects supporting data during unusual events and crashes. You can share this data while opening a ticket with us. 
+* **Enable Generation of Support Data:** If enabled, Sensei collects supporting data during unusual events and crashes. You can share this data while opening a ticket with us.
 
 .. image:: images/sensei/sensei-0-wizard-tab5-updates-health-check.png
     :width: 100%
 
-------------
+--------------------------
 **6- Deployment Size**
-------------
+--------------------------
 
 Sensei supports up to 1,000 concurrent users on an everyday PC. You can set your Sensei installation's capacity here.
 
@@ -144,20 +144,19 @@ Sensei supports up to 1,000 concurrent users on an everyday PC. You can set your
 .. image:: images/sensei/sensei-0-wizard-tab6-deployment-size-1.png
     :width: 100%
 
-------------
+---------------
 **7- Finish**
-------------
+---------------
 
 Click the Finish button to save your initial configuration data and start using Sensei.
 
 .. image:: images/sensei/sensei-0-wizard-tab7-finish-1.png
     :width: 100%
-    
-------------
+
+-------------------
 **Hands-on Video**
-------------
+-------------------
 
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/y6OE2FuzkF0?time_continue=7" frameborder="0" allowfullscreen></iframe>
-

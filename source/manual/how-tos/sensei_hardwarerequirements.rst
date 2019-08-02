@@ -1,6 +1,6 @@
-=====================
+========================================
 Sensei: Hardware Requirements
-=====================
+========================================
 
 Due to the nature of packet analysis and granular drill-down reporting features, Sensei require more horsepower than a standard L3-L4 firewall.
 
@@ -10,7 +10,7 @@ Due to the nature of packet analysis and granular drill-down reporting features,
 
 .. Note::
 
-    A roadmap feature - Cloud reporting - will enable you to install Sensei to devices which have limited amount of memory. E.g. you'll be able to install Sensei to a Raspberry Pi. 
+    A roadmap feature - Cloud reporting - will enable you to install Sensei to devices which have limited amount of memory. E.g. you'll be able to install Sensei to a Raspberry Pi.
 
 -----------------------------
 
@@ -22,10 +22,6 @@ Because the analytics module relies on Elastic Search to do Big Data processing,
 At least dual-core *(i5 or equivalent)* or preferably quad-core modern CPU *(i7 or equivalent)* would be advisable.
 
 Recommended minimum hardware requirements for Sensei based on the number of users and the bandwidth:
-
-+-----------------+--------------+-------------+----------------------+
-| Number of Users | WAN Bandwith | Min. Memory | Min. CPU             |
-+=================+==============+=============+======================+
 
 ======================= =====================   ====================   ====================================================================
  **Number of Users**    **WAN Bandwith**        **Min. Memory**         **Min. CPU**

@@ -1,6 +1,6 @@
-=====================
+===============================
 Sensei: Prepare Your Firewall
-=====================
+===============================
 
 .. Note::
 
@@ -8,13 +8,13 @@ Sensei: Prepare Your Firewall
 
 -----------------------------
 
-------------
+---------------------
 Enable Secure Shell
-------------
+---------------------
 
 1. Login to your OPNsense firewall's dashboard
 2. Head to the :menuselection:`System > Settings > Administrations` menu
-3. Enable all three checkboxes 
+3. Enable all three checkboxes
 
    1. Enable Secure Shell
    2. Permit root user login
