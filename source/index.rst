@@ -31,6 +31,7 @@ Table of Contents
      manual/vpnet
      services
      plugins
+     third_party_plugins
      develop
      relations
      legal

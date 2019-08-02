@@ -1,5 +1,5 @@
 ====================================
-Plugins
+Community Plugins
 ====================================
 
 .. image:: images/manual_guy.png
