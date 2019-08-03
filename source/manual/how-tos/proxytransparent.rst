@@ -7,14 +7,14 @@ can be configured to run in transparent mode, this mean the clients browser does
 not have to be configured for the web proxy, but all traffic is diverted to the
 proxy automatically by utilizing Network Address Translation.
 
-In this How To, we will explain the basic http as well as https (ssl bump) transparent
+In this How To, we will explain the basic HTTP as well as HTTPS (SSL bump) transparent
 proxy modes.
 
 .. Warning::
     The Transparent SSL/HTTPS proxy mode uses a technique also called man-in-the-middle,
-    only configure and use this if your know what you are doing. When configured wrong
-    you may end up in lessing your security defenses significantly instead of enhancing
-    them. Using a transparent https proxy can be a dangerous practice and may not be
+    only configure and use this if you know what you are doing. When configured incorrectly
+    you may end up in lessening your security defenses significantly instead of enhancing
+    them. Using a transparent HTTPS proxy can be a dangerous practice and may not be
     allowed by the services you use, for instance e-banking.
 
 Step 1 - Basic Proxy Setup
@@ -24,7 +24,7 @@ For basic configuration please refer to :doc:`cachingproxy`.
 
 Step 2 - Transparent HTTP
 --------------------------------
-Go to **Services->Proxy->Administration**
+Go to :menuselection:`Services --> Proxy --> Administration`
 
 Then select **General Forward Settings** under the **Forward Proxy Tab**.
 
@@ -33,11 +33,11 @@ And Click **Apply**.
 
 Step 3 - NAT/Firewall Rule
 ---------------------------------
-A simple way to add the NAT/Firewall Rule is to click on the **(i)** icon on the
+A simple way to add the NAT/Firewall Rule is to click the **(i)** icon on the
 left of the **Enable Transparent HTTP proxy** option and click on **add a new firewall rule**.
 
 .. image:: images/screenshot_enable_transparent_http.png
-    :scale: 100%
+    :width: 100%
 
 **For reference, these are the default settings:**
 
@@ -61,11 +61,11 @@ The defaults should be alright, just press **Save** and **Apply Changes**.
 Step 4 - CA for Transparent SSL
 --------------------------------------
 Before we can setup transparent SSL/HTTPS proxy we need to create a Certificate
-Authority. Go to **System->Trust->Authorities** or use the search box to get there
+Authority. Go to :menuselection:`System --> Trust --> Authorities` or use the search box to get there
 fast.
 
 .. image:: images/search_ca.png
-    :scale: 100%
+    :width: 100%
 
 Click on **add or import ca** in the upper right corner of the screen to create
 a new CA.
@@ -90,7 +90,7 @@ For our example we use the following data:
 
 Step 5 - Transparent SSL
 -------------------------------------
-Go to **Services->Proxy->Administration**
+Go to :menuselection:`Services --> Proxy --> Administration`
 Then select **General Forward Settings** under the **Forward Proxy Tab**.
 
 Select **Enable SSL mode** and set **CA to use** to the CA you have just created.
@@ -121,7 +121,7 @@ A simple way to add the NAT/Firewall Rule is to click on the **(i)** icon on the
 left of the **Enable SSL mode** option and click on **add a new firewall rule**.
 
 .. image:: images/screenshot_enable_transparent_http.png
-    :scale: 100%
+    :width: 100%
 
 **For reference, these are the default settings:**
 
@@ -145,19 +145,18 @@ Step 8 - Configure OS/Browser
 -----------------------------
 Since the CA is not trusted by your browser, you will get a message about this
 for each page you visit. To solve this you can import the Key into your OS and
-set as trusted. To export the Key go to **System->Trust->Authorities** and click
+set as trusted. To export the Key go to :menuselection:`System --> Trust --> Authorities` and click
 on the icon to export the CA certificate. Of course one may choose to accept the
 certificate for each page manually, but for some pages that may not work well unless
 not bumped.
 
 .. image:: images/export_CA_cert.png
-    :scale: 100%
 
-Import and change trust settings on your favorite OS. Per example on OSX it looks
+Import and change trust settings on your favorite OS. For example, on macOS it looks
 like this:
 
 .. image:: images/Trust_Settings_OSX.png
-    :scale: 100%
+    :width: 100%
 
 .. Warning::
     Again be very careful with this as your system will accept any page signed with
@@ -171,7 +170,7 @@ like this:
     connection against man in the middle attacks otherwise trusted certificates.
     If you want to make the connection work again, you have to whitelist the following
     Google domains in your "No Bump Hosts" settings.
-    
+
     * Your local Google domain (for example: google.at for Austria, google.de for Germany, …)
     * .google.com
     * .googleapis.com

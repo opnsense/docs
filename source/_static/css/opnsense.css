@@ -3671,6 +3671,9 @@ code, .rst-content tt, .rst-content code {
 @media print {
   .wy-breadcrumbs li.wy-breadcrumbs-aside {
     display: none; } }
+body {
+  overflow-wrap: break-word; }
+
 .wy-affix {
   position: fixed;
   top: 1.618em; }
@@ -4492,3 +4495,7 @@ span[id*='MathJax-Span'] {
   font-style: normal;
   font-weight: 700;
   src: local("Roboto Slab Bold"), local("RobotoSlab-Bold"), url(../fonts/RobotoSlab-Bold.ttf) format("truetype"); }
+
+.menuselection {
+  font-weight: bold;
+}

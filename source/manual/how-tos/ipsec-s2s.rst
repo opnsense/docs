@@ -2,7 +2,7 @@
 Setup IPsec site to site tunnel
 ================================
 
-Site to site VPN's connect two locations with static public IP addresses and allow
+Site to site VPNs connect two locations with static public IP addresses and allow
 traffic to be routed between the two networks. This is most commonly used to
 connect an organization's branch offices back to its main office, so branch users
 can access network resources in the main office.
@@ -16,9 +16,9 @@ connection (you local network need to different than that of the remote network)
 
 .. Note::
 
-   For the sample we will use a private ip for our WAN connection.
+   For the sample we will use a private IP for our WAN connection.
    This requires us to disable the default block rule on wan to allow private traffic.
-   To do so, go to the **Interfaces->[WAN]** and uncheck "Block private networks".
+   To do so, go to :menuselection:`Interfaces --> [WAN]` and uncheck “Block private networks”.
    *(Dont forget to save and apply)*
 
    .. image:: images/block_private_networks.png
@@ -170,43 +170,37 @@ Full Network Diagram Including IPsec Tunnel
 
     }
 
-------------------------------
-Firewall Rules Site A & Site B
-------------------------------
+---------------------------------------
+Firewall Rules Site A & Site B (part 1)
+---------------------------------------
 To allow IPsec Tunnel Connections, the following should be allowed on WAN for on
-sites:
+sites (under :menuselection:`Firewall --> Rules --> WAN`):
 
 * Protocol ESP
 * UDP Traffic on Port 500 (ISAKMP)
 * UDP Traffic on Port 4500 (NAT-T)
 
 .. image:: images/ipsec_wan_rules.png
-    :scale: 100%
+    :width: 100%
 
 .. Note::
 
-    You can further limit the traffic by the source ip of the remote host.
-
-To allow traffic passing to your LAN subnet you need to add a rule to the IPsec
-interface.
-
-.. image:: images/ipsec_ipsec_lan_rule.png
-    :scale: 100%
+    You can further limit the traffic by the source IP of the remote host.
 
 -----------------------
 Step 1 - Phase 1 Site A
 -----------------------
-(Under **VPN->IPsec->Tunnel Settings** Press **+**)
+(Under :menuselection:`VPN --> IPsec --> Tunnel Settings` Press **+**)
 We will use the following settings:
 
 General information
 -------------------
 ========================= ============= ================================================
 **Connection method**      default       *default is 'Start on traffic'*
-**Key Exchange version**   V2            *both V1 and V2 are supported*
+**Key Exchange version**   V2
 **Internet Protocol**      IPv4
 **Interface**              WAN           *choose the interface connected to the internet*
-**Remote gateway**         172.10.2.1    *the public ip address of your remote OPNsense*
+**Remote gateway**         172.10.2.1    *the public IP address of your remote OPNsense*
 **Description**            Site B        *freely chosen description*
 ========================= ============= ================================================
 
@@ -215,7 +209,6 @@ Phase 1 proposal (Authentication)
 ---------------------------------
 =========================== ====================== ======================================
  **Authentication method**   Mutual PSK             *Using a Pre-shared Key*
- **Negotiation mode**        Main                   *Use Main. Aggressive is insecure*
  **My identifier**           My IP address          *Simple identification for fixed ip*
  **Peer identifier**         Peer IP address        *Simple identification for fixed ip*
  **Pre-Shared Key**          At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!**
@@ -224,12 +217,12 @@ Phase 1 proposal (Authentication)
 
 Phase 1 proposal (Algorithms)
 -----------------------------
-========================== ============= ===========================================
- **Encryption algorithm**   AES           *For our sample we will Use AES/256 bits*
- **Hash algoritm**          SHA512        *Use a strong hash like SHA512*
- **DH key group**           2048 bit      *2048 bit should be sufficient*
- **Lifetime**               28800 sec     *lifetime before renegotiation*
-========================== ============= ===========================================
+========================== =============== ===========================================
+ **Encryption algorithm**   AES             *For our sample we will Use AES/256 bits*
+ **Hash algoritm**          SHA512          *Use a strong hash like SHA512*
+ **DH key group**           14 (2048 bit)   *2048 bit should be sufficient*
+ **Lifetime**               28800 sec       *lifetime before renegotiation*
+========================== =============== ===========================================
 
 
 Advanced Options
@@ -245,12 +238,11 @@ Advanced Options
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
 
 Now you should see the following screen:
 
 .. image:: images/ipsec_s2s_vpn_p1a_4.png
-    :scale: 100%
+    :width: 100%
 
 
 -----------------------
@@ -259,12 +251,11 @@ Step 2 - Phase 2 Site A
 Press the button that says '+ Show 0 Phase-2 entries'
 
 .. image:: images/ipsec_s2s_vpn_p1a_show_p2.png
-    :scale: 100%
 
 You will see an empty list:
 
 .. image:: images/ipsec_s2s_vpn_p1a_p2_empty.png
-    :scale: 100%
+    :width: 100%
 
 Now press the *+* at the right of this list to add a Phase 2 entry.
 
@@ -291,59 +282,57 @@ Remote Network
 
 Phase 2 proposal (SA/Key Exchange)
 ----------------------------------
-=========================== ============ =======================================
-**Protocol**                 ESP           *Choose ESP for encryption*
-**Encryption algorithms**    AES / 256     *For the sample we use AES 256*
-**Hash algortihms**          SHA512        *Choose a strong hash like SHA512*
-**PFS Key group**            2048 bit      *Not required but enhanced security*
+=========================== =============== =======================================
+**Protocol**                 ESP             *Choose ESP for encryption*
+**Encryption algorithms**    AES / 256       *For the sample we use AES 256*
+**Hash algortihms**          SHA512          *Choose a strong hash like SHA512*
+**PFS Key group**            14 (2048 bit)   *Not required but enhanced security*
 **Lifetime**                 3600 sec
-=========================== ============ =======================================
+=========================== =============== =======================================
 
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
 
 -----------------------------
 
 Enable IPsec for Site A, Select:
 
 .. image:: images/ipsec_s2s_vpn_p1a_enable.png
-    :scale: 100%
 
 Save:
 
 .. image:: images/btn_save.png
-    :scale: 100%
 
 And Apply changes:
 
 .. image:: images/ipsec_s2s_vpn_p1a_apply.png
-    :scale: 100%
+    :width: 100%
 
 ------------------
 
 .. image:: images/ipsec_s2s_vpn_p1a_success.png
-    :scale: 100%
+    :width: 100%
 
-**You are done configuring Site A.**
+**You are almost done configuring Site A (only some firewall settings remain, which we'll address later).**
+**We will now proceed setting up Site B.**
 
 -----------------------------
 
 -----------------------
 Step 3 - Phase 1 Site B
 -----------------------
-(Under **VPN->IPsec->Tunnel Settings** Press **+**)
+(Under :menuselection:`VPN --> IPsec --> Tunnel Settings` Press **+**)
 We will use the following settings:
 
 General information
 -------------------
 ========================= ============= ================================================
 **Connection method**      default       *default is 'Start on traffic'*
-**Key Exchange version**   V2            *both V1 and V2 are supported*
+**Key Exchange version**   V2
 **Internet Protocol**      IPv4
 **Interface**              WAN           *choose the interface connected to the internet*
-**Remote gateway**         172.10.1.1    *the public ip address of your remote OPNsense*
+**Remote gateway**         172.10.1.1    *the public IP address of your remote OPNsense*
 **Description**            Site A        *freely chosen description*
 ========================= ============= ================================================
 
@@ -352,7 +341,6 @@ Phase 1 proposal (Authentication)
 ---------------------------------
 =========================== ====================== ======================================
  **Authentication method**   Mutual PSK             *Using a Pre-shared Key*
- **Negotiation mode**        Main                   *Use Main. Aggressive is insecure*
  **My identifier**           My IP address          *Simple identification for fixed ip*
  **Peer identifier**         Peer IP address        *Simple identification for fixed ip*
  **Pre-Shared Key**          At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!**
@@ -361,12 +349,12 @@ Phase 1 proposal (Authentication)
 
 Phase 1 proposal (Algorithms)
 -----------------------------
-========================== ============= ===========================================
- **Encryption algorithm**   AES           *For our sample we will Use AES/256 bits*
- **Hash algoritm**          SHA512        *Use a strong hash like SHA512*
- **DH key group**           2048 bit      *2048 bit should be sufficient*
- **Lifetime**               28800 sec     *lifetime before renegotiation*
-========================== ============= ===========================================
+========================== =============== ===========================================
+ **Encryption algorithm**   AES             *For our sample we will Use AES/256 bits*
+ **Hash algoritm**          SHA512          *Use a strong hash like SHA512*
+ **DH key group**           14 (2048 bit)   *2048 bit should be sufficient*
+ **Lifetime**               28800 sec       *lifetime before renegotiation*
+========================== =============== ===========================================
 
 
 Advanced Options
@@ -382,12 +370,11 @@ Advanced Options
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
 
 Now you should see the following screen:
 
 .. image:: images/ipsec_s2s_vpn_p1b_4.png
-    :scale: 100%
+    :width: 100%
 
 
 -----------------------
@@ -401,7 +388,7 @@ Press the button that says '+ Show 0 Phase-2 entries'
 You will see an empty list:
 
 .. image:: images/ipsec_s2s_vpn_p1a_p2_empty.png
-    :scale: 100%
+    :width: 100%
 
 Now press the *+* at the right of this list to add a Phase 2 entry.
 
@@ -429,55 +416,60 @@ Remote Network
 
 Phase 2 proposal (SA/Key Exchange)
 ----------------------------------
-=========================== ============ =======================================
-**Protocol**                 ESP           *Choose ESP for encryption*
-**Encryption algorithms**    AES / 256     *For the sample we use AES 256*
-**Hash algortihms**          SHA512        *Choose a strong hash like SHA512*
-**PFS Key group**            2048 bit      *Not required but enhanced security*
+=========================== =============== =======================================
+**Protocol**                 ESP             *Choose ESP for encryption*
+**Encryption algorithms**    AES / 256       *For the sample we use AES 256*
+**Hash algortihms**          SHA512          *Choose a strong hash like SHA512*
+**PFS Key group**            14 (2048 bit)   *Not required but enhanced security*
 **Lifetime**                 3600 sec
-=========================== ============ =======================================
+=========================== =============== =======================================
 
 
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
 
 -----------------------------
 
 Enable IPsec for Site B, Select:
 
 .. image:: images/ipsec_s2s_vpn_p1a_enable.png
-    :scale: 100%
+    :width: 100%
 
 Save:
 
 .. image:: images/btn_save.png
-    :scale: 100%
 
 And Apply changes:
 
 .. image:: images/ipsec_s2s_vpn_p1a_apply.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------------
 
 .. image:: images/ipsec_s2s_vpn_p1a_success.png
-    :scale: 100%
+    :width: 100%
 
-**You are done configuring Site B.**
+---------------------------------------
+Firewall Rules Site A & Site B (part 2)
+---------------------------------------
 
+To allow traffic passing to your LAN subnet you need to add a rule to the IPsec
+interface (under :menuselection:`Firewall --> Rules --> IPsec`).
+
+.. image:: images/ipsec_ipsec_lan_rule.png
+    :width: 100%
 
 ------------------
 IPsec Tunnel Ready
 ------------------
 
 The tunnel should now be up and routing the both networks.
-Go to **VPN->IPsec->Status Overview** to see current status.
+Go to :menuselection:`VPN --> IPsec --> Status Overview` to see current status.
 Press on the **(i)** to see the details of the phase 2 tunnel(s), like this:
 
 .. image:: images/ipsec_status.png
-    :scale: 100%
+    :width: 100%
 
 .. Note::
 
@@ -491,7 +483,7 @@ cross-cable between the WAN ports.
 
 .. image:: images/OPN20322R_870px.png
    :target: https://www.deciso.com/product-catalog/opn20322r/
-   :scale: 100%
+   :width: 100%
 
 To route traffic the WAN interfaces have been configured to use a /16 segment and
 they are each others default gateway. Other than that the sample is equal to this
@@ -521,7 +513,7 @@ Phase 1 works but no phase 2 tunnels are connected
 ---------------------------------------------------
 
 Did you set the correct local and remote networks. A common mistake is to fill in
-the ip address of the remote host in stead of its network ending with **x.x.x.0**
+the IP address of the remote host instead of its network ending with **x.x.x.0**
 
 Common issues are unequal settings. Both ends must use the same encryption standard.
 
@@ -530,4 +522,4 @@ Common issues are unequal settings. Both ends must use the same encryption stand
 
   If you are testing locally with your pc connected to one of the two test boxes
   as in the sample configuration, then make sure you have no other network
-  connections (f.i. wifi).
+  connections (Wi-Fi, for example).

@@ -13,7 +13,7 @@ how to :doc:`contribute`.
 Welcome to OPNsense's documentation!
 ------------------------------------
 `OPNsense® <https://opnsense.org>`__ is an open source,
-easy-to-use and easy-to-build FreeBSD based firewall and routing platform.
+easy-to-use and easy-to-build HardenedBSD based firewall and routing platform.
 
 **OPNsense** includes most of the features available in expensive commercial
 firewalls, and more in many cases. It brings the rich feature set of commercial
@@ -39,10 +39,10 @@ Feature set
 
 The feature set of OPNsense includes high-end features such as forward caching
 proxy, traffic shaping, intrusion detection and easy OpenVPN client setup.
-The latest release is based on a recent FreeBSD for long-term support and uses a
+The latest release is based on a recent HardenedBSD for long-term support and uses a
 newly developed MVC-framework based on Phalcon. OPNsense’s focus on security
 brings unique features such as the option to use LibreSSL instead of OpenSSL
-(selectable in the GUI) and a custom version based on HardenedBSD.
+(selectable in the GUI).
 
 The robust and reliable update mechanism gives OPNsense the ability to provide
 important security updates in a timely fashion.
@@ -75,18 +75,19 @@ OPNsense Core Features
 - High Availability & Hardware Failover
 
   - Includes configuration synchronization & synchronized state tables
-  - Can be combined with Traffic Shaping
+  - Moving virtual IPs
 
 - Intrusion Detection and Inline Prevention
 
-  - Build-in support for Emerging Treats rules
+  - Built-in support for Emerging Threats rules
   - Simple setup by use of rule categories
   - Scheduler for period automatic updates
 
-- Build-in reporting and monitoring tools
+- Built-in reporting and monitoring tools
 
   - System Health, the modern take on RRD Graphs
   - Packet Capture
+  - Netflow
 
 - Support for plugins
 - DNS Server & DNS Forwarder
@@ -94,11 +95,11 @@ OPNsense Core Features
 - Dynamic DNS
 - Backup & Restore
 
-  - Encrypted cloud backup to Google Drive
+  - Encrypted cloud backup to Google Drive and Nextcloud
   - Configuration history with colored diff support
   - Local drive backup & restore
 
 - Stateful inspection firewall
 - Granular control over state table
 - 802.1Q VLAN support
-- and more..
+- and more…

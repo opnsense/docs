@@ -64,17 +64,6 @@ compromised sites distributing malware.
 
 See for details: https://urlhaus.abuse.ch/
 
-------------------------
-Maxmind GeoLite2 Country
-------------------------
-GeoLite2 databases are free IP geolocation databases comparable to, but less
-accurate than, MaxMind’s GeoIP2 databases. GeoLite2 databases are updated on the
-first Tuesday of each month.
-
-For more details see: http://dev.maxmind.com/geoip/geoip2/geolite2/
-
-OPNsense has integrated GeoLite2 Country database support.
-
 ---------------
 Finger Printing
 ---------------
@@ -90,9 +79,9 @@ blocking web services and the URLs behind them.
 
 If you want to contribute to the ruleset see: https://github.com/opnsense/rules
 
---------
-How-to's
---------
+-------
+How-tos
+-------
 
 .. toctree::
    :maxdepth: 2

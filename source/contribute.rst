@@ -67,6 +67,7 @@ of € 2500.Partners that made an exceptional contribution to the project are as
 the Platinum Partner status.
 
 ----------------
+
 Support Contract
 ----------------
 with a support contract we support you and you support us as OPNsense is fully
@@ -199,7 +200,7 @@ Social media
 ------------
 Contribute to the success of the project by letting others know how OPNsense helped
 solving your network or security challenges. Let others know about OPNsense and/or
-follow us & retweet our messages on `twitter <https://twitter.com/opnsense>`__.
+follow us & retweet our messages on `Twitter <https://twitter.com/opnsense>`__.
 
 Anything you can do to spread the word about OPNsense will help to reach our goal
 to become the most widely used open source security & firewall platform.

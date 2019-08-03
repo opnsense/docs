@@ -22,7 +22,7 @@ Some pictures are licensed under the Creative Commons Zero (CC0) license:
 
 https://creativecommons.org/publicdomain/zero/1.0/
 
-Logo's may be subject to additional copyrights, property 
+Logos may be subject to additional copyrights, property 
 rights, trademarks etc. and may require the consent of a third party or the
 license of these rights. Deciso B.V. does not represent or make any warranties
 that it owns or licenses any of the mentioned, nor does it grant them.
@@ -43,7 +43,7 @@ make html
 
 
 #### Changing theme
-* Install Sass (http://sass-lang.com/),  on OSX via ```/Library/Ruby/Gems```
+* Install Sass (http://sass-lang.com/). On macOS, this is done via ```/Library/Ruby/Gems```
 ```
 gem install --no-user-install sass
 ```

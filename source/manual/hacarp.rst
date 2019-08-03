@@ -11,7 +11,7 @@ with automatic and seamless fail-over. While switching to the backup network
 connections will stay active with minimal interruption for the users.
 
 .. image:: images/light_bulbs.png
-    :scale: 100%
+    :width: 100%
 
 ------------------
 Automatic failover

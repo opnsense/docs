@@ -1,6 +1,7 @@
-================
-Configuring LDAP
-================
+=====================================
+Access / Servers / LDAP
+=====================================
+
 LDAP is the light weight directory access protocol used by Microsoft Active Directory,
 OpenLDAP and Novell eDirectory, to name a few.
 
@@ -10,7 +11,7 @@ LDAP for the GUI the privileges have to be defined with the local user manager,
 to do so an import of the users from the LDAP source is required.
 
 In this how-to we will show you how to configure both using Microsoft Active Directory
-Server. If you only need LDAP for services like vpn, then you can skip step 3-5.
+Server. If you only need LDAP for services like VPN, then you can skip step 3-5.
 
 -------------
 Prerequisites
@@ -20,7 +21,7 @@ You OPNsense firewall need to be fully configured and able to access the LDAP se
 
 Step 1 - Add New LDAP server
 ----------------------------
-To add a new LDAP server as authentication source, go to **System->Access->Servers**
+To add a new LDAP server as authentication source, go to :menuselection:`System --> Access --> Servers`
 and click on **Add server** the top right corner, just above the form.
 
 Enter the following information:
@@ -33,8 +34,9 @@ Enter the following information:
  **Transport**                    TCP - Standard           *Select Standard or Encrypted*
  **Peer Certificate Authority**                            *When using SSL Encryption, select the CA*
  **Protocol version**             3                        *Select protocol version*
- **Bind credentials**             cn=testusr,CN=Users,
-  User DN:                        DC=opnsense,DC=local     *Enter your credentials*
+ **Bind credentials**
+  User DN:                        cn=testusr,CN=Users,     *Enter your credentials*
+                                  DC=opnsense,DC=local
   Password:                       secret                   *alway use a strong password*
  **Search scope**
   Level:                          Entire Subtree           *Select Entire Subtree to retrieve all*
@@ -50,7 +52,7 @@ Enter the following information:
    something similar to will show up:
 
    .. image:: images/ldap_selectcontainer.png
-      :scale: 100%
+      :width: 100%
 
 .. TIP::
    The **Extended Query** can be used to select users who are member of a specific
@@ -61,17 +63,17 @@ Enter the following information:
    **Members**.
 
    .. image:: images/ldap_mygroup_properties.png
-      :scale: 100%
+      :width: 100%
 
 
 Step 2 - Test
 --------------
-To test if the server is configured correctly, go to **System->Access->Tester**
+To test if the server is configured correctly, go to :menuselection:`System --> Access --> Tester`
 and select your LDAP server and enter a valid username + password. Click on
 **Test** and if everything is setup correctly it will show:
 
 .. image:: images/ldap_testok.png
-   :scale: 100%
+   :width: 100%
 
 .. Note::
   When limited to just one group, the group name will not be shown in the listing.
@@ -79,33 +81,34 @@ and select your LDAP server and enter a valid username + password. Click on
 If not (or your entered invalid credentials) it shows:
 
 .. image:: images/ldap_testfail.png
-   :scale: 100%
+   :width: 100%
 
 Step 3 - Import Users
 ---------------------
 If you would like to give LDAP/Active Directory users access to the GUI, you need
-to import the users into the local user manager. Go to **System->Access->Users**
+to import the users into the local user manager. Go to :menuselection:`System --> Access --> Users`
 you will see a cloud import icon at the lower right corner of the form.
 
 .. image:: images/user_cloudimport.png
-   :scale: 100%
+   :width: 39px
+
 
 Click on the cloud import icon to start importing users.
 
 A new form will be show with the individual users, select the ones you like to import.
 
-Step 4 - Update ldap user privileges
+Step 4 - Update LDAP user privileges
 ------------------------------------
-Now if you go to **System->Access->Users** you will see all users including the
-newly imported ldap users. You can create a specific group for these users to
+Now if you go to :menuselection:`System --> Access --> Users` you will see all users including the
+newly imported LDAP users. You can create a specific group for these users to
 easily manage the privileges or use one of your earlier created groups.
 
-When opening a ldap user (edit) via the pecil icon right next to the name, you will
+When opening a LDAP user (edit) via the pecil icon right next to the name, you will
 notice the difference as the **User Distinguished name** will be shown from the
 LDAP server, just like this:
 
 .. image:: images/user_ldap_distinguishedname.png
-    :scale: 100%
+    :width: 100%
 
 .. TIP::
    See :doc:`user-local` for more information on User, Groups and privileges.
@@ -115,11 +118,11 @@ Step 5 - Update system access settings
 Now we have configures, verified and imported the users from our LDAP server, we
 need to change the default settings to allow LDAP users to login.
 
-Go to **System->Access->Settings** and change the Authentication Server from
+Go to :menuselection:`System --> Access --> Settings` and change the Authentication Server from
 **Local Database** to your newly created **LDAP** server. Leave the fallback on
 **Local Database** and click on **Save and Test**.
 
 The test result should look like this:
 
 .. image:: images/user_testresult_ldap.png
-   :scale: 80%
+   :width: 80%

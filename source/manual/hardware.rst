@@ -2,7 +2,7 @@
 Hardware sizing & setup
 =======================
 
-The **harware setup** requires a careful preparation and selection of
+The **hardware setup** requires a careful preparation and selection of
 the standard PC hardware components for the intended installation of
 OPNsense.
 
@@ -12,7 +12,7 @@ pre-installed can be purchased directly from various (online) stores.
 .. TIP::
   The OPNsense development team encourage everyone looking for a turn-key solution
   to buy from `Deciso <https://www.deciso.com>`__ or one of the other partners listed at our partner page.
-  **Listed partners make significant contributions back to the project**
+  **Listed partners make significant contributions back to the project.**
 
 --------------------------------
 Supported hardware architectures
@@ -53,13 +53,13 @@ for the ones that require disk writes, e.g. a caching proxy (cache) or intrusion
 and prevention (alert database).
 
 +------------------+--------------------------------------------------------------------------+
-| Processor        | 500MHz single core cpu                                                   |
+| Processor        | 500 MHz single core cpu                                                  |
 +------------------+--------------------------------------------------------------------------+
 | RAM              | 512 MB                                                                   |
 +------------------+--------------------------------------------------------------------------+
 | Install method   | Serial console or video (vga)                                            |
 +------------------+--------------------------------------------------------------------------+
-| Install target   | SD or CF card with a minimum of 4GB, use nano images for installation.   |
+| Install target   | SD or CF card with a minimum of 4 GB, use nano images for installation.  |
 +------------------+--------------------------------------------------------------------------+
 
 Table:  *Minimum hardware requirements*
@@ -78,7 +78,7 @@ or high loads.
 +------------------+--------------------------------------------------------------------------+
 | Install method   | Serial console or video (vga)                                            |
 +------------------+--------------------------------------------------------------------------+
-| Install target   | 40 GB SSD, a minimum of 1GB memory is needed for the installer to run.   |
+| Install target   | 40 GB SSD, a minimum of 1 GB memory is needed for the installer to run.  |
 +------------------+--------------------------------------------------------------------------+
 
 Table:  *Reasonable hardware requirements*
@@ -112,7 +112,7 @@ feature set.
 Impact of Feature set
 ---------------------
 
-While most features do not effect hardware dimensioning, a few features
+While most features do not affect hardware dimensioning, a few features
 have massive impact on it. The candidates are:
 
 `Squid <https://en.wikipedia.org/wiki/Squid_(software)>`__ 
@@ -126,9 +126,9 @@ have massive impact on it. The candidates are:
     displayed below.
 
 `State transition tables <https://en.wikipedia.org/wiki/State_transition_table>`__
-    it is a known fact, that each state table entry requires about 1KB
-    (kilo bytes) of RAM. The average state table, filled with 1000
-    entries will occupy about ~10MB (mega bytes) of
+    it is a known fact, that each state table entry requires about 1 kB
+    (kilobytes) of RAM. The average state table, filled with 1000
+    entries will occupy about ~10 MB (megabytes) of
     `RAM <https://en.wikipedia.org/wiki/Random-access_memory>`__.
     OPNsense usage settings with hundred of thousands of connections
     will require memory accordingly.
@@ -167,7 +167,7 @@ Network interface cards
 .. rubric:: Supported hardware
    :name: supported-hardware
 
-The FreeBSD 11.1-RELEASE is the base of OPNsense. All FreeBSD drivers
+The HardenedBSD 11.2-RELEASE is the base of OPNsense. All HardenedBSD drivers
 are included in the OPNsense kernel, and the hardware compatibility is
 the same.
 
@@ -177,8 +177,8 @@ the same.
 
 For further help and support, see
 
--  `FreeBSD 11.1-RELEASE Hardware Compatibility
-   List <https://www.freebsd.org/releases/11.1R/hardware.html>`__
+-  `FreeBSD 11.2-RELEASE Hardware Compatibility
+   List <https://www.freebsd.org/releases/11.2R/hardware.html>`__
 -  `OPNsense Forum <https://forum.opnsense.org/>`__
 
 .. rubric:: List of references

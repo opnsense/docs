@@ -2,23 +2,23 @@
 Setup IPsec Road-Warrior
 ========================
 Road Warriors are remote users who need secure access to the companies infrastructure.
-IPsec Mobile Clients offer a solution that is easy to setup with OSX (native)
+IPsec Mobile Clients offer a solution that is easy to setup with macOS (native)
 and is know to work with iOS as well as many Android devices.
 
-For more flexibility use SSL VPN's, OPNsense utilizes OpenVPN for this purpose.
+For more flexibility use SSL VPNs, OPNsense utilizes OpenVPN for this purpose.
 
 With this example we'll show you how to configure the Mobile Client Setup in
 OPNsense and give you configuration examples for:
 
-* OSX
+* macOS
 * iOS
 * Android
 
 .. Note::
 
-   For the sample we will use a private ip for our WAN connection.
+   For the sample we will use a private IP for our WAN connection.
    This requires us to disable the default block rule on wan to allow private traffic.
-   To do so, go to the **Interfaces->[WAN]** and uncheck "Block private networks".
+   To do so, go to the :menuselection:`Interfaces --> [WAN]` and uncheck "Block private networks".
    *(Dont forget to save and apply)*
 
    .. image:: images/block_private_networks.png
@@ -83,19 +83,19 @@ To allow IPsec Tunnel Connections, the following should be allowed on WAN.
 * UDP Traffic on Port 4500 (NAT-T)
 
 .. image:: images/ipsec_wan_rules.png
-    :scale: 100%
+    :width: 100%
 
 To allow traffic passing to your LAN subnet you need to add a rule to the IPsec
 interface.
 
 .. image:: images/ipsec_ipsec_lan_rule.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------
 Step 1 - Mobile Clients
 -----------------------
 First we will need to setup the mobile clients network and authentication methods.
-Go to **VPN->IPsec->Mobile Clients**
+Go to :menuselection:`VPN --> IPsec --> Mobile Clients`
 
 For our example will use the following settings:
 
@@ -135,7 +135,6 @@ Phase 1 proposal (Authentication)
  **Negotiation mode**        Agressive              *Select Aggressive*
  **My identifier**           My IP address          *Simple identification for fixed ip*
  **Peer identifier**         User distinguished     *Identification for peer*
- *Peer identifier*           vpnuser@example.com    *Our freely chosen identifier*
  **Pre-Shared Key**          At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!**
 =========================== ====================== ======================================
 
@@ -163,12 +162,12 @@ Advanced Options
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
+
 
 Now you should see the following screen:
 
 .. image:: images/ipsec_road_vpn_p1a.png
-    :scale: 100%
+    :width: 100%
 
 
 -------------------------------
@@ -177,12 +176,12 @@ Step 3 - Phase 2 Mobile Clients
 Press the button that says '+ Show 0 Phase-2 entries'
 
 .. image:: images/ipsec_s2s_vpn_p1a_show_p2.png
-    :scale: 100%
+    :width: 100%
 
 You will see an empty list:
 
 .. image:: images/ipsec_s2s_vpn_p1a_p2_empty.png
-    :scale: 100%
+    :width: 100%
 
 Now press the *+* at the right of this list to add a Phase 2 entry.
 
@@ -212,38 +211,45 @@ Phase 2 proposal (SA/Key Exchange)
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------------
 
 Enable IPsec, Select:
 
 .. image:: images/ipsec_s2s_vpn_p1a_enable.png
-    :scale: 100%
+    :width: 100%
 
 Save:
 
 .. image:: images/btn_save.png
-    :scale: 100%
+    :width: 100%
 
 And Apply changes:
 
 .. image:: images/ipsec_s2s_vpn_p1a_apply.png
-    :scale: 100%
+    :width: 100%
 
 ------------------
 
 .. image:: images/ipsec_s2s_vpn_p1a_success.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------------
+
+.. Note::
+
+   If you already had IPsec enabled and added Road Warrior setup, it's important to 
+   restart the whole service via services widget in the upper right corner of IPSec pages
+   or via :menuselection:`System --> Diagnostics --> Services --> Strongswan` since applying configuration only
+   reloads it, but a restart also loads the required modules of strongswan.
 
 ------------------------
 Step 4 - Add IPsec Users
 ------------------------
 For this example we will create a new user who may access the mobile IPsec vpn.
 
-Go to **System->Access->Users** and press the **+** sign in the lower right corner
+Go to :menuselection:`System --> Access --> Users` and press the **+** sign in the lower right corner
 to add a new user.
 
 Enter the following into the form:
@@ -265,48 +271,48 @@ Add privilege **User - VPN - IPsec xauth Dialin** by pressing the **+** under
 -------------------------
 Step 5 - Configure Client
 -------------------------
-To illustrate the client setup we will look at the configuration under OSX, including
+To illustrate the client setup we will look at the configuration under macOS, including
 some screenshots. The configurations for Android and iOS will be settings only.
 
 .. Note::
-      Configuration samples listed here where created using latest OSX, iOS and
+      Configuration samples listed here where created using latest macOS, iOS and
       Android devices on time of publication in February 2016.
 
---------------------
-Configure OSX Client
---------------------
+----------------------
+Configure macOS Client
+----------------------
 
-Start with opening your network settings (System Preferences -> Network) and
+Start with opening your network settings (:menuselection:`System Preferences --> Network)` and
 Add a new network by pressing the + in the lower left corner.
 
 Now select **VPN** and **Cisco IPSec**, give your connection a name and press **Create**.
 
 .. image:: images/osx-ipsec-new.png
-    :scale: 100%
+    :width: 100%
 
 Now enter the details for our connection:
 
 .. image:: images/osx-ipsec-conf1.png
-    :scale: 100%
+    :width: 100%
 
 Next press **Authentication Settings** to add the group name and pre-shared key.
 
 .. image:: images/osx-ipsec-conf2.png
-    :scale: 100%
+    :width: 100%
 
 Press **OK** to save these settings and then **Apply** to apply them.
 
 Now test the connection by selecting it from the list and hit **Connect**.
 
 .. image:: images/osx-ipsec-connected.png
-    :scale: 100%
+    :width: 100%
 
 **Done**
 
 --------------------
 Configure iOS Client
 --------------------
-To add a VPN connection on an iOS device go to **Setting->General->VPN**.
+To add a VPN connection on an iOS device go to :menuselection:`Settings --> General --> VPN`.
 Select **Add VPN Configuration** chose **IPsec** and use the Following Settings:
 
 ========================== ======================= ========================================
@@ -314,16 +320,14 @@ Select **Add VPN Configuration** chose **IPsec** and use the Following Settings:
   **Server**                172.18.0.164            *Our server address*
   **Account**               expert                  *Username of the remote account*
   **Password**              &test!9T                *Leave blank to be prompted every time*
-  **IPsec-id**              vpnuser@example.com     *The peer identity we chose*
   **Preshared IPsec-key**   At4aDMOAOub2NwT6gMHA    *Our PSK*
 ========================== ======================= ========================================
 
 ------------------------
 Configure Android Client
 ------------------------
-To add a VPN connection on an Android device go to **Settings -> Connections ->
-more networks** , select **VPN**. Press the **+** in the top right corner to add
-a new vpn connection.
+To add a VPN connection on an Android device go to :menuselection:`Settings --> Connections --> more networks`,
+select **VPN**. Press the **+** in the top right corner to add a new VPN connection.
 
 Use the Following Settings:
 
@@ -331,7 +335,6 @@ Use the Following Settings:
   **Name**                  IPsec OPNsense         *Freely chosen name*
   **Type**                  IPSec Xauth PSK        *As configured in OPNsense*
   **Server address**        172.18.0.164           *Our server address*
-  **IPsec-id**              vpnuser@example.com    *The peer identity we chose*
   **Preshared IPsec-key**   At4aDMOAOub2NwT6gMHA   *Our PSK*
 ========================== ======================= =============================
 

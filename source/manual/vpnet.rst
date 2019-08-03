@@ -7,7 +7,7 @@ extends the private network into the public network such as internet. With a VPN
 you can create large secure networks that can act as one private network.
 
 .. image:: images/Virtual_Private_Network_overview.png
-    :scale: 100%
+    :width: 100%
 
 (picture from `wikipedia <https://en.wikipedia.org/wiki/File:Virtual_Private_Network_overview.svg>`__)
 
@@ -24,12 +24,11 @@ utility makes the client configuration a breeze.
 --------------------------
 Supported VPN technologies
 --------------------------
-OPNsense offers a wide range of VPN technologies ranging from modern SSL VPN's to
+OPNsense offers a wide range of VPN technologies ranging from modern SSL VPNs to
 well known IPsec as well as older (now considered insecure) legacy options such as
 L2TP and PPTP.
 
 .. image:: images/vpn.png
-    :scale: 100%
 
 .. Note::
 
@@ -49,36 +48,31 @@ Plugin VPN options
 Via plugins additional VPN technologies are offered, including:
 
 * **Legacy L2TP & PPTP**
+* **OpenConnect** - SSL VPN client, initially build to connect to commercial vendor appliances like Cisco ASA or Juniper.
 * **Tinc** - Automatic Full Mesh Routing
+* **WireGuard** - Very simple and fast VPN working with public and private keys.
 * **Zerotier** - seamlessly connect everything, requires account from zerotier.com, free for up to 100 devices.
 
 
 -------------
 Configuration
 -------------
-Please read our how-to's for configuration examples and more detailed information.
-
-IPsec Road Warrior
--------------------
-:doc:`how-tos/ipsec-road`
-
-IPsec Site-to-Site
------------------------
-:doc:`how-tos/ipsec-s2s`
-
-IPsec Site-to-Site with BINAT
------------------------------
-:doc:`how-tos/ipsec-s2s-binat`
-
-OpenVPN/SSL Road Warrior
-------------------------
-:doc:`how-tos/sslvpn_client`
-
-OpenVPN/SSL Site-to-Site
-------------------------
-:doc:`how-tos/sslvpn_s2s`
+Please read our how-tos for configuration examples and more detailed information.
 
 
-Zerotier
---------
-:doc:`how-tos/zerotier`
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   how-tos/ipsec-road
+   how-tos/ipsec-s2s
+   how-tos/ipsec-s2s-route
+   how-tos/ipsec-s2s-binat
+   how-tos/sslvpn_client
+   how-tos/sslvpn_s2s
+   how-tos/openconnect
+   how-tos/wireguard-s2s
+   how-tos/wireguard-client
+   how-tos/wireguard-client-azire
+   how-tos/wireguard-client-mullvad
+   how-tos/zerotier

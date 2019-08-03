@@ -70,7 +70,7 @@ Execute function http-request auth"
 .. image:: images/haproxy_frontend_add_authentication.png
 
 
-* Go to "Settings" -> "Global Parameters", enable the advanced mode (top left), and add your users to configuration
+* Go to :menuselection:`Settings --> Global Parameters`, enable the advanced mode (top left), and add your users to configuration
   via the "Custom options"
 
 .. image:: images/haproxy_settings_global_params_auth.png

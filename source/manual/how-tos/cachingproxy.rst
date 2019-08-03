@@ -3,13 +3,13 @@ Setup Caching Proxy
 ===================
 
 .. image:: images/proxy_basics.png
-    :scale: 100%
+    :width: 100%
 
 ----------------
 Enable / Disable
 ----------------
 The proxy is delivered with sane default settings for easy setup.
-To enable the proxy just go to **Services->Proxy Server->Administration** and
+To enable the proxy just go to :menuselection:`Services --> Web Proxy --> Administration` and
 check **Enable proxy** en click on **Apply**. The default will enable the proxy
 with User Authentication based on the local user database and runs on port 3128
 of the lan interface.
@@ -26,7 +26,7 @@ select from the list).
 Change Proxy Listening Port
 ---------------------------
 By default the proxy will listen at port 3128, you can change this by clicking
-on the tab **Forward Proxy** and fill in the port in the **Proxy port** feild.
+on the tab **Forward Proxy** and fill in the port in the **Proxy port** field.
 Don't forget to **Apply** your changes.
 
 ------------
@@ -36,20 +36,19 @@ To enable caching click on the arrow next to the **General Proxy Settings** to
 see the dropdown menu and click on **Local Cache Settings**.
 
 .. image:: images/proxy_cache.png
-    :scale: 100%
 
 Check the **Enable local cache** and click **Apply**.
 
 .. Important::
 
   As the cache is not created by default you will need to stop and start the service
-  under **Services->Diagnostics**, this will ensure correct creation of the cache.
+  under :menuselection:`Services --> Diagnostics`, this will ensure correct creation of the cache.
 
 Advanced
 --------
 Under the advanced settings (see mode switch on left top of the form) you can
 change the cache size, directory structure and max object size to keep in cache.
-Again defaults are fine for normal browsing and creates a 100MB cache with max 4MB
+Again defaults are fine for normal browsing and creates a 100 MB cache with max 4 MB
 object size.
 
 
@@ -61,7 +60,7 @@ Now select **Authentication Settings** and select the desired Authenticator(s) i
 the field **Authentication method**. Click on **Clear All** if you do not want to
 use any authentication.
 
-Depending on the Authentication Servers you have setup under **System->Access->Servers**
+Depending on the Authentication Servers you have setup under :menuselection:`System --> Access --> Servers`
 You can select one or more of the following:
 
 * No Authentication (leave field blank)
@@ -83,11 +82,11 @@ interfaces in the **FTP proxy interfaces** field and **Apply**.
 -------------------
 Access Control List
 -------------------
-You can setup ACL's by clicking on the arrow next to **Forward Proxy**  and select
+You can setup ACLs by clicking on the arrow next to **Forward Proxy**  and select
 **Access Control List**. Here you can:
 
 * Setup Allowed Subnets (By default the proxy interfaces will be allowed)
-* Add Unrestricted IP addresses (Unrestricted means just that, no authentication and no blacklisting for those IP's)
+* Add Unrestricted IP addresses (Unrestricted means just that, no authentication and no blacklisting for those IPs)
 * Add Banned hosts IP address (A ban will stop this client from being able to use the proxy)
 * Whitelist (Click on the (i) to see examples, whitelist prevail above blacklists)
 * Blacklist (If not allowed by a whitelist, this will block traffic based upon a regular expression)
@@ -119,7 +118,7 @@ This list is a simple flat list that looks like this:
     207.net
     247media.com
 
-Go to **Services->Proxy Server->Administration** and click on the tab **Remote
+Go to :menuselection:`Services --> Web Proxy --> Administration` and click on the tab **Remote
 Access Control Lists**
 
 Now click on the **+** at the bottom right corner of the form to add a new list.
@@ -137,7 +136,7 @@ Fill in:
 Looks like (screenshots of version 16.1.4):
 
 .. image:: images/proxy_blacklist.png
-    :scale: 100%
+    :width: 100%
 
 **Save changes**
 
@@ -147,7 +146,7 @@ Now click on **Download ACLSs & Apply** to enable the blacklist/ad blocker.
 Firewall Rule No Proxy Bypass
 -----------------------------
 To make sure no-one can bypass the proxy you need to add a firewall rule.
-Go to **Firewall->Rules** and add the following to the top of the list rule on the
+Go to :menuselection:`Firewall --> Rules` and add the following to the top of the list rule on the
 LAN interface (if LAN is where your clients and proxy are on).
 
 ============================ =====================
@@ -157,7 +156,7 @@ LAN interface (if LAN is where your clients and proxy are on).
  **Source**                   LAN net
  **Destination Port Range**   HTTP
  **Category**                 Block Proxy Bypass
- **Description**              Block http bypass
+ **Description**              Block HTTP bypass
 ============================ =====================
 
 **Save**
@@ -171,13 +170,13 @@ And one more rule to block HTTPS access:
  **Source**                   LAN net
  **Destination Port Range**   HTTPS
  **Category**                 Block Proxy Bypass
- **Description**              Block https bypass
+ **Description**              Block HTTPS bypass
 ============================ =====================
 
 **Save** & **Apply changes**
 
 .. image:: images/proxy_firewall.png
-    :scale: 100%
+    :width: 100%
 
 -------------------------
 Configure Browser/Firefox
@@ -186,7 +185,7 @@ To configure you browser for use with the proxy, just go to your network setting
 and configure a proxy like this in firefox:
 
 .. image:: images/proxy_firefox.png
-    :scale: 100%
+    :width: 100%
 
 
 For a set-for-step guide on full category based web filtering see :doc:`proxywebfilter`.

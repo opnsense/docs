@@ -62,14 +62,14 @@ This routing is setup via the index page of our new code base and uses
 API routing
 -----------
 
-Routing for api functions is quite similar to routing UI components,
+Routing for API functions is quite similar to routing UI components,
 just create a Api directory under the app path and place a controller
 class to handle the request. The only major difference is that it's
-handled by a separate php file (called api.php) in stead of the
+handled by a separate PHP file (called api.php) instead of the
 index.php file used to configure the ui part, details of the routing can
 be found in /usr/local/opnsense/mvc/app/config/services\_api.php .
 
-If our sample app needs an api to echo something back via a controller called
+If our sample app needs an API to echo something back via a controller called
 tools it could be put into a file called:
 
 ::

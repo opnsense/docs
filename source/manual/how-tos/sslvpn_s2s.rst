@@ -2,7 +2,7 @@
 Setup SSL VPN site to site tunnel
 =================================
 
-Site to site VPN's connect two locations with static public IP addresses and allow
+Site to site VPNs connect two locations with static public IP addresses and allow
 traffic to be routed between the two networks. This is most commonly used to
 connect an organization's branch offices back to its main office, so branch users
 can access network resources in the main office.
@@ -11,14 +11,15 @@ can access network resources in the main office.
 Before you start
 ----------------
 Before starting with the configuration of an OpenVPN SSL tunnel you need to have a
-working OPNsense installation wit a unique LAN IP subnet for each side of your
-connection (you local network need to different than that of the remote network).
+working OPNsense installation with a unique LAN IP subnet for each side of your
+connection (your local network needs to be different than that of the remote
+network).
 
 .. Note::
 
-   For the sample we will use a private ip for our WAN connection.
-   This requires us to disable the default block rule on wan to allow private traffic.
-   To do so, go to the **Interfaces->[WAN]** and uncheck "Block private networks".
+   For the sample we will use a private IP for our WAN connection.
+   This requires us to disable the default block rule on WAN to allow private traffic.
+   To do so, go to :menuselection:`Interfaces --> [WAN]` and uncheck "Block private networks".
    *(Don't forget to save and apply)*
 
    .. image:: images/block_private_networks.png
@@ -180,7 +181,7 @@ Adding a new SSL VPN server is relatively simple. We'll start by adding a server
 that uses a shared key. This setup offers a good protection and it is
 easy to setup.
 
-Go to **VPN->OpenVPN->Servers** and click on **add server** in to top right corner
+Go to :menuselection:`VPN --> OpenVPN --> Servers` and click on click **Add** in the top right corner
 of the form.
 
 For our example will use the following settings (leave everything else on its default):
@@ -212,7 +213,7 @@ For our example will use the following settings (leave everything else on its de
     Click **Save** to add the new server.
 
     .. image:: images/sslvpn_server.png
-       :scale: 100%
+       :width: 100%
 
 ----------------------
 
@@ -261,14 +262,14 @@ port on the WAN interface. When using multiple servers we need to open up each p
 For our configuration we only use one server accessible on UDP port 1194.
 
 .. image:: images/sslvpn_wan_rule.png
-    :scale: 100%
+    :width: 100%
 
 Next we also need to allow traffic from the VPN client network (192.168.2.0/24).
 For our example we will allow client to access anything on our local network(s),
-however you may decide just to allow traffic to one or more IP's.
+however you may decide just to allow traffic to one or more IPs.
 
 .. image:: images/sslvpn_openvpn_rule.png
-    :scale: 100%
+    :width: 100%
 
 **You are done configuring Site A.**
 
@@ -278,7 +279,7 @@ however you may decide just to allow traffic to one or more IP's.
 Step 4 - Site B Client
 ----------------------
 Now we will have to setup the client.
-Login to the second firewall, go to **VPN->OpenVPN->Clients** and click on
+Login to the second firewall, go to :menuselection:`VPN --> OpenVPN --> Clients` and click on
 **add client** in the upper right corner of the form.
 
 Now enter the following into the form (and leave everything else default):
@@ -305,19 +306,19 @@ Now enter the following into the form (and leave everything else default):
 
 Now click on **Save**  to apply your settings.
 
-The Connection Status can be viewed under **VPN->OpenVPN->Connection Status**
+The Connection Status can be viewed under :menuselection:`VPN --> OpenVPN --> Connection Status`
 
 .. image:: images/sslvpn_connection_status.png
-   :scale: 100%
+   :width: 100%
 
 ------------------------------
 Step 5 - Client Firewall Rules
 ------------------------------
-To allow traffic from the remote network just add a rule under **Firewall->Rules**
+To allow traffic from the remote network just add a rule under :menuselection:`Firewall --> Rules`
 OpenVPN tab.
 
 .. image:: images/sslvpn_firewall_rule_client.png
-   :scale: 100%
+   :width: 100%
 
 
 **Done**

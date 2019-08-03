@@ -30,7 +30,7 @@ and used :doc:`components </development/components>`.
 -----------------
 Ideal Development
 -----------------
-Our ideal OPNsense system looks like a standard FreeBSD system using our
+Our ideal OPNsense system looks like a standard HardenedBSD system using our
 pluggable user interface for management, which supports both real users as "machine"
 users (REST).
 
@@ -49,7 +49,7 @@ time and we needed to transition that into something more structured.
 One of the first things (on the programming part of the system) we did was build
 components around an existing framework (`Phalcon <https://phalconphp.com/>`_)
 to create new modules, which could use validated configuration data (from the
-config.xml), supply a RESTful API and generate html output using standard
+config.xml), supply a RESTful API and generate HTML output using standard
 templates (Volt).
 
 We created the configd system, which can generate system configuration and
@@ -78,7 +78,7 @@ implementation is one example of this stage.
 
 **3)** Moving on
 (re)build new parts, using our new modules, which provide a layered development
-system to automatically support api calls from other systems and xml based model
+system to automatically support API calls from other systems and XML based model
 templates to describe configuration data.
 
 *See also:*
@@ -87,7 +87,7 @@ templates to describe configuration data.
 * :doc:`Howto use the API </development/how-tos/api>`
 
 Our guidelines somewhat depend of the stage the code is in, when writing new code,
-all actions should use the api system for actually changing configuration and
+all actions should use the API system for actually changing configuration and
 performing configuration tasks. They should, of course, use the normal PSR coding
 standards for PHP code and follow the Python PEPs.
 

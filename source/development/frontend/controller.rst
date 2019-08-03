@@ -9,7 +9,7 @@ General
 After routing is performed, the controller takes care of the actual code
 to execute for the request. Because we want to implement some basics for
 every request that gets processed you should inherit from our base
-classes to ensure basic functionality such as authorisation and csrf
+classes to ensure basic functionality such as authorisation and CSRF
 protection.
 
 Controllers are placed in the directory /usr/local/opnsense/mvc/app/controllers/<Vendor\_name>/<Module\_name>/
@@ -63,7 +63,7 @@ API based controllers
 For API calls a separate class is used to derive from, which implements
 a simple interface to handle calls. The main difference with the view
 controllers is that an action should return a named array containing
-response data in stead of picking a template.
+response data instead of picking a template.
 
 A simple index controller to echo a request back looks like this:
 
@@ -86,8 +86,8 @@ A simple index controller to echo a request back looks like this:
         }
     }
 
-When placed inside the api directory of Vendor/Sample can be called by sending a
-post request to /api/sample/test/echo, using jquery:
+When placed inside the API directory of Vendor/Sample can be called by sending a
+post request to /api/sample/test/echo, using jQuery:
 
 .. code-block:: javascript
 

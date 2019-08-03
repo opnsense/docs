@@ -25,10 +25,9 @@ We like the BSD license, a simple two clause license that gives freedom to the
 audience we want to serve.  It basically gives you the right to do whatever you
 want to do with the code, even fork it and take it from there.
 
-OPNsense is available under the BSD 2-Clause “Simplified” or “FreeBSD”
-license:
+OPNsense is available under the BSD 2-Clause “Simplified” license:
 
-`OPNsense® <http://opnsense.org>`__ is Copyright © 2014 – 2016 by
+`OPNsense® <http://opnsense.org>`__ is Copyright © 2014 – 2019 by
 Deciso B.V.
 All rights reserved.
 Redistribution and use in source and binary forms, with or without
@@ -53,8 +52,8 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-OPNsense is based on `FreeBSD <https://www.freebsd.org>`__
-Copyright © The FreeBSD Project. All rights reserved.
+OPNsense is based on `HardenedBSD <https://hardenedbsd.org/>`__
+Copyright © The HardenedBSD Project. All rights reserved.
 
 OPNsense is a fork of `pfSense® <https://www.pfsense.org>`__
 (Copyright © 2004-2014 Electric Sheep Fencing, LLC. All rights
@@ -108,9 +107,9 @@ Some pictures are licensed under the Creative Commons Zero (CC0) license:
 https://creativecommons.org/publicdomain/zero/1.0/
 
 -----------------
-Logo's Copyright
+Logos Copyright
 -----------------
-Logo's may be subject to additional copyrights, property
+Logos may be subject to additional copyrights, property
 rights, trademarks etc. and may require the consent of a third party or the
 license of these rights. Deciso B.V. does not represent or make any warranties
 that it owns or licenses any of the mentioned, nor does it grant them.

@@ -38,7 +38,7 @@ The main differences between an embedded image and a full image are:
 +-----------------------+-----------------------+
 | Embedded              | Full                  |
 +=======================+=======================+
-| Uses NanoBSD          | Uses FreeBSD          |
+| Uses NanoBSD          | Uses HardenedBSD      |
 +-----------------------+-----------------------+
 | Writes to RAM disk    | Writes to local disk  |
 +-----------------------+-----------------------+
@@ -62,34 +62,95 @@ useful for SD memory card installations.
     See the chapter :doc:`Hardware Setup <hardware>` for
     further information on hardware requirements prior to an install.
 
---------
-Download
---------
+-------------------------
+Download and verification
+-------------------------
 
 The OPNsense distribution can be `downloaded <https://opnsense.org/download>`__
 from one of our `mirrors <https://opnsense.org/download>`__.
 
+The OpenSSL tool is used for file verification.
+4 files are needed for verification:
+
+* The bzip compressed ISO file (<filename>.iso.bz2)
+* The SHA-256 checksum file (<filename>.sha256)
+* The signature file (<filename>.sig)
+* The openssl public key (<filename>.pub)
+
+These files can be downloaded from one of the download mirrors. To download them:
+
+1. Go to the OPNSense `download <https://opnsense.org/download>`__ page.
+2. After selecting a mirror, right click the download button and click "open in new tab".
+3. A popup will appear asking if you want to download the image. Say "no" for now.
+4. Remove the file name after the last slash in the URL bar, and press enter. This will take you to the directory listing for that mirror.
+
+I.e. If you wanted to download from the US East Coast mirror:
+
+Opening the link in a new tab would take you to this link:
+
+``mirror.wdc1.us.leaseweb.net/opnsense/releases/18.7/OPNsense-18.7-OpenSSL-dvd-amd64.iso.bz2``
+
+You should take off the file name at the end, like this:
+
+``mirror.wdc1.us.leaseweb.net/opnsense/releases/18.7/``
+
+The OpenSSL public key is required to verify against. This file is also on
+the mirror directory listing page, however you should not trust the copy
+there. Download it, open it up, and verify that the public key matches the
+one from other sources. If it does not, the mirror may have been hacked,
+or you may be the victim of a man-in-the-middle attack. Some other sources
+to get the public key from include:
+
+* https://pkg.opnsense.org/releases/mirror/README
+* https://forum.opnsense.org/index.php?board=11.0
+* https://opnsense.org/blog/
+* https://github.com/opnsense/changelog/tree/master/doc
+* https://lists.opnsense.org/pipermail/announce/ (also available via mail so your HTTP(S) is not intercepted)
+* https://pkg.opnsense.org (/<HardenedBSD version & architecture>/<release version>/sets/changelog.txz) (lands signed and verified in the GUI of the running software)
+
+Note that only release announcements with images (typically all major
+releases) contain the public key. I.e. 18.7 would have a copy of the public
+key in the release announcement, but 18.7.9 would not.
+
+Once you have downloaded all the required files and a copy of the public key,
+and verified that the public key matches the public key from the alternate
+sources listed above, you can be relatively certain that the key has not
+been tampered with. To verify the downloaded image, run the following
+commands (substituting the names in brackets for the files you downloaded):
+
+``openssl base64 -d -in <filename>.sig -out /tmp/image.sig``
+
+``openssl dgst -sha256 -verify <key>.pub -signature /tmp/image.sig <image>.img.bz2``
+
+Make sure to change the "img" to "iso" in the second line if you downloaded
+a different installer type.
+
+If the output of the second command is "Verified OK", your image was verified
+successfully, and you can install it. If it has any other output, you may have
+made an error using the commands, or the image may have been compromised.
+
 ------------------
 Installation Media
 ------------------
+
 Depending on you hardware and use case different installation media are provided:
 
-+--------+-----------------------------------------------------+
-|Type    | | Description                                       |
-+========+=====================================================+
-| dvd    | | ISO installer image with live system capabilities |
-|        | | running in VGA-only mode                          |
-+--------+-----------------------------------------------------+
-| vga    | | USB installer image with live system capabilities |
-|        | | running in VGA-only mode                          |
-+--------+-----------------------------------------------------+
-| serial | | USB installer image with live system capabilities |
-|        | | running in serial console (115200) mode with      |
-|        | | secondary VGA support (no kernel messages though) |
-+--------+-----------------------------------------------------+
-| nano   | | a preinstalled serial image for 4GB USB sticks,   |
-|        | | SD or CF cards for use with embedded devices      |
-+--------+-----------------------------------------------------+
++--------+---------------------------------------------------+
+|Type    | Description                                       |
++========+===================================================+
+| dvd    | ISO installer image with live system capabilities |
+|        | running in VGA-only mode                          |
++--------+---------------------------------------------------+
+| vga    | USB installer image with live system capabilities |
+|        | running in VGA-only mode                          |
++--------+---------------------------------------------------+
+| serial | USB installer image with live system capabilities |
+|        | running in serial console (115200) mode with      |
+|        | secondary VGA support (no kernel messages though) |
++--------+---------------------------------------------------+
+| nano   | a preinstalled serial image for 4 GB USB sticks,  |
+|        | SD or CF cards for use with embedded devices      |
++--------+---------------------------------------------------+
 
 .. Warning::
 
@@ -97,14 +158,13 @@ Depending on you hardware and use case different installation media are provided
   and re-writes. For embedded (nano) versions memory disks for /var and /tmp are
   applied by default to prolong CF (flash) card lifetimes.
 
-  To enable for non embedded versions: Enable **System⇒Settings⇒Miscellaneous⇒RAM** Disk
-  Settings; afterwards reboot. Consider to enable an external syslog server as well.
+  To enable for non embedded versions: Go to :menuselection:`System --> Settings --> Miscellaneous --> Disk / Memory Settings`,
+  change the setting, then reboot. Consider to enable an external syslog server as well.
 
 ------------------------------
 Media Filename Composition
 ------------------------------
 .. blockdiag::
-  :scale: 100%
 
    diagram {
      default_shape = roundedbox;
@@ -153,11 +213,11 @@ Media Filename Composition
 
 .. Note::
 
-  **Please** be ware that the latest installation media does not always
+  **Please** be aware that the latest installation media does not always
   correspond with the latest released version. OPNsense installation images are
-  provided on a regular bases together with mayor versions in January and July.
+  provided on a regular basis together with major versions in January and July.
   More information on our release schedule is available from our package
-  repository see `README <https://pkg.opnsense.org/releases/16.1/README>`__
+  repository, see `README <https://pkg.opnsense.org/releases/mirror/README>`__
 
 --------------------
 OpenSSL and LibreSSL
@@ -165,7 +225,7 @@ OpenSSL and LibreSSL
 
 OPNsense images are provided based upon `OpenSSL <https://www.openssl.org>`__.
 The `LibreSSL <http://www.libressl.org>`__ flavor can be selected from within
-the GUI ( System⇒Firmware⇒Settings ). In order to apply your choice an update
+the GUI (:menuselection:`System --> Firmware --> Settings`). In order to apply your choice an update
 must be performed after save, which can include a reboot of the system.
 
 .. image:: ./images/firmware_flavour.png
@@ -180,14 +240,15 @@ Download the installation image from one of the mirrors listed on the `OPNsense
 The easiest method of installation is the USB-memstick installer. If
 your target platform has a serial interface choose the "serial image.
 64-bit and 32-bit install images are provided. The following examples
-apply to both.
+apply to both. If you need to know more about using the serial interface,
+consult the :doc:`serial access how-to<how-tos/serial_access>`.
 
-Write the image to a USB flash drive (>= 1GB) or an IDE hard disk,
-either with dd under FreeBSD or under Windows with physdiskwrite
+Write the image to a USB flash drive (>=1 GB) or an IDE hard disk,
+either with dd under FreeBSD, HardenedBSD or under Windows with physdiskwrite
 
 Before writing an (iso) image you need to unpack it first (use bunzip2).
 
-**FreeBSD**
+**FreeBSD, HardenedBSD**
 ::
 
   dd if=OPNsense-##.#.##-[Type]-[Architecture].img of=/dev/daX bs=16k
@@ -212,7 +273,7 @@ The device must be the ENTIRE device (in Windows/DOS language: the 'C'
 partition), and a raw I/O device (the 'r' in front of the device "sd6"),
 not a block mode device.
 
-**Mac OS X**
+**macOS**
 
 ::
 
@@ -345,8 +406,8 @@ By default you have to log in to enter the console.
 VLANs and assigning interfaces
     If choose to do manual interface assignment or when no config file can be
     found then you are asked to assign Interfaces and VLANs. VLANs are optional.
-    If you do not need VLAN's then choose **no**. You can always configure
-    VLAN's at a later time.
+    If you do not need VLANs then choose **no**. You can always configure
+    VLANs at a later time.
 
 LAN, WAN and optional interfaces
     The first interface is the LAN interface. Type the appropriate
@@ -361,14 +422,14 @@ Minimum installation actions
     In case of a minimum install setup (i.e. on CF cards), OPNsense can
     be run with all standard features, expect for the ones that require
     disk writes, e.g. a caching proxy like Squid. Do not create a swap
-    slice, but a RAM Disk instead. In the GUI enable **System⇒Settings⇒Miscellaneous⇒RAM Disk Settings**
+    slice, but a RAM Disk instead. In the GUI enable :menuselection:`System --> Settings --> Miscellaneous --> RAM Disk Settings`
     and set the size to 100-128 MB or more, depending on your available RAM.
     Afterwards reboot.
 
 **Enable RAM disk manually**
 
 .. image:: ./images/Screenshot_Use_RAMdisks.png
-   :scale: 100%
+   :width: 100%
 
 Then via console, check your /etc/fstab and make sure your primary
 partition has **rw,noatime** instead of just **rw**.
@@ -397,7 +458,7 @@ OPNsense features a command line
 interface (CLI) tool "opnsense-update". Via menu option **8) Shell**, the user can
 get to the shell and use opnsense-update.
 
-For help type *opnsense-update -help* and [Enter]
+For help, type *man opnsense-update* and press [Enter].
 
 .. rubric:: Upgrade from console
    :name: upgrade-from-console
@@ -407,7 +468,7 @@ The other method to upgrade the system is via console option **12) Upgrade from 
 .. rubric:: GUI
    :name: gui
 
-An update can be done through the GUI via **System⇒Firmware⇒Updates**.
+An update can be done through the GUI via :menuselection:`System --> Firmware --> Updates`.
 
 .. image:: ./images/firmware-update.png
-   :scale: 100%
+   :width: 100%

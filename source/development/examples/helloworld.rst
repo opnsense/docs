@@ -66,7 +66,7 @@ Architecture
 
 Always make sure there's a clear separation of concerns, back-end calls
 (like shell scripts) should be implemented using the configd system, all
-communication to the client should be handled from an api endpoint. (the
+communication to the client should be handled from an API endpoint. (the
 example provides more insights on how this works).
 
 Back-end programs should not access the config.xml directly, if data is
@@ -103,6 +103,7 @@ contain model specific methods and (by deriving it from BaseModel)
 automatically understands the second file.
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.php
 
     <?php
     namespace OPNsense\HelloWorld;
@@ -114,16 +115,15 @@ automatically understands the second file.
     }
 
 
-(/usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.php)
-
-Not all modules contain additional code in the php class, sometimes all
+Not all modules contain additional code in the PHP class, sometimes all
 the standard behaviour is already sufficient for your
 modules/application.
 
-Which is the model xml template, our skeleton starts with something like
+Which is the model XML template, our skeleton starts with something like
 this:
 
 .. code-block:: xml
+    :caption: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.xml
 
     <model>
         <mount>//OPNsense/helloworld</mount>
@@ -134,7 +134,6 @@ this:
         </items>
     </model>
 
-(/usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.xml)
 
 The content of the mount tag is very important, this is the location
 within the config.xml file where this model is responsible. Other models
@@ -160,10 +159,10 @@ directory containing the following data:
 
 
 .. code-block:: html
+    :caption: /usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
 
     <h1>Hello World!</h1>
 
-(/usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt)
 
 Controller
 ----------
@@ -176,11 +175,12 @@ Every OPNsense module should separate presentation from logic, that’s
 why there should always be multiple controllers per module.
 
 Our first controller handles the template rendering to the user and
-connects the user view we just created. We start by creating a php file
+connects the user view we just created. We start by creating a PHP file
 in controllers/OPNsense/HelloWorld/ with the following name
 IndexController.php and contents:
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/IndexController.php
 
     <?php
     namespace OPNsense\HelloWorld;
@@ -193,7 +193,6 @@ IndexController.php and contents:
         }
     }
 
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/IndexController.php)
 
 At this point you should be able to test if your work so far was
 successful, by going to the following location (after being logged in to
@@ -215,12 +214,13 @@ retrieval/changing of configuration data.
 They should live in a subdirectory of the controller called Api and
 extend the corresponding class.
 
-For our modules we create two api controllers, one for controlling
+For our modules we create two API controllers, one for controlling
 settings and one for performing service actions. (Named
 SettingsController.php and ServiceController.php) Both should look like
 this (replace Settings with Service for the other one):
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
 
     <?php
     namespace OPNsense\HelloWorld\Api;
@@ -230,7 +230,6 @@ this (replace Settings with Service for the other one):
     {
     }
 
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php)
 
 ----------------
 First Input Form
@@ -266,9 +265,9 @@ Adding Fields
 .. rubric:: Adding fields to your model
    :name: adding-fields-to-your-model
 
-When building the skeleton, we have created an empty model (xml), which
+When building the skeleton, we have created an empty model (XML), which
 we are going to fill with some attributes now. The items section of the
-model xml should contain the structure you want to use for your
+model XML should contain the structure you want to use for your
 application, you can create trees to hold data in here. All leaves
 should contain a field type to identify and validate it’s content. The
 list of attributes for our application can be translated to this:
@@ -310,17 +309,18 @@ Enabled).
 Presentation XML
 ----------------
 
-.. rubric:: Create a presentation xml to feed your template
+.. rubric:: Create a presentation XML to feed your template
    :name: create-a-presentation-xml-to-feed-your-template
 
 Because creating forms is one of the key assets of the system, we have
 build some easy to use wrappers to guide you through the process. First
-we create an xml file for the presentation, which defines fields to use
+we create an XML file for the presentation, which defines fields to use
 and adds some information for your template to render. Create a file in
 your controller directory using the sub directory forms and name it
 general.xml. Next copy in the following content:
 
 .. code-block:: xml
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/forms/general.xml
 
     <form>
         <field>
@@ -353,7 +353,6 @@ general.xml. Next copy in the following content:
         </field>
      </form>
 
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/forms/general.xml)
 
 All items should contain at least an id (where to map data from/to), a
 type (how to display) and a label, which identifies it to the user.
@@ -377,7 +376,7 @@ something like this:
     {{ partial("layout_partials/base_form",['fields':generalForm,'id':'frm_GeneralSettings'])}}
 
 This tells the template system to add a form using the contents of
-generalForm and name it frm\_GeneralSettings in the html page. Based on
+generalForm and name it frm\_GeneralSettings in the HTML page. Based on
 a standard template part which is already part of the standard system,
 named base\_form.volt.
 
@@ -392,7 +391,7 @@ Create API calls
    :name: create-api-calls-to-retrieve-and-store-data
 
 The framework provides some helpful utilities to get and set data from
-and to the configuration xml by using your defined model. First step in
+and to the configuration XML by using your defined model. First step in
 binding your model to the system is to add a method to the
 SettingsController to fetch the data from our configuration (or provide
 the defaults if there is no content).
@@ -409,6 +408,7 @@ to get data from our system, and put it into a json object for the
 client (browser) to parse, by using the wrappers already in our model.
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
 
     * retrieve HelloWorld general settings
      * @return array general settings
@@ -423,8 +423,6 @@ client (browser) to parse, by using the wrappers already in our model.
         }
         return $result;
     }
-
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php)
 
 You will probably notice the return value of the action, it's a standard
 array which uses "helloworld" for all attributes from getNodes() which
@@ -443,6 +441,7 @@ For saving the data back, we need a similar kind of call, let’s name it
 “set” and add this to the same php file:
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
 
     /**
      * update HelloWorld settings
@@ -475,7 +474,6 @@ For saving the data back, we need a similar kind of call, let’s name it
         return $result;
     }
 
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php)
 
 And include the Config class from our base system by adding this to the
 “use” section:
@@ -484,6 +482,36 @@ And include the Config class from our base system by adding this to the
 
     use \OPNsense\Core\Config;
 
+
+[Create API calls] Simplify a recurring pattern
+.................................................
+
+As one can imagine, retrieving and setting data is a pattern that is used quite often and for which we would like to
+minimize the amount of work needed to incorporate.
+
+The API example can be simplified by using one of our base classes (:code:`ApiMutableModelControllerBase`), which would
+lead to the same result. For comparison we have added a different endpoint in :code:`SimplifiedSettingsController.php`
+
+.. code-block:: php
+
+    class SimplifiedSettingsController extends ApiMutableModelControllerBase
+    {
+        protected static $internalModelName = 'helloworld';
+        protected static $internalModelClass = 'OPNsense\HelloWorld\HelloWorld';
+    }
+
+
+The "magic" is hidden underneath, but equals the example previously given. :code:`$internalModelName` declares the root
+of the returned array structure, :code:`$internalModelClass` tells the controller which model it should use.
+
+We recommend using (:code:`ApiMutableModelControllerBase`) in most cases,
+but to better understand the components and their responsibilities we choose to explain the separate steps.
+
+
+.. Note::
+
+      :code:`ApiMutableModelControllerBase` contains more shared functionality for grid like operations as well, most of
+      our api controllers use this as a base.
 
 Support jQuery API calls
 ------------------------
@@ -530,7 +558,7 @@ Let’s give it a try and save our data, without modifying it first.
 
 Next correct the errors and save again, on successful save the data
 should be stored in the config.xml. If you want to change validation
-messages, just edit the model xml and add your message in the
+messages, just edit the model XML and add your message in the
 ValidationMessage tag. For example:
 
 .. code-block:: xml
@@ -542,6 +570,11 @@ ValidationMessage tag. For example:
 
 Changes the “email address invalid” into “please specify a valid email
 address”
+
+.. Tip::
+
+    replace :code:`/api/helloworld/settings` with :code:`/api/helloworld/simplifiedsettings` to use the simplified
+    api controller as explained in  "Simplify a recurring pattern" earlier.
 
 Add actions
 -----------
@@ -613,6 +646,7 @@ add a new action to the class called “reloadAction” using this piece of
 code:
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
 
     public function reloadAction()
     {
@@ -627,11 +661,9 @@ code:
         return array("status" => $status);
     }
 
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php)
-
 This validates the type of action (it should always be POST to enable
-csrf protection) and adds a backend action for reloading the template.
-When successful the action will return “status”:”ok” as json object back
+CSRF protection) and adds a backend action for reloading the template.
+When successful the action will return "status":"ok" as json object back
 to the client.
 
 Now we are able to refresh the template content, but the user interface
@@ -665,7 +697,7 @@ What have we accomplished now, we can input data, validate it and save
 it to the corresponding format of the actual service or application,
 which uses this data. So if you have a third party application, which
 you want to integrate into the user interface. You should be able to
-generate what it needs now. (there’s more to learn, but these are the
+generate what it needs now. (There’s more to learn, but these are the
 basics).
 
 But how do should we control that third part program now? That’s the
@@ -675,9 +707,9 @@ next step.
 Controlling the sample
 ----------------------
 
-In stead of running all kinds of shell commands directly from the php
+Instead of running all kinds of shell commands directly from the PHP
 code, which very often need root access (starting/stopping services,
-etc), we should always communicate to our backend process which holds
+etc.), we should always communicate to our backend process which holds
 templates of possible things to run and protects your system from
 executing arbitrary commands.
 
@@ -727,6 +759,7 @@ testAction and let it pass json data to our clients when using a POST
 type request.
 
 .. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
 
     public function testAction()
     {
@@ -741,7 +774,6 @@ type request.
         return array("message" => "unable to run config action");
     }
 
-(/usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php)
 
 And now we can make our user interface aware of the action, place a
 button and link an action in the index.volt. Using the following
@@ -760,16 +792,16 @@ elements:
         });
     });
 
-(in html section)
+(in HTML section)
 
 .. code-block:: xml
+    :caption: /usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
 
     <div class="alert alert-info hidden" role="alert" id="responseMsg">
      
     </div>
     <button class="btn btn-primary"  id="testAct" type="button"><b>{{ lang._('Test') }}</b></button>
 
-(/usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt)
 
 Now go back to the page and save some data using the save button, next
 press test to see some results.
@@ -785,7 +817,7 @@ This works because we are using the gettext library which is available to all GU
 While the XML based user interfaces are supporting it automatically,
 there may still the need to call it manually (buttons, tabs etc.).
 
-If you have a static string, you should add it like this into a classic php page:
+If you have a static string, you should add it like this into a classic PHP page:
 
 .. code-block:: php
 
@@ -848,15 +880,15 @@ automatically picks up this new information.
 Plugin to access control (ACL)
 ------------------------------
 
-If we want to authorize users to access this module, we can add an acl
+If we want to authorize users to access this module, we can add an ACL
 to this module. Without it, only admin users can access it. Create an
-xml file in the model directory name ACL/ACL.xml and place the following
+XML file in the model directory name ACL/ACL.xml and place the following
 content in it:
 
 .. code-block:: xml
 
     <acl>
-        <!-- unique acl key, must be globally unique for all acl's  -->
+        <!-- unique acl key, must be globally unique for all ACLs  -->
         <page-user-helloworld>
             <name>WebCfg - Users: Hello World! </name>
             <description>Allow access to the Hello World! module</description>
@@ -867,11 +899,10 @@ content in it:
         </page-user-helloworld>
     </acl>
 
-This creates an acl key named “page-user-helloworld” which authorizes
-access to both the ui and api urls of this application. You can now
+This creates an ACL key named “page-user-helloworld” which authorizes
+access to both the ui and API urls of this application. You can now
 grant access to this module from the system user manager.
 
-|
 
 ----------------------------
 Create an installable plugin
@@ -917,6 +948,7 @@ directory, which results in the following file listing:
 
     src/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
     src/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
+    src/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SimplifiedSettingsController.php
     src/opnsense/mvc/app/controllers/OPNsense/HelloWorld/IndexController.php
     src/opnsense/mvc/app/controllers/OPNsense/HelloWorld/forms/general.xml
     src/opnsense/mvc/app/models/OPNsense/HelloWorld/ACL/ACL.xml
@@ -958,6 +990,7 @@ prefixed with os-, our new package file will be called:
 -  source of this example :
    https://github.com/opnsense/plugins/tree/master/devel/helloworld
 -  build instructions : https://github.com/opnsense/tools
+-  practical frontend development : https://github.com/opnsense/ui_devtools
 -  frontend template language reference (Volt) :
    https://docs.phalconphp.com/en/latest/reference/volt.html
 -  configuration template language reference (mostly the same as Volt) :

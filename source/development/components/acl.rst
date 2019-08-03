@@ -21,18 +21,18 @@ determine if a page can be accessed by a user:
    user)
 #. One or more groups for that user, stored in system/group which
    contains priv sections.
-#. A php file binding the priv section content to a page mask (including
+#. A PHP file binding the priv section content to a page mask (including
    wildcards)
 
 Our temporary solution is to keep the user and the group in place and replace the
-php file with a simple config in the model which uses the same mask construction
+PHP file with a simple config in the model which uses the same mask construction
 there was in the old codebase. To bind priv to pages, edit models/OPNsense/Core/ACL\_Legacy\_Page\_Map.txt
 
 --------------
-Usage from php
+Usage from PHP
 --------------
 
-Using the system from php is rather simple:
+Using the system from PHP is rather simple:
 
 .. code-block:: php
 
@@ -45,7 +45,7 @@ Using the system from php is rather simple:
 Usage in Volt templates
 -----------------------
 
-The acl scheme is bound to the default UI controller, and can be used by
+The ACL scheme is bound to the default UI controller, and can be used by
 using the acl keyword:
 
 .. code-block:: jinja

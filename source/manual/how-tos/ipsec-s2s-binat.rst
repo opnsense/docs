@@ -3,7 +3,7 @@ IPSec BINAT
 ===============
 
 Assume company A has local LAN 10.0.1.0/24 and company B has local LAN 10.0.2.0/24.
-Also we assume that on both sides the other networks are already in use, e.g. in company A the network 10.0.2.0/24 is used for Voice and in company B network 10.0.1.0/24 is used for Guest Wifi.
+Also we assume that on both sides the other networks are already in use, e.g. in company A the network 10.0.2.0/24 is used for Voice and in company B network 10.0.1.0/24 is used for Guest Wi-Fi.
 
 We have to define new networks for the Phase 2 with unused ones and create NAT entries to reach the final systems.
 

@@ -6,7 +6,7 @@ using OPNsense and Google's Authenticator. All services of OPNsense can be used
 with this 2FA solution.
 
 .. image:: /manual/images/two_factor_authentication.png
-   :scale: 100%
+   :width: 100%
 
 .. Note::
 
@@ -17,7 +17,7 @@ with this 2FA solution.
 --------------------------------------
 Step 1 - Add New Authentication Server
 --------------------------------------
-To add a TOTP server go to **System->Access-Servers** and press **Add server** in
+To add a TOTP server go to :menuselection:`System --> Access --> Servers` and press **Add server** in
 the top right corner. Then fill in the form as follows:
 
 ====================== =================================== ========================================
@@ -37,7 +37,7 @@ Install using the normal procedure for your device.
 ---------------------------
 Step 3 - Add or modify user
 ---------------------------
-For this example we will create a new user, go to **System->Access-Users** and click
+For this example we will create a new user, go to :menuselection:`System --> Access --> Users` and click
 on the plus sign in the lower right corner.
 
 Enter a **Username** and **Password** and fill in the other fields just as you would
@@ -52,12 +52,12 @@ To activate your new OTP seed on the Google Authenticator, first reopen the user
 you just created by clicking on the pencil icon.
 
 .. image:: images/OTP_seed.png
-   :scale: 100%
+   :width: 100%
 
 Now it will show a QR code:
 
 .. image:: images/otp_qr_code.png
-   :scale: 100%
+   :width: 100%
 
 .. Warning::
 
@@ -72,18 +72,18 @@ directly.
 In case of SailOTP the configuration works like this:
 
 .. image:: images/sailotp_menu.jpg
-   :scale: 100%
+   :width: 100%
 
 Pull down to open the application menu and choose the entry to add a new Token.
 
 .. image:: images/sailotp_scan_qr.jpg
-   :scale: 100%
+   :width: 100%
 
 In the next step, you have to scan the previously created QR code by clicking
 on the screen.
 
 .. image:: images/sailotp_scanresult.jpg
-   :scale: 100%
+   :width: 100%
 
 When the QR code is scanned, a new view will open where you can
 see the details of the result. This view can be used to check if the generated
@@ -106,7 +106,7 @@ Google Authenticator Android, iOS            https://www.google.com/landing/2ste
 Step 5 - Test the token
 -----------------------
 For testing the user authentication, OPNsense offers a simple tester.
-Go to **System->Access->Tester**
+Go to :menuselection:`System --> Access --> Tester`
 
 Select the Authentication server you have configured, and enter the user name.
 Then enter the ***token** + **password**, remember the order
@@ -122,7 +122,7 @@ is token and then password **in the same field**.
 Hit the test button and if all goes well you should see *successfully authenticated*.
 
 .. image:: images/system_access_tester.png
-   :scale: 100%
+   :width: 100%
 
 ------------------------
 Step 6 - Using the token
@@ -131,8 +131,8 @@ To use the token in any application/service that you have configured, just open
 the Google Authenticator and add the created token/key **before** your regular password.
 
 .. Warning::
-   Remember, you need to enter the token **before** or **after** you password 
-   (depending on your configuration)! And the password field should be used to enter 
+   Remember, you need to enter the token **before** or **after** you password
+   (depending on your configuration)! And the password field should be used to enter
    both token and your password, like: **Password:** 123456PASSWORD
 
 
@@ -140,4 +140,4 @@ The code will change every 30 seconds.
 Sample code:
 
 .. image:: images/google_token_sample.png
-   :scale: 25%
+   :width: 25%

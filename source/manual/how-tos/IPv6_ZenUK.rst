@@ -1,5 +1,5 @@
-**IPv6 For Zen UK**
-===================
+IPv6 For Zen UK
+===============
 
 **Original Author:** Martin Wasley
 
@@ -27,14 +27,14 @@ connection, for IPv6 using DHCP, select DHCPv6 in the IPv6 connection as
 shown below.
 
 .. image:: images/ZenUK_image1.png
-	:scale: 100%
+	:width: 100%
 
 The next step is to configure the parameters required for DHCPv6, these
 are located in the DHCPv6 client configuration section of the WAN
 interface shown below.
 
 .. image:: images/ZenUK_image2.png
-	:scale: 100%
+	:width: 100%
 
 As stated before, Zen provide a /48 prefix, so select the prefix size
 accordingly. We directly send the solicit as in this case we do not wish
@@ -55,18 +55,18 @@ Click ‘Save’ and then ‘Apply’.
 All that is required now is to set the LAN interface to use assigned
 IPv6 prefix.
 
-Select Interfaces->LAN and set the IPv6 Configuration Type to ‘Track
+Select :menuselection:`Interfaces --> [LAN]` and set the IPv6 Configuration Type to ‘Track
 Interface’
 
 .. image:: images/ZenUK_image3.png
-	:scale: 100%
+	:width: 100%
 
 Finally, set the Track IPv6 Interface to WAN, unless there is a special
 requirement which this document does not cover, set the IPv6 Prefix ID
 to 0.
 
 .. image:: images/ZenUK_image4.png
-	:scale: 100%
+	:width: 100%
 
 Click ‘Save’ and then ‘Apply’.
 
@@ -88,7 +88,7 @@ servers.
 **Create Gateway**
 ------------------
 Firstly, we do need to set up a gateway, this is for monitoring more
-than anything else. Select Gateways->All then click ‘Add Gateway’.
+than anything else. Select :menuselection:`Gateways --> All` then click ‘Add Gateway’.
 
 Now, we know that Zen give us a /64 on our WAN interface, for example.
 
@@ -107,19 +107,19 @@ Set up the gateway like this:
 
 
 .. image:: images/ZenUK_image5.png
-	:scale: 100%
+	:width: 100%
 
 Click Save.
 
 **WAN Interface**
 -----------------
 Once we have our gateway in place we can then set up the WAN interface.
-Select Interfaces->WAN.
+Select :menuselection:`Interfaces --> [WAN]`.
 
-Go to IPv6 Configuration Type and Select Static IPv6.
+Go to IPv6 Configuration Type and select Static IPv6.
 
 .. image:: images/ZenUK_image6.png
-	:scale: 100%
+	:width: 100%
 
 Go to Static IPv6 Configuration and set the IPv6 Static address:
 
@@ -127,7 +127,7 @@ Go to Static IPv6 Configuration and set the IPv6 Static address:
 DHCPv6.**
 
 .. image:: images/ZenUK_image7.png
-	:scale: 100%
+	:width: 100%
 
 Select Use IPv4 connectivity, all IPv6 traffic goes via the PPPoE link.
 
@@ -135,7 +135,7 @@ Finally, select the IPv6 Upstream Gateway, this is the gateway you
 created earlier.
 
 .. image:: images/ZenUK_image8.png
-	:scale: 100%
+	:width: 100%
 
 Click Save and Apply.
 
@@ -146,7 +146,7 @@ The LAN interface is very simple to set up, all we need to do is set the
 IPv6 Configuration Type to Static, and enter our static address.
 
 .. image:: images/ZenUK_image9.png
-	:scale: 100%
+	:width: 100%
 
 Zen give us a /48 prefix to use on the LAN, so pick an address from that
 range. For example our prefix is:
@@ -158,7 +158,7 @@ So
 2a02:8242:55AB:0:4:3:2:1 would suffice.
 
 .. image:: images/ZenUK_image10.png
-	:scale: 100%
+	:width: 100%
 
 We want to use a /64 prefix on this interface.
 
@@ -171,13 +171,13 @@ Click Save and Apply.
 -----------------
 
 When using DHCPv6 on the WAN, our DHCPv6 LAN server is set
-automatically, however when using statics, we need to set it up. Goto
-Services->DHCPv6[LAN]
+automatically, however when using statics, we need to set it up. Go to
+:menuselection:`Services --> DHCPv6[LAN]`.
 
 Firstly, enable the server.
 
 .. image:: images/ZenUK_image11.png
-	:scale: 100%
+	:width: 100%
 
 You will notice that the subnet already has a range, and the subnet mask
 is the /64 we set on the LAN. There is also a range we must use, the
@@ -192,7 +192,7 @@ Enter the upper – end range that the server will use.
 2a02:8231:d256::eeee:ffff:ffff:ffff
 
 .. image:: images/ZenUK_image12.png
-	:scale: 100%
+	:width: 100%
 
 This should cover most LAN subnets, the range given here gives
 281,474.976.710,655 addresses.
@@ -204,7 +204,7 @@ example we will only be giving out 64 bit prefixes. We know we have been
 given a /48 prefix by Zen, so we enter our prefix range like this:
 
 .. image:: images/ZenUK_image13.png
-	:scale: 100%
+	:width: 100%
 
 Our prefix range is the upper 48 bits, plus some of the next 16 bits,
 but we must not cross into the range we have used for our LAN addresses.

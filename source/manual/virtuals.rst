@@ -13,8 +13,8 @@ General tips
 For optimum performance and compatibility, these guides are given:
 
 * Minimum required RAM is 1 GB
-* Minimum recommended virtual disk size of 8GB
-* Disable all off-loading settings in **Interfaces->Settings**
+* Minimum recommended virtual disk size of 8 GB
+* Disable all off-loading settings in :menuselection:`Interfaces --> Settings`
 
 .. image:: images/disableoffloading.png
 
@@ -25,7 +25,7 @@ VMware ESXi
 VMware offers full instructions for installing FreeBSD, these can be found
 `here <http://partnerweb.vmware.com/GOSIG/FreeBSD_11x.html>`__.
 
-To install the VMware tools just goto **System->Firmware->Plugins** and install
+To install the VMware tools just goto :menuselection:`System --> Firmware --> Plugins` and install
 **os-vmware** by clicking on the **+** sign next to it.
 
 .. image:: images/os-vmware.png
@@ -39,7 +39,7 @@ To install the VMware tools just goto **System->Firmware->Plugins** and install
 
 Xen
 ---
-To install the Xen tools just goto **System->Firmware->Plugins** and install
+To install the Xen tools just goto :menuselection:`System --> Firmware --> Plugins` and install
 **os-xen** by clicking on the **+** sign next to it.
 
 .. image:: images/os-xen.png
@@ -86,14 +86,25 @@ opnsense bootstrap is available for our
 Amazon AWS EC2 Cloud
 --------------------
 .. image:: how-tos/images/amazon-web-services.png
-    :scale: 100%
+    :height: 80px
 
 Installing OPNsense into the Amazon cloud can be a dounting task as no console is
 offered. As part of Deciso's support packages (see `OPNsense commercial Support
-<https://opnsense.org/support-overview/commercial-support/>`__), deciso offer free
+<https://opnsense.org/support-overview/commercial-support/>`__), Deciso offer free
 access to its OPNsense Amazon Machine Image (AMI).
 
 See also our how-to for :doc:`how-tos/installaws`.
+
+
+--------------------
+Microsoft Azure
+--------------------
+.. image:: how-tos/images/Azure.png
+    :height: 80px
+
+OPNsense is also available in the Microsoft Azure Marketplace as an easy installable virtual appliance.
+
+See also our how-to for :doc:`how-tos/installazure`.
 
 -------------
 Common Issues
@@ -109,7 +120,7 @@ article first.
 File copy failed during installation
 ------------------------------------
 This issue is most likely caused by low memory setting. Make sure your virtual
-OPNsense installation has a minimum of 1GB of RAM.
+OPNsense installation has a minimum of 1 GB of RAM.
 
 ------------------
 

@@ -60,7 +60,7 @@ Configuration in 10 easy steps
 ---------------------------------------
 
 To disable outbound NAT, go to
-**Firewall** -> **NAT** -> **Outbound**: Disable Outbound NAT rule generation
+:menuselection:`Firewall --> NAT --> Outbound` and select “Disable Outbound NAT rule generation”.
 
 |Filtering Bridge Step 1.png|
 
@@ -68,13 +68,13 @@ To disable outbound NAT, go to
 --------------------------
 
 Enable filtering bridge by changing **net.link.bridge.pfil\_bridge**
-from default to 1 in **System** -> **Settings** -> **System Tuneables**
+from default to 1 in :menuselection:`System --> Settings --> System Tuneables`.
 
 |Filtering Bridge Step 2.png|
 
 And disable filtering on member interfaces by changing
 **net.link.bridge.pfil\_member** from default to 0 in
-**System** -> **Settings** -> **System Tuneables**
+:menuselection:`System --> Settings --> System Tuneables`.
 
 |Filtering Bridge Step2a.png|
 
@@ -82,7 +82,7 @@ And disable filtering on member interfaces by changing
 --------------------
 
 Create a bridge of LAN and WAN, go to
-**Interfaces** -> **Other Types** -> **Bridge** :Add Select LAN and WAN.
+:menuselection:`Interfaces --> Other Types --> Bridge`. Add Select LAN and WAN.
 
 |Filtering Bridge Step 3a.png|
 
@@ -95,21 +95,21 @@ To be able to configure and manage the filtering bridge (OPNsense)
 afterwards, we will need to assign a new interface to the bridge and
 setup an IP address.
 
-Go to **Interfaces** -> **Assign** -> **Available network ports** , select
+Go to :menuselection:`Interfaces --> Assign --> Available network port`, select
 the bridge from the list and hit **+**.
 
 |Filtering Bridge Step 4.png|
 
 Now Add an IP address to the interface that you would like to use to
-manage the bridge. Go to **Interfaces** -> **OPT1** enable the interface
+manage the bridge. Go to :menuselection:`Interfaces --> [OPT1]`, enable the interface
 and fill-in the ip/netmask.
 
 5. Disable Block private networks & bogon
 -----------------------------------------
 
-For the WAN interface we nee to disable blocking of private networks & bogus ip's.
+For the WAN interface we nee to disable blocking of private networks & bogus IPs.
 
-Goto **Interfaces** -> **WAN** and unselect **Block private networks**
+Go to :menuselection:`Interfaces --> [WAN]` and unselect **Block private networks**
 and **Block bogon networks**.
 
 |Filtering Bridge Step 5.png|
@@ -117,7 +117,7 @@ and **Block bogon networks**.
 6. Disable the DHCP server on LAN
 ---------------------------------
 
-To disable the DCP server on LAN goto **Services** -> **DHCP Server** -> **LAN** and
+To disable the DHCP server on LAN go to :menuselection:`Services --> DHCPv4 --> [LAN]` and
 unselect enable.
 
 |Filtering Bridge Step 6.png|
@@ -133,7 +133,7 @@ This step is to ensure we have a full transparent bridge without any filtering
 taking place. You can setup the correct rules when you have confirmed the bridge
 to work properly.
 
-Goto **Firewall** -> **Rules** and add a rule per interface to allow all traffic
+Go to :menuselection:`Firewall --> Rules` and add a rule per interface to allow all traffic
 of any type.
 
 |Filtering Bridge Step 7.png|
@@ -146,14 +146,14 @@ ignored. So you can skip this step.
 As we now have setup allow rules for each interface we can safely remove
 the Anti Lockout rule on LAN
 
-Goto **Firewall** -> **Settings** -> **Admin Access** :Anti-lockout and select
+Go to :menuselection:`Firewall --> Settings --> Admin Access`: Anti-lockout and select
 this option to disable
 
 9. Set LAN and WAN interface type to 'none'
 -------------------------------------------
 
 Now remove the IP subnets in use for LAN and WAN by changing the
-interface type to none. Goto **Interfaces** -> **LAN** & **Interfaces** -> **WAN**
+interface type to none. Go to :menuselection:`Interfaces --> [LAN]` and :menuselection:`Interfaces --> [WAN]`
 to do so.
 
 |Filtering Bridge Step 9.png|

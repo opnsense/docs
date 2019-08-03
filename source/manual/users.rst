@@ -3,7 +3,7 @@
 =================
 
 .. image:: images/user_manager.png
-   :scale: 100%
+   :width: 100%
 
 The user manager of OPNsense allows for controlling access to the different
 part (pages) of the configurator as well as controlling access to particular
@@ -44,19 +44,26 @@ for a specific user group. A user should be an individual, a group needs to be
 specific in such a way that anyone of that group can be granted the same access
 rights, called privileges.
 
-Services
+Authentication services
 ----------------------------------
 
-The authentication service to use can be configured using the settings in **System->Access->Settings**.
-Here you can also find timeout settings for the user sessions and for local user accounts you will have the option
-to improve security using password policy constraints.
+Authentication services can be configured using the settings in :menuselection:`System --> Access --> Servers`.
+This includes both local accounts and remote authentication.
 
-Below an overview of the settings, which are available:
+By default, OPNsense GUI login will use local accounts. This can be changed, however,
+by going to :menuselection:`System --> Settings --> Administration`, scrolling down to the "Authentication" group,
+and changing the 'Server' option.
+
+Local account configuration
+---------------------------
+
+Settings for handling login via local accounts can be set by going to :menuselection:`System --> Access --> Servers`,
+then clicking the 'Edit' icon (a pencil) for 'Local Database'. Here, you can improve security of
+local user accounts by setting password length and complexity constraints.
+
+An overview of available settings:
 
 =====================================  ============================================================================================
- **Session Timeout**                   Session timeout if other then our default.
- **Authentication Server**             Primary authentication method to use.
- **Authentication Server (fallback)**  Fallback option if primary service fails.
  **Policy**                            Enable password policy constraints.
  **Duration**                          [Policy] Password duration, optionally define how often the user should change his or her password.
  **Length**                            [Policy] Minimum password length to require.
@@ -68,14 +75,12 @@ Below an overview of the settings, which are available:
 Configuration
 -------------
 
-Local User Manager
-------------------
-:doc:`how-tos/user-local`
 
-LDAP
-----
-:doc:`how-tos/user-ldap`
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
 
-Radius
-------
-:doc:`how-tos/user-radius`
+   how-tos/user-local
+   how-tos/user-ldap
+   how-tos/user-radius
+   two_factor

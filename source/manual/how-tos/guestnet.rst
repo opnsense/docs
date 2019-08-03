@@ -6,7 +6,7 @@ Guest Networks are widely used to allow guests controlled internet access at
 hotels, RV Parks or businesses.
 
 .. image:: images/opnsense_hotspot_controller.png
-    :scale: 100%
+    :width: 100%
 
 .. Note::
     For the example we expect the GUESTNET interface to be connected with your
@@ -26,7 +26,7 @@ Hotels and RV Parks
 -------------------
 Hotels and RV parks usually utilize a captive portal to allow guests (paid) access
 to internet for a limited duration. Guests need to login using a voucher they can
-either buy or obtain for free at the reception. OPNsense has build-in support for
+either buy or obtain for free at the reception. OPNsense has built-in support for
 vouchers and can easily create them on the fly. With this example we will show
 you how to setup the Guest Network for this purpose and setup a reception account
 for creating new vouchers.
@@ -54,7 +54,7 @@ with that and after finishing add/change the specifics to match the Hotel Guest 
 Step 1 - Configure Interface
 ----------------------------
 For the Guest Network we will add a new interface.
-Go to **Interfaces->Assignments** And use the **+** to add a new interface.
+Go to :menuselection:`Interfaces --> Assignments` And use the **+** to add a new interface.
 Press **Save**. The new interface will be called **OPT1**, click on [OPT1] in the
 left menu to change its settings.
 
@@ -72,7 +72,7 @@ Select **Enable Interface** and fill in the following data for our example:
  **MSS**                        (Leave Blank)
  **Speed and duplex**           Default           *You may also select the speed when known*
  **Static IPv4 address**        192.168.200.1/24  *We will use this segment for our guests*
- **IPv4 Upstream Gateway**      None
+ **IPv4 Upstream Gateway**      Auto-detect
 ============================== ================= ==============================================
 
 Press **Save** and then **Apply changes**.
@@ -80,7 +80,7 @@ Press **Save** and then **Apply changes**.
 ------------------------------
 Step 2 - Configure DHCP Server
 ------------------------------
-Go to **Services->DHCP->Server** and click on the tab **GUESTNET**.
+Go to :menuselection:`Services --> DHCPv4 --> [GUESTNET]`.
 
 Fill in the following to setup the DHCP server for our guest net (leave everything
  else on its default setting):
@@ -88,7 +88,7 @@ Fill in the following to setup the DHCP server for our guest net (leave everythi
 
 ================ ==================================== =======================================
  **Enable**       Checked                               *Enable the DCHP server on GUESTNET*
- **Range**        192.168.200.100 to 192.168.200.200    *Serve ip's from this range*
+ **Range**        192.168.200.100 to 192.168.200.200    *Serve IPs from this range*
  **DNS servers**  192.168.200.1                         *Supply a DNS with the lease*
  **Gateway**      192.168.200.1                         *Supply a gateway with the lease*
 ================ ==================================== =======================================
@@ -98,7 +98,7 @@ Click **Save**.
 ---------------------------
 Step 3 - Add Firewall Rules
 ---------------------------
-Go to **Firewall->Rules** to add a new rule.
+Go to :menuselection:`Firewall --> Rules` to add a new rule.
 
 Now add the following rules (in order of prevalence):
 
@@ -190,13 +190,13 @@ Click **Save** and then **Apply changes**
 Your rules should look similar to the screenshot below:
 
 .. image:: images/guestnet_fwrules.png
-    :scale: 100%
+    :width: 100%
 
 
 ------------------------------
 Step 4 - Create Captive Portal
 ------------------------------
-Go to **Services->Captive Portal->Administration**
+Go to :menuselection:`Services --> Captive Portal --> Administration`
 
 To add a new Zone press the **+** in the lower right corner of the form.
 
@@ -228,35 +228,34 @@ Step 5 - Create Template
 The template feature is one of the most powerful features of OPNsense's Captive
 Portal solution and it's very easy to work with.
 
-Lets create a custom landing page, to do so click on the tab **Templates** and
+Let's create a custom landing page, to do so click on the tab **Templates** and
 click on the download icon in the lower right corner ( |download| ).
 
 .. image:: images/template_download.png
-    :scale: 100%
 
 Now download the default template, we will use this to create our own.
 Unpack the template zip file, you should have something similar to this:
 
 .. image:: images/template_filelisting.png
-    :scale: 100%
+    :width: 100%
 
 Most files of the template can be modified, but some are default and may not be
 changes. Upon upload any changes to the files listed in **exclude.list** will be
-ignored. Currently these include the bootstrap java scripting and some fonts.
+ignored. Currently these include the bootstrap JavaScript and some fonts.
 
 With the captive portal enabled the default screen looks like:
 
 .. image:: images/default_login_no_authenticator.png
-    :scale: 100%
+    :width: 100%
 
-Lets change this default with a new logo and a welcome message, to this:
+Let's change this default with a new logo and a welcome message, to this:
 
 .. image:: images/mycompany_login.png
 
 To do so use your favourite editor and open the **index.html** file to make the
 changes.
 
-Lets make the following changes to the template:
+Let's make the following changes to the template:
 
 #. Change the logo to **company-logo.png**
 #. Remove the navigation bar on the top
@@ -305,26 +304,25 @@ Enter a **Template Name**, for this example we use **Company**.
 Hit Upload ( |upload| )
 
 .. |download| image:: images/btn_download.png
-      :scale: 100%
+      :width: 100%
 
 .. |upload| image:: images/btn_upload.png
-      :scale: 100%
 
 To enable the captive portal on the GUESTNET interface just click on **Apply**.
 
 -------------------------------
 Step 6 - Limit Guests Bandwidth
 -------------------------------
-For our example we will reserve 10Mbps down and 1Mbps Up for the Guest Network's
+For our example we will reserve 10 Mbps down and 1 Mbps Up for the Guest Network's
 Internet Access. This bandwidth will be shared evenly between connected clients.
 
 .. Note::
       With sharing evenly we mean that if 10 users at the same time try to use
       as much bandwidth as possible then everyone gets 1/10th. So in our example
-      that would be 1Mbps down stream (download). It is also possible to limit
+      that would be 1 Mbps down stream (download). It is also possible to limit
       the traffic per user see also :doc:`shaper`
 
-Go to: **Firewall->Traffic Shaper->Settings**.
+Go to: :menuselection:`Firewall --> Traffic Shaper --> Settings`.
 
 Create a pipe for the Download by pressing the **+** in the lower right corner of
 the form and enter the following details:
@@ -337,7 +335,7 @@ the form and enter the following details:
  **Description**        pipe_10Mbps_down
 ====================== ===================
 
-Click on **Save changes**.
+Click **Save changes**.
 And add another pipe for the upload traffic.
 
 ====================== ===================
@@ -351,7 +349,7 @@ And add another pipe for the upload traffic.
 Click on **Save changes**.
 
 
-Create the traffic shaper rules.Click on the tab **Rules** and press the  **+**
+Create the traffic shaper rules. Click on the tab **Rules** and press the  **+**
 to do so.
 
 First toggle the advanced mode (upper left corner of the form) and then fill in
@@ -363,7 +361,7 @@ the following details (leave everything not specified on defaults):
  **interface 2**   GUESTNET
  **direction**     in
  **target**        pipe_10Mbps_down
- **description**   Limit Guests download to 10Mbps
+ **description**   Limit Guests download to 10 Mbps
 ================= ==================================
 
 Click **Save changes**.
@@ -374,7 +372,7 @@ Click **Save changes**.
  **interface 2**   GUESTNET
  **direction**     out
  **target**        pipe_1Mbps_up
- **description**   Limit Guests upload to 1Mbps
+ **description**   Limit Guests upload to 1 Mbps
 ================= ==================================
 
 Click **Save changes**.
@@ -393,7 +391,7 @@ After testing your result should be similar to this (if your internet connection
 has sufficient bandwidth).
 
  .. image:: images/cp-traffic-shaping.png
-    :scale: 100%
+    :width: 100%
 
 .. Note::
     Keep in mind we have only one connected client in this test, so all reserved
@@ -410,7 +408,7 @@ This example will be for our "Royal Hotel".
 ---------------------------
 Step 8 - Add Voucher Server
 ---------------------------
-To add a Voucher Server go to: **System->Access->Servers** and click on
+To add a Voucher Server go to: :menuselection:`System --> Access --> Servers` and click on
 **Add server** in the top right corner of the screen.
 
 Fill in:
@@ -425,34 +423,34 @@ Click on **Save**.
 ------------------------
 Step 9 - Create Vouchers
 ------------------------
-Go back to the Captive portal and select Vouchers (**Services->Captive Portal->Vouchers**).
+Go back to the Captive portal and select Vouchers (:menuselection:`Services --> Captive Portal --> Vouchers`).
 Click on **Create Vouchers** in the lower right corner of the form.
 
-Lets create 1 Day vouchers for our guests:
+Let's create 1-day vouchers for our guests:
 
 .. image:: images/create_vouchers.png
-    :scale: 100%
+    :width: 100%
 
 
-Enter the Validity (1 day), the number of Vouchers and a Groupname (Wifi day pass f.i.).
+Enter the Validity (1 day), the number of Vouchers and a Groupname (Wi-Fi day pass, for example).
 For the example we create 10 vouchers. Click on **Generate**.
 
-A file will be generated called **wifi day pass.csv**.
+A file will be generated called **Wi-Fi day pass.csv**.
 The content of this file looks like this:
 
 .. code-block:: guess
 
     username,password,vouchergroup,validity
-    "IgJw@Pqf","MLi+Sb7Ak#","Wifi day pass","86400"
-    "++?f[@i[","!m*)e(@;F,","Wifi day pass","86400"
-    "bbtK9mBk","f/jCDL3:)b","Wifi day pass","86400"
-    "iD%L[jLJ","I#FoZ#g!AY","Wifi day pass","86400"
-    "+4bA\E[I","CNavt@0ck+","Wifi day pass","86400"
-    "+,fg/\Sv","#22iIL-iQA","Wifi day pass","86400"
-    ":;Pc\N#s","Y\HuG9vAN$","Wifi day pass","86400"
-    "00nLb=0Q","0*C_\_Nb_x","Wifi day pass","86400"
-    "PA$J0YHF","kp!q%9;m)g","Wifi day pass","86400"
-    "a,mCxbya","LcnCb#g/di","Wifi day pass","86400"
+    "IgJw@Pqf","MLi+Sb7Ak#","Wi-Fi day pass","86400"
+    "++?f[@i[","!m*)e(@;F,","Wi-Fi day pass","86400"
+    "bbtK9mBk","f/jCDL3:)b","Wi-Fi day pass","86400"
+    "iD%L[jLJ","I#FoZ#g!AY","Wi-Fi day pass","86400"
+    "+4bA\E[I","CNavt@0ck+","Wi-Fi day pass","86400"
+    "+,fg/\Sv","#22iIL-iQA","Wi-Fi day pass","86400"
+    ":;Pc\N#s","Y\HuG9vAN$","Wi-Fi day pass","86400"
+    "00nLb=0Q","0*C_\_Nb_x","Wi-Fi day pass","86400"
+    "PA$J0YHF","kp!q%9;m)g","Wi-Fi day pass","86400"
+    "a,mCxbya","LcnCb#g/di","Wi-Fi day pass","86400"
 
 The content are:
 
@@ -465,16 +463,16 @@ The content are:
 
 .. Warning::
 
-    For security reasons the plain text password for the vouchers are NOT stored
+    For security reasons the plain text passwords for the vouchers are NOT stored
     on the firewall.
 
 This file can be used for creating nice guest vouchers (on paper) by just merging
-the cvs data with word, open office or any other dtp/text editor.
+the CSV data with Microsoft Word, LibreOffice or any other DTP/text editor.
 
 Create something like this:
 
 .. image:: images/cp_royalhotel_voucher.png
-    :scale: 100%
+    :width: 100%
 
 You can select a database to and remove it entirely. This way you can
 create a voucher database for the arrival date of guest per guest group
@@ -501,16 +499,15 @@ When done click **Save changes** and the **Apply** to apply the new settings.
 Now users will see the login form as part of your template:
 
 .. image:: images/cp_voucher_login.png
-    :scale: 100%
 
 --------------
 Check Sessions
 --------------
-To check the active sessions go to **Services->Captive Portal->Sessions**
+To check the active sessions go to :menuselection:`Services --> Captive Portal --> Sessions`
 Our current session looks like this:
 
 .. image:: images/cp_active_sessions.png
-    :scale: 100%
+    :width: 100%
 
 You can drop an active session by clicking on the trashcan.
 
@@ -523,11 +520,11 @@ You can drop an active session by clicking on the trashcan.
 Check Voucher Status
 --------------------
 You can check the validity and active status of a voucher by going to the voucher
-page of the captive portal (**Services->Captive Protal->Vouchers**) and select
-the correct database (Wifi day pass in our example).
+page of the captive portal (:menuselection:`Services --> Captive Portal --> Vouchers`) and select
+the correct database (Wi-Fi day pass in our example).
 
 .. image:: images/cp_active_vouchers.png
-    :scale: 100%
+    :width: 100%
 
 .. Note::
     The state valid means it is activated but still valid.
@@ -538,16 +535,16 @@ the correct database (Wifi day pass in our example).
 ------------------------
 Advanced - Session popup
 ------------------------
-Lets create a Session Popup so user can see some details about there session and
-Logout. For this feature we will use OPNsense's build-in api calls.
+Let's create a Session Popup so users can see some details about their session and
+Logout. For this feature we will use OPNsense's built-in API calls.
 
-In particular we will use the following api call (for zone id 0):
+In particular we will use the following API call (for zone id 0):
 
 .. code-block:: guess
 
   /api/captiveportal/access/status/0/
 
-The response on this api call looks like this (for an active session):
+The response on this API call looks like this (for an active session):
 
 .. code-block:: json
 
@@ -566,7 +563,7 @@ The response on this api call looks like this (for an active session):
   "packets_in":3181,
   "clientState":"AUTHORIZED"}
 
-It would go a bit to far to explain standard html and java scripting used for
+It would go a bit to far to explain standard HTML and JavaScript used for
 our simple popup, but a full demo template can be downloaded:
 
 :download:`Download the example Template (with popup) <resources/template_popup.zip>`
@@ -583,7 +580,7 @@ like this (shown with a bit of context):
       window.open("session_popup.html","Session Status & Logout","width=400, height=400");
 
 .. image:: images/captiveportal_popup.png
-    :scale: 100%
+    :width: 100%
 
 -----------------------------
 Advanced - CLI Session Status
@@ -601,4 +598,4 @@ Type the following on the cli prompt to do so (for zone id 0):
 The output will be something similar to this:
 
 .. image:: images/cli_list_captiveportalsessions.png
-    :scale: 100%
+    :width: 100%

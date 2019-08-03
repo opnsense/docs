@@ -7,14 +7,13 @@ but is also widely used in corporate networks for an additional layer of securit
 on wireless or Internet access.
 
 .. image:: images/hotspot_login.png
-    :scale: 100%
 
 --------------------
 Typical Applications
 --------------------
 * Guest Network
-* Hotel & Camping Wifi Access
-* Bring Your Own Device (BOYD)
+* Hotel & Camping Wi-Fi Access
+* Bring Your Own Device (BYOD)
 
 -------------------
 Template Management
@@ -27,7 +26,6 @@ task. At the same time it offers additional functionalities, such as:
 * Custom Splash page
 
 .. image:: images/captiveportal_template_folder.png
-    :scale: 100%
 
 ---------------
 Zone Management
@@ -53,8 +51,8 @@ given page Different sources can be used to authenticate a user in a zone:
 Voucher Manager
 ---------------
 OPNsense's Captive Portal has an easy voucher creation system that exports the
-vouchers to a csv file for use with you favorite application. The export allows
-you to print vouchers by merging them with your word or open office template and
+vouchers to a csv file for use with your favorite application. The export allows
+you to print vouchers by merging them with your Microsoft Word or LibreOffice template and
 create a good looking handout with your logo and company style.
 
 -----------------------
@@ -63,16 +61,16 @@ Timeouts & Welcome Back
 Connection can be terminated after the user has been idle for a certain amount
 of time (idle timeout) and/or force a disconnect when a number of minutes
 have passed even if the user is still active (hard timeout). In case a user
-reconnect within the idle timeout and/or hard timeout no login is required and
+reconnects within the idle timeout and/or hard timeout no login is required and
 the user can resume its active session.
 
 --------------------
 Bandwidth Management
 --------------------
-The Build-in traffic shaper can be utilized to:
+The Built-in traffic shaper can be utilized to:
 
 * Share bandwidth evenly
-* Give priority to protocols port numbers and/or ip addresses
+* Give priority to protocols port numbers and/or IP addresses
 
 See also: :doc:`/manual/shaping`
 

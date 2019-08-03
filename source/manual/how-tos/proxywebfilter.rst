@@ -1,7 +1,7 @@
 ====================
 Setup Web Filtering
 ====================
-Category based web filtering in OPNsense is done by utilizing the build-in proxy
+Category based web filtering in OPNsense is done by utilizing the built-in proxy
 and one of the freely available or commercial blacklists.
 
 For this this How-to we will utilize the `UT1 "web categorization list" <https://dsi.ut-capitole.fr/blacklists/index_en.php>`__ from the
@@ -28,7 +28,7 @@ For this tutorial we will assume:
 -------------------------------
 Step 1 - Disable Authentication
 -------------------------------
-To start go to **Services->Proxy->Administration**.
+To start go to :menuselection:`Services --> Web Proxy --> Administration`.
 
 Click on the arrow next to the **Forward Proxy** tab to show the drop down menu.
 Now select **Authentication Settings** and click on **Clear All** to disable user
@@ -53,16 +53,19 @@ A screen will popup, enter the following details:
 The URL of the full compressed UT1 category based list is:
   ftp://ftp.ut-capitole.fr/pub/reseau/cache/squidguard_contrib/blacklists.tar.gz
 
+.. Note::
+    If you want to add self-hosted lists, be sure to not use the file extensions .doc, .pdf or .txt.
+    
 .. image:: images/proxy_ut1.png
-    :scale: 100%
+    :width: 100%
 
 Press **Save Changes**.
 
 --------------------------------
 Step 3 - Download the Categories
 --------------------------------
-Now press Download ACL's, please note that this will take a while (can be several
-minutes) as the full list (>19MB) will be converted to squid acl's.
+Now press Download ACLs, please note that this will take a while (can be several
+minutes) as the full list (>19 MB) will be converted to squid ACLs.
 
 -------------------------
 Step 4 - Setup Categories
@@ -72,22 +75,22 @@ to the description of the list. This will open the edit window again, but now yo
 will see all available categories extracted from the list.
 
 .. image:: images/proxy_categories.png
-    :scale: 100%
+    :width: 100%
 
 For our example we will filter ads and adult content. The easiest way to do so is
 clear the list and select the following from the drop down list:
 
 .. image:: images/proxy_catgegory.png
-    :scale: 100%
+    :width: 100%
 
 Now **Save changes** and press **Download ACLs** again to download and reconstruct
 the list with only the selected categories. This will take roughly the same amount
-of time as the first fetch as the adult alone section is ~15MB.
+of time as the first fetch as the adult alone section is ~15 MB.
 
 ---------------------
 Step 5 - Enable Proxy
 ---------------------
-To enable the proxy just go to **Services->Proxy Server->Administration** and
+To enable the proxy just go to :menuselection:`Services --> Proxy Server --> Administration` and
 check **Enable proxy** en click on **Apply**. The proxy will bind to LAN and port 3128.
 
 It may take a while for the proxy to start and the play icon on the top right corner
@@ -98,7 +101,7 @@ of the screen will turn red. Refresh the page to see if the proxy is done loadin
 Step 6 - Disable Proxy Bypass
 -----------------------------
 To make sure no-one can bypass the proxy you need to add a firewall rule.
-Go to **Firewall->Rules** and add the following to the top of the list rule on the
+Go to :menuselection:`Firewall --> Rules` and add the following to the top of the list rule on the
 LAN interface (if LAN is where your clients and proxy are on).
 
 ============================ =====================
@@ -108,7 +111,7 @@ LAN interface (if LAN is where your clients and proxy are on).
  **Source**                   LAN net
  **Destination Port Range**   HTTP
  **Category**                 Block Proxy Bypass
- **Description**              Block http bypass
+ **Description**              Block HTTP bypass
 ============================ =====================
 
 **Save**
@@ -122,10 +125,10 @@ And one more rule to block HTTPS access:
  **Source**                   LAN net
  **Destination Port Range**   HTTPS
  **Category**                 Block Proxy Bypass
- **Description**              Block https bypass
+ **Description**              Block HTTPS bypass
 ============================ =====================
 
 **Save** & **Apply changes**
 
 .. image:: images/proxy_firewall.png
-    :scale: 100%
+    :width: 100%

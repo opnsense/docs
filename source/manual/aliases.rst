@@ -6,6 +6,8 @@ by selecting the alias name in the various supported sections of the firewall.
 These aliases are particularly useful to condense firewall rules and minimize
 changes.
 
+Aliases can be added, modified and removed via :menuselection:`Firewall --> Aliases`.
+
 -----------
 Alias Types
 -----------
@@ -20,7 +22,7 @@ OPNsense offers the following alias types:
 +------------+------------------------------------------------------+
 | Ports      | Port numbers or a port range like 20:30              |
 +------------+------------------------------------------------------+
-| URL Tables | A table of ip addresses that can be fetched          |
+| URL Tables | A table of IP addresses that can be fetched          |
 +------------+------------------------------------------------------+
 | GeoIP      | Select countries or whole regions                    |
 +------------+------------------------------------------------------+
@@ -33,18 +35,18 @@ When using a fully qualified domain name, the name will we resolved periodically
 (default is each 300 seconds).
 
 Sample
-  Lets say we want to create an alias table for **www.youtube.com**
+  Let's say we want to create an alias table for **www.youtube.com**
 
   .. image:: images/aliases_host.png
-      :scale: 100%
+      :width: 100%
 
 **Apply changes** and look at the content of our newly created pf table.
-Go to **Firewall->Diagnostics->pfTables** and select our newly created youtube table.
+Go to :menuselection:`Firewall --> Diagnostics --> pfTables` and select our newly created youtube table.
 
 .. image:: images/pftable_youtube.png
-    :scale: 100%
+    :width: 100%
 
-As you can see there are multiple ip addresses for this domain.
+As you can see there are multiple IP addresses for this domain.
 
 --------
 Networks
@@ -64,21 +66,23 @@ section.
 ----------
 URL Tables
 ----------
-URL tables can be used to fetch a list of ip addresses from a remote server.
+URL tables can be used to fetch a list of IP addresses from a remote server.
 There are several IP lists available for free, most notably are the "Don't Route
 Or Peer" lists from Spamhaus.
+
+.. _aliases-geoip:
 
 -----
 GeoIP
 -----
 With GeoIP alias you can select one or more countries or whole continents to block
 or allow. Use the *toggle all* checkbox to select all countries within the given
-region. 
+region.
 
 This feature was reworked with 17.7.7 and supersedes the GeoIP blocking via IPS.
 
   .. image:: images/firewall_geoip_alias.png
-      :scale: 100%
+      :width: 100%
 
 --------------
 Import Feature
@@ -120,10 +124,10 @@ Downloads
 Using Aliases in pf Firewall Rules
 ----------------------------------
 Aliases can be used in the firewall rules to make administration of large lists
-easy. For instance we could have a list of remote ip's that should have access to
+easy. For instance we could have a list of remote IPs that should have access to
 certain services, when anything changes we only need to update the list.
 
-Lets create a simple alias list and assume we have 3 remote ip's that may access
+Let's create a simple alias list and assume we have 3 remote IPs that may access
 the ipsec server for a site to site tunnel connection:
 
 * 192.168.100.1
@@ -131,12 +135,12 @@ the ipsec server for a site to site tunnel connection:
 * 192.168.300.3
 
 .. image:: images/alias_remote_ipsec.png
-    :scale: 100%
+    :width: 100%
 
 We call our list remote_ipsec and update our firewall rules accordingly.
 
 .. image:: images/alias_firewall_rules.png
-    :scale: 100%
+    :width: 100%
 
 Notice the list icon to identify a rule with an alias (list).
 
@@ -152,7 +156,7 @@ Then concatenate both by defining a new list:
 
 * servers { critical_servers , other_servers}.
 
-The end result will be a list with all ip addresses in one alias list (servers).
+The end result will be a list with all IP addresses in one alias list (servers).
 
 ------------------------------
 Configure DROP and EDROP lists

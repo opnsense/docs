@@ -32,7 +32,6 @@ What you should not do with a self-signed chain:
 What you should know about self-signed certificates:
 
    * They are **only** as trustworty as the person, company or organization signing it, this is also true for trusted certificates.
-   * Using these certificates **can** be a security risk if you are the one trusting them and not a CA.
 
 A chain will need at least a CA and certificate; an intermediate CA is not needed, but in case of a
 compromise the CA key would be compromised too.
