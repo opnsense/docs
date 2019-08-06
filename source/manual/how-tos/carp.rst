@@ -131,8 +131,8 @@ Setup Virtual IPs
 -----------------
 
 On the master node we are going to setup our Virtual IP addresses, which
-will also be used for the backup node after synchronisation. Go to
-:menuselection:`Firewall --> Virtual IPs` and add a new one with the following
+will also be added to the backup node with a higher skew after synchronisation. 
+Go to :menuselection:`Firewall --> Virtual IPs` and add a new one with the following
 characteristics:
 
 +-------------------------+------------------------------------+
