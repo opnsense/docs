@@ -52,26 +52,27 @@ an overview of port forwarding rules. New rules can be added by clicking **Add**
 When adding a rule, the following fields are available:
 
 ========================= =========================================================================================================
- Disabled                  Disable this rule without removing it.
- No RDR (NOT)              Do not create a redirect rule. Leave this disabled unless you know what you are doing.
- Interface                 Which interface this rule should apply to. Most of the time, this will be WAN.
- TCP/IP version            IPv4, IPv6 or both.
- Protocol                  In typical scenarios, this will be TCP.
- Source                    Where the traffic comes from. Click “Advanced” to see the other source settings.
- Source / Invert           Invert match in “Source” field.
- Source port range
- Destination / Invert      Invert match in “Destination” field.
- Destination               Where the traffic is headed.
- Destination port range
- Redirect target IP        Where to redirect the traffic to.
- Redirect target port
- Pool Options              See “Some terms explained”. The default is to use Round robin.
- Description               A description to easily find the rule in the overview.
- Set local tag             Set a tag that other NAT rules and filters can check for.
- Match local tag           Check for a tag set by another rule.
- No XMLRPC sync            Prevent this rule from being synced to a backup host. (Checking this on the backup host has no effect.)
- NAT reflection            See “Some terms explained”. Leave this on the default unless you have a good reason not to.
- Filter rule association   Associate this with a regular firewall rule.
+Disabled                  Disable this rule without removing it.
+No RDR (NOT)              Do not create a redirect rule. Leave this disabled unless you know what you are doing.
+Interface                 Which interface this rule should apply to. Most of the time, this will be WAN.
+TCP/IP version            IPv4, IPv6 or both.
+Protocol                  In typical scenarios, this will be TCP.
+Source                    Where the traffic comes from. Click “Advanced” to see the other source settings.
+Source / Invert           Invert match in “Source” field.
+Source port range         When applicable, the source port we should match on.
+                          This is usually random and almost never equal to the destination port range (and should usually be 'any').
+Destination / Invert      Invert match in “Destination” field.
+Destination               Where the traffic is headed.
+Destination port range    Service port(s) the traffic is using
+Redirect target IP        Where to redirect the traffic to.
+Redirect target port      Which port to use (when using tcp and/or udp)
+Pool Options              See “Some terms explained”. The default is to use Round robin.
+Description               A description to easily find the rule in the overview.
+Set local tag             Set a tag that other NAT rules and filters can check for.
+Match local tag           Check for a tag set by another rule.
+No XMLRPC sync            Prevent this rule from being synced to a backup host. (Checking this on the backup host has no effect.)
+NAT reflection            See “Some terms explained”. Leave this on the default unless you have a good reason not to.
+Filter rule association   Associate this with a regular firewall rule.
 ========================= =========================================================================================================
 
 .. Note:
@@ -94,18 +95,19 @@ overview of one-to-one rules. New rules can be added by clicking **Add** in the 
 
 When adding a rule, the following fields are available:
 
-====================== =================================================================================================
- Disabled               Disable this rule without removing it.
- Interface              Which interface this rule should apply to. Most of the time, this will be WAN.
- Type                   BINAT (default) or NAT. See “Some terms explained”.
- External network       Starting address of external network.
- Source / invert        Invert match in “Source” field.
- Source
- Destination / invert   Invert match in “Destination” field.
- Destination
- Description            A description to easily find the rule in the overview.
- NAT reflection         See “Some terms explained”. Leave this on the default unless you have a good reason not to.
-====================== =================================================================================================
+====================== ===================================================================================================================
+Disabled               Disable this rule without removing it.
+Interface              Which interface this rule should apply to. Most of the time, this will be WAN.
+Type                   BINAT (default) or NAT. See “Some terms explained”.
+External network       Starting address of external network, which should be used to translate addresses to/from.
+Source / invert        Invert match in “Source” field.
+Source                 The internal network for this mapping, usually some `RFC 1918 <https://nl.wikipedia.org/wiki/RFC_1918>`_ range
+Destination / invert   Invert match in “Destination” field.
+Destination            The destination network packages should match, when used to map external networks, this is usually :code:`any`
+Description            A description to easily find the rule in the overview.
+NAT reflection         See “Some terms explained”. Leave this on the default unless you have a good reason not to.
+====================== ===================================================================================================================
+
 
 --------
 Outbound
@@ -139,14 +141,15 @@ When adding a rule, the following fields are available:
  TCP/IP version         IPv4 or IPv6
  Protocol               In typical scenarios, this will be TCP.
  Source invert          Invert match in “Source” field.
- Source
- Source port
+ Source                 The source network to match
+ Source port            When applicable, the source port we should match on.
+                        This is usually random and almost never equal to the destination port range (and should usually be 'any').
  Destination invert     Invert match in “Destination” field.
- Destination
- Destination port
+ Destination            Destination network to match
+ Destination port       Service port the traffic is using
  Translation / target   What to translate matching packets to.
  Log                    Put packets matching this rule in the logs. Use this sparingly to avoid overflowing the logs.
- Translation / port
+ Translation / port     Which port to use on the target
  Static-port            Prevents pf(4) from modifying the source port on TCP and UDP packets.
  Pool options           See “Some terms explained”. The default is to use Round robin.
  Set local tag          Set a tag that other NAT rules and filters can check for.

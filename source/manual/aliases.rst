@@ -1,5 +1,5 @@
 =============
-Using Aliases
+Aliases
 =============
 Aliases are named lists of networks, hosts or ports that can be used as one entity
 by selecting the alias name in the various supported sections of the firewall.

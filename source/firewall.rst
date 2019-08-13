@@ -16,8 +16,8 @@ These are all combined in the firewall section.
    :maxdepth: 2
    :titlesonly:
 
-   manual/nat
    manual/aliases
+   manual/nat
    manual/nptv6
    manual/shaping
    manual/how-tos/shaper
