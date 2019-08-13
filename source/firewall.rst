@@ -17,6 +17,7 @@ These are all combined in the firewall section.
    :titlesonly:
 
    manual/aliases
+   manual/firewall
    manual/nat
    manual/nptv6
    manual/shaping
