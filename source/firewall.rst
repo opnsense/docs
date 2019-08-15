@@ -22,6 +22,7 @@ These are all combined in the firewall section.
    manual/nptv6
    manual/shaping
    manual/firewall_groups
+   manual/firewall_vip
    manual/how-tos/shaper
    manual/how-tos/carp
    manual/diagnostics
