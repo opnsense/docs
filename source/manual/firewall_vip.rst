@@ -135,7 +135,8 @@ MASTER
 ................
 
 Marks the active node, while listening to advertisements seen on the network. If another node is seen with a better
-advertisement it might transition to backup (depending on :code:`preempt` setting).
+advertisement it might transition to backup
+(depending on :code:`preempt` setting, found on the :menuselection:`System --> High Availability --> Settings` page).
 
 ................
 DISABLED
