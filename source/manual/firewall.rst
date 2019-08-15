@@ -88,6 +88,8 @@ When receiving packets from untrusted networks, you usually don't want to commun
 Processing order
 ....................
 
+.. _Firewall_Rule_Processing_Order:
+
 Firewall rules are processed in sequence, first evaluating the **Floating** rules section followed by all rules which
 belong to **interface groups** and finally all **interface** rules.
 

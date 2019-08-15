@@ -21,6 +21,7 @@ These are all combined in the firewall section.
    manual/nat
    manual/nptv6
    manual/shaping
+   manual/firewall_groups
    manual/how-tos/shaper
    manual/how-tos/carp
    manual/diagnostics
