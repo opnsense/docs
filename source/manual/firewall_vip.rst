@@ -104,3 +104,41 @@ Advertising Frequency                 Defines how often is advertised that this 
                                       advertisements. A higher :code:`skew` means less preferred.
 Description                           User friendly description of this VIP
 ====================================  ===============================================================================
+
+
+--------------------
+Status
+--------------------
+
+The status page shows all configured carp VHID groups and their active status.
+Our status screen also offers some buttons to disable carp or force a node into maintenance mode.
+
+All different statuses are detailed below.
+
+................
+INIT
+................
+
+Usually this indicates there is an issue with the interface, often this relates to not disconnected interfaces
+or other technical problems.
+
+
+................
+BACKUP
+................
+
+In backup state this interface is part of a cluster and listening to advertisements.
+If for some reason it won't receive advertisements for a short period of time, it will transition to master.
+
+................
+MASTER
+................
+
+Marks the active node, while listening to advertisements seen on the network. If another node is seen with a better
+advertisement it might transition to backup (depending on :code:`preempt` setting).
+
+................
+DISABLED
+................
+
+Displayed when **Temporarily Disable CARP** is clicked on this page.
