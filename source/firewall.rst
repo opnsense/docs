@@ -23,6 +23,7 @@ These are all combined in the firewall section.
    manual/shaping
    manual/firewall_groups
    manual/firewall_vip
+   manual/firewall_scrub
    manual/how-tos/shaper
    manual/how-tos/carp
    manual/diagnostics
