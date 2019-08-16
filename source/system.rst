@@ -27,6 +27,7 @@ activities.
    manual/how-tos/multiwan
    manual/multiwan.rst
    manual/hacarp
+   manual/routes
    manual/settingsmenu
    manual/certificates
    manual/logging
