@@ -17,7 +17,7 @@ Syshook scripts should be installed in:
 They can contain any executable file (e.g. shell scripts) in the following subdirectories:
 
 - backup
-    - scripts used for peroidic backup and restore
+    - scripts used for periodic backup and restore
 - carp
     - scripts used for CARP MASTER / BACKUP events
 - early
