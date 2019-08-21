@@ -114,8 +114,8 @@ When everything is setup properly and the plugin can reach Proofpoint, it will s
 
 .. image:: images/ETPRO_telemetry_widget_active.png
 
-The status determines which ruleset your sensor will receive, **ACTIVE** or **DORMANT** your sensor will receive ET Pro rule,
-when **DISABLED** the license conditions are not met and ET Open will be served.
+The status determines which ruleset your sensor will receive, **ACTIVE** or **DORMANT** your sensor will receive ET Pro ruleset,
+when **DISABLED** the license conditions are not met and the ET Open ruleset will be served.
 
 All timestamps underneath the status provide you with information when data was send or received from Proofpoint.
 
@@ -133,6 +133,11 @@ In case your sensor can't communicate to the outside world, the widget shows an 
 
     The system log (:menuselection:`System --> Log Files --> General`) might contain more information, search for *emergingthreats*
 
+
+.. Tip::
+
+    Always check the token code first, a common mistake is adding leading or trailing spaces to the code, which will
+    show an error in the log (http_code starting with a 4 usually).
 
 --------------------------------------
 Information sent to Proofpoint ©
