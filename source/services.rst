@@ -17,6 +17,7 @@ Your security appliance comes with quite some services to ease network operation
 
    manual/captiveportal
    manual/dhcp
+   manual/dnsmasq
    manual/ips
    manual/proxy
    manual/dynamic_routing
