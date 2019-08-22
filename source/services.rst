@@ -24,6 +24,7 @@ Your security appliance comes with quite some services to ease network operation
    manual/unbound
    manual/proxy
    manual/opendns
+   manual/radvd
    manual/dynamic_routing
 
 
