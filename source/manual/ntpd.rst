@@ -63,3 +63,44 @@ PPS
 
 If your GPS receiver supports PPS (Pulse Per Second) output or you have a separate PPS signal available, you
 can configure the serial port to use along with some other settings here.
+
+
+-------------------------
+Status
+-------------------------
+
+The status page can be used to query the health of the upstream time sources, it shows the following characteristics.
+
+
+========================================================================================================================
+
+====================================  ==================================================================================
+Status                                Human readable status of the upstream
+Server                                Upstream source
+Ref ID                                Source IP address or
+                                      `kiss code: <http://doc.ntp.org/4.2.6p5/decode.html#kiss>`__
+Stratum                               NTP uses a hierarchical, semi-layered system of time sources
+                                      (`wikipedia <https://en.wikipedia.org/wiki/Network_Time_Protocol#Clock_strata>`__)
+                                      This field shows the stratum of the upstream source
+                                      (lower usually means closer to the actual time source)
+Type                                  Type of time source, one of:
+
+                                      * u: unicast or manycast client
+                                      * b: broadcast or multicast client
+                                      * p: pool source
+                                      * l: local (reference clock)
+                                      * s: symmetric (peer)
+                                      * A: manycast server
+                                      * B: broadcast server
+                                      * M: multicast server
+When                                  time in seconds, minutes, hours, or days since the last packet was
+                                      received, or `-' if a packet has never been received
+Poll                                  poll interval in seconds
+Reach                                 reach shift register (octal), when set to :code:`377` all 8 bits are set and thus
+                                      no responses have been lost. Convert to bits to inspect which tries failed.
+                                      (e.g. :code:`257` --> :code:`10101111` means the last four responses
+                                      where received and two where lost within the last 8 tries)
+Delay                                 roundtrip delay in milliseconds
+Offset                                offset time in milliseconds of the server relative to this host
+Jitter                                indicates the difference, in milliseconds, between two samples
+====================================  ==================================================================================
