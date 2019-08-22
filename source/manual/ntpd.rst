@@ -94,7 +94,7 @@ Type                                  Type of time source, one of:
                                       * B: broadcast server
                                       * M: multicast server
 When                                  time in seconds, minutes, hours, or days since the last packet was
-                                      received, or `-' if a packet has never been received
+                                      received, or '-' if a packet has never been received
 Poll                                  poll interval in seconds
 Reach                                 reach shift register (octal), when set to :code:`377` all 8 bits are set and thus
                                       no responses have been lost. Convert to bits to inspect which tries failed.
