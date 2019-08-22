@@ -19,6 +19,7 @@ Your security appliance comes with quite some services to ease network operation
    manual/dhcp
    manual/dnsmasq
    manual/ips
+   manual/ntpd
    manual/unbound
    manual/proxy
    manual/dynamic_routing
