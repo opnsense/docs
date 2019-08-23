@@ -34,8 +34,10 @@ L2TP and PPTP.
 
   VPN technologies displayed with an open lock are considered to be insecure.
 
+.................................
 Integrated VPN options
-----------------------
+.................................
+
 Integrated solutions are those that are available within the GUI without installing
 any additional package or plugin. These include:
 
@@ -43,8 +45,10 @@ any additional package or plugin. These include:
 * **OpenVPN (SSL VPN)**
 
 
+.................................
 Plugin VPN options
-------------------
+.................................
+
 Via plugins additional VPN technologies are offered, including:
 
 * **Legacy L2TP & PPTP**
@@ -59,6 +63,10 @@ Configuration
 -------------
 Please read our how-tos for configuration examples and more detailed information.
 
+..............
+IPsec
+..............
+
 
 .. toctree::
    :maxdepth: 2
@@ -68,8 +76,39 @@ Please read our how-tos for configuration examples and more detailed information
    how-tos/ipsec-s2s
    how-tos/ipsec-s2s-route
    how-tos/ipsec-s2s-binat
+   how-tos/ipsec-rw
+   how-tos/ipsec-rw-android
+   how-tos/ipsec-rw-linux
+   how-tos/ipsec-rw-srv-eapradius
+   how-tos/ipsec-rw-srv-eaptls
+   how-tos/ipsec-rw-srv-ikev1xauth
+   how-tos/ipsec-rw-srv-mschapv2
+   how-tos/ipsec-rw-srv-rsamschapv2
+   how-tos/ipsec-rw-w7
+   how-tos/ipsec-s2s-route-azure
+
+
+..............
+OpenVPN
+..............
+
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
    how-tos/sslvpn_client
    how-tos/sslvpn_s2s
+
+
+..............
+Other
+..............
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
    how-tos/openconnect
    how-tos/wireguard-s2s
    how-tos/wireguard-client

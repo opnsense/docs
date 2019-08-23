@@ -21,9 +21,9 @@ Your security appliance comes with quite some services to ease network operation
    manual/ips
    manual/monit
    manual/ntpd
+   manual/opendns
    manual/unbound
    manual/proxy
-   manual/opendns
    manual/radvd
    manual/dynamic_routing
 

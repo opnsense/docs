@@ -16,9 +16,9 @@ It can be installed using the following command on the command line:
 
     apt install network-manager-stronswan
 
-----------------------------
-Step 1 - Download Certificte
-----------------------------
+------------------------------
+Step 1 - Download Certificate
+------------------------------
 
 Download the Root CA from the OPNsense Firewall since it is needed for all EAP types with IKEv2.
 
@@ -35,4 +35,3 @@ IKEv2 + EAP-MSCHAPv2 or EAP-RADIUS
 
 .. image:: images/ipsec-rw-linux-eapmschap.PNG
    :width: 60%
-   

@@ -13,16 +13,16 @@ Step 1 - Create Certificates
 ----------------------------
 
 For Mutual RSA + MSCHAPv2 with IKEv2 you need to create a Root CA and a server certificate
-for your Firewall. 
+for your Firewall.
 
 Go to :menuselection:`System --> Trust --> Authorities` and click **Add**. Give it a **Descriptive Name** and as **Method**
-choose **Create internal Certificate Authority**. Increase the **Lifetime** and fill in the fields 
+choose **Create internal Certificate Authority**. Increase the **Lifetime** and fill in the fields
 matching your local values. Now go to :menuselection:`System --> Trust --> Certificates` and create a new certificate for
 the Firewall itself. Important is to change the **Type** to server. The Common Name can be the hostname
 of the Firewall and set as **Alternative Name** the FQDN your Firewall how it is known to the WAN side.
 This is most important as your VPN will drop when the FQDN does not match the ones of the certificate.
 
-If you already have a CA roll out a server certificate and import 
+If you already have a CA roll out a server certificate and import
 the CA itself via :menuselection:`System --> Trust --> Authorities` and the certificate with the key in
 :menuselection:`System --> Trust --> Certificates`.
 
@@ -90,12 +90,12 @@ Step 3 - Phase 2 Mobile Clients
 Press the button that says '+ Show 0 Phase-2 entries'
 
 .. image:: images/ipsec_s2s_vpn_p1a_show_p2.png
-    :width: 100%
+
 
 You will see an empty list:
 
 .. image:: images/ipsec_s2s_vpn_p1a_p2_empty.png
-    :width: 100%
+
 
 Now press the *+* at the right of this list to add a Phase 2 entry.
 
@@ -125,11 +125,11 @@ Phase 2 proposal (SA/Key Exchange)
 **Save** your settings and **Enable IPsec**, Select:
 
 .. image:: images/ipsec_s2s_vpn_p1a_enable.png
-    :width: 100%
+
 
 .. Note::
 
-   If you already had IPsec enabled and added Road Warrior setup, it is important to 
+   If you already had IPsec enabled and added Road Warrior setup, it is important to
    restart the whole service via services widget in the upper right corner of IPSec pages
    or via :menuselection:`System --> Diagnostics --> Services --> Strongswan` since applying configuration only
    reloads it, but a restart also loads the required modules of strongSwan.
