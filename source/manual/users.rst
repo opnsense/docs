@@ -1,6 +1,6 @@
-=================
- User Management
-=================
+==================================
+Access / User Management
+==================================
 
 .. image:: images/user_manager.png
    :width: 100%

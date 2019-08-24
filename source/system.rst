@@ -18,10 +18,6 @@ activities.
    :titlesonly:
 
    manual/users
-   manual/how-tos/user-local
-   manual/how-tos/user-ldap
-   manual/how-tos/user-radius
-   manual/two_factor
    manual/how-tos/cloud_backup
    manual/gateways
    manual/how-tos/multiwan
