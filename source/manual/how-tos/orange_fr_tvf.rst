@@ -5,7 +5,8 @@
 
 **Introduction**
 -----------------
-This guide is for setting up Orange France IPTV and assumes you already have a working internet connection.
+This guide is for setting up Orange France IPTV and assumes you already have a working internet connection and the
+os-igmp-proxy	plugin installed.
 
 
 **Getting ready**
