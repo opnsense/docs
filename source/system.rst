@@ -18,7 +18,7 @@ activities.
    :titlesonly:
 
    manual/users
-   manual/how-tos/cloud_backup
+   manual/backups
    manual/gateways
    manual/how-tos/multiwan
    manual/multiwan.rst
