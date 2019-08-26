@@ -33,7 +33,7 @@ What you receive is what WireGuard calls **Allowed IP** for your local instance,
 the value of **Allowed IPs** you used when setting up and change it to the one you got.
 
 On **Endpoint** tab create a new Endpoint, give it a **Name**, set 0.0.0.0/0 in **Allowed IPs** and set
-the **DNS** to 193.138.219.228. This is the one MulladVPN provides for privacy.
+the **DNS** to 193.138.218.74. This is the one MulladVPN provides for privacy.
 
 Now go to the WireGuard server list_ and choose the one you like to use as your breakout. Write down it's
 public key and set it as **Public Key**. Also don't forget **Endpoint Address** and **Endpoint Port**.
