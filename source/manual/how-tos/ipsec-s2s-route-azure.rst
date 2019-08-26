@@ -256,15 +256,20 @@ Press the button that says 'OK':
 
 .. image:: images/ipsec_s2s_route_azure_conn.png
 
------------------------
-Firewall Rules OPNsense
------------------------
+----------------------
+Firewall Rules and NAT
+----------------------
 
 To allow traffic passing to your LAN subnet you need to add a rule to the IPsec
 interface (under :menuselection:`Firewall --> Rules --> IPsec`).
 
 .. image:: images/ipsec_ipsec_lan_rule.png
     :width: 100%
+
+Since version 19.7 assigned IPSec interfaces are added to automatic outbound rules.
+You have to switch to **Manual outbound NAT rule generation** and add all the rules
+which existed previously. In most cases it is one rules for interface *WAN* and 
+*LAN network* as the source.
 
 ------------------
 IPsec Tunnel Ready
