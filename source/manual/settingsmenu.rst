@@ -197,3 +197,64 @@ Swap file                         Create a 2 GB swap file. This can increase per
 **System Sounds**
 Disable the startup/shutdown beep Disable beeps via the built-in speaker (“PC Speaker”)
 ================================= ======================================================================================================================================================================================================
+
+
+------------
+Logging
+------------
+
+Log settings can be found at :menuselection:`System --> Settings --> Logging`. The settings are in two groups,
+one for local logging and one for remote logging.
+
+An overview of the local settings:
+
+============================================ ====================================================================================================================
+Setting                                      Explanation
+============================================ ====================================================================================================================
+Reverse Display                              When enabled, the most recent log entry will be displayed on top.
+GUI Log Entries to Display                   Number of log entries displayed in the GUI.
+Log File Size (Bytes)                        Maximum size of circular logs (which most OPNsense log files are)
+Log Firewall Default Blocks                  Turning these off means that only hits for your custom rules will be logged.
+Web Server Log                               If checked, lighttpd errors are displayed in the main system log.
+Disable writing log files to the local disk  Useful to avoid wearing out flash memory (if used). Remote logging can be used to save the logs instead if desired.
+Reset Logs                                   Clear all logs. Note that this will also restart the DHCP server, so make sure any DHCP settings are saved first.
+============================================ ====================================================================================================================
+
+An overview of the remote settings (superseded by new Logging/target syslog-ng menu):
+
+======================= ===============================================================================================
+Setting                 Explanation
+======================= ===============================================================================================
+Enable Remote Logging   Master on/off switch
+Source Address          Which interface to bind to. Select “any” if you want to use a mix of IPv4 and IPv6 servers.
+IP Protocol             Preferred IP version (it will this first). Will only be used if “Source Address” is not an IP.
+Remote Syslog Servers   IP addresses of remote syslog servers, or IP:port combinations.
+Remote Syslog Contents  Can be used to selectively log event categories
+======================= ===============================================================================================
+
+.. Note::
+
+    The remote logging feature will likely be removed in OPNsense 20.1, since the new **Logging / targets**
+    offers more flexibility and has overlapping functionality. We advise to switch as soon as possible.
+
+----------------------
+Logging / targets
+----------------------
+
+With OPNsense version 19.7, syslog-ng for remote logging was introduced.
+If you want to benefit from all new features and already have the legacy system available,
+please remove all remote logging from **System->Settings->Logging** and go to
+**System->Settings->Logging / targets** and *Add* a new *Destination*.
+
+============== ================================================================================
+Setting                 Explanation
+============== ================================================================================
+Enabled        Master on/off switch.
+Transport      Protocol to use for syslog.
+Applications   Select a list of applications to send to remote syslog. Leave empty for *all*.
+Levels         Choose which levels to include, omit to select all.
+Facilities     Choose which facilities to include, omit to select all.
+Hostname       Hostname or IP address where to send logs to.
+Port           Port to use, usually 514.
+Description    Set a description for you own use.
+============== ================================================================================
