@@ -16,6 +16,7 @@ All traffic flowing through your appliance is using (virtual) interfaces, this i
    :titlesonly:
 
    manual/interfaces
+   manual/interfaces_overview
    manual/interfaces_settings
    manual/other-interfaces
    manual/mobile_wan
