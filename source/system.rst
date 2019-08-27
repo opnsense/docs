@@ -27,7 +27,7 @@ activities.
    manual/settingsmenu
    manual/certificates
    manual/logging_system
-   manual/diagnostics
+   manual/diagnostics_system
 
 
 ---------------
