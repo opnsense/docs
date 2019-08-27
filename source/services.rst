@@ -26,6 +26,7 @@ Your security appliance comes with quite some services to ease network operation
    manual/proxy
    manual/radvd
    manual/dynamic_routing
+   manual/logging_services
 
 
 ---------------

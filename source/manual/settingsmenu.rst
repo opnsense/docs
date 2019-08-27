@@ -237,6 +237,36 @@ Remote Syslog Contents  Can be used to selectively log event categories
     The remote logging feature will likely be removed in OPNsense 20.1, since the new **Logging / targets**
     offers more flexibility and has overlapping functionality. We advise to switch as soon as possible.
 
+
+
+.....................
+Circular Logs
+.....................
+
+Most of the core features log to circular log files so they will not grow bigger
+than a predefined size. You can tune this value via :menuselection:`System --> Settings --> Logging`.
+There, you can also disable the writing of logs to disk or reset them all.
+
+You can view the contents via CLI with:
+
+.. code-block:: sh
+
+    clog /path/to/log
+
+or follow the contents via:
+
+.. code-block:: sh
+
+    clog -f /path/to/log
+
+.....................
+Plugin Logs
+.....................
+
+Many plugins have their own logs. In the UI, they are grouped with the settings of that plugin.
+They mostly log to /var/log/ in text format, so you can view or follow them with *tail*.
+
+
 ----------------------
 Logging / targets
 ----------------------

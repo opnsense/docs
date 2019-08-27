@@ -59,6 +59,25 @@ Via plugins additional VPN technologies are offered, including:
 
 
 -------------
+Log Files
+-------------
+
+When troubleshooting problems with your firewall, it is very likely you have to check
+the logs available on your system. In the UI of OPNsense, the log files are generally grouped
+with the settings of the component they belong to. The log files can be found here:
+
+================= =============================================== =====================================
+ **IPsec Log**     :menuselection:`VPN --> IPsec --> Log File`     *Everything around IPsec goes here*
+ **OpenVPN Log**   :menuselection:`VPN --> OpenVPN --> Log File`   *OpenVPN logs everything here*
+================= =============================================== =====================================
+
+.. Note::
+   Log files on file system:
+   /var/log/ipsec.log (clog)
+   /var/log/openvpn.log (clog)
+
+
+-------------
 Configuration
 -------------
 Please read our how-tos for configuration examples and more detailed information.

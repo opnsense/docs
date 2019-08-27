@@ -26,7 +26,7 @@ activities.
    manual/routes
    manual/settingsmenu
    manual/certificates
-   manual/logging
+   manual/logging_system
    manual/diagnostics
 
 
