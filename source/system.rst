@@ -21,7 +21,6 @@ activities.
    manual/backups
    manual/firmware
    manual/gateways
-   manual/how-tos/multiwan
    manual/multiwan.rst
    manual/hacarp
    manual/routes
