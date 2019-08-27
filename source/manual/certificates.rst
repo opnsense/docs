@@ -1,5 +1,5 @@
 ==================
-Using certificates
+Trust
 ==================
 
 In OPNsense, certificates are used for ensuring trust between peers. To make using them easier, OPNsense allows creating
