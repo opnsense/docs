@@ -19,6 +19,7 @@ activities.
 
    manual/users
    manual/backups
+   manual/firmware
    manual/gateways
    manual/how-tos/multiwan
    manual/multiwan.rst
