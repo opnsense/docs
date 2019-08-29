@@ -32,6 +32,7 @@ Table of Contents
      services
      plugins
      third_party_plugins
+     troubleshooting
      develop
      relations
      legal
