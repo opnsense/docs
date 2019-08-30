@@ -151,6 +151,11 @@ Enter the following details:
  **Gateway**                   default                  *Select default*
 ============================= ======================== ======================================
 
+.. Note::
+    When using Unbound for DNS resolution you should also enable *Default Gateway Switching*
+    via **System->Settings->General**, as local generated traffic will only use the current
+    default gateway which will not change without this option.
+    
 Advanced Options
 ----------------
 For each gateway there are several advanced options you can use to change the
