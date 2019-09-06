@@ -27,7 +27,7 @@ rights, trademarks etc. and may require the consent of a third party or the
 license of these rights. Deciso B.V. does not represent or make any warranties
 that it owns or licenses any of the mentioned, nor does it grant them.
 
-####Prepare python environment
+#### Prepare python environment
 You need python 2.7 to build the documentation.
 
 If you want to use virutalenv, you can setup a new environment with: 
