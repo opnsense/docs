@@ -27,6 +27,22 @@ rights, trademarks etc. and may require the consent of a third party or the
 license of these rights. Deciso B.V. does not represent or make any warranties
 that it owns or licenses any of the mentioned, nor does it grant them.
 
+####Prepare python environment
+You need python 2.7 to build the documentation.
+
+If you want to use virutalenv, you can setup a new environment with: 
+virutalenv docs-env-py27 -p </paht/to/python27>
+
+For example on FreeBSD: 
+virutalenv docs-env-py27 -p /usr/local/bin/python2.7
+
+
+then activate the virtenv:
+source docs-env-py27/bin/activate
+
+For more documentation on virutalenv with python please check out: 
+https://virtualenv.pypa.io/en/latest/reference/#virtualenv-command
+
 #### Prepare build
 Install Sphinx, our default theme and contrib packages
 ```
