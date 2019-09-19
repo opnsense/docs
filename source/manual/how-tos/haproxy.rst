@@ -111,7 +111,7 @@ Fourth Step: Configure an Rule
 ---------------------------------------
 
 As promised in the previous step, the Conditions will be used. 
-A Rule can use multiple conditions to dicide whcih Rule is going to be used.
+A Rule can use multiple conditions to decide which Rule is going to be used.
 To create a new Rule, you have to go to "Rules & Checks -> Rules" 
 and create one by clicking the `+` button:
 
@@ -148,7 +148,7 @@ is a Public Service.
 A Public Service is a a group of bound ports which are used for incoming connections.
 From this Public Service we need to know which backend the request will routed to.
 For this, the previously configured action is needed.
-If you got multiple domains on one IP, you differate them with rules! 
+If you got multiple domains on one IP, you differentiate them with rules! 
 Don't create multiple Public Services.
 
 To create a new Public Service, click the `+` button:
@@ -190,8 +190,7 @@ Actions (ACLs)
 ==============
 
 Here you have to activate the previously configured actions, so HAProxy
-is going to operate based due the rules/actions.
-knows where the requests should be sent to. 
+is going to operate based due the rules/conditions.
 
 All other Options
 =================
