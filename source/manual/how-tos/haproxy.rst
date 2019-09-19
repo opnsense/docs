@@ -78,14 +78,17 @@ And fill out the form:
 **Servers**             Select the previously configured servers
 ======================= ===============================================
 
-----------------------------
-Third Step: Configure an ACL
-----------------------------
+--------------------------------
+Third Step: Configure Conditions
+--------------------------------
 
-In this step an ACL will has to be created which is later used to decide
+In this step an Condition will has to be created which is later used to decide
 which traffic from a frontend belongs to which backend.
 
-To create a new ACL, you have to create one by clicking the `+` button:
+To create a new Condition, you have to go to "Rules & Checks -> Conditions" 
+and create one by clicking the `+` button:
+
+(Picture is from Previous Version but it still looks as good as the same)
 
 .. image:: images/haproxy_acls.png
 
@@ -94,7 +97,7 @@ In the open modal dialog, the following form will show up:
 .. image:: images/haproxy_edit_acl.png
 
 ==================== ================================================
-**Name**             Choose a name for this ACL
+**Name**             Choose a name for this Condition
 **Description**      Keep it empty or choose one for your information
 **Expression**       Select "Host contains"
 **Negate condition** Keep it unchecked
@@ -103,22 +106,27 @@ In the open modal dialog, the following form will show up:
 
 Click "Save changes".
 
---------------------------------
-Fourth Step: Configure an Action
---------------------------------
+---------------------------------------
+Fourth Step: Configure an Rule
+---------------------------------------
 
-As promised in the previous step, the ACLs will be used. An Action will link
-multiple ACLs with a Backend.
-An Action is created using the `+` button.
+As promised in the previous step, the Conditions will be used. 
+A Rule can use multiple conditions to decide which Rule is going to be used.
+To create a new Rule, you have to go to "Rules & Checks -> Rules" 
+and create one by clicking the `+` button:
+
+(Picture is from Previous Version but it still looks as good as the same)
 
 .. image:: images/haproxy_actions.png
 
 A form dialog opens and we can fill it out like the following:
 
+(Picture is from Previous Version but it still looks as good as the same)
+
 .. image:: images/haproxy_edit_action.png
 
 .. Note::
-    You can map using multiple Hostnames to the same Backend by adding multiple
+    You can map multiple Hostnames to the same Backend by adding multiple
     ACLs and choosing the logical operator "OR".
 
 ==================== ===================================
@@ -136,12 +144,16 @@ Fifth Step Configure a frontend
 -------------------------------
 
 Now its nearly done. The only thing that needs to be configured for HAProxy
-is a Frontend.
-A Frontend is a a group of bound ports which are used for incoming connections.
-From this Frontend we need to know which backend the request will routed to.
+is a Public Service.
+A Public Service is a a group of bound ports which are used for incoming connections.
+From this Public Service we need to know which backend the request will routed to.
 For this, the previously configured action is needed.
+If you got multiple domains on one IP, you differentiate them with rules! 
+Don't create multiple Public Services.
 
-To create a new Frontend, click the `+` button:
+To create a new Public Service, click the `+` button:
+
+(Picture is from Previous Version but it still looks as good as the same)
 
 .. image:: images/haproxy_frontends.png
 
@@ -177,8 +189,8 @@ the client.
 Actions (ACLs)
 ==============
 
-Here you have to configure the previously configured actions, so HAProxy
-knows where the requests should be sent to.
+Here you have to activate the previously configured actions, so HAProxy
+is going to operate based due the rules/conditions.
 
 All other Options
 =================
