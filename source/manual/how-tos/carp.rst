@@ -203,17 +203,22 @@ in our example (on the master server):
 +--------------------+----------------+
 
 ---------------------------------
-Setup HA sync (xmlrpc) and pfSync
+Setup pfSync and HA sync (xmlrpc)
 ---------------------------------
 
-First we should enable pfSync using our dedicated interface using the
-master firewall. Go to :menuselection:`System --> High Availability --> Settings`, enable pfSync and
-select the interface used for pfSync. Next setup the peer IP to the
-other hosts address (10.0.0.2).
+First we should configure pfSync to synchronize the connection state tables and
+HA sync (xmlrpc) on the master firewall. Go to
+:menuselection:`System --> High Availability --> Settings` and enable pfSync by
+activating the `Synchronize States` checkbox, selecting PFSYNC for the
+`Synchronize Interface` and enter the peer IP (10.0.0.2) in the field
+`Synchronize Peer IP`.
 
-Now we need to configure the settings we want to duplicating to the
-backup server using the xmlrpc sync option. For our setup we will enable
-the following:
+To synchronize the configuration settings from the master to the backup
+firewall, we setup the XMLRPC sync. In the `Synchronize Config to IP` field
+we enter the peer IP (10.0.0.2) of the PFSYNC interface again to keep this
+traffic on the direct connection between the two firewalls. Now we need to
+enter the remote user name and password and configure the settings we want to
+duplicate to the backup server. For our setup we will enable the following:
 
 +---------------------------+
 | Synchronize rules         |
@@ -224,6 +229,12 @@ the following:
 +---------------------------+
 | Synchronize Virtual IPs   |
 +---------------------------+
+
+After this we configure pfSync on the backup firewall. Go to
+:menuselection:`System --> High Availability --> Settings` and enable pfSync by
+activating the `Synchronize States` checkbox, selecting PFSYNC for the
+`Synchronize Interface` and enter the master IP (10.0.0.1) in the field
+`Synchronize Peer IP`. Do not configure XMLRPC sync on the backup firewall.
 
 --------------
 Finalize setup
