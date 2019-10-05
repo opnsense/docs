@@ -29,7 +29,7 @@ Now change to your OPNsense CLI via SSH or Console and execute the curl string b
 
     curl -sSL https://api.mullvad.net/wg/ -d account=123 --data-urlencode pubkey=PUBKEY
     
-What you receive is the tunnel address for your local instance. Edit your instance again and remove
+What you receive is what WireGuard calls **Allowed IP** for your local instance. Edit your instance again and remove
 the value of **Tunnel Address** you used when setting it up and change it to the one you got.
 
 On **Endpoint** tab create a new Endpoint, give it a **Name**, set 0.0.0.0/0 in **Allowed IPs** and set
