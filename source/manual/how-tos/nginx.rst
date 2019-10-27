@@ -46,4 +46,5 @@ If you want to use support TLS, you have to add a certificate.
 
 .. image:: images/nginx_reload.png
 
-Click the reload button and you are done.
+Click the reload button and you are done. You may need to open some ports in the firewall if you have not done that yet.
+Since you are directly on the firewall, There is no need to use NAT similar workaround.
