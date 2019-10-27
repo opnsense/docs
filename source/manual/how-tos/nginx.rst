@@ -23,7 +23,7 @@ Give it a useful name and choose the previously created server.
 3) Create A Location
 --------------------
 
-.. image:: images/nginx_edit_location_dialog.png
+.. image:: images/nginx_edit_location_dialog2.png
 
 Locations are are used to map URLs to upstreams, directories, settings and so on.
 In our case we want to proxy the request to the previously created upstream.
@@ -46,4 +46,5 @@ If you want to use support TLS, you have to add a certificate.
 
 .. image:: images/nginx_reload.png
 
-Click the reload button and you are done.
+Click the reload button and you are done. You may need to open some ports in the firewall if you have not done that yet.
+Since you are directly on the firewall, There is no need to use NAT similar workaround.
