@@ -64,7 +64,7 @@ reserved.) a fork from `m0n0wall <http://m0n0.ch/wall/>`__ (Copyright
 Packages and ports
 ------------------
 OPNsense includes various freely available software packages and ports.
-The current ports are listed `here <https://github.com/opnsense/tools/blob/master/config/latest/ports.conf>`__.
+The current ports are listed in a file named `ports.conf` found in a directory with a version number  `here <https://github.com/opnsense/tools/tree/master/config>`__.
 
 The authors of OPNsense would like to thank all contributors for their efforts.
 
