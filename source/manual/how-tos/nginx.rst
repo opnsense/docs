@@ -23,7 +23,7 @@ Give it a useful name and choose the previously created server.
 3) Create A Location
 --------------------
 
-.. image:: images/nginx_edit_location_dialog.png
+.. image:: images/nginx_edit_location_dialog2.png
 
 Locations are are used to map URLs to upstreams, directories, settings and so on.
 In our case we want to proxy the request to the previously created upstream.
