@@ -58,9 +58,6 @@ left of the **Enable Transparent HTTP proxy** option and click on **add a new fi
 
 The defaults should be alright, just press **Save** and **Apply Changes**.
 
-.. NOTE::
-  If you use **TCP/IP Version**: IPv4+IPv6, the **Redirect target IP** should be either 127.0.0.1/32 or ::1/128. Both are loopback addresses for localhost and either one can be used. You can only enter one in the Target IP field. 
-
 Step 4 - CA for Transparent SSL
 --------------------------------------
 Before we can setup transparent SSL/HTTPS proxy we need to create a Certificate
@@ -144,9 +141,6 @@ left of the **Enable SSL mode** option and click on **add a new firewall rule**.
 ============================ =================================
 
 The defaults should be alright, just press **Save** and **Apply Changes**.
-
-.. NOTE::
-  If you use **TCP/IP Version**: IPv4+IPv6, the **Redirect target IP** should be either 127.0.0.1/32 or ::1/128. Both are loopback addresses for localhost and either one can be used. You can only enter one in the Target IP field. 
   
 Step 8 - Configure OS/Browser
 -----------------------------
