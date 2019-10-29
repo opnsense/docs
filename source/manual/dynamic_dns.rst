@@ -63,3 +63,6 @@ Provider-specific info
 | Route 53                     | Username field: Enter your “Access Key ID”. |br|                                         |
 |                              | Password field: Enter your “Secret Access Key”.                                          |
 +------------------------------+------------------------------------------------------------------------------------------+
+| CloudFlare                   | Username field: Enter your email address. |br|                                           |
+|                              | Password field: Enter your "Global API Key".                                             |
++------------------------------+------------------------------------------------------------------------------------------+
