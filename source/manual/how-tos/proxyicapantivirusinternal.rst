@@ -59,7 +59,7 @@ Now click on **Apply**
 
 Step 5 - Test using EICAR
 -------------------------
-To test if the engine is operational and functional go to http://www.eicar.org/85-0-Download.html
+To test if the engine is operational and functional go to http://www.eicar.org/?page_id=3950
 on this page you will find several files you can test.
 
 First test the HTTP protocol version. If that works, test the HTTPS version if you
