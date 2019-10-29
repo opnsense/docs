@@ -43,6 +43,7 @@ left of the **Enable Transparent HTTP proxy** option and click on **add a new fi
 
 ============================ =================================
  **Interface**                LAN
+ **TCP/IP VERSION**           IPv4
  **Protocol**                 TCP
  **Source**                   LAN net
  **Source port range**        any - any
@@ -56,7 +57,6 @@ left of the **Enable Transparent HTTP proxy** option and click on **add a new fi
 ============================ =================================
 
 The defaults should be alright, just press **Save** and **Apply Changes**.
-
 
 Step 4 - CA for Transparent SSL
 --------------------------------------
@@ -127,6 +127,7 @@ left of the **Enable SSL mode** option and click on **add a new firewall rule**.
 
 ============================ =================================
  **Interface**                LAN
+ **TCP/IP VERSION**           IPv4
  **Protocol**                 TCP
  **Source**                   LAN net
  **Source port range**        any - any
@@ -140,7 +141,7 @@ left of the **Enable SSL mode** option and click on **add a new firewall rule**.
 ============================ =================================
 
 The defaults should be alright, just press **Save** and **Apply Changes**.
-
+  
 Step 8 - Configure OS/Browser
 -----------------------------
 Since the CA is not trusted by your browser, you will get a message about this
