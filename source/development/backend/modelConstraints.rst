@@ -42,7 +42,7 @@ Operators:
 gt  greater than
 gte greater than or equal
 lt  lesser than
-lte lesser than or ewual
+lte lesser than or equal
 eq  equal
 neq not equal
 === =====================
