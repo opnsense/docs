@@ -43,3 +43,23 @@ VLAN
 
 VLANs (Virtual LANs) can be used to segment a single physical network into multiple virtual networks. This can be
 done for QoS purposes, among other things. For this reason, most ISP-issued IPTV devices utilise VLANs.
+
+
+------
+VXLAN
+------
+
+Virtual eXtensible Local Area Networks (VXLANs) are used to overlay virtualized layer 2 networks over layer 3 networks
+as described by `rfc7348 <https://tools.ietf.org/html/rfc7348>`__.
+
+Tunnels can be setup in point to point (parameter :code:`Remote address`) or multicast (parameters :code:`Multicast group` and :code:`Device`).
+The `Source address` must be an existing (statically assigned) address assigned at this firewall, which will be used as
+source in the encapsulating IPv4/IPv6 header.
+
+.. Note::
+
+  Since the vxlan interface encapsulates the Ethernet frame with an IP, UDP, and vxlan header,
+  the resulting frame may be larger than the MTU of the physical network.  The vxlan specification recommends the physical
+  network MTU be configured to use jumbo frames to accommodate the encapsulated frame size.
+  Alternatively, the MTU size on the vxlan interface might be reduced to allow the encapsulated frame to fit in
+  the current MTU of the physical network.
