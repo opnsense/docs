@@ -10,11 +10,11 @@ This paragraph aims to provide an overview of the types included by default and 
 
 .. Tip::
 
-    When using lists, the `Multiple` (Y/N) keyword defines if there may be more than one item selected at a time.
+    When using lists, the :code:`Multiple` (Y/N) keyword defines if there may be more than one item selected at a time.
 
 .. Tip::
 
-    The xml keyword `Required` can be used to mark a field as being required.
+    The xml keyword :code:`Required` can be used to mark a field as being required.
 
 ArrayField
 ------------------------------------
@@ -47,7 +47,7 @@ An integer sequence, which automatically increments on every new item of the sam
 BooleanField
 ------------------------------------
 
-Boolean field, where 0 means `false` and 1 is defined as `true`
+Boolean field, where 0 means :code:`false` and 1 is defined as :code:`true`
 
 CSVListField
 ------------------------------------
@@ -58,7 +58,7 @@ CertificateField
 ------------------------------------
 
 Option list with system certificates defined in :menuselection:`System --> Trust`, use the `Type` keyword to distinct between the
-available options (`ca`, `crl`, `cert`), defaults to `cert`.
+available options (:code:`ca`, :code:`crl`, :code:`cert`), defaults to :code:`cert`.
 
 ConfigdActionsField
 ------------------------------------
@@ -100,7 +100,7 @@ InterfaceField
 
 Option list with interfaces defined in :menuselection:`Interfaces --> Assignments`, supports filters.
 The example below shows a list of non-dhcp active interfaces, for which multiple items may be selected, but at least one
-should be. It defaults to `lan`
+should be. It defaults to :code:`lan`
 
 .. code-block:: xml
 
@@ -130,13 +130,13 @@ A construct to validate against a json dataset retreived via configd, such as
     </program>
 
 
-In which case `syslog list applications` is called to retrieved options, which is valid for 20 seconds (TTL) before fetching again.
+In which case :code:`syslog list applications` is called to retrieved options, which is valid for 20 seconds (TTL) before fetching again.
 
 
 ModelRelationField
 ------------------------------------
 
-Define relations to other nodes in the model, such as to point the attribute `pipe` to a `pipe` node in the TrafficShaper model.
+Define relations to other nodes in the model, such as to point the attribute :code:`pipe` to a :code:`pipe` node in the TrafficShaper model.
 
 .. code-block:: xml
 
@@ -171,7 +171,7 @@ PortField
 ------------------------------------
 
 Check if the input contains a valid portnumber or (optionally) predefined service name. Can be a range when
-`EnableRanges` is set to `Y`.
+:code:`EnableRanges` is set to :code:`Y`.
 
 TextField
 ------------------------------------
