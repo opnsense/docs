@@ -26,25 +26,30 @@ and click on **Add server** the top right corner, just above the form.
 
 Enter the following information:
 
+=========================================================================================================================
+
 ================================ ======================== ===============================================================
  **Descriptive name**             ws2012                   *Enter a descriptive name*
  **Type**                         LDAP                     *Select LDAP*
  **Hostname or IP address**       10.10.10.1               *Enter the IP address of you LDAP Server*
  **Port value**                   389                      *Enter the port number, 389 is default*
  **Transport**                    TCP - Standard           *Select Standard or Encrypted*
- **Peer Certificate Authority**                            *When using SSL Encryption, select the CA*
  **Protocol version**             3                        *Select protocol version*
  **Bind credentials**
   User DN:                        cn=testusr,CN=Users,     *Enter your credentials*
                                   DC=opnsense,DC=local
   Password:                       secret                   *alway use a strong password*
- **Search scope**
-  Level:                          Entire Subtree           *Select Entire Subtree to retrieve all*
-  Base DN:                        DC=opnsense,DC=local     *Enter the Base DN*
+
+ **Search scope**                 Entire Subtree           *Select Entire Subtree to retrieve all*
+ **Base DN:**                     DC=opnsense,DC=local     *Enter the Base DN*
  **Authentication containers**	  *Select*                 *Click & Select the containers from the list*
  **Extended Query**               &(objectClass=Person)    *Extend query, p.e. limit results to Persons*
  **Initial Template**             MicrosoftAD              *Select you LDAP Server Type*
  **User naming attribute**        samAccountName           *Auto filled in based upon Initial Template*
+ **Read properties**                                       *Fetch account details after successful login*
+ **Synchronize groups**                                    *Enable to Synchronize groups, requires the option above*
+ **Limit groups**                                          *Select list of groups that maybe considered during sync**
+
 ================================ ======================== ===============================================================
 
 .. Note::
@@ -54,9 +59,16 @@ Enter the following information:
    .. image:: images/ldap_selectcontainer.png
       :width: 100%
 
+
+.. Note::
+
+    When using SSL/TLS, make sure the certificate authority of the remote server is configured in the :menuselection:`System -> Trust` section.
+
+
 .. TIP::
    The **Extended Query** can be used to select users who are member of a specific
-   group. One can use something like this:
+   group (only relevant for external services, when not using the local user database).
+   One can use something like this:
    **&(memberOf=CN=myGroup,CN=Users,DC=opnsense,DC=local)** to select only members
    of  the group *"myGroup"*. To add a user to a specific group under Windows just
    edit the groups properties and select **Add...** to add the user under the tab
@@ -65,6 +77,23 @@ Enter the following information:
    .. image:: images/ldap_mygroup_properties.png
       :width: 100%
 
+
+Step 1.1 (optional) Synchronize groups.
+.........................................
+
+When using the local database to import users, you can also synchronize configured ldap groups when the remote server
+supports this. To use this feature, enable :code:`Read properties` and :code:`Synchronize groups`.
+
+.. Note::
+
+    This feature needs the remote ldap server to respond with :code:`memberOf` when queried, how to enable this on
+    various ldap providers lies outside the scope of this manual.
+
+.. Note::
+
+    Groups will be extracted from the first :code:`CN=` section and will only be considered when already existing in OPNsense.
+    Group memberships will be persisted in OPNsense
+    (you can always check which rights the user had the last time he or she successfully logged in).
 
 Step 2 - Test
 --------------
@@ -82,6 +111,12 @@ If not (or your entered invalid credentials) it shows:
 
 .. image:: images/ldap_testfail.png
    :width: 100%
+
+
+.. Tip::
+
+    When :code:`Read properties` is enabled, you should also see all properties returned by the server in the tester. This
+    helps to identify if your server support group sync support (find :code:`memberOf` in the list).
 
 Step 3 - Import Users
 ---------------------
