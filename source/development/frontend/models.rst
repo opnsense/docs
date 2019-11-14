@@ -20,4 +20,5 @@ In this chapter we will explain how models are designed and build.
    models_example
    models_guidelines
    models_fieldtypes
+   models_customfields
    models_constraints
