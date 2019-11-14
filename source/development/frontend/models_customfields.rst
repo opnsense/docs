@@ -45,7 +45,7 @@ if one of the reserved words are provided.
 Use in model
 .................
 
-The validation can be used as any standard type, but using :code:`.\` the model knows it concerns a local field.
+The validation can be used as any standard type, when prefixed with :code:`.\ ` the model knows it concerns a local field.
 
 .. code-block:: xml
 
