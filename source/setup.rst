@@ -6,6 +6,10 @@ Installation and setup
     :width: 600px
     :align: center
 
+When your device wasn't shipped with OPNsense® `pre-installed <https://www.deciso.com/product-catalog/>`__,
+you can find how to install it yourself and which hardware platforms are supported in this chapter.
+
+
 ----------------
 
 .. toctree::
@@ -16,6 +20,7 @@ Installation and setup
    manual/install
    manual/virtuals
    manual/updates
+   manual/software_included
 
 
 
