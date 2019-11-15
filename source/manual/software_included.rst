@@ -82,10 +82,12 @@ It's best to use our build system to facilitate this, you can do so using the fo
     make install
 
 
-To update a package, the following command can be used instead (instead of the :code:`make install`):
+To update a package, the following command can be used instead:
 
 .. code-block:: sh
 
+    opnsense-code ports tools
+    cd /usr/ports/your/port
     make reinstall
 
 
