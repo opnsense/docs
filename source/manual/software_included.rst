@@ -46,7 +46,7 @@ To find a full list of all software available, you can use the following command
 
 .. code-block:: sh
 
-    pkg info
+    pkg rquery '%n (%v)'
 
 
 If, for example you would like to install the gnu `nano <https://www.nano-editor.org/>`__ editor, you can do so using the following command:
@@ -73,7 +73,21 @@ The ports tree
 ....................................
 
 In case your using software, which is not supplied by us, you can always build these packages yourself.
-The easiest way is to look at our `tools <https://github.com/opnsense/tools>`__ repository to checkout our build requirements.
+It's best to use our build system to facilitate this, you can do so using the following commands
+
+.. code-block:: sh
+
+    opnsense-code ports tools
+    cd /usr/ports/your/port
+    make install
+
+
+To update a package, the following command can be used instead (instead of the :code:`make install`):
+
+.. code-block:: sh
+
+    make reinstall
+
 
 .. Note::
 
