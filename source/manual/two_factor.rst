@@ -19,17 +19,6 @@ Supported services are:
 * Caching Proxy
 
 
---------------------------
-GUI Fallback Configuration
---------------------------
-To prevent GUI lockout due to unavailable remote authentication server, the system
-has a default fallback to the local database. In case of 2FA for the GUI one needs
-to disable the fallback option to make sure no local user can gain access without 2FA.
-
-.. image:: images/auth_server_fallback.png
-   :width: 100%
-
-
 ----------------------------
 Time-based One-time Password
 ----------------------------
