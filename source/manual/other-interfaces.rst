@@ -37,6 +37,16 @@ LAGG (``lagg(4)``) allows for link aggregation, bonding and fault tolerance. Thi
 support. Only unassigned interfaces can be added to LAGG. More information about LAGG can be found in
 `the FreeBSD manual <https://www.freebsd.org/doc/handbook/network-aggregation.html>`_.
 
+--------------
+Loopback
+--------------
+
+Loopbacks are logical virtual interfaces which emulate real interfaces and can be used for different setup scenario's,
+which require always-on interfaces. Below you will find some scenario's for which these types of interfaces are used.
+
+*   Administrative access to services on your machine, which can bind to an address configured on top of the loopback.
+*   Using loopback addresses as router IDs for OSPF or BGP, which helps to identify your nodes and eases administration
+
 ----
 VLAN
 ----
