@@ -123,7 +123,7 @@ Reporting an issue
 ------------------
 Issues can be easily reported on github, please consider carefully if the issue
 could be a configuration or user error before reporting it. If you are unsure,
-report you issue on the `Forum <https://forum.opnsense.org>`__ or on IRC/Freenode (#opnsense).
+report you issue on the `Forum <https://forum.opnsense.org>`__ or on `IRC/Freenode <https://webchat.freenode.net/#opnsense>`__ (#opnsense).
 
 ---------------
 
@@ -191,7 +191,7 @@ Forum & IRC
 -----------
 If you are an experienced network engineer, know a lot about firewall technology
 or if you are excited about OPNsense, then you can contribute to the project by helping
-others on the forum or on irc.
+others on the `forum <https://forum.opnsense.org>`__ or on `irc <https://webchat.freenode.net/#opnsense>`__.
 
 ------------------
 
