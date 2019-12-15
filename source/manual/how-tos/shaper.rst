@@ -641,7 +641,7 @@ Create a rule for the upload traffic
  **src-port**            any                *The source port to shape, leave on any*
  **destination**         any                *The destination IP to shape, leave on any*
  **dst-port**            any                *The destination port to shape, leave on any*
- **direction**           out                *Match incoming packages (download)*
+ **direction**           out                *Match outgoing packages (upload)*
  **target**             PipeUp-1Mbps        *Select the Download pipe*
  **description**        GuestNetUpload      *Enter a descriptive name*
 ====================== =================== =====================================================
