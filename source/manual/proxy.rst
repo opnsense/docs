@@ -50,7 +50,7 @@ OPNsense supports fine grained access control, base upon:
 Traffic Management
 ------------------
 The proxy can be combined with the traffic shaper and take full advantage of its
-shaping features.Additionally it includes its own options:
+shaping features. Additionally it includes its own options:
 
 * Maximum download size
 * Maximum upload size
@@ -73,7 +73,7 @@ category based web filter support. Main features include:
 ----------------
 Transparent Mode
 ----------------
-The transparent mode means all request will be diverted to the proxy without any
+The transparent mode means all requests will be diverted to the proxy without any
 configuration on your client. Transparent mode works very well with unsecured http
 requests, however with secured (SSL) HTTPS connection the proxy will become a
 man-in-the-middle as the client will "talk" to the proxy and the proxy will encrypt
