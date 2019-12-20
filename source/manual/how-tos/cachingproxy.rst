@@ -10,7 +10,7 @@ Enable / Disable
 ----------------
 The proxy is delivered with sane default settings for easy setup.
 To enable the proxy just go to :menuselection:`Services --> Web Proxy --> Administration` and
-check **Enable proxy** en click on **Apply**. The default will enable the proxy
+check **Enable proxy** Then click on **Apply**. The default will enable the proxy
 with User Authentication based on the local user database and runs on port 3128
 of the lan interface.
 
