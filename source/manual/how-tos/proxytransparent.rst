@@ -24,7 +24,7 @@ For basic configuration please refer to :doc:`cachingproxy`.
 
 Step 2 - Transparent HTTP
 --------------------------------
-Go to :menuselection:`Services --> Proxy --> Administration`
+Go to :menuselection:`Services --> Web Proxy --> Administration`
 
 Then select **General Forward Settings** under the **Forward Proxy Tab**.
 
