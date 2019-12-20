@@ -19,7 +19,7 @@ Other popular lists that are expected to work well with OPNsense are:
 
 For this tutorial we will assume:
 
-* Proxy has his default settings / is not configured
+* Proxy has its default settings / is not configured
 * We only want web filtering and nothing else (no caching, no authentication)
 
 .. Note::
