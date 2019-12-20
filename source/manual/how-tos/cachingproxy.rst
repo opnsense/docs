@@ -19,7 +19,7 @@ Change Proxy Interfaces
 -----------------------
 If you want to change the interfaces (subnets) the proxy will bind to then click
 on the tab **Forward Proxy**. Now add/remove the interfaces in the **Proxy interfaces**
-field. When adding make sure it is applied and a tag is visible (use , Enter or
+field. When adding make sure it is applied and a tag is visible (use arrow keys and Enter or
 select from the list).
 
 ---------------------------
