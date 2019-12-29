@@ -14,7 +14,7 @@ Goto https://www.maxmind.com/en/geolite2/signup and create your account. Note th
 Generate Licence Key
 ######################
 
-Once you have created an account you'll need to create a license key. Click in the "My Licence Key" link and generate a key. Save the key ID somewhere safe!!! 
+Once you have created an account you'll need to create a license key. Click in the "My Licence Key" link and generate a key. Save the key ID somewhere safe!!!
 
 You do not need to download the config at this point.
 
@@ -26,7 +26,7 @@ Now we need to create the link we'll need in OPNsense, all you need to do now is
 
 https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country-CSV&licence_key=My_Licence_key&suffix=zip
 
-You can check that you have done it correctly by just pasting the link into a browser, it should download the zip file. 
+You can check that you have done it correctly by just pasting the link into a browser, it should download the zip file.
 
 
 ##########
@@ -34,4 +34,3 @@ OPNsense
 ##########
 
 In OPNsense, goto Firewall:Aliases and select the GeoIP settings tab. Enter the URL you have created into the URL box and click Apply, and that's it.
-

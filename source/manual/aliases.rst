@@ -96,6 +96,34 @@ region.
   .. image:: images/firewall_geoip_alias.png
       :width: 100%
 
+To use GeoIP, you need to configure a source in the :menuselection:`Firewall --> Aliases -> GeoIP settings` tab, the most commonly
+used source is MaxMind, for which we have a how-to available : :doc:`how-tos/maxmind_geo_ip`
+
+The configured url should point to a zip file containing the following csv files:
+
+.. list-table:: Title
+   :widths: 50 25 25 25
+   :header-rows: 1
+
+   * - Filename
+     - Purpose
+     - Format
+     - Example
+   * - %prefix%-locations-en.csv
+     - maps geo locations to iso countries
+     - geoname_id,,,,country_iso_code
+     - 1,,,,NL
+   * - %prefix%-IPv4.csv
+     - IPv4 networks
+     - network,geoname_id
+     - 2.21.241.0/28,1
+   * - %prefix%-IPv6.csv
+     - IPv6 networks
+     - network,geoname_id
+     - 2001:470:1f15:210::/64,1
+
+The :code:`%prefix%` can be used to identify the product and/or vendor, in MaxMind's case these files are named
+:code:`GeoLite2-Country-Locations-en.csv`, :code:`GeoLite2-Country-Blocks-IPv4.csv`, :code:`GeoLite2-Country-Blocks-IPv6.csv` for example.
 
 .. Tip::
 
