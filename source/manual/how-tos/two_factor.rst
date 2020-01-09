@@ -124,8 +124,22 @@ Hit the test button and if all goes well you should see *successfully authentica
 .. image:: images/system_access_tester.png
    :width: 100%
 
+---------------------------------------------------
+Step 6 - Enable authentication server
+---------------------------------------------------
+Per default the system validates user credentials against the "Local Database".
+In :menuselection:`System --> Settings --> Administration`, section **Authentication** you should
+change this to your newly added authentication server to make sure no local user can gain access
+without 2FA.
+
+**Note: Make sure you've tested your token!**
+
+.. image:: images/auth_server.png
+   :width: 100%
+
+
 ------------------------
-Step 6 - Using the token
+Step 7 - Using the token
 ------------------------
 To use the token in any application/service that you have configured, just open
 the Google Authenticator and add the created token/key **before** your regular password.
