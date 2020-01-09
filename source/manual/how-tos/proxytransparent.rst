@@ -24,7 +24,7 @@ For basic configuration please refer to :doc:`cachingproxy`.
 
 Step 2 - Transparent HTTP
 --------------------------------
-Go to :menuselection:`Services --> Proxy --> Administration`
+Go to :menuselection:`Services --> Web Proxy --> Administration`
 
 Then select **General Forward Settings** under the **Forward Proxy Tab**.
 
@@ -90,7 +90,7 @@ For our example we use the following data:
 
 Step 5 - Transparent SSL
 -------------------------------------
-Go to :menuselection:`Services --> Proxy --> Administration`
+Go to :menuselection:`Services --> Web Proxy --> Administration`
 Then select **General Forward Settings** under the **Forward Proxy Tab**.
 
 Select **Enable SSL mode** and set **CA to use** to the CA you have just created.
