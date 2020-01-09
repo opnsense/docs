@@ -2,7 +2,7 @@
 ClamAV
 ======
 
-The ClamAV plugin can be used with other plugins, like :doc:`how-tos/c-icap` and rspamd, to scan for viruses.
+The ClamAV plugin can be used with other plugins, like c-icap and rspamd, to scan for viruses.
 
 .. Warning::
     Your machine needs at least 1.5 GB RAM. Otherwise the machine will run out of
