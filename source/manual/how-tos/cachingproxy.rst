@@ -70,7 +70,7 @@ You can select one or more of the following:
 ---------
 FTP Proxy
 ---------
-To enable the FTP Proxy Click on the arrow next to the **Forward Proxy** tab to
+To enable the FTP Proxy click on the arrow next to the **Forward Proxy** tab to
 show the drop down menu. Now select **FTP Proxy Settings** and select one or more
 interfaces in the **FTP proxy interfaces** field and **Apply**.
 
