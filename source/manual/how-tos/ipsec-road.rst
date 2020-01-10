@@ -211,7 +211,6 @@ Phase 2 proposal (SA/Key Exchange)
 Save your setting by pressing:
 
 .. image:: images/btn_save.png
-    :width: 100%
 
 -----------------------------
 
@@ -223,7 +222,7 @@ Enable IPsec, Select:
 Save:
 
 .. image:: images/btn_save.png
-    :width: 100%
+
 
 And Apply changes:
 
@@ -239,7 +238,7 @@ And Apply changes:
 
 .. Note::
 
-   If you already had IPsec enabled and added Road Warrior setup, it's important to 
+   If you already had IPsec enabled and added Road Warrior setup, it's important to
    restart the whole service via services widget in the upper right corner of IPSec pages
    or via :menuselection:`System --> Diagnostics --> Services --> Strongswan` since applying configuration only
    reloads it, but a restart also loads the required modules of strongswan.

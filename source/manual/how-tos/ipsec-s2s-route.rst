@@ -415,7 +415,6 @@ Save your setting by pressing:
 Enable IPsec for Site B, Select:
 
 .. image:: images/ipsec_s2s_vpn_p1a_enable.png
-    :width: 100%
 
 Save:
 
