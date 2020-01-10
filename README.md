@@ -30,7 +30,7 @@ that it owns or licenses any of the mentioned, nor does it grant them.
 #### Prepare build
 Install Sphinx, our default theme and contrib packages
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt --upgrade
 ```
 
 

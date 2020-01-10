@@ -6,3 +6,4 @@ sphinxcontrib-nwdiag
 sphinxcontrib-seqdiag
 sphinxcontrib-actdiag
 blockdiagcontrib-cisco
+Pillow
