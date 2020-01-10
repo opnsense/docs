@@ -23,5 +23,4 @@ vnstat
 
    "","vnstat","service","hourly",""
    "","vnstat","service","daily",""
-   "","vnstat","service","weekly",""
    "","vnstat","service","monthly",""
