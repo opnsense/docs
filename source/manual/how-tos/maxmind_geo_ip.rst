@@ -14,7 +14,7 @@ Goto https://www.maxmind.com/en/geolite2/signup and create your account. Note th
 Generate Licence Key
 ######################
 
-Once you have created an account you'll need to create a license key. Click in the "My Licence Key" link and generate a key. Save the key ID somewhere safe!!! 
+Once you have created an account you'll need to create a license key. Click in the "My Licence Key" link and generate a key, it does not matter which version of geoipupdate you use, OPNsense does not use either. However if you choose the older than 3.1.1 version you will see a warning and a suggestion to upgrade, so choose 3.1.1 or newer. Save the key ID somewhere safe!!! 
 
 You do not need to download the config at this point.
 
