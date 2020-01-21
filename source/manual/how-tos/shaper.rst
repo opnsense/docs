@@ -190,7 +190,7 @@ Upload that we want to share evenly between all users.
 
 .. nwdiag::
   :scale: 100%
-  :caption: Shaping hosted VOIP / SIP trunk sample
+  :caption: Shaping bandwidth evenly sample
 
     nwdiag {
 
