@@ -14,7 +14,7 @@ Goto https://www.maxmind.com/en/geolite2/signup and create your account. Note th
 Generate License Key
 ######################
 
-Once you have created an account you'll need to create a license key. Click in the "My License Key" link and generate a key. Save the key ID somewhere safe!!!
+Once you have created an account you'll need to create a license key. Click in the "My License Key" link and generate a key. When asked if you use "geoipupdate",  choose "no". Save the key ID somewhere safe!!!
 
 You do not need to download the config at this point.
 
