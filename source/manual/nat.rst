@@ -31,6 +31,11 @@ bidirectional. This can simplify your set-up. If you don't have networks of equa
 instead of the internal one (which would the most logical), NAT reflection can rewrite this request so that it uses
 the internal IP, in order to avoid taking a detour and applying rules meant for actual outside traffic.
 
+.. Note::
+    The NAT rules generated with enabling **NAT reflection** only include networks directly connected to your 
+    Firewall. This means if you have a private network separated from your LAN you need to add this with a 
+    manual outbound NAT rule.
+
 **Pool options**: When there are multiple IPs to choose from, this option will allow regulating which IP gets used.
 The default, Round Robin, will simply distribute packets to one server after the other. If you only have one external
 IP, this option has no effect.
