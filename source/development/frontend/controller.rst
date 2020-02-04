@@ -99,3 +99,12 @@ post request to /api/sample/test/echo, using jQuery:
                 },
                 data:{message:"test message"}
             });
+
+
+.. Tip::
+
+    OPNsense ships with two standard controllers to incorporate default action scenario's, such as mutating models
+    and restarting services. These can be found in our repository `here <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/controllers/OPNsense/Base/>`__
+    and are named :code:`ApiMutableModelControllerBase`, :code:`ApiMutableServiceControllerBase`. Both extend :code:`ApiControllerBase`
+    as described in this chapter. The mutable model controller is explained in more detail in :doc:`using grids <../examples/using_grids>`, the
+    service controller is explained in :doc:`api enable services <../examples/api_enable_services>`

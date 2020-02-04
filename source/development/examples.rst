@@ -7,4 +7,6 @@ Examples
    :titlesonly:
    :glob:
 
-   examples/*
+   examples/helloworld
+   examples/using_grids
+   examples/api_enable_services
