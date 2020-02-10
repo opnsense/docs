@@ -69,7 +69,7 @@ OPNsense offers a full Netflow Analyzer with the following features:
 * Captures 5 detail levels
 
     * Last 2 hours, 30 second average
-    * Last 8 hours, 5 minute averagae
+    * Last 8 hours, 5 minute average
     * Last week, 1 hour average
     * Last month, 24 hour average
     * Last year, 24 hour average

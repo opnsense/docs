@@ -24,7 +24,7 @@ Graphs & Totals
 ---------------
 The default view of Insight is the Top users and Graphical Overview.
 This view allows for quick examination of current and past flows, showing a graph
-for in and out going traffic for each configured intertface.
+for in and out going traffic for each configured interface.
 
 Select Range & Resolution
 -------------------------
