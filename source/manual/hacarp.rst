@@ -23,7 +23,7 @@ would like to keep both systems (partially) the same.
 
 To prevent issues spreading over both machines at the same time, we choose to only update on command (see the status page).
 
-Our worklow looks like this:
+Our workflow looks like this:
 
 .. blockdiag::
    :desctable:

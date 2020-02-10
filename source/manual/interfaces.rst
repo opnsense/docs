@@ -24,7 +24,7 @@ the following options are available:
  Enable interface            Disable the interface without needing to remove its assignment altogether.
  Prevent interface removal   Avoids accidentally removing an interface (has to be turned off and saved before an interface can be removed).
  **General configuration**
- Description                 A short description for clarifaction, if the name does not suffice.
+ Description                 A short description for clarification, if the name does not suffice.
  Block private networks      Block traffic claiming to come from private addresses. On WAN interfaces, this kind of traffic should not happen legitimately.
  Block bogon networks        Block traffic claiming to come from invalid or reserved addresses (Martian packets). Note that this also includes multicast traffic using OSPF and RTMP.
  IPv4 Configuration type     How to obtain the IPv4 address for this connection.

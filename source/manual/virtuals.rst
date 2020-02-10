@@ -139,7 +139,7 @@ If you are using virtio for the root disk then try switching to sata mode.
 
 NAT issues on XenServer
 -----------------------
-This issue has been reported to be solved by disabling cheksum offloading on both
+This issue has been reported to be solved by disabling checksum offloading on both
 OPNsense domU and Vifs.
 
 ------------------
