@@ -14,7 +14,7 @@ It can be installed using the following command on the command line:
 
 .. code-block:: sh
 
-    apt install network-manager-stronswan
+    apt install network-manager-strongswan
 
 ------------------------------
 Step 1 - Download Certificate

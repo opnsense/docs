@@ -104,5 +104,5 @@ The full link to it would be https://github.com/opnsense/plugins/commit/699f1f28
 
 The -c changes the default core to plugin repo and adds the patch to the system. 
 
-It is also possible to add patches from differnt users, just add -a githubusername before -c
+It is also possible to add patches from different users, just add -a githubusername before -c
 
