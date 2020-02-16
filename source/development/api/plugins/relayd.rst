@@ -1,51 +1,27 @@
-relayd
+Relayd
 ~~~~~~
 
-.. csv-table:: Settings
+.. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``GET``","relayd","settings","get","general"
+    "``POST``","relayd","service","configtest",""
+    "``POST``","relayd","service","reconfigure",""
 
-.. csv-table:: Service
+.. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","relayd","service","configtest",""
-   "``POST``","relayd","service","reconfigure",""
-   "``POST``","relayd","service","restart",""
-   "``POST``","relayd","service","start",""
-   "``GET``","relayd","service","status",""
-   "``POST``","relayd","service","stop",""
+    "``GET``","relayd","settings","del","$nodeType=null,$uuid=null"
+    "``GET``","relayd","settings","dirty",""
+    "``GET``","relayd","settings","get","$nodeType=null,$uuid=null"
+    "``POST``","relayd","settings","search","$nodeType=null"
+    "``POST``","relayd","settings","set","$nodeType=null,$uuid=null"
 
-.. csv-table:: Resources
+.. csv-table:: Resources (StatusController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","relayd","settings","del","tablecheck/$uuid"
-   "``POST``","relayd","settings","del","protocol/$uuid"
-   "``POST``","relayd","settings","del","virtualserver/$uuid"
-   "``POST``","relayd","settings","del","table/$uuid"
-   "``POST``","relayd","settings","del","host/$uuid"
-   "``GET``","relayd","settings","get","host/$uuid"
-   "``GET``","relayd","settings","get","tablecheck/$uuid"
-   "``GET``","relayd","settings","get","virtualserver/$uuid"
-   "``GET``","relayd","settings","get","table/$uuid"
-   "``GET``","relayd","settings","get","protocol/$uuid"
-   "``GET``","relayd","settings","search","host/"
-   "``GET``","relayd","settings","search","virtualserver/"
-   "``GET``","relayd","settings","search","protocol/"
-   "``GET``","relayd","settings","search","tablecheck/"
-   "``GET``","relayd","settings","search","table/"
-   "``POST``","relayd","settings","set","virtualserver/$uuid"
-   "``POST``","relayd","settings","set","host/$uuid"
-   "``POST``","relayd","settings","set","table/$uuid"
-   "``POST``","relayd","settings","set","protocol/$uuid"
-   "``POST``","relayd","settings","set","tablecheck/$uuid"
+    "``GET``","relayd","status","sum",""
+    "``POST``","relayd","status","toggle","$nodeType=null,$id=null,$action=null"
 
-.. csv-table:: Other
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "","relayd","status","sum",""
-   "","relayd","status","toggle",""

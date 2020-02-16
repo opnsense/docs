@@ -1,9 +1,9 @@
-Ntopng
+Backup
 ~~~~~~
 
-.. csv-table:: Service (ServiceController.php)
+.. csv-table:: Resources (BackupController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","ntopng","service","checkredis",""
+    "``GET``","backup","backup","download",""
 

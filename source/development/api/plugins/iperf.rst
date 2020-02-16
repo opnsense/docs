@@ -1,25 +1,19 @@
-iperf
+Iperf
 ~~~~~
 
-.. csv-table:: Settings
+.. csv-table:: Resources (InstanceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``GET``","iperf","instance","get",""
-   "``POST``","iperf","instance","set",""
+    "``GET``","iperf","instance","query",""
+    "``GET``","iperf","instance","set",""
 
-.. csv-table:: Service
+.. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","iperf","service","reconfigure",""
-   "``POST``","iperf","service","restart",""
-   "``POST``","iperf","service","start",""
-   "``GET``","iperf","service","status",""
-   "``POST``","iperf","service","stop",""
+    "``GET``","iperf","service","restart",""
+    "``GET``","iperf","service","start",""
+    "``GET``","iperf","service","status",""
+    "``GET``","iperf","service","stop",""
 
-.. csv-table:: Other
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "","iperf","instance","query",""

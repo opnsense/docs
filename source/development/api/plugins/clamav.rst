@@ -1,26 +1,21 @@
-clamav
+Clamav
 ~~~~~~
 
-.. csv-table:: Settings
+.. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``GET``","clamav","general","get",""
-   "``POST``","clamav","general","set",""
+    "``POST``","clamav","service","freshclam",""
+    "``GET``","clamav","service","version",""
 
-.. csv-table:: Service
+.. csv-table:: Resources (UrlController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","clamav","service","reconfigure",""
-   "``POST``","clamav","service","restart",""
-   "``POST``","clamav","service","start",""
-   "``GET``","clamav","service","status",""
-   "``POST``","clamav","service","stop",""
+    "``POST``","clamav","url","addUrl",""
+    "``POST``","clamav","url","delUrl","$uuid"
+    "``GET``","clamav","url","getUrl","$uuid=null"
+    "``*``","clamav","url","searchUrl",""
+    "``POST``","clamav","url","setUrl","$uuid"
+    "``POST``","clamav","url","toggleUrl","$uuid"
 
-.. csv-table:: Other
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "","clamav","service","freshclam",""
-   "","clamav","service","version",""

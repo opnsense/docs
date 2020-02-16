@@ -1,26 +1,12 @@
-vnstat
+Vnstat
 ~~~~~~
 
-.. csv-table:: Settings
+.. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``GET``","vnstat","general","get",""
-   "``POST``","vnstat","general","set",""
+    "``GET``","vnstat","service","daily",""
+    "``GET``","vnstat","service","hourly",""
+    "``GET``","vnstat","service","monthly",""
+    "``GET``","vnstat","service","resetdb",""
 
-.. csv-table:: Service
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "``POST``","vnstat","service","restart",""
-   "``POST``","vnstat","service","start",""
-   "``POST``","vnstat","service","status",""
-   "``POST``","vnstat","service","stop",""
-
-.. csv-table:: Other
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "","vnstat","service","hourly",""
-   "","vnstat","service","daily",""
-   "","vnstat","service","monthly",""

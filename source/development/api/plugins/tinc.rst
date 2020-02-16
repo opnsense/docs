@@ -1,28 +1,27 @@
-tinc
+Tinc
 ~~~~
 
-.. csv-table:: Service
+.. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","tinc","service","reconfigure",""
-   "``POST``","tinc","service","restart",""
-   "``GET``","tinc","service","start",""
-   "``POST``","tinc","service","stop",""
+    "``POST``","tinc","service","reconfigure",""
+    "``POST``","tinc","service","restart",""
+    "``POST``","tinc","service","start",""
+    "``POST``","tinc","service","stop",""
 
-.. csv-table:: Resources
+.. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","tinc","settings","delhost","$uuid"
-   "``POST``","tinc","settings","delnetwork","$uuid"
-   "``GET``","tinc","settings","gethost","$uuid"
-   "``GET``","tinc","settings","getnetwork","$uuid"
-   "``GET``","tinc","settings","searchhost",""
-   "``GET``","tinc","settings","searchnetwork",""
-   "``POST``","tinc","settings","sethost",""
-   "``POST``","tinc","settings","sethost","$uuid"
-   "``POST``","tinc","settings","setnetwork",""
-   "``POST``","tinc","settings","setnetwork","$uuid"
-   "``POST``","tinc","settings","togglehost","$uuid/$enabled"
-   "``POST``","tinc","settings","togglenetwork","$uuid/$enabled"
+    "``POST``","tinc","settings","delHost","$uuid"
+    "``POST``","tinc","settings","delNetwork","$uuid"
+    "``GET``","tinc","settings","getHost","$uuid=null"
+    "``GET``","tinc","settings","getNetwork","$uuid=null"
+    "``GET``","tinc","settings","searchHost",""
+    "``GET``","tinc","settings","searchNetwork",""
+    "``POST``","tinc","settings","setHost","$uuid=null"
+    "``POST``","tinc","settings","setNetwork","$uuid=null"
+    "``POST``","tinc","settings","toggleHost","$uuid,$enabled=null"
+    "``POST``","tinc","settings","toggleNetwork","$uuid,$enabled=null"
+

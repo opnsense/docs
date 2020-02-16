@@ -1,15 +1,9 @@
-nut
+Nut
 ~~~
 
-.. csv-table:: Settings
+.. csv-table:: Resources (DiagnosticsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``GET``","nut","settings","get",""
-   "``POST``","nut","settings","set",""
+    "``GET``","nut","diagnostics","upsstatus",""
 
-.. csv-table:: Service
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "``POST``","nut","service","reconfigure",""

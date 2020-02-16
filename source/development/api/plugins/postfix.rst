@@ -1,50 +1,87 @@
-postfix
+Postfix
 ~~~~~~~
 
-.. csv-table:: Settings
+.. csv-table:: Resources (AddressController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``GET``","postfix","antispam","get",""
-   "``POST``","postfix","antispam","set",""
-   "``GET``","postfix","general","get",""
-   "``POST``","postfix","general","set",""
+    "``POST``","postfix","address","addAddress",""
+    "``POST``","postfix","address","delAddress","$uuid"
+    "``GET``","postfix","address","getAddress","$uuid=null"
+    "``*``","postfix","address","searchAddress",""
+    "``POST``","postfix","address","setAddress","$uuid"
+    "``POST``","postfix","address","toggleAddress","$uuid"
 
-.. csv-table:: Service
+.. csv-table:: Resources (DomainController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","postfix","service","reconfigure",""
-   "``POST``","postfix","service","restart",""
-   "``POST``","postfix","service","start",""
-   "``GET``","postfix","service","status",""
-   "``POST``","postfix","service","stop",""
+    "``POST``","postfix","domain","addDomain",""
+    "``POST``","postfix","domain","delDomain","$uuid"
+    "``GET``","postfix","domain","getDomain","$uuid=null"
+    "``*``","postfix","domain","searchDomain",""
+    "``POST``","postfix","domain","setDomain","$uuid"
+    "``POST``","postfix","domain","toggleDomain","$uuid"
 
-.. csv-table:: Resources
+.. csv-table:: Resources (RecipientController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","postfix","domain","adddomain",""
-   "``POST``","postfix","domain","deldomain","$uuid"
-   "``GET``","postfix","domain","getdomain","$uuid"
-   "``GET``","postfix","domain","searchdomain",""
-   "``POST``","postfix","domain","setdomain","$uuid"
-   "``POST``","postfix","domain","toggledomain","$uuid"
-   "``POST``","postfix","recipient","addrecipient",""
-   "``POST``","postfix","recipient","delrecipient","$uuid"
-   "``GET``","postfix","recipient","getrecipient","$uuid"
-   "``GET``","postfix","recipient","searchrecipient",""
-   "``POST``","postfix","recipient","setrecipient","$uuid"
-   "``POST``","postfix","recipient","togglerecipient","$uuid"
-   "``POST``","postfix","sender","addsender",""
-   "``POST``","postfix","sender","delsender","$uuid"
-   "``GET``","postfix","sender","getsender","$uuid"
-   "``GET``","postfix","sender","searchsender",""
-   "``POST``","postfix","sender","setsender","$uuid"
-   "``POST``","postfix","sender","togglesender","$uuid"
+    "``POST``","postfix","recipient","addRecipient",""
+    "``POST``","postfix","recipient","delRecipient","$uuid"
+    "``GET``","postfix","recipient","getRecipient","$uuid=null"
+    "``*``","postfix","recipient","searchRecipient",""
+    "``POST``","postfix","recipient","setRecipient","$uuid"
+    "``POST``","postfix","recipient","toggleRecipient","$uuid"
 
-.. csv-table:: Other
+.. csv-table:: Resources (RecipientbccController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "","postfix","service","checkrspamd",""
+    "``POST``","postfix","recipientbcc","addRecipientbcc",""
+    "``POST``","postfix","recipientbcc","delRecipientbcc","$uuid"
+    "``GET``","postfix","recipientbcc","getRecipientbcc","$uuid=null"
+    "``*``","postfix","recipientbcc","searchRecipientbcc",""
+    "``POST``","postfix","recipientbcc","setRecipientbcc","$uuid"
+    "``POST``","postfix","recipientbcc","toggleRecipientbcc","$uuid"
+
+.. csv-table:: Resources (SenderController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","postfix","sender","addSender",""
+    "``POST``","postfix","sender","delSender","$uuid"
+    "``GET``","postfix","sender","getSender","$uuid=null"
+    "``*``","postfix","sender","searchSender",""
+    "``POST``","postfix","sender","setSender","$uuid"
+    "``POST``","postfix","sender","toggleSender","$uuid"
+
+.. csv-table:: Resources (SenderbccController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","postfix","senderbcc","addSenderbcc",""
+    "``POST``","postfix","senderbcc","delSenderbcc","$uuid"
+    "``GET``","postfix","senderbcc","getSenderbcc","$uuid=null"
+    "``*``","postfix","senderbcc","searchSenderbcc",""
+    "``POST``","postfix","senderbcc","setSenderbcc","$uuid"
+    "``POST``","postfix","senderbcc","toggleSenderbcc","$uuid"
+
+.. csv-table:: Resources (SendercanonicalController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","postfix","sendercanonical","addSendercanonical",""
+    "``POST``","postfix","sendercanonical","delSendercanonical","$uuid"
+    "``GET``","postfix","sendercanonical","getSendercanonical","$uuid=null"
+    "``*``","postfix","sendercanonical","searchSendercanonical",""
+    "``POST``","postfix","sendercanonical","setSendercanonical","$uuid"
+    "``POST``","postfix","sendercanonical","toggleSendercanonical","$uuid"
+
+.. csv-table:: Service (ServiceController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","postfix","service","checkrspamd",""
+    "``POST``","postfix","service","reconfigure",""
+

@@ -1,18 +1,12 @@
-mdnsrepeater
+Mdnsrepeater
 ~~~~~~~~~~~~
 
-.. csv-table:: Settings
+.. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``GET``","mdnsrepeater","settings","get",""
-   "``POST``","mdnsrepeater","settings","set",""
+    "``GET``","mdnsrepeater","service","restart",""
+    "``GET``","mdnsrepeater","service","start",""
+    "``GET``","mdnsrepeater","service","status",""
+    "``GET``","mdnsrepeater","service","stop",""
 
-.. csv-table:: Service
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "``POST``","mdnsrepeater","service","restart",""
-   "``POST``","mdnsrepeater","service","start",""
-   "``GET``","mdnsrepeater","service","status",""
-   "``POST``","mdnsrepeater","service","stop",""

@@ -1,19 +1,14 @@
-proxyuseracl
+Proxyuseracl
 ~~~~~~~~~~~~
 
-.. csv-table:: Resources
+.. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","proxyuseracl","settings","addacl",""
-   "``POST``","proxyuseracl","settings","delacl","$uuid"
-   "``GET``","proxyuseracl","settings","getacl","$uuid"
-   "``GET``","proxyuseracl","settings","searchacl",""
-   "``POST``","proxyuseracl","settings","setacl","$uuid"
-   "``POST``","proxyuseracl","settings","toggleacl","$uuid"
+    "``POST``","proxyuseracl","settings","addACL",""
+    "``POST``","proxyuseracl","settings","delACL","$uuid"
+    "``GET``","proxyuseracl","settings","getACL","$uuid=null"
+    "``GET``","proxyuseracl","settings","searchACL",""
+    "``POST``","proxyuseracl","settings","setACL","$uuid"
+    "``POST``","proxyuseracl","settings","updownACL","$uuid"
 
-.. csv-table:: Other
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "","proxyuseracl","settings","updownACL",""

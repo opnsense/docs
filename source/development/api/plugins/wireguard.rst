@@ -1,41 +1,32 @@
-wireguard
+Wireguard
 ~~~~~~~~~
 
-.. csv-table:: Settings
+.. csv-table:: Resources (ClientController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``GET``","wireguard","general","get",""
-   "``POST``","wireguard","general","set",""
+    "``POST``","wireguard","client","addClient",""
+    "``POST``","wireguard","client","delClient","$uuid"
+    "``GET``","wireguard","client","getClient","$uuid=null"
+    "``*``","wireguard","client","searchClient",""
+    "``POST``","wireguard","client","setClient","$uuid"
+    "``POST``","wireguard","client","toggleClient","$uuid"
 
-.. csv-table:: Service
+.. csv-table:: Resources (ServerController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","wireguard","service","restart",""
-   "``POST``","wireguard","service","start",""
-   "``POST``","wireguard","service","stop",""
+    "``POST``","wireguard","server","addServer","$uuid=null"
+    "``POST``","wireguard","server","delServer","$uuid"
+    "``GET``","wireguard","server","getServer","$uuid=null"
+    "``*``","wireguard","server","searchServer",""
+    "``POST``","wireguard","server","setServer","$uuid=null"
+    "``POST``","wireguard","server","toggleServer","$uuid"
 
-.. csv-table:: Resources
+.. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","wireguard","client","addclient",""
-   "``POST``","wireguard","client","delclient","$uuid"
-   "``GET``","wireguard","client","getclient","$uuid"
-   "``GET``","wireguard","client","searchclient",""
-   "``POST``","wireguard","client","setclient","$uuid"
-   "``POST``","wireguard","client","toggleclient","$uuid"
-   "``POST``","wireguard","server","addserver",""
-   "``POST``","wireguard","server","delserver","$uuid"
-   "``GET``","wireguard","server","getserver","$uuid"
-   "``GET``","wireguard","server","searchserver",""
-   "``POST``","wireguard","server","setserver","$uuid"
-   "``POST``","wireguard","server","toggleserver","$uuid"
+    "``GET``","wireguard","service","showconf",""
+    "``GET``","wireguard","service","showhandshake",""
 
-.. csv-table:: Other
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "","wireguard","service","showconf",""
-   "","wireguard","service","showhandshake",""
