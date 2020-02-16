@@ -51,7 +51,7 @@ The settings on this page concerns logging into OPNsense. The “Secure Shell”
 +----------------------------------------------+-----------------------------------------------------------------------+
 | HTTP Compression                             | Reduces size of transfer, at the cost of slightly higher CPU usage.   |
 +----------------------------------------------+-----------------------------------------------------------------------+
-| Enable access log                            | Log all access to the Web GUI (for debugging/analysis)                 |
+| Enable access log                            | Log all access to the Web GUI (for debugging/analysis)                |
 +----------------------------------------------+-----------------------------------------------------------------------+
 | Listen interfaces                            | Can be used to limit interfaces on which the Web GUI can be accessed. |
 |                                              | This allows freeing the interface for other services, such as HAProxy.|
