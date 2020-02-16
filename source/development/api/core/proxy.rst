@@ -1,39 +1,40 @@
 Proxy
 ~~~~~
 
-.. csv-table:: Settings
+.. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``GET``","proxy","settings","get",""
-   "``POST``","proxy","settings","set",""
-   "``GET``","proxy","settings","set",""
+    "``POST``","proxy","service","downloadacls",""
+    "``POST``","proxy","service","fetchacls",""
+    "``POST``","proxy","service","refreshTemplate",""
+    "``POST``","proxy","service","reset",""
 
-.. csv-table:: Service
+.. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","proxy","service","reconfigure",""
-   "``POST``","proxy","service","restart",""
-   "``POST``","proxy","service","start",""
-   "``GET``","proxy","service","status",""
-   "``POST``","proxy","service","stop",""
+    "``POST``","proxy","settings","addPACMatch",""
+    "``POST``","proxy","settings","addPACProxy",""
+    "``POST``","proxy","settings","addPACRule",""
+    "``POST``","proxy","settings","addRemoteBlacklist",""
+    "``POST``","proxy","settings","delPACMatch","$uuid"
+    "``POST``","proxy","settings","delPACProxy","$uuid"
+    "``POST``","proxy","settings","delPACRule","$uuid"
+    "``POST``","proxy","settings","delRemoteBlacklist","$uuid"
+    "``POST``","proxy","settings","fetchRBCron",""
+    "``GET``","proxy","settings","getPACMatch","$uuid=null"
+    "``GET``","proxy","settings","getPACProxy","$uuid=null"
+    "``GET``","proxy","settings","getPACRule","$uuid=null"
+    "``GET``","proxy","settings","getRemoteBlacklist","$uuid=null"
+    "``*``","proxy","settings","searchPACMatch",""
+    "``*``","proxy","settings","searchPACProxy",""
+    "``*``","proxy","settings","searchPACRule",""
+    "``GET``","proxy","settings","searchRemoteBlacklists",""
+    "``POST``","proxy","settings","setPACMatch","$uuid"
+    "``POST``","proxy","settings","setPACProxy","$uuid"
+    "``POST``","proxy","settings","setPACRule","$uuid"
+    "``POST``","proxy","settings","setRemoteBlacklist","$uuid"
+    "``POST``","proxy","settings","togglePACRule","$uuid"
+    "``POST``","proxy","settings","toggleRemoteBlacklist","$uuid"
 
-.. csv-table:: Resources
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "``POST``","proxy","settings","addremoteblacklist",""
-   "``POST``","proxy","settings","delremoteblacklist","$uuid"
-   "``GET``","proxy","settings","getremoteblacklist","$uuid"
-   "``GET``","proxy","settings","searchremoteblacklists",""
-   "``POST``","proxy","settings","setremoteblacklist","$uuid"
-   "``POST``","proxy","settings","toggleremoteblacklist","$uuid"
-
-.. csv-table:: Other
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "","proxy","service","downloadacls",""
-   "","proxy","service","fetchacls",""
-   "","proxy","settings","fetchRBCron",""

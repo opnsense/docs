@@ -1,37 +1,59 @@
-
 Diagnostics
 ~~~~~~~~~~~
 
-.. csv-table:: Settings
+.. csv-table:: Resources (ActivityController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``GET``","diagnostics","netflow","getconfig",""
-   "``GET``","diagnostics","netflow","setconfig",""
-   "``POST``","diagnostics","netflow","setconfig",""
+    "``GET``","diagnostics","activity","getActivity",""
 
-.. csv-table:: Diagnostics
+.. csv-table:: Resources (DnsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "","diagnostics","activity","getActivity",""
-   "","diagnostics","dns","reverse",""
-   "","diagnostics","firewall","log",""
-   "","diagnostics","interface","flushArp",""
-   "","diagnostics","interface","getArp",""
-   "","diagnostics","interface","getInterfaceNames",""
-   "","diagnostics","interface","getNdp",""
-   "","diagnostics","interface","getRoutes",""
-   "","diagnostics","netflow","cacheStats",""
-   "","diagnostics","netflow","isEnabled",""
-   "","diagnostics","netflow","reconfigure",""
-   "","diagnostics","networkinsight","export",""
-   "","diagnostics","networkinsight","getInterfaces",""
-   "","diagnostics","networkinsight","getMetadata",""
-   "","diagnostics","networkinsight","getProtocols",""
-   "","diagnostics","networkinsight","getServices",""
-   "","diagnostics","networkinsight","timeserie","FlowInterfaceTotals/bps/"
-   "","diagnostics","networkinsight","top","FlowDstPortTotals/"
-   "","diagnostics","systemhealth","getInterfaces",""
-   "","diagnostics","systemhealth","getRRDlist",""
-   "","diagnostics","systemhealth","getSystemHealth",""
+    "``GET``","diagnostics","dns","reverse_lookup",""
+
+.. csv-table:: Resources (FirewallController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","diagnostics","firewall","log",""
+
+.. csv-table:: Resources (InterfaceController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","diagnostics","interface","delRoute",""
+    "``POST``","diagnostics","interface","flushArp",""
+    "``GET``","diagnostics","interface","getArp",""
+    "``GET``","diagnostics","interface","getInterfaceNames",""
+    "``GET``","diagnostics","interface","getNdp",""
+    "``GET``","diagnostics","interface","getRoutes",""
+
+.. csv-table:: Resources (NetflowController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","diagnostics","netflow","cacheStats",""
+    "``GET``","diagnostics","netflow","getconfig",""
+    "``GET``","diagnostics","netflow","isEnabled",""
+    "``POST``","diagnostics","netflow","reconfigure",""
+    "``GET``","diagnostics","netflow","setconfig",""
+    "``GET``","diagnostics","netflow","status",""
+
+.. csv-table:: Resources (NetworkinsightController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","diagnostics","networkinsight","getInterfaces",""
+    "``GET``","diagnostics","networkinsight","getMetadata",""
+    "``GET``","diagnostics","networkinsight","getProtocols",""
+    "``GET``","diagnostics","networkinsight","getServices",""
+
+.. csv-table:: Resources (SystemhealthController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","diagnostics","systemhealth","getInterfaces",""
+    "``GET``","diagnostics","systemhealth","getRRDlist",""
+

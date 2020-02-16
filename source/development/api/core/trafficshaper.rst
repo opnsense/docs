@@ -1,36 +1,33 @@
-TrafficShaper
+Trafficshaper
 ~~~~~~~~~~~~~
 
-.. csv-table:: Service
+.. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","trafficshaper","service","reconfigure",""
+    "``POST``","trafficshaper","service","flushreload",""
+    "``POST``","trafficshaper","service","reconfigure",""
 
-.. csv-table:: Resources
+.. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","trafficshaper","settings","addpipe",""
-   "``POST``","trafficshaper","settings","addqueue",""
-   "``POST``","trafficshaper","settings","addrule",""
-   "``POST``","trafficshaper","settings","delpipe","$uuid"
-   "``POST``","trafficshaper","settings","delqueue","$uuid"
-   "``POST``","trafficshaper","settings","delrule","$uuid"
-   "``GET``","trafficshaper","settings","getpipe","$uuid"
-   "``GET``","trafficshaper","settings","getqueue","$uuid"
-   "``GET``","trafficshaper","settings","getrule","$uuid"
-   "``GET``","trafficshaper","settings","searchpipes",""
-   "``GET``","trafficshaper","settings","searchqueues",""
-   "``GET``","trafficshaper","settings","searchrules",""
-   "``POST``","trafficshaper","settings","setpipe","$uuid"
-   "``POST``","trafficshaper","settings","setqueue","$uuid"
-   "``POST``","trafficshaper","settings","setrule","$uuid"
-   "``POST``","trafficshaper","settings","togglepipe","$uuid/$enabled"
-   "``POST``","trafficshaper","settings","togglequeue","$uuid/$enabled"
+    "``POST``","trafficshaper","settings","addPipe",""
+    "``POST``","trafficshaper","settings","addQueue",""
+    "``POST``","trafficshaper","settings","addRule",""
+    "``POST``","trafficshaper","settings","delPipe","$uuid"
+    "``POST``","trafficshaper","settings","delQueue","$uuid"
+    "``POST``","trafficshaper","settings","delRule","$uuid"
+    "``GET``","trafficshaper","settings","getPipe","$uuid=null"
+    "``GET``","trafficshaper","settings","getQueue","$uuid=null"
+    "``GET``","trafficshaper","settings","getRule","$uuid=null"
+    "``*``","trafficshaper","settings","searchPipes",""
+    "``*``","trafficshaper","settings","searchQueues",""
+    "``*``","trafficshaper","settings","searchRules",""
+    "``POST``","trafficshaper","settings","setPipe","$uuid"
+    "``POST``","trafficshaper","settings","setQueue","$uuid"
+    "``POST``","trafficshaper","settings","setRule","$uuid"
+    "``POST``","trafficshaper","settings","togglePipe","$uuid,$enabled=null"
+    "``POST``","trafficshaper","settings","toggleQueue","$uuid,$enabled=null"
+    "``POST``","trafficshaper","settings","toggleRule","$uuid,$enabled=null"
 
-.. csv-table:: Other
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "","trafficshaper","service","flushreload",""

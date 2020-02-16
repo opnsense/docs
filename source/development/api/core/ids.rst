@@ -1,52 +1,37 @@
-IDS
+Ids
 ~~~
 
-.. csv-table:: Settings
+.. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``GET``","ids","settings","get",""
-   "``POST``","ids","settings","set",""
+    "``POST``","ids","service","dropAlertLog",""
+    "``GET``","ids","service","getAlertInfo","$alertId,$fileid="""
+    "``GET``","ids","service","getAlertLogs",""
+    "``POST``","ids","service","queryAlerts",""
+    "``POST``","ids","service","reconfigure",""
+    "``POST``","ids","service","reloadRules",""
+    "``POST``","ids","service","updateRules","$wait=null"
 
-.. csv-table:: Service
+.. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","ids","service","reconfigure",""
-   "``POST``","ids","service","restart",""
-   "``POST``","ids","service","start",""
-   "``GET``","ids","service","status",""
-   "``POST``","ids","service","stop",""
+    "``POST``","ids","settings","addUserRule",""
+    "``POST``","ids","settings","delUserRule","$uuid"
+    "``GET``","ids","settings","getRuleInfo","$sid=null"
+    "``GET``","ids","settings","getRuleset","$id"
+    "``GET``","ids","settings","getRulesetproperties",""
+    "``GET``","ids","settings","getUserRule","$uuid=null"
+    "``GET``","ids","settings","listRuleClasstypes",""
+    "``GET``","ids","settings","listRulesets",""
+    "``POST``","ids","settings","searchInstalledRules",""
+    "``*``","ids","settings","searchUserRule",""
+    "``POST``","ids","settings","setRule","$sid"
+    "``POST``","ids","settings","setRuleset","$filename"
+    "``POST``","ids","settings","setRulesetproperties",""
+    "``POST``","ids","settings","setUserRule","$uuid"
+    "``POST``","ids","settings","toggleRule","$sids,$enabled=null"
+    "``POST``","ids","settings","toggleRuleset","$filenames,$enabled=null"
+    "``POST``","ids","settings","toggleUserRule","$uuid,$enabled=null"
 
-.. csv-table:: Resources
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "``POST``","ids","settings","adduserrule",""
-   "``POST``","ids","settings","deluserrule","$uuid"
-   "``GET``","ids","settings","getruleset","$uuid"
-   "``GET``","ids","settings","getuserrule","$uuid"
-   "``GET``","ids","settings","searchinstalledrules",""
-   "``GET``","ids","settings","searchuserrule",""
-   "``POST``","ids","settings","setrule","$uuid"
-   "``POST``","ids","settings","setruleset","$uuid"
-   "``POST``","ids","settings","setuserrule","$uuid"
-   "``POST``","ids","settings","togglerule","$uuid/$enabled"
-   "``POST``","ids","settings","toggleruleset","$uuid/$enabled"
-   "``POST``","ids","settings","toggleuserrule","$uuid/$enabled"
-
-.. csv-table:: Other
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-   "","ids","service","dropAlertLog",""
-   "","ids","service","getAlertInfo",""
-   "","ids","service","getAlertLogs",""
-   "","ids","service","queryAlerts",""
-   "","ids","service","reloadRules",""
-   "","ids","service","updateRules",""
-   "","ids","settings","getRuleInfo",""
-   "","ids","settings","getRulesetproperties",""
-   "","ids","settings","listRuleClasstypes",""
-   "","ids","settings","listRulesets",""
-   "","ids","settings","setRulesetproperties",""

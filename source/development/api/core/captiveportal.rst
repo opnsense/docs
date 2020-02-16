@@ -1,42 +1,53 @@
-
-CaptivePortal
+Captiveportal
 ~~~~~~~~~~~~~
 
-.. csv-table:: Service
+.. csv-table:: Resources (AccessController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","captiveportal","service","reconfigure",""
+    "``GET``","captiveportal","access","logoff","$zoneid=0"
+    "``POST``","captiveportal","access","logon","$zoneid=0"
+    "``POST``","captiveportal","access","status","$zoneid=0"
 
-.. csv-table:: Resources
+.. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","captiveportal","service","addtemplate",""
-   "``POST``","captiveportal","service","deltemplate","$uuid"
-   "``GET``","captiveportal","service","gettemplate","$fileid"
-   "``GET``","captiveportal","service","searchtemplates",""
-   "``GET``","captiveportal","service","searchtemplates","$uuid"
-   "``POST``","captiveportal","service","settemplate","$uuid"
-   "``POST``","captiveportal","settings","addzone",""
-   "``POST``","captiveportal","settings","delzone","$uuid"
-   "``GET``","captiveportal","settings","getzone","$uuid"
-   "``GET``","captiveportal","settings","searchzones",""
-   "``POST``","captiveportal","settings","setzone","$uuid"
-   "``POST``","captiveportal","settings","togglezone","$uuid/$enabled"
+    "``POST``","captiveportal","service","delTemplate","$uuid"
+    "``GET``","captiveportal","service","getTemplate","$fileid=null"
+    "``POST``","captiveportal","service","reconfigure",""
+    "``POST``","captiveportal","service","saveTemplate",""
+    "``GET``","captiveportal","service","searchTemplates",""
 
-.. csv-table:: Other
+.. csv-table:: Resources (SessionController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "","captiveportal","service","saveTemplate",""
-   "","captiveportal","session","disconnect",""
-   "","captiveportal","session","list",""
-   "","captiveportal","session","zones",""
-   "","captiveportal","voucher","dropExpiredVouchers",""
-   "","captiveportal","voucher","dropVoucherGroup",""
-   "","captiveportal","voucher","expireVoucher",""
-   "","captiveportal","voucher","generateVouchers",""
-   "","captiveportal","voucher","listProviders",""
-   "","captiveportal","voucher","listVoucherGroups",""
-   "","captiveportal","voucher","listVouchers",""
+    "``POST``","captiveportal","session","connect","$zoneid=0"
+    "``POST``","captiveportal","session","disconnect","$zoneid=0"
+    "``GET``","captiveportal","session","list","$zoneid=0"
+    "``GET``","captiveportal","session","zones",""
+
+.. csv-table:: Resources (SettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","captiveportal","settings","addZone",""
+    "``POST``","captiveportal","settings","delZone","$uuid"
+    "``GET``","captiveportal","settings","getZone","$uuid=null"
+    "``*``","captiveportal","settings","searchZones",""
+    "``POST``","captiveportal","settings","setZone","$uuid"
+    "``POST``","captiveportal","settings","toggleZone","$uuid,$enabled=null"
+
+.. csv-table:: Resources (VoucherController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","captiveportal","voucher","dropExpiredVouchers","$provider,$group"
+    "``POST``","captiveportal","voucher","dropVoucherGroup","$provider,$group"
+    "``POST``","captiveportal","voucher","expireVoucher","$provider"
+    "``POST``","captiveportal","voucher","generateVouchers","$provider"
+    "``GET``","captiveportal","voucher","listProviders",""
+    "``GET``","captiveportal","voucher","listVoucherGroups","$provider"
+    "``GET``","captiveportal","voucher","listVouchers","$provider,$group"
+
