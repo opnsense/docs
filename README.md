@@ -33,6 +33,16 @@ Install Sphinx, our default theme and contrib packages
 pip3 install -r requirements.txt --upgrade
 ```
 
+### Update API endpoints
+
+A script is provided to update the api endpoint documentation, this can be
+executed using:
+
+```
+./collect_api_endpoints.py --repo core /path/to/core/repository
+./collect_api_endpoints.py --repo plugins /path/to/plugins/repository
+```
+
 
 #### Generate HTML documents
 ```
