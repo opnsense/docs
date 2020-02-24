@@ -133,6 +133,28 @@ A construct to validate against a json dataset retreived via configd, such as
 In which case :code:`syslog list applications` is called to retrieved options, which is valid for 20 seconds (TTL) before fetching again.
 
 
+LegacyLinkField
+------------------------------------
+
+Read-only pointer to legacy config data, reads (single) property from the legacy configuration and returns its content
+when it exists (:code:`null` if xml item doesn't exist).
+
+The following example would read the enabled property from the config xml, which resides in :code:`<ipsec><enabled>1</enabled></ipsec>`
+
+.. code-block:: xml
+
+    <enabled type="LegacyLinkField">
+        <Source>ipsec.enable</Source>
+    </enabled>
+
+
+.. Note::
+
+      Values stored into this fieldtype will be discarded without further notice, which practically means the target structure
+      will always contain an empty field as long as its used as a pointer.
+      When functionality migrates to mvc, you can switch the type and supply migration code to load the initial values.
+
+
 ModelRelationField
 ------------------------------------
 
