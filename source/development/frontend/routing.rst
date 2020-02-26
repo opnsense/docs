@@ -52,13 +52,7 @@ mapping, so in this example the helloworld index page will be at:
 All the parts of the url are automatically converted to lower-case, so **S**\ample
 will be mapped to **s**\ample.
 
-This routing is setup via the index page of our new code base and uses
-
-::
-
-  /usr/local/opnsense/mvc/app/config/services.php
-
-to wire it all together.
+This routing is setup via the index page of our new code base and uses :code:`/usr/local/opnsense/mvc/app/config/services.php` to wire it all together.
 
 -----------
 API routing
