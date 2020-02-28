@@ -195,6 +195,14 @@ PortField
 Check if the input contains a valid portnumber or (optionally) predefined service name. Can be a range when
 :code:`EnableRanges` is set to :code:`Y`.
 
+
+ProtocolField
+------------------------------------
+
+List field type to validate if the provided value is a valid protocol name as defined by /etc/protocols
+(e.g. TCP, UDP) extended with the :code:`any` option.
+
+
 TextField
 ------------------------------------
 
