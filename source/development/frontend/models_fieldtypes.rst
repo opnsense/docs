@@ -174,6 +174,24 @@ Define relations to other nodes in the model, such as to point the attribute :co
 
 
 
+NetworkAliasField
+------------------------------------
+
+Validate if the value is a valid network address (IPv4, IPv6), special net or alias.
+Predefined special networks contain the following choices:
+
+  * any
+      *   any network
+  * (self)
+      *   This firewall
+  * [interface]
+      *   Interface network, where interface is one of :code:`lan`, :code:`wan`, :code:`opt[XX]` (e.g. opt1, opt2)
+  * [interface]ip
+      *   Interface address
+
+All network/host type aliases (including, but not limited to GeoIP) defined in :menuselection:`Firewall -> Aliases` are
+also valid choices.
+
 NetworkField
 ------------------------------------
 
