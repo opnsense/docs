@@ -76,7 +76,9 @@ First we need to have a project in the google developer console:
       -  Download the key and save it (for your own use)
       -  Click "Generate new P12 key" and download the key (for your own
          use, you need this one later)
-      -  Copy Email Address, you need it later.
+      -  Copy Email Address, you need it later (be careful to avoid copying
+         leading or trailing whitespae as this will cause spurious failure in
+         OPNsense when pasted in verbatim).
 
 .. rubric:: Create a Google Drive folder
    :name: create-a-google-drive-folder
