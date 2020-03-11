@@ -34,4 +34,3 @@ Ids
     "``POST``","ids","settings","toggleRule","$sids,$enabled=null"
     "``POST``","ids","settings","toggleRuleset","$filenames,$enabled=null"
     "``POST``","ids","settings","toggleUserRule","$uuid,$enabled=null"
-

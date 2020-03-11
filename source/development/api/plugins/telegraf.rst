@@ -42,4 +42,3 @@ Telegraf
     "``POST``","telegraf","service","start",""
     "``GET``","telegraf","service","status",""
     "``POST``","telegraf","service","stop",""
-

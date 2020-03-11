@@ -29,4 +29,3 @@ Wireguard
 
     "``GET``","wireguard","service","showconf",""
     "``GET``","wireguard","service","showhandshake",""
-

@@ -20,4 +20,3 @@ Zerotier
     "``GET``","zerotier","settings","get",""
     "``POST``","zerotier","settings","set",""
     "``GET``","zerotier","settings","status",""
-

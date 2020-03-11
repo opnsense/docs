@@ -22,4 +22,3 @@ Interfaces
     "``POST``","interfaces","vxlan_settings","reconfigure",""
     "``*``","interfaces","vxlan_settings","searchItem",""
     "``POST``","interfaces","vxlan_settings","setItem","$uuid"
-

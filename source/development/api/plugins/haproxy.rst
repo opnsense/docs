@@ -86,4 +86,3 @@ Haproxy
     "``GET``","haproxy","statistics","counters","$zoneid=0"
     "``GET``","haproxy","statistics","info","$zoneid=0"
     "``GET``","haproxy","statistics","tables","$zoneid=0"
-

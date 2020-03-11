@@ -83,4 +83,3 @@ Freeradius
     "``POST``","freeradius","user","set",""
     "``POST``","freeradius","user","setUser","$uuid"
     "``GET``","freeradius","user","toggleUser","$uuid"
-

@@ -6,4 +6,3 @@ Diagnostics
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","diagnostics","proofpoint_et","status",""
-

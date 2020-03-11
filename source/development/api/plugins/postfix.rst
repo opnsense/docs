@@ -84,4 +84,3 @@ Postfix
 
     "``GET``","postfix","service","checkrspamd",""
     "``POST``","postfix","service","reconfigure",""
-

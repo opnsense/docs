@@ -18,4 +18,3 @@ Clamav
     "``*``","clamav","url","searchUrl",""
     "``POST``","clamav","url","setUrl","$uuid"
     "``POST``","clamav","url","toggleUrl","$uuid"
-

@@ -14,4 +14,3 @@ Helloworld
 
     "``GET``","helloworld","settings","get",""
     "``POST``","helloworld","settings","set",""
-

@@ -11,4 +11,3 @@ Openvpn
     "``POST``","openvpn","export","storePresets","$vpnid"
     "``GET``","openvpn","export","templates",""
     "``POST``","openvpn","export","validatePresets","$vpnid"
-

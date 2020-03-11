@@ -9,4 +9,3 @@ Mdnsrepeater
     "``GET``","mdnsrepeater","service","start",""
     "``GET``","mdnsrepeater","service","status",""
     "``GET``","mdnsrepeater","service","stop",""
-

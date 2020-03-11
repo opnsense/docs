@@ -56,4 +56,3 @@ Diagnostics
 
     "``GET``","diagnostics","systemhealth","getInterfaces",""
     "``GET``","diagnostics","systemhealth","getRRDlist",""
-

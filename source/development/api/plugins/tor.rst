@@ -69,4 +69,3 @@ Tor
     "``*``","tor","socksacl","searchacl",""
     "``POST``","tor","socksacl","setacl","$uuid"
     "``POST``","tor","socksacl","toggleacl","$uuid"
-

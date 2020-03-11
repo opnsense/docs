@@ -11,4 +11,3 @@ Netsnmp
     "``*``","netsnmp","user","searchUser",""
     "``POST``","netsnmp","user","setUser","$uuid"
     "``POST``","netsnmp","user","toggleUser","$uuid"
-

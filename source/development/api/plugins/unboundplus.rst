@@ -7,4 +7,3 @@ Unboundplus
 
     "``GET``","unboundplus","service","dnsbl",""
     "``GET``","unboundplus","service","reloadunbound",""
-

@@ -30,4 +30,3 @@ Trafficshaper
     "``POST``","trafficshaper","settings","togglePipe","$uuid,$enabled=null"
     "``POST``","trafficshaper","settings","toggleQueue","$uuid,$enabled=null"
     "``POST``","trafficshaper","settings","toggleRule","$uuid,$enabled=null"
-

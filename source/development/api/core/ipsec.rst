@@ -17,4 +17,3 @@ Ipsec
 
     "``POST``","ipsec","legacy_subsystem","applyConfig",""
     "``GET``","ipsec","legacy_subsystem","status",""
-

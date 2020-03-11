@@ -22,4 +22,3 @@ Ftpproxy
     "``GET``","ftpproxy","settings","searchProxy",""
     "``POST``","ftpproxy","settings","setProxy","$uuid"
     "``POST``","ftpproxy","settings","toggleProxy","$uuid"
-

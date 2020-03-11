@@ -13,4 +13,3 @@ Wol
     "``POST``","wol","wol","set",""
     "``POST``","wol","wol","setHost","$uuid"
     "``POST``","wol","wol","wakeall",""
-

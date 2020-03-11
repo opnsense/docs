@@ -50,4 +50,3 @@ Captiveportal
     "``GET``","captiveportal","voucher","listProviders",""
     "``GET``","captiveportal","voucher","listVoucherGroups","$provider"
     "``GET``","captiveportal","voucher","listVouchers","$provider,$group"
-

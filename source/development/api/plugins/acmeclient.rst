@@ -71,4 +71,3 @@ Acmeclient
     "``*``","acmeclient","validations","search",""
     "``POST``","acmeclient","validations","toggle","$uuid,$enabled=null"
     "``POST``","acmeclient","validations","update","$uuid"
-

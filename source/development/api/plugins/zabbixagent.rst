@@ -17,4 +17,3 @@ Zabbixagent
     "``POST``","zabbixagent","settings","setUserparameter","$uuid"
     "``POST``","zabbixagent","settings","toggleAlias","$uuid"
     "``POST``","zabbixagent","settings","toggleUserparameter","$uuid"
-

@@ -29,4 +29,3 @@ Firewall
     "``POST``","firewall","alias_util","flush","$alias"
     "``GET``","firewall","alias_util","list","$alias"
     "``GET``","firewall","alias_util","update_bogons",""
-

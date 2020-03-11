@@ -122,4 +122,3 @@ Nginx
     "``POST``","nginx","settings","setupstream","$uuid"
     "``POST``","nginx","settings","setupstreamserver","$uuid"
     "``POST``","nginx","settings","setuserlist","$uuid"
-

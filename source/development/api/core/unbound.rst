@@ -11,4 +11,3 @@ Unbound
     "``GET``","unbound","diagnostics","listlocaldata",""
     "``GET``","unbound","diagnostics","listlocalzones",""
     "``GET``","unbound","diagnostics","stats",""
-

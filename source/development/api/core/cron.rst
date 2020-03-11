@@ -17,4 +17,3 @@ Cron
     "``*``","cron","settings","searchJobs",""
     "``POST``","cron","settings","setJob","$uuid"
     "``POST``","cron","settings","toggleJob","$uuid,$enabled=null"
-

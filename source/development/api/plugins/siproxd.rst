@@ -44,4 +44,3 @@ Siproxd
     "``POST``","siproxd","user","set",""
     "``POST``","siproxd","user","setUser","$uuid"
     "``GET``","siproxd","user","toggleUser","$uuid"
-

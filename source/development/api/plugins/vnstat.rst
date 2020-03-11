@@ -9,4 +9,3 @@ Vnstat
     "``GET``","vnstat","service","hourly",""
     "``GET``","vnstat","service","monthly",""
     "``GET``","vnstat","service","resetdb",""
-

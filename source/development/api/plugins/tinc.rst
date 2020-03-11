@@ -24,4 +24,3 @@ Tinc
     "``POST``","tinc","settings","setNetwork","$uuid=null"
     "``POST``","tinc","settings","toggleHost","$uuid,$enabled=null"
     "``POST``","tinc","settings","toggleNetwork","$uuid,$enabled=null"
-

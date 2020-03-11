@@ -50,4 +50,3 @@ Dnscryptproxy
     "``*``","dnscryptproxy","whitelist","searchWhitelist",""
     "``POST``","dnscryptproxy","whitelist","setWhitelist","$uuid"
     "``POST``","dnscryptproxy","whitelist","toggleWhitelist","$uuid"
-

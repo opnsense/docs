@@ -17,4 +17,3 @@ Collectd
     "``POST``","collectd","service","start",""
     "``GET``","collectd","service","status",""
     "``POST``","collectd","service","stop",""
-

@@ -14,4 +14,3 @@ Core
 
     "``GET``","core","system","halt",""
     "``GET``","core","system","reboot",""
-

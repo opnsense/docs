@@ -10,4 +10,3 @@ Proxysso
     "``GET``","proxysso","service","getCheckList",""
     "``GET``","proxysso","service","showkeytab",""
     "``POST``","proxysso","service","testkerblogin",""
-

@@ -17,4 +17,3 @@ Syslog
     "``*``","syslog","settings","searchDestinations",""
     "``POST``","syslog","settings","setDestination","$uuid"
     "``POST``","syslog","settings","toggleDestination","$uuid,$enabled=null"
-

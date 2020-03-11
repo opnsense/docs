@@ -37,4 +37,3 @@ Proxy
     "``POST``","proxy","settings","setRemoteBlacklist","$uuid"
     "``POST``","proxy","settings","togglePACRule","$uuid"
     "``POST``","proxy","settings","toggleRemoteBlacklist","$uuid"
-

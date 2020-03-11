@@ -11,4 +11,3 @@ Gridexample
     "``*``","gridexample","settings","searchItem",""
     "``POST``","gridexample","settings","setItem","$uuid"
     "``POST``","gridexample","settings","toggleItem","$uuid,$enabled=null"
-

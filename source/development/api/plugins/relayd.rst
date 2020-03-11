@@ -24,4 +24,3 @@ Relayd
 
     "``GET``","relayd","status","sum",""
     "``POST``","relayd","status","toggle","$nodeType=null,$id=null,$action=null"
-

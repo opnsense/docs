@@ -6,4 +6,3 @@ Ntopng
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","ntopng","service","checkredis",""
-

@@ -11,4 +11,3 @@ Nrpe
     "``*``","nrpe","command","searchCommand",""
     "``POST``","nrpe","command","setCommand","$uuid"
     "``POST``","nrpe","command","toggleCommand","$uuid"
-

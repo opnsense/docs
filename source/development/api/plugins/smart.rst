@@ -10,4 +10,3 @@ Smart
     "``POST``","smart","service","list",""
     "``POST``","smart","service","logs",""
     "``POST``","smart","service","test",""
-

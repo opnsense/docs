@@ -12,4 +12,3 @@ Routes
     "``*``","routes","routes","searchroute",""
     "``POST``","routes","routes","setroute","$uuid"
     "``POST``","routes","routes","toggleroute","$uuid,$disabled=null"
-

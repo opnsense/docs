@@ -37,4 +37,3 @@ Monit
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","monit","status","get","$format='xml'"
-
