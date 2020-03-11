@@ -27,6 +27,8 @@
 import os
 import argparse
 import re
+from jinja2 import Template
+
 EXCLUDE_CONTROLLERS = ['Core/Api/FirmwareController.php']
 
 
@@ -103,17 +105,25 @@ if __name__ == '__main__':
             os.path.dirname(__file__), cmd_args.repo, module_name
         )
         print("update %s" % target_filename)
+        template_data = {
+            'title': "%s" % module_name.title(),
+            'title_underline': "".join('~' for x in range(len(module_name))),
+            'controllers': []
+        }
+        for controller in all_modules[module_name]:
+            payload = {
+                'type': controller[0]['type'],
+                'filename': controller[0]['filename'],
+                'endpoints': []
+            }
+            for endpoint in controller:
+                payload['endpoints'].append(endpoint)
+            template_data['controllers'].append(payload)
+
         with open(target_filename, 'w') as f_out:
-            f_out.write("%s\n" % module_name.title())
-            f_out.write("".join('~' for x in range(len(module_name))))
-            f_out.write("\n\n")
-            for controller in all_modules[module_name]:
-                f_out.write(".. csv-table:: %s (%s)\n" % (controller[0]['type'], controller[0]['filename']))
-                f_out.write("   :header: \"Method\", \"Module\", \"Controller\", \"Command\", \"Parameters\"\n")
-                f_out.write("   :widths: 4, 15, 15, 30, 40\n\n")
-                for endpoint in controller:
-                    f_out.write(
-                        "    \"``%(method)s``\",\"%(module)s\",\"%(controller)s\",\"%(command)s\",\"%(parameters)s\"\n"
-                        % endpoint
-                    )
-                f_out.write("\n")
+            if os.path.isfile("%s.in" % target_filename):
+                template_filename = "%s.in" % target_filename
+            else:
+                template_filename = "collect_api_endpoints.in"
+            template = Template(open(template_filename, "r").read())
+            f_out.write(template.render(template_data))
