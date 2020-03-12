@@ -363,3 +363,11 @@ State Type                            Influence the state tracking mechanism use
                                         and modulate state combined.
                                       * None :menuselection:`-->` Do not use state mechanisms to keep track.
 ====================================  ===============================================================================
+
+--------------------
+API access
+--------------------
+
+
+Partial API access is provided with the :code:`os-firewall` plugin, which is described in more detail in
+the :doc:`firewall <../development/api/plugins/firewall>` api reference manual.

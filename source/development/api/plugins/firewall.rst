@@ -1,0 +1,107 @@
+Firewall
+~~~~~~~~
+
+The firewall API plugin is a first step into migrating the legacy firewall components from OPNsense, although it does contain
+a user interface, it's main focus is only to provide machine to machine interaction between custom applications and OPNsense
+for selected features.
+
+
+.. csv-table:: Resources (FilterController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","firewall","filter","addRule",""
+    "``POST``","firewall","filter","apply","$rollback_revision=null"
+    "``POST``","firewall","filter","cancelRollback","$rollback_revision"
+    "``POST``","firewall","filter","delRule","$uuid"
+    "``GET``","firewall","filter","getRule","$uuid=null"
+    "``POST``","firewall","filter","revert","$revision"
+    "``POST``","firewall","filter","savepoint",""
+    "``*``","firewall","filter","searchRule",""
+    "``POST``","firewall","filter","setRule","$uuid"
+    "``POST``","firewall","filter","toggleRule","$uuid,$enabled=null"
+
+
+
+-----------------------
+Concept
+-----------------------
+
+The firewall plugin injects rules in the standard OPNsense firewall while maintaining visibility on them in the
+standard user interface.
+
+We use our standard :code:`ApiMutableModelControllerBase` to allow crud operations on rule entries and offer a set of
+specific actions to apply the new configuration.
+Since firewall rules can be quite sensitive with a higher risk of lockout, we also support a rollback mechanism here,
+which offers the ability to rollback this components changes.
+
+.. blockdiag::
+    :scale: 100%
+
+    diagram init {
+        savepoint [label = "savepoint()"];
+        administration [label = "administration"];
+        apply [label = "apply(savepoint)"];
+        cancelRollback [label = "cancelRollback(sp)"];
+        savepoint -> administration -> apply ;
+        apply -> cancelRollback [label = ".. 60s", style = dashed];
+    }
+
+
+The diagram above contains the basic steps to change rules, apply and eventually rollback if not being able to access the machine again.
+When calling :code:`savepoint()` a new config revision will be created and the timestamp will be returned for later use.
+If the :code:`cancelRollback(savepoint)` is not called within 60 seconds, the firewall will rollback to the previous state
+identified by the savepoint timestamp (if available).
+
+
+.. Note::
+
+    The examples in this document disable certificate validation, make sure when using this in a production environment to
+    remove the :code:`verify=False` from the :code:`requests` calls
+
+.. Tip::
+
+    The number of versions kept can be configured as "backup count" in :menuselection:`System -> Configuration -> History`.
+    This affectively determines within how many configuration changes you can still rollback, if the backup is removed, a rollback
+    will keep the current state (do nothing).
+
+
+-----------------------
+Administration example
+-----------------------
+
+Administrative endpoints are pretty standard use of :code:`ApiMutableModelControllerBase`, the example below searches for
+a rule named "OPNsense_fw_api_testrule_1", when not found one will be added otherwise it will print the internal uuid.
+Inline you will find a brief description of the steps performed.
+
+
+.. literalinclude:: firewall.sample_create.py
+    :language: python
+    :linenos:
+    :caption: administrative_example.py
+
+
+.. Tip::
+
+      Since our model contains default values for most attributes, we only need to feed the changes if we would like to keep the
+      defaults. In this case the TCP/IP version was IPv4 by default for example. In most cases one would like to set all relevant properties
+      in case defaults change over time.
+
+-----------------------
+Apply / revert example
+-----------------------
+
+This example will disable the rule created in the previous example and apply the changes using a savepoint, since we're not
+calling :code:`cancelRollback(savepoint)` it will revert after 60 seconds to the original state.
+
+
+.. literalinclude:: firewall.savepoint.py
+    :language: python
+    :linenos:
+    :caption: savepoint_example.py
+
+
+.. Note::
+
+    The savepoint will only revert this components changes, other changes won't be affected by this revert, for example
+    add an additional interface between savepoint and revert won't be affected.
