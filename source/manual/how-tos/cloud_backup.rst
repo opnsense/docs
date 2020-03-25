@@ -69,14 +69,14 @@ First we need to have a project in the google developer console:
 
 -  Open the project and start to create an API key
 
-   -  In the left menu: :menuselection:`APIs & auth --> Credentials`
-   -  Click on the button "Create new Client ID"
-   -  Choose "Service account", followed by "Create Client ID"
-
-      -  Download the key and save it (for your own use)
-      -  Click "Generate new P12 key" and download the key (for your own
-         use, you need this one later)
-      -  Copy Email Address, you need it later.
+   -  In the left menu: :menuselection:`APIs & Services --> Credentials`
+   -  Click on the button "Create Credentials"
+   -  Choose "Service account"
+      -  Enter an account name (e.g., OPNsense) and a description
+      -  At the **Service account permissions** screen click **Continue**
+      -  Click **+ Create Key**, select **P12**, and click **Create**. Save the password (notasecret).
+      -  Click **Done**
+      -  Copy the email address listed under **Service Accounts** for later.
 
 .. rubric:: Create a Google Drive folder
    :name: create-a-google-drive-folder
@@ -85,14 +85,13 @@ Next thing is to create a folder in Google Drive and share it to the
 "service user" you've just created.
 
 -  Go to https://drive.google.com
--  Choose "NEW" and the folder to create a new folder, the name doesn't
-   really matter (for example type OPNsense).
--  right click the newly created folder and choose share
+-  Choose **NEW** (upper left of the screen) and **Folder** to create a new folder, the name doesn't
+   really matter (for example type OPNsense)
+-  Right click the newly created folder and choose **Share**
 
-   -  paste the email address from the service account and "send"
+   -  Paste the email address from the service account and click **Send**
 
--  Now open the folder and copy the folder ID ( in the url, the last
-   piece after #/folders/, it's quite long)
+-  Now open the folder and copy the folder ID from the url. The folder ID is the last piece of the URL after `#/folders/`
 
 .. rubric:: Setup the account in OPNsense
    :name: setup-the-account-in-opnsense
