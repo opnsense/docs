@@ -33,7 +33,15 @@ the following options are available:
  MTU                         `Maximum Transfer Unit <https://en.wikipedia.org/wiki/Maximum_transmission_unit>`_.
  MSS                         `Maximum Segment Size <https://en.wikipedia.org/wiki/Maximum_segment_size>`_.
  Speed and duplex            It is recommended to leave this on the default, unless you know what you are doing and the setting you pick matches the one on the physical port.
+ Dynamic gateway policy      If the destination is directly reachable via an interface requiring no intermediary system to act as a gateway,
+                             you can select this option which allows dynamic gateways to be created without direct target addresses. Some tunnel types support this.
 =========================== ============================================================================================================================================================
+
+
+.. Note::
+
+    When configuring VPN clients without static tunnel addresses, you can use the "Dynamic gateway policy" option to automatically generate gateways to the device (without address).
+
 
 In addition to these settings, the following blocks will be enabled depending on what is configured under
 “IPv4 Configuration type” and “IPv6 Configuration type”.
