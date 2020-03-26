@@ -22,3 +22,4 @@ In this chapter we will explain how models are designed and build.
    models_fieldtypes
    models_customfields
    models_constraints
+   models_migrations

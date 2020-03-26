@@ -46,6 +46,7 @@ And start describing our (information) model, like this:
     <model>
         <mount>//myManufacturer/myModule</mount>
         <description>A description of this model (metadata)</description>
+        <version>1.0.0</version>
         <items>
             <exampleNumber type="TextField">
                 <Mask>/^([0-9]){0,1}$/</Mask>
@@ -73,6 +74,7 @@ Now let's explain what's happing here one tag at a time.
    ROOT\_tag/myManufacturer/myModule
 #. If desired, there is some space reserved to explain the usage of the
    model, the <description> tag
+#. A version tag is added, which is used to support migrations. These are described in more details in the :doc:`migration <models_migrations>` topic
 #. Last item on the top of our list is the <items> tag, this is where
    the magic begins.
 
