@@ -1,0 +1,1239 @@
+===========================================================================================
+16.1  "Crafty Coyote" Series
+===========================================================================================
+
+
+
+No, we would not say it was easy getting here, but booting into 16.1
+for the first time sure is as relieving (and exciting) as it could get
+for our project growing beyond what we had ever imagined.  It has been
+more than a year since OPNsense first came out.  Back then it was
+FreeBSD 10.0.  Not even two months after, 10.1 was introduced along
+with the opnsense-update utility.  Today is the day for FreeBSD 10.2,
+the latest and greatest release currently available for broader driver
+support and stability improvements.
+
+16.1 is nicknamed "Crafty Coyote" in honour of our beloved childhood
+TV sessions.  It is the accumulation of 6 months of work, having had
+our focus on reengineering the captive portal, native intrusion
+prevention, plugin support, and transforming the reporting frontend
+into something more modern and flexible just to name a few `[1] <https://opnsense.org/about/road-map/>`__ .  Apart
+from the recently published security advisories (see patch notes below),
+we have included a quick navigation feature which can be activated by
+pressing (TAB) followed by search keywords and hitting (ENTER) to go to
+the desired page.  Last but not least, a larger batch of improvements
+and fixes went into assorted sections of the GUI that certainly help
+to get your work done without ending up dazed and confused.
+
+Speaking of clearing things up, there is more...  While Ad, Franco
+and a couple of amazing external contributors have been busy writing
+and reviewing code, Jos worked in the shadows to bring to you a fully
+revised set of project documentation in the form of an online
+handbook `[2] <https://docs.opnsense.org/>`__ .  More content will follow as we slow down development
+speed a bit in order to catch up.  We will have to see how that works
+out.  ;)
+
+Another thing we have noticed is that translations are hard!  We have
+planned to finish a translation for this iteration, but the sheer
+amount of work overwhelmed even the sizeable German translation team.
+The German translation is now at 77% percent completed with Japanese,
+Chinese and French chasing tails.  If you want to help drop us a line
+at project@opnsense.org for details on how to contribute.
+
+All images have been pushed as well, although may take a bit more time
+to reach a mirror near you.  You can find the checksums attached at the
+end of this announcement.
+
+https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+16.1.20 (July 22, 2016)
+--------------------------------------------------------------------------
+
+
+We are pushing out 16.1.20 a little earlier than expected to fix a
+GUI regression that can affect users with IPv6.  Sorry about that.
+
+Since this is the last 16.1 series release, the firmware page offers
+an overview of migration hints for the 16.7 series.  We are expecting
+to be right on schedule, namely July 28.  Oh, and by the way, the next
+release will be called "Dancing Dolphin".
+
+Here are the full patch notes:
+
+* firmware: end-of-life announcement and preparation for 16.7 upgrade
+* services: fix a missing dependency for the DHCPv6 service probing
+
+
+Stay safe,
+Your OPNsense team
+
+--------------------------------------------------------------------------
+16.1.19 (July 21, 2016)
+--------------------------------------------------------------------------
+
+
+It is time for a last full stable release before we offer our
+16.1.20 end-of-life version, which then can be used to upgrade
+to the 16.7 series.
+
+Most changes presented today were either long-running development
+additions for 16.7 or small reports that came up during the 16.7-RC
+testing period.  Another prominent fix addresses an issue with
+sporadic premature captive portal authentication timeouts that
+one of our awesome forum members helped to debug.
+
+Here are the full patch notes:
+
+* ports: suricata 3.0.2 `[1] <https://suricata-ids.org/2016/06/20/suricata-3-0-2-released/>`__ , squid 3.5.20 `[1] <https://suricata-ids.org/2016/06/20/suricata-3-0-2-released/>`__ , expat 2.2.0 `[3] <http://expat.sourceforge.net/>`__ ,
+  haproxy 1.6.7 `[4] <http://www.haproxy.org/download/1.6/src/CHANGELOG>`__ , bind 9.10.4-P2 `[5] <https://kb.isc.org/article/AA-01396/81/BIND-9.10.4-P2-Release-Notes.html>`__ 
+* firewall: hide previously selected nested aliases from the
+  autocompletion on alias edit
+* firewall: fix log view to properly render all of its html
+* firewall: fix link to IPv6 disable setting on rules screen
+* firewall: remove CARP restriction of matching interface subnet
+* interfaces: fix IPv6 subnet bits count on interface status
+* interfaces: traffic graphs now show more device types
+* gateways: prevent spurious dynamic default gateways from showing up
+* gateways: change the creation order of dynamic gateways to allow
+  overriding their settings correctly
+* firmware: refine ignore of temporary error 500 in GUI during upgrades
+* firmware: default config has been adapted to set up new style
+  dashboard entries during e.g. factory reset
+* firmware: validate source and destination entries in NPT
+* firmware: audited mirror list and disabled non-working entries
+* services: do not show disabled DHCPv6 server when prefix delegation
+  is not used
+* services: do not run boot-up routines for proxy server and intrusion
+  detection when disabled
+* services: fix router advertisements subnet bits save
+* intrusion detection: improved alert browsing with action filter
+* proxy server: ACL setup can now include manual pre and post hooks
+* wizard: fixed alignment of page titles and contents
+* captive portal: ignore incomplete MAC entries to avoid premature
+  logout of active user
+* openvpn: fix display of selected CRL in server settings
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.18 (June 30, 2016)
+--------------------------------------------------------------------------
+
+
+Before we get on with the release candidate for 16.7, we are proudly
+presenting the latest and greatest stable addition to the 16.1 series.
+
+No time to lose, enjoy the summer!
+
+Here are the full patch notes:
+
+* system: properly run fsck on boot if needed
+* system: new Cron page and API now available for general use
+* system: QR codes are now generated locally in the browser
+  (contributed by Fabian Franz)
+* system: harden serial config write against power failures
+* system: allow serial config to attach to all available ttys
+* system: added missing ACL entry for LDAP user import page
+* system: reworked log page layout and dependencies
+* firmware: detach / reattach support for upgrade page
+* firmware: mirror and flavour selection moved to respective page
+* interfaces: improvements for 4G devices (sponsored by OSNet.eu `[1] <https://www.osnet.eu/>`__ )
+* interfaces: debug mode and logging for rtsold in DHCPv6 mode
+* dhcp: separate pages for router advertisements and service control
+* dhcp: IPv6 server as a stand-alone process for service control
+* dhcp: fixed and improved writing of dynamic DNS configuration
+* ports: python 2.7.11_3 `[2] <http://bugs.python.org/issue26171>`__ , unbound 1.5.9 `[3] <https://nlnetlabs.nl/projects/unbound/download/>`__ , curl 7.49.1 `[4] <https://curl.haxx.se/changes.html>`__ ,
+  openssl 1.0.2_14 `[5] <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2177>`__ , sudo 1.8.17p1 `[6] <https://www.sudo.ws/sudo/changes.html>`__ , php 5.6.23 `[7] <https://php.net/ChangeLog-5.php#5.6.23>`__ ,
+  pcre 8.39 `[8] <http://www.pcre.org/original/changelog.txt>`__ , haproxy 1.6.6 `[9] <http://www.haproxy.org/download/1.6/src/CHANGELOG>`__ 
+* src: tzdata updated to 2016e `[10] <http://mm.icann.org/pipermail/tz-announce/2016-June/000039.html>`__ 
+* src: fix pf fragement timeout `[11] <https://lists.freebsd.org/pipermail/freebsd-pf/2016-May/008044.html>`__ 
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.17 (June 15, 2016)
+--------------------------------------------------------------------------
+
+
+Today we offer complementary improvements and fixes to your swinging
+installation in the hopes that they will make your daily experience
+even better, rounded off with a pinch of SSL crypto updates.
+
+In other news, we are getting ready for a first 16.7 release candidate
+after having finished the full work on the FreeBSD 10.3 base system
+including the addition of HardenedBSD's ASLR.  More on this next week.
+
+Here is the change log for 16.1.17:
+
+* ports: isc-dhcp-server 4.3.4 `[1] <https://kb.isc.org/article/AA-01364/82/DHCP-4.3.4-Release-Notes.html>`__ , syslogd 10.3, libressl 2.3.6 `[2] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.3.6-relnotes.txt>`__ , openssl 1.0.2_13 `[3] <https://github.com/freebsd/freebsd-ports/commit/5ae24c9c91bd>`__ 
+* system: fix OTP QR code link to amend the first request
+* system: allow to override TRIM apply at boot time via /etc/fstab `[4] <https://forum.opnsense.org/index.php?topic=3044>`__ 
+* dashboard: fix OpenVPN test data display
+* dashboard: gateway widget style updated
+* interfaces: allow debug option for dhcp6 client
+* interfaces: allow to delete WAN as well
+* interfaces: properly restart the respective proxy ARP daemon
+* firewall: fixed HTML errors in NAT edit page
+* services: fixed unbound custom option handling
+* services: allow RA send behaviour to be configured
+* services: show correct dynamic DNS type when editing an existing entry
+* openvpn: bring back authentication method selector
+* openvpn: create interfaces at boot time and even when disabled
+* power: separate menu for power off and reboot functions
+* intrusion detection: allow to drop/reset log files
+* plugins: can now create local logging sockets for chroot environments
+* plugins: new HAProxy version 1.3 with assorted fixes (contributed by Frank Wall and Manus Freedom)
+* lang: major updates for Russian (contributed by Smart-Soft)
+* lang: assorted translation fixes (contributed by Fabian Franz)
+* lang: minor updates to Chinese, German and French
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.16 (June 06, 2016)
+--------------------------------------------------------------------------
+
+
+It has been a long journey for HardenedBSD and OPNsense, and
+finally the paths start to merge as the splendid and battle-
+proven ASLR implementation gets incorporated into the default
+installation!  It is just the beginning as we will start to
+leverage the extra security by enabling position independent
+execution in 16.7 and merge more security-related features.
+We thank again the HardenedBSD team for their continued efforts
+on making this world a safer place.
+
+In other news, there is a thoroughly revamped dashboard for you
+to enjoy and a handful of security fixes in FreeBSD and the ports
+ecosystem.  LibreSSL has been updated to the latest production
+release and the BETA version is progressing nicely as we change
+our working mode from "rework all the things" to "polish all the
+things".  A release candidate is coming up soon.
+
+Here are the patch notes for 16.1.16:
+
+* src: merged and enabled HardenedBSD's ASLR implementation `[1] <https://github.com/opnsense/src/commit/e13c0d42ebbd4>`__ 
+* src: kernel stack disclosure in Linux compatibility layer `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:20.linux.asc>`__ 
+* src: kernel stack disclosure in 4.3BSD compatibility layer `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:21.43bsd.asc>`__ 
+* src: directory traversal in cpio `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:22.libarchive.asc>`__ 
+* ports: libressl 2.3.5 `[5] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.3.5-relnotes.txt>`__ , phalcon 2.0.13 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.13>`__ , dnsmasq 2.76 `[7] <http://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: apinger 0.7 `[8] <https://github.com/opnsense/apinger/blob/master/NEWS>`__ , curl 7.49 `[9] <https://curl.haxx.se/changes.html>`__ , bind 9.10.4-p1 `[10] <https://kb.isc.org/article/AA-01383/81/BIND-9.10.4-P1-Release-Notes.html>`__ 
+* ports: php 5.6.22 `[11] <https://php.net/ChangeLog-5.php#5.6.22>`__ , sqlite 3.13.0 `[12] <https://sqlite.org/releaselog/3_13_0.html>`__ , ntp 4.2.8p8 `[13] <https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ 
+* dashboard: movable widgets, multi-column support and improved
+  look and feel
+* system: improved CSRF handling
+* system: allow far gateway support for non-subnet gateways
+* system: fix null routes add / delete
+* system: user/group privilege selection improvements
+* system fix missing cron job for GUI lock / expire
+* firmware: adds opnsense-patch tool for simple upstream repo patch apply
+* dns resolver: fix AAAA record save
+* dns forwarder: add custom port option for domain overrides
+* firewall: for us bogons do not extend to private networks
+* firewall: fix schedule clone when in use
+* interfaces: remove explicit ath(4) long distance support
+* interfaces: removed SVG traffic graphs in favour of modern replacements
+* captive portal: allow to drop all expired vouchers
+* cron: fix parameter ignore
+* layout: "Stacked-to-horizontal" emulation for mobile view
+* layout: consistent tooltip button placement
+* layout: fix footer on small screen size
+* plugins: fix HAProxy X-Forwarded-For header option
+
+And here is the change log for 16.7 BETA:
+
+* interfaces: interface-based plugin system used by OpenVPN and IPSec
+* interfaces: removed complex PPPoE reset handling by optional cron job
+* plugins: allow local socket in chroot'ed services
+* plugins: removed L2TP, PPTP and PPPoE servers from core
+* firmware: allow resume for update page
+* firmware: dump / restore package database on shutdown / boot
+* firewall: removed proxy NAT reflection mode
+* firewall: properly start/stop proxy APR daemons
+* firewall: implement flexible scrub / normalisation config pages to
+  zap hidden scrubbing code
+* firewall: removed "match" action from floating rules, no FreeBSD
+  support
+* firewall: removed negate rules that would magically prevent load-
+  balancing VPN links
+* system: migrated new cron handling to do privilege separation where
+  possible
+* system: better branding support for boot loader on package install /
+  remove
+* system: remove single forward GUI item for RFC 2893, can be set in
+  NAT just as well
+* router advertisements: allow to set mode and min / max intervals
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.15 (May 25, 2016)
+--------------------------------------------------------------------------
+
+
+We are dropping in for a quick update bundling assorted fixes
+and general improvements throughout the code.  Not much to add
+this week, see for yourselves...
+
+Do not forget that ASLR is coming next week.  :)
+
+Here are the full patch notes for 16.1.15:
+
+* system: make authentication fallback configurable
+* system: settings cleanup and prettify
+* system: added explicit ETC timezone selection
+* high availability: add page for remote service control
+* high availability: properly enforce authentication
+* firmware: reboot and poweroff API actions
+* firmware: only kill GUI process, not captive portal
+* firmware: show errors in update window
+* firmware: keep polling for progress even when GUI restarts
+* backend: skip failing templates on bootup
+* trust: fix CA certificate count in overview
+* trust: allow key size up to 8192 bits
+* firewall: fix invalid NPT rule generation
+* firewall: speed up filter log pages
+* firewall: do not allow to change virtual IP mode after creation
+* firewall: moved settings page and rearranged settings accordingly
+* interfaces: unhook all but the last custom PHP module functions
+* interfaces: moved settings page and rearranged settings accordingly
+* dhcp: do not override RA settings after save
+* dns: resolver outgoing interface section moved to advanced as it
+  will break setups with dynamic interfaces selected there
+* load balancer: sticky mode from firewall / system split off as
+  separate setting
+* snmp: do not allow unicode in system location
+* intrusion detection: remove deprecated rbn-malvertisers.rules set
+* intrusion detection: add promiscuous mode / physical interface selection
+* overall: fix menu width on small size screens
+* overall: numerous translation fixes (contributed by Frederic Lietart)
+* overall: numerous translation fixes (contributed by Fabian Franz)
+* plugins: assorted bugfixes for HAProxy (contributed by Frank Wall)
+* mvc: fix translations by adding an escaping wrapper
+
+And here are the patch notes for 16.7 BETA:
+
+* system: reworked the user / group manager privilege selection
+* firewall: IPv6 outbound NAT rework
+* interfaces: allow debug mode for DHCPv6 client
+* interfaces: remove ath(4) long distance helpers
+* dns: add custom port option for domain overrides
+* gateways/routes: fix for far gateway setups
+* overall: add stacked-to-horizontal feature for input forms
+
+
+Stay safe,
+Your OPNsense team
+
+--------------------------------------------------------------------------
+16.1.14 (May 18, 2016)
+--------------------------------------------------------------------------
+
+
+It is time for something new.  How about an update with your new NetFlow
+remote export.  Or your local reporting frontend?  Well, you can always
+use both if you like.  Read all about it here:
+
+https://docs.opnsense.org/manual/netflow.html
+
+Furthermore, we have added the brand new AQM CoDel version 0.2.1 to the
+mix, yesterday's FreeBSD security advisories, released the HAProxy plugin,
+bundled a full Japanese translation.  And two-factor authentication support
+for our components?  Yes, we also have that now.  :)
+
+There is also a refreshed website for our general viewing pleasure.  Let
+us know what you think or what it is missing.
+
+https://opnsense.org/
+
+And now, here is the full change log for 16.1.14:
+
+* src: tzdata updated to 2014d `[1] <http://mm.icann.org/pipermail/tz-announce/2016-April/000038.html>`__ 
+* src: dummynet AQM updated to 0.2.1 `[2] <http://caia.swin.edu.au/freebsd/aqm/patches/ChangeLog-0.2.1.txt>`__ 
+* src: fix multiple OpenSSL vulnerabilities `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:17.openssl.asc>`__ 
+* src: fix excessive latency in x86 IPI delivery `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-16:07.ipi.asc>`__ 
+* src: fix memory leak in ZFS `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-16:08.zfs.asc>`__ 
+* src: fix buffer overflow in keyboard driver `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:18.atkbd.asc>`__ 
+* src: fix incorrect argument handling in sendmsg `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:19.sendmsg.asc>`__ 
+* ports: sqlite 3.12.2 `[8] <https://sqlite.org/releaselog/3_12_2.html>`__ , openvpn 2.3.11 `[9] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23#OpenVPN2.3.11>`__ , squid 3.5.19 `[10] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
+* plugins: HAProxy plugin version 1.0 (contributed by Frank Wall)
+* lang: Japanese 100% completed
+* lang: updates for French and German
+* interfaces: removed polling support
+* interfaces: allow subnet size of 31 bits
+* high availability: can now sync DNS resolver configuration
+* cron: reworked job registration
+* system: do not unload cryptodev to prevent panics when used by OpenVPN
+* system: user expiration date edit now has a fancy date picker
+* system: add RFC 6238 (TOTP) support for two-factor authentication
+* reporting: added local NetFlow reporting frontend `[11] <https://docs.opnsense.org/manual/how-tos/insight.html>`__ 
+* reporting: added remote NetFlow exporter for multiple sources `[12] <https://docs.opnsense.org/manual/how-tos/netflow_exporter.html>`__ 
+* firewall: fixed schedule cloning
+* services: lower intervals for router advertisement messages
+
+And this is the change log for 16.7 BETA:
+
+* firmware: assorted improvements for error reporting and smooth operation
+* firmware: partial fix for Nano update issues when RAM is too small
+* intrusion detection: promiscuous interface mode for better VLAN operation
+* gateways/routes: support for gateways outside of the interface subnet
+* routes: fixed null routes / blackholes
+* interfaces: SVG traffic graphs replaced by modern alternative
+* dashboard: finished the rework, ready for general testing
+* firewall: removed the need for custom kernel patches for schedules
+* lang: numerous improvements (contributed by Fabian Franz)
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.13 (May 04, 2016)
+--------------------------------------------------------------------------
+
+
+Ever so swiftly we are adopting the OpenSSL and LibreSSL updates
+and welcome the cooperation between both projects on this one.
+Way to go guys!
+
+In other news, NTP and Bind were updated to their latest versions.
+The gateway monitoring tool Apinger can now properly handle NTP
+taking over time from time to time.  Er, anyway, language packs
+will become pluggable in the long run and the MVC work for the
+HAProxy plugin is now completely bundled with the release.  Plugin
+release is currently scheduled for 16.1.14.
+
+Here is the full change log for 16.1.13:
+
+* ports: ntp 4.2.8p7 `[1] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ , bind 9.10.4 `[2] <https://ftp.isc.org/isc/bind/9.10.4/RELEASE-NOTES-bind-9.10.4.html>`__ , php 5.6.21 `[3] <https://php.net/ChangeLog-5.php#5.6.21>`__ ,
+  libressl 2.2.7 `[4] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.7-relnotes.txt>`__ , openssl 1.0.2h `[5] <https://mta.openssl.org/pipermail/openssl-announce/2016-May/000072.html>`__ 
+* languages: newly packaged translations with latest updates
+* gateways: apinger monitoring quality is no longer affected by
+  NTP operation
+* backend: lowered configd connection timeout for better response
+  time when unavailable
+* backend: plugged numerous minor crash reports caused by configd
+* backup: reworked backup strategies for RRD and DHCP leases
+* interfaces: allow bridges with at least one member
+* rc: defer recover for packages to avoid database duplication
+* intrusion detection: added an eicar test ruleset
+* intrusion detection: fixed sort order of rulesets
+* captive portal: properly catch exception for accounting
+  background job
+* firewall: annotate deprecated ICMP types in rule filter selection
+* firewall: direction arrows in rule overview now have different
+  colours for easier distinction
+* gui: correct HTML escaping in MVC between client-side JavaScript
+  and server-side API
+* gui: various improvements in MVC components required for upcoming
+  HAProxy plugin
+* gui: enable tooltips in MVC base template
+* gui: set HTTP-only cookie
+
+And here is what changed in 16.7 Beta:
+
+* dashboard: selectable multi-column count
+* dashboard: half-way through widget modernisation
+* dashboard: brought back drag and drop for widget reordering
+* dashboard: new pluggable API backend for widgets
+* languages: added first steps for Turkish
+* backend: removed legacy PHP module for interface information collection
+* gui: improve and streamline CSRF protection
+* netflow: fixed bug with reporting frontend in Safari
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.12 (April 27, 2016)
+--------------------------------------------------------------------------
+
+
+How are you doing?  We have been doing fine, trying new things, moving
+on further...  The progress for our upcoming version 16.7 now accumulates
+to 3 full months.  To that end we are making the transition from ALPHA toi
+BETA on the 16.7 development series.  And since we have been asked to
+incorporate development change logs as well, look no further (well, look
+below).
+
+Anyway, 16.1.12 brings a handful of anticipated additions like FreeBSD's
+package manager version 1.7.2 and the ability to use CoDel / FQ-Codel in
+the traffic shaper.  We have also started to move services to the plugin
+framework instead of having them in the base installation.  And, maybe as
+a last point, initial work for fixing the trusty apinger utility for
+gateway monitoring has surfaced.
+
+Here is the full change log for 16.1.12:
+
+* ports: pkg 1.7.2 `[1] <https://github.com/freebsd/freebsd-ports/commit/aabba637e>`__  `[2] <https://github.com/freebsd/freebsd-ports/commit/d3e9dc5ee>`__  `[3] <https://github.com/freebsd/freebsd-ports/commit/057fbfc94b>`__ , sqlite 3.12.1 `[4] <https://sqlite.org/releaselog/3_12_1.html>`__ , squid 3.5.17 `[5] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
+* firewall: skip anti-lockout WAN rule when only LAN is connected
+* firewall: clean up unused alias tabes
+* firewall: improve alias usage validation
+* firewall: validate / transform url content before save
+* traffic shaper: add Codel / FQ-CoDel support `[6] <https://github.com/opnsense/core/issues/505>`__ 
+* firmware: changed "halt" to "power off"
+* firmware: advertise current product and os version in API
+* firmware: kernel and base fetch will now advertise download progress
+* interfaces: translation fixes (contributed by Fabian Franz)
+* system: fix RRD boot error for CPU temperature graph
+* gateways: code modernisation for the trusty apinger utility
+* ipsec: added service control to log page
+* captive portal: cleanse cert output before write
+* proxy: cleanse cert output before write
+* proxy: do not stop authenticating after an empty string
+* proxy: added log page to ACL
+* proxy: remove auth local database as default
+* smart: removed from base, can be installed as plugin "os-smart"
+
+And this is the change log for 16.7 BETA:
+
+* netflow: finished exporter capable of sending NetFlow to multiple
+  remote destinations
+* netflow: finished local reporting frontend on top of collected
+  NetFlow data
+* interfaces: polling mode has been deprecated and will be phased
+  out soon
+* vpn: L2TP, PPTP and PPPoE servers have been ported to use MPD5
+* vpn: legacy servers have been prepared to be moved from base
+  install to plugins
+* cron: code preparations for opening up the MVC cron API
+* tests: added a unit test framework and several tests
+* backup: reworked the RRD and DHCP leases backup strategies
+* backup: added the ability to also backup local NetFlow data
+* plugins: added the HAProxy plugin (contributed by Frank Wall)
+* kernel: CoDel / FQ-CoDel AQM patch version 0.2
+* kernel: HardenedBSD's ASLR
+* languages: translations have their own repository and package now
+* languages: updated Dutch, French, German, Japanese, Russian
+* languages: can now collect strings from all plugins
+* languages: first steps for Portuguese
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.11 (April 18, 2016)
+--------------------------------------------------------------------------
+
+
+We are skipping a bit ahead with 16.1.11 to address a CSRF vulnerability,
+which outlines the path we have been on since we started `[1] <https://forum.opnsense.org/index.php?topic=2837.0>`__  and we will
+surely continue this security-aware trend.
+
+In other news, this update includes native GeoIP alias support, captive
+portal voucher customisations requested by many and the last batch of
+Russian, effectively bringing it to 100% completed.  Wow!
+
+Here is the full change log:
+
+* services: fix CSRF vulnerability in status_services.php `[2] <https://cxsecurity.com/issue/WLB-2016040106>`__ 
+* www: strengthen CSRF secret generation for legacy pages
+* dhcp: bring back usage of the authoritative directive
+* system: allow periodic backups of RRD and DHCP for non-MFS
+* openvpn: status page would not show the correct process status
+* captive portal: add option for less secure passwords, password and username length
+* firewall: add GeoIP aliases feature
+* languages: completed Russian translation (contributed by Smart-Soft)
+* languages: updated French
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.10 (April 14, 2016)
+--------------------------------------------------------------------------
+
+
+It has been a quite uneventful week.  Suricata and Squid have been
+upgraded to their latest versions and you can find their individual
+change logs below.  The next part of the Russian translation brings
+it to number one with a dreamy 83% completed.  Otherwise only small
+fixes and improvements have been made and those will not even require
+a reboot.
+
+Here is the full list of changes:
+
+* ports: suricata 3.0.1 `[1] <https://suricata-ids.org/2016/04/04/suricata-3-0-1-released/>`__ , squid 3.5.16 `[2] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
+* traffic shaper: added individual tabs to quick navigation
+* traffic shaper: fix behaviour on pppoe devices
+* openvpn: revive windows installer binaries
+* firewall: validate alias url download
+* system: improved config history and backup pages layout
+* system: increased backup count default from 30 to 60
+* system: moved several settings to different pages for better technology alignment
+* system: /var /tmp MFS awareness for crash dumps added
+* trust: add "IP security IKE intermediate" to server key usage
+* firmware: moved reboot, halt and defaults pages to new home
+* proxy: add redirection rule creation link for HTTPS proxy (contributed by Fabian Franz)
+* pptp: prevent service from printing boot messages due to a stale entry in the default config.xml
+* interfaces: show LAGG protocol in overview page
+* languages: another large batch of Russian, now 83% complete (contributed by Smart-Soft)
+* languages: updated French, German and Japanese
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.9 (April 08, 2016)
+--------------------------------------------------------------------------
+
+
+We expect all of you are doing well?  It has been a longer while
+since the last update so 16.1.9 has got a bit of everything to
+keep the spirits high.  :)
+
+There is tremendous progress in the translations.  It just so
+happens that we now have a comprehensive Russian translation as
+well which is going to be completed in the upcoming weeks.  Many
+thanks to Smart-Soft for making this happen.  The contender
+is Japanese through the work of Chie Taguchi, who did most of the
+translation that we have had for a year.  It is going to be a
+close race to the finish line for both languages.  Then again,
+the whole translation team is doing an amazing job.
+
+As polarising as it may be, we have added HTTPS support in the
+proxy server.  Another noteworthy item is StrongSwan 5.4.0, which
+helps to address IPSec status page hangs that some have observed
+with complex setups.  We are looking for feedback for these items,
+please do write in.
+
+Here are the full patch notes:
+
+* src: tzdata updated to 2016c `[1] <http://mm.icann.org/pipermail/tz-announce/2016-March/000037.html>`__ 
+* src: prevent kernel panic on ipfw/dummynet module unload
+* src: let ng_ether_attach() only attach to supported types to avoid kernel panics
+* ports: curl 7.48.0 `[2] <https://curl.haxx.se/changes.html>`__ , strongswan 5.4.0 `[3] <https://wiki.strongswan.org/projects/strongswan/wiki/Changelog54>`__ , pcre 8.38 (patched CVE-2016-1283) `[4] <https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-1283>`__ , php 5.6.20 `[5] <https://php.net/ChangeLog-5.php#5.6.20>`__ 
+* languages: added Russian to the release, now 60% complete (contributed by Smart-Soft)
+* languages: updated Japanese, now 70% complete (contributed by Chie Taguchi)
+* languages: updated German, now 81% complete
+* languages: updated French, now 50% complete
+* firewall: allow editing of up to 5000 aliases
+* firewall: remove link to associated filter rule edit as edit is not allowed
+* firewall: add port range check to aliases edit
+* firewall: when alias URL SSL verification is off, do not verify the hostname either
+* firewall: condense alias pages into a single view
+* firewall: remember scrolling position to return to the previous position after edit
+* firewall: alias import now supports type selection (network and host types)
+* firmware: added German-based mirror (contributed by Alexander Lauster)
+* system: load modules before setting tunables to support settings for modules
+* system: fix boot issue that prevented SSH from starting up in some instances
+* interface: do not show wireless parents on the assignment page as it cannot be assigned
+* ipsec: individual collapse/expand for status page
+* dhcp: allow backwards-compatibility with imported configs
+* captive portal: fix missing busyTimeout on voucher database access
+* openvpn: remember scrolling position to return to the previous position after edit
+* proxy: HTTPS support added
+* proxy: added ability to change the hostname and admin email (contributed by Frederic Lietart)
+* proxy: avoid race condition on cache dir creation (contributed by Frederic Lietart)
+* development: allow hiding of menu entries using the Visibility="delete" attribute
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.8 (May 23, 2016)
+--------------------------------------------------------------------------
+
+
+This quick 16.1.8 is not a big update, but it means a lot.  We have
+finished our full sweep of the GUI to update the look and feel of all
+pages and made the code ready for what is to come now: new features
+that are on our roadmap for 16.7.  The first one will be the HTTPS
+proxy, but there is also NetFlow and improved statistics / reporting
+on the shortlist.
+
+A day after 16.1.7 was out last week, FreeBSD 10.2-RELEASE-p14 was
+announced.  Of the four patches enclosed, the two Hyper-V patches we
+have already brought to OPNsense over a month ago, the OpenSSH patch
+does not apply since we only use the port and already had it up-to-date.
+That leaves us with only one patch that we are shipping now to complete
+the experience.
+
+Attention to everyone using OpenVPN + cryptodev acceleration: the
+cryptodev module along with older crypto drivers has been removed
+from the kernel itself, which means that if you need to keep using
+it, go to System: Settings: Misc and reconfigure your crypto hardware
+including an enable of cryptodev usage.
+
+The refreshed images for 16.1 (based on 16.1.8) have been pushed to
+the mirrors.  You can find the checksums attached at the end of this
+announcement.
+
+https://opnsense.org/download/
+
+Here are the full patch notes:
+
+* src: updated tzdata to version 2016b `[1] <http://mm.icann.org/pipermail/tz-announce/2016-March/000036.html>`__ 
+* src: fix incorrect argument validation in sysarch `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:15.sysarch.asc>`__ 
+* src: fix pfi_table_update: cannot set new addresses
+* src: added APU2 temperature sensor support
+* ports: unbound 1.5.8 `[3] <https://nlnetlabs.nl/projects/unbound/download/>`__ , sudo 1.8.16 `[4] <https://www.sudo.ws/stable.html#1.8.16>`__ , pcre 8.38 `[5] <http://vcs.pcre.org/pcre/code/trunk/ChangeLog?view=markup>`__ 
+* proxy: better matching for overlapping URLs
+* universal plug and play: refactored pages for improved look and feel
+* vpn: refactored L2TP and PPTP pages for improved look and feel
+* openvpn: fix missed configure stage for Peer to Peer (TLS/SSL) mode
+* system: reworked the behaviour of thermal and crypto modules
+* firewall: tweaked a few rule indicator icons to improve clarity
+* firewall: improved alias validation on edit
+* interfaces: also add previous DHCP override fixes for IPv6
+* language: updated French and German
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+.. code-block::
+
+    # SHA256 (OPNsense-16.1.8-OpenSSL-cdrom-amd64.iso.bz2) = 6cdf41e71ad98499bc1c787f03c1e7d055855434c1a7c7917d147a27b18eaecf
+    # SHA256 (OPNsense-16.1.8-OpenSSL-nano-amd64.img.bz2) = d290d9e4d63b5998573b88b4c5fbcee8a4af8448aaa363476945de075d20efd1
+    # SHA256 (OPNsense-16.1.8-OpenSSL-serial-amd64.img.bz2) = cbf459c8b0313cbd601af478317f2227e360871e83f60a3891be4b94a4feb948
+    # SHA256 (OPNsense-16.1.8-OpenSSL-vga-amd64.img.bz2) = 3d75b4e6a24a26e081a267b06b24b71cce15ab965e502cc66575fe6225cb9eb9
+
+.. code-block::
+
+    # SHA256 (OPNsense-16.1.8-OpenSSL-cdrom-i386.iso.bz2) = a25550ce5468903eb020da5e7a2bda6e306a92eb5c84949604c12cb3ffafa7f8
+    # SHA256 (OPNsense-16.1.8-OpenSSL-nano-i386.img.bz2) = 3a00cfba7c43fd63114616d3ee8964c953bbb69c53f284d69617b93d61aaa677
+    # SHA256 (OPNsense-16.1.8-OpenSSL-serial-i386.img.bz2) = 775ec2fc3a74996d1fa9b083799e25f6c4a28943ff0ce4508fbe44e897879748
+    # SHA256 (OPNsense-16.1.8-OpenSSL-vga-i386.img.bz2) = 919675cbec826ea81076a68985860c0d18da1a7c81d37636207b4f5e14d44c5b
+
+.. code-block::
+
+    # MD5 (OPNsense-16.1.8-OpenSSL-cdrom-amd64.iso.bz2) = f585005298cc39c3ad6629f71e6102ad
+    # MD5 (OPNsense-16.1.8-OpenSSL-nano-amd64.img.bz2) = 729f5c34254cdca51ae5ae1c50600ab3
+    # MD5 (OPNsense-16.1.8-OpenSSL-serial-amd64.img.bz2) = bb62af11eb4c3abe03b4f5fa3187ff1a
+    # MD5 (OPNsense-16.1.8-OpenSSL-vga-amd64.img.bz2) = f2331360601744806e8f34c03fa8c6f2
+
+.. code-block::
+
+    # MD5 (OPNsense-16.1.8-OpenSSL-cdrom-i386.iso.bz2) = e9a09094665b1183f49d42b9d5a2b785
+    # MD5 (OPNsense-16.1.8-OpenSSL-nano-i386.img.bz2) = ecd4c75c1d5aee3189958faa9102c851
+    # MD5 (OPNsense-16.1.8-OpenSSL-serial-i386.img.bz2) = 8b9429912fd0d7f853e238e5cee4866c
+    # MD5 (OPNsense-16.1.8-OpenSSL-vga-i386.img.bz2) = 509e381469817ab9c749f7a29956ea94
+
+--------------------------------------------------------------------------
+16.1.7 (March 16, 2016)
+--------------------------------------------------------------------------
+
+
+Time for a quick update!  We are still polishing our non-MVC GUI pages
+to match the modern style of the MVC equivalents and fix a few minor
+bugs along the way.  In these matters, we ask for your participation in
+critically reviewing the changes below in order to catch remaining
+issues as soon as possible.  We expect to finish our full code sweep
+next week.  After that we will shift focus to work on new features.
+
+The upgrades from 15.7.25 to 16.1.x briefly stalled with 16.1.6 due to
+a dormant incompatibility in the FreeBSD package management tool after
+flipping from 10.1 to 10.2, so we went ahead and made it all better.
+More precaution in our own update tools will hopefully prevent such
+unwanted breakage in the future, but we understand that these things
+can slip through. :)
+
+New images are on the way shortly after 16.1.8.  We are also introducing
+the new "opnsense-stable" firmware path and some cool upgrade features
+for our brave testers.  More explanations will follow soon.
+
+Here are the full patch notes:
+
+* ports: pecl-radius 1.3.0 `[1] <https://pecl.php.net/package-changelog.php?package=radius>`__ , bind 9.10.3-P4 `[2] <https://kb.isc.org/article/AA-01363/81/BIND-9.10.3-P4-Release-Notes.html>`__ , bsnmp-ucd 0.4.2 `[3] <https://github.com/trociny/bsnmp-ucd/blob/master/CHANGELOG>`__ ,
+  openssh-portable 7.2p2 `[4] <http://www.openssh.com/txt/release-7.2p2>`__ , sqlite 3.11.1 `[5] <https://sqlite.org/releaselog/3_11_1.html>`__ 
+* captive portal: add session timeout to status info
+* firewall: fix non-report of errors when filter reload errors
+  could not be parsed
+* pppoe server: make service control buttons work with multiple
+  instances
+* wake on lan: reworked pages for a polished look and feel
+* load balancer: reworked pages for a polished look and feel
+* dashboard: better colouring for widget status bars
+* dns filter: reworked page for a polished look and feel
+* dns rfc2136: reworked pages for a polished look and feel
+* igmp proxy: reworked pages for a polished look and feel
+* system: routes diagnostics page ported to MVC
+* proxy: adjust category visibility as not all of them were shown before
+* firmware: fix an overzealous upgrade run when the package tool only
+  changes options
+* firmware: fixed the binary upgrade patch from 15.7.x in FreeBSD's
+  package tool
+* network time: reworked pages for a polished look and feel
+* system: removed NTP settings from general settings
+* snmp: refactored page for a polished look and feel
+* access: let only root access status.php as it leaks too much info
+* development: remove the automount features
+* development: added in-place package upgrades using the upstream
+  repository
+* development: addition of "opnsense-stable" package on our way to
+  nightly builds
+* development: opnsense-update can now install locally available base
+  and kernel sets
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.6 (March 09, 2016)
+--------------------------------------------------------------------------
+
+
+It is update time!  This time around, DHCP and DNS have been freshened up
+thoroughly, removing both potential and real problems from the GUI and
+underneath.  Additionally, the proxy server gained ICAP support and a
+category-based remote block list selection.
+
+Our firmware mirror support has finally been extended so that it is now
+possible to pull all updates from a single mirror, which will very soon
+make it possible to run a local mirror for your internal installations.
+We are also shipping the original FreeBSD OpenSSL patch, although the
+security issues cannot not surface on OPNsense.  We just like to be
+thorough.
+
+Here are the full patch notes:
+
+* src: Fix multiple vulnerabilities of OpenSSL `[1] <https://github.com/freebsd/freebsd/commit/7d8d4cb5>`__ 
+* src: update tzdata to 2016a `[2] <http://mm.icann.org/pipermail/tz-announce/2016-January/000035.html>`__ 
+* ports: openssh-portable 7.2p1 `[3] <http://www.openssh.com/txt/release-7.2>`__ , isc-dhcp-43 4.3.3P1_1 `[4] <https://www.isc.org/blogs/isc-dhcp-4-3-0-is-live/>`__ ,
+  php 5.6.19 `[5] <https://php.net/ChangeLog-5.php#5.6.19>`__ , curl 7.41.1 `[6] <https://curl.haxx.se/changes.html>`__ 
+* firmware: mirror selection has been widened to include kernel/base
+  upgrades
+* firmware: bootstrap utility can now directly install e.g. the
+  development version
+* dhcp: all GUI pages have been reworked for a polished look and feel
+* proxy: added category-based remote file support if compressed file
+  contains multiple files
+* proxy: added ICAP support (contributed by Fabian Franz)
+* proxy: hook up the transparent FTP proxy
+* proxy: add intercept on IPv6 for FTP and HTTP proxy options
+* logging: syslog facilities, like services, are now fully pluggable
+* vpn: stripped an invalid PPTP server configuration from the standard
+  configuration
+* vpn: converted to pluggable syslog, menu and ACL
+* dyndns: all GUI pages have been reworked for a polished look and feel
+* dyndns: widget now shows IPv6 entries too
+* dns forwarder: all GUI pages have been reworked for a polished
+  look and feel
+* dns resolver: all GUI pages have been reworked for a polished
+  look and feel
+* dns resolver: rewrote the dhcp lease registration hooks
+* dns resolver: allow parallel operation on non-standard port when dns
+  forwarder is running as well
+* firewall: hide outbound nat rule input for "interface address" option
+  and toggle bitmask correctly
+* interfaces: fix problem when VLAN tags weren't generated properly
+* interfaces: improve interface capability reconfigure
+* ipsec: fix service restart behaviour from GUI
+* captive portal: add missing chain in certificate generation
+* configd: improve recovery and reload behaviour
+* load balancer: reordered menu entries for clarity
+* ntp: reordered menu entries for clarity
+* traffic shaper: fix mismatch for direction + dual interfaces setup
+* languages: updated German and French
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.5 (March 02, 2016)
+--------------------------------------------------------------------------
+
+
+It pleases us to say that although we ship the latest OpenSSL 1.0.2g today,
+we have had both SSv2 and SSv3 support disabled in our installation for a
+long while, so older installations are also not affected by yesterday's
+announcement.  On a slightly related note, LibreSSL was not affected at all.
+
+With that out of the way, we also happily let you know that we are shipping
+RFC 4638 support with this stable release.  We also push a fix for an
+upstream bug in Unbound and update Squid to the latest version... again. ;)
+
+We have also announced the roadmap for 16.7.  Take a look at our upcoming
+milestones:
+
+https://opnsense.org/about/road-map/
+
+And now, here are the full patch notes:
+
+* ports: squid 3.5.15 `[1] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ , unbound 1.5.7 hotfix `[2] <https://www.nlnetlabs.nl/bugs-script/show_bug.cgi?id=729>`__ , pkg 1.6.4 hotfix `[3] <https://github.com/freebsd/pkg/issues/1394>`__ ,
+  openssl 1.0.2g `[4] <https://www.openssl.org/news/secadv/20160301.txt>`__ 
+* services: infrastructure rework for plugin additions
+* openvpn: added copy/move to client-specific overrides
+* openvpn: allow binding client-specific overrides to specific server(s)
+* openvpn: service on/off toggle via overview pages
+* openvpn: fix problem with service status display
+* openvpn: when services are disabled, make sure a reconfigure will always
+  stop the associated process
+* vpn: transform PPTP, L2TP and PPPoE servers to plugin addition to be
+  removed from base install for 16.7
+* vpn: add proper service probing for PPTP, L2TP and PPPoE servers
+* interfaces: added RFC 4638 support (MTU > 1492 in PPPoE)
+* ntp: disable when no servers are set
+* language: updates for Chinese, French and German
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.4 (February 24, 2016)
+--------------------------------------------------------------------------
+
+
+We pop in for a short stable update, namely 16.1.4.  Squid has been
+updated to 3.5.14 and received a GUI entry for maximum_object_size
+to define since the default has been reported as a wee bit too small.
+
+In other news, the final roadmap for 16.7 will be unveiled later this
+week after much internal discussion.  Our main goals are to finish a
+full code audit, further alignment with FreeBSD and a few tiny
+surprises.  Stay tuned for those.  :)
+
+Here are the full patch notes:
+
+* ports: squid 3.5.14 `[1] <http://www.squid-cache.org/Versions/v3/3.5/changesets/SQUID_3_5_14.html>`__ 
+* dhcp: fix menu expand with IPv6 configuration
+* captive portal: fix database timeout lock message
+* interfaces: fix expand/collapse on status page for Edge
+* proxy: add maximum_object_size setting for squid
+* load balancer: improve filter reload to prevent traffic
+  lockout (contributed by Frank Wall)
+* layout: fix searchable dropdown truncation with IE
+* firewall: fix action buttons on alias edit
+* menu: updated help menu entries
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.3 (February 17, 2016)
+--------------------------------------------------------------------------
+
+
+It is time for a smaller update to 16.1.3.  There is another fix for our
+Hyper-V users, the health section finally received its CPU temperature
+graph and a few ports have been updated to their latest version.  Nothing
+of particular interest happened, no issues with glibc from our side today.  :)
+
+A number of assorted issues have been flushed from the code thanks to good
+use of the crash reporter.  A special thank you goes to those of you who
+submit email addresses and a brief description along with the report.  For
+us it is tremendously useful to get as many details as possible and to
+verify that our fixed work reliably in a particular use cases before
+shipping them.
+
+Enough with the announcing already, here are the full patch notes:
+
+* src: hyperv/kvp: wake up the daemon if it is sleeping due to poll() `[1] <https://github.com/opnsense/core/issues/748>`__ 
+* src: Use correct src/dst ports when removing states in pf `[2] <https://github.com/opnsense/src/pull/9>`__ 
+* src: finish the boot loader branding by adding a shiny logo
+* ports: unbound 1.5.7 `[3] <https://nlnetlabs.nl/projects/unbound/download/>`__ , openldap 2.4.44 `[4] <http://www.openldap.org/software/release/changes.html>`__ , ca_root_nss 3.22,
+  php 5.7.18 `[5] <https://php.net/ChangeLog-5.php#5.6.18>`__ , phalcon 2.0.10 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.10>`__ , pkg 1.6.4 `[7] <https://github.com/freebsd/freebsd-ports/commit/364bf01c846>`__  `[8] <https://github.com/freebsd/freebsd-ports/commit/69fe3e55ff5>`__ 
+* interfaces: collapsible overview for each interface
+* shaper: fix issue with model when not able to save an old config
+* health: added pages to ACL for configurable user access
+* health: record system CPU temperature in additional graph
+* firmware: add UK-based mirror (contributed by Will Jones)
+* access: force a visible and non-critical page on non-access redirect
+* access: make sure "/" is handled like "/index.php"
+* configuration: add a number of previously missing config sections for
+  selection on restore/backup
+* firewall: bring back alias nesting
+* dhcp: add missing DNS resolver awareness
+* dhcp: fix multiple minor crash reports
+* radvd: add missing DNS resolver awareness
+* captive portal: ensure MAC address is saved in lowercase and improve
+  validation
+* captive portal: fix unicode issue in template generation
+* captive portal: correct syslog redirection regression
+* crash reporter: limit log size upload to 1MB
+* cron: fix validation of hour value
+* intrusion detection: show origin link of rule sets in details
+* services: add background daemon to known services for easy reload
+* services: add captive portal to known services for easy reload
+* services: improve redirect on service reload in diagnostics page
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.2 (February 05, 2016)
+--------------------------------------------------------------------------
+
+
+It is time for a swift update for our dear Hyper-V users.  There is a
+packet forwarding regression in FreeBSD 10.2 that has not been added
+as errata yet so we had to pin it down with the help of three brave
+testers.  If you happen to want to run Hyper-V without going through
+the issue, install from an older 15.7 image and upgrade directly to
+avoid the bad version.
+
+To improve upon Suricata 3.0 and the SSL fingerprint lists we are now
+enabling users to add user-defined rules for adding and enforcing their
+own fingerprints.  But wait, that is not all.  On top of that the IP
+geolocation feature was added as well while at it.  :)
+
+Otherwise, only smaller bugs have been addressed to make 16.1 look
+even shinier.  The FreeBSD security advisory for OpenSSL got integrated
+too, but is not of much concern since we consistently use the ports
+version for our components.  The important fixes have been shipped
+with version 16.1.1 back on Monday.
+
+Here are the full patch notes:
+
+* src: OpenSSL SSLv2 ciphersuite downgrade vulnerability `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:11.openssl.asc>`__ 
+* src: Fix packet forwarding in Hyper-V netvsc driver `[2] <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=203630>`__ 
+* src: Honour disabled pf(4) log flag on dropped packets with IP options `[3] <https://reviews.freebsd.org/D3222>`__ 
+* ports: curl 7.47.0 `[4] <https://curl.haxx.se/changes.html>`__ , nettle 3.2 `[5] <https://fossies.org/diffs/nettle/3.1.1_vs_3.2/ChangeLog-diff.html>`__ 
+* wizard: fix certificate generation for OpenVPN
+* firewall: fix interface selection on post issues in floating rules
+* firewall: make category filter multi-select for maximum convenience
+* firewall: do not hide gateways from the gateway selection
+* firewall: added null routes to the gateway selection
+* firewall: rather than hiding associated nat rules, remove their edit
+  and clone buttons so they can still be deleted manually
+* dns resolver: fix $numprocs setting in config according to manual
+* dns resolver: do not render illegal output for empty IPv6 addresses
+* dhcp: applying static mappings with DNS resolver enabled no longer
+  seems stuck in apply step
+* search: resize box on focus and also propagate proxy server tabs
+* system: fix inversion bug of the default pass logging setting
+* captive portal: properly log messages to associated log file
+* intrusion detection: can now add user rules based on SSL fingerprints
+  and IP geolocation
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1.1 (February 02, 2016)
+--------------------------------------------------------------------------
+
+
+Today we are following up on the OpenSSL advisories.  LibreSSL was not
+affected (surprise, surprise), but received a tiny fix to sync up with
+the deprecation of the high-severity SSL_OP_SINGLE_DH_USE option of its
+sibling.
+
+In other news, we are shipping a few minor fixes along with all-new
+SSL-centric rulesets for the intrusion prevention courtesy of abuse.ch `[3] <https://www.abuse.ch/>`__ .
+Protect your assets, they are worth it!
+
+Without fuzz, here are the full patch notes:
+
+* ports: libressl 2.2.6 `[1] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.6-relnotes.txt>`__ , openssl 1.0.2f `[2] <https://www.openssl.org/news/secadv/20160128.txt>`__ 
+* intrusion prevention: add SSL fingerprint blacklist and other abuse lists
+  (courtesy of abuse.ch `[3] <https://www.abuse.ch/>`__ )
+* captive portal: limit the max vouchers per call
+* captive portal: change voucher download filename to match group name
+* captive portal: strip bad characters from group name
+* captive portal: fix multiple voucher generation
+* firewall: add rule categorisation tag field
+* search: tweak padding to align with right visual boarder
+* console: fix halt script to show product name again
+* firmware: revoked the old 15.7 update fingerprint
+* interfaces: fix VLAN edit page to show the correct page name
+* squid: fix authentication script permission regression
+* dashboard: remove non-authoriative hardware crypto probing
+* system: do not accept an authentication server with an empty name
+* system: added hint that device polling setting needs reboot
+  (contributed by Olivier Paroz)
+* system: assorted translation fixes (contributed by Fabian Franz)
+* logging: unhide IGMP packets from firewall log view
+  (contributed by Isaac Levy)
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+16.1 (January 28, 2016)
+--------------------------------------------------------------------------
+
+
+No, we would not say it was easy getting here, but booting into 16.1
+for the first time sure is as relieving (and exciting) as it could get
+for our project growing beyond what we had ever imagined.  It has been
+more than a year since OPNsense first came out.  Back then it was
+FreeBSD 10.0.  Not even two months after, 10.1 was introduced along
+with the opnsense-update utility.  Today is the day for FreeBSD 10.2,
+the latest and greatest release currently available for broader driver
+support and stability improvements.
+
+16.1 is nicknamed "Crafty Coyote" in honour of our beloved childhood
+TV sessions.  It is the accumulation of 6 months of work, having had
+our focus on reengineering the captive portal, native intrusion
+prevention, plugin support, and transforming the reporting frontend
+into something more modern and flexible just to name a few `[1] <https://opnsense.org/about/road-map/>`__ .  Apart
+from the recently published security advisories (see patch notes below),
+we have included a quick navigation feature which can be activated by
+pressing (TAB) followed by search keywords and hitting (ENTER) to go to
+the desired page.  Last but not least, a larger batch of improvements
+and fixes went into assorted sections of the GUI that certainly help
+to get your work done without ending up dazed and confused.
+
+Speaking of clearing things up, there is more...  While Ad, Franco
+and a couple of amazing external contributors have been busy writing
+and reviewing code, Jos worked in the shadows to bring to you a fully
+revised set of project documentation in the form of an online
+handbook `[2] <https://docs.opnsense.org/>`__ .  More content will follow as we slow down development
+speed a bit in order to catch up.  We will have to see how that works
+out.  ;)
+
+Another thing we have noticed is that translations are hard!  We have
+planned to finish a translation for this iteration, but the sheer
+amount of work overwhelmed even the sizeable German translation team.
+The German translation is now at 77% percent completed with Japanese,
+Chinese and French chasing tails.  If you want to help drop us a line
+at project@opnsense.org for details on how to contribute.
+
+All images have been pushed as well, although may take a bit more time
+to reach a mirror near you.  You can find the checksums attached at the
+end of this announcement.
+
+https://opnsense.org/download/
+
+Finally, here are the full patch notes:
+
+* src: FreeBSD 10.2-RELEASE-p11 `[4] <https://www.freebsd.org/releases/10.2R/announce.html>`__ 
+* bootstrap: can now update from any available FreeBSD 10 release
+* ports: libarchive 3.1.2_6 `[5] <https://vuxml.freebsd.org/freebsd/7c63775e-be31-11e5-b5fe-002590263bf5.html>`__ , Suricata 3.0 `[6] <http://suricata-ids.org/2016/01/27/suricata-3-0-available/>`__ , squid 3.5.13 `[7] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ ,
+  bind 9.10.3P3 `[8] <https://kb.isc.org/article/AA-01346/81/BIND-9.10.3-P3-Release-Notes.html>`__ , sqlite 3.10.2 `[9] <https://sqlite.org/releaselog/3_10_2.html>`__ , ntp 4.2.8p6 `[10] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
+* firewall: lock source / destination port settings when neither
+  TCP nor UDP is selected
+* firewall: simplify the outbound page to hide unwanted items and
+  zap complicated explanations (contributed by Manuel Faux)
+* firewall: do not leak floating rules into other interface tabs
+* firewall: add clear button to all log file types
+* firewall: hide NAT rules from normal rules screen
+* firewall: removed the unsupported dscp rule option
+* firewall: display alias descriptions as tooltips (contributed by
+  Manuel Faux)
+* universal plug and play: switch to secure mode as the new default
+* unbound: add MX entries to host overrides (contributed by Manuel Faux)
+* gateways: always safe the monitor IP regardless of monitoring being
+  on or off
+* gateways: properly add and remove routes for monitors on toggle
+* backend: fix harmless error message caused by a sample template
+* high availability: allow specification of a different port for
+  synchronisation
+* high availability: special characters are now being properly preserved
+* high availability: added new captive portal and traffic shaper as
+  sync options
+* high availability: reworked and pruned the client synchronisation
+* firmware: optional php extensions now peacefully coexist with
+  preinstalled extensions
+* firmware: update plugin list on refresh to reveal available plugin list
+* intrusion detection: adds intrusion prevention mode for netmap(4)
+  devices (must disable Hardware CRC manually)
+* captive portal: completely rewritten on top of our new components
+* proxy: hook up remote ACL settings to translation engine (contributed
+  by Fabian Franz)
+* proxy: add support for compressed ACLs (.gz, .tar.gz, .tgz, .zip)
+* proxy: fix toggle for storage log
+* ipsec: improve display of tunnel overview
+* openvpn: provide full ca chain on client export (contributed by
+  Manuel Faux)
+* openvpn: fix engine detection for LibreSSL
+* layout: all tooltips and icons of action buttons have been updated
+  for proper look and feel (contributed by Manuel Faux)
+* layout: added the infamous quick navigation feature
+* layout: consolidated the display of the upper right corner
+  as "user@host.domain"
+* interfaces: reworked all the pages for proper look and feel
+* interfaces: ARP and NDP tables have been rewritten and now properly
+  show vendor info
+* login: improved look and feel
+* dashboard: rss widget has been reworked and its library has been
+  updated to a new version
+* config: recover last backup automatically on broken xml
+* menu: properly aligned submenu icons
+* system: removed XDebug package from the default installation
+
+We thank all our contributors and users for their ongoing love
+and support. <3
+
+
+Cheers,
+Ad, Franco and Jos
+
+--
+
+.. code-block::
+
+    # SHA256 (OPNsense-16.1-OpenSSL-cdrom-amd64.iso.bz2) = bd94c4bf304fa99d7fb426061cf17f45fa2e427cef3ab089704e14b2b570b261
+    # SHA256 (OPNsense-16.1-OpenSSL-nano-amd64.img.bz2) = abd0c9beb843ad8232f9fc5f0b6c68318993b55529bc06a8c331587863a6c13f
+    # SHA256 (OPNsense-16.1-OpenSSL-serial-amd64.img.bz2) = 9a5faaebc6cba481199bbc2ae5395877c8acf0dfa225e643ec5c3258e5014c4f
+    # SHA256 (OPNsense-16.1-OpenSSL-vga-amd64.img.bz2) = 85e3c4275460758565cb0eced8c69afd13a26eb8b9116d86db80be098b6d3e4b
+
+.. code-block::
+
+    # SHA256 (OPNsense-16.1-OpenSSL-cdrom-i386.iso.bz2) = 8346db1a23563895f071a51ea86be00f7e405e5df709943b26435c13f1c898f1
+    # SHA256 (OPNsense-16.1-OpenSSL-nano-i386.img.bz2) = 380819194a3c5a508b161153cc532e8c1caaba31b08bdb01643493438634d2ab
+    # SHA256 (OPNsense-16.1-OpenSSL-serial-i386.img.bz2) = 1a413fb0563cc63e1b80278df303b092b219d6d58a87f841b7389a1a4939734a
+    # SHA256 (OPNsense-16.1-OpenSSL-vga-i386.img.bz2) = 16a360b05d3fd325499baa6bd38fcd19090ac1d5c3d8ba2a8fa3e763137e87fc
+
+.. code-block::
+
+    # MD5 (OPNsense-16.1-OpenSSL-cdrom-amd64.iso.bz2) = 941e9cd797e4189868398fcd057a428e
+    # MD5 (OPNsense-16.1-OpenSSL-nano-amd64.img.bz2) = ededf0767412daafcb8209a3fbf85714
+    # MD5 (OPNsense-16.1-OpenSSL-serial-amd64.img.bz2) = 0094c6275128a35e6f8bf965178245eb
+    # MD5 (OPNsense-16.1-OpenSSL-vga-amd64.img.bz2) = ddaae54fe90634ca8223f483cebebaa2
+
+.. code-block::
+
+    # MD5 (OPNsense-16.1-OpenSSL-cdrom-i386.iso.bz2) = d1a216d5eed3534d7f33a6a4482851e2
+    # MD5 (OPNsense-16.1-OpenSSL-nano-i386.img.bz2) = 871f23a40d3eee49350fe06cadb37884
+    # MD5 (OPNsense-16.1-OpenSSL-serial-i386.img.bz2) = be04acd8c51347711c4a5f58b711da8e
+    # MD5 (OPNsense-16.1-OpenSSL-vga-i386.img.bz2) = 549267467adbf194505c6daaae589ee8

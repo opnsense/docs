@@ -1,0 +1,1274 @@
+===========================================================================================
+18.1  "Groovy Gecko" Series
+===========================================================================================
+
+
+
+For more than 3 years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, HardenedBSD
+security, fast adoption of upstream software updates as well as
+clear and stable 2-Clause BSD licensing.
+
+We humbly present to you the sum of another major iteration of the
+OPNsense firewall.  Over the second half of 2017 well over 500 changes
+have made it into this release, nicknamed "Groovy Gecko".  Most notably,
+the firewall NAT rules have been reworked to be more flexible and usable
+via plugins, which is going to pave the way for subsequent API works on
+the core firewall functionality.  For more details please find the attached
+list of changes below.
+
+The upgrade track from 17.7 will be available later today.  Please be
+patient.  :)
+
+Meltdown and Spectre patches are currently being worked on in FreeBSD `[1] <https://lists.freebsd.org/pipermail/freebsd-security/2018-January/009719.html>`__ ,
+but there is no reliable timeline.  We will keep you up to date through
+the usual channels as more news become available.  Hang in there!
+
+These are the most prominent changes since version 17.7:
+
+* FreeBSD 11.1, PHP 7.1 and jQuery 3 migration
+* Realtek vendor NIC driver version 1.94
+* Portable NAT before IPsec support
+* Local group restriction feature in OpenVPN and IPsec
+* OpenVPN multi-remote support for clients
+* Strict interface binding for SSH and web GUI
+* Improved MVC tabs and general page layout
+* Shared forwarding now works on IPv6, in conjunction with "try-forwarding" and improved reply-to multi-WAN behaviour
+* Easy-to-use update cache support for Linux and Windows in web proxy
+* Intrusion detection alert improvements and plugin support for new rulesets (ET Pro, Snort VRT)
+* Revamped HAProxy plugin with introduction pages
+* Moved interface selection to menu and quick search for firewall rules, DHCP and wireless status
+* Alias backend rewrite for future extensibility
+* Plugin-capable firewall NAT rules
+* Migration of system routes UI and backend to MVC (also available via API)
+* Reverse DNS support for insight reporting (also available via API)
+* Fully rewritten firewall live log in MVC (also available via API)
+* New plugins: zerotier, mdns-repeater, collectd, telegraf, clamav, c-icap, tor, siproxd, web-proxy-sso, web-proxy-useracl, postfix, rspamd, redis, iperf, arp-scan, zabbix-proxy, frr, node_exporter
+
+Download links, an installation guide `[2] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the
+images can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/18.1/
+* US East Coast: http://mirrors.nycbug.org/pub/opnsense/releases/18.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/18.1/
+* South America: http://mirror.upb.edu.co/opnsense/releases/18.1/
+* South-East Asia: https://ftp.yzu.edu.tw/opnsense/releases/18.1/
+* Full mirror list: https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+18.1.13 (July 24, 2018)
+--------------------------------------------------------------------------
+
+
+It is that time of the year again: this update is the last one in the
+18.1 series and 18.7, nicknamed "Happy Hippo", will be released next week!
+
+The transition will be seamless when heeding the upgrade notes to be
+published with the 18.7 images on July 31.  All 18.7-RC users will be
+able to upgrade right away.  After a number of hours we will enable the
+upgrade path with a small hotfix to 18.1.13.  This process may take up
+to 24 hours so please do not be alarmed about delays.
+
+Here are the full patch notes:
+
+* system: restart syslog when interface bind addresses may have changed
+* system: remove unused action_disable setting in gateway monitoring
+* firmware: new mirror Dataroute (Dusseldorf, DE)
+* ntp: typo in SiRF selection
+* openvpn: translate validated field names
+* rc: unset rcvar before evaluation (contributed by Nicholas de Jong)
+* installer: give basic tip that GUI IP can be set in console after install (contributed by stilez)
+* plugins: os-theme-cicada 1.2 (contributed by Team Rebellion)
+* plugins: os-theme-rebellion 1.2 (contributed by Team Rebellion)
+* plugins: os-theme-tukan 1.1 (contributed by Team Rebellion)
+* ports: suricata 4.0.5 `[1] <https://suricata-ids.org/2018/07/18/suricata-4-0-5-available/>`__ 
+
+A hotfix release was issued as 18.1.13_1:
+
+* firmware: enable upgrade path to 18.7
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+18.1.12 (July 13, 2018)
+--------------------------------------------------------------------------
+
+
+This update ships a few minor bug fixes and several feature tweaks that
+were either wished for or contributed by the community.  That is why we
+wholeheartedly love our community. <3
+
+Here is the full list of changes:
+
+* system: improve local account expire cron job to also flush passwords and SSH keys
+* system: show fingerprint in certificate details (contributed by Robin Schneider)
+* system: fix Nextcloud file name format (contributed by Fabian Franz)
+* system: allow remote backup via cron command
+* interfaces: allow /0 to /32 in 6rd and align prefix length calculation with effective prefix used
+* firewall: do not trigger rules scheduling if scheduled rule is disabled
+* firewall: allow to select external aliases
+* firewall: ignore namelookup when no nameservers are configured
+* dashboard: remove tooltips from CPU widgets (contributed by Team Rebellion)
+* dashboard: add date to large CPU widget data
+* firmware: add Aalborg University mirror
+* intrusion detection: add missing classification category
+* ipsec: add mutual RSA and EAP-MSCHAPv2 support
+* wizard: make clear that "admin password" means "root password"
+* ui: when JQuery Bootgrid rowselect is enabled the click event is triggered twice
+* mvc: switch from the default $_GET["_url"] to $_SERVER["REQUEST_URI"] and let Phalcon handle the routing
+* mvc: dynamic urls regardless if you have a trailing slash or not (contributed by Max Orelus)
+* mvc: multiselect may allow empty option, no need to give blank item too
+* mvc: add support for application-specific field types
+* ui: top level menu item link pivots and security improvements (contributed by Max Orelus)
+* plugins: os-net-snmp 1.0 (contributed by Michael Muenz)
+* plugins: os-openconnect 1.1 (contributed by Michael Muenz)
+* plugins: os-web-proxy-sso UI fixes (contributed by Smart-Soft)
+
+
+Stay safe,
+Your OPNsense team
+
+--------------------------------------------------------------------------
+18.1.11 (July 02, 2018)
+--------------------------------------------------------------------------
+
+
+A small update ships several improvements and preparations for the upcoming
+version 18.7.  We are also bundling a patch for the lazy FPU state restore
+information disclosure.
+
+Here are the full patch notes:
+
+* system: enforce full password policy check for local passwords including TOTP
+* system: add RFC 7919 DH parameter files for upcoming 18.7 feature
+* system: add 3072-bit RSA key length options to certificates (contributed by Justin Coffman)
+* system: move auto-cron jobs to plugin files
+* interfaces: refactor reload handling around interfaces_configure()
+* interfaces: allow private addresses in 6RD
+* interfaces: check existence of "status" (contributed by Tian Yunhao)
+* reporting: add NetFlow/Insight database force repair function
+* dhcp: update from ISC version 4.3 to 4.4
+* importer: allow ZFS import for upcoming 18.7 ZFS installer feature
+* importer: allow import from simple MSDOS USB drives
+* intrusion detection: add app detect rules (contributed by Michael Muenz)
+* rc: suppress message of service not enabled on NetFlow backup
+* rc: use exec in /etc/rc and /etc/rc.shutdown hooks
+* rc: rework rc.syshook facility to be driven by directories and not suffixes
+* unbound: remove defunct unbound_statistics() function
+* plugins: os-postfix 1.4 advanced force recipient check (contributed by Michael Muenz)
+* plugins: service start corrections for accompanying rc.syshook changes
+* src: incorrect TLB shootdown for Xen-based guests `[1] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:07.pmap.asc>`__ 
+* src: lazy FPU state restore information disclosure `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-18:07.lazyfpu.asc>`__ 
+* src: enable usage of locate(1) utility
+* ports: isc-dhcp 4.4.1 `[3] <https://deepthought.isc.org/article/AA-01571>`__ 
+* ports: php 7.1.19 `[4] <https://php.net/ChangeLog-7.php#7.1.19>`__ 
+* ports: unbound 1.7.3 `[5] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+18.1.10 (June 21, 2018)
+--------------------------------------------------------------------------
+
+
+This update ships with the optional gateway monitoring tool dpinger and a
+new config backup option onto Nextcloud.  SSL crypto libraries have been
+updated to address CVE-2018-0732 along with other updates to assorted third
+party software.
+
+Here are the full patch notes:
+
+* system: provide default for user language
+* system: do not allow spaces in group names
+* system: dpinger gateway monitor option (contributed by Team Rebellion)
+* system: prepare for upcoming DH parameter regeneration feature
+* system: Nextcloud backup support (contributed by Fabian Franz)
+* system: userid 0 has trouble with %s in redirects, use %d instead
+* system: QR code quiet zone support `[1] <https://github.com/jeromeetienne/jquery-qrcode/pull/43>`__ 
+* system: add selectpicker style where previously missing
+* firmware: allow both origin.conf and OPNsense.conf to be used for repository setup
+* firmware: exclude password database files from base update as it breaks sudo
+* interfaces: clean up reload structure for single interfaces
+* interfaces: remove unused interface reload script
+* interfaces: simplify semantics of link_interface_to_track6()
+* interfaces: assorted cleanups in the code
+* firewall: add enable flag to shaper rules
+* firewall: improve parsing speed of firewall log
+* firewall: fix wrong alias reference in outbound rules
+* firewall: generate ipfw comments for debugging (contributed by Robin Schneider)
+* firewall: move color settings from schedules to theme (contributed by Fabian Franz)
+* intrusion detection: correct typo in CSS
+* openvpn: raise default DH parameter to 2048 bit
+* console: pass output of stop scripts to user during halt/reboot
+* console: clarify that installer is for installing when SSH is off also
+* rc: change NetFlow backup to only stop/start when needed
+* rc: backup and restore via XML files again
+* rc: slightly refactor halt/reboot/shutdown
+* rc: break out config stop script
+* rc: simplify configctl plumbing
+* ui: add country flags for upcoming changes in GeoIP handling
+* ui: trigger onChange event to support custom hooks in form post
+* ui: change multi-select default from tokenizer to selectpicker
+* ui: add support for custom separators in select items
+* plugins: test for template scripts before executing them
+* plugins: os-acme-client fixes password field usage
+* plugins: os-relayd 2.0 MVC rewrite (contributed by Frank Brendel)
+* plugins: os-smart 1.3 translation and UI fixes (contributed by Fabian Franz)
+* plugins: os-upnp daemon now uses CHECK_PORTINUSE and PF_FILTER_RULES port options
+* plugins: os-zerotier 1.3.2 translation and UI fixes (contributed by Smart-Soft)
+* ports: ca_root_nss 3.37.3
+* ports: libressl 2.6.5 `[2] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.6.5-relnotes.txt>`__ 
+* ports: openssl patch for CVE-2018-0732 `[3] <https://github.com/freebsd/freebsd-ports/commit/c5a81698>`__ 
+* ports: phalcon 3.4.0 `[4] <https://github.com/phalcon/cphalcon/releases/tag/v3.4.0>`__ 
+* ports: sqlite 3.24.0 `[5] <https://sqlite.org/releaselog/3_24_0.html>`__ 
+* ports: strongswan 5.6.3 `[6] <https://wiki.strongswan.org/versions/69>`__ 
+* ports: unbound 1.7.2 `[7] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+18.1.9 (May 31, 2018)
+--------------------------------------------------------------------------
+
+
+This update is going forward with a larger batch of firmware update
+improvements that are important for 18.7 and beyond, addressing the
+former lack of error handling, check for update speed and API check
+capabilities for major upgrades.
+
+Intrusion detection syslog behaviour changes slightly after a number
+of good discussions, meaning that now syslog is always on, but fast
+log alert info is steered by the former syslog option making the
+option the best of both worlds and enabling future syslog export,
+which is now also available in the development version.
+
+Last but not least we want to mention the work done on allowing detached
+UI development which is now included in the release.  For more information
+check out the UI development tools `[1] <https://github.com/opnsense/ui_devtools>`__  that have been released alongside.
+
+There is more preparation underway for 18.7, but that info will have to
+wait as it eludes the context of this announcement.  Feel free to
+frequently check the milestone progress in the forums `[2] <https://forum.opnsense.org/index.php?topic=8597.0>`__  in the meantime.
+
+Here is the full list of changes:
+
+* firewall: advanced option to reset states on IPv4 change
+* interfaces: rename $wancfg to $lancfg in tracking code
+* interfaces: further simplifications for dhclient usage
+* reporting: add logging to database repair stage
+* reporting: Insight click event issue
+* system: use uppercase gateway names for compatibility
+* system: gateway alert script always returns true
+* system: align static ACL check with MVC variant
+* system: pluggable backup support
+* system: configurable user landing pages
+* system: safety belt for password policy check
+* wizard: add missing element IDs to fix scripting issues
+* firmware: parse and return to be removed packages for update summary
+* firmware: release type change properly updates the repository and summary
+* firmware: extended settings can now be registered via XML files
+* firmware: return repository errors in greater detail (4 new error types)
+* firmware: make returned backend JSON a bit more human-readable
+* firmware: fix leak of base/kernel update info on package manager updates
+* firmware: refactor package manager update summary parsing for speed
+* firmware: add and use API for major upgrades
+* dhcp: fix unwanted name-server write in v6
+* dhcp: ldap-server does not exist in v6
+* intrusion detection: update classification.config
+* intrusion detection: optional fast log to syslog
+* ipsec: set ignore_acquire_ts to allow ASA compatibility
+* ipsec: add ike_name to syslog output
+* openvpn: improve validation between TCP, TCP4, TCP6, UDP, UDP4 and UDP6
+* console: manual pages for opnsense-importer and opnsense-installer
+* console: let opnsense-installer set up an early runtime environment
+* console: show firmware reboot hint prior to update when applicable
+* console: longer timeout for opnsense-importer invoke on first boot
+* console: proper return values for opnsense-importer in edge cases
+* mvc: support multiple directories for detached UI development
+* mvc: add AddressFamily option to NetworkField
+* mvc: non-functional menu node name tweaks
+* rc: action changes for "||" avoidance
+* ui: fix tokenizer selection when values and labels do not match
+* ui: serve 404 when page was not found
+* ui: add and use SVG logo support
+* ui: upgrade nvd3 to version 1.8.6
+* plugins: os-acme-client 1.15 `[3] <https://github.com/opnsense/plugins/pull/682>`__  (contributed by Frank Wall and Omar Khalil)
+* plugins: os-freeradius 1.7.0 (contributed by Michael Muenz)
+* plugins: os-haproxy 2.7 `[4] <https://github.com/opnsense/plugins/pull/579>`__  (contributed by Frank Wall)
+* plugins: os-postfix 1.3 (contributed by Michael Muenz)
+* plugins: os-siproxd 1.3 (contributed by Michael Muenz)
+* plugins: os-telegraf 1.4.0 (contributed by Michael Muenz)
+* plugins: os-theme-ciaca 1.1 (contributed by Team Rebellion)
+* plugins: os-theme-rebellion 1.1 (contributed by Team Rebellion)
+* plugins: os-theme-tukan 1.0 (contributed by Team Rebellion)
+* ports: ca_root_nss 3.37.1
+* ports: curl 7.60.0 `[5] <https://curl.haxx.se/changes.html>`__ 
+* ports: pcre 8.42 `[6] <https://www.pcre.org/original/changelog.txt>`__ 
+* ports: php 7.1.18 `[7] <https://php.net/ChangeLog-7.php#7.1.18>`__ 
+* ports: pkg upstream fix for segfault on upgrade `[8] <https://github.com/freebsd/pkg/issues/1663>`__ 
+* ports: unbound 1.7.1 `[9] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+18.1.8 (May 17, 2018)
+--------------------------------------------------------------------------
+
+
+This update to 18.1.8 contains several improvements, kernel security
+patches and third-party software updates.
+
+Highlights include boot support on an otherwise installed ZFS.  The
+default route handling was improved to minimise issues with unstable
+links.  A NUT plugin is now available as well as a second optional
+theme.
+
+Here are the full patch notes:
+
+* system: improve VLAN console assignment handling
+* system: move backup crypto code to the only page using it
+* system: improve validation for web GUI related settings
+* system: split off monitor reload for upcoming dpinger integration
+* system: default route handler skips an already active default route
+* system: default route handler purges hint files only when switching to a newer route
+* system: default gateway switching uses the standard default route handler
+* system: properly add LDAP picker to ACL
+* system: properly unset password expired message after password change
+* interfaces: clear up use IPv4 connectivity and fix several typos
+* interfaces: parse and report tunnel data
+* interfaces: move dhclient-script to proper location
+* interfaces: allow SLAAC to latch on to IPv4 link
+* reporting: add destination address in Insight detail search
+* dhcp: fix labels of services to align with menu
+* dhcp: domain-search-list usage was removed in 2012
+* ipsec: rewrite resolve_retry() for its only use case
+* ipsec: improve RADIUS secret escaping (contributed by Rafael Cano)
+* ipsec: fix missing disable of DH group setting
+* router advertisements: correctly merge DNS server arrays
+* router advertisements: fix DNSSL settings
+* router advertisements: fix duplicated subnet statements
+* openssh: also use static interface IP addresses to listen on explicitly
+* unbound: allow wildcard host entry (contributed by Eugen Mayer)
+* webgui: also use static interface IP addresses to listen on explicitly
+* backend: improve escaping of passed parameters
+* ui: correct heigh of the login title bar
+* ui: unify the label printing of interfaces
+* ui: refactor script match for help messages
+* rc: ZFS boot awareness
+* plugins: os-cache 1.0 is an optional web server cache for the GUI/API
+* plugins: os-debug 1.3 now holds its own PHP settings
+* plugins: os-nut 1.0 (contributed by Michael Muenz)
+* plugins: os-snmp 1.3 improves handling of interface binding
+* plugins: os-theme-cicada 1.0 (contributed by Rene via Team Rebellion)
+* src: mishandling of x86 debug exceptions `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-18:06.debugreg.asc>`__ 
+* src: multiple small kernel memory disclosures `[2] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:05.mem.asc>`__ 
+* src: timezone database information update `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:06.tzdata.asc>`__ 
+* ports: ca_root_nss 3.37
+* ports: krb5 1.16.1 `[4] <https://web.mit.edu/kerberos/krb5-1.16/>`__ 
+* ports: liblz4 1.8.2 `[5] <https://github.com/lz4/lz4/releases/tag/v1.8.2>`__ 
+* ports: python 2.7.15 `[6] <https://www.python.org/downloads/release/python-2715/>`__ 
+* ports: sqlite 3.23.1 `[7] <https://sqlite.org/releaselog/3_23_1.html>`__ 
+* ports: sudo 1.8.23 `[8] <https://www.sudo.ws/stable.html#1.8.23>`__ 
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+18.1.7 (May 03, 2018)
+--------------------------------------------------------------------------
+
+
+It has been a while and judging by the extensive list of changes below
+one can easily see why.  The impact footprint of this update, however,
+is relatively small.  With this update we are also moving into the
+18.7-BETA phase where avid users are invited to flip their release version
+from production to development in the firmware GUI settings.
+
+Extensive work has been done for DHCPv6 connectivity by the wonderful
+folks of Team Rebellion, e.g. fixing the stale daemon issues that prevented
+connectivity after reconfiguration.  OpenVPN was updated to version 2.4.6
+and received a substantial server setup rejuventation to allow out of the
+box IPv6 usage.  LibreSSL received a bump in order to correctly speed up
+AESNI, something that was not working since its update to version 2.6.
+
+Users of the web proxy with IDNA domains must take note that the previous
+implementation was removed in favour of a less intrusive approach that
+does not require encoding and decoding domain names in the configuration.
+All domains are now stored verbatim and are only encoded during web proxy
+runtime setup.  Formerly created and thus now wrongly encoded domains need
+to be deleted and added back.  We are sorry for any inconvenience caused.
+
+Here are the full patch notes:
+
+* system: validate pfsync peer as IPv4-only
+* system: flip order of arguments for system_routing_configure()
+* system: convert cron to mutable model controller
+* system: convert routing to mutable model controller
+* system: log table header cleanup
+* system: more aggressive factory reset and shut down after completion
+* system: remove duplicate addresses before binding web GUI and OpenSSH
+* system: fix Framed-Route parsing for RADIUS authentication
+* system: properly translate save message on user language change
+* interfaces: PPPoE link down script improvements
+* interfaces: emit prefix-interface for trackers in advanced DHCPv6 configurations
+* interfaces: DHCPv6 configuration creation breakout (contributed by Team Rebellion)
+* interfaces: SIGHUP reload for dhcp6c (contributed by Team Rebellion)
+* interfaces: wait for dhcp6c to be stopped by pending apply
+* interfaces: only reconfigure VLAN interface after edit when necessary
+* interfaces: create IPv4 and IPv6 tunnel gateways for GIF/GRE when the setup allows it
+* interfaces: remove unused $flush argument from various functions
+* interfaces: fixed creation of GIF/GRE tunnel with an outer IPv6 remote address (contributed by Christoph Engelbert)
+* interfaces: fixed router advertisement setup of former static but now tracking interface (contributed by Christoph Engelbert)
+* interfaces: remove obsolete address requirement for CARP VIPs
+* interfaces: back out get_dyndns_ip() IPv6 online detection and properly propagate a lookup error
+* interfaces: no more spurious redirection for dhclient invoke
+* firewall: remove a side effect from filter_delete_states_for_down_gateways()
+* firewall: adjust maximum table entries for error-free bogonsv6 usage
+* firewall: add buckets option to traffic shaper
+* firewall: update help text for port ranges (contributed by Michael Muenz)
+* power: power off modal to indicate that the GUI is no longer responsive
+* captive portal: add traffic data and IP address to RADIUS accounting messages (contributed by fvanroie)
+* captive portal: fix voucher table rendering issue seen in Firefox
+* intrusion detection: add destination IP to alert search (contributed by Jeffrey Gentes)
+* intrusion detection: add abuse.ch URLhaus rules
+* ipsec: keep road warrior rightsubnet to default as stated by the docs
+* ipsec: add missing phase 2 DH groups
+* openvpn: switch to interface "any" for IPv6-friendly defaults
+* openvpn: remove side-effects from configuration code
+* openvpn: let CIDR validation tell us that only one network is expected
+* openvpn: allow explicit selection of tcp4 and udp4
+* openvpn: wizard can now set IPv4/IPv6 tunnel, local and remote addresses
+* openvpn: improved automatic local port selection in wizard
+* openvpn: bigger wizard button on server list page
+* openvpn: allow IPv6-only tunnel setups
+* openvpn: assorted cleanups in the associated GUI pages
+* unbound: fix a faulty format string
+* web proxy: use error_directory translation as set by system language (contributed by Smart-Soft)
+* web proxy: add support for SNMP (contributed by Smart-Soft)
+* web proxy: rewrite the IDN support to only affect the template write
+* console: make tracking the default for LAN IPv6 during interface reconfiguration
+* console: reset VLANs as stated during port reconfiguration
+* mvc: track attached models of model relation fields
+* mvc: remove obsoleted "page-" prefix check for ACL
+* mvc: unit tests for DependConstraint
+* mvc: only use configdpRun() when needed
+* rc: generate and permanently save host ID
+* rc: always reload VPN after filter to allow for better default gateway switching
+* rc: reconfigure IPv4 and IPv6 only once after boot
+* rc: do not run plugin reconfigure if a system configuration is not present
+* ui: merge system activity and services diagnostics menu
+* ui: move defaults page from firmware to configuration section
+* ui: fix issue with typeahead selection in tokenizer
+* ui: order reporting menu naturally
+* lang: updates for Czech, French, German, Portuguese (Brazil)
+* plugins: os-acme-client 1.14 adds support for CloudDNS (contributed by Frank Wall)
+* plugins: os-freeradius 1.5.3_1 fixes form property auto-select
+* plugins: os-monit 1.7_1 merges setup code into migration framework
+* plugins: os-postfix 1.2 relax relay host validation (contributed by Michael Muenz)
+* plugins: os-rspamd 1.3 adds file for milter headers (contributed by Fabian Franz)
+* plugins: os-snmp 1.2 avoids usage of does_interface_exist()
+* plugins: os-web-proxy-useracl 1.1._1 reworks IDN support
+* plugins: os-zabbix-agent 1.3 adds working default values (contributed by Frank Wall)
+* ports: enable previously defunct AES-NI acceleration in LibreSSL 2.6
+* ports: switch from dhcp6 to our own lightweight dhcp6c `[1] <https://github.com/opnsense/dhcp6c>`__ 
+* ports: sudo upstream patch to correct a FreeBSD issue `[2] <https://bugzilla.sudo.ws/show_bug.cgi?id=831>`__ 
+* ports: openldap 2.4.46 `[3] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openssh 7.7p1 `[4] <https://www.openssh.com/txt/release-7.7>`__ 
+* ports: openvpn 2.4.6 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
+* ports: perl 5.26.2 `[6] <http://search.cpan.org/~shay/perl-5.26.2/pod/perldelta.pod>`__ 
+* ports: php 7.1.17 `[7] <https://php.net/ChangeLog-7.php#7.1.17>`__ 
+* ports: sqlite 3.23.0 `[8] <https://sqlite.org/releaselog/3_23_0.html>`__ 
+
+A hotfix release was issued as 18.1.7_1:
+
+* mvc: fix regression in model relation load order `[9] <https://github.com/opnsense/core/issues/2389>`__ 
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+18.1.6 (April 09, 2018)
+--------------------------------------------------------------------------
+
+
+With Meltdown and Spectre just behind us here comes another round of
+security advisories and assorted changes.
+
+Three mentionable changes are included: We are switching back to
+single-source automatic outbound NAT on the primary IP instead of
+using all additional VIPs on the interface as was the case with
+OPNsense 17.7 and earlier.  The hardware-assisted VLAN capability
+check was removed from the system enabling e.g. XEN users to create
+VLANs.  And the multi-WAN traffic shaping experience has been
+corrected for non-default interfaces within the scope of shared
+forwarding.
+
+Expected is an image release based on this version some time within
+the next week for completeness.
+
+Here are the full patch notes:
+
+* system: reverse reload order for gateway switching on OpenVPN
+* system: implement password policies for local accounts
+* system: separate web GUI and configd log files
+* system: add syslog and login service visibility
+* system: show root as disabled in user manager if disabled
+* interfaces: no longer restrict VLAN driver capability
+* firewall: switch back to the pre-18.1 auto-outbound NAT behaviour
+* firewall: reload schedules 1 minute later
+* firewall: filter descriptions option does no longer exist
+* firewall: updated anti-lockout link (contributed by Michael Muenz)
+* firewall: fix help text in shaper masks (contributed by Michael Muenz)
+* firewall: add delay option to pipe in shaper (contributed by Michael Muenz)
+* reporting: add insight aggregator to service list
+* dashboard: large CPU usage widget (contributed by Team Rebellion)
+* dhcp: fix display of DUID in IPv6 leases
+* firmware: let opnsense-patch apply chmod even in partially failed patches
+* firmware: let opnsense-code fetch all remotes as well as prune them
+* intrusion detection: provide custom.yaml for user edits
+* web proxy: fix pid file pointer for service status probe
+* ui: help data-for attribute (contributed by NOYB)
+* ui: reversed zebra redraw on static page mobile forms
+* ui: cleanup for unused classes in static pages
+* mvc: add constraint type for dependent fields
+* plugins: merge rc.plugins_configure code into pluginctl
+* plugins: os-c-icap 1.5_1 service controller fix (contributed by Fabian Franz)
+* plugins: os-frr 1.3 adds BGP for IPv6 (contributed by Michael Muenz)
+* plugins: os-lcdproc-sdeclcd 1.0 release adds LCD usage to Lanner/Watchguard Firebox
+* plugins: os-monit 1.7 fixes compatibility with UI rework
+* plugins: os-rspamd 1.2 allows to specify bad file extensions (contributed by Fabian Franz and Michael Muenz)
+* plugins: os-shadowsocks 1.0 release (contributed by Michael Muenz)
+* plugins: os-theme-rebellion 1.0 release (contributed by Team Rebellion)
+* plugins: os-web-proxy-sso 2.2 adds XMLRPC sync (contributed by Smart-Soft)
+* plugins: os-web-proxy-useracl 1.1 adds XMLRPC sync (contributed by Smart-Soft)
+* plugins: os-zabbix-agent 1.2_1 fixes service controls
+* src: fix mutli-wan traffic shaper on non-default gateway interfaces
+* src: ipsec crash or denial of service `[1] <https://security.freebsd.org/advisories/FreeBSD-SA-18:05.ipsec.asc>`__ 
+* src: vt console memory disclosure `[2] <https://security.freebsd.org/advisories/FreeBSD-SA-18:04.vt.asc>`__ 
+* src: multiple small kernel memory disclosures `[3] <https://security.freebsd.org/advisories/FreeBSD-EN-18:04.mem.asc>`__ 
+* src: timezone database information update `[4] <https://security.freebsd.org/advisories/FreeBSD-EN-18:03.tzdata.asc>`__ 
+* ports: dnsmasq 2.79 `[5] <http://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: openssl 1.0.2o `[6] <https://www.openssl.org/news/secadv/20180327.txt>`__ 
+* ports: perl 5.26.1 `[7] <https://metacpan.org/pod/release/SHAY/perl-5.26.1/pod/perldelta.pod>`__ 
+* ports: php 7.1.16 `[8] <https://php.net/ChangeLog-7.php#7.1.16>`__ 
+* ports: squid 3.5.27 adds LDAP authentication
+
+We are also happy to announce the immediate availability of the renewed
+OPNsense 18.1 images based on version 18.1.6.  Apart from the numerous
+improvements since the initial release, the images contain three
+relevant fixes:
+
+* Fix Unbound DNS parameter underflow on systems with higher number of CPUs
+* Disable Health Reporting (RRD) by default on Nano images to reduce write cycles
+* Disable TRIM by default on Nano images to prevent corruptions of the file system
+
+The full list of changes of the OPNsense 18.1 series can be reviewed
+using their original announcements:
+
+* 18.1: https://forum.opnsense.org/index.php?topic=7044.0
+* 18.1.1: https://forum.opnsense.org/index.php?topic=7138.0
+* 18.1.2: https://forum.opnsense.org/index.php?topic=7219.0
+* 18.1.3: https://forum.opnsense.org/index.php?topic=7492.0
+* 18.1.4: https://forum.opnsense.org/index.php?topic=7543.0
+* 18.1.5: https://forum.opnsense.org/index.php?topic=7679.0
+* 18.1.6: this document
+
+Download links, an installation guide `[9] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the
+images can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/18.1/
+* US East Coast: http://mirrors.nycbug.org/pub/opnsense/releases/18.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/18.1/
+* South America: http://mirror.upb.edu.co/opnsense/releases/18.1/
+* South-East Asia: https://ftp.yzu.edu.tw/opnsense/releases/18.1/
+* Full mirror list: https://opnsense.org/download/
+
+All images are provided with SHA-256 signatures, which can be verified
+against the distributed public key:
+
+.. code-block::
+
+    # openssl base64 -d -in image.bz2.sig -out /tmp/image.sig
+    # openssl dgst -sha256 -verify rsa.pub -signature /tmp/image.sig image.bz2
+
+The public key for the 18.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA5kMyxEWUoyY3y8JLlOnz
+    # j2dE1QPYmWspn5Diqf1T6uSh0/HA8TwnRvI4m82dC2kgnafVB85zIS+rXQLiyJZI
+    # JEqmBS5f54kVcyJPVORe7NepJq372amAMTcpPwH4b0SS9ZETebAOyuHjdG/lCjKD
+    # yt5W5ZvaMiDMWLVuw1ZlTIxLgkRuCHsk66E1bdoiIMdZPoyk2Q9WQd3PynLRBVHC
+    # iT32cJ/NlHiLEALp0wcNr+FllmFQXahQ5R1uBcsE/IXa7Tg0QXlW7s5+d6NTwQ/d
+    # 7NVnfZzH8IiO0A/9O5jbBsD6HLmity5nMI+RBwFQ9OQoBNxl5aakkusizT6diMYb
+    # PG+zPZsWo/ADqsbg1U/MMLJXD8CDFjcerhIDrrWSIVlSmQKw97nMK/TdUsqnVl7N
+    # uDLl0RHe+N6ndmNGTQGg5HbrTmYKSEGBdS4xFtO60JCxubzfpvnkDnPCIJtxWukf
+    # TzhORJHj2vkGLDA5FocTSOY76lWUO4qJQBA2bB3GtGbCm/nM4TlHpL4Kbf10IUJk
+    # j1tRFi8gXNOhrdplFAR+lV/yy58/+ZOg61Yz7UvYG/A9rxGkyVmIjzB/4S6Wstye
+    # IA6vpfzHwHq82hMqafCSB2KJciuKVEgVO6DHLV03VLTPqkJVsCbWXHgNjK2fQCFX
+    # JeXNX68TcObIJzqbiegZYo8CAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+.. code-block::
+
+    # SHA256 (OPNsense-18.1.6-OpenSSL-dvd-amd64.iso.bz2) = ee296edf026abd23b01d04c2aee7b9a0578ad4b3aa039e50eb40f720f13eac58
+    # SHA256 (OPNsense-18.1.6-OpenSSL-nano-amd64.img.bz2) = 204e87a93b5bd0f7742e90bef8ae20bfd7c362a73ee29054a96356e9649572b3
+    # SHA256 (OPNsense-18.1.6-OpenSSL-serial-amd64.img.bz2) = 063dc97b4177a932ba0bb243bec54b6b568ed84e515445b3eae7ba54f087478f
+    # SHA256 (OPNsense-18.1.6-OpenSSL-vga-amd64.img.bz2) = 9be03dccce94705c35c476ea7ca0e2f42c70049ecc5c681a6dfe92b7f21d7c34
+
+.. code-block::
+
+    # SHA256 (OPNsense-18.1.6-OpenSSL-dvd-i386.iso.bz2) = 06883a48295529bb7fae9fff4a77bbb95df9fcb08554f4c73aa3e0b894a4158b
+    # SHA256 (OPNsense-18.1.6-OpenSSL-nano-i386.img.bz2) = ea87270fb5c83943c7cccae12ae9579f4f3a82489a901881cd4a786b7e09009d
+    # SHA256 (OPNsense-18.1.6-OpenSSL-serial-i386.img.bz2) = 3ccbdf4fd31913afc93b0b51b4784df01d22ec03156659efe78d36ab2dcf222f
+    # SHA256 (OPNsense-18.1.6-OpenSSL-vga-i386.img.bz2) = 252b16aae7592faf3d5912b5394124e494db7797ebeec7d6b7fae9a52ad28cd4
+
+--------------------------------------------------------------------------
+18.1.5 (March 21, 2018)
+--------------------------------------------------------------------------
+
+
+Today ships Meltdown and Spectre V2 mitigation for amd64, the latter only
+effective with the corresponding microcode update.  However, the combating
+of speculative execution security issues remains an ongoing quest for the
+unforeseeable future.  To avoid surprises HardenedBSD has enabled Meltdown
+mitigation (PTI) by default even for AMD CPUs who have not yet been found
+vulnerable.  Performance impact is luckily minimal here, although the Spectre
+V2 mitigation (IBRS) can slow down CPUs with the respective microcode updates
+in place.
+
+To opt out of one or both features, the following values can now be
+persistently set under System: Settings: Tunables:
+
+* Disable PTI via "vm.pmap.pti" to "0" and a reboot, and
+* Disable IBRS via "hw.ibrs_disable" to "1" with a simple "Apply".
+
+Here are the full patch notes:
+
+* system: optional prefix Google Drive backups with host and domain name
+* system: also render tunables in loader.conf to obsolete loader.conf.local editing
+* interfaces: allow /127, /128 and /32 static IP address configurations everywhere
+* interfaces: improve logging and assorted cleanups (contributed by Team Rebellion)
+* interfaces: ignore dynamic linkup events for unassigned interfaces
+* interfaces: hide previously assigned interfaces from bridges
+* interfaces: allow all IPv6 prefixes from 48 to 64 for DHCPv6 mode
+* firewall: add VIP gateway option for PPPoE interfaces
+* firewall: add update interval option to log widget (contributed by NOYB)
+* firewall: respect mask in traffic shaper queue config (contributed by Michael Muenz)
+* firmware: fix opnsense-code for src.git and ABI probing
+* firmware: fix opnsense-patch file permission apply for plugins
+* intrusion detection: support request headers in ruleset metadata
+* openvpn: switch status to version 3 to avoid wrong parsing of commas
+* openvpn: parse all states to retrieve all relevant connection status info
+* captive portal: exclude "I" from simplified voucher character set for clarity
+* plugins: os-lldpd 1.1 adds interface selection (contributed by Michael Muenz)
+* plugins: os-monit 1.6 fixes file path validation (contributed by Frank Brendel)
+* plugins: os-postfix 1.1 adds smart host and SMTP authentication (contributed by Michael Muenz)
+* plugins: os-tinc 1.3 corrects host port usage (contributed by DasTestament)
+* plugins: os-tor 1.6 adds IPv6 and exit settings (contributed by Gijs Peskens)
+* ui: update tokenizer to 2.6, visual tweaks and blur-add
+* ui: buttons for services control in MVC (contributed by Smart-Soft)
+* src: reinitialize IP header length after checksum calculation `[1] <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=223835>`__ 
+* src: fix IPsec validation and use-after-free `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-18:01.ipsec.asc>`__ 
+* src: update timezone database information `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:01.tzdata.asc>`__ 
+* src: update file(1) to new version with security update `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:02.file.asc>`__ 
+* src: add mitigations for two classes of speculative execution vulnerabilities on amd64 `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-18:03.speculative_execution.asc>`__ 
+* ports: ca_root_nss 3.36
+* ports: curl 7.59.0 `[6] <https://curl.haxx.se/changes.html>`__ 
+* ports: igmpproxy 0.2.1 `[7] <https://github.com/pali/igmpproxy/releases/tag/0.2.1>`__ 
+* ports: lighttpd 1.4.49 `[8] <https://www.lighttpd.net/2018/3/11/1.4.49/>`__ 
+* ports: openvpn 2.4.5 `[9] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
+* ports: phalcon 3.3.2 `[10] <https://github.com/phalcon/cphalcon/releases/tag/v3.3.2>`__ 
+* ports: php 7.1.15 `[11] <https://php.net/ChangeLog-7.php#7.1.15>`__ 
+* ports: strongswan 5.6.2 fix for public key authentication `[12] <https://github.com/freebsd/freebsd-ports/commit/32b1298c0>`__ 
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+18.1.4 (March 09, 2018)
+--------------------------------------------------------------------------
+
+
+This small update swiftly follows 18.1.3 with security updates for DHCP and
+strongSwan and assorted fixes including multi-WAN failover cases.
+
+Here are the full patch notes:
+
+* system: improved default route handling
+* system: improved gateway switching
+* system: cleanse username on LDAP import
+* system: increase maximum size of firmware reports
+* firewall: shaper backend refactor
+* interfaces: improved reconfigure phase
+* reporting: fix sporadic "non-numeric value encountered" error
+* captive portal: add voucher expiry (contributed by Stephanowicz)
+* intrusion detection: use latest ET Open rules for Suricata version 4
+* intrusion detection: proper syslog with drops, requires log file reset
+* intrusion detection: backend refactor
+* plugins: os-frr 1.2 adds OSPF interface type (contributed by Marius Halden)
+* plugins: os-haproxy 2.6 `[1] <https://github.com/opnsense/plugins/pull/575>`__  (contributed by Frank Wall)
+* ports: isc-dhcp 4.3.6P1 `[2] <https://kb.isc.org/article/AA-01570/0/DHCP-4.3.6-P1-Release-Notes.html>`__ 
+* ports: krb5 1.16 `[3] <https://web.mit.edu/kerberos/krb5-1.16/>`__ 
+* ports: pkg 1.10.5
+* ports: strongswan 5.6.2 `[4] <https://wiki.strongswan.org/versions/68>`__ 
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+18.1.3 (March 05, 2018)
+--------------------------------------------------------------------------
+
+
+Security updates for Squid, Suricata and NTP are now available, although
+more are pending which would indicate a version 18.1.4 later this week.
+Also, a number of firewall section fixes have been included.
+
+Here are the full patch notes:
+
+* system: account for variable headers in top output
+* system: move gateway status into main pages
+* system: slightly reorder routing configuration calls
+* system: optimize reading of SSL crypto library version string (contributed by Alexander Shursha)
+* system: rework LDAP authentication container selection
+* interfaces: avoid interaction of overview details with menu items
+* interfaces: allow "reject leases from" option in DHCP advanced settings
+* firewall: set alias cron update interval to 1 minute
+* firewall: align alias cron update with its background call
+* firewall: URL IP alias type missing in selections
+* firewall: fix defunct alias target in outbound NAT
+* firewall: ignore alias case while searching
+* firewall: move rule category filter to the top of the page
+* firewall: show IPv6 ports in live log and fix details for TCP
+* firewall: move general settings to AliasParser and fix Alias constructor to receive them
+* firewall: if the name of the alias equals its content try to resolve
+* dhcp: advertisement problem on PPPoE link without public IPv6 address (contributed by Team Rebellion)
+* dhcp: UEFI 64 network boot using wrong arch type
+* dhcp: validate maximum interface MTU
+* dhcp: add validation for DUID fields
+* ipsec: auto-route disable setting (contributed by Namezero)
+* network time: inline NMEA checksum calculator (contributed by Fabian Franz)
+* network time: fix stratum level write
+* unbound: optimize outgoing-range differently
+* unbound: local zone setting (contributed by NOYB)
+* ui: fix cropped dropdown regression
+* mvc: translate option values (contributed by Alexander Shursha)
+* mvc: fix access to undefined property translator
+* mvc: fix typo in getBase()
+* mvc: improve phpdoc
+* rc: protect console menu again, but keep shell invoke for rc.d subsystem
+* rc: fix some typos (contributed by John Eismeier)
+* rc: proper includes for plugin post-install hook
+* rc: recover all known shells
+* plugins: os-clamav 1.5 fixes log file parsing
+* plugins: os-frr 1.1 fixes service start on boot
+* plugins: os-haproxy 2.5 `[1] <https://github.com/opnsense/plugins/pull/541>`__  with PROXY support and HAProxy 1.8 (contributed by Frank Wall)
+* plugins: os-monit 1.5 (contributed by Frank Brendel)
+* ports: mpd 5.8 `[2] <https://reviews.freebsd.org/D9848>`__ 
+* ports: ntp 4.2.8p11 `[3] <http://support.ntp.org/bin/view/Main/SecurityNotice#February_2018_ntp_4_2_8p11_NTP_S>`__ 
+* ports: squid 3.5.27 `[4] <http://www.squid-cache.org/Advisories/SQUID-2018_1.txt>`__  `[5] <http://www.squid-cache.org/Advisories/SQUID-2018_2.txt>`__ 
+* ports: suricata 4.0.4 `[6] <https://suricata-ids.org/2018/02/14/suricata-4-0-4-available/>`__ 
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+18.1.2 (February 08, 2018)
+--------------------------------------------------------------------------
+
+
+This update addresses an issue with OpenVPN client NAT since 18.1 and a
+default gateway disappearance during route reconfiguration.  Assorted
+minor UI improvements have been made and both Phalcon and PHP are now on
+their latest version.
+
+Here are the full patch notes:
+
+* system: avoid default route from disappearing when no manual gateways are set
+* firewall: fix outbound NAT for OpenVPN interfaces
+* interfaces: multiple overview page improvements (contributed by NOYB)
+* firmware: revoke 17.7 update fingerprint
+* console: check for root invoke in importer, installer and console menu
+* intrusion detection: always show schedule tab
+* intrusion detection: log first drop of a flow
+* intrusion detection: add a log file viewer
+* unbound: add num-queries-per-thread option values for 4096 and 8192
+* ui: remove chrome=1 from X-UA-Compatible meta element (contributed by NOYB)
+* ui: HTML compliance for attribute "type" on script element (contributed by NOYB)
+* ui: HTML compliance for "navigation" "role" on nav element (contributed by NOYB)
+* ui: checkbox and radio button label children tweaks (contributed by NOYB)
+* ui: break help text on small screens
+* ui: use pluggable locations for theme files
+* ui: remove table-responsive padding on small screens
+* ui: user-scalable viewport (contributed by NOYB)
+* mvc: CRUD functions for mutable model controller (contributed by Fabian Franz)
+* plugins: os-frr 1.0 with CRUD refactor (contributed by Fabian Franz)
+* plugins: os-tor 1.5 with CRUD refactor (contributed by Fabian Franz)
+* ports: phalcon 3.3.1
+* ports: php 7.1.14
+
+A hotfix release was issued as 18.1.2_2:
+
+* console: do not yet check for root in console menu as it clashes with rc.d
+* mvc: fix a typo in the new CRUD getBase() call, currently unused
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+18.1.1 (February 02, 2018)
+--------------------------------------------------------------------------
+
+
+18.1.1 addresses issues in the previous release, while also updating
+the packages and plugins.  Most notably, a Python library change made
+intrusion detection rules fetch fail previously and we fixed GUI and
+backend behaviour for two special NAT cases.
+
+Here are the full patch notes:
+
+* firewall: ignore target port alias in port forwards when it equals the destination
+* firewall: align outbound NAT address output to edit page
+* firewall: use first region for country in GeoIP category instead of last one
+* system: improve layout of gateway status labels (contributed by Fabian Franz)
+* system: improve order of group / user setup as "wheel" was not added correctly on save
+* dashboard: touch device improvements in widgets (contributed by NOYB)
+* opendns: always refresh the setting on save
+* openvpn: open links in a new tab (contributed by Fabian Franz)
+* ui: system-wide HTML compliance improvements (contributed by NOYB)
+* plugins: arp-scan 1.1 improves interface search (contributed by Giuseppe De Marco)
+* plugins: os-dyndns 1.6 fixes Route 53 IPv6 usage (contributed by theq86)
+* plugins: os-freeradius 1.5.2 clarifies certificate validation (contributed by Michael Muenz)
+* plugins: os-openconnect 1.0 (contributed by Michael Muenz)
+* plugins: os-rfc2136 1.2 improves widget load
+* plugins: os-telegraf 1.3.1 adds ping hosts and graphite validation fix (contributed by Michael Muenz)
+* plugins: os-rspamd 1.1 fixes typos (contributed by Fabian Franz)
+* plugins: os-zerotier 1.3.1 makes database persist on /var MFS (contributed by David Harrigan)
+* ports: curl 7.58.0 `[1] <https://curl.haxx.se/changes.html>`__ 
+* ports: py27-cryptography 2.1.4
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+18.1 (January 29, 2018)
+--------------------------------------------------------------------------
+
+
+For more than 3 years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, HardenedBSD
+security, fast adoption of upstream software updates as well as
+clear and stable 2-Clause BSD licensing.
+
+We humbly present to you the sum of another major iteration of the
+OPNsense firewall.  Over the second half of 2017 well over 500 changes
+have made it into this release, nicknamed "Groovy Gecko".  Most notably,
+the firewall NAT rules have been reworked to be more flexible and usable
+via plugins, which is going to pave the way for subsequent API works on
+the core firewall functionality.  For more details please find the attached
+list of changes below.
+
+The upgrade track from 17.7 will be available later today.  Please be
+patient.  :)
+
+Meltdown and Spectre patches are currently being worked on in FreeBSD `[1] <https://lists.freebsd.org/pipermail/freebsd-security/2018-January/009719.html>`__ ,
+but there is no reliable timeline.  We will keep you up to date through
+the usual channels as more news become available.  Hang in there!
+
+These are the most prominent changes since version 17.7:
+
+* FreeBSD 11.1, PHP 7.1 and jQuery 3 migration
+* Realtek vendor NIC driver version 1.94
+* Portable NAT before IPsec support
+* Local group restriction feature in OpenVPN and IPsec
+* OpenVPN multi-remote support for clients
+* Strict interface binding for SSH and web GUI
+* Improved MVC tabs and general page layout
+* Shared forwarding now works on IPv6, in conjunction with "try-forwarding" and improved reply-to multi-WAN behaviour
+* Easy-to-use update cache support for Linux and Windows in web proxy
+* Intrusion detection alert improvements and plugin support for new rulesets (ET Pro, Snort VRT)
+* Revamped HAProxy plugin with introduction pages
+* Moved interface selection to menu and quick search for firewall rules, DHCP and wireless status
+* Alias backend rewrite for future extensibility
+* Plugin-capable firewall NAT rules
+* Migration of system routes UI and backend to MVC (also available via API)
+* Reverse DNS support for insight reporting (also available via API)
+* Fully rewritten firewall live log in MVC (also available via API)
+* New plugins: zerotier, mdns-repeater, collectd, telegraf, clamav, c-icap, tor, siproxd, web-proxy-sso, web-proxy-useracl, postfix, rspamd, redis, iperf, arp-scan, zabbix-proxy, frr, node_exporter
+
+Download links, an installation guide `[2] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the
+images can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/18.1/
+* US East Coast: http://mirrors.nycbug.org/pub/opnsense/releases/18.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/18.1/
+* South America: http://mirror.upb.edu.co/opnsense/releases/18.1/
+* South-East Asia: https://ftp.yzu.edu.tw/opnsense/releases/18.1/
+* Full mirror list: https://opnsense.org/download/
+
+Here is the full list of changes against version 18.1-RC2:
+
+* system: recover static version of PHP configuration files during boot
+* system: show warning dialog when editing web GUI listening interfaces
+* system: allow dots in certificate details
+* system: remove workaround for new 32 bit mmap disallow default (see below)
+* firewall: fix port range forward expansion
+* firewall: move alias directory to persistent memory
+* firewall: fix alias resolve during boot
+* firewall: revert VIP gateway option for PPPoE interfaces
+* interfaces: fix header link in list widget
+* interfaces: defer IP renewal during boot
+* installer: full password recovery mode enables user and sets local authentication
+* installer: prevent MFS transition on install media after import
+* network time: use all our time servers and prefer the first
+* ui: revert menu positioning improvements
+* plugins: os-freeradius 1.5.1 adds LDAP search filter (contributed by Michael Muenz)
+* plugins: os-haproxy 2.4 `[3] <https://github.com/opnsense/plugins/pull/483>`__  (contributed by Frank Wall)
+* plugins: os-node_exporter 1.0 (contributed by David Harrigan)
+* plugins: os-postfix 1.0 (contributed by Michael Muenz)
+* plugins: os-rspamd 1.0 (contributed by Fabian Franz)
+* plugins: os-telegraf 1.2 adds graphite and graylog output (contributed by Michael Muenz)
+* src: do not protect VLAN PCP write with the sysctl
+* src: enable numbered user class ID option in dhclient
+* src: set hardening.pax.disallow_map32bit.status=1 by default
+* ports: ca_root_nss 3.35
+* ports: libressl 2.6.4 `[4] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.6.4-relnotes.txt>`__ 
+* ports: php 7.1.13 `[5] <https://php.net/ChangeLog-7.php#7.1.13>`__ 
+* ports: sudo 1.8.22 `[6] <https://www.sudo.ws/stable.html#1.8.22>`__ 
+* ports: unbound 1.6.8 `[7] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
+
+A hotfix release was issued as 18.1_1:
+
+* firewall: repair logic for ICMP fixup required by pfctl
+
+All images are provided with SHA-256 signatures, which can be verified
+against the distributed public key:
+
+.. code-block::
+
+    # openssl base64 -d -in image.bz2.sig -out /tmp/image.sig
+    # openssl dgst -sha256 -verify rsa.pub -signature /tmp/image.sig image.bz2
+
+The public key for the 18.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA5kMyxEWUoyY3y8JLlOnz
+    # j2dE1QPYmWspn5Diqf1T6uSh0/HA8TwnRvI4m82dC2kgnafVB85zIS+rXQLiyJZI
+    # JEqmBS5f54kVcyJPVORe7NepJq372amAMTcpPwH4b0SS9ZETebAOyuHjdG/lCjKD
+    # yt5W5ZvaMiDMWLVuw1ZlTIxLgkRuCHsk66E1bdoiIMdZPoyk2Q9WQd3PynLRBVHC
+    # iT32cJ/NlHiLEALp0wcNr+FllmFQXahQ5R1uBcsE/IXa7Tg0QXlW7s5+d6NTwQ/d
+    # 7NVnfZzH8IiO0A/9O5jbBsD6HLmity5nMI+RBwFQ9OQoBNxl5aakkusizT6diMYb
+    # PG+zPZsWo/ADqsbg1U/MMLJXD8CDFjcerhIDrrWSIVlSmQKw97nMK/TdUsqnVl7N
+    # uDLl0RHe+N6ndmNGTQGg5HbrTmYKSEGBdS4xFtO60JCxubzfpvnkDnPCIJtxWukf
+    # TzhORJHj2vkGLDA5FocTSOY76lWUO4qJQBA2bB3GtGbCm/nM4TlHpL4Kbf10IUJk
+    # j1tRFi8gXNOhrdplFAR+lV/yy58/+ZOg61Yz7UvYG/A9rxGkyVmIjzB/4S6Wstye
+    # IA6vpfzHwHq82hMqafCSB2KJciuKVEgVO6DHLV03VLTPqkJVsCbWXHgNjK2fQCFX
+    # JeXNX68TcObIJzqbiegZYo8CAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+.. code-block::
+
+    # SHA256 (OPNsense-18.1-OpenSSL-dvd-amd64.iso.bz2) = 3988c506c818c0861bb9beb38166123e9aca0814c0ef508779c1ebe9a8400c9c
+    # SHA256 (OPNsense-18.1-OpenSSL-nano-amd64.img.bz2) = ab284cfd62f095b8f745604099ee8b4f0b5cda06ec67ec72a3ffa921328635d5
+    # SHA256 (OPNsense-18.1-OpenSSL-serial-amd64.img.bz2) = 31eb6f7c44126258eb1b062d44dd92b1b0e3ebf57777c899f2df8858e5321b13
+    # SHA256 (OPNsense-18.1-OpenSSL-vga-amd64.img.bz2) = 714b347c3c62a9a1178f0b77661fa7e7ad8b0d06c1e174af1085fda761639505
+
+.. code-block::
+
+    # SHA256 (OPNsense-18.1-OpenSSL-dvd-i386.iso.bz2) = 10d27b8d0e5b4dde46be413088440db47e49f4eea3de53cc7339976c6471d26a
+    # SHA256 (OPNsense-18.1-OpenSSL-nano-i386.img.bz2) = 5c4289940f4c7f03eaf4c00d3b673bc85cb366a5f12334d00d19183dbafc221b
+    # SHA256 (OPNsense-18.1-OpenSSL-serial-i386.img.bz2) = ff63e759cdab3960119db159141a96f7e98ed0a427621585edc8362b9abf7a33
+    # SHA256 (OPNsense-18.1-OpenSSL-vga-i386.img.bz2) = c43712c87a3381102d33f2606fc666fdffde54d81a0f0b8c70cf334eddd4047c
+
+--------------------------------------------------------------------------
+18.1.r2 (January 15, 2018)
+--------------------------------------------------------------------------
+
+
+Long story short: we thank all early testers of 18.1-RC1!  You guys
+have made it possible to push this online update of 18.1-RC2 sooner
+than anticipated.
+
+Here are the full patch notes:
+
+* system: add workaround for new 32 bit mmap disallow default (requires reboot)
+* system: modify the boot sequence to improve initial IP assignment for PPPoE
+* system: support additional RADIUS attributes and show them in the authentication tester
+* system: only zap non-directories in /var/run on boot
+* system: remove mocked version string in high availability synchronisation
+* system: added mail facility remote logging
+* firewall: optional hash identifier for rules makes them easier to find in system file
+* firewall: support IPv4 + IPv6 selection for port forwards
+* firewall: add VIP gateway option for PPPoE interfaces
+* firewall: rename NPT to NPTv6 for clarity
+* firewall: race condition in creating alias directory
+* firewall: make NAT reflection enable less ambiguous
+* interfaces: fix "route change" usage in PPPoE name server setup
+* dhcp: properly route assigned IPv6 prefixes
+* firmware: new release type version is unknown when updates have never been checked
+* firmware: security audit previously said "upgrade done"
+* firmware: remove defunct mirrors
+* installer: allow to overwrite /boot even on read-only media
+* installer: restore DUID if found during early import
+* intrusion detection: fix backend scripts after refactor
+* openssh: tweak GUI display of greeting message
+* openssh: make not permitting root login explicit
+* openvpn: revert a change and fix deprecated option
+* web proxy: allow SSL nobump via CN
+* ui: HTML compliance fixes obsolete table attributes (contributed by NOYB)
+* ui: HTML compliance fixes attribute "type" on i-tag (contributed by NOYB)
+* ui: HTML compliance fixes attribute "for" on div-tag (contributed by NOYB)
+* ui: HTML compliance for license page and dashboard widgets (contributed by NOYB)
+* mvc: new validators for host names
+* plugins: pass update type on configure to avoid spurious syslog reloads
+* plugins: acme-client 1.13 `[1] <https://github.com/opnsense/plugins/pull/482>`__  (contributed by Frank Wall)
+* plugins: c-icap 1.5 fixes startup race with clamav plugin
+* plugins: frr 1.0_1 fixes service probing
+* plugins: iperf 1.0 (contributed by Fabian Franz)
+* plugins: lldp 1.0 (contributed by Michael Muenz)
+* plugins: redis 1.0 (contributed by Fabian Franz)
+
+The list of currently known issues 18.1-RC2:
+
+* The firewall NAT rule generation rewrite is not yet fully verified.
+* The web GUI recovery is not yet fully implemented.
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
+18.1.r1 (January 11, 2018)
+--------------------------------------------------------------------------
+
+
+For more than 3 years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, HardenedBSD
+security, fast adoption of upstream software updates as well as
+clear and stable 2-Clause BSD licensing.
+
+We humbly present to you the sum of another major iteration of the
+OPNsense firewall.  Over the second half of 2017 well over 500 changes
+have made it into this first release candidate.  Most notably, the
+firewall NAT rules have been reworked to be more flexible and usable
+via plugins, which is going to pave the way for subsequent API works
+on the core firewall functionality.  For more details please find the
+attached list of changes below.
+
+Meltdown and Spectre patches are currently being worked on in FreeBSD `[1] <https://lists.freebsd.org/pipermail/freebsd-security/2018-January/009719.html>`__ ,
+but there is no reliable timeline.  We will keep you up to date through
+the usual channels as more news become available.  Hang in there!
+
+Download links, an installation guide `[2] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the
+images can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/18.1/
+* US East Coast: http://mirrors.nycbug.org/pub/opnsense/releases/18.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/18.1/
+* South America: http://mirror.upb.edu.co/opnsense/releases/18.1/
+* South-East Asia: https://ftp.yzu.edu.tw/opnsense/releases/18.1/
+* Full mirror list: https://opnsense.org/download/
+
+Here is the full list of changes against version 17.7.11:
+
+* system: disabled AHCI MSI to prevent early mount failures with removable media
+* system: use correct crypto library to gather GUI SSL ciphers
+* system: added "save and go back" button to user edit page
+* system: removed obsolete host name routing support
+* system: do not wrap action buttons in tunables page
+* system: fix CA serial number decrement on save
+* system: added net.link.bridge.pfil_local_phys to tunables (contributed by David Harrigan)
+* system: routing configuration was converted to MVC/API (contributed by Fabian Franz)
+* firewall: enables shared forwarding in default configuration
+* firewall: enables sticky connections in default configuration
+* firewall: normal and dynamic log viewers have been superseded by live view
+* firewall: fold NAT reflection type selection into simple checkbox
+* firewall: added option for sticky outbound NAT for WAN VIPs
+* firewall: rewrite of the alias backend code
+* firewall: backend code cleanup
+* firewall: NAT rules have been made pluggable
+* firewall: add indicator for negated fields in shaper grid view (contributed by Fabian Franz)
+* firewall: better NAT formatting in states dump page
+* interfaces: DHCPv6 VLAN priority setting (contributed by Team Rebellion)
+* interfaces: DHCPv6 no release setting (contributed by Team Rebellion)
+* interfaces: only reload DHCPv6 upon correct reason (contributed by Team Rebellion)
+* interfaces: static IPv6 configuration over IPv4 link (contributed by Team Rebellion)
+* interfaces: allow persistent saving and customising of the system IPv6 DUID (contributed by Team Rebellion)
+* interfaces: automatic backup and restore of the system IPv6 DUID
+* interfaces: deferred reload of plugins and VPN upon new interface IP request
+* interfaces: DNS lookup API for firewall live log and insight reporting
+* interfaces: make level of detail stick in packet capture
+* interfaces: auto-lock problematic interfaces upon assignment
+* reporting: do not mark multiple sub-tabs in health page as active
+* firmware: allow to change the package release type
+* firmware: add a package health audit
+* firmware: list installed plugins at the top of the list
+* firmware: visibility for base and kernel sets in packages listing
+* firmware: allow base and kernel set reinstall and locking
+* firmware: remove the discontinued hotfix backend support
+* firmware: allow dot in package name during package action
+* installer: swap partition opt-out during guided installation
+* installer: root password reset tool for existing installations
+* installer: restore IPv6 DUID on config import
+* installer: limit swap partition size to 8 GB (contributed by Frank Wall)
+* ipsec: removed obsolete dynamic host name support
+* ipsec: local group authentication setting
+* ipsec: removed the obsolete "IPsec XAUTH dialin" privilege
+* network time: OPNsense NTP pool is now available and used in default configuration
+* network time: fix for valid negative offset in health graph
+* network time: fix parsing of overly overlong lines
+* openvpn: backend code cleanup
+* openvpn: multiple wizard fixes
+* power: reboot poll dialog
+* web proxy: proper reload on cache setting toggle
+* web proxy: use PID file instead of daemon name for status probe
+* web gui: strict interface binding
+* web gui: removed login autocomplete toggle, now off by design
+* wizard: add Unbound to wizard and unset DNSSEC by default
+* ui: reworked service control look and feel
+* ui: folded tabs for firewall rules, DHCP / RA interfaces and wireless status into menu
+* ui: HTML compliance fixes button in link usage (contributed by NOYB)
+* ui: auto-position menu when item list does not fit the screen
+* ui: reworked sub-tab look and feel
+* ui: added menu cache
+* ui: unification of layout of MVC and static page headers
+* ui: migrated to jQuery 3
+* ui: eliminate 300 ms tap delay (contributed by NOYB)
+* mvc: added ACL cache
+* mvc: added code-based ACL extensions
+* mvc: reload syslog settings for plugins
+* mvc: allow input fields to render as read-only (contributed by David Harrigan)
+* mvc: proper target page redirect after login
+* mvc: added mutable service controller
+* mvc: added sub-tab layout partials
+* mvc: do not render empty toggle header
+* plugins: c-icap 1.4 with multiple UI improvements (contributed by Alexander Shursha)
+* plugins: clamav 1.4 with multiple UI improvements (contributed by Alexander Shursha)
+* plugins: dyndns 1.5 with button in link usage fix (contributed by NOYB)
+* plugins: freeradius 1.5.0 with basic LDAP support (contributed by Michael Muenz)
+* plugins: frr 1.0 (contributed by Fabian Franz and Michael Muenz)
+* plugins: haproxy 2.3 allows disabling the introduction pages (contributed by Frank Wall)
+* plugins: helloworld 1.4
+* plugins: igmp-proxy 1.3 with button in link usage fix (contributed by NOYB)
+* plugins: quagga 1.4.4 is end of life, please use FRR instead
+* plugins: tinc 1.3 with path MTU discovery
+* plugins: tor 1.4 adds contact info (contributed by Fabian Franz)
+* plugins: web-proxy-useracl 1.0 (contributed by Smart-Soft)
+* src: update Realtek driver to vendor version 1.94
+* src update FreeBSD to 11.1-RELEASE-p6 with HardenedBSD additions
+* src: shared forwarding for IPv6 and try-forward support
+* ports: libressl 2.6.4 `[3] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.6.4-relnotes.txt>`__ 
+
+The list of currently known issues with 18.1-RC1:
+
+* The firewall NAT rule generation rewrite is not yet fully verified.
+* The web GUI recovery is not yet fully implemented.
+
+All images are provided with SHA-256 signatures, which can be verified
+against the distributed public key:
+
+.. code-block::
+
+    # openssl base64 -d -in image.bz2.sig -out /tmp/image.sig
+    # openssl dgst -sha256 -verify rsa.pub -signature /tmp/image.sig image.bz2
+
+The public key for the 18.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA5kMyxEWUoyY3y8JLlOnz
+    # j2dE1QPYmWspn5Diqf1T6uSh0/HA8TwnRvI4m82dC2kgnafVB85zIS+rXQLiyJZI
+    # JEqmBS5f54kVcyJPVORe7NepJq372amAMTcpPwH4b0SS9ZETebAOyuHjdG/lCjKD
+    # yt5W5ZvaMiDMWLVuw1ZlTIxLgkRuCHsk66E1bdoiIMdZPoyk2Q9WQd3PynLRBVHC
+    # iT32cJ/NlHiLEALp0wcNr+FllmFQXahQ5R1uBcsE/IXa7Tg0QXlW7s5+d6NTwQ/d
+    # 7NVnfZzH8IiO0A/9O5jbBsD6HLmity5nMI+RBwFQ9OQoBNxl5aakkusizT6diMYb
+    # PG+zPZsWo/ADqsbg1U/MMLJXD8CDFjcerhIDrrWSIVlSmQKw97nMK/TdUsqnVl7N
+    # uDLl0RHe+N6ndmNGTQGg5HbrTmYKSEGBdS4xFtO60JCxubzfpvnkDnPCIJtxWukf
+    # TzhORJHj2vkGLDA5FocTSOY76lWUO4qJQBA2bB3GtGbCm/nM4TlHpL4Kbf10IUJk
+    # j1tRFi8gXNOhrdplFAR+lV/yy58/+ZOg61Yz7UvYG/A9rxGkyVmIjzB/4S6Wstye
+    # IA6vpfzHwHq82hMqafCSB2KJciuKVEgVO6DHLV03VLTPqkJVsCbWXHgNjK2fQCFX
+    # JeXNX68TcObIJzqbiegZYo8CAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+As always with our pre-releases, only OpenSSL is provided at this point,
+but can be switched for LibreSSL as soon as the release is available.
+This release candidate does update directly into the 18.1 stable track
+and subsequent release candidates.  Please let us know about your experience!
+
+
+Stay safe,
+Your OPNsense team
+
+--
+
+.. code-block::
+
+    # SHA256 (OPNsense-18.1.r1-OpenSSL-dvd-amd64.iso.bz2) = 2a92811d93bcad7de7752a650f9bf934a4d92b190c673bb8d0314474984a5b11
+    # SHA256 (OPNsense-18.1.r1-OpenSSL-nano-amd64.img.bz2) = e2a8026c20a3a91b63b1b1195eab689254dbfa80f05e98b8cd24d9b2b6c35356
+    # SHA256 (OPNsense-18.1.r1-OpenSSL-serial-amd64.img.bz2) = 944a05acefe1466a8189b2318faa48e39a2e5226853557397c0dcefff8023f26
+    # SHA256 (OPNsense-18.1.r1-OpenSSL-vga-amd64.img.bz2) = f8a763ad3b566be3bafa1291210145050431fc79c9f91d151166b57f6ff3e956
+
+.. code-block::
+
+    # SHA256 (OPNsense-18.1.r1-OpenSSL-dvd-i386.iso.bz2) = 0d29b20a9f806a1a8e443c7d0ebcab0edab8f5c7a9f8fb629fb136956c15994e
+    # SHA256 (OPNsense-18.1.r1-OpenSSL-nano-i386.img.bz2) = 65bcad5ebe84a7246a361638436fb1052647ab0b0de44ca57e6a7a1c2a143461
+    # SHA256 (OPNsense-18.1.r1-OpenSSL-serial-i386.img.bz2) = 751db8e6d94b7c453b8a37c856725e4299fb929fbf74ae7700fbbe9e56bff0b9
+    # SHA256 (OPNsense-18.1.r1-OpenSSL-vga-i386.img.bz2) = 9bb56ca458d54d6cf50c767c3e389e14aa26b27246ae5e266d2d689939c34137

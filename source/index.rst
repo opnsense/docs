@@ -22,6 +22,7 @@ Table of Contents
      :maxdepth: 2
 
      intro
+     releases
      setup
      lobby
      reporting
