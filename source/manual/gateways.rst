@@ -114,6 +114,10 @@ Missing dynamic gateway
 Most dynamic interface types write their current gateway into a file named :code:`/tmp/[interface]_router` or :code:`/tmp/[interface]_routerv6`.
 When the expected gateway is not listed in the page, there might be an issue with the interface type (for example the remote server isn't providing one at the moment).
 
+.. Note::
+
+    Some VPN types support sending traffic to the interface without knowing an intermediate gateway, to enable this check "Dynamic gateway policy"
+    in the interface settings.
 
 Gateway marked offline
 .........................
