@@ -1,0 +1,20 @@
+====================================
+Releases
+====================================
+
+.. image:: /development/images/ideas_join_the_development.jpg
+    :width: 600px
+    :align: center
+
+As of January 2015 there have been *{{ versions|length }}* releases leading to the latest version *{{ versions|first }}*
+named "{{nicknames.items()|list|first|last}}".
+
+The list below contains all releases, ordered by version number categorized by major version.
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :glob:
+{% for major_version in major_versions%}
+   releases/{{major_version}}
+{%- endfor %}
