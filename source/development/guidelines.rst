@@ -14,4 +14,5 @@ Coding Guidelines
    guidelines/basics
    guidelines/psr1
    guidelines/psr2
+   guidelines/psr12
    guidelines/peps
