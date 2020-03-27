@@ -45,7 +45,7 @@ Also we assume that on both sides the other networks are already in use, e.g. in
 
 We have to define new networks for the Phase 2 with unused ones and create NAT entries to reach the final systems.
 
-To make it easier we create a Phase with company A using 192.168.1.0/24 and company B using 192.168.2.0/24.
+To make it easier we create a Phase2 with company A using 192.168.1.0/24 as *Local Network* and 192.168.2.0/24 as *Remote Network* and with company B using 192.168.2.0/24 as *Local network* and 192.168.1.0/24 as *Remote Network*.
 Now we need to add on each side the local LAN in the field "Manual SPD entries". So for company A we set 10.0.1.0/24 in the field and for B 10.0.2.0/24.
 This allows the NAT process to speak with the Security Policy Database.
 
