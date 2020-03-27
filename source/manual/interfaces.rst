@@ -5,6 +5,12 @@ Interface configuration
 All traffic in OPNsense travels via interfaces. By default, WAN and LAN are assigned, but many more are possible, like
 GUESTNET (:doc:`captive portal </manual/captiveportal>`) and PFSYNC (:doc:`high availability </manual/hacarp>`).
 
+.. Note::
+    For legacy compatibility WAN interfaces set to type DHCP or interfaces with an *Upstream Gateway*
+    send reply packets to the corresponding gateway directly, also when the sender is on the same interface.
+    This will break connectivity in some rare scenarios and can be disabled via
+    **Firewall->Settings->Advanced->Disable reply-to**.
+
 -----------------------------
 Assignments
 -----------------------------
@@ -53,7 +59,7 @@ For IPv4:
 =============================== ===============================================================================================================================================================================================================
  **Static IPv4 configuration**
  IPv4 address
- IPv4 Upstream Gateway
+ IPv4 Upstream Gateway           When an Upstream Gateway is set, packets entering the interface will also sent out on the same interface when replied. In addition outbound nat will be set up automatically when mode is set to *Automatic* or *Hybrid*. 
  **DHCP client configuration**
  Configuration Mode
  Alias IPv4 address              Used as a fixed alias IPv4 address by the DHCP client.
