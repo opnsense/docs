@@ -29,6 +29,8 @@ OPNsense offers the following alias types:
 +------------------+------------------------------------------------------+
 | GeoIP            | Select countries or whole regions                    |
 +------------------+------------------------------------------------------+
+| Network group    | Combine different network type aliases into one      |
++------------------+------------------------------------------------------+
 | External         | Externally managed alias, this only handles the      |
 | (advanced)       | placeholder. Content is set from another source      |
 |                  | (plugin, api call, etc)                              |
@@ -137,6 +139,14 @@ The :code:`%prefix%` can be used to identify the product and/or vendor, in MaxMi
     If the number of items is larger than the allocated alias size, you can assign more memory to aliases.
     :menuselection:`Firewall --> Settings --> Advanced : Firewall Maximum Table Entries`
 
+
+..................
+Network group
+..................
+
+Combine different network type aliases into one, this type of alias accepts other host type aliases (networks, hosts, ...).
+Although nesting is possible with other alias types as well, this type only displays valid aliases easing administration, functionally
+a :code:`Networks` type alias can do the same but uses a different presentation.
 
 ..................
 External
