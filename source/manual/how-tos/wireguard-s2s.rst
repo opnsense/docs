@@ -47,8 +47,8 @@ Step 3 - Setup Firewall
 -----------------------
 
 On :menuselection:`Firewall --> Rules` add a new rule on your WAN interface allowing the port you set in your
-instance (Protocol UDP). You also have a new interace **Wireguard** in rules, where you can 
-set granular rules on connection inside your tunnel.
+instance (Protocol UDP). You also have a new interface **Wireguard** in rules, where you can
+set granular rules on connections inside your tunnel.
 
 Your tunnel is now up and running.
 

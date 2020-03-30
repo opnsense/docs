@@ -45,8 +45,8 @@ Step 2b - Setup Firewall
 ------------------------
 
 On :menuselection:`Firewall --> Rules` add a new rule on your WAN interface allowing the port you set in your
-instance (Protocol UDP). You also have a new interace **Wireguard** in rules, where you can 
-set granular rules on connection inside your tunnel.
+instance (Protocol UDP). You also have a new interface **Wireguard** in rules, where you can
+set granular rules on connections inside your tunnel.
 
 Your tunnel is now up and running.
 
@@ -54,7 +54,7 @@ Your tunnel is now up and running.
 Step 2c - Assignments and Routing
 ---------------------------------
 
-With this setup your clients can reach your internal networks when they add it vial **Allowed IPs**.
+With this setup your clients can reach your internal networks when they add it via **Allowed IPs**.
 But what if you want to push all traffic via VPN in order to filter some streams out of it?
 Then we have to assign the interface via :menuselection:`Interface --> Assignments`, choose our instance (e.g. instance
 0 is interface wg0), enable it, hit **Prevent Interface Removal** and don't configure an IP address.
@@ -66,7 +66,7 @@ Network you use and **Translation / target** set to WAN address.
 Now when you add 0.0.0.0/0 on your road warrior, outgoing packets are translated and reach the 
 Internet via your VPN. 
 
-When assigning interfaces we can also add gateways to them. This would  offer you the chance to 
+When assigning interfaces we can also add gateways to them. This would offer you the chance to
 balance traffic via different VPN providers or do more complex routing scenarios. 
 To do this, go to :menuselection:`System --> Gateways --> Single` and add a new gateway. Choose your WireGuard interface
 and set the Gateway to **dynamic**.
@@ -81,9 +81,9 @@ If we have OPNsense also at the client side the configuration is similar to step
 choose **Allowed IPs** within the range of the server side and exchange public keys after 
 the creation of a new instance. Then networks which should be routed via WireGuard have to be 
 added to your **Allowed IPs** in the endpoint configuration of your client (e.g. 192.168.0.0/24 
-when this is the LAN of WireGuard server). For pushing all network traffic via VPN you can add 
-0.0.0.0/0. If you do this it's important to also specifiy a DNS server which will be added to your
-interface. Therefore go to **Local**, edit your instance and fill in one or more IP addresses to 
+when this is the LAN of the WireGuard server). For pushing all network traffic via VPN you can add
+0.0.0.0/0. If you do this it's important to also specify a DNS server which will be added to your
+interface. Therefore go to **Local**, edit your instance and fill in one or more IP addresses in
 the **DNS** field. 
 
 
