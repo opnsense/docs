@@ -6,6 +6,41 @@ The inline IPS system of OPNsense is based on Suricata and utilizes Netmap to
 enhance performance and minimize cpu utilization. This deep packet inspection
 system is very powerful and can be used to mitigate security threats at wire speed.
 
+----------------------
+Choosing an interface
+----------------------
+
+You can configure our system on different interfaces, one of the questions asked most is which interface to choose.
+Since a lot of people use IPv4, usually combined with :doc:`/manual/nat`, it's quite important to use the right interface.
+If your capturing traffic on a "wan" type interface, you will see only traffic "post nat", which means all traffic is
+originated from your firewall and not from the actual machine behind it likely triggering the alert.
+
+Rules for an ID[P]S system usually need to have a clear understanding about the internal network, this information is
+lost when capturing packets behind nat.
+
+Without trying to explain all the details of an IDS rule (the people at Suricata are way better in doing `that <https://suricata.readthedocs.io/en/suricata-5.0.2/rules/index.html>`__ ),
+a small example of one of the ET-Open rules usually helps understanding the importance of your home network.
+
+.. code-block:: sh
+
+    alert tls $HOME_NET any -> $EXTERNAL_NET any (msg:"ET TROJAN Observed Glupteba CnC Domain in TLS SNI"; flow:established,to_server; tls_sni; content:"myinfoart.xyz"; depth:13; isdataat:!1,relative; metadata: former_category MALWARE; reference:md5,4cc43c345aa4d6e8fd2d0b6747c3d996; classtype:trojan-activity; sid:2029751; rev:2; metadata:affected_product Windows_XP_Vista_7_8_10_Server_32_64_Bit, attack_target Client_Endpoint, deployment Perimeter, signature_severity Major, created_at 2020_03_30, updated_at 2020_03_30;)
+
+
+The :code:`$HOME_NET` can be configured, but usually is a static net defined in RFC1918, using advanced mode you can choose an external
+address here, but keep in mind you won't know which machine was really involved in the attack and it should really be a static address or network.
+
+:code:`$EXTERNAL_NET` is defined as being not the home net, which explains why you shouldn't select all traffic as home, since none of
+the rules will likely match.
+
+Since the firewall is dropping inbound packets by default, it usually doesn't improve security using WAN anyway
+(when in IPS mode, it would drop the packet that would otherwise also be dropped).
+
+
+.. Note::
+
+    IDS mode is available on almost all (virtual) network types, IPS mode as explained in General setup only
+    for supported physical adapters.
+
 
 ---------------
 General setup
@@ -37,12 +72,6 @@ Rotate log                            Log rotating frequency, also used for the 
                                       (see Alert tab)
 Save logs                             Number of logs to keep
 ====================================  ===============================================================================
-
-.. Note::
-
-    When using IDPS on a NAT enabled interface, you probably would need to add the WAN address to "Home network" (see advanced options).
-    The advantage of enabling IDPS on a local network interface is that source and destination addresses are as originally requested.
-    (Usually rules use home network to distinct traffic)
 
 
 .. Tip::
