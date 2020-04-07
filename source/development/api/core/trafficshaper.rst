@@ -7,6 +7,7 @@ Trafficshaper
 
     "``POST``","trafficshaper","service","flushreload",""
     "``POST``","trafficshaper","service","reconfigure",""
+    "``GET``","trafficshaper","service","statistics",""
 
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
