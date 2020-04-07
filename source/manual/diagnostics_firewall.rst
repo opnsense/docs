@@ -36,12 +36,6 @@ It's also possible to manually adjust the contents, using **Quick add address** 
 
 
 -----------------------------------------
-Sockets
------------------------------------------
-
-Shows listening (or all) sockets for IPv4 and IPv6
-
------------------------------------------
 States Dump
 -----------------------------------------
 
