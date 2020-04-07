@@ -26,9 +26,15 @@ Diagnostics
     "``POST``","diagnostics","interface","delRoute",""
     "``POST``","diagnostics","interface","flushArp",""
     "``GET``","diagnostics","interface","getArp",""
+    "``GET``","diagnostics","interface","getBpfStatistics",""
     "``GET``","diagnostics","interface","getInterfaceNames",""
+    "``GET``","diagnostics","interface","getInterfaceStatistics",""
+    "``GET``","diagnostics","interface","getMemoryStatistics",""
     "``GET``","diagnostics","interface","getNdp",""
+    "``GET``","diagnostics","interface","getNetisrStatistics",""
+    "``GET``","diagnostics","interface","getProtocolStatistics",""
     "``GET``","diagnostics","interface","getRoutes",""
+    "``GET``","diagnostics","interface","getSocketStatistics",""
 
 .. csv-table:: Resources (NetflowController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
