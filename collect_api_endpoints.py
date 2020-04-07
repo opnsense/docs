@@ -38,6 +38,21 @@ def parse_api_php(src_filename):
     module_name = src_filename.replace('\\', '/').split('/')[-3].lower()
 
     data = open(src_filename).read()
+    m = re.findall(r"\n([\w]*).*class.*Controller.*extends\s([\w|\\]*)", data)
+    base_class = m[0][1].split('\\')[-1] if len(m) > 0 else None
+    is_abstract = len(m) > 0 and m[0][0] == 'abstract'
+
+    m = re.findall(r"\sprotected\sstatic\s\$internalModelClass\s=\s['|\"]([\w|\\]*)['|\"];", data)
+    if len(m) == 0:
+        m = re.findall(r"\sprotected\sstatic\s\$internalServiceClass\s=\s['|\"]([\w|\\]*)['|\"];", data)
+
+    model_filename = None
+    if len(m) > 0:
+        app_location = "/".join(src_filename.split('/')[:-5])
+        model_xml = "%s/models/%s.xml" % (app_location, m[0].replace("\\", "/"))
+        if os.path.isfile(model_xml):
+            model_filename = model_xml.replace('//', '/')
+
     function_callouts = re.findall(r"(\n\s+(private|public|protected)\s+function\s+(\w+)\((.*)\))", data)
     result = list()
     for idx, function in enumerate(function_callouts):
@@ -52,11 +67,19 @@ def parse_api_php(src_filename):
                 'method': 'GET',
                 'module': module_name,
                 'controller': controller,
+                'is_abstract': is_abstract,
+                'base_class': base_class,
                 'command': function[2][:-6],
                 'parameters': function[3].replace(' ', ''),
-                'type': 'Service' if controller.find('service') > -1 else 'Resources',
-                'filename': base_filename
+                'filename': base_filename,
+                'model_filename': model_filename
             }
+            if is_abstract:
+                record['type'] = 'Abstract [non-callable]'
+            elif controller.find('service') > -1:
+                record['type'] = 'Service'
+            else:
+                record['type'] = 'Resources'
             # find most likely method (default => GET)
             if code_block.find('request->isPost(') > -1:
                 record['method'] = 'POST'
@@ -74,6 +97,12 @@ def parse_api_php(src_filename):
 
     return sorted(result, key=lambda i: i['command'])
 
+def source_url(repo, src_filename):
+    parts = src_filename.split('/')
+    if repo == 'plugins':
+        return "https://github.com/opnsense/plugins/blob/master/%s" % "/".join(parts[parts.index('src') - 2:])
+    else:
+        return "https://github.com/opnsense/core/blob/master/%s" % "/".join(parts[parts.index('src') - 2:])
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -114,10 +143,19 @@ if __name__ == '__main__':
             payload = {
                 'type': controller[0]['type'],
                 'filename': controller[0]['filename'],
-                'endpoints': []
+                'is_abstract': controller[0]['is_abstract'],
+                'base_class': controller[0]['base_class'],
+                'endpoints': [],
+                'uses': []
             }
             for endpoint in controller:
                 payload['endpoints'].append(endpoint)
+            if controller[0]['model_filename']:
+                payload['uses'].append({
+                    'type': 'model',
+                    'link': source_url(cmd_args.repo, controller[0]['model_filename']),
+                    'name': os.path.basename(controller[0]['model_filename'])
+                })
             template_data['controllers'].append(payload)
 
         with open(target_filename, 'w') as f_out:

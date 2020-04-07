@@ -4,7 +4,12 @@
 .. csv-table:: {{controller.type}} ({{controller.filename}})
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
-{% for endpoint in controller.endpoints %}
+{%     for endpoint in controller.endpoints %}
     "``{{endpoint.method}}``","{{endpoint.module}}","{{endpoint.controller}}","{{endpoint.command}}","{{endpoint.parameters}}"
-{%- endfor %}
+{%-    endfor %}
+{%-    if controller.uses %}
+{%         for use in controller.uses %}
+    "``<<uses>>``", "", "", "", "*{{use.type}}* `{{use.name}} <{{use.link}}>`__"
+{%-        endfor %}
+{%-    endif %}
 {% endfor %}
