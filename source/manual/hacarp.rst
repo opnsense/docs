@@ -95,4 +95,4 @@ With this page you can update the backup machine and restart services if needed.
 
     .. raw:: html
 
-         Use the refresh <i class="fa fa-info-refresh fa-fw"></i> button to update the backup node and restart all services at once.
+         Use the refresh <i class="fa fa-refresh fa-fw"></i> button to update the backup node and restart all services at once.
