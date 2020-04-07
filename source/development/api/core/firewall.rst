@@ -13,6 +13,7 @@ Firewall
     "``GET``","firewall","alias","getItem","$uuid=null"
     "``POST``","firewall","alias","import",""
     "``GET``","firewall","alias","listCountries",""
+    "``GET``","firewall","alias","listNetworkAliases",""
     "``POST``","firewall","alias","reconfigure",""
     "``*``","firewall","alias","searchItem",""
     "``POST``","firewall","alias","setItem","$uuid"
