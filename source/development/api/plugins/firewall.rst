@@ -6,20 +6,38 @@ a user interface, it's main focus is only to provide machine to machine interact
 for selected features.
 
 
-.. csv-table:: Resources (FilterController.php)
+.. csv-table:: Abstract [non-callable] (FilterBaseController.php) 
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","firewall","filter_base","apply","$rollback_revision=null"
+    "``POST``","firewall","filter_base","cancelRollback","$rollback_revision"
+    "``POST``","firewall","filter_base","revert","$revision"
+    "``POST``","firewall","filter_base","savepoint",""
+
+    "``<<uses>>``", "", "", "", "*model* `Filter.xml <https://github.com/opnsense/plugins/blob/master/net/firewall/src/opnsense/mvc/app/models/OPNsense/Firewall/Filter.xml>`__"
+
+.. csv-table:: Resources (FilterController.php)  -- extends : FilterBaseController 
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","firewall","filter","addRule",""
-    "``POST``","firewall","filter","apply","$rollback_revision=null"
-    "``POST``","firewall","filter","cancelRollback","$rollback_revision"
     "``POST``","firewall","filter","delRule","$uuid"
     "``GET``","firewall","filter","getRule","$uuid=null"
-    "``POST``","firewall","filter","revert","$revision"
-    "``POST``","firewall","filter","savepoint",""
     "``*``","firewall","filter","searchRule",""
     "``POST``","firewall","filter","setRule","$uuid"
     "``POST``","firewall","filter","toggleRule","$uuid,$enabled=null"
+
+.. csv-table:: Resources (SourceNatController.php)  -- extends : FilterBaseController 
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","firewall","source_nat","addRule",""
+    "``POST``","firewall","source_nat","delRule","$uuid"
+    "``GET``","firewall","source_nat","getRule","$uuid=null"
+    "``*``","firewall","source_nat","searchRule",""
+    "``POST``","firewall","source_nat","setRule","$uuid"
+    "``POST``","firewall","source_nat","toggleRule","$uuid,$enabled=null"
 
 
 
