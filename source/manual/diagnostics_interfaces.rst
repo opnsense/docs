@@ -45,6 +45,65 @@ Interface name              The name of the interface if found
 
 
 ---------------------
+Netstat
+---------------------
+
+The netstat module contains a useful set of network status and statistics metrics, which are split into a number of
+topics.
+
+
+.. Tip::
+
+    .. raw:: html
+
+         Use the refresh <i class="fa fa-refresh fa-fw"></i> icon in the tab to refresh the data in it (selection won't change).
+
+
+In order of relevance you can find the following information here:
+
+........................
+Interfaces
+........................
+
+This section contains all (physical and virtual) attached interfaces to the system containing metrics like the number of
+packets and bytes send- and received per (hardware) address.
+
+........................
+Protocol
+........................
+
+Contains system wide statistics for each network protocol. Examples of statistics that can be found in this region are
+the number of tcp listening connections, sent packets, duplicate packets, etc, etc.
+
+........................
+Sockets
+........................
+
+Displays network and unix domain sockets, this basically combines :code:`netstat` with :code:`sockstat` on FreeBSD
+in order to provide insights into which process is listening were combined with metrics known by the system.
+
+........................
+Netisr
+........................
+
+Show statistics from the kernel network dispatch service, known as :code:`netisr(9)`.
+
+........................
+Memory
+........................
+
+Show statistics recorded by the memory management routines  (:code:`mbuf(9)`).
+The network manages a private pool of memory buffers.
+
+........................
+Bpf
+........................
+
+Show statistics about :code:`bpf(4)` peers.
+This includes information like how many packets have been matched, dropped and received by the bpf device,
+also information about current buffer sizes and device states.
+
+---------------------
 Packet capture
 ---------------------
 
