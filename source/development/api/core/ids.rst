@@ -13,6 +13,8 @@ Ids
     "``POST``","ids","service","reloadRules",""
     "``POST``","ids","service","updateRules","$wait=null"
 
+    "``<<uses>>``", "", "", "", "*model* `IDS.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/IDS/IDS.xml>`__"
+
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -34,3 +36,5 @@ Ids
     "``POST``","ids","settings","toggleRule","$sids,$enabled=null"
     "``POST``","ids","settings","toggleRuleset","$filenames,$enabled=null"
     "``POST``","ids","settings","toggleUserRule","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `IDS.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/IDS/IDS.xml>`__"

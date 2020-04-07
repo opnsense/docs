@@ -11,6 +11,8 @@ Ipsec
     "``*``","ipsec","key_pairs","searchItem",""
     "``POST``","ipsec","key_pairs","setItem","$uuid=null"
 
+    "``<<uses>>``", "", "", "", "*model* `IPsec.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/IPsec/IPsec.xml>`__"
+
 .. csv-table:: Resources (LegacySubsystemController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

@@ -8,6 +8,8 @@ Monit
     "``POST``","monit","service","configtest",""
     "``POST``","monit","service","reconfigure",""
 
+    "``<<uses>>``", "", "", "", "*model* `Monit.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/Monit/Monit.xml>`__"
+
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -31,6 +33,8 @@ Monit
     "``POST``","monit","settings","setTest","$uuid"
     "``POST``","monit","settings","toggleAlert","$uuid,$enabled=null"
     "``POST``","monit","settings","toggleService","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `Monit.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/Monit/Monit.xml>`__"
 
 .. csv-table:: Resources (StatusController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

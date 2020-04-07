@@ -17,3 +17,5 @@ Cron
     "``*``","cron","settings","searchJobs",""
     "``POST``","cron","settings","setJob","$uuid"
     "``POST``","cron","settings","toggleJob","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `Cron.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/Cron/Cron.xml>`__"

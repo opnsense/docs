@@ -7,6 +7,8 @@ Syslog
 
     "``GET``","syslog","service","stats",""
 
+    "``<<uses>>``", "", "", "", "*model* `Syslog.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/Syslog/Syslog.xml>`__"
+
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -17,3 +19,5 @@ Syslog
     "``*``","syslog","settings","searchDestinations",""
     "``POST``","syslog","settings","setDestination","$uuid"
     "``POST``","syslog","settings","toggleDestination","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `Syslog.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/Syslog/Syslog.xml>`__"

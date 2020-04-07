@@ -39,6 +39,8 @@ Captiveportal
     "``POST``","captiveportal","settings","setZone","$uuid"
     "``POST``","captiveportal","settings","toggleZone","$uuid,$enabled=null"
 
+    "``<<uses>>``", "", "", "", "*model* `CaptivePortal.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/CaptivePortal/CaptivePortal.xml>`__"
+
 .. csv-table:: Resources (VoucherController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

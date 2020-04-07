@@ -31,3 +31,5 @@ Trafficshaper
     "``POST``","trafficshaper","settings","togglePipe","$uuid,$enabled=null"
     "``POST``","trafficshaper","settings","toggleQueue","$uuid,$enabled=null"
     "``POST``","trafficshaper","settings","toggleRule","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `TrafficShaper.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/TrafficShaper/TrafficShaper.xml>`__"
