@@ -19,7 +19,7 @@ Firewall
     "``POST``","firewall","alias","setItem","$uuid"
     "``POST``","firewall","alias","toggleItem","$uuid,$enabled=null"
 
-    "``<<uses>>``", "", "", "", "*model* `Alias.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/Firewall/Alias.xml>`__"
+    "``<<uses>>``", "", "", "", "*model* `Alias.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Alias.xml>`__"
 
 .. csv-table:: Resources (AliasUtilController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

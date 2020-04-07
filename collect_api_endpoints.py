@@ -102,7 +102,7 @@ def source_url(repo, src_filename):
     if repo == 'plugins':
         return "https://github.com/opnsense/plugins/blob/master/%s" % "/".join(parts[parts.index('src') - 2:])
     else:
-        return "https://github.com/opnsense/core/blob/master/%s" % "/".join(parts[parts.index('src') - 2:])
+        return "https://github.com/opnsense/core/blob/master/%s" % "/".join(parts[parts.index('src'):])
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

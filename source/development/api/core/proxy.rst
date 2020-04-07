@@ -10,7 +10,7 @@ Proxy
     "``POST``","proxy","service","refreshTemplate",""
     "``POST``","proxy","service","reset",""
 
-    "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/Proxy/Proxy.xml>`__"
+    "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Proxy/Proxy.xml>`__"
 
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -40,4 +40,4 @@ Proxy
     "``POST``","proxy","settings","togglePACRule","$uuid"
     "``POST``","proxy","settings","toggleRemoteBlacklist","$uuid"
 
-    "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/core/blob/master/../core/src/opnsense/mvc/app/models/OPNsense/Proxy/Proxy.xml>`__"
+    "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Proxy/Proxy.xml>`__"
