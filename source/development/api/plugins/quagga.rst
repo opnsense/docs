@@ -30,6 +30,8 @@ Quagga
     "``POST``","quagga","bgp","togglePrefixlist","$uuid"
     "``POST``","quagga","bgp","toggleRoutemap","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `BGP.xml <https://github.com/opnsense/plugins/blob/master/net/frr/src/opnsense/mvc/app/models/OPNsense/Quagga/BGP.xml>`__"
+
 .. csv-table:: Resources (DiagnosticsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -69,6 +71,8 @@ Quagga
     "``POST``","quagga","ospf6settings","setInterface","$uuid"
     "``POST``","quagga","ospf6settings","toggleInterface","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `OSPF6.xml <https://github.com/opnsense/plugins/blob/master/net/frr/src/opnsense/mvc/app/models/OPNsense/Quagga/OSPF6.xml>`__"
+
 .. csv-table:: Resources (OspfsettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -97,6 +101,8 @@ Quagga
     "``POST``","quagga","ospfsettings","toggleNetwork","$uuid"
     "``POST``","quagga","ospfsettings","togglePrefixlist","$uuid"
     "``POST``","quagga","ospfsettings","toggleRoutemap","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `OSPF.xml <https://github.com/opnsense/plugins/blob/master/net/frr/src/opnsense/mvc/app/models/OPNsense/Quagga/OSPF.xml>`__"
 
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

@@ -11,3 +11,5 @@ Netsnmp
     "``*``","netsnmp","user","searchUser",""
     "``POST``","netsnmp","user","setUser","$uuid"
     "``POST``","netsnmp","user","toggleUser","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `User.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/net-snmp/src/opnsense/mvc/app/models/OPNsense/Netsnmp/User.xml>`__"

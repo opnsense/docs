@@ -17,3 +17,5 @@ Zabbixagent
     "``POST``","zabbixagent","settings","setUserparameter","$uuid"
     "``POST``","zabbixagent","settings","toggleAlias","$uuid"
     "``POST``","zabbixagent","settings","toggleUserparameter","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `ZabbixAgent.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/zabbix-agent/src/opnsense/mvc/app/models/OPNsense/ZabbixAgent/ZabbixAgent.xml>`__"

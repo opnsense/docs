@@ -7,6 +7,8 @@ Haproxy
 
     "``GET``","haproxy","service","configtest",""
 
+    "``<<uses>>``", "", "", "", "*model* `HAProxy.xml <https://github.com/opnsense/plugins/blob/master/net/haproxy/src/opnsense/mvc/app/models/OPNsense/HAProxy/HAProxy.xml>`__"
+
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -78,6 +80,8 @@ Haproxy
     "``POST``","haproxy","settings","toggleLua","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggleServer","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggleUser","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `HAProxy.xml <https://github.com/opnsense/plugins/blob/master/net/haproxy/src/opnsense/mvc/app/models/OPNsense/HAProxy/HAProxy.xml>`__"
 
 .. csv-table:: Resources (StatisticsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

@@ -14,6 +14,8 @@ Siproxd
     "``POST``","siproxd","domain","setDomain","$uuid"
     "``GET``","siproxd","domain","toggleDomain","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `Domain.xml <https://github.com/opnsense/plugins/blob/master/net/siproxd/src/opnsense/mvc/app/models/OPNsense/Siproxd/Domain.xml>`__"
+
 .. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -44,3 +46,5 @@ Siproxd
     "``POST``","siproxd","user","set",""
     "``POST``","siproxd","user","setUser","$uuid"
     "``GET``","siproxd","user","toggleUser","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `User.xml <https://github.com/opnsense/plugins/blob/master/net/siproxd/src/opnsense/mvc/app/models/OPNsense/Siproxd/User.xml>`__"

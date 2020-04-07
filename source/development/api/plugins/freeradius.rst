@@ -12,6 +12,8 @@ Freeradius
     "``POST``","freeradius","avpair","setAvpair","$uuid"
     "``POST``","freeradius","avpair","toggleAvpair","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `Avpair.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Avpair.xml>`__"
+
 .. csv-table:: Resources (ClientController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -25,6 +27,8 @@ Freeradius
     "``POST``","freeradius","client","setClient","$uuid"
     "``GET``","freeradius","client","toggleClient","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `Client.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Client.xml>`__"
+
 .. csv-table:: Resources (DhcpController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -35,6 +39,8 @@ Freeradius
     "``*``","freeradius","dhcp","searchDhcp",""
     "``POST``","freeradius","dhcp","setDhcp","$uuid"
     "``POST``","freeradius","dhcp","toggleDhcp","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Dhcp.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Dhcp.xml>`__"
 
 .. csv-table:: Resources (EapController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -61,6 +67,8 @@ Freeradius
     "``POST``","freeradius","lease","setLease","$uuid"
     "``POST``","freeradius","lease","toggleLease","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `Lease.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Lease.xml>`__"
+
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -83,3 +91,5 @@ Freeradius
     "``POST``","freeradius","user","set",""
     "``POST``","freeradius","user","setUser","$uuid"
     "``GET``","freeradius","user","toggleUser","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `User.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/User.xml>`__"

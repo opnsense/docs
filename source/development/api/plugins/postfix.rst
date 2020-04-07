@@ -12,6 +12,8 @@ Postfix
     "``POST``","postfix","address","setAddress","$uuid"
     "``POST``","postfix","address","toggleAddress","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `Address.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/Address.xml>`__"
+
 .. csv-table:: Resources (DomainController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -22,6 +24,8 @@ Postfix
     "``*``","postfix","domain","searchDomain",""
     "``POST``","postfix","domain","setDomain","$uuid"
     "``POST``","postfix","domain","toggleDomain","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Domain.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/Domain.xml>`__"
 
 .. csv-table:: Resources (RecipientController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -34,6 +38,8 @@ Postfix
     "``POST``","postfix","recipient","setRecipient","$uuid"
     "``POST``","postfix","recipient","toggleRecipient","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `Recipient.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/Recipient.xml>`__"
+
 .. csv-table:: Resources (RecipientbccController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -44,6 +50,8 @@ Postfix
     "``*``","postfix","recipientbcc","searchRecipientbcc",""
     "``POST``","postfix","recipientbcc","setRecipientbcc","$uuid"
     "``POST``","postfix","recipientbcc","toggleRecipientbcc","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Recipientbcc.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/Recipientbcc.xml>`__"
 
 .. csv-table:: Resources (SenderController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -56,6 +64,8 @@ Postfix
     "``POST``","postfix","sender","setSender","$uuid"
     "``POST``","postfix","sender","toggleSender","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `Sender.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/Sender.xml>`__"
+
 .. csv-table:: Resources (SenderbccController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -66,6 +76,8 @@ Postfix
     "``*``","postfix","senderbcc","searchSenderbcc",""
     "``POST``","postfix","senderbcc","setSenderbcc","$uuid"
     "``POST``","postfix","senderbcc","toggleSenderbcc","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Senderbcc.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/Senderbcc.xml>`__"
 
 .. csv-table:: Resources (SendercanonicalController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -78,9 +90,13 @@ Postfix
     "``POST``","postfix","sendercanonical","setSendercanonical","$uuid"
     "``POST``","postfix","sendercanonical","toggleSendercanonical","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `Sendercanonical.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/Sendercanonical.xml>`__"
+
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","postfix","service","checkrspamd",""
     "``POST``","postfix","service","reconfigure",""
+
+    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/General.xml>`__"

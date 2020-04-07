@@ -11,3 +11,5 @@ Nrpe
     "``*``","nrpe","command","searchCommand",""
     "``POST``","nrpe","command","setCommand","$uuid"
     "``POST``","nrpe","command","toggleCommand","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Command.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/nrpe/src/opnsense/mvc/app/models/OPNsense/Nrpe/Command.xml>`__"

@@ -24,3 +24,5 @@ Tinc
     "``POST``","tinc","settings","setNetwork","$uuid=null"
     "``POST``","tinc","settings","toggleHost","$uuid,$enabled=null"
     "``POST``","tinc","settings","toggleNetwork","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `Tinc.xml <https://github.com/opnsense/plugins/blob/master/security/tinc/src/opnsense/mvc/app/models/OPNsense/Tinc/Tinc.xml>`__"

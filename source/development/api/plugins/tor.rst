@@ -12,6 +12,8 @@ Tor
     "``POST``","tor","exitacl","setacl","$uuid"
     "``POST``","tor","exitacl","toggleacl","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `ACLExitPolicy.xml <https://github.com/opnsense/plugins/blob/master/security/tor/src/opnsense/mvc/app/models/OPNsense/Tor/ACLExitPolicy.xml>`__"
+
 .. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -24,6 +26,8 @@ Tor
     "``POST``","tor","general","sethidservauth","$uuid"
     "``POST``","tor","general","togglehidservauth","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/security/tor/src/opnsense/mvc/app/models/OPNsense/Tor/General.xml>`__"
+
 .. csv-table:: Service (HiddenserviceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -35,6 +39,8 @@ Tor
     "``POST``","tor","hiddenservice","setservice","$uuid"
     "``POST``","tor","hiddenservice","toggleservice","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `HiddenService.xml <https://github.com/opnsense/plugins/blob/master/security/tor/src/opnsense/mvc/app/models/OPNsense/Tor/HiddenService.xml>`__"
+
 .. csv-table:: Service (HiddenserviceaclController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -45,6 +51,8 @@ Tor
     "``*``","tor","hiddenserviceacl","searchacl",""
     "``POST``","tor","hiddenserviceacl","setacl","$uuid"
     "``POST``","tor","hiddenserviceacl","toggleacl","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `HiddenServiceACL.xml <https://github.com/opnsense/plugins/blob/master/security/tor/src/opnsense/mvc/app/models/OPNsense/Tor/HiddenServiceACL.xml>`__"
 
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -69,3 +77,5 @@ Tor
     "``*``","tor","socksacl","searchacl",""
     "``POST``","tor","socksacl","setacl","$uuid"
     "``POST``","tor","socksacl","toggleacl","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `ACLSocksPolicy.xml <https://github.com/opnsense/plugins/blob/master/security/tor/src/opnsense/mvc/app/models/OPNsense/Tor/ACLSocksPolicy.xml>`__"

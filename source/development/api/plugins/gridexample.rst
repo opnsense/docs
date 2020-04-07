@@ -11,3 +11,5 @@ Gridexample
     "``*``","gridexample","settings","searchItem",""
     "``POST``","gridexample","settings","setItem","$uuid"
     "``POST``","gridexample","settings","toggleItem","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `GridExample.xml <https://github.com/opnsense/plugins/blob/master/devel/grid_example/src/opnsense/mvc/app/models/OPNsense/GridExample/GridExample.xml>`__"

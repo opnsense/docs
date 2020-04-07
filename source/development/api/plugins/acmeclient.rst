@@ -12,6 +12,8 @@ Acmeclient
     "``POST``","acmeclient","accounts","toggle","$uuid,$enabled=null"
     "``POST``","acmeclient","accounts","update","$uuid"
 
+    "``<<uses>>``", "", "", "", "*model* `AcmeClient.xml <https://github.com/opnsense/plugins/blob/master/security/acme-client/src/opnsense/mvc/app/models/OPNsense/AcmeClient/AcmeClient.xml>`__"
+
 .. csv-table:: Resources (ActionsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -24,6 +26,8 @@ Acmeclient
     "``GET``","acmeclient","actions","sftpTestConnection",""
     "``POST``","acmeclient","actions","toggle","$uuid,$enabled=null"
     "``POST``","acmeclient","actions","update","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `AcmeClient.xml <https://github.com/opnsense/plugins/blob/master/security/acme-client/src/opnsense/mvc/app/models/OPNsense/AcmeClient/AcmeClient.xml>`__"
 
 .. csv-table:: Resources (CertificatesController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -38,6 +42,8 @@ Acmeclient
     "``POST``","acmeclient","certificates","sign","$uuid"
     "``POST``","acmeclient","certificates","toggle","$uuid,$enabled=null"
     "``POST``","acmeclient","certificates","update","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `AcmeClient.xml <https://github.com/opnsense/plugins/blob/master/security/acme-client/src/opnsense/mvc/app/models/OPNsense/AcmeClient/AcmeClient.xml>`__"
 
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -61,6 +67,8 @@ Acmeclient
     "``GET``","acmeclient","settings","getBindPluginStatus",""
     "``GET``","acmeclient","settings","getGcloudPluginStatus",""
 
+    "``<<uses>>``", "", "", "", "*model* `AcmeClient.xml <https://github.com/opnsense/plugins/blob/master/security/acme-client/src/opnsense/mvc/app/models/OPNsense/AcmeClient/AcmeClient.xml>`__"
+
 .. csv-table:: Resources (ValidationsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -71,3 +79,5 @@ Acmeclient
     "``*``","acmeclient","validations","search",""
     "``POST``","acmeclient","validations","toggle","$uuid,$enabled=null"
     "``POST``","acmeclient","validations","update","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `AcmeClient.xml <https://github.com/opnsense/plugins/blob/master/security/acme-client/src/opnsense/mvc/app/models/OPNsense/AcmeClient/AcmeClient.xml>`__"

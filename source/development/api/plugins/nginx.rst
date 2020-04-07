@@ -8,6 +8,8 @@ Nginx
     "``POST``","nginx","bans","delban","$uuid"
     "``*``","nginx","bans","searchban",""
 
+    "``<<uses>>``", "", "", "", "*model* `Nginx.xml <https://github.com/opnsense/plugins/blob/master/www/nginx/src/opnsense/mvc/app/models/OPNsense/Nginx/Nginx.xml>`__"
+
 .. csv-table:: Resources (LogsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -26,6 +28,8 @@ Nginx
     "``GET``","nginx","service","status",""
     "``GET``","nginx","service","stop",""
     "``GET``","nginx","service","vts",""
+
+    "``<<uses>>``", "", "", "", "*model* `Nginx.xml <https://github.com/opnsense/plugins/blob/master/www/nginx/src/opnsense/mvc/app/models/OPNsense/Nginx/Nginx.xml>`__"
 
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -122,3 +126,5 @@ Nginx
     "``POST``","nginx","settings","setupstream","$uuid"
     "``POST``","nginx","settings","setupstreamserver","$uuid"
     "``POST``","nginx","settings","setuserlist","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Nginx.xml <https://github.com/opnsense/plugins/blob/master/www/nginx/src/opnsense/mvc/app/models/OPNsense/Nginx/Nginx.xml>`__"
