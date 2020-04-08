@@ -29,6 +29,72 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+20.1.4 (April 08, 2020)
+--------------------------------------------------------------------------
+
+
+It almost looks like business as usual.  But we all know it is not.
+We will get through this together.
+
+Here are the full patch notes:
+
+* system: add missing strtolower() in LDAP sync response
+* system: fix /var/run/legacy_log socket creation race with Syslog-ng
+* system: add info button to display privilege / ACL endpoints
+* system: make IPsec tap tunables overwriteable
+* firewall: floating means either all interfaces or more than one selected
+* firewall: simplify group maintenance by only applying them on filter reload
+* interfaces: use primary IPv6 and support VIP tracking
+* interfaces: multiple changes in radvd.conf setup (contributed by maurice-w)
+* dhcp: fix DDNS support in DHCPv6 (contributed by Wagner Sartori Junior)
+* firmware: mirror opnsense.ieji.de renamed to opn.sense.nz
+* openvpn: improve openvpn_port_used() logic
+* unbound: minor cleanup in /api/unbound/diagnostics/stats endpoint
+* unbound: remove 192.0.0.0/24 from rebinding prevention list (contributed by maurice-w)
+* mvc: simplify reload of captive portal, cron, IDS, alias, loopback, VXLAN, web proxy, routes, syslog and shaper
+* mvc: limit dropdown size to 10 is none specified
+* mvc: support inheritance of the ArrayField type
+* mvc: synchronize backup timestamps with revisions
+* mvc: fixed width for timestamp column in logging
+* mvc: init errorMessage to prevent crash reports
+* shell: use interfaces_primary_address6() for correct IPv6 display
+* shell: append a newline in pluginctl -g mode
+* plugins: os-acme-client 1.30 `[1] <https://github.com/opnsense/plugins/pull/1753>`__ 
+* plugins: os-bind 1.13 `[2] <https://github.com/opnsense/plugins/blob/master/dns/bind/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.6 `[3] <https://github.com/opnsense/plugins/blob/master/net/freeradius/pkg-descr>`__ 
+* plugins: os-haproxy 2.21 `[4] <https://github.com/opnsense/plugins/pull/1755>`__ 
+* plugins: os-maltrail 1.5 `[5] <https://github.com/opnsense/plugins/blob/master/security/maltrail/pkg-descr>`__ 
+* plugins: os-nginx 1.19 `[6] <https://github.com/opnsense/plugins/blob/master/www/nginx/pkg-descr>`__ 
+* plugins: os-nut 1.7 `[7] <https://github.com/opnsense/plugins/blob/master/sysutils/nut/pkg-descr>`__ 
+* plugins: os-postfix 1.14 `[8] <https://github.com/opnsense/plugins/blob/master/mail/postfix/pkg-descr>`__ 
+* plugins: os-tayga 1.0 (contributed by Michael Muenz)
+* plugins: os-telegraf 1.7.7 `[9] <https://github.com/opnsense/plugins/blob/master/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-unbound-plus 1.0 (contributed by Michael Muenz and Petr Kejval)
+* lang: multiple updates to supported languages
+* lang: new Turkish translation (contributed by Aydin Yakar)
+* src: work around PCI devices which return all zeros for reads of existing MSI-X table VCTRL registers
+* src: fix incorrect checksum calculations with IPv6 extension headers `[10] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:06.ipv6.asc>`__ 
+* src: fix TCP IPv6 SYN cache kernel information disclosure `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:04.tcp.asc>`__ 
+* src: fix insufficient oce(4) ioctl(2) privilege checking `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:05.if_oce_ioctl.asc>`__ 
+* src: fix incorrect user-controlled pointer use in epair `[13] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:07.epair.asc>`__ 
+* src: fix kernel memory disclosure with nested jails `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:08.jail.asc>`__ 
+* ports: curl 7.69.1 `[15] <https://curl.haxx.se/changes.html>`__ 
+* ports: krb5 1.18 `[16] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
+* ports: openssh 8.2p1 `[17] <https://www.openssh.com/txt/release-8.2>`__ 
+* ports: openssl 1.1.1f `[18] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: perl 5.30.2 `[19] <https://metacpan.org/pod/release/SHAY/perl-5.30.2/pod/perldelta.pod>`__ 
+* ports: php 7.2.29 `[20] <https://www.php.net/ChangeLog-7.php#7.2.29>`__ 
+* ports: python 3.7.7 `[21] <https://www.python.org/downloads/release/python-377/>`__ 
+* ports: strongswan 5.8.3 `[22] <https://wiki.strongswan.org/versions/76>`__ 
+* ports: sudo 1.8.31p1 `[23] <https://www.sudo.ws/stable.html>`__ 
+
+
+Stay safe and healthy,
+Your OPNsense team
+
+--
+
+--------------------------------------------------------------------------
 20.1.3 (March 18, 2020)
 --------------------------------------------------------------------------
 

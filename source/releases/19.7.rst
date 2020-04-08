@@ -94,7 +94,7 @@ Here are the full patch notes:
 * system: hide leaking hostname on SSH password auth (contributed by sooslaca)
 * system: remove unused "lifetime" parameter from user manager page
 * firewall: new GeoIP settings page to allow continued use of upstream database `[1] <https://docs.opnsense.org/manual/how-tos/maxmind_geo_ip.html>`__ 
-* firewall: log when alias couldn't resolve a hostname
+* firewall: log when alias could not resolve a hostname
 * firewall: translate pfInfo page tabs (contributed by Smart-Soft)
 * firmware: add mirror MARWAN (Moroccan Academic & Research Wide Area Network)
 * dhcp: replace killbyname() usage which should not have killed both services

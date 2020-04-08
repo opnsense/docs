@@ -6,7 +6,7 @@ Releases
     :width: 600px
     :align: center
 
-As of January 2015 there have been *177* releases leading to the latest version *20.1.3*
+As of January 2015 there have been *178* releases leading to the latest version *20.1.4*
 named "Keen Kingfisher".
 
 The list below contains all releases, ordered by version number categorized by major version.
