@@ -74,9 +74,13 @@ def parse_change_log(payload, this_version):
             first_line = idx
             if line.find('OPNsense') > -1:
                 content_line = line
+        elif line == '--':
+            # chop tagine
+            del result['content'][-3:]
         elif line.startswith('o '):
-            content_line = "*%s" % line[1:]
+            content_line = "*%s" % line[1:] # bullet list
         elif line.startswith('# '):
+            # literal (code) block
             if not lines[idx-1].startswith('# '):
                 content_line = ".. code-block::\n\n    %s" % line
             else:
