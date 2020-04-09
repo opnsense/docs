@@ -52,7 +52,7 @@ Here are the full patch notes:
 * unbound: minor cleanup in /api/unbound/diagnostics/stats endpoint
 * unbound: remove 192.0.0.0/24 from rebinding prevention list (contributed by maurice-w)
 * mvc: simplify reload of captive portal, cron, IDS, alias, loopback, VXLAN, web proxy, routes, syslog and shaper
-* mvc: limit dropdown size to 10 is none specified
+* mvc: limit dropdown size to 10 if not specified
 * mvc: support inheritance of the ArrayField type
 * mvc: synchronize backup timestamps with revisions
 * mvc: fixed width for timestamp column in logging
