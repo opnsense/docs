@@ -74,10 +74,6 @@ A hotfix release was issued as 19.1.10_1:
 * firmware: enable upgrade path to 19.7
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.1.9 (June 06, 2019)
@@ -133,10 +129,6 @@ Here are the full patch notes:
 * ports: php 7.2.19 `[13] <https://www.php.net/ChangeLog-7.php#7.2.19>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.1.8 (May 20, 2019)
@@ -191,10 +183,6 @@ Here are the full patch notes:
 * ports: strongswan custom XAuth generic patch removed
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.1.7 (May 02, 2019)
@@ -290,10 +278,6 @@ Without further ado, here are the full patch notes:
 * ports: sqlite 3.27.2 `[7] <https://www.sqlite.org/changes.html>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.1.6 (April 11, 2019)
@@ -327,10 +311,6 @@ Here are the full patch notes:
 * ports: py-certifi 2019.3.9 `[3] <https://pypi.org/project/certifi/2019.3.9/>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.1.5 (April 05, 2019)
@@ -407,10 +387,6 @@ A hotfix release was issued as 19.1.5_1:
 * mvc: sync missing hasPrivilege()
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.1.4 (March 12, 2019)
@@ -499,10 +475,6 @@ The public key for the 19.1 series is:
     # -----END PUBLIC KEY-----
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 
@@ -574,10 +546,6 @@ Here are the full patch notes:
 * ports: phalcon 3.4.3 `[5] <https://github.com/phalcon/cphalcon/releases/tag/v3.4.3>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.1.2 (February 28, 2019)
@@ -663,10 +631,6 @@ Here are the full patch notes:
 * ports: unbound 1.9.0 `[14] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.1.1 (February 05, 2019)
@@ -700,10 +664,6 @@ Here are the full patch notes:
 * ports: py-request 2.21.0 `[5] <https://vuxml.freebsd.org/freebsd/50ad9a9a-1e28-11e9-98d7-0050562a4d7b.html>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.1 (January 31, 2019)
@@ -808,10 +768,6 @@ The public key for the 19.1 series is:
     # -----END PUBLIC KEY-----
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 
@@ -1014,10 +970,6 @@ The public key for the 19.1 series is:
 Please let us know about your experience!
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 

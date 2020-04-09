@@ -121,10 +121,6 @@ Here are the full patch notes:
   Manuel Faux)
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.24 (January 11, 2016)
@@ -217,10 +213,6 @@ Here are the full patch notes:
   Fabian Franz)
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.23 (December 23, 2015)
@@ -258,10 +250,6 @@ Here are the full patch notes:
 * proxy: two fixes for non-local authentication
 
 
-Happy holidays,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.22 (December 09, 2015)
@@ -314,10 +302,6 @@ Here are the full patch notes:
 * ports: lighttpd 1.4.38 `[5] <http://www.lighttpd.net/2015/12/5/1.4.38/>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.21 (December 04, 2015)
@@ -371,10 +355,6 @@ Here are the full patch notes:
 * ntp: gps settings now work with translations and properly reselect the configured device
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.20 (November 25, 2015)
@@ -413,10 +393,6 @@ Here are the full patch notes:
 * dashboard: show cell mode for ppp if available
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.19 (November 13, 2015)
@@ -455,10 +431,6 @@ Here are the full patch notes:
 * api (development): added API key authentication mechanism `[4] <https://wiki.opnsense.org/index.php/Howto_use_the_API>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.18 (November 04, 2015)
@@ -529,10 +501,6 @@ Here are the full patch notes:
 * ports: php 5.6.15 `[10] <https://php.net/ChangeLog-5.php#5.6.15>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 
@@ -596,10 +564,6 @@ Here are the full patch notes:
   captive portal is greatly appreciated)
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.16 (October 10, 2015)
@@ -641,10 +605,6 @@ here are the full patch notes:
 * languages: German now 64% complete
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.15 (September 30, 2015)
@@ -679,10 +639,6 @@ Here are the full patch notes:
 * traffic shaper: unload ipfw rules on disable
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.14 (September 22, 2015)
@@ -718,10 +674,6 @@ Here are the full patch notes:
 * languages: updated German translation (57% complete)
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.13 (September 15, 2015)
@@ -790,10 +742,6 @@ Here is the full list of changes:
 * crash reporter: improve submit/dismiss button layout
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.11 (August 27, 2015)
@@ -818,10 +766,6 @@ Here are the full patch notes:
 * diagnostics: unhide routing table headers
 
 
-Stay safe,
-Your OPNsense team
-
---
 .. code-block::
 
     # SHA256 (OPNsense-15.7.11-OpenSSL-cdrom-amd64.iso.bz2) = 4e6a78e309945f950bb924345d3bb3571f4cc4891227129bbf7a9f462d1a0f6b
@@ -870,10 +814,6 @@ Here are the full patch notes:
 * graphs: remove obsolete CPU graph pages
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.9 (August 19, 2015)
@@ -954,10 +894,6 @@ Here are the full patch notes:
 * proxy: added transparent proxy knob
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.7 (August 05, 2015)
@@ -1018,10 +954,6 @@ The update requires a reboot.  Here are the full patch notes:
 * system: revised the VLAN acceleration disable option to properly unset the interface flags
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.5 (July 28, 2015)
@@ -1069,10 +1001,6 @@ Here are the the full patch notes:
 * menu: fixed navigation for PPPoE edit
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.3 (July 17, 2015)
@@ -1103,10 +1031,6 @@ The full list of changes are as follows:
 That's all for now.  Really.
 
 
-Enjoy the summer and stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.2 (July 10, 2015)
@@ -1141,10 +1065,6 @@ Here are the full patch notes:
 * intrusion detection: enable the uricontent keyword for the ET ruleset
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7.1 (July 08, 2015)
@@ -1184,10 +1104,6 @@ Here is the full list of changes:
 * languages: minor tweaks for the German translation
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 15.7 (July 02, 2015)
@@ -1274,10 +1190,6 @@ this announcement for convenience.
 https://opnsense.org/download/
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 

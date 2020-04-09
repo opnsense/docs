@@ -60,10 +60,6 @@ Here are the full patch notes:
 * ports: strongswan 5.5.3 `[2] <https://wiki.strongswan.org/versions/65>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.1.10 (July 18, 2017)
@@ -96,10 +92,6 @@ Here are the full patch notes:
 * ports: suricata 3.2.3 `[5] <https://suricata-ids.org/2017/07/13/suricata-3-2-3-available/>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.1.9 (July 04, 2017)
@@ -162,10 +154,6 @@ Here are the full patch notes:
 * ports: curl 7.54.1 `[12] <https://curl.haxx.se/changes.html>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.1.8 (June 01, 2017)
@@ -220,10 +208,6 @@ Here are the full patch notes:
 * ports: openssl 1.0.2l `[2] <https://www.openssl.org/news/cl102.txt>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.1.7 (May 18, 2017)
@@ -285,10 +269,6 @@ Here are the full patch notes:
 * ports: sudo 1.8.20 `[5] <https://www.sudo.ws/stable.html>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.1.6 (May 04, 2017)
@@ -349,10 +329,6 @@ Here are the full patch notes:
 * ports: unbound 1.6.2  `[2] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.1.5 (April 24, 2017)
@@ -418,10 +394,6 @@ Here are the full patch notes:
 * ports: php 7.0.18 `[10] <https://php.net/ChangeLog-7.php#7.0.18>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.1.4 (March 29, 2017)
@@ -504,10 +476,6 @@ can be found below.
 * Full mirror list: https://opnsense.org/download/
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 
@@ -613,10 +581,6 @@ Here is the full list of changes:
 * ports: unbound 1.6.1 `[14] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.1.2 (February 22, 2017)
@@ -687,10 +651,6 @@ Here are the full patch notes:
 * ports: ca_root_nss 3.29
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.1.1 (February 09, 2017)
@@ -752,10 +712,6 @@ Here are the full patch notes:
 * ports: libevent 2.1.8 `[7] <https://raw.githubusercontent.com/libevent/libevent/release-2.1.8-stable/ChangeLog>`__ 
 * ports: squid 3.5.24 `[8] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5.24-RELEASENOTES.html>`__ 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.1 (January 31, 2017)
@@ -879,10 +835,6 @@ channels:
 * IRC: Freenode #OPNsense
 
 
-Stay safe,
-Ad, Franco, Jos and Shawn
-
---
 
 .. code-block::
 
@@ -1002,10 +954,6 @@ contact us through any of the known channels:
 * IRC: Freenode #OPNsense
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 
@@ -1098,10 +1046,6 @@ not hesitate to contact us through any of the known channels:
 * IRC: Freenode #OPNsense
 
 
-Stay safe and merry,
-Ad, Franco, Jos and Shawn
-
---
 .. code-block::
 
     # SHA256 (OPNsense-17.1.b-OpenSSL-cdrom-amd64.iso.bz2) = 6ed4e335757f5f58e34f3f59984a06183612ed0cffd5a9238f85b1a156a56039

@@ -116,10 +116,6 @@ Here are the full patch notes:
 * openvpn: fix display of selected CRL in server settings
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.18 (June 30, 2016)
@@ -155,10 +151,6 @@ Here are the full patch notes:
 * src: fix pf fragement timeout `[11] <https://lists.freebsd.org/pipermail/freebsd-pf/2016-May/008044.html>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.17 (June 15, 2016)
@@ -198,10 +190,6 @@ Here is the change log for 16.1.17:
 * lang: minor updates to Chinese, German and French
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.16 (June 06, 2016)
@@ -279,10 +267,6 @@ And here is the change log for 16.7 BETA:
 * router advertisements: allow to set mode and min / max intervals
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.15 (May 25, 2016)
@@ -402,10 +386,6 @@ And this is the change log for 16.7 BETA:
 * lang: numerous improvements (contributed by Fabian Franz)
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.13 (May 04, 2016)
@@ -462,10 +442,6 @@ And here is what changed in 16.7 Beta:
 * netflow: fixed bug with reporting frontend in Safari
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.12 (April 27, 2016)
@@ -532,10 +508,6 @@ And this is the change log for 16.7 BETA:
 * languages: first steps for Portuguese
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.11 (April 18, 2016)
@@ -563,10 +535,6 @@ Here is the full change log:
 * languages: updated French
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.10 (April 14, 2016)
@@ -599,10 +567,6 @@ Here is the full list of changes:
 * languages: another large batch of Russian, now 83% complete (contributed by Smart-Soft)
 * languages: updated French, German and Japanese
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.9 (April 08, 2016)
@@ -659,10 +623,6 @@ Here are the full patch notes:
 * development: allow hiding of menu entries using the Visibility="delete" attribute
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.8 (May 23, 2016)
@@ -713,10 +673,6 @@ Here are the full patch notes:
 * language: updated French and German
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 
@@ -803,10 +759,6 @@ Here are the full patch notes:
   and kernel sets
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.6 (March 09, 2016)
@@ -867,10 +819,6 @@ Here are the full patch notes:
 * languages: updated German and French
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.5 (March 02, 2016)
@@ -910,10 +858,6 @@ And now, here are the full patch notes:
 * language: updates for Chinese, French and German
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.4 (February 24, 2016)
@@ -943,10 +887,6 @@ Here are the full patch notes:
 * menu: updated help menu entries
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.3 (February 17, 2016)
@@ -997,10 +937,6 @@ Enough with the announcing already, here are the full patch notes:
 * services: improve redirect on service reload in diagnostics page
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.2 (February 05, 2016)
@@ -1049,10 +985,6 @@ Here are the full patch notes:
   and IP geolocation
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1.1 (February 02, 2016)
@@ -1092,10 +1024,6 @@ Without fuzz, here are the full patch notes:
   (contributed by Isaac Levy)
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 16.1 (January 28, 2016)
@@ -1205,10 +1133,6 @@ We thank all our contributors and users for their ongoing love
 and support. <3
 
 
-Cheers,
-Ad, Franco and Jos
-
---
 
 .. code-block::
 

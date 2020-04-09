@@ -70,10 +70,6 @@ A hotfix release was issued as 19.7.10_1:
 * firmware: enable upgrade path to 20.1
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.7.9 (January 09, 2020)
@@ -123,10 +119,6 @@ A hotfix release was issued as 19.7.9_1:
 * firewall: automatic business addition GeoIP feed
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.7.8 (December 18, 2019)
@@ -182,10 +174,6 @@ Here are the full patch notes:
 * ports: unbound 1.9.5 `[9] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.7.7 (November 21, 2019)
@@ -235,10 +223,6 @@ Here are the full patch notes:
 * ports: syslog-ng 3.24.1 `[15] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.24.1>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.7.6 (November 01, 2019)
@@ -285,10 +269,6 @@ Here are the full patch notes:
 * ports: sudo 1.8.29 `[6] <https://www.sudo.ws/stable.html#1.8.29>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.7.5 (October 11, 2019)
@@ -355,10 +335,6 @@ A hotfix release was issued as 19.7.5_5:
 * system: verbose print on "pluginctl -s" actions
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.7.4 (September 11, 2019)
@@ -400,10 +376,6 @@ A hotfix release was issued as 19.7.4_1:
 * captive portal: fix merge conflict in optimisation
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.7.3 (August 28, 2019)
@@ -473,10 +445,6 @@ Here is the full list of changes:
 * ports: wpa_supplicant 2.9 `[22] <https://w1.fi/cgit/hostap/plain/wpa_supplicant/ChangeLog>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.7.2 (August 05, 2019)
@@ -523,10 +491,6 @@ Here are the full patch notes:
 * ports: libevent 2.1.11 `[13] <https://raw.githubusercontent.com/libevent/libevent/release-2.1.11-stable/ChangeLog>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.7.1 (July 25, 2019)
@@ -576,10 +540,6 @@ Here are the full patch notes:
 * ports: squid 4.8 `[12] <http://lists.squid-cache.org/pipermail/squid-announce/2019-July/000100.html>`__ 
 
 
-Stay safe and hydrated,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 19.7 (July 17, 2019)
@@ -702,10 +662,6 @@ The public key for the 19.7 series is:
     # +ancHD4lnnHRd+4ybevUft0CAwEAAQ==
     # -----END PUBLIC KEY-----
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 
@@ -841,10 +797,6 @@ The public key for the 19.7 series is:
 Please let us know about your experience!
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 

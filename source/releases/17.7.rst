@@ -88,10 +88,6 @@ A hotfix release was issued as 17.7.12_1:
 * firmware: warn about end of life and enable upgrade path to 18.1
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.7.11 (December 20, 2017)
@@ -127,10 +123,6 @@ Here are the full patch notes:
 * ports: py-ipaddress 1.0.19
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.7.10 (December 14, 2017)
@@ -170,10 +162,6 @@ Two plugin hotfixes have been additionally issued:
 * plugins: os-rfc2136 1.1_1 fixes edit button in IE 11
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.7.9 (December 07, 2017)
@@ -240,10 +228,6 @@ Another hotfix release was issued as 17.7.9_9:
 * plugins: os-haproxy 2.2 fixes rules parameters `[10] <https://github.com/opnsense/plugins/pull/420>`__  (contributed by Frank Wall)
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.7.8 (November 22, 2017)
@@ -303,10 +287,6 @@ And here are the full patch notes:
 * ports: sudo 1.8.21p2_1 `[7] <https://bugzilla.sudo.ws/show_bug.cgi?id=807>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.7.7 (October 26, 2017)
@@ -356,10 +336,6 @@ A hotfix release was issued as 17.7.7_1:
 * plugins: os-freeradius 1.2.1 with EAP fix (contributed by Michael Muenz)
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.7.6 (October 20, 2017)
@@ -409,10 +385,6 @@ Here are the full patch notes:
 * ports: wpa_supplicant 2.6_2 `[3] <https://w1.fi/security/2017-1/wpa-packet-number-reuse-with-replayed-messages.txt>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.7.5 (October 05, 2017)
@@ -512,10 +484,6 @@ The public key for version 17.7 is:
     # -----END PUBLIC KEY-----
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 
@@ -577,10 +545,6 @@ And here are the full patch notes:
 * ports: py-cryptography 2.03 `[6] <https://cryptography.io/en/latest/changelog/#v2-0-3>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.7.3 (September 19, 2017)
@@ -602,10 +566,6 @@ Here are the full patch notes:
 * ports: sudo 1.8.21p2 `[1] <https://www.sudo.ws/stable.html#1.8.21p2>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.7.2 (September 13, 2017)
@@ -651,10 +611,6 @@ Here are the full patch notes:
 * ports: sudo 1.8.21p1 `[8] <https://www.sudo.ws/stable.html#1.8.21p1>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.7.1 (August 31, 2017)
@@ -742,10 +698,6 @@ Here are the full patch notes of the initial 17.7.1:
 * ports: unbound 1.6.5 `[11] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.7 (July 31, 2017)
@@ -839,10 +791,6 @@ The public key for version 17.7 is:
     # -----END PUBLIC KEY-----
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 
@@ -936,10 +884,6 @@ update directly into the 17.7 stable track and subsequent release candidates.
 Please let us know about your experience!
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 17.7.r1 (July 14, 2017)
@@ -1007,10 +951,6 @@ This release candidate does update directly into the 17.7 stable track
 and subsequent release candidates.  Please let us know about your experience!
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 

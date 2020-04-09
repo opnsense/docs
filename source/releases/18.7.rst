@@ -159,10 +159,6 @@ A hotfix release was issued as 18.7.10_4:
 * firmware: enable upgrade path to 19.1
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 18.7.9 (December 12, 2018)
@@ -251,10 +247,6 @@ Here are the full patch notes:
 * ports: unbound 1.8.2 `[12] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 18.7.8 (November 22, 2018)
@@ -325,10 +317,6 @@ Here are the full patch notes:
 * ports: sudo 1.8.26 `[10] <https://www.sudo.ws/stable.html#1.8.26>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 18.7.7 (November 08, 2018)
@@ -402,10 +390,6 @@ Here are the full patch notes:
 * ports: suricata 4.0.6 `[5] <https://suricata-ids.org/2018/11/06/suricata-4-0-6-available/>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 18.7.6 (October 25, 2018)
@@ -460,10 +444,6 @@ Here are the full patch notes:
 * ports: dnsmasq 2.80 `[6] <http://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 18.7.5 (October 17, 2018)
@@ -530,10 +510,6 @@ A hotfix release was issued as 18.7.5_1:
 * mvc: do not speed up parsing very large config files until fixed
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 18.7.4 (September 27, 2018)
@@ -584,10 +560,6 @@ Here are the full patch notes:
 * ports: squid 3.5.28 `[4] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5.28-RELEASENOTES.html>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 18.7.3 (September 18, 2018)
@@ -656,10 +628,6 @@ Here are the full patch notes:
 * ports: sudo 1.8.25p1 `[5] <https://www.sudo.ws/stable.html#1.8.25p1>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 18.7.2 (September 06, 2018)
@@ -726,10 +694,6 @@ Here are the full patch notes:
 * ports: wpa_supplicant security updates `[9] <https://w1.fi/security/2018-1/>`__ 
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 18.7.1 (August 14, 2018)
@@ -799,10 +763,6 @@ A hotfix release was issued as 18.7.1_3:
 * openvpn: address P2P TLS /30 network client-connect validation quirk
 * plugins: os-acme-client 1.17 `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-18:08.tcp.asc>`__  (contributed by Frank Wall and Alexander Graf)
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 18.7 (July 31, 2018)
@@ -952,10 +912,6 @@ The public key for the 18.7 series is:
     # -----END PUBLIC KEY-----
 
 
-Stay safe and happy,
-Your OPNsense team
-
---
 
 .. code-block::
 
@@ -1037,10 +993,6 @@ This release candidate does update directly into the 18.7 stable track
 and subsequent release candidates.  Please let us know about your experience!
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 --------------------------------------------------------------------------
 18.7.r1 (July 11, 2018)
@@ -1179,10 +1131,6 @@ This release candidate does update directly into the 18.7 stable track
 and subsequent release candidates.  Please let us know about your experience!
 
 
-Stay safe,
-Your OPNsense team
-
---
 
 .. code-block::
 
