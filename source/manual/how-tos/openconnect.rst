@@ -27,6 +27,9 @@ The setup of the client is very simple. Just tick **Enable** and fill out **VPN 
 **Username** and **Password**. Be sure that the FQDN matches the name in the certificate 
 or you will receive an error. Also wildcard certificates can produce errors.
 
+Once enabled, a new interface will be available for specifying firewall rules;
+:menuselection:`Firewall --> Rules --> OpenConnect` will appear.
+
 ------------------------------
 Step 3 - Troubleshoot problems
 ------------------------------
