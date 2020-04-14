@@ -17,6 +17,13 @@ First, you can set up two tunnels to the same gateway and failover when one line
 Second, you can run dynamic routing protocols over the tunnel to create more redundant,
 or software-defined networks.
 
+.. Note::
+
+    For a stable setup, we highly advise using standard IPv4 / IPv6 addresses, although the web interface allows the
+    use of fully qualified domain names (e.g. my.own.domain.xyz), this will have side affects
+    (the tunnel device won't react on name changes for example).
+
+
 ----------------
 Before you start
 ----------------
