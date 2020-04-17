@@ -67,12 +67,13 @@ The newly created GIF tunnel must now be assigned as a new interface.
 Go to :menuselection:`Interfaces --> Assignments`, select the GIF tunnel for **New interface**
 and click the **+** sign next to it.
 
-Then under :menuselection:`Interfaces -> [OPTX]` check **Enable Interface** and change the
-description to e.g. TUNNELBROKER before hitting **Save**.
+Then under :menuselection:`Interfaces --> [OPTX]` (or :menuselection:`Interfaces --> [TunnelBroker]` 
+depending on what you selected) check **Enable Interface** and change the
+description to e.g., TUNNELBROKER before hitting **Save**.
 
 The newly created interface must now be set as the default IPv6 gateway
 under :menuselection:`System --> Gateways --> Single` by editing the new gateway entry
-TUNNELBROKER_TUNNELV6 and checking **Default Gateway** before saving.
+TUNNELBROKER_TUNNELV6 and checking **Upstream Gateway** before saving.
 
 -----------------------------
 Step 3 - Basic Firewall Rules
@@ -103,11 +104,10 @@ Step 5 - Configure DHCPv6 SLAAC
 -------------------------------
 
 We'll next configure OPNsense for Stateless Address Auto Configuration (SLAAC).
-We're going to set up the DHCPv6 service. Go to :menuselection:`Services --> DHCPv6 --> Server`.
+Go to :menuselection:`Services --> Router Advertisements` and choose an interface.
 
-Simply choose a range for clients to use. Save your settings. Next go to the
-Router Advertisements sub tab on that same page. Set the **Router Advertisements**
-setting to *Assisted* and the **Router Priority** setting to *Normal*.
+Set the **Router Advertisements** setting to *Assisted* and the 
+**Router Priority** setting to *Normal*.
 
 .. image:: images/tunnelbroker_dhcpv6.png
    :width: 100%
