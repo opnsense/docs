@@ -146,7 +146,7 @@ For our example we will use the following setting:
 
 Click **Save** to add the new Certificate Authority.
 
-Create a Certificate
+Create a Server Certificate
 ---------------------
 After creating the Authority we will also need a certificate.
 To create a new certificate, go to :menuselection:`System --> Trust --> Certificates` and click
@@ -211,6 +211,12 @@ compatible app. To do so click in the **Click to unhide** button in the
 **OTP QR code** row and you will get a QR code to scan with your smartphone.
 See also: :doc:`/manual/how-tos/two_factor`
 
+
+.. Note::
+
+    Always make sure to use the same **Certificate authority** as the certificate authority created earlier, as
+    this links the clients / users to the correct openvpn server.
+
 -----------------------------
 
 ------------------------
@@ -271,16 +277,26 @@ For our example will use the following settings:
 ===================================== ===============================================
 
 .. Note::
-          **Renegotiate time** is used to renegotiate data channel key after n
-          seconds (default=3600).When using a one time password, be advised that
-          your connection will automatically drop because your password is not
-          valid anymore.Set to 0 to disable, remember to change your client when
-          changed later.
+
+    **Renegotiate time** is used to renegotiate data channel key after n
+    seconds (default=3600).When using a one time password, be advised that
+    your connection will automatically drop because your password is not
+    valid anymore.Set to 0 to disable, remember to change your client when
+    changed later.
 
 Click **Save** to add the new server.
 
 .. image:: images/sslvpn_server.png
    :width: 100%
+
+.. Tip::
+
+   Use **Strict User/CN Matching** to force the usage of the same username as certificate CN, this prevents
+   people from logging in using other credentials than the certificate name supplied. (e.g. **fred** can't login as **root**)
+
+.. Tip::
+
+   The option **Enforce local group** can be used to constraint access to only users in a specific (set of) group(s)
 
 ----------------------
 
@@ -308,14 +324,18 @@ however you may decide just to allow traffic to one or more servers.
 Step 3 - Export Client Configuration
 -------------------------------------
 
+Using the **Remote Access Server** dropdown you can select the server for which you want to download client files,
+when there are certificates connected (using the same authority) it will list all available client certificates and
+attached users.
+
 macOS & Windows
 -----------------
 For macOS & Windows users we recommend using Viscosity from Sparklabs (https://www.sparklabs.com/viscosity/).
 Viscosity is very easy to setup and use and works well on both platforms.
 
 Go to :menuselection:`VPN --> OpenVPN --> Client Export` and select the newly created VPN server from
-the list. Leave everything default and Download the **Viscosity Bundle** from the
-list of export options under **Client Install Packages**.
+the list. Leave everything default and Download the **Viscosity** type from the
+list of export options under **Export type**.
 
 Now on your Mac or Windows PC unpack the bundle and import the Viscosity.visc file.
 Double clicking it should be enough to get it imported. When asked for an application
@@ -352,8 +372,8 @@ For Android users we recommend using OpenVPN for Android (https://play.google.co
 from Arne Schwabe.
 
 Go to :menuselection:`VPN --> OpenVPN --> Client Export` and select the newly created VPN server from
-the list. Leave everything default and Download the inline **Android** configuration from the
-list of export options under **Client Install Packages**.
+the list. Leave everything default and Download the inline **File only** configuration from the
+list of export options under **Export type**.
 
 Import the hostname-udp-1194-android-config.ovpn file into OpenVPN for Android.
 Clicking the file should be enough to get it imported. When asked for an application
@@ -367,8 +387,8 @@ For iOS users we recommend using OpenVPN Connect (https://itunes.apple.com/us/ap
 from OpenVPN Technologies.
 
 Go to :menuselection:`VPN --> OpenVPN --> Client Export` and select the newly created VPN server from
-the list. Leave everything default and Download the inline **OpenVPN Connect** configuration from the
-list of export options under **Client Install Packages**.
+the list. Leave everything default and Download the inline **File only** configuration from the
+list of export options under **Export type**.
 
 Import the hostname-udp-1194-ios-config.ovpn file into OpenVPN Connect.
 Clicking the file should be enough to get it imported. When asked for an application
