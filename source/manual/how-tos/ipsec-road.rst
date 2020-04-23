@@ -258,11 +258,6 @@ Enter the following into the form:
  **Password**    &test!9T
 =============== ==========
 
-**Save** this user and reopen in edit mode to add privileges.
-
-Add privilege **User - VPN - IPsec xauth Dialin** by pressing the **+** under
-**Effective Privileges**.
-
 **Save** to apply.
 
 ----------------------
