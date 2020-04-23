@@ -147,7 +147,7 @@ For our example we will use the following setting:
 Click **Save** to add the new Certificate Authority.
 
 Create a Server Certificate
----------------------
+----------------------------
 After creating the Authority we will also need a certificate.
 To create a new certificate, go to :menuselection:`System --> Trust --> Certificates` and click
 **Add** in the upper right corner of the form.

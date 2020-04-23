@@ -10,6 +10,8 @@ To apply for access to the OPNsense Amazon AWS EC2 cloud image, you need:
     see: https://opnsense.org/support-overview/commercial-support/)
 * Supply your Amazon Account Number
     to share the Amazon Machine Image with.
+* The zone or zones you would like to install the image in
+    e.g. eu-central-1, us-east-1
 
 ---------------------
 Step 1 - New Instance
