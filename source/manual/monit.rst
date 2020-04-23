@@ -30,9 +30,9 @@ save it, then apply the changes.
 
 The fields in the dialogs are described in more detail in the “Settings overview” section of this document.
 
--------
-Example
--------
+---------
+Example 1
+---------
 
 In this example, we'll add a service to restart the FTP proxy (running on port 8021) if it has stopped. To avoid an
 eternal loop in case something is wrong, we'll also add a provision to stop trying if the FTP proxy has had to be
@@ -77,6 +77,46 @@ Now, navigate to the “Service Settings” tab. Here, add the following service
 | Stop      | /usr/local/sbin/configctl ftpproxy stop 127_0_0_1_8021  |
 +-----------+---------------------------------------------------------+
 | Tests     | FTPProxy8021, RestartLimit5                             |
++-----------+---------------------------------------------------------+
+
+Save and apply.
+
+---------
+Example 2
+---------
+
+In this example, we want to monitor a VPN tunnel and ping a remote system.
+If the ping does not respond anymore, IPsec should be restarted.
+
+First, make sure you have followed the steps under “Global setup”. Then, navigate to the “Service Tests Settings” tab.
+Here, you need to add one test:
+
++-----------+------------------------------------------+
+| Setting   | Value                                    |
++===========+==========================================+
+| Name      | IPSEC_RESTART                            |
++-----------+------------------------------------------+
+| Condition | failed ping4 count 5 address <local IP>  |
++-----------+------------------------------------------+
+| Action    | Restart                                  |
++-----------+------------------------------------------+
+
+Now, navigate to the “Service Settings” tab. Here, add the following service:
+
++-----------+---------------------------------------------------------+
+| Setting   | Value                                                   |
++===========+=========================================================+
+| Name      | IPSEC_MONITOR                                           |
++-----------+---------------------------------------------------------+
+| Type      | Remote Host                                             |
++-----------+---------------------------------------------------------+
+| Address   | <remote IP>                                             |
++-----------+---------------------------------------------------------+
+| Start     | /usr/local/sbin/configctl ipsec start                   |
++-----------+---------------------------------------------------------+
+| Stop      | /usr/local/sbin/configctl ipsec stop                    |
++-----------+---------------------------------------------------------+
+| Tests     | IPSEC_RESTART                                           |
 +-----------+---------------------------------------------------------+
 
 Save and apply.
