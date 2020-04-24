@@ -26,6 +26,11 @@ Network Interfaces                    Interface IP addresses used for responding
 DNSSEC                                Enable `DNSSEC <https://en.wikipedia.org/wiki/Domain_Name_System_Security_Extensions>`__
                                       to use digital signatures to validate results from upstream servers and mitigate
                                       against `cache poisoning <https://en.wikipedia.org/wiki/DNS_spoofing>`__.
+DNS64                                 Enable `DNS64 <https://en.wikipedia.org/wiki/IPv6_transition_mechanism#DNS64>`__
+                                      so IPv6-only clients can reach IPv4-only servers. If enabled, Unbound synthesizes
+                                      AAAA records for domains which only have A records. DNS64 requires NAT64 to be
+                                      useful, e. g. the Tayga plugin or a third-party NAT64 service. The DNS64 prefix
+                                      must match the IPv6 prefix used be the NAT64.
 DHCP Registration                     **IPv4 only** If this option is set, then machines that specify their hostname
                                       when requesting a DHCP lease will be registered in Unbound,
                                       so that their name can be resolved.
