@@ -143,7 +143,7 @@ Here are the full patch notes:
 * ports: sqlite 3.19.3 `[2] <https://sqlite.org/releaselog/3_19_3.html>`__ 
 * ports: openvpn 2.4.3 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
 * ports: sudo 1.8.20p2 `[4] <https://www.sudo.ws/stable.html#1.8.20p2>`__ 
-* ports: dnsmasq 2.77 `[5] <https://github.com/imp/dnsmasq/blob/master/CHANGELOG>`__ 
+* ports: dnsmasq 2.77 `[5] <http://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: openldap 2.4.45 `[6] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: php 7.0.20 `[7] <https://php.net/ChangeLog-7.php#7.0.20>`__ 
 * ports: suricata 3.2.2 `[8] <https://suricata-ids.org/2017/06/07/suricata-3-2-2-available/>`__ 

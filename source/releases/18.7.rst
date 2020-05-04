@@ -206,8 +206,8 @@ Here are the full patch notes:
 * firmware: when pkg needs to be updated do not prompt for base and kernel set
 * firmware: use embedded obsolete file list for removal on base set install
 * intrusion detection: fix daily cron job, was actually monthly
-* ipsec: assorted cleanups in HTML and PHP code 
-* openvpn: assorted cleanups in HTML and PHP code 
+* ipsec: assorted cleanups in HTML and PHP code
+* openvpn: assorted cleanups in HTML and PHP code
 * unbound: only use IPv6 when enabled and IPv4 is not preferred
 * unbound: restart after VPN is up
 * unbound: updated help text for verbosity level (contributed by Northguy)

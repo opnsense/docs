@@ -29,6 +29,87 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+20.1.6 (April 30, 2020)
+--------------------------------------------------------------------------
+
+
+Quick update as planned.  Here are the full patch notes:
+
+* system: add data length option to gateway monitor settings
+* firewall: avoid greedy matching with live log parsing regression from 20.1.5
+* firmware: detect runtime defaults when using "make upgrade" with core.git
+* firmware: clean up packaging code and support ".link" file extension
+* firmware: use CORE_FLAVOUR instead of FLAVOUR when using opnsense-bootstrap
+* firmware: enable to optionally reach master branch when using opnsense-boostrap
+* firmware: allow overriding CORE_ABI when using opnsense-bootstrap
+* firmware: copy make.conf instead of linking when using opnsense-code
+* firmware: always fetch tools.git when using opnsense-code
+* rc: use "onifexists" for VGA TTY instead of "on"
+* rc: missing ntpd user on 20.7 / 12.1
+* plugins: os-unbound-plus DoT validation fix (contributed by Michael Muenz)
+* src: fix ipfw invalid mbuf handling `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:10.ipfw.asc>`__ 
+* ports: libyaml 0.2.4 `[2] <https://raw.githubusercontent.com/yaml/libyaml/master/Changes>`__ 
+* ports: openssl 1.1.1g `[3] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: py-yaml 5.3.1 `[4] <https://raw.githubusercontent.com/yaml/pyyaml/master/CHANGES>`__ 
+* ports: radvd 2.18 `[5] <http://www.litech.org/radvd/CHANGES.txt>`__ 
+* ports: sqlite 3.31.1 `[6] <https://www.sqlite.org/changes.html>`__ 
+* ports: squid 4.11 `[7] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-4.11-RELEASENOTES.html>`__ 
+* ports: suricata 4.1.8 `[8] <https://suricata-ids.org/2020/04/28/suricata-4-1-8-released/>`__ 
+
+
+
+--------------------------------------------------------------------------
+20.1.5 (April 23, 2020)
+--------------------------------------------------------------------------
+
+
+Today ships the first release version of the supplemental firewall rule
+API via plugin, a new firewall shaper statistics GUI and API and the usual
+number of improvements and third party updates.
+
+Note that this version does not ship OpenSSL 1.1.1g as at this point our
+release decision would have been to push 20.1.5 to next week or do a
+smaller 20.1.6 next week on top.
+
+Here are the full patch notes:
+
+* system: support configuration for SSH HostKeyAlgorithms, KexAlgorithms, Ciphers and MACs
+* system: simplify validations in gateway monitor settings
+* interfaces: mark VXLAN and loopback devices as configurable
+* interfaces: validation typo caused failure to communicate unassignable targets
+* interfaces: netstat tree view GUI and API
+* interfaces: use libxo to extract ARP data
+* firewall: checkbox selection ignores visibility setting
+* firewall: add network group type to combine aliases cleanly
+* firewall: IPv6 essential icmpv6 allow for ::
+* firewall: new shaper statistics GUI and API
+* firewall: support filter log messages with PID
+* reporting: when flow times are not returned stick to receive timestamp
+* openvpn: use multihome when selecting "any" interface with UDP
+* unbound: create shared startup script for background task
+* mvc: also store "" field value as initial state to prevent empty fields as being marked as changed
+* mvc: firewall source NAT ranges support in plugins
+* mvc: keep options in static set for PortField
+* mvc: support interface targets without addresses
+* mvc. add "migration_prefix" attribute to model
+* mvc: catch ArgumentCountError
+* mvc: skip empty gateway artefact
+* plugins: os-acme-client 1.31 `[1] <https://github.com/opnsense/plugins/pull/1784>`__ 
+* plugins: os-firewall 1.0 API supplemental package
+* plugins: os-haproxy 2.22 `[2] <https://github.com/opnsense/plugins/pull/1783>`__ 
+* plugins: os-unbound-plus 1.1 `[3] <https://github.com/opnsense/plugins/blob/master/dns/unbound-plus/pkg-descr>`__ 
+* plugins: os-wol 2.3 adds case insensitive matching in widget (contributed by Gauss23)
+* ports: ca_root_nss 3.51.1
+* ports: dnsmasq 2.81 `[4] <http://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: krb5 1.18.1 `[5] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
+* ports: openvpn 2.4.9 `[6] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24#OpenVPN2.4.9>`__ 
+* ports: php 7.2.30 `[7] <https://www.php.net/ChangeLog-7.php#7.2.30>`__ 
+* ports: py-certifi 2020.4.5.1
+* ports: strongswan 5.8.4 `[8] <https://wiki.strongswan.org/versions/77>`__ 
+
+
+
+--------------------------------------------------------------------------
 20.1.4 (April 08, 2020)
 --------------------------------------------------------------------------
 

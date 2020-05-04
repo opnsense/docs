@@ -64,7 +64,7 @@ Here is the full list of changes:
 * src: improve reliability of ZFS `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:06.file.asc>`__ 
 * src: updated to tzdata2015e `[4] <http://mm.icann.org/pipermail/tz-announce/2015-June/000032.html>`__ 
 * ports: openssl 1.0.2c `[5] <https://www.openssl.org/news/openssl-1.0.2-notes.html>`__ , libressl 2.2.0 `[6] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.0-relnotes.txt>`__ , php 5.6.10 `[7] <https://php.net/ChangeLog-5.php#5.6.10>`__ ,
-  dnsmasq 2.73 `[8] <http://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2015q2/009644.html>`__ , smartmontools 6.4 `[9] <https://www.smartmontools.org/browser/tags/RELEASE_6_4/smartmontools/NEWS>`__ 
+  dnsmasq 2.73 `[8] <http://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ , smartmontools 6.4 `[9] <https://www.smartmontools.org/browser/tags/RELEASE_6_4/smartmontools/NEWS>`__ 
 * syslogd: disable unmaintained and unused ZMQ patches
 * opnsense-update: gained independent awareness of kernel and
   base system version
