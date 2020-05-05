@@ -25,9 +25,10 @@ would like to store rrd statistics as well (in which case they will be stored in
 Restoring backups can either be performed partially or for the complete configuration. Since configurations usually
 have various components that depend on each other, it's most safe to restore a complete configuration.
 
-.. Note::
+.. Warning::
 
-    Partial restores can lead to unexpected behavior, use with care.
+    Partial restores can lead to unexpected behavior, use with care. Future versions might not support this feature due
+    to consistency reasons. (not all components can be partially exported)
 
 
 .. toctree::
