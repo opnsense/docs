@@ -24,7 +24,6 @@ These are all combined in the firewall section.
    manual/firewall_groups
    manual/firewall_vip
    manual/firewall_scrub
-   manual/how-tos/shaper
    manual/how-tos/carp
    manual/logging_firewall
    manual/diagnostics_firewall

@@ -73,8 +73,37 @@ share the available bandwidth.
 
 The shaping rules can be defined in the rules section of the traffic shaper.
 
--------------
-Configuration
--------------
 
-Read the how to, here: :doc:`how-tos/shaper`
+-----------------------
+Status / statistics
+-----------------------
+
+To check if your shaper is acting like intended, you can use the status page (:menuselection:`Firewall -> Shaper -> Status`).
+
+This component will show a breakdown of configured pipes, queues and rules showing the amount of traffic passed through it
+since the last restart of the service including the timestamp when that happened.
+
+If flows are active, you can show their details using the "Show active flows" checkbox, do remember to refresh your view after
+changing these settings.
+
+The rules are not shown by default, you can use the "Show rules" checkbox to enabled those,
+this option can help you identifying misconfigurations more easily,
+since the underlaying technology (:code:`ipfw`) keeps track of data on a per rule basis.
+
+.. Tip::
+
+    Make sure to use easy to find descriptions, these will ease debugging when traffic isn't being handled as expected.
+
+---------------------------
+Configuration / How-tos
+---------------------------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   how-tos/shaper_dedicated_bw
+   how-tos/shaper_share_evenly
+   how-tos/shaper_limit_per_user
+   how-tos/shaper_prioritize_using_queues
+   how-tos/shaper_guestnet
