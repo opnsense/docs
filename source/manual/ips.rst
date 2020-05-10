@@ -64,8 +64,8 @@ Enable eve syslog output              Send alerts in eve format to syslog, using
                                       Drop logs will only be send to the internal logger,
                                       due to restrictions in suricata.
 Pattern matcher                       Controls the pattern matcher algorithm.
-                                      Aho-Corasick is the default. On supported platforms,
-                                      Hyperscan is the best option.
+                                      Aho–Corasick is the default. On supported platforms, Hyperscan is the best option.
+                                      On commodity hardware if Hyperscan is not available the suggested setting is "Aho–Corasick Ken                                           Steele variant" as it performs better than "Aho–Corasick".
 Interfaces                            Interfaces to protect. When in IPS mode, this need to be real interfaces
                                       supporting netmap. (when using VLAN's, enable IPS on the parent)
 Rotate log                            Log rotating frequency, also used for the internal event logging
