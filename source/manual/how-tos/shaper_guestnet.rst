@@ -121,3 +121,5 @@ Create a rule for the upload traffic
 ====================== =================== =====================================================
 
 Now press |apply| to activate the traffic shaping rules.
+
+.. |apply| image:: images/applybtn.png

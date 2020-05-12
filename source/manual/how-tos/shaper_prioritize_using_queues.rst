@@ -128,3 +128,5 @@ Now press |apply| to activate the traffic shaping rules.
 
 .. image:: images/shaping_rules_s4.png
   :width: 100%
+
+.. |apply| image:: images/applybtn.png
