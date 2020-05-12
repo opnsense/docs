@@ -16,16 +16,3 @@ with the settings of the component they belong to. The log files can be found he
  **Unbound DNS**           :menuselection:`Services --> Unbound DNS --> Log File`           *Unbound resolver logs can be found here*
  **Web Proxy**             :menuselection:`Services --> Web Proxy --> Log File`             *Squid access.log, store.log and cache.log*
 ========================= ================================================================ =============================================
-
-.. Note::
-   Log files on file system:
-   /var/log/portalauth.log (clog)
-   /var/log/dhcpd.log (clog)
-   /var/log/dnsmasq.log (clog)
-   /var/log/haproxy.log (clog)
-   /var/log/ntpd.log (clog)
-   /var/log/suricata.log (clog)
-   /var/log/resolver.log (clog)
-   /var/log/squid/access.log (text)
-   /var/log/squid/cache.log (text)
-   /var/log/squid/store.log (text)

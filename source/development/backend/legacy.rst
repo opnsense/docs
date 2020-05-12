@@ -206,9 +206,8 @@ To register syslog targets, the :code:`<plugin>_syslog()` function should return
 
 .. Note::
 
-    As of OPNsense 19.7 Syslog-NG is included in our base system and includes :code:`/usr/local/etc/syslog-ng.conf.d/*.conf`
-    when started. When not depending on circular logs, you might want to consider adding templates there instead of
-    using this legacy handler.
+    As of OPNsense 19.7 Syslog-NG is included in our base system, when not using circular logs, these files will
+    only be used to identify applications for custom syslog remote targets in :menuselection:`System->Settings->Logging / targets`.
 
 
 To test if a service registration functions properly, just restart the syslog facility:
@@ -217,6 +216,15 @@ To test if a service registration functions properly, just restart the syslog fa
 
     pluginctl -s syslogd restart
 
+
+.. Note::
+
+    In order to define local targets for Syslog-NG you can just add **local** filters which will be collected into
+    one large syslog configuration.
+    The readme on `GitHub <https://github.com/opnsense/core/blob/master/src/opnsense/service/templates/OPNsense/Syslog/local/README>`__
+    describes the process.
+    When running into issues, always make sure to manually restart syslog-ng first (:code:`service syslog-ng restart`), definition errors won't
+    be written into any log.
 
 
 -----------------

@@ -14,12 +14,3 @@ with the settings of the component they belong to. The log files can be found he
  **Gateways**                  :menuselection:`System --> Gateways --> Log File`   *Lists Dpinger gateway tracking related log messages*
  **Routing**                   :menuselection:`System --> Routes --> Log File`     *Routing changes or interface events*
 ============================= =================================================== =============================================================
-
-.. Note::
-   Log files on file system:
-   /var/log/system.log (clog)
-   /var/log/configd.log (clog)
-   /var/log/lighttpd.log (clog)
-   /var/log/pkg.log (clog)
-   /var/log/gateways.log (clog) Note: By default gateway monitoring is disabled, so the log will be empty.
-   /var/log/routing.log (clog)

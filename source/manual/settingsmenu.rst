@@ -203,47 +203,34 @@ Disable the startup/shutdown beep Disable beeps via the built-in speaker (“PC 
 Logging
 ------------
 
-Log settings can be found at :menuselection:`System --> Settings --> Logging`. The settings are in two groups,
-one for local logging and one for remote logging.
+Log settings can be found at :menuselection:`System --> Settings --> Logging`.
 
 An overview of the local settings:
 
 ============================================ ====================================================================================================================
 Setting                                      Explanation
 ============================================ ====================================================================================================================
-Reverse Display                              When enabled, the most recent log entry will be displayed on top.
+Disable circular logs                        Disable legacy circular logging and switch to regular file logging
 GUI Log Entries to Display                   Number of log entries displayed in the GUI.
-Log File Size (Bytes)                        Maximum size of circular logs (which most OPNsense log files are)
+Log File Size (Bytes)                        (circular logs) Maximum size of circular logs (which most OPNsense log files are)
+Preserve logs (Days)                         (when circular logs are disabled) configures the number of days to keep logs.
 Log Firewall Default Blocks                  Turning these off means that only hits for your custom rules will be logged.
 Web Server Log                               If checked, lighttpd errors are displayed in the main system log.
 Disable writing log files to the local disk  Useful to avoid wearing out flash memory (if used). Remote logging can be used to save the logs instead if desired.
 Reset Logs                                   Clear all logs. Note that this will also restart the DHCP server, so make sure any DHCP settings are saved first.
 ============================================ ====================================================================================================================
 
-An overview of the remote settings (superseded by new Logging/target syslog-ng menu):
-
-======================= ===============================================================================================
-Setting                 Explanation
-======================= ===============================================================================================
-Enable Remote Logging   Master on/off switch
-Source Address          Which interface to bind to. Select “any” if you want to use a mix of IPv4 and IPv6 servers.
-IP Protocol             Preferred IP version (it will this first). Will only be used if “Source Address” is not an IP.
-Remote Syslog Servers   IP addresses of remote syslog servers, or IP:port combinations.
-Remote Syslog Contents  Can be used to selectively log event categories
-======================= ===============================================================================================
-
 .. Note::
 
-    The remote logging feature will likely be removed in OPNsense 20.1, since the new **Logging / targets**
-    offers more flexibility and has overlapping functionality. We advise to switch as soon as possible.
-
-
+    Switching from legacy circular logs to regular log files doesn't remove stored data, but regular files will always
+    be considered more recent. If for some reason you want to switch back to clog, we advice to remove all logs to avoid older
+    entries being sorted on top of the views. When possible we advise to reset logs after each switch.
 
 .....................
 Circular Logs
 .....................
 
-Most of the core features log to circular log files so they will not grow bigger
+Most of the core features support writing to circular log files so they will not grow bigger
 than a predefined size. You can tune this value via :menuselection:`System --> Settings --> Logging`.
 There, you can also disable the writing of logs to disk or reset them all.
 
@@ -258,6 +245,22 @@ or follow the contents via:
 .. code-block:: sh
 
     clog -f /path/to/log
+
+
+.. Note::
+
+    If you can avoid the use of circular logs we strongly advise to do so, the clog path is longer than the direct file path and
+    therefor is more expensive in terms of computing power. In the long run clog support will be dropped, it's not a native
+    FreeBSD syslog feature (and requires backporting).
+
+............................
+Local (non circular) logs
+............................
+
+As of OPNsense 20.7 we will change our default logging method from circular logs to regular files.
+These files will use the following pattern on disk :code:`/var/log/<application>/<application>_[YYYYMMDD].log` (one file per day).
+Our user interface provides an integrated view stitching all collected files together.
+
 
 .....................
 Plugin Logs

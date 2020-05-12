@@ -11,10 +11,6 @@ with the settings of the component they belong to. The log files can be found he
  **Plain View**   :menuselection:`Firewall --> Log Files --> Plain View`   *Just the plain contents how **pf** logs into **filter.log** *
 ================ ======================================================== =============================================================================
 
-.. Note::
-   Log files on file system:
-   /var/log/filter.log (clog)
-
 Live View
 ---------
 
