@@ -12,6 +12,17 @@ the documentation for these packages as provided by Deciso or one of its partner
 
 For support on this software, please consult the vendor as found below.
 
+
+--------------------
+Deciso
+--------------------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   vendor/deciso/opncentral
+
 --------------------
 Sunnyvalley
 --------------------
