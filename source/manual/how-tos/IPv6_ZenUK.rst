@@ -37,8 +37,7 @@ interface shown below.
 	:width: 100%
 
 As stated before, Zen provide a /48 prefix, so select the prefix size
-accordingly. We directly send the solicit as in this case we do not wish
-to wait for an RA from the Zen gateway.
+accordingly. 
 
 The only other requirement in this section is to select ‘Use IPv4
 connectivity’, this is because the IPv6 traffic is routed over the PPPoE
