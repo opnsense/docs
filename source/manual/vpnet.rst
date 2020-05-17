@@ -53,6 +53,7 @@ Via plugins additional VPN technologies are offered, including:
 
 * **Legacy L2TP & PPTP**
 * **OpenConnect** - SSL VPN client, initially build to connect to commercial vendor appliances like Cisco ASA or Juniper.
+* **Stunnel** - Provides an easy to setup universal TLS/SSL tunneling service, often used to secure unencrypted protocols.
 * **Tinc** - Automatic Full Mesh Routing
 * **WireGuard** - Very simple and fast VPN working with public and private keys.
 * **Zerotier** - seamlessly connect everything, requires account from zerotier.com, free for up to 100 devices.
@@ -129,6 +130,7 @@ Other
    :titlesonly:
 
    how-tos/openconnect
+   how-tos/stunnel
    how-tos/wireguard-s2s
    how-tos/wireguard-client
    how-tos/wireguard-client-azire

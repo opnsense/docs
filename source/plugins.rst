@@ -35,6 +35,7 @@ VPN & Connectivity
    :titlesonly:
 
    manual/how-tos/openconnect
+   manual/how-tos/stunnel
    manual/how-tos/wireguard-s2s
    manual/how-tos/wireguard-client
    manual/how-tos/wireguard-client-azire
