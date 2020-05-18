@@ -57,6 +57,11 @@ a username for the client  (for example).
 
     The example setup assumes a proxy server is already configured and functional.
 
+.. Note::
+
+    The plugin itself can be installed using the :menuselection:`System --> Firmware --> Plugins` menu (search for :code:`stunnel`).
+
+
 Configure the server
 ------------------------
 
