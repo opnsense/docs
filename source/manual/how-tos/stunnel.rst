@@ -4,7 +4,7 @@ Stunnel Plugin
 
 Stunnel in OPNsense can be used to forward tcp connections securely using TLS mutual authentication.
 Although the application itself supports authentication based on pre-shared keys, our plugin only supports certificate based
-authentication, which is more secure but comes with more overhead (https://www.stunnel.org/perf.html).
+authentication, which is more secure but comes with more (connect) overhead (https://www.stunnel.org/perf.html).
 
 
 .. blockdiag::
@@ -31,7 +31,7 @@ authentication, which is more secure but comes with more overhead (https://www.s
         }
     }
 
-The above diagram shows the basic functionality as provided by this plugin, the client part (not a part of this plugin) connects to
+The above diagram shows the basic functionality as provided by this plugin, the client part (not delivered by this plugin) connects to
 to the server at a predefined port and starts forwarding local received packets to the other end of the tunnel.
 
 Securing http proxy traffic is one of the more common use-cases of stunnel.
@@ -55,7 +55,7 @@ a username for the client  (for example).
 
 .. Note::
 
-    The example setup assumes a proxy server is already configured and funcitonal.
+    The example setup assumes a proxy server is already configured and functional.
 
 Configure the server
 ------------------------
@@ -65,7 +65,7 @@ To add a new tunnel, go to :menuselection:`VPN -> Stunnel -> Configuration` and 
 :Listen address:
 
     The address to listen on, we generally advice to use a loopback interface here and forward traffic to it using a :doc:`port forward <../nat>`.
-    For our example we choose :code:`31280` here.
+    Leave this default (127.0.0.1) for our example.
 
 .. Note::
 
@@ -74,6 +74,7 @@ To add a new tunnel, go to :menuselection:`VPN -> Stunnel -> Configuration` and 
 :Listen port:
 
     The portnumber to listen on (where the stunnel client connects to).
+    For our example we choose :code:`31280` here.
 
 :Target hostname:
 
@@ -81,7 +82,7 @@ To add a new tunnel, go to :menuselection:`VPN -> Stunnel -> Configuration` and 
 
 :Target port:
 
-    Port the service uses, in this case it would be 3128 (the default squid proxy port)
+    Port the service uses, in this case it would be :code:`3128` (the default squid proxy port)
 
 :Certificate:
 
@@ -108,6 +109,12 @@ To add a new tunnel, go to :menuselection:`VPN -> Stunnel -> Configuration` and 
 
   Enter a user friendly description here to identify this tunnel, something like "corporate proxy"
 
+
+.. Tip::
+
+    To forward traffic to the loopback address from your :code:`wan` interface, go to :menuselection:`Firewall -> NAT -> Port Forward`
+    and add a new rule with the following settings: Interface :code:`WAN`, Protocol :code:`TCP`, Destination :code:`WAN address`,
+    Destination port range :code:`31280`, Redirect target IP :code:`127.0.0.1` and Redirect target port :code:`31280`
 
 
 Configure the client
