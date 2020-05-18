@@ -1,5 +1,5 @@
 ================
-Stunnel Plugin
+Stunnel
 ================
 
 Stunnel in OPNsense can be used to forward tcp connections securely using TLS mutual authentication.
