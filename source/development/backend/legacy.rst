@@ -198,7 +198,6 @@ To register syslog targets, the :code:`<plugin>_syslog()` function should return
         $logfacilities = array();
         $logfacilities['myplugin'] = array(
             'facility' => array('myplugin'),
-            'remote' => 'myplugin',
         );
         return $logfacilities;
     }
