@@ -29,6 +29,46 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+20.1.7 (May 20, 2020)
+--------------------------------------------------------------------------
+
+
+Today we move to PHP 7.3 in order to be able to complete testing for the
+20.7-BETA online upgrades.  Also included is a patch for the packet filter
+kernel code which could crash with shared forwarding when interfaces
+disappeared due to use after free in the default network stack path.
+
+Here are the full patch notes:
+
+* system: default net.inet.icmp.reply_from_interface to 1
+* system: fix static gateway wizard handing
+* firewall: allow outbound NAT source and destination port ranges
+* interfaces: use interfaces_primary_address6() inside get_interface_ipv6()
+* dhcp: add AdvLinkMTU to router advertisements settings (contributed by Ilteris Eroglu)
+* unbound: prevent wildcard domains for the local system domain
+* backend: suppress inconsequential IDNA warnings for aliases
+* backend: add option to return a key value list for TLS ciphers
+* mvc: reference constraint pointing validation results to the wrong field
+* plugins: os-acme-client 1.32 adds Acmeproxy DNS support (contributed by Maarten den Braber)
+* src: added Novatel Wireless MiFi 8800/8000 support (contributed by rootless4real)
+* src: fix pf shared forwarding on non-existing interfaces
+* src: patch in tty 3wire autologin support
+* src: fix insufficient packet length validation in libalias `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:12.libalias.asc>`__ 
+* src: fix memory disclosure vulnerability in libalias `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:13.libalias.asc>`__ 
+* src: fix improper checking in SCTP-AUTH shared key update `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:14.sctp.asc>`__ 
+* src: fix use after free in cryptodev module `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:15.cryptodev.asc>`__ 
+* src: update to tzdata 2020a `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:08.tzdata.asc>`__ 
+* ports: ca_root_nss 3.52
+* ports: curl 7.70.0 `[6] <https://curl.haxx.se/changes.html>`__ 
+* ports: dhcp6c v20200512
+* ports: hyperscan 5.2.1 `[7] <https://github.com/intel/hyperscan/releases/tag/v5.2.1>`__ 
+* ports: openldap 2.4.50 `[8] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: pcre2 10.35 `[9] <https://www.pcre.org/changelog.txt>`__ 
+* ports: php 7.3.18 `[10] <https://www.php.net/ChangeLog-7.php#7.3.18>`__ 
+
+
+
+--------------------------------------------------------------------------
 20.1.6 (April 30, 2020)
 --------------------------------------------------------------------------
 
