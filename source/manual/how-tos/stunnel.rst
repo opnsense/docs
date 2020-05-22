@@ -99,7 +99,7 @@ To add a new tunnel, go to :menuselection:`VPN -> Stunnel -> Configuration` and 
 
 :enable CRL:
 
-    Enable certificate revocation lists, when selected a CRL with the format XXXXXXXX.r0 is required in the chroot (:code:`/var/run/stunnel/certs/`).
+    Enable certificate revocation lists, when selected a CRL with the format XXXXXXXX.r0 is required in the (:code:`/var/run/stunnel/certs/`) directory.
     If certificates are managed from this machine, all attached CRLs will be generated automatically.
     For more information about this option, see CRLpath in stunnels manual.
 
@@ -120,6 +120,13 @@ To add a new tunnel, go to :menuselection:`VPN -> Stunnel -> Configuration` and 
     To forward traffic to the loopback address from your :code:`wan` interface, go to :menuselection:`Firewall -> NAT -> Port Forward`
     and add a new rule with the following settings: Interface :code:`WAN`, Protocol :code:`TCP`, Destination :code:`WAN address`,
     Destination port range :code:`31280`, Redirect target IP :code:`127.0.0.1` and Redirect target port :code:`31280`
+
+
+.. Note::
+
+    For additional security you can enable :code:`chroot` mode in :menuselection:`VPN -> Stunnel -> General`, there is
+    however a downside in using this feature. If for some reason the system logging facility (syslog) is restarted, stunnel
+    will loose connection to that facility, causing a lack of visibilty afterwards.
 
 
 Configure the client
@@ -151,3 +158,49 @@ Test
 
 When the tunnel connection is established, you should be able to connect to :code:`127.0.0.1:3128` on the connecting machine
 using your browsers proxy settings.
+
+
+
+Enable Identd
+----------------------
+
+Our stunnel plugin is packed with an additional service providing an `ident <https://en.wikipedia.org/wiki/Ident_protocol>`__ (RFC 1413) protocol
+service.
+This service depends on a custom `patch <https://github.com/opnsense/ports/commit/1b9d7b1416046357cd9b2187c038787b19f2a813>`__ we ship in stunnel, making sure authenticated TLS sessions are logged properly, so our
+ident service can filter them to track a user that belongs to an stunnel session.
+
+When a TLS session is authenticated, a log record like the one below will be send to syslog.
+
+::
+
+  stunnel: LOG5[xxxxx]: IDENT Service [xx-xx-xx-xx-xx] from 127.0.0.2:11446 --> C=NL, ST=Zuid-Holland, L=Middelharnis, O=OPNsense, emailAddress=contact_at_domain, CN=test_client.opnsense.local
+
+
+Our ident service interprets this as :code:`127.0.0.2` connected using source port :code:`11446` as :code:`test_client.opnsense.local` (only the CN part is returned)
+
+
+.. Note::
+
+    Since our indent services binds to :code:`0.0.0.0:113` it's not compatible with other ident services likely using the same port,
+    it also highly advisable to deny access to this services from other hosts than the consumers of this service (which is usually the firewall itself).
+
+
+This functionality can easily be validated using two telnet sessions, one from the stunnel client keeping a session open, the other connecting
+to the same host using ident. The example log line above would result in the following request/response scenario:
+
+
+::
+
+    # telnet 127.0.0.2 113
+    Trying 127.0.0.2...
+    Connected to OPNsense.localdomain.
+    Escape character is '^]'.
+    11446,3128
+    11446, 3128 : USERID : OTHER : test_client.opnsense.local
+    Connection closed by foreign host.
+
+
+.. Note::
+
+    Please note the :code:`127.0.0.2` host is the same as the service connecting to was running on, using a different address
+    attached to the same firewall would result in a :code:`NO-USER` error.
