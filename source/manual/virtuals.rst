@@ -51,10 +51,18 @@ HyperV
 HyperV Generation 1 and 2 are supported out of the box, no additional drivers
 or tools are needed.
 
+KVM
+---
+**i440FX chipset**
+OPNsense on KVM works with virtio disks and network devices (confirmed on QEMU 5.0).
+
+**Q35 chipset**
+OPNsense on KVM currently does not work with the Q35 chipset. Virtio and other PCIe devices do not get detected properly.
+This is a FreeBSD/KVM related `issue <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=236922>`__ that is unspecific to OPNsense.
+
 Others
 ------
-OPNsense can be installed on all virtual machines that support FreeBSD (such as
-KVM, Bhyve, VirtualBox).
+OPNsense can be installed on all virtual machines that support FreeBSD (such as Bhyve, VirtualBox).
 
 ------------------
 
@@ -128,12 +136,6 @@ Disk Errors on VMware
 -----------------------
 This issue can be caused by a defective drive. Changing drive mode to IDE has
 been reported to help for certain ESXi versions.
-
-------------------
-
-Installation failure on KVM
----------------------------
-If you are using virtio for the root disk then try switching to sata mode.
 
 ------------------
 
