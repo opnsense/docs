@@ -126,7 +126,7 @@ For IPv6:
  **Track IPv6 interface**
  IPv6 Interface                    This selects the dynamic IPv6 WAN interface to track for configuration.
  IPv6 Prefix ID                    The delegated IPv6 prefix ID. This determines the configurable /64 network ID based on the dynamic IPv6 connection.
- Manual Configuration              If this option is set, you will be able to manually set the DHCPv6 and Router Advertisments service for this interface. Use with care.
+ Manual Configuration              If this option is set, you will be able to manually set the DHCPv6 and Router Advertisements service for this interface. Use with care.
 ================================= ===============================================================================================================================================
 
 
