@@ -70,7 +70,7 @@ Advertise Routes                      Advertise more specific specific routes to
 DNS
 --------------------------------
 
-For supported clients, DNS settings can also be propagated by radvd as detailed in `RFC 6101 <https://tools.ietf.org/html/rfc6106>`__
+For supported clients, DNS settings can also be propagated by radvd as detailed in `RFC 8106 <https://tools.ietf.org/html/rfc8106>`__
 
 ====================================  ===============================================================================
 DNS servers                           Define which dns servers to publish to the clients, either the ones
