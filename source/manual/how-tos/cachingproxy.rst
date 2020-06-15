@@ -41,7 +41,7 @@ Check the **Enable local cache** and click **Apply**.
 .. Important::
 
   As the cache is not created by default you will need to stop and start the service
-  under :menuselection:`Services --> Diagnostics`, this will ensure correct creation of the cache.
+  under :menuselection:`System --> Diagnostics --> Services`, this will ensure correct creation of the cache.
 
 Advanced
 --------
