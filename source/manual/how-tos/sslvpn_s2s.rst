@@ -199,7 +199,6 @@ For our example will use the following settings (leave everything else on its de
  **Local port**                        *1194*
  **Description**                       *SSL VPN Server*
  **Shared Key**                        *Leave on enabled (checked) to create a new key*
- **Server Certificate**                *SSLVPN Server Certificate (CA: SSL VPN CA)*
  **DH Parameters Length**              *4096*
  **Encryption algorithm**              *AES-256-CBC (256-bit)*
  **Auth Digest Algorithm**             *SHA512 (512-bit)*
