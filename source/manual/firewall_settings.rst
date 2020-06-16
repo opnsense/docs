@@ -178,7 +178,8 @@ Firewall Maximum Fragments
 
 Sets the maximum number of entries in the memory pool used for fragment reassembly.
 
-:Firewall Maximum Table Entries:
+Firewall Maximum Table Entries
+.....................................
 Maximum number of table entries for systems such as aliases, sshlockout, bogons, etc, combined.
 When using a lot of large aliases, you may consider increasing the default. The configured default is mentioned in the help text.
 

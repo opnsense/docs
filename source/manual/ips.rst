@@ -79,6 +79,12 @@ Save logs                             Number of logs to keep
     When using an external reporting tool, you can use syslog to ship your eve log easily. Just enable "Enable eve syslog output" and
     create a target in :menuselection:`System --> Settings --> Logging / Targets`. (filter application "suricata" and level "info")
 
+
+.. Note::
+
+    When using IPS mode make sure all hardware offloading features are disabled in the interface settings (:menuselection:`Interfaces -> Settings`), 
+    pre 20.7 "VLAN Hardware Filtering" wasn't disabled which may cause issues for some network cards.
+
 ----------------
 Advanced options
 ----------------

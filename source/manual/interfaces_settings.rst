@@ -43,11 +43,12 @@ VLAN Hardware Filtering
 -------------------------
 
 Set usage of VLAN hardware filtering.
-This hardware acceleration may be broken in some device drivers, our advice is to keep this setting on "Leave default".
-In some cases we have seen random disconnects when the driver is forced into a mode it was not set at by default.
+This hardware acceleration may be broken in some device drivers, our advice is to keep this setting on "Disable VLAN Hardware
+Filtering", which is the default as of 20.7.
+In some cases (pre 20.7) we have seen random disconnects when the driver is forced into a mode it was not set at by default.
 
 
-(the :code:`ifconfig` settings in the OS related to this setting are :code:`vlanhwtag` ,  :code:`vlanhwfilter` , :code:`vlanhwtso`)
+(the :code:`ifconfig` settings in the OS related to this setting are :code:`vlanhwtag`, :code:`vlanhwcsum` ,  :code:`vlanhwfilter` , :code:`vlanhwtso`)
 
 --------------------------
 ARP Handling
