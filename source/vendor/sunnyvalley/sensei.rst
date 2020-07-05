@@ -21,7 +21,7 @@ Sensei empowers your firewall with the following next generation features
 3. Advanced Network Analytics
 4. All-ports full TLS Inspection \(for every TCP port, not just HTTPS\)
 5. Cloud Threat Intelligence
-6. Encypted Threats Prevention
+6. Encrypted Threats Prevention
 7. Web Filtering & Security
 8. Active Directory Integration
 
@@ -31,7 +31,6 @@ Getting Started
 ----------------------------
 
 - :doc:`sensei_hardwarerequirements`
-- :doc:`sensei_prepareyourfirewall`
 - :doc:`sensei_install`
 
 ----------------------------
@@ -55,7 +54,7 @@ Getting Support
 ----------------------------
 
 
-**Support for Freemium Edition**
+**Support for Free Edition**
 
 If you need help for anything; there is an active discussion about Sensei on OPNsense forum. Feel free to `click here <https://forum.opnsense.org/index.php?topic=9521.new;topicseen#new>`_ and join the conversation.
 
