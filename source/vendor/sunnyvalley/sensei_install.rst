@@ -14,10 +14,9 @@ To install plugins in OPNsense, you must use an account with administrative acce
 
     Before installing Sensei, you should ensure you meet the minimum system requirements in order to run Sensei or to have the best user experience. See :doc:`sensei_hardwarerequirements` for more information.
 
------------------------------
-
+---------------------------------------------
 Web Interface Installation (Preferred Method)
------------------------------
+---------------------------------------------
 
 To install Sensei, you must first install the Sunny Valley Networks vendor repository plugin. Go to the :menuselection:`System --> Firmware --> Plugins` page. Click on the “+” icon next to os-sunnyvalley to install the plugin. 
 
@@ -34,10 +33,9 @@ After installing Sensei, you should see the Sensei menu in the left sidebar of t
 .. image:: images/sensei-install-complete.png
     :width: 100%
 
------------------------------
-
+-----------------------------------------------
 Command Line Installation (Alternative Method)
------------------------------
+-----------------------------------------------
 
 The command line installation method was the primary means for installing Sensei before it was available on the “Plugins” page in the OPNsense web interface. This option is still available for users who have direct access to the OPNsense system yet prefer using command line tools or who may only have remote shell access via SSH to administrate their OPNsense installations. However, the web interface will need utilized after installation to complete the initial configuration of Sensei.
 
@@ -45,20 +43,18 @@ The command line installation method was the primary means for installing Sensei
 
     If you plan to leave the SSH service active, the best practice recommendations are to create a user with administrative access rather than using the “root” user and to make use of stronger authentication methods such as using keys rather than passwords.
 
------------------------------
-
+....................
 Direct System Access
------------------------------
+....................
 
 When you have direct access to OPNsense, you may simply log into OPNsense using the “root” user or another administrator account. You should see a list of OPNsense menu options.
 
 .. image:: images/opnsense-direct-system-access.png
     :width: 100%
 
------------------------------
-
+....................
 SSH Access
------------------------------
+....................
 
 If you only have shell access to OPNsense, you may install Sensei remotely by logging into OPNsense using a SSH client using the following command where “root” is the administrator account and “your-firewall-ip” is the IP address or hostname of the OPNsense system. You should see the same list of menu options as directly accessing the system.
 
@@ -69,10 +65,9 @@ If you only have shell access to OPNsense, you may install Sensei remotely by lo
 .. image:: images/opnsense-ssh-login.png
     :width: 100%
 
------------------------------
-
+................................
 Download & Run Sensei Installer
---------------------------------
+................................
 
 Once you are successfully logged into OPNsense either by direct system access or SSH access, enter option “8” to open the shell. Run the following command to download and execute the installation script.
 
@@ -88,7 +83,6 @@ The script will copy the installation files onto the filesystem and will add a t
 Once the installation has been completed, you may disconnect from your terminal session. You may also disable your firewall’s SSH service by unchecking the checkboxes mentioned above if you no longer wish to use the SSH service.
 
 -----------------------------
-
 Initial Configuration Wizard
 ------------------------------
 Regardless of your installation method, you will need to go through the initial configuration wizard before you may start using Sensei.
@@ -99,9 +93,9 @@ To start the "Initial Configuration Wizard":
 * Click Sensei from the left menu
 * Click on the Dashboard sub-menu to open the configuration wizard
 
-------------
-**1- EULA**
-------------
+....................
+1- EULA
+....................
 
 * Accept the End User License Agreement *(scroll and read the terms to get to the next button)*.
 
@@ -110,9 +104,9 @@ To start the "Initial Configuration Wizard":
 
 * Click the :menuselection:`I Agree` button to continue to the :menuselection:`Interface Selection` section.
 
------------------------------
-**2- Hardware Check**
------------------------------
+....................
+2- Hardware Check
+....................
 
 Your hardware will be analyzed to ensure it meets the minimum requirements. You will receive one of following responses: compatible hardware, low-end hardware, incompatible hardware. The setup will not continue if you have incompatible hardware.
 
@@ -133,9 +127,9 @@ Incompatible
 
 * Click :menuselection:`Next` to continue to the :menuselection:`Reporting Database` section.
 
------------------------------
-**3- Reporting Database**
------------------------------
+......................
+3- Reporting Database
+......................
 
 * Select the database you wish to use for reporting. High end systems will have 3 options, while low end systems only have 2 options.
 
@@ -164,9 +158,9 @@ Low-end
 
 * Click the :menuselection:`Install Database & Proceed` button to install the local database if one is chosen and continue to the :menuselection:`Interface Selection` section.
 
------------------------------
-**4- Interface Selection**
------------------------------
+.......................
+4- Interface Selection
+.......................
 
 * Select the Ethernet Interface(s) to protect. To do so, click on an interface and use the right/left arrow buttons to move it to protected/unprotected interfaces combo box.
 
@@ -178,9 +172,9 @@ Low-end
 
 * Click :menuselection:`Next` to continue to the :menuselection:`Cloud Reputation`section.
 
---------------------------
-**3- Cloud Reputation**
---------------------------
+....................
+5- Cloud Reputation
+....................
 
 The Cloud Threat Intelligence data is queried in real-time when any connections are made through your network. This capability enables Sensei to respond to malware and wireless outbreaks in real-time and very quickly.
 
@@ -197,9 +191,9 @@ Cloud Threat Intel settings let you:
 
 * Click :menuselection:`Next` to continue to the :menuselection:`Sensei CLI` section.
 
---------------------------------
-**4- Sensei CLI (Security)**
---------------------------------
+.........................
+6- Sensei CLI (Security)
+.........................
 
 * Set your TCP Service password. This password protects the command line access to the packet engine. It is highly recommended to use a very secure password. The default password is “Sensei1234” so be sure to change it.
 
@@ -208,9 +202,9 @@ Cloud Threat Intel settings let you:
 
 * Click :menuselection:`Next` to continue to the :menuselection:`Updates & Health Check` section.
 
--------------------------------
-**5- Updates & Health Check**
--------------------------------
+..........................
+7- Updates & Health Check
+..........................
 
 .. Note::
 
@@ -228,9 +222,9 @@ Cloud Threat Intel settings let you:
 
 * Click :menuselection:`Next` to continue to the :menuselection:`Deployment Size` section.
 
---------------------------
-**6- Deployment Size**
---------------------------
+....................
+8- Deployment Size
+....................
 
 Sensei may support up to 1,000 concurrent users on an average PC. You can set your Sensei installation’s capacity in this section.
 
@@ -243,9 +237,9 @@ Sensei may support up to 1,000 concurrent users on an average PC. You can set yo
 
 * Click :menuselection:`Next` to continue to the :menuselection:`Finish` section.
 
----------------
-**7- Finish**
----------------
+....................
+9- Finish
+....................
 
 * You may enter your email address if you wish to subscribe to the Sunny Valley email list to stay up to date on the latest news. 
 
