@@ -52,7 +52,7 @@ Direct System Access
 
 When you have direct access to OPNsense, you may simply log into OPNsense using the “root” user or another administrator account. You should see a list of OPNsense menu options.
 
-.. image:: images/sensei-direct-system-access.png
+.. image:: images/opnsense-direct-system-access.png
     :width: 100%
 
 -----------------------------
@@ -66,7 +66,7 @@ If you only have shell access to OPNsense, you may install Sensei remotely by lo
 
     $ ssh root@your-firewall-ip
 
-.. image:: images/sensei-ssh-login.png
+.. image:: images/opnsense-ssh-login.png
     :width: 100%
 
 -----------------------------
@@ -116,17 +116,17 @@ To start the "Initial Configuration Wizard":
 
 Your hardware will be analyzed to ensure it meets the minimum requirements. You will receive one of following responses: compatible hardware, low-end hardware, incompatible hardware. The setup will not continue if you have incompatible hardware.
 
-.. image:: images/sensei-hardware-high-end.png
+.. image:: images/sensei-wizard-hardware-high-end.png
     :width: 100%
 
 Compatible
 
-.. image:: images/sensei-hardware-low-end.png
+.. image:: images/sensei-wizard-hardware-low-end.png
     :width: 100%
 
 Low-end
 
-.. image:: images/sensei-hardware-incompatible.png
+.. image:: images/sensei-wizard-hardware-incompatible.png
     :width: 100%
 
 Incompatible
@@ -143,12 +143,12 @@ Incompatible
 
     If you wish to use a remote ElasticSearch database, you must choose it now since you cannot change this after the initial configuration wizard has been completed. 
 
-.. image:: images/sensei-reporting-database-high-end.png
+.. image:: images/sensei-wizard-reporting-database-high-end.png
     :width: 100%
 
 High-end
 
-.. image:: images/sensei-reporting-database-low-end.png
+.. image:: images/sensei-wizard-reporting-database-low-end.png
     :width: 100%
 
 Low-end
@@ -159,7 +159,7 @@ Low-end
 
     If you have SOHO or higher Sensei paid subscription, we recommend that you install your license key before proceeding with the initial configuration wizard since this will activate a feature that will enable you to have central reporting for many firewalls from a single Elasticsearch instance. Otherwise, only a single remote ES instance can be used with a single firewall.
 
-.. image:: images/sensei-reporting-database-remote.png
+.. image:: images/sensei-wizard-reporting-database-remote.png
     :width: 100%
 
 * Click the :menuselection:`Install Database & Proceed` button to install the local database if one is chosen and continue to the :menuselection:`Interface Selection` section.
@@ -170,10 +170,10 @@ Low-end
 
 * Select the Ethernet Interface(s) to protect. To do so, click on an interface and use the right/left arrow buttons to move it to protected/unprotected interfaces combo box.
 
-.. image:: images/sensei-interface-selection-available.png
+.. image:: images/sensei-wizard-interface-selection-available.png
     :width: 100%
 
-.. image:: images/sensei-interface-selection-protected.png
+.. image:: images/sensei-wizard-interface-selection-protected.png
     :width: 100%
 
 * Click :menuselection:`Next` to continue to the :menuselection:`Cloud Reputation`section.
@@ -249,7 +249,7 @@ Sensei may support up to 1,000 concurrent users on an average PC. You can set yo
 
 * You may enter your email address if you wish to subscribe to the Sunny Valley email list to stay up to date on the latest news. 
 
-.. image:: images/sensei-0-wizard-tab7-finish-1.png
+.. image:: images/sensei-wizard-finish.png
     :width: 100%
 
 * Click the :menuselection:`Finish` button to save your initial configuration data and start using Sensei.
