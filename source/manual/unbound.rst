@@ -209,23 +209,56 @@ Advanced Configurations
 Some installations require configuration settings that are not accessible in the UI.
 To support these, individual configuration files with a ``.conf`` extension can be put into the
 ``/var/unbound/etc`` directory. These files will be automatically included by the UI generated configuration.
-Multiple files can be placed there. But note that
+Multiple configuration files can be placed there. But note that
 
 * As it cannot be predicted in which clause the configuration currently takes place, you must prefix the configuration with the required clause.
   For the concept of "clause" see the ``unbound.conf(5)`` documentation.
 * The wildcard include processing in unbound is based on ``glob(7)``. So the order in which the files are included is in ascending ASCII order.
 * Namecollisions with plugins, which use this extension point e. g. ``unbound-plus``, may occur. So be sure to use an unique filename.
-* It is a good idea, to check the complete configuration by running the unbound-checkconf utility: ``unbound-checkconf /var/unbound/unbound.conf``.
+* It is a good idea, to check the complete configuration by running the unbound-checkconf utility::
+     
+   # check if configuration is valid
+   unbound-checkconf /var/unbound/unbound.conf
+   
   This will report errors that prevent unbound from starting.
 
 This is a sample configuration file to add an option in the server clause:
 
 ::
-
+   
     server:
       private-domain: xip.io
 
 
+.. Note::
+  A final thing to note is, that on memory based system ``/var`` is volatile and every file placed inside or below will not survive a restart.
+  As a solution the Template System (":doc:`/development/backend/templates`") can be used to automatically generate these files.
+
+  To get the same effect as placing the file in the sample above directly in ``/var/unbound/etc`` follow these steps:
+
+  #. Create a ``+TARGETS`` file in ``/usr/local/opnsense/service/templates/sampleuser/Unbound``::
+
+      sampleuser_additional_options.conf:/var/unbound/etc/sampleuser_additional_options.conf
+
+  #. Place the template file as ``sampleuser_additional_options.conf`` in the same directory::
+   
+      server:
+        private-domain: xip.io
+
+  #. Test the template generation by issuing the following command::
+   
+      # generate template
+      configctl template reload sampleuser/Unbound
+
+
+  #. Check the output in the target directory::
+   
+      # show generated file
+      cat /var/unbound/etc/sampleuser_additional_options.conf
+      # check if configuration is valid
+      unbound-checkconf /var/unbound/unbound.conf
+
+   
 .. Warning::
     It is the sole responsibility of the administrator which places a file in the extension directory to ensure that the configuration is
     valid. 
