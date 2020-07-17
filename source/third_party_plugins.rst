@@ -33,5 +33,4 @@ Sunnyvalley
 
    vendor/sunnyvalley/sensei
    vendor/sunnyvalley/sensei_hardwarerequirements
-   vendor/sunnyvalley/sensei_prepareyourfirewall
    vendor/sunnyvalley/sensei_install
