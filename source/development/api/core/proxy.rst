@@ -41,3 +41,13 @@ Proxy
     "``POST``","proxy","settings","toggleRemoteBlacklist","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Proxy/Proxy.xml>`__"
+
+.. csv-table:: Resources (TemplateController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","proxy","template","get",""
+    "``POST``","proxy","template","reset",""
+    "``POST``","proxy","template","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Proxy/Proxy.xml>`__"
