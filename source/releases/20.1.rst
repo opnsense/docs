@@ -29,6 +29,66 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+20.1.8 (July 02, 2020)
+--------------------------------------------------------------------------
+
+
+Sorry about the delay while we chased a race condition in the updates back
+to an issue with the latest FreeBSD package manager updates.  For now we
+reverted to our current version but all relevant third party packages have
+been updated as updates became available over the last weeks, e.g. cURL and
+Python, and hostapd / wpa_supplicant amongst others.
+
+Here are the full patch notes:
+
+* system: simpler get_interface_ip() usage in IPv4 renewal
+* system: allow HA sync of network time settings
+* system: download all filtered items in log export
+* system: add support for upstream LDAP accounts in Nextcloud backup (contributed by Fabian Franz)
+* interfaces: fix stateless DHCPv6 for track6 interfaces (contributed by Maurice Walker)
+* firewall: fix missing address filter error by moving NAT targets to runtime resolve
+* firewall: prevent gateway protocol mismatch from breaking the ruleset
+* firewall: work around categories typeahead issue with recent jQuery libraries
+* firewall: improve alias help text (contributed by Team Rebellion)
+* firewall: switch from single log filter to one per attribute
+* intrusion detection: when enabling rules prefixed with '# ' consume the extra space (contributed by Tra5is)
+* intrusion detection: less sensitive rule parsing
+* intrusion detection: compress stats.log backups
+* ipsec: valid IPSec Phase 2 hash config warning raises GUI alert (contributed by Brett Merrick)
+* unbound: add DNS64 support (contributed by Maurice Walker)
+* web proxy: fix wrong button label for Download ACLs (contributed by 90er)
+* mvc: add sort_flags optional parameter support (contributed by NOYB)
+* rc: add full PATH to rc.syshook invoke
+* plugins: os-acme-client `[1] <https://github.com/opnsense/plugins/pull/1851>`__  `[2] <https://github.com/opnsense/plugins/pull/1880>`__ 
+* plugins: os-dnscrypt-proxy 1.8 `[3] <https://github.com/opnsense/plugins/blob/master/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-dyndns 1.21 improves Cloudflare support (contributed by Andreas Rupper)
+* plugins: os-freeradius 1.9.7 `[4] <https://github.com/opnsense/plugins/pull/1726>`__ 
+* plugins: os-haproxy 2.23 `[5] <https://github.com/opnsense/plugins/pull/1883>`__ 
+* plugins: os-intrusion-detection-content-snort-vrt 1.1
+* plugins: os-stunnel 1.0 `[6] <https://docs.opnsense.org/manual/how-tos/stunnel.html>`__  (sponsored by Incenter Technology)
+* plugins: os-tayga 1.1 `[7] <https://github.com/opnsense/plugins/pull/1826>`__ 
+* plugins: os-theme-rebellion 1.8.4 `[8] <https://github.com/opnsense/plugins/pull/1892>`__ 
+* ports: ca_root_nss 3.53
+* ports: curl 7.71.0 `[9] <https://curl.haxx.se/changes.html>`__ 
+* ports: hostapd / wpa_supplicant UPnP SUBSCRIBE advisory `[10] <https://w1.fi/security/2020-1/upnp-subscribe-misbehavior-wps-ap.txt>`__ 
+* ports: krb5 1.18.2 `[11] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
+* ports: ntp 4.2.8p15 `[12] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
+* ports: pcre 8.44 `[13] <https://www.pcre.org/original/changelog.txt>`__ 
+* ports: perl 5.30.3 `[14] <https://perldoc.perl.org/5.30.3/perldelta.html>`__ 
+* ports: php 7.3.19 `[15] <https://www.php.net/ChangeLog-7.php#7.3.19>`__ 
+* ports: python CVE-2019-18348 and CVE-2020-8492
+* ports: sqlite 3.32.2 `[16] <https://www.sqlite.org/changes.html>`__ 
+* ports: sudo 1.9.1 `[17] <https://www.sudo.ws/stable.html#1.9.1>`__ 
+* ports: unbound 1.10.1 `[18] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-10-1>`__ 
+
+A hotfix release was issued as 20.1.8_1:
+
+* ipsec: fix status page display after third party library update
+* plugins: os-dyndns fix for TTL validation (contributed by Andreas Rupper)
+
+
+
+--------------------------------------------------------------------------
 20.1.7 (May 20, 2020)
 --------------------------------------------------------------------------
 
