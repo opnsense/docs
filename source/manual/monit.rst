@@ -121,6 +121,43 @@ Now, navigate to the “Service Settings” tab. Here, add the following service
 
 Save and apply.
 
+---------
+Example 3
+---------
+
+In this example, we want to monitor Suricata EVE Log for alerts and send an e-mail.
+This is really simple, be sure to keep false positives low to no get spammed by alerts.
+
+First, make sure you have followed the steps under “Global setup”. Then, navigate to the “Service Tests Settings” tab.
+Here, you need to add one test:
+
++-----------+------------------------------------------+
+| Setting   | Value                                    |
++===========+==========================================+
+| Name      | SURICATA_EVE                             |
++-----------+------------------------------------------+
+| Condition | content =  "blocked"                     |
++-----------+------------------------------------------+
+| Action    | Alert                                    |
++-----------+------------------------------------------+
+
+Now, navigate to the “Service Settings” tab. Here, add the following service:
+
++-----------+---------------------------------------------------------+
+| Setting   | Value                                                   |
++===========+=========================================================+
+| Name      | SURICATA_ALERT                                          |
++-----------+---------------------------------------------------------+
+| Type      | File                                                    |
++-----------+---------------------------------------------------------+
+| Path      | /var/log/suricata/eve.json                              |
++-----------+---------------------------------------------------------+
+| Tests     | SURICATA_EVE                                            |
++-----------+---------------------------------------------------------+
+
+Save and apply.
+From now on you will receive with the alert message for every block action.
+
 -----------------
 Settings overview
 -----------------
