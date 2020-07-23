@@ -75,7 +75,7 @@ trust by using current package fingerprints -> CA root certificates -> HTTPS -> 
 package fingerprints.
 
 What it will also do is turn a supported stock FreeBSD release into an OPNsense
-installation, given that UFS was used to install the root file system.
+installation.  Both UFS and ZFS installations are supported.
 
 opnsense bootstrap is available for our
 `github source repository <https://github.com/opnsense/update/tree/master/bootstrap>`__
