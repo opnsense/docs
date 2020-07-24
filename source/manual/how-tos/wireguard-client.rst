@@ -72,7 +72,7 @@ Next, enable WireGuard under the **General** tab and continue with the setup. Ad
 Step 2b - Setup Firewall rules
 ------------------------------
 
-To accept connections from clients which are outside the firewall, rules must be created to permit that traffic to flow from WAN to LAN. Select :menuselection:`Firewall --> NAT --> Port Forward` and click **+Add** creating a rule with the following information:
+For external clients to connect to the WireGuard server firewall rules must be created to permit that traffic to flow from WAN to LAN. Select :menuselection:`Firewall --> NAT --> Port Forward` and click **+Add** creating a rule with the following information:
 
 =========================== ================ =====================================================================
  **Interface**               WAN              *The interface this rule applies to*
