@@ -6,49 +6,65 @@ WireGuard Road Warrior Setup
 Introduction
 ------------
 
-WireGuard is a simple, fast and modern VPN. It aims to be faster and simpler than IPSec. It intends to be
-considerably more performant than OpenVPN. Initially released for the Linux kernel, it is now cross-platform
-and widely deployable. It is currently under heavy development. We will describe here how to set up
-WireGuard as a central server or just as a client.
+WireGuard is a simple, fast and modern VPN using modern `cryptography <https://www.WireGuard.com/protocol/>`. It aims to be faster and simpler then IPsec whilst also being considerably more performant OpenVPN. Initially released for the Linux kernel, it is now cross-platform and widely deployable. It is under heavy development and was included in the Linux kernel v5.6 in `March 2020 <https://arstechnica.com/gadgets/2020/03/WireGuard-vpn-makes-it-to-1-0-0-and-into-the-next-linux-kernel/>`. WireGuard is still experimental and should be used with caution.
+
+This article describes setting up a central WireGuard server, running on OPNsense and configuring a client. 
 
 ---------------------
 Step 1 - Installation
 ---------------------
 
-Install the plugin as usual, refresh the page and you will find the client via :menuselection:`VPN --> WireGuard`. 
+Install the plugin via :menuselection:`System --> Firmware --> Plugins` and selecting the package **os-WireGuard**.
+
+Once the plugin is installed, refresh the page and you will find the WireGuard configuration menu via :menuselection:`VPN --> WireGuard`.
 
 --------------------------------
 Step 2a - Setup WireGuard Server
 --------------------------------
 
-The setup of a central VPN server is very simple. Just go to tab **Local** and create a new instance.
-Give it a **Name** and set a desired **Listen Port**. If you have more than one service instance be 
-aware that you can use the **Listen Port** only once. For **Tunnel Address** choose an unused network
-to tunnel all clients just like with OpenVPN or GRE (e.g. 192.168.0.1/24).
-**Peers** can not be chosen yet since we have not created them yet. 
-After hitting **Save changes** you can reopen the newly created instance, write down your new public
-key and give it to the other side in a secure way (e.g. PGP encrypted or via SMS). 
+First, create a WireGuard VPN server via :menuselection:`VPN --> WireGuard` under the **Local** tab. Create a new instance using the **+** button and customizing the following values as neccessary:
 
-Now go to tab **Endpoints** and add the fist road warrior, give it a **Name**, insert the **Public
-Key** and **Allowed IPs** e.g. *192.168.0.2/32, 10.10.10.0/24* (it is important to use /32 for the
-tunnel address when using multiple endpoints). **Endpoint Address** and  **Endpoint Port** can be left
-empty since they are mostly dynamic, now hit **Save changes**.
+====================== =================== =====================================================================
+ **Enabled**            Checked            *Check to enable the server*
+ **Name**               WireGuard          *The name of the server instance*
+ **Instance**           (auto populated)   *Automatically generated server instance number*
+ **Public Key**         (empty)            *Leave empty, keys will be automatically generated on save*
+ **Private key**        (empty)            *Leave empty, keys will be automatically generated on save*
+ **Listen Port**        51820              *Server listen port. If multiple servers exist, this port must be unique*
+ **DNS Server**         1.1.1.1            *Populate as required with DNS server*
+ **Tunnel Address**     10.10.10.1/24      *Use CIDR notation and avoid subnet overlap with regularly used networks*
+ **Peers**              (empty)            *List of peers for this server, leave blank on initial configuration*
+ **Disable Routes**     Unchecked          *This will prevent installing routes*
+====================== =================== =====================================================================
 
-Go back to tab **Local**, open the instance and choose the newly created endpoint in **Peers**.
+Once the tunnel is created after clicking **Save**, reopen the newly created instance and take note of the public key that was just generated. This key will be required when setting up any client that wishes to connect to this server. Make sure to protect it and use secure transmission methods to clients (e.g. PGP encrypted or via SMS).
 
-Now we can **Enable** the VPN in tab **General** and continue with the setup.
+Use the **Endpoints** tab to add the first client. Use the **+** button and configure the following:
 
-If you want to add more users just add them in **Endpoints** and link them via **Peers**.
+====================== =================== =====================================================================
+ **Enabled**            Checked            *Check to enable the server*
+ **Name**               client1            *The name of the client*
+ **Public Key**         PubKey             *Provide public key from client*
+ **Shared Secret**      (empty)            *optional - shared secret (PSK) for this peer*
+ **AllowedIPs**         10.10.10.2/32      *IP address of client (peer) - ensure to use /32 with multiple clients*
+ **Endpoint Address**   (empty)            *Not required for inbound connections - dynamic*
+ **Endpoint Port**      (empty)            *Not required for inbound connections - dynamic*
+ **Keepalive**          (empty)            *optional - sets persistent keepalive interval*
+====================== =================== =====================================================================
+
+Click **Save** and return to the **Local** tab. Now select the newly created peer under **Peers**. Click **Save**.
+
+Next, enable WireGuard under the **General** tab and continue with the setup. Add further clients under **Endpoints** and allow them to access the **Wireguard** server by selecting them under **Peers**. 
+
+Note - pressing **Save** effectively executes **wg-quick down wg0** followed by **wg-quick up wg0** (with 0 being the **Instance ID** of the server). Though not often required, sometimes it is useful to debug a tunnel not starting via the CLI using **wg show**. Configuration files are stored at **/usr/local/etc/wireguard/wgX.conf**.
 
 ------------------------
 Step 2b - Setup Firewall
 ------------------------
 
-On :menuselection:`Firewall --> Rules` add a new rule on your WAN interface allowing the port you set in your
-instance (Protocol UDP). You also have a new interface **Wireguard** in rules, where you can
-set granular rules on connections inside your tunnel.
+To accept traffic from the internet, add a new rule on the WAN interface using :menuselection:`Firewall --> Rules` and allowing the server listen port configured previously (Protocol UDP). If more granular rules are required note there is a new interface **wg0** where these may be configured.
 
-Your tunnel is now up and running.
+Connect to the tunnel from a client and verify connection via :menuselection:`VPN --> WireGuard` using the **List Configuration** and **Handshakes** tabs where peers are identified by their public keys. At this point the tunnel should be up and running but the client will have limited access.
 
 ---------------------------------
 Step 2c - Assignments and Routing
