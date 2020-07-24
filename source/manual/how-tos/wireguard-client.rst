@@ -68,11 +68,39 @@ Next, enable WireGuard under the **General** tab and continue with the setup. Ad
 
     Pressing **Save** effectively executes :code:`wg-quick down wg0` followed by :code:`wg-quick up wg0` (with 0 being the **Instance ID** of the server). Though not often required, sometimes it is useful to debug a tunnel not starting via the CLI using :code:`wg show`. Configuration files are stored at :code:`/usr/local/etc/wireguard/wgX.conf`.
 
-------------------------
-Step 2b - Setup Firewall
-------------------------
+------------------------------
+Step 2b - Setup Firewall rules
+------------------------------
 
-To accept traffic from the internet, add a new rule on the WAN interface using :menuselection:`Firewall --> Rules` and allow the server listen port configured previously (Protocol UDP). If more granular rules are required note there is a new interface **wg0** where these may be configured.
+To accept connections from clients which are outside the LAN firewall rules must be created to permit that traffic to flow from WAN to LAN. Select :menuselection:`Firewall --> NAT --> Port Forward` and click **+Add** creating a rule with the following information:
+
+=========================== ================ =====================================================================
+ **Interface**               WAN              *The interface this rule applies to*
+ **TCP/IP Version**          IPv4             *Select the Internet Protocol version this rule applies to*
+ **Protocol**                UDP              *WireGuard works over UDP*
+ **Source**                  *                *Accept traffic from any source*
+ **Source Port**             *                *Accept traffic on any port*
+ **Destination**             WAN address      *Traffic destination*
+ **Destination Port**        51820            *Specify the port or port range required*
+ **Redirect target IP**      192.168.1.254    *The LAN IP of the firewall*
+ **Redirect target port**    51820            *The listen port for WireGuard server*
+ **Description**             WG WAN to LAN    *Optional - provide a description*
+=========================== ================ ===================================================================== 
+
+If more granular rules are required note there is a new interface **wg0** where these may be configured.
+
+The final piece is to allow traffic from the Wireguard network. Do this via :menuselection:`Firewall --> Rules --> WireGuard` and click **+Add** with the following information (if an item is not specified, leave it set to the default value):
+
+=========================== ================ =====================================================================
+ **Interface**               WireGuard        *The interface this rule applies to*
+ **Source**                  WireGuard net    *Source subnet*
+ **Destination**             any              *Traffic destination*
+ **Description**             WG WAN to LAN    *Optional - provide a description*
+=========================== ================ =====================================================================
+
+.. Hint::
+
+    Rules defined under :menuselection:`Firewall --> Rules --> WireGuard` take precedence over rules individually configured for each tunnel.
 
 Connect to the tunnel from a client and verify connection via :menuselection:`VPN --> WireGuard` using the **List Configuration** and **Handshakes** tabs where peers are identified by their public keys. At this point the tunnel should be up and running but the client will have limited access.
 
