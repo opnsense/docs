@@ -46,6 +46,7 @@ VPN & Connectivity
    manual/how-tos/dynamicrouting_rip
    manual/how-tos/dynamicrouting_zebra
    manual/how-tos/tor
+   manual/how-tos/tayga
 
 ----------------
 Web
