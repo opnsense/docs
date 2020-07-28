@@ -143,9 +143,9 @@ Client configuration is largely beyond the scope of this article since there is 
 * Public Key - *Refers to Public Key of the WireGuard server*
 * AllowedIPs - *Configure which traffic (by subnet) is sent via the tunnel*
 
--------------------------------
+-------------------------------------
 Appendix A - Example configurations
--------------------------------
+-------------------------------------
 
 .. Warning::
 
