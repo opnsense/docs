@@ -7,6 +7,7 @@ Stunnel
 
     "``POST``","stunnel","services","addItem",""
     "``POST``","stunnel","services","delItem","$uuid"
+    "``GET``","stunnel","services","get",""
     "``GET``","stunnel","services","getItem","$uuid=null"
     "``*``","stunnel","services","searchItem",""
     "``POST``","stunnel","services","setItem","$uuid"
