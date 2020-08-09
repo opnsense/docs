@@ -31,7 +31,7 @@ Below the larger graphs, you will find a couple of options, which helps track cu
 
 .. Note::
 
-    When an interface doesn't report traffic and your certain there should be any, make sure to check if you have any
+    When an interface doesn't report traffic and you are certain there should be any, make sure to check if you have any
     services enabled that use netmap (zero copy) support on the selected interface (such as IPS and Sensei).
     When zero copy is used, packets won't by copied in the kernel in which case bpf can't read from the usual in memory buffer.
 
