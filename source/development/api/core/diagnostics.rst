@@ -18,6 +18,7 @@ Diagnostics
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","diagnostics","firewall","log",""
+    "``GET``","diagnostics","firewall","log_filters",""
     "``GET``","diagnostics","firewall","stats",""
 
 .. csv-table:: Resources (InterfaceController.php)
