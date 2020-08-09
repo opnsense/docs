@@ -6,8 +6,8 @@ Releases
     :width: 600px
     :align: center
 
-As of January 2015 there have been *184* releases leading to the latest version *20.7.r1*
-named "Keen Kingfisher".
+As of January 2015 there have been *185* releases leading to the latest version *20.7*
+named "Legendary Lion".
 
 The list below contains all releases, ordered by version number categorized by major version.
 
@@ -16,6 +16,7 @@ The list below contains all releases, ordered by version number categorized by m
    :titlesonly:
    :glob:
 
+   releases/20.7
    releases/20.1
    releases/19.7
    releases/19.1

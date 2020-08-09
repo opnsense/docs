@@ -62,6 +62,10 @@ Here are the full patch notes:
 * ports: sqlite 3.32.3 `[11] <https://www.sqlite.org/changes.html>`__ 
 * ports: syslog-ng 3.27.1 `[12] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.27.1>`__ 
 
+A hotfix release was issued as 20.1.9_1:
+
+* firmware: enable upgrade path to 20.7 (amd64 only)
+
 
 
 --------------------------------------------------------------------------
