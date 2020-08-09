@@ -72,3 +72,4 @@ be found in the list below.
 
    troubleshooting/boot
    troubleshooting/gateways
+   troubleshooting/network
