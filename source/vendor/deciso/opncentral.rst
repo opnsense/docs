@@ -71,3 +71,21 @@ Every connected node is shown with a link which opens in a new tab when clicking
 
 .. image:: images/OPNcentral_status_uptodate.png
     :width: 100%
+
+
+When the management server is allowed to access the OPNcentral components on the connected node it will automatically login
+after the link is clicked with the proper credentials assigned to the api token user.
+
+If the latests Business Edition is installed on the managed machine, but access prohibits automatic logins, you will be redirected to the login page.
+
+When the connected machine is not using the business edition, it's not possible to use the link, a message such as the following will be presented to the
+user:
+
+.. image:: images/OPNcentral_auto_login_unavailable.png
+    :width: 60%
+
+
+.. Note::
+
+    Make sure your browser trusts the remote node otherwise the browser can't access the machine and will signal an issue with the
+    software version.
