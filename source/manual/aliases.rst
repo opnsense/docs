@@ -22,6 +22,8 @@ OPNsense offers the following alias types:
 +------------------+------------------------------------------------------+
 | Ports            | Port numbers or a port range like 20:30              |
 +------------------+------------------------------------------------------+
+| MAC address      | MAC address or partial mac addresses                 |
++------------------+------------------------------------------------------+
 | URL (IPs)        | A table of IP addresses that are fetched once        |
 +------------------+------------------------------------------------------+
 | URL Tables (IPs) | A table of IP addresses that are fetched on regular  |
@@ -78,6 +80,27 @@ Ports
 Ports can be specified as a single number or a range using a colon **:**.
 For instance to add a range of 20 to 25 one would enter 20:25 in the **Port(s)**
 section.
+
+..................
+MAC address
+..................
+
+Hardware mac addresses can be specified as a (partial) hex value, such as :code:`F4:90:EA` to match all addresses from
+Deciso or :code:`f4:90:ea:00:00:01` to match a single item (the input is case insensitive).
+
+The way these aliases function is approximately the same as hostnames in host type aliases, they are resolved on periodic
+intervals from the :code:`arp` and :code:`ndp` tables.
+
+
+.. Warning::
+
+    Please be aware that hardware addresses can be spoofed (https://en.wikipedia.org/wiki/MAC_spoofing), which doesn't make
+    filters on them more secure than ip addresses in any way.
+
+.. Note::
+
+    Since mappings between addresses and mac addresses are resolved periodically the actual situation can differ, you can
+    always check :menuselection:`Firewall -> Diagnostics -> pfTables` to inspect the current contents of the alias.
 
 ..................
 URL Tables
