@@ -22,7 +22,8 @@ OPNsense offers the following alias types:
 +------------------+------------------------------------------------------+
 | Ports            | Port numbers or a port range like 20:30              |
 +------------------+------------------------------------------------------+
-| MAC address      | MAC address or partial mac addresses                 |
+| MAC addresses    | MAC address or partial mac addresses like            |
+|                  | :code:`f4:90:ea         `                            |
 +------------------+------------------------------------------------------+
 | URL (IPs)        | A table of IP addresses that are fetched once        |
 +------------------+------------------------------------------------------+
@@ -82,7 +83,7 @@ For instance to add a range of 20 to 25 one would enter 20:25 in the **Port(s)**
 section.
 
 ..................
-MAC address
+MAC addresses
 ..................
 
 Hardware mac addresses can be specified as a (partial) hex value, such as :code:`F4:90:EA` to match all addresses from
