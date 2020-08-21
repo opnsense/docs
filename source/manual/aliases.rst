@@ -23,7 +23,7 @@ OPNsense offers the following alias types:
 | Ports            | Port numbers or a port range like 20:30              |
 +------------------+------------------------------------------------------+
 | MAC addresses    | MAC address or partial mac addresses like            |
-|                  | :code:`f4:90:ea         `                            |
+|                  | :code:`f4:90:ea`                                     |
 +------------------+------------------------------------------------------+
 | URL (IPs)        | A table of IP addresses that are fetched once        |
 +------------------+------------------------------------------------------+
