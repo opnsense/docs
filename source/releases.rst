@@ -6,7 +6,7 @@ Releases
     :width: 600px
     :align: center
 
-As of January 2015 there have been *186* releases leading to the latest version *20.7.1*
+As of January 2015 there have been *187* releases leading to the latest version *20.7.2*
 named "Legendary Lion".
 
 The list below contains all releases, ordered by version number categorized by major version.
