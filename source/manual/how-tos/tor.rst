@@ -221,7 +221,7 @@ Relays
 ------
 
 A Tor relay is a host which forwards traffic for other Tor nodes.
-A relay, which allows to pass traffic outside of the Tor network,
+A relay that allows traffic to pass outside of the Tor network
 is called an "Exit Node". If the relay is configured only for you
 (not for public access), it is called a bridge.
 Bridges are used to circumvent filtering of public entry nodes based
