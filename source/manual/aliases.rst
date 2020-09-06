@@ -16,9 +16,11 @@ OPNsense offers the following alias types:
 +------------------+------------------------------------------------------+
 | Type             | Description                                          |
 +==================+======================================================+
-| Hosts            | Single hosts by IP or Fully Qualified Domain Name    |
+| Hosts            | Single hosts by IP or Fully Qualified Domain Name  or|
+|                  | host exclusions (starts with "!" sign)               |
 +------------------+------------------------------------------------------+
-| Networks         | Entire network p.e. 192.168.1.1/24                   |
+| Networks         | Entire network p.e. 192.168.1.1/24 or network        |
+|                  | exclusion eg !192.168.1.0/24                         |
 +------------------+------------------------------------------------------+
 | Ports            | Port numbers or a port range like 20:30              |
 +------------------+------------------------------------------------------+
@@ -67,6 +69,9 @@ As you can see there are multiple IP addresses for this domain.
     To change the alias domain resolve interval, go to :menuselection:`Firewall --> Settings --> Advanced` and
     set **Aliases Resolve Interval** to the number of seconds to refresh.
 
+Hosts type Aliases can contain exclusion hosts.
+Exclusion addresses starts with "!" sign (eg !192.168.0.1) and can be used to exclude hosts from Network Group Aliases.
+
 ..................
 Networks
 ..................
@@ -74,6 +79,10 @@ Networks are specified in Classless Inter-Domain Routing format (CIDR). Use the
 the correct CIDR mask for each entry. For instance a /32 specifies a single IPv4 host,
 or /128 specifies a single IPv6 host, whereas /24 specifies 255.255.255.0 and
 /64 specifies a normal IPv6 network.
+Network type Aliases can contain exclusion hosts or networks.
+Exclusion addresses starts with "!" sign (eg !192.168.0.0/24) and can be used to
+exclude hosts or networks from current Alias or Network Group Alias
+
 
 ..................
 Ports
@@ -266,6 +275,11 @@ two machines.
 
       Adding aliases using :code:`/api/firewall/alias_util/add/` is only supported for Host, Network and External type aliases
 
+----------
+Exclusions
+----------
+Pf firewall tables support exceptions (or exclusion) of addresses. This feature can be used in one Alias or in combined (Network
+group type) Aliases. See (https://www.freebsd.org/doc/handbook/firewalls-pf.html 30.3.2.4).
 
 --------
 Nesting
@@ -284,6 +298,19 @@ For example, we define 4 servers among 2 critical using different rulesets:
 * servers { critical_servers , other_servers}.
 
 The alias :code:`servers` will contain all 4 addresses after configuration.
+
+There is also a possibility to combine different Aliases with Aliases, consisting of exclusions.
+For example, there is Alias "FireHOL" that use extensive externl drop-list and two Aliases that contains
+subnet and hosts exclusions. It is possible to create Network group (combined) Alias ("FireHOL_with_exclusions"):
+
+* FireHOL {https://raw.githubusercontent.com/firehol/blocklist-ipsets/master/firehol_level1.netset}
+* subnets_exclusions {!127.0.0.0/8, !0.0.0.0/8}
+* hosts_exclusions {!8.8.8.8}
+* FireHOL_with_exclusions {FireHOL, subnets_exclusions, hosts_exclusions}
+
+:code:`FireHOL_with_exclusions` Alias will contain all records from FireHOL Alias excluding addresses from exclusions Aliases.
+
+It's always good to check if an address is included in the Alias via :menuselection:`Firewall --> Diagnostics --> pfTable`
 
 ---------------------------------
 Spamhaus
