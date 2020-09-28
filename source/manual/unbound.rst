@@ -194,6 +194,51 @@ Refuse Non-local                      Allow only authoritative local-data querie
                                       client for messages that are disallowed.
 ====================================  ===============================================================================
 
+-------------------------
+Blacklist
+-------------------------
+
+Enable integrated dns blacklisting using one of the predefined sources or custom locations.
+
+=====================================================================================================================
+
+====================================  ===============================================================================
+Enable                                Enable blacklists
+Type of DNSBL                         Predefined external sources
+URLs of Blacklists                    Additional http[s] location to download blacklists from, only plain text
+                                      files containing a list of fqdn's (e.g. :code:`my.evil.domain.com`) are
+                                      supported.
+Whitelist Domains                     When a blacklist item contains a pattern defined in this list it will
+                                      be ommitted from the results.  e.g. :code:`.*\.nl` would exclude all .nl domains
+====================================  ===============================================================================
+
+When any of the DNSBL types are used, the content will be fetched directly from its original source, to
+get a better understanding of the source of the lists we compiled the list below containing references to
+the list maintainers.
+
+*Predefined sources*
+=====================================================================================================================
+
+====================================  ===============================================================================
+AdAway                                https://adaway.org
+AdGuard List                          https://justdomains.github.io/blocklists/#the-lists
+Blocklist.site                        https://github.com/blocklistproject/Lists
+EasyList                              https://justdomains.github.io/blocklists/#the-lists
+Easyprivacy                           https://justdomains.github.io/blocklists/#the-lists
+NoCoin List                           https://justdomains.github.io/blocklists/#the-lists
+PornTop1M List                        https://github.com/chadmayfield/my-pihole-blocklists
+Simple Ad List                        https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+Simple Tracker List                   https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
+StevenBlack/hosts                     https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+WindowsSpyBlocker                     https://github.com/crazy-max/WindowsSpyBlocker
+====================================  ===============================================================================
+
+.. Note::
+
+    In order to automatically update the lists on timed intervals you need to add a cron task, just go to
+    :menuselection:`System -> Settings ->Cron` and a new task for a command called "Download Unbound DNSBLs and restart".
+
+    Usually once a day is a good enough interval for these type of tasks.
 
 -------------------------
 Statistics
@@ -216,16 +261,16 @@ Multiple configuration files can be placed there. But note that
 * The wildcard include processing in unbound is based on ``glob(7)``. So the order in which the files are included is in ascending ASCII order.
 * Namecollisions with plugins, which use this extension point e. g. ``unbound-plus``, may occur. So be sure to use an unique filename.
 * It is a good idea, to check the complete configuration by running the unbound-checkconf utility::
-     
+
    # check if configuration is valid
    unbound-checkconf /var/unbound/unbound.conf
-   
+
   This will report errors that prevent unbound from starting.
 
 This is a sample configuration file to add an option in the server clause:
 
 ::
-   
+
     server:
       private-domain: xip.io
 
@@ -241,28 +286,28 @@ This is a sample configuration file to add an option in the server clause:
       sampleuser_additional_options.conf:/var/unbound/etc/sampleuser_additional_options.conf
 
   #. Place the template file as ``sampleuser_additional_options.conf`` in the same directory::
-   
+
       server:
         private-domain: xip.io
 
   #. Test the template generation by issuing the following command::
-   
+
       # generate template
       configctl template reload sampleuser/Unbound
 
 
   #. Check the output in the target directory::
-   
+
       # show generated file
       cat /var/unbound/etc/sampleuser_additional_options.conf
       # check if configuration is valid
       unbound-checkconf /var/unbound/unbound.conf
 
-   
+
 .. Warning::
     It is the sole responsibility of the administrator which places a file in the extension directory to ensure that the configuration is
-    valid. 
+    valid.
 
 .. Note::
     This method replaces the ``Custom options`` settings in the General page of the Unbound configuration,
-    which was already marked as "to be removed in the future". 
+    which was already marked as "to be removed in the future".
