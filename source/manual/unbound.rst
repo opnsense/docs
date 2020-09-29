@@ -231,6 +231,7 @@ Simple Ad List                        https://s3.amazonaws.com/lists.disconnect.
 Simple Tracker List                   https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
 StevenBlack/hosts                     https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 WindowsSpyBlocker                     https://github.com/crazy-max/WindowsSpyBlocker
+YoYo List                             https://pgl.yoyo.org/adservers/
 ====================================  ===============================================================================
 
 .. Note::
