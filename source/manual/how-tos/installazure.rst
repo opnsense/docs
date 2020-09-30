@@ -8,13 +8,13 @@ captive portal and filtering web proxy. The optional high availability setup ens
 with automatic failover and synchronised states, minimising disruption.
 Keep your network secure and the good packets flowing.
 
-The Virtual Appliance is available on the Microsoft Azure Marketplace (`here <https://azuremarketplace.microsoft.com/nl-nl/marketplace/apps/decisosalesbv.opnsense?tab=Overview>`__).
+The Virtual Appliance is available on the Microsoft Azure Marketplace (`here <https://azuremarketplace.microsoft.com/en-en/marketplace/apps/decisosalesbv.opnsense?tab=Overview>`__).
 
 .. image:: images/azure_offer.png
     :width: 100%
 
 Our installation manual will guide you through a simple installation scenario using 1 network interface, for
-more advanced network setups you best checkout the Azure `documentation <https://docs.microsoft.com/nl-nl/azure/virtual-machines/linux/multiple-nics>`__.
+more advanced network setups you best checkout the Azure `documentation <https://docs.microsoft.com/en-en/azure/virtual-machines/linux/multiple-nics>`__.
 
 -------------------------
 Setup : Basic settings
@@ -61,7 +61,7 @@ after bootup. Most settings can be changed after deployment.
 .. Note::
 
     Microsoft has quite some information available about different networking settings and options
-    `here <https://docs.microsoft.com/nl-nl/azure/virtual-machines/windows/network-overview>`__
+    `here <https://docs.microsoft.com/en-en/azure/virtual-machines/windows/network-overview>`__
 
 
 ------------------------
