@@ -11,13 +11,7 @@ NUT is a tool that enables the use of a UPS device via either USB or Network com
 --------------------------
 Installation
 --------------------------
-NUT is available as a plugin in OPNSense via the plugin **os-nut**. You can install the plugin via **System > Firmware > Plugins > os-nut**. After installation NUT will be available as a service, you may need to login again to make it visible.
-
---------------------------
-How to Setup - Standalone
---------------------------
-
-*Please add standalone documentation if you have configured this yourself.*
+NUT is available as a plugin in OPNSense via the plugin **os-nut**. You can install the plugin via **System > Firmware > Plugins > os-nut**.
 
 --------------------------
 How to Setup - Netclient
