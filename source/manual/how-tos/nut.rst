@@ -38,8 +38,9 @@ Username              <username, if applicable>
 Password              <password, if applicable>
 ==================== ============================================
 
-4. Click on **Diagnostics** in the left menubar. If configured correctly this page will show, after waiting a few seconds, information about the UPS. Loook for **device.mfr** and **device.model** to check if the correct UPS is detected. 
+4. Click on **Diagnostics** in the left menubar. If configured correctly this page will show, after waiting a few seconds, information about the UPS. Look for **device.mfr** and **device.model** to check if the correct UPS is detected. 
 
+.. image:: images/nut_diagnostics.png
 
 --------------------------
 References
