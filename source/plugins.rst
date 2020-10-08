@@ -87,6 +87,7 @@ Other
    manual/how-tos/freeradius
    manual/how-tos/accounting
    manual/how-tos/mailgateway
+   manual/git-backup
 
 ----------------
 Reporting

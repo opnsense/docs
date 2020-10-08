@@ -36,6 +36,7 @@ have various components that depend on each other, it's most safe to restore a c
    :titlesonly:
 
    how-tos/cloud_backup
+   git-backup
 
 
 --------------------------------
