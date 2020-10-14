@@ -20,18 +20,14 @@ Web Interface Installation (Preferred Method)
 
 To install Sensei, you must first install the Sunny Valley Networks vendor repository plugin. Go to the :menuselection:`System --> Firmware --> Plugins` page. Click on the “+” icon next to os-sunnyvalley to install the plugin. 
 
-.. image:: images/sensei-vendor-plugin.png
-    :width: 100%
+Once the vendor plugin is installed, you should see the Sensei plugin available in the list of plugins as os-sensei. If you do not see the Sensei plugin, you may need to refresh the “Plugins” page. Click the “+” icon next to os-sensei to install the plugin.
 
-Once the vendor plugin is installed, you should see the Sensei plugin available in the list of plugins as os-sensei. If you do not see the plugin, you may need to refresh the Plugins page. Click the “+” icon next to os-sensei to install the plugin.
-
-.. image:: images/sensei-plugin.png
-    :width: 100%
-
-After installing Sensei, you should see the Sensei menu in the left sidebar of the OPNsense web interface. If you do not see the new, top-level menu, you may need to refresh your page.
+After installing Sensei, you should see the Sensei menu in the left sidebar of the OPNsense web interface. If you do not see the new, top-level menu, you may need to refresh the page.
 
 .. image:: images/sensei-install-complete.png
     :width: 100%
+
+Next, you will need to complete the “Initial Configuration Wizard” for Sensei to be fully operational.
 
 -----------------------------------------------
 Command Line Installation (Alternative Method)
@@ -82,10 +78,12 @@ The script will copy the installation files onto the filesystem and will add a t
 
 Once the installation has been completed, you may disconnect from your terminal session. You may also disable your firewall’s SSH service by unchecking the checkboxes mentioned above if you no longer wish to use the SSH service.
 
+You will now need to complete the “Initial Configuration Wizard” for Sensei to be fully operational.
+
 -----------------------------
 Initial Configuration Wizard
 ------------------------------
-Regardless of your installation method, you will need to go through the initial configuration wizard before you may start using Sensei.
+Regardless of the installation method you chose, you will need to go through the initial configuration wizard before you may start using Sensei.
 
 To start the "Initial Configuration Wizard":
 
@@ -102,7 +100,7 @@ To start the "Initial Configuration Wizard":
 .. image:: images/sensei-wizard-welcome.png
     :width: 100%
 
-* Click the :menuselection:`I Agree` button to continue to the :menuselection:`Interface Selection` section.
+* Click the :menuselection:`I Agree` button to continue to the :menuselection:`Hardware Check` section.
 
 ....................
 2- Hardware Check
@@ -113,17 +111,17 @@ Your hardware will be analyzed to ensure it meets the minimum requirements. You 
 .. image:: images/sensei-wizard-hardware-high-end.png
     :width: 100%
 
-Compatible
+**Compatible**
 
 .. image:: images/sensei-wizard-hardware-low-end.png
     :width: 100%
 
-Low-end
+**Low-end**
 
 .. image:: images/sensei-wizard-hardware-incompatible.png
     :width: 100%
 
-Incompatible
+**Incompatible**
 
 * Click :menuselection:`Next` to continue to the :menuselection:`Reporting Database` section.
 
@@ -140,12 +138,12 @@ Incompatible
 .. image:: images/sensei-wizard-reporting-database-high-end.png
     :width: 100%
 
-High-end
+**High-end**
 
 .. image:: images/sensei-wizard-reporting-database-low-end.png
     :width: 100%
 
-Low-end
+**Low-end**
 
 * If you select “Use a Remote Elasticsearch Database”, you will be prompted to enter the URL, username, and password.
 
@@ -163,6 +161,8 @@ Low-end
 .......................
 
 * Select the Ethernet Interface(s) to protect. To do so, click on an interface and use the right/left arrow buttons to move it to protected/unprotected interfaces combo box.
+
+For detailed information on "Deployment Modes", `see here <https://help.sunnyvalley.io/hc/en-us/articles/360053347013>`_. 
 
 .. image:: images/sensei-wizard-interface-selection-available.png
     :width: 100%
@@ -254,4 +254,4 @@ Sensei may support up to 1,000 concurrent users on an average PC. You can set yo
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/y6OE2FuzkF0?time_continue=7" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/lbaBySzc5OI" frameborder="0" allowfullscreen></iframe>
