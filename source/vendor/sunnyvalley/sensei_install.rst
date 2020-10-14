@@ -111,17 +111,17 @@ Your hardware will be analyzed to ensure it meets the minimum requirements. You 
 .. image:: images/sensei-wizard-hardware-high-end.png
     :width: 100%
 
-**Compatible**
+*Compatible*
 
 .. image:: images/sensei-wizard-hardware-low-end.png
     :width: 100%
 
-**Low-end**
+*Low-end*
 
 .. image:: images/sensei-wizard-hardware-incompatible.png
     :width: 100%
 
-**Incompatible**
+*Incompatible*
 
 * Click :menuselection:`Next` to continue to the :menuselection:`Reporting Database` section.
 
@@ -138,12 +138,12 @@ Your hardware will be analyzed to ensure it meets the minimum requirements. You 
 .. image:: images/sensei-wizard-reporting-database-high-end.png
     :width: 100%
 
-**High-end**
+*High-end*
 
 .. image:: images/sensei-wizard-reporting-database-low-end.png
     :width: 100%
 
-**Low-end**
+*Low-end*
 
 * If you select “Use a Remote Elasticsearch Database”, you will be prompted to enter the URL, username, and password.
 
