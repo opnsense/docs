@@ -1,0 +1,318 @@
+===========================================================================================
+20.7  "Legendary Lion" Series
+===========================================================================================
+
+
+
+For five and a half years, OPNsense is driving innovation through modularising
+and hardening the open source firewall, with simple and reliable firmware
+upgrades, multi-language support, HardenedBSD security, fast adoption of
+upstream software updates as well as clear and stable 2-Clause BSD licensing.
+
+20.7, nicknamed "Legendary Lion", is a major operating system jump forward on
+a sustainable firewall experience.  This release adds DHCPv6 multi-WAN, custom
+error pages for the web proxy, Suricata 5, HardenedBSD 12.1, netstat tree view,
+basic firewall API support (via plugin) and extended live log filtering amongst
+others.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://mirrors.dotsrc.org/opnsense/releases/20.7/
+* US East Coast: http://mirrors.nycbug.org/pub/opnsense/releases/20.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/20.7/
+* South America: https://mirror.venturasystems.tech/opnsense/releases/20.7/
+* Australia: http://mirror.as24220.net/opnsense/releases/20.7/
+* Full mirror list: https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+20.7.2 (September 02, 2020)
+--------------------------------------------------------------------------
+
+
+While we are still looking closer at netmap/iflib performance on 12.1 we
+are rolling out a kernel with Intel em/igb updates that should avoid bad
+packet counts in the default installation.  Syslog-ng received a workaround
+for the diagnosed startup issue and alias now supports MAC address content
+similar to how host content works.
+
+Here are the full patch notes:
+
+* system: set REQUESTS_CA_BUNDLE in environments
+* system: improve parsing for temperature sensors
+* system: add "new-password" hint for Chrome on login form
+* system: rename syslog services description and hide legacy mode when not enabled
+* system: force syslog-ng restart after boot sequence
+* system: properly read new style logging directories
+* reporting: replace line endings when sending traceback to syslog in flowd_aggregate
+* reporting: dd traffic graph filter for private IPv4 networks (contributed by kcaj-burr)
+* firewall: add MAC address alias type
+* firewall: be more verbose when fetching alias remote content
+* firewall: prevent pfctl error messages from being suppressed
+* firewall: exclude all reserved pf.conf keywords from alias name
+* firewall: bogons not loaded on initial load
+* firewall: reset damaged bogons files on startup
+* interfaces: add listen-queue-sizes in socket diagnostics
+* firmware: properly report an unsigned repository
+* firmware: revoke 20.1 fingerprint
+* intrusion detection: rule cache parse error on invalid metadata
+* intrusion detection: allow search for status enabled/disabled
+* web proxy: correct template replacement during build time
+* web proxy: bugfix in JSON access log
+* unbound: updated project block lists links (contributed by gap579137)
+* backend: add regex_replace template support
+* plugins: os-acme-client 1.36 `[1] <https://github.com/opnsense/plugins/pull/1974>`__ 
+* plugins: os-dyndns 1.23 adds Gandi LiveDNS support (contributed by vizion8-dan)
+* plugins: os-haproxy 2.24 `[2] <https://github.com/opnsense/plugins/blob/master/net/haproxy/pkg-descr>`__ 
+* plugins: os-stunnel 1.0.1 includes performance tweaks
+* plugins: os-telegraf 1.8.2 `[3] <https://github.com/opnsense/plugins/blob/master/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-tinc fixes cipher parsing on 20.7
+* src: remove ACPI workaround for serial console on AMD EPYC
+* src: Make pf.conf ':0' ignore link-local v6 addresses too
+* src: default "show bad packets" tunable to off in e100 driver
+* src: fix unsolicited promisc mode in e1000 driver
+* src: add valectl to the system commands
+* ports: ca_root_nss/nss 3.56 `[4] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.56_release_notes>`__ 
+* ports: curl 7.72.0 `[5] <https://curl.haxx.se/changes.html#7_72_0>`__ 
+* ports: libressl 3.1.4 `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.1.4-relnotes.txt>`__ 
+* ports: openldap 2.4.51 `[7] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: php 7.3.21 `[8] <https://www.php.net/ChangeLog-7.php#7.3.21>`__ 
+* ports: python 3.7.9 `[9] <https://www.python.org/downloads/release/python-379/>`__ 
+* ports: sqlite 3.33.0 `[10] <https://sqlite.org/changes.html>`__ 
+* ports: squid 4.13 `[11] <http://www.squid-cache.org/Versions/v4/squid-4.13-RELEASENOTES.html>`__ 
+* ports: syslog-ng dlsym() workaround
+* ports: unbound 1.11.0 `[12] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-11-0>`__ 
+
+
+
+--------------------------------------------------------------------------
+20.7.1 (August 13, 2020)
+--------------------------------------------------------------------------
+
+
+Small update here with security advisories, multicast fixes and logging
+reliability patches amongst others.
+
+Overall, the jump to HardenedBSD 12.1 is looking promising from our end.
+From the reported issues we still have more logging quirks to investigate
+and especially Netmap support (used in IPS and Sensei) is lacking in some
+areas that were previously working. Patches are being worked on already
+so we shall get there soon enough.  Stay tuned.
+
+Here are the full patch notes:
+
+* system: split log process name into separate column
+* system: filter new style log directories accordingly
+* system: add delay to improve syslog-ng startup
+* system: properly switch login page to latest jQuery 3.5.1
+* firewall: add select boxes for static filters in live log
+* firmware: ignore mandoc.db files in health output as the system will regenerate them weekly
+* firmware: bring back Chinese Aivian mirror
+* firmware: remove defunct opn.sense.nz and RageNetwork mirrors
+* web proxy: add JSON output following Elastic Common Schema (sponsored by Incenter Technology)
+* backend: cap log messages to 4000 characters to prevent longer messages from vanishing
+* plugins: os-acme-client 1.35 `[1] <https://github.com/opnsense/plugins/pull/1950>`__ 
+* plugins: os-frr 1.15 `[2] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
+* plugins: os-postfix 1.15 `[3] <https://github.com/opnsense/plugins/blob/master/mail/postfix/pkg-descr>`__ 
+* plugins: os-udpbroadcastrelay 1.0 (contributed by Team Rebellion)
+* src: set the current VNET before calling netisr_dispatch() in ng_iface(4)
+* src: assorted multicast group join/leave corrections
+* src: fix vmx driver packet loss and degraded performance `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:16.vmx.asc>`__ 
+* src: fix memory corruption in USB network device driver `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:21.usb_net.asc>`__ 
+* src: fix multiple vulnerabilities in sqlite3 `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:22.sqlite.asc>`__ 
+* src: fix sendmsg(2) privilege escalation `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:23.sendmsg.asc>`__ 
+* ports: perl 5.32.0 `[8] <https://metacpan.org/changes/release/XSAWYERX/perl-5.32.0>`__ 
+* ports: squid 4.12 `[9] <http://www.squid-cache.org/Versions/v4/squid-4.12-RELEASENOTES.html>`__ 
+
+
+
+--------------------------------------------------------------------------
+20.7 (July 30, 2020)
+--------------------------------------------------------------------------
+
+
+For five and a half years, OPNsense is driving innovation through modularising
+and hardening the open source firewall, with simple and reliable firmware
+upgrades, multi-language support, HardenedBSD security, fast adoption of
+upstream software updates as well as clear and stable 2-Clause BSD licensing.
+
+20.7, nicknamed "Legendary Lion", is a major operating system jump forward on
+a sustainable firewall experience.  This release adds DHCPv6 multi-WAN, custom
+error pages for the web proxy, Suricata 5, HardenedBSD 12.1, netstat tree view,
+basic firewall API support (via plugin) and extended live log filtering amongst
+others.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://mirrors.dotsrc.org/opnsense/releases/20.7/
+* US East Coast: http://mirrors.nycbug.org/pub/opnsense/releases/20.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/20.7/
+* South America: https://mirror.venturasystems.tech/opnsense/releases/20.7/
+* Australia: http://mirror.as24220.net/opnsense/releases/20.7/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes against version 20.7-RC1:
+
+* system: syslog-ng RFC5424 on FreeBSD 12 needs flags(syslog-protocol)
+* installer: welcome users as genuine 20.7 installer
+* web proxy: do not try to force cachemanager access to use ICAP
+* plugins: os-collectd 1.3 `[2] <https://github.com/opnsense/plugins/blob/master/net-mgmt/collectd/pkg-descr>`__ 
+* plugins: os-zabbix5-proxy 1.3 `[3] <https://github.com/opnsense/plugins/blob/master/net-mgmt/zabbix5-proxy/pkg-descr>`__ 
+* src: prevent netgraph page fault for LTE usage
+* ports: dnsmasq 2.82 `[4] <http://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: monit 5.27.0 `[5] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.55 `[6] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.55_release_notes>`__ 
+* ports: sudo 1.9.2 `[7] <https://www.sudo.ws/stable.html#1.9.2>`__ 
+
+Known issues and limitations:
+
+* legacy MPD5 plugins os-l2tp, os-pppoe and os-pptp are no longer available
+* i386 architecture builds are no longer available
+
+The public key for the 20.7 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAngIbBcRin9AmDSOsjpft
+    # 7aK52TLkOzRc94NqKKnn6ALd6poEuFqYl1tfNT6XumBJDsRL1s56UYfjS8zpvFW3
+    # HdzKOv4YtIln6qUuC1w8TXYNprasB/laYoBn2xeCGX5L6carlujQ+h0rsj+kpawr
+    # E0/d6oRzR69cxQyoDQHD559Wv4nA795M6QGDhhl3dDq/92gzrrq3C5gJ7ldHi13c
+    # inM2Fw+oPUfEIWUt/sqUTZheEk0Df3LSiJlgjQDhjh5uujTLgvX8IzfYAb8clgY3
+    # DplgOh4ReoFnx6XVERSPa91ZJGeCV4dTGD2hU40rzU1lkQaiVUITLsfjrYUsNMEo
+    # jdG+ndGIPTOrwXH4yGRZuUZZ612ALtO6bd4V1kAOLOS07mo4JB4poEbbB0lvZJSG
+    # iTmU9od8zutnLkD66Q/qI8e6OcL0yqjwwG9DzCKg23M6cVWfyBTJhKoqQyhNWnzZ
+    # bzvgOXfhOA8jn8FPChaU5OiIrv+g56pQrWKcQsvgQMqlyR+/AFSIrrqprCjDkfOG
+    # bxFqTGkPb1n32nbnXJOA5Z43G9/PtBV8lvaEzli6Vehh+Zrcuy8yupbiVWSqTOfp
+    # E5cYAmrlDkxKyAlZQtH6EhMF1VBQRrlqGhss5XYoE3DQDqWdhUbGv8Qiiv7ROCza
+    # SIMuSzc6u35MooDRDZF4Ba0CAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-20.7-OpenSSL-dvd-amd64.iso.bz2) = 580070a3a0533418d58eaeb78122f804f2df7081c929288e1dccee34c4bf763a
+    # SHA256 (OPNsense-20.7-OpenSSL-nano-amd64.img.bz2) = 6deb370c2a64fa6c60b7f59a4afb31b2dd28b812f5fcd59eaa6d458938d45630
+    # SHA256 (OPNsense-20.7-OpenSSL-serial-amd64.img.bz2) = 1276cddd5f7b89aa54fc4a1517cb0686efe94f672627243c5b34d93340441d60
+    # SHA256 (OPNsense-20.7-OpenSSL-vga-amd64.img.bz2) = 72cbffe3bba4884586c8ded8dbca4cf30fb34a094602e5f681efde2deea595c6
+
+--------------------------------------------------------------------------
+20.7.r1 (July 21, 2020)
+--------------------------------------------------------------------------
+
+
+For five and a half years, OPNsense is driving innovation through modularising
+and hardening the open source firewall, with simple and reliable firmware
+upgrades, multi-language support, HardenedBSD security, fast adoption of
+upstream software updates as well as clear and stable 2-Clause BSD licensing.
+
+We thank all of you for helping test, shape and contribute to the project!
+We know it would not be the same without you.  <3
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://mirrors.dotsrc.org/opnsense/releases/20.7/
+* US East Coast: http://mirrors.nycbug.org/pub/opnsense/releases/20.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/20.7/
+* South America: https://mirror.venturasystems.tech/opnsense/releases/20.7/
+* Australia: http://mirror.as24220.net/opnsense/releases/20.7/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes against 20.1.8_1:
+
+* system: allow to optionally disable legacy logging (clog)
+* system: do not allow login redirects to visit external pages
+* system: add new "auth user changed" config event and hook it into LDAP updatePolicies()
+* system: adapt to 3wire serial console setting
+* system: figure out which sysctls are writeable before attempting to write them
+* system: Windows-friendly Nextcloud configuration backup file timestamp (contributed by @Alphakilo)
+* system: disable PCRE JIT in PHP config
+* system: clean up start / stop beep handler
+* interfaces: improved VLAN handling and defaults for more stable netmap use on 12.1
+* interfaces: support DHCPv6 multi-WAN (contributed by Team Rebellion)
+* interfaces: show delegated prefix in overview (contributed by Team Rebellion)
+* interfaces: DHCPv4 no-release and debug options moved to global interface settings
+* interfaces: automatically register loopback device lo0
+* firewall: handle new net.pf.request_maxcount system limit accordingly
+* firewall: properly evaluate and execute gateway monitoring kill states feature
+* firewall: add the iplen option to shaper rules (contributed by Maxfield Allison)
+* firewall: show partial alias content in tooltip
+* firewall: translated static log overview page to MVC
+* firewall: aliases now show internal aliases
+* firewall: validate if NAT destination contains a port
+* firewall: prevent config_read_array() from adding an empty lo0
+* firmware: added fingerprint for 20.7 series
+* firmware: hint at missing plugins and request to install or dismiss
+* intrusion detection: extend rule search with metadata and show results on rule info
+* intrusion detection: updated pattern options (contributed by @Xeroxxx)
+* intrusion detection: synchronize suricata.yaml with default template
+* network time: NMEA GPS clock messages latitude and longitude parsing fix (contributed by @mikahe)
+* network time: prevent widget PHP warnings if no GPS fix was returned in NMEA message (contributed by @mikahe)
+* unbound: integrate functionality formerly known as "unbound-plus" plugin (contributed by Michael Muenz)
+* web proxy: support for custom error pages (sponsored by Incenter Technology)
+* web proxy: add connect_timeout (contributed by Michael Muenz)
+* web proxy: allow PURGE on cache (contributed by @sazb)
+* web proxy: add missing IPv6 listener
+* mvc: add "S" option for AllowDynamic in InterfaceField type
+* mvc: LegacyLinkField not allowed to return null in __toString()
+* backend: add safeguard for illegal configd settings leading to overrides on the same command leaf
+* backend: emove undocumented and unused alias support
+* mvc: support virtual nodes in model instances
+* rc: implement inline variables for skip and defer service start
+* ui: unify edit dialog and add onBeforeRenderDialog event deferrable
+* ui: use firewall groups to group interfaces menu accordingly
+* ui: moved virtual IP menu entry to interfaces
+* ui: jQuery 3.5.1
+* plugins: os-dyndns 1.22 `[2] <https://github.com/opnsense/plugins/pull/1654>`__ 
+* plugins: os-intrusion-detection-content-et-pro 1.0.2 switches to Suricata 5 rules
+* plugins: os-telegraf 1.8.1 `[3] <https://github.com/opnsense/plugins/blob/master/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-theme-rebellion 1.8.6 (contributed by Team Rebellion)
+* plugins: os-tinc fixes switch mode `[4] <https://github.com/opnsense/plugins/pull/1733>`__ 
+* plugins: os-wireguard 1.2 `[5] <https://github.com/opnsense/plugins/pull/1865>`__ 
+* src: HardenedBSD 12.1-p7
+* ports: ca_root_nss 3.54
+* ports: curl 7.71.1 `[6] <https://curl.haxx.se/changes.html>`__ 
+* ports: php 7.3.20 `[7] <https://www.php.net/ChangeLog-7.php#7.3.20>`__ 
+* ports: python 3.7.8 `[8] <https://www.python.org/downloads/release/python-378/>`__ 
+* ports: sqlite 3.32.3 `[9] <https://www.sqlite.org/changes.html>`__ 
+* ports: suricata 5.0.3 `[10] <https://suricata-ids.org/2020/04/28/suricata-5-0-3-released/>`__ 
+
+Known issues and limitations:
+
+* Legacy MPD5 plugins os-l2tp, os-pppoe and os-pptp will no longer be available
+* i386 architecture builds will no longer be available
+* Installer still advertises 20.1
+
+The public key for the 20.7 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAngIbBcRin9AmDSOsjpft
+    # 7aK52TLkOzRc94NqKKnn6ALd6poEuFqYl1tfNT6XumBJDsRL1s56UYfjS8zpvFW3
+    # HdzKOv4YtIln6qUuC1w8TXYNprasB/laYoBn2xeCGX5L6carlujQ+h0rsj+kpawr
+    # E0/d6oRzR69cxQyoDQHD559Wv4nA795M6QGDhhl3dDq/92gzrrq3C5gJ7ldHi13c
+    # inM2Fw+oPUfEIWUt/sqUTZheEk0Df3LSiJlgjQDhjh5uujTLgvX8IzfYAb8clgY3
+    # DplgOh4ReoFnx6XVERSPa91ZJGeCV4dTGD2hU40rzU1lkQaiVUITLsfjrYUsNMEo
+    # jdG+ndGIPTOrwXH4yGRZuUZZ612ALtO6bd4V1kAOLOS07mo4JB4poEbbB0lvZJSG
+    # iTmU9od8zutnLkD66Q/qI8e6OcL0yqjwwG9DzCKg23M6cVWfyBTJhKoqQyhNWnzZ
+    # bzvgOXfhOA8jn8FPChaU5OiIrv+g56pQrWKcQsvgQMqlyR+/AFSIrrqprCjDkfOG
+    # bxFqTGkPb1n32nbnXJOA5Z43G9/PtBV8lvaEzli6Vehh+Zrcuy8yupbiVWSqTOfp
+    # E5cYAmrlDkxKyAlZQtH6EhMF1VBQRrlqGhss5XYoE3DQDqWdhUbGv8Qiiv7ROCza
+    # SIMuSzc6u35MooDRDZF4Ba0CAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+Please let us know about your experience!
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-20.7.r1-OpenSSL-dvd-amd64.iso.bz2) = d54dca6390497d45b831f68f352fccf84881aac78a360247965e5c9b36fbfded
+    # SHA256 (OPNsense-20.7.r1-OpenSSL-nano-amd64.img.bz2) = f78d51d53bf663df2d49a3724812893d8c55234ab8d4a9232663fa581496edbe
+    # SHA256 (OPNsense-20.7.r1-OpenSSL-serial-amd64.img.bz2) = 984f8c9d63598f061cc8995245dea73703532c1bb688ac87cdb1e510fb53b80e
+    # SHA256 (OPNsense-20.7.r1-OpenSSL-vga-amd64.img.bz2) = 711811e0a7d37d323a060c52590daa9f024e77c6da627530c6596367a09b412d

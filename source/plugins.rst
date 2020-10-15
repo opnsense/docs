@@ -46,6 +46,7 @@ VPN & Connectivity
    manual/how-tos/dynamicrouting_rip
    manual/how-tos/dynamicrouting_zebra
    manual/how-tos/tor
+   manual/how-tos/tayga
 
 ----------------
 Web
@@ -86,6 +87,7 @@ Other
    manual/how-tos/freeradius
    manual/how-tos/accounting
    manual/how-tos/mailgateway
+   manual/git-backup
 
 ----------------
 Reporting

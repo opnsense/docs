@@ -57,6 +57,56 @@ More information on how to write Volt pages can be found here :
 http://docs.phalconphp.com/en/latest/reference/volt.html
 
 ---------------------
+User forms
+---------------------
+
+When designers need forms for users to input data, they can use the :code:`getForm()` method on our standard controller
+to feed a simple xml file as definition for the template engine to use. The example section contains a step by step
+guide how to use these.
+
+The getForm() method itself merily passes the structure to thew view, which can use this information to render
+forms on page load (statically).
+In our standard layout `partials <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/views/layout_partials/form_input_tr.volt>`__ we offer some different record types which we will detail below:
+
+
+**Attributes**
+
+============  ===========================================================================================
+Name          Description
+============  ===========================================================================================
+id            unique id of the attribute
+type          type of input or field. For a list of valid types, use the Type table below
+label         attribute label (visible text)
+size          size (width in characters) attribute if applicable
+height        height (length in characters) attribute if applicable
+help          help text
+advanced      property "is advanced", only display in advanced mode
+hint          input control hint
+style         css class(es) to add, helps identifying items easier using jQuery selectors
+width         width in pixels if applicable
+allownew      allow new items (for list) if applicable
+readonly      if true, input fields will be readonly
+============  ===========================================================================================
+
+
+**Types**
+
+==================  ===========================================================================================
+Name                Description
+==================  ===========================================================================================
+header              Header row 
+text                Single line of text
+password            Password field for sensitive input. The contents will not be displayed.
+textbox             Multiline text box
+checkbox            Checkbox
+dropdown            Single item selection from dropdown
+select_multiple     Multiple item select from dropdown
+hidden              Hidden fields not for user interaction
+info                Static text (help icon, no input or editing)
+==================  ===========================================================================================
+
+
+---------------------
 API based controllers
 ---------------------
 

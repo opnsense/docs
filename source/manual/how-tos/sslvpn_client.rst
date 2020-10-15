@@ -238,7 +238,7 @@ For our example will use the following settings:
 
 ===================================== ===============================================
  **Description**                       *My SSL VPN Server*
- **Server Mode**                       *Remote Access (User Auth)*
+ **Server Mode**                       *Remote Access (SSL/TLS + User Auth)*
  **Backend for authentication**        *TOTP VPN Access Server*
  **Protocol**                          *UDP*
  **Device Mode**                       *tun*

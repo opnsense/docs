@@ -18,7 +18,7 @@ To install plugins in OPNsense, you must use an account with administrative acce
 Web Interface Installation (Preferred Method)
 ---------------------------------------------
 
-To install Sensei, you must first install the Sunny Valley Networks vendor repository plugin. Go to the :menuselection:`System --> Firmware --> Plugins` page. Click on the “+” icon next to os-sunnyvalley to install the plugin. 
+To install Sensei, you must first install the Sunny Valley Networks vendor repository plugin. Go to the :menuselection:`System --> Firmware --> Plugins` page. Click on the “+” icon next to os-sunnyvalley to install the plugin.
 
 Once the vendor plugin is installed, you should see the Sensei plugin available in the list of plugins as os-sensei. If you do not see the Sensei plugin, you may need to refresh the “Plugins” page. Click the “+” icon next to os-sensei to install the plugin.
 
@@ -35,7 +35,7 @@ Command Line Installation (Alternative Method)
 
 The command line installation method was the primary means for installing Sensei before it was available on the “Plugins” page in the OPNsense web interface. This option is still available for users who have direct access to the OPNsense system yet prefer using command line tools or who may only have remote shell access via SSH to administrate their OPNsense installations. However, the web interface will need utilized after installation to complete the initial configuration of Sensei.
 
-.. Tip:: 
+.. Tip::
 
     If you plan to leave the SSH service active, the best practice recommendations are to create a user with administrative access rather than using the “root” user and to make use of stronger authentication methods such as using keys rather than passwords.
 
@@ -80,7 +80,7 @@ Once the installation has been completed, you may disconnect from your terminal 
 
 You will now need to complete the “Initial Configuration Wizard” for Sensei to be fully operational.
 
------------------------------
+------------------------------
 Initial Configuration Wizard
 ------------------------------
 Regardless of the installation method you chose, you will need to go through the initial configuration wizard before you may start using Sensei.
@@ -133,7 +133,7 @@ Your hardware will be analyzed to ensure it meets the minimum requirements. You 
 
 .. Warning::
 
-    If you wish to use a remote ElasticSearch database, you must choose it now since you cannot change this after the initial configuration wizard has been completed. 
+    If you wish to use a remote ElasticSearch database, you must choose it now since you cannot change this after the initial configuration wizard has been completed.
 
 .. image:: images/sensei-wizard-reporting-database-high-end.png
     :width: 100%
@@ -170,7 +170,7 @@ For detailed information on "Deployment Modes", `see here <https://help.sunnyva
 .. image:: images/sensei-wizard-interface-selection-protected.png
     :width: 100%
 
-* Click :menuselection:`Next` to continue to the :menuselection:`Cloud Reputation`section.
+* Click :menuselection:`Next` to continue to the :menuselection:`Cloud Reputation` section.
 
 ....................
 5- Cloud Reputation
@@ -241,7 +241,7 @@ Sensei may support up to 1,000 concurrent users on an average PC. You can set yo
 9- Finish
 ....................
 
-* You may enter your email address if you wish to subscribe to the Sunny Valley email list to stay up to date on the latest news. 
+* You may enter your email address if you wish to subscribe to the Sunny Valley email list to stay up to date on the latest news.
 
 .. image:: images/sensei-wizard-finish.png
     :width: 100%
