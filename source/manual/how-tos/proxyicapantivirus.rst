@@ -70,7 +70,7 @@ Step 6 - Test using EICAR
 To test if the engine is operational and functional go to http://www.eicar.org/?page_id=3950
 on this page you will find several files you can test.
 
-First test the HTTP protocol version. If that works, test the HTTP version if you
+First test the HTTP protocol version. If that works, test the HTTPS version if you
 have also configured the transparent SSL proxy mode.
 
 .. Warning::
