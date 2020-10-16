@@ -53,15 +53,14 @@ Getting Support
 
 **Support for Free Edition**
 
-If you need help for anything, there is an active discussion about Sensei on OPNsense forum. Feel free to `click here <https://forum.opnsense.org/index.php?topic=9521.new;topicseen#new>`_ and join the conversation.
+If you need help with Sensei, there is an active discussion on the OPNsense forum. Feel free to `click here <https://forum.opnsense.org/index.php?board=38.0>`_ to join the conversation.
 
-You can also issue bug reports from `Gitlab <https://gitlab.com/svn-community/opnsense-sensei-plugin/issues>`_
+You may also submit bug reports by visiting the *Report Bug* page in the Sensei web UI.
 
 With its in-depth coverage, `Sensei Documentation <https://help.sunnyvalley.io/>`_ is always available for reference.
 
 * `OPNsense Forum <https://forum.opnsense.org/index.php?topic=9521.new;topicseen#new>`_
 * `Users' Manual <https://help.sunnyvalley.io/>`_
-* `Report a problem <https://gitlab.com/svn-community/opnsense-sensei-plugin/issues>`_
 
 **Premium Subscription Support**
 
