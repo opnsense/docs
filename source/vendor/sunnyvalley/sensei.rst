@@ -53,7 +53,7 @@ Getting Support
 
 **Support for Free Edition**
 
-If you need help with Sensei, there is an active discussion on the OPNsense forum. Feel free to `click here <https://forum.opnsense.org/index.php?topic=9521.new;topicseen#new>`_ to join the conversation.
+If you need help with Sensei, there is an active discussion on the OPNsense forum. Feel free to `click here <https://forum.opnsense.org/index.php?board=38.0>`_ to join the conversation.
 
 You may also submit bug reports by visiting the *Report Bug* page in the Sensei web UI.
 
