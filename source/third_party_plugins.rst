@@ -22,6 +22,7 @@ Deciso
    :titlesonly:
 
    vendor/deciso/opncentral
+   vendor/deciso/opnproxy
 
 --------------------
 Sunnyvalley
