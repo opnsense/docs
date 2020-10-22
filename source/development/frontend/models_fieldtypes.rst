@@ -44,6 +44,12 @@ AutoNumberField
 
 An integer sequence, which automatically increments on every new item of the same type in the same level.
 
+
+Base64Field
+------------------------------------
+Validate if a given string contains a valid base64 decodable value.
+
+
 BooleanField
 ------------------------------------
 
