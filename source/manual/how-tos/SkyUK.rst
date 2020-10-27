@@ -61,11 +61,17 @@ interface shown below.
 	:width: 100%
 
 Sky provide a /56 IPv6 delegation, they do not provide a global IPv6 address
-on the WAN interface, this is link local only. The setting of the option
-'Directly send SOLICIT' and Prefix delegation size set to 56 is an absolute
-requirement for Sky .
+on the WAN interface, this is link local only. Prefix delegation size should
+be set to 56.
 
-The only other requirement in this section is to select ‘Prevent Release'.
+Click 'Save' and 'Apply'
+
+The only other requirement is found in the Interfaces:Settings menu under
+IPV6 DHCP. The ‘Prevent Release' option.
+
+.. image:: images/skyuk_dhcp6c_interface_settings.png
+	:width: 100%
+
 This is there as the Sky DHCPv6 servers use a 'sticky' address. If the
 OPNsense dhcp6 client sends a release signal to the server it's more than
 likely that the allocated prefix will change, thus this setting, along with

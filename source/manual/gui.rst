@@ -128,3 +128,65 @@ A dropdown tab can be clicked upon to open the first menu item or you can click 
 the arrow next to it to show all options, like so:
 
 .. image:: images/dropdown_tab.png
+
+
+
+------------------
+Data grids
+------------------
+
+Many components within OPNsense use grid views to navigate through content, below is an example of a simple table view
+supporting the most relevant actions.
+
+.. image:: images/gui_grid.png
+
+Fields
+-------------------
+
+.. raw:: html
+
+    The available fields vary between components, the <i class="fa fa-list-ul"></i> icon can be used to select which fields should
+    be visible or hidden.
+    <br/><br/>
+
+
+Filter and limit
+-------------------
+
+.. raw:: html
+
+    The top area of the grid contains a search input combined with a reload button <i class="fa fa-reload"></i> and
+    a selection for the number of rows to show at once on a page. Often the search input will be instantly applied, but
+    in some cases a reload is needed if the action can't be processed fast enough.
+    <br/><br/>
+
+Actions
+-------------------
+
+.. raw:: html
+
+    Different actions could be supported on a (set of) records:
+      <ul class="simple">
+        <li> <i class="fa fa-square-o"></i> / <i class="fa fa-check-square-o"> </i> Enable / disable a record  </li>
+        <li> <i class="fa fa-pencil"></i> Edit a record  </li>
+        <li> <i class="fa fa-clone"></i> Copy a record and edit </li>
+        <li> <i class="fa fa-trash"></i> Delete a record, usually this will ask for a confirmation </li>
+        <li> <i class="fa fa-plus"></i> Add a new record and open edit dialog  </li>
+      </ul>
+      <br/><br/>
+
+
+Page Navigation
+-------------------
+
+
+The navigation buttons :code:`« ‹ [1,2,..] › »` help scroll through the different pages that are available for the
+selected data.
+
+.. Note::
+
+    Although the page numbers and last page button (:code:`»`) are always visible, they can only be used when the size
+    of the dataset is known upfront. In case of large datasets, such as intrusion alerts and log views the number of records
+    is not known upfront, since there's no relation between the size of the underlaying data and the number of records.
+
+    The record count in these cases is more or less a guestimate based on the number of records already shown.

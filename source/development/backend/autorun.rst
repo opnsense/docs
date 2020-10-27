@@ -20,6 +20,18 @@ They can contain any executable file (e.g. shell scripts) in the following subdi
     - scripts used for periodic backup and restore
 - carp
     - scripts used for CARP MASTER / BACKUP events
+- config
+    - scripts used when a configuration change took place (:code:`config.xml` changed).
+
+.. Note::
+    This event is intended to be atomic for every changed revision, it's triggered using configd :code:`system event config_changed`
+    and is loosely coupled via a :code:`syslog-ng` handler within the standard :code:`Config->save()` method.
+    The syshook event contains a pointer to the backup file in question (e.g. :code:`/conf/backup/config-1601651332.5394.xml`),
+    so the consumer (script) knows which revision to process.
+
+.. Tip::
+    Try to keep custom config handlers as small and efficient as possible since the number of triggered events can grow rapidly.
+
 - early
     - start script before system network startup
 - monitor

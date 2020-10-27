@@ -154,6 +154,8 @@ if __name__ == '__main__':
         # per version rst file
         template = Template(open("%s/source/releases/default.rst.in" % root_dir, "r").read())
         for major_version in template_data['major_versions']:
-            with open("%s/source/releases/%s.rst" % (root_dir, major_version), 'w') as f_out:
-                template_data['this_version'] = major_version
-                f_out.write(template.render(template_data))
+            if major_version in template_data['versions']:
+                # wait for the main version before writing a changelog
+                with open("%s/source/releases/%s.rst" % (root_dir, major_version), 'w') as f_out:
+                    template_data['this_version'] = major_version
+                    f_out.write(template.render(template_data))

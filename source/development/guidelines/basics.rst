@@ -11,8 +11,7 @@ code. It also explains guideline differences between new and legacy code.
 --------
 PHP code
 --------
-For PHP code the `PSR-1 <https://www.php-fig.org/psr/psr-1/>`_ and
-`PSR-2 <https://www.php-fig.org/psr/psr-2/>`_ Coding Standard apply.
+For PHP code the `PSR-12 <https://www.php-fig.org/psr/psr-12/>`_ coding standard applies.
 
 ------
 Python
@@ -26,6 +25,39 @@ Architecture
 ------------
 Documentation is available about our :doc:`architecture </development/architecture>`
 and used :doc:`components </development/components>`.
+
+-----------------------
+Safeguard user input
+-----------------------
+
+We aim to validate user input before injecting it in the configuration in order to provide a more user friendly
+interface and prevent bad things to happen in the future.
+
+Although we do understand that the perfect validation isn't always possible at once (too much referential constraints, not always as easy to catch)
+it is a best practice to ask yourself if a specific input could be validated (if not now, what about the future).
+
+The issue with user input impossible to validate is that it will bite you eventually, leading to future security issues waiting to happen
+(for example a non authorized user can write commands that will be executed with elevated privileges, we saw this with openvpn for example).
+
+For this reason we do not allow plain text configuration data to be stored in our configuration
+(although some legacy components still use this `opnsense/core#d62015 <https://github.com/opnsense/core/commit/d62015df1cdb0c0711b488bd66ced631b9a4f37b>`__ )
+
+.. Note::
+
+    Feature requests for custom user inputs will be declined in our public repositories, defining what a feature should do
+    also helps designing the right feature.
+
+
+.. Tip::
+
+    If custom input is needed, in most cases you can use hooks to include additional configuration data in the service,
+    most services offer this type of support (either with predefined directories or via the template system).
+
+    This prevents arbitrary users from adding undefined configuration data.
+
+
+The different field types in our model system are aimed to help the developer safeguard his or her code for unexpected input.
+
 
 -----------------
 Ideal Development

@@ -68,7 +68,8 @@ and Save, remember to check the new interface and ensure it is enabled as in Ste
 -----------------    
 We now need to make two changes to the System Tunables to ensure that filtering is carried
 out on the bridge itself, and not on the member interfaces. Go to :menuselection:`System --> Settings --> Tunables`
-and select using the pen button net.link.bridge.pfil_member and set the value to 0.
+and select using the pen button net.link.bridge.pfil_member and set the value to 0
+(add a new record if this entry doesn't exist on your installation).
 
 .. image:: images/lan_bridge_6.png
 	:width: 100%

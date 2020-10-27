@@ -12,3 +12,5 @@ The OPNsense frontend is implemented with `PHP/Phalcon <https://en.wikipedia.org
    frontend/models
    frontend/routing
    frontend/controller
+   frontend/view_js_helpers
+   

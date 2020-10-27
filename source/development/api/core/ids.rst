@@ -25,7 +25,7 @@ Ids
     "``GET``","ids","settings","getRuleset","$id"
     "``GET``","ids","settings","getRulesetproperties",""
     "``GET``","ids","settings","getUserRule","$uuid=null"
-    "``GET``","ids","settings","listRuleClasstypes",""
+    "``GET``","ids","settings","listRuleMetadata",""
     "``GET``","ids","settings","listRulesets",""
     "``POST``","ids","settings","searchInstalledRules",""
     "``*``","ids","settings","searchUserRule",""
