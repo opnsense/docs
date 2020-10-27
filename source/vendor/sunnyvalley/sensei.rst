@@ -32,6 +32,7 @@ Getting Started
 
 - :doc:`sensei_hardwarerequirements`
 - :doc:`sensei_install`
+- :doc:`sensei_cmd_install`
 
 ----------------------------
 User Manual
@@ -59,7 +60,7 @@ You may also submit bug reports by visiting the *Report Bug* page in the Sensei 
 
 With its in-depth coverage, `Sensei Documentation <https://help.sunnyvalley.io/>`_ is always available for reference.
 
-* `OPNsense Forum <https://forum.opnsense.org/index.php?topic=9521.new;topicseen#new>`_
+* `OPNsense Forum <https://forum.opnsense.org/index.php?board=38.0>`_
 * `Users' Manual <https://help.sunnyvalley.io/>`_
 
 **Premium Subscription Support**

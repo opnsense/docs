@@ -34,3 +34,4 @@ Sunnyvalley
    vendor/sunnyvalley/sensei
    vendor/sunnyvalley/sensei_hardwarerequirements
    vendor/sunnyvalley/sensei_install
+   vendor/sunnyvalley/sensei_cmd_install
