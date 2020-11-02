@@ -120,8 +120,8 @@ If not (or your entered invalid credentials) it shows:
 
 Step 3 - Enable the authentication server
 -----------------------------------------
-Go to `System --> Access --> Settings --> Administration` and under the `Authentication` section at the bottom, change
-the `Server` to your newly added LDAP server and save.
+Go to :menuselection:`System --> Access --> Settings --> Administration` and under the **Authentication** section at the bottom, change
+the **Server** dropdown to your newly added LDAP server and save.
 
 
 Step 4 - Import Users
