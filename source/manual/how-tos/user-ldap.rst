@@ -118,7 +118,13 @@ If not (or your entered invalid credentials) it shows:
     When :code:`Read properties` is enabled, you should also see all properties returned by the server in the tester. This
     helps to identify if your server support group sync support (find :code:`memberOf` in the list).
 
-Step 3 - Import Users
+Step 3 - Enable the authentication server
+-----------------------------------------
+Go to `System --> Access --> Settings --> Administration` and under the `Authentication` section at the bottom, change
+the `Server` to your newly added LDAP server and save.
+
+
+Step 4 - Import Users
 ---------------------
 If you would like to give LDAP/Active Directory users access to the GUI, you need
 to import the users into the local user manager. Go to :menuselection:`System --> Access --> Users`
@@ -132,7 +138,7 @@ Click on the cloud import icon to start importing users.
 
 A new form will be show with the individual users, select the ones you like to import.
 
-Step 4 - Update LDAP user privileges
+Step 5 - Update LDAP user privileges
 ------------------------------------
 Now if you go to :menuselection:`System --> Access --> Users` you will see all users including the
 newly imported LDAP users. You can create a specific group for these users to
@@ -148,7 +154,7 @@ LDAP server, just like this:
 .. TIP::
    See :doc:`user-local` for more information on User, Groups and privileges.
 
-Step 5 - Update system access settings
+Step 6 - Update system access settings
 --------------------------------------
 Now we have configures, verified and imported the users from our LDAP server, we
 need to change the default settings to allow LDAP users to login.
