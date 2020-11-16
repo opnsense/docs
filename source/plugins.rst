@@ -41,10 +41,7 @@ VPN & Connectivity
    manual/how-tos/wireguard-client-azire
    manual/how-tos/wireguard-client-mullvad
    manual/how-tos/zerotier
-   manual/how-tos/dynamicrouting_howto
-   manual/how-tos/dynamicrouting_ospf
-   manual/how-tos/dynamicrouting_rip
-   manual/how-tos/dynamicrouting_zebra
+   manual/dynamic_routing
    manual/how-tos/tor
    manual/how-tos/tayga
 
@@ -80,10 +77,6 @@ Other
    :maxdepth: 2
    :titlesonly:
 
-   manual/how-tos/dynamicrouting_howto
-   manual/how-tos/dynamicrouting_ospf
-   manual/how-tos/dynamicrouting_rip
-   manual/how-tos/dynamicrouting_zebra
    manual/how-tos/freeradius
    manual/how-tos/accounting
    manual/how-tos/mailgateway
