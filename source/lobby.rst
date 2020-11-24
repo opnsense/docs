@@ -18,4 +18,5 @@ and end your session. After initial installation, this is the first place you wi
 
    manual/gui
    manual/dashboard
+   manual/lobby_password
    manual/opnsense_tools
