@@ -8,6 +8,20 @@ web proxy setup.
 One of the features often requested is to easily (dis)allow (groups of) users access to certain domain or url parts,
 the :code:`OPNProxy` plugin addition offers this functionality at ease.
 
+Prerequisites
+---------------------------
+
+Before installing and using this plugin, make sure your web proxy is configured and enabled including some sort of authentication.
+
+.. Note::
+    To enable authentication, goto :menuselection:`Services->Web Proxy->Administration` then collapse "Forward Proxy" and
+    choose "Authentication Settings". Choose a method and apply settings.
+
+.. Note::
+    In order for authentication scheme's to work, users do need to exist in the firewall. You can either import them (when using ldap)
+    or make sure the same username exists locally to map groups too.
+
+
 Installation
 ---------------------------
 
