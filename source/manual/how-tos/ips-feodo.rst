@@ -74,16 +74,12 @@ To download the rule sets press **Download & Update Rules**.
 -----------------------
 Change default behavior
 -----------------------
-Now click on the info button   right after each rule and change Input Filter
-from none to drop actions.
 
-.. image:: images/changefilter.png
-    :width: 100%
+To block matches instead of alerting on them, go to the  :menuselection:`Service -> Intrusion Detection -> Policies` page
+and add a new policy. You can easily select the associated rulesets here (all staring with abuse.ch) and select action "Alert"
+next go to the new action, which should be "Drop".
 
-When done it should like this:
-
-.. image:: images/rulesdrop.png
-    :width: 100%
+Apply the settings at the bottom of the page when done.
 
 ------------------------
 Apply fraud drop actions

@@ -82,7 +82,7 @@ Save logs                             Number of logs to keep
 
 .. Note::
 
-    When using IPS mode make sure all hardware offloading features are disabled in the interface settings (:menuselection:`Interfaces -> Settings`), 
+    When using IPS mode make sure all hardware offloading features are disabled in the interface settings (:menuselection:`Interfaces -> Settings`),
     pre 20.7 "VLAN Hardware Filtering" wasn't disabled which may cause issues for some network cards.
 
 ----------------
@@ -105,6 +105,66 @@ default packet size                   With this option, you can set the size of 
                                       but processing it will lower the performance.
 ====================================  ===============================================================================
 
+---------------------------
+Download rulesets
+---------------------------
+
+When enabling IDPS for the first time the system is active without any rules to detect or block malicious traffic.
+The download tab contains all rulesets available on the system (which can be expanded using plugins).
+
+In this section you will find a list of rulesets as being provided by different parties and when (if installed) they
+where last downloaded on the system. In previous versions (pre 21.1) you could select a "filter" here to alter the
+default behavior of installed rules from alert to block. As of 21.1 this functionality will be covered by **Policies**
+, a separate function within the IDPS module, which offers more fine grained control over the rulesets.
+
+
+.. Note::
+
+    When migrating from a version before 21.1 the filters from the download rulesets page will automatically be
+    migrated to policies.
+
+
+---------------------------
+Policies
+---------------------------
+
+The **policy** menu item contains a grid where you can define policies to apply to installed rules. Here you can
+add, update or remove policies as well as disabling them.
+Policies help control which rules you want to use in which manner and are the prefered method to change behaviour.
+Although you can still update separate rules in the rules tab, adding a lot of custom overwrites there is more sensitive
+to change and has the risk of slowing down the user-interface.
+
+A policy entry contains 3 different sections. First some general information, such as the description and if the
+rule is enabled as well as a priority. Overlapping policies are taken care of in sequence, the first match with the lowest
+priority number is the one to use.
+
+Secondly there are the matching criterias, these contain the **rulesets** a policy applies on as well as the action
+configured on a rule (disabled by default, alert or drop), finally there is the **rules** section containing the
+metadata collected from the installed rules, these contain options as affected product (Android, Adobe flash, ...) and
+deployment (datacenter, perimeter).
+
+The last option to select is the new action to use, either disable selected rules, only alert on them or drop traffic
+when matched.
+
+.. Note::
+
+    The options in the **rules** section depend on the vendor, when no metadata is provided in the source rule, none
+    can be used at our end.
+
+
+---------------------------
+Installed rules
+---------------------------
+
+The rules tab offers an easy to use grid to find the installed rules and their purpose, using the selector
+on top one can filter rules using the same metadata properties available in the policies view.
+
+.. Tip::
+
+    After applying rule changes, the rule action and status (enabled/disabled) are set, to easily find the policy which
+    was used on the rule, check the matched_policy option in the filter. Manual (single rule) changes are being marked as
+    policy **"__manual__"**
+
 
 ---------------
 Finger Printing
@@ -114,16 +174,15 @@ their SSL fingerprint, you can add rules manually in the "User defined tab".
 
 
 ---------------------------
-Rulesets
+Alerts
 ---------------------------
 
-.. toctree::
-   :maxdepth: 2
-   :titlesonly:
-   :glob:
+In the alerts tab you can view the alerts triggered by our IDPS system, use the info button here to
+collect details about the detected event or threat.
 
-   etpro_telemetry
-
+---------------------------
+Available rulesets
+---------------------------
 
 ...................................
 Emerging Threats ETOpen Ruleset
@@ -137,6 +196,23 @@ standalone ruleset.
 OPNsense has integrated support for ET Open rules.
 For details and Guidelines see: http://doc.emergingthreats.net/bin/view/Main/EmergingFAQ
 For rules documentation: http://doc.emergingthreats.net/
+
+...................................
+ET Pro Telemetry edition
+...................................
+
+Proofpoint offers a free alternative for the well known ET Pro ruleset, more information about this product can be
+found via the link below.
+
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :glob:
+
+   etpro_telemetry
+
+
 
 ...................................
 Abuse.ch
