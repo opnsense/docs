@@ -130,3 +130,66 @@ and retrieves the data from the form and sends it to the configured (url) endpoi
 
 The response data looks similar to the example data in mapDataToFormUI, but more condensed since selections will
 be returned as single (separated) values, such as :code:`lan,wan` if both options where set.
+
+
+----------------------------
+updateServiceControlUI
+----------------------------
+
+The code:`updateServiceControlUI(serviceName)` function hooks the service control on top of the standard template, where you can find
+the [re]start, stop and status of the service.
+
+It assumes the following endpoints exists for the module:
+
+* /api/{{serviceName}}/service/status
+    * returns the status of the service (running, stopped) in a field named "status"
+* /api/{{serviceName}}/service/start
+    * start the service
+* /api/{{serviceName}}/service/restart
+    * restart the service
+* /api/{{serviceName}}/service/stop
+    * stop the service
+
+
+----------------------------
+$.SimpleActionButton
+----------------------------
+
+Using the jQuery extension :code:`SimpleActionButton` one can register simple ajax calls on components click events, which
+will call the selected endpoint and show a progress animation (spinner) to the user.
+
+The following parameters can be supplied as data attributes on the target object:
+
+* endpoint : endpoint to call (e.g. :code:`/api/my/action`)
+* label : button label text
+* service-widget : the service widget to refresh after execution, see :code:`updateServiceControlUI()`
+* error-title : error dialog title
+
+The method itself can be feed with callbacks to call before (:code:`onPreAction()`) and after (:code:`onAction()`) execution.
+
+An example of a button could look like this:
+
+.. code-block:: html
+
+    <button class="btn btn-primary" id="reconfigureAct"
+            data-endpoint='/api/component/service/reconfigure'
+            data-label="{{ lang._('Apply') }}"
+            data-service-widget="component"
+            data-error-title="{{ lang._('Error reconfiguring component') }}"
+            type="button"
+    ></button>
+
+To utilize the callbacks, one could use:
+
+.. code-block:: html
+
+    $('#btnTest').SimpleActionButton({
+        onPreAction: function() {
+            const dfObj = new $.Deferred();
+            console.log("called before endpoint execution, returning a promise.");
+            return dfObj;
+        },
+        onAction: function(data, status){
+            console.log("action has been executed.");
+        }
+    });
