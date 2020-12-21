@@ -12,21 +12,8 @@ data flowing through your firewall, measured in bps (bits per second).
 
 The top area of the screen shows an overview of all network adapters for both in- and outgoing traffic.
 
-Below the larger graphs, you will find a couple of options, which helps track current high traffic nodes on your network.
-
-+---------------------------------+------------------------------------------------------------------------------------+
-| Setting                         | Explanation                                                                        |
-+=================================+====================================================================================+
-| Interface                       | Hostname to display                                                                |
-+---------------------------------+------------------------------------------------------------------------------------+
-| Sort by                         | Sort by criteria                                                                   |
-+---------------------------------+------------------------------------------------------------------------------------+
-| Filter                          | Local traffic only, or All                                                         |
-+---------------------------------+------------------------------------------------------------------------------------+
-| Display                         | IP address or (fully qualified) hostname                                           |
-+---------------------------------+------------------------------------------------------------------------------------+
-| Top                             | Number of entries to show                                                          |
-+---------------------------------+------------------------------------------------------------------------------------+
+The graph below shows the top consumers over the same timespan, when you point to a dot it will show you the measured
+bandwith for the selected host (the color matches the interface).
 
 
 .. Note::
