@@ -193,3 +193,87 @@ To utilize the callbacks, one could use:
             console.log("action has been executed.");
         }
     });
+
+
+----------------------------
+$.UIBootgrid
+----------------------------
+
+The UIBootgrid jQuery extension is a wrappper around a slightly modified `jquery-bootgrid <http://www.jquery-bootgrid.com/>`__
+component, the pattern we implement with our wrapper is inspired by `this <http://www.jquery-bootgrid.com/Examples#command-buttons>`__ example.
+
+
+Defining the html table is best explained in the jquer-bootgrid examples, our wrapper eases the implementation of the javascript code.
+
+The minimal implementation contains a reference to the search endpoint which should return a json resultset containing :code:`rows`
+and pagination data (:code:`current`, :code:`rowCount`, :code:`total`).
+
+.. code-block:: html
+
+  $("#my_grid").UIBootgrid(
+      {   search:'/api/path/to/search',
+          get:'/api/path/to/get',
+          set:'/api/path/to/set',
+          add:'/api/path/to/add',
+          del:'/api/path/to/del',
+          toggle:'/api/path/to/toggle',
+          info:'/api/path/to/info'
+      }
+  );
+
+
+The other optional endpoints are either used to populate a form, as defined in the :code:`data-editDialog` property on the table or
+can be used to feed actions, such as **set** (set new values, return validation errors), **add** a new record, **del**  an existing record
+or **toggle** if the record should be enabled or disabled.  :code:`info` endpoints are not used very often (and can safely be omitted), these are mainly intended as simple trigger to display an info dialog.
+
+
+A full example of a baisc grid is available in our  :doc:`../examples/using_grids` example
+
+In some cases the developer wants to signal the user about the fact that changes need to be applied in order to be active, for this scenario one can use the :code:`data-editAlert`
+property of the table, which offers the ability to show an alert after changes. Below example would be shown when the table tag contains :code:`data-editAlert="exampleChangeMessage"`
+
+.. code-block:: html
+
+    <div id="exampleChangeMessage" class="alert alert-info" style="display: none" role="alert">
+        {{ lang._('After changing settings, please remember to apply them with the button below') }}
+    </div>
+
+
+.. Tip::
+
+    You can access the general settings of the jquery-bootgrid plugin using the :code:`options` property, which can be convenient when you would like to change
+    requests or responses as being exchanged with the server. The available options are described `here <http://www.jquery-bootgrid.com/Documentation#table>`__
+
+
+OPNsense settings
+.......................
+
+We added a couple of setttings to the list, which help to extend our plugin a bit more easily. Below we will explain which settings (within the options tag) are added by us:
+
+*   useRequestHandlerOnGet
+
+    *   Boolean value which enables the use of the request handler when a :code:`get` request is executed ot fetch data for the dialog. This can be used to add parameters to the request.
+
+*   onBeforeRenderDialog
+
+    *   function handler which will be called before an edit dialog is being displayed, can be used to change the otherwise static dialogs. Should return a $.Deferred() object. (e.g. :code:`return (new $.Deferred()).resolve();`)
+
+
+Formatters
+.......................
+
+Formatters can be used in the grid heading to choose the presentation of an attribute, we include a couple of standard formatters which are:
+
+*   commands (commands list, edit,copy and delete)
+*   commandsWithInfo (same as commands, but with an info button as well)
+*   rowtoggle (show enabled status and act as toggle button)
+*   boolean (show boolean value)
+
+
+
+Visible columns
+......................
+
+jquery-bootgrid offers the ability to add columns which are not visible by default using the :code:`data-visible` tag. When
+using our wrapper, these can be used to set defaults as well,
+but the users last selection is also recorded in its local browser storage as well as the number of results shown in the grid when opening the same page again.
