@@ -152,6 +152,46 @@ It assumes the following endpoints exists for the module:
 
 
 ----------------------------
+Dialog wrappers
+----------------------------
+
+We are using `BootstrapDialog <https://nakupanda.github.io/bootstrap3-dialog/>`__ to display standard dialogs, to limit
+the boilerplates needed to show these dialog we added the following wrapper funcitons:
+
+
+stdDialogInform(title, message, close, callback, type, cssClass)
+..............................................................................................
+
+Informational dialog with a single close button, using the following parameters:
+
+*   title: :code:`string` dialog title
+*   message: :code:`string` dialog message
+*   close:  :code:`string` close button text
+*   callback: :code:`function()` to be called after close
+*   type: :code:`string` dialog type. one of : danger, default, info, primary, success, warning
+*   cssClass: :code:`string`  css class to use
+
+
+stdDialogConfirm(title, message, accept, decline, callback, type)
+..............................................................................................
+
+Ok/Cancel dialog type using the following parameters:
+
+*   title: :code:`string` dialog title
+*   message: :code:`string` dialog message
+*   accept:  :code:`string` accept button text
+*   decline:  :code:`string` decline button text
+*   callback: :code:`function()` to be called after close
+*   type: :code:`string` dialog type. one of : danger, default, info, primary, success, warning
+
+
+
+stdDialogRemoveItem(message, callback)
+..............................................................................................
+
+Simple remove item (warning) dialog, using a message and optionally a callback.
+
+----------------------------
 $.SimpleActionButton
 ----------------------------
 
