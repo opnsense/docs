@@ -68,12 +68,18 @@ A normal Google account can be created at https://accounts.google.com.
 First you need to create a project in the Google developer console:
 
 -  Go to https://console.developers.google.com/project and log into your Google account.
--  On the "Manage resources" page that appears, click on the image::  button.
+-  On the "Manage resources" page that appears, click on:
+.. image:: ./images/google_create_project_button.png
 -  On the next page (titled "New Project") enter a name for your project, for example "OPNsense Backups". You may leave it as the default name, as it does not really matter.
--  Click the `CREATE` button.
+
+-  Click on:
+.. image:: ./images/google_create_button.png
 -  Now enable the Google Drive API for your project. In the search bar at the top of the page, search for "Google Drive API" and click on the relevant search result.
--  On the next page, make sure your project name (for example "OPNsense Backups") is displayed at the top of the page - if not, select it in the dropdown. Then click the `ENABLE` button.
--  On the next page that appears, click the `CREATE CREDENTIALS` button at the right hand side.
+
+-  On the next page, make sure your project name (for example "OPNsense Backups") is displayed at the top of the page - if not, select it in the dropdown. Then click:
+.. image:: ./images/google_enable.png
+-  On the next page that appears, click:
+.. image:: ./images/google_create_credentials.png
 -  The Credentials Wizard will then appear. 
    -  Choose "Service account"
       -  Enter an account name (e.g., OPNsense) and a description
