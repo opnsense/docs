@@ -58,19 +58,23 @@ content.
 Setup Google API usage
 ----------------------
 
-First we need to have a project in the google developer console:
+The instructions below apply to a normal Google account. Some of the settings appear slightly differently for G Suite accounts.
 
--  Go to https://console.developers.google.com/project
--  Create a project and give it a name, you may leave it default it
-   doesn't really matter for this.
--  Enable the Drive API
+A normal Google account can be created at https://accounts.google.com.
 
-   -  In the left menu :menuselection:`APIs --> "Drive API" --> Enable`
+1. Create a Google Project
+==========================
 
--  Open the project and start to create an API key
+First you need to create a project in the Google developer console:
 
-   -  In the left menu: :menuselection:`APIs & Services --> Credentials`
-   -  Click on the button "Create Credentials"
+-  Go to https://console.developers.google.com/project and log into your Google account.
+-  On the "Manage resources" page that appears, click on the image::  button.
+-  On the next page (titled "New Project") enter a name for your project, for example "OPNsense Backups". You may leave it as the default name, as it does not really matter.
+-  Click the `CREATE` button.
+-  Now enable the Google Drive API for your project. In the search bar at the top of the page, search for "Google Drive API" and click on the relevant search result.
+-  On the next page, make sure your project name (for example "OPNsense Backups") is displayed at the top of the page - if not, select it in the dropdown. Then click the `ENABLE` button.
+-  On the next page that appears, click the `CREATE CREDENTIALS` button at the right hand side.
+-  The Credentials Wizard will then appear. 
    -  Choose "Service account"
       -  Enter an account name (e.g., OPNsense) and a description
       -  At the **Service account permissions** screen click **Continue**
