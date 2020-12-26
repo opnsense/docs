@@ -62,10 +62,10 @@ The instructions below apply to a standard Google account. Some of the settings 
 
 A standard Google account can be created at https://accounts.google.com.
 
-1. Create a Google Project
+1. Set up a Google Project
 ==========================
 
-First you need to create a project in the Google developer console:
+First you need to set up a project in the Google developer console:
 
 -  Go to https://console.developers.google.com/project and log into your Google account.
 -  On the "Manage resources" page that appears, click on the **+ CREATE PROJECT** button:
@@ -78,13 +78,21 @@ First you need to create a project in the Google developer console:
 .. image:: ./images/google_drive_enable.png
 -  On the next page that appears, click the **CREATE CREDENTIALS** button:
 .. image:: ./images/google_create_credentials.png
--  The Credentials Wizard will then appear. Select the **service account** hyperlink that appears on the page:
-   -  Choose "Service account"
-      -  Enter an account name (e.g., OPNsense) and a description
-      -  At the **Service account permissions** screen click **Continue**
-      -  Click **+ Create Key**, select **P12**, and click **Create**. Save the password (notasecret).
-      -  Click **Done**
-      -  Copy the email address listed under **Service Accounts** for later.
+-  The Credentials Wizard will then appear. Click on the **service account** hyperlink that appears on the page:
+.. image:: ./images/google_select_service_account.png
+-  Click on the **+ CREATE SERVICE ACCOUNT** button:
+.. image:: ./images/google_create_service_account_button.png
+-  Enter an account name (for example "OPNsense") and a description (for example "OPNsense Backups service account"), then click the **CREATE** button:
+.. image:: ./images/google_create_service_account.png
+-  Click the **CONTINUE** button on the next page:
+.. image:: ./images/google_service_account_continue.png
+-  Then click the **DONE** button:
+.. image:: ./images/google_service_account_done.png
+-  On the next page, take a note of the email address for your new service account - you will need to later. Then click on the three vertical dots under the **Actions** heading for your service account, then click on **Create key**:
+.. image:: ./images/google_service_account_actions.png
+-  In the popup screen, select **P12**, and click **CREATE**:
+.. image:: ./images/google_service_account_create_key.png
+-  You will be prompted to download the key. Do so, and then click **CLOSE** in the popup screen.
 
 .. rubric:: Create a Google Drive folder
    :name: create-a-google-drive-folder
