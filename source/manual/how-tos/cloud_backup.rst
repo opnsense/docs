@@ -122,16 +122,16 @@ Now we can put it all together in OPNsense.
 -  Log into your OPNsense firewall and go to the backup feature. It is located at :menuselection:`System --> Configuration --> Backups`.
 -  Scroll down to the Google Drive section and and enter the following values:
 
-===============================  ======================================================================
+===============================  ===================================================================================
 Enable                           checked
 Email Address                    enter the email address of the service account you created
-P12 key                          click choose file and select the P12 key you saved earlier to upload
+P12 key                          click the **Choose file** button and select the P12 key you saved earlier to upload it
 Folder ID                        paste the Google Drive folder ID that you copied earlier
 Prefix hostname to backupfile    checked or unchecked as desired (useful if you have multiple OPNsenses)
 Backup Count                     enter the number of backups you want to keep
 Password                         choose a strong password to encrypt the backup
 Confirm                          re-enter the strong password
-===============================  ======================================================================
+===============================  ===================================================================================
 
 -  Then click the **Setup/Test Google Drive** button. OPNsense will automatically save and test your settings and you will receive either an error (connectivity issues) or a message saying "Backup successful" with a list of files currently in the backup.
 
