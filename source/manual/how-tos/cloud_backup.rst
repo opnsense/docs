@@ -94,18 +94,20 @@ First you need to set up a project in the Google developer console:
 .. image:: ./images/google_service_account_create_key.png
 -  You will be prompted to download the key. Do so, and then click **CLOSE** in the popup screen.
 
-.. rubric:: Create a Google Drive folder
-   :name: create-a-google-drive-folder
+2. Set up a Google Drive folder
+==========================
 
-Next thing is to create a folder in Google Drive and share it to the
-"service user" you've just created.
+The next thing is to create a folder in Google Drive and share it to the
+service account you've just created.
 
--  Go to https://drive.google.com
--  Choose **NEW** (upper left of the screen) and **Folder** to create a new folder, the name doesn't
-   really matter (for example type OPNsense)
--  Right click the newly created folder and choose **Share**
-
-   -  Paste the email address from the service account and click **Send**
+-  Go to https://drive.google.com. You should be still logged into your Google account, otherwise log in.
+-  Click **+ New** (upper left of the screen) and select **Folder** in the dropdown menu that appears:
+.. image:: ./images/google_drive_new.png
+-  Enter a name for the folder (for example "OPNsense Backups", it doesn't really matter) and then click the **CREATE** button:
+.. image:: ./images/google_drive_folder.png
+-  Right click the newly created folder and click **Share** in the dropdown menu that appears:
+.. image:: ./images/google_drive_share.png
+-  Paste the email address for the service account and click **Send**
 
 -  Now open the folder and copy the folder ID from the url. The folder ID is the last piece of the URL after `#/folders/`
 
