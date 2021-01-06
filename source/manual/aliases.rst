@@ -72,6 +72,11 @@ As you can see there are multiple IP addresses for this domain.
 Hosts type Aliases can contain exclusion hosts.
 Exclusion addresses starts with "!" sign (eg !192.168.0.1) and can be used to exclude hosts from Network Group Aliases.
 
+.. Warning::
+
+    Please note thet the **Flush** action is not persistent!
+    See: `issue 4196 <https://github.com/opnsense/core/issues/4196>`_ and :doc:`API </development/api/core/firewall>`
+
 ..................
 Networks
 ..................
