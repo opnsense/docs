@@ -75,7 +75,11 @@ Exclusion addresses starts with "!" sign (eg !192.168.0.1) and can be used to ex
 .. Warning::
 
     Please note thet the **Flush** action is not persistent!
-    See: `issue 4196 <https://github.com/opnsense/core/issues/4196>`_ and :doc:`API </development/api/core/firewall>`
+
+    **"flush"** means flush the current contents of the alias, which will be repopulated when it's not an external type,
+    so flush in most cases isn't very useful.
+
+    Same behaviour applies to the API call `alias_util flush </development/api/core/firewall.html>`_
 
 ..................
 Networks
