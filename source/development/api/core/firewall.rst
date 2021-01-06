@@ -32,10 +32,3 @@ Firewall
     "``POST``","firewall","alias_util","flush","$alias"
     "``GET``","firewall","alias_util","list","$alias"
     "``GET``","firewall","alias_util","update_bogons",""
-
-.. Warning::
-
-    Please note thet the **flush** action is not persistent!
-    See: `issue 4196 <https://github.com/opnsense/core/issues/4196>`_
-
-    For now the only way to flush all elements from a alias is to collect the elments using `alias_list`and delete each element in a loop.
