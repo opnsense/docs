@@ -58,62 +58,84 @@ content.
 Setup Google API usage
 ----------------------
 
-First we need to have a project in the google developer console:
+The instructions below apply to a standard Google account. Some of the settings appear slightly differently for G Suite accounts.
 
--  Go to https://console.developers.google.com/project
--  Create a project and give it a name, you may leave it default it
-   doesn't really matter for this.
--  Enable the Drive API
+A standard Google account can be created at https://accounts.google.com.
 
-   -  In the left menu :menuselection:`APIs --> "Drive API" --> Enable`
 
--  Open the project and start to create an API key
+1. Set up a Google Project
+==========================
 
-   -  In the left menu: :menuselection:`APIs & Services --> Credentials`
-   -  Click on the button "Create Credentials"
-   -  Choose "Service account"
-      -  Enter an account name (e.g., OPNsense) and a description
-      -  At the **Service account permissions** screen click **Continue**
-      -  Click **+ Create Key**, select **P12**, and click **Create**. Save the password (notasecret).
-      -  Click **Done**
-      -  Copy the email address listed under **Service Accounts** for later.
+First you need to set up a project in the Google developer console:
 
-.. rubric:: Create a Google Drive folder
-   :name: create-a-google-drive-folder
+-  Go to https://console.developers.google.com/project and log into your Google account.
+-  On the "Manage resources" page that appears, click on the **+ CREATE PROJECT** button:
+.. image:: ./images/google_manage_resources.png
+-  On the next page enter a name for your project, for example "OPNsense Backups". You may leave it as the default name ("My Project #####"), as it does not really matter. Then click on the **CREATE** button:
+.. image:: ./images/google_create_project.png
+-  Now enable the Google Drive API for your project. In the search bar at the top of the page, search for "Google Drive API" and click on the corresponding search result:
+.. image:: ./images/google_drive_api.png
+-  On the next page, make sure your project name (for example "OPNsense Backups") is displayed at the top of the page - if not, select it in the dropdown. Then click the **ENABLE** button:
+.. image:: ./images/google_drive_enable.png
+-  On the next page that appears, click the **CREATE CREDENTIALS** button:
+.. image:: ./images/google_create_credentials.png
+-  The Credentials Wizard will then appear. Click on the **service account** hyperlink that appears on the page:
+.. image:: ./images/google_select_service_account.png
+-  Click on the **+ CREATE SERVICE ACCOUNT** button:
+.. image:: ./images/google_create_service_account_button.png
+-  Enter an account name (for example "OPNsense") and a description (for example "OPNsense Backups service account"), then click the **CREATE** button:
+.. image:: ./images/google_create_service_account.png
+-  Click the **CONTINUE** button on the next page:
+.. image:: ./images/google_service_account_continue.png
+-  Then click the **DONE** button:
+.. image:: ./images/google_service_account_done.png
+-  On the next page, take a note of the email address for your new service account - you will need it later. Then click on the three vertical dots under the **Actions** heading for your service account, then click on **Create key**:
+.. image:: ./images/google_service_account_actions.png
+-  In the popup screen, select **P12**, and click **CREATE**:
+.. image:: ./images/google_service_account_create_key.png
+-  You will be prompted to download the key. Do so, and then click **CLOSE** in the popup screen.
 
-Next thing is to create a folder in Google Drive and share it to the
-"service user" you've just created.
 
--  Go to https://drive.google.com
--  Choose **NEW** (upper left of the screen) and **Folder** to create a new folder, the name doesn't
-   really matter (for example type OPNsense)
--  Right click the newly created folder and choose **Share**
+2. Set up a Google Drive folder
+===============================
 
-   -  Paste the email address from the service account and click **Send**
+The next thing is to create a folder in Google Drive and share it to the service account you've just created.
 
--  Now open the folder and copy the folder ID from the url. The folder ID is the last piece of the URL after `#/folders/`
+-  Go to https://drive.google.com. You should be still logged into your Google account, otherwise log in.
+-  Click **+ New** (upper left of the screen) and select **Folder** in the dropdown menu that appears:
+.. image:: ./images/google_drive_new.png
+-  Enter a name for the folder (for example "OPNsense Backups", it doesn't really matter) and then click the **CREATE** button:
+.. image:: ./images/google_drive_folder.png
+-  Right-click the newly created folder and click **Share** in the dropdown menu that appears:
+.. image:: ./images/google_drive_share.png
+-  Paste the email address for the service account into the "Add people and groups" box, press Enter and then click the **Send** button that appears:
+.. image:: ./images/google_drive_send.png
+-  Now double-click on the folder to open it and take a note of the folder ID from the url - you will need it later. The folder ID is the last piece of the URL after ``/folders/``:
+.. image:: ./images/google_drive_folder_id.png
 
-.. rubric:: Setup the account in OPNsense
-   :name: setup-the-account-in-opnsense
 
-Now we can put it all together, login to your OPNsense firewall and go
-to the backup feature. It is located at :menuselection:`System --> Configuration --> Backups`.
+3. Set up the account in OPNsense
+=================================
 
-.. image:: ./images/600px-Google_Drive_Backup_screenshot.png
-  :width: 100%
+Now we can put it all together in OPNsense.
 
-On the bottom of the page are the options for the Google Drive backup,
-enable the feature and fill in the parameters. Email address is acquired
-in step 2, the key in step 1. Choose a strong password to protect your
-data and fill in a number of backups you want to keep.
+-  Log into your OPNsense firewall and go to the backup feature. It is located at :menuselection:`System --> Configuration --> Backups`.
+-  Scroll down to the Google Drive section and and enter the following values:
 
-When you click Setup/Test Google Drive, the firewall will automatically
-save and test your settings and you will receive either an error
-(connectivity issues) or a list of config files currently in the backup.
+===============================  ===================================================================================
+Enable                           checked
+Email Address                    enter the email address of the service account you created
+P12 key                          click the **Choose file** button and select the P12 key you saved earlier to upload it
+Folder ID                        paste the Google Drive folder ID that you copied earlier
+Prefix hostname to backupfile    checked or unchecked as desired (useful if you have multiple OPNsenses)
+Backup Count                     enter the number of backups you want to keep
+Password                         choose a strong password to encrypt the backup
+Confirm                          re-enter the strong password
+===============================  ===================================================================================
 
-The moment the feature is enabled, it will do a daily compare of the
-last file in backup and the current configuration and creates a new
-backup when something has changed.
+-  Then click the **Setup/Test Google Drive** button. OPNsense will automatically save and test your settings and you will receive either an error (connectivity issues) or a message saying "Backup successful" with a list of files currently in the backup.
+
+The moment the feature is enabled, it will do a daily compare of the last file in backup and the current configuration and create a new backup when something has changed.
 
 
 -------------------------
