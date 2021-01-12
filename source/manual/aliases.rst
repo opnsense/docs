@@ -46,7 +46,7 @@ Hosts
 ..................
 
 Hosts can be entered as a single IP address or a fully qualified domain name.
-When using a fully qualified domain name, the name will we resolved periodically
+When using a fully qualified domain name, the name will be resolved periodically
 (default is each 300 seconds).
 
 Sample
