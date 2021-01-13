@@ -243,7 +243,7 @@ The UIBootgrid jQuery extension is a wrappper around a slightly modified `jquery
 component, the pattern we implement with our wrapper is inspired by `this <http://www.jquery-bootgrid.com/Examples#command-buttons>`__ example.
 
 
-Defining the html table is best explained in the jquer-bootgrid examples, our wrapper eases the implementation of the javascript code.
+Defining the html table is best explained in the jquery-bootgrid examples, our wrapper eases the implementation of the javascript code.
 
 The minimal implementation contains a reference to the search endpoint which should return a json resultset containing :code:`rows`
 and pagination data (:code:`current`, :code:`rowCount`, :code:`total`).
@@ -267,7 +267,7 @@ can be used to feed actions, such as **set** (set new values, return validation 
 or **toggle** if the record should be enabled or disabled.  :code:`info` endpoints are not used very often (and can safely be omitted), these are mainly intended as simple trigger to display an info dialog.
 
 
-A full example of a baisc grid is available in our  :doc:`../examples/using_grids` example
+A full example of a basic grid is available in our  :doc:`../examples/using_grids` example
 
 In some cases the developer wants to signal the user about the fact that changes need to be applied in order to be active, for this scenario one can use the :code:`data-editAlert`
 property of the table, which offers the ability to show an alert after changes. Below example would be shown when the table tag contains :code:`data-editAlert="exampleChangeMessage"`
@@ -288,7 +288,7 @@ property of the table, which offers the ability to show an alert after changes. 
 OPNsense settings
 .......................
 
-We added a couple of setttings to the list, which help to extend our plugin a bit more easily. Below we will explain which settings (within the options tag) are added by us:
+We added a couple of settings to the list, which help to extend our plugin a bit more easily. Below we will explain which settings (within the options tag) are added by us:
 
 *   useRequestHandlerOnGet
 
