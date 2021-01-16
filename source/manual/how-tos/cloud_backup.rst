@@ -70,29 +70,53 @@ First you need to set up a project in the Google developer console:
 
 -  Go to https://console.developers.google.com/project and log into your Google account.
 -  On the "Manage resources" page that appears, click on the **+ CREATE PROJECT** button:
+
 .. image:: ./images/google_manage_resources.png
+
 -  On the next page enter a name for your project, for example "OPNsense Backups". You may leave it as the default name ("My Project #####"), as it does not really matter. Then click on the **CREATE** button:
+
 .. image:: ./images/google_create_project.png
+
 -  Now enable the Google Drive API for your project. In the search bar at the top of the page, search for "Google Drive API" and click on the corresponding search result:
+
 .. image:: ./images/google_drive_api.png
+
 -  On the next page, make sure your project name (for example "OPNsense Backups") is displayed at the top of the page - if not, select it in the dropdown. Then click the **ENABLE** button:
+
 .. image:: ./images/google_drive_enable.png
+
 -  On the next page that appears, click the **CREATE CREDENTIALS** button:
+
 .. image:: ./images/google_create_credentials.png
+
 -  The Credentials Wizard will then appear. Click on the **service account** hyperlink that appears on the page:
+
 .. image:: ./images/google_select_service_account.png
+
 -  Click on the **+ CREATE SERVICE ACCOUNT** button:
+
 .. image:: ./images/google_create_service_account_button.png
+
 -  Enter an account name (for example "OPNsense") and a description (for example "OPNsense Backups service account"), then click the **CREATE** button:
+
 .. image:: ./images/google_create_service_account.png
+
 -  Click the **CONTINUE** button on the next page:
+
 .. image:: ./images/google_service_account_continue.png
+
 -  Then click the **DONE** button:
+
 .. image:: ./images/google_service_account_done.png
+
 -  On the next page, take a note of the email address for your new service account - you will need it later. Then click on the three vertical dots under the **Actions** heading for your service account, then click on **Create key**:
+
 .. image:: ./images/google_service_account_actions.png
+
 -  In the popup screen, select **P12**, and click **CREATE**:
+
 .. image:: ./images/google_service_account_create_key.png
+
 -  You will be prompted to download the key. Do so, and then click **CLOSE** in the popup screen.
 
 
@@ -103,14 +127,23 @@ The next thing is to create a folder in Google Drive and share it to the service
 
 -  Go to https://drive.google.com. You should be still logged into your Google account, otherwise log in.
 -  Click **+ New** (upper left of the screen) and select **Folder** in the dropdown menu that appears:
+
 .. image:: ./images/google_drive_new.png
+
 -  Enter a name for the folder (for example "OPNsense Backups", it doesn't really matter) and then click the **CREATE** button:
+
 .. image:: ./images/google_drive_folder.png
+
 -  Right-click the newly created folder and click **Share** in the dropdown menu that appears:
+
 .. image:: ./images/google_drive_share.png
+
 -  Paste the email address for the service account into the "Add people and groups" box, press Enter and then click the **Send** button that appears:
+
 .. image:: ./images/google_drive_send.png
+
 -  Now double-click on the folder to open it and take a note of the folder ID from the url - you will need it later. The folder ID is the last piece of the URL after ``/folders/``:
+
 .. image:: ./images/google_drive_folder_id.png
 
 
