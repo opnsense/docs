@@ -71,6 +71,7 @@ be found in the list below.
    :glob:
 
    troubleshooting/boot
+   troubleshooting/hardening
    troubleshooting/gateways
    troubleshooting/network
    troubleshooting/openvpn
