@@ -85,11 +85,15 @@ The settings on this page concerns logging into OPNsense. The “Secure Shell”
 |                                              | issues. When nothing is specified the default of "Local Database"     |
 |                                              | is used.                                                              |
 +----------------------------------------------+-----------------------------------------------------------------------+
-| Sudo                                         | Permit sudo usage for administrators with shell access.               |
-+----------------------------------------------+-----------------------------------------------------------------------+
 | Disable integrated authentication            | When set, console login, SSH, and other system services can only use  |
 |                                              | standard UNIX account authentication.                                 |
 +----------------------------------------------+-----------------------------------------------------------------------+
+| Sudo                                         | Permit sudo usage for administrators with shell access.               |
++----------------------------------------------+-----------------------------------------------------------------------+
+| User OTP seed                                | Select groups which are allowed to generate their own OTP seed on the |
+|                                              | password page.                                                        |
++----------------------------------------------+-----------------------------------------------------------------------+
+
 
 ----
 Cron
