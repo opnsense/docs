@@ -48,13 +48,14 @@ Tayga is a hop in the path, so it needs its own IP addresses for ICMP:
    Should be located in the `IPv4 Pool` subnet.
 
 :IPv6 Address:
-   Will show up in traceroutes from the IPv6 side to the IPv4 side. Should be left empty in most cases. It will then get automatically
-   created by Tayga.
+   Will show up in traceroutes from the IPv6 side to the IPv4 side. Can be left empty if the `IPv6 Prefix` is a GUA or the `IPv4 Address` is
+   a non-RFC1918 address. Tayga will then auto-generate its IPv6 address by mapping the `IPv4 Address` into the `IPv6 Prefix`.
+   For example, if the `IPv6 Prefix` 2001:db8:64:64::/96 and `IPv4 Address` 192.168.255.1 are being used, Tayga's IPv6 address will be
+   2001:db8:64:64::192.168.255.1 (2001:db8:64:64::c0a8:ff01).
 
-   .. Note::
-      Unless manually configured, Tayga generates its `IPv6 Address` by mapping its `IPv4 Address` into its `IPv6 Prefix`. For example, if
-      the default `IPv6 Prefix` 64:ff9b::/96 and `IPv4 Address` 192.168.255.1 are being used, Tayga's `IPv6 Address` will be
-      64:ff9b::192.168.255.1 (64:ff9b::c0a8:ff01).
+   .. Warning::
+      Tayga can't auto-generate its `IPv6 Address` if the default well-known `IPv6 Prefix` 64:ff9b::/96 and a private (RFC1918) `IPv4 Address`
+      are being used. In this case, you have to manually specify an unused address from your site's GUA or ULA prefix.
 
 Tayga behaves like an external device connected to OPNsense via a point-to-point interface. This interface requires IP addresses for ICMP:
 
