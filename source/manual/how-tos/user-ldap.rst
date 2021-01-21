@@ -49,7 +49,7 @@ Enter the following information:
  **Read properties**                                       *Fetch account details after successful login*
  **Synchronize groups**                                    *Enable to Synchronize groups, requires the option above*
  **Limit groups**                                          *Select list of groups that maybe considered during sync**
-
+ **Match case insensitive**                                *Allow mixed case input when gathering local user settings.*
 ================================ ======================== ===============================================================
 
 .. Note::
@@ -65,7 +65,7 @@ Enter the following information:
     When using SSL/TLS, make sure the certificate authority of the remote server is configured in the :menuselection:`System -> Trust` section.
 
 
-.. TIP::
+.. Tip::
    The **Extended Query** can be used to select users who are member of a specific
    group (only relevant for external services, when not using the local user database).
    One can use something like this:
@@ -76,6 +76,13 @@ Enter the following information:
 
    .. image:: images/ldap_mygroup_properties.png
       :width: 100%
+
+
+.. Tip::
+
+    In some cases local naming doesn't match server naming when it comes to users, the case insensitive option can
+    be used in that case to ignore case on login. Microsoft Access Directory for example doesn't match case sensitive,
+    in which case :code:`UsEr` equals :code:`user` (our system is case sensitive)
 
 
 Step 1.1 (optional) Synchronize groups.
