@@ -17,11 +17,12 @@ These are all combined in the firewall section.
    :titlesonly:
 
    manual/aliases
-   manual/firewall
+   manual/firewall_categories
+   manual/firewall_groups
    manual/nat
    manual/nptv6
+   manual/firewall
    manual/shaping
-   manual/firewall_groups
    manual/firewall_settings
    manual/firewall_scrub
    manual/how-tos/carp
