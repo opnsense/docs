@@ -17,22 +17,35 @@ Live View
 Live view updates itself in realtime if a rule is matched that has logging enabled or one of the global logging options is enabled under:
 :menuselection:`System --> Settings --> Logging`
 
-For better troubleshooting you can provide a filter string. This filter may include regular expressions.
-Lets assume one logging entry as one single string without special separators.
+In the top left corner of the page you can build filter conditions for rules to match when inspecting traffic, while
+here you can select different fields (for example `label`, `src` address, `dst` address) and how to match them
+(contains, is, is not, does not contain) combined with a criteria (either a string or a preselected value, depending on type).
+The [+] button adds the the filter to the view.
 
-So for just displaying packets that match DNS replies from wan to your lan clients in segment 192.168.1.0/24, you have to use:
+By default results should match all criteria (AND), but you can change that to an any of criteria (OR). The latter is sometimes
+practical if you want to track a small list of hosts.
 
-.. code-block:: sh
+Detailed information for a specific rule can be provided using the info button at the end of each line.
 
-    WAN.*:53.*192.168.1
+.. Tip::
 
-or to be even more correct
+  The :code:`host` and :code:`port` fields are a bit special and apply to both source and destination, which makes sure that
+  traffic matched to and from a specific address or port are both matched.
 
-.. code-block:: sh
+.. Tip::
 
-    WAN.*:53.*192\.168\.1\.
+  Usually a rule contains a :code:`rid` field which corresponds to the rule or setting in OPNsense responsible for this match,
+  when clicking on the link the system will try to redirect you to the correct setting (or rule).
 
-==========  ====================== ===================== ======================  ========================
- **WAN**     **.***                 **:53**               **.***                  **192\.168\.1\.**
- Interface   1 or more characters   first match of port   1 or more characters    destination ip address
-==========  ====================== ===================== ======================  ========================
+.. Note::
+
+    The live log only shows rules that are matched by the firewall, in case a state is created the flow will be reported for the first packet,
+    as long as the state still exists no new lines will be reported for the same traffic flow.
+    If you need to inspect raw traffic, it's often practical to combine the live-log with the packet capture feature found under
+    interface diagnostics in the menu.
+
+.. Note::
+
+    Since log lines are stored on the system without an exact match to the rule in question, we do need to translate the sequence
+    in the file back to the rule definition stored in the system. Due to this fact, the information is less accurate
+    historically if the firewall was reconfigured. (labels may be incorrect when looking at older data)
