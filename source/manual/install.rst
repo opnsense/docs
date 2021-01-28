@@ -14,10 +14,9 @@ Initial Installation & Configuration
 Architecture
 ------------
 
-The **software setup** and installation of OPNsense® is available for
-`x86-32 <https://en.wikipedia.org/wiki/X86-32>`__ and
-`x86-64 <https://en.wikipedia.org/wiki/X86-64>`__ bit microprocessor
-architectures.
+The **software setup** and installation of OPNsense® is available
+for the `x86-64 <https://en.wikipedia.org/wiki/X86-64>`__ bit microprocessor
+architecture only.
 
 ----------------
 Embedded vs Full
@@ -38,8 +37,6 @@ The main differences between an embedded image and a full image are:
 +-----------------------+-----------------------+
 | Embedded              | Full                  |
 +=======================+=======================+
-| Uses NanoBSD          | Uses HardenedBSD      |
-+-----------------------+-----------------------+
 | Writes to RAM disk    | Writes to local disk  |
 +-----------------------+-----------------------+
 | No log data retention | Log data retention    |
@@ -48,12 +45,12 @@ The main differences between an embedded image and a full image are:
 | Not intended for      | Suitable for disk     |
 | local disk writes     | writes.               |
 +-----------------------+-----------------------+
-| Embedded only use     | Can enable RAM disk   |
-|                       | for embedded mode.    |
+| Embedded only use,    | Can enable RAM disk   |
+| SWAP file is optional | for embedded mode.    |
 +-----------------------+-----------------------+
 
 
-Embedded images (nanobsd) store logging and cache data in memory only, while full versions
+Embedded images (nano) store logging and cache data in memory only, while full versions
 will keep the data stored on the local drive. A full version can mimic the
 behavior of an embedded version by enabling RAM disks, this is especially
 useful for SD memory card installations.
@@ -138,17 +135,19 @@ Depending on you hardware and use case different installation media are provided
 |Type    | Description                                       |
 +========+===================================================+
 | dvd    | ISO installer image with live system capabilities |
-|        | running in VGA-only mode                          |
+|        | running in VGA-only mode with UEFI support        |
 +--------+---------------------------------------------------+
 | vga    | USB installer image with live system capabilities |
-|        | running in VGA-only mode                          |
+|        | running in VGA-only mode with UEFI support        |
 +--------+---------------------------------------------------+
 | serial | USB installer image with live system capabilities |
+|        | running in serial console (115200) mode only      |
+|        | with UEFI support                                 |
++--------+---------------------------------------------------+
+| nano   | A preinstalled image for >=4 GB USB sticks,       |
+|        | SD or CF cards for use with embedded devices      |
 |        | running in serial console (115200) mode with      |
 |        | secondary VGA support (no kernel messages though) |
-+--------+---------------------------------------------------+
-| nano   | a preinstalled serial image for 4 GB USB sticks,  |
-|        | SD or CF cards for use with embedded devices      |
 +--------+---------------------------------------------------+
 
 .. Warning::
@@ -174,8 +173,7 @@ Media Filename Composition
 
      OS [label="OPNsense-##.#.##-OpenSSL-", width=200];
 
-     platform_1 [label = "i386-" ];
-     platform_2 [label = "amd64-" ];
+     platform [label = "amd64-" ];
 
     OS -> dvd-;
 
@@ -193,7 +191,7 @@ Media Filename Composition
         label = "Architecture";
         fontsize = 20;
 
-        platform_1 -> platform_2;
+        platform;
 
      }
 
@@ -206,7 +204,7 @@ Media Filename Composition
 
      }
 
-     dvd- -> platform_1 -> "iso.bz2";
+     dvd- -> platform -> "iso.bz2";
 
    }
 
@@ -237,9 +235,8 @@ Download the installation image from one of the mirrors listed on the `OPNsense
 <https://opnsense.org/download/>`__ website.
 
 The easiest method of installation is the USB-memstick installer. If
-your target platform has a serial interface choose the "serial image.
-64-bit and 32-bit install images are provided. The following examples
-apply to both. If you need to know more about using the serial interface,
+your target platform has a serial interface choose the "serial" image.
+If you need to know more about using the serial interface,
 consult the :doc:`serial access how-to<how-tos/serial_access>`.
 
 Write the image to a USB flash drive (>=1 GB) or an IDE hard disk,
