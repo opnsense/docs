@@ -1,7 +1,8 @@
 ==============
 OPNsense Tools
 ==============
-The OPNsense project offers a bunch of tools to instantly patch the system,
+
+The OPNsense project offers a number of tools to instantly patch the system,
 revert a package to a previous (older version) state or revert the whole kernel. 
 
 ---------------
@@ -25,7 +26,7 @@ To revert back to the last stable you can see kernel-18.1 so the syntax would be
 
 # opnsense-update -kr 18.1
 
-# /usr/local/etc/rc.reboot
+# opnsense-shell reboot
 
 
 Where -k only touches the kernel and -r takes the version number.
@@ -35,7 +36,7 @@ To switch back to the current kernel just use
 
 # opnsense-update -k
 
-# /usr/local/etc/rc.reboot
+# opnsense-shell reboot
 
 .. Warning::
     Before reverting a kernel please consult the forums or open an issue via Github. 
@@ -51,7 +52,7 @@ For a complete list of options look at the manpage on the system.
 
 Example 1:
 ----------
-The latest update of OPNsense to version 18.1.5 did a minor jump for the IPSec package strongswan.
+The latest update of OPNsense to version 18.1.5 did a minor jump for the IPSec package "strongswan".
 From this moment your VPNs are unstable and only a restart helps.
 
 To check if the update of the package is the reason you can easily revert the package
