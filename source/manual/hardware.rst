@@ -18,23 +18,14 @@ pre-installed can be purchased directly from various (online) stores.
 Supported hardware architectures
 --------------------------------
 
-OPNsense® is available for
-`x86-32 <https://en.wikipedia.org/wiki/X86-32>`__ (i386) and
-`x86-64 <https://en.wikipedia.org/wiki/X86-64>`__ (amd64) bit
-microprocessor architectures. Full installs on `SD memory
-cards <https://en.wikipedia.org/wiki/Secure_Digital>`__, `solid-state
-disks (SSD) <https://en.wikipedia.org/wiki/Solid-state_drive>`__ or
-`hard disk drives
-(HDD) <https://en.wikipedia.org/wiki/Hard_disk_drive>`__ are intended
-for OPNsense.
+OPNsense® is available for `x86-64 <https://en.wikipedia.org/wiki/X86-64>`__ (amd64) bit microprocessor architectures.
+Full installs on `SD memory cards <https://en.wikipedia.org/wiki/Secure_Digital>`__,
+`solid-state disks (SSD) <https://en.wikipedia.org/wiki/Solid-state_drive>`__ or `hard disk drives
+(HDD) <https://en.wikipedia.org/wiki/Hard_disk_drive>`__ are intended for OPNsense.
 
 While the range of supported devices are from embedded systems to rack
-mounted servers, we recommend to use a 64-bit versions of OPNsense, if
-the hardware is capable of running 64-bit `operating
-systems <https://en.wikipedia.org/wiki/operating_system>`__. It is
-possible to install and run 32-bit (x86-32, i386) versions of OPNsense®
-on 64-bit (x86-64, amd64) PC hardware, but we do not recommend it,
-especially not for new deployments.
+mounted servers, the hardware must be capable of running 64-bit `operating
+systems <https://en.wikipedia.org/wiki/operating_system>`__.
 
 ---------------------
 Hardware requirements
@@ -53,9 +44,9 @@ for the ones that require disk writes, e.g. a caching proxy (cache) or intrusion
 and prevention (alert database).
 
 +------------------+--------------------------------------------------------------------------+
-| Processor        | 500 MHz single core cpu                                                  |
+| Processor        | 1 GHz dual core cpu                                                      |
 +------------------+--------------------------------------------------------------------------+
-| RAM              | 512 MB                                                                   |
+| RAM              | 2 GB                                                                     |
 +------------------+--------------------------------------------------------------------------+
 | Install method   | Serial console or video (vga)                                            |
 +------------------+--------------------------------------------------------------------------+
@@ -74,11 +65,11 @@ or high loads.
 +------------------+--------------------------------------------------------------------------+
 | Processor        | 1 GHz dual core cpu                                                      |
 +------------------+--------------------------------------------------------------------------+
-| RAM              | 1 GB                                                                     |
+| RAM              | 4 GB                                                                     |
 +------------------+--------------------------------------------------------------------------+
 | Install method   | Serial console or video (vga)                                            |
 +------------------+--------------------------------------------------------------------------+
-| Install target   | 40 GB SSD, a minimum of 1 GB memory is needed for the installer to run.  |
+| Install target   | 40 GB SSD, a minimum of 2 GB memory is needed for the installer to run.  |
 +------------------+--------------------------------------------------------------------------+
 
 Table:  *Reasonable hardware requirements*
@@ -92,7 +83,7 @@ means every feature is functional and fits most use cases.
 +------------------+---------------------------------+
 | Processor        | 1.5 GHz multi core cpu          |
 +------------------+---------------------------------+
-| RAM              | 4 GB                            |
+| RAM              | 8 GB                            |
 +------------------+---------------------------------+
 | Install method   | Serial console or video (vga)   |
 +------------------+---------------------------------+
@@ -145,7 +136,7 @@ mass storage (disc), the number and quality of network interfaces.
 +-------------------+-----------------------+-------------+------------------------+
 | Throughput (Mbps) | Hardware requirements | Feature set | Users / Networks       |
 +===================+=======================+=============+========================+
-| 1-10              | Basic spec.           | narrowed    | few (1-10)             |
+| 11-150            | Basic spec.           | narrowed    | adjusted (10-30)       |
 +-------------------+-----------------------+-------------+------------------------+
 | 11-150            | Minimum spec.         | reduced     | adjusted (10-30)       |
 +-------------------+-----------------------+-------------+------------------------+
