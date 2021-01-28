@@ -120,7 +120,6 @@ in nanoseconds. It also measures how many threads on average are waiting to be s
 another thread is busy.
 
 .. literalinclude:: ./files/example.d
-	:language: D
 
 The one-line command to pre-process, compile and run the script is:
 

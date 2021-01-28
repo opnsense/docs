@@ -249,7 +249,7 @@ ETPro Telemetry
 +++++++++++++++
 
 Proofpoint offers a free alternative for the well known
-:doc:`manual/etpro_telemetry` ruleset.
+:doc:`etpro_telemetry` ruleset.
 
 Abuse.ch
 ........
