@@ -93,10 +93,14 @@ The final piece is to allow traffic from the Wireguard network. Do this via :men
 
 =========================== ================ =====================================================================
  **Interface**               WireGuard        *The interface this rule applies to*
- **Source**                  WireGuard net    *Source subnet*
+ **Source**                  WireGuard net    *Source subnet - but see the warning below*
  **Destination**             any              *Traffic destination*
  **Description**             WG WAN to LAN    *Optional - provide a description*
 =========================== ================ =====================================================================
+
+.. Warning::
+
+    Using **WireGuard net** as the Source will not work as expected if multiple local WireGuard peers or multiple WireGuard endpoints are configured. In those cases, define an Alias that includes the IP addresses (for example, 10.10.10.2 and 10.10.10.3) or subnet (for example, 10.10.10.0/24) of the VPN clients that are intended to have LAN access. Then include that Alias as the Source in the firewall rule.
 
 .. Hint::
 
