@@ -15,7 +15,7 @@ It is used as a weight for round robin. Servers with a higher weight will receiv
 2) Create An Upstream
 ---------------------
 
-.. image:: images/nginx_edit_upstream.png
+.. image:: images/nginx_edit_upstream_with_verify.png
 
 Group upstream servers to an upstream. An upstream is a group of servers to load balance between.
 Give it a useful name and choose the previously created server.
