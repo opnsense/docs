@@ -27,6 +27,117 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+20.7.8 (January 19, 2021)
+--------------------------------------------------------------------------
+
+
+The particular volume of this stable update foreshadows the end of the 20.7
+series in less than two weeks.
+
+One longstanding issue with radvd on FreeBSD 12.1 has been resolved according
+to multiple user feedback.
+
+The mailing lists have been archived and will no longer be used.
+
+And before there are questions: yes, consumers of the development version are
+now able to upgrade to 21.1-RC1.
+
+Here are the full patch notes:
+
+* system: allow to recover from bad TLS certificate and/or bad settings in console interface assign
+* system: display destination port number in firewall log widget (contributed by Team Rebellion)
+* system: keep compatible TLS 1 defaults for web GUI on 20.7 series
+* system: set default certificate lifetime to 397 days
+* firewall: add type 128 to outgoing IPv6 RFC4890 requirements
+* firewall: add manual refresh button to live log
+* firewall: fix typo in ICMPv6 validation
+* firewall: fix minor regression in maintaining target alias file
+* firewall: fix all state value in pfTop (contributed by Lucas Held)
+* firewall: remove duplicated destination field in live log
+* firewall: add read-only actions to aliases permission (contributed by Manuel Faux)
+* firewall: category selector missing caption
+* reporting: add top talkers to revamped traffic graph page
+* reporting: fix name resolution filter change in insight
+* reporting: persist interface selection on traffic graph page
+* captive portal: disable faulty TLS on HTTP since lighttpd 1.4.56
+* dhcp: fix sorting of IPv6 static mappings (contributed by vnxme)
+* dhcp: fix incorrect parsing of DUID (contributed by Matt Holgate)
+* firmware: opnsense-code now updates the current directory if nothing was specified
+* firmware: opnsense-code now uses flexible make.conf target from tools.git
+* firmware: opnsense-update now supports snapshot access via -z option
+* firmware: opnsense-update now fixes missing dependencies on the fly
+* firmware: fix some issues with missing repository on server
+* firmware: add version output and date to audit logs
+* ipsec: display remote host in status overview (contributed by garlic17)
+* opendns: add standalone mode
+* openssh: honour MAX_LISTEN_SOCKS
+* openvpn: set default certificate lifetime to 397 days in wizard
+* unbound: generate all configuration files in service controller
+* unbound: fix broken lines in large files (contributed by kulikov-a)
+* web proxy: lock ACL download to prevent duplicate execution
+* mvc: allow underscore in filter string (contributed by kulikov-a)
+* plugins: os-haproxy 2.26 `[1] <https://github.com/opnsense/plugins/blob/master/net/haproxy/pkg-descr>`__ 
+* plugins: os-hw-probe 1.0 (contributed by Michael Muenz)
+* plugins: os-maltrail fixes sensor start without server (contributed by Julio Camargo)
+* plugins: os-nginx 1.20 `[2] <https://github.com/opnsense/plugins/blob/master/www/nginx/pkg-descr>`__ 
+* plugins: os-tinc fixes for latest version (contributed by vnxme)
+* src: fix OpenSSL NULL pointer de-reference `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:33.openssl.asc>`__ 
+* src: fix partial scrub of multicast packages
+* src: free full mbuf chains in iflib when draining transmit queues
+* src: initialize oifp to avoid bogus results/panics in edge cases
+* src: 10Gigabit Ethernet driver for AMD SoC
+* ports: libressl 3.2.3 `[4] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.2-relnotes.txt>`__  `[5] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.3-relnotes.txt>`__ 
+* ports: nss 3.60.1
+* ports: php 7.3.26 `[6] <https://www.php.net/ChangeLog-7.php#7.3.26>`__ 
+* ports: pkg fix for shell keyword by opening root file descriptor
+* ports: radvd 2.19 `[7] <https://radvd.litech.org/CHANGES.txt>`__ 
+* ports: sudo 1.9.5p1 `[8] <https://www.sudo.ws/stable.html#1.9.5p1>`__ 
+
+A hotfix release was issued as 20.7.8_4:
+
+* firmware: enable upgrade path to 21.1
+* ports: sudo 1.9.5p2 `[9] <https://www.sudo.ws/stable.html#1.9.5p2>`__ 
+
+
+
+--------------------------------------------------------------------------
+20.7.7 (December 17, 2020)
+--------------------------------------------------------------------------
+
+
+Important security updates inside.  Also: happy holidays!
+
+Here are the full patch notes:
+
+* reporting: fix traffic graph widget link issue
+* system: simplify log format parsing
+* interfaces: fix DUID LL description  (contributed by Gabriel Mazzocato)
+* unbound: fix dnsbl not reloading after update
+* plugins: os-acme-client 2.2 `[1] <https://github.com/opnsense/plugins/blob/master/security/acme-client/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.9 `[2] <https://github.com/opnsense/plugins/blob/master/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.20 `[3] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
+* plugins: os-tinc 1.6 enables multiple addresses per host (contributed by ElNounch)
+* plugins: os-wireguard 1.4 `[4] <https://github.com/opnsense/plugins/blob/master/net/wireguard/pkg-descr>`__ 
+* ports: curl 7.74.0 `[5] <https://curl.se/changes.html>`__ 
+* ports: dhcp6c ignores advertise messages with none of requested data and missed status codes
+* ports: libressl 3.1.5 `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.1.5-relnotes.txt>`__ 
+* ports: lighttpd 1.4.56 `[7] <https://www.lighttpd.net/2020/11/29/1.4.56/>`__ 
+* ports: nss 3.60 `[8] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.60_release_notes>`__ 
+* ports: openssl 1.1.1i `[9] <https://www.openssl.org/news/secadv/20201208.txt>`__ 
+* ports: pcre2 10.36 `[10] <https://www.pcre.org/changelog.txt>`__ 
+* ports: sudo 1.9.4 `[11] <https://www.sudo.ws/stable.html#1.9.4>`__ 
+* ports: sqlite 3.34.0 `[12] <https://sqlite.org/changes.html>`__ 
+* ports: unbound 1.13.0 `[13] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
+
+A hotfix release was issued as 20.7.7_1:
+
+* system: disable TLS on plain HTTP redirect for new lighttpd version
+* ports: unbound fix for segmentation fault (restart service to activate)
+* ports: lighttpd 1.4.58 `[14] <https://www.lighttpd.net/2020/12/27/1.4.58/>`__ 
+
+
+
+--------------------------------------------------------------------------
 20.7.6 (December 08, 2020)
 --------------------------------------------------------------------------
 
@@ -246,7 +357,7 @@ Here are the full patch notes:
 * system: force syslog-ng restart after boot sequence
 * system: properly read new style logging directories
 * reporting: replace line endings when sending traceback to syslog in flowd_aggregate
-* reporting: dd traffic graph filter for private IPv4 networks (contributed by kcaj-burr)
+* reporting: add traffic graph filter for private IPv4 networks (contributed by kcaj-burr)
 * firewall: add MAC address alias type
 * firewall: be more verbose when fetching alias remote content
 * firewall: prevent pfctl error messages from being suppressed
@@ -269,7 +380,7 @@ Here are the full patch notes:
 * plugins: os-telegraf 1.8.2 `[3] <https://github.com/opnsense/plugins/blob/master/net-mgmt/telegraf/pkg-descr>`__ 
 * plugins: os-tinc fixes cipher parsing on 20.7
 * src: remove ACPI workaround for serial console on AMD EPYC
-* src: Make pf.conf ':0' ignore link-local v6 addresses too
+* src: Make pf.conf ":0" ignore link-local v6 addresses too
 * src: default "show bad packets" tunable to off in e100 driver
 * src: fix unsolicited promisc mode in e1000 driver
 * src: add valectl to the system commands
@@ -361,7 +472,7 @@ Here are the full patch notes against version 20.7-RC1:
 * plugins: os-collectd 1.3 `[2] <https://github.com/opnsense/plugins/blob/master/net-mgmt/collectd/pkg-descr>`__ 
 * plugins: os-zabbix5-proxy 1.3 `[3] <https://github.com/opnsense/plugins/blob/master/net-mgmt/zabbix5-proxy/pkg-descr>`__ 
 * src: prevent netgraph page fault for LTE usage
-* ports: dnsmasq 2.82 `[4] <http://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: dnsmasq 2.82 `[4] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: monit 5.27.0 `[5] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.55 `[6] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.55_release_notes>`__ 
 * ports: sudo 1.9.2 `[7] <https://www.sudo.ws/stable.html#1.9.2>`__ 

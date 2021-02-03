@@ -6,8 +6,8 @@ Releases
     :width: 600px
     :align: center
 
-As of January 2015 there have been *191* releases leading to the latest version *20.7.6*
-named "Legendary Lion".
+As of January 2015 there have been *195* releases leading to the latest version *21.1*
+named "Marvelous Meerkat".
 
 The list below contains all releases, ordered by version number categorized by major version.
 
@@ -16,6 +16,7 @@ The list below contains all releases, ordered by version number categorized by m
    :titlesonly:
    :glob:
 
+   releases/21.1
    releases/20.7
    releases/20.1
    releases/19.7

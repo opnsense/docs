@@ -805,7 +805,7 @@ Lastly, here are the full changes since 16.7-RC2:
 --------------------------------------------------------------------------
 
 
-16.7-RC2 is here and brings major additions to amd64 architectures: Intel's
+16.7-RC2 is here and brings major additions to amd64 architectures: Intel
 Hyperscan library to speed up Suricata rule matching and UEFI boot support!
 It also brings language packs to their correct 16.7 state, with Japanese
 already having been completed by the amazing Chie Taguchi.
@@ -848,8 +848,7 @@ Here is the list of all changes since 16.7-RC1:
 * firmware: enable trim even for GPT/UFS labeled root file systems
 * firmware: removed / disabled defunct mirrors
 * firmware: removed deprecated status.php page
-* intrusion detection: allow to select pattern matcher, e.g.
-  Intel's Hyperscan
+* intrusion detection: allow to select pattern matcher, e.g. Intel Hyperscan
 * wizard: fix misalignment on page titles and contents
 * firewall: fix missing dependency in alias download script
 * firewall: correctly skip "//" type comments in remote alias files
@@ -932,7 +931,7 @@ Here is our list of major features that were worked on since 16.1:
 * Japanese translations 100% completed
 * Dashboard revamp with multi-column support, drag and drop and mini API
 * RFC 6238 (TOTP) support for two-factor authentication
-* HardenedBSD's ASLR implementation
+* HardenedBSD ASLR implementation
 * High availability page for remote service status and start/stop/restart
 * API commands for remote reboot and power off
 * Firmware page resume support and cron-based "nightly" updates

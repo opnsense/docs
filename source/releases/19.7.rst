@@ -437,7 +437,7 @@ Here is the full list of changes:
 * src: fix reference count overflow in mqueuefs `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:24.mqueuefs.asc>`__ 
 * ports: hostapd 2.9 `[15] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
 * ports: nghttp2 1.39.2 `[16] <https://github.com/nghttp2/nghttp2/releases/tag/v1.39.2>`__ 
-* ports: openldap 2.4.48 `[17] <https://www.openldap.org/software/release/announce.html>`__ 
+* ports: openldap 2.4.48 `[17] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: perl 5.30.0 `[18] <https://metacpan.org/pod/release/XSAWYERX/perl-5.30.0/pod/perldelta.pod>`__ 
 * ports: php 7.2.21 `[19] <https://www.php.net/ChangeLog-7.php#7.2.21>`__ 
 * ports: py-openssl 19.0.0 `[20] <https://www.pyopenssl.org/en/stable/changelog.html>`__ 

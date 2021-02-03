@@ -1,0 +1,324 @@
+===========================================================================================
+21.1  "Marvelous Meerkat" Series
+===========================================================================================
+
+
+
+For more than 6 years, OPNsense is driving innovation through modularising
+and hardening the open source firewall, with simple and reliable firmware
+upgrades, multi-language support, HardenedBSD security, fast adoption of
+upstream software updates as well as clear and stable 2-Clause BSD licensing.
+
+21.1, nicknamed "Marvelous Meerkat", is the relentless continuation of
+open source dedication.  The last 6 years were not always easy, but we
+are happy to be where we are now and have the community to thank for it.
+
+New and improved are the firewall rules and NAT categories, the traffic
+graphs supporting IPv6 along with a visual refresh,  intrusion detection
+rule management by policies, an alias for MAC addresses and NAT over IPsec
+with all phase 2 you could ever want.  Last but not least, the serial image
+now supports UEFI as well.
+
+For those wondering, the WireGuard plugin has been available since 2019 and
+receives continuous improvements by its maintainer and various users alike.
+And that is unlikey to change in the future.  ;)
+
+As we continue to deprecate custom configuration inputs for a number of
+reasons, Dnsmasq has been switched to a pluggable file-based approach `[1] <https://docs.opnsense.org/manual/dnsmasq.html>`__ 
+with Unbound to follow in the upcoming 21.7 series.
+
+Download links, an installation guide `[2] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/21.1/
+* US East Coast: http://mirrors.nycbug.org/pub/opnsense/releases/21.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/21.1/
+* South America: https://mirror.venturasystems.tech/opnsense/releases/21.1/
+* Australia: http://mirror.as24220.net/opnsense/releases/21.1/
+* Full mirror list: https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+21.1 (January 28, 2021)
+--------------------------------------------------------------------------
+
+
+For more than 6 years, OPNsense is driving innovation through modularising
+and hardening the open source firewall, with simple and reliable firmware
+upgrades, multi-language support, HardenedBSD security, fast adoption of
+upstream software updates as well as clear and stable 2-Clause BSD licensing.
+
+21.1, nicknamed "Marvelous Meerkat", is the relentless continuation of
+open source dedication.  The last 6 years were not always easy, but we
+are happy to be where we are now and have the community to thank for it.
+
+New and improved are the firewall rules and NAT categories, the traffic
+graphs supporting IPv6 along with a visual refresh,  intrusion detection
+rule management by policies, an alias for MAC addresses and NAT over IPsec
+with all phase 2 you could ever want.  Last but not least, the serial image
+now supports UEFI as well.
+
+For those wondering, the WireGuard plugin has been available since 2019 and
+receives continuous improvements by its maintainer and various users alike.
+And that is unlikey to change in the future.  ;)
+
+As we continue to deprecate custom configuration inputs for a number of
+reasons, Dnsmasq has been switched to a pluggable file-based approach `[1] <https://docs.opnsense.org/manual/dnsmasq.html>`__ 
+with Unbound to follow in the upcoming 21.7 series.
+
+Download links, an installation guide `[2] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/21.1/
+* US East Coast: http://mirrors.nycbug.org/pub/opnsense/releases/21.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/21.1/
+* South America: https://mirror.venturasystems.tech/opnsense/releases/21.1/
+* Australia: http://mirror.as24220.net/opnsense/releases/21.1/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes against 20.7.8:
+
+* system: use authentication factory for web GUI login
+* system: allow case-insensitive matching for LDAP user authentication
+* system: removed unused gateway API dashboard feed
+* system: removed spurious comma from certificate subject print and unified underlying code
+* system: harden web GUI defaults to TLS 1.2 minimum and strong ciphers
+* system: generate a better self-signed certificate for web GUI default
+* system: allow self-signed renew for web GUI default (using "configctl webgui restart renew")
+* system: allow subdirectories in NextCloud backup (contributed by Lorenzo Milesi)
+* system: first backup is same as current so ignore it on GUI and console
+* system: optionally allow TOTP users to regenerate a token from the password page
+* system: set hw.uart.console appropriately
+* system: reconfigure routes on bootup
+* system: relax gateway name validation
+* system: ignore disabled gateways in dpinger services
+* system: choose a better bind candidate for IPv4 in dpinger
+* interfaces: defer IPv6 disable in interface code to ensure PPP interfaces do exist
+* interfaces: no longer assume configuration-less interfaces can reach static setup code
+* interfaces: fix PPP links not linking to its advanced configuration page
+* interfaces: read deprecated flag, allow family spec in (-)alias calls
+* interfaces: fix address removal in IPv6 CARP case
+* interfaces: pick proper route for 6RD and 6to4 tunnels
+* interfaces: support 6RD with single /64 prefix (contributed by Marcel Hofer)
+* firewall: support category filters for firewall and NAT rules (sponsored by Modirum)
+* firewall: add live log "host", "port" and "not" filters
+* firewall: create an appropriate max-mss scrub rule for IPv6
+* firewall: fix anti-spoof option for separate bridge interfaces
+* firewall: display zeros and sort columns in pfTables (contributed by kulikov-a)
+* firewall: relax schedule name validation
+* reporting: prevent calling top talkers when no interfaces are selected
+* reporting: cleanup deselected interface rows in top talkers
+* dhcp: hostname validation now includes domain
+* dhcp: use same logic as menu figuring out if DHCPv6 page is reachable from leases
+* dhcp: correct DHCPv6 custom options unsigned integer field (contributed by Team Rebellion)
+* dhcp: added toggle for disabling RDNSS in router advertisements (contributed by Team Rebellion)
+* dhcp: removed the need for a static IPv4 being outside of the pool (contributed by Gauss23)
+* dhcp: add min-secs option for each subnet (contributed by vnxme)
+* dnsmasq: remove advanced configuration in favour of plugin directory
+* dnsmasq: use domain override for static hosts
+* firmware: disable autoscroll if client position differs
+* firmware: remove spurious \*.pkgsave files and offload post install bits to rc.syshook
+* firmware: repair display of removed packages during release type transition
+* firmware: add ability to run audits from the console
+* firmware: show repository in package and plugin overviews
+* intrusion detection: replace file-based policy changes with detailed filters
+* ipsec: NAT with multiple phase 2 (sponsored by m.a.x. it)
+* ipsec: prevent VTI interface to hit spurious 32768 limit
+* ipsec: allow mixed IPv4/IPv6 for VTI
+* openvpn: added toggle for block-outside-dns (contributed by Julio Camargo)
+* openvpn: hide "openvpn_add_dhcpopts" fields when not parsed via the backend
+* unbound: allow /0 in ACL network
+* unbound: default to SO_REUSEPORT
+* web proxy: add GSuite and YouTube filtering (contributed by Julio Camargo)
+* mvc: do not discard valid application/json content type headers
+* mvc: make sure isArraySequential() is only true on array input
+* mvc: speed up processing time when over 2000 users are selected in a group
+* mvc: add locking in JsonKeyValueStoreField type
+* mvc: change LOG_LOCAL4 to LOG_LOCAL2 in base model
+* images: use UFS2 as the default for nano, serial and vga
+* images: support UEFI boot in serial image
+* ui: add tooltips for service control widget
+* ui: move sidebar stage from session to local storage
+* ui: upgrade Tokenize2 to v1.3.3
+* plugins: os-acme-client 2.3 `[3] <https://github.com/opnsense/plugins/blob/master/security/acme-client/pkg-descr>`__ 
+* plugins: os-bind 1.16 `[4] <https://github.com/opnsense/plugins/blob/master/dns/bind/pkg-descr>`__ 
+* plugins: os-frr 1.21 `[5] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
+* plugins: os-maltrail 1.6 `[6] <https://github.com/opnsense/plugins/blob/master/security/maltrail/pkg-descr>`__  (contributed by jkellerer)
+* plugins: os-smart adds cron jobs for useful actions (contributed by Jacek Tomasiak)
+* plugins: os-telegraf 1.8.3 adds ping6 ability (contributed by DasSkelett)
+* src: fix AES-CCM requests with an AAD size smaller than a single block
+* src: introduce HARDEN_KLD to ensure DTrace functionality
+* src: refine pf_route\* behaviour in PF_DUPTO case for shared forwarding
+* src: assorted upstream fixes for ipfw, iflib, multicast processing and pf
+* src: netmap tun(4) support adds pseudo addresses to ethernet header emulation (contributed by Sunny Valley Networks)
+* src: add a manual page for axp(4) / AMD 10G Ethernet driver
+* src: fix traffic graph not showing bandwidth when IPS is enabled
+* ports: dnsmasq 2.83 `[7] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: igmpproxy 0.3 `[8] <https://github.com/pali/igmpproxy/releases/tag/0.3>`__ 
+* ports: nss 3.61 `[9] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.61_release_notes>`__ 
+* ports: openldap 2.4.57 `[10] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: py-netaddr 0.8.0 `[11] <https://pypi.org/project/netaddr/0.8.0/>`__ 
+* ports: sudo 1.9.5p2 `[12] <https://www.sudo.ws/stable.html#1.9.5p2>`__ 
+
+The public key for the 21.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAtiv4C8TPBnVAxUS+xW3W
+    # uYhAOuLCZPA6F22Qatit4PVHI7AzfLbGjCQFZqjO+HRPVCmeiyggQWE4ZBOQrhbq
+    # Em/NqmnDVos2rdGfEvp5miY4fstebtHI9CPv26QswgO7bsoJuCUoSmtGTbgNXyaF
+    # ueNYTSXNEpWu35tQS830NCLW5Y6elfK99gxmNChlGdlz0wchaSA+myR6xH+TUw8L
+    # D+87Tny/R2guC9Q0XnsKpKeOMxkNh0X3H0GsmcWmyV0rGAiMh6GuJXIN/yhNMkaD
+    # wuHomqxd1OAyGLz9BjDNRKZ+b+y0iVpEx3qsDWlradtf8sUKZHJ96lf0jCRhEPvl
+    # v1+QkAOzsauWBr3UtFbkKfHONpuwb5XVNgAJzFIRrnGhmWRXD7liiShOP4O+KBP1
+    # Dzxs/X0plXgX2hOgzMbtgCMj4M1sV5HhKUrwiyqBpoe5nESJVrQ/DxETwEZIFoHy
+    # hwQxd/DDp7uJmZlCkveuZeUAo7pfTUVchDpe2GB54bHEhIn3OES93PURMQtQxB12
+    # mubV52vcfvzLnbv5FL5lMK/cgl64ip2bRu1jcB3wsKrKcGyUbtYJQDnHpowWrs5h
+    # RdMHSfLyaC8ROMKhZmJTe141wr5p8d+NmgjlDblnNmUJ0jHVJeP0+RO/OcY/o3Zt
+    # 2MxL1Yp2cUu2l1HEmyrCsIcCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-21.1-OpenSSL-dvd-amd64.iso.bz2) = 936301cb53c7c3474171a076594bb00a29827b4aa1c9aa8dac7519e447f7ec81
+    # SHA256 (OPNsense-21.1-OpenSSL-nano-amd64.img.bz2) = e5116c5037f4b4bbc68708e8f14ce023508ccf585164b778d6c158f170ea202f
+    # SHA256 (OPNsense-21.1-OpenSSL-serial-amd64.img.bz2) = 472c8568d8c4a54743b3a2b1bc720e83c04cc2c63d68df1376c207f25b98ae20
+    # SHA256 (OPNsense-21.1-OpenSSL-vga-amd64.img.bz2) = 44a930151472954626c237a1255712e6e7c542d7ac3c5317a74618d08ce36bbf
+
+--------------------------------------------------------------------------
+21.1.r1 (January 13, 2021)
+--------------------------------------------------------------------------
+
+
+For more than 6 years, OPNsense is driving innovation through modularising
+and hardening the open source firewall, with simple and reliable firmware
+upgrades, multi-language support, HardenedBSD security, fast adoption of
+upstream software updates as well as clear and stable 2-Clause BSD licensing.
+
+We thank all of you for helping test, shape and contribute to the project!
+We know it would not be the same without you.  <3
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/21.1/
+* US East Coast: http://mirrors.nycbug.org/pub/opnsense/releases/21.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/21.1/
+* South America: https://mirror.venturasystems.tech/opnsense/releases/21.1/
+* Australia: http://mirror.as24220.net/opnsense/releases/21.1/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes against 20.7.7_1:
+
+* system: use authentication factory for web GUI login
+* system: allow case-insensitive matching for LDAP user authentication
+* system: removed unused gateway API dashboard feed
+* system: removed spurious comma from certificate subject print and unified underlying code
+* system: harden web GUI defaults to TLS 1.2 minimum and strong ciphers
+* system: generate a better self-signed certificate for web GUI default
+* system: allow self-signed renew for web GUI default (using "configctl webgui restart renew")
+* system: allow subdirectories in NextCloud backup (contributed by Lorenzo Milesi)
+* system: optionally allow TOTP users to regenerate a token from the password page
+* system: set default certificate lifetime to 397 days
+* system: relax gateway name validation
+* system: display destination port number in firewall log widget (contributed by Team Rebellion)
+* system: allow to recover from bad TLS certificate and/or bad settings in console interface assign
+* interfaces: defer IPv6 disable in interface code to ensure PPP interfaces do exist
+* interfaces: no longer assume configuration-less interfaces can reach static setup code
+* interfaces: fix PPP links not linking to linked advanced configuration
+* firewall: add live log "host", "port" and "not" filters
+* firewall: add manual refresh button to live log
+* firewall: create an appropriate max-mss scrub rule for IPv6
+* firewall: fix anti-spoof option for separate bridge interfaces
+* firewall: relax schedule name validation
+* firewall: fix typo in ICMPv6 validation
+* firewall: add type 128 to outgoing IPv6 RFC4890 requirements
+* firewall: fix minor regression in maintaining target alias file
+* firewall: category selector missing caption
+* firewall: fix all state value in pfTop (contributed by Lucas Held)
+* firewall: remove duplicated destination field in live log
+* firewall: add read-only actions to aliases permission (contributed by Manuel Faux)
+* reporting: add top talkers to revamped traffic graphs page
+* dhcp: hostname validation now includes domain
+* dhcp: correct DHCPv6 custom options unsigned integer field (contributed by Team Rebellion)
+* dhcp: removed the need for a static IPv4 being outside of the pool (contributed by Gauss23)
+* dhcp: add min-secs option for each subnet (contributed by vnxme)
+* dhcp: fix sorting of IPv6 static mappings (contributed by vnxme)
+* dnsmasq: remove advanced configuration in favour of plugin directory
+* dnsmasq: use domain override for static hosts
+* firmware: opnsense-code now updates the current directory if nothing was specified
+* firmware: opnsense-code now uses flexible make.conf target from tools.git
+* firmware: opnsense-update now supports snapshot access via -z option
+* firmware: opnsense-update now fixes missing dependencies on the fly
+* firmware: repair display of removed packages during release type transition
+* firmware: fix some issues with missing repository on server
+* firmware: add version output and date to audit logs
+* intrusion detection: replace file-based policy changes with detailed filters
+* ipsec: NAT with multiple phase 2 (sponsored by m.a.x. it)
+* ipsec: prevent VTI interface to hit spurious 32768 limit
+* ipsec: allow mixed IPv4/IPv6 for VTI
+* ipsec: display remote host in status overview (contributed by garlic17)
+* openssh: honour MAX_LISTEN_SOCKS to prevent startup failure
+* openvpn: added toggle for block-outside-dns (contributed by Julio Camargo)
+* openvpn: hide "openvpn_add_dhcpopts" fields when not parsed via the backend
+* openvpn: set default certificate lifetime to 397 days in wizard
+* unbound: default to SO_REUSEPORT
+* web proxy: add GSuite and YouTube filtering (contributed by Julio Camargo)
+* web proxy: lock ACL download to prevent duplicate execution
+* mvc: make sure isArraySequential() is only true on array input
+* mvc: speed up processing time when over 2000 users are selected in a group
+* mvc: allow underscore in filter string (contributed by kulikov-a)
+* images: use UFS2 as the default for nano, serial and vga
+* images: support UEFI boot in serial image
+* ui: add tooltips for service control widget
+* ui: move sidebar stage from session to local storage
+* plugins: os-bind 1.15 `[2] <https://github.com/opnsense/plugins/blob/master/dns/bind/pkg-descr>`__ 
+* plugins: os-frr 1.21 `[3] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
+* src: fix OpenSSL NULL pointer de-reference `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:33.openssl.asc>`__ 
+* src: fix AES-CCM requests with an AAD size smaller than a single block
+* src: introduce HARDEN_KLD to ensure DTrace functionality
+* src: fix partial scrub of multicast packages
+* src: refine pf_route\* behaviour in PF_DUPTO case for shared forwarding
+* src: assorted upstream fixes for ipfw, iflib, multicast processing and pf
+* ports: libressl 3.2.3 `[5] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.2-relnotes.txt>`__  `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.3-relnotes.txt>`__ 
+* ports: nss 3.60.1
+* ports: pkg fix for shell keyword by opening root file descriptor
+* ports: radvd 2.19 `[7] <https://radvd.litech.org/CHANGES.txt>`__ 
+* ports: sudo 1.9.4p2 `[8] <https://www.sudo.ws/stable.html#1.9.4p2>`__ 
+
+Known issues and limitations:
+
+* Installer currently advertises 20.7
+
+The public key for the 21.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAtiv4C8TPBnVAxUS+xW3W
+    # uYhAOuLCZPA6F22Qatit4PVHI7AzfLbGjCQFZqjO+HRPVCmeiyggQWE4ZBOQrhbq
+    # Em/NqmnDVos2rdGfEvp5miY4fstebtHI9CPv26QswgO7bsoJuCUoSmtGTbgNXyaF
+    # ueNYTSXNEpWu35tQS830NCLW5Y6elfK99gxmNChlGdlz0wchaSA+myR6xH+TUw8L
+    # D+87Tny/R2guC9Q0XnsKpKeOMxkNh0X3H0GsmcWmyV0rGAiMh6GuJXIN/yhNMkaD
+    # wuHomqxd1OAyGLz9BjDNRKZ+b+y0iVpEx3qsDWlradtf8sUKZHJ96lf0jCRhEPvl
+    # v1+QkAOzsauWBr3UtFbkKfHONpuwb5XVNgAJzFIRrnGhmWRXD7liiShOP4O+KBP1
+    # Dzxs/X0plXgX2hOgzMbtgCMj4M1sV5HhKUrwiyqBpoe5nESJVrQ/DxETwEZIFoHy
+    # hwQxd/DDp7uJmZlCkveuZeUAo7pfTUVchDpe2GB54bHEhIn3OES93PURMQtQxB12
+    # mubV52vcfvzLnbv5FL5lMK/cgl64ip2bRu1jcB3wsKrKcGyUbtYJQDnHpowWrs5h
+    # RdMHSfLyaC8ROMKhZmJTe141wr5p8d+NmgjlDblnNmUJ0jHVJeP0+RO/OcY/o3Zt
+    # 2MxL1Yp2cUu2l1HEmyrCsIcCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+Please let us know about your experience!
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-21.1.r1-OpenSSL-dvd-amd64.iso.bz2) = c6cfdd88227bb58c94634dca01e9108647a83278a4549291a4b772094342c81a
+    # SHA256 (OPNsense-21.1.r1-OpenSSL-nano-amd64.img.bz2) = a60c3cb077b56202d3b02637054607f6180121b7da9faaf870f73a814dcfc2c7
+    # SHA256 (OPNsense-21.1.r1-OpenSSL-serial-amd64.img.bz2) = cba8578d7acbb323fd1fa6fe93d648c5d227010e1169ccbdf1111980d73fa447
+    # SHA256 (OPNsense-21.1.r1-OpenSSL-vga-amd64.img.bz2) = 1fce48c99e5c46d92fca7a00805873154832357c7de71f5035a01ca8047041dc

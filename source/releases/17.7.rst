@@ -408,7 +408,7 @@ Here are the full patch notes:
 * plugins: os-collectd 1.1 graphite post and prefix (contributed by Michael Muenz)
 * plugins: os-intrusion-detection-content-et-pro 1.0
 * plugins: os-quagga 1.4.2 OSPF router ID support (contributed by Fabian Franz)
-* ports: dnsmasq 2.78 `[1] <http://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: dnsmasq 2.78 `[1] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: kerberos 1.15.2 `[2] <https://web.mit.edu/kerberos/krb5-1.15/#announcement>`__ 
 * ports: openvpn 2.4.4 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
 * ports: perl 5.24.3 `[4] <http://search.cpan.org/dist/perl-5.24.3/pod/perldelta.pod>`__ 
@@ -666,10 +666,10 @@ Here are the full patch notes of the initial 17.7.1:
 * openvpn: write proxy auth file in shared key export
 * openvpn: minor display tweaks in widget and configuration pages
 * openvpn: local group restriction feature
-* update: rename bootstrap '-V' argument to '-r' for consistency
+* update: rename bootstrap "-V" argument to "-r" for consistency
 * update: fix code bug for /etc/make.conf link rewrite on upgrade
-* update: support '-S' argument to probe remote set size
-* update: support loading kernel debug sets via '-g' option
+* update: support "-S" argument to probe remote set size
+* update: support loading kernel debug sets via "-g" option
 * mvc: add standard dialog helper (contributed by Frank Wall)
 * mvc: simplify language selection code (contributed by Alexander Shursha)
 * mvc: allow to run targeted model migration if requested

@@ -110,21 +110,17 @@ Here are the full patch notes:
 
 * firewall: move gateway switching from system to firewall advanced settings
 * firewall: keep category selection when changing tabs
-* firewall: do not skip gateway switch parsing too early (contributed
-  by Stephane Lesimple)
+* firewall: do not skip gateway switch parsing too early (contributed by Stephane Lesimple)
 * interfaces: show VLAN description during edit
 * firmware: opnsense-revert can now handle multiple packages at once
 * firmware: opnsense-patch can now handle permission changes from patches
 * dnsmasq: use canned --bogus-priv for no_private_reverse
 * dnsmasq: separate log file, ACL and menu entries
 * dynamic dns: fix update for IPv6 (contributed by Alexander Leisentritt)
-* dynamic dns: remove usage of CURLAUTH_ANY (contributed
-  by Alexander Leisentritt)
-* intrusion detection: suppress "fast mode available" boot warning
-  in PCAP mode
+* dynamic dns: remove usage of CURLAUTH_ANY (contributed by Alexander Leisentritt)
+* intrusion detection: suppress "fast mode available" boot warning in PCAP mode
 * openvpn: plugin framework adaption
-* unbound: add local-zone typetransparent for PTR zone (contributed
-  by Davide Gerhard)
+* unbound: add local-zone typetransparent for PTR zone (contributed by Davide Gerhard)
 * unbound: separate log file, ACL and menu entries
 * wizard: remove HTML from description strings
 * mvc: group relation to something other than uuid if needed
@@ -135,15 +131,14 @@ Here are the full patch notes:
 * plugins: acme-client 1.8 (contributed by Frank Wall)
 * plugins: tinc fix for switch mode (contributed by Johan Grip)
 * plugins: monit 1.3 (contributed by Frank Brendel)
-* src: support dhclient supersede statement for option 54 (contributed
-  by Fabian Kurtz)
+* src: support dhclient supersede statement for option 54 (contributed by Fabian Kurtz)
 * src: add Intel Atom Cherryview SOC HSUART support
 * src: add the ID for the Huawei ME909S LTE modem
 * src: HardenedBSD Stack Clash mitigations `[1] <https://hardenedbsd.org/article/shawn-webb/2017-06-25/stack-clash-mitigations>`__ 
 * ports: sqlite 3.19.3 `[2] <https://sqlite.org/releaselog/3_19_3.html>`__ 
 * ports: openvpn 2.4.3 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
 * ports: sudo 1.8.20p2 `[4] <https://www.sudo.ws/stable.html#1.8.20p2>`__ 
-* ports: dnsmasq 2.77 `[5] <http://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: dnsmasq 2.77 `[5] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: openldap 2.4.45 `[6] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: php 7.0.20 `[7] <https://php.net/ChangeLog-7.php#7.0.20>`__ 
 * ports: suricata 3.2.2 `[8] <https://suricata-ids.org/2017/06/07/suricata-3-2-2-available/>`__ 
