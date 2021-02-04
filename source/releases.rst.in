@@ -1,6 +1,8 @@
 ====================================
-Releases
+{{name}}
 ====================================
+
+{% if prefix == 'CE' %}
 
 .. image:: /development/images/ideas_join_the_development.jpg
     :width: 600px
@@ -8,6 +10,18 @@ Releases
 
 As of January 2015 there have been *{{ versions|length }}* releases leading to the latest version *{{ versions|first }}*
 named "{{nicknames.items()|list|first|last}}".
+
+{% elif prefix == 'BE' %}
+
+.. image:: images/architecture-blue-sky-business-2599538.jpg
+    :width: 600px
+    :align: center
+
+OPNsense Business Edition is intended for companies, enterprises and professionals looking for a more
+selective upgrade path (lags behind the community edition), additional commercial features and who want to
+support the project in a more commercial way compared to donating.
+
+{% endif %}
 
 The list below contains all releases, ordered by version number categorized by major version.
 
@@ -17,6 +31,6 @@ The list below contains all releases, ordered by version number categorized by m
    :glob:
 {% for major_version in major_versions%}
 {%- if major_version in versions %}
-   releases/{{major_version}}
+   releases/{{prefix}}_{{major_version}}
 {%- endif %}
 {%- endfor %}

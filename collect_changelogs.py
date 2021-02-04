@@ -1,6 +1,6 @@
-#!/usr/local/bin/python
+#!/usr/local/bin/python3
 """
-    Copyright (c) 2020 Ad Schellevis <ad@opnsense.org>
+    Copyright (c) 2020-2021 Ad Schellevis <ad@opnsense.org>
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -31,6 +31,7 @@ import requests
 import zipfile
 import collections
 import re
+import pathlib
 from packaging import version
 from jinja2 import Template
 
@@ -120,42 +121,65 @@ if __name__ == '__main__':
         download_zip(changelog_zip)
 
     if os.path.isfile(changelog_zip):
-        template_data = {
-            'major_versions': collections.OrderedDict(),
-            'versions': collections.OrderedDict(),
-            'nicknames': collections.OrderedDict(),
+        version_metadata = {
+            'community': {
+                'prefix': 'CE',
+                'name': 'Community Edition'
+            },
+            'business':  {
+                'prefix': 'BE',
+                'name': 'Business Edition'
+            }
         }
-        all_versions = dict()
+        all_versions = {'community': dict(), 'business': dict()}
         # read all changelogs (from zip)
+        this_dir = str(pathlib.Path(".").resolve())
         with zipfile.ZipFile(changelog_zip, mode='r', compression=zipfile.ZIP_DEFLATED) as zf:
             for item in zf.infolist():
                 fparts = item.filename.split('/')
-                if len(fparts) > 3 and fparts[1] == 'doc' and item.file_size > 0:
-                    all_versions[fparts[3]] = zf.open(item).read().decode()
+                if len(fparts) > 3 and fparts[1] in all_versions and item.file_size > 0:
+                    all_versions[fparts[1]][fparts[3]] = zf.open(item).read().decode()
+                if len(fparts) == 3 and fparts[1] in all_versions and not item.is_dir():
+                    # resolve links
+                    tmp =  pathlib.Path("%s/%s" % (os.path.dirname(item.filename), zf.open(item).read().decode()))
+                    link_to = str(tmp.resolve()).replace(this_dir, '')[1:]
+                    for item2 in zf.infolist():
+                        if item2.filename.startswith(link_to) and not item2.is_dir():
+                            all_versions[fparts[1]][os.path.basename(item2.filename)] = zf.open(item2).read().decode()
 
-        for my_version in sorted(all_versions, key=lambda x: version.Version(x.replace('.r','rc')), reverse=True):
-            major_version = ".".join(my_version.split('.')[:2])
-            if major_version not in template_data['major_versions']:
-                template_data['major_versions'][major_version] = dict()
-            template_data['versions'][my_version] = parse_change_log(all_versions[my_version], my_version)
+        for flavour in all_versions:
+            version_prefix = version_metadata[flavour]['prefix']
+            template_data = {
+                'major_versions': collections.OrderedDict(),
+                'versions': collections.OrderedDict(),
+                'nicknames': collections.OrderedDict(),
+                'flavour': flavour
+            }
+            template_data.update(version_metadata[flavour])
+            versions = all_versions[flavour]
+            for my_version in sorted(versions, key=lambda x: version.Version(x.replace('.r','rc')), reverse=True):
+                major_version = ".".join(my_version.split('.')[:2])
+                if major_version not in template_data['major_versions']:
+                    template_data['major_versions'][major_version] = dict()
+                template_data['versions'][my_version] = parse_change_log(versions[my_version], my_version)
 
-            if major_version == my_version:
-                template_data['nicknames'][my_version] = ""
-                tmp = all_versions[my_version].replace('\n', ' ')
-                m = re.match(r'.*nicknamed ["\'](?P<nickname>[^"\']+)', tmp)
-                if m:
-                    template_data['nicknames'][my_version] =  m.groupdict()['nickname']
+                if major_version == my_version:
+                    template_data['nicknames'][my_version] = ""
+                    tmp = versions[my_version].replace('\n', ' ')
+                    m = re.match(r'.*nicknamed ["\'](?P<nickname>[^"\']+)', tmp)
+                    if m:
+                        template_data['nicknames'][my_version] =  m.groupdict()['nickname']
 
-        # root menu index
-        with open("%s/source/releases.rst" % root_dir, 'w') as f_out:
-            template = Template(open("%s/source/releases.rst.in" % root_dir, "r").read())
-            f_out.write(template.render(template_data))
+            # root menu index
+            with open("%s/source/%s_releases.rst" % (root_dir, version_prefix), 'w') as f_out:
+                template = Template(open("%s/source/releases.rst.in" % root_dir, "r").read())
+                f_out.write(template.render(template_data))
 
-        # per version rst file
-        template = Template(open("%s/source/releases/default.rst.in" % root_dir, "r").read())
-        for major_version in template_data['major_versions']:
-            if major_version in template_data['versions']:
-                # wait for the main version before writing a changelog
-                with open("%s/source/releases/%s.rst" % (root_dir, major_version), 'w') as f_out:
-                    template_data['this_version'] = major_version
-                    f_out.write(template.render(template_data))
+            # per version rst file
+            template = Template(open("%s/source/releases/default.rst.in" % root_dir, "r").read())
+            for major_version in template_data['major_versions']:
+                if major_version in template_data['versions']:
+                    # wait for the main version before writing a changelog
+                    with open("%s/source/releases/%s_%s.rst" % (root_dir, version_prefix, major_version), 'w') as f_out:
+                        template_data['this_version'] = major_version
+                        f_out.write(template.render(template_data))
