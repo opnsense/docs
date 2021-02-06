@@ -27,7 +27,4 @@ Tunable                                     Description
 hw.ixl.enable_head_writeback                Intel :code:`ixl(4)` tunable for increased tx performance,
                                             OPNsense standard value is disabled.
 
-net.bpf.zerocopy_enable                     Use zero-copy for :code:`bpf(4)` for faster processing, when not set (the default)
-                                            packets will not be seen by bpf, which influences the traffic graphs for example.
-
 =========================================== =================================================================================
