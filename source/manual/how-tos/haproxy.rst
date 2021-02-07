@@ -148,8 +148,8 @@ is a Public Service.
 A Public Service is a a group of bound ports which are used for incoming connections.
 From this Public Service we need to know which backend the request will routed to.
 For this, the previously configured action is needed.
-If you got multiple domains on one IP, you differentiate them with rules! 
-Don't create multiple Public Services.
+If you got multiple domains with the same port on one IP, you differentiate them with rules! 
+Don't create multiple Public Services. For example, if you only want to forward example.org:80 and example.com:80, just create one Public Service. If you want to forward example.org:80, example.org:443, example.com:80, and example.com:443, create only two Public Services, one for port 80 (example.org and example.com) and one for port 443 (example.org and example.com).
 
 To create a new Public Service, click the `+` button:
 
