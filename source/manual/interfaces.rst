@@ -150,6 +150,7 @@ To make thing easier some of these strings are part of a easy selectable profile
 
 Tested devices by the OPNsense team include:
 
+* **Huaweu M909S-120** (device cuaUx.0) (Requires separate SIM card holder/adapter) [Tested: OPNsense 21.1]
 * **Huawei ME909u-521** (device cuaUx.0)
 * **Huawei E220** (device cuaUx.0)
 * **Sierra Wireless MC7304** (device cuaUx.2) [as of OPNsense 16.7]
