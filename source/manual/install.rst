@@ -101,7 +101,7 @@ to get the public key from include:
 * https://pkg.opnsense.org/releases/mirror/README
 * https://forum.opnsense.org/index.php?board=11.0
 * https://opnsense.org/blog/
-* https://github.com/opnsense/changelog/tree/master/doc
+* https://github.com/opnsense/changelog/tree/master/community
 * https://pkg.opnsense.org (/<HardenedBSD version & architecture>/<release version>/sets/changelog.txz) (lands signed and verified in the GUI of the running software)
 
 Note that only release announcements with images (typically all major
