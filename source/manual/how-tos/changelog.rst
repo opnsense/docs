@@ -24,7 +24,6 @@ The changelog entries can be found at different places:
 * Forum: https://forum.opnsense.org/index.php?board=11.0
 * GitHub: https://github.com/opnsense/changelog/tree/master/community
 * Blog: https://opnsense.org/blog/
-* Reddit: https://www.reddit.com/r/OPNsenseFirewall/
 
 Plugins
 =======
