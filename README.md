@@ -41,7 +41,7 @@ pkg install py37-pip jpeg-turbo gmake
 Install Sphinx, our default theme and contrib packages:
 
 ```
-pip3 install -r requirements.txt --upgrade
+pip[3] install -r requirements.txt --upgrade
 ```
 
 ### Update API endpoints
