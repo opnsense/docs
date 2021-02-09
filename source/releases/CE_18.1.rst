@@ -476,7 +476,7 @@ Here are the full patch notes:
 * ports: openldap 2.4.46 `[3] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: openssh 7.7p1 `[4] <https://www.openssh.com/txt/release-7.7>`__ 
 * ports: openvpn 2.4.6 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
-* ports: perl 5.26.2 `[6] <http://search.cpan.org/~shay/perl-5.26.2/pod/perldelta.pod>`__ 
+* ports: perl 5.26.2 `[6] <https://perldoc.perl.org/5.26.2/perldelta>`__ 
 * ports: php 7.1.17 `[7] <https://php.net/ChangeLog-7.php#7.1.17>`__ 
 * ports: sqlite 3.23.0 `[8] <https://sqlite.org/releaselog/3_23_0.html>`__ 
 
@@ -549,7 +549,7 @@ Here are the full patch notes:
 * src: timezone database information update `[4] <https://security.freebsd.org/advisories/FreeBSD-EN-18:03.tzdata.asc>`__ 
 * ports: dnsmasq 2.79 `[5] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: openssl 1.0.2o `[6] <https://www.openssl.org/news/secadv/20180327.txt>`__ 
-* ports: perl 5.26.1 `[7] <https://metacpan.org/pod/release/SHAY/perl-5.26.1/pod/perldelta.pod>`__ 
+* ports: perl 5.26.1 `[7] <https://perldoc.perl.org/5.26.1/perldelta>`__ 
 * ports: php 7.1.16 `[8] <https://php.net/ChangeLog-7.php#7.1.16>`__ 
 * ports: squid 3.5.27 adds LDAP authentication
 

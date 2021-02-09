@@ -126,7 +126,7 @@ Here are the full patch notes:
 * ports: openssl 1.1.1i `[9] <https://www.openssl.org/news/secadv/20201208.txt>`__ 
 * ports: pcre2 10.36 `[10] <https://www.pcre.org/changelog.txt>`__ 
 * ports: sudo 1.9.4 `[11] <https://www.sudo.ws/stable.html#1.9.4>`__ 
-* ports: sqlite 3.34.0 `[12] <https://sqlite.org/changes.html>`__ 
+* ports: sqlite 3.34.0 `[12] <https://sqlite.org/releaselog/3_34_0.html>`__ 
 * ports: unbound 1.13.0 `[13] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 
 A hotfix release was issued as 20.7.7_1:
@@ -390,7 +390,7 @@ Here are the full patch notes:
 * ports: openldap 2.4.51 `[7] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: php 7.3.21 `[8] <https://www.php.net/ChangeLog-7.php#7.3.21>`__ 
 * ports: python 3.7.9 `[9] <https://www.python.org/downloads/release/python-379/>`__ 
-* ports: sqlite 3.33.0 `[10] <https://sqlite.org/changes.html>`__ 
+* ports: sqlite 3.33.0 `[10] <https://sqlite.org/releaselog/3_33_0.html>`__ 
 * ports: squid 4.13 `[11] <http://www.squid-cache.org/Versions/v4/squid-4.13-RELEASENOTES.html>`__ 
 * ports: syslog-ng dlsym() workaround
 * ports: unbound 1.11.0 `[12] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-11-0>`__ 
@@ -433,7 +433,7 @@ Here are the full patch notes:
 * src: fix memory corruption in USB network device driver `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:21.usb_net.asc>`__ 
 * src: fix multiple vulnerabilities in sqlite3 `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:22.sqlite.asc>`__ 
 * src: fix sendmsg(2) privilege escalation `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:23.sendmsg.asc>`__ 
-* ports: perl 5.32.0 `[8] <https://metacpan.org/changes/release/XSAWYERX/perl-5.32.0>`__ 
+* ports: perl 5.32.0 `[8] <https://perldoc.perl.org/5.32.0/perldelta>`__ 
 * ports: squid 4.12 `[9] <http://www.squid-cache.org/Versions/v4/squid-4.12-RELEASENOTES.html>`__ 
 
 
@@ -589,7 +589,7 @@ Here are the full patch notes against 20.1.8_1:
 * ports: curl 7.71.1 `[6] <https://curl.haxx.se/changes.html>`__ 
 * ports: php 7.3.20 `[7] <https://www.php.net/ChangeLog-7.php#7.3.20>`__ 
 * ports: python 3.7.8 `[8] <https://www.python.org/downloads/release/python-378/>`__ 
-* ports: sqlite 3.32.3 `[9] <https://www.sqlite.org/changes.html>`__ 
+* ports: sqlite 3.32.3 `[9] <https://sqlite.org/releaselog/3_32_3.html>`__ 
 * ports: suricata 5.0.3 `[10] <https://suricata-ids.org/2020/04/28/suricata-5-0-3-released/>`__ 
 
 Known issues and limitations:

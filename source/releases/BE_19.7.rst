@@ -216,7 +216,7 @@ Here are the full patch notes:
 * ports: curl 7.67.0 `[8] <https://curl.haxx.se/changes.html>`__ 
 * ports: libressl 3.0.2 `[9] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.0.2-relnotes.txt>`__ 
 * ports: openvpn 2.4.8 `[10] <https://github.com/OpenVPN/openvpn/blob/release/2.4/Changes.rst#version-248>`__ 
-* ports: perl 5.30.1 `[11] <https://metacpan.org/pod/release/SHAY/perl-5.30.1/pod/perldelta.pod>`__ 
+* ports: perl 5.30.1 `[11] <https://perldoc.perl.org/5.30.1/perldelta>`__ 
 * ports: phalcon 3.4.5 `[12] <https://github.com/phalcon/cphalcon/releases/tag/v3.4.5>`__ 
 * ports: sqlite 3.30.1 `[13] <https://sqlite.org/releaselog/3_30_1.html>`__ 
 * ports: squid 4.9 `[14] <https://github.com/squid-cache/squid/blob/master/ChangeLog>`__ 
@@ -438,7 +438,7 @@ Here is the full list of changes:
 * ports: hostapd 2.9 `[15] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
 * ports: nghttp2 1.39.2 `[16] <https://github.com/nghttp2/nghttp2/releases/tag/v1.39.2>`__ 
 * ports: openldap 2.4.48 `[17] <https://www.openldap.org/software/release/changes.html>`__ 
-* ports: perl 5.30.0 `[18] <https://metacpan.org/pod/release/XSAWYERX/perl-5.30.0/pod/perldelta.pod>`__ 
+* ports: perl 5.30.0 `[18] <https://perldoc.perl.org/5.30.0/perldelta>`__ 
 * ports: php 7.2.21 `[19] <https://www.php.net/ChangeLog-7.php#7.2.21>`__ 
 * ports: py-openssl 19.0.0 `[20] <https://www.pyopenssl.org/en/stable/changelog.html>`__ 
 * ports: syslog-ng 3.22.1 `[21] <https://github.com/balabit/syslog-ng/releases/tag/syslog-ng-3.22.1>`__ 

@@ -39,6 +39,60 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+21.1.1 (February 09, 2021)
+--------------------------------------------------------------------------
+
+
+The 21.1 series debut looks pretty good so far.  Thanks again for your
+input and comments!
+
+We will be spending a lot of time this year improving and adapting the
+code base.  As a first glimpse, the changes of this stable update are a
+mix of security and reliability updates coupled with preparations for the
+update framework revamp we have planned for 21.7.  The roadmap is still
+not final, but will likely contain long-yearned-for features.  Stay tuned.
+
+Here are the full patch notes:
+
+* firewall: change order of shaper delay parameter to prevent parser errors
+* firewall: fix multiple PHP warnings regarding category additions
+* firewall: fix icon toggle for block and reject (contributed by ElJeffe)
+* interfaces: unhide primary IPv6 in overview page
+* interfaces: fix IPv6 misalignment in get_interfaces_info()
+* reporting: fix sidebar menu collapse for NetFlow link (contributed by Maurice Walker)
+* captive portal: validate that static IP address exists when writing the configuration
+* firmware: add product status backend for upcoming firmware page redesign
+* firmware: opnsense-code will now check out the default release branch
+* firmware: opnsense-update adds "-R" option for major release selection
+* firmware: opnsense-update will now update repositories if out of sync
+* firmware: opnsense-update will attempt to recover from fatal pkg behaviour
+* firmware: opnsense-update now correctly redirects stderr on major upgrades
+* firmware: opnsense-update now retains vital flag on faulty release type transition
+* intrusion detection: clean up rule based additions  to prevent collisions with the new policies
+* monit: minor bugfixes and UI changes (contributed by Manuel Faux)
+* unbound: update documentation URL (contributed by xorbital)
+* ui: format packet count with toLocaleString() in interface statistics widget (contributed by bleetsheep)
+* ui: add compatibility for JS replaceAll() function
+* rc: support reading JSON metadata from plugin version files
+* plugins: provide JSON metadata in plugin version files
+* plugins: os-dyndns GratisDNS apex domain fix (contributed by Fredrik Rambris)
+* plugins: os-nginx upstream TLS verification fix (contributed by kulikov-a)
+* plugins: os-theme-cicada 1.26 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.2 (contributed by Team Rebellion)
+* src: panic when destroying VNET and epair simultaneously `[1] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:03.vnet.asc>`__ 
+* src: uninitialized file system kernel stack leaks `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:01.fsdisclosure.asc>`__ 
+* src: Xen guest-triggered out of memory `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:02.xenoom.asc>`__ 
+* src: update timezone database information `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:01.tzdata.asc>`__ 
+* ports: dnsmasq 2.84 `[5] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: lighttpd 1.4.59 `[6] <http://www.lighttpd.net/2021/2/2/1.4.59/>`__ 
+* ports: krb5 1.19 `[7] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
+* ports: monit 5.27.2 `[8] <https://mmonit.com/monit/changes/>`__ 
+* ports: perl 5.32.1 `[9] <https://perldoc.perl.org/5.32.1/perldelta>`__ 
+* ports: sqlite 3.34.1 `[10] <https://sqlite.org/releaselog/3_34_1.html>`__ 
+
+
+
+--------------------------------------------------------------------------
 21.1 (January 28, 2021)
 --------------------------------------------------------------------------
 
@@ -100,7 +154,7 @@ Here are the full patch notes against 20.7.8:
 * interfaces: fix address removal in IPv6 CARP case
 * interfaces: pick proper route for 6RD and 6to4 tunnels
 * interfaces: support 6RD with single /64 prefix (contributed by Marcel Hofer)
-* firewall: support category filters for firewall and NAT rules (sponsored by Modirum)
+* firewall: support category filters for firewall and NAT rules `[3] <https://github.com/opnsense/core/issues/4587>`__  (sponsored by Modirum)
 * firewall: add live log "host", "port" and "not" filters
 * firewall: create an appropriate max-mss scrub rule for IPv6
 * firewall: fix anti-spoof option for separate bridge interfaces
@@ -122,7 +176,7 @@ Here are the full patch notes against 20.7.8:
 * firmware: add ability to run audits from the console
 * firmware: show repository in package and plugin overviews
 * intrusion detection: replace file-based policy changes with detailed filters
-* ipsec: NAT with multiple phase 2 (sponsored by m.a.x. it)
+* ipsec: NAT with multiple phase 2 `[4] <https://github.com/opnsense/core/issues/4460>`__  (sponsored by m.a.x. it)
 * ipsec: prevent VTI interface to hit spurious 32768 limit
 * ipsec: allow mixed IPv4/IPv6 for VTI
 * openvpn: added toggle for block-outside-dns (contributed by Julio Camargo)
@@ -140,10 +194,10 @@ Here are the full patch notes against 20.7.8:
 * ui: add tooltips for service control widget
 * ui: move sidebar stage from session to local storage
 * ui: upgrade Tokenize2 to v1.3.3
-* plugins: os-acme-client 2.3 `[3] <https://github.com/opnsense/plugins/blob/master/security/acme-client/pkg-descr>`__ 
-* plugins: os-bind 1.16 `[4] <https://github.com/opnsense/plugins/blob/master/dns/bind/pkg-descr>`__ 
-* plugins: os-frr 1.21 `[5] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
-* plugins: os-maltrail 1.6 `[6] <https://github.com/opnsense/plugins/blob/master/security/maltrail/pkg-descr>`__  (contributed by jkellerer)
+* plugins: os-acme-client 2.3 `[5] <https://github.com/opnsense/plugins/blob/master/security/acme-client/pkg-descr>`__ 
+* plugins: os-bind 1.16 `[6] <https://github.com/opnsense/plugins/blob/master/dns/bind/pkg-descr>`__ 
+* plugins: os-frr 1.21 `[7] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
+* plugins: os-maltrail 1.6 `[8] <https://github.com/opnsense/plugins/blob/master/security/maltrail/pkg-descr>`__  (contributed by jkellerer)
 * plugins: os-smart adds cron jobs for useful actions (contributed by Jacek Tomasiak)
 * plugins: os-telegraf 1.8.3 adds ping6 ability (contributed by DasSkelett)
 * src: fix AES-CCM requests with an AAD size smaller than a single block
@@ -153,12 +207,12 @@ Here are the full patch notes against 20.7.8:
 * src: netmap tun(4) support adds pseudo addresses to ethernet header emulation (contributed by Sunny Valley Networks)
 * src: add a manual page for axp(4) / AMD 10G Ethernet driver
 * src: fix traffic graph not showing bandwidth when IPS is enabled
-* ports: dnsmasq 2.83 `[7] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
-* ports: igmpproxy 0.3 `[8] <https://github.com/pali/igmpproxy/releases/tag/0.3>`__ 
-* ports: nss 3.61 `[9] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.61_release_notes>`__ 
-* ports: openldap 2.4.57 `[10] <https://www.openldap.org/software/release/changes.html>`__ 
-* ports: py-netaddr 0.8.0 `[11] <https://pypi.org/project/netaddr/0.8.0/>`__ 
-* ports: sudo 1.9.5p2 `[12] <https://www.sudo.ws/stable.html#1.9.5p2>`__ 
+* ports: dnsmasq 2.83 `[9] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: igmpproxy 0.3 `[10] <https://github.com/pali/igmpproxy/releases/tag/0.3>`__ 
+* ports: nss 3.61 `[11] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.61_release_notes>`__ 
+* ports: openldap 2.4.57 `[12] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: py-netaddr 0.8.0 `[13] <https://pypi.org/project/netaddr/0.8.0/>`__ 
+* ports: sudo 1.9.5p2 `[14] <https://www.sudo.ws/stable.html#1.9.5p2>`__ 
 
 The public key for the 21.1 series is:
 

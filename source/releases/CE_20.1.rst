@@ -59,7 +59,7 @@ Here are the full patch notes:
 * ports: monit 5.27.0 `[8] <https://mmonit.com/monit/changes/>`__ 
 * ports: php 7.3.20 `[9] <https://www.php.net/ChangeLog-7.php#7.3.20>`__ 
 * ports: python 3.7.8 `[10] <https://www.python.org/downloads/release/python-378/>`__ 
-* ports: sqlite 3.32.3 `[11] <https://www.sqlite.org/changes.html>`__ 
+* ports: sqlite 3.32.3 `[11] <https://sqlite.org/releaselog/3_32_3.html>`__ 
 * ports: syslog-ng 3.27.1 `[12] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.27.1>`__ 
 
 A hotfix release was issued as 20.1.9_1:
@@ -114,10 +114,10 @@ Here are the full patch notes:
 * ports: krb5 1.18.2 `[11] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
 * ports: ntp 4.2.8p15 `[12] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
 * ports: pcre 8.44 `[13] <https://www.pcre.org/original/changelog.txt>`__ 
-* ports: perl 5.30.3 `[14] <https://perldoc.perl.org/5.30.3/perldelta.html>`__ 
+* ports: perl 5.30.3 `[14] <https://perldoc.perl.org/5.30.3/perldelta>`__ 
 * ports: php 7.3.19 `[15] <https://www.php.net/ChangeLog-7.php#7.3.19>`__ 
 * ports: python CVE-2019-18348 and CVE-2020-8492
-* ports: sqlite 3.32.2 `[16] <https://www.sqlite.org/changes.html>`__ 
+* ports: sqlite 3.32.2 `[16] <https://sqlite.org/releaselog/3_32_2.html>`__ 
 * ports: sudo 1.9.1 `[17] <https://www.sudo.ws/stable.html#1.9.1>`__ 
 * ports: unbound 1.10.1 `[18] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-10-1>`__ 
 
@@ -192,7 +192,7 @@ Quick update as planned.  Here are the full patch notes:
 * ports: openssl 1.1.1g `[3] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: py-yaml 5.3.1 `[4] <https://raw.githubusercontent.com/yaml/pyyaml/master/CHANGES>`__ 
 * ports: radvd 2.18 `[5] <http://www.litech.org/radvd/CHANGES.txt>`__ 
-* ports: sqlite 3.31.1 `[6] <https://www.sqlite.org/changes.html>`__ 
+* ports: sqlite 3.31.1 `[6] <https://sqlite.org/releaselog/3_31_1.html>`__ 
 * ports: squid 4.11 `[7] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-4.11-RELEASENOTES.html>`__ 
 * ports: suricata 4.1.8 `[8] <https://suricata-ids.org/2020/04/28/suricata-4-1-8-released/>`__ 
 
@@ -303,7 +303,7 @@ Here are the full patch notes:
 * ports: krb5 1.18 `[16] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
 * ports: openssh 8.2p1 `[17] <https://www.openssh.com/txt/release-8.2>`__ 
 * ports: openssl 1.1.1f `[18] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
-* ports: perl 5.30.2 `[19] <https://metacpan.org/pod/release/SHAY/perl-5.30.2/pod/perldelta.pod>`__ 
+* ports: perl 5.30.2 `[19] <https://perldoc.perl.org/5.30.2/perldelta>`__ 
 * ports: php 7.2.29 `[20] <https://www.php.net/ChangeLog-7.php#7.2.29>`__ 
 * ports: python 3.7.7 `[21] <https://www.python.org/downloads/release/python-377/>`__ 
 * ports: strongswan 5.8.3 `[22] <https://wiki.strongswan.org/versions/76>`__ 

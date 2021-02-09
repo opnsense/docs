@@ -179,7 +179,7 @@ Here are the full patch notes:
 * src: microarchitectural Data Sampling (MDS) mitigation `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:07.mds.asc>`__ 
 * ports: ca_root_nss 3.44
 * ports: php 7.2.18 `[6] <https://www.php.net/ChangeLog-7.php#7.2.18>`__ 
-* ports: sqlite 3.28.0 `[7] <https://www.sqlite.org/changes.html>`__ 
+* ports: sqlite 3.28.0 `[7] <https://sqlite.org/releaselog/3_28_0.html>`__ 
 * ports: strongswan custom XAuth generic patch removed
 
 
@@ -275,7 +275,7 @@ Without further ado, here are the full patch notes:
 * ports: perl 5.28.2 `[4] <https://perldoc.pl/5.28.2/perldelta>`__ 
 * ports: py-yaml 5.1 `[5] <https://github.com/yaml/pyyaml/blob/master/CHANGES>`__ 
 * ports: suricata 4.1.4 `[6] <https://suricata-ids.org/2019/04/30/suricata-4-1-4-released/>`__ 
-* ports: sqlite 3.27.2 `[7] <https://www.sqlite.org/changes.html>`__ 
+* ports: sqlite 3.27.2 `[7] <https://sqlite.org/releaselog/3_27_1.html>`__ 
 
 
 
@@ -625,7 +625,7 @@ Here are the full patch notes:
 * ports: libressl 2.8.3 `[9] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.8.3-relnotes.txt>`__ 
 * ports: openvpn 2.4.7 `[10] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
 * ports: pam_opnsense manual page addition
-* ports: sqlite 3.27.1 `[11] <https://www.sqlite.org/releaselog/3_27_1.html>`__ 
+* ports: sqlite 3.27.1 `[11] <https://sqlite.org/releaselog/3_27_1.html>`__ 
 * ports: squid forgery check avoidance `[12] <https://github.com/opnsense/ports/issues/66>`__ 
 * ports: strongswan 5.7.2 `[13] <https://wiki.strongswan.org/versions/72>`__ 
 * ports: unbound 1.9.0 `[14] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
@@ -934,7 +934,7 @@ Here are the full changes against version 18.7.10:
 * ports: krb5 1.17 `[8] <https://web.mit.edu/kerberos/krb5-1.17/>`__ 
 * ports: php 7.1.26 `[9] <https://php.net/ChangeLog-7.php#7.1.26>`__ 
 * ports: sudo 1.8.27 `[10] <https://www.sudo.ws/stable.html#1.8.27>`__ 
-* ports: perl 5.28.1 `[11] <https://metacpan.org/changes/release/SHAY/perl-5.28.1>`__ 
+* ports: perl 5.28.1 `[11] <https://perldoc.perl.org/5.28.1/perldelta>`__ 
 * ports: suricata netmap forward-compatibility patch (contributed by Sunny Valley Networks)
 
 Known issues and limitations:

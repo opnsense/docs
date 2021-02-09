@@ -240,8 +240,8 @@ Here are the full patch notes:
 * src: fix deferred kernel loading breaks loader password `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:15.loader.asc>`__ 
 * src: fix insufficient bounds checking in bhyve(8) device model `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-18:14.bhyve.asc>`__ 
 * ports: lighttpd 1.4.52 `[7] <https://www.lighttpd.net/2018/11/28/1.4.52/>`__ 
-* ports: sqlite 3.26.0 `[8] <https://www.sqlite.org/releaselog/3_26_0.html>`__ 
-* ports: perl 5.26.3 `[9] <https://metacpan.org/pod/release/SHAY/perl-5.26.3/pod/perldelta.pod>`__ 
+* ports: sqlite 3.26.0 `[8] <https://sqlite.org/releaselog/3_26_0.html>`__ 
+* ports: perl 5.26.3 `[9] <https://perldoc.perl.org/5.26.3/perldelta>`__ 
 * ports: php 7.1.25 `[10] <https://php.net/ChangeLog-7.php#7.1.25>`__ 
 * ports: hostapd / wpa_supplicant 2.7 `[11] <http://lists.infradead.org/pipermail/hostap/2018-December/039069.html>`__ 
 * ports: unbound 1.8.2 `[12] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
@@ -556,7 +556,7 @@ Here are the full patch notes:
 * src: update re(4) driver to upstream version 1.95
 * ports: libressl 2.7.4 `[1] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.7.4-relnotes.txt>`__ 
 * ports: php 7.1.22 `[2] <https://php.net/ChangeLog-7.php#7.1.22>`__ 
-* ports: sqlite 3.25.1 `[3] <https://www.sqlite.org/releaselog/3_25_1.html>`__ 
+* ports: sqlite 3.25.1 `[3] <https://sqlite.org/releaselog/3_25_1.html>`__ 
 * ports: squid 3.5.28 `[4] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5.28-RELEASENOTES.html>`__ 
 
 

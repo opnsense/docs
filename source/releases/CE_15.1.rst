@@ -377,7 +377,7 @@ Here is the full list of changes:
 * ports: bsdinstaller 2.3 no longer uses cpdup utility, plus log collection
   and SONAME fixes
 * ports: updated to pkg 1.5.2, phalcon 2.0.0, dnsmasq 2.72_1 `[4] <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3294>`__ 
-* ports: perl5 is now installed by default (5.18)
+* ports: Perl is now installed by default (5.18)
 * development: OpenSSL and LibreSSL branches have been merged for a simpler
   build experience and smaller release times
 * development: the package sets are now always kept as a single archive that
