@@ -47,7 +47,7 @@ def download_zip(target_filename):
                 else:
                      f_out.write(data)
 
-def parse_change_log(payload, this_version):
+def parse_change_log(payload, this_version, links):
     result = {
         "release_date": "---",
         "prelude": list(),
@@ -106,7 +106,20 @@ def parse_change_log(payload, this_version):
     # replace links
     for section in ['content', 'prelude']:
         for token in all_token_links:
-            result[section] = result[section].replace(token, " `%s <%s>`__ " % (token, all_token_links[token]))
+            target_uri = all_token_links[token]
+            tmp = all_token_links[token].split(':')
+            if tmp[0] in links and len(tmp) == 2:
+                target_uri = links[tmp[0]]['url']
+                version = tmp[1]
+                if links[tmp[0]]['regex']:
+                    match = re.match(r"s/(.+)/(.*)/(\w*)", links[tmp[0]]['regex'])
+                    if match:
+                        count = 0 if match.group(3).startswith('g') else 1
+                        version = re.sub(match.group(1), match.group(2), tmp[1], count=count)
+                if target_uri.find('%s') > -1:
+                    target_uri = target_uri % version
+
+            result[section] = result[section].replace(token, " `%s <%s>`__ " % (token, target_uri))
     return result
 
 
@@ -131,6 +144,7 @@ if __name__ == '__main__':
                 'name': 'Business Edition'
             }
         }
+        external_links = dict()
         all_versions = {'community': dict(), 'business': dict()}
         # read all changelogs (from zip)
         this_dir = str(pathlib.Path(".").resolve())
@@ -139,13 +153,19 @@ if __name__ == '__main__':
                 fparts = item.filename.split('/')
                 if len(fparts) > 3 and fparts[1] in all_versions and item.file_size > 0:
                     all_versions[fparts[1]][fparts[3]] = zf.open(item).read().decode()
-                if len(fparts) == 3 and fparts[1] in all_versions and not item.is_dir():
+                elif len(fparts) == 3 and fparts[1] in all_versions and not item.is_dir():
                     # resolve links
                     tmp =  pathlib.Path("%s/%s" % (os.path.dirname(item.filename), zf.open(item).read().decode()))
                     link_to = str(tmp.resolve()).replace(this_dir, '')[1:]
                     for item2 in zf.infolist():
                         if item2.filename.startswith(link_to) and not item2.is_dir():
                             all_versions[fparts[1]][os.path.basename(item2.filename)] = zf.open(item2).read().decode()
+                elif len(fparts) == 3 and fparts[1] == 'Links' and item.file_size > 0:
+                    tmp = zf.open(item).read().decode().strip().split()
+                    external_links[os.path.basename(item.filename)] = {
+                        'url': tmp[0],
+                        'regex': tmp[1] if len(tmp) > 1 else None
+                    }
 
         for flavour in all_versions:
             version_prefix = version_metadata[flavour]['prefix']
@@ -161,7 +181,9 @@ if __name__ == '__main__':
                 major_version = ".".join(my_version.split('.')[:2])
                 if major_version not in template_data['major_versions']:
                     template_data['major_versions'][major_version] = dict()
-                template_data['versions'][my_version] = parse_change_log(versions[my_version], my_version)
+                template_data['versions'][my_version] = parse_change_log(
+                    versions[my_version], my_version, external_links
+                )
 
                 if major_version == my_version:
                     template_data['nicknames'][my_version] = ""
