@@ -9,6 +9,8 @@ Proxy
     "``POST``","proxy","service","fetchacls",""
     "``POST``","proxy","service","refreshTemplate",""
     "``POST``","proxy","service","reset",""
+    "``GET``","proxy","service","restart",""
+    "``GET``","proxy","service","start",""
 
     "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Proxy/Proxy.xml>`__"
 

@@ -8,6 +8,7 @@ Acmeclient
     "``POST``","acmeclient","accounts","add",""
     "``POST``","acmeclient","accounts","del","$uuid"
     "``GET``","acmeclient","accounts","get","$uuid=null"
+    "``POST``","acmeclient","accounts","register","$uuid"
     "``*``","acmeclient","accounts","search",""
     "``POST``","acmeclient","accounts","toggle","$uuid,$enabled=null"
     "``POST``","acmeclient","accounts","update","$uuid"
@@ -34,6 +35,7 @@ Acmeclient
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","acmeclient","certificates","add",""
+    "``GET``","acmeclient","certificates","automation","$uuid"
     "``POST``","acmeclient","certificates","del","$uuid"
     "``GET``","acmeclient","certificates","get","$uuid=null"
     "``GET``","acmeclient","certificates","removekey","$uuid"

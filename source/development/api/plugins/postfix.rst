@@ -27,6 +27,19 @@ Postfix
 
     "``<<uses>>``", "", "", "", "*model* `Domain.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/Domain.xml>`__"
 
+.. csv-table:: Resources (HeaderchecksController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","postfix","headerchecks","addHeadercheck",""
+    "``POST``","postfix","headerchecks","delHeadercheck","$uuid"
+    "``GET``","postfix","headerchecks","getHeadercheck","$uuid=null"
+    "``*``","postfix","headerchecks","searchHeaderchecks",""
+    "``POST``","postfix","headerchecks","setHeadercheck","$uuid"
+    "``POST``","postfix","headerchecks","toggleHeadercheck","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Headerchecks.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/Headerchecks.xml>`__"
+
 .. csv-table:: Resources (RecipientController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

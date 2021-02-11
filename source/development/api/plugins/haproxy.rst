@@ -1,6 +1,16 @@
 Haproxy
 ~~~~~~~
 
+.. csv-table:: Resources (MaintenanceController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","haproxy","maintenance","searchServer",""
+    "``GET``","haproxy","maintenance","serverState",""
+    "``GET``","haproxy","maintenance","serverStateBulk",""
+    "``GET``","haproxy","maintenance","serverWeight",""
+    "``GET``","haproxy","maintenance","serverWeightBulk",""
+
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -25,6 +35,7 @@ Haproxy
     "``POST``","haproxy","settings","addMapfile",""
     "``POST``","haproxy","settings","addServer",""
     "``POST``","haproxy","settings","addUser",""
+    "``POST``","haproxy","settings","addresolver",""
     "``POST``","haproxy","settings","delAcl","$uuid"
     "``POST``","haproxy","settings","delAction","$uuid"
     "``POST``","haproxy","settings","delBackend","$uuid"
@@ -37,6 +48,7 @@ Haproxy
     "``POST``","haproxy","settings","delMapfile","$uuid"
     "``POST``","haproxy","settings","delServer","$uuid"
     "``POST``","haproxy","settings","delUser","$uuid"
+    "``POST``","haproxy","settings","delresolver","$uuid"
     "``GET``","haproxy","settings","getAcl","$uuid=null"
     "``GET``","haproxy","settings","getAction","$uuid=null"
     "``GET``","haproxy","settings","getBackend","$uuid=null"
@@ -49,6 +61,7 @@ Haproxy
     "``GET``","haproxy","settings","getMapfile","$uuid=null"
     "``GET``","haproxy","settings","getServer","$uuid=null"
     "``GET``","haproxy","settings","getUser","$uuid=null"
+    "``GET``","haproxy","settings","getresolver","$uuid=null"
     "``*``","haproxy","settings","searchAcls",""
     "``*``","haproxy","settings","searchActions",""
     "``*``","haproxy","settings","searchBackends",""
@@ -61,6 +74,7 @@ Haproxy
     "``*``","haproxy","settings","searchMapfiles",""
     "``*``","haproxy","settings","searchServers",""
     "``*``","haproxy","settings","searchUsers",""
+    "``*``","haproxy","settings","searchresolvers",""
     "``POST``","haproxy","settings","setAcl","$uuid"
     "``POST``","haproxy","settings","setAction","$uuid"
     "``POST``","haproxy","settings","setBackend","$uuid"
@@ -73,6 +87,7 @@ Haproxy
     "``POST``","haproxy","settings","setMapfile","$uuid"
     "``POST``","haproxy","settings","setServer","$uuid"
     "``POST``","haproxy","settings","setUser","$uuid"
+    "``POST``","haproxy","settings","setresolver","$uuid"
     "``POST``","haproxy","settings","toggleBackend","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggleCpu","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggleFrontend","$uuid"
@@ -80,6 +95,7 @@ Haproxy
     "``POST``","haproxy","settings","toggleLua","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggleServer","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggleUser","$uuid,$enabled=null"
+    "``POST``","haproxy","settings","toggleresolver","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `HAProxy.xml <https://github.com/opnsense/plugins/blob/master/net/haproxy/src/opnsense/mvc/app/models/OPNsense/HAProxy/HAProxy.xml>`__"
 

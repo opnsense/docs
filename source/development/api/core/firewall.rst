@@ -32,3 +32,15 @@ Firewall
     "``POST``","firewall","alias_util","flush","$alias"
     "``GET``","firewall","alias_util","list","$alias"
     "``GET``","firewall","alias_util","update_bogons",""
+
+.. csv-table:: Resources (CategoryController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","firewall","category","addItem",""
+    "``POST``","firewall","category","delItem","$uuid"
+    "``GET``","firewall","category","getItem","$uuid=null"
+    "``*``","firewall","category","searchItem",""
+    "``POST``","firewall","category","setItem","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Category.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Category.xml>`__"

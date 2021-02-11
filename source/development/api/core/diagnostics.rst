@@ -64,3 +64,10 @@ Diagnostics
 
     "``GET``","diagnostics","systemhealth","getInterfaces",""
     "``GET``","diagnostics","systemhealth","getRRDlist",""
+
+.. csv-table:: Resources (TrafficController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","diagnostics","traffic","Interface",""
+    "``GET``","diagnostics","traffic","Top","$interfaces"
