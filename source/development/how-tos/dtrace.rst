@@ -150,7 +150,7 @@ If you run the following command:
 
 .. code-block:: sh
 
-	# dtrace -n uiomove:entry'{ @[stack] = count(); }'
+	# dtrace -n 'uiomove:entry{ @[stack()] = count(); }'
 
 Let it run for a while, and exit using :code:`CTRL-C`
 
