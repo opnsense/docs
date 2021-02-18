@@ -18,10 +18,10 @@ can be found in the  :doc:`/manual/updates` document
 Plugins
 --------------------------------
 
-Plugins are additional software packages that are available for OPNsense, usually they come with there own
+Plugins are additional software packages that are available for OPNsense, usually they come with their own
 frontend components to setup the software underneath.
 Here you can find community support plugins, such as  **bind**, **c-icap**, **freeradius** and others. Usually there is also
-a **-devel** version available, which contains features still under development (master branch on GitHub verses release).
+a **-devel** version available, which contains features still under development (master branch on GitHub versus release).
 
 
 .. Note::
@@ -59,7 +59,7 @@ Settings
 The settings menu contains all available mirrors and options which you can choose for your installation.
 Usually the default options are good enough here, but if you want to choose a mirror more close to home you can do so here.
 
-OPNsense supports two flavours for its TLS crypto stack , OpenSSL and LibreSSL. Our standard is `OpenSSL <https://www.openssl.org/>`__, but some more
+OPNsense supports two flavours for its TLS crypto stack, OpenSSL and LibreSSL. Our standard is `OpenSSL <https://www.openssl.org/>`__, but some more
 security minded people favor OpenBSD's `LibreSSL <https://www.libressl.org/>`__
 
 .. Note::
