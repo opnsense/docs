@@ -15,10 +15,14 @@ It is used as a weight for round robin. Servers with a higher weight will receiv
 2) Create An Upstream
 ---------------------
 
-.. image:: images/nginx_edit_upstream.png
+.. image:: images/nginx_edit_upstream_with_verify.png
 
 Group upstream servers to an upstream. An upstream is a group of servers to load balance between.
 Give it a useful name and choose the previously created server.
+
+.. Warning::
+
+   Upstream verification is enabled by default (**TLS: Verify Certificate** checkbox). Server names in the upstream certificate are compared with the name in the **TLS: Servername override** field. For successful verification, it is necessary that OPNsense trusts the certificate of the certification authority that issued the upstreams certificate. You can further restrict the list of trusted CA's in the **TLS: Trusted Certificate** field.
 
 3) Create A Location
 --------------------
