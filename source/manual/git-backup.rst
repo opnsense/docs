@@ -55,8 +55,9 @@ we choose this loosely coupled method. Events which are yet unprocessed are bein
     remains active.
 
 On periodic intervals (the standard ones from the backup scheduler), the collected commits are pushed to the configured
-upstream repository. The regular backup procedure (which is also being triggered using the test button in the user interface)
-is responsible for initialising the empty local repository and configuring the upstream target.
+upstream repository. To shorten these default intervals, a custom cronjob (see :doc:`Settings </manual/settingsmenu>`) can be
+set up, selecting `Remote Backup` as the Command. The regular backup procedure (which is also being triggered using the test
+button in the user interface) is responsible for initialising the empty local repository and configuring the upstream target.
 
 .. Note::
 
