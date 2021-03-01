@@ -39,6 +39,61 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+21.1.2 (February 23, 2021)
+--------------------------------------------------------------------------
+
+
+Please do enjoy this round of timely crypto library updates and
+other reliability fixes.
+
+Work has so far been focused on the firmware update process to ensure
+its safety around edge cases and recovery methods for the worst case.
+To that end 21.1.3 will likely receive the full revamp including API and
+GUI changes for a swift transition after thorough testing of the changes
+now available in the development package of this release.
+
+Here are the full patch notes:
+
+* system: do not trim string fields in upstream XMLRPC library
+* system: fix export API keys reload issue on Safari
+* system: retain index after tunables sorting in 21.1.1
+* system: fix firewall log widget update on small fixed number of entries
+* system: replace traffic graphs in widget using chart.js
+* system: make StartTLS work when retrieving LDAP authentication containers (contributed by Christian Brueffer)
+* system: fix IPv6 route deletion on status page
+* interfaces: work around slow manufacturer lookups in py-netaddr 0.8.0
+* firewall: fix off-by-one error in alias utility listing
+* firewall: fix live log matching with 'or' and empty filter (contributed by kulikov-a)
+* reporting: prevent NetFlow crash when interface number is missing
+* firmware: opnsense-update -t option executes after -p making it possible to run them at once
+* firmware: opnsense-update -t option now also uses recovery code introduced recently for -p
+* firmware: opnsense-update -vR no longer emits "unknown" if no version was found
+* firmware: opnsense-verify -l option lists enabled package repositories
+* firmware: add crypto package to health check
+* firmware: fix two JS tracker bugs
+* firmware: assorted non-breaking changes for upcoming firmware revamp
+* intrusion detection: prevent flowbits:noalert from being dropped
+* intrusion detection: fix policies not matching categories
+* ipsec: phase2 local/remote network check does not apply on VTI interfaces
+* web proxy: fix ownership issue on template directory
+* rc: opnsense-beep utility wrapper including manual page
+* plugins: increase revision number for all plugins to force installation of metadata added in 21.1.1
+* plugins: os-acme-client 2.4 `[1] <https://github.com/opnsense/plugins/blob/stable/21.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-postfix 1.18 `[2] <https://github.com/opnsense/plugins/blob/stable/21.1/mail/postfix/pkg-descr>`__ 
+* plugins: os-rspamd 1.11 `[3] <https://github.com/opnsense/plugins/blob/stable/21.1/mail/rspamd/pkg-descr>`__ 
+* plugins: os-theme-cicada 1.27 (contributed by Team Rebellion)
+* plugins: os-theme-tukan 1.24 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.3 (contributed by Team Rebellion)
+* ports: curl 7.75.0 `[4] <https://curl.se/changes.html#7_75_0>`__ 
+* ports: libressl 3.2.4 `[5] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.4-relnotes.txt>`__ 
+* ports: openssl 1.1.1j `[6] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: php 7.3.27 `[7] <https://www.php.net/ChangeLog-7.php#7.3.27>`__ 
+* ports: squid 4.14 `[8] <http://www.squid-cache.org/Versions/v4/squid-4.14-RELEASENOTES.html>`__ 
+* ports: unbound 1.13.1 `[9] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-13-1>`__ 
+
+
+
+--------------------------------------------------------------------------
 21.1.1 (February 09, 2021)
 --------------------------------------------------------------------------
 
@@ -79,10 +134,10 @@ Here are the full patch notes:
 * plugins: os-nginx upstream TLS verification fix (contributed by kulikov-a)
 * plugins: os-theme-cicada 1.26 (contributed by Team Rebellion)
 * plugins: os-theme-vicuna 1.2 (contributed by Team Rebellion)
-* src: panic when destroying VNET and epair simultaneously `[1] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:03.vnet.asc>`__ 
-* src: uninitialized file system kernel stack leaks `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:01.fsdisclosure.asc>`__ 
-* src: Xen guest-triggered out of memory `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:02.xenoom.asc>`__ 
-* src: update timezone database information `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:01.tzdata.asc>`__ 
+* src: panic when destroying VNET and epair simultaneously `[1] <FREEBSD:FreeBSD-EN-21:03.vnet>`__ 
+* src: uninitialized file system kernel stack leaks `[2] <FREEBSD:FreeBSD-SA-21:01.fsdisclosure>`__ 
+* src: Xen guest-triggered out of memory `[3] <FREEBSD:FreeBSD-SA-21:02.xenoom>`__ 
+* src: update timezone database information `[4] <FREEBSD:FreeBSD-EN-21:01.tzdata>`__ 
 * ports: dnsmasq 2.84 `[5] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: lighttpd 1.4.59 `[6] <http://www.lighttpd.net/2021/2/2/1.4.59/>`__ 
 * ports: krb5 1.19 `[7] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
@@ -194,10 +249,10 @@ Here are the full patch notes against 20.7.8:
 * ui: add tooltips for service control widget
 * ui: move sidebar stage from session to local storage
 * ui: upgrade Tokenize2 to v1.3.3
-* plugins: os-acme-client 2.3 `[5] <https://github.com/opnsense/plugins/blob/master/security/acme-client/pkg-descr>`__ 
-* plugins: os-bind 1.16 `[6] <https://github.com/opnsense/plugins/blob/master/dns/bind/pkg-descr>`__ 
-* plugins: os-frr 1.21 `[7] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
-* plugins: os-maltrail 1.6 `[8] <https://github.com/opnsense/plugins/blob/master/security/maltrail/pkg-descr>`__  (contributed by jkellerer)
+* plugins: os-acme-client 2.3 `[5] <https://github.com/opnsense/plugins/blob/stable/21.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-bind 1.16 `[6] <https://github.com/opnsense/plugins/blob/stable/21.1/dns/bind/pkg-descr>`__ 
+* plugins: os-frr 1.21 `[7] <https://github.com/opnsense/plugins/blob/stable/21.1/net/frr/pkg-descr>`__ 
+* plugins: os-maltrail 1.6 `[8] <https://github.com/opnsense/plugins/blob/stable/21.1/security/maltrail/pkg-descr>`__  (contributed by jkellerer)
 * plugins: os-smart adds cron jobs for useful actions (contributed by Jacek Tomasiak)
 * plugins: os-telegraf 1.8.3 adds ping6 ability (contributed by DasSkelett)
 * src: fix AES-CCM requests with an AAD size smaller than a single block
@@ -329,9 +384,9 @@ Here are the full patch notes against 20.7.7_1:
 * images: support UEFI boot in serial image
 * ui: add tooltips for service control widget
 * ui: move sidebar stage from session to local storage
-* plugins: os-bind 1.15 `[2] <https://github.com/opnsense/plugins/blob/master/dns/bind/pkg-descr>`__ 
-* plugins: os-frr 1.21 `[3] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
-* src: fix OpenSSL NULL pointer de-reference `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:33.openssl.asc>`__ 
+* plugins: os-bind 1.15 `[2] <https://github.com/opnsense/plugins/blob/stable/21.1/dns/bind/pkg-descr>`__ 
+* plugins: os-frr 1.21 `[3] <https://github.com/opnsense/plugins/blob/stable/21.1/net/frr/pkg-descr>`__ 
+* src: fix OpenSSL NULL pointer de-reference `[4] <FREEBSD:FreeBSD-SA-20:33.openssl>`__ 
 * src: fix AES-CCM requests with an AAD size smaller than a single block
 * src: introduce HARDEN_KLD to ensure DTrace functionality
 * src: fix partial scrub of multicast packages

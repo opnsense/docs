@@ -76,12 +76,12 @@ Here are the full patch notes:
 * unbound: fix broken lines in large files (contributed by kulikov-a)
 * web proxy: lock ACL download to prevent duplicate execution
 * mvc: allow underscore in filter string (contributed by kulikov-a)
-* plugins: os-haproxy 2.26 `[1] <https://github.com/opnsense/plugins/blob/master/net/haproxy/pkg-descr>`__ 
+* plugins: os-haproxy 2.26 `[1] <https://github.com/opnsense/plugins/blob/stable/20.7/net/haproxy/pkg-descr>`__ 
 * plugins: os-hw-probe 1.0 (contributed by Michael Muenz)
 * plugins: os-maltrail fixes sensor start without server (contributed by Julio Camargo)
-* plugins: os-nginx 1.20 `[2] <https://github.com/opnsense/plugins/blob/master/www/nginx/pkg-descr>`__ 
+* plugins: os-nginx 1.20 `[2] <https://github.com/opnsense/plugins/blob/stable/20.7/www/nginx/pkg-descr>`__ 
 * plugins: os-tinc fixes for latest version (contributed by vnxme)
-* src: fix OpenSSL NULL pointer de-reference `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:33.openssl.asc>`__ 
+* src: fix OpenSSL NULL pointer de-reference `[3] <FREEBSD:FreeBSD-SA-20:33.openssl>`__ 
 * src: fix partial scrub of multicast packages
 * src: free full mbuf chains in iflib when draining transmit queues
 * src: initialize oifp to avoid bogus results/panics in edge cases
@@ -113,12 +113,12 @@ Here are the full patch notes:
 * system: simplify log format parsing
 * interfaces: fix DUID LL description  (contributed by Gabriel Mazzocato)
 * unbound: fix dnsbl not reloading after update
-* plugins: os-acme-client 2.2 `[1] <https://github.com/opnsense/plugins/blob/master/security/acme-client/pkg-descr>`__ 
-* plugins: os-freeradius 1.9.9 `[2] <https://github.com/opnsense/plugins/blob/master/net/freeradius/pkg-descr>`__ 
-* plugins: os-frr 1.20 `[3] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
+* plugins: os-acme-client 2.2 `[1] <https://github.com/opnsense/plugins/blob/stable/20.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.9 `[2] <https://github.com/opnsense/plugins/blob/stable/20.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.20 `[3] <https://github.com/opnsense/plugins/blob/stable/20.7/net/frr/pkg-descr>`__ 
 * plugins: os-tinc 1.6 enables multiple addresses per host (contributed by ElNounch)
-* plugins: os-wireguard 1.4 `[4] <https://github.com/opnsense/plugins/blob/master/net/wireguard/pkg-descr>`__ 
-* ports: curl 7.74.0 `[5] <https://curl.se/changes.html>`__ 
+* plugins: os-wireguard 1.4 `[4] <https://github.com/opnsense/plugins/blob/stable/20.7/net/wireguard/pkg-descr>`__ 
+* ports: curl 7.74.0 `[5] <https://curl.se/changes.html#7_74_0>`__ 
 * ports: dhcp6c ignores advertise messages with none of requested data and missed status codes
 * ports: libressl 3.1.5 `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.1.5-relnotes.txt>`__ 
 * ports: lighttpd 1.4.56 `[7] <https://www.lighttpd.net/2020/11/29/1.4.56/>`__ 
@@ -127,7 +127,7 @@ Here are the full patch notes:
 * ports: pcre2 10.36 `[10] <https://www.pcre.org/changelog.txt>`__ 
 * ports: sudo 1.9.4 `[11] <https://www.sudo.ws/stable.html#1.9.4>`__ 
 * ports: sqlite 3.34.0 `[12] <https://sqlite.org/releaselog/3_34_0.html>`__ 
-* ports: unbound 1.13.0 `[13] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
+* ports: unbound 1.13.0 `[13] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-13-0>`__ 
 
 A hotfix release was issued as 20.7.7_1:
 
@@ -164,8 +164,8 @@ Here are the full patch notes:
 * reporting: traffic graph replacement using iftop
 * openvpn: calculate first network address as gateway address when only ifconfig_local is given
 * web proxy: throw startup error to user
-* plugins: os-acme-client 2.1 `[1] <https://github.com/opnsense/plugins/blob/master/security/acme-client/pkg-descr>`__ 
-* plugins: os-frr 1.19 `[2] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
+* plugins: os-acme-client 2.1 `[1] <https://github.com/opnsense/plugins/blob/stable/20.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-frr 1.19 `[2] <https://github.com/opnsense/plugins/blob/stable/20.7/net/frr/pkg-descr>`__ 
 * plugins: os-mail-backup not available due to unaddressed security concerns
 * src: fix parsing of netmap legacy nmr->nr_ringid
 * src: fix mutex double unlock bug in netmap
@@ -173,12 +173,12 @@ Here are the full patch notes:
 * src: improve netmap(4) and vale(4) man pages
 * src: IPV6_PKTINFO support for v4-mapped IPv6 sockets
 * src: zero-initialize variables in HBSD PaX SEGVGUARD
-* src: fix execve/fexecve system call auditing `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:19.audit.asc>`__ 
-* src: fix uninitialized variable in ipfw `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:21.ipfw.asc>`__ 
-* src: fix race condition in callout CPU migration `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:22.callout.asc>`__ 
-* src: fix ICMPv6 use-after-free in error message handling `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:31.icmp6.asc>`__ 
-* src: fix multiple vulnerabilities in rtsold `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:32.rtsold.asc>`__ 
-* src: update timezone database information `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:20.tzdata.asc>`__ 
+* src: fix execve/fexecve system call auditing `[3] <FREEBSD:FreeBSD-EN-20:19.audit>`__ 
+* src: fix uninitialized variable in ipfw `[4] <FREEBSD:FreeBSD-EN-20:21.ipfw>`__ 
+* src: fix race condition in callout CPU migration `[5] <FREEBSD:FreeBSD-EN-20:22.callout>`__ 
+* src: fix ICMPv6 use-after-free in error message handling `[6] <FREEBSD:FreeBSD-SA-20:31.icmp6>`__ 
+* src: fix multiple vulnerabilities in rtsold `[7] <FREEBSD:FreeBSD-SA-20:32.rtsold>`__ 
+* src: update timezone database information `[8] <FREEBSD:FreeBSD-EN-20:20.tzdata>`__ 
 * ports: krb5 1.18.3 `[9] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
 * ports: nss 3.59 `[10] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.59_release_notes>`__ 
 * ports: openldap 2.4.56 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
@@ -207,9 +207,9 @@ Here are the full patch notes:
 * web proxy: add missing X-Forwarded-For header option
 * mvc: new Base64Field type
 * mvc: new VirtualIPField type
-* plugins: os-acme-client 2.0 `[1] <https://github.com/opnsense/plugins/blob/master/security/acme-client/pkg-descr>`__ 
-* plugins: os-bind 1.14 `[2] <https://github.com/opnsense/plugins/blob/master/dns/bind/pkg-descr>`__ 
-* plugins: os-chrony 1.1 `[3] <https://github.com/opnsense/plugins/blob/master/net/chrony/pkg-descr>`__ 
+* plugins: os-acme-client 2.0 `[1] <https://github.com/opnsense/plugins/blob/stable/20.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-bind 1.14 `[2] <https://github.com/opnsense/plugins/blob/stable/20.7/dns/bind/pkg-descr>`__ 
+* plugins: os-chrony 1.1 `[3] <https://github.com/opnsense/plugins/blob/stable/20.7/net/chrony/pkg-descr>`__ 
 * ports: monit 5.27.1 `[4] <https://mmonit.com/monit/changes/>`__ 
 * ports: php 7.3.24 `[5] <https://www.php.net/ChangeLog-7.php#7.3.24>`__ 
 * ports: pkg upstream fix for upgrade script hang `[6] <https://github.com/freebsd/pkg/pull/1893>`__ 
@@ -265,12 +265,12 @@ Here are the full patch notes:
 * ui: upgrade moment.js to 2.27.0
 * plugins: os-freeradius 1.9.8 `[1] <https://github.com/opnsense/plugins/blob/master/net/freeradius/pkg-descr>`__ 
 * plugins: os-git-backup 1.0 `[2] <https://github.com/opnsense/plugins/issues/2049>`__  (sponsored by Modirum)
-* plugins: os-haproxy 2.25 `[3] <https://curl.haxx.se/changes.html>`__ 
+* plugins: os-haproxy 2.25 `[3] <https://curl.se/changes.html#7_73_0>`__ 
 * plugins: os-stunnel 1.0.2 adds service protocol selector (contributed by fhloston)
 * src: extended netmap update and driver fixes
 * src: netmap tun and lagg support (contributed by Sunny Valley Networks)
 * src: update Realtek re driver to upstream version 1.96.04 (contributed by Laurent Dinclaux)
-* ports: curl 7.73.0 `[3] <https://curl.haxx.se/changes.html>`__ 
+* ports: curl 7.73.0 `[3] <https://curl.se/changes.html#7_73_0>`__ 
 * ports: libxml2 fixes for CVE-2019-20388, CVE-2020-7595 and CVE-2020-24977
 * ports: nss 3.58 `[4] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.58_release_notes>`__ 
 * ports: openssl 1.1.1h `[5] <https://www.openssl.org/news/changelog.html#openssl-111>`__ 
@@ -280,7 +280,7 @@ Here are the full patch notes:
 * ports: sudo 1.9.3p1 `[7] <https://www.sudo.ws/stable.html#1.9.3p1>`__ 
 * ports: suricata 5.0.4 `[8] <https://suricata-ids.org/2020/10/08/suricata-4-1-9-and-5-0-4-released/>`__ 
 * ports: syslog-ng 3.29.1 `[9] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.29.1>`__ 
-* ports: unbound 1.12.0 `[10] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
+* ports: unbound 1.12.0 `[10] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-12-0>`__ 
 
 
 
@@ -424,15 +424,15 @@ Here are the full patch notes:
 * web proxy: add JSON output following Elastic Common Schema (sponsored by Incenter Technology)
 * backend: cap log messages to 4000 characters to prevent longer messages from vanishing
 * plugins: os-acme-client 1.35 `[1] <https://github.com/opnsense/plugins/pull/1950>`__ 
-* plugins: os-frr 1.15 `[2] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
-* plugins: os-postfix 1.15 `[3] <https://github.com/opnsense/plugins/blob/master/mail/postfix/pkg-descr>`__ 
+* plugins: os-frr 1.15 `[2] <https://github.com/opnsense/plugins/blob/stable/20.7/net/frr/pkg-descr>`__ 
+* plugins: os-postfix 1.15 `[3] <https://github.com/opnsense/plugins/blob/stable/20.7/mail/postfix/pkg-descr>`__ 
 * plugins: os-udpbroadcastrelay 1.0 (contributed by Team Rebellion)
 * src: set the current VNET before calling netisr_dispatch() in ng_iface(4)
 * src: assorted multicast group join/leave corrections
-* src: fix vmx driver packet loss and degraded performance `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:16.vmx.asc>`__ 
-* src: fix memory corruption in USB network device driver `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:21.usb_net.asc>`__ 
-* src: fix multiple vulnerabilities in sqlite3 `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:22.sqlite.asc>`__ 
-* src: fix sendmsg(2) privilege escalation `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:23.sendmsg.asc>`__ 
+* src: fix vmx driver packet loss and degraded performance `[4] <FREEBSD:FreeBSD-EN-20:16.vmx>`__ 
+* src: fix memory corruption in USB network device driver `[5] <FREEBSD:FreeBSD-SA-20:21.usb_net>`__ 
+* src: fix multiple vulnerabilities in sqlite3 `[6] <FREEBSD:FreeBSD-SA-20:22.sqlite>`__ 
+* src: fix sendmsg(2) privilege escalation `[7] <FREEBSD:FreeBSD-SA-20:23.sendmsg>`__ 
 * ports: perl 5.32.0 `[8] <https://perldoc.perl.org/5.32.0/perldelta>`__ 
 * ports: squid 4.12 `[9] <http://www.squid-cache.org/Versions/v4/squid-4.12-RELEASENOTES.html>`__ 
 
@@ -580,13 +580,13 @@ Here are the full patch notes against 20.1.8_1:
 * ui: jQuery 3.5.1
 * plugins: os-dyndns 1.22 `[2] <https://github.com/opnsense/plugins/pull/1654>`__ 
 * plugins: os-intrusion-detection-content-et-pro 1.0.2 switches to Suricata 5 rules
-* plugins: os-telegraf 1.8.1 `[3] <https://github.com/opnsense/plugins/blob/master/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-telegraf 1.8.1 `[3] <https://github.com/opnsense/plugins/blob/stable/20.7/net-mgmt/telegraf/pkg-descr>`__ 
 * plugins: os-theme-rebellion 1.8.6 (contributed by Team Rebellion)
 * plugins: os-tinc fixes switch mode `[4] <https://github.com/opnsense/plugins/pull/1733>`__ 
 * plugins: os-wireguard 1.2 `[5] <https://github.com/opnsense/plugins/pull/1865>`__ 
 * src: HardenedBSD 12.1-p7
 * ports: ca_root_nss 3.54
-* ports: curl 7.71.1 `[6] <https://curl.haxx.se/changes.html>`__ 
+* ports: curl 7.71.1 `[6] <https://curl.se/changes.html#7_71_1>`__ 
 * ports: php 7.3.20 `[7] <https://www.php.net/ChangeLog-7.php#7.3.20>`__ 
 * ports: python 3.7.8 `[8] <https://www.python.org/downloads/release/python-378/>`__ 
 * ports: sqlite 3.32.3 `[9] <https://sqlite.org/releaselog/3_32_3.html>`__ 

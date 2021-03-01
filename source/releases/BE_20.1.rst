@@ -307,7 +307,7 @@ Here are the full patch notes:
 * ports: php 7.2.29 `[20] <https://www.php.net/ChangeLog-7.php#7.2.29>`__ 
 * ports: python 3.7.7 `[21] <https://www.python.org/downloads/release/python-377/>`__ 
 * ports: strongswan 5.8.3 `[22] <https://wiki.strongswan.org/versions/76>`__ 
-* ports: sudo 1.8.31p1 `[23] <https://www.sudo.ws/stable.html>`__ 
+* ports: sudo 1.8.31p1 `[23] <https://www.sudo.ws/legacy.html#1.8.31p1>`__ 
 
 
 
@@ -419,7 +419,7 @@ Here are the full patch notes:
 * ports: lighttpd 1.4.55 `[4] <https://www.lighttpd.net/2020/1/31/1.4.55/>`__ 
 * ports: openldap 2.4.49 `[5] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: pkg libfetch security fix `[6] <https://github.com/freebsd/freebsd-ports/commit/eec0b5c>`__ 
-* ports: sudo 1.8.31 `[7] <https://www.sudo.ws/stable.html#1.8.31>`__ 
+* ports: sudo 1.8.31 `[7] <https://www.sudo.ws/legacy.html#1.8.31>`__ 
 
 
 

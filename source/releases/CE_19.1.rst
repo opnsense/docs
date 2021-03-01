@@ -272,7 +272,7 @@ Without further ado, here are the full patch notes:
 * src: add bsdinstall utility for upcoming 19.7 installer replacement
 * ports: dhcp6c v20190419 fixes raw options segfaults (contributed by Franck78)
 * ports: hostapd / wpa_supplicant 2.8 `[3] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
-* ports: perl 5.28.2 `[4] <https://perldoc.pl/5.28.2/perldelta>`__ 
+* ports: perl 5.28.2 `[4] <https://perldoc.perl.org/5.28.2/perldelta>`__ 
 * ports: py-yaml 5.1 `[5] <https://github.com/yaml/pyyaml/blob/master/CHANGES>`__ 
 * ports: suricata 4.1.4 `[6] <https://suricata-ids.org/2019/04/30/suricata-4-1-4-released/>`__ 
 * ports: sqlite 3.27.2 `[7] <https://sqlite.org/releaselog/3_27_1.html>`__ 
