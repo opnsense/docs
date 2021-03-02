@@ -47,6 +47,23 @@ First commit all changes to the master, then update the backup while knowing the
 
 
 -----------------------------
+Automatic replication
+-----------------------------
+
+Although we advise to make sure to keep the backup machine intact during maintenance, some people prefer to keep
+the backup in sync on periodic intervals. For this reason we added a cron action which you can schedule yourself
+in :menuselection:`System -> Settings -> Cron` on the primary node.
+
+To use this feature, add a new cron job containing the :code:`HA update and reconfigure backup` command and a
+proper schedule, once a day outside office hours is usually a safe option.
+
+.. Note::
+
+    To prevent a non functional primary machine updating the active master, the :code:`HA update and reconfigure backup`
+    will only execute if all carp interfaces are in :code:`MASTER` mode.
+
+
+-----------------------------
 Settings
 -----------------------------
 
