@@ -30,7 +30,7 @@ Configure the endpoint
 
     ===================== ==================================================================================================
      **Enabled**           *Checked*
-     **Name**              *Call it whatever you want (eg VPNProviderName_Location)*
+     **Name**              *Call it whatever you want (eg :code:`VPNProviderName_Location`)*
      **Public Key**        *Insert the public key from your VPN provider*
      **Allowed IPs**       *0.0.0.0/0*
      **Endpoint Address**  *Insert the public IP address (desirably) or domain name of your VPN provider, as provided by it*
@@ -38,7 +38,7 @@ Configure the endpoint
      **Keepalive**         *25*
     ===================== ==================================================================================================
 
-- Save the Endpoint configuration, and then click **Save** again
+- **Save** the Endpoint configuration, and then click **Save** again
 
 ------------------------
 Configure the local peer
@@ -51,7 +51,7 @@ Configure the local peer
 
     ===================== ==================================================================================================
      **Enabled**           *Checked*
-     **Name**              *Call it whatever you want (eg VPNProviderName)*
+     **Name**              *Call it whatever you want (eg :code:`VPNProviderName`)*
      **Public Key**        *This will initially be blank; it will be populated once the configuration is saved*
      **Private Key**       *This will initially be blank; it will be populated once the configuration is saved*
      **Listen Port**       *51820 or a higher numbered unique port*
@@ -66,7 +66,7 @@ Configure the local peer
 
     The IP you choose for the Gateway is essentially arbitrary; pretty much any unique IP will do. The suggestion here is for convenience and to avoid conflicts
 
-- Save the local peer configuration, and then click **Save** again
+- **Save** the local peer configuration, and then click **Save** again
 
 -----------------
 Turn on WireGuard
@@ -76,7 +76,7 @@ Turn on WireGuard
 - Assign an interface to WireGuard and enable it
 - Go to :menuselection:`Interfaces -> Assignments`
 - In the dropdown next to “New interface:”, select the WireGuard device (:code:`wg0` if this is your first one)
-- Add a description (eg WAN_VPNProviderName)
+- Add a description (eg :code:`WAN_VPNProviderName`)
 - Click **+** to add it, then click **Save**
 - Then select your new interface under the Interfaces menu
 - Configure it as follows (if an option is not mentioned below, leave it as the default):
@@ -89,7 +89,7 @@ Turn on WireGuard
      **IPv6 Configuration Type**  *None*
     ============================= ==================================================================================================
 
-- Save the interface configuration and then click Apply changes
+- **Save** the interface configuration and then click Apply changes
 
 -----------------
 Restart WireGuard
@@ -101,53 +101,63 @@ Now restart WireGuard - you can do this from the Dashboard (if you have the serv
 Create a gateway
 ----------------
 
-Go to System -> Gateways -> Single
-Click Add
-Configure the gateway as follows (if an option is not mentioned below, leave it as the default):
+- Go to :menuselection:`System --> Gateways --> Single`
+- Click **Add**
+- Configure the gateway as follows (if an option is not mentioned below, leave it as the default):
 
-   Name: Call it whatever you want, easiest to name it the same as the interface
-   Description: Add one if you wish to   
-   Interface: Select your newly created interface in the dropdown
-   Address Family: Select IPv4 in the dropdown
-   IP address: Insert the gateway IP that you configured under the WireGuard local peer configuration
-   Far Gateway: Checked
-   Monitor IP: Insert an external IP to monitor the gateway, such as 1.1.1.1 or 8.8.8.8
+    ==================== ==================================================================================================
+     **Name**              *Call it whatever you want, easiest to name it the same as the interface*
+     **Description**       *Add one if you wish to*
+     **Interface**         *Select your newly created interface in the dropdown*
+     **Address Family**    *Select IPv4 in the dropdown*
+     **IP Address**        *Insert the gateway IP that you configured under the WireGuard local peer configuration*
+     **Far Gateway**       *Checked*
+     **Monitor IP**        *Insert an external IP to monitor the gateway, such as 1.1.1.1 or 8.8.8.8*
+    ==================== ==================================================================================================
 
-Save the gateway configuration and then click Apply changes
+- **Save** the gateway configuration and then click **Apply changes**
 
+------------------------------------------------------------------------
 Create an Alias for the relevant local hosts that will access the tunnel
+------------------------------------------------------------------------
 
-Go to Firewall -> Aliases
-Click + to add a new Alias
-Configure the Alias as follows (if an option is not mentioned below, leave it as the default):
+- Go to :menuselection:`Firewall --> Aliases`
+- Click **+** to add a new Alias
+- Configure the Alias as follows (if an option is not mentioned below, leave it as the default):
 
-   Enabled: Checked
-   Name: Call it whatever your want, eg WG_VPN_Hosts
-   Type: Select either Host(s) or Network(s) in the dropdown, depending on whether you want specific host IPs to use the tunnel, or an entire local network (such as a VLAN)
-   Content: Enter the host IPs, or the network in CIDR format
-   Description: Add one if you wish to
+    ================= ==================================================================================================
+     **Enabled**        *Checked*
+     **Name**           *Call it whatever your want, eg :code:`WG_VPN_Hosts`*
+     **Type**           *Select either Host(s) or Network(s) in the dropdown, depending on whether you want specific host IPs to use the tunnel, or an entire local network (such as a VLAN)*
+     **Content**        *Enter the host IPs, or the network in CIDR format*
+     **Description**    *Add one if you wish to*
+    ================= ==================================================================================================
 
-Save the Alias, and then click Apply
+- **Save** the Alias, and then click **Apply**
 
+----------------------
 Create a firewall rule
+----------------------
 
 This will involve two steps - first creating a second Alias for all local (private) networks, and then creating the firewall rule itself. The ultimate effect of these two steps is that only traffic from the relevant hosts that is destined for non-local destinations will be sent down the tunnel. This will ensure that the relevant hosts can still access local resources
 
-First go to Firewall -> Aliases
-Click + to add a new Alias
-Configure the Alias as follows (if an option is not mentioned below, leave it as the default):
+- First go to :menuselection:`Firewall --> Aliases`
+- Click **+** to add a new Alias
+- Configure the Alias as follows (if an option is not mentioned below, leave it as the default):
 
-   Enabled: Checked
-   Name: RFC1918_Networks
-   Type: Select Network(s) in the dropdown
-   Content: 192.168.0.0/16 10.0.0.0/8 172.16.0.0/12
-   Description: All local (RFC1918) networks
+    ================= ================================================
+     **Enabled**        *Checked*
+     **Name**           *RFC1918_Networks*
+     **Type**           *Select Network(s) in the dropdown*
+     **Content**        *192.168.0.0/16 10.0.0.0/8 172.16.0.0/12*
+     **Description**    *All local (RFC1918) networks*
+    ================= ================================================
 
-Save the Alias, and then click Apply
+- **Save** the Alias, and then click **Apply**
 
-Then go to Firewall -> Rules -> [Name of the interface for the network in which the hosts/network resides, eg LAN for LAN hosts]
-Click Add to add a new rule
-Configure the rule as follows (if an option is not mentioned below, leave it as the default):
+- Then go to :menuselection:`Firewall --> Rules --> [Name of interface for network in which hosts/network resides, eg LAN for LAN hosts]`
+- Click **Add** to add a new rule
+- Configure the rule as follows (if an option is not mentioned below, leave it as the default):
 
    Action: Pass
    Quick: Checked
