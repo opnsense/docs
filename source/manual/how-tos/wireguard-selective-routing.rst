@@ -141,7 +141,7 @@ Step 7 - Create an Alias for the relevant local hosts that will access the tunne
 Step 8 - Create a firewall rule
 ----------------------
 
-This will involve two steps - first creating a second Alias for all local (private) networks, and then creating the firewall rule itself. The ultimate effect of these two steps is that only traffic from the relevant hosts that is destined for non-local destinations will be sent down the tunnel. This will ensure that the relevant hosts can still access local resources
+This will involve two steps - first creating a second Alias for all local (private) networks, and then creating the firewall rule itself. The ultimate effect of these two steps is that only traffic from the relevant hosts that is destined for **non-local** destinations will be sent down the tunnel. This will ensure that the relevant hosts can still access local resources
 
 - First go to :menuselection:`Firewall --> Aliases`
 - Click **+** to add a new Alias
