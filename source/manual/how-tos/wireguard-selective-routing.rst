@@ -18,9 +18,9 @@ For an example of configuring the peer at a VPN provider (Mullvad), see Step 1 o
 
 This how-to discusses IPv4 configuration only. It can be readily adapted for IPv6 as well.
 
-----------------------
+-------------------------------
 Step 1 - Configure the endpoint
-----------------------
+-------------------------------
 
 - Go to :menuselection:`VPN --> WireGuard --> Endpoints`
 - Click **+** to add a new Endpoint
@@ -38,9 +38,9 @@ Step 1 - Configure the endpoint
 
 - **Save** the Endpoint configuration, and then click **Save** again
 
-------------------------
+---------------------------------
 Step 2 - Configure the local peer
-------------------------
+---------------------------------
 
 - Go to :menuselection:`VPN --> WireGuard --> Local`
 - Click **+** to add a new Local configuration
@@ -66,15 +66,15 @@ Step 2 - Configure the local peer
 
 - **Save** the local peer configuration, and then click **Save** again
 
------------------
+--------------------------
 Step 3 - Turn on WireGuard
------------------
+--------------------------
 
 Turn on WireGuard under :menuselection:`VPN --> WireGuard --> General` if it is not already on
 
-----------------------------------------------
+-------------------------------------------------------
 Step 4 - Assign an interface to WireGuard and enable it
-----------------------------------------------
+-------------------------------------------------------
 
 - Go to :menuselection:`Interfaces --> Assignments`
 - In the dropdown next to “New interface:”, select the WireGuard device (:code:`wg0` if this is your first one)
@@ -93,15 +93,15 @@ Step 4 - Assign an interface to WireGuard and enable it
 
 - **Save** the interface configuration and then click **Apply changes**
 
------------------
+--------------------------
 Step 5 - Restart WireGuard
------------------
+--------------------------
 
 Now restart WireGuard - you can do this from the Dashboard (if you have the services widget) or by turning it off and on under :menuselection:`VPN --> WireGuard --> General`
 
-----------------
+-------------------------
 Step 6 - Create a gateway
-----------------
+-------------------------
 
 - Go to :menuselection:`System --> Gateways --> Single`
 - Click **Add**
@@ -119,9 +119,9 @@ Step 6 - Create a gateway
 
 - **Save** the gateway configuration and then click **Apply changes**
 
-------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 Step 7 - Create an Alias for the relevant local hosts that will access the tunnel
-------------------------------------------------------------------------
+---------------------------------------------------------------------------------
 
 - Go to :menuselection:`Firewall --> Aliases`
 - Click **+** to add a new Alias
@@ -137,9 +137,9 @@ Step 7 - Create an Alias for the relevant local hosts that will access the tunne
 
 - **Save** the Alias, and then click **Apply**
 
-----------------------
+-------------------------------
 Step 8 - Create a firewall rule
-----------------------
+-------------------------------
 
 This will involve two steps - first creating a second Alias for all local (private) networks, and then creating the firewall rule itself. The ultimate effect of these two steps is that only traffic from the relevant hosts that is destined for **non-local** destinations will be sent down the tunnel. This will ensure that the relevant hosts can still access local resources
 
@@ -177,11 +177,11 @@ This will involve two steps - first creating a second Alias for all local (priva
     ============================ ==================================================================================================
 
 - **Save** the rule, and then click **Apply Changes**
-- Then make sure that the new rule is above any other rule on the interface that would otherwise interfere with its operation. For example, you want your new rule to be above the “Default allow LAN to any rule”
+- Then make sure that the new rule is **above** any other rule on the interface that would otherwise interfere with its operation. For example, you want your new rule to be above the “Default allow LAN to any rule”
 
----------------------------
+------------------------------------
 Step 9 - Create an outbound NAT rule
----------------------------
+------------------------------------
 
 - Go to :menuselection:`Firewall --> NAT --> Outbound`
 - Select "Hybrid outbound NAT rule generation” if it is not already selected, and click **Save** and then **Apply changes**
