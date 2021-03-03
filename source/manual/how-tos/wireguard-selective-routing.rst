@@ -91,7 +91,7 @@ Step 4 - Assign an interface to WireGuard and enable it
      **IPv6 Configuration Type**   *None*
     ============================= ===================================================================
 
-- **Save** the interface configuration and then click Apply changes
+- **Save** the interface configuration and then click **Apply changes**
 
 -----------------
 Step 5 - Restart WireGuard
