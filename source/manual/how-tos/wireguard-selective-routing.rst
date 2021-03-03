@@ -1,12 +1,12 @@
 =================================================================
-Set up WireGuard for selective routing with external VPN provider
+Set up WireGuard for selective routing to external VPN provider
 =================================================================
 
 ------------
 Introduction
 ------------
 
-This how-to is designed to assist with setting up WireGuard on OPNsense to use selective routing with an external VPN provider.
+This how-to is designed to assist with setting up WireGuard on OPNsense to use selective routing to an external VPN provider.
 
 These circumstances may apply where only certain local hosts are intended to use the VPN tunnel. Or it could apply where multiple connections to the VPN provider are desired, with each connection intended to be used by different specific local hosts.
 
