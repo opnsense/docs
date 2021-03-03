@@ -112,7 +112,7 @@ Step 6 - Create a gateway
      **Description**      *Add one if you wish to*
      **Interface**        *Select your newly created interface in the dropdown*
      **Address Family**   *Select IPv4 in the dropdown*
-     **IP Address**       *Insert the gateway IP that you configured under the WireGuard local peer configuration*
+     **IP address**       *Insert the gateway IP that you configured under the WireGuard local peer configuration*
      **Far Gateway**      *Checked*
      **Monitor IP**       *Insert an external IP to monitor the gateway, such as 1.1.1.1 or 8.8.8.8*
     ==================== ============================================================================================
