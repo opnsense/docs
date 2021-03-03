@@ -38,6 +38,7 @@ VPN & Connectivity
    manual/how-tos/stunnel
    manual/how-tos/wireguard-s2s
    manual/how-tos/wireguard-client
+   manual/how-tos/wireguard-selective-routing
    manual/how-tos/wireguard-client-azire
    manual/how-tos/wireguard-client-mullvad
    manual/how-tos/zerotier

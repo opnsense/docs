@@ -56,5 +56,5 @@ LAN network and set **Translation / target** to **interface address**.
 When assigning interfaces we can also add gateways to them. This would  offer you the chance to 
 balance traffic via different VPN providers or do more complex routing scenarios. 
 
-
+See the how-to on selective routing for further information :doc:`wireguard-selective-routing`
 
