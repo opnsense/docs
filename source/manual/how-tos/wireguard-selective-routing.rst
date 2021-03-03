@@ -14,7 +14,7 @@ This how-to focuses on the configuration of OPNsense. You will also have to conf
 
 Your OPNsense local public key will need to be registered with your VPN provider, and you will need to get your VPN provider’s endpoint public key and the VPN tunnel IP provided for your local peer by your VPN provider. In some cases, you will not be able to get the endpoint public key and VPN tunnel IP until you register your local public key. In that case, create the OPNsense local configuration first, using a dummy tunnel IP and no peer selected, so that the public key is generated, and then update the configuration later once the other information is known.
 
-For an example of configuring the peer at a VPN provider (Mullvad), see `here <https://github.com/opnsense/docs/blob/master/source/manual/how-tos/wireguard-client-mullvad.rst#step-1---setup-wireguard-instance>`__.
+For an example of configuring the peer at a VPN provider (Mullvad), see Step 1 of the how-to :doc:`wireguard-client-mullvad`.
 
 This how-to discusses IPv4 configuration only. It can be readily adapted for IPv6 as well.
 
