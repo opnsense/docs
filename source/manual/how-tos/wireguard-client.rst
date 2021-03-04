@@ -89,14 +89,20 @@ For external clients to connect to the WireGuard server firewall rules must be c
 
 If more granular rules are required note there is a new interface **wg0** where these may be configured.
 
-The final piece is to allow traffic from the Wireguard network. Do this via :menuselection:`Firewall --> Rules --> WireGuard` and click **+Add** with the following information (if an item is not specified, leave it set to the default value):
+The final piece is to allow traffic from the WireGuard network. First define an alias (e.g. **VPN_clients**) and include in it the IP addresses (e.g. 10.10.10.2 and 10.10.10.3) or subnet (e.g. 10.10.10.0/24) of the WireGuard clients from which traffic is to be allowed. Do this via :menuselection:`Firewall --> Aliases` (click **+** in the bottom right).
+
+Then create a firewall rule via :menuselection:`Firewall --> Rules --> WireGuard` (click **+Add** in the top right), with the following information (if an item is not specified, leave it set to the default value):
 
 =========================== ================ =====================================================================
  **Interface**               WireGuard        *The interface this rule applies to*
- **Source**                  WireGuard net    *Source subnet*
+ **Source**                  VPN_clients      *Source subnet - use the alias defined as above*
  **Destination**             any              *Traffic destination*
  **Description**             WG WAN to LAN    *Optional - provide a description*
 =========================== ================ =====================================================================
+
+.. Tip::
+
+    If you have only one local WireGuard instance and only one WireGuard endpoint configured, you can use the default **WireGuard net** as the source rather than defining and using a new alias.
 
 .. Hint::
 
