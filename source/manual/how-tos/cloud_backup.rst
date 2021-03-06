@@ -71,7 +71,7 @@ First you need to set up a project in the Google developer console:
 -  Go to https://console.developers.google.com/project and log into your Google account.
 -  On the "Manage resources" page that appears, click on the **+ CREATE PROJECT** button:
 
-.. image:: ./images/google_manage_resources.png
+    .. image:: ./images/google_manage_resources.png
 
 -  On the next page enter a name for your project, for example "OPNsense Backups". You may leave it as the default name ("My Project #####"), as it does not really matter. Then click on the **CREATE** button:
 
