@@ -59,7 +59,7 @@ Setup Google API usage
 
 The instructions below apply to a standard Google account. Some of the settings appear slightly differently for G Suite accounts.
 
-A standard Google account can be created at https://accounts.google.com.
+A standard Google account can be created `here <https://accounts.google.com/signup?hl=en>`__.
 
 
 1. Set up a Google Project
@@ -67,7 +67,7 @@ A standard Google account can be created at https://accounts.google.com.
 
 First you need to set up a project in the Google developer console:
 
--  Go to https://console.developers.google.com/project and log into your Google account.
+-  Go to the `developer console <https://console.developers.google.com/project>`__ and log into your Google account.
 -  On the "Manage resources" page that appears, click on the **+ CREATE PROJECT** button:
 
     .. image:: ./images/google_manage_resources.png
