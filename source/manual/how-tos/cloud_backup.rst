@@ -65,7 +65,7 @@ A standard Google account can be created `here <https://accounts.google.com/sign
 1. Set up a Google Project
 ==========================
 
-First you need to set up a project in the Google developer console:
+First you need to set up a project in the Google developer console.
 
 -  Go to the `developer console <https://console.developers.google.com/project>`__ and log into your Google account.
 -  On the "Manage resources" page that appears, click on the **+ CREATE PROJECT** button:
