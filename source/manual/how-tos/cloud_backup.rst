@@ -50,9 +50,8 @@ feature. Every backup to **Google Drive** will be encrypted with the same
 algorithm used in the manual backup so it's quite easy to restore to a new
 installed machine.
 
-After set-up, the backup feature will do first store of the OPNsense
-config file and subsequently a daily new backup of changed config
-content.
+After set-up, the backup feature will run a first backup of the OPNsense
+configuration file. Then, if the configuration is subsequently changed, a new backup will be run. Only one backup is run per day after configuration changes.
 
 ----------------------
 Setup Google API usage
@@ -142,7 +141,7 @@ The next thing is to create a folder in Google Drive and share it to the service
 
     .. image:: ./images/google_drive_send.png
 
--  Now double-click on the folder to open it and take a note of the folder ID from the url - you will need it later. The folder ID is the last piece of the URL after ``/folders/``:
+-  Now double-click on the folder to open it and take a note of the folder ID from the URL - you will need it later. The folder ID is the last piece of the URL after ``/folders/``:
 
     .. image:: ./images/google_drive_folder_id.png
 
@@ -150,7 +149,7 @@ The next thing is to create a folder in Google Drive and share it to the service
 3. Set up the account in OPNsense
 =================================
 
-Now we can put it all together in OPNsense.
+Now put it all together in OPNsense.
 
 -  Log into your OPNsense firewall and go to the backup feature. It is located at :menuselection:`System --> Configuration --> Backups`.
 -  Scroll down to the Google Drive section and and enter the following values:
