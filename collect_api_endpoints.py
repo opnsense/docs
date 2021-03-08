@@ -30,6 +30,38 @@ import re
 from jinja2 import Template
 
 EXCLUDE_CONTROLLERS = ['Core/Api/FirmwareController.php']
+DEFAULT_BASE_METHODS = {
+    "ApiMutableModelControllerBase": [{
+        "command": "set",
+        "parameters": "",
+        "method": "POST"
+    }, {
+        "command": "get",
+        "parameters": "",
+        "method": "POST"
+    }],
+    "ApiMutableServiceControllerBase": [{
+        "command": "status",
+        "parameters": "",
+        "method": "GET"
+    }, {
+        "command": "start",
+        "parameters": "",
+        "method": "POST"
+    }, {
+        "command": "stop",
+        "parameters": "",
+        "method": "POST"
+    }, {
+        "command": "restart",
+        "parameters": "",
+        "method": "POST"
+    }, {
+        "command": "reconfigure",
+        "parameters": "",
+        "method": "POST"
+    }]
+}
 
 
 def parse_api_php(src_filename):
@@ -55,6 +87,7 @@ def parse_api_php(src_filename):
 
     function_callouts = re.findall(r"(\n\s+(private|public|protected)\s+function\s+(\w+)\((.*)\))", data)
     result = list()
+    this_commands = []
     for idx, function in enumerate(function_callouts):
         begin_marker = data.find(function_callouts[idx][0])
         if idx+1 < len(function_callouts):
@@ -63,6 +96,7 @@ def parse_api_php(src_filename):
             end_marker = -1
         code_block = data[begin_marker+len(function[0]):end_marker]
         if function[2].endswith('Action'):
+            this_commands.append(function[2][:-6])
             record = {
                 'method': 'GET',
                 'module': module_name,
@@ -70,7 +104,7 @@ def parse_api_php(src_filename):
                 'is_abstract': is_abstract,
                 'base_class': base_class,
                 'command': function[2][:-6],
-                'parameters': function[3].replace(' ', ''),
+                'parameters': function[3].replace(' ', '').replace('"', '""'),
                 'filename': base_filename,
                 'model_filename': model_filename
             }
@@ -94,6 +128,21 @@ def parse_api_php(src_filename):
             elif code_block.find('$this->searchBase') > -1:
                 record['method'] = '*'
             result.append(record)
+    if base_class in DEFAULT_BASE_METHODS:
+        for item in DEFAULT_BASE_METHODS[base_class]:
+            if item not in this_commands:
+                result.append({
+                    'type': 'Service',
+                    'method': 'GET',
+                    'module': module_name,
+                    'controller': controller,
+                    'is_abstract': False,
+                    'base_class': base_class,
+                    'command': item['command'],
+                    'parameters': item['parameters'],
+                    'filename': base_filename,
+                    'model_filename': model_filename
+                })
 
     return sorted(result, key=lambda i: i['command'])
 
