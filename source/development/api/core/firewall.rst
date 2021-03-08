@@ -8,6 +8,7 @@ Firewall
     "``POST``","firewall","alias","addItem",""
     "``POST``","firewall","alias","delItem","$uuid"
     "``GET``","firewall","alias","export",""
+    "``GET``","firewall","alias","get",""
     "``GET``","firewall","alias","getAliasUUID","$name"
     "``GET``","firewall","alias","getGeoIP",""
     "``GET``","firewall","alias","getItem","$uuid=null"
@@ -16,6 +17,7 @@ Firewall
     "``GET``","firewall","alias","listNetworkAliases",""
     "``POST``","firewall","alias","reconfigure",""
     "``*``","firewall","alias","searchItem",""
+    "``GET``","firewall","alias","set",""
     "``POST``","firewall","alias","setItem","$uuid"
     "``POST``","firewall","alias","toggleItem","$uuid,$enabled=null"
 
@@ -39,8 +41,10 @@ Firewall
 
     "``POST``","firewall","category","addItem",""
     "``POST``","firewall","category","delItem","$uuid"
+    "``GET``","firewall","category","get",""
     "``GET``","firewall","category","getItem","$uuid=null"
     "``*``","firewall","category","searchItem",""
+    "``GET``","firewall","category","set",""
     "``POST``","firewall","category","setItem","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Category.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Category.xml>`__"

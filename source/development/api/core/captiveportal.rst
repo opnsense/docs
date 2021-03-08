@@ -34,8 +34,10 @@ Captiveportal
 
     "``POST``","captiveportal","settings","addZone",""
     "``POST``","captiveportal","settings","delZone","$uuid"
+    "``GET``","captiveportal","settings","get",""
     "``GET``","captiveportal","settings","getZone","$uuid=null"
     "``*``","captiveportal","settings","searchZones",""
+    "``GET``","captiveportal","settings","set",""
     "``POST``","captiveportal","settings","setZone","$uuid"
     "``POST``","captiveportal","settings","toggleZone","$uuid,$enabled=null"
 

@@ -6,11 +6,16 @@ Ids
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","ids","service","dropAlertLog",""
-    "``GET``","ids","service","getAlertInfo","$alertId,$fileid="""
+    "``GET``","ids","service","getAlertInfo","$alertId,$fileid="""""
     "``GET``","ids","service","getAlertLogs",""
     "``POST``","ids","service","queryAlerts",""
     "``POST``","ids","service","reconfigure",""
+    "``GET``","ids","service","reconfigure",""
     "``POST``","ids","service","reloadRules",""
+    "``GET``","ids","service","restart",""
+    "``GET``","ids","service","start",""
+    "``GET``","ids","service","status",""
+    "``GET``","ids","service","stop",""
     "``POST``","ids","service","updateRules","$wait=null"
 
     "``<<uses>>``", "", "", "", "*model* `IDS.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IDS/IDS.xml>`__"
@@ -26,6 +31,7 @@ Ids
     "``POST``","ids","settings","delPolicy","$uuid"
     "``POST``","ids","settings","delPolicyRule","$uuid"
     "``POST``","ids","settings","delUserRule","$uuid"
+    "``GET``","ids","settings","get",""
     "``GET``","ids","settings","getPolicy","$uuid=null"
     "``GET``","ids","settings","getPolicyRule","$uuid=null"
     "``GET``","ids","settings","getRuleInfo","$sid=null"
@@ -38,6 +44,7 @@ Ids
     "``*``","ids","settings","searchPolicy",""
     "``*``","ids","settings","searchPolicyRule",""
     "``*``","ids","settings","searchUserRule",""
+    "``GET``","ids","settings","set",""
     "``POST``","ids","settings","setPolicy","$uuid"
     "``POST``","ids","settings","setPolicyRule","$uuid"
     "``POST``","ids","settings","setRule","$sid"

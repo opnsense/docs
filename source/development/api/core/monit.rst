@@ -7,6 +7,11 @@ Monit
 
     "``POST``","monit","service","configtest",""
     "``POST``","monit","service","reconfigure",""
+    "``GET``","monit","service","reconfigure",""
+    "``GET``","monit","service","restart",""
+    "``GET``","monit","service","start",""
+    "``GET``","monit","service","status",""
+    "``GET``","monit","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `Monit.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Monit/Monit.xml>`__"
 
@@ -21,6 +26,7 @@ Monit
     "``POST``","monit","settings","delService","$uuid"
     "``POST``","monit","settings","delTest","$uuid"
     "``GET``","monit","settings","dirty",""
+    "``GET``","monit","settings","get",""
     "``GET``","monit","settings","getAlert","$uuid=null"
     "``GET``","monit","settings","getGeneral",""
     "``GET``","monit","settings","getService","$uuid=null"
@@ -28,6 +34,7 @@ Monit
     "``*``","monit","settings","searchAlert",""
     "``*``","monit","settings","searchService",""
     "``*``","monit","settings","searchTest",""
+    "``GET``","monit","settings","set",""
     "``POST``","monit","settings","setAlert","$uuid"
     "``POST``","monit","settings","setService","$uuid"
     "``POST``","monit","settings","setTest","$uuid"
