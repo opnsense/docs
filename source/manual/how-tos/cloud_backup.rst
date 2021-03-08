@@ -57,7 +57,7 @@ configuration file. Then, if the configuration is subsequently changed, a new ba
 Setup Google API usage
 ----------------------
 
-The instructions below apply to a standard Google account. Some of the settings appear slightly differently for G Suite accounts.
+The instructions below apply to a standard Google account. Some of the settings appear slightly differently for Google Workspace (formerly G Suite) accounts.
 
 A standard Google account can be created `here <https://accounts.google.com/signup?hl=en>`__.
 
