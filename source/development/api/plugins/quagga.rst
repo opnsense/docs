@@ -15,6 +15,7 @@ Quagga
     "``POST``","quagga","bgp","delNeighbor","$uuid"
     "``POST``","quagga","bgp","delPrefixlist","$uuid"
     "``POST``","quagga","bgp","delRoutemap","$uuid"
+    "``GET``","quagga","bgp","get",""
     "``GET``","quagga","bgp","getAspath","$uuid=null"
     "``GET``","quagga","bgp","getCommunitylist","$uuid=null"
     "``GET``","quagga","bgp","getNeighbor","$uuid=null"
@@ -25,6 +26,7 @@ Quagga
     "``*``","quagga","bgp","searchNeighbor",""
     "``*``","quagga","bgp","searchPrefixlist",""
     "``*``","quagga","bgp","searchRoutemap",""
+    "``GET``","quagga","bgp","set",""
     "``POST``","quagga","bgp","setAspath","$uuid"
     "``POST``","quagga","bgp","setCommunitylist","$uuid"
     "``POST``","quagga","bgp","setNeighbor","$uuid"
@@ -41,25 +43,25 @@ Quagga
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","quagga","diagnostics","bgpneighbors","$format="json""
-    "``GET``","quagga","diagnostics","bgproute","$format="json""
-    "``GET``","quagga","diagnostics","bgproute4","$format="json""
-    "``GET``","quagga","diagnostics","bgproute6","$format="json""
-    "``GET``","quagga","diagnostics","bgpsummary","$format="json""
-    "``GET``","quagga","diagnostics","generalroute","$format="json""
-    "``GET``","quagga","diagnostics","generalroute4","$format="json""
-    "``GET``","quagga","diagnostics","generalroute6","$format="json""
+    "``GET``","quagga","diagnostics","bgpneighbors","$format=""json"""
+    "``GET``","quagga","diagnostics","bgproute","$format=""json"""
+    "``GET``","quagga","diagnostics","bgproute4","$format=""json"""
+    "``GET``","quagga","diagnostics","bgproute6","$format=""json"""
+    "``GET``","quagga","diagnostics","bgpsummary","$format=""json"""
+    "``GET``","quagga","diagnostics","generalroute","$format=""json"""
+    "``GET``","quagga","diagnostics","generalroute4","$format=""json"""
+    "``GET``","quagga","diagnostics","generalroute6","$format=""json"""
     "``GET``","quagga","diagnostics","generalrunningconfig",""
-    "``GET``","quagga","diagnostics","ospfdatabase","$format="json""
-    "``GET``","quagga","diagnostics","ospfinterface","$format="json""
-    "``GET``","quagga","diagnostics","ospfneighbor","$format="json""
-    "``GET``","quagga","diagnostics","ospfoverview","$format="json""
-    "``GET``","quagga","diagnostics","ospfroute","$format="json""
-    "``GET``","quagga","diagnostics","ospfv3database","$format="json""
-    "``GET``","quagga","diagnostics","ospfv3interface","$format="json""
-    "``GET``","quagga","diagnostics","ospfv3neighbor","$format="json""
-    "``GET``","quagga","diagnostics","ospfv3overview","$format="json""
-    "``GET``","quagga","diagnostics","ospfv3route","$format="json""
+    "``GET``","quagga","diagnostics","ospfdatabase","$format=""json"""
+    "``GET``","quagga","diagnostics","ospfinterface","$format=""json"""
+    "``GET``","quagga","diagnostics","ospfneighbor","$format=""json"""
+    "``GET``","quagga","diagnostics","ospfoverview","$format=""json"""
+    "``GET``","quagga","diagnostics","ospfroute","$format=""json"""
+    "``GET``","quagga","diagnostics","ospfv3database","$format=""json"""
+    "``GET``","quagga","diagnostics","ospfv3interface","$format=""json"""
+    "``GET``","quagga","diagnostics","ospfv3neighbor","$format=""json"""
+    "``GET``","quagga","diagnostics","ospfv3overview","$format=""json"""
+    "``GET``","quagga","diagnostics","ospfv3route","$format=""json"""
 
 .. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -74,8 +76,10 @@ Quagga
 
     "``POST``","quagga","ospf6settings","addInterface",""
     "``POST``","quagga","ospf6settings","delInterface","$uuid"
+    "``GET``","quagga","ospf6settings","get",""
     "``GET``","quagga","ospf6settings","getInterface","$uuid=null"
     "``*``","quagga","ospf6settings","searchInterface",""
+    "``GET``","quagga","ospf6settings","set",""
     "``POST``","quagga","ospf6settings","setInterface","$uuid"
     "``POST``","quagga","ospf6settings","toggleInterface","$uuid"
 
@@ -93,6 +97,7 @@ Quagga
     "``POST``","quagga","ospfsettings","delNetwork","$uuid"
     "``POST``","quagga","ospfsettings","delPrefixlist","$uuid"
     "``POST``","quagga","ospfsettings","delRoutemap","$uuid"
+    "``GET``","quagga","ospfsettings","get",""
     "``GET``","quagga","ospfsettings","getInterface","$uuid=null"
     "``GET``","quagga","ospfsettings","getNetwork","$uuid=null"
     "``GET``","quagga","ospfsettings","getPrefixlist","$uuid=null"
@@ -101,6 +106,7 @@ Quagga
     "``*``","quagga","ospfsettings","searchNetwork",""
     "``*``","quagga","ospfsettings","searchPrefixlist",""
     "``*``","quagga","ospfsettings","searchRoutemap",""
+    "``GET``","quagga","ospfsettings","set",""
     "``POST``","quagga","ospfsettings","setInterface","$uuid"
     "``POST``","quagga","ospfsettings","setNetwork","$uuid"
     "``POST``","quagga","ospfsettings","setPrefixlist","$uuid"
@@ -111,6 +117,15 @@ Quagga
     "``POST``","quagga","ospfsettings","toggleRoutemap","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `OSPF.xml <https://github.com/opnsense/plugins/blob/master/net/frr/src/opnsense/mvc/app/models/OPNsense/Quagga/OSPF.xml>`__"
+
+.. csv-table:: Service (RipController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","quagga","rip","get",""
+    "``GET``","quagga","rip","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `RIP.xml <https://github.com/opnsense/plugins/blob/master/net/frr/src/opnsense/mvc/app/models/OPNsense/Quagga/RIP.xml>`__"
 
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

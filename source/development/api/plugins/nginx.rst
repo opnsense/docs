@@ -6,7 +6,9 @@ Nginx
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","nginx","bans","delban","$uuid"
+    "``GET``","nginx","bans","get",""
     "``*``","nginx","bans","searchban",""
+    "``GET``","nginx","bans","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Nginx.xml <https://github.com/opnsense/plugins/blob/master/www/nginx/src/opnsense/mvc/app/models/OPNsense/Nginx/Nginx.xml>`__"
 
@@ -25,7 +27,12 @@ Nginx
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","nginx","service","reconfigure",""
+    "``GET``","nginx","service","reconfigure",""
+    "``GET``","nginx","service","restart",""
+    "``GET``","nginx","service","start",""
     "``GET``","nginx","service","status",""
+    "``GET``","nginx","service","status",""
+    "``GET``","nginx","service","stop",""
     "``GET``","nginx","service","stop",""
     "``GET``","nginx","service","vts",""
 
@@ -72,6 +79,7 @@ Nginx
     "``POST``","nginx","settings","delupstreamserver","$uuid"
     "``POST``","nginx","settings","deluserlist","$uuid"
     "``POST``","nginx","settings","downloadrules",""
+    "``GET``","nginx","settings","get",""
     "``GET``","nginx","settings","getcache_path","$uuid=null"
     "``GET``","nginx","settings","getcredential","$uuid=null"
     "``GET``","nginx","settings","getcustompolicy","$uuid=null"
@@ -108,6 +116,7 @@ Nginx
     "``*``","nginx","settings","searchupstream",""
     "``*``","nginx","settings","searchupstreamserver",""
     "``*``","nginx","settings","searchuserlist",""
+    "``GET``","nginx","settings","set",""
     "``POST``","nginx","settings","setcache_path","$uuid"
     "``POST``","nginx","settings","setcredential","$uuid"
     "``POST``","nginx","settings","setcustompolicy","$uuid"

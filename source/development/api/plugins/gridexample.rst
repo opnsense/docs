@@ -7,8 +7,10 @@ Gridexample
 
     "``POST``","gridexample","settings","addItem",""
     "``POST``","gridexample","settings","delItem","$uuid"
+    "``GET``","gridexample","settings","get",""
     "``GET``","gridexample","settings","getItem","$uuid=null"
     "``*``","gridexample","settings","searchItem",""
+    "``GET``","gridexample","settings","set",""
     "``POST``","gridexample","settings","setItem","$uuid"
     "``POST``","gridexample","settings","toggleItem","$uuid,$enabled=null"
 

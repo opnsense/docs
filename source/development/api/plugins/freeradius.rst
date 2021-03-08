@@ -7,8 +7,10 @@ Freeradius
 
     "``POST``","freeradius","avpair","addAvpair",""
     "``POST``","freeradius","avpair","delAvpair","$uuid"
+    "``GET``","freeradius","avpair","get",""
     "``GET``","freeradius","avpair","getAvpair","$uuid=null"
     "``*``","freeradius","avpair","searchAvpair",""
+    "``GET``","freeradius","avpair","set",""
     "``POST``","freeradius","avpair","setAvpair","$uuid"
     "``POST``","freeradius","avpair","toggleAvpair","$uuid"
 
@@ -21,9 +23,11 @@ Freeradius
     "``POST``","freeradius","client","addClient",""
     "``POST``","freeradius","client","delClient","$uuid"
     "``GET``","freeradius","client","get",""
+    "``GET``","freeradius","client","get",""
     "``GET``","freeradius","client","getClient","$uuid=null"
     "``GET``","freeradius","client","searchClient",""
     "``POST``","freeradius","client","set",""
+    "``GET``","freeradius","client","set",""
     "``POST``","freeradius","client","setClient","$uuid"
     "``GET``","freeradius","client","toggleClient","$uuid"
 
@@ -35,8 +39,10 @@ Freeradius
 
     "``POST``","freeradius","dhcp","addDhcp",""
     "``POST``","freeradius","dhcp","delDhcp","$uuid"
+    "``GET``","freeradius","dhcp","get",""
     "``GET``","freeradius","dhcp","getDhcp","$uuid=null"
     "``*``","freeradius","dhcp","searchDhcp",""
+    "``GET``","freeradius","dhcp","set",""
     "``POST``","freeradius","dhcp","setDhcp","$uuid"
     "``POST``","freeradius","dhcp","toggleDhcp","$uuid"
 
@@ -56,14 +62,25 @@ Freeradius
     "``GET``","freeradius","general","get",""
     "``POST``","freeradius","general","set",""
 
+.. csv-table:: Service (LdapController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","freeradius","ldap","get",""
+    "``GET``","freeradius","ldap","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `Ldap.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Ldap.xml>`__"
+
 .. csv-table:: Resources (LeaseController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","freeradius","lease","addLease",""
     "``POST``","freeradius","lease","delLease","$uuid"
+    "``GET``","freeradius","lease","get",""
     "``GET``","freeradius","lease","getLease","$uuid=null"
     "``*``","freeradius","lease","searchLease",""
+    "``GET``","freeradius","lease","set",""
     "``POST``","freeradius","lease","setLease","$uuid"
     "``POST``","freeradius","lease","toggleLease","$uuid"
 
@@ -86,9 +103,11 @@ Freeradius
     "``POST``","freeradius","user","addUser",""
     "``POST``","freeradius","user","delUser","$uuid"
     "``GET``","freeradius","user","get",""
+    "``GET``","freeradius","user","get",""
     "``GET``","freeradius","user","getUser","$uuid=null"
     "``GET``","freeradius","user","searchUser",""
     "``POST``","freeradius","user","set",""
+    "``GET``","freeradius","user","set",""
     "``POST``","freeradius","user","setUser","$uuid"
     "``GET``","freeradius","user","toggleUser","$uuid"
 

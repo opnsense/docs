@@ -1,21 +1,44 @@
 Haproxy
 ~~~~~~~
 
+.. csv-table:: Resources (ExportController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","haproxy","export","config",""
+    "``GET``","haproxy","export","diff",""
+    "``GET``","haproxy","export","download","$type"
+
 .. csv-table:: Resources (MaintenanceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
+    "``GET``","haproxy","maintenance","certActions",""
+    "``GET``","haproxy","maintenance","certDiff",""
+    "``GET``","haproxy","maintenance","certSync",""
+    "``GET``","haproxy","maintenance","certSyncBulk",""
+    "``POST``","haproxy","maintenance","fetchCronIntegration",""
+    "``GET``","haproxy","maintenance","get",""
+    "``GET``","haproxy","maintenance","searchCertificateDiff",""
     "``GET``","haproxy","maintenance","searchServer",""
     "``GET``","haproxy","maintenance","serverState",""
     "``GET``","haproxy","maintenance","serverStateBulk",""
     "``GET``","haproxy","maintenance","serverWeight",""
     "``GET``","haproxy","maintenance","serverWeightBulk",""
+    "``GET``","haproxy","maintenance","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `HAProxy.xml <https://github.com/opnsense/plugins/blob/master/net/haproxy/src/opnsense/mvc/app/models/OPNsense/HAProxy/HAProxy.xml>`__"
 
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","haproxy","service","configtest",""
+    "``GET``","haproxy","service","reconfigure",""
+    "``GET``","haproxy","service","restart",""
+    "``GET``","haproxy","service","start",""
+    "``GET``","haproxy","service","status",""
+    "``GET``","haproxy","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `HAProxy.xml <https://github.com/opnsense/plugins/blob/master/net/haproxy/src/opnsense/mvc/app/models/OPNsense/HAProxy/HAProxy.xml>`__"
 
@@ -35,6 +58,7 @@ Haproxy
     "``POST``","haproxy","settings","addMapfile",""
     "``POST``","haproxy","settings","addServer",""
     "``POST``","haproxy","settings","addUser",""
+    "``POST``","haproxy","settings","addmailer",""
     "``POST``","haproxy","settings","addresolver",""
     "``POST``","haproxy","settings","delAcl","$uuid"
     "``POST``","haproxy","settings","delAction","$uuid"
@@ -48,7 +72,9 @@ Haproxy
     "``POST``","haproxy","settings","delMapfile","$uuid"
     "``POST``","haproxy","settings","delServer","$uuid"
     "``POST``","haproxy","settings","delUser","$uuid"
+    "``POST``","haproxy","settings","delmailer","$uuid"
     "``POST``","haproxy","settings","delresolver","$uuid"
+    "``GET``","haproxy","settings","get",""
     "``GET``","haproxy","settings","getAcl","$uuid=null"
     "``GET``","haproxy","settings","getAction","$uuid=null"
     "``GET``","haproxy","settings","getBackend","$uuid=null"
@@ -61,6 +87,7 @@ Haproxy
     "``GET``","haproxy","settings","getMapfile","$uuid=null"
     "``GET``","haproxy","settings","getServer","$uuid=null"
     "``GET``","haproxy","settings","getUser","$uuid=null"
+    "``GET``","haproxy","settings","getmailer","$uuid=null"
     "``GET``","haproxy","settings","getresolver","$uuid=null"
     "``*``","haproxy","settings","searchAcls",""
     "``*``","haproxy","settings","searchActions",""
@@ -74,7 +101,9 @@ Haproxy
     "``*``","haproxy","settings","searchMapfiles",""
     "``*``","haproxy","settings","searchServers",""
     "``*``","haproxy","settings","searchUsers",""
+    "``*``","haproxy","settings","searchmailers",""
     "``*``","haproxy","settings","searchresolvers",""
+    "``GET``","haproxy","settings","set",""
     "``POST``","haproxy","settings","setAcl","$uuid"
     "``POST``","haproxy","settings","setAction","$uuid"
     "``POST``","haproxy","settings","setBackend","$uuid"
@@ -87,6 +116,7 @@ Haproxy
     "``POST``","haproxy","settings","setMapfile","$uuid"
     "``POST``","haproxy","settings","setServer","$uuid"
     "``POST``","haproxy","settings","setUser","$uuid"
+    "``POST``","haproxy","settings","setmailer","$uuid"
     "``POST``","haproxy","settings","setresolver","$uuid"
     "``POST``","haproxy","settings","toggleBackend","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggleCpu","$uuid,$enabled=null"
@@ -95,6 +125,7 @@ Haproxy
     "``POST``","haproxy","settings","toggleLua","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggleServer","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggleUser","$uuid,$enabled=null"
+    "``POST``","haproxy","settings","togglemailer","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggleresolver","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `HAProxy.xml <https://github.com/opnsense/plugins/blob/master/net/haproxy/src/opnsense/mvc/app/models/OPNsense/HAProxy/HAProxy.xml>`__"
@@ -103,6 +134,6 @@ Haproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","haproxy","statistics","counters","$zoneid=0"
-    "``GET``","haproxy","statistics","info","$zoneid=0"
-    "``GET``","haproxy","statistics","tables","$zoneid=0"
+    "``GET``","haproxy","statistics","counters",""
+    "``GET``","haproxy","statistics","info",""
+    "``GET``","haproxy","statistics","tables",""

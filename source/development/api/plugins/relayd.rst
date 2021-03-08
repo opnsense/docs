@@ -7,6 +7,11 @@ Relayd
 
     "``POST``","relayd","service","configtest",""
     "``POST``","relayd","service","reconfigure",""
+    "``GET``","relayd","service","reconfigure",""
+    "``GET``","relayd","service","restart",""
+    "``GET``","relayd","service","start",""
+    "``GET``","relayd","service","status",""
+    "``GET``","relayd","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `Relayd.xml <https://github.com/opnsense/plugins/blob/master/net/relayd/src/opnsense/mvc/app/models/OPNsense/Relayd/Relayd.xml>`__"
 

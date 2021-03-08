@@ -6,8 +6,10 @@ Udpbroadcastrelay
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","udpbroadcastrelay","service","config",""
+    "``GET``","udpbroadcastrelay","service","get",""
     "``POST``","udpbroadcastrelay","service","reload",""
     "``POST``","udpbroadcastrelay","service","restart","$uuid"
+    "``GET``","udpbroadcastrelay","service","set",""
     "``POST``","udpbroadcastrelay","service","start","$uuid"
     "``POST``","udpbroadcastrelay","service","status","$uuid"
     "``POST``","udpbroadcastrelay","service","stop","$uuid"
@@ -20,7 +22,9 @@ Udpbroadcastrelay
 
     "``POST``","udpbroadcastrelay","settings","addRelay",""
     "``POST``","udpbroadcastrelay","settings","delRelay","$uuid"
+    "``GET``","udpbroadcastrelay","settings","get",""
     "``GET``","udpbroadcastrelay","settings","getRelay","$uuid=null"
     "``GET``","udpbroadcastrelay","settings","searchRelay",""
+    "``GET``","udpbroadcastrelay","settings","set",""
     "``POST``","udpbroadcastrelay","settings","setRelay","$uuid"
     "``POST``","udpbroadcastrelay","settings","toggleRelay","$uuid"

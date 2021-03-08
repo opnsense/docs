@@ -12,8 +12,10 @@ for selected features.
 
     "``POST``","firewall","filter_base","apply","$rollback_revision=null"
     "``POST``","firewall","filter_base","cancelRollback","$rollback_revision"
+    "``GET``","firewall","filter_base","get",""
     "``POST``","firewall","filter_base","revert","$revision"
     "``POST``","firewall","filter_base","savepoint",""
+    "``GET``","firewall","filter_base","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Filter.xml <https://github.com/opnsense/plugins/blob/master/net/firewall/src/opnsense/mvc/app/models/OPNsense/Firewall/Filter.xml>`__"
 

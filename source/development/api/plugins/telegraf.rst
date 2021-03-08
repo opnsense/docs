@@ -21,8 +21,10 @@ Telegraf
 
     "``POST``","telegraf","key","addKey",""
     "``POST``","telegraf","key","delKey","$uuid"
+    "``GET``","telegraf","key","get",""
     "``GET``","telegraf","key","getKey","$uuid=null"
     "``*``","telegraf","key","searchKey",""
+    "``GET``","telegraf","key","set",""
     "``POST``","telegraf","key","setKey","$uuid"
     "``POST``","telegraf","key","toggleKey","$uuid"
 

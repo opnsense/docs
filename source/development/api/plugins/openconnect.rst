@@ -1,19 +1,23 @@
-openconnect
+Openconnect
 ~~~~~~~~~~~
 
-.. csv-table:: Settings
+.. csv-table:: Service (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``GET``","openconnect","general","get",""
-   "``POST``","openconnect","general","set",""
+    "``GET``","openconnect","general","get",""
+    "``GET``","openconnect","general","set",""
 
-.. csv-table:: Service
+    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/security/openconnect/src/opnsense/mvc/app/models/OPNsense/Openconnect/General.xml>`__"
+
+.. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","openconnect","service","reconfigure",""
-   "``POST``","openconnect","service","restart",""
-   "``POST``","openconnect","service","start",""
-   "``GET``","openconnect","service","status",""
-   "``POST``","openconnect","service","stop",""
+    "``GET``","openconnect","service","reconfigure",""
+    "``GET``","openconnect","service","restart",""
+    "``GET``","openconnect","service","start",""
+    "``GET``","openconnect","service","status",""
+    "``GET``","openconnect","service","stop",""
+
+    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/security/openconnect/src/opnsense/mvc/app/models/OPNsense/Openconnect/General.xml>`__"

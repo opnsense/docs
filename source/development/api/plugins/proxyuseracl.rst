@@ -7,8 +7,10 @@ Proxyuseracl
 
     "``POST``","proxyuseracl","settings","addACL",""
     "``POST``","proxyuseracl","settings","delACL","$uuid"
+    "``GET``","proxyuseracl","settings","get",""
     "``GET``","proxyuseracl","settings","getACL","$uuid=null"
     "``GET``","proxyuseracl","settings","searchACL",""
+    "``GET``","proxyuseracl","settings","set",""
     "``POST``","proxyuseracl","settings","setACL","$uuid"
     "``POST``","proxyuseracl","settings","updownACL","$uuid"
 

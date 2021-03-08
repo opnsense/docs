@@ -16,10 +16,12 @@ Tinc
 
     "``POST``","tinc","settings","delHost","$uuid"
     "``POST``","tinc","settings","delNetwork","$uuid"
+    "``GET``","tinc","settings","get",""
     "``GET``","tinc","settings","getHost","$uuid=null"
     "``GET``","tinc","settings","getNetwork","$uuid=null"
     "``GET``","tinc","settings","searchHost",""
     "``GET``","tinc","settings","searchNetwork",""
+    "``GET``","tinc","settings","set",""
     "``POST``","tinc","settings","setHost","$uuid=null"
     "``POST``","tinc","settings","setNetwork","$uuid=null"
     "``POST``","tinc","settings","toggleHost","$uuid,$enabled=null"
