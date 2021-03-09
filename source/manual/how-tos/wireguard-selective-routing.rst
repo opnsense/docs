@@ -1,5 +1,5 @@
 =================================================================
-Set up WireGuard for selective routing to external VPN provider
+WireGuard Selective Routing to External VPN Provider
 =================================================================
 
 ------------
@@ -28,7 +28,7 @@ Step 1 - Configure the endpoint
 
     ====================== ====================================================================================================
      **Enabled**            *Checked*
-     **Name**               *Call it whatever you want (eg :code:`VPNProviderName_Location`)*
+     **Name**               *Call it whatever you want (eg* :code:`VPNProviderName_Location` *)*
      **Public Key**         *Insert the public key from your VPN provider*
      **Allowed IPs**        *0.0.0.0/0*
      **Endpoint Address**   *Insert the public IP address (desirably) or domain name of your VPN provider, as provided by it*
@@ -49,7 +49,7 @@ Step 2 - Configure the local peer
 
     ===================== ===============================================================================================
      **Enabled**           *Checked*
-     **Name**              *Call it whatever you want (eg :code:`VPNProviderName`)*
+     **Name**              *Call it whatever you want (eg* :code:`VPNProviderName` *)*
      **Public Key**        *This will initially be blank; it will be populated once the configuration is saved*
      **Private Key**       *This will initially be blank; it will be populated once the configuration is saved*
      **Listen Port**       *51820 or a higher numbered unique port*
@@ -129,7 +129,7 @@ Step 7 - Create an Alias for the relevant local hosts that will access the tunne
 
     ================= ==================================================================================================
      **Enabled**       *Checked*
-     **Name**          *Call it whatever your want, eg :code:`WG_VPN_Hosts`*
+     **Name**          *Call it whatever your want, eg* :code:`WG_VPN_Hosts`
      **Type**          *Select either Host(s) or Network(s) in the dropdown, depending on whether you want specific host IPs to use the tunnel, or an entire local network (such as a VLAN)*
      **Content**       *Enter the host IPs, or the network in CIDR format*
      **Description**   *Add one if you wish to*
@@ -168,12 +168,12 @@ This will involve two steps - first creating a second Alias for all local (priva
      **TCP/IP Version**           *IPv4*
      **Protocol**                 *any*
      **Source / Invert**          *Unchecked*
-     **Source**                   *Select the relevant hosts Alias you created above in the dropdown (eg :code:`WG_VPN_Hosts`)*
+     **Source**                   *Select the relevant hosts Alias you created above in the dropdown (eg* :code:`WG_VPN_Hosts` *)*
      **Destination / Invert**     *Checked*
-     **Destination**              *Select the :code:`RFC1918_Networks` Alias you created above in the dropdown*
+     **Destination**              *Select the* :code:`RFC1918_Networks` *Alias you created above in the dropdown*
      **Destination port range**   *any*
      **Description**              *Add one if you wish to*
-     **Gateway**                  *Select the gateway you created above (eg :code:`WAN_VPNProviderName`)*
+     **Gateway**                  *Select the gateway you created above (eg* :code:`WAN_VPNProviderName` *)*
     ============================ ==================================================================================================
 
 - **Save** the rule, and then click **Apply Changes**
@@ -189,11 +189,11 @@ Step 9 - Create an outbound NAT rule
 - Configure the rule as follows (if an option is not mentioned below, leave it as the default):
 
     ========================== =========================================================================================================
-     **Interface**              *Select the interface for your WireGuard VPN (eg :code:`WAN_VPNProviderName`)*
+     **Interface**              *Select the interface for your WireGuard VPN (eg* :code:`WAN_VPNProviderName` *)*
      **TCP/IP Version**         *IPv4*
      **Protocol**               *any*
      **Source invert**          *Unchecked*
-     **Source address**         *Select the Alias for the hosts/networks that are intended to use the tunnel (eg :code:`WG_VPN_Hosts`)*
+     **Source address**         *Select the Alias for the hosts/networks that are intended to use the tunnel (eg* :code:`WG_VPN_Hosts` *)*
      **Source port**            *any*
      **Destination invert**     *Unchecked*
      **Destination address**    *any*
