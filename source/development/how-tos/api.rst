@@ -82,14 +82,12 @@ response.
    if r.status_code == 200:
        response = json.loads(r.text)
 
-       if response['status'] == 'ok' and response['status_upgrade_action'] == 'all':
+       if response['status'] == 'ok':
            print ('OPNsense can be upgraded')
            print ('download size : %s' % response['download_size'])
            print ('number of packages : %s' % response['updates'])
            if response['upgrade_needs_reboot'] == '1':
                print ('REBOOT REQUIRED')
-       elif response['status'] == 'ok' and response['status_upgrade_action'] == 'pkg':
-           print ('OPNsense can be upgraded, but needs a pkg upgrade first')
        elif 'status_msg' in response:
            print (response['status_msg'])
    else:
@@ -110,11 +108,11 @@ testing.
     curl -k -u "w86XNZob/8Oq8aC5hxh2he+vLN00r0kbNarNtdpoQU781fyoeaOBQsBwkXUt":"puOyw0Ega3xZXeD26XVrJ5WYFepOseySWLM53pJASeTA3" https://192.168.1.1/api/core/firmware/status
 
 
-And schedule the actual upgrade of all packages using:
+And schedule the actual update of all packages using:
 
 .. code-block:: sh
 
-    curl -XPOST -d '{"upgrade":"all"}' -H "Content-Type: application/json" -k -u "w86XNZob/8Oq8aC5hxh2he+vLN00r0kbNarNtdpoQU781fyoeaOBQsBwkXUt":"puOyw0Ega3xZXeD26XVrJ5WYFepOseySWLM53pJASeTA3" https://10.211.55.100/api/core/firmware/upgrade
+    curl -XPOST -k -u "w86XNZob/8Oq8aC5hxh2he+vLN00r0kbNarNtdpoQU781fyoeaOBQsBwkXUt":"puOyw0Ega3xZXeD26XVrJ5WYFepOseySWLM53pJASeTA3" https://10.211.55.100/api/core/firmware/update
 
 
 .. |Usermanager add api key.png| image:: images/Usermanager_add_api_key.png
