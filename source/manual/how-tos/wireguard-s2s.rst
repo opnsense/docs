@@ -8,9 +8,9 @@ WireGuard Site-to-Site Setup
 Introduction
 ------------
 
-WireGuard is a simple and fast modern VPN. It aims to be faster and simpler than IPSec. It intends to be
-considerably more performant than OpenVPN. Initially released for the Linux kernel, it is now cross-platform
-and widely deployable. It is currently under heavy development.
+WireGuard is a simple and fast modern VPN protocol. It aims to be faster and less complex than IPSec.
+It intends to be considerably more performant than OpenVPN. Initially released for the Linux kernel,
+it is now cross-platform and widely deployable.
 
 ---------------------
 Step 1 - Installation
@@ -23,7 +23,7 @@ via :menuselection:`VPN --> WireGuard`.
 Step 2 - Setup WireGuard
 ------------------------
 
-The setup of a Site-2-Site VPN is very simple. Just go to tab **Local** and create a new instance.
+Go to tab **Local** and create a new instance.
 Give it a **Name** and set a desired **Listen Port**. If you have more than one service instance be 
 aware that you can use the **Listen Port** only once. For **Tunnel Address** choose a new virtual 
 network to run communication over it, just like with OpenVPN or GRE (e.g. 192.168.0.1/24).

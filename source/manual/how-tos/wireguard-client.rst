@@ -6,7 +6,7 @@ WireGuard Road Warrior Setup
 Introduction
 ------------
 
-WireGuard is a simple, fast VPN using modern `cryptography <https://www.WireGuard.com/protocol>`__. It aims to be faster and simpler than IPsec whilst also being a considerably more performant alternative to OpenVPN. Initially released for the Linux kernel, it is now cross-platform and widely deployable. It is under heavy development and was included in the Linux kernel v5.6 in `March 2020 <https://arstechnica.com/gadgets/2020/03/WireGuard-vpn-makes-it-to-1-0-0-and-into-the-next-linux-kernel>`__. 
+WireGuard is a simple, fast VPN protocol using modern `cryptography <https://www.WireGuard.com/protocol>`__. It aims to be faster and less complex than IPsec whilst also being a considerably more performant alternative to OpenVPN. Initially released for the Linux kernel, it is now cross-platform and widely deployable.
 
 This article describes setting up a central WireGuard server, running on OPNsense and configuring a client. 
 
