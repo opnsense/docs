@@ -39,7 +39,7 @@ recommended specifications.
    :name: minimum
 
 The minimum specification to run all OPNsense standard features that do
-not need disk writes, means you can run all standard features, expect
+not need disk writes, means you can run all standard features, except
 for the ones that require disk writes, e.g. a caching proxy (cache) or intrusion detection
 and prevention (alert database).
 
