@@ -246,6 +246,7 @@ A simple example to expose the configuration section Myplugin within the OPNsens
             'description' => gettext('My Plugin'),
             'section' => 'OPNsense.Myplugin',
             'id' => 'myplugin',
+            'services' => 'myplugin', // optional, in case a service with the same name exists
         );
         return $result;
     }
