@@ -11,8 +11,8 @@ can access network resources in the main office.
 Before you start
 ----------------
 Before starting with the configuration of an IPsec tunnel you need to have a
-working OPNsense installation wit a unique LAN IP subnet for each side of your
-connection (you local network need to different than that of the remote network).
+working OPNsense installation with a unique LAN IP subnet for each side of your
+connection (your local network need to be different than that of the remote network).
 
 .. Note::
 
@@ -65,6 +65,7 @@ Site A
 ==================== =============================
  **Hostname**         fw1
  **WAN IP**           172.10.1.1/24
+ **LAN Net**          192.168.1.0/24
  **LAN IP**           192.168.1.1/24
  **LAN DHCP Range**   192.168.1.100-192.168.1.200
 ==================== =============================
@@ -112,6 +113,7 @@ Site B
  **Hostname**         fw2
  **WAN IP**           172.10.2.1/24
  **LAN Net**          192.168.2.0/24
+ **LAN IP**           192.168.2.1/24
  **LAN DHCP Range**   192.168.2.100-192.168.2.200
 ==================== =============================
 
@@ -276,7 +278,7 @@ Remote Network
 --------------
 ============== =============== ==========================
  **Type**       Network         *Route a remote network*
- **Address**    192.168.2.1/24  *The remote LAN subnet*
+ **Address**    192.168.2.0/24  *The remote LAN subnet*
 ============== =============== ==========================
 
 
@@ -410,7 +412,7 @@ Remote Network
 --------------
 ============== =============== ==========================
  **Type**       Network         *Route a remote network*
- **Address**    192.168.1.1/24  *The remote LAN subnet*
+ **Address**    192.168.1.0/24  *The remote LAN subnet*
 ============== =============== ==========================
 
 
