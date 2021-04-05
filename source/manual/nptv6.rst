@@ -11,12 +11,9 @@ corner. A quick overview of the fields:
 
 ============================= =======================================================================================================================================================================
  Disabled                      Disables this rule without having to remove it.
- Interface                     Which interface this rule should apply to. Most of the time, this will be the WAN interface.
+ Interface                     Which interface this rule should apply to. Most of the time, this will be a WAN interface.
+ Internal IPv6 Prefix          The internal IPv6 prefix used in the LAN(s). This will replace the prefix of the destination address in inbound packets. The prefix size specified here will also be applied to the external prefix.
+ External IPv6 Prefix          The external IPv6 prefix. This will replace the prefix of the source address in outbound packets.
+ Category                      The category this rule belongs to, can be used as a filter in the overview.
  Description                   A description to easily indentify the purpose of this rule in the overview.
- **Internal IPv6 Prefix**
- Source / Invert               Use this option to invert the sense of the source address match.
- Source / Address              The internal (LAN) ULA IPv6 Prefix for the Network Prefix Translation. The prefix size specified for the internal IPv6 prefix will be applied to the external prefix.
- **Destination IPv6 Prefix**
- Destination / Invert          Use this option to invert the sense of the destination address match.
- Destination / Address         The Global Unicast routable IPv6 prefix.
 ============================= =======================================================================================================================================================================
