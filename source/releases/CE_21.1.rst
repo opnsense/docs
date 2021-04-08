@@ -39,6 +39,153 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+21.1.4 (March 30, 2021)
+--------------------------------------------------------------------------
+
+
+The third party crypto libraries need patching so here we go!  The number of
+user contributions and interaction regarding stability fixes and improvements
+from the OPNsense side seems to be picking up as well and that is great to see.
+
+The development version includes an update of Suricata to version 6.0.2
+in case any of you want to try it out.  Also, improvements in the DHCP
+static mapping can now deal with IPv6 prefix merge for such deployments
+using Unbound and Dnsmasq host registration.
+
+In the past 3 months we have also been working on a business edition relaunch
+and now feel obligated to quickly present the results of these efforts:
+
+The upcoming release of the business edition will be versioned as 21.4 in
+order to decouple it from the community release cycle.  To that end--and
+to stay true to open source--we have published the release engineering core
+branch for said business release `[1] <https://github.com/opnsense/core/commits/stable/21.4>`__ .
+
+You will see more distinction between "community" and "business" in
+communication, but the basic approach of a more conservative release
+cycle in volume and timing for the business edition remains the same.
+On top of this, the business edition also offers additional plugins,
+e.g. for central management tasks.
+
+Here are the full patch notes:
+
+* system: add assorted missing configuration sections for high availability sync
+* system: restart web GUI with delay from services to prevent session disconnect
+* system: improve error reporting in LDAP authentication (contributed by kulikov-a)
+* system: changed USB serial option to use "on" instead of problematic "onifconsole"
+* system: ignore garbled data in log lines
+* system: fix single core activity display
+* interfaces: immediately enable SLAAC during IPv6 initiation
+* interfaces: fix a typo in the GIF setup code
+* firewall: allow to select rules with no category set
+* firewall: sort pfTable results before slice (contributed by kulikov-a)
+* firewall: make categories work with numbers only (contributed kulikov-a)
+* reporting: skip damaged NetFlow records
+* dhcp: correct help text for IPv6 ranges (contributed by Team Rebellion)
+* dhcp: remove obsolete subnet validation for static entries
+* firmware: refine missing/invalid signature message during health check (contributed by Erik Inge Bolso)
+* firmware: zap changelog remove description (contributed by Jacek Tomasiak)
+* firmware: make status API endpoint synchronous when using POST
+* openvpn: remove checks for NTP servers 3 and 4 (contributed by Christian Brueffer)
+* unbound: Fix PTR records for DHCP endpoints (contributed by Gareth Owen)
+* ui: use HTTPS everywhere (contributed by Robin Schneider)
+* ui: bootgrid translation compatibility with Internet Explorer 11 (contributed by kulikov-a)
+* plugins: add service annotations to supported plugins
+* plugins: os-freeradius 1.9.10 `[2] <https://github.com/opnsense/plugins/blob/stable/21.1/net/freeradius/pkg-descr>`__ 
+* plugins: os-haproxy 3.1 `[3] <https://github.com/opnsense/plugins/blob/stable/21.1/net/haproxy/pkg-descr>`__ 
+* plugins: os-stunnel 1.0.3 adds client mode (contributed by Nicola Bonavita)
+* plugins: os-telegraf 1.9.0 `[4] <https://github.com/opnsense/plugins/blob/stable/21.1/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-theme-cicada 1.28 (contributed by Team Rebellion)
+* plugins: os-theme-tukan 1.25 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.4 (contributed by Team Rebellion)
+* plugins: os-wireguard 1.5 `[5] <https://github.com/opnsense/plugins/blob/stable/21.1/net/wireguard/pkg-descr>`__ 
+* plugins: os-wol 2.4 fixes dashboard widget (contributed by kulikov-a)
+* src: fix multiple OpenSSL vulnerabilities `[6] <FREEBSD:FreeBSD-SA-21:07.openssl>`__ 
+* ports: ca_root_nss / nss 3.63 `[7] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.63_release_notes>`__ 
+* ports: libressl 3.2.5 `[8] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.5-relnotes.txt>`__ 
+* ports: openldap 2.4.58 `[9] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openssh fix for double free in ssh-agent `[10] <https://ftp.openbsd.org/pub/OpenBSD/patches/6.8/common/015_sshagent.patch.sig>`__ 
+* ports: openssl 1.1.1k `[11] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: sudo 1.9.6p1 `[12] <https://www.sudo.ws/stable.html#1.9.6p1>`__ 
+* ports: suricata 5.0.6 `[13] <https://suricata-ids.org/2021/03/02/suricata-6-0-2-and-5-0-6-released/>`__ 
+* ports: syslog-ng 3.31.2 `[14] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.31.2>`__ 
+* ports: wpa_supplicant p2p vulnerability `[15] <https://w1.fi/security/2021-1/wpa_supplicant-p2p-provision-discovery-processing-vulnerability.txt>`__ 
+
+
+--------------------------------------------------------------------------
+21.1.3 (March 10, 2021)
+--------------------------------------------------------------------------
+
+
+Today we move ahead with the firmware UI and API rework as we are happy
+with the new user experience.  You will also notice the new plugin conflict
+dialog which will report that plugins have been installed previously but
+not registered in the configuration.  This can be easily amended by reseting
+the local conflicts, which essentially accepts the current plugin
+configuration as the new default.  This necessary change introduces API
+incompatibilities with existing external tools.
+
+The HAProxy plugin was updated to version 3.0.  This release marks the
+switch to the HAProxy 2.2 release series, which may result in incompatible
+changes for some users.  Many new features were also added, including the
+possibility to update SSL certificates in runtime.  These features should
+be considered experimental.  We encourage everyone to install this version
+in a test environment before using it in production.  As usual, please have
+a look at the plugin changes `[1] <https://github.com/opnsense/plugins/blob/stable/21.1/net/haproxy/pkg-descr>`__  and report bugs on GitHub.
+
+Here are the full patch notes:
+
+* system: prevent duplicate dashboard traffic pollers mangling with the graphs
+* system: added cron job "HA update and reconfigure backup"
+* system: unify HA sync sections and remove legacy blocks
+* system: adapt lighttpd ssl.privkey approach
+* system: correctly remove routing entries directly connected to an interface
+* interfaces: correct dhcp6c configuration issue on PPPoE link down (contributed by Team Rebellion)
+* interfaces: better primary IPv6 address detection in diagnostic tools
+* interfaces: handle disabled interfaces in overview
+* interfaces: drop early return in PPPoE link down
+* interfaces: remove unused global definitions
+* firewall: typo in outbound alias use (contributed by kulikov-a)
+* firewall: rules icon color after toggle fix (contributed by kulikov-a)
+* reporting: prevent crash when NetFlow attributes are missing
+* reporting: aggregate iftop results for traffic graphs
+* firmware: opnsense-bootstrap shellcheck audit (contributed by Michael Adams)
+* firmware: revamp the UI and API
+* firmware: revoke old business key
+* intrusion detection: add new Abuse.ch feed ThreatFox to detect indicators of compromise
+* intrusion detection: make manual rule status boolean for policies (contributed by kulikov-a)
+* ipsec: calculate netmask for provided tunnel addresses when using VTI
+* ipsec: do not pin reqid in case of mobile connections
+* openvpn: extend compression options (contributed by vnxme)
+* unbound: handle DHCP client expiring and returning (contributed by Gareth Owen)
+* ui: refactor bootgrid usage in ARP, NDP, captive portal session, system activity and routes
+* ui: align layouts of select_multiple and dropdown types
+* plugins: os-haproxy 3.0 `[1] <https://github.com/opnsense/plugins/blob/stable/21.1/net/haproxy/pkg-descr>`__ 
+* plugins: os-nginx 1.21 `[2] <https://github.com/opnsense/plugins/blob/stable/21.1/www/nginx/pkg-descr>`__ 
+* plugins: os-node_exporter 1.1 `[3] <https://github.com/opnsense/plugins/blob/stable/21.1/sysutils/node_exporter/pkg-descr>`__ 
+* src: jail: Handle a possible race between jail_remove(2) and fork(2) `[4] <FREEBSD:FreeBSD-SA-21:04.jail_remove>`__ 
+* src: jail: Change both root and working directories in jail_attach(2) `[5] <FREEBSD:FreeBSD-SA-21:05.jail_chdir>`__ 
+* src: x86: free microcode memory later `[6] <FREEBSD:FreeBSD-EN-21:06.microcode>`__ 
+* src: xen-blkback: fix leak of grant maps on ring setup failure `[7] <FREEBSD:FreeBSD-SA-21:06.xen>`__ 
+* src: rtsold: auto-probe point to point interfaces
+* src: growfs: update check-hash when doing large filesystem expansions
+* src: axgbe: change default parameters to prevent manual tunable settings
+* src: arp: avoid segfaulting due to out-of-bounds memory access
+* ports: cpdup 1.22 `[8] <https://github.com/DragonFlyBSD/cpdup/releases/tag/v1.22>`__ 
+* ports: krb5 1.19.1 `[9] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
+* ports: nss 3.62 `[10] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.62_release_notes>`__ 
+* ports: pkg now provides fallback for version mismatch on pkg-add
+* ports: python 3.7.10 `[11] <https://docs.python.org/release/3.7.10/whatsnew/changelog.html>`__ 
+* ports: syslog-ng 3.31.1 `[12] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.31.1>`__ 
+
+A hotfix release was issued as 21.1.3_3:
+
+* system: fix dashboard traffic widget load behaviour (contributed by kulikov-a)
+* system: fix dashboard widget title regression
+* firmware: fix compatibility regression with IE 11
+
+
+
+--------------------------------------------------------------------------
 21.1.2 (February 23, 2021)
 --------------------------------------------------------------------------
 

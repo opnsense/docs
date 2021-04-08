@@ -109,7 +109,7 @@ Here are the full patch notes:
 * ports: openssl 1.0.2u `[9] <https://www.openssl.org/news/openssl-1.0.2-notes.html>`__ 
 * ports: php 7.2.26 `[10] <https://www.php.net/ChangeLog-7.php#7.2.26>`__ 
 * ports: phpseclib 2.0.23 `[11] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.23>`__ 
-* ports: python 3.7.6 `[12] <https://www.python.org/downloads/release/python-376/>`__ 
+* ports: python 3.7.6 `[12] <https://docs.python.org/release/3.7.6/whatsnew/changelog.html>`__ 
 * ports: strongswan 5.8.2 `[13] <https://wiki.strongswan.org/versions/75>`__ 
 * ports: sudo 1.8.30 `[14] <https://www.sudo.ws/stable.html#1.8.30>`__ 
 * ports: unbound 1.9.6 `[15] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
@@ -259,14 +259,14 @@ Here are the full patch notes:
 * backend: add run mode to pluginctl using JSON-based output
 * ui: fix tokenizer reorder on multiple saves, second try
 * plugins: os-acme-client 1.27 `[1] <https://github.com/opnsense/plugins/pull/1536>`__ 
-* plugins: os-bind 1.9 `[2] <https://github.com/opnsense/plugins/blob/master/dns/bind/pkg-descr>`__ 
-* plugins: os-nginx 1.15 `[3] <https://github.com/opnsense/plugins/blob/master/www/nginx/pkg-descr>`__ 
+* plugins: os-bind 1.9 `[2] <https://github.com/opnsense/plugins/blob/stable/20.1/dns/bind/pkg-descr>`__ 
+* plugins: os-nginx 1.15 `[3] <https://github.com/opnsense/plugins/blob/stable/20.1/www/nginx/pkg-descr>`__ 
 * plugins: os-relayd 2.4 fixes protocol option migration (contributed by Frank Brendel)
 * plugins: os-theme-cicada 1.22 (contributed by Team Rebellion)
 * ports: ca_root_nss 3.47
 * ports: php 7.2.24 `[4] <https://www.php.net/ChangeLog-7.php#7.2.24>`__ 
-* ports: python 3.7.5 `[5] <https://www.python.org/downloads/release/python-375/>`__ 
-* ports: sudo 1.8.29 `[6] <https://www.sudo.ws/stable.html#1.8.29>`__ 
+* ports: python 3.7.5 `[5] <https://docs.python.org/release/3.7.5/whatsnew/changelog.html>`__ 
+* ports: sudo 1.8.29 `[6] <https://www.sudo.ws/legacy.html#1.8.29>`__ 
 
 
 
@@ -535,7 +535,7 @@ Here are the full patch notes:
 * ports: monit 5.26.0 `[7] <https://mmonit.com/monit/changes/>`__ 
 * ports: openssh 8.0p1 `[8] <https://www.openssh.com/txt/release-8.0>`__ 
 * ports: php 7.2.20 `[9] <https://www.php.net/ChangeLog-7.php#7.2.20>`__ 
-* ports: python 3.7.4 `[10] <https://www.python.org/downloads/release/python-374/>`__ 
+* ports: python 3.7.4 `[10] <https://docs.python.org/release/3.7.4/whatsnew/changelog.html>`__ 
 * ports: sqlite 3.29.0 `[11] <https://sqlite.org/releaselog/3_29_0.html>`__ 
 * ports: squid 4.8 `[12] <http://lists.squid-cache.org/pipermail/squid-announce/2019-July/000100.html>`__ 
 

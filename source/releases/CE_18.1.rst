@@ -477,7 +477,7 @@ Here are the full patch notes:
 * ports: openssh 7.7p1 `[4] <https://www.openssh.com/txt/release-7.7>`__ 
 * ports: openvpn 2.4.6 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
 * ports: perl 5.26.2 `[6] <https://perldoc.perl.org/5.26.2/perldelta>`__ 
-* ports: php 7.1.17 `[7] <https://php.net/ChangeLog-7.php#7.1.17>`__ 
+* ports: php 7.1.17 `[7] <https://www.php.net/ChangeLog-7.php#7.1.17>`__ 
 * ports: sqlite 3.23.0 `[8] <https://sqlite.org/releaselog/3_23_0.html>`__ 
 
 A hotfix release was issued as 18.1.7_1:
