@@ -100,6 +100,8 @@ def parse_change_log(payload, this_version, links):
         # prelude exit
         if prelude_line and line.find('https://opnsense.org/download/') > -1:
             prelude_line = False
+        elif prelude_line and line.find('https://downloads.opnsense.com') > -1: # BE
+            prelude_line = False
 
     result["content"] = "\n".join(result["content"])
     result["prelude"] = "\n".join(result["prelude"])
