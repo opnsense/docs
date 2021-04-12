@@ -100,7 +100,7 @@ Here are the full patch notes:
 * mvc: add sort_flags optional parameter support (contributed by NOYB)
 * rc: add full PATH to rc.syshook invoke
 * plugins: os-acme-client `[1] <https://github.com/opnsense/plugins/pull/1851>`__  `[2] <https://github.com/opnsense/plugins/pull/1880>`__ 
-* plugins: os-dnscrypt-proxy 1.8 `[3] <https://github.com/opnsense/plugins/blob/master/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.8 `[3] <https://github.com/opnsense/plugins/blob/stable/20.1/dns/dnscrypt-proxy/pkg-descr>`__ 
 * plugins: os-dyndns 1.21 improves Cloudflare support (contributed by Andreas Rupper)
 * plugins: os-freeradius 1.9.7 `[4] <https://github.com/opnsense/plugins/pull/1726>`__ 
 * plugins: os-haproxy 2.23 `[5] <https://github.com/opnsense/plugins/pull/1883>`__ 
@@ -109,7 +109,7 @@ Here are the full patch notes:
 * plugins: os-tayga 1.1 `[7] <https://github.com/opnsense/plugins/pull/1826>`__ 
 * plugins: os-theme-rebellion 1.8.4 `[8] <https://github.com/opnsense/plugins/pull/1892>`__ 
 * ports: ca_root_nss 3.53
-* ports: curl 7.71.0 `[9] <https://curl.haxx.se/changes.html>`__ 
+* ports: curl 7.71.0 `[9] <https://curl.se/changes.html#7_71_0>`__ 
 * ports: hostapd / wpa_supplicant UPnP SUBSCRIBE advisory `[10] <https://w1.fi/security/2020-1/upnp-subscribe-misbehavior-wps-ap.txt>`__ 
 * ports: krb5 1.18.2 `[11] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
 * ports: ntp 4.2.8p15 `[12] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
@@ -153,13 +153,13 @@ Here are the full patch notes:
 * src: added Novatel Wireless MiFi 8800/8000 support (contributed by rootless4real)
 * src: fix pf shared forwarding on non-existing interfaces
 * src: patch in tty 3wire autologin support
-* src: fix insufficient packet length validation in libalias `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:12.libalias.asc>`__ 
-* src: fix memory disclosure vulnerability in libalias `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:13.libalias.asc>`__ 
-* src: fix improper checking in SCTP-AUTH shared key update `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:14.sctp.asc>`__ 
-* src: fix use after free in cryptodev module `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:15.cryptodev.asc>`__ 
-* src: update to tzdata 2020a `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:08.tzdata.asc>`__ 
+* src: fix insufficient packet length validation in libalias `[1] <FREEBSD:FreeBSD-SA-20:12.libalias>`__ 
+* src: fix memory disclosure vulnerability in libalias `[2] <FREEBSD:FreeBSD-SA-20:13.libalias>`__ 
+* src: fix improper checking in SCTP-AUTH shared key update `[3] <FREEBSD:FreeBSD-SA-20:14.sctp>`__ 
+* src: fix use after free in cryptodev module `[4] <FREEBSD:FreeBSD-SA-20:15.cryptodev>`__ 
+* src: update to tzdata 2020a `[5] <FREEBSD:FreeBSD-EN-20:08.tzdata>`__ 
 * ports: ca_root_nss 3.52
-* ports: curl 7.70.0 `[6] <https://curl.haxx.se/changes.html>`__ 
+* ports: curl 7.70.0 `[6] <https://curl.se/changes.html#7_70_0>`__ 
 * ports: dhcp6c v20200512
 * ports: hyperscan 5.2.1 `[7] <https://github.com/intel/hyperscan/releases/tag/v5.2.1>`__ 
 * ports: openldap 2.4.50 `[8] <https://www.openldap.org/software/release/changes.html>`__ 
@@ -476,10 +476,10 @@ And here are the full patch notes against version 20.1-RC1:
 * plugins: os-mail-backup 1.1 `[2] <https://github.com/opnsense/plugins/pull/1671>`__ 
 * plugins: os-nrpe 1.0 (contributed by Michael Muenz)
 * plugins: os-theme-rebellion 1.8.3 (contributed by Team Rebellion)
-* plugins: os-vnstat 1.2 `[3] <https://github.com/opnsense/plugins/blob/master/net/vnstat/pkg-descr>`__ 
-* plugins: zabbix4-proxy 1.2 `[4] <https://github.com/opnsense/plugins/blob/master/net-mgmt/zabbix4-proxy/pkg-descr>`__ 
+* plugins: os-vnstat 1.2 `[3] <https://github.com/opnsense/plugins/blob/stable/20.1/net/vnstat/pkg-descr>`__ 
+* plugins: zabbix4-proxy 1.2 `[4] <https://github.com/opnsense/plugins/blob/stable/20.1/net-mgmt/zabbix4-proxy/pkg-descr>`__ 
 * ports: ca_root_nss 3.49.2
-* ports: curl 7.68.0 `[5] <https://curl.haxx.se/changes.html>`__ 
+* ports: curl 7.68.0 `[5] <https://curl.se/changes.html#7_68_0>`__ 
 * ports: isc-dhcp 4.4.2 `[6] <https://downloads.isc.org/isc/dhcp/4.4.2/dhcp-4.4.2-RELNOTES>`__ 
 * ports: php 7.2.27 `[7] <https://www.php.net/ChangeLog-7.php#7.2.27>`__ 
 * ports: urllib3 1.27.7 `[8] <https://github.com/urllib3/urllib3/blob/master/CHANGES.rst#1257-2019-11-11>`__ 
@@ -579,7 +579,7 @@ Here are the full patch notes against 19.7.9_1:
 * plugins: os-haproxy 2.20 `[2] <https://github.com/opnsense/plugins/pull/1646>`__ 
 * plugins: os-zabbix-agent 1.7 `[3] <https://github.com/opnsense/plugins/pull/1578>`__  `[4] <https://github.com/opnsense/plugins/pull/1618>`__ 
 * ports: ca_root_nss 3.49.1
-* ports: curl 7.68.0 `[5] <https://curl.haxx.se/changes.html>`__ 
+* ports: curl 7.68.0 `[5] <https://curl.se/changes.html#7_68_0>`__ 
 * ports: openssl 1.1.1d `[6] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 
 Known issues and limitations:

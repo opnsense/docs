@@ -313,21 +313,21 @@ Here are the full patch notes:
 * plugins: os-bind download link changes (contributed by gap579137)
 * plugins: os-chrony 1.0 (contributed by Michael Muenz)
 * plugins: os-dnscrypt-proxy blocklist script fixes (contributed by Mark Keisler)
-* plugins: os-frr 1.17 `[1] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
-* plugins: os-postfix 1.17 `[2] <https://github.com/opnsense/plugins/blob/master/mail/postfix/pkg-descr>`__ 
-* plugins: os-rspamd 1.10 `[3] <https://github.com/opnsense/plugins/blob/master/mail/rspamd/pkg-descr>`__ 
+* plugins: os-frr 1.17 `[1] <https://github.com/opnsense/plugins/blob/stable/20.7/net/frr/pkg-descr>`__ 
+* plugins: os-postfix 1.17 `[2] <https://github.com/opnsense/plugins/blob/stable/20.7/mail/postfix/pkg-descr>`__ 
+* plugins: os-rspamd 1.10 `[3] <https://github.com/opnsense/plugins/blob/stable/20.7/mail/rspamd/pkg-descr>`__ 
 * plugins: os-theme-cicada 1.25 (contributed by Team Rebellion)
 * plugins: os-theme-tukan 1.23 (contributed by Team Rebellion)
 * plugins: os-theme-vicuna 1.1 (contributed by Team Rebellion)
-* plugins: os-wireguard 1.3 `[4] <https://github.com/opnsense/plugins/blob/master/net/wireguard/pkg-descr>`__ 
-* plugins: os-zabbix-agent 1.8 `[5] <https://github.com/opnsense/plugins/blob/master/net-mgmt/zabbix-agent/pkg-descr>`__ 
-* src: fix FreeBSD Linux ABI kernel panic `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:17.linuxthread.asc>`__ 
-* src: fix SCTP socket use-after-free `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:25.sctp.asc>`__ 
-* src: fix dhclient heap overflow `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:26.dhclient.asc>`__ 
-* src: fix ure device driver susceptible to packet-in-packet attack `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:27.ure.asc>`__ 
-* src: fix bhyve privilege escalation via VMCS access `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:28.bhyve_vmcs.asc>`__ 
-* src: fix bhyve SVM guest escape `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:29.bhyve_svm.asc>`__ 
-* src: fix ftpd privilege escalation via ftpchroot `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:30.ftpd.asc>`__ 
+* plugins: os-wireguard 1.3 `[4] <https://github.com/opnsense/plugins/blob/stable/20.7/net/wireguard/pkg-descr>`__ 
+* plugins: os-zabbix-agent 1.8 `[5] <https://github.com/opnsense/plugins/blob/stable/20.7/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* src: fix FreeBSD Linux ABI kernel panic `[6] <FREEBSD:FreeBSD-EN-20:17.linuxthread>`__ 
+* src: fix SCTP socket use-after-free `[7] <FREEBSD:FreeBSD-SA-20:25.sctp>`__ 
+* src: fix dhclient heap overflow `[8] <FREEBSD:FreeBSD-SA-20:26.dhclient>`__ 
+* src: fix ure device driver susceptible to packet-in-packet attack `[9] <FREEBSD:FreeBSD-SA-20:27.ure>`__ 
+* src: fix bhyve privilege escalation via VMCS access `[10] <FREEBSD:FreeBSD-SA-20:28.bhyve_vmcs>`__ 
+* src: fix bhyve SVM guest escape `[11] <FREEBSD:FreeBSD-SA-20:29.bhyve_svm>`__ 
+* src: fix ftpd privilege escalation via ftpchroot `[12] <FREEBSD:FreeBSD-SA-20:30.ftpd>`__ 
 * src: set PAX_HARDENING_NOSHLIBRANDOM in the RTLD by default
 * src: fix kernel panic while trying to read multicast stream
 * ports: mpd 5.9 `[13] <http://mpd.sourceforge.net/doc5/mpd4.html#4>`__ 

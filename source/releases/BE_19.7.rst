@@ -368,8 +368,8 @@ Here are the full patch notes:
 * ports: ldns 1.7.1 `[5] <https://raw.githubusercontent.com/NLnetLabs/ldns/release-1.7.1/Changelog>`__ 
 * ports: pcre2 10.33 `[6] <https://www.pcre.org/changelog.txt>`__ 
 * ports: php 7.2.22 `[7] <https://www.php.net/ChangeLog-7.php#7.2.22>`__ 
-* ports: phpseclib 2.0.21 `[8] <https://github.com/phpseclib/phpseclib/releases>`__ 
-* ports: unbound 1.9.3 `[9] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
+* ports: phpseclib 2.0.21 `[8] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.21>`__ 
+* ports: unbound 1.9.3 `[9] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-9-3>`__ 
 
 A hotfix release was issued as 19.7.4_1:
 
