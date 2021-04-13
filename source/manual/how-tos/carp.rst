@@ -174,13 +174,24 @@ Setup outbound NAT
 ------------------
 
 When traffic is going out of the firewall it should also use the virtual
-IP address to make a seamless migration possible. The default for
-OPNsense is to use the interfaces IP address, which is in our case the
-wrong one.
+IP address on the WAN interface to make seamless transitions possible. The 
+default NAT configuration is for OPNsense is to use Automatic outbound NAT 
+rule generation using the WAN interface's IP address for outgoing connections. 
+This will not allow seamless transitions and needs to be changed to the WAN 
+VIP.
 
 Go to :menuselection:`Firewall --> NAT --> Outbound`. Choose manual outbound
-nat on this page and change the rules originating from the
+nat rule generation. On this page create the a rule originating from the
 192.168.1.0/24 network to use the CARP virtual interface (172.18.0.100).
+The rule should contain the following:
+
++-------------------------+------------------------------------+
+| Interface               | WAN                                |
++-------------------------+------------------------------------+
+| Source addresss         | LAN net (192.168.1.0/24)           |
++-------------------------+------------------------------------+
+| Translation / target    | 172.18.0.100 (CARP virtual IP)     |
++-------------------------+------------------------------------+
 
 ----------------------------
 (optional) Setup DHCP server
