@@ -2,7 +2,7 @@
 OpenDNS
 ============================
 
-`OpenDNS <www.opendns.com>`__ is a company and service that extends the Domain Name System (DNS) by adding features such as phishing
+`OpenDNS <https://www.opendns.com>`__ is a company and service that extends the Domain Name System (DNS) by adding features such as phishing
 protection and optional content filtering in addition to DNS lookup, if its DNS servers are used.
 
 When your behind a static IP address, usually it should be enough to just enter their name servers in
