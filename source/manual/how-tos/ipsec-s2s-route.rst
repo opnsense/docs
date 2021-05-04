@@ -503,3 +503,18 @@ Gateway Site-B
 
 
 Now you are all set!
+
+
+----------------
+Appendix A - NAT
+----------------
+
+Route-based tunnels do not use SPD settings like policy-based tunnels.
+Just set the usual NAT rules on your assigned IPsec interface and the following tunables:
+
+=================================== ===
+ **net.inet.ipsec.filtertunnel**     1
+ **net.inet6.ipsec6.filtertunnel**   1
+ **net.enc.out.ipsec_filter_mask**   0
+ **net.enc.in.ipsec_filter_mask**    0
+=================================== ===
