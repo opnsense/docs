@@ -132,7 +132,7 @@ Setup Virtual IPs
 
 On the master node we are going to setup our Virtual IP addresses, which
 will also be added to the backup node with a higher skew after synchronisation. 
-Go to :menuselection:`Firewall --> Virtual IPs` and add a new one with the following
+Go to :menuselection:`Interfaces --> Virtual IPs` and add a new one with the following
 characteristics:
 
 +-------------------------+------------------------------------+
@@ -293,7 +293,7 @@ downtime. To keep the downtime at a minimum when running updates just follow
 these steps:
 
 - Update your secondary unit and wait until it is online again
-- On your primary unit go to :menuselection:`Firewall --> Virtual IPs --> Status` and click **Enter Persistent CARP Maintenance Mode**
+- On your primary unit go to :menuselection:`Interfaces --> Virtual IPs --> Status` and click **Enter Persistent CARP Maintenance Mode**
 - You secondary unit is now *MASTER*, check if all services like DHCP, VPN, NAT are working correctly
 - If you ensured the update was fine, update your primary unit and hit **Leave Persistent CARP Maintenance Mode**
 
