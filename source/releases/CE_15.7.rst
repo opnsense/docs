@@ -412,7 +412,7 @@ more roadmap items already finished for 16.1.
 
 Here are the full patch notes:
 
-* ports: sudo 1.8.15 `[1] <http://www.sudo.ws/stable.html#1.8.15>`__ , sqlite 3.9.2 `[2] <https://sqlite.org/releaselog/3_9_2.html>`__ 
+* ports: sudo 1.8.15 `[1] <https://www.sudo.ws/legacy.html#1.8.15>`__ , sqlite 3.9.2 `[2] <https://sqlite.org/releaselog/3_9_2.html>`__ 
 * aliases: make url tables useable
 * interfaces: fix faulty GUI caching issues `[3] <https://github.com/opnsense/core/issues/451>`__ 
 * ipsec: obey force nat traversal

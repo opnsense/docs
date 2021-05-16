@@ -1,5 +1,5 @@
 ===========================================================================================
-{{ this_version }}  "{{ nicknames[this_version] }}" Series
+{{ this_version }} {% if nicknames[this_version] %} "{{ nicknames[this_version] }}"{% endif %} Series
 ===========================================================================================
 
 {{ versions[this_version]['prelude'] }}

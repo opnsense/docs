@@ -293,5 +293,17 @@ Levels         Choose which levels to include, omit to select all.
 Facilities     Choose which facilities to include, omit to select all.
 Hostname       Hostname or IP address where to send logs to.
 Port           Port to use, usually 514.
+Certificate    Client certificate to use (when selecting a tls transport type)
 Description    Set a description for you own use.
 ============== ================================================================================
+
+
+.. Note::
+
+    When using syslog over TLS, make sure both ends are configured properly (certificates and hostnames), certificate
+    errors are quite common in these type of setups. On OPNsense the general system log usually contains more details.
+    When it comes to tracking syslog-ng messages, `this <https://support.oneidentity.com/kb/263658/common-issues-of-tls-encrypted-message-transfer>`__
+    is usually a good resource.
+
+    A reconfigure doesn't always apply the new tls settings instantly, if that's not the case best stop and start
+    syslog in OPNsense (using the gui).

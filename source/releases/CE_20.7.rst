@@ -263,7 +263,7 @@ Here are the full patch notes:
 * backend: add new "config changed" event using syshook structure (sponsored by Modirum)
 * mvc: add a few missing control widgets from log pages
 * ui: upgrade moment.js to 2.27.0
-* plugins: os-freeradius 1.9.8 `[1] <https://github.com/opnsense/plugins/blob/master/net/freeradius/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.8 `[1] <https://github.com/opnsense/plugins/blob/stable/20.7/net/freeradius/pkg-descr>`__ 
 * plugins: os-git-backup 1.0 `[2] <https://github.com/opnsense/plugins/issues/2049>`__  (sponsored by Modirum)
 * plugins: os-haproxy 2.25 `[3] <https://curl.se/changes.html#7_73_0>`__ 
 * plugins: os-stunnel 1.0.2 adds service protocol selector (contributed by fhloston)
@@ -273,7 +273,7 @@ Here are the full patch notes:
 * ports: curl 7.73.0 `[3] <https://curl.se/changes.html#7_73_0>`__ 
 * ports: libxml2 fixes for CVE-2019-20388, CVE-2020-7595 and CVE-2020-24977
 * ports: nss 3.58 `[4] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.58_release_notes>`__ 
-* ports: openssl 1.1.1h `[5] <https://www.openssl.org/news/changelog.html#openssl-111>`__ 
+* ports: openssl 1.1.1h `[5] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: php 7.3.23 `[6] <https://www.php.net/ChangeLog-7.php#7.3.23>`__ 
 * ports: pkg 1.15.10
 * ports: radvd patch for dynamic interface shifting index
@@ -313,21 +313,21 @@ Here are the full patch notes:
 * plugins: os-bind download link changes (contributed by gap579137)
 * plugins: os-chrony 1.0 (contributed by Michael Muenz)
 * plugins: os-dnscrypt-proxy blocklist script fixes (contributed by Mark Keisler)
-* plugins: os-frr 1.17 `[1] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
-* plugins: os-postfix 1.17 `[2] <https://github.com/opnsense/plugins/blob/master/mail/postfix/pkg-descr>`__ 
-* plugins: os-rspamd 1.10 `[3] <https://github.com/opnsense/plugins/blob/master/mail/rspamd/pkg-descr>`__ 
+* plugins: os-frr 1.17 `[1] <https://github.com/opnsense/plugins/blob/stable/20.7/net/frr/pkg-descr>`__ 
+* plugins: os-postfix 1.17 `[2] <https://github.com/opnsense/plugins/blob/stable/20.7/mail/postfix/pkg-descr>`__ 
+* plugins: os-rspamd 1.10 `[3] <https://github.com/opnsense/plugins/blob/stable/20.7/mail/rspamd/pkg-descr>`__ 
 * plugins: os-theme-cicada 1.25 (contributed by Team Rebellion)
 * plugins: os-theme-tukan 1.23 (contributed by Team Rebellion)
 * plugins: os-theme-vicuna 1.1 (contributed by Team Rebellion)
-* plugins: os-wireguard 1.3 `[4] <https://github.com/opnsense/plugins/blob/master/net/wireguard/pkg-descr>`__ 
-* plugins: os-zabbix-agent 1.8 `[5] <https://github.com/opnsense/plugins/blob/master/net-mgmt/zabbix-agent/pkg-descr>`__ 
-* src: fix FreeBSD Linux ABI kernel panic `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:17.linuxthread.asc>`__ 
-* src: fix SCTP socket use-after-free `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:25.sctp.asc>`__ 
-* src: fix dhclient heap overflow `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:26.dhclient.asc>`__ 
-* src: fix ure device driver susceptible to packet-in-packet attack `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:27.ure.asc>`__ 
-* src: fix bhyve privilege escalation via VMCS access `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:28.bhyve_vmcs.asc>`__ 
-* src: fix bhyve SVM guest escape `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:29.bhyve_svm.asc>`__ 
-* src: fix ftpd privilege escalation via ftpchroot `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:30.ftpd.asc>`__ 
+* plugins: os-wireguard 1.3 `[4] <https://github.com/opnsense/plugins/blob/stable/20.7/net/wireguard/pkg-descr>`__ 
+* plugins: os-zabbix-agent 1.8 `[5] <https://github.com/opnsense/plugins/blob/stable/20.7/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* src: fix FreeBSD Linux ABI kernel panic `[6] <FREEBSD:FreeBSD-EN-20:17.linuxthread>`__ 
+* src: fix SCTP socket use-after-free `[7] <FREEBSD:FreeBSD-SA-20:25.sctp>`__ 
+* src: fix dhclient heap overflow `[8] <FREEBSD:FreeBSD-SA-20:26.dhclient>`__ 
+* src: fix ure device driver susceptible to packet-in-packet attack `[9] <FREEBSD:FreeBSD-SA-20:27.ure>`__ 
+* src: fix bhyve privilege escalation via VMCS access `[10] <FREEBSD:FreeBSD-SA-20:28.bhyve_vmcs>`__ 
+* src: fix bhyve SVM guest escape `[11] <FREEBSD:FreeBSD-SA-20:29.bhyve_svm>`__ 
+* src: fix ftpd privilege escalation via ftpchroot `[12] <FREEBSD:FreeBSD-SA-20:30.ftpd>`__ 
 * src: set PAX_HARDENING_NOSHLIBRANDOM in the RTLD by default
 * src: fix kernel panic while trying to read multicast stream
 * ports: mpd 5.9 `[13] <http://mpd.sourceforge.net/doc5/mpd4.html#4>`__ 
@@ -375,9 +375,9 @@ Here are the full patch notes:
 * backend: add regex_replace template support
 * plugins: os-acme-client 1.36 `[1] <https://github.com/opnsense/plugins/pull/1974>`__ 
 * plugins: os-dyndns 1.23 adds Gandi LiveDNS support (contributed by vizion8-dan)
-* plugins: os-haproxy 2.24 `[2] <https://github.com/opnsense/plugins/blob/master/net/haproxy/pkg-descr>`__ 
+* plugins: os-haproxy 2.24 `[2] <https://github.com/opnsense/plugins/blob/stable/20.7/net/haproxy/pkg-descr>`__ 
 * plugins: os-stunnel 1.0.1 includes performance tweaks
-* plugins: os-telegraf 1.8.2 `[3] <https://github.com/opnsense/plugins/blob/master/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-telegraf 1.8.2 `[3] <https://github.com/opnsense/plugins/blob/stable/20.7/net-mgmt/telegraf/pkg-descr>`__ 
 * plugins: os-tinc fixes cipher parsing on 20.7
 * src: remove ACPI workaround for serial console on AMD EPYC
 * src: Make pf.conf ":0" ignore link-local v6 addresses too
@@ -385,11 +385,11 @@ Here are the full patch notes:
 * src: fix unsolicited promisc mode in e1000 driver
 * src: add valectl to the system commands
 * ports: ca_root_nss/nss 3.56 `[4] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.56_release_notes>`__ 
-* ports: curl 7.72.0 `[5] <https://curl.haxx.se/changes.html#7_72_0>`__ 
+* ports: curl 7.72.0 `[5] <https://curl.se/changes.html#7_72_0>`__ 
 * ports: libressl 3.1.4 `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.1.4-relnotes.txt>`__ 
 * ports: openldap 2.4.51 `[7] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: php 7.3.21 `[8] <https://www.php.net/ChangeLog-7.php#7.3.21>`__ 
-* ports: python 3.7.9 `[9] <https://www.python.org/downloads/release/python-379/>`__ 
+* ports: python 3.7.9 `[9] <https://docs.python.org/release/3.7.9/whatsnew/changelog.html>`__ 
 * ports: sqlite 3.33.0 `[10] <https://sqlite.org/releaselog/3_33_0.html>`__ 
 * ports: squid 4.13 `[11] <http://www.squid-cache.org/Versions/v4/squid-4.13-RELEASENOTES.html>`__ 
 * ports: syslog-ng dlsym() workaround
@@ -469,8 +469,8 @@ Here are the full patch notes against version 20.7-RC1:
 * system: syslog-ng RFC5424 on FreeBSD 12 needs flags(syslog-protocol)
 * installer: welcome users as genuine 20.7 installer
 * web proxy: do not try to force cachemanager access to use ICAP
-* plugins: os-collectd 1.3 `[2] <https://github.com/opnsense/plugins/blob/master/net-mgmt/collectd/pkg-descr>`__ 
-* plugins: os-zabbix5-proxy 1.3 `[3] <https://github.com/opnsense/plugins/blob/master/net-mgmt/zabbix5-proxy/pkg-descr>`__ 
+* plugins: os-collectd 1.3 `[2] <https://github.com/opnsense/plugins/blob/stable/20.7/net-mgmt/collectd/pkg-descr>`__ 
+* plugins: os-zabbix5-proxy 1.3 `[3] <https://github.com/opnsense/plugins/blob/stable/20.7/net-mgmt/zabbix5-proxy/pkg-descr>`__ 
 * src: prevent netgraph page fault for LTE usage
 * ports: dnsmasq 2.82 `[4] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: monit 5.27.0 `[5] <https://mmonit.com/monit/changes/>`__ 
@@ -588,7 +588,7 @@ Here are the full patch notes against 20.1.8_1:
 * ports: ca_root_nss 3.54
 * ports: curl 7.71.1 `[6] <https://curl.se/changes.html#7_71_1>`__ 
 * ports: php 7.3.20 `[7] <https://www.php.net/ChangeLog-7.php#7.3.20>`__ 
-* ports: python 3.7.8 `[8] <https://www.python.org/downloads/release/python-378/>`__ 
+* ports: python 3.7.8 `[8] <https://docs.python.org/release/3.7.8/whatsnew/changelog.html>`__ 
 * ports: sqlite 3.32.3 `[9] <https://sqlite.org/releaselog/3_32_3.html>`__ 
 * ports: suricata 5.0.3 `[10] <https://suricata-ids.org/2020/04/28/suricata-5-0-3-released/>`__ 
 

@@ -124,7 +124,7 @@ Here are the full patch notes:
 * plugins: os-theme-tukan 1.18 (contributed by Team Rebellion)
 * ports: curl 7.65.0 `[9] <https://curl.haxx.se/changes.html>`__ 
 * ports: lighttpd 1.4.54 `[10] <https://www.lighttpd.net/2019/5/27/1.4.54/>`__ 
-* ports: python 3.7.3 `[11] <https://www.python.org/downloads/release/python-373/>`__ 
+* ports: python 3.7.3 `[11] <https://docs.python.org/release/3.7.3/whatsnew/changelog.html>`__ 
 * ports: openssl 1.0.2s `[12] <https://www.openssl.org/news/cl102.txt>`__ 
 * ports: php 7.2.19 `[13] <https://www.php.net/ChangeLog-7.php#7.2.19>`__ 
 

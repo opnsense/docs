@@ -122,7 +122,7 @@ there’s a couple optional of packages that help you to be productive:
 
 ::
 
-    # pkg install vim-lite joe nano gnu-watch git tmux screen
+    # pkg install vim-console emacs-nox joe nano gnu-watch git tmux screen
 
 The most important one is *git* for obtaining the code, the rest is
 optional if you need it—mostly editors and terminal wrappers. It is also
