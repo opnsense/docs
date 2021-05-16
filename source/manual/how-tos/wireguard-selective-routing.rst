@@ -54,7 +54,7 @@ Step 2 - Configure the local peer
      **Private Key**       *This will initially be blank; it will be populated once the configuration is saved*
      **Listen Port**       *51820 or a higher numbered unique port*
      **DNS Server**        *Leave this blank*
-     **Tunnel Address**    *Insert the VPN tunnel IP provided by your VPN provider, in CIDR format, eg 10.24.24.10/32*
+     **Tunnel Address**    *Insert the local VPN tunnel IP provided by your VPN provider, in CIDR format, eg 10.24.24.10/32*
      **Peers**             *In the dropdown, select the Endpoint you configured above*
      **Disable Routes**    *Checked*
      **Gateway**           *Specify an IP that is 1 number below your VPN tunnel IP, eg 10.24.24.9 - see note below*
