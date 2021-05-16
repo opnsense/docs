@@ -54,7 +54,7 @@ Step 2 - Configure the local peer
      **Private Key**       *This will initially be blank; it will be populated once the configuration is saved*
      **Listen Port**       *51820 or a higher numbered unique port*
      **DNS Server**        *Leave this blank or specify the DNS servers provided by your VPN provider*
-     **Tunnel Address**    *Insert the VPN tunnel IP provided by your VPN provider, in CIDR format, eg 10.24.24.10/32*
+     **Tunnel Address**    *Insert the local VPN tunnel IP provided by your VPN provider, in CIDR format, eg 10.24.24.10/32*
      **Peers**             *In the dropdown, select the Endpoint you configured above*
      **Disable Routes**    *Checked*
      **Gateway**           *Specify an IP that is 1 number below your VPN tunnel IP, eg 10.24.24.9 - see note below*
@@ -107,15 +107,20 @@ Step 6 - Create a gateway
 - Click **Add**
 - Configure the gateway as follows (if an option is not mentioned below, leave it as the default):
 
-    ==================== ============================================================================================
-     **Name**             *Call it whatever you want, easiest to name it the same as the interface*
-     **Description**      *Add one if you wish to*
-     **Interface**        *Select your newly created interface in the dropdown*
-     **Address Family**   *Select IPv4 in the dropdown*
-     **IP address**       *Insert the gateway IP that you configured under the WireGuard local peer configuration*
-     **Far Gateway**      *Checked*
-     **Monitor IP**       *Insert an external IP to monitor the gateway, such as 1.1.1.1 or 8.8.8.8*
-    ==================== ============================================================================================
+    ================================ ============================================================================================
+     **Name**                         *Call it whatever you want, easiest to name it the same as the interface*
+     **Description**                  *Add one if you wish to*
+     **Interface**                    *Select your newly created interface in the dropdown*
+     **Address Family**               *Select IPv4 in the dropdown*
+     **IP address**                   *Insert the gateway IP that you configured under the WireGuard local peer configuration*
+     **Far Gateway**                  *Checked*
+     **Disable Gateway Monitoring**   *Unchecked*
+     **Monitor IP**                   *Insert the endpoint VPN tunnel IP (NOT the public IP) of your VPN provider - see note below*
+    ================================ ============================================================================================
+
+.. Note::
+
+    Specifying the endpoint VPN tunnel IP is preferable. As an alternative, you could include an external IP such as 1.1.1.1 or 8.8.8.8, but be aware that this IP will *only* be accessible through the VPN tunnel (OPNsense creates a static route for it), and therefore will not accessible from local hosts that are not using the tunnel
 
 - **Save** the gateway configuration and then click **Apply changes**
 
