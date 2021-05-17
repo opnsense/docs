@@ -94,6 +94,10 @@ The settings on this page concerns logging into OPNsense. The “Secure Shell”
 |                                              | password page.                                                        |
 +----------------------------------------------+-----------------------------------------------------------------------+
 
+.. Tip::
+
+    To restrict access to the Opnsense login page from unauthorized computers, create :doc:`/manual/firewall`.
+    Set your (authorized) computer I.P. addresses as the source and the firewall I.P. address as the destination.
 
 ----
 Cron
