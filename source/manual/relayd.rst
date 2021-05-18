@@ -51,7 +51,7 @@ and how to handle traffic when being recieved.
 The server type is one of the most important settings and defines if this virtual host is acting either as a redirection (using the firewall/transparant)
 or a relay (layer 7 mode).
 
-It is possible to choose two different tables to forward too here, in standard (non advanced mode) only the primary table is visible
+It is possible to choose two different tables to forward to here, in standard (non advanced mode) only the primary table is visible
 including settings how traffic should be divided (:code:`Scheduler`) and hosts should be checked as described earlier.
 
 When a backup is specified, it will be used when all hosts in the primary table are down (according to the configured check).
