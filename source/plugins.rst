@@ -82,6 +82,7 @@ Other
    manual/how-tos/accounting
    manual/how-tos/mailgateway
    manual/git-backup
+   manual/relayd
 
 ----------------
 Reporting
