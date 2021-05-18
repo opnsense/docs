@@ -94,11 +94,50 @@ The settings on this page concerns logging into OPNsense. The “Secure Shell”
 |                                              | password page.                                                        |
 +----------------------------------------------+-----------------------------------------------------------------------+
 
-.. Tip::
 
-    To restrict access to the Opnsense login page from unauthorized computers, create :doc:`/manual/firewall`.
-    Set your (authorized) computer I.P. addresses as the source and the firewall I.P. address as the destination.
+    
+----    
+Administrative Access
+----
 
+To restrict access to the Opnsense login page from unauthorized computers, there are a few ways. 
+One way is to restrict access by creating firewall rules on your L.A.N. (Access on L.A.N. - below).
+Another more complex method is using a V.L.A.N. (Administrative V.L.A.N. - below) and appropriate firewall rules.
+
+....
+Access on L.A.N.
+....
+
+.. Warning::
+    
+   This method recommends removing a safety feature - ```Disabling anti-lockout```.
+    If the new Firewall rules you have created are not proper, administrative access will be locked out.
+    
+In :menuselection:`Firewall: Rules: LAN.`, create new firewall rule(s) :doc:`/manual/firewall` setting your authorized computer(s) I.P. address(es) as the source and the firewall I.P. address with port ```443``` as the destination.
+After you have completed creating all your new rules, review them to verify they are correct to prevent locking yourself out of the Website.
+Once you are satified with your configuration, got to :menuselection:`Firewall: Settings: Advanced.`, check ```Disable anti-lockout```,  and then click ```save```.
+    
+....
+Administrative V.L.A.N.
+....
+
+This is more advanced, and recommend by I.T. administrators as it help secure / restrict access only to permitted computers on a managment segment of the network. 
+First, create a new administrative / management V.L.A.N. :doc:`/manual/other-interfaces`.
+Next, create firewall rules :doc:`/manual/firewall` as needed.  When creating rules, make sure to restrict access to the I.P. address(es) you deem authorized as the source and the firewall I.P. with port 443 as the destination.
+
+At this point, you will only have access on your L.A.N. interface. You should test your new V.L.A.N. and the rules created for it. 
+Go to :menuselection:`System: Settings: Administration` and under ```Listen Interfaces```, there will be a check for L.A.N.
+Click on your new V.L.A.N. you created.
+There should now be a check mark on L.A.N. and your new V.L.A.N. 
+
+Test your access by trying to connect to the firewall I.P. address port 443 on the new V.L.A.N. you just configured.
+If you do not have access, there is something wrong with the new configuration.  Review your changes (focusing on firewall rules) to identify the error.  
+If you have access, go back to ```Listen Interfaces```, click on L.A.N. and then click on save.
+This will remove access for any computers on your L.A.N. network segment (assuming they are not part of the authorized firewall rules).
+
+.. Note::
+   In order to take advantage of using a V.L.A.N., your network equipment (aside from your Opnsense firewall) needs to be able to support this functionality.
+    
 ----
 Cron
 ----
