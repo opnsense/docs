@@ -123,7 +123,7 @@ Reporting an issue
 ------------------
 Issues can be easily reported on github, please consider carefully if the issue
 could be a configuration or user error before reporting it. If you are unsure,
-report you issue on the `Forum <https://forum.opnsense.org>`__ or on `IRC <https://web.libera.chat/#opnsense>`__.
+report your issue on the `forum <https://forum.opnsense.org>`__ or on `IRC <https://web.libera.chat/#opnsense>`__.
 
 ---------------
 
