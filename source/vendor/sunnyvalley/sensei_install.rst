@@ -113,7 +113,7 @@ Your hardware will be analyzed to ensure it meets the minimum requirements. You 
 
 * Select the Ethernet Interface(s) to protect. To do so, click on an interface and use the right/left arrow buttons to move it to protected/unprotected interfaces combo box.
 
-For detailed information on "Deployment Modes", `see here <https://help.sunnyvalley.io/hc/en-us/articles/360053347013>`_. 
+For detailed information on "Deployment Modes", `see here <https://www.sunnyvalley.io/docs/guides/deployment-modes>`_. 
 
 .. image:: images/sensei-wizard-interface-selection-available.png
     :width: 100%
