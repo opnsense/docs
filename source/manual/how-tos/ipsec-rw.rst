@@ -8,7 +8,7 @@ IPsec: Setup Remote Access
 Intro
 -----
 
-Remote adccess to the company's infrastructure is one of most important and critical services exposed
+Remote access to the company's infrastructure is one of most important and critical services exposed
 to the internet. IPsec Mobile Clients offer mobile users (formerly known as Road Warriors) a solution
 that is easy to setup and compatible with most current devices.
 

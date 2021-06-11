@@ -38,7 +38,8 @@ Getting Started
 User Manual
 ----------------------------
 
-You can get detailed *How to* documents from Sensei's Documentation Site located at https://help.sunnyvalley.io/
+You can get detailed *How to* documents from Sensei's Documentation Site located at https://www.sunnyvalley.io/docs/
+
 
 * `Dashboard <https://www.sunnyvalley.io/docs/opnsense/customizing-dashboard/dashboard>`_
 * `Status <https://www.sunnyvalley.io/docs/opnsense/customizing-dashboard/status>`_
@@ -58,10 +59,12 @@ If you need help with Sensei, there is an active discussion on the OPNsense foru
 
 You may also submit bug reports by visiting the *Report Bug* page in the Sensei web UI.
 
+
 With its in-depth coverage, `Sensei Documentation <https://www.sunnyvalley.io/docs/opnsense>`_ is always available for reference.
 
 * `OPNsense Forum <https://forum.opnsense.org/index.php?board=38.0>`_
 * `Users' Manual <https://www.sunnyvalley.io/docs/opnsense>`_
+
 
 **Premium Subscription Support**
 
