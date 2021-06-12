@@ -40,13 +40,14 @@ User Manual
 
 You can get detailed *How to* documents from Sensei's Documentation Site located at https://www.sunnyvalley.io/docs/
 
-* `Dashboard <https://www.sunnyvalley.io/docs/customizing-dashboard/dashboard>`_
-* `Status <https://www.sunnyvalley.io/docs/customizing-dashboard/status>`_
-* `Reports <https://www.sunnyvalley.io/docs/reporting-analytics/reports-overview>`_
-* `Security <https://www.sunnyvalley.io/docs/policies/security-rules>`_
-* `Application Control <https://www.sunnyvalley.io/docs/policies/application-control-rules>`_
-* `Web Control <https://www.sunnyvalley.io/docs/policies/web-control-rules>`_
-* `Configuration <https://www.sunnyvalley.io/docs/configuration/overview>`_
+
+* `Dashboard <https://www.sunnyvalley.io/docs/opnsense/customizing-dashboard/dashboard>`_
+* `Status <https://www.sunnyvalley.io/docs/opnsense/customizing-dashboard/status>`_
+* `Reports <https://www.sunnyvalley.io/docs/opnsense/reporting-analytics/reports-overview>`_
+* `Security <https://www.sunnyvalley.io/docs/opnsense/policies/security-rules>`_
+* `Application Control <https://www.sunnyvalley.io/docs/opnsense/policies/application-control-rules>`_
+* `Web Control <https://www.sunnyvalley.io/docs/opnsense/policies/web-control-rules>`_
+* `Configuration <https://www.sunnyvalley.io/docs/opnsense/configuring/overview>`_
 
 ----------------------------
 Getting Support
@@ -58,16 +59,18 @@ If you need help with Sensei, there is an active discussion on the OPNsense foru
 
 You may also submit bug reports by visiting the *Report Bug* page in the Sensei web UI.
 
-With its in-depth coverage, `Sensei Documentation <https://www.sunnyvalley.io/docs/>`_ is always available for reference.
+
+With its in-depth coverage, `Sensei Documentation <https://www.sunnyvalley.io/docs/opnsense>`_ is always available for reference.
 
 * `OPNsense Forum <https://forum.opnsense.org/index.php?board=38.0>`_
-* `Users' Manual <https://www.sunnyvalley.io/docs/>`_
+* `Users' Manual <https://www.sunnyvalley.io/docs/opnsense>`_
+
 
 **Premium Subscription Support**
 
 When you buy a Sensei Premium Subscription, you are entitled to Sensei Basic Support. Additional support plans are available on demand.
 
-* `Compare Support Plans <https://www.sunnyvalley.io/support>`_
+* `Compare Support Plans <https://www.sunnyvalley.io/support-plans/>`_
 * `Access Support Center <https://help.sunnyvalley.io/hc/en-us>`_
 
 **Support Options for Channel Partners**
