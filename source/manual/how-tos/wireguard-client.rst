@@ -43,7 +43,7 @@ Step 2 - Configure the local peer (server)
 - **Save** the Local peer configuration, and then click **Save** again
 - Re-open the Local peer configuration
 - Copy the public key that has been generated in the configuration. This will be needed for the client device - see Step 9
-- **Save** or **Cancel* to exit the configuration
+- **Save** or **Cancel** to exit the configuration
 
 ---------------------------------------------
 Step 3 - Configure the endpoint (client peer)
@@ -58,7 +58,7 @@ Step 3 - Configure the endpoint (client peer)
      **Name**               *Call it whatever you want (eg* :code:`Phone` *)*
      **Public Key**         *Insert the public key from the client; you may need to leave this blank initially until you generate keys on the client - see Step 9*
      **Allowed IPs**        *Unique tunnel IP address (IPv4 and/or IPv6) of client - it should be a /32 or /128 (as applicable) within the subnet configured on the local peer. For example, 10.10.10.2/32*
-   ====================== ====================================================================================================
+    ====================== ====================================================================================================
 
 - **Save** the Endpoint configuration, and then click **Save** again
 - Now go back to :menuselection:`VPN --> WireGuard --> Local`
@@ -96,7 +96,7 @@ Step 5 - Assign an interface to WireGuard and enable it
      **IPv6 Configuration Type**   *None*
     ============================= ===================================================================
 
-. Note::
+.. Note::
 
     There is no need to configure IPs on the interface. The tunnel address(es) specified in the Local configuration for your WireGuard server will be automatically assigned to the interface once WireGuard is restarted
 
@@ -127,7 +127,7 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
      **Quick**                    *Checked*
      **Interface**                *WAN*
      **Direction**                *in*
-     **TCP/IP Version**           *IPv4 or IPv4+IPv6 (as desired)*
+     **TCP/IP Version**           *IPv4 or IPv4+IPv6 (as desired, depending on how you want clients to connect to the server; note this is distinct from what type of traffic is allowed in the tunnel once established)*
      **Protocol**                 *UDP*
      **Source / Invert**          *Unchecked*
      **Source**                   *any*
@@ -152,14 +152,14 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
      **Source / Invert**          *Unchecked*
      **Source**                   *Select the generated alias for the interface subnet(s) (eg* :code:`HomeWireGuard net` *)*
      **Destination / Invert**     *Unchecked*
-     **Destination**              *Specify the IPs that client peers should be able to access, eg 'any' or specific IPs/subnets*
+     **Destination**              *Specify the IPs that client peers should be able to access, eg "any" or specific IPs/subnets*
      **Destination port range**   *any*
      **Description**              *Add one if you wish to*
     ============================ ==================================================================================================
 
 - **Save** the rule, and then click **Apply Changes**
 
-. Note::
+.. Note::
 
     If you don't assign an interface as suggested in Step 5, then the second firewall rule outlined above will need to be configured on the automatically created :code:`WireGuard` group that appears once the Local configuration is enabled and WireGuard is started. You will also need to manually define an alias (via :menuselection:`Firewall --> Aliases`) for the IPs/subnet(s) that will be the source in the firewall rule (or use the default **WireGuard net** if you have only one local WireGuard instance and only one WireGuard endpoint configured)
 
@@ -204,26 +204,26 @@ Step 9 - Configure the WireGuard client
 
     Key generation can be performed on an appropriate device with `WireGuard client tools <https://www.wireguard.com/install>`__ installed. A one-liner for generating a matching private and public keypair is :code:`wg genkey | tee private.key | wg pubkey > public.key`. Alternatively, WireGuard apps that can be used on some devices can automate key generation for you
 
-Client configuration is largely beyond the scope of this how-to since there is such a wide array of possible targets (and corresponding configuration methods). An example client (and server) configuration is in Appendix A. The key pieces of information required to configure a client are described below:
+Client configuration is largely beyond the scope of this how-to since there is such a wide array of possible targets (and corresponding configuration methods). An example client (and server) configuration is in the Appendix. The key pieces of information required to configure a client are described below:
 
     ====================== ====================================================================================================
      **[Interface]**
-     **Address**          *Refers to the IP(s) specified as Allowed IPs in the Local configuration on OPNsense. For example, 10.10.10.2/32*
-     **PublicKey**         *Refers to the public key that (along with a private key) needs to be manually or automatically generated on the client. The public key must then be copied into the Endpoint configuration on OPNsense for the relevant client peer - see Step 3*
-     **DNS**        *Refers to the DNS servers that the client should use for the tunnel - see note below*
+     **Address**            *Refers to the IP(s) specified as Allowed IPs in the Local configuration on OPNsense. For example, 10.10.10.2/32*
+     **PublicKey**          *Refers to the public key that (along with a private key) needs to be manually or automatically generated on the client. The public key must then be copied into the Endpoint configuration on OPNsense for the relevant client peer - see Step 3*
+     **DNS**                *Refers to the DNS servers that the client should use for the tunnel - see note below*
 
      **[Peer]**
-     **PublicKey**         *Refers to the public key that is generated on OPNsense. Copy the public key from the Local configuration on OPNsense - see Step 2*
+     **PublicKey**          *Refers to the public key that is generated on OPNsense. Copy the public key from the Local configuration on OPNsense - see Step 2*
      **Endpoint**           *Refers to the public IP address or publicly resolvable domain name of your OPNsense host, and the port specified in the Local configuration on OPNsense*
-     **AllowedIPs**        *Refers to the traffic (by destination IPs/subnets) that is to be sent via the tunnel. For example, if all traffic on the client is to be sent through the tunnel, specify 0.0.0.0/0 (IPv4) and/or ::/0 (IPv6)*
-   ====================== ====================================================================================================
+     **AllowedIPs**         *Refers to the traffic (by destination IPs/subnets) that is to be sent via the tunnel. For example, if all traffic on the client is to be sent through the tunnel, specify 0.0.0.0/0 (IPv4) and/or ::/0 (IPv6)*
+    ====================== ====================================================================================================
 
 .. Note::
 
     If the DNS server(s) specified are only accessible over the tunnel, or you want them to be accessed over the tunnel, make sure they are covered by the AllowedIPs
 
 -----------------------------------
-Appendix A - Example configurations
+Appendix - Example configurations
 -----------------------------------
 
 .. Warning::
