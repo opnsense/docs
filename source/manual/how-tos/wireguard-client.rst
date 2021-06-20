@@ -38,11 +38,11 @@ Step 2 - Configure the local peer (server)
 
 .. Note::
 
-    The tunnel address must be in CIDR notation and must be a unique subnet for your network. It should be an appropriate size that includes all the client peers that will use the tunnel. For example, for IPv4 it could be 10.10.10.1/24. For IPv6, it could either be a unique ULA /64 subnet, or a unique GUA /64 subnet derived from your prefix delegation. **Do not use a tunnel address that is a /32 (IPv4) or a /128 (IPv6)**
+    The tunnel address must be in CIDR notation and must be a unique IP and subnet for your network. The subnet should be an appropriate size that includes all the client peers that will use the tunnel. For IPv4 it should be a private (RFC1918) address, for example 10.10.10.1/24. For IPv6, it could either be a unique ULA /64 subnet, or a unique GUA /64 subnet derived from your prefix delegation. **Do not use a tunnel address that is a /32 (IPv4) or a /128 (IPv6)**
 
 - **Save** the Local peer configuration, and then click **Save** again
 - Re-open the Local peer configuration
-- Copy the public key that has been generated in the configuration. This will be needed for the client device - see Step 9
+- Copy the public key that has been generated in the configuration. This will be needed for the client device - see Step 7
 - **Save** or **Cancel** to exit the configuration
 
 ---------------------------------------------
@@ -56,7 +56,7 @@ Step 3 - Configure the endpoint (client peer)
     ====================== ====================================================================================================
      **Enabled**            *Checked*
      **Name**               *Call it whatever you want (eg* :code:`Phone` *)*
-     **Public Key**         *Insert the public key from the client; you may need to leave this blank initially until you generate keys on the client - see Step 9*
+     **Public Key**         *Insert the public key from the client; you may need to leave this blank initially until you generate keys on the client - see Step 7*
      **Allowed IPs**        *Unique tunnel IP address (IPv4 and/or IPv6) of client - it should be a /32 or /128 (as applicable) within the subnet configured on the local peer. For example, 10.10.10.2/32*
     ====================== ====================================================================================================
 
@@ -73,13 +73,25 @@ Step 4 - Turn on WireGuard
 
 Turn on WireGuard under :menuselection:`VPN --> WireGuard --> General` if it is not already on
 
--------------------------------------------------------
-Step 5 - Assign an interface to WireGuard and enable it
--------------------------------------------------------
+--------------------------------
+Step 5 - Assignments and routing
+--------------------------------
 
 .. Note::
 
-    This step is not strictly necessary if you only intend for your clients to use the tunnel to access local IPs/subnets behind OPNsense. It is only needed if you intend to use the WireGuard tunnel to also access IPs outside of the local network, for example the public internet. However, it is useful to assign an interface in both cases as doing so generates an alias for the tunnel subnet(s) that can be used in firewall rules
+    The steps outlined in Steps 5(a) and 5(b) below may not be required at all in your circumstances. Strictly speaking, if you only intend for your clients to use the tunnel to access local IPs/subnets behind OPNsense, then neither step is actually necessary. If you intend to use the WireGuard tunnel to also access IPs outside of the local network, for example the public internet, then at least one, and perhaps both, of the steps will be required
+
+    **However**, it is useful to complete Step 5(a) anyway, for the reasons explained in that step
+
+Step 5(a) - Assign an interface to WireGuard (recommended)
+----------------------------------------------------------
+
+.. Hint::
+
+    This step is not strictly necessary in any circumstances for a road warrior setup. However, it is useful to implement, for several reasons:
+    - It generates an alias for the tunnel subnet(s) that can be used in firewall rules. Otherwise you will need to define your own alias or at least manually specify the subnet(s)
+    - It automatically adds an IPv4 outbound NAT rule, which will allow the tunnel to access IPv4 IPs outside of the local network (if that is desired), without needing to manually add a rule
+    - It allows separation of the firewall rules of each WireGuard instance (each :code:`wgX` device). Otherwise they all need to be configured on the default WireGuard group that OPNsense creates. This is more an organisational aesthetic, rather than an issue of substance    
 
 - Go to :menuselection:`Interfaces --> Assignments`
 - In the dropdown next to “New interface:”, select the WireGuard device (:code:`wg0` if this is your first one)
@@ -101,19 +113,47 @@ Step 5 - Assign an interface to WireGuard and enable it
     There is no need to configure IPs on the interface. The tunnel address(es) specified in the Local configuration for your WireGuard server will be automatically assigned to the interface once WireGuard is restarted
 
 - **Save** the interface configuration and then click **Apply changes**
+- Restart WireGuard - you can do this by turning it off and on under :menuselection:`VPN --> WireGuard --> General`
 
 .. Tip::
 
     When assigning interfaces, gateways can be added to them. This is useful if balancing traffic across multiple tunnels is required or in more complex routing scenarios. To do this, go to :menuselection:`System --> Gateways --> Single` and add a new gateway. Choose the relevant WireGuard interface and set the Gateway to **dynamic**. These scenarios are otherwise beyond the scope of this how-to
 
---------------------------
-Step 6 - Restart WireGuard
---------------------------
+Step 5(b) - Create an outbound NAT rule
+---------------------------------------
 
-Now restart WireGuard - you can do this by turning it off and on under :menuselection:`VPN --> WireGuard --> General`
+.. Hint::
+
+    This step is only necessary (if at all) to allow client peers to access IPs outside of the local IPs/subnets behind OPNsense - see the note under Step 5. If an interface has already been assigned under Step 5(a), then it is not necessary for IPv4 traffic, and is only necessary for IPv6 traffic if the tunnel uses IPv6 ULAs (IPv6 GUAs don't need NAT). So in many use cases this step can be skipped
+
+- Go to :menuselection:`Firewall --> NAT --> Outbound`
+- Select "Hybrid outbound NAT rule generation” if it is not already selected, and click **Save** and then **Apply changes**
+- Click **Add** to add a new rule
+- Configure the rule as follows (if an option is not mentioned below, leave it as the default):
+
+    ========================== =========================================================================================================
+     **Interface**              *WAN*
+     **TCP/IP Version**         *IPv4 or IPv6 (as applicable)*
+     **Protocol**               *any*
+     **Source invert**          *Unchecked*
+     **Source address**         *If you assigned an interface under Step 5(a), select the generated alias for the interface subnet(s) (eg* :code:`HomeWireGuard net` *) - see note below if you didn't assign this interface*
+     **Source port**            *any*
+     **Destination invert**     *Unchecked*
+     **Destination address**    *any*
+     **Destination port**       *any*
+     **Translation / target**   *Interface address*
+     **Description**            *Add one if you wish to*
+    ========================== =========================================================================================================
+
+- **Save** the rule, and then click **Apply changes**
+- Restart WireGuard - you can do this by turning it off and on under :menuselection:`VPN --> WireGuard --> General`
+
+.. Hint::
+
+    If you didn't assign an interface as suggested in Step 5(a), then you will need to manually specify the source IPs/subnet(s) for the tunnel (for example, 10.10.10.0/24). It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one local WireGuard instance and only one WireGuard endpoint configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
 
 ------------------------------
-Step 7 - Create firewall rules
+Step 6 - Create firewall rules
 ------------------------------
 
 This will involve two steps - first creating a firewall rule on the WAN interface to allow clients to connect to the OPNsense WireGuard server, and then creating a firewall rule to allow access by the clients to whatever IPs they are intended to have access to.
@@ -138,19 +178,19 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
     ============================ ==================================================================================================
 
 - **Save** the rule, and then click **Apply Changes**
-- Then go to :menuselection:`Firewall --> Rules --> [Name of interface created in Step 5]`
+- Then go to :menuselection:`Firewall --> Rules --> [Name of interface assigned in Step 5(a)]` - see note below if you didn't assign this interface
 - Click **Add** to add a new rule
 - Configure the rule as follows (if an option is not mentioned below, leave it as the default):
 
     ============================ ==================================================================================================
      **Action**                   *Pass*
      **Quick**                    *Checked*
-     **Interface**                *Whatever interface you are configuring the rule on (eg* :code:`HomeWireGuard` *)*
+     **Interface**                *Whatever interface you are configuring the rule on (eg* :code:`HomeWireGuard` *) - see note below*
      **Direction**                *in*
      **TCP/IP Version**           *IPv4 or IPv4+IPv6 (as applicable)*
      **Protocol**                 *any*
      **Source / Invert**          *Unchecked*
-     **Source**                   *Select the generated alias for the interface subnet(s) (eg* :code:`HomeWireGuard net` *)*
+     **Source**                   *If you assigned an interface under Step 5(a), select the generated alias for the interface subnet(s) (eg* :code:`HomeWireGuard net` *) - see note below if you didn't assign this interface*
      **Destination / Invert**     *Unchecked*
      **Destination**              *Specify the IPs that client peers should be able to access, eg "any" or specific IPs/subnets*
      **Destination port range**   *any*
@@ -161,43 +201,10 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
 
 .. Note::
 
-    If you don't assign an interface as suggested in Step 5, then the second firewall rule outlined above will need to be configured on the automatically created :code:`WireGuard` group that appears once the Local configuration is enabled and WireGuard is started. You will also need to manually define an alias (via :menuselection:`Firewall --> Aliases`) for the IPs/subnet(s) that will be the source in the firewall rule (or use the default **WireGuard net** if you have only one local WireGuard instance and only one WireGuard endpoint configured)
-
-------------------------------------
-Step 8 - Create an outbound NAT rule
-------------------------------------
-
-.. Note::
-
-    This step is only necessary to allow client peers to access IPs outside of the local IPs/subnets behind OPNsense - see the first note in Step 5.
-
-- Go to :menuselection:`Firewall --> NAT --> Outbound`
-- Select "Hybrid outbound NAT rule generation” if it is not already selected, and click **Save** and then **Apply changes**
-- Click **Add** to add a new rule
-- Configure the rule as follows (if an option is not mentioned below, leave it as the default):
-
-    ========================== =========================================================================================================
-     **Interface**              *Select the interface for your WireGuard tunnel (eg* :code:`HomeWireGuard` *)*
-     **TCP/IP Version**         *IPv4*
-     **Protocol**               *any*
-     **Source invert**          *Unchecked*
-     **Source address**         *Select the generated alias for the interface subnet(s) (eg* :code:`HomeWireGuard net` *)*
-     **Source port**            *any*
-     **Destination invert**     *Unchecked*
-     **Destination address**    *any*
-     **Destination port**       *any*
-     **Translation / target**   *Interface address*
-     **Description**            *Add one if you wish to*
-    ========================== =========================================================================================================
-
-- **Save** the rule, and then click **Apply changes**
-
-.. Hint::
-
-    If you have configured IPv6 on your WireGuard tunnel, you may or may not need to also configure an IPv6 outbound NAT rule. If your tunnel is configured to use a ULA subnet, then you will need an outbound NAT rule that will be similar to the above. If you are using a GUA subnet, the rule won't be required
+    If you didn't assign an interface as suggested in Step 5(a), then the second firewall rule outlined above will need to be configured on the automatically created :code:`WireGuard` group that appears once the Local configuration is enabled and WireGuard is started. You will also need to manually specify the source IPs/subnet(s) for the tunnel. It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one local WireGuard instance and only one WireGuard endpoint configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
 
 ---------------------------------------
-Step 9 - Configure the WireGuard client
+Step 7 - Configure the WireGuard client
 ---------------------------------------
 
 .. Tip::
