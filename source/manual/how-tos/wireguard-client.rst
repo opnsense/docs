@@ -38,7 +38,7 @@ Step 2 - Configure the local peer (server)
 
 .. Note::
 
-    The tunnel address must be in CIDR notation and must be a unique IP and subnet for your network. The subnet should be an appropriate size that includes all the client peers that will use the tunnel. For IPv4 it should be a private (RFC1918) address, for example 10.10.10.1/24. For IPv6, it could either be a unique ULA /64 subnet, or a unique GUA /64 subnet derived from your prefix delegation. **Do not use a tunnel address that is a /32 (IPv4) or a /128 (IPv6)**
+    The tunnel address must be in CIDR notation and must be a unique IP and subnet for your network. The subnet should be an appropriate size that includes all the client peers that will use the tunnel. For IPv4 it should be a private (RFC1918) address, for example 10.10.10.1/24. For IPv6, it could either be a unique ULA /64 address, or a unique GUA /64 address derived from your prefix delegation. **Do not use a tunnel address that is a /32 (IPv4) or a /128 (IPv6)**
 
 - **Save** the Local peer configuration, and then click **Save** again
 - Re-open the Local peer configuration
