@@ -12,6 +12,7 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
+import datetime
 import sys
 import subprocess
 import os
@@ -71,7 +72,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OPNsense'
-copyright = u'2016-2019, Deciso B.V'
+copyright = u'2016-%d, Deciso B.V' % datetime.datetime.now().year
 author = u'Deciso B.V.'
 
 # The version info for the project you're documenting, acts as replacement for
