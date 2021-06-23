@@ -67,11 +67,12 @@ Step 3 - Configure the endpoint (client peer)
 - **Save** the Local peer configuration again, and then click **Save** once more
 - Repeat this Step 3 for as many clients as you wish to configure
 
---------------------------
-Step 4 - Turn on WireGuard
---------------------------
+----------------------------------
+Step 4 - Turn on/restart WireGuard
+----------------------------------
 
-Turn on WireGuard under :menuselection:`VPN --> WireGuard --> General` if it is not already on
+- Turn on WireGuard under :menuselection:`VPN --> WireGuard --> General` if it is not already on (click **Apply** after checking the checkbox)
+- Otherwise, restart WireGuard - you can do this by turning it off and on under :menuselection:`VPN --> WireGuard --> General` (click **Apply** after both unchecking and checking the checkbox)
 
 --------------------------------
 Step 5 - Assignments and routing
@@ -79,7 +80,7 @@ Step 5 - Assignments and routing
 
 .. Note::
 
-    The steps outlined in Steps 5(a) and 5(b) below may not be required at all in your circumstances. Strictly speaking, if you only intend for your clients to use the tunnel to access local IPs/subnets behind OPNsense, then neither step is actually necessary. If you intend to use the WireGuard tunnel to also access IPs outside of the local network, for example the public internet, then at least one, and perhaps both, of the steps will be required
+    The steps outlined in Steps 5(a) and 5(b) below may not be required at all in your circumstances. Strictly speaking, if you only intend for your clients to use the tunnel to access local IPs/subnets behind OPNsense, then neither step is actually necessary. If you intend to use the WireGuard tunnel to also access IPs outside of the local network, for example the public internet, then at least one, and perhaps both, of the steps will be required. This is explained below
 
     **However**, it is useful to complete Step 5(a) anyway, for the reasons explained in that step
 
@@ -113,7 +114,7 @@ Step 5(a) - Assign an interface to WireGuard (recommended)
     There is no need to configure IPs on the interface. The tunnel address(es) specified in the Local configuration for your WireGuard server will be automatically assigned to the interface once WireGuard is restarted
 
 - **Save** the interface configuration and then click **Apply changes**
-- Restart WireGuard - you can do this by turning it off and on under :menuselection:`VPN --> WireGuard --> General`
+- Restart WireGuard - you can do this by turning it off and on under :menuselection:`VPN --> WireGuard --> General` (click **Apply** after both unchecking and checking the checkbox)
 
 .. Tip::
 
@@ -146,7 +147,7 @@ Step 5(b) - Create an outbound NAT rule
     ========================== =========================================================================================================
 
 - **Save** the rule, and then click **Apply changes**
-- Restart WireGuard - you can do this by turning it off and on under :menuselection:`VPN --> WireGuard --> General`
+- Restart WireGuard - you can do this by turning it off and on under :menuselection:`VPN --> WireGuard --> General` (click **Apply** after both unchecking and checking the checkbox)
 
 .. Hint::
 
