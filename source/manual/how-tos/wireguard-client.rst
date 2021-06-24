@@ -216,7 +216,7 @@ Client configuration is largely beyond the scope of this how-to since there is s
 
     ====================== ====================================================================================================
      **[Interface]**
-     **Address**            *Refers to the IP(s) specified as Allowed IPs in the Local configuration on OPNsense. For example, 10.10.10.2/32*
+     **Address**            *Refers to the IP(s) specified as Allowed IPs in the Endpoint configuration on OPNsense. For example, 10.10.10.2/32*
      **PublicKey**          *Refers to the public key that (along with a private key) needs to be manually or automatically generated on the client. The public key must then be copied into the Endpoint configuration on OPNsense for the relevant client peer - see Step 3*
      **DNS**                *Refers to the DNS servers that the client should use for the tunnel - see note below*
 
