@@ -56,7 +56,7 @@ Step 3 - Configure the endpoint (client peer)
     ====================== ====================================================================================================
      **Enabled**            *Checked*
      **Name**               *Call it whatever you want (eg* :code:`Phone` *)*
-     **Public Key**         *Insert the public key from the client; you may need to leave this blank initially until you generate keys on the client - see Step 7*
+     **Public Key**         *Insert the public key from the client; if needed skip ahead and start Step 7 to generate the client public key*
      **Allowed IPs**        *Unique tunnel IP address (IPv4 and/or IPv6) of client - it should be a /32 or /128 (as applicable) within the subnet configured on the local peer. For example, 10.10.10.2/32*
     ====================== ====================================================================================================
 
