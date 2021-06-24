@@ -103,7 +103,7 @@ Step 5(a) - Assign an interface to WireGuard (recommended)
 
     ============================= ===================================================================
      **Enable**                    *Checked*
-     **Lock**                      *Checked if you wish to*
+     **Lock**                      *Checked*
      **Description**               *Same as under Assignments, if this box is not already populated*
      **IPv4 Configuration Type**   *None*
      **IPv6 Configuration Type**   *None*
