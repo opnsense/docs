@@ -64,7 +64,7 @@ Transparency
 A real concern with pfSense is transparency. Since Netgate bought
 the majority share of pfSense and renamed the company to ESF, it has been
 difficult to understand the direction they want the project to go. Removing the
-tools from Github without prior warning and using the brand name to fence off
+tools from GitHub without prior warning and using the brand name to fence off
 competitors has scared quite a lot of people. Also the license had changed for
 no apparent reason…
 
