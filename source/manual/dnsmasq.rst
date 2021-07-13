@@ -105,3 +105,10 @@ Advanced settings
 To configure options that are not available in the gui one can add custom configuration files on the firewall itself.
 Files can be added in :code:`/usr/local/etc/dnsmasq.conf.d/`, these should use as extension .conf (e.g. custom-options.conf).
 When more files are placed inside the directory, all will be included in alphabetical order.
+
+.. Warning::
+    It is the sole responsibility of the administrator which places a file in the extension directory to ensure that the configuration is
+    valid.
+
+.. Note::
+    This method replaces the ``Custom options`` settings in the Dnsmasq configuration, which was removed in version 21.1.
