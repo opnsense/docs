@@ -961,17 +961,6 @@ directory, which results in the following file listing:
     src/opnsense/service/templates/OPNsense/HelloWorld/helloworld.conf
     src/opnsense/service/conf/actions.d/actions_helloworld.conf
 
-Next add a +POST\_INSTALL file in the plugin directory, to reload the
-configd process after installation. This is needed for the new “test”
-command to register.
-
-
-.. code-block:: sh
-
-    if /usr/local/etc/rc.d/configd status > /dev/null; then
-            /usr/local/etc/rc.d/configd restart
-    fi
-
 With everything in place, you could build the plugin package using the
 “make plugins” command in the /usr/tools directory. The result of this
 will be a standard pkg package, which you can install on any OPNsense
