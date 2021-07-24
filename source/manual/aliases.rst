@@ -92,6 +92,13 @@ Network type Aliases can contain exclusion hosts or networks.
 Exclusion addresses starts with "!" sign (eg !192.168.0.0/24) and can be used to
 exclude hosts or networks from current Alias or Network Group Alias
 
+Apart from the CIDR notation, one could also use a `wildcard mask <https://en.wikipedia.org/wiki/Wildcard_mask>`__
+to match ranges of hosts or networks.
+
+.. Tip::
+
+    To match all servers ending at .1 in the 192.168.X.1 networks, use a wildcard definition like :code:`192.168.0.1/0.0.255.0`
+
 
 ..................
 Ports
