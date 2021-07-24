@@ -3,9 +3,9 @@ About the Fork
 ==============
 Welcome to about the fork. This page is intended to explain the original motivation
 for forking, but keep in mind that currently less than 10% of the original legacy code
-base remains. As it stand today, OPNsense has evolved from being a fork to a whole new
+base remains. As it stands today, OPNsense has evolved from being a fork to a whole new
 security platform with leading innovations such as weekly security updates for
-all components, a REST API, inline Intrusion Prevention and intuitive modern user
+all components, a REST API, inline Intrusion Prevention and an intuitive modern user
 interface.
 
 .. sidebar:: Let's fork and lift the project!
@@ -15,8 +15,8 @@ interface.
 -------------------
 So why did we fork?
 -------------------
-Back in 2014, after having sponsored pfSense® for years we felt there was no other
-option than fork the project and keep the spirit of the - original m0n0wall based
+Back in 2014, after having sponsored pfSense® for years, we felt that there was no other
+option than to fork the project and to keep the spirit of the - original m0n0wall based
 fork - alive. Below you can read about our original motivations and the birth of
 OPNsense®.
 
@@ -33,7 +33,7 @@ regular releases and a decent :doc:`framework </development/architecture>`.
 Security
 --------
 On the security part the main issue was the need to separate logic. The GUI
-should not perform tasks that require root access and potential security issues
+should not perform tasks that require root access, and potential security issues
 should be fixed before they become a real problem.
 
 Quality
@@ -46,12 +46,12 @@ from pfSense to the new framework to avoid a big-bang approach.
 Community
 ---------
 A thriving community can only exist when people are willing to share. We want to
-make it easier for people to join and help to build the community. With pfSense
-this has been rather difficult as the tools to build it are difficult to use and
-often do not work in the first few attempts. And since 2014 year they are not
+make it easier for people to join and help to build the community. With pfSense, 
+this has been rather difficult, as the tools to build it are difficult to use and
+often do not work in the first few attempts. And since 2014 they are not
 freely available any more, you need to apply for access with ESF. We believe a
 good open source project has nothing to hide so access to the sources should be
-there for all. It will remain a mystery why ESF made that move as commit rights
+there for all. It will remain a mystery why ESF made that move, as commit rights
 and read rights are totally different.
 
 .. Note::
@@ -62,15 +62,15 @@ and read rights are totally different.
 Transparency
 -------------
 A real concern with pfSense is transparency. Since Netgate bought
-the majority share of pfSense and renamed the company to ESF it has been
+the majority share of pfSense and renamed the company to ESF, it has been
 difficult to understand the direction they want the project to go. Removing the
-tools from github without prior warning and using the brand name to fence off
+tools from GitHub without prior warning and using the brand name to fence off
 competitors has scared quite a lot of people. Also the license had changed for
 no apparent reason…
 
 Restore a firm open source project
 ----------------------------------
-With OPNsense we have restored a stable project with clear goals and a very simple
+With OPNsense, we have restored a stable project with clear goals and a very simple
 license that is suitable for forking and making OEM versions. We think a community
 project is there for all to use and work with.
 
@@ -84,7 +84,7 @@ Much work had already been done before the `first official release <https://opns
   with clear and easy to read build scripts that are portable and small,
 
 * OPNsense is now a package that can be installed on top of our custom HardenedBSD
-  build (you can literally do pkg remove opnsense and are left with an almost
+  build (you can literally do pkg remove opnsense and you are left with an almost
   standard HardenedBSD base system),
 
 * The firmware upgrade process is now done with pkgng,
