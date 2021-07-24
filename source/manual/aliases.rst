@@ -45,7 +45,9 @@ OPNsense offers the following alias types:
 Hosts
 ..................
 
-Hosts can be entered as a single IP address or a fully qualified domain name.
+Hosts can be entered as a single IP address, a range (separated with a minus sign, e.g. :code:`10.0.0.1-10.0.0.10`)
+or a fully qualified domain name.
+
 When using a fully qualified domain name, the name will be resolved periodically
 (default is each 300 seconds).
 
