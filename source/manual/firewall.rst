@@ -59,8 +59,7 @@ to pass traffic, it's much harder to spoof traffic.
 
 .. Note::
     When changing rules, sometimes its necessary to reset states to assure the new policies are used for existing traffic.
-    You can do this in :menuselection:`Firewall --> Diagnostics --> States Reset` or :menuselection:`Firewall --> Diagnostics --> States Dump`
-    to reset specific states.
+    You can do this in :menuselection:`Firewall --> Diagnostics --> States`.
 
 
 .. Note::
@@ -68,6 +67,8 @@ to pass traffic, it's much harder to spoof traffic.
     this can be configured in :menuselection:`Firewall --> Settings --> Firewall Maximum States`.
     (The help text shows the default number of states on your platform)
 
+States can also be quite convenient to find the active top users on your firewall at any time, as of 21.7 we added
+an easy to use "session" browser for this purpose. You can find it under :menuselection:`Firewall --> Diagnostics --> Sessions`.
 
 ....................
 Action
@@ -277,9 +278,9 @@ Gateway                               When a gateway is specified, packets will 
                                       the specified gateway or gateway group. Usually this option is set on the
                                       receiving interface (LAN for example), which then chooses the gateway
                                       specified here. (This ignores default routing rules)
-disable reply-to                      By default traffic is always send to the connected gateway on the interface.
+reply-to                              By default traffic is always send to the connected gateway on the interface.
                                       If for some reason you don't want to force traffic to that gateway, you
-                                      can disable this behaviour.
+                                      can disable this behaviour or enforce an alternative target here.
 ====================================  ===============================================================================
 
 
