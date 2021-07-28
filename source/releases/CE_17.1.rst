@@ -283,45 +283,35 @@ Here are the full patch notes:
 * system: proper autofill of imported CA fields
 * system: fix off by one and add validation for next serial in CA import
 * system: new global product info file and associated cleanups
-* system: prompt for new root password on console reset rather than using
-  the factory default
-* system: remove PHP version specific code to automatically support newer
-  versions such as PHP 7.1
+* system: prompt for new root password on console reset rather than using the factory default
+* system: remove PHP version specific code to automatically support newer versions such as PHP 7.1
 * system: raise PHP memory limit by 50%
 * firmware: show downgrades in update list as well
-* firmware: update pkg alongside other packages if it does not need an
-  explicit upgrade
+* firmware: update pkg alongside other packages if it does not need an explicit upgrade
 * firmware: add plugin list to crash report if plugins are installed
-* interfaces: do not hide the save button when all interfaces have
-  been assigned
+* interfaces: do not hide the save button when all interfaces have been assigned
 * firewall: support tag/tagged for manual outbound NAT
 * firewall: exclude IPv6 extension headers
-* firewall: disable filter association when no-rdr port forward option
-  is selected
-* firewall: do not endlessly try to fetch bogons on systems with
-  no connectivity
-* captive portal: fix autocomplete, autocapitalize and autocorrect
-  (contributed by Johann Richard)
+* firewall: disable filter association when no-rdr port forward option is selected
+* firewall: do not endlessly try to fetch bogons on systems with no connectivity
+* captive portal: fix autocomplete, autocapitalize and autocorrect (contributed by Johann Richard)
 * dhcp: fix static leases issue with loading settings into form
 * dhcp: add interface-mtu option
 * ipsec: move to plugin code framework
 * openvpn: fix possible start failure of servers using udp6 or tcp6
 * router advertisements: force restart of daemon to adapt to time zone change
 * unbound: statistics API (contributed by Fabian Franz)
-* web proxy: reorder pre-auth plugins and local auth settings
-  (contributed by Evgeny Bevz)
+* web proxy: reorder pre-auth plugins and local auth settings (contributed by Evgeny Bevz)
 * mvc: set locale in APIControllerBase (contributed by Alexander Shursha)
 * mvc: dialog translations (contributed by Fabian Franz)
 * mvc: escape @ in menu entry to avoid error on mailto: url
 * plugins: igmp-proxy 1.1 renames internal service reload endpoint
-* plugins: quagga 1.1.0 adds BGP support and assorted fixes
-  (contributed by Fabian Franz and Michael Muenz)
-* plugins: relayd 1.1 adds session timeout configuration
-  (contributed by Frank Brendel)
+* plugins: quagga 1.1.0 adds BGP support and assorted fixes (contributed by Fabian Franz and Michael Muenz)
+* plugins: relayd 1.1 adds session timeout configuration (contributed by Frank Brendel)
 * plugins: snmp 1.1 renames internal service reload endpoint
 * ports: ca_root_nss 3.30.2
 * ports: phalcon 3.1.2 `[1] <https://github.com/phalcon/cphalcon/releases>`__ 
-* ports: unbound 1.6.2  `[2] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
+* ports: unbound 1.6.2 `[2] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 
 
 
@@ -827,7 +817,6 @@ channels:
 * Twitter: https://twitter.com/opnsense
 * Forum: https://forum.opnsense.org/
 * GitHub: https://github.com/opnsense
-* IRC: Freenode #OPNsense
 
 
 
@@ -946,7 +935,6 @@ contact us through any of the known channels:
 * Twitter: https://twitter.com/opnsense
 * Forum: https://forum.opnsense.org/
 * GitHub: https://github.com/opnsense
-* IRC: Freenode #OPNsense
 
 
 
@@ -1038,7 +1026,6 @@ not hesitate to contact us through any of the known channels:
 * Twitter: https://twitter.com/opnsense
 * Forum: https://forum.opnsense.org/
 * GitHub: https://github.com/opnsense
-* IRC: Freenode #OPNsense
 
 
 .. code-block::

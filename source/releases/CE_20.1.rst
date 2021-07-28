@@ -570,7 +570,7 @@ Here are the full patch notes against 19.7.9_1:
 * firmware: new mirror in Zurich, CH contributed by ServerBase AG
 * firmware: add live search to mirror selection
 * dhcp: add OMAPI configuration support (contributed by Yuri Moens)
-* ipsec: add configurable dpdaction (contributed by  Marcel Menzel)
+* ipsec: add configurable dpdaction (contributed by Marcel Menzel)
 * ipsec: refactor tunnel settings page
 * unbound: add options for logging queries and extended statistics (contributed by Flightkick)
 * mvc: BaseListField ignoring empty selected field

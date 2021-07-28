@@ -111,7 +111,7 @@ Here are the full patch notes:
 
 * reporting: fix traffic graph widget link issue
 * system: simplify log format parsing
-* interfaces: fix DUID LL description  (contributed by Gabriel Mazzocato)
+* interfaces: fix DUID LL description (contributed by Gabriel Mazzocato)
 * unbound: fix dnsbl not reloading after update
 * plugins: os-acme-client 2.2 `[1] <https://github.com/opnsense/plugins/blob/stable/20.7/security/acme-client/pkg-descr>`__ 
 * plugins: os-freeradius 1.9.9 `[2] <https://github.com/opnsense/plugins/blob/stable/20.7/net/freeradius/pkg-descr>`__ 

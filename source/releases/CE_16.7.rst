@@ -757,7 +757,6 @@ improve it further!  You can find us in any of these popular locations:
 * Twitter: https://twitter.com/opnsense
 * Forum: https://forum.opnsense.org/
 * GitHub: https://github.com/opnsense
-* IRC: Freenode #OPNsense
 
 Lastly, here are the full changes since 16.7-RC2:
 
