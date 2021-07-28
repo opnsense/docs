@@ -660,7 +660,7 @@ Here are the full patch notes:
 * config: improve config migration path for legacy config imports
 * config: new home in system section for the config history and backups
 * config: improved the config history differential view
-* notable port upgrades: bind 9.10.3  `[1] <https://kb.isc.org/article/AA-01306/0/BIND-9.10.3-Release-Notes.html>`__ , squid 3.5.9  `[2] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
+* notable port upgrades: bind 9.10.3 `[1] <https://kb.isc.org/article/AA-01306/0/BIND-9.10.3-Release-Notes.html>`__ , squid 3.5.9 `[2] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
 * firmware: added Supranet Communications mirror (Middleton, US)
 * firewall: reworked rules, schedules, virtual ip, nat and aliases pages
 * users: removed special handling of the "all" group
@@ -1016,12 +1016,14 @@ https://opnsense.org/about/road-map/
 
 The full list of changes are as follows:
 
-* ports: php 5.6.11 `[1] <https://php.net/ChangeLog-5.php#5.6.11>`__ , pkg 1.5.5 `[2] <https://github.com/freebsd/freebsd-ports/commit/1eb51efa2>`__ , ca_root_nss 3.19.2, phalcon 2.0.5 `[3] <https://blog.phalconphp.com/post/phalcon-2-0-5-released>`__ ,
-  isc-dhcp42-server 4.2.8_1  `[4] <https://github.com/freebsd/freebsd-ports/commit/3de9ed7a87>`__ 
+* ports: php 5.6.11 `[1] <https://php.net/ChangeLog-5.php#5.6.11>`__ 
+* ports: pkg 1.5.5 `[2] <https://github.com/freebsd/freebsd-ports/commit/1eb51efa2>`__ 
+* ports: ca_root_nss 3.19.2
+* ports: phalcon 2.0.5 `[3] <https://blog.phalconphp.com/post/phalcon-2-0-5-released>`__ 
+* ports: isc-dhcp42-server 4.2.8_1 `[4] <https://github.com/freebsd/freebsd-ports/commit/3de9ed7a87>`__ 
 * backup: fix infinite reboot loop on interface mismatch
 * firmware: show locally installed packages
-* firmware: reboot dialog now responsively redirects when the system is
-  back up
+* firmware: reboot dialog now responsively redirects when the system is back up
 * dashboard: upgrade link now directly launches into the firmware upgrade
 * dashboard: added a system log widget (contributed by Sascha Linke)
 * languages: merged German translation progress (contributed by Fabian Franz)
