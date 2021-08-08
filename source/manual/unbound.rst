@@ -237,7 +237,7 @@ YoYo List                             https://pgl.yoyo.org/adservers/
 .. Note::
 
     In order to automatically update the lists on timed intervals you need to add a cron task, just go to
-    :menuselection:`System -> Settings ->Cron` and a new task for a command called "Download Unbound DNSBLs and restart".
+    :menuselection:`System -> Settings ->Cron` and a new task for a command called "Update Unbound DNSBLs".
 
     Usually once a day is a good enough interval for these type of tasks.
 
