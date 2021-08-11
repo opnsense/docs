@@ -364,7 +364,7 @@ Here are the full patch notes:
 * plugins: os-theme-cicada 1.0 (contributed by Rene via Team Rebellion)
 * src: mishandling of x86 debug exceptions `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-18:06.debugreg.asc>`__ 
 * src: multiple small kernel memory disclosures `[2] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:05.mem.asc>`__ 
-* src: timezone database information update `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:06.tzdata.asc>`__ 
+* src: timezone database information updates `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:06.tzdata.asc>`__ 
 * ports: ca_root_nss 3.37
 * ports: krb5 1.16.1 `[4] <https://web.mit.edu/kerberos/krb5-1.16/>`__ 
 * ports: liblz4 1.8.2 `[5] <https://github.com/lz4/lz4/releases/tag/v1.8.2>`__ 
@@ -545,7 +545,7 @@ Here are the full patch notes:
 * src: fix mutli-wan traffic shaper on non-default gateway interfaces
 * src: ipsec crash or denial of service `[1] <https://security.freebsd.org/advisories/FreeBSD-SA-18:05.ipsec.asc>`__ 
 * src: vt console memory disclosure `[2] <https://security.freebsd.org/advisories/FreeBSD-SA-18:04.vt.asc>`__ 
-* src: multiple small kernel memory disclosures `[3] <https://security.freebsd.org/advisories/FreeBSD-EN-18:04.mem.asc>`__ 
+* src: multiple minor kernel memory disclosures `[3] <https://security.freebsd.org/advisories/FreeBSD-EN-18:04.mem.asc>`__ 
 * src: timezone database information update `[4] <https://security.freebsd.org/advisories/FreeBSD-EN-18:03.tzdata.asc>`__ 
 * ports: dnsmasq 2.79 `[5] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: openssl 1.0.2o `[6] <https://www.openssl.org/news/secadv/20180327.txt>`__ 

@@ -305,7 +305,6 @@ Here are the full patch notes:
 * plugins: os-postfix fixes typo (contributed by Michael Muenz)
 * plugins: os-telegraf 1.7.2 adds validation messages to tags (contributed by Michael Muenz)
 * plugins: os-theme-cicada 1.9 (contributed by Team Rebellion)
-* plugins: os-theme-tukan 1.8 (contributed by Team Rebellion)
 * plugins: os-upnp removes unused function
 * plugins: os-zabbix-agent 1.4 `[4] <https://github.com/opnsense/plugins/pull/998>`__  (contributed by Frank Wall)
 * ports: cyrus-sasl 2.1.27 `[5] <https://www.cyrusimap.org/sasl/sasl/release-notes/2.1/index.html>`__ 
