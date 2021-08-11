@@ -8,7 +8,7 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *207* releases leading to the latest version *21.7*
+As of January 2015 there have been *208* releases leading to the latest version *21.7.1*
 named "Noble Nightingale".
 
 

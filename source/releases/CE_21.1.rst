@@ -78,6 +78,7 @@ A hotfix release was issued as 21.1.9_1:
 * firmware: fix grep call on FreeBSD 13 (contributed by Mariusz Zaborski)
 * firmware: correct return code on type change in opnsense-update
 * firmware: fix opnsense-code pull when ABI configuration is no longer there
+* firmware: fix upgrade with multiple repositories enabled
 
 
 

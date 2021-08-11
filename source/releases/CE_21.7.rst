@@ -33,6 +33,62 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+21.7.1 (August 04, 2021)
+--------------------------------------------------------------------------
+
+
+After some initial trouble with particular Intel network card instability
+and two installer shortcomings this brings the first round of stable
+updates, general improvements and even new features.
+
+The OpenVPN integration required a few more changes for the 2.5 series
+and Unbound would stall when the new cache restore feature was caching
+an empty response.
+
+Images have been reissued based on this version as well.
+
+Here are the full patch notes:
+
+* system: relax server certificate check for web GUI validation
+* system: use ifinfo counters instead of pfctl in interface widget
+* interfaces: packet capture quick select for all interfaces
+* firewall: make sure net.pf.request_maxcount and table-entries are always aligned
+* firewall: only set state options on rules when state is being tracked
+* firmware: fix opnsense-code pull when ABI configuration is no longer there
+* firmware: fix upgrade with multiple repositories enabled
+* firmware: sync plugins in console update
+* firmware: revoke 21.1 fingerprint
+* installer: fix possible hang when scanning for disks
+* installer: fix multiple disk selection
+* openvpn: fix genkey format on 2.5
+* openvpn: improve the cipher parsing
+* openvpn: untie server-ipv6 from server directive
+* openvpn: return empty list when /api/openvpn/export/accounts/ is called without parameters
+* unbound: reject invalid cache data
+* unbound: automatically add "do-not-query-localhost: no" on DoT when needed
+* unbound: support insecure-domain directive
+* mvc: bring back bind_textdomain_codeset() to fix possible faulty page rendering
+* ui: fix regression in subnet selector
+* plugins: os-bind 1.18 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/bind/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.9 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-postfix 1.20 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/mail/postfix/pkg-descr>`__ 
+* plugins: os-telegraf 1.12.0 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
+* src: revert upstream commit "e1000: Rework em_msi_link interrupt filter"
+* ports: switched to FreeBSD ports tree
+* ports: filterlog print "0" instead of "(null)" label
+* ports: krb5 1.19.2 `[5] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
+* ports: php 7.4.22 `[6] <https://www.php.net/ChangeLog-7.php#7.4.22>`__ 
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-21.7.1-OpenSSL-dvd-amd64.iso.bz2) = d9062d76a944792577d32cdb35dd9eb9cec3d3ed756e3cfaa0bf25506c72a67b
+    # SHA256 (OPNsense-21.7.1-OpenSSL-nano-amd64.img.bz2) = 106b483993f252e27dfd5064f57b2800e68274cf036445a97308107144e601f9
+    # SHA256 (OPNsense-21.7.1-OpenSSL-serial-amd64.img.bz2) = 04abcd825dacbecda3eff90c8d086527b49b5d61c284442ef5d5bdd89b625004
+    # SHA256 (OPNsense-21.7.1-OpenSSL-vga-amd64.img.bz2) = 44068ee9369bc12a0226ee2e1f13a1409038953ee829e0de97abe359affbde0d
+
+--------------------------------------------------------------------------
 21.7 (July 28, 2021)
 --------------------------------------------------------------------------
 
@@ -79,7 +135,6 @@ Here are the full patch notes:
 * system: circular logs are now disabled by default
 * system: removed unused traffic API dashboard feed
 * system: prevent use of client certificates in web GUI
-* system: lock config writes during HA merges
 * system: hide far gateway option for IPv6
 * system: isvalidpid() is not required for a single killbypid()
 * system: fix PHP 7.4 deprecated warning in IPv6 library
@@ -237,7 +292,6 @@ We know it would not be the same without you.  <3
 Here are the full patch notes:
 
 * system: prevent use of client certificates in web GUI
-* system: lock config writes during HA merges
 * system: hide far gateway option for IPv6
 * system: isvalidpid() is not required for a single killbypid()
 * system: fix PHP 7.4 deprecated warning in IPv6 library
