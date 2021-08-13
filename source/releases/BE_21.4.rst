@@ -26,6 +26,12 @@ version 2.4.11, but the security audit will falsely flag it as vulnerable
 because the source of the audit is FreeBSD where OpenVPN was migrated to 2.5
 series already.
 
+API errors during the update can appear but are a harmless side effect of
+the MVC framework major version transition to Phalcon 4.  The system will
+reboot as normal.  Make sure to clear your browser cache if the check for
+updates does not seem to work afterwards and/or double-check with a different
+browser.
+
 Here are the full patch notes:
 
 * system: use ifinfo counters instead of pfctl in interface widget
