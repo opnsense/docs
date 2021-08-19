@@ -36,7 +36,9 @@ On **Endpoint** tab create a new Endpoint, give it a **Name**, set 0.0.0.0/0 in 
 the **DNS** to 193.138.218.74. This is the one MulladVPN provides for privacy.
 
 Now go to the WireGuard server list_ and choose the one you like to use as your breakout. Write down it's
-public key and set it as **Public Key**. Also don't forget **Endpoint Address** and **Endpoint Port**.
+public key and set it as **Public Key**.
+
+Also don't forget **Endpoint Address** and **Endpoint Port**. The **Endpoint Port** is 51820. The **Endpoint Address** will depend on which Mullvad server you wish to use. For example, if you want to use the "nl1-wireguard" server, the **Endpoint Address** will be :code:`nl1-wireguard.mullvad.net`.
 
 .. _list: https://www.mullvad.net/en/servers/#wireguard
 
