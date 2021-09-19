@@ -40,6 +40,10 @@ Step 2 - Configure the local peer (server)
 
     The tunnel address must be in CIDR notation and must be a unique IP and subnet for your network. The subnet should be an appropriate size that includes all the client peers that will use the tunnel. For IPv4 it should be a private (RFC1918) address, for example 10.10.10.1/24. For IPv6, it could either be a unique ULA /64 address, or a unique GUA /64 address derived from your prefix delegation. **Do not use a tunnel address that is a /32 (IPv4) or a /128 (IPv6)**
 
+.. Note::
+
+    Leave the DNS Server field (which appears if :code:`advanced mode` is selected) blank. Otherwise WireGuard will overwrite OPNsense's DNS configuration
+
 - **Save** the Local peer configuration, and then click **Save** again
 - Re-open the Local peer configuration
 - Copy the public key that has been generated in the configuration. This will be needed for the client device - see Step 7
@@ -90,9 +94,12 @@ Step 5(a) - Assign an interface to WireGuard (recommended)
 .. Hint::
 
     This step is not strictly necessary in any circumstances for a road warrior setup. However, it is useful to implement, for several reasons:
-    - It generates an alias for the tunnel subnet(s) that can be used in firewall rules. Otherwise you will need to define your own alias or at least manually specify the subnet(s)
-    - It automatically adds an IPv4 outbound NAT rule, which will allow the tunnel to access IPv4 IPs outside of the local network (if that is desired), without needing to manually add a rule
-    - It allows separation of the firewall rules of each WireGuard instance (each :code:`wgX` device). Otherwise they all need to be configured on the default WireGuard group that OPNsense creates. This is more an organisational aesthetic, rather than an issue of substance    
+
+    First, it generates an alias for the tunnel subnet(s) that can be used in firewall rules. Otherwise you will need to define your own alias or at least manually specify the subnet(s)
+    
+    Second, it automatically adds an IPv4 outbound NAT rule, which will allow the tunnel to access IPv4 IPs outside of the local network (if that is desired), without needing to manually add a rule
+    
+    Finally, it allows separation of the firewall rules of each WireGuard instance (each :code:`wgX` device). Otherwise they all need to be configured on the default WireGuard group that OPNsense creates. This is more an organisational aesthetic, rather than an issue of substance    
 
 - Go to :menuselection:`Interfaces --> Assignments`
 - In the dropdown next to “New interface:”, select the WireGuard device (:code:`wg0` if this is your first one)
