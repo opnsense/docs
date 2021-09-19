@@ -94,6 +94,7 @@ Step 5(a) - Assign an interface to WireGuard (recommended)
 .. Hint::
 
     This step is not strictly necessary in any circumstances for a road warrior setup. However, it is useful to implement, for several reasons:
+
     - It generates an alias for the tunnel subnet(s) that can be used in firewall rules. Otherwise you will need to define your own alias or at least manually specify the subnet(s)
     - It automatically adds an IPv4 outbound NAT rule, which will allow the tunnel to access IPv4 IPs outside of the local network (if that is desired), without needing to manually add a rule
     - It allows separation of the firewall rules of each WireGuard instance (each :code:`wgX` device). Otherwise they all need to be configured on the default WireGuard group that OPNsense creates. This is more an organisational aesthetic, rather than an issue of substance    
