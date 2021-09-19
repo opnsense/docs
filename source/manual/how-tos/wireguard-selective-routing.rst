@@ -16,7 +16,7 @@ Your OPNsense local public key will need to be registered with your VPN provider
 
 For an example of configuring the peer at a VPN provider (Mullvad), see Step 1 of the how-to :doc:`wireguard-client-mullvad`.
 
-This how-to discusses IPv4 configuration only. It can be readily adapted for IPv6 as well.
+This how-to discusses IPv4 configuration only. It can be readily adapted for IPv6 as well. See :ref:`configuring-ipv6` below.
 
 -------------------------------
 Step 1 - Configure the endpoint
@@ -53,7 +53,7 @@ Step 2 - Configure the local peer
      **Public Key**        *This will initially be blank; it will be populated once the configuration is saved*
      **Private Key**       *This will initially be blank; it will be populated once the configuration is saved*
      **Listen Port**       *51820 or a higher numbered unique port*
-     **DNS Server**        *Leave this blank*
+     **DNS Server**        *Leave this blank, otherwise WireGuard will overwrite OPNsense's DNS configuration*
      **Tunnel Address**    *Insert the local VPN tunnel IP provided by your VPN provider, in CIDR format, eg 10.24.24.10/32*
      **Peers**             *In the dropdown, select the Endpoint you configured above*
      **Disable Routes**    *Checked*
@@ -121,6 +121,7 @@ Step 6 - Create a gateway
 .. Note::
 
     Specifying the endpoint VPN tunnel IP is preferable. As an alternative, you could include an external IP such as 1.1.1.1 or 8.8.8.8, but be aware that this IP will *only* be accessible through the VPN tunnel (OPNsense creates a static route for it), and therefore will not accessible from local hosts that are not using the tunnel
+    Some VPN providers will include the VPN tunnel IP of the endpoint in the configuration data they provide. For others (such as Mullvad), you can get the IP by running a traceroute from a host that is using the tunnel - the first hop after OPNsense is the VPN provider's tunnel IP
 
 - **Save** the gateway configuration and then click **Apply changes**
 
@@ -148,7 +149,7 @@ Step 8 - Create a firewall rule
 
 This will involve two steps - first creating a second Alias for all local (private) networks, and then creating the firewall rule itself. The ultimate effect of these two steps is that only traffic from the relevant hosts that is destined for **non-local** destinations will be sent down the tunnel. This will ensure that the relevant hosts can still access local resources
 
-It should be noted, however, that if the hosts that will use the tunnel are configured to use local DNS servers (such as OPNsense itself or another local DNS server), then this configuration will likely result in DNS leaks - that is, DNS requests for the hosts will continue to be processed through the normal WAN gateway, rather than through the tunnel. See the section at the end of this how-to for a discussion of potential solutions to this
+It should be noted, however, that if the hosts that will use the tunnel are configured to use local DNS servers (such as OPNsense itself or another local DNS server), then this configuration will likely result in DNS leaks - that is, DNS requests for the hosts will continue to be processed through the normal WAN gateway, rather than through the tunnel. See :ref:`dns-leaks` for a discussion of potential solutions to this
 
 - First go to :menuselection:`Firewall --> Aliases`
 - Click **+** to add a new Alias
@@ -211,6 +212,34 @@ Step 9 - Create an outbound NAT rule
 
 - **Save** the rule, and then click **Apply changes**
 
+.. _configuring-ipv6:
+
+----------------
+Configuring IPv6
+----------------
+
+Some VPN providers (such as Mullvad) allow you to send both IPv4 and IPv6 traffic down the tunnel. This will be evident if you receive both an IPv4 and IPv6 tunnel IP in the configuration data provided by the VPN provider. The IPv6 tunnel IP is likely to be a ULA, ie within :code:`fc00::/7`.
+
+To configure the tunnel to use IPv6, you essentially need to replicate the steps above for IPv4. That is, you need to:
+- add the IPv6 tunnel IP to Tunnel Address on the WireGuard Local configuration (see further below)
+- add :code:`::/0` to the Allowed IPs on the WireGuard Endpoint configuration
+- create an IPv6 gateway (see further below)
+- add to the hosts alias the IPv6 addresses of the hosts/networks that are to use the tunnel
+- if necessary, create a separate local IPs alias for IPv6, so they can be excluded from the IPv6 firewall rule destination
+- create an IPv6 firewall rule (specifying the IPv6 gateway in the rule)
+- create an IPv6 outbound NAT rule
+
+Note, however, that there are a couple of differences:
+
+1. First, the WireGuard Local configuration will only accept one entry in the Gateway field. Just leave the IPv4 gateway address there.
+
+2. Second, there is no concept of a Far Gateway for IPv6. So to successfully set up a gateway for IPv6, you need to do two things:
+
+  - When adding the IPv6 address to Tunnel Address in the WireGuard Local configuration, specify a /127 mask, rather than a /128
+  - Then, when creating an IPv6 Gateway for the tunnel, specify the IP address to be another IPv6 address that is within the /127 subnet of the Tunnel Address
+
+.. _dns-leaks:
+
 ----------------------
 Dealing with DNS leaks
 ----------------------
@@ -223,7 +252,7 @@ The solutions include:
 
 1. Force the local DNS server to use the tunnel as well. For a local DNS server that is not OPNsense, include the local IPs of that server in the Alias created in Step 7 for the relevant VPN hosts. For OPNsense itself, configure the DNS server to use the tunnel gateway. Implementing this solution will mean that all DNS traffic for your network will go through the tunnel, not just the DNS traffic for the hosts that are in the Alias (and, indeed, for a local DNS server that is not OPNsense, all traffic from that server, not just DNS traffic, will be forced through the tunnel). This may not be desirable for your circumstances
 
-2. If possible, intercept DNS traffic coming from the relevant hosts using the tunnel, and forward that traffic (by using a port forward rule in OPNsense) to a DNS server supplied by your VPN provider (see note below), or to a public DNS server. Note that this will not always be possible to do - if the local DNS server that is configured generally for your network is not OPNsense itself and is on the same subnet as the hosts using the tunnel, then DNS requests will not be routed through OPNsense and so a port forward on OPNsense will not work
+2. If possible, intercept DNS traffic coming from the relevant hosts using the tunnel, and forward that traffic (by using a port forward rule in OPNsense) to a DNS server supplied by your VPN provider (see note below), or to a public DNS server. Note that this will break local DNS resolution. Note also that this will not always be possible to do - if the local DNS server that is configured generally for your network is not OPNsense itself and is on the same subnet as the hosts using the tunnel, then DNS requests will not be routed through OPNsense and so a port forward on OPNsense will not work
 
 3. Assuming you have configured DHCP static mappings in OPNsense for the hosts using the tunnel, specify in that configuration either the DNS servers supplied by your VPN provider (see note below), or public DNS servers. This will override the network-wide DNS settings for those hosts
 
