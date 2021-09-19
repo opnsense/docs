@@ -121,6 +121,7 @@ Step 6 - Create a gateway
 .. Note::
 
     Specifying the endpoint VPN tunnel IP is preferable. As an alternative, you could include an external IP such as 1.1.1.1 or 8.8.8.8, but be aware that this IP will *only* be accessible through the VPN tunnel (OPNsense creates a static route for it), and therefore will not accessible from local hosts that are not using the tunnel
+
     Some VPN providers will include the VPN tunnel IP of the endpoint in the configuration data they provide. For others (such as Mullvad), you can get the IP by running a traceroute from a host that is using the tunnel - the first hop after OPNsense is the VPN provider's tunnel IP
 
 - **Save** the gateway configuration and then click **Apply changes**
@@ -221,6 +222,7 @@ Configuring IPv6
 Some VPN providers (such as Mullvad) allow you to send both IPv4 and IPv6 traffic down the tunnel. This will be evident if you receive both an IPv4 and IPv6 tunnel IP in the configuration data provided by the VPN provider. The IPv6 tunnel IP is likely to be a ULA, ie within :code:`fc00::/7`.
 
 To configure the tunnel to use IPv6, you essentially need to replicate the steps above for IPv4. That is, you need to:
+
 - add the IPv6 tunnel IP to Tunnel Address on the WireGuard Local configuration (see further below)
 - add :code:`::/0` to the Allowed IPs on the WireGuard Endpoint configuration
 - create an IPv6 gateway (see further below)
