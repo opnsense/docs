@@ -84,11 +84,7 @@ First you need to set up a project in the Google developer console.
 
     .. image:: ./images/google_drive_enable.png
 
--  On the next page that appears, click the **Credentials** item on the left-side menu:
-
-    .. image:: ./images/google_create_credentials.png
-
--  On the Credentials page, click the **Manage service accounts** hyperlink that appears next to the Service Account table:
+- Now create a service account for your project. In the search bar at the top of the page, search for “service accounts" and click on the corresponding search result:
 
     .. image:: ./images/google_select_service_account.png
 
@@ -119,7 +115,7 @@ First you need to set up a project in the Google developer console.
 -  You will be prompted to download the key. Do so, and then click **CLOSE** in the popup screen.
 
 
-1. Set up a Google Drive folder
+2. Set up a Google Drive folder
 ===============================
 
 The next thing is to create a folder in Google Drive and share it to the service account you've just created.
