@@ -16,7 +16,7 @@ Your OPNsense local public key will need to be registered with your VPN provider
 
 For an example of configuring the peer at a VPN provider (Mullvad), see Step 1 of the how-to :doc:`wireguard-client-mullvad`.
 
-This how-to discusses IPv4 configuration only. It can be readily adapted for IPv6 as well. See :ref:`configuring-ipv6` below.
+This how-to primarily focuses on IPv4 configuration. It can be readily adapted for IPv6 as well. See :ref:`configuring-ipv6` below.
 
 -------------------------------
 Step 1 - Configure the endpoint
