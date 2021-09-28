@@ -33,6 +33,144 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+21.7.3 (September 22, 2021)
+--------------------------------------------------------------------------
+
+
+This release finally brings in Suricata version 6 as well as OpenVPN tls-crypt
+support, automatic user creation on LDAP-based logins and more.
+
+As a general note the Realtek vendor driver currently bundled with the base
+system will be moved to a plugin-based kernel module in version 22.1 and the
+original re(4) driver inside FreeBSD 13 will be restored.  To ease migration
+and because the version maintained in FreeBSD ports actually offers additional
+fixes we have inlcuded the new plugin into this build.
+
+Here are the full patch notes:
+
+* system: allow automatic user creation on LDAP-based logins
+* interfaces: add and use unified function is_interface_assigned() to prevent deleting assigned interfaces
+* interfaces: sync firewall groups after internal create/destroy operations
+* interfaces: add netstat tree search and improve page layout
+* interfaces: replace opportunistic diagnostics IP address lookups with more robust variants
+* firewall: clarify match/set priority in rules
+* firewall: improve alias description/preview
+* firewall: aliases maximum entries progress bar
+* dhcp: add shared dhcpd_leases() reader and use it in both lease pages
+* openvpn: use is_interface_assigned() to prevent deletion of assigned instances
+* openvpn: CARP status read cleanups (contributed by vnxme)
+* openvpn: tls-crypt support (contributed by vnxme)
+* openvpn: do not create empty router file
+* router advertisements: remove AdvRDNSSLifetime / AdvDNSSLLifetime bounds (contributed by Maurice Walker)
+* unbound: register DHCP leases with their matching IP range configured DHCP domain
+* plugins: os-acme-client 3.1 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-chrony 1.4 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/net/chrony/pkg-descr>`__ 
+* plugins: os-collectd 1.4 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/collectd/pkg-descr>`__ 
+* plugins: os-fetchmail 1.1 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/mail/fetchmail/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.16 `[5] <https://github.com/opnsense/plugins/blob/stable/21.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-realtek-re 1.0 adds Realtek vendor NIC driver module
+* plugins: os-telegraf 1.12.1 `[6] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
+* ports: dnsmasq 2.86 `[7] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: filterlog 0.5 removes unused IPv6 options support
+* ports: nss 3.70 `[8] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.70_release_notes>`__ 
+* ports: pcre 8.45 `[9] <https://www.pcre.org/original/changelog.txt>`__ 
+* ports: python 3.8.12 `[10] <https://docs.python.org/release/3.8.12/whatsnew/changelog.html>`__ 
+* ports: sudo 1.9.8p1 `[11] <https://www.sudo.ws/stable.html#1.9.8p1>`__ 
+* ports: suricata 6.0.3 `[12] <https://suricata.io/2021/06/30/new-suricata-6-0-3-and-5-0-7-releases/>`__ 
+* ports: syslog-ng 3.34.1 `[13] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.34.1>`__ 
+
+A hotfix release was issued as 21.7.3_1:
+
+* openvpn: properly save new tls-crypt configuation
+
+
+
+--------------------------------------------------------------------------
+21.7.2 (September 07, 2021)
+--------------------------------------------------------------------------
+
+
+Today the following CVEs are being addressed:
+
+CVE-2021-3711, CVE-2021-3712, CVE-2021-23840, CVE-2021-23841
+
+Please note that the Let's Encrypt client plugin is now called
+ACME client since acme.sh version 3 does support multiple providers.
+
+Apart from the usual batch of fixes the work on RSS (receive side
+scaling) is progressing and groundwork has already made it to the
+kernel along with the libnetmap library for allowing better scaling
+in netmap mode along with it.  At this point, however, RSS is not
+yet enabled and there is no impact on existing setups.  That will
+likely change with one of the next stable versions in this series.
+
+On the other hand, the work for FreeBSD 13 migration in 22.1 is
+ongoing as well to be able to test this rather sooner than later.
+In this iteration we will take the time to look at shared forwarding
+edge cases and have already upstreamed a number of patches that
+have been accumulated over the last couple of years to keep our
+code base light and tidy.
+
+Here are the full patch notes:
+
+* system: default RSS widget feed to forum announcements
+* system: add missing ACL for Syslog targets page
+* system: fix unescaped source field used for password in backup plugins
+* system: reload FreeBSD services when reloading all services from console
+* interfaces: use -M option in rtosold invoke in preparation for 22.1
+* interfaces: correct indent in dhclient configuration
+* firewall: allow to specify port ranges for outgoing NAT (contributed by Nikolay Denev)
+* firewall: fix long comment preventing IPFW reload (contributed by Robin Schneider)
+* firewall: fix compare interfaces (contributed by Smart-Soft)
+* firmware: opnsense-patch can now patch installer and updater files
+* firmware: opnsense-update -c option now honours the -f option
+* firmware: opnsense-update improvements for mirror manipulation options
+* firmware: undo masking vulnerability URLs in FreeBSD due to UUID use
+* firmware: also check plugins sync for up to date core package
+* firmware: fix visibility issue on console when syncing plugins
+* firmware: replace php version_compare() call with pkg-version shell command
+* firmware: correctly announce major upgrade reboot in status return
+* firmware: do not fetch GeoIP database from business mirrors without a subscription
+* firmware: backend now supports reinstall like opnsense-bootstrap -q
+* intrusion detection: skip ruleset empty metadata (contributed by kulikov-a)
+* ipsec: fix a regression in rightsubnets for non-mobile phase 2
+* ipsec: fix a regression in VTI handling
+* ipsec: identity quoting for ASN1DN and FQDN types with "#" characters
+* ipsec: add auto type for identities
+* openvpn: fix client-config-dir regression
+* openvpn: check IPv4 tunnel prefix (contributed by kulikov-a)
+* openvpn: simplify CIDR validation and remove trim() usage
+* web proxy: adding additional memory cache options (contributed by Xeroxxx)
+* plugins: os-acme-client 3.0 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-haproxy 3.5 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/net/haproxy/pkg-descr>`__ 
+* src: runtime RSS code preparations and assorted related upstream patches
+* src: axgbe: remove unneccesary packet length check
+* src: iflib: fix partial length accounting error in netmap mode
+* src: lib: add libnetmap and related patches
+* src: dhclient: skip_to_semi() consumes semicolon already
+* src: rtsold: slighty change address read
+* src: fix missing error handling in bhyve(8) device models `[3] <FREEBSD:FreeBSD-SA-21:13.bhyve>`__ 
+* src: fix remote code execution in ggatec(8) `[4] <FREEBSD:FreeBSD-SA-21:14.ggatec>`__ 
+* src: fix libfetch out of bounds read `[5] <FREEBSD:FreeBSD-SA-21:15.libfetch>`__ 
+* src: fix multiple OpenSSL vulnerabilities `[6] <FREEBSD:FreeBSD-SA-21:16.openssl>`__  `[7] <FREEBSD:FreeBSD-SA-21:17.openssl>`__ 
+* ports: ifinfo 13.0
+* ports: libressl 3.3.4 `[8] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.4-relnotes.txt>`__ 
+* ports: nss 3.69 `[9] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.69_release_notes>`__ 
+* ports: monit 5.29.0 `[10] <https://mmonit.com/monit/changes/>`__ 
+* ports: mpd5 adds L2TP interoperability fix from upstream
+* ports: openssl 1.1.1l `[11] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: php 7.4.23 `[12] <https://www.php.net/ChangeLog-7.php#7.4.23>`__ 
+* ports: strongswan 5.9.3 `[13] <https://github.com/strongswan/strongswan/releases/tag/5.9.3>`__ 
+* ports: sudo 1.9.7p2 `[14] <https://www.sudo.ws/stable.html#1.9.7p2>`__ 
+* ports: unbound 1.13.2 `[15] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-13-2>`__ 
+
+A hotfix release was issued as 21.7.2_1:
+
+* firewall: remove reordering patch due to unintended behavioural changes
+
+
+
+--------------------------------------------------------------------------
 21.7.1 (August 04, 2021)
 --------------------------------------------------------------------------
 
