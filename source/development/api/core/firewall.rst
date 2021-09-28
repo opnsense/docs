@@ -12,6 +12,7 @@ Firewall
     "``GET``","firewall","alias","getAliasUUID","$name"
     "``GET``","firewall","alias","getGeoIP",""
     "``GET``","firewall","alias","getItem","$uuid=null"
+    "``GET``","firewall","alias","getTableSize",""
     "``POST``","firewall","alias","import",""
     "``GET``","firewall","alias","listCountries",""
     "``GET``","firewall","alias","listNetworkAliases",""
