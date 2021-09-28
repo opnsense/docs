@@ -49,6 +49,9 @@ Enter the following information:
  **Read properties**                                       *Fetch account details after successful login*
  **Synchronize groups**                                    *Enable to Synchronize groups, requires the option above*
  **Limit groups**                                          *Select list of groups that maybe considered during sync**
+ **Automatic user creation**                               *When groups are automatically synchronized,
+                                                           this offers the ability to automatically create the
+                                                           user when it doesn't exist.
  **Match case insensitive**                                *Allow mixed case input when gathering local user settings.*
 ================================ ======================== ===============================================================
 
@@ -83,6 +86,7 @@ Enter the following information:
     In some cases local naming doesn't match server naming when it comes to users, the case insensitive option can
     be used in that case to ignore case on login. Microsoft Access Directory for example doesn't match case sensitive,
     in which case :code:`UsEr` equals :code:`user` (our system is case sensitive)
+
 
 
 Step 1.1 (optional) Synchronize groups.
@@ -144,6 +148,16 @@ you will see a cloud import icon at the lower right corner of the form.
 Click on the cloud import icon to start importing users.
 
 A new form will be show with the individual users, select the ones you like to import.
+
+.. Note::
+
+    The **Automatic user creation** option replaces manual imports in cases where account details can be
+    retrieved from the remote ldap server. Users created with this option should be removed manually from the firewall when
+    they are removed from (one of) the ldap server(s), which is the same as they would be maintained locally on manual imports.
+
+    As of version business edition  :code:`21.10`, the system will automatically query the ldap servers and remove unexisting users.
+    (not available in the community version of OPNsense)
+
 
 Step 5 - Update LDAP user privileges
 ------------------------------------
