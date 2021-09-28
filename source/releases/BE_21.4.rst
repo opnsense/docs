@@ -99,11 +99,12 @@ Here are the full patch notes:
 * ports: libxml 2.9.12 `[10] <http://www.xmlsoft.org/news.html>`__ 
 * ports: nss 3.67 `[11] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.67_release_notes>`__ 
 * ports: openldap 2.4.59 `[12] <https://www.openldap.org/software/release/changes.html>`__ 
-* ports: pcre2 10.37 `[13] <https://www.pcre.org/changelog.txt>`__ 
-* ports: phalcon 4.1.2 `[14] <https://github.com/phalcon/cphalcon/releases/tag/v4.1.2>`__ 
-* ports: php 7.4.20 `[15] <https://www.php.net/ChangeLog-7.php#7.4.20>`__ 
-* ports: sudo 1.9.7p1 `[16] <https://www.sudo.ws/stable.html#1.9.7p1>`__ 
-* ports: suricata 5.0.7 `[17] <https://redmine.openinfosecfoundation.org/versions/166>`__ 
+* ports: openssl 1.1.1l `[13] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: pcre2 10.37 `[14] <https://www.pcre.org/changelog.txt>`__ 
+* ports: phalcon 4.1.2 `[15] <https://github.com/phalcon/cphalcon/releases/tag/v4.1.2>`__ 
+* ports: php 7.4.20 `[16] <https://www.php.net/ChangeLog-7.php#7.4.20>`__ 
+* ports: sudo 1.9.7p1 `[17] <https://www.sudo.ws/stable.html#1.9.7p1>`__ 
+* ports: suricata 5.0.7 `[18] <https://redmine.openinfosecfoundation.org/versions/166>`__ 
 
 
 
