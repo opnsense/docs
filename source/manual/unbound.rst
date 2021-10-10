@@ -195,7 +195,7 @@ Refuse Non-local                      Allow only authoritative local-data querie
 ====================================  ===============================================================================
 
 -------------------------
-Blacklist
+Blocklists
 -------------------------
 
 Enable integrated dns blacklisting using one of the predefined sources or custom locations.
@@ -220,6 +220,7 @@ the list maintainers.
 =====================================================================================================================
 
 ====================================  ===============================================================================
+Abuse.ch - ThreatFox IOC database     https://threatfox.abuse.ch/
 AdAway                                https://adaway.org
 AdGuard List                          https://justdomains.github.io/blocklists/#the-lists
 Blocklist.site                        https://github.com/blocklistproject/Lists
