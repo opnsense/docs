@@ -123,6 +123,52 @@ services with the button below the table.
     The link in the host column brings you directly into the service control page of the selected firewall.
 
 
+Machine resource status
+----------------------------------------------------
+
+In order to gain insights into the managed machines there is a resource page available which queries all connected
+firewalls and reports aggregated status about them.
+
+While collecting data for a machine there's a spinner visible, as soon as information is collected you can view
+relevant information per node.
+
+.. image:: images/OPNcentral_resources_host.png
+    :width: 100%
+
+From left to right the following information is available:
+
+* Host information
+
+  *  Host name (description)
+  *  Version installed
+  *  Processor type
+  *  Most recent configuration change (tooltip uncovers who made the change and from which module)
+
+* General statistics
+
+  * Current cpu usage (total percentage)
+  * Total memory usage
+  * Swap file usage
+  * Total interfaces configured (up/down)
+  * Aggregated HA status (when configured), MASTER when all interfaces are, BACKUP when at least one is demoted to BACKUP
+  * Root file system usage
+  * Gateway status including maximum delay
+
+* Firewall
+
+  * State table usage
+  * Alias usage (when over 100% the requested entries don't fir in memory)
+  * Source tracking table usage
+  * Current traffic in/out, tooltip the piechart to show protocol name (or number) with current rate
+
+
+.. Tip::
+
+    When headings are underlined, a click brings you to the relevant module of the firewall in question.
+
+
+
+
 Provisioning / sharing settings
 ----------------------------------------------------
 
