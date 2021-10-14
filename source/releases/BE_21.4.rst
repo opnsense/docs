@@ -106,6 +106,17 @@ Here are the full patch notes:
 * ports: sudo 1.9.7p1 `[17] <https://www.sudo.ws/stable.html#1.9.7p1>`__ 
 * ports: suricata 5.0.7 `[18] <https://redmine.openinfosecfoundation.org/versions/166>`__ 
 
+A hotfix release was issued as 21.4.3_8:
+
+* system: prevent expired or intermediate CA certificates from being added to trust store by default
+* system: fix unescaped source field used for password in backup plugins
+* firewall: fix long comment preventing IPFW reload (contributed by Robin Schneider)
+* firmware: enable upgrade path to 21.10
+* firmware: undo masking vulnerability URLs in FreeBSD due to UUID use
+* firmware: correctly announce major upgrade reboot in status return
+* firmware: do not fetch GeoIP database from business mirrors without a subscription
+* backend: catch broken pipe on event handler (contributed by kulikov-a)
+
 
 
 --------------------------------------------------------------------------

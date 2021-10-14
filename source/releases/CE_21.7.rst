@@ -83,6 +83,12 @@ A hotfix release was issued as 21.7.3_1:
 
 * openvpn: properly save new tls-crypt configuation
 
+A hotfix release was issued as 21.7.3_3:
+
+* openvpn: fix validation for /30 subnet in peer to peer mode (contributed by kulikov-a)
+* backend: catch broken pipe on event handler (contributed by kulikov-a)
+* plugins: os-acme-client 3.2 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+
 
 
 --------------------------------------------------------------------------
@@ -117,7 +123,7 @@ Here are the full patch notes:
 * system: add missing ACL for Syslog targets page
 * system: fix unescaped source field used for password in backup plugins
 * system: reload FreeBSD services when reloading all services from console
-* interfaces: use -M option in rtosold invoke in preparation for 22.1
+* interfaces: use -M option in rtsold invoke in preparation for 22.1
 * interfaces: correct indent in dhclient configuration
 * firewall: allow to specify port ranges for outgoing NAT (contributed by Nikolay Denev)
 * firewall: fix long comment preventing IPFW reload (contributed by Robin Schneider)
@@ -148,7 +154,7 @@ Here are the full patch notes:
 * src: iflib: fix partial length accounting error in netmap mode
 * src: lib: add libnetmap and related patches
 * src: dhclient: skip_to_semi() consumes semicolon already
-* src: rtsold: slighty change address read
+* src: rtsold: slightly change address read
 * src: fix missing error handling in bhyve(8) device models `[3] <FREEBSD:FreeBSD-SA-21:13.bhyve>`__ 
 * src: fix remote code execution in ggatec(8) `[4] <FREEBSD:FreeBSD-SA-21:14.ggatec>`__ 
 * src: fix libfetch out of bounds read `[5] <FREEBSD:FreeBSD-SA-21:15.libfetch>`__ 
