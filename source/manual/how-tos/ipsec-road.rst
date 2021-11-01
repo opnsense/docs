@@ -134,7 +134,6 @@ Phase 1 proposal (Authentication)
  **Authentication method**   Mutual PSK +Xauth      *Using a Pre-shared Key and Login*
  **Negotiation mode**        Agressive              *Select Aggressive*
  **My identifier**           My IP address          *Simple identification for fixed ip*
- **Peer identifier**         User distinguished     *Identification for peer*
  **Pre-Shared Key**          At4aDMOAOub2NwT6gMHA   *Random key*. **CREATE YOUR OWN!**
 =========================== ====================== ======================================
 
