@@ -2,27 +2,27 @@
 Access / Servers / LDAP
 =====================================
 
-LDAP is the light weight directory access protocol used by Microsoft Active Directory,
+LDAP is the lightweight directory access protocol used by Microsoft Active Directory (AD),
 OpenLDAP and Novell eDirectory, to name a few.
 
-OPNsense can use a LDAP server for authentication purposes and for authorization
+OPNsense can use an LDAP server for authentication purposes and for authorization
 to access (parts) of the graphical user interface (web configurator). When using
 LDAP for the GUI the privileges have to be defined with the local user manager,
 to do so an import of the users from the LDAP source is required.
 
 In this how-to we will show you how to configure both using Microsoft Active Directory
-Server. If you only need LDAP for services like VPN, then you can skip step 3-5.
+Server. If you only need LDAP for services like VPN, then you can skip steps 3-5.
 
 -------------
 Prerequisites
 -------------
 A functional LDAP server (example is based on MS AD) is required.
-You OPNsense firewall need to be fully configured and able to access the LDAP server.
+Your OPNsense firewall needs to be fully configured and able to access the LDAP server.
 
 Step 1 - Add New LDAP server
 ----------------------------
 To add a new LDAP server as authentication source, go to :menuselection:`System --> Access --> Servers`
-and click on **Add server** the top right corner, just above the form.
+and click on **Add server** in the top right corner, just above the form.
 
 Enter the following information:
 
@@ -43,21 +43,21 @@ Enter the following information:
  **Search scope**                 Entire Subtree           *Select Entire Subtree to retrieve all*
  **Base DN:**                     DC=opnsense,DC=local     *Enter the Base DN*
  **Authentication containers**	  *Select*                 *Click & Select the containers from the list*
- **Extended Query**               &(objectClass=Person)    *Extend query, p.e. limit results to Persons*
- **Initial Template**             MicrosoftAD              *Select you LDAP Server Type*
+ **Extended Query**               &(objectClass=Person)    *Extend query, e.g. limit results to Persons*
+ **Initial Template**             MicrosoftAD              *Select your LDAP Server Type*
  **User naming attribute**        samAccountName           *Auto filled in based upon Initial Template*
  **Read properties**                                       *Fetch account details after successful login*
  **Synchronize groups**                                    *Enable to Synchronize groups, requires the option above*
- **Limit groups**                                          *Select list of groups that maybe considered during sync**
+ **Limit groups**                                          *Select list of groups that may be considered during sync**
  **Automatic user creation**                               *When groups are automatically synchronized,
                                                            this offers the ability to automatically create the
-                                                           user when it doesn't exist.
+                                                           user when it doesn't exist.*
  **Match case insensitive**                                *Allow mixed case input when gathering local user settings.*
 ================================ ======================== ===============================================================
 
 .. Note::
    When clicking on the **Select** button right next to Authentication containers,
-   something similar to will show up:
+   something similar to the following will show up:
 
    .. image:: images/ldap_selectcontainer.png
       :width: 100%
@@ -73,7 +73,7 @@ Enter the following information:
    group (only relevant for external services, when not using the local user database).
    One can use something like this:
    **&(memberOf=CN=myGroup,CN=Users,DC=opnsense,DC=local)** to select only members
-   of  the group *"myGroup"*. To add a user to a specific group under Windows just
+   of the group *"myGroup"*. To add a user to a specific group under Windows just
    edit the groups properties and select **Add...** to add the user under the tab
    **Members**.
 
@@ -92,13 +92,13 @@ Enter the following information:
 Step 1.1 (optional) Synchronize groups.
 .........................................
 
-When using the local database to import users, you can also synchronize configured ldap groups when the remote server
+When using the local database to import users, you can also synchronize configured LDAP groups when the remote server
 supports this. To use this feature, enable :code:`Read properties` and :code:`Synchronize groups`.
 
 .. Note::
 
-    This feature needs the remote ldap server to respond with :code:`memberOf` when queried, how to enable this on
-    various ldap providers lies outside the scope of this manual.
+    This feature needs the remote LDAP server to respond with :code:`memberOf` when queried, how to enable this on
+    various LDAP providers lies outside the scope of this manual.
 
 .. Note::
 
@@ -110,7 +110,7 @@ Step 2 - Test
 --------------
 To test if the server is configured correctly, go to :menuselection:`System --> Access --> Tester`
 and select your LDAP server and enter a valid username + password. Click on
-**Test** and if everything is setup correctly it will show:
+**Test** and if everything is set up correctly it will show:
 
 .. image:: images/ldap_testok.png
    :width: 100%
@@ -152,10 +152,10 @@ A new form will be show with the individual users, select the ones you like to i
 .. Note::
 
     The **Automatic user creation** option replaces manual imports in cases where account details can be
-    retrieved from the remote ldap server. Users created with this option should be removed manually from the firewall when
-    they are removed from (one of) the ldap server(s), which is the same as they would be maintained locally on manual imports.
+    retrieved from the remote LDAP server. Users created with this option should be removed manually from the firewall when
+    they are removed from (one of) the LDAP server(s), which is the same as they would be maintained locally on manual imports.
 
-    As of version business edition  :code:`21.10`, the system will automatically query the ldap servers and remove unexisting users.
+    As of version business edition :code:`21.10`, the system will automatically query the LDAP servers and remove non-existing users.
     (not available in the community version of OPNsense)
 
 
@@ -177,8 +177,8 @@ LDAP server, just like this:
 
 Step 6 - Update system access settings
 --------------------------------------
-Now we have configures, verified and imported the users from our LDAP server, we
-need to change the default settings to allow LDAP users to login.
+Now we have configured, verified and imported the users from our LDAP server, we
+need to change the default settings to allow LDAP users to log in.
 
 Go to :menuselection:`System --> Access --> Settings` and change the Authentication Server from
 **Local Database** to your newly created **LDAP** server. Leave the fallback on
