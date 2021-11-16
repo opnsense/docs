@@ -6,7 +6,7 @@ NUT - Network UPS Tools
 What is NUT
 --------------------------
 
-NUT is a tool that enables the use of a UPS device via either USB or Network communication. If enabled, the system will shutdown at 10% remaining battery level.
+NUT is a tool that enables the use of a UPS device via either USB or Network communication. If enabled, the system will shutdown when the UPS emits a low battery warning.
 
 --------------------------
 Installation
