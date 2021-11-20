@@ -87,8 +87,9 @@ Step 4 - Assign an interface to WireGuard and enable it
      **Enable**                    *Checked*
      **Lock**                      *Checked if you wish to*
      **Description**               *Same as under Assignments, if this box is not already populated*
-     **IPv4 Configuration Type**   *None*
-     **IPv6 Configuration Type**   *None*
+     **IPv4 Configuration Type**   *Static IPv4*
+     **IPv4 Address**              *As per the Tunnel Address under the WireGuard local peer configuration*
+     **IPv4 Upstream Gateway**     *Auto-detect*
     ============================= ===================================================================
 
 - **Save** the interface configuration and then click **Apply changes**
@@ -213,6 +214,38 @@ Step 9 - Create an outbound NAT rule
 
 - **Save** the rule, and then click **Apply changes**
 
+-----------------------------------------
+Step 10 - Adding a kill switch (optional)
+-----------------------------------------
+
+If the VPN tunnel gateway goes offline, then traffic intended for the VPN may go out the normal WAN gateway. There are a couple of ways to avoid this, one of which is outlined here:
+
+- First, go back to the firewall rule you created under Step 7
+- Click on the **Show/Hide** button next to "Advanced Options"
+- Then, in the **Set local tag** field, add :code:`NO_WAN_EGRESS`
+- **Save** the rule, and then click **Apply changes**
+- Then go to :menuselection:`Firewall --> Rules --> Floating`
+- Click **Add** to add a new rule
+- Configure the rule as follows (if an option is not mentioned below, leave it as the default). You need to click the **Show/Hide** button next to "Advanced Options" to reveal the last setting:
+
+    ============================ ==================================================================================================
+     **Action**                   *Block*
+     **Quick**                    *Checked*
+     **Interface**                *WAN*
+     **Direction**                *out*
+     **TCP/IP Version**           *IPv4*
+     **Protocol**                 *any*
+     **Source / Invert**          *Unchecked*
+     **Source**                   *any*
+     **Destination / Invert**     *Unchecked*
+     **Destination**              *any*
+     **Destination port range**   *any*
+     **Description**              *Add one if you wish to*
+     **Match local tag*           *NO_WAN_EGRESS*
+    ============================ ==================================================================================================
+
+- **Save** the rule, and then click **Apply Changes**
+
 .. _configuring-ipv6:
 
 ----------------
@@ -225,11 +258,13 @@ To configure the tunnel to use IPv6, you essentially need to replicate the steps
 
 - add the IPv6 tunnel IP to Tunnel Address on the WireGuard Local configuration (see further below)
 - add :code:`::/0` to the Allowed IPs on the WireGuard Endpoint configuration
+- in the interface settings, specify the IPv6 Configuration Type as **Static IPv6** and add the IPv6 tunnel IP (see further below)
 - create an IPv6 gateway (see further below)
 - add to the hosts alias the IPv6 addresses of the hosts/networks that are to use the tunnel
 - if necessary, create a separate local IPs alias for IPv6, so they can be excluded from the IPv6 firewall rule destination
 - create an IPv6 firewall rule (specifying the IPv6 gateway in the rule)
 - create an IPv6 outbound NAT rule
+- (optionally) add the kill switch tag to the IPv6 firewall rule and change the associated Floating rule to IPv4+IPv6
 
 Note, however, that there are a couple of differences:
 
@@ -237,7 +272,7 @@ Note, however, that there are a couple of differences:
 
 2. Second, there is no concept of a Far Gateway for IPv6. So to successfully set up a gateway for IPv6, you need to do two things:
 
-  - When adding the IPv6 address to Tunnel Address in the WireGuard Local configuration, specify a /127 mask, rather than a /128
+  - When adding the IPv6 address to Tunnel Address in the WireGuard Local configuration and to the interface settings, specify a /127 mask, rather than a /128
   - Then, when creating an IPv6 Gateway for the tunnel, specify the IP address to be another IPv6 address that is within the /127 subnet of the Tunnel Address
 
 .. _dns-leaks:
