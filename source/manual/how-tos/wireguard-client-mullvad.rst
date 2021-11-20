@@ -22,12 +22,20 @@ the first step, but as it is required we can't go on without it. Every other fie
 Hit **Save** and open your instance again to write down your public key. You need it to get the rest
 of the configuration from the Mullvad API servers. 
 
-Now change to your OPNsense CLI via SSH or Console and execute the curl string below. Please replace the
-**account** data with your own ID you got from MullvadVPN and **pubkey** with the one in your **Local**
+Now change to your OPNsense CLI via SSH or Console and execute *either* of the curl strings below. Please replace
+**YOURACCOUNTNUMBER** with your own ID you got from MullvadVPN and **YOURPUBLICKEY** with the one in your **Local**
+
+The command below is for Mullvad's standard API. DNS requests through a tunnel that uses tunnel IPs generated via this API are "hijacked", so that Mullvad's DNS servers are used to avoid leaks:
 
 .. code-block:: sh
 
-    curl -sSL https://api.mullvad.net/wg/ -d account=123 --data-urlencode pubkey=PUBKEY
+    curl -sSL https://api.mullvad.net/wg/ -d account=YOURACCOUNTNUMBER --data-urlencode pubkey=YOURPUBLICKEY
+
+The alternative command below is for Mullvad's other API. DNS requests through the tunnel are not hijacked when using tunnel IPs generated via this API:
+
+.. code-block:: sh
+
+	curl -sSL https://api.mullvad.net/app/v1/wireguard-keys -H "Content-Type: application/json" -H "Authorization: Token YOURACCOUNTNUMBER" -d '{"pubkey":"YOURPUBLICKEY"}'
     
 What you receive is what WireGuard calls **Allowed IP** for your local instance. Edit your instance again and remove
 the value of **Tunnel Address** you used when setting it up and change it to the one you got.
