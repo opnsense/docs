@@ -241,7 +241,7 @@ If the VPN tunnel gateway goes offline, then traffic intended for the VPN may go
      **Destination**              *any*
      **Destination port range**   *any*
      **Description**              *Add one if you wish to*
-     **Match local tag*           *NO_WAN_EGRESS*
+     **Match local tag**          *NO_WAN_EGRESS*
     ============================ ==================================================================================================
 
 - **Save** the rule, and then click **Apply Changes**
