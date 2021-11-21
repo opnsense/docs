@@ -240,9 +240,9 @@ Step 10 - Create an outbound NAT rule
 
 - **Save** the rule, and then click **Apply changes**
 
------------------------------------------
-Step 10 - Adding a kill switch (optional)
------------------------------------------
+--------------------------------------
+Step 10 - Add a kill switch (optional)
+--------------------------------------
 
 If the VPN tunnel gateway goes offline, then traffic intended for the VPN may go out the normal WAN gateway. There are a couple of ways to avoid this, one of which is outlined here:
 
