@@ -4,7 +4,7 @@ Zenarmor (Sensei): Installing via Web Interface
 
 .. Note::
 
-    Zenarmor Free Edition is **forever free-of-charge**. We strongly recommend you register to keep in touch with updates and new features. You can register at `https://www.sunnyvalley.io/product <https://www.sunnyvalley.io/product>`_
+    Zenarmor Free Edition is **forever free-of-charge**. We strongly recommend you register to keep in touch with updates and new features. You can register at `https://www.sunnyvalley.io/sensei <https://www.sunnyvalley.io/sensei>`_
 
 Zenarmor may be installed using the web interface in OPNsense or using the command line interface via SSH or local system access (see :doc:`zenarmor_cmd_install`). The preferred method is the web interface because the process of installing plugins in OPNsense is simple and Zenarmor requires the use of the web interface to complete the initial configuration after installation.
 
@@ -29,7 +29,7 @@ After installing Zenarmor, you should see the Zenarmor menu in the left sidebar 
 
 Next, you will need to complete the “Initial Configuration Wizard” for Zenarmor to be fully operational.
 
-.. _Zenarmor_Initial_Configuration_Wizard:
+.. _Sensei_Initial_Configuration_Wizard:
 
 ------------------------------
 Initial Configuration Wizard
@@ -140,7 +140,7 @@ Cloud Threat Intel settings let you:
 .. image:: images/zenarmor-wizard-cloud-reputation.png
     :width: 100%
 
-* Click :menuselection:`Next` to continue to the :menuselection:`Zenarmor CLI` section.
+* Click :menuselection:`Next` to continue to the :menuselection:`Sensei CLI` section.
 
 .........................
 6- Zenarmor CLI (Security)

@@ -4,7 +4,7 @@ Zenarmor (Sensei): Installing via Command Line
 
 Although the preferred method of installation is the web interface, Zenarmor may also be installed using the command line interface via SSH or direct system access. Once Zenarmor is installed, you will need to complete the initial configuration using the web interface.
 
-To install Zenarmor in OPNsense with the command line interface, you must use an administrative account with shell access.
+To install Sensei in OPNsense with the command line interface, you must use an administrative account with shell access.
 
 -------------------------
 Command Line Installation
@@ -44,13 +44,13 @@ Once you are successfully logged into OPNsense either by local system access or 
 
 .. code-block:: bash
 
-    # curl https://updates.sunnyvalley.io/getzenarmor | sh
+    # curl https://updates.sunnyvalley.io/getsensei | sh
 
-.. image:: images/zenarmor-cli-install.png
+.. image:: images/sensei-cli-install.png
     :width: 100%
 
 The script will copy the installation files onto the filesystem and will add a top-level menu item within the OPNsense web interface. Depending on the speed of your hardware and Internet connection, the installation may take several minutes to complete.
 
 Once the installation has been completed, you may disconnect from your terminal session.
 
-You will now need to complete the “Initial Configuration Wizard” for Zenarmor to be fully operational. See the :ref:`Initial Configuration Wizard <_Zenarmor_Initial_Configuration_Wizard>` section for information.
+You will now need to complete the “Initial Configuration Wizard” for Zenarmor to be fully operational. See the :ref:`Initial Configuration Wizard <_Sensei_Initial_Configuration_Wizard>` section for information.
