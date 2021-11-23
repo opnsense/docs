@@ -269,7 +269,7 @@ Here are the full patch notes:
 * ports: libressl 3.3.3 `[12] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.3-relnotes.txt>`__ 
 * ports: libxml2 fix for CVE-2021-3541
 * ports: nss 3.65 `[13] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.65_release_notes>`__ 
-* ports: openssh-portable 8.6p1 `[14] <https://www.openssh.com/txt/release-8.6>`__ 
+* ports: openssh 8.6p1 `[14] <https://www.openssh.com/txt/release-8.6>`__ 
 * ports: openvpn 2.4.11 `[15] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24#OpenVPN2.4.11>`__ 
 * ports: php 7.3.28 `[16] <https://www.php.net/ChangeLog-7.php#7.3.28>`__ 
 * ports: sqlite 3.35.5 `[17] <https://sqlite.org/releaselog/3_35_5.html>`__ 

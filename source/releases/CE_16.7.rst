@@ -51,14 +51,12 @@ Until then, here are the full patch notes:
 * insight: fix downloading files in Chrome
 * mvc: consistently set locale (contributed by Alexander Shursha)
 * mvc: do not deliver content twice on API calls
-* python: downgraded to 2.7.12 in order to fix segmentation faults
-  within insight reporting
-* libressl: avoid possible side-channel leak of ECDSA private keys
-  when signing `[1] <https://ftp.openbsd.org/pub/OpenBSD/patches/6.0/common/016_libcrypto.patch.sig>`__ 
+* python: downgraded to 2.7.12 in order to fix segmentation faults within insight reporting
+* libressl: avoid possible side-channel leak of ECDSA private keys when signing `[1] <https://ftp.openbsd.org/pub/OpenBSD/patches/6.0/common/016_libcrypto.patch.sig>`__ 
 * ports: bind 9.10.4-P5 `[2] <https://deepthought.isc.org/article/AA-01447/0/BIND-9.10.4-P5-Release-Notes.html>`__ 
 * ports: perl 5.24.1 `[3] <https://perldoc.perl.org/5.24.1/perldelta>`__ 
 * ports: sqlite 3.16.2 `[4] <https://sqlite.org/releaselog/3_16_2.html>`__ 
-* ports: openssh-portable 7.4p1 `[5] <https://www.openssh.com/txt/release-7.4>`__ 
+* ports: openssh 7.4p1 `[5] <https://www.openssh.com/txt/release-7.4>`__ 
 * ports: sudo 1.8.19p2 `[6] <https://www.sudo.ws/stable.html#1.8.19p2>`__ 
 * ports: lighttpd 1.4.45 `[7] <https://www.lighttpd.net/2017/1/14/1.4.45/>`__ 
 * ports: php 5.6.30 `[8] <https://php.net/ChangeLog-5.php#5.6.30>`__ 

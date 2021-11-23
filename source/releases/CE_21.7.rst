@@ -33,6 +33,180 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+21.7.5 (November 11, 2021)
+--------------------------------------------------------------------------
+
+
+FreeBSD security advisories and an issue with Intel-based ixgbe driver
+with "ifconfig -v" stalls keep this release rolling.  Also note that
+OpenSSH was updated to version 8.8 which deprecates ssh-rsa usage which
+is mainly an issue for client access from the OPNsense system to the
+outside and can be amended as per the suggestions in the respective
+release notes.
+
+And as promised the development version includes the upgrade path to
+the 22.1-BETA1 release.  This will be an online-beta with a few iterations
+over the FreeBSD 13 stable branch and eventually move to FreeBSD 13.1
+release as that becomes available.
+
+Highlights for 22.1 already include:
+
+* Suricata Netmap v14 support for multi-gigabit speed in IPS mode with RSS enabled
+* Separate VLAN MAC spoofing and permanent promiscuous mode setting
+* Tunable analytics provide automatic descriptions and type
+* IPsec tunnel overview ported to MVC with pagination
+* Proofpoint Emerging Threats rules for Suricata 5.0
+* Removed opportunistic interface address read functions
+* Console-based LAGG configuration support
+* Removed state killing on gateway failure feature
+* Improved firmware update capabilities
+* No-bind service awareness for virtual IPs
+* FreeBSD 13 stable branch
+* RFC 5424 and severity support in logs
+* Clog support has been removed
+* And more...
+
+Please note that the beta version will always be available for upgrade when
+switching to the development version.  At this point no stable packages
+are provided and this includes plugins.  These will become available as
+the release candidate is released in early January 2022.
+
+All feedback is welcome but keep in mind that there are still a number of
+moving parts ahead.  Upgrade responsibly.
+
+Here are the full patch notes for version 21.7.5:
+
+* system: remove support for obsolete "local" syslog socket plugin request
+* system: prevent setup wizard error in WAN-only configuration
+* system: properly extract keyid string (contributed by kulikov-a)
+* system: show all threads and correct WCPU in activity (contributed by kulikov-a)
+* system: fix display and sorting in activity (contributed by kulikov-a)
+* interfaces: remove obsolete link_interface_to_vlans() function
+* interfaces: inline legacy_interface_rename() function
+* interfaces: verbose output on test port (contributed by kulikov-a)
+* firewall: add live view templates page to respective ACL (contributed by kulikov-a)
+* firewall: replace pfInfo with statistics page
+* firewall: add rules to statistics page (contributed by kulikov-a)
+* firewall: remove defunct "block carp from self" CARP rule
+* dhcp: automatically set AdvRASrcAddress for link-local CARP address
+* dhcp: exclude link-local subnet router advertisements
+* firmware: remove unavailable Hostcentral mirror
+* firmware: opnsense-update: replace -A before -M and handle single directory -M independently
+* firmware: opnsense-verify: disable verification for repositories without signatures
+* firmware: opnsense-verify: let -l option properly discard duplicate repositories
+* firmware: opnsense-version: support -x effective ABI probing
+* ipsec: add sha256_96 flag (contributed by Patrick M. Hausen)
+* monit: add polltime to service settings (contributed by Frank Brendel)
+* ui: prevent event propagation to avoid click() events being forwarded
+* plugins: os-bind 1.19 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/bind/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.10 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-dyndns 1.26 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/dyndns/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.17 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.23 `[5] <https://github.com/opnsense/plugins/blob/stable/21.7/net/frr/pkg-descr>`__ 
+* plugins: os-haproxy 3.7 `[6] <https://github.com/opnsense/plugins/blob/stable/21.7/net/haproxy/pkg-descr>`__ 
+* plugins: os-nut 1.8.1 `[7] <https://github.com/opnsense/plugins/blob/stable/21.7/sysutils/nut/pkg-descr>`__ 
+* plugins: os-openconnect 1.4.1 `[8] <https://github.com/opnsense/plugins/blob/stable/21.7/security/openconnect/pkg-descr>`__ 
+* plugins: os-relayd 2.6 `[9] <https://github.com/opnsense/plugins/pull/2391>`__ 
+* plugins: os-telegraf 1.12.2 `[10] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-vnstat 1.3 `[11] <https://github.com/opnsense/plugins/blob/stable/21.7/net/vnstat/pkg-descr>`__ 
+* plugins: os-wireguard 1.8 `[12] <https://github.com/opnsense/plugins/blob/stable/21.7/net/wireguard/pkg-descr>`__ 
+* src: axgbe: correctly enable RSS driver support by default
+* src: ixgbe: prevent subsequent I2C bus read timeouts
+* src: fix kernel panic in vmci driver initialization `[13] <FREEBSD:FreeBSD-EN-21:28.vmci>`__ 
+* src: timezone database information update `[14] <FREEBSD:FreeBSD-EN-21:29.tzdata>`__ 
+* ports: lighttpd 1.4.61 `[15] <https://www.lighttpd.net/2021/10/28/1.4.61/>`__ 
+* ports: nss 3.72 `[16] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.72_release_notes>`__ 
+* ports: openssh 8.8p1 `[17] <https://www.openssh.com/txt/release-8.8>`__ 
+* ports: pcre2 10.39 `[18] <https://www.pcre.org/changelog.txt>`__ 
+* ports: php 7.4.25 `[19] <https://www.php.net/ChangeLog-7.php#7.4.25>`__ 
+* ports: phpseclib 2.0.34 `[20] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.34>`__ 
+
+
+--------------------------------------------------------------------------
+21.7.4 (October 27, 2021)
+--------------------------------------------------------------------------
+
+
+This update features three new major things: optional receive side scaling
+(RSS) support in the kernel, asynchronous DNS resolving for aliases and
+configuration support for advanced LAGG settings.
+
+RSS is disabled by default but may be switched on by adding a tunable
+"net.inet.rss.enabled" with value "1" and rebooting the system.  While
+RSS can improve performance for certain hardware it should be used with
+care at this point and is not generally recommended yet!  The Suricata
+version bundled with the development release offers the upcoming API
+bindings to take advantage of the RSS-based multithreading.  Also please
+note that PPPoE cannot take advantage of RSS.
+
+On the side we are almost ready for our 22.1-BETA preview with rolling
+releases for the development release type which is something new to look
+forward to also.
+
+Here are the full patch notes:
+
+* system: prevent expired or intermediate CA certificates from being added to trust store by default
+* system: prevent XSS in LDAP attribute return in authentication tester (reported by Orange CERT-CC)
+* system: add product title to auth pages
+* system: fix log search ignoring first character
+* system: add xc0 entry video console entry if node exists
+* system: add automatic outbound NAT logging option
+* interfaces: let guess_interface_from_ip() find the best match on overlapping subnets (contributed by Jason Crowley)
+* interfaces: improve configurability with LAGG devices
+* firewall: fix non-sticky rule association in port forward
+* firewall: switch failover peer address acquire away from deprecated function
+* firewall: specify overload table on maximum new connections
+* firewall: add loaded item count and last update to aliases page
+* firewall: refactor getInterfaceGateway() to eliminate edge cases with IPsec route-to behaviour
+* firewall: allow alias to skip entry on EmptyLabel (contributed by James Golovich)
+* firewall: improve resolve performance by implementing asynchronous DNS lookups
+* dhcp: show static leases without IP address assignments in the lease pages
+* firmware: do not remove obsolete base files on major upgrades
+* firmware: support ABI hints in the file "firmware-upgrade"
+* firmware: opnsense-code utility now supports "-u" mode for automatic upgrade after fetch
+* firmware: opnsense-code utility fix for "-d" option (contributed by Patrick M. Hausen)
+* firmware: opnsense-update utility is now able to bootstrap its own configuration in "-d" mode
+* firmware: opnsense-update utility now supports "-ct package-name" check for type change
+* firmware: opnsense-update utility no longer assumes "-bkp" by default
+* firmware: opnsense-update utility adds separate clean option for obsolete base files
+* firmware: opnsense-update utility assorted cleanups
+* ipsec: add charon.max_ikev1_exchanges parameter
+* ipsec: add closeaction parameter (contributed by Patrick M. Hausen)
+* ipsec: rewrite netmask calculation for VTI tunnel setup
+* monit: add link event to alert settings (contributed by Frank Brendel)
+* openvpn: remove obsolete remnants of tun-ipv6
+* unbound: add Abuse.ch ThreatFox list
+* unbound: make so-reuseport conditional upon RSS status
+* backend: static parameters ignored when no dynamic ones exist
+* mvc: replace __toString() calls with string casts
+* plugins: os-acme-client 3.4 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-c-icap log file fix (contributed by Michael Muenz)
+* plugins: os-dyndns 1.25 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/dyndns/pkg-descr>`__ 
+* plugins: os-haproxy 3.6 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/net/haproxy/pkg-descr>`__ 
+* plugins: os-lldpd will now identify itself as Network Connectivity Device (contributed by Xeroxxx)
+* plugins: os-puppet-agent 1.0 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/sysutils/puppet-agent/pkg-descr>`__ 
+* plugins: os-qemu-guest-agent 1.1 `[5] <https://github.com/opnsense/plugins/blob/stable/21.7/emulators/qemu-guest-agent/pkg-descr>`__ 
+* plugins: os-theme-rebellion 1.8.8 (contributed by Team Rebellion)
+* src: include RSS kernel support defaulting to off
+* src: axgbe: properly multiplex on reading module signals
+* src: libnetmap: reset errno in nmreq_register_decode()
+* src: pf: remove side effect from nat logging patch
+* src: dummynet: fix mbuf tag allocation failure handling
+* src: aesni: avoid a potential out-of-bounds load in aes_encrypt_icm()
+* ports: curl 7.79.1 `[6] <https://curl.se/changes.html#7_79_1>`__ 
+* ports: dnspython 2.1.0 `[7] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
+* ports: jinja 3.0.1 `[8] <https://jinja.palletsprojects.com/en/3.0.x/changes/#version-3-0-1>`__ 
+* ports: libressl 3.3.5 `[9] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.5-relnotes.txt>`__ 
+* ports: lighttpd 1.4.60 `[10] <https://www.lighttpd.net/2021/10/3/1.4.60/>`__ 
+* ports: nss 3.71 `[11] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.71_release_notes>`__ 
+* ports: openvpn 2.5.4 `[12] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.4>`__ 
+* ports: php 7.4.24 `[13] <https://www.php.net/ChangeLog-7.php#7.4.24>`__ 
+* ports: strongswan 5.9.4 `[14] <https://github.com/strongswan/strongswan/releases/tag/5.9.4>`__ 
+* ports: sudo 1.9.8p2 `[15] <https://www.sudo.ws/stable.html#1.9.8p2>`__ 
+
+
+
+--------------------------------------------------------------------------
 21.7.3 (September 22, 2021)
 --------------------------------------------------------------------------
 
