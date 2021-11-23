@@ -199,7 +199,7 @@ Step 9 - Configure routing
     ============================ ==================================================================================================
      **Action**                   *Pass*
      **Quick**                    *Unchecked*
-     **Interface**                *Select the interface for your WireGuard VPN (eg* :code:`WAN_VPNProviderName` *)*
+     **Interface**                *Do not select any*
      **Direction**                *out*
      **TCP/IP Version**           *IPv4*
      **Protocol**                 *any*
