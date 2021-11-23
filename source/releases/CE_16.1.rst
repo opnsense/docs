@@ -727,13 +727,10 @@ for our brave testers.  More explanations will follow soon.
 
 Here are the full patch notes:
 
-* ports: pecl-radius 1.3.0 `[1] <https://pecl.php.net/package-changelog.php?package=radius>`__ , bind 9.10.3-P4 `[2] <https://kb.isc.org/article/AA-01363/81/BIND-9.10.3-P4-Release-Notes.html>`__ , bsnmp-ucd 0.4.2 `[3] <https://github.com/trociny/bsnmp-ucd/blob/master/CHANGELOG>`__ ,
-  openssh-portable 7.2p2 `[4] <http://www.openssh.com/txt/release-7.2p2>`__ , sqlite 3.11.1 `[5] <https://sqlite.org/releaselog/3_11_1.html>`__ 
+* ports: pecl-radius 1.3.0 `[1] <https://pecl.php.net/package-changelog.php?package=radius>`__ , bind 9.10.3-P4 `[2] <https://kb.isc.org/article/AA-01363/81/BIND-9.10.3-P4-Release-Notes.html>`__ , bsnmp-ucd 0.4.2 `[3] <https://github.com/trociny/bsnmp-ucd/blob/master/CHANGELOG>`__ , openssh 7.2p2 `[4] <http://www.openssh.com/txt/release-7.2p2>`__ , sqlite 3.11.1 `[5] <https://sqlite.org/releaselog/3_11_1.html>`__ 
 * captive portal: add session timeout to status info
-* firewall: fix non-report of errors when filter reload errors
-  could not be parsed
-* pppoe server: make service control buttons work with multiple
-  instances
+* firewall: fix non-report of errors when filter reload errors could not be parsed
+* pppoe server: make service control buttons work with multiple instances
 * wake on lan: reworked pages for a polished look and feel
 * load balancer: reworked pages for a polished look and feel
 * dashboard: better colouring for widget status bars
@@ -742,21 +739,16 @@ Here are the full patch notes:
 * igmp proxy: reworked pages for a polished look and feel
 * system: routes diagnostics page ported to MVC
 * proxy: adjust category visibility as not all of them were shown before
-* firmware: fix an overzealous upgrade run when the package tool only
-  changes options
-* firmware: fixed the binary upgrade patch from 15.7.x in FreeBSD's
-  package tool
+* firmware: fix an overzealous upgrade run when the package tool only changes options
+* firmware: fixed the binary upgrade patch from 15.7.x in FreeBSD's package tool
 * network time: reworked pages for a polished look and feel
 * system: removed NTP settings from general settings
 * snmp: refactored page for a polished look and feel
 * access: let only root access status.php as it leaks too much info
 * development: remove the automount features
-* development: added in-place package upgrades using the upstream
-  repository
-* development: addition of "opnsense-stable" package on our way to
-  nightly builds
-* development: opnsense-update can now install locally available base
-  and kernel sets
+* development: added in-place package upgrades using the upstream repository
+* development: addition of "opnsense-stable" package on our way to nightly builds
+* development: opnsense-update can now install locally available base and kernel sets
 
 
 
@@ -781,33 +773,24 @@ Here are the full patch notes:
 
 * src: Fix multiple vulnerabilities of OpenSSL `[1] <https://github.com/freebsd/freebsd/commit/7d8d4cb5>`__ 
 * src: update tzdata to 2016a `[2] <http://mm.icann.org/pipermail/tz-announce/2016-January/000035.html>`__ 
-* ports: openssh-portable 7.2p1 `[3] <http://www.openssh.com/txt/release-7.2>`__ , isc-dhcp-43 4.3.3P1_1 `[4] <https://www.isc.org/blogs/isc-dhcp-4-3-0-is-live/>`__ ,
-  php 5.6.19 `[5] <https://php.net/ChangeLog-5.php#5.6.19>`__ , curl 7.41.1 `[6] <https://curl.haxx.se/changes.html>`__ 
-* firmware: mirror selection has been widened to include kernel/base
-  upgrades
-* firmware: bootstrap utility can now directly install e.g. the
-  development version
+* ports: openssh 7.2p1 `[3] <http://www.openssh.com/txt/release-7.2>`__ , isc-dhcp-43 4.3.3P1_1 `[4] <https://www.isc.org/blogs/isc-dhcp-4-3-0-is-live/>`__ , php 5.6.19 `[5] <https://php.net/ChangeLog-5.php#5.6.19>`__ , curl 7.41.1 `[6] <https://curl.haxx.se/changes.html>`__ 
+* firmware: mirror selection has been widened to include kernel/base upgrades
+* firmware: bootstrap utility can now directly install e.g. the development version
 * dhcp: all GUI pages have been reworked for a polished look and feel
-* proxy: added category-based remote file support if compressed file
-  contains multiple files
+* proxy: added category-based remote file support if compressed file contains multiple files
 * proxy: added ICAP support (contributed by Fabian Franz)
 * proxy: hook up the transparent FTP proxy
 * proxy: add intercept on IPv6 for FTP and HTTP proxy options
 * logging: syslog facilities, like services, are now fully pluggable
-* vpn: stripped an invalid PPTP server configuration from the standard
-  configuration
+* vpn: stripped an invalid PPTP server configuration from the standard configuration
 * vpn: converted to pluggable syslog, menu and ACL
 * dyndns: all GUI pages have been reworked for a polished look and feel
 * dyndns: widget now shows IPv6 entries too
-* dns forwarder: all GUI pages have been reworked for a polished
-  look and feel
-* dns resolver: all GUI pages have been reworked for a polished
-  look and feel
+* dns forwarder: all GUI pages have been reworked for a polished look and feel
+* dns resolver: all GUI pages have been reworked for a polished look and feel
 * dns resolver: rewrote the dhcp lease registration hooks
-* dns resolver: allow parallel operation on non-standard port when dns
-  forwarder is running as well
-* firewall: hide outbound nat rule input for "interface address" option
-  and toggle bitmask correctly
+* dns resolver: allow parallel operation on non-standard port when dns forwarder is running as well
+* firewall: hide outbound nat rule input for "interface address" option and toggle bitmask correctly
 * interfaces: fix problem when VLAN tags weren't generated properly
 * interfaces: improve interface capability reconfigure
 * ipsec: fix service restart behaviour from GUI

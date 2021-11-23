@@ -110,15 +110,12 @@ Here are the full patch notes:
 * src: OpenSSH client information leak `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:07.openssh.asc>`__ 
 * src: Invalid TCP checksums with pf(4) `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-16:02.pf.asc>`__ 
 * src: YP/NIS client library critical bug `[9] <https://www.freebsd.org/security/advisories/FreeBSD-EN-16:03.yplib.asc>`__ 
-* ports: sqlite 3.10.0 `[10] <https://sqlite.org/releaselog/3_10_0.html>`__ , easy-rsa 3.0.1 `[11] <https://github.com/OpenVPN/easy-rsa/releases>`__ , openssh-portable 7.1p2 `[12] <http://www.openssh.com/txt/release-7.1p2>`__ 
+* ports: sqlite 3.10.0 `[10] <https://sqlite.org/releaselog/3_10_0.html>`__ , easy-rsa 3.0.1 `[11] <https://github.com/OpenVPN/easy-rsa/releases>`__ , openssh 7.1p2 `[12] <http://www.openssh.com/txt/release-7.1p2>`__ 
 * traffic graphs: fix truncation of IP address to 14 characters
-* firmware: EOL announcement for 15.7 added, ready for upgrading to
-  16.1 on January 28
+* firmware: EOL announcement for 15.7 added, ready for upgrading to 16.1 on January 28
 * firmware: added mirror provided by RageNetwork (Munich, DE)
-* menu: fix navigation after editing IPsec mobile clients (contributed
-  by Manuel Faux)
-* trust: properly reference CA in intermediate CAs (contributed by
-  Manuel Faux)
+* menu: fix navigation after editing IPsec mobile clients (contributed by Manuel Faux)
+* trust: properly reference CA in intermediate CAs (contributed by Manuel Faux)
 
 
 
@@ -799,12 +796,10 @@ Here are the full patch notes:
 
 * src: Multiple integer overflows in expat (libbsdxml) XML parser `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:20.expat.asc>`__ 
 * src: bumped tzdata to 2015f `[2] <http://mm.icann.org/pipermail/tz-announce/2015-August/000033.html>`__ 
-* ports: curl 7.44.0 `[3] <https://curl.haxx.se/changes.html>`__ , ca_root_nss 3.20, openssh-portable 7.1p1_1 `[4] <http://www.openssh.com/txt/release-7.1>`__ ,
-  sqlite 3.8.11.1 `[5] <https://sqlite.org/releaselog/3_8_11_1.html>`__ , phalcon 2.0.7 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.7>`__ , pcre 8.37_4 `[7] <https://svnweb.freebsd.org/ports/head/devel/pcre/Makefile?revision=395178&view=markup>`__ 
+* ports: curl 7.44.0 `[3] <https://curl.haxx.se/changes.html>`__ , ca_root_nss 3.20, openssh 7.1p1_1 `[4] <http://www.openssh.com/txt/release-7.1>`__ , sqlite 3.8.11.1 `[5] <https://sqlite.org/releaselog/3_8_11_1.html>`__ , phalcon 2.0.7 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.7>`__ , pcre 8.37_4 `[7] <https://svnweb.freebsd.org/ports/head/devel/pcre/Makefile?revision=395178&view=markup>`__ 
 * crash reporter: create custom reports on demand
 * certificates: ca generation issues with recent LibreSSL
-* dns resolver: switched to ports-based Unbound (1.5.4) as per
-  FreeBSD handbook
+* dns resolver: switched to ports-based Unbound (1.5.4) as per FreeBSD handbook
 * menu: moved the crash reporter to system category for visibility
 * menu: added hot-plugging support for upcoming plugins
 * acl: added hot-plugging support for upcoming plugins
