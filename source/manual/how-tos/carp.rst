@@ -256,7 +256,8 @@ Requirement:
 
 over ssh connection just run following commands on both Firewalls:
 
-```sh
+```
+
 cat <<'EOF'>/usr/local/etc/rc.syshook.d/carp/20-ppp
 #!/usr/local/bin/php
 <?php
@@ -297,6 +298,7 @@ foreach ($a_ppps as $ppp) {
 }
 EOF
 chmod +x /usr/local/etc/rc.syshook.d/carp/20-ppp
+
 ```
 
 --------------
