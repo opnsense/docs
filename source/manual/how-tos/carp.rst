@@ -248,6 +248,55 @@ activating the `Synchronize States` checkbox, selecting PFSYNC for the
 `Synchronize Peer IP`. Do not configure XMLRPC sync on the backup firewall.
 
 --------------
+Add failover PPPoE WAN Interface on top of CARP-IP
+--------------
+Requirement:
+ * Working WANBASE (DSLMODEM) Interface with CARP IP
+ * Working PPPoE (WAN) Interface on top of WANBASE (DSLMODEM)
+
+over ssh connection just run following commands on both Firewalls:
+cat <<'EOF'>/usr/local/etc/rc.syshook.d/carp/20-ppp
+#!/usr/local/bin/php
+<?php
+
+require_once("config.inc");
+require_once("interfaces.inc");
+require_once("util.inc");
+
+$subsystem = !empty($argv[1]) ? $argv[1] : '';
+$type = !empty($argv[2]) ? $argv[2] : '';
+
+if ($type != 'MASTER' && $type != 'BACKUP') {
+    log_error("Carp '$type' event unknown from source '{$subsystem}'");
+    exit(1);
+}
+
+if (!strstr($subsystem, '@')) {
+    log_error("Carp '$type' event triggered from wrong source '{$subsystem}'");
+    exit(1);
+}
+
+list ($vhid, $iface) = explode('@', $subsystem);
+
+$a_ppps = &config_read_array('ppps', 'ppp');
+foreach ($a_ppps as $ppp) {
+    if ($ppp['ports'] == $iface) {
+        foreach($config['interfaces'] as $ifkey => $interface) {
+            if ($ppp['if'] == $interface['if']) {
+                log_error("{$iface} is connected to ppp interface {$ifkey} set new status {$type}");
+		if ($type == 'BACKUP') {
+                   interface_bring_down($ifkey);
+		} else {
+                   interface_ppps_configure($ifkey);
+		}
+            }
+        }
+    }
+}
+EOF
+chmod +x /usr/local/etc/rc.syshook.d/carp/20-ppp
+
+--------------
 Finalize setup
 --------------
 
