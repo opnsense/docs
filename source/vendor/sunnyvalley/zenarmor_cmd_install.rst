@@ -44,7 +44,7 @@ Once you are successfully logged into OPNsense either by local system access or 
 
 .. code-block:: bash
 
-    # curl https://updates.sunnyvalley.io/getsensei | sh
+    # curl https://updates.sunnyvalley.io/getzenarmor | sh
 
 .. image:: images/sensei-cli-install.png
     :width: 100%
