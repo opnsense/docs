@@ -16,7 +16,7 @@ CPU & Memory
 
 Because the analytics module relies on Elasticsearch to process large amounts of data, the amount of the memory available in the system is crucial for the overall performance of Zenarmor.
 
-**.. Tip**::
+**.. Tip::**
 
     If the number of active devices are more than 250 and the sustained WAN bandwidth is higher than 100 Mbps, we do not recommend deploying Zenarmor as a virtual guest since resources in virtual environments are generally shared between guest systems. 
 
