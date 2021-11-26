@@ -197,9 +197,9 @@ a :code:`Networks` type alias can do the same but uses a different presentation.
 IPv6 Dynamic Host
 ..................
 
-An IPv6 Dynamic Host is used where the system is using a dynamcic prefix on the LAN, a tracking interface. When the prefix
+An IPv6 Dynamic Host is used where the system is using a dynamic prefix on the LAN, a tracking interface. When the prefix
 changes, either due to the ISP changing the prefix at will or the prefix changes when the WAN connection is reset, any alias
-containing an address of a client on the LAN would no longer be valid. 
+containing an address of a client such as a server on the LAN would no longer be valid. 
 
 For example, you obtain a prefix 2001:db8:2222:2800::/56.  You have a /56 prefix and if the tracking id was set to 0 for your 
 LAN, you would have an address range on your LAN of 2001:db8:2222:2800:: to 2001:db8:2222:2800:FFFF:FFFF:FFFF:FFFF.
@@ -207,17 +207,19 @@ LAN, you would have an address range on your LAN of 2001:db8:2222:2800:: to 2001
 You want to run a server on your LAN that is accessable from the WAN so you give it a static address of 
 2001:db8:2222:2800:1000:1000::1 and create a rule allowing traffic to access the server.
 
-When your prefix changes, that static address is no longer valid, so you must use the IPv6 Dynamic Host to create an alias address
-for the firewall entry that automatically tracks the prefix and changes the rule. Create a new IPv6 Dynamic Host alias and enter
-only the suffix of the address, in the case of a /64 using the above example of the server address you would enter the lower 64
-bits of the address ::2800:1000:1000:1/64, note the '::' at the start of the address, you MUST start the address with a '::'.
+When your prefix changes, that static address is no longer valid, so you must use the IPv6 Dynamic Host to create an alias 
+address for the firewall entry that automatically tracks the prefix and changes the rule. 
+
+Create a new IPv6 Dynamic Host alias and enter only the suffix of the address, in this example, we will enter the lower 64
+bits of the address, you would enter ::1000:1000:0000:1/64, note the '::' at the start of the address, you MUST always start
+the address with a '::' and add the network size you wish to use, in this simple case we are going to use a /64, this is the
+standard size of a LAN subnet that Opnsense creates when using WAN tracking.
 
 When the prefix changes, the alias address will then be updated in the firewall rules, let's say your prefix changes to 
 2001:db8:2222:3200::/56 the rule updates and the entry for your server in the firewall would update automatically to be
 2001:db8:2222:3200:1000:1000::1
 
-The IPv6 Dynamic Host alias entry allows you to enter any prefix length you like, but in most cases a /64 will be used. You may enter
-multiple addresses, for example if you have several servers on the same LAN segment, just add the suffix for each one. 
+You may enter multiple addresses, for example if you have several servers on the same LAN segment, just add the suffix for each one. 
 In the example below we have three servers.
 
   .. image:: images/alias_dynamic_ipv6_host.png
