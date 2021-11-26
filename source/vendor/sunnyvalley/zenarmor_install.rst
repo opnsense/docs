@@ -43,15 +43,15 @@ To start the "Initial Configuration Wizard":
 * Click on the Dashboard sub-menu to open the configuration wizard
 
 ....................
-1- EULA
+1- WELLCOME
 ....................
 
-* Accept the End User License Agreement *(scroll and read the terms to get to the next button)*.
+* Accept the Terms of Service and Privacy Policy by clicking on the checkbox. 
 
 .. image:: images/zenarmor-wizard-welcome.png
     :width: 100%
 
-* Click the :menuselection:`I Agree` button to continue to the :menuselection:`Hardware Check` section.
+* Click the :menuselection:`Proceed` button to continue to the :menuselection:`Hardware Check` section.
 
 ....................
 2- Hardware Check
