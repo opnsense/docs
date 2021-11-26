@@ -7,9 +7,6 @@ Due to the nature of deep packet analysis and detailed drill-down reporting func
 
 **.. Note:: :**
 
-With the Zenarmor 1.5 release, you can offload your reporting database to an external system. This allows you to be able to run Zenarmor on systems with a constrained amount of RAM. 
-
-
     With the Zenarmor 1.5 release, you can offload your reporting database to an external system. This allows you to be able to run Zenarmor on systems with a constrained amount of RAM. 
 
 
