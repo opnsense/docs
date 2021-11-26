@@ -67,7 +67,7 @@ With its in-depth coverage, `Zenarmor Documentation <https://www.sunnyvalley.io/
 
 When you buy a Zenarmor Premium Subscription, you are entitled to Zenarmor Basic Support. Additional support plans are available on demand.
 
-* `Compare Support Plans <https://www.sunnyvalley.io/support>`_
+* `Compare Support Plans <https://www.sunnyvalley.io/support-plans>`_
 * `Access Support Center <https://help.sunnyvalley.io/hc/en-us>`_
 
 **Support Options for Channel Partners**
