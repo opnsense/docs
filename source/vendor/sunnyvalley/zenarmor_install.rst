@@ -82,6 +82,7 @@ Your hardware will be analyzed to ensure it meets the minimum requirements. You 
 
 * Select the database you wish to use for reporting. High end systems will have 3 options, while low end systems only have 2 options.
 
+> :warning:
 .. Warning::
 
     If you wish to use a remote ElasticSearch database, you must choose it now since you cannot change this after the initial configuration wizard has been completed.
