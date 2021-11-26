@@ -110,15 +110,12 @@ Here are the full patch notes:
 * src: OpenSSH client information leak `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:07.openssh.asc>`__ 
 * src: Invalid TCP checksums with pf(4) `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-16:02.pf.asc>`__ 
 * src: YP/NIS client library critical bug `[9] <https://www.freebsd.org/security/advisories/FreeBSD-EN-16:03.yplib.asc>`__ 
-* ports: sqlite 3.10.0 `[10] <https://sqlite.org/releaselog/3_10_0.html>`__ , easy-rsa 3.0.1 `[11] <https://github.com/OpenVPN/easy-rsa/releases>`__ , openssh-portable 7.1p2 `[12] <http://www.openssh.com/txt/release-7.1p2>`__ 
+* ports: sqlite 3.10.0 `[10] <https://sqlite.org/releaselog/3_10_0.html>`__ , easy-rsa 3.0.1 `[11] <https://github.com/OpenVPN/easy-rsa/releases>`__ , openssh 7.1p2 `[12] <http://www.openssh.com/txt/release-7.1p2>`__ 
 * traffic graphs: fix truncation of IP address to 14 characters
-* firmware: EOL announcement for 15.7 added, ready for upgrading to
-  16.1 on January 28
+* firmware: EOL announcement for 15.7 added, ready for upgrading to 16.1 on January 28
 * firmware: added mirror provided by RageNetwork (Munich, DE)
-* menu: fix navigation after editing IPsec mobile clients (contributed
-  by Manuel Faux)
-* trust: properly reference CA in intermediate CAs (contributed by
-  Manuel Faux)
+* menu: fix navigation after editing IPsec mobile clients (contributed by Manuel Faux)
+* trust: properly reference CA in intermediate CAs (contributed by Manuel Faux)
 
 
 
@@ -660,7 +657,7 @@ Here are the full patch notes:
 * config: improve config migration path for legacy config imports
 * config: new home in system section for the config history and backups
 * config: improved the config history differential view
-* notable port upgrades: bind 9.10.3  `[1] <https://kb.isc.org/article/AA-01306/0/BIND-9.10.3-Release-Notes.html>`__ , squid 3.5.9  `[2] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
+* notable port upgrades: bind 9.10.3 `[1] <https://kb.isc.org/article/AA-01306/0/BIND-9.10.3-Release-Notes.html>`__ , squid 3.5.9 `[2] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
 * firmware: added Supranet Communications mirror (Middleton, US)
 * firewall: reworked rules, schedules, virtual ip, nat and aliases pages
 * users: removed special handling of the "all" group
@@ -799,12 +796,10 @@ Here are the full patch notes:
 
 * src: Multiple integer overflows in expat (libbsdxml) XML parser `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:20.expat.asc>`__ 
 * src: bumped tzdata to 2015f `[2] <http://mm.icann.org/pipermail/tz-announce/2015-August/000033.html>`__ 
-* ports: curl 7.44.0 `[3] <https://curl.haxx.se/changes.html>`__ , ca_root_nss 3.20, openssh-portable 7.1p1_1 `[4] <http://www.openssh.com/txt/release-7.1>`__ ,
-  sqlite 3.8.11.1 `[5] <https://sqlite.org/releaselog/3_8_11_1.html>`__ , phalcon 2.0.7 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.7>`__ , pcre 8.37_4 `[7] <https://svnweb.freebsd.org/ports/head/devel/pcre/Makefile?revision=395178&view=markup>`__ 
+* ports: curl 7.44.0 `[3] <https://curl.haxx.se/changes.html>`__ , ca_root_nss 3.20, openssh 7.1p1_1 `[4] <http://www.openssh.com/txt/release-7.1>`__ , sqlite 3.8.11.1 `[5] <https://sqlite.org/releaselog/3_8_11_1.html>`__ , phalcon 2.0.7 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.7>`__ , pcre 8.37_4 `[7] <https://svnweb.freebsd.org/ports/head/devel/pcre/Makefile?revision=395178&view=markup>`__ 
 * crash reporter: create custom reports on demand
 * certificates: ca generation issues with recent LibreSSL
-* dns resolver: switched to ports-based Unbound (1.5.4) as per
-  FreeBSD handbook
+* dns resolver: switched to ports-based Unbound (1.5.4) as per FreeBSD handbook
 * menu: moved the crash reporter to system category for visibility
 * menu: added hot-plugging support for upcoming plugins
 * acl: added hot-plugging support for upcoming plugins
@@ -1016,12 +1011,14 @@ https://opnsense.org/about/road-map/
 
 The full list of changes are as follows:
 
-* ports: php 5.6.11 `[1] <https://php.net/ChangeLog-5.php#5.6.11>`__ , pkg 1.5.5 `[2] <https://github.com/freebsd/freebsd-ports/commit/1eb51efa2>`__ , ca_root_nss 3.19.2, phalcon 2.0.5 `[3] <https://blog.phalconphp.com/post/phalcon-2-0-5-released>`__ ,
-  isc-dhcp42-server 4.2.8_1  `[4] <https://github.com/freebsd/freebsd-ports/commit/3de9ed7a87>`__ 
+* ports: php 5.6.11 `[1] <https://php.net/ChangeLog-5.php#5.6.11>`__ 
+* ports: pkg 1.5.5 `[2] <https://github.com/freebsd/freebsd-ports/commit/1eb51efa2>`__ 
+* ports: ca_root_nss 3.19.2
+* ports: phalcon 2.0.5 `[3] <https://blog.phalconphp.com/post/phalcon-2-0-5-released>`__ 
+* ports: isc-dhcp42-server 4.2.8_1 `[4] <https://github.com/freebsd/freebsd-ports/commit/3de9ed7a87>`__ 
 * backup: fix infinite reboot loop on interface mismatch
 * firmware: show locally installed packages
-* firmware: reboot dialog now responsively redirects when the system is
-  back up
+* firmware: reboot dialog now responsively redirects when the system is back up
 * dashboard: upgrade link now directly launches into the firmware upgrade
 * dashboard: added a system log widget (contributed by Sascha Linke)
 * languages: merged German translation progress (contributed by Fabian Franz)

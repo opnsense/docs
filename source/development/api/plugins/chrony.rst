@@ -14,6 +14,10 @@ Chrony
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
+    "``GET``","chrony","service","chronyauthdata",""
+    "``GET``","chrony","service","chronysources",""
+    "``GET``","chrony","service","chronysourcestats",""
+    "``GET``","chrony","service","chronytracking",""
     "``GET``","chrony","service","reconfigure",""
     "``GET``","chrony","service","restart",""
     "``GET``","chrony","service","start",""

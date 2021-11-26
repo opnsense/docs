@@ -48,7 +48,9 @@ OPNsense offers the following alias types:
 Hosts
 ..................
 
-Hosts can be entered as a single IP address or a fully qualified domain name.
+Hosts can be entered as a single IP address, a range (separated with a minus sign, e.g. :code:`10.0.0.1-10.0.0.10`)
+or a fully qualified domain name.
+
 When using a fully qualified domain name, the name will be resolved periodically
 (default is each 300 seconds).
 
@@ -94,6 +96,13 @@ or /128 specifies a single IPv6 host, whereas /24 specifies 255.255.255.0 and
 Network type Aliases can contain exclusion hosts or networks.
 Exclusion addresses starts with "!" sign (eg !192.168.0.0/24) and can be used to
 exclude hosts or networks from current Alias or Network Group Alias
+
+Apart from the CIDR notation, one could also use a `wildcard mask <https://en.wikipedia.org/wiki/Wildcard_mask>`__
+to match ranges of hosts or networks.
+
+.. Tip::
+
+    To match all servers ending at .1 in the 192.168.X.1 networks, use a wildcard definition like :code:`192.168.0.1/0.0.255.0`
 
 
 ..................

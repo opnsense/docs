@@ -84,3 +84,14 @@ Configuration
    how-tos/user-ldap
    how-tos/user-radius
    two_factor
+
+
+.. Note::
+
+    When using external authentication services (such as ldap), the firewall needs a route to the configured target machine
+    in order to function properly. Specifically when the server is only reachable over a classic IPsec tunnel (non VTI),
+    a static route might be needed to guide the packets into the right tunnel matching the policy. (for example
+    when a policy for LAN exists, add a gateway pointing to our own address and a static routing pusing traffic to the
+    other end).
+
+    A quick test if the routes are properly setup can always be performed using ping from the :code:`default` source address.

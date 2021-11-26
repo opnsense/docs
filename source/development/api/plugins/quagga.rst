@@ -1,6 +1,21 @@
 Quagga
 ~~~~~~
 
+.. csv-table:: Resources (BfdController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","quagga","bfd","addNeighbor",""
+    "``POST``","quagga","bfd","delNeighbor","$uuid"
+    "``GET``","quagga","bfd","get",""
+    "``GET``","quagga","bfd","getNeighbor","$uuid=null"
+    "``*``","quagga","bfd","searchNeighbor",""
+    "``GET``","quagga","bfd","set",""
+    "``POST``","quagga","bfd","setNeighbor","$uuid"
+    "``POST``","quagga","bfd","toggleNeighbor","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `BFD.xml <https://github.com/opnsense/plugins/blob/master/net/frr/src/opnsense/mvc/app/models/OPNsense/Quagga/BFD.xml>`__"
+
 .. csv-table:: Resources (BgpController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

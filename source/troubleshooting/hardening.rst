@@ -25,7 +25,7 @@ Spectre and Meltdown
 To mitigate some of the speculative execution vulnerabilities, there are a couple of settings available in FreeBSD.
 More information about the various vulnerabilities and associated patches can be found `here <https://wiki.freebsd.org/SpeculativeExecutionVulnerabilities>`__
 
-Meltdown mitigation using Page Table Isolation (PTI), although also enabled in FreeBSD it's worth tom mention which setting is responsible
+Meltdown mitigation using Page Table Isolation (PTI), although also enabled in FreeBSD it's worth to mention which setting is responsible
 for enabling this feature. To disable PTI set :code:`vm.pmap.pti` to 0. Not all cpu's are vulnerable for Meltdown, in which case PTI can be disabled safely.
 
 Spectre variant 2, the system offers IBRS-based mitigation on Intel CPUs.

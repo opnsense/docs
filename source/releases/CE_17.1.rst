@@ -221,39 +221,30 @@ Here are the full patch notes:
 * system: fix default route display in diagnostics page
 * system: consistent precision display in gateway monitoring loss and RTT
 * system: correctly restart cron via backend call
-* system: use the internal RC script name instead file name to
-  load its variables
+* system: use the internal RC script name instead file name to load its variables
 * system: keep WAN DHCPv6 configuration option on console port reassign
-* system: unify the console yes/no prompts to indicate
-  their default behaviour
+* system: unify the console yes/no prompts to indicate their default behaviour
 * system: separate row and unhide button for 2FA OTP QR code display
 * system: prevent stripping of migrated configuration during factory reset
-* firmware: opnsense-bootstrap bare-mode addition for installing
-  repository metadata only
-* firmware: opnsense-bootstrap will never be deleted in case it is
-  required for recovery
+* firmware: opnsense-bootstrap bare-mode addition for installing repository metadata only
+* firmware: opnsense-bootstrap will never be deleted in case it is required for recovery
 * firmware: opnsense-revert now always properly reverts the core package
 * firmware: fix argument parsing in all update and development utilities
 * firewall: do not save range when end port is empty
 * firewall: do not automatically reload filter after alias delete
 * firewall: skip well-known ports for ranges
 * firewall: fetching bogon files should not use fetch internal auto-retry
-* interfaces: fix bug that prevented creation of IPv6 cache
-  IP files (contributed by @theq89)
+* interfaces: fix bug that prevented creation of IPv6 cache IP files (contributed by theq89)
 * interfaces: defer reload of the filter on IPv6 renewal and keep it local
 * interfaces: avoid potential configure loops in IPv4 renewal
 * interfaces: improve diagnostic messages on boot
-* interfaces: correct usage of interface cache files and properly
-  clear them during boot
+* interfaces: correct usage of interface cache files and properly clear them during boot
 * ipsec: enable CA field for hybrid and mutual RSA Xauth
 * dynamic dns: fix prototype declaration (contributed by Evgeny Bevz)
 * dynamic dns: add support for STRATO
-* mvc: fix iteration over several config nodes to avoid
-  "Node no longer exists" type warnings
-* plugins: quagga 1.1.1 fixes reload of BGPv4 tables and
-  modal closing (contributed by Fabian Franz)
-* plugins: monit 1.1 fixes import sender address and
-  validation (contributed by Frank Brendel)
+* mvc: fix iteration over several config nodes to avoid "Node no longer exists" type warnings
+* plugins: quagga 1.1.1 fixes reload of BGPv4 tables and modal closing (contributed by Fabian Franz)
+* plugins: monit 1.1 fixes import sender address and validation (contributed by Frank Brendel)
 * src: removed duplicate unbound from FreeBSD base system
 * src: added locales to e.g. allow tmux to start up correctly
 * src: Xen migration enhancements `[1] <https://www.freebsd.org/security/advisories/FreeBSD-EN-17:05.xen.asc>`__ 
@@ -283,45 +274,35 @@ Here are the full patch notes:
 * system: proper autofill of imported CA fields
 * system: fix off by one and add validation for next serial in CA import
 * system: new global product info file and associated cleanups
-* system: prompt for new root password on console reset rather than using
-  the factory default
-* system: remove PHP version specific code to automatically support newer
-  versions such as PHP 7.1
+* system: prompt for new root password on console reset rather than using the factory default
+* system: remove PHP version specific code to automatically support newer versions such as PHP 7.1
 * system: raise PHP memory limit by 50%
 * firmware: show downgrades in update list as well
-* firmware: update pkg alongside other packages if it does not need an
-  explicit upgrade
+* firmware: update pkg alongside other packages if it does not need an explicit upgrade
 * firmware: add plugin list to crash report if plugins are installed
-* interfaces: do not hide the save button when all interfaces have
-  been assigned
+* interfaces: do not hide the save button when all interfaces have been assigned
 * firewall: support tag/tagged for manual outbound NAT
 * firewall: exclude IPv6 extension headers
-* firewall: disable filter association when no-rdr port forward option
-  is selected
-* firewall: do not endlessly try to fetch bogons on systems with
-  no connectivity
-* captive portal: fix autocomplete, autocapitalize and autocorrect
-  (contributed by Johann Richard)
+* firewall: disable filter association when no-rdr port forward option is selected
+* firewall: do not endlessly try to fetch bogons on systems with no connectivity
+* captive portal: fix autocomplete, autocapitalize and autocorrect (contributed by Johann Richard)
 * dhcp: fix static leases issue with loading settings into form
 * dhcp: add interface-mtu option
 * ipsec: move to plugin code framework
 * openvpn: fix possible start failure of servers using udp6 or tcp6
 * router advertisements: force restart of daemon to adapt to time zone change
 * unbound: statistics API (contributed by Fabian Franz)
-* web proxy: reorder pre-auth plugins and local auth settings
-  (contributed by Evgeny Bevz)
+* web proxy: reorder pre-auth plugins and local auth settings (contributed by Evgeny Bevz)
 * mvc: set locale in APIControllerBase (contributed by Alexander Shursha)
 * mvc: dialog translations (contributed by Fabian Franz)
 * mvc: escape @ in menu entry to avoid error on mailto: url
 * plugins: igmp-proxy 1.1 renames internal service reload endpoint
-* plugins: quagga 1.1.0 adds BGP support and assorted fixes
-  (contributed by Fabian Franz and Michael Muenz)
-* plugins: relayd 1.1 adds session timeout configuration
-  (contributed by Frank Brendel)
+* plugins: quagga 1.1.0 adds BGP support and assorted fixes (contributed by Fabian Franz and Michael Muenz)
+* plugins: relayd 1.1 adds session timeout configuration (contributed by Frank Brendel)
 * plugins: snmp 1.1 renames internal service reload endpoint
 * ports: ca_root_nss 3.30.2
 * ports: phalcon 3.1.2 `[1] <https://github.com/phalcon/cphalcon/releases>`__ 
-* ports: unbound 1.6.2  `[2] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
+* ports: unbound 1.6.2 `[2] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 
 
 
@@ -827,7 +808,6 @@ channels:
 * Twitter: https://twitter.com/opnsense
 * Forum: https://forum.opnsense.org/
 * GitHub: https://github.com/opnsense
-* IRC: Freenode #OPNsense
 
 
 
@@ -946,7 +926,6 @@ contact us through any of the known channels:
 * Twitter: https://twitter.com/opnsense
 * Forum: https://forum.opnsense.org/
 * GitHub: https://github.com/opnsense
-* IRC: Freenode #OPNsense
 
 
 
@@ -1038,7 +1017,6 @@ not hesitate to contact us through any of the known channels:
 * Twitter: https://twitter.com/opnsense
 * Forum: https://forum.opnsense.org/
 * GitHub: https://github.com/opnsense
-* IRC: Freenode #OPNsense
 
 
 .. code-block::

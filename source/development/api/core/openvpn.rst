@@ -5,7 +5,7 @@ Openvpn
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","openvpn","export","accounts","$vpnid"
+    "``GET``","openvpn","export","accounts","$vpnid=null"
     "``POST``","openvpn","export","download","$vpnid,$certref=null"
     "``GET``","openvpn","export","providers",""
     "``POST``","openvpn","export","storePresets","$vpnid"

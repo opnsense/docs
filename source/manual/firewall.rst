@@ -59,8 +59,7 @@ to pass traffic, it's much harder to spoof traffic.
 
 .. Note::
     When changing rules, sometimes its necessary to reset states to assure the new policies are used for existing traffic.
-    You can do this in :menuselection:`Firewall --> Diagnostics --> States Reset` or :menuselection:`Firewall --> Diagnostics --> States Dump`
-    to reset specific states.
+    You can do this in :menuselection:`Firewall --> Diagnostics --> States`.
 
 
 .. Note::
@@ -68,6 +67,8 @@ to pass traffic, it's much harder to spoof traffic.
     this can be configured in :menuselection:`Firewall --> Settings --> Firewall Maximum States`.
     (The help text shows the default number of states on your platform)
 
+States can also be quite convenient to find the active top users on your firewall at any time, as of 21.7 we added
+an easy to use "session" browser for this purpose. You can find it under :menuselection:`Firewall --> Diagnostics --> Sessions`.
 
 ....................
 Action
@@ -276,10 +277,12 @@ More information about Multi-Wan can be found in the ":doc:`/manual/how-tos/mult
 Gateway                               When a gateway is specified, packets will use policy based routing using
                                       the specified gateway or gateway group. Usually this option is set on the
                                       receiving interface (LAN for example), which then chooses the gateway
-                                      specified here. (This ignores default routing rules)
-disable reply-to                      By default traffic is always send to the connected gateway on the interface.
+                                      specified here. (This ignores default routing rules). Only packets flowing in
+                                      the same direction of the rule are affected by this parameter, the opposite
+                                      direction (replies) are not affected by this option.
+reply-to                              By default traffic is always send to the connected gateway on the interface.
                                       If for some reason you don't want to force traffic to that gateway, you
-                                      can disable this behaviour.
+                                      can disable this behaviour or enforce an alternative target here.
 ====================================  ===============================================================================
 
 
@@ -287,6 +290,14 @@ disable reply-to                      By default traffic is always send to the c
 
       When using policy based routing, don't forget to exclude local traffic which shouldn't be forwarded.
       You can do so by creating a rule with a higher priority, using a :code:`default` gateway.
+
+
+.. Tip::
+
+    In our experience the packet capture function (:menuselection:`Interfaces --> Diagnostics --> Packet capture`) can
+    be a valuable tool to inspect if traffic is really heading the direction you would expect it to go, just
+    choose a host to monitor and try to exchange some packets. When selecting all interfaces, it's easy to see
+    where traffic headed.
 
 ....................
 Connection limits
@@ -363,6 +374,36 @@ State Type                            Influence the state tracking mechanism use
                                         and modulate state combined.
                                       * None :menuselection:`-->` Do not use state mechanisms to keep track.
 ====================================  ===============================================================================
+
+--------------------
+Troubleshooting
+--------------------
+
+While building your ruleset things can go wrong, it's always good to know where to look for signs of an issue.
+One of the most common mistakes is traffic doesn't match the rule and/or the order of the rule doesn't make sense
+for whatever reason.
+
+With the use of the "inspect" button, one can easily see if a rule is being evaluated and traffic did pass using
+this rule. As of 21.7 it's also possible to jump directly into the attached states to see if your host is in the list
+as expected.
+
+Another valuable tool is the live log viewer, in order to use it, make sure to provide your rule with an easy to
+read description and enable the "log" option.
+
+If your using source routing (policy based routing), debugging can sometimes get a bit more complicated. Since the normal
+system routing table may not apply, it helps to know which flow the traffic actually followed. The packet capture is a useful
+tool in that case.
+
+Common issues in this area include return traffic using a different interface than the one it came into, since traffic
+follows the normal routing table on it's way out (reply-to issue), or traffic leaving the wrong interface due to overselection
+(matching internal traffic and forcing a gateway).
+
+Inspecting used netmasks is also a good idea, intending to match a host but providing a subnet is a mistake easily made
+(e.g. :code:`192.168.1.1/32` vs :code:`192.168.1.1/24` is in reality all of :code:`192.168.1.x`).
+
+Last but not least, remember rules are matched in order and the default (inbound) policy is :code:`block` if nothing else
+is specified, since we match traffic on :code:`inbound`, make sure to add rules where traffic originates from
+(e.g. :code:`lan` for traffic leaving your network, the return should normally be allowed by state).
 
 --------------------
 API access

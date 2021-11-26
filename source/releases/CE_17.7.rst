@@ -274,8 +274,8 @@ And here are the full patch notes:
 * plugins: os-telegraf 1.1 adds network input setting (contributed by nycaleksey)
 * plugins: os-tor 1.2 adds hidden service onion service client support (contributed by Fabian Franz)
 * plugins: os-web-proxy 2.1 makes Kerberos hostname configurable (contributed by Evgeny Bevz)
-* src: properly bzero kldstat structure to prevent information leak  `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-17:10.kldstat.asc>`__ 
-* src: fix kernel data leak via ptrace(PT_LWPINFO)  `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-17:08.ptrace.asc>`__ 
+* src: properly bzero kldstat structure to prevent information leak `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-17:10.kldstat.asc>`__ 
+* src: fix kernel data leak via ptrace(PT_LWPINFO) `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-17:08.ptrace.asc>`__ 
 * src: only refresh bsnmpd device table on a device add or remove event
 * src: unclog reply-to to avoid default route in shared forwarding
 * src: update timezone database information

@@ -22,7 +22,7 @@ To receive community support, the following options are available:
 
 * Start searching this documentation & wiki
 * The `OPNsense forum <https://forum.opnsense.org>`__
-* Ask online users on `IRC Freenode <https://freenode.net/>`__ #opnsense
+* Ask online users on `IRC Libera Chat <https://libera.chat/>`__ #opnsense
 
 
 Community Support Levels

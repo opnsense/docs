@@ -1,0 +1,788 @@
+===========================================================================================
+21.7  "Noble Nightingale" Series
+===========================================================================================
+
+
+
+For more than 6 and a half years, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple and reliable
+firmware upgrades, multi-language support, fast adoption of upstream software
+updates as well as clear and stable 2-Clause BSD licensing.
+
+21.7, nicknamed "Noble Nightingale", is one of the largest iterations of
+code changes in our recent history.  It will also be the last release on
+HardenedBSD 12.1.  We are planning to start the work on FreeBSD 13 as soon
+as next week for the 22.1 series.
+
+The installer was replaced to offer native ZFS installations and prevent
+glitches in virtual machines using UEFI.  Firmware updates were partially
+redesigned and the UI layout consolidated between static and MVC pages.
+The live log now contains the actual rule ID to avoid mismatches after
+adjusting your ruleset and the firewall aliases now also support wildcard
+netmasks.  For a complete list of changes see below.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/21.7/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/21.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/21.7/
+* South America: https://mirror.venturasystems.tech/opnsense/releases/21.7/
+* Australia: http://mirror.as24220.net/opnsense/releases/21.7/
+* Full mirror list: https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+21.7.5 (November 11, 2021)
+--------------------------------------------------------------------------
+
+
+FreeBSD security advisories and an issue with Intel-based ixgbe driver
+with "ifconfig -v" stalls keep this release rolling.  Also note that
+OpenSSH was updated to version 8.8 which deprecates ssh-rsa usage which
+is mainly an issue for client access from the OPNsense system to the
+outside and can be amended as per the suggestions in the respective
+release notes.
+
+And as promised the development version includes the upgrade path to
+the 22.1-BETA1 release.  This will be an online-beta with a few iterations
+over the FreeBSD 13 stable branch and eventually move to FreeBSD 13.1
+release as that becomes available.
+
+Highlights for 22.1 already include:
+
+* Suricata Netmap v14 support for multi-gigabit speed in IPS mode with RSS enabled
+* Separate VLAN MAC spoofing and permanent promiscuous mode setting
+* Tunable analytics provide automatic descriptions and type
+* IPsec tunnel overview ported to MVC with pagination
+* Proofpoint Emerging Threats rules for Suricata 5.0
+* Removed opportunistic interface address read functions
+* Console-based LAGG configuration support
+* Removed state killing on gateway failure feature
+* Improved firmware update capabilities
+* No-bind service awareness for virtual IPs
+* FreeBSD 13 stable branch
+* RFC 5424 and severity support in logs
+* Clog support has been removed
+* And more...
+
+Please note that the beta version will always be available for upgrade when
+switching to the development version.  At this point no stable packages
+are provided and this includes plugins.  These will become available as
+the release candidate is released in early January 2022.
+
+All feedback is welcome but keep in mind that there are still a number of
+moving parts ahead.  Upgrade responsibly.
+
+Here are the full patch notes for version 21.7.5:
+
+* system: remove support for obsolete "local" syslog socket plugin request
+* system: prevent setup wizard error in WAN-only configuration
+* system: properly extract keyid string (contributed by kulikov-a)
+* system: show all threads and correct WCPU in activity (contributed by kulikov-a)
+* system: fix display and sorting in activity (contributed by kulikov-a)
+* interfaces: remove obsolete link_interface_to_vlans() function
+* interfaces: inline legacy_interface_rename() function
+* interfaces: verbose output on test port (contributed by kulikov-a)
+* firewall: add live view templates page to respective ACL (contributed by kulikov-a)
+* firewall: replace pfInfo with statistics page
+* firewall: add rules to statistics page (contributed by kulikov-a)
+* firewall: remove defunct "block carp from self" CARP rule
+* dhcp: automatically set AdvRASrcAddress for link-local CARP address
+* dhcp: exclude link-local subnet router advertisements
+* firmware: remove unavailable Hostcentral mirror
+* firmware: opnsense-update: replace -A before -M and handle single directory -M independently
+* firmware: opnsense-verify: disable verification for repositories without signatures
+* firmware: opnsense-verify: let -l option properly discard duplicate repositories
+* firmware: opnsense-version: support -x effective ABI probing
+* ipsec: add sha256_96 flag (contributed by Patrick M. Hausen)
+* monit: add polltime to service settings (contributed by Frank Brendel)
+* ui: prevent event propagation to avoid click() events being forwarded
+* plugins: os-bind 1.19 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/bind/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.10 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-dyndns 1.26 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/dyndns/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.17 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.23 `[5] <https://github.com/opnsense/plugins/blob/stable/21.7/net/frr/pkg-descr>`__ 
+* plugins: os-haproxy 3.7 `[6] <https://github.com/opnsense/plugins/blob/stable/21.7/net/haproxy/pkg-descr>`__ 
+* plugins: os-nut 1.8.1 `[7] <https://github.com/opnsense/plugins/blob/stable/21.7/sysutils/nut/pkg-descr>`__ 
+* plugins: os-openconnect 1.4.1 `[8] <https://github.com/opnsense/plugins/blob/stable/21.7/security/openconnect/pkg-descr>`__ 
+* plugins: os-relayd 2.6 `[9] <https://github.com/opnsense/plugins/pull/2391>`__ 
+* plugins: os-telegraf 1.12.2 `[10] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-vnstat 1.3 `[11] <https://github.com/opnsense/plugins/blob/stable/21.7/net/vnstat/pkg-descr>`__ 
+* plugins: os-wireguard 1.8 `[12] <https://github.com/opnsense/plugins/blob/stable/21.7/net/wireguard/pkg-descr>`__ 
+* src: axgbe: correctly enable RSS driver support by default
+* src: ixgbe: prevent subsequent I2C bus read timeouts
+* src: fix kernel panic in vmci driver initialization `[13] <FREEBSD:FreeBSD-EN-21:28.vmci>`__ 
+* src: timezone database information update `[14] <FREEBSD:FreeBSD-EN-21:29.tzdata>`__ 
+* ports: lighttpd 1.4.61 `[15] <https://www.lighttpd.net/2021/10/28/1.4.61/>`__ 
+* ports: nss 3.72 `[16] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.72_release_notes>`__ 
+* ports: openssh 8.8p1 `[17] <https://www.openssh.com/txt/release-8.8>`__ 
+* ports: pcre2 10.39 `[18] <https://www.pcre.org/changelog.txt>`__ 
+* ports: php 7.4.25 `[19] <https://www.php.net/ChangeLog-7.php#7.4.25>`__ 
+* ports: phpseclib 2.0.34 `[20] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.34>`__ 
+
+
+--------------------------------------------------------------------------
+21.7.4 (October 27, 2021)
+--------------------------------------------------------------------------
+
+
+This update features three new major things: optional receive side scaling
+(RSS) support in the kernel, asynchronous DNS resolving for aliases and
+configuration support for advanced LAGG settings.
+
+RSS is disabled by default but may be switched on by adding a tunable
+"net.inet.rss.enabled" with value "1" and rebooting the system.  While
+RSS can improve performance for certain hardware it should be used with
+care at this point and is not generally recommended yet!  The Suricata
+version bundled with the development release offers the upcoming API
+bindings to take advantage of the RSS-based multithreading.  Also please
+note that PPPoE cannot take advantage of RSS.
+
+On the side we are almost ready for our 22.1-BETA preview with rolling
+releases for the development release type which is something new to look
+forward to also.
+
+Here are the full patch notes:
+
+* system: prevent expired or intermediate CA certificates from being added to trust store by default
+* system: prevent XSS in LDAP attribute return in authentication tester (reported by Orange CERT-CC)
+* system: add product title to auth pages
+* system: fix log search ignoring first character
+* system: add xc0 entry video console entry if node exists
+* system: add automatic outbound NAT logging option
+* interfaces: let guess_interface_from_ip() find the best match on overlapping subnets (contributed by Jason Crowley)
+* interfaces: improve configurability with LAGG devices
+* firewall: fix non-sticky rule association in port forward
+* firewall: switch failover peer address acquire away from deprecated function
+* firewall: specify overload table on maximum new connections
+* firewall: add loaded item count and last update to aliases page
+* firewall: refactor getInterfaceGateway() to eliminate edge cases with IPsec route-to behaviour
+* firewall: allow alias to skip entry on EmptyLabel (contributed by James Golovich)
+* firewall: improve resolve performance by implementing asynchronous DNS lookups
+* dhcp: show static leases without IP address assignments in the lease pages
+* firmware: do not remove obsolete base files on major upgrades
+* firmware: support ABI hints in the file "firmware-upgrade"
+* firmware: opnsense-code utility now supports "-u" mode for automatic upgrade after fetch
+* firmware: opnsense-code utility fix for "-d" option (contributed by Patrick M. Hausen)
+* firmware: opnsense-update utility is now able to bootstrap its own configuration in "-d" mode
+* firmware: opnsense-update utility now supports "-ct package-name" check for type change
+* firmware: opnsense-update utility no longer assumes "-bkp" by default
+* firmware: opnsense-update utility adds separate clean option for obsolete base files
+* firmware: opnsense-update utility assorted cleanups
+* ipsec: add charon.max_ikev1_exchanges parameter
+* ipsec: add closeaction parameter (contributed by Patrick M. Hausen)
+* ipsec: rewrite netmask calculation for VTI tunnel setup
+* monit: add link event to alert settings (contributed by Frank Brendel)
+* openvpn: remove obsolete remnants of tun-ipv6
+* unbound: add Abuse.ch ThreatFox list
+* unbound: make so-reuseport conditional upon RSS status
+* backend: static parameters ignored when no dynamic ones exist
+* mvc: replace __toString() calls with string casts
+* plugins: os-acme-client 3.4 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-c-icap log file fix (contributed by Michael Muenz)
+* plugins: os-dyndns 1.25 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/dyndns/pkg-descr>`__ 
+* plugins: os-haproxy 3.6 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/net/haproxy/pkg-descr>`__ 
+* plugins: os-lldpd will now identify itself as Network Connectivity Device (contributed by Xeroxxx)
+* plugins: os-puppet-agent 1.0 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/sysutils/puppet-agent/pkg-descr>`__ 
+* plugins: os-qemu-guest-agent 1.1 `[5] <https://github.com/opnsense/plugins/blob/stable/21.7/emulators/qemu-guest-agent/pkg-descr>`__ 
+* plugins: os-theme-rebellion 1.8.8 (contributed by Team Rebellion)
+* src: include RSS kernel support defaulting to off
+* src: axgbe: properly multiplex on reading module signals
+* src: libnetmap: reset errno in nmreq_register_decode()
+* src: pf: remove side effect from nat logging patch
+* src: dummynet: fix mbuf tag allocation failure handling
+* src: aesni: avoid a potential out-of-bounds load in aes_encrypt_icm()
+* ports: curl 7.79.1 `[6] <https://curl.se/changes.html#7_79_1>`__ 
+* ports: dnspython 2.1.0 `[7] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
+* ports: jinja 3.0.1 `[8] <https://jinja.palletsprojects.com/en/3.0.x/changes/#version-3-0-1>`__ 
+* ports: libressl 3.3.5 `[9] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.5-relnotes.txt>`__ 
+* ports: lighttpd 1.4.60 `[10] <https://www.lighttpd.net/2021/10/3/1.4.60/>`__ 
+* ports: nss 3.71 `[11] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.71_release_notes>`__ 
+* ports: openvpn 2.5.4 `[12] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.4>`__ 
+* ports: php 7.4.24 `[13] <https://www.php.net/ChangeLog-7.php#7.4.24>`__ 
+* ports: strongswan 5.9.4 `[14] <https://github.com/strongswan/strongswan/releases/tag/5.9.4>`__ 
+* ports: sudo 1.9.8p2 `[15] <https://www.sudo.ws/stable.html#1.9.8p2>`__ 
+
+
+
+--------------------------------------------------------------------------
+21.7.3 (September 22, 2021)
+--------------------------------------------------------------------------
+
+
+This release finally brings in Suricata version 6 as well as OpenVPN tls-crypt
+support, automatic user creation on LDAP-based logins and more.
+
+As a general note the Realtek vendor driver currently bundled with the base
+system will be moved to a plugin-based kernel module in version 22.1 and the
+original re(4) driver inside FreeBSD 13 will be restored.  To ease migration
+and because the version maintained in FreeBSD ports actually offers additional
+fixes we have inlcuded the new plugin into this build.
+
+Here are the full patch notes:
+
+* system: allow automatic user creation on LDAP-based logins
+* interfaces: add and use unified function is_interface_assigned() to prevent deleting assigned interfaces
+* interfaces: sync firewall groups after internal create/destroy operations
+* interfaces: add netstat tree search and improve page layout
+* interfaces: replace opportunistic diagnostics IP address lookups with more robust variants
+* firewall: clarify match/set priority in rules
+* firewall: improve alias description/preview
+* firewall: aliases maximum entries progress bar
+* dhcp: add shared dhcpd_leases() reader and use it in both lease pages
+* openvpn: use is_interface_assigned() to prevent deletion of assigned instances
+* openvpn: CARP status read cleanups (contributed by vnxme)
+* openvpn: tls-crypt support (contributed by vnxme)
+* openvpn: do not create empty router file
+* router advertisements: remove AdvRDNSSLifetime / AdvDNSSLLifetime bounds (contributed by Maurice Walker)
+* unbound: register DHCP leases with their matching IP range configured DHCP domain
+* plugins: os-acme-client 3.1 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-chrony 1.4 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/net/chrony/pkg-descr>`__ 
+* plugins: os-collectd 1.4 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/collectd/pkg-descr>`__ 
+* plugins: os-fetchmail 1.1 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/mail/fetchmail/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.16 `[5] <https://github.com/opnsense/plugins/blob/stable/21.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-realtek-re 1.0 adds Realtek vendor NIC driver module
+* plugins: os-telegraf 1.12.1 `[6] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
+* ports: dnsmasq 2.86 `[7] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: filterlog 0.5 removes unused IPv6 options support
+* ports: nss 3.70 `[8] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.70_release_notes>`__ 
+* ports: pcre 8.45 `[9] <https://www.pcre.org/original/changelog.txt>`__ 
+* ports: python 3.8.12 `[10] <https://docs.python.org/release/3.8.12/whatsnew/changelog.html>`__ 
+* ports: sudo 1.9.8p1 `[11] <https://www.sudo.ws/stable.html#1.9.8p1>`__ 
+* ports: suricata 6.0.3 `[12] <https://suricata.io/2021/06/30/new-suricata-6-0-3-and-5-0-7-releases/>`__ 
+* ports: syslog-ng 3.34.1 `[13] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.34.1>`__ 
+
+A hotfix release was issued as 21.7.3_1:
+
+* openvpn: properly save new tls-crypt configuation
+
+A hotfix release was issued as 21.7.3_3:
+
+* openvpn: fix validation for /30 subnet in peer to peer mode (contributed by kulikov-a)
+* backend: catch broken pipe on event handler (contributed by kulikov-a)
+* plugins: os-acme-client 3.2 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+
+
+
+--------------------------------------------------------------------------
+21.7.2 (September 07, 2021)
+--------------------------------------------------------------------------
+
+
+Today the following CVEs are being addressed:
+
+CVE-2021-3711, CVE-2021-3712, CVE-2021-23840, CVE-2021-23841
+
+Please note that the Let's Encrypt client plugin is now called
+ACME client since acme.sh version 3 does support multiple providers.
+
+Apart from the usual batch of fixes the work on RSS (receive side
+scaling) is progressing and groundwork has already made it to the
+kernel along with the libnetmap library for allowing better scaling
+in netmap mode along with it.  At this point, however, RSS is not
+yet enabled and there is no impact on existing setups.  That will
+likely change with one of the next stable versions in this series.
+
+On the other hand, the work for FreeBSD 13 migration in 22.1 is
+ongoing as well to be able to test this rather sooner than later.
+In this iteration we will take the time to look at shared forwarding
+edge cases and have already upstreamed a number of patches that
+have been accumulated over the last couple of years to keep our
+code base light and tidy.
+
+Here are the full patch notes:
+
+* system: default RSS widget feed to forum announcements
+* system: add missing ACL for Syslog targets page
+* system: fix unescaped source field used for password in backup plugins
+* system: reload FreeBSD services when reloading all services from console
+* interfaces: use -M option in rtsold invoke in preparation for 22.1
+* interfaces: correct indent in dhclient configuration
+* firewall: allow to specify port ranges for outgoing NAT (contributed by Nikolay Denev)
+* firewall: fix long comment preventing IPFW reload (contributed by Robin Schneider)
+* firewall: fix compare interfaces (contributed by Smart-Soft)
+* firmware: opnsense-patch can now patch installer and updater files
+* firmware: opnsense-update -c option now honours the -f option
+* firmware: opnsense-update improvements for mirror manipulation options
+* firmware: undo masking vulnerability URLs in FreeBSD due to UUID use
+* firmware: also check plugins sync for up to date core package
+* firmware: fix visibility issue on console when syncing plugins
+* firmware: replace php version_compare() call with pkg-version shell command
+* firmware: correctly announce major upgrade reboot in status return
+* firmware: do not fetch GeoIP database from business mirrors without a subscription
+* firmware: backend now supports reinstall like opnsense-bootstrap -q
+* intrusion detection: skip ruleset empty metadata (contributed by kulikov-a)
+* ipsec: fix a regression in rightsubnets for non-mobile phase 2
+* ipsec: fix a regression in VTI handling
+* ipsec: identity quoting for ASN1DN and FQDN types with "#" characters
+* ipsec: add auto type for identities
+* openvpn: fix client-config-dir regression
+* openvpn: check IPv4 tunnel prefix (contributed by kulikov-a)
+* openvpn: simplify CIDR validation and remove trim() usage
+* web proxy: adding additional memory cache options (contributed by Xeroxxx)
+* plugins: os-acme-client 3.0 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-haproxy 3.5 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/net/haproxy/pkg-descr>`__ 
+* src: runtime RSS code preparations and assorted related upstream patches
+* src: axgbe: remove unneccesary packet length check
+* src: iflib: fix partial length accounting error in netmap mode
+* src: lib: add libnetmap and related patches
+* src: dhclient: skip_to_semi() consumes semicolon already
+* src: rtsold: slightly change address read
+* src: fix missing error handling in bhyve(8) device models `[3] <FREEBSD:FreeBSD-SA-21:13.bhyve>`__ 
+* src: fix remote code execution in ggatec(8) `[4] <FREEBSD:FreeBSD-SA-21:14.ggatec>`__ 
+* src: fix libfetch out of bounds read `[5] <FREEBSD:FreeBSD-SA-21:15.libfetch>`__ 
+* src: fix multiple OpenSSL vulnerabilities `[6] <FREEBSD:FreeBSD-SA-21:16.openssl>`__  `[7] <FREEBSD:FreeBSD-SA-21:17.openssl>`__ 
+* ports: ifinfo 13.0
+* ports: libressl 3.3.4 `[8] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.4-relnotes.txt>`__ 
+* ports: nss 3.69 `[9] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.69_release_notes>`__ 
+* ports: monit 5.29.0 `[10] <https://mmonit.com/monit/changes/>`__ 
+* ports: mpd5 adds L2TP interoperability fix from upstream
+* ports: openssl 1.1.1l `[11] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: php 7.4.23 `[12] <https://www.php.net/ChangeLog-7.php#7.4.23>`__ 
+* ports: strongswan 5.9.3 `[13] <https://github.com/strongswan/strongswan/releases/tag/5.9.3>`__ 
+* ports: sudo 1.9.7p2 `[14] <https://www.sudo.ws/stable.html#1.9.7p2>`__ 
+* ports: unbound 1.13.2 `[15] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-13-2>`__ 
+
+A hotfix release was issued as 21.7.2_1:
+
+* firewall: remove reordering patch due to unintended behavioural changes
+
+
+
+--------------------------------------------------------------------------
+21.7.1 (August 04, 2021)
+--------------------------------------------------------------------------
+
+
+After some initial trouble with particular Intel network card instability
+and two installer shortcomings this brings the first round of stable
+updates, general improvements and even new features.
+
+The OpenVPN integration required a few more changes for the 2.5 series
+and Unbound would stall when the new cache restore feature was caching
+an empty response.
+
+Images have been reissued based on this version as well.
+
+Here are the full patch notes:
+
+* system: relax server certificate check for web GUI validation
+* system: use ifinfo counters instead of pfctl in interface widget
+* interfaces: packet capture quick select for all interfaces
+* firewall: make sure net.pf.request_maxcount and table-entries are always aligned
+* firewall: only set state options on rules when state is being tracked
+* firmware: fix opnsense-code pull when ABI configuration is no longer there
+* firmware: fix upgrade with multiple repositories enabled
+* firmware: sync plugins in console update
+* firmware: revoke 21.1 fingerprint
+* installer: fix possible hang when scanning for disks
+* installer: fix multiple disk selection
+* openvpn: fix genkey format on 2.5
+* openvpn: improve the cipher parsing
+* openvpn: untie server-ipv6 from server directive
+* openvpn: return empty list when /api/openvpn/export/accounts/ is called without parameters
+* unbound: reject invalid cache data
+* unbound: automatically add "do-not-query-localhost: no" on DoT when needed
+* unbound: support insecure-domain directive
+* mvc: bring back bind_textdomain_codeset() to fix possible faulty page rendering
+* ui: fix regression in subnet selector
+* plugins: os-bind 1.18 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/bind/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.9 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-postfix 1.20 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/mail/postfix/pkg-descr>`__ 
+* plugins: os-telegraf 1.12.0 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
+* src: revert upstream commit "e1000: Rework em_msi_link interrupt filter"
+* ports: switched to FreeBSD ports tree
+* ports: filterlog print "0" instead of "(null)" label
+* ports: krb5 1.19.2 `[5] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
+* ports: php 7.4.22 `[6] <https://www.php.net/ChangeLog-7.php#7.4.22>`__ 
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-21.7.1-OpenSSL-dvd-amd64.iso.bz2) = d9062d76a944792577d32cdb35dd9eb9cec3d3ed756e3cfaa0bf25506c72a67b
+    # SHA256 (OPNsense-21.7.1-OpenSSL-nano-amd64.img.bz2) = 106b483993f252e27dfd5064f57b2800e68274cf036445a97308107144e601f9
+    # SHA256 (OPNsense-21.7.1-OpenSSL-serial-amd64.img.bz2) = 04abcd825dacbecda3eff90c8d086527b49b5d61c284442ef5d5bdd89b625004
+    # SHA256 (OPNsense-21.7.1-OpenSSL-vga-amd64.img.bz2) = 44068ee9369bc12a0226ee2e1f13a1409038953ee829e0de97abe359affbde0d
+
+--------------------------------------------------------------------------
+21.7 (July 28, 2021)
+--------------------------------------------------------------------------
+
+
+For more than 6 and a half years, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple and reliable
+firmware upgrades, multi-language support, fast adoption of upstream software
+updates as well as clear and stable 2-Clause BSD licensing.
+
+21.7, nicknamed "Noble Nightingale", is one of the largest iterations of
+code changes in our recent history.  It will also be the last release on
+HardenedBSD 12.1.  We are planning to start the work on FreeBSD 13 as soon
+as next week for the 22.1 series.
+
+The installer was replaced to offer native ZFS installations and prevent
+glitches in virtual machines using UEFI.  Firmware updates were partially
+redesigned and the UI layout consolidated between static and MVC pages.
+The live log now contains the actual rule ID to avoid mismatches after
+adjusting your ruleset and the firewall aliases now also support wildcard
+netmasks.  For a complete list of changes see below.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/21.7/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/21.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/21.7/
+* South America: https://mirror.venturasystems.tech/opnsense/releases/21.7/
+* Australia: http://mirror.as24220.net/opnsense/releases/21.7/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes:
+
+* system: Norwegian translation (contributed by Stein-Aksel Basma)
+* system: correctly enforce "Disable writing log files to the local disk" when circular logs are not used
+* system: allow to edit gateway entries with non-conforming names
+* system: add HA sync entry for live log templates
+* system: lock config writes during HA merges
+* system: raised PHP memory limit to 1G
+* system: raised encryption standard for encrypted config.xml export
+* system: removed NextCloud backup from core functionality
+* system: allow more characters in the certificate/authority organization fields (contributed by Jan De Luyck)
+* system: default gateway failure state killing is now disabled by default
+* system: circular logs are now disabled by default
+* system: removed unused traffic API dashboard feed
+* system: prevent use of client certificates in web GUI
+* system: hide far gateway option for IPv6
+* system: isvalidpid() is not required for a single killbypid()
+* system: fix PHP 7.4 deprecated warning in IPv6 library
+* system: do not split XMLRPC password into multiple pieces
+* system: enable group sync for LDAP servers that do not return memberOf (contributed by rdd2)
+* system: prevent excessive config writes on LDAP import
+* system: allow cron-based restarts of all "restart" action providers
+* interfaces: improve GRE/GIF configuration handling and dynamic reload behaviour
+* interfaces: remove duplicated handling of PPP IPv6 interface detection
+* interfaces: refactored address removal into interfaces_addresses_flush()
+* interfaces: flush IPv6 addresses on the correct IPv6 interface when it differs from the IPv4 interface
+* interfaces: do not check for existing CARP interfaces midstream
+* interfaces: remove non-tunnel restriction from address collection
+* interfaces: set tunnel flag for IPv4 tunnel plus cleanups
+* interfaces: allow interface-based overrides of hardware checksum settings
+* interfaces: refactor DNS lookup and add PTR to output (contributed by Maurice Walker)
+* interfaces: deprecate SLAAC addresses on linkdown
+* firewall: set label for obsolete rule in live log (contributed by kulikov-a)
+* firewall: MVC rewrite of the states diagnostics pages under "States"
+* firewall: MVC rewrite of the pfTop diagnostics pages under "Sessions"
+* firewall: renamed "pfTables" diagnostics to "Aliases"
+* firewall: add quick link to states counter from firewall rule inspection
+* firewall: add manual reply-to configuration to rules
+* firewall: delete related rules when an interface group is removed
+* firewall: rename source/destination networks when group name changes
+* firewall: possibility to filter nat/rdr action in live log
+* firewall: use permanent promiscuous mode for pflog0
+* firewall: add live log support for new filterlog format
+* dhcp: remove ::/0 route from router advertisements (contributed by Maurice Walker)
+* dhcp: always deprecate prefixes in automatic router advertisements
+* dhcp: fix table header sorting in lease pages (contributed by vnxme)
+* dhcp: lock access to settings pages when interface is not suitable for running a DHCP server
+* dhcp: assorted improvements surrounding dhcpd_staticmap() for real world operation
+* firmware: introduced connectivity check
+* firmware: confirm plugin removal dialog
+* firmware: static template for firmware upgrade message
+* firmware: add version/date header into check script as well
+* firmware: mask subscription in GUI output
+* firmware: add "-q" option for in-place opnsense-bootstrap run
+* firmware: fix grep call on FreeBSD 13 (contributed by Mariusz Zaborski)
+* firmware: correct return code on type change in opnsense-update
+* installer: assorted wording improvements
+* intrusion detection: fix alert reads from eve.json
+* ipsec: adhere to system defaults for route-to and reply-to when creating automatic VPN rules
+* ipsec: switched to explicit type selection for identities
+* network time: added NTPD client mode
+* openvpn: offer the ability to export a user without a certificate
+* openvpn: increase consistency between export types
+* openvpn: fix invalid rules generated by wizard (contributed by kulikov-a)
+* unbound: fix domain overrides for private address reverse lookup zones (contributed by Maurice Walker)
+* unbound: add "unbound check" backend action
+* unbound: allow to retain cache on service reload
+* unbound: fix /var MFS dilemma for DNSBL after boot
+* unbound: remove deprecated custom options setting
+* unbound: switch model to integrate full DNS over TLS support
+* unbound: add qname-minimisation-strict option
+* unbound: renamed "blacklist" to "blocklist" for clarity
+* console: throw error when opnsense-importer encounters an encrypted config.xml
+* mvc: allow to unset attribute via setAttributeValue()
+* mvc: catch all errors including syntax and class not found errors
+* mvc: reduce differentials in config.xml when saving models
+* rc: opnsense-beep melody database directory
+* shell: fix IPv4 /31 assignment
+* ui: improved JS hook_ipv4v6() to jump to /64 on IPv6 and back to /32 on IPv4
+* ui: inject default tooltips into bootgrid formatters
+* ui: prevent translation line breaks from breaking JS
+* ui: removed $main_buttons magic handler
+* ui: switch firewall category icon for clarity
+* ui: work on unification of add buttons by minifying them and adding primary color markup
+* plugins: os-acme-client 2.6 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-etpro-telemetry 1.5 exclude stale data from telemetry upload
+* plugins: os-fetchmail 1.0 (contributed by Michael Muenz)
+* plugins: os-freeradius 1.9.15 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.22 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/net/frr/pkg-descr>`__ 
+* plugins: os-haproxy 3.4 `[5] <https://github.com/opnsense/plugins/blob/stable/21.7/net/haproxy/pkg-descr>`__ 
+* plugins: os-maltrail 1.8 `[6] <https://github.com/opnsense/plugins/blob/stable/21.7/security/maltrail/pkg-descr>`__ 
+* plugins: os-net-snmp 1.5 `[7] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/net-snmp/pkg-descr>`__ 
+* plugins: os-nextcloud-backup 1.0
+* plugins: os-nut 1.8 `[8] <https://github.com/opnsense/plugins/blob/stable/21.7/sysutils/nut/pkg-descr>`__ 
+* plugins: os-postfix 1.9 `[9] <https://github.com/opnsense/plugins/blob/stable/21.7/mail/postfix/pkg-descr>`__ 
+* plugins: os-radsecproxy 1.0 (contributed by Tobias Boehnert)
+* plugins: os-telegraf 1.11.0 `[10] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-tftp 1.0 (contributed by Michael Muenz)
+* plugins: os-zabbix-agent 1.9 `[11] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* src: dhclient support for VLAN 0 decapsulation
+* src: FreeBSD updates for the pf(4) and iflib(4) subsystems
+* src: FreeBSD updates for Intel e1000, ixgbe and ixl drivers
+* src: compatibility shim for upcoming rtsold "-M" command line option
+* src: separately log NAT and firewall rules in pf(4)
+* src: libcasper: fix descriptors numbers `[12] <FREEBSD:EN-21:19.libcasper>`__ 
+* src: linux: prevent integer overflow in futex_requeue `[13] <FREEBSD:EN-21:22.linux_futex>`__ 
+* src: axgbe: make sure driver works on V1000 platform and remove unnecessary reset
+* ports: drop hardening options to ease migration to FreeBSD ports tree
+* ports: clog 1.0.2 fixes garbage header write on init
+* ports: curl 7.78.0 `[14] <https://curl.se/changes.html#7_78_0>`__ 
+* ports: filterlog adds CARP IPv6 support and moves label to previously reserved spot
+* ports: libxml 2.9.12 `[15] <http://www.xmlsoft.org/news.html>`__ 
+* ports: nettle 3.7.3
+* ports: nss 3.68 `[16] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.68_release_notes>`__ 
+* ports: openvpn 2.5.3 `[17] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.3>`__ 
+* ports: php 7.4.21 `[18] <https://www.php.net/ChangeLog-7.php#7.4.21>`__ 
+* ports: phpseclib 2.0.32 `[19] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.32>`__ 
+* ports: python 3.8.10 `[20] <https://docs.python.org/release/3.8.10/whatsnew/changelog.html>`__ 
+* ports: sudo 1.9.7p1 `[21] <https://www.sudo.ws/stable.html#1.9.7p1>`__ 
+* ports: suricata 5.0.7 `[22] <https://redmine.openinfosecfoundation.org/versions/166>`__ 
+* ports: syslog-ng 3.33.2 `[23] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.33.2>`__ 
+
+Known issues and limitations:
+
+* NextCloud backup feature moved from core to plugins.  Please reinstall if needed.
+* IPsec identities are now set using their explicit type.  See StrongSwan documentation `[24] <https://wiki.strongswan.org/projects/strongswan/wiki/IdentityParsing>`__  for the old automatic defaults.
+* Unbound custom options setting has been discontinued.  Local override directory /usr/local/etc/unbound.opnsense.d exists.
+
+The public key for the 21.7 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA1Cc2Mw+t6NAgU5Ts8feU
+    # +vJSn4N8Ex1afuZ/tyXnRwxQ7w0+Hr0Bs8Ygy2X67KQi/7pi5FQ/hIJyEnf5Tm/7
+    # 7sS6O6XPvu2fg7UN1RBi5VgFJh4vajwhVGUg+EpuMNIgZw7AkWNlULvQSLBHOX7S
+    # FAthJQQ957OU2RARQA+LVT3wyiLpEhQp0S9h/YAO1tITQKlsPjlU4+0Iv58JZuAG
+    # lek+FaZyBLqCUF4ItLxGjqO3L4cx5iy3yD7qIOR3dN7tncdEYxQweut8cA80hFUe
+    # Wy8DgPUKVZRRZnVWSZp9QXzoo9ACLebAv6DOzN17DrVdO0iH6iYr6s/7tDoxtN0G
+    # +r6huk0tTKQ0UJX7O9l5GAQe+HWFH1WxTU37Pb79BbxXW+9LCUtAZ35HKLmIaQyb
+    # 6t3Jr0FTX+LtJBMUpWtYIAYjQIH2dlBGbwFRbljsibbSTsi/E+1WW3ob1r5O5fML
+    # b734CktIXm3HFvQ0qZ4DyIQDZS0J8zoVO2wHjlh9MsxCJdDvDXe6Dbj/Y93SBXVr
+    # Az8T8YrEwjK0fPt8dB1p+Ue49eYXPs5lJPmB5iaiXlp1VTqUwH2Lm3BZG5bUKded
+    # zOjHavmTeTXuSKWEYh/UP7mLGeY1FQF0o7VHJfdiJLt/4s2ybM9DNUssjSDBqBRV
+    # CPvKwujGiI0N2BPJHP21g1ECAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-21.7-OpenSSL-dvd-amd64.iso.bz2) = 34f9b5dee78cb4ded515393bd17c248d5a06b5cbc7c3cca9a58a919dc5e0fd65
+    # SHA256 (OPNsense-21.7-OpenSSL-nano-amd64.img.bz2) = e29ddb1749798d3f4403e44c9ee259a00826814a9cb71e0918fc3a6cb75df7db
+    # SHA256 (OPNsense-21.7-OpenSSL-serial-amd64.img.bz2) = b79e8f3b2dcdc1b13ff27d4aec435662a4f8b11201dff22c538cb2fd11c655f8
+    # SHA256 (OPNsense-21.7-OpenSSL-vga-amd64.img.bz2) = 03333348f3dbd42445986221cebaf753ebe5e4549d02dbb870f651b6399327d8
+
+--------------------------------------------------------------------------
+21.7.r2 (July 14, 2021)
+--------------------------------------------------------------------------
+
+
+For more than 6 and a half years, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple and reliable
+firmware upgrades, multi-language support, fast adoption of upstream software
+updates as well as clear and stable 2-Clause BSD licensing.
+
+We thank all of you for helping test, shape and contribute to the project!
+We know it would not be the same without you.  <3
+
+Here are the full patch notes:
+
+* system: prevent use of client certificates in web GUI
+* system: hide far gateway option for IPv6
+* system: isvalidpid() is not required for a single killbypid()
+* system: fix PHP 7.4 deprecated warning in IPv6 library
+* system: do not split XMLRPC password into multiple pieces
+* system: enable group sync for LDAP servers that do not return memberOf (contributed by rdd2)
+* interfaces: deprecate SLAAC addresses on linkdown
+* firewall: possibility to filter nat/rdr action in live log
+* firewall: use permanent promiscuous mode for pflog0
+* dhcp: assorted improvements surrounding dhcpd_staticmap() for real world operation
+* firmware: static template for firmware upgrade message
+* installer: assorted wording improvements
+* shell: fix IPv4 /31 assignment
+* unbound: add "unbound check" backend action
+* unbound: allow to retain cache on service reload
+* unbound: fix /var MFS dilemma for DNSBL after boot
+* unbound: remove deprecated custom options setting
+* rc: opnsense-beep melody database directory
+* plugins: os-acme-client 2.6 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.15 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-haproxy 3.4 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/net/haproxy/pkg-descr>`__ 
+* plugins: os-nextcloud-backup 1.0
+* plugins: os-nginx Phalcon 4 fixes
+* plugins: os-radsecproxy 1.0 (contributed by Tobias Boehnert)
+* plugins: os-tor Phalcon 4 fix
+* plugins: os-zabbix-agent 1.9 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* src: separately log NAT and firewall rules in pf(4)
+* src: libcasper: fix descriptors numbers `[5] <FREEBSD:EN-21:19.libcasper>`__ 
+* src: linux: prevent integer overflow in futex_requeue `[6] <FREEBSD:EN-21:22.linux_futex>`__ 
+* ports: clog 1.0.2 fixes garbage header write on init
+* ports: php 7.4.21 `[7] <https://www.php.net/ChangeLog-7.php#7.4.21>`__ 
+* ports: suricata 5.0.7 `[8] <https://redmine.openinfosecfoundation.org/versions/166>`__ 
+
+Known issues and limitations:
+
+* NextCloud backup feature moved from core to plugins.  Please reinstall if needed.
+* IPsec identities are now set using their explicit type.  See StrongSwan documentation `[9] <https://wiki.strongswan.org/projects/strongswan/wiki/IdentityParsing>`__  for the old automatic defaults.
+* Unbound custom options setting has been discontinued.  Local override directory /usr/local/etc/unbound.opnsense.d exists.
+
+Please let us know about your experience!
+
+
+
+--------------------------------------------------------------------------
+21.7.r1 (July 07, 2021)
+--------------------------------------------------------------------------
+
+
+For more than 6 and a half years, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple and reliable
+firmware upgrades, multi-language support, fast adoption of upstream software
+updates as well as clear and stable 2-Clause BSD licensing.
+
+We thank all of you for helping test, shape and contribute to the project!
+We know it would not be the same without you.  <3
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/21.7/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/21.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/21.7/
+* South America: https://mirror.venturasystems.tech/opnsense/releases/21.7/
+* Australia: http://mirror.as24220.net/opnsense/releases/21.7/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes against 21.1.7:
+
+* system: Norwegian translation (contributed by Stein-Aksel Basma)
+* system: correctly enforce "Disable writing log files to the local disk" when circular logs are not used
+* system: allow to edit gateway entries with non-conforming names
+* system: add HA sync entry for live log templates
+* system: lock config writes during HA merges
+* system: raised PHP memory limit to 1G
+* system: raised encryption standard for encrypted config.xml export
+* system: removed NextCloud backup from core functionality
+* system: allow more characters in the certificate/authority organization fields (contributed by Jan De Luyck)
+* system: default gateway failure state killing is now disabled by default
+* system: circular logs are now disabled by default
+* system: removed unused traffic API dashboard feed
+* interfaces: improve GRE/GIF configuration handling and dynamic reload behaviour
+* interfaces: remove duplicated handling of PPP IPv6 interface detection
+* interfaces: refactored address removal into interfaces_addresses_flush()
+* interfaces: flush IPv6 addresses on the correct IPv6 interface when it differs from the IPv4 interface
+* interfaces: do not check for existing CARP interfaces midstream
+* interfaces: remove non-tunnel restriction from address collection
+* interfaces: set tunnel flag for IPv4 tunnel plus cleanups
+* interfaces: allow interface-based overrides of hardware checksum settings
+* interfaces: refactor DNS lookup and add PTR to output (contributed by Maurice Walker)
+* firewall: set label for obsolete rule in live log (contributed by kulikov-a)
+* firewall: MVC rewrite of the states diagnostics pages under "States"
+* firewall: renamed "pfTables" diagnostics to "Aliases"
+* firewall: add quick link to states counter from firewall rule inspection
+* firewall: add manual reply-to configuration to rules
+* firewall: delete related rules when an interface group is removed
+* firewall: rename source/destination networks when group name changes
+* dhcp: remove ::/0 route from router advertisements (contributed by Maurice Walker)
+* dhcp: always deprecate prefixes in automatic router advertisements
+* dhcp: fix table header sorting in lease pages (contributed by vnxme)
+* dhcp: lock access to settings pages when interface is not suitable for running a DHCP server
+* firmware: introduced connectivity check
+* firmware: confirm plugin removal dialog
+* intrusion detection: fix alert reads from eve.json
+* ipsec: adhere to system defaults for route-to and reply-to when creating automatic VPN rules
+* ipsec: switched to explicit type selection for identities
+* network time: added NTPD client mode
+* openvpn: offer the ability to export a user without a certificate
+* openvpn: increase consistency between export types
+* unbound: fix domain overrides for private address reverse lookup zones (contributed by Maurice Walker)
+* console: throw error when opnsense-importer encounters an encrypted config.xml
+* mvc: reduce differentials in config.xml when saving models
+* ui: work on unification of add buttons by minifying them and adding primary color markup
+* ui: prevent translation line breaks from breaking JS
+* ui: switch firewall category icon for clarity
+* ui: inject default tooltips into bootgrid formatters
+* ui: removed $main_buttons magic handler
+* ui: improved JS hook_ipv4v6() to jump to /64 on IPv6 and back to /32 on IPv4
+* plugins: os-etpro-telemetry 1.5 exclude stale data from telemetry upload
+* plugins: os-fetchmail 1.0 (contributed by Michael Muenz)
+* plugins: os-freeradius 1.9.14 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-maltrail 1.8 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/security/maltrail/pkg-descr>`__ 
+* plugins: os-nut 1.8 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/sysutils/nut/pkg-descr>`__ 
+* plugins: os-telegraf 1.11.0 `[5] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-zabbix5-proxy is now a plugin variant
+* plugins: os-postfix 1.9
+* plugins: os-net-snmp 1.5
+* plugins: os-frr 1.22
+* src: dhclient support for VLAN 0 decapsulation
+* src: FreeBSD updates for the pf(4) and iflib(4) subsystems
+* src: FreeBSD updates for Intel e1000, ixgbe and ixl drivers
+* src: compatibility shim for upcoming rtsold "-M" command line option
+* ports: drop hardening options to ease migration to FreeBSD ports tree
+* ports: libxml 2.9.12 `[6] <http://www.xmlsoft.org/news.html>`__ 
+* ports: nettle 3.7.3
+* ports: nss 3.67 `[7] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.67_release_notes>`__ 
+* ports: openvpn 2.5.3 `[8] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.3>`__ 
+* ports: php 7.4.20 `[9] <https://www.php.net/ChangeLog-7.php#7.4.20>`__ 
+* ports: phpseclib 2.0.32 `[10] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.32>`__ 
+* ports: python 3.8.10 `[11] <https://docs.python.org/release/3.8.10/whatsnew/changelog.html>`__ 
+* ports: sudo 1.9.7p1 `[12] <https://www.sudo.ws/stable.html#1.9.7p1>`__ 
+
+Known issues and limitations:
+
+* NextCloud backup plugin removed from core, but not yet available as stable plugin via GUI.  Install manually from console as follows: pkg install os-nextcloud-backup-devel
+* IPsec identities are now set using their explicit type.  See StrongSwan documentation `[13] <https://wiki.strongswan.org/projects/strongswan/wiki/IdentityParsing>`__  for the old automatic defaults.
+* CLOG creating garbage logs when used.  Fix scheduled for 21.7-RC2.
+* Unbound advanced configuration not yet replaced.
+
+The public key for the 21.7 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA1Cc2Mw+t6NAgU5Ts8feU
+    # +vJSn4N8Ex1afuZ/tyXnRwxQ7w0+Hr0Bs8Ygy2X67KQi/7pi5FQ/hIJyEnf5Tm/7
+    # 7sS6O6XPvu2fg7UN1RBi5VgFJh4vajwhVGUg+EpuMNIgZw7AkWNlULvQSLBHOX7S
+    # FAthJQQ957OU2RARQA+LVT3wyiLpEhQp0S9h/YAO1tITQKlsPjlU4+0Iv58JZuAG
+    # lek+FaZyBLqCUF4ItLxGjqO3L4cx5iy3yD7qIOR3dN7tncdEYxQweut8cA80hFUe
+    # Wy8DgPUKVZRRZnVWSZp9QXzoo9ACLebAv6DOzN17DrVdO0iH6iYr6s/7tDoxtN0G
+    # +r6huk0tTKQ0UJX7O9l5GAQe+HWFH1WxTU37Pb79BbxXW+9LCUtAZ35HKLmIaQyb
+    # 6t3Jr0FTX+LtJBMUpWtYIAYjQIH2dlBGbwFRbljsibbSTsi/E+1WW3ob1r5O5fML
+    # b734CktIXm3HFvQ0qZ4DyIQDZS0J8zoVO2wHjlh9MsxCJdDvDXe6Dbj/Y93SBXVr
+    # Az8T8YrEwjK0fPt8dB1p+Ue49eYXPs5lJPmB5iaiXlp1VTqUwH2Lm3BZG5bUKded
+    # zOjHavmTeTXuSKWEYh/UP7mLGeY1FQF0o7VHJfdiJLt/4s2ybM9DNUssjSDBqBRV
+    # CPvKwujGiI0N2BPJHP21g1ECAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+Please let us know about your experience!
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-21.7.r1-OpenSSL-dvd-amd64.iso.bz2) = e1a9cd3296352a99f8a5ac7c7edd5f7161361fde4688115186292bed91252a1Gc
+    # SHA256 (OPNsense-21.7.r1-OpenSSL-nano-amd64.img.bz2) = 94478b919bca3850f3afd213b15df6ad08904ac505e3ecc3d979b9cd33276afc
+    # SHA256 (OPNsense-21.7.r1-OpenSSL-serial-amd64.img.bz2) = a72ef31a6e97644db8091cb9fa5cd7c785671da88c587ebbe417ac2fcb180202
+    # SHA256 (OPNsense-21.7.r1-OpenSSL-vga-amd64.img.bz2) = bc7f9a3b36cf4b52b630ee5ff28b31044db4aabfdcb73f54177307d6fc5623ba

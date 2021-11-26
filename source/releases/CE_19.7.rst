@@ -52,7 +52,7 @@ Here are the full patch notes:
 
 * firewall: fix a typo in CARP validation
 * firmware: revoke 19.1 fingerprint
-* ipsec: add configurable dpdaction (contributed by  Marcel Menzel)
+* ipsec: add configurable dpdaction (contributed by Marcel Menzel)
 * mvc: BaseListField ignoring empty selected field
 * plugins: os-haproxy 2.20 `[1] <https://github.com/opnsense/plugins/pull/1646>`__ 
 * plugins: os-mail-backup 1.1 `[2] <https://github.com/opnsense/plugins/pull/1671>`__ 
@@ -434,7 +434,7 @@ Here is the full list of changes:
 * src: fix insufficient validation of guest-supplied data (e1000 device) `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:21.bhyve.asc>`__ 
 * src: fix IPv6 remote denial of service `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:22.mbuf.asc>`__ 
 * src: fix kernel memory disclosure from /dev/midistat `[13] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:23.midi.asc>`__ 
-* src: fix reference count overflow in mqueuefs `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:24.mqueuefs.asc>`__ 
+* src: fix reference count overflow in mqueuefs 32-bit compat `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:24.mqueuefs.asc>`__ 
 * ports: hostapd 2.9 `[15] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
 * ports: nghttp2 1.39.2 `[16] <https://github.com/nghttp2/nghttp2/releases/tag/v1.39.2>`__ 
 * ports: openldap 2.4.48 `[17] <https://www.openldap.org/software/release/changes.html>`__ 
@@ -474,21 +474,20 @@ Here are the full patch notes:
 * firmware: handle file signature verify correctly with multiple fingerprint repositories
 * firmware: Aivian mirror is no longer active
 * firmware: Cloudfence mirror in Brazil added
-* plugins: os-acme-client 1.24 `[1] <https://github.com/opnsense/plugins/pull/1399>`__ 
 * plugins: os-bind 1.6 (contributed by crazy-max)
 * plugins: os-dnscrypt-proxy 1.5 (contributed by crazy-max)
-* plugins: os-grid_example 1.0 `[2] <https://docs.opnsense.org/development/examples/using_grids.html>`__ 
-* plugins: os-helloworld Python 3 compatibility `[3] <https://docs.opnsense.org/development/examples/helloworld.html>`__ 
+* plugins: os-grid_example 1.0 `[1] <https://docs.opnsense.org/development/examples/using_grids.html>`__ 
+* plugins: os-helloworld Python 3 compatibility `[2] <https://docs.opnsense.org/development/examples/helloworld.html>`__ 
 * plugins: os-nut 1.5 adds Riello driver (contributed by Michael Muenz)
-* plugins: os-sunnyvalley 1.0 `[4] <https://docs.opnsense.org/third_party_plugins.html>`__  `[5] <https://www.sunnyvalley.io/sensei>`__ 
-* src: fix panic from Intel CPU vulnerability mitigation `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-19:13.mds.asc>`__ 
-* src: fix multiple telnet client vulnerabilities `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:12.telnet.asc>`__ 
-* src: fix pts write-after-free `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:13.pts.asc>`__ 
-* src: fix kernel memory disclosure in freebsd32_ioctl `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:14.freebsd32.asc>`__ 
-* src: fix reference count overflow in mqueuefs `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:15.mqueuefs.asc>`__ 
-* src: fix byhve out-of-bounds read in XHCI device `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:16.bhyve.asc>`__ 
-* src: fix file descriptor reference count leak `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:17.fd.asc>`__ 
-* ports: libevent 2.1.11 `[13] <https://raw.githubusercontent.com/libevent/libevent/release-2.1.11-stable/ChangeLog>`__ 
+* plugins: os-sunnyvalley 1.0 `[3] <https://docs.opnsense.org/third_party_plugins.html>`__  `[4] <https://www.sunnyvalley.io/sensei>`__ 
+* src: fix panic from Intel CPU vulnerability mitigation `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-19:13.mds.asc>`__ 
+* src: fix multiple telnet client vulnerabilities `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:12.telnet.asc>`__ 
+* src: fix pts write-after-free `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:13.pts.asc>`__ 
+* src: fix kernel memory disclosure in freebsd32_ioctl `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:14.freebsd32.asc>`__ 
+* src: fix reference count overflow in mqueuefs `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:15.mqueuefs.asc>`__ 
+* src: fix byhve out-of-bounds read in XHCI device `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:16.bhyve.asc>`__ 
+* src: fix file descriptor reference count leak `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:17.fd.asc>`__ 
+* ports: libevent 2.1.11 `[12] <https://raw.githubusercontent.com/libevent/libevent/release-2.1.11-stable/ChangeLog>`__ 
 
 
 

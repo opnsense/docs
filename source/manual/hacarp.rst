@@ -71,11 +71,11 @@ Settings
 Automatic failover
 ............................
 
-If the primary firewall becomes unavailable, the secondary firewall will take
-over without user intervention and minimal interruption.
+Although not really a setting on the high availability setup page, it's a crucial part of high available setups.
+Using CARP type virtual addresses, the secondary firewall will take over without user intervention and minimal
+interruption when the primary becomes unavailable.
 
 Virtual IPs of the type CARP (:doc:`/manual/firewall_vip`) are required for this feature.
-
 
 ............................
 Synchronized state tables
@@ -84,6 +84,14 @@ Synchronized state tables
 The firewall’s state table is replicated to all failover configured firewalls.
 This means the existing connections will be maintained in case of a failure,
 which is important to prevent network disruptions.
+
+............................
+Disable preempt
+............................
+
+By default this option is deselected, which is the advised scenario for most common HA setups.
+The preempt option make sure that multiple carp interfaces will act as a group (all :code:`backup` or :code:`master`)
+at the same time, assuming no technical issues exist between both.
 
 .................................
 Configuration synchronization

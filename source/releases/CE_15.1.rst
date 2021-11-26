@@ -298,15 +298,12 @@ out tomorrow including wary tweaks related to Logjam.
 
 Here is the full list of changes for 15.1.11:
 
-* core: removed unused package dependencies b42-fwcutter, bwi-firmware-kmod,
-  dmidecode, ifstated, pecl-ssh2
-* core: switched back from bind-tools to the latest full bind 9.10 package
-  due to various requests
+* core: removed unused package dependencies b42-fwcutter, bwi-firmware-kmod, dmidecode, ifstated, pecl-ssh2
+* core: switched back from bind-tools to the latest full bind 9.10 package due to various requests
 * src: fix panic in pf(4) in conjunction with ALTQ `[3] <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=200222>`__ 
 * src: updated to FreeBSD 10.0-RELEASE-p10 `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:04.freebsd-update.asc>`__  `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:05.ufs.asc>`__ 
 * src: reverted two more custom patches to align with FreeBSD
-* ports: updated to ca_root_nss 3.19, sqlite 3.8.10.1, php 5.6.9 `[6] <https://php.net/ChangeLog-5.php#5.6.9>`__ ,
-  openssh-portable 6.8p1_7 `[7] <http://www.openwall.com/lists/oss-security/2015/05/16/3>`__ 
+* ports: updated to ca_root_nss 3.19, sqlite 3.8.10.1, php 5.6.9 `[6] <https://php.net/ChangeLog-5.php#5.6.9>`__ , openssh 6.8p1_7 `[7] <http://www.openwall.com/lists/oss-security/2015/05/16/3>`__ 
 * opnsense-update: exclude /etc/tty from the upgrade
 * bsdinstaller: reworked the internals to align to modern port standards
 * captive portal: switched rules generation to new template engine
@@ -315,9 +312,7 @@ Here is the full list of changes for 15.1.11:
 * dashboard: fix disabled widgets dialog
 * nat: fixed delete of multiple item
 * nat: fix display of disabled rules
-* queues: the legacy ALTQ traffic shaper is now found under
-  "Firewall: Queues" to make room for the upcoming traffic shaper
-  reimplementation based on IPFW/dummynet
+* queues: the legacy ALTQ traffic shaper is now found under "Firewall: Queues" to make room for the upcoming traffic shaper reimplementation based on IPFW/dummynet
 * core: fix faulty read of /var/log/dmesg.boot
 
 The live upgrades are up for both LibreSSL and OpenSSL.  Images will follow
@@ -667,17 +662,14 @@ Here is the change log for 15.1.9:
 
 * tools: install media live images now use the more flexible tmpfs(5)
 * tools: cxgbe(4) is now compiled into the kernel
-* ports: strongswan 5.3.0 `[1] <https://www.strongswan.org/blog/2015/03/30/strongswan-5.3.0-released.html>`__ , openssh-portable 6.8p1 `[2] <http://www.openssh.com/txt/release-6.8>`__ , ntp 4.2.8p2 `[3] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
-* src: reverted inconsistent carp(4) and pfsync(4) patches to retain
-  standard FreeBSD behaviour
+* ports: strongswan 5.3.0 `[1] <https://www.strongswan.org/blog/2015/03/30/strongswan-5.3.0-released.html>`__ , openssh 6.8p1 `[2] <http://www.openssh.com/txt/release-6.8>`__ , ntp 4.2.8p2 `[3] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
+* src: reverted inconsistent carp(4) and pfsync(4) patches to retain standard FreeBSD behaviour
 * src: fix multiple vulnerabilities of ntp `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:07.ntp.asc>`__ 
 * src: fix denial of service with IPv6 router advertisements `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:09.ipv6.asc>`__ 
 * core: console upgrade now also triggers the unused package removal
-* core: fix regression that caused a faulty config.xml when applying limiter
-  settings
+* core: fix regression that caused a faulty config.xml when applying limiter settings
 * core: refactored the configd command structure for clarity
-* core: fix for SMTP notifications that broke due to PHP 5.6's new default
-  SSL behaviour
+* core: fix for SMTP notifications that broke due to PHP 5.6's new default SSL behaviour
 * core: thorough unused java script purge under the hood
 * upnp: fix redeclaration error on main page shortcut click
 * user manager: consolidated the labels of all privileges, especially OpenVPN

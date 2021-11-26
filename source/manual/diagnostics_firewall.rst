@@ -3,20 +3,7 @@ Diagnostics
 ===========
 
 -----------------------------------------
-pfInfo
------------------------------------------
-
-Various detailed statistics gathered from `pfctl <https://www.freebsd.org/cgi/man.cgi?query=pfctl>`__,
-such as packet counters per interface, memory limits, configured timeouts and detailed active rules.
-
------------------------------------------
-pfTop
------------------------------------------
-
-`pftop <https://www.freebsd.org/cgi/man.cgi?query=pftop>`__ displays the active packetfilter states and rules, and periodically updates this information.
-
------------------------------------------
-pfTables
+Aliases
 -----------------------------------------
 
 Detailed insight into loaded aliases and their content. When an alias has **Statistics** enabled, it will show these
@@ -34,25 +21,24 @@ It's also possible to manually adjust the contents, using **Quick add address** 
     Use "Find references" to check if an address would match any configured aliases, which is very practical for debugging
     purposes, since it will also check if an address fits a network (such as 10.0.0.2 fits in 10.0.0.0/24).
 
+-----------------------------------------
+Sessions
+-----------------------------------------
+
+Utilises `pftop <https://www.freebsd.org/cgi/man.cgi?query=pftop>`__ to offer a detailed view on the active sessions
+and their traffic counters.
 
 -----------------------------------------
-States Dump
+States
 -----------------------------------------
 
 Insight into the state table (pf), offers the ability to search for specific states and removal.
+It is also possible to reset all states and/or the source tracking tables from here, especially the state table
+reset should be used with care as it drops all active connections.
 
 -----------------------------------------
-States Reset
+pfInfo
 -----------------------------------------
 
-Delete all active states and source tracking (cancels connections)
-
-.. Warning::
-
-    Handle with care, a state reset will discard all active connections, in which case clients might have to reconnect
-
------------------------------------------
-States Summary
------------------------------------------
-
-Show states sorted by criteria like source IP, destination IP, …
+Various detailed statistics gathered from `pfctl <https://www.freebsd.org/cgi/man.cgi?query=pfctl>`__,
+such as packet counters per interface, memory limits, configured timeouts and detailed active rules.

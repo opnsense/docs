@@ -84,11 +84,7 @@ First you need to set up a project in the Google developer console.
 
     .. image:: ./images/google_drive_enable.png
 
--  On the next page that appears, click the **CREATE CREDENTIALS** button:
-
-    .. image:: ./images/google_create_credentials.png
-
--  The Credentials Wizard will then appear. Click on the **service account** hyperlink that appears on the page:
+- Now create a service account for your project. In the search bar at the top of the page, search for “service accounts" and click on the corresponding search result:
 
     .. image:: ./images/google_select_service_account.png
 

@@ -12,24 +12,6 @@ Unbound
     "``GET``","unbound","diagnostics","listlocalzones",""
     "``GET``","unbound","diagnostics","stats",""
 
-.. csv-table:: Service (DnsblController.php)
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-    "``GET``","unbound","dnsbl","get",""
-    "``GET``","unbound","dnsbl","set",""
-
-    "``<<uses>>``", "", "", "", "*model* `Dnsbl.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Unboundplus/Dnsbl.xml>`__"
-
-.. csv-table:: Service (MiscellaneousController.php)
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-    "``GET``","unbound","miscellaneous","get",""
-    "``GET``","unbound","miscellaneous","set",""
-
-    "``<<uses>>``", "", "", "", "*model* `Miscellaneous.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Unboundplus/Miscellaneous.xml>`__"
-
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -41,4 +23,19 @@ Unbound
     "``GET``","unbound","service","status",""
     "``GET``","unbound","service","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `Dnsbl.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Unboundplus/Dnsbl.xml>`__"
+    "``<<uses>>``", "", "", "", "*model* `Unbound.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Unbound/Unbound.xml>`__"
+
+.. csv-table:: Resources (SettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","unbound","settings","addDot",""
+    "``POST``","unbound","settings","delDot","$uuid"
+    "``GET``","unbound","settings","get",""
+    "``GET``","unbound","settings","getDot","$uuid=null"
+    "``*``","unbound","settings","searchDot",""
+    "``GET``","unbound","settings","set",""
+    "``POST``","unbound","settings","setDot","$uuid"
+    "``POST``","unbound","settings","toggleDot","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `Unbound.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Unbound/Unbound.xml>`__"

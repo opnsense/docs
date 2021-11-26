@@ -195,7 +195,7 @@ Refuse Non-local                      Allow only authoritative local-data querie
 ====================================  ===============================================================================
 
 -------------------------
-Blacklist
+Blocklists
 -------------------------
 
 Enable integrated dns blacklisting using one of the predefined sources or custom locations.
@@ -220,6 +220,7 @@ the list maintainers.
 =====================================================================================================================
 
 ====================================  ===============================================================================
+Abuse.ch - ThreatFox IOC database     https://threatfox.abuse.ch/
 AdAway                                https://adaway.org
 AdGuard List                          https://justdomains.github.io/blocklists/#the-lists
 Blocklist.site                        https://github.com/blocklistproject/Lists
@@ -237,7 +238,7 @@ YoYo List                             https://pgl.yoyo.org/adservers/
 .. Note::
 
     In order to automatically update the lists on timed intervals you need to add a cron task, just go to
-    :menuselection:`System -> Settings ->Cron` and a new task for a command called "Download Unbound DNSBLs and restart".
+    :menuselection:`System -> Settings ->Cron` and a new task for a command called "Update Unbound DNSBLs".
 
     Usually once a day is a good enough interval for these type of tasks.
 
@@ -254,19 +255,20 @@ Advanced Configurations
 
 Some installations require configuration settings that are not accessible in the UI.
 To support these, individual configuration files with a ``.conf`` extension can be put into the
-``/var/unbound/etc`` directory. These files will be automatically included by the UI generated configuration.
-Multiple configuration files can be placed there. But note that
+``/usr/local/etc/unbound.opnsense.d`` directory. These files will be automatically included by
+the UI generated configuration. Multiple configuration files can be placed there. But note that
 
 * As it cannot be predicted in which clause the configuration currently takes place, you must prefix the configuration with the required clause.
   For the concept of "clause" see the ``unbound.conf(5)`` documentation.
-* The wildcard include processing in unbound is based on ``glob(7)``. So the order in which the files are included is in ascending ASCII order.
-* Namecollisions with plugins, which use this extension point e. g. ``unbound-plus``, may occur. So be sure to use an unique filename.
-* It is a good idea, to check the complete configuration by running the unbound-checkconf utility::
+* The wildcard include processing in Unbound is based on ``glob(7)``. So the order in which the files are included is in ascending ASCII order.
+* Name collisions with plugin code, which use this extension point e. g. ``dnsbl.conf``, may occur. So be sure to use a unique filename.
+* It is a good idea to check the complete configuration via::
 
-   # check if configuration is valid
-   unbound-checkconf /var/unbound/unbound.conf
+   # check if the resulting configuration is valid
+   configctl unbound check
 
-  This will report errors that prevent unbound from starting.
+  This will report errors that prevent Unbound from starting and also list warnings that may give hints as to why a particular configuration
+  is not working or how it could be improved.
 
 This is a sample configuration file to add an option in the server clause:
 
@@ -277,14 +279,13 @@ This is a sample configuration file to add an option in the server clause:
 
 
 .. Note::
-  A final thing to note is, that on memory based system ``/var`` is volatile and every file placed inside or below will not survive a restart.
-  As a solution the Template System (":doc:`/development/backend/templates`") can be used to automatically generate these files.
+  As a more permanent solution the template system (":doc:`/development/backend/templates`") can be used to automatically generate these files.
 
-  To get the same effect as placing the file in the sample above directly in ``/var/unbound/etc`` follow these steps:
+  To get the same effect as placing the file in the sample above directly in ``/usr/local/etc/unbound.opnsense.d`` follow these steps:
 
   #. Create a ``+TARGETS`` file in ``/usr/local/opnsense/service/templates/sampleuser/Unbound``::
 
-      sampleuser_additional_options.conf:/var/unbound/etc/sampleuser_additional_options.conf
+      sampleuser_additional_options.conf:/usr/local/etc/unbound.opnsense.d/sampleuser_additional_options.conf
 
   #. Place the template file as ``sampleuser_additional_options.conf`` in the same directory::
 
@@ -300,9 +301,9 @@ This is a sample configuration file to add an option in the server clause:
   #. Check the output in the target directory::
 
       # show generated file
-      cat /var/unbound/etc/sampleuser_additional_options.conf
+      cat /usr/local/etc/unbound.opnsense.d/sampleuser_additional_options.conf
       # check if configuration is valid
-      unbound-checkconf /var/unbound/unbound.conf
+      configctl unbound check
 
 
 .. Warning::
@@ -311,4 +312,4 @@ This is a sample configuration file to add an option in the server clause:
 
 .. Note::
     This method replaces the ``Custom options`` settings in the General page of the Unbound configuration,
-    which was already marked as "to be removed in the future".
+    which was removed in version 21.7.

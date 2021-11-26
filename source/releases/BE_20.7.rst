@@ -111,7 +111,7 @@ Here are the full patch notes:
 
 * reporting: fix traffic graph widget link issue
 * system: simplify log format parsing
-* interfaces: fix DUID LL description  (contributed by Gabriel Mazzocato)
+* interfaces: fix DUID LL description (contributed by Gabriel Mazzocato)
 * unbound: fix dnsbl not reloading after update
 * plugins: os-acme-client 2.2 `[1] <https://github.com/opnsense/plugins/blob/stable/20.7/security/acme-client/pkg-descr>`__ 
 * plugins: os-freeradius 1.9.9 `[2] <https://github.com/opnsense/plugins/blob/stable/20.7/net/freeradius/pkg-descr>`__ 
@@ -540,7 +540,7 @@ Here are the full patch notes against 20.1.8_1:
 * system: add new "auth user changed" config event and hook it into LDAP updatePolicies()
 * system: adapt to 3wire serial console setting
 * system: figure out which sysctls are writeable before attempting to write them
-* system: Windows-friendly Nextcloud configuration backup file timestamp (contributed by @Alphakilo)
+* system: Windows-friendly Nextcloud configuration backup file timestamp (contributed by Alphakilo)
 * system: disable PCRE JIT in PHP config
 * system: clean up start / stop beep handler
 * interfaces: improved VLAN handling and defaults for more stable netmap use on 12.1
@@ -559,14 +559,14 @@ Here are the full patch notes against 20.1.8_1:
 * firmware: added fingerprint for 20.7 series
 * firmware: hint at missing plugins and request to install or dismiss
 * intrusion detection: extend rule search with metadata and show results on rule info
-* intrusion detection: updated pattern options (contributed by @Xeroxxx)
+* intrusion detection: updated pattern options (contributed by Xeroxxx)
 * intrusion detection: synchronize suricata.yaml with default template
-* network time: NMEA GPS clock messages latitude and longitude parsing fix (contributed by @mikahe)
-* network time: prevent widget PHP warnings if no GPS fix was returned in NMEA message (contributed by @mikahe)
+* network time: NMEA GPS clock messages latitude and longitude parsing fix (contributed by mikahe)
+* network time: prevent widget PHP warnings if no GPS fix was returned in NMEA message (contributed by mikahe)
 * unbound: integrate functionality formerly known as "unbound-plus" plugin (contributed by Michael Muenz)
 * web proxy: support for custom error pages (sponsored by Incenter Technology)
 * web proxy: add connect_timeout (contributed by Michael Muenz)
-* web proxy: allow PURGE on cache (contributed by @sazb)
+* web proxy: allow PURGE on cache (contributed by sazb)
 * web proxy: add missing IPv6 listener
 * mvc: add "S" option for AllowDynamic in InterfaceField type
 * mvc: LegacyLinkField not allowed to return null in __toString()

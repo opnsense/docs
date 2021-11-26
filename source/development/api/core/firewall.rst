@@ -12,6 +12,7 @@ Firewall
     "``GET``","firewall","alias","getAliasUUID","$name"
     "``GET``","firewall","alias","getGeoIP",""
     "``GET``","firewall","alias","getItem","$uuid=null"
+    "``GET``","firewall","alias","getTableSize",""
     "``POST``","firewall","alias","import",""
     "``GET``","firewall","alias","listCountries",""
     "``GET``","firewall","alias","listNetworkAliases",""
@@ -30,10 +31,10 @@ Firewall
     "``POST``","firewall","alias_util","add","$alias"
     "``GET``","firewall","alias_util","aliases",""
     "``POST``","firewall","alias_util","delete","$alias"
-    "``POST``","firewall","alias_util","find_references",""
+    "``POST``","firewall","alias_util","findReferences",""
     "``POST``","firewall","alias_util","flush","$alias"
     "``GET``","firewall","alias_util","list","$alias"
-    "``GET``","firewall","alias_util","update_bogons",""
+    "``GET``","firewall","alias_util","updateBogons",""
 
 .. csv-table:: Resources (CategoryController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -44,6 +45,7 @@ Firewall
     "``GET``","firewall","category","get",""
     "``GET``","firewall","category","getItem","$uuid=null"
     "``*``","firewall","category","searchItem",""
+    "``*``","firewall","category","searchNoCategoryItem",""
     "``GET``","firewall","category","set",""
     "``POST``","firewall","category","setItem","$uuid"
 

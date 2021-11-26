@@ -88,7 +88,7 @@ Below you will find an incomplete list of the most common used events that are h
 ===========================  =================================================================================
 Event                        When
 ===========================  =================================================================================
-earlybootup                  Early in bootup process, before normal services are started
+early                        Early in bootup process, before normal services are started
                              (things like ssh and the webconfigurator use this spot)
 bootup                       Bootup, normal legacy service configuration, when not using the :code:`rc(8)` system
                              (for example: unbound, ntpd)
