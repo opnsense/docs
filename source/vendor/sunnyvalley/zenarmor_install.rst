@@ -43,7 +43,7 @@ To start the "Initial Configuration Wizard":
 * Click on the Dashboard sub-menu to open the configuration wizard
 
 ....................
-1- WELLCOME
+1- Wellcome
 ....................
 
 * Accept the Terms of Service and Privacy Policy by clicking on the checkbox. 
