@@ -46,7 +46,7 @@ Once you are successfully logged into OPNsense either by local system access or 
 
     # curl https://updates.sunnyvalley.io/getzenarmor | sh
 
-.. image:: images/sensei-cli-install.png
+.. image:: images/zenarmor-cli-install-.png
     :width: 100%
 
 The script will copy the installation files onto the filesystem and will add a top-level menu item within the OPNsense web interface. Depending on the speed of your hardware and Internet connection, the installation may take several minutes to complete.
