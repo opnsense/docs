@@ -142,19 +142,9 @@ Cloud Threat Intel settings let you:
 
 * Click :menuselection:`Next` to continue to the :menuselection:`Sensei CLI` section.
 
-.........................
-6- Zenarmor CLI (Security)
-.........................
-
-* Set your TCP Service password. This password protects the command line access to the packet engine. It is highly recommended to use a very secure password. The default password is “Sensei1234” so be sure to change it.
-
-.. image:: images/zenarmor-wizard-zenarmor-cli.png
-    :width: 100%
-
-* Click :menuselection:`Next` to continue to the :menuselection:`Updates & Health Check` section.
 
 ..........................
-7- Updates & Health Check
+6- Updates & Health Check
 ..........................
 
 .. Note::
@@ -174,7 +164,7 @@ Cloud Threat Intel settings let you:
 * Click :menuselection:`Next` to continue to the :menuselection:`Deployment Size` section.
 
 ....................
-8- Deployment Size
+7- Deployment Size
 ....................
 
 Zenarmor may support up to 1,000 concurrent users on an average PC. You can set your Zenarmor installation’s capacity in this section.
@@ -189,7 +179,7 @@ Zenarmor may support up to 1,000 concurrent users on an average PC. You can set 
 * Click :menuselection:`Next` to continue to the :menuselection:`Finish` section.
 
 ....................
-9- Finish
+8- Finish
 ....................
 
 * You may enter your email address if you wish to subscribe to the Sunny Valley email list to stay up to date on the latest news.
