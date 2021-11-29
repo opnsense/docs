@@ -1,6 +1,6 @@
-====================================
+==================================================
 Zenarmor (Sensei): Installing via Web Interface
-====================================
+==================================================
 
 .. Note::
 
@@ -14,9 +14,9 @@ To install plugins in OPNsense, you must use an account with administrative acce
 
     Before installing Zenarmor, you should ensure you meet the minimum system requirements in order to run Zenarmor or to have the best user experience. See :doc:`zenarmor_hardwarerequirements` for more information.
 
---------------------------
+----------------------------
 Web Interface Installation
---------------------------
+----------------------------
 
 To install Zenarmor, you must first install the Sunny Valley Networks vendor repository plugin. Go to the :menuselection:`System --> Firmware --> Plugins` page. Click on the “+” icon next to os-sunnyvalley to install the plugin.
 

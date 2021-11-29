@@ -32,7 +32,7 @@ Sunnyvalley
    :maxdepth: 2
    :titlesonly:
 
-   vendor/sunnyvalley/sensei
-   vendor/sunnyvalley/sensei_hardwarerequirements
-   vendor/sunnyvalley/sensei_install
-   vendor/sunnyvalley/sensei_cmd_install
+   vendor/sunnyvalley/zenarmor
+   vendor/sunnyvalley/zenarmor_hardwarerequirements
+   vendor/sunnyvalley/zenarmor_install
+   vendor/sunnyvalley/zenarmor_cmd_install
