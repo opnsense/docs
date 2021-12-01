@@ -16,6 +16,7 @@ These are all combined in the firewall section.
    :maxdepth: 2
    :titlesonly:
 
+   manual/firewall_generic
    manual/aliases
    manual/firewall_categories
    manual/firewall_groups
