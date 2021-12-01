@@ -223,7 +223,7 @@ alias and add or remove entries immediately.
 
 
 ----------------------------------
-Using Aliases in pf Firewall Rules
+Using Aliases in Firewall Rules
 ----------------------------------
 Aliases can be used in firewall rules to ease administration of large lists.
 For instance we might need a list of remote IP addresses that should have access to
