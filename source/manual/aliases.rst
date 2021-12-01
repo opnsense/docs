@@ -59,7 +59,7 @@ Sample
 
 **Apply changes** and look at the content of our newly created pf table.
 
-Go to :menuselection:`Firewall --> Diagnostics --> pfTables` and select our newly created youtube table.
+Go to :menuselection:`Firewall --> Diagnostics --> Aliases` and select our newly created youtube table.
 
 .. image:: images/pftable_youtube.png
     :width: 100%
@@ -128,7 +128,7 @@ intervals from the :code:`arp` and :code:`ndp` tables.
 .. Note::
 
     Since mappings between addresses and mac addresses are resolved periodically the actual situation can differ, you can
-    always check :menuselection:`Firewall -> Diagnostics -> pfTables` to inspect the current contents of the alias.
+    always check :menuselection:`Firewall -> Diagnostics -> Aliases` to inspect the current contents of the alias.
 
 ..................
 URL Tables
@@ -207,7 +207,7 @@ The contents for external alias types is not administered via our normal alias s
 in scenarios where you want to push new entries from external programs. Such as specific lockout features or
 external tools feeding access control to your firewall.
 
-In :menuselection:`Firewall --> Diagnostics --> pfTables` you can always inspect the current contents of the external
+In :menuselection:`Firewall --> Diagnostics --> Aliases` you can always inspect the current contents of the external
 alias and add or remove entries immediately.
 
 .. Tip::

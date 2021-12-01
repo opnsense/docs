@@ -37,7 +37,7 @@ It is also possible to reset all states and/or the source tracking tables from h
 reset should be used with care as it drops all active connections.
 
 -----------------------------------------
-pfInfo
+Statistics
 -----------------------------------------
 
 Various detailed statistics gathered from `pfctl <https://www.freebsd.org/cgi/man.cgi?query=pfctl>`__,
