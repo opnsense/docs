@@ -219,10 +219,16 @@ You want to run a server on your LAN that is accessable from the WAN so you give
 When your prefix changes, that static address is no longer valid, so you must use the IPv6 Dynamic Host to create an alias 
 address for the firewall entry that automatically tracks the prefix and changes the rule. 
 
+The Dynamic Host Alias will always split on the /64 boundary, it will take the upper 64 bits from the interface you select
+and the lower 64 bits from the address you enter.
+
 Create a new IPv6 Dynamic Host alias and enter only the suffix of the address, in this example, we will enter the lower 64
-bits of the address, you would enter ::1000:1000:0000:1/64, note the '::' at the start of the address, you MUST always start
-the address with a '::' and add the network size you wish to use, in this simple case we are going to use a /64, this is the
-standard size of a LAN subnet that Opnsense creates when using WAN tracking.
+bits of the address, you would enter ::1000:1000:0000:1/128, note the '::' at the start of the address, you MUST always start
+the address with a '::' and add the network size you wish to use, in this simple case we are going to use a /128, this is because
+we wish to use this alias in the firewall to allow traffic to a specific host only, and the /128 will appear in the alias rule
+created. 
+
+Select the interface you wish to use for the source of the uppper 64 bits, in this case we will select the LAN interface.
 
 When the prefix changes, the alias address will then be updated in the firewall rules, let's say your prefix changes to 
 2001:db8:2222:3200::/56 the rule updates and the entry for your server in the firewall would update automatically to be
