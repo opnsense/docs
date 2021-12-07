@@ -96,7 +96,7 @@ Table:  *Recommended hardware requirements*
    :name: hardware-guide
 
 The hardware required for your local OPNsense, will be determined by the
-intended minimum `throughput <https://en.wikipedia.org/wiki/>`__ and the
+intended minimum `throughput <#throughput>`__ and the
 feature set.
 
 ---------------------
