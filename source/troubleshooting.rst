@@ -20,8 +20,9 @@ before reporting new ones.
 In case your issue was introduced after a (minor) upgrade, you can use `opnsense-revert <https://docs.opnsense.org/manual/opnsense_tools.html#opnsense-revert>`__
 to downgrade specific packages installed on the system.
 
-Using the firmware section (:menuselection:`System --> Firmware --> Updates`) you can perform a health check on the system, in
-the right top corner of the page is a button named **Audit now** which can be collapsed into **Health**.
+Using the firmware section (:menuselection:`System --> Firmware --> Status`) you can perform a health check on the system, on
+the bottom of the status overview is a button named **Run an audit** which can be expanded to offer the **Health** selection.
+
 When clicked this outputs something like the following:
 
 .. code-block:: text
