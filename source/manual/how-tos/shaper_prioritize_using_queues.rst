@@ -25,7 +25,7 @@ for the upload traffic.
 | HTTPS (443)    |        |                   |
 +----------------+--------+-------------------+
 
-To start go to :menuselection:`Firewall --> Traffic Shaper --> Settings`.
+To start go to :menuselection:`Firewall --> Shaper --> Pipes`.
 
 Step 1 - Create Download Pipe
 ------------------------------

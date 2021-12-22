@@ -32,9 +32,9 @@ users in such manner that each user will receive up to a maximum of 1 Mbps.
 
     }
 
-To start go to :menuselection:`Firewall --> Traffic Shaper --> Settings`.
+To start go to :menuselection:`Firewall --> Shaper --> Pipes`.
 
-Step 1 - Create Upload and Download Pipes
+Step 1 - Create download and upload pipes
 -----------------------------------------
 On the **Pipes** tab click the **+** button in the lower right corner.
 An empty **Edit Pipe** screen will popup.
@@ -108,7 +108,7 @@ for the upload traffic.
 | HTTPS (443)    |        |                   |
 +----------------+--------+-------------------+
 
-To start go to :menuselection:`Firewall --> Traffic Shaper --> Settings`.
+To start go to :menuselection:`Firewall --> Shaper --> Pipes`.
 
 Step 1 - Create Download Pipe
 ------------------------------

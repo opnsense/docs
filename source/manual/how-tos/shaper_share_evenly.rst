@@ -32,7 +32,7 @@ Upload that we want to share evenly between all users.
 
     }
 
-To start go to :menuselection:`Firewall --> Traffic Shaper --> Settings`.
+To start go to :menuselection:`Firewall --> Shaper --> Pipes`.
 
 Step 1 - Create Upload and Download Pipes
 -----------------------------------------

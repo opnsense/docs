@@ -322,7 +322,7 @@ Internet Access. This bandwidth will be shared evenly between connected clients.
       that would be 1 Mbps down stream (download). It is also possible to limit
       the traffic per user see also :doc:`shaper`
 
-Go to: :menuselection:`Firewall --> Traffic Shaper --> Settings`.
+Go to: :menuselection:`Firewall --> Shaper --> Pipes`.
 
 Create a pipe for the Download by pressing the **+** in the lower right corner of
 the form and enter the following details:
