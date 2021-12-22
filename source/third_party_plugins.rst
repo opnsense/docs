@@ -23,6 +23,7 @@ Deciso
 
    vendor/deciso/opncentral
    vendor/deciso/opnproxy
+   vendor/deciso/opnwaf
 
 --------------------
 Sunnyvalley
