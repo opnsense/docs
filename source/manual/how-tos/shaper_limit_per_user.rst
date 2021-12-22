@@ -36,6 +36,7 @@ To start go to :menuselection:`Firewall --> Shaper --> Pipes`.
 
 Step 1 - Create download and upload pipes
 -----------------------------------------
+
 On the **Pipes** tab click the **+** button in the lower right corner.
 An empty **Edit Pipe** screen will popup.
 
@@ -45,35 +46,64 @@ Create Pipe For Download
  **enabled**            Checked          *Check to enable the pipe*
  **bandwidth**          1                *Numeric value of the desired bandwidth*
  **bandwidth Metric**   Mbit/s           *Metric to use with the numeric value*
- **mask**               destination      *Select source to limit bandwidth per client*
+ **mask**               destination      *Dynamic pipe per downloading client*
  **description**        PipeDown-1Mbps   *Free field, enter something descriptive*
 ====================== ================ ================================================
 
+Create Pipe For Upload
 
-Step 2 - Create Rules
+====================== ================ ================================================
+ **enabled**            Checked          *Check to enable the pipe*
+ **bandwidth**          1                *Numeric value of the desired bandwidth*
+ **bandwidth Metric**   Mbit/s           *Metric to use with the numeric value*
+ **mask**               source           *Dynamic pipe per uploading client*
+ **description**        PipeUp-1Mbps     *Free field, enter something descriptive*
+====================== ================ ================================================
+
+.. Note::
+
+        Always create separate pipes for download and upload limiting to avoid
+        undefined behaviour when mixing bidirectional traffic in a single pipe.
+
+Step 2 - Create rules
 ----------------------
+
 On the **Rules** tab click the **+** button in the lower right corner.
 An empty **Edit rule** screen will popup.
 
-
-Create a rule for traffic coming from the internet (Download).
+Create a rule for traffic coming from the internet (download).
 
 ====================== ================= =====================================================
- **sequence**            21               *Auto generated number, overwrite only when needed*
- **interface**           WAN              *Select the interface connected to the internet*
- **proto**               ip               *Select the protocol, IP in our example*
- **source**              any              *The source address, leave on any*
- **src-port**            any              *The source port to shape, leave on any*
- **destination**         192.168.1.0/24   *The destination IP to shape, select LAN network*
- **dst-port**            any              *The destination port to shape, leave on any*
- **target**             PipeDown-1Mbps   *Select the Download 1 Mbps Pipe*
+ **sequence**           21                *Auto generated number, overwrite only when needed*
+ **interface**          WAN               *Select the interface connected to the internet*
+ **proto**              ip                *Select the protocol, IP in our example*
+ **source**             any               *The source address, leave on any*
+ **src-port**           any               *The source port to shape, leave on any*
+ **destination**        192.168.1.0/24    *The destination IP to shape, select LAN network*
+ **dst-port**           any               *The destination port to shape, leave on any*
+ **target**             PipeDown-1Mbps    *Select the 1 Mbps download pipe*
  **description**        ShapeDownload     *Enter a descriptive name*
+====================== ================= =====================================================
+
+Create a rule for traffic going to the internet (upload).
+
+====================== ================= =====================================================
+ **sequence**           22                *Auto generated number, overwrite only when needed*
+ **interface**          WAN               *Select the interface connected to the internet*
+ **proto**              ip                *Select the protocol, IP in our example*
+ **source**             192.168.1.0/24    *The source IP to shape, select LAN network*
+ **src-port**           any               *The source port to shape, leave on any*
+ **destination**        any               *The destination address, leave on any*
+ **dst-port**           any               *The destination port to shape, leave on any*
+ **target**             PipeUp-1Mbps      *Select the 1 Mbps upload pipe*
+ **description**        ShapeUpload       *Enter a descriptive name*
 ====================== ================= =====================================================
 
 .. Note::
 
-        If you want to limit traffic for a single IP then just enter the IP address
-        in the destination field instead of the full LAN network range.
+        If you want to limit traffic for a specific IP addresses then just
+        enter the IP addresses in the destination field instead of the full
+        LAN network range.
 
 Now press |apply| to activate the traffic shaping rules.
 
