@@ -127,6 +127,10 @@ Step 5(a) - Assign an interface to WireGuard (recommended)
 
     When assigning interfaces, gateways can be added to them. This is useful if balancing traffic across multiple tunnels is required or in more complex routing scenarios. To do this, go to :menuselection:`System --> Gateways --> Single` and add a new gateway. Choose the relevant WireGuard interface and set the Gateway to **dynamic**. These scenarios are otherwise beyond the scope of this how-to
 
+.. Tip::
+
+    If Unbound DNS is configured with all interfaces registered it requires a reload of Unbound DNS to get the new Wireguard interface added. This is necessary get DNS working trough the VPN tunnel. 
+
 Step 5(b) - Create an outbound NAT rule
 ---------------------------------------
 
