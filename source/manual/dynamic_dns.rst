@@ -1,71 +1,58 @@
-.. |br| raw:: html
-
-    <br>
-
-===========
+====================================================
 Dynamic DNS
-===========
+====================================================
 
-Normally, a hostname is tied to a fixed IP address. This works well if the server the hostname is used for has a
-static IP address. However, a static IP address is not always an option. In order to tie a hostname to a dynamic
-IP address, a Dynamic DNS service can be used.
+In order to update dns registations when the local IP address changes, a Dynamic DNS service provider can be used.
+Our `os-ddclient` plugin offers support for various services using the `ddclient <https://ddclient.net/>`__
+software.
 
--------------------------------
-Setting up a dynamic IP address
--------------------------------
+Prerequisites
+---------------------------
 
-In the web interface, go to :menuselection:`Services --> Dynamic DNS`. In the upper right corner, click **Add**.
+Before installing and using this plugin, make sure to register an account with one of the supported services.
 
-A form will now appear with the following fields:
+
+Installation
+---------------------------
+
+Installation of this plugin is rather easy, go to :menuselection:`System --> Firmware --> Plugins` and search for **os-ddclient**,
+use the [+] button to install it.
+
+Next go to :menuselection:`Services --> Dynamic DNS --> Settings` to configure one or more Dynamic DNS services.
+
+
+General settings
+---------------------------
+The general settings tab offers access to general options used by all configured dynamic dns services on this firewall.
+By default the service is enabled after installation,
 
 ======================= =======================================================================================================================================================================
-  Field                  Explanation
+Option                  Description
 ======================= =======================================================================================================================================================================
-  Enable                 Enable this rule (allows turning entries off without removing them).
-  Service type           The provider of your Dynamic DNS Service. If you use one not in the list, select “Custom” or “Custom (v6)”.
-  Interface to monitor 	 This will usually be WAN.
-  Hostname               Enter the complete host/domain name. For example: *myhost.dyndns.org*
-  MX                     Set this option only if you need a special MX record. Not all services support this. Note: with a dynamic DNS service you can only use a hostname, not an IP address.
-  Wildcards 	         Enable Wildcard
-  Verbose logging 	     Enable verbose logging
-  Username               Username is required for all types except Namecheap, FreeDNS and Custom Entries.
-  Password
-  Description            A description to easily identify this rule in the overview.
+Interval                The number of seconds address changes will be queried
+Check ip method         Service to query the current IP address
 ======================= =======================================================================================================================================================================
 
-If you select “Custom” or “Custom (v6)” under “Service type”, more fields will appear:
 
-=============================== =============================================================================================================================================================================================================================
-  Field                          Explanation
-=============================== =============================================================================================================================================================================================================================
- Interface to send update from   Most likely to be the same as “Interface to monitor”.
- CURL options                    Options passed to the ``curl`` command. These include `Verify SSL peer  <https://curl.haxx.se/libcurl/c/CURLOPT_SSL_VERIFYPEER.html>`_ and `Force IPv4 resolving <https://curl.haxx.se/libcurl/c/CURLOPT_IPRESOLVE.html>`_.
- Update URL                      An URL to let the Dynamic DNS provider know your IP address has changed. See the “full help” for information on how to use it.
- Result Match                    Can be used to verify the reply from the server, in order to distinguish confirmations from errors. See the “full help” for information on how to use it.
-=============================== =============================================================================================================================================================================================================================
+Accounts
+---------------------------
 
-^^^^^^^^^^^^^^^^^^^^^^
-Provider-specific info
-^^^^^^^^^^^^^^^^^^^^^^
+In the primary tab you can register one or more dynamic dns providers which will be used to update dns registrations
+using an api call over http(s) to the selected service.
 
-+------------------------------+------------------------------------------------------------------------------------------+
-| Provider                     | Specifics                                                                                |
-+==============================+==========================================================================================+
-| Custom / Custom (v6)         | Username and Password fields represent HTTP Basic Authentication username and passwords. |
-+------------------------------+------------------------------------------------------------------------------------------+
-| Duck DNS                     | Username field: Enter your Token. |br|                                                   |
-|                              | Password field: Leave empty.                                                             |
-+------------------------------+------------------------------------------------------------------------------------------+
-| FreeDNS (freedns.afraid.org) | Password field: Enter your “Authentication Token”.                                       |
-+------------------------------+------------------------------------------------------------------------------------------+
-| he.net                       | Username field: Leave empty. |br|                                                        |
-|                              | Password field: Enter your "Generated a DDNS key."                                       |
-+------------------------------+------------------------------------------------------------------------------------------+
-| he.net tunnelbroker          | Hostname field: Enter your “Tunnel ID”.                                                  |
-+------------------------------+------------------------------------------------------------------------------------------+
-| Route 53                     | Username field: Enter your “Access Key ID”. |br|                                         |
-|                              | Password field: Enter your “Secret Access Key”.                                          |
-+------------------------------+------------------------------------------------------------------------------------------+
-| CloudFlare                   | Username field: Enter your email address. |br|                                           |
-|                              | Password field: Enter your "Global API Key".                                             |
-+------------------------------+------------------------------------------------------------------------------------------+
+.. Note::
+
+      The local IP address used for this firewall will be obtained by querying one of the selected providers. Since ddclient
+      currently doesn't support dual stack (IPv4+IPv6) opertion, make sure to either select an IPv4 or IPV6 address
+      provider in the settings tab.
+
+======================= =======================================================================================================================================================================
+Option                  Description
+======================= =======================================================================================================================================================================
+Enable                  Enable this rule (allows turning entries off without removing them).
+Service                 The provider of your Dynamic DNS Service.
+Username                Login or uder name to use, could be empty for token based authentication
+Password                Password or security token to use
+Hostname                Enter the fully qualified domain names to update via the selected service. For example: *myhost.dyndns.org*
+Description             A description to easily identify this rule in the overview.
+======================= =======================================================================================================================================================================
