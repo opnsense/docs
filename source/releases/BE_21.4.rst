@@ -370,7 +370,7 @@ Here are the full patch notes:
 * firewall: display zeros and sort columns in pfTables (contributed by kulikov-a)
 * firewall: relax schedule name validation
 * firewall: fix off-by-one error in alias utility listing
-* firewall: fix live log matching with 'or' and empty filter (contributed by kulikov-a)
+* firewall: fix live log matching with "or" and empty filter (contributed by kulikov-a)
 * firewall: change order of shaper delay parameter to prevent parser errors
 * firewall: fix multiple PHP warnings regarding category additions
 * firewall: fix icon toggle for block and reject (contributed by ElJeffe)
