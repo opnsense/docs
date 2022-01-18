@@ -14,6 +14,69 @@ Bridging allows to create a connection between separate networks, allow traffic 
 (where both networks are connected to your OPNsense device) to reach it via this bridge. Note that this does not
 include DHCP services—this needs to set using :ref:`DHCP relaying <dhcp-relaying>`.
 
+A bridge works like a (layer-2) switch, forwarding traffic from one interface to another.
+Multicast and broadcast packets are always forwarded to all interfaces that are part of the bridge.
+For unicast traffic, the bridge learns which MAC addresses are associated with which interfaces and will forward the traffic selectively.
+
+Optionally a bridge can be configured to support `(Rapid) Spanning Tree Protocol <https://en.wikipedia.org/wiki/Spanning_Tree_Protocol>`__ (RSTP/RTP)
+to prevent loops in the network topology. These options are provided in the "advanced" section of the configuration and include the following settings:
+
+==================================  ==================================================================================================
+Option                              Description
+==================================  ==================================================================================================
+Enable                              Enable the (Rapid) Spanning Tree Protocol
+Protocol                            Protocol to use, rapid or regular spanning tree
+STP interfaces                      The interfaces tith [R]STP enabled, from the ones in the bridge
+Valid time (maxage)                 Set the time that a Spanning Tree Protocol configuration is valid. The default is 20 seconds.
+Forward time (fwddelay)             Set the time that must pass before an interface begins forwarding packets when
+                                    Spanning Tree is enabled. The default is 15 seconds.
+Hello time (hellotime)              Set the time between broadcasting of Spanning Tree Protocol configuration messages.
+                                    The hello time may only be changed when operating in legacy STP mode. The default is 2 seconds.
+Priority                            Set the bridge priority for Spanning Tree.
+                                    The default is 32768. The minimum is 0 and the maximum is 61440.
+Hold count (holdcnt)                Set the transmit hold count for Spanning Tree. This is the number of packets transmitted
+                                    before being rate limited. The default is 6. The minimum is 1 and the maximum is 10.
+[interface] Priority (ifpriority)   Set the Spanning Tree priority of interface to value. The default is 128.
+                                    The minimum is 0 and the maximum is 240. Increments of 16.
+[interface] Path cost (ifpathcost)  Set the Spanning Tree path cost of interface to value.
+                                    The default is calculated from the link speed.
+                                    To change a previously selected path cost back to automatic, set the cost to 0.
+                                    The minimum is 1 and the maximum is 200000000.
+==================================  ==================================================================================================
+
+Other advanced options available in the bottom section of the screen and include the following settings:
+
+==================================  ==================================================================================================
+Option                              Description
+==================================  ==================================================================================================
+Cache size (maxaddr)                Set the size of the bridge address cache to size. The default is 2000 entries.
+Cache entry expire time (timeout)   Set the timeout of address cache entries to this number of seconds. If seconds is zero,
+                                    then address cache entries will not be expired. The default is 1200 seconds.
+Span port                           Span ports transmit a copy of every frame received by the bridge.
+                                    This is most useful for snooping a bridged network passively on another host connected to one
+                                    of the span ports of the bridge.
+Edge ports                          Set interface as an edge port. An edge port connects directly to end stations and
+                                    cannot create bridging loops in the network; this allows it to transition straight to forwarding.
+Auto Edge ports                     Allow interface to automatically detect edge status.
+                                    This is the default for all interfaces added to a bridge, selecting interfaces will disable
+                                    auto mode.
+PTP ports                           Set the interface as a point-to-point link.
+                                    This is required for straight transitions to forwarding and should be
+                                    enabled on a direct link to another RSTP-capable switch.
+Auto PTP ports                      Automatically detect the point-to-point status on interface by checking the
+                                    full duplex link status.
+                                    This is the default for interfaces added to the bridge, selecting interfaces will disable
+                                    auto mode.
+Sticky ports                        Mark an interface as a "sticky" interface. Dynamically learned address entries are
+                                    treated as static once entered into the cache.
+                                    Sticky entries are never aged out of the cache or replaced,
+                                    even if the address is seen on a different interface.
+Private ports                       Mark an interface as a "private" interface. A private interface does not forward any traffic
+                                    to any other port that is also a private interface.
+==================================  ==================================================================================================
+
+
+
 ---
 GIF
 ---
