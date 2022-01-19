@@ -112,16 +112,83 @@ GRE
 ---
 
 GRE (``gre(4)``, Generic Routing Encapsulation) is used to create a virtual point-to-point connection, through which
-encapsulated packages can be sent. This can be used to utilise protocols between devices over a connection that
+encapsulated packages can be sent. This can be used to utilise (OSI-layer 3) protocols between devices over a connection that
 does not normally support these protocols.
+
+Since the GRE protocol was designed by Cisco, it is often used as default tunnel technology when using their solutions.
+
+A common use-case of GRE is also to forward (no routable) multicast traffic,
+although this will need additional software such as IGMP-proxy or PIMD, which are less commonly used on OPNsense.
+
+The available settings are similar to those described for the GIF tunnel type:
+
+==================================  ==================================================================================================
+Option                              Description
+==================================  ==================================================================================================
+Parent interface                    Actually the source address the tunnel will use to connect from.
+GRE remote address                  Peer address where encapsulated gif packets will be sent.
+GRE tunnel local address            The tunnel's local address which will be configured on the interface.
+GRE tunnel remote address           The tunnel's remote address which will be configured on the interface.
+Description                         User friendly description for this tunnel
+==================================  ==================================================================================================
+
 
 ----
 LAGG
 ----
 
 LAGG (``lagg(4)``) allows for link aggregation, bonding and fault tolerance. This works best if your network switches
-support. Only unassigned interfaces can be added to LAGG. More information about LAGG can be found in
-`the FreeBSD manual <https://www.freebsd.org/doc/handbook/network-aggregation.html>`_.
+support. Only unassigned interfaces can be added to LAGG.
+
+The userinterface supports the following options:
+
+==================================  ==================================================================================================
+Option                              Description
+==================================  ==================================================================================================
+Parent interface                    Members of the link aggregation
+Lag proto                           Protocol to use for aggregation, available options are described in the next table. LACP is most
+                                    commonly used.
+Description                         User friendly description for this interface
+Fast timeout                        Enable lacp fast-timeout on the interface.
+Use flowid                          Use the RSS hash from the network card if available,
+                                    otherwise a hash is locally calculated.
+                                    The default depends on the system tunable in net.link.lagg.default_use_flowid.
+Hash Layers                         Set the packet layers to hash for aggregation protocols which load balance.
+Use strict                          Enable lacp strict compliance on the interface.
+                                    The default depends on the system tunable in `net.link.lagg.lacp.default_strict_mode`.
+MTU                                 MTU size, when unset the smallest mtu of this laggs children will be used.
+==================================  ==================================================================================================
+
+
+
+**Available protocols**
+
+==================================  ==================================================================================================
+Name                                Description
+==================================  ==================================================================================================
+failover                            Sends and receives traffic only through the master port.
+                                    If the master port becomes unavailable, the next active port is used.
+                                    The first interface added is the master port; any interfaces added after that are used
+                                    as failover devices.
+fec                                 Supports Cisco EtherChannel. This is a static setup and does not negotiate
+                                    aggregation with the peer or exchange frames to monitor the link.
+lacp                                Supports the IEEE 802.3ad Link Aggregation Control Protocol (LACP) and the Marker Protocol.
+                                    LACP will negotiate a set of aggregable links with the peer in to one or more
+                                    Link Aggregated Groups. Each LAG is composed of ports of the same speed,
+                                    set to full-duplex operation. The traffic will be balanced across the ports in the LAG
+                                    with the greatest total speed, in most cases there will only be one LAG which contains all ports.
+                                    In the event of changes in physical connectivity, Link Aggregation will quickly
+                                    converge to a new configuration.
+loadbalance                         Balances outgoing traffic across the active ports based on hashed protocol
+                                    header information and accepts incoming traffic from any active port.
+                                    This is a static setup and does not negotiate aggregation with the peer or exchange
+                                    frames to monitor the link. The hash includes the Ethernet source and destination address,
+                                    and, if available, the VLAN tag, and the IP source and destination address.
+roundrobin                          Distributes outgoing traffic using a round-robin scheduler through all
+                                    active ports and accepts incoming traffic from any active port.
+none                                This protocol is intended to do nothing: It disables any traffic without
+                                    disabling the lagg interface itself.
+==================================  ==================================================================================================
 
 --------------
 Loopback
@@ -139,6 +206,17 @@ VLAN
 
 VLANs (Virtual LANs) can be used to segment a single physical network into multiple virtual networks. This can be
 done for QoS purposes, among other things. For this reason, most ISP-issued IPTV devices utilise VLANs.
+
+The following settings are available for these interface types:
+
+==================================  ==================================================================================================
+Name                                Description
+==================================  ==================================================================================================
+Parent interface                    The interface to use as parent which it will send/receive vlan tagged traffic on
+VLAN tag                            802.1Q VLAN tag (between 1 and 4094)
+VLAN priority                       802.1Q VLAN PCP (priority code point)
+Description                         User friendly description for this interface
+==================================  ==================================================================================================
 
 
 ------
