@@ -81,8 +81,31 @@ Private ports                       Mark an interface as a "private" interface. 
 GIF
 ---
 
-GIF (``gif(4)``, Generic Tunnel Interface) can be used to tunnel IPv6 via IPv4 connections. A common use for this are the
+GIF (``gif(4)``, Generic Tunnel Interface) can be used to tunnel IPv6 via IPv4 connections. A common use for this is the
 IPv6 tunnel of Hurricane Electric (he.net).
+
+.. Note::
+
+    In :doc:`/manual/how-tos/ipv6_tunnelbroker` you can find information on how to setup a tunnel using Hurricane Electric
+
+
+As with all tunnel types, the most important settings relate to how both ends connect and which addressing will be used to
+route traffic over the tunnel. The rest of the settings usually are best left to their defaults.
+
+==================================  ==================================================================================================
+Option                              Description
+==================================  ==================================================================================================
+Parent interface                    Actually the source address the tunnel will use to connect from.
+GIF remote address                  Peer address where encapsulated gif packets will be sent.
+GIF tunnel local address            The tunnel's local address which will be configured on the interface.
+GIF tunnel remote address           The tunnel's remote address which will be configured on the interface.
+Disable Ingress filtering           Ingress filtering on outer tunnel source can break tunnel operation in an asymmetrically
+                                    routed networks, in which case this can be disabled by marking this option.
+ECN friendly behavior               Note that the ECN friendly behavior violates RFC2893.
+                                    This should be used in mutual agreement with the peer.
+Description                         User friendly description for this tunnel
+==================================  ==================================================================================================
+
 
 ---
 GRE
