@@ -43,6 +43,7 @@ Acmeclient
     "``POST``","acmeclient","certificates","del","$uuid"
     "``GET``","acmeclient","certificates","get","$uuid=null"
     "``GET``","acmeclient","certificates","get",""
+    "``GET``","acmeclient","certificates","import","$uuid"
     "``GET``","acmeclient","certificates","removekey","$uuid"
     "``POST``","acmeclient","certificates","revoke","$uuid"
     "``*``","acmeclient","certificates","search",""

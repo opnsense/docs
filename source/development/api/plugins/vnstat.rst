@@ -23,5 +23,6 @@ Vnstat
     "``GET``","vnstat","service","start",""
     "``GET``","vnstat","service","status",""
     "``GET``","vnstat","service","stop",""
+    "``GET``","vnstat","service","yearly",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net/vnstat/src/opnsense/mvc/app/models/OPNsense/Vnstat/General.xml>`__"

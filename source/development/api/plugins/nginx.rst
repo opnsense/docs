@@ -16,17 +16,16 @@ Nginx
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","nginx","logs","accesses","$uuid=null"
-    "``GET``","nginx","logs","errors","$uuid=null"
-    "``GET``","nginx","logs","streamAccesses","$uuid=null"
-    "``GET``","nginx","logs","streamErrors","$uuid=null"
+    "``GET``","nginx","logs","accesses","$uuid=null,$fileno=null,$page=0,$perPage=0,$query="""""
+    "``GET``","nginx","logs","errors","$uuid=null,$fileno=null,$page=0,$perPage=0,$query="""""
+    "``GET``","nginx","logs","streamaccesses","$uuid=null,$fileno=null,$page=0,$perPage=0,$query="""""
+    "``GET``","nginx","logs","streamerrors","$uuid=null,$fileno=null,$page=0,$perPage=0,$query="""""
     "``GET``","nginx","logs","tlsHandshakes",""
 
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","nginx","service","reconfigure",""
     "``GET``","nginx","service","reconfigure",""
     "``GET``","nginx","service","restart",""
     "``GET``","nginx","service","start",""
