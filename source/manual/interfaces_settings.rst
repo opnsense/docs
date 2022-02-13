@@ -59,6 +59,18 @@ wrong interface. When checking this option, it will stop doing so, which is prac
 (for a more detailed description, see :code:`man arp` and search :code:`log_arp_wrong_iface` and  :code:`log_arp_movements`)
 
 --------------------------
+Prevent release
+--------------------------
+
+Do not send a release message on client exit to prevent the release of an allocated address or prefix on the server.
+
+--------------------------
+Log level
+--------------------------
+
+Modify log level for IPv6 clients. Info will give status, interface leases and addresses. Debug will give full diagnostics.
+
+--------------------------
 DHCP Unique Identifier
 --------------------------
 This option can be used to enter an explicit DUID for use by IPv6 DHCP clients, the different types are detailed in

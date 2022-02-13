@@ -106,9 +106,6 @@ For IPv6:
  Request only an IPv6 prefix       Only request an IPv6 prefix; do not request an IPv6 address.
  Prefix delegation size            The delegated prefix length provided by the DHCPv6 server. Normally specified by the ISP.
  Send IPv6 prefix hint             Send an IPv6 prefix hint to indicate the desired prefix size for delegation
- Directly send SOLICIT             In case the ISP requires a SOLICIT message for authentication, select this option to prevent indefinite waiting for a router advertisement.
- Prevent release                   Do not send a release message on client exit to prevent the release of an allocated address or prefix on the server.
- Enable debug                      Enable debug mode for DHCPv6 client
  Use IPv4 connectivity             Set the IPv6 address on the IPv4 PPP connectivity link.
  Use VLAN priority                 Certain ISPs may require that DHCPv6 requests are sent with a specific VLAN priority.
  Interface Statement               Click the “i” to see what the four subfields do.
