@@ -42,6 +42,19 @@ the url from the machine and the API key and secret generated above.
 
 
 
+Alter generic host settings
+..................................
+
+The second tab in the screen contains the setting page which configures defaults for all hosts where applicable.
+
+================================= ===============================================================================================================================================
+ Option                            Description
+================================= ===============================================================================================================================================
+Interfaces                         Select the interfaces of the central node that would be used when merging settings on the remote firewall, only applicable on part of the
+                                   configuration sections (such as the firewall). See the provisioning section for more details.
+================================= ===============================================================================================================================================
+
+
 Connect to managed machine
 ----------------------------------
 
@@ -208,14 +221,112 @@ You can either selectlively reconfigure specific hosts with the checkbox or reco
      <i class="fa fa-times text-danger" style="color:#F05050"></i> Unable to connect <br/><br/>
 
 
+Provisioning classes
+----------------------------------------------------
+
+By default merging configuration items from the central firewall overwrites the settings on the target machine, but in some
+cases we need a more practical approach to deal with local modifications.
+
+In this chapter we are going to describe how classes with special implemenations are being treated on synchronisation and
+how to utilise this behaviour to ease management.
+
+Users & Groups
+....................................................
+
+When users and groups are synchronized, the existing api key+secret is merged into the user with the same name to prevent access
+issues after reconfigure. To avoid issues, make sure there's a unique username with proper credentials before using
+the synchronization.
+
+.. Note::
+
+    Although quite some setups will likely use external authentication options available in OPNsense, sometimes it's practical
+    to share the same user database among different firewalls. This option allows for sharing, without the need to
+    sue the same key+secret on all connected firewalls.
+
+Aliases (Firewall)
+....................................................
+
+Since various firewall sections depend on aliases, OPNcentral checks if aliases are used before removing local aliases
+from the remote firewall.
+
+Due to this powerful feature, after synchronisation of the central aliases you can also use nesting to combine remote aliases
+into new local ones.
+
+For example, when the local machine has :code:`local_alias_1` and the central location offers :code:`central_alias_1`
+when both are combined into :code:`local_alias_2` and :code:`local_alias_2` is used in firewall/nat rules it will
+automatically merge central changes after a reconfigure action from the dashboard.
+
+.. blockdiag::
+   :desctable:
+
+   blockdiag {
+      local_alias_1 [label="'local'\nlocal_alias_1"];
+      central_alias_1 [label="'central'\ncentral_alias_1"];
+      local_alias_2 [label="'merged'\nlocal_alias_2"];
+      local_alias_1 -> local_alias_2 [label="in"]
+      central_alias_1 -> local_alias_2 [label="in"];
+   }
+
+.. Note::
+
+    As long as :code:`local_alias_2` is used, both :code:`local_alias_1` and :code:`local_alias_2` will be preserved after provisioning.
+
+Firewall rules
+....................................................
+
+Merging the firewall rules will keep the interfaces unaltered which don't exists on the central node as these are being provided to
+the target firewall. In case you want to exclude some interfaces (for all remote firewalls), you can easily override the
+known interfaces in :menuselection:`Management -> Host configuration` on the General settings tab.
+
+Since there's an explicit order in which different types of rules are being handled, you can choose if you want to prefer
+central rules being matched first or last depending on the type of "interface" to use.
+
+.. blockdiag::
+   :desctable:
+
+   blockdiag {
+      System [label="System defined", style = dotted];
+      Floating [label="Floating rules"];
+      Groups [label="Interface groups"];
+      Interfaces [label="Interfaces"];
+      System -> Floating -> Groups -> Interfaces;
+   }
+
+
 .. Tip::
 
-      When users and groups are synchronized, the existing api key+secret is merged into the user with the same name to prevent access
-      issues after reconfigure. To avoid issues, make sure there's a unique username with proper credentials before using
-      the synchronization.
+    When forcing interface groups to the backup node, these will precede interface rules such as LAN and WAN, when only sending
+    over interface groups the remote firewall is able to allow traffic which would otherwise be rejected.
+
+.. Note::
+
+    When multiple interfaces are attached to a (floating) rule, these will be removed by the provisioning algorithm as
+    the intend isn't fully clear in these matters.
 
 
 .. Note::
 
-      Since various firewall sections depend on aliases, OPNcentral checks if aliases are used before removing local aliases
-      from the remote firewall.
+    Rules on the central node which do apply to all interfaces or a selection of interfaces are always being send to the remote
+    firewall. When this isn't intentional, best not use these options in the "floating" rules.
+
+
+NAT (Firewall)
+....................................................
+
+
+Merging the nat rules will keep the interfaces unaltered which don't exists on the central node as these are being provided to
+the target firewall. In case you want to exclude some interfaces (for all remote firewalls), you can easily override the
+known interfaces in :menuselection:`Management -> Host configuration` on the General settings tab.
+
+.. Note::
+
+    All NAT type rules (:code:`Port Forward`, :code:`One-to-One`, :code:`Outbound`, :code:`NPTv6`) are treated similar.
+
+.. Note::
+
+    When multiple interfaces are attached to a rule, which is possible for port forwards.  These will be removed by the provisioning algorithm.
+
+.. Note::
+
+    Port forwarding rules on the central node which do apply on a selection of interfaces are always being send to the remote
+    firewall. When this isn't intentional, best prevent the usage of these forwards.
