@@ -330,3 +330,20 @@ known interfaces in :menuselection:`Management -> Host configuration` on the Gen
 
     Port forwarding rules on the central node which do apply on a selection of interfaces are always being send to the remote
     firewall. When this isn't intentional, best prevent the usage of these forwards.
+
+
+Firewall categories
+....................................................
+
+Merging categories will preserve the ones that are currently used on the remote firewall.
+
+
+WebGui (Administration)
+....................................................
+
+To prevent breakage after synchronisation, the certificate used by the webgui will be preserved after synchronisation.
+
+.. Note:
+
+    Currently it's not possible to merge certificates and webgui admin settings, as the certificate store will be
+    overwritten in that case.
