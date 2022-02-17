@@ -178,7 +178,7 @@ It should be noted, however, that if the hosts that will use the tunnel are conf
      **Protocol**                 *any*
      **Source / Invert**          *Unchecked*
      **Source**                   *Select the relevant hosts Alias you created above in the dropdown (eg* :code:`WG_VPN_Hosts` *)*
-     **Destination / Invert**     *Checked*
+     **Destination / Invert**     *Unchecked*
      **Destination**              *Select the* :code:`RFC1918_Networks` *Alias you created above in the dropdown*
      **Destination port range**   *any*
      **Description**              *Add one if you wish to*
