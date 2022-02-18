@@ -15,7 +15,7 @@ different options to utilize IPv6. Currently these scenarios are known to work:
 .. Warning::
 
   NAT64, IPv4 <-> IPv6 Network address translations, is currently not supported
-  by HardenedBSD.
+  by FreeBSD.
 
 -----------
 Configuring

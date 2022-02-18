@@ -37,8 +37,8 @@ The device name can differ per system and per serial device. Examples of names a
 
 * /dev/ttyS0 (serial port, Linux)
 * /dev/ttyUSB0 (usb-to-serial, Linux)
-* /dev/cuau0 (serial port, FreeBSD or HardenedBSD)
-* /dev/cuaU0 (usb-to-serial, FreeBSD or HardenedBSD)
+* /dev/cuau0 (serial port, FreeBSD)
+* /dev/cuaU0 (usb-to-serial, FreeBSD)
 * /dev/tty.usbmodem1112421 (usb-to-serial, macOS)
 * COM1, COM2, ... (Windows)
 

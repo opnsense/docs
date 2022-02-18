@@ -158,7 +158,7 @@ Network interface cards
 .. rubric:: Supported hardware
    :name: supported-hardware
 
-The HardenedBSD 11.2-RELEASE is the base of OPNsense. All HardenedBSD drivers
+FreeBSD is the base of OPNsense. All FreeBSD drivers
 are included in the OPNsense kernel, and the hardware compatibility is
 the same.
 
@@ -168,8 +168,8 @@ the same.
 
 For further help and support, see
 
--  `FreeBSD 11.2-RELEASE Hardware Compatibility
-   List <https://www.freebsd.org/releases/11.2R/hardware.html>`__
+-  `FreeBSD 13.0-RELEASE Hardware Compatibility
+   List <https://www.freebsd.org/releases/13.0R/hardware/>`__
 -  `OPNsense Forum <https://forum.opnsense.org/>`__
 
 .. rubric:: List of references

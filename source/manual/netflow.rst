@@ -5,7 +5,7 @@ Netflow Export & Analyses
 .. image:: images/netflow_analyzer_insight.png
    :width: 100%
 
-Netflow is a monitoring feature, invented by Cisco, it is implemented in the HardenedBSD
+Netflow is a monitoring feature, invented by Cisco, it is implemented in the FreeBSD
 kernel with ng_netflow (Netgraph). Since Netgraph is a kernel implementation it
 is very fast with little overhead compared to softflowd or pfflowd.
 

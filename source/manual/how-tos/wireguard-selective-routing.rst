@@ -1,12 +1,12 @@
 =================================================================
-WireGuard Selective Routing to External VPN Provider
+WireGuard Selective Routing to External VPN Endpoint
 =================================================================
 
 ------------
 Introduction
 ------------
 
-This how-to is designed to assist with setting up WireGuard on OPNsense to use selective routing to an external VPN provider.
+This how-to is designed to assist with setting up WireGuard on OPNsense to use selective routing to an external VPN endpoint - most commonly to an external VPN provider.
 
 These circumstances may apply where only certain local hosts are intended to use the VPN tunnel. Or it could apply where multiple connections to the VPN provider are desired, with each connection intended to be used by different specific local hosts.
 
@@ -188,9 +188,36 @@ It should be noted, however, that if the hosts that will use the tunnel are conf
 - **Save** the rule, and then click **Apply Changes**
 - Then make sure that the new rule is **above** any other rule on the interface that would otherwise interfere with its operation. For example, you want your new rule to be above the “Default allow LAN to any rule”
 
-------------------------------------
-Step 9 - Create an outbound NAT rule
-------------------------------------
+--------------------------
+Step 9 - Configure routing
+--------------------------
+
+- Then go to :menuselection:`Firewall --> Rules --> Floating`
+- Click **Add** to add a new rule
+- Configure the rule as follows (if an option is not mentioned below, leave it as the default). You need to click the **Show/Hide** button next to "Advanced Options" to reveal the last setting:
+
+    ============================ ==================================================================================================
+     **Action**                   *Pass*
+     **Quick**                    *Unchecked*
+     **Interface**                *Do not select any*
+     **Direction**                *out*
+     **TCP/IP Version**           *IPv4*
+     **Protocol**                 *any*
+     **Source / Invert**          *Unchecked*
+     **Source**                   *Select the interface address for your WireGuard VPN (eg* :code:`WAN_VPNProviderName address` *)*
+     **Destination / Invert**     *Checked*
+     **Destination**              *Select the interface network for your WireGuard VPN (eg* :code:`WAN_VPNProviderName net` *)*
+     **Destination port range**   *any*
+     **Description**              *Add one if you wish to*
+     **Gateway**                  *Select the gateway you created above (eg* :code:`WAN_VPNProviderName` *)*
+     **allow options**            *Checked*
+    ============================ ==================================================================================================
+
+- **Save** the rule, and then click **Apply Changes**
+
+-------------------------------------
+Step 10 - Create an outbound NAT rule
+-------------------------------------
 
 - Go to :menuselection:`Firewall --> NAT --> Outbound`
 - Select "Hybrid outbound NAT rule generation” if it is not already selected, and click **Save** and then **Apply changes**
@@ -213,6 +240,38 @@ Step 9 - Create an outbound NAT rule
 
 - **Save** the rule, and then click **Apply changes**
 
+--------------------------------------
+Step 11 - Add a kill switch (optional)
+--------------------------------------
+
+If the VPN tunnel gateway goes offline, then traffic intended for the VPN may go out the normal WAN gateway. There are a couple of ways to avoid this, one of which is outlined here:
+
+- First, go back to the firewall rule you created under Step 7
+- Click on the **Show/Hide** button next to "Advanced Options"
+- Then, in the **Set local tag** field, add :code:`NO_WAN_EGRESS`
+- **Save** the rule, and then click **Apply changes**
+- Then go to :menuselection:`Firewall --> Rules --> Floating`
+- Click **Add** to add a new rule
+- Configure the rule as follows (if an option is not mentioned below, leave it as the default). You need to click the **Show/Hide** button next to "Advanced Options" to reveal the last setting:
+
+    ============================ ==================================================================================================
+     **Action**                   *Block*
+     **Quick**                    *Checked*
+     **Interface**                *WAN*
+     **Direction**                *out*
+     **TCP/IP Version**           *IPv4*
+     **Protocol**                 *any*
+     **Source / Invert**          *Unchecked*
+     **Source**                   *any*
+     **Destination / Invert**     *Unchecked*
+     **Destination**              *any*
+     **Destination port range**   *any*
+     **Description**              *Add one if you wish to*
+     **Match local tag**          *NO_WAN_EGRESS*
+    ============================ ==================================================================================================
+
+- **Save** the rule, and then click **Apply Changes**
+
 .. _configuring-ipv6:
 
 ----------------
@@ -229,7 +288,9 @@ To configure the tunnel to use IPv6, you essentially need to replicate the steps
 - add to the hosts alias the IPv6 addresses of the hosts/networks that are to use the tunnel
 - if necessary, create a separate local IPs alias for IPv6, so they can be excluded from the IPv6 firewall rule destination
 - create an IPv6 firewall rule (specifying the IPv6 gateway in the rule)
+- configure an IPv6 floating rule for routing (specifying the IPv6 gateway in the rule)
 - create an IPv6 outbound NAT rule
+- (optionally) add the kill switch tag to the IPv6 firewall rule and change the associated Floating rule to IPv4+IPv6
 
 Note, however, that there are a couple of differences:
 

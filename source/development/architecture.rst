@@ -111,11 +111,11 @@ socket.
 Core system
 -----------
 
-The core of OPNsense is powered by an almost standard HardenedBSD ® system
+The core of OPNsense is powered by an almost standard FreeBSD ® system
 extended with packages using the pkg system. GIT is used for version
 control and the repositories are split into 4 parts:
 
--  src : the base (HardenedBSD ®) system
+-  src : the base (FreeBSD ®) system
 -  ports : the ports collection containing third party software
 -  core : the OPNsense gui and system configuration parts
 -  tools : easy tools to build OPNsense

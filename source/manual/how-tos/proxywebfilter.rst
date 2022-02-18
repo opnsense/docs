@@ -10,8 +10,6 @@ under the `Creative Commons license <http://creativecommons.org/licenses/by-sa/4
 
 Other popular lists that are expected to work well with OPNsense are:
 
-* Shallalist.de <http://www.shallalist.de/>
-    Free for personal usage and partly for commercial usage
 * URLBlacklist.com <http://urlblacklist.com/>
     Commercial paid service
 * Squidblacklist.org <http://www.squidblacklist.org/>

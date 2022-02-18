@@ -8,8 +8,8 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *212* releases leading to the latest version *21.7.5*
-named "Noble Nightingale".
+As of January 2015 there have been *217* releases leading to the latest version *22.1*
+named "Observant Owl".
 
 
 
@@ -20,6 +20,7 @@ The list below contains all releases, ordered by version number categorized by m
    :titlesonly:
    :glob:
 
+   releases/CE_22.1
    releases/CE_21.7
    releases/CE_21.1
    releases/CE_20.7

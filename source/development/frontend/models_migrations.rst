@@ -69,6 +69,9 @@ It contains two methods, :code:`run()` and :code:`post()`. The first one is exec
 back to the running configuration and for all version steps in sequence. (an upgrade from 1.0.0 to 1.0.2 might execute 1.0.1, 1.0.2, 1.0.3).
 The configuration data itself will be synced ones in this case.
 
+.. Note::
+
+  Except in special cases, a :code:`run()` method should always contain a parent method call :code:`parent::run($model);` to perform the basic migration function.
 
 The post action is called after normal model configuration and can sometimes be practical to alter the raw model xml, for example if
 model versions require a move of datasets, without actually changing content.

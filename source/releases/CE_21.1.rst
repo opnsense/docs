@@ -530,7 +530,7 @@ Here are the full patch notes:
 * system: fix IPv6 route deletion on status page
 * interfaces: work around slow manufacturer lookups in py-netaddr 0.8.0
 * firewall: fix off-by-one error in alias utility listing
-* firewall: fix live log matching with 'or' and empty filter (contributed by kulikov-a)
+* firewall: fix live log matching with "or" and empty filter (contributed by kulikov-a)
 * reporting: prevent NetFlow crash when interface number is missing
 * firmware: opnsense-update -t option executes after -p making it possible to run them at once
 * firmware: opnsense-update -t option now also uses recovery code introduced recently for -p

@@ -33,6 +33,94 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+21.7.7 (December 15, 2021)
+--------------------------------------------------------------------------
+
+
+End-of-the-year security and reliability update coming right up!
+
+Due to inconclusive reports we are disabling the Netmap API version 14
+support in Suricata to get a better understanding of the situation.
+The plan still is to keep it for the 22.1 upgrade and it has in fact been
+enabled on the development versions since September without any obvious
+issues.
+
+The upgrade to 22.1-BETA3 is also included in the bundled development version.
+
+Here are the full patch notes:
+
+* system: fix /etc/ssl/cert.pem permission on backend call
+* firewall: typo in direction for session diagnostics (contributed by kulikov-a)
+* firewall: fix address direction for states diagnostics (contributed by kulikov-a)
+* firmware: added generic configuration support via opnsense-update.conf
+* firmware: modify the launcher to support -r and -s options
+* firmware: fix upgrade prompt hint
+* firmware: simplify repo file flush
+* intrusion detection: update severity of ruleset download skipped log message (contributed by kulikov-a)
+* intrusion detection: update embedded classification.config
+* backend: configd profiler call fix
+* ui: prevent browser auto-fill for username/password (contributed by NOYB)
+* plugins: os-acme-client 3.6 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-fetchmail removed since fetchmail author does not permit LibreSSL on FreeBSD
+* plugins: os-firewall 1.1 adds "Do not NAT" option
+* plugins: os-haproxy 3.8 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/net/haproxy/pkg-descr>`__ 
+* plugins: os-stunnel is now available for LibreSSL using an embedded OpenSSL build
+* src: axgbe: fix I2C timeouts by reissuing command on errors
+* src: axgbe: fix possbile link instabilities
+* src: axgbe: log GPIO signals on EEPROM read fails
+* ports: curl 7.80.0 `[3] <https://curl.se/changes.html#7_80_0>`__ 
+* ports: dnsmasq fixes multiple regressions
+* ports: nss 3.73 `[4] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.73_release_notes>`__ 
+* ports: php 7.4.26 `[5] <https://www.php.net/ChangeLog-7.php#7.4.26>`__ 
+* ports: phpseclib 2.0.35 `[6] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.35>`__ 
+* ports: suricata disables Netmap API version 14 introduced in 21.7.6
+
+
+
+--------------------------------------------------------------------------
+21.7.6 (November 25, 2021)
+--------------------------------------------------------------------------
+
+
+This smallish update introduces Suricata 5-based versions for Emerging Threats
+rulesets as well as shipping the latest Suricata 6.0.4 with an additional
+change for the Netmap API version 14.  Please do let us know how that impacts
+your IPS performance numbers via the forum if you notice anything.
+
+The upgrade to 22.1-BETA2 is also included in the bundled development version.
+
+Here are the full patch notes:
+
+* system: move logging remnants of Relayd/HAProxy to plugin code
+* system: support XMLRPC authentication using API keys
+* system: escape shell parameters in cron jobs
+* system: system log widget auto-refresh (contributed by kulikov-a)
+* interfaces: make is_linklocal() properly detect all link-local addresses (contributed by Per von Zweigbergk)
+* firewall: properly translate "any" port to upper or lower port bound
+* firewall: support any-to-X ranges for rules port input (contributed by kulikov-a)
+* firewall: drop policy based routing validation on interface rules
+* captive portal: missing tooltip in session window
+* captive portal: "connected since" malformed due to datetime already being converted
+* dhcp: add current IPv4 address to static lease creation (contributed by Taneli Leppa)
+* intrusion detection: switch to ET-Open Suricata 5 rulesets
+* intrusion detection: support multiple policy property in metadata
+* ipsec: inline only caller of get_configured_vips_list()
+* ipsec: avoid VTI device recreation when using hostnames
+* backend: add configctl "-d" and "-q" options for future use
+* plugins: os-acme-client 3.5 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-dyndns 1.27 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/dns/dyndns/pkg-descr>`__ 
+* plugins: os-etpro-telemetry 1.6 switches to Suricata 5 rulesets
+* plugins: os-frr 1.24 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/net/frr/pkg-descr>`__ 
+* plugins: os-nginx 1.24 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/www/nginx/pkg-descr>`__ 
+* plugins: os-telegraf 1.12.3 `[5] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-wireguard 1.9 `[6] <https://github.com/opnsense/plugins/blob/stable/21.7/net/wireguard/pkg-descr>`__ 
+* plugins: os-zabbix-agent 1.10 `[7] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.6 `[8] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* ports: suricata 6.0.4 `[9] <https://forum.suricata.io/t/suricata-6-0-4-and-5-0-8-released/1942>`__  with Netmap API version 14 enabled
+
+
+
+--------------------------------------------------------------------------
 21.7.5 (November 11, 2021)
 --------------------------------------------------------------------------
 
@@ -218,7 +306,7 @@ As a general note the Realtek vendor driver currently bundled with the base
 system will be moved to a plugin-based kernel module in version 22.1 and the
 original re(4) driver inside FreeBSD 13 will be restored.  To ease migration
 and because the version maintained in FreeBSD ports actually offers additional
-fixes we have inlcuded the new plugin into this build.
+fixes we have included the new plugin into this build.
 
 Here are the full patch notes:
 

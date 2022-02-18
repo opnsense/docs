@@ -159,7 +159,7 @@ Here are the full patch notes:
 * mvc: countless PSR12 style updates
 * mvc: add "NetMaskAllowed" option to validate on single addresses in NetworkField
 * plugins: os-bind 1.11 `[1] <https://github.com/opnsense/plugins/blob/master/dns/bind/pkg-descr>`__ 
-* plugins: os-dyndns 1.18 adds Linode support (contributed by eAndrew Gunnerson)
+* plugins: os-dyndns 1.18 adds Linode support (contributed by Andrew Gunnerson)
 * plugins: os-freeradius 1.9.5 `[2] <https://github.com/opnsense/plugins/blob/master/net/freeradius/pkg-descr>`__ 
 * plugins: os-frr 1.13 `[3] <https://github.com/opnsense/plugins/blob/master/net/frr/pkg-descr>`__ 
 * plugins: os-ftp-proxy style updates only
