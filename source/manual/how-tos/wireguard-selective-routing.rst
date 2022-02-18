@@ -148,7 +148,11 @@ Step 7 - Create an Alias for the relevant local hosts that will access the tunne
 Step 8 - Create a firewall rule
 -------------------------------
 
-This will involve two steps - first creating a second Alias for all local (private) networks, and then creating the firewall rule itself. The ultimate effect of these two steps is that only traffic from the relevant hosts that is destined for **non-local** destinations will be sent down the tunnel. This will ensure that the relevant hosts can still access local resources
+The purpose of this step is to create a firewall rule to allow the relevant hosts to access the tunnel. At the same time, it also ensures that the relevant hosts using the tunnel can still access local resources as necessary - such as a local DNS server, or file storage
+
+This will involve two steps - first creating a second Alias for the networks or IPs that still need to be accessed locally, and then creating the firewall rule itself. The ultimate effect of these two steps is that only traffic from the relevant hosts that is destined for destinations **other than** the local resources will be sent down the tunnel
+
+(There are other ways to achieve this rather than creating an Alias, for example by using the relevant automatic interface or group network aliases in the firewall rule instead)
 
 It should be noted, however, that if the hosts that will use the tunnel are configured to use local DNS servers (such as OPNsense itself or another local DNS server), then this configuration will likely result in DNS leaks - that is, DNS requests for the hosts will continue to be processed through the normal WAN gateway, rather than through the tunnel. See :ref:`dns-leaks` for a discussion of potential solutions to this
 
@@ -158,10 +162,10 @@ It should be noted, however, that if the hosts that will use the tunnel are conf
 
     ================= ================================================
      **Enabled**       *Checked*
-     **Name**          *RFC1918_Networks*
-     **Type**          *Select Network(s) in the dropdown*
-     **Content**       *192.168.0.0/16 10.0.0.0/8 172.16.0.0/12*
-     **Description**   *All local (RFC1918) networks*
+     **Name**          *Local_Resources*
+     **Type**          *Select either Host(s) or Network(s) in the dropdown*
+     **Content**       *Specify the IPs or networks to be accessed locally, eg for all RFC1918 networks: 192.168.0.0/16 10.0.0.0/8 172.16.0.0/12*
+     **Description**   *Local resources excluded from WireGuard VPN tunnel*
     ================= ================================================
 
 - **Save** the Alias, and then click **Apply**
@@ -179,7 +183,7 @@ It should be noted, however, that if the hosts that will use the tunnel are conf
      **Source / Invert**          *Unchecked*
      **Source**                   *Select the relevant hosts Alias you created above in the dropdown (eg* :code:`WG_VPN_Hosts` *)*
      **Destination / Invert**     *Checked*
-     **Destination**              *Select the* :code:`RFC1918_Networks` *Alias you created above in the dropdown*
+     **Destination**              *Select the* :code:`Local_Resources` *Alias you created above in the dropdown*
      **Destination port range**   *any*
      **Description**              *Add one if you wish to*
      **Gateway**                  *Select the gateway you created above (eg* :code:`WAN_VPNProviderName` *)*
@@ -325,4 +329,4 @@ The solutions include:
 
 .. Note::
 
-    If the DNS servers supplied by your VPN provider are local IPs (ie, within the scope of the :code:`RFC1918_Networks` Alias created in Step 8), then you will need to create an additional firewall rule in OPNsense to ensure that requests to those servers use the tunnel gateway rather than the normal WAN gateway. This rule would be similar to that created in Step 8, except that the destination would be your VPN provider's DNS server IPs and the destination invert box would be unchecked. This rule would also need to be placed *above* the rule created in Step 8
+    If the DNS servers supplied by your VPN provider are local IPs, then you will need to ensure that they are not captured by the :code:`Local_Resources` Alias created in Step 8, or instead create an additional firewall rule in OPNsense to ensure that requests to those servers use the tunnel gateway rather than the normal WAN gateway. This rule would be similar to that created in Step 8, except that the destination would be your VPN provider's DNS server IPs and the destination invert box would be unchecked. This rule would also need to be placed *above* the rule created in Step 8
