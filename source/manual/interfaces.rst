@@ -59,7 +59,7 @@ For IPv4:
 =============================== ===============================================================================================================================================================================================================
  **Static IPv4 configuration**
  IPv4 address
- IPv4 Upstream Gateway           When an Upstream Gateway is set, packets entering the interface will also sent out on the same interface when replied. In addition outbound nat will be set up automatically when mode is set to *Automatic* or *Hybrid*. 
+ IPv4 Upstream Gateway           When an Upstream Gateway is set, packets entering the interface will also sent out on the same interface when replied. In addition outbound nat will be set up automatically when mode is set to *Automatic* or *Hybrid*.
  **DHCP client configuration**
  Configuration Mode
  Alias IPv4 address              Used as a fixed alias IPv4 address by the DHCP client.
@@ -106,9 +106,6 @@ For IPv6:
  Request only an IPv6 prefix       Only request an IPv6 prefix; do not request an IPv6 address.
  Prefix delegation size            The delegated prefix length provided by the DHCPv6 server. Normally specified by the ISP.
  Send IPv6 prefix hint             Send an IPv6 prefix hint to indicate the desired prefix size for delegation
- Directly send SOLICIT             In case the ISP requires a SOLICIT message for authentication, select this option to prevent indefinite waiting for a router advertisement.
- Prevent release                   Do not send a release message on client exit to prevent the release of an allocated address or prefix on the server.
- Enable debug                      Enable debug mode for DHCPv6 client
  Use IPv4 connectivity             Set the IPv6 address on the IPv4 PPP connectivity link.
  Use VLAN priority                 Certain ISPs may require that DHCPv6 requests are sent with a specific VLAN priority.
  Interface Statement               Click the “i” to see what the four subfields do.
@@ -144,7 +141,7 @@ interface. Both USB and (mini)PCIe cards are supported.
 .............................
 Supported Devices
 .............................
-While all devices supported by HardenedBSD will likely function under OPNsense their
+While all devices supported by FreeBSD will likely function under OPNsense their
 configuration depends on a AT command string that can differ from device to device.
 To make thing easier some of these strings are part of a easy selectable profile.
 

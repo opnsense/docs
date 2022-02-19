@@ -46,7 +46,7 @@ has 10 Mbps Download and 1 Mbps Upload.
       }
     }
 
-To start go to :menuselection:`Firewall --> Shaper --> Settings`.
+To start go to :menuselection:`Firewall --> Shaper --> Pipes`.
 
 Step 1 - Create Upload and Download Pipes
 -----------------------------------------

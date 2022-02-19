@@ -12,7 +12,7 @@ install them when not installed by default.
 The operating system
 ....................................
 
-The basic ( `HardenedBSD <https://hardenedbsd.org/>`__) system contains a kernel and a base package, which provide the
+The basic ( `FreeBSD <https://www.freebsd.org/>`__) system contains a kernel and a base package, which provide the
 bare essentials for the system to be able to boot and do its work.
 
 Both components are updated using :code:`opnsense-update`, which is explained in more detail
@@ -66,7 +66,7 @@ If, for example you would like to install the gnu `nano <https://www.nano-editor
 
 .. Warning::
 
-    Adding (FreeBSD, HardenedBSD, ..)  repositories in :code:`/usr/local/etc/pkg/repos/` manually is not supported and usually lead to unexpected
+    Adding (FreeBSD, ..)  repositories in :code:`/usr/local/etc/pkg/repos/` manually is not supported and usually lead to unexpected
     issues. Before reporting any type of issue with such setups, we kindly ask you to revert to a standard setup first.
 
 The ports tree

@@ -1,12 +1,12 @@
 =================================================================
-WireGuard Selective Routing to External VPN Provider
+WireGuard Selective Routing to External VPN Endpoint
 =================================================================
 
 ------------
 Introduction
 ------------
 
-This how-to is designed to assist with setting up WireGuard on OPNsense to use selective routing to an external VPN provider.
+This how-to is designed to assist with setting up WireGuard on OPNsense to use selective routing to an external VPN endpoint - most commonly to an external VPN provider.
 
 These circumstances may apply where only certain local hosts are intended to use the VPN tunnel. Or it could apply where multiple connections to the VPN provider are desired, with each connection intended to be used by different specific local hosts.
 
@@ -148,7 +148,11 @@ Step 7 - Create an Alias for the relevant local hosts that will access the tunne
 Step 8 - Create a firewall rule
 -------------------------------
 
-This will involve two steps - first creating a second Alias for all local (private) networks, and then creating the firewall rule itself. The ultimate effect of these two steps is that only traffic from the relevant hosts that is destined for **non-local** destinations will be sent down the tunnel. This will ensure that the relevant hosts can still access local resources
+The purpose of this step is to create a firewall rule to allow the relevant hosts to access the tunnel. At the same time, it also ensures that the relevant hosts using the tunnel can still access local resources as necessary - such as a local DNS server, or file storage
+
+This will involve two steps - first creating a second Alias for the networks or IPs that still need to be accessed locally, and then creating the firewall rule itself. The ultimate effect of these two steps is that only traffic from the relevant hosts that is destined for destinations **other than** the local resources will be sent down the tunnel
+
+(There are other ways to achieve this rather than creating an Alias, for example by using the relevant automatic interface or group network aliases in the firewall rule instead)
 
 It should be noted, however, that if the hosts that will use the tunnel are configured to use local DNS servers (such as OPNsense itself or another local DNS server), then this configuration will likely result in DNS leaks - that is, DNS requests for the hosts will continue to be processed through the normal WAN gateway, rather than through the tunnel. See :ref:`dns-leaks` for a discussion of potential solutions to this
 
@@ -158,10 +162,10 @@ It should be noted, however, that if the hosts that will use the tunnel are conf
 
     ================= ================================================
      **Enabled**       *Checked*
-     **Name**          *RFC1918_Networks*
-     **Type**          *Select Network(s) in the dropdown*
-     **Content**       *192.168.0.0/16 10.0.0.0/8 172.16.0.0/12*
-     **Description**   *All local (RFC1918) networks*
+     **Name**          *Local_Resources*
+     **Type**          *Select either Host(s) or Network(s) in the dropdown*
+     **Content**       *Specify the IPs or networks to be accessed locally, eg for all RFC1918 networks: 192.168.0.0/16 10.0.0.0/8 172.16.0.0/12*
+     **Description**   *Local resources excluded from WireGuard VPN tunnel*
     ================= ================================================
 
 - **Save** the Alias, and then click **Apply**
@@ -179,7 +183,7 @@ It should be noted, however, that if the hosts that will use the tunnel are conf
      **Source / Invert**          *Unchecked*
      **Source**                   *Select the relevant hosts Alias you created above in the dropdown (eg* :code:`WG_VPN_Hosts` *)*
      **Destination / Invert**     *Checked*
-     **Destination**              *Select the* :code:`RFC1918_Networks` *Alias you created above in the dropdown*
+     **Destination**              *Select the* :code:`Local_Resources` *Alias you created above in the dropdown*
      **Destination port range**   *any*
      **Description**              *Add one if you wish to*
      **Gateway**                  *Select the gateway you created above (eg* :code:`WAN_VPNProviderName` *)*
@@ -188,9 +192,36 @@ It should be noted, however, that if the hosts that will use the tunnel are conf
 - **Save** the rule, and then click **Apply Changes**
 - Then make sure that the new rule is **above** any other rule on the interface that would otherwise interfere with its operation. For example, you want your new rule to be above the “Default allow LAN to any rule”
 
-------------------------------------
-Step 9 - Create an outbound NAT rule
-------------------------------------
+--------------------------
+Step 9 - Configure routing
+--------------------------
+
+- Then go to :menuselection:`Firewall --> Rules --> Floating`
+- Click **Add** to add a new rule
+- Configure the rule as follows (if an option is not mentioned below, leave it as the default). You need to click the **Show/Hide** button next to "Advanced Options" to reveal the last setting:
+
+    ============================ ==================================================================================================
+     **Action**                   *Pass*
+     **Quick**                    *Unchecked*
+     **Interface**                *Do not select any*
+     **Direction**                *out*
+     **TCP/IP Version**           *IPv4*
+     **Protocol**                 *any*
+     **Source / Invert**          *Unchecked*
+     **Source**                   *Select the interface address for your WireGuard VPN (eg* :code:`WAN_VPNProviderName address` *)*
+     **Destination / Invert**     *Checked*
+     **Destination**              *Select the interface network for your WireGuard VPN (eg* :code:`WAN_VPNProviderName net` *)*
+     **Destination port range**   *any*
+     **Description**              *Add one if you wish to*
+     **Gateway**                  *Select the gateway you created above (eg* :code:`WAN_VPNProviderName` *)*
+     **allow options**            *Checked*
+    ============================ ==================================================================================================
+
+- **Save** the rule, and then click **Apply Changes**
+
+-------------------------------------
+Step 10 - Create an outbound NAT rule
+-------------------------------------
 
 - Go to :menuselection:`Firewall --> NAT --> Outbound`
 - Select "Hybrid outbound NAT rule generation” if it is not already selected, and click **Save** and then **Apply changes**
@@ -213,6 +244,38 @@ Step 9 - Create an outbound NAT rule
 
 - **Save** the rule, and then click **Apply changes**
 
+--------------------------------------
+Step 11 - Add a kill switch (optional)
+--------------------------------------
+
+If the VPN tunnel gateway goes offline, then traffic intended for the VPN may go out the normal WAN gateway. There are a couple of ways to avoid this, one of which is outlined here:
+
+- First, go back to the firewall rule you created under Step 7
+- Click on the **Show/Hide** button next to "Advanced Options"
+- Then, in the **Set local tag** field, add :code:`NO_WAN_EGRESS`
+- **Save** the rule, and then click **Apply changes**
+- Then go to :menuselection:`Firewall --> Rules --> Floating`
+- Click **Add** to add a new rule
+- Configure the rule as follows (if an option is not mentioned below, leave it as the default). You need to click the **Show/Hide** button next to "Advanced Options" to reveal the last setting:
+
+    ============================ ==================================================================================================
+     **Action**                   *Block*
+     **Quick**                    *Checked*
+     **Interface**                *WAN*
+     **Direction**                *out*
+     **TCP/IP Version**           *IPv4*
+     **Protocol**                 *any*
+     **Source / Invert**          *Unchecked*
+     **Source**                   *any*
+     **Destination / Invert**     *Unchecked*
+     **Destination**              *any*
+     **Destination port range**   *any*
+     **Description**              *Add one if you wish to*
+     **Match local tag**          *NO_WAN_EGRESS*
+    ============================ ==================================================================================================
+
+- **Save** the rule, and then click **Apply Changes**
+
 .. _configuring-ipv6:
 
 ----------------
@@ -229,7 +292,9 @@ To configure the tunnel to use IPv6, you essentially need to replicate the steps
 - add to the hosts alias the IPv6 addresses of the hosts/networks that are to use the tunnel
 - if necessary, create a separate local IPs alias for IPv6, so they can be excluded from the IPv6 firewall rule destination
 - create an IPv6 firewall rule (specifying the IPv6 gateway in the rule)
+- configure an IPv6 floating rule for routing (specifying the IPv6 gateway in the rule)
 - create an IPv6 outbound NAT rule
+- (optionally) add the kill switch tag to the IPv6 firewall rule and change the associated Floating rule to IPv4+IPv6
 
 Note, however, that there are a couple of differences:
 
@@ -264,4 +329,4 @@ The solutions include:
 
 .. Note::
 
-    If the DNS servers supplied by your VPN provider are local IPs (ie, within the scope of the :code:`RFC1918_Networks` Alias created in Step 8), then you will need to create an additional firewall rule in OPNsense to ensure that requests to those servers use the tunnel gateway rather than the normal WAN gateway. This rule would be similar to that created in Step 8, except that the destination would be your VPN provider's DNS server IPs and the destination invert box would be unchecked. This rule would also need to be placed *above* the rule created in Step 8
+    If the DNS servers supplied by your VPN provider are local IPs, then you will need to ensure that they are not captured by the :code:`Local_Resources` Alias created in Step 8, or instead create an additional firewall rule in OPNsense to ensure that requests to those servers use the tunnel gateway rather than the normal WAN gateway. This rule would be similar to that created in Step 8, except that the destination would be your VPN provider's DNS server IPs and the destination invert box would be unchecked. This rule would also need to be placed *above* the rule created in Step 8

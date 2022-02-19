@@ -97,9 +97,7 @@ Amazon AWS EC2 Cloud
     :height: 80px
 
 Installing OPNsense into the Amazon cloud can be a dounting task as no console is
-offered. As part of Deciso's support packages (see `OPNsense commercial Support
-<https://opnsense.org/support-overview/commercial-support/>`__), Deciso offer free
-access to its OPNsense Amazon Machine Image (AMI).
+offered. Luckily an easy to install AMI is also available in the aws marketplace.
 
 See also our how-to for :doc:`how-tos/installaws`.
 

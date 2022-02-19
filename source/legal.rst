@@ -52,8 +52,8 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-OPNsense is based on `HardenedBSD <https://hardenedbsd.org/>`__
-Copyright © The HardenedBSD Project. All rights reserved.
+OPNsense is based on `FreeBSD <https://www.freebsd.org>`__
+Copyright © The FreeBSD Project. All rights reserved.
 
 OPNsense is a fork of `pfSense® <https://www.pfsense.org>`__
 (Copyright © 2004-2014 Electric Sheep Fencing, LLC. All rights

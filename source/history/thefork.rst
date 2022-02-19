@@ -46,7 +46,7 @@ from pfSense to the new framework to avoid a big-bang approach.
 Community
 ---------
 A thriving community can only exist when people are willing to share. We want to
-make it easier for people to join and help to build the community. With pfSense, 
+make it easier for people to join and help to build the community. With pfSense,
 this has been rather difficult, as the tools to build it are difficult to use and
 often do not work in the first few attempts. And since 2014 they are not
 freely available any more, you need to apply for access with ESF. We believe a
@@ -83,9 +83,9 @@ Much work had already been done before the `first official release <https://opns
 * The build-tools had been completely rewritten from the ground up
   with clear and easy to read build scripts that are portable and small,
 
-* OPNsense is now a package that can be installed on top of our custom HardenedBSD
+* OPNsense is now a package that can be installed on top of our custom FreeBSD
   build (you can literally do pkg remove opnsense and you are left with an almost
-  standard HardenedBSD base system),
+  standard FreeBSD base system),
 
 * The firmware upgrade process is now done with pkgng,
 

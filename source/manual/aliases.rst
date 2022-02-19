@@ -36,6 +36,8 @@ OPNsense offers the following alias types:
 +------------------+------------------------------------------------------+
 | Network group    | Combine different network type aliases into one      |
 +------------------+------------------------------------------------------+
+| Dynamic IPv6 Host| A Host entry that will auto update on a prefixchange |
++------------------+------------------------------------------------------+
 | External         | Externally managed alias, this only handles the      |
 | (advanced)       | placeholder. Content is set from another source      |
 |                  | (plugin, api call, etc)                              |
@@ -59,7 +61,7 @@ Sample
 
 **Apply changes** and look at the content of our newly created pf table.
 
-Go to :menuselection:`Firewall --> Diagnostics --> pfTables` and select our newly created youtube table.
+Go to :menuselection:`Firewall --> Diagnostics --> Aliases` and select our newly created youtube table.
 
 .. image:: images/pftable_youtube.png
     :width: 100%
@@ -128,7 +130,7 @@ intervals from the :code:`arp` and :code:`ndp` tables.
 .. Note::
 
     Since mappings between addresses and mac addresses are resolved periodically the actual situation can differ, you can
-    always check :menuselection:`Firewall -> Diagnostics -> pfTables` to inspect the current contents of the alias.
+    always check :menuselection:`Firewall -> Diagnostics -> Aliases` to inspect the current contents of the alias.
 
 ..................
 URL Tables
@@ -200,6 +202,69 @@ Although nesting is possible with other alias types as well, this type only disp
 a :code:`Networks` type alias can do the same but uses a different presentation.
 
 ..................
+Dynamic IPv6 Host
+..................
+
+An IPv6 Dynamic Host is used where the system is using a dynamic prefix on the LAN, a tracking interface. When the prefix
+changes, either due to the ISP changing the prefix at will or the prefix changes when the WAN connection is reset, any alias
+containing an address of a client such as a server on the LAN would no longer be valid.
+
+For example, you obtain a prefix 2001:db8:2222:2800::/56.  You have a /56 prefix and if the tracking id was set to 0 for your
+LAN, you would have an address range on your LAN of 2001:db8:2222:2800:: to 2001:db8:2222:2800:FFFF:FFFF:FFFF:FFFF.
+
+You want to run a server on your LAN that is accessable from the WAN so you give it a static address of
+2001:db8:2222:2800:1000:1000::1 and create a rule allowing traffic to access the server.
+
+When your prefix changes, that static address is no longer valid, so you must use the Dynamic IPv6 Host to create an alias
+address for the firewall entry that automatically tracks the prefix and changes the rule.
+
+The Dynamic Host Alias will always split on the /64 boundary, it will take the upper 64 bits from the interface you select
+and the lower 64 bits from the address you enter. It does not matter what size your prefix delegation is.
+
+Create a new IPv6 Dynamic Host alias and enter only the suffix of the address, in this example, we will enter the lower 64
+bits of the address, you would enter ::1000:1000:0000:1, note the '::' at the start of the address, you MUST always start
+the address with a '::'. You do not need to enter a size after the address i.e. /128 as that is automatically assumed.
+
+Select the interface you wish to use for the source of the uppper 64 bits, in this case we will select the LAN interface.
+
+When the prefix changes, the alias address will then be updated in the firewall rules, let's say your prefix changes to
+2001:db8:2222:3200::/56 the rule updates and the entry for your server in the firewall would update automatically to be
+2001:db8:2222:3200:1000:1000::1
+
+Let's take another example, you have a /48 prefix delegation, you have two LAN interfaces and a server on each. You would need
+to create two separate Dynamic IPv6 Host entries, one for each LAN. For simplicities sake we will use the same address for each
+server on each interface, you would enter ::aaaa:bbbb:cccc:0001 as the address.
+
+=========================================   ===============================================
+Upper 64 bits, taken from LAN 1 Interface   Lower 64 bits - Your server address
+Server 1: 2a02:1234:5678:0000                aaaa:bbbb:cccc:0001
+=========================================   ===============================================
+*Server 1 GUA address is: 2a02:1234:5678:0000:aaaa:bbbb:cccc:0001*
+===========================================================================================
+
+=========================================   ===============================================
+Upper 64 bits, taken from LAN 2 Interface   Lower 64 bits - Your server address
+Server 2: 2a02:1234:5678:0001               aaaa:bbbb:cccc:0001
+=========================================   ===============================================
+*Server 2 GUA address is: 2a02:1234:5678:0001:aaaa:bbbb:cccc:0001*
+===========================================================================================
+
+The prefix changes, in this case we have a /48 prefix, so the new prefix is 2a02:1234:5679/48 our aliases would update to give
+us the following addresses:
+
+=========================================   ===============================================
+LAN 1: Server 1 GUA address is:             2a02:1234:5679:0000:aaaa:bbbb:cccc:0001
+LAN 2: Server 2 GUA address is:             2a02:1234:5679:0001:aaaa:bbbb:cccc:0001
+=========================================   ===============================================
+
+You may enter multiple addresses, for example if you have several servers on the same LAN segment, just add the suffix for each one.
+In the example below we have three servers.
+
+  .. image:: images/alias_dynamic_ipv6_host.png
+      :width: 100%
+
+
+..................
 External
 ..................
 
@@ -207,7 +272,7 @@ The contents for external alias types is not administered via our normal alias s
 in scenarios where you want to push new entries from external programs. Such as specific lockout features or
 external tools feeding access control to your firewall.
 
-In :menuselection:`Firewall --> Diagnostics --> pfTables` you can always inspect the current contents of the external
+In :menuselection:`Firewall --> Diagnostics --> Aliases` you can always inspect the current contents of the external
 alias and add or remove entries immediately.
 
 .. Tip::
@@ -221,9 +286,8 @@ alias and add or remove entries immediately.
     its contents. (e.g. :code:`pfctl -t MyAlias -T add 10.0.0.3` to add **10.0.0.3** to **MyAlias**)
 
 
-
 ----------------------------------
-Using Aliases in pf Firewall Rules
+Using Aliases in Firewall Rules
 ----------------------------------
 Aliases can be used in firewall rules to ease administration of large lists.
 For instance we might need a list of remote IP addresses that should have access to
@@ -246,6 +310,7 @@ We call our list remote_ipsec and update our firewall rules accordingly.
 .. Note::
 
     The list icon identifies a rule with an alias.
+
 
 ---------------------------------
 Export / Import

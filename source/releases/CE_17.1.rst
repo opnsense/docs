@@ -221,39 +221,30 @@ Here are the full patch notes:
 * system: fix default route display in diagnostics page
 * system: consistent precision display in gateway monitoring loss and RTT
 * system: correctly restart cron via backend call
-* system: use the internal RC script name instead file name to
-  load its variables
+* system: use the internal RC script name instead file name to load its variables
 * system: keep WAN DHCPv6 configuration option on console port reassign
-* system: unify the console yes/no prompts to indicate
-  their default behaviour
+* system: unify the console yes/no prompts to indicate their default behaviour
 * system: separate row and unhide button for 2FA OTP QR code display
 * system: prevent stripping of migrated configuration during factory reset
-* firmware: opnsense-bootstrap bare-mode addition for installing
-  repository metadata only
-* firmware: opnsense-bootstrap will never be deleted in case it is
-  required for recovery
+* firmware: opnsense-bootstrap bare-mode addition for installing repository metadata only
+* firmware: opnsense-bootstrap will never be deleted in case it is required for recovery
 * firmware: opnsense-revert now always properly reverts the core package
 * firmware: fix argument parsing in all update and development utilities
 * firewall: do not save range when end port is empty
 * firewall: do not automatically reload filter after alias delete
 * firewall: skip well-known ports for ranges
 * firewall: fetching bogon files should not use fetch internal auto-retry
-* interfaces: fix bug that prevented creation of IPv6 cache
-  IP files (contributed by @theq89)
+* interfaces: fix bug that prevented creation of IPv6 cache IP files (contributed by theq89)
 * interfaces: defer reload of the filter on IPv6 renewal and keep it local
 * interfaces: avoid potential configure loops in IPv4 renewal
 * interfaces: improve diagnostic messages on boot
-* interfaces: correct usage of interface cache files and properly
-  clear them during boot
+* interfaces: correct usage of interface cache files and properly clear them during boot
 * ipsec: enable CA field for hybrid and mutual RSA Xauth
 * dynamic dns: fix prototype declaration (contributed by Evgeny Bevz)
 * dynamic dns: add support for STRATO
-* mvc: fix iteration over several config nodes to avoid
-  "Node no longer exists" type warnings
-* plugins: quagga 1.1.1 fixes reload of BGPv4 tables and
-  modal closing (contributed by Fabian Franz)
-* plugins: monit 1.1 fixes import sender address and
-  validation (contributed by Frank Brendel)
+* mvc: fix iteration over several config nodes to avoid "Node no longer exists" type warnings
+* plugins: quagga 1.1.1 fixes reload of BGPv4 tables and modal closing (contributed by Fabian Franz)
+* plugins: monit 1.1 fixes import sender address and validation (contributed by Frank Brendel)
 * src: removed duplicate unbound from FreeBSD base system
 * src: added locales to e.g. allow tmux to start up correctly
 * src: Xen migration enhancements `[1] <https://www.freebsd.org/security/advisories/FreeBSD-EN-17:05.xen.asc>`__ 

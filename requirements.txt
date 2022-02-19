@@ -4,7 +4,7 @@ seqdiag>=2.0.0
 actdiag>=2.0.0
 sphinx
 sphinx-sitemap
-sphinx_rtd_theme
+sphinx_rtd_theme==0.5.2
 sphinxcontrib-blockdiag
 sphinxcontrib-nwdiag
 sphinxcontrib-seqdiag

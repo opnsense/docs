@@ -1,12 +1,14 @@
 ========================================
-Sensei: Hardware Requirements
+Zenarmor (Sensei): Hardware Requirements
 ========================================
 
-Due to the nature of deep packet analysis and detailed drill-down reporting functionality, Sensei requires more hardware resources than a standard L3-L4 firewall.
+Due to the nature of deep packet analysis and detailed drill-down reporting functionality, Zenarmor requires more hardware resources than a standard L3-L4 firewall.
 
-.. Note::
 
-    With the Sensei 1.5 release, you can offload your reporting database to an external system. This allows you to be able to run Sensei on systems with a constrained amount of RAM. 
+**.. Note:: :**
+
+    With the Sensei 1.5 release, you can offload your reporting database to an external system. This allows you to be able to run Zenarmor on systems with a constrained amount of RAM. 
+
 
 It is recommended that you check if your Ethernet adapter functions well with netmap.
 
@@ -14,13 +16,13 @@ It is recommended that you check if your Ethernet adapter functions well with ne
 CPU & Memory
 -------------
 
-Because the analytics module relies on Elasticsearch to process large amounts of data, the amount of the memory available in the system is crucial for the overall performance of Sensei.
+Because the analytics module relies on Elasticsearch to process large amounts of data, the amount of the memory available in the system is crucial for the overall performance of Zenarmor.
 
-.. Tip::
+**.. Tip:: :**
 
-    If the number of active devices are more than 250 and the sustained WAN bandwidth is higher than 100 Mbps, we do not recommend deploying Sensei as a virtual guest since resources in virtual environments are generally shared between guest systems. 
+    If the number of active devices are more than 250 and the sustained WAN bandwidth is higher than 100 Mbps, we do not recommend deploying Zenarmor as a virtual guest since resources in virtual environments are generally shared between guest systems. 
 
-Below is the recommended minimum hardware requirements for Sensei based on the number of devices and the amount of sustained bandwidth:
+Below is the recommended minimum hardware requirements for Zenarmor based on the number of devices and the amount of sustained bandwidth:
 
 =====================  =========================  ==================  ======================================================================
  **# Active Devices**  **Maximum WAN Bandwidth**  **Minimum Memory**  **Minimum CPU**
@@ -31,15 +33,15 @@ Below is the recommended minimum hardware requirements for Sensei based on the n
  250-1000              500 Mbps - 100 Kpps        32 GB               Intel Quad-Core i7 3.4 GHz (4 Cores, 8 Threads) or equivalent
 =====================  =========================  ==================  ======================================================================
 
-.. Note::
+**.. Note:: :**
 
-    Sensei requires at least 2 GB of memory. The installer will not continue if you have less than 2 GB of RAM. We recommend 4 GB memory to have an improved experience. 
+    Zenarmor requires at least 2 GB of memory. The installer will not continue if you have less than 2 GB of RAM. We recommend 4 GB memory to have an improved experience. 
 
 -----------------
 Ethernet Adapter
 -----------------
 
-Sensei uses a FreeBSD subsystem called `netmap(4) <https://www.freebsd.org/cgi/man.cgi?query=netmap&sektion=4>`_ to access raw Ethernet frames. With FreeBSD 11 (OPNsense version <= 20.1) this software can be very particular in terms of proper driver compatibility. 
+Zenarmor uses a FreeBSD subsystem called `netmap(4) <https://www.freebsd.org/cgi/man.cgi?query=netmap&sektion=4>`_ to access raw Ethernet frames. With FreeBSD 11 (OPNsense version <= 20.1) this software can be very particular in terms of proper driver compatibility. 
 
 Intel based adapters, particularly em(4) and igb(4), are observed to perform well in terms of stability and performance. 
 
@@ -49,7 +51,7 @@ Sunny Valley Networks is sponsoring developments on this project so you can expe
 Disk Space
 -----------
 
-Sensei uses `Elasticsearch <https://en.wikipedia.org/wiki/Elasticsearch>`_ or `MongoDB <https://www.mongodb.com/>`_ as its backend to store large data sets. Please allow at least 5 MB of disk space per hour per megabit/second throughput.
+Zenarmor uses `Elasticsearch <https://en.wikipedia.org/wiki/Elasticsearch>`_ or `MongoDB <https://www.mongodb.com/>`_ as its backend to store large data sets. Please allow at least 5 MB of disk space per hour per megabit/second throughput.
 
 If you're running a 100 Mbps link \(about 100 users\) which is quite active during the daytime and idle rest of the day, you may calculate the space needed as follows:
 
@@ -59,4 +61,4 @@ If you're running a 100 Mbps link \(about 100 users\) which is quite active duri
     6 GB x 7 days a week = 42 GB per week.
     42 x 4 weeks a month = 164 GB per month.
 
-As of `version 0.7.0 <https://www.sunnyvalley.io/blog/what-s-cooking-for-0-7>`_, Sensei expires old report data to free up disk space for the most recent data based on the configured number of days of history to keep.
+As of `version 0.7.0 <https://www.sunnyvalley.io/blog/what-s-cooking-for-0-7>`_, Zenarmor expires old report data to free up disk space for the most recent data based on the configured number of days of history to keep.

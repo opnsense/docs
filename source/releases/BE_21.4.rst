@@ -201,7 +201,7 @@ Here are the full patch notes:
 * ports: filterlog 0.4 adds label support to output if applicable
 * ports: libxml2 fix for CVE-2021-3541
 * ports: nss 3.65 `[16] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.65_release_notes>`__ 
-* ports: openssh-portable 8.6p1 `[17] <https://www.openssh.com/txt/release-8.6>`__ 
+* ports: openssh 8.6p1 `[17] <https://www.openssh.com/txt/release-8.6>`__ 
 * ports: php 7.3.28 `[18] <https://www.php.net/ChangeLog-7.php#7.3.28>`__ 
 * ports: py-yaml 5.4.1
 * ports: sqlite 3.35.5 `[19] <https://sqlite.org/releaselog/3_35_5.html>`__ 
@@ -370,7 +370,7 @@ Here are the full patch notes:
 * firewall: display zeros and sort columns in pfTables (contributed by kulikov-a)
 * firewall: relax schedule name validation
 * firewall: fix off-by-one error in alias utility listing
-* firewall: fix live log matching with 'or' and empty filter (contributed by kulikov-a)
+* firewall: fix live log matching with "or" and empty filter (contributed by kulikov-a)
 * firewall: change order of shaper delay parameter to prevent parser errors
 * firewall: fix multiple PHP warnings regarding category additions
 * firewall: fix icon toggle for block and reject (contributed by ElJeffe)

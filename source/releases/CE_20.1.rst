@@ -41,11 +41,11 @@ from this day forward.
 
 Here are the full patch notes:
 
-* system: Windows-friendly Nextcloud configuration backup file timestamp (contributed by @Alphakilo)
+* system: Windows-friendly Nextcloud configuration backup file timestamp (contributed by Alphakilo)
 * firewall: validate if NAT destination contains a port
 * firewall: prevent config_read_array() from adding an empty lo0
-* network time: NMEA GPS clock messages latitude and longitude parsing fix (contributed by @mikahe)
-* network time: prevent widget PHP warnings if no GPS fix was returned in NMEA message (contributed by @mikahe)
+* network time: NMEA GPS clock messages latitude and longitude parsing fix (contributed by mikahe)
+* network time: prevent widget PHP warnings if no GPS fix was returned in NMEA message (contributed by mikahe)
 * mvc: LegacyLinkField not allowed to return null in __toString()
 * plugins: os-collectd 1.3 `[1] <https://github.com/opnsense/plugins/blob/stable/20.1/net-mgmt/collectd/pkg-descr>`__ 
 * plugins: os-dyndns 1.22 `[2] <https://github.com/opnsense/plugins/pull/1654>`__ 

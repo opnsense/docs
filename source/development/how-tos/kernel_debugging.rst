@@ -2,7 +2,7 @@
 Remote debugging the kernel
 ==============================
 
-FreeBSD/HardenedBSD supports remote debugging using a serial interface.
+FreeBSD supports remote debugging using a serial interface.
 Since most virtual solutions support serial interfaces it can be quite convenient to deploy a kernel and start a debug session
 on another machine.
 
