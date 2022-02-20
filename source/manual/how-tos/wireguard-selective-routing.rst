@@ -148,9 +148,17 @@ Step 7 - Create an Alias for the relevant local hosts that will access the tunne
 Step 8 - Create a firewall rule
 -------------------------------
 
-This will involve two steps - first creating a second Alias for all local (private) networks, and then creating the firewall rule itself. The ultimate effect of these two steps is that only traffic from the relevant hosts that is destined for **non-local** destinations will be sent down the tunnel. This will ensure that the relevant hosts can still access local resources
+The purpose of this step is to create a firewall rule to allow the relevant hosts to access the tunnel. At the same time, it also ensures that the relevant hosts using the tunnel can still access local resources as necessary - such as a local DNS server, or file storage
 
-It should be noted, however, that if the hosts that will use the tunnel are configured to use local DNS servers (such as OPNsense itself or another local DNS server), then this configuration will likely result in DNS leaks - that is, DNS requests for the hosts will continue to be processed through the normal WAN gateway, rather than through the tunnel. See :ref:`dns-leaks` for a discussion of potential solutions to this
+The step has two parts - first creating a second Alias for all local (private) networks, and then creating the firewall rule itself. The ultimate effect of these two steps is that only traffic from the relevant hosts that is destined for **non-local** destinations will be sent down the tunnel
+
+.. Note::
+
+    The rule below will mean that no local (private) IPs can be accessed over the tunnel. You may have a need however to access certain IPs or networks at the VPN endpoint, such as a DNS server or monitor IP. In that case, you will need to create an additional firewall rule in OPNsense to ensure that requests to those IPs/networks use the tunnel gateway rather than the normal WAN gateway. This rule would be similar to that created below, except that the destination would be the relevant IPs/networks (or a new Alias for them) and the destination invert box would be unchecked. This rule would also need to be placed *above* the rule created below
+
+.. Warning::
+    
+    If the hosts that will use the tunnel are configured to use local DNS servers (such as OPNsense itself or another local DNS server), then the configuration below will likely result in DNS leaks - that is, DNS requests for the hosts will continue to be processed through the normal WAN gateway, rather than through the tunnel. See :ref:`dns-leaks` for a discussion of potential solutions to this
 
 - First go to :menuselection:`Firewall --> Aliases`
 - Click **+** to add a new Alias
@@ -325,4 +333,4 @@ The solutions include:
 
 .. Note::
 
-    If the DNS servers supplied by your VPN provider are local IPs (ie, within the scope of the :code:`RFC1918_Networks` Alias created in Step 8), then you will need to create an additional firewall rule in OPNsense to ensure that requests to those servers use the tunnel gateway rather than the normal WAN gateway. This rule would be similar to that created in Step 8, except that the destination would be your VPN provider's DNS server IPs and the destination invert box would be unchecked. This rule would also need to be placed *above* the rule created in Step 8
+    If the DNS servers supplied by your VPN provider are local IPs (ie, within the scope of the :code:`RFC1918_Networks` Alias created in Step 8), then, as discussed in Step 8, you will need to create an additional firewall rule in OPNsense to ensure that requests to those servers use the tunnel gateway rather than the normal WAN gateway. This rule would be similar to that created in Step 8, except that the destination would be your VPN provider's DNS server IPs and the destination invert box would be unchecked. This rule would also need to be placed *above* the rule created in Step 8
