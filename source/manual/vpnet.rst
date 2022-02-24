@@ -44,7 +44,7 @@ Like all IPsec configurations, a standard site to site setup starts with a so ca
 communication between both peers defined in :menuselection:`VPN -> IPsec -> Tunnel Settings`. After the phase 1
 is configured, the "Phase 2" defines which policies traffic should match on.
 
-Since the kernel traps traffic mactching defined policies, no additional routing need to be configured in order to
+Since the kernel traps traffic matching defined policies, no additional routing need to be configured in order to
 communicate between both ends of a tunnel.
 
 .. Note::
