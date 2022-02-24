@@ -231,11 +231,6 @@ of the form.
 
 For our example will use the following settings:
 
-.. Note::
-
-   The setting **Hardware Crypto** is not used for new systems equipped with **AES-NI**,
-   when the aesni module is loaded it will be used automatically.
-
 ===================================== ===============================================
  **Description**                       *My SSL VPN Server*
  **Server Mode**                       *Remote Access (SSL/TLS + User Auth)*
@@ -250,7 +245,6 @@ For our example will use the following settings:
  **DH Parameters Length**              *4096 bit*
  **Encryption algorithm**              *AES-256-CBC (256-bit key, 128-bit block)*
  **Auth Digest Algorithm**             *SHA512 (512-bit)*
- **Hardware Crypto**                   *No Hardware Crypto Acceleration*
  **Certificate Depth**                 *One (Client+Server)*
  **IPv4 Tunnel Network**               *10.10.0.0/24*
  **IPv6 Tunnel Network**               *Leave Empty*

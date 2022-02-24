@@ -101,13 +101,13 @@ interface.
 VPN compatibility
 -----------------
 
-In the next table you can see the existing VPN authentication mechanisms and which client 
+In the next table you can see the existing VPN authentication mechanisms and which client
 operating systems support it, with links to their configurations.
 For Linux testing was done with Ubuntu 18.4 Desktop and *network-manager-strongswan* and
-*libcharon-extra-plugins* installed. 
+*libcharon-extra-plugins* installed.
 As Andoid does not support IKEv2 yet we added notes for combinations with strongSwan
 app installed to have a broader compatibility for all systems.
-Mutual RSA and PSK without XAuth requires L2TP, since this legacy technology is 
+Mutual RSA and PSK without XAuth requires L2TP, since this legacy technology is
 very error prone we will not cover it here.
 
 .. csv-table:: VPN combinations
@@ -122,3 +122,20 @@ very error prone we will not cover it here.
    "IKEv2 EAP-MSCHAPv2","Y :doc:`/manual/how-tos/ipsec-rw-w7`","Y :doc:`/manual/how-tos/ipsec-rw-w7`","Y :doc:`/manual/how-tos/ipsec-rw-linux`","Y","Y","Y :doc:`/manual/how-tos/ipsec-rw-android`",":doc:`/manual/how-tos/ipsec-rw-srv-mschapv2`"
    "IKEv2 Mutual RSA + EAP-MSCHAPv2","N","N","N","tbd","tbd","Y :doc:`/manual/how-tos/ipsec-rw-android`",":doc:`/manual/how-tos/ipsec-rw-srv-rsamschapv2`"
    "IKEv2 EAP-RADIUS","Y :doc:`/manual/how-tos/ipsec-rw-w7`","Y :doc:`/manual/how-tos/ipsec-rw-w7`","Y :doc:`/manual/how-tos/ipsec-rw-linux`","Y","Y","Y :doc:`/manual/how-tos/ipsec-rw-android`",":doc:`/manual/how-tos/ipsec-rw-srv-eapradius`"
+
+-----------------
+List of examples
+-----------------
+
+.. toctree::
+  :maxdepth: 2
+  :titlesonly:
+
+  ipsec-rw-android
+  ipsec-rw-linux
+  ipsec-rw-srv-eapradius
+  ipsec-rw-srv-eaptls
+  ipsec-rw-srv-ikev1xauth
+  ipsec-rw-srv-mschapv2
+  ipsec-rw-srv-rsamschapv2
+  ipsec-rw-w7

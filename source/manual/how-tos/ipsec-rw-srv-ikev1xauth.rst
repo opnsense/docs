@@ -173,3 +173,77 @@ Go to :menuselection:`System --> Trust --> Certificates` and create a new client
 Just click **Add**, choose your CA and probably increase the lifetime. Everything else besides
 the CN can be left default. Give a **Common Name** and **Save**. Download the newly created
 certificate as PKCS12 and export it to you enduser device.
+
+
+-------------------------
+Step 6 - Configure Client
+-------------------------
+To illustrate the client setup we will look at the configuration under macOS, including
+some screenshots. The configurations for Android and iOS will be settings only.
+
+.. Note::
+      Configuration samples listed here where created using latest macOS, iOS and
+      Android devices on time of publication in February 2016.
+
+----------------------
+Configure macOS Client
+----------------------
+
+Start with opening your network settings (:menuselection:`System Preferences --> Network)` and
+Add a new network by pressing the + in the lower left corner.
+
+Now select **VPN** and **Cisco IPSec**, give your connection a name and press **Create**.
+
+.. image:: images/osx-ipsec-new.png
+    :width: 70%
+
+Now enter the details for our connection:
+
+.. image:: images/osx-ipsec-conf1.png
+    :width: 70%
+
+Next press **Authentication Settings** to add the group name and pre-shared key.
+
+.. image:: images/osx-ipsec-conf2.png
+    :width: 70%
+
+Press **OK** to save these settings and then **Apply** to apply them.
+
+Now test the connection by selecting it from the list and hit **Connect**.
+
+.. image:: images/osx-ipsec-connected.png
+    :width: 70%
+
+**Done**
+
+--------------------
+Configure iOS Client
+--------------------
+To add a VPN connection on an iOS device go to :menuselection:`Settings --> General --> VPN`.
+Select **Add VPN Configuration** chose **IPsec** and use the Following Settings:
+
+========================== ======================= ========================================
+  **Description**           IPsec OPNsense          *Freely chosen description*
+  **Server**                172.18.0.164            *Our server address*
+  **Account**               expert                  *Username of the remote account*
+  **Password**              &test!9T                *Leave blank to be prompted every time*
+  **Preshared IPsec-key**   At4aDMOAOub2NwT6gMHA    *Our PSK*
+========================== ======================= ========================================
+
+------------------------
+Configure Android Client
+------------------------
+To add a VPN connection on an Android device go to :menuselection:`Settings --> Connections --> more networks`,
+select **VPN**. Press the **+** in the top right corner to add a new VPN connection.
+
+Use the Following Settings:
+
+========================== ======================= =============================
+  **Name**                  IPsec OPNsense         *Freely chosen name*
+  **Type**                  IPSec Xauth PSK        *As configured in OPNsense*
+  **Server address**        172.18.0.164           *Our server address*
+  **Preshared IPsec-key**   At4aDMOAOub2NwT6gMHA   *Our PSK*
+========================== ======================= =============================
+
+**Save** and try connecting. To connect enter Username and Password for the user
+*expert* we created in this example.

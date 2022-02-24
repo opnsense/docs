@@ -186,10 +186,6 @@ of the form.
 
 For our example will use the following settings (leave everything else on its default):
 
-.. Note::
-
-   The setting **Hardware Crypto** is not used for new systems equipped with **AESNI**,
-   when the aesni module is loaded it will be used automatically.
 
 ===================================== ===============================================
  **Server Mode**                       *Peer to Peer (Shared Key)*
@@ -202,7 +198,6 @@ For our example will use the following settings (leave everything else on its de
  **DH Parameters Length**              *4096*
  **Encryption algorithm**              *AES-256-CBC (256-bit)*
  **Auth Digest Algorithm**             *SHA512 (512-bit)*
- **Hardware Crypto**                   *No Hardware Crypto Acceleration*
  **IPv4 Tunnel Network**               *10.10.0.0/24*
  **IPv4 Local Network/s**              *192.168.1.0/24*
  **IPv4 Remote Network/s**             *192.168.2.0/24*
