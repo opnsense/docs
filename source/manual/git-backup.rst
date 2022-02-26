@@ -87,6 +87,9 @@ password                              When using https authentication, choose a 
 Make sure to push to a "bare" upstream repository, when pressing "Setup/Test Git" the initial commits should be send to
 your git server.
 
+.. Tip::
+
+    For github repositories, please make sure your URL follows this structure: :code:`ssh://github.com/user_name/repo_name.git`.
 
 --------------------------
 Conflict resolution
