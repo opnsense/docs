@@ -89,7 +89,7 @@ your git server.
 
 .. Tip::
 
-    For github repositories, please make sure your URL follows this structure: :code:`ssh://github.com/user_name/repo_name.git`.
+    For github and GitLab repositories, please make sure your URL follows this structure: :code:`ssh://github.com/user_name/repo_name.git`.
 
 --------------------------
 Conflict resolution
