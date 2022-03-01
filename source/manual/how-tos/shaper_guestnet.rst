@@ -108,8 +108,8 @@ Create a rule for the upload traffic
 
 ====================== =================== =====================================================
  **sequence**            21                 *Auto generated number, overwrite only when needed*
- **interface**           GuestNet           *Select the interface that matches your GuestNet*
- **interface2**          WAN                *Select the interface connected to the internet*
+ **interface**           WAN                *Select the interface connected to the internet*
+ **interface2**          GuestNet           *Select the interface that matches your GuestNet*
  **proto**               ip                 *Select the protocol, IP in our example*
  **source**              any                *The source address, leave on any*
  **src-port**            any                *The source port to shape, leave on any*
