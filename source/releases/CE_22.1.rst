@@ -34,6 +34,160 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+22.1.2 (March 01, 2022)
+--------------------------------------------------------------------------
+
+
+This release adds GUI support for Intel QuickAssist Technology (QAT) and
+SYN cookies as per virtue of the FreeBSD 13 operating system.  The work
+to modernise the interfaces subsystem and improve the new ddclient dynamic
+DNS plugin are also progressing.
+
+Due to signs of decay in the build infrastructure, license nitpicking
+in FreeBSD ports and the upcoming OpenSSL 3 release (which will complicate
+things most likely) we have decided to discontinue LibreSSL at the end of
+this year meaning there will be no more LibreSSL flavour starting with
+version 23.1.  Non-essential software will no longer be manually fixed and
+provided as binary packages if broken by upstream from this point on.
+
+Since 2015 we have been working on functional LibreSSL support with steady
+means, but 7 years later and OpenSSL making an effort through numerous
+ways we are sad to give up this alternative since we do not see LibreSSL
+being used and properly integrated in software projects as often anymore.
+It has been a slow but steady decline for the past 2 years that also has
+to do with a LibreSSL release cycle tailored for OpenBSD in particular and
+OpenSSL library integration quality, which is almost impossible to improve
+upon in complex third-party software projects.  We simply cannot afford the
+time for it any longer.
+
+All users are able to update to the OpenSSL flavour without issues now or
+at any later given point.
+
+Here are the full patch notes:
+
+* system: Intel QuickAssist Technology (QAT) crypto module selection and support multiple selection
+* system: AESNI crypto module is a kernel-builtin since 22.1 and no longer needs to be selected to work
+* system: enable library support of PCRE JIT included since 21.1.1
+* system: limit rowCount in log viewer (contributed by kulikov-a)
+* system: unify system tunables handling and tweak UX of the respective GUI page
+* system: no longer default to hw.uart.console use in factory configuration
+* system: remove console mute use from boot sequence
+* reporting: fill missing insight data with zeros
+* interfaces: assignments should take OpenVPN into account
+* interfaces: only ever store nobind for ipalias/carp
+* interfaces: align IPv4 address statistics read with IPv6
+* interfaces: simplify device destroy code
+* interfaces: avoid use legacy_get_interface_addresses() in MAC address read
+* interfaces: remove unused opportunistic interface address functions
+* firewall: exclude localhost stateless traffic from default logging (contributed by kulikov-a)
+* firewall: using port type aliases the "enable" flag was ignored when not enabled
+* firewall: add support for SYN cookies
+* firmware: opnsense-code: support "-z" snapshot mode
+* firmware: opnsense-revert: support "-z" snapshot mode
+* firmware: opnsense-update: support version print for sets
+* firmware: check repository and plugin state in health audit
+* ipsec: pass protocol when resolving via ipsec_resolve() (contributed by FloMeyer)
+* ipsec: fix mobile property passing when creating a new phase 2 entry
+* ipsec: rename "My Certificate Authority" to "Remote Certificate Authority" to avoid ambiguity
+* openvpn: avoid use of find_interface_network() et al
+* openvpn: stop removing name server-related files never written
+* openvpn: improve gateway detection in topology mode
+* ipsec: avoid use of find_interface_network() et al
+* dhcp: avoid use of find_interface_network() et al
+* console: move console mite calls into port setting function
+* ui: sidebar 2nd submenu view fix (contributed by Team Rebellion)
+* mvc: refactor and extend HostnameField to add options to validate partial hostnames and root zones
+* plugins: os-bind 1.22 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/bind/pkg-descr>`__ 
+* plugins: os-ddclient 1.2 `[2] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.19 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/net/freeradius/pkg-descr>`__ 
+* plugins: os-stunnel 1.0.4 fix connect format for IPv6 (contributed by Johnny S. Lee)
+* src: stand: add EFI support for MMIO serial consoles
+* src: apei: make sure event data fit into the buffer
+* ports: php 7.4.28 `[4] <https://www.php.net/ChangeLog-7.php#7.4.28>`__ 
+* ports: unbound 1.15.0 `[5] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-15-0>`__ 
+
+
+
+--------------------------------------------------------------------------
+22.1.1 (February 16, 2022)
+--------------------------------------------------------------------------
+
+
+The first stable release brings in minor fixes from FreeBSD and instant
+log file visibility for files without severity written which can happen
+for individual plugins.
+
+We have also gone ahead to restructure the interface code further to resolve
+dependencies between configured devices and interfaces automatically and
+the bundled development version is worth a try for everyone having issues
+with GIF/GRE not coming up after boot.
+
+Here are the full patch notes:
+
+* system: changing interface gateway was ignored during route reconfiguration
+* system: allow to configure SSH setting PubkeyAcceptedAlgorithms (contributed by Manuel Faux)
+* system: add backward compatibility for reading logs without severity by default (contributed by kulikov-a)
+* system: fix typo causing PHP warning on IPv6 login (contributed by ppascher)
+* system: cron command drop down size was extending below screen
+* system: add a sysctl cache to improve tuneable overview load time
+* system: replace obsolete find_interface_network\*() use in GUI
+* system: allow severity levels in PHP log messages and mark authentication success messages as notice
+* interfaces: fix default handling for VIP nobind option
+* interfaces: allow VIP nobind feature on CARP addresses
+* interfaces: stop mpd5 daemon before starting
+* interfaces: always show interface in GIF and GRE overview even on VIP use
+* interfaces: fix GIF and GRE VIP use loading order in IP alias cases
+* interfaces: remove device creation side effect from bridge, LAGG, GIF, GRE and VLAN GUI pages
+* interfaces: prevent DHCP from installing name servers when not allowed
+* interfaces: get_interface_list() must exclude OpenVPN
+* interfaces: replace obsolete find_interface_network\*() use in GUI
+* firewall: remove ruleset optimization support which did not work since rule labels are mandatory for live log
+* firewall: exclude external alias for nesting
+* firewall: encode rules names in aliases (contributed by kulikov-a)
+* firewall: check state before selecting categories (contributed by kulikov-a)
+* firewall: synchronise "disabled" flag on linked firewall rule of port forward
+* firewall: local file corruption might prevent alias to be loaded
+* firewall: default pass all loopback without state tracking
+* dhcp: change prefix watcher to work without circular logging now that it is gone
+* dhcp: replace obsolete find_interface_network\*() use in GUI
+* dhcp: fix implode() call (contributed by Clement Moulin)
+* ipsec: replace obsolete find_interface_network\*() use in GUI
+* firmware: opnsense-version: support reading lock files operated by opnsense-update
+* firmware: patch version / date header in consistently for backend scripts
+* mvc: overload __isset() magic method
+* plugins: os-bind 1.21 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/bind/pkg-descr>`__ 
+* plugins: os-ddclient 1.1 `[2] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.11 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-dyndns menu compatibility with os-ddclient
+* plugins: os-frr 1.27 `[4] <https://github.com/opnsense/plugins/blob/stable/22.1/net/frr/pkg-descr>`__ 
+* plugins: os-mdns-repeater 1.1 `[5] <https://github.com/opnsense/plugins/blob/stable/22.1/net/mdns-repeater/pkg-descr>`__ 
+* plugins: os-rspamd 1.12 `[6] <https://github.com/opnsense/plugins/blob/stable/22.1/mail/rspamd/pkg-descr>`__ 
+* plugins: os-zabbix-agent 1.11 `[7] <https://github.com/opnsense/plugins/blob/stable/22.1/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* src: pf: set_prio was not set after nvlist conversion
+* src: if_vtnet: Restore the ability to set promisc mode
+* src: hn: disable Hyper-V vSwitch RSC support
+* ports: curl 7.81.0 `[8] <https://curl.se/changes.html#7_81_0>`__ 
+* ports: expat 2.4.4 `[9] <https://github.com/libexpat/libexpat/blob/R_2_4_4/expat/Changes>`__ 
+* ports: lighttpd 1.4.64 `[10] <https://www.lighttpd.net/2022/1/19/1.4.64/>`__ 
+* ports: monit 5.30.0 `[11] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.75 `[12] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.75_release_notes>`__ 
+* ports: pcre / pcre2 enable JIT support
+* ports: phpseclib 2.0.36 `[13] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.36>`__ 
+* ports: strongswan 5.9.5 `[14] <https://github.com/strongswan/strongswan/releases/tag/5.9.5>`__ 
+* ports: sudo 1.9.9 `[15] <https://www.sudo.ws/stable.html#1.9.9>`__ 
+
+A hotfix release was issued as 22.1.1_1:
+
+* interfaces: revert "prevent DHCP from installing name servers when not allowed"
+
+A hotfix release was issued as 22.1.1_3:
+
+* interfaces: revert "get_interface_list() must exclude OpenVPN"
+* web proxy: fix a typo in extended logging parser (contributed by kulikov-a)
+
+
+
+--------------------------------------------------------------------------
 22.1 (January 27, 2022)
 --------------------------------------------------------------------------
 
@@ -159,7 +313,7 @@ Here are the full patch notes against version 21.7.7:
 * lang: update translations for Chinese, French, German, Italian, Japanese, Norwegian, Spanish, and Turkish
 * lang: demote Italian to development-only language due to lowered translation ratio
 * monit: move logging to own target
-* network time: add iburst option and stop using it by default (contributed by Patrick M. Hausen)
+* network time: add "iburst" option and stop using it by default (contributed by Patrick M. Hausen)
 * network time: detach "limited" from "kod" option (contributed by Zsolt Zsiros)
 * network time: remove PID file use as it can be unreliable
 * openvpn: kill by common name when kill by address does not work
@@ -224,11 +378,11 @@ Here are the full patch notes against version 21.7.7:
 Known issues and limitations:
 
 * This release contains a new major operating system version and should be carried out with the necessary care.  Despite extended test coverage changes made by FreeBSD may still affect operation without our knowledge.  Except for ZFS boot environments rollbacks between major operating system versions are extremely fragile and a reinstall of an older version should be attempted in the worst case.  For more information please consult the FreeBSD 13.0 release notes `[28] <https://www.freebsd.org/releases/13.0R/relnotes/>`__ .
-* IPsec hash and cipher removals in FreeBSD 13 can affect existing setups as insecure cryptographic options have been removed upstream. If you are using MD5, Blowfish, DES, 3DES, or CAST128 in your phase 2 please move to more secure settings prior to the upgrade. Note that phase 1 settings are unaffected, but insecure settings should still be avoided. For more information see the FreeBSD commit in question `[29] <https://github.com/opnsense/src/commit/16aabb761c0a>`__ .
-* The Realtek vendor driver is no longer bundled with the updated FreeBSD kernel. If unsure whether FreeBSD 13 supports your Realtek NIC please install the os-realtek-re plugin prior to upgrading to retain operability of your NICs.
-* MAC spoofing now only pertains to the configured interface and not the VLAN siblings or parent interface.  This can introduces unwanted configuration due to previous side effects in the code.  Make sure to assign and set the spoofed MAC for all interfaces that require a spoofed MAC.
-* Media settings are no longer shown for non-parent interfaces and need to be set individually to take effect.  This can introduce unwanted configuration due to previous side effects in the code.  If the parent interface was not previously assigned please assign it to reapply the required media settings.
-* NTPD defaults changed to exclude the "iburst" option by default.  "limited" setting was detached from "kod" option. In both cases configuration adjustments can achieve previous behaviour if required.
+* IPsec hash and cipher removals in FreeBSD 13 can affect existing setups as insecure cryptographic options have been removed upstream.  If you are using MD5, Blowfish, DES, 3DES, or CAST128 in your phase 2 please move to more secure settings prior to the upgrade.  Note that phase 1 settings are unaffected, but insecure settings should still be avoided.  For more information see the FreeBSD commit in question `[29] <https://github.com/opnsense/src/commit/16aabb761c0a>`__ .
+* The Realtek vendor driver is no longer bundled with the updated FreeBSD kernel.  If unsure whether FreeBSD 13 supports your Realtek NIC please install the os-realtek-re plugin prior to upgrading to retain operability of your NICs.
+* MAC spoofing now only pertains to the configured interface and not the VLAN siblings or parent interface.  This can introduce unwanted configuration due to previous side effects in the code.  Make sure to assign and set the spoofed MAC for all interfaces that require a spoofed MAC or simply spoof the MAC on the parent and leave the VLAN sibling settings empty to let them follow the parent MAC automatically.  If in doubt the parent interface can be set into promiscuous mode now to allow for mixed MAC address use across VLANs too.
+* Media and hardware offload settings are no longer shown for non-parent interfaces and need to be set individually on the parent interface to take effect.  This can introduce unwanted configuration due to previous side effects in the code.  If the parent interface was not previously assigned please assign it to reapply the required settings.
+* NTPD defaults changed to exclude the "iburst" option by default.  "limited" setting was detached from "kod" option.  In both cases configuration adjustments can achieve previous behaviour if required.
 * Rebind checks through os-dyndns or os-rfc2136 will no longer work due to the deprecation of both plugins.  Please add your rebind hosts manually or disable rebind protection prior to the upgrade.
 * GRE link1 support has been removed and needs a static route to function now.
 * Circular logging support has been removed.  No user interaction is required.

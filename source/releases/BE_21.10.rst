@@ -14,6 +14,58 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+21.10.3 (February 10, 2022)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 21.7.8 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: remove spurious XML validation that cannot cope with attributes from backup restore
+* system: prevent syslog-ng from crashing after update due to "syslog-ng-ctl reload" use
+* system: changing interface gateway was ignored during route reconfiguration
+* system: cron command drop down size was extending below screen
+* reporting: fix display of total in/out traffic values
+* firewall: removed the $aliastable cache
+* firewall: correctly handle IPv6 NAT in states view
+* firewall: skip rule ID for NAT type log entries (contributed by kulikov-a)
+* firewall: support "no scrub" option in normalisation rules
+* firewall: exclude external alias for nesting
+* network time: remove PID file use as it can be unreliable
+* intrusion detection: update to ET-Open to version 6
+* intrusion detection: prevent config migration from crashing
+* lang: update translations for Chinese, French, German, Italian, Japanese, Norwegian, Spanish, and Turkish
+* captive portal: prevent session removal crashing when no IP address was registered
+* mvc: add getInterfaceConfig endpoint to interface API (contributed by Paolo Asperti)
+* mvc: fix logging of configd errors (contributed by kulikov-a)
+* plugins: os-acme-client 3.8 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-frr 1.26 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/net/frr/pkg-descr>`__ 
+* plugins: os-openconnect 1.4.2 `[3] <https://github.com/opnsense/plugins/blob/stable/21.7/security/openconnect/pkg-descr>`__ 
+* plugins: os-postfix 1.21 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/mail/postfix/pkg-descr>`__ 
+* plugins: os-telegraf 1.12.4 `[5] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-wireguard 1.10 `[6] <https://github.com/opnsense/plugins/blob/stable/21.7/net/wireguard/pkg-descr>`__ 
+* src: axgbe: validate contents of gpio expander
+* src: incorrect XSAVE state size `[7] <FREEBSD:FreeBSD-EN-22:02.xsave>`__ 
+* src: vPCI compatibility improvements with certain Hyper-V releases `[8] <FREEBSD:FreeBSD-EN-22:03.hyperv>`__ 
+* src: vt console buffer overflow `[9] <FREEBSD:FreeBSD-SA-22:01.vt>`__ 
+* ports: expat 2.4.2 `[10] <https://github.com/libexpat/libexpat/blob/R_2_4_2/expat/Changes>`__ 
+* ports: filterlog 0.6 `[11] <https://github.com/opnsense/ports/commit/2e27655d84>`__ 
+* ports: flock 2.37.2
+* ports: hostapd 2.10 `[12] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
+* ports: lighttpd 1.4.63 `[13] <https://www.lighttpd.net/2021/12/4/1.4.63/>`__ 
+* ports: nss 3.74 `[14] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.74_release_notes>`__ 
+* ports: openssl 1.1.1m `[15] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openvpn 2.5.5 `[16] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.5>`__ 
+* ports: php 7.4.27 `[17] <https://www.php.net/ChangeLog-7.php#7.4.27>`__ 
+* ports: sqlite 3.37.2 `[18] <https://sqlite.org/releaselog/3_37_2.html>`__ 
+* ports: strongswan 5.9.5 `[19] <https://github.com/strongswan/strongswan/releases/tag/5.9.5>`__ 
+* ports: syslog-ng 3.35.1 `[20] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.35.1>`__ 
+* ports: unbound 1.14.0 `[21] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-14-0>`__ 
+* ports: wpa_supplicant 2.10 `[22] <https://w1.fi/cgit/hostap/plain/wpa_supplicant/ChangeLog>`__ 
+
+
+--------------------------------------------------------------------------
 21.10.2 (January 13, 2022)
 --------------------------------------------------------------------------
 
