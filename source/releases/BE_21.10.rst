@@ -64,6 +64,13 @@ Here are the full patch notes:
 * ports: unbound 1.14.0 `[21] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-14-0>`__ 
 * ports: wpa_supplicant 2.10 `[22] <https://w1.fi/cgit/hostap/plain/wpa_supplicant/ChangeLog>`__ 
 
+A feature and security update was subsequently issued:
+
+* plugins: os-OPNcentral 1.4 adds improved provisioning to allow unique local content `[23] <https://docs.opnsense.org/vendor/deciso/opncentral.html#provisioning-classes>`__ 
+* plugins: os-OPNBEcore 1.0.1 supplemental update for os-OPNcentral
+* ports: cyrus-sasl 2.1.28
+
+
 
 --------------------------------------------------------------------------
 21.10.2 (January 13, 2022)

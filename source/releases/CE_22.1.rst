@@ -106,6 +106,11 @@ Here are the full patch notes:
 * ports: php 7.4.28 `[4] <https://www.php.net/ChangeLog-7.php#7.4.28>`__ 
 * ports: unbound 1.15.0 `[5] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-15-0>`__ 
 
+A hotfix release was issued as 22.1.2_1:
+
+* ipsec: fix mobile switch logic
+* ports: cyrus-sasl 2.1.28
+
 
 
 --------------------------------------------------------------------------
