@@ -48,3 +48,18 @@ Plugins API
    :glob:
 
    api/plugins/*
+
+
+Business edition API
+------------------------
+
+The business edition comes packed with some additional features which could also be used
+for integration purposes from third-party applications. The most relevant ones will be explained in this section.
+
+
+.. toctree::
+  :maxdepth: 2
+  :titlesonly:
+  :glob:
+
+  api/be/*
