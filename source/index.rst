@@ -35,6 +35,7 @@ Table of Contents
      third_party_plugins
      troubleshooting
      develop
+     vendor
      relations
      legal
      support
