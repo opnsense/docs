@@ -11,7 +11,8 @@ the :code:`OPNProxy` plugin addition offers this functionality at ease.
 Prerequisites
 ---------------------------
 
-Before installing and using this plugin, make sure your web proxy is configured and enabled including some sort of authentication.
+Before installing and using this plugin, make sure your web proxy is configured and enabled including some sort of authentication
+(unless network only authentication should be used).
 
 .. Note::
     To enable authentication, goto :menuselection:`Services->Web Proxy->Administration` then collapse "Forward Proxy" and
@@ -64,6 +65,28 @@ to import/add the users in OPNsense in order to user their authorisation setting
     Standard (global) policies take precedence over the ones defined in the access control plugin, this includes
     "SSL no bump sites" when full TLS/SSL inspection is used.
     (it's not possible to block no bump sites in full inspection mode)
+
+
+Authentication options
+---------------------------
+
+Every policy defined in this plugin can contain users/groups and/or networks, if one option is omitted from the
+input its being ignored, when both are specified, both should apply.
+
+.. image:: images/OPNproxy_policy_auth_selection.png
+    :width: 60%
+
+Example usage scenarios:
+
+* User :code:`X` from network :code:`Y` is not allowed to visit :code:`gambling` websites
+* All users from group :code:`Z` are not allowed to visit :code:`gambling` websites
+* All users in network :code:`Y` are allowed to visit the OPNsense website.
+* All users in network :code:`Y` are not allowed to visit :code:`gaming` websites. (two policies)
+
+.. Note::
+
+  When not using user based authentication (network only), the default policy is :code:`deny` so you would need to add
+  at least one policy accepting traffic in these cases.
 
 
 Policy types
