@@ -242,6 +242,72 @@ YoYo List                             https://pgl.yoyo.org/adservers/
 
     Usually once a day is a good enough interval for these type of tasks.
 
+
+-------------------------
+Custom Forwarding
+-------------------------
+
+Enabling Query Forwarding in Unbound-->General lets Unbound use the configured system nameservers to
+forward queries to. Since this does not allow for fine-grained control, the Custom Forwarding section allows for
+entering arbitrary nameservers to forward queries to. It is assumed that the nameservers entered here are capable
+of handling further recursion for any query. In this section you are able to specify nameservers to forward to 
+for specific domains queried by clients, catch all domains and specify nondefault ports.
+
+=====================================================================================================================
+
+.. note::
+
+    Keep in mind that if Query Forwarding in Unbound-->General is enabled, the system nameservers will be preferred
+    over any **catch-all entry** in both Custom Forwarding and DNS-over-TLS, this means that entries with a specific domain
+    will still be forwarded to the specified nameserver.
+
+
+====================================  ===============================================================================
+Enabled                               Enable query forwarding for this domain.
+Domain                                Domain of the host. All queries for this domain will be forwarded to the 
+                                      nameserver specified in "Server IP". Leave empty to catch all queries and
+                                      forward them to the nameserver.
+Server IP                             Address of the DNS server to be used for recursive resolution.
+Port                                  Specify the port used by the DNS server. Default is port 53. Useful when
+                                      configuring e.g. :doc:`/manual/how-tos/dnscrypt-proxy`
+====================================  ===============================================================================
+
+-------------------------
+DNS over TLS
+-------------------------
+
+DNS over TLS uses the same logic as Custom Forwarding, except it uses TLS for transport. 
+
+=====================================================================================================================
+
+.. note:: 
+
+    Please be aware of interactions between Custom Forwarding and DNS over TLS. Since the same principle as Custom 
+    Forwarding applies, a **catch-all entry** specified in both sections will be considered a duplicate zone. 
+    In our case DNS over TLS will be preferred.
+
+
+====================================  ===============================================================================
+Enabled                               Enable DNS over TLS for this domain.
+Domain                                Domain of the host. All queries for this domain will be forwarded to the 
+                                      nameserver specified in "Server IP". Leave empty to catch all queries and
+                                      forward them to the nameserver.
+Server IP                             Address of the DNS server to be used for recursive resolution.
+Port                                  Specify the port used by the DNS server. Always enter port 853 here unless 
+                                      there is a good reason not to, such as when using an SSH tunnel.
+Verify CN                             The name to use for certificate verification, e.g. "445b9e.dns.nextdns.io"
+                                      Used by Unbound to check the TLS authentication certificates.
+                                      It is strongly discouraged to omit this field since man-in-the-middle attacks
+                                      will still be possible.
+====================================  ===============================================================================
+
+.. tip:: 
+
+    To ensure a validated environment, it is a good idea to block all outbound DNS traffic on port 53 using a 
+    firewall rule when using DNS over TLS. Should clients query other nameservers directly themselves, a NAT 
+    redirect rule to 127.0.0.1:53 (the local Unbound service) can be used to force these requests over TLS.
+    
+
 -------------------------
 Statistics
 -------------------------

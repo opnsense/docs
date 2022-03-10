@@ -14,17 +14,17 @@ After a page reload you will get a new menu entry under **Services** for DNSCryp
 When you start the daemon, it looks for a list of public DNS server from here:
 https://dnscrypt.info/public-servers
 
-Depending on all settings below the list will shortened to your choice, like only IPv4, or logging disabled.
+Depending on all settings below the list can be shortened to your choice, like only IPv4, or logging disabled.
 The fastest two servers will be used for DNS queries. If you use Unbound as your main resolver and want to
-send your queries to Unbound first and forward to DNSCrypt-Proxy, just set this in your Unbound Advanced
-settings:
+send your queries to Unbound first and forward to DNSCrypt-Proxy, just set this in your Unbound Custom Forwarding
+entries:
 
-.. code-block:: sh
-
-    do-not-query-localhost: no
-    forward-zone:
-    name: "."
-    forward-addr: 127.0.0.1@5353
+====================================  ===============================================================================
+Enabled                               Checked
+Domain                                <empty>
+Server IP                             127.0.0.1
+Port                                  5353
+====================================  ===============================================================================
 
 ----------------
 General Settings
