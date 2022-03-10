@@ -8,7 +8,7 @@ IPv6 For Zen UK
 Zen provide two methods of setting up IPv6.
 
 The first method is a simple DHCP method which should suffice most
-users, the second allows you to set up static IPv6 on both WAN and LAN.
+users, the second allows you to set up static IPv6 on LAN.
 In either case the addresses and prefixes are constant and even under
 DHCP will not change. Currently Zen provide a /64 WAN address and a /48
 prefix allocation. These will have been given to you by Zen when you
@@ -43,9 +43,6 @@ The only other requirement in this section is to select ‘Use IPv4
 connectivity’, this is because the IPv6 traffic is routed over the PPPoE
 link.
 
-In the example above, ‘Enable debug’ is selected, this adds extra dhcp6c
-logging information to the DHCP logs, this is optional.
-
 Click ‘Save’ and then ‘Apply’.
 
 **LAN Interface**
@@ -77,66 +74,34 @@ It is advisable at this point to reboot the system.
 Although slightly more complex, this option gives you greater control
 over LAN DHCP6 server, as this can be tailored to specific needs.
 
-We can take advantage of the link-local that is automatically set up
-between our router and the Zen BNG, we do not need to know specific
-gateways at the Zen end, it all gets routed automagically, however we do
-need to set up all of our static assignments, and our DHCPv6/RADVD
-servers.
-
-
-**Create Gateway**
-------------------
-Firstly, we do need to set up a gateway, this is for monitoring more
-than anything else. Select :menuselection:`Gateways --> All` then click ‘Add Gateway’.
-
-Now, we know that Zen give us a /64 on our WAN interface, for example.
-
-2a02:8231:d256:318::/66
-
-Pick an address, we’ll use ‘1’, so our WAN address
-2a02:8231:d256:318::1, it’s also going to be our gateway.
-
-We will also add a target IP for our monitor, the target will be a
-global WAN address of something. You can use the Google v6 DNS server
-address if you wish. If no monitor is given the gateway address is used,
-which can check gateway health status but may or may not indicate access
-to the Internet.
-
-Set up the gateway like this:
-
-
-.. image:: images/ZenUK_image5.png
-	:width: 100%
-
-Click Save.
+**Note:** The previous version of this guide provided instructions to configure WAN interface statically. Zen have advised that they are now phasing out static configuration and therefore recommend customers to switch to DHCPv6 for WAN interface.
 
 **WAN Interface**
 -----------------
-Once we have our gateway in place we can then set up the WAN interface.
-Select :menuselection:`Interfaces --> [WAN]`.
 
-Go to IPv6 Configuration Type and select Static IPv6.
+Zen use PPPoE in the initial V4 connection, so enter PPPoE as the V4
+connection type and set the username and password for the PPPoE
+connection, for IPv6 using DHCP, select DHCPv6 in the IPv6 connection as
+shown below.
 
-.. image:: images/ZenUK_image6.png
+.. image:: images/ZenUK_image1.png
 	:width: 100%
 
-Go to Static IPv6 Configuration and set the IPv6 Static address:
+The next step is to configure the parameters required for DHCPv6, these
+are located in the DHCPv6 client configuration section of the WAN
+interface shown below.
 
-**Tip Use the same address as found when setting the system up to use
-DHCPv6.**
-
-.. image:: images/ZenUK_image7.png
+.. image:: images/ZenUK_image2.png
 	:width: 100%
 
-Select Use IPv4 connectivity, all IPv6 traffic goes via the PPPoE link.
+As stated before, Zen provide a /48 prefix, so select the prefix size
+accordingly. 
 
-Finally, select the IPv6 Upstream Gateway, this is the gateway you
-created earlier.
+The only other requirement in this section is to select ‘Use IPv4
+connectivity’, this is because the IPv6 traffic is routed over the PPPoE
+link.
 
-.. image:: images/ZenUK_image8.png
-	:width: 100%
-
-Click Save and Apply.
+Click ‘Save’ and then ‘Apply’.
 
 **LAN Interface**
 -----------------
@@ -144,7 +109,7 @@ Click Save and Apply.
 The LAN interface is very simple to set up, all we need to do is set the
 IPv6 Configuration Type to Static, and enter our static address.
 
-.. image:: images/ZenUK_image9.png
+.. image:: images/ZenUK_image5.png
 	:width: 100%
 
 Zen give us a /48 prefix to use on the LAN, so pick an address from that
@@ -156,7 +121,7 @@ So
 
 2a02:8242:55AB:0:4:3:2:1 would suffice.
 
-.. image:: images/ZenUK_image10.png
+.. image:: images/ZenUK_image6.png
 	:width: 100%
 
 We want to use a /64 prefix on this interface.
@@ -175,7 +140,7 @@ automatically, however when using statics, we need to set it up. Go to
 
 Firstly, enable the server.
 
-.. image:: images/ZenUK_image11.png
+.. image:: images/ZenUK_image7.png
 	:width: 100%
 
 You will notice that the subnet already has a range, and the subnet mask
@@ -190,7 +155,7 @@ Enter the upper – end range that the server will use.
 
 2a02:8231:d256::eeee:ffff:ffff:ffff
 
-.. image:: images/ZenUK_image12.png
+.. image:: images/ZenUK_image8.png
 	:width: 100%
 
 This should cover most LAN subnets, the range given here gives
@@ -202,7 +167,7 @@ prefixes, we are only interested in the upper 64 bits, as in this
 example we will only be giving out 64 bit prefixes. We know we have been
 given a /48 prefix by Zen, so we enter our prefix range like this:
 
-.. image:: images/ZenUK_image13.png
+.. image:: images/ZenUK_image9.png
 	:width: 100%
 
 Our prefix range is the upper 48 bits, plus some of the next 16 bits,
