@@ -29,8 +29,8 @@ By default the service is enabled after installation,
 ======================= =======================================================================================================================================================================
 Option                  Description
 ======================= =======================================================================================================================================================================
+Enable                  Enable the client
 Interval                The number of seconds address changes will be queried
-Check ip method         Service to query the current IP address
 ======================= =======================================================================================================================================================================
 
 
@@ -54,5 +54,7 @@ Service                 The provider of your Dynamic DNS Service.
 Username                Login or uder name to use, could be empty for token based authentication
 Password                Password or security token to use
 Hostname                Enter the fully qualified domain names to update via the selected service. For example: *myhost.dyndns.org*
+Check ip method         Service to query the current IP address
+Interface to monitor    Interface to collect an address from when choosing "Interface" as check ip method, or source interface used to connect to the check ip service
 Description             A description to easily identify this rule in the overview.
 ======================= =======================================================================================================================================================================
