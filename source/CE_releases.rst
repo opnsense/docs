@@ -8,7 +8,7 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *220* releases leading to the latest version *22.1.2*
+As of January 2015 there have been *222* releases leading to the latest version *22.1.4*
 named "Observant Owl".
 
 

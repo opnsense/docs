@@ -34,6 +34,96 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+22.1.4 (March 24, 2022)
+--------------------------------------------------------------------------
+
+
+QinQ support based on the FreeBSD 13 VLAN base functionality is finally
+here!  To make the best use of it a MVC conversion of the GUI pages was
+carried out meaning these are now fully API-enabled as well.  Two bugs
+in the previous GIF/GRE rework have also been reported and fixed.
+
+Note while this does fix CVE-2022-0778 even for LibreSSL the security
+audit database by FreeBSD will falsely flag the 3.3.6 release as vulnerable
+when in fact it is not.  Since build issues arise on LibreSSL 3.4 that involve
+plugin dependencies in all likelihood we will be refraining from updating to
+version 3.4 altogether and do not have much hope for the upcoming 3.5 either.
+
+Here are the full patch notes:
+
+* system: prefer configured IP address family use earlier on boot
+* system: allow boot to perform generic UFS/ZFS grow using the /.probe.for.growfs marker file
+* system: import ZFS pools before mounting ZFS datasets
+* reporting: use asynchronous DNS resolver for reverse lookups on traffic page
+* interfaces: loopback "lo0" exists for VIPs
+* interfaces: only strip addresses on configured IP types
+* interfaces: use new ifctl utility for DHCPv6 IP type and add manual page
+* interfaces: adjust MTU configuration when parent also requires MTU changes
+* interfaces: VLAN MVC conversion with API and QinQ support
+* interfaces: cleanup surrounding LAGG function use
+* firewall: constrain default CARP allow rules to those defined in RFC 5798
+* firewall: make sure that rule use of gateways (route-to) and reply-to are mutually exclusive
+* firewall: tighten alias FQDN validation to avoid accepting mistypes such as "192.168.01.1"
+* firmware: revoke the 21.7 fingerprint
+* intrusion detection: improve row count on alerts page
+* backend: consolidate configctl utility into one location and add manual page
+* plugins: os-ddclient 1.4 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-theme-cicada 1.29
+* plugins: os-theme-vicuna 1.41
+* src: openssl: fix a bug in BN_mod_sqrt() that can cause it to loop forever `[2] <FREEBSD:FreeBSD-SA-22:03.openssl>`__ 
+* src: zfs: fix handling of errors from dmu_write_uio_dbuf() `[3] <FREEBSD:FreeBSD-EN-22:10.zfs>`__ 
+* src: debugnet: remove spurious message on boot
+* ports: ca_root_nss fix for faulty upstream file linking
+* ports: libressl 3.3.6 `[4] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.6-relnotes.txt>`__ 
+* ports: openssl 1.1.1n `[5] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openvpn 2.5.6 `[6] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.6>`__ 
+
+
+
+--------------------------------------------------------------------------
+22.1.3 (March 17, 2022)
+--------------------------------------------------------------------------
+
+
+This update includes groundwork for interface handling improvements
+making the boot more flexible in complex interface assignment scenarios
+involving GIF, GRE and bridge devices.
+
+Please note this update does not include the current OpenSSL security
+advisory due to overlapping time schedules.  22.1.4 will include these
+and will likely be released next week.
+
+Here are the full patch notes:
+
+* system: remove "all" group handling code forgotten in 2015
+* interfaces: resolve device/interface interdependency on boot
+* interfaces: do not update VIPs on dynamic address changes
+* interfaces: remove unused reference and return value from interface_carp_configure()
+* interfaces: remove unused reference from interface_ipalias_configure()
+* interfaces: stop IPv6 from reacting to simple stop/detach/down events via rc.linkup
+* interfaces: introduce ifctl helper for future use
+* firewall: allow per-rule adaptive timeouts (contributed by kulikov-a)
+* dhcp: stream-read log and leases files for "dhcpd update prefixes" action
+* firmware: use opnsense-update for version info in update checks
+* firmware: independently check for available upgrade sets
+* firmware: separate the "needs_reboot" and "upgrade_needs_reboot" check flags
+* firmware: add URL return feature to changelog script
+* firmware: improve the connectivity audit
+* ipsec: clean up stale CA certificates on reconfigure
+* plugins: os-ddclient 1.3 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-freeradius templating generation fix
+* ports: dnspython 2.2.1 `[2] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
+* ports: dpinger 3.2 `[3] <https://github.com/dennypage/dpinger/releases/tag/v3.2>`__ 
+* ports: expat 2.4.7 `[4] <https://github.com/libexpat/libexpat/blob/R_2_4_7/expat/Changes>`__ 
+* ports: krb5 1.19.3 `[5] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
+* ports: nss 3.76 `[6] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.76_release_notes>`__ 
+* ports: openssh 8.9p1 `[7] <https://www.openssh.com/txt/release-8.9>`__ 
+* ports: sudo 1.9.10 `[8] <https://www.sudo.ws/stable.html#1.9.10>`__ 
+* ports: syslog-ng 3.36.1 `[9] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.36.1>`__ 
+
+
+
+--------------------------------------------------------------------------
 22.1.2 (March 01, 2022)
 --------------------------------------------------------------------------
 
@@ -111,7 +201,18 @@ A hotfix release was issued as 22.1.2_1:
 * ipsec: fix mobile switch logic
 * ports: cyrus-sasl 2.1.28
 
+Images have been subsequently released as 22.1.2(_2):
 
+* system: fix return code on factory port assignment to prevent configuration loop
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-22.1.2-OpenSSL-dvd-amd64.iso.bz2) = d066d5620e28c22ff1d8de18532b61f8c7317b3258d5bdafb6a7a8dbb1eea002
+    # SHA256 (OPNsense-22.1.2-OpenSSL-nano-amd64.img.bz2) = dea720e15e67063d839bbf48017d32eb27071d58afee36bec40029319f5cc47e
+    # SHA256 (OPNsense-22.1.2-OpenSSL-serial-amd64.img.bz2) = 1b32287c13cc445a9a7a365b7879d00d3413ea53faf4cb23b3ef77b7916a1b7c
+    # SHA256 (OPNsense-22.1.2-OpenSSL-vga-amd64.img.bz2) = c6bbc0755d9458cc6484a98f074b62beaa30c5f02bd728ee1b0e896d2613b4b4
 
 --------------------------------------------------------------------------
 22.1.1 (February 16, 2022)
