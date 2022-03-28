@@ -2,7 +2,7 @@
 Monit
 =====
 
-OPNsense uses Monit for monitoring services. Monit has quite extensive monitoring capatibilities, which is why the
+OPNsense uses Monit for monitoring services. Monit has quite extensive monitoring capabilities, which is why the
 configuration options are extensive as well. This guide will do a quick walk through the setup, with the
 configuration options explained in more detail afterwards, along with some caveats.
 
