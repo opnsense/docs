@@ -379,3 +379,56 @@ This is a sample configuration file to add an option in the server clause:
 .. Note::
     This method replaces the ``Custom options`` settings in the General page of the Unbound configuration,
     which was removed in version 21.7.
+
+-------------------------
+DNS over TLS
+-------------------------
+
+DNS over TLS (DoT) is a network security protocol for encrypting and wrapping Domain Name System (DNS) queries and answers via the Transport Layer Security (TLS) protocol. The goal of the method is to increase user privacy and security by preventing eavesdropping and manipulation of DNS data via man-in-the-middle attacks.
+
+=====================================================================================================================
+
+====================================  ===============================================================================
+Domain                                If a domain is entered here, queries for this specific domain will be forwarded
+                                      to the specified server.
+                                      Leave blank to forward all queries to the specified server (default).
+Server IP                             IP address of DNS server to forward all requests.
+Server Port                           Port of DNS server, for usual DNS use 53, if you use DoT set it to 853.
+Verify CN                             Verify if CN in certificate matches this value. Please note that if this field
+                                      is omitted, Unbound will not perform any certificate verification. Therefore,
+                                      man-in-the-middle attacks are still possible.
+====================================  ===============================================================================
+
+Public Resolvers
+
++-------------------+-----------------------------------------+-------------+------------------------------+
+| Hosted by         | Server IP                               | Server Port | Verify CN                    |
++===================+=========================================+=============+==============================+
+| `Cloudflare`_     | 1.1.1.1                                 | 853         | cloudflare-dns.com           |
+|                   +-----------------------------------------+             |                              |
+|                   | 1.0.0.1                                 |             |                              |
+|                   +-----------------------------------------+             |                              |
+|                   | 2606:4700:4700::1111                    |             |                              |
+|                   +-----------------------------------------+             |                              |
+|                   | 2606:4700:4700::1001                    |             |                              |
++-------------------+-----------------------------------------+-------------+------------------------------+
+| `Google`_         | 8.8.8.8                                 | 853         | dns.google                   |
+|                   +-----------------------------------------+             |                              |
+|                   | 8.8.4.4                                 |             |                              |
+|                   +-----------------------------------------+             |                              |
+|                   | 2001:4860:4860::8888                    |             |                              |
+|                   +-----------------------------------------+             |                              |
+|                   | 2001:4860:4860::8844                    |             |                              |
++-------------------+-----------------------------------------+-------------+------------------------------+
+| `Quad9`_          | 9.9.9.9                                 | 853         | dns.quad9.net                |
+|                   +-----------------------------------------+             |                              |
+|                   | 149.112.112.112                         |             |                              |
+|                   +-----------------------------------------+             |                              |
+|                   | 2620:fe::fe                             |             |                              |
+|                   +-----------------------------------------+             |                              |
+|                   | 2620:fe::9                              |             |                              |
++-------------------+-----------------------------------------+-------------+------------------------------+
+
+.. _Cloudflare: https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/
+.. _Google: https://developers.google.com/speed/public-dns
+.. _Quad9: https://www.quad9.net/service/service-addresses-and-features/
