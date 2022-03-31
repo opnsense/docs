@@ -13,38 +13,58 @@ how to install them.
 **Product families**
 =====================================================================================================================
 
--------------------------
-DEC800 and DEC3800 series
--------------------------
-
-The following appliances using the Netboard `A20 <https://www.deciso.com/netboard-a20/>`_ 
-are affected:
-
-- `DEC800 series <https://shop.opnsense.com/dec800-series-opnsense-desktop-security-appliance/>`_
-- `DEC3800 series <https://shop.opnsense.com/dec3800-series-opnsense-rack-security-appliance/>`_
-
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-BIOS version 0009 (latest)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 To address a series of 
 `vulnerabilities <https://www.bleepingcomputer.com/news/security/uefi-firmware-vulnerabilities-affect-at-least-25-computer-vendors/>`_ 
 found in the InsydeH2O UEFI firmware, which affects security appliances from Deciso, the necessary
 downloads as well as the instructions to update the UEFI firmware are included here.
 
+-------------------------
+DEC800 and DEC3800 series
+-------------------------
 
+The following appliances using the NetBoard `A20 <https://www.deciso.com/netboard-a20/>`_ 
+are affected:
 
-**Windows**
+- `DEC800 series <https://shop.opnsense.com/dec800-series-opnsense-desktop-security-appliance/>`_
+- `DEC3800 series <https://shop.opnsense.com/dec3800-series-opnsense-rack-security-appliance/>`_
+  
+^^^^^^^^^^
+Downloads
+^^^^^^^^^^
 
-*Netboard A20*: :download:`Windows installer <files/NetBoard-A20-0009-USB-installer.zip>`
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+| DEC800 & DEC3800 series                                                                                                                             |
++-------+-------------------------------------------------------------------------+-------------------------------------------------------------------+
+| OS    | Download                                                                | SHA256 Checksum                                                   |
++=======+=========================================================================+===================================================================+
+|Windows|:download:`Windows installer <files/NetBoard-A20-USB-installer.zip>`     | b824b7508cdb56bd097afdd64bfca0c23e08f003a93a16846809e7a394187567  |
++-------+-------------------------------------------------------------------------+-------------------------------------------------------------------+
+|Linux  |:download:`Image <files/A20_0009_BIOS_USB_IMAGE.img.bz2>`                | da38482d3f9bcbea8aa6fe34c68b64ffb6f896ac9daa3011efb70b420e31ca01  |
++-------+-------------------------------------------------------------------------+-------------------------------------------------------------------+
 
-NetBoard-A20-USB-installer.zip (SHA256):13be16e3d7b081e7293a51d811610b87b265ee306396ff18a90450758c9c652d
+-------------------------
+DEC700 and DEC2700 series
+-------------------------
 
-**Linux**
+The following apliances using the NetBoard `A10 <https://www.deciso.com/netboard-a10/>`_
+are affected:
 
-*Netboard A20*: :download:`Image <files/A20_0009_BIOS_USB_IMAGE.img.bz2>`
+- `DEC700 series <https://shop.opnsense.com/dec700-series-opnsense-desktop-security-appliance/>`_
+- `DEC2700 series <https://shop.opnsense.com/dec2700-series-opnsense-rack-security-appliance/>`_
 
-A20_009_BIOS_USB_IMAGE.img.bz2 (SHA256):da38482d3f9bcbea8aa6fe34c68b64ffb6f896ac9daa3011efb70b420e31ca01
+^^^^^^^^^^
+Downloads
+^^^^^^^^^^
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+| DEC700 & DEC2700 series                                                                                                                             |
++-------+-------------------------------------------------------------------------+-------------------------------------------------------------------+
+| OS    | Download                                                                | SHA256 Checksum                                                   |
++=======+=========================================================================+===================================================================+
+|Windows|:download:`Windows installer <files/NetBoard-A10-USB-installer.zip>`     | 5fc6fcc98d17d207b29e4e8f9ac5a0765a2f69b2ff058f958e7727519d0b676f  |
++-------+-------------------------------------------------------------------------+-------------------------------------------------------------------+
+|Linux  |:download:`Image <files/A10_022_BIOS_USB_IMAGE.img.bz2>`                 | a4c107d7fa1240fbb1e2fd5368c30d5ff7e66897424cf34942dd260b11eca9b8  |
++-------+-------------------------------------------------------------------------+-------------------------------------------------------------------+
 
 
 **Installation instructions**
@@ -61,7 +81,7 @@ Make sure you have an empty or unused USB drive before starting this procedure.
 
 **Step 1**
 
-Download the right file depending on your platform from the :ref:`downloads <downloads>` section below. For Windows,
+Download the right file depending on your platform from the section above. For Windows,
 an installer is provided. For Linux, an image is provided.
 
 **Step 2** 
