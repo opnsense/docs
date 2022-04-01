@@ -255,7 +255,7 @@ and specify nondefault ports.
 =====================================================================================================================
 
 ====================================  ===============================================================================
-Use System Namerservers               The configured system nameservers will be used to forward queries to. 
+Use System Nameservers                The configured system nameservers will be used to forward queries to. 
                                       This will override any entry made in the custom forwarding grid, except for 
                                       entries targeting a specific domain. If there are no system nameservers, you
                                       will be prompted to add one in `General <settingsmenu.html#general>`__. 
