@@ -60,11 +60,11 @@ Tayga is a hop in the path, so it needs its own IP addresses for ICMP:
 Tayga behaves like an external device connected to OPNsense via a point-to-point interface. This interface requires IP addresses for ICMP:
 
 :IPv4 NAT64 Interface Address:
-   Can be left to its default value unless this conflicts with your network. Must not be located in the `IPv4 Pool` subnet. For simplicity,
-   you may reuse an address of another OPNsense interface.
+   Can be left to its default value unless this conflicts with your network. Must not be located in the `IPv4 Pool` subnet and must not be
+   used by another interface or VIP.
 
 :IPv6 NAT64 Interface Address:
-   Must not be located in the `IPv6 Prefix` subnet. For simplicity, you may reuse an address of another OPNsense interface.
+   Must not be located in the `IPv6 Prefix` subnet and must not be used by another interface or VIP.
 
    .. Warning::
       The default value must not be used since 2001:db8::/32 is a documentation-only prefix.
