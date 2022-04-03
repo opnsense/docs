@@ -78,6 +78,10 @@ Here are the full patch notes:
 * ports: openssl 1.1.1n `[5] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: openvpn 2.5.6 `[6] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.6>`__ 
 
+A hotfix release was issued as 22.1.4_1:
+
+* mvc: properly root the model mount point to avoid unrelated XML node name overlap
+
 
 
 --------------------------------------------------------------------------
