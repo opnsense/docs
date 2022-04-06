@@ -97,29 +97,30 @@ it will start them all.
 
     Due to the nature of this option, it can't be combined with other carp options available.
 
-OSPF: CARP demote
+OSPF[6]: CARP demote
 .............................
 
 This option registers a :doc:`status monitor </development/backend/carp>` on top of the FRR logging feed to detect changes in link status,
 when OSPF can't find its neighbors it will make this machine less attractive by increasing the demotion factor.
 
-The feature is inspired by OpenBSD's handling of carp demotion in ospfd (https://man.openbsd.org/ospfd.conf.5).
+The feature is inspired by OpenBSD's handling of carp demotion in ospfd (https://man.openbsd.org/ospfd.conf.5) and can be enabled
+using the :code:`CARP demote` checkbox in :menuselection:`Routing: OSPF[v3]`.
 
 .. Note::
 
-    Since the relevant neighbor negotiation messages are only being logged when the log level is configured to debug,
+    Since the relevant neighbor negotiation messages are only being logged when the log level (in :menuselection:`Routing --> General`) is configured to debug,
     the log will be more loud when using this feature. When using a lower log level the status monitor is not expected
     to catch any relevant events.
 
 
-OSPF: Influence interface cost based on CARP status
+OSPF[6]: Influence interface cost based on CARP status
 ......................................................................
 
 FRR natively does not support interaction with carp status as the variant in openbsd does
 (carp note in “depend on” keyword https://man.openbsd.org/ospfd.conf.5), this is where our next option comes into play.
 
 Using the interface settings of an OSPF interface you can choose to adjust costs for that interface based on the carp status of the
-selected virtual address. Go to :menuselection:`Routing --> OSPF -> Interface` and choose an interface, here you will find the
+selected virtual address. Go to :menuselection:`Routing --> OSPF[v3] -> Interface` and choose an interface, here you will find the
 following options that influence behaviour:
 
 * Depend on (carp)
