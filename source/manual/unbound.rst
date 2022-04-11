@@ -242,6 +242,113 @@ YoYo List                             https://pgl.yoyo.org/adservers/
 
     Usually once a day is a good enough interval for these type of tasks.
 
+
+-------------------------
+Query Forwarding
+------------------------- 
+
+The Query Forwarding section allows for entering arbitrary nameservers to forward queries to. It is assumed 
+that the nameservers entered here are capable of handling further recursion for any query. In this section 
+you are able to specify nameservers to forward to for specific domains queried by clients, catch all domains 
+and specify nondefault ports.
+
+=====================================================================================================================
+
+====================================  ===============================================================================
+Use System Nameservers                The configured system nameservers will be used to forward queries to. 
+                                      This will override any entry made in the custom forwarding grid, except for 
+                                      entries targeting a specific domain. If there are no system nameservers, you
+                                      will be prompted to add one in `General <settingsmenu.html#general>`__. 
+                                      If you expected a DNS server from your WAN and it's not listed, make sure you 
+                                      set "Allow DNS server list to be overridden by DHCP/PPP on WAN" there as well.
+====================================  ===============================================================================
+
+.. note::
+
+    Keep in mind that if the "Use System Nameservers" checkbox is checked, the system nameservers will be preferred
+    over any **catch-all entry** in **both** Query Forwarding and DNS-over-TLS, this means that entries with a specific domain
+    will still be forwarded to the specified nameserver.
+
+====================================  ===============================================================================
+Enabled                               Enable query forwarding for this domain.
+Domain                                Domain of the host. All queries for this domain will be forwarded to the 
+                                      nameserver specified in "Server IP". Leave empty to catch all queries and
+                                      forward them to the nameserver.
+Server IP                             Address of the DNS server to be used for recursive resolution.
+Port                                  Specify the port used by the DNS server. Default is port 53. Useful when
+                                      configuring e.g. :doc:`/manual/how-tos/dnscrypt-proxy`
+====================================  ===============================================================================
+
+-------------------------
+DNS over TLS
+-------------------------
+
+DNS over TLS uses the same logic as Query Forwarding, except it uses TLS for transport. 
+
+=====================================================================================================================
+
+.. note:: 
+
+    Please be aware of interactions between Query Forwarding and DNS over TLS. Since the same principle as Query 
+    Forwarding applies, a **catch-all entry** specified in both sections will be considered a duplicate zone. 
+    In our case DNS over TLS will be preferred.
+
+
+====================================  ===============================================================================
+Enabled                               Enable DNS over TLS for this domain.
+Domain                                Domain of the host. All queries for this domain will be forwarded to the 
+                                      nameserver specified in "Server IP". Leave empty to catch all queries and
+                                      forward them to the nameserver.
+Server IP                             Address of the DNS server to be used for recursive resolution.
+Port                                  Specify the port used by the DNS server. Always enter port 853 here unless 
+                                      there is a good reason not to, such as when using an SSH tunnel.
+Verify CN                             The name to use for certificate verification, e.g. "445b9e.dns.nextdns.io".
+                                      Used by Unbound to check the TLS authentication certificates.
+                                      It is strongly discouraged to omit this field since man-in-the-middle attacks
+                                      will still be possible.
+====================================  ===============================================================================
+
+.. tip:: 
+
+    To ensure a validated environment, it is a good idea to block all outbound DNS traffic on port 53 using a 
+    firewall rule when using DNS over TLS. Should clients query other nameservers directly themselves, a NAT 
+    redirect rule to 127.0.0.1:53 (the local Unbound service) can be used to force these requests over TLS.
+    
+
+**Public Resolvers**
+
++-------------------+-----------------------------------------+-------------+------------------------------+
+| Hosted by         | Server IP                               | Server Port | Verify CN                    |
++===================+=========================================+=============+==============================+
+| `Cloudflare`_     | 1.1.1.1                                 | 853         | cloudflare-dns.com           |
+|                   +-----------------------------------------+             |                              |
+|                   | 1.0.0.1                                 |             |                              |
+|                   +-----------------------------------------+             |                              |
+|                   | 2606:4700:4700::1111                    |             |                              |
+|                   +-----------------------------------------+             |                              |
+|                   | 2606:4700:4700::1001                    |             |                              |
++-------------------+-----------------------------------------+-------------+------------------------------+
+| `Google`_         | 8.8.8.8                                 | 853         | dns.google                   |
+|                   +-----------------------------------------+             |                              |
+|                   | 8.8.4.4                                 |             |                              |
+|                   +-----------------------------------------+             |                              |
+|                   | 2001:4860:4860::8888                    |             |                              |
+|                   +-----------------------------------------+             |                              |
+|                   | 2001:4860:4860::8844                    |             |                              |
++-------------------+-----------------------------------------+-------------+------------------------------+
+| `Quad9`_          | 9.9.9.9                                 | 853         | dns.quad9.net                |
+|                   +-----------------------------------------+             |                              |
+|                   | 149.112.112.112                         |             |                              |
+|                   +-----------------------------------------+             |                              |
+|                   | 2620:fe::fe                             |             |                              |
+|                   +-----------------------------------------+             |                              |
+|                   | 2620:fe::9                              |             |                              |
++-------------------+-----------------------------------------+-------------+------------------------------+
+
+.. _Cloudflare: https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/
+.. _Google: https://developers.google.com/speed/public-dns
+.. _Quad9: https://www.quad9.net/service/service-addresses-and-features/
+
 -------------------------
 Statistics
 -------------------------
