@@ -19,7 +19,7 @@ Change Proxy Interfaces
 -----------------------
 If you want to change the interfaces (subnets) the proxy will bind to then click
 on the tab **Forward Proxy**. Now add/remove the interfaces in the **Proxy interfaces**
-field. 
+field.
 
 ---------------------------
 Change Proxy Listening Port
@@ -106,7 +106,7 @@ http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml
 
 This list is a simple flat list that looks like this:
 
-.. code-block:: guess
+.. code-block:: 
 
     101com.com
     101order.com

@@ -265,7 +265,7 @@ Let's make the following changes to the template:
 
 Find the following part:
 
-.. code-block:: guess
+.. code-block:: html
 
   <header class="page-head">
   <nav class="navbar navbar-default" >
@@ -281,7 +281,7 @@ Find the following part:
 
 And change to:
 
-.. code-block:: guess
+.. code-block:: html
 
     <header class="page-head">
         <div align="center">
@@ -304,7 +304,7 @@ Enter a **Template Name**, for this example we use **Company**.
 Hit Upload ( |upload| )
 
 .. |download| image:: images/btn_download.png
-      :width: 100%
+    :width: 30px
 
 .. |upload| image:: images/btn_upload.png
 
@@ -438,7 +438,7 @@ For the example we create 10 vouchers. Click on **Generate**.
 A file will be generated called **Wi-Fi day pass.csv**.
 The content of this file looks like this:
 
-.. code-block:: guess
+.. code-block::
 
     username,password,vouchergroup,validity
     "IgJw@Pqf","MLi+Sb7Ak#","Wi-Fi day pass","86400"
@@ -540,7 +540,7 @@ Logout. For this feature we will use OPNsense's built-in API calls.
 
 In particular we will use the following API call (for zone id 0):
 
-.. code-block:: guess
+.. code-block::
 
   /api/captiveportal/access/status/0/
 
@@ -590,7 +590,7 @@ For this example we will use the cli to list the status off all active sessions.
 
 Type the following on the cli prompt to do so (for zone id 0):
 
-.. code-block:: guess
+.. code-block::
 
   configctl captiveportal list_clients 0
 

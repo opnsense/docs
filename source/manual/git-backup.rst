@@ -55,7 +55,7 @@ we choose this loosely coupled method. Events which are yet unprocessed are bein
     remains active.
 
 Git backup will push collected commits to the upstream repository nightly.
-To shorten this default interval, a custom cronjob (see :doc:`Settings </manual/settingsmenu#cron>`) can be
+To shorten this default interval, a custom cronjob (see :doc:`Settings </manual/settingsmenu>`) can be
 set up, selecting `Remote Backup` as the Command. The regular backup procedure (which is also being triggered using the test
 button in the user interface) is responsible for initialising the empty local repository and configuring the upstream target.
 

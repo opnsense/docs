@@ -80,7 +80,7 @@ have also configured the transparent SSL proxy mode.
 
 If everything went well you should see something similar to this in you browser:
 
-.. code-block:: guess
+.. code-block::
 
   The content you just requested contains EICAR Test String and was blocked by the
   Symantec Protection Engine based on local administrator settings. Contact your

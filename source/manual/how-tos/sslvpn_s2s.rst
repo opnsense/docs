@@ -221,7 +221,7 @@ You will see the shared key, copy this and keep it safe!
 
 Sample key:
 
-.. code-block:: guess
+.. code-block:: 
 
   #
   # 2048 bit OpenVPN static key

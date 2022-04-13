@@ -10,7 +10,7 @@ Administration
 --------------
 
 The settings on this page concerns logging into OPNsense. The “Secure Shell” settings are described under
-:ref:`Creating Users & Groups<SSH and console login>`.
+:doc:`Creating Users & Groups</manual/how-tos/user-local>`.
 
 +----------------------------------------------+-----------------------------------------------------------------------+
 | Setting                                      | Explanation                                                           |
