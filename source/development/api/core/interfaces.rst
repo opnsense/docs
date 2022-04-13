@@ -16,6 +16,21 @@ Interfaces
 
     "``<<uses>>``", "", "", "", "*model* `Loopback.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Loopback.xml>`__"
 
+.. csv-table:: Resources (VlanSettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","interfaces","vlan_settings","addItem",""
+    "``POST``","interfaces","vlan_settings","delItem","$uuid"
+    "``GET``","interfaces","vlan_settings","get",""
+    "``GET``","interfaces","vlan_settings","getItem","$uuid=null"
+    "``POST``","interfaces","vlan_settings","reconfigure",""
+    "``*``","interfaces","vlan_settings","searchItem",""
+    "``GET``","interfaces","vlan_settings","set",""
+    "``POST``","interfaces","vlan_settings","setItem","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Vlan.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Vlan.xml>`__"
+
 .. csv-table:: Resources (VxlanSettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
