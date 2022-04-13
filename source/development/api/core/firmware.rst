@@ -14,6 +14,7 @@ OPNsense has several API calls to get and set the firmware configuration:
    "``POST``","Core","Firmware","setFirmwareConfig",""
    "``GET``","Core","Firmware","info",""
    "``GET``","Core","Firmware","status",""
+   "``POST``","Core","Firmware","status",""
    "``POST``","Core","Firmware","audit",""
    "``POST``","Core","Firmware","update",""
    "``POST``","Core","Firmware","upgrade",""
