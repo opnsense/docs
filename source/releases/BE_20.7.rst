@@ -224,7 +224,7 @@ Here are the full patch notes:
 
 This release finally wraps up the recent Netmap kernel changes and tests.
 The Realtek vendor driver was updated as well as third party software cURL,
-libxml2, OpenSSL, PHP, Suricata, Syslog-ng and Unbound just to name a couple
+libxml, OpenSSL, PHP, Suricata, Syslog-ng and Unbound just to name a couple
 of them.
 
 We would like to thank Sunny Valley Networks for their relentless efforts
@@ -271,7 +271,7 @@ Here are the full patch notes:
 * src: netmap tun and lagg support (contributed by Sunny Valley Networks)
 * src: update Realtek re driver to upstream version 1.96.04 (contributed by Laurent Dinclaux)
 * ports: curl 7.73.0 `[3] <https://curl.se/changes.html#7_73_0>`__ 
-* ports: libxml2 fixes for CVE-2019-20388, CVE-2020-7595 and CVE-2020-24977
+* ports: libxml fixes for CVE-2019-20388, CVE-2020-7595 and CVE-2020-24977
 * ports: nss 3.58 `[4] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.58_release_notes>`__ 
 * ports: openssl 1.1.1h `[5] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: php 7.3.23 `[6] <https://www.php.net/ChangeLog-7.php#7.3.23>`__ 

@@ -119,7 +119,7 @@ Here are the full patch notes:
 * mvc: ignore client-side anchors in breadcrumb generation
 * ui: do not use a CSRF input element ID
 * plugins: os-freeradius 1.4.1 fixes a warning in clients (contributed by Michael Muenz)
-* ports: libxml 2.4.7 `[1] <http://xmlsoft.org/news.html>`__ 
+* ports: libxml 2.4.7 `[1] <http://www.xmlsoft.org/news.html>`__ 
 * ports: py-ipaddress 1.0.19
 
 

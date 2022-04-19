@@ -37,7 +37,7 @@ tools.  Please see the full patch notes for details and references:
 * base: inconsistency between locale and rune locale states `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:09.xlocale.asc>`__ 
 * notable ports updates: phalcon 2.0.3 `[5] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.3>`__ , curl 7.43.0_2 `[6] <https://curl.haxx.se/changes.html>`__ ,
   openssh 6.8p1_8, python 2.7.10 `[7] <https://hg.python.org/cpython/raw-file/15c95b7d81dc/Misc/NEWS>`__ , perl 5.20.2_5 `[8] <https://perldoc.perl.org/5.20.2/perldelta>`__ , ntp 4.2.8p3 `[9] <http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ ,
-  libxml2 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap24-server 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
+  libxml 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap24-server 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
 * opnsense-update: will no longer try to reinstall the istalled version
   after a fresh installation
 * bsdinstaller: bring back cpdup to error out on low memory installation
@@ -376,11 +376,9 @@ Here are the full patch notes:
 * ports: choparp 20150613 `[5] <https://github.com/quinot/choparp>`__ 
 * ports: libxml 2.9.3 `[6] <http://www.xmlsoft.org/news.html>`__ 
 * ports: pkg 1.6.2 `[7] <https://github.com/freebsd/freebsd-ports/commit/0466b08981bf9c714>`__ 
-* ports: opnsense-bootstrap, the infamous installer that works on stock
-  FreeBSD `[8] <https://github.com/opnsense/update/commit/e3f63ecdb1149a8cc30e3>`__ 
+* ports: opnsense-bootstrap, the infamous installer that works on stock FreeBSD `[8] <https://github.com/opnsense/update/commit/e3f63ecdb1149a8cc30e3>`__ 
 * intrusion detection: ignore json parse errors in eve log file
-* intrusion prevention (development): added Suricata 2.1beta4 in inline
-  mode `[9] <https://forum.opnsense.org/index.php?topic=1740>`__ 
+* intrusion prevention (development): added Suricata 2.1beta4 in inline mode `[9] <https://forum.opnsense.org/index.php?topic=1740>`__ 
 * interfaces: reverted cache removal due to multiple speed regressions reports
 * backend: send timeouts with proper description to syslog
 * openvpn: fix auth server selection for translations
@@ -1140,7 +1138,7 @@ tools.  Please see the full patch notes for details and references:
 * base: inconsistency between locale and rune locale states `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:09.xlocale.asc>`__ 
 * notable ports updates: phalcon 2.0.3 `[5] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.3>`__ , curl 7.43.0_2 `[6] <https://curl.haxx.se/changes.html>`__ ,
   openssh 6.8p1_8, python 2.7.10 `[7] <https://hg.python.org/cpython/raw-file/15c95b7d81dc/Misc/NEWS>`__ , perl 5.20.2_5 `[8] <https://perldoc.perl.org/5.20.2/perldelta>`__ , ntp 4.2.8p3 `[9] <http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ ,
-  libxml2 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap24-server 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
+  libxml 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap24-server 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
 * opnsense-update: will no longer try to reinstall the istalled version
   after a fresh installation
 * bsdinstaller: bring back cpdup to error out on low memory installation

@@ -199,7 +199,7 @@ Here are the full patch notes:
 * src: libcasper: fix descriptors numbers `[14] <FREEBSD:EN-21:19.libcasper>`__ 
 * src: linux: prevent integer overflow in futex_requeue `[15] <FREEBSD:EN-21:22.linux_futex>`__ 
 * ports: filterlog 0.4 adds label support to output if applicable
-* ports: libxml2 fix for CVE-2021-3541
+* ports: libxml fix for CVE-2021-3541
 * ports: nss 3.65 `[16] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.65_release_notes>`__ 
 * ports: openssh 8.6p1 `[17] <https://www.openssh.com/txt/release-8.6>`__ 
 * ports: php 7.3.28 `[18] <https://www.php.net/ChangeLog-7.php#7.3.28>`__ 

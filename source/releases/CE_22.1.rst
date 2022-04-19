@@ -34,6 +34,83 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+22.1.6 (April 13, 2022)
+--------------------------------------------------------------------------
+
+
+Since the Unbound migration for overrides surfaced a number of issues
+in the new code this is a follow-up release to ensure interoperability.
+Thank you for the honest feedback, bug reports and code submissions.
+
+Here are the full patch notes:
+
+* system: obsolete plugins calling missing functions shall not produce fatal errors
+* system: added the correct content-type for the dashboard plugins feed (contributed by Bo Frederiksen)
+* reporting: do not rely on /var/run/booting test in system health backend code
+* firewall: adjust default deny label to include mention of possible state violation
+* firewall: fix sessions page ACL
+* interfaces: bring back strict reordering of VIPs during dynamic address acquire
+* dhcp: added reload action for cron use
+* dhcp: support supplying iPXE filename
+* firmware: use isolated directory for database update check
+* firmware: cross-version check was not using correct information
+* firmware: cross-version update should indicate base/kernel reinstall
+* unbound: domain override IP may contain port information
+* unbound: show combined hostname.domain description in new alias popup
+* unbound: properly support "_msdcs" domain override prefix
+* unbound: add missing alias description
+* unbound: fix overrides case sort order (contributed by NYOB)
+* unbound: fix ACL for overrides
+* unbound: fix handling of wildcard aliases (contributed by devin122)
+* mvc: add generic searchRecordsetBase() to match existing searchBase()
+* ports: phpseclib 2.0.37 `[1] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.37>`__ 
+
+
+
+--------------------------------------------------------------------------
+22.1.5 (April 07, 2022)
+--------------------------------------------------------------------------
+
+
+Due to popular demand the user experience for the revamped VLAN handling
+was improved in several areas.  Also incuded are a larger Unbound MVC
+rework and DNS system route apply changes from one single spot.  Last but
+not least the zlib vulnerability was fixed in FreeBSD amongst others.
+
+Here are the full patch notes:
+
+* system: set up all DNS system routes from system_resolvconf_generate()
+* system: properly clear legacy files when clearing log files
+* reporting: add ACPI and ARM temperature support to health data
+* interfaces: do not assume exclusive use of router file in IPv6 PPPoE case
+* interfaces: for symmetry with PPPoE do not reload WAN when address disappears
+* interfaces: VLAN UX changes include better tag and parent visibility and handling
+* interfaces: improve VLAN parent selection for batch changes to allow for a single apply
+* interfaces: hint at missing apply when trying to add a new interface in assignment page
+* captive portal: prevent cleansing password field
+* dhcp: give a hint on why an interface was ignored in radvd
+* firmware: exclude revision matching from latest changelog version check
+* unbound: add custom forwarding and overrides MVC pages
+* ui: omit total entries display for log grids
+* plugins: os-acme-client 3.9 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-chrony 1.5 `[2] <https://github.com/opnsense/plugins/blob/stable/22.1/net/chrony/pkg-descr>`__ 
+* plugins: os-ddclient 1.5 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/ddclient/pkg-descr>`__ 
+* src: pf(4) tables may fail to load `[4] <FREEBSD:FreeBSD-EN-22:15.pf>`__ 
+* src: potential jail escape vulnerabilities in netmap `[5] <FREEBSD:FreeBSD-SA-22:04.netmap>`__ 
+* src: bhyve e82545 device emulation out-of-bounds write `[6] <FREEBSD:FreeBSD-SA-22:05.bhyve>`__ 
+* src: mpr/mps/mpt driver ioctl heap out-of-bounds write `[7] <FREEBSD:FreeBSD-SA-22:06.ioctl>`__ 
+* src: 802.11 heap buffer overflow `[8] <FREEBSD:FreeBSD-SA-22:07.wifi_meshid>`__ 
+* src: zlib compression out-of-bounds write `[9] <FREEBSD:FreeBSD-SA-22:08.zlib>`__ 
+* ports: curl 7.82.0 `[10] <https://curl.se/changes.html#7_82_0>`__ 
+* ports: expat 2.4.8 `[11] <https://github.com/libexpat/libexpat/blob/R_2_4_8/expat/Changes>`__ 
+* ports libxml 2.9.13 `[12] <http://www.xmlsoft.org/news.html>`__ 
+* ports: monit 5.32.0 `[13] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.77 `[14] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.77_release_notes>`__ 
+* ports: python 3.8.13 `[15] <https://docs.python.org/release/3.8.13/whatsnew/changelog.html>`__ 
+
+
+
+--------------------------------------------------------------------------
 22.1.4 (March 24, 2022)
 --------------------------------------------------------------------------
 
