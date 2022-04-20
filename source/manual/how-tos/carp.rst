@@ -74,7 +74,7 @@ Setup interfaces & basic firewall rules
 .. Warning::
     Make sure the interface assignments on both systems are identical!
     Via :menuselection:`Interfaces --> Overview` you can check if e.g. DMZ is opt1 on
-    both machines. When the assigments differ you will have mixed 
+    both machines. When the assignments differ you will have mixed
     Master and Backup IPs on both machines.
 
 Our example uses three interfaces, which all have a rather basic setup.
