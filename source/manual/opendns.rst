@@ -5,7 +5,7 @@ OpenDNS
 `OpenDNS <https://www.opendns.com>`__ is a company and service that extends the Domain Name System (DNS) by adding features such as phishing
 protection and optional content filtering in addition to DNS lookup, if its DNS servers are used.
 
-When your behind a static IP address, usually it should be enough to just enter their name servers in
+When you are behind a static IP address, usually it should be enough to just enter the OpenDNS name servers in
 :menuselection:`System --> Settings --> General`.
 
 -------------------------
@@ -18,7 +18,7 @@ A minimum amount of settings is needed in order to register with OpenDNS.
 
 ====================================  ===============================================================================
 Enabled                               If enabled, the firewall will signal OpenDNS about address changes
-Username                              Username registered with at OpenDNS
+Username                              Username registered with OpenDNS
 Password                              Associated password
 Network                               The network name configured on the
                                       `Networks Dashboard <https://www.opendns.com/dashboard/networks/>`__ of
