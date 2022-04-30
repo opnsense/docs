@@ -14,9 +14,9 @@ Community
 ---------
 If you need help with OPNsense you can always try the community options first.
 When resorting to community support it is important to understand that anyone
-helping you is doing so for free and at their own time. Even tough your issue or
-question might not be answered fully it would be nice to thank the people who
-helped you.
+helping you is doing so for free and at their own time. Even though your issue or
+question may not be answered fully, it would be nice to thank the people who
+help you.
 
 To receive community support, the following options are available:
 
@@ -47,7 +47,7 @@ Tier 3 – Plugins (Community)
 - When accepting a Tier 3 feature into the code base, it will come with a number of limits and conditions:
 
   *  Submitter must commit to maintaining it:
-  
+
     - Make sure code compiles and correctly functions after OPNsense and/or external (e.g. library) changes
     - Support users when they encounter problems (forum / git issue tracker – all related issues will be assigned to the maintainer)
 
