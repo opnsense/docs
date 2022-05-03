@@ -126,7 +126,7 @@ Make note of it so you can compare it to the new version to verify everything we
 **Step 7**
 
 Go to Setup Utility --> AMD CBS --> FCH Common Options --> UART Configuration Options --> UART 0 Legacy Options.
-Make sure this setting is set to **Disabled**.
+Make sure this setting is set to **Disabled**. This is explained in :ref:`legacy_uart`.
 
 .. note::
 
