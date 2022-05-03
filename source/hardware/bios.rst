@@ -33,7 +33,7 @@ Downloads
 ^^^^^^^^^^
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------+
-| DEC800 & DEC3800 series                                                                                                                             |
+| DEC800 & DEC3800 series BIOS Version 9                                                                                                              |
 +-------+-------------------------------------------------------------------------+-------------------------------------------------------------------+
 | OS    | Download                                                                | SHA256 Checksum                                                   |
 +=======+=========================================================================+===================================================================+
@@ -57,7 +57,7 @@ Downloads
 ^^^^^^^^^^
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------+
-| DEC700 & DEC2700 series                                                                                                                             |
+| DEC700 & DEC2700 series BIOS version 22                                                                                                             |
 +-------+-------------------------------------------------------------------------+-------------------------------------------------------------------+
 | OS    | Download                                                                | SHA256 Checksum                                                   |
 +=======+=========================================================================+===================================================================+
@@ -116,10 +116,24 @@ the appliance.
 
 **Step 5**
 
+Connect to the appliance using a :ref:`serial` connection. Open a terminal to the relevant COM port.
+
+**Step 6**
+
 Boot the appliance and enter the BIOS by pressing Escape. The current BIOS version (suffix) should show up.
 Make note of it so you can compare it to the new version to verify everything went well.
 
-**Step 6**
+**Step 7**
+
+Go to Setup Utility --> AMD CBS --> FCH Common Options --> UART Configuration Options --> UART 0 Legacy Options.
+Make sure this setting is set to **Disabled**.
+
+.. note::
+
+    Should your serial terminal highlight a BIOS option selection in such a way that it is unreadable, for
+    the A20 appliance it's the very first option in the UART Configuration Options menu screen.
+
+**Step 8**
 
 Select **Boot manager** and boot the USB drive. The UEFI shell will take over and execute the necessary BIOS update.
 If the update is complete, the machine will power off. **Do NOT do anything until the machine has shutdown.**
@@ -129,6 +143,6 @@ If the update is complete, the machine will power off. **Do NOT do anything unti
     Should the USB drive not show up, something went wrong during writing. The newly created FAT32 partition
     should be the very first block on the drive. Inspect the drive on a different machine to check the layout.
 
-**Step 7**
+**Step 9**
 
 Reboot the machine and check the new BIOS version in either the boot log or the BIOS itself. 
