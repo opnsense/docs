@@ -7,6 +7,11 @@ traffic to be routed between the two networks. This is most commonly used to
 connect an organization's branch offices back to its main office, so branch users
 can access network resources in the main office.
 
+.. Note::
+
+    When using the site to site example with :code:`SSL/TLS` instead of a shared key, make sure to configure "client specific overrides"
+    as well to correctly bind the remote networks to the correct client.
+    
 ----------------
 Before you start
 ----------------
