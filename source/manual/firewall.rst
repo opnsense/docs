@@ -91,7 +91,7 @@ Processing order
 
 .. _Firewall_Rule_Processing_Order:
 
-Firewall rules are processed in sequence, first evaluating the **Floating** rules section followed by all rules which
+Firewall rules are processed in sequence per section, first evaluating the **Floating** rules section followed by all rules which
 belong to **interface groups** and finally all **interface** rules.
 
 Internal (automatic) rules are usually registered first.
@@ -125,12 +125,12 @@ Our default deny rule uses this property for example (if no rule applies, drop t
     The interface should show all rules that are used, when in doubt, you can always inspect the raw output of the ruleset in :code:`/tmp/rules.debug`
 
 ....................
-Ordering rules
+Rule sequence
 ....................
 
-.. _Firewall_Rule_Ordering_Rules:
+.. _Firewall_Rule_Sequence:
 
-The order in which the rules are displayed and processed can be customized:
+The sequence in which the rules are displayed and processed can be customized per section:
 
 * Select one or more rules using the checkbox on the left side of the rule.
 * Use the arrow button in the action menu on the right side of a rule in order to move selected rules before the rule where the action button is pressed.
