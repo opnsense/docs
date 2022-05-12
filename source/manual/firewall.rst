@@ -124,6 +124,17 @@ Our default deny rule uses this property for example (if no rule applies, drop t
 
     The interface should show all rules that are used, when in doubt, you can always inspect the raw output of the ruleset in :code:`/tmp/rules.debug`
 
+....................
+Ordering rules
+....................
+
+.. _Firewall_Rule_Ordering_Rules:
+
+The order in which the rules are displayed and processed can be customized:
+
+* Select one or more rules using the checkbox on the left side of the rule.
+* Use the arrow button in the action menu on the right side of a rule in order to move selected rules before the rule where the action button is pressed.
+* Or you can use the arrow button on the top in the heading row to move the selected rules to the end.
 
 ......................
 Direction
