@@ -34,6 +34,59 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+22.1.7 (May 10, 2022)
+--------------------------------------------------------------------------
+
+
+This is a small maintenance release which fixes known vulnerabilities in
+OpenSSL et al.  Note that we are preparing for upgrade of Phalcon 5 framework
+and PHP 8.0 inclusion on our way to 22.7.
+
+Here are the full patch notes:
+
+* system: tunables without hierarchy are just "environment" variables
+* system: use PHP random_bytes() builtin (contributed by oittaa)
+* system: support cd9660 file system in opnsense-importer
+* reporting: fix validation in NetFlow settings
+* interfaces: interface_ppps_configure() remove boot-time side effect
+* interfaces: include VIPS for primary IPv4 detection
+* interfaces: DHCPv6 advanced has a different flag to disable NA
+* firewall: add missing range validation to alias host type
+* firewall: make rule parsing more consistent as x:any and any:y are valid port options
+* captive portal: simplify the voucher generation code (contributed by oittaa)
+* firmware: list locked packages in health audit
+* ipsec: mark non-sortable columns
+* openvpn: change filetype of export to text/ovpn
+* unbound: updated no coin list (contributed by Luis Nachtigall)
+* unbound: change overrides grid label when no results are returned
+* unbound: restore duplicate domain behaviour in overrides
+* mvc: safeguard multi_sort in searchRecordsetBase()
+* mvc: prevent silent crashes in legacy XML attribute emulation
+* mvc: Phalcon 5 migration layer to reduce dependencies on Phalcon builtins
+* mvc: fix two regressions and deprecate __items
+* plugins: os-acme-client 3.10 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-bind 1.23 `[2] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/bind/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.12 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-frr 1.28 `[4] <https://github.com/opnsense/plugins/blob/stable/22.1/net/frr/pkg-descr>`__ 
+* plugins: os-relayd 2.7 adds listen address and port range to virtual servers
+* plugins: os-zabbix-agent 1.12 `[5] <https://github.com/opnsense/plugins/blob/stable/22.1/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.8 `[6] <https://github.com/opnsense/plugins/blob/stable/22.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* ports: curl 7.83.0 `[7] <https://curl.se/changes.html#7_83_0>`__ 
+* ports: nss 3.78 `[8] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.78_release_notes>`__ 
+* ports: openssl 1.1.1o `[9] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: pcre2 10.40 `[10] <https://www.pcre.org/changelog.txt>`__ 
+* ports: php 7.4.29 `[11] <https://www.php.net/ChangeLog-7.php#7.4.29>`__ 
+* ports: pkg 1.17.5 `[12] <https://github.com/freebsd/freebsd-ports/commit/18793d10585f>`__ 
+* ports: suricata 6.0.5 `[13] <https://forum.suricata.io/t/suricata-6-0-5-and-5-0-9-released/2415>`__ 
+
+A hotfix release was issued as 22.1.7_1:
+
+* mvc: add missing URL validator class
+* plugins: os-nginx fix for validation class
+
+
+
+--------------------------------------------------------------------------
 22.1.6 (April 13, 2022)
 --------------------------------------------------------------------------
 
@@ -238,7 +291,7 @@ Here are the full patch notes:
 
 * system: Intel QuickAssist Technology (QAT) crypto module selection and support multiple selection
 * system: AESNI crypto module is a kernel-builtin since 22.1 and no longer needs to be selected to work
-* system: enable library support of PCRE JIT included since 21.1.1
+* system: enable library support of PCRE JIT included since 22.1.1
 * system: limit rowCount in log viewer (contributed by kulikov-a)
 * system: unify system tunables handling and tweak UX of the respective GUI page
 * system: no longer default to hw.uart.console use in factory configuration
@@ -516,7 +569,7 @@ Here are the full patch notes against version 21.7.7:
 * backend: unify use of configctl utility
 * images: removed deprecated os-dyndns plugin from default installation
 * mvc: fix logging of configd errors
-* mvc: Add BlankDesc to ModelRelationField (contributed by agh1467)
+* mvc: add BlankDesc to ModelRelationField (contributed by agh1467)
 * mvc: emulation versioning empty nodes for the legacy configuration sections
 * mvc: add getInterfaceConfig endpoint to interface API (contributed by Paolo Asperti)
 * mvc: add hint support for text fields (contributed by agh1467)
@@ -645,7 +698,7 @@ Here are the full patch notes:
 * network time: detach "limited" from "kod" option (contributed by Zsolt Zsiros)
 * network time: remove PID file use as it can be unreliable
 * mvc: fix logging of configd errors
-* mvc: Add BlankDesc to ModelRelationField (contributed by agh1467)
+* mvc: add BlankDesc to ModelRelationField (contributed by agh1467)
 * ui: move storing jQuery Bootgrid settings in browser from core to bootgrid (contributed by Manuel Faux)
 * plugins: os-ddclient 1.0 as an eventual replacement for os-dyndns
 * plugins: os-dyndns adds local copy of get_dyndns_ip()
