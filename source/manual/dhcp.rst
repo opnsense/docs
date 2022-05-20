@@ -42,6 +42,19 @@ To set the DHCP settings, go to :menuselection:`Services --> DHCPv4 --> [LAN]`. 
 put ``192.168.1.100`` as the start address and ``192.168.1.200`` as the end address. Then click Save. After saving,
 click the “Apply Settings” button.
 
+-------------------------
+Advanced settings
+-------------------------
+
+To configure options that are not available in the GUI one can add custom configuration files on the firewall itself.
+Files can be added in :code:`/usr/local/etc/dhcpd.opnsense.d/` for IPv4 and :code:`/usr/local/etc/dhcpd6.opnsense.d/`
+for IPv6, these should use as extension .conf (e.g. custom-options.conf). When more files are placed inside the directory,
+all will be included in alphabetical order.
+
+.. Warning::
+    It is the sole responsibility of the administrator which places a file in the extension directory to ensure that the configuration is
+    valid.
+
 .. _dhcp-relaying:
 
 -------------
