@@ -181,31 +181,6 @@ Select and validate countries in the world.
    "Multiple", "Y,N", "Allow to select multiple options"
    "AddInverted", "Y,N", "Add 'inverted'/excluded countries to the list, copies contry codes prefixes an :code:`!` (e.g. :code:`!NL`)"
 
-ConfigdActionsField
-------------------------------------
-
-Select available configd actions, supports filters to limit the number of choices. For example, the example below
-only shows actions which have a description.
-
-.. code-block:: xml
-
-    <command type="ConfigdActionsField">
-        <filters>
-            <description>/(.){1,255}/</description>
-        </filters>
-    </command>
-
-.. csv-table:: ConfigdActionsField
-   :header: "Parameter", "Options", "Purpose"
-   :widths: 30, 20, 40
-
-   "default", ":code:`text`", "Default value for new attributes"
-   "Required", "Y,N", "Mark field as required"
-   "ValidationMessage", ":code:`text`", "Error message on validation failure"
-   "BlankDesc", ":code:`text`", "Set a label for the empty option"
-   "Multiple", "Y,N", "Allow to select multiple options"
-   "Filters", "Y,N", "A structure of regex filters per atribute to exclude certain options from the list"
-
 
 
 EmailField
