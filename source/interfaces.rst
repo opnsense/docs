@@ -40,6 +40,7 @@ Setup guides
    manual/how-tos/lan_bridge
    manual/how-tos/transparent_bridge
    manual/how-tos/interface_wireless_internal
+   manual/how-tos/dt_ger_iptv
    manual/how-tos/orange_fr_fttp
    manual/how-tos/orange_fr_tvf
    manual/how-tos/sfr_red_fr_ftth
