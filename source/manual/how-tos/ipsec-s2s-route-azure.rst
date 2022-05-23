@@ -132,18 +132,11 @@ Save your setting by pressing:
 -------------------------
 Step 2 - Phase 2 OPNsense
 -------------------------
-Press the button that says '+ Show 0 Phase-2 entries'
 
-.. image:: images/ipsec_s2s_vpn_p1a_show_p2.png
+Press the button *+* in front of the phase 1 entry to add a new phase 2.
 
-You will see an empty list:
-
-.. image:: images/ipsec_s2s_vpn_p1a_p2_empty.png
-    :width: 100%
-
-Now press the **+** at the right of this list to add a Phase 2 entry.
 As we do not define a local and remote network, we just use tunnel addresses,
-you might already know from OpenVPN. In this example we use ``10.111.1.1`` and 
+you might already know from OpenVPN. In this example we use ``10.111.1.1`` and
 ``10.111.1.2``. These will be the gateway addresses used for routing
 
 General information
