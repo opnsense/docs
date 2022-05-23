@@ -55,6 +55,36 @@ Interfaces                         Select the interfaces of the central node tha
 ================================= ===============================================================================================================================================
 
 
+Multi tenancy using host groups
+----------------------------------
+
+Hosts can be organised in groups using the :menuselection:`Management->Host groups` menu option.
+By default hosts are accessible by all users having access to the specified OPNcentral menu options.
+You can change that behaviour by linking a host into one or more groups, where you can constrain access.
+
+.. blockdiag::
+  :scale: 100%
+
+    blockdiag {
+        orientation = portrait
+        default_fontsize = 9;
+
+        host_group [shape = box, label="Host group"];
+        host [shape = box, label="Host"];
+        user_group [shape = box, label="User group"];
+
+        host_group -> host;
+        user_group -> host_group [style = dotted];
+
+    }
+
+
+.. Warning::
+
+      When attaching a host to multiple host groups and want to constraint access, make sure you limit all host groups
+      to avoid accidental access for all OPNcentral users.
+
+
 Connect to managed machine
 ----------------------------------
 
