@@ -356,14 +356,17 @@ The installation process involves a few simple steps.
    The installer can also be started from the network using ssh, default ip
    address is 192.168.1.1
 
-#. Configure console - The default configuration should be fine for most
+#. Keymap selection - The default configuration should be fine for most
    occasions.
-#. Select task - The **Quick/Easy Install** option should be fine for most
-   occasions. For installations on embedded systems or systems with minimal
-   diskspace choose **Custom Installation** and do not create a swap slice.
-   Continue with default settings.
-#. **Are you SURE?** - When proceeding OPNsense will be installed on the
-   **first hard disk** in the system.
+#. Install (UFS|ZFS) - Choose either a UFS or ZFS filesystem. ZFS is in most
+   cases the best option as it is the most reliable option, but does require
+   enough memory (a couple of gigabytes at least).
+#. Partitioning (ZFS) - Choose a device type. When using a single disk the
+   default option (stripe) is usually fine.
+#. Continue with recommended swap (UFS) - Yes is usually fine here unless
+   the install target is very small (< 16GB)
+#. Root Password - Choose a new root password
+#. Complete Install - Exits the installer and reboots the machine
 #. Reboot - The system is now installed and needs to be rebooted to
    continue with configuration.
 
