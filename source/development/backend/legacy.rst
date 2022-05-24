@@ -205,8 +205,8 @@ To register syslog targets, the :code:`<plugin>_syslog()` function should return
 
 .. Note::
 
-    As of OPNsense 19.7 Syslog-NG is included in our base system, when not using circular logs, these files will
-    only be used to identify applications for custom syslog remote targets in :menuselection:`System->Settings->Logging / targets`.
+    As of OPNsense 19.7 Syslog-NG is included in our base system, these files will only be used to identify applications
+    for custom syslog remote targets in :menuselection:`System->Settings->Logging / targets`.
 
 
 To test if a service registration functions properly, just restart the syslog facility:
@@ -225,6 +225,12 @@ To test if a service registration functions properly, just restart the syslog fa
     When running into issues, always make sure to manually restart syslog-ng first (:code:`service syslog-ng restart`), definition errors won't
     be written into any log.
 
+.. Note::
+
+    In case additional source sockets should be used by Syslog-NG you can add files in :code:`/usr/local/opnsense/service/templates/OPNsense/Syslog/sources/`
+    containing definitions.
+    The `001-local.conf <https://github.com/opnsense/core/blob/22.1.7/src/opnsense/service/templates/OPNsense/Syslog/sources/001-local.conf#L5>`__ file
+    contains examples from jailed core services.
 
 -----------------
 XMLRPC (HA) sync

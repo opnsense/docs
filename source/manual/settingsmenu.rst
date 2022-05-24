@@ -214,54 +214,18 @@ An overview of the local settings:
 ============================================ ====================================================================================================================
 Setting                                      Explanation
 ============================================ ====================================================================================================================
-Disable circular logs                        Disable legacy circular logging and switch to regular file logging
-GUI Log Entries to Display                   Number of log entries displayed in the GUI.
-Log File Size (Bytes)                        (circular logs) Maximum size of circular logs (which most OPNsense log files are)
-Preserve logs (Days)                         (when circular logs are disabled) configures the number of days to keep logs.
+Preserve logs (Days)                         Configures the number of days to keep logs.
 Log Firewall Default Blocks                  Turning these off means that only hits for your custom rules will be logged.
 Web Server Log                               If checked, lighttpd errors are displayed in the main system log.
 Disable writing log files to the local disk  Useful to avoid wearing out flash memory (if used). Remote logging can be used to save the logs instead if desired.
 Reset Logs                                   Clear all logs. Note that this will also restart the DHCP server, so make sure any DHCP settings are saved first.
 ============================================ ====================================================================================================================
 
-.. Note::
-
-    Switching from legacy circular logs to regular log files doesn't remove stored data, but regular files will always
-    be considered more recent. If for some reason you want to switch back to clog, we advice to remove all logs to avoid older
-    entries being sorted on top of the views. When possible we advise to reset logs after each switch.
-
-.....................
-Circular Logs
-.....................
-
-Most of the core features support writing to circular log files so they will not grow bigger
-than a predefined size. You can tune this value via :menuselection:`System --> Settings --> Logging`.
-There, you can also disable the writing of logs to disk or reset them all.
-
-You can view the contents via CLI with:
-
-.. code-block:: sh
-
-    clog /path/to/log
-
-or follow the contents via:
-
-.. code-block:: sh
-
-    clog -f /path/to/log
-
-
-.. Note::
-
-    If you can avoid the use of circular logs we strongly advise to do so, the clog path is longer than the direct file path and
-    therefor is more expensive in terms of computing power. In the long run clog support will be dropped, it's not a native
-    FreeBSD syslog feature (and requires backporting).
-
 ............................
-Local (non circular) logs
+Local logs
 ............................
 
-As of OPNsense 20.7 we will change our default logging method from circular logs to regular files.
+As of OPNsense 20.7 we changed our default logging method to regular files.
 These files will use the following pattern on disk :code:`/var/log/<application>/<application>_[YYYYMMDD].log` (one file per day).
 Our user interface provides an integrated view stitching all collected files together.
 
