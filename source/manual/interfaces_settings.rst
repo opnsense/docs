@@ -7,6 +7,12 @@ you should leave these settings default, but advanced scenarios may require spec
 
 The settings on this page will be applied after reboot or a reconfiguration of each interface.
 
+
+.. Note::
+
+    When using VLAN's make sure to assign the parent interface as well as hardware settings are configured on the
+    device itself.
+
 --------------------
 Hardware CRC
 --------------------
