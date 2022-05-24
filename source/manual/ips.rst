@@ -220,6 +220,14 @@ Alerts
 In the "Alerts" tab you can view the alerts triggered by the IDS/IPS system.
 Use the info button here to collect details about the detected event or threat.
 
+Advanced configuration
+------------------------
+
+OPNsense supports custom Suricata configurations in `suricata.yaml <https://suricata.readthedocs.io/en/suricata-6.0.0/configuration/suricata-yaml.html>`__
+format. In order to add custom options, create a template file named :code:`custom.yaml` in the :code:`/usr/local/opnsense/service/templates/OPNsense/IDS/` directory.
+
+Since this file is parsed by our template system, you are able to use template tags using the :doc:`Jinja2 </development/backend/templates/>` language.
+
 Available rulesets
 ------------------
 
