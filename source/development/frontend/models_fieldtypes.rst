@@ -340,6 +340,8 @@ Define relations to other nodes in the model, such as to point the attribute :co
    :widths: 30, 20, 40
 
    "default", ":code:`text`", "Default value for new attributes"
+   "display", ":code:`text`", "Comma separated list of fields to display"
+   "display_format", ":code:`text`", ":code:`vsprintf()` format string"
    "Required", "Y,N", "Mark field as required"
    "ValidationMessage", ":code:`text`", "Error message on validation failure"
    "BlankDesc", ":code:`text`", "Set a label for the empty option"
