@@ -34,6 +34,51 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+22.1.8 (May 25, 2022)
+--------------------------------------------------------------------------
+
+
+Small reliability update which also includes a rework for firewall alias
+handling and preformance.
+
+Later today we will also publish a call for testing for the upcoming 22.7
+operating system base using FreeBSD 13.1.  It is going to be compatible
+with this 22.1.x series and existing feedback about it is promising so far.
+
+Here are the full patch notes:
+
+* system: only restore missing or zero size ACL files
+* system: support plugin device reconfiguration in pluginctl utility
+* system: prevent gateway monitoring from entering a "filter reload" loop
+* system: use password_verify() in authenticators (contributed by oittaa)
+* system: hide password from command line during config encryption
+* interfaces: add technical interface ID display to assignments page
+* firewall: various usability and visibility improvements for aliases
+* firewall: performance improvement for large numbers of port type aliases
+* firewall: simplify sort and add natural sorting in alias diagnostics
+* captive portal: add extendedPreAuthData for MAC address retrieval during authentication
+* dhcp: refactor IPv4 lease removal and purge static leases before starting service
+* dhcp: allow custom configuration from directories
+* firmware: bypass cache with timestamp in "upgradestatus" call (contributed by gibwar)
+* firmware: lowercase search in plugins/packages
+* intrusion detection: fix log file ACL mismatch
+* ipsec: squelch spurious errors on stderr for backend status action
+* unbound: add custom "destination address" as advanced option for blocklists
+* mvc: distinct between HTTP errors 401 and 403 during authentication
+* mvc: call microtime(true) only once during config save (contributed by csbyte)
+* plugins: os-acme-client 3.11 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-nginx 1.27 `[2] <https://github.com/opnsense/plugins/blob/stable/22.1/www/nginx/pkg-descr>`__ 
+* plugins: os-postfix 1.22 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/mail/postfix/pkg-descr>`__ 
+* src: tcp: rewind erroneous RTO only while performing RTO retransmissions
+* src: bnxt: Allow bnxt interfaces to use VLANs
+* src: rc: use _pidcmd to determine pid for protect
+* ports: curl 7.83.1 `[4] <https://curl.se/changes.html#7_83_1>`__ 
+* ports: sqlite 3.38.2 `[5] <https://sqlite.org/releaselog/3_38_2.html>`__ 
+* ports: strongswan 5.9.6 `[6] <https://github.com/strongswan/strongswan/releases/tag/5.9.6>`__ 
+
+
+
+--------------------------------------------------------------------------
 22.1.7 (May 10, 2022)
 --------------------------------------------------------------------------
 
