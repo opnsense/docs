@@ -38,6 +38,9 @@ OPNsense offers the following alias types:
 +------------------+------------------------------------------------------+
 | Dynamic IPv6 Host| A Host entry that will auto update on a prefixchange |
 +------------------+------------------------------------------------------+
+| Internal         | Internal aliases which are managed by the product    |
+| (automatic)      |                                                      |
++------------------+------------------------------------------------------+
 | External         | Externally managed alias, this only handles the      |
 | (advanced)       | placeholder. Content is set from another source      |
 |                  | (plugin, api call, etc)                              |
@@ -284,6 +287,14 @@ alias and add or remove entries immediately.
 
     Since external alias types won't be touched by OPNsense, you can use :code:`pfctl` directly in scripts to manage
     its contents. (e.g. :code:`pfctl -t MyAlias -T add 10.0.0.3` to add **10.0.0.3** to **MyAlias**)
+
+....................................
+Internal (automatic)
+....................................
+
+Internal aliases are prefixed with :code:`__` so they are easy to identify and can't overlap with any user defined ones.
+These aliases help you to determine what the content is for some internal concepts such as "LAN network". Using
+the :menuselection:`Firewall->Diagnostics->Aliases` menu item you can inspect their contents at any time.
 
 
 ----------------------------------
