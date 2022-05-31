@@ -41,3 +41,4 @@ Table of Contents
      support
      contribute
      history
+     security
