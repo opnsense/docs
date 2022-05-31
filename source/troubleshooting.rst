@@ -76,3 +76,4 @@ be found in the list below.
    troubleshooting/gateways
    troubleshooting/network
    troubleshooting/openvpn
+   troubleshooting/performance
