@@ -51,7 +51,7 @@ Option                  Description
 ======================= =======================================================================================================================================================================
 Enable                  Enable this rule (allows turning entries off without removing them).
 Service                 The provider of your Dynamic DNS Service.
-Username                Login or uder name to use, could be empty for token based authentication
+Username                Login or user name to use, could be empty for token based authentication
 Password                Password or security token to use
 Hostname                Enter the fully qualified domain names to update via the selected service. For example: *myhost.dyndns.org*
 Check ip method         Service to query the current IP address
