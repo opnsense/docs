@@ -15,6 +15,83 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+22.4.1 (June 07, 2022)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 22.1.7 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: set up all DNS system routes from system_resolvconf_generate()
+* system: tunables without hierarchy are just "environment" variables
+* system: use PHP random_bytes() builtin (contributed by oittaa)
+* system: support cd9660 file system in opnsense-importer
+* system: prevent gateway monitoring from entering a "filter reload" loop
+* system: only restore missing or zero size ACL files
+* reporting: add ACPI and ARM temperature support to health data
+* reporting: do not rely on /var/run/booting test in system health backend code
+* reporting: fix validation in NetFlow settings
+* interfaces: interface_ppps_configure() remove boot-time side effect
+* interfaces: DHCPv6 advanced has a different flag to disable NA
+* interfaces: add technical interface ID display to assignments page
+* firewall: make rule parsing more consistent as x:any and any:y are valid port options
+* captive portal: simplify the voucher generation code (contributed by oittaa)
+* dhcp: support supplying iPXE filename
+* firmware: exclude revision matching from latest changelog version check
+* firmware: list locked packages in health audit
+* firmware: bypass cache with timestamp in "upgradestatus" call (contributed by gibwar)
+* firmware: lowercase search in plugins/packages
+* intrusion detection: fix log file ACL mismatch
+* ipsec: squelch spurious errors on stderr for backend status action
+* ipsec: mark non-sortable columns
+* openvpn: change filetype of export to text/ovpn
+* unbound: add custom forwarding and overrides MVC pages
+* unbound: add missing alias description
+* unbound: change overrides grid label when no results are returned
+* unbound: domain override IP may contain port information
+* unbound: fix ACL for overrides
+* unbound: fix handling of wildcard aliases (contributed by devin122)
+* unbound: fix overrides case sort order (contributed by NYOB)
+* unbound: properly support "_msdcs" domain override prefix
+* unbound: restore duplicate domain behaviour in overrides
+* unbound: show combined hostname.domain description in new alias popup
+* unbound: updated no coin list (contributed by Luis Nachtigall)
+* unbound: disabling the first DNS override entry invalides config
+* mvc: Phalcon 5 migration layer to reduce dependencies on Phalcon builtins
+* mvc: add generic searchRecordsetBase() to match existing searchBase()
+* mvc: safeguard multi_sort in searchRecordsetBase()
+* mvc: fix two regressions and deprecate __items
+* plugins: os-OPNBEcore 1.0.2 cleans up LDAP sync task
+* plugins: os-OPNProxy 1.0.2 fixes newline issue in template
+* plugins: os-OPNcentral 1.5 `[1] <https://docs.opnsense.org/vendor/deciso/opncentral.html?highlight=opncentral#multi-tenancy-using-host-groups>`__ 
+* plugins: os-acme-client 3.10 `[2] <https://github.com/opnsense/plugins/blob/stable/22.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-bind 1.23 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/bind/pkg-descr>`__ 
+* plugins: os-chrony 1.5 `[4] <https://github.com/opnsense/plugins/blob/stable/22.1/net/chrony/pkg-descr>`__ 
+* plugins: os-ddclient 1.5 `[5] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.12 `[6] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-frr 1.28 `[7] <https://github.com/opnsense/plugins/blob/stable/22.1/net/frr/pkg-descr>`__ 
+* plugins: os-relayd 2.7 adds listen address and port range to virtual servers
+* plugins: os-zabbix-agent 1.12 `[8] <https://github.com/opnsense/plugins/blob/stable/22.1/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.8 `[9] <https://github.com/opnsense/plugins/blob/stable/22.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* src: tcp: rewind erroneous RTO only while performing RTO retransmissions
+* src: bnxt: Allow bnxt interfaces to use VLANs
+* src: rc: use _pidcmd to determine pid for protect
+* ports: curl 7.83.1 `[10] <https://curl.se/changes.html#7_83_1>`__ 
+* ports: expat 2.4.8 `[11] <https://github.com/libexpat/libexpat/blob/R_2_4_8/expat/Changes>`__ 
+* ports: libxml 2.9.13 `[12] <http://www.xmlsoft.org/news.html>`__ 
+* ports: monit 5.32.0 `[13] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.78 `[14] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.78_release_notes>`__ 
+* ports: pcre2 10.40 `[15] <https://www.pcre.org/changelog.txt>`__ 
+* ports: php 7.4.29 `[16] <https://www.php.net/ChangeLog-7.php#7.4.29>`__ 
+* ports: phpseclib 2.0.37 `[17] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.37>`__ 
+* ports: pkg 1.17.5 `[18] <https://github.com/freebsd/freebsd-ports/commit/18793d10585f>`__ 
+* ports: python 3.8.13 `[19] <https://docs.python.org/release/3.8.13/whatsnew/changelog.html>`__ 
+* ports: suricata 6.0.5 `[20] <https://forum.suricata.io/t/suricata-6-0-5-and-5-0-9-released/2415>`__ 
+
+
+
+--------------------------------------------------------------------------
 22.4 (April 26, 2022)
 --------------------------------------------------------------------------
 

@@ -76,6 +76,10 @@ Here are the full patch notes:
 * ports: sqlite 3.38.2 `[5] <https://sqlite.org/releaselog/3_38_2.html>`__ 
 * ports: strongswan 5.9.6 `[6] <https://github.com/strongswan/strongswan/releases/tag/5.9.6>`__ 
 
+A hotfix release was issued as 22.1.8_1:
+
+* firewall: ignore empty lines when reading current alias content using pfctl
+
 
 
 --------------------------------------------------------------------------
@@ -201,7 +205,7 @@ Here are the full patch notes:
 * src: zlib compression out-of-bounds write `[9] <FREEBSD:FreeBSD-SA-22:08.zlib>`__ 
 * ports: curl 7.82.0 `[10] <https://curl.se/changes.html#7_82_0>`__ 
 * ports: expat 2.4.8 `[11] <https://github.com/libexpat/libexpat/blob/R_2_4_8/expat/Changes>`__ 
-* ports libxml 2.9.13 `[12] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.9.13 `[12] <http://www.xmlsoft.org/news.html>`__ 
 * ports: monit 5.32.0 `[13] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.77 `[14] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.77_release_notes>`__ 
 * ports: python 3.8.13 `[15] <https://docs.python.org/release/3.8.13/whatsnew/changelog.html>`__ 
