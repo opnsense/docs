@@ -50,14 +50,14 @@ Although we do try to include some context in our documents, there are often ass
 knowledge on (basic) networking.
 
 Like many products and projects, ours grows over time, functionality extends and changes, which sometimes makes it difficult
-to find what you need for the version your using. Although we try to keep our documentation up to date, sometimes text
+to find what you need for the version you're using. Although we try to keep our documentation up to date, sometimes text
 doesn't reflect reality anymore. If that's the case and you think you found an omission, don't hestitate to open
 a report using one of our templates on `GitHub <https://github.com/opnsense/docs/issues/new/choose>`__ or a pull request
 of course if you're able to.
 
 Always assume the text is intended for the latest version of our product, in time we might
 add a version selector in the documentation, but given OPNsense is a security product, we advise to keep it up to date
-anyway to protect yourself against the latests threats.
+anyway to protect yourself against the latest threats.
 
 The releases section contains the changelogs for all versions we published over the years, if there are remarks
 for an upgrade, this is a useful resource to collect the details.
@@ -74,7 +74,7 @@ The level of support may differ between core functionality, as also explained in
 feature requests and bugs maybe treated different as well (a lot of questions for a plugin which is being developed
 by a single person, maybe less active than a group of people improving a plugin together for example).
 
-When it it comes to building software on top of OPNsense or extending existing functionality, the development
+When it comes to building software on top of OPNsense or extending existing functionality, the development
 chapter is the one to read. It explains all about our architecture, coding style, how to hook into available facilities and
 much more.
 
