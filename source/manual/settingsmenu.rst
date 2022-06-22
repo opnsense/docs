@@ -162,12 +162,12 @@ going to :menuselection:`System --> Settings --> General`. The following setting
 Tunables
 --------
 
-Tunables are the settings that go into the ``sysctl.conf`` file, which allows tweaking of low-level system
+Tunables are the settings that go into the ``loader.conf`` and ``sysctl.conf`` files, which allows tweaking of low-level system
 settings. They can be set by going to :menuselection:`System --> Settings --> Tunables`.
 
-Here, the currently active settings can be viewed and new ones can be created. All valid ``sysctl.conf``
-settings can be added this way if desired. A list of possible values can be obtained by issuing
-``sysctl -a`` on an OPNsense shell.
+Here, the currently active settings can be viewed and new ones can be created.
+A list of possible values can be obtained by issuing ``sysctl -a`` on an OPNsense shell.
+Additional tunables may exist depending on boot loader capabilities and kernel module support.
 
 -------------
 Miscellaneous
