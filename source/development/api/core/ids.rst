@@ -12,10 +12,10 @@ Ids
     "``POST``","ids","service","reconfigure",""
     "``GET``","ids","service","reconfigure",""
     "``POST``","ids","service","reloadRules",""
-    "``GET``","ids","service","restart",""
-    "``GET``","ids","service","start",""
+    "``POST``","ids","service","restart",""
+    "``POST``","ids","service","start",""
     "``GET``","ids","service","status",""
-    "``GET``","ids","service","stop",""
+    "``POST``","ids","service","stop",""
     "``POST``","ids","service","updateRules","$wait=null"
 
     "``<<uses>>``", "", "", "", "*model* `IDS.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IDS/IDS.xml>`__"
