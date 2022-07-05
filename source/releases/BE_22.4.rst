@@ -196,7 +196,7 @@ Here are the full patch notes:
 * interfaces: only ever store nobind for ipalias/carp
 * interfaces: align IPv4 address statistics read with IPv6
 * interfaces: simplify device destroy code
-* interfaces: avoid use legacy_get_interface_addresses() in MAC address read
+* interfaces: no longer use legacy_get_interface_addresses() in MAC address read
 * interfaces: remove unused opportunistic interface address functions
 * interfaces: resolve device/interface interdependency on boot
 * interfaces: do not update VIPs on dynamic address changes
@@ -310,7 +310,7 @@ Here are the full patch notes:
 * web proxy: fix a typo in extended logging parser (contributed by kulikov-a)
 * backend: consolidate configctl utility into one location and add manual page
 * backend: unify use of configctl utility
-* console: move console mite calls into port setting function
+* console: move console mute calls into port setting function
 * images: removed deprecated os-dyndns plugin from default installation
 * mvc: add BlankDesc to ModelRelationField (contributed by agh1467)
 * mvc: add hint support for text fields (contributed by agh1467)

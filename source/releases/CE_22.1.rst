@@ -34,6 +34,66 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+22.1.9 (June 23, 2022)
+--------------------------------------------------------------------------
+
+
+Today we are addressing kernel memory leaks that occur when
+reading firewall rule information from the system.  It seems
+that these leaks even slipped into the FreeBSD 13.1 release
+so we are happy to see them fixed now.
+
+22.7 is very much on track.  Our final target is getting ready
+for the PHP 8 upgrade but the timing is unclear as we wait for
+an official Phalcon 5 release version that supports it.
+
+Other than that please enjoy the summer and hydrate responsibly.
+
+Here are the full patch notes:
+
+* system: improve gateway subnet validation to fix IPv6 edge cases
+* system: dpinger support for IPv6 aliases
+* system: support 1500000 baudrate selection for ARM
+* system: non-functional cleanups for upcoming move to PHP 8
+* interfaces: add unique constraint for tag+if on VLANs
+* firewall: bring back missing toggle button in aliases
+* firewall: exclude internal aliases on import
+* firewall: fix alias removal
+* captive portal: add missing validation message for empty interface selection
+* dhcp: revert back to not adding an IP to static lease creation from leases page
+* openvpn: add domain search option to servers and overrides
+* unbound: disabling the first DNS override entry invalidates config
+* unbound: make blocklist additions/removals dynamic to prevent a restart
+* unbound: zero_ttl is no longer a valid statistic (contributed by David Mora)
+* plugins: os-ddclient 1.7 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-debug 1.5 fixes deprecated xdebug syntax
+* plugins: os-frr 1.29 `[2] <https://github.com/opnsense/plugins/blob/stable/22.1/net/frr/pkg-descr>`__ 
+* plugins: os-nginx 1.28 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/www/nginx/pkg-descr>`__ 
+* plugins: os-wireguard 1.11 `[4] <https://github.com/opnsense/plugins/blob/stable/22.1/net/wireguard/pkg-descr>`__ 
+* src: pf: fix memory leaks in nvlist usage
+* src: pf: stop resolving hosts as dns that use ":" modifier
+* src: e1000: Increase rx_buffer_size to 32b
+* src: igc: Increase rx_buffer_size local variable to 32b
+* src: assorted non-functional cleanups and typo corrections
+* ports: krb5 1.20 `[5] <https://web.mit.edu/kerberos/krb5-1.20/>`__ 
+* ports: lighttpd 1.4.65 `[6] <https://www.lighttpd.net/2022/6/7/1.4.65/>`__ 
+* ports: nss 3.79 `[7] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.79_release_notes>`__ 
+* ports: openvpn 2.5.7 `[8] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.7>`__ 
+* ports: php 7.4.30 `[9] <https://www.php.net/ChangeLog-7.php#7.4.30>`__ 
+* ports: py-certifi 2022.5.18.1
+* ports: sqlite3 3.38.5 `[10] <https://sqlite.org/releaselog/3_38_5.html>`__ 
+* ports: sudo 1.9.11p2 `[11] <https://www.sudo.ws/stable.html#1.9.11p2>`__ 
+* ports: unbound 1.16.0 `[12] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-0>`__ 
+
+A hotfix release was issued as 22.1.9_1:
+
+* system: prefer primary IPv6 in dpinger
+* plugins: os-ddclient fix for missing IP property
+* plugins: os-nginx fix for obsoleted syntax (contributed by kulikov-a)
+
+
+
+--------------------------------------------------------------------------
 22.1.8 (May 25, 2022)
 --------------------------------------------------------------------------
 
@@ -350,7 +410,7 @@ Here are the full patch notes:
 * interfaces: only ever store nobind for ipalias/carp
 * interfaces: align IPv4 address statistics read with IPv6
 * interfaces: simplify device destroy code
-* interfaces: avoid use legacy_get_interface_addresses() in MAC address read
+* interfaces: no longer use legacy_get_interface_addresses() in MAC address read
 * interfaces: remove unused opportunistic interface address functions
 * firewall: exclude localhost stateless traffic from default logging (contributed by kulikov-a)
 * firewall: using port type aliases the "enable" flag was ignored when not enabled
@@ -367,7 +427,7 @@ Here are the full patch notes:
 * openvpn: improve gateway detection in topology mode
 * ipsec: avoid use of find_interface_network() et al
 * dhcp: avoid use of find_interface_network() et al
-* console: move console mite calls into port setting function
+* console: move console mute calls into port setting function
 * ui: sidebar 2nd submenu view fix (contributed by Team Rebellion)
 * mvc: refactor and extend HostnameField to add options to validate partial hostnames and root zones
 * plugins: os-bind 1.22 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/bind/pkg-descr>`__ 
