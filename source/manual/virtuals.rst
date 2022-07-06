@@ -57,8 +57,9 @@ KVM
 OPNsense on KVM works with virtio disks and network devices (confirmed on QEMU 5.0).
 
 **Q35 chipset**
-OPNsense on KVM currently does not work with the Q35 chipset. Virtio and other PCIe devices do not get detected properly.
-This is a FreeBSD/KVM related `issue <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=236922>`__ that is unspecific to OPNsense.
+As of 22.1.x, OPNsense is based on FreeBSD 13.0, which includes support for the virtualized Q35 chipset and newer
+generation of KVM virtio devices.
+Note that this was a relatively recent addition to FreeBSD, so it may not be as well tested as the i440 support.
 
 Others
 ------
