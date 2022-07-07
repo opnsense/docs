@@ -15,6 +15,72 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+22.4.2 (July 07, 2022)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 22.1.9 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: support plugin device reconfiguration in pluginctl utility
+* system: use password_verify() in authenticators (contributed by oittaa)
+* system: hide password from command line during config encryption
+* system: improve gateway subnet validation to fix IPv6 edge cases
+* system: dpinger support for IPv6 aliases
+* system: support 1500000 baudrate selection for ARM
+* system: non-functional cleanups for upcoming move to PHP 8
+* system: fix firmware command shortcut in opnsense-shell utility
+* system: if no temperature sysctls are exposed do nothing
+* interfaces: add unique constraint for tag+if on VLANs
+* firewall: bring back missing toggle button in aliases
+* firewall: exclude internal aliases on import
+* firewall: fix alias removal
+* firewall: various usability and visibility improvements for aliases
+* firewall: performance improvement for large numbers of port type aliases
+* firewall: simplify sort and add natural sorting in alias diagnostics
+* captive portal: add extendedPreAuthData for MAC address retrieval during authentication
+* captive portal: add missing validation message for empty interface selection
+* dhcp: refactor IPv4 lease removal and purge static leases before starting service
+* dhcp: revert back to not adding an IP to static lease creation from leases page
+* dhcp: allow custom configuration from directories
+* firmware: add python version to crash report header
+* opendns: update OpenDNS IPv6 servers (contributed by Johan Rylander)
+* openvpn: add domain search option to servers and overrides
+* unbound: add custom "destination address" as advanced option for blocklists
+* unbound: disabling the first DNS override entry invalidates config
+* unbound: make blocklist additions/removals dynamic to prevent a restart
+* unbound: zero_ttl is no longer a valid statistic (contributed by David Mora)
+* mvc: distinct between HTTP errors 401 and 403 during authentication
+* mvc: call microtime(true) only once during config save (contributed by csbyte)
+* plugins: os-acme-client 3.11 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-ddclient 1.7 `[2] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-debug 1.5 fixes deprecated xdebug syntax
+* plugins: os-frr 1.29 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/net/frr/pkg-descr>`__ 
+* plugins: os-nginx 1.28 `[4] <https://github.com/opnsense/plugins/blob/stable/22.1/www/nginx/pkg-descr>`__ 
+* plugins: os-postfix 1.22 `[5] <https://github.com/opnsense/plugins/blob/stable/22.1/mail/postfix/pkg-descr>`__ 
+* plugins: os-wireguard 1.11 `[6] <https://github.com/opnsense/plugins/blob/stable/22.1/net/wireguard/pkg-descr>`__ 
+* src: pf: fix memory leaks in nvlist usage
+* src: pf: stop resolving hosts as dns that use ":" modifier
+* src: e1000: Increase rx_buffer_size to 32b
+* src: igc: Increase rx_buffer_size local variable to 32b
+* src: assorted non-functional cleanups and typo corrections
+* ports: curl 7.84.0 `[7] <https://curl.se/changes.html#7_84_0>`__ 
+* ports: krb5 1.20 `[8] <https://web.mit.edu/kerberos/krb5-1.20/>`__ 
+* ports: lighttpd 1.4.65 `[9] <https://www.lighttpd.net/2022/6/7/1.4.65/>`__ 
+* ports: nss 3.79 `[10] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.79_release_notes>`__ 
+* ports: openssl 1.1.1q `[11] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openvpn 2.5.7 `[12] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.7>`__ 
+* ports: php 7.4.30 `[13] <https://www.php.net/ChangeLog-7.php#7.4.30>`__ 
+* ports: py-certifi 2022.5.18.1
+* ports: sqlite3 3.38.5 `[14] <https://sqlite.org/releaselog/3_38_5.html>`__ 
+* ports: strongswan 5.9.6 `[15] <https://github.com/strongswan/strongswan/releases/tag/5.9.6>`__ 
+* ports: sudo 1.9.11p2 `[16] <https://www.sudo.ws/stable.html#1.9.11p2>`__ 
+* ports: unbound 1.16.0 `[17] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-0>`__ 
+
+
+
+--------------------------------------------------------------------------
 22.4.1 (June 07, 2022)
 --------------------------------------------------------------------------
 

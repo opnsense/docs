@@ -34,6 +34,56 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+22.1.10 (July 07, 2022)
+--------------------------------------------------------------------------
+
+
+Today we are shipping small reliability improvements and a few security
+updates for bundled packages.  Of special note is the upgrade of Phalcon 5,
+Python 3.9 and move of the StrongSwan vici library into a separate package.
+
+This release will be the last of the 22.1 series.  The release candidate
+for 22.7 will be available next week and the release date for the final
+version is July 28.  Users wishing to try the release candidate can reach
+it from the development version or reinstall from the provided images.
+
+A hotfix will be issued on the 28th to enable the upgrade path, but depending
+on testing and mirror availability this might be up to 24 hours after the
+intial image release of 22.7.
+
+Here are the full patch notes:
+
+* system: properly shut down removed interfaces in console port assignment
+* system: if no temperature sysctls are exposed do nothing
+* system: fix firmware command shortcut in opnsense-shell utility
+* system: log hard limit results in 9999 entries for grid output
+* system: move add_user script out of shell scripts
+* interfaces: move lo0 interface registration to loopback
+* interfaces: simplify bridge destroy on deletion
+* firmware: update repository silently on remote list if needed
+* firmware: add python version to crash report header
+* ipsec: move vici library from core to ports
+* opendns: update OpenDNS IPv6 servers (contributed by Johan Rylander)
+* backend: except configparser read (contributed by agh1467)
+* mvc: AutoNumberField: set minimum value to 1
+* mvc: IntegerFieldType: fix for negative numbers (contributed by xbb)
+* plugins: os-ddclient 1.8 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-firewall 1.2 fixes internal backup restore
+* plugins: os-postfix 1.23 `[2] <https://github.com/opnsense/plugins/blob/stable/22.1/mail/postfix/pkg-descr>`__ 
+* plugins: os-stunnel 1.0.5 adds intermediates to server chain (contributed by Johnny S. Lee)
+* plugins: os-telegraf 1.12.5 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/net-mgmt/telegraf/pkg-descr>`__ 
+* ports: curl 7.84.0 `[4] <https://curl.se/changes.html#7_84_0>`__ 
+* ports: nss: 3.80 `[5] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.80_release_notes>`__ 
+* ports: openssl 1.1.1q `[6] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: phalcon 5.0.0RC2 `[7] <https://github.com/phalcon/cphalcon/releases/tag/v5.0.0RC2>`__ 
+* ports: py-vici 5.9.3
+* ports: python 3.9.13 `[8] <https://docs.python.org/release/3.9.13/whatsnew/changelog.html>`__ 
+* ports: sudo 1.9.11p3 `[9] <https://www.sudo.ws/stable.html#1.9.11p3>`__ 
+* ports: syslog-ng 3.37.1 `[10] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.37.1>`__ 
+
+
+
+--------------------------------------------------------------------------
 22.1.9 (June 23, 2022)
 --------------------------------------------------------------------------
 
