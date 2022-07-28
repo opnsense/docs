@@ -81,6 +81,13 @@ Here are the full patch notes:
 * ports: sudo 1.9.11p3 `[9] <https://www.sudo.ws/stable.html#1.9.11p3>`__ 
 * ports: syslog-ng 3.37.1 `[10] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.37.1>`__ 
 
+A hotfix release was issued as 22.1.10_4:
+
+* system: disable flag was not removing static route
+* firmware: added 22.7 series fingerprint
+* unbound: prevent crash of DHCP lease watcher due to unhandled CalledProcessError exception
+* mvc: fix two regressions in BaseField for Phalcon 5
+
 
 
 --------------------------------------------------------------------------
