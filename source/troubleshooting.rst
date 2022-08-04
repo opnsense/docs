@@ -71,6 +71,7 @@ be found in the list below.
    :titlesonly:
    :glob:
 
+   troubleshooting/password_reset
    troubleshooting/boot
    troubleshooting/hardening
    troubleshooting/gateways
