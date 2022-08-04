@@ -85,11 +85,11 @@ I.e. If you wanted to download from the US East Coast mirror:
 
 Opening the link in a new tab would take you to this link:
 
-``mirror.wdc1.us.leaseweb.net/opnsense/releases/18.7/OPNsense-18.7-OpenSSL-dvd-amd64.iso.bz2``
+``mirror.wdc1.us.leaseweb.net/opnsense/releases/22.7/OPNsense-22.7-OpenSSL-dvd-amd64.iso.bz2``
 
 You should take off the file name at the end, like this:
 
-``mirror.wdc1.us.leaseweb.net/opnsense/releases/18.7/``
+``mirror.wdc1.us.leaseweb.net/opnsense/releases/22.1/``
 
 The OpenSSL public key is required to verify against. This file is also on
 the mirror directory listing page, however you should not trust the copy
@@ -105,8 +105,8 @@ to get the public key from include:
 * https://pkg.opnsense.org (/<FreeBSD version & architecture>/<release version>/sets/changelog.txz) (lands signed and verified in the GUI of the running software)
 
 Note that only release announcements with images (typically all major
-releases) contain the public key. I.e. 18.7 would have a copy of the public
-key in the release announcement, but 18.7.9 would not.
+releases) contain the public key. I.e. 22.1 would have a copy of the public
+key in the release announcement, but 22.1.9 would not.
 
 Once you have downloaded all the required files and a copy of the public key,
 and verified that the public key matches the public key from the alternate
@@ -216,6 +216,7 @@ Media Filename Composition
   More information on our release schedule is available from our package
   repository, see `README <https://pkg.opnsense.org/releases/mirror/README>`__
 
+
 --------------------
 OpenSSL and LibreSSL
 --------------------
@@ -226,6 +227,24 @@ the GUI (:menuselection:`System --> Firmware --> Settings`). In order to apply y
 must be performed after save, which can include a reboot of the system.
 
 .. image:: ./images/firmware_flavour.png
+
+
+-------------------------
+Boot preparation
+-------------------------
+
+After preparing the installation media, we need to make sure we can access the console
+(either via keyboard and [virtial]monitor or :doc:`serial connectivity<how-tos/serial_access>`) and know how to
+access the boot selection via the system bios. Often there's a (function) key one should press during initial boot.
+
+.. Tip::
+
+    OPNsense devices from the `OPNsense shop <https://shop.opnsense.com/>`__ use :code:`<ESC>` to enter the bios and boot selection
+    options.
+
+.. Note::
+
+    Serial connectivity settings for DECXXXX devices can be found  :doc:`here </hardware/serial_connectivity>`
 
 -------------------
 Installation Method
