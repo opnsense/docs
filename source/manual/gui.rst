@@ -159,6 +159,10 @@ Filter and limit
     a selection for the number of rows to show at once on a page. Often the search input will be instantly applied, but
     in some cases a reload is needed if the action can't be processed fast enough.
     <br/><br/>
+    You will find a <i class="fa fa-arrow-right"></i> <b>Go to page</b> action behind every record.
+    When you have filtered your list it will jump to the corresponding page and show
+    you all surrounding records.
+    <br/><br/>
 
 Actions
 -------------------
@@ -182,6 +186,8 @@ Page Navigation
 
 The navigation buttons :code:`« ‹ [1,2,..] › »` help scroll through the different pages that are available for the
 selected data.
+
+
 
 .. Note::
 
