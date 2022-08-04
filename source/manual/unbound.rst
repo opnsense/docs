@@ -84,6 +84,13 @@ Description                           User readable description, only for inform
 Aliases                               Copies of the above data for different hosts
 ====================================  ===============================================================================
 
+**Aliases**
+
+You may create alternative names for an Host. E.g. when having a webserver with several virtual hosts
+you create an Host override entry with the IP and name for the webserver and an alias name for every virtual host on this webserver.
+
+You have to select the host in the top list and it will the show you the assigned aliases in the bottom list.
+
 **Domain override settings**
 =====================================================================================================================
 
