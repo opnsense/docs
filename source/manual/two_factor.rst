@@ -18,6 +18,8 @@ Supported services are:
 * Virtual Private Networking - OpenVPN & IPsec
 * Caching Proxy
 
+New authentication servers can be added via  :menuselection:`System -> Access -> Servers`, which supports
+both local users and users synchronised via ldap.  
 
 ----------------------------
 Time-based One-time Password
