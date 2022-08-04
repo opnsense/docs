@@ -172,6 +172,13 @@ Here are the full patch notes against 22.1.10:
 * ports: suricata 6.0.6 `[9] <https://redmine.openinfosecfoundation.org/versions/176>`__ 
 * ports: unbound 1.16.1 `[10] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-1>`__ 
 
+A hotfix release was issued as 22.7_4:
+
+* system: IXR_Library using incorrect constructor format for PHP 8
+* interfaces: fix issues with PPP uptime display in PHP 8
+* firewall: do not emit link-local address on IPv6 network outbound NAT
+* mvc: remove stray error_reporting(E_ALL) calls
+
 Known issues and limitations:
 
 * The DH parameter is no longer available in OpenVPN server configuration and now fixed to the RFC 7919 4096 bit key.  The only downside may be lower performance on older machines.

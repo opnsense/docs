@@ -73,7 +73,7 @@ Here are the full patch notes:
 * plugins: os-stunnel 1.0.5 adds intermediates to server chain (contributed by Johnny S. Lee)
 * plugins: os-telegraf 1.12.5 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/net-mgmt/telegraf/pkg-descr>`__ 
 * ports: curl 7.84.0 `[4] <https://curl.se/changes.html#7_84_0>`__ 
-* ports: nss: 3.80 `[5] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.80_release_notes>`__ 
+* ports: nss 3.80 `[5] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.80_release_notes>`__ 
 * ports: openssl 1.1.1q `[6] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: phalcon 5.0.0RC2 `[7] <https://github.com/phalcon/cphalcon/releases/tag/v5.0.0RC2>`__ 
 * ports: py-vici 5.9.3

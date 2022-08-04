@@ -375,7 +375,7 @@ Here are the full patch notes:
 * plugins: os-clamav 1.1 adds version info display and /var MFS support (contributed by Alexander Shursha)
 * plugins: os-freeradius 1.1 (contributed by Michael Muenz)
 * plugins: os-monit 1.4 M/Monit support and fixes (contributed by Frank Brendel)
-* plugins: os-siproxd: 1.0 (contributed by Michael Muenz)
+* plugins: os-siproxd 1.0 (contributed by Michael Muenz)
 * plugins: os-web-proxy-sso 2.0 (contributed by Smart-Soft)
 * plugins: os-zerotier 1.3 adds remote network info and local.conf setting (contributed by David Harrigan)
 * ports: curl 7.56.0 `[2] <https://curl.haxx.se/changes.html>`__ 

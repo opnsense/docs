@@ -476,7 +476,7 @@ The full change log of 15.1.10 is as follows:
 * kernel: fixed IPSec dropping connections in some scenarios
 * images: a new NanoBSD-based image has been added to the release
   bundle (directly written to SD or HD)
-* notable ports updates: curl 7.42.1, ca_root_nss: 3.18.1
+* notable ports updates: curl 7.42.1, ca_root_nss 3.18.1
 * installer: omit swap and add noatime to root partition in quick/easy
   install when available space is under 30GB, fixed faulty exit on
   importer cancel
