@@ -234,7 +234,7 @@ Boot preparation
 -------------------------
 
 After preparing the installation media, we need to make sure we can access the console
-(either via keyboard and [virtial]monitor or :doc:`serial connectivity<how-tos/serial_access>`) and know how to
+(either via keyboard and [virtual]monitor or :doc:`serial connectivity<how-tos/serial_access>`) and know how to
 access the boot selection via the system bios. Often there's a (function) key one should press during initial boot.
 
 .. Tip::
