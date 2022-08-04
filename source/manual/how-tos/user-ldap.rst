@@ -8,10 +8,14 @@ OpenLDAP and Novell eDirectory, to name a few.
 OPNsense can use an LDAP server for authentication purposes and for authorization
 to access (parts) of the graphical user interface (web configurator). When using
 LDAP for the GUI the privileges have to be defined with the local user manager,
-to do so an import of the users from the LDAP source is required.
+to do so an (automated) import of the users from the LDAP source is required.
 
 In this how-to we will show you how to configure both using Microsoft Active Directory
 Server. If you only need LDAP for services like VPN, then you can skip steps 3-5.
+
+.. Tip::
+
+    LDAP can also be combined with :doc:`Two-factor authentication </manual/two_factor>`
 
 -------------
 Prerequisites

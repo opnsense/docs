@@ -168,8 +168,8 @@ the same.
 
 For further help and support, see
 
--  `FreeBSD 13.0-RELEASE Hardware Compatibility
-   List <https://www.freebsd.org/releases/13.0R/hardware/>`__
+-  `FreeBSD 13.1-RELEASE Hardware Compatibility
+   List <https://www.freebsd.org/releases/13.1R/hardware/>`__
 -  `OPNsense Forum <https://forum.opnsense.org/>`__
 
 .. rubric:: List of references

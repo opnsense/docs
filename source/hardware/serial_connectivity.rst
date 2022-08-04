@@ -12,6 +12,7 @@ The following device families offer a mini-usb connection which can be used for 
 * DEC2700 series
 * DEC800 series
 * DEC3800 series
+* DEC4000 series
 
 Supplied with the firewall is a mini-usb to usb cable, use this to connect the to your PC (Windows, Linux, Mac)
 next start your terminal program (Putty, screen, etc).
