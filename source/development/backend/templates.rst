@@ -134,10 +134,10 @@ configd, to use (or test) the system without the daemon, use:
     from modules import config
      
     # construct a new template object, set root to /tmp/
-    tmpl = template.Template(target_root_directory="/tmp/")
+    tmpl = template.Template(target_root_directory='/tmp/')
     # open the config.xml and bind to template object
     conf = config.Config('/config.xml')
-    tmpl.setConfig(conf.get())
+    tmpl.set_config(conf.get())
      
     # generate output for OPNsense/Sample
     generated_filenames = tmpl.generate('OPNsense/Sample')
