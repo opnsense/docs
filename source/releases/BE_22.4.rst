@@ -57,6 +57,10 @@ Here are the full patch notes:
 * ports: sudo 1.9.11p3 `[6] <https://www.sudo.ws/stable.html#1.9.11p3>`__ 
 * ports: syslog-ng 3.37.1 `[7] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.37.1>`__ 
 
+A hotfix release was issued as 22.4.3_1:
+
+* interfaces: fix get_interface_mac() not returning a cached MAC address
+
 
 
 --------------------------------------------------------------------------
