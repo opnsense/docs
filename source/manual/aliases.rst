@@ -142,6 +142,10 @@ URL tables can be used to fetch a list of IP addresses from a remote server.
 There are several IP lists available for free, most notably are the "Don't Route
 Or Peer" lists from Spamhaus.
 
+.. Note::
+
+    The content of the file being fetched should contain one IPv[4|6] address per line, lines that start with a :code:`whitespace`
+    , colon (:code:`,`), semicolon (:code:`;`), pipe (:code:`|`) or hash (:code:`#`) will be ignored.
 
 
 ..................
