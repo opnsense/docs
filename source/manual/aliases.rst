@@ -39,7 +39,7 @@ OPNsense offers the following alias types:
 | Dynamic IPv6 Host| A Host entry that will auto update on a prefixchange |
 +------------------+------------------------------------------------------+
 | BGP ASN          | Maps autonomous system (AS) numbers to networks      |
-|                  | where they are responsible for.
+|                  | where they are responsible for.                      |
 +------------------+------------------------------------------------------+
 | Internal         | Internal aliases which are managed by the product    |
 | (automatic)      |                                                      |
