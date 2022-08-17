@@ -38,6 +38,9 @@ OPNsense offers the following alias types:
 +------------------+------------------------------------------------------+
 | Dynamic IPv6 Host| A Host entry that will auto update on a prefixchange |
 +------------------+------------------------------------------------------+
+| BGP ASN          | Maps autonomous system (AS) numbers to networks      |
+|                  | where they are responsible for.
++------------------+------------------------------------------------------+
 | Internal         | Internal aliases which are managed by the product    |
 | (automatic)      |                                                      |
 +------------------+------------------------------------------------------+
@@ -270,6 +273,15 @@ In the example below we have three servers.
   .. image:: images/alias_dynamic_ipv6_host.png
       :width: 100%
 
+..................
+BGP ASN
+..................
+
+With this alias type you are able to select networks by their responsible parties.
+Using BGP parties announce the addresses they are responsible for to eachother.
+For example Cloudflare uses AS number :code:`13335`, Microsoft is known to use :code:`8075`.
+
+More background and how addresses are assigned is explained on `wikipedia <https://en.wikipedia.org/wiki/Autonomous_system_(Internet)>`__
 
 ..................
 External
