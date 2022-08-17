@@ -35,6 +35,53 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+22.7.2 (August 17, 2022)
+--------------------------------------------------------------------------
+
+
+This update comes a little earlier than expected due to FreeBSD security
+advisories.  Of special interest is the new firewall alias BGP ASN type
+and notices system which can also be implemented from plugins in the future.
+
+Here are the full patch notes:
+
+* system: replace static notices system with a shared one based on MVC/API code
+* system: use new _setup script feature where setup.sh exists
+* system: PHP 8 issue when ldap_get_entries() returns false
+* system: wrong variable in scope addition on manual DNS server via link-local gateway
+* system: "passwordarea" support for sensitive backup values
+* interfaces: fix wireless clone assignment regression in 22.7.1
+* interfaces: update ifctl utility to latest version
+* firewall: add BGP ASN type to aliases `[1] <https://docs.opnsense.org/manual/aliases.html#bgp-asn>`__ 
+* dhcp: extend search list pull from DHCPv6 in router advertisements DNS option
+* dhcp: improve UI for disabling DNS part of router advertisements (contributed by Patrick M. Hausen)
+* dhcp: pushed wrong server to zone definition on local DNS selection
+* firmware: opnsense-patch: only remove ".sh" suffix for installer and update repos
+* firmware: opnsense-update: only set packages marker after successful upgrade
+* firmware: opnsense-bootstrap: set correct packages marker
+* firmware: revoke 22.1 fingerprint
+* plugins: os-radsecproxy is no longer available on LibreSSL due to upstream build issues
+* plugins: os-acme-client 3.13 `[2] <https://github.com/opnsense/plugins/blob/stable/22.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-bind 1.24 `[3] <https://github.com/opnsense/plugins/blob/stable/22.7/dns/bind/pkg-descr>`__ 
+* plugins: os-haproxy 3.11 `[4] <https://github.com/opnsense/plugins/blob/stable/22.7/net/haproxy/pkg-descr>`__ 
+* plugins: os-git-backup hides SSH keys by default
+* plugins: os-postfix disables GSSAPI for the time being `[5] <https://github.com/opnsense/plugins/blob/stable/22.7/mail/postfix/pkg-descr>`__ 
+* src: lib9p: Remove potential buffer overwrite in l9p_puqids() `[6] <FREEBSD:FreeBSD-SA-22:12.lib9p>`__ 
+* src: vm_fault: Shoot down shared mappings in vm_fault_copy_entry() `[7] <FREEBSD:FreeBSD-SA-22:11.vm>`__ 
+* src: elf_note_prpsinfo: handle more failures from proc_getargv() `[8] <FREEBSD:FreeBSD-SA-22:09.elf>`__ 
+* src: pam_exec: fix segfault when authtok is null `[9] <FREEBSD:FreeBSD-EN-22:19.pam_exec>`__ 
+* src: kevent: Fix an off-by-one in filt_timerexpire_l() `[10] <FREEBSD:FreeBSD-EN-22:16.kqueue>`__ 
+* src: cam: leep periph_links when restoring CCB in camperiphdone() `[11] <FREEBSD:FreeBSD-EN-22:17.cam>`__ 
+* src: pfctl: fix FOM_ICMP/POM_STICKYADDRESS clash
+* src: restrict default /root permissions to 750
+* src: rc: add ${name}_setup script support
+* ports: lighttpd 1.4.66 `[12] <https://www.lighttpd.net/2022/8/7/1.4.66/>`__ 
+* ports: phalcon 5.0.0RC4 `[13] <https://github.com/phalcon/cphalcon/releases/tag/v5.0.0RC4>`__ 
+* ports: php 8.0.22 `[14] <https://www.php.net/ChangeLog-8.php#8.0.22>`__ 
+
+
+
+--------------------------------------------------------------------------
 22.7.1 (August 09, 2022)
 --------------------------------------------------------------------------
 
