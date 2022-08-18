@@ -273,6 +273,7 @@ should contain a field type to identify and validate it’s content. The
 list of attributes for our application can be translated to this:
 
 .. code-block:: xml
+    :caption: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.xml
 
     ………
     <items>
@@ -621,6 +622,7 @@ our data into an ini file structured configuration, when the module is
 enabled.
 
 .. code-block:: html+jinja
+    :caption: /usr/local/opnsense/service/templates/OPNsense/HelloWorld/helloworld.conf
 
     {% if helpers.exists('OPNsense.helloworld.general') and OPNsense.helloworld.general.Enabled|default("0") == "1" %}
     [general]
@@ -859,9 +861,10 @@ easily arrange that by creating a Menu.xml definition for your module in
 the model directory under Menu/Menu.xml.
 
 Now let’s register our “hello world” in the user section of our menu, by
-adding this content into the menu.xml:
+adding this content into the Menu.xml:
 
 .. code-block:: xml
+    :caption: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/Menu/Menu.xml
 
     <menu>
         <!-- Plugin HelloWorld menu -->
@@ -886,6 +889,7 @@ XML file in the model directory name ACL/ACL.xml and place the following
 content in it:
 
 .. code-block:: xml
+    :caption: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/ACL/ACL.xml
 
     <acl>
         <!-- unique acl key, must be globally unique for all ACLs  -->
