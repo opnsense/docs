@@ -6,6 +6,7 @@ Unbound is a validating, recursive, caching DNS resolver. It is designed to be f
 
 Since OPNsense 17.7 it has been our standard DNS service, which on a new install is enabled by default.
 
+.. _general:
 
 -------------------------
 General settings
@@ -43,20 +44,18 @@ DHCP Domain Override                  When the above registrations shouldn't use
 DHCP Static Mappings                  Register static dhcpd entries so clients can resolve them. Supported on IPv4 and
                                       IPv6.
 IPv6 Link-local                       Register link local addresses for IPv6.
+System A/AAAA records                 If this option is set, then no A/AAAA records for the configured listen interfaces
+                                      will be generated. This also means that no PTR records will be created. If desired,
+                                      you can manually add A/AAAA records in :ref:`overrides`. Use this to control which
+                                      interface IP addresses are mapped to the system host/domain name as well as to
+                                      restrict the amount of information exposed in replies to queries for the
+                                      system host/domain name.
 TXT Comment Support                   Register descriptions as comments for dhcp static host entries.
-DNS Query Forwarding                  Forward queries to configured nameservers in
-                                      :menuselection:`System --> Settings --> General : DNS Server`
 Local Zone Type                       The local zone type used for the system domain.
                                       Type descriptions are available under "local-zone:" in the
                                       `unbound.conf(5) <https://nlnetlabs.nl/documentation/unbound/unbound.conf/>`__
                                       manual page. The default is 'transparent'.
 ====================================  ===============================================================================
-
-
-.. Note::
-
-    Be careful enabling "DNS Query Forwarding" in combination with **DNSSEC**, when the upstream server doesn't support
-    DNSSEC, its answers will be considered insecure since no DNSSEC validation could be performed.
 
 .. Note::
 
@@ -64,6 +63,7 @@ Local Zone Type                       The local zone type used for the system do
     :menuselection:`Services --> Unbound DNS --> Access Lists`. The configured interfaces should gain an ACL automatically.
     If the client address is not in any of the predefined networks, please add one manually.
 
+.. _overrides:
 
 -------------------------
 Overrides
@@ -74,6 +74,14 @@ domain should be forwarded to a predefined server.
 
 **Host override settings**
 =====================================================================================================================
+
+Host overrides can be used to change DNS results from client queries or to add custom DNS records. PTR records
+are also generated under the hood to support reverse DNS lookups. These are generated in the following way:
+
+* If **System A/AAAA records** in :ref:`general` is unchecked, a PTR record is created for the primary interface.
+* Each host override entry **that does not include a wildcard for a host**, is assigned a PTR record.
+* If a host override entry **includes a wildcard for a host**, the first defined alias is assigned a PTR record.
+* Every other alias does not get a PTR record.
 
 ====================================  ===============================================================================
 Host                                  Name of the host, without domain part. Use "*" to create a wildcard entry.
@@ -86,13 +94,20 @@ Aliases                               Copies of the above data for different hos
 
 **Aliases**
 
-You may create alternative names for an Host. E.g. when having a webserver with several virtual hosts
-you create an Host override entry with the IP and name for the webserver and an alias name for every virtual host on this webserver.
+You may create alternative names for a Host. E.g. when having a webserver with several virtual hosts
+you create a Host override entry with the IP and name for the webserver and an alias name for every virtual host on this webserver.
 
 You have to select the host in the top list and it will the show you the assigned aliases in the bottom list.
 
 **Domain override settings**
 =====================================================================================================================
+
+Domain overrides can be used to forward queries for specific domains (and subsequent subdomains) to local or remote DNS servers.
+
+.. Important::
+
+    Domain overrides has been superseded by :ref:`forwarding`. Query forwarding also allows you to forward every single
+    request.
 
 ====================================  ===============================================================================
 Domain                                Domain to override
@@ -250,6 +265,8 @@ YoYo List                             https://pgl.yoyo.org/adservers/
     Usually once a day is a good enough interval for these type of tasks.
 
 
+.. _forwarding:
+
 -------------------------
 Query Forwarding
 ------------------------- 
@@ -285,6 +302,13 @@ Server IP                             Address of the DNS server to be used for r
 Port                                  Specify the port used by the DNS server. Default is port 53. Useful when
                                       configuring e.g. :doc:`/manual/how-tos/dnscrypt-proxy`
 ====================================  ===============================================================================
+
+.. warning::
+
+    Be careful enabling "DNS Query Forwarding" in combination with **DNSSEC**, no DNSSEC validation will be performed
+    for forwards with a specific domain, as the upstream server might be a local controller. If forwarding
+    everything and the upstream server doesn't support DNSSEC, its answers will not reach the client as no DNSSEC
+    validation could be performed.
 
 -------------------------
 DNS over TLS
