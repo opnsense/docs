@@ -79,6 +79,49 @@ If you follow this basic rules, you're automatically building a command
 structure for the system administrators and provide a connector to third
 party tools to the API of your component (as of version 16.1).
 
+Directory structure
+-------------------
+
+We will build our HelloWorld example step by step and create several files.
+Here is the directory structure and the files which will get created:
+
+.. code-block::
+
+    ./src/opnsense/
+      ├── mvc/
+      |   └── app/
+      |       ├── controllers/
+      |       |   └── OPNsense/HelloWorld/
+      |       |       ├── IndexController.php
+      |       |       ├── Api/
+      |       |       |   ├── ServiceController.php
+      |       |       |   ├── SettingsController.php
+      |       |       |   └── SimplifiedSettingsController.php
+      |       |       └── forms/
+      |       |           └── general.xml
+      |       ├── models/
+      |       |   └── OPNsense/HelloWorld/
+      |       |       ├── HelloWorld.php
+      |       |       ├── HelloWorld.xml
+      |       |       ├── ACL/
+      |       |       |   └── ACL.xml
+      |       |       └── Menu/
+      |       |           └── Menu.xml
+      |       └── views/
+      |           └── OPNsense/HelloWorld/
+      |               └── index.volt
+      ├── scripts/
+      |   └── OPNsense/HelloWorld/
+      |       └── testConnection.py
+      └── service/
+          ├── templates/
+          |   └── OPNsense/HelloWorld/
+          |       ├── +TARGETS
+          |       └── helloworld.conf
+          └── conf/actions.d/
+              └── actions_helloworld.conf
+
+
 --------
 Skeleton
 --------
