@@ -69,7 +69,8 @@ Other
 ..................
 
 The **other** type won't respond to ICMP ping messages or reply to ARP requests, it merely is a definition of an
-address (or range) which can be used in NAT rules.
+address (or range) which can be used in NAT rules. This is convenient when the firewall has a public IP block routed
+to its WAN IP address, IP Alias, or a CARP VIP.
 
 
 --------------------
