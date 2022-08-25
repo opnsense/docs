@@ -86,3 +86,9 @@ change to community when not planning to use the supplied license.
 .. Note::
 
     The OPNsense Business Edition license token is sent by email including instructions on how to activate.
+
+.. Tip::
+
+    Always update your device after gaining access to the internet, updates are usually available once the device
+    reaches your destination. Just go to the status tab in the firmware section, press "check for updates" and install the
+    pending updates.
