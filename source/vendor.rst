@@ -1,14 +1,13 @@
 ====================================
-Vendor
+Vendor / Hardware
 ====================================
 
---------------------
-Hardware
---------------------
+This chapter contains topics around official OPNsense supplied equipment.
 
 .. toctree::
     :maxdepth: 2
     :titlesonly:
 
+    hardware/quickstart
     hardware/serial_connectivity
     hardware/bios

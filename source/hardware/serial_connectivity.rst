@@ -6,18 +6,34 @@ Serial Console connectivity
 
 The following device families offer a mini-usb connection which can be used for serial communication:
 
-* DEC600 series
-* DEC2600 series
-* DEC700 series
-* DEC2700 series
-* DEC800 series
-* DEC3800 series
-* DEC4000 series
+========= ============ =============================
+Serie     Formfactor   Range
+========= ============ =============================
+DEC6XX    Desktop      Entry level
+DEC7XX    Desktop      Midrange
+DEC8XX    Desktop      Enterprise
+DEC26XX   Rack         Entry level
+DEC27XX   Rack         Midrange
+DEC38XX   Rack         Enterprise
+DEC40XX   Rack         Enterprise / Datacenter
+========= ============ =============================
 
 Supplied with the firewall is a mini-usb to usb cable, use this to connect the to your PC (Windows, Linux, Mac)
 next start your terminal program (Putty, screen, etc).
 
-The baudrate should be set to :code:`115200,8N1`
+The baudrate should be set to :code:`115200,8N1`, more information about how to use the serial console is available in
+our :doc:`serial access guide </manual/how-tos/serial_access>`
+
+.. admonition:: Windows Tip
+
+    On windows a COM port would be assigned after connecting the unit to usb, to find which one (COM1, COM2, .,) to
+    use, keep the windows key pressed and hit :code:`R` (Windows+R) and execute the following command :code:`devmgmt.msc`
+    to open the device manager.
+
+    In the device manager all available ports are visible under the "Ports (COM & LPT)" section.
+
+
+
 
 .. _legacy_uart:
 
