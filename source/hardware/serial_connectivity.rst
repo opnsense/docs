@@ -24,6 +24,21 @@ next start your terminal program (Putty, screen, etc).
 The baudrate should be set to :code:`115200,8N1`, more information about how to use the serial console is available in
 our :doc:`serial access guide </manual/how-tos/serial_access>`
 
+.. Note::
+
+    The default configured settings in OPNsense for proper serial connectivity in
+    :menuselection:`System->Settings->Administration` are as followed:
+
+    ===================== =========================================
+    setting               value
+    ===================== =========================================
+    Primary Console       Serial Console
+    Secondary Console     None
+    Serial Speed          115200
+    USB-based serial      (unchecked)
+    Console menu          (checked)
+    ===================== =========================================
+
 .. admonition:: Windows Tip
 
     On windows a COM port would be assigned after connecting the unit to usb, to find which one (COM1, COM2, .,) to
