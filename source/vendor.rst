@@ -9,5 +9,6 @@ This chapter contains topics around official OPNsense supplied equipment.
     :titlesonly:
 
     hardware/quickstart
+    hardware/defaults
     hardware/serial_connectivity
     hardware/bios
