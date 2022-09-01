@@ -108,11 +108,54 @@ Packet capture
 ---------------------
 
 The packet capture module can be used to deep dive into traffic passing a (or multiple) network interfaces.
-It has some options you can choose from, such as the interface to listen on, protocol you interested in and
-host to track.
+It has some options you can choose from, which are detailed below.
 
-Packet capture uses `tcpdump <https://www.tcpdump.org/>`__ and runs in the background. After a capture is performed you can
-either look into it using the **View capture** button or download the pcap file to inspect it in an external tool, such as `Wireshark <https://www.wireshark.org/>`__.
+==============================================================================================================================================
+
+=========================== ==================================================================================================================
+Interface                   List of interfaces to start a capture on. A tcpdump process is started on each selected interface
+Promiscuous                 When set, the system will capture all traffic present on the interface in stead
+                            of the traffic heading to the firewall.
+Address Family              Capture IPv4, IPv6 or both
+Invert Protocol             Select all but the protocol selected below
+Protocol                    The protocol to filter on
+Host Address                This value is either the Source or Destination IP address or subnet in CIDR notation.
+                            The packet capture will look for this address in either field.
+                            Matching can be negated by preceding the value with ":code:`not`".
+                            Multiple IP addresses or CIDR subnets may be specified as boolean expression.
+                            If you leave this field blank, all packets on the specified interface will be captured.
+                            Example: :code:`not 10.0.0.0/24 not and not 11.0.0.1`
+Invert Port                 Select all but the port selected below
+Port                        Port number to filter on (e.g. :code:`443` for standard https, :code:`22` for ssh)
+Packet Length               The Packet length is the number of bytes of each packet that will be captured.
+                            Default value is 0, which will capture the entire frame regardless of its size.
+Count                       This is the number of packets the packet capture will grab (per selected interface).
+                            Default value is 100. Enter 0 (zero) for no count limit.
+Description                 Description to be displayed in "jobs" tab
+=========================== ==================================================================================================================
+
+Packet capture uses `tcpdump <https://www.tcpdump.org/>`__ and runs in the background.
+After a capture is performed you can either look into it using the **View capture** button in the jobs tab or download the pcap file(s) to inspect it in an external tool, such as `Wireshark <https://www.wireshark.org/>`__.
+
+The jobs tab contains all running or executed captures, the following options are available per capture job:
+
+.. raw:: html
+
+      <ul>
+        <li> <i class="fa fa-fw fa-spinner fa-pulse"></i>Shows the capture is currently active </li>
+        <li> <i class="fa fa-fw fa-remove"></i> Remove capture (stops capture when currently active) </li>
+        <li> <i class="fa fa-fw fa-stop"></i> Stop the current capture </li>
+        <li> <i class="fa fa-fw fa-play"></i> (Re)starts the current capture, removes previous results when executed before </li>
+        <li> <i class="fa fa-fw fa-cloud-download"></i> Download a zip file containing all captured pcap files and a json file with selected options </li>
+        <li> <i class="fa fa-fw fa-file"></i> View capture in high detail</li>
+        <li> <i class="fa fa-fw fa-file-text"></i> View capture in medium detail</li>
+        <li> <i class="fa fa-fw fa-file-o"></i> View capture in standard detail</li>
+      </ul>
+
+.. Tip::
+
+      All view buttons can be used when the capture is still active, they will just show the details collected until now.
+
 
 ---------------------
 Ping
