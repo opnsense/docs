@@ -35,7 +35,7 @@ that it owns or licenses any of the mentioned, nor does it grant them.
 On FreeBSD the following packages are required:
 
 ```
-pkg install py37-pip jpeg-turbo gmake
+pkg install py39-pip jpeg-turbo gmake
 ```
 
 Install Sphinx, our default theme and contrib packages:
