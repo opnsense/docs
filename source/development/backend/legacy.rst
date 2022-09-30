@@ -183,6 +183,64 @@ Example:
     }
 
 
+-----------------
+Device
+-----------------
+
+To register virtual network devices types which can be used verbatim or manually assigned to interfaces,
+the :code:`<plugin>_devices()` function should return a structure containing such devices and additional
+definitions.
+
+Device registration covers a number of aspects such as interfaces assignment page presentation, external
+(re)configuration function, automatic configuration of assigned devices, and matching device name pattern
+amongst others. Available settings are described below:
+
+
++-----------------------+------------------------+--------------------------------------------------------------+
+| Property              | Syntax                 | Description                                                  |
++=======================+========================+==============================================================+
+| function              | text                   | Calls function of that name with device name as argument     |
++-----------------------+------------------------+--------------------------------------------------------------+
+| volatile              | boolean                | This interface can disappear so do not attempt boot recovery |
++-----------------------+------------------------+--------------------------------------------------------------+
+| configurable          | boolean                | Assigned interface can set IPv4/IPv6 mode if true or missing |
++-----------------------+------------------------+--------------------------------------------------------------+
+| pattern               | text                   | Regex to identify device names in bulk                       |
++-----------------------+------------------------+--------------------------------------------------------------+
+| type                  | text                   | Unqiue type setting required for assignments page            |
++-----------------------+------------------------+--------------------------------------------------------------+
+| names                 | array [ see below ]    | List of devices with individual names as associative keys    |
++-----------------------+------------------------+--------------------------------------------------------------+
+| ...descr              | text                   | Descriptive text of device, e.g. for assignments page        |
++-----------------------+------------------------+--------------------------------------------------------------+
+| ...ifdescr            | text                   | Verbatim description, e.g. as stored in config.xml           |
++-----------------------+------------------------+--------------------------------------------------------------+
+| ...name               | text                   | Device name same as array key for convenient access          |
++-----------------------+------------------------+--------------------------------------------------------------+
+
+
+Example:
+
+::
+
+    function my myplugin_devices()
+    {
+        $devices = [];
+
+        $devices[] = [
+            'function' => 'function_name_to_configure',
+            'names' => ['dev0' => [
+                'descr' => 'descriptive text',
+                'ifdescr' => 'verbatim description',
+                'name' => 'dev0',
+            ]],
+            'pattern' => '^dev',
+            'volatile' => true,
+            'type' => 'bridge',
+        ];
+
+        return $devices;
+    }
 
 
 -----------------
