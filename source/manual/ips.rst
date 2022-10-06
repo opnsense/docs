@@ -8,7 +8,7 @@ deep packet inspection system is very powerful and can be used to detect and
 mitigate security threats at wire speed.
 
 .. _Netmap: https://www.freebsd.org/cgi/man.cgi?query=netmap&sektion=4&manpath=FreeBSD+12.2-RELEASE+and+Ports
-.. _Suricata: https://suricata-ids.org/
+.. _Suricata: https://suricata.io/
 
 IDS and IPS
 -----------
