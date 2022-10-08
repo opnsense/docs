@@ -209,15 +209,20 @@ done for QoS purposes, among other things. For this reason, most ISP-issued IPTV
 
 The following settings are available for these interface types:
 
-==================================  ==================================================================================================
+==================================  =======================================================================================================
 Name                                Description
-==================================  ==================================================================================================
+==================================  =======================================================================================================
+Device                              Device name of this virtual interface, usually starts with **vlan** or **qinq** depending on the type
 Parent interface                    The interface to use as parent which it will send/receive vlan tagged traffic on
 VLAN tag                            802.1Q VLAN tag (between 1 and 4094)
 VLAN priority                       802.1Q VLAN PCP (priority code point)
 Description                         User friendly description for this interface
-==================================  ==================================================================================================
+==================================  =======================================================================================================
 
+.. Note::
+
+    `802.1ad <https://en.wikipedia.org/wiki/IEEE_802.1ad>`__ , also known as QinQ, is supported via the VLAN configuration
+    in which case you would stack a :code:`vlan` on top of a :code:`vlan`, the device name should start with qinq in that case.
 
 ------
 VXLAN
