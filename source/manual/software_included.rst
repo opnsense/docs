@@ -77,19 +77,23 @@ It's best to use our build system to facilitate this, you can do so using the fo
 
 .. code-block:: sh
 
-    opnsense-code ports tools
+    opnsense-code ports
     cd /usr/ports/your/port
     make install
-
 
 To update a package, the following command can be used instead:
 
 .. code-block:: sh
 
-    opnsense-code ports tools
+    opnsense-code ports
     cd /usr/ports/your/port
     make reinstall
 
+It might be necessary for some ports to also install the source tree:
+
+.. code-block:: sh
+
+    opnsense-code src
 
 .. Note::
 
