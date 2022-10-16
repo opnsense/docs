@@ -97,7 +97,7 @@ Here are the full patch notes:
 * ports: filterlog adds CARP IPv6 support and moves label to previously reserved spot
 * ports: isc-dhcp 4.4.2-P1 `[9] <https://downloads.isc.org/isc/dhcp/4.4.2-P1/dhcp-4.4.2-P1-RELNOTES>`__ 
 * ports: libxml 2.9.12 `[10] <http://www.xmlsoft.org/news.html>`__ 
-* ports: nss 3.67 `[11] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.67_release_notes>`__ 
+* ports: nss 3.67 `[11] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_67.html>`__ 
 * ports: openldap 2.4.59 `[12] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: openssl 1.1.1l `[13] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: pcre2 10.37 `[14] <https://www.pcre.org/changelog.txt>`__ 
@@ -200,7 +200,7 @@ Here are the full patch notes:
 * src: linux: prevent integer overflow in futex_requeue `[15] <FREEBSD:EN-21:22.linux_futex>`__ 
 * ports: filterlog 0.4 adds label support to output if applicable
 * ports: libxml fix for CVE-2021-3541
-* ports: nss 3.65 `[16] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.65_release_notes>`__ 
+* ports: nss 3.65 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_65.html>`__ 
 * ports: openssh 8.6p1 `[17] <https://www.openssh.com/txt/release-8.6>`__ 
 * ports: php 7.3.28 `[18] <https://www.php.net/ChangeLog-7.php#7.3.28>`__ 
 * ports: py-yaml 5.4.1
@@ -510,7 +510,7 @@ Here are the full patch notes:
 * src: arp: avoid segfaulting due to out-of-bounds memory access
 * src: fix multiple OpenSSL vulnerabilities `[24] <FREEBSD:FreeBSD-SA-21:07.openssl>`__ 
 * src: axgbe: enable receive all mode to bypass the MAC filter to avoid dropping CARP MAC addresses
-* ports: ca_root_nss / nss 3.63 `[25] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.63_release_notes>`__ 
+* ports: ca_root_nss / nss 3.63 `[25] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_63.html>`__ 
 * ports: curl 7.75.0 `[26] <https://curl.se/changes.html#7_75_0>`__ 
 * ports: dnsmasq 2.84 `[27] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: igmpproxy 0.3 `[28] <https://github.com/pali/igmpproxy/releases/tag/0.3>`__ 

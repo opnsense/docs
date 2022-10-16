@@ -54,7 +54,7 @@ Here are the full patch notes:
 * ports: flock 2.37.2
 * ports: hostapd 2.10 `[12] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
 * ports: lighttpd 1.4.63 `[13] <https://www.lighttpd.net/2021/12/4/1.4.63/>`__ 
-* ports: nss 3.74 `[14] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.74_release_notes>`__ 
+* ports: nss 3.74 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_74.html>`__ 
 * ports: openssl 1.1.1m `[15] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: openvpn 2.5.5 `[16] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.5>`__ 
 * ports: php 7.4.27 `[17] <https://www.php.net/ChangeLog-7.php#7.4.27>`__ 
@@ -130,7 +130,7 @@ Here are the full patch notes:
 * plugins: os-zabbix-proxy 1.6 `[10] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/zabbix-proxy/pkg-descr>`__ 
 * ports: curl 7.80.0 `[11] <https://curl.se/changes.html#7_80_0>`__ 
 * ports: dnsmasq fixes multiple regressions
-* ports: nss 3.73 `[12] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.73_release_notes>`__ 
+* ports: nss 3.73 `[12] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_73.html>`__ 
 * ports: php 7.4.26 `[13] <https://www.php.net/ChangeLog-7.php#7.4.26>`__ 
 * ports: phpseclib 2.0.35 `[14] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.35>`__ 
 * ports: suricata 6.0.4 `[15] <https://forum.suricata.io/t/suricata-6-0-4-and-5-0-8-released/1942>`__ 
@@ -238,7 +238,7 @@ Here are the full patch notes:
 * ports: dnspython 2.1.0 `[18] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
 * ports: jinja 3.0.1 `[19] <https://jinja.palletsprojects.com/en/3.0.x/changes/#version-3-0-1>`__ 
 * ports: lighttpd 1.4.61 `[20] <https://www.lighttpd.net/2021/10/28/1.4.61/>`__ 
-* ports: nss 3.72 `[21] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.72_release_notes>`__ 
+* ports: nss 3.72 `[21] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_72.html>`__ 
 * ports: openssh 8.8p1 `[22] <https://www.openssh.com/txt/release-8.8>`__ 
 * ports: openvpn 2.5.4 `[23] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.4>`__ 
 * ports: pcre2 10.39 `[24] <https://www.pcre.org/changelog.txt>`__ 
@@ -403,7 +403,7 @@ Here are the full patch notes:
 * ports: monit 5.29.0 `[21] <https://mmonit.com/monit/changes/>`__ 
 * ports: mpd5 adds L2TP interoperability fix from upstream
 * ports: nettle 3.7.3
-* ports: nss 3.70 `[22] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.70_release_notes>`__ 
+* ports: nss 3.70 `[22] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_70.html>`__ 
 * ports: openvpn 2.5.3 `[23] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.3>`__ 
 * ports: pcre 8.45 `[24] <https://www.pcre.org/original/changelog.txt>`__ 
 * ports: php 7.4.23 `[25] <https://www.php.net/ChangeLog-7.php#7.4.23>`__ 

@@ -51,11 +51,12 @@ Here are the full patch notes:
 * plugins: os-postfix 1.23 `[2] <https://github.com/opnsense/plugins/blob/stable/22.1/mail/postfix/pkg-descr>`__ 
 * plugins: os-stunnel 1.0.5 adds intermediates to server chain (contributed by Johnny S. Lee)
 * plugins: os-telegraf 1.12.5 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/net-mgmt/telegraf/pkg-descr>`__ 
-* ports: nss 3.80 `[4] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.80_release_notes>`__ 
+* ports: nss 3.80 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_80.html>`__ 
 * ports: py-vici 5.9.3
 * ports: python 3.9.13 `[5] <https://docs.python.org/release/3.9.13/whatsnew/changelog.html>`__ 
 * ports: sudo 1.9.11p3 `[6] <https://www.sudo.ws/stable.html#1.9.11p3>`__ 
 * ports: syslog-ng 3.37.1 `[7] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.37.1>`__ 
+* ports: unbound 1.16.2 `[8] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-2>`__ 
 
 A hotfix release was issued as 22.4.3_1:
 
@@ -117,7 +118,7 @@ Here are the full patch notes:
 * ports: curl 7.84.0 `[7] <https://curl.se/changes.html#7_84_0>`__ 
 * ports: krb5 1.20 `[8] <https://web.mit.edu/kerberos/krb5-1.20/>`__ 
 * ports: lighttpd 1.4.65 `[9] <https://www.lighttpd.net/2022/6/7/1.4.65/>`__ 
-* ports: nss 3.79 `[10] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.79_release_notes>`__ 
+* ports: nss 3.79 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_79.html>`__ 
 * ports: openssl 1.1.1q `[11] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: openvpn 2.5.7 `[12] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.7>`__ 
 * ports: php 7.4.30 `[13] <https://www.php.net/ChangeLog-7.php#7.4.30>`__ 
@@ -196,7 +197,7 @@ Here are the full patch notes:
 * ports: expat 2.4.8 `[11] <https://github.com/libexpat/libexpat/blob/R_2_4_8/expat/Changes>`__ 
 * ports: libxml 2.9.13 `[12] <http://www.xmlsoft.org/news.html>`__ 
 * ports: monit 5.32.0 `[13] <https://mmonit.com/monit/changes/>`__ 
-* ports: nss 3.78 `[14] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.78_release_notes>`__ 
+* ports: nss 3.78 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_78.html>`__ 
 * ports: pcre2 10.40 `[15] <https://www.pcre.org/changelog.txt>`__ 
 * ports: php 7.4.29 `[16] <https://www.php.net/ChangeLog-7.php#7.4.29>`__ 
 * ports: phpseclib 2.0.37 `[17] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.37>`__ 
@@ -486,7 +487,7 @@ Here are the full patch notes:
 * ports: krb5 1.19.3 `[26] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
 * ports: lighttpd 1.4.64 `[27] <https://www.lighttpd.net/2022/1/19/1.4.64/>`__ 
 * ports: monit 5.30.0 `[28] <https://mmonit.com/monit/changes/>`__ 
-* ports: nss 3.76 `[29] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.76_release_notes>`__ 
+* ports: nss 3.76 `[29] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_76.html>`__ 
 * ports: openssh 8.9p1 `[30] <https://www.openssh.com/txt/release-8.9>`__ 
 * ports: openssl 1.1.1n `[31] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: openvpn 2.5.6 `[32] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.6>`__ 

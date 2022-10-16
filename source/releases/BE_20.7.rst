@@ -122,7 +122,7 @@ Here are the full patch notes:
 * ports: dhcp6c ignores advertise messages with none of requested data and missed status codes
 * ports: libressl 3.1.5 `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.1.5-relnotes.txt>`__ 
 * ports: lighttpd 1.4.56 `[7] <https://www.lighttpd.net/2020/11/29/1.4.56/>`__ 
-* ports: nss 3.60 `[8] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.60_release_notes>`__ 
+* ports: nss 3.60 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_60.html>`__ 
 * ports: openssl 1.1.1i `[9] <https://www.openssl.org/news/secadv/20201208.txt>`__ 
 * ports: pcre2 10.36 `[10] <https://www.pcre.org/changelog.txt>`__ 
 * ports: sudo 1.9.4 `[11] <https://www.sudo.ws/stable.html#1.9.4>`__ 
@@ -180,7 +180,7 @@ Here are the full patch notes:
 * src: fix multiple vulnerabilities in rtsold `[7] <FREEBSD:FreeBSD-SA-20:32.rtsold>`__ 
 * src: update timezone database information `[8] <FREEBSD:FreeBSD-EN-20:20.tzdata>`__ 
 * ports: krb5 1.18.3 `[9] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
-* ports: nss 3.59 `[10] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.59_release_notes>`__ 
+* ports: nss 3.59 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_59.html>`__ 
 * ports: openldap 2.4.56 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: openssh 8.4p1 `[12] <https://www.openssh.com/txt/release-8.4>`__ 
 * ports: php 7.3.25 `[13] <https://www.php.net/ChangeLog-7.php#7.3.25>`__ 
@@ -272,7 +272,7 @@ Here are the full patch notes:
 * src: update Realtek re driver to upstream version 1.96.04 (contributed by Laurent Dinclaux)
 * ports: curl 7.73.0 `[3] <https://curl.se/changes.html#7_73_0>`__ 
 * ports: libxml fixes for CVE-2019-20388, CVE-2020-7595 and CVE-2020-24977
-* ports: nss 3.58 `[4] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.58_release_notes>`__ 
+* ports: nss 3.58 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_58.html>`__ 
 * ports: openssl 1.1.1h `[5] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: php 7.3.23 `[6] <https://www.php.net/ChangeLog-7.php#7.3.23>`__ 
 * ports: pkg 1.15.10
@@ -331,7 +331,7 @@ Here are the full patch notes:
 * src: set PAX_HARDENING_NOSHLIBRANDOM in the RTLD by default
 * src: fix kernel panic while trying to read multicast stream
 * ports: mpd 5.9 `[13] <http://mpd.sourceforge.net/doc5/mpd4.html#4>`__ 
-* ports: nss 3.57 `[14] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.57_release_notes>`__ 
+* ports: nss 3.57 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_57.html>`__ 
 * ports: php 7.3.22 `[15] <https://www.php.net/ChangeLog-7.php#7.3.22>`__ 
 * ports: pkg 1.15.6 `[16] <https://github.com/freebsd/freebsd-ports/commit/fd4f5566aea>`__ 
 
@@ -384,7 +384,7 @@ Here are the full patch notes:
 * src: default "show bad packets" tunable to off in e100 driver
 * src: fix unsolicited promisc mode in e1000 driver
 * src: add valectl to the system commands
-* ports: ca_root_nss/nss 3.56 `[4] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.56_release_notes>`__ 
+* ports: ca_root_nss/nss 3.56 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_56.html>`__ 
 * ports: curl 7.72.0 `[5] <https://curl.se/changes.html#7_72_0>`__ 
 * ports: libressl 3.1.4 `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.1.4-relnotes.txt>`__ 
 * ports: openldap 2.4.51 `[7] <https://www.openldap.org/software/release/changes.html>`__ 
@@ -474,7 +474,7 @@ Here are the full patch notes against version 20.7-RC1:
 * src: prevent netgraph page fault for LTE usage
 * ports: dnsmasq 2.82 `[4] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: monit 5.27.0 `[5] <https://mmonit.com/monit/changes/>`__ 
-* ports: nss 3.55 `[6] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.55_release_notes>`__ 
+* ports: nss 3.55 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_55.html>`__ 
 * ports: sudo 1.9.2 `[7] <https://www.sudo.ws/stable.html#1.9.2>`__ 
 
 Known issues and limitations:

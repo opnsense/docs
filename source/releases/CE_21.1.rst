@@ -66,7 +66,7 @@ Here are the full patch notes:
 * plugins: os-zabbix-agent 1.9 `[4] <https://github.com/opnsense/plugins/blob/stable/21.1/net-mgmt/zabbix-agent/pkg-descr>`__ 
 * ports: curl 7.78.0 `[5] <https://curl.se/changes.html#7_78_0>`__ 
 * ports: filterlog adds CARP IPv6 support and moves label to previously reserved spot
-* ports: nss 3.68 `[6] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.68_release_notes>`__ 
+* ports: nss 3.68 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_68.html>`__ 
 * ports: php 7.4.21 `[7] <https://www.php.net/ChangeLog-7.php#7.4.21>`__ 
 * ports: python 3.7.11 `[8] <https://docs.python.org/release/3.7.11/whatsnew/changelog.html>`__ 
 * ports: syslog-ng 3.33.2 `[9] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.33.2>`__ 
@@ -127,7 +127,7 @@ Here are the full patch notes:
 * ports: clog 1.0.2 fixes garbage header write on init
 * ports: libxml 2.9.12 `[7] <http://www.xmlsoft.org/news.html>`__ 
 * ports: nettle 3.7.3
-* ports: nss 3.67 `[8] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.67_release_notes>`__ 
+* ports: nss 3.67 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_67.html>`__ 
 * ports: openvpn 2.5.3 `[9] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.3>`__ 
 * ports: php 7.4.20 `[10] <https://www.php.net/ChangeLog-7.php#7.4.20>`__ 
 * ports: phpseclib 2.0.32 `[11] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.32>`__ 
@@ -191,7 +191,7 @@ Here are the full patch notes:
 * src: pms data corruption `[6] <FREEBSD:FreeBSD-EN-21:14.pms>`__ 
 * ports: curl 7.77.0 `[7] <https://curl.se/changes.html#7_77_0>`__ 
 * ports: isc-dhcp 4.4.2-P1 `[8] <https://downloads.isc.org/isc/dhcp/4.4.2-P1/dhcp-4.4.2-P1-RELNOTES>`__ 
-* ports: nss 3.66 `[9] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.66_release_notes>`__ 
+* ports: nss 3.66 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_66.html>`__ 
 * ports: openldap 2.4.59 `[10] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: pcre2 10.37 `[11] <https://www.pcre.org/changelog.txt>`__ 
 * ports: phalcon 4.1.2 `[12] <https://github.com/phalcon/cphalcon/releases/tag/v4.1.2>`__ 
@@ -268,7 +268,7 @@ Here are the full patch notes:
 * ports: filterlog 0.4 adds label support to output if applicable
 * ports: libressl 3.3.3 `[12] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.3-relnotes.txt>`__ 
 * ports: libxml fix for CVE-2021-3541
-* ports: nss 3.65 `[13] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.65_release_notes>`__ 
+* ports: nss 3.65 `[13] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_65.html>`__ 
 * ports: openssh 8.6p1 `[14] <https://www.openssh.com/txt/release-8.6>`__ 
 * ports: openvpn 2.4.11 `[15] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24#OpenVPN2.4.11>`__ 
 * ports: php 7.3.28 `[16] <https://www.php.net/ChangeLog-7.php#7.3.28>`__ 
@@ -420,7 +420,7 @@ Here are the full patch notes:
 * plugins: os-wireguard 1.5 `[5] <https://github.com/opnsense/plugins/blob/stable/21.1/net/wireguard/pkg-descr>`__ 
 * plugins: os-wol 2.4 fixes dashboard widget (contributed by kulikov-a)
 * src: fix multiple OpenSSL vulnerabilities `[6] <FREEBSD:FreeBSD-SA-21:07.openssl>`__ 
-* ports: ca_root_nss / nss 3.63 `[7] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.63_release_notes>`__ 
+* ports: ca_root_nss / nss 3.63 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_63.html>`__ 
 * ports: libressl 3.2.5 `[8] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.5-relnotes.txt>`__ 
 * ports: openldap 2.4.58 `[9] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: openssh fix for double free in ssh-agent `[10] <https://ftp.openbsd.org/pub/OpenBSD/patches/6.8/common/015_sshagent.patch.sig>`__ 
@@ -492,7 +492,7 @@ Here are the full patch notes:
 * src: arp: avoid segfaulting due to out-of-bounds memory access
 * ports: cpdup 1.22 `[8] <https://github.com/DragonFlyBSD/cpdup/releases/tag/v1.22>`__ 
 * ports: krb5 1.19.1 `[9] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
-* ports: nss 3.62 `[10] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.62_release_notes>`__ 
+* ports: nss 3.62 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_62.html>`__ 
 * ports: pkg now provides fallback for version mismatch on pkg-add
 * ports: python 3.7.10 `[11] <https://docs.python.org/release/3.7.10/whatsnew/changelog.html>`__ 
 * ports: syslog-ng 3.31.1 `[12] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.31.1>`__ 
@@ -731,7 +731,7 @@ Here are the full patch notes against 20.7.8:
 * src: fix traffic graph not showing bandwidth when IPS is enabled
 * ports: dnsmasq 2.83 `[9] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: igmpproxy 0.3 `[10] <https://github.com/pali/igmpproxy/releases/tag/0.3>`__ 
-* ports: nss 3.61 `[11] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.61_release_notes>`__ 
+* ports: nss 3.61 `[11] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_61.html>`__ 
 * ports: openldap 2.4.57 `[12] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: py-netaddr 0.8.0 `[13] <https://pypi.org/project/netaddr/0.8.0/>`__ 
 * ports: sudo 1.9.5p2 `[14] <https://www.sudo.ws/stable.html#1.9.5p2>`__ 

@@ -448,7 +448,7 @@ Here are the full patch notes:
 * dns: improve forwarder interface listening generation
 * rc: silence backup warnings about stripped leading slashes
 * ports: bind 9.10.4-P3 `[2] <http://ftp.isc.org/isc/bind9/9.10.4-P3/RELEASE-NOTES-bind-9.10.4-P3.html>`__ 
-* ports: ca_root_nss 3.27.1 `[3] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.27.1_release_notes>`__ 
+* ports: ca_root_nss 3.27.1 `[3] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_27_1.html>`__ 
 * ports: libressl 2.3.8 `[4] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.3.8-relnotes.txt>`__ 
 * ports: unbound 1.5.10 `[5] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-5-10>`__ 
 

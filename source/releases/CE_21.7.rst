@@ -76,7 +76,7 @@ Here are the full patch notes:
 * ports: flock 2.37.2
 * ports: hostapd 2.10 `[12] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
 * ports: lighttpd 1.4.63 `[13] <https://www.lighttpd.net/2021/12/4/1.4.63/>`__ 
-* ports: nss 3.74 `[14] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.74_release_notes>`__ 
+* ports: nss 3.74 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_74.html>`__ 
 * ports: openssl 1.1.1m `[15] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: openvpn 2.5.5 `[16] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.5>`__ 
 * ports: php 7.4.27 `[17] <https://www.php.net/ChangeLog-7.php#7.4.27>`__ 
@@ -124,7 +124,7 @@ Here are the full patch notes:
 * src: axgbe: log GPIO signals on EEPROM read fails
 * ports: curl 7.80.0 `[3] <https://curl.se/changes.html#7_80_0>`__ 
 * ports: dnsmasq fixes multiple regressions
-* ports: nss 3.73 `[4] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.73_release_notes>`__ 
+* ports: nss 3.73 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_73.html>`__ 
 * ports: php 7.4.26 `[5] <https://www.php.net/ChangeLog-7.php#7.4.26>`__ 
 * ports: phpseclib 2.0.35 `[6] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.35>`__ 
 * ports: suricata disables Netmap API version 14 introduced in 21.7.6
@@ -257,7 +257,7 @@ Here are the full patch notes for version 21.7.5:
 * src: fix kernel panic in vmci driver initialization `[13] <FREEBSD:FreeBSD-EN-21:28.vmci>`__ 
 * src: timezone database information update `[14] <FREEBSD:FreeBSD-EN-21:29.tzdata>`__ 
 * ports: lighttpd 1.4.61 `[15] <https://www.lighttpd.net/2021/10/28/1.4.61/>`__ 
-* ports: nss 3.72 `[16] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.72_release_notes>`__ 
+* ports: nss 3.72 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_72.html>`__ 
 * ports: openssh 8.8p1 `[17] <https://www.openssh.com/txt/release-8.8>`__ 
 * ports: pcre2 10.39 `[18] <https://www.pcre.org/changelog.txt>`__ 
 * ports: php 7.4.25 `[19] <https://www.php.net/ChangeLog-7.php#7.4.25>`__ 
@@ -340,7 +340,7 @@ Here are the full patch notes:
 * ports: jinja 3.0.1 `[8] <https://jinja.palletsprojects.com/en/3.0.x/changes/#version-3-0-1>`__ 
 * ports: libressl 3.3.5 `[9] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.5-relnotes.txt>`__ 
 * ports: lighttpd 1.4.60 `[10] <https://www.lighttpd.net/2021/10/3/1.4.60/>`__ 
-* ports: nss 3.71 `[11] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.71_release_notes>`__ 
+* ports: nss 3.71 `[11] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_71.html>`__ 
 * ports: openvpn 2.5.4 `[12] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.4>`__ 
 * ports: php 7.4.24 `[13] <https://www.php.net/ChangeLog-7.php#7.4.24>`__ 
 * ports: strongswan 5.9.4 `[14] <https://github.com/strongswan/strongswan/releases/tag/5.9.4>`__ 
@@ -388,7 +388,7 @@ Here are the full patch notes:
 * plugins: os-telegraf 1.12.1 `[6] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
 * ports: dnsmasq 2.86 `[7] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: filterlog 0.5 removes unused IPv6 options support
-* ports: nss 3.70 `[8] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.70_release_notes>`__ 
+* ports: nss 3.70 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_70.html>`__ 
 * ports: pcre 8.45 `[9] <https://www.pcre.org/original/changelog.txt>`__ 
 * ports: python 3.8.12 `[10] <https://docs.python.org/release/3.8.12/whatsnew/changelog.html>`__ 
 * ports: sudo 1.9.8p1 `[11] <https://www.sudo.ws/stable.html#1.9.8p1>`__ 
@@ -477,7 +477,7 @@ Here are the full patch notes:
 * src: fix multiple OpenSSL vulnerabilities `[6] <FREEBSD:FreeBSD-SA-21:16.openssl>`__  `[7] <FREEBSD:FreeBSD-SA-21:17.openssl>`__ 
 * ports: ifinfo 13.0
 * ports: libressl 3.3.4 `[8] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.4-relnotes.txt>`__ 
-* ports: nss 3.69 `[9] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.69_release_notes>`__ 
+* ports: nss 3.69 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_69.html>`__ 
 * ports: monit 5.29.0 `[10] <https://mmonit.com/monit/changes/>`__ 
 * ports: mpd5 adds L2TP interoperability fix from upstream
 * ports: openssl 1.1.1l `[11] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
@@ -693,7 +693,7 @@ Here are the full patch notes:
 * ports: filterlog adds CARP IPv6 support and moves label to previously reserved spot
 * ports: libxml 2.9.12 `[15] <http://www.xmlsoft.org/news.html>`__ 
 * ports: nettle 3.7.3
-* ports: nss 3.68 `[16] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.68_release_notes>`__ 
+* ports: nss 3.68 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_68.html>`__ 
 * ports: openvpn 2.5.3 `[17] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.3>`__ 
 * ports: php 7.4.21 `[18] <https://www.php.net/ChangeLog-7.php#7.4.21>`__ 
 * ports: phpseclib 2.0.32 `[19] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.32>`__ 
@@ -885,7 +885,7 @@ Here are the full patch notes against 21.1.7:
 * ports: drop hardening options to ease migration to FreeBSD ports tree
 * ports: libxml 2.9.12 `[6] <http://www.xmlsoft.org/news.html>`__ 
 * ports: nettle 3.7.3
-* ports: nss 3.67 `[7] <https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.67_release_notes>`__ 
+* ports: nss 3.67 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_67.html>`__ 
 * ports: openvpn 2.5.3 `[8] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.3>`__ 
 * ports: php 7.4.20 `[9] <https://www.php.net/ChangeLog-7.php#7.4.20>`__ 
 * ports: phpseclib 2.0.32 `[10] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.32>`__ 
