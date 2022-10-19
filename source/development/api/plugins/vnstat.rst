@@ -6,7 +6,7 @@ Vnstat
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","vnstat","general","get",""
-    "``GET``","vnstat","general","set",""
+    "``POST``","vnstat","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net/vnstat/src/opnsense/mvc/app/models/OPNsense/Vnstat/General.xml>`__"
 
@@ -17,12 +17,12 @@ Vnstat
     "``GET``","vnstat","service","daily",""
     "``GET``","vnstat","service","hourly",""
     "``GET``","vnstat","service","monthly",""
-    "``GET``","vnstat","service","reconfigure",""
+    "``POST``","vnstat","service","reconfigure",""
     "``GET``","vnstat","service","resetdb",""
-    "``GET``","vnstat","service","restart",""
-    "``GET``","vnstat","service","start",""
+    "``POST``","vnstat","service","restart",""
+    "``POST``","vnstat","service","start",""
     "``GET``","vnstat","service","status",""
-    "``GET``","vnstat","service","stop",""
+    "``POST``","vnstat","service","stop",""
     "``GET``","vnstat","service","yearly",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net/vnstat/src/opnsense/mvc/app/models/OPNsense/Vnstat/General.xml>`__"

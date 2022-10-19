@@ -6,7 +6,7 @@ Zabbixproxy
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","zabbixproxy","general","get",""
-    "``GET``","zabbixproxy","general","set",""
+    "``POST``","zabbixproxy","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/zabbix-proxy/src/opnsense/mvc/app/models/OPNsense/Zabbixproxy/General.xml>`__"
 
@@ -14,10 +14,10 @@ Zabbixproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","zabbixproxy","service","reconfigure",""
-    "``GET``","zabbixproxy","service","restart",""
-    "``GET``","zabbixproxy","service","start",""
+    "``POST``","zabbixproxy","service","reconfigure",""
+    "``POST``","zabbixproxy","service","restart",""
+    "``POST``","zabbixproxy","service","start",""
     "``GET``","zabbixproxy","service","status",""
-    "``GET``","zabbixproxy","service","stop",""
+    "``POST``","zabbixproxy","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/zabbix-proxy/src/opnsense/mvc/app/models/OPNsense/Zabbixproxy/General.xml>`__"

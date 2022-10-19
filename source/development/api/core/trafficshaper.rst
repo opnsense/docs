@@ -26,7 +26,7 @@ Trafficshaper
     "``*``","trafficshaper","settings","searchPipes",""
     "``*``","trafficshaper","settings","searchQueues",""
     "``*``","trafficshaper","settings","searchRules",""
-    "``GET``","trafficshaper","settings","set",""
+    "``POST``","trafficshaper","settings","set",""
     "``POST``","trafficshaper","settings","setPipe","$uuid"
     "``POST``","trafficshaper","settings","setQueue","$uuid"
     "``POST``","trafficshaper","settings","setRule","$uuid"

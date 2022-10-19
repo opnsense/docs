@@ -6,7 +6,7 @@ Netsnmp
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","netsnmp","general","get",""
-    "``GET``","netsnmp","general","set",""
+    "``POST``","netsnmp","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/net-snmp/src/opnsense/mvc/app/models/OPNsense/Netsnmp/General.xml>`__"
 
@@ -14,11 +14,11 @@ Netsnmp
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","netsnmp","service","reconfigure",""
-    "``GET``","netsnmp","service","restart",""
-    "``GET``","netsnmp","service","start",""
+    "``POST``","netsnmp","service","reconfigure",""
+    "``POST``","netsnmp","service","restart",""
+    "``POST``","netsnmp","service","start",""
     "``GET``","netsnmp","service","status",""
-    "``GET``","netsnmp","service","stop",""
+    "``POST``","netsnmp","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/net-snmp/src/opnsense/mvc/app/models/OPNsense/Netsnmp/General.xml>`__"
 
@@ -31,7 +31,7 @@ Netsnmp
     "``GET``","netsnmp","user","get",""
     "``GET``","netsnmp","user","getUser","$uuid=null"
     "``*``","netsnmp","user","searchUser",""
-    "``GET``","netsnmp","user","set",""
+    "``POST``","netsnmp","user","set",""
     "``POST``","netsnmp","user","setUser","$uuid"
     "``POST``","netsnmp","user","toggleUser","$uuid"
 

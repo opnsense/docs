@@ -10,7 +10,7 @@ Quagga
     "``GET``","quagga","bfd","get",""
     "``GET``","quagga","bfd","getNeighbor","$uuid=null"
     "``*``","quagga","bfd","searchNeighbor",""
-    "``GET``","quagga","bfd","set",""
+    "``POST``","quagga","bfd","set",""
     "``POST``","quagga","bfd","setNeighbor","$uuid"
     "``POST``","quagga","bfd","toggleNeighbor","$uuid"
 
@@ -41,13 +41,14 @@ Quagga
     "``*``","quagga","bgp","searchNeighbor",""
     "``*``","quagga","bgp","searchPrefixlist",""
     "``*``","quagga","bgp","searchRoutemap",""
-    "``GET``","quagga","bgp","set",""
+    "``POST``","quagga","bgp","set",""
     "``POST``","quagga","bgp","setAspath","$uuid"
     "``POST``","quagga","bgp","setCommunitylist","$uuid"
     "``POST``","quagga","bgp","setNeighbor","$uuid"
     "``POST``","quagga","bgp","setPrefixlist","$uuid"
     "``POST``","quagga","bgp","setRoutemap","$uuid"
     "``POST``","quagga","bgp","toggleAspath","$uuid"
+    "``POST``","quagga","bgp","toggleCommunitylist","$uuid"
     "``POST``","quagga","bgp","toggleNeighbor","$uuid"
     "``POST``","quagga","bgp","togglePrefixlist","$uuid"
     "``POST``","quagga","bgp","toggleRoutemap","$uuid"
@@ -94,7 +95,7 @@ Quagga
     "``GET``","quagga","ospf6settings","get",""
     "``GET``","quagga","ospf6settings","getInterface","$uuid=null"
     "``*``","quagga","ospf6settings","searchInterface",""
-    "``GET``","quagga","ospf6settings","set",""
+    "``POST``","quagga","ospf6settings","set",""
     "``POST``","quagga","ospf6settings","setInterface","$uuid"
     "``POST``","quagga","ospf6settings","toggleInterface","$uuid"
 
@@ -121,7 +122,7 @@ Quagga
     "``*``","quagga","ospfsettings","searchNetwork",""
     "``*``","quagga","ospfsettings","searchPrefixlist",""
     "``*``","quagga","ospfsettings","searchRoutemap",""
-    "``GET``","quagga","ospfsettings","set",""
+    "``POST``","quagga","ospfsettings","set",""
     "``POST``","quagga","ospfsettings","setInterface","$uuid"
     "``POST``","quagga","ospfsettings","setNetwork","$uuid"
     "``POST``","quagga","ospfsettings","setPrefixlist","$uuid"
@@ -138,7 +139,7 @@ Quagga
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","quagga","rip","get",""
-    "``GET``","quagga","rip","set",""
+    "``POST``","quagga","rip","set",""
 
     "``<<uses>>``", "", "", "", "*model* `RIP.xml <https://github.com/opnsense/plugins/blob/master/net/frr/src/opnsense/mvc/app/models/OPNsense/Quagga/RIP.xml>`__"
 

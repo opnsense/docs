@@ -18,7 +18,7 @@ Firewall
     "``GET``","firewall","alias","listNetworkAliases",""
     "``POST``","firewall","alias","reconfigure",""
     "``*``","firewall","alias","searchItem",""
-    "``GET``","firewall","alias","set",""
+    "``POST``","firewall","alias","set",""
     "``POST``","firewall","alias","setItem","$uuid"
     "``POST``","firewall","alias","toggleItem","$uuid,$enabled=null"
 
@@ -46,7 +46,13 @@ Firewall
     "``GET``","firewall","category","getItem","$uuid=null"
     "``*``","firewall","category","searchItem",""
     "``*``","firewall","category","searchNoCategoryItem",""
-    "``GET``","firewall","category","set",""
+    "``POST``","firewall","category","set",""
     "``POST``","firewall","category","setItem","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Category.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Category.xml>`__"
+
+.. csv-table:: Resources (FilterUtilController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","firewall","filter_util","ruleStats",""

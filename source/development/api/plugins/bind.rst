@@ -10,7 +10,7 @@ Bind
     "``GET``","bind","acl","get",""
     "``GET``","bind","acl","getAcl","$uuid=null"
     "``*``","bind","acl","searchAcl",""
-    "``GET``","bind","acl","set",""
+    "``POST``","bind","acl","set",""
     "``POST``","bind","acl","setAcl","$uuid"
     "``POST``","bind","acl","toggleAcl","$uuid"
 
@@ -21,7 +21,7 @@ Bind
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","bind","dnsbl","get",""
-    "``GET``","bind","dnsbl","set",""
+    "``POST``","bind","dnsbl","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Dnsbl.xml <https://github.com/opnsense/plugins/blob/master/dns/bind/src/opnsense/mvc/app/models/OPNsense/Bind/Dnsbl.xml>`__"
 
@@ -29,12 +29,14 @@ Bind
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","bind","domain","addDomain","$uuid=null"
+    "``POST``","bind","domain","addMasterDomain","$uuid=null"
+    "``POST``","bind","domain","addSlaveDomain","$uuid=null"
     "``POST``","bind","domain","delDomain","$uuid"
     "``GET``","bind","domain","get",""
     "``GET``","bind","domain","getDomain","$uuid=null"
-    "``*``","bind","domain","searchDomain",""
-    "``GET``","bind","domain","set",""
+    "``*``","bind","domain","searchMasterDomain",""
+    "``*``","bind","domain","searchSlaveDomain",""
+    "``POST``","bind","domain","set",""
     "``POST``","bind","domain","setDomain","$uuid=null"
     "``POST``","bind","domain","toggleDomain","$uuid"
 
@@ -45,7 +47,7 @@ Bind
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","bind","general","get",""
-    "``GET``","bind","general","set",""
+    "``POST``","bind","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/dns/bind/src/opnsense/mvc/app/models/OPNsense/Bind/General.xml>`__"
 
@@ -58,7 +60,7 @@ Bind
     "``GET``","bind","record","get",""
     "``GET``","bind","record","getRecord","$uuid=null"
     "``*``","bind","record","searchRecord",""
-    "``GET``","bind","record","set",""
+    "``POST``","bind","record","set",""
     "``POST``","bind","record","setRecord","$uuid=null"
     "``POST``","bind","record","toggleRecord","$uuid"
 
@@ -69,10 +71,10 @@ Bind
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","bind","service","dnsbl",""
-    "``GET``","bind","service","reconfigure",""
-    "``GET``","bind","service","restart",""
-    "``GET``","bind","service","start",""
+    "``POST``","bind","service","reconfigure",""
+    "``POST``","bind","service","restart",""
+    "``POST``","bind","service","start",""
     "``GET``","bind","service","status",""
-    "``GET``","bind","service","stop",""
+    "``POST``","bind","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/dns/bind/src/opnsense/mvc/app/models/OPNsense/Bind/General.xml>`__"

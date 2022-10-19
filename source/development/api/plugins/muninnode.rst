@@ -6,7 +6,7 @@ Muninnode
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","muninnode","general","get",""
-    "``GET``","muninnode","general","set",""
+    "``POST``","muninnode","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/sysutils/munin-node/src/opnsense/mvc/app/models/OPNsense/Muninnode/General.xml>`__"
 
@@ -14,10 +14,10 @@ Muninnode
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","muninnode","service","reconfigure",""
-    "``GET``","muninnode","service","restart",""
-    "``GET``","muninnode","service","start",""
+    "``POST``","muninnode","service","reconfigure",""
+    "``POST``","muninnode","service","restart",""
+    "``POST``","muninnode","service","start",""
     "``GET``","muninnode","service","status",""
-    "``GET``","muninnode","service","stop",""
+    "``POST``","muninnode","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/sysutils/munin-node/src/opnsense/mvc/app/models/OPNsense/Muninnode/General.xml>`__"

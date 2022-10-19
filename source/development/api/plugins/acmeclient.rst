@@ -11,7 +11,7 @@ Acmeclient
     "``GET``","acmeclient","accounts","get",""
     "``POST``","acmeclient","accounts","register","$uuid"
     "``*``","acmeclient","accounts","search",""
-    "``GET``","acmeclient","accounts","set",""
+    "``POST``","acmeclient","accounts","set",""
     "``POST``","acmeclient","accounts","toggle","$uuid,$enabled=null"
     "``POST``","acmeclient","accounts","update","$uuid"
 
@@ -26,9 +26,11 @@ Acmeclient
     "``GET``","acmeclient","actions","get","$uuid=null"
     "``GET``","acmeclient","actions","get",""
     "``*``","acmeclient","actions","search",""
-    "``GET``","acmeclient","actions","set",""
+    "``POST``","acmeclient","actions","set",""
     "``GET``","acmeclient","actions","sftpGetIdentity",""
     "``GET``","acmeclient","actions","sftpTestConnection",""
+    "``GET``","acmeclient","actions","sshGetIdentity",""
+    "``GET``","acmeclient","actions","sshTestConnection",""
     "``POST``","acmeclient","actions","toggle","$uuid,$enabled=null"
     "``POST``","acmeclient","actions","update","$uuid"
 
@@ -47,7 +49,7 @@ Acmeclient
     "``GET``","acmeclient","certificates","removekey","$uuid"
     "``POST``","acmeclient","certificates","revoke","$uuid"
     "``*``","acmeclient","certificates","search",""
-    "``GET``","acmeclient","certificates","set",""
+    "``POST``","acmeclient","certificates","set",""
     "``POST``","acmeclient","certificates","sign","$uuid"
     "``POST``","acmeclient","certificates","toggle","$uuid,$enabled=null"
     "``POST``","acmeclient","certificates","update","$uuid"
@@ -76,7 +78,7 @@ Acmeclient
     "``GET``","acmeclient","settings","get",""
     "``GET``","acmeclient","settings","getBindPluginStatus",""
     "``GET``","acmeclient","settings","getGcloudPluginStatus",""
-    "``GET``","acmeclient","settings","set",""
+    "``POST``","acmeclient","settings","set",""
 
     "``<<uses>>``", "", "", "", "*model* `AcmeClient.xml <https://github.com/opnsense/plugins/blob/master/security/acme-client/src/opnsense/mvc/app/models/OPNsense/AcmeClient/AcmeClient.xml>`__"
 
@@ -89,7 +91,7 @@ Acmeclient
     "``GET``","acmeclient","validations","get","$uuid=null"
     "``GET``","acmeclient","validations","get",""
     "``*``","acmeclient","validations","search",""
-    "``GET``","acmeclient","validations","set",""
+    "``POST``","acmeclient","validations","set",""
     "``POST``","acmeclient","validations","toggle","$uuid,$enabled=null"
     "``POST``","acmeclient","validations","update","$uuid"
 

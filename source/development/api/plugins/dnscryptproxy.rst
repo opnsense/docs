@@ -10,7 +10,7 @@ Dnscryptproxy
     "``GET``","dnscryptproxy","cloak","get",""
     "``GET``","dnscryptproxy","cloak","getCloak","$uuid=null"
     "``*``","dnscryptproxy","cloak","searchCloak",""
-    "``GET``","dnscryptproxy","cloak","set",""
+    "``POST``","dnscryptproxy","cloak","set",""
     "``POST``","dnscryptproxy","cloak","setCloak","$uuid"
     "``POST``","dnscryptproxy","cloak","toggleCloak","$uuid"
 
@@ -21,7 +21,7 @@ Dnscryptproxy
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","dnscryptproxy","dnsbl","get",""
-    "``GET``","dnscryptproxy","dnsbl","set",""
+    "``POST``","dnscryptproxy","dnsbl","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Dnsbl.xml <https://github.com/opnsense/plugins/blob/master/dns/dnscrypt-proxy/src/opnsense/mvc/app/models/OPNsense/Dnscryptproxy/Dnsbl.xml>`__"
 
@@ -34,7 +34,7 @@ Dnscryptproxy
     "``GET``","dnscryptproxy","forward","get",""
     "``GET``","dnscryptproxy","forward","getForward","$uuid=null"
     "``*``","dnscryptproxy","forward","searchForward",""
-    "``GET``","dnscryptproxy","forward","set",""
+    "``POST``","dnscryptproxy","forward","set",""
     "``POST``","dnscryptproxy","forward","setForward","$uuid"
     "``POST``","dnscryptproxy","forward","toggleForward","$uuid"
 
@@ -45,7 +45,7 @@ Dnscryptproxy
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","dnscryptproxy","general","get",""
-    "``GET``","dnscryptproxy","general","set",""
+    "``POST``","dnscryptproxy","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/dns/dnscrypt-proxy/src/opnsense/mvc/app/models/OPNsense/Dnscryptproxy/General.xml>`__"
 
@@ -58,7 +58,7 @@ Dnscryptproxy
     "``GET``","dnscryptproxy","server","get",""
     "``GET``","dnscryptproxy","server","getServer","$uuid=null"
     "``*``","dnscryptproxy","server","searchServer",""
-    "``GET``","dnscryptproxy","server","set",""
+    "``POST``","dnscryptproxy","server","set",""
     "``POST``","dnscryptproxy","server","setServer","$uuid"
     "``POST``","dnscryptproxy","server","toggleServer","$uuid"
 
@@ -69,11 +69,11 @@ Dnscryptproxy
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","dnscryptproxy","service","dnsbl",""
-    "``GET``","dnscryptproxy","service","reconfigure",""
-    "``GET``","dnscryptproxy","service","restart",""
-    "``GET``","dnscryptproxy","service","start",""
+    "``POST``","dnscryptproxy","service","reconfigure",""
+    "``POST``","dnscryptproxy","service","restart",""
+    "``POST``","dnscryptproxy","service","start",""
     "``GET``","dnscryptproxy","service","status",""
-    "``GET``","dnscryptproxy","service","stop",""
+    "``POST``","dnscryptproxy","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/dns/dnscrypt-proxy/src/opnsense/mvc/app/models/OPNsense/Dnscryptproxy/General.xml>`__"
 
@@ -86,7 +86,7 @@ Dnscryptproxy
     "``GET``","dnscryptproxy","whitelist","get",""
     "``GET``","dnscryptproxy","whitelist","getWhitelist","$uuid=null"
     "``*``","dnscryptproxy","whitelist","searchWhitelist",""
-    "``GET``","dnscryptproxy","whitelist","set",""
+    "``POST``","dnscryptproxy","whitelist","set",""
     "``POST``","dnscryptproxy","whitelist","setWhitelist","$uuid"
     "``POST``","dnscryptproxy","whitelist","toggleWhitelist","$uuid"
 

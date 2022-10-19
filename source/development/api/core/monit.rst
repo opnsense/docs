@@ -5,13 +5,13 @@ Monit
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","monit","service","configtest",""
+    "``POST``","monit","service","check",""
     "``POST``","monit","service","reconfigure",""
-    "``GET``","monit","service","reconfigure",""
-    "``GET``","monit","service","restart",""
-    "``GET``","monit","service","start",""
+    "``POST``","monit","service","reconfigure",""
+    "``POST``","monit","service","restart",""
+    "``POST``","monit","service","start",""
     "``GET``","monit","service","status",""
-    "``GET``","monit","service","stop",""
+    "``POST``","monit","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `Monit.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Monit/Monit.xml>`__"
 
@@ -34,7 +34,7 @@ Monit
     "``*``","monit","settings","searchAlert",""
     "``*``","monit","settings","searchService",""
     "``*``","monit","settings","searchTest",""
-    "``GET``","monit","settings","set",""
+    "``POST``","monit","settings","set",""
     "``POST``","monit","settings","setAlert","$uuid"
     "``POST``","monit","settings","setService","$uuid"
     "``POST``","monit","settings","setTest","$uuid"

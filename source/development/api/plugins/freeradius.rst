@@ -10,7 +10,7 @@ Freeradius
     "``GET``","freeradius","avpair","get",""
     "``GET``","freeradius","avpair","getAvpair","$uuid=null"
     "``*``","freeradius","avpair","searchAvpair",""
-    "``GET``","freeradius","avpair","set",""
+    "``POST``","freeradius","avpair","set",""
     "``POST``","freeradius","avpair","setAvpair","$uuid"
     "``POST``","freeradius","avpair","toggleAvpair","$uuid"
 
@@ -27,7 +27,7 @@ Freeradius
     "``GET``","freeradius","client","getClient","$uuid=null"
     "``GET``","freeradius","client","searchClient",""
     "``POST``","freeradius","client","set",""
-    "``GET``","freeradius","client","set",""
+    "``POST``","freeradius","client","set",""
     "``POST``","freeradius","client","setClient","$uuid"
     "``GET``","freeradius","client","toggleClient","$uuid"
 
@@ -42,7 +42,7 @@ Freeradius
     "``GET``","freeradius","dhcp","get",""
     "``GET``","freeradius","dhcp","getDhcp","$uuid=null"
     "``*``","freeradius","dhcp","searchDhcp",""
-    "``GET``","freeradius","dhcp","set",""
+    "``POST``","freeradius","dhcp","set",""
     "``POST``","freeradius","dhcp","setDhcp","$uuid"
     "``POST``","freeradius","dhcp","toggleDhcp","$uuid"
 
@@ -67,7 +67,7 @@ Freeradius
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","freeradius","ldap","get",""
-    "``GET``","freeradius","ldap","set",""
+    "``POST``","freeradius","ldap","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Ldap.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Ldap.xml>`__"
 
@@ -80,7 +80,7 @@ Freeradius
     "``GET``","freeradius","lease","get",""
     "``GET``","freeradius","lease","getLease","$uuid=null"
     "``*``","freeradius","lease","searchLease",""
-    "``GET``","freeradius","lease","set",""
+    "``POST``","freeradius","lease","set",""
     "``POST``","freeradius","lease","setLease","$uuid"
     "``POST``","freeradius","lease","toggleLease","$uuid"
 
@@ -107,7 +107,7 @@ Freeradius
     "``GET``","freeradius","user","getUser","$uuid=null"
     "``GET``","freeradius","user","searchUser",""
     "``POST``","freeradius","user","set",""
-    "``GET``","freeradius","user","set",""
+    "``POST``","freeradius","user","set",""
     "``POST``","freeradius","user","setUser","$uuid"
     "``GET``","freeradius","user","toggleUser","$uuid"
 

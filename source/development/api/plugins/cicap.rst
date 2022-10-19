@@ -6,7 +6,7 @@ Cicap
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","cicap","antivirus","get",""
-    "``GET``","cicap","antivirus","set",""
+    "``POST``","cicap","antivirus","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Antivirus.xml <https://github.com/opnsense/plugins/blob/master/www/c-icap/src/opnsense/mvc/app/models/OPNsense/CICAP/Antivirus.xml>`__"
 
@@ -15,7 +15,7 @@ Cicap
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","cicap","general","get",""
-    "``GET``","cicap","general","set",""
+    "``POST``","cicap","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/www/c-icap/src/opnsense/mvc/app/models/OPNsense/CICAP/General.xml>`__"
 
@@ -24,10 +24,10 @@ Cicap
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","cicap","service","checkclamav",""
-    "``GET``","cicap","service","reconfigure",""
-    "``GET``","cicap","service","restart",""
-    "``GET``","cicap","service","start",""
+    "``POST``","cicap","service","reconfigure",""
+    "``POST``","cicap","service","restart",""
+    "``POST``","cicap","service","start",""
     "``GET``","cicap","service","status",""
-    "``GET``","cicap","service","stop",""
+    "``POST``","cicap","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/www/c-icap/src/opnsense/mvc/app/models/OPNsense/CICAP/General.xml>`__"

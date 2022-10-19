@@ -7,15 +7,15 @@ Proxy
 
     "``POST``","proxy","service","downloadacls",""
     "``POST``","proxy","service","fetchacls",""
-    "``GET``","proxy","service","reconfigure",""
+    "``POST``","proxy","service","reconfigure",""
     "``POST``","proxy","service","refreshTemplate",""
     "``POST``","proxy","service","reset",""
     "``GET``","proxy","service","restart",""
-    "``GET``","proxy","service","restart",""
+    "``POST``","proxy","service","restart",""
     "``GET``","proxy","service","start",""
-    "``GET``","proxy","service","start",""
+    "``POST``","proxy","service","start",""
     "``GET``","proxy","service","status",""
-    "``GET``","proxy","service","stop",""
+    "``POST``","proxy","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Proxy/Proxy.xml>`__"
 
@@ -41,7 +41,7 @@ Proxy
     "``*``","proxy","settings","searchPACProxy",""
     "``*``","proxy","settings","searchPACRule",""
     "``GET``","proxy","settings","searchRemoteBlacklists",""
-    "``GET``","proxy","settings","set",""
+    "``POST``","proxy","settings","set",""
     "``POST``","proxy","settings","setPACMatch","$uuid"
     "``POST``","proxy","settings","setPACProxy","$uuid"
     "``POST``","proxy","settings","setPACRule","$uuid"
@@ -59,6 +59,6 @@ Proxy
     "``GET``","proxy","template","get",""
     "``POST``","proxy","template","reset",""
     "``POST``","proxy","template","set",""
-    "``GET``","proxy","template","set",""
+    "``POST``","proxy","template","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Proxy/Proxy.xml>`__"

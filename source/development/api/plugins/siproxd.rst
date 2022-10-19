@@ -12,7 +12,7 @@ Siproxd
     "``GET``","siproxd","domain","getDomain","$uuid=null"
     "``GET``","siproxd","domain","searchDomain",""
     "``POST``","siproxd","domain","set",""
-    "``GET``","siproxd","domain","set",""
+    "``POST``","siproxd","domain","set",""
     "``POST``","siproxd","domain","setDomain","$uuid"
     "``GET``","siproxd","domain","toggleDomain","$uuid"
 
@@ -47,7 +47,7 @@ Siproxd
     "``GET``","siproxd","user","getUser","$uuid=null"
     "``GET``","siproxd","user","searchUser",""
     "``POST``","siproxd","user","set",""
-    "``GET``","siproxd","user","set",""
+    "``POST``","siproxd","user","set",""
     "``POST``","siproxd","user","setUser","$uuid"
     "``GET``","siproxd","user","toggleUser","$uuid"
 

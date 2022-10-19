@@ -12,5 +12,7 @@ Core
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
+    "``POST``","core","system","dismissStatus",""
     "``GET``","core","system","halt",""
     "``GET``","core","system","reboot",""
+    "``GET``","core","system","status",""

@@ -17,11 +17,11 @@ Unbound
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","unbound","service","dnsbl",""
-    "``GET``","unbound","service","reconfigure",""
-    "``GET``","unbound","service","restart",""
-    "``GET``","unbound","service","start",""
+    "``POST``","unbound","service","reconfigure",""
+    "``POST``","unbound","service","restart",""
+    "``POST``","unbound","service","start",""
     "``GET``","unbound","service","status",""
-    "``GET``","unbound","service","stop",""
+    "``POST``","unbound","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `Unbound.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Unbound/Unbound.xml>`__"
 
@@ -47,7 +47,7 @@ Unbound
     "``*``","unbound","settings","searchForward",""
     "``*``","unbound","settings","searchHostAlias",""
     "``*``","unbound","settings","searchHostOverride",""
-    "``GET``","unbound","settings","set",""
+    "``POST``","unbound","settings","set",""
     "``POST``","unbound","settings","setDomainOverride","$uuid"
     "``POST``","unbound","settings","setForward","$uuid"
     "``POST``","unbound","settings","setHostAlias","$uuid"

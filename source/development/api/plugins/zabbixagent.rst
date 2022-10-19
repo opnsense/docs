@@ -5,11 +5,11 @@ Zabbixagent
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","zabbixagent","service","reconfigure",""
-    "``GET``","zabbixagent","service","restart",""
-    "``GET``","zabbixagent","service","start",""
+    "``POST``","zabbixagent","service","reconfigure",""
+    "``POST``","zabbixagent","service","restart",""
+    "``POST``","zabbixagent","service","start",""
     "``GET``","zabbixagent","service","status",""
-    "``GET``","zabbixagent","service","stop",""
+    "``POST``","zabbixagent","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `ZabbixAgent.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/zabbix-agent/src/opnsense/mvc/app/models/OPNsense/ZabbixAgent/ZabbixAgent.xml>`__"
 
@@ -26,7 +26,7 @@ Zabbixagent
     "``GET``","zabbixagent","settings","getUserparameter","$uuid=null"
     "``*``","zabbixagent","settings","searchAliases",""
     "``*``","zabbixagent","settings","searchUserparameters",""
-    "``GET``","zabbixagent","settings","set",""
+    "``POST``","zabbixagent","settings","set",""
     "``POST``","zabbixagent","settings","setAlias","$uuid"
     "``POST``","zabbixagent","settings","setUserparameter","$uuid"
     "``POST``","zabbixagent","settings","toggleAlias","$uuid"

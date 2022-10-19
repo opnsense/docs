@@ -10,7 +10,7 @@ Nrpe
     "``GET``","nrpe","command","get",""
     "``GET``","nrpe","command","getCommand","$uuid=null"
     "``*``","nrpe","command","searchCommand",""
-    "``GET``","nrpe","command","set",""
+    "``POST``","nrpe","command","set",""
     "``POST``","nrpe","command","setCommand","$uuid"
     "``POST``","nrpe","command","toggleCommand","$uuid"
 
@@ -21,7 +21,7 @@ Nrpe
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","nrpe","general","get",""
-    "``GET``","nrpe","general","set",""
+    "``POST``","nrpe","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/nrpe/src/opnsense/mvc/app/models/OPNsense/Nrpe/General.xml>`__"
 
@@ -29,10 +29,10 @@ Nrpe
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","nrpe","service","reconfigure",""
-    "``GET``","nrpe","service","restart",""
-    "``GET``","nrpe","service","start",""
+    "``POST``","nrpe","service","reconfigure",""
+    "``POST``","nrpe","service","restart",""
+    "``POST``","nrpe","service","start",""
     "``GET``","nrpe","service","status",""
-    "``GET``","nrpe","service","stop",""
+    "``POST``","nrpe","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/nrpe/src/opnsense/mvc/app/models/OPNsense/Nrpe/General.xml>`__"

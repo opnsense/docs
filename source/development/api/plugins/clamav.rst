@@ -6,7 +6,7 @@ Clamav
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","clamav","general","get",""
-    "``GET``","clamav","general","set",""
+    "``POST``","clamav","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/security/clamav/src/opnsense/mvc/app/models/OPNsense/ClamAV/General.xml>`__"
 
@@ -15,11 +15,11 @@ Clamav
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","clamav","service","freshclam",""
-    "``GET``","clamav","service","reconfigure",""
-    "``GET``","clamav","service","restart",""
-    "``GET``","clamav","service","start",""
+    "``POST``","clamav","service","reconfigure",""
+    "``POST``","clamav","service","restart",""
+    "``POST``","clamav","service","start",""
     "``GET``","clamav","service","status",""
-    "``GET``","clamav","service","stop",""
+    "``POST``","clamav","service","stop",""
     "``GET``","clamav","service","version",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/security/clamav/src/opnsense/mvc/app/models/OPNsense/ClamAV/General.xml>`__"
@@ -33,7 +33,7 @@ Clamav
     "``GET``","clamav","url","get",""
     "``GET``","clamav","url","getUrl","$uuid=null"
     "``*``","clamav","url","searchUrl",""
-    "``GET``","clamav","url","set",""
+    "``POST``","clamav","url","set",""
     "``POST``","clamav","url","setUrl","$uuid"
     "``POST``","clamav","url","toggleUrl","$uuid"
 

@@ -10,7 +10,7 @@ Postfix
     "``GET``","postfix","address","get",""
     "``GET``","postfix","address","getAddress","$uuid=null"
     "``*``","postfix","address","searchAddress",""
-    "``GET``","postfix","address","set",""
+    "``POST``","postfix","address","set",""
     "``POST``","postfix","address","setAddress","$uuid"
     "``POST``","postfix","address","toggleAddress","$uuid"
 
@@ -21,7 +21,7 @@ Postfix
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","postfix","antispam","get",""
-    "``GET``","postfix","antispam","set",""
+    "``POST``","postfix","antispam","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Antispam.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/Antispam.xml>`__"
 
@@ -34,7 +34,7 @@ Postfix
     "``GET``","postfix","domain","get",""
     "``GET``","postfix","domain","getDomain","$uuid=null"
     "``*``","postfix","domain","searchDomain",""
-    "``GET``","postfix","domain","set",""
+    "``POST``","postfix","domain","set",""
     "``POST``","postfix","domain","setDomain","$uuid"
     "``POST``","postfix","domain","toggleDomain","$uuid"
 
@@ -45,7 +45,7 @@ Postfix
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","postfix","general","get",""
-    "``GET``","postfix","general","set",""
+    "``POST``","postfix","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/General.xml>`__"
 
@@ -58,7 +58,7 @@ Postfix
     "``GET``","postfix","headerchecks","get",""
     "``GET``","postfix","headerchecks","getHeadercheck","$uuid=null"
     "``*``","postfix","headerchecks","searchHeaderchecks",""
-    "``GET``","postfix","headerchecks","set",""
+    "``POST``","postfix","headerchecks","set",""
     "``POST``","postfix","headerchecks","setHeadercheck","$uuid"
     "``POST``","postfix","headerchecks","toggleHeadercheck","$uuid"
 
@@ -73,7 +73,7 @@ Postfix
     "``GET``","postfix","recipient","get",""
     "``GET``","postfix","recipient","getRecipient","$uuid=null"
     "``*``","postfix","recipient","searchRecipient",""
-    "``GET``","postfix","recipient","set",""
+    "``POST``","postfix","recipient","set",""
     "``POST``","postfix","recipient","setRecipient","$uuid"
     "``POST``","postfix","recipient","toggleRecipient","$uuid"
 
@@ -88,7 +88,7 @@ Postfix
     "``GET``","postfix","recipientbcc","get",""
     "``GET``","postfix","recipientbcc","getRecipientbcc","$uuid=null"
     "``*``","postfix","recipientbcc","searchRecipientbcc",""
-    "``GET``","postfix","recipientbcc","set",""
+    "``POST``","postfix","recipientbcc","set",""
     "``POST``","postfix","recipientbcc","setRecipientbcc","$uuid"
     "``POST``","postfix","recipientbcc","toggleRecipientbcc","$uuid"
 
@@ -103,7 +103,7 @@ Postfix
     "``GET``","postfix","sender","get",""
     "``GET``","postfix","sender","getSender","$uuid=null"
     "``*``","postfix","sender","searchSender",""
-    "``GET``","postfix","sender","set",""
+    "``POST``","postfix","sender","set",""
     "``POST``","postfix","sender","setSender","$uuid"
     "``POST``","postfix","sender","toggleSender","$uuid"
 
@@ -118,7 +118,7 @@ Postfix
     "``GET``","postfix","senderbcc","get",""
     "``GET``","postfix","senderbcc","getSenderbcc","$uuid=null"
     "``*``","postfix","senderbcc","searchSenderbcc",""
-    "``GET``","postfix","senderbcc","set",""
+    "``POST``","postfix","senderbcc","set",""
     "``POST``","postfix","senderbcc","setSenderbcc","$uuid"
     "``POST``","postfix","senderbcc","toggleSenderbcc","$uuid"
 
@@ -133,7 +133,7 @@ Postfix
     "``GET``","postfix","sendercanonical","get",""
     "``GET``","postfix","sendercanonical","getSendercanonical","$uuid=null"
     "``*``","postfix","sendercanonical","searchSendercanonical",""
-    "``GET``","postfix","sendercanonical","set",""
+    "``POST``","postfix","sendercanonical","set",""
     "``POST``","postfix","sendercanonical","setSendercanonical","$uuid"
     "``POST``","postfix","sendercanonical","toggleSendercanonical","$uuid"
 
@@ -145,10 +145,10 @@ Postfix
 
     "``GET``","postfix","service","checkrspamd",""
     "``POST``","postfix","service","reconfigure",""
-    "``GET``","postfix","service","reconfigure",""
-    "``GET``","postfix","service","restart",""
-    "``GET``","postfix","service","start",""
+    "``POST``","postfix","service","reconfigure",""
+    "``POST``","postfix","service","restart",""
+    "``POST``","postfix","service","start",""
     "``GET``","postfix","service","status",""
-    "``GET``","postfix","service","stop",""
+    "``POST``","postfix","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/General.xml>`__"

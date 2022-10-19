@@ -11,11 +11,11 @@ Nut
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","nut","service","reconfigure",""
-    "``GET``","nut","service","restart",""
-    "``GET``","nut","service","start",""
+    "``POST``","nut","service","reconfigure",""
+    "``POST``","nut","service","restart",""
+    "``POST``","nut","service","start",""
     "``GET``","nut","service","status",""
-    "``GET``","nut","service","stop",""
+    "``POST``","nut","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `Nut.xml <https://github.com/opnsense/plugins/blob/master/sysutils/nut/src/opnsense/mvc/app/models/OPNsense/Nut/Nut.xml>`__"
 
@@ -24,6 +24,6 @@ Nut
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","nut","settings","get",""
-    "``GET``","nut","settings","set",""
+    "``POST``","nut","settings","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Nut.xml <https://github.com/opnsense/plugins/blob/master/sysutils/nut/src/opnsense/mvc/app/models/OPNsense/Nut/Nut.xml>`__"

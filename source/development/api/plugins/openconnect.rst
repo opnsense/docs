@@ -6,7 +6,7 @@ Openconnect
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","openconnect","general","get",""
-    "``GET``","openconnect","general","set",""
+    "``POST``","openconnect","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/security/openconnect/src/opnsense/mvc/app/models/OPNsense/Openconnect/General.xml>`__"
 
@@ -14,10 +14,10 @@ Openconnect
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","openconnect","service","reconfigure",""
-    "``GET``","openconnect","service","restart",""
-    "``GET``","openconnect","service","start",""
+    "``POST``","openconnect","service","reconfigure",""
+    "``POST``","openconnect","service","restart",""
+    "``POST``","openconnect","service","start",""
     "``GET``","openconnect","service","status",""
-    "``GET``","openconnect","service","stop",""
+    "``POST``","openconnect","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/security/openconnect/src/opnsense/mvc/app/models/OPNsense/Openconnect/General.xml>`__"

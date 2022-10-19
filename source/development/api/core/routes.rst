@@ -17,7 +17,7 @@ Routes
     "``GET``","routes","routes","getroute","$uuid=null"
     "``POST``","routes","routes","reconfigure",""
     "``*``","routes","routes","searchroute",""
-    "``GET``","routes","routes","set",""
+    "``POST``","routes","routes","set",""
     "``POST``","routes","routes","setroute","$uuid"
     "``POST``","routes","routes","toggleroute","$uuid,$disabled=null"
 

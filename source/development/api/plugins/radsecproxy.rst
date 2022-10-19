@@ -10,7 +10,7 @@ Radsecproxy
     "``GET``","radsecproxy","clients","get",""
     "``GET``","radsecproxy","clients","getItem","$uuid=null"
     "``*``","radsecproxy","clients","searchItem",""
-    "``GET``","radsecproxy","clients","set",""
+    "``POST``","radsecproxy","clients","set",""
     "``POST``","radsecproxy","clients","setItem","$uuid"
     "``POST``","radsecproxy","clients","toggleItem","$uuid,$enabled=null"
 
@@ -21,7 +21,7 @@ Radsecproxy
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","radsecproxy","general","get",""
-    "``GET``","radsecproxy","general","set",""
+    "``POST``","radsecproxy","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `RadSecProxy.xml <https://github.com/opnsense/plugins/blob/master/net/radsecproxy/src/opnsense/mvc/app/models/OPNsense/RadSecProxy/RadSecProxy.xml>`__"
 
@@ -34,7 +34,7 @@ Radsecproxy
     "``GET``","radsecproxy","realms","get",""
     "``GET``","radsecproxy","realms","getItem","$uuid=null"
     "``*``","radsecproxy","realms","searchItem",""
-    "``GET``","radsecproxy","realms","set",""
+    "``POST``","radsecproxy","realms","set",""
     "``POST``","radsecproxy","realms","setItem","$uuid"
     "``POST``","radsecproxy","realms","toggleItem","$uuid,$enabled=null"
 
@@ -49,7 +49,7 @@ Radsecproxy
     "``GET``","radsecproxy","rewrites","get",""
     "``GET``","radsecproxy","rewrites","getItem","$uuid=null"
     "``*``","radsecproxy","rewrites","searchItem",""
-    "``GET``","radsecproxy","rewrites","set",""
+    "``POST``","radsecproxy","rewrites","set",""
     "``POST``","radsecproxy","rewrites","setItem","$uuid"
     "``POST``","radsecproxy","rewrites","toggleItem","$uuid,$enabled=null"
 
@@ -64,7 +64,7 @@ Radsecproxy
     "``GET``","radsecproxy","servers","get",""
     "``GET``","radsecproxy","servers","getItem","$uuid=null"
     "``*``","radsecproxy","servers","searchItem",""
-    "``GET``","radsecproxy","servers","set",""
+    "``POST``","radsecproxy","servers","set",""
     "``POST``","radsecproxy","servers","setItem","$uuid"
     "``POST``","radsecproxy","servers","toggleItem","$uuid,$enabled=null"
 
@@ -74,11 +74,11 @@ Radsecproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","radsecproxy","service","reconfigure",""
-    "``GET``","radsecproxy","service","restart",""
-    "``GET``","radsecproxy","service","start",""
+    "``POST``","radsecproxy","service","reconfigure",""
+    "``POST``","radsecproxy","service","restart",""
+    "``POST``","radsecproxy","service","start",""
     "``GET``","radsecproxy","service","status",""
-    "``GET``","radsecproxy","service","stop",""
+    "``POST``","radsecproxy","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `RadSecProxy.xml <https://github.com/opnsense/plugins/blob/master/net/radsecproxy/src/opnsense/mvc/app/models/OPNsense/RadSecProxy/RadSecProxy.xml>`__"
 
@@ -91,7 +91,7 @@ Radsecproxy
     "``GET``","radsecproxy","tls","get",""
     "``GET``","radsecproxy","tls","getItem","$uuid=null"
     "``*``","radsecproxy","tls","searchItem",""
-    "``GET``","radsecproxy","tls","set",""
+    "``POST``","radsecproxy","tls","set",""
     "``POST``","radsecproxy","tls","setItem","$uuid"
     "``POST``","radsecproxy","tls","toggleItem","$uuid,$enabled=null"
 

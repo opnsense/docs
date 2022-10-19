@@ -15,6 +15,6 @@ Mdnsrepeater
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","mdnsrepeater","settings","get",""
-    "``GET``","mdnsrepeater","settings","set",""
+    "``POST``","mdnsrepeater","settings","set",""
 
     "``<<uses>>``", "", "", "", "*model* `MDNSRepeater.xml <https://github.com/opnsense/plugins/blob/master/net/mdns-repeater/src/opnsense/mvc/app/models/OPNsense/MDNSRepeater/MDNSRepeater.xml>`__"

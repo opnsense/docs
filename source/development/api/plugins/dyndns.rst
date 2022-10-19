@@ -10,7 +10,7 @@ Dyndns
     "``GET``","dyndns","accounts","get",""
     "``GET``","dyndns","accounts","getItem","$uuid=null"
     "``*``","dyndns","accounts","searchItem",""
-    "``GET``","dyndns","accounts","set",""
+    "``POST``","dyndns","accounts","set",""
     "``POST``","dyndns","accounts","setItem","$uuid"
     "``POST``","dyndns","accounts","toggleItem","$uuid,$enabled=null"
 
@@ -20,11 +20,11 @@ Dyndns
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","dyndns","service","reconfigure",""
-    "``GET``","dyndns","service","restart",""
-    "``GET``","dyndns","service","start",""
+    "``POST``","dyndns","service","reconfigure",""
+    "``POST``","dyndns","service","restart",""
+    "``POST``","dyndns","service","start",""
     "``GET``","dyndns","service","status",""
-    "``GET``","dyndns","service","stop",""
+    "``POST``","dyndns","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `DynDNS.xml <https://github.com/opnsense/plugins/blob/master/dns/ddclient/src/opnsense/mvc/app/models/OPNsense/DynDNS/DynDNS.xml>`__"
 
@@ -34,6 +34,6 @@ Dyndns
 
     "``GET``","dyndns","settings","get",""
     "``GET``","dyndns","settings","get",""
-    "``GET``","dyndns","settings","set",""
+    "``POST``","dyndns","settings","set",""
 
     "``<<uses>>``", "", "", "", "*model* `DynDNS.xml <https://github.com/opnsense/plugins/blob/master/dns/ddclient/src/opnsense/mvc/app/models/OPNsense/DynDNS/DynDNS.xml>`__"

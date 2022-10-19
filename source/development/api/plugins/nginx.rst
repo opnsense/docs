@@ -8,7 +8,7 @@ Nginx
     "``POST``","nginx","bans","delban","$uuid"
     "``GET``","nginx","bans","get",""
     "``*``","nginx","bans","searchban",""
-    "``GET``","nginx","bans","set",""
+    "``POST``","nginx","bans","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Nginx.xml <https://github.com/opnsense/plugins/blob/master/www/nginx/src/opnsense/mvc/app/models/OPNsense/Nginx/Nginx.xml>`__"
 
@@ -26,13 +26,13 @@ Nginx
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","nginx","service","reconfigure",""
-    "``GET``","nginx","service","restart",""
-    "``GET``","nginx","service","start",""
+    "``POST``","nginx","service","reconfigure",""
+    "``POST``","nginx","service","restart",""
+    "``POST``","nginx","service","start",""
     "``GET``","nginx","service","status",""
     "``GET``","nginx","service","status",""
     "``GET``","nginx","service","stop",""
-    "``GET``","nginx","service","stop",""
+    "``POST``","nginx","service","stop",""
     "``GET``","nginx","service","vts",""
 
     "``<<uses>>``", "", "", "", "*model* `Nginx.xml <https://github.com/opnsense/plugins/blob/master/www/nginx/src/opnsense/mvc/app/models/OPNsense/Nginx/Nginx.xml>`__"
@@ -119,7 +119,7 @@ Nginx
     "``*``","nginx","settings","searchupstream",""
     "``*``","nginx","settings","searchupstreamserver",""
     "``*``","nginx","settings","searchuserlist",""
-    "``GET``","nginx","settings","set",""
+    "``POST``","nginx","settings","set",""
     "``POST``","nginx","settings","setcachePath","$uuid"
     "``POST``","nginx","settings","setcredential","$uuid"
     "``POST``","nginx","settings","setcustompolicy","$uuid"

@@ -6,7 +6,7 @@ Softether
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","softether","general","get",""
-    "``GET``","softether","general","set",""
+    "``POST``","softether","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/security/softether/src/opnsense/mvc/app/models/OPNsense/Softether/General.xml>`__"
 
@@ -14,10 +14,10 @@ Softether
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","softether","service","reconfigure",""
-    "``GET``","softether","service","restart",""
-    "``GET``","softether","service","start",""
+    "``POST``","softether","service","reconfigure",""
+    "``POST``","softether","service","restart",""
+    "``POST``","softether","service","start",""
     "``GET``","softether","service","status",""
-    "``GET``","softether","service","stop",""
+    "``POST``","softether","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/security/softether/src/opnsense/mvc/app/models/OPNsense/Softether/General.xml>`__"

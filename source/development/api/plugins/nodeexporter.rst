@@ -6,7 +6,7 @@ Nodeexporter
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","nodeexporter","general","get",""
-    "``GET``","nodeexporter","general","set",""
+    "``POST``","nodeexporter","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/sysutils/node_exporter/src/opnsense/mvc/app/models/OPNsense/NodeExporter/General.xml>`__"
 
@@ -14,10 +14,10 @@ Nodeexporter
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","nodeexporter","service","reconfigure",""
-    "``GET``","nodeexporter","service","restart",""
-    "``GET``","nodeexporter","service","start",""
+    "``POST``","nodeexporter","service","reconfigure",""
+    "``POST``","nodeexporter","service","restart",""
+    "``POST``","nodeexporter","service","start",""
     "``GET``","nodeexporter","service","status",""
-    "``GET``","nodeexporter","service","stop",""
+    "``POST``","nodeexporter","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/sysutils/node_exporter/src/opnsense/mvc/app/models/OPNsense/NodeExporter/General.xml>`__"

@@ -16,6 +16,6 @@ Proxysso
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","proxysso","settings","get",""
-    "``GET``","proxysso","settings","set",""
+    "``POST``","proxysso","settings","set",""
 
     "``<<uses>>``", "", "", "", "*model* `ProxySSO.xml <https://github.com/opnsense/plugins/blob/master/www/web-proxy-sso/src/opnsense/mvc/app/models/OPNsense/ProxySSO/ProxySSO.xml>`__"

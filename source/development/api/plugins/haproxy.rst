@@ -25,7 +25,7 @@ Haproxy
     "``GET``","haproxy","maintenance","serverStateBulk",""
     "``GET``","haproxy","maintenance","serverWeight",""
     "``GET``","haproxy","maintenance","serverWeightBulk",""
-    "``GET``","haproxy","maintenance","set",""
+    "``POST``","haproxy","maintenance","set",""
 
     "``<<uses>>``", "", "", "", "*model* `HAProxy.xml <https://github.com/opnsense/plugins/blob/master/net/haproxy/src/opnsense/mvc/app/models/OPNsense/HAProxy/HAProxy.xml>`__"
 
@@ -34,11 +34,11 @@ Haproxy
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","haproxy","service","configtest",""
-    "``GET``","haproxy","service","reconfigure",""
-    "``GET``","haproxy","service","restart",""
-    "``GET``","haproxy","service","start",""
+    "``POST``","haproxy","service","reconfigure",""
+    "``POST``","haproxy","service","restart",""
+    "``POST``","haproxy","service","start",""
     "``GET``","haproxy","service","status",""
-    "``GET``","haproxy","service","stop",""
+    "``POST``","haproxy","service","stop",""
 
     "``<<uses>>``", "", "", "", "*model* `HAProxy.xml <https://github.com/opnsense/plugins/blob/master/net/haproxy/src/opnsense/mvc/app/models/OPNsense/HAProxy/HAProxy.xml>`__"
 
@@ -103,7 +103,7 @@ Haproxy
     "``*``","haproxy","settings","searchUsers",""
     "``*``","haproxy","settings","searchmailers",""
     "``*``","haproxy","settings","searchresolvers",""
-    "``GET``","haproxy","settings","set",""
+    "``POST``","haproxy","settings","set",""
     "``POST``","haproxy","settings","setAcl","$uuid"
     "``POST``","haproxy","settings","setAction","$uuid"
     "``POST``","haproxy","settings","setBackend","$uuid"
