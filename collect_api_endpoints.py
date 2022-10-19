@@ -38,7 +38,7 @@ DEFAULT_BASE_METHODS = {
     }, {
         "command": "get",
         "parameters": "",
-        "method": "POST"
+        "method": "GET"
     }],
     "ApiMutableServiceControllerBase": [{
         "command": "status",
@@ -133,7 +133,7 @@ def parse_api_php(src_filename):
             if item not in this_commands:
                 result.append({
                     'type': 'Service',
-                    'method': 'GET',
+                    'method': item['method'],
                     'module': module_name,
                     'controller': controller,
                     'is_abstract': False,
