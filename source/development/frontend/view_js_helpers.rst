@@ -127,9 +127,35 @@ saveFormToEndpoint
 
 :code:`saveFormToEndpoint(url, formid, callback_ok, disable_dialog, callback_fail)` is the opposite of :code:`mapDataToFormUI()`
 and retrieves the data from the form and sends it to the configured (url) endpoint as json structure.
+Underneath this function uses :code:`getFormData(parent)` defined in `opnsense.js` which is responsible for extracting values from
+different form types such as :code:`<input>` and :code:`<select>` types. When the attributes should be type safe
+(e.g. an *integer* in json format should be presented as :code:`1` and not as :code:`"1"`),
+there is the possibility to "cleanse" the data first using a filter.  In this case define an attribute on the input tag with the name :code:`type_formatter`
+containing the function to call.
+
+
+.. code-block:: html
+
+    <input type="text" type_formatter="my_convert_to_int_function" id="myform.myintval">
+
+Which could be implemented in the form javascript as:
+
+.. code-block:: javascript
+
+    function my_convert_to_int_function(payload)
+    {
+        if (/^[+-]?[0-9]*$/.test(payload)) {
+            return  parseInt(payload);
+        } else {
+            return payload;
+        }
+    }
 
 The response data looks similar to the example data in mapDataToFormUI, but more condensed since selections will
 be returned as single (separated) values, such as :code:`lan,wan` if both options where set.
+
+Using the example with the function above, a valid integer would offer a json object similar to :code:`{"myform": {"myintval": 1}}`,
+unparsable data would look like :code:`{"myform": {"myintval": "1x"}}`, in which case backend validations are able to feedback validation results.
 
 
 ----------------------------
