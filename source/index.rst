@@ -22,6 +22,7 @@ Table of Contents
      :maxdepth: 2
 
      intro
+     security
      releases
      setup
      lobby
@@ -41,4 +42,3 @@ Table of Contents
      support
      contribute
      history
-     security

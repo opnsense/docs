@@ -90,3 +90,101 @@ or ask the reporter to do so.
 
 When the submitter is interested in a coordinated disclosure process, this should be indicated in any submission to avoid
 discussions later on.
+
+
+------------------------------------------------------------
+Third party security verification
+------------------------------------------------------------
+
+Intro
+............................................................
+
+Within the OPNsense team and community we spend a lot of time safeguarding our software and keeping up with the latest threats,
+like checking used software against CVE's on every release, implementing best practices in our development methods and
+offering clear and transparent release engineering.
+
+To even improve this further, we decided to bring a third party on board and mold a process around our security verification
+by trained security professionals.
+
+
+Business Edition
+............................................................
+
+As our business edition is aimed at professional users, it does make sense to offer additional safeguards, like even more extensive testing on
+this product. Looking at the lifecycle of our software, this is also the most mature stage of what we do have to offer:
+
+* Development version
+
+  -  Available at every release, offers a glimpse of what to expect in the near future
+
+* Community version
+
+  - When changes survive the development version, these are included in the community version, these are internally tested and
+    feedback has been offered by community members.
+
+* Business Edition
+
+  - Functional changes are being included in a more conservative manner, more feedback has been collected from development
+    and community, leading to a mission critical version of your well known OPNsense firewall.
+
+As security testing is quite time-consuming, we aim to offer a full qualification cycle at every major release.
+
+
+Framework / Type of testing (LINCE)
+............................................................
+
+In our quest for a framework to use, we found the LINCE methodology.
+
+LINCE is a lightweight methodology for evaluating and certifying ICT products, created by Spain's National Cryptologic Center (`CCN <https://www.ccn.cni.es/index.php/en/menu-ccn-en>`__),
+based on Common Criteria principles and oriented to vulnerability analysis and penetration tests.
+
+LINCE strengths over other methodologies mainly consist of reduced effort and duration.
+However, the way in which it is applied also makes it possible to pay more attention to the critical points of each product,
+giving more weight to concrete and practical tests that combat real threats than to dense documentation or exhaustive functionality tests.
+
+As most frameworks are not intended to be repeated very regularly, together with `jtsec <https://www.jtsec.es/>`__ we came up with an approach which
+makes it possible to pass the test twice a year, which is needed to align with our Business Edition releases.
+
+During every cycle, there's always a chance that (small) issues appear which should be fixed, in close accordance with jtsec, the OPNSense
+team prepares fixes for the findings and makes sure that these are included in a future (minor) release.
+
+
+Steps in the process
+............................................................
+To better understand where a version of OPNsense is at in terms of verification, we distinct the following stages in the process, which
+we will also note on the version at hand.
+
+1.  In test - Software delivered to jtsec, in process (interaction between OPNsense and jtsec).
+2.  Tested - Software verified / tested, documentation not yet published.
+3.  LINCE Compliant - Test complete including summarised report (by jtsec)
+4.  Certification pending - Offered for formal certification. (as of 2023)
+5.  LINCE Certified - Certified by CCN (as of 2023)
+
+The certification steps are planned to be executed once a year starting in 2023, this process is quite time consuming, but
+adds another independent party to the mix.
+
+Timeline
+............................................................
+The first fully certified product has been a community version (21.7.1), which offered us insights into the process and
+helped us improve the process which we would like to use for the business edition. Starting with 22.4, we run the cycle
+until full testing by jtsec and made plans for the future.
+
+Results
+............................................................
+
+Below you will find the versions that have been tested or are currently in test.
+
++----------+-----------------+------------------------------------------------------------------------------------------------------+
+| Version  | status          | Download                                                                                             |
++==========+=================+======================================================================================================+
+| BE 22.04 | LINCE Compliant | :download:`BE22.04-STIC_OPNSENSE_CQ-ETR-v1.0.pdf <pdf/BE22.04-STIC_OPNSENSE_CQ-ETR-v1.0.pdf>`        |
+|          |                 | 49a6ed38ec787090d19f1fd302fc730e62671d37ec8b26ed5b3385c68f81f467                                     |
++----------+-----------------+------------------------------------------------------------------------------------------------------+
+
+
+External references
+............................................................
+
+* https://www.jtsec.es/
+* https://www.ccn.cni.es/index.php/en/menu-ccn-en
+* https://oc.ccn.cni.es/en/certified-products/certified-products
