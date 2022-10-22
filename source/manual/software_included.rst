@@ -72,7 +72,7 @@ If, for example you would like to install the gnu `nano <https://www.nano-editor
 The ports tree
 ....................................
 
-In case your using software, which is not supplied by us, you can always build these packages yourself.
+In case you're using software, which is not supplied by us, you can always build these packages yourself.
 It's best to use our build system to facilitate this, you can do so using the following commands
 
 .. code-block:: sh
