@@ -166,8 +166,8 @@ adds another independent party to the mix.
 Timeline
 ............................................................
 The first fully certified product has been a community version (21.7.1), which offered us insights into the process and
-helped us improve the process which we would like to use for the business edition. Starting with 22.4, we run the cycle
-until full testing by jtsec and made plans for the future.
+helped us improve the process which we would like to use for the business edition. We started this cycle with version 22.4
+including full testing by jtsec and made plans for the future.
 
 Results
 ............................................................
