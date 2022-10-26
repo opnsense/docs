@@ -304,11 +304,11 @@ Here are the full patch notes:
 * plugins: os-haproxy 3.11 `[4] <https://github.com/opnsense/plugins/blob/stable/22.7/net/haproxy/pkg-descr>`__ 
 * plugins: os-git-backup hides SSH keys by default
 * plugins: os-postfix disables GSSAPI for the time being `[5] <https://github.com/opnsense/plugins/blob/stable/22.7/mail/postfix/pkg-descr>`__ 
-* src: lib9p: Remove potential buffer overwrite in l9p_puqids() `[6] <FREEBSD:FreeBSD-SA-22:12.lib9p>`__ 
-* src: vm_fault: Shoot down shared mappings in vm_fault_copy_entry() `[7] <FREEBSD:FreeBSD-SA-22:11.vm>`__ 
+* src: lib9p: remove potential buffer overwrite in l9p_puqids() `[6] <FREEBSD:FreeBSD-SA-22:12.lib9p>`__ 
+* src: vm_fault: shoot down shared mappings in vm_fault_copy_entry() `[7] <FREEBSD:FreeBSD-SA-22:11.vm>`__ 
 * src: elf_note_prpsinfo: handle more failures from proc_getargv() `[8] <FREEBSD:FreeBSD-SA-22:09.elf>`__ 
 * src: pam_exec: fix segfault when authtok is null `[9] <FREEBSD:FreeBSD-EN-22:19.pam_exec>`__ 
-* src: kevent: Fix an off-by-one in filt_timerexpire_l() `[10] <FREEBSD:FreeBSD-EN-22:16.kqueue>`__ 
+* src: kevent: fix an off-by-one in filt_timerexpire_l() `[10] <FREEBSD:FreeBSD-EN-22:16.kqueue>`__ 
 * src: cam: leep periph_links when restoring CCB in camperiphdone() `[11] <FREEBSD:FreeBSD-EN-22:17.cam>`__ 
 * src: pfctl: fix FOM_ICMP/POM_STICKYADDRESS clash
 * src: restrict default /root permissions to 750
@@ -357,7 +357,7 @@ Here are the full patch notes:
 * ports: libxml 2.9.14 `[7] <http://www.xmlsoft.org/news.html>`__ 
 * ports: nss 3.81 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_81.html>`__ 
 * ports: rrdtool 1.8.0 `[9] <https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES>`__ 
-* ports: unbound 1.16.2 `[10] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-6-2>`__ 
+* ports: unbound 1.16.2 `[10] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-2>`__ 
 
 
 
