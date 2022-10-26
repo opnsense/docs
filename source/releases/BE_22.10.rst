@@ -297,7 +297,7 @@ Here are the full patch notes:
 * ports: strongswan 5.9.8 `[46] <https://github.com/strongswan/strongswan/releases/tag/5.9.8>`__ 
 * ports: suricata 6.0.8 `[47] <https://suricata.io/2022/09/27/suricata-6-0-7-released/>`__ 
 * ports: syslog-ng 3.38.1 `[48] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.38.1>`__ 
-* ports: unbound 1.16.1 `[49] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-3>`__ 
+* ports: unbound 1.16.3 `[49] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-3>`__ 
 
 Known issues and limitations:
 
