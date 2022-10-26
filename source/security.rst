@@ -187,6 +187,10 @@ Below you will find the versions that have been tested or are currently in test.
 External references
 ............................................................
 
-* https://www.jtsec.es/
+* https://www.jtsec.es/product-security-testing
+
+  -  `Standard definitions <https://www.jtsec.es/files/CCN-LINCE-001_v0.1_final_EN.pdf>`__
+  -  `Evaluation methodology <https://www.jtsec.es/files/CCN-LINCE-002_v0.1_final_EN.pdf>`__
+
 * https://www.ccn.cni.es/index.php/en/menu-ccn-en
 * https://oc.ccn.cni.es/en/certified-products/certified-products
