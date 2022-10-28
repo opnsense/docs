@@ -51,7 +51,9 @@ algorithm used in the manual backup so it's quite easy to restore to a new
 installed machine.
 
 After set-up, the backup feature will run a first backup of the OPNsense
-configuration file. Then, if the configuration is subsequently changed, a new backup will be run. Only one backup is run per day after configuration changes.
+configuration file. Then, if the configuration is subsequently changed, a new backup will be run once per day early in the morning.
+
+You may consider specifying additional Cronjobs when more frequent remote backups or remote backups at different times of the day would be required.
 
 ----------------------
 Setup Google API usage
