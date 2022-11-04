@@ -61,4 +61,4 @@ If you're running a 100 Mbps link \(about 100 users\) which is quite active duri
     6 GB x 7 days a week = 42 GB per week.
     42 x 4 weeks a month = 164 GB per month.
 
-As of `version 0.7.0 <https://www.sunnyvalley.io/blog/what-s-cooking-for-0-7>`_, Zenarmor expires old report data to free up disk space for the most recent data based on the configured number of days of history to keep.
+As of `version 0.7.0 <https://www.sunnyvalley.io/docs/support/release-notes#07>`_, Zenarmor expires old report data to free up disk space for the most recent data based on the configured number of days of history to keep.
