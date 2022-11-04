@@ -2,9 +2,9 @@
 Zenarmor (Sensei): Installing via Web Interface
 ==================================================
 
-.. Note::
+**Note**
 
-    Zenarmor Free Edition is **forever free-of-charge**. We strongly recommend you register to keep in touch with updates and new features. You can register at `https://www.sunnyvalley.io/sensei <https://www.sunnyvalley.io/sensei>`_
+    Zenarmor Free Edition is **forever free-of-charge**. We strongly recommend you register to keep in touch with updates and new features. You can register at `https://www.sunnyvalley.io/open-source-firewalls <https://www.sunnyvalley.io/open-source-firewalls>`_
 
 Zenarmor may be installed using the web interface in OPNsense or using the command line interface via SSH or local system access (see :doc:`zenarmor_cmd_install`). The preferred method is the web interface because the process of installing plugins in OPNsense is simple and Zenarmor requires the use of the web interface to complete the initial configuration after installation.
 
@@ -129,7 +129,7 @@ For detailed information on "Deployment Modes", `see here <https://www.sunnyval
 
 The Cloud Threat Intelligence data is queried in real-time when any connections are made through your network. This capability enables Zenarmor to respond to malware and wireless outbreaks in real-time and very quickly.
 
-The engine processes the request, queries the **“Sunny Valley Network (SVN) Cloud”** in real-time, and decides whether it will be blocked or allowed. Zenarmor checks against 140+ million websites under 120+ categories in milliseconds.
+The engine processes the request, queries the **“Sunny Valley Network (SVN) Cloud”** in real-time, and decides whether it will be blocked or allowed. Zenarmor checks against 300+ million websites under 120+ categories in milliseconds.
 
 Cloud Threat Intel settings let you:
 
