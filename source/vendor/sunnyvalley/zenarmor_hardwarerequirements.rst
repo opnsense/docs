@@ -4,9 +4,8 @@ Zenarmor (Sensei): Hardware Requirements
 
 Due to the nature of deep packet analysis and detailed drill-down reporting functionality, Zenarmor requires more hardware resources than a standard L3-L4 firewall.
 
-
-**.. Note:: :**
-
+ **Note**
+ 
     With the Sensei 1.5 release, you can offload your reporting database to an external system. This allows you to be able to run Zenarmor on systems with a constrained amount of RAM. 
 
 
@@ -18,7 +17,7 @@ CPU & Memory
 
 Because the analytics module relies on Elasticsearch to process large amounts of data, the amount of the memory available in the system is crucial for the overall performance of Zenarmor.
 
-**.. Tip:: :**
+**Tip**
 
     If the number of active devices are more than 250 and the sustained WAN bandwidth is higher than 100 Mbps, we do not recommend deploying Zenarmor as a virtual guest since resources in virtual environments are generally shared between guest systems. 
 
@@ -33,8 +32,8 @@ Below is the recommended minimum hardware requirements for Zenarmor based on the
  250-1000              500 Mbps - 100 Kpps        32 GB               Intel Quad-Core i7 3.4 GHz (4 Cores, 8 Threads) or equivalent
 =====================  =========================  ==================  ======================================================================
 
-**.. Note:: :**
-
+ **Note**
+ 
     Zenarmor requires at least 2 GB of memory. The installer will not continue if you have less than 2 GB of RAM. We recommend 4 GB memory to have an improved experience. 
 
 -----------------
@@ -61,4 +60,4 @@ If you're running a 100 Mbps link \(about 100 users\) which is quite active duri
     6 GB x 7 days a week = 42 GB per week.
     42 x 4 weeks a month = 164 GB per month.
 
-As of `version 0.7.0 <https://www.sunnyvalley.io/blog/what-s-cooking-for-0-7>`_, Zenarmor expires old report data to free up disk space for the most recent data based on the configured number of days of history to keep.
+As of `version 0.7.0 <https://www.sunnyvalley.io/docs/support/release-notes#07>`_, Zenarmor expires old report data to free up disk space for the most recent data based on the configured number of days of history to keep.
