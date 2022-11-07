@@ -144,7 +144,7 @@ Cloud Threat Intel settings let you:
 .. image:: images/zenarmor-wizard-cloud-reputation.png
     :width: 100%
 
-* Click :menuselection:`Next` to continue to the :menuselection:`Sensei CLI` section.
+* Click :menuselection:`Next` to continue to the :menuselection:`Updates & Health Check section` section.
 
 
 ..........................
