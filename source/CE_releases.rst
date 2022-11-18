@@ -8,7 +8,7 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *237* releases leading to the latest version *22.7.6*
+As of January 2015 there have been *239* releases leading to the latest version *22.7.8*
 named "Powerful Panther".
 
 
