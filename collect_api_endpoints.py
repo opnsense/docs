@@ -27,6 +27,7 @@
 import os
 import argparse
 import re
+import xml.etree.ElementTree as ET
 from jinja2 import Template
 
 EXCLUDE_CONTROLLERS = ['Core/Api/FirmwareController.php']
@@ -85,6 +86,19 @@ def parse_api_php(src_filename):
         if os.path.isfile(model_xml):
             model_filename = model_xml.replace('//', '/')
 
+    acl_names = []
+    if len(m) > 0:
+        app_location = "/".join(src_filename.split('/')[:-5])
+        acl_location = "/".join(m[0].replace("\\", "/").split('/')[:-1])
+        acl_xml = "%s/models/%s/ACL/ACL.xml" % (app_location, acl_location)
+        if os.path.isfile(acl_xml):
+            acl_filename = acl_xml.replace('//', '/')
+            tree = ET.parse(acl_filename)
+            for page in tree.findall('*'):
+                for pattern in page.findall('patterns/pattern'):
+                    if pattern.text in [f"api/{module_name}/{controller}", f"api/{module_name}/*"]:
+                        acl_names += [page.find('name').text]
+
     function_callouts = re.findall(r"(\n\s+(private|public|protected)\s+function\s+(\w+)\((.*)\))", data)
     result = list()
     this_commands = []
@@ -106,7 +120,8 @@ def parse_api_php(src_filename):
                 'command': function[2][:-6],
                 'parameters': function[3].replace(' ', '').replace('"', '""'),
                 'filename': base_filename,
-                'model_filename': model_filename
+                'model_filename': model_filename,
+                'acl_names': acl_names
             }
             if is_abstract:
                 record['type'] = 'Abstract [non-callable]'
@@ -141,7 +156,8 @@ def parse_api_php(src_filename):
                     'command': item['command'],
                     'parameters': item['parameters'],
                     'filename': base_filename,
-                    'model_filename': model_filename
+                    'model_filename': model_filename,
+                    'acl_names': acl_names
                 })
 
     return sorted(result, key=lambda i: i['command'])

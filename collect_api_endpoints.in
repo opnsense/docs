@@ -2,10 +2,10 @@
 {{ title_underline }}
 {% for controller in controllers %}
 .. csv-table:: {{controller.type}} ({{controller.filename}})
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
+   :header: "Method", "Module", "Controller", "Command", "Parameters", "Privilege required"
+   :widths: 4, 15, 15, 30, 40, 40
 {%     for endpoint in controller.endpoints %}
-    "``{{endpoint.method}}``","{{endpoint.module}}","{{endpoint.controller}}","{{endpoint.command}}","{{endpoint.parameters}}"
+    "``{{endpoint.method}}``","{{endpoint.module}}","{{endpoint.controller}}","{{endpoint.command}}","{{endpoint.parameters}}","{{', '.join(endpoint.acl_names)}}"
 {%-    endfor %}
 {%-    if controller.uses %}
 {%         for use in controller.uses %}
