@@ -1,0 +1,22 @@
+.. _api_core_firewall:
+
+.. note::
+
+    As you may have noticed, this API does not provide access to the firewall rules themselves. For that, you will need to use
+    the :ref:`Firewall Plugin API <api_plugins_firewall>`.
+
+{{ title }}
+{{ title_underline }}
+{% for controller in controllers %}
+.. csv-table:: {{controller.type}} ({{controller.filename}})
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+{%     for endpoint in controller.endpoints %}
+    "``{{endpoint.method}}``","{{endpoint.module}}","{{endpoint.controller}}","{{endpoint.command}}","{{endpoint.parameters}}"
+{%-    endfor %}
+{%-    if controller.uses %}
+{%         for use in controller.uses %}
+    "``<<uses>>``", "", "", "", "*{{use.type}}* `{{use.name}} <{{use.link}}>`__"
+{%-        endfor %}
+{%-    endif %}
+{% endfor %}

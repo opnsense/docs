@@ -1,9 +1,23 @@
+.. _api_plugins_firewall:
+
 {{ title }}
 {{ title_underline }}
 
-The firewall API plugin is a first step into migrating the legacy firewall components from OPNsense, although it does contain
-a user interface, it's main focus is only to provide machine to machine interaction between custom applications and OPNsense
-for selected features.
+.. note::
+
+    This API does not provide access the rules added using the existing legacy Core firewall, e.g. in :menuselection:`Firewall --> NAT`
+    or :menuselection:`Firewall --> Rules`. Instead, you can only access the rules that were added directly using this API or its own
+    UI in :menuselection:`Firewall --> Automation`.
+
+.. note::
+
+    The legacy :ref:`Core firewall API <api_core_firewall>` provides some additional methods.
+
+The firewall plugin can be installed by going to :menuselection:`System --> Firmware --> Plugins` and choosing
+**os-firewall**. It currently offers a limited functionality, but is eventually going to fully replace the existing, legacy
+firewall, shipped by OPNSense Core. Although the plugin already contains a basic user interface in :menuselection:`Firewall --> Automation`,
+its current main focus is to provide a machine to machine API interaction between custom applications and OPNsense.
+
 
 {% for controller in controllers %}
 .. csv-table:: {{controller.type}} ({{controller.filename}}) {% if not controller.is_abstract %} -- extends : {{controller.base_class}} {% endif %}
