@@ -1,9 +1,19 @@
+.. _api_plugins_firewall:
+
 {{ title }}
 {{ title_underline }}
 
-The firewall API plugin is a first step into migrating the legacy firewall components from OPNsense, although it does contain
-a user interface, it's main focus is only to provide machine to machine interaction between custom applications and OPNsense
-for selected features.
+The firewall API plugin (**os-firewall**) offers a way for machine to machine interaction between custom applications and OPNsense, it can
+easily be installed like any other plugin via :menuselection:`System --> Firmware --> Plugins`.
+
+Although the plugin does contains a basic user interface (in :menuselection:`Firewall --> Automation`), it's mirely intended
+as a reference and testbed. There's no relation to any of the rules being managed via the core system.
+
+.. Tip::
+
+    Use your browsers "inspect" feature to compare requests easily, the user interface in terms of communication is exactly the same
+    as offered by the API . Rules not visible in the web interface will not be returned by the API either.
+
 
 {% for controller in controllers %}
 .. csv-table:: {{controller.type}} ({{controller.filename}}) {% if not controller.is_abstract %} -- extends : {{controller.base_class}} {% endif %}
