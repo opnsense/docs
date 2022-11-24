@@ -21,6 +21,7 @@ Wireguard
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","wireguard","general","get",""
+    "``GET``","wireguard","general","getStatus",""
     "``POST``","wireguard","general","set",""
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net/wireguard/src/opnsense/mvc/app/models/OPNsense/Wireguard/General.xml>`__"

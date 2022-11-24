@@ -19,4 +19,4 @@
 .. Tip::
 
     In order to inject rules using an API, you may take a look at the :ref:`Firewall Plugin API <api_plugins_firewall>`,
-    currently the core system does not support rule modifications via the api for this topic.
+    currently the core system does not support rule modifications via the API for this topic.

@@ -12,7 +12,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
 .. Tip::
 
     Use your browsers "inspect" feature to compare requests easily, the user interface in terms of communication is exactly the same
-    as offered by the API . Rules not visible in the web interface will not be returned by the API either.
+    as offered by the API . Rules not visible in the web interface (:menuselection:`Firewall --> Automation`) will not be returned by the API either.
 
 
 {% for controller in controllers %}
