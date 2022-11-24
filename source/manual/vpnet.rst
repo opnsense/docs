@@ -185,6 +185,14 @@ A selection of the most relevant settings can be found in the table below.
    "IPv[4|6] Remote Network", "These are the networks that will be routed to this client specifically using iroute, so that a site-to-site VPN can be established."
    "Redirect Gateway", "Force the clients default gateway to this tunnel"
 
+.. Note::
+
+      When configuring tunnel networks, make sure they fit in the network defined on the server tunnel itself to allow the server to send data back to the client.
+      For example in a :code:`10.0.0.0/24` network you are able to define a client specific one like :code:`10.0.0.100/30`.
+
+      To reduce the chances of a collision, also make sure to reserve enough space at the server as the address might already be assigned to a dynamic client otherwise.
+
+
 
 --------------------------
 Plugin VPN options
