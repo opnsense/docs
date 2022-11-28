@@ -97,7 +97,7 @@ Amazon AWS EC2 Cloud
 .. image:: how-tos/images/amazon-web-services.png
     :height: 80px
 
-Installing OPNsense into the Amazon cloud can be a dounting task as no console is
+Installing OPNsense into the Amazon cloud can be a daunting task as no console is
 offered. Luckily an easy to install AMI is also available in the aws marketplace.
 
 See also our how-to for :doc:`how-tos/installaws`.
