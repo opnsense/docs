@@ -290,14 +290,15 @@ Here are the full patch notes:
 * ports: phalcon 5.0.3 `[39] <https://github.com/phalcon/cphalcon/releases/tag/v5.0.3>`__ 
 * ports: php 8.0.24 `[40] <https://www.php.net/ChangeLog-8.php#8.0.24>`__ 
 * ports: phpseclib 3.0.16 `[41] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.16>`__ 
-* ports: python 3.9.14 `[42] <https://docs.python.org/release/3.9.14/whatsnew/changelog.html>`__ 
+* ports: python 3.9.15 `[42] <https://docs.python.org/release/3.9.15/whatsnew/changelog.html>`__ 
 * ports: rrdtool 1.8.0 `[43] <https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES>`__ 
 * ports: sqlite 3.39.3 `[44] <https://sqlite.org/releaselog/3_39_3.html>`__ 
 * ports: squid 5.7 `[45] <http://www.squid-cache.org/Versions/v5/squid-5.7-RELEASENOTES.html>`__ 
 * ports: strongswan 5.9.8 `[46] <https://github.com/strongswan/strongswan/releases/tag/5.9.8>`__ 
-* ports: suricata 6.0.8 `[47] <https://suricata.io/2022/09/27/suricata-6-0-7-released/>`__ 
-* ports: syslog-ng 3.38.1 `[48] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.38.1>`__ 
-* ports: unbound 1.16.3 `[49] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-3>`__ 
+* ports: sudo 1.9.12p1 `[47] <https://www.sudo.ws/stable.html#1.9.12p1>`__ 
+* ports: suricata 6.0.8 `[48] <https://suricata.io/2022/09/27/suricata-6-0-7-released/>`__ 
+* ports: syslog-ng 3.38.1 `[49] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.38.1>`__ 
+* ports: unbound 1.16.3 `[50] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-3>`__ 
 
 Known issues and limitations:
 

@@ -35,6 +35,41 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+22.7.9 (December 01, 2022)
+--------------------------------------------------------------------------
+
+
+A quick update to address the new FreeBSD security advisory for ping utility
+as well as Suricata.  The DNS block list was rewritten in Python and there
+will be a couple of cool additions for it in the foreseeable future.  :)
+
+Here are the full patch notes:
+
+* system: fix internal CRL check (contributed by kulikov-a)
+* system: fix a few minor Coverty Scan reports `[1] <https://scan.coverity.com/projects/opnsense-core>`__ 
+* interfaces: use get_interface_list() to identify hardware devices
+* interfaces: fix single ACL use for MVC/API interface pages
+* firewall: add category selection to aliases
+* unbound: rework DNSBL implementation to Python module
+* backend: clean up scripts/systemheath location
+* backend: moved log format definitions to new location for core and several plugins
+* mvc: change default sorting to case-insensitive
+* mvc: move JavaScript and CSS imports to base controller
+* mvc: make sure HostnameField with ZoneRootAllowed accepts "@." prefix
+* plugins: os-telegraf 1.12.7 `[2] <https://github.com/opnsense/plugins/blob/stable/22.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-theme-cicada 1.30 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.42 (contributed by Team Rebellion)
+* plugins: os-wireguard now attempts to start tunnels again when all DNS is configured
+* src: ixgbe: workaround errata about UDP frames with zero checksum
+* src: hpet: Allow a MMIO window smaller than 1K
+* src: ping: fix handling of IP packet sizes `[3] <FREEBSD:FreeBSD-SA-22:15.ping>`__ 
+* ports: php 8.0.26 `[4] <https://www.php.net/ChangeLog-8.php#8.0.26>`__ 
+* ports: sqlite 3.40.0 `[5] <https://sqlite.org/releaselog/3_40_0.html>`__ 
+* ports: suricata 6.0.9 `[6] <https://suricata.io/2022/11/29/suricata-6-0-9-released/>`__ 
+
+
+
+--------------------------------------------------------------------------
 22.7.8 (November 17, 2022)
 --------------------------------------------------------------------------
 
