@@ -144,6 +144,10 @@ Step 7 - Using the token
 To use the token in any application/service that you have configured, just open
 the Google Authenticator and add the created token/key **before** your regular password.
 
+.. Note::
+You will also need to use the token+password combination when you use sudo on the terminal,
+if you have configured it to require password to sudo.
+
 .. Warning::
    Remember, you need to enter the token **before** or **after** you password
    (depending on your configuration)! And the password field should be used to enter
