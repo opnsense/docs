@@ -116,6 +116,14 @@ First you need to set up a project in the Google developer console.
 
 -  You will be prompted to download the key. Do so, and then click **CLOSE** in the popup screen.
 
+-  Now **click** on the newly created Service Account:
+
+    .. image:: ./images/google_service_account.png
+
+-  Write down the **Unique ID** of the Service Account. This ID will be your **Client-ID** in the OPNSense Google Drive backup:
+
+    .. image:: ./images/google_service_account_details.png
+
 
 2. Set up a Google Drive folder
 ===============================
@@ -154,7 +162,7 @@ Now put it all together in OPNsense.
 
     ===============================  ===================================================================================
     Enable                           checked
-    Email Address                    enter the email address of the service account you created
+    Email Address                    enter the Unique ID number of the service account you created
     P12 key                          click the **Choose file** button and select the P12 key you saved earlier to upload it
     Folder ID                        paste the Google Drive folder ID that you copied earlier
     Prefix hostname to backupfile    checked or unchecked as desired (useful if you have multiple OPNsenses)
