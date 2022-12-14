@@ -300,6 +300,23 @@ Here are the full patch notes:
 * ports: syslog-ng 3.38.1 `[49] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.38.1>`__ 
 * ports: unbound 1.16.3 `[50] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-3>`__ 
 
+The following operating system hotfix was issued:
+
+* src: vxlan: check the size of data available in mbuf before using them
+* src: vm_page: fix a logic error in the handling of PQ_ACTIVE operations `[51] <FREEBSD:FreeBSD-EN-22:23.vm>`__ 
+* src: cam: provide compatibility for CAMGETPASSTHRU for periph drivers `[52] <FREEBSD:FreeBSD-EN-22:26.cam>`__ 
+* src: loader: fix elf lookup_symbol type filtering `[53] <FREEBSD:FreeBSD-EN-22:27.loader>`__ 
+* src: zfs: fix a pair of bugs in zfs_fhtovp() `[54] <FREEBSD:FreeBSD-EN-22:24.zfs>`__ 
+* src: zfs: fix use-after-free in btree code `[55] <FREEBSD:FreeBSD-EN-22:21.zfs>`__ 
+* src: tcp: finish SACK loss recovery on sudden lack of SACK blocks `[56] <FREEBSD:FreeBSD-EN-22:25.tcp>`__ 
+* src: igc: remove unnecessary PHY ID checks
+* src: ixl: add support for I710 devices and remove non-inclusive language
+* src: ixl: fix SR-IOV panics
+* src: u3g: add more USB IDs
+* src: ixgbe: workaround errata about UDP frames with zero checksum
+* src: hpet: Allow a MMIO window smaller than 1K
+* src: ping: fix handling of IP packet sizes `[57] <FREEBSD:FreeBSD-SA-22:15.ping>`__ 
+
 Known issues and limitations:
 
 * The DH parameter is no longer available in OpenVPN server configuration and now fixed to the RFC 7919 4096 bit key.  The only downside may be lower performance on older machines.

@@ -193,7 +193,7 @@ release as that becomes available.
 
 Highlights for 22.1 already include:
 
-* Suricata Netmap v14 support for multi-gigabit speed in IPS mode with RSS enabled
+* Suricata Netmap version 14 support for multi-gigabit speed in IPS mode with RSS enabled
 * Separate VLAN MAC spoofing and permanent promiscuous mode setting
 * Tunable analytics provide automatic descriptions and type
 * IPsec tunnel overview ported to MVC with pagination
