@@ -116,6 +116,33 @@ with the settings of the component they belong to. The log files can be found in
     in :menuselection:`VPN -> IPsec -> Advanced Settings`.
 
 
+.................................
+Custom configurations
+.................................
+
+In some (rare) cases one might want to add custom configuration options not available in the user interface, for this reason we
+do support standard includes.
+
+While the :code:`swanctl.conf` and the legacy :code:`ipsec.conf` configuration files are well suited to define IPsec-related configuration parameters,
+it is not useful for other strongSwan applications to read options from these files.
+To configure these other components, it is possible to manually append options to our default template, in which case files
+may be placed in the directory :code:`/usr/local/etc/strongswan.opnsense.d/` using the file extention :code:`.conf`
+
+IPsec configurations are managed in `swantcl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__ format (as of 23.1), merging your own additions is possible by
+placing files with a :code:`.conf` extension in the directory :code:`/usr/local/etc/swanctl/conf.d/`.
+
+.. Warning::
+
+    Files added to these directories will not be mainted by the user interface, if you're unsure if you need this, it's likely
+    a good idea to skip adding files here as it might lead to errors difficult to debug.
+
+.. Note::
+
+    Prior to version 23.1 it was also possible to add secrets and ipsec configurations in :code:`/usr/local/etc/ipsec.secrets.opnsense.d/`
+    and :code:`/usr/local/etc/ipsec.opnsense.d/`, with the switch to 23.1 these files are deprecated and should be manually migrated into swanctl.conf
+    format.
+
+
 
 --------------------------
 OpenVPN (SSL VPN)
