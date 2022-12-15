@@ -96,6 +96,28 @@ to the many different implementation types.
 
 
 .................................
+Tuning considerations
+.................................
+
+Depending on the workload (many different IPsec flows or a single flow), it might help to enable multithreaded crypto mode
+on :code:`ipsec`, in which case cryptographic packets are dispatched to multiple processors.
+In order to do so, add or change the following tunable in :menuselection:`System --> Settings --> Tunables`:
+
+.. Note::
+
+    :code:`net.inet.ipsec.async_crypto` = **1**
+
+Sometimes it helps if `netisr <https://www.freebsd.org/cgi/man.cgi?format=html&query=netisr(9)>`__ threads are bound to the same cpu
+they where initiated on, in which case load shifts less between cores. Since by default the kernel uses a single thread to dispatch
+the work to be done, we might also consider increasing the number of workers to the number of cores available in the machine.
+
+.. Note::
+
+    * :code:`net.isr.bindthreads` = **1**
+    * :code:`net.isr.maxthreads` = **-1**   <-- equal the number of cores in the machine
+
+
+.................................
 Diagnostics
 .................................
 
