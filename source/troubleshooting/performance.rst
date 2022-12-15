@@ -112,7 +112,7 @@ This means we use the following values:
 - for 4-core systems, use ‘2’
 - for 8-core systems, use ‘3’
 - for 16-core systems, use ‘4’
-Etc.
+- Etc.
 
 
 .. Note::
