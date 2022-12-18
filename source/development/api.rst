@@ -29,6 +29,13 @@ The $key and $secret parameters are used to pass the API credentials using curl.
 
      When using Postman to test an API call, use the 'basic auth' authorization type. The $key and $secret parameters go into Username/Password respectively.
 
+.. note::
+
+    Always make sure the owner of the key is authorized to access the resource in question, the "Effective Privileges" set on the user
+    shows which resources are accessible. (Edit reveals the endpoints assigned to each resource).
+
+    ACL's are explained in :doc:`development/components/acl </development/components/acl>`).
+
 Core API
 --------
 

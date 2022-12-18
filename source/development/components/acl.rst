@@ -10,23 +10,43 @@ Access Control List
 Overview
 --------
 
-The current ACL system is targeted at delivering backwards compatibility
-for legacy code and being able to extend this a little to add new
+The ACL system is targeted at delivering backwards compatibility
+for legacy code and being able to extend this to add new
 features without having to reimplement the whole system.
 
-In the legacy system the access control is using the following steps to
-determine if a page can be accessed by a user:
+The following steps determine if a page can be accessed by a user:
 
-#. The user, stored in the config.xml file at system/user (one item per
-   user)
-#. One or more groups for that user, stored in system/group which
-   contains priv sections.
-#. A PHP file binding the priv section content to a page mask (including
-   wildcards)
+#. The user, stored in the config.xml file at system/user may set "Effective Privileges" valid for that explicit entry, stored in <priv/> sections
+#. One or more groups for that user, stored in system/group which contains priv sections as well.
+#. An XML file (:code:`ACL.xml`) linking logical acl keys to uri patterns
 
-Our temporary solution is to keep the user and the group in place and replace the
-PHP file with a simple config in the model which uses the same mask construction
-there was in the old codebase. To bind priv to pages, edit models/OPNsense/Core/ACL\_Legacy\_Page\_Map.txt
+Access controls for most legacy components are stored in models/OPNsense/Core/ACL/ACL.xml, most new components add their own
+ACL's in the model belonging to the component. All stored :code:`ACL.xml` files combined determine the full set of options available
+in the user/group manager. There is no expicit requirement which model services which ACL.
+
+.. Note::
+
+    When in need of a single ACL to match an explicit set of components (pages/api endpoints), one can add an ACL file easily
+    for a module without further logic. 
+
+---------------
+ACL format
+---------------
+
+Each ACL file is stored in the model location (/usr/local/opnsense/mvc/app/models/) where :code:`ACL.xml` files
+are stored in the location [VENDOR]/[MODULE]/ACL/ACL.xml. The format of the file is as follows:
+
+.. code-block:: html
+
+  <acl>
+    <my-unique-acl-key>             <---- as stored for the user/group
+       <name>My ACL name</name>     <---- name visible in the user manager
+       <patterns>
+          <pattern>path/to/my/module</pattern>      <--- list of uri's this ACL should unlock.
+       </patterns>
+    </my-unique-acl-key>
+  </acL>
+
 
 --------------
 Usage from PHP
