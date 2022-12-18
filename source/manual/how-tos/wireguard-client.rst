@@ -38,7 +38,38 @@ Step 2 - Configure the local peer (server)
 
 .. Note::
 
-    The tunnel address must be in CIDR notation and must be a unique IP and subnet for your network. The subnet should be an appropriate size that includes all the client peers that will use the tunnel. For IPv4 it should be a private (RFC1918) address, for example 10.10.10.1/24. For IPv6, it could either be a unique ULA /64 address, or a unique GUA /64 address derived from your prefix delegation. **Do not use a tunnel address that is a /32 (IPv4) or a /128 (IPv6)**
+    The tunnel address must be in CIDR notation and must be a unique IP and subnet for your network. The subnet should be an appropriate size that includes all the client peers that will use the tunnel. For IPv4 it should be a private (RFC1918) address, for example 10.10.10.1/24. For IPv6, it could either be a unique ULA /64 address, or a unique GUA /64 address derived from your prefix delegation. If your ISP only provides a single Prefix Delegation of /64 for IPv6 GUA addresses and does not obey requesting a /63 in DHCPv6 client for the WAN, it will be required to create a custom dhcpv6_wan.conf override script to request another useable subnet for the wireguard tunnel. **Do not use a tunnel address that is a /32 (IPv4) or a /128 (IPv6)**
+
+.. Warning::
+
+    Do not reuse the IPv4 or IPv6 network configured for the LAN interface. Overlapping the networks will prevent the wireguard clients from communicating with the LAN network clients properly.
+
+An example custom script:
+
+/usr/local/etc/rc.d/dhcpv6_wan-dp.conf
+
+.. Warning::
+
+    Replace igb0 with the WAN interface assignment and igb1 with the LAN interface assignment
+
+.. code-block:: none
+
+    interface igb0 {
+      send ia-na 0; # request stateful address
+      send ia-pd 0; # request prefix delegation
+      send ia-pd 1; # request another prefix delegation
+      request domain-name-servers;
+      request domain-name;
+      script "/var/etc/dhcp6c_wan_script.sh"; # we'd like some nameservers please
+    };
+    id-assoc na 0 { };
+    id-assoc pd 0 {
+      prefix-interface igb1 {
+        sla-id 0;
+        sla-len 0;
+      };
+    };
+    id-assoc pd 1 { };
 
 .. Note::
 
