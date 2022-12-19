@@ -1,5 +1,5 @@
 ================================
-Setup IPsec site to site tunnel
+IPsec - Site to Site tunnel
 ================================
 
 Site to site VPNs connect two locations with static public IP addresses and allow

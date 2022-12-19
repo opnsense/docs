@@ -35,27 +35,93 @@ Since IPsec is used in many different scenario's and sometimes has the tendency 
 will describe different usecases and provide some examples in this chapter.
 
 .................................
-Site 2 Site policy based
+Security policies and routing
 .................................
 
-Probably one of the oldest and most used scenarios is the policy based one.
-
-Like all IPsec configurations, a standard site to site setup starts with a so called "Phase 1" entry to establish the
-communication between both peers defined in :menuselection:`VPN -> IPsec -> Tunnel Settings`. After the phase 1
-is configured, the "Phase 2" defines which policies traffic should match on.
-
-Since the kernel traps traffic matching defined policies, no additional routing need to be configured in order to
-communicate between both ends of a tunnel.
+In order to pass traffic over an IPsec tunnel, we need a policy matching the traffic. By default when adding a phase 2 (or child) policy
+a "kernel route" is installed as well, which traps traffic before normal routing takes place.
 
 .. Note::
 
-  Using Network Address Translation in these types of setups is different, due to the fact that the installed IPsec policy
-  should accept the traffic in order to encapsulate it. The `IPSec BINAT` document will explain how to apply translations.
+  Without a policy in place for the tunnel, traffic won't be accepted, in case a policy with a kernel route overlaps a local or locally routed network
+  the traffic will not be received by the host in question.
 
 .. Tip::
 
-  When matching overlapping networks in a policy, make sure to exclude your own network segments in the
+  When matching overlapping networks in a policy (VTI or overlapping networks), make sure to exclude your own network segments in the
   :code:`Passthrough networks` option in :menuselection:`VPN -> IPsec -> Advanced Settings` to prevent traffic being blackholed.
+
+
+.................................
+Implementation schemes
+.................................
+
+When setting up IPsec VPNs there are two main types of scenario's with their own advantages and disadvantages.
+
+Policy based
+--------------------------
+
+The first one is the standard policy based tunnel, which guards the security of the tunnel with policies and installs kernel
+traps to send traffic over the tunnel in case it matches these policies. For example a local network :code:`192.168.1.0/24`
+sending traffic to a remote location responsible for :code:`192.168.2.0/24`. The advantage of this scenario is the ease of setup,
+no routes are needed to be configured, when in this example :code:`192.168.1.10` contacts :code:`192.168.2.10` the packets
+are seamlessly forwarded over the tunnel to the remote location.
+
+When local traffic doesn't match the policies in question due to the tunnel needing Network Address Translation,
+that's also possible as long as policies are manually added to the security policy database,
+this is also referred to as "NAT before IPsec".
+
+
+Route based (VTI)
+--------------------------
+
+Route based, also known as VTI, tunnels are using a virtual interface known as :code:`if_ipsec(4)`, which can be found under
+:menuselection:`VPN -> IPsec -> Virtual Tunnel Interfaces`. This links two ends of the communication for routing purposes
+after which normal routing applies. The "(Install) Policies" checkmark needs to be disabled in this case for the child (phase 1 in the legacy tunnel configuration)
+definition. Usually the communication policy (phase 2 or child) is set to match all traffic (either :code:`0.0.0.0/0` for IPv4 or :code:`::/0` for IPv6).
+
+So the same example as the policy based option would need (static) routes for the destinations in question (:code:`192.168.1.0/24` needs
+a route to :code:`192.168.2.0/24` and vice versa), peering happens over a small network in another subnet (for example :code:`10.0.0.1` <-> :code:`10.0.0.2`)
+bound to the tunnel interface.
+
+The advantage of this type of setup is one can use standard or advanced routing technologies to forward traffic around tunnels.
+
+
+.................................
+Road Warriors / Mobile users
+.................................
+
+IPsec may also be used to service remote workers connecting to OPNsense from various clients, such as Windows, MacOS, iOS and Android.
+The type of client usually determines the authentication scheme(s) being used.
+
+In case clients should be offered default settings, these can be configured from :menuselection:`VPN -> IPsec -> Mobile Clients`.
+Pool options (Virtual IPvX Address Pool) on this page will be used by the legacy tunnel configuration only, when using the new connections
+module one may configure different pools per connection.
+
+The examples section contains various options available in OPNsense. When using the new "connections" option available
+as of OPNsense 23.1, different `examples from Strongswan <https://docs.strongswan.org/docs/5.9/interop/windowsClients.html>`__
+are usually quite easy to implement as we follow the `swantcl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__
+format quite closely in the new module.
+
+The following client setup examples are available in our documentation:
+
+.. toctree::
+  :maxdepth: 2
+  :titlesonly:
+
+  how-tos/ipsec-rw-android
+  how-tos/ipsec-rw-linux
+  how-tos/ipsec-rw-w7
+
+
+.................................
+Examples
+.................................
+
+
+Legacy (:menuselection:`VPN -> IPsec -> Tunnel Settings`)
+------------------------------------------------------------------------------
+
 
 .. toctree::
    :maxdepth: 2
@@ -63,36 +129,15 @@ communicate between both ends of a tunnel.
 
    how-tos/ipsec-s2s
    how-tos/ipsec-s2s-binat
-
-
-.................................
-Site 2 Site route based (VTI)
-.................................
-
-Unlike the policy based setup described in the previous chapter, the route based variant depends on custom routes being installed
-on both ends of the tunnel. When adding a route based tunnel, the system will add an interface for you which you can use in normal
-routing operations.
-
-.. toctree::
-   :maxdepth: 2
-   :titlesonly:
-
    how-tos/ipsec-s2s-route
    how-tos/ipsec-s2s-route-azure
-
-
-.................................
-Road Warriors / Mobile users
-.................................
-
-For people working from home IPsec is also an option, althouh a bit more complicated in comparison to OpenVPN due
-to the many different implementation types.
-
-.. toctree::
-   :maxdepth: 2
-   :titlesonly:
-
    how-tos/ipsec-rw
+
+.. Note::
+
+ Using Network Address Translation in policy based tunnels is different, due to the fact that the installed IPsec policy
+ should accept the traffic in order to encapsulate it. The `IPSec BINAT` document will explain how to apply translations.
+
 
 
 .................................

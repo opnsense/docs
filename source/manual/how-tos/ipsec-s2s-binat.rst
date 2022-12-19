@@ -1,5 +1,5 @@
 =================================
-IPSec BINAT (NAT before IPSec)
+IPSec - BINAT (NAT before IPSec)
 =================================
 
 
