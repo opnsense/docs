@@ -120,6 +120,10 @@ Our default deny rule uses this property for example (if no rule applies, drop t
     groups use :code:`300000` and interface rules land on :code:`400000` combined with the order in which they appear.
     Automatic rules are usually registered at a higher priority (lower number).
 
+.. Warning::
+
+    `NAT : port forwarding rules <nat.html#port-forwarding>`__ are registered using a priority of 600, i.e. at a very high priority. This has the consequence, that if you use a NAT : port forwarding rule *without a associated rule*, i.e. **Filter rule association** set to **Pass**, no other rules will apply!
+
 .. Tip::
 
     The interface should show all rules that are used, when in doubt, you can always inspect the raw output of the ruleset in :code:`/tmp/rules.debug`
