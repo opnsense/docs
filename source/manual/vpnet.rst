@@ -35,6 +35,77 @@ Since IPsec is used in many different scenario's and sometimes has the tendency 
 will describe different usecases and provide some examples in this chapter.
 
 .................................
+General context
+.................................
+
+The IPsec module incorporates different functions, which are grouped into various menu items. Since the start of our
+project we have been offering IPsec features based on the legacy :code:`ipsec.conf` format, which we are migrating to
+`swantcl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__ as of version 23.1. While
+migrating the existing featureset we came to the conclusion that the world has changed quite a bit and in order to
+offer better (api) access to the featureset available we decided to plan for deprecation of the legacy "Tunnel settings" as they
+have existed since we started. No timeline has been set, only a feature freeze on tunnels using the "Tunnel settings" menu item.
+
+One of the main goals for the long run is to better align the gui components so they reflect the reality underneath, as we use
+`strongswan <https://www.strongswan.org/>`__, our aim is to follow their terminology more closely than we previously did.
+
+The following functions are available in the menu (as of OPNsense 23.1):
+
+* Connections
+
+  * New configuration tool offering access to the connections and pools sections of the :code:`swanctl` configuration
+
+* Tunnel Settings
+
+  * Legacy IPsec configuration tool
+
+* Mobile Clients
+
+  * Offering access to various options of the `attr <https://docs.strongswan.org/docs/5.9/plugins/attr.html>`__ plugin and pool configurations for legacy tunnels
+
+* Pre-Shared Keys
+
+  * Define `secrets <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html#_secrets>`__ to be used for local authentication.
+
+* Key Pairs
+
+  * For public key authentication collect public and private keys.
+
+* Advanced Settings
+
+  * Define passthrough networks (to exclude from kernel traps), logging options and some generic options
+
+* Status Overview
+
+  * Shows tunnel statusses
+
+* Lease Status
+
+  * For mobile clients, show address leases for various pools configured
+
+* Security Association Database
+
+  * Shows security associations, the fundamental concept of IPsec describing a relationship between two or more entities
+
+* Security Policy Database
+
+  * Installed security policies describing which traffic is allowed to pass a tunnel
+
+* Virtual Tunnel Interfaces
+
+  * Edit or create new :code:`if_ipsec(4)` interfaces and show the ones created by legacy tunnels
+
+* Log File
+
+  * Inspect log entries related to IPsec
+
+
+.. Note::
+
+    When migrating Pre-Shared Key type tunnels to connections, make sure to add an entry in the "Pre-Shared Keys" module as well.
+    If both ends should use their own identifier, fill in both local and remote values. The legacy module requested this information in the phase 1
+    page and wrote the same information to the secrets.
+
+.................................
 Security policies and routing
 .................................
 
@@ -86,6 +157,16 @@ bound to the tunnel interface.
 
 The advantage of this type of setup is one can use standard or advanced routing technologies to forward traffic around tunnels.
 
+.. Note::
+
+    In order to filter traffic on the :code:`if_ipsec(4)` device some tunables need to be set. Both :code:`net.inet.ipsec.filtertunnel`
+    and :code:`net.inet6.ipsec6.filtertunnel` need to be set to :code:`1` and :code:`net.enc.in.ipsec_filter_mask` and :code:`net.enc.out.ipsec_filter_mask`
+    need to be set to :code:`0` in order to allow rules on the device. The downside is that policy based tunnels (:code:`enc0`) can not be filtered
+    anymore as this changes the behaviour from filtering on the :code:`enc0` device to the :code:`if_ipsec(4)` devices.
+
+.. Warning::
+
+    Currently it does not seem to be possible to add NAT rules for :code:`if_ipsec(4)` devices.
 
 .................................
 Road Warriors / Mobile users
@@ -118,6 +199,7 @@ The following client setup examples are available in our documentation:
 Examples
 .................................
 
+This paragraph offers examples for some commonly used implementation scenarios.
 
 Legacy (:menuselection:`VPN -> IPsec -> Tunnel Settings`)
 ------------------------------------------------------------------------------
