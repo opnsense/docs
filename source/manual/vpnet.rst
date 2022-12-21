@@ -234,14 +234,15 @@ In order to do so, add or change the following tunable in :menuselection:`System
 
     :code:`net.inet.ipsec.async_crypto` = **1**
 
-Sometimes it helps if `netisr <https://www.freebsd.org/cgi/man.cgi?format=html&query=netisr(9)>`__ threads are bound to the same cpu
-they where initiated on, in which case load shifts less between cores. Since by default the kernel uses a single thread to dispatch
-the work to be done, we might also consider increasing the number of workers to the number of cores available in the machine.
+To distribute load better over available cores in the system, it may help to enable :doc:`receive side scaling </troubleshooting/performance>`.
+In which case the following tunables need to be changed:
 
 .. Note::
 
     * :code:`net.isr.bindthreads` = **1**
     * :code:`net.isr.maxthreads` = **-1**   <-- equal the number of cores in the machine
+    * :code:`net.inet.rss.enabled` = **1**
+    * :code:`net.inet.rss.bits` = **X** <-- see :doc:`rss </troubleshooting/performance>` document.
 
 
 .................................
