@@ -108,6 +108,12 @@ The  service above defines the following static variables:
 The :code:`reconfigureForceRestart` overwrite tells the controller if it should always stop the service before trying a start, some
 services can be signaled to do a reconfigure without stopping.
 
+.. Tip::
+
+    When a service may register new  :doc:`interfaces </development/backend/legacy>`, one could implement the protected method
+    :code:`invokeInterfaceRegistration` and make it return :code:`true`, after which the plugin system will detect changes to the
+    interface registrations automatically.
+
 
 Endpoints
 ---------------------------------
