@@ -1,5 +1,5 @@
 ====================================
-IPsec VTI - Route based PSK setup
+IPsec - Route based (VTI) PSK setup
 ====================================
 
 This example utilises the new options available in OPNsense 23.1 to setup a site to site tunnel in routed mode
@@ -44,7 +44,7 @@ to peer both firewalls. We will create a tunnel network using :code:`192.168.123
 
 
 --------------------------------
-Preperations
+Preparations
 --------------------------------
 
 .....................
@@ -91,8 +91,8 @@ Property                site A              site B
 ======================= =================== ===================
 Name                    IPSEC10_GW          IPSEC10_GW
 Interface               IPSEC10             IPSEC10
-Address Family	        IPv4                IPv4
-IP address	            **192.168.123.2**   **192.168.123.1**
+Address Family          IPv4                IPv4
+IP address              **192.168.123.2**   **192.168.123.1**
 ======================= =================== ===================
 
 
@@ -113,6 +113,12 @@ Network Address         **10.0.2.0/24**     **192.168.2.0/24**
 Gateway                 IPSEC10_GW          IPSEC10_GW
 ======================= =================== ===================
 
+
+.....................
+Enable IPsec
+.....................
+
+Before configuring the connections, we enable the IPsec module. Just mark the "enable" checkbox on the connections tab.
 
 --------------------------------
 Setting up the IPsec connection

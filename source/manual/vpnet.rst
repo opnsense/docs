@@ -228,6 +228,7 @@ New > 23.1 (:menuselection:`VPN -> IPsec -> Connections`)
    :maxdepth: 2
    :titlesonly:
 
+   how-tos/ipsec-s2s-conn
    how-tos/ipsec-s2s-conn-route
 
 
