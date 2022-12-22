@@ -221,6 +221,16 @@ Legacy (:menuselection:`VPN -> IPsec -> Tunnel Settings`)
  should accept the traffic in order to encapsulate it. The `IPSec BINAT` document will explain how to apply translations.
 
 
+New > 23.1 (:menuselection:`VPN -> IPsec -> Connections`)
+------------------------------------------------------------------------------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   how-tos/ipsec-s2s-conn-route
+
+
 
 .................................
 Tuning considerations
