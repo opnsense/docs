@@ -239,6 +239,12 @@ New > 23.1 (:menuselection:`VPN -> IPsec -> Connections`)
    how-tos/ipsec-s2s-conn-route
 
 
+.. Tip::
+
+    The number of examples for the new module on our end is limited, but for inspiration it's often a good
+    idea to walkthrough the examples provided by `Strongswan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__.
+    Quite some swanctl.conf examples are easy to implement in our new module as we do follow the same terminology.
+
 
 .................................
 Tuning considerations
