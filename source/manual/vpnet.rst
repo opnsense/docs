@@ -168,6 +168,13 @@ The advantage of this type of setup is one can use standard or advanced routing 
 
     Currently it does not seem to be possible to add NAT rules for :code:`if_ipsec(4)` devices.
 
+.. Warning::
+
+    In order to reliably setup a VTI tunnel, both ends should use static ip addresses. Although in the legacy configuration it
+    was possible to resolve hostnames, this will never lead to a stable configuration as the :code:`if_ipsec(4)` device
+    matches both source and destination `[#] <https://github.com/freebsd/freebsd-src/blob/c8ee75f2315e8267ad814dc5b4645ef205f0e0e1/sys/net/if_ipsec.c#L479>`__
+    before accepting the traffic and has no knowledge about any external changes.
+
 .................................
 Road Warriors / Mobile users
 .................................
