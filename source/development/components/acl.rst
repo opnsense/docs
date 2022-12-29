@@ -39,10 +39,10 @@ are stored in the location [VENDOR]/[MODULE]/ACL/ACL.xml. The format of the file
 .. code-block:: html
 
   <acl>
-    <my-unique-acl-key>             <---- as stored for the user/group
-       <name>My ACL name</name>     <---- name visible in the user manager
+    <my-unique-acl-key>             <!-- as stored for the user/group -->
+       <name>My ACL name</name>     <!-- name visible in the user manager -->
        <patterns>
-          <pattern>path/to/my/module</pattern>      <--- list of uri's this ACL should unlock.
+          <pattern>path/to/my/module</pattern>      <!-- list of uri's this ACL should unlock. -->
        </patterns>
     </my-unique-acl-key>
   </acL>
