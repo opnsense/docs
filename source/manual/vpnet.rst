@@ -237,6 +237,7 @@ New > 23.1 (:menuselection:`VPN -> IPsec -> Connections`)
 
    how-tos/ipsec-s2s-conn
    how-tos/ipsec-s2s-conn-route
+   how-tos/ipsec-s2s-conn-binat
 
 
 .. Tip::
