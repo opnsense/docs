@@ -66,9 +66,29 @@ and navigate directly to the right page.
 .. image:: images/quick-navigation.png
 
 
+System Status
+-------------
+In the upper right corner of the screen is also a small indication of the system status.
+In a normal situation this will be greyed out, but it will display a color if something is
+wrong. You can click on it to review any of the pending messages, if any:
+
+.. image:: images/gui_system_status.png
+
+The colors indicate the severity of the issue. They are:
+
+* Red. Indicates that an error has occured during system operation. Click it to go to the
+  relevant page. In most cases this will be the crash reporter, which you can use
+  to send us information about the crash.
+
+.. image:: images/gui_system_status_error.png
+
+* Yellow. Indicates a warning.
+* Blue. Indicates an informational message.
+* Grey. Everything is working as normal.
+
 User & Local domain
 -------------------
-In the right corner just to the left of the quick navigation you will see your
+In the right corner just to the left of the system status you will see your
 username and the full domain name the firewall is configured with
 (to change firewall name, go to :menuselection:`System --> Setting --> General`).
 
