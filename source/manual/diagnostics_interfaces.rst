@@ -119,12 +119,12 @@ Promiscuous                 When set, the system will capture all traffic presen
 Address Family              Capture IPv4, IPv6 or both
 Invert Protocol             Select all but the protocol selected below
 Protocol                    The protocol to filter on
-Host Address                This value is either the Source or Destination IP address or subnet in CIDR notation.
+Host Address                This value is either the Source or Destination IP/MAC address or subnet in CIDR notation.
                             The packet capture will look for this address in either field.
                             Matching can be negated by preceding the value with ":code:`not`".
                             Multiple IP addresses or CIDR subnets may be specified as boolean expression.
                             If you leave this field blank, all packets on the specified interface will be captured.
-                            Example: :code:`not 10.0.0.0/24 not and not 11.0.0.1`
+                            Example: :code:`not 10.0.0.0/24 not and not 11.0.0.1 or 00:0a:01:02:03:04`
 Invert Port                 Select all but the port selected below
 Port                        Port number to filter on (e.g. :code:`443` for standard https, :code:`22` for ssh)
 Packet Length               The Packet length is the number of bytes of each packet that will be captured.
