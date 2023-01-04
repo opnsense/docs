@@ -286,6 +286,12 @@ Whitelist Domains                     When a blacklist item contains a pattern d
                                       be ommitted from the results.  e.g. :code:`.*\.nl` would exclude all .nl domains
 ====================================  ===============================================================================
 
+.. Note::
+
+    As of 22.7.9, the blocklist implementation has internally been decoupled from Unbound, this means that
+    an apply from the blocklist settings will not have effect immediately, rather it might take some time for Unbound
+    to pick up on it. This prevents the need for excessive restarts of Unbound.
+
 When any of the DNSBL types are used, the content will be fetched directly from its original source, to
 get a better understanding of the source of the lists we compiled the list below containing references to
 the list maintainers.
