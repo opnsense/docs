@@ -1,5 +1,5 @@
 ===================
-Reporting Traffic
+Reporting: Traffic
 ===================
 
 Under :menuselection:`Reporting --> Traffic` you will find a traffic monitor which show the current amount of
