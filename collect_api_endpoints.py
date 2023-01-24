@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/local/bin/python3
 """
     Copyright (c) 2020 Ad Schellevis <ad@opnsense.org>
     All rights reserved.
