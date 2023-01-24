@@ -1,6 +1,42 @@
 Ipsec
 ~~~~~
 
+.. csv-table:: Resources (ConnectionsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","ipsec","connections","addChild",""
+    "``POST``","ipsec","connections","addConnection",""
+    "``POST``","ipsec","connections","addLocal",""
+    "``POST``","ipsec","connections","addRemote",""
+    "``GET``","ipsec","connections","connectionExists","$uuid"
+    "``POST``","ipsec","connections","delChild","$uuid"
+    "``POST``","ipsec","connections","delConnection","$uuid"
+    "``POST``","ipsec","connections","delLocal","$uuid"
+    "``POST``","ipsec","connections","delRemote","$uuid"
+    "``GET``","ipsec","connections","get",""
+    "``GET``","ipsec","connections","getChild","$uuid=null"
+    "``GET``","ipsec","connections","getConnection","$uuid=null"
+    "``GET``","ipsec","connections","getLocal","$uuid=null"
+    "``GET``","ipsec","connections","getRemote","$uuid=null"
+    "``GET``","ipsec","connections","isEnabled",""
+    "``*``","ipsec","connections","searchChild",""
+    "``*``","ipsec","connections","searchConnection",""
+    "``*``","ipsec","connections","searchLocal",""
+    "``*``","ipsec","connections","searchRemote",""
+    "``POST``","ipsec","connections","set",""
+    "``POST``","ipsec","connections","setChild","$uuid=null"
+    "``POST``","ipsec","connections","setConnection","$uuid=null"
+    "``POST``","ipsec","connections","setLocal","$uuid=null"
+    "``POST``","ipsec","connections","setRemote","$uuid=null"
+    "``POST``","ipsec","connections","toggle","$enabled=null"
+    "``POST``","ipsec","connections","toggleChild","$uuid,$enabled=null"
+    "``POST``","ipsec","connections","toggleConnection","$uuid,$enabled=null"
+    "``POST``","ipsec","connections","toggleLocal","$uuid,$enabled=null"
+    "``POST``","ipsec","connections","toggleRemote","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `Swanctl.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IPsec/Swanctl.xml>`__"
+
 .. csv-table:: Resources (KeyPairsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -29,6 +65,36 @@ Ipsec
 
     "``POST``","ipsec","legacy_subsystem","applyConfig",""
     "``GET``","ipsec","legacy_subsystem","status",""
+
+.. csv-table:: Resources (ManualSpdController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","ipsec","manual_spd","add",""
+    "``POST``","ipsec","manual_spd","del","$uuid"
+    "``GET``","ipsec","manual_spd","get","$uuid=null"
+    "``GET``","ipsec","manual_spd","get",""
+    "``*``","ipsec","manual_spd","search",""
+    "``POST``","ipsec","manual_spd","set","$uuid=null"
+    "``POST``","ipsec","manual_spd","set",""
+    "``POST``","ipsec","manual_spd","toggle","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `Swanctl.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IPsec/Swanctl.xml>`__"
+
+.. csv-table:: Resources (PoolsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","ipsec","pools","add",""
+    "``POST``","ipsec","pools","del","$uuid"
+    "``GET``","ipsec","pools","get","$uuid=null"
+    "``GET``","ipsec","pools","get",""
+    "``*``","ipsec","pools","search",""
+    "``POST``","ipsec","pools","set","$uuid=null"
+    "``POST``","ipsec","pools","set",""
+    "``POST``","ipsec","pools","toggle","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `Swanctl.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IPsec/Swanctl.xml>`__"
 
 .. csv-table:: Resources (PreSharedKeysController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -90,3 +156,18 @@ Ipsec
     "``POST``","ipsec","tunnel","toggle","$enabled=null"
     "``POST``","ipsec","tunnel","togglePhase1","$ikeid,$enabled=null"
     "``POST``","ipsec","tunnel","togglePhase2","$seqid,$enabled=null"
+
+.. csv-table:: Resources (VtiController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","ipsec","vti","add",""
+    "``POST``","ipsec","vti","del","$uuid"
+    "``GET``","ipsec","vti","get","$uuid=null"
+    "``GET``","ipsec","vti","get",""
+    "``*``","ipsec","vti","search",""
+    "``POST``","ipsec","vti","set","$uuid=null"
+    "``POST``","ipsec","vti","set",""
+    "``POST``","ipsec","vti","toggle","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `Swanctl.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IPsec/Swanctl.xml>`__"

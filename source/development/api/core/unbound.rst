@@ -12,6 +12,16 @@ Unbound
     "``GET``","unbound","diagnostics","listlocalzones",""
     "``GET``","unbound","diagnostics","stats",""
 
+.. csv-table:: Resources (OverviewController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","unbound","overview","Rolling","$timeperiod,$clients=false"
+    "``GET``","unbound","overview","isBlockListEnabled",""
+    "``GET``","unbound","overview","isEnabled",""
+    "``GET``","unbound","overview","searchQueries",""
+    "``GET``","unbound","overview","totals","$maximum"
+
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -56,5 +66,6 @@ Unbound
     "``POST``","unbound","settings","toggleForward","$uuid,$enabled=null"
     "``POST``","unbound","settings","toggleHostAlias","$uuid,$enabled=null"
     "``POST``","unbound","settings","toggleHostOverride","$uuid,$enabled=null"
+    "``POST``","unbound","settings","updateBlocklist",""
 
     "``<<uses>>``", "", "", "", "*model* `Unbound.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Unbound/Unbound.xml>`__"

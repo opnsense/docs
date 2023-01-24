@@ -86,6 +86,35 @@ Freeradius
 
     "``<<uses>>``", "", "", "", "*model* `Lease.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Lease.xml>`__"
 
+.. csv-table:: Resources (ProxyController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","freeradius","proxy","addHomeserver",""
+    "``POST``","freeradius","proxy","addHomeserverpool",""
+    "``POST``","freeradius","proxy","addRealm",""
+    "``POST``","freeradius","proxy","delHomeserver","$uuid"
+    "``POST``","freeradius","proxy","delHomeserverpool","$uuid"
+    "``POST``","freeradius","proxy","delRealm","$uuid"
+    "``GET``","freeradius","proxy","get",""
+    "``GET``","freeradius","proxy","get",""
+    "``GET``","freeradius","proxy","getHomeserver","$uuid=null"
+    "``GET``","freeradius","proxy","getHomeserverpool","$uuid=null"
+    "``GET``","freeradius","proxy","getRealm","$uuid=null"
+    "``GET``","freeradius","proxy","searchHomeserver",""
+    "``GET``","freeradius","proxy","searchHomeserverpool",""
+    "``GET``","freeradius","proxy","searchRealm",""
+    "``POST``","freeradius","proxy","set",""
+    "``POST``","freeradius","proxy","set",""
+    "``POST``","freeradius","proxy","setHomeserver","$uuid"
+    "``POST``","freeradius","proxy","setHomeserverpool","$uuid"
+    "``POST``","freeradius","proxy","setRealm","$uuid"
+    "``GET``","freeradius","proxy","toggleHomeserver","$uuid"
+    "``GET``","freeradius","proxy","toggleHomeserverpool","$uuid"
+    "``GET``","freeradius","proxy","toggleRealm","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Proxy.xml>`__"
+
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
