@@ -35,6 +35,86 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+22.7.11 (January 18, 2023)
+--------------------------------------------------------------------------
+
+
+This will be the end of life release for the 22.7 series with only a small
+number of reliability updates.  Upgrades to 23.1-RC1 are possible from the
+development version of this release.  We do expect an online update for RC2
+next week.
+
+The final 23.1 release will be on January 26.  As always the upgrade path
+from the community version will be added as a hotfix shortly after the final
+release annoucement is published.  However, this time around LibreSSL will
+no longer update and must be switched to the OpenSSL flavour prior to the
+upgrade.
+
+Here are the full patch notes:
+
+* system: fix a few minor Coverity Scan reports in Python code `[1] <https://scan.coverity.com/projects/opnsense-core>`__ 
+* firewall: show automated "port 0" rule as actual port "0" on PHP 8
+* reporting: fix incompatible regex syntax in FreeBSD 13.1 for firewall state health statistics
+* unbound: safeguard retrieval of blocklist shortcode
+* mvc: fix IntegerField minimum value (contributed by xbb)
+* plugins: acme-client 3.15 `[2] <https://github.com/opnsense/plugins/blob/stable/22.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-stunnel fixes missing include in certificate script
+* ports: curl 7.87.0 `[3] <https://curl.se/changes.html#7_87_0>`__ 
+* ports: nss 3.87 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_87.html>`__ 
+* ports: pcre 10.42 `[5] <https://www.pcre.org/changelog.txt>`__ 
+* ports: phalcon 5.1.4 `[6] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.4>`__ 
+* ports: php 8.0.27 `[7] <https://www.php.net/ChangeLog-8.php#8.0.27>`__ 
+* ports: sqlite 3.40.1 `[8] <https://sqlite.org/releaselog/3_40_1.html>`__ 
+* ports: strongswan 5.9.9 `[9] <https://github.com/strongswan/strongswan/releases/tag/5.9.9>`__ 
+* ports: unbound 1.17.1 `[10] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-17-1>`__ 
+
+
+
+--------------------------------------------------------------------------
+22.7.10 (December 21, 2022)
+--------------------------------------------------------------------------
+
+
+Another small reliability update with additional RADIUS user creation
+support included.  23.1 is just around the corner now and most work
+for it has already been done.  The major release is scheduled for
+January 26 with a release candidate coming out 2 weeks earlier.
+
+Here are the full patch notes:
+
+* system: add group (class) sync and user creation for RADIUS authentication
+* system: show and search ACL endpoints in privilege selector
+* system: replace a number of log_error() calls with log_msg() equivalent
+* system: improve SSH lockout behaviour
+* firewall: sates page performance improvements and better address parsing in search
+* firewall: reuse "hostid" on filter reload events
+* ipsec: allow to search all phase 2 entries via API call
+* openvpn: remove unused "pool_enable" attribute
+* unbound: introduce blocklist module changes for upcoming 23.1
+* unbound: fix log message blocklist item count (contributed by kulikov-a)
+* unbound: also change working dir for unbound-checkconf in start script (contributed by kulikov-a)
+* ui: unicode content for tokenizer (contributed by kulikov-a)
+* plugins: os-clamav 1.8 `[1] <https://github.com/opnsense/plugins/blob/stable/22.7/security/clamav/pkg-descr>`__ 
+* plugins: os-ddclient IPv6 parsing fix `[2] <https://github.com/opnsense/plugins/blob/stable/22.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-rfc2136 1.7 fixes key format issue with latest bind-tools update
+* plugins: os-theme-cicada 1.31 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.43 (contributed by Team Rebellion)
+* plugins: os-wireguard post-start hook improvement for interface grouping
+* ports: curl 7.86.0 `[3] <https://curl.se/changes.html#7_86_0>`__ 
+* ports: dnsmasq 2.88 `[4] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: nss 3.86 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_86.html>`__ 
+* ports: phalcon 5.1.2 `[6] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.2>`__ 
+* ports: phpseclib 3.0.18 `[7] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.18>`__ 
+* ports: python 3.9.16 `[8] <https://docs.python.org/release/3.9.16/whatsnew/changelog.html>`__ 
+
+A hotfix release was issued as 22.7.10_2:
+
+* ipsec: default log should be set to "basic" but PHP 8 disagreed
+* unbound: fix missing query_reply property leading to an AttributeError
+
+
+
+--------------------------------------------------------------------------
 22.7.9 (December 01, 2022)
 --------------------------------------------------------------------------
 
@@ -46,7 +126,7 @@ will be a couple of cool additions for it in the foreseeable future.  :)
 Here are the full patch notes:
 
 * system: fix internal CRL check (contributed by kulikov-a)
-* system: fix a few minor Coverty Scan reports `[1] <https://scan.coverity.com/projects/opnsense-core>`__ 
+* system: fix a few minor Coverity Scan reports in PHP code `[1] <https://scan.coverity.com/projects/opnsense-core>`__ 
 * interfaces: use get_interface_list() to identify hardware devices
 * interfaces: fix single ACL use for MVC/API interface pages
 * firewall: add category selection to aliases
@@ -841,8 +921,8 @@ Here are the full patch notes against 22.1.10:
 * plugins: os-tor no longer available on LibreSSL due to incompatibilities with newer Tor versions
 * plugins: os-web-proxy-useracl is no longer available, no updates since 2017
 * src: FreeBSD 13.1-RELEASE `[5] <https://www.freebsd.org/releases/13.1R/relnotes/>`__ 
-* ports: sqlite 3.39.0 `[6] <https://sqlite.org/releaselog/3_39_0.html>`__ 
-* ports: php 8.0.20 `[7] <https://www.php.net/ChangeLog-8.php#8.0.20>`__ 
+* ports: php 8.0.20 `[6] <https://www.php.net/ChangeLog-8.php#8.0.20>`__ 
+* ports: sqlite 3.39.0 `[7] <https://sqlite.org/releaselog/3_39_0.html>`__ 
 
 A hotfix release was issued as 22.7.r1_8:
 
