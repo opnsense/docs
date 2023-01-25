@@ -283,14 +283,26 @@ URLs of Blacklists                    Additional http[s] location to download bl
                                       files containing a list of fqdn's (e.g. :code:`my.evil.domain.com`) are
                                       supported.
 Whitelist Domains                     When a blacklist item contains a pattern defined in this list it will
-                                      be ommitted from the results.  e.g. :code:`.*\.nl` would exclude all .nl domains
+                                      be ommitted from the results.  e.g. :code:`.*\.nl` would exclude all .nl domains.
+                                      Blocked domains explicitly whitelisted using the :doc:`/manual/reporting_unbound_dns`
+                                      page will show up in this list.
+Blocklist Domains                     List of domains to explicitly block. Regular expressions are not supported.
+                                      Passed domains explicitly blocked using the :doc:`/manual/reporting_unbound_dns`
+                                      page will show up in this list.
+Destination Address                   Specify an IP address to return when DNS records are blocked. Can be used to
+                                      redirect such domains to a separate webserver informing the user that the
+                                      content has been blocked. The default is 0.0.0.0. Any value in this field
+                                      is skipped if "Return NXDOMAIN" is checked.
+Return NXDOMAIN                       Instead of returning the "Destination Address", return the DNS return code
+                                      "NXDOMAIN". This is useful in cases where devices cannot cope
+                                      with the 0.0.0.0 destination address, such as certain Apple devices.
 ====================================  ===============================================================================
 
 .. Note::
 
-    As of 22.7.9, the blocklist implementation has internally been decoupled from Unbound, this means that
-    an apply from the blocklist settings will not have effect immediately, rather it might take some time for Unbound
-    to pick up on it. This prevents the need for excessive restarts of Unbound.
+    Applying the blocklist settings will not restart Unbound, rather it will signal to Unbound to dynamically
+    process the blocklists as soon as they're downloaded. There may be up to a minute of delay before Unbound
+    has loaded everything. During this time Unbound will still be just as responsive.
 
 When any of the DNSBL types are used, the content will be fetched directly from its original source, to
 get a better understanding of the source of the lists we compiled the list below containing references to
