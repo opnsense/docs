@@ -1,0 +1,325 @@
+===========================================================================================
+23.1  "Quintessential Quail" Series
+===========================================================================================
+
+
+
+For more than 8 years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+23.1, nicknamed "Quintessential Quail", features Unbound DNS statistics with
+a blocklist rewrite in Python, improved WAN SLAAC operability, firewall
+alias BGP ASN type support, PHP 8.1, assorted FreeBSD networking updates,
+MVC/API pages for packet capture/virtual IPs/IPsec connection management,
+IPsec configuration file migration to swanctl.conf, new sslh plugin, ddclient
+custom backend support (including Azure), WireGuard kernel module plugin
+variant as the new default plus much more.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/23.1/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/23.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/23.1/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/23.1/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/23.1/
+* Full mirror list: https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+23.1 (January 26, 2023)
+--------------------------------------------------------------------------
+
+
+For more than 8 years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+23.1, nicknamed "Quintessential Quail", features Unbound DNS statistics with
+a blocklist rewrite in Python, improved WAN SLAAC operability, firewall
+alias BGP ASN type support, PHP 8.1, assorted FreeBSD networking updates,
+MVC/API pages for packet capture/virtual IPs/IPsec connection management,
+IPsec configuration file migration to swanctl.conf, new sslh plugin, ddclient
+custom backend support (including Azure), WireGuard kernel module plugin
+variant as the new default plus much more.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/23.1/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/23.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/23.1/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/23.1/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/23.1/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes against 22.7.11:
+
+* system: replaced log_error() use with log_msg() and adjusted logging levels accordingly
+* system: introduced a service boot log
+* system: the LibreSSL flavour has been discontinued
+* system: simplify gateway monitoring setup code
+* system: add option to skip gateway monitor host route
+* system: populate /etc/hosts file with IPv6 addresses too
+* system: simplify and guard host route creation
+* system: merge system_staticroutes_configure() into system_routing_configure()
+* system: do not yield process after calling shutdown command
+* system: apply tunables during late boot in case a module was loaded depending on them to be set to a specific value
+* system: show size of ZFS ARC (adaptive replacement cache) in system widget
+* system: introduce support tier annotations for core and plugins `[2] <https://docs.opnsense.org/support.html>`__ 
+* system: add cron tasks for scrubbing and trimming ZFS pools (contributed by Iain Henderson)
+* system: fix 6rd/6to4 gateway interface detection (contributed by Frans J Elliott)
+* reporting: add Unbound DNS statistics frontend including client drill-down
+* interfaces: heavy cleanup of the wireless device integration
+* interfaces: use 802.1ad protocol for stacked VLAN parent (QinQ)
+* interfaces: GIF and GRE now support subnet-based IPv6 configurations instead of always falling back to a point-to-point (/128) setup
+* interfaces: GIF and GRE now disable IPv6 on IPv4 tunnels (contributed by Maurice Walker)
+* interfaces: add isolated PPPoEv6 mode to selectively enable IPv6 CP negotiation and turn it off when no IPv6 mode is set
+* interfaces: add support for SLAAC WAN interfaces without DHCPv6 (contributed by Maurice Walker)
+* interfaces: register LAGG, PPP, VLAN and wireless devices as plugins
+* interfaces: simplified get_real_interface() function
+* interfaces: removed obsolete "defaultgw" files
+* interfaces: simplified rc.linkup script
+* interfaces: improve IP address cache behaviour in rc.newwanip(v6) scripts
+* interfaces: converted virtual IPs to MVC/API
+* interfaces: add MAC filtering to packet capture
+* interfaces: convert ARP/NDP pages to server-side searchable variant
+* interfaces: create null route for DHCPv6 delegated prefix
+* interfaces: tighten the concept of hardware interfaces and pull supported plugin devices into assignments page automatically
+* firewall: remove deprecated "Dynamic state reset" mechanic
+* firewall: invalidate port forward rule entry when no target is specified
+* firewall: hide deprecated source OS rule setting under advanced
+* firewall: add group option to prevent grouping in interfaces menu
+* firewall: safeguard against missing name from the alias API call
+* intrusion detection: keep grid to prevent widgets being removed
+* intrusion detection: reload grid after log drop (contributed by kulikov-a)
+* intrusion detection: add verbose logging mode selector
+* ipsec: disable charon.install_routes completely in case upstream would implement it for FreeBSD later on
+* ipsec: move user PSK (pre-shared key) and static PSK items to new MVC/API implementation
+* ipsec: migrate existing configuration from ipsec.conf to swanctl.conf
+* ipsec: add a new independent connections MVC/API component to manage IPsec in a layout matching swanctl.conf syntax more closely
+* ipsec: rewrote lease status page in MVC/API
+* ipsec: add configurable "unique" setting to phase 1
+* ipsec: missing correct phase 1 to collect "Network List" option
+* monit: support start timeout setting (contributed by spoutin)
+* openvpn: add unique daemon name to each instance
+* unbound: add statistics database backend
+* unbound: add exact domain blocking
+* mvc: call plugins_interfaces() optionally on service reconfigure
+* mvc: match UUID for multiple values (contributed by kulikov-a)
+* mvc: convert setBase() to an upsert operation
+* mvc: change default sorting to case-insensitive
+* mvc: add TextField tests (contributed by agh1467)
+* mvc: implement required getRealInterface() variant
+* ui: assorted improvements in bootgrid and form controls
+* ui: switch to pure JSON data in bootgrids
+* plugins: os-bind 1.25 `[3] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/bind/pkg-descr>`__ 
+* plugins: os-ddclient 1.11 `[4] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-dyndns end of life note moves to 23.7
+* plugins: os-freeradius 1.9.22 `[5] <https://github.com/opnsense/plugins/blob/stable/23.1/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.32 `[6] <https://github.com/opnsense/plugins/blob/stable/23.1/net/frr/pkg-descr>`__ 
+* plugins: os-haproxy 4.0 `[7] <https://github.com/opnsense/plugins/blob/stable/23.1/net/haproxy/pkg-descr>`__ 
+* plugins: os-puppet-agent 1.1 `[8] <https://github.com/opnsense/plugins/blob/stable/23.1/sysutils/puppet-agent/pkg-descr>`__ 
+* plugins: os-sslh 1.0 `[9] <https://github.com/opnsense/plugins/blob/stable/23.1/net/sslh/pkg-descr>`__  (contributed by agh1467)
+* plugins: os-theme-cicada 1.32 (contributed by Team Rebellion)
+* plugins: os-upnp 1.5 `[10] <https://github.com/opnsense/plugins/blob/stable/23.1/net/upnp/pkg-descr>`__ 
+* plugins: os-wireguard switches to kernel module with a separate os-wireguard-go variant available for installation to keep the old behaviour
+* src: assorted FreeBSD 13 stable fixes for e.g. bpf, bridge, bsdinstall ifconfig, iflib, ipfw, ipsec, lagg, netmap, pf, route and vlan components
+* ports: php 8.1.14 `[11] <https://www.php.net/ChangeLog-8.php#8.1.14>`__ 
+* ports: sudo 1.9.12p2 `[12] <https://www.sudo.ws/stable.html#1.9.12p2>`__ 
+
+Migration notes, known issues and limitations:
+
+* LibreSSL flavour has been discontinued.  Switch to OpenSSL flavour to proceed with the upgrade.
+* StrongSwan IPsec configuration now uses the preferred swanctl.conf instead of the deprecated ipsec.conf which could lead to connectivity issues in ambiguous cases.  Subtle bugs cannot be ruled out as well so please raise an issue on GitHub to be able to investigate each case.
+* The new IPsec connections pages and API create an independent set of connections following the design of swanctl.conf.  Legacy tunnel settings cannot be managed from the API and are not migrated.
+
+The public key for the 23.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA4J0k7cPtunUYiR4vbRof
+    # AiNTnkkByaWpjTeKneR/CBAaImUxpED5EnFprwM0mm4BX3Vqkf1KYQtRSawNxeXz
+    # NiPT5Ykv0Vus0tYafBzIPsOCdUz/gtuJmtjih0uNvFSdwDRNE42MpX2RFeTm652H
+    # fNE5Rxv23liLYdm3RNDFcM7tJEMs+zr01Lrn3McDv4OUACl3YTwFKS1BJGkBqpDI
+    # gX1HsJMz934zNItrLxj6B2tDIR4oGrqowzW+1owT4+a8EoaimY48RAb8AUWezAZu
+    # tQcGQ0wuZ8qy2WClYvrogsmAEUpfv1Y0YcSfpdxopOx4KyE0KEzAooRF95iFLu94
+    # PODk1oPTr0N9qXn7XsLkpaufk+EpNecZSvbqrj3IWMyCLEBO60YuFpcFFI6SVJBC
+    # i5OG7JVQaE8hu4CY50tMOO0M54umM8lPIOW8AuIH2PlmQWJ4tPb7j8HHnV1cM1Sf
+    # Ha/EAJQlKEEyj4hbzSb6aKATv++qvh4jwgADsTsDtbCrtxrcBV7i+iLUM7DdxrPZ
+    # QnLELdJPjyFxtClzi4Tf1svrF5K6NGd/nJQ1pLSkM64dKPA0iTiMMzjQMHnN8++G
+    # UdhRzswRZ/BtB8ha1ZRRvnEHe+tcEtsXFZZSTgcR60lXlZzPY/0h+xfbgOApYlqq
+    # MIMJsdvZkuxYrGQ5eL2nk0UCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-23.1-OpenSSL-dvd-amd64.iso.bz2) = f25c10113ef1ea13c031fc6102f8e6caf73a7296b12bcc287670026cab29c7c7
+    # SHA256 (OPNsense-23.1-OpenSSL-nano-amd64.img.bz2) = 74ec824288adde409074f6855cb0110b860d0b28c33fbd6a30f12473a5e97d54
+    # SHA256 (OPNsense-23.1-OpenSSL-serial-amd64.img.bz2) = 2b0ea23de4d09eed952f074e561d55b06b5d323bf9d68a2eae34c3118c304318
+    # SHA256 (OPNsense-23.1-OpenSSL-vga-amd64.img.bz2) = 13b9f31651aa165862965566238eaecf66563a3b037fb7f8912a6d0440170bdb
+
+--------------------------------------------------------------------------
+23.1.r2 (January 19, 2023)
+--------------------------------------------------------------------------
+
+
+Only a small number of fixes and the usual third party updates.
+
+Still on track for January 26.  See you then...
+
+Here are the full patch notes:
+
+* system: introduce support tier annotations for core and plugins
+* system: add cron tasks for scrubbing and trimming ZFS pools (contributed by Iain Henderson)
+* system: fix 6rd/6to4 gateway interface detection (contributed by Frans J Elliott)
+* interfaces: further simplify get_real_interface()
+* interfaces: correct PPPoEv6 device lookup
+* reporting: add Unbound DNS drill-down for client graph
+* mvc: implement required getRealInterface() variant
+* plugins: os-haproxy 4.0 `[1] <https://github.com/opnsense/plugins/blob/stable/23.1/net/haproxy/pkg-descr>`__ 
+* ports: curl 7.87.0 `[2] <https://curl.se/changes.html#7_87_0>`__ 
+* ports: nss 3.87 `[3] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_87.html>`__ 
+* ports: pcre 10.42 `[4] <https://www.pcre.org/changelog.txt>`__ 
+* ports: phalcon 5.1.4 `[5] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.4>`__ 
+* ports: php 8.1.14 `[6] <https://www.php.net/ChangeLog-8.php#8.1.14>`__ 
+* ports: strongswan 5.9.9 `[7] <https://github.com/strongswan/strongswan/releases/tag/5.9.9>`__ 
+* ports: unbound 1.17.1 `[8] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-17-1>`__ 
+
+
+
+--------------------------------------------------------------------------
+23.1.r1 (January 13, 2023)
+--------------------------------------------------------------------------
+
+
+For more than 8 years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+We thank all of you for helping test, shape and contribute to the project!
+We know it would not be the same without you.  <3
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/23.1/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/23.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/23.1/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/23.1/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/23.1/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes against 22.7.10:
+
+* system: replaced log_error() use with log_msg() and adjusted logging levels accordingly
+* system: introduced a service boot log
+* system: the LibreSSL flavour has been discontinued
+* system: simplify gateway monitoring setup code
+* system: add option to skip gateway monitor host route
+* system: populate /etc/hosts file with IPv6 addresses too
+* system: simplify host route creation
+* system: merge system_staticroutes_configure() into system_routing_configure()
+* system: do not yield process after calling shutdown command
+* system: apply tunables during late boot in case a module was loaded depending on them to be set to a specific value
+* system: show size of ZFS ARC (adaptive replacement cache) in system widget
+* interfaces: heavy cleanup of the wireless device integration
+* interfaces: use 802.1ad protocol for stacked VLAN parent (QinQ)
+* interfaces: GIF and GRE now support subnet-based IPv6 configurations instead of always falling back to a point-to-point (/128) setup
+* interfaces: GIF and GRE now disable IPv6 on IPv4 tunnels (contributed by Maurice Walker)
+* interfaces: add PPPoEv6 mode to prevent IPv6 CP negotiation over PPPoE in other IPv6 modes
+* interfaces: add support for SLAAC WAN interfaces without DHCPv6 (contributed by Maurice Walker)
+* interfaces: register LAGG, PPP, VLAN and wireless devices as plugins
+* interfaces: simplified get_real_interface() function
+* interfaces: removed obsolete "defaultgw" files
+* interfaces: simplified rc.linkup script
+* interfaces: improve IP address cache behaviour in rc.newwanip(v6) scripts
+* interfaces: converted virtual IPs to MVC/API
+* interfaces: add MAC filtering to packet capture
+* interfaces: convert ARP/NDP pages to server-side searchable variant
+* interfaces: create null route for DHCPv6 delegated prefix
+* interfaces: tighten the concept of hardware interfaces and pull supported plugin devices into assignments page automatically
+* firewall: remove deprecated "Dynamic state reset" mechanic
+* firewall: invalidate port forward rule entry when no target is specified
+* firewall: show automated "port 0" rule as actual port "0" on PHP 8
+* firewall: hide deprecated source OS rule setting under advanced
+* reporting: fix incompatible regex syntax in FreeBSD 13.1 for firewall state health statistics
+* intrusion detection: keep grid to prevent widgets being removed
+* intrusion detection: reload grid after log drop (contributed by kulikov-a)
+* ipsec: disable charon.install_routes completely in case upstream would implement it for FreeBSD later on
+* ipsec: move user PSK (pre-shared key) and static PSK items to new MVC/API implementation
+* ipsec: migrate existing configuration from ipsec.conf to swanctl.conf
+* ipsec: add a new independent connections MVC/API component to manage IPsec in a layout matching swanctl.conf syntax more closely
+* ipsec: rewrote lease status page in MVC/API
+* ipsec: add configurable "unique" setting to phase 1
+* monit: support start timeout setting (contributed by spoutin)
+* openvpn: add unique daemon name to each instance
+* unbound: add DNS statistics collector and reporting frontend
+* unbound: safeguard retrieval of blocklist shortcode
+* unbound: add exact domain blocking
+* mvc: call plugins_interfaces() optionally on service reconfigure
+* mvc: match UUID for multiple values (contributed by kulikov-a)
+* mvc: convert setBase() to an upsert operation
+* mvc: change default sorting to case-insensitive
+* mvc: fix IntegerField minimum value (contributed by xbb)
+* mvc: add TextField tests (contributed by agh1467)
+* ui: assorted improvements in bootgrid and form controls
+* ui: switch to pure JSON data in bootgrids
+* plugins: acme-client 3.15 `[2] <https://github.com/opnsense/plugins/blob/stable/23.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-bind 1.25 `[3] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/bind/pkg-descr>`__ 
+* plugins: os-ddclient 1.11 `[4] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-dyndns end of life note moves to 23.7
+* plugins: os-freeradius 1.9.22 `[5] <https://github.com/opnsense/plugins/blob/stable/23.1/net/freeradius/pkg-descr>`__ 
+* plugins: os-upnp 1.5 `[6] <https://github.com/opnsense/plugins/blob/stable/23.1/net/upnp/pkg-descr>`__ 
+* plugins: os-stunnel fixes missing include in certificate script
+* plugins: os-wireguard switches to kernel module with a separate os-wireguard-go variant available for installation to keep the old behaviour
+* plugins: os-sslh 1.0 `[7] <https://github.com/opnsense/plugins/blob/stable/23.1/net/sslh/pkg-descr>`__  (contributed by agh1467)
+* src: assorted FreeBSD 13 stable fixes for e.g. bpf, bridge, bsdinstall ifconfig, iflib, ipfw, ipsec, lagg, netmap, pf, route and vlan components
+* ports: php 8.1.13 `[8] <https://www.php.net/ChangeLog-8.php#8.1.13>`__ 
+* ports: sqlite 3.40.1 `[9] <https://sqlite.org/releaselog/3_40_1.html>`__ 
+
+Migration notes, known issues and limitations:
+
+* LibreSSL flavour has been discontinued.  Switch to OpenSSL flavour to proceed with the upgrade.
+* StrongSwan IPsec configuration now uses the preferred swanctl.conf instead of the deprecated ipsec.conf which could lead to connectivity issues in ambiguous cases.  Subtle bugs cannot be ruled out as well so please raise an issue on GitHub to be able to investigate each case.
+* The new IPsec connections pages and API create an independent set of connections following the design of swanctl.conf.  Legacy tunnel settings cannot be managed from the API and are not migrated.
+
+The public key for the 23.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA4J0k7cPtunUYiR4vbRof
+    # AiNTnkkByaWpjTeKneR/CBAaImUxpED5EnFprwM0mm4BX3Vqkf1KYQtRSawNxeXz
+    # NiPT5Ykv0Vus0tYafBzIPsOCdUz/gtuJmtjih0uNvFSdwDRNE42MpX2RFeTm652H
+    # fNE5Rxv23liLYdm3RNDFcM7tJEMs+zr01Lrn3McDv4OUACl3YTwFKS1BJGkBqpDI
+    # gX1HsJMz934zNItrLxj6B2tDIR4oGrqowzW+1owT4+a8EoaimY48RAb8AUWezAZu
+    # tQcGQ0wuZ8qy2WClYvrogsmAEUpfv1Y0YcSfpdxopOx4KyE0KEzAooRF95iFLu94
+    # PODk1oPTr0N9qXn7XsLkpaufk+EpNecZSvbqrj3IWMyCLEBO60YuFpcFFI6SVJBC
+    # i5OG7JVQaE8hu4CY50tMOO0M54umM8lPIOW8AuIH2PlmQWJ4tPb7j8HHnV1cM1Sf
+    # Ha/EAJQlKEEyj4hbzSb6aKATv++qvh4jwgADsTsDtbCrtxrcBV7i+iLUM7DdxrPZ
+    # QnLELdJPjyFxtClzi4Tf1svrF5K6NGd/nJQ1pLSkM64dKPA0iTiMMzjQMHnN8++G
+    # UdhRzswRZ/BtB8ha1ZRRvnEHe+tcEtsXFZZSTgcR60lXlZzPY/0h+xfbgOApYlqq
+    # MIMJsdvZkuxYrGQ5eL2nk0UCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+Please let us know about your experience!
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-23.1.r1-OpenSSL-dvd-amd64.iso.bz2) = ed7d61d0107536c3095526d74c9d4e3b44cb86a7d8896bb51d65eccfd0a2056d
+    # SHA256 (OPNsense-23.1.r1-OpenSSL-nano-amd64.img.bz2) = 66269b2eb434476d437cbf705af25b938e5d17436727eee565dd5e88fe8e6247
+    # SHA256 (OPNsense-23.1.r1-OpenSSL-serial-amd64.img.bz2) = ca6676ae825241190e63b4fbedd8e727b28011fa484c35c1ef1e68e0355b1f4b
+    # SHA256 (OPNsense-23.1.r1-OpenSSL-vga-amd64.img.bz2) = 5a4a8ec5f248484890d569b89f2fd1e29470bb95996c48def20686648e279f77
