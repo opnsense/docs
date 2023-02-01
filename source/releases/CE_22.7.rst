@@ -57,7 +57,7 @@ Here are the full patch notes:
 * reporting: fix incompatible regex syntax in FreeBSD 13.1 for firewall state health statistics
 * unbound: safeguard retrieval of blocklist shortcode
 * mvc: fix IntegerField minimum value (contributed by xbb)
-* plugins: acme-client 3.15 `[2] <https://github.com/opnsense/plugins/blob/stable/22.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-acme-client 3.15 `[2] <https://github.com/opnsense/plugins/blob/stable/22.7/security/acme-client/pkg-descr>`__ 
 * plugins: os-stunnel fixes missing include in certificate script
 * ports: curl 7.87.0 `[3] <https://curl.se/changes.html#7_87_0>`__ 
 * ports: nss 3.87 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_87.html>`__ 
@@ -67,6 +67,10 @@ Here are the full patch notes:
 * ports: sqlite 3.40.1 `[8] <https://sqlite.org/releaselog/3_40_1.html>`__ 
 * ports: strongswan 5.9.9 `[9] <https://github.com/strongswan/strongswan/releases/tag/5.9.9>`__ 
 * ports: unbound 1.17.1 `[10] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-17-1>`__ 
+
+A hotfix release was issued as 22.7.11_1:
+
+* firmware: enable upgrade path to 23.1 (OpenSSL only)
 
 
 

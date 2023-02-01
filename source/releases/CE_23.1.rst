@@ -133,6 +133,21 @@ Here are the full patch notes against 22.7.11:
 * ports: php 8.1.14 `[11] <https://www.php.net/ChangeLog-8.php#8.1.14>`__ 
 * ports: sudo 1.9.12p2 `[12] <https://www.sudo.ws/stable.html#1.9.12p2>`__ 
 
+A hotfix release was issued as 23.1_6:
+
+* system: incorrect link to CARP status page on dashboard widget
+* reporting: bail DNS resolve in traffic graphs when resolver is not configured
+* captive portal: for static MAC assignments make sure that the IP address actually changed before updating it
+* ipsec: missing a bracket for agressive mode selection
+* ipsec: mute a spurious boot warning
+* ipsec: myid may be be optional
+* plugins: os-bind fix plugin directory path
+* plugins: os-ddclient minor PHP fix
+* plugins: os-frr allow restart via cron
+* plugins: os-nut wrong user for latest port
+* plugins: os-upnp typo in log level
+* plugins: os-wireguard service widget fix
+
 Migration notes, known issues and limitations:
 
 * LibreSSL flavour has been discontinued.  Switch to OpenSSL flavour to proceed with the upgrade.
@@ -275,7 +290,7 @@ Here are the full patch notes against 22.7.10:
 * mvc: add TextField tests (contributed by agh1467)
 * ui: assorted improvements in bootgrid and form controls
 * ui: switch to pure JSON data in bootgrids
-* plugins: acme-client 3.15 `[2] <https://github.com/opnsense/plugins/blob/stable/23.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-acme-client 3.15 `[2] <https://github.com/opnsense/plugins/blob/stable/23.1/security/acme-client/pkg-descr>`__ 
 * plugins: os-bind 1.25 `[3] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/bind/pkg-descr>`__ 
 * plugins: os-ddclient 1.11 `[4] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/ddclient/pkg-descr>`__ 
 * plugins: os-dyndns end of life note moves to 23.7
