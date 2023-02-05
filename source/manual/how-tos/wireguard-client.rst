@@ -129,7 +129,7 @@ Step 5(a) - Assign an interface to WireGuard (recommended)
 
 .. Tip::
 
-    If Unbound DNS is configured with all interfaces registered it requires a reload of Unbound DNS to get the new Wireguard interface added. This is necessary get DNS working trough the VPN tunnel. 
+    If Unbound DNS is configured with all interfaces registered it requires a reload of Unbound DNS to get the new Wireguard interface added. This is necessary to get DNS working through the VPN tunnel.
 
 Step 5(b) - Create an outbound NAT rule
 ---------------------------------------
