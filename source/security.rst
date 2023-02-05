@@ -11,7 +11,7 @@ Intro
 
 As your trusted opensource security product, we do care a lot about security and with our regular release schedule we
 try to stay ahead of possible incidents. Even though we are cautious and stay informed, sometimes issues
-do ocure, in which case it's good to know what to do.
+do occur, in which case it's good to know what to do.
 
 
 ------------------------------------------------------------
