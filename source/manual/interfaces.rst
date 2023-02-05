@@ -20,7 +20,7 @@ port 1. Assignments can be changed by going to :menuselection:`Interfaces --> As
 interfaces, with the interface name on the left and the physical port selected in the dropdown. New ones can be
 created here as well, using a non-occupied physical port.
 
-When creating a new interfaces or changing an existing one (which can be done by clicking its name in the overview),
+When creating a new interface or changing an existing one (which can be done by clicking its name in the overview),
 the following options are available:
 
 =========================== ============================================================================================================================================================

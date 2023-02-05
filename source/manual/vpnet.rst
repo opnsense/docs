@@ -323,14 +323,14 @@ placing files with a :code:`.conf` extension in the directory :code:`/usr/local/
 OpenVPN (SSL VPN)
 --------------------------
 
-One of the main advantages of OpenVPN in comparison to IPsec is the ease of configuration, there are less settings involved
+One of the main advantages of OpenVPN in comparison to IPsec is the ease of configuration, there are fewer settings involved
 and it's quite simple to export settings for clients.
 
 .................................
 Site 2 Site
 .................................
 
-OpenVPN on OPNsense can also be used to create a tunnel between two locations, similar to what IPsec offers, generally
+OpenVPN on OPNsense can also be used to create a tunnel between two locations, similar to what IPsec offers. Generally
 the performance of IPsec is higher which usually makes this a less common choice.
 
 .. toctree::

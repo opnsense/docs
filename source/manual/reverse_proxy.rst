@@ -133,7 +133,7 @@ redirects, manipulation of downloaded files like executables).
 Modern clients and servers should support TLS 1.2 and TLS 1.3. All others should
 be disabled.
 
-TLS - Diffenent ways to use it
+TLS - Different ways to use it
 ==============================
 
 1) Breaking up the connection on the firewall (down- and upstream are using TLS)

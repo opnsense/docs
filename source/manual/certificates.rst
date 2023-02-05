@@ -8,6 +8,7 @@ avoiding the need to use the ``openssl`` command line tool. Certificates in OPNs
 :menuselection:`System --> Trust --> Certificates`.
 
 Examples of OPNsense components that use certificates:
+
 * OpenVPN
 * IPsec
 * Captive Portal
