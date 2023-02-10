@@ -113,7 +113,7 @@ share the same syntax:
 - Ranges can be specified using a dash: ``4-9``
 
 Available cron jobs are registered in the backend to prevent command injection and privilege escalation. These can be found under
-`Command` and may allow an additional `Parameter`. Restart and reload actions are self-explanatory. They take no parameters are
+`Command` and may allow an additional `Parameter`. Restart and reload actions are self-explanatory. They take no parameters and
 will restart (usually slower stop and start of a process) or reload (usually a faster SIGHUP) the respective service. The availability
 of restart and reload is subject to their respective services as not all software will support a reload for implementational reasons.
 
