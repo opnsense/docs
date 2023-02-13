@@ -41,7 +41,6 @@ In :menuselection:`Interfaces --> [WAN]` and set **IPv6 Configuration Type** to 
 - Use IPv4 connectivity
 
 Set the prefix size to the one your provider delegates, mostly /56 or 64, sometimes /48.
-If you experience problems with the 24h disconnect, it may help to set **Prevent Release** in section :menuselection:`Interfaces --> Settings`.
 
 Then change to :menuselection:`Interfaces --> [LAN]` and set **IPv6 Configuration Type** to **Track Interface**.
 At the bottom in section **Track IPv6 Interface** choose **IPv6 Interface** as WAN and for
@@ -49,3 +48,6 @@ At the bottom in section **Track IPv6 Interface** choose **IPv6 Interface** as W
 
 Hit Apply and disable/enable the NICs of your internal systems. Depending on the system
 and vendor, also a reboot could be required.
+
+If you experience problems with the 24h disconnect disrupting connectivity, it may help to set **Prevent Release**
+in section :menuselection:`Interfaces --> Settings`.
