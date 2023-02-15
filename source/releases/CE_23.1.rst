@@ -30,6 +30,99 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.1.1 (February 15, 2023)
+--------------------------------------------------------------------------
+
+
+Apart from security updates for operating system and third party software
+this mainly fixes issues with the initial 23.1 release.  IPsec and Unbound
+components in particular receive a number of improvements being the more
+prominent areas of work for this series.  Unbound also gained a SafeSearch
+option and the new reporting database CPU usage should be much lower and
+easier to use.
+
+Overall we are happy with how the major release turned out and look forward
+to further fixes in e.g. Netmap framework including Suricata changes for
+multi-threading support which has been in the works for a long time.  OpenVPN
+2.6 update and related changes are also pending at the moment.
+
+The roadmap for 23.7 will be published soon and will again include a number
+of MVC/API conversions for static components.  Statistics do indicate that we
+are over 60% done with converting the code base to a modern framework as
+compared to early 2015 which is now already over 8 years ago!
+
+Here are the full patch notes:
+
+* system: replace single exec_command() with new shell_safe() wrapper
+* system: fix assorted PHP 8.2 deprecation notes
+* system: remove overreaching "Reconfigure a plugin facility" cron job and backend command that has no visible users
+* interfaces: fix VLAN rename after protocol addition in 23.1
+* interfaces: fix VLAN missing a config lock on delete
+* interfaces: make description field show for all types of VIP (contributed by FingerlessGloves)
+* interfaces: allow VHID reuse as it was before 23.1
+* firewall: prevent possible infinite loop in alias parsing (contributed by kulikov-a)
+* firewall: do not calculate local port range for alias (contributed by kulikov-a)
+* firewall: update validation of alias names to be slightly more restrictive
+* firewall: safeguard download_geolite() and log errors
+* firewall: do not switch gateway on bootup
+* captive portal: enforce a database repair during operation if necessary
+* firmware: move single-call function reporter page
+* intrusion detection: properly reset metadata response when no metadata is found
+* ipsec: allow "@" character in eap_id fields for new connections
+* ipsec: missing remapping pool UUID to name for new connections
+* ipsec: change status column sizing and hide local/remote auth by default
+* ipsec: fix username parsing in lease status
+* ipsec: refactor widget to use new data format
+* ipsec: migrate duplicated cron job
+* ipsec: faulty unique constraint in pre-shared keys
+* ipsec: fix eap_id placement for eap-mschapv2
+* unbound: simplify logger logic for required queries
+* unbound: add SafeSearch option to blocklists
+* unbound: match white/blocklist action exactly from reporting page
+* unbound: always prioritize whitelists over blocklists
+* unbound: various UX improvements in reporting page
+* unbound: add serve-expired, log-servfail, log-local-actions and val-log-level advanced settings
+* unbound: drop unnecessary index from reporting database and other optimizations to lower CPU usage
+* unbound: add HTTPS record type to reporting
+* unbound: remember reporting page logarithmic setting
+* unbound: missing global so that cache is never flushed when requested
+* mvc: cleanse $record input in searchRecordsetBase() before usage
+* plugins: os-haproxy 4.1 `[1] <https://github.com/opnsense/plugins/blob/stable/23.1/net/haproxy/pkg-descr>`__ 
+* plugins: os-openconnect 1.4.4 `[2] <https://github.com/opnsense/plugins/blob/stable/23.1/security/openconnect/pkg-descr>`__ 
+* plugins: os-qemu-guest-agent 1.2 `[3] <https://github.com/opnsense/plugins/blob/stable/23.1/emulators/qemu-guest-agent/pkg-descr>`__ 
+* plugins: os-tayga fixes MVC interface registration
+* plugins: os-wireguard fixes MVC interface registration
+* src: geli: split the initalization of HMAC `[4] <FREEBSD:FreeBSD-SA-23:01.geli>`__ 
+* src: fix ena driver crash after reset in 7th gen AWS instance types `[5] <FREEBSD:FreeBSD-EN-23:03.ena>`__ 
+* src: fix sdhci broken write-protect settings `[6] <FREEBSD:FreeBSD-EN-23:02.sdhci>`__ 
+* src: import tzdata 2022g `[7] <FREEBSD:FreeBSD-EN-23:01.tzdata>`__ 
+* src: ipsec: clear pad bytes in PF_KEY messages
+* src: fib_algo: set vnet when destroying algo instance
+* src: if_ipsec: handle situations where there are no policy or SADB entry for if
+* src: if_ipsec: protect against user supplying unknown address family
+* src: if_me: use dedicated network privilege
+* src: vxlan: add support for socket ioctls SIOC[SG]TUNFIB
+* src: introduce and use the NET_EPOCH_DRAIN_CALLBACKS() macro
+* src: iflib: Add null check to iflib_stop()
+* src: x86: ignore stepping for APL30 errata
+* src: pfctl: rule.label is a two-dimensional array
+* src: pf: fix syncookies in conjunction with tcp fast port reuse
+* src: pf: fix panic on deferred packets
+* src: ipfw: Add missing 'va' code point name
+* src: netmap: try to count packet drops in emulated mode
+* src: netmap: fix a queue length check in the generic port rx path
+* src: netmap: tell the compiler to avoid reloading ring indices
+* ports: remove GnuTLS workarounds from ports previously required for LibreSSL
+* ports: dnsmasq 2.89 `[8] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: dpinger 3.3 `[9] <https://github.com/dennypage/dpinger/releases/tag/v3.3>`__ 
+* ports: lighttpd 1.4.68 `[10] <https://www.lighttpd.net/2023/1/3/1.4.68/>`__ 
+* ports: openssh-portable 9.1p1 `[11] <https://www.openssh.com/txt/release-9.1>`__ 
+* ports: openssl 1.1.1t `[12] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: php 8.1.15 `[13] <https://www.php.net/ChangeLog-8.php#8.1.15>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.1 (January 26, 2023)
 --------------------------------------------------------------------------
 
