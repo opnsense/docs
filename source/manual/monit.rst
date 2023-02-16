@@ -336,7 +336,7 @@ the UI generated configuration. Multiple configuration files can be placed there
 * It makes sense to check if the configuration file is valid. You can do so by using the following command::
 
    # Run syntax check for the control file
-   monit -t
+   configctl monit check
 
 This is a sample configuration file to customize the limits of the Monit daemon:
 
