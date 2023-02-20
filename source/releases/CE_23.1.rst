@@ -54,7 +54,7 @@ compared to early 2015 which is now already over 8 years ago!
 Here are the full patch notes:
 
 * system: replace single exec_command() with new shell_safe() wrapper
-* system: fix assorted PHP 8.2 deprecation notes
+* system: fix assorted PHP 8.1 deprecation notes
 * system: remove overreaching "Reconfigure a plugin facility" cron job and backend command that has no visible users
 * interfaces: fix VLAN rename after protocol addition in 23.1
 * interfaces: fix VLAN missing a config lock on delete
@@ -119,6 +119,16 @@ Here are the full patch notes:
 * ports: openssh-portable 9.1p1 `[11] <https://www.openssh.com/txt/release-9.1>`__ 
 * ports: openssl 1.1.1t `[12] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: php 8.1.15 `[13] <https://www.php.net/ChangeLog-8.php#8.1.15>`__ 
+
+A hotfix release was issued as 23.1.1_2:
+
+* captive portal: remove mod_evasion use which was discontinued by lighttpd
+* unbound: wait for pipe in logger (contributed by kulikov-a)
+
+Rate limiting was removed from the captive portal which was set to 250
+connections by the same IP to the captive portal itself.  This can be
+easily replaced by a manual firewall rule with advanced options set, e.g.
+"Max established" set to 250 with destination "This Firewall".
 
 
 
