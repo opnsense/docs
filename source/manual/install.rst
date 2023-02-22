@@ -22,15 +22,15 @@ architecture only.
 Embedded vs Full
 ----------------
 
+Since version 15.1.10 (04 May 2015) the option to install an
+`embedded <https://en.wikipedia.org/wiki/Embedded_operating_system>`__
+OPNsense image is also supported.
+
 Full installs can run on `SD memory
 cards <https://en.wikipedia.org/wiki/Secure_Digital>`__, `solid-state
 disks (SSD) <https://en.wikipedia.org/wiki/Solid-state_drive>`__ or
 `hard disk drives
 (HDD) <https://en.wikipedia.org/wiki/Hard_disk_drive>`__.
-
-Since version 15.1.10 (04 May 2015) the option to install an
-`embedded <https://en.wikipedia.org/wiki/Embedded_operating_system>`__
-OPNsense image is also supported.
 
 The main differences between an embedded image and a full image are:
 
@@ -59,105 +59,44 @@ useful for SD memory card installations.
     See the chapter :doc:`Hardware Setup <hardware>` for
     further information on hardware requirements prior to an install.
 
--------------------------
-Download and verification
--------------------------
-
-The OPNsense distribution can be `downloaded <https://opnsense.org/download>`__
-from one of our `mirrors <https://opnsense.org/download>`__.
-
-The OpenSSL tool is used for file verification.
-4 files are needed for verification:
-
-* The bzip compressed ISO file (<filename>.iso.bz2)
-* The SHA-256 checksum file (<filename>.sha256)
-* The signature file (<filename>.sig)
-* The openssl public key (<filename>.pub)
-
-These files can be downloaded from one of the download mirrors. To download them:
-
-1. Go to the OPNSense `download <https://opnsense.org/download>`__ page.
-2. After selecting a mirror, right click the download button and click "open in new tab".
-3. A popup will appear asking if you want to download the image. Say "no" for now.
-4. Remove the file name after the last slash in the URL bar, and press enter. This will take you to the directory listing for that mirror.
-
-I.e. If you wanted to download from the US East Coast mirror:
-
-Opening the link in a new tab would take you to this link:
-
-``mirror.wdc1.us.leaseweb.net/opnsense/releases/22.7/OPNsense-22.7-OpenSSL-dvd-amd64.iso.bz2``
-
-You should take off the file name at the end, like this:
-
-``mirror.wdc1.us.leaseweb.net/opnsense/releases/22.1/``
-
-The OpenSSL public key is required to verify against. This file is also on
-the mirror directory listing page, however you should not trust the copy
-there. Download it, open it up, and verify that the public key matches the
-one from other sources. If it does not, the mirror may have been hacked,
-or you may be the victim of a man-in-the-middle attack. Some other sources
-to get the public key from include:
-
-* https://pkg.opnsense.org/releases/mirror/README
-* https://forum.opnsense.org/index.php?board=11.0
-* https://opnsense.org/blog/
-* https://github.com/opnsense/changelog/tree/master/community
-* https://pkg.opnsense.org (/<FreeBSD version & architecture>/<release version>/sets/changelog.txz) (lands signed and verified in the GUI of the running software)
-
-Note that only release announcements with images (typically all major
-releases) contain the public key. I.e. 22.1 would have a copy of the public
-key in the release announcement, but 22.1.9 would not.
-
-Once you have downloaded all the required files and a copy of the public key,
-and verified that the public key matches the public key from the alternate
-sources listed above, you can be relatively certain that the key has not
-been tampered with. To verify the downloaded image, run the following
-commands (substituting the names in brackets for the files you downloaded):
-
-``openssl base64 -d -in <filename>.sig -out /tmp/image.sig``
-
-``openssl dgst -sha256 -verify <key>.pub -signature /tmp/image.sig <image>.img.bz2``
-
-Make sure to change the "img" to "iso" in the second line if you downloaded
-a different installer type.
-
-If the output of the second command is "Verified OK", your image was verified
-successfully, and you can install it. If it has any other output, you may have
-made an error using the commands, or the image may have been compromised.
-
 ------------------
 Installation Media
 ------------------
 
-Depending on you hardware and use case different installation media are provided:
+Depending on your hardware and use case, different installation options are available:
 
-+--------+---------------------------------------------------+
-|Type    | Description                                       |
-+========+===================================================+
-| dvd    | ISO installer image with live system capabilities |
-|        | running in VGA-only mode with UEFI support        |
-+--------+---------------------------------------------------+
-| vga    | USB installer image with live system capabilities |
-|        | running in VGA-only mode with UEFI support        |
-+--------+---------------------------------------------------+
-| serial | USB installer image with live system capabilities |
-|        | running in serial console (115200) mode only      |
-|        | with UEFI support                                 |
-+--------+---------------------------------------------------+
-| nano   | A preinstalled image for >=4 GB USB sticks,       |
-|        | SD or CF cards for use with embedded devices      |
-|        | running in serial console (115200) mode with      |
-|        | secondary VGA support (no kernel messages though) |
-+--------+---------------------------------------------------+
++--------+---------------------------------------------------+------------+
+| Type   | Description                                       | Image Type |
++========+===================================================+============+
+| dvd    | ISO image boots into a live environment in        | Full       |
+|        | VGA-only mode with UEFI support                   |            |
++--------+---------------------------------------------------+------------+
+| vga    | USB image (.img) boots into a live environment    | Full       |
+|        | in VGA-only mode with UEFI support                |            |
++--------+---------------------------------------------------+------------+
+| serial | USB image boots into live environment running in  | Full       |
+|        | serial console (115200) mode only with            |            |
+|        | UEFI support                                      |            |
++--------+---------------------------------------------------+------------+
+| nano   | Image for preinstalling onto >=4 GB USB drives,   | Embedded   |
+|        | SD, or CF cards for use with embedded devices     |            |
+|        | running in serial console (115200) mode with      |            |
+|        | secondary VGA support (no kernel messages though) |            |
++--------+---------------------------------------------------+------------+
+
+.. Note::
+   All Full Image types can run both **`OPNsense Importer <https://docs.opnsense.org/manual/install.html#opnsense-importer>`** 
+   before booting into the Live environment and also run 
+   **`Installer <https://docs.opnsense.org/manual/install.html#install-to-target-system>`** once booted into the Live environment.
 
 .. Warning::
 
   Flash memory cards will only tolerate a limited number of writes
-  and re-writes. For embedded (nano) versions memory disks for /var and /tmp are
+  and re-writes. For embedded (nano) versions memory disks for **/var** and **/tmp** are
   applied by default to prolong CF (flash) card lifetimes.
 
-  To enable for non embedded versions: Go to :menuselection:`System --> Settings --> Miscellaneous --> Disk / Memory Settings`,
-  change the setting, then reboot. Consider to enable an external syslog server as well.
+  To enable non-embedded versions: Go to :menuselection:`System --> Settings --> Miscellaneous --> Disk / Memory Settings`,
+  change the setting, then reboot. Consider enabling an external syslog server as well.
 
 ------------------------------
 Media Filename Composition
@@ -210,23 +149,71 @@ Media Filename Composition
 
 .. Note::
 
-  **Please** be aware that the latest installation media does not always
-  correspond with the latest released version. OPNsense installation images are
-  provided on a regular basis together with major versions in January and July.
-  More information on our release schedule is available from our package
-  repository, see `README <https://pkg.opnsense.org/releases/mirror/README>`__
+  **Please** be aware that the latest installation media does not always correspond 
+  with the latest released version available. OPNsense installation images are provided 
+  on a scheduled basis with major release versions in January and July. More information 
+  on our release schedule is available from our package repository, see 
+  `README <https://pkg.opnsense.org/releases/mirror/README>`.  You are encourage to updated 
+  OPNsense after installation to be on the latest version available, see 
+  `Update Page <https://docs.opnsense.org/manual/updates.html>`.
 
 
---------------------
-OpenSSL and LibreSSL
---------------------
+-------------------------
+Download and Verification
+-------------------------
 
-OPNsense images are provided based upon `OpenSSL <https://www.openssl.org>`__.
-The `LibreSSL <http://www.libressl.org>`__ flavor can be selected from within
-the GUI (:menuselection:`System --> Firmware --> Settings`). In order to apply your choice an update
-must be performed after save, which can include a reboot of the system.
+The OPNsense distribution can be `downloaded <https://opnsense.org/download>`__
+from one of our `mirrors <https://opnsense.org/download>`__.
 
-.. image:: ./images/firmware_flavour.png
+OpenSSL is used for image file verification.  4 files are needed for verification process:
+
+* The SHA-256 checksum file (<filename>.sha256)
+* The bzip compressed Image file (<filename>.<image>.bz2)
+* The signature file (<filename>.<image>.bz2.sig)
+* The openssl public key (<filename>.pub)
+
+Use one of the OPNsense mirrors to download these files:
+
+1. Go to the bottom of OPNSense `download <https://opnsense.org/download>`__ page.
+2. Click one of the available mirrors closest to your location.
+3. Download one of each file mentioned above for your Image type.
+
+The OpenSSL public key (.pub) is required to verify against.  Although the file is 
+available on the mirror's repository, you should not trust the copy there. Download 
+it, open it up, and verify the public key matches the one from other sources. If it 
+does not, the mirror may have been hacked, or you may be the victim of a man-in-the-middle 
+attack. Some other sources to get the public key from include:
+
+* https://pkg.opnsense.org/releases/mirror/README
+* https://forum.opnsense.org/index.php?board=11.0
+* https://opnsense.org/blog/
+* https://github.com/opnsense/changelog/tree/master/community
+* https://pkg.opnsense.org (/<FreeBSD:<version>:<architecture>/<release version>/sets/changelog.txz)
+
+.. Note:: 
+   Only major release announcements for images contain the public key, and update 
+   release announcements will not. i.e. 22.1 will have a copy of the public key in the release 
+   announcement, but 22.1.9 will not.
+
+Once you download all the required files and verify that the public key matches 
+the public key found in one of the alternate sources listed above, you can be relatively 
+confident that the key has not been tampered with. To verify the downloaded image, run 
+the following commands (substituting the filenames in brackets for the files you downloaded):
+
+``openssl sha256 OPNsense-<filename>.bz2``
+
+Match the checksum command output with the checksum vaule in file OPNsense-<filename>.sha256.  If the 
+checksums don't match, redownload your image file.  If checksums match continue with the verification commands.
+
+``openssl base64 -d -in OPNsense-<filename>.sig -out /tmp/image.sig``
+
+``openssl dgst -sha256 -verify OPNsense-<filename>.pub -signature /tmp/image.sig OPNsense-<filename>.bz2``
+
+
+If the output of the second command is “**Verified OK**”, your image file was verified 
+successfully, and its safe to install from it. Any other outputs, and you may need 
+to check your commands for errors, or the image file may have been compromised.
+
 
 
 -------------------------
@@ -316,14 +303,28 @@ restart the boot procedure.
 
 OPNsense Importer
 -----------------
-All images feature the new "opnsense-importer" utility, which is now invoked
-instead of the early installer. You can stop the automatic timeout by pressing
-any key. Afterwards you will have the opportunity to select a disk to import
-from. If the option times out or the importer is exited without a disk selection,
-the factory defaults will be used for the boot.
+All images have the OPNsense Importer feature that offers great flexibility in 
+recovering failed firewalls quickly or testing new releases with existing 
+configurations without installing. 
 
-The next prompt will be for manual interface selection.
-This step is well-established since OPNsense 15.7 .
+To use OPNsense Importer during the installation boot-up process do the following:
+
+1. You must have a 2nd USB drive formatted with FAT or FAT32 File system.
+   a. Preferable non-bootable USB drive.
+2. Create a **conf** directory on the root of the USB drive
+3. Put an unencrypted backup xml or configuration xml into /conf and rename the file to **config.xml**
+::
+
+      /conf/config.xml
+
+4. Put both the Installation drive and the 2nd USB drive into the system and power up / reboot.  
+5. Boot the system from the OPNsense Installation drive via BIOS or Boot Menu.
+6. Press a key when you see: **“Press any key to start the configuration importer”**
+7. Type the device name of the 2nd USB Drive, e.g. da0 , and press Enter.
+   a. If Importer was successful the boot process will continue to boot into the OPNsense 
+      Live environment using the configuration you provided.
+   b. If unsuccessful importer will error and return you to the device selection prompt. Suggest 
+      repeating steps 1–3 again.
 
 Live environment
 ----------------
