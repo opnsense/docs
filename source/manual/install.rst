@@ -230,17 +230,17 @@ Installation Media
 
 Now that you have downloaded and verified the installation image from above.  You must unpack the 
 image file before you can write the image to disk.  For Unix-like OSes use ``bzip2 -d OPNsense-<filename>.bz2`` 
-command.  For Windows use an application like `7zip<https://www.7-zip.org/download.html>`.  The ``.bz2`` will 
+command.  For Windows use an application like `7zip <https://www.7-zip.org/download.html>`_.  The ``.bz2`` will 
 be removed from the end of the filename after command/applcation completes.
 
 After unpacking the image you can create the installation media. The easiest method to install 
-OPNsense is to use USB "`vga<https://docs.opnsense.org/manual/install.html#installation-media>`" 
+OPNsense is to use USB "`vga <https://docs.opnsense.org/manual/install.html#installation-media>`_" 
 Image. If your target platform has a serial console interface choose the 
-“`serial<https://docs.opnsense.org/manual/install.html#installation-media>`” image. If you 
+“`serial <https://docs.opnsense.org/manual/install.html#installation-media>`_” image. If you 
 need to know more about using the serial console interface, consult the :doc:`serial access how-to<how-tos/serial_access>`.
 
 Write the image to a USB flash drive (>=1 GB) or hard disk, using either dd for Unix-like 
-OSes and for Windows use physdiskwrite or `Etcher<https://www.balena.io/etcher#download-etcher>`.
+OSes and for Windows use physdiskwrite or `Etcher <https://www.balena.io/etcher#download-etcher>`_.
 
 
 **FreeBSD**
@@ -328,31 +328,37 @@ installations/migrations.
 
 For systems that have OPNsense installed, and the configuration is intact.  Here is the process:
 
-1. Boot the system with installation media
-2. Press any key when you see **“Press any key to start the configuration importer”**.  
-   a. If you see OPNsense logo you have past the Importer and will need to reboot.
-3. Type the device name of the existing drive that contains the configuration and press enter.
-   a. If Importer is successful, the boot process will continue into the Live environment using 
+#. Boot the system with installation media
+#. Press any key when you see **“Press any key to start the configuration importer”**.  
+
+  #. If you see OPNsense logo you have past the Importer and will need to reboot.
+  
+#. Type the device name of the existing drive that contains the configuration and press enter.
+
+  #. If Importer is successful, the boot process will continue into the Live environment using 
       the stored configuration on disk.  
-   b. If Importer was unsuccessful you will return to device selection prompt.  Confirm your 
+  #. If Importer was unsuccessful you will return to device selection prompt.  Confirm your 
       device name, or you have a possible drive corruption and may need to restore from backup.
 
 For new installations/migrations the following process to use OPNsense Importer during boot-up:
 
-1. You must have a 2nd USB drive formatted with FAT or FAT32 File system.
-   a. Preferable non-bootable USB drive.
-2. Create a **conf** directory on the root of the USB drive
-3. Place an *unencrypted* <downloaded backup>.xml into /conf and rename the file to **config.xml**
+#. You must have a 2nd USB drive formatted with FAT or FAT32 File system.
+
+  #. Preferable non-bootable USB drive.
+  
+#. Create a **conf** directory on the root of the USB drive
+#. Place an *unencrypted* <downloaded backup>.xml into /conf and rename the file to **config.xml**
 
 ``/conf/config.xml``
 
-4. Put both the Installation drive and the 2nd USB drive into the system and power up / reboot.  
-5. Boot the system from the OPNsense Installation drive via BIOS or Boot Menu.
-6. Press a key when you see: **“Press any key to start the configuration importer”**
-7. Type the device name of the 2nd USB Drive, e.g. da0 , and press Enter.
-   a. If Importer was successful the boot process will continue to boot into the OPNsense 
+#. Put both the Installation drive and the 2nd USB drive into the system and power up / reboot.  
+#. Boot the system from the OPNsense Installation drive via BIOS or Boot Menu.
+#. Press a key when you see: **“Press any key to start the configuration importer”**
+#. Type the device name of the 2nd USB Drive, e.g. da0 , and press Enter.
+
+  #. If Importer was successful the boot process will continue to boot into the OPNsense 
       Live environment using the configuration you provided.
-   b. If unsuccessful importer will error and return you to the device selection prompt. Suggest 
+  #. If unsuccessful importer will error and return you to the device selection prompt. Suggest 
       repeating steps 1–3 again.
 
 Live environment
