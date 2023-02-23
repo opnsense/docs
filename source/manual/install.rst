@@ -15,7 +15,7 @@ Architecture
 ------------
 
 The **software setup** and installation of OPNsense® is available
-for the `x86-64 <https://en.wikipedia.org/wiki/X86-64>`__ bit microprocessor
+for the `x86-64 <https://en.wikipedia.org/wiki/X86-64>`__ microprocessor
 architecture only.
 
 ----------------
@@ -69,7 +69,7 @@ useful for SD memory card installations.
     further information on hardware requirements prior to an install.
 
 ------------------
-Installation Media
+Installation Images
 ------------------
 
 Depending on your hardware and use case, different installation options are available:
@@ -108,7 +108,7 @@ Depending on your hardware and use case, different installation options are avai
   change the setting, then reboot. Consider enabling an external syslog server as well.
 
 ------------------------------
-Media Filename Composition
+Image Filename Composition
 ------------------------------
 .. blockdiag::
 
@@ -211,8 +211,8 @@ the following commands (substituting the filenames in brackets for the files you
 
 ``openssl sha256 OPNsense-<filename>.bz2``
 
-Match the checksum command output with the checksum vaule in file OPNsense-<filename>.sha256.  If the 
-checksums don't match, redownload your image file.  If checksums match continue with the verification commands.
+Match the checksum command output with the checksum vaules in file ``OPNsense-<version>-OpenSSL-checksums-amd64.sha256``.  
+If the checksums don't match, redownload your image file.  If checksums match continue with the verification commands.
 
 ``openssl base64 -d -in OPNsense-<filename>.sig -out /tmp/image.sig``
 
@@ -224,9 +224,67 @@ successfully, and its safe to install from it. Any other outputs, and you may ne
 to check your commands for errors, or the image file may have been compromised.
 
 
+-------------------
+Installation Media
+-------------------
+
+Now that you have downloaded and verified the installation image from above.  You must unpack the 
+image file before you can write the image to disk.  For Unix-like OSes use ``bzip2 -d OPNsense-<filename>.bz2`` 
+command.  For Windows use an application like `7zip<https://www.7-zip.org/download.html>`.  The ``.bz2`` will 
+be removed from the end of the filename after command/applcation completes.
+
+After unpacking the image you can create the installation media. The easiest method to install 
+OPNsense is to use USB "`vga<https://docs.opnsense.org/manual/install.html#installation-media>`" 
+Image. If your target platform has a serial console interface choose the 
+“`serial<https://docs.opnsense.org/manual/install.html#installation-media>`” image. If you 
+need to know more about using the serial console interface, consult the :doc:`serial access how-to<how-tos/serial_access>`.
+
+Write the image to a USB flash drive (>=1 GB) or hard disk, using either dd for Unix-like 
+OSes and for Windows use physdiskwrite or `Etcher<https://www.balena.io/etcher#download-etcher>`.
+
+
+**FreeBSD**
+::
+
+     dd if=OPNsense-##.#.##-[Type]-[Architecture].img of=/dev/daX bs=16k
+
+Where X = the device number of your USB flash drive (check ``dmesg``)
+
+**OpenBSD**
+::
+
+     dd if=OPNsense-##.#.##-[Type]-[Architecture].img of=/dev/rsd6c bs=16k
+
+The device must be the ENTIRE device (in Windows/DOS language: the 'C'
+partition), and a raw I/O device (the 'r' in front of the device "sd6"),
+not a block mode device.
+
+**Linux**
+::
+
+     sudo dd if=OPNsense-##.#.##-[Type]-[Architecture].img of=/dev/sdX bs=16k
+
+where X = the IDE device name of your USB flash drive (check with hdparm -i /dev/sdX)
+(ignore the warning about trailing garbage - it's because of the digital signature)
+
+**macOS**
+::
+
+     sudo dd if=OPNsense-##.#.##-[Type]-[Architecture].img of=/dev/rdiskX bs=64k
+
+where r = raw device, and where X = the disk device number of your CF
+card (check Disk Utility) (ignore the warning about trailing garbage -
+it's because of the digital signature)
+
+**Windows**
+::
+
+     physdiskwrite -u OPNsense-##.#.##-[Type]-[Architecture].img
+
+(use v0.3 or later!)
 
 -------------------------
-Boot preparation
+System Boot Preparation
 -------------------------
 
 After preparing the installation media, we need to make sure we can access the console
@@ -242,65 +300,14 @@ access the boot selection via the system bios. Often there's a (function) key on
 
     Serial connectivity settings for DECXXXX devices can be found  :doc:`here </hardware/serial_connectivity>`
 
--------------------
-Installation Method
--------------------
 
-Download the installation image from one of the mirrors listed on the `OPNsense
-<https://opnsense.org/download/>`__ website.
+-------------------------
+Installation Instructions
+-------------------------
 
-The easiest method of installation is the USB-memstick installer. If
-your target platform has a serial interface choose the "serial" image.
-If you need to know more about using the serial interface,
-consult the :doc:`serial access how-to<how-tos/serial_access>`.
-
-Write the image to a USB flash drive (>=1 GB) or an IDE hard disk,
-either with dd under FreeBSD or under Windows with physdiskwrite
-
-Before writing an (iso) image you need to unpack it first (use bunzip2).
-
-**FreeBSD**
-::
-
-  dd if=OPNsense-##.#.##-[Type]-[Architecture].img of=/dev/daX bs=16k
-
-Where X = the device number of your USB flash drive (check ``dmesg``)
-
-**Linux**
-::
-
-  dd  if=OPNsense-##.#.##-[Type]-[Architecture].img of=/dev/sdX bs=16k
-
-where X = the IDE device name of your USB flash drive (check with hdparm -i /dev/sdX)
-(ignore the warning about trailing garbage - it's because of the digital signature)
-
-**OpenBSD**
-
-::
-
-     dd if=OPNsense-##.#.##-[Type]-[Architecture].img of=/dev/rsd6c bs=16k
-
-The device must be the ENTIRE device (in Windows/DOS language: the 'C'
-partition), and a raw I/O device (the 'r' in front of the device "sd6"),
-not a block mode device.
-
-**macOS**
-
-::
-
-      sudo dd  if=OPNsense-##.#.##-[Type]-[Architecture].img of=/dev/rdiskX bs=64k
-
-where r = raw device, and where X = the disk device number of your CF
-card (check Disk Utility) (ignore the warning about trailing garbage -
-it's because of the digital signature)
-
-**Windows**
-
-::
-
-      physdiskwrite -u OPNsense-##.#.##-[Type]-[Architecture].img
-
-(use v0.3 or later!)
+..
+  Comment: Not sure how rubric:: are used.  I would like to replace Installation Instructions rubric with 
+  section above.  I also don't know how :name: work
 
 .. rubric:: Install Instructions
    :name: install-to-system
@@ -336,9 +343,8 @@ For new installations/migrations the following process to use OPNsense Importer 
    a. Preferable non-bootable USB drive.
 2. Create a **conf** directory on the root of the USB drive
 3. Place an *unencrypted* <downloaded backup>.xml into /conf and rename the file to **config.xml**
-::
 
-      /conf/config.xml
+``/conf/config.xml``
 
 4. Put both the Installation drive and the 2nd USB drive into the system and power up / reboot.  
 5. Boot the system from the OPNsense Installation drive via BIOS or Boot Menu.
