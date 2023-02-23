@@ -22,17 +22,26 @@ architecture only.
 Embedded vs Full
 ----------------
 
-Since version 15.1.10 (04 May 2015) the option to install an
-`embedded <https://en.wikipedia.org/wiki/Embedded_operating_system>`__
-OPNsense image is also supported.
+OPNsense offers two Image Types with all Major releases, Embedded (nano) Image 
+and Full Images.  The Embedded Image is intended for environments where preinstalling 
+the storage media is required due to a lack of local resources on the firewall 
+like storage, and/or console access (VGA/Serial).  The image is tailored to reduce 
+write cycles as well, but the image can be used anywhere.  Another reason for the 
+Embedded Image is to eliminate the need for local console access for installing OPNsense.  
+Installation is managed by prewriting the image to storage, installing the storage, and 
+booting the system.
 
-Full installs can run on `SD memory
-cards <https://en.wikipedia.org/wiki/Secure_Digital>`__, `solid-state
-disks (SSD) <https://en.wikipedia.org/wiki/Solid-state_drive>`__ or
-`hard disk drives
+Full Images provide booting and installation tools like OPNsense Importer, Live Environment, 
+and/or Installer.  Full Images are released to support different console/hardware installation 
+requirements.  
+
+Both image types can be installed and run from virtual disks (VM), `SD memory
+cards <https://en.wikipedia.org/wiki/Secure_Digital>`__, 
+USB disks, `solid-state
+disks (SSD) <https://en.wikipedia.org/wiki/Solid-state_drive>`__, or `hard disk drives
 (HDD) <https://en.wikipedia.org/wiki/Hard_disk_drive>`__.
 
-The main differences between an embedded image and a full image are:
+The main differences between an Embedded (nano) image and a Full images are:
 
 +-----------------------+-----------------------+
 | Embedded              | Full                  |
@@ -50,7 +59,7 @@ The main differences between an embedded image and a full image are:
 +-----------------------+-----------------------+
 
 
-Embedded images (nano) store logging and cache data in memory only, while full versions
+Embedded image (nano) store logging and cache data in memory only, while Full versions
 will keep the data stored on the local drive. A full version can mimic the
 behavior of an embedded version by enabling RAM disks, this is especially
 useful for SD memory card installations.
@@ -92,7 +101,7 @@ Depending on your hardware and use case, different installation options are avai
 .. Warning::
 
   Flash memory cards will only tolerate a limited number of writes
-  and re-writes. For embedded (nano) versions memory disks for **/var** and **/tmp** are
+  and re-writes. For embedded (nano) versions memory disks for **/var/log** and **/tmp** are
   applied by default to prolong CF (flash) card lifetimes.
 
   To enable non-embedded versions: Go to :menuselection:`System --> Settings --> Miscellaneous --> Disk / Memory Settings`,
@@ -303,16 +312,30 @@ restart the boot procedure.
 
 OPNsense Importer
 -----------------
-All images have the OPNsense Importer feature that offers great flexibility in 
-recovering failed firewalls quickly or testing new releases with existing 
-configurations without installing. 
+All Full Images have the OPNsense Importer feature that offers flexibility in 
+recovering failed firewalls, testing new releases without overwriting the current 
+installation by running the new version in memory with the existing configuration 
+or migrating configurations to new hardware installations.  Using Importer is slightly 
+different between previous installs with existing configurations on disk vs new 
+installations/migrations.
 
-To use OPNsense Importer during the installation boot-up process do the following:
+For systems that have OPNsense installed, and the configuration is intact.  Here is the process:
+
+1. Boot the system with installation media
+2. Press any key when you see **“Press any key to start the configuration importer”**.  
+   a. If you see OPNsense logo you have past the Importer and will need to reboot.
+3. Type the device name of the existing drive that contains the configuration and press enter.
+   a. If Importer is successful, the boot process will continue into the Live environment using 
+      the stored configuration on disk.  
+   b. If Importer was unsuccessful you will return to device selection prompt.  Confirm your 
+      device name, or you have a possible drive corruption and may need to restore from backup.
+
+For new installations/migrations the following process to use OPNsense Importer during boot-up:
 
 1. You must have a 2nd USB drive formatted with FAT or FAT32 File system.
    a. Preferable non-bootable USB drive.
 2. Create a **conf** directory on the root of the USB drive
-3. Put an unencrypted backup xml or configuration xml into /conf and rename the file to **config.xml**
+3. Place an *unencrypted* <downloaded backup>.xml into /conf and rename the file to **config.xml**
 ::
 
       /conf/config.xml
