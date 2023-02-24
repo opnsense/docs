@@ -31,8 +31,11 @@ Embedded Image is to eliminate the need for local console access for installing 
 Installation is managed by prewriting the image to storage, installing the storage, and 
 booting the system.
 
-Full Images provide booting and installation tools like OPNsense Importer, Live Environment, 
-and/or Installer.  Full Images are released to support different console/hardware installation 
+.. 
+   For nano images is console access required?
+
+Full Images provide installation tools like OPNsense Importer, Live Environment, 
+and Installer.  Full Images are released to support different console/hardware installation 
 requirements.  
 
 Both image types can be installed and run from virtual disks (VM), `SD memory
@@ -288,8 +291,11 @@ System Boot Preparation
 -------------------------
 
 After preparing the installation media, we need to make sure we can access the console
-(either via keyboard and [virtual]monitor or :doc:`serial connectivity<how-tos/serial_access>`) and know how to
-access the boot selection via the system bios. Often there's a (function) key one should press during initial boot.
+(either via keyboard and [virtual]monitor or :doc:`serial connectivity<how-tos/serial_access>`).  Next we need to know 
+how to access the boot menu or the system bios (UEFI) to boot from the installation media.  Most times will be a function 
+(F#), Del, or ESC key that needs to pressed immediately after powering on (or rebooting) the system.  Usually within the 
+first 2 to 3 seconds from powering up.
+
 
 .. Tip::
 
@@ -326,7 +332,7 @@ or migrating configurations to new hardware installations.  Using Importer is sl
 different between previous installs with existing configurations on disk vs new 
 installations/migrations.
 
-For systems that have OPNsense installed, and the configuration is intact.  Here is the process:
+For systems that have OPNsense installed, and the configuration intact.  Here is the process:
 
 #. Boot the system with installation media
 #. Press any key when you see **“Press any key to start the configuration importer”**.  
@@ -336,13 +342,17 @@ For systems that have OPNsense installed, and the configuration is intact.  Here
 #. Type the device name of the existing drive that contains the configuration and press enter.
 
   #. If Importer is successful, the boot process will continue into the Live environment using 
-      the stored configuration on disk.  
-  #. If Importer was unsuccessful you will return to device selection prompt.  Confirm your 
-      device name, or you have a possible drive corruption and may need to restore from backup.
+  the stored configuration on disk.  
+  #. If Importer was unsuccessful, we will returned to the device selection prompt.  Confirm the 
+  device name is correct and try again.  Otherwise, there maybe possible disk corruption and 
+  restoring from backup.
 
-For new installations/migrations the following process to use OPNsense Importer during boot-up:
+At this point the system will boot up with a fully functional firewall in Live enironment using existing configuration 
+but will not overwrite the previous installation. Use this feature for safely previewing or testing upgrades.
 
-#. You must have a 2nd USB drive formatted with FAT or FAT32 File system.
+For New installations/migrations follow this process:
+
+#. We must have a 2nd USB drive formatted with FAT or FAT32 File system.
 
   #. Preferable non-bootable USB drive.
   
@@ -351,35 +361,52 @@ For new installations/migrations the following process to use OPNsense Importer 
 
 ``/conf/config.xml``
 
-#. Put both the Installation drive and the 2nd USB drive into the system and power up / reboot.  
-#. Boot the system from the OPNsense Installation drive via BIOS or Boot Menu.
-#. Press a key when you see: **“Press any key to start the configuration importer”**
-#. Type the device name of the 2nd USB Drive, e.g. da0 , and press Enter.
+#. Put both the Installation media and the 2nd USB drive into the system and power up / reboot.  
+#. Boot the system from the OPNsense Installation media via Boot Menu or BIOS (UEFI).
+#. Press aany key when you see: **“Press any key to start the configuration importer”**
+#. Type the device name of the 2nd USB Drive, e.g. `da0`, and press Enter.
 
-  #. If Importer was successful the boot process will continue to boot into the OPNsense 
-      Live environment using the configuration you provided.
-  #. If unsuccessful importer will error and return you to the device selection prompt. Suggest 
-      repeating steps 1–3 again.
+  #. If Importer is successful, the boot process will continue into the Live environment using 
+  the configuration stored on the USB drive.
+  #. If unsuccessful, importer will error and return us to the device selection prompt. Suggest 
+  repeating steps 1-3 again.
 
 Live environment
 ----------------
-The system will then continue into a live environment. If the config importer
-was used previously on an existing installation, the system will boot up with a
-fully functional setup, but will not overwrite the previous installation. Use
-this feature for safely previewing upgrades.
+After booting with an OPNsense Full Image (DVD, VGA, Serial), the firewall will 
+be in the Live environment with and without the use of OPNsense Importer.  We 
+can interact with the Live environment via Local Console, HTTPS GUI, or SSH.
 
-If you have used a DVD, VGA, Serial image you are by default able to log into
-the root shell using the user "root" with password "opnsense" to operate the
-live environment.
+By default, we can log into the shell using the user `root` with the password 
+`opnsense` to operate the live environment via the local console.
 
-The GUI will listen on https://192.168.1.1/ for user "root" with password
-"opnsense" by default unless a previous configuration was imported. Using SSH,
-the "root" and "installer" users are available as well on IP 192.168.1.1. Note
-that these install medias are read-only, which means your current live
-configuration will be lost after reboot.
+The GUI is accessible at `https://192.168.1.1/ <https://192.168.1.1/>` using Username: 
+`root` Password: `opnsense` by default (unless a previous configuration was imported).  
+
+Using SSH we can access the firewall at IP `192.168.1.1`.  Both the `root` and `installer` 
+users are available, using password `opnsense`. 
+
+.. Note::
+   That the installation media is read-only, which means your current live configuration will 
+   be lost after reboot.
+
+.. 
+   Commect: I suggest we move Nano Image section either after "Install to target system" or to 
+   before "System Boot Preparation".  Also needs a rewrite, I have it 40% done.  Does nano image 
+   use the 2nd interface as a default LAN interface using DHCP on 192.168.1.x network?
 
 Nano image
 ----------
+
+.. 
+   !rewrite - Using the Nano image for embedded systems, your firewall is already up and running.  
+   The settings to minimize write cycles to relevant partitions by mounting these partitions in 
+   system memory and reporting features are disabled by default.
+.. 
+   Other default settings like interfaces, DHCP, etc.  Or is a console required for nano images?
+.. 
+   "If there are?" What is the required configuration actions to start passing traffic? 
+
 If you have used a Nano image, your system is already up and running as it is
 designed as such. It is set to read-write attempting to minimise write cycles by
 mounting relevant partitions as memory file systems and reporting features
