@@ -28,11 +28,8 @@ the storage media is required due to a lack of local resources on the firewall
 like storage, and/or console access (VGA/Serial).  The image is tailored to reduce 
 write cycles as well, but the image can be used anywhere.  Another reason for the 
 Embedded Image is to eliminate the need for local console access for installing OPNsense.  
-Installation is managed by prewriting the image to storage, installing the storage, and 
-booting the system.
-
-.. 
-   For nano images is console access required?
+Installation is managed by prewriting the image to a storage device, installing the 
+storage device, and booting the system.
 
 Full Images provide installation tools like OPNsense Importer, Live Environment, 
 and Installer.  Full Images are released to support different console/hardware installation 
@@ -62,14 +59,14 @@ The main differences between an Embedded (nano) image and a Full images are:
 +-----------------------+-----------------------+
 
 
-Embedded image (nano) store logging and cache data in memory only, while Full versions
+Embedded (nano) image store logging and cache data in memory only, while Full versions
 will keep the data stored on the local drive. A full version can mimic the
 behavior of an embedded version by enabling RAM disks, this is especially
 useful for SD memory card installations.
 
 .. Warning::
-    See the chapter :doc:`Hardware Setup <hardware>` for
-    further information on hardware requirements prior to an install.
+    See the chapter :doc:`Hardware Sizing & Setup <hardware>` for further information 
+    on hardware requirements prior to an install.
 
 ------------------
 Installation Images
@@ -102,13 +99,12 @@ Depending on your hardware and use case, different installation options are avai
    **`Installer <https://docs.opnsense.org/manual/install.html#install-to-target-system>`** once booted into the Live environment.
 
 .. Warning::
-
-  Flash memory cards will only tolerate a limited number of writes
-  and re-writes. For embedded (nano) versions memory disks for **/var/log** and **/tmp** are
-  applied by default to prolong CF (flash) card lifetimes.
-
-  To enable non-embedded versions: Go to :menuselection:`System --> Settings --> Miscellaneous --> Disk / Memory Settings`,
-  change the setting, then reboot. Consider enabling an external syslog server as well.
+   Flash memory cards will only tolerate a limited number of writes and re-writes. For 
+   embedded (nano) versions memory disks for **/var/log** and **/tmp** are applied by 
+   default to prolong CF (flash) card lifetimes.
+   
+   To enable non-embedded versions: Go to :menuselection:`System --> Settings --> Miscellaneous --> Disk / Memory Settings`, 
+   change the setting, then reboot. Consider enabling an external syslog server as well.
 
 ------------------------------
 Image Filename Composition
@@ -160,14 +156,13 @@ Image Filename Composition
    }
 
 .. Note::
-
-  **Please** be aware that the latest installation media does not always correspond 
-  with the latest released version available. OPNsense installation images are provided 
-  on a scheduled basis with major release versions in January and July. More information 
-  on our release schedule is available from our package repository, see 
-  `README <https://pkg.opnsense.org/releases/mirror/README>`.  You are encourage to updated 
-  OPNsense after installation to be on the latest version available, see 
-  `Update Page <https://docs.opnsense.org/manual/updates.html>`.
+   **Please** be aware that the latest installation media does not always correspond 
+   with the latest released version available. OPNsense installation images are provided 
+   on a scheduled basis with major release versions in January and July. More information 
+   on our release schedule is available from our package repository, see 
+   `README <https://pkg.opnsense.org/releases/mirror/README>`.  We are encouraged to update 
+   OPNsense after installation to be on the latest release available, see 
+   `Update Page <https://docs.opnsense.org/manual/updates.html>`.
 
 
 -------------------------
@@ -243,7 +238,8 @@ Image. If your target platform has a serial console interface choose the
 need to know more about using the serial console interface, consult the :doc:`serial access how-to<how-tos/serial_access>`.
 
 Write the image to a USB flash drive (>=1 GB) or hard disk, using either dd for Unix-like 
-OSes and for Windows use physdiskwrite or `Etcher <https://www.balena.io/etcher#download-etcher>`_.
+OSes and for Windows use physdiskwrite, `Etcher <https://www.balena.io/etcher#download-etcher>`_, 
+or `Rufus <https://rufus.ie/>`_.
 
 
 **FreeBSD**
@@ -318,10 +314,9 @@ Installation Instructions
 .. rubric:: Install Instructions
    :name: install-to-system
 
-The boot process gives you the opportunity to run several optional configuration
-steps. It has been designed to always boot into a live environment in order to
-be able to access the GUI or even SSH directly. If a timeout was missed simply
-restart the boot procedure.
+OPNsense installation boot process allows us to run several optional configuration steps. The 
+boot process was designed to always boot into the live environment, allowing us to access the 
+GUI or even SSH directly. If a timeout was missed, restart the boot procedure.
 
 OPNsense Importer
 -----------------
@@ -371,11 +366,16 @@ For New installations/migrations follow this process:
   #. If unsuccessful, importer will error and return us to the device selection prompt. Suggest 
   repeating steps 1-3 again.
 
-Live environment
+Live Environment
 ----------------
+..
+   Should we state the ability to manually identify network adapters before entering the live environment?
+
+.. image:: ./images/opnsense_liveenv.png
+
 After booting with an OPNsense Full Image (DVD, VGA, Serial), the firewall will 
 be in the Live environment with and without the use of OPNsense Importer.  We 
-can interact with the Live environment via Local Console, HTTPS GUI, or SSH.
+can interact with the Live environment via Local Console, GUI (HTTPS), or SSH.
 
 By default, we can log into the shell using the user `root` with the password 
 `opnsense` to operate the live environment via the local console.
@@ -390,74 +390,81 @@ users are available, using password `opnsense`.
    That the installation media is read-only, which means your current live configuration will 
    be lost after reboot.
 
-.. 
-   Commect: I suggest we move Nano Image section either after "Install to target system" or to 
-   before "System Boot Preparation".  Also needs a rewrite, I have it 40% done.  Does nano image 
-   use the 2nd interface as a default LAN interface using DHCP on 192.168.1.x network?
+Continue to :doc:`OPNsense Installer <OPNsense-Installer>`` to install OPNsense to the local storage device.
 
-Nano image
-----------
-
-.. 
-   !rewrite - Using the Nano image for embedded systems, your firewall is already up and running.  
-   The settings to minimize write cycles to relevant partitions by mounting these partitions in 
-   system memory and reporting features are disabled by default.
-.. 
-   Other default settings like interfaces, DHCP, etc.  Or is a console required for nano images?
-.. 
-   "If there are?" What is the required configuration actions to start passing traffic? 
-
-If you have used a Nano image, your system is already up and running as it is
-designed as such. It is set to read-write attempting to minimise write cycles by
-mounting relevant partitions as memory file systems and reporting features
-disabled by default.
-
-Create a bootable USB flash drive with the downloaded and unpacked image
-file. Configure your system to boot from USB.
-
-Install to target system
-------------------------
-If you have used a DVD, VGA, Serial image you are by default able to start the
-installer using the user "installer" with password "opnsense". On a previously
-imported configuration the password will be the same as root's password.
-
-Should the installer user not work for any reason, log in as user "root", select
-option 8 from the menu and type "opnsense-installer". The "opnsense-importer" can
-be run this way as well should you require to run the import again.
-
-The installer can always be run to clone an existing system, even for Nano
-images. This can be useful for creating live backups for later recovery.
-
-The installation process involves a few simple steps.
-
+OPNsense Installer
+---------------------
 .. Note::
    To invoke the installer login with user **installer** and password
    **opnsense**
 
-.. Tip::
-   The installer can also be started from the network using ssh, default ip
-   address is 192.168.1.1
+After successfully booting up with the OPNsense Full Image (DVD, VGA, Serial), 
+the firewall will be at the Live Environment's login: prompt.  To start the 
+installation process, login with the user ``installer`` and password ``opnsense``.  
+If Importer was used to import an existing configuration, the installer and root 
+user password would be the root password from the imported configuration.  
 
-#. Keymap selection - The default configuration should be fine for most
-   occasions.
-#. Install (UFS|ZFS) - Choose either a UFS or ZFS filesystem. ZFS is in most
-   cases the best option as it is the most reliable option, but does require
-   enough memory (a couple of gigabytes at least).
-#. Partitioning (ZFS) - Choose a device type. When using a single disk the
-   default option (stripe) is usually fine.
-#. Continue with recommended swap (UFS) - Yes is usually fine here unless
-   the install target is very small (< 16GB)
-#. Root Password - Choose a new root password
-#. Complete Install - Exits the installer and reboots the machine
-#. Reboot - The system is now installed and needs to be rebooted to
-   continue with configuration.
+If the installer user does not work, log in as user root and select: ``8) Shell`` 
+from the menu and type ``opnsense-installer``.  The ``opnsense-importer`` can also 
+be run this way should you require to rerun the import.
+..
+   Is this process documented anywhere?  I'm having hard time understanding how a live 
+   backup is created.  
+
+The installer can always be run to clone an existing system, even for Nano
+images. This can be useful for creating live backups for later recovery.
+
+.. Tip::
+   The installer can also be started from an inside host using ssh.  Default ip
+   address is ``192.168.1.1``
+
+The installation process involves the following steps:
+
+#. Keymap selection - The default configuration should be fine for most Occasions.
+#. Install (UFS|ZFS) - Choose UFS or ZFS filesystem. ZFS is in most cases the best option 
+   as it is the most reliable option, but it does require enough capacity (a couple of gigabytes at least).
+#. Partitioning (ZFS) - Choose a device type. The default option (stripe) is usually acceptable 
+   when using a single disk.
+#. Disk Selection (ZFS) - Select the Storage device e.g. ``da0`` or ``nvd0``
+#. Last Chance! - Select Yes to continue with partitioning and to format the disk. However, doing 
+   so will **destroy** the contents of the disk.
+..
+   The installer on 23.1 does not mention or ask about swap anymore.  Suggest we remove?
+
+#. Continue with recommended swap (UFS) - Yes is usually fine here unless the install target 
+   is very small (< 16GB)
+#. Select Root Password - Change and confirm the new root password
+#. Select Complete Install - Exits the installer and reboots the machine. The system is now installed 
+   and ready for initial configuration.
+..
+   Suggest we remove the warning as the install steps above covers this.  If we keep it, then we should move 
+   it to the top of the installation process.  Also, there isn't Quick/Easy Install option.  Is there?
 
 .. Warning::
    You will lose all files on the installation disk. If another disk is to be
    used then choose a Custom installation instead of the Quick/Easy Install.
 
+Nano Image
+----------
+.. 
+   Commect: Moving Nano Image section after "Install to target system".  We could move it
+   before "System Boot Preparation".  Should we detail other default settings like interfaces, DHCP, etc?
+   Or are you prompted for interface assignment like Full Images?
+
+To use the nano image follow this process:
+
+#. Create the system disk with using the nano image.  See :doc:`Installation Media<installation-media>` 
+   how to write the nano image to disk.
+#. Install the system disk drive into the system.
+#. Configure the system (BIOS) to boot from this disk.
+#. After the system boots, the firewall is ready to be configured.
+
+Using the Nano image for embedded systems, your firewall is already up and running. The configuration 
+settings to enable Memory Disks (RAM disks) that minimize write cycles to relevant partitions by 
+mounting these partitions in system memory and reporting features are disabled by default.
+
 ---------------------
-Initial configuration
+Initial Configuration
 ---------------------
 After installation the system will prompt you for the interface
 assignment, if you ignore this then default settings are applied.
