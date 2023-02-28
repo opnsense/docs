@@ -22,7 +22,7 @@ architecture only.
 Embedded vs Full
 ----------------
 
-OPNsense offers two Image Types with all Major releases, Embedded (nano) Image 
+OPNsense offers two Image types with all major releases: embedded and full images. [etc]
 and Full Images.  The Embedded Image is intended for environments where preinstalling 
 the storage media is required due to a lack of local resources on the firewall 
 like storage, and/or console access (VGA/Serial).  The image is tailored to reduce 
