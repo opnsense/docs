@@ -217,17 +217,6 @@ Media Filename Composition
   repository, see `README <https://pkg.opnsense.org/releases/mirror/README>`__
 
 
---------------------
-OpenSSL and LibreSSL
---------------------
-
-OPNsense images are provided based upon `OpenSSL <https://www.openssl.org>`__.
-The `LibreSSL <http://www.libressl.org>`__ flavor can be selected from within
-the GUI (:menuselection:`System --> Firmware --> Settings`). In order to apply your choice an update
-must be performed after save, which can include a reboot of the system.
-
-.. image:: ./images/firmware_flavour.png
-
 
 -------------------------
 Boot preparation

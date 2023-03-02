@@ -59,13 +59,6 @@ Settings
 The settings menu contains all available mirrors and options which you can choose for your installation.
 Usually the default options are good enough here, but if you want to choose a mirror more close to home you can do so here.
 
-OPNsense supports two flavours for its TLS crypto stack, OpenSSL and LibreSSL. Our standard is `OpenSSL <https://www.openssl.org/>`__, but some more
-security minded people favor OpenBSD's `LibreSSL <https://www.libressl.org/>`__
-
-.. Note::
-
-    Since OpenSSL is more widely used, some software packages are not compatible with LibreSSL.
-
 
 .. Tip::
 
