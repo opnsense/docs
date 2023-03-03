@@ -41,7 +41,7 @@ USB disks, `solid-state
 disks (SSD) <https://en.wikipedia.org/wiki/Solid-state_drive>`__, or `hard disk drives
 (HDD) <https://en.wikipedia.org/wiki/Hard_disk_drive>`__.
 
-The main differences between an Embedded (nano) image and a Full images are:
+The main differences between embedded and full images are:
 
 +-----------------------+-----------------------+
 | Embedded              | Full                  |
