@@ -100,7 +100,7 @@ Depending on your hardware and use case, different installation options are avai
 
 .. Warning::
    Flash memory cards will only tolerate a limited number of writes and re-writes. For 
-   embedded (nano) versions memory disks for **/var/log** and **/tmp** are applied by 
+   Nano image memory disks for **/var/log** and **/tmp** are applied by 
    default to prolong CF (flash) card lifetimes.
    
    To enable non-embedded versions: Go to :menuselection:`System --> Settings --> Miscellaneous --> Disk / Memory Settings`, 
