@@ -80,7 +80,7 @@ Depending on your hardware and use case, different installation options are avai
 | dvd    | ISO image boots into a live environment in        | Full       |
 |        | VGA-only mode with UEFI support                   |            |
 +--------+---------------------------------------------------+------------+
-| vga    | USB image (.img) boots into a live environment    | Full       |
+| vga    | USB image boots into a live environment           | Full       |
 |        | in VGA-only mode with UEFI support                |            |
 +--------+---------------------------------------------------+------------+
 | serial | USB image boots into live environment running in  | Full       |
