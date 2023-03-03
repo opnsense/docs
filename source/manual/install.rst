@@ -59,7 +59,7 @@ The main differences between embedded and full images are:
 +-----------------------+-----------------------+
 
 
-Embedded (nano) image store logging and cache data in memory only, while Full versions
+Embedded image store logging and cache data in memory only, while full versions
 will keep the data stored on the local drive. A full version can mimic the
 behavior of an embedded version by enabling RAM disks, this is especially
 useful for SD memory card installations.
