@@ -108,7 +108,7 @@ Have a look at the form, create an intermediate CA and save it.
 The Certificate
 ---------------
 
-The thirth certificate will be a **server certificate** signed by the intermediate CA we just created.
+The third certificate will be a **server certificate** signed by the intermediate CA we just created.
 This will also be the last one we create for this chain.
 
 Go to **Trust/Certificates**
