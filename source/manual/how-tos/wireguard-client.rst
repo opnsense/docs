@@ -102,7 +102,7 @@ Step 5(a) - Assign an interface to WireGuard (recommended)
     Finally, it allows separation of the firewall rules of each WireGuard instance (each :code:`wgX` device). Otherwise they all need to be configured on the default WireGuard group that OPNsense creates. This is more an organisational aesthetic, rather than an issue of substance    
 
 - Go to :menuselection:`Interfaces --> Assignments`
-- In the dropdown next to “New interface:”, select the WireGuard device (:code:`wg0` if this is your first one)
+- In the dropdown next to “New interface:”, select the WireGuard device (:code:`wg1` if this is your first one)
 - Add a description (eg :code:`HomeWireGuard`)
 - Click **+** to add it, then click **Save**
 - Then select your new interface under the Interfaces menu
