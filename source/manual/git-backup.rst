@@ -87,9 +87,39 @@ password                              When using https authentication, choose a 
 Make sure to push to a "bare" upstream repository, when pressing "Setup/Test Git" the initial commits should be send to
 your git server.
 
-.. Tip::
+--------------------------
+SSH Setup
+--------------------------
 
-    For GitHub and GitLab repositories, please make sure your URL follows this structure: :code:`ssh://github.com/user_name/repo_name.git`.
+If you use GitHub, then your only option for git-backup, is to configure it for SSH access since GitHub has removed the ability for external applications to log into your account via your username and password.
+
+The fields in OPNSense under :code:`System / Configuration / Backups / Git` should contain the following:
+
+* URL absolutely MUST follow this format when using GitHub and GitLab: :code:`ssh://github.com/user_name/repo_name.git`. Any  URL string that does not follow this pattern will not work.
+
+
+* Branch should contain the word: :code:`master`
+
+
+* SSH Private key (discussed below)
+
+
+* User Name should ONLY contain the word :code:`git`
+
+
+* password: leave this field empty
+
+You need to create your repository BEFORE enabling git-backup. Do not add any files or READMEs to the repository. In other words, create a BLANK repository.
+
+Next, `create a new SSH key <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>`__ specifically for git-backup (only generate the private / public keys per that document and skip the rest). **It is imperative that you do not add a password to your key**, or your backups will fail with authentication errors.
+
+You should set up SSH access to just your repository by assigning your SSH public key to the repository instead of assigning it to your GitHub / GitLab account. Doing this ensures that you don't arbitrarily expose more of your git resources to OPNSense than is absolutely necessary for git-backup to work properly.
+
+If you use GitHub, you can add your SSH public key by going to your repository, then click on :code:`settings`, then :code:`Deploy keys`. Or you can go straight to the URL using this format: :code:`https://github.com/USER_NAME/REPOSITORY_NAME/settings/keys/new`.
+
+* Check the box :code:`Allow write Access`.
+
+Make sure the fields are populated as stated above and that the Enable box is checked, then click on :code:`Setup / Test Git` and you should see a message come back at the top of the page indicating that the first backup was successful.
 
 --------------------------
 Conflict resolution

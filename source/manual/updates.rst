@@ -20,7 +20,6 @@ Update settings
 By navigating to :menuselection:`System --> Firmware --> Settings`, you can influence the firmware update settings:
 
 * **Fimware Mirror:** this influences where OPNsense tries to get its updates from. If you have troubles updating or searching for updates, or if your current mirror is running slowly, you can change it here.
-* **Firmware Flavour:** OPNsense is available in different flavours. Currently, these flavours influence which cryptographic library to use: OpenSSL (the default) or its drop-in replacement LibreSSL.
 * **Release Type:** With this setting, you can switch between the regular fortnightly schedule of tested releases (Production) or the newest, not fully tested code (Development). **Please leave this setting on "Production", unless you fully understand the implications of switching.**
 
 --------------

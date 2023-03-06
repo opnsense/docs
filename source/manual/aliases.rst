@@ -59,6 +59,8 @@ OPNsense offers the following alias types:
 | BGP ASN          | Maps autonomous system (AS) numbers to networks      |
 |                  | where they are responsible for.                      |
 +------------------+------------------------------------------------------+
+| OpenVPN group    | Map user groups to logged in OpenVPN users           |
++------------------+------------------------------------------------------+
 | Internal         | Internal aliases which are managed by the product    |
 | (automatic)      |                                                      |
 +------------------+------------------------------------------------------+
@@ -321,6 +323,24 @@ alias and add or remove entries immediately.
 
     Since external alias types won't be touched by OPNsense, you can use :code:`pfctl` directly in scripts to manage
     its contents. (e.g. :code:`pfctl -t MyAlias -T add 10.0.0.3` to add **10.0.0.3** to **MyAlias**)
+
+
+....................................
+OpenVPN group
+....................................
+
+This alias type offers the possibility to build firewall policies for logged in OpenVPN users by the group they belong to
+as configured in :menuselection:`System --> Access --> Groups`.
+
+The current users that are logged into OpenVPN can be inspected via :menuselection:`VPN --> OpenVPN --> Connection Status`, the alias
+just follows this information and flushes the attached addresses to the item in question.
+
+For example, when a user named **fred** which is a member of group **remote_users** logs into OpenVPN and received a tunnel address
+of :code:`10.10.10.2`, the alias containing "remote_users" would include this address as well.
+
+.. Tip::
+
+    When using LDAP (Active directory), you can synchronise group membership to avoid double administration in OPNsense.
 
 ....................................
 Internal (automatic)

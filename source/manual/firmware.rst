@@ -59,15 +59,39 @@ Settings
 The settings menu contains all available mirrors and options which you can choose for your installation.
 Usually the default options are good enough here, but if you want to choose a mirror more close to home you can do so here.
 
-OPNsense supports two flavours for its TLS crypto stack, OpenSSL and LibreSSL. Our standard is `OpenSSL <https://www.openssl.org/>`__, but some more
-security minded people favor OpenBSD's `LibreSSL <https://www.libressl.org/>`__
-
-.. Note::
-
-    Since OpenSSL is more widely used, some software packages are not compatible with LibreSSL.
-
 
 .. Tip::
 
     The settings menu also provides the option to test development versions, which can be practical when testing features that
     are planned for release. Just change the release type to **Development**.
+
+
+Activate the Business Edition
+...........................................
+
+When you have purchased a license for the Business Edition or received it pre-installed on an appliance, you will
+have to enable the license first.
+
+In order to do so, please choose the following settings:
+
+============== ==================================================================================
+Mirror:        Deciso (HTTPS,NL,Commercial)
+Flavour:       OpenSSL
+Type:          Business
+Subscription:  XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX (the activation key for the product)
+============== ==================================================================================
+
+
+.. image:: ../hardware/images/quickstart_be.png
+    :width: 500px
+
+
+After save, go back to the status tab and click **Check for updates**
+
+
+.. Note::
+
+    Upgrading to OPNsense BE is only possible when the installed community version number is lower than the
+    last available business edition. E.g. you can upgrade **22.7.x** to **22.10.x**, but you can not upgrade
+    **23.1** to **22.10**. You can always re-install using the installer found on the `business mirror <https://opnsense-update.deciso.com/>`__
+

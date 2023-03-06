@@ -72,11 +72,6 @@ Configure the frequency of updating the lists of IP addresses that are reserved 
 Gateway Monitoring
 ------------------------------------
 
-Kill states
-.....................................
-
-When unchecked (enabled) all states will be reset when a gateway is removed (see monitoring in the :doc:`gateways <gateways>` section)
-
 Skip rules
 .....................................
 
@@ -134,16 +129,6 @@ Firewall state table optimization to use, influences the number of active states
 * [high-latency] Used for high latency links, such as satellite links. Expires idle connections later than default
 * [aggressive] Expires idle connections quicker. More efficient use of CPU and memory but can drop legitimate idle connections
 * [conservative] Tries to avoid dropping any legitimate idle connections at the expense of increased memory usage and CPU utilization.
-
-
-Firewall Rules Optimization
-.....................................
-
-Influence how the firewall optimizes the generated ruleset.
-
-* [none] Disable the ruleset optimizer.
-* [basic] (default) Basic ruleset optimization does four things to improve the performance of ruleset evaluations: remove duplicate rules; remove rules that are a subset of another rule; combine multiple rules into a table when advantageous; re-order the rules to improve evaluation performance
-* [profile] Uses the currently loaded ruleset as a feedback profile to tailor the ordering of quick rules to actual network traffic.
 
 Bind states to interface
 .....................................
@@ -229,7 +214,21 @@ Check certificate of aliases URLs
 
 Make sure the certificate is valid for all HTTPS addresses on aliases. If it's not valid or is revoked, do not download it.
 
-Dynamic state reset
+
+Anti DDOS
+------------------------------------
+
+Enable syncookies
 .....................................
 
-This option flushes the entire state table on IPv4 address changes in dynamic setups to e.g. allow VoIP servers to re-register.
+
+This option is quite similar to the `syncookies <https://www.freebsd.org/cgi/man.cgi?syncookies>`__ kernel setting,
+preventing memory allocation for local services before a proper handshake is made.
+
+In this case pf will be protected agains state table exhaustion.
+
+The following modes are available:
+
+* never (default)
+* always
+* adaptive - in which case a lower and upper percentage should be specified referring to the usage of the state table.
