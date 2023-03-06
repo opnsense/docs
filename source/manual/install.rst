@@ -92,9 +92,9 @@ Depending on your hardware and use case, different installation options are avai
 +--------+---------------------------------------------------+------------+
 
 .. Note::
-   All Full Image types can run both `OPNsense Importer <https://docs.opnsense.org/manual/install.html#opnsense-importer>`__
-   before booting into the Live environment and also run
-   `Installer <https://docs.opnsense.org/manual/install.html#install-to-target-system>`__ once booted into the Live environment.
+   All Full Image types can run both `OPNsense Importer`__ before booting into the 
+   Live environment and also run `Installer <#OPNsense-Installer>`__ once booted 
+   into the Live environment.
 
 .. Warning::
    Flash memory cards will only tolerate a limited number of writes and re-writes. For
@@ -207,33 +207,36 @@ the following commands (substituting the filenames in brackets for the files you
 
 ``openssl sha256 OPNsense-<filename>.bz2``
 
-Match the checksum command output with the checksum vaules in file ``OPNsense-<version>-OpenSSL-checksums-amd64.sha256``.
-If the checksums don't match, redownload your image file.  If checksums match continue with the verification commands.
+Match the checksum command output with the checksum vaules found in: 
+
+**OPNsense-<version>-OpenSSL-checksums-amd64.sha256**
+
+If the checksums don't match, redownload your image file.  If checksums match continue with 
+the verification commands:
 
 ``openssl base64 -d -in OPNsense-<filename>.sig -out /tmp/image.sig``
 
 ``openssl dgst -sha256 -verify OPNsense-<filename>.pub -signature /tmp/image.sig OPNsense-<filename>.bz2``
 
-
 If the output of the second command is “**Verified OK**”, your image file was verified
 successfully, and its safe to install from it. Any other outputs, and you may need
 to check your commands for errors, or the image file may have been compromised.
 
-
 -------------------
 Installation Media
 -------------------
-
 Now that you have downloaded and verified the installation image from above.  You must unpack the
-image file before you can write the image to disk.  For Unix-like OSes use ``bzip2 -d OPNsense-<filename>.bz2``
-command.  For Windows use an application like `7zip <https://www.7-zip.org/download.html>`_.  The ``.bz2`` will
-be removed from the end of the filename after command/applcation completes.
+image file before you can write the image to disk.  For Unix-like OSes use:
+
+``bzip2 -d OPNsense-<filename>.bz2``
+
+For Windows use an application like `7zip <https://www.7-zip.org/download.html>`_ and exact the image.  
+In most cases, the trailing ``.bz2`` will be removed from the end of the filename.
 
 After unpacking the image you can create the installation media. The easiest method to install
-OPNsense is to use USB "`vga <https://docs.opnsense.org/manual/install.html#installation-media>`_"
-Image. If your target platform has a serial console interface choose the
-“`serial <https://docs.opnsense.org/manual/install.html#installation-media>`_” image. If you
-need to know more about using the serial console interface, consult the :doc:`serial access how-to<how-tos/serial_access>`.
+OPNsense is to use USB "`vga <#Installation-Images>`__" Image. If your target platform has a serial 
+console interface choose the "`serial <#Installation-Images>`__" image. If youneed to know more 
+about using the serial console interface, consult the :doc:`serial access how-to<how-tos/serial_access>`.
 
 Write the image to a USB flash drive (>=1 GB) or hard disk, using either dd for Unix-like
 OSes and for Windows use physdiskwrite, `Etcher <https://www.balena.io/etcher#download-etcher>`_,
@@ -287,9 +290,8 @@ System Boot Preparation
 After preparing the installation media, we need to make sure we can access the console
 (either via keyboard and [virtual]monitor or :doc:`serial connectivity<how-tos/serial_access>`).  Next we need to know
 how to access the boot menu or the system bios (UEFI) to boot from the installation media.  Most times will be a function
-(F#), Del, or ESC key that needs to pressed immediately after powering on (or rebooting) the system.  Usually within the
+(F#) key, Del, or ESC key(s) that needs to pressed immediately after powering on (or rebooting) the system.  Usually within the
 first 2 to 3 seconds from powering up.
-
 
 .. Tip::
 
@@ -300,18 +302,9 @@ first 2 to 3 seconds from powering up.
 
     Serial connectivity settings for DECXXXX devices can be found  :doc:`here </hardware/serial_connectivity>`
 
-
 -------------------------
 Installation Instructions
 -------------------------
-
-..
-  Comment: Not sure how rubric:: are used.  I would like to replace Installation Instructions rubric with
-  section above.  I also don't know how :name: work
-
-.. rubric:: Install Instructions
-   :name: install-to-system
-
 OPNsense installation boot process allows us to run several optional configuration steps. The
 boot process was designed to always boot into the live environment, allowing us to access the
 GUI or even SSH directly. If a timeout was missed, restart the boot procedure.
@@ -330,15 +323,14 @@ For systems that have OPNsense installed, and the configuration intact.  Here is
 #. Boot the system with installation media
 #. Press any key when you see **“Press any key to start the configuration importer”**.
 
-  #. If you see OPNsense logo you have past the Importer and will need to reboot.
+   #. If you see OPNsense logo you have past the Importer and will need to reboot.
 
 #. Type the device name of the existing drive that contains the configuration and press enter.
-
-  #. If Importer is successful, the boot process will continue into the Live environment using
-  the stored configuration on disk.
-  #. If Importer was unsuccessful, we will returned to the device selection prompt.  Confirm the
-  device name is correct and try again.  Otherwise, there maybe possible disk corruption and
-  restoring from backup.
+#. If Importer is successful, the boot process will continue into the Live environment using
+   the stored configuration on disk.
+#. If Importer was unsuccessful, we will returned to the device selection prompt.  Confirm the 
+   device name is correct and try again.  Otherwise, there maybe possible disk corruption and
+   restoring from backup.
 
 At this point the system will boot up with a fully functional firewall in Live enironment using existing configuration
 but will not overwrite the previous installation. Use this feature for safely previewing or testing upgrades.
@@ -347,7 +339,8 @@ For New installations/migrations follow this process:
 
 #. We must have a 2nd USB drive formatted with FAT or FAT32 File system.
 
-  #. Preferable non-bootable USB drive.
+   #. Preferable non-bootable USB drive.
+
 #. Create a **conf** directory on the root of the USB drive
 #. Place an *unencrypted* <downloaded backup>.xml into /conf and rename the file to **config.xml**
 
@@ -356,12 +349,13 @@ For New installations/migrations follow this process:
 #. Put both the Installation media and the 2nd USB drive into the system and power up / reboot.
 #. Boot the system from the OPNsense Installation media via Boot Menu or BIOS (UEFI).
 #. Press aany key when you see: **“Press any key to start the configuration importer”**
-#. Type the device name of the 2nd USB Drive, e.g. `da0`, and press Enter.
+#. Type the device name of the 2nd USB Drive, e.g. `da0` or `nvd0` , and press Enter.
 
-  #. If Importer is successful, the boot process will continue into the Live environment using
-  the configuration stored on the USB drive.
-  #. If unsuccessful, importer will error and return us to the device selection prompt. Suggest
-  repeating steps 1-3 again.
+   #. If Importer is successful, the boot process will continue into the Live environment using
+      the configuration stored on the USB drive.
+   #. If unsuccessful, importer will error and return us to the device selection prompt. Suggest 
+      repeating steps 1-3 again.
+
 
 Live Environment
 ----------------
@@ -374,20 +368,21 @@ After booting with an OPNsense Full Image (DVD, VGA, Serial), the firewall will
 be in the Live environment with and without the use of OPNsense Importer.  We
 can interact with the Live environment via Local Console, GUI (HTTPS), or SSH.
 
-By default, we can log into the shell using the user `root` with the password
-`opnsense` to operate the live environment via the local console.
+By default, we can log into the shell using the user ``root`` with the password
+``opnsense`` to operate the live environment via the local console.
 
-The GUI is accessible at `https://192.168.1.1/ <https://192.168.1.1/>` using Username:
-`root` Password: `opnsense` by default (unless a previous configuration was imported).
+The GUI is accessible at ``https://192.168.1.1/`` using Username: ``root`` Password: ``opnsense`` 
+by default (unless a previous configuration was imported).
 
-Using SSH we can access the firewall at IP `192.168.1.1`.  Both the `root` and `installer`
-users are available, using password `opnsense`.
+Using SSH we can access the firewall at IP **192.168.1.1** .  Both the ``root`` and ``installer``
+users are available, using password ``opnsense``.
 
 .. Note::
    That the installation media is read-only, which means your current live configuration will
    be lost after reboot.
 
-Continue to :doc:`OPNsense Installer <OPNsense-Installer>`` to install OPNsense to the local storage device.
+Continue to `OPNsense Installer <#opnsense-installer>` to install OPNsense to the local storage device.
+
 
 OPNsense Installer
 ---------------------
@@ -414,6 +409,16 @@ images. This can be useful for creating live backups for later recovery.
 .. Tip::
    The installer can also be started from an inside host using ssh.  Default ip
    address is ``192.168.1.1``
+..
+   Suggest we remove the warning as the install steps above covers this.  If we keep it, then we should move
+   it to the top of the installation process.  Also, there isn't Quick/Easy Install option.  Is there?
+
+.. Warning::
+   You will lose all files on the installation disk. If another disk is to be
+   used then choose a Custom installation instead of the Quick/Easy Install.
+
+..
+   The installer on 23.1 does not mention or ask about swap anymore.  Suggest we remove?
 
 The installation process involves the following steps:
 
@@ -425,38 +430,24 @@ The installation process involves the following steps:
 #. Disk Selection (ZFS) - Select the Storage device e.g. ``da0`` or ``nvd0``
 #. Last Chance! - Select Yes to continue with partitioning and to format the disk. However, doing
    so will **destroy** the contents of the disk.
-..
-   The installer on 23.1 does not mention or ask about swap anymore.  Suggest we remove?
-
 #. Continue with recommended swap (UFS) - Yes is usually fine here unless the install target
    is very small (< 16GB)
 #. Select Root Password - Change and confirm the new root password
 #. Select Complete Install - Exits the installer and reboots the machine. The system is now installed
    and ready for initial configuration.
-..
-   Suggest we remove the warning as the install steps above covers this.  If we keep it, then we should move
-   it to the top of the installation process.  Also, there isn't Quick/Easy Install option.  Is there?
 
-.. Warning::
-   You will lose all files on the installation disk. If another disk is to be
-   used then choose a Custom installation instead of the Quick/Easy Install.
 
 Nano Image
 ----------
-..
-   Commect: Moving Nano Image section after "Install to target system".  We could move it
-   before "System Boot Preparation".  Should we detail other default settings like interfaces, DHCP, etc?
-   Or are you prompted for interface assignment like Full Images?
-
 To use the nano image follow this process:
 
-#. Create the system disk with using the nano image.  See :doc:`Installation Media<installation-media>`
+#. Create the system disk with using the nano image.  See `Installation Media <#installation-media>`
    how to write the nano image to disk.
 #. Install the system disk drive into the system.
 #. Configure the system (BIOS) to boot from this disk.
 #. After the system boots, the firewall is ready to be configured.
 
-Using the Nano image for embedded systems, your firewall is already up and running. The configuration
+Using the nano image for embedded systems, your firewall is already up and running. The configuration
 settings to enable Memory Disks (RAM disks) that minimize write cycles to relevant partitions by
 mounting these partitions in system memory and reporting features are disabled by default.
 
