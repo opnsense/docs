@@ -79,27 +79,27 @@ Here are the full patch notes:
 * unbound: add missing blocklist
 * ui: solve deprecation in PHP via html_safe() wrapper
 * wizard: unbound hardened DNSSEC setting moved
-* plugins: os-acme-client 3.16`[1] <https://github.com/opnsense/plugins/blob/stable/23.1/security/acme-client/pkg-descr>`__ 
-* plugins: os-crowdsec 1.0.2`[2] <https://github.com/opnsense/plugins/blob/stable/23.1/security/crowdsec/pkg-descr>`__ 
-* plugins: os-rfc2136 1.8`[3] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/rfc2136/pkg-descr>`__ 
+* plugins: os-acme-client 3.16 `[1] <https://github.com/opnsense/plugins/blob/stable/23.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.2 `[2] <https://github.com/opnsense/plugins/blob/stable/23.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-rfc2136 1.8 `[3] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/rfc2136/pkg-descr>`__ 
 * plugins: os-theme-cicada 1.33 (contributed by Team Rebellion)
 * plugins: os-theme-tucan 1.26 (contributed by Team Rebellion)
 * plugins: os-theme-vicuna 1.44 (contributed by Team Rebellion)
-* src: fix multiple OpenSSL vulnerabilities`[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:03.openssl.asc>`__ 
+* src: fix multiple OpenSSL vulnerabilities `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:03.openssl.asc>`__ 
 * src: pfsync: support deferring IPv6 packets
 * src: pfsync: add missing bucket lock
 * src: pfsync: ensure 'error' is always initialised
 * ports: filterlog 0.7 fixes unknown TCP option print
-* ports: lighttpd 1.4.69`[5] <https://www.lighttpd.net/2023/2/10/1.4.69/>`__ 
-* ports: monit 5.33.0`[6] <https://mmonit.com/monit/changes/>`__ 
-* ports: nss 3.88.1`[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_88_1.html>`__ 
-* ports: openldap 2.6.4`[8] <https://www.openldap.org/software/release/changes.html>`__ 
-* ports: openssh 9.2p1`[9] <https://www.openssh.com/txt/release-9.2>`__ 
-* ports: php 8.1.16`[10] <https://www.php.net/ChangeLog-8.php#8.1.16>`__ 
-* ports: phalcon 5.2.1`[11] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.1>`__ 
-* ports: sqlite 3.41.0`[12] <https://sqlite.org/releaselog/3_41_0.html>`__ 
-* ports: strongswan 5.9.10`[13] <https://github.com/strongswan/strongswan/releases/tag/5.9.10>`__ 
-* ports: sud* 1.9.13p2`[14] <https://www.sudo.ws/stable.html#1.9.13p2>`__ 
+* ports: lighttpd 1.4.69 `[5] <https://www.lighttpd.net/2023/2/10/1.4.69/>`__ 
+* ports: monit 5.33.0 `[6] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.88.1 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_88_1.html>`__ 
+* ports: openldap 2.6.4 `[8] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openssh 9.2p1 `[9] <https://www.openssh.com/txt/release-9.2>`__ 
+* ports: php 8.1.16 `[10] <https://www.php.net/ChangeLog-8.php#8.1.16>`__ 
+* ports: phalcon 5.2.1 `[11] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.1>`__ 
+* ports: sqlite 3.41.0 `[12] <https://sqlite.org/releaselog/3_41_0.html>`__ 
+* ports: strongswan 5.9.10 `[13] <https://github.com/strongswan/strongswan/releases/tag/5.9.10>`__ 
+* ports: sud* 1.9.13p2 `[14] <https://www.sudo.ws/stable.html#1.9.13p2>`__ 
 
 
 
