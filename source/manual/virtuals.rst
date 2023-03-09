@@ -23,7 +23,7 @@ For optimum performance and compatibility, these guides are given:
 VMware ESXi
 -----------
 VMware offers full instructions for installing FreeBSD, these can be found
-`here <http://partnerweb.vmware.com/GOSIG/FreeBSD_11x.html>`__.
+`here <https://partnerweb.vmware.com/GOSIG/FreeBSD_13x.html>`__.
 
 To install the VMware tools just goto :menuselection:`System --> Firmware --> Plugins` and install
 **os-vmware** by clicking on the **+** sign next to it.
