@@ -92,9 +92,9 @@ Depending on your hardware and use case, different installation options are avai
 +--------+---------------------------------------------------+------------+
 
 .. Note::
-   All Full Image types can run both `OPNsense Importer <#OPNsense-Importer>`__
+   All Full Image types can run both `OPNsense Importer <OPNsense-Importer>`__
    before booting into the Live environment and also run
-   `Installer <#OPNsense-Installer>`__ once booted into the Live environment.
+   `Installer <OPNsense-Installer>`__ once booted into the Live environment.
 
 .. Warning::
    Flash memory cards will only tolerate a limited number of writes and re-writes. For
@@ -241,8 +241,8 @@ For Windows use an application like `7zip <https://www.7-zip.org/download.html>`
 be removed from the end of the filename after command/applcation completes.
 
 After unpacking the image you can create the installation media. The easiest method to install
-OPNsense is to use the USB `"vga" <#Installation-Images>`_ image. If your target platform has a serial 
-console interface choose the `"serial" <#Installation-Images>`_ image. If youneed to know more about using 
+OPNsense is to use the USB `"vga" <Installation-Images>`_ image. If your target platform has a serial 
+console interface choose the `"serial" <Installation-Images>`_ image. If youneed to know more about using 
 the serial console interface, consult the :doc:`serial access how-to<how-tos/serial_access>`.
 
 Write the image to a USB flash drive (>=1 GB) or hard disk, using either dd for Unix-like
@@ -390,7 +390,7 @@ users are available with the password specified above.
    That the installation media is read-only, which means your current live configuration will
    be lost after reboot.
 
-Continue to `OPNsense Installer <#OPNsense-Installer>`__ to install OPNsense to the local storage device.
+Continue to `OPNsense Installer <OPNsense-Installer>`__ to install OPNsense to the local storage device.
 
 OPNsense Installer
 ---------------------
@@ -441,7 +441,7 @@ Nano Image
 
 To use the nano image follow this process:
 
-#. Create the system disk with using the nano image.  See `Installation Media <#Installation-Images>`__
+#. Create the system disk with using the nano image.  See `Installation Media <Installation-Images>`__
    how to write the nano image to disk.
 #. Install the system disk drive into the system.
 #. Configure the system (BIOS) to boot from this disk.
