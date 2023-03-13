@@ -199,5 +199,5 @@ Zenarmor may support up to 1,000 concurrent users on an average PC. You can set 
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Hvz1qhNBZdo&t=2s" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Hvz1qhNBZdo" frameborder="0" allowfullscreen></iframe>
 
