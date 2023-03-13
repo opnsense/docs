@@ -25,7 +25,11 @@ Zenarmor empowers your firewall with the following next generation features:
 6. Encrypted Threats Prevention
 7. Web Filtering & Security
 8. Active Directory Integration
-
+9. User-based Filtering and Reporting
+10. RESTful API
+11. Cloud based centralized management & Reporting
+12. Application / Web category based Traffic Shaping and Prioritization
+13. Policy based filtering and QoS
 ----------------------------
 Getting Started
 ----------------------------
