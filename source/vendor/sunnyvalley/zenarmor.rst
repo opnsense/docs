@@ -77,5 +77,5 @@ Sunny Valley Networks provides Tier 3 Support Options for Zenarmor Channel Partn
 **Connect via Social Media**
 
 * **Twitter**: `@sunnyvalley <https://twitter.com/sunnyvalley>`_
-* **Youtube**: `Sunny Valley Networks Hands-on videos <https://www.youtube.com/channel/UCBmMJAnuUW5qxAN23kLPuPA>`_
+* **Youtube**: `Sunny Valley Networks Hands-on videos <https://www.youtube.com/watch?v=IMKLO_LHbAY>`_
 * **Sunny Valley Blog**: https://sunnyvalley.io/blog/
