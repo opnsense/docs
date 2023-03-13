@@ -30,6 +30,8 @@ Zenarmor empowers your firewall with the following next generation features:
 11. Cloud based centralized management & Reporting
 12. Application / Web category based Traffic Shaping and Prioritization
 13. Policy based filtering and QoS
+
+
 ----------------------------
 Getting Started
 ----------------------------
