@@ -66,9 +66,9 @@ useful for SD memory card installations.
     See the chapter :doc:`Hardware Sizing & Setup <hardware>` for further information
     on hardware requirements prior to an install.
 
-------------------
+-------------------------------
 Installation Images
-------------------
+-------------------------------
 
 Depending on your hardware and use case, different installation options are available:
 
@@ -391,7 +391,7 @@ users are available with the password specified above.
    That the installation media is read-only, which means your current live configuration will
    be lost after reboot.
 
-Continue to :doc:`OPNsense Installer <OPNsense-Installer>`` to install OPNsense to the local storage device.
+Continue to `OPNsense Installer`_ to install OPNsense to the local storage device.
 
 OPNsense Installer
 ---------------------
@@ -442,7 +442,7 @@ Nano Image
 
 To use the nano image follow this process:
 
-#. Create the system disk with using the nano image.  See :doc:`Installation Media<installation-media>`
+#. Create the system disk with using the nano image.  See `Installation Media`_
    how to write the nano image to disk.
 #. Install the system disk drive into the system.
 #. Configure the system (BIOS) to boot from this disk.
