@@ -1,0 +1,111 @@
+===============
+Support Options
+===============
+
+.. image:: images/support-1024x492.jpg
+
+
+Software Support Levels
+------------------------
+
+OPNsense is used in infrastructures of all sizes, in some cases it is very important to know what to expect when running into
+issues, certainly if part of the knowledge to maintain the infrastructure needs to be acquired from third parties.
+
+Our platform is easily extendable, which encourages people to work on components not directly supported by us but very valuable
+to our users.
+
+In order to offer clarity for all involved, we decided to explain how we treat the components available in this chapter.
+
+We currently distinct three different tiers of support, ranging from Critical to Community, where critical is always directly supported
+by the OPNsense® Core Team and Community you may safely assume the core team has no (or very limited) involvement.
+
+.. Tip::
+
+    When designing infrastructures and in need of commercial support from the creators of OPNsense for community plugins,
+    you can always contact us and discuss options.
+
+
+If community plugins are very popular it is possible to promote in terms of support options, but in order to grow out of
+the community tier some conditions have to be met.
+
+* The software should be usable and understandable.
+* Maintainability of the plugin should be good (code quality, following best practices)
+* Documentation should be available and at least explain the purpose of the component including the most common settings.
+
+These are the tiers in question:
+
+Critical (Tier 1)
+============================================
+* Core team develops and supports
+* Compiler errors or functional failures block git merges and releases
+* Functionality is part of the standard installation or an officially supported plugin
+
+Supplemental (Tier 2)
+=====================================================
+* Core team develops and supports or the functionality is deemed to be important enough to invest their time into bringing the plugin to its desired state in the long run.
+* Compiler errors or functional failures block git merges
+* Functionality problems such as 'known issues' might still go into releases
+* Features require user to install the plugin / functionality not installed by default
+
+Community (Tier 3)
+============================
+- Tier 3 is community supported, this means the OPNsense core development team won't support it to avoid overloading the team
+- When accepting a Tier 3 feature into the code base, it will come with a number of limits and conditions:
+
+  *  Submitter must commit to maintaining it:
+
+    - Make sure code compiles and correctly functions after OPNsense and/or external (e.g. library) changes
+    - Support users when they encounter problems (forum / git issue tracker – all related issues will be assigned to the maintainer)
+
+- The code is offered as plugin and will not be part of the default OPNsense installation. The OPNsense core team will not be responsible for QA
+- If the feature get lots of traction, and/or if the team just considers it very useful, it may get 'promoted' to being officially supported (Tier 2)
+- The feature will be removed if the submitter stops maintaining it and no-one steps up to take over
+
+
+
+Community
+---------
+If you need help with OPNsense you can always try the community options first.
+When resorting to community support it is important to understand that anyone
+helping you is doing so for free and at their own time. Even though your issue or
+question may not be answered fully, it would be nice to thank the people who
+help you.
+
+To receive community support, the following options are available:
+
+* Start searching this documentation & wiki
+* The `OPNsense forum <https://forum.opnsense.org>`__
+* Ask online users on `IRC Libera Chat <https://libera.chat/>`__ #opnsense
+* Open a GitHub ticket (`core <https://github.com/opnsense/core/issues>`__, `plugins <https://github.com/opnsense/plugins/issues>`__) using one of our templates
+
+.. Note::
+
+    When a Github ticket is opened, it often is being tagged "support", but its status may change over time when more details
+    are known. Triaging issues takes time, the easier one can replicate an issue on a clean install, the higher the chance
+    tickets are being solved.
+
+
+Commercial
+----------
+
+As we build and maintain the software used by individuals and companies all around the globe, we are able to help you
+out when it comes to network design choices, solving issues and custom development around OPNsense.
+
+Extended professional support services are available for an annual fee.
+You can find our options in `the OPNsense webshop <https://shop.opnsense.com/product-categorie/support/>`__
+or you may `contact us <https://shop.opnsense.com/contact-us/>`__ directly.
+
+
+List of available community plugins
+---------------------------------------------------------------
+
+Below you will find the plugins available in the standard (community) version of OPNsense categorised by support tier
+as described at the support levels section.
+
+{% for tier in tiers|sort %}
+.. csv-table:: Tier {{ tier }}
+  :header: "Name", "Description"
+{%    for plugin in tiers[tier]|sort %}
+   "{{tiers[tier][plugin].name}}", "{{tiers[tier][plugin].descr}}"
+{%-    endfor %}
+{% endfor %}

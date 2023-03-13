@@ -21,6 +21,7 @@ into these.
    manual/netflow
    manual/reporting_settings
    manual/reporting_traffic
+   manual/reporting_unbound_dns
 
 ---------------
 Setup guides

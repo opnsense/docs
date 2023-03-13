@@ -1,6 +1,6 @@
-===============================
-Microsoft Azure Route-based VPN
-===============================
+================================================
+IPsec VTI - connect to Microsoft Azure
+================================================
 
 Microsoft Azure offers three VPN types:
 

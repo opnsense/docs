@@ -8,8 +8,8 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *237* releases leading to the latest version *22.7.6*
-named "Powerful Panther".
+As of January 2015 there have been *247* releases leading to the latest version *23.1.2*
+named "Quintessential Quail".
 
 
 
@@ -20,6 +20,7 @@ The list below contains all releases, ordered by version number categorized by m
    :titlesonly:
    :glob:
 
+   releases/CE_23.1
    releases/CE_22.7
    releases/CE_22.1
    releases/CE_21.7

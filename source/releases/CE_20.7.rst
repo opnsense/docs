@@ -431,7 +431,7 @@ Here are the full patch notes:
 * src: assorted multicast group join/leave corrections
 * src: fix vmx driver packet loss and degraded performance `[4] <FREEBSD:FreeBSD-EN-20:16.vmx>`__ 
 * src: fix memory corruption in USB network device driver `[5] <FREEBSD:FreeBSD-SA-20:21.usb_net>`__ 
-* src: fix multiple vulnerabilities in sqlite3 `[6] <FREEBSD:FreeBSD-SA-20:22.sqlite>`__ 
+* src: fix multiple vulnerabilities in sqlite `[6] <FREEBSD:FreeBSD-SA-20:22.sqlite>`__ 
 * src: fix sendmsg(2) privilege escalation `[7] <FREEBSD:FreeBSD-SA-20:23.sendmsg>`__ 
 * ports: perl 5.32.0 `[8] <https://perldoc.perl.org/5.32.0/perldelta>`__ 
 * ports: squid 4.12 `[9] <http://www.squid-cache.org/Versions/v4/squid-4.12-RELEASENOTES.html>`__ 

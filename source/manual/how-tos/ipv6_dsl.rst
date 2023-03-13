@@ -48,3 +48,6 @@ At the bottom in section **Track IPv6 Interface** choose **IPv6 Interface** as W
 
 Hit Apply and disable/enable the NICs of your internal systems. Depending on the system
 and vendor, also a reboot could be required.
+
+If you experience problems with the 24h disconnect disrupting connectivity, it may help to set **Prevent Release**
+in section :menuselection:`Interfaces --> Settings`.

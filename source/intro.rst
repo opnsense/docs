@@ -95,8 +95,7 @@ The feature set of OPNsense includes high-end features such as forward caching
 proxy, traffic shaping, intrusion detection and easy OpenVPN client setup.
 The latest release is based on a recent FreeBSD for long-term support and uses a
 newly developed MVC-framework based on Phalcon. OPNsense’s focus on security
-brings unique features such as the option to use LibreSSL instead of OpenSSL
-(selectable in the GUI).
+brings unique features such as easy to use one time password authentication for various components.
 
 The robust and reliable update mechanism gives OPNsense the ability to provide
 important security updates in a timely fashion.

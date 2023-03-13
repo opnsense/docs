@@ -17,6 +17,158 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+22.10.2 (February 20, 2023)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 22.7.11 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* interfaces: fix VLAN missing a config lock on delete
+* firewall: do not switch gateway on bootup
+* intrusion detection: properly reset metadata response when no metadata is found
+* unbound: missing global so that cache is never flushed when requested
+* mvc: cleanse $record input in searchRecordsetBase() before usage
+* src: fix multiple OpenSSL vulnerabilities `[1] <FREEBSD:FreeBSD-SA-23:03.openssl>`__ 
+* src: geli: split the initalization of HMAC `[2] <FREEBSD:FreeBSD-SA-23:01.geli>`__ 
+* src: fix ena driver crash after reset in 7th gen AWS instance types `[3] <FREEBSD:FreeBSD-EN-23:03.ena>`__ 
+* src: fix sdhci broken write-protect settings `[4] <FREEBSD:FreeBSD-EN-23:02.sdhci>`__ 
+* src: import tzdata 2022g `[5] <FREEBSD:FreeBSD-EN-23:01.tzdata>`__ 
+* src: x86: ignore stepping for APL30 errata
+* ports: openssl 1.1.1t `[6] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+
+
+
+--------------------------------------------------------------------------
+22.10.1 (February 01, 2023)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 22.7.11 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: fix getOID() call for phpseclib 3 while processing CSR
+* system: avoid error on installer user creation
+* system: show booting banner on dashboard
+* system: add statistics tree view containing vmstat memory characteristics
+* system: explicitly reopen main log file in case another log file was used and closed
+* system: tweak log_msg() to prepare log level adjustments migration away from log_error()
+* system: enforce config reload to fetch group membership in authentication tester
+* system: separate interface type icon from name column in interface widget
+* system: change system log default to "Notice"
+* system: UX tweaks on activity page
+* system: revised backend daemon startup delay
+* system: drop empty plugins_run() result
+* system: fix internal CRL check (contributed by kulikov-a)
+* system: add group (class) sync and user creation for RADIUS authentication
+* system: show and search ACL endpoints in privilege selector
+* system: replace a number of log_error() calls with log_msg() equivalent
+* system: improve SSH lockout behaviour
+* system: fix a few minor Coverity Scan reports in PHP and Python `[1] <https://scan.coverity.com/projects/opnsense-core>`__ 
+* interfaces: show attached interface for VLAN device in overview
+* interfaces: packet capture MVC/API replacement
+* interfaces: fix ARP table name resolve backend issue (contributed by soif)
+* interfaces: migrate main clearing of interface data to ifctl
+* interfaces: fix display of special HTML characters in packet capture
+* interfaces: retain existing PPP settings on saving interface settings
+* interfaces: delete the correct lock of PPP device
+* interfaces: fix variable use in interface_proxyarp_configure()
+* interfaces: use get_interface_list() to identify hardware devices
+* interfaces: fix single ACL use for MVC/API interface pages
+* firewall: off-by-one in regex for target port range parse
+* firewall: support Maxmind unclassified "EU" as selectable country
+* firewall: fix possible race condition when changing limit in live log
+* firewall: fix sorting bug in aliases list
+* firewall: allow the use of "dynamic" interface types in shaper, e.g. IPsec devices
+* firewall: wrap user rule registration in new function filter_core_rules_user()
+* firewall: simplify rule lookup by using filter_core_rules_user()
+* firewall: allow external dynamic address in NPT
+* firewall: remove extended VIP expansion from NAT rules
+* firewall: fix live view hostname lookup may result in HTTP 431 error
+* firewall: add category selection to aliases
+* firewall: sates page performance improvements and better address parsing in search
+* firewall: reuse "hostid" on filter reload events
+* firewall: show automated "port 0" rule as actual port "0" on PHP 8
+* reporting: fix incompatible regex syntax in FreeBSD 13.1 for firewall state health statistics
+* reporting: bail DNS resolve in traffic graphs when resolver is not configured
+* captive portal: for static MAC assignments make sure that the IP address actually changed before updating it
+* dnsmasq: remove expired root trust anchor (contributed by Johnny S. Lee)
+* firmware: always fetch the signature file to avoid signature issues after upgrades
+* firmware: use effective ABI in changelog fetch
+* firmware: ignore automatic business plugin and license hint
+* ipsec: missing return in controller
+* ipsec: remove side effect host route removal from Phase 1 page
+* ipsec: allow to search all phase 2 entries via API call
+* ipsec: default log should be set to "basic" but PHP 8 disagreed
+* openvpn: use ifctl in link up/down scripts
+* openvpn: remove unused "pool_enable" attribute
+* unbound: move the removal of pluggable files above the configuration check
+* unbound: remove 127/8 from private-address block when rebind protection is enabled
+* unbound: make the default private-address items configurable via the advanced page
+* unbound: fix possible error while opening DoT page
+* unbound: do not stop on potential errors in start script
+* unbound: rework DNSBL implementation to Python module
+* unbound: fix blocklist use with DNS64 mode (contributed by kulikov-a)
+* unbound: change working directory before checking configuration
+* unbound: introduce blocklist module changes for upcoming 23.1
+* unbound: fix log message blocklist item count (contributed by kulikov-a)
+* unbound: also change working dir for unbound-checkconf in start script (contributed by kulikov-a)
+* unbound: fix missing query_reply property leading to an AttributeError
+* unbound: safeguard retrieval of blocklist shortcode
+* web proxy: fix broken "Google GSuite restricted" option
+* backend: wait 1 second for configd socket to become available
+* backend: clean up scripts/systemheath location
+* backend: moved log format definitions to new location for core and several plugins
+* mvc: when multiple validation messages are returned wrap each message in a div tag
+* mvc: translate a base field error
+* mvc: change default sorting to case-insensitive
+* mvc: move JavaScript and CSS imports to base controller
+* mvc: make sure HostnameField with ZoneRootAllowed accepts "@." prefix
+* mvc: fix IntegerField minimum value (contributed by xbb)
+* rc: remove obsolete NAME_var_script and NAME_var_mfs support
+* ui: unicode content for tokenizer (contributed by kulikov-a)
+* plugins: migrate all plugins to NAME_setup script use
+* plugins: $verbose argument in plugins_run() is spurious
+* plugins: os-acme-client 3.15 `[2] <https://github.com/opnsense/plugins/blob/stable/22.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-apcupsd 1.1 `[3] <https://github.com/opnsense/plugins/blob/stable/22.7/sysutils/apcupsd/pkg-descr>`__ 
+* plugins: os-clamav 1.8 `[4] <https://github.com/opnsense/plugins/blob/stable/22.7/security/clamav/pkg-descr>`__ 
+* plugins: os-ddclient IPv6 parsing fix `[5] <https://github.com/opnsense/plugins/blob/stable/22.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-freeradius is no longer available for LibreSSL to allow updates of FreeRADIUS software
+* plugins: os-frr 1.31 `[6] <https://github.com/opnsense/plugins/blob/stable/22.7/net/frr/pkg-descr>`__ 
+* plugins: os-haproxy 3.12 `[7] <https://github.com/opnsense/plugins/blob/stable/22.7/net/haproxy/pkg-descr>`__ 
+* plugins: os-maltrail 1.10 `[8] <https://github.com/opnsense/plugins/blob/stable/22.7/security/maltrail/pkg-descr>`__ 
+* plugins: os-nginx 1.31 `[9] <https://github.com/opnsense/plugins/blob/stable/22.7/www/nginx/pkg-descr>`__ 
+* plugins: os-openconnect 1.4.3 `[10] <https://github.com/opnsense/plugins/blob/stable/22.7/security/openconnect/pkg-descr>`__ 
+* plugins: os-rfc2136 1.7 fixes key format issue with latest bind-tools update
+* plugins: os-stunnel fixes missing include in certificate script
+* plugins: os-telegraf 1.12.7 `[11] <https://github.com/opnsense/plugins/blob/stable/22.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-theme-cicada 1.31 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.43 (contributed by Team Rebellion)
+* plugins: os-tor 1.9 enables hardware acceleration (contributed by haarp)
+* plugins: os-wireguard 1.13 `[12] <https://github.com/opnsense/plugins/blob/stable/22.7/net/wireguard/pkg-descr>`__ 
+* ports: curl 7.87.0 `[13] <https://curl.se/changes.html#7_87_0>`__ 
+* ports: dnsmasq 2.88 `[14] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: expat 2.5.0 `[15] <https://github.com/libexpat/libexpat/blob/R_2_5_0/expat/Changes>`__ 
+* ports: krb5 1.20.1 `[16] <https://web.mit.edu/kerberos/krb5-1.20/>`__ 
+* ports: libxml 2.10.3 `[17] <http://www.xmlsoft.org/news.html>`__ 
+* ports: nss 3.87 `[18] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_87.html>`__ 
+* ports: openssl 1.1.1s `[19] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openvpn 2.5.8 `[20] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.8>`__ 
+* ports: pcre 10.42 `[21] <https://www.pcre.org/changelog.txt>`__ 
+* ports: phalcon 5.1.4 `[22] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.4>`__ 
+* ports: php 8.0.27 `[23] <https://www.php.net/ChangeLog-8.php#8.0.27>`__ 
+* ports: phpseclib 3.0.18 `[24] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.18>`__ 
+* ports: python 3.9.16 `[25] <https://docs.python.org/release/3.9.16/whatsnew/changelog.html>`__ 
+* ports: sqlite 3.40.1 `[26] <https://sqlite.org/releaselog/3_40_1.html>`__ 
+* ports: strongswan 5.9.9 `[27] <https://github.com/strongswan/strongswan/releases/tag/5.9.9>`__ 
+* ports: suricata 6.0.9 `[28] <https://suricata.io/2022/11/29/suricata-6-0-9-released/>`__ 
+* ports: unbound 1.17.1 `[29] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-17-1>`__ 
+
+
+
+--------------------------------------------------------------------------
 22.10 (October 26, 2022)
 --------------------------------------------------------------------------
 
@@ -290,14 +442,32 @@ Here are the full patch notes:
 * ports: phalcon 5.0.3 `[39] <https://github.com/phalcon/cphalcon/releases/tag/v5.0.3>`__ 
 * ports: php 8.0.24 `[40] <https://www.php.net/ChangeLog-8.php#8.0.24>`__ 
 * ports: phpseclib 3.0.16 `[41] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.16>`__ 
-* ports: python 3.9.14 `[42] <https://docs.python.org/release/3.9.14/whatsnew/changelog.html>`__ 
+* ports: python 3.9.15 `[42] <https://docs.python.org/release/3.9.15/whatsnew/changelog.html>`__ 
 * ports: rrdtool 1.8.0 `[43] <https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES>`__ 
 * ports: sqlite 3.39.3 `[44] <https://sqlite.org/releaselog/3_39_3.html>`__ 
 * ports: squid 5.7 `[45] <http://www.squid-cache.org/Versions/v5/squid-5.7-RELEASENOTES.html>`__ 
 * ports: strongswan 5.9.8 `[46] <https://github.com/strongswan/strongswan/releases/tag/5.9.8>`__ 
-* ports: suricata 6.0.8 `[47] <https://suricata.io/2022/09/27/suricata-6-0-7-released/>`__ 
-* ports: syslog-ng 3.38.1 `[48] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.38.1>`__ 
-* ports: unbound 1.16.3 `[49] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-3>`__ 
+* ports: sudo 1.9.12p1 `[47] <https://www.sudo.ws/stable.html#1.9.12p1>`__ 
+* ports: suricata 6.0.8 `[48] <https://suricata.io/2022/09/27/suricata-6-0-7-released/>`__ 
+* ports: syslog-ng 3.38.1 `[49] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.38.1>`__ 
+* ports: unbound 1.16.3 `[50] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-3>`__ 
+
+The following operating system hotfix was issued:
+
+* src: vxlan: check the size of data available in mbuf before using them
+* src: vm_page: fix a logic error in the handling of PQ_ACTIVE operations `[51] <FREEBSD:FreeBSD-EN-22:23.vm>`__ 
+* src: cam: provide compatibility for CAMGETPASSTHRU for periph drivers `[52] <FREEBSD:FreeBSD-EN-22:26.cam>`__ 
+* src: loader: fix elf lookup_symbol type filtering `[53] <FREEBSD:FreeBSD-EN-22:27.loader>`__ 
+* src: zfs: fix a pair of bugs in zfs_fhtovp() `[54] <FREEBSD:FreeBSD-EN-22:24.zfs>`__ 
+* src: zfs: fix use-after-free in btree code `[55] <FREEBSD:FreeBSD-EN-22:21.zfs>`__ 
+* src: tcp: finish SACK loss recovery on sudden lack of SACK blocks `[56] <FREEBSD:FreeBSD-EN-22:25.tcp>`__ 
+* src: igc: remove unnecessary PHY ID checks
+* src: ixl: add support for I710 devices and remove non-inclusive language
+* src: ixl: fix SR-IOV panics
+* src: u3g: add more USB IDs
+* src: ixgbe: workaround errata about UDP frames with zero checksum
+* src: hpet: Allow a MMIO window smaller than 1K
+* src: ping: fix handling of IP packet sizes `[57] <FREEBSD:FreeBSD-SA-22:15.ping>`__ 
 
 Known issues and limitations:
 

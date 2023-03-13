@@ -1,0 +1,22 @@
+.. _api_core_firewall:
+
+{{ title }}
+{{ title_underline }}
+{% for controller in controllers %}
+.. csv-table:: {{controller.type}} ({{controller.filename}})
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+{%     for endpoint in controller.endpoints %}
+    "``{{endpoint.method}}``","{{endpoint.module}}","{{endpoint.controller}}","{{endpoint.command}}","{{endpoint.parameters}}"
+{%-    endfor %}
+{%-    if controller.uses %}
+{%         for use in controller.uses %}
+    "``<<uses>>``", "", "", "", "*{{use.type}}* `{{use.name}} <{{use.link}}>`__"
+{%-        endfor %}
+{%-    endif %}
+{% endfor %}
+
+.. Tip::
+
+    In order to inject rules using an API, you may take a look at the :ref:`Firewall Plugin API <api_plugins_firewall>`,
+    currently the core system does not support rule modifications via the API for this topic.

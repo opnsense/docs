@@ -1,6 +1,6 @@
-==========================
-IPsec: Setup Remote Access
-==========================
+=================================================
+Road Warriors - Setup Remote Access
+=================================================
 
 .. contents:: Index
 
@@ -131,11 +131,8 @@ List of examples
   :maxdepth: 2
   :titlesonly:
 
-  ipsec-rw-android
-  ipsec-rw-linux
   ipsec-rw-srv-eapradius
   ipsec-rw-srv-eaptls
   ipsec-rw-srv-ikev1xauth
   ipsec-rw-srv-mschapv2
   ipsec-rw-srv-rsamschapv2
-  ipsec-rw-w7

@@ -1,3 +1,5 @@
+.. _api_core_firewall:
+
 Firewall
 ~~~~~~~~
 
@@ -14,6 +16,7 @@ Firewall
     "``GET``","firewall","alias","getItem","$uuid=null"
     "``GET``","firewall","alias","getTableSize",""
     "``POST``","firewall","alias","import",""
+    "``GET``","firewall","alias","listCategories",""
     "``GET``","firewall","alias","listCountries",""
     "``GET``","firewall","alias","listNetworkAliases",""
     "``POST``","firewall","alias","reconfigure",""
@@ -56,3 +59,9 @@ Firewall
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","firewall","filter_util","ruleStats",""
+
+
+.. Tip::
+
+    In order to inject rules using an API, you may take a look at the :ref:`Firewall Plugin API <api_plugins_firewall>`,
+    currently the core system does not support rule modifications via the API for this topic.

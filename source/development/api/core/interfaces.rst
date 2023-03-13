@@ -16,6 +16,22 @@ Interfaces
 
     "``<<uses>>``", "", "", "", "*model* `Loopback.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Loopback.xml>`__"
 
+.. csv-table:: Resources (VipSettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","interfaces","vip_settings","addItem",""
+    "``POST``","interfaces","vip_settings","delItem","$uuid"
+    "``GET``","interfaces","vip_settings","get",""
+    "``GET``","interfaces","vip_settings","getItem","$uuid=null"
+    "``GET``","interfaces","vip_settings","getUnusedVhid",""
+    "``POST``","interfaces","vip_settings","reconfigure",""
+    "``*``","interfaces","vip_settings","searchItem",""
+    "``POST``","interfaces","vip_settings","set",""
+    "``POST``","interfaces","vip_settings","setItem","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Vip.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Vip.xml>`__"
+
 .. csv-table:: Resources (VlanSettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

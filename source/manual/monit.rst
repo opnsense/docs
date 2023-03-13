@@ -321,3 +321,42 @@ Status
 
 The Monit status panel can be accessed via :menuselection:`Services --> Monit --> Status`. For every active service, it will show the status,
 along with extra information if the service provides it.
+
+-------------------------
+Advanced Configurations
+-------------------------
+
+Some installations require configuration settings that are not accessible in the UI.
+To support these, individual configuration files with a ``.conf`` extension can be put into the
+``/usr/local/etc/monit.opnsense.d`` directory. These files will be automatically included by
+the UI generated configuration. Multiple configuration files can be placed there. But note that
+
+* The wildcard include processing in Monit is based on ``glob(7)``. So the order in which the files are included is in ascending ASCII order.
+* Monit supports up to 1024 include files. If this limit is exceeded, Monit will report an error.
+* It makes sense to check if the configuration file is valid. You can do so by using the following command::
+
+   # Run syntax check for the control file
+   configctl monit check
+
+This is a sample configuration file to customize the limits of the Monit daemon:
+
+::
+
+    ## Set limits for various tests. The following example shows the default values:
+    ##
+    set limits {
+         programOutput:     5120 B,      # check program's output truncate limit
+    #     sendExpectBuffer:  256 B,      # limit for send/expect protocol test
+         fileContentBuffer: 5120 B,      # limit for file content test
+    #     httpContentBuffer: 1 MB,       # limit for HTTP content test
+    #     networkTimeout:    5 seconds   # timeout for network I/O
+    #     programTimeout:    300 seconds # timeout for check program
+    #     stopTimeout:       30 seconds  # timeout for service stop
+    #     startTimeout:      120 seconds  # timeout for service start
+    #     restartTimeout:    30 seconds  # timeout for service restart
+    }
+
+
+.. Warning::
+    It is the sole responsibility of the administrator which places a file in the extension directory to ensure that the configuration is
+    valid.

@@ -23,7 +23,7 @@ For optimum performance and compatibility, these guides are given:
 VMware ESXi
 -----------
 VMware offers full instructions for installing FreeBSD, these can be found
-`here <http://partnerweb.vmware.com/GOSIG/FreeBSD_11x.html>`__.
+`here <https://partnerweb.vmware.com/GOSIG/FreeBSD_13x.html>`__.
 
 To install the VMware tools just goto :menuselection:`System --> Firmware --> Plugins` and install
 **os-vmware** by clicking on the **+** sign next to it.
@@ -97,7 +97,7 @@ Amazon AWS EC2 Cloud
 .. image:: how-tos/images/amazon-web-services.png
     :height: 80px
 
-Installing OPNsense into the Amazon cloud can be a dounting task as no console is
+Installing OPNsense into the Amazon cloud can be a daunting task as no console is
 offered. Luckily an easy to install AMI is also available in the aws marketplace.
 
 See also our how-to for :doc:`how-tos/installaws`.
