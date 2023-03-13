@@ -46,15 +46,15 @@ Getting Started
 User Manual
 ----------------------------
 
-You can get detailed *How to* documents from Zenarmor's Documentation Site located at https://help.sunnyvalley.io/
+You can get detailed *How to* documents from Zenarmor's Documentation Site located at https://www.zenarmor.com/docs/opnsense
 
-* `Dashboard <https://www.sunnyvalley.io/docs/opnsense/customizing-dashboard/dashboard>`_
-* `Status <https://www.sunnyvalley.io/docs/opnsense/customizing-dashboard/status>`_
-* `Reports <https://www.sunnyvalley.io/docs/opnsense/reporting-analytics/reports-overview>`_
-* `Security <https://www.sunnyvalley.io/docs/opnsense/policies/security-rules>`_
-* `Application Control <https://www.sunnyvalley.io/docs/opnsense/policies/application-control-rules>`_
-* `Web Control <https://www.sunnyvalley.io/docs/opnsense/policies/web-control-rules>`_
-* `Configuration <https://www.sunnyvalley.io/docs/opnsense/configuring/overview>`_
+* `Dashboard <https://www.zenarmor.com/docs/opnsense/customizing-dashboard/dashboard>`_
+* `Status <https://www.zenarmor.com/docs/opnsense/customizing-dashboard/status>`_
+* `Reports <https://www.zenarmor.com/docs/opnsense/reporting-analytics/reports-overview>`_
+* `Security <https://www.zenarmor.com/docs/opnsense/policies/security-rules>`_
+* `Application Control <https://www.zenarmor.com/docs/opnsense/policies/application-control-rules>`_
+* `Web Control <https://www.zenarmor.com/docs/opnsense/policies/web-control-rules>`_
+* `Configuration <https://www.zenarmor.com/docs/opnsense/configuring/overview>`_
 
 ----------------------------
 Getting Support
@@ -66,7 +66,7 @@ If you need help with Zenarmor, there is an active discussion on the OPNsense fo
 
 You may also submit bug reports by visiting the *Report Bug* page in the Zenarmor web UI.
 
-With its in-depth coverage, `Zenarmor Documentation <https://www.sunnyvalley.io/docs/opnsense>`_ is always available for reference.
+With its in-depth coverage, `Zenarmor Documentation <https://www.zenarmor.com/docs/opnsense>`_ is always available for reference.
 
 * `OPNsense Forum <https://forum.opnsense.org/index.php?board=38.0>`_
 * `Users' Manual <https://www.sunnyvalley.io/docs/opnsense>`_
