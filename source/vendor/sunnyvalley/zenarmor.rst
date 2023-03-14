@@ -83,8 +83,11 @@ When you buy a Zenarmor Premium Subscription, you are entitled to Zenarmor Basic
 
 Sunny Valley Networks provides Tier 3 Support Options for Zenarmor Channel Partners. To learn more about them, please contact **sensei-partnership -at- sunnyvalley.io** .
 
-**Connect via Social Media**
+**Connect via Social Media or Websites**
 
 * **Twitter**: `@sunnyvalley <https://twitter.com/sunnyvalley>`_
 * **Youtube**: `Sunny Valley Networks Hands-on videos <https://www.youtube.com/watch?v=IMKLO_LHbAY>`_
+* **Company Website**: https://www.sunnyvalley.io
+* **Product Website**: https://www.zenarmor.com
+* **Zenconsole Cloud Management Portal**:  https://dash.zenarmor.com
 * **Sunny Valley Blog**: https://sunnyvalley.io/blog/
