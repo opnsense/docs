@@ -88,7 +88,7 @@ To become a partner, you may apply for partnership via https://www.sunnyvalley.i
 **Connect via Social Media or Websites**
 
 * **Twitter**: `@sunnyvalley <https://twitter.com/sunnyvalley>`_
-* **Youtube**: `Sunny Valley Networks Hands-on videos <https://www.youtube.com/watch?v=IMKLO_LHbAY>`_
+* **Youtube**: `Sunny Valley Networks Hands-on videos <https://www.youtube.com/@zenarmor>`_
 * **Company Website**: https://www.sunnyvalley.io
 * **Product Website**: https://www.zenarmor.com
 * **Zenconsole Cloud Management Portal**:  https://dash.zenarmor.com
