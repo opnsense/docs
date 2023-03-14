@@ -22,16 +22,17 @@ Zenarmor empowers your firewall with the following next generation features:
 1. Application Control
 2. Cloud Application Control \(Web 2.0 Controls\)
 3. Advanced Network Analytics
-4. All-ports full TLS Inspection \(for every TCP port, not just HTTPS\)
+4. Web Filtering & Security
 5. Cloud Threat Intelligence
-6. Encrypted Threats Prevention
-7. Web Filtering & Security
-8. Active Directory Integration
-9. User-based Filtering and Reporting
-10. RESTful API
-11. Cloud based centralized management & Reporting
-12. Application / Web category based Traffic Shaping and Prioritization
-13. Policy based filtering and QoS
+6. User-based Filtering and Reporting
+7. Active Directory Integration
+8. RESTful API
+9. Cloud based centralized management & Reporting
+10. Application / Web category based Traffic Shaping and Prioritization
+11. Policy based filtering and QoS
+12. Encrypted Threats Prevention
+13. All-ports full TLS Inspection \(for every TCP port, not just HTTPS\) *Coming soon
+
 
 
 ----------------------------
