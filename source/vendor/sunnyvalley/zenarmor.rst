@@ -81,7 +81,9 @@ When you buy a Zenarmor Premium Subscription, you are entitled to Zenarmor Basic
 
 **Support Options for Channel Partners**
 
-Sunny Valley Networks provides Tier 3 Support Options for Zenarmor Channel Partners. To learn more about them, please contact **sensei-partnership -at- sunnyvalley.io** .
+Sunny Valley Networks provides Tier 3 Support Options for Zenarmor Channel Partners. To learn more about them, please contact **sensei-partnership -at- sunnyvalley.io**.
+
+To become a partner, you may apply for partnership via https://www.sunnyvalley.io/apply-partnership .
 
 **Connect via Social Media or Websites**
 
