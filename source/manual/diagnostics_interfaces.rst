@@ -163,6 +163,47 @@ Ping
 
 Use ping to establish if a remote host can be reached using ICMP.
 
+==============================================================================================================================================
+
+=========================== ==================================================================================================================
+Hostname or IP              Hostname or IP address to send the icmp packet too
+Address Family              Send using IPv4 or IPv6
+Source address              Source address to use, can be any address configured on this firewall
+Packet size                 Specify the number of data bytes to be sent.
+                            Keep in mind this is the payload size, an IP and ICMP header are added.
+Do not fragment             Set DF bit, can be used to validate if a certain packet size fits a path.
+Description                 Description to be displayed in "jobs" tab
+=========================== ==================================================================================================================
+
+The jobs tab contains all running or executed pings, the following options and properties are available per job:
+
+.. raw:: html
+
+      <ul>
+        <li> <i class="fa fa-fw fa-spinner fa-pulse"></i>Shows the ping is currently active </li>
+        <li> <i class="fa fa-fw fa-remove"></i> Remove ping (stops capture when currently active) </li>
+        <li> <i class="fa fa-fw fa-stop"></i> Stop the current ping </li>
+        <li> <i class="fa fa-fw fa-play"></i> (Re)starts the current ping, removes previous results when executed before </li>
+      </ul>
+
+
+==============================================================================================================================================
+
+=========================== ==================================================================================================================
+description                 Job description
+hostname                    Target hostname or ip address
+source_address              Source address (default empty)
+send                        Number of packets send
+received                    Number of packets received
+min                         min time to live (ms)
+max                         max time to live (ms)
+avg                         average time to live (ms)
+loss                        loss percentage
+last_error                  last found ping error
+=========================== ==================================================================================================================
+
+
+
 ---------------------
 Port Probe
 ---------------------
