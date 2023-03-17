@@ -161,7 +161,8 @@ The jobs tab contains all running or executed captures, the following options ar
 Ping
 ---------------------
 
-Use ping to establish if a remote host can be reached using ICMP.
+Use ping to establish if a remote host can be reached using ICMP echo requests. It's one of the most used tools
+to validate basic connectivity.
 
 ==============================================================================================================================================
 
@@ -171,9 +172,20 @@ Address Family              Send using IPv4 or IPv6
 Source address              Source address to use, can be any address configured on this firewall
 Packet size                 Specify the number of data bytes to be sent.
                             Keep in mind this is the payload size, an IP and ICMP header are added.
-Do not fragment             Set DF bit, can be used to validate if a certain packet size fits a path.
+Do not fragment             Set DF bit.
 Description                 Description to be displayed in "jobs" tab
 =========================== ==================================================================================================================
+
+.. Tip::
+
+      To locate MTU (Maximum transmission unit) issues, use the "Do not fragment" option to force a packet of certain size to travel the network
+
+.. Tip::
+
+      When the default ping is not able to reach the target, but one with a preset source address is, one usally
+      needs to add a static route to force traffic using the correct source address. This is for example common
+      for IPsec policy based tunnels which install a kernel trap on the specified source network.
+
 
 The jobs tab contains all running or executed pings, the following options and properties are available per job:
 
