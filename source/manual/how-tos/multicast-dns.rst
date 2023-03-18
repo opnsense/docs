@@ -23,7 +23,7 @@ Configuration
 -------------
 
 .. Warning::
-    mdns-repeater requires at least 2 interfaces to work.
+    mdns-repeater requires at least 2 interfaces, and no more than 5 interfaces to work.
 
 The configuration is fairly simple. Just enable the service and add the interfaces.
 For example:
