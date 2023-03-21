@@ -234,10 +234,15 @@ Available rulesets
 Emerging Threats
 ................
 
-`Emerging Threats`_ (ET) has a variety of IDS/IPS rulesets. There is a free,
+Emerging Threats (ET) has a variety of IDS/IPS rulesets. There is a free,
 BSD-licensed version and a paid version available.
 
-.. _Emerging Threats: https://doc.emergingthreats.net/bin/view/Main/AboutEmergingThreats
+.. Tip::
+
+    Proofpoint offers a community portal which provides access to documentation and updates about rules,
+    you can visit it at https://community.emergingthreats.net/ . The `Frequently asked questions <https://community.emergingthreats.net/t/frequently-asked-questions/56>`__
+    might be a good place to start reading.
+
 
 ET Open
 +++++++
@@ -248,10 +253,6 @@ ruleset.
 
 OPNsense has integrated support for ETOpen rules.
 
-*   For details and Guidelines see:
-    http://doc.emergingthreats.net/bin/view/Main/EmergingFAQ
-
-*   For rules documentation: http://doc.emergingthreats.net/
 
 ETPro Telemetry
 +++++++++++++++
