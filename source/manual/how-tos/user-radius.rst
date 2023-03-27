@@ -15,6 +15,11 @@ Fill in the form:
 **Services offered**            Authentication *Select Authentication,for Captive portal + accounting*
 **Authentication port value**   1812           *Port number, 1812 is default; for accounting it's 1813*
 **Authentication Timeout**      5              *Timeout for Radius to respond on requests*
+**Synchronize groups**                         *Enable to Synchronize groups, requires the option above*
+**Limit groups**                               *Select list of groups that may be considered during sync**
+**Automatic user creation**                    *When groups are automatically synchronized,
+                                               this offers the ability to automatically create the
+                                               user when it doesn't exist.*
 ============================== =============== =========================================================
 
 Use the tester under :menuselection:`System --> Access --> Tester` to test the Radius server.
