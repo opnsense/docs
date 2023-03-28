@@ -12,87 +12,157 @@ Administration
 The settings on this page concerns logging into OPNsense. The “Secure Shell” settings are described under
 :doc:`Creating Users & Groups</manual/how-tos/user-local>`.
 
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Setting                                      | Explanation                                                           |
-+==============================================+=======================================================================+
-| **Web GUI**                                                                                                          |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Protocol                                     | It is strongly recommended to leave this on “HTTPS”                   |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| SSL Certificate                              | By default, a self-signed certificate is used. Certificates can be    |
-|                                              | added via :menuselection:`System --> Trust --> Certificates`.         |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| SSL Ciphers                                  | Can be used to limit SSL cipher selection in case the system defaults |
-|                                              | are undesired. Note that restrictive use may lead to an inaccessible  |
-|                                              | web GUI.                                                              |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Enable HTTP Strict Transport Security        | Enforces loading the web GUI over HTTPS, even when the connection     |
-|                                              | is hijacked (man-in-the-middle attack), and do not allow the user to  |
-|                                              | trust an invalid certificate for the web GUI.                         |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| TCP port                                     | Can be useful if there are other services that are reachable via port |
-|                                              | 80/443 of the external IP, for example.                               |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Disable web GUI redirect rule                | If you change the port, a redirect rule from port 80/443 will be      |
-|                                              | created. Check this to disable creating this rule.                    |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Disable logging of web GUI successful logins |                                                                       |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Session Timeout                              | Time in minutes to expire idle management sessions.                   |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Disable DNS Rebinding Checks                 | OPNsense contains protection against                                  |
-|                                              | `DNS rebinding <https://en.wikipedia.org/wiki/DNS_rebinding>`__ by    |
-|                                              | filtering out DNS replies with local IPs. Check this box to disable   |
-|                                              | this protection if it interferes with web GUI access or name          |
-|                                              | resolution in your environment.                                       |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Alternate Hostnames                          | Alternate, valid hostnames (to avoid false positives in               |
-|                                              | referrer/DNS rebinding protection).                                   |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| HTTP Compression                             | Reduces size of transfer, at the cost of slightly higher CPU usage.   |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Enable access log                            | Log all access to the Web GUI (for debugging/analysis)                |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Listen interfaces                            | Can be used to limit interfaces on which the Web GUI can be accessed. |
-|                                              | This allows freeing the interface for other services, such as HAProxy.|
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Disable HTTP_REFERER enforcement check       | The origins of requests are checked in order to provide some          |
-|                                              | protection against CSRF. You can turn this off of it interferes with  |
-|                                              | external scripts that interact with the Web GUI.                      |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| **Console**                                                                                                          |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Use the virtual terminal driver (vt)         | When unchecked, OPNsense will use the older sc driver.                |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Primary Console                              | The primary console will show boot script output. All consoles display|
-|                                              | OS boot messages, console messages, and the console menu.             |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Secondary Console                            | See above.                                                            |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Serial Speed                                 | Allows adjusting the baud rate. 115200 is the most common.            |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Use USB-based serial ports                   | Listen on ``/dev/ttyU0``, ``/dev/ttyU1``, … instead of ``/dev/ttyu0``.|
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Password protect the console menu            | Can be unchecked to allow physical console access without password.   |
-|                                              | This can avoid lock-out, but at the cost of attackers being able to   |
-|                                              | do anything if they gain physical access to your system.              |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| **Authentication**                                                                                                   |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Server                                       | Select one or more authentication servers to validate user            |
-|                                              | credentials against. Multiple servers can make sense with remote      |
-|                                              | authentication methods to provide a fallback during connectivity      |
-|                                              | issues. When nothing is specified the default of "Local Database"     |
-|                                              | is used.                                                              |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Disable integrated authentication            | When set, console login, SSH, and other system services can only use  |
-|                                              | standard UNIX account authentication.                                 |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| Sudo                                         | Permit sudo usage for administrators with shell access.               |
-+----------------------------------------------+-----------------------------------------------------------------------+
-| User OTP seed                                | Select groups which are allowed to generate their own OTP seed on the |
-|                                              | password page.                                                        |
-+----------------------------------------------+-----------------------------------------------------------------------+
+
+...............................
+Listen interfaces
+...............................
+
+.. Warning::
+    Before considering the use of manual selected interfaces, make sure to read this chapter so you are aware
+    of the pitfalls upfront. Misconfigurations likely lead to a non accesible web interface and or missing ssh access.
+
+
+Both the WebUI and the Secure Shell server support the option to only listen on specific interfaces, the use of this option
+however comes with clear warnings which you do need to be aware of before deciding to use this option.
+
+By default (our recommended settings), these services listen on all addresses (interfaces).
+
+If for whatever reason, you do need to listen only on specific interfaces, the following rules apply:
+
+*   The interface must always be available, so do not try to bind to vpn instances of any kind (OpenVPN, Wireguard, ...)
+*   The addressing must be fully static, so no IPv6 tracking configured for example
+
+As the webgui is not able to predict with 100% certainty that these rules do apply, it is possible to select interfaces
+that don't support binding for these services.
+
+.. Note::
+    When facing issues with the webgui (and or ssh) and the above rules are not met, please do not bother to open a ticket
+    as these are unsupported scenario's.
+
+
+.. Tip::
+    In case (**for any service**) one would like to prevent binding on all interfaces, it is possible to add a
+    loopback interface (:menuselection:`Interfaces->Other Types->Loopback`), assign an ip address and bind to that.
+    If traffic is being routed through the firewall, the "loopback ip" (some private addres, not in the loopback range)
+    should be directly accessible from the network behind it. For example use an address like :code:`192.192.192.192/32`
+    to access the web interface while your own network is using :code:`192.168.1.0/24`.
+
+    Technologies like Network Address Translation can also be combined if the other end is not aware of the route to
+    this single address.
+
+
+...............................
+Web GUI
+...............................
+
+============================================== ========================================================================
+Protocol                                       It is strongly recommended to leave this on “HTTPS”
+SSL Certificate                                By default, a self-signed certificate is used. Certificates can be
+                                               added via :menuselection:`System --> Trust --> Certificates`.
+SSL Ciphers                                    Can be used to limit SSL cipher selection in case the system defaults
+                                               are undesired. Note that restrictive use may lead to an inaccessible
+                                               web GUI.
+HTTP Strict Transport Security                 Enforces loading the web GUI over HTTPS, even when the connection
+                                               is hijacked (man-in-the-middle attack), and do not allow the user to
+                                               trust an invalid certificate for the web GUI.
+TCP port                                       Can be useful if there are other services that are reachable via port
+                                               80/443 of the external IP, for example.
+Disable web GUI redirect rule                  If you change the port, a redirect rule from port 80/443 will be
+                                               created. Check this to disable creating this rule.
+Session Timeout                                Time in minutes to expire idle management sessions.
+DNS Rebind Check                               OPNsense contains protection against
+                                               `DNS rebinding <https://en.wikipedia.org/wiki/DNS_rebinding>`__ by
+                                               filtering out DNS replies with local IPs. Check this box to disable
+                                               this protection if it interferes with web GUI access or name
+                                               resolution in your environment.
+Alternate Hostnames                            Alternate, valid hostnames (to avoid false positives in
+                                               referrer/DNS rebinding protection).
+HTTP Compression                               Reduces size of transfer, at the cost of slightly higher CPU usage.
+Enable access log                              Log all access to the Web GUI (for debugging/analysis)
+Listen interfaces                              Can be used to limit interfaces on which the Web GUI can be accessed.
+                                               This allows freeing the interface for other services, such as HAProxy.
+HTTP_REFERER enforcement check                 The origins of requests are checked in order to provide some
+                                               protection against CSRF. You can turn this off of it interferes with
+                                               external scripts that interact with the Web GUI.
+============================================== ========================================================================
+
+...............................
+Secure Shell
+...............................
+
+User accounts can be used for logging in to the web frontend, as well as for logging in to the console (via VGA,
+serial or SSH). The latter will only work if the user shell is not set to ``/sbin/nologin``.
+
+In order to access OPNsense via SSH, SSH access will need to be configured via :menuselection:`System --> Settings --> Administration`.
+Under the "Secure Shell" heading, the following options are available:
+
+============================================== ========================================================================
+Secure Shell Server                            Enable a secure shell service
+Login Group                                    Select the allowed groups for remote login. The "wheel" group is
+                                               always set for recovery purposes and an additional local group can be
+                                               selected at will. Do not yield remote access to non-administrators
+                                               as every user can access system files using SSH or SFTP.
+Permit Root Login                              Root login is generally discouraged. It is advised to log in via
+                                               another user and switch to root afterwards.
+Permit password login                          When disabled, authorized keys need to be configured for each User
+                                               that has been granted secure shell access.
+SSH port	                                   Port to listen on, default is 22
+Listen Interfaces                              Only accept connections from the selected interfaces.
+                                               Leave empty to listen globally. Use with extreme care.
+Key exchange algorithms                        The key exchange methods that are used to generate per-connection
+                                               keys
+Ciphers                                        The ciphers to encrypt the connection
+MACs                                           The message authentication codes used to detect traffic modification
+Host key algorithms                            Specifies the host key algorithms that the server offers
+Public key signature algorithms                The signature algorithms that are used for public key authentication
+============================================== ========================================================================
+
+
+
+...............................
+Console
+...............................
+
+In case of an emergency, it's always practical to make sure to configure a console to be able to access the firewall
+when network connectivity is not possible.
+
+.. Tip::
+    After initial installation, always make sure to test if the console actually works. When concluding the console
+    is not functional when you need it can be very unpractical.
+
+
+============================================== ========================================================================
+Use the virtual terminal driver (vt)           When unchecked, OPNsense will use the older sc driver.                |
+Primary Console                                The primary console will show boot script output. All consoles display|
+                                               OS boot messages, console messages, and the console menu.             |
+Secondary Console                              See above.                                                            |
+Serial Speed                                   Allows adjusting the baud rate. 115200 is the most common.            |
+Use USB-based serial ports                     Listen on ``/dev/ttyU0``, ``/dev/ttyU1``, … instead of ``/dev/ttyu0``.|
+Password protect the console menu              Can be unchecked to allow physical console access without password.   |
+                                               This can avoid lock-out, but at the cost of attackers being able to   |
+                                               do anything if they gain physical access to your system.              |
+============================================== ========================================================================
+
+
+...............................
+Authentication
+...............................
+
+The authentication section of the Administrationm settings offers general security settings for users logging into the
+firewall.
+
+============================================== ========================================================================
+Server                                         Select one or more authentication servers to validate user            |
+                                               credentials against. Multiple servers can make sense with remote      |
+                                               authentication methods to provide a fallback during connectivity      |
+                                               issues. When nothing is specified the default of "Local Database"     |
+                                               is used.                                                              |
+Disable integrated authentication              When set, console login, SSH, and other system services can only use  |
+                                               standard UNIX account authentication.                                 |
+Sudo                                           Permit sudo usage for administrators with shell access.               |
+User OTP seed                                  Select groups which are allowed to generate their own OTP seed on the |
+                                               password page.                                                        |
+============================================== ========================================================================
 
 
 ----
@@ -119,50 +189,51 @@ of restart and reload is subject to their respective services as not all softwar
 
 The most common core commands are as follows:
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Command in GUI                              | Command in shell                       | Supported parameters    | Background information                      |
-+==============================================================================================================================================================+
++=============================================+========================================+=========================+=============================================+
 | Update and reload firewall aliases          | configctl filter refresh_aliases       | No parameters           | Updates IP aliases for DNS entries and MAC  |
 |                                             |                                        |                         | addresses as well as URL tables.            |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Firmware update check                       | configctl firmware poll                | No parameters           | Refresh current update status from firmware |
 |                                             |                                        |                         | mirror for e.g. remote status check via     |
 |                                             |                                        |                         | API. Note this utilizes a skew interval of  |
 |                                             |                                        |                         | 25 minutes.                                 |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Firmware changelog update                   | configctl firmware changelog cron      | No parameters           | Refresh current changelog status from       |
 |                                             |                                        |                         | authoritative firmware location to preview  |
 |                                             |                                        |                         | changelogs for new versions. Note this      |
 |                                             |                                        |                         | utilizes a skew interval of 25 minutes and  |
 |                                             |                                        |                         | is also performed by the firmware update    |
 |                                             |                                        |                         | check.                                      |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Automatic firmware update                   | configctl firmware auto-update         | No parameters           | Perform a minor update if applicable.       |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Update and reload intrusion detection rules | configctl ids update                   | No parameters           | Fetches remote rules and reloads the IDS    |
 |                                             |                                        |                         | instance to make use of newly fetched rules.|
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Periodic interface reset                    | configctl interface reconfigure        | identifier: Internal    | Cycle through an interface reset that       |
 |                                             | [identifier]                           | name of the interface   | removes all connectivity and reactivates    |
 |                                             |                                        | as shown in assignments | it cleanly.                                 |
 |                                             |                                        | or overview page, e.g.  |                                             |
 |                                             |                                        | "lan", "wan", "optX".   |                                             |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Download and reload external proxy ACLs     | configctl proxy fetchacls              | No parameters           | Fetch and activate the external ACL files   |
 |                                             |                                        |                         | for configured blocklists.                  |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Remote backup                               | configctl system remote backup         | No parameters           | Trigger the remote backup at the specified  |
 |                                             |                                        |                         | time as opposed to its nightly default.     |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Issue a reboot                              | configctl system reboot                | No parameters           | Perform a reboot at the specified time.     |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | HA update and reconfigure backup            | configctl system ha_reconfigure_backup | No parameters           | Synchronize the configuration to the backup |
 |                                             |                                        |                         | firewall and restart its services to apply  |
 |                                             |                                        |                         | the changes.                                |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Update Unbound DNSBLs                       | configctl unbound dnsbl                | No parameters           | Update the the DNS blocklists and apply the |
 |                                             |                                        |                         | changes to Unbound.                         |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | ZFS pool trim                               | configctl zfs trim [pool]              | pool: ZFS pool name to  | Initiates an immediate on-demand TRIM       |
 |                                             |                                        | perform the action on   | operation for all of the free space in a    |
 |                                             |                                        |                         | pool. This operation informs the underlying |
@@ -170,14 +241,14 @@ The most common core commands are as follows:
 |                                             |                                        |                         | which are no longer allocated and allows    |
 |                                             |                                        |                         | thinly provisioned devices to reclaim the   |
 |                                             |                                        |                         | space.                                      |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | ZFS pool scrub                              | configctl zfs scrub [pool]             | pool: ZFS pool name to  | Begins a scrub or resumes a paused scrub.   |
 |                                             |                                        | perform the action on   | The scrub examines all data in the specified|
 |                                             |                                        |                         | pools to verify that it checksums correctly.|
 |                                             |                                        |                         | For replicated (mirror, raidz, or draid)    |
 |                                             |                                        |                         | devices, ZFS automatically repairs any      |
 |                                             |                                        |                         | damage discovered during the scrub.         |
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 
 -------
 General
