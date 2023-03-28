@@ -229,6 +229,11 @@ Minimum TTL for RRsets and messages   Configure a minimum Time to live in second
                                       trouble as the data in the cache might not match up with the actual data anymore.
 TTL for Host cache entries            Time to live in seconds for entries in the host cache.
                                       The host cache contains round-trip timing, lameness and EDNS support information.
+Keep probing down hosts               Keep probing hosts that are down in the infrastructure host cache. Hosts that are down
+                                      are probed about every 120 seconds with an exponential backoff. If hosts do not respond
+                                      within this time period, they are marked as down for the duration of the host cache TTL.
+                                      This setting can be used in conjunction with "TTL for Host cache entries" to increase
+                                      responsiveness if internet connectivity bounces happen frequently.
 Number of Hosts to cache              Number of hosts for which information is cached.
 Unwanted Reply Threshold              If enabled, a total number of unwanted replies is kept track of in every
                                       thread. When it reaches the threshold, a defensive action is taken and
@@ -278,6 +283,7 @@ Enable integrated dns blacklisting using one of the predefined sources or custom
 
 ====================================  ===============================================================================
 Enable                                Enable blacklists
+Enable SafeSearch                     Force the usage of SafeSearch on Google, DuckDuckGo, Bing, Qwant, PixaBay and YouTube.
 Type of DNSBL                         Predefined external sources
 URLs of Blacklists                    Additional http[s] location to download blacklists from, only plain text
                                       files containing a list of fqdn's (e.g. :code:`my.evil.domain.com`) are
@@ -289,6 +295,8 @@ Whitelist Domains                     When a blacklist item contains a pattern d
 Blocklist Domains                     List of domains to explicitly block. Regular expressions are not supported.
                                       Passed domains explicitly blocked using the :doc:`/manual/reporting_unbound_dns`
                                       page will show up in this list.
+Wildcard Domains                      List of wildcard domains to blocklist. All subdomains of the given domain will
+                                      be blocked. Blocking first-level domains (e.g. 'com') is not supported.
 Destination Address                   Specify an IP address to return when DNS records are blocked. Can be used to
                                       redirect such domains to a separate webserver informing the user that the
                                       content has been blocked. The default is 0.0.0.0. Any value in this field
