@@ -75,6 +75,10 @@ Here are the full patch notes:
 * ports: squid 5.8 `[5] <http://www.squid-cache.org/Versions/v5/squid-5.8-RELEASENOTES.html>`__ 
 * ports: strongswan EAP-TLS upstream fix `[6] <https://github.com/opnsense/core/issues/6415>`__ 
 
+A hotfix release was issued as 23.1.4_1:
+
+* dhcp: revert sending HUP to radvd for restart
+
 
 
 --------------------------------------------------------------------------
