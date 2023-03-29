@@ -81,6 +81,13 @@ Source network          **10.0.99.0/24**
     as the registration is being arranged using an `updown event <https://docs.strongswan.org/docs/5.9/plugins/updown.html>`__
 
 
+.. Note::
+
+    Some scenario's require multiple clients being connected to the same "child" (such as mobile), when the other
+    end pushes it's network (`destination`), it is possible to hook to the correct connection by connecting the
+    manual policy directly to the connection child. In these cases the :code:`reqid` is dynamic (leave blank) in the
+    connection child. The "Child" option can be used for these manual policies.
+
 
 --------------------------------
 Configure NAT
