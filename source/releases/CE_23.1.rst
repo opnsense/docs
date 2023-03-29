@@ -30,6 +30,47 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.1.5 (March 29, 2023)
+--------------------------------------------------------------------------
+
+
+This moves MVC/API migration a bit further and fixes the radvd restart
+behaviour using SIGHUP which caused issues with the initial 23.1.4.
+Unbound gained wildcard domain blocking and its backend was further
+refactored and improved upon.
+
+Here are the full patch notes:
+
+* system: timezone parsing issue for zones west of UTC using "-"
+* system: migrate services page and widget to MVC/API
+* system: move web GUI service definition to correct file
+* system: add service_by_filter() service search extension
+* system: pin down the auto-far gateway selection and routing log adjustments
+* system: prevent applying tunables which are already set
+* firewall: refactor alias update scripts
+* dhcp: bring back the SIGHUP handling of radvd due to fix upstream
+* ipsec: replace status call with portable alternative
+* network time: migrate service status to PID file
+* openvpn: fix client output for widget (contributed by kulikov-a)
+* openvpn: migrate connection status page and widget to MVC/API
+* unbound: replace status call with portable alternative
+* unbound: bring back missing advanced page ACL entry
+* unbound: implement wildcard blocking and refactor DNSBL module
+* unbound: account for CNAME redirection in DNSBL module
+* unbound: prevent logging SERVFAIL twice in DNSBL module
+* unbound: allow scripts to extend blocklist functionality
+* mvc: add MaskPerItem toggle to allow regex validation per entry in CSVListField
+* ui: add a fail() handler to disable action button spinner
+* plugins: os-frr 1.33 `[1] <https://github.com/opnsense/plugins/blob/stable/23.1/net/frr/pkg-descr>`__ 
+* src: pfsync: fix pfsync_undefer_state() locking
+* src: pfsync: add missing unlock in pfsync_defer_tmo()
+* src: epair: merged assorted fixes
+* ports: openssl fix for CVE-2023-0464
+* ports: radvd fix for SIGHUP behaviour
+
+
+
+--------------------------------------------------------------------------
 23.1.4 (March 21, 2023)
 --------------------------------------------------------------------------
 
