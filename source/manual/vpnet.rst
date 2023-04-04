@@ -252,7 +252,9 @@ Tuning considerations
 .................................
 
 Depending on the workload (many different IPsec flows or a single flow), it might help to enable multithreaded crypto mode
-on :code:`ipsec`, in which case cryptographic packets are dispatched to multiple processors.
+on :code:`ipsec`, in which case cryptographic packets are dispatched to multiple processors (especially when only a single
+tunnel is being used).
+
 In order to do so, add or change the following tunable in :menuselection:`System --> Settings --> Tunables`:
 
 .. Note::
