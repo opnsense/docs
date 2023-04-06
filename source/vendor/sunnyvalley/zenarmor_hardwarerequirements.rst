@@ -25,11 +25,12 @@ Below is the recommended minimum hardware requirements for Zenarmor based on the
 
 =====================  =========================  ==================  ======================================================================
  **# Active Devices**  **Maximum WAN Bandwidth**  **Minimum Memory**  **Minimum CPU**
- 0-25                  50 Mbps                    4 GB                A Dual-Core CPU (x86_64 compatible, single core PassMark score of 200)
- 25-50                 150 Mbps - 10 Kpps         4 GB                Intel Dual-Core i5 2.0 GHz (2 Cores, 4 Threads) or equivalent
- 50-100                200 Mbps - 20 Kpps         8 GB                Intel Dual-Core i5 2.2 GHz (2 Cores, 4 Threads) or equivalent
- 100-250               300 Mbps - 40 Kpps         16 GB               Intel Dual-Core i5 3.2 GHz (2 Cores, 4 Threads) or equivalent
- 250-1000              500 Mbps - 100 Kpps        32 GB               Intel Quad-Core i7 3.4 GHz (4 Cores, 8 Threads) or equivalent
+ 0-50                  300 Mbps                   1 GB                A Dual-Core CPU (x86_64 compatible, single core PassMark score of 200)
+ 50-100                500 Mbps - 10 Kpps         4 GB                Intel Dual-Core i3 2.0 GHz (2 Cores, 4 Threads) or equivalent
+ 100-250               1 Gbps - 20 Kpps	          8 GB                Intel Dual-Core i5 2.2 GHz (2 Cores, 4 Threads) or equivalent
+ 250-1000              1-2 Gbps 40 Kpps           16 GB               Intel Dual-Core i5 3.20 GHz (2 Cores, 4 Threads) or equivalent
+ 1000-2000             1-2 Gbps                   32 GB               Intel Quad-Core i7 3.40 GHz (4 Cores, 8 Threads) or equivalent
+ 2000+                 2-4.5 Gbps                 64 GB               Intel Quad-Core i9 3.0 GHz (24 Cores, 48 Threads) or equivalent
 =====================  =========================  ==================  ======================================================================
 
  **Note**
