@@ -19,7 +19,7 @@ Because the analytics module relies on Elasticsearch to process large amounts of
 
 **Tip**
 
-    If the number of active devices are more than 250 and the sustained WAN bandwidth is higher than 100 Mbps, we do not recommend deploying Zenarmor as a virtual guest since resources in virtual environments are generally shared between guest systems. 
+    If the number of active devices are more than 500 and the sustained WAN bandwidth is higher than 500 Mbps, we do not recommend deploying Zenarmor as a virtual guest since resources in virtual environments are generally shared between guest systems.
 
 Below is the recommended minimum hardware requirements for Zenarmor based on the number of devices and the amount of sustained bandwidth:
 
@@ -35,7 +35,7 @@ Below is the recommended minimum hardware requirements for Zenarmor based on the
 
  **Note**
  
-    Zenarmor requires at least 2 GB of memory. The installer will not continue if you have less than 2 GB of RAM. We recommend 4 GB memory to have an improved experience. 
+   Zenarmor requires at least 1 GB of memory. Installer will not continue if you have less than 1 GB of RAM. We recommend 8 GB memory to have an exceptional reporting experience with elasticsearch database. 
 
 -----------------
 Ethernet Adapter
