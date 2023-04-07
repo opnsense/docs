@@ -19,22 +19,23 @@ Because the analytics module relies on Elasticsearch to process large amounts of
 
 **Tip**
 
-    If the number of active devices are more than 250 and the sustained WAN bandwidth is higher than 100 Mbps, we do not recommend deploying Zenarmor as a virtual guest since resources in virtual environments are generally shared between guest systems. 
+    If the number of active devices are more than 500 and the sustained WAN bandwidth is higher than 500 Mbps, we do not recommend deploying Zenarmor as a virtual guest since resources in virtual environments are generally shared between guest systems.
 
 Below is the recommended minimum hardware requirements for Zenarmor based on the number of devices and the amount of sustained bandwidth:
 
 =====================  =========================  ==================  ======================================================================
  **# Active Devices**  **Maximum WAN Bandwidth**  **Minimum Memory**  **Minimum CPU**
- 0-25                  50 Mbps                    4 GB                A Dual-Core CPU (x86_64 compatible, single core PassMark score of 200)
- 25-50                 150 Mbps - 10 Kpps         4 GB                Intel Dual-Core i5 2.0 GHz (2 Cores, 4 Threads) or equivalent
- 50-100                200 Mbps - 20 Kpps         8 GB                Intel Dual-Core i5 2.2 GHz (2 Cores, 4 Threads) or equivalent
- 100-250               300 Mbps - 40 Kpps         16 GB               Intel Dual-Core i5 3.2 GHz (2 Cores, 4 Threads) or equivalent
- 250-1000              500 Mbps - 100 Kpps        32 GB               Intel Quad-Core i7 3.4 GHz (4 Cores, 8 Threads) or equivalent
+ 0-50                  300 Mbps                   1 GB                A Dual-Core CPU (x86_64 compatible, single core PassMark score of 200)
+ 50-100                500 Mbps - 10 Kpps         4 GB                Intel Dual-Core i3 2.0 GHz (2 Cores, 4 Threads) or equivalent
+ 100-250               1 Gbps - 20 Kpps	          8 GB                Intel Dual-Core i5 2.2 GHz (2 Cores, 4 Threads) or equivalent
+ 250-1000              1-2 Gbps 40 Kpps           16 GB               Intel Dual-Core i5 3.20 GHz (2 Cores, 4 Threads) or equivalent
+ 1000-2000             1-2 Gbps                   32 GB               Intel Quad-Core i7 3.40 GHz (4 Cores, 8 Threads) or equivalent
+ 2000+                 2-4.5 Gbps                 64 GB               Intel Quad-Core i9 3.0 GHz (24 Cores, 48 Threads) or equivalent
 =====================  =========================  ==================  ======================================================================
 
  **Note**
  
-    Zenarmor requires at least 2 GB of memory. The installer will not continue if you have less than 2 GB of RAM. We recommend 4 GB memory to have an improved experience. 
+   Zenarmor requires at least 1 GB of memory. Installer will not continue if you have less than 1 GB of RAM. We recommend 8 GB memory to have an exceptional reporting experience with elasticsearch database. 
 
 -----------------
 Ethernet Adapter

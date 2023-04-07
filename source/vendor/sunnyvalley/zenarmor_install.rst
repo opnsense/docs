@@ -117,7 +117,7 @@ Your hardware will be analyzed to ensure it meets the minimum requirements. You 
 
 * Select the Ethernet Interface(s) to protect. To do so, click on an interface and use the right/left arrow buttons to move it to protected/unprotected interfaces combo box.
 
-For detailed information on "Deployment Modes", `see here <https://www.sunnyvalley.io/docs/guides/deployment-modes>`_. 
+For detailed information on "Deployment Modes", see `here <https://www.zenarmor.com/docs/guides/deployment-modes>`_. 
 
 .. image:: images/zenarmor-wizard-interface-selection-available.png
     :width: 100%
@@ -199,5 +199,5 @@ Zenarmor may support up to 1,000 concurrent users on an average PC. You can set 
 
 .. raw:: html
 
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Hvz1qhNBZdo&t=2s" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Hvz1qhNBZdo" frameborder="0" allowfullscreen></iframe>
 
