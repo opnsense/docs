@@ -124,6 +124,30 @@ a "kernel route" is installed as well, which traps traffic before normal routing
 
 
 .................................
+Firewall rules
+.................................
+
+When using the legacy tunnels and :code:`Disable Auto-added VPN rules` is not checked in :menuselection:`VPN --> IPsec --> Advanced Settings`
+some automatic firewall rules are created for remote hosts connecting to this one.
+The new connections feature does not offer this and (WAN) rules have to be specified manually in order to connect to IPsec on this host.
+
+The relevant protocols and ports for IPsec are the following:
+
+* Protocol: ESP (https://en.wikipedia.org/wiki/IPsec#Encapsulating_Security_Payload)
+* Port: 500/UDP (https://en.wikipedia.org/wiki/Internet_Security_Association_and_Key_Management_Protocol)
+* Port: 4500/UDP (https://en.wikipedia.org/wiki/NAT_traversal#IPsec)
+
+.. Note::
+
+  One of the main reasons we are not offering automatic rules is that their either more open than expected (allow IPsec from anywhere)
+  or too closed as the rule engine will "guess" the remote endpoint (in case of a fqdn).
+
+
+The default behavior of our firewall is to block inbound traffic, which also means traffic using the tunnel should
+be allowed explicitly, the :menuselection:`Firewall --> Rules --> IPsec` menu items offer access to the IPsec traffic policies.
+
+
+.................................
 Implementation schemes
 .................................
 
