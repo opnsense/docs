@@ -6,6 +6,9 @@ As part of the OPNsense Business Edition, Deciso offers a plugin to keep all you
 an easy entry point to manage them.
 
 
+.. contents:: Index
+
+
 Installation
 ---------------------------
 
@@ -51,6 +54,18 @@ the url from the machine and the API key and secret generated above.
      <i class="fa fa-fw fa-trash-o"></i> Delete host configuration<br/><br/>
 
 
+Central WebGui certificate management
+......................................
+
+The host configuration offers an option to link a central certificate to the managed host, in which case
+the certificate will be distributed to the host (if :code:`WebGui` is being provisioned).
+
+Using this feature, you're able to centrally manage certificates (manually or using ACME) easily.
+
+.. Tip::
+
+    Add :code:`OPNcentral - provision / reconfigure remote hosts` in :menuselection:`System --> Settings --> Cron`
+    with a daily schedule to automatically provision all attached firewalls on a daily basis.
 
 
 Alter generic host settings
@@ -268,6 +283,11 @@ inspect status and push options to the attached firewalls.
     Be **very** careful pushing settings to your connected firewall which may disconnect your session, such as firewall and routing related
     options. The central management host can't predict if settings you plan to make lead to an inaccesible firewall.
 
+.. Tip::
+
+    Add :code:`OPNcentral - provision / reconfigure remote hosts` in :menuselection:`System --> Settings --> Cron`
+    with a daily schedule to automatically provision all attached firewalls on a daily basis.
+
 
 All provisioning classes known by the management machine will be shown in the table, combined with the status of each section.
 OPNcentral calculates if settings are equal, keeps track of changes and restarts related services when needed.
@@ -283,6 +303,8 @@ You can either selectlively reconfigure specific hosts with the checkbox or reco
      <i class="fa fa-refresh"></i> Changes ready to commit <br/>
      <i class="fa fa-question-circle"></i> Unknown yet configured class <br/>
      <i class="fa fa-times text-danger" style="color:#F05050"></i> Unable to connect <br/><br/>
+
+
 
 
 Provisioning classes
@@ -405,9 +427,10 @@ Merging categories will preserve the ones that are currently used on the remote 
 WebGui (Administration)
 ....................................................
 
-To prevent breakage after synchronisation, the certificate used by the webgui will be preserved after synchronisation.
+To prevent breakage after synchronisation, the certificate used by the webgui will be preserved after synchronisation
+(or the one provided in the host configuration will be shipped).
 
 .. Note:
 
-    Currently it's not possible to merge certificates and webgui admin settings, as the certificate store will be
-    overwritten in that case.
+    Currently it's not possible to merge certificates and webgui admin settings, as the certificate store will potentially
+    be overwritten in that case.
