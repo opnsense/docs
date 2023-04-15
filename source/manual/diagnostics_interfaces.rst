@@ -228,3 +228,18 @@ Trace Route
 
 Use `traceroute <https://www.freebsd.org/cgi/man.cgi?query=traceroute>`__ /  `traceroute6 <https://www.freebsd.org/cgi/man.cgi?query=traceroute6>`__
 to measure the path traffic would follow when trying to reach a specific host.
+
+==============================================================================================================================================
+
+=========================== ==================================================================================================================
+Hostname or IP              Target hostname or ip address
+Address Family              Address family to use
+Protocol                    Protocol to use for the trace, by default UDP is used, if this doesn't work, ICMP is available as alternative
+Source address              Source address (default empty)
+=========================== ==================================================================================================================
+
+
+.. Tip::
+      The result grid also contains the `autonomous system number <https://en.wikipedia.org/wiki/Autonomous_system_(Internet)>`__
+      which can be practical if you want to filter traffic to or from a specific party. Use :menuselection:`Firewall --> Aliases`
+      to collect the associated networks and add them in rules.
