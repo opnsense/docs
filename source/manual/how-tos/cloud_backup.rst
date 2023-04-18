@@ -233,7 +233,8 @@ If you open it, you will see at lease a single backed up configuration file:
 
 -  `Official website of Google Drive <https://www.google.com/drive/>`__
 
+
 .. rubric:: Notes
    :name: notes
 
-:sup:`1` As of OPNsense version 1.15.8 .2 (25 March 2015)
+:sup:`1` As of OPNsense version 15.1.8.2 (25 March 2015)
