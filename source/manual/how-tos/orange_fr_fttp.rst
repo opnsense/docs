@@ -66,7 +66,7 @@ These parameters should be passed as comma separated options in the 'Request Opt
 Now for the regional specific part.
 
 Some areas of France require that the DHCP and DHCP6 requests are made with a VLAN-PCP of 6. If you are in one of these regions then
-this can be done via the 'Option Modifiers'.
+this can be done via 'Use VLAN priority' interface settings. Make sure to set this for both DHCP and DHCP6 at the same time.
 
 .. Note::
     The vlan-parent is the physical WAN interface - igb0, em0 etc.
