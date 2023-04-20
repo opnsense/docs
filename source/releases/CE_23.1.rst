@@ -30,6 +30,74 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.1.6 (April 20, 2023)
+--------------------------------------------------------------------------
+
+
+Two major improvements being shipped today are standalone core DNS
+support for Bind and Dnscrypt-Proxy plugins as well as OpenVPN group
+firewall alias type.  The latter makes it easier to manage distinct
+policies for connected VPN users.  For more details please refer to
+the documentation listed below.
+
+The other honorable mention is the netmap work we have been doing
+with Zenarmor and Klara on the FreeBSD kernel side which brings
+bridge device support as well as a considerable improvement to the
+emulated mode where several packet stalls and mbuf leaks have been
+identified and subsequently fixed.  This should have an operational
+impact on Suricata (IPS mode) and Zenarmor.  The state is much better
+now but please do not hesitate to contact us about issues that you
+might still be having with netmap-based packet flows as the topic is
+a rather complex one.
+
+Orange FR users be aware that your ISP now requires strict VLAN PCP
+on all DHCPv4 requests so please now set 'Use VLAN priority' interface
+setting for both DHCPv4 and DHCPv6.  The 'Option Modifiers' override
+for "vlan-pcp" in DHCPv4 can be removed.
+
+Here are the full patch notes:
+
+* system: register DNS service ports for unified use across core and plugins
+* system: serialize deferred requests for web GUI restart
+* system: relocate API messages to backend log target as they currently end up in captive portal logs
+* system: remove /31 subnet restriction in wizard
+* system: use data attribute to find existing rows in service widget to avoid special character issues (contributed by Alexander O'Mara)
+* system: allow non-system group delete after faulty PHP 8 warning fix (contributed by kulikov-a)
+* system: handle empty DNS server gateway (contributed by Nicolas Thumann)
+* reporting: translate invalid interface name characters for NetFlow/Netgraph use
+* reporting: sort interfaces by description in health graphs
+* interfaces: ping diagnostic tool was rewritten using MVC/API
+* interfaces: allow to set PCP value on IPv4 DHCP traffic to address recent Orange FR changes
+* firewall: allow to create aliases for logged-in OpenVPN users `[1] <https://docs.opnsense.org/manual/aliases.html#openvpn-group>`__ 
+* firewall: leave out fractional seconds from timestamps in aliases
+* firewall: fix progress bar default value (contributed by Nicolas Thumann)
+* dhcp: fix too many addresses issue in radvd RDNSS setting
+* dhcp: add missing double quotes in hostname handling
+* firmware: remove flavouring support from update tools
+* ipsec: pull data for dashboard widget exclusively from backend
+* ipsec: move XAuth out of "IKE Extensions" block
+* ipsec: add connection child as option for manual SPDs
+* ipsec: another small GUI fix for basic log option in advanced settings
+* openvpn: fix dashboard widget and add missing byte data to status call
+* plugins: os-bind 1.26 `[2] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/bind/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.4 `[3] <https://github.com/opnsense/plugins/blob/stable/23.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-ddclient 1.12 `[4] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.13 `[5] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-nginx 1.32 `[6] <https://github.com/opnsense/plugins/blob/stable/23.1/www/nginx/pkg-descr>`__ 
+* plugins: os-upnp now allows subnet mask 0 in rules (contributed by Reiko Asakura)
+* src: bridge: add support for emulated netmap mode `[7] <https://github.com/opnsense/src/commit/eebd4b140f>`__ 
+* src: epair: also remove vlan metadata from mbufs
+* src: ifconfig: fix configuring if_bridge with additional operating parameters
+* src: netmap: fix queue stalls with generic interfaces `[8] <https://github.com/opnsense/src/commit/cc92d78fa5>`__ 
+* src: netmap: assorted upstream stable patches
+* src: sched_ule: assorted fixes to address issues on newer AMD platforms
+* ports: curl 8.0.1 `[9] <https://curl.se/changes.html#8_0_1>`__ 
+* ports: ifinfo now also prints interface index (contributed by Nicolas Thumann)
+* ports: php 8.1.17 `[10] <https://www.php.net/ChangeLog-8.php#8.1.17>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.1.5 (March 29, 2023)
 --------------------------------------------------------------------------
 
@@ -67,6 +135,16 @@ Here are the full patch notes:
 * src: epair: merged assorted fixes
 * ports: openssl fix for CVE-2023-0464
 * ports: radvd fix for SIGHUP behaviour
+
+A hotfix release was issued as 23.1.5_2:
+
+* firewall: ignore empty lines when reading current alias content using pfctl
+* network time: revert PID file use as it is still unreliable with ntpd
+
+A hotfix release was issued as 23.1.5_4:
+
+* openvpn: fix typo in widget missing virtual address display
+* unbound: translate empty values to empty strings in DNSBL module
 
 
 
