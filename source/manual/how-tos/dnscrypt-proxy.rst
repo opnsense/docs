@@ -9,22 +9,13 @@ Installation
 First of all, you have to install the dnscrypt-proxy plugin (os-dnscrypt-proxy) from the plugins view
 reachable via :menuselection:`System --> Firmware --> Plugins`.
 
-After a page reload you will get a new menu entry under **Services** for DNSCrypt-Proxy. 
+After a page reload you will get a new menu entry under **Services** for DNSCrypt-Proxy.
 
 When you start the daemon, it looks for a list of public DNS server from here:
 https://dnscrypt.info/public-servers
 
 Depending on all settings below the list can be shortened to your choice, like only IPv4, or logging disabled.
-The fastest two servers will be used for DNS queries. If you use Unbound as your main resolver and want to
-send your queries to Unbound first and forward to DNSCrypt-Proxy, just set this in your Unbound Custom Forwarding
-entries:
-
-====================================  ===============================================================================
-Enabled                               Checked
-Domain                                <empty>
-Server IP                             127.0.0.1
-Port                                  5353
-====================================  ===============================================================================
+The fastest two servers will be used for DNS queries.
 
 ----------------
 General Settings
@@ -34,8 +25,9 @@ General Settings
     Enable and start DNSCrypt-Proxy.
 :Listen Address:
     Here you set the addresses and ports to listen on. Default is localhost and port 5353.
-    If you want it to listen to port 53 you should enable **Allow Privileged Ports**, especially
-    when the system itself should treat it as a resolver. 
+    If you want it to listen to port 53 you must enable **Allow Privileged Ports**, especially
+    when the system itself should treat it as a resolver.
+    required when using this service as a standalone core DNS server.
 :Allow Privileged Ports:
     This allows the service to listen on ports below 1024, like 53.
 :Max Client Connections:
@@ -74,7 +66,7 @@ General Settings
     This is a normal, non-encrypted DNS resolver, that will be only used for one-shot queries when
     retrieving the initial resolvers list, and only if the system DNS configuration does not work.
 :Block IPv6:
-    Immediately respond to IPv6-related queries with an empty response. 
+    Immediately respond to IPv6-related queries with an empty response.
     This makes things faster when there is no IPv6 WAN connectivity.
 :Cache:
     Enable a DNS cache to reduce latency and outgoing traffic.
@@ -95,17 +87,12 @@ Example: Standalone DNS
 
 You can use the DNSCrypt-Proxy as a full-featured standalone DNS instead of Unbound or Dnsmasq.
 This setup has the advantage that you do not need a forwarder solution for encrypting DNS requests
-or the usage of DNSBL. 
+or the usage of DNSBL.
 
 To do so go to **Services->Unbound DNS->General** and uncheck *Enable*. If you are using Dnsmasq
 go to **Services->Dnsmasq DNS->Settings** and uncheck *Enable*. Now change to **Services->DNSCrypt-Proxy->Configuration**
-and add your Local LAN IP address to the *Listen Address* field, e.g. 192.168.2.1:53. 
-
-For IPv6 with dynamic prefixes you can work around this with ::1:53 as *Listen Address* and add
-a Port Forward rule, matching every IPv6 UDP traffic, port 53, redirect to ::1.
-
-Optionally you can set :53 to listen on all addresses like the default behaviour in Unbound.
+and add the *Listen Address* 0.0.0.0:53 as well as [::]:53 for the service to be considered as
+standalone by the core system.
 
 Now you can go on with your configuration task, like choosing which servers to use, privacy policy or caching.
 Also cloaking (overrides) or DNSBL can be used without any workarounds.
-
