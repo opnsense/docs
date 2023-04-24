@@ -3,7 +3,7 @@ BIOS updates
 ====================================
 
 This page is dedicated to up-to-date BIOS update downloads as well as a generic instruction on
-how to install them. 
+how to install them.
 
 =====================================================================================================================
 
@@ -25,7 +25,7 @@ DEC800 & DEC3800 series
 +===============+=========================================================================+================================================================+
 | Windows       |:download:`Windows installer <files/NetBoard_A20_010a_USB_installer.zip>`|7911491dd1980affc189c290a4590c72105445aab3c74163b649daba1b9fd271|
 +---------------+-------------------------------------------------------------------------+----------------------------------------------------------------+
-| Linux         |:download:`Image <files/A20_010a_BIOS_USB_IMAGE.img.bz2>`                |19d2d011b2d63eff3d6e422b475a1bde2dd76c752d1abcb224c2c4310f273a44|
+| Linux         |:download:`Image <files/A20_010a_BIOS_USB_IMG.img.bz2>`                  |19d2d011b2d63eff3d6e422b475a1bde2dd76c752d1abcb224c2c4310f273a44|
 +---------------+-------------------------------------------------------------------------+----------------------------------------------------------------+
 | CVE update.                                                                                                                                              |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -80,11 +80,11 @@ DEC700 and DEC2700 series
 **Installation instructions**
 =====================================================================================================================
 
-Updating the UEFI firmware requires writing a bootable image to a USB drive on a separate machine. 
+Updating the UEFI firmware requires writing a bootable image to a USB drive on a separate machine.
 Make sure you have an empty or unused USB drive before starting this procedure.
 
-.. warning:: 
-    
+.. warning::
+
     All data on the USB drive will be overwritten. Make sure you have no important data on there.
     As a general warning, following this procedure is on your own risk.
 
@@ -94,7 +94,7 @@ Make sure you have an empty or unused USB drive before starting this procedure.
 Download the right file depending on your platform from the section above. For Windows,
 an installer is provided. For Linux, an image is provided.
 
-**Step 2** 
+**Step 2**
 
 
 Optionally verify the SHA256 checksum.
@@ -113,7 +113,7 @@ For Linux, decompress the image and write the image to the USB drive::
 
 Where *image name* refers to the downloaded image, and *drivename* refers to the USB drive.
 
-.. note:: 
+.. note::
 
     When selecting a drive on Linux, make sure you select the *entire* drive, not a single partition
     (e.g. */dev/sdb*, not */dev/sdb1*)
@@ -148,11 +148,11 @@ Make sure this setting is set to **Disabled**. This is explained in :ref:`legacy
 Select **Boot manager** and boot the USB drive. The UEFI shell will take over and execute the necessary BIOS update.
 If the update is complete, the machine will power off. **Do NOT do anything until the machine has shutdown.**
 
-.. note:: 
+.. note::
 
     Should the USB drive not show up, something went wrong during writing. The newly created FAT32 partition
     should be the very first block on the drive. Inspect the drive on a different machine to check the layout.
 
 **Step 9**
 
-Reboot the machine and check the new BIOS version in either the boot log or the BIOS itself. 
+Reboot the machine and check the new BIOS version in either the boot log or the BIOS itself.
