@@ -38,6 +38,10 @@ Here are the full patch notes:
 * src: x86: ignore stepping for APL30 errata
 * ports: openssl 1.1.1t `[6] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 
+A hotfix release was issued as 22.10.2_1:
+
+* firmware: added 23.4 series fingerprint
+
 
 
 --------------------------------------------------------------------------

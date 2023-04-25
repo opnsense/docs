@@ -258,7 +258,7 @@ Here are the full patch notes:
 * interfaces: force newip calls through DHCP/PPP on IPv6
 * firewall: fix NAT dropdowns ignoring VIPs
 * firewall: fix validation of alias names such as "A_BC"
-* fIrewall: show all applicable floating rules when inspecting interface rules
+* firewall: show all applicable floating rules when inspecting interface rules
 * firewall: prevent networks from being sent to DNS resolver in update_tables.py
 * reporting: make all status mapping colors configurable for themes in the Unbound DNS page
 * dnsmasq: add dns_forward_max, cache_size and local_ttl options to GUI (contributed by Dr. Uwe Meyer-Gruhl)
@@ -280,7 +280,7 @@ Here are the full patch notes:
 * plugins: os-crowdsec 1.0.2 `[2] <https://github.com/opnsense/plugins/blob/stable/23.1/security/crowdsec/pkg-descr>`__ 
 * plugins: os-rfc2136 1.8 `[3] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/rfc2136/pkg-descr>`__ 
 * plugins: os-theme-cicada 1.33 (contributed by Team Rebellion)
-* plugins: os-theme-tucan 1.26 (contributed by Team Rebellion)
+* plugins: os-theme-tukan 1.26 (contributed by Team Rebellion)
 * plugins: os-theme-vicuna 1.44 (contributed by Team Rebellion)
 * src: fix multiple OpenSSL vulnerabilities `[4] <FREEBSD:FreeBSD-SA-23:03.openssl>`__ 
 * src: pfsync: support deferring IPv6 packets
@@ -337,7 +337,7 @@ Here are the full patch notes:
 * firewall: safeguard download_geolite() and log errors
 * firewall: do not switch gateway on bootup
 * captive portal: enforce a database repair during operation if necessary
-* firmware: move single-call function reporter page
+* firmware: move single-call function to reporter page
 * intrusion detection: properly reset metadata response when no metadata is found
 * ipsec: allow "@" character in eap_id fields for new connections
 * ipsec: missing remapping pool UUID to name for new connections
@@ -512,7 +512,7 @@ A hotfix release was issued as 23.1_6:
 * system: incorrect link to CARP status page on dashboard widget
 * reporting: bail DNS resolve in traffic graphs when resolver is not configured
 * captive portal: for static MAC assignments make sure that the IP address actually changed before updating it
-* ipsec: missing a bracket for agressive mode selection
+* ipsec: missing a bracket for aggressive mode selection
 * ipsec: mute a spurious boot warning
 * ipsec: myid may be be optional
 * plugins: os-bind fix plugin directory path

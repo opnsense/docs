@@ -1,0 +1,305 @@
+===========================================================================================
+23.4  Series
+===========================================================================================
+
+
+The OPNsense business edition transitions to this 23.4 release including
+Unbound DNS statistics, PHP 8.1, assorted FreeBSD networking updates,
+further MVC/API conversions, WireGuard kernel module plugin plus much more.
+
+Please make sure to read the migration notes before upgrading.
+
+Download link is as follows.  An installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for
+the images can be found below as well.
+
+https://downloads.opnsense.com/
+
+
+--------------------------------------------------------------------------
+23.4 (April 25, 2023)
+--------------------------------------------------------------------------
+
+The OPNsense business edition transitions to this 23.4 release including
+Unbound DNS statistics, PHP 8.1, assorted FreeBSD networking updates,
+further MVC/API conversions, WireGuard kernel module plugin plus much more.
+
+Please make sure to read the migration notes before upgrading.
+
+Download link is as follows.  An installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for
+the images can be found below as well.
+
+https://downloads.opnsense.com/
+
+This business release is based on the OPNsense 23.1.5 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: replaced log_error() use with log_msg() and adjusted logging levels accordingly
+* system: introduced a service boot log
+* system: simplify gateway monitoring setup code
+* system: add option to skip gateway monitor host route
+* system: populate /etc/hosts file with IPv6 addresses too
+* system: simplify and guard host route creation
+* system: merge system_staticroutes_configure() into system_routing_configure()
+* system: do not yield process after calling shutdown command
+* system: apply tunables during late boot in case a module was loaded depending on them to be set to a specific value
+* system: show size of ZFS ARC (adaptive replacement cache) in system widget
+* system: introduce support tier annotations for core and plugins `[2] <https://docs.opnsense.org/support.html>`__ 
+* system: add cron tasks for scrubbing and trimming ZFS pools (contributed by Iain Henderson)
+* system: fix 6rd/6to4 gateway interface detection (contributed by Frans J Elliott)
+* system: incorrect link to CARP status page on dashboard widget
+* system: replace single exec_command() with new shell_safe() wrapper
+* system: fix assorted PHP 8.1 deprecation notes
+* system: remove overreaching "Reconfigure a plugin facility" cron job and backend command that has no visible users
+* system: use singleton boot detection everywhere
+* system: protect against more stray scripts on boot
+* system: several shell_safe() conversions
+* system: when applying auto-far default route make sure the local address is not empty
+* system: refactor system_default_route() to prevent empty $gateway
+* system: create system_resolver_configure() and cron job support
+* system: add simple script and configd action to list current group membership (configctl auth list groups)
+* system: prevent alias reload in routing reconfiguration like we do in rc.syshook monitor reload
+* system: address a number of web GUI startup problems
+* system: service handling refactor, tweaks and improvements
+* system: rework killbypid()/killbyname() behaviour
+* system: use system_resolver_configure() everywhere
+* system: timezone parsing issue for zones west of UTC using "-"
+* system: migrate services page and widget to MVC/API
+* system: move web GUI service definition to correct file
+* system: add service_by_filter() service search extension
+* system: pin down the auto-far gateway selection and routing log adjustments
+* system: prevent applying tunables which are already set
+* system: use data attribute to find existing rows in service widget to avoid special character issues (contributed by Alexander O'Mara)
+* system: handle empty DNS server gateway (contributed by Nicolas Thumann)
+* system: remove /31 subnet restriction in wizard
+* reporting: add Unbound DNS statistics frontend including client drill-down
+* reporting: make all status mapping colors configurable for themes in the Unbound DNS page
+* reporting: simplify state collection for system-states.rrd
+* reporting: translate invalid interface name characters for NetFlow/Netgraph use
+* interfaces: heavy cleanup of the wireless device integration
+* interfaces: use 802.1ad protocol for stacked VLAN parent (QinQ)
+* interfaces: GIF and GRE now support subnet-based IPv6 configurations instead of always falling back to a point-to-point (/128) setup
+* interfaces: GIF and GRE now disable IPv6 on IPv4 tunnels (contributed by Maurice Walker)
+* interfaces: add isolated PPPoEv6 mode to selectively enable IPv6 CP negotiation and turn it off when no IPv6 mode is set
+* interfaces: add support for SLAAC WAN interfaces without DHCPv6 (contributed by Maurice Walker)
+* interfaces: register LAGG, PPP, VLAN and wireless devices as plugins
+* interfaces: simplified get_real_interface() function
+* interfaces: removed obsolete "defaultgw" files
+* interfaces: simplified rc.linkup script
+* interfaces: improve IP address cache behaviour in rc.newwanip(v6) scripts
+* interfaces: converted virtual IPs to MVC/API
+* interfaces: add MAC filtering to packet capture
+* interfaces: convert ARP/NDP pages to server-side searchable variant
+* interfaces: create null route for DHCPv6 delegated prefix
+* interfaces: tighten the concept of hardware interfaces and pull supported plugin devices into assignments page automatically
+* interfaces: make description field show for all types of VIP (contributed by FingerlessGloves)
+* interfaces: protect against empty GIF host route
+* interfaces: fix parsing of device names with a dot in packet capture
+* interfaces: force newip calls through DHCP/PPP/OVPN on IPv4
+* interfaces: force newip calls through DHCP/PPP on IPv6
+* interfaces: fix an issue with a batch killbyname() in static ARP case
+* interfaces: make sure output buffering is disabled when downloading a packet capture
+* interfaces: lock gateway save button while the request is being processed
+* interfaces: fix IP alias with VHID validation issue
+* interfaces: allow to set PCP value on IPv4 DHCP traffic to address recent Orange FR changes
+* firewall: remove deprecated "Dynamic state reset" mechanic
+* firewall: invalidate port forward rule entry when no target is specified
+* firewall: hide deprecated source OS rule setting under advanced
+* firewall: add group option to prevent grouping in interfaces menu
+* firewall: safeguard against missing name from the alias API call
+* firewall: prevent possible infinite loop in alias parsing (contributed by kulikov-a)
+* firewall: do not calculate local port range for alias (contributed by kulikov-a)
+* firewall: update validation of alias names to be slightly more restrictive
+* firewall: safeguard download_geolite() and log errors
+* firewall: fix NAT dropdowns ignoring VIPs
+* firewall: show all applicable floating rules when inspecting interface rules
+* firewall: prevent networks from being sent to DNS resolver in update_tables.py
+* firewall: fix mismatch of options in new automatic listing of floating rules in interface rules
+* firewall: refactor alias update scripts
+* firewall: fix progress bar default value (contributed by Nicolas Thumann)
+* captive portal: enforce a database repair during operation if necessary
+* captive portal: remove mod_evasion use which was discontinued by lighttpd
+* dhcp: several plumbing improvements in service handling
+* dhcp: add missing double quotes in hostname handling
+* dnsmasq: add dns_forward_max, cache_size and local_ttl options to GUI (contributed by Dr. Uwe Meyer-Gruhl)
+* dnsmasq: remove now unused host configuration and refactor
+* firmware: move single-call function to reporter page
+* firmware: responsiveness fix (contributed by kulikov-a)
+* firmware: move settings handling to full-fledged model
+* firmware: add advanced/help toggles, cancel button, subscription errors
+* firmware: deal with subscription preset in factory reset
+* intrusion detection: keep grid to prevent widgets being removed
+* intrusion detection: reload grid after log drop (contributed by kulikov-a)
+* intrusion detection: add verbose logging mode selector
+* ipsec: disable charon.install_routes completely in case upstream would implement it for FreeBSD later on
+* ipsec: move user PSK (pre-shared key) and static PSK items to new MVC/API implementation
+* ipsec: migrate existing configuration from ipsec.conf to swanctl.conf
+* ipsec: add a new independent connections MVC/API component to manage IPsec in a layout matching swanctl.conf syntax more closely
+* ipsec: rewrote lease status page in MVC/API
+* ipsec: add configurable "unique" setting to phase 1
+* ipsec: missing correct phase 1 to collect "Network List" option
+* ipsec: missing a bracket for aggressive mode selection
+* ipsec: mute a spurious boot warning
+* ipsec: myid may be be optional
+* ipsec: allow "@" character in eap_id fields for new connections
+* ipsec: missing remapping pool UUID to name for new connections
+* ipsec: change status column sizing and hide local/remote auth by default
+* ipsec: fix username parsing in lease status
+* ipsec: refactor widget to use new data format
+* ipsec: migrate duplicated cron job
+* ipsec: faulty unique constraint in pre-shared keys
+* ipsec: fix eap_id placement for eap-mschapv2
+* ipsec: reqid should not be provided on mobile sessions
+* ipsec: validate pool names on connections page
+* ipsec: add connection data to XMLRPC sync
+* ipsec: "Dynamic gateway" (rightallowany) option should be translated to 0.0.0.0/0,::/0
+* ipsec: "Allow any remote gateway to connect" should suffix all in order to connect to the other end
+* ipsec: store proper log values in advanced settings
+* ipsec: add a routing hook and execute it for all VTI devices during reconfiguration
+* ipsec: replace status call with portable alternative
+* monit: support start timeout setting (contributed by spoutin)
+* monit: add permanent include statement for custom configuration files (contributed by codiflow)
+* network time: remove "disable monitor" to get rid of log warnings (contributed by Dr. Uwe Meyer-Gruhl)
+* openvpn: add unique daemon name to each instance
+* openvpn: replace authentication handler to prepare for upcoming OpenVPN 2.6 with deferred authentication
+* openvpn: rename -cipher option to --data-ciphers-fallback and adjust GUI accordingly
+* openvpn: add ovpn_status.py script and configd action to fetch connected clients
+* openvpn: reintroduce "cipher" keyword for older clients
+* openvpn: fix client output for widget (contributed by kulikov-a)
+* openvpn: migrate connection status page and widget to MVC/API
+* openvpn: fix typo in widget missing virtual address display
+* unbound: add statistics database backend
+* unbound: add exact domain blocking
+* unbound: simplify logger logic for required queries
+* unbound: add SafeSearch option to blocklists
+* unbound: match white/blocklist action exactly from reporting page
+* unbound: always prioritize whitelists over blocklists
+* unbound: various UX improvements in reporting page
+* unbound: add serve-expired, log-servfail, log-local-actions and val-log-level advanced settings
+* unbound: drop unnecessary index from reporting database and other optimizations to lower CPU usage
+* unbound: add HTTPS record type to reporting
+* unbound: remember reporting page logarithmic setting
+* unbound: wait for pipe in logger (contributed by kulikov-a)
+* unbound: fix typo in logger and create a pipe early in dnsbl_module.py (contributed by kulikov-a)
+* unbound: fix type cast to prevent unnecessary updateBlocklist action
+* unbound: add missing blocklist
+* unbound: adhere to restart logic during hosts configure and wait for service to start
+* unbound: add infra-keep-probing advanced option
+* unbound: lowercase domain for case insensitive search in blocklists
+* unbound: replace status call with portable alternative
+* unbound: bring back missing advanced page ACL entry
+* unbound: implement wildcard blocking and refactor DNSBL module
+* unbound: account for CNAME redirection in DNSBL module
+* unbound: prevent logging SERVFAIL twice in DNSBL module
+* unbound: allow scripts to extend blocklist functionality
+* unbound: translate empty values to empty strings in DNSBL module
+* mvc: call plugins_interfaces() optionally on service reconfigure
+* mvc: match UUID for multiple values (contributed by kulikov-a)
+* mvc: convert setBase() to an upsert operation
+* mvc: add TextField tests (contributed by agh1467)
+* mvc: implement required getRealInterface() variant
+* mvc: fix PHP warnings and dance around null/0.0.0 ambiguity in migration code
+* mvc: add MaskPerItem toggle to allow regex validation per entry in CSVListField
+* mvc: add strict option to NetworkField
+* ui: assorted improvements in bootgrid and form controls
+* ui: switch to pure JSON data in bootgrids
+* ui: solve deprecation in PHP via html_safe() wrapper
+* ui: add a fail() handler to disable action button spinner
+* wizard: unbound hardened DNSSEC setting moved
+* plugins: os-OPNBEcore 1.1
+* plugins: os OPNcentral 1.0.6
+* plugins: os-acme-client 3.16 `[3] <https://github.com/opnsense/plugins/blob/stable/23.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-api-backup 1.1 `[4] <https://github.com/opnsense/plugins/blob/stable/23.1/sysutils/api-backup/pkg-descr>`__ 
+* plugins: os-bind 1.25 `[5] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/bind/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.2 `[6] <https://github.com/opnsense/plugins/blob/stable/23.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-ddclient 1.11 `[7] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.22 `[8] <https://github.com/opnsense/plugins/blob/stable/23.1/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.33 `[9] <https://github.com/opnsense/plugins/blob/stable/23.1/net/frr/pkg-descr>`__ 
+* plugins: os-haproxy 4.1 `[10] <https://github.com/opnsense/plugins/blob/stable/23.1/net/haproxy/pkg-descr>`__ 
+* plugins: os-openconnect 1.4.4 `[11] <https://github.com/opnsense/plugins/blob/stable/23.1/security/openconnect/pkg-descr>`__ 
+* plugins: os-puppet-agent 1.1 `[12] <https://github.com/opnsense/plugins/blob/stable/23.1/sysutils/puppet-agent/pkg-descr>`__ 
+* plugins: os-qemu-guest-agent 1.2 `[13] <https://github.com/opnsense/plugins/blob/stable/23.1/emulators/qemu-guest-agent/pkg-descr>`__ 
+* plugins: os-rfc2136 1.8 `[14] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/rfc2136/pkg-descr>`__ 
+* plugins: os-sslh 1.0 `[15] <https://github.com/opnsense/plugins/blob/stable/23.1/net/sslh/pkg-descr>`__  (contributed by agh1467)
+* plugins: os-theme-cicada 1.34 (contributed by Team Rebellion)
+* plugins: os-theme-tukan 1.27 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.45 (contributed by Team Rebellion)
+* plugins: os-upnp 1.5 `[16] <https://github.com/opnsense/plugins/blob/stable/23.1/net/upnp/pkg-descr>`__ 
+* plugins: os-wireguard switches to kernel module with a separate os-wireguard-go variant available for installation to keep the old behaviour
+* src: assorted FreeBSD 13 stable fixes for e.g. bpf, bridge, bsdinstall ifconfig, iflib, ipfw, ipsec, lagg, netmap, pf, route and vlan components
+* src: ipsec: clear pad bytes in PF_KEY messages
+* src: fib_algo: set vnet when destroying algo instance
+* src: if_ipsec: handle situations where there are no policy or SADB entry for if
+* src: if_ipsec: protect against user supplying unknown address family
+* src: if_me: use dedicated network privilege
+* src: vxlan: add support for socket ioctls SIOC[SG]TUNFIB
+* src: introduce and use the NET_EPOCH_DRAIN_CALLBACKS() macro
+* src: iflib: Add null check to iflib_stop()
+* src: pfctl: rule.label is a two-dimensional array
+* src: pf: fix syncookies in conjunction with tcp fast port reuse
+* src: pf: fix panic on deferred packets
+* src: ipfw: Add missing 'va' code point name
+* src: netmap: try to count packet drops in emulated mode
+* src: netmap: fix a queue length check in the generic port rx path
+* src: netmap: tell the compiler to avoid reloading ring indices
+* src: pfsync: support deferring IPv6 packets
+* src: pfsync: add missing bucket lock
+* src: pfsync: ensure 'error' is always initialised
+* src: pfsync: fix pfsync_undefer_state() locking
+* src: pfsync: add missing unlock in pfsync_defer_tmo()
+* src: epair: merged assorted fixes
+* ports: curl 7.88.1 `[17] <https://curl.se/changes.html#7_88_1>`__ 
+* ports: dnsmasq 2.89 `[18] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: dpinger 3.3 `[19] <https://github.com/dennypage/dpinger/releases/tag/v3.3>`__ 
+* ports: filterlog 0.7 fixes unknown TCP option print
+* ports: lighttpd 1.4.69 `[20] <https://www.lighttpd.net/2023/2/10/1.4.69/>`__ 
+* ports: monit 5.33.0 `[21] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.89 `[22] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_89.html>`__ 
+* ports: openldap 2.6.4 `[23] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openssh 9.2p1 `[24] <https://www.openssh.com/txt/release-9.2>`__ 
+* ports: openssl fix for CVE-2023-0464
+* ports: phalcon 5.2.1 `[25] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.1>`__ 
+* ports: php 8.1.17 `[26] <https://www.php.net/ChangeLog-8.php#8.1.17>`__ 
+* ports: phpseclib 3.0.19 `[27] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.19>`__ 
+* ports: py-vici 5.9.10
+* ports: radvd fix for SIGHUP behaviour
+* ports: sqlite 3.41.0 `[28] <https://sqlite.org/releaselog/3_41_0.html>`__ 
+* ports: squid 5.8 `[29] <http://www.squid-cache.org/Versions/v5/squid-5.8-RELEASENOTES.html>`__ 
+* ports: strongswan 5.9.10 `[30] <https://github.com/strongswan/strongswan/releases/tag/5.9.10>`__ 
+* ports: sudo 1.9.13p3 `[31] <https://www.sudo.ws/stable.html#1.9.13p3>`__ 
+
+Migration notes, known issues and limitations:
+
+* StrongSwan IPsec configuration now uses the preferred swanctl.conf instead of the deprecated ipsec.conf which could lead to connectivity issues in ambiguous cases.
+* The new IPsec connections pages and API create an independent set of connections following the design of swanctl.conf.  Legacy tunnel settings cannot be managed from the API and are not migrated.
+* Rate limiting was removed from the captive portal which was set to 250 connections by the same IP to the captive portal itself.  This can be easily replaced by a manual firewall rule with advanced options set, e.g.  "Max established" set to 250 with destination "This Firewall".
+
+
+The public key for the 23.4 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA4J0k7cPtunUYiR4vbRof
+    # AiNTnkkByaWpjTeKneR/CBAaImUxpED5EnFprwM0mm4BX3Vqkf1KYQtRSawNxeXz
+    # NiPT5Ykv0Vus0tYafBzIPsOCdUz/gtuJmtjih0uNvFSdwDRNE42MpX2RFeTm652H
+    # fNE5Rxv23liLYdm3RNDFcM7tJEMs+zr01Lrn3McDv4OUACl3YTwFKS1BJGkBqpDI
+    # gX1HsJMz934zNItrLxj6B2tDIR4oGrqowzW+1owT4+a8EoaimY48RAb8AUWezAZu
+    # tQcGQ0wuZ8qy2WClYvrogsmAEUpfv1Y0YcSfpdxopOx4KyE0KEzAooRF95iFLu94
+    # PODk1oPTr0N9qXn7XsLkpaufk+EpNecZSvbqrj3IWMyCLEBO60YuFpcFFI6SVJBC
+    # i5OG7JVQaE8hu4CY50tMOO0M54umM8lPIOW8AuIH2PlmQWJ4tPb7j8HHnV1cM1Sf
+    # Ha/EAJQlKEEyj4hbzSb6aKATv++qvh4jwgADsTsDtbCrtxrcBV7i+iLUM7DdxrPZ
+    # QnLELdJPjyFxtClzi4Tf1svrF5K6NGd/nJQ1pLSkM64dKPA0iTiMMzjQMHnN8++G
+    # UdhRzswRZ/BtB8ha1ZRRvnEHe+tcEtsXFZZSTgcR60lXlZzPY/0h+xfbgOApYlqq
+    # MIMJsdvZkuxYrGQ5eL2nk0UCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-business-23.4-dvd-amd64.iso.bz2) = 7136d0d78e643b59bbee8866f7aa1498325bd5513af30a9ace6005aeb1638707
+    # SHA256 (OPNsense-business-23.4-nano-amd64.img.bz2) = 84b4a5ede947aae38273c4b57ddea2122764508e5309d3e1bbb816128097ce35
+    # SHA256 (OPNsense-business-23.4-serial-amd64.img.bz2) = 9da2a93f6ad246c2f02655a1d5468755b1af6b500ff2e1846c0506c956c8f84b
+    # SHA256 (OPNsense-business-23.4-vga-amd64.img.bz2) = 982a47835be03787f0a8d408aff0e117a3a5bccd810aa510808c4804abab66c4
+
