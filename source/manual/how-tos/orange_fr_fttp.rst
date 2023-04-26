@@ -1,8 +1,7 @@
 Orange France FTTP IPv4 & IPv6
 ==============================
 
-**Original Author:** Kev Willers
-**udates** David Néel
+**Authors:** Kev Willers, David Néel
 
 **Introduction**
 -----------------
