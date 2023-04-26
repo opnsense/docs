@@ -9,8 +9,6 @@ This guide is for Orange France FTTP using DHCP to connect (this method currentl
 
 The guide deals with just the internet connection. Setting up of TV or Phone is not covered here.
 
-You must use OPNsense v23.1.6 or above.
-
 
 **Getting ready to make the connection**
 ----------------------------------------
