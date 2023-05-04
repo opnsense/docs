@@ -30,6 +30,65 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.1.7 (May 04, 2023)
+--------------------------------------------------------------------------
+
+
+Today we switch to OpenVPN 2.6 including deferred authentication which we
+know some people have been waiting for.  The routing subsystem received a
+refactor to integrate default gateway switching into the actual routing
+code.
+
+Suricata was finally updated to a newer release since the Netmap (IPS) stall
+bug inside their code had been found and fixed while we were still using an
+older code base that did not have the error.
+
+Please also note that OpenVPN does no longer support the XOR feature due to
+FreeBSD ports blocking these types of out-of-project contributions and OpenVPN
+itself was never interested in supporting it natively.  We have been keeping
+this alive since 2015, but several alternatives exist now that were not
+available back then.
+
+Here are the full patch notes:
+
+* system: restructure routing to carry out default gateway switching and address family specific reconfig
+* system: prevent PHP session garbage collection from running early (contributed by lin-xianming)
+* system: finish simplifying plugins_run()
+* firewall: add missing scrub rules in dependency check for alias use
+* firewall: usability improvements and cleanups in scheduler pages (contributed by kuya1284)
+* interfaces: ensure single PPP netgraph node has the proper name
+* interfaces: reject invalid self-assignments in VLAN parent
+* interfaces: migrate trace route page to MVC/API
+* interfaces: migrate port probe page to MVC/API
+* interfaces: remove indirection in PPP ports handling
+* interfaces: exclude a few cases from PPPoEv6 negotiation
+* reporting: fix incorrect interface index in NetFlow init (contributed by Nicolas Thumann)
+* dhcp: restart radvd on config changes, otherwise keep SIGHUP
+* dhcp: when cleaning up static leases do not remove entries where only a MAC address is set
+* firmware: update size requirements for major upgrades from command line
+* firmware: embed build metadata into package annotations for use in runtime remote queries
+* firmware: fix execution of version queries when not possible
+* firmware: revoke 22.7 fingerprint
+* openvpn: fix two widget display issues
+* openvpn: use CARP INIT state the same way as BACKUP state for client start/stop
+* openvpn: enable deferred authentication (sponsored by m.a.x. it)
+* unbound: minor improvements to handle "Dot" endpoints ambiguity
+* web proxy: allow more signs for username and password (contributed by Bi0T1N)
+* mvc: change Phalcon logging to omit type and date
+* mvc: add strict option to NetworkField
+* ui: prevent crashing out when endpoint does not return data for SimpleActionButton
+* plugins: os-ddclient 1.13 `[1] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-stunnel fix for missing OpenSSL CRL functions
+* plugins: os-smart fix for highlighting result (contributed by Justin Horton)
+* ports: libxml 2.10.4 `[2] <http://www.xmlsoft.org/news.html>`__ 
+* ports: openvpn 2.6.3 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.3>`__ 
+* ports: sqlite 3.41.2 `[4] <https://sqlite.org/releaselog/3_41_2.html>`__ 
+* ports: suricata 6.0.11 `[5] <https://suricata.io/2023/04/13/suricata-6-0-11-released/>`__ 
+* ports: syslog-ng 4.1.1 `[6] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.1.1>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.1.6 (April 20, 2023)
 --------------------------------------------------------------------------
 
