@@ -31,8 +31,14 @@ Option                  Description
 ======================= =======================================================================================================================================================================
 Enable                  Enable the client
 Interval                The number of seconds address changes will be queried
+Backend                 Select the backend to use, either ddclient or the new OPNsense implementation
 ======================= =======================================================================================================================================================================
 
+.. Note::
+
+      With :code:`ddlient` developments sunsetting [`* <https://github.com/ddclient/ddclient/issues/528>`__]  we decided to offer an alternative written
+      in python. Selecting the OPNsense backend changes the implementation. If your service is supported, we do advice to try out the
+      new implementation.
 
 Accounts
 ---------------------------
