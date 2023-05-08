@@ -91,8 +91,7 @@ or the usage of DNSBL.
 
 To do so go to **Services->Unbound DNS->General** and uncheck *Enable*. If you are using Dnsmasq
 go to **Services->Dnsmasq DNS->Settings** and uncheck *Enable*. Now change to **Services->DNSCrypt-Proxy->Configuration**
-and add the *Listen Address* 0.0.0.0:53 as well as [::]:53 for the service to be considered as
-standalone by the core system.
+and add the *Listen Address* 0.0.0.0:53 for the service to be considered as standalone by the core system.
 
 Now you can go on with your configuration task, like choosing which servers to use, privacy policy or caching.
 Also cloaking (overrides) or DNSBL can be used without any workarounds.
