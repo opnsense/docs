@@ -57,10 +57,13 @@ Option                  Description
 ======================= =======================================================================================================================================================================
 Enable                  Enable this rule (allows turning entries off without removing them).
 Service                 The provider of your Dynamic DNS Service.
+resourceId              A pointer to the service to be updated, currently only relevant for Azure
 Username                Login or user name to use, could be empty for token based authentication
 Password                Password or security token to use
 Hostname                Enter the fully qualified domain names to update via the selected service. For example: *myhost.dyndns.org*
 Check ip method         Service to query the current IP address
+Check ip timeout        How long to wait before the checkip process times out
+Force SSL               Choose to use HTTP or HTTPS, but only for selected services. Most services only support HTTPS nowadays.
 Interface to monitor    Interface to collect an address from when choosing "Interface" as check ip method, or source interface used to connect to the check ip service
 Description             A description to easily identify this rule in the overview.
 ======================= =======================================================================================================================================================================
