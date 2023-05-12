@@ -67,3 +67,28 @@ Force SSL               Choose to use HTTP or HTTPS, but only for selected servi
 Interface to monitor    Interface to collect an address from when choosing "Interface" as check ip method, or source interface used to connect to the check ip service
 Description             A description to easily identify this rule in the overview.
 ======================= =======================================================================================================================================================================
+
+Provider-specific configuration
+---------------------------
+
+Cloudflare
+```````````````````````````
+For accounts with Cloudflare as provider, there is an additional option **Zone**, which should be set as the name of the zone containing the host to be updated, not its zone ID.
+
+Cloudflare accepts authorization with the global token with the options
+
+======================= =======================================================================================================================================================================
+Option                  Value
+======================= =======================================================================================================================================================================
+Username                The email of the Cloudflare account.
+Password                Global API Key.
+======================= =======================================================================================================================================================================
+
+Using an API token is recommended for security reasons, with ``Permissions`` :menuselection:`Zone --> DNS --> Edit` and ``Zone Resources`` :menuselection:`Include --> Specific zone --> zone with the host`, and the account options
+
+======================= =======================================================================================================================================================================
+Option                  Value
+======================= =======================================================================================================================================================================
+Username                token
+Password                API token.
+======================= =======================================================================================================================================================================
