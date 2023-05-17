@@ -51,7 +51,7 @@ It is possible for a NIC to perform RSS without being able to configure it. Shou
 should show any drivers exposing the option via a tunable.
 
 It is also possible that a driver does not expose this ability to the user, in which case you’d want to look up whether the NIC/driver supports RSS at all using online
-datasheets or a simple google search. For example, igb enables RSS by default, dut does not reflect this in any configuration parameter. However, since it uses multiple queues:
+datasheets or a simple google search. For example, igb enables RSS by default, but does not reflect this in any configuration parameter. However, since it uses multiple queues:
 
 .. code-block::
 
