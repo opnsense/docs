@@ -8,7 +8,7 @@ with the settings of the component they belong to. The log files can be found he
 
 ================ ======================================================== =============================================================================
  **Live View**    :menuselection:`Firewall --> Log Files --> Live View`    *View firewall logs in realtime, smart filtering can be applied*
- **Plain View**   :menuselection:`Firewall --> Log Files --> Plain View`   *Just the plain contents how **pf** logs into **filter.log** *
+ **Plain View**   :menuselection:`Firewall --> Log Files --> Plain View`   *Just the plain contents how* **pf** *logs into* **filter.log**
 ================ ======================================================== =============================================================================
 
 Live View
