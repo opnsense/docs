@@ -46,6 +46,9 @@ if it is not available. Be careful with this option in HA setups.
 Networks
 --------
 
+.. Note::
+      You can add only the networks that OSPF should send and received routing updates and/or area range summarizations, Networks to be advertized can be configured as Interfaces.
+
 .. image:: images/dynamic_routes_ospf_networks.png
 
 Networks gives you a brief overview of the configured networks. The dialog looks like this:
@@ -56,7 +59,9 @@ Enabled
 -------
 
 Enabled means that this Network is going to be used.
-You should only disable networks if you plan to do some changes in your topology or some routes get broken. 
+You should only disable networks if you plan to do some changes in your topology or some routes get broken.
+This will add Firewall Filtering rules for OSPF to work properly, you can add and enable only the networks where OSPF is going to send and receive updates.
+Disabled networks still add the Area Range for a given Area to the OSPF config file, you can use this for route summarization.
 
 Network Address
 ---------------
@@ -74,6 +79,11 @@ Area
 
 The area describes which routers belong to the same group (autonomous system). This value is a 32 bit integer, which is entered in dotted decimal notation (like an IPv4 address is usually written).
 
+Area Range
+----
+
+This is the network or network summary you wish to send to the designated Area configured above or in other Networks with the same Area.
+
 Prefix-List in and Out
 ----------------------
 
@@ -82,6 +92,12 @@ Only used for advanced route filtering using access lists.
 ----------
 Interfaces
 ----------
+
+.. Note::
+      You can add the interfaces where OSPF shoud send and receive and updates along side with Networks.
+
+.. Note::
+      You can add the interfaces with local networks that OSPF should advertized, these interfaces need an Area and should be added has Passive Interfaces in order to work, this type of configuration reduces Firewall Filter Rules.
 
 This tab shows an overview of the configured interfaces:
 
