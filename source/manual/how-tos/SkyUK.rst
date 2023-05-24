@@ -52,6 +52,7 @@ So the full entry for the 'Lease Requirements' Send Options would be:
 
 *dhcp-client-identifier "12345678@skydsl|12345678",dhcp-class-identifier "7.16a4N_UNI|PCBAFAST2504Nv1.0"*
 
+**Important**: The software used to create this documentation website converts normal straight quotes to curly quotes. If you copy the line above, make sure to replace the curly quotes with straight quotes (SHIFT+2 on a UK keyboard), or the connection won't be made.
 
 The next step is to configure the parameters required for DHCPv6, these
 are located in the DHCPv6 client configuration section of the WAN
