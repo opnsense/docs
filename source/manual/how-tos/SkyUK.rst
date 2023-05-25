@@ -50,7 +50,8 @@ dhcp-class-identifier "7.16a4N_UNI|PCBAFAST2504Nv1.0"
 
 So the full entry for the 'Lease Requirements' Send Options would be:
 
-*dhcp-client-identifier "12345678@skydsl|12345678",dhcp-class-identifier "7.16a4N_UNI|PCBAFAST2504Nv1.0"*
+*dhcp-client-identifier \"12345678@skydsl|12345678\",dhcp-class-identifier \"7.16a4N_UNI|PCBAFAST2504Nv1.0\"*
+
 
 
 The next step is to configure the parameters required for DHCPv6, these
