@@ -8,7 +8,7 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *252* releases leading to the latest version *23.1.7*
+As of January 2015 there have been *253* releases leading to the latest version *23.1.8*
 named "Quintessential Quail".
 
 

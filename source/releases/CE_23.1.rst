@@ -30,6 +30,69 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.1.8 (May 25, 2023)
+--------------------------------------------------------------------------
+
+
+This update improves IPv6 connectivity, extends module support for the axgbe
+network driver and fixes a panic with IPv6 refragmentation over policy-based
+routes amongst others.
+
+We are currently testing FreeBSD 13.2 for the upcoming OPNsense 23.7 and it
+looks promising.  Watch out for roadmap updates over the next few weeks as
+more MVC page conversions are being carried out.
+
+Here are the full patch notes:
+
+* system: calling return_down_gateways() depends on default gateway switch setting
+* system: open new session if missing to prevent spurious CRSF errors in static pages
+* system: add device hint to empty interface address message in case of mismatch during default route attempt
+* system: add kernel messages to the general system log
+* system: make sure routing log messages all use "ROUTING:" prefix
+* system: print warning for duplicated gateway name
+* system: prefix API key filename with FQDN of this host
+* interfaces: deal with "prefixv6" as an array
+* interfaces: improve address cleanup when handling VIP modifications
+* interfaces: explicitly report current IP address during renewal avoidance
+* interfaces: patch in appropriate rebind/renew DHCPv6 handling
+* interfaces: for static "Use IPv4 connectivity" on PPPoE bring up IPv6 routes as well
+* interfaces: ifctl: fix typo causing content to be printed while adding it
+* interfaces: ifctl: avoid null route on fragile /64 prefix delegation
+* interfaces: ifctl: do not flush name server routes
+* firewall: add "set debug" and "set keepcounters" options to advanced options
+* dhcp: provide run task "static_mapping" to avoid polluting unrelated plugins
+* dnsmasq: use new run task "static_mapping" to collect static mappings from DHCP
+* firmware: show support tiers in plugin list
+* firmware: now that we have a full data model do not overdo cleanup during plugin registration
+* intrusion detection: minor performance improvements when parsing metadata from rules
+* openvpn: fix a warning by passing a desirable empty input containing a slash
+* unbound: fix migration edge case in model version 1.0.3
+* unbound: remove DNS blocklist start syshook causing an unnecessary download during bootup
+* unbound: when called via GET during override creation encode using URLSearchParams()
+* wizard: do not end up duplicating WAN_GW entry
+* mvc: add CIDRToMask() to utilities
+* mvc: prevent config restore when writer has flushed or partly written the file
+* mvc: format BaseModel logger to avoid duplicate timestamps
+* plugins: os-crowdsec 1.0.5 `[1] <https://github.com/opnsense/plugins/blob/stable/23.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-acme-client 3.17 `[2] <https://github.com/opnsense/plugins/blob/stable/23.1/security/acme-client/pkg-descr>`__ 
+* src: axgbe: fix link issues for gigabit external SFP PHYs and 100/1000 fiber modules
+* src: axgbe: apply RRC to miibus attached PHYs and add support for variable bitrate 25G SFP+ DACs
+* src: axgbe: properly release resource in error case
+* src: ifconfig: improve VLAN identifier parsing
+* src: pfsync: hold b_mtx for callout_stop(pd_tmo)
+* src: pf: remove pd_refs from pfsync
+* src: pf: deal with KPI change bug on stable/13 by redirecting otherwise crashing traffic through ip6_output()
+* ports: curl 8.1.0 `[3] <https://curl.se/changes.html#8_1_0>`__ 
+* ports: dhcp6c 20230523
+* ports: lighttpd 1.4.70 `[4] <https://www.lighttpd.net/2023/5/10/1.4.70/>`__ 
+* ports: nss 3.89.1 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_89_1.html>`__ 
+* ports: openvpn 2.6.4 `[6] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.4>`__ 
+* ports: php 8.1.19 `[7] <https://www.php.net/ChangeLog-8.php#8.1.19>`__ 
+* ports: suricata 6.0.12 `[8] <https://suricata.io/2023/05/09/suricata-6-0-12-released/>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.1.7 (May 04, 2023)
 --------------------------------------------------------------------------
 
@@ -85,6 +148,12 @@ Here are the full patch notes:
 * ports: sqlite 3.41.2 `[4] <https://sqlite.org/releaselog/3_41_2.html>`__ 
 * ports: suricata 6.0.11 `[5] <https://suricata.io/2023/04/13/suricata-6-0-11-released/>`__ 
 * ports: syslog-ng 4.1.1 `[6] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.1.1>`__ 
+
+A hotfix release was issued as 23.1.7_3:
+
+* system: fix a typo in monitor script preventing filter/routes reconfiguration
+* system: improve monitor alarm situation by not reloading monitors
+* openvpn: force the interface down before reconfiguration to work around a probable regression
 
 
 
@@ -152,7 +221,7 @@ Here are the full patch notes:
 * src: sched_ule: assorted fixes to address issues on newer AMD platforms
 * ports: curl 8.0.1 `[9] <https://curl.se/changes.html#8_0_1>`__ 
 * ports: ifinfo now also prints interface index (contributed by Nicolas Thumann)
-* ports: php 8.1.17 `[10] <https://www.php.net/ChangeLog-8.php#8.1.17>`__ 
+* ports: php 8.1.18 `[10] <https://www.php.net/ChangeLog-8.php#8.1.18>`__ 
 
 
 
