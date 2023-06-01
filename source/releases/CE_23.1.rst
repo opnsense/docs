@@ -30,6 +30,42 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.1.9 (May 31, 2023)
+--------------------------------------------------------------------------
+
+
+A small update to improve stability with multiple delegated prefixes from
+DHCPv6 connectivity as well as proper "no binding" handling in the DHCPv6
+client itself.  Internally, the backend service has been refactored to allow
+for future additions, but no visible functionality changes have been done.
+
+Still pretty happy with the IPsec connections MVC pages introduced in 23.1 so
+we would like to apply the same approach to OpenVPN for 23.7 and it is going
+to land in the next development version most likely for a sneak preview.
+
+Here are the full patch notes:
+
+* system: fix MFC service page with ID-based reload like OpenVPN
+* system: fix issue with route add command for far gateway static route (contributed by Daniel Mason)
+* system: improve static routes error handling
+* system: fix a typo and align "attribute" use in gateway edit page
+* system: pluginctl: service mode can now batch-reload services when existing ID is omitted
+* firewall: simplify rule edit layout slightly and fix unused element ID
+* dhcp: remove ::/64 magic as it uses AdvRouterAddr yes
+* interfaces: deal with RENEW and REBIND only reporting partial PDINFO
+* ipsec: support the default selector ([dynamic]) when local_ts or remote_ts are left empty in connections
+* backend: improved nested command support, reorganise action types, use ActionFactory to offer the requested type
+* backend: add "getUtcTime" template helper function
+* ports: curl 8.1.1 `[1] <https://curl.se/changes.html#8_1_1>`__ 
+* ports: dhcp6c 20230530
+* ports: lighttpd 1.4.71 `[2] <https://www.lighttpd.net/2023/5/27/1.4.71/>`__ 
+* ports: openssh 9.3p1 `[3] <https://www.openssh.com/txt/release-9.3>`__ 
+* ports: sqlite 3.42.0 `[4] <https://sqlite.org/releaselog/3_42_0.html>`__ 
+* ports: syslog-ng 4.2.0 `[5] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.2.0>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.1.8 (May 25, 2023)
 --------------------------------------------------------------------------
 
