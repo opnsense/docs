@@ -94,7 +94,7 @@ readonly      if true, input fields will be readonly
 ==================  ===========================================================================================
 Name                Description
 ==================  ===========================================================================================
-header              Header row 
+header              Header row
 text                Single line of text
 password            Password field for sensitive input. The contents will not be displayed.
 textbox             Multiline text box
@@ -158,3 +158,52 @@ post request to /api/sample/test/echo, using jQuery:
     and are named :code:`ApiMutableModelControllerBase`, :code:`ApiMutableServiceControllerBase`. Both extend :code:`ApiControllerBase`
     as described in this chapter. The mutable model controller is explained in more detail in :doc:`using grids <../examples/using_grids>`, the
     service controller is explained in :doc:`api enable services <../examples/api_enable_services>`
+
+
+--------------------------------------------------
+Searchable recordsets
+--------------------------------------------------
+
+The tip in the previous chapter described how to use grids when using models, but in some cases there are datasets
+without being bound to a model. For example when traversing legacy data or gathering system statistics.
+
+For this reason we added the method :code:`searchRecordsetBase()` in :code:`ApiControllerBase`.
+Using this method offers the ability to hook a recordset into the same search functionality as being available
+in model grids.
+
+The following parameters are being offered:
+
+==================  ===========================================================================================
+Name                Description
+==================  ===========================================================================================
+$records            array as record set, e.g. [ ['id' => '1'], ['id' => '2'], ... ]
+$fields             Optional list of fields when not all data should be returned
+$defaultSort        Optional default sort order (fielndname in recordset)
+$filter_funct       Optional pluggable filter function, which is call with the record in question
+$sort_flags         Default set to :code:`SORT_NATURAL | SORT_FLAG_CASE`
+==================  ===========================================================================================
+
+.. Note::
+
+    In order to filter sets on fields, make sure all records contain the requested field. Currently it's not possible
+    to omit fields when being sorted.
+
+
+Implementing this into your own controller should be as simple as:
+
+.. code-block:: php
+
+    class TestController extends ApiControllerBase
+    {
+        /**
+         * @return array
+         */
+        public function searchAction()
+        {
+            $records = [];
+            $records[] = ['id' => '1', 'description' => 'test 1'];
+            $records[] = ['id' => '2', 'description' => 'test 2'];
+            $records[] = ['id' => '3', 'description' => 'test 3'];
+            return $this->searchRecordsetBase($records);
+        }
+    }

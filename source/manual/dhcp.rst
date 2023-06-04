@@ -42,6 +42,19 @@ To set the DHCP settings, go to :menuselection:`Services --> DHCPv4 --> [LAN]`. 
 put ``192.168.1.100`` as the start address and ``192.168.1.200`` as the end address. Then click Save. After saving,
 click the “Apply Settings” button.
 
+
+------------
+Using DHCPv6
+------------
+.. _Using DHCPv6:
+
+When IPv6 addresses should be provisioned over DHCPv6 the :menuselection:`Services-->DHCPv6-->[Interface]` is the place
+to look at. Like in the IPv4 scenario, you can provide a range here, offer settings like default DNS servers and
+create static assignments based on the clients unique DHCP identifier (`DUID <https://en.wikipedia.org/wiki/DHCPv6>`__).
+
+Always make sure  :doc:`Router advertisements </manual/radvd>` are properly configured before debugging DHCPv6 issues, these two
+daemons depend on eachother.
+
 -------------------------
 Advanced settings
 -------------------------

@@ -31,8 +31,14 @@ Option                  Description
 ======================= =======================================================================================================================================================================
 Enable                  Enable the client
 Interval                The number of seconds address changes will be queried
+Backend                 Select the backend to use, either ddclient or the new OPNsense implementation
 ======================= =======================================================================================================================================================================
 
+.. Note::
+
+      With :code:`ddlient` developments sunsetting [`* <https://github.com/ddclient/ddclient/issues/528>`__]  we decided to offer an alternative written
+      in python. Selecting the OPNsense backend changes the implementation. If your service is supported, we do advice to try out the
+      new implementation.
 
 Accounts
 ---------------------------
@@ -51,10 +57,38 @@ Option                  Description
 ======================= =======================================================================================================================================================================
 Enable                  Enable this rule (allows turning entries off without removing them).
 Service                 The provider of your Dynamic DNS Service.
+resourceId              A pointer to the service to be updated, currently only relevant for Azure
 Username                Login or user name to use, could be empty for token based authentication
 Password                Password or security token to use
 Hostname                Enter the fully qualified domain names to update via the selected service. For example: *myhost.dyndns.org*
 Check ip method         Service to query the current IP address
+Check ip timeout        How long to wait before the checkip process times out
+Force SSL               Choose to use HTTP or HTTPS, but only for selected services. Most services only support HTTPS nowadays.
 Interface to monitor    Interface to collect an address from when choosing "Interface" as check ip method, or source interface used to connect to the check ip service
 Description             A description to easily identify this rule in the overview.
+======================= =======================================================================================================================================================================
+
+Provider-specific configuration
+-------------------------------------
+
+Cloudflare
+```````````````````````````
+For accounts with Cloudflare as provider, there is an additional option **Zone**, which should be set as the name of the zone containing the host to be updated, not its zone ID.
+
+Cloudflare accepts authorization with the global token with the options
+
+======================= =======================================================================================================================================================================
+Option                  Value
+======================= =======================================================================================================================================================================
+Username                The email of the Cloudflare account.
+Password                Global API Key.
+======================= =======================================================================================================================================================================
+
+Using an API token is recommended for security reasons, with ``Permissions`` :menuselection:`Zone --> DNS --> Edit` and ``Zone Resources`` :menuselection:`Include --> Specific zone --> zone with the host`, and the account options
+
+======================= =======================================================================================================================================================================
+Option                  Value
+======================= =======================================================================================================================================================================
+Username                token
+Password                API token.
 ======================= =======================================================================================================================================================================

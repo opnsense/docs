@@ -2,7 +2,7 @@
 Using Insight - Netflow Analyzer
 ================================
 OPNsense is equipped with a flexible and fast Netflow Analyzer called Insight.
-To use Insight, one needs to configure the Netlfow exporter for local capturing
+To use Insight, one needs to configure the Netflow exporter for local capturing
 of Netflow data. To do so take a look at :doc:`netflow_exporter`.
 
 --------------
