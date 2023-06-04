@@ -1,4 +1,4 @@
-Orange France FTTP IPv4 & IPv6
+Orange France FTTH IPv4 & IPv6
 ==============================
 
 **Authors:** Kev Willers, David Néel
@@ -83,7 +83,12 @@ Orange require that the DHCP and DHCP6 requests are made with a VLAN-PCP of 6. T
 
 On the DHCP6 request we need to use raw options
 
-Firstly select 'Advanced' and set 'Use VLAN priority' to 'Internetwork Control (6)'
+Firstly select 'Basic' and tick 'Request only an IPv6 prefix' and set 'Prefix delegation size' to 56
+
+.. image:: images/OF_image5_1.png
+	:width: 100%
+
+Then select 'Advanced' and set 'Use VLAN priority' to 'Internetwork Control (6)'
 
 .. image:: images/OF_image5.png
 	:width: 100%
@@ -107,6 +112,13 @@ Finally set the Identity Association and Prefix interface as shown
 
 Click ‘Save’ and then ‘Apply’.
 
+Update IPv6 Gateway
+
+Select :menuselection:`System --> Gateway --> Single` and edit IPv6 gateway to add 'fe80::ba0:bab' as IP address
+
+.. image:: images/OF_image6_1.png
+	:width: 100%
+
 
 **LAN Interface**
 -----------------
@@ -121,6 +133,7 @@ Select :menuselection:`Interfaces --> [LAN]` and set IPv4 to “Static IPv4” a
 
 Finally, set the Track IPv6 Interface to WAN and set the IPv4 address to your chosen address.
 
+Tick 'Manual Configuration'
 
 .. image:: images/OF_image8.png
 	:width: 100%
@@ -135,3 +148,28 @@ Select :menuselection:`Services --> Router Advertisements` On the Lan interface 
 Click ‘Save’
 
 It is advisable at this point to reboot the system.
+
+
+**Troubleshooting**
+-------------------
+
+getting the option-90 chain from the Livebox
+--------------------------------------------
+
+Rarely, the authentication option from the generator doesn't work, you can instead use the one from the Livebox
+
+Plug the WAN interface of the Livebox in your network (green port)
+Use Wireshark on any other computer in the network and look for DHCP Discover packets
+
+.. image:: images/OF_image10.png
+	:width: 100%
+
+decode DHCP packets
+-------------------
+
+In this packet, look for Option: (90) Authentication
+
+.. image:: images/OF_image11.png
+	:width: 100%
+
+You can copy paste the full option without the first 2 bytes (5a 46) in your WAN configuration
