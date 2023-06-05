@@ -35,13 +35,15 @@ They can contain any executable file (e.g. shell scripts) in the following subdi
 - early
     - start script before system network startup
 - monitor
-    - scripts handling gateway monitoring events
+    - scripts handling gateway monitoring alerts
 - start
     - start script after system network startup
 - stop
     - stop script before normal system shutdown
 - update
-    - update script after core package update
+    - update script after core package update (post-update)
+- upgrade
+    - upgrade script migration tool for major upgrade (pre-upgrade)
 
 File names can use a number prefix "XX-" to retain a particular order.  "20-" is typically used for core scripts, while "50-" is used for plugins.
 
