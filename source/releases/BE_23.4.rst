@@ -16,6 +16,136 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+23.4.1 (June 14, 2023)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 23.1.9 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: register DNS service ports for unified use across core and plugins
+* system: serialize deferred requests for web GUI restart
+* system: relocate API messages to backend log target as they currently end up in captive portal logs
+* system: allow non-system group delete after faulty PHP 8 warning fix (contributed by kulikov-a)
+* system: restructure routing to carry out default gateway switching and address family specific reconfig
+* system: prevent PHP session garbage collection from running early (contributed by lin-xianming)
+* system: finish simplifying plugins_run()
+* system: calling return_down_gateways() depends on default gateway switch setting
+* system: open new session if missing to prevent spurious CRSF errors in static pages
+* system: add device hint to empty interface address message in case of mismatch during default route attempt
+* system: add kernel messages to the general system log
+* system: make sure routing log messages all use "ROUTING:" prefix
+* system: print warning for duplicated gateway name
+* system: prefix API key filename with FQDN of this host
+* system: fix MVC service page with ID-based reload like OpenVPN
+* system: fix issue with route add command for far gateway static route (contributed by Daniel Mason)
+* system: improve static routes error handling
+* system: fix a typo and align "attribute" use in gateway edit page
+* system: pluginctl: service mode can now batch-reload services when existing ID is omitted
+* system: do not delete dpinger PID file
+* reporting: sort interfaces by description in health graphs
+* reporting: fix incorrect interface index in NetFlow init (contributed by Nicolas Thumann)
+* interfaces: ping diagnostic tool was rewritten using MVC/API
+* interfaces: ensure single PPP netgraph node has the proper name
+* interfaces: reject invalid self-assignments in VLAN parent
+* interfaces: migrate trace route page to MVC/API
+* interfaces: migrate port probe page to MVC/API
+* interfaces: remove indirection in PPP ports handling
+* interfaces: exclude a few cases from PPPoEv6 negotiation
+* interfaces: deal with "prefixv6" as an array
+* interfaces: improve address cleanup when handling VIP modifications
+* interfaces: explicitly report current IP address during renewal avoidance
+* interfaces: patch in appropriate rebind/renew DHCPv6 handling
+* interfaces: for static "Use IPv4 connectivity" on PPPoE bring up IPv6 routes as well
+* interfaces: ifctl: fix typo causing content to be printed while adding it
+* interfaces: ifctl: avoid null route on fragile /64 prefix delegation
+* interfaces: ifctl: do not flush name server routes
+* interfaces: deal with RENEW and REBIND only reporting partial PDINFO
+* firewall: allow to create aliases for logged-in OpenVPN users `[1] <https://docs.opnsense.org/manual/aliases.html#openvpn-group>`__ 
+* firewall: leave out fractional seconds from timestamps in aliases
+* firewall: add missing scrub rules in dependency check for alias use
+* firewall: usability improvements and cleanups in scheduler pages (contributed by kuya1284)
+* firewall: add "set debug" and "set keepcounters" options to advanced options
+* firewall: simplify rule edit layout slightly and fix unused element ID
+* dhcp: fix too many addresses issue in radvd RDNSS setting
+* dhcp: restart radvd on config changes, otherwise keep SIGHUP
+* dhcp: when cleaning up static leases do not remove entries where only a MAC address is set
+* dhcp: provide run task "static_mapping" to avoid polluting unrelated plugins
+* dhcp: remove ::/64 magic as it uses AdvRouterAddr yes
+* dnsmasq: use new run task "static_mapping" to collect static mappings from DHCP
+* firmware: now that we have a full data model do not overdo cleanup during plugin registration
+* firmware: remove flavouring support from update tools
+* firmware: update size requirements for major upgrades from command line
+* firmware: embed build metadata into package annotations for use in runtime remote queries
+* firmware: fix execution of version queries when not possible
+* firmware: revoke 22.7 fingerprint
+* firmware: show support tiers in plugin list
+* intrusion detection: minor performance improvements when parsing metadata from rules
+* ipsec: pull data for dashboard widget exclusively from backend
+* ipsec: move XAuth out of "IKE Extensions" block
+* ipsec: add connection child as option for manual SPDs
+* ipsec: another small GUI fix for basic log option in advanced settings
+* ipsec: support the default selector ([dynamic]) when local_ts or remote_ts are left empty in connections
+* monit: fix "not on" validation
+* openvpn: fix dashboard widget and add missing byte data to status call
+* openvpn: fix two widget display issues
+* openvpn: use CARP INIT state the same way as BACKUP state for client start/stop
+* openvpn: enable deferred authentication (sponsored by m.a.x. it)
+* openvpn: fix a warning by passing a desirable empty input containing a slash
+* unbound: minor improvements to handle "Dot" endpoints ambiguity
+* unbound: fix migration edge case in model version 1.0.3
+* unbound: remove DNS blocklist start syshook causing an unnecessary download during bootup
+* unbound: when called via GET during override creation encode using URLSearchParams()
+* web proxy: allow more signs for username and password (contributed by Bi0T1N)
+* web proxy: syslog parsing cleanup
+* wizard: do not end up duplicating WAN_GW entry
+* backend: improved nested command support, reorganise action types, use ActionFactory to offer the requested type
+* backend: add "getUtcTime" template helper function
+* mvc: change Phalcon logging to omit type and date
+* mvc: add CIDRToMask() to utilities
+* mvc: prevent config restore when writer has flushed or partly written the file
+* mvc: format BaseModel logger to avoid duplicate timestamps
+* ui: prevent crashing out when endpoint does not return data for SimpleActionButton
+* plugins: os-OPNBEcore minor fixes and additions
+* plugins: os-OPNcentral minor fixes and additions
+* plugins: os-acme-client 3.17 `[2] <https://github.com/opnsense/plugins/blob/stable/23.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-bind 1.26 `[3] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/bind/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.5 `[4] <https://github.com/opnsense/plugins/blob/stable/23.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-ddclient 1.13 `[5] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.13 `[6] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-nginx 1.32 `[7] <https://github.com/opnsense/plugins/blob/stable/23.1/www/nginx/pkg-descr>`__ 
+* plugins: os-smart fix for highlighting result (contributed by Justin Horton)
+* plugins: os-stunnel fix for missing OpenSSL CRL functions
+* plugins: os-upnp now allows subnet mask 0 in rules (contributed by Reiko Asakura)
+* src: bridge: add support for emulated netmap mode `[8] <https://github.com/opnsense/src/commit/eebd4b140f>`__ 
+* src: epair: also remove vlan metadata from mbufs
+* src: ifconfig: fix configuring if_bridge with additional operating parameters
+* src: netmap: fix queue stalls with generic interfaces `[9] <https://github.com/opnsense/src/commit/cc92d78fa5>`__ 
+* src: netmap: assorted upstream stable patches
+* src: sched_ule: assorted fixes to address issues on newer AMD platforms
+* src: axgbe: fix link issues for gigabit external SFP PHYs and 100/1000 fiber modules
+* src: axgbe: apply RRC to miibus attached PHYs and add support for variable bitrate 25G SFP+ DACs
+* src: axgbe: properly release resource in error case
+* src: ifconfig: improve VLAN identifier parsing
+* src: pfsync: hold b_mtx for callout_stop(pd_tmo)
+* src: pf: remove pd_refs from pfsync
+* src: pf: deal with KPI change bug on stable/13 by redirecting otherwise crashing traffic through ip6_output()
+* ports: curl 8.1.1 `[10] <https://curl.se/changes.html#8_1_1>`__ 
+* ports: dhcp6c 20230530
+* ports: ifinfo now also prints interface index (contributed by Nicolas Thumann)
+* ports: libxml 2.10.4 `[11] <http://www.xmlsoft.org/news.html>`__ 
+* ports: lighttpd 1.4.71 `[12] <https://www.lighttpd.net/2023/5/27/1.4.71/>`__ 
+* ports: nss 3.89.1 `[13] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_89_1.html>`__ 
+* ports: openssh 9.3p1 `[14] <https://www.openssh.com/txt/release-9.3>`__ 
+* ports: openvpn 2.6.4 `[15] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.4>`__ 
+* ports: php 8.1.19 `[16] <https://www.php.net/ChangeLog-8.php#8.1.19>`__ 
+* ports: sqlite 3.42.0 `[17] <https://sqlite.org/releaselog/3_42_0.html>`__ 
+* ports: suricata 6.0.12 `[18] <https://suricata.io/2023/05/09/suricata-6-0-12-released/>`__ 
+* ports: syslog-ng 4.2.0 `[19] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.2.0>`__ 
+
+
+--------------------------------------------------------------------------
 23.4 (April 25, 2023)
 --------------------------------------------------------------------------
 

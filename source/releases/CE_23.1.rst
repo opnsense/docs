@@ -45,7 +45,7 @@ to land in the next development version most likely for a sneak preview.
 
 Here are the full patch notes:
 
-* system: fix MFC service page with ID-based reload like OpenVPN
+* system: fix MVC service page with ID-based reload like OpenVPN
 * system: fix issue with route add command for far gateway static route (contributed by Daniel Mason)
 * system: improve static routes error handling
 * system: fix a typo and align "attribute" use in gateway edit page
