@@ -80,6 +80,7 @@ Postfix
 -------
 
 First of all, you need to configure the domains you want to forward in the `Domains` menu.
+
 .. Image:: images/postfix_add_new_domain.png
 
 Enter the values for your mail server in the dialog after clicking `+`:
