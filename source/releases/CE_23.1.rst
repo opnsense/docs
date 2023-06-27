@@ -30,6 +30,68 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.1.10 (June 22, 2023)
+--------------------------------------------------------------------------
+
+
+As summer is approaching we release this minor update in preparation for
+the upcoming 23.7 series.  We are planning the upgrade to FreeBSD 13.2
+as well as offering an MVC variant of the OpenVPN integration amongst
+many other improvements some of which already shipped in previous 23.1.x
+releases.
+
+There may be another kernel update before the final 23.7 arrives but that
+is for next week to decide.  For now enjoy the sun and stay hydrated!
+
+Here are the full patch notes:
+
+* system: do not delete dpinger PID file
+* system: improve RRD collector PID/service handling
+* system: do not touch /var/run/booting if it exists (contributed by William Desportes)
+* system: do a full transition on gateway group apply
+* system: automatically create core dump with installed debug kernel
+* interfaces: minor fixes in IP address status read
+* interfaces: additions for legacy_interface_stats()
+* interfaces: use interfaces_primary_address() during IPv4 renewal
+* firewall: remove duplicate table defintions
+* firewall: prevent VIP address adding /32 on IPv6 rule selection
+* firmware: opnsense-update: move -K option to -x
+* firmware: opnsense-update: support deferred kernel set install
+* firmware: opnsense-update: use -w option with -a option in fetch(1)
+* firmware: opnsense-update: ensure kernel directory consistency
+* firmware: shift subscription key extract to "-x" option
+* firmware: use post-upgrade hook and stage kernel as well for clean abort
+* firmware: sort plugins before store
+* dhcp: fix IPv6 lease page undefined vars and other issues
+* dhcp: share DUID parsing code via dhcpd_parse_duid()
+* dhcp: revamp the prefix route handling also adding support for statically mapped downstream routers
+* monit: fix "not on" validation
+* openvpn: fix typo in widget for client timestamp display
+* web proxy: syslog parsing cleanup
+* ui: remove noodp and noydir from HTML meta robots tag (contributed by William Desportes)
+* plugins: os-crowdsec 1.0.6 `[1] <https://github.com/opnsense/plugins/blob/stable/23.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-nginx 1.32.1 `[2] <https://github.com/opnsense/plugins/blob/stable/23.1/www/nginx/pkg-descr>`__ 
+* ports: curl 8.1.2 `[3] <https://curl.se/changes.html#8_1_2>`__ 
+* ports: krb5 1.21 `[4] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
+* ports: nss 3.90 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_90.html>`__ 
+* ports: ntp 4.2.8p17 `[6] <https://www.ntp.org/support/securitynotice/>`__ 
+* ports: openssl 1.1.1u `[7] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openvpn 2.6.5 `[8] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.5>`__ 
+* ports: php 8.1.20 `[9] <https://www.php.net/ChangeLog-8.php#8.1.20>`__ 
+* ports: phalcon 5.2.2 `[10] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.2>`__ 
+* ports: python 3.9.17 `[11] <https://docs.python.org/release/3.9.17/whatsnew/changelog.html>`__ 
+* ports: squid 5.9 `[12] <http://www.squid-cache.org/Versions/v5/squid-5.9-RELEASENOTES.html>`__ 
+* ports: strongswan upstream fix for VICI stalls `[13] <https://github.com/opnsense/core/issues/6308>`__ 
+* ports: suricata 6.0.13 `[14] <https://suricata.io/2023/06/15/suricata-6-0-13-released/>`__ 
+
+A hotfix release was issued as 23.1.10_1:
+
+* firewall: align rule validation with port forward validation
+* plugins: os-nginx fix for missing load_module directive after nginx update to 1.24
+
+
+
+--------------------------------------------------------------------------
 23.1.9 (May 31, 2023)
 --------------------------------------------------------------------------
 
