@@ -51,7 +51,7 @@ When the ISP offers a static address block you can assign one /64 network to you
 DHCPv6
 -------------------------------
 
-For dynamic address offerings (that most likely are also shifting the prefix) this mode is most common configuration and therefore also the default setting for a preset WAN. In this mode a prefix will be acquired if offered, either with or without an additional IP address for your WAN. Note that the interface will not assign a / 64 to itself from the prefix in contrast to IPv6. Internally, a single globally unique address is either acquired via DHCP or SLAAC (not to be confused with SLAAC mode) but in general a ISP-provided link-local address is automatically used for the connectivity to the next hop gateway. Setting "Request only an IPv6 prefix" may be required in case the ISP refuses to hand out an address.
+For dynamic address offerings (that most likely are also shifting the prefix) this mode is the most common configuration and therefore also the default setting for a preset WAN. In this mode a prefix will be acquired if offered, either with or without an additional IP address for your WAN. Note that the interface will not assign a /64 to itself from the prefix in contrast to static IPv6. Internally, a single globally unique address is either acquired via DHCP or SLAAC (not to be confused with SLAAC mode) but in general a ISP-provided link-local address is automatically used for the connectivity to the next hop gateway. Setting "Request only an IPv6 prefix" may be required in case the ISP refuses to hand out an address and/or prefix.
 
 In PPPoE IPv4 mode the "Use IPv4 connectivity" option will acquire address information on the PPPoE device itself instead of the parent device. The use of this option depends on your ISP. Note that in this mode PPPoEv6 is also enabled as some ISPs require it for IPv6 functionality.
 
@@ -104,7 +104,7 @@ This mode uses a WAN DHCPv6 interface to assign a single /64 network to your LAN
 
 .. Note::
 
-    You can use this mode for WAN connections only.
+    You can use this mode for LAN connections only.
 
 Basic setup and troubleshooting
 =======================================
