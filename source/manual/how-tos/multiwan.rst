@@ -188,6 +188,10 @@ but in step 2 choose same **Tier** for both Gateways.
 This will change the behavior from failover to equal balancing between the two
 gateways.
 
+.. Note::
+    When using multiple Gateways with the same Tier, you need to disable shared
+    forwarding in :menuselection:`Firewall --> Settings --> Advanced`.
+
 Sticky Connection
 -----------------
 Some web sites don't like changing request IPs for the same session, this may
