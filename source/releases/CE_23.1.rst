@@ -30,6 +30,45 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.1.11 (June 28, 2023)
+--------------------------------------------------------------------------
+
+
+So this is the end of life release for the 23.1 series which includes the
+recent FreeBSD advisories as well as plugin support for Zabbix 6.4.
+
+We have finished the OpenVPN MVC "instances" for anyone who is interested in
+a preview using the current development release.  FreeBSD 13.2 side looks
+ready so we will be releasing 23.7-RC1 some time in the second half of July.
+The final 23.7 release is scheduled for July 31.  The upgrade path from 23.1
+will be enabled shortly after the new major release, but can take up to 24
+hours due to testing and mirror propagation.  Please do not despair.  ;)
+
+Here are the full patch notes:
+
+* system: add RADIUS authentication support for MSCHAPv2 using Crypt_CHAP_MSv2()
+* system: propagate error in rc.syshook scripts
+* dhcp: validate client hostnames in Dnsmasq/Unbound lease watchers
+* firmware: automatic kernel upgrade after reboot like base and package stages
+* firmware: sticky advanced mode if flavour is set to non-default
+* intrusion detection: add missing typecast in getAlertLogsAction()
+* mvc: fix locking regression that caused bulk changes to not being rendered correctly
+* plugins: os-zabbix-agent plugin variant for Zabbix 6.4
+* plugins: os-zabbix-proxy plugin variant for Zabbix 6.4
+* src: axgbe: account for 4 SFP ports during GPIO expander check
+* src: ipsec: make algorithm tables read-only
+* src: mpr: fix copying of event_mask `[1] <FREEBSD:FreeBSD-EN-23:07.mpr>`__ 
+* src: pam_krb5: fix spoofing vulnerability `[2] <FREEBSD:FreeBSD-SA-23:04.pam_krb5>`__ 
+* src: loader: comconsole: do not unconditionally wipe out hw.uart.console `[3] <FREEBSD:FreeBSD-EN-23:06.loader>`__ 
+* src: contrib/tzdata: import tzdata 2023c `[4] <FREEBSD:FreeBSD-EN-23:05.tzdata>`__ 
+* src: ixgbe: change if condition for RSS and rxcsum
+* src: pf: fix pf_nv##_array() size check
+* src: e1000: fix VLAN 0
+* ports: py-setuptools fix for CVE-2022-40897
+
+
+
+--------------------------------------------------------------------------
 23.1.10 (June 22, 2023)
 --------------------------------------------------------------------------
 
