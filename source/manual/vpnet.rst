@@ -353,35 +353,118 @@ One of the main advantages of OpenVPN in comparison to IPsec is the ease of conf
 and it's quite simple to export settings for clients.
 
 .................................
-Site 2 Site
+General context
 .................................
 
-OpenVPN on OPNsense can also be used to create a tunnel between two locations, similar to what IPsec offers. Generally
-the performance of IPsec is higher which usually makes this a less common choice.
+The OpenVPN module incorporates different functions to setup secured networks for roadwarriors and side to side connections.
+Since the start of our project we organized the openvpn menu section into servers and clients, which actually is a role
+for the same OpenVPN process. As our legacy system has some disadvantages which are difficult to fix in a migration, we have chosen
+to add a new component named :code:`Instances` in version 23.7 which offers access to OpenVPN's configuration in a similar way as
+the upstream `documentation <https://openvpn.net/community-resources/reference-manual-for-openvpn-2-6/>`__ describes it.
+This new component will eventually replace the existing client and server options in a future version of OPNsense, leaving
+enough time to migrate older setups.
+
+.. Tip::
+
+  When upgrading into a new major version of OPNsense, always make sure to read the release notes to check if your setup
+  requires changes.
+
+.. Note::
+
+  OpenVPN on OPNsense can also be used to create a tunnel between two locations, similar to what IPsec offers. Generally
+  the performance of IPsec is higher which usually makes this a less common choice.
+  Mobile usage is really where OpenVPN excells, with various (multifactor) authentication options and
+  a high flexibility in available network options.
+
+
+The following functions are available in the menu (as of OPNsense 23.7):
+
+* Instances
+
+  * New instances tool offering access to server and client setups
+
+* Servers
+
+  * Legacy server configuration tool
+
+* Clients
+
+  * Legacy client configuration tool
+
+* Client Specific Overrides
+
+  * Set client specific configurations based on the client’s X509 common name.
+
+* Client Export
+
+  * Export tool for client configurations, used for server type instances
+
+* Connection Status
+
+  * Show tunnel statusses
+
+* Log File
+
+  * Inspect log entries related to OpenVPN
+
+
+....................................
+Public Key Infrastructure  (X.509)
+....................................
+
+OpenVPN is most commonly used in combination with a public key infrastructure, where we use a certificate autority which
+signs certificates for both server and clients (Also know as TLS Mode).
+More information about this topic is available in our  :doc:`Trust section <certificates>`.
+
+.................................
+Firewall rules
+.................................
+
+To allow traffic to the tunnel on any interface, a firewall rule is needed to allow the tunnel being established.
+The default port for OpenVPN is :code:`1194` using protocol :code:`UDP`.
+
+After communication has been established, it's time to allow traffic inside the tunnel. All OpenVPN interfaces defined in
+OPNsense are  :doc:`grouped <firewall_groups>` as `OpenVPN`.
+
+.. Tip::
+
+    In order to use features as policy based routing or manual routes, you can :doc:`assign <interfaces>` the underlying
+    devices and use them in a similar fashion as physical interfaces.
+
+
+.................................
+Examples
+.................................
+
+This paragraph offers examples for some commonly used implementation scenarios.
+
+.. Note::
+
+    When using a site to site example with :code:`SSL/TLS` instead of a shared key, make sure to configure "client specific overrides"
+    as well to correctly bind the remote networks to the correct client.
+
+
+Legacy (:menuselection:`VPN -> OpenVPN -> Client|Server`)
+------------------------------------------------------------------------------
 
 .. toctree::
    :maxdepth: 2
    :titlesonly:
 
    how-tos/sslvpn_s2s
+   how-tos/sslvpn_client
 
 
-.. Note::
-
-    When using the site to site example with :code:`SSL/TLS` instead of a shared key, make sure to configure "client specific overrides"
-    as well to correctly bind the remote networks to the correct client.
-
-.................................
-Road Warriors / Mobile users
-.................................
-
-Mobile usage is really where OpenVPN excells, with various (multifactor) authentication options and a high flexibility in available network options.
+New (:menuselection:`VPN -> OpenVPN -> Instances`)
+------------------------------------------------------------------------------
 
 .. toctree::
    :maxdepth: 2
    :titlesonly:
 
-   how-tos/sslvpn_client
+   how-tos/sslvpn_instance_s2s
+   how-tos/sslvpn_instance_roadwarrior
+
 
 
 .................................
