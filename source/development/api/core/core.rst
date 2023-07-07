@@ -22,6 +22,6 @@ Core
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","core","system","dismissStatus",""
-    "``GET``","core","system","halt",""
-    "``GET``","core","system","reboot",""
+    "``POST``","core","system","halt",""
+    "``POST``","core","system","reboot",""
     "``GET``","core","system","status",""

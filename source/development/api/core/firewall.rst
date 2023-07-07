@@ -19,6 +19,7 @@ Firewall
     "``GET``","firewall","alias","listCategories",""
     "``GET``","firewall","alias","listCountries",""
     "``GET``","firewall","alias","listNetworkAliases",""
+    "``GET``","firewall","alias","listUserGroups",""
     "``POST``","firewall","alias","reconfigure",""
     "``*``","firewall","alias","searchItem",""
     "``POST``","firewall","alias","set",""
@@ -59,6 +60,21 @@ Firewall
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","firewall","filter_util","ruleStats",""
+
+.. csv-table:: Resources (GroupController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","firewall","group","addItem",""
+    "``POST``","firewall","group","delItem","$uuid"
+    "``GET``","firewall","group","get",""
+    "``GET``","firewall","group","getItem","$uuid=null"
+    "``POST``","firewall","group","reconfigure",""
+    "``*``","firewall","group","searchItem",""
+    "``POST``","firewall","group","set",""
+    "``POST``","firewall","group","setItem","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Group.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Group.xml>`__"
 
 
 .. Tip::

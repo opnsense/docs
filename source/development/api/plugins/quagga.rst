@@ -59,6 +59,9 @@ Quagga
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
+    "``GET``","quagga","diagnostics","bfdcounters",""
+    "``GET``","quagga","diagnostics","bfdneighbors",""
+    "``GET``","quagga","diagnostics","bfdsummary",""
     "``GET``","quagga","diagnostics","bgpneighbors","$format=""json"""
     "``GET``","quagga","diagnostics","bgproute","$format=""json"""
     "``GET``","quagga","diagnostics","bgproute4","$format=""json"""
@@ -78,6 +81,12 @@ Quagga
     "``GET``","quagga","diagnostics","ospfv3neighbor","$format=""json"""
     "``GET``","quagga","diagnostics","ospfv3overview","$format=""json"""
     "``GET``","quagga","diagnostics","ospfv3route","$format=""json"""
+    "``GET``","quagga","diagnostics","searchBgproute4",""
+    "``GET``","quagga","diagnostics","searchBgproute6",""
+    "``GET``","quagga","diagnostics","searchGeneralroute4",""
+    "``GET``","quagga","diagnostics","searchGeneralroute6",""
+    "``GET``","quagga","diagnostics","searchOspfneighbor",""
+    "``GET``","quagga","diagnostics","searchOspfroute",""
 
 .. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
