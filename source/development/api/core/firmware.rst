@@ -2,24 +2,32 @@ Firmware
 ~~~~~~~~
 OPNsense has several API calls to get and set the firmware configuration:
 
+
+
 .. csv-table::
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","Core","Firmware","poweroff",""
-   "``POST``","Core","Firmware","reboot",""
-   "``GET``","Core","Firmware","running",""
-   "``GET``","Core","Firmware","getFirmwareConfig",""
-   "``GET``","Core","Firmware","getFirmwareOptions",""
-   "``POST``","Core","Firmware","setFirmwareConfig",""
-   "``GET``","Core","Firmware","info",""
-   "``GET``","Core","Firmware","status",""
-   "``POST``","Core","Firmware","status",""
-   "``POST``","Core","Firmware","audit",""
-   "``POST``","Core","Firmware","update",""
-   "``POST``","Core","Firmware","upgrade",""
-   "``GET``","Core","Firmware","upgradestatus",""
-   "``POST``","Core","Firmware","changelog","$version"
+    "``POST``","core","firmware","audit",""
+    "``POST``","core","firmware","changelog","$version"
+    "``POST``","core","firmware","check",""
+    "``POST``","core","firmware","connection",""
+    "``GET``","core","firmware","get",""
+    "``GET``","core","firmware","getOptions",""
+    "``POST``","core","firmware","health",""
+    "``GET``","core","firmware","info",""
+    "``POST``","core","firmware","log","$clear"
+    "``POST``","core","firmware","poweroff",""
+    "``POST``","core","firmware","reboot",""
+    "``POST``","core","firmware","resyncPlugins",""
+    "``GET``","core","firmware","running",""
+    "``POST``","core","firmware","set",""
+    "``POST``","core","firmware","set",""
+    "``POST``","core","firmware","status",""
+    "``POST``","core","firmware","syncPlugins",""
+    "``POST``","core","firmware","update",""
+    "``POST``","core","firmware","upgrade",""
+    "``GET``","core","firmware","upgradestatus",""
 
 Examples:
 
@@ -44,13 +52,14 @@ You can manage the packages and plugins in OPNsense, using these API calls:
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-   "``POST``","Core","Firmware","install","$pkg_name"
-   "``POST``","Core","Firmware","reinstall","$pkg_name"
-   "``POST``","Core","Firmware","remove","$pkg_name"
-   "``POST``","Core","Firmware","lock","$pkg_name"
-   "``POST``","Core","Firmware","unlock","$pkg_name"
-   "``POST``","Core","Firmware","details","$pkg_name"
-   "``POST``","Core","Firmware","license","$pkg_name"
+    "``POST``","core","firmware","details","$package"
+    "``POST``","core","firmware","reinstall","$pkg_name"
+    "``POST``","core","firmware","remove","$pkg_name"
+    "``POST``","core","firmware","unlock","$pkg_name"
+    "``POST``","core","firmware","install","$pkg_name"
+    "``POST``","core","firmware","license","$package"
+    "``POST``","core","firmware","lock","$pkg_name"
+
 
 Examples:
 
