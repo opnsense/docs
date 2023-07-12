@@ -164,7 +164,7 @@ Local Network           192.168.8.0/24
    vertificate between clients this option needs to be deselected.
 
 
-Next go to :menuselection:`Firewall --> Rules --> WAN` and add a rule to allow traffic on port :code:`1494/UDP` from the other
+Next go to :menuselection:`Firewall --> Rules --> WAN` and add a rule to allow traffic on port :code:`1194/UDP` from the other
 host. At minimum we should add a rule similar to this one:
 
 ===============================================================
