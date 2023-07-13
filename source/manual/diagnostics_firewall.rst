@@ -56,6 +56,9 @@ Insight into the state table (pf), offers the ability to search for specific sta
 It is also possible to reset all states and/or the source tracking tables from here, especially the state table
 reset should be used with care as it drops all active connections.
 
+If you use the grid search input to look for states, or you used the **Inspect** button on the firewall rules page and
+opened the state view, you will see a button that allows you to kill all states that matched the criteria.
+
 .. Note::
 
     The state table tries to connect states to rules, but since these are refered to by rule number (sequence) in :code:`pf(4)`
