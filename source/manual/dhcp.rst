@@ -15,13 +15,13 @@ The DHCPv4 submenu further consists of:
 
 * An entry per interface of general settings, like a toggle to enable/disable DHCPv4 for this interface, DHCP range, DNS servers…
 * **Relay**: DHCP requests can be “forwarded” to a DHCP server on another interface. This is called relaying.
-* **Leases**: Shows all IP addresses that are handed out to clients (can be filtered to only show active and static leases).
+* **Leases**: Shows all IP addresses that are handed out to clients.
 * **Log File**: Shows the log file of the DHCPv4 server.
 
 The DHCPv6 submenu further consists of:
 
 * **Relay**: DHCP requests can be “forwarded” to a DHCP server on another interface. This is called relaying.
-* **Leases**: Shows all IP addresses that are handed out to clients (can be filtered to only show active and static leases).
+* **Leases**: Shows all IP addresses that are handed out to clients.
 
 ------------
 Using DHCPv4
@@ -94,3 +94,28 @@ available:
 +-----------------------+----------------------------------------------------------------------------------------------+
 | Destination servers   | A comma separated list of IPs to which the requests should be forwarded.                     |
 +-----------------------+----------------------------------------------------------------------------------------------+
+
+-----------
+Diagnostics
+-----------
+
+As mentioned in the settings overview, the current leased IP addresses can be seen in the **Leases** page for diagnostic 
+purposes. Both IPv4 and IPv6 have their own leases page. This page reflects the current facts as reported by DHCPd in the 
+`/var/dhcpd/var/db/dhcpd(6).leases` database. By default this page only shows the current active leases. To show
+all configured leases, check the "inactive" box. You are also able to filter on interfaces by using the dropdown
+showing "All Interfaces".
+
+- All times are reported in local time as specified in `Administration <settingsmenu.html#general>`__
+- Clients are considered online if they exist the ARP table for IPv4 or NDP table for IPv6.
+- The different possible states a lease can be in is documented in the
+  `dhcpd.leases <https://www.freebsd.org/cgi/man.cgi?query=dhcpd.leases>`__ page. If failover is enabled, checking the
+  **inactive** box will reveal all IP addresses currently reserved by DHCPd with a **backup** state. These are leases that are
+  available for allocation by the failover secondary. The amount shown will vary depending on the configured failover 
+  split value or range.
+- The lease type can either by **dynamic** or **static**. This is provided for ease of sorting.
+- A static mapping for a dynamic lease can be configured by clicking on the plus sign of a row.
+- A lease can also be directly deleted from the leases database.
+- for DHCPv4, a hostname for a client will be shown if the client specifies their hostname as part of the protocol.
+- For DHCPv6, a MAC address will be shown if it exists in the NDP table or if the MAC address exists in the DUID, but only
+  if this MAC address maps to a known vendor. This is because a MAC address cannot reliably be fetched from a DUID.
+- The DHCPv6 leases page also shows the delegated prefixes in a separate tab.
