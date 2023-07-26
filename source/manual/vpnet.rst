@@ -297,6 +297,19 @@ In which case the following tunables need to be changed:
 
 
 .................................
+Miscellaneous variables
+.................................
+
+Path MTU Discovery
+--------------------------
+
+When trying to enforce path mtu discovery (`PMTU <https://en.wikipedia.org/wiki/Path_MTU_Discovery>`__), you need to make
+sure packets leave the network with the :code:`DF` set. The kernel offers a tunable :code:`net.inet.ipsec.dfbit` which
+offers 3 options, :code:`0`, clear the bit on packets leaving the firewall (default), :code:`1`, set the DF bit or :code:`2`
+to copy the bit from the inner header.
+
+
+.................................
 Diagnostics
 .................................
 
