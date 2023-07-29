@@ -163,7 +163,7 @@ In case of IPv4, addresses are being provided using a dhcp server, which usually
 For IPv6 the first service to look at for autoconfigurating clients is the  :doc:`/manual/radvd` daemon, which defines how clients
 receive their routes and how they will receive an addresss. The available options are provided in the referred document.
 
-The :doc:`DCHPv6 server </manual/dhcp>`, when used, can be configured in a similar way as when using IPv4.
+The :doc:`DHCPv6 server </manual/dhcp>`, when used, can be configured in a similar way as when using IPv4.
 
 
 Configuration examples
