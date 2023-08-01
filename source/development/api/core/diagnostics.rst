@@ -113,6 +113,30 @@ Diagnostics
 
     "``<<uses>>``", "", "", "", "*model* `PacketCapture.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Diagnostics/PacketCapture.xml>`__"
 
+.. csv-table:: Service (PingController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","diagnostics","ping","get",""
+    "``POST``","diagnostics","ping","remove","$jobid"
+    "``GET``","diagnostics","ping","searchJobs",""
+    "``GET``","diagnostics","ping","set",""
+    "``POST``","diagnostics","ping","set",""
+    "``POST``","diagnostics","ping","start","$jobid"
+    "``POST``","diagnostics","ping","stop","$jobid"
+
+    "``<<uses>>``", "", "", "", "*model* `Ping.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Diagnostics/Ping.xml>`__"
+
+.. csv-table:: Service (PortprobeController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","diagnostics","portprobe","get",""
+    "``GET``","diagnostics","portprobe","set",""
+    "``POST``","diagnostics","portprobe","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `Portprobe.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Diagnostics/Portprobe.xml>`__"
+
 .. csv-table:: Resources (SystemController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -125,6 +149,16 @@ Diagnostics
 
     "``GET``","diagnostics","systemhealth","getInterfaces",""
     "``GET``","diagnostics","systemhealth","getRRDlist",""
+
+.. csv-table:: Service (TracerouteController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","diagnostics","traceroute","get",""
+    "``GET``","diagnostics","traceroute","set",""
+    "``POST``","diagnostics","traceroute","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `Traceroute.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Diagnostics/Traceroute.xml>`__"
 
 .. csv-table:: Resources (TrafficController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

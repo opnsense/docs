@@ -188,6 +188,10 @@ but in step 2 choose same **Tier** for both Gateways.
 This will change the behavior from failover to equal balancing between the two
 gateways.
 
+.. Note::
+    When using multiple Gateways with the same Tier, you need to disable shared
+    forwarding in :menuselection:`Firewall --> Settings --> Advanced`.
+
 Sticky Connection
 -----------------
 Some web sites don't like changing request IPs for the same session, this may
@@ -199,7 +203,7 @@ To set this option can be set under :menuselection:`Firewall --> Settings --> Ad
 
 Unequal Balancing (Weight)
 --------------------------
-If you have a non symmetric setup with one IPS having a much higher
+If you have a non symmetric setup with one ISP having a much higher
 bandwidth than the other then you can set a weight on each gateway to change the
 load balance. For instance if you have one line of 10 Mbps and one of 20 Mbps then
 set the weight of the first one to 1 and the second one to 2. This way the second

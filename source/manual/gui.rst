@@ -179,10 +179,14 @@ Filter and limit
     a selection for the number of rows to show at once on a page. Often the search input will be instantly applied, but
     in some cases a reload is needed if the action can't be processed fast enough.
     <br/><br/>
-    You will find a <i class="fa fa-arrow-right"></i> <b>Go to page</b> action behind every record.
-    When you have filtered your list it will jump to the corresponding page and show
-    you all surrounding records.
+    When using the filter in log files, you will find a <i class="fa fa-arrow-right"></i> <b>Go to page</b> action
+    behind every record. This will jump to the corresponding page and show you all surrounding records so you can see
+    the context of a log message.
     <br/><br/>
+
+The search input tokenizes space-delimited words, causing the filter to return records matching all of the
+clauses included in the search phrase.
+
 
 Actions
 -------------------

@@ -28,6 +28,11 @@ The basic field type to describe a container of objects, such as a list of addre
   This type can't be nested, only one level of ArrayField types is supported, you can use ModelRelationField to
   describe master-detail constructions.
 
+.. Tip::
+
+   In case a model needs static (non persistent) records, the :code:`getStaticChildren()` method may be implemented
+   to spawn static entries. See also the custom field chapter for implementation scenarios.
+
 
 AuthGroupField
 ------------------------------------
