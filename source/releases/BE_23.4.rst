@@ -16,6 +16,103 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+23.4.2 (August 04, 2023)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 23.1.11 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: improve RRD collector PID/service handling
+* system: do not touch /var/run/booting if it exists (contributed by William Desportes)
+* system: do a full transition on gateway group apply
+* system: automatically create core dump with installed debug kernel
+* system: add RADIUS authentication support for MSCHAPv2 using Crypt_CHAP_MSv2()
+* system: propagate error in rc.syshook scripts
+* system: use parse_url() to validate if the provided login redirect string is actually parseable to prevent redirect
+* system: fix assorted permission-after-write problems
+* system: add opnsense-crypt utility to encrypt/decrypt a config.xml
+* system: call opnsense-crypt from opnsense-import to deal with encrypted imports
+* system: do not allow state modification on GET for power off and reboot actions
+* system: better validation and escaping for cron commands
+* system: better validation for logging user input
+* system: mute openssl errors pushed to stderr
+* system: name unknown tunables as "environment" as they could still be supported by e.g. the boot loader
+* system: sanitize $act parameter in trust pages
+* interfaces: minor fixes in IP address status read
+* interfaces: additions for legacy_interface_stats()
+* interfaces: use interfaces_primary_address() during IPv4 renewal
+* interfaces: allow manual protocol selection for VLANs
+* interfaces: remove null_service toggle as empty service name in PPPoE works fine
+* interfaces: fix bug with reported number of flapping LAGG ports (contributed by Neil Greatorex)
+* interfaces: introduce a lock and DAD timer into newwanip for IPv6
+* firewall: remove duplicate table definitions
+* firewall: prevent VIP address adding /32 on IPv6 rule selection
+* firewall: align rule validation with port forward validation
+* firewall: move all automatic rules for interface connectivity to priority 1
+* firewall: "kill states in selection" button was hidden when selecting only a rule for state search
+* captive portal: safeguard template overlay distribution
+* dhcp: fix IPv6 lease page undefined vars and other issues
+* dhcp: share DUID parsing code via dhcpd_parse_duid()
+* dhcp: revamp the prefix route handling also adding support for statically mapped downstream routers
+* dhcp: validate client hostnames in Dnsmasq/Unbound lease watchers
+* dhcp: fix validation for static entry requirement
+* firmware: opnsense-update: move -K option to -x
+* firmware: opnsense-update: support deferred kernel set install
+* firmware: opnsense-update: use -w option with -a option in fetch(1)
+* firmware: opnsense-update: ensure kernel directory consistency
+* firmware: shift subscription key extract to "-x" option
+* firmware: use post-upgrade hook and stage kernel as well for clean abort
+* firmware: sort plugins before store
+* firmware: automatic kernel upgrade after reboot like base and package stages
+* firmware: sticky advanced mode if flavour is set to non-default
+* firmware: properly escape crash reports shown
+* firmware: fix a faulty JSON construction during partial upgrade check
+* intrusion detection: add missing typecast in getAlertLogsAction()
+* ipsec: add missing config section for HA sync
+* ipsec: add passthrough networks when specified to prevent overlapping "connections" missing them
+* ipsec: add RADIUS server selection for "Connections" when RADIUS is not defined in legacy tunnel configuration
+* ipsec: fix RSA key pair generation with size other than 2048
+* openvpn: fix typo in widget for client timestamp display
+* unbound: move unbound-blocklists.conf to configuration location
+* backend: minor regression in deeper nested command structures in configd
+* mvc: fix locking regression that caused bulk changes to not being rendered correctly
+* mvc: properly support multi clause search phrases
+* mvc: fill missing keys when sorting in searchRecordsetBase()
+* mvc: fix empty item selection issue in BaseListField
+* ui: remove noodp and noydir from HTML meta robots tag (contributed by William Desportes)
+* plugins: os-crowdsec 1.0.6 `[1] <https://github.com/opnsense/plugins/blob/stable/23.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-nginx 1.32.1 `[2] <https://github.com/opnsense/plugins/blob/stable/23.1/www/nginx/pkg-descr>`__ 
+* plugins: os-zabbix-agent plugin variant for Zabbix 6.4
+* plugins: os-zabbix-proxy plugin variant for Zabbix 6.4
+* src: axgbe: account for 4 SFP ports during GPIO expander check
+* src: ipsec: make algorithm tables read-only
+* src: mpr: fix copying of event_mask `[3] <FREEBSD:FreeBSD-EN-23:07.mpr>`__ 
+* src: pam_krb5: fix spoofing vulnerability `[4] <FREEBSD:FreeBSD-SA-23:04.pam_krb5>`__ 
+* src: loader: comconsole: do not unconditionally wipe out hw.uart.console `[5] <FREEBSD:FreeBSD-EN-23:06.loader>`__ 
+* src: contrib/tzdata: import tzdata 2023c `[6] <FREEBSD:FreeBSD-EN-23:05.tzdata>`__ 
+* src: ixgbe: change if condition for RSS and rxcsum
+* src: pf: fix pf_nv##_array() size check
+* src: e1000: fix VLAN 0
+* ports: curl 8.1.2 `[7] <https://curl.se/changes.html#8_1_2>`__ 
+* ports: krb5 1.21 `[8] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
+* ports: nss 3.90 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_90.html>`__ 
+* ports: ntp 4.2.8p17 `[10] <https://www.ntp.org/support/securitynotice/>`__ 
+* ports: openssh 9.3p2 `[11] <https://www.openssh.com/txt/release-9.3p2>`__ 
+* ports: openssl 1.1.1v `[12] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openvpn 2.6.5 `[13] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.5>`__ 
+* ports: phalcon 5.2.2 `[14] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.2>`__ 
+* ports: php 8.1.20 `[15] <https://www.php.net/ChangeLog-8.php#8.1.20>`__ 
+* ports: py-setuptools fix for CVE-2022-40897
+* ports: python 3.9.17 `[16] <https://docs.python.org/release/3.9.17/whatsnew/changelog.html>`__ 
+* ports: squid 5.9 `[17] <http://www.squid-cache.org/Versions/v5/squid-5.9-RELEASENOTES.html>`__ 
+* ports: strongswan upstream fix for VICI stalls `[18] <https://github.com/opnsense/core/issues/6308>`__ 
+* ports: suricata 6.0.13 `[19] <https://suricata.io/2023/06/15/suricata-6-0-13-released/>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.4.1 (June 14, 2023)
 --------------------------------------------------------------------------
 

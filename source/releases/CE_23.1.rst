@@ -66,6 +66,11 @@ Here are the full patch notes:
 * src: e1000: fix VLAN 0
 * ports: py-setuptools fix for CVE-2022-40897
 
+A hotfix release was issued as 23.1.11_1:
+
+* firmware: enable upgrade path to 23.7
+* ports: openssh 9.3p2 `[5] <https://www.openssh.com/txt/release-9.3p2>`__ 
+
 
 
 --------------------------------------------------------------------------
@@ -92,8 +97,11 @@ Here are the full patch notes:
 * interfaces: minor fixes in IP address status read
 * interfaces: additions for legacy_interface_stats()
 * interfaces: use interfaces_primary_address() during IPv4 renewal
-* firewall: remove duplicate table defintions
+* firewall: remove duplicate table definitions
 * firewall: prevent VIP address adding /32 on IPv6 rule selection
+* dhcp: fix IPv6 lease page undefined vars and other issues
+* dhcp: share DUID parsing code via dhcpd_parse_duid()
+* dhcp: revamp the prefix route handling also adding support for statically mapped downstream routers
 * firmware: opnsense-update: move -K option to -x
 * firmware: opnsense-update: support deferred kernel set install
 * firmware: opnsense-update: use -w option with -a option in fetch(1)
@@ -101,9 +109,6 @@ Here are the full patch notes:
 * firmware: shift subscription key extract to "-x" option
 * firmware: use post-upgrade hook and stage kernel as well for clean abort
 * firmware: sort plugins before store
-* dhcp: fix IPv6 lease page undefined vars and other issues
-* dhcp: share DUID parsing code via dhcpd_parse_duid()
-* dhcp: revamp the prefix route handling also adding support for statically mapped downstream routers
 * monit: fix "not on" validation
 * openvpn: fix typo in widget for client timestamp display
 * web proxy: syslog parsing cleanup
@@ -116,8 +121,8 @@ Here are the full patch notes:
 * ports: ntp 4.2.8p17 `[6] <https://www.ntp.org/support/securitynotice/>`__ 
 * ports: openssl 1.1.1u `[7] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: openvpn 2.6.5 `[8] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.5>`__ 
-* ports: php 8.1.20 `[9] <https://www.php.net/ChangeLog-8.php#8.1.20>`__ 
-* ports: phalcon 5.2.2 `[10] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.2>`__ 
+* ports: phalcon 5.2.2 `[9] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.2>`__ 
+* ports: php 8.1.20 `[10] <https://www.php.net/ChangeLog-8.php#8.1.20>`__ 
 * ports: python 3.9.17 `[11] <https://docs.python.org/release/3.9.17/whatsnew/changelog.html>`__ 
 * ports: squid 5.9 `[12] <http://www.squid-cache.org/Versions/v5/squid-5.9-RELEASENOTES.html>`__ 
 * ports: strongswan upstream fix for VICI stalls `[13] <https://github.com/opnsense/core/issues/6308>`__ 
