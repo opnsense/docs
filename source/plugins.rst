@@ -81,6 +81,7 @@ Other
    manual/how-tos/mailgateway
    manual/git-backup
    manual/relayd
+   manual/wazuh-agent
 
 ----------------
 Reporting
