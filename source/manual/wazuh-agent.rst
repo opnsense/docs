@@ -36,6 +36,10 @@ use the [+] button to install it.
 Next go to :menuselection:`Services --> Wazuh Agent --> Settings` to configure the service.
 
 
+.. Tip::
+    When the ossec log offers too limited insights when debugging issues, try to increase the debug level. You can find this setting under
+    General settings when "advanced mode" is enabled.
+
 --------------------------------------
 Connecting the agent
 --------------------------------------
