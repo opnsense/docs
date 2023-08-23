@@ -64,7 +64,7 @@ drop the packet that would have also been dropped by the firewall.
 
 
 .. Note::
-
+how-tos/ips-sslfingerprint
     IDS mode is available on almost all (virtual) network types. IPS mode is
     *only* available with `supported physical adapters`_.
 
@@ -335,3 +335,4 @@ How-tos
 
    how-tos/ips-feodo
    how-tos/ips-sslfingerprint
+   how-tos/ips-bypass
