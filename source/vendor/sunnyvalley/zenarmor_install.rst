@@ -7,7 +7,7 @@ Zenarmor (Sensei): Installing via Web Interface
 
  **Note**
  
-    Zenarmor Free Edition is **forever free-of-charge**. We strongly recommend you register to keep in touch with updates and new features. You can register at `https://www.sunnyvalley.io/open-source-firewalls <https://www.sunnyvalley.io/open-source-firewalls>`_
+    Zenarmor Free Edition is **forever free-of-charge**. We strongly recommend you register to keep in touch with updates and new features. You can register at `https://www.zenarmor.com/zenarmor-next-generation-firewall <https://www.zenarmor.com/zenarmor-next-generation-firewall>`_
    
 
 Zenarmor may be installed using the web interface in OPNsense or using the command line interface via SSH or local system access (see :doc:`zenarmor_cmd_install`). The preferred method is the web interface because the process of installing plugins in OPNsense is simple and Zenarmor requires the use of the web interface to complete the initial configuration after installation.
