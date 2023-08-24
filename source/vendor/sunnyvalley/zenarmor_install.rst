@@ -10,13 +10,13 @@ Zenarmor (Sensei): Installing via Web Interface
     Zenarmor Free Edition is **forever free-of-charge**. We strongly recommend you register to keep in touch with updates and new features. You can register at `https://www.zenarmor.com/zenarmor-next-generation-firewall <https://www.zenarmor.com/zenarmor-next-generation-firewall>`_
    
 
-Zenarmor may be installed using the web interface in OPNsense or using the command line interface via SSH or local system access (see :doc:`zenarmor_cmd_install`). The preferred method is the web interface because the process of installing plugins in OPNsense is simple and Zenarmor requires the use of the web interface to complete the initial configuration after installation.
+Zenarmor may be installed using the web interface in OPNsense or using the command line interface via SSH or local system access (see :doc:`zenarmor_cmd_install`). The preferred method is the web interface because the process of installing plugins in OPNsense is simple, and Zenarmor requires the use of the web interface to complete the initial configuration after installation.
 
 To install plugins in OPNsense, you must use an account with administrative access.
 
 .. Note::
 
-    Before installing Zenarmor, you should ensure you meet the minimum system requirements in order to run Zenarmor or to have the best user experience. See :doc:`zenarmor_hardwarerequirements` for more information.
+    Before installing Zenarmor, you should ensure you meet the minimum system requirements in order to run Zenarmor or have the best user experience. See :doc:`zenarmor_hardwarerequirements` for more information.
 
 ----------------------------
 Web Interface Installation
@@ -61,7 +61,7 @@ To start the "Initial Configuration Wizard":
 2- Hardware Check
 ....................
 
-Your hardware will be analyzed to ensure it meets the minimum requirements. You will receive one of following responses: compatible hardware, low-end hardware, incompatible hardware. The setup will not continue if you have incompatible hardware.
+Your hardware will be analyzed to ensure it meets the minimum requirements. You will receive one of the following responses: compatible hardware, low-end hardware, incompatible hardware. The setup will not continue if you have incompatible hardware.
 
 .. image:: images/zenarmor-wizard-hardware-high-end.png
     :width: 100%
@@ -84,7 +84,7 @@ Your hardware will be analyzed to ensure it meets the minimum requirements. You 
 3- Reporting Database
 ......................
 
-* Select the database you wish to use for reporting. High end systems will have 3 options, while low end systems only have 2 options.
+* Select the database you wish to use for reporting. High-end systems will have 3 options, while low-end systems only have 2 options.
 
 .. Warning::
 
@@ -138,7 +138,7 @@ The engine processes the request, queries the **“Sunny Valley Network (SVN) Cl
 Cloud Threat Intel settings let you:
 
 * Enable/Disable the “Cloud Reputation & Web Categorization” engine
-* Set local domain name you wish to be excluded from cloud queries
+* Set the local domain name you wish to be excluded from cloud queries
 * Select the fastest Cloud Reputation Servers which are used for queries
 
 .. image:: images/zenarmor-wizard-cloud-reputation.png
@@ -159,7 +159,7 @@ Cloud Threat Intel settings let you:
 * **Automatically Update Databases and Threat Intelligence Data:** Checks automatically for the updates and creates a notification on the Zenarmor “Status” page.
 * **Enable Generation of Support Data:** If enabled, Zenarmor collects supporting data during unusual events and crashes. You can share this data when opening a ticket with us.
 * **Max Swap Utilization:** You may specify how much swap space Zenarmor may utilize when the system is low on memory. It is recommended that you do not set this value too high. Otherwise, system performance may suffer.
-* **Health Check:** If enabled, "Health Check" monitors the system's memory, CPU, disk usage and core services if they're working correctly, and raises alerts if anything goes wrong. "Health Check" also stops the appropriate services if they're consuming excessive system resources.
+* **Health Check:** If enabled, "Health Check" monitors the system's memory, CPU, disk usage, and core services if they're working correctly, and raises alerts if anything goes wrong. "Health Check" also stops the appropriate services if they're consuming excessive system resources.
 * **Help Sunny Valley Improve Its Products and Services:** If enabled, general system information is submitted to Sunny Valley to help improve the future development of Zenarmor.
 
 .. image:: images/zenarmor-wizard-updates-health-check.png
