@@ -5,9 +5,9 @@ Zenarmor (Sensei): Overview
 About
 ----------------------------
 
-Zenarmor is a plugin for the OPNsense firewall which provides state-of-the-art next generation features. Zenarmor is developed by Sunny Valley Networks (https://www.zenarmor.com)
+Zenarmor is a plugin for the OPNsense firewall which provides state-of-the-art next-generation features. Zenarmor is developed by Sunny Valley Networks (https://www.zenarmor.com)
 
-If you are running a L4 firewall (all open source firewalls fall into this category) and looking for features like Application Control, Network Analytics and TLS Inspection, Zenarmor is the product you're looking for.
+If you are running a L4 firewall (all open-source firewalls fall into this category) and looking for features like Application Control, Network Analytics, and TLS Inspection, Zenarmor is the product you're looking for.
 
 .. raw:: html
 
@@ -17,7 +17,7 @@ If you are running a L4 firewall (all open source firewalls fall into this categ
 Features
 ----------------------------
 
-Zenarmor empowers your firewall with the following next generation features:
+Zenarmor empowers your firewall with the following next-generation features:
 
 1. Application Control
 2. Cloud Application Control \(Web 2.0 Controls\)
@@ -27,9 +27,9 @@ Zenarmor empowers your firewall with the following next generation features:
 6. User-based Filtering and Reporting
 7. Active Directory Integration
 8. RESTful API
-9. Cloud based centralized management & Reporting
-10. Application / Web category based Traffic Shaping and Prioritization
-11. Policy based filtering and QoS
+9. Cloud-based centralized management & Reporting
+10. Application / Web-category-based Traffic Shaping and Prioritization
+11. Policy-based filtering and QoS
 12. Encrypted Threats Prevention
 13. All-ports full TLS Inspection \(for every TCP port, not just HTTPS\) *Coming soon*
 
@@ -50,7 +50,7 @@ User Manual
 You can get detailed *How to* documents from Zenarmor's Documentation Site located at https://www.zenarmor.com/docs/opnsense
 
 * `Dashboard <https://www.zenarmor.com/docs/opnsense/customizing-dashboard/dashboard>`_
-* `Status <https://www.zenarmor.com/docs/opnsense/customizing-dashboard/status>`_
+* `Status <https://www.zenarmor.com/docs/opnsense/customizing-dashboard/dashboard>`_
 * `Reports <https://www.zenarmor.com/docs/opnsense/reporting-analytics/reports-overview>`_
 * `Security <https://www.zenarmor.com/docs/opnsense/policies/security-rules>`_
 * `Application Control <https://www.zenarmor.com/docs/opnsense/policies/application-control-rules>`_
@@ -83,7 +83,7 @@ When you buy a Zenarmor Premium Subscription, you are entitled to Zenarmor Basic
 
 Sunny Valley Networks provides Tier 3 Support Options for Zenarmor Channel Partners. To learn more about them, please contact **sensei-partnership -at- sunnyvalley.io**.
 
-To become a partner, you may apply for partnership via https://www.zenarmor.com/apply-partnership .
+To become a partner, you may apply for a partnership via https://www.zenarmor.com/apply-partnership .
 
 **Connect via Social Media or Websites**
 
