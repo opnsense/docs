@@ -3,7 +3,6 @@
 Configure CARP
 ==============
 
-
 --------
 Overview
 --------
@@ -118,8 +117,8 @@ The backup server needs its own dedicated addresses, we will use these:
 .. Note::
     Per default the dropdown menu for subnet mask only fits for IPv4
     addresses (up to 32). If you want to add an IPv6 CARP address,
-    write you v6 address and the dropdown list will auto-update to  
-    itself up to 128.
+    write your IPv6 address and the dropdown list will auto-update  
+    to 128. :ref:`Configuring CARP with IPv6 <configuring-carp-with-ipv6>`
     
 Because we are going to synchronize firewall settings between both
 hosts, we only need to make sure that the pfSync interface can accept
@@ -299,6 +298,125 @@ these steps:
 
 With these steps you will not lose too many packets and your existing connection will be transferred as well.
 Also note that entering persistent mode survives a reboot.
+
+.. _configuring-carp-with-ipv6:
+--------------------------
+Configuring CARP with IPv6
+--------------------------
+
+.. Warning:: 
+    Please read all the above steps before attempting to configure IPv6 CARP VIPs. This section is complementry. Some important details are omitted for a more focused approach.
+
+.. Note::
+    * An example ISP provided you the following:
+    * IPv6 network: ``2001:db8:1234::/48``
+    * Transfer network: ``2001:db8:1234::/64``
+    * Upstream gateway: ``2001:db8:1234::/64``
+    * Static route: ``2001:db8:1234::/48`` next hop ``2001:db8:1234::7/64``
+    
+.. Note::
+    * Firewall rules have to permit *Protocol: CARP* with *TCP/IP Version: IPv6* on all interfaces with CARP IPv6 VIPs.
+    
+.. rubric:: Master
+    :name: master
+
+Go to interfaces, make sure you have these interfaces assigned and setup the following addresses and subnets:
+    
++-----+---------------------------+
+| WAN | ``2001:db8:1234::1/64``   |
++-----+---------------------------+
+| LAN | ``2001:db8:1234:1::1/64`` |
++-----+---------------------------+
+
+.. rubric:: Backup
+    :name: backup
+
+The backup server needs its own dedicated addresses, we will use these:
+
++-----+---------------------------+
+| WAN | ``2001:db8:1234::2/64``   |
++-----+---------------------------+
+| LAN | ``2001:db8:1234:1::2/64`` |
++-----+---------------------------+
+
+-----------------------------------------
+Setup Virtual IPv6 Global Unicast Address
+-----------------------------------------
+
+On the master node we are going to setup our Virtual IPv6 global unicast address, which
+will also be added to the backup node with a higher skew after synchronisation. 
+Go to :menuselection:`Interfaces --> Virtual IPs` and add a new one with the following
+characteristics:
+
++-------------------------+------------------------------------+
+| Type                    | Carp                               |
++-------------------------+------------------------------------+
+| Interface               | WAN                                |
++-------------------------+------------------------------------+
+| IP addresses            | ``2001:db8:1234::7/64``            |
++-------------------------+------------------------------------+
+| Virtual password        | opnsense (the example uses this)   |
++-------------------------+------------------------------------+
+| VHID Group              | 2                                  |
++-------------------------+------------------------------------+
+| Advertising Frequency   | Base 1 / Skew 0                    |
++-------------------------+------------------------------------+
+| Description             | VIP WAN IPv6                       |
++-------------------------+------------------------------------+
+
+.. Tip::
+    ``2001:db8:1234::7/64`` should be the IP where the static route of your provider points to.
+.. Warning::
+    Use a free VHID Group for each additional CARP VIP. Don't use the same VHID Group twice.
+
+-------------------------------------
+Setup Virtual IPv6 Link Local Address
+-------------------------------------
+
+On the master node we are going to setup our Virtual IPv6 link local address, which
+will also be added to the backup node with a higher skew after synchronisation. 
+Go to :menuselection:`Interfaces --> Virtual IPs` and add a new one with the following
+characteristics:
+
++-------------------------+------------------------------------+
+| Type                    | Carp                               |
++-------------------------+------------------------------------+
+| Interface               | LAN                                |
++-------------------------+------------------------------------+
+| IP addresses            | ``fe80::/64``                      |
++-------------------------+------------------------------------+
+| Virtual password        | opnsense (the example uses this)   |
++-------------------------+------------------------------------+
+| VHID Group              | 4                                  |
++-------------------------+------------------------------------+
+| Advertising Frequency   | Base 1 / Skew 0                    |
++-------------------------+------------------------------------+
+| Description             | VIP LAN IPv6                       |
++-------------------------+------------------------------------+
+
+.. Warning::
+    * All IPv6 CARP VIPs on LAN interfaces should be ``/64`` Link Local Addresses.
+    * Don't use Global Unicast Addresses, many devices ignore them as IPv6 Gateway.
+    
+.. Tip::
+    * Even though you can use ``fe80::/64`` for each additional LAN interface, it's advisable to use *IPv6 addresses with IPv4 embedded* (RFC 4291 - Section 2.5.5). 
+    * Example: If there is a LAN interface with the IPv4 CARP VIP ``192.168.1.1/24``, you could use ``fe80::192:168:1:1/64`` as the link local address. It would help with readability, because hosts in that network would have the IPv4 Gateway as ``192.168.1.1`` and the IPv6 Gateway as ``fe80::192:168:1:1``.
+
+--------------------------
+Setup Router Advertisments
+--------------------------
+
+.. rubric:: WAN
+    :name: WAN
+
+* Go to :menuselection:`Services --> Router Advertisments` and select the WAN interface.
+* Make sure *Router Advertisements* is set to *Disabled*
+
+.. rubric:: LAN
+    :name: LAN
+
+* Go to :menuselection:`Services --> Router Advertisments` and select the LAN interface.
+* Change the *Source Address* from *automatic* to *VIP LAN IPv6 (fe80::/64)*.
 
 ---------
 Resources
