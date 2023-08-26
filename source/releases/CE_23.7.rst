@@ -27,6 +27,64 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.7.2 (August 23, 2023)
+--------------------------------------------------------------------------
+
+
+Assorted improvements are being shipped with this release.  Of special
+note is the proper monitoring of down gateways which allows the new
+gateway watcher to see the gateway come back online when plugging a
+cable.  A Wazuh agent plugin was added and the ddclient plugin received
+new protocol support including AWS Route53 amongst others.
+
+Here are the full patch notes:
+
+* system: improve monitoring of down gateways
+* system: clear all /var/run directories on bootup
+* system: put lock()/unlock() back for legacy plugin compatibility
+* interfaces: fix special device name chars used in shell variables
+* interfaces: prevent IPv6 mismatches when using compressed format in VIP
+* interfaces: remove descriptive name from newwanip logging
+* interfaces: typo in MRU handling for PPP
+* interfaces: improve PPPoE MTU handling
+* interfaces: switch rtsold to -A mode
+* firewall: missing interface group registration on group creation
+* dhcp: improve UX of the new MVC lease pages
+* firmware: remove defunct mirror "Dept. of CSE, Yuan Ze University"
+* intrusion detection: fix events originating from "int^" due to IPS mode use
+* ipsec: add colon to supported character list for pre-shared key IDs
+* ipsec: reqid should not stick when copying a phase 1
+* monit: fix empty timeout value (contributed by Michael Muenz)
+* openvpn: properly map user groups for authentication
+* openvpn: bring instances into server field
+* openvpn: fix separator for redirect-gateway attribute in instances and CSO
+* unbound: fixed configuration when custom blocks are used (contributed by Evgeny Grin)
+* plugins: os-ddclient 1.15 `[1] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-iperf adds rubygem-rexml dependency (contributed by Hannah Kiekens)
+* plugins: os-relayd 2.7 now supports newer upstream release of relayd
+* plugins: os-wazuh-agent 1.0 `[2] <https://docs.opnsense.org/manual/wazuh-agent.html>`__ 
+* src: remove if_wg from kernel modules to unbreak current wireguard-go use
+* src: axgbe: LED control for A30 platform
+* src: gif: revert in{,6}_gif_output() misalignment handling
+* src: igc: sync srrctl buffer sizing with e1000
+* src: ip_output: ensure that mbufs are mapped if ipsec is enabled
+* src: ixgbe: warn once for unsupported SFPs
+* src: ixgbe: add support for 82599 LS
+* src: ixl: add link state polling
+* src: ixl: port ice's atomic API to ixl
+* src: rss: set pin_default_swi to 0 by default
+* src: rtsol: introduce an 'always' script
+* ports: krb5 1.21.2 `[3] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
+* ports: openldap 2.6.6 `[4] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openvpn 2.6.6 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.6>`__ 
+* ports: php 8.2.9 `[6] <https://www.php.net/ChangeLog-8.php#8.2.9>`__ 
+* ports: phalcon 5.3.0 `[7] <https://github.com/phalcon/cphalcon/releases/tag/v5.3.0>`__ 
+* ports: phpseclib 3.0.21 `[8] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.21>`__ 
+* ports: py-dnspython 2.4.2
+
+
+
+--------------------------------------------------------------------------
 23.7.1 (August 08, 2023)
 --------------------------------------------------------------------------
 
