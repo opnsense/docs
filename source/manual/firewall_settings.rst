@@ -21,42 +21,47 @@ Network Address Translation
 ------------------------------------
 
 .. Warning::
-
     Although the options below might look interesting to ease setup, we do not advise to use them. Since automatic rules
     always contain assumptions about the situation they try to solve, it's not guaranteed they will fit your use-case at all
-    times. They merely exist for historical reasons, if possible better add manual rules nat rules to make sure the intend is
+    times. They merely exist for historical reasons, if possible better add manual nat rules to make sure the intend is
     very explicit when one inspects your setup.
+
+.. Tip::
+   There is a how-to section explaining :doc:`NAT Reflection <how-tos/nat_reflection>` in detail.
+    
+.. Attention::
+    Firewall Rules won't be automatically generated when using any of the below Reflection options. You have to create them manually or traffic will be blocked by the default deny rule.
+    
+.. Note::
+    * Automatic Reflection rules aren't visible in the GUI. Examine them with ``pfctl -s nat`` in the shell. 
+    * :code:`rdr` means redirection. Redirection rules are :menuselection:`Firewall --> NAT --> Port Forward` rules, also known as *Destination NAT*. *Destination NAT* changes the destination IP of a packet.
+    * :code:`nat` rules are :menuselection:`Firewall --> NAT --> Outbound` rules, also known as *Source NAT*. *Source NAT* changes the source IP of a packet.
+    * *Reflection NAT* is just :code:`rdr`. *Hairpin NAT* is a combination of :code:`rdr` and :code:`nat`.
+
 
 Reflection for port forwards
 .....................................
 
-Disabled by default, when enabled the system will generate rules to reflect port forwards on non external interfaces
-automatically (interfaces without a gateway set).
-If for example you create a portforward on your :code:`wan` interface to a webserver which is hosted internally, a similar
-rule will be generated on the :code:`lan` interface.
+Disabled by default, when enabled the system will generate :code:`rdr` rules to reflect port forwards on internal interfaces automatically (interfaces without a gateway set).
 
-.. Note::
 
-    This marker only adds a redirect for the same target the source address is not influenced. (:code:`rdr`)
+If you create a :menuselection:`Firewall --> NAT --> Port Forward` rule with the interface as :code:`wan`, the automatic :code:`rdr` rules will be created for any of your other connected interfaces (e.g. :code:`lan`, :code:`opt1`, :code:`lo0`). 
 
 
 Reflection for 1:1
 .....................................
 
-Disabled by default, when enabled the system will generate redirect (:code:`rdr`) rules for 1to1 nat rules similar to
+Disabled by default, when enabled the system will generate redirect :code:`rdr` rules for 1to1 nat rules similar to
 the portforward option.
 
 
 Automatic outbound NAT for Reflection
 ......................................
 
-Since both reflection rules only redirect traffic on other nets, quite often they are used in conjunction with this option.
-When enabled, source addresses are translated so returning traffic is always pushed through the firewall for these automatic rules.
+Disabled by default, when enabled the system will generate :code:`nat` rules in addition to :code:`rdr` rules, effectively turning all Reflection NAT into Hairpin NAT.
 
-.. Note::
-
-    The disadvantage of reflecting traffic back in using one of the firewalls internal addresses is that the receiving side
-    looses visibility of the actual client.
+.. Warning::
+    The disadvantage of reflecting traffic back with the firewall's internal IP address is that the receiving side will see the source IP address of the firewall instead of the source IP address of the client. Some security features on servers like fail2ban can't properly function like this.
 
 
 Bogon Networks
