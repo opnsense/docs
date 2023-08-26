@@ -31,6 +31,9 @@ bidirectional. This can simplify your set-up. If you don't have networks of equa
 instead of the internal one (which would the most logical), NAT reflection can rewrite this request so that it uses
 the internal IP, in order to avoid taking a detour and applying rules meant for actual outside traffic.
 
+.. Tip::
+   There is a how-to section explaining :doc:`NAT Reflection <how-tos/nat_reflection>` in detail.
+
 .. Note::
     The NAT rules generated with enabling **NAT reflection** only include networks directly connected to your
     Firewall. This means if you have a private network separated from your LAN you need to add this with a
@@ -171,3 +174,14 @@ API access
 
 Partial API access, for outbound NAT, is provided with the :code:`os-firewall` plugin, which is described in more detail in
 the :doc:`firewall <../development/api/plugins/firewall>` api reference manual.
+
+-------
+How-tos
+-------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+   :glob:
+
+   how-tos/nat_reflection
