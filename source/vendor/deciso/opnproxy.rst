@@ -23,6 +23,11 @@ Before installing and using this plugin, make sure your web proxy is configured 
     or make sure the same username exists locally to map groups too.
 
 
+.. Warning::
+    Do not install other plugins or configuration files hooking into the proxy as these might interfere with the working
+    of the system.
+
+
 Installation
 ---------------------------
 
@@ -65,6 +70,26 @@ to import/add the users in OPNsense in order to user their authorisation setting
     Standard (global) policies take precedence over the ones defined in the access control plugin, this includes
     "SSL no bump sites" when full TLS/SSL inspection is used.
     (it's not possible to block no bump sites in full inspection mode)
+
+
+Transparant proxies
+---------------------------
+
+It is possible to use the proxy in transparant mode, but there are some constraints and ceveats to take into account when doing so.
+This paragraph tries to explain them one by one.
+
+* Using "Log SNI information only" is not supported in a useful way. As the browser is not aware of the proxy, it will request
+  access to an ip address in stead of a hostname. With full intercept mode, this is not really an issue as the next request will
+  be the actual question and does contain the hostname, but without interception, you can only filter on ip address which is often not very useful.
+* The client has to trust the CA which the proxy uses to automatically create certificates, which means all TLS requests will be signed by the firewall instead of the
+  actual trustee.
+* User based authentication is not possible, as the client doesn't know it's being intercepted, it's also not possible to
+  request a username and password. OPNproxy only supports basic authentication.
+
+
+.. Note::
+  When changing the "Log SNI information only"  option, you have to restart the proxy as well. As the apply button will not
+  reload the proxy in full.
 
 
 Authentication options

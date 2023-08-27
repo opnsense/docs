@@ -446,6 +446,25 @@ OPNsense are  :doc:`grouped <firewall_groups>` as `OpenVPN`.
 
 
 .................................
+High availability [CARP]
+.................................
+
+When operating an OpenVPN server, there's not much needed to allow an active/passive setup for your environment other then
+using a virtual (CARP) address. As the server will stop receiving traffic when the virtual address doesn't it,
+the backup will eventually become out of service automatically.
+
+In client mode, the OpenVPN instance needs to stop trying to reconnect when it's not in :code:`MASTER` mode, the legacy
+client module shutsdown all instances directly attached to the interface. Our new instances module allows to select
+the :code:`vhid` to track. In most cases an explicit bind isn't needed for a client, the default for a client is to
+use the :code:`nobind` option.
+
+.. Note::
+  It's not possible to move between machines fully seamless  as the client will have to reconnect in order to reach a
+  valid state again.
+
+
+
+.................................
 Examples
 .................................
 

@@ -58,8 +58,6 @@ Web
    manual/antivirus
    manual/how-tos/c-icap
    manual/how-tos/clamav
-   manual/how-tos/haproxy
-   manual/how-tos/haproxy_howtos
    manual/how-tos/nginx
    manual/how-tos/nginx_header_hardening
    manual/how-tos/nginx_hosting
@@ -83,6 +81,7 @@ Other
    manual/how-tos/mailgateway
    manual/git-backup
    manual/relayd
+   manual/wazuh-agent
 
 ----------------
 Reporting
