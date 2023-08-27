@@ -18,7 +18,7 @@ LAN        ``192.168.1.0/24``   ``192.168.1.1`` - Client         ``192.168.1.254
 NAT - Quick Overview
 --------------------
 
-Because there are not enough free IPv4 addresses, a workaround called *NAT* (Network Address Translation) was implemented into the IPv4 Standard. It basically enables a router like the OPNsense to translate IPv4 addresses to other IPv4 addresses. Most of the time it is used to translate the limited external IPv4 address space to the shared internal IPv4 address space (RFC 1918, ``192.168.0.0/16`` - ``172.16.0.0/12`` - ``10.0.0.0/8``) and vice versa.
+Because there are not enough available IPv4 addresses, a workaround called *NAT* (Network Address Translation) was implemented into the IPv4 Standard. It basically enables a router like the OPNsense to translate IPv4 addresses to other IPv4 addresses. Most of the time it is used to translate the limited external IPv4 address space to the shared internal IPv4 address space (RFC 1918, ``192.168.0.0/16`` - ``172.16.0.0/12`` - ``10.0.0.0/8``) and vice versa.
 
 .. Note::
 
@@ -32,7 +32,7 @@ Because there are not enough free IPv4 addresses, a workaround called *NAT* (Net
         *  Changes the destination port of a packet
         * `Firewall --> NAT --> Port Forward` using the option *Redirect target port* in a rule
 
-If you create a DNAT rule, you enable all clients in the WAN access to an internal IPv4 address. The OPNsense acts like a translator, translating IPv4 addresses between client and server. The OPNsense writes all translations into a file, which is called NAT table. It knows exactly how traffic should flow back and forth with the translations in place.
+If you create a DNAT rule, you enable all clients in the WAN access to an internal IPv4 address. The OPNsense acts like a translator, translating IPv4 addresses between client and server. The OPNsense writes all translations into a file called the NAT table. It knows exactly how traffic should flow back and forth with the translations in place.
 
 .. Warning::
     NAT is not a security feature. It only acts as a translator. If you want security, you need firewall rules in addition.
@@ -43,12 +43,12 @@ What is Reflection NAT?
 
 For example, you have a Webserver ``example.com`` with the internal IP ``172.16.1.1`` in your DMZ. It has a public DNS Record of ``example.com in A 203.0.113.1``.
 
-Your internal client ``192.168.1.1`` cant reach the Webserver if it resolves the DNS A-Record ``203.0.113.1``. When the OPNsense receives the packet from the client ``192.168.1.1`` with the destination IP ``203.0.113.1``, it chooses **itself** is the target, and **not** ``172.16.1.1``. That's because the external IPv4 address ``203.0.113.1`` is mapped to the WAN interface of the OPNsense.
+Your internal client ``192.168.1.1`` can't reach the Webserver if it resolves the DNS A-Record ``203.0.113.1``. When the OPNsense receives the packet from the client ``192.168.1.1`` with the destination IP ``203.0.113.1``, it chooses **itself** as the target, and **not** ``172.16.1.1``. That's because the external IPv4 address ``203.0.113.1`` is mapped to the WAN interface of the OPNsense.
 
 That's where Reflection NAT comes into play. It creates NAT rules which help your internal client ``192.168.1.1`` to communicate with your webserver ``203.0.113.1``, by using the OPNsense as the "translator" to the actual destination ``172.16.1.1``.
 
 .. Attention::
-    You should choose your prefered Reflection NAT method from the three possible choices presented here. They're exclusive to each other, picking one method and sticking to it will prevent mistakes.
+    You should choose your preferred Reflection NAT method from the three possible choices presented here. They're exclusive to each other, picking one method and sticking to it will prevent mistakes.
 
     * :ref:`Method 1 <nat-method1>` - Creating **manual** Port-Forward NAT (DNAT), **manual** Outbound NAT (SNAT), and **automatic** firewall rules
     * :ref:`Method 2 <nat-method2>` - Creating **automatic** Port-Forward NAT (DNAT), **manual** Outbound NAT (SNAT), and **manual** firewall rules
@@ -116,7 +116,7 @@ Go to :menuselection:`Firewall --> NAT --> Port Forward`
 .. _nat-method1-outbound:
     
 Go to :menuselection:`Firewall --> NAT --> Outbound`
-    Select *Hybrid outbound NAT rule generation* and save. That way you can have manual outbound rules in conjunction with automatic ones.
+    Select *Hybrid outbound NAT rule generation* and save. That way you can have manual outbound rules in conjunction with automatic IP-Masquerading rules. You could also choose *Manual outbound NAT rule generation*. Please make sure that you create your own IP-Masquerading rules with the *manual outbound NAT* enabled. 
     
     
     Select **+** to create a new Port Forward rule.
@@ -142,28 +142,28 @@ Go to :menuselection:`Firewall --> NAT --> Outbound`
 
     If a packet is received by the OPNsense on the interface ``DMZ`` with protocol ``TCP`` from the source net ``172.16.1.0/24`` and the source port ``ANY`` to destination IP ``172.16.1.1`` and destination port ``443`` --> rewrite the source ip to ``172.16.1.254`` and answer from the OPNsense ``DMZ`` interface.    
 
-Repeat :ref:`Method 1 <nat-method1>` until you have any additional Servers reachable by internal and external clients.    
+Repeat :ref:`Method 1 <nat-method1>` until all additional servers are reachable.    
 
-If you are having trouble, check :ref:`Troubleshooting NAT Rules <troubleshooting-nat-rules>` for a few tips.
+If you encounter any issues, check :ref:`Troubleshooting NAT Rules <troubleshooting-nat-rules>` for a few tips.
 
 .. Warning::
-    The following Methods aren't adviced, but are still explained in order to prevent misconfigurations. There is more information in :doc:`/manual/firewall_settings`.
+    The following methods are not adviced, but are still explained in order to prevent misconfigurations. There is more information in :doc:`/manual/firewall_settings`.
 
 .. _nat-method2:
 
 ------------------------------------------------------------------------------------------------------------
-Method 2 - Creating automatic Port-Forward NAT (DNAT), manual Outbound NAT (SNAT), and manual firewall rules
+Method 2 - Creating Automatic Port-Forward NAT (DNAT), Manual Outbound NAT (SNAT), and Manual firewall rules
 ------------------------------------------------------------------------------------------------------------
 
 Go to :menuselection:`Firewall --> Settings --> Advanced`
-    Enable *Reflection for port forwards* to create automatic rules for all :menuselection: `Firewall --> NAT --> Port Forward` that have ``WAN`` as interface.
+    Enable *Reflection for port forwards* to create automatic rules for all entries :menuselection: `Firewall --> NAT --> Port Forward` that have ``WAN`` as interface.
 
 .. _nat-method2-portforward:
     
 Go to :menuselection:`Firewall --> NAT --> Port Forward`
     Create the NAT rule as in :ref:`Method 1 - Port Forward <nat-method1-portforward>` but change the following things:
     
-    * Make sure that your *Port Forwarding* rule has only ``WAN`` as interface.
+    * Make sure that your *Port Forwarding* rule specifies only ``WAN`` as interface.
 
 .. _nat-method2-floating:    
     Go to :menuselection:`Firewall --> Rules --> Floating`
@@ -184,7 +184,7 @@ Go to :menuselection:`Firewall --> NAT --> Outbound`
 .. _nat-method3:
 
 ---------------------------------------------------------------------------------------------------------------
-Method 3 - Creating automatic Port-Forward NAT (DNAT), automatic Outbound NAT (SNAT), and manual firewall rules
+Method 3 - Creating Automatic Port-Forward NAT (DNAT), Automatic Outbound NAT (SNAT), and Manual firewall rules
 ---------------------------------------------------------------------------------------------------------------
 
 Go to :menuselection:`Firewall --> Settings --> Advanced`
