@@ -168,6 +168,11 @@ And another using the following:
 | Description             | VIP LAN                            |
 +-------------------------+------------------------------------+
 
+.. Note::
+    Always create Carp VIPs with the same subnet mask as it's parent interface. If the parent interface
+    is ``/24``, your Carp VIP should also be ``/24``. Even though some sources claim that ``/32`` will work,
+    services like DHCP Failover will fail with ``peer holds all free leases``.
+
 ------------------
 Setup outbound NAT
 ------------------
@@ -300,6 +305,7 @@ With these steps you will not lose too many packets and your existing connection
 Also note that entering persistent mode survives a reboot.
 
 .. _configuring-carp-with-ipv6:
+
 --------------------------
 Configuring CARP with IPv6
 --------------------------
@@ -318,7 +324,7 @@ Configuring CARP with IPv6
     * Firewall rules have to permit *Protocol: CARP* with *TCP/IP Version: IPv6* on all interfaces with CARP IPv6 VIPs.
     
 .. rubric:: Master
-    :name: master
+    :name: master-ipv6
 
 Go to interfaces, make sure you have these interfaces assigned and setup the following addresses and subnets:
     
@@ -329,7 +335,7 @@ Go to interfaces, make sure you have these interfaces assigned and setup the fol
 +-----+---------------------------+
 
 .. rubric:: Backup
-    :name: backup
+    :name: backup-ipv6
 
 The backup server needs its own dedicated addresses, we will use these:
 
@@ -407,13 +413,13 @@ Setup Router Advertisments
 --------------------------
 
 .. rubric:: WAN
-    :name: WAN
+    :name: wan-radvd
 
 * Go to :menuselection:`Services --> Router Advertisments` and select the WAN interface.
 * Make sure *Router Advertisements* is set to *Disabled*
 
 .. rubric:: LAN
-    :name: LAN
+    :name: lan-radvd
 
 * Go to :menuselection:`Services --> Router Advertisments` and select the LAN interface.
 * Change the *Source Address* from *automatic* to *VIP LAN IPv6 (fe80::/64)*.
