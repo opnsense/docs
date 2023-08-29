@@ -121,7 +121,7 @@ Initially the dynamically acquired subnet including the interface id and the ava
 For most SOHO setups 256 clients per network zone will probably more than enough so we restrict the range for the DMZ to
 `aaaa:bbbb:cccc:9411::1` --> `aaaa:bbbb:cccc:9411::ff`
 
-But wait! The prefix is dynamic isn't it ? How to deal with that ?
+But wait! The prefix is dynamic. How to deal with that?
 
 Easy. Just omit the variable part and configure the DHCPv6 range to be
 `::1` --> `::ff`
