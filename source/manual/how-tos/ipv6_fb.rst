@@ -23,7 +23,7 @@ The Scenario
 ------------
 
 This guide will configure a home network behind a common dial-up type ISP connection.
-The OPNsense has one interface pointing to the ISP, it is named `WAN`, and has three internal 
+The OPNsense has an interface pointing to the ISP named `WAN` and has three internal 
 interfaces called `DMZ`, `LAN` and `WLAN`. Each of those internal interfaces will get a /64
 subnet from the delegated IPv6 prefix. This way it is easy to control the dataflow between
 all four segments on the OPNsense. 
