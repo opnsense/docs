@@ -85,8 +85,9 @@ Interface  Interface prefix ID  result-prefix
 The **Interface prefix Id** acts as the subnet extension (for lack of better wording) on top of the prefix provided by the FB.
 In this example we have a /60 prefix so effectively there are 4 bits left for subnetting. As a result valid values for **Interface prefix Id** are between `0x00` and `0x0f`. 
 
-In order to being able to setup the router advertisements in the next step make sure to select the checkbox
-**Allow manual adjustment of DHCPv6 and Router Advertisements** for each of the internal interfaces.
+In order to being able to manually set up the router advertisements in the next step make sure to select the checkbox
+**Allow manual adjustment of DHCPv6 and Router Advertisements** for each of the internal interfaces. If the
+setting is not used the system tries to set sane defaults for both Router Advertisements and DHCPv6 server.
 
 ----------------------------------------------
 Step 3.1 - configure the Router Advertisements
