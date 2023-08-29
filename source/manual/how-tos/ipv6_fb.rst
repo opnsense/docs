@@ -69,7 +69,7 @@ Two things to notice here:
 Step 3 - configure the internal DMZ / LAN / WLAN interfaces
 -----------------------------------------------------------
 
-Now it's time to setup the internal interfaces. The settings are more or less the same for all of them.
+Now it is time to set up the internal interfaces. The settings are more or less the same for all of them.
 Instead of **DHCPv6** select **Track Interface** and on the bottom IPv6 dialog and choose the `WAN` interface for tracking.
 This is also the place to divide the delegated prefix into distinct subnets. Just specify an individual **Interface prefix ID**
 for each interface. In this example the FB gave us `aaaa:bbbb:cccc:9410::/60` and we choose:
