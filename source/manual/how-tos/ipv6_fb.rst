@@ -123,8 +123,7 @@ this: `aaaa:bbbb:cccc:9411::1:0` --> `aaaa:bbbb:cccc:9411::1:ffff`.
 
 But wait! The prefix is dynamic. How to deal with that?
 
-Easy. Just omit the variable part and configure the DHCPv6 range to be
-`::1` --> `::ff`
+Easy. Just omit the variable prefix and configure the DHCPv6 range to be `::1:0` --> `::1:ffff`
 
 OPNSense will automatically prefix this pattern with the dynamically acquired prefix.
 
