@@ -16,7 +16,7 @@ This guide is based on a Vodafone Cable connection (formerly Kabel-BW) and an
 `AVM Fritz!Box Cable 6591` running `Fritz!OS 7.29`.
 
 The settings presented here should work for most other dial-up scenarios and FB models
-too. Probably the size of the delegated subnet will differ.
+too. The size of the delegated subnet may differ.
 
 ------------
 The Scenario
