@@ -128,7 +128,7 @@ Easy. Just omit the variable part and configure the DHCPv6 range to be
 
 OPNSense will automatically prefix this pattern with the dynamically acquired prefix.
 
-Repeat for all the other subnets. Don't forget to configure the `Domain search list` to match the SOHO internal DNS domain.
+Repeat for all the other subnets. Do not forget to configure the `Domain search list` to match the SOHO internal DNS domain if applicable.
 
 -----------------------------
 Step 4 - setup Firewall rules
