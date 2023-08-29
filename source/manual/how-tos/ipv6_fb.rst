@@ -118,8 +118,8 @@ from the Internet.
 In :menuselection:`Services --> DHCPv6 --> [DMZ]` (and similar for the other interfaces) the DHCPv6 settings can be configured.
 Initially the dynamically acquired subnet including the interface id and the available range is shown. 
 
-For most SOHO setups 256 clients per network zone will probably more than enough so we restrict the range for the DMZ to
-`aaaa:bbbb:cccc:9411::1` --> `aaaa:bbbb:cccc:9411::ff`
+Consider assigning a suitable address pool for DHCP client leases. The target range for the DMZ looks like
+this: `aaaa:bbbb:cccc:9411::1:0` --> `aaaa:bbbb:cccc:9411::1:ffff`.
 
 But wait! The prefix is dynamic. How to deal with that?
 
