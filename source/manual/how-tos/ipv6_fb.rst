@@ -41,7 +41,7 @@ The crucial setting is the checkbox **allow other routers IPv6 prefixes**. Witho
 not be reachable from the Internet.
 
 Also, not stated in above document, it is possible to modify the **Internet - Permit Access** settings for
-the OPNsense host. Make sure to select :menuselection:`Internet --> Permit Access --> <your OPN Host> --> IPv6 Settings --> Open firewall for delegated IPv6 prefixes of this device`
+the OPNsense host. Select :menuselection:`Internet --> Permit Access --> <your OPN Host> --> IPv6 Settings --> Open firewall for delegated IPv6 prefixes of this device`
 in order to make your delegated internal subnets available via Internet. 
 
 ------------------------------------
