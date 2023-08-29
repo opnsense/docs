@@ -134,9 +134,6 @@ Repeat for all the other subnets. Do not forget to configure the `Domain search 
 Step 4 - setup Firewall rules
 -----------------------------
 
-All clients should now have a proper IPv6 address (actually more than one), know their DNS servers and their upstream router.
-All that is left to do is adding the appropriate firewall rules for incoming traffic.
-
 By default outgoing traffic should already be possible but traffic from the Internet to the internal server needs a firewall rule.
 There are different philosophies on how to manage firewall rules. Just use a similar strategy as with your IPv4 setup so rule management
 is consistent.
