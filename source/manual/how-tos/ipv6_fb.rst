@@ -55,7 +55,7 @@ On the OPNSense go to :menuselection:`Interfaces --> WAN` and set the configurat
 * checkbox: **Send IPv6 prefix hint**
 * dropdown: **Prefix delegation size**. For this example setup select `60`
 
-Two things to notice here:
+Note the following:
 
 1. the requested prefix differs by one bit compared to what the ISP delegated the FB (60 vs. 59)
 2. the setting **Request only an IPv6 prefix** is the important part. 
