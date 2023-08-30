@@ -33,7 +33,7 @@ Network Address Translation
     Firewall Rules won't be automatically generated when using any of the below Reflection options. You have to create them manually or traffic will be blocked by the default deny rule.
     
 .. Note::
-    * Automatic Reflection rules aren't visible in the GUI. Examine them with ``pfctl -s nat`` in the shell. 
+    * Examine the automatic Reflection rules either in the shell with ``pfctl -s nat`` or in the GUI in "Firewall: Diagnostics: Statistics => rules".
     * :code:`rdr` means redirection. Redirection rules are :menuselection:`Firewall --> NAT --> Port Forward` rules, also known as *Destination NAT*. *Destination NAT* changes the destination IP of a packet.
     * :code:`nat` rules are :menuselection:`Firewall --> NAT --> Outbound` rules, also known as *Source NAT*. *Source NAT* changes the source IP of a packet.
     * *Reflection NAT* is just :code:`rdr`. *Hairpin NAT* is a combination of :code:`rdr` and :code:`nat`.
