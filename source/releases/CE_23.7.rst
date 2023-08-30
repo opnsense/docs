@@ -27,6 +27,55 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.7.3 (August 30, 2023)
+--------------------------------------------------------------------------
+
+
+Recently we improved the workflow for bringing language updates to the
+release so here we are with an updated translation package including
+added support for Korean.  Thanks a lot to all contributors for keeping
+this going strong!
+
+If you would like to help with translations you can sign up via:
+
+https://poeditor.com/projects/view?id=179921
+
+Of note is also the largely rewritten backend for the WireGuard kernel
+module plugin which offers separate services for each instance much
+like OpenVPN offers it.  The requirement of the wireguard-tools and bash
+packages were removed.  This also means the plugin will be moved to the
+core for 24.1 along with Wireguard go plugin being removed completely
+since on FreeBSD 13.2 no external package is needed to enjoy WireGuard
+and the permanent existence of a kernel module renders the Go fallback
+defunct through wireguard-tools/wg-quick implementation quirks.
+
+Here are the full patch notes:
+
+* system: fix missing config save when RRD data is supplied during backup import
+* system: defer config reload to SIGHUP in gateway watcher
+* system: handle "force_down" state correctly in gateway watcher
+* system: make Gateways class argument optional
+* interfaces: tweak UX of interface settings page
+* interfaces: further improve PPP MTU handling
+* interfaces: remove workaround to re-reload the routing during bootup for edge case that no longer exist
+* firewall: fix group priority handling regression
+* firewall: improve filter functionality to combine multiple network clauses in states page
+* dhcp: map interfaces to interface names instead of devices
+* dhcp: fix iaid_duid parsing in IPv6 lease page
+* intrusion detection: support "bypass" keyword in user-defined rules (contributed by Monviech)
+* openvpn: fix mismatch issue when pinning a CSO to a specific instance
+* openvpn: add advanced option for optional CA selection
+* unbound: fix concurrent session closing the handle while still writing data in Python module
+* web proxy: remove long deprecated "dns_v4_first" setting from GUI
+* mvc: extend PortField to optionally allow port type aliases
+* lang: update all languages and add Korean
+* plugins: os-firewall 1.4 adds port alias support
+* plugins: os-frr 1.35 `[1] <https://github.com/opnsense/plugins/blob/stable/23.7/net/frr/pkg-descr>`__ 
+* plugins: os-wireguard 2.0 `[2] <https://github.com/opnsense/plugins/blob/stable/23.7/net/wireguard/pkg-descr>`__ 
+* ports: filterlog fix to prevent crash on default rule number -1
+
+
+--------------------------------------------------------------------------
 23.7.2 (August 23, 2023)
 --------------------------------------------------------------------------
 
