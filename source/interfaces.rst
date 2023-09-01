@@ -36,6 +36,7 @@ Setup guides
    manual/how-tos/cellular
    manual/how-tos/IPv6_ZenUK
    manual/how-tos/ipv6_dsl
+   manual/how-tos/ipv6_fb
    manual/how-tos/ipv6_tunnelbroker
    manual/how-tos/lan_bridge
    manual/how-tos/transparent_bridge

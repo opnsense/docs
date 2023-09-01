@@ -46,7 +46,7 @@ next week.
 
 The final 23.1 release will be on January 26.  As always the upgrade path
 from the community version will be added as a hotfix shortly after the final
-release annoucement is published.  However, this time around LibreSSL will
+release announcement is published.  However, this time around LibreSSL will
 no longer update and must be switched to the OpenSSL flavour prior to the
 upgrade.
 

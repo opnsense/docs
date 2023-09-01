@@ -8,8 +8,8 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *256* releases leading to the latest version *23.1.11*
-named "Quintessential Quail".
+As of January 2015 there have been *263* releases leading to the latest version *23.7.3*
+named "Restless Roadrunner".
 
 
 
@@ -20,6 +20,7 @@ The list below contains all releases, ordered by version number categorized by m
    :titlesonly:
    :glob:
 
+   releases/CE_23.7
    releases/CE_23.1
    releases/CE_22.7
    releases/CE_22.1

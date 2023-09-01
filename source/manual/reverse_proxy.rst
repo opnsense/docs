@@ -207,7 +207,6 @@ Basic Reverse Proxy Setup
 -------------------------
 * :doc:`how-tos/nginx`
 * :doc:`how-tos/nginx_streams`
-* :doc:`how-tos/haproxy`
 * :doc:`how-tos/mailgateway`
 
 

@@ -207,12 +207,25 @@ properties available in the policies view.
 
 
 
+
+User defined rules
+---------------------
+
+Most of the rules being used on your IDPS system will be supplied by third party vendors like Proofpoint,
+but in some cases it can be convenient to build some (limited) rules yourself. The "User defined" tab offers
+this functionality.
+
 Fingerprinting
---------------
+...........................
 
 OPNsense includes a very polished solution to block protected sites based on
 their SSL fingerprint. You can manually add rules in the "User defined" tab.
 
+Bypassing the engine
+...........................
+
+The :code:`Bypass` toggle offers the ability to skip traffic inspection, our How-tos section
+contains a good example to exclude local traffic passing your network and increase routing performance.
 
 Alerts
 ------
@@ -335,3 +348,4 @@ How-tos
 
    how-tos/ips-feodo
    how-tos/ips-sslfingerprint
+   how-tos/ips-bypass
