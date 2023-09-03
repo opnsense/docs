@@ -10,7 +10,7 @@ the fortnightly updates adding a third number (e.g. 19.1.3 for the third update 
 Installing updates
 ------------------
 
-Updates can be installed from the web interface, by going to :menuselection:`System --> Firmware --> Updates`. On this page, you can click
+Updates can be installed from the web interface, by going to :menuselection:`System --> Firmware --> Status`. On this page, you can click
 **Check for updates** to search for updates. If they are available, a button will appear to install them.
 
 ---------------
