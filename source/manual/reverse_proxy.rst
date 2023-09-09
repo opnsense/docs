@@ -176,7 +176,7 @@ that it fully supports TLS for the client while it does not need a lot of
 power to do a TLS handshake inside your own computer centre.
 
 .. Warning::
-    You should not use this for upstream servers reachable via untrusted newtworks.
+    You should not use this for upstream servers reachable via untrusted networks.
     Use (1) or (4) in such cases.
 
 (4) TLS Passthough
