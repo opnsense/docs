@@ -57,6 +57,29 @@ Step 4 - Routing networks
 -------------------------
 
 If you want to route your internal networks via this VPN just add the network in the field 
-**Allowed IPs** in **Endpoints** tab (e.g. 10.0.1.0/24). 
+**Allowed IPs** in **Endpoints** tab (e.g. 10.0.1.0/24).
+
+-------------------------------------------------
+Step 5 - Create normalization rules on both Sites
+-------------------------------------------------
+- Go to both **Local** instances you created, and edit them. Activate the **advanced** settings.
+- Set the Wireguard interface **MTU** to 1420 or lower; take the MTU of your WAN interface (usually 1500) and subtract 80 bytes
+- Go to :menuselection:`Firewall --> Settings -> Normalization` and press **+** to create a new normalization rule.
+
+    ============================ ==================================================================================================
+     **Interface**                *WireGuard (Group)*
+     **Direction**                *Any*
+     **Protocol**                 *any*
+     **Source**                   *any*
+     **Destination**              *any*
+     **Destination port**         *any*
+     **Description**              *Wireguard MSS Clamping*
+     **Max mss**                  *1360 or lower, subtract at least 80 bytes from the Wireguard MTU*
+    ============================ ==================================================================================================
+
+- **Save** the rule, and then click **Apply Changes**
+
+.. Note::
+    By setting the Wireguard Interface MTU to 1420 and the MSS to 1360, you ensure that IPv4 and IPv6 can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work. It will also improve your maximum throughput.
 
 That's it!
