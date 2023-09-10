@@ -31,6 +31,7 @@ Step 2 - Configure the local peer (server)
      **Public Key**        *This will initially be blank; it will be populated once the configuration is saved*
      **Private Key**       *This will initially be blank; it will be populated once the configuration is saved*
      **Listen Port**       *51820 or a higher numbered unique port*
+     **MTU**               *1420 or lower; take the MTU of your WAN interface (usually 1500) and subtract 80 bytes*
      **Tunnel Address**    *For example, 10.10.10.1/24. See note below*
      **Peers**             *The (client) peers will be specified here; leave it blank initially until the Endpoint configuration is created in Step 3*
      **Disable Routes**    *Unchecked*
@@ -214,7 +215,29 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
 .. Note::
 
     If you didn't assign an interface as suggested in Step 5(a), then the second firewall rule outlined above will need to be configured on the automatically created :code:`WireGuard` group that appears once the Local configuration is enabled and WireGuard is started. You will also need to manually specify the source IPs/subnet(s) for the tunnel. It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one local WireGuard instance and only one WireGuard endpoint configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
+    
+------------------------------------
+Step 6a - Create normalization rules
+------------------------------------
 
+- Go to :menuselection:`Firewall --> Settings -> Normalization` and press **+** to create a new normalization rule.
+
+    ============================ ==================================================================================================
+     **Interface**                *WireGuard (Group)*
+     **Direction**                *Any*
+     **Protocol**                 *any*
+     **Source**                   *any*
+     **Destination**              *any*
+     **Destination port**         *any*
+     **Description**              *Wireguard MSS Clamping*
+     **Max mss**                  *1360 or lower - Subtract at least 80 bytes from the Wireguard MTU*
+    ============================ ==================================================================================================
+
+- **Save** the rule, and then click **Apply Changes**
+
+.. Note::
+    By setting the Wireguard Interface MTU to 1420 and the MSS to 1360, you ensure that IPv4 and IPv6 can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work. It will also improve your maximum throughput.
+    
 ---------------------------------------
 Step 7 - Configure the WireGuard client
 ---------------------------------------
