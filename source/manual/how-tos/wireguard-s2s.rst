@@ -63,7 +63,7 @@ If you want to route your internal networks via this VPN just add the network in
 Step 5 - Create normalization rules on both Sites
 -------------------------------------------------
 - Go to both **Local** instances you created, and edit them. Activate the **advanced** settings.
-- Set the Wireguard interface **MTU** to 1420 or lower; take the MTU of your WAN interface (usually 1500) and subtract 80 bytes
+- Set the Wireguard interface **MTU** to 1420 (default) or lower; take the MTU of your WAN interface and subtract 80 bytes.
 - Go to :menuselection:`Firewall --> Settings -> Normalization` and press **+** to create a new normalization rule.
 
     ============================ ==================================================================================================
@@ -74,12 +74,12 @@ Step 5 - Create normalization rules on both Sites
      **Destination**              *any*
      **Destination port**         *any*
      **Description**              *Wireguard MSS Clamping*
-     **Max mss**                  *1360 or lower, subtract at least 80 bytes from the Wireguard MTU*
+     **Max mss**                  *1360 or lower, subtract at least 60 bytes from the Wireguard MTU*
     ============================ ==================================================================================================
 
 - **Save** the rule, and then click **Apply Changes**
 
 .. Note::
-    By setting the Wireguard Interface MTU to 1420 and the MSS to 1360, you ensure that IPv4 and IPv6 can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work. It will also improve your maximum throughput.
+    By setting the Wireguard Interface MTU to 1420 (IPv6 header 40 bytes + Wireguard header 40 bytes) and the MSS to 1360 (IPv6 header 40 bytes + TCP header 20 bytes), you ensure that IPv4 and IPv6 packets can pass through the Wireguard tunnel without being fragmented. Otherwise some encrypted TCP sessions - especially ssh and https - will refuse to work.
 
 That's it!
