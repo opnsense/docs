@@ -1,5 +1,3 @@
-:orphan:
-
 ============================
 WireGuard Site-to-Site Setup
 ============================
@@ -8,63 +6,141 @@ WireGuard Site-to-Site Setup
 Introduction
 ------------
 
-WireGuard is a simple and fast modern VPN protocol. It aims to be faster and less complex than IPSec.
-It intends to be considerably more performant than OpenVPN. Initially released for the Linux kernel,
-it is now cross-platform and widely deployable.
+WireGuard is a simple and fast modern VPN protocol. It aims to be less complicated than IPSec, working more like ssh with private and public keys.
+It has fewer lines of code and is more easily audited than other VPN protocols. Initially released for the Linux kernel, it is now cross-platform and widely deployable.
+
+.. Attention::
+    It's useful for simple routed site to site tunnels and roadwarrior setups. To this date it doesn't play too nicely with high availability setups. Using the protocol for critical workloads should be avoided in favor of IPsec.
+    
+.. Note::
+    The following example covers a IPv4 Site to Site Wireguard Tunnel between two OPNsense Firewalls with public IPv4 addresses on their WAN interfaces. You will connect *Site A LAN Net* ``172.16.0.0/24`` to *Site B LAN Net* ``192.168.0.0/24`` using the *Wireguard Transfer Net* ``10.2.2.0/24``. *Site A Public IP* is ``203.0.113.1`` and *Site B Public IP* is ``203.0.113.2``.
 
 ---------------------
 Step 1 - Installation
 ---------------------
 
-Install the plugin as usual, refresh and page and the you will find the client 
-via :menuselection:`VPN --> WireGuard`.
+Install the os-wireguard plugin in :menuselection:`System --> Firmware --> Plugins`, refresh the GUI and you will soon find :menuselection:`VPN --> WireGuard`.
 
-------------------------
-Step 2 - Setup WireGuard
-------------------------
+--------------------------------------------------
+Step 2a - Setup WireGuard Local on OPNsense Site A
+--------------------------------------------------
 
-Go to tab **Local** and create a new instance.
-Give it a **Name** and set a desired **Listen Port**. If you have more than one service instance be 
-aware that you can use the **Listen Port** only once. For **Tunnel Address** choose a new virtual 
-network to run communication over it, just like with OpenVPN or GRE (e.g. 192.168.0.1/24).
-**Peers** can not be chosen yet since we have not created them yet. 
-After hitting **Save changes** you can reopen the newly created instance, write down your new public
-key and give it to the other side. 
+Go to tab **Local** and press **+** to create a new instance.
 
-When this VPN is set up on OPNsense only do the same on the second machine and exchange the public
-keys. Now go to tab **Endpoints** and add the remote site, give it a **Name**, insert the **Public
-Key** and the **Allowed IPs** e.g. *192.168.0.2/32, 10.10.10.0/24*. This will set the remote tunnel
-IP address (/32 is important when using multiple endpoints) and route 10.10.10.0/24 via the tunnel. 
-**Endpoint Address** is the public IP of the remote site and you can also set optionally the 
-**Endpoint Port**, now hit **Save changes**.
+Enable the *advanced mode* toggle.
 
-Go back to tab **Local**, open the instance and choose the newly created endpoint in **Peers**.
+    ====================== ====================================================================================================
+     **Enabled**            *Checked*
+     **Name**               *wgopn-site-a*
+     **Public Key**         *Generate with "Generate new keypair" button*
+     **Private Key**        *Generates automatically*
+     **Listen Port**        *51820*
+     **MTU**                *1420 (default) or 1412 if you use PPPoE*
+     **Tunnel Address**     *10.2.2.1/24*
+     **Peers**              *Populated in later step*
+    ====================== ==================================================================================================== 
 
-Now we can **Enable** the VPN in tab **General** and go on with the setup.
+Press **Save** and **Apply**.
 
------------------------
-Step 3 - Setup Firewall
------------------------
+--------------------------------------------------
+Step 2b - Setup WireGuard Local on OPNsense Site B
+--------------------------------------------------
 
-On :menuselection:`Firewall --> Rules` add a new rule on your WAN interface allowing the port you set in your
-instance (Protocol UDP). You also have a new interface **Wireguard** in rules, where you can
-set granular rules on connections inside your tunnel.
+Go to tab **Local** and press **+** to create a new instance.
 
-Your tunnel is now up and running.
+Enable the *advanced mode* toggle.
 
--------------------------
-Step 4 - Routing networks
--------------------------
+    ====================== ====================================================================================================
+     **Enabled**            *Checked*
+     **Name**               *wgopn-site-b*
+     **Public Key**         *Generate with "Generate new keypair" button*
+     **Private Key**        *Generates automatically*
+     **Listen Port**        *51820*
+     **MTU**                *1420 (default) or 1412 if you use PPPoE*
+     **Tunnel Address**     *10.2.2.2/24*
+     **Peers**              *Populated in later step*
+    ====================== ==================================================================================================== 
 
-If you want to route your internal networks via this VPN just add the network in the field 
-**Allowed IPs** in **Endpoints** tab (e.g. 10.0.1.0/24).
+Press **Save** and **Apply**.
 
--------------------------------------------------
-Step 5 - Create normalization rules on both Sites
--------------------------------------------------
-- Go to both **Local** instances you created, and edit them. Activate the **advanced** settings.
-- Set the Wireguard interface **MTU** to 1420 (default) or lower; take the MTU of your WAN interface and subtract 80 bytes.
-- Go to :menuselection:`Firewall --> Settings -> Normalization` and press **+** to create a new normalization rule.
+------------------------------------------------------
+Step 3a - Setup WireGuard Endpoints on OPNsense Site A
+------------------------------------------------------
+
+Go to tab **Endpoints** and press **+** to create a new endpoint. 
+
+Enable the *advanced mode* toggle.
+
+    ====================== ====================================================================================================
+     **Enabled**            *Checked*
+     **Name**               *wgopn-site-b*
+     **Public Key**         *Insert the public key of the local instance from wgopn-site-b*
+     **Shared Secret**      *Leave empty*
+     **Allowed IPs**        *10.2.2.2/32 192.168.0.0/24*
+     **Endpoint Address**   *203.0.113.2*
+     **Endpoint Port**      *51820*
+    ====================== ==================================================================================================== 
+
+Press **Save** and **Apply**.
+
+Go to tab **Local** and edit *wgopn-site-a*.
+
+    ====================== ====================================================================================================
+     **Peers**              *wgopn-site-b*
+    ====================== ==================================================================================================== 
+
+Press **Save** and **Apply**.
+
+------------------------------------------------------
+Step 3b - Setup WireGuard Endpoints on OPNsense Site B
+------------------------------------------------------
+
+Go to tab **Endpoints** and press **+** to create a new endpoint. 
+
+Enable the *advanced mode* toggle.
+
+    ====================== ====================================================================================================
+     **Enabled**            *Checked*
+     **Name**               *wgopn-site-a*
+     **Public Key**         *Insert the public key of the local instance from wgopn-site-a*
+     **Shared Secret**      *Leave empty*
+     **Allowed IPs**        *10.2.2.1/32 172.16.0.0/24*
+     **Endpoint Address**   *203.0.113.1*
+     **Endpoint Port**      *51820*
+    ====================== ==================================================================================================== 
+
+Press **Save** and **Apply**.
+
+Go to tab **Local** and edit *wgopn-site-b*.
+
+    ====================== ====================================================================================================
+     **Peers**              *wgopn-site-a*
+    ====================== ==================================================================================================== 
+
+Press **Save** and **Apply**.
+
+------------------------------
+Step 4a - Setup Firewall Site A
+------------------------------
+
+Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incoming wireguard traffic from Site B.
+
+    ====================== ====================================================================================================
+     **Action**             *Pass*
+     **Interface**          *WAN*
+     **Direction**          *In*
+     **TCP/IP Version**     *IPv4*
+     **Protocol**           *UDP*
+     **Source**             *203.0.113.2*
+     **Source port**        *51820*
+     **Destination**        *203.0.113.1*
+     **Destination port**   *51820*
+     **Description**        *Allow Wireguard from Site B to Site A*    
+    ====================== ==================================================================================================== 
+
+Press **Save** and **Apply**.
+    
+Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rule to prevent fragmentation of traffic going through the wireguard tunnel.
 
     ============================ ==================================================================================================
      **Interface**                *WireGuard (Group)*
@@ -73,13 +149,128 @@ Step 5 - Create normalization rules on both Sites
      **Source**                   *any*
      **Destination**              *any*
      **Destination port**         *any*
-     **Description**              *Wireguard MSS Clamping*
+     **Description**              *Wireguard MSS Clamping Site A*
      **Max mss**                  *1360 or lower, subtract at least 60 bytes from the Wireguard MTU*
     ============================ ==================================================================================================
 
-- **Save** the rule, and then click **Apply Changes**
+.. Note::
+    By setting the Wireguard Interface MTU to 1420 and the MSS to 1360, you ensure that IPv4 and IPv6 can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work.
+
+-------------------------------
+Step 4b - Setup Firewall Site B
+-------------------------------
+
+Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incoming wireguard traffic from Site A.
+
+    ====================== ====================================================================================================
+     **Action**             *Pass*
+     **Interface**          *WAN*
+     **Direction**          *In*
+     **TCP/IP Version**     *IPv4*
+     **Protocol**           *UDP*
+     **Source**             *203.0.113.1*
+     **Source port**        *51820*
+     **Destination**        *203.0.113.2*
+     **Destination port**   *51820*
+     **Description**        *Allow Wireguard from Site A to Site B*    
+    ====================== ====================================================================================================
+    
+Press **Save** and **Apply**.
+
+Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rule to prevent fragmentation of traffic going through the wireguard tunnel.
+
+    ============================ ==================================================================================================
+     **Interface**                *WireGuard (Group)*
+     **Direction**                *Any*
+     **Protocol**                 *any*
+     **Source**                   *any*
+     **Destination**              *any*
+     **Destination port**         *any*
+     **Description**              *Wireguard MSS Clamping Site B*
+     **Max mss**                  *1360 or lower, subtract at least 60 bytes from the Wireguard MTU*
+    ============================ ==================================================================================================
+
+-----------------------------------------------
+Step 4c - Enable Wireguard on Site A and Site B
+-----------------------------------------------
+
+Go to :menuselection:`VPN --> WireGuard --> Settings` on both Sites and **Enable WireGuard**
+
+Press **Apply** and check :menuselection:`VPN --> WireGuard --> Diagnostics`. You should see *Send* and *Received* traffic and *Handshake* should be populated by a number.
+
+Your tunnel is now up and running.
+
+----------------------------------------------------------------
+Step 5 - Allow traffic between Site A LAN Net and Site B LAN Net
+----------------------------------------------------------------
+
+Go to OPNsense Site A :menuselection:`Firewall --> Rules --> LAN A` add a new rule.
+
+    ====================== ====================================================================================================
+     **Action**             *Pass*
+     **Interface**          *LAN A*
+     **Direction**          *In*
+     **TCP/IP Version**     *IPv4*
+     **Protocol**           *Any*
+     **Source**             *172.16.0.0/24*
+     **Source port**        *Any*
+     **Destination**        *192.168.0.0/24*
+     **Destination port**   *Any*
+     **Description**        *Allow LAN Site A to LAN Site B*    
+    ====================== ====================================================================================================
+
+Press **Save** and **Apply**.
+    
+Go to OPNsense Site A :menuselection:`Firewall --> Rules --> Wireguard (Group)` add a new rule.
+
+    ====================== ====================================================================================================
+     **Action**             *Pass*
+     **Interface**          *Wireguard (Group)*
+     **Direction**          *In*
+     **TCP/IP Version**     *IPv4*
+     **Protocol**           *Any*
+     **Source**             *192.168.0.0/24*
+     **Source port**        *Any*
+     **Destination**        *172.16.0.0/24*
+     **Destination port**   *Any*
+     **Description**        *Allow LAN Site B to LAN Site A*    
+    ====================== ====================================================================================================
+
+Press **Save** and **Apply**.    Allowed IPs
+
+Go to OPNsense Site B :menuselection:`Firewall --> Rules --> LAN A` add a new rule.
+
+    ====================== ====================================================================================================
+     **Action**             *Pass*
+     **Interface**          *LAN B*
+     **Direction**          *In*
+     **TCP/IP Version**     *IPv4*
+     **Protocol**           *Any*
+     **Source**             *192.168.0.0/24*
+     **Source port**        *Any*
+     **Destination**        *172.16.0.0/24*
+     **Destination port**   *Any*
+     **Description**        *Allow LAN Site B to LAN Site A*    
+    ====================== ====================================================================================================
+
+Press **Save** and **Apply**.    
+
+Go to OPNsense Site B :menuselection:`Firewall --> Rules --> Wireguard (Group)` add a new rule.
+
+    ====================== ====================================================================================================
+     **Action**             *Pass*
+     **Interface**          *Wireguard (Group)*
+     **Direction**          *In*
+     **TCP/IP Version**     *IPv4*
+     **Protocol**           *Any*
+     **Source**             *172.16.0.0/24*
+     **Source port**        *Any*
+     **Destination**        *192.168.0.0/24*
+     **Destination port**   *Any*
+     **Description**        *Allow LAN Site A to LAN Site B*    
+    ====================== ====================================================================================================
+
+Press **Save** and **Apply**.
 
 .. Note::
-    By setting the Wireguard Interface MTU to 1420 (IPv6 header 40 bytes + Wireguard header 40 bytes) and the MSS to 1360 (IPv6 header 40 bytes + TCP header 20 bytes), you ensure that IPv4 and IPv6 packets can pass through the Wireguard tunnel without being fragmented. Otherwise some encrypted TCP sessions - especially ssh and https - will refuse to work.
-
-That's it!
+    Now both Sites have full access to the LAN of the other Site through the Wireguard Tunnel. For additional networks just add more **Allowed IPs** to the Wireguard Endpoints and adjust the firewall rules to allow the traffic.
