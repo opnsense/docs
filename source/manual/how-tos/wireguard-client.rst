@@ -31,7 +31,7 @@ Step 2 - Configure the local peer (server)
      **Public Key**        *This will initially be blank; it will be populated once the configuration is saved*
      **Private Key**       *This will initially be blank; it will be populated once the configuration is saved*
      **Listen Port**       *51820 or a higher numbered unique port*
-     **MTU**               *1420 or lower; take the MTU of your WAN interface (usually 1500) and subtract 80 bytes*
+     **MTU**               *1420 (default) or 1412 if you use PPPoE; it's 80 bytes less than your WAN MTU*
      **Tunnel Address**    *For example, 10.10.10.1/24. See note below*
      **Peers**             *The (client) peers will be specified here; leave it blank initially until the Endpoint configuration is created in Step 3*
      **Disable Routes**    *Unchecked*
@@ -230,13 +230,13 @@ Step 6a - Create normalization rules
      **Destination**              *any*
      **Destination port**         *any*
      **Description**              *Wireguard MSS Clamping*
-     **Max mss**                  *1360 or lower - Subtract at least 80 bytes from the Wireguard MTU*
+     **Max mss**                  *1360 (default) or 1352 if you use PPPoE; it's 60 bytes less than your Wireguard MTU*
     ============================ ==================================================================================================
-
-- **Save** the rule, and then click **Apply Changes**
+    
+- **Save** the rule    
 
 .. Note::
-    By setting the Wireguard Interface MTU to 1420 and the MSS to 1360, you ensure that IPv4 and IPv6 can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work. It will also improve your maximum throughput.
+    By setting the Wireguard Interface MTU to 1420 and the MSS to 1360, you ensure that IPv4 and IPv6 can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work.
     
 ---------------------------------------
 Step 7 - Configure the WireGuard client
