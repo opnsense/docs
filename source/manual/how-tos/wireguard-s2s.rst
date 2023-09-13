@@ -10,10 +10,13 @@ WireGuard is a simple and fast modern VPN protocol. It aims to be less complicat
 It has fewer lines of code and is more easily audited than other VPN protocols. Initially released for the Linux kernel, it is now cross-platform and widely deployable.
 
 .. Attention::
-    It's useful for simple routed site to site tunnels and roadwarrior setups. To this date it doesn't play too nicely with high availability setups. Using the protocol for critical workloads should be avoided in favor of IPsec.
+    Wireguard is useful for simple routed site to site tunnels and roadwarrior setups. To this date, it doesn't play too nicely with high availability setups. That's because the peer may keep polling a stale interface and misinterpret the other instance as being the one that is down and keep sending traffic there. Also, because Wireguard is bound to all interfaces (and not explicitely the CARP VIP), both High Availability firewalls will send handshakes and fight against each other for the remote Wireguard peer. This behavior will probably be mitigated in 24.1 with Wireguard CARP vhid tracking. Using the protocol for critical workloads and high availability should be avoided in favor of IPsec.
     
 .. Note::
-    The following example covers a IPv4 Site to Site Wireguard Tunnel between two OPNsense Firewalls with public IPv4 addresses on their WAN interfaces. You will connect *Site A LAN Net* ``172.16.0.0/24`` to *Site B LAN Net* ``192.168.0.0/24`` using the *Wireguard Transfer Net* ``10.2.2.0/24``. *Site A Public IP* is ``203.0.113.1`` and *Site B Public IP* is ``203.0.113.2``.
+    The following example covers an IPv4 Site to Site Wireguard Tunnel between two OPNsense Firewalls with public IPv4 addresses on their WAN interfaces. You will connect *Site A LAN Net* ``172.16.0.0/24`` to *Site B LAN Net* ``192.168.0.0/24`` using the *Wireguard Transfer Net* ``10.2.2.0/24``. *Site A Public IP* is ``203.0.113.1`` and *Site B Public IP* is ``203.0.113.2``.
+    
+.. Tip::
+    You can also easily expand this Site to Site tunnel with IPv6 Global Unicast addresses (GUA) or Unique Local Addresses (ULA) to create a Dual Stack tunnel. Just add these IPv6 Networks (usually with /64 Prefix) to the *allowed IPs* and create Firewall rules to allow the traffic.
 
 ---------------------
 Step 1 - Installation
@@ -150,11 +153,11 @@ Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rul
      **Destination**              *any*
      **Destination port**         *any*
      **Description**              *Wireguard MSS Clamping Site A*
-     **Max mss**                  *1360 or lower, subtract at least 60 bytes from the Wireguard MTU*
+     **Max mss**                  *1380 or lower, subtract at least 40 bytes from the Wireguard MTU*
     ============================ ==================================================================================================
 
 .. Note::
-    By setting the Wireguard Interface MTU to 1420 and the MSS to 1360, you ensure that IPv4 and IPv6 can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work.
+    By creating the normalization rules, you ensure that IPv4 TCP can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work. If you want to use IPv6 TCP, lower the MSS by 60 bytes instead of 40 bytes.
 
 -------------------------------
 Step 4b - Setup Firewall Site B
@@ -187,7 +190,7 @@ Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rul
      **Destination**              *any*
      **Destination port**         *any*
      **Description**              *Wireguard MSS Clamping Site B*
-     **Max mss**                  *1360 or lower, subtract at least 60 bytes from the Wireguard MTU*
+     **Max mss**                  *1380 or lower, subtract at least 40 bytes from the Wireguard MTU*
     ============================ ==================================================================================================
 
 -----------------------------------------------
