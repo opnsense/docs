@@ -220,29 +220,31 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
 Step 6a - Create normalization rules
 ------------------------------------
 
-- Go to :menuselection:`Firewall --> Settings -> Normalization` and press **+** to create new normalization rules. For the best performance, you should create different ones for IPv4 TCP and IPv6 TCP, because their header sizes differ.
+- Go to :menuselection:`Firewall --> Settings -> Normalization` and press **+** to create **one** new normalization rule. 
 
+- If you only pass IPv4 traffic through the wireguard tunnel, create the following rule:
     ============================ ==================================================================================================
      **Interface**                *WireGuard (Group)*
      **Direction**                *Any*
-     **Protocol**                 *TCP*
+     **Protocol**                 *any*
      **Source**                   *any*
      **Destination**              *any*
      **Destination port**         *any*
-     **Description**              *Wireguard MSS Clamping IPv4 TCP*
+     **Description**              *Wireguard MSS Clamping IPv4*
      **Max mss**                  *1380 (default) or 1372 if you use PPPoE; it's 40 bytes less than your Wireguard MTU*
     ============================ ==================================================================================================
     
 - **Save** the rule
 
+- If you pass IPv4+IPv6 - or only IPv6 traffic - through the wireguard tunnel, create the following rule:
     ============================ ==================================================================================================
      **Interface**                *WireGuard (Group)*
      **Direction**                *Any*
-     **Protocol**                 *TCP*
+     **Protocol**                 *any*
      **Source**                   *any*
      **Destination**              *any*
      **Destination port**         *any*
-     **Description**              *Wireguard MSS Clamping IPv6 TCP*
+     **Description**              *Wireguard MSS Clamping IPv6*
      **Max mss**                  *1360 (default) or 1352 if you use PPPoE; it's 60 bytes less than your Wireguard MTU*
     ============================ ==================================================================================================
     
@@ -250,11 +252,10 @@ Step 6a - Create normalization rules
 
 .. Tip::
     - The header size for IPv4 is usually 20 bytes, and for TCP 20 bytes. In total thats 40 bytes for IPv4 TCP.
-    - The header size for IPv6 is usually 40 bytes, and for TCP 20 bytes. In total thats 60 bytes for IPv6 TCP.
+    - IPv6 has a larger header size with 40 bytes. That encreases the total to 60 bytes for IPv6 TCP.
 
 .. Note::
     By creating the normalization rules, you ensure that IPv4 TCP and IPv6 TCP can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work.
-    Normalization rules for other protocols aren't needed, because only TCP is affected.
     
 ---------------------------------------
 Step 7 - Configure the WireGuard client
