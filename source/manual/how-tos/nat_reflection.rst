@@ -100,6 +100,7 @@ Go to :menuselection:`Firewall --> NAT --> Port Forward`
     Redirect target port:       Input ``443`` - Or select the alias ``HTTPS``
     Description:                Input ``Reflection NAT Rule Webserver 443`` - Add a description because the linked *Filter rule association* will use that as its name and the :menuselection:`Firewall --> Rules --> Floating` rule will have it in the description.
     NAT reflection:             Use system default
+    Filter rule association:    Add associated filter rule
     =========================  ================================
     
 .. Tip::
@@ -109,7 +110,7 @@ Go to :menuselection:`Firewall --> NAT --> Port Forward`
     IP ``203.0.113.1`` and destination port ``443`` --> rewrite the destination IP to ``172.16.1.1`` and the destination port to ``443``.
 
 .. Note::    
-    The automatic linked floating firewall rule will allow traffic to the destination IP ``172.16.1.1`` because NAT rules match before Firewall rules. That means the firewall receives the packet and the NAT rule converts the destination from ``203.0.113.1`` to ``172.16.1.1`` first, before passing the packet to the firewall filter.
+    Due to "Add associated filter rule", the added linked firewall rule in :menuselection:`Firewall --> Rules --> Floating`  will allow traffic to the destination IP ``172.16.1.1`` because NAT rules match before Firewall rules. That means the firewall receives the packet and the NAT rule converts the destination from ``203.0.113.1`` to ``172.16.1.1`` first, before passing the packet to the firewall filter. You could also set "Filter rule association: Pass", but then the resulting firewall rule would be invisible.
 
 .. Attention::
     Now you have Reflection NAT. The traffic from the internal LAN client ``192.168.1.1`` and any WAN client reaches the Webserver.
@@ -121,7 +122,7 @@ Go to :menuselection:`Firewall --> NAT --> Outbound`
     Select *Hybrid outbound NAT rule generation* and save. That way you can have manual outbound rules in conjunction with automatic IP-Masquerading rules. You could also choose *Manual outbound NAT rule generation*. Please make sure that you create your own IP-Masquerading rules with the *manual outbound NAT* enabled. 
     
     
-    Select **+** to create a new Port Forward rule.
+    Select **+** to create a new Outbound NAT rule.
      
     =========================  ================================
     Interface:                 Select ``DMZ`` - It's the interface of the subnet the Webserver is in.
@@ -195,9 +196,19 @@ Go to :menuselection:`Firewall --> NAT --> Port Forward`
     Create the NAT rule as in :ref:`Method 2 - Port Forward <nat-method2-portforward>`
 
 Go to :menuselection:`Firewall --> Rules --> Floating`
-    Create the floating firewall rule as :ref:`Method 2 - Floating <nat-method2-floating>`
+    Create the floating firewall rule as :ref:`Method 2 - Floating <nat-method2-floating>`    
 
-.. _troubleshooting-nat-rules:    
+------------------
+One-to-One NAT Reflection
+------------------
+
+When :menuselection:`Firewall --> Settings --> Advanced` *Reflection for 1:1* is activated, automatic Reflection NAT rules for all One-to-One NAT rules are generated.
+
+If you want to create manual Reflection and Hairpin NAT rules, leave *Reflection for 1:1* disabled and follow the steps in :ref:`Method 1 <nat-method1>`. The only change is not adding the WAN interface to the Port Forward rules you create. The resulting Port Forward and Outbound NAT rules are **in addition** to the existing One-to-One NAT rules.
+
+If your Port Forward rule has 1 interface selected (e.g. LAN), the resulting *Filter rule association: Add associated filter rule* will appear in :menuselection:`Firewall --> Rules --> LAN`. If you have more than 1 interface selected, it will appear in `Firewall --> Rules --> Floating`.
+
+.. _troubleshooting-nat-rules:
 
 -------------------------
 Troubleshooting NAT Rules
