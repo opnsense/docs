@@ -55,6 +55,12 @@ create static assignments based on the clients unique DHCP identifier (`DUID <ht
 Always make sure  :doc:`Router advertisements </manual/radvd>` are properly configured before debugging DHCPv6 issues, these two
 daemons depend on eachother.
 
+If a Prefix Delegation Range is specified, downstream routers may request prefixes (IA_PD). Routing a delegated prefix to a downstream
+router requires OPNsense to be aware of the router's IPv6 WAN address. This can be achieved in two ways:
+
+* **Dynamic DHCPv6 address lease**: If an address range is specified in the DHCPv6 service settings and the downstream router requests both an address (IA_NA) and prefix (IA_PD), the prefix will be routed to the leased address.
+* **Static mapping**: If the DUID of an active prefix lease matches the DUID of a DHCPv6 static mapping, the delegated prefix will be unconditionally routed to the static mapping's IPv6 address. The DHCPv6 service doesn't have to be configured with an address range and the downstream router doesn't have to request an address. The address in the static mapping may be a GUA, ULA or link-local address. This allows downstream prefix delegation to routers which only request a prefix, not an address.
+
 -------------------------
 Advanced settings
 -------------------------
