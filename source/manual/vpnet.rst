@@ -232,6 +232,25 @@ Examples
 
 This paragraph offers examples for some commonly used implementation scenarios.
 
+New > 23.1 (:menuselection:`VPN -> IPsec -> Connections`)
+------------------------------------------------------------------------------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   how-tos/ipsec-s2s-conn
+   how-tos/ipsec-s2s-conn-route
+   how-tos/ipsec-s2s-conn-binat
+   how-tos/ipsec-swanctl-rw-ikev2-eap-mschapv2
+
+
+.. Tip::
+
+    The number of examples for the new module on our end is limited, but for inspiration it's often a good
+    idea to walkthrough the examples provided by `Strongswan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__.
+    Quite some swanctl.conf examples are easy to implement in our new module as we do follow the same terminology.
+
 Legacy (:menuselection:`VPN -> IPsec -> Tunnel Settings`)
 ------------------------------------------------------------------------------
 
@@ -250,26 +269,6 @@ Legacy (:menuselection:`VPN -> IPsec -> Tunnel Settings`)
 
  Using Network Address Translation in policy based tunnels is different, due to the fact that the installed IPsec policy
  should accept the traffic in order to encapsulate it. The `IPSec BINAT` document will explain how to apply translations.
-
-
-New > 23.1 (:menuselection:`VPN -> IPsec -> Connections`)
-------------------------------------------------------------------------------
-
-.. toctree::
-   :maxdepth: 2
-   :titlesonly:
-
-   how-tos/ipsec-s2s-conn
-   how-tos/ipsec-s2s-conn-route
-   how-tos/ipsec-s2s-conn-binat
-
-
-.. Tip::
-
-    The number of examples for the new module on our end is limited, but for inspiration it's often a good
-    idea to walkthrough the examples provided by `Strongswan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__.
-    Quite some swanctl.conf examples are easy to implement in our new module as we do follow the same terminology.
-
 
 .................................
 Tuning considerations
