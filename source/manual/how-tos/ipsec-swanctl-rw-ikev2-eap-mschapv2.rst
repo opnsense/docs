@@ -100,7 +100,7 @@ External DNS Records
 Your OPNsense Firewall has the example IP Subnets ``203.0.113.0/24`` and ``2001:db8:1234::/48``. The FQDN can point to any bindable IPv4 and IPv6 address in those subnets. It will be used by clients to connect to the IPsec VPN Server - and by the OPNsense to bind the local listen address.
 
 - Create an A-Record with your external DNS provider, for example ``vpn1.example.com in A 203.0.113.1``
-- *Optional:* Create an AAAA-Record Record, for example ``vpn1.example.com in AAAA 2001:db8:1234::1``
+- Create an AAAA-Record, for example ``vpn1.example.com in AAAA 2001:db8:1234::1``
 
 
 Firewall: Aliases
@@ -182,9 +182,9 @@ Method 1 - Shared IP pool for all roadwarriors
 
 .. _rw-swanctl-method2:
 
----------------------------------------------
-Method 2: Shared IP pool for all roadwarriors
----------------------------------------------
+--------------------------------------------
+Method 2 - Static IP address per roadwarrior
+--------------------------------------------
 
 
 2.1 - VPN: IPsec: Connections: Pools
