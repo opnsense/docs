@@ -4,7 +4,7 @@ IPsec - Roadwarriors IKEv2 EAP-MSCHAPv2
 
 .. contents:: Index
 
-The following roadwarrior configuration is universally usable between different clients and easy to setup.
+The following roadwarrior configuration is universally usable for many different clients and easy to setup.
 
 EAP-MSCHAPv2 via IKEv2 is based on a server certificate and an EAP Pre-Shared Key (username + password).
 The CA certificate has to be installed on the users device.
@@ -44,8 +44,8 @@ Methods for Roadwarrior Setup
 :ref:`Method 2 - Static IP address per roadwarrior <rw-swanctl-method2>`
 ------------------------------------------------------------------------
 
-- **Benefit:** Tight security because every user can be controlled individually with firewall rules. The whole configuration is stored in one file (swanctl.conf). There are no other dependencies, so it won't break suddenly in the future.
-- **Drawback:** Configuration needs more time and might not scale with large user counts. Windows native VPN client doesn't like this configuration very much because it demands the eap identity exchange method.
+- **Benefit:** Tight security because every user can be controlled individually with firewall rules.
+- **Drawback:** Configuration needs more time and might not scale with large user counts. Windows native VPN client doesn't like this configuration since it demands the eap identity exchange method ``eap id = %any``.
 
 
 -------------
@@ -165,7 +165,7 @@ Update your OPNsense at least to Version 23.7.4, that's the version that introdu
 
 .. Attention::
     - Don't create both methods on your OPNsense at the same time, it's a potential security risk.
-    - Only create **one connection** where you use ``EAP id: %any`` (Method 1). If you create multiple connections with ``EAP id: %any``, any roadwarrior can connect to any of them.
+    - Only create **one connection** where you use ``EAP id: %any`` (Method 1). If you create multiples of these connections, any roadwarrior can connect to any of them.
 
 
 .. _rw-swanctl-method1:
@@ -193,7 +193,7 @@ Create an IPv6 pool that all roadwarriors will share. This configuration will re
     ==============================================  ====================================================================================================
 
 .. Note::
-    The IPv6 pool is not a /64 Prefix, because it's used to define a pool of IPv6 addresses that can be used as leases. Prefix /120 means there are 256 IPv6 addresses available. The hard limit of strongswan pools is Prefix /97.
+    The IPv6 pool is not a /64 Prefix, because it's used to define a pool of IPv6 addresses that can be used as leases. Prefix /120 means there are 256 IPv6 addresses available. The hard limit of StrongSwan pools is Prefix /97.
 
 
 1.2 - VPN: IPsec: Pre-Shared Keys
@@ -219,8 +219,7 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
 1.3 - VPN: IPsec: Connections
 -----------------------------
 
-- Enable IPsec with the checkbox at the bottom left and apply. If you forget to do this nothing will work.
-
+- Enable IPsec with the checkbox at the bottom right and apply.
 - Press **+** to add a new Connection, enable **advanced mode** with the toggle.
 
 **General Settings:**
@@ -340,7 +339,7 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
 2.3 - VPN: IPsec: Connections
 -----------------------------
 
-- Enable IPsec with the checkbox at the bottom left and apply. If you forget to do this nothing will work.
+- Enable IPsec with the checkbox at the bottom right and apply.
 
 **2.3.1 Create connection for john@vpn1.example.com:**
 
@@ -401,7 +400,7 @@ Press **+** to add a new Child, enable **advanced mode** with the toggle.
 
 **2.3.2 Create connection for laura@vpn1.example.com:**
 
-- Press **+** to add a new Connection, enable **advanced mode** with the toggle.
+- Press **+** to add a new Connection, enable **advanced mode** with the toggle. You could also **clone** the connection you already configured.
 
 **General Settings:**
 
@@ -462,10 +461,10 @@ Press **+** to add a new Child, enable **advanced mode** with the toggle.
 Firewall rules, Outbound NAT and DNS
 ------------------------------------
 
-Now that you have configured split or full tunnel mode, you need rules to allow the traffic into your LAN and though the OPNsense to the WAN. For IPv4 to the WAN you additionally need an Outbound NAT rule for IP-Masquerading. If you want the OPNsense to handle DNS, you can to configure Unbound so your roadwarriors use it as DNS server to prevent DNS leaks.
+Now that you have configured split or full tunnel mode, you need rules to allow the traffic into your LAN and to the WAN (Internet). For IPv4 connection to the WAN (Internet) you need an Outbound NAT rule for IP-Masquerading. If you want the OPNsense to handle DNS, you can to configure Unbound so your roadwarriors use it as DNS server to prevent DNS leaks.
 
 .. Tip::
-    If you have internal IPv4 services (like a mailserver) that have external IPs in their DNS A-Records, you should configure Reflection NAT. There is a tutorial in the How-To section of Network Address Translation. Add the ``ipsec`` interface in the Port Forward rules you create.
+    If you have internal IPv4 services (like a mailserver) that have external IPs in their DNS A-Records, you should configure Reflection NAT. There is a tutorial in the How-To section of Network Address Translation. If you follow it, add the ``ipsec`` interface in the Port Forward rules you create.
 
 Firewall: Aliases
 -----------------
@@ -479,13 +478,16 @@ Create the following aliases:
     **Description:**                                Internet IPv4 - use inverted
     ==============================================  ====================================================================================================
 
+    .. Note::
+        The ``InternetIPv6`` alias needs to be your own IPv6 network.
+    
     ==============================================  ====================================================================================================
     **Name:**                                       ``InternetIPv6``
     **Type:**                                       Network(s)
     **Content:**                                    ``2001:db8:1234::/48``
     **Description:**                                Internet IPv6 - use inverted
     ==============================================  ====================================================================================================
-
+    
     ==============================================  ====================================================================================================
     **Name:**                                       ``net_pool_roadwarrior``
     **Type:**                                       Network(s)
@@ -560,10 +562,10 @@ As **second** rule, you should allow LAN access from the IPsec roadwarrior netwo
     **Source port**                                 Any
     **Destination**                                 ``LAN net``
     **Destination port**                            Any
-    **Description**                                 Allow john@von1.example.com access to LAN net
+    **Description**                                 Allow ``john@vpn1.example.com`` access to LAN net
     ==============================================  ====================================================================================================
 
-The **last matching** rules can allow Internet access if you have configured a full tunnel. Just as the example above, you can also create individual rules:
+The **last matching** rules can allow Internet access if you have configured a full tunnel. Just as the example above, you can also create individual rules to restrict Internet access to some roadwarriors:
 
     ==============================================  ====================================================================================================
     **Action**                                      Pass
@@ -627,9 +629,9 @@ For full control over DNS, you should either use Unbound on the OPNsense or the 
 .. Attention::
     If you created a full tunnel for IPv4 only (``0.0.0.0/0`` without ``::/0``), and your roadwarriors are in IPv4+IPv6 dual stack networks, their devices will prefer the link local IPv6 DNS servers provided by SLAAC or DHCPv6 over your IPv4 VPN DNS server.
 
-**Enable** Unbound and leave the *Network Interfaces* on *All (recommended)*. Next go to *Query Forwarding* and input your *Custom forwarding* servers. For example your Samba or Windows Active Directory Domain Controllers.
+**Enable** Unbound and leave the *Network Interfaces* on *All (recommended)*. Next go to *Query Forwarding* and input your *Custom forwarding* servers. For example your Samba or Microsoft Active Directory Domain Controllers.
 
-Unbound listens on port 53 UDP/TCP on all network interfaces of the Opnsense. If you followed all steps, access to your LAN is already permitted from the IPsec Network. You can use the IP addresses of the OPNsense in that network as target for the DNS queries.
+Unbound listens on port 53 UDP/TCP on all network interfaces of the Opnsense. If you followed all prior steps, access to your LAN is already permitted from the IPsec Network. You can use the IP addresses of the OPNsense in that network as target for the DNS queries.
 
 In this example they are: ``192.168.1.1`` and ``2001:db8:1234:1::1``.
 
@@ -641,90 +643,111 @@ In this section there are a few example configurations of different clients. All
 
 All clients are configured to use the "Ike config mode", that means the virtual IPs and the traffic selectors are pushed by the VPN server to the client. The only IP addresses you have to add manually are the DNS servers.
 
+.. Note::
+    Import the CA certificate to clients, not the server certificate.
 
-Windows native VPN client
--------------------------
 
-- Open Powershell as user (not as admin) and input the following CMDlets:
+Windows 10/11 native VPN client
+-------------------------------
 
-Add-VpnConnection -Name "vpn1.example.com" -ServerAddress "vpn1.example.com" -TunnelType "Ikev2"
+.. Note::
+    - Windows 10/11 native VPN client works best with Method 1, which connects right away on the first authentication round. 
+    - If you use Method 2 you should rather use the NCP client. The Windows VPN client doesn't send it's local ID on the first authentication round. That means that users have to type their passwords twice before the connection establishes. You can mitigate one authentication round by saving the username and password into the vpn profile. Attention: If they press cancel or click outside of the authentication window, it will vanish and trying to connect again will fail until the PC is rebooted!
 
-Set-VpnConnectionIPsecConfiguration -ConnectionName "vpn1.example.com" -AuthenticationTransformConstants SHA256 -CipherTransformConstants AES256 -EncryptionMethod AES256 -IntegrityCheckMethod SHA256 -PfsGroup PFS2048 -DHGroup Group14 -PassThru -Force
+- Open Powershell as user (for userspace import) or as admin (for computer wide import) and apply the following commands:
+
+.. code-block::
+    
+    Add-VpnConnection -Name "vpn1.example.com" -ServerAddress "vpn1.example.com" -TunnelType "Ikev2"
+
+    Set-VpnConnectionIPsecConfiguration -ConnectionName "vpn1.example.com" -AuthenticationTransformConstants SHA256 -CipherTransformConstants AES256 -EncryptionMethod AES256 -IntegrityCheckMethod SHA256 -PfsGroup PFS2048 -DHGroup Group14 -PassThru -Force
 
 
 - Only set this parameter if you want a split tunnel:
 
-Set-VpnConnection -Name "vpn1.example.com" -SplitTunneling $true
-
+.. code-block::
+    
+    Set-VpnConnection -Name "vpn1.example.com" -SplitTunneling $true
 
 - Set up DNS for the VPN:
-
-    Access Network Connections:
-        Press Windows + R to open the Run dialog.
-        Type ncpa.cpl and press Enter. This will open the Network Connections window.
-
-    Find the VPN Network Adapter:
-        In the Network Connections window, locate your VPN network adapter. It usually has a name related to the VPN service you're using, in this example "vpn1.example.com"
-
-    Access the Properties:
-        Right-click on the VPN network adapter and select Properties.
-
-    Edit IPv4 Settings:
-        In the VPN network adapter's properties window, locate and select Internet Protocol Version 4 (TCP/IPv4) from the list. Then, click the Properties button.
-        In the properties dialog, choose the Use the following DNS server addresses option.
-        Now, enter the IPv4 DNS server address: ``192.168.1.1`` in the "Preferred DNS server" field.
-        Click OK to save the changes.
-
-    Edit IPv6 Settings:
-        Back in the VPN network adapter's properties window, locate and select Internet Protocol Version 6 (TCP/IPv6) from the list. Then, click the Properties button.
-        In the properties dialog, choose the Use the following DNS server addresses option.
-        Now, enter the IPv6 DNS server address: ``2001:db8:1234:1::1`` in the "Preferred DNS server" field.
-        Click OK to save the changes.
-
-    Finalizing:
-        Click OK again in the VPN network adapter's properties window to finalize and apply the changes.
-
+    
+    - Open Network Connections: Windows + R > Type ncpa.cpl > Enter.
+    - Locate VPN adapter (e.g. "vpn1.example.com").
+    - Right-click VPN adapter > Properties.
+    - For IPv4:
+    
+        - Select Internet Protocol Version 4 (TCP/IPv4) > Properties.
+        - Set DNS: ``192.168.1.1``
+    - For IPv6:
+    
+        - Select Internet Protocol Version 6 (TCP/IPv6) > Properties.
+        - Set DNS: ``2001:db8:1234:1::1``
+    - Click OK to apply changes.
 
 - Import the CA certificate you created at the beginning of the tutorial into the Windows certificate store, please note that you have to be admin for this action:
 
-    - Open Microsoft Management Console (MMC):
-        Press Windows + R to open the Run dialog.
-        Type mmc and press Enter.
+    - Open MMC: Windows + R > Type mmc > Enter.
+    - Add Certificates Snap-In: File > Add/Remove Snap-in > Certificates > Add > Computer account > Local computer > Finish.
+    - Install Certificate: Go to Trusted Root Certification Authorities > Certificates > Right-click > All Tasks > Import > Select your CA certificate > Ensure it's set to Trusted - Root Certification Authorities > Finish.
+    - Confirm: Check the certificate appears under Trusted Root Certification Authorities.
+    - Close MMC. Choose 'No' if asked to save console settings.
 
-    - Add the Certificates Snap-In:
-        In the MMC, go to File > Add/Remove Snap-in.
-        In the list of available snap-ins, select Certificates and click Add >.
-        Choose Computer account and click Next.
-        Ensure Local computer is selected and click Finish.
-
-    - Install the Certificate:
-        Navigate to Certificates (Local Computer) > Trusted Root Certification Authorities > Certificates.
-        Right-click on Certificates, choose All Tasks, then Import.
-        The Certificate Import Wizard will start. Click Next.
-        Browse to the location of your self-signed CA certificate and select it. Click Next.
-        Ensure that the certificate store is set to Trusted Root Certification Authorities. Click Next.
-        Click Finish to complete the certificate import.
-
-    - Confirm Installation:
-        Refresh the list of certificates under Trusted Root Certification Authorities > Certificates and ensure your self-signed CA certificate appears in the list.
-
-    - Exit MMC: You can now close the MMC. It might ask if you want to save the console settings. Typically, you can choose No unless you want to save the snap-ins for future use.
-
-- Connect the new VPN connection and use the following credentials:
+- Connect the new VPN connection and use the following credentials, you can also save them prior to connecting:
 
     - Username: ``john@vpn1.example.com``
     - Password: ``48o72g3h4ro8123g8r``
 
 
+iOS native VPN client
+---------------------
+
+- Import the self-signed CA certificate into the iOS certificate store.
+- Go to Settings > General > VPN.
+- Tap on Add VPN Configuration....
+- Select the type of VPN you are using. For this example, it's IKEv2.
+- In the fields provided, enter:
+    
+    - Description: ``vpn1.example.com``
+    - Server: ``vpn1.example.com``
+    - Remote ID: ``vpn1.example.com``
+    - Local ID: ``john@vpn1.example.com``
+- In the Authentication section, select Username.
+    
+    - Username: ``john@vpn1.example.com``
+    - Password: ``48o72g3h4ro8123g8r``
+- Tap Done in the top right corner.
+- To connect to the VPN, go back to Settings > VPN, then turn the VPN toggle switch to the ON position next to the profile you just created.
+
+.. Note::
+    The same settings should apply to macOS as well.
+
+
+Android StrongSwan VPN client
+-----------------------------
+
+- Import the self-signed CA certificate into the Android certificate store.
+- Install the StrongSwan app from the Google Play Store
+- Open the StrongSwan app and create a new VPN profile.
+    
+    - Server: ``vpn1.example.com``
+    - VPN Typ: IKEv2 EAP
+    - Username: ``john@vpn1.example.com``
+    - Password: ``48o72g3h4ro8123g8r``
+    - CA-Certificate: choose the imported CA certificate
+    - Activate advanced mode:
+    - DNS Server: ``192.168.1.1`` and ``2001:db8:1234:1::1``
+    - IKEv2 Algorithms: aes256-sha256-modp2048
+    - IPsec/ESP Algorithms: aes256-sha256-modp2048
+
+- You can start the new profile and it should connect. If not, check the Logfile for the error message.
+
 Windows NCP Secure Entry client
 -------------------------------
 
-- Install the NCP Secure Entry Client:
+.. Note::
+    This is a commercial client and needs to be licensed.
 
-        Download the NCP Secure Entry Client installer from the official NCP website.
-        Double-click on the installer.
-        Follow the on-screen instructions to complete the installation.
-        
+- Install the NCP Secure Entry Client
 - Save the following code as **example.ini**
 
 .. code-block::
@@ -833,53 +856,31 @@ Windows NCP Secure Entry client
     IpsecCrypt=6
     IpsecAuth=5
 
-For other users edit ``IkeIdStr=john@vpn1.example.com``. Change ``Name=vpn1.example.com`` and ``Gateway=vpn1.example.com`` to your vpn gateway.
+- For other users edit ``IkeIdStr=john@vpn1.example.com``. Change ``Name=vpn1.example.com`` and ``Gateway=vpn1.example.com`` to your vpn gateway.
+- Import the example.ini Profile:
     
-    - Import the example.ini Profile:
-
-        Launch the NCP Secure Entry Client.
-        Navigate to the Profile menu.
-        Select the option to Import Profile.
-        Browse to the location where your example.ini profile is saved.
-        Select the profile and click Open or Import (whichever option appears).
-        You can enter the username and password of the user when importing the profile.
-                - Username: ``john@vpn1.example.com``
-                - Password: ``48o72g3h4ro8123g8r``
-        
-    - The profile should now be loaded into the NCP Secure Entry Client. You can start it and it should connect. If not, check the Logfile in "Help" for the error message.
-
-
-iOS (iPhone, iPad) native VPN client
-------------------------------------
-
-Importing the self-signed CA certificate:
-
-- Email the certificate to yourself or use a cloud storage app to get the certificate onto your device.
-- Open the email or cloud storage app on your iOS device and tap on the certificate file.
-- You should see a message stating "Profile Downloaded" or similar.
-- Go to Settings > Profile Downloaded or Settings > General > Profiles or Profile & Device Management.
-- You will see the certificate profile there. Tap on it.
-- Tap Install in the upper right corner.
-- Enter your device's passcode if prompted.
-- Tap Install when the warning about the certificate appears.
-- The certificate is now installed in the iOS certificate store.
-
-Setting up the VPN:
-
-- Go to Settings > General > VPN.
-- Tap on Add VPN Configuration....
-- Select the type of VPN you are using. For this example, it's IKEv2.
-- In the fields provided, enter:
-    - Description: ``vpn1.example.com``
-    - Server: ``vpn1.example.com``
-    - Remote ID: ``vpn1.example.com``
-    - Local ID: ``john@vpn1.example.com``
-- In the Authentication section, select Username.
-    - Username: ``john@vpn1.example.com``
-    - Password: ``48o72g3h4ro8123g8r``
-- Tap Done in the top right corner.
-- To connect to the VPN, go back to Settings > VPN, then turn the VPN toggle switch to the ON position next to the profile you just created.
+    - Launch the NCP Secure Entry Client.
+    - Navigate to the Profile menu.
+    - Select the option to Import Profile.
+    - Browse to the location where your example.ini profile is saved.
+    - Select the profile and click Open or Import (whichever option appears).
+    - You can enter the username and password of the user when importing the profile.
+    
+        - Username: ``john@vpn1.example.com``
+        - Password: ``48o72g3h4ro8123g8r``
+- Add the DNS Servers ``192.168.1.1`` and ``2001:db8:1234:1::1`` to the imported profile if needed.
+- Import the self-signed CA certificate into the NCP certificate store. Go to ``C:\ProgramData\NCP\SecureClient\cacerts`` and copy your the .pem file in there.
+- The profile should now be loaded into the NCP Secure Entry Client. You can start it and it should connect. If not, check the Logfile in "Help" for the error message.
 
 
-Android StrongSwan VPN client
------------------------------
+---------------
+Troubleshooting
+---------------
+
+If the VPN connection doesn't establish right away there are several steps you can take to troubleshoot the connection. Here's a short summary where to start. Debugging an IPsec connection takes time, don't get discouraged if you can't solve the problem right away.
+
+- If it's your first IPsec connection, don't forget to enable IPsec and apply.
+- Use tcpdump on the OPNsense to look for incoming packets on port 500 and port 4500 when you connect your VPN client. If you can't see any, your firewall blocks them, or the remote client can't send them due to a remote firewall. There could also be a wrong IP Address the packets are sent to.
+- If there are packets received, but no packets sent, look into the VPN log files.
+- Check /var/logs/ipsec/latest.log or :menuselection:`VPN --> IPsec --> Log File` for the connection being processed. Most of the time you can see errors in there you can search on the internet.
+- The easiest tool to troubleshoot the connection is the Android StrongSwan Client or the Windows NCP Secure Entry Client. They have powerful inbuild logging so you can check both sides of the connection. In IPsec, you need the log of the server and the client to find the true cause of a connection error.
