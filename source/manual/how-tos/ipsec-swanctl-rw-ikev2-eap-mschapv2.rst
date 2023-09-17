@@ -684,7 +684,7 @@ Windows 10/11 native VPN client
         - Set DNS: ``2001:db8:1234:1::1``
     - Click OK to apply changes.
 
-- Import the CA certificate you created at the beginning of the tutorial into the Windows certificate store, please note that you have to be admin for this action:
+- Import the CA certificate into the Windows certificate store, please note that you have to be admin for this action:
 
     - Open MMC: Windows + R > Type mmc > Enter.
     - Add Certificates Snap-In: File > Add/Remove Snap-in > Certificates > Add > Computer account > Local computer > Finish.
