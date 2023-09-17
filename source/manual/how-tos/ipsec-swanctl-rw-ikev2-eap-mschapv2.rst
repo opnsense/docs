@@ -27,7 +27,8 @@ The example users are ``John`` and ``Laura``. The example FQDN is ``vpn1.example
     Any IPv6 functionality is optional. If you don't want to use IPv4+IPv6 dual stack, just skip all IPv6 addresses/networks and focus on IPv4. Its also possible to skip IPv4 and create native IPv6 tunnels.
 
 .. Warning::
-    Don't copy security relevant configuration parameters like passwords into your configuration. Create your own!
+    - Don't copy security relevant configuration parameters like passwords into your configuration. Create your own! 
+    - Change all IP addresses, usernames and DNS Records to your own usecase.
 
 -----------------------------
 Methods for Roadwarrior Setup
@@ -74,6 +75,8 @@ Create a certificate authority which will be used to create server certificates 
     **Common Name:**                                IPsec CA
     ==============================================  ====================================================================================================
 
+Download this CA certificate and save it for later, it's needed for client setup.
+    
 
 System: Trust: Certificates
 ---------------------------
@@ -200,13 +203,13 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
 
     ==============================================  ====================================================================================================
     **Local Identifier:**                           ``john@vpn1.example.com``
-    **Pre-Shared Key:**                             48o72g3h4ro8123g8r
+    **Pre-Shared Key:**                             ``48o72g3h4ro8123g8r``
     **Type:**                                       EAP
     ==============================================  ====================================================================================================
     
     ==============================================  ====================================================================================================
     **Local Identifier:**                           ``laura@vpn1.example.com``
-    **Pre-Shared Key:**                             LIUAHSDq2nak!12
+    **Pre-Shared Key:**                             ``LIUAHSDq2nak!12``
     **Type:**                                       EAP
     ==============================================  ====================================================================================================
 
@@ -257,9 +260,6 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
 
 **Children:**
 
-.. Note::
-    This is where you select the networks your roadwarrior should be able to access. In a split tunnel scenario, you would specify the example LAN nets ``192.168.1.0/24`` and  ``2001:db8:1234:1::/64`` as local traffic selectors. In a full tunnel scenario (all traffic forced through the tunnel) you would specify ``0.0.0.0/0`` and ``::/0`` as local traffic selectors. The following example child will use the full tunnel method. A full tunnel is generally more secure - especially with IPv6 involved - since no traffic can leak.
-
 Press **+** to add a new Child, enable **advanced mode** with the toggle.
 
     ==============================================  ====================================================================================================
@@ -271,6 +271,10 @@ Press **+** to add a new Child, enable **advanced mode** with the toggle.
     ==============================================  ====================================================================================================
 
 **Save** and **Apply** the configuration.
+
+.. Note::
+    With children you select the networks your roadwarrior should be able to access. In a split tunnel scenario, you would specify the example LAN nets ``192.168.1.0/24`` and  ``2001:db8:1234:1::/64`` as local traffic selectors. In a full tunnel scenario (all traffic forced through the tunnel) you would specify ``0.0.0.0/0`` and ``::/0`` as local traffic selectors. The following example child will use the full tunnel method. A full tunnel is generally more secure - especially with IPv6 involved - since no traffic can leak.
+
 
 Now you can skip to :ref:`Firewall rules, Outbound NAT and DNS <rw-swanctl-fw-nat-dns>`
 
@@ -319,13 +323,13 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
 
     ==============================================  ====================================================================================================
     **Local Identifier:**                           ``john@vpn1.example.com``
-    **Pre-Shared Key:**                             48o72g3h4ro8123g8r
+    **Pre-Shared Key:**                             ``48o72g3h4ro8123g8r``
     **Type:**                                       EAP
     ==============================================  ====================================================================================================
     
     ==============================================  ====================================================================================================
     **Local Identifier:**                           ``laura@vpn1.example.com``
-    **Pre-Shared Key:**                             LIUAHSDq2nak!12
+    **Pre-Shared Key:**                             ``LIUAHSDq2nak!12``
     **Type:**                                       EAP
     ==============================================  ====================================================================================================
 
@@ -379,9 +383,6 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
 
 **Children:**
 
-.. Note::
-    This is where you select the networks your roadwarrior should be able to access. In a split tunnel scenario, you would specify the example LAN nets ``192.168.1.0/24`` and  ``2001:db8:1234:1::/64`` as local traffic selectors. In a full tunnel scenario (all traffic forced through the tunnel) you would specify ``0.0.0.0/0`` and ``::/0`` as local traffic selectors. The following example child will use the full tunnel method. A full tunnel is generally more secure - especially with IPv6 involved - since no traffic can leak.
-
 Press **+** to add a new Child, enable **advanced mode** with the toggle.
 
     ==============================================  ====================================================================================================
@@ -393,6 +394,9 @@ Press **+** to add a new Child, enable **advanced mode** with the toggle.
     ==============================================  ====================================================================================================
 
 **Save** and **Apply** the configuration.
+
+.. Note::
+    With children you select the networks your roadwarrior should be able to access. In a split tunnel scenario, you would specify the example LAN nets ``192.168.1.0/24`` and  ``2001:db8:1234:1::/64`` as local traffic selectors. In a full tunnel scenario (all traffic forced through the tunnel) you would specify ``0.0.0.0/0`` and ``::/0`` as local traffic selectors. The following example child will use the full tunnel method. A full tunnel is generally more secure - especially with IPv6 involved - since no traffic can leak.
 
 
 **2.3.2 Create connection for laura@vpn1.example.com:**
@@ -436,9 +440,6 @@ Press **+** to add a new Child, enable **advanced mode** with the toggle.
 
 **Children:**
 
-.. Note::
-    This is where you select the networks your roadwarrior should be able to access. In a split tunnel scenario, you would specify the example LAN nets ``192.168.1.0/24`` and  ``2001:db8:1234:1::/64`` as local traffic selectors. In a full tunnel scenario (all traffic forced through the tunnel) you would specify ``0.0.0.0/0`` and ``::/0`` as local traffic selectors. The following example child will use the full tunnel method. A full tunnel is generally more secure - especially with IPv6 involved - since no traffic can leak.
-
 Press **+** to add a new Child, enable **advanced mode** with the toggle.
 
     ==============================================  ====================================================================================================
@@ -461,44 +462,424 @@ Press **+** to add a new Child, enable **advanced mode** with the toggle.
 Firewall rules, Outbound NAT and DNS
 ------------------------------------
 
+Now that you have configured split or full tunnel mode, you need rules to allow the traffic into your LAN and though the OPNsense to the WAN. For IPv4 to the WAN you additionally need an Outbound NAT rule for IP-Masquerading. If you want the OPNsense to handle DNS, you can to configure Unbound so your roadwarriors use it as DNS server to prevent DNS leaks.
+
+.. Tip::
+    If you have internal IPv4 services (like a mailserver) that have external IPs in their DNS A-Records, you should configure Reflection NAT. There is a tutorial in the How-To section of Network Address Translation. Add the ``ipsec`` interface in the Port Forward rules you create.
 
 Firewall: Aliases
 -----------------
+
+Create the following aliases:
+
+    ==============================================  ====================================================================================================
+    **Name:**                                       ``InternetIPv4``
+    **Type:**                                       Network(s)
+    **Content:**                                    ``10.0.0.0/8``  ``172.16.0.0/12``  ``192.168.0.0/16``  ``127.0.0.0/8``
+    **Description:**                                Internet IPv4 - use inverted
+    ==============================================  ====================================================================================================
+
+    ==============================================  ====================================================================================================
+    **Name:**                                       ``InternetIPv6``
+    **Type:**                                       Network(s)
+    **Content:**                                    ``2001:db8:1234::/48``
+    **Description:**                                Internet IPv6 - use inverted
+    ==============================================  ====================================================================================================
+
+    ==============================================  ====================================================================================================
+    **Name:**                                       ``net_pool_roadwarrior``
+    **Type:**                                       Network(s)
+    **Content:**                                    ``172.16.203.0/24``  ``2001:db8:1234:ec::/64``
+    **Description:**                                Network pool-roadwarrior-ipv4 and ipv6
+    ==============================================  ====================================================================================================
+
+
+Additionally, if you created seperate IP pools for individual roadwarriors (Method 2), create the following aliases so you are able to create individual firewall rules per roadwarrior:
+
+    ==============================================  ====================================================================================================
+    **Name:**                                       ``host_pool_roadwarrior_john``
+    **Type:**                                       Host(s)
+    **Content:**                                    ``172.16.203.1/32``  ``2001:db8:1234:ec::1/128``
+    **Description:**                                ``john@vpn1.example.com``
+    ==============================================  ====================================================================================================
+    
+    ==============================================  ====================================================================================================
+    **Name:**                                       ``host_pool_roadwarrior_laura``
+    **Type:**                                       Host(s)
+    **Content:**                                    ``172.16.203.2/32``  ``2001:db8:1234:ec::2/128``
+    **Description:**                                ``laura@vpn1.example.com``
+    ==============================================  ====================================================================================================
 
 
 Firewall: Rules: IPsec
 ----------------------
 
+Here you use the aliases you created in the prior step in order to create firewall rules on the ``IPsec`` interface in order to allow traffic from the roadwarrior networks to your LAN and to the WAN (Internet).
+
+As **first** rule it's a good idea to allow ICMP for troubleshooting purposes. With that rule, roadwarriors can ping the OPNsense firewall. Please note that they can only ping those IPs that are included in the local traffic selectors of the children.
+
+    ==============================================  ====================================================================================================
+    **Action**                                      Pass
+    **Interface**                                   IPsec
+    **Direction**                                   In
+    **TCP/IP Version**                              IPv4+IPv6
+    **Protocol**                                    ICMP
+    **Source**                                      Any
+    **Source port**                                 Any
+    **Destination**                                 ``This Firewall``
+    **Destination port**                            Any
+    **Description**                                 Allow ICMP to this firewall 
+    ==============================================  ====================================================================================================
+
+As **second** rule, you should allow LAN access from the IPsec roadwarrior networks. If you created individual aliases, you can create multiples of those rules with the aliases of the individuals added instead of the whole network.
+
+- Example for a rule that allows the whole IPsec roadwarrior network to the LAN. ``LAN net`` is a predefined alias if you have an interface called LAN:
+
+    ==============================================  ====================================================================================================
+    **Action**                                      Pass
+    **Interface**                                   IPsec
+    **Direction**                                   In
+    **TCP/IP Version**                              IPv4+IPv6
+    **Protocol**                                    TCP/UDP
+    **Source**                                      ``net_pool_roadwarrior``
+    **Source port**                                 Any
+    **Destination**                                 ``LAN net``
+    **Destination port**                            Any
+    **Description**                                 Allow ICMP to this firewall 
+    ==============================================  ====================================================================================================
+    
+- Example for an individual allow rule to the LAN:
+
+    ==============================================  ====================================================================================================
+    **Action**                                      Pass
+    **Interface**                                   IPsec
+    **Direction**                                   In
+    **TCP/IP Version**                              IPv4+IPv6
+    **Protocol**                                    TCP/UDP
+    **Source**                                      ``host_pool_roadwarrior_john``
+    **Source port**                                 Any
+    **Destination**                                 ``LAN net``
+    **Destination port**                            Any
+    **Description**                                 Allow john@von1.example.com access to LAN net
+    ==============================================  ====================================================================================================
+
+The **last matching** rules can allow Internet access if you have configured a full tunnel. Just as the example above, you can also create individual rules:
+
+    ==============================================  ====================================================================================================
+    **Action**                                      Pass
+    **Interface**                                   IPsec
+    **Direction**                                   In
+    **TCP/IP Version**                              IPv4
+    **Protocol**                                    Any
+    **Source**                                      ``net_pool_roadwarrior``
+    **Source port**                                 Any
+    **Destination / Invert**                        X
+    **Destination**                                 ``InternetIPv4``
+    **Destination port**                            Any
+    **Description**                                 Allow Internet Access IPv4
+    ==============================================  ====================================================================================================
+    
+    ==============================================  ====================================================================================================
+    **Action**                                      Pass
+    **Interface**                                   IPsec
+    **Direction**                                   In
+    **TCP/IP Version**                              IPv6
+    **Protocol**                                    Any
+    **Source**                                      ``net_pool_roadwarrior``
+    **Source port**                                 Any
+    **Destination / Invert**                        X
+    **Destination**                                 ``InternetIPv6``
+    **Destination port**                            Any
+    **Description**                                 Allow Internet Access IPv6
+    ==============================================  ====================================================================================================
+
+.. Note::
+    By setting **Destination / Invert** you invert the match of the alias. Don't use "Any" as Destination to the Internet, since it also includes all networks that are locally attached to your firewall.
 
 Firewall: NAT: Outbound
 -----------------------
+
+For IPv4 Internet access to work, you need to set up an Outbound NAT rule for IP-Masquerading. Start by enabling at least **Hybrid outbound NAT rule generation** and **Save**. Otherwise you can't add your new manual NAT rule.
+
+    ==============================================  ====================================================================================================
+    **Interface**                                   WAN
+    **Direction**                                   In
+    **TCP/IP Version**                              IPv4
+    **Protocol**                                    any
+    **Source**                                      ``net_pool_roadwarrior``
+    **Source port**                                 any
+    **Destination**                                 any
+    **Destination port**                            any
+    **Translation / target**                        ``WAN address``
+    **Description**                                 IPsec MASQ
+    ==============================================  ====================================================================================================
 
 
 Services: Unbound DNS
 ---------------------
 
+.. Note::
+    If you don't serve internal DNS records (Split DNS) or don't have an Active Directory you can skip the DNS configuration.
+
+
+For full control over DNS, you should either use Unbound on the OPNsense or the DNS servers in your own network. If you provide your roadwarriors with external DNS servers (like ``8.8.8.8``), they can't resolve your internal ressources and will send those requests to external DNS servers, thus exposing your internal DNS records. (DNS Leak)
+
+.. Attention::
+    If you created a full tunnel for IPv4 only (``0.0.0.0/0`` without ``::/0``), and your roadwarriors are in IPv4+IPv6 dual stack networks, their devices will prefer the link local IPv6 DNS servers provided by SLAAC or DHCPv6 over your IPv4 VPN DNS server.
+
+**Enable** Unbound and leave the *Network Interfaces* on *All (recommended)*. Next go to *Query Forwarding* and input your *Custom forwarding* servers. For example your Samba or Windows Active Directory Domain Controllers.
+
+Unbound listens on port 53 UDP/TCP on all network interfaces of the Opnsense. If you followed all steps, access to your LAN is already permitted from the IPsec Network. You can use the IP addresses of the OPNsense in that network as target for the DNS queries.
+
+In this example they are: ``192.168.1.1`` and ``2001:db8:1234:1::1``.
 
 --------------------
 Client configuration
 --------------------
 
+In this section there are a few example configurations of different clients. All configurations here are tuned to the exact settings above. If you change anything in the server configuration, make sure you change it here too.
+
+All clients are configured to use the "Ike config mode", that means the virtual IPs and the traffic selectors are pushed by the VPN server to the client. The only IP addresses you have to add manually are the DNS servers.
+
 
 Windows native VPN client
 -------------------------
+
+- Open Powershell as user (not as admin) and input the following CMDlets:
+
+Add-VpnConnection -Name "vpn1.example.com" -ServerAddress "vpn1.example.com" -TunnelType "Ikev2"
+
+Set-VpnConnectionIPsecConfiguration -ConnectionName "vpn1.example.com" -AuthenticationTransformConstants SHA256 -CipherTransformConstants AES256 -EncryptionMethod AES256 -IntegrityCheckMethod SHA256 -PfsGroup PFS2048 -DHGroup Group14 -PassThru -Force
+
+
+- Only set this parameter if you want a split tunnel:
+
+Set-VpnConnection -Name "vpn1.example.com" -SplitTunneling $true
+
+
+- Set up DNS for the VPN:
+
+    Access Network Connections:
+        Press Windows + R to open the Run dialog.
+        Type ncpa.cpl and press Enter. This will open the Network Connections window.
+
+    Find the VPN Network Adapter:
+        In the Network Connections window, locate your VPN network adapter. It usually has a name related to the VPN service you're using, in this example "vpn1.example.com"
+
+    Access the Properties:
+        Right-click on the VPN network adapter and select Properties.
+
+    Edit IPv4 Settings:
+        In the VPN network adapter's properties window, locate and select Internet Protocol Version 4 (TCP/IPv4) from the list. Then, click the Properties button.
+        In the properties dialog, choose the Use the following DNS server addresses option.
+        Now, enter the IPv4 DNS server address: ``192.168.1.1`` in the "Preferred DNS server" field.
+        Click OK to save the changes.
+
+    Edit IPv6 Settings:
+        Back in the VPN network adapter's properties window, locate and select Internet Protocol Version 6 (TCP/IPv6) from the list. Then, click the Properties button.
+        In the properties dialog, choose the Use the following DNS server addresses option.
+        Now, enter the IPv6 DNS server address: ``2001:db8:1234:1::1`` in the "Preferred DNS server" field.
+        Click OK to save the changes.
+
+    Finalizing:
+        Click OK again in the VPN network adapter's properties window to finalize and apply the changes.
+
+
+- Import the CA certificate you created at the beginning of the tutorial into the Windows certificate store, please note that you have to be admin for this action:
+
+    - Open Microsoft Management Console (MMC):
+        Press Windows + R to open the Run dialog.
+        Type mmc and press Enter.
+
+    - Add the Certificates Snap-In:
+        In the MMC, go to File > Add/Remove Snap-in.
+        In the list of available snap-ins, select Certificates and click Add >.
+        Choose Computer account and click Next.
+        Ensure Local computer is selected and click Finish.
+
+    - Install the Certificate:
+        Navigate to Certificates (Local Computer) > Trusted Root Certification Authorities > Certificates.
+        Right-click on Certificates, choose All Tasks, then Import.
+        The Certificate Import Wizard will start. Click Next.
+        Browse to the location of your self-signed CA certificate and select it. Click Next.
+        Ensure that the certificate store is set to Trusted Root Certification Authorities. Click Next.
+        Click Finish to complete the certificate import.
+
+    - Confirm Installation:
+        Refresh the list of certificates under Trusted Root Certification Authorities > Certificates and ensure your self-signed CA certificate appears in the list.
+
+    - Exit MMC: You can now close the MMC. It might ask if you want to save the console settings. Typically, you can choose No unless you want to save the snap-ins for future use.
+
+- Connect the new VPN connection and use the following credentials:
+
+    - Username: ``john@vpn1.example.com``
+    - Password: ``48o72g3h4ro8123g8r``
 
 
 Windows NCP Secure Entry client
 -------------------------------
 
+- Install the NCP Secure Entry Client:
+
+        Download the NCP Secure Entry Client installer from the official NCP website.
+        Double-click on the installer.
+        Follow the on-screen instructions to complete the installation.
+        
+- Save the following code as **example.ini**
+
+.. code-block::
+    
+    [GENERAL]
+    Export=1
+    Product=NCP Secure Entry Client
+    Version=13.14 Build 29669
+    Date=11.09.2023 09:30:42
+    [PROFILE1]
+    Name=vpn1.example.com
+    ConnMedia=21
+    UseForAuto=0
+    SeamRoaming=1
+    NotKeepVpn=0
+    BootProfile=0
+    UseRAS=0
+    SavePw=0
+    PhoneNumber=
+    DialerPhone=
+    ScriptFile=
+    HttpName=
+    HttpPw=
+    HttpScript=
+    Modem=
+    ComPort=1
+    Baudrate=57600
+    RelComPort=1
+    InitStr=
+    DialPrefix=
+    3GApnSrc=2
+    3GProvider=
+    APN=
+    3GPhone=
+    3GAuth=0
+    GprsATCmd=AT+CPIN=
+    GprsPin=""
+    BiometricAuth=0
+    PreAuthEap=0
+    PreAuthHttp=0
+    ConnMode=0
+    Timeout=0
+    TunnelTrafficMonitoring=0
+    TunnelTrafficMonitoringAddr=0.0.0.0
+    QoS=none
+    PkiConfig=
+    ExchMode=34
+    TunnelIpVersion=1
+    IKEv2Auth=3
+    IKE-Policy=automatic mode
+    IKEv2Policy=aes256-sha256
+    IkeDhGroup=14
+    IkeLTSec=000:00:40:00
+    IPSec-Policy=aes256-sha256
+    PFS=14
+    IPSecLTType=1
+    IpsecLTSec=000:00:10:00
+    IPSecLTKb=50000
+    UseComp=0
+    IkeIdType=3
+    IkeIdStr=john@vpn1.example.com
+    Gateway=vpn1.example.com
+    ConnType=1
+    UsePreShKey=0
+    XAUTH-Src=0
+    SplitOptionV4=1
+    UseTunnel=1
+    SplitOptionV6=1
+    VpnBypass=none
+    UseXAUTH=1
+    UseUdpEnc=500
+    UseUdpEncTmp=4500
+    DisDPD=0
+    DPDInterval=30
+    DPDRetrys=8
+    AntiReplay=0
+    PathFinder=0
+    UseRFC7427=1
+    RFC7427Padding=2
+    Ikev2AuthPrf=0
+    CertReqWithData=0
+    IpAddrAssign=0
+    IPAddress=
+    SubnetMask=
+    DNS1=
+    DNS2=
+    DomainName=
+    DomainInTunnel=
+    SubjectCert=
+    IssuerCert=
+    FingerPrint=
+    UseSHA1=0
+    Firewall=0
+    OnlyTunnel=0
+    RasOnlyTunnel=0
+    DNSActiv=1
+    DNS1Tmp=
+    DNS2Tmp=
+    [IKEV2POLICY1]
+    Ikev2Name=aes256-sha256
+    Ikev2Crypt=6
+    Ikev2PRF=5
+    Ikev2IntAlgo=12
+    [IPSECPOLICY1]
+    IPSecName=aes256-sha256
+    IpsecCrypt=6
+    IpsecAuth=5
+
+For other users edit ``IkeIdStr=john@vpn1.example.com``. Change ``Name=vpn1.example.com`` and ``Gateway=vpn1.example.com`` to your vpn gateway.
+    
+    - Import the example.ini Profile:
+
+        Launch the NCP Secure Entry Client.
+        Navigate to the Profile menu.
+        Select the option to Import Profile.
+        Browse to the location where your example.ini profile is saved.
+        Select the profile and click Open or Import (whichever option appears).
+        You can enter the username and password of the user when importing the profile.
+                - Username: ``john@vpn1.example.com``
+                - Password: ``48o72g3h4ro8123g8r``
+        
+    - The profile should now be loaded into the NCP Secure Entry Client. You can start it and it should connect. If not, check the Logfile in "Help" for the error message.
+
 
 iOS (iPhone, iPad) native VPN client
 ------------------------------------
 
+Importing the self-signed CA certificate:
+
+- Email the certificate to yourself or use a cloud storage app to get the certificate onto your device.
+- Open the email or cloud storage app on your iOS device and tap on the certificate file.
+- You should see a message stating "Profile Downloaded" or similar.
+- Go to Settings > Profile Downloaded or Settings > General > Profiles or Profile & Device Management.
+- You will see the certificate profile there. Tap on it.
+- Tap Install in the upper right corner.
+- Enter your device's passcode if prompted.
+- Tap Install when the warning about the certificate appears.
+- The certificate is now installed in the iOS certificate store.
+
+Setting up the VPN:
+
+- Go to Settings > General > VPN.
+- Tap on Add VPN Configuration....
+- Select the type of VPN you are using. For this example, it's IKEv2.
+- In the fields provided, enter:
+    - Description: ``vpn1.example.com``
+    - Server: ``vpn1.example.com``
+    - Remote ID: ``vpn1.example.com``
+    - Local ID: ``john@vpn1.example.com``
+- In the Authentication section, select Username.
+    - Username: ``john@vpn1.example.com``
+    - Password: ``48o72g3h4ro8123g8r``
+- Tap Done in the top right corner.
+- To connect to the VPN, go back to Settings > VPN, then turn the VPN toggle switch to the ON position next to the profile you just created.
+
 
 Android StrongSwan VPN client
 -----------------------------
-
-
-Linux Strongswan swanctl.conf
------------------------------
-
