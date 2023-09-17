@@ -215,17 +215,6 @@ as of OPNsense 23.1, different `examples from Strongswan <https://docs.strongswa
 are usually quite easy to implement as we follow the `swantcl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__
 format quite closely in the new module.
 
-The following client setup examples are available in our documentation:
-
-.. toctree::
-  :maxdepth: 2
-  :titlesonly:
-
-  how-tos/ipsec-rw-android
-  how-tos/ipsec-rw-linux
-  how-tos/ipsec-rw-w7
-
-
 .................................
 Examples
 .................................
@@ -264,6 +253,18 @@ Legacy (:menuselection:`VPN -> IPsec -> Tunnel Settings`)
    how-tos/ipsec-s2s-route
    how-tos/ipsec-s2s-route-azure
    how-tos/ipsec-rw
+
+
+The following client setup examples are available in our documentation:
+
+.. toctree::
+  :maxdepth: 2
+  :titlesonly:
+
+  how-tos/ipsec-rw-android
+  how-tos/ipsec-rw-linux
+  how-tos/ipsec-rw-w7
+
 
 .. Note::
 
