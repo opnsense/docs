@@ -178,11 +178,12 @@ Method 1 - Shared IP pool for all roadwarriors
 1.1 - VPN: IPsec: Connections: Pools
 ------------------------------------
 
-Create an IPv4 pool that all roadwarriors will share. This configuration will result in 256 usable IPv4 addresses. Please note that this is not a network, it's a pool of IP addresses that will be leased.
+Create an IPv4 pool that all roadwarriors will share. This configuration will result in 256 usable IPv4 addresses. Please note that this is not a network, it's a pool of IP addresses that will be leased. The DNS Server(s) will be pushed as *Configuration Payload* (RFC4306 and RFC7296 3.15). In this example they represent the Unbound Server of the OPNsense.
 
     ==============================================  ====================================================================================================
     **Name:**                                       pool-roadwarrior-ipv4
     **Network:**                                    ``172.16.203.0/24``
+    **DNS:**                                        ``192.168.1.1``
     ==============================================  ====================================================================================================
 
 Create an IPv6 pool that all roadwarriors will share. This configuration will result in 256 usable IPv6 addresses.
@@ -190,11 +191,14 @@ Create an IPv6 pool that all roadwarriors will share. This configuration will re
     ==============================================  ====================================================================================================
     **Name:**                                       pool-roadwarrior-ipv6
     **Network:**                                    ``2001:db8:1234:ec::/120``
+    **DNS:**                                        ``2001:db8:1234:1::1``
     ==============================================  ====================================================================================================
 
 .. Note::
     The IPv6 pool is not a /64 Prefix, because it's used to define a pool of IPv6 addresses that can be used as leases. Prefix /120 means there are 256 IPv6 addresses available. The hard limit of StrongSwan pools is Prefix /97.
 
+.. Note::
+    You can skip the DNS field if you don't want to push DNS Servers to your clients.
 
 1.2 - VPN: IPsec: Pre-Shared Keys
 ---------------------------------
@@ -287,16 +291,18 @@ Method 2 - Static IP address per roadwarrior
 2.1 - VPN: IPsec: Connections: Pools
 ------------------------------------
 
-Create an individual IPv4 pool for each roadwarrior. This configuration will result in 1 usable IPv4 address.
+Create an individual IPv4 pool for each roadwarrior. This configuration will result in 1 usable IPv4 address. The DNS Server(s) will be pushed as *Configuration Payload* (RFC4306 and RFC7296 3.15). In this example they represent the Unbound Server of the OPNsense.
 
     ==============================================  ====================================================================================================
     **Name:**                                       pool-roadwarrior-john-ipv4
     **Network:**                                    ``172.16.203.1/32``
+    **DNS:**                                        ``192.168.1.1``
     ==============================================  ====================================================================================================
     
     ==============================================  ====================================================================================================
     **Name:**                                       pool-roadwarrior-laura-ipv4
     **Network:**                                    ``172.16.203.2/32``
+    **DNS:**                                        ``192.168.1.1``
     ==============================================  ====================================================================================================
 
 Create an individual IPv6 pool for each roadwarrior. This configuration will result in 1 usable IPv6 address.
@@ -304,16 +310,20 @@ Create an individual IPv6 pool for each roadwarrior. This configuration will res
     ==============================================  ====================================================================================================
     **Name:**                                       pool-roadwarrior-john-ipv6
     **Network:**                                    ``2001:db8:1234:ec::1/128``
+    **DNS:**                                        ``2001:db8:1234:1::1``
     ==============================================  ====================================================================================================
     
     ==============================================  ====================================================================================================
     **Name:**                                       pool-roadwarrior-laura-ipv6
     **Network:**                                    ``2001:db8:1234:ec::2/128``
+    **DNS:**                                        ``2001:db8:1234:1::1``
     ==============================================  ====================================================================================================
 
 .. Note::
     If a roadwarrior has more than one device, you can provide them a larger pool. For example /31 would result in 2 IPv4 addresses, and /127 in 2 IPv6 addresses. You will have to keep track of this yourself though, don't configure pools that overlap.
 
+.. Note::
+    You can skip the DNS field if you don't want to push DNS Servers to your clients.
 
 2.2 - VPN: IPsec: Pre-Shared Keys
 ---------------------------------
@@ -641,7 +651,7 @@ Client configuration
 
 In this section there are a few example configurations of different clients. All configurations here are tuned to the exact settings above. If you change anything in the server configuration, make sure you change it here too.
 
-All clients are configured to use the "Ike config mode", that means the virtual IPs and the traffic selectors are pushed by the VPN server to the client. The only IP addresses you have to add manually are the DNS servers.
+All clients are configured to use the *Configuration Payload* for virtual IP address, traffic selectors and DNS Server(s). They are pushed by the VPN server to the client.
 
 .. Note::
     Import the CA certificate to clients, not the server certificate.
@@ -669,6 +679,20 @@ Windows 10/11 native VPN client
     
     Set-VpnConnection -Name "vpn1.example.com" -SplitTunneling $true
 
+- Import the CA certificate into the Windows certificate store, please note that you have to be admin for this action:
+
+    - Open MMC: Windows + R > Type mmc > Enter.
+    - Add Certificates Snap-In: File > Add/Remove Snap-in > Certificates > Add > Computer account > Local computer > Finish.
+    - Install Certificate: Go to Trusted Root Certification Authorities > Certificates > Right-click > All Tasks > Import > Select your CA certificate > Ensure it's set to Trusted - Root Certification Authorities > Finish.
+    - Confirm: Check the certificate appears under Trusted Root Certification Authorities.
+    - Close MMC. Choose 'No' if asked to save console settings.
+
+- Connect the new VPN connection and use the following credentials, you can also save them prior to connecting:
+
+    - Username: ``john@vpn1.example.com``
+    - Password: ``48o72g3h4ro8123g8r``
+    
+**Optional** if DNS Server provisioning via *Configuration Payload* doesn't work:
 - Set up DNS for the VPN:
     
     - Open Network Connections: Windows + R > Type ncpa.cpl > Enter.
@@ -683,19 +707,6 @@ Windows 10/11 native VPN client
         - Select Internet Protocol Version 6 (TCP/IPv6) > Properties.
         - Set DNS: ``2001:db8:1234:1::1``
     - Click OK to apply changes.
-
-- Import the CA certificate into the Windows certificate store, please note that you have to be admin for this action:
-
-    - Open MMC: Windows + R > Type mmc > Enter.
-    - Add Certificates Snap-In: File > Add/Remove Snap-in > Certificates > Add > Computer account > Local computer > Finish.
-    - Install Certificate: Go to Trusted Root Certification Authorities > Certificates > Right-click > All Tasks > Import > Select your CA certificate > Ensure it's set to Trusted - Root Certification Authorities > Finish.
-    - Confirm: Check the certificate appears under Trusted Root Certification Authorities.
-    - Close MMC. Choose 'No' if asked to save console settings.
-
-- Connect the new VPN connection and use the following credentials, you can also save them prior to connecting:
-
-    - Username: ``john@vpn1.example.com``
-    - Password: ``48o72g3h4ro8123g8r``
 
 
 iOS native VPN client
@@ -719,7 +730,7 @@ iOS native VPN client
 - To connect to the VPN, go back to Settings > VPN, then turn the VPN toggle switch to the ON position next to the profile you just created.
 
 .. Note::
-    The same settings should apply to macOS as well.
+    iOS doesn't allow setting a DNS Server for the VPN, and it ignores the DNS *Configuration Payload*. The only workaround would be to change the DNS Server manually in the Wi-Fi settings each time the tunnel is brought up, and change them back when it's turned off.
 
 
 Android StrongSwan VPN client
@@ -735,17 +746,16 @@ Android StrongSwan VPN client
     - Password: ``48o72g3h4ro8123g8r``
     - CA-Certificate: choose the imported CA certificate
     - Activate advanced mode:
-    - DNS Server: ``192.168.1.1`` and ``2001:db8:1234:1::1``
     - IKEv2 Algorithms: aes256-sha256-modp2048
     - IPsec/ESP Algorithms: aes256-sha256-modp2048
 
 - You can start the new profile and it should connect. If not, check the Logfile for the error message.
 
-Windows NCP Secure Entry client
--------------------------------
+Windows/macOS NCP Secure Entry client
+-------------------------------------
 
-.. Note::
-    This is a commercial client and needs to be licensed.
+.. Attention::
+    This is a commercial client and needs to be licensed. It is not affiliated with Deciso B.V. or OPNsense®.
 
 - Install the NCP Secure Entry Client
 - Save the following code as **example.ini**
@@ -868,9 +878,11 @@ Windows NCP Secure Entry client
     
         - Username: ``john@vpn1.example.com``
         - Password: ``48o72g3h4ro8123g8r``
-- Add the DNS Servers ``192.168.1.1`` and ``2001:db8:1234:1::1`` to the imported profile if needed.
 - Import the self-signed CA certificate into the NCP certificate store. Go to ``C:\ProgramData\NCP\SecureClient\cacerts`` and copy your the .pem file in there.
 - The profile should now be loaded into the NCP Secure Entry Client. You can start it and it should connect. If not, check the Logfile in "Help" for the error message.
+
+.. Note::
+    There is also a version for macOS, which works with the same configuration as above. The only challenge is finding the right folder for the *cacerts*. You can find it by going into the *terminal* and using the command ``sudo find / -name cacerts``. Then you can pinpoint the path and copy the CA certificates there.
 
 
 ---------------
