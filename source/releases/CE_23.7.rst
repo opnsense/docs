@@ -27,6 +27,82 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.7.5 (September 26, 2023)
+--------------------------------------------------------------------------
+
+
+Today introduces a change in MTU handling for parent interfaces mostly
+noticed by PPPoE use where the respective MTU values need to fit the
+parent plus the additional header of the VLAN or PPPoE.  Should the
+MTU already be misconfigured to a smaller value it will be used as
+configured so check your configuration and clear the MTU value if you
+want the system to decide about the effective parent MTU size.
+
+Another change in far gateway handling is also included which prevents
+a monitoring failure if that particular gateway was not being designated
+as default during boot which made the routing table miss the essential
+interface route and monitoring would always report it as down.  Now the
+interface route is ensured but not only when applying the default gateway
+so that it works all the time.
+
+Also fixed was the problematic migration of the Unbound interfaces settings
+which now clears the possibly unknown interfaces in order to proceed and
+have Unbound up and running post update which was not the case for some
+users previously.
+
+Other reliability improvements and third party security updates are
+included as well.  We also continue our effort to clean up the interface
+handling code and audit the MVC model files for consistency.  A missing
+change for out of the box DS-Lite support is also being tested on the
+development version now and will likely hit in 23.7.6.
+
+Here are the full patch notes:
+
+* system: pluginctl: allow -f mode to drop config properties
+* system: switch to /usr/sbin/nologin as authoritative command location
+* system: remove remaining spurious ifconfig data pass to Gateways class
+* system: fix data cleansing issue in "column_count" and "sequence" values on dashboard
+* system: start gateway monitors after firewall rules are in place (contributed by Daggolin)
+* system: refactor far gateway handling out of default route handling
+* interfaces: use interfaces_restart_by_device() where appropriate
+* interfaces: allow get_interface_ipv6() to return in all three IPv6 variants
+* interfaces: add GRE/GIF/bridge/wlan return values
+* interfaces: signal wlan device creation success/failure
+* interfaces: update link functions for GIF/GRE
+* interfaces: remove the ancient OpenVPN-tap-on-a-bridge magic on IPv4 reload
+* interfaces: update read-only bridge member code
+* interfaces: redirect after successful interface add
+* interfaces: add interface return feature for use on bridges/assignment page
+* interfaces: VIP model style update
+* interfaces: implement interface_configure_mtu()
+* firewall: fix cleanup issue when renaming an alias
+* dhcp: make dhcrelay code use the Gateways class
+* ipsec: add local_port and remote_port to connections (contributed by Monviech)
+* openvpn: force instance interface down before handing it over to daemon
+* openvpn: add missing up and down scripts to instances (contributed by Daggolin)
+* unbound: properly set a default value for private address configuration
+* unbound: allow disabled interfaces in interface field
+* unbound: migrate active/outgoing interfaces discarding invalid values
+* unbound: UX improvements on several pages
+* unbound: update model
+* mvc: update diagnostics models
+* mvc: add isLinkLocal()
+* interfaces: allow clean MVC access to primary IPv4 address (pluginctl -4 mode)
+* plugins: os-upnp replaces calls to obsolete get_interface_ip()
+* plugins: os-rfc2136 replaces calls to obsolete get_interface_ip[v6]()
+* plugins: os-sunnyvalley 1.3 changes repository URL (contributed by Sunnyvalley)
+* plugins: os-tinc adds missing subnet-down script (contributed by andrewhotlab)
+* ports: curl 8.3.0 `[1] <https://curl.se/changes.html#8_3_0>`__ 
+* ports: nss 3.93 `[2] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_93.html>`__ 
+* ports: openssl 1.1.1w `[3] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: phalcon 5.3.1 `[4] <https://github.com/phalcon/cphalcon/releases/tag/v5.3.1>`__ 
+* ports: phpseclib 3.0.23 `[5] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.23>`__ 
+* ports: sqlite 3.43.1 `[6] <https://sqlite.org/releaselog/3_43_1.html>`__ 
+* ports: suricata 6.0.14 `[7] <https://suricata.io/2023/09/14/suricata-6-0-14-released/>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.7.4 (September 14, 2023)
 --------------------------------------------------------------------------
 
