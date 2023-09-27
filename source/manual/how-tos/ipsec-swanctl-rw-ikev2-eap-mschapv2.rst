@@ -679,6 +679,10 @@ Windows 10/11 native VPN client
     
     Set-VpnConnection -Name "vpn1.example.com" -SplitTunneling $true
 
+.. Note::
+    If you use Split Tunneling, you have to set all routes manually. For users without admin rights, they have to be added to the "Network Configuration Operators" built-in group.
+    Example Route (can be batched): ``route add 192.168.1.0 mask 255.255.255.0 172.16.203.254``
+
 - Import the CA certificate into the Windows certificate store, please note that you have to be admin for this action:
 
     - Open MMC: Windows + R > Type mmc > Enter.
