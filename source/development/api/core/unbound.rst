@@ -16,7 +16,7 @@ Unbound
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","unbound","overview","Rolling","$timeperiod,$clients=false"
+    "``GET``","unbound","overview","Rolling","$timeperiod,$clients='0'"
     "``GET``","unbound","overview","isBlockListEnabled",""
     "``GET``","unbound","overview","isEnabled",""
     "``GET``","unbound","overview","searchQueries",""

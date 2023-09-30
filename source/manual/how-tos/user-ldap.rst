@@ -52,6 +52,7 @@ Enter the following information:
  **User naming attribute**        samAccountName           *Auto filled in based upon Initial Template*
  **Read properties**                                       *Fetch account details after successful login*
  **Synchronize groups**                                    *Enable to Synchronize groups, requires the option above*
+ **Constraint groups**                                     *Only consider groups inside the Authentication containers*
  **Limit groups**                                          *Select list of groups that may be considered during sync**
  **Automatic user creation**                               *When groups are automatically synchronized,
                                                            this offers the ability to automatically create the
