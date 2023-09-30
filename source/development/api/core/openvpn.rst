@@ -34,7 +34,7 @@ Openvpn
     "``POST``","openvpn","instances","add",""
     "``POST``","openvpn","instances","addStaticKey",""
     "``POST``","openvpn","instances","del","$uuid"
-    "``GET``","openvpn","instances","delStaticKey","$uuid"
+    "``POST``","openvpn","instances","delStaticKey","$uuid"
     "``GET``","openvpn","instances","genKey",""
     "``GET``","openvpn","instances","get","$uuid=null"
     "``GET``","openvpn","instances","get",""
