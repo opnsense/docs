@@ -1,6 +1,21 @@
 Interfaces
 ~~~~~~~~~~
 
+.. csv-table:: Resources (LaggSettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","interfaces","lagg_settings","addItem",""
+    "``POST``","interfaces","lagg_settings","delItem","$uuid"
+    "``GET``","interfaces","lagg_settings","get",""
+    "``GET``","interfaces","lagg_settings","getItem","$uuid=null"
+    "``POST``","interfaces","lagg_settings","reconfigure",""
+    "``*``","interfaces","lagg_settings","searchItem",""
+    "``POST``","interfaces","lagg_settings","set",""
+    "``POST``","interfaces","lagg_settings","setItem","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Lagg.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Lagg.xml>`__"
+
 .. csv-table:: Resources (LoopbackSettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

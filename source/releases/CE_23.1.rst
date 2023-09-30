@@ -71,6 +71,10 @@ A hotfix release was issued as 23.1.11_1:
 * firmware: enable upgrade path to 23.7
 * ports: openssh 9.3p2 `[5] <https://www.openssh.com/txt/release-9.3p2>`__ 
 
+A hotfix release was issued as 23.1.11_2:
+
+* unbound: enable migration of Unbound DNS reports
+
 
 
 --------------------------------------------------------------------------

@@ -66,5 +66,5 @@ versions of your settings.
 
 .. Tip::
 
-    You can specify the number of backups to keep in this menu, which can be quite practical when a higher level of
+    You can specify the number of backups to keep in the backups menu, which can be quite practical when a higher level of
     auditability is required.
