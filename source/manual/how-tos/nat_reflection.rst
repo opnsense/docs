@@ -59,7 +59,7 @@ That's where Reflection NAT comes into play. It creates NAT rules which help you
 .. Note::
     * **Reflection NAT:** The client and the server are in different subnets (layer 2 broadcast domains) and the OPNsense routes traffic between them. They can't communicate directly by resolving ARP requests. You only need DNAT.
     * **Hairpin NAT:** The client and the server are in the same subnet (layer 2 broadcast domain). They can communicate directly with each other by resolving ARP requests. You need SNAT and DNAT.
-    
+
 .. Note::
     When using IPsec, NAT only matches on policy based VPN. NAT on VTI interfaces won't match.
 
@@ -85,10 +85,10 @@ Go to :menuselection:`Firewall --> Settings --> Advanced`
     Disable *Reflection for port forwards*, *Reflection for 1:1* and *Automatic outbound NAT for Reflection*
 
 .. _nat-method1-portforward:
-    
+
 Go to :menuselection:`Firewall --> NAT --> Port Forward`
     Select **+** to create a new Port Forward rule.
-    
+
     =========================  ================================
     Interface:                  Select ``WAN``, ``DMZ`` and ``LAN`` - Select all interfaces in which clients are that should access the webserver. This will create a linked Firewall rule in :menuselection:`Firewall --> Rules --> Floating` which allows the traffic.
     Protocol:                   Select ``TCP``
@@ -102,14 +102,14 @@ Go to :menuselection:`Firewall --> NAT --> Port Forward`
     NAT reflection:             Use system default
     Filter rule association:    Add associated filter rule
     =========================  ================================
-    
+
 .. Tip::
     Reading the DNAT rule like a sentence makes it clearer:
 
     If a packet is received by the OPNsense on any of the interfaces ``WAN``, ``DMZ`` and ``LAN`` with protocol ``TCP`` from the source IP ``ANY`` and the source port range ``ANY`` to destination
     IP ``203.0.113.1`` and destination port ``443`` --> rewrite the destination IP to ``172.16.1.1`` and the destination port to ``443``.
 
-.. Note::    
+.. Note::
     Due to "Add associated filter rule", the added linked firewall rule in :menuselection:`Firewall --> Rules --> Floating`  will allow traffic to the destination IP ``172.16.1.1`` because NAT rules match before Firewall rules. That means the firewall receives the packet and the NAT rule converts the destination from ``203.0.113.1`` to ``172.16.1.1`` first, before passing the packet to the firewall filter. You could also set "Filter rule association: Pass", but then the resulting firewall rule would be invisible.
 
 .. Attention::
@@ -117,13 +117,13 @@ Go to :menuselection:`Firewall --> NAT --> Port Forward`
     But there is a caveat - any DMZ client and the Webserver itself are still unable reach the external IP ``203.0.113.1``. For that you need Hairpin NAT, which involves an additional SNAT rule.
 
 .. _nat-method1-outbound:
-    
+
 Go to :menuselection:`Firewall --> NAT --> Outbound`
-    Select *Hybrid outbound NAT rule generation* and save. That way you can have manual outbound rules in conjunction with automatic IP-Masquerading rules. You could also choose *Manual outbound NAT rule generation*. Please make sure that you create your own IP-Masquerading rules with the *manual outbound NAT* enabled. 
-    
-    
+    Select *Hybrid outbound NAT rule generation* and save. That way you can have manual outbound rules in conjunction with automatic IP-Masquerading rules. You could also choose *Manual outbound NAT rule generation*. Please make sure that you create your own IP-Masquerading rules with the *manual outbound NAT* enabled.
+
+
     Select **+** to create a new Outbound NAT rule.
-     
+
     =========================  ================================
     Interface:                 Select ``DMZ`` - It's the interface of the subnet the Webserver is in.
     Protocol:                  Select ``TCP``
@@ -141,11 +141,11 @@ Go to :menuselection:`Firewall --> NAT --> Outbound`
     If a packet is received by the OPNsense on the interface ``DMZ`` with protocol ``TCP`` from the source net ``172.16.1.0/24`` and the source port ``ANY`` to destination IP ``172.16.1.1`` and destination port ``443`` --> rewrite the source ip to ``172.16.1.254`` and answer from the OPNsense ``DMZ`` interface.
 
 .. Note::
-    Now all DMZ clients (and the Webserver itself) can reach the Webserver with its external IP. 
-    
+    Now all DMZ clients (and the Webserver itself) can reach the Webserver with its external IP.
+
     * You need this additional SNAT rule to avoid asynchronous traffic between clients and servers in the same layer 2 broadcast domain. TCP traffic won't work otherwise.
 
-Repeat :ref:`Method 1 <nat-method1>` until all additional servers are reachable.    
+Repeat :ref:`Method 1 <nat-method1>` until all additional servers are reachable.
 
 If you encounter any issues, check :ref:`Troubleshooting NAT Rules <troubleshooting-nat-rules>` for a few tips.
 
@@ -161,15 +161,15 @@ Go to :menuselection:`Firewall --> Settings --> Advanced`
     Enable *Reflection for port forwards* to create automatic rules for all entries :menuselection: `Firewall --> NAT --> Port Forward` that have ``WAN`` as interface.
 
 .. _nat-method2-portforward:
-    
+
 Go to :menuselection:`Firewall --> NAT --> Port Forward`
     Create the NAT rule as in :ref:`Method 1 - Port Forward <nat-method1-portforward>` but change the following things:
-    
+
     * Make sure that your *Port Forwarding* rule specifies only ``WAN`` as interface.
 
 .. _nat-method2-floating:
 
-Go to :menuselection:`Firewall --> Rules --> Floating`    
+Go to :menuselection:`Firewall --> Rules --> Floating`
     =========================  ================================
     Action:                    Select ``Pass``
     Interface:                 Select ``WAN``, ``DMZ`` and ``LAN`` - Select all interfaces in which clients are that should access the webserver.
@@ -196,11 +196,11 @@ Go to :menuselection:`Firewall --> NAT --> Port Forward`
     Create the NAT rule as in :ref:`Method 2 - Port Forward <nat-method2-portforward>`
 
 Go to :menuselection:`Firewall --> Rules --> Floating`
-    Create the floating firewall rule as :ref:`Method 2 - Floating <nat-method2-floating>`    
+    Create the floating firewall rule as :ref:`Method 2 - Floating <nat-method2-floating>`
 
-------------------
+------------------------------------
 One-to-One NAT Reflection
-------------------
+------------------------------------
 
 When :menuselection:`Firewall --> Settings --> Advanced` *Reflection for 1:1* is activated, automatic Reflection NAT rules for all One-to-One NAT rules are generated.
 
@@ -220,13 +220,13 @@ Troubleshooting NAT Rules
     * ``pfctl -s nat``
     * "rdr" means :menuselection:`Firewall --> NAT --> Port Forward` rules.
     * "nat" means :menuselection:`Firewall --> NAT --> Outbound` rules.
-    
-.. Tip::    
+
+.. Tip::
     * Displays all NAT rules in the OPNsense debug:
     * ``cat /tmp/rules.debug | grep -i nat``
     * If there are more rules here than in ``pfctl -s nat``, it means you forgot to hit apply somewhere.
-    
-.. Tip::    
+
+.. Tip::
     * Look at the default drops of the firewall live log in :menuselection:`Firewall --> Log Files --> Live View`
     * Turn on logging of the NAT and Firewall rules you have created, and check if they match in :menuselection:`Firewall --> Log Files --> Live View`. NAT rules have the label "NAT" and blue color and firewall rules have the label "Description you gave your rule" and either green or red color.
     * In ":menuselection:`Firewall --> Diagnostics --> Sessions` you can check if there is a session between your internal client and your internal server, and which rule matches to it.
