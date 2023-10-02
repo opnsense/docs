@@ -99,11 +99,44 @@ The following functions are available in the menu (as of OPNsense 23.1):
   * Inspect log entries related to IPsec
 
 
+
+Migrating from tunnels to connections
+-------------------------------------------
+
+Having used the tunnel settings from the early OPNsense days, some terminology might be a bit confusing when moving into the new options offered.
+This paragraph aims to explain some of the common terms from the tunnel section and their new place in the connections.
+For a full list of changes, the upstream migration `documentation <https://wiki.strongswan.org/projects/strongswan/wiki/Fromipsecconf>`__
+is an interesting read as well.
+
+
+* Phase 1 - The general connection settings, like local/remote addressess and general protocol settings. Choices in authentication to use
+  are also part of this, they may involve multiple rounds.
+* Phase 2 - Nowadays Strongswan calls these **children**, as these define the :code:`CHILD_SA` subsections in play. This is where you can define
+  the networks on both ends. When multiple segments are being added into the same child, these are being treated as one policy
+  where all of them are able to communicate to eachother.
+* Phase 1 / Tunnel Isolation - This option made sure every network defined in phase 2 would be treated as a child of it's own (e.g. two phase 2's would turn into two children)
+* Phase 2 / Manual SPD entries - Manual SPD entries, this has been replaced with it's own menu option (Security Policy Database)
+  offering more flexibilty and visibilty.
+
 .. Note::
 
-    When migrating Pre-Shared Key type tunnels to connections, make sure to add an entry in the "Pre-Shared Keys" module as well.
-    If both ends should use their own identifier, fill in both local and remote values. The legacy module requested this information in the phase 1
-    page and wrote the same information to the secrets.
+  Using DNS for endpoints is possible, but will work a bit different than previously as in most cases the firewall tried to
+  resolve the names and didn't use the functionality provided by Strongswan. It is however currently not possible to use DNS entries
+  for VTI tunnels due to restrictions in `if_ipsec(4)` as these type of interfaces can't be changed dynamically in a reliable way.
+
+.. Note::
+
+  When migrating Pre-Shared Key type tunnels to connections, make sure to add an entry in the "Pre-Shared Keys" module as well.
+  If both ends should use their own identifier, fill in both local and remote values. The legacy module requested this information in the phase 1
+  page and wrote the same information to the secrets.
+
+.. Tip::
+
+  Since OPNsense uses the new Strongswan format also for legacy tunnels, it is rather easy to convert a tunnel manually
+  when downloading the :code:`swanctf.conf` file from the machine. You can find it in :code:`/usr/local/etc/swanctl/swanctl.conf`
+  and the format is almost identical to the connections gui available in OPNsense.
+
+
 
 .................................
 Security policies and routing
