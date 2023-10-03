@@ -289,8 +289,8 @@ Enable                                Enable blacklists
 Enable SafeSearch                     Force the usage of SafeSearch on Google, DuckDuckGo, Bing, Qwant, PixaBay and YouTube.
 Type of DNSBL                         Predefined external sources
 URLs of Blacklists                    Additional http[s] location to download blacklists from, only plain text
-                                      files containing a list of fqdn's (e.g. :code:`my.evil.domain.com`) are
-                                      supported.
+                                      files containing a list of fqdn's (e.g. :code:`my.evil.domain.com`) OR wildcard domains
+                                      (e.g. :code:`*.my.evil.domain.com`) are supported.
 Whitelist Domains                     When a blacklist item contains a pattern defined in this list it will
                                       be ommitted from the results.  e.g. :code:`.*\.nl` would exclude all .nl domains.
                                       Blocked domains explicitly whitelisted using the :doc:`/manual/reporting_unbound_dns`
@@ -324,8 +324,11 @@ the list maintainers.
 
 ====================================  ===============================================================================
 Abuse.ch - ThreatFox IOC database     https://threatfox.abuse.ch/
-AdAway                                https://adaway.org
-AdGuard List                          https://justdomains.github.io/blocklists/#the-lists
+AdAway List                           https://adaway.org/hosts.txt
+AdGuard List                          https://justdomains.github.io/blocklists/lists/adguarddns-justdomains.txt
+OISD - Domain Blocklist Ads*          https://small.oisd.nl/domainswild
+OISD - Domain Blocklist Big*          https://big.oisd.nl/domainswild
+OISD - Domain Blocklist NSFW*         https://nsfw.oisd.nl/domainswild
 Blocklist.site                        https://github.com/blocklistproject/Lists
 EasyList                              https://justdomains.github.io/blocklists/#the-lists
 Easyprivacy                           https://justdomains.github.io/blocklists/#the-lists
@@ -337,6 +340,11 @@ StevenBlack/hosts                     https://raw.githubusercontent.com/StevenBl
 WindowsSpyBlocker                     https://github.com/crazy-max/WindowsSpyBlocker
 YoYo List                             https://pgl.yoyo.org/adservers/
 ====================================  ===============================================================================
+
+.. Note::
+    The OISD lists are *wildcard* lists. Meaning that they will block all subdomains of the listed domains. For
+    more information, refer to `OISD <https://oisd.nl/>`__. This keeps the list small and manageable, but are
+    more effective than regular lists.
 
 .. Note::
 
