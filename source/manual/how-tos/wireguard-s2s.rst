@@ -122,9 +122,15 @@ Go to tab **Local** and edit *wgopn-site-b*.
 
 Press **Save** and **Apply**.
 
-------------------------------
+.. Tip:: 
+    If one of your sites has a dynamic WAN IP address, you can leave the *Endpoint Address* on the site with the static IP address empty. The site with the dynamic IP will then be the initiator, and the site with the static IP will be the responder. Adjust the Firewall rule accordingly to allow any Source IP to connect to the static site.
+
+.. Note::
+    If you use hostnames in the *Endpoint Address*, Wireguard will only resolve them once when you start the tunnel. If both sites have dynamic *Endpoint Addresses* set, the tunnel will stop working when they both use DynDNS hostnames, and one (or both) sites receives a new Lease from the ISP. You could probably mitigate this with a cron job that restarts wireguard periodically.
+
+-------------------------------
 Step 4a - Setup Firewall Site A
-------------------------------
+-------------------------------
 
 Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incoming wireguard traffic from Site B.
 
@@ -135,7 +141,6 @@ Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incomi
      **TCP/IP Version**     *IPv4*
      **Protocol**           *UDP*
      **Source**             *203.0.113.2*
-     **Source port**        *51820*
      **Destination**        *203.0.113.1*
      **Destination port**   *51820*
      **Description**        *Allow Wireguard from Site B to Site A*    
@@ -172,7 +177,6 @@ Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incomi
      **TCP/IP Version**     *IPv4*
      **Protocol**           *UDP*
      **Source**             *203.0.113.1*
-     **Source port**        *51820*
      **Destination**        *203.0.113.2*
      **Destination port**   *51820*
      **Description**        *Allow Wireguard from Site A to Site B*    
