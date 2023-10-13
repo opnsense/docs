@@ -61,7 +61,8 @@ That's where Reflection NAT comes into play. It creates NAT rules which help you
     * **Hairpin NAT:** The client and the server are in the same subnet (layer 2 broadcast domain). They can communicate directly with each other by resolving ARP requests. You need SNAT and DNAT.
 
 .. Note::
-    When using IPsec, NAT only matches on policy based VPN. NAT on VTI interfaces won't match.
+    When using IPsec, by default NAT only matches on policy based VPN. NAT on VTI (Virtual Tunnel Interfaces) won't match unless some tunables are set. These tunables change the behavior of firewall filter and NAT on if_enc and if_ipsec interfaces. You can read more about the tunables in `IPsec VTI - Route based setup <https://docs.opnsense.org/manual/vpnet.html#route-based-vti>`_
+
 
 -------------
 Best Practice
