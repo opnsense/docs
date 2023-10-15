@@ -439,6 +439,25 @@ Validate against a static list of options.
    "Multiple", "Y,N", "Allow to select multiple options"
    "OptionValues", ":code:`xml`", "Xml structure containing keys and values, when keys should be numeric, the value tag is also supported :code:`<opt1 value='1'>option1</opt1>`"
 
+
+When the list of available options is relatively large, its also possible to nest the options one level, which
+generates :code:`<optgroup>`  clauses in our model. As of 24.1 they can be defined using the following structure:
+
+.. code-block:: xml
+
+    <field type="OptionField">
+        <OptionValues>
+            <opt1 value='option group 1'>
+               <opt1 value='option1'>option 1</opt1>
+            </opt1>
+            <option_group2>
+               <opt2>option 2</option2>
+            </option_group2>
+        </OptionValues>
+    </field>
+
+
+
 PortField
 ------------------------------------
 
