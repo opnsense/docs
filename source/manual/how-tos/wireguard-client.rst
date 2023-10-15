@@ -31,6 +31,7 @@ Step 2 - Configure the local peer (server)
      **Public Key**        *This will initially be blank; it will be populated once the configuration is saved*
      **Private Key**       *This will initially be blank; it will be populated once the configuration is saved*
      **Listen Port**       *51820 or a higher numbered unique port*
+     **MTU**               *1420 (default) or 1412 if you use PPPoE; it's 80 bytes less than your WAN MTU*
      **Tunnel Address**    *For example, 10.10.10.1/24. See note below*
      **Peers**             *The (client) peers will be specified here; leave it blank initially until the Endpoint configuration is created in Step 3*
      **Disable Routes**    *Unchecked*
@@ -214,7 +215,48 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
 .. Note::
 
     If you didn't assign an interface as suggested in Step 5(a), then the second firewall rule outlined above will need to be configured on the automatically created :code:`WireGuard` group that appears once the Local configuration is enabled and WireGuard is started. You will also need to manually specify the source IPs/subnet(s) for the tunnel. It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one local WireGuard instance and only one WireGuard endpoint configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
+    
+------------------------------------
+Step 6a - Create normalization rules
+------------------------------------
 
+- Go to :menuselection:`Firewall --> Settings -> Normalization` and press **+** to create **one** new normalization rule. 
+
+- If you only pass IPv4 traffic through the wireguard tunnel, create the following rule:
+    ============================ ==================================================================================================
+     **Interface**                *WireGuard (Group)*
+     **Direction**                *Any*
+     **Protocol**                 *any*
+     **Source**                   *any*
+     **Destination**              *any*
+     **Destination port**         *any*
+     **Description**              *Wireguard MSS Clamping IPv4*
+     **Max mss**                  *1380 (default) or 1372 if you use PPPoE; it's 40 bytes less than your Wireguard MTU*
+    ============================ ==================================================================================================
+    
+- **Save** the rule
+
+- If you pass IPv4+IPv6 - or only IPv6 traffic - through the wireguard tunnel, create the following rule:
+    ============================ ==================================================================================================
+     **Interface**                *WireGuard (Group)*
+     **Direction**                *Any*
+     **Protocol**                 *any*
+     **Source**                   *any*
+     **Destination**              *any*
+     **Destination port**         *any*
+     **Description**              *Wireguard MSS Clamping IPv6*
+     **Max mss**                  *1360 (default) or 1352 if you use PPPoE; it's 60 bytes less than your Wireguard MTU*
+    ============================ ==================================================================================================
+    
+- **Save** the rule
+
+.. Tip::
+    - The header size for IPv4 is usually 20 bytes, and for TCP 20 bytes. In total thats 40 bytes for IPv4 TCP.
+    - IPv6 has a larger header size with 40 bytes. That encreases the total to 60 bytes for IPv6 TCP.
+
+.. Note::
+    By creating the normalization rules, you ensure that IPv4 TCP and IPv6 TCP can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work.
+    
 ---------------------------------------
 Step 7 - Configure the WireGuard client
 ---------------------------------------
