@@ -248,22 +248,30 @@ as of OPNsense 23.1, different `examples from Strongswan <https://docs.strongswa
 are usually quite easy to implement as we follow the `swantcl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__
 format quite closely in the new module.
 
-The following client setup examples are available in our documentation:
-
-.. toctree::
-  :maxdepth: 2
-  :titlesonly:
-
-  how-tos/ipsec-rw-android
-  how-tos/ipsec-rw-linux
-  how-tos/ipsec-rw-w7
-
-
 .................................
 Examples
 .................................
 
 This paragraph offers examples for some commonly used implementation scenarios.
+
+New > 23.1 (:menuselection:`VPN -> IPsec -> Connections`)
+------------------------------------------------------------------------------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   how-tos/ipsec-s2s-conn
+   how-tos/ipsec-s2s-conn-route
+   how-tos/ipsec-s2s-conn-binat
+   how-tos/ipsec-swanctl-rw-ikev2-eap-mschapv2
+
+
+.. Tip::
+
+    The number of examples for the new module on our end is limited, but for inspiration it's often a good
+    idea to walkthrough the examples provided by `Strongswan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__.
+    Quite some swanctl.conf examples are easy to implement in our new module as we do follow the same terminology.
 
 Legacy (:menuselection:`VPN -> IPsec -> Tunnel Settings`)
 ------------------------------------------------------------------------------
@@ -279,30 +287,22 @@ Legacy (:menuselection:`VPN -> IPsec -> Tunnel Settings`)
    how-tos/ipsec-s2s-route-azure
    how-tos/ipsec-rw
 
+
+The following client setup examples are available in our documentation:
+
+.. toctree::
+  :maxdepth: 2
+  :titlesonly:
+
+  how-tos/ipsec-rw-android
+  how-tos/ipsec-rw-linux
+  how-tos/ipsec-rw-w7
+
+
 .. Note::
 
  Using Network Address Translation in policy based tunnels is different, due to the fact that the installed IPsec policy
  should accept the traffic in order to encapsulate it. The `IPSec BINAT` document will explain how to apply translations.
-
-
-New > 23.1 (:menuselection:`VPN -> IPsec -> Connections`)
-------------------------------------------------------------------------------
-
-.. toctree::
-   :maxdepth: 2
-   :titlesonly:
-
-   how-tos/ipsec-s2s-conn
-   how-tos/ipsec-s2s-conn-route
-   how-tos/ipsec-s2s-conn-binat
-
-
-.. Tip::
-
-    The number of examples for the new module on our end is limited, but for inspiration it's often a good
-    idea to walkthrough the examples provided by `Strongswan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__.
-    Quite some swanctl.conf examples are easy to implement in our new module as we do follow the same terminology.
-
 
 .................................
 Tuning considerations
