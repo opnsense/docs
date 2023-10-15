@@ -61,7 +61,8 @@ That's where Reflection NAT comes into play. It creates NAT rules which help you
     * **Hairpin NAT:** The client and the server are in the same subnet (layer 2 broadcast domain). They can communicate directly with each other by resolving ARP requests. You need SNAT and DNAT.
 
 .. Note::
-    When using IPsec, NAT only matches on policy based VPN. NAT on VTI interfaces won't match.
+    When using IPsec, by default NAT only matches on policy based VPN. NAT on VTI (Virtual Tunnel Interfaces) won't match unless some tunables are set. These tunables change the behavior of firewall filter and NAT on if_enc and if_ipsec interfaces. You can read more about the tunables in `IPsec VTI - Route based setup <https://docs.opnsense.org/manual/vpnet.html#route-based-vti>`_
+
 
 -------------
 Best Practice
@@ -110,7 +111,10 @@ Go to :menuselection:`Firewall --> NAT --> Port Forward`
     IP ``203.0.113.1`` and destination port ``443`` --> rewrite the destination IP to ``172.16.1.1`` and the destination port to ``443``.
 
 .. Note::
-    Due to "Add associated filter rule", the added linked firewall rule in :menuselection:`Firewall --> Rules --> Floating`  will allow traffic to the destination IP ``172.16.1.1`` because NAT rules match before Firewall rules. That means the firewall receives the packet and the NAT rule converts the destination from ``203.0.113.1`` to ``172.16.1.1`` first, before passing the packet to the firewall filter. You could also set "Filter rule association: Pass", but then the resulting firewall rule would be invisible.
+    Due to "Add associated filter rule", the added linked firewall rule in :menuselection:`Firewall --> Rules --> Floating`  will allow traffic to the destination IP ``172.16.1.1`` because NAT rules match before Firewall rules. That means the firewall receives the packet and the NAT rule converts the destination from ``203.0.113.1`` to ``172.16.1.1`` first, before passing the packet to the firewall filter. You could also set "Filter rule association: Pass", but then the resulting firewall rule would be invisible. 
+
+.. Note::
+    In some setups (e.g. an external IP address is bound on an additional VPN interface) you need to set "Filter rule association: None" and create your own Firewall rules. One of those firewall rules should match only on the VPN interface, and in "advanced features" of that rule "reply-to" should be your VPN interface. The other firewall rule (without "reply-to") should match the remaining interfaces.
 
 .. Attention::
     Now you have Reflection NAT. The traffic from the internal LAN client ``192.168.1.1`` and any WAN client reaches the Webserver.
@@ -143,7 +147,7 @@ Go to :menuselection:`Firewall --> NAT --> Outbound`
 .. Note::
     Now all DMZ clients (and the Webserver itself) can reach the Webserver with its external IP.
 
-    * You need this additional SNAT rule to avoid asynchronous traffic between clients and servers in the same layer 2 broadcast domain. TCP traffic won't work otherwise.
+    * You need this additional SNAT rule to avoid asymmetrical traffic between clients and servers in the same layer 2 broadcast domain. TCP traffic won't work otherwise.
 
 Repeat :ref:`Method 1 <nat-method1>` until all additional servers are reachable.
 
@@ -220,6 +224,7 @@ Troubleshooting NAT Rules
     * ``pfctl -s nat``
     * "rdr" means :menuselection:`Firewall --> NAT --> Port Forward` rules.
     * "nat" means :menuselection:`Firewall --> NAT --> Outbound` rules.
+    * You can also check the rules in the GUI in :menuselection:`Firewall --> Diagnostics --> Statistics"
 
 .. Tip::
     * Displays all NAT rules in the OPNsense debug:
@@ -228,6 +233,6 @@ Troubleshooting NAT Rules
 
 .. Tip::
     * Look at the default drops of the firewall live log in :menuselection:`Firewall --> Log Files --> Live View`
-    * Turn on logging of the NAT and Firewall rules you have created, and check if they match in :menuselection:`Firewall --> Log Files --> Live View`. NAT rules have the label "NAT" and blue color and firewall rules have the label "Description you gave your rule" and either green or red color.
+    * Turn on logging of the NAT and Firewall rules you have created, and check if they match in :menuselection:`Firewall --> Log Files --> Live View`. NAT rules have the label "NAT" or "RDR". Firewall rules have their description as label. 
     * In ":menuselection:`Firewall --> Diagnostics --> Sessions` you can check if there is a session between your internal client and your internal server, and which rule matches to it.
     * Use tcpdump on the client, the opnsense and the server, and test if the traffic goes back and forth between the devices without any mistakes. Look for TCP SYN and SYN ACK. If there are only SYN then the connection isn't established and there are mistakes in your rules.
