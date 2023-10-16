@@ -8,7 +8,7 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *265* releases leading to the latest version *23.7.5*
+As of January 2015 there have been *266* releases leading to the latest version *23.7.6*
 named "Restless Roadrunner".
 
 

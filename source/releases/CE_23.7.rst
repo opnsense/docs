@@ -27,6 +27,70 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.7.6 (October 11, 2023)
+--------------------------------------------------------------------------
+
+
+This update is a maintenance release improving the DS-Lite use via separate
+GIF tunnels on top of IPv6-only connectivity.  We are still continuing the
+efforts to provide better MVC integration for the gateways abstraction as
+well as working towards better MVC model consistency.
+
+We would like to thank GitHub user Monviech for his special contributions
+in the documentation on the subject of reflection and hairpin NAT `[1] <https://docs.opnsense.org/manual/how-tos/nat_reflection.html>`__ .
+
+Here are the full patch notes:
+
+* system: do not mark "defunct" gateway as "disabled" as well
+* system: skip all unusable gateways for monitoring
+* system: simplify the code in dpinger_status()
+* system: rewrite configuration history using MVC/API
+* interfaces: drop obsolete PPP default route handling
+* interfaces: change GRE/GIF to split reload per address family on dynamic connectivity
+* interfaces: prevent reading stale configuration data in interfaces_has_prefix_only()
+* interfaces: for consistency bootstrap the implicit 'none' value of the IP address modes
+* interfaces: prevent extended array data from being passed in interface_bring_down()
+* interfaces: fix warning due to use of an unassigned variable
+* firewall: quote "a/n" protocol in pf.conf to avoid a syntax error
+* firewall: fix wrong link to virtual IP page
+* firewall: add "Interface / Invert" rule toggle
+* firewall: fix help button in dialog for categories
+* firewall: update alias and shaper models
+* captive portal: update model
+* dhcp: fix "ends never" parsing in DHCPv6 lease page
+* dhcp: add scope to link-local DHCPv6 static mapping when creating route for delegated prefix (contributed by Maurice Walker)
+* dhcp: merge_ipv6_address() was too intrusive
+* intrusion detection: update model and persist values for transparency
+* intrusion detection: improve locking during sqlite database creation
+* ipsec: add IP4_DNS and IP6_DNS configuration payloads to connection pools (contributed by Monviech)
+* ipsec: require setting a connection pool name
+* ipsec: update models
+* monit: update model
+* openvpn: allow instances authentication without certificates when verify_client_cert is set to none
+* openvpn: add role to "proto" for TCP sessions as required for TAP type tunnels
+* openvpn: missing "selectpicker" class on VHID selector
+* openvpn: update model
+* backend: template reload wildcard was returning "OK" on partial failures
+* mvc: emit correct message on required validation in BaseField
+* mvc: throw on template reload issues in mutable service controller
+* mvc: inline one time use of $parentKey
+* mvc: set Required=Y for GroupNameField
+* mvc: remove special validation messages likely never seen
+* mvc: introduce isVolatile() for BaseModel
+* mvc: propagate isFieldChanged() from connected children in ArrayField
+* ui: remove the bootstrap-select version from the provided file in the default theme
+* plugins: remove the bootstrap-select version from the provided file in all themes
+* plugins: os-crowdsec 1.0.7 `[2] <https://github.com/opnsense/plugins/blob/stable/23.7/security/crowdsec/pkg-descr>`__ 
+* plugins: os-smart reverts the use of smartctl to gather disks
+* plugins: os-telegraf 1.12.9 `[3] <https://github.com/opnsense/plugins/blob/stable/23.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-theme-rebellion 1.8.9 fixes Unbound DNS reporting page
+* plugins: os-wireguard 2.3 `[4] <https://github.com/opnsense/plugins/blob/stable/23.7/net/wireguard/pkg-descr>`__ 
+* ports: php 8.2.11 `[5] <https://www.php.net/ChangeLog-8.php#8.2.11>`__ 
+* ports: syslog-ng 4.4.0 `[6] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.4.0>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.7.5 (September 26, 2023)
 --------------------------------------------------------------------------
 
