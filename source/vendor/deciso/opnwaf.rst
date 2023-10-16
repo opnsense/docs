@@ -78,8 +78,27 @@ With the general settings in place, we can start adding virtual servers to offlo
 First go to :menuselection:`Firewall --> Web Application --> Gateways` and click on the [+] in the top section of the screen,
 which defines the virtual servers.
 
-.. image:: images/OPNWAF_edit_virtual_server.png
-    :width: 90%
+
+=========================================================================================================================
+
+================================ ========================================================================================
+Enabled                          Enable this virtual server
+ServerName                       Fully qualified hostname for this server
+Port                             Port number this vhost will listen on, can easily be combined with firewall nat rules
+                                 to map traffic to non standard ports when origination from remote destinations.
+                                 (e.g. listen 8443 on, forward 443 to 8443)
+Certificate                      When using a certificate available in the system trust store, select it here
+Enable ACME                      Enable the ACME protocol to automatically provision certificates using Let's Encrypt,
+                                 when set will ignore the selected certificate (and enable SSL on this virtual server)
+Header Security                  Header security, by default several privacy and security related headers are set,
+                                 in some cases (old applications for example) you might want to disable
+                                 sending default headers to clients.
+TLS Security profile             TLS security profile as documented by
+                                 `Mozilla <https://wiki.mozilla.org/Security/Server_Side_TLS>`__
+Description                      User friendly description for this vhost
+================================ ========================================================================================
+
+
 
 This section defines the port the virtual server will listen on, remember, in order to use ACME (Let's encrypt) this should either
 be 443 or the traffic should be forwarded from port 443 to the port defined here.
@@ -95,8 +114,19 @@ The virtual server itself doesn't provide much content to the user other than of
 so the next step is to map directories to external locations. These can be defined in the "Locations" Grid underneath
 the Virtual servers.
 
-.. image:: images/OPNWAF_edit_location.png
-    :width: 90%
+
+=========================================================================================================================
+
+================================ ========================================================================================
+Enabled                          Enable this location
+Path                             Local path to match
+Remote destinations              Locations to forward requests to, when more than one is provided, requests will be
+                                 loadbalanced in a round robin fashion.
+Access control                   List of networks allowed to access this path (empty means any)
+VirtualServer                    The server this location belongs to
+Description                      User friendly description for this location
+================================ ========================================================================================
+
 
 The options here are quite simple, first you define a path on your end (:code:`/` in our example), next you define one or more
 destinations this path should map to (as example we're pointing to a public server here).
