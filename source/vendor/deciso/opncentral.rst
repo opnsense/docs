@@ -32,7 +32,7 @@ The contents of this file look like this:
     secret=XeD26XVrJ5ilAc/EmglCRC+0j2e57tRsjHwFepOseySWLM53pJASeTA3
 
 
-Next go to the Hosts section of the management menu in :menuselection:`Management->Hosts` and add a new host, copy
+Next go to the Hosts section of the management menu in :menuselection:`Management --> Host --> Configuration` and add a new host, copy
 the url from the machine and the API key and secret generated above.
 
 .. Note::
@@ -87,7 +87,7 @@ Centralized backups
 ----------------------------
 
 When "Enable backups" is checked in the generic host settings tab OPNcentral will perform a nighly backup of all configured
-hosts. The host overview (:menuselection:`Management-->Host configuration`) shows the number of backups
+hosts. The host overview (:menuselection:`Management --> Host --> Configuration`) shows the number of backups
 with their related size and last modification date for each host.
 
 .. Note::
@@ -97,7 +97,7 @@ with their related size and last modification date for each host.
 
 .. Tip::
     It is possible to execute the backup manually from the gui. In order to do that, go
-    to :menuselection:`Management-->Host configuration` and press the :code:`Execute backup` button.
+    to :menuselection:`Management --> Host --> Configuration` and press the :code:`Execute backup` button.
 
 .. Tip::
     If more frequent backups are desired, just add a cron job in :menuselection:`System-->Settings-->Cron`
@@ -107,7 +107,7 @@ with their related size and last modification date for each host.
 Multi tenancy using host groups
 ----------------------------------
 
-Hosts can be organised in groups using the :menuselection:`Management->Host groups` menu option.
+Hosts can be organised in groups using the :menuselection:`Management --> Host --> Groups` menu option.
 By default hosts are accessible by all users having access to the specified OPNcentral menu options.
 You can change that behaviour by linking a host into one or more groups, where you can constrain access.
 
@@ -167,7 +167,7 @@ user:
 Machine firmware status / upgrade
 ----------------------------------------------------
 
-All connected and enabled machines can be contacted using the  :menuselection:`Management->Status` page, when visiting the
+All connected and enabled machines can be contacted using the  :menuselection:`Management --> Status --> Firmware` page, when visiting the
 page all connected machines will automatically be contacted to report their status and installed version.
 
 .. image:: images/OPNcentral_status_toupdate.png
@@ -268,13 +268,13 @@ The provisioning tool offers the ability to configure some settings in a more ce
 is offered for high-availability setups, you can distribute global settings among all connected firewalls for various configuration options.
 The central host acts as a template in this case.
 
-In order to configure the settings that should be shared, you can configure the "classes" to synchronize in the host settings :menuselection:`Management->Host configuration`.
+In order to configure the settings that should be shared, you can configure the "classes" to synchronize in the host settings :menuselection:`Management --> Host --> Configuration`.
 
 .. image:: images/OPNcentral_provisioning_host_classes_setup.png
     :width: 50%
 
 Here you will find the same options as are available under :menuselection:`System->High Availability->Settings`.
-After configuring the desired parameters, you can use the Provisioning page (:menuselection:`Management->Provisioning`) to
+After configuring the desired parameters, you can use the Provisioning page (:menuselection:`Management --> Provisioning`) to
 inspect status and push options to the attached firewalls.
 
 
@@ -299,7 +299,8 @@ You can either selectlively reconfigure specific hosts with the checkbox or reco
 
 .. raw:: html
 
-     <i class="fa fa-exchange text-success" style="color:#9BD275"></i> Class equals this machine (nothing todo) <br/>
+     <i class="fa fa-spinner"></i> Collecting status <br/>
+     <i class="fa fa-check text-success" style="color:#9BD275"></i> Class equals this machine (nothing todo) <br/>
      <i class="fa fa-refresh"></i> Changes ready to commit <br/>
      <i class="fa fa-question-circle"></i> Unknown yet configured class <br/>
      <i class="fa fa-times text-danger" style="color:#F05050"></i> Unable to connect <br/><br/>
