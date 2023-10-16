@@ -64,7 +64,35 @@ History
 The history menu helps you track changes between modifications and offer the opportunity to download older
 versions of your settings.
 
+When OPNcentral is installed on the firewall and backups are being performed, there will be a host selector at the
+top of the page to select which host should be inspected.
+
+Each backup preserved on this machine will be presented as an item in the dropdown, when selecting an item, the previous backup
+(when availabe) will be selected automatically as comparison target. The final pane on the screen contains the changes
+between both selected versions in `unified diff <https://en.wikipedia.org/wiki/Diff#Unified_format>`__ format.
+
+The following buttons are available in the "backups (compare)" pane:
+
+.. raw:: html
+
+    <table>
+        <tr>
+            <td style="width:25px"><i class="fa fa-sign-in fa-fw"></i></td>
+            <td>Revert to this backup (this firewall only), keep in mind no services will be restarted after this action, for a clean state a reboot might be required</td>
+        </tr>
+        <tr>
+            <td><i class="fa fa-trash fa-fw"></i></td>
+            <td>Remove this backup (this firewall only)</td>
+        </tr>
+        <tr>
+            <td><i class="fa fa-download fa-fw"></i></td>
+            <td>Download the selected backup (in left dropdown)</td>
+        </tr>
+    </table>
+    <br/>
+
+
 .. Tip::
 
-    You can specify the number of backups to keep in the backups menu, which can be quite practical when a higher level of
+    You can specify the number of backups to keep in the backups menu (:menuselection:`System --> Configuration --> Backups`), which can be quite practical when a higher level of
     auditability is required.
