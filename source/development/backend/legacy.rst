@@ -1,12 +1,12 @@
 ============================
-Using (legacy) plugins
+Using plugins
 ============================
 
 -------
 General
 -------
 
-Legacy type plugins are located in the following location:
+Plugins are located in the following location:
 
 ::
 
@@ -19,6 +19,12 @@ For example *vpn_configure* would be the *configure* handle in a plugin file nam
 
 With the use of these plugins, you have the ability to hook into different areas of the system, such as registration of
 new interface types and making sure services are shown in the regular service overview.
+
+
+.. Note::
+
+    When plugins fail and cause PHP errors, these will be collected in :code:`/tmp/PHP_errors.log`, these plugins are not
+    registered and executed when emitting such errors
 
 
 -----------------

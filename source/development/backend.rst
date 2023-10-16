@@ -24,4 +24,5 @@ Services which need to be executed at system startup can use rc(8) or our syshoo
    :titlesonly:
    :glob:
 
+   backend/overview
    backend/*
