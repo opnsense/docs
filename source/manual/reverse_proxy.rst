@@ -86,7 +86,7 @@ Passenger                                      Application Server for differnet 
 nginx Unit_                                    Application Server for differnet Languages
 Undertow_ (Raw, JBoss, WildFly)                Java application server
 Apache Tomcat                                  Java application server
-unit_, puma_, unicorn_                         Many Rack_ based frameworks (RoR_, Sinatrarb_, …)       
+unit_, puma_, unicorn_                         Many Rack_ based frameworks (RoR_, Sinatrarb_, …)
 gunicorn_                                      Python application server
 Apache HTTPd (with modules like mod_php)       Webserver with interpreter modules
 ============================================= ================================================
@@ -223,4 +223,3 @@ Firewalling
 Misc
 ----
 * :doc:`how-tos/nginx_hosting`
-* :doc:`how-tos/haproxy_howtos`
