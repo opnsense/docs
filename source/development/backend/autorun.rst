@@ -34,8 +34,8 @@ They can contain any executable file (e.g. shell scripts) in the following subdi
 
 - early
     - start script before system network startup
-- monitor
-    - scripts handling gateway monitoring alerts
+- monitor (deprecated)
+    - scripts handling gateway monitoring alerts, no longer in use by core but provided for compatibility
 - start
     - start script after system network startup
 - stop
