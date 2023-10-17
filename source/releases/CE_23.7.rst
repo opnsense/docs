@@ -139,6 +139,7 @@ Here are the full patch notes:
 * interfaces: add interface return feature for use on bridges/assignment page
 * interfaces: VIP model style update
 * interfaces: implement interface_configure_mtu()
+* interfaces: allow clean MVC access to primary IPv4 address (pluginctl -4 mode)
 * firewall: fix cleanup issue when renaming an alias
 * dhcp: make dhcrelay code use the Gateways class
 * ipsec: add local_port and remote_port to connections (contributed by Monviech)
@@ -151,7 +152,6 @@ Here are the full patch notes:
 * unbound: update model
 * mvc: update diagnostics models
 * mvc: add isLinkLocal()
-* interfaces: allow clean MVC access to primary IPv4 address (pluginctl -4 mode)
 * plugins: os-upnp replaces calls to obsolete get_interface_ip()
 * plugins: os-rfc2136 replaces calls to obsolete get_interface_ip[v6]()
 * plugins: os-sunnyvalley 1.3 changes repository URL (contributed by Sunnyvalley)
@@ -500,7 +500,7 @@ Here are the full patch notes against 23.1.11:
 * src: axgbe: only set CSUM_DONE when IFCAP_RXCSUM enabled
 * src: ipsec: add PMTUD support
 * src: FreeBSD 13.2-RELEASE `[8] <https://www.freebsd.org/releases/13.2R/relnotes/>`__ 
-* ports: krb 1.21.1 `[9] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
+* ports: krb5 1.21.1 `[9] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
 * ports: nss 3.91 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_91.html>`__ 
 * ports: phalcon 5.2.3 `[11] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.3>`__ 
 * ports: php 8.2.8 `[12] <https://www.php.net/ChangeLog-8.php#8.2.8>`__ 
@@ -683,7 +683,7 @@ Here are the full patch notes against 23.1.11:
 * src: axgbe: only set CSUM_DONE when IFCAP_RXCSUM enabled
 * src: ipsec: add PMTUD support
 * src: FreeBSD 13.2-RELEASE `[7] <https://www.freebsd.org/releases/13.2R/relnotes/>`__ 
-* ports: krb 1.21.1 `[8] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
+* ports: krb5 1.21.1 `[8] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
 * ports: nss 3.91 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_91.html>`__ 
 * ports: php 8.2.8 `[10] <https://www.php.net/ChangeLog-8.php#8.2.8>`__ 
 * ports: py-duckdb 0.8.1
