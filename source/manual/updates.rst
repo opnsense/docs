@@ -22,6 +22,25 @@ By navigating to :menuselection:`System --> Firmware --> Settings`, you can infl
 * **Fimware Mirror:** this influences where OPNsense tries to get its updates from. If you have troubles updating or searching for updates, or if your current mirror is running slowly, you can change it here.
 * **Release Type:** With this setting, you can switch between the regular fortnightly schedule of tested releases (Production) or the newest, not fully tested code (Development). **Please leave this setting on "Production", unless you fully understand the implications of switching.**
 
+
+.. Tip::
+    The settings page is also the place where you can run audits which help debugging common connectivitty issues,
+    just press the "Run an audit" and choose "Connectivity" from the list.
+
+
+....................................
+Troubleshooting updates
+....................................
+
+Usually the connectivity check offers a direction where to look for issues during updates, the following causes are
+in our experience most common.
+
+*   Misconfigured DNS settings, check :menuselection:`System --> Settings --> General` for configured servers the firewall is allowed to use
+*   Misconfigured IPv6, in which case "Prefer IPv4 over IPv6" in :menuselection:`System --> Settings --> General` might help to prevent the system from using IPv6 in these cases
+*   In HA (carp) setups, using the wrong extrenal IPaddress, usually caused by a misconfigued outbound nat rule, easy to check by disabling manual outbound nat rules in :menuselection:`Firewall --> NAT --> Outbound`.
+
+
+
 --------------
 Major Upgrades
 --------------
