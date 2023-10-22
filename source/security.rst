@@ -20,7 +20,7 @@ Staying ahead
 
 Even though we always encourage people to update regularly, sometimes it's not possible to do so for various reasons.
 
-Luckily OPNsense comes with an integrated security check for know vulnerabilities, which can be found in our firmware
+Luckily OPNsense comes with an integrated security check for known vulnerabilities, which can be found in our firmware
 module. In which case you do have the opportunity to validate for yourself what the risk is to keep using the
 current version for a bit longer.
 
