@@ -100,7 +100,6 @@ bootup                       Bootup, normal legacy service configuration, when n
                              (for example: unbound, ntpd)
 newwanip                     Triggered after configuration of a new interface address, expects a maximum of two positional
                              parameters (:code:`$verbose` and :code:`$interface`).
-monitor                      Executed when there are changes that involve (dpinger) gateway monitoring.
 ===========================  =================================================================================
 
 
@@ -109,6 +108,7 @@ monitor                      Executed when there are changes that involve (dping
 ::
 
     pluginctl -c monitor
+
 
 
 ------------------
