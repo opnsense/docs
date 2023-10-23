@@ -137,6 +137,14 @@ is an interesting read as well.
   and the format is almost identical to the connections gui available in OPNsense.
 
 
+Combining legacy tunnels and connections
+-------------------------------------------
+
+It is possible to combine tunnels and connections, but there are some constraints. As our legacy tunnels force a :code:`reqid`
+for each configured child (phase 2), there is a risk the automated numbering from the new connection children overlaps.
+To prevent these overlaps, its required to set an unused :code:`reqid` in the connection child.
+
+
 
 .................................
 Security policies and routing
