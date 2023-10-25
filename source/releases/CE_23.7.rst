@@ -27,6 +27,108 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.7.7 (October 25, 2023)
+--------------------------------------------------------------------------
+
+
+The user experience of several pages has been improved.  And this update is
+also shipping several FreeBSD-based changes for further reliability as well
+as core fixes and improvements as they came up on GitHub or the forum in the
+last weeks.
+
+A word of caution for third party repository users.  FreeBSD currently changes
+a number of things in their ecosystem.  The first change is the move of the
+"openssl" package to "openssl111" since the former is now based on version 3.
+This can and likely will disrupt updates of third party packages not having
+followed this change.  While we want to use OpenSSL 3 eventually being in
+the middle of a stable run is not the time and place to do it.  Secondly,
+FreeBSD makes its port stop relying on ca_root_nss package trust store
+provided by Mozilla which introduces technical barriers for integration of
+our own trust store.  This update changes curl to not use the old bundle
+files, but then also ensures that the base system will register all CA
+certificates brought in by our trust store as well.  The biggest caveat at
+the moment is that this process is slower than before and may end up
+untrusting user CAs if they happen to be on the FreeBSD-provided untrusted
+list.  During upgrades you will see when it writes the trust files and bundles
+and if any errors occur.
+
+In both instances we feel nothing can be gained in postponing these changes
+so we are carrying them out swiftly after ensuring they do the right thing for
+our user base and voicing our reservations where it matters.
+
+You can also find and follow us on Bluesky now:
+
+https://bsky.app/profile/opnsense.org
+
+Here are the full patch notes:
+
+* system: rewrite trust integration for certctl use
+* system: improve UX on new configuration history page
+* system: update recovery pattern for /etc/ttys
+* system: improve service sync UX on high availability settings page
+* system: migrate gateways to model representation
+* system: detect a on/off password shift when syncing user accounts
+* system: improve backup restore area selection
+* system: keep polling if watcher cannot load a class to fetch status
+* system: add "Constraint groups" option to LDAP authentication
+* reporting: refactor RRD data retrieval and simplify health page UX
+* interfaces: make link-local VIPs unique per interface
+* interfaces: make VIPs sortable and searchable
+* interfaces: improve assignments page UX and simplify its bridge validation
+* interfaces: allow multiple IP addresses in DHCP reject clause (contributed by Csaba Kos)
+* interfaces: enable IPv6 early on trackers
+* interfaces: do not reload filter in rc.linkup
+* interfaces: add input validations to VXLAN model (contributed by Monviech)
+* interfaces: add NO_DAD flag to static IPv6 configurations
+* interfaces: fix config locking when deleting a VIP node
+* firewall: sort auto-generated rules by priority set
+* firewall: fix regression in BaseContentParser throwing an error
+* firmware: stop using the "pkg+http(s)" scheme which breaks using newer pkg 1.20
+* ipsec: count user in "Overview" tab and improve "Mobile Users" tab (contributed by Monviech)
+* ipsec: make description in connections required (contributed by Michael Muenz)
+* ipsec: connection proposal sorting and additions
+* lang: assorted updates and completed French translation
+* openvpn: change verify-client-cert to a server only setting and fix validation
+* openvpn: do not flush state table on linkdown
+* unbound: avoid dynamic reloads when possible
+* unbound: add support for wildcard domain lists
+* unbound: improved UX of the overrides page
+* backend: pluginctl: improve listing plugins of selected type
+* mvc: add hasChanged() to detect changes to the config file
+* mvc: allow empty value in UniqueConstraint if not required by field
+* mvc: improve field validation message handling
+* mvc: fix regression in PortField with setEnableAlias() that would lowercase alias names
+* mvc: style update in diagnostics, firewall, intrusion detection and ipsec models
+* ui: fix the styling of the base form button when overriding the label
+* ui: trigger change message on toggle and delete
+* plugins: os-nginx 1.32.2 `[1] <https://github.com/opnsense/plugins/blob/stable/23.7/www/nginx/pkg-descr>`__ 
+* plugins: os-radsecproxy fixes for stale rc script / pidfile issues
+* plugins: os-rspamd 1.13 `[2] <https://github.com/opnsense/plugins/blob/stable/23.7/mail/rspamd/pkg-descr>`__ 
+* plugins: os-theme-ciada fix for previous regression
+* plugins: os-wireguard 2.4 `[3] <https://github.com/opnsense/plugins/blob/stable/23.7/net/wireguard/pkg-descr>`__ 
+* src: pf: enable the syncookie feature for IPv6
+* src: pflog: log packet dropped by default rule with drop
+* src: re: add Realtek Killer Ethernet E2600 IDs
+* src: libnetmap: fix interface name parsing restriction
+* src: tun/tap: correct ref count on cloned cdevs
+* src: bpf: fix writing of buffer bigger than PAGESIZE
+* src: net: check per-flow priority code point for untagged traffic
+* src: libpfctl: implement status counter accessor functions
+* src: pf: expose syncookie active/inactive status
+* src: iavf: add explicit ifdi_needs_reset for VLAN changes
+* src: vmxnet3: do restart on VLAN changes
+* src: iflib: invert default restart on VLAN changes
+* src: pf: fix state leak
+* ports: curl 8.4.0 `[4] <https://curl.se/changes.html#8_4_0>`__ 
+* ports: lighttpd 1.4.72 `[5] <https://www.lighttpd.net/2023/10/6/1.4.72/>`__ 
+* ports: nss 3.94 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_94.html>`__ 
+* ports: openssl111 supersedes openssl package
+* ports: perl 5.36.1 `[7] <https://perldoc.perl.org/5.36.1/perldelta>`__ 
+* ports: suricata 6.0.15 `[8] <https://suricata.io/2023/10/19/suricata-6-0-15-released/>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.7.6 (October 11, 2023)
 --------------------------------------------------------------------------
 
