@@ -5,7 +5,7 @@ Zenarmor (Sensei): Installing via Web Interface
 
 
 
- **Note**
+.. Note::
  
     Zenarmor Free Edition is **forever free-of-charge**. We strongly recommend you register to keep in touch with updates and new features. You can register at `https://www.zenarmor.com/zenarmor-next-generation-firewall <https://www.zenarmor.com/zenarmor-next-generation-firewall>`_
    
@@ -55,10 +55,10 @@ To start the "Initial Configuration Wizard":
 .. image:: images/zenarmor-wizard-welcome.png
     :width: 100%
 
-* Click the :menuselection:`Proceed` button to continue to the :menuselection:`Hardware Check` section.
+* Click the :menuselection:`I Agree` button to continue to the :menuselection:`Hardware Check & Reporting Database` section.
 
 ....................
-2- Hardware Check
+2- Hardware Check & Reporting Database
 ....................
 
 Your hardware will be analyzed to ensure it meets the minimum requirements. You will receive one of the following responses: compatible hardware, low-end hardware, incompatible hardware. The setup will not continue if you have incompatible hardware.
@@ -78,13 +78,23 @@ Your hardware will be analyzed to ensure it meets the minimum requirements. You 
 
 *Incompatible*
 
-* Click :menuselection:`Next` to continue to the :menuselection:`Reporting Database` section.
-
-......................
-3- Reporting Database
-......................
 
 * Select the database you wish to use for reporting. High-end systems will have 3 options, while low-end systems only have 2 options.
+
+After the wizard completes the hardware analysis, select the database you wish to use for reporting. High-end systems will have 4 options, while low-end systems only have 3 options except Local ElasticSearch DB.
+
+.. Note::
+
+Zenarmor offers the following Database deployment options:
+
+-Local ElasticSearch DB
+
+-Remote ElasticSearch DB
+
+-MongoDB Database
+
+-SQLite Database
+
 
 .. Warning::
 
@@ -109,95 +119,99 @@ Your hardware will be analyzed to ensure it meets the minimum requirements. You 
 .. image:: images/zenarmor-wizard-reporting-database-remote.png
     :width: 100%
 
-* Click the :menuselection:`Install Database & Proceed` button to install the local database if one is chosen and continue to the :menuselection:`Interface Selection` section.
+
+Click the Install Database button to install the local database if one is chosen and to continue to the Interface Selection section.
+
+.. image:: images/zenarmor-installing-ecs.png
+    :width: 100%  
+
+
+Click the Next button to proceed with interface selection.
+
+
+.. image:: images/zenarmor-db-install-finished.png
+    :width: 100%
+
+* Click the :menuselection:`Next` button :menuselection:`Interface Selection` section.
 
 .......................
-4- Interface Selection
+3- Deployment Mode & Interface Selection
 .......................
 
-* Select the Ethernet Interface(s) to protect. To do so, click on an interface and use the right/left arrow buttons to move it to protected/unprotected interfaces combo box.
+
+You may follow the instructions for Zenarmor deployment mode and interface selection:
+
+Select the deployment mode depending on your topology and requirements. By default, the Routed mode with emulated netmap driver option is selected on OPNsense. You may find detailed information in the "Deployment Modes Guide", see `here <https://www.zenarmor.com/docs/guides/deployment-modes>`_. 
+
+**PREREQUISITE**
+
+Before selecting Netmap driver deployment options, make sure that the hardware offloadings are disabled on your node. Since the Hardware Offloading feature is incompatible with Netmap.
+
+
+.. image:: images/zenarmor-selecting-deployment-mode.png
+    :width: 100%
+
+You may check the CPU Pinning option. Zenarmor has a setting to make CPU pinning optional, giving you more flexibility in how you configure your system for optimal performance. By default, Zenarmor is pinned to a dedicated core in order to prevent CPU context-switching overhead. Because if the process wanders between CPU processors, CPU cache misses occur, which has a negative impact on performance.
+
+You may disable this setting depending on your requirements by clicking on the Do not pin engine packet processors to dedicated CPU cores option.
+
+
+* Select the Ethernet Interface(s) to protect. To do so, click on an interface and use the right or left arrow buttons to move it to the protected/unprotected interfaces combo box.
 
 For detailed information on "Deployment Modes", see `here <https://www.zenarmor.com/docs/guides/deployment-modes>`_. 
 
 .. image:: images/zenarmor-wizard-interface-selection-available.png
     :width: 100%
 
-.. image:: images/zenarmor-wizard-interface-selection-protected.png
-    :width: 100%
-
-* Click :menuselection:`Next` to continue to the :menuselection:`Cloud Reputation` section.
-
-....................
-5- Cloud Reputation
-....................
-
-The Cloud Threat Intelligence data is queried in real-time when any connections are made through your network. This capability enables Zenarmor to respond to malware and wireless outbreaks in real-time and very quickly.
-
-The engine processes the request, queries the **“Sunny Valley Network (SVN) Cloud”** in real-time, and decides whether it will be blocked or allowed. Zenarmor checks against 300+ million websites under 120+ categories in milliseconds.
-
-Cloud Threat Intel settings let you:
-
-* Enable/Disable the “Cloud Reputation & Web Categorization” engine
-* Set the local domain name you wish to be excluded from cloud queries
-* Select the fastest Cloud Reputation Servers which are used for queries
-
-.. image:: images/zenarmor-wizard-cloud-reputation.png
-    :width: 100%
-
-* Click :menuselection:`Next` to continue to the :menuselection:`Updates & Health Check section` section.
 
 
-..........................
-6- Updates & Health Check
-..........................
+Click the Set Security Zone drop-down menu to assign a tag for the interface. You may set a custom security zone name or select one of the options available, such as DMZ, LAN, guest, wifi, or wan.
 
-.. Note::
+.. image:: images/zenarmor-wizard-set-security-zone.png
+    :width: 35%
 
-   Zenarmor uses the OPNsense package system to deliver its updates. You may configure how you prefer to receive your Zenarmor updates.
 
-* **Check for Updates Automatically:** Checks automatically for the updates and creates a notification on the Zenarmor “Status” page.
-* **Automatically Update Databases and Threat Intelligence Data:** Checks automatically for the updates and creates a notification on the Zenarmor “Status” page.
-* **Enable Generation of Support Data:** If enabled, Zenarmor collects supporting data during unusual events and crashes. You can share this data when opening a ticket with us.
-* **Max Swap Utilization:** You may specify how much swap space Zenarmor may utilize when the system is low on memory. It is recommended that you do not set this value too high. Otherwise, system performance may suffer.
-* **Health Check:** If enabled, "Health Check" monitors the system's memory, CPU, disk usage, and core services if they're working correctly, and raises alerts if anything goes wrong. "Health Check" also stops the appropriate services if they're consuming excessive system resources.
-* **Help Sunny Valley Improve Its Products and Services:** If enabled, general system information is submitted to Sunny Valley to help improve the future development of Zenarmor.
-
-.. image:: images/zenarmor-wizard-updates-health-check.png
-    :width: 100%
-
-* Click :menuselection:`Next` to continue to the :menuselection:`Deployment Size` section.
+To add a custom security zone tag, click the Custom button in the Set Security Zone drop-down menu. After typing the new security zone name, such as vpn, click Add button.
 
 ....................
-7- Deployment Size
+4-  Activate Subscription
 ....................
 
-Zenarmor may support up to 1,000 concurrent users on an average PC. You can set your Zenarmor installation’s capacity in this section.
+Installation wizard offers you the following options in this step:
 
-.. Note::
+* Start 15-day Free Trial of a Business Subscription
+* Activate your current subscription key
+* Continue with the Free Edition
 
-    You may see detailed information about suggested hardware at :doc:`zenarmor_hardwarerequirements`
+If you wish to try the 15-day Free Business Edition, select the Get Me 15-day Free Trial of Business Subscription option and type your e-mail address to claim your subscription key.
 
-.. image:: images/zenarmor-wizard-deployment-size.png
-    :width: 100%
+**Tip**
+     Everyone who installs Zenarmor and login into their Zenconsole may take advantage of a 15-Day Free Trial of Zenarmor Business Edition without entering credit card information.
 
 * Click :menuselection:`Next` to continue to the :menuselection:`Finish` section.
 
+If you have a subscription, select I already have my subscription key option to activate your subscription key.
+
+.. image:: images/zenarmor-wizard-activating-subscription.png
+    :width: 100%
+
+
+You may also use the Free Edition by selecting the Get Me the Free Edition option. You may enter your email address if you wish to subscribe to the Zenarmor email list to stay up-to-date on the latest news.
+
+
+.. image:: images/zenarmor-getting-free-edition.png
+    :width: 100%
+
+
+Click Next to proceed to the Finish section.
+
 ....................
-8- Finish
+5- Finish
 ....................
 
-* You may enter your email address if you wish to subscribe to the Sunny Valley email list to stay up to date on the latest news.
+* Click the :menuselection:`Complete` button to save your initial configuration data and start using Zenarmor.
 
 .. image:: images/zenarmor-wizard-finish.png
     :width: 100%
 
-* Click the :menuselection:`Finish` button to save your initial configuration data and start using Zenarmor.
-
--------------------
-**Hands-on Video**
--------------------
-
-.. raw:: html
-
-    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Hvz1qhNBZdo" frameborder="0" allowfullscreen></iframe>
 
