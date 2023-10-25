@@ -6,9 +6,9 @@ Zenarmor (Sensei): Installing via Web Interface
 
 
 .. Note::
- 
+
     Zenarmor Free Edition is **forever free-of-charge**. We strongly recommend you register to keep in touch with updates and new features. You can register at `https://www.zenarmor.com/zenarmor-next-generation-firewall <https://www.zenarmor.com/zenarmor-next-generation-firewall>`_
-   
+
 
 Zenarmor may be installed using the web interface in OPNsense or using the command line interface via SSH or local system access (see :doc:`zenarmor_cmd_install`). The preferred method is the web interface because the process of installing plugins in OPNsense is simple, and Zenarmor requires the use of the web interface to complete the initial configuration after installation.
 
@@ -50,16 +50,16 @@ To start the "Initial Configuration Wizard":
 1- Welcome
 ....................
 
-* Accept the Terms of Service and Privacy Policy by clicking on the checkbox. 
+* Accept the Terms of Service and Privacy Policy by clicking on the checkbox.
 
 .. image:: images/zenarmor-wizard-welcome.png
     :width: 100%
 
 * Click the :menuselection:`I Agree` button to continue to the :menuselection:`Hardware Check & Reporting Database` section.
 
-....................
+............................................
 2- Hardware Check & Reporting Database
-....................
+............................................
 
 Your hardware will be analyzed to ensure it meets the minimum requirements. You will receive one of the following responses: compatible hardware, low-end hardware, incompatible hardware. The setup will not continue if you have incompatible hardware.
 
@@ -85,15 +85,12 @@ After the wizard completes the hardware analysis, select the database you wish t
 
 .. Note::
 
-Zenarmor offers the following Database deployment options:
+  Zenarmor offers the following Database deployment options:
 
--Local ElasticSearch DB
-
--Remote ElasticSearch DB
-
--MongoDB Database
-
--SQLite Database
+  - Local ElasticSearch DB
+  - Remote ElasticSearch DB
+  - MongoDB Database
+  - SQLite Database
 
 
 .. Warning::
@@ -123,7 +120,7 @@ Zenarmor offers the following Database deployment options:
 Click the Install Database button to install the local database if one is chosen and to continue to the Interface Selection section.
 
 .. image:: images/zenarmor-installing-ecs.png
-    :width: 100%  
+    :width: 100%
 
 
 Click the Next button to proceed with interface selection.
@@ -134,9 +131,9 @@ Click the Next button to proceed with interface selection.
 
 * Click the :menuselection:`Next` button :menuselection:`Interface Selection` section.
 
-.......................
+...........................................
 3- Deployment Mode & Interface Selection
-.......................
+...........................................
 
 
 You may follow the instructions for Zenarmor deployment mode and interface selection:
@@ -173,9 +170,9 @@ Click the Set Security Zone drop-down menu to assign a tag for the interface. Yo
 
 To add a custom security zone tag, click the Custom button in the Set Security Zone drop-down menu. After typing the new security zone name, such as vpn, click Add button.
 
-....................
+.............................
 4-  Activate Subscription
-....................
+.............................
 
 Installation wizard offers you the following options in this step:
 
