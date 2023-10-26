@@ -126,6 +126,11 @@ Here are the full patch notes:
 * ports: perl 5.36.1 `[7] <https://perldoc.perl.org/5.36.1/perldelta>`__ 
 * ports: suricata 6.0.15 `[8] <https://suricata.io/2023/10/19/suricata-6-0-15-released/>`__ 
 
+A hotfix release was issued as 23.7.7_1:
+
+* firmware: speed up saving the firmware settings by avoiding the newly extended trust store rewrite
+* firmware: opnsense-update: fix mirror replacement broken by pkg 1.20 compatibility effort
+
 
 
 --------------------------------------------------------------------------
