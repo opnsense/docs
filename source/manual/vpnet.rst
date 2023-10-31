@@ -576,6 +576,135 @@ A selection of the most relevant settings can be found in the table below.
 
       To reduce the chances of a collision, also make sure to reserve enough space at the server as the address might already be assigned to a dynamic client otherwise.
 
+--------------------------
+Wireguard
+--------------------------
+
+.................................
+General context
+.................................
+
+WireGuard® is a simple yet fast and modern VPN solution, which in some cases is more convenient than IPsec or OpenVPN, certainly
+in terms of options you need to configure. In our experience IPsec is the fastest solution for site-to-site connections, but Wireguard is the simplest
+option to setup.
+
+A wireguard setup on our end exists of the following main components:
+
+* Instances: in the wireguard configuration these are called "interfaces" and they describe how the virtual :code:`wgX` device on our end is configured in terms of addressing and cryptography.
+* Peers: these are the clients that are allowed to connect to us, described by their optional remote address including the networks that are allowed to pass through the tunnel. Peers belong to one or more instances.
+
+.................................
+Instances
+.................................
+
+
+In order to configure an instance, we start by adding one in the gui and generate a keypair. The public key is usually required for the
+other end of the tunnel (peer). An unused port to listen on is required as well. The tunnel addresses are configured on the :code:`wgX` device
+(which is always visible in :menuselection:`Interfaces --> Overview`).
+
+By default, when "*Disable routes*" is not set, routes are created for each connected peer to the networks selected in "*Allowed IPs*", optionally
+only a single gateway route might be configured as well.
+
+.. Note::
+
+   When choosing tunnel addresses, make sure the network defined includes the addresses being used by the peers. For
+   example when choosing :code:`10.10.0.1/24` the :code:`wgX` interface has this address configured and is able to accept
+   a peer using :code:`10.10.0.2/32`.
+
+
+.. Note::
+
+   Make sure to enable Wireguard in the general tab before adding instances.
+
+
+.. Tip::
+
+  Remember to create a firewall rule to allow traffic to the configured port and inside the tunnel.
+
+.................................
+Peers
+.................................
+
+Peers define the hosts that we exchange information with, which might be a road-warrior type or a static destination, in which case
+you either provide or omit an "*Endpoint Address and Port*". At minimum you need the public key of the other party, optionally you may offer a pre-shared key
+as additional security measure. The "*Allowed IPs*" define the networks that are allowed to pass the tunnel.
+
+.. Note::
+
+  In most cases the "*Allowed IPs*" list contains the networks used on the remote host and the peer ip address
+  (instance/tunnel address) configured on the other end.
+
+.. Tip::
+
+    When NAT and firewall traversal persistence is required, the :code:` Keepalive interval` can be used to exchange packets every defined
+    interval ensuring states will not expire.
+
+
+.................................
+High availability (using CARP)
+.................................
+
+When using wireguard on active/passive high availability clusters, only one instance at a time is allowed to communicate to the
+other party. In OPNsense this can be reached by selecting a :code:`vhid` to track as instance dependancy {Depend on (CARP)}.
+
+If an instance depends on a CARP vhid, it will query the current status and determine if the interface should be usable (when MASTER), the
+interface status (up/down) will be toggled accordingly.
+
+
+.. Note::
+
+  As the interface itself will not change, all of its addresses and routes remain when not being active. This ensures a relatively
+  quick switch between roles.
+
+
+.. Tip::
+
+  Because the carp dependancy is managed per instance, you are able to keep tunnels available selectively, for example to manage the machines
+  remotely.
+
+
+.................................
+Diagnostics and debugging
+.................................
+
+In :menuselection:`VPN --> WireGuard --> Diagnostics` you can find the configured instances and peers including their last known
+handshake and the amount of data being exchanged. For Instances you are also able to see if the device underneath (:code:`wgX`) is
+up or down, depending on the carp status described in the previous chapter.
+
+.. Tip::
+
+  Althought wireguard itself offers very limit logging, our setup process will make a note of errors and signal about certain events.
+  When having issues configuring an instance or peer, always make sure to check the logs in  :menuselection:`VPN --> WireGuard --> Log File` first.
+
+
+.. Warning::
+
+  When having issues exchanging packets between both ends of the tunnel, always make sure to check if the "*Allowed IPs*"
+  in the peer configurations contain the proper networks.
+  In case traffic is not allowed when traveling **in**, its dropped silently (a capture will not show it),
+  roughly the same happens when traveling **out**, a capture will show it, but nothing will be send out.
+
+
+.. Note::
+
+  Runtime debugging from the console is possible using the :code:`ifconfig` command,
+  for more information see the upstream `manual page <https://man.freebsd.org/cgi/man.cgi?wg(4)>`__
+
+
+.................................
+Examples
+.................................
+
+This paragraph offers examples for some commonly used implementation scenarios.
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   how-tos/wireguard-s2s
+   how-tos/wireguard-client
+   how-tos/wireguard-client-azire
+   how-tos/wireguard-client-mullvad
 
 
 --------------------------
@@ -597,8 +726,4 @@ Via plugins additional VPN technologies are offered, including:
 
    how-tos/openconnect
    how-tos/stunnel
-   how-tos/wireguard-s2s
-   how-tos/wireguard-client
-   how-tos/wireguard-client-azire
-   how-tos/wireguard-client-mullvad
    how-tos/zerotier
