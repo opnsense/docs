@@ -24,7 +24,10 @@ IPsec      ``172.16.203.0/24``  ``2001:db8:1234:ec::/64``
 The example users are ``John`` and ``Laura``. The example FQDN is ``vpn1.example.com``.
 
 .. Hint::
-    Any IPv6 functionality is optional. If you don't want to use IPv4+IPv6 dual stack, just skip all IPv6 addresses/networks and focus on IPv4. Its also possible to skip IPv4 and create native IPv6 tunnels.
+    Any IPv6 functionality is optional. If you don't want to use IPv4+IPv6 dual stack, just skip all IPv6 addresses/networks and focus on IPv4.
+
+.. Note::
+    It is currently not possible to use IPv6 as outer tunnel transport address. IPsec requires UDP encapsulation of ESP packets for most mobile clients. UDP encapsulation and decapsulation for IPv6 is currently unsupported by the FreeBSD 13.2 Kernel.
 
 .. Warning::
     - Don't copy security relevant configuration parameters like passwords into your configuration. Create your own! 
