@@ -47,7 +47,7 @@ to peer both firewalls. We will create a tunnel network  :code:`10.1.8.0/24` bet
           fwa [shape = "cisco.firewall", address="10.0.8.1/24"];
       }
       network Ext {
-          address = "10.10.8.0/24";
+          address = "WAN net 10.10.8.0/24";
           label = "Tunnel net 10.1.8.0/24";
           fwa [shape = "cisco.firewall", address="10.10.8.1/24"];
           fwb [shape = "cisco.firewall", address="10.10.8.2/24"];
@@ -89,7 +89,7 @@ We have chosen to setup the server on "Site B", so we start with Trust configura
    * Choose the just created authority in `Certificate authority`
    * Add descriptive information for this CA (`Descriptive name`, whereabouts are copied from the CA)
    * Set Type to `Server`
-   * Choose cryptographic settings, lifetime determines the validaty of the server certificate (you do need to track this yourself), it's allow to choose a longer period here
+   * Choose cryptographic settings, lifetime determines the validaty of the server certificate (you do need to track this yourself), it's allowed to choose a longer period here
    * Set the `Common Name` to the fqdn of this machine.
 
 * As the client (Site A) will also need a **Certificate**, we need to create a certificate, also using :menuselection:`System --> Trust --> Certificates`
@@ -119,7 +119,7 @@ select `auth` as mode and click the gear button to generate one. Provide a descr
 Prepare Site A
 ..........................................
 
-*  Copy the public part of the certificate authority to the firewall at Site a (use the download button and copy the contents into a new CA on this host)
+*  Copy the public part of the certificate authority to the firewall at Site A (use the download button and copy the contents into a new CA on this host)
 *  Copy the public and private part of the client certificate into a new one on Site A
 *  Copy the contents of the static key to a new entry and select the same type
 

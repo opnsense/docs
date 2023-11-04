@@ -131,6 +131,11 @@ A hotfix release was issued as 23.7.7_1:
 * firmware: speed up saving the firmware settings by avoiding the newly extended trust store rewrite
 * firmware: opnsense-update: fix mirror replacement broken by pkg 1.20 compatibility effort
 
+A hotfix release was issued as 23.7.7_3:
+
+* reporting: fix regression in single measurement RRD data reads
+* ipsec: re-add previously missing PRF hashing options to GCM cipher selection
+
 
 
 --------------------------------------------------------------------------
