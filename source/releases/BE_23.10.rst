@@ -297,6 +297,13 @@ Here are the full patch notes:
 * ports: syslog-ng 4.4.0 `[30] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.4.0>`__ 
 * ports: unbound 1.18.0 `[31] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-18-0>`__ 
 
+A hotfix release was issued as 23.10_2:
+
+* system: detect a on/off password shift when syncing user accounts
+* firewall: when migrating aliases make sure that nesting does not fail
+* plugins: os-OPNWAF now requires a descrption for virtual servers
+* plugins: os-radsecproxy fixes for stale rc script / pidfile issues
+
 Migration notes, known issues and limitations:
 
 * The Unbound ACL now defaults to accept all traffic and no longer generates automatic entries.  This was done to avoid connectivity issues on dynamic address setups -- especially with VPN interfaces.  If this is undesirable you can set it to default to block instead and add your manual entries to pass.
