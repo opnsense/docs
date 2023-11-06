@@ -32,8 +32,8 @@ To install the VMware tools just goto :menuselection:`System --> Firmware --> Pl
 
 .. Note::
 
-        While other network setups may work fine, the e1000 driver seems to work
-        best, certainly when utilizing the traffic shaper.
+   While other network setups may work fine, the VMXNET 3 is the recommended one according to VMware's Compatibility Guide.
+ 
 
 ------------------
 
