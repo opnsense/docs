@@ -22,7 +22,7 @@ authentication. These services include:
 Integrated into OPNsense are the **Local User Database** and **Voucher Server**.
 The Voucher Server is intended to be used with the Captive portal.
 
-External service currently supported are:
+External services currently supported are:
 
 * LDAP (OpenLDAP, MS Active Directory, Novell eDirectory)
 * Radius
@@ -31,9 +31,15 @@ Authorization
 -------------
 Besides authenticating, user authorization to access parts of the configuration
 can also be setup with an external server, but in order to grant the appropriate
-privileges to the users they need to be imported in OPNsense's local user manager.
+privileges to the users they need to exist in OPNsense's local user manager.
 This way one can validate a user against its externally stored password and have
 a fine grained control over the configuration pages that user may access.
+
+.. Note::
+
+   As local users are local (bsd) system users, their naming scheme matches FreeBSD's in terms of length (33 characters)
+   and reserved characters.
+
 
 
 Users, Groups & Privileges
@@ -63,12 +69,24 @@ local user accounts by setting password length and complexity constraints.
 
 An overview of available settings:
 
-=====================================  ============================================================================================
+=====================================  =============================================================================================================
  **Policy**                            Enable password policy constraints.
  **Duration**                          [Policy] Password duration, optionally define how often the user should change his or her password.
  **Length**                            [Policy] Minimum password length to require.
  **Complexity**                        [Policy] Enforce password complexity checks.
-=====================================  ============================================================================================
+ **Compliance**                        [Policy] Require SHA-512 password hashing instead of Blowfish
+=====================================  =============================================================================================================
+
+
+.. Tip::
+
+   When using One Time Passwords in combination with the local database, the same policy constraints apply as configured in "Local Database".
+
+
+.. Note::
+
+   Our default Blowfish is not part of AES and is not considered compliant with any Federal Information Processing Standards (FIPS).
+   Although more secure than SHA-512, its use may not be permitted in some environments.
 
 
 
