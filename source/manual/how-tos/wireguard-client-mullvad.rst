@@ -14,7 +14,7 @@ you have read the basic howto :doc:`wireguard-client`.
 Step 1 - Setup WireGuard Instance
 ----------------------------------
 
-Go to tab **Local** and create a new instance. Give it a **Name** and set a desired **Listen Port**. 
+Go to tab **Instances** and create a new instance. Give it a **Name** and set a desired **Listen Port**. 
 If you have more than one server instance be aware that you can use the **Listen Port** only once. In 
 the field **Tunnel Address** insert an unsused private IP address and subnet mask. We don't need it in
 the first step, but as it is required we can't go on without it. Every other field can be left blank.
@@ -23,7 +23,7 @@ Hit **Save** and open your instance again to write down your public key. You nee
 of the configuration from the Mullvad API servers. 
 
 Now change to your OPNsense CLI via SSH or Console and execute *either* of the curl strings below. Please replace
-**YOURACCOUNTNUMBER** with your own ID you got from MullvadVPN and **YOURPUBLICKEY** with the one in your **Local**
+**YOURACCOUNTNUMBER** with your own ID you got from MullvadVPN and **YOURPUBLICKEY** with the one in your **Instances**
 
 The command below is for Mullvad's standard API. DNS requests through a tunnel that uses tunnel IPs generated via this API are "hijacked", so that Mullvad's DNS servers are used to avoid leaks:
 
@@ -37,10 +37,10 @@ The alternative command below is for Mullvad's other API. DNS requests through t
 
 	curl -sSL https://api.mullvad.net/app/v1/wireguard-keys -H "Content-Type: application/json" -H "Authorization: Token YOURACCOUNTNUMBER" -d '{"pubkey":"YOURPUBLICKEY"}'
     
-What you receive is what WireGuard calls **Allowed IP** for your local instance. Edit your instance again and remove
+What you receive is what WireGuard calls **Allowed IP** for your WireGuard Instance. Edit your instance again and remove
 the value of **Tunnel Address** you used when setting it up and change it to the one you got.
 
-On **Endpoint** tab create a new Endpoint, give it a **Name**, set 0.0.0.0/0 in **Allowed IPs** and set
+On **Peers** tab create a new Peer, give it a **Name**, set 0.0.0.0/0 in **Allowed IPs** and set
 the **DNS** to 193.138.218.74. This is the one MulladVPN provides for privacy.
 
 Now go to the WireGuard server list_ and choose the one you like to use as your breakout. Write down it's
@@ -50,7 +50,7 @@ Also do not forget **Endpoint Address** and **Endpoint Port**. The **Endpoint Po
 
 .. _list: https://www.mullvad.net/en/servers/#wireguard
 
-Go back to tab **Local**, open the instance and choose the newly created endpoint in **Peers**.
+Go back to tab **Instances**, open the instance and choose the newly created peer in **Peers**.
 
 Now we can **Enable** the VPN in tab **General** and continue with the setup.
 
