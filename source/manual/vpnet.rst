@@ -189,6 +189,21 @@ be allowed explicitly, the :menuselection:`Firewall --> Rules --> IPsec` menu it
 
 
 .................................
+Dead Peer Detection (DPD)
+.................................
+
+Dead Peer Detection (DPD) is a method of detecting a dead IKE peer by sending periodic R-U-THERE messages to the remote expecting R-U-THERE-ACK
+messages in return as specified by `RFC 3706 <https://www.ietf.org/rfc/rfc3706.txt>`__.
+
+When a peer is assumed dead, an action may be specified, such as closing the CHILD_SA or re-negotiate the CHILD_SA under a fresh IKE_SA.
+
+.. Note::
+
+  DPD is disabled by default, when using connections, make sure to specify a :code:`DPD delay (s)` > 0 to enable the feature.
+  Actions may be specified on its children.
+
+
+.................................
 Implementation schemes
 .................................
 
@@ -239,6 +254,7 @@ The advantage of this type of setup is one can use standard or advanced routing 
     was possible to resolve hostnames, this will never lead to a stable configuration as the :code:`if_ipsec(4)` device
     matches both source and destination `[#] <https://github.com/freebsd/freebsd-src/blob/c8ee75f2315e8267ad814dc5b4645ef205f0e0e1/sys/net/if_ipsec.c#L479>`__
     before accepting the traffic and has no knowledge about any external changes.
+
 
 .................................
 Road Warriors / Mobile users
