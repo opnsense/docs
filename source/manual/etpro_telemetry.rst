@@ -29,6 +29,19 @@ you are able to use the ET Pro ruleset free of charge.
     malware command and control, DoS attacks, botnets, informational events, exploits, vulnerabilities,
     SCADA network protocols, exploit kit activity, and more. If offers a great improvement over the ET open ruleset.*
 
+
+--------------------------------------
+Product information
+--------------------------------------
+
+For more information about emerging threats ETPro including the Telemetry edition, please visit their discord available at https://community.emergingthreats.net/.
+The following links are likely of interest:
+
+*   `Announcements/Updates <https://community.emergingthreats.net/c/announcements/5>`__
+*   `Feedback/Support <https://community.emergingthreats.net/c/feedback-support/8>`__
+*   `Tutorials/Tips/Tricks <https://community.emergingthreats.net/c/tutorials-tips-tricks/13>`__
+
+
 --------------------------------------
 Registration
 --------------------------------------
