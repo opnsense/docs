@@ -8,7 +8,7 @@ Introduction
 
 WireGuard is a simple, fast VPN protocol using modern `cryptography <https://www.wireguard.com/protocol>`__. It aims to be faster and less complex than IPsec whilst also being a considerably more performant alternative to OpenVPN. Initially released for the Linux kernel, it is now cross-platform and widely deployable.
 
-This how-to describes setting up a central WireGuard server on OPNsense and configuring one or more clients to create a tunnel to it. 
+This how-to describes setting up a central WireGuard Instance (server) on OPNsense and configuring one or more client peers to create a tunnel to it. 
 
 -------------------------------------
 Step 1 - Install the WireGuard plugin
@@ -18,12 +18,12 @@ Step 1 - Install the WireGuard plugin
 - Once the plugin is installed, refresh the browser page and you will find the WireGuard configuration menu via :menuselection:`VPN --> WireGuard`.
 
 ------------------------------------------
-Step 2 - Configure the local peer (server)
+Step 2 - Configure the Wireguard Instance
 ------------------------------------------
 
-- Go to :menuselection:`VPN --> WireGuard --> Local`
-- Click **+** to add a new Local configuration
-- Configure the Local configuration as follows (if an option is not mentioned below, leave it as the default):
+- Go to :menuselection:`VPN --> WireGuard --> Instances`
+- Click **+** to add a new Instance configuration
+- Configure the Instance configuration as follows (if an option is not mentioned below, leave it as the default):
 
     ===================== ===============================================================================================
      **Enabled**           *Checked*
@@ -33,7 +33,7 @@ Step 2 - Configure the local peer (server)
      **Listen Port**       *51820 or a higher numbered unique port*
      **MTU**               *1420 (default) or 1412 if you use PPPoE; it's 80 bytes less than your WAN MTU*
      **Tunnel Address**    *For example, 10.10.10.1/24. See note below*
-     **Peers**             *The (client) peers will be specified here; leave it blank initially until the Endpoint configuration is created in Step 3*
+     **Peers**             *The (client) peers will be specified here; leave it blank initially until the Peer configuration is created in Step 3*
      **Disable Routes**    *Unchecked*
     ===================== ===============================================================================================
 
@@ -45,31 +45,31 @@ Step 2 - Configure the local peer (server)
 
     Leave the DNS Server field (which appears if :code:`advanced mode` is selected) blank. Otherwise WireGuard will overwrite OPNsense's DNS configuration
 
-- **Save** the Local peer configuration, and then click **Save** again
-- Re-open the Local peer configuration
+- **Save** the Instance configuration, and then click **Save** again
+- Re-open the Instance configuration
 - Copy the public key that has been generated in the configuration. This will be needed for the client device - see Step 7
 - **Save** or **Cancel** to exit the configuration
 
 ---------------------------------------------
-Step 3 - Configure the endpoint (client peer)
+Step 3 - Configure the client peer
 ---------------------------------------------
 
-- Go to :menuselection:`VPN --> WireGuard --> Endpoints`
-- Click **+** to add a new Endpoint
-- Configure the Endpoint as follows (if an option is not mentioned below, leave it as the default):
+- Go to :menuselection:`VPN --> WireGuard --> Peers`
+- Click **+** to add a new Peer
+- Configure the Peer as follows (if an option is not mentioned below, leave it as the default):
 
     ====================== ====================================================================================================
      **Enabled**            *Checked*
      **Name**               *Call it whatever you want (eg* :code:`Phone` *)*
      **Public Key**         *Insert the public key from the client; if needed skip ahead and start Step 7 to generate the client public key*
-     **Allowed IPs**        *Unique tunnel IP address (IPv4 and/or IPv6) of client - it should be a /32 or /128 (as applicable) within the subnet configured on the local peer. For example, 10.10.10.2/32*
+     **Allowed IPs**        *Unique tunnel IP address (IPv4 and/or IPv6) of client - it should be a /32 or /128 (as applicable) within the subnet configured on the WireGuard Instance. For example, 10.10.10.2/32*
     ====================== ====================================================================================================
 
-- **Save** the Endpoint configuration, and then click **Save** again
-- Now go back to :menuselection:`VPN --> WireGuard --> Local`
-- Open the Local configuration that was created in Step 1 (eg :code:`HomeWireGuard`)
-- In the Peers dropdown, select the newly created Endpoint (eg :code:`Phone`)
-- **Save** the Local peer configuration again, and then click **Save** once more
+- **Save** the Peer configuration, and then click **Save** again
+- Now go back to :menuselection:`VPN --> WireGuard --> Instances`
+- Open the Instance configuration that was created in Step 1 (eg :code:`HomeWireGuard`)
+- In the Peers dropdown, select the newly created Peer (eg :code:`Phone`)
+- **Save** the Instance configuration again, and then click **Save** once more
 - Repeat this Step 3 for as many clients as you wish to configure
 
 ----------------------------------
@@ -119,7 +119,7 @@ Step 5(a) - Assign an interface to WireGuard (recommended)
 
 .. Note::
 
-    There is no need to configure IPs on the interface. The tunnel address(es) specified in the Local configuration for your WireGuard server will be automatically assigned to the interface once WireGuard is restarted
+    There is no need to configure IPs on the interface. The tunnel address(es) specified in the Instance configuration for your server will be automatically assigned to the interface once WireGuard is restarted
 
 - **Save** the interface configuration and then click **Apply changes**
 - Restart WireGuard - you can do this by turning it off and on under :menuselection:`VPN --> WireGuard --> General` (click **Apply** after both unchecking and checking the checkbox)
@@ -163,7 +163,7 @@ Step 5(b) - Create an outbound NAT rule
 
 .. Hint::
 
-    If you didn't assign an interface as suggested in Step 5(a), then you will need to manually specify the source IPs/subnet(s) for the tunnel (for example, 10.10.10.0/24). It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one local WireGuard instance and only one WireGuard endpoint configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
+    If you didn't assign an interface as suggested in Step 5(a), then you will need to manually specify the source IPs/subnet(s) for the tunnel (for example, 10.10.10.0/24). It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one WireGuard Instance and only one WireGuard Peer configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
 
 ------------------------------
 Step 6 - Create firewall rules
@@ -186,7 +186,7 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
      **Source**                   *any*
      **Destination / Invert**     *Unchecked*
      **Destination**              *WAN address*
-     **Destination port range**   *The WireGuard port specified in the Local configuration in Step 2*
+     **Destination port range**   *The WireGuard port specified in the Instance configuration in Step 2*
      **Description**              *Add one if you wish to*
     ============================ ==================================================================================================
 
@@ -214,7 +214,7 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
 
 .. Note::
 
-    If you didn't assign an interface as suggested in Step 5(a), then the second firewall rule outlined above will need to be configured on the automatically created :code:`WireGuard` group that appears once the Local configuration is enabled and WireGuard is started. You will also need to manually specify the source IPs/subnet(s) for the tunnel. It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one local WireGuard instance and only one WireGuard endpoint configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
+    If you didn't assign an interface as suggested in Step 5(a), then the second firewall rule outlined above will need to be configured on the automatically created :code:`WireGuard` group that appears once the Instance configuration is enabled and WireGuard is started. You will also need to manually specify the source IPs/subnet(s) for the tunnel. It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one WireGuard Instance and only one WireGuard Peer configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
     
 ------------------------------------
 Step 6a - Create normalization rules
@@ -269,13 +269,13 @@ Client configuration is largely beyond the scope of this how-to since there is s
 
     ====================== ====================================================================================================
      **[Interface]**
-     **Address**            *Refers to the IP(s) specified as Allowed IPs in the Endpoint configuration on OPNsense. For example, 10.10.10.2/32*
-     **PublicKey**          *Refers to the public key that (along with a private key) needs to be manually or automatically generated on the client. The public key must then be copied into the Endpoint configuration on OPNsense for the relevant client peer - see Step 3*
+     **Address**            *Refers to the IP(s) specified as Allowed IPs in the Peer configuration on OPNsense. For example, 10.10.10.2/32*
+     **PublicKey**          *Refers to the public key that (along with a private key) needs to be manually or automatically generated on the client. The public key must then be copied into the Peer configuration on OPNsense for the relevant client peer - see Step 3*
      **DNS**                *Refers to the DNS servers that the client should use for the tunnel - see note below*
 
      **[Peer]**
-     **PublicKey**          *Refers to the public key that is generated on OPNsense. Copy the public key from the Local configuration on OPNsense - see Step 2*
-     **Endpoint**           *Refers to the public IP address or publicly resolvable domain name of your OPNsense host, and the port specified in the Local configuration on OPNsense*
+     **PublicKey**          *Refers to the public key that is generated on OPNsense. Copy the public key from the Instance configuration on OPNsense - see Step 2*
+     **Endpoint**           *Refers to the public IP address or publicly resolvable domain name of your OPNsense host, and the port specified in the Instance configuration on OPNsense*
      **AllowedIPs**         *Refers to the traffic (by destination IPs/subnets) that is to be sent via the tunnel. For example, if all traffic on the client is to be sent through the tunnel, specify 0.0.0.0/0 (IPv4) and/or ::/0 (IPv6)*
     ====================== ====================================================================================================
 
