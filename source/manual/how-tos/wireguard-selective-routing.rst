@@ -38,9 +38,9 @@ Step 1 - Configure the peer
 
 - **Save** the Peer configuration, and then click **Save** again
 
----------------------------------
+--------------------------------------------
 Step 2 - Configure the WireGuard Instance
----------------------------------
+--------------------------------------------
 
 - Go to :menuselection:`VPN --> WireGuard --> Instances`
 - Click **+** to add a new Instance configuration
