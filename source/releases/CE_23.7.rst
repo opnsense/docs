@@ -27,6 +27,69 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.7.8 (November 09, 2023)
+--------------------------------------------------------------------------
+
+
+The configuration restore GUI has been improved in a number of ways due to
+recent demand and Squid was updated to the new major release version 6.
+
+A number of reliability improvements were also added to the WireGuard
+kernel plugin which from our perspective is now ready for core inclusion.
+The documentation is being updated accordingly, but will take a bit more
+time to ensure consistency following up on the GUI changes it received.
+
+This update also includes FreeBSD security advisories and assorted fixes.
+We are aware of OpenSSL 1.1.1 CVE-2023-5678 and we are already testing
+builds based on OpenSSL 3 which can be available in 24.1 when it does not
+negatively impact overall operation.  We also expect fixes for version
+1 to be available sooner, but without OpenSSL providing such fixes directly
+the roundtrip time is likely going to increase for them.
+
+Here are the full patch notes:
+
+* system: minor changes related to recent Gateway class refactoring
+* system: use unified style for "return preg_match" idiom so the caller receives a boolean
+* system: provide mismatching interface logic without reboot on configuration restore
+* system: allow new backup API to download latest configuration directly via /api/core/backup/download/this
+* system: extend restore to be able to migrate older configurations cleanly
+* system: make trust store reload conditional
+* interfaces: assorted bridge handling improvements
+* interfaces: ignore ULAs for primary IPv6 detection
+* interfaces: improve wireless channel parsing
+* firewall: keep filtered items available longer in live log
+* firewall: when migrating aliases make sure that nesting does not fail
+* firewall: port can be zero in automatic rule so render it accordingly
+* firewall: minor update to shaper model
+* firmware: invalidate GUI caches earlier since certctl blocks this longer now
+* firmware: add root file system to health audit
+* monit: minor update to model
+* lang: update Chinese, Czech, Italian, Korean, Polish and Spanish
+* openvpn: host bits must not be set for IPv4 server directive in instances
+* unbound: minor update to model
+* unbound: remove localhost from automatically created ACL
+* web proxy: handle the major update to version 6 and update model
+* mvc: enforce uniqueness and remove validation message in UnqiueIdField
+* mvc: config should be locked before calling checkAndThrowSafeDelete()
+* ui: prevent form submit for MVC pages
+* ui: improve default modal padding
+* plugins: os-bind 1.28 `[1] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/bind/pkg-descr>`__ 
+* plugins: os-openconnect 1.4.5 `[2] <https://github.com/opnsense/plugins/blob/stable/23.7/security/openconnect/pkg-descr>`__ 
+* plugins: os-wireguard 2.5 `[3] <https://github.com/opnsense/plugins/blob/stable/23.7/net/wireguard/pkg-descr>`__ 
+* src: pfctl: fix incorrect mask on dynamic address
+* src: libpfctl: assorted improvements
+* src: msdosfs: zero partially valid extended cluster `[4] <FREEBSD:FreeBSD-SA-23:12.msdosfs>`__ 
+* src: copy_file_range: require CAP_SEEK capability `[5] <FREEBSD:FreeBSD-SA-23:13.capsicum>`__ 
+* src: fflush: correct buffer handling in __sflush `[6] <FREEBSD:FreeBSD-SA-23:15.stdio>`__ 
+* src: cap_net: correct capability name from addr2name to name2addr `[7] <FREEBSD:FreeBSD-SA-23:16.cap_net>`__ 
+* src: regcomp: use unsigned char when testing for escapes `[8] <FREEBSD:FreeBSD-EN-23:14.regcomp>`__ 
+* ports: lighttpd 1.4.73 `[9] <https://www.lighttpd.net/2023/10/30/1.4.73/>`__ 
+* ports: php 8.2.12 `[10] <https://www.php.net/ChangeLog-8.php#8.2.12>`__ 
+* ports: squid 6.4 `[11] <http://www.squid-cache.org/Versions/v6/squid-6.4-RELEASENOTES.html>`__ 
+* ports: sudo 1.9.15 `[12] <https://www.sudo.ws/stable.html#1.9.15>`__ 
+
+
+--------------------------------------------------------------------------
 23.7.7 (October 25, 2023)
 --------------------------------------------------------------------------
 
