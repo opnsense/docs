@@ -45,6 +45,10 @@ services 8.8.8.8 and 8.8.4.4, of course you can use your own 'known good' settin
 
 We defined WAN and WAN2, where WAN will be our primary (default) gateway.
 
+.. TIP::
+   If you previously used a single static IP WAN setup be sure to edit the WAN interface
+   configuration for Multi WAN and explicitly set the upstream gateway for this interface.
+
 Step 1 - Add monitor IPs
 -------------------------
 You may skip this step if you already have setup the monitoring IP and both gateways
