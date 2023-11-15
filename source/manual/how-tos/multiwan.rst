@@ -45,6 +45,13 @@ services 8.8.8.8 and 8.8.4.4, of course you can use your own 'known good' settin
 
 We defined WAN and WAN2, where WAN will be our primary (default) gateway.
 
+.. Note::
+
+    Before diving into the gateway group settings, make sure to check if both interfaces are connected to a
+    gateway in :menuselection:`Interfaces -> [XX]` when using static assignments. On a default setup,
+    these settings are responsible for creating outbound nat rules when tarffic leaves the interface and handle
+    the return path using policy base routing rules (:code:`reply-to`, :code:`route-to`).
+
 Step 1 - Add monitor IPs
 -------------------------
 You may skip this step if you already have setup the monitoring IP and both gateways
@@ -155,7 +162,7 @@ Enter the following details:
     When using Unbound for DNS resolution you should also enable *Default Gateway Switching*
     via **System->Settings->General**, as local generated traffic will only use the current
     default gateway which will not change without this option.
-    
+
 Advanced Options
 ----------------
 For each gateway there are several advanced options you can use to change the
