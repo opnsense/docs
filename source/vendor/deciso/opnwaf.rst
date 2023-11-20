@@ -88,6 +88,10 @@ Port                             Port number this vhost will listen on, can easi
                                  to map traffic to non standard ports when origination from remote destinations.
                                  (e.g. listen 8443 on, forward 443 to 8443)
 Certificate                      When using a certificate available in the system trust store, select it here
+CA for client auth               Require a client certificate signed by the provided authority before allowing
+                                 a connection.
+CRL for client auth              Attach the (first) found certificate revocation list for the selected CA to
+                                 this virtual host. Please note when no CRL is offered all clients are rejected.
 Enable ACME                      Enable the ACME protocol to automatically provision certificates using Let's Encrypt,
                                  when set will ignore the selected certificate (and enable SSL on this virtual server)
 Header Security                  Header security, by default several privacy and security related headers are set,
@@ -129,7 +133,7 @@ Description                      User friendly description for this location
 
 
 The options here are quite simple, first you define a path on your end (:code:`/` in our example), next you define one or more
-destinations this path should map to (as example we're pointing to a public server here).
+destinations this path should map to (for example you could point to a public server here, like https://opnsense.org).
 
 
 .. Note::
@@ -160,3 +164,32 @@ This should show a page similar to the one below:
 
     You can disable web protection on a per virtual host bases to, just open the advanced settings and click :code:`Disable Web Protection`,
     apply settings after saving and try the previous example again.
+
+
+Protect a local server with certificates
+-------------------------------------------------
+
+In the above virtual host configuration there are a couple of parameters related to client authentication. The
+advantage of using these is that you can prevent unauthorized access to services using certificates signed by a (local)
+certificate authority.
+
+To use this functionality, first make sure you have a certificate authority defined in :menuselection:`System --> Trust --> Authorities`
+which you are going to use to create certificates for your clients.
+
+Next step is to add a VirtualServer which contains at least the following information:
+
+*   ServerName --> the fully qualified domain name this host listens to
+*   Port    --> port number to bind to, you can use :doc:`Port forwarding </manual/nat>`  to redirect traffic from standard ports to non standard ones when needed
+*   Certificate / Enable ACME --> Either use an ACME certificate or define one yourself, this one should be trusted by the browser connecting to this host
+*   CA for client auth --> select the Authority created earlier
+
+Followed by a location, which maybe as simple as binding path :code:`/` to a local machine without certificate at :code:`http://10.0.0.1`.
+
+.. Tip::
+
+    You can use revocation lists to pull back access rights for selected clients, just make sure to restart the service in
+    order to make the changes effective.
+
+
+After this step, clients should not be able to access the virtual host, next you can create a certificate for the client and import
+it in the trust store. Usually browsers automatically pick these up when allowed by the client.
