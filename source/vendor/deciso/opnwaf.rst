@@ -178,10 +178,17 @@ which you are going to use to create certificates for your clients.
 
 Next step is to add a VirtualServer which contains at least the following information:
 
-*   ServerName --> the fully qualified domain name this host listens to
-*   Port    --> port number to bind to, you can use :doc:`Port forwarding </manual/nat>`  to redirect traffic from standard ports to non standard ones when needed
-*   Certificate / Enable ACME --> Either use an ACME certificate or define one yourself, this one should be trusted by the browser connecting to this host
-*   CA for client auth --> select the Authority created earlier
+=========================================================================================================================
+
+================================ ========================================================================================
+ServerName                       The fully qualified domain name this host listens to
+Port                             Port number to bind to, you can use :doc:`Port forwarding </manual/nat>`
+                                 to redirect traffic from standard ports to non standard ones when needed
+Certificate / Enable ACME        Either use an ACME certificate or define one yourself,
+                                 this one should be trusted by the browser connecting to this host
+CA for client auth               select the Authority created earlier
+================================ ========================================================================================
+
 
 Followed by a location, which maybe as simple as binding path :code:`/` to a local machine without certificate at :code:`http://10.0.0.1`.
 
