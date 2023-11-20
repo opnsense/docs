@@ -59,7 +59,7 @@ Wireguard
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","wireguard","client","addClient",""
+    "``GET``","wireguard","client","addClient",""
     "``POST``","wireguard","client","delClient","$uuid"
     "``GET``","wireguard","client","get",""
     "``GET``","wireguard","client","getClient","$uuid=null"

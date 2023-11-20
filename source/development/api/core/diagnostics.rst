@@ -149,6 +149,7 @@ Diagnostics
 
     "``GET``","diagnostics","systemhealth","getInterfaces",""
     "``GET``","diagnostics","systemhealth","getRRDlist",""
+    "``GET``","diagnostics","systemhealth","getSystemHealth","$rrd="""",$inverse=0,$detail=-1"
 
 .. csv-table:: Service (TracerouteController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
