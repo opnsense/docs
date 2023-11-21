@@ -22,7 +22,6 @@ OPNsense has several API calls to get and set the firmware configuration:
     "``POST``","core","firmware","resyncPlugins",""
     "``GET``","core","firmware","running",""
     "``POST``","core","firmware","set",""
-    "``POST``","core","firmware","set",""
     "``POST``","core","firmware","status",""
     "``POST``","core","firmware","syncPlugins",""
     "``POST``","core","firmware","update",""
@@ -52,13 +51,13 @@ You can manage the packages and plugins in OPNsense, using these API calls:
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","core","firmware","details","$package"
-    "``POST``","core","firmware","reinstall","$pkg_name"
-    "``POST``","core","firmware","remove","$pkg_name"
-    "``POST``","core","firmware","unlock","$pkg_name"
+    "``POST``","core","firmware","details","$pkg_name"
     "``POST``","core","firmware","install","$pkg_name"
-    "``POST``","core","firmware","license","$package"
+    "``POST``","core","firmware","license","$pkg_name"
     "``POST``","core","firmware","lock","$pkg_name"
+    "``POST``","core","firmware","remove","$pkg_name"
+    "``POST``","core","firmware","reinstall","$pkg_name"
+    "``POST``","core","firmware","unlock","$pkg_name"
 
 
 Examples:
