@@ -98,9 +98,6 @@ The fields in OPNSense under :code:`System / Configuration / Backups / Git` shou
 * URL absolutely MUST follow this format when using GitHub and GitLab: :code:`ssh://github.com/user_name/repo_name.git`. Any  URL string that does not follow this pattern will not work.
 
 
-* Branch should contain the word: :code:`master`
-
-
 * SSH Private key (discussed below)
 
 
@@ -120,6 +117,13 @@ If you use GitHub, you can add your SSH public key by going to your repository, 
 * Check the box :code:`Allow write Access`.
 
 Make sure the fields are populated as stated above and that the Enable box is checked, then click on :code:`Setup / Test Git` and you should see a message come back at the top of the page indicating that the first backup was successful.
+
+
+.. Tip::
+
+    When choosing an non-existing remote branch one will be created automatically. An existing one needs to be empty (blank) on order
+    to use it, which in practice is only possible when creating the repository for the first time.
+
 
 --------------------------
 Conflict resolution
