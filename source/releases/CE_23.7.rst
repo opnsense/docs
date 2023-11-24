@@ -27,6 +27,76 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.7.9 (November 23, 2023)
+--------------------------------------------------------------------------
+
+
+As the end of the year inches closer the changes published today are naturally
+smaller additions and cleanups, notably changes for IPsec VTI connection for
+IPv6 and dual-stack operation, a possible OpenVPN CSO mismatch bug and optional
+support for SHA-512 password hashing.
+
+Note that the HTTPS bump for the firmware mirrors updates the published URLs
+in the firmware selection, but if you already use LeaseWeb or NYC BUG you need
+to reselect them in order to move from HTTP to HTTPS connectivity.
+
+Of further note is that the Squid web proxy will be moved to a plugin in
+version 24.1 but for everyone using it the upgrade procedure will make sure
+to install it automatically when enabled.  A meta package was added to the
+plugins already in order for this to work just in case there are questions
+about what it is supposed to be doing... apart from providing dependencies
+it does not do anything at the moment.  ;)
+
+Last but not least, we have been successfully testing and ironing out OpenSSL
+3 ports builds in the past week and inclusion in 24.1 seems very likely at this
+point.  The effort continues and we will also be looking into backport material
+from FreeBSD 13 stable branches for further preparation.
+
+Here are the full patch notes:
+
+* system: add SHA-512 password hash compliance option
+* system: allow special selector for plugins_configure()
+* system: handle broken menu XML files more gracefully
+* system: fix PHP warnings and SSH fail on empty "ssh" XML node
+* system: fix a couple of PHP warnings in auth server pages
+* system: add support for Google Shared drives backup (contributed by Jeremy Huylebroeck)
+* system: change wait time to 1 second per round, total of 7 in console prompts
+* system: update syslog model
+* interfaces: mark WireGuard devices as virtual
+* interfaces: update LAGG and loopback models
+* interfaces: improve VIP validation, fix broadcast generation
+* firewall: make sure firewall log reading always emits a label
+* firewall: fix business bogons set fetch
+* firewall: add section for automatic rules being added at the end of the ruleset
+* firewall: allow multiple networks given to wrap in the GUI
+* captive portal: fix log target
+* firmware: stop manually adjusting firmware config structure during factory reset
+* firmware: clear stray "pkgsave" and "pkgtemp" pkg-upgrade leftovers
+* firmware: changed LeaseWeb and NYC BUG mirrors to use HTTPS (contributed by jeremiah-rs)
+* firmware: opnsense-update: new "-X" mode for canonical bogons/changelog set fetch URL
+* firmware: opnsense-version: support base/kernel hash info
+* ipsec: mute ipsec.conf related load errors
+* ipsec: fix typo in VTI protocol family parsing
+* ipsec: add secondary tunnel address pair for VTI dual-stack purposes
+* ipsec: add "aes256-sha256" proposal option (no PFS)
+* openvpn: obey username_as_common_name setting
+* backend: add physical_interface and physical_interfaces as template helper function
+* backend: add file_exists as template helper function
+* mvc: instead of failing invalidate a non-match in CSVListField
+* mvc: split tree-view template and javascript and hook via controllers
+* ui: upgrade bootstrap-select to v1.13.18
+* ui: improve saveFormToEndpoint() UX
+* plugins: os-ddclient 1.17 `[1] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-frr 1.37 `[2] <https://github.com/opnsense/plugins/blob/stable/23.7/net/frr/pkg-descr>`__ 
+* plugins: os-squid adds a meta package for web proxy core removal in 24.1
+* ports: openvpn 2.6.8 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.8>`__ 
+* ports: sqlite 3.44.0 `[4] <https://sqlite.org/releaselog/3_44_0.html>`__ 
+* ports: sudo 1.9.15p2 `[5] <https://www.sudo.ws/stable.html#1.9.15p2>`__ 
+* ports: unbound 1.19.0 `[6] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-19-0>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.7.8 (November 09, 2023)
 --------------------------------------------------------------------------
 
