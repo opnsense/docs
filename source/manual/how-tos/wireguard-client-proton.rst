@@ -22,7 +22,7 @@ scroll down to the `WireGuard configuration <https://account.protonvpn.com/downl
 The existing WireGuard configurations appear first with their expiration dates and following are the options to generate new ones.
 
 .. image:: images/proton_wireguard_configuration.png
-   :width: 25%
+   :width: 100%
 
 - Select a name for the generated configuration
 
@@ -32,27 +32,28 @@ The existing WireGuard configurations appear first with their expiration dates a
 - Select Router as a platform
 - Select VPN options
 
-    - There are 3 options for NetShield blocker filtering
+  - There are 3 options for NetShield blocker filtering
 
-      -  No filtering
-      -  Block malware
-      -  Block malware, ads and trackers
+    -  No filtering
+    -  Block malware
+    -  Block malware, ads and trackers
 
-    - There are also options to enable Moderate NAT, NAT-PMP (Port Forwarding) and VPN accelerator as well. The features are documented in the ProtonVPN website.
+  - There are also options to enable Moderate NAT, NAT-PMP (Port Forwarding) and VPN accelerator as well. The features are documented in the ProtonVPN website.
+  - Pick the options that satisfy your requirements and move on to the next section.
 
 - Select a server to connect to
 
-    - ProtonVPN proposes the best server or allows the user to select manually.
-    - When selecting manually there are 2 main choices:
+  - ProtonVPN proposes the best server or allows the user to select manually.
+  - When selecting manually there are 2 main choices:
 
-      -  Standard vs Secure Core configuration
-      -  Exit country
+    -  Standard vs Secure Core configuration
+    -  Exit country
 
-    - Pick the one that satisfies your requirements and click on `Create` to generate the configuration.
-    - Upon successful completion a window like the following will appear on the screen.
+  - Pick the one that satisfies your requirements and click on `Create` to generate the configuration.
+  - Upon successful completion a window like the following will appear on the screen.
 
 .. image:: images/proton_configuration_1.png
-   :width: 25%
+   :width: 100%
 
 The full configuration looks like this:
 
@@ -120,7 +121,7 @@ Step 3 - Setup WireGuard Instance
      **Tunnel Address**    *Insert the* :code:`Address` *field from the* :code:`\[Interface\]` *section` in CIDR format, eg 10.2.0.2/32*
      **Peers**             *Leave blank for now*
      **Disable Routes**    *Checked*
-     **Gateway**           *Insert the same address as in the `DNS Server` field above*
+     **Gateway**           *Insert the same address as in the DNS Server field above*
     ===================== ===============================================================================================
 
 - **Save** the Instance configuration, and then click **Apply**
@@ -154,7 +155,7 @@ Step 4 - Configure the peer
 Step 5 - Turn on WireGuard
 --------------------------
 
-Turn on WireGuard under :menuselection:`VPN --> WireGuard --> General` if it is not already on
+Turn on WireGuard under :menuselection:`VPN --> WireGuard --> Settings --> General` if it is not already on
 
 ----------------------------------------------------
 Step 6 - Configure assignments, gateways and routing
