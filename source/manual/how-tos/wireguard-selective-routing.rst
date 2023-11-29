@@ -120,7 +120,7 @@ Step 6 - Create a gateway
 
 .. Note::
 
-    Specifying the endpoint VPN tunnel IP is preferable. As an alternative, you could include an external IP such as 1.1.1.1 or 8.8.8.8, but be aware that this IP will *only* be accessible through the VPN tunnel (OPNsense creates a static route for it), and therefore will not accessible from local hosts that are not using the tunnel
+    Specifying the endpoint VPN tunnel IP is preferable. As an alternative, you could include an external IP such as 1.1.1.1 or 8.8.8.8, but be aware that this IP will *only* be accessible through the VPN tunnel (OPNsense creates a static route for it), and therefore will not be accessible from local hosts that are not using the tunnel
 
     Some VPN providers will include the VPN tunnel IP of the endpoint in the configuration data they provide. For others (such as Mullvad), you can get the IP by running a traceroute from a host that is using the tunnel - the first hop after OPNsense is the VPN provider's tunnel IP
 
