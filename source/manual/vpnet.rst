@@ -721,7 +721,8 @@ This paragraph offers examples for some commonly used implementation scenarios.
    how-tos/wireguard-client
    how-tos/wireguard-client-azire
    how-tos/wireguard-client-mullvad
-
+   how-tos/wireguard-client-proton
+   how-tos/wireguard-selective-routing
 
 --------------------------
 Plugin VPN options
