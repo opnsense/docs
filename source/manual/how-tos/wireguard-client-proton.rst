@@ -98,7 +98,7 @@ The public key will be derived from the private key with the "wg pubkey" command
 
 .. code-block:: sh
 
-    wg pubkey < wgPrivateKey > wgPublicKey.pub
+    wg pubkey < wgPrivateKey
 
 ----------------------------------
 Step 3 - Setup WireGuard Instance
