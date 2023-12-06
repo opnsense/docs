@@ -14,6 +14,6 @@ in case something went wrong while setting up anti lockout policies or after cha
     When logged in directly via a console or shell, you can also use the following command to generate a new self-signed certificate
     and restart the web ui:
 
-    :code:`configctl webgui restart renew``
+    :code:`configctl webgui restart renew`
 
 
