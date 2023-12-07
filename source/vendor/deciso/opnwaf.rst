@@ -125,7 +125,10 @@ the Virtual servers.
 Enabled                          Enable this location
 Path                             Local path to match
 Remote destinations              Locations to forward requests to, when more than one is provided, requests will be
-                                 loadbalanced in a round robin fashion.
+                                 loadbalanced in a round robin fashion. Supports :code:`http`, :code:`https`, :code:`ws`
+                                 and :code:`wss` destinations.
+                                 When your webapp uses websockets and https requests, use :code:`wss://`
+                                 (available as of 22.10.1)
 Access control                   List of networks allowed to access this path (empty means any)
 VirtualServer                    The server this location belongs to
 Description                      User friendly description for this location
