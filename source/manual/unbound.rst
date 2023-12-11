@@ -376,6 +376,12 @@ Use System Nameservers                The configured system nameservers will be 
                                       set "Allow DNS server list to be overridden by DHCP/PPP on WAN" there as well.
 ====================================  ===============================================================================
 
+.. warning::
+
+    Do not use the system nameservers option if you have a multi-WAN setup and have Unbound running alongside multiple
+    DNS servers configured in `General <settingsmenu.html#general>`__ with separate gateways assigned to them.
+    Unbound will use the locally created routes to reach the system nameservers, which will not work when the gateway is down.
+
 .. note::
 
     Keep in mind that if the "Use System Nameservers" checkbox is checked, the system nameservers will be preferred
