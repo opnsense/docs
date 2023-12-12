@@ -27,6 +27,61 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.7.10 (December 12, 2023)
+--------------------------------------------------------------------------
+
+
+A number of FreeBSD source code changes accumulated so it is better
+to have them delivered to your doorstep before the holidays are in
+full swing.
+
+Here are the full patch notes:
+
+* system: improve config revision audit ability
+* system: cleanse system_get_language_code() output
+* system: safeguard /tmp/PHP_errors.log file before usage
+* system: add an optional random delay before executing remote backups
+* system: fix regression in log viewer level selector
+* reporting: OpenVPN server instances were missing from respective health graph
+* interfaces: move interface list widget link to assignments page
+* interfaces: add new backend jobs and extend with optional parameter
+* interfaces: add validation for proxy ARP strict subnet use
+* firewall: improve alias write behaviour by checking for changes beforehand
+* firewall: fix preg_replace() to avoid truncated network display in rules listing
+* firewall: add an ifconfig.debug file
+* firmware: switch bogons/changelog set base URL to portable "opnsense-update -X" call
+* ipsec: move save button on mobile page into its own container
+* ipsec: add support for RADIUS class groups in instances
+* unbound: use tls-system-cert instead of tls-cert-bundle
+* web proxy: fix setting unknown language directory
+* ui: upgrade jqTree to version 1.7.5
+* plugins: os-ddclient 1.18 `[1] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-dec-hw 1.0 is a Deciso hardware specific dashboard widget
+* plugins: os-net-snmp fix for directory setup (contributed by doktornotor)
+* plugins: os-telegraf 1.12.10 `[2] <https://github.com/opnsense/plugins/blob/stable/23.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-upnp now reloads on newwanip event
+* plugins: os-wireguard fix for missing firewall reload
+* plugins: os-wireguard-go fix for device registration
+* src: clang: sanitizer failure with ASLR enabled `[3] <FREEBSD:FreeBSD-EN-23:15.sanitizer>`__ 
+* src: dhclient: do not add 0.0.0.0 interface alias
+* src: ice: match irdma interface changes
+* src: ixv: separate VFTA table for each interface
+* src: libnetmap: better fix for port parsing failure
+* src: pf: expose more syncookie state information to userspace
+* src: pf: fix mem leaks upon vnet destroy
+* src: pf: remove incorrect fragmentation check `[4] <FREEBSD:FreeBSD-SA-23:17.pf>`__ 
+* src: rc: fix restart _precmd issue with _setup
+* src: re: add support for 8168FP HW rev
+* src: zfs: check dnode and its data for dirtiness in dnode_is_dirty() `[5] <FREEBSD:FreeBSD-EN-23:16.openzfs>`__ 
+* ports: perl 5.36.3 `[6] <https://perldoc.perl.org/5.36.3/perldelta>`__ 
+* ports: php 8.2.13 `[7] <https://www.php.net/ChangeLog-8.php#8.3.13>`__ 
+* ports: phpseclib 3.0.34 `[8] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.34>`__ 
+* ports: squid update fixes parent proxy crash `[9] <https://github.com/squid-cache/squid/commit/b6c01a2>`__ 
+* ports: strongswan 5.9.13 `[10] <https://github.com/strongswan/strongswan/releases/tag/5.9.13>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.7.9 (November 23, 2023)
 --------------------------------------------------------------------------
 
