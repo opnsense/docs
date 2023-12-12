@@ -57,7 +57,6 @@ def parse_change_log(payload, this_version, links):
     all_token_links = dict()
     first_line = False
     prelude_line = this_version.count(".") == 1
-    rst_content = list()
     lines = payload.split("\n")
     for idx, line in enumerate(lines):
         content_line = None
@@ -109,7 +108,7 @@ def parse_change_log(payload, this_version, links):
     for section in ['content', 'prelude']:
         for token in all_token_links:
             target_uri = all_token_links[token]
-            tmp = all_token_links[token].split(':')
+            tmp = all_token_links[token].split(':', 1)
             if tmp[0] in links and len(tmp) == 2:
                 target_uri = links[tmp[0]]['url']
                 version = tmp[1]
@@ -120,8 +119,8 @@ def parse_change_log(payload, this_version, links):
                         version = re.sub(match.group(1), match.group(2), tmp[1], count=count)
                 if target_uri.find('%s') > -1:
                     target_uri = target_uri % version
-
             result[section] = result[section].replace(token, " `%s <%s>`__ " % (token, target_uri))
+
     return result
 
 

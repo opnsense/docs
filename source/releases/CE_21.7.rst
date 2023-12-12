@@ -68,9 +68,9 @@ Here are the full patch notes:
 * plugins: os-telegraf 1.12.4 `[5] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
 * plugins: os-wireguard 1.10 `[6] <https://github.com/opnsense/plugins/blob/stable/21.7/net/wireguard/pkg-descr>`__ 
 * src: axgbe: validate contents of gpio expander
-* src: incorrect XSAVE state size `[7] <FREEBSD:FreeBSD-EN-22:02.xsave>`__ 
-* src: vPCI compatibility improvements with certain Hyper-V releases `[8] <FREEBSD:FreeBSD-EN-22:03.hyperv>`__ 
-* src: vt console buffer overflow `[9] <FREEBSD:FreeBSD-SA-22:01.vt>`__ 
+* src: incorrect XSAVE state size `[7] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:02.xsave.asc>`__ 
+* src: vPCI compatibility improvements with certain Hyper-V releases `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:03.hyperv.asc>`__ 
+* src: vt console buffer overflow `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:01.vt.asc>`__ 
 * ports: expat 2.4.2 `[10] <https://github.com/libexpat/libexpat/blob/R_2_4_2/expat/Changes>`__ 
 * ports: filterlog 0.6 `[11] <https://github.com/opnsense/ports/commit/2e27655d84>`__ 
 * ports: flock 2.37.2
@@ -254,8 +254,8 @@ Here are the full patch notes for version 21.7.5:
 * plugins: os-wireguard 1.8 `[12] <https://github.com/opnsense/plugins/blob/stable/21.7/net/wireguard/pkg-descr>`__ 
 * src: axgbe: correctly enable RSS driver support by default
 * src: ixgbe: prevent subsequent I2C bus read timeouts
-* src: fix kernel panic in vmci driver initialization `[13] <FREEBSD:FreeBSD-EN-21:28.vmci>`__ 
-* src: timezone database information update `[14] <FREEBSD:FreeBSD-EN-21:29.tzdata>`__ 
+* src: fix kernel panic in vmci driver initialization `[13] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:28.vmci.asc>`__ 
+* src: timezone database information update `[14] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:29.tzdata.asc>`__ 
 * ports: lighttpd 1.4.61 `[15] <https://www.lighttpd.net/2021/10/28/1.4.61/>`__ 
 * ports: nss 3.72 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_72.html>`__ 
 * ports: openssh 8.8p1 `[17] <https://www.openssh.com/txt/release-8.8>`__ 
@@ -471,10 +471,10 @@ Here are the full patch notes:
 * src: lib: add libnetmap and related patches
 * src: dhclient: skip_to_semi() consumes semicolon already
 * src: rtsold: slightly change address read
-* src: fix missing error handling in bhyve(8) device models `[3] <FREEBSD:FreeBSD-SA-21:13.bhyve>`__ 
-* src: fix remote code execution in ggatec(8) `[4] <FREEBSD:FreeBSD-SA-21:14.ggatec>`__ 
-* src: fix libfetch out of bounds read `[5] <FREEBSD:FreeBSD-SA-21:15.libfetch>`__ 
-* src: fix multiple OpenSSL vulnerabilities `[6] <FREEBSD:FreeBSD-SA-21:16.openssl>`__  `[7] <FREEBSD:FreeBSD-SA-21:17.openssl>`__ 
+* src: fix missing error handling in bhyve(8) device models `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:13.bhyve.asc>`__ 
+* src: fix remote code execution in ggatec(8) `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:14.ggatec.asc>`__ 
+* src: fix libfetch out of bounds read `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:15.libfetch.asc>`__ 
+* src: fix multiple OpenSSL vulnerabilities `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:16.openssl.asc>`__  `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:17.openssl.asc>`__ 
 * ports: ifinfo 13.0
 * ports: libressl 3.3.4 `[8] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.4-relnotes.txt>`__ 
 * ports: nss 3.69 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_69.html>`__ 
@@ -684,8 +684,8 @@ Here are the full patch notes:
 * src: FreeBSD updates for Intel e1000, ixgbe and ixl drivers
 * src: compatibility shim for upcoming rtsold "-M" command line option
 * src: separately log NAT and firewall rules in pf(4)
-* src: libcasper: fix descriptors numbers `[12] <FREEBSD:EN-21:19.libcasper>`__ 
-* src: linux: prevent integer overflow in futex_requeue `[13] <FREEBSD:EN-21:22.linux_futex>`__ 
+* src: libcasper: fix descriptors numbers `[12] <https://www.freebsd.org/security/advisories/EN-21:19.libcasper.asc>`__ 
+* src: linux: prevent integer overflow in futex_requeue `[13] <https://www.freebsd.org/security/advisories/EN-21:22.linux_futex.asc>`__ 
 * src: axgbe: make sure driver works on V1000 platform and remove unnecessary reset
 * ports: drop hardening options to ease migration to FreeBSD ports tree
 * ports: clog 1.0.2 fixes garbage header write on init
@@ -778,8 +778,8 @@ Here are the full patch notes:
 * plugins: os-tor Phalcon 4 fix
 * plugins: os-zabbix-agent 1.9 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/zabbix-agent/pkg-descr>`__ 
 * src: separately log NAT and firewall rules in pf(4)
-* src: libcasper: fix descriptors numbers `[5] <FREEBSD:EN-21:19.libcasper>`__ 
-* src: linux: prevent integer overflow in futex_requeue `[6] <FREEBSD:EN-21:22.linux_futex>`__ 
+* src: libcasper: fix descriptors numbers `[5] <https://www.freebsd.org/security/advisories/EN-21:19.libcasper.asc>`__ 
+* src: linux: prevent integer overflow in futex_requeue `[6] <https://www.freebsd.org/security/advisories/EN-21:22.linux_futex.asc>`__ 
 * ports: clog 1.0.2 fixes garbage header write on init
 * ports: php 7.4.21 `[7] <https://www.php.net/ChangeLog-7.php#7.4.21>`__ 
 * ports: suricata 5.0.7 `[8] <https://redmine.openinfosecfoundation.org/versions/166>`__ 

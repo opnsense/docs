@@ -314,12 +314,12 @@ Here are the full patch notes:
 * plugins: os-acme-client 3.9 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/security/acme-client/pkg-descr>`__ 
 * plugins: os-chrony 1.5 `[2] <https://github.com/opnsense/plugins/blob/stable/22.1/net/chrony/pkg-descr>`__ 
 * plugins: os-ddclient 1.5 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/ddclient/pkg-descr>`__ 
-* src: pf(4) tables may fail to load `[4] <FREEBSD:FreeBSD-EN-22:15.pf>`__ 
-* src: potential jail escape vulnerabilities in netmap `[5] <FREEBSD:FreeBSD-SA-22:04.netmap>`__ 
-* src: bhyve e82545 device emulation out-of-bounds write `[6] <FREEBSD:FreeBSD-SA-22:05.bhyve>`__ 
-* src: mpr/mps/mpt driver ioctl heap out-of-bounds write `[7] <FREEBSD:FreeBSD-SA-22:06.ioctl>`__ 
-* src: 802.11 heap buffer overflow `[8] <FREEBSD:FreeBSD-SA-22:07.wifi_meshid>`__ 
-* src: zlib compression out-of-bounds write `[9] <FREEBSD:FreeBSD-SA-22:08.zlib>`__ 
+* src: pf(4) tables may fail to load `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:15.pf.asc>`__ 
+* src: potential jail escape vulnerabilities in netmap `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:04.netmap.asc>`__ 
+* src: bhyve e82545 device emulation out-of-bounds write `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:05.bhyve.asc>`__ 
+* src: mpr/mps/mpt driver ioctl heap out-of-bounds write `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:06.ioctl.asc>`__ 
+* src: 802.11 heap buffer overflow `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:07.wifi_meshid.asc>`__ 
+* src: zlib compression out-of-bounds write `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:08.zlib.asc>`__ 
 * ports: curl 7.82.0 `[10] <https://curl.se/changes.html#7_82_0>`__ 
 * ports: expat 2.4.8 `[11] <https://github.com/libexpat/libexpat/blob/R_2_4_8/expat/Changes>`__ 
 * ports: libxml 2.9.13 `[12] <http://www.xmlsoft.org/news.html>`__ 
@@ -366,8 +366,8 @@ Here are the full patch notes:
 * plugins: os-ddclient 1.4 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/ddclient/pkg-descr>`__ 
 * plugins: os-theme-cicada 1.29
 * plugins: os-theme-vicuna 1.41
-* src: openssl: fix a bug in BN_mod_sqrt() that can cause it to loop forever `[2] <FREEBSD:FreeBSD-SA-22:03.openssl>`__ 
-* src: zfs: fix handling of errors from dmu_write_uio_dbuf() `[3] <FREEBSD:FreeBSD-EN-22:10.zfs>`__ 
+* src: openssl: fix a bug in BN_mod_sqrt() that can cause it to loop forever `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:03.openssl.asc>`__ 
+* src: zfs: fix handling of errors from dmu_write_uio_dbuf() `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:10.zfs.asc>`__ 
 * src: debugnet: remove spurious message on boot
 * ports: ca_root_nss fix for faulty upstream file linking
 * ports: libressl 3.3.6 `[4] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.6-relnotes.txt>`__ 

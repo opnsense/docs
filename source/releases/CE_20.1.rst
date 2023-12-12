@@ -153,11 +153,11 @@ Here are the full patch notes:
 * src: added Novatel Wireless MiFi 8800/8000 support (contributed by rootless4real)
 * src: fix pf shared forwarding on non-existing interfaces
 * src: patch in tty 3wire autologin support
-* src: fix insufficient packet length validation in libalias `[1] <FREEBSD:FreeBSD-SA-20:12.libalias>`__ 
-* src: fix memory disclosure vulnerability in libalias `[2] <FREEBSD:FreeBSD-SA-20:13.libalias>`__ 
-* src: fix improper checking in SCTP-AUTH shared key update `[3] <FREEBSD:FreeBSD-SA-20:14.sctp>`__ 
-* src: fix use after free in cryptodev module `[4] <FREEBSD:FreeBSD-SA-20:15.cryptodev>`__ 
-* src: update to tzdata 2020a `[5] <FREEBSD:FreeBSD-EN-20:08.tzdata>`__ 
+* src: fix insufficient packet length validation in libalias `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:12.libalias.asc>`__ 
+* src: fix memory disclosure vulnerability in libalias `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:13.libalias.asc>`__ 
+* src: fix improper checking in SCTP-AUTH shared key update `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:14.sctp.asc>`__ 
+* src: fix use after free in cryptodev module `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:15.cryptodev.asc>`__ 
+* src: update to tzdata 2020a `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:08.tzdata.asc>`__ 
 * ports: ca_root_nss 3.52
 * ports: curl 7.70.0 `[6] <https://curl.se/changes.html#7_70_0>`__ 
 * ports: dhcp6c v20200512

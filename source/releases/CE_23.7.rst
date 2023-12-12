@@ -62,17 +62,17 @@ Here are the full patch notes:
 * plugins: os-upnp now reloads on newwanip event
 * plugins: os-wireguard fix for missing firewall reload
 * plugins: os-wireguard-go fix for device registration
-* src: clang: sanitizer failure with ASLR enabled `[3] <FREEBSD:FreeBSD-EN-23:15.sanitizer>`__ 
+* src: clang: sanitizer failure with ASLR enabled `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:15.sanitizer.asc>`__ 
 * src: dhclient: do not add 0.0.0.0 interface alias
 * src: ice: match irdma interface changes
 * src: ixv: separate VFTA table for each interface
 * src: libnetmap: better fix for port parsing failure
 * src: pf: expose more syncookie state information to userspace
 * src: pf: fix mem leaks upon vnet destroy
-* src: pf: remove incorrect fragmentation check `[4] <FREEBSD:FreeBSD-SA-23:17.pf>`__ 
+* src: pf: remove incorrect fragmentation check `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:17.pf.asc>`__ 
 * src: rc: fix restart _precmd issue with _setup
 * src: re: add support for 8168FP HW rev
-* src: zfs: check dnode and its data for dirtiness in dnode_is_dirty() `[5] <FREEBSD:FreeBSD-EN-23:16.openzfs>`__ 
+* src: zfs: check dnode and its data for dirtiness in dnode_is_dirty() `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:16.openzfs.asc>`__ 
 * ports: perl 5.36.3 `[6] <https://perldoc.perl.org/5.36.3/perldelta>`__ 
 * ports: php 8.2.13 `[7] <https://www.php.net/ChangeLog-8.php#8.3.13>`__ 
 * ports: phpseclib 3.0.34 `[8] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.34>`__ 
@@ -203,11 +203,11 @@ Here are the full patch notes:
 * plugins: os-wireguard 2.5 `[3] <https://github.com/opnsense/plugins/blob/stable/23.7/net/wireguard/pkg-descr>`__ 
 * src: pfctl: fix incorrect mask on dynamic address
 * src: libpfctl: assorted improvements
-* src: msdosfs: zero partially valid extended cluster `[4] <FREEBSD:FreeBSD-SA-23:12.msdosfs>`__ 
-* src: copy_file_range: require CAP_SEEK capability `[5] <FREEBSD:FreeBSD-SA-23:13.capsicum>`__ 
-* src: fflush: correct buffer handling in __sflush `[6] <FREEBSD:FreeBSD-SA-23:15.stdio>`__ 
-* src: cap_net: correct capability name from addr2name to name2addr `[7] <FREEBSD:FreeBSD-SA-23:16.cap_net>`__ 
-* src: regcomp: use unsigned char when testing for escapes `[8] <FREEBSD:FreeBSD-EN-23:14.regcomp>`__ 
+* src: msdosfs: zero partially valid extended cluster `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:12.msdosfs.asc>`__ 
+* src: copy_file_range: require CAP_SEEK capability `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:13.capsicum.asc>`__ 
+* src: fflush: correct buffer handling in __sflush `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:15.stdio.asc>`__ 
+* src: cap_net: correct capability name from addr2name to name2addr `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:16.cap_net.asc>`__ 
+* src: regcomp: use unsigned char when testing for escapes `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:14.regcomp.asc>`__ 
 * ports: lighttpd 1.4.73 `[9] <https://www.lighttpd.net/2023/10/30/1.4.73/>`__ 
 * ports: php 8.2.12 `[10] <https://www.php.net/ChangeLog-8.php#8.2.12>`__ 
 * ports: squid 6.5 `[11] <http://www.squid-cache.org/Versions/v6/squid-6.5-RELEASENOTES.html>`__ 
@@ -529,8 +529,8 @@ Here are the full patch notes:
 * src: iflib: fix white space and reduce some line lengths
 * src: ixgbe: define IXGBE_LE32_TO_CPUS
 * src: ixgbe: check for fw_recovery
-* src: net80211: fail for unicast traffic without unicast key `[4] <FREEBSD:FreeBSD-SA-23:11.wifi>`__ 
-* src: pcib: allocate the memory BAR with the MSI-X table `[5] <FREEBSD:FreeBSD-EN-23:10.pci>`__ 
+* src: net80211: fail for unicast traffic without unicast key `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:11.wifi.asc>`__ 
+* src: pcib: allocate the memory BAR with the MSI-X table `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:10.pci.asc>`__ 
 * ports: php 8.2.10 `[6] <https://www.php.net/ChangeLog-8.php#8.2.10>`__ 
 * ports: python 3.9.18 `[7] <https://docs.python.org/release/3.9.18/whatsnew/changelog.html>`__ 
 * ports: unbound 1.18.0 `[8] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-18-0>`__ 
@@ -677,8 +677,8 @@ Here are the full patch notes:
 * mvc: fix empty item selection issue in BaseListField
 * plugins: os-ddclient 1.14 `[1] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/ddclient/pkg-descr>`__ 
 * plugins: os-acme-client 3.19 `[2] <https://github.com/opnsense/plugins/blob/stable/23.7/security/acme-client/pkg-descr>`__ 
-* src: bhyve: fully reset the fwctl state machine if the guest requests a reset `[3] <FREEBSD:FreeBSD-SA-23:07.bhyve>`__ 
-* src: frag6: avoid a possible integer overflow in fragment handling `[4] <FREEBSD:FreeBSD-SA-23:06.ipv6>`__ 
+* src: bhyve: fully reset the fwctl state machine if the guest requests a reset `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:07.bhyve.asc>`__ 
+* src: frag6: avoid a possible integer overflow in fragment handling `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:06.ipv6.asc>`__ 
 * src: amdtemp: Fix missing 49 degree offset on current EPYC CPUs
 * src: libpfctl: ensure the initial allocation is large enough
 * src: pf: handle multiple IPv6 fragment headers

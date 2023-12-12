@@ -46,9 +46,9 @@ Here are the full patch notes:
 * plugins: os-telegraf 1.12.4 `[5] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/telegraf/pkg-descr>`__ 
 * plugins: os-wireguard 1.10 `[6] <https://github.com/opnsense/plugins/blob/stable/21.7/net/wireguard/pkg-descr>`__ 
 * src: axgbe: validate contents of gpio expander
-* src: incorrect XSAVE state size `[7] <FREEBSD:FreeBSD-EN-22:02.xsave>`__ 
-* src: vPCI compatibility improvements with certain Hyper-V releases `[8] <FREEBSD:FreeBSD-EN-22:03.hyperv>`__ 
-* src: vt console buffer overflow `[9] <FREEBSD:FreeBSD-SA-22:01.vt>`__ 
+* src: incorrect XSAVE state size `[7] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:02.xsave.asc>`__ 
+* src: vPCI compatibility improvements with certain Hyper-V releases `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:03.hyperv.asc>`__ 
+* src: vt console buffer overflow `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:01.vt.asc>`__ 
 * ports: expat 2.4.2 `[10] <https://github.com/libexpat/libexpat/blob/R_2_4_2/expat/Changes>`__ 
 * ports: filterlog 0.6 `[11] <https://github.com/opnsense/ports/commit/2e27655d84>`__ 
 * ports: flock 2.37.2
@@ -233,8 +233,8 @@ Here are the full patch notes:
 * src: aesni: avoid a potential out-of-bounds load in aes_encrypt_icm()
 * src: axgbe: correctly enable RSS driver support by default
 * src: ixgbe: prevent subsequent I2C bus read timeouts
-* src: fix kernel panic in vmci driver initialization `[16] <FREEBSD:FreeBSD-EN-21:28.vmci>`__ 
-* src: timezone database information update `[17] <FREEBSD:FreeBSD-EN-21:29.tzdata>`__ 
+* src: fix kernel panic in vmci driver initialization `[16] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:28.vmci.asc>`__ 
+* src: timezone database information update `[17] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:29.tzdata.asc>`__ 
 * ports: dnspython 2.1.0 `[18] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
 * ports: jinja 3.0.1 `[19] <https://jinja.palletsprojects.com/en/3.0.x/changes/#version-3-0-1>`__ 
 * ports: lighttpd 1.4.61 `[20] <https://www.lighttpd.net/2021/10/28/1.4.61/>`__ 
@@ -386,9 +386,9 @@ Here are the full patch notes:
 * src: compatibility shim for upcoming rtsold "-M" command line option
 * src: dhclient support for VLAN 0 decapsulation
 * src: dhclient: skip_to_semi() consumes semicolon already
-* src: fix libfetch out of bounds read `[15] <FREEBSD:FreeBSD-SA-21:15.libfetch>`__ 
-* src: fix missing error handling in bhyve(8) device models `[16] <FREEBSD:FreeBSD-SA-21:13.bhyve>`__ 
-* src: fix remote code execution in ggatec(8) `[17] <FREEBSD:FreeBSD-SA-21:14.ggatec>`__ 
+* src: fix libfetch out of bounds read `[15] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:15.libfetch.asc>`__ 
+* src: fix missing error handling in bhyve(8) device models `[16] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:13.bhyve.asc>`__ 
+* src: fix remote code execution in ggatec(8) `[17] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:14.ggatec.asc>`__ 
 * src: iflib: fix partial length accounting error in netmap mode
 * src: lib: add libnetmap and related patches
 * src: rtsold: slightly change address read

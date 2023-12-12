@@ -30,11 +30,11 @@ Here are the full patch notes:
 * intrusion detection: properly reset metadata response when no metadata is found
 * unbound: missing global so that cache is never flushed when requested
 * mvc: cleanse $record input in searchRecordsetBase() before usage
-* src: fix multiple OpenSSL vulnerabilities `[1] <FREEBSD:FreeBSD-SA-23:03.openssl>`__ 
-* src: geli: split the initalization of HMAC `[2] <FREEBSD:FreeBSD-SA-23:01.geli>`__ 
-* src: fix ena driver crash after reset in 7th gen AWS instance types `[3] <FREEBSD:FreeBSD-EN-23:03.ena>`__ 
-* src: fix sdhci broken write-protect settings `[4] <FREEBSD:FreeBSD-EN-23:02.sdhci>`__ 
-* src: import tzdata 2022g `[5] <FREEBSD:FreeBSD-EN-23:01.tzdata>`__ 
+* src: fix multiple OpenSSL vulnerabilities `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:03.openssl.asc>`__ 
+* src: geli: split the initalization of HMAC `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:01.geli.asc>`__ 
+* src: fix ena driver crash after reset in 7th gen AWS instance types `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:03.ena.asc>`__ 
+* src: fix sdhci broken write-protect settings `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:02.sdhci.asc>`__ 
+* src: import tzdata 2022g `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:01.tzdata.asc>`__ 
 * src: x86: ignore stepping for APL30 errata
 * ports: openssl 1.1.1t `[6] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 
@@ -416,17 +416,17 @@ Here are the full patch notes:
 * src: pf: ensure that pfiio_name is always nul terminated
 * src: pf: make sure that pfi_update_status() always zeros counters
 * src: igc: change default duplex setting
-* src: lib9p: remove potential buffer overwrite in l9p_puqids() `[22] <FREEBSD:FreeBSD-SA-22:12.lib9p>`__ 
-* src: vm_fault: shoot down shared mappings in vm_fault_copy_entry() `[23] <FREEBSD:FreeBSD-SA-22:11.vm>`__ 
-* src: elf_note_prpsinfo: handle more failures from proc_getargv() `[24] <FREEBSD:FreeBSD-SA-22:09.elf>`__ 
-* src: pam_exec: fix segfault when authtok is null `[25] <FREEBSD:FreeBSD-EN-22:19.pam_exec>`__ 
-* src: kevent: fix an off-by-one in filt_timerexpire_l() `[26] <FREEBSD:FreeBSD-EN-22:16.kqueue>`__ 
-* src: cam: leep periph_links when restoring CCB in camperiphdone() `[27] <FREEBSD:FreeBSD-EN-22:17.cam>`__ 
+* src: lib9p: remove potential buffer overwrite in l9p_puqids() `[22] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:12.lib9p.asc>`__ 
+* src: vm_fault: shoot down shared mappings in vm_fault_copy_entry() `[23] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:11.vm.asc>`__ 
+* src: elf_note_prpsinfo: handle more failures from proc_getargv() `[24] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:09.elf.asc>`__ 
+* src: pam_exec: fix segfault when authtok is null `[25] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:19.pam_exec.asc>`__ 
+* src: kevent: fix an off-by-one in filt_timerexpire_l() `[26] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:16.kqueue.asc>`__ 
+* src: cam: leep periph_links when restoring CCB in camperiphdone() `[27] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:17.cam.asc>`__ 
 * src: pfctl: fix FOM_ICMP/POM_STICKYADDRESS clash
 * src: restrict default /root permissions to 750
 * src: rc: add ${name}_setup script support
-* src: zlib: fix a bug when getting a gzip header extra field with inflate() `[28] <FREEBSD:FreeBSD-SA-22:13.zlib>`__ 
-* src: tzdata: import tzdata 2022b and 2022c `[29] <FREEBSD:FreeBSD-EN-22:20.tzdata>`__ 
+* src: zlib: fix a bug when getting a gzip header extra field with inflate() `[28] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:13.zlib.asc>`__ 
+* src: tzdata: import tzdata 2022b and 2022c `[29] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:20.tzdata.asc>`__ 
 * src: FreeBSD 13.1-RELEASE `[30] <https://www.freebsd.org/releases/13.1R/relnotes/>`__ 
 * src: ifconfig: print interface name on SIOCIFCREATE2 error
 * src: igc: do not start in promiscuous mode by default
@@ -459,19 +459,19 @@ Here are the full patch notes:
 The following operating system hotfix was issued:
 
 * src: vxlan: check the size of data available in mbuf before using them
-* src: vm_page: fix a logic error in the handling of PQ_ACTIVE operations `[51] <FREEBSD:FreeBSD-EN-22:23.vm>`__ 
-* src: cam: provide compatibility for CAMGETPASSTHRU for periph drivers `[52] <FREEBSD:FreeBSD-EN-22:26.cam>`__ 
-* src: loader: fix elf lookup_symbol type filtering `[53] <FREEBSD:FreeBSD-EN-22:27.loader>`__ 
-* src: zfs: fix a pair of bugs in zfs_fhtovp() `[54] <FREEBSD:FreeBSD-EN-22:24.zfs>`__ 
-* src: zfs: fix use-after-free in btree code `[55] <FREEBSD:FreeBSD-EN-22:21.zfs>`__ 
-* src: tcp: finish SACK loss recovery on sudden lack of SACK blocks `[56] <FREEBSD:FreeBSD-EN-22:25.tcp>`__ 
+* src: vm_page: fix a logic error in the handling of PQ_ACTIVE operations `[51] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:23.vm.asc>`__ 
+* src: cam: provide compatibility for CAMGETPASSTHRU for periph drivers `[52] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:26.cam.asc>`__ 
+* src: loader: fix elf lookup_symbol type filtering `[53] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:27.loader.asc>`__ 
+* src: zfs: fix a pair of bugs in zfs_fhtovp() `[54] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:24.zfs.asc>`__ 
+* src: zfs: fix use-after-free in btree code `[55] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:21.zfs.asc>`__ 
+* src: tcp: finish SACK loss recovery on sudden lack of SACK blocks `[56] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:25.tcp.asc>`__ 
 * src: igc: remove unnecessary PHY ID checks
 * src: ixl: add support for I710 devices and remove non-inclusive language
 * src: ixl: fix SR-IOV panics
 * src: u3g: add more USB IDs
 * src: ixgbe: workaround errata about UDP frames with zero checksum
 * src: hpet: Allow a MMIO window smaller than 1K
-* src: ping: fix handling of IP packet sizes `[57] <FREEBSD:FreeBSD-SA-22:15.ping>`__ 
+* src: ping: fix handling of IP packet sizes `[57] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:15.ping.asc>`__ 
 
 Known issues and limitations:
 

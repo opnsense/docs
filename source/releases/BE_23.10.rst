@@ -252,9 +252,9 @@ Here are the full patch notes:
 * src: axgbe: enable RSF to prevent zero-length packets while in Netmap mode
 * src: axgbe: gracefully handle i2c bus failures
 * src: axgbe: only set CSUM_DONE when IFCAP_RXCSUM enabled
-* src: bhyve: fully reset the fwctl state machine if the guest requests a reset `[13] <FREEBSD:FreeBSD-SA-23:07.bhyve>`__ 
+* src: bhyve: fully reset the fwctl state machine if the guest requests a reset `[13] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:07.bhyve.asc>`__ 
 * src: bnxt: do not restart on VLAN changes
-* src: frag6: avoid a possible integer overflow in fragment handling `[14] <FREEBSD:FreeBSD-SA-23:06.ipv6>`__ 
+* src: frag6: avoid a possible integer overflow in fragment handling `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:06.ipv6.asc>`__ 
 * src: gif: revert in{,6}_gif_output() misalignment handling
 * src: ice: do not restart on VLAN changes
 * src: if_vlan: always default to 802.1
@@ -270,10 +270,10 @@ Here are the full patch notes:
 * src: ixl: add link state polling
 * src: ixl: port ice's atomic API to ixl
 * src: libpfctl: ensure the initial allocation is large enough
-* src: net80211: fail for unicast traffic without unicast key `[15] <FREEBSD:FreeBSD-SA-23:11.wifi>`__ 
+* src: net80211: fail for unicast traffic without unicast key `[15] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:11.wifi.asc>`__ 
 * src: net: do not overwrite VLAN PCP
 * src: net: remove VLAN metadata on PCP / VLAN encapsulation
-* src: pcib: allocate the memory BAR with the MSI-X table `[16] <FREEBSD:FreeBSD-EN-23:10.pci>`__ 
+* src: pcib: allocate the memory BAR with the MSI-X table `[16] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:10.pci.asc>`__ 
 * src: pf: handle multiple IPv6 fragment headers
 * src: rss: set pin_default_swi to 0 by default
 * src: rtsol: introduce an 'always' script

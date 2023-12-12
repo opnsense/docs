@@ -474,15 +474,15 @@ Here are the full patch notes:
 * src: hn: disable Hyper-V vSwitch RSC support
 * src: stand: add EFI support for MMIO serial consoles
 * src: apei: make sure event data fit into the buffer
-* src: openssl: fix a bug in BN_mod_sqrt() that can cause it to loop forever `[14] <FREEBSD:FreeBSD-SA-22:03.openssl>`__ 
-* src: zfs: fix handling of errors from dmu_write_uio_dbuf() `[15] <FREEBSD:FreeBSD-EN-22:10.zfs>`__ 
+* src: openssl: fix a bug in BN_mod_sqrt() that can cause it to loop forever `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:03.openssl.asc>`__ 
+* src: zfs: fix handling of errors from dmu_write_uio_dbuf() `[15] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:10.zfs.asc>`__ 
 * src: debugnet: remove spurious message on boot
-* src: pf(4) tables may fail to load `[16] <FREEBSD:FreeBSD-EN-22:15.pf>`__ 
-* src: potential jail escape vulnerabilities in netmap `[17] <FREEBSD:FreeBSD-SA-22:04.netmap>`__ 
-* src: bhyve e82545 device emulation out-of-bounds write `[18] <FREEBSD:FreeBSD-SA-22:05.bhyve>`__ 
-* src: mpr/mps/mpt driver ioctl heap out-of-bounds write `[19] <FREEBSD:FreeBSD-SA-22:06.ioctl>`__ 
-* src: 802.11 heap buffer overflow `[20] <FREEBSD:FreeBSD-SA-22:07.wifi_meshid>`__ 
-* src: zlib compression out-of-bounds write `[21] <FREEBSD:FreeBSD-SA-22:08.zlib>`__ 
+* src: pf(4) tables may fail to load `[16] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:15.pf.asc>`__ 
+* src: potential jail escape vulnerabilities in netmap `[17] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:04.netmap.asc>`__ 
+* src: bhyve e82545 device emulation out-of-bounds write `[18] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:05.bhyve.asc>`__ 
+* src: mpr/mps/mpt driver ioctl heap out-of-bounds write `[19] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:06.ioctl.asc>`__ 
+* src: 802.11 heap buffer overflow `[20] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:07.wifi_meshid.asc>`__ 
+* src: zlib compression out-of-bounds write `[21] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:08.zlib.asc>`__ 
 * ports: ca_root_nss fix for faulty upstream file linking
 * ports: curl 7.81.0 `[22] <https://curl.se/changes.html#7_81_0>`__ 
 * ports: dnspython 2.2.1 `[23] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 

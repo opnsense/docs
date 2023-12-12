@@ -146,7 +146,7 @@ Here are the full patch notes:
 * plugins: os-wireguard now attempts to start tunnels again when all DNS is configured
 * src: ixgbe: workaround errata about UDP frames with zero checksum
 * src: hpet: Allow a MMIO window smaller than 1K
-* src: ping: fix handling of IP packet sizes `[3] <FREEBSD:FreeBSD-SA-22:15.ping>`__ 
+* src: ping: fix handling of IP packet sizes `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:15.ping.asc>`__ 
 * ports: php 8.0.26 `[4] <https://www.php.net/ChangeLog-8.php#8.0.26>`__ 
 * ports: sqlite 3.40.0 `[5] <https://sqlite.org/releaselog/3_40_0.html>`__ 
 * ports: suricata 6.0.9 `[6] <https://suricata.io/2022/11/29/suricata-6-0-9-released/>`__ 
@@ -268,12 +268,12 @@ Here are the full patch notes:
 * plugins: os-wireguard 1.13 `[8] <https://github.com/opnsense/plugins/blob/stable/22.7/net/wireguard/pkg-descr>`__ 
 * src: revert "e1000: try auto-negotiation for fixed 100 or 10 configuration"
 * src: vxlan: check the size of data available in mbuf before using them
-* src: vm_page: fix a logic error in the handling of PQ_ACTIVE operations `[9] <FREEBSD:FreeBSD-EN-22:23.vm>`__ 
-* src: cam: provide compatibility for CAMGETPASSTHRU for periph drivers `[10] <FREEBSD:FreeBSD-EN-22:26.cam>`__ 
-* src: loader: fix elf lookup_symbol type filtering `[11] <FREEBSD:FreeBSD-EN-22:27.loader>`__ 
-* src: zfs: fix a pair of bugs in zfs_fhtovp() `[12] <FREEBSD:FreeBSD-EN-22:24.zfs>`__ 
-* src: zfs: fix use-after-free in btree code `[13] <FREEBSD:FreeBSD-EN-22:21.zfs>`__ 
-* src: tcp: finish SACK loss recovery on sudden lack of SACK blocks `[14] <FREEBSD:FreeBSD-EN-22:25.tcp>`__ 
+* src: vm_page: fix a logic error in the handling of PQ_ACTIVE operations `[9] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:23.vm.asc>`__ 
+* src: cam: provide compatibility for CAMGETPASSTHRU for periph drivers `[10] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:26.cam.asc>`__ 
+* src: loader: fix elf lookup_symbol type filtering `[11] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:27.loader.asc>`__ 
+* src: zfs: fix a pair of bugs in zfs_fhtovp() `[12] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:24.zfs.asc>`__ 
+* src: zfs: fix use-after-free in btree code `[13] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:21.zfs.asc>`__ 
+* src: tcp: finish SACK loss recovery on sudden lack of SACK blocks `[14] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:25.tcp.asc>`__ 
 * src: igc: remove unnecessary PHY ID checks
 * src: ixl: add support for I710 devices and remove non-inclusive language
 * src: ixl: fix SR-IOV panics
@@ -518,8 +518,8 @@ Here are the full patch notes:
 * plugins: os-zabbix-agent 1.13 `[3] <https://github.com/opnsense/plugins/blob/stable/22.7/net-mgmt/zabbix-agent/pkg-descr>`__ 
 * plugins: os-zabbix-proxy 1.9 `[4] <https://github.com/opnsense/plugins/blob/stable/22.7/net-mgmt/zabbix-proxy/pkg-descr>`__ 
 * src: rc: improve NAME_setup integration
-* src: zlib: fix a bug when getting a gzip header extra field with inflate() `[5] <FREEBSD:FreeBSD-SA-22:13.zlib>`__ 
-* src: tzdata: import tzdata 2022b and 2022c `[6] <FREEBSD:FreeBSD-EN-22:20.tzdata>`__ 
+* src: zlib: fix a bug when getting a gzip header extra field with inflate() `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:13.zlib.asc>`__ 
+* src: tzdata: import tzdata 2022b and 2022c `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:20.tzdata.asc>`__ 
 * ports: ldns 1.8.3 `[7] <https://raw.githubusercontent.com/NLnetLabs/ldns/1.8.3/Changelog>`__ 
 * ports: liblz4 1.9.4
 * ports: libxml 2.10.1 `[8] <http://www.xmlsoft.org/news.html>`__ 
@@ -565,12 +565,12 @@ Here are the full patch notes:
 * plugins: os-haproxy 3.11 `[4] <https://github.com/opnsense/plugins/blob/stable/22.7/net/haproxy/pkg-descr>`__ 
 * plugins: os-git-backup hides SSH keys by default
 * plugins: os-postfix disables GSSAPI for the time being `[5] <https://github.com/opnsense/plugins/blob/stable/22.7/mail/postfix/pkg-descr>`__ 
-* src: lib9p: remove potential buffer overwrite in l9p_puqids() `[6] <FREEBSD:FreeBSD-SA-22:12.lib9p>`__ 
-* src: vm_fault: shoot down shared mappings in vm_fault_copy_entry() `[7] <FREEBSD:FreeBSD-SA-22:11.vm>`__ 
-* src: elf_note_prpsinfo: handle more failures from proc_getargv() `[8] <FREEBSD:FreeBSD-SA-22:09.elf>`__ 
-* src: pam_exec: fix segfault when authtok is null `[9] <FREEBSD:FreeBSD-EN-22:19.pam_exec>`__ 
-* src: kevent: fix an off-by-one in filt_timerexpire_l() `[10] <FREEBSD:FreeBSD-EN-22:16.kqueue>`__ 
-* src: cam: leep periph_links when restoring CCB in camperiphdone() `[11] <FREEBSD:FreeBSD-EN-22:17.cam>`__ 
+* src: lib9p: remove potential buffer overwrite in l9p_puqids() `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:12.lib9p.asc>`__ 
+* src: vm_fault: shoot down shared mappings in vm_fault_copy_entry() `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:11.vm.asc>`__ 
+* src: elf_note_prpsinfo: handle more failures from proc_getargv() `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:09.elf.asc>`__ 
+* src: pam_exec: fix segfault when authtok is null `[9] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:19.pam_exec.asc>`__ 
+* src: kevent: fix an off-by-one in filt_timerexpire_l() `[10] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:16.kqueue.asc>`__ 
+* src: cam: leep periph_links when restoring CCB in camperiphdone() `[11] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:17.cam.asc>`__ 
 * src: pfctl: fix FOM_ICMP/POM_STICKYADDRESS clash
 * src: restrict default /root permissions to 750
 * src: rc: add ${name}_setup script support

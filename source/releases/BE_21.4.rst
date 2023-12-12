@@ -193,11 +193,11 @@ Here are the full patch notes:
 * plugins: os-telegraf 1.10.1 `[7] <https://github.com/opnsense/plugins/blob/stable/21.1/net-mgmt/telegraf/pkg-descr>`__ 
 * plugins: os-zabbix4-proxy 1.3 `[8] <https://github.com/opnsense/plugins/blob/stable/21.1/net-mgmt/zabbix4-proxy/pkg-descr>`__ 
 * plugins: os-zabbix5-proxy 1.5 `[9] <https://github.com/opnsense/plugins/blob/stable/21.1/net-mgmt/zabbix5-proxy/pkg-descr>`__ 
-* src: SMAP bypass `[10] <FREEBSD:FreeBSD-SA-21:11.smap>`__ 
-* src: missing message validation in libradius `[11] <FREEBSD:FreeBSD-SA-21:12.libradius>`__  `[12] <FREEBSD:FreeBSD-EN-21:17.libradius>`__ 
-* src: pms data corruption `[13] <FREEBSD:FreeBSD-EN-21:14.pms>`__ 
-* src: libcasper: fix descriptors numbers `[14] <FREEBSD:EN-21:19.libcasper>`__ 
-* src: linux: prevent integer overflow in futex_requeue `[15] <FREEBSD:EN-21:22.linux_futex>`__ 
+* src: SMAP bypass `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:11.smap.asc>`__ 
+* src: missing message validation in libradius `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:12.libradius.asc>`__  `[12] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:17.libradius.asc>`__ 
+* src: pms data corruption `[13] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:14.pms.asc>`__ 
+* src: libcasper: fix descriptors numbers `[14] <https://www.freebsd.org/security/advisories/EN-21:19.libcasper.asc>`__ 
+* src: linux: prevent integer overflow in futex_requeue `[15] <https://www.freebsd.org/security/advisories/EN-21:22.linux_futex.asc>`__ 
 * ports: filterlog 0.4 adds label support to output if applicable
 * ports: libxml fix for CVE-2021-3541
 * ports: nss 3.65 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_65.html>`__ 
@@ -272,13 +272,13 @@ Here are the full patch notes:
 * plugins: os-zabbix5-proxy 1.4 `[10] <https://github.com/opnsense/plugins/blob/stable/21.1/net-mgmt/zabbix5-proxy/pkg-descr>`__ 
 * src: axgbe: check for IFCAP_VLAN_HWTAGGING when reading descriptor
 * src: axgbe: add 1000BASE-BX SFP support
-* src: accept_filter: fix filter parameter handling `[11] <FREEBSD:FreeBSD-SA-21:09.accept_filter>`__ 
-* src: vm_fault: shoot down multiply mapped COW source page mappings `[12] <FREEBSD:FreeBSD-SA-21:08.vm>`__ 
-* src: mount: disallow mounting over a jail root `[13] <FREEBSD:FreeBSD-SA-21:10.jail_mount>`__ 
+* src: accept_filter: fix filter parameter handling `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:09.accept_filter.asc>`__ 
+* src: vm_fault: shoot down multiply mapped COW source page mappings `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:08.vm.asc>`__ 
+* src: mount: disallow mounting over a jail root `[13] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:10.jail_mount.asc>`__ 
 * src: em: add support for Intel I219 V10 device
 * src: em: fix a null de-reference in em_free_pci_resources
 * src: bsdinstall: switch to OPNsense branding
-* src: race condition in aesni(4) encrypt-then-auth operations `[14] <FREEBSD:FreeBSD-EN-21:11.aesni>`__ 
+* src: race condition in aesni(4) encrypt-then-auth operations `[14] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:11.aesni.asc>`__ 
 * ports: curl 7.77.0 `[15] <https://curl.se/changes.html#7_77_0>`__ 
 * ports: dnsmasq 2.85 `[16] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: expat 2.4.1
@@ -496,19 +496,19 @@ Here are the full patch notes:
 * src: netmap tun(4) support adds pseudo addresses to ethernet header emulation (contributed by Sunny Valley Networks)
 * src: add a manual page for axp(4) / AMD 10G Ethernet driver
 * src: fix traffic graph not showing bandwidth when IPS is enabled
-* src: panic when destroying VNET and epair simultaneously `[16] <FREEBSD:FreeBSD-EN-21:03.vnet>`__ 
-* src: uninitialized file system kernel stack leaks `[17] <FREEBSD:FreeBSD-SA-21:01.fsdisclosure>`__ 
-* src: Xen guest-triggered out of memory `[18] <FREEBSD:FreeBSD-SA-21:02.xenoom>`__ 
-* src: update timezone database information `[19] <FREEBSD:FreeBSD-EN-21:01.tzdata>`__ 
-* src: jail: Handle a possible race between jail_remove(2) and fork(2) `[20] <FREEBSD:FreeBSD-SA-21:04.jail_remove>`__ 
-* src: jail: Change both root and working directories in jail_attach(2) `[21] <FREEBSD:FreeBSD-SA-21:05.jail_chdir>`__ 
-* src: x86: free microcode memory later `[22] <FREEBSD:FreeBSD-EN-21:06.microcode>`__ 
-* src: xen-blkback: fix leak of grant maps on ring setup failure `[23] <FREEBSD:FreeBSD-SA-21:06.xen>`__ 
+* src: panic when destroying VNET and epair simultaneously `[16] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:03.vnet.asc>`__ 
+* src: uninitialized file system kernel stack leaks `[17] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:01.fsdisclosure.asc>`__ 
+* src: Xen guest-triggered out of memory `[18] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:02.xenoom.asc>`__ 
+* src: update timezone database information `[19] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:01.tzdata.asc>`__ 
+* src: jail: Handle a possible race between jail_remove(2) and fork(2) `[20] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:04.jail_remove.asc>`__ 
+* src: jail: Change both root and working directories in jail_attach(2) `[21] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:05.jail_chdir.asc>`__ 
+* src: x86: free microcode memory later `[22] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:06.microcode.asc>`__ 
+* src: xen-blkback: fix leak of grant maps on ring setup failure `[23] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:06.xen.asc>`__ 
 * src: rtsold: auto-probe point to point interfaces
 * src: growfs: update check-hash when doing large filesystem expansions
 * src: axgbe: change default parameters to prevent manual tunable settings
 * src: arp: avoid segfaulting due to out-of-bounds memory access
-* src: fix multiple OpenSSL vulnerabilities `[24] <FREEBSD:FreeBSD-SA-21:07.openssl>`__ 
+* src: fix multiple OpenSSL vulnerabilities `[24] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:07.openssl.asc>`__ 
 * src: axgbe: enable receive all mode to bypass the MAC filter to avoid dropping CARP MAC addresses
 * ports: ca_root_nss / nss 3.63 `[25] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_63.html>`__ 
 * ports: curl 7.75.0 `[26] <https://curl.se/changes.html#7_75_0>`__ 

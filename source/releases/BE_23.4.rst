@@ -88,10 +88,10 @@ Here are the full patch notes:
 * plugins: os-zabbix-proxy plugin variant for Zabbix 6.4
 * src: axgbe: account for 4 SFP ports during GPIO expander check
 * src: ipsec: make algorithm tables read-only
-* src: mpr: fix copying of event_mask `[3] <FREEBSD:FreeBSD-EN-23:07.mpr>`__ 
-* src: pam_krb5: fix spoofing vulnerability `[4] <FREEBSD:FreeBSD-SA-23:04.pam_krb5>`__ 
-* src: loader: comconsole: do not unconditionally wipe out hw.uart.console `[5] <FREEBSD:FreeBSD-EN-23:06.loader>`__ 
-* src: contrib/tzdata: import tzdata 2023c `[6] <FREEBSD:FreeBSD-EN-23:05.tzdata>`__ 
+* src: mpr: fix copying of event_mask `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:07.mpr.asc>`__ 
+* src: pam_krb5: fix spoofing vulnerability `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:04.pam_krb5.asc>`__ 
+* src: loader: comconsole: do not unconditionally wipe out hw.uart.console `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:06.loader.asc>`__ 
+* src: contrib/tzdata: import tzdata 2023c `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:05.tzdata.asc>`__ 
 * src: ixgbe: change if condition for RSS and rxcsum
 * src: pf: fix pf_nv##_array() size check
 * src: e1000: fix VLAN 0

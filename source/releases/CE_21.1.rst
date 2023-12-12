@@ -122,8 +122,8 @@ Here are the full patch notes:
 * plugins: os-telegraf 1.11.0 `[4] <https://github.com/opnsense/plugins/blob/stable/21.1/net-mgmt/telegraf/pkg-descr>`__ 
 * plugins: os-tor Phalcon 4 fix
 * plugins: os-zabbix5-proxy is now a plugin variant
-* src: libcasper: fix descriptors numbers `[5] <FREEBSD:EN-21:19.libcasper>`__ 
-* src: linux: prevent integer overflow in futex_requeue `[6] <FREEBSD:EN-21:22.linux_futex>`__ 
+* src: libcasper: fix descriptors numbers `[5] <https://www.freebsd.org/security/advisories/EN-21:19.libcasper.asc>`__ 
+* src: linux: prevent integer overflow in futex_requeue `[6] <https://www.freebsd.org/security/advisories/EN-21:22.linux_futex.asc>`__ 
 * ports: clog 1.0.2 fixes garbage header write on init
 * ports: libxml 2.9.12 `[7] <http://www.xmlsoft.org/news.html>`__ 
 * ports: nettle 3.7.3
@@ -186,9 +186,9 @@ Here are the full patch notes:
 * plugins: os-nginx 1.23 `[1] <https://github.com/opnsense/plugins/blob/stable/21.1/www/nginx/pkg-descr>`__ 
 * plugins: os-wireguard 1.7 `[2] <https://github.com/opnsense/plugins/blob/stable/21.1/net/wireguard/pkg-descr>`__ 
 * plugins: os-zabbix4-proxy is now a plugin variant
-* src: SMAP bypass `[3] <FREEBSD:FreeBSD-SA-21:11.smap>`__ 
-* src: missing message validation in libradius `[4] <FREEBSD:FreeBSD-SA-21:12.libradius>`__  `[5] <FREEBSD:FreeBSD-EN-21:17.libradius>`__ 
-* src: pms data corruption `[6] <FREEBSD:FreeBSD-EN-21:14.pms>`__ 
+* src: SMAP bypass `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:11.smap.asc>`__ 
+* src: missing message validation in libradius `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:12.libradius.asc>`__  `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:17.libradius.asc>`__ 
+* src: pms data corruption `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:14.pms.asc>`__ 
 * ports: curl 7.77.0 `[7] <https://curl.se/changes.html#7_77_0>`__ 
 * ports: isc-dhcp 4.4.2-P1 `[8] <https://downloads.isc.org/isc/dhcp/4.4.2-P1/dhcp-4.4.2-P1-RELNOTES>`__ 
 * ports: nss 3.66 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_66.html>`__ 
@@ -262,7 +262,7 @@ Here are the full patch notes:
 * plugins: os-zabbix5-proxy 1.5 `[9] <https://github.com/opnsense/plugins/blob/stable/21.1/net-mgmt/zabbix5-proxy/pkg-descr>`__ 
 * src: axgbe: check for IFCAP_VLAN_HWTAGGING when reading descriptor
 * src: axgbe: add 1000BASE-BX SFP support
-* src: race condition in aesni(4) encrypt-then-auth operations `[10] <FREEBSD:FreeBSD-EN-21:11.aesni>`__ 
+* src: race condition in aesni(4) encrypt-then-auth operations `[10] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:11.aesni.asc>`__ 
 * ports: curl 7.76.1 `[11] <https://curl.se/changes.html#7_76_1>`__ 
 * ports: expat 2.4.1
 * ports: filterlog 0.4 adds label support to output if applicable
@@ -342,9 +342,9 @@ Here are the full patch notes:
 * plugins: os-wireguard 1.6 `[9] <https://github.com/opnsense/plugins/blob/stable/21.1/net/wireguard/pkg-descr>`__ 
 * plugins: os-zabbix5-proxy 1.4 `[10] <https://github.com/opnsense/plugins/blob/stable/21.1/net-mgmt/zabbix5-proxy/pkg-descr>`__ 
 * src: axgbe: enable receive all mode to bypass the MAC filter to avoid dropping CARP MAC addresses
-* src: accept_filter: fix filter parameter handling `[11] <FREEBSD:FreeBSD-SA-21:09.accept_filter>`__ 
-* src: vm_fault: shoot down multiply mapped COW source page mappings `[12] <FREEBSD:FreeBSD-SA-21:08.vm>`__ 
-* src: mount: disallow mounting over a jail root `[13] <FREEBSD:FreeBSD-SA-21:10.jail_mount>`__ 
+* src: accept_filter: fix filter parameter handling `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:09.accept_filter.asc>`__ 
+* src: vm_fault: shoot down multiply mapped COW source page mappings `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:08.vm.asc>`__ 
+* src: mount: disallow mounting over a jail root `[13] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:10.jail_mount.asc>`__ 
 * src: em: add support for Intel I219 V10 device
 * src: em: fix a null de-reference in em_free_pci_resources
 * src: bsdinstall: switch to OPNsense branding
@@ -419,7 +419,7 @@ Here are the full patch notes:
 * plugins: os-theme-vicuna 1.4 (contributed by Team Rebellion)
 * plugins: os-wireguard 1.5 `[5] <https://github.com/opnsense/plugins/blob/stable/21.1/net/wireguard/pkg-descr>`__ 
 * plugins: os-wol 2.4 fixes dashboard widget (contributed by kulikov-a)
-* src: fix multiple OpenSSL vulnerabilities `[6] <FREEBSD:FreeBSD-SA-21:07.openssl>`__ 
+* src: fix multiple OpenSSL vulnerabilities `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:07.openssl.asc>`__ 
 * ports: ca_root_nss / nss 3.63 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_63.html>`__ 
 * ports: libressl 3.2.5 `[8] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.5-relnotes.txt>`__ 
 * ports: openldap 2.4.58 `[9] <https://www.openldap.org/software/release/changes.html>`__ 
@@ -482,10 +482,10 @@ Here are the full patch notes:
 * plugins: os-haproxy 3.0 `[1] <https://github.com/opnsense/plugins/blob/stable/21.1/net/haproxy/pkg-descr>`__ 
 * plugins: os-nginx 1.21 `[2] <https://github.com/opnsense/plugins/blob/stable/21.1/www/nginx/pkg-descr>`__ 
 * plugins: os-node_exporter 1.1 `[3] <https://github.com/opnsense/plugins/blob/stable/21.1/sysutils/node_exporter/pkg-descr>`__ 
-* src: jail: Handle a possible race between jail_remove(2) and fork(2) `[4] <FREEBSD:FreeBSD-SA-21:04.jail_remove>`__ 
-* src: jail: Change both root and working directories in jail_attach(2) `[5] <FREEBSD:FreeBSD-SA-21:05.jail_chdir>`__ 
-* src: x86: free microcode memory later `[6] <FREEBSD:FreeBSD-EN-21:06.microcode>`__ 
-* src: xen-blkback: fix leak of grant maps on ring setup failure `[7] <FREEBSD:FreeBSD-SA-21:06.xen>`__ 
+* src: jail: Handle a possible race between jail_remove(2) and fork(2) `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:04.jail_remove.asc>`__ 
+* src: jail: Change both root and working directories in jail_attach(2) `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:05.jail_chdir.asc>`__ 
+* src: x86: free microcode memory later `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:06.microcode.asc>`__ 
+* src: xen-blkback: fix leak of grant maps on ring setup failure `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:06.xen.asc>`__ 
 * src: rtsold: auto-probe point to point interfaces
 * src: growfs: update check-hash when doing large filesystem expansions
 * src: axgbe: change default parameters to prevent manual tunable settings
@@ -601,10 +601,10 @@ Here are the full patch notes:
 * plugins: os-nginx upstream TLS verification fix (contributed by kulikov-a)
 * plugins: os-theme-cicada 1.26 (contributed by Team Rebellion)
 * plugins: os-theme-vicuna 1.2 (contributed by Team Rebellion)
-* src: panic when destroying VNET and epair simultaneously `[1] <FREEBSD:FreeBSD-EN-21:03.vnet>`__ 
-* src: uninitialized file system kernel stack leaks `[2] <FREEBSD:FreeBSD-SA-21:01.fsdisclosure>`__ 
-* src: Xen guest-triggered out of memory `[3] <FREEBSD:FreeBSD-SA-21:02.xenoom>`__ 
-* src: update timezone database information `[4] <FREEBSD:FreeBSD-EN-21:01.tzdata>`__ 
+* src: panic when destroying VNET and epair simultaneously `[1] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:03.vnet.asc>`__ 
+* src: uninitialized file system kernel stack leaks `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:01.fsdisclosure.asc>`__ 
+* src: Xen guest-triggered out of memory `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:02.xenoom.asc>`__ 
+* src: update timezone database information `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:01.tzdata.asc>`__ 
 * ports: dnsmasq 2.84 `[5] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: lighttpd 1.4.59 `[6] <http://www.lighttpd.net/2021/2/2/1.4.59/>`__ 
 * ports: krb5 1.19 `[7] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
@@ -853,7 +853,7 @@ Here are the full patch notes against 20.7.7_1:
 * ui: move sidebar stage from session to local storage
 * plugins: os-bind 1.15 `[2] <https://github.com/opnsense/plugins/blob/stable/21.1/dns/bind/pkg-descr>`__ 
 * plugins: os-frr 1.21 `[3] <https://github.com/opnsense/plugins/blob/stable/21.1/net/frr/pkg-descr>`__ 
-* src: fix OpenSSL NULL pointer de-reference `[4] <FREEBSD:FreeBSD-SA-20:33.openssl>`__ 
+* src: fix OpenSSL NULL pointer de-reference `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:33.openssl.asc>`__ 
 * src: fix AES-CCM requests with an AAD size smaller than a single block
 * src: introduce HARDEN_KLD to ensure DTrace functionality
 * src: fix partial scrub of multicast packages
