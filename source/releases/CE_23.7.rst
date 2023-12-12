@@ -79,6 +79,10 @@ Here are the full patch notes:
 * ports: squid update fixes parent proxy crash `[9] <https://github.com/squid-cache/squid/commit/b6c01a2>`__ 
 * ports: strongswan 5.9.13 `[10] <https://github.com/strongswan/strongswan/releases/tag/5.9.13>`__ 
 
+A hotfix release was issued as 23.7.10_1:
+
+* mvc: provide iterateRecursiveItems() in BaseModel required by IPsec RADIUS support
+
 
 
 --------------------------------------------------------------------------
