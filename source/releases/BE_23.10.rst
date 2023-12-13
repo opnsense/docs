@@ -17,6 +17,174 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+23.10.1 (December 13, 2023)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 23.7.9 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: rewrite trust integration for certctl use
+* system: improve UX on new configuration history page
+* system: update recovery pattern for /etc/ttys
+* system: improve service sync UX on high availability settings page
+* system: migrate gateways to model representation
+* system: improve backup restore area selection
+* system: keep polling if watcher cannot load a class to fetch status
+* system: add "Constraint groups" option to LDAP authentication
+* system: minor changes related to recent Gateway class refactoring
+* system: use unified style for "return preg_match" idiom so the caller receives a boolean
+* system: provide mismatching interface logic without reboot on configuration restore
+* system: allow new backup API to download latest configuration directly via /api/core/backup/download/this
+* system: extend restore to be able to migrate older configurations cleanly
+* system: make trust store reload conditional
+* system: add SHA-512 password hash compliance option
+* system: allow special selector for plugins_configure()
+* system: handle broken menu XML files more gracefully
+* system: fix PHP warnings and SSH fail on empty "ssh" XML node
+* system: fix a couple of PHP warnings in auth server pages
+* system: add support for Google Shared drives backup (contributed by Jeremy Huylebroeck)
+* system: change wait time to 1 second per round, total of 7 in console prompts
+* system: update syslog model
+* system: improve config revision audit ability
+* system: cleanse system_get_language_code() output
+* system: safeguard /tmp/PHP_errors.log file before usage
+* reporting: refactor RRD data retrieval and simplify health page UX
+* interfaces: make link-local VIPs unique per interface
+* interfaces: make VIPs sortable and searchable
+* interfaces: improve assignments page UX and simplify its bridge validation
+* interfaces: allow multiple IP addresses in DHCP reject clause (contributed by Csaba Kos)
+* interfaces: enable IPv6 early on trackers
+* interfaces: do not reload filter in rc.linkup
+* interfaces: add input validations to VXLAN model (contributed by Monviech)
+* interfaces: add NO_DAD flag to static IPv6 configurations
+* interfaces: fix config locking when deleting a VIP node
+* interfaces: assorted bridge handling improvements
+* interfaces: prefer GUAs over ULAs when returning addresses
+* interfaces: improve wireless channel parsing
+* interfaces: mark WireGuard devices as virtual
+* interfaces: update LAGG and loopback models
+* interfaces: improve VIP validation, fix broadcast generation
+* interfaces: add validation for proxy ARP strict subnet use
+* interfaces: move interface list widget link to assignments page
+* firewall: fix regression in BaseContentParser throwing an error
+* firewall: keep filtered items available longer in live log
+* firewall: port can be zero in automatic rule so render it accordingly
+* firewall: minor update to shaper model
+* firewall: make sure firewall log reading always emits a label
+* firewall: fix business bogons set fetch
+* firewall: add section for automatic rules being added at the end of the ruleset
+* firewall: allow multiple networks given to wrap in the GUI
+* captive portal: fix log target
+* firmware: stop using the "pkg+http(s)" scheme which breaks using newer pkg 1.20
+* firmware: invalidate GUI caches earlier since certctl blocks this longer now
+* firmware: add root file system to health audit
+* firmware: stop manually adjusting firmware config structure during factory reset
+* firmware: clear stray "pkgsave" and "pkgtemp" pkg-upgrade leftovers
+* firmware: changed LeaseWeb and NYC BUG mirrors to use HTTPS (contributed by jeremiah-rs)
+* firmware: opnsense-update: new "-X" mode for canonical bogons/changelog set fetch URL
+* firmware: opnsense-version: support base/kernel hash info
+* ipsec: count user in "Overview" tab and improve "Mobile Users" tab (contributed by Monviech)
+* ipsec: make description in connections required (contributed by Michael Muenz)
+* ipsec: connection proposal sorting and additions
+* ipsec: mute ipsec.conf related load errors
+* ipsec: fix typo in VTI protocol family parsing
+* ipsec: add secondary tunnel address pair for VTI dual-stack purposes
+* ipsec: add "aes256-sha256" proposal option (no PFS)
+* ipsec: move save button on mobile page into its own container
+* lang: assorted updates and completed French translation
+* lang: update Chinese, Czech, Italian, Korean, Polish and Spanish
+* monit: minor update to model
+* openvpn: change verify-client-cert to a server only setting and fix validation
+* openvpn: do not flush state table on linkdown
+* openvpn: host bits must not be set for IPv4 server directive in instances
+* openvpn: obey username_as_common_name setting
+* unbound: avoid dynamic reloads when possible
+* unbound: improved UX of the overrides page
+* unbound: minor update to model
+* unbound: remove localhost from automatically created ACL
+* web proxy: handle the major update to version 6 and update model
+* web proxy: fix setting unknown language directory
+* backend: pluginctl: improve listing plugins of selected type
+* backend: add physical_interface and physical_interfaces as template helper function
+* backend: add file_exists as template helper function
+* mvc: add hasChanged() to detect changes to the config file
+* mvc: allow empty value in UniqueConstraint if not required by field
+* mvc: improve field validation message handling
+* mvc: fix regression in PortField with setEnableAlias() that would lowercase alias names
+* mvc: style update in diagnostics, firewall, intrusion detection and ipsec models
+* mvc: enforce uniqueness and remove validation message in UnqiueIdField
+* mvc: config should be locked before calling checkAndThrowSafeDelete()
+* mvc: instead of failing invalidate a non-match in CSVListField
+* mvc: split tree-view template and javascript and hook via controllers
+* ui: fix the styling of the base form button when overriding the label
+* ui: trigger change message on toggle and delete
+* ui: prevent form submit for MVC pages
+* ui: improve default modal padding
+* ui: upgrade bootstrap-select to v1.13.18
+* ui: improve saveFormToEndpoint() UX
+* plugins: os-OPNBEcore configuration merge improvements
+* plugins: os-OPNProxy adds TLS client certificate validation
+* plugins: os-OPNcentral now passes "impersonated_by" revision attribute to connected node
+* plugins: os-bind 1.28 `[1] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/bind/pkg-descr>`__ 
+* plugins: os-c-icap fix for upstream update syntax error (contributed by Andy Binder)
+* plugins: os-ddclient 1.17 `[2] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-frr 1.37 `[3] <https://github.com/opnsense/plugins/blob/stable/23.7/net/frr/pkg-descr>`__ 
+* plugins: os-net-snmp fix for directory setup (contributed by doktornotor)
+* plugins: os-nginx 1.32.2 `[4] <https://github.com/opnsense/plugins/blob/stable/23.7/www/nginx/pkg-descr>`__ 
+* plugins: os-openconnect 1.4.5 `[5] <https://github.com/opnsense/plugins/blob/stable/23.7/security/openconnect/pkg-descr>`__ 
+* plugins: os-rspamd 1.13 `[6] <https://github.com/opnsense/plugins/blob/stable/23.7/mail/rspamd/pkg-descr>`__ 
+* plugins: os-squid adds a meta package for web proxy core removal in 24.1
+* plugins: os-theme-ciada fix for previous regression
+* plugins: os-wireguard 2.5 `[7] <https://github.com/opnsense/plugins/blob/stable/23.7/net/wireguard/pkg-descr>`__ 
+* plugins: os-wireguard-go fix for device registration
+* src: pf: enable the syncookie feature for IPv6
+* src: pflog: log packet dropped by default rule with drop
+* src: re: add Realtek Killer Ethernet E2600 IDs
+* src: libnetmap: fix interface name parsing restriction
+* src: tun/tap: correct ref count on cloned cdevs
+* src: bpf: fix writing of buffer bigger than PAGESIZE
+* src: net: check per-flow priority code point for untagged traffic
+* src: libpfctl: implement status counter accessor functions
+* src: pf: expose syncookie active/inactive status
+* src: iavf: add explicit ifdi_needs_reset for VLAN changes
+* src: vmxnet3: do restart on VLAN changes
+* src: iflib: invert default restart on VLAN changes
+* src: pf: fix state leak
+* src: pfctl: fix incorrect mask on dynamic address
+* src: libpfctl: assorted improvements
+* src: msdosfs: zero partially valid extended cluster `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:12.msdosfs.asc>`__ 
+* src: copy_file_range: require CAP_SEEK capability `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:13.capsicum.asc>`__ 
+* src: fflush: correct buffer handling in __sflush `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:15.stdio.asc>`__ 
+* src: cap_net: correct capability name from addr2name to name2addr `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:16.cap_net.asc>`__ 
+* src: regcomp: use unsigned char when testing for escapes `[12] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:14.regcomp.asc>`__ 
+* src: clang: sanitizer failure with ASLR enabled `[13] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:15.sanitizer.asc>`__ 
+* src: dhclient: do not add 0.0.0.0 interface alias
+* src: ice: match irdma interface changes
+* src: ixv: separate VFTA table for each interface
+* src: pf: expose more syncookie state information to userspace
+* src: pf: fix mem leaks upon vnet destroy
+* src: pf: remove incorrect fragmentation check `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:17.pf.asc>`__ 
+* src: rc: fix restart _precmd issue with _setup
+* src: re: add support for 8168FP HW rev
+* src: zfs: check dnode and its data for dirtiness in dnode_is_dirty() `[15] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:16.openzfs.asc>`__ 
+* ports: curl 8.4.0 `[16] <https://curl.se/changes.html#8_4_0>`__ 
+* ports: lighttpd 1.4.73 `[17] <https://www.lighttpd.net/2023/10/30/1.4.73/>`__ 
+* ports: nss 3.94 `[18] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_94.html>`__ 
+* ports: openssl111 supersedes openssl package
+* ports: openvpn 2.6.8 `[19] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.8>`__ 
+* ports: perl 5.36.1 `[20] <https://perldoc.perl.org/5.36.1/perldelta>`__ 
+* ports: php 8.2.12 `[21] <https://www.php.net/ChangeLog-8.php#8.2.12>`__ 
+* ports: sqlite 3.44.0 `[22] <https://sqlite.org/releaselog/3_44_0.html>`__ 
+* ports: squid 6.5 `[23] <http://www.squid-cache.org/Versions/v6/squid-6.5-RELEASENOTES.html>`__ 
+* ports: strongswan 5.9.13 `[24] <https://github.com/strongswan/strongswan/releases/tag/5.9.13>`__ 
+* ports: sudo 1.9.15p2 `[25] <https://www.sudo.ws/stable.html#1.9.15p2>`__ 
+* ports: suricata 6.0.15 `[26] <https://suricata.io/2023/10/19/suricata-6-0-15-released/>`__ 
+* ports: unbound 1.19.0 `[27] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-19-0>`__ 
+
+
+--------------------------------------------------------------------------
 23.10 (October 17, 2023)
 --------------------------------------------------------------------------
 
