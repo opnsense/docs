@@ -592,6 +592,12 @@ A selection of the most relevant settings can be found in the table below.
 
       To reduce the chances of a collision, also make sure to reserve enough space at the server as the address might already be assigned to a dynamic client otherwise.
 
+
+.. Tip::
+
+      When using topology "subnet" the netmask usually equals the one defined in the instance itself as the gateway
+      being pushed to the client is the first adress in the network and otherwise unreachable.
+
 --------------------------
 Wireguard
 --------------------------
