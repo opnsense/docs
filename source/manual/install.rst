@@ -238,7 +238,7 @@ For Unix-like OSes use the following command:
    bzip2 -d OPNsense-<filename>.bz2
 
 For Windows use an application like `7zip <https://www.7-zip.org/download.html>`_.  The ``.bz2`` will
-be removed from the end of the filename after command/applcation completes.
+be removed from the end of the filename after command/application completes.
 
 After unpacking the image you can create the installation media. The easiest method to install
 OPNsense is to use the USB "`vga <https://docs.opnsense.org/manual/install.html#installation-media>`_"
