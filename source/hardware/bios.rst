@@ -1,5 +1,5 @@
 ====================================
-BIOS updates
+BIOS updates / settings
 ====================================
 
 This page is dedicated to up-to-date BIOS update downloads as well as a generic instruction on
@@ -156,3 +156,14 @@ If the update is complete, the machine will power off. **Do NOT do anything unti
 **Step 9**
 
 Reboot the machine and check the new BIOS version in either the boot log or the BIOS itself.
+
+
+**Hyper threading**
+=====================================================================================================================
+
+Selected models do support hyper threading, but as effectiveness depends on workload, we tend to disable it by default.
+If you do want to enable it when supported,  enter the setup utility and search for the following menu item:
+
+    AMD CBS -> Zen Common Options  -> Core/Thread Enablement  -> SMTEN
+
+Select :code:`Auto` here to enable the feature.
