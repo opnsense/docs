@@ -47,7 +47,7 @@ General Settings
 :Require NoFilter:
     Only use resolvers without filtering. Otherwise requests would also filtered for adult content or ad's.
 :Force TCP:
-    Always use TCP to connect to upstream servers. This can be can be useful if you need to route everything
+    Always use TCP to connect to upstream servers. This can be useful if you need to route everything
     through Tor, otherwise keep it disabled.
 :Proxy:
     Use this to route all TCP connections to a local Tor node, format has to be like 127.0.0.1:9050
