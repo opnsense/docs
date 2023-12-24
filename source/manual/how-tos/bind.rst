@@ -65,7 +65,7 @@ DNSBL
     Here you can select the lists to use. Do not just select all and save. There are
     websites not loading content when nested ads are not loaded.
 :Whitelist Domains:
-    When a website is blocked due to a false positiv you can enter the domain name here
+    When a website is blocked due to a false positive you can enter the domain name here
     so it is whitelisted before the blacklists come into play.
 
 The Blacklists are downloaded and updated with every **Save** within BIND configuration.
