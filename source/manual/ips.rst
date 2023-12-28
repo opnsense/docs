@@ -67,7 +67,7 @@ drop the packet that would have also been dropped by the firewall.
 
     IDS mode is available on almost all (virtual) network types.
     When your network card is not (fully) supported, you can set the tunable :code:`dev.netmap.admode` to the value :code:`2`
-    in which case emlated mode will be enforced (Configurable in :menuselection:`System --> Settings --> Tunables`). A list of natively
+    in which case emulated mode will be enforced (Configurable in :menuselection:`System --> Settings --> Tunables`). A list of natively
     `supported physical adapters`_ is available in the FreeBSD man page.
 
 .. _RFC 1918: https://tools.ietf.org/html/rfc1918
