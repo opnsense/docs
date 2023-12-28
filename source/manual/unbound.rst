@@ -325,14 +325,14 @@ the list maintainers.
 ====================================  ===============================================================================
 Abuse.ch - ThreatFox IOC database     https://threatfox.abuse.ch/
 AdAway List                           https://adaway.org/hosts.txt
-AdGuard List                          https://justdomains.github.io/blocklists/lists/adguarddns-justdomains.txt
+AdGuard List                          https://v.firebog.net/hosts/AdguardDNS.txt
 OISD - Domain Blocklist Ads*          https://small.oisd.nl/domainswild
 OISD - Domain Blocklist Big*          https://big.oisd.nl/domainswild
 OISD - Domain Blocklist NSFW*         https://nsfw.oisd.nl/domainswild
 Blocklist.site                        https://github.com/blocklistproject/Lists
-EasyList                              https://justdomains.github.io/blocklists/#the-lists
-Easyprivacy                           https://justdomains.github.io/blocklists/#the-lists
-NoCoin List                           https://justdomains.github.io/blocklists/#the-lists
+EasyList                              https://v.firebog.net/hosts/Easylist.txt
+Easyprivacy                           https://v.firebog.net/hosts/Easyprivacy.txt
+NoCoin List                           https://github.com/hoshsadiq/adblock-nocoin-list/
 PornTop1M List                        https://github.com/chadmayfield/my-pihole-blocklists
 Simple Ad List                        https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
 Simple Tracker List                   https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
