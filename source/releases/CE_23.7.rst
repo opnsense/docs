@@ -82,6 +82,7 @@ Here are the full patch notes:
 A hotfix release was issued as 23.7.10_1:
 
 * mvc: provide iterateRecursiveItems() in BaseModel required by IPsec RADIUS support
+* ports: openssh 9.6p1 `[11] <https://www.openssh.com/txt/release-9.6>`__ 
 
 
 

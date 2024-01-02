@@ -183,6 +183,13 @@ Here are the full patch notes:
 * ports: suricata 6.0.15 `[26] <https://suricata.io/2023/10/19/suricata-6-0-15-released/>`__ 
 * ports: unbound 1.19.0 `[27] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-19-0>`__ 
 
+A hotfix release was issued as 23.10.1_2:
+
+* firewall: fix traceback in OpenVPN group alias due to wrong return type
+* firewall: fix missing physical_interface() in shaper template
+* ports: openssh 9.6p1 `[28] <https://www.openssh.com/txt/release-9.6>`__ 
+
+
 
 --------------------------------------------------------------------------
 23.10 (October 17, 2023)
