@@ -49,7 +49,7 @@ We defined WAN and WAN2, where WAN will be our primary (default) gateway.
 
     Before diving into the gateway group settings, make sure to check if both interfaces are connected to a
     gateway in :menuselection:`Interfaces -> [XX]` when using static assignments. On a default setup,
-    these settings are responsible for creating outbound nat rules when tarffic leaves the interface and handle
+    these settings are responsible for creating outbound nat rules when traffic leaves the interface and handle
     the return path using policy base routing rules (:code:`reply-to`, :code:`route-to`).
 
 Step 1 - Add monitor IPs
