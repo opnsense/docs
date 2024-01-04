@@ -733,7 +733,7 @@ Here are the full patch notes against 20.7.8:
 * ports: igmpproxy 0.3 `[10] <https://github.com/pali/igmpproxy/releases/tag/0.3>`__ 
 * ports: nss 3.61 `[11] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_61.html>`__ 
 * ports: openldap 2.4.57 `[12] <https://www.openldap.org/software/release/changes.html>`__ 
-* ports: py-netaddr 0.8.0 `[13] <https://pypi.org/project/netaddr/0.8.0/>`__ 
+* ports: py-netaddr 0.8.0 `[13] <https://netaddr.readthedocs.io/en/latest/changes.html#release-0-8-0>`__ 
 * ports: sudo 1.9.5p2 `[14] <https://www.sudo.ws/stable.html#1.9.5p2>`__ 
 
 The public key for the 21.1 series is:

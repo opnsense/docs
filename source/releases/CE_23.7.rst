@@ -27,6 +27,54 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+23.7.11 (January 04, 2024)
+--------------------------------------------------------------------------
+
+
+The final test phase for 24.1 is starting just as 23.7 strechtes towards
+its inevitable end of life.  At the moment it is unlcear if this release
+will be the last one or not so we shall refrain from stating something that
+may not be true in the coming weeks.  ;)
+
+Of special note is the Python rewrite of the relevant FreeBSD certctl tool
+bits that are needed to register certificates in the system.  It should be
+about 30 times faster now than it was before.
+
+Here are the full patch notes:
+
+* system: implement relevant certctl tool functionality in Python to increase performance
+* system: fix log severity selector (contributed by kulikov-a)
+* system: include IPv6 link-local interface addresses for web GUI and OpenSSH (contributed by Maurice Walker)
+* system: update cron and gateways model
+* interfaces: obey menu group sequence when specified
+* firewall: fix traceback in OpenVPN group alias due to wrong return type
+* firewall: fix missing physical_interface() in shaper template
+* dhcp: cache backend action "interface list macdb" to increase responsiveness
+* dhcp: allow saving with invalid range when IPv4 server is disabled
+* dhcp: do not clobber $range_to / $range_from with the legacy test for lower 64 bit only input
+* firmware: opnsense-update: avoid rewriting .cshrc and .profile files on base set updates
+* firmware: add audit messages for relevant API actions
+* firmware: implement "always reboot" option
+* firmware: add unlocked mode to launcher script
+* firmware: use pluggable package repository scripts
+* lang: assorted language updates
+* network time: prevent the service from listening on a wildcard when selecting specific interfaces (contributed by doktornotor)
+* openvpn: add virtual IPv6 address to widget and status page (contributed by cs-1)
+* openvpn: consider clients missing CARP VHID as disabled
+* unbound: replace JustDomains with Firebog blocklists (contributed by Amy Nagle)
+* unbound: update root hints
+* plugins: os-acme-client 3.20 `[1] <https://github.com/opnsense/plugins/blob/stable/23.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-ddclient 1.19 `[2] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-wireguard 2.6 `[3] <https://github.com/opnsense/plugins/blob/stable/23.7/net/wireguard/pkg-descr>`__ 
+* ports: curl 8.5.0 `[4] <https://curl.se/changes.html#8_5_0>`__ 
+* ports: nss 3.95 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_95.html>`__ 
+* ports: php 8.2.14 `[6] <https://www.php.net/ChangeLog-8.php#8.2.14>`__ 
+* ports: py-netaddr 0.10.0 `[7] <https://netaddr.readthedocs.io/en/latest/changes.html#release-0-10-0>`__ 
+* ports: squid 6.6 `[8] <http://www.squid-cache.org/Versions/v6/squid-6.6-RELEASENOTES.html>`__ 
+* ports: sudo 1.9.15p4 `[9] <https://www.sudo.ws/stable.html#1.9.15p4>`__ 
+
+
+--------------------------------------------------------------------------
 23.7.10 (December 12, 2023)
 --------------------------------------------------------------------------
 

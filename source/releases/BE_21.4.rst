@@ -524,7 +524,7 @@ Here are the full patch notes:
 * ports: perl 5.32.1 `[36] <https://perldoc.perl.org/5.32.1/perldelta>`__ 
 * ports: php 7.3.27 `[37] <https://www.php.net/ChangeLog-7.php#7.3.27>`__ 
 * ports: pkg now provides fallback for version mismatch on pkg-add
-* ports: py-netaddr 0.8.0 `[38] <https://pypi.org/project/netaddr/0.8.0/>`__ 
+* ports: py-netaddr 0.8.0 `[38] <https://netaddr.readthedocs.io/en/latest/changes.html#release-0-8-0>`__ 
 * ports: python 3.7.10 `[39] <https://docs.python.org/release/3.7.10/whatsnew/changelog.html>`__ 
 * ports: sqlite 3.34.1 `[40] <https://sqlite.org/releaselog/3_34_1.html>`__ 
 * ports: squid 4.14 `[41] <http://www.squid-cache.org/Versions/v4/squid-4.14-RELEASENOTES.html>`__ 
