@@ -486,6 +486,12 @@ OpenVPN is most commonly used in combination with a public key infrastructure, w
 signs certificates for both server and clients (Also know as TLS Mode).
 More information about this topic is available in our  :doc:`Trust section <certificates>`.
 
+.. Tip::
+
+  As of version 24.1 OPNsense is able to use OCSP to validate client certificates when using the new Instances. Make sure :code:`Use OCSP (when available)`
+  is enabled in the trust section of the server instance and the CA used contains a proper :code:`AuthorityInfoAccess` extension
+  as described in our  :doc:`Trust section <certificates>`.
+
 .................................
 Firewall rules
 .................................
