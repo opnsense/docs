@@ -219,6 +219,8 @@ Check if hostnames are valid, includes the following options:
    "HostWildcardAllowed", "Y,N", "Allow :code:`*` for all hostnames"
    "FqdnWildcardAllowed", "Y,N", "Allow partial wildcard for fully qualified domain names (e.g. :code:`*.my.top.level.domain`)"
    "ZoneRootAllowed", "Y,N", "Allow the zone root marker (:code:`@`)"
+   "AsList", "Y,N", "Field type should return list items"
+   "FieldSeparator", ":code:`text`", "Separator character to use"
 
 
 IntegerField
@@ -322,6 +324,22 @@ The following example would read the enabled property from the config xml, which
       Values stored into this fieldtype will be discarded without further notice, which practically means the target structure
       will always contain an empty field as long as its used as a pointer.
       When functionality migrates to mvc, you can switch the type and supply migration code to load the initial values.
+
+
+MacAddressField
+------------------------------------
+
+Validate if the given value (or multiple values) is a valid MAC address.
+
+.. csv-table:: MacAddressField
+   :header: "Parameter", "Options", "Purpose"
+   :widths: 30, 20, 40
+
+   "default", ":code:`text`", "Default value for new attributes"
+   "Required", "Y,N", "Mark field as required"
+   "ValidationMessage", ":code:`text`", "Error message on validation failure"
+   "AsList", "Y,N", "Field type should return list items"
+   "FieldSeparator", ":code:`text`", "Separator character to use"
 
 
 ModelRelationField
