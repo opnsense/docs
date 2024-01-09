@@ -67,8 +67,9 @@ Now click on **Apply**
 
 Step 6 - Test using EICAR
 -------------------------
-To test if the engine is operational and functional go to http://www.eicar.org/?page_id=3950
-on this page you will find several files you can test.
+To test if the engine is operational and functional go to http://pkg.opnsense.org/test/eicar.com.txt
+on this page you will find a file with the eiacar test string.
+
 
 First test the HTTP protocol version. If that works, test the HTTPS version if you
 have also configured the transparent SSL proxy mode.
