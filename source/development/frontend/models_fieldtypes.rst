@@ -188,6 +188,19 @@ Select and validate countries in the world.
    "AddInverted", "Y,N", "Add 'inverted'/excluded countries to the list, copies contry codes prefixes an :code:`!` (e.g. :code:`!NL`)"
 
 
+DescriptionField
+------------------------------------
+
+Validate if the input contains a valid description, meaning it should be a string of 1 to 255 characters.
+
+.. csv-table:: DescriptionField
+   :header: "Parameter", "Options", "Purpose"
+   :widths: 30, 20, 40
+
+   "default", ":code:`text`", "Default value for new attributes"
+   "Required", "Y,N", "Mark field as required"
+   "ValidationMessage", ":code:`text`", "Error message on validation failure"
+
 
 EmailField
 ------------------------------------
@@ -270,6 +283,24 @@ should be. It defaults to :code:`lan`
             <ipaddr>/^((?!dhcp).)*$/</ipaddr>
         </filters>
     </interfaces>
+
+
+IPPortField
+------------------------------------
+
+Validates an IP:port combination (e.g. :code:`192.168.1.1:22`). Can be used to validate a single item or a list of items and can optionally
+enforce either ipv4 or ipv6 addresses.
+
+.. csv-table:: IPPortField
+   :header: "Parameter", "Options", "Purpose"
+   :widths: 30, 20, 40
+
+   "default", ":code:`text`", "Default value for new attributes"
+   "Required", "Y,N", "Mark field as required"
+   "ValidationMessage", ":code:`text`", "Error message on validation failure"
+   "AsList", "Y,N", "Field type should return list items"
+   "FieldSeparator", ":code:`text`", "Separator character to use"
+   "AddressFamily", ":code:`ipv4`, :code:`ipv6`", "Which address family to use, blank means ipv4+ipv6"
 
 
 JsonKeyValueStoreField
