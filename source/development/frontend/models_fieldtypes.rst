@@ -232,6 +232,7 @@ Check if hostnames are valid, includes the following options:
    "HostWildcardAllowed", "Y,N", "Allow :code:`*` for all hostnames"
    "FqdnWildcardAllowed", "Y,N", "Allow partial wildcard for fully qualified domain names (e.g. :code:`*.my.top.level.domain`)"
    "ZoneRootAllowed", "Y,N", "Allow the zone root marker (:code:`@`)"
+   "IsDNSName", "Y,N", "Allow less strict names, used for various dns entries as specified by RFC2181"
    "AsList", "Y,N", "Field type should return list items"
    "FieldSeparator", ":code:`text`", "Separator character to use"
 
