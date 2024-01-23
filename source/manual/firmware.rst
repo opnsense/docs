@@ -66,6 +66,13 @@ Usually the default options are good enough here, but if you want to choose a mi
     are planned for release. Just change the release type to **Development**.
 
 
+.. Note::
+
+    Although OPNsense does not support the configuration of a proxy server, for services like the firmware updater it is possible
+    to add these settings manually in our :code:`configd` service.
+    For more information we refer to :doc:`the envronment section in our development docs </development/backend/configd>`.
+
+
 Activate the Business Edition
 ...........................................
 
