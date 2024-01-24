@@ -12,3 +12,4 @@ This chapter contains topics around official OPNsense supplied equipment.
     hardware/defaults
     hardware/serial_connectivity
     hardware/bios
+    hardware/sfp_compatibility
