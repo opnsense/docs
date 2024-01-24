@@ -72,7 +72,7 @@ depending on what you selected) check **Enable Interface** and change the
 description to e.g., TUNNELBROKER before hitting **Save**.
 
 The newly created interface must now be set as the default IPv6 gateway
-under :menuselection:`System --> Gateways --> Single` by editing the new gateway entry
+under :menuselection:`System --> Gateways --> Configuration` by editing the new gateway entry
 TUNNELBROKER_TUNNELV6 and checking **Upstream Gateway** before saving.
 
 -----------------------------

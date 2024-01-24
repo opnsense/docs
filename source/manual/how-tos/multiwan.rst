@@ -57,7 +57,7 @@ Step 1 - Add monitor IPs
 You may skip this step if you already have setup the monitoring IP and both gateways
 are shown as online.
 
-To add a monitoring IP go to :menuselection:`System --> Gateways --> Single` and click on the first pencil
+To add a monitoring IP go to :menuselection:`System --> Gateways --> Configuration` and click on the first pencil
 symbol to edit the first gateway.
 
 Now make sure the following is configured:
@@ -167,7 +167,7 @@ Advanced Options
 ----------------
 For each gateway there are several advanced options you can use to change the
 default behavior/thresholds. These option can be changed under
-:menuselection:`System --> Gateways --> Single`, press the pencil icon next to the Gateway you want
+:menuselection:`System --> Gateways --> Configuration`, press the pencil icon next to the Gateway you want
 to update.
 
 The current options are:
@@ -216,7 +216,7 @@ load balance. For instance if you have one line of 10 Mbps and one of 20 Mbps th
 set the weight of the first one to 1 and the second one to 2. This way the second
 gateway will get twice as many traffic to handle than the first.
 
-To do so, go to :menuselection:`System --> Gateways --> Single` and press the pencil icon next to the
+To do so, go to :menuselection:`System --> Gateways --> Configuration` and press the pencil icon next to the
 Gateway you want to update. The weight is defined under the advanced section.
 
 ------------------------------

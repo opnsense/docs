@@ -78,7 +78,7 @@ Tunnel remote address   **192.168.123.2**   **192.168.123.1**
 Gateways
 .....................
 
-Next step on both ends is to define a gateway (:menuselection:`System->Gateways->Single`) which reaches the other end of this channel, the
+Next step on both ends is to define a gateway (:menuselection:`System->Gateways->Configuration`) which reaches the other end of this channel, the
 interface should be automatically created and is called :code:`ipsec10` in this example.
 
 Both ends will need a gateway pointing at each other :

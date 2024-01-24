@@ -114,7 +114,7 @@ Click ‘Save’ and then ‘Apply’.
 
 Update IPv6 Gateway
 
-Select :menuselection:`System --> Gateway --> Single` and edit IPv6 gateway to add 'fe80::ba0:bab' as IP address
+Select :menuselection:`System --> Gateway --> Configuration` and edit IPv6 gateway to add 'fe80::ba0:bab' as IP address
 
 .. image:: images/OF_image6_1.png
 	:width: 100%

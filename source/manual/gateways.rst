@@ -21,7 +21,7 @@ Gateways
 
 
 Gateways define the possible routes that can be used to access other networks, such as the internet.
-All different paths that are available to your firewall can be managed from this page, which can be found at :menuselection:`System->Gateways->Single`.
+All different paths that are available to your firewall can be managed from this page, which can be found at :menuselection:`System->Gateways->Configuration`.
 
 You can either define these gateways yourself, or they can be provided automatically from dynamical configured interfaces (e.g. dhcp), in which case they won't
 have a predefined address.
@@ -68,7 +68,7 @@ case you can enable "Gateway switching" in :menuselection:`System->Settings->Gen
 Overview page
 ----------------------------
 
-The overview page (:menuselection:`System->Gateways->Single`) shows all currently known gateways and their statuses in order of importance (most important on top).
+The overview page (:menuselection:`System->Gateways->Configuration`) shows all currently known gateways and their statuses in order of importance (most important on top).
 When a gateway is considered "default" it will show **(active)** behind the name.
 
 .. Note::
@@ -97,6 +97,7 @@ IP address                    Address of our gateway, empty/**dynamic** when dyn
 Upstream Gateway              Upstream gateway, consider this gateway as default gateway candidate
 Far Gateway                   Checkbox to allow the gateway to exist outside of the interface subnet.
 Disable Gateway Monitoring    Disable monitoring (consider **online**)
+Disable Host Route            Do not create a dedicated host route for this monitor.
 Monitor IP                    Alternative address to monitor, always make sure the address is
                               actually reachable and using this interface (via a static gateway)
 Mark Gateway as Down          Consider this gateway as down, so it can't be considered as default gateway

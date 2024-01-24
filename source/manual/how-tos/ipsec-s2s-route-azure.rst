@@ -271,7 +271,7 @@ Step 6 - Define Gateways
 ------------------------
 
 Now that you have the VPN up and running you have to set up a gateway.
-Go to :menuselection:`System --> Gateways --> Single` and add a new gateway.
+Go to :menuselection:`System --> Gateways --> Configuration` and add a new gateway.
 
 OPNsense
 --------

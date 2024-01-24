@@ -103,7 +103,7 @@ Now restart WireGuard - you can do this from the Dashboard (if you have the serv
 Step 6 - Create a gateway
 -------------------------
 
-- Go to :menuselection:`System --> Gateways --> Single`
+- Go to :menuselection:`System --> Gateways --> Configuration`
 - Click **Add**
 - Configure the gateway as follows (if an option is not mentioned below, leave it as the default):
 

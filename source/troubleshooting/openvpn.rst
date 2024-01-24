@@ -18,7 +18,7 @@ server are created with the :code:`reply-to` directive by default, which breaks 
     :menuselection:`Firewall -> Log Files -> Live View` and optionally by performing a packet capture on the affected interface.
 
 There are multiple ways to fix this problem. For most setups, it  will be sufficient to disable the automatically created IPv4 and
-IPv6 Gateways under :menuselection:`System -> Gateways -> Single`. Doing so will also disable the automatic addition of the
+IPv6 Gateways under :menuselection:`System -> Gateways -> Configuration`. Doing so will also disable the automatic addition of the
 :code:`reply-to` directive to rules created on the interface, and client connectivity will be restored.
 
 Another option is to manually select the option "Disable Reply-To" on each firewall rule you generate on the assigned interface.
