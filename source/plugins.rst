@@ -71,6 +71,7 @@ Other
    :maxdepth: 2
    :titlesonly:
 
+   manual/proxy
    manual/how-tos/freeradius
    manual/how-tos/accounting
    manual/how-tos/mailgateway

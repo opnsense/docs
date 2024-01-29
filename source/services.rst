@@ -23,7 +23,6 @@ Your security appliance comes with quite some services to ease network operation
    manual/ntpd
    manual/opendns
    manual/unbound
-   manual/proxy
    manual/radvd
    manual/logging_services
 
@@ -36,10 +35,4 @@ Setup guides
    :maxdepth: 2
    :titlesonly:
 
-   manual/how-tos/pac
-   manual/how-tos/proxyicapantivirus
-   manual/how-tos/proxyicapantivirusinternal
-   manual/how-tos/proxytransparent
-   manual/how-tos/proxywebfilter
    manual/how-tos/guestnet
-   manual/how-tos/cachingproxy

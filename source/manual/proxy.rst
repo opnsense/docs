@@ -143,24 +143,18 @@ There are some rules to take into account when creating custom themed error page
 -----------------------
 Configuration / How-tos
 -----------------------
+
 More information on how to utilize OPNsense's proxy service can be found in:
 
-Proxy Basic Setup
------------------
-:doc:`how-tos/cachingproxy`
 
-Setup Web Filtering
--------------------
-:doc:`how-tos/proxywebfilter`
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
 
-Setup Transparent Mode (including SSL)
---------------------------------------
-:doc:`how-tos/proxytransparent`
-
-Setup WPAD/PAC
---------------
-:doc:`how-tos/pac`
-
-Setup ICAP Anti Virus/Malware Engine
-------------------------------------
-:doc:`how-tos/proxyicapantivirus`
+   /manual/how-tos/cachingproxy
+   /manual/how-tos/guestnet
+   /manual/how-tos/pac
+   /manual/how-tos/proxyicapantivirus
+   /manual/how-tos/proxyicapantivirusinternal
+   /manual/how-tos/proxytransparent
+   /manual/how-tos/proxywebfilter
