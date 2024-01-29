@@ -1,5 +1,5 @@
 ======================================
-Deciso: Web Application Firewall
+Web Application Firewall
 ======================================
 
 As part of the OPNsense Business Edition, Deciso offers a plugin to easily protect webservices against all sort

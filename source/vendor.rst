@@ -1,5 +1,5 @@
 ====================================
-Vendor / Hardware
+Official hardware
 ====================================
 
 This chapter contains topics around official OPNsense supplied equipment.

@@ -24,7 +24,9 @@ Table of Contents
      intro
      security
      releases
+     be
      setup
+     vendor
      lobby
      reporting
      system
@@ -36,7 +38,6 @@ Table of Contents
      third_party_plugins
      troubleshooting
      develop
-     vendor
      relations
      legal
      support

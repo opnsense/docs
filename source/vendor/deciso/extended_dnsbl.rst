@@ -1,5 +1,5 @@
 ===========================
-Deciso: Extended Blocklists
+Extended Blocklists
 ===========================
 
 As part of the OPNsense Business Edition, Deciso offers the extended blocklists module as

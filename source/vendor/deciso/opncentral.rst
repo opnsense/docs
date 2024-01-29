@@ -1,5 +1,5 @@
 ===================
-Deciso: OPNcentral
+Central Management
 ===================
 
 As part of the OPNsense Business Edition, Deciso offers a plugin to keep all your firewalls up to date and have

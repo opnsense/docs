@@ -1,5 +1,5 @@
 ======================================
-Deciso: Proxy access management
+Advanced Proxy access management
 ======================================
 
 As part of the OPNsense Business Edition, Deciso offers a plugin to add fine grained access control to your existing
