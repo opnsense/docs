@@ -184,6 +184,12 @@ region.
 To use GeoIP, you need to configure a source in the :menuselection:`Firewall --> Aliases -> GeoIP settings` tab, the most commonly
 used source is MaxMind, for which we have a how-to available : :doc:`how-tos/maxmind_geo_ip`
 
+.. Note::
+
+    When using the Business Edition, you can leave the :code:`Url`` field empty so the firewall will download the database provided
+    by us.
+
+
 The configured url should point to a zip file containing the following csv files:
 
 .. list-table:: Title
