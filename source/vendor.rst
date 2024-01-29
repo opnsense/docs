@@ -2,6 +2,11 @@
 Official hardware
 ====================================
 
+.. image:: images/DEC4280-Rendering-v10-schuin.jpg
+    :align: left
+
+
+
 This chapter contains topics around official OPNsense supplied equipment.
 
 .. toctree::
