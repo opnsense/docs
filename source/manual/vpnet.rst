@@ -267,6 +267,12 @@ In case clients should be offered default settings, these can be configured from
 Pool options (Virtual IPvX Address Pool) on this page will be used by the legacy tunnel configuration only, when using the new connections
 module one may configure different pools per connection.
 
+.. note::
+
+    If you are configuring Radius authentication using the new Connections module, make sure to select the relevant Radius servers
+    in :menuselection:`VPN -> IPsec -> Mobile Clients` under Radius (eap-radius). This pool of servers will be shared across
+    all connections. This option will not be visibile if you have legacy Radius authentication methods configured.
+
 The examples section contains various options available in OPNsense. When using the new "connections" option available
 as of OPNsense 23.1, different `examples from Strongswan <https://docs.strongswan.org/docs/5.9/interop/windowsClients.html>`__
 are usually quite easy to implement as we follow the `swantcl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__
