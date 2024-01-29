@@ -210,3 +210,17 @@ and hit the test button. Depending on settings it will return a response like:
 
 Which informs you about all settings relevant for the lookup, the message returned (to squid), the user found and the policy matched
 using the rules described earlier.
+
+
+
+Auto update supplied policies
+--------------------------------------
+
+In order to update the default type policies automatically, you can install a cron job in :menuselection:`System --> Settings --> Cron`.
+Search for :code:`OPNProxy apply policies` and schedule once a day.
+
+.. Warning::
+
+  Do not execute this job more than once a day as this will add load to your machine without changing anything. Our dataset
+  is updated every day.
+
