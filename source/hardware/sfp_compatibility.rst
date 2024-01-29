@@ -6,7 +6,7 @@ Most OPNsense® appliances feature 10 Gigabit SFP+ cages powered by AMD® `axgbe
 for flexible connectivity. Different SFP(+) transceiver modules can be used to connect to different types of
 media (e.g. copper or fiber) depending on your needs.
 
-Most enterprise & datacenter OPNsense® appliances also feature 25 Gigabit capable SFP28 cages powered by Intel® `ice`.
+Our enterprise & datacenter OPNsense® appliances may also feature 25 Gigabit capable SFP28 cages powered by Intel® `ice`.
 
 Below you can find some general information as well as a list of tested SFP(+)/SFP28 transceiver modules
 that are verified to work with OPNsense® appliances.
