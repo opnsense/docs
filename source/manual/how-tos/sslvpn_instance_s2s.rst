@@ -97,7 +97,7 @@ We have chosen to setup the server on "Site B", so we start with Trust configura
    * Select  `Create an internal Certificate`
    * Choose the just created authority in `Certificate authority`
    * Add descriptive information for this CA (`Descriptive name`, whereabouts are copied from the CA)
-   * Set Type to `Server`
+   * Set Type to `Client`
    * Choose cryptographic settings, lifetime determines the validaty of the server certificate (you do need to track this yourself), it's allow to choose a longer period here
    * Set the `Common Name` to username the other end will use for identification. For this example we use :code:`test-client`
 
@@ -139,7 +139,7 @@ Role                    Server
 Description             MyServer
 Protocol                UDP (IPv4)
 Port number             1194
-Bind address            10.10.8.1 :sup:`1`
+Bind address            10.10.8.2 :sup:`1`
 Server (IPv4)           10.1.8.0/24 (the tunnel network used)
 Certificate             choose the prepared server certificate
 TLS static key          choose the prepared static key
@@ -175,7 +175,7 @@ Remote Network          10.0.8.0/24  :sup:`1`
    The remote network bound to this common name, without this entry the traffic will not be routed between hosts.
 
 
-Next go to :menuselection:`Firewall --> Rules --> WAN` and add a rule to allow traffic on port :code:`1494/UDP` from the other
+Next go to :menuselection:`Firewall --> Rules --> WAN` and add a rule to allow traffic on port :code:`1194/UDP` from the other
 host. At minimum we should add a rule similar to this one:
 
 ===============================================================
@@ -207,7 +207,7 @@ Property                site A
 Role                    Client
 Description             MyClient
 Protocol                UDP (IPv4)
-Remote                  10.10.8.1
+Remote                  10.10.8.2
 Certificate             choose the prepared client certificate
 TLS static key          choose the prepared static key
 Remote Network          192.168.8.0/24
