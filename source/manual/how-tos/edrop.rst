@@ -16,7 +16,7 @@ The lists for this example are located here:
 
  * `DROP list <https://www.spamhaus.org/drop/drop.txt>`__
  * `EDROP list <https://www.spamhaus.org/drop/edrop.txt>`__
- * `DROPv6 list <https://www.spamhaus.org/drop/drov6.txt>`__
+ * `DROPv6 list <https://www.spamhaus.org/drop/dropv6.txt>`__
 
 This guide only shows DROP and EDROP.
 You can repeat it for the DROPv6 list by following the same steps and replacing
