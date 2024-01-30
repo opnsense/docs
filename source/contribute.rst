@@ -173,10 +173,10 @@ Documentation & wiki articles
 -----------------------------
 The easiest way to help with documentation is to write how-to type articles.
 As the wiki & documentation project itself is written in **reStructuredText** you
-can offer your content in this format (preferably as pull request), but other
-formats are also possible, such as:
+can offer your content in this format (preferably as a `pull request <https://github.com/opnsense/docs>`__).
+Other formats are also possible, such as:
 
-* markup with ./images/directory including the used images(in any)
+* markup with ./images/directory including the used images (if any)
 * word document with embedded images (if any)
 
 To include you documentation send it to contact @ opnsense.org. Make sure that:
