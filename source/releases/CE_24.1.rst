@@ -1,0 +1,285 @@
+===========================================================================================
+24.1  "Savvy Shark" Series
+===========================================================================================
+
+
+
+For more than 9 years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+24.1, nicknamed "Savvy Shark", features ports-based OpenSSL 3, Suricata 7,
+several MVC/API conversions, a new neighbor configuration feature for ARP/NDP,
+core inclusion of the os-firewall and os-wireguard plugins, CARP VHID tracking
+for OpenVPN and WireGuard, functional Kea DHCPv4 server with HA support plus
+much more.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/24.1/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/24.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/24.1/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/24.1/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/24.1/
+* Full mirror list: https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+24.1 (January 30, 2024)
+--------------------------------------------------------------------------
+
+
+For more than 9 years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+24.1, nicknamed "Savvy Shark", features ports-based OpenSSL 3, Suricata 7,
+several MVC/API conversions, a new neighbor configuration feature for ARP/NDP,
+core inclusion of the os-firewall and os-wireguard plugins, CARP VHID tracking
+for OpenVPN and WireGuard, functional Kea DHCPv4 server with HA support plus
+much more.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/24.1/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/24.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/24.1/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/24.1/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/24.1/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes against 23.7.12:
+
+* system: prevent activating shell for non-admins
+* system: add OCSP trust extensions and improved authorities implementation
+* system: migrate single gateway configuration to MVC/API
+* system: use new backend streaming functionality in the log viewer
+* system: limit file system /conf/config.xml and backups access to administrators
+* system: migrate gateways model to match new class introduced in 23.7.x
+* system: refactor get_single_sysctl()
+* system: update cron model
+* system: fix migration issue in new gateways model
+* system: handle case insensitivity while reading groups
+* system: shuffle authentication templates to the end of login configuration
+* system: add "maxfilesize" option to enforce a log rotate when files exceed their limit
+* reporting: print status message when Unbound DNS database was not found during firmware upgrade
+* reporting: update NetFlow model
+* interfaces: implement new neighbor configuration for ARP and NDP entries using MVC/API
+* interfaces: refactor interface_bring_down() into interface_reset() and interface_suspend()
+* interfaces: migrate the overview page to MVC/API
+* interfaces: add optional local/remote port to VXLAN
+* interfaces: remove unused code from native dhclient-script
+* interfaces: do not flush states on clear event
+* firewall: add automation category for filter rules and source NAT using MVC/API, formerly known as os-firewall plugin
+* firewall: migrate NPTv6 page to MVC/API
+* firewall: add a track interface selection to NPTv6 as an alternative to the automatic rule interface fallback when dealing with dynamic prefixes
+* captive portal: fix integer validation in vouchers
+* captive portal: update model
+* dhcp: clean up duplicated domain-name-servers option
+* dhcp: cleanup get_lease6 script and fix parsing issue
+* dhcp: add Kea DHCPv4 server option with HA capabilities as an alternative to the end of life ISC DHCP
+* dhcp: deduplicate records in Kea leases
+* intrusion detection: show rule origin in rule adjustments grid
+* ipsec: extend connection proposals tooltip to children and fix tooltip style issue
+* lang: added traditional Chinese translation (contributed by Jason Cheng)
+* monit: update model
+* openvpn: allow optional OCSP checking per instance
+* openvpn: emit device name upon creation
+* openvpn: add workaround for net30/p2p smaller than /29 networks
+* openvpn: add optional "route-metric" push option for server instances
+* web proxy: integration moved to os-squid plugin
+* wireguard: installed by default using the bundled FreeBSD 13.2 kernel module
+* backend: constrain execution of user add/change/list actions to members of the wheel group
+* backend: only parse stream results when configd socket could be opened
+* backend: wait for all configd results and add it to the log message when detached
+* mvc: remove legacy Phalcon migration glue
+* mvc: add configdStream action to ApiControllerBase
+* mvc: support array structures for better search functionality in ApiControllerBase
+* mvc: scope xxxBase validations to the item in question in ApiMutableModelControllerBase
+* mvc: remove Phalcon syslog implementation with a simple wrapper
+* mvc: add a DescriptionField type
+* mvc: add a MacAddressField type
+* mvc: add IsDNSName to support DNS names as specified by RFC2181 in HostnameField
+* ui: include meta tags for standalone/full-screen on Android and iOS (contributed by Shane Lord)
+* ui: add double click event with grid dialog in tree view to show a row layout instead
+* ui: auto-trim MVC input fields when being pasted
+* ui: increase standard search delay from 250 ms to 1000 ms
+* ui: make modal dialogs draggable
+* ui: support key/value combinations for error messages in do_input_validation()
+* plugins: os-acme-client 4.0 `[2] <https://github.com/opnsense/plugins/blob/stable/24.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-api-backup was discontinued due to overlapping functionality in core
+* plugins: os-firewall moved to core
+* plugins: os-haproxy 4.2 `[3] <https://github.com/opnsense/plugins/blob/stable/24.1/net/haproxy/pkg-descr>`__ 
+* plugins: os-nrpe updated to NRPE 4.1.x
+* plugins: os-postfix updated to Postfix 3.8.x
+* plugins: os-squid 1.0 offers the removed web proxy core functionality
+* plugins: os-wireguard moved to core
+* plugins: os-wireguard-go was discontinued
+* src: NFS client data corruption and kernel memory disclosure `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:18.nfsclient.asc>`__ 
+* src: pf: merge extended support for SCTP and related stable changes
+* src: e1000: merge assorted driver improvements for hardware capabilities
+* src: bsdinstall: merge assorted stable changes
+* src: tuntap: merge assorted stable changes
+* src: wireguard: add experimental netmap support
+* src: sys: Use mbufq_empty instead of comparing mbufq_len against 0
+* src: e1000/igc: remove disconnected sysctl
+* ports: libxml 2.11.6 `[5] <http://www.xmlsoft.org/news.html>`__ 
+* ports: openssl 3.0.12 `[6] <https://www.openssl.org/news/cl30.txt>`__ 
+* ports: php 8.2.15 `[7] <https://www.php.net/ChangeLog-8.php#8.2.15>`__ 
+* ports: py-duckdb 0.9.2
+* ports: sqlite 3.45.0 `[8] <https://sqlite.org/releaselog/3_45_0.html>`__ 
+* ports: suricata 7.0.2 `[9] <https://forum.suricata.io/t/suricata-7-0-2-released/4069>`__ 
+
+Migration notes, known issues and limitations:
+
+* Audits and certifications are requiring us to restrict system accounts for non-administrators (without wheel group in particular).  It will no longer be able to use non-adminstrator accounts with shell access and permissions for sensitive files have been tightened to not be world-readable.  This may cause custom tooling to stop working, but can easily be fixed by giving these required accounts the full administration rights.
+* ISC DHCP functionality is slowly being deprecated with the introduction of Kea as an alternative.  The work to replace the tooling of ISC DHCP is ongoing, but feature sets will likely differ for a long time therefore.
+* The move to the FreeBSD ports version of OpenSSL 3.0 is included and may disrupt third party repository use until those have been fixed and rebuilt accordingly.  Please note that we do not vet third party repositories and do not have control over them so their response time may vary.
+* The Squid web proxy functionality moves to a plugin and will no longer be installed by default for new installations. However, if you have Squid enabled the plugin will automatically be installed during the upgrade.  There is no code difference in the implementation and integration of the plugin compared to the core version.
+
+The public key for the 24.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEArjthZplSNhbgab8VYDYl
+    # jn3rNni+Fson28prwolUac0EHlu1e9ckM03BjYfRYUcpHRdNTglPr+likmgQ3K7j
+    # 01oq0/H2krvXUbxUq8CQDYgHUM9QDBubdC06/oQ/S20YGHlHJ+odexUbLF0YvW04
+    # RfzlEozBW0eUjc3LLYAvr1RwXoiZyB/Qit5bBC7No6fKIlCD9uZ3+7b1pO+Gjfq0
+    # mPF01kE7P55Y9WqaEU9odS4xE+viGlj+k1+YZBsEWWzX+J3z5zGDhWcsWWskd92z
+    # eMOUkJyVeiIWkW4draQ7CC0tJ4e+f/1PUkkLRfMMO55pGeunu3xwEgD4ALyD1A+y
+    # 029sKMXF6OSWgDQDrxDOe4bA7RW4yUba3EhSz8UyAvL3HIKQ0OuOJaGYkRee9DBQ
+    # DmCjIvPs6yCdAiuDbwO7V6RsH4k3yIONotST3qwf3sJXU3vvwsHi1n3ssccZBzw4
+    # sKwQ1xQN1eIc5+At+OJ6bzkdb/vg+UrFUfuCknqxuxvwg99+3Wx6vvemW7yqIUY4
+    # Vkhqs7WUZ0ucwo1zjLM12K4yS7kEQbOzHykYQzXXYxhzJIai+BZAJFytSER+Wl7Z
+    # AyIioWGKwTD/WTEzyfK5svnSmosWlikagMhl3+XyF2cma1rPqOOyuFpcFhmV6nlR
+    # vWhn568tDgJAyWqOCCHZqOMCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-24.1-dvd-amd64.iso.bz2) = 6d1e22713bf031d0a36a73b3820cd1564f426cae9c67a6ade4b7fa6518afa2d5
+    # SHA256 (OPNsense-24.1-nano-amd64.img.bz2) = 6bc86a13bda81702382383b1e9b31550177bafe88fa599e0c2ed8064040461b1
+    # SHA256 (OPNsense-24.1-serial-amd64.img.bz2) = c4c53e5dd80660cc67b349fa588b3ca11efd9f45d09f6cb391d8e19b48dd7fcc
+    # SHA256 (OPNsense-24.1-vga-amd64.img.bz2) = ec08755245017cd449a8d174b6ea7c4e2038c454a8abecfad0d0378729d8b331
+
+--------------------------------------------------------------------------
+24.1.r1 (January 19, 2024)
+--------------------------------------------------------------------------
+
+
+For more than 9 years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+We thank all of you for helping test, shape and contribute to the project!
+We know it would not be the same without you.  <3
+
+24.1-RC1 is an online uppgrade only.  We will be publishing images with
+the final 24.1 release of course.
+
+Here are the full patch notes against 23.7.12:
+
+* system: prevent activating shell for non-admins
+* system: add OCSP trust extensions and improved authorities implementation
+* system: migrate single gateway configuration to MVC/API
+* system: use new backend streaming functionality in the log viewer
+* system: limit file system /conf/config.xml and backups access to administrators
+* system: migrate gateways model to match new class introduced in 23.7.x
+* system: refactor get_single_sysctl()
+* system: update cron model
+* reporting: update NetFlow model
+* interfaces: implement new neighbor configuration for ARP and NDP entries using MVC/API
+* interfaces: refactor interface_bring_down() into interface_reset() and interface_suspend()
+* interfaces: migrate the overview page to MVC/API
+* interfaces: add optional local/remote port to VXLAN
+* interfaces: remove unused code from native dhclient-script
+* interfaces: do not flush states on clear event
+* firewall: add automation category for filter rules and source NAT using MVC/API, formerly known as os-firewall plugin
+* firewall: migrate NPTv6 page to MVC/API
+* firewall: add a track interface selection to NPTv6 as an alternative to the automatic rule interface fallback when dealing with dynamic prefixes
+* captive portal: fix integer validation in vouchers
+* captive portal: update model
+* dhcp: clean up duplicated domain-name-servers option
+* dhcp: cleanup get_lease6 script and fix parsing issue
+* dhcp: add Kea DHCPv4 server option with HA capabilities as an alternative to the end of life ISC DHCP
+* intrusion detection: show rule origin in rule adjustments grid
+* ipsec: extend connection proposals tooltip to children and fix tooltip style issue
+* lang: added traditional Chinese translation (contributed by Jason Cheng)
+* monit: update model
+* openvpn: allow optional OCSP checking per instance
+* openvpn: emit device name upon creation
+* openvpn: add workaround for net30/p2p smaller than /29 networks
+* web proxy: integration moved to os-squid plugin
+* wireguard: installed by default using the bundled FreeBSD 13.2 kernel module
+* backend: constrain execution of user add/change/list actions to members of the wheel group
+* mvc: remove legacy Phalcon migration glue
+* mvc: add configdStream action to ApiControllerBase
+* mvc: support array structures for better search functionality in ApiControllerBase
+* mvc: scope xxxBase validations to the item in question in ApiMutableModelControllerBase
+* mvc: remove Phalcon syslog implementation with a simple wrapper
+* mvc: add a DescriptionField type
+* mvc: add a MacAddressField type
+* ui: include meta tags for standalone/full-screen on Android and iOS (contributed by Shane Lord)
+* ui: add double click event with grid dialog in tree view to show a row layout instead
+* ui: auto-trim MVC input fields when being pasted
+* ui: increase standard search delay from 250 ms to 1000 ms
+* ui: make modal dialogs draggable
+* ui: support key/value combinations for error messages in do_input_validation()
+* plugins: os-api-backup was discontinued due to overlapping functionality in core
+* plugins: os-firewall moved to core
+* plugins: os-nrpe updated to NRPE 4.1.x
+* plugins: os-postfix updated to Postfix 3.8.x
+* plugins: os-squid 1.0 offers the removed web proxy core functionality
+* plugins: os-wireguard moved to core
+* plugins: os-wireguard-go was discontinued
+* src: NFS client data corruption and kernel memory disclosure `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:18.nfsclient.asc>`__ 
+* src: pf: merge extended support for SCTP and related stable changes
+* src: e1000: merge assorted driver improvements for hardware capabilities
+* src: bsdinstall: merge assorted stable changes
+* src: tuntap: merge assorted stable changes
+* src: wireguard: add netmap support
+* ports: libxml 2.11.6 `[2] <http://www.xmlsoft.org/news.html>`__ 
+* ports: openssl 3.0.12 `[3] <https://www.openssl.org/news/cl30.txt>`__ 
+* ports: py-duckdb 0.9.2
+* ports: suricata 7.0.2 `[4] <https://forum.suricata.io/t/suricata-7-0-2-released/4069>`__ 
+
+Migration notes, known issues and limitations:
+
+* Audits and certifications are requiring us to restrict system accounts for non-administrators (without wheel group in particular).  It will no longer be able to use non-adminstrator accounts with shell access and permissions for sensitive files have been tightened to not be world-readable.  This may cause custom tooling to stop working, but can easily be fixed by giving these required accounts the full administration rights.
+* ISC DHCP functionality is slowly being deprecated with the introduction of Kea as an alternative.  The work to replace the tooling of ISC DHCP is ongoing, but feature sets will likely differ for a long time therefore.
+* The move to the FreeBSD ports version of OpenSSL 3.0 is included and may disrupt third party repository use until those have been fixed and rebuilt accordingly.  Please note that we do not vet third party repositories and do not have control over them so their response time may vary.
+* The Squid web proxy functionality moves to a plugin and will no longer be installed by default for new installations. However, if you have Squid enabled the plugin will automatically be installed during the upgrade.  There is no code difference in the implementation and integration of the plugin compared to the core version.
+
+The public key for the 24.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEArjthZplSNhbgab8VYDYl
+    # jn3rNni+Fson28prwolUac0EHlu1e9ckM03BjYfRYUcpHRdNTglPr+likmgQ3K7j
+    # 01oq0/H2krvXUbxUq8CQDYgHUM9QDBubdC06/oQ/S20YGHlHJ+odexUbLF0YvW04
+    # RfzlEozBW0eUjc3LLYAvr1RwXoiZyB/Qit5bBC7No6fKIlCD9uZ3+7b1pO+Gjfq0
+    # mPF01kE7P55Y9WqaEU9odS4xE+viGlj+k1+YZBsEWWzX+J3z5zGDhWcsWWskd92z
+    # eMOUkJyVeiIWkW4draQ7CC0tJ4e+f/1PUkkLRfMMO55pGeunu3xwEgD4ALyD1A+y
+    # 029sKMXF6OSWgDQDrxDOe4bA7RW4yUba3EhSz8UyAvL3HIKQ0OuOJaGYkRee9DBQ
+    # DmCjIvPs6yCdAiuDbwO7V6RsH4k3yIONotST3qwf3sJXU3vvwsHi1n3ssccZBzw4
+    # sKwQ1xQN1eIc5+At+OJ6bzkdb/vg+UrFUfuCknqxuxvwg99+3Wx6vvemW7yqIUY4
+    # Vkhqs7WUZ0ucwo1zjLM12K4yS7kEQbOzHykYQzXXYxhzJIai+BZAJFytSER+Wl7Z
+    # AyIioWGKwTD/WTEzyfK5svnSmosWlikagMhl3+XyF2cma1rPqOOyuFpcFhmV6nlR
+    # vWhn568tDgJAyWqOCCHZqOMCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+Please let us know about your experience!
+
+
