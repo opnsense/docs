@@ -11,11 +11,16 @@ The Spamhaus Don't Route Or Peer Lists
 
   *Source :* https://www.spamhaus.org/drop/
 
-For this how to we will use the Alias feature and a firewall block rule.
+For this How-To we will use the Alias feature and a firewall block rule.
 The lists for this example are located here:
 
  * `DROP list <https://www.spamhaus.org/drop/drop.txt>`__
  * `EDROP list <https://www.spamhaus.org/drop/edrop.txt>`__
+ * `DROPv6 list <https://www.spamhaus.org/drop/drov6.txt>`__
+
+This guide only shows DROP and EDROP.
+You can repeat it for the DROPv6 list by following the same steps and replacing
+IPv4 with IPv6 where appropriate.
 
 -------------------------------------
 Step 1 - Create an Alias for Spamhaus
