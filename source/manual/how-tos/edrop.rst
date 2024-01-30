@@ -32,10 +32,10 @@ Enter the following data:
 +-----------------+-----------------------------------------+-----------------------------+
 | **Type**        | URL Table (IPs)                         | *URL type*                  |
 +-----------------+-----------------------------------------+-----------------------------+
-| **Host(s)**     | https://www.spamhaus.org/drop/drop.txt  | *Don't Route Or Peer List*  |
+| **Content**     | https://www.spamhaus.org/drop/drop.txt  | *Don't Route Or Peer List*  |
 +-----------------+-----------------------------------------+-----------------------------+
 
-Set the update frequency to 1 for each day.
+Set the refresh frequency to 1 for each day.
 
 Press **Save** and then **Add a new alias**.
 
@@ -46,10 +46,11 @@ Press **Save** and then **Add a new alias**.
 +-----------------+-----------------------------------------+-------------------------------------+
 | **Type**        | URL Table (IPs)                         | *URL type*                          |
 +-----------------+-----------------------------------------+-------------------------------------+
-| **Host(s)**     | https://www.spamhaus.org/drop/edrop.txt | *Extended Don't Route Or Peer List* |
+| **Content**     | https://www.spamhaus.org/drop/edrop.txt | *Extended Don't Route Or Peer List* |
 +-----------------+-----------------------------------------+-------------------------------------+
 
-Set the update frequency to 1 for each day.
+Set the refresh frequency to 1 for each day.
+
 Press **Save** and then **Apply changes**.
 
 .. image:: images/spamhaus_drop_edrop.png
