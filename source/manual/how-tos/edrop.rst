@@ -11,11 +11,16 @@ The Spamhaus Don't Route Or Peer Lists
 
   *Source :* https://www.spamhaus.org/drop/
 
-For this how to we will use the Alias feature and a firewall block rule.
+For this How-To we will use the Alias feature and a firewall block rule.
 The lists for this example are located here:
 
  * `DROP list <https://www.spamhaus.org/drop/drop.txt>`__
  * `EDROP list <https://www.spamhaus.org/drop/edrop.txt>`__
+ * `DROPv6 list <https://www.spamhaus.org/drop/drov6.txt>`__
+
+This guide only shows DROP and EDROP.
+You can repeat it for the DROPv6 list by following the same steps and replacing
+IPv4 with IPv6 where appropriate.
 
 -------------------------------------
 Step 1 - Create an Alias for Spamhaus
@@ -32,10 +37,10 @@ Enter the following data:
 +-----------------+-----------------------------------------+-----------------------------+
 | **Type**        | URL Table (IPs)                         | *URL type*                  |
 +-----------------+-----------------------------------------+-----------------------------+
-| **Host(s)**     | https://www.spamhaus.org/drop/drop.txt  | *Don't Route Or Peer List*  |
+| **Content**     | https://www.spamhaus.org/drop/drop.txt  | *Don't Route Or Peer List*  |
 +-----------------+-----------------------------------------+-----------------------------+
 
-Set the update frequency to 1 for each day.
+Set the refresh frequency to 1 for each day.
 
 Press **Save** and then **Add a new alias**.
 
@@ -46,10 +51,11 @@ Press **Save** and then **Add a new alias**.
 +-----------------+-----------------------------------------+-------------------------------------+
 | **Type**        | URL Table (IPs)                         | *URL type*                          |
 +-----------------+-----------------------------------------+-------------------------------------+
-| **Host(s)**     | https://www.spamhaus.org/drop/edrop.txt | *Extended Don't Route Or Peer List* |
+| **Content**     | https://www.spamhaus.org/drop/edrop.txt | *Extended Don't Route Or Peer List* |
 +-----------------+-----------------------------------------+-------------------------------------+
 
-Set the update frequency to 1 for each day.
+Set the refresh frequency to 1 for each day.
+
 Press **Save** and then **Apply changes**.
 
 .. image:: images/spamhaus_drop_edrop.png
