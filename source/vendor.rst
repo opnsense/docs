@@ -7,7 +7,7 @@ Official hardware
 
 
 
-This chapter contains topics around official OPNsense supplied equipment.
+This chapter contains topics around `official <https://shop.opnsense.com/>`__ OPNsense supplied equipment.
 
 .. toctree::
     :maxdepth: 2
