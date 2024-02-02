@@ -173,8 +173,8 @@ from one of our `mirrors <https://opnsense.org/download>`__.
 OpenSSL is used for image file verification.  4 files are needed for verification process:
 
 * The SHA-256 checksum file (<filename>.sha256)
-* The bzip compressed Image file (<filename>.<image>.bz2)
-* The signature file (<filename>.<image>.bz2.sig)
+* The bzip compressed image file (<filename>.<image>.bz2)
+* The signature file for the uncompressed image file (<filename>.<image>.sig)
 * The openssl public key (<filename>.pub)
 
 Use one of the OPNsense mirrors to download these files:
@@ -216,8 +216,8 @@ If checksums match continue with the verification commands.
 
 ::
 
-   openssl base64 -d -in OPNsense-<filename>.sig -out /tmp/image.sig
-   openssl dgst -sha256 -verify OPNsense-<filename>.pub -signature /tmp/image.sig OPNsense-<filename>.bz2
+   openssl base64 -d -in OPNsense-<filename>.<image>.sig -out /tmp/image.sig
+   openssl dgst -sha256 -verify OPNsense-<filename>.pub -signature /tmp/image.sig OPNsense-<filename>.<image>
 
 
 If the output of the second command is “**Verified OK**”, your image file was verified
