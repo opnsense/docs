@@ -63,11 +63,11 @@ Here are the full patch notes:
 * ui: show tooltip when grid td content does not fit
 * plugins: os-bind 1.29 `[2] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/bind/pkg-descr>`__ 
 * plugins: os-ddclient 1.20 `[3] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/ddclient/pkg-descr>`__ 
-* plugins: os-frr 1.38[4
+* plugins: os-frr 1.38 `[4] <https://github.com/opnsense/plugins/blob/stable/23.7/net/frr/pkg-descr>`__ 
 * plugins: os-node_exporter 1.2 `[5] <https://github.com/opnsense/plugins/blob/stable/23.7/sysutils/node_exporter/pkg-descr>`__ 
 * plugins: os-sunnyvalley 1.4 switches to new repository layout
-* ports: py-netaddr 0.10.1
-* ports: sudo 1.9.15p5
+* ports: py-netaddr 0.10.1 `[6] <https://netaddr.readthedocs.io/en/latest/changes.html#release-0-10-1>`__ 
+* ports: sudo 1.9.15p5 `[7] <https://www.sudo.ws/stable.html#1.9.15p5>`__ 
 
 A hotfix release was issued as 23.7.12_5:
 

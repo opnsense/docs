@@ -17,6 +17,94 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+23.10.2 (February 02, 2024)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 23.7.12 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: add an optional random delay before executing remote backups
+* system: fix regression in log viewer level selector
+* system: implement relevant certctl tool functionality in Python to increase performance
+* system: fix log severity selector (contributed by kulikov-a)
+* system: include IPv6 link-local interface addresses for web GUI and OpenSSH (contributed by Maurice Walker)
+* system: update cron and gateways model
+* system: change ZFS transaction group defaults to avoid excessive disk wear `[1] <https://github.com/opnsense/core/commit/269b9fbaf>`__ 
+* system: handle case insensitivity while reading groups
+* system: shuffle authentication templates to the end of login configuration
+* system: add "maxfilesize" option to enforce a log rotate when files exceed their limit
+* reporting: OpenVPN server instances were missing from respective health graph
+* reporting: assorted tweaks for the firmware upgrade script handling Unbound DNS database migration
+* interfaces: add new backend jobs and extend with optional parameter
+* interfaces: obey menu group sequence when specified
+* firewall: improve alias write behaviour by checking for changes beforehand
+* firewall: fix preg_replace() to avoid truncated network display in rules listing
+* firewall: validate if GeoIP and BGP ASN targets contain at least 1 kb of data before assuming timestamp is correct
+* firewall: align GeoIP file check with documentation
+* firewall: add an ifconfig.debug file
+* captive portal: fix integer validation in vouchers
+* dhcp: cache backend action "interface list macdb" to increase responsiveness
+* dhcp: allow saving with invalid range when IPv4 server is disabled
+* dhcp: do not clobber $range_to / $range_from with the legacy test for lower 64 bit only input
+* dhcp: improve the parsing code of IPv6 leases
+* firmware: switch bogons/changelog set base URL to portable "opnsense-update -X" call
+* firmware: opnsense-update: avoid rewriting .cshrc and .profile files on base set updates
+* firmware: add audit messages for relevant API actions
+* firmware: implement "always reboot" option
+* firmware: add unlocked mode to launcher script
+* firmware: use pluggable package repository scripts
+* firmware: automatically install os-squid plugin install when web proxy is enabled before major upgrade
+* firmware: refactor export and scrub Unbound DNS database before major upgrade
+* firmware: disallow TLS lower than 1.3 on business mirror
+* intrusion detection: show rule origin in rule adjustments grid
+* ipsec: add support for RADIUS class groups in instances
+* ipsec: extend connection proposals tooltip to children and fix tooltip style issue
+* lang: assorted language updates
+* network time: prevent the service from listening on a wildcard when selecting specific interfaces (contributed by doktornotor)
+* openvpn: add virtual IPv6 address to widget and status page (contributed by cs-1)
+* openvpn: consider clients missing CARP VHID as disabled
+* openvpn: add validation for netmask greater than 29 exactly as specified in the OpenVPN source code
+* openvpn: add workaround for net30/p2p smaller than /29 networks
+* unbound: use tls-system-cert instead of tls-cert-bundle
+* unbound: replace JustDomains with Firebog blocklists (contributed by Amy Nagle)
+* unbound: update root hints
+* backend: support streaming output using the "stream_output" handler
+* backend: implement optional trust model and add extended logging
+* backend: support optional configd configuration files
+* backend: only parse stream results when configd socket could be opened
+* mvc: add an IPPortField type
+* mvc: split configdRun() in order to return a resource which the controller can stream with minimal memory consumption
+* ui: fix the missing dialog padding in some modals
+* ui: set a default data-size for increased readability in selectpickers
+* ui: show tooltip when grid td content does not fit
+* ui: add double click event to tree view to render a grid dialog
+* ui: upgrade jqTree to version 1.7.5
+* plugins: os-OPNBEcore 1.3 adds "any interface" floating rule support
+* plugins: os-OPNcentral 1.9 adds "any interface" floating rule support and fixes memory consumption with downloads
+* plugins: os-acme-client 3.20 `[2] <https://github.com/opnsense/plugins/blob/stable/23.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-bind 1.29 `[3] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/bind/pkg-descr>`__ 
+* plugins: os-ddclient 1.20 `[4] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-dec-hw 1.0 is a Deciso hardware specific dashboard widget
+* plugins: os-frr 1.38 `[5] <https://github.com/opnsense/plugins/blob/stable/23.7/net/frr/pkg-descr>`__ 
+* plugins: os-node_exporter 1.2 `[6] <https://github.com/opnsense/plugins/blob/stable/23.7/sysutils/node_exporter/pkg-descr>`__ 
+* plugins: os-sunnyvalley 1.4 switches to new repository layout
+* plugins: os-telegraf 1.12.10 `[7] <https://github.com/opnsense/plugins/blob/stable/23.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-upnp now reloads on newwanip event
+* plugins: os-wireguard 2.6 `[8] <https://github.com/opnsense/plugins/blob/stable/23.7/net/wireguard/pkg-descr>`__ 
+* ports: curl 8.5.0 `[9] <https://curl.se/changes.html#8_5_0>`__ 
+* ports: nss 3.95 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_95.html>`__ 
+* ports: perl 5.36.3 `[11] <https://perldoc.perl.org/5.36.3/perldelta>`__ 
+* ports: php 8.2.14 `[12] <https://www.php.net/ChangeLog-8.php#8.2.14>`__ 
+* ports: phpseclib 3.0.34 `[13] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.34>`__ 
+* ports: py-netaddr 0.10.1 `[14] <https://netaddr.readthedocs.io/en/latest/changes.html#release-0-10-1>`__ 
+* ports: squid 6.6 `[15] <http://www.squid-cache.org/Versions/v6/squid-6.6-RELEASENOTES.html>`__ 
+* ports: sudo 1.9.15p5 `[16] <https://www.sudo.ws/stable.html#1.9.15p5>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.10.1 (December 13, 2023)
 --------------------------------------------------------------------------
 

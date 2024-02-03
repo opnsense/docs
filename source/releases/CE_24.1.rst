@@ -136,6 +136,10 @@ Here are the full patch notes against 23.7.12:
 * ports: sqlite 3.45.0 `[8] <https://sqlite.org/releaselog/3_45_0.html>`__ 
 * ports: suricata 7.0.2 `[9] <https://forum.suricata.io/t/suricata-7-0-2-released/4069>`__ 
 
+A hotfix release was issued as 24.1_1:
+
+* ports: revert back to suricata 6.0.15 for the time being
+
 Migration notes, known issues and limitations:
 
 * Audits and certifications are requiring us to restrict system accounts for non-administrators (without wheel group in particular).  It will no longer be able to use non-adminstrator accounts with shell access and permissions for sensitive files have been tightened to not be world-readable.  This may cause custom tooling to stop working, but can easily be fixed by giving these required accounts the full administration rights.
