@@ -136,8 +136,16 @@ If not (or your entered invalid credentials) it shows:
 
 Step 3 - Enable the authentication server
 -----------------------------------------
-Go to :menuselection:`System --> Access --> Settings --> Administration` and under the **Authentication** section at the bottom, change
+Go to :menuselection:`System --> Settings --> Administration` and under the **Authentication** section at the bottom, change
 the **Server** dropdown to your newly added LDAP server and save.
+
+.. Warning::
+
+    Before changing the gui access to require LDAP, make sure at least one user is allowed to access the
+    firewall with remote credentials. This can be achieved either by adding the :code:`All pages` privilege to the
+    user or making sure the user is member of a group with that privilege.
+
+    To prevent being locked out, you can add "Local Database" as secondary option during your test.
 
 
 Step 4 - Import Users
@@ -164,13 +172,13 @@ A new form will be show with the individual users, select the ones you like to i
     (not available in the community version of OPNsense)
 
 
-Step 5 - Update LDAP user privileges
-------------------------------------
+Step 4a - Update LDAP user privileges
+.........................................
 Now if you go to :menuselection:`System --> Access --> Users` you will see all users including the
 newly imported LDAP users. You can create a specific group for these users to
 easily manage the privileges or use one of your earlier created groups.
 
-When opening a LDAP user (edit) via the pecil icon right next to the name, you will
+When opening a LDAP user (edit) via the pencil icon right next to the name, you will
 notice the difference as the **User Distinguished name** will be shown from the
 LDAP server, just like this:
 
@@ -180,16 +188,3 @@ LDAP server, just like this:
 .. TIP::
    See :doc:`user-local` for more information on User, Groups and privileges.
 
-Step 6 - Update system access settings
---------------------------------------
-Now we have configured, verified and imported the users from our LDAP server, we
-need to change the default settings to allow LDAP users to log in.
-
-Go to :menuselection:`System --> Access --> Settings` and change the Authentication Server from
-**Local Database** to your newly created **LDAP** server. Leave the fallback on
-**Local Database** and click on **Save and Test**.
-
-The test result should look like this:
-
-.. image:: images/user_testresult_ldap.png
-   :width: 80%
