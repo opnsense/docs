@@ -579,9 +579,11 @@ It is possible to specify the contents of these configurations in the gui under 
 Apart from that, an authentication server (:menuselection:`System -> Access -> Servers`) can also provide client details in special cases when returning
 :code:`Framed-IP-Address`, :code:`Framed-IP-Netmask` and :code:`Framed-Route` properties.
 
-.. Tip::
+.. Note::
 
-      Radius can be used to provisioning tunnel and local networks.
+    Client specific overwrites will be written **after** authentication or client connect (depending on the type of setup).
+    This in order for authentication services like RADIUS to be able to provision additional properties, such as tunnel and local networks.
+
 
 A selection of the most relevant settings can be found in the table below.
 
@@ -609,6 +611,24 @@ A selection of the most relevant settings can be found in the table below.
 
       When using topology "subnet" the netmask usually equals the one defined in the instance itself as the gateway
       being pushed to the client is the first adress in the network and otherwise unreachable.
+
+**Troubleshooting common issues**
+
+The most common causes for non functional overwrites are caused by mismatches, in order to debug these, make sure to check the logs
+for messages like the following:
+
+* :code:`Locate overwrite for 'XXX' using server 'XXX' (vpnid: XXX)` <<  trying to find an overwrite (user authentication))
+
+  * Usually followed by :code:`user 'XXX' authenticated using 'XXX' XXX` showing username, authenticator used and optionally
+    the overwrite type and filename.
+
+* :code:`client config created @ XXX` << file written on client connect (without user authentication)
+* :code:`unable to write client config for XXX, missing target filename` << no matching overwrite found  (without user authentication)
+
+By default overwrites are matched by certificate common name, when :code:`Force CSO Login Matching` (legacy) or
+:code:`Username as CN` (instances) are set the username will be used instead.
+
+
 
 --------------------------
 Wireguard
