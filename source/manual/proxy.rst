@@ -4,6 +4,12 @@ Caching Proxy
 
 .. image:: images/forward_proxy.png
 
+.. Note::
+
+    Make sure to install :code:`os-squid` via :menuselection:`System --> Firmware --> Plugins` in order to use
+    the web proxy. As of OPNsense 24.1, the proxy is no longer included in the default installation.
+
+
 OPNsense is equipped with a fully featured forward caching (transparent) proxy.
 A caching proxy reduces bandwidth and improves response times by caching and
 reusing frequently-requested web pages. The Access Control Lists can be utilized
