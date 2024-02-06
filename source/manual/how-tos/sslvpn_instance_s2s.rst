@@ -97,7 +97,7 @@ We have chosen to setup the server on "Site B", so we start with Trust configura
    * Select  `Create an internal Certificate`
    * Choose the just created authority in `Certificate authority`
    * Add descriptive information for this CA (`Descriptive name`, whereabouts are copied from the CA)
-   * Set Type to `Server`
+   * Set Type to `Client`
    * Choose cryptographic settings, lifetime determines the validaty of the server certificate (you do need to track this yourself), it's allow to choose a longer period here
    * Set the `Common Name` to username the other end will use for identification. For this example we use :code:`test-client`
 
