@@ -28,6 +28,44 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.1.1 (February 06, 2024)
+--------------------------------------------------------------------------
+
+
+Apart from rolling back Suricata 7 to 6 the new major version is looking good.
+The two intertwined Suricata default config changes in version 7 have been
+identified and fixed in the development version so that we can move back to
+version 7 in 24.1.2.
+
+This minor release is intended as a small round of fixes and third party
+updates to ensure reliability and security.
+
+Here are the full patch notes:
+
+* system: enable OpenSSL legacy provider by default to allow Google Drive backup to continue working with OpenSSL 3
+* system: bring back the interface statistics dashboard widget update interval
+* system: fix all items in the OPNsense container being synced in XMLRCP when NAT option is selected
+* interfaces: overview page UX improvements
+* firewall: align GeoIP file check with documentation
+* firewall: fix virtual IP API use with subnet/subnet_bits usage
+* wireguard: allow instances to start their ID at 0 like they used to a long time ago
+* dhcp: omit faulty comma in Kea config when control agent is disabled
+* dhcp: add opt-out automatic firewall rules for Kea server access
+* ipsec: remove AEAD algorithms without a PRF for IKE proposals in connections
+* openvpn: fix cso_login_matching being ignored during authentication
+* backend: optimise stream_handler to exit and kill running process when no listener is attached
+* plugins: os-frr 1.39 `[1] <https://github.com/opnsense/plugins/blob/stable/24.1/net/frr/pkg-descr>`__ 
+* plugins: os-haproxy 4.3 `[2] <https://github.com/opnsense/plugins/blob/stable/24.1/net/haproxy/pkg-descr>`__ 
+* plugins: os-ntopng 1.3 `[3] <https://github.com/opnsense/plugins/blob/stable/24.1/net/ntopng/pkg-descr>`__ 
+* plugins: os-tor 1.10 adds MyFamily support (contributed by Mike Bishop)
+* ports: nss 3.97 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_97.html>`__ 
+* ports: openldap 2.6.7 `[5] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openssl 3.0.13 `[6] <https://www.openssl.org/news/cl30.txt>`__ 
+* ports: syslog-ng 4.6.0 `[7] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.6.0>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.1 (January 30, 2024)
 --------------------------------------------------------------------------
 
