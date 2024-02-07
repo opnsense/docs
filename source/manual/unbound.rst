@@ -34,7 +34,7 @@ DNS64                                 Enable `DNS64 <https://en.wikipedia.org/wi
                                       must match the IPv6 prefix used be the NAT64.
 AAAA-only mode                        If this option is set, Unbound will remove all A records from the answer section
                                       of all responses.
-DHCP Registration                     **IPv4 only** If this option is set, then machines that specify their hostname
+Register ISC DHCP4 Leases             **IPv4 only** If this option is set, then machines that specify their hostname
                                       when requesting a DHCP lease will be registered in Unbound,
                                       so that their names can be resolved.
 
@@ -43,7 +43,7 @@ DHCP Registration                     **IPv4 only** If this option is set, then 
                                       This can also be inspected using the `Leases <dhcp.html#diagnostics>`__ page.
 DHCP Domain Override                  When the above registrations shouldn't use the same domain name as configured
                                       on this firewall, you can specify a different one here.
-DHCP Static Mappings                  Register static dhcpd entries so clients can resolve them. Supported on IPv4 and
+Register ISC DHCP Static Mappings     Register static dhcpd entries so clients can resolve them. Supported on IPv4 and
                                       IPv6.
 No IPv6 Link-local aaddresses         Do not register link local addresses for IPv6. This will prevent the return of
                                       unreachable addresses when more than one listen interface is configured.

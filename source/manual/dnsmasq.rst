@@ -38,11 +38,11 @@ Bind Mode / strict binding                When network interfaces are provided, 
                                           This option does not work with IPv6. If set, Dnsmasq will not
                                           bind to IPv6 addresses.
 DNSSEC                                    Validate DNS replies and cache DNSSEC data.
-DHCP Registration                         Register dhcp leases in Dnsmasq, so that their hostnames can be resolved.
+Register ISC DHCP4 Leases                 Register dhcp leases in Dnsmasq, so that their hostnames can be resolved.
                                           (IPv4 only)
 DHCP Domain Override                      When set use the domain name specified here instead of the system domain
                                           for registering addresses.
-Static DHCP                               Register static dhcp addresses as well.
+Register ISC DHCP Static Mappings         Register static dhcp addresses as well.
 Query DNS servers sequentially            If this option is set, Dnsmasq will query the DNS servers sequentially in the
                                           order specified (System: General Setup: DNS Servers),
                                           rather than all at once in parallel.
