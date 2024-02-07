@@ -16,8 +16,22 @@ In most cases the default setup is ready to use, below you will find some of the
 
 =====================================================================================================================
 
+.. Attention::
+
+    NTPd syncs the local clock to remote NTP servers and listens for incoming client queries using the selected interfaces.
+    The interface selection must therefore include a WAN type interface so that normal routing to the internet can take place.
+    Only selecting a LAN type interface will likely work due to outbound NAT rules, however, if CARP is configured, it is
+    possible that such NAT rules will translate to the address of the CARP VIP, causing asymmetric routing for secondary nodes.
+
+    Unless you are sure that you want to use a specific interface, it is recommended to keep the default of listening
+    on all interfaces and use the firewall rules to constrain access to the NTP service.
+    See `Listen interfaces <settingsmenu.html#listen-interfaces>`__ for more information.
+
 ====================================  ===============================================================================
-Interface(s)	                        Interfaces to bind to, when none is selected it listens to all
+Interface(s)	                      Interfaces to listen on. This interface selection is also used for outgoing
+                                      queries. when no interfaces are selected it listens on all interfaces with a
+                                      wildcard. Selecting all interfaces will explicitly listen on only the
+                                      interfaces/IPs specified. Interfaces without an IP address will not be shown.
 Time servers                          Servers to use, comes with two toggles:
 
                                       * Prefer
