@@ -158,6 +158,13 @@ Copy your initial root password (line ** set initial….)
 
     login:
 
+
+.. Tip::
+
+    When the ec2 console doesn't show the initial password you can also use the configured ssh shell to reset the root
+    password using  :code:`sudo /usr/local/sbin/opnsense-shell` and option :code:`3` in the menu.
+
+
 --------------------------------------------
 Step 11 - Search current address and login
 --------------------------------------------
