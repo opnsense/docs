@@ -220,6 +220,12 @@ If checksums match continue with the verification commands.
    openssl dgst -sha256 -verify OPNsense-<filename>.pub -signature /tmp/image.sig OPNsense-<filename>.<image>
 
 
+.. Warning::
+
+   Make sure to unpack the image using :code:`bunzip2` before verifying. Our signatures are generated before compressing them
+   (as of OPNsense version 24.1)
+
+
 If the output of the second command is “**Verified OK**”, your image file was verified
 successfully, and its safe to install from it. Any other outputs, and you may need
 to check your commands for errors, or the image file may have been compromised.
