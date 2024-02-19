@@ -58,7 +58,7 @@ And start describing our (information) model, like this:
                     <email type="EmailField">
                         <ValidationMessage>you should input a valid email address!</ValidationMessage>
                     </email>
-                <name type="TextField"/>
+                    <name type="TextField"/>
                 </entity>
                 <someText type="TextField"/>
             </contacts>
@@ -114,3 +114,67 @@ their own namespace at *OPNsense\\Base\\FieldTypes* deriving from *BaseField*.
    For example using *Vendor\\Component\\FieldTypes\\MyFieldType* to point to a specific non
    common field type or *.\\MyFieldType* when linked from the application model itself (which assumes a namespace FieldTypes
    exists)
+
+
+Special model types
+------------------------------------
+
+
+In memory models
+.........................................
+
+In same cases it might be practical to use all of the standard model tools, but prevent data from being persisted.
+For this purpose the memory model may be used. Examples of such applications are diagnostic tools, which do require
+user input, but is only relevant for that perticular call.
+
+To use these models, use the following mountpoint: :code:`<mount>:memory:</mount>`
+
+Legacy wrappers
+.........................................
+
+While migrating legacy components, sometimes the distance between the current situation (using raw xml access) and the desired
+one (being a fully validated model) is hard to overcome.
+It's not always clear which type of data is being used, and when moving data inside a new model and changing it's access
+path, a proper validation is mandatory.
+
+When data lives inside it's own easy to distinct "container", a standard model may be overlayed. An example of such a
+case is the static route component. Which underneath looks like this (without payload):
+
+
+.. code-block:: xml
+
+   <staticroutes>
+      <route/>
+      <route/>
+   </staticroutes>
+
+
+The other case is when a collection of items does not live inside a unique container,  for example the following
+payload:
+
+
+.. code-block:: xml
+
+   <cert/>
+   <cert/>
+   <cert/>
+
+Legacy modules would iterate over :code:`$config['cert']` in this case. Since :code:`cert` does not have an upper container
+the model is able to control in full (as it's the root of the :code:`config.xml`), we can not overlay a standard model
+to specify the fields used and their constraints.
+
+This is where our legacy wrapper comes into play. In order to use this feature, you have to use the following mountpoint format:
+
+   :code:`/tag+` << start with an exact path [:code:`/`] and end with a plus [:code:`+`]
+
+In the "cert" example our mountpoint would like like : :code:`<mount>/cert+</mount>`
+
+.. Note::
+
+   All used fields still need to be specified, fields left out of the model, will be removed from the configuration
+   in the same way a regular model would act.
+
+.. Note::
+
+   As legacy wrappers can not be versioned, migrations do not apply. In the long run
+   it's always better to use full models, but these constructions offer an option for a "softer landing".
