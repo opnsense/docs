@@ -20,8 +20,9 @@ For optimum performance and compatibility, these guides are given:
 
 ------------------
 
+------
 VMware ESXi
------------
+------
 VMware offers full instructions for installing FreeBSD, these can be found
 `here <https://partnerweb.vmware.com/GOSIG/FreeBSD_13x.html>`__.
 
@@ -33,26 +34,27 @@ To install the VMware tools just goto :menuselection:`System --> Firmware --> Pl
 .. Note::
 
    While other network setups may work fine, the VMXNET 3 is the recommended one according to VMware's Compatibility Guide.
- 
 
-------------------
-
+------
 Xen
----
+------
 To install the Xen tools just goto :menuselection:`System --> Firmware --> Plugins` and install
 **os-xen** by clicking on the **+** sign next to it.
 
 .. image:: images/os-xen.png
 
-------------------
-
+------
 HyperV
 ------
 HyperV Generation 1 and 2 are supported out of the box, no additional drivers
 or tools are needed.
+Secure Boot must not be enabled in the hardware settings for the VM.
 
+.. image:: images/hyper-v_no-enable-sec-boot.png
+
+------
 KVM
----
+------
 **i440FX chipset**
 OPNsense on KVM works with virtio disks and network devices (confirmed on QEMU 5.0).
 
@@ -61,6 +63,7 @@ As of 22.1.x, OPNsense is based on FreeBSD 13.0, which includes support for the 
 generation of KVM virtio devices.
 Note that this was a relatively recent addition to FreeBSD, so it may not be as well tested as the i440 support.
 
+------
 Others
 ------
 OPNsense can be installed on all virtual machines that support FreeBSD (such as Bhyve, VirtualBox).
