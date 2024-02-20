@@ -55,6 +55,32 @@ Firewall
 
     "``<<uses>>``", "", "", "", "*model* `Category.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Category.xml>`__"
 
+.. csv-table:: Abstract [non-callable] (FilterBaseController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","firewall","filter_base","apply","$rollback_revision=null"
+    "``POST``","firewall","filter_base","cancelRollback","$rollback_revision"
+    "``GET``","firewall","filter_base","get",""
+    "``GET``","firewall","filter_base","listCategories",""
+    "``GET``","firewall","filter_base","listNetworkSelectOptions",""
+    "``POST``","firewall","filter_base","revert","$revision"
+    "``POST``","firewall","filter_base","savepoint",""
+    "``POST``","firewall","filter_base","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `Filter.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Filter.xml>`__"
+
+.. csv-table:: Resources (FilterController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","firewall","filter","addRule",""
+    "``POST``","firewall","filter","delRule","$uuid"
+    "``GET``","firewall","filter","getRule","$uuid=null"
+    "``*``","firewall","filter","searchRule",""
+    "``POST``","firewall","filter","setRule","$uuid"
+    "``POST``","firewall","filter","toggleRule","$uuid,$enabled=null"
+
 .. csv-table:: Resources (FilterUtilController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -75,6 +101,28 @@ Firewall
     "``POST``","firewall","group","setItem","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Group.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Group.xml>`__"
+
+.. csv-table:: Resources (NptController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","firewall","npt","addRule",""
+    "``POST``","firewall","npt","delRule","$uuid"
+    "``GET``","firewall","npt","getRule","$uuid=null"
+    "``*``","firewall","npt","searchRule",""
+    "``POST``","firewall","npt","setRule","$uuid"
+    "``POST``","firewall","npt","toggleRule","$uuid,$enabled=null"
+
+.. csv-table:: Resources (SourceNatController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","firewall","source_nat","addRule",""
+    "``POST``","firewall","source_nat","delRule","$uuid"
+    "``GET``","firewall","source_nat","getRule","$uuid=null"
+    "``*``","firewall","source_nat","searchRule",""
+    "``POST``","firewall","source_nat","setRule","$uuid"
+    "``POST``","firewall","source_nat","toggleRule","$uuid,$enabled=null"
 
 
 .. Tip::

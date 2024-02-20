@@ -31,6 +31,30 @@ Interfaces
 
     "``<<uses>>``", "", "", "", "*model* `Loopback.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Loopback.xml>`__"
 
+.. csv-table:: Resources (NeighborSettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","interfaces","neighbor_settings","addItem",""
+    "``POST``","interfaces","neighbor_settings","delItem","$uuid"
+    "``GET``","interfaces","neighbor_settings","get",""
+    "``GET``","interfaces","neighbor_settings","getItem","$uuid=null"
+    "``POST``","interfaces","neighbor_settings","reconfigure",""
+    "``*``","interfaces","neighbor_settings","searchItem",""
+    "``POST``","interfaces","neighbor_settings","set",""
+    "``POST``","interfaces","neighbor_settings","setItem","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Neighbor.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Neighbor.xml>`__"
+
+.. csv-table:: Resources (OverviewController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","interfaces","overview","export",""
+    "``GET``","interfaces","overview","getInterface","$if=null"
+    "``GET``","interfaces","overview","interfacesInfo","$details=false"
+    "``GET``","interfaces","overview","reloadInterface","$identifier=null"
+
 .. csv-table:: Resources (VipSettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
