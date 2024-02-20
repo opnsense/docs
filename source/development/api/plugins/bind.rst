@@ -50,6 +50,8 @@ Bind
 
     "``GET``","bind","general","get",""
     "``POST``","bind","general","set",""
+    "``GET``","bind","general","zoneshow","$zonename=null"
+    "``GET``","bind","general","zonetest","$zonename=null"
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/dns/bind/src/opnsense/mvc/app/models/OPNsense/Bind/General.xml>`__"
 
