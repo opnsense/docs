@@ -28,6 +28,72 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.1.2 (February 20, 2024)
+--------------------------------------------------------------------------
+
+
+It is time to move back to Suricata version 7 after identifying the relevant
+default option changes in order to keep IPS/Netmap happy when running it.
+Kea also received a number of tweaks and updates as well as our VPN service
+integrations.
+
+Last but not least this includes FreeBSD 13.2-p10 and the recent DNS denial
+of service attack mitigation.
+
+Here are the full patch notes:
+
+* system: accept colon character in log queries
+* system: add issuer and logo to OTP link
+* system: fix gateway migration issue causing individual items to be skipped
+* reporting: update traffic graph colors to be contrast and consistent (contributed by brotherla)
+* interfaces: fix strpos() deprecation null haystack
+* interfaces: add missing ACL entries for ARP/NDP tables
+* interfaces: fix VXLAN validation
+* firewall: change default traffic normalization behavior and choose "in" as standard direction for manual rules
+* firewall: make select width more consistent on alias diagnostics table selection
+* dhcp: set RemoveAdvOnExit to off in CARP mode for router advertisements
+* dhcp: make sure the register DNS leases options reflect that this is only supported for ISC DHCP
+* dhcp: make option_data_autocollect option more explicit in Kea
+* dhcp: gather missing Kea leases another way since the logs are unreliable
+* dhcp: add address constraint to Kea reservations
+* dhcp: add unique constraint for MAC address + subnet in Kea
+* dhcp: add domain-name to client configuration in Kea
+* dhcp: loosen constraints for TFTP boot in Kea
+* intrusion detection: adjust for default behaviour changes in Suricata 7
+* ipsec: improve enable button placement on connections page
+* ipsec: show EAP-RADIUS settings only when legacy tunnels are being used
+* ipsec: allow % to support %any in ID for connections
+* openvpn: when "cert_depth" is left empty it should ignore the value
+* openvpn: data-ciphers-fallback should be a single option
+* openvpn: fix support for /30 p2p/net30 instances
+* openvpn: add "various_push_flags" field for simple boolean server push options in connections
+* unbound: prevent os.write() on None when another thread closed the pipe in Python module
+* wireguard: key constraints should only apply on peers and not instances
+* wireguard: peer uniqueness should depend on pubkey + endpoint
+* wireguard: skip attached instance address routes
+* wireguard: remove duplicate ID columns
+* mvc: fix Phalcon 5.4 and up
+* src: jail: fix information leak `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:02.tty.asc>`__ 
+* src: bhyveload: use a dirfd to support -h `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:01.bhyveload.asc>`__ 
+* src: EVFILT_SIGNAL: do not use target process pointer on detach `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-24:03.kqueue.asc>`__ 
+* src: setusercontext(): apply personal settings only on matching effective UID `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-24:02.libutil.asc>`__ 
+* src: re: generate an address if there is none in the EEPROM
+* src: wg: detect loops in netmap mode
+* src: wg: detach bpf upon destroy as well
+* src: wg: fix access to noise_local->l_has_identity and l_private
+* src: wg: fix erroneous calculation in calculate_padding() for p_mtu == 0
+* plugins: os-acme-client 4.1 `[5] <https://github.com/opnsense/plugins/blob/stable/24.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-ddclient 1.21 `[6] <https://github.com/opnsense/plugins/blob/stable/24.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.15 `[7] <https://github.com/opnsense/plugins/blob/stable/24.1/dns/dnscrypt-proxy/pkg-descr>`__ 
+* ports: dnsmasq 2.90 `[8] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: openvpn 2.6.9 `[9] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.9>`__ 
+* ports: phalcon 5.6.1 `[10] <https://github.com/phalcon/cphalcon/releases/tag/v5.6.1>`__ 
+* ports: radvd adds upstream patch for RemoveAdvOnExit option
+* ports: suricata 7.0.3 `[11] <https://suricata.io/2024/02/08/suricata-7-0-3-and-6-0-16-released/>`__ 
+* ports: unbound 1.19.1 `[12] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-19-1>`__ 
+
+
+--------------------------------------------------------------------------
 24.1.1 (February 06, 2024)
 --------------------------------------------------------------------------
 
