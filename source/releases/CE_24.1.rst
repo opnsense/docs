@@ -92,6 +92,11 @@ Here are the full patch notes:
 * ports: suricata 7.0.3 `[11] <https://suricata.io/2024/02/08/suricata-7-0-3-and-6-0-16-released/>`__ 
 * ports: unbound 1.19.1 `[12] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-19-1>`__ 
 
+A hotfix release was issued as 24.1.2_1:
+
+* system: fix dynamic gateway persisting its address
+
+
 
 --------------------------------------------------------------------------
 24.1.1 (February 06, 2024)
