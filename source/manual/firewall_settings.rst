@@ -121,6 +121,11 @@ Schedule States
 
 By default schedules clear the states of existing connections when the expiration time has come. This option overrides that behavior by not clearing states for existing connections.
 
+Logging
+------------------------------------
+
+Here the logging behaviour of the default block/pass, automatic outbound NAT as well as bogon and private network blocks can be adjusted.
+If disabled, only log directives from your manual rules will be show in the firewall log.
 
 Miscellaneous
 ------------------------------------

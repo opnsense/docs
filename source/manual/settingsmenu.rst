@@ -79,7 +79,8 @@ DNS Rebind Check                               OPNsense contains protection agai
 Alternate Hostnames                            Alternate, valid hostnames (to avoid false positives in
                                                referrer/DNS rebinding protection).
 HTTP Compression                               Reduces size of transfer, at the cost of slightly higher CPU usage.
-Enable access log                              Log all access to the Web GUI (for debugging/analysis)
+Access log                                     Log all access to the Web GUI for debugging/analysis.
+Server Log                                     Display all web GUI errors in the main system log.
 Listen interfaces                              Can be used to limit interfaces on which the Web GUI can be accessed.
                                                This allows freeing the interface for other services, such as HAProxy.
 HTTP_REFERER enforcement check                 The origins of requests are checked in order to provide some
@@ -107,7 +108,7 @@ Permit Root Login                              Root login is generally discourag
                                                another user and switch to root afterwards.
 Permit password login                          When disabled, authorized keys need to be configured for each User
                                                that has been granted secure shell access.
-SSH port	                                   Port to listen on, default is 22
+SSH port                                       Port to listen on, default is 22
 Listen Interfaces                              Only accept connections from the selected interfaces.
                                                Leave empty to listen globally. Use with extreme care.
 Key exchange algorithms                        The key exchange methods that are used to generate per-connection
@@ -346,45 +347,28 @@ Disable the startup/shutdown beep Disable beeps via the built-in speaker (“PC 
 Logging
 ------------
 
-Log settings can be found at :menuselection:`System --> Settings --> Logging`.
+Local log settings can be found at :menuselection:`System --> Settings --> Logging`, tab "Local".
+
+The regular log files will use the following standard pattern on disk :code:`/var/log/<application>/<application>_[YYYYMMDD].log` (one file per day).
+Our user interface provides an integrated view stitching all collected files together.  Available settings may change the appearance on disk depending
+on space and time constraints for log rotation.
+
+Many plugins have their own logs. In the UI, they are grouped with the settings of that plugin.
+They mostly log to /var/log/ in text format, so you can view or follow them with *tail*.
 
 An overview of the local settings:
 
 ============================================ ====================================================================================================================
 Setting                                      Explanation
 ============================================ ====================================================================================================================
-Preserve logs (Days)                         Configures the number of days to keep logs.
-Log Firewall Default Blocks                  Turning these off means that only hits for your custom rules will be logged.
-Web Server Log                               If checked, lighttpd errors are displayed in the main system log.
-Disable writing log files to the local disk  Useful to avoid wearing out flash memory (if used). Remote logging can be used to save the logs instead if desired.
-Reset Logs                                   Clear all logs. Note that this will also restart the DHCP server, so make sure any DHCP settings are saved first.
+Enable local logging                         Disable to avoid wearing out flash memory when applicable and set up remote logging instead.
+Maximum preserved files                      Configures the number of days to keep logs or the number of files if "maximum file size" option is used.
+Maximum file size                            Limit the file size of the logs instead of keeping one log per day.
 ============================================ ====================================================================================================================
 
-............................
-Local logs
-............................
+Remote log settings can be found at :menuselection:`System --> Settings --> Logging`, tab "Remote".
 
-As of OPNsense 20.7 we changed our default logging method to regular files.
-These files will use the following pattern on disk :code:`/var/log/<application>/<application>_[YYYYMMDD].log` (one file per day).
-Our user interface provides an integrated view stitching all collected files together.
-
-
-.....................
-Plugin Logs
-.....................
-
-Many plugins have their own logs. In the UI, they are grouped with the settings of that plugin.
-They mostly log to /var/log/ in text format, so you can view or follow them with *tail*.
-
-
-----------------------
-Logging / targets
-----------------------
-
-With OPNsense version 19.7, syslog-ng for remote logging was introduced.
-If you want to benefit from all new features and already have the legacy system available,
-please remove all remote logging from **System->Settings->Logging** and go to
-**System->Settings->Logging / targets** and *Add* a new *Destination*.
+*Add* a new *Destination* to set up a remote target destination.
 
 ============== ================================================================================
 Setting                 Explanation
@@ -400,7 +384,6 @@ Certificate    Client certificate to use (when selecting a tls transport type)
 Description    Set a description for you own use.
 ============== ================================================================================
 
-
 .. Note::
 
     When using syslog over TLS, make sure both ends are configured properly (certificates and hostnames), certificate
@@ -410,3 +393,7 @@ Description    Set a description for you own use.
 
     A reconfigure doesn't always apply the new tls settings instantly, if that's not the case best stop and start
     syslog in OPNsense (using the gui).
+
+To activate any changed settings use the "Apply" button below.
+
+To clear all the logs on the system use the "Reset Log Files" button.
