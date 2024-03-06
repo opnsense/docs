@@ -259,7 +259,7 @@ Here are the full patch notes for version 21.7.5:
 * ports: lighttpd 1.4.61 `[15] <https://www.lighttpd.net/2021/10/28/1.4.61/>`__ 
 * ports: nss 3.72 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_72.html>`__ 
 * ports: openssh 8.8p1 `[17] <https://www.openssh.com/txt/release-8.8>`__ 
-* ports: pcre2 10.39 `[18] <https://www.pcre.org/changelog.txt>`__ 
+* ports: pcre2 10.39 `[18] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.39>`__ 
 * ports: php 7.4.25 `[19] <https://www.php.net/ChangeLog-7.php#7.4.25>`__ 
 * ports: phpseclib 2.0.34 `[20] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.34>`__ 
 
@@ -691,7 +691,7 @@ Here are the full patch notes:
 * ports: clog 1.0.2 fixes garbage header write on init
 * ports: curl 7.78.0 `[14] <https://curl.se/changes.html#7_78_0>`__ 
 * ports: filterlog adds CARP IPv6 support and moves label to previously reserved spot
-* ports: libxml 2.9.12 `[15] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.9.12 `[15] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nettle 3.7.3
 * ports: nss 3.68 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_68.html>`__ 
 * ports: openvpn 2.5.3 `[17] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.3>`__ 
@@ -883,7 +883,7 @@ Here are the full patch notes against 21.1.7:
 * src: FreeBSD updates for Intel e1000, ixgbe and ixl drivers
 * src: compatibility shim for upcoming rtsold "-M" command line option
 * ports: drop hardening options to ease migration to FreeBSD ports tree
-* ports: libxml 2.9.12 `[6] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.9.12 `[6] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nettle 3.7.3
 * ports: nss 3.67 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_67.html>`__ 
 * ports: openvpn 2.5.3 `[8] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.3>`__ 

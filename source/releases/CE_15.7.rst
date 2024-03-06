@@ -374,7 +374,7 @@ Here are the full patch notes:
 * ports: squid 5.3.11 `[3] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
 * ports: strongswan 5.3.4 `[4] <https://www.strongswan.org/blog/2015/11/16/strongswan-5.3.4-released.html>`__ 
 * ports: choparp 20150613 `[5] <https://github.com/quinot/choparp>`__ 
-* ports: libxml 2.9.3 `[6] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.9.3 `[6] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: pkg 1.6.2 `[7] <https://github.com/freebsd/freebsd-ports/commit/0466b08981bf9c714>`__ 
 * ports: opnsense-bootstrap, the infamous installer that works on stock FreeBSD `[8] <https://github.com/opnsense/update/commit/e3f63ecdb1149a8cc30e3>`__ 
 * intrusion detection: ignore json parse errors in eve log file

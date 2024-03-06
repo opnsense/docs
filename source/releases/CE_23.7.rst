@@ -738,13 +738,13 @@ Here are the full patch notes:
 * src: ixl: port ice's atomic API to ixl
 * src: rss: set pin_default_swi to 0 by default
 * src: rtsol: introduce an 'always' script
+* ports: dnspython 2.4.2
 * ports: krb5 1.21.2 `[3] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
 * ports: openldap 2.6.6 `[4] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: openvpn 2.6.6 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.6>`__ 
 * ports: php 8.2.9 `[6] <https://www.php.net/ChangeLog-8.php#8.2.9>`__ 
 * ports: phalcon 5.3.0 `[7] <https://github.com/phalcon/cphalcon/releases/tag/v5.3.0>`__ 
 * ports: phpseclib 3.0.21 `[8] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.21>`__ 
-* ports: py-dnspython 2.4.2
 
 
 
@@ -787,10 +787,10 @@ Here are the full patch notes:
 * src: libpfctl: ensure the initial allocation is large enough
 * src: pf: handle multiple IPv6 fragment headers
 * ports: curl 8.2.1 `[5] <https://curl.se/changes.html#8_2_1>`__ 
+* ports: dnspython 2.4.1
 * ports: nss 3.92 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_92.html>`__ 
 * ports: openssl 1.1.1v `[7] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: perl 5.34.1 `[8] <https://perldoc.perl.org/5.34.1/perldelta>`__ 
-* ports: py-dnspython 2.4.1
 * ports: strongswan 5.9.11 `[9] <https://github.com/strongswan/strongswan/releases/tag/5.9.11>`__ 
 * ports: syslog-ng 4.3.1 `[10] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.3.1>`__ 
 

@@ -242,7 +242,7 @@ Here are the full patch notes:
 * ports: curl 8.1.1 `[10] <https://curl.se/changes.html#8_1_1>`__ 
 * ports: dhcp6c 20230530
 * ports: ifinfo now also prints interface index (contributed by Nicolas Thumann)
-* ports: libxml 2.10.4 `[11] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.10.4 `[11] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: lighttpd 1.4.71 `[12] <https://www.lighttpd.net/2023/5/27/1.4.71/>`__ 
 * ports: nss 3.89.1 `[13] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_89_1.html>`__ 
 * ports: openssh 9.3p1 `[14] <https://www.openssh.com/txt/release-9.3>`__ 

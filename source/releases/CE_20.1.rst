@@ -163,7 +163,7 @@ Here are the full patch notes:
 * ports: dhcp6c v20200512
 * ports: hyperscan 5.2.1 `[7] <https://github.com/intel/hyperscan/releases/tag/v5.2.1>`__ 
 * ports: openldap 2.4.50 `[8] <https://www.openldap.org/software/release/changes.html>`__ 
-* ports: pcre2 10.35 `[9] <https://www.pcre.org/changelog.txt>`__ 
+* ports: pcre2 10.35 `[9] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.35>`__ 
 * ports: php 7.3.18 `[10] <https://www.php.net/ChangeLog-7.php#7.3.18>`__ 
 
 

@@ -241,7 +241,7 @@ Here are the full patch notes:
 * ports: nss 3.72 `[21] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_72.html>`__ 
 * ports: openssh 8.8p1 `[22] <https://www.openssh.com/txt/release-8.8>`__ 
 * ports: openvpn 2.5.4 `[23] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.4>`__ 
-* ports: pcre2 10.39 `[24] <https://www.pcre.org/changelog.txt>`__ 
+* ports: pcre2 10.39 `[24] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.39>`__ 
 * ports: php 7.4.25 `[25] <https://www.php.net/ChangeLog-7.php#7.4.25>`__ 
 * ports: phpseclib 2.0.34 `[26] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.34>`__ 
 * ports: strongswan 5.9.4 `[27] <https://github.com/strongswan/strongswan/releases/tag/5.9.4>`__ 

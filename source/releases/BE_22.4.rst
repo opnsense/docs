@@ -199,10 +199,10 @@ Here are the full patch notes:
 * src: rc: use _pidcmd to determine pid for protect
 * ports: curl 7.83.1 `[10] <https://curl.se/changes.html#7_83_1>`__ 
 * ports: expat 2.4.8 `[11] <https://github.com/libexpat/libexpat/blob/R_2_4_8/expat/Changes>`__ 
-* ports: libxml 2.9.13 `[12] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.9.13 `[12] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: monit 5.32.0 `[13] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.78 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_78.html>`__ 
-* ports: pcre2 10.40 `[15] <https://www.pcre.org/changelog.txt>`__ 
+* ports: pcre2 10.40 `[15] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.40>`__ 
 * ports: php 7.4.29 `[16] <https://www.php.net/ChangeLog-7.php#7.4.29>`__ 
 * ports: phpseclib 2.0.37 `[17] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.37>`__ 
 * ports: pkg 1.17.5 `[18] <https://github.com/freebsd/freebsd-ports/commit/18793d10585f>`__ 

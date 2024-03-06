@@ -61,7 +61,7 @@ Here are the full patch notes:
 * plugins: os-stunnel fixes missing include in certificate script
 * ports: curl 7.87.0 `[3] <https://curl.se/changes.html#7_87_0>`__ 
 * ports: nss 3.87 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_87.html>`__ 
-* ports: pcre 10.42 `[5] <https://www.pcre.org/changelog.txt>`__ 
+* ports: pcre 10.42 `[5] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.42>`__ 
 * ports: phalcon 5.1.4 `[6] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.4>`__ 
 * ports: php 8.0.27 `[7] <https://www.php.net/ChangeLog-8.php#8.0.27>`__ 
 * ports: sqlite 3.40.1 `[8] <https://sqlite.org/releaselog/3_40_1.html>`__ 
@@ -279,7 +279,7 @@ Here are the full patch notes:
 * src: ixl: fix SR-IOV panics
 * src: rc: run NAME_setup before RC_ARG_precmd
 * src: u3g: add more USB IDs
-* ports: libxml 2.10.3 `[15] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.10.3 `[15] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nss 3.84 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_84.html>`__ 
 * ports: openssl 1.1.1s `[17] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
 * ports: openvpn 2.5.8 `[18] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.8>`__ 
@@ -462,7 +462,7 @@ Here are the full patch notes:
 * interfaces: add support for requesting DNS info via stateless DHCPv6 (contributed by Maurice Walker)
 * dnsmasq: restart during "newwanip" event
 * ports: curl 7.85.0 `[1] <https://curl.se/changes.html#7_85_0>`__ 
-* ports: libxml 2.10.2 `[2] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.10.2 `[2] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: sqlite 3.39.2 `[3] <https://sqlite.org/releaselog/3_39_2.html>`__ 
 * ports: syslog-ng 3.38.1 `[4] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.38.1>`__ 
 
@@ -522,7 +522,7 @@ Here are the full patch notes:
 * src: tzdata: import tzdata 2022b and 2022c `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:20.tzdata.asc>`__ 
 * ports: ldns 1.8.3 `[7] <https://raw.githubusercontent.com/NLnetLabs/ldns/1.8.3/Changelog>`__ 
 * ports: liblz4 1.9.4
-* ports: libxml 2.10.1 `[8] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.10.1 `[8] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nss 3.82 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_82.html>`__ 
 * ports: phpseclib 3.0.14 `[10] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.14>`__ 
 
@@ -615,7 +615,7 @@ Here are the full patch notes:
 * plugins: os-munin-node 1.1 `[4] <https://github.com/opnsense/plugins/blob/stable/22.7/sysutils/munin-node/pkg-descr>`__ 
 * plugins: os-netdata 1.2 `[5] <https://github.com/opnsense/plugins/blob/stable/22.7/net-mgmt/netdata/pkg-descr>`__ 
 * plugins: os-nginx 1.29 `[6] <https://github.com/opnsense/plugins/blob/stable/22.7/www/nginx/pkg-descr>`__ 
-* ports: libxml 2.9.14 `[7] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.9.14 `[7] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nss 3.81 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_81.html>`__ 
 * ports: rrdtool 1.8.0 `[9] <https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES>`__ 
 * ports: unbound 1.16.2 `[10] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-2>`__ 

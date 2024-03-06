@@ -240,7 +240,7 @@ Here are the full patch notes:
 * ports: curl 7.83.0 `[7] <https://curl.se/changes.html#7_83_0>`__ 
 * ports: nss 3.78 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_78.html>`__ 
 * ports: openssl 1.1.1o `[9] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
-* ports: pcre2 10.40 `[10] <https://www.pcre.org/changelog.txt>`__ 
+* ports: pcre2 10.40 `[10] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.40>`__ 
 * ports: php 7.4.29 `[11] <https://www.php.net/ChangeLog-7.php#7.4.29>`__ 
 * ports: pkg 1.17.5 `[12] <https://github.com/freebsd/freebsd-ports/commit/18793d10585f>`__ 
 * ports: suricata 6.0.5 `[13] <https://forum.suricata.io/t/suricata-6-0-5-and-5-0-9-released/2415>`__ 
@@ -322,7 +322,7 @@ Here are the full patch notes:
 * src: zlib compression out-of-bounds write `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:08.zlib.asc>`__ 
 * ports: curl 7.82.0 `[10] <https://curl.se/changes.html#7_82_0>`__ 
 * ports: expat 2.4.8 `[11] <https://github.com/libexpat/libexpat/blob/R_2_4_8/expat/Changes>`__ 
-* ports: libxml 2.9.13 `[12] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.9.13 `[12] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: monit 5.32.0 `[13] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.77 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_77.html>`__ 
 * ports: python 3.8.13 `[15] <https://docs.python.org/release/3.8.13/whatsnew/changelog.html>`__ 

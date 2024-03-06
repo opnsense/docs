@@ -541,6 +541,7 @@ Here are the full patch notes:
 * src: rss: set pin_default_swi to 0 by default
 * src: rtsol: introduce an 'always' script
 * ports: curl 8.3.0 `[17] <https://curl.se/changes.html#8_3_0>`__ 
+* ports: dnspython 2.4.2
 * ports: filterlog fix to prevent crash on default rule number -1
 * ports: nss 3.93 `[18] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_93.html>`__ 
 * ports: openldap 2.6.6 `[19] <https://www.openldap.org/software/release/changes.html>`__ 
@@ -550,7 +551,6 @@ Here are the full patch notes:
 * ports: phalcon 5.3.1 `[23] <https://github.com/phalcon/cphalcon/releases/tag/v5.3.1>`__ 
 * ports: php 8.2.11 `[24] <https://www.php.net/ChangeLog-8.php#8.2.11>`__ 
 * ports: phpseclib 3.0.23 `[25] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.23>`__ 
-* ports: py-dnspython 2.4.2
 * ports: py-duckdb 0.8.1
 * ports: py-vici 5.9.11
 * ports: sqlite 3.43.1 `[26] <https://sqlite.org/releaselog/3_43_1.html>`__ 

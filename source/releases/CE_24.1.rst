@@ -28,6 +28,48 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.1.3 (March 06, 2024)
+--------------------------------------------------------------------------
+
+
+This update fixes minor issues in the software and adds a CSV import/export
+to the Kea DHCP reservations to make bulk edits much easier.  It also fixes
+defaults in Suricata 7 that would negatively impact the IPS mode usage and
+updates the curl package to its current latest version.
+
+Here are the full patch notes:
+
+* system: prevent gateway removal when it is currently bound to an interface
+* system: fix assorted PHP deprecation warnings
+* firewall: add optional advanced property "State policy" to influence state creation on a per rule base
+* firewall: fix floating rule display (contributed by lin-xianming)
+* firewall: fix display of ICMP tooltip (contributed by lin-xianming)
+* firmware: fix missing space in audit message
+* kea-dhcp: add import/export as CSV on reservations
+* intrusion detection: set exception-policy and app-layer.error-policy to their advertised defaults
+* unbound: make atomic copies of root.hints file to hopefully appease Unbound startup problems
+* unbound: fix missing /lib nullfs mount in chroot
+* unbound: add aggressive-nsec option toggle (contributed by kulikov-a)
+* wireguard: remove duplicate "pubkey" field, remove required tag and validate on Base64 in model
+* wireguard: address assorted interface configuration inconsistencies during configuration
+* mvc: fix model cloning when array items contain nested containers
+* ui: fix epoch support as number in bootgrid
+* ui: replace all &gt; and &lt; occurrences in treeview (contributed by lin-xianming)
+* wizard: reorder storage sequence to fix hostname/domain change bug
+* plugins: os-theme-cicada 1.35 (contributed by Team Rebellion)
+* plugins: os-theme-rebellion 1.8.10 (contributed by Team Rebellion)
+* ports: curl 8.6.0 `[1] <https://curl.se/changes.html#8_6_0>`__ 
+* ports: dnspython 2.6.1
+* ports: expat 2.6.0 `[2] <https://github.com/libexpat/libexpat/blob/R_2_6_0/expat/Changes>`__ 
+* ports: libpfctl 0.9
+* ports: libxml 2.11.7 `[3] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: lighttpd 1.4.74 `[4] <https://www.lighttpd.net/2024/2/19/1.4.74/>`__ 
+* ports: pcre2 10.43 `[5] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.43>`__ 
+* ports: php 8.2.16 `[6] <https://www.php.net/ChangeLog-8.php#8.2.16>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.1.2 (February 20, 2024)
 --------------------------------------------------------------------------
 
@@ -238,7 +280,7 @@ Here are the full patch notes against 23.7.12:
 * src: wireguard: add experimental netmap support
 * src: sys: Use mbufq_empty instead of comparing mbufq_len against 0
 * src: e1000/igc: remove disconnected sysctl
-* ports: libxml 2.11.6 `[5] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.11.6 `[5] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: openssl 3.0.12 `[6] <https://www.openssl.org/news/cl30.txt>`__ 
 * ports: php 8.2.15 `[7] <https://www.php.net/ChangeLog-8.php#8.2.15>`__ 
 * ports: py-duckdb 0.9.2
@@ -362,7 +404,7 @@ Here are the full patch notes against 23.7.12:
 * src: bsdinstall: merge assorted stable changes
 * src: tuntap: merge assorted stable changes
 * src: wireguard: add netmap support
-* ports: libxml 2.11.6 `[2] <http://www.xmlsoft.org/news.html>`__ 
+* ports: libxml 2.11.6 `[2] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: openssl 3.0.12 `[3] <https://www.openssl.org/news/cl30.txt>`__ 
 * ports: py-duckdb 0.9.2
 * ports: suricata 7.0.2 `[4] <https://forum.suricata.io/t/suricata-7-0-2-released/4069>`__ 

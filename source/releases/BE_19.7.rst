@@ -366,7 +366,7 @@ Here are the full patch notes:
 * plugins: os-theme-tukan 1.20 (contributed by Team Rebellion)
 * ports: ca_root_nss 3.46
 * ports: ldns 1.7.1 `[5] <https://raw.githubusercontent.com/NLnetLabs/ldns/release-1.7.1/Changelog>`__ 
-* ports: pcre2 10.33 `[6] <https://www.pcre.org/changelog.txt>`__ 
+* ports: pcre2 10.33 `[6] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.33>`__ 
 * ports: php 7.2.22 `[7] <https://www.php.net/ChangeLog-7.php#7.2.22>`__ 
 * ports: phpseclib 2.0.21 `[8] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.21>`__ 
 * ports: unbound 1.9.3 `[9] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-9-3>`__ 

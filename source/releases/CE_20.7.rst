@@ -124,7 +124,7 @@ Here are the full patch notes:
 * ports: lighttpd 1.4.56 `[7] <https://www.lighttpd.net/2020/11/29/1.4.56/>`__ 
 * ports: nss 3.60 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_60.html>`__ 
 * ports: openssl 1.1.1i `[9] <https://www.openssl.org/news/secadv/20201208.txt>`__ 
-* ports: pcre2 10.36 `[10] <https://www.pcre.org/changelog.txt>`__ 
+* ports: pcre2 10.36 `[10] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.36>`__ 
 * ports: sudo 1.9.4 `[11] <https://www.sudo.ws/stable.html#1.9.4>`__ 
 * ports: sqlite 3.34.0 `[12] <https://sqlite.org/releaselog/3_34_0.html>`__ 
 * ports: unbound 1.13.0 `[13] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-13-0>`__ 
