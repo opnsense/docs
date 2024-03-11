@@ -8,17 +8,11 @@ Introduction
 
 WireGuard is a simple, fast VPN protocol using modern `cryptography <https://www.wireguard.com/protocol>`__. It aims to be faster and less complex than IPsec whilst also being a considerably more performant alternative to OpenVPN. Initially released for the Linux kernel, it is now cross-platform and widely deployable.
 
-This how-to describes setting up a central WireGuard Instance (server) on OPNsense and configuring one or more client peers to create a tunnel to it. 
+This how-to describes setting up a central WireGuard Instance (server) on OPNsense and configuring one or more client peers to create a tunnel to it.
 
--------------------------------------
-Step 1 - Install the WireGuard plugin
--------------------------------------
-
-- Install the plugin via :menuselection:`System --> Firmware --> Plugins`, selecting **os-wireguard**.
-- Once the plugin is installed, refresh the browser page and you will find the WireGuard configuration menu via :menuselection:`VPN --> WireGuard`.
 
 ------------------------------------------
-Step 2 - Configure the Wireguard Instance
+Step 1 - Configure the Wireguard Instance
 ------------------------------------------
 
 - Go to :menuselection:`VPN --> WireGuard --> Instances`
@@ -51,7 +45,7 @@ Step 2 - Configure the Wireguard Instance
 - **Save** or **Cancel** to exit the configuration
 
 ---------------------------------------------
-Step 3 - Configure the client peer
+Step 2 - Configure the client peer
 ---------------------------------------------
 
 - Go to :menuselection:`VPN --> WireGuard --> Peers`
@@ -73,14 +67,14 @@ Step 3 - Configure the client peer
 - Repeat this Step 3 for as many clients as you wish to configure
 
 ----------------------------------
-Step 4 - Turn on/restart WireGuard
+Step 3 - Turn on/restart WireGuard
 ----------------------------------
 
 - Turn on WireGuard under :menuselection:`VPN --> WireGuard --> General` if it is not already on (click **Apply** after checking the checkbox)
 - Otherwise, restart WireGuard - you can do this by turning it off and on under :menuselection:`VPN --> WireGuard --> General` (click **Apply** after both unchecking and checking the checkbox)
 
 --------------------------------
-Step 5 - Assignments and routing
+Step 4 - Assignments and routing
 --------------------------------
 
 .. Note::
@@ -89,7 +83,7 @@ Step 5 - Assignments and routing
 
     **However**, it is useful to complete Step 5(a) anyway, for the reasons explained in that step
 
-Step 5(a) - Assign an interface to WireGuard (recommended)
+Step 4(a) - Assign an interface to WireGuard (recommended)
 ----------------------------------------------------------
 
 .. Hint::
@@ -97,10 +91,10 @@ Step 5(a) - Assign an interface to WireGuard (recommended)
     This step is not strictly necessary in any circumstances for a road warrior setup. However, it is useful to implement, for several reasons:
 
     First, it generates an alias for the tunnel subnet(s) that can be used in firewall rules. Otherwise you will need to define your own alias or at least manually specify the subnet(s)
-    
+
     Second, it automatically adds an IPv4 outbound NAT rule, which will allow the tunnel to access IPv4 IPs outside of the local network (if that is desired), without needing to manually add a rule
-    
-    Finally, it allows separation of the firewall rules of each WireGuard instance (each :code:`wgX` device). Otherwise they all need to be configured on the default WireGuard group that OPNsense creates. This is more an organisational aesthetic, rather than an issue of substance    
+
+    Finally, it allows separation of the firewall rules of each WireGuard instance (each :code:`wgX` device). Otherwise they all need to be configured on the default WireGuard group that OPNsense creates. This is more an organisational aesthetic, rather than an issue of substance
 
 - Go to :menuselection:`Interfaces --> Assignments`
 - In the dropdown next to “New interface:”, select the WireGuard device (:code:`wg1` if this is your first one)
@@ -132,7 +126,7 @@ Step 5(a) - Assign an interface to WireGuard (recommended)
 
     If Unbound DNS is configured with all interfaces registered it requires a reload of Unbound DNS to get the new Wireguard interface added. This is necessary to get DNS working through the VPN tunnel.
 
-Step 5(b) - Create an outbound NAT rule
+Step 4(b) - Create an outbound NAT rule
 ---------------------------------------
 
 .. Hint::
@@ -166,7 +160,7 @@ Step 5(b) - Create an outbound NAT rule
     If you didn't assign an interface as suggested in Step 5(a), then you will need to manually specify the source IPs/subnet(s) for the tunnel (for example, 10.10.10.0/24). It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one WireGuard Instance and only one WireGuard Peer configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
 
 ------------------------------
-Step 6 - Create firewall rules
+Step 5 - Create firewall rules
 ------------------------------
 
 This will involve two steps - first creating a firewall rule on the WAN interface to allow clients to connect to the OPNsense WireGuard server, and then creating a firewall rule to allow access by the clients to whatever IPs they are intended to have access to.
@@ -215,12 +209,12 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
 .. Note::
 
     If you didn't assign an interface as suggested in Step 5(a), then the second firewall rule outlined above will need to be configured on the automatically created :code:`WireGuard` group that appears once the Instance configuration is enabled and WireGuard is started. You will also need to manually specify the source IPs/subnet(s) for the tunnel. It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one WireGuard Instance and only one WireGuard Peer configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
-    
+
 ------------------------------------
-Step 6a - Create normalization rules
+Step 5a - Create normalization rules
 ------------------------------------
 
-- Go to :menuselection:`Firewall --> Settings -> Normalization` and press **+** to create **one** new normalization rule. 
+- Go to :menuselection:`Firewall --> Settings -> Normalization` and press **+** to create **one** new normalization rule.
 
 - If you only pass IPv4 traffic through the wireguard tunnel, create the following rule:
     ============================ ==================================================================================================
@@ -233,7 +227,7 @@ Step 6a - Create normalization rules
      **Description**              *Wireguard MSS Clamping IPv4*
      **Max mss**                  *1380 (default) or 1372 if you use PPPoE; it's 40 bytes less than your Wireguard MTU*
     ============================ ==================================================================================================
-    
+
 - **Save** the rule
 
 - If you pass IPv4+IPv6 - or only IPv6 traffic - through the wireguard tunnel, create the following rule:
@@ -247,7 +241,7 @@ Step 6a - Create normalization rules
      **Description**              *Wireguard MSS Clamping IPv6*
      **Max mss**                  *1360 (default) or 1352 if you use PPPoE; it's 60 bytes less than your Wireguard MTU*
     ============================ ==================================================================================================
-    
+
 - **Save** the rule
 
 .. Tip::
@@ -256,9 +250,9 @@ Step 6a - Create normalization rules
 
 .. Note::
     By creating the normalization rules, you ensure that IPv4 TCP and IPv6 TCP can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work.
-    
+
 ---------------------------------------
-Step 7 - Configure the WireGuard client
+Step 6 - Configure the WireGuard client
 ---------------------------------------
 
 .. Tip::
@@ -288,7 +282,7 @@ Appendix - Example configurations
 -----------------------------------
 
 .. Warning::
-    
+
     **Do not re-use these example keys!**
 
 An example client configuration file:
