@@ -344,6 +344,11 @@ just follows this information and flushes the attached addresses to the item in 
 For example, when a user named **fred** which is a member of group **remote_users** logs into OpenVPN and received a tunnel address
 of :code:`10.10.10.2`, the alias containing "remote_users" would include this address as well.
 
+.. Note::
+
+    For this mechanism to work, the common-name of the user certificate must match the username exactly, which is the case by
+    default if the certificate has been created from the user manager.
+
 .. Tip::
 
     When using LDAP (Active directory), you can synchronise group membership to avoid double administration in OPNsense.
