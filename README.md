@@ -61,3 +61,15 @@ make html
 ```
 
 (```make clean``` to flush)
+
+#### Live preview of HTML documents
+
+Use `sphinx-autobuild` to track `source` for changes and get a live preview served via ``http://localhost:8000``.
+
+```
+pip[3] install sphinx-autobuild
+```
+
+```
+sphinx-autobuild source html
+```
