@@ -6,7 +6,7 @@ As part of the OPNsense Business Edition, Deciso offers a plugin to easily prote
 of injection attacks and provides encryption for traffic to and from the outside world.
 
 Our Web Application Firewall plugin offers some functionality which can also be found in community plugins available,
-but in a more user friendly manor. It combines the features most commonly used in `reverse proxies <https://en.wikipedia.org/wiki/Reverse_proxy>`__,
+but in a more user friendly manner. It combines the features most commonly used in `reverse proxies <https://en.wikipedia.org/wiki/Reverse_proxy>`__,
 such as TLS offloading and load balancing.
 
 To ease maintenance the :code:`OPNWAF` plugin offers usage of both internal certificates or newly generated
@@ -20,7 +20,10 @@ web gui of this firewall (:menuselection:`System->Settings->Administration`).
 
 .. Note::
 
-    The Web Application Firewall uses `tls-alpn-01` for easy domain verification, this requires the server to listen on port 443.
+    When using Let's Encrypt, The Web Application Firewall uses the `tls-alpn-01` challenge type for easy domain verification, this requires the
+    virtual server to listen on port 443. Make sure the firewall allows incoming HTTPS connections on port 443. If the client connects
+    via a custom port, you can forward these requests to port 443, and configure the virtual server to forward these requests to the
+    correct internal port.
 
 
 Installation
@@ -104,13 +107,20 @@ Description                      User friendly description for this vhost
 
 
 
-This section defines the port the virtual server will listen on, remember, in order to use ACME (Let's encrypt) this should either
+The section above defines the port the virtual server will listen on. Remember, in order to use ACME (Let's encrypt) this should either
 be 443 or the traffic should be forwarded from port 443 to the port defined here.
 
 .. Note::
 
     Port numbers don't have to be unique when more virtual servers are defined as the hostname correctly identifies the
     location.
+
+
+.. Warning::
+
+    The `ALPN` protocol (the challenge type used by Let's Encrypt) will resolve the FQDNs specified in the virtual host
+    entry to the IP address of the firewall. If your DNS records point to both IPv4 and IPv6 addresses, IPv6 will
+    be preferred by the challenge, so make sure your firewall is reachable via IPv6 as well if this is the case.
 
 When supplying a certificate manually via the system trust store you can assign it in this dialog as well.
 
