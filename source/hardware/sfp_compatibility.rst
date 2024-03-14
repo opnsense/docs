@@ -86,7 +86,17 @@ FS        SFP-GE-BX                      1G
 MikroTik  S-53LC20D                      1G
 TP-Link   1000Base-BX WDM Bi-Directional 1G
 Ubiquiti  UACC-OM-SM-1G-S                1G
-========= ============================== =================================
+========= ============================== ======= =========================
+
+--------------------------------------
+1G Multi-mode optical fiber
+--------------------------------------
+
+========= ============================== ======= =========================
+Vendor    Type                           Speed        Notes
+========= ============================== ======= =========================
+FlexOptix S.8512.02.D                    1G
+========= ============================== ======= =========================
 
 --------------------------------------
 10G Single-mode optical fiber
@@ -140,6 +150,8 @@ Vendor     Type                           Speed         Notes
 ========== ============================== ============= =========================
 FS         SFP-10G-T                      10G
 Uptimed    UP-TR-10G-RJ45-CI              1/2.5/5/10G   Will always link at 10G on axgbe,
+                                                        maximum speed is determined by link partner
+FlexOptix  T.C96.02.KMF                   1/2.5/5/10G   Will always link at 10G on axgbe,
                                                         maximum speed is determined by link partner
 ========== ============================== ============= =========================
 
