@@ -57,7 +57,7 @@ FAQ
 
 .. Attention:: There is no TCP/UDP stream, load balancing and WAF (Web Application Firewall) support in this plugin. Caddy itself could support these features, but this plugin is focused on ease of configuration. For a business ready Reverse Proxy with WAF functionality, use OPNWAF. For TCP/UDP streaming, use either nginx or ha-proxy.
 
-.. Tip:: As an alternative to a WAF, it's easy to integrate Caddy with CrowdSec. Check the How-To section for guidance.
+.. Tip:: As an alternative to a WAF, it's simple to integrate Caddy with CrowdSec. Check the tutorial section for guidance.
 
 
 ====================
@@ -217,9 +217,9 @@ caddy: Tutorials
 .. Attention:: The tutorial section implies that `Prepare OPNsense for Caddy after installation` has been followed.
 
 
-------------------------------------
-How-To: Create an easy reverse proxy
-------------------------------------
+-------------------------------
+Creating a simple reverse proxy
+-------------------------------
 
 .. Note:: Make sure the chosen domain is externally resolvable. Create an A-Record with an external DNS Provider that points to the external IP Address of the OPNsense.
 
@@ -245,9 +245,9 @@ Go to `Services - Caddy Web Server - Reverse Proxy - Handler`
 .. Note:: **Result:** HTTPS foo.example.com:80/443 --> OPNsense (Caddy) --> HTTP 192.168.10.1:80
 
 
-----------------------------------------
-How-To: Dynamic DNS and DNS-01 Challenge
-----------------------------------------
+-----------------
+Using dynamic DNS
+-----------------
 
 Go to `Services - Caddy Web Server - General Settings - DNS Provider`
 
@@ -287,9 +287,9 @@ Backend Server                 192.168.1.1
 .. Note:: Now Caddy listens on Port 80 and 443, and reverse proxies everything from mydomain.duckdns.org to 192.168.1.1:80. All headers and the real IP are automatically passed to the Backend Server. For different ports, check the advanced settings. Let's Encrypt Certificate and Dynamic DNS Updates are all handled automatically.
 
 
----------------------------------------
-How-To: Create a wildcard reverse proxy
----------------------------------------
+---------------------------------
+Creating a wildcard reverse proxy
+---------------------------------
 
 Go to `Services - Caddy Web Server - General Settings - DNS Provider`
 
@@ -306,9 +306,9 @@ Go to `Services - Caddy Web Server - Reverse Proxy – Handlers`
 * Create a Handler with ``*.example.com`` as domain and ``foo.example.com`` as subdomain. All the same configuration as with normal domains is possible.
 
 
-----------------------------------------
-How-To: Reverse Proxy the OPNsense WebUI
-----------------------------------------
+--------------------------------
+Reverse proxy the OPNsense WebUI
+--------------------------------
 
 * Open the OPNsense WebUI in a Browser (e.g. Chrome or Firefox). Inspect the certificate. Copy the SAN for later use, for example ``OPNsense.localdomain``.
 * Save the certificate as .pem file. Open it up with a text editor, and copy the contents into a new entry in `System - Trust - Authorities`. Name the certificate ``opnsense-selfsigned``.
@@ -331,9 +331,9 @@ Options                             Data
 .. Attention:: Create an access list to restrict access to the WebUI. Add that access list to the domain in advanced mode.
 
 
----------------------------------------
-How-To: Integrating Caddy with CrowdSec
----------------------------------------
+-------------------------------
+Integrating Caddy with CrowdSec
+-------------------------------
 
 .. Tip:: CrowdSec is a powerful alternative to a WAF. It uses logs to dynamically ban IP addresses of known bad actors. The Caddy plugin is prepared to emit the json logs for this integration.
 
@@ -372,9 +372,9 @@ Next, connect to the OPNsense via SSH or console, go into the shell with Option 
 * Go into the OPNsense WebUI and restart CrowdSec.
 
 
-----------------------------------
-How-To: Custom configuration files
-----------------------------------
+--------------------------------
+Using custom configuration files
+--------------------------------
 
 * The Caddyfile has an additional import from the path ``/usr/local/etc/caddy/caddy.d/``. Place custom configuration files inside that adhere to the Caddyfile syntax.
 * ``*.global`` files will be imported into the global block of the Caddyfile.
