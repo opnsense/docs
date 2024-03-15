@@ -55,6 +55,8 @@ FAQ
 * Port Forwards, NAT Reflection or Split Horizon DNS are not required. Only create Firewall rules that allows traffic to hit the ports that Caddy opens. That is 80 (optionally) and 443 (required).
 * Firewall rules to allow Caddy to reach Backend Servers are not required. OPNsense has a default rule that allows all traffic originating from it to be allowed.
 
+.. Attention:: There is no TCP/UDP stream, load balancing and WAF (Web Application Firewall) support in this plugin. Caddy itself could support these features, but this plugin is focused on ease of configuration. For a business ready Reverse Proxy with WAF functionality, use OPNWAF. For TCP/UDP streaming, use either nginx or ha-proxy.
+
 
 ====================
 caddy: Configuration
