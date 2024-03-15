@@ -28,7 +28,7 @@ Main features of this plugin:
 
 
 --------------
-How to install
+How-To install
 --------------
 
 * Install "os-caddy" from the OPNsense Plugins.
@@ -56,6 +56,8 @@ FAQ
 * Firewall rules to allow Caddy to reach Backend Servers are not required. OPNsense has a default rule that allows all traffic originating from it to be allowed.
 
 .. Attention:: There is no TCP/UDP stream, load balancing and WAF (Web Application Firewall) support in this plugin. Caddy itself could support these features, but this plugin is focused on ease of configuration. For a business ready Reverse Proxy with WAF functionality, use OPNWAF. For TCP/UDP streaming, use either nginx or ha-proxy.
+
+.. Tip:: As an alternative to a WAF, it's easy to integrate Caddy with CrowdSec. Check the How-To section for guidance.
 
 
 ====================
@@ -135,7 +137,7 @@ Option                      Description
 **DNS-01 challenge**        Enable this for using DNS-01 instead of HTTP-01 and TLS-ALPN-01 challenge. This can be set per entry, so both types of challenges can be used at the same time for different entries. This option needs the `General Settings - DNS Provider` configured.
 **Dynamic DNS**             Enable Dynamic DNS. As the option above, the DNS Provider is a requirement. The DNS Records of this domain will be automatically updated with the chosen DNS Provider.
 **Custom Certificate**      Use a certificate imported or generated in `System - Trust - Certificates`. The chain is generated automatically. Certificate + Intermediate CA + Root CA, Certificate + Root CA and self signed Certificate are all fully supported. Only SAN certificates will work.
-**HTTP Access Log**         Enable the HTTP request logging for this domain and its subdomains. This option is mostly for troubleshooting or log analyzing tools like Crowdsec, since it will log every single request.
+**HTTP Access Log**         Enable the HTTP request logging for this domain and its subdomains. This option is mostly for troubleshooting or log analyzing tools like CrowdSec, since it will log every single request.
 **Description**             The description is mandatory. Create descriptions for each domain. Since there could be multiples of the same domain with different ports, do it like this: ``foo.example.com`` and ``foo.example.com.8443``.
 =========================== ================================
 
@@ -216,7 +218,7 @@ caddy: Tutorials
 
 
 ------------------------------------
-HOW TO: Create an easy reverse proxy
+How-To: Create an easy reverse proxy
 ------------------------------------
 
 .. Note:: Make sure the chosen domain is externally resolvable. Create an A-Record with an external DNS Provider that points to the external IP Address of the OPNsense.
@@ -244,7 +246,7 @@ Go to `Services - Caddy Web Server - Reverse Proxy - Handler`
 
 
 ----------------------------------------
-HOW TO: Dynamic DNS and DNS-01 Challenge
+How-To: Dynamic DNS and DNS-01 Challenge
 ----------------------------------------
 
 Go to `Services - Caddy Web Server - General Settings - DNS Provider`
@@ -286,7 +288,7 @@ Backend Server                 192.168.1.1
 
 
 ---------------------------------------
-HOW TO: Create a wildcard reverse proxy
+How-To: Create a wildcard reverse proxy
 ---------------------------------------
 
 Go to `Services - Caddy Web Server - General Settings - DNS Provider`
@@ -305,7 +307,7 @@ Go to `Services - Caddy Web Server - Reverse Proxy – Handlers`
 
 
 ----------------------------------------
-HOW TO: Reverse Proxy the OPNsense WebUI
+How-To: Reverse Proxy the OPNsense WebUI
 ----------------------------------------
 
 * Open the OPNsense WebUI in a Browser (e.g. Chrome or Firefox). Inspect the certificate. Copy the SAN for later use, for example ``OPNsense.localdomain``.
@@ -329,8 +331,49 @@ Options                             Data
 .. Attention:: Create an access list to restrict access to the WebUI. Add that access list to the domain in advanced mode.
 
 
+---------------------------------------
+How-To: Integrating Caddy with CrowdSec
+---------------------------------------
+
+.. Tip:: CrowdSec is a powerful alternative to a WAF. It uses logs to dynamically ban IP addresses of known bad actors. The Caddy plugin is prepared to emit the json logs for this integration.
+
+Go to `Services - Caddy Web Server - General Settings - Log Settings`
+
+* Enable `advanced mode`
+* Enable `Log HTTP Access in JSON Format`
+* Press **Save**
+
+Go to `Services - Caddy Web Server - Reverse Proxy – Domains`
+
+* Open each domain that should be monitored by CrowdSec
+* Enable `advanced mode`
+* Enable `HTTP Access Log`
+
+.. Note:: Now the HTTP access logs will appear in ``/var/log/caddy/access`` in json format, one file for each domain.
+
+Next, connect to the OPNsense via SSH or console, go into the shell with Option 8.
+
+.. Attention:: This step requires the ``os-crowdsec`` plugin.
+
+* Once in the shell, install the caddy collection from CrowdSec Hub. ``cscli collections install crowdsecurity/caddy``
+* Create the configuration file as ``/usr/local/etc/crowdsec/acquis.d/caddy.yaml`` with the following content:
+
+.. code-block::
+
+    filenames:
+      - /var/log/caddy/access/*.log
+
+    force_inotify: true
+    poll_without_inotify: true
+
+    labels:
+      type: caddy
+
+* Go into the OPNsense WebUI and restart CrowdSec.
+
+
 ----------------------------------
-HOW TO: Custom configuration files
+How-To: Custom configuration files
 ----------------------------------
 
 * The Caddyfile has an additional import from the path ``/usr/local/etc/caddy/caddy.d/``. Place custom configuration files inside that adhere to the Caddyfile syntax.
