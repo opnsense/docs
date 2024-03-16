@@ -171,7 +171,7 @@ Option                              Description
 **Handle Type**                     `handle` or `handle path` can be chosen. If in doubt, always use `handle`, the most common option. `handle path` is used to strip the path from the URI.
 **Handle Path**                     Leave this empty to create a catch all location or enter a location like  `/foo/*` or `/foo/bar*`.
 **Backend Server Domain**           Should be an internal domain name or an IP Address of the Backend Server that should receive the reverse proxied traffic.
-**Backend Server Port**             Should be the port the Backend Server listens on. This can be left empty to use Caddy default ports 80 and 443.
+**Backend Server Port**             Should be the port the Backend Server listens on. This can be left empty to use Caddy default port 80.
 **Backend Server Path**             In case the backend application resides in a sub-path of the web root and its path shouldn't be visible in the frontend URL, this setting can be used to prepend an initial path starting with '/' to every backend request. Java applications running in a servlet container like Tomcat are known to behave this way, so set it to e.g. '/guacamole' to access Apache Guacamole at the frontend root URL without needing a redirect.
 **TLS**                             If the Backend Server only accepts HTTPS, enable this option. If the Backend Server has a globally trusted certificate, this TLS option is the only needed one.
 **TLS Trusted CA Certificates**     Choose a CA certificate to trust for the Backend Server connection. Import a self-signed certificate or a CA certificate into the OPNsense `System - Trust - Authorities` store, and select it here.
