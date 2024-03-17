@@ -2,6 +2,8 @@
 Designing the model
 -------------------
 
+.. contents:: Index
+
 Creating models for OPNsense is divided into two separate blocks:
 
 #. A PHP class describing the actions on our data (also acts as a
@@ -116,6 +118,22 @@ their own namespace at *OPNsense\\Base\\FieldTypes* deriving from *BaseField*.
    exists)
 
 
+volatile fields
+.........................................
+
+In some cases it can be practical to define fields which act as standard fields, but will not be persisted
+in the configuration. Examples of this are fields used to generate other type of content, such as a certificate
+or fields that reflect data stored elsewhere.
+
+To make a field volatile, just add the tag :code:`volatile="true"` in the xml clause, for example:
+
+::
+
+   <serial type="IntegerField" volatile="true"/>
+
+
+
+------------------------------------
 Special model types
 ------------------------------------
 
