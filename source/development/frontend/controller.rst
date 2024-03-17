@@ -207,3 +207,40 @@ Implementing this into your own controller should be as simple as:
             return $this->searchRecordsetBase($records);
         }
     }
+
+
+--------------------------------------------------
+Easy csv export/import helpers
+--------------------------------------------------
+
+In order to export or import csv structured data, some helpers are available to ease these operations.
+The :code:`ApiControllerBase` adds a simple recordset export method (:code:`exportCsv()`)
+and :code:`ApiMutableModelControllerBase` contains a method to import data (:code:`importCsv()`).
+
+When data is being exported from a model using an :code:`ArrayField` type, the :code`asRecordSet()` method can be used
+to extract the data easily.
+
+The smallest functional example to download a file from a controller implemented with :code:`ApiMutableModelControllerBase`
+would look like:
+
+.. code-block:: php
+
+    public function downloadAction()
+    {
+        $this->exportCsv($this->getModel()->path->to->items->asRecordSet());
+    }
+
+Feeding data back into the model:
+
+.. code-block:: php
+
+    public function uploadReservationsAction()
+    {
+        if ($this->request->isPost() && $this->request->hasPost('payload')) {
+            return $this->importCsv(
+                'path.to.items',
+                $this->request->getPost('payload'),
+                ['my_key']
+            );
+        }
+    }

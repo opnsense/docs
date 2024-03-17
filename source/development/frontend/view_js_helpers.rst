@@ -311,6 +311,41 @@ property of the table, which offers the ability to show an alert after changes. 
     requests or responses as being exchanged with the server. The available options are described `here <http://www.jquery-bootgrid.com/Documentation#table>`__
 
 
+----------------------------
+$.SimpleFileUploadDlg
+----------------------------
+
+The simple file upload dialog can be used to select a file and upload it to a specified endpoint.
+
+To define a button sending data to `/api/path/to/import_controller`, the following code could be used:
+
+.. code-block:: html
+
+    <button
+        id="upload"
+        type="button"
+        data-title="Import"
+        data-endpoint='/api/path/to/import_controller'
+        class="btn btn-xs"
+    ><span class="fa fa-fw fa-table"></span></button>
+
+
+.. Note::
+
+    The structure of this :code:`POST` contains a :code:`payload` and a :code:`filename` property.
+
+Initializing this button could be done using:
+
+.. code-block:: php
+
+    $("#upload").SimpleFileUploadDlg();
+
+
+.. Tip::
+
+    The :code:`SimpleFileUploadDlg` action supports an :code:`onAction` handler similar to the one described in :code:`$.SimpleActionButton`
+
+
 OPNsense settings
 .......................
 
