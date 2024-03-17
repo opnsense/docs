@@ -47,7 +47,7 @@ tunnel, with the following configuration:
           network LANA {
             switchlana [label="",shape = "cisco.workgroup_switch"];
             label = " LAN Site A";
-            address ="192.168.1.1.x/24";
+            address ="192.168.1.x/24";
             fw1 [address="192.168.1.1/24"];
             tunnel [label=" IPsec Tunnel",shape = cisco.cloud];
           }
@@ -92,7 +92,7 @@ Site A
 
           network LANB {
             label = " LAN Site B";
-            address ="192.168.2.1.x/24";
+            address ="192.168.2.x/24";
             fw2 [address="192.168.2.1/24"];
             tunnel [label=" IPsec Tunnel",shape = cisco.cloud];
             switchlanb [label="",shape = "cisco.workgroup_switch"];
@@ -143,7 +143,7 @@ Full Network Diagram Including IPsec Tunnel
       network LANA {
         switchlana [label="",shape = "cisco.workgroup_switch"];
         label = " LAN Site A";
-        address ="192.168.1.1.x/24";
+        address ="192.168.1.x/24";
         fw1 [address="192.168.1.1/24"];
         tunnel [label=" IPsec Tunnel",shape = cisco.cloud];
       }
@@ -162,7 +162,7 @@ Full Network Diagram Including IPsec Tunnel
 
       network LANB {
         label = " LAN Site B";
-        address ="192.168.2.1.x/24";
+        address ="192.168.2.x/24";
         fw2 [address="192.168.2.1/24"];
         tunnel;
         switchlanb [label="",shape = "cisco.workgroup_switch"];

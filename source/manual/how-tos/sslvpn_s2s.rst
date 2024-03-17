@@ -11,7 +11,7 @@ can access network resources in the main office.
 
     When using the site to site example with :code:`SSL/TLS` instead of a shared key, make sure to configure "client specific overrides"
     as well to correctly bind the remote networks to the correct client.
-    
+
 ----------------
 Before you start
 ----------------
@@ -53,7 +53,7 @@ tunnel, with the following configuration:
           network LANA {
             switchlana [label="",shape = "cisco.workgroup_switch"];
             label = " LAN Site A";
-            address ="192.168.1.1.x/24";
+            address ="192.168.1.x/24";
             fw1 [address="192.168.1.1/24"];
             tunnel [label=" SSLVPN Tunnel",shape = cisco.cloud];
           }
@@ -98,7 +98,7 @@ Site A - Server
 
           network LANB {
             label = " LAN Site B";
-            address ="192.168.2.1.x/24";
+            address ="192.168.2.x/24";
             fw2 [address="192.168.2.1/24"];
             tunnel [label=" SSLVPN Tunnel",shape = cisco.cloud];
             switchlanb [label="",shape = "cisco.workgroup_switch"];
@@ -149,7 +149,7 @@ Full Network Diagram Including SSL VPN Tunnel
       network LANA {
         switchlana [label="",shape = "cisco.workgroup_switch"];
         label = " LAN Site A";
-        address ="192.168.1.1.x/24";
+        address ="192.168.1.x/24";
         fw1 [address="192.168.1.1/24"];
         tunnel [label=" SSLVPN Tunnel",shape = cisco.cloud];
       }
@@ -168,7 +168,7 @@ Full Network Diagram Including SSL VPN Tunnel
 
       network LANB {
         label = " LAN Site B";
-        address ="192.168.2.1.x/24";
+        address ="192.168.2.x/24";
         fw2 [address="192.168.2.1/24"];
         tunnel;
         switchlanb [label="",shape = "cisco.workgroup_switch"];
@@ -226,7 +226,7 @@ You will see the shared key, copy this and keep it safe!
 
 Sample key:
 
-.. code-block:: 
+.. code-block::
 
   #
   # 2048 bit OpenVPN static key

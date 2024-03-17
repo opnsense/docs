@@ -52,7 +52,7 @@ as all guides depend on it.
       network LAN {
         switchlan [label="",shape = "cisco.workgroup_switch"];
         label = " LAN";
-        address ="192.168.1.1.x/24";
+        address ="192.168.1.x/24";
         fw1 [address="192.168.1.1/24"];
       }
 
