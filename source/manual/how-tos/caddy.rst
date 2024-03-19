@@ -42,9 +42,38 @@ Prepare OPNsense for Caddy after installation
 
 Go to `System - Settings - Administration`
 
-* Change the `TCP Port` to `8443` (example), don't forget to adjust your firewall rules to allow access to the WebUI.
-* Enable `HTTP Redirect - Disable web GUI redirect rule`.
-* Create Firewall rules that allow ``HTTP`` and ``HTTPS`` to destination ``This Firewall`` on ``WAN``, ``LAN`` and all other interfaces clients connect to domains served by Caddy.
+* Change the `TCP Port` to `8443` (example), don't forget to adjust the firewall rules to allow access to the WebUI. On `LAN` there is a hidden `anti-lockout` rule that takes care of this automatically. On other interfaces, make sure to add explicit rules.
+* Enable the checkbox for `HTTP Redirect - Disable web GUI redirect rule`.
+
+Go to `Firewall - Rules - WAN`
+
+* Create Firewall rules that allow ``HTTP`` and ``HTTPS`` to destination ``This Firewall`` on ``WAN``
+
+=========================== ================================
+Option                      Values
+=========================== ================================         
+**Interface**               WAN
+**TCP/IP Version**          IPv4+IPv6
+**Protocol**                TCP/UDP
+**Source**                  Any
+**Destination**             This Firewall
+**Destination port range**  from: HTTP to: HTTP
+**Description**             Caddy Reverse Proxy HTTP
+=========================== ================================
+
+=========================== ================================
+Option                      Values
+=========================== ================================         
+**Interface**               WAN
+**TCP/IP Version**          IPv4+IPv6
+**Protocol**                TCP/UDP
+**Source**                  Any
+**Destination**             This Firewall
+**Destination port range**  from: HTTPS to: HTTPS
+**Description**             Caddy Reverse Proxy HTTPS
+=========================== ================================
+
+Go to `Firewall - Rules - LAN` and create the same rules for the `LAN` interface. Now external and internal clients can connect to Caddy, and Let's Encrypt or ZeroSSL certificates will be issued automatically.
 
 
 ---
@@ -52,8 +81,11 @@ FAQ
 ---
 
 * A DNS Provider is not required. With a static WAN IP, just skip the DNS Provider configuration and don't check the DNS-01 and Dynamic DNS checkboxes. Let's Encrypt will work with HTTP-01 (Port 80) or TLS-ALPN-01 (Port 443) challenge automatically.
-* Port Forwards, NAT Reflection or Split Horizon DNS are not required. Only create Firewall rules that allows traffic to hit the ports that Caddy opens. That is 80 (optionally) and 443 (required).
+* Port Forwards, NAT Reflection or Split Horizon DNS are not required. Only create Firewall rules that allow traffic to hit the ports that Caddy opens. That is 80 (optionally) and 443 (required). If only Port 443 is opened, and IPv6 is available, make sure the Firewall rule allows IPv6 traffic to reach Caddy on WAN.
 * Firewall rules to allow Caddy to reach Backend Servers are not required. OPNsense has a default rule that allows all traffic originating from it to be allowed.
+* ACME Clients on reverse proxied Backend Servers won't be able to issue certificates. Caddy intercepts ``/.well-known/acme-challenge``. Either configure the DNS-01 challenge on these servers, use a self-signed certificate, or turn off TLS. In trusted networks, TLS is usually not needed. Caddy is primarily a `TLS Termination Proxy`.
+* When using Caddy with IPv6, it's best to have a GUA (Global Unicast Address) on the WAN interface.
+* Let's Encrypt or ZeroSSL can't be explicitely chosen. Caddy automatically issues one of these options, determined by speed and availability.
 
 .. Attention:: There is no TCP/UDP stream, load balancing and WAF (Web Application Firewall) support in this plugin. Caddy itself could support these features, but this plugin is focused on ease of configuration. For a business ready Reverse Proxy with WAF functionality, use OPNWAF. For TCP/UDP streaming, use either nginx or ha-proxy.
 
@@ -264,7 +296,7 @@ Go to `Services - Caddy Web Server - Reverse Proxy – Domains`
 * Press **+** to create a new Reverse Proxy Domain. `mydomain.duckdns.org` is an example if `duckdns` is used as DNS Provider.
 
 ============================== ====================
-Options                        Data
+Options                        Values
 ============================== ====================
 Reverse Proxy Domain           mydomain.duckdns.org
 DNS-01                         enabled
@@ -276,7 +308,7 @@ Go to `Services - Caddy Web Server - Reverse Proxy – Handlers`
 
 * Press **+** to create a new handler
 ============================== ====================
-Options                        Data
+Options                        Values
 ============================== ====================
 Reverse Proxy Domain           mydomain.duckdns.org
 Backend Server                 192.168.1.1
@@ -315,7 +347,7 @@ Reverse proxy the OPNsense WebUI
 * Add a new Domain in Caddy, for example ``opn.example.com``. Make sure the name is externally resolvable to the WAN IP of the OPNsense.
 * Add a new Handler with the following options (enable advanced mode):
 =================================== ====================
-Options                             Data
+Options                             Values
 =================================== ====================
 **Reverse Proxy Domain**            opn.example.com
 **Backend Server Domain**           127.0.0.1
