@@ -24,8 +24,6 @@ This framework uses `GridStack <https://gridstackjs.com/>`__ to create the dashb
 
 Widgets are placed in the :code:`src/opnsense/www/js/widgets/` directory.
 
-A complete example of a simple widget can be found `here <https://github.com/opnsense/core/blob/master/src/opnsense/www/js/widgets/Interfaces.js>`__
-
 -------
 Example
 -------
