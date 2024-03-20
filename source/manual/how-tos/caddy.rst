@@ -307,6 +307,7 @@ Description                    mydomain.duckdns.org
 Go to `Services - Caddy Web Server - Reverse Proxy – Handlers`
 
 * Press **+** to create a new handler
+
 ============================== ====================
 Options                        Values
 ============================== ====================
@@ -346,6 +347,7 @@ Reverse proxy the OPNsense WebUI
 * Save the certificate as .pem file. Open it up with a text editor, and copy the contents into a new entry in `System - Trust - Authorities`. Name the certificate ``opnsense-selfsigned``.
 * Add a new Domain in Caddy, for example ``opn.example.com``. Make sure the name is externally resolvable to the WAN IP of the OPNsense.
 * Add a new Handler with the following options (enable advanced mode):
+
 =================================== ====================
 Options                             Values
 =================================== ====================
