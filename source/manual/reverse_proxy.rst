@@ -34,6 +34,7 @@ Supported Reverse Proxies in OPNsense
 ftp-proxy Makes FTP work
 nginx     HTTP, TCP- and UDP streams
 HAProxy   HTTP and TCP streams
+Caddy     HTTP streams 
 postfix   SMTP (e-mail)
 relayd    TCP streams
 ========= ==========================

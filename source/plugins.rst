@@ -62,6 +62,7 @@ Web
    manual/how-tos/nginx_tls_auth
    manual/how-tos/nginx_waf
    manual/how-tos/nginx_streams
+   manual/how-tos/caddy
 
 ----------------
 Other
