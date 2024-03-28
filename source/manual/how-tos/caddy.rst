@@ -362,6 +362,11 @@ Options                             Values
 
 * Press **Save** and **Apply**
 
+Go to `System - Settings - Administration`
+
+* Input ``opn.example.com`` in `Alternate Hostnames` to prevent the error `The HTTP_REFERER "https://opn.example.com/" does not match the predefined settings` after logging in
+* Press **Save**
+
 .. Note:: Open ``https://opn.example.com`` and it should serve the reverse proxied OPNsense WebUI. Check the log file for errors if it doesn't work, most of the time the TLS Server Name doesn't match the SAN of the `TLS Trusted CA Certificate`. Caddy doesn't support CN (Common Name) in certificate since it's been deprecated since many years. Only SAN certificates work.
 .. Attention:: Create an access list to restrict access to the WebUI. Add that access list to the domain in advanced mode.
 
