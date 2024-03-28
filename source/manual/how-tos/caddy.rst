@@ -209,9 +209,10 @@ Option                              Description
 **TLS Trusted CA Certificates**     Choose a CA certificate to trust for the Backend Server connection. Import a self-signed certificate or a CA certificate into the OPNsense `System - Trust - Authorities` store, and select it here.
 **TLS Server Name**                 If the SAN (Subject Alternative Name) of the offered trusted CA certificate or self-signed certificate doesn't match with the IP address or hostname of the `Backend Server Domain`, enter it here. This will change the SNI (Server Name Identification) of Caddy to the `TLS Server Name`. IP address e.g. ``192.168.1.1`` or hostname e.g. ``localhost`` or ``opnsense.local`` are all valid choices. Only if the SAN and SNI match, the TLS connection will work, otherwise an error is logged that can be used to troubleshoot.
 **NTLM**                            If the Backend Server needs NTLM authentication, enable this option together with TLS. For example, Exchange Server.
+**TLS Insecure Skip Verify**        Turns off TLS handshake verification, making the connection insecure and vulnerable to man-in-the-middle attacks. Do not use in production.
 =================================== ================================
 
-.. Attention:: The GUI doesn't allow "tls_insecure_skip_verify" due to safety reasons, as the Caddy documentation states not to use it. Use the `TLS Trusted CA Certificates` and `TLS Server Name` options instead to get a **secure TLS connection** to the Backend Server. Otherwise, use HTTP. If "tls_insecure_skip_verify" is a hard requirement and the implications are known, use the import statements of custom configuration files.
+.. Attention:: Only use `TLS Insecure Skip Verify` if absolutely necessary. Using it makes the connection to the Backend Server insecure. It might look like an easy way out for all kinds of certiciate issues, but in the end it is always a bad choice and proper certificate handling is strongly preferred. Please use the `TLS`, `TLS Trusted CA Certificates` and `TLS Server Name` options instead to get a **secure TLS connection** to the Backend Server. Another option is to use plain HTTP, since it doesn't imply that the connection is secure and encrypted.
 
 
 -------------------------------------
