@@ -72,7 +72,7 @@ Select **Enable Interface** and fill in the following data for our example:
  **MSS**                        (Leave Blank)
  **Speed and duplex**           Default           *You may also select the speed when known*
  **Static IPv4 address**        192.168.200.1/24  *We will use this segment for our guests*
- **IPv4 Upstream Gateway**      Auto-detect
+ **IPv4 Upstream Gateway**      Default
 ============================== ================= ==============================================
 
 Press **Save** and then **Apply changes**.

@@ -17,6 +17,47 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+23.10.3 (March 28, 2024)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 23.7.12 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: fix handling of empty "serialusb" node set during import
+* system: fix assorted PHP deprecation warnings
+* system: add issuer and logo to OTP link
+* system: prevent empty "user" node to crash during boot
+* system: allow 0 length voucher passwords in authentication server
+* reporting: update traffic graph colors to be contrast and consistent (contributed by brotherla)
+* interfaces: add missing ACL entries for ARP/NDP tables
+* interfaces: prevent modal x-axis overflow on packet capture page
+* firewall: add optional advanced property "State policy" to influence state creation on a per rule base
+* firewall: change default traffic normalization behavior and choose "in" as standard direction for manual rules
+* firewall: refactor schedule matching and fix an end-of-the-month bug
+* firewall: fix incorrect packet counters statistics collection
+* firewall: fix virtual IP API use with subnet/subnet_bits usage
+* firewall: fix floating rule display (contributed by lin-xianming)
+* firewall: fix display of ICMP tooltip (contributed by lin-xianming)
+* firewall: make select width more consistent on alias diagnostics table selection
+* ipsec: show EAP-RADIUS settings only when legacy tunnels are being used
+* unbound: prevent os.write() on None when another thread closed the pipe in Python module
+* unbound: make atomic copies of root.hints file to hopefully appease Unbound startup problems
+* unbound: fix missing /lib nullfs mount in chroot
+* unbound: add aggressive-nsec option toggle (contributed by kulikov-a)
+* mvc: fix PHP_FLOAT_MIN being unreliable
+* ui: replace all &gt; and &lt; occurrences in treeview (contributed by lin-xianming)
+* ui: fix epoch support as number in bootgrid
+* plugins: os-OPNProxy 1.0.4 removes ident support
+* plugins: os-OPNWAF 1.3 adds SSLVerifyDepth
+* ports: curl 8.6.0 `[1] <https://curl.se/changes.html#8_6_0>`__ 
+* ports: suricata 6.0.17 `[2] <https://suricata.io/2024/03/19/suricata-7-0-4-and-6-0-17-released/>`__ 
+* ports: unbound 1.19.3 `[3] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-19-3>`__ 
+
+
+
+--------------------------------------------------------------------------
 23.10.2 (February 02, 2024)
 --------------------------------------------------------------------------
 
