@@ -163,7 +163,7 @@ Option                      Description
 =========================== ================================
 **enabled**                 `enable` or `disable` this domain
 **Domain**                  Can either be a domain name or an IP address. If a domain name is chosen, Caddy will automatically try to get a Let's Encrypt or ZeroSSL certificate, and the headers and real IP address will be automatically passed to the upstream destination.
-**Reverse Proxy Port**      Should be the port the OPNsense will listen on. Don't forget to create Firewall rules that allow traffic to this port on ``WAN`` and ``LAN`` to destination ``This Firewall``. Leave this empty if the default ports of Caddy (`80` and `443`) should be used with automatic redirection from HTTP to HTTPS.
+**Port**                    Should be the port the OPNsense will listen on. Don't forget to create Firewall rules that allow traffic to this port on ``WAN`` and ``LAN`` to destination ``This Firewall``. Leave this empty if the default ports of Caddy (`80` and `443`) should be used with automatic redirection from HTTP to HTTPS.
 **Access List**             Restrict the access to this domain to a list of IP addresses defined in the Access Tab. This doesn't influence Let's Encrypt certificate generation.
 **Basic Auth**              Restrict the access to this domain to one or multiple users defined in the Access Tab. This doesn't influence the Let's Encrypt certificate generation.
 **DNS-01 challenge**        Enable this for using DNS-01 instead of HTTP-01 and TLS-ALPN-01 challenge. This can be set per entry, so both types of challenges can be used at the same time for different entries. This option needs the `General Settings - DNS Provider` configured.
