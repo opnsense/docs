@@ -82,10 +82,10 @@ FAQ
 
 * A DNS Provider is not required. With a static WAN IP, just skip the DNS Provider configuration and don't check the DNS-01 and Dynamic DNS checkboxes. Let's Encrypt will work with HTTP-01 (Port 80) or TLS-ALPN-01 (Port 443) challenge automatically.
 * Port Forwards, NAT Reflection or Split Horizon DNS are not required. Only create Firewall rules that allow traffic to hit the ports that Caddy opens. That is 80 (optionally) and 443 (required). If only Port 443 is opened, and IPv6 is available, make sure the Firewall rule allows IPv6 traffic to reach Caddy on WAN.
-* Firewall rules to allow Caddy to reach Backend Servers are not required. OPNsense has a default rule that allows all traffic originating from it to be allowed.
-* ACME Clients on reverse proxied Backend Servers won't be able to issue certificates. Caddy intercepts ``/.well-known/acme-challenge``. Either configure the DNS-01 challenge on these servers, use a self-signed certificate, or turn off TLS. In trusted networks, TLS is usually not needed. Caddy is primarily a `TLS Termination Proxy`.
+* Firewall rules to allow Caddy to reach upstream destinations are not required. OPNsense has a default rule that allows all traffic originating from it to be allowed.
+* ACME Clients on reverse proxied upstream destinations won't be able to issue certificates. Caddy intercepts ``/.well-known/acme-challenge``. Either configure the DNS-01 challenge on these servers, use a self-signed certificate, or turn off TLS. In trusted networks, TLS is usually not needed. Caddy is primarily a `TLS Termination Proxy`.
 * When using Caddy with IPv6, it's best to have a GUA (Global Unicast Address) on the WAN interface.
-* Let's Encrypt or ZeroSSL can't be explicitely chosen. Caddy automatically issues one of these options, determined by speed and availability.
+* Let's Encrypt or ZeroSSL can't be explicitely chosen. Caddy automatically issues one of these options, determined by speed and availability. These certificates can be found in ``/var/db/caddy/data/caddy/certificates``.
 
 .. Attention:: There is no TCP/UDP stream, load balancing and WAF (Web Application Firewall) support in this plugin. Caddy itself could support these features, but this plugin is focused on ease of configuration. For a business ready Reverse Proxy with WAF functionality, use OPNWAF. For TCP/UDP streaming, use either nginx or ha-proxy.
 
@@ -110,7 +110,7 @@ Option                      Description
 **ACME Email**              e.g. `info@example.com`, it's optional for receiving Email updates on Let's Encrypt certificates.
 **Auto HTTPS**              `On (default)` creates automatic Let's Encrypt certificates for all domains that don't have more specific options set, like custom certificates.
 **Trusted Proxies**         If Cloudflare or another CDN provider is used, create an `Access List` with the IP addresses of that CDN and add it here. Add the same Access List to the domain this CDN tries to reach.
-**Abort Connections**       This option, when enabled, aborts all connections to the domain that don't match any specified handler or access list. This setting doesn't affect Let's Encrypt's ability to issue certificates, ensuring secure connections regardless of the option's status. If unchecked, the domain remains accessible even without a matching handler, allowing for connectivity and certificate checks, even in the absence of a configured Backend Server. When using Access Lists, enabling this option is recommended to reject unauthorized connections outright. Without this option, unmatched IP addresses will encounter an empty page instead of an explicit rejection, though the Access Lists continue to function and restrict access.
+**Abort Connections**       This option, when enabled, aborts all connections to the domain that don't match any specified handler or access list. This setting doesn't affect Let's Encrypt's ability to issue certificates, ensuring secure connections regardless of the option's status. If unchecked, the domain remains accessible even without a matching handler, allowing for connectivity and certificate checks, even in the absence of a configured upstream destination. When using Access Lists, enabling this option is recommended to reject unauthorized connections outright. Without this option, unmatched IP addresses will encounter an empty page instead of an explicit rejection, though the Access Lists continue to function and restrict access.
 =========================== ================================
 
 
@@ -162,7 +162,7 @@ Reverse Proxy - Domains
 Option                      Description
 =========================== ================================
 **enabled**                 `enable` or `disable` this domain
-**Reverse Proxy Domain**    Can either be a domain name or an IP address. If a domain name is chosen, Caddy will automatically try to get a Let's Encrypt or ZeroSSL certificate, and the headers and real IP address will be automatically passed to the Backend Server.
+**Domain**                  Can either be a domain name or an IP address. If a domain name is chosen, Caddy will automatically try to get a Let's Encrypt or ZeroSSL certificate, and the headers and real IP address will be automatically passed to the upstream destination.
 **Reverse Proxy Port**      Should be the port the OPNsense will listen on. Don't forget to create Firewall rules that allow traffic to this port on ``WAN`` and ``LAN`` to destination ``This Firewall``. Leave this empty if the default ports of Caddy (`80` and `443`) should be used with automatic redirection from HTTP to HTTPS.
 **Access List**             Restrict the access to this domain to a list of IP addresses defined in the Access Tab. This doesn't influence Let's Encrypt certificate generation.
 **Basic Auth**              Restrict the access to this domain to one or multiple users defined in the Access Tab. This doesn't influence the Let's Encrypt certificate generation.
@@ -181,8 +181,8 @@ Reverse Proxy - Subdomains
 =========================== ================================
 Option                      Description
 =========================== ================================
-**Reverse Proxy Domain**    Choose a wildcard domain prepared in domains, it has to be formatted like ``*.example.com``
-**Reverse Proxy Subdomain** Create a name that is seated under the wildcard domain, for example ``foo.example.com`` and ``bar.example.com``.
+**Domain**                  Choose a wildcard domain prepared in domains, it has to be formatted like ``*.example.com``
+**Subdomain**               Create a name that is seated under the wildcard domain, for example ``foo.example.com`` and ``bar.example.com``.
 =========================== ================================
 
 .. Note:: For the other options refer to `Reverse Proxy - Domains`. It's best to leave `Access Lists` and `Basic Auth` unconfigured in wildcard domains, and set these per subdomain.
@@ -198,26 +198,26 @@ Reverse Proxy - Handler
 Option                              Description
 =================================== ================================
 **enabled**                         `enable` or `disable` this handler
-**Reverse Proxy Domain**            Select a domain.
-**Reverse Proxy Subdomain**         Select a subdomain. This will put the handler on the subdomain instead of the domain. Use only with wildcard domains and subdomains.
+**Domain**                          Select a domain.
+**Subdomain**                       Select a subdomain. This will put the handler on the subdomain instead of the domain. Use only with wildcard domains and subdomains.
 **Handle Type**                     `handle` or `handle path` can be chosen. If in doubt, always use `handle`, the most common option. `handle path` is used to strip the path from the URI.
 **Handle Path**                     Leave this empty to create a catch all location or enter a location like  `/foo/*` or `/foo/bar*`.
-**Backend Server Domain**           Should be an internal domain name or an IP Address of the Backend Server that should receive the reverse proxied traffic.
-**Backend Server Port**             Should be the port the Backend Server listens on. This can be left empty to use Caddy default port 80.
-**Backend Server Path**             In case the backend application resides in a sub-path of the web root and its path shouldn't be visible in the frontend URL, this setting can be used to prepend an initial path starting with '/' to every backend request. Java applications running in a servlet container like Tomcat are known to behave this way, so set it to e.g. '/guacamole' to access Apache Guacamole at the frontend root URL without needing a redirect.
-**TLS**                             If the Backend Server only accepts HTTPS, enable this option. If the Backend Server has a globally trusted certificate, this TLS option is the only needed one.
-**TLS Trusted CA Certificates**     Choose a CA certificate to trust for the Backend Server connection. Import a self-signed certificate or a CA certificate into the OPNsense `System - Trust - Authorities` store, and select it here.
-**TLS Server Name**                 If the SAN (Subject Alternative Name) of the offered trusted CA certificate or self-signed certificate doesn't match with the IP address or hostname of the `Backend Server Domain`, enter it here. This will change the SNI (Server Name Identification) of Caddy to the `TLS Server Name`. IP address e.g. ``192.168.1.1`` or hostname e.g. ``localhost`` or ``opnsense.local`` are all valid choices. Only if the SAN and SNI match, the TLS connection will work, otherwise an error is logged that can be used to troubleshoot.
-**NTLM**                            If the Backend Server needs NTLM authentication, enable this option together with TLS. For example, Exchange Server.
+**Upstream Domain**                 Should be an internal domain name or an IP Address of the upstream destination that should receive the reverse proxied traffic.
+**Upstream Port**                   Should be the port the upstream destination listens on. This can be left empty to use Caddy default port 80.
+**Upstream Path**                   In case the backend application resides in a sub-path of the web root and its path shouldn't be visible in the frontend URL, this setting can be used to prepend an initial path starting with '/' to every backend request. Java applications running in a servlet container like Tomcat are known to behave this way, so set it to e.g. '/guacamole' to access Apache Guacamole at the frontend root URL without needing a redirect.
+**TLS**                             If the upstream destination only accepts HTTPS, enable this option. If the upstream destination has a globally trusted certificate, this TLS option is the only needed one.
+**TLS Trusted CA Certificates**     Choose a CA certificate to trust for the upstream destination connection. Import a self-signed certificate or a CA certificate into the OPNsense `System - Trust - Authorities` store, and select it here.
+**TLS Server Name**                 If the SAN (Subject Alternative Name) of the offered trusted CA certificate or self-signed certificate doesn't match with the IP address or hostname of the `upstream destination Domain`, enter it here. This will change the SNI (Server Name Identification) of Caddy to the `TLS Server Name`. IP address e.g. ``192.168.1.1`` or hostname e.g. ``localhost`` or ``opnsense.local`` are all valid choices. Only if the SAN and SNI match, the TLS connection will work, otherwise an error is logged that can be used to troubleshoot.
+**NTLM**                            If the upstream destination needs NTLM authentication, enable this option together with TLS. For example, Exchange Server.
 **TLS Insecure Skip Verify**        Turns off TLS handshake verification, making the connection insecure and vulnerable to man-in-the-middle attacks. Do not use in production.
 =================================== ================================
 
-.. Attention:: Only use `TLS Insecure Skip Verify` if absolutely necessary. Using it makes the connection to the Backend Server insecure. It might look like an easy way out for all kinds of certiciate issues, but in the end it is always a bad choice and proper certificate handling is strongly preferred. Please use the `TLS`, `TLS Trusted CA Certificates` and `TLS Server Name` options instead to get a **secure TLS connection** to the Backend Server. Another option is to use plain HTTP, since it doesn't imply that the connection is secure and encrypted.
+.. Attention:: Only use `TLS Insecure Skip Verify` if absolutely necessary. Using it makes the connection to the upstream destination insecure. It might look like an easy way out for all kinds of certiciate issues, but in the end it is always a bad choice and proper certificate handling is strongly preferred. Please use the `TLS`, `TLS Trusted CA Certificates` and `TLS Server Name` options instead to get a **secure TLS connection** to the upstream destination. Another option is to use plain HTTP, since it doesn't imply that the connection is secure and encrypted.
 
 
--------------------------------------
-Reverse Proxy - Access - Access Lists
--------------------------------------
+----------------------------
+Reverse Proxy - Access Lists
+----------------------------
 
 =========================== ================================
 Option                      Description
@@ -230,9 +230,9 @@ Option                      Description
 .. Note:: Go back to domains or subdomains and add the access list to them (advanced mode). All handlers created under these domains will get an additional matcher. That means, the requests still reach Caddy, but if the IP Addresses don't match with the access list, the request will be dropped before being reverse proxied.
 
 
------------------------------------
-Reverse Proxy - Access - Basic Auth
------------------------------------
+--------------------------
+Reverse Proxy - Basic Auth
+--------------------------
 
 =========================== ================================
 Option                      Description
@@ -263,15 +263,15 @@ Go to `Services - Caddy Web Server - General Settings`
 Go to `Services - Caddy Web Server - Reverse Proxy - Domains`
 
 * Press **+** to create a new domain
-* **Reverse Proxy Domain:** `foo.example.com`
+* **Domain:** `foo.example.com`
 * **Description:** `foo.example.com`
 * Press **Save**
 
 Go to `Services - Caddy Web Server - Reverse Proxy - Handler`
 
 * Press **+** to create a new Handler
-* **Reverse Proxy Domain:** `foo.example.com`
-* **Backend Server Domain:** `192.168.10.1`
+* **Domain:** `foo.example.com`
+* **Upstream Domain:** `192.168.10.1`
 * Press **Save** and **Apply**
 
 .. Note:: Leave all other fields to default or empty. After just a few seconds the Let's Encrypt certificate will be installed and the reverse proxy works. Check the Logfile for that. Now the TLS Termination reverse proxy is configured.
@@ -294,12 +294,12 @@ Go to `Services - Caddy Web Server - General Settings - Dynamic DNS`
 
 Go to `Services - Caddy Web Server - Reverse Proxy – Domains`
 
-* Press **+** to create a new Reverse Proxy Domain. `mydomain.duckdns.org` is an example if `duckdns` is used as DNS Provider.
+* Press **+** to create a new Domain. `mydomain.duckdns.org` is an example if `duckdns` is used as DNS Provider.
 
 ============================== ====================
 Options                        Values
 ============================== ====================
-Reverse Proxy Domain           mydomain.duckdns.org
+Domain                         mydomain.duckdns.org
 DNS-01                         enabled
 Dynamic DNS                    enabled
 Description                    mydomain.duckdns.org
@@ -312,13 +312,13 @@ Go to `Services - Caddy Web Server - Reverse Proxy – Handlers`
 ============================== ====================
 Options                        Values
 ============================== ====================
-Reverse Proxy Domain           mydomain.duckdns.org
-Backend Server                 192.168.1.1
+Domain                         mydomain.duckdns.org
+Upstream Domain                192.168.1.1
 ============================== ====================
 
 * Press **Save** and **Apply**
 
-.. Note:: Now Caddy listens on Port 80 and 443, and reverse proxies everything from mydomain.duckdns.org to 192.168.1.1:80. All headers and the real IP are automatically passed to the Backend Server. For different ports, check the advanced settings. Let's Encrypt Certificate and Dynamic DNS Updates are all handled automatically.
+.. Note:: Now Caddy listens on Port 80 and 443, and reverse proxies everything from mydomain.duckdns.org to 192.168.1.1:80. All headers and the real IP are automatically passed to the upstream destination. For different ports, check the advanced settings. Let's Encrypt Certificate and Dynamic DNS Updates are all handled automatically.
 
 
 ---------------------------------
@@ -352,9 +352,9 @@ Reverse proxy the OPNsense WebUI
 =================================== ====================
 Options                             Values
 =================================== ====================
-**Reverse Proxy Domain**            opn.example.com
-**Backend Server Domain**           127.0.0.1
-**Backend Server Port**             8443 (Webui Port)
+**Domain**                          opn.example.com
+**Upstream Domain**                 127.0.0.1
+**Upstream Port**                   8443 (Webui Port)
 **TLS**                             enabled
 **TLS Trusted CA Certificates**     opnsense-selfsigned
 **TLS Server Name**                 OPNsense.localdomain
@@ -364,7 +364,7 @@ Options                             Values
 
 Go to `System - Settings - Administration`
 
-* Input ``opn.example.com`` in `Alternate Hostnames` to prevent the error `The HTTP_REFERER "https://opn.example.com/" does not match the predefined settings` after logging in
+* Input ``opn.example.com`` in `Alternate Hostnames` to prevent the error `The HTTP_REFERER "https://opn.example.com/" does not match the predefined settings` after logging in.
 * Press **Save**
 
 .. Note:: Open ``https://opn.example.com`` and it should serve the reverse proxied OPNsense WebUI. Check the log file for errors if it doesn't work, most of the time the TLS Server Name doesn't match the SAN of the `TLS Trusted CA Certificate`. Caddy doesn't support CN (Common Name) in certificate since it's been deprecated since many years. Only SAN certificates work.
