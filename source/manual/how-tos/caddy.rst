@@ -300,7 +300,6 @@ Go to `Services - Caddy Web Server - Reverse Proxy – Domains`
 Options                        Values
 ============================== ====================
 Domain                         mydomain.duckdns.org
-DNS-01                         enabled
 Dynamic DNS                    enabled
 Description                    mydomain.duckdns.org
 ============================== ====================
