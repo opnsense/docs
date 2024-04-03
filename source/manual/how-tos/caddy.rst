@@ -81,10 +81,10 @@ FAQ
 ---
 
 * A DNS Provider is not required. With a static WAN IP, just skip the DNS Provider configuration and don't check the DNS-01 and Dynamic DNS checkboxes. Let's Encrypt will work with HTTP-01 (Port 80) or TLS-ALPN-01 (Port 443) challenge automatically.
-* Port Forwards, NAT Reflection or Split Horizon DNS are not required. Only create Firewall rules that allow traffic to hit the ports that Caddy opens. That is 80 (optionally) and 443 (required). If only Port 443 is opened, and IPv6 is available, make sure the Firewall rule allows IPv6 traffic to reach Caddy on WAN.
+* Port Forwards, NAT Reflection or Split Horizon DNS are not required. Only create Firewall rules that allow traffic to hit the ports that Caddy opens. They are TCP/UDP 80 and 443.
 * Firewall rules to allow Caddy to reach upstream destinations are not required. OPNsense has a default rule that allows all traffic originating from it to be allowed.
 * ACME Clients on reverse proxied upstream destinations won't be able to issue certificates. Caddy intercepts ``/.well-known/acme-challenge``. This can potentially be solved by using the `HTTP-01 challenge redirection` option in the advanced mode of domains.
-* When using Caddy with IPv6, it's best to have a GUA (Global Unicast Address) on the WAN interface.
+* When using Caddy with IPv6, it's best to have a GUA (Global Unicast Address) on the WAN interface, since otherwise the TLS-ALPN-01 challenge might fail.
 * Let's Encrypt or ZeroSSL can't be explicitely chosen. Caddy automatically issues one of these options, determined by speed and availability. These certificates can be found in ``/var/db/caddy/data/caddy/certificates``.
 
 .. Attention:: There is no TCP/UDP stream, load balancing and WAF (Web Application Firewall) support in this plugin. Caddy itself could support these features, but this plugin is focused on ease of configuration. For a business ready Reverse Proxy with WAF functionality, use OPNWAF. For TCP/UDP streaming, use either nginx or ha-proxy.
@@ -96,7 +96,7 @@ FAQ
 caddy: Configuration
 ====================
 
-.. Note:: Caddy resides in "Services: Caddy Web Server". Some options are hidden in advanced mode.
+.. Note:: Caddy can be found in "Services: Caddy Web Server". Some options are hidden in advanced mode.
 
 
 --------------------------
@@ -133,11 +133,11 @@ General Settings - Dynamic DNS
 =========================== ================================
 Option                      Description
 =========================== ================================
+**DynDns IP Version**       Leave on `None` to set IPv4 A-Records and IPv6 AAAA-Records. Select `Ipv4 only` for setting A-Records. Select `IPv6 only` for setting AAAA-Records.
+**DynDns Check Interval**   Interval to poll for changes of the IP address. The default is 5 minutes. Can be a number between 1 to 1440 minutes.
+**DynDns TTL**              Set the TTL (time to live) for DNS Records. The default is 1 hour. Can be a number between 1 to 24 hours.
 **DynDns Check Http**       Optionally, enter an URL to test the current IP address of the firewall via HTTP procotol. Generally, this is not needed. Caddy uses default providers to test the current IP addresses. For using a custom one, enter the `https://` link to an IP address testing website.
 **DynDns Check Interface**  Optionally, select an interface to extract the current IP address of the firewall. At most, one current IPv6 Global Unicast Address and one current IPv4 non-RFC1918 Address will be extracted.
-**DynDns Check Interval**   Interval to poll for changes of the IP address. The default is 5 minutes. Can be a number between 1 to 1440 minutes.
-**DynDns IP Version**       Leave on `None` to set IPv4 A-Records and IPv6 AAAA-Records. Select `Ipv4 only` for setting A-Records. Select `IPv6 only` for setting AAAA-Records.
-**DynDns TTL**              Set the TTL (time to live) for DNS Records. The default is 1 hour. Can be a number between 1 to 24 hours.
 =========================== ================================
 
 
@@ -158,21 +158,24 @@ Option                                  Description
 Reverse Proxy - Domains
 -----------------------
 
-=========================== ================================
-Option                      Description
-=========================== ================================
-**enabled**                 `enable` or `disable` this domain
-**Domain**                  Can either be a domain name or an IP address. If a domain name is chosen, Caddy will automatically try to get a Let's Encrypt or ZeroSSL certificate, and the headers and real IP address will be automatically passed to the upstream destination.
-**Port**                    Should be the port the OPNsense will listen on. Don't forget to create Firewall rules that allow traffic to this port on ``WAN`` and ``LAN`` to destination ``This Firewall``. Leave this empty if the default ports of Caddy (`80` and `443`) should be used with automatic redirection from HTTP to HTTPS.
-**Access List**             Restrict the access to this domain to a list of IP addresses defined in the Access Tab. This doesn't influence Let's Encrypt certificate generation.
-**Basic Auth**              Restrict the access to this domain to one or multiple users defined in the Access Tab. This doesn't influence the Let's Encrypt certificate generation.
-**DNS-01 challenge**        Enable this for using DNS-01 instead of HTTP-01 and TLS-ALPN-01 challenge. This can be set per entry, so both types of challenges can be used at the same time for different entries. This option needs the `General Settings - DNS Provider` configured.
-**Dynamic DNS**             Enable Dynamic DNS. As the option above, the DNS Provider is a requirement. The DNS Records of this domain will be automatically updated with the chosen DNS Provider.
-**Custom Certificate**      Use a certificate imported or generated in `System - Trust - Certificates`. The chain is generated automatically. Certificate + Intermediate CA + Root CA, Certificate + Root CA and self signed Certificate are all fully supported. Only SAN certificates will work.
-**HTTP Access Log**         Enable the HTTP request logging for this domain and its subdomains. This option is mostly for troubleshooting or log analyzing tools like CrowdSec, since it will log every single request.
-**HTTP-01 redirection**     Enter a domain name or IP address. The HTTP-01 challenge will be redirected to that destination. This enables a server behind Caddy to serve "/.well-known/acme-challenge/". Caddy will issue a certificate for the same domain using the TLS-ALPN-01 challenge or DNS-01 challenge instead. Please note that his is a complex scenario, Caddy can *only* continue to get automatic certificates if it can listen on Port 443 - so either specify 443 directly or leave the Port empty. Having the domain listen on any other port than 443 will mean the TLS-ALPN-01 challenge will fail too, and there won't be any automatic certificates. If the requirement is a different port than 443, the DNS-01 challenge will remain the only option.
-**Description**             The description is mandatory. Create descriptions for each domain. Since there could be multiples of the same domain with different ports, do it like this: ``foo.example.com`` and ``foo.example.com.8443``.
-=========================== ================================
+=================================== ================================
+Option                              Description
+=================================== ================================
+**enabled**                         `enable` or `disable` this domain
+**Domain**                          Can either be a domain name or an IP address. If a domain name is chosen, Caddy will automatically try to get a Let's Encrypt or ZeroSSL certificate, and the headers and real IP address will be automatically passed to the upstream destination.
+**Port**                            Should be the port the OPNsense will listen on. Don't forget to create Firewall rules that allow traffic to this port on ``WAN`` and ``LAN`` to destination ``This Firewall``. Leave this empty if the default ports of Caddy (`80` and `443`) should be used with automatic redirection from HTTP to HTTPS.
+**Description**                     The description is mandatory. Create descriptions for each domain. Since there could be multiples of the same domain with different ports, do it like this: ``foo.example.com`` and ``foo.example.com.8443``.
+**>DNS**                            DNS options
+**Dynamic DNS**                     Enable Dynamic DNS. As the option above, the DNS Provider is a requirement. The DNS Records of this domain will be automatically updated with the chosen DNS Provider.
+**>Trust**                          Certificate options
+**DNS-01 challenge**                Enable this for using DNS-01 instead of HTTP-01 and TLS-ALPN-01 challenge. This can be set per entry, so both types of challenges can be used at the same time for different entries. This option needs the `General Settings - DNS Provider` configured.
+**HTTP-01 challenge redirection**   Enter a domain name or IP address. The HTTP-01 challenge will be redirected to that destination. This enables a server behind Caddy to serve ``/.well-known/acme-challenge/``. Caddy will issue a certificate for the same domain using the TLS-ALPN-01 challenge or DNS-01 challenge instead. Please note that his is a complex scenario, Caddy can *only* continue to get automatic certificates if it can listen on Port 443 - so either specify 443 directly or leave the Port empty. Having the domain listen on any other port than 443 will mean the TLS-ALPN-01 challenge will fail too, and there won't be any automatic certificates. If the requirement is a different port than 443, the DNS-01 challenge will remain the only option.
+**Custom Certificate**              Use a certificate imported or generated in `System - Trust - Certificates`. The chain is generated automatically. Certificate + Intermediate CA + Root CA, Certificate + Root CA and self signed Certificate are all fully supported. Only SAN certificates will work.
+**>Access**                         Access options
+**Access List**                     Restrict the access to this domain to a list of IP addresses defined in the Access Tab. This doesn't influence Let's Encrypt certificate generation.
+**Basic Auth**                      Restrict the access to this domain to one or multiple users defined in the Access Tab. This doesn't influence the Let's Encrypt certificate generation.
+**HTTP Access Log**                 Enable the HTTP request logging for this domain and its subdomains. This option is mostly for troubleshooting or log analyzing tools like CrowdSec, since it will log every single request.
+=================================== ================================
 
 
 --------------------------
@@ -203,14 +206,16 @@ Option                              Description
 **Subdomain**                       Select a subdomain. This will put the handler on the subdomain instead of the domain. Use only with wildcard domains and subdomains.
 **Handle Type**                     `handle` or `handle path` can be chosen. If in doubt, always use `handle`, the most common option. `handle path` is used to strip the path from the URI.
 **Handle Path**                     Leave this empty to create a catch all location or enter a location like  `/foo/*` or `/foo/bar*`.
+**>Upstream**                       Upstream options
 **Upstream Domain**                 Should be an internal domain name or an IP Address of the upstream destination that should receive the reverse proxied traffic.
 **Upstream Port**                   Should be the port the upstream destination listens on. This can be left empty to use Caddy default port 80.
 **Upstream Path**                   In case the backend application resides in a sub-path of the web root and its path shouldn't be visible in the frontend URL, this setting can be used to prepend an initial path starting with '/' to every backend request. Java applications running in a servlet container like Tomcat are known to behave this way, so set it to e.g. '/guacamole' to access Apache Guacamole at the frontend root URL without needing a redirect.
+**>Trust**                          Certificate options
 **TLS**                             If the upstream destination only accepts HTTPS, enable this option. If the upstream destination has a globally trusted certificate, this TLS option is the only needed one.
+**NTLM**                            If the upstream destination needs NTLM authentication, enable this option together with TLS. For example: Exchange Server.
+**TLS Insecure Skip Verify**        Turns off TLS handshake verification, making the connection insecure and vulnerable to man-in-the-middle attacks. Do not use in production.
 **TLS Trusted CA Certificates**     Choose a CA certificate to trust for the upstream destination connection. Import a self-signed certificate or a CA certificate into the OPNsense `System - Trust - Authorities` store, and select it here.
 **TLS Server Name**                 If the SAN (Subject Alternative Name) of the offered trusted CA certificate or self-signed certificate doesn't match with the IP address or hostname of the `Upstream Domain`, enter it here. This will change the SNI (Server Name Identification) of Caddy to the `TLS Server Name`. IP address e.g. ``192.168.1.1`` or hostname e.g. ``localhost`` or ``opnsense.local`` are all valid choices. Only if the SAN and SNI match, the TLS connection will work, otherwise an error is logged that can be used to troubleshoot.
-**NTLM**                            If the upstream destination needs NTLM authentication, enable this option together with TLS. For example, Exchange Server.
-**TLS Insecure Skip Verify**        Turns off TLS handshake verification, making the connection insecure and vulnerable to man-in-the-middle attacks. Do not use in production.
 =================================== ================================
 
 .. Attention:: Only use `TLS Insecure Skip Verify` if absolutely necessary. Using it makes the connection to the upstream destination insecure. It might look like an easy way out for all kinds of certiciate issues, but in the end it is always a bad choice and proper certificate handling is strongly preferred. Please use the `TLS`, `TLS Trusted CA Certificates` and `TLS Server Name` options instead to get a **secure TLS connection** to the upstream destination. Another option is to use plain HTTP, since it doesn't imply that the connection is secure and encrypted.
@@ -286,7 +291,7 @@ Using dynamic DNS
 Go to `Services - Caddy Web Server - General Settings - DNS Provider`
 
 * Select one of the supported DNS Providers from the list
-* Input the `DNS API Key`, and any number of the additional required fields in advanced mode. Read the full help for details.
+* Input the `DNS API Key`, and any number of the additional required fields in `Additional Fields`. Read the full help for details.
 
 Go to `Services - Caddy Web Server - General Settings - Dynamic DNS`
 
@@ -300,9 +305,9 @@ Go to `Services - Caddy Web Server - Reverse Proxy – Domains`
 ============================== ====================
 Options                        Values
 ============================== ====================
-Domain                         mydomain.duckdns.org
-Dynamic DNS                    enabled
-Description                    mydomain.duckdns.org
+**Domain**                     mydomain.duckdns.org
+**Description**                mydomain.duckdns.org
+**Dynamic DNS**                enabled
 ============================== ====================
 
 Go to `Services - Caddy Web Server - Reverse Proxy – Handlers`
@@ -312,13 +317,13 @@ Go to `Services - Caddy Web Server - Reverse Proxy – Handlers`
 ============================== ====================
 Options                        Values
 ============================== ====================
-Domain                         mydomain.duckdns.org
-Upstream Domain                192.168.1.1
+**Domain**                     mydomain.duckdns.org
+**Upstream Domain**            192.168.1.1
 ============================== ====================
 
 * Press **Save** and **Apply**
 
-.. Note:: Now Caddy listens on Port 80 and 443, and reverse proxies everything from mydomain.duckdns.org to 192.168.1.1:80. All headers and the real IP are automatically passed to the upstream destination. For different ports, check the advanced settings. Let's Encrypt Certificate and Dynamic DNS Updates are all handled automatically.
+.. Note:: Leave all other fields to default or empty. Now Caddy listens on Port 80 and 443, and reverse proxies everything from mydomain.duckdns.org to 192.168.1.1:80. All headers and the real IP are automatically passed to the upstream destination. For different ports, check the advanced settings. Let's Encrypt Certificate and Dynamic DNS Updates are all handled automatically.
 
 
 ---------------------------------
@@ -328,7 +333,7 @@ Creating a wildcard reverse proxy
 Go to `Services - Caddy Web Server - General Settings - DNS Provider`
 
 * Select one of the supported DNS Providers from the list
-* Input the `DNS API Key`, and any number of the additional required fields in advanced mode. Read the full help for details.
+* Input the `DNS API Key`, and any number of the additional required fields in `Additional Fields`. Read the full help for details.
 
 Go to `Services - Caddy Web Server - Reverse Proxy – Domains`
 
@@ -337,7 +342,9 @@ Go to `Services - Caddy Web Server - Reverse Proxy – Domains`
 
 Go to `Services - Caddy Web Server - Reverse Proxy – Handlers`
 
-* Create a Handler with ``*.example.com`` as domain and ``foo.example.com`` as subdomain. All the same configuration as with normal domains is possible.
+* Create a Handler with ``*.example.com`` as domain and ``foo.example.com`` as subdomain. Mostly the same configuration as with normal domains is possible. There are some features that are only possible with normal domains.
+
+.. Attention:: If in doubt, don't use subdomains. If there should be ``foo.example.com``, ``bar.example.com`` and ``example.com``, just create them as three normal domains. This way, there is the most flexibility, and the most features are supported.
 
 
 --------------------------------
@@ -372,6 +379,40 @@ Go to `System - Settings - Administration`
 
 
 -------------------------------
+Redirect ACME HTTP-01 challenge
+-------------------------------
+
+Sometimes an application behind Caddy uses it's own ACME Client to get certificates, most likely with the HTTP-01 challenge. This plugin has a built in mechanism to redirect this challenge type easily to a destination behind it.
+
+.. Note:: Make sure the chosen domain is externally resolvable. Create an A-Record with an external DNS Provider that points to the external IP Address of the OPNsense. In case of IPv6 availability, it is mandatory to create an AAAA-Record too, otherwise the TLS-ALPN-01 challenge might fail.
+
+.. Attention:: It is mandatory that the domain in Caddy uses an empty port or 443 in the GUI, otherwise it can't use the TLS-ALPN-01 challenge for itself. The upstream destination has to listen on Port 80 and serve ``/.well-known/acme-challenge/``, for the same domain that is configured in Caddy.
+
+Go to `Services - Caddy Web Server - Reverse Proxy - Domains`
+
+* Press **+** to create a new domain
+* enable `advanced mode`
+* **Domain:** `foo.example.com`
+* **Description:** `foo.example.com`
+* Open `Trust`
+* **HTTP-01 challenge redirection:** `192.168.10.1`
+* Press **Save**
+
+Go to `Services - Caddy Web Server - Reverse Proxy - Handler`
+
+* Press **+** to create a new Handler
+* **Domain:** `foo.example.com`
+* **Upstream Domain:** `192.168.10.1`
+* **Upstream Port:** `443`
+* Open `Trust`
+* **TLS:** `enabled`
+* **TLS Server Name**: `foo.example.com`
+* Press **Save** and **Apply**
+
+.. Note:: Leave all other fields to default or empty. With this configuration, Caddy will eventually choose the TLS-ALPN-01 challenge for its own foo.example.com domain, and reverse proxy the HTTP-01 challenge to 192.168.10.1, where the upstream destination can listen on port 80 and solve it's own challenge for a certificate. With TLS enabled in the Handler, an encrypted connection is automatically possible to 192.168.10.1. The automatic HTTP to HTTPS redirection is also taken care of.
+
+
+-------------------------------
 Integrating Caddy with CrowdSec
 -------------------------------
 
@@ -379,14 +420,13 @@ Integrating Caddy with CrowdSec
 
 Go to `Services - Caddy Web Server - General Settings - Log Settings`
 
-* Enable `advanced mode`
 * Enable `Log HTTP Access in JSON Format`
 * Press **Save**
 
 Go to `Services - Caddy Web Server - Reverse Proxy – Domains`
 
 * Open each domain that should be monitored by CrowdSec
-* Enable `advanced mode`
+* Open `Access`
 * Enable `HTTP Access Log`
 
 .. Note:: Now the HTTP access logs will appear in ``/var/log/caddy/access`` in json format, one file for each domain.
@@ -418,5 +458,5 @@ Using custom configuration files
 
 * The Caddyfile has an additional import from the path ``/usr/local/etc/caddy/caddy.d/``. Place custom configuration files inside that adhere to the Caddyfile syntax.
 * ``*.global`` files will be imported into the global block of the Caddyfile.
-* ``*.conf`` files will be imported at the end of the Caddyfile. Don't forget to test the custom configuration with `caddy run --config /usr/local/etc/caddy/Caddyfile`.
+* ``*.conf`` files will be imported at the end of the Caddyfile. Don't forget to test the custom configuration with ``caddy run --config /usr/local/etc/caddy/Caddyfile``.
 * With these imports, the full potential of Caddy can be unlocked. The GUI options will remain focused on the reverse proxy.
