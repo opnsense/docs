@@ -662,14 +662,8 @@ only a single gateway route might be configured as well.
 .. Note::
 
    When choosing tunnel addresses, make sure the network defined includes the addresses being used by the peers. For
-   example when choosing :code:`10.10.0.1/24` the :code:`wgX` interface has this address configured and is able to accept
+   example when choosing :code:`10.10.0.1/24` the :code:`wgX` instance has this address configured and is able to accept
    a peer using :code:`10.10.0.2/32`.
-
-
-.. Note::
-
-   Make sure to enable Wireguard in the general tab before adding instances.
-
 
 .. Tip::
 
@@ -692,7 +686,6 @@ as additional security measure. The "*Allowed IPs*" define the networks that are
 
     When NAT and firewall traversal persistence is required, the :code:` Keepalive interval` can be used to exchange packets every defined
     interval ensuring states will not expire.
-
 
 .................................
 High availability (using CARP)
@@ -721,7 +714,7 @@ interface status (up/down) will be toggled accordingly.
 Diagnostics and debugging
 .................................
 
-In :menuselection:`VPN --> WireGuard --> Diagnostics` you can find the configured instances and peers including their last known
+In :menuselection:`VPN --> WireGuard --> Status` you can find the configured instances and peers including their last known
 handshake and the amount of data being exchanged. For Instances you are also able to see if the device underneath (:code:`wgX`) is
 up or down, depending on the carp status described in the previous chapter.
 
