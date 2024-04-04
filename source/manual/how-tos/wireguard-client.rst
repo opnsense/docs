@@ -27,7 +27,7 @@ Step 1 - Configure the Wireguard Instance
      **Listen Port**       *51820 or a higher numbered unique port*
      **MTU**               *1420 (default) or 1412 if you use PPPoE; it's 80 bytes less than your WAN MTU*
      **Tunnel Address**    *For example, 10.10.10.1/24. See note below*
-     **Peers**             *The (client) peers will be specified here; leave it blank initially until the Peer configuration is created in Step 3*
+     **Peers**             *The (client) peers will be specified here; leave it blank initially until the Peer configuration is created in Step 2*
      **Disable Routes**    *Unchecked*
     ===================== ===============================================================================================
 
@@ -41,7 +41,7 @@ Step 1 - Configure the Wireguard Instance
 
 - **Save** the Instance configuration, and then click **Save** again
 - Re-open the Instance configuration
-- Copy the public key that has been generated in the configuration. This will be needed for the client device - see Step 7
+- Copy the public key that has been generated in the configuration. This will be needed for the client device - see Step 6
 - **Save** or **Cancel** to exit the configuration
 
 ---------------------------------------------
@@ -55,7 +55,7 @@ Step 2 - Configure the client peer
     ====================== ====================================================================================================
      **Enabled**            *Checked*
      **Name**               *Call it whatever you want (eg* :code:`Phone` *)*
-     **Public Key**         *Insert the public key from the client; if needed skip ahead and start Step 7 to generate the client public key*
+     **Public Key**         *Insert the public key from the client; if needed skip ahead and start Step 6 to generate the client public key*
      **Allowed IPs**        *Unique tunnel IP address (IPv4 and/or IPv6) of client - it should be a /32 or /128 (as applicable) within the subnet configured on the WireGuard Instance. For example, 10.10.10.2/32*
     ====================== ====================================================================================================
 
@@ -64,7 +64,7 @@ Step 2 - Configure the client peer
 - Open the Instance configuration that was created in Step 1 (eg :code:`HomeWireGuard`)
 - In the Peers dropdown, select the newly created Peer (eg :code:`Phone`)
 - **Save** the Instance configuration again, and then click **Save** once more
-- Repeat this Step 3 for as many clients as you wish to configure
+- Repeat this Step 2 for as many clients as you wish to configure
 
 ----------------------------------
 Step 3 - Turn on/restart WireGuard
@@ -79,9 +79,9 @@ Step 4 - Assignments and routing
 
 .. Note::
 
-    The steps outlined in Steps 5(a) and 5(b) below may not be required at all in your circumstances. Strictly speaking, if you only intend for your clients to use the tunnel to access local IPs/subnets behind OPNsense, then neither step is actually necessary. If you intend to use the WireGuard tunnel to also access IPs outside of the local network, for example the public internet, then at least one, and perhaps both, of the steps will be required. This is explained below
+    The steps outlined in Steps 4(a) and 4(b) below may not be required at all in your circumstances. Strictly speaking, if you only intend for your clients to use the tunnel to access local IPs/subnets behind OPNsense, then neither step is actually necessary. If you intend to use the WireGuard tunnel to also access IPs outside of the local network, for example the public internet, then at least one, and perhaps both, of the steps will be required. This is explained below
 
-    **However**, it is useful to complete Step 5(a) anyway, for the reasons explained in that step
+    **However**, it is useful to complete Step 4(a) anyway, for the reasons explained in that step
 
 Step 4(a) - Assign an interface to WireGuard (recommended)
 ----------------------------------------------------------
@@ -131,7 +131,7 @@ Step 4(b) - Create an outbound NAT rule
 
 .. Hint::
 
-    This step is only necessary (if at all) to allow client peers to access IPs outside of the local IPs/subnets behind OPNsense - see the note under Step 5. If an interface has already been assigned under Step 5(a), then it is not necessary for IPv4 traffic, and is only necessary for IPv6 traffic if the tunnel uses IPv6 ULAs (IPv6 GUAs don't need NAT). So in many use cases this step can be skipped
+    This step is only necessary (if at all) to allow client peers to access IPs outside of the local IPs/subnets behind OPNsense - see the note under Step 4. If an interface has already been assigned under Step 4(a), then it is not necessary for IPv4 traffic, and is only necessary for IPv6 traffic if the tunnel uses IPv6 ULAs (IPv6 GUAs don't need NAT). So in many use cases this step can be skipped
 
 - Go to :menuselection:`Firewall --> NAT --> Outbound`
 - Select "Hybrid outbound NAT rule generation” if it is not already selected, and click **Save** and then **Apply changes**
@@ -143,7 +143,7 @@ Step 4(b) - Create an outbound NAT rule
      **TCP/IP Version**         *IPv4 or IPv6 (as applicable)*
      **Protocol**               *any*
      **Source invert**          *Unchecked*
-     **Source address**         *If you assigned an interface under Step 5(a), select the generated alias for the interface subnet(s) (eg* :code:`HomeWireGuard net` *) - see note below if you didn't assign this interface*
+     **Source address**         *If you assigned an interface under Step 4(a), select the generated alias for the interface subnet(s) (eg* :code:`HomeWireGuard net` *) - see note below if you didn't assign this interface*
      **Source port**            *any*
      **Destination invert**     *Unchecked*
      **Destination address**    *any*
@@ -157,7 +157,7 @@ Step 4(b) - Create an outbound NAT rule
 
 .. Hint::
 
-    If you didn't assign an interface as suggested in Step 5(a), then you will need to manually specify the source IPs/subnet(s) for the tunnel (for example, 10.10.10.0/24). It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one WireGuard Instance and only one WireGuard Peer configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
+    If you didn't assign an interface as suggested in Step 4(a), then you will need to manually specify the source IPs/subnet(s) for the tunnel (for example, 10.10.10.0/24). It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one WireGuard Instance and only one WireGuard Peer configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
 
 ------------------------------
 Step 5 - Create firewall rules
@@ -180,12 +180,12 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
      **Source**                   *any*
      **Destination / Invert**     *Unchecked*
      **Destination**              *WAN address*
-     **Destination port range**   *The WireGuard port specified in the Instance configuration in Step 2*
+     **Destination port range**   *The WireGuard port specified in the Instance configuration in Step 1*
      **Description**              *Add one if you wish to*
     ============================ ==================================================================================================
 
 - **Save** the rule, and then click **Apply Changes**
-- Then go to :menuselection:`Firewall --> Rules --> [Name of interface assigned in Step 5(a)]` - see note below if you didn't assign this interface
+- Then go to :menuselection:`Firewall --> Rules --> [Name of interface assigned in Step 4(a)]` - see note below if you didn't assign this interface
 - Click **Add** to add a new rule
 - Configure the rule as follows (if an option is not mentioned below, leave it as the default):
 
@@ -197,7 +197,7 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
      **TCP/IP Version**           *IPv4 or IPv4+IPv6 (as applicable)*
      **Protocol**                 *any*
      **Source / Invert**          *Unchecked*
-     **Source**                   *If you assigned an interface under Step 5(a), select the generated alias for the interface subnet(s) (eg* :code:`HomeWireGuard net` *) - see note below if you didn't assign this interface*
+     **Source**                   *If you assigned an interface under Step 4(a), select the generated alias for the interface subnet(s) (eg* :code:`HomeWireGuard net` *) - see note below if you didn't assign this interface*
      **Destination / Invert**     *Unchecked*
      **Destination**              *Specify the IPs that client peers should be able to access, eg "any" or specific IPs/subnets*
      **Destination port range**   *any*
@@ -208,7 +208,7 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
 
 .. Note::
 
-    If you didn't assign an interface as suggested in Step 5(a), then the second firewall rule outlined above will need to be configured on the automatically created :code:`WireGuard` group that appears once the Instance configuration is enabled and WireGuard is started. You will also need to manually specify the source IPs/subnet(s) for the tunnel. It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one WireGuard Instance and only one WireGuard Peer configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
+    If you didn't assign an interface as suggested in Step 4(a), then the second firewall rule outlined above will need to be configured on the automatically created :code:`WireGuard` group that appears once the Instance configuration is enabled and WireGuard is started. You will also need to manually specify the source IPs/subnet(s) for the tunnel. It's probably easiest to define an alias (via :menuselection:`Firewall --> Aliases`) for those IPs/subnet(s) and use that. If you have only one WireGuard Instance and only one WireGuard Peer configured, you can use the default :code:`WireGuard net`, although this is generally not recommended due to unexpected behaviour
 
 ------------------------------------
 Step 5a - Create normalization rules
@@ -264,11 +264,11 @@ Client configuration is largely beyond the scope of this how-to since there is s
     ====================== ====================================================================================================
      **[Interface]**
      **Address**            *Refers to the IP(s) specified as Allowed IPs in the Peer configuration on OPNsense. For example, 10.10.10.2/32*
-     **PrivateKey**         *Refers to the private key that (along with a public key) needs to be manually or automatically generated on the client. The corresponding public key must then be copied into the Peer configuration on OPNsense for the relevant client peer - see Step 3*
+     **PrivateKey**         *Refers to the private key that (along with a public key) needs to be manually or automatically generated on the client. The corresponding public key must then be copied into the Peer configuration on OPNsense for the relevant client peer - see Step 2*
      **DNS**                *Refers to the DNS servers that the client should use for the tunnel - see note below*
 
      **[Peer]**
-     **PublicKey**          *Refers to the public key that is generated on OPNsense. Copy the public key from the Instance configuration on OPNsense - see Step 2*
+     **PublicKey**          *Refers to the public key that is generated on OPNsense. Copy the public key from the Instance configuration on OPNsense - see Step 1*
      **Endpoint**           *Refers to the public IP address or publicly resolvable domain name of your OPNsense host, and the port specified in the Instance configuration on OPNsense*
      **AllowedIPs**         *Refers to the traffic (by destination IPs/subnets) that is to be sent via the tunnel. For example, if all traffic on the client is to be sent through the tunnel, specify 0.0.0.0/0 (IPv4) and/or ::/0 (IPv6)*
     ====================== ====================================================================================================
