@@ -28,6 +28,69 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.1.5 (April 04, 2024)
+--------------------------------------------------------------------------
+
+
+Today the kernel receives a number of minor updates that have accumulated
+since 24.1.2 was released.  The primary focus for the time being is adding
+fixes and MVC improvements for upcoming feature backports into the next
+24.1.x versions.
+
+The update presents itself as a hotfix 24.1.5_1 but that is only due to
+catching an issue during the last QA stage with an update of the gettext
+library.
+
+Here are the full patch notes:
+
+* system: fix PHP warnings and spurious validation in route model
+* system: fix translation of static PHP pages with newer gettext
+* interfaces: support a primary interface in LAGG failover mode
+* interfaces: stop caching IPv6 address to decide if reload is required
+* firmware: opnsense-revert: fix issue with downloaded package install
+* ipsec: fix typo in config generation for AH proposals
+* unbound: duckduckgo.com blocklist fix
+* wireguard: add a peer configuration generator with QR code capability
+* wireguard: improve overall configuration UX
+* mvc: add "safe" filter in Phalcon volt templates
+* mvc: feed current language into view to replace hardcoded "en-US"
+* mvc: fix minor regression with "allownew" not having a default
+* mvc: extend model implementation to support volatile fields
+* mvc: add setBaseHook() to ApiMutableModelControllerBase
+* rc: fix wrong order in service startup (contributed by Frank Wall)
+* ui: move cache_safe() functions to appropriate include
+* ui: add a "statusled" formatter to bootgrid
+* ui: add a "grid-reload" helper to SimpleActionButton
+* plugins: os-bind 1.21 `[1] <https://github.com/opnsense/plugins/blob/stable/24.1/dns/bind/pkg-descr>`__ 
+* plugins: os-caddy 1.5.3 `[2] <https://github.com/opnsense/plugins/blob/stable/24.1/www/caddy/pkg-descr>`__ 
+* src: wg: fix handling of errors in wg_transmit()
+* src: wg: use proper barriers around pkt->p_state
+* src: kern: fix panic with disabled ttys
+* src: opencrypto: advance the correct pointer in crypto_cursor_copydata()
+* src: opencrypto: handle end-of-cursor conditions in crypto_cursor_segment()
+* src: opencrypto: respect alignment constraints in xor_and_encrypt()
+* src: ccr,ccp: fix argument order to sglist_append_vmpages
+* src: ossl: add missing labels to bsaes-armv7.S
+* src: ipsec esp: avoid dereferencing freed secasindex
+* src: irdma: upgrade to 1.2.36-k
+* src: irdma: remove artificial completion generator
+* src: tcp: cubic - restart epoch after RTO
+* src: tcp: prevent div by zero in cc_htcp
+* src: net80211: adjust more VHT structures/fields
+* ports: curl 8.7.1 `[3] <https://curl.se/changes.html#8_7_1>`__ 
+* ports: expat 2.6.2 `[4] <https://github.com/libexpat/libexpat/blob/R_2_6_2/expat/Changes>`__ 
+* ports: libucl 0.9.1
+* ports: lighttpd 1.4.75 `[5] <https://www.lighttpd.net/2024/3/13/1.4.75/>`__ 
+* ports: nss 3.99 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_99.html>`__ 
+* ports: openssh-portable 9.7p1 `[7] <https://www.openssh.com/txt/release-9.7>`__ 
+* ports: openvpn 2.6.10 `[8] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.10>`__ 
+* ports: php 8.2.17 `[9] <https://www.php.net/ChangeLog-8.php#8.2.17>`__ 
+* ports: py-duckdb 0.10.1 `[10] <https://github.com/duckdb/duckdb/releases/tag/v0.10.1>`__ 
+* ports: py-netaddr 1.2.1 `[11] <https://netaddr.readthedocs.io/en/latest/changes.html#release-1-2-1>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.1.4 (March 20, 2024)
 --------------------------------------------------------------------------
 
