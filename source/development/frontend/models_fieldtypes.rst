@@ -391,6 +391,21 @@ Define relations to other nodes in the model, such as to point the attribute :co
         </Model>
     </pipe>
 
+To display multiple fields, the :code:`display_format` is required.
+
+.. code-block:: xml
+
+    <pipe type="ModelRelationField">
+        <Model>
+            <pipes>
+                <source>OPNsense.TrafficShaper.TrafficShaper</source>
+                <items>pipes.pipe</items>
+                <display>number,description</display>
+                <display_format>%s - %s</display_format>
+            </pipes>
+        </Model>
+    </pipe>
+
 .. csv-table:: ModelRelationField
    :header: "Parameter", "Options", "Purpose"
    :widths: 30, 20, 40
