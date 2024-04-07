@@ -25,6 +25,7 @@ Main features of this plugin:
 * Basic Auth to restrict access by username and password
 * Syslog-ng integration and HTTP Access Log
 * NTLM Transport
+* Header manipulation with header_up and header_down
 
 
 --------------
@@ -111,8 +112,6 @@ Option                      Description
 **Auto HTTPS**              `On (default)` creates automatic Let's Encrypt certificates for all domains that don't have more specific options set, like custom certificates.
 **Trusted Proxies**         If Cloudflare or another CDN provider is used, create an `Access List` with the IP addresses of that CDN and add it here. Add the same Access List to the domain this CDN tries to reach.
 **Abort Connections**       This option, when enabled, aborts all connections to the domain that don't match any specified handler or access list. This setting doesn't affect Let's Encrypt's ability to issue certificates, ensuring secure connections regardless of the option's status. If unchecked, the domain remains accessible even without a matching handler, allowing for connectivity and certificate checks, even in the absence of a configured upstream destination. When using Access Lists, enabling this option is recommended to reject unauthorized connections outright. Without this option, unmatched IP addresses will encounter an empty page instead of an explicit rejection, though the Access Lists continue to function and restrict access.
-**HTTP Response Code**      Set a custom HTTP response code that should be returned to the requesting client when the access list doesn't match. Setting this will replace "Abort Connections", all clients will stay connected but will receive the response code. Generally, using "Abort Connections" is recommended, because it will actively disconnect clients without serving anything.
-**HTTP Response Message**   Set a custom HTTP response message in addition to the HTTP response code. 
 =========================== ================================
 
 
@@ -124,7 +123,7 @@ General Settings - DNS Provider
 Option                      Description
 =========================== ================================
 **DNS Provider**            Select the DNS provider for the `DNS-01 Challenge` and `Dynamic DNS`. This is optional, since certificates will be requested from Let's Encrypt via HTTP-01 or TLS-ALPN-01 challenge when this option is unset. Needed for wildcard certificates, and for dynamic DNS. To use the DNS-01 challenge and dynamic DNS, enable the checkbox in a domain or subdomain. For more information: https://github.com/caddy-dns
-**DNS API Fields**          These fields are for the API settings of the chosen DNS Provider. All of these fields can be left empty if they are optional with the chosen provider. The help text in the plugin will list all available providers and their expected configurations. There are additional fields in the advanced mode if DNS providers require more fields for their configurations.
+**DNS API Fields**          These fields are for the API settings of the chosen DNS Provider. All of these fields can be left empty if they are optional with the chosen provider. The help text in the plugin will list all available providers and their expected configurations. There are additional fields if DNS providers require more fields for their configurations.
 =========================== ================================
 
 
@@ -208,6 +207,8 @@ Option                              Description
 **Subdomain**                       Select a subdomain. This will put the handler on the subdomain instead of the domain. Use only with wildcard domains and subdomains.
 **Handle Type**                     `handle` or `handle path` can be chosen. If in doubt, always use `handle`, the most common option. `handle path` is used to strip the path from the URI.
 **Handle Path**                     Leave this empty to create a catch all location or enter a location like  `/foo/*` or `/foo/bar*`.
+**>Header**                         Header options
+**Header Manipulation**             Select one or multiple header manipulations. These will be set to this handler. Generally this is not needed. Setting a wrong configuration can be a security risk or break functionality.
 **>Upstream**                       Upstream options
 **Upstream Domain**                 Should be an internal domain name or an IP Address of the upstream destination that should receive the reverse proxied traffic.
 **Upstream Port**                   Should be the port the upstream destination listens on. This can be left empty to use Caddy default port 80.
@@ -232,10 +233,12 @@ Option                      Description
 =========================== ================================
 **Access List name**        Choose a name for the Access List, for example ``private_ips``.
 **Client IP Addresses**     Enter any number of IPv4 and IPv6 addresses or networks that this access list should contain. For matching only internal networks, add `192.168.0.0/16` `172.16.0.0/12` `10.0.0.0/8` `127.0.0.1/8` `fd00::/8` `::1`.
+**HTTP Response Code**      Set a custom HTTP response code that should be returned to the requesting client when the access list doesn't match. Setting this will replace "Abort Connections", all clients will stay connected but will receive the response code. Generally, using "Abort Connections" is recommended, because it will actively disconnect clients without serving anything.
+**HTTP Response Message**   Set a custom HTTP response message in addition to the HTTP response code. 
 **Invert List**             Invert the logic of the access list. If unchecked, the Client IP Addresses will be allowed. If checked, the Client IP Addresses will be blocked.
 =========================== ================================
 
-.. Note:: Go back to domains or subdomains and add the access list to them (advanced mode). All handlers created under these domains will get an additional matcher. That means, the requests still reach Caddy, but if the IP Addresses don't match with the access list, the request will be dropped before being reverse proxied.
+.. Note:: Go back to domains or subdomains and add the access list to them. All handlers created under these domains will get an additional matcher. That means, the requests still reach Caddy, but if the IP Addresses don't match with the access list, the request will be dropped before being reverse proxied.
 
 
 --------------------------
@@ -250,6 +253,23 @@ Option                      Description
 =========================== ================================
 
 .. Note:: Basic auth matches after access lists, so set both to first restrict access by IP address, and then additionally by username and password. Don't set basic auth on top of a wildcard domain directly, always set it on the subdomains instead.
+
+
+-----------------------
+Reverse Proxy - Headers
+-----------------------
+
+=========================== ================================
+Option                      Description
+=========================== ================================
+**Header**                  ``header_up`` sets, adds (with the + prefix), deletes (with the - prefix), or performs a replacement (by using two arguments, a search and replacement) in a request header going upstream to the backend. ``header_down`` sets, adds (with the + prefix), deletes (with the - prefix), or performs a replacement (by using two arguments, a search and replacement) in a response header coming downstream from the backend. For more information: https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#headers.
+**Header Type**             Enter a header, for example ``Host``. Use the ``+`` or ``-`` prefix to add or remove this header, for example ``-Host`` or ``+Host``. A suffix match like ``-Host-*`` is also supported. To replace a header, use ``Some-Header`` without ``+`` or ``-``.
+**Header Value**            Enter a value for the above header. One of the most common options is ``{upstream_hostport}``. It's also possible to use a regular expression to search for a specific value in a header. For example: ``^prefix-([A-Za-z0-9]*)$`` which uses the regular expression language RE2 included in Go.
+**Header Replace**          If a regular expression is used to search for a `Header Value`, here the replacement string can be set. For example: ``replaced-$1-suffix`` which expands the replacement string, allowing the use of captured values, ``$1`` being the first capture group.
+=========================== ================================
+
+.. Attention:: Setting headers to handlers should be considered an advanced option for experts. Please don't set them without any reason. Caddy uses safe defaults. https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#defaults
+
 
 ================
 caddy: Tutorials
@@ -325,7 +345,7 @@ Options                        Values
 
 * Press **Save** and **Apply**
 
-.. Note:: Leave all other fields to default or empty. Now Caddy listens on Port 80 and 443, and reverse proxies everything from mydomain.duckdns.org to 192.168.1.1:80. All headers and the real IP are automatically passed to the upstream destination. For different ports, check the advanced settings. Let's Encrypt Certificate and Dynamic DNS Updates are all handled automatically.
+.. Note:: Leave all other fields to default or empty. Now Caddy listens on Port 80 and 443, and reverse proxies everything from mydomain.duckdns.org to 192.168.1.1:80. All headers and the real IP are automatically passed to the upstream destination. Let's Encrypt Certificate and Dynamic DNS Updates are all handled automatically.
 
 
 ---------------------------------
@@ -356,7 +376,7 @@ Reverse proxy the OPNsense WebUI
 * Open the OPNsense WebUI in a Browser (e.g. Chrome or Firefox). Inspect the certificate. Copy the SAN for later use, for example ``OPNsense.localdomain``.
 * Save the certificate as .pem file. Open it up with a text editor, and copy the contents into a new entry in `System - Trust - Authorities`. Name the certificate ``opnsense-selfsigned``.
 * Add a new Domain in Caddy, for example ``opn.example.com``. Make sure the name is externally resolvable to the WAN IP of the OPNsense.
-* Add a new Handler with the following options (enable advanced mode):
+* Add a new Handler with the following options:
 
 =================================== ====================
 Options                             Values
@@ -377,7 +397,7 @@ Go to `System - Settings - Administration`
 * Press **Save**
 
 .. Note:: Open ``https://opn.example.com`` and it should serve the reverse proxied OPNsense WebUI. Check the log file for errors if it doesn't work, most of the time the TLS Server Name doesn't match the SAN of the `TLS Trusted CA Certificate`. Caddy doesn't support CN (Common Name) in certificate since it's been deprecated since many years. Only SAN certificates work.
-.. Attention:: Create an access list to restrict access to the WebUI. Add that access list to the domain in advanced mode.
+.. Attention:: Create an access list to restrict access to the WebUI. Add that access list to this domain.
 
 
 -------------------------------
