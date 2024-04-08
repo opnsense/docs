@@ -25,8 +25,8 @@ Main features of this plugin:
 * Basic Auth to restrict access by username and password
 * Syslog-ng integration and HTTP Access Log
 * NTLM Transport
-* Header manipulation with header_up, header_down and copy_headers
-* forward_auth support for Authelia
+* Header manipulation
+* Forward Auth support for Authelia
 
 
 --------------
