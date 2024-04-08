@@ -234,7 +234,7 @@ Reverse Proxy - Access Lists
 Option                      Description
 =========================== ================================
 **Access List name**        Choose a name for the Access List, for example ``private_ips``.
-**Client IP Addresses**     Enter any number of IPv4 and IPv6 addresses or networks that this access list should contain. For matching only internal networks, add `192.168.0.0/16` `172.16.0.0/12` `10.0.0.0/8` `127.0.0.1/8` `fd00::/8` `::1`.
+**Client IP Addresses**     Enter any number of IPv4 and IPv6 addresses or networks that this access list should contain. For matching only internal networks, add ``192.168.0.0/16`` ``172.16.0.0/12`` ``10.0.0.0/8`` ``127.0.0.1/8`` ``fd00::/8`` ``::1``.
 **HTTP Response Code**      Set a custom HTTP response code that should be returned to the requesting client when the access list doesn't match. Setting this will replace "Abort Connections", all clients will stay connected but will receive the response code. Generally, using "Abort Connections" is recommended, because it will actively disconnect clients without serving anything.
 **HTTP Response Message**   Set a custom HTTP response message in addition to the HTTP response code. 
 **Invert List**             Invert the logic of the access list. If unchecked, the Client IP Addresses will be allowed. If checked, the Client IP Addresses will be blocked.
@@ -505,9 +505,9 @@ Options                             Values
 .. Tip:: Since (most) headers retain their original value when being proxied, it is often necessary to override the Host header with the configured upstream address when proxying to HTTPS, such that the Host header matches the TLS ServerName value. https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#https
 
 
-----------------------------------------------------
-Reverse Proxy with Authelia as forward_auth provider
-----------------------------------------------------
+---------------------------------
+Authelia as forward_auth provider
+---------------------------------
 
 .. Attention:: Delegating authentication to Authelia, before serving an app via a reverse proxy, is an advanced usecase. Since the GUI configuration is a little more complicated, an example configuration based on https://caddyserver.com/docs/caddyfile/directives/forward_auth#authelia is provided in this tutorial section.
 
