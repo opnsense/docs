@@ -54,25 +54,25 @@ Go to `Firewall - Rules - WAN`
 =========================== ================================
 Option                      Values
 =========================== ================================         
-**Interface**               WAN
-**TCP/IP Version**          IPv4+IPv6
-**Protocol**                TCP/UDP
-**Source**                  Any
-**Destination**             This Firewall
-**Destination port range**  from: HTTP to: HTTP
-**Description**             Caddy Reverse Proxy HTTP
+**Interface**               ``WAN``
+**TCP/IP Version**          ``IPv4+IPv6``
+**Protocol**                ``TCP/UDP``
+**Source**                  ``Any``
+**Destination**             ``This Firewall``
+**Destination port range**  from: ``HTTP`` to: ``HTTP``
+**Description**             ``Caddy Reverse Proxy HTTP``
 =========================== ================================
 
 =========================== ================================
 Option                      Values
 =========================== ================================         
-**Interface**               WAN
-**TCP/IP Version**          IPv4+IPv6
-**Protocol**                TCP/UDP
-**Source**                  Any
-**Destination**             This Firewall
-**Destination port range**  from: HTTPS to: HTTPS
-**Description**             Caddy Reverse Proxy HTTPS
+**Interface**               ``WAN``
+**TCP/IP Version**          ``IPv4+IPv6``
+**Protocol**                ``TCP/UDP``
+**Source**                  ``Any``
+**Destination**             ``This Firewall``
+**Destination port range**  from: ``HTTPS`` to: ``HTTPS``
+**Description**             ``Caddy Reverse Proxy HTTPS``
 =========================== ================================
 
 Go to `Firewall - Rules - LAN` and create the same rules for the `LAN` interface. Now external and internal clients can connect to Caddy, and Let's Encrypt or ZeroSSL certificates will be issued automatically.
@@ -293,18 +293,29 @@ Go to `Services - Caddy Web Server - General Settings`
 Go to `Services - Caddy Web Server - Reverse Proxy - Domains`
 
 * Press **+** to create a new domain
-* **Domain:** `foo.example.com`
-* **Description:** `foo.example.com`
+
+============================== ====================
+Options                        Values
+============================== ====================
+**Domain:**                    ``foo.example.com``
+============================== ====================
+
 * Press **Save**
 
 Go to `Services - Caddy Web Server - Reverse Proxy - Handler`
 
 * Press **+** to create a new Handler
-* **Domain:** `foo.example.com`
-* **Upstream Domain:** `192.168.10.1`
+
+============================== ====================
+Options                        Values
+============================== ====================
+**Domain:**                    ``foo.example.com``
+**Upstream Domain:**           ``192.168.10.1``
+============================== ====================
+
 * Press **Save** and **Apply**
 
-.. Note:: Leave all other fields to default or empty. After just a few seconds the Let's Encrypt certificate will be installed and the reverse proxy works. Check the Logfile for that. Now the TLS Termination reverse proxy is configured.
+.. Note:: After just a few seconds the Let's Encrypt certificate will be installed and the reverse proxy works. Check the Logfile for that. Now the TLS Termination reverse proxy is configured.
 .. Note:: **Result:** HTTPS foo.example.com:80/443 --> OPNsense (Caddy) --> HTTP 192.168.10.1:80
 
 
@@ -319,35 +330,34 @@ Go to `Services - Caddy Web Server - General Settings - DNS Provider`
 
 Go to `Services - Caddy Web Server - General Settings - Dynamic DNS`
 
-* Choose if `DynDns IP Version` should include IPv4 and/or IPv6. None option means both protocols.
+* Choose if `DynDns IP Version` should include IPv4 and/or IPv6.
 * Press **Save**
 
 Go to `Services - Caddy Web Server - Reverse Proxy – Domains`
 
-* Press **+** to create a new Domain. `mydomain.duckdns.org` is an example if `duckdns` is used as DNS Provider.
+* Press **+** to create a new Domain. ``mydomain.duckdns.org`` is an example if `duckdns` is used as DNS Provider.
 
-============================== ====================
+============================== ========================
 Options                        Values
-============================== ====================
-**Domain**                     mydomain.duckdns.org
-**Description**                mydomain.duckdns.org
-**Dynamic DNS**                enabled
-============================== ====================
+============================== ========================
+**Domain:**                    ``mydomain.duckdns.org``
+**Dynamic DNS:**               ``X``
+============================== ========================
 
 Go to `Services - Caddy Web Server - Reverse Proxy – Handlers`
 
 * Press **+** to create a new handler
 
-============================== ====================
+============================== ========================
 Options                        Values
-============================== ====================
-**Domain**                     mydomain.duckdns.org
-**Upstream Domain**            192.168.1.1
-============================== ====================
+============================== ========================
+**Domain:**                    ``mydomain.duckdns.org``
+**Upstream Domain:**           ``192.168.1.1``
+============================== ========================
 
 * Press **Save** and **Apply**
 
-.. Note:: Leave all other fields to default or empty. Now Caddy listens on Port 80 and 443, and reverse proxies everything from mydomain.duckdns.org to 192.168.1.1:80. All headers and the real IP are automatically passed to the upstream destination. Let's Encrypt Certificate and Dynamic DNS Updates are all handled automatically.
+.. Note:: Now Caddy listens on Port 80 and 443, and reverse proxies everything from mydomain.duckdns.org to 192.168.1.1:80. All headers and the real IP are automatically passed to the upstream destination. Let's Encrypt Certificate and Dynamic DNS Updates are all handled automatically.
 
 
 ---------------------------------
@@ -361,14 +371,14 @@ Go to `Services - Caddy Web Server - General Settings - DNS Provider`
 
 Go to `Services - Caddy Web Server - Reverse Proxy – Domains`
 
-* Create ``*.example.com`` as domain and activate the `DNS-01` checkbox. A DNS Provider has to be configured. Alternatively, use a certificate imported or generated in `System - Trust - Certificates`. It has to be a wildcard certificate.
+* Create ``*.example.com`` as domain and activate the `DNS-01` checkbox. Alternatively, use a certificate imported or generated in `System - Trust - Certificates`. It has to be a wildcard certificate.
 * Create all subdomains in relation to the ``*.example.com`` domain. So for example ``foo.example.com`` and ``bar.example.com``.
 
 Go to `Services - Caddy Web Server - Reverse Proxy – Handlers`
 
 * Create a Handler with ``*.example.com`` as domain and ``foo.example.com`` as subdomain. Mostly the same configuration as with normal domains is possible. There are some features that are only possible with normal domains.
 
-.. Attention:: If in doubt, don't use subdomains. If there should be ``foo.example.com``, ``bar.example.com`` and ``example.com``, just create them as three normal domains. This way, there is the most flexibility, and the most features are supported.
+.. Tip:: If in doubt, don't use subdomains. If there should be ``foo.example.com``, ``bar.example.com`` and ``example.com``, just create them as three normal domains. This way, there is the most flexibility, and the most features are supported.
 
 
 --------------------------------
@@ -380,16 +390,16 @@ Reverse proxy the OPNsense WebUI
 * Add a new Domain in Caddy, for example ``opn.example.com``. Make sure the name is externally resolvable to the WAN IP of the OPNsense.
 * Add a new Handler with the following options:
 
-=================================== ====================
+=================================== ============================
 Options                             Values
-=================================== ====================
-**Domain**                          opn.example.com
-**Upstream Domain**                 127.0.0.1
-**Upstream Port**                   8443 (Webui Port)
-**TLS**                             enabled
-**TLS Trusted CA Certificates**     opnsense-selfsigned
-**TLS Server Name**                 OPNsense.localdomain
-=================================== ====================
+=================================== ============================
+**Domain:**                         ``opn.example.com``
+**Upstream Domain:**                ``127.0.0.1``
+**Upstream Port:**                  ``8443 (Webui Port)``
+**TLS:**                            ``X``
+**TLS Trusted CA Certificates:**    ``opnsense-selfsigned``
+**TLS Server Name:**                ``OPNsense.localdomain``
+=================================== ============================
 
 * Press **Save** and **Apply**
 
@@ -416,24 +426,34 @@ Go to `Services - Caddy Web Server - Reverse Proxy - Domains`
 
 * Press **+** to create a new domain
 * enable `advanced mode`
-* **Domain:** `foo.example.com`
-* **Description:** `foo.example.com`
-* Open `Trust`
-* **HTTP-01 challenge redirection:** `192.168.10.1`
+
+=================================== ====================
+Options                             Values
+=================================== ====================
+**Domain:**                         ``foo.example.com``
+**Description:**                    ``foo.example.com``
+**HTTP-01 challenge redirection:**  ``192.168.10.1``
+=================================== ====================
+
 * Press **Save**
 
 Go to `Services - Caddy Web Server - Reverse Proxy - Handler`
 
 * Press **+** to create a new Handler
-* **Domain:** `foo.example.com`
-* **Upstream Domain:** `192.168.10.1`
-* **Upstream Port:** `443`
-* Open `Trust`
-* **TLS:** `enabled`
-* **TLS Server Name**: `foo.example.com`
+
+=================================== ============================
+Options                             Values
+=================================== ============================
+**Domain:**                         ``foo.example.com``
+**Upstream Domain:**                ``192.168.10.1``
+**Upstream Port:**                  ``443``
+**TLS:**                            ``X``
+**TLS Server Name**:                ``foo.example.com``
+=================================== ============================
+
 * Press **Save** and **Apply**
 
-.. Note:: Leave all other fields to default or empty. With this configuration, Caddy will eventually choose the TLS-ALPN-01 challenge for its own foo.example.com domain, and reverse proxy the HTTP-01 challenge to 192.168.10.1, where the upstream destination can listen on port 80 and solve it's own challenge for a certificate. With TLS enabled in the Handler, an encrypted connection is automatically possible to 192.168.10.1. The automatic HTTP to HTTPS redirection is also taken care of.
+.. Note:: With this configuration, Caddy will eventually choose the TLS-ALPN-01 challenge for its own ``foo.example.com`` domain, and reverse proxy the HTTP-01 challenge to ``192.168.10.1``, where the upstream destination can listen on port 80 for ``foo.example.com`` and solve it's own challenge for a certificate. With TLS enabled in the Handler, an encrypted connection is automatically possible. The automatic HTTP to HTTPS redirection is also taken care of.
 
 
 -----------------------------------------------------
@@ -445,27 +465,41 @@ Sometimes it is necessary to alter the host header in order to reverse proxy to 
 Go to `Services - Caddy Web Server - Reverse Proxy - Domains`
 
 * Press **+** to create a new domain
-* **Domain:** `app.external.example.com`
-* **Description:** `app.external.example.com`
+
+=================================== ============================
+Options                             Values
+=================================== ============================
+**Domain:**                         ``app.external.example.com``
+=================================== ============================
+
 * Press **Save**
 
 Go to `Services - Caddy Web Server - Reverse Proxy - Headers`
 
 * Press **+** to create a new header
-* **Header:** `header_up`
-* **Header Type:** ``Host``
-* **Header Value:** ``{upstream_hostport}``
-* **Description:** `Override Host header`
+
+=================================== ============================
+Options                             Values
+=================================== ============================
+**Header:**                         ``header_up``
+**Header Type:**                    ``Host``
+**Header Value:**                   ``{upstream_hostport}``
+=================================== ============================
+
 * Press **Save**
 
 Go to `Services - Caddy Web Server - Reverse Proxy - Handler`
 
 * Press **+** to create a new Handler
-* **Domain:** `app.external.example.com`
-* **Upstream Domain:** `app.internal.example.com`
-* Open `Header`
-* **Header Manipulation:** Select `header_up Host {upstream_hostport} - Override Host header` from the dropdown list.
-* **Description:** `Reverse Proxy app.external.example.com to app.internal.example.com`
+
+=================================== ========================================
+Options                             Values
+=================================== ========================================
+**Domain:**                         ``app.external.example.com``
+**Upstream Domain:**                ``app.internal.example.com``
+**Header Manipulation:**            ``header_up Host {upstream_hostport}``
+=================================== ========================================
+
 * Press **Save** and **Apply**
 
 .. Tip:: Since (most) headers retain their original value when being proxied, it is often necessary to override the Host header with the configured upstream address when proxying to HTTPS, such that the Host header matches the TLS ServerName value. https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#https
@@ -475,64 +509,91 @@ Go to `Services - Caddy Web Server - Reverse Proxy - Handler`
 Reverse Proxy with Authelia as forward_auth provider
 ----------------------------------------------------
 
-.. Attention:: Delegating authentication to Authelia, before serving an app via a reverse proxy is an advanced usecase. Since the GUI configuration is a little more complicated, an example configuration based on https://caddyserver.com/docs/caddyfile/directives/forward_auth#authelia will be provided in this tutorial section.
+.. Attention:: Delegating authentication to Authelia, before serving an app via a reverse proxy, is an advanced usecase. Since the GUI configuration is a little more complicated, an example configuration based on https://caddyserver.com/docs/caddyfile/directives/forward_auth#authelia is provided in this tutorial section.
 
-Go to `Services - Caddy Web Server - Reverse Proxy - Domains` to create 2 new domains.
+Go to `Services - Caddy Web Server - Reverse Proxy - Domains` to create two new domains.
 
-Press **+** to create a new domain
+Press **+** to create the first new domain
 
-* **Domain:** `app1.example.com`
-* **Description:** `app1.example.com`
+=================================== ============================
+Options                             Values
+=================================== ============================
+**Domain:**                         ``app1.example.com``
+=================================== ============================
+
 * Press **Save**
 
-Press **+** to create a new domain
+Press **+** to create the second new domain
 
-* **Domain:** `auth.example.com`
-* **Description:** `auth.example.com`
+=================================== ============================
+Options                             Values
+=================================== ============================
+**Domain:**                         ``auth.example.com``
+=================================== ============================
+
 * Press **Save**
 
 Go to `Services - Caddy Web Server - Reverse Proxy - Headers`
 
-Press **+** to create new copy_headers for each of these: ``Remote-User`` ``Remote-Groups`` ``Remote-Name`` ``Remote-Email``
+Press **+** to create new entry for each of these headers: ``Remote-User`` ``Remote-Groups`` ``Remote-Name`` ``Remote-Email``
 
-* **Header:** `copy_headers`
-* **Header Type:** ``Remote-User``
-* **Description:** `Copy Remote-User`
+=================================== ============================
+Options                             Values
+=================================== ============================
+**Header:**                         ``copy_headers``
+**Header Type:**                    ``Remote-User``
+**Description:**                    ``Copy Remote-User``
+=================================== ============================
+
 * Press **Save**
-* Repeat until each of these headers has been created.
+* Repeat until each of these ``copy_header`` entries have been created.
 
-Go to `Services - Caddy Web Server - Reverse Proxy - Handler`, 3 new handlers have to be created in the following succession:
+Go to `Services - Caddy Web Server - Reverse Proxy - Handler`, three new handlers have to be created in the following succession:
 
-Press **+** to create a new Handler for the authentication gateway
+Press **+** to create **the first** new Handler for the authentication gateway
 
-* **Domain:** `auth.example.com`
-* **Handle Directive:** `reverse_proxy`
-* **Upstream Domain:** `authelia`
-* **Upstream Port:** `9091`
-* **Description:** `Authelia Gateway"
+=================================== ============================
+Options                             Values
+=================================== ============================
+**Domain:**                         ``auth.example.com``
+**Handle Directive:**               ``reverse_proxy``
+**Upstream Domain:**                ``authelia``
+**Upstream Port:**                  ``9091``
+**Description:**                    ``Authelia Gateway``
+=================================== ============================
+
 * Press **Save**
 
-Press **+** to create a new Handler for the forward_auth
+Press **+** to create **the second** new Handler with ``forward_auth``
 
 * enable `advanced mode`
-* **Domain:** `app1.example.com`
-* **Handle Directive:** `forward_auth`
-* Open `Header`
-* **Header Manipulation:** Select ``copy_headers Remote-User``, ``copy_headers Remote-Groups``, ``copy_headers Remote-Name``, ``copy_headers Remote-Email``  from the dropdown list.
-* **Upstream Domain:** `authelia`
-* **Upstream Port:** `9091`
-* **Upstream Path:** ``/api/verify?rd=https://auth.example.com``
-* **Description:** `forward_auth app1.example.com to Authelia Gateway auth.example.com`
+
+=================================== ============================================================================================================================================
+Options                             Values
+=================================== ============================================================================================================================================
+**Domain:**                         ``app1.example.com``
+**Handle Directive:**               ``forward_auth``
+**Header Manipulation:**            ``copy_headers Remote-User``, ``copy_headers Remote-Groups``, ``copy_headers Remote-Name``, ``copy_headers Remote-Email``
+**Upstream Port:**                  ``9091``
+**Upstream Path:**                  ``/api/verify?rd=https://auth.example.com``
+**Description:**                    ``forward_auth app1.example.com to auth.example.com``
+=================================== ============================================================================================================================================
+
 * Press **Save**
 
-Press **+** to create a new Handler for the reverse_prxy destination if the forward_auth has been successful
+Press **+** to create **the third** new Handler for the ``reverse_proxy`` to ``app01`` if the forward_auth has been successful
 
-* **Domain:** `app1.example.com`
-* **Handle Directive:** `reverse_proxy`
-* **Upstream Domain:** `app1`
-* **Upstream Port:** `8080`
-* **Description:** `reverse_proxy app1 after successful forward_auth`
-* Press **Save**
+=================================== ========================================================
+Options                             Values
+=================================== ========================================================
+**Domain:**                         ``app1.example.com``
+**Handle Directive:**               ``reverse_proxy``
+**Upstream Domain:**                ``app1``
+**Upstream Port:**                  ``8080``
+**Description:**                    ``reverse_proxy app1 after successful forward_auth``
+=================================== ========================================================
+
+* Press **Save** and **Apply**
 
 This will result in the following Caddyfile:
 
