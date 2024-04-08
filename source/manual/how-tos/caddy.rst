@@ -451,8 +451,8 @@ Go to `Services - Caddy Web Server - Reverse Proxy - Headers`
 
 * Press **+** to create a new header
 * **Header:** `header_up`
-* **Header Type:** `Host`
-* **Header Value** `{upstream_hostport}`
+* **Header Type:** ``Host``
+* **Header Value:** ``{upstream_hostport}``
 * **Description:** `Override Host header`
 * Press **Save**
 
@@ -463,6 +463,7 @@ Go to `Services - Caddy Web Server - Reverse Proxy - Handler`
 * **Upstream Domain:** `app.internal.example.com`
 * Open `Header`
 * **Header Manipulation:** Select `header_up Host {upstream_hostport} - Override Host header` from the dropdown list.
+* **Description:** `Reverse Proxy app.external.example.com to app.internal.example.com`
 * Press **Save** and **Apply**
 
 .. Tip:: Since (most) headers retain their original value when being proxied, it is often necessary to override the Host header with the configured upstream address when proxying to HTTPS, such that the Host header matches the TLS ServerName value. https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#https
