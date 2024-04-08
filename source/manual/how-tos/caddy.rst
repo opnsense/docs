@@ -26,7 +26,7 @@ Main features of this plugin:
 * Syslog-ng integration and HTTP Access Log
 * NTLM Transport
 * Header manipulation with header_up, header_down and copy_headers
-* forward_auth support for Authelia or Tailscale (nginx-auth)
+* forward_auth support for Authelia
 
 
 --------------
@@ -469,6 +469,100 @@ Go to `Services - Caddy Web Server - Reverse Proxy - Handler`
 * Press **Save** and **Apply**
 
 .. Tip:: Since (most) headers retain their original value when being proxied, it is often necessary to override the Host header with the configured upstream address when proxying to HTTPS, such that the Host header matches the TLS ServerName value. https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#https
+
+
+----------------------------------------------------
+Reverse Proxy with Authelia as forward_auth provider
+----------------------------------------------------
+
+.. Attention:: Delegating authentication to Authelia, before serving an app via a reverse proxy is an advanced usecase. Since the GUI configuration is a little more complicated, an example configuration based on https://caddyserver.com/docs/caddyfile/directives/forward_auth#authelia will be provided in this tutorial section.
+
+Go to `Services - Caddy Web Server - Reverse Proxy - Domains` to create 2 new domains.
+
+Press **+** to create a new domain
+
+* **Domain:** `app1.example.com`
+* **Description:** `app1.example.com`
+* Press **Save**
+
+Press **+** to create a new domain
+
+* **Domain:** `auth.example.com`
+* **Description:** `auth.example.com`
+* Press **Save**
+
+Go to `Services - Caddy Web Server - Reverse Proxy - Headers`
+
+Press **+** to create new copy_headers for each of these: ``Remote-User`` ``Remote-Groups`` ``Remote-Name`` ``Remote-Email``
+
+* **Header:** `copy_headers`
+* **Header Type:** ``Remote-User``
+* **Description:** `Copy Remote-User`
+* Press **Save**
+* Repeat until each of these headers has been created.
+
+Go to `Services - Caddy Web Server - Reverse Proxy - Handler`, 3 new handlers have to be created in the following succession:
+
+Press **+** to create a new Handler for the authentication gateway
+
+* **Domain:** `auth.example.com`
+* **Handle Directive:** `reverse_proxy`
+* **Upstream Domain:** `authelia`
+* **Upstream Port:** `9091`
+* **Description:** `Authelia Gateway"
+* Press **Save**
+
+Press **+** to create a new Handler for the forward_auth
+
+* enable `advanced mode`
+* **Domain:** `app1.example.com`
+* **Handle Directive:** `forward_auth`
+* Open `Header`
+* **Header Manipulation:** Select ``copy_headers Remote-User``, ``copy_headers Remote-Groups``, ``copy_headers Remote-Name``, ``copy_headers Remote-Email``  from the dropdown list.
+* **Upstream Domain:** `authelia`
+* **Upstream Port:** `9091`
+* **Upstream Path:** ``/api/verify?rd=https://auth.example.com``
+* **Description:** `forward_auth app1.example.com to Authelia Gateway auth.example.com`
+* Press **Save**
+
+Press **+** to create a new Handler for the reverse_prxy destination if the forward_auth has been successful
+
+* **Domain:** `app1.example.com`
+* **Handle Directive:** `reverse_proxy`
+* **Upstream Domain:** `app1`
+* **Upstream Port:** `8080`
+* **Description:** `reverse_proxy app1 after successful forward_auth`
+* Press **Save**
+
+This will result in the following Caddyfile:
+
+.. code-block::
+    
+    # Reverse Proxy Domain: "388cc0a7-efc5-44b4-81d6-5757aa85a5ad"
+        app1.example.com {
+            handle {
+                    forward_auth authelia:9091 {
+                            uri /api/verify?rd=https://auth.example.com
+                            copy_headers {
+                                    Remote-Email
+                                    Remote-Groups
+                                    Remote-Name
+                                    Remote-User
+                            }
+                    }
+            }
+            handle {
+                    reverse_proxy app1:8080 {
+                    }
+            }
+    }
+    # Reverse Proxy Domain: "3adc1fb4-67bf-45ce-bd9a-dba74aff4fda"
+    auth.example.com {
+            handle {
+                    reverse_proxy authelia:9091 {
+                    }
+            }
+    }
 
 
 -------------------------------
