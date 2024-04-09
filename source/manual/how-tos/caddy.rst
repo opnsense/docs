@@ -26,7 +26,6 @@ Main features of this plugin:
 * Syslog-ng integration and HTTP Access Log
 * NTLM Transport
 * Header manipulation
-* Forward Auth support for Authelia
 
 
 --------------
@@ -208,13 +207,12 @@ Option                              Description
 **Subdomain**                       Select a subdomain. This will put the handler on the subdomain instead of the domain. Use only with wildcard domains and subdomains.
 **Handle Type**                     `handle` or `handle path` can be chosen. If in doubt, always use `handle`, the most common option. `handle path` is used to strip the path from the URI.
 **Handle Path**                     Leave this empty to create a catch all location or enter a location like  `/foo/*` or `/foo/bar*`.
-**Handle Directive**                In most cases, leaving this as "reverse_proxy" will be the best choice. "forward_auth" is an advanced scenario, read the documentation here: https://caddyserver.com/docs/caddyfile/directives/forward_auth
 **>Header**                         Header options
-**Header Manipulation**             Select one or multiple header manipulations. These will be set to this handler. When using "forward_auth", a combination of "header_up" and "copy_headers" is also supported.
+**Header Manipulation**             Select one or multiple header manipulations. These will be set to this handler.
 **>Upstream**                       Upstream options
 **Upstream Domain**                 Should be an internal domain name or an IP Address of the upstream destination that should receive the reverse proxied traffic.
 **Upstream Port**                   Should be the port the upstream destination listens on. This can be left empty to use Caddy default port 80.
-**Upstream Path**                   When using "reverse_proxy" (default), in case the backend application resides in a sub-path of the web root and its path shouldn't be visible in the frontend URL, this setting can be used to prepend an initial path starting with '/' to every backend request. Java applications running in a servlet container like Tomcat are known to behave this way, so set it to e.g. '/guacamole' to access Apache Guacamole at the frontend root URL without needing a redirect. When using "forward_auth" and "copy_headers" to send pre-check requests to an authentication provider, e.g. Authelia, enter an uri like: ``/api/verify?rd=https://auth.example.com``.
+**Upstream Path**                   When using "reverse_proxy" (default), in case the backend application resides in a sub-path of the web root and its path shouldn't be visible in the frontend URL, this setting can be used to prepend an initial path starting with '/' to every backend request. Java applications running in a servlet container like Tomcat are known to behave this way, so set it to e.g. '/guacamole' to access Apache Guacamole at the frontend root URL without needing a redirect.
 **>Trust**                          Certificate options
 **TLS**                             If the upstream destination only accepts HTTPS, enable this option. If the upstream destination has a globally trusted certificate, this TLS option is the only needed one.
 **NTLM**                            If the upstream destination needs NTLM authentication, enable this option together with TLS. For example: Exchange Server.
@@ -264,10 +262,10 @@ Reverse Proxy - Headers
 =========================== ================================
 Option                      Description
 =========================== ================================
-**Header**                  ``header_up`` sets, adds (with the + prefix), deletes (with the - prefix), or performs a replacement (by using two arguments, a search and replacement) in a request header going upstream to the backend. ``header_down`` sets, adds (with the + prefix), deletes (with the - prefix), or performs a replacement (by using two arguments, a search and replacement) in a response header coming downstream from the backend. ``copy_headers`` is a list of HTTP header fields to copy from the response to the original request, when the request has a success status code. For more information: https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#headers.
-**Header Type**             Enter a header, for example ``Host``. Use the ``+`` or ``-`` prefix to add or remove this header, for example ``-Host`` or ``+Host``. A suffix match like ``-Host-*`` is also supported. To replace a header, use ``Some-Header`` without ``+`` or ``-``. When using ``copy_headers``, input one header to copy here. For additional entries, create a new header entry.
-**Header Value**            Enter a value for the above header. One of the most common options is ``{upstream_hostport}``. It's also possible to use a regular expression to search for a specific value in a header. For example: ``^prefix-([A-Za-z0-9]*)$`` which uses the regular expression language RE2 included in Go. When using ``copy_headers``, leave this field empty.
-**Header Replace**          If a regular expression is used to search for a `Header Value`, here the replacement string can be set. For example: ``replaced-$1-suffix`` which expands the replacement string, allowing the use of captured values, ``$1`` being the first capture group. When using ``copy_headers``, optionally input the replacement for the copied header here.
+**Header**                  ``header_up`` sets, adds (with the + prefix), deletes (with the - prefix), or performs a replacement (by using two arguments, a search and replacement) in a request header going upstream to the backend. ``header_down`` sets, adds (with the + prefix), deletes (with the - prefix), or performs a replacement (by using two arguments, a search and replacement) in a response header coming downstream from the backend. For more information: https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#headers.
+**Header Type**             Enter a header, for example ``Host``. Use the ``+`` or ``-`` prefix to add or remove this header, for example ``-Host`` or ``+Host``. A suffix match like ``-Host-*`` is also supported. To replace a header, use ``Some-Header`` without ``+`` or ``-``.
+**Header Value**            Enter a value for the above header. One of the most common options is ``{upstream_hostport}``. It's also possible to use a regular expression to search for a specific value in a header. For example: ``^prefix-([A-Za-z0-9]*)$`` which uses the regular expression language RE2 included in Go.
+**Header Replace**          If a regular expression is used to search for a `Header Value`, here the replacement string can be set. For example: ``replaced-$1-suffix`` which expands the replacement string, allowing the use of captured values, ``$1`` being the first capture group.
 =========================== ================================
 
 .. Attention:: Setting headers to handlers should be considered an advanced option for experts. Please don't set them without any reason. Caddy uses safe defaults. https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#defaults
@@ -503,127 +501,6 @@ Options                             Values
 * Press **Save** and **Apply**
 
 .. Tip:: Since (most) headers retain their original value when being proxied, it is often necessary to override the Host header with the configured upstream address when proxying to HTTPS, such that the Host header matches the TLS ServerName value. https://caddyserver.com/docs/caddyfile/directives/reverse_proxy#https
-
-
----------------------------------
-Authelia as forward_auth provider
----------------------------------
-
-.. Attention:: Delegating authentication to Authelia, before serving an app via a reverse proxy, is an advanced usecase. Since the GUI configuration is a little more complicated, an example configuration based on https://caddyserver.com/docs/caddyfile/directives/forward_auth#authelia is provided in this tutorial section.
-
-Go to `Services - Caddy Web Server - Reverse Proxy - Domains` to create two new domains.
-
-Press **+** to create the first new domain
-
-=================================== ============================
-Options                             Values
-=================================== ============================
-**Domain:**                         ``app1.example.com``
-=================================== ============================
-
-* Press **Save**
-
-Press **+** to create the second new domain
-
-=================================== ============================
-Options                             Values
-=================================== ============================
-**Domain:**                         ``auth.example.com``
-=================================== ============================
-
-* Press **Save**
-
-Go to `Services - Caddy Web Server - Reverse Proxy - Headers`
-
-Press **+** to create new entry for each of these headers: ``Remote-User`` ``Remote-Groups`` ``Remote-Name`` ``Remote-Email``
-
-=================================== ============================
-Options                             Values
-=================================== ============================
-**Header:**                         ``copy_headers``
-**Header Type:**                    ``Remote-User``
-**Description:**                    ``Copy Remote-User``
-=================================== ============================
-
-* Press **Save**
-* Repeat until each of these ``copy_header`` entries have been created.
-
-Go to `Services - Caddy Web Server - Reverse Proxy - Handler`, three new handlers have to be created in the following succession:
-
-Press **+** to create **the first** new Handler for the authentication gateway
-
-=================================== ============================
-Options                             Values
-=================================== ============================
-**Domain:**                         ``auth.example.com``
-**Handle Directive:**               ``reverse_proxy``
-**Upstream Domain:**                ``authelia``
-**Upstream Port:**                  ``9091``
-**Description:**                    ``Authelia Gateway``
-=================================== ============================
-
-* Press **Save**
-
-Press **+** to create **the second** new Handler with ``forward_auth``
-
-* enable `advanced mode`
-
-=================================== ============================================================================================================================================
-Options                             Values
-=================================== ============================================================================================================================================
-**Domain:**                         ``app1.example.com``
-**Handle Directive:**               ``forward_auth``
-**Header Manipulation:**            ``copy_headers Remote-User``, ``copy_headers Remote-Groups``, ``copy_headers Remote-Name``, ``copy_headers Remote-Email``
-**Upstream Port:**                  ``9091``
-**Upstream Path:**                  ``/api/verify?rd=https://auth.example.com``
-**Description:**                    ``forward_auth app1.example.com to auth.example.com``
-=================================== ============================================================================================================================================
-
-* Press **Save**
-
-Press **+** to create **the third** new Handler for the ``reverse_proxy`` to ``app01`` if the forward_auth has been successful
-
-=================================== ========================================================
-Options                             Values
-=================================== ========================================================
-**Domain:**                         ``app1.example.com``
-**Handle Directive:**               ``reverse_proxy``
-**Upstream Domain:**                ``app1``
-**Upstream Port:**                  ``8080``
-**Description:**                    ``reverse_proxy app1 after successful forward_auth``
-=================================== ========================================================
-
-* Press **Save** and **Apply**
-
-This will result in the following Caddyfile:
-
-.. code-block::
-    
-    # Reverse Proxy Domain: "388cc0a7-efc5-44b4-81d6-5757aa85a5ad"
-        app1.example.com {
-            handle {
-                    forward_auth authelia:9091 {
-                            uri /api/verify?rd=https://auth.example.com
-                            copy_headers {
-                                    Remote-Email
-                                    Remote-Groups
-                                    Remote-Name
-                                    Remote-User
-                            }
-                    }
-            }
-            handle {
-                    reverse_proxy app1:8080 {
-                    }
-            }
-    }
-    # Reverse Proxy Domain: "3adc1fb4-67bf-45ce-bd9a-dba74aff4fda"
-    auth.example.com {
-            handle {
-                    reverse_proxy authelia:9091 {
-                    }
-            }
-    }
 
 
 -------------------------------
