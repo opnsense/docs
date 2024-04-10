@@ -451,7 +451,7 @@ Options                             Values
 
 * Press **Save** and **Apply**
 
-.. Note:: With this configuration, Caddy will eventually choose the TLS-ALPN-01 challenge for its own ``foo.example.com`` domain, and reverse proxy the HTTP-01 challenge to ``192.168.10.1``, where the upstream destination can listen on port 80 for ``foo.example.com`` and solve it's own challenge for a certificate. With TLS enabled in the Handler, an encrypted connection is automatically possible. The automatic HTTP to HTTPS redirection is also taken care of.
+.. Note:: With this configuration, Caddy will eventually choose the TLS-ALPN-01 challenge for its own ``foo.example.com`` domain, and reverse proxy the HTTP-01 challenge to ``192.168.10.1``, where the upstream destination can listen on port 80 for ``foo.example.com`` and solve its own challenge for a certificate. With TLS enabled in the Handler, an encrypted connection is automatically possible. The automatic HTTP to HTTPS redirection is also taken care of.
 
 
 -----------------------------------------------------
