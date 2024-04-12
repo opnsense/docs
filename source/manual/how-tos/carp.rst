@@ -290,7 +290,7 @@ on the concept.
    be sure to also add it to your second machine when setting up CARP.
 
 .. Attention::
-    Adding an IP alias to a running CARP system requires some consideration. Since adding a new IP Alias
+    Adding an IP alias with a VHID attached to a running CARP system requires some consideration. Since adding a new IP Alias
     to an existing VHID on a single machine will invalidate the VHID hash for both sides, both machines will
     react by switching to the master state, triggering a split-brain scenario. To avoid this, CARP must
     explicitly be disabled on one of the machines before adding the new IP Alias.
@@ -312,15 +312,16 @@ these steps:
 With these steps you will not lose too many packets and your existing connection will be transferred as well.
 Also note that entering persistent mode survives a reboot.
 
--------------------------------------------------
-Example: Adding a virtual IP to a CARP HA Cluster
--------------------------------------------------
+----------------------------------------------------
+Example: Adding a virtual IP to an active VHID group
+----------------------------------------------------
 
-- Disable CARP (not maintenance mode) on either the primary or secondary unit. When disabling it on the master,
-  the backup should take over.
-- Add the virtual IP alias to the machine where CARP is disabled.
-- While keeping CARP disabled on this machine, add the same IP alias to the other machine. This may interrupt
+- On either the primary or secondary unit, go to :menuselection:`Interfaces --> Virtual IPs --> Status`,
+  click on **Disable CARP** (not maintenance mode). When disabling it on the master, the backup should take over.
+- Add the virtual IP alias to the machine where CARP is disabled and apply the settings.
+- While keeping CARP disabled on this machine, add the same IP alias to the other machine and apply. This may interrupt
   traffic briefly at worst, but this is acceptable in a failover scenario.
+- Double-check that the VIP configuration is identical on both machines.
 - Re-enable CARP on the previous machine. Normal operation should resume.
 
 .. _configuring-carp-with-ipv6:
