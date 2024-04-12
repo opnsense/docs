@@ -32,7 +32,7 @@ it will respond to ICMP ping requests and will generate ARP traffic
 (OSI layer 2).
 
 Additionally you can add an alias into an existing CARP group
-(by setting its VHID).
+(by setting its VHID). See the CARP VIP type below for more information.
 
 Usually the subnet mask should match the interfaces or be defined as a single address (/32 or /128).
 
@@ -43,6 +43,12 @@ CARP
 
 Specifies an address for use in a high availability cluster, acts like a
 regular address when the node is in MASTER state.
+
+A VHID Group number must be specified. The "Select an unassigned VHID" button allows you to
+automatically select an available VHID number. The usual approach to selecting a VHID is to use a different
+number per interface, but this is not a strict requirement, since the underlying protocol only
+requires a VHID to be unique within the broadcast domain of the specified interface. However, to ease
+management and debugging it is recommended to keep a separate VHID per interface.
 
 Internally a custom mac address is generated needed for the protocol.
 More information about CARP can be found in our :doc:`high availability </manual/hacarp>` section.
@@ -55,6 +61,32 @@ More information about CARP can be found in our :doc:`high availability </manual
     CARP uses IP protocol number 112 (0x70), to detect priority it will send out advertisements using
     :code:`224.0.0.18` or :code:`FF02::12`.
 
+**Combining CARP virtual IP types with IP aliases**
+
+In cases where there is a need for multiple IP aliases on a single interface which should be shared by a CARP cluster,
+you can assign a single CARP VIP with a specific VHID in combination with regular IP alias types,
+setting the VHID field to the same number as the initial CARP VIP VHID:
+
+- The entire set of configured virtual IP addresses are now considered a single host (VHID).
+- Only this VHID will send out advertisement packets.
+- The set of IP addresses for this VHID are hashed and inserted in the advertisement packets.
+  This hash is compared to the same VHID hash on the peer on reception of CARP advertisements. If they do not match,
+  the peer will assume the master role as the configuration is out of sync.
+
+.. Note::
+    See `Adding multiple CARP IPs <how-tos/carp.html#adding-multiple-carp-ips>`__ for more information and the
+    proper procedure to add IP aliases to a running CARP cluster.
+
+.. Warning::
+    While technically it is possible to assign multiple CARP VIPs on the same interface, but with separate VHIDs,
+    this has no benefit and is not recommended. The CARP traffic and system procedures for failover will increase
+    linearly in noise per virtual IP. Since the primary purpose of CARP is to react to link state changes, a single
+    VHID acting for a single interface is the most efficient way to use the protocol.
+
+.. Tip::
+    If you're debugging a CARP setup, consider raising the CARP system logging verbosity. This can be done by
+    adding the :code:`net.inet.carp.log` with value :code:`2` tunable in System -> Settings -> Tunables.
+    The logs can be seen in System -> Log Files -> General (kernel process) or by using :code:`dmesg`.
 
 ..................
 Proxy ARP

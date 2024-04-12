@@ -282,11 +282,19 @@ want to expose them for NAT or different services running on your
 Firewall, you will also have to add them to your HA setup. 
 Since adding a VHID for every IP would make the CARP traffic very noisy,
 you can also add a new IP Alias and choose the correct VHID where the
-first CARP IP is configured. 
+first CARP IP is configured. See `CARP Virtual IP type <../firewall_vip.html#carp>`__ for more information
+on the concept.
 
 .. Note::
-   IP Alias is not synchronized to slave, be sure to also add it to your
-   second machine.
+   IP Aliases are not synchronized to the backup firewall during a configuration sync,
+   be sure to also add it to your second machine when setting up CARP.
+
+.. Attention::
+    Adding an IP alias to a running CARP system requires some consideration. Since adding a new IP Alias
+    to an existing VHID on a single machine will invalidate the VHID hash for both sides, both machines will
+    react by switching to the master state, triggering a split-brain scenario. To avoid this, CARP must
+    explicitly be disabled on one of the machines before adding the new IP Alias.
+    For an exact procedure, refer to `the example <carp.html#example-adding-a-virtual-ip-to-a-carp-ha-cluster>`__
 
 -----------------------------------
 Example: Updating a CARP HA Cluster
@@ -303,6 +311,17 @@ these steps:
 
 With these steps you will not lose too many packets and your existing connection will be transferred as well.
 Also note that entering persistent mode survives a reboot.
+
+-------------------------------------------------
+Example: Adding a virtual IP to a CARP HA Cluster
+-------------------------------------------------
+
+- Disable CARP (not maintenance mode) on either the primary or secondary unit. When disabling it on the master,
+  the backup should take over.
+- Add the virtual IP alias to the machine where CARP is disabled.
+- While keeping CARP disabled on this machine, add the same IP alias to the other machine. This may interrupt
+  traffic briefly at worst, but this is acceptable in a failover scenario.
+- Re-enable CARP on the previous machine. Normal operation should resume.
 
 .. _configuring-carp-with-ipv6:
 
