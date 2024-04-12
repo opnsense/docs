@@ -26,6 +26,7 @@ Main features of this plugin:
 * Syslog-ng integration and HTTP Access Log
 * NTLM Transport
 * Header manipulation
+* Simple load balancing with passive health check
 
 
 --------------
@@ -88,7 +89,7 @@ FAQ
 * When using Caddy with IPv6, it's best to have a GUA (Global Unicast Address) on the WAN interface, since otherwise the TLS-ALPN-01 challenge might fail.
 * Let's Encrypt or ZeroSSL can't be explicitely chosen. Caddy automatically issues one of these options, determined by speed and availability. These certificates can be found in ``/var/db/caddy/data/caddy/certificates``.
 
-.. Attention:: There is no TCP/UDP stream, load balancing and WAF (Web Application Firewall) support in this plugin. Caddy itself could support these features, but this plugin is focused on ease of configuration. For a business ready Reverse Proxy with WAF functionality, use OPNWAF. For TCP/UDP streaming, use either nginx or ha-proxy.
+.. Attention:: There is no TCP/UDP stream and WAF (Web Application Firewall) support in this plugin. Caddy itself could support these features, but this plugin is focused on ease of configuration. For a business ready Reverse Proxy with WAF functionality, use OPNWAF. For TCP/UDP streaming, use either nginx or ha-proxy.
 
 .. Tip:: As an alternative to a WAF, it's simple to integrate Caddy with CrowdSec. Check the tutorial section for guidance.
 
@@ -210,9 +211,10 @@ Option                              Description
 **>Header**                         Header options
 **Header Manipulation**             Select one or multiple header manipulations. These will be set to this handler.
 **>Upstream**                       Upstream options
-**Upstream Domain**                 Should be an internal domain name or an IP Address of the upstream destination that should receive the reverse proxied traffic.
+**Upstream Domain**                 Should be an internal domain name or an IP Address of the upstream destination that should receive the reverse proxied traffic. If multiple upstream destinations are chosen, they will be load balanced with the default random policy. If unhealthy upstreams should be removed, set the Upstream Fail Duration for a passive health check.
 **Upstream Port**                   Should be the port the upstream destination listens on. This can be left empty to use Caddy default port 80.
 **Upstream Path**                   When using "reverse_proxy" (default), in case the backend application resides in a sub-path of the web root and its path shouldn't be visible in the frontend URL, this setting can be used to prepend an initial path starting with '/' to every backend request. Java applications running in a servlet container like Tomcat are known to behave this way, so set it to e.g. '/guacamole' to access Apache Guacamole at the frontend root URL without needing a redirect.
+**Upstream Fail Duration**          Enables a passive health check when multiple upstream destinations have been defined for load balancing. `fail_duration` is a duration value that defines how long to remember a failed request. A duration of 1 or more seconds enables passive health checking; the default is empty (off). A reasonable starting point might be 30s to balance error rates with responsiveness when bringing an unhealthy upstream back online.
 **>Trust**                          Certificate options
 **TLS**                             If the upstream destination only accepts HTTPS, enable this option. If the upstream destination has a globally trusted certificate, this TLS option is the only needed one.
 **NTLM**                            If the upstream destination needs NTLM authentication, enable this option together with TLS. For example: Exchange Server.
