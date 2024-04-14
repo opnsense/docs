@@ -22,8 +22,8 @@ Step 1 - Configure the Wireguard Instance
     ===================== ===============================================================================================
      **Enabled**           *Checked*
      **Name**              *Call it whatever you want (eg* :code:`HomeWireGuard` *)*
-     **Public Key**        *This will initially be blank; it will be populated once the configuration is saved*
-     **Private Key**       *This will initially be blank; it will be populated once the configuration is saved*
+     **Public Key**        *This will initially be blank; Press the cogwheel to auto-generate new keys.*
+     **Private Key**       *This will initially be blank; Press the cogwheel to auto-generate new keys.*
      **Listen Port**       *51820 or a higher numbered unique port*
      **MTU**               *1420 (default) or 1412 if you use PPPoE; it's 80 bytes less than your WAN MTU*
      **Tunnel Address**    *For example, 10.10.10.1/24. See note below*
