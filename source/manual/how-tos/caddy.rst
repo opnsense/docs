@@ -135,7 +135,7 @@ General Settings - Dynamic DNS
 =========================== ================================
 Option                      Description
 =========================== ================================
-**DynDns IP Version**       Leave on `None` to set IPv4 A-Records and IPv6 AAAA-Records. Select `Ipv4 only` for setting A-Records. Select `IPv6 only` for setting AAAA-Records.
+**DynDns IP Version**       Select `IPv4+IPv6` to set IPv4 A-Records and IPv6 AAAA-Records, `Ipv4 only` for setting A-Records or `IPv6 only` for setting AAAA-Records.
 **DynDns Check Interval**   Interval to poll for changes of the IP address. The default is 5 minutes. Can be a number between 1 to 1440 minutes.
 **DynDns TTL**              Set the TTL (time to live) for DNS Records. The default is 1 hour. Can be a number between 1 to 24 hours.
 **DynDns Check Http**       Optionally, enter an URL to test the current IP address of the firewall via HTTP procotol. Generally, this is not needed. Caddy uses default providers to test the current IP addresses. For using a custom one, enter the `https://` link to an IP address testing website.
@@ -168,7 +168,7 @@ Option                              Description
 **Port**                            Should be the port the OPNsense will listen on. Don't forget to create Firewall rules that allow traffic to this port on ``WAN`` and ``LAN`` to destination ``This Firewall``. Leave this empty if the default ports of Caddy (`80` and `443`) should be used with automatic redirection from HTTP to HTTPS.
 **Description**                     The description is mandatory. Create descriptions for each domain. Since there could be multiples of the same domain with different ports, do it like this: ``foo.example.com`` and ``foo.example.com.8443``.
 **>DNS**                            DNS options
-**Dynamic DNS**                     Enable Dynamic DNS. As the option above, the DNS Provider is a requirement. The DNS Records of this domain will be automatically updated with the chosen DNS Provider.
+**Dynamic DNS**                     Enable Dynamic DNS. This option needs the `General Settings - DNS Provider` configured. The DNS Records of this domain will be automatically updated with the chosen DNS Provider.
 **>Trust**                          Certificate options
 **DNS-01 challenge**                Enable this for using DNS-01 instead of HTTP-01 and TLS-ALPN-01 challenge. This can be set per entry, so both types of challenges can be used at the same time for different entries. This option needs the `General Settings - DNS Provider` configured.
 **HTTP-01 challenge redirection**   Enter a domain name or IP address. The HTTP-01 challenge will be redirected to that destination. This enables a server behind Caddy to serve ``/.well-known/acme-challenge/``. Caddy will issue a certificate for the same domain using the TLS-ALPN-01 challenge or DNS-01 challenge instead. Please note that his is a complex scenario, Caddy can *only* continue to get automatic certificates if it can listen on Port 443 - so either specify 443 directly or leave the Port empty. Having the domain listen on any other port than 443 will mean the TLS-ALPN-01 challenge will fail too, and there won't be any automatic certificates. If the requirement is a different port than 443, the DNS-01 challenge will remain the only option.
