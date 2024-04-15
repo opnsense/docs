@@ -146,6 +146,7 @@ TLS static key          choose the prepared static key
 Authentication          Local Database  :sup:`2`
 Strict User/CN Matching [V]  :sup:`3`
 Local Network           192.168.8.0/24
+Redirect gateway        Leave empty :sup:`4`
 ======================= =======================================
 
 .. admonition:: Note  :sup:`1`
@@ -163,6 +164,10 @@ Local Network           192.168.8.0/24
    Selecting the "Strict User/CN Matching" option warrants only matching user/certificate can login, when sharing a single
    vertificate between clients this option needs to be deselected.
 
+.. admonition:: Note  :sup:`4`
+
+   If you want all outgoing IP traffic to be redirected over the VPN, you can set the option to :code:`default`.
+   For this to work, a manual NAT outbound rule must be created.
 
 Next go to :menuselection:`Firewall --> Rules --> WAN` and add a rule to allow traffic on port :code:`1194/UDP` from the other
 host. At minimum we should add a rule similar to this one:
