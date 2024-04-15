@@ -114,6 +114,8 @@ In order to setup a tunnel on both ends, we need to configure certificates to wa
       it is also possible to clients to share a certificate. When adding a certificate from the user manager the CN is automatically
       set to its name. In this example we will only authenticate using the certificate, no additional user or password will be required.
 
+.. Note::
+   In order for the redirect-gateway option to work, a manual NAT outbound rule must be created.
 
 .....................
 Static keys
