@@ -134,6 +134,13 @@ Now under **Gateway** change selection to *WANGWGROUP*.
     be routed in this (wrong) direction. That is why Step 5 is needed for our DNS
     traffic going to and coming from our DNS forwarder on the firewall itself.
 
+.. Tip::
+    Policy-based routing skips normal system routing. Since the default "allow LAN 
+    to any" rule has "any" set as destination, any traffic headed towards other internal
+    networks (as is often the case with VPN tunnels) that trigger this rule will be
+    routed through the gateway group as well. To avoid this, you can create an explicit
+    rule before this default rule to allow traffic to those networks without a gateway set.
+
 Step 5 - Add allow rule for DNS traffic
 ---------------------------------------
 Add a rule just above the default LAN allow rule to make sure traffic to and from
