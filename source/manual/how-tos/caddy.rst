@@ -364,6 +364,8 @@ Options                        Values
 Creating a wildcard reverse proxy
 ---------------------------------
 
+.. Attention:: The certificate of a wildcard domain will only contain ``*.example.com``, not a SAN for ``example.com``. Create an additional domain for ``example.com`` and create a handler for the upstream destination.
+
 Go to `Services - Caddy Web Server - General Settings - DNS Provider`
 
 * Select one of the supported DNS Providers from the list
