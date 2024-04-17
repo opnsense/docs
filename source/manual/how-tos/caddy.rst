@@ -547,6 +547,37 @@ Next, connect to the OPNsense via SSH or console, go into the shell with Option 
 * Go into the OPNsense WebUI and restart CrowdSec.
 
 
+----------------------------------
+Caddy and High Availability Setups
+----------------------------------
+
+There are a few possible configurations to run Caddy successfully in a High Availability Setup with two OPNsense Firewalls.
+
+.. Tip:: The main issue to think about is the certificate handling.
+
+There are three methods that support XMLRPC sync:
+
+* Using custom certificates from the OPNsense Trust store for all domains.
+* Using the DNS-01 challenge for all domains.
+* A mix of custom certificates and DNS-01 challenge for all domains.
+
+.. Note:: Using one of these three methods is recommended if there are a lot of changes to the Caddy configuration, since they reduce the administrative overhead. Only these methods are confirmed to work in a HA production setup.
+
+Additionally, there is one advanced method that has to be configured manually on both firewalls. The XMLRPC sync has to be disabled for the Caddy section to use it.
+
+.. Attention:: This method shouldn't be used in production. It's an interesting workaround for home or lab setups that is explained for completion. Both port ``80`` and ``443`` have to be allowed on ``WAN`` to reach Caddy.
+
+* Configure Caddy on the master OPNsense firewall until the whole initial configuration is completed.
+* Sync this configuration once with XMLRPC sync.
+* Disable XMLRPC sync for the Caddy section. **From now on, both firewalls have to be updated manually for every configuration change in Caddy.**
+* On the master OPNsense, select each domain, and set the IP Address in `HTTP-01 challenge redirection` to the same value as in `Synchronize Config to IP` found in `System - High Availability - Settings`.
+* Create a new Firewall rule that allows Port ``80`` to ``This Firewall`` on the interface that has the prior selected IP Address.
+* Once this is done, do another XMLRPC sync and then apply the new configuration.
+* Check Caddy on the Backup OPNsense. There shouldn't be any IP Addresses in `HTTP-01 challenge redirection`. If there are, delete them and check that the XMLRPC sync for the Caddy section is really disabled. Only Caddy on the master OPNsense should ever have an IP Address in `HTTP-01 challenge redirection`.
+
+.. Note:: Now both Caddy instances will be able to issue ACME certificates at the same time. The master OPNsense uses the TLS-ALPN-01 challenge for itself and reverse proxies the HTTP-01 challenge to the backup OPNsense.
+
+
 --------------------------------
 Using custom configuration files
 --------------------------------
