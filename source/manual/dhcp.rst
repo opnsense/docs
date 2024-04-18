@@ -34,13 +34,11 @@ DHCPv4 settings can be found at :menuselection:`Services --> ISC DHCPv4`. DHCPv6
 The DHCPv4 submenu further consists of:
 
 * An entry per interface of general settings, like a toggle to enable/disable DHCPv4 for this interface, DHCP range, DNS servers…
-* **Relay**: DHCP requests can be “forwarded” to a DHCP server on another interface. This is called relaying.
 * **Leases**: Shows all IP addresses that are handed out to clients.
 * **Log File**: Shows the log file of the DHCPv4 server.
 
 The DHCPv6 submenu further consists of:
 
-* **Relay**: DHCP requests can be “forwarded” to a DHCP server on another interface. This is called relaying.
 * **Leases**: Shows all IP addresses that are handed out to clients.
 
 ...............................
@@ -94,33 +92,6 @@ all will be included in alphabetical order.
     It is the sole responsibility of the administrator which places a file in the extension directory to ensure that the configuration is
     valid.
 
-.. _dhcp-relaying:
-
-...............................
-DHCP relaying
-...............................
-
-DHCP relaying is the forwarding of DHCP requests received on one interface to the DHCP server on another. DHCP
-relaying is available for both DHCPv4 and DHCPv6. The DHCPv4 settings can be found at
-:menuselection:`Services --> ISC DHCPv4 --> Relay`. The DHCPv6 settings can be found at
-:menuselection:`Services --> ISC DHCPv6 --> Relay`.
-
-When setting up DHCP relaying (both DHCPv4 and DHCPv6 relaying have the same settings), the following options are
-available:
-
-+-----------------------+----------------------------------------------------------------------------------------------+
-| Setting               | Explanation                                                                                  |
-+=======================+==============================================================================================+
-| Enable                |                                                                                              |
-+-----------------------+----------------------------------------------------------------------------------------------+
-| Interface(s)          | Which interfaces to apply relaying to. Only interfaces with an IP can be selected.           |
-+-----------------------+----------------------------------------------------------------------------------------------+
-| Append circuit ID and | If this is checked, the DHCP relay will append the circuit ID (interface number) and the     |
-| agent ID to requests  | agent ID to the DHCP request.                                                                |
-+-----------------------+----------------------------------------------------------------------------------------------+
-| Destination servers   | A comma separated list of IPs to which the requests should be forwarded.                     |
-+-----------------------+----------------------------------------------------------------------------------------------+
-
 ...............................
 Diagnostics
 ...............................
@@ -146,13 +117,48 @@ showing "All Interfaces".
   if this MAC address maps to a known vendor. This is because a MAC address cannot reliably be fetched from a DUID.
 - The DHCPv6 leases page also shows the delegated prefixes in a separate tab.
 
+-----------------
+DHCRelay
+-----------------
+
+DHCP relaying is the forwarding of DHCP requests received on one interface to the DHCP server of another. DHCP
+relaying is available for both DHCPv4 and DHCPv6. The settings can be found at :menuselection:`Services --> DHCRelay`.
+
+...............................
+Destinations
+...............................
+
++---------------+-----------------------------------------------------------------------------------------------------------+
+| Setting       | Explanation                                                                                               |
++===============+===========================================================================================================+
+| Name          | A descriptive mane of the reusable relay destination                                                      |
++---------------+-----------------------------------------------------------------------------------------------------------+
+| Server        | A comma separated list of IPs to which the requests should be forwarded. Can be IPv4 or IPv6 exclusively. |
++---------------+-----------------------------------------------------------------------------------------------------------+
+
+...............................
+Relays
+...............................
+
++-----------------------+---------------------------------------------------------------------------------------------------+
+| Setting               | Explanation                                                                                       |
++==========+================================================================================================================+
+| Enable                |                                                                                                   |
++-----------------------+---------------------------------------------------------------------------------------------------+
+| Interface             | Which interface to apply relaying to. Only interfaces with an Ethernet address can be selected.   |
+|                       | Only one interface per destination per address family is allowed.                                 |
++-----------------------+---------------------------------------------------------------------------------------------------+
+| Destination           | The target destination of the relay from the pool of previously set up destinations.              |
++-----------------------+---------------------------------------------------------------------------------------------------+
+| Agent Information     | If this is checked, the DHCP relay will append the circuit ID (interface number) and the          |
+|                       | agent ID to the DHCP request.                                                                     |
++-----------------------+---------------------------------------------------------------------------------------------------+
 
 -----------------
 KEA DHCP
 -----------------
 
 Kea is the next generation of DHCP software, developed by Internet Systems Consortium (ISC).
-
 
 ...............................
 Control Agent
