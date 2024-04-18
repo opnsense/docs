@@ -6,7 +6,7 @@ Installation and setup
     :width: 600px
     :align: center
 
-When your device wasn't shipped with OPNsense® `pre-installed <https://www.deciso.com/product-catalog/>`__,
+When your device wasn't shipped with OPNsense® `pre-installed <https://shop.opnsense.com>`__,
 you can find how to install it yourself and which hardware platforms are supported in this chapter.
 
 
