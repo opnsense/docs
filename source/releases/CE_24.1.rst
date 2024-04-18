@@ -28,6 +28,57 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.1.6 (April 18, 2024)
+--------------------------------------------------------------------------
+
+
+Today we are happy to announce another milestone regarding ISC DHCP removal:
+the arrival of a DHCRelay replacement based on code forked and maintained
+by OpenBSD.  While here the whole DHCP relay section was moved to MVC/API
+for the usual reasons and now offers a combined GUI for both DHCPv4 and
+DHCPv6 relay.  As a special treat this also includes being able to run
+ISC DHCP as well as any desired relay at the same time.
+
+The feedback for the WireGuard peer generator was quite extensive so a few
+more tweaks and fixes have been done in that area.  Thank you for all the
+responses regarding that feature addition!
+
+Otherwise this update simply moves ahead with security-related third
+party updates in OpenSSL and PHP.
+
+Last but not least we are releasing the OPNProxy (formerly business) plugin
+to the community version for fine-grained access control using Squid with
+Redis as a database backend.  For more details please consult the available
+documentation linked below.
+
+Here are the full patch notes:
+
+* firewall: show automation rules in their own section
+* firewall: keep permissions to standard for filter.lock file
+* firewall: replace searchNoCategoryItemAction() with new searchBase() extension
+* firewall: add gateway to the states diagnostics output
+* firewall: fix visible rows quantity off-by-one (contributed by NYOB)
+* intrusion detection: query all fields for searchBase() actions
+* dhcrelay: functional MVC/API replacement using the OpenBSD dhcrelay(6) fork
+* isc-dhcp: fix log file location
+* wireguard: add DNS field to peer generator and store previous used values in instance
+* wireguard: add address field to peer generator which auto-calculates the next available address in the pool
+* wireguard: add restart action to available cron tasks (contributed by Michael Muenz)
+* wireguard: unlink instance on peer delete
+* mvc: extend searchBase() to return all fields when no list is provided
+* mvc: fix config locking issue when already owning the lock
+* plugins: add globbing for plugin run tasks as well
+* plugins: os-OPNProxy 1.0.5 business plugin released to community version `[1] <https://docs.opnsense.org/vendor/deciso/opnproxy.html>`__ 
+* plugins: os-acme-client 4.2 `[2] <https://github.com/opnsense/plugins/blob/stable/24.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-caddy 1.5.4 `[3] <https://github.com/opnsense/plugins/blob/stable/24.1/www/caddy/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.10 `[4] <https://github.com/opnsense/plugins/blob/stable/24.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* ports: dhcrelay 0.4 `[5] <https://github.com/opnsense/dhcrelay>`__ 
+* ports: openssl fix for CVE-2024-2511 `[6] <https://github.com/freebsd/freebsd-ports/commit/3d9fc064b7>`__ 
+* ports: php 8.2.18 `[7] <https://www.php.net/ChangeLog-8.php#8.2.18>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.1.5 (April 04, 2024)
 --------------------------------------------------------------------------
 
@@ -37,9 +88,9 @@ since 24.1.2 was released.  The primary focus for the time being is adding
 fixes and MVC improvements for upcoming feature backports into the next
 24.1.x versions.
 
-The update presents itself as a hotfix 24.1.5_1 but that is only due to
-catching an issue during the last QA stage with an update of the gettext
-library.
+The update presents itself as a hotfix release 24.1.5_1 but that is only
+due to catching an issue during the last QA stage with an update of the
+gettext library.
 
 Here are the full patch notes:
 
@@ -87,6 +138,14 @@ Here are the full patch notes:
 * ports: php 8.2.17 `[9] <https://www.php.net/ChangeLog-8.php#8.2.17>`__ 
 * ports: py-duckdb 0.10.1 `[10] <https://github.com/duckdb/duckdb/releases/tag/v0.10.1>`__ 
 * ports: py-netaddr 1.2.1 `[11] <https://netaddr.readthedocs.io/en/latest/changes.html#release-1-2-1>`__ 
+
+A hotfix release was issued as 24.1.5_2:
+
+* wireguard: store attached instance during peer generation
+
+A hotfix release was issued as 24.1.5_3:
+
+* reporting: top talkers fix for backend required by new py-netaddr
 
 
 
