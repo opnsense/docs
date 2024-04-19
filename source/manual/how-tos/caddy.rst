@@ -26,6 +26,7 @@ Main features of this plugin:
 * Syslog-ng integration and HTTP Access Log
 * NTLM Transport
 * Header manipulation
+* Simple load balancing with passive health check
 
 
 --------------
@@ -88,7 +89,7 @@ FAQ
 * When using Caddy with IPv6, it's best to have a GUA (Global Unicast Address) on the WAN interface, since otherwise the TLS-ALPN-01 challenge might fail.
 * Let's Encrypt or ZeroSSL can't be explicitely chosen. Caddy automatically issues one of these options, determined by speed and availability. These certificates can be found in ``/var/db/caddy/data/caddy/certificates``.
 
-.. Attention:: There is no TCP/UDP stream, load balancing and WAF (Web Application Firewall) support in this plugin. Caddy itself could support these features, but this plugin is focused on ease of configuration. For a business ready Reverse Proxy with WAF functionality, use OPNWAF. For TCP/UDP streaming, use either nginx or ha-proxy.
+.. Attention:: There is no TCP/UDP stream and WAF (Web Application Firewall) support in this plugin. Caddy itself could support these features, but this plugin is focused on ease of configuration. For a business ready Reverse Proxy with WAF functionality, use OPNWAF. For TCP/UDP streaming, use either nginx or ha-proxy.
 
 .. Tip:: As an alternative to a WAF, it's simple to integrate Caddy with CrowdSec. Check the tutorial section for guidance.
 
@@ -134,7 +135,7 @@ General Settings - Dynamic DNS
 =========================== ================================
 Option                      Description
 =========================== ================================
-**DynDns IP Version**       Leave on `None` to set IPv4 A-Records and IPv6 AAAA-Records. Select `Ipv4 only` for setting A-Records. Select `IPv6 only` for setting AAAA-Records.
+**DynDns IP Version**       Select `IPv4+IPv6` to set IPv4 A-Records and IPv6 AAAA-Records, `Ipv4 only` for setting A-Records or `IPv6 only` for setting AAAA-Records.
 **DynDns Check Interval**   Interval to poll for changes of the IP address. The default is 5 minutes. Can be a number between 1 to 1440 minutes.
 **DynDns TTL**              Set the TTL (time to live) for DNS Records. The default is 1 hour. Can be a number between 1 to 24 hours.
 **DynDns Check Http**       Optionally, enter an URL to test the current IP address of the firewall via HTTP procotol. Generally, this is not needed. Caddy uses default providers to test the current IP addresses. For using a custom one, enter the `https://` link to an IP address testing website.
@@ -167,10 +168,10 @@ Option                              Description
 **Port**                            Should be the port the OPNsense will listen on. Don't forget to create Firewall rules that allow traffic to this port on ``WAN`` and ``LAN`` to destination ``This Firewall``. Leave this empty if the default ports of Caddy (`80` and `443`) should be used with automatic redirection from HTTP to HTTPS.
 **Description**                     The description is mandatory. Create descriptions for each domain. Since there could be multiples of the same domain with different ports, do it like this: ``foo.example.com`` and ``foo.example.com.8443``.
 **>DNS**                            DNS options
-**Dynamic DNS**                     Enable Dynamic DNS. As the option above, the DNS Provider is a requirement. The DNS Records of this domain will be automatically updated with the chosen DNS Provider.
+**Dynamic DNS**                     Enable Dynamic DNS. This option needs the `General Settings - DNS Provider` configured. The DNS Records of this domain will be automatically updated with the chosen DNS Provider.
 **>Trust**                          Certificate options
 **DNS-01 challenge**                Enable this for using DNS-01 instead of HTTP-01 and TLS-ALPN-01 challenge. This can be set per entry, so both types of challenges can be used at the same time for different entries. This option needs the `General Settings - DNS Provider` configured.
-**HTTP-01 challenge redirection**   Enter a domain name or IP address. The HTTP-01 challenge will be redirected to that destination. This enables a server behind Caddy to serve ``/.well-known/acme-challenge/``. Caddy will issue a certificate for the same domain using the TLS-ALPN-01 challenge or DNS-01 challenge instead. Please note that his is a complex scenario, Caddy can *only* continue to get automatic certificates if it can listen on Port 443 - so either specify 443 directly or leave the Port empty. Having the domain listen on any other port than 443 will mean the TLS-ALPN-01 challenge will fail too, and there won't be any automatic certificates. If the requirement is a different port than 443, the DNS-01 challenge will remain the only option.
+**HTTP-01 challenge redirection**   Enter a domain name or IP address. The HTTP-01 challenge will be redirected to that destination. This enables a server behind Caddy to serve ``/.well-known/acme-challenge/``. Caddy will issue a certificate for the same domain using the TLS-ALPN-01 challenge or DNS-01 challenge instead. Please note that his is a complex scenario, Caddy can *only* continue to get automatic certificates if it can listen on Port 443 - so either specify 443 directly or leave the Port empty. Having the domain listen on any other port than 443 will mean the TLS-ALPN-01 challenge will fail too, and there won't be any automatic certificates. If the requirement is a different port than 443, the DNS-01 challenge will remain the only option. This option can also be used to redirect the HTTP-01 challenge to Caddy on a backup OPNsense firewall in a HA setup.
 **Custom Certificate**              Use a certificate imported or generated in `System - Trust - Certificates`. The chain is generated automatically. Certificate + Intermediate CA + Root CA, Certificate + Root CA and self signed Certificate are all fully supported. Only SAN certificates will work.
 **>Access**                         Access options
 **Access List**                     Restrict the access to this domain to a list of IP addresses defined in the Access Tab. This doesn't influence Let's Encrypt certificate generation.
@@ -210,9 +211,10 @@ Option                              Description
 **>Header**                         Header options
 **Header Manipulation**             Select one or multiple header manipulations. These will be set to this handler.
 **>Upstream**                       Upstream options
-**Upstream Domain**                 Should be an internal domain name or an IP Address of the upstream destination that should receive the reverse proxied traffic.
+**Upstream Domain**                 Should be an internal domain name or an IP Address of the upstream destination that should receive the reverse proxied traffic. If multiple upstream destinations are chosen, they will be load balanced with the default random policy. If unhealthy upstreams should be removed, set the Upstream Fail Duration for a passive health check.
 **Upstream Port**                   Should be the port the upstream destination listens on. This can be left empty to use Caddy default port 80.
 **Upstream Path**                   When using "reverse_proxy" (default), in case the backend application resides in a sub-path of the web root and its path shouldn't be visible in the frontend URL, this setting can be used to prepend an initial path starting with '/' to every backend request. Java applications running in a servlet container like Tomcat are known to behave this way, so set it to e.g. '/guacamole' to access Apache Guacamole at the frontend root URL without needing a redirect.
+**Upstream Fail Duration**          Enables a passive health check when multiple upstream destinations have been defined for load balancing. `fail_duration` is a duration value that defines how long to remember a failed request. A duration of 1 or more seconds enables passive health checking; the default is empty (off). A reasonable starting point might be 30s to balance error rates with responsiveness when bringing an unhealthy upstream back online.
 **>Trust**                          Certificate options
 **TLS**                             If the upstream destination only accepts HTTPS, enable this option. If the upstream destination has a globally trusted certificate, this TLS option is the only needed one.
 **NTLM**                            If the upstream destination needs NTLM authentication, enable this option together with TLS. For example: Exchange Server.
@@ -361,6 +363,8 @@ Options                        Values
 ---------------------------------
 Creating a wildcard reverse proxy
 ---------------------------------
+
+.. Attention:: The certificate of a wildcard domain will only contain ``*.example.com``, not a SAN for ``example.com``. Create an additional domain for ``example.com`` and create a handler for the upstream destination.
 
 Go to `Services - Caddy Web Server - General Settings - DNS Provider`
 
@@ -541,6 +545,34 @@ Next, connect to the OPNsense via SSH or console, go into the shell with Option 
       type: caddy
 
 * Go into the OPNsense WebUI and restart CrowdSec.
+
+
+----------------------------------
+Caddy and High Availability Setups
+----------------------------------
+
+There are a few possible configurations to run Caddy successfully in a High Availability Setup with two OPNsense firewalls.
+
+.. Tip:: The main issue to think about is the certificate handling. If a CARP VIP is used on the WAN interface, and the A and AAAA Records of all domains point to this CARP VIP, the backup Caddy won't be able to issue ACME certificates without some additional configuration.
+
+There are three methods that support XMLRPC sync:
+
+.. Note: These methods can be mixed, just make sure to use a coherent configuration. It's best to decide for one method.
+
+* Using custom certificates from the OPNsense Trust store for all domains.
+* Using the `DNS-01 challenge` in the settings of domains.
+* Using the `HTTP-01 challenge redirection` option in the advanced settings of domains.
+
+Since the HTTP-01 challenge redirection needs some additional steps to work, it should be set up as followed:
+
+* Configure Caddy on the master OPNsense firewall until the whole initial configuration is completed.
+* On the master OPNsense, select each domain, and set the IP Address in `HTTP-01 challenge redirection` to the same value as in `Synchronize Config to IP` found in `System - High Availability - Settings`.
+* Create a new Firewall rule on the master OPNsense that allows Port ``80`` and ``443`` to ``This Firewall`` on the interface that has the prior selected IP Address (most likely LAN or a VLAN interface).
+* Sync this configuration with XMLRPC sync. Restart Caddy on both Firewalls.
+
+.. Note:: Now both Caddy instances will be able to issue ACME certificates at the same time. Caddy on the master OPNsense uses the TLS-ALPN-01 challenge for itself and reverse proxies the HTTP-01 challenge to the Caddy of the backup OPNsense. Please make sure, that the master and backup OPNsense are listening on their WAN and LAN (or VLAN) interfaces on port ``80`` and ``443``, since both ports are required for these challenges to work.
+
+.. Tip:: Check the Logfile on both Caddy instances for successful challenges. Look for ``certificate obtained successfully`` Informational messages.
 
 
 --------------------------------
