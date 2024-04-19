@@ -366,6 +366,12 @@ Maximum preserved files                      Configures the number of days to ke
 Maximum file size                            Limit the file size of the logs instead of keeping one log per day.
 ============================================ ====================================================================================================================
 
+.. Tip::
+
+    When using (very) small file size limits, it is possible to schedule the rotate action more frequently using cron
+    (:menuselection:`System --> Settings --> Cron`). Seek for an action named :code:`Rotate log files` in the list in that case.
+
+
 Remote log settings can be found at :menuselection:`System --> Settings --> Logging`, tab "Remote".
 
 *Add* a new *Destination* to set up a remote target destination.
