@@ -557,7 +557,7 @@ There are a few possible configurations to run Caddy successfully in a High Avai
 
 There are three methods that support XMLRPC sync:
 
-.. Note: These methods can be mixed, just make sure to use a coherent configuration. It's best to decide for one method.
+.. Note:: These methods can be mixed, just make sure to use a coherent configuration. It's best to decide for one method.
 
 * Using custom certificates from the OPNsense Trust store for all domains.
 * Using the `DNS-01 challenge` in the settings of domains.
