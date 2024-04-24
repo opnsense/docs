@@ -113,6 +113,7 @@ Option                      Description
 **Auto HTTPS**              `On (default)` creates automatic Let's Encrypt certificates for all domains that don't have more specific options set, like custom certificates.
 **Trusted Proxies**         If Cloudflare or another CDN provider is used, create an `Access List` with the IP addresses of that CDN and add it here. Add the same Access List to the domain this CDN tries to reach.
 **Abort Connections**       This option, when enabled, aborts all connections to the domain that don't match any specified handler or access list. This setting doesn't affect Let's Encrypt's ability to issue certificates, ensuring secure connections regardless of the option's status. If unchecked, the domain remains accessible even without a matching handler, allowing for connectivity and certificate checks, even in the absence of a configured upstream destination. When using Access Lists, enabling this option is recommended to reject unauthorized connections outright. Without this option, unmatched IP addresses will encounter an empty page instead of an explicit rejection, though the Access Lists continue to function and restrict access.
+**Grace Period**            Defines the grace period for shutting down HTTP servers (i.e. during config changes or when Caddy is stopping) in seconds. During the grace period, no new connections are accepted, idle connections are closed, and active connections are impatiently waited upon to finish their requests. If clients do not finish their requests within the grace period, the server will be forcefully terminated to allow the reload to complete and free up resources. This can influence how long "Apply" of new configurations take, since Caddy waits for all open connections to close.
 =========================== ================================
 
 
@@ -575,11 +576,21 @@ Since the HTTP-01 challenge redirection needs some additional steps to work, it 
 .. Tip:: Check the Logfile on both Caddy instances for successful challenges. Look for ``certificate obtained successfully`` Informational messages.
 
 
+-------------------------------------
+Keeping track of large configurations
+-------------------------------------
+
+Having a large configuration can become a bit cumbersome to navigate. To help, a new filter functionality has been added to the top right corner of the `Domains` and `Handlers` tab, called `Filter by Domain`.
+
+.. Tip:: In `Filter by Domain`, one or multiple `Domains` can be selected, and as filter result, only their corresponding configuration will be displayed in `Domains`, `Subdomains` and `Handlers`. This makes keeping track of large configurations a breeze.
+
+
 --------------------------------
 Using custom configuration files
 --------------------------------
 
 * The Caddyfile has an additional import from the path ``/usr/local/etc/caddy/caddy.d/``. Place custom configuration files inside that adhere to the Caddyfile syntax.
 * ``*.global`` files will be imported into the global block of the Caddyfile.
-* ``*.conf`` files will be imported at the end of the Caddyfile. Don't forget to test the custom configuration with ``caddy run --config /usr/local/etc/caddy/Caddyfile``.
-* With these imports, the full potential of Caddy can be unlocked. The GUI options will remain focused on the reverse proxy.
+* ``*.conf`` files will be imported at the end of the Caddyfile. Don't forget to test the custom configuration with ``caddy validate --config /usr/local/etc/caddy/Caddyfile``.
+
+.. Note:: With these imports, the full potential of Caddy can be unlocked. The GUI options will remain focused on the reverse proxy. There is no community support for configurations that have not been created with the offered GUI.
