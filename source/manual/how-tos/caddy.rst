@@ -151,6 +151,7 @@ General Settings - Log Settings
 ======================================= ================================
 Option                                  Description
 ======================================= ================================
+**Log Level**                           Select the minimum global Log Level. "INFO" is the default and shouldn't be changed without a reason, since that level displays the ACME Client messages for automatic certificates. This setting doesn't influence the HTTP Access logs, they're always using INFO, which is their lowest supported Log Level.
 **Log Credentials**                     Log all Cookies and Authorization Headers in HTTP request logging. Use combined with HTTP Access Log in a domain. Enable this option only for troubleshooting.
 **Log Access in Plain Format**          Don't send HTTP access logs to the central OPNsense logging facility but save them in plain Caddy JSON format in a subdirectory instead. Only effective for domains that have HTTP Access Log enabled. The feature is intended to have access log files processed by e.g. CrowdSec. They can be found in ``/var/log/caddy/access``.
 **Keep Plain Access Logs for (days)**   How many days until the plain format log files are deleted. The default is 10 days.
@@ -583,6 +584,42 @@ Keeping track of large configurations
 Having a large configuration can become a bit cumbersome to navigate. To help, a new filter functionality has been added to the top right corner of the `Domains` and `Handlers` tab, called `Filter by Domain`.
 
 .. Tip:: In `Filter by Domain`, one or multiple `Domains` can be selected, and as filter result, only their corresponding configuration will be displayed in `Domains`, `Subdomains` and `Handlers`. This makes keeping track of large configurations a breeze.
+
+
+------------------------
+Advanced Troubleshooting
+------------------------
+
+Sometimes, things don't work as expected. Caddy provides a few powerful debugging tools to see what's going on.
+
+.. Note:: As first troubleshooting step, change the global Log Level to `DEBUG`. This will log `everything` the reverse_proxy directive handles.
+
+Go to `Services - Caddy Web Server - General Settings - Log Settings`
+
+* Set the `Log Level` to `DEBUG`
+* Press **Apply**
+
+Go to `Services - Caddy Web Server - Log File`
+
+* Change the dropdown from `INFORMATIONAL` to `DEBUG`
+
+Now the ``reverse_proxy`` debug logs will be visible.
+
+.. Note:: As troubleshooting for developers and experts, a special admin endpoint can be activated.
+
+.. Attention:: This admin endpoint is deactivated by default. To enable it and access it on the OPNsense, follow these additional steps. Don't forget to deactivate it again. Anybody with network access to the admin endpoint can use REST API to change the running configuration of Caddy, without authentication.
+
+* SSH into the OPNsense shell
+* Stop Caddy with ``configctl caddy stop``
+* Go to ``/usr/local/etc/caddy/caddy.d/``
+* Create a new file called ``admin.global`` and put the following content into it: ``admin :2019``
+* After saving the file, go to ``/usr/local/etc/caddy`` and run ``caddy validate`` to ensure the configuration is valid.
+* Start Caddy with ``configctl caddy start``
+* Use sockstat to see if the admin endpoint has been created. ``sockstat -l | grep -i caddy`` - it should show the endpoint ``*:2019``.
+* Create a firewall rule on ``LAN`` that allows ``TCP`` to destination ``This Firewall`` and destination port ``2019``.
+* Open the admin endpoint: ``http://YOUR_LAN_IP:2019/debug/pprof/``
+
+.. Note:: Follow the instructions on https://caddyserver.com/docs/profiling how to debug and profile Caddy.
 
 
 --------------------------------
