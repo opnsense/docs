@@ -190,6 +190,7 @@ use the same configuration which looks like this:
 
 ====================== ========================================
 Mode                   Tunnel
+Reqid                  10
 Policies               **[uncheck]**
 Local                  0.0.0.0/0
 Remote                 0.0.0.0/0
