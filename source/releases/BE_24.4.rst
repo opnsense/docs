@@ -1,0 +1,293 @@
+===========================================================================================
+24.4  Series
+===========================================================================================
+
+
+The OPNsense business edition transitions to this 24.4 release including
+ports-based OpenSSL 3, Suricata 7, several MVC/API conversions, a new neighbor
+configuration feature for ARP/NDP, core inclusion of the os-firewall and
+os-wireguard plugins, CARP VHID tracking for OpenVPN and WireGuard, functional
+Kea DHCPv4 server with HA support plus much more.
+
+Please make sure to read the migration notes before upgrading.
+
+Download link is as follows.  An installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for
+the images can be found below as well.
+
+https://downloads.opnsense.com/
+
+
+--------------------------------------------------------------------------
+24.4 (April 30, 2024)
+--------------------------------------------------------------------------
+
+The OPNsense business edition transitions to this 24.4 release including
+ports-based OpenSSL 3, Suricata 7, several MVC/API conversions, a new neighbor
+configuration feature for ARP/NDP, core inclusion of the os-firewall and
+os-wireguard plugins, CARP VHID tracking for OpenVPN and WireGuard, functional
+Kea DHCPv4 server with HA support plus much more.
+
+Please make sure to read the migration notes before upgrading.
+
+Download link is as follows.  An installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for
+the images can be found below as well.
+
+https://downloads.opnsense.com/
+
+This business release is based on the OPNsense 24.1.6 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: prevent activating shell for non-admins
+* system: add OCSP trust extensions and improved authorities implementation
+* system: migrate single gateway configuration to MVC/API
+* system: use new backend streaming functionality in the log viewer
+* system: limit file system /conf/config.xml and backups access to administrators
+* system: migrate gateways model to match new class introduced in 23.7.x
+* system: refactor get_single_sysctl()
+* system: update cron model
+* system: fix migration issue in new gateways model
+* system: enable OpenSSL legacy provider by default to allow Google Drive backup to continue working with OpenSSL 3
+* system: bring back the interface statistics dashboard widget update interval
+* system: fix all items in the OPNsense container being synced in XMLRCP when NAT option is selected
+* system: accept colon character in log queries
+* system: fix gateway migration issue causing individual items to be skipped
+* system: fix dynamic gateway persisting its address
+* system: prevent gateway removal when it is currently bound to an interface
+* system: merge static logging settings into existing MVC page
+* system: fix PHP warnings and spurious validation in route model
+* system: fix translation of static PHP pages with newer gettext
+* reporting: print status message when Unbound DNS database was not found during firmware upgrade
+* reporting: update NetFlow model
+* reporting: top talkers fix for backend required by new py-netaddr
+* interfaces: implement new neighbor configuration for ARP and NDP entries using MVC/API
+* interfaces: refactor interface_bring_down() into interface_reset() and interface_suspend()
+* interfaces: migrate the overview page to MVC/API
+* interfaces: add optional local/remote port to VXLAN
+* interfaces: remove unused code from native dhclient-script
+* interfaces: do not flush states on clear event
+* interfaces: overview page UX improvements
+* interfaces: fix strpos() deprecation null haystack
+* interfaces: fix VXLAN validation
+* interfaces: support a primary interface in LAGG failover mode
+* interfaces: stop caching IPv6 address to decide if reload is required
+* firewall: add automation category for filter rules and source NAT using MVC/API, formerly known as os-firewall plugin
+* firewall: migrate NPTv6 page to MVC/API
+* firewall: add a track interface selection to NPTv6 as an alternative to the automatic rule interface fallback when dealing with dynamic prefixes
+* firewall: show automation rules in their own section
+* firewall: keep permissions to standard for filter.lock file
+* firewall: replace searchNoCategoryItemAction() with new searchBase() extension
+* firewall: add gateway to the states diagnostics output
+* firewall: fix visible rows quantity off-by-one (contributed by NYOB)
+* dhcp: add Kea DHCPv4 server option with HA capabilities as an alternative to the end of life ISC DHCP
+* dhcp: omit faulty comma in Kea config when control agent is disabled
+* dhcp: add opt-out automatic firewall rules for Kea server access
+* dhcp: set RemoveAdvOnExit to off in CARP mode for router advertisements
+* dhcp: make sure the register DNS leases options reflect that this is only supported for ISC DHCP
+* dhcp: make option_data_autocollect option more explicit in Kea
+* dhcp: gather missing Kea leases another way since the logs are unreliable
+* dhcp: add address constraint to Kea reservations
+* dhcp: add unique constraint for MAC address + subnet in Kea
+* dhcp: add domain-name to client configuration in Kea
+* dhcp: loosen constraints for TFTP boot in Kea
+* dhcp: clean up duplicated domain-name-servers option
+* dhcp: cleanup get_lease6 script and fix parsing issue
+* dhcp: deduplicate records in Kea leases
+* dhcrelay: functional MVC/API replacement using the OpenBSD dhcrelay(6) fork
+* firmware: opnsense-revert: fix issue with downloaded package install
+* firmware: fix missing space in audit message
+* intrusion detection: adjust for default behaviour changes in Suricata 7
+* intrusion detection: set exception-policy and app-layer.error-policy to their advertised defaults
+* intrusion detection: fix whitespace issue in yaml configuration file
+* intrusion detection: align performValidation()->count() to use count() instead
+* intrusion detection: query all fields for searchBase() actions
+* ipsec: remove AEAD algorithms without a PRF for IKE proposals in connections
+* ipsec: improve enable button placement on connections page
+* ipsec: allow % to support %any in ID for connections
+* ipsec: optionally hook VTI tunnel configuration to connection up event to support dynamic DNS
+* ipsec: fix typo in config generation for AH proposals
+* isc-dhcp: do not add interfaces for non-Ethernet types to relaying
+* isc-dhcp: fix log file location
+* kea-dhcp: add import/export as CSV on reservations
+* kea-dhcp: add domain-search, time-servers and static-routes client options to subnet configuration
+* lang: added traditional Chinese translation (contributed by Jason Cheng)
+* openvpn: allow optional OCSP checking per instance
+* openvpn: emit device name upon creation
+* openvpn: add optional "route-metric" push option for server instances
+* openvpn: fix cso_login_matching being ignored during authentication
+* openvpn: when "cert_depth" is left empty it should ignore the value
+* openvpn: data-ciphers-fallback should be a single option
+* openvpn: fix support for /30 p2p/net30 instances
+* openvpn: add "various_push_flags" field for simple boolean server push options in connections
+* openvpn: various improvements for TAP servers
+* unbound: duckduckgo.com blocklist fix
+* web proxy: integration moved to os-squid plugin
+* wireguard: installed by default using the bundled FreeBSD 13.2 kernel module
+* wireguard: allow instances to start their ID at 0 like they used to a long time ago
+* wireguard: key constraints should only apply on peers and not instances
+* wireguard: peer uniqueness should depend on pubkey + endpoint
+* wireguard: skip attached instance address routes
+* wireguard: remove duplicate ID columns
+* wireguard: remove duplicate "pubkey" field, remove required tag and validate on Base64 in model
+* wireguard: address assorted interface configuration inconsistencies during configuration
+* wireguard: migrate non-netmask allowed IP entries and enforce them in validation
+* wireguard: show proper names when public keys overlap between instances
+* wireguard: add a peer configuration generator with QR code capability
+* wireguard: improve overall configuration UX
+* wireguard: store attached instance during peer generation
+* wireguard: add DNS field to peer generator and store previous used values in instance
+* wireguard: add address field to peer generator which auto-calculates the next available address in the pool
+* wireguard: add restart action to available cron tasks (contributed by Michael Muenz)
+* wireguard: unlink instance on peer delete
+* wizard: reorder storage sequence to fix hostname/domain change bug
+* backend: constrain execution of user add/change/list actions to members of the wheel group
+* backend: wait for all configd results and add it to the log message when detached
+* backend: optimise stream_handler to exit and kill running process when no listener is attached
+* mvc: remove legacy Phalcon migration glue
+* mvc: add configdStream action to ApiControllerBase
+* mvc: support array structures for better search functionality in ApiControllerBase
+* mvc: scope xxxBase validations to the item in question in ApiMutableModelControllerBase
+* mvc: remove Phalcon syslog implementation with a simple wrapper
+* mvc: add a DescriptionField type
+* mvc: add a MacAddressField type
+* mvc: add IsDNSName to support DNS names as specified by RFC2181 in HostnameField
+* mvc: fix Phalcon 5.4 and up
+* mvc: fix model cloning when array items contain nested containers
+* mvc: add simple Message class and remove the previous Phalcon dependency
+* mvc: refactor HostnameField, remove HostValidator dependency and add unit test
+* mvc: add new static Autoconf class to access information collected by ifctl
+* mvc: fix rewind() stream not supporting seeking error
+* mvc: add copy of our html_safe() and use it in the translator
+* mvc: add "safe" filter in Phalcon volt templates
+* mvc: feed current language into view to replace hardcoded "en-US"
+* mvc: fix minor regression with "allownew" not having a default
+* mvc: extend model implementation to support volatile fields
+* mvc: add setBaseHook() to ApiMutableModelControllerBase
+* mvc: extend searchBase() to return all fields when no list is provided
+* mvc: fix config locking issue when already owning the lock
+* rc: fix wrong order in service startup (contributed by Frank Wall)
+* ui: include meta tags for standalone/full-screen on Android and iOS (contributed by Shane Lord)
+* ui: add double click event with grid dialog in tree view to show a row layout instead
+* ui: auto-trim MVC input fields when being pasted
+* ui: increase standard search delay from 250 ms to 1000 ms
+* ui: make modal dialogs draggable
+* ui: support key/value combinations for error messages in do_input_validation()
+* ui: adjust margin of hr elements to match __mX helpers
+* ui: add a button to allow textarea style edits of free-form tokenizers
+* ui: when an error is raised make sure it is always visible
+* ui: fix copy/paste buttons not showing for tokenizers in some situations
+* ui: move cache_safe() functions to appropriate include
+* ui: add a "statusled" formatter to bootgrid
+* ui: add a "grid-reload" helper to SimpleActionButton
+* plugins: add globbing for plugin run tasks as well
+* plugins: os-OPNProxy 1.0.5 business plugin released to community version
+* plugins: os-acme-client 4.2 `[2] <https://github.com/opnsense/plugins/blob/stable/24.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-api-backup was discontinued due to overlapping functionality in core
+* plugins: os-bind 1.30 `[3] <https://github.com/opnsense/plugins/blob/stable/24.1/dns/bind/pkg-descr>`__ 
+* plugins: os-caddy 1.5.4 `[4] <https://github.com/opnsense/plugins/blob/stable/24.1/www/caddy/pkg-descr>`__  (contributed by Monviech)
+* plugins: os-ddclient 1.21 `[5] <https://github.com/opnsense/plugins/blob/stable/24.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.15 `[6] <https://github.com/opnsense/plugins/blob/stable/24.1/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-firewall moved to core
+* plugins: os-frr 1.39 `[7] <https://github.com/opnsense/plugins/blob/stable/24.1/net/frr/pkg-descr>`__ 
+* plugins: os-haproxy 4.3 `[8] <https://github.com/opnsense/plugins/blob/stable/24.1/net/haproxy/pkg-descr>`__ 
+* plugins: os-nrpe updated to NRPE 4.1.x
+* plugins: os-ntopng 1.3 `[9] <https://github.com/opnsense/plugins/blob/stable/24.1/net/ntopng/pkg-descr>`__ 
+* plugins: os-postfix updated to Postfix 3.8.x
+* plugins: os-squid 1.0 offers the removed web proxy core functionality
+* plugins: os-theme-cicada 1.35 (contributed by Team Rebellion)
+* plugins: os-theme-rebellion 1.8.10 (contributed by Team Rebellion)
+* plugins: os-tor 1.10 adds MyFamily support (contributed by Mike Bishop)
+* plugins: os-wireguard moved to core
+* plugins: os-wireguard-go was discontinued
+* plugins: os-zabbix-proxy 1.10 `[10] <https://github.com/opnsense/plugins/blob/stable/24.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* src: NFS client data corruption and kernel memory disclosure `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:18.nfsclient.asc>`__ 
+* src: pf: merge extended support for SCTP and related stable changes
+* src: e1000: merge assorted driver improvements for hardware capabilities
+* src: bsdinstall: merge assorted stable changes
+* src: tuntap: merge assorted stable changes
+* src: wireguard: add experimental netmap support
+* src: sys: Use mbufq_empty instead of comparing mbufq_len against 0
+* src: e1000/igc: remove disconnected sysctl
+* src: jail: fix information leak `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:02.tty.asc>`__ 
+* src: bhyveload: use a dirfd to support -h `[13] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:01.bhyveload.asc>`__ 
+* src: EVFILT_SIGNAL: do not use target process pointer on detach `[14] <https://www.freebsd.org/security/advisories/FreeBSD-EN-24:03.kqueue.asc>`__ 
+* src: setusercontext(): apply personal settings only on matching effective UID `[15] <https://www.freebsd.org/security/advisories/FreeBSD-EN-24:02.libutil.asc>`__ 
+* src: re: generate an address if there is none in the EEPROM
+* src: wg: detect loops in netmap mode
+* src: wg: detach bpf upon destroy as well
+* src: wg: fix access to noise_local->l_has_identity and l_private
+* src: wg: fix erroneous calculation in calculate_padding() for p_mtu == 0
+* src: wg: fix handling of errors in wg_transmit()
+* src: wg: use proper barriers around pkt->p_state
+* src: kern: fix panic with disabled ttys
+* src: opencrypto: advance the correct pointer in crypto_cursor_copydata()
+* src: opencrypto: handle end-of-cursor conditions in crypto_cursor_segment()
+* src: opencrypto: respect alignment constraints in xor_and_encrypt()
+* src: ccr,ccp: fix argument order to sglist_append_vmpages
+* src: ossl: add missing labels to bsaes-armv7.S
+* src: ipsec esp: avoid dereferencing freed secasindex
+* src: irdma: upgrade to 1.2.36-k
+* src: irdma: remove artificial completion generator
+* src: tcp: cubic - restart epoch after RTO
+* src: tcp: prevent div by zero in cc_htcp
+* src: net80211: adjust more VHT structures/fields
+* ports: curl 8.7.1 `[16] <https://curl.se/changes.html#8_7_1>`__ 
+* ports: dhcrelay 0.4 `[17] <https://github.com/opnsense/dhcrelay>`__ 
+* ports: dnsmasq 2.90 `[18] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: dnspython 2.6.1
+* ports: expat 2.6.2 `[19] <https://github.com/libexpat/libexpat/blob/R_2_6_2/expat/Changes>`__ 
+* ports: libpfctl 0.10
+* ports: libucl 0.9.1
+* ports: libxml 2.11.7 `[20] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: lighttpd 1.4.75 `[21] <https://www.lighttpd.net/2024/3/13/1.4.75/>`__ 
+* ports: nss 3.99 `[22] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_99.html>`__ 
+* ports: openldap 2.6.7 `[23] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openssh-portable 9.7p1 `[24] <https://www.openssh.com/txt/release-9.7>`__ 
+* ports: openssl 3.0.13 `[25] <https://www.openssl.org/news/cl30.txt>`__ 
+* ports: openssl fix for CVE-2024-2511 `[26] <https://github.com/freebsd/freebsd-ports/commit/3d9fc064b7>`__ 
+* ports: openvpn 2.6.10 `[27] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.10>`__ 
+* ports: pcre2 10.43 `[28] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.43>`__ 
+* ports: phalcon 5.6.2 `[29] <https://github.com/phalcon/cphalcon/releases/tag/v5.6.2>`__ 
+* ports: php 8.2.18 `[30] <https://www.php.net/ChangeLog-8.php#8.2.18>`__ 
+* ports: py-duckdb 0.10.1 `[31] <https://github.com/duckdb/duckdb/releases/tag/v0.10.1>`__ 
+* ports: py-netaddr 1.2.1 `[32] <https://netaddr.readthedocs.io/en/latest/changes.html#release-1-2-1>`__ 
+* ports: radvd adds upstream patch for RemoveAdvOnExit option
+* ports: sqlite 3.45.1 `[33] <https://sqlite.org/releaselog/3_45_1.html>`__ 
+* ports: suricata 7.0.4 `[34] <https://suricata.io/2024/03/19/suricata-7-0-4-and-6-0-17-released/>`__ 
+* ports: syslog-ng 4.6.0 `[35] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.6.0>`__ 
+
+Migration notes, known issues and limitations:
+
+* Audits and certifications are requiring us to restrict system accounts for non-administrators (without wheel group in particular).  It will no longer be possible to use non-adminstrator accounts with shell access and permissions for sensitive files have been tightened to not be world-readable.  This may cause custom tooling to stop working, but can easily be fixed by giving these required accounts the full administration rights.
+* ISC DHCP functionality is slowly being deprecated with the introduction of Kea as an alternative.  The work to replace the tooling of ISC DHCP is ongoing, but feature sets will likely differ for a long time therefore.  ISC DHCP Relay has been replaced with an OpenBSD-based code alternative and is now found unter "DHCRelay".
+* The move to the FreeBSD ports version of OpenSSL 3.0 is included and may disrupt third party repository use until those have been fixed and rebuilt accordingly.  Please note that we do not vet third party repositories and do not have control over them so their response time may vary.
+* The Squid web proxy functionality moves to a plugin and will no longer be installed by default for new installations.  However, if you have Squid enabled the plugin will automatically be installed during the upgrade.  There is no code difference in the implementation and integration of the plugin compared to the core version.  The OPNProxy plugin is still available, but also moved to the community plugins due to this.
+
+The public key for the 24.4 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEArjthZplSNhbgab8VYDYl
+    # jn3rNni+Fson28prwolUac0EHlu1e9ckM03BjYfRYUcpHRdNTglPr+likmgQ3K7j
+    # 01oq0/H2krvXUbxUq8CQDYgHUM9QDBubdC06/oQ/S20YGHlHJ+odexUbLF0YvW04
+    # RfzlEozBW0eUjc3LLYAvr1RwXoiZyB/Qit5bBC7No6fKIlCD9uZ3+7b1pO+Gjfq0
+    # mPF01kE7P55Y9WqaEU9odS4xE+viGlj+k1+YZBsEWWzX+J3z5zGDhWcsWWskd92z
+    # eMOUkJyVeiIWkW4draQ7CC0tJ4e+f/1PUkkLRfMMO55pGeunu3xwEgD4ALyD1A+y
+    # 029sKMXF6OSWgDQDrxDOe4bA7RW4yUba3EhSz8UyAvL3HIKQ0OuOJaGYkRee9DBQ
+    # DmCjIvPs6yCdAiuDbwO7V6RsH4k3yIONotST3qwf3sJXU3vvwsHi1n3ssccZBzw4
+    # sKwQ1xQN1eIc5+At+OJ6bzkdb/vg+UrFUfuCknqxuxvwg99+3Wx6vvemW7yqIUY4
+    # Vkhqs7WUZ0ucwo1zjLM12K4yS7kEQbOzHykYQzXXYxhzJIai+BZAJFytSER+Wl7Z
+    # AyIioWGKwTD/WTEzyfK5svnSmosWlikagMhl3+XyF2cma1rPqOOyuFpcFhmV6nlR
+    # vWhn568tDgJAyWqOCCHZqOMCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-business-24.4-dvd-amd64.iso.bz2) = a522510e89e52e209e4b241408ae9c3f49b78e42e17a6e2f96a06ac3f8f379b9
+    # SHA256 (OPNsense-business-24.4-nano-amd64.img.bz2) = 2237c9e1a87e0da82a1ccf42cd84c0ac8b1048ede480cd35430032bc64540739
+    # SHA256 (OPNsense-business-24.4-serial-amd64.img.bz2) = c1c7552a05dd12ae8ae17a980d8057bbd66506e8c9a98e66e22c51e74b139e2e
+    # SHA256 (OPNsense-business-24.4-vga-amd64.img.bz2) = b738634684354432d8a98a6bc8b720135c5d6940a0a82edacd36728d4ac2b854

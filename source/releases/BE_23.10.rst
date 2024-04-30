@@ -55,6 +55,10 @@ Here are the full patch notes:
 * ports: suricata 6.0.17 `[2] <https://suricata.io/2024/03/19/suricata-7-0-4-and-6-0-17-released/>`__ 
 * ports: unbound 1.19.3 `[3] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-19-3>`__ 
 
+A hotfix release was issued as 23.10.3_1:
+
+* firmware: add fingerprint, migration notes and upgrade hint for 24.4
+
 
 
 --------------------------------------------------------------------------

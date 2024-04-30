@@ -473,11 +473,11 @@ Here are the full patch notes:
 * src: if_me: use dedicated network privilege
 * src: vxlan: add support for socket ioctls SIOC[SG]TUNFIB
 * src: introduce and use the NET_EPOCH_DRAIN_CALLBACKS() macro
-* src: iflib: Add null check to iflib_stop()
+* src: iflib: add null check to iflib_stop()
 * src: pfctl: rule.label is a two-dimensional array
 * src: pf: fix syncookies in conjunction with tcp fast port reuse
 * src: pf: fix panic on deferred packets
-* src: ipfw: Add missing 'va' code point name
+* src: ipfw: add missing 'va' code point name
 * src: netmap: try to count packet drops in emulated mode
 * src: netmap: fix a queue length check in the generic port rx path
 * src: netmap: tell the compiler to avoid reloading ring indices

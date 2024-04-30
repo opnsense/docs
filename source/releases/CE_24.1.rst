@@ -185,7 +185,7 @@ Here are the full patch notes:
 * wireguard: migrate non-netmask allowed IP entries and enforce them in validation
 * wireguard: show proper names when public keys overlap between instances
 * mvc: fix PHP_FLOAT_MIN being unreliable
-* mvc: Add simple Message class and remove the previous Phalcon dependency
+* mvc: add simple Message class and remove the previous Phalcon dependency
 * mvc: refactor HostnameField, remove HostValidator dependency and add unit test
 * mvc: add new static Autoconf class to access information collected by ifctl
 * mvc: fix rewind() stream not supporting seeking error
@@ -476,10 +476,10 @@ A hotfix release was issued as 24.1_1:
 
 Migration notes, known issues and limitations:
 
-* Audits and certifications are requiring us to restrict system accounts for non-administrators (without wheel group in particular).  It will no longer be able to use non-adminstrator accounts with shell access and permissions for sensitive files have been tightened to not be world-readable.  This may cause custom tooling to stop working, but can easily be fixed by giving these required accounts the full administration rights.
+* Audits and certifications are requiring us to restrict system accounts for non-administrators (without wheel group in particular).  It will no longer be possible to use non-adminstrator accounts with shell access and permissions for sensitive files have been tightened to not be world-readable.  This may cause custom tooling to stop working, but can easily be fixed by giving these required accounts the full administration rights.
 * ISC DHCP functionality is slowly being deprecated with the introduction of Kea as an alternative.  The work to replace the tooling of ISC DHCP is ongoing, but feature sets will likely differ for a long time therefore.
 * The move to the FreeBSD ports version of OpenSSL 3.0 is included and may disrupt third party repository use until those have been fixed and rebuilt accordingly.  Please note that we do not vet third party repositories and do not have control over them so their response time may vary.
-* The Squid web proxy functionality moves to a plugin and will no longer be installed by default for new installations. However, if you have Squid enabled the plugin will automatically be installed during the upgrade.  There is no code difference in the implementation and integration of the plugin compared to the core version.
+* The Squid web proxy functionality moves to a plugin and will no longer be installed by default for new installations.  However, if you have Squid enabled the plugin will automatically be installed during the upgrade.  There is no code difference in the implementation and integration of the plugin compared to the core version.
 
 The public key for the 24.1 series is:
 
