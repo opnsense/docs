@@ -21,6 +21,7 @@ Kea
     "``POST``","kea","dhcpv4","delPeer","$uuid"
     "``POST``","kea","dhcpv4","delReservation","$uuid"
     "``POST``","kea","dhcpv4","delSubnet","$uuid"
+    "``GET``","kea","dhcpv4","downloadReservations",""
     "``GET``","kea","dhcpv4","get",""
     "``GET``","kea","dhcpv4","get",""
     "``GET``","kea","dhcpv4","getPeer","$uuid=null"
@@ -33,6 +34,7 @@ Kea
     "``POST``","kea","dhcpv4","setPeer","$uuid"
     "``POST``","kea","dhcpv4","setReservation","$uuid"
     "``POST``","kea","dhcpv4","setSubnet","$uuid"
+    "``POST``","kea","dhcpv4","uploadReservations",""
 
     "``<<uses>>``", "", "", "", "*model* `KeaDhcpv4.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Kea/KeaDhcpv4.xml>`__"
 

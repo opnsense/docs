@@ -62,3 +62,26 @@ Proxy
     "``POST``","proxy","template","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/plugins/blob/master/www/squid/src/opnsense/mvc/app/models/OPNsense/Proxy/Proxy.xml>`__"
+
+.. csv-table:: Resources (AclController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","proxy","acl","addCustomPolicy",""
+    "``POST``","proxy","acl","addPolicy",""
+    "``POST``","proxy","acl","apply",""
+    "``POST``","proxy","acl","delCustomPolicy","$uuid"
+    "``POST``","proxy","acl","delPolicy","$uuid"
+    "``GET``","proxy","acl","get",""
+    "``GET``","proxy","acl","getCustomPolicy","$uuid=null"
+    "``GET``","proxy","acl","getPolicy","$uuid=null"
+    "``*``","proxy","acl","searchCustomPolicy",""
+    "``*``","proxy","acl","searchPolicy",""
+    "``POST``","proxy","acl","set",""
+    "``POST``","proxy","acl","setCustomPolicy","$uuid"
+    "``POST``","proxy","acl","setPolicy","$uuid"
+    "``POST``","proxy","acl","test",""
+    "``POST``","proxy","acl","toggleCustomPolicy","$uuid,$enabled=null"
+    "``POST``","proxy","acl","togglePolicy","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `ACL.xml <https://github.com/opnsense/plugins/blob/master/www/OPNProxy/src/opnsense/mvc/app/models/Deciso/Proxy/ACL.xml>`__"

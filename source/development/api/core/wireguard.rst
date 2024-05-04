@@ -6,9 +6,13 @@ Wireguard
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","wireguard","client","addClient",""
+    "``POST``","wireguard","client","addClientBuilder",""
     "``POST``","wireguard","client","delClient","$uuid"
     "``GET``","wireguard","client","get",""
     "``GET``","wireguard","client","getClient","$uuid=null"
+    "``GET``","wireguard","client","getClientBuilder",""
+    "``GET``","wireguard","client","getServerInfo","$uuid=null"
+    "``GET``","wireguard","client","listServers",""
     "``GET``","wireguard","client","psk",""
     "``*``","wireguard","client","searchClient",""
     "``POST``","wireguard","client","set",""

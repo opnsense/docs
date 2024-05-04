@@ -6,6 +6,7 @@ Syslog
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","syslog","service","reconfigure",""
+    "``POST``","syslog","service","reset",""
     "``POST``","syslog","service","restart",""
     "``POST``","syslog","service","start",""
     "``GET``","syslog","service","stats",""
