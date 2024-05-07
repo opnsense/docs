@@ -6,7 +6,7 @@ All traffic in OPNsense travels via interfaces. By default, WAN and LAN are assi
 GUESTNET (:doc:`captive portal </manual/captiveportal>`) and PFSYNC (:doc:`high availability </manual/hacarp>`).
 
 .. Note::
-    For legacy compatibility WAN interfaces set to type DHCP or interfaces with an *Upstream Gateway*
+    For legacy compatibility WAN interfaces set to type DHCP or interfaces with a *Gateway Rules* selection
     send reply packets to the corresponding gateway directly, also when the sender is on the same interface.
     This will break connectivity in some rare scenarios and can be disabled via
     **Firewall->Settings->Advanced->Disable reply-to**.
@@ -59,7 +59,7 @@ For IPv4:
 =============================== ===============================================================================================================================================================================================================
  **Static IPv4 configuration**
  IPv4 address
- IPv4 Upstream Gateway           When an Upstream Gateway is set, packets entering the interface will also sent out on the same interface when replied. In addition outbound nat will be set up automatically when mode is set to *Automatic* or *Hybrid*.
+ IPv4 gateway rules              When a gateway is set here, packets entering the interface will also sent out on the same interface when replied. In addition outbound NAT will be set up automatically when mode is set to *Automatic* or *Hybrid*.
  **DHCP client configuration**
  Configuration Mode
  Alias IPv4 address              Used as a fixed alias IPv4 address by the DHCP client.
@@ -99,7 +99,7 @@ For IPv6:
 ================================= ===============================================================================================================================================
  **Static IPv6 configuration**
  IPv6 address
- IPv6 Upstream Gateway
+ IPv6 gateway rules                When a gateway is set here, packets entering the interface will also sent out on the same interface when replied.
  Use IPv4 connectivity             Set the IPv6 address on the IPv4 PPP connectivity link.
  **DHCPv6 client configuration**
  Configuration Mode                Setting this to “Advanced” will make the settings below “Use VLAN priority” visible.
