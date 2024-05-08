@@ -109,7 +109,7 @@ General Settings - General
 Option                      Description
 =========================== ================================
 **enabled**                 `enable` or `disable` Caddy. If enabled, Caddy will serve the configuration and autostart with the OPNsense.
-**ACME Email**              e.g. `info@example.com`, it's optional for receiving Email updates on Let's Encrypt certificates.
+**ACME Email**              e.g. `info@example.com`, it's mandatory for receiving automatic ZeroSSL certificates. For Let's Encrypt it is still optional, but that can change at any point in time. To have a fully supported configuration, it should be seen as mandatory to provide an Email address.
 **Auto HTTPS**              `On (default)` creates automatic Let's Encrypt certificates for all domains that don't have more specific options set, like custom certificates.
 **Trusted Proxies**         If Cloudflare or another CDN provider is used, create an `Access List` with the IP addresses of that CDN and add it here. Add the same Access List to the domain this CDN tries to reach.
 **Abort Connections**       This option, when enabled, aborts all connections to the domain that don't match any specified handler or access list. This setting doesn't affect Let's Encrypt's ability to issue certificates, ensuring secure connections regardless of the option's status. If unchecked, the domain remains accessible even without a matching handler, allowing for connectivity and certificate checks, even in the absence of a configured upstream destination. When using Access Lists, enabling this option is recommended to reject unauthorized connections outright. Without this option, unmatched IP addresses will encounter an empty page instead of an explicit rejection, though the Access Lists continue to function and restrict access.
@@ -280,6 +280,7 @@ caddy: Tutorials
 ================
 
 .. Attention:: The tutorial section implies that `Prepare OPNsense for Caddy after installation` has been followed.
+.. Note:: Filling out `Description` fields is mandatory because they are used to display and reference items in forms and error messages.
 
 
 -------------------------------
@@ -290,7 +291,9 @@ Creating a simple reverse proxy
 
 Go to `Services - Caddy Web Server - General Settings`
 
-* Check **enabled** and press **Save**
+* Check **enabled**
+* Input a valid Email address into the `Acme Email` field. This should be seen as mandatory to receive automatic Let's Encrypt and ZeroSSL certificates.
+* Press **Save**
 
 Go to `Services - Caddy Web Server - Reverse Proxy - Domains`
 
