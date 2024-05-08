@@ -324,6 +324,43 @@ Options                        Values
 .. Note:: **Result:** HTTPS foo.example.com:80/443 --> OPNsense (Caddy) --> HTTP 192.168.10.1:80
 
 
+-------------------------------
+Restrict Access to internal IPs
+-------------------------------
+
+.. Tip:: The reverse proxy will accept all connections. Restricting access with a firewall rule, would impact all domains. That's where `Access Lists` come in handy. They can be used to restrict access per domain. In this example, they are used to restrict access to only internal IPv4 networks, refusing connections from the internet.
+
+Go to `Services - Caddy Web Server - Reverse Proxy - Access - Access Lists`
+
+* Press **+** to create a new `Access List`
+
+============================== ============================================================
+Options                        Values
+============================== ============================================================
+**Access List Name:**          ``private_ipv4``
+**Client IP Addresses:**       ``192.168.0.0/16`` ``172.16.0.0/12`` ``10.0.0.0/8``
+**Description:**               ``Allow access from private IPv4 ranges``
+============================== ============================================================
+
+* Press **Save**
+
+Go to `Services - Caddy Web Server - Reverse Proxy - Domains`
+
+* Edit an existing `Domain` or `Subdomain` and expand the `Access` Tab.
+
+============================== ====================
+Options                        Values
+============================== ====================
+**Access List:**               ``private_ipv4``
+============================== ====================
+
+* Press **Save** and **Apply**
+
+Now, all connections not having a private IPv4 address will be served an empty page for the chosen domain. To outright refuse the connection, the option ``Abort Connections`` in `Services: Caddy Web Server: General Settings` should be additionally enabled.
+
+.. Note:: Some applications might demand a HTTP Error code instead of having their connection refused, an example could be monitoring systems. For these, in `advanced mode` of `Access Lists`, a custom ``HTTP Response Code`` can be enabled.
+
+
 -----------------
 Using dynamic DNS
 -----------------
