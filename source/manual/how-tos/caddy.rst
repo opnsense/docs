@@ -56,7 +56,7 @@ Option                      Values
 =========================== ================================         
 **Interface**               ``WAN``
 **TCP/IP Version**          ``IPv4+IPv6``
-**Protocol**                ``TCP/UDP``
+**Protocol**                ``TCP``
 **Source**                  ``Any``
 **Destination**             ``This Firewall``
 **Destination port range**  from: ``HTTP`` to: ``HTTP``
