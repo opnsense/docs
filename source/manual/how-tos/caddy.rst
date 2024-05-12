@@ -632,7 +632,9 @@ Advanced Troubleshooting
 
 Sometimes, things don't work as expected. Caddy provides a few powerful debugging tools to see what's going on.
 
-.. Note:: As first troubleshooting step, change the global Log Level to `DEBUG`. This will log `everything` the reverse_proxy directive handles.
+.. Tip:: This section explains how to collect most relevant information to get help from the https://caddy.community.
+
+.. Note:: First, change the global Log Level to `DEBUG`. This will log `everything` the reverse_proxy directive handles. 
 
 Go to `Services - Caddy Web Server - General Settings - Log Settings`
 
@@ -643,9 +645,17 @@ Go to `Services - Caddy Web Server - Log File`
 
 * Change the dropdown from `INFORMATIONAL` to `DEBUG`
 
-Now the ``reverse_proxy`` debug logs will be visible.
+Now the ``reverse_proxy`` debug logs will be visible and can be downloaded.
 
-.. Note:: As troubleshooting for developers and experts, a special admin endpoint can be activated.
+.. Note:: Second, validate and download the Caddyfile.
+
+Go to `Services - Caddy Web Server - Diagnostics - Caddyfile`
+
+* Press the `Validate Caddyfile` button to make sure the current Caddyfile is valid.
+* Press the `Download` button to get this current Caddyfile.
+* If there are custom imports in ``/usr/local/etc/caddy/caddy.d/``, download the JSON configuration.
+
+.. Note:: Rarely, a performance profile might be requested. For this, a special admin endpoint can be activated.
 
 .. Attention:: This admin endpoint is deactivated by default. To enable it and access it on the OPNsense, follow these additional steps. Don't forget to deactivate it again. Anybody with network access to the admin endpoint can use REST API to change the running configuration of Caddy, without authentication.
 
