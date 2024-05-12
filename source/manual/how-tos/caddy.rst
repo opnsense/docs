@@ -632,7 +632,7 @@ Advanced Troubleshooting
 
 Sometimes, things don't work as expected. Caddy provides a few powerful debugging tools to see what's going on.
 
-.. Tip:: This section explains how to collect most relevant information to get help from the https://caddy.community.
+.. Tip:: This section explains how to obtain the required files to get help from https://caddy.community.
 
 .. Note:: First, change the global Log Level to `DEBUG`. This will log `everything` the reverse_proxy directive handles. 
 
