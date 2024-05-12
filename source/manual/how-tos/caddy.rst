@@ -56,7 +56,7 @@ Option                      Values
 =========================== ================================         
 **Interface**               ``WAN``
 **TCP/IP Version**          ``IPv4+IPv6``
-**Protocol**                ``TCP/UDP``
+**Protocol**                ``TCP``
 **Source**                  ``Any``
 **Destination**             ``This Firewall``
 **Destination port range**  from: ``HTTP`` to: ``HTTP``
@@ -109,7 +109,7 @@ General Settings - General
 Option                      Description
 =========================== ================================
 **enabled**                 `enable` or `disable` Caddy. If enabled, Caddy will serve the configuration and autostart with the OPNsense.
-**ACME Email**              e.g. `info@example.com`, it's optional for receiving Email updates on Let's Encrypt certificates.
+**ACME Email**              e.g. `info@example.com`, it's mandatory for receiving automatic ZeroSSL certificates. For Let's Encrypt it is still optional, but that can change at any point in time. To have a fully supported configuration, it should be seen as mandatory to provide an Email address.
 **Auto HTTPS**              `On (default)` creates automatic Let's Encrypt certificates for all domains that don't have more specific options set, like custom certificates.
 **Trusted Proxies**         If Cloudflare or another CDN provider is used, create an `Access List` with the IP addresses of that CDN and add it here. Add the same Access List to the domain this CDN tries to reach.
 **Abort Connections**       This option, when enabled, aborts all connections to the domain that don't match any specified handler or access list. This setting doesn't affect Let's Encrypt's ability to issue certificates, ensuring secure connections regardless of the option's status. If unchecked, the domain remains accessible even without a matching handler, allowing for connectivity and certificate checks, even in the absence of a configured upstream destination. When using Access Lists, enabling this option is recommended to reject unauthorized connections outright. Without this option, unmatched IP addresses will encounter an empty page instead of an explicit rejection, though the Access Lists continue to function and restrict access.
@@ -280,6 +280,7 @@ caddy: Tutorials
 ================
 
 .. Attention:: The tutorial section implies that `Prepare OPNsense for Caddy after installation` has been followed.
+.. Note:: Filling out `Description` fields is mandatory because they are used to display and reference items in forms and error messages.
 
 
 -------------------------------
@@ -290,7 +291,9 @@ Creating a simple reverse proxy
 
 Go to `Services - Caddy Web Server - General Settings`
 
-* Check **enabled** and press **Save**
+* Check **enabled**
+* Input a valid Email address into the `Acme Email` field. This should be seen as mandatory to receive automatic Let's Encrypt and ZeroSSL certificates.
+* Press **Save**
 
 Go to `Services - Caddy Web Server - Reverse Proxy - Domains`
 
@@ -319,6 +322,43 @@ Options                        Values
 
 .. Note:: After just a few seconds the Let's Encrypt certificate will be installed and the reverse proxy works. Check the Logfile for that. Now the TLS Termination reverse proxy is configured.
 .. Note:: **Result:** HTTPS foo.example.com:80/443 --> OPNsense (Caddy) --> HTTP 192.168.10.1:80
+
+
+-------------------------------
+Restrict Access to internal IPs
+-------------------------------
+
+.. Tip:: The reverse proxy will accept all connections. Restricting access with a firewall rule, would impact all domains. That's where `Access Lists` come in handy. They can be used to restrict access per domain. In this example, they are used to restrict access to only internal IPv4 networks, refusing connections from the internet.
+
+Go to `Services - Caddy Web Server - Reverse Proxy - Access - Access Lists`
+
+* Press **+** to create a new `Access List`
+
+============================== ============================================================
+Options                        Values
+============================== ============================================================
+**Access List Name:**          ``private_ipv4``
+**Client IP Addresses:**       ``192.168.0.0/16`` ``172.16.0.0/12`` ``10.0.0.0/8``
+**Description:**               ``Allow access from private IPv4 ranges``
+============================== ============================================================
+
+* Press **Save**
+
+Go to `Services - Caddy Web Server - Reverse Proxy - Domains`
+
+* Edit an existing `Domain` or `Subdomain` and expand the `Access` Tab.
+
+============================== ====================
+Options                        Values
+============================== ====================
+**Access List:**               ``private_ipv4``
+============================== ====================
+
+* Press **Save** and **Apply**
+
+Now, all connections not having a private IPv4 address will be served an empty page for the chosen domain. To outright refuse the connection, the option ``Abort Connections`` in `Services: Caddy Web Server: General Settings` should be additionally enabled.
+
+.. Note:: Some applications might demand a HTTP Error code instead of having their connection refused, an example could be monitoring systems. For these, in `advanced mode` of `Access Lists`, a custom ``HTTP Response Code`` can be enabled.
 
 
 -----------------
@@ -592,7 +632,9 @@ Advanced Troubleshooting
 
 Sometimes, things don't work as expected. Caddy provides a few powerful debugging tools to see what's going on.
 
-.. Note:: As first troubleshooting step, change the global Log Level to `DEBUG`. This will log `everything` the reverse_proxy directive handles.
+.. Tip:: This section explains how to obtain the required files to get help from https://caddy.community.
+
+.. Note:: First, change the global Log Level to `DEBUG`. This will log `everything` the reverse_proxy directive handles. 
 
 Go to `Services - Caddy Web Server - General Settings - Log Settings`
 
@@ -603,9 +645,17 @@ Go to `Services - Caddy Web Server - Log File`
 
 * Change the dropdown from `INFORMATIONAL` to `DEBUG`
 
-Now the ``reverse_proxy`` debug logs will be visible.
+Now the ``reverse_proxy`` debug logs will be visible and can be downloaded.
 
-.. Note:: As troubleshooting for developers and experts, a special admin endpoint can be activated.
+.. Note:: Second, validate and download the Caddyfile.
+
+Go to `Services - Caddy Web Server - Diagnostics - Caddyfile`
+
+* Press the `Validate Caddyfile` button to make sure the current Caddyfile is valid.
+* Press the `Download` button to get this current Caddyfile.
+* If there are custom imports in ``/usr/local/etc/caddy/caddy.d/``, download the JSON configuration.
+
+.. Note:: Rarely, a performance profile might be requested. For this, a special admin endpoint can be activated.
 
 .. Attention:: This admin endpoint is deactivated by default. To enable it and access it on the OPNsense, follow these additional steps. Don't forget to deactivate it again. Anybody with network access to the admin endpoint can use REST API to change the running configuration of Caddy, without authentication.
 
