@@ -73,10 +73,6 @@ All reports should contain at least the following information:
 * Any known workaround
 * When possible, some example code
 
-Our GPG information for delivering encrypted emails is as follows:
-
-* GPG Key ID: D3C7FBDB
-* GPG Fingerprint: 97D5 0C7F EC38 22D0 85AE  51B1 C271 8D7A D3C7 FBDB
 
 ------------------------------------------------------------
 Information handling policies
