@@ -48,7 +48,7 @@ Network translation of the firewall therefor also creating an ingress flow.
 If you are not interested in ingress traffic then OPNsense offers the option to
 filter this traffic. When utilizing a proxy on the same device its important to
 capture the ingress flows as well, otherwise all proxy traffic won't be visible.
-Downside is of course that all traffic not passing the proxy will we counted twice
+Downside is of course that all traffic not passing the proxy will be counted twice
 due to the mentioned NAT effect.
 
 ----------------
