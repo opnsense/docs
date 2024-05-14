@@ -173,7 +173,7 @@ Option                              Description
 **Dynamic DNS**                     Enable Dynamic DNS. This option needs the `General Settings - DNS Provider` configured. The DNS Records of this domain will be automatically updated with the chosen DNS Provider.
 **>Trust**                          Certificate options
 **DNS-01 challenge**                Enable this for using DNS-01 instead of HTTP-01 and TLS-ALPN-01 challenge. This can be set per entry, so both types of challenges can be used at the same time for different entries. This option needs the `General Settings - DNS Provider` configured.
-**HTTP-01 challenge redirection**   Enter a domain name or IP address. The HTTP-01 challenge will be redirected to that destination. This enables a server behind Caddy to serve ``/.well-known/acme-challenge/``. Caddy will issue a certificate for the same domain using the TLS-ALPN-01 challenge or DNS-01 challenge instead. Please note that his is a complex scenario, Caddy can *only* continue to get automatic certificates if it can listen on Port 443 - so either specify 443 directly or leave the Port empty. Having the domain listen on any other port than 443 will mean the TLS-ALPN-01 challenge will fail too, and there won't be any automatic certificates. If the requirement is a different port than 443, the DNS-01 challenge will remain the only option. This option can also be used to redirect the HTTP-01 challenge to Caddy on a backup OPNsense firewall in a HA setup.
+**HTTP-01 challenge redirection**   Enter a domain name or IP address. The HTTP-01 challenge will be redirected to that destination. This enables a server with an ACME client behind Caddy to serve "/.well-known/acme-challenge/" for the domain name set in `Domain`. Caddy will issue a certificate for the same domain (for the Caddy server itself) using the TLS-ALPN-01 challenge or DNS-01 challenge instead. Setting this option on a wildcard domain will pass the challenge for all its subdomains to a single server behind Caddy. For finer control, use this option in subdomains instead of their wildcard domain. Please note that his is a complex scenario, Caddy can *only* continue to get automatic certificates if it can listen on Port 443 - so either specify 443 directly or leave the Port empty. Having the domain listen on any other port than 443 will mean the TLS-ALPN-01 challenge will fail too, and there won't be any automatic certificates. If the requirement is a different port than 443, the DNS-01 challenge will remain the only option. This option can also be used to redirect the HTTP-01 challenge to Caddy on a backup OPNsense firewall in a HA setup.
 **Custom Certificate**              Use a certificate imported or generated in `System - Trust - Certificates`. The chain is generated automatically. Certificate + Intermediate CA + Root CA, Certificate + Root CA and self signed Certificate are all fully supported. Only SAN certificates will work.
 **>Access**                         Access options
 **Access List**                     Restrict the access to this domain to a list of IP addresses defined in the Access Tab. This doesn't influence Let's Encrypt certificate generation.
@@ -194,6 +194,8 @@ Option                      Description
 =========================== ================================
 
 .. Note:: For the other options refer to `Reverse Proxy - Domains`. It's best to leave `Access Lists` and `Basic Auth` unconfigured in wildcard domains, and set these per subdomain.
+
+.. Attention:: When using the HTTP-01 challenge redirection in a subdomain, don't enable it on its wildcard domain at the same time. The wildcard domain matches first. Since Caddy doesn't issue automatic certificates on subdomains, this option is only needed to enable servers behind Caddy to issue ACME certificates. It is not needed for HA.
 
 
 -----------------------
@@ -464,7 +466,7 @@ Sometimes an application behind Caddy uses its own ACME Client to get certificat
 
 .. Note:: Make sure the chosen domain is externally resolvable. Create an A-Record with an external DNS Provider that points to the external IP Address of the OPNsense. In case of IPv6 availability, it is mandatory to create an AAAA-Record too, otherwise the TLS-ALPN-01 challenge might fail.
 
-.. Attention:: It is mandatory that the domain in Caddy uses an empty port or 443 in the GUI, otherwise it can't use the TLS-ALPN-01 challenge for itself. The upstream destination has to listen on Port 80 and serve ``/.well-known/acme-challenge/``, for the same domain that is configured in Caddy.
+.. Attention:: It is mandatory that the domain in Caddy uses an empty port or 443 in the GUI, otherwise it can't use the TLS-ALPN-01 challenge for itself. The upstream destination has to listen on Port 80 with its own ACME client and serve ``/.well-known/acme-challenge/``, for the same domain that is configured in Caddy. Caddy *does not* copy certificates to that destination, for such a usecase there is the os-acme-client plugin, which can run alongside Caddy just fine.
 
 Go to `Services - Caddy Web Server - Reverse Proxy - Domains`
 
