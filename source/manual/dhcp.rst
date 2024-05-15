@@ -131,7 +131,7 @@ Destinations
 +---------------+-----------------------------------------------------------------------------------------------------------+
 | Setting       | Explanation                                                                                               |
 +===============+===========================================================================================================+
-| Name          | A descriptive mane of the reusable relay destination                                                      |
+| Name          | A descriptive name of the reusable relay destination                                                      |
 +---------------+-----------------------------------------------------------------------------------------------------------+
 | Server        | A comma separated list of IPs to which the requests should be forwarded. Can be IPv4 or IPv6 exclusively. |
 +---------------+-----------------------------------------------------------------------------------------------------------+
@@ -143,7 +143,7 @@ Relays
 +-----------------------+---------------------------------------------------------------------------------------------------+
 | Setting               | Explanation                                                                                       |
 +==========+================================================================================================================+
-| Enable                |                                                                                                   |
+| Enable                | Check to enable this entry                                                                        |
 +-----------------------+---------------------------------------------------------------------------------------------------+
 | Interface             | Which interface to apply relaying to. Only interfaces with an Ethernet address can be selected.   |
 |                       | Only one interface per destination per address family is allowed.                                 |
