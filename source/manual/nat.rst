@@ -172,8 +172,7 @@ API access
 --------------------
 
 
-Partial API access, for outbound NAT, is provided with the :code:`os-firewall` plugin, which is described in more detail in
-the :doc:`firewall <../development/api/plugins/firewall>` api reference manual.
+Partial API access, is available and described in more detail in the :doc:`firewall <../development/api/core/firewall>` api reference manual.
 
 -------
 How-tos

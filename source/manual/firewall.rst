@@ -426,5 +426,4 @@ API access
 --------------------
 
 
-Partial API access is provided with the :code:`os-firewall` plugin, which is described in more detail in
-the :doc:`firewall <../development/api/plugins/firewall>` api reference manual.
+Partial API access is described in more detail in the :doc:`firewall <../development/api/core/firewall>` api reference manual.

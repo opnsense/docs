@@ -157,6 +157,7 @@ More information on how to utilize OPNsense's proxy service can be found in:
    :maxdepth: 2
    :titlesonly:
 
+   /manual/opnproxy
    /manual/how-tos/cachingproxy
    /manual/how-tos/guestnet
    /manual/how-tos/pac

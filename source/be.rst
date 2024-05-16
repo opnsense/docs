@@ -33,7 +33,6 @@ more information:
    :titlesonly:
 
    vendor/deciso/opncentral
-   vendor/deciso/opnproxy
    vendor/deciso/opnwaf
    vendor/deciso/extended_dnsbl
 
