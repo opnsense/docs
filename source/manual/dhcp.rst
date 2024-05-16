@@ -121,6 +121,9 @@ showing "All Interfaces".
 DHCRelay
 -----------------
 
+.. _dhcp-relaying:
+
+
 DHCP relaying is the forwarding of DHCP requests received on one interface to the DHCP server of another. DHCP
 relaying is available for both DHCPv4 and DHCPv6. The settings can be found at :menuselection:`Services --> DHCRelay`.
 
