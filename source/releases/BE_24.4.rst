@@ -257,6 +257,13 @@ Here are the full patch notes:
 * ports: suricata 7.0.4 `[34] <https://suricata.io/2024/03/19/suricata-7-0-4-and-6-0-17-released/>`__ 
 * ports: syslog-ng 4.6.0 `[35] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.6.0>`__ 
 
+A hotfix release was issued as 24.4_5:
+
+* system: prevent out of memory on gateways migrations
+* system: adjust log levels in Google Drive backup
+* ipsec: allow the equal sign for identity parsing in connections
+* plugins: os-OPNBEcore fix for rule sync behaviour
+
 Migration notes, known issues and limitations:
 
 * Audits and certifications are requiring us to restrict system accounts for non-administrators (without wheel group in particular).  It will no longer be possible to use non-adminstrator accounts with shell access and permissions for sensitive files have been tightened to not be world-readable.  This may cause custom tooling to stop working, but can easily be fixed by giving these required accounts the full administration rights.
