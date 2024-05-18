@@ -28,6 +28,69 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.1.7 (May 16, 2024)
+--------------------------------------------------------------------------
+
+
+Python was updated to version 3.11 along with the usual reliability patches
+in the core, plugins and third party software.
+
+At the moment we are working on removing most of the Phalcon framework
+dependencies which have the side effect of speeding up the MVC/API bits.
+The new dashboard is also taking shape.  Try it on the development version
+if you can and let us know what you think.
+
+Here are the full patch notes:
+
+* system: fix maximum log file size being ignored when there is only one file
+* system: make log rotate action available to Cron
+* system: remove get_current_theme() and improve static page templating
+* system: move radvd and rtsold to system log where they belong
+* system: deny access to .core files from web GUI and disable core dumps by default
+* system: adjust log levels in Google Drive backup
+* system: prevent out of memory on gateways migrations
+* interfaces: give DAD another second of delay to finish for the IPv6 renew
+* interfaces: reword the gateway selector default and help text to describe its function more accurately
+* ipsec: allow the equal sign for identity parsing in connections
+* isc-dhcp: make private consumers actually private where it matters
+* kea-dhcp: generate JSON payload from model
+* kea-dhcp: fix field separator for subnet domain search (contributed by KitKat31337)
+* openvpn: fix "attempt to read property..." in status page
+* openvpn: safeguard config access in updown_event.py
+* wireguard: pass endpoint to validator to avoid invalid QR code errors on mobile app
+* wireguard: add MTU when set on the instance
+* backend: allow to query multiple sysctl queries at once
+* mvc: pass isFieldChanged() to children in ContainerField
+* mvc: replace \Phalcon\Filter\Validation\Exception with \OPNsense\Base\ValidationException wrapper
+* mvc: extend model implementation to ease legacy migrations
+* mvc: change exception handling in runMigrations() to avoid mismatches in attributes being silently ignored
+* mvc: refactor grid search to fetch descriptive values from the model instead of trying to reconstruct them
+* mvc: replace array_map+strval for loop with cast to preserve execution time in BaseListField
+* ui: fix bootgrid parsing of timestamp
+* ui: improve tokenizer paste behaviour
+* plugins: os-acme-client 4.3 `[1] <https://github.com/opnsense/plugins/blob/stable/24.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-caddy 1.5.5 `[2] <https://github.com/opnsense/plugins/blob/stable/24.1/www/caddy/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.8 `[3] <https://github.com/opnsense/plugins/blob/stable/24.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.23 `[4] <https://github.com/opnsense/plugins/blob/stable/24.1/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.40 `[5] <https://github.com/opnsense/plugins/blob/stable/24.1/net/frr/pkg-descr>`__ 
+* plugins: os-relayd 2.9 moves validation to model where it belongs
+* plugins: os-shadowsocks 1.1 adds transport mode option (contributed by xabbok255)
+* plugins: os-squid workaround for broken OpenSSL legacy provider handling
+* plugins: os-telegraf 1.12.11 `[6] <https://github.com/opnsense/plugins/blob/stable/24.1/net-mgmt/telegraf/pkg-descr>`__ 
+* ports: libpfctl 0.11
+* ports: libucl 0.9.2
+* ports: lighttpd 1.4.76 `[7] <https://www.lighttpd.net/2024/4/12/1.4.76/>`__ 
+* ports: php 8.2.19 `[8] <https://www.php.net/ChangeLog-8.php#8.2.19>`__ gg
+* ports: pecl-mcrypt 1.0.7
+* ports: python 3.11.9 `[9] <https://docs.python.org/release/3.11.9/whatsnew/changelog.html>`__ 
+* ports: strongswan 5.9.14 `[10] <https://github.com/strongswan/strongswan/releases/tag/5.9.14>`__ 
+* ports: suricata 7.0.5 `[11] <https://suricata.io/2024/04/23/suricata-7-0-5-and-6-0-19-released/>`__ 
+* ports: syslog-ng 4.7.1 `[12] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.7.1>`__ 
+* ports: unbound 1.20.0 `[13] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-20-0>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.1.6 (April 18, 2024)
 --------------------------------------------------------------------------
 

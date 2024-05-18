@@ -8,7 +8,7 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *280* releases leading to the latest version *24.1.6*
+As of January 2015 there have been *281* releases leading to the latest version *24.1.7*
 named "Savvy Shark".
 
 
