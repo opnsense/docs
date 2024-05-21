@@ -35,6 +35,8 @@ Installation
 
 * Install "os-caddy" from the OPNsense Plugins.
 
+.. _prepare-opnsense-caddy:
+
 
 ---------------------------------------------
 Prepare OPNsense for Caddy After Installation
@@ -88,7 +90,7 @@ FAQ
 .. spacer::
 * Firewall rules to allow Caddy to reach upstream destinations are not required. OPNsense has a default rule that allows all traffic originating from it to be allowed.
 .. spacer::
-* ACME Clients on reverse proxied upstream destinations will not be able to issue certificates. Caddy intercepts ``/.well-known/acme-challenge``. This can be solved by using the `HTTP-01 challenge redirection` option in the advanced mode of domains. Please check the tutorial section for an example.
+* ACME Clients on reverse proxied upstream destinations will not be able to issue certificates. Caddy intercepts ``/.well-known/acme-challenge``. This can be solved by using the `HTTP-01 Challenge Redirection` option in the advanced mode of domains. Please check the tutorial section for an example.
 .. spacer::
 * When using Caddy with IPv6, the best choice is to have a GUA (Global Unicast Address) on the WAN interface, since otherwise the TLS-ALPN-01 challenge might fail.
 .. spacer::
@@ -105,7 +107,7 @@ FAQ
 Caddy: Tutorials
 ================
 
-.. Attention:: The tutorial section implies that `Prepare OPNsense for Caddy after installation` has been followed.
+.. Attention:: The tutorial section implies that :ref:`Prepare OPNsense for Caddy after installation <prepare-opnsense-caddy>` has been followed.
 .. Note:: Filling out `Description` fields is mandatory because they are used to display and reference items in forms and error messages.
 
 
@@ -148,6 +150,8 @@ Options                        Values
 
 .. Note:: After just a few seconds the automatic certificate will be installed, check the Logfile.
 
+.. _accesslist-opnsense-caddy:
+
 
 -------------------------------
 Restrict Access to Internal IPs
@@ -181,7 +185,7 @@ Options                        Values
 
 * Press **Save** and **Apply**
 
-Now, all connections not having a private IPv4 address will be served an empty page for the chosen domain. To outright refuse the connection, the option ``Abort Connections`` in `Services: Caddy Web Server: General Settings` should be additionally enabled.
+Now, all connections not having a private IPv4 address will be served an empty page for the chosen domain. To outright refuse the connection, the option ``Abort Connections`` in :menuselection:`Services --> Caddy Web Server --> General Settings` should be additionally enabled.
 
 .. Note:: Some applications might demand a HTTP Error code instead of having their connection aborted, an example could be monitoring systems. For these a custom ``HTTP Response Code`` can be enabled.
 
@@ -202,7 +206,7 @@ Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> Dyn
 * Choose if `DynDns IP Version` should include IPv4 and/or IPv6.
 * Press **Save**
 
-Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy –-> Domains`
+Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Domains`
 
 * Press **+** to create a new `Domain`. ``mydomain.duckdns.org`` is an example if `duckdns` is used as DNS Provider.
 
@@ -226,7 +230,8 @@ Options                        Values
 
 * Press **Save** and **Apply**
 
-.. Tip:: Check the Logfile for the dynamic dns updates.
+.. Tip:: Check the Logfile for the dynamic dns updates. Filter for the chosen domain.
+.. Tip:: In addition to `Dynamic DNS`, the `DNS-01 Challenge` can also be selected.
 
 
 ---------------------------------
@@ -280,7 +285,7 @@ Go to :menuselection:`System --> Settings --> Administration`
 * Press **Save**
 
 .. Note:: Open ``https://opn.example.com`` and it should serve the reverse proxied OPNsense WebUI. Check the log file for errors if it does not work, most of the time the `TLS Server Name` doesn't match the SAN of the `TLS Trusted CA Certificate`. Caddy does not support certificates with only a CN `Common Name`.
-.. Attention:: Create an `Access List` to restrict access to the WebUI.
+.. Attention:: Create an :ref:`Access List <accesslist-opnsense-caddy>` to restrict access to the WebUI.
 .. Tip:: The same approach can be used for any upstream destination using TLS and a self-signed certificate.
 
 
@@ -294,7 +299,7 @@ Sometimes an application behind Caddy uses its own ACME Client to get certificat
 
 .. Attention:: It is mandatory that the domain in Caddy uses an ``empty port`` or ``443`` in the GUI, otherwise it can not use the TLS-ALPN-01 challenge for itself. The upstream destination has to listen on Port ``80`` and serve ``/.well-known/acme-challenge/``, for the same domain that is configured in Caddy.
 
-Go to :menuselection:``Services - Caddy Web Server - Reverse Proxy - Domains``
+Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Domains`
 
 * Press **+** to create a new `Domain`
 
@@ -428,8 +433,8 @@ There are three methods that support XMLRPC sync:
 .. Note:: These methods can be mixed, just make sure to use a coherent configuration. It is best to decide for one method. Only `Domains` need configuration, `Subdomains` do not need any configuration for HA.
 
 * Using custom certificates from the OPNsense Trust store for all `Domains`.
-* Using the `DNS-01 challenge` in the settings of `Domains`.
-* Using the `HTTP-01 challenge redirection` option in the advanced settings of `Domains`.
+* Using the `DNS-01 Challenge` in the settings of `Domains`.
+* Using the `HTTP-01 Challenge Redirection` option in the advanced settings of `Domains`.
 
 Since the `HTTP-01 Challenge Redirection` needs some additional steps to work, it should be set up as followed:
 
@@ -506,4 +511,4 @@ Using Custom Configuration Files
 * ``*.global`` files will be imported into the global block of the Caddyfile.
 * ``*.conf`` files will be imported at the end of the Caddyfile. Don't forget to test the custom configuration with ``caddy validate --config /usr/local/etc/caddy/Caddyfile``.
 
-.. Note:: With these imports, the full potential of Caddy can be unlocked. The GUI options will remain focused on the reverse proxy. There is no community support for configurations that have not been created with the offered GUI.
+.. Note:: With these imports, the full potential of Caddy can be unlocked. The GUI options will remain focused on the reverse proxy. There is no OPNsense community support for configurations that have not been created with the offered GUI. For customized configurations, the Caddy community is the right place to ask.
