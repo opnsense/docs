@@ -264,6 +264,17 @@ A hotfix release was issued as 24.4_5:
 * ipsec: allow the equal sign for identity parsing in connections
 * plugins: os-OPNBEcore fix for rule sync behaviour
 
+A hotfix release was issued as 24.4_7:
+
+* system: work around fatal password_hash() change in PHP 8.2.18
+* monit: fix referential constraint issue when dependency is removed
+* ports: openssl fix for CVE-2024-4603
+
+A hotfix release was issued as 24.4_8:
+
+* system: fix regression in gateways migration causing far gateway option to be set incorrectly
+* ports: dhcrelay 0.5 fixes endless loop on packet read
+
 Migration notes, known issues and limitations:
 
 * Audits and certifications are requiring us to restrict system accounts for non-administrators (without wheel group in particular).  It will no longer be possible to use non-adminstrator accounts with shell access and permissions for sensitive files have been tightened to not be world-readable.  This may cause custom tooling to stop working, but can easily be fixed by giving these required accounts the full administration rights.

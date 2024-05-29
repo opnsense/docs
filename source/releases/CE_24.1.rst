@@ -28,6 +28,62 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.1.8 (May 29, 2024)
+--------------------------------------------------------------------------
+
+
+The endless loop packet read in the new dhcrelay daemon has been fixed.
+A new kernel is included in this release bringing the latest stable/13
+state in the relevant networking areas.  A number of small changes have
+also been made.  Thanks for all the reports and support!
+
+To spread the news...  24.7 will be based on FreeBSD 14.1.  Stay tuned.
+
+Here are the full patch notes:
+
+* system: fix regression in gateways migration causing far gateway option to be set incorrectly
+* system: work around fatal password_hash() change in PHP 8.2.18
+* system: move net.inet.icmp.drop_redirect sysctl to automatic mode
+* system: add Google Drive configuration as an XMLRPC sync target
+* interfaces: detect and ignore "detached" state for IPv6
+* interfaces: remove unused imports from sockstat list
+* firewall: use the new $.replaceInputWithSelector() for source/destination networks in MVC filter pages
+* firewall: fix empty rule label rendered as "null" on sessions page
+* ipsec: fix faulty "-" usage in URIs
+* isc-dhcp: take into account that multple ia-pd can be delegated
+* kea-dhcp: simplified the controller code
+* unbound: change blocklist processing in _blocklist_reader()
+* unbound: allow RFC 2181 compatible names in query forwarding
+* mvc: silence spurious validation message when explicitly asked to ignore them
+* ui: prevent vertical modal overflows and instead present a scrollbar
+* ui: add $.replaceInputWithSelector() action
+* ui: handle static page CSRF without Phalcon
+* plugins: os-caddy 1.5.6 `[1] <https://github.com/opnsense/plugins/blob/stable/24.1/www/caddy/pkg-descr>`__ 
+* src: pfsync: fix use of invalidated stack variable
+* src: pfsync: cope with multiple pending plus messages
+* src: ipfw: skip to the start of the loop when following a keep-state rule
+* src: bridge: use IF_MINMTU
+* src: bridge: change MTU for new members
+* src: ethernet: support ARP for 802 networks
+* src: ethernet: fix logging of frame length
+* src: debugnet: fix logging of frame length
+* src: wg: use ENETUNREACH when transmitting to a non-existent peer
+* src: fib_algo: lower level of algorithm switching messages to LOG_INFO
+* src: libpfctl: fix incorrect pcounters array size
+* src: pf: always mark states as unlinked before detaching them
+* src: vxlan: add checking for loops and nesting of tunnels
+* src: igc: increase default per-queue interrupt rate to 20000
+* ports: dhcrelay 0.5 fixes endless loop on packet read
+* ports: hyperscan 5.4.2 `[2] <https://github.com/intel/hyperscan/releases/tag/v5.4.2>`__ 
+* ports: libxml 2.11.8 `[3] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: ntp 4.2.8p18 `[4] <https://www.ntp.org/support/securitynotice/4_2_8-series-changelog/#428p18>`__ 
+* ports: openssl fix for CVE-2024-4603
+* ports: phalcon 5.7.0 `[5] <https://github.com/phalcon/cphalcon/releases/tag/v5.7.0>`__ 
+* ports: py-duckdb 0.10.3 `[6] <https://github.com/duckdb/duckdb/releases/tag/v0.10.3>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.1.7 (May 16, 2024)
 --------------------------------------------------------------------------
 
@@ -80,13 +136,23 @@ Here are the full patch notes:
 * ports: libpfctl 0.11
 * ports: libucl 0.9.2
 * ports: lighttpd 1.4.76 `[7] <https://www.lighttpd.net/2024/4/12/1.4.76/>`__ 
-* ports: php 8.2.19 `[8] <https://www.php.net/ChangeLog-8.php#8.2.19>`__ gg
+* ports: php 8.2.19 `[8] <https://www.php.net/ChangeLog-8.php#8.2.19>`__ 
 * ports: pecl-mcrypt 1.0.7
 * ports: python 3.11.9 `[9] <https://docs.python.org/release/3.11.9/whatsnew/changelog.html>`__ 
 * ports: strongswan 5.9.14 `[10] <https://github.com/strongswan/strongswan/releases/tag/5.9.14>`__ 
 * ports: suricata 7.0.5 `[11] <https://suricata.io/2024/04/23/suricata-7-0-5-and-6-0-19-released/>`__ 
 * ports: syslog-ng 4.7.1 `[12] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.7.1>`__ 
 * ports: unbound 1.20.0 `[13] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-20-0>`__ 
+
+A hotfix release was issued as 24.1.7_4:
+
+* monit: fix referential constraint issue when dependency is removed
+* wireguard: move validation to correct spot when no instance address and peer address was provided
+* wireguard: also validate hostnames correctly in peer generator endpoint
+* backend: resolve deprecation warnings for sre_constants (contributed by MaxXor)
+* plugins: os-caddy fix for setup.sh not executing on a reload
+* plugins: os-crowdsec fix for LAPI mode startup problem
+* plugins: os-squid fix for another netaddr/ipaddr related migration issue
 
 
 
