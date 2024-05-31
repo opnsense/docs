@@ -17,7 +17,7 @@ Main features of this plugin:
 
 * Easy to configure and reliable! Reverse Proxy any HTTP/HTTPS or WebSocket application in minutes.
 * Hard to break! Extensive validations of the configuration on each save and apply.
-* Automatic Let's Encrypt and ZeroSSL Certificates with HTTP-01 and TLS-ALPN-01 challenge
+* Automatic Let's Encrypt and ZeroSSL certificates with HTTP-01 and TLS-ALPN-01 challenge
 * DNS-01 challenge and Dynamic DNS with supported DNS Providers built right in
 * Use custom certificates from OPNsense certificate store
 * Wildcard Domain and Subdomain support
@@ -42,11 +42,11 @@ Installation
 Prepare OPNsense for Caddy After Installation
 ---------------------------------------------
 
-.. Attention:: Caddy uses port `80` and `443`. So the OPNsense WebUI or other plugins can't bind to these ports.
+.. Attention:: Caddy uses port `80` and `443`. So the OPNsense WebGUI or other plugins can't bind to these ports.
 
 Go to :menuselection:`System --> Settings --> Administration`
 
-* Change the `TCP Port` to `8443` (example), do not forget to adjust the firewall rules to allow access to the WebUI. On `LAN` there is a hidden `anti-lockout` rule that takes care of this automatically. On other interfaces, make sure to add explicit rules.
+* Change the `TCP Port` to `8443` (example), do not forget to adjust the firewall rules to allow access to the WebGUI. On `LAN` there is a hidden `anti-lockout` rule that takes care of this automatically. On other interfaces, make sure to add explicit rules.
 * Enable the checkbox for `HTTP Redirect - Disable web GUI redirect rule`.
 
 Go to :menuselection:`Firewall --> Rules --> WAN`
@@ -84,19 +84,13 @@ Go to :menuselection:`Firewall --> Rules --> LAN` and create the same rules for 
 FAQ
 ---
 
-* A `DNS Provider` is not required. With a static WAN IP, just skip the `DNS Provider` configuration and do not check the `DNS-01 challenge` and `Dynamic DNS` checkboxes. `Let's Encrypt` or `ZeroSSL` will work with `HTTP-01` (Port 80) or `TLS-ALPN-01` (Port 443) challenge automatically.
-.. spacer::
-* `Port Forwards`, `NAT Reflection`, `Split Horizon DNS` or `DNS Overrides` in Unbound are not required. Only create Firewall rules that allow traffic to the default ports of Caddy.
-.. spacer::
-* Firewall rules to allow Caddy to reach upstream destinations are not required. OPNsense has a default rule that allows all traffic originating from it to be allowed.
-.. spacer::
-* ACME Clients on reverse proxied upstream destinations will not be able to issue certificates. Caddy intercepts ``/.well-known/acme-challenge``. This can be solved by using the `HTTP-01 Challenge Redirection` option in the advanced mode of domains. Please check the tutorial section for an example.
-.. spacer::
-* When using Caddy with IPv6, the best choice is to have a GUA (Global Unicast Address) on the WAN interface, since otherwise the TLS-ALPN-01 challenge might fail.
-.. spacer::
-* `Let's Encrypt` or `ZeroSSL` can not be explicitely chosen. Caddy automatically issues one of these options, determined by speed and availability. These certificates can be found in ``/var/db/caddy/data/caddy/certificates``.
-.. spacer::
-* When an `Upstream Destination` only supports TLS connections, yet does not offer a valid certificate, enable ``TLS Insecure Skip Verify`` in a `Handler` to mitigate connection problems.
+* | A `DNS Provider` is not required. With a static WAN IP, just skip the `DNS Provider` configuration and do not check the `DNS-01 challenge` and `Dynamic DNS` checkboxes. `Let's Encrypt` or `ZeroSSL` will work with `HTTP-01` (Port 80) or `TLS-ALPN-01` (Port 443) challenge automatically.
+* | `Port Forwards`, `NAT Reflection`, `Split Horizon DNS` or `DNS Overrides` in Unbound are not required. Only create Firewall rules that allow traffic to the default ports of Caddy.
+* | Firewall rules to allow Caddy to reach upstream destinations are not required. OPNsense has a default rule that allows all traffic originating from it to be allowed.
+* | ACME Clients on reverse proxied upstream destinations will not be able to issue certificates. Caddy intercepts ``/.well-known/acme-challenge``. This can be solved by using the `HTTP-01 Challenge Redirection` option in the advanced mode of domains. Please check the tutorial section for an example.
+* | When using Caddy with IPv6, the best choice is to have a GUA (Global Unicast Address) on the WAN interface, since otherwise the TLS-ALPN-01 challenge might fail.
+* | `Let's Encrypt` or `ZeroSSL` can not be explicitely chosen. Caddy automatically issues one of these options, determined by speed and availability. These certificates can be found in ``/var/db/caddy/data/caddy/certificates``.
+* | When an `Upstream Destination` only supports TLS connections, yet does not offer a valid certificate, enable ``TLS Insecure Skip Verify`` in a `Handler` to mitigate connection problems.
 
 .. Attention:: There is no TCP/UDP stream and WAF (Web Application Firewall) support in this plugin. For a business grade Reverse Proxy with WAF functionality, use ``os-OPNWAF``. For TCP/UDP streaming, use either ``os-nginx`` or ``os-haproxy``.
 
@@ -119,36 +113,43 @@ Creating a Simple Reverse Proxy
 
 Go to :menuselection:`Services --> Caddy Web Server --> General Settings`
 
-* Check **enabled**
-* Input a valid Email address into the `Acme Email` field. This is mandatory to receive automatic `Let's Encrypt` and `ZeroSSL` certificates.
+* Check **enabled** to enable Caddy
+* Input a valid email address into the `Acme Email` field. This is mandatory to receive automatic `Let's Encrypt` and `ZeroSSL` certificates.
 * Press **Save**
 
 Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Domains`
 
-* Press **+** to create a new `Domain`
+* Press **+** to create a new `Domain`, this will be the frontend that receives the traffic for the chosen domain name.
 
-============================== ====================
+============================== =====================================================================
 Options                        Values
-============================== ====================
+============================== =====================================================================
 **Domain:**                    ``foo.example.com``
-============================== ====================
+**Port:**                      `Leave empty to use port 443 with automatic redirection from port 80`
+**Description:**               ``foo.example.com - frontend``
+============================== =====================================================================
 
 * Press **Save**
 
 Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Handler`
 
-* Press **+** to create a new `Handler`
+* Press **+** to create a new `Handler`, this will route the traffic from the frontend domain to the upstream destination.
 
-============================== ====================
+============================== ======================================================================
 Options                        Values
-============================== ====================
+============================== ======================================================================
 **Domain:**                    ``foo.example.com``
+**Description:**               ``foo.example.com - upstream``
 **Upstream Domain:**           ``192.168.10.1``
-============================== ====================
+**Upstream Port:**             `Leave empty to use port 80, or input a custom port like e.g., 8080`
+**TLS Insecure Skip Verify**   `Enable this, if the upstream destination requires HTTPS connection`
+============================== ======================================================================
 
 * Press **Save** and **Apply**
 
-.. Note:: After just a few seconds the automatic certificate will be installed, check the Logfile.
+.. Note:: After just a few seconds the automatic certificate will be installed, check the Logfile. Now the frontend domain ``foo.example.com`` receives all requests on Port 80 and 443, and reverse proxies these requests to the upstream destination ``192.168.10.1:80``
+
+.. Tip:: `TLS Insecure Skip Verify` can be used in private networks. If the upstream destination is in an insecure network, like the internet or a dmz, consider using proper :ref:`certificate handling <webgui-opnsense-caddy>`.
 
 .. _accesslist-opnsense-caddy:
 
@@ -256,22 +257,26 @@ Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Handle
 
 .. Tip:: If in doubt, do not use subdomains. If there should be ``foo.example.com``, ``bar.example.com`` and ``example.com``, just create them as three base domains. This way, there is the most flexibility, and the most features are supported.
 
+.. _webgui-opnsense-caddy:
 
---------------------------------
-Reverse Proxy the OPNsense WebUI
---------------------------------
 
-* Open the OPNsense WebUI in a Browser (e.g. Chrome or Firefox). Inspect the certificate by clicking on the 🔒 in the address bar. Copy the SAN for later use. It can be a hostname, for example ``OPNsense.localdomain``.
-* Save the certificate as ``.pem`` file. Open it up with a text editor, and copy the contents into a new entry in :menuselection:`System --> Trust --> Authorities`. Name the certificate ``opnsense-selfsigned``.
-* Add a new `Domain` in Caddy, for example ``opn.example.com``.
-* Add a new `Handler` with the following options:
+---------------------------------
+Reverse Proxy the OPNsense WebGUI
+---------------------------------
+
+.. Tip:: The same approach can be used for any upstream destination using TLS and a self-signed certificate.
+
+* | Open the OPNsense WebGUI in a browser (e.g. Chrome or Firefox). Inspect the certificate by clicking on the 🔒 in the address bar. Copy the SAN for later use. It can be a hostname, for example ``OPNsense.localdomain``.
+* | Save the certificate as ``.pem`` file. Open it up with a text editor, and copy the contents into a new entry in :menuselection:`System --> Trust --> Authorities`. Name the certificate ``opnsense-selfsigned``.
+* | Add a new `Domain` in Caddy, for example ``opn.example.com``.
+* | Add a new `Handler` with the following options:
 
 =================================== ============================
 Options                             Values
 =================================== ============================
 **Domain:**                         ``opn.example.com``
 **Upstream Domain:**                ``127.0.0.1``
-**Upstream Port:**                  ``8443 (Webui Port)``
+**Upstream Port:**                  ``8443 (WebGUI Port)``
 **TLS:**                            ``X``
 **TLS Trusted CA Certificates:**    ``opnsense-selfsigned``
 **TLS Server Name:**                ``OPNsense.localdomain``
@@ -284,9 +289,8 @@ Go to :menuselection:`System --> Settings --> Administration`
 * Input ``opn.example.com`` in `Alternate Hostnames` to prevent the error ``The HTTP_REFERER "https://opn.example.com/" does not match the predefined settings``
 * Press **Save**
 
-.. Note:: Open ``https://opn.example.com`` and it should serve the reverse proxied OPNsense WebUI. Check the log file for errors if it does not work, most of the time the `TLS Server Name` doesn't match the SAN of the `TLS Trusted CA Certificate`. Caddy does not support certificates with only a CN `Common Name`.
-.. Attention:: Create an :ref:`Access List <accesslist-opnsense-caddy>` to restrict access to the WebUI.
-.. Tip:: The same approach can be used for any upstream destination using TLS and a self-signed certificate.
+.. Note:: Open ``https://opn.example.com`` and it should serve the reverse proxied OPNsense WebGUI. Check the log file for errors if it does not work, most of the time the `TLS Server Name` doesn't match the SAN of the `TLS Trusted CA Certificate`. Caddy does not support certificates with only a CN `Common Name`.
+.. Attention:: Create an :ref:`Access List <accesslist-opnsense-caddy>` to restrict access to the WebGUI.
 
 
 -------------------------------
@@ -417,7 +421,7 @@ Next, connect to the OPNsense via SSH or console, go into the shell with Option 
     labels:
       type: caddy
 
-* Go into the OPNsense WebUI and restart CrowdSec.
+* Go into the OPNsense WebGUI and restart CrowdSec.
 
 
 ----------------------------------
@@ -432,16 +436,16 @@ There are three methods that support XMLRPC sync:
 
 .. Note:: These methods can be mixed, just make sure to use a coherent configuration. It is best to decide for one method. Only `Domains` need configuration, `Subdomains` do not need any configuration for HA.
 
-* Using custom certificates from the OPNsense Trust store for all `Domains`.
-* Using the `DNS-01 Challenge` in the settings of `Domains`.
-* Using the `HTTP-01 Challenge Redirection` option in the advanced settings of `Domains`.
+#. Using custom certificates from the OPNsense Trust store for all `Domains`.
+#. Using the `DNS-01 Challenge` in the settings of `Domains`.
+#. Using the `HTTP-01 Challenge Redirection` option in the advanced settings of `Domains`.
 
 Since the `HTTP-01 Challenge Redirection` needs some additional steps to work, it should be set up as followed:
 
-* Configure Caddy on the master OPNsense until the whole initial configuration is completed.
-* On the master OPNsense, select each `Domain`, and set the IP Address in `HTTP-01 Challenge Redirection` to the same value as in `Synchronize Config to IP` found in :menuselection:`System --> High Availability --> Settings`.
-* Create a new Firewall rule on the master OPNsense that allows Port ``80`` and ``443`` to ``This Firewall`` on the interface that has the prior selected IP Address (most likely a LAN or VLAN interface).
-* Sync this configuration with XMLRPC sync.
+* | Configure Caddy on the master OPNsense until the whole initial configuration is completed.
+* | On the master OPNsense, select each `Domain`, and set the IP Address in `HTTP-01 Challenge Redirection` to the same value as in `Synchronize Config to IP` found in :menuselection:`System --> High Availability --> Settings`.
+* | Create a new Firewall rule on the master OPNsense that allows Port ``80`` and ``443`` to ``This Firewall`` on the interface that has the prior selected IP Address (most likely a LAN or VLAN interface).
+* | Sync this configuration with XMLRPC sync.
 
 .. Note:: Now both Caddy instances will be able to issue ACME certificates at the same time. Caddy on the master OPNsense uses the TLS-ALPN-01 challenge for itself and reverse proxies the HTTP-01 challenge to the Caddy of the backup OPNsense. Please make sure, that the master and backup OPNsense are both listening on their WAN and LAN (or VLAN) interfaces on port ``80`` and ``443``, since both ports are required for these challenges to work.
 
@@ -482,23 +486,23 @@ Now the ``reverse_proxy`` debug logs will be visible and can be downloaded.
 
 Go to :menuselection:`Services --> Caddy Web Server --> Diagnostics --> Caddyfile`
 
-* Press the `Validate Caddyfile` button to make sure the current Caddyfile is valid.
-* Press the `Download` button to get this current Caddyfile.
-* If there are custom imports in ``/usr/local/etc/caddy/caddy.d/``, download the JSON configuration.
+* | Press the `Validate Caddyfile` button to make sure the current Caddyfile is valid.
+* | Press the `Download` button to get this current Caddyfile.
+* | If there are custom imports in ``/usr/local/etc/caddy/caddy.d/``, download the JSON configuration.
 
 .. Note:: Rarely, a performance profile might be requested. For this, a special admin endpoint can be activated.
 
 .. Attention:: This admin endpoint is deactivated by default. To enable it and access it on the OPNsense, follow these additional steps. Do not forget to deactivate it after use. Anybody with network access to the admin endpoint can use REST API to change the running configuration of Caddy, without authentication.
 
-* SSH into the OPNsense shell
-* Stop Caddy with ``configctl caddy stop``
-* Go to ``/usr/local/etc/caddy/caddy.d/``
-* Create a new file called ``admin.global`` and put the following content into it: ``admin :2019``
-* After saving the file, go to ``/usr/local/etc/caddy`` and run ``caddy validate`` to ensure the configuration is valid.
-* Start Caddy with ``configctl caddy start``
-* Use sockstat to see if the admin endpoint has been created. ``sockstat -l | grep -i caddy`` - it should show the endpoint ``*:2019``.
-* Create a firewall rule on ``LAN`` that allows ``TCP`` to destination ``This Firewall`` and destination port ``2019``.
-* Open the admin endpoint: ``http://YOUR_LAN_IP:2019/debug/pprof/``
+* | SSH into the OPNsense shell
+* | Stop Caddy with ``configctl caddy stop``
+* | Go to ``/usr/local/etc/caddy/caddy.d/``
+* | Create a new file called ``admin.global`` and put the following content into it: ``admin :2019``
+* | After saving the file, go to ``/usr/local/etc/caddy`` and run ``caddy validate`` to ensure the configuration is valid.
+* | Start Caddy with ``configctl caddy start``
+* | Use sockstat to see if the admin endpoint has been created. ``sockstat -l | grep -i caddy`` - it should show the endpoint ``*:2019``.
+* | Create a firewall rule on ``LAN`` that allows ``TCP`` to destination ``This Firewall`` and destination port ``2019``.
+* | Open the admin endpoint: ``http://YOUR_LAN_IP:2019/debug/pprof/``
 
 .. Note:: Follow the instructions on https://caddyserver.com/docs/profiling how to debug and profile Caddy.
 
@@ -507,8 +511,8 @@ Go to :menuselection:`Services --> Caddy Web Server --> Diagnostics --> Caddyfil
 Using Custom Configuration Files
 --------------------------------
 
-* The Caddyfile has an additional import from the path ``/usr/local/etc/caddy/caddy.d/``. Place custom configuration files inside that adhere to the Caddyfile syntax.
-* ``*.global`` files will be imported into the global block of the Caddyfile.
-* ``*.conf`` files will be imported at the end of the Caddyfile. Don't forget to test the custom configuration with ``caddy validate --config /usr/local/etc/caddy/Caddyfile``.
+* | The Caddyfile has an additional import from the path ``/usr/local/etc/caddy/caddy.d/``. Place custom configuration files inside that adhere to the Caddyfile syntax.
+* | ``*.global`` files will be imported into the global block of the Caddyfile.
+* | ``*.conf`` files will be imported at the end of the Caddyfile. Don't forget to test the custom configuration with ``caddy validate --config /usr/local/etc/caddy/Caddyfile``.
 
 .. Note:: With these imports, the full potential of Caddy can be unlocked. The GUI options will remain focused on the reverse proxy. There is no OPNsense community support for configurations that have not been created with the offered GUI. For customized configurations, the Caddy community is the right place to ask.
