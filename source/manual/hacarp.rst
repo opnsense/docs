@@ -85,6 +85,10 @@ The firewall’s state table is replicated to all failover configured firewalls.
 This means the existing connections will be maintained in case of a failure,
 which is important to prevent network disruptions.
 
+.. Note::
+    As of OPNsense version 24.7 a "Sync compatibility" selector is offered in the high availability settings page.
+    Make sure both nodes use the same version to prevent state synchronization issues.
+
 ............................
 Disable preempt
 ............................
@@ -94,12 +98,17 @@ The preempt option make sure that multiple carp interfaces will act as a group (
 at the same time, assuming no technical issues exist between both.
 
 .................................
+Disconnect dialup interfaces
+.................................
+
+When this device is configured as CARP backup it will disconnect all PPP type interfaces and try to reconnect them when becoming master again.
+
+.................................
 Configuration synchronization
 .................................
 
 OPNsense includes configuration synchronization capabilities. Configuration
 changes made on the primary system are synchronized on demand to the secondary firewall.
-
 
 ............................
 Configure HA CARP
