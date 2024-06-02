@@ -191,16 +191,22 @@ Now, all connections not having a private IPv4 address will be served an empty p
 .. Note:: Some applications might demand a HTTP Error code instead of having their connection aborted, an example could be monitoring systems. For these a custom ``HTTP Response Code`` can be enabled.
 
 
------------------
-Using Dynamic DNS
------------------
+-----------
+Dynamic DNS
+-----------
+
+.. Note:: All currently supported Dynamic DNS Providers and requests for additions can be found at https://github.com/opnsense/plugins/issues/3872
+
+.. Attention:: Read the full help text for guidance. It could also be necessary to check the selected provider module at https://github.com/caddy-dns for further instructions. These modules are community maintained. When a module introduces issues that are not fixed it will be removed from this plugin.
+
+
+Use Dynamic DNS with Reverse Proxy
+----------------------------------
 
 Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> DNS Provider`
 
 * Select one of the supported `DNS Providers` from the list
-* Input the `DNS API Key`, and any number of the additional required fields in `Additional Fields`. 
-
-.. Attention:: Read the full help text for guidance. It could also be necessary to check the selected provider module at https://github.com/caddy-dns for further instructions. These modules are community maintained. When a module introduces issues that are not fixed it will be removed from this plugin.
+* Input the `DNS API Key`, and any number of the additional required fields in `Additional Fields`.
 
 Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> Dynamic DNS`
 
@@ -231,13 +237,55 @@ Options                        Values
 
 * Press **Save** and **Apply**
 
-.. Tip:: Check the Logfile for the dynamic dns updates. Filter for the chosen domain.
+.. Tip:: Check the Logfile for the dynamic dns updates. Set it to `Informational` and `Search` for the chosen domain.
 .. Tip:: In addition to `Dynamic DNS`, the `DNS-01 Challenge` can also be selected.
 
 
----------------------------------
-Creating a Wildcard Reverse Proxy
----------------------------------
+Use Dynamic DNS in Client Mode only
+-----------------------------------
+
+.. Tip:: Sometimes, only the Dynamic DNS functionality is needed. There can be cases where a DNS Provider is fully supported in `os-caddy`, yet not in other Dynamic DNS plugins of the OPNsense. With the right configuration, `os-caddy` can be used as Dynamic DNS Client without using port 80 and 443, which stay free to use for other services.
+
+.. Attention:: Using this setup doesn't require any Firewall rules, the OPNsense WebGUI can stay on `TCP port` 443, and `HTTP Redirect - Disable web GUI redirect rule` for port 80 can stay unchecked.
+
+Go to :menuselection:`Services --> Caddy Web Server --> General Settings`
+
+* Check **enabled** to enable Caddy
+* Set `AutoHTTPS` to `off` - This will ensure port ``80`` will not be used by Caddy.
+
+Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> DNS Provider`
+
+* Select one of the supported `DNS Providers` from the list
+* Input the `DNS API Key`, and any number of the additional required fields in `Additional Fields`.
+
+Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> Dynamic DNS`
+
+* Choose if `DynDns IP Version` should include IPv4 and/or IPv6.
+* Extend `Additional Checks` and for `DynDns Check Interface` select the ``WAN`` interface.
+* Press **Save**
+
+Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Domains`
+
+* Press **+** to create a new `Domain`. ``mydomain.duckdns.org`` is an example if `duckdns` is used as DNS Provider.
+
+============================== ====================================================================
+Options                        Values
+============================== ====================================================================
+**Domain:**                    ``mydomain.duckdns.org``
+**Port:**                      ``20000`` - `A random upper TCP port so Caddy does not bind to 443.`
+**Description:**               ``mydomain.duckdns.org - DynDNS only``
+**Dynamic DNS:**               ``X``
+============================== ====================================================================
+
+* | Create any additional domains for DynDNS updates just like that.
+* | Press **Save** and **Apply**
+
+.. Tip:: Check the Logfile for the dynamic dns updates. Set it to `Informational` and `Search` for the chosen domain.
+
+
+-----------------------------------------------------
+Create a Wildcard Reverse Proxy with DNS-01 Challenge
+-----------------------------------------------------
 
 .. Attention:: The certificate of a wildcard domain will only contain ``*.example.com``, not a SAN for ``example.com``. Create an additional domain for ``example.com`` with an additional handler for its upstream destination.
 
