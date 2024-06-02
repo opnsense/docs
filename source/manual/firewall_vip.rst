@@ -59,7 +59,24 @@ More information about CARP can be found in our :doc:`high availability </manual
 
 .. Note::
     CARP uses IP protocol number 112 (0x70), to detect priority it will send out advertisements using
-    :code:`224.0.0.18` or :code:`FF02::12`.
+    :code:`224.0.0.18` or :code:`FF02::12`. As of OPNsense 24.7 it's also possible to use unicast when infrastructure
+    in between filters multicast packets.
+
+.. Note::
+    The source address CARP packets use can not be influenced from the firewall (usually it's the first address on the interface),
+    when there's some filtering performed between both firewalls (e.g. a cloud portal), make sure to allow carp traffic
+    from the actual sending address. You can use the packet capture when in doubt which address it is using.
+
+.. Tip::
+    Although we generally prefer multicast packets (default) for advertisements, as of OPNsense 24.7 unicast may also
+    be chosen. Just make sure to enter a non carp target address on both machines.
+
+
+.. Tip::
+    If you're debugging a CARP setup, consider raising the CARP system logging verbosity. This can be done by
+    adding the :code:`net.inet.carp.log` with value :code:`2` tunable in System -> Settings -> Tunables.
+    The logs can be seen in System -> Log Files -> General (kernel process) or by using :code:`dmesg`.
+
 
 **Combining CARP virtual IP types with IP aliases**
 
@@ -82,11 +99,6 @@ setting the VHID field to the same number as the initial CARP VIP VHID:
     this has no benefit and is not recommended. The CARP traffic and system procedures for failover will increase
     linearly in noise per virtual IP. Since the primary purpose of CARP is to react to link state changes, a single
     VHID acting for a single interface is the most efficient way to use the protocol.
-
-.. Tip::
-    If you're debugging a CARP setup, consider raising the CARP system logging verbosity. This can be done by
-    adding the :code:`net.inet.carp.log` with value :code:`2` tunable in System -> Settings -> Tunables.
-    The logs can be seen in System -> Log Files -> General (kernel process) or by using :code:`dmesg`.
 
 ..................
 Proxy ARP
@@ -120,11 +132,17 @@ Interface                             The interface this address belongs to.
 Type                                  Either Network or Single address, only has affect when creating NAT rules,
                                       where **Proxy ARP** and **Other** combined with **Expansion** will generate
                                       separate addresses for all items in the netmask.
-Expansion                             When applicable, expand netmask to separate addresses.
 Address                               The address and netmask to assign, when assigning multiple addresses in the
                                       same network, the masks usually should match.
+Deny service binding                  Assigning services to the virtual IP's interface will automatically include
+                                      this address. Check to prevent binding to this address instead.
+Peer (ipv4, ipv6)                     (OPNsense version >= 24.7) CARP Destination address to use when announcing,
+                                      defaults to multicast, but can be configured as unicast address when multicast
+                                      can not be used (for example with cloud providers)
 Gateway                               Only applies to **IP Alias** types, usually this field should be empty, except
                                       some tunnel devices (ppp/pppoe/tun) expect the gateway address to be defined.
+Disable Expansion                     Disable expansion of this entry into IPs on NAT lists
+                                      (e.g. 192.168.1.0/24 expands to 256 entries).
 Virtual IP Password                   The password used to encrypt CARP packets over the network, should be the
                                       same on preferred master and backup node(s).
 VHID Group                            The Virtual Host ID. This is a unique number that is used to
