@@ -75,46 +75,6 @@ Tunnel remote address   **192.168.123.2**   **192.168.123.1**
 
 
 .....................
-Gateways
-.....................
-
-Next step on both ends is to define a gateway (:menuselection:`System->Gateways->Configuration`) which reaches the other end of this channel, the
-interface should be automatically created and is called :code:`ipsec10` in this example.
-
-Both ends will need a gateway pointing at each other :
-Site A will need the following gateway:
-
-===============================================================
-
-======================= =================== ===================
-Property                site A              site B
-======================= =================== ===================
-Name                    IPSEC10_GW          IPSEC10_GW
-Interface               IPSEC10             IPSEC10
-Address Family          IPv4                IPv4
-IP address              **192.168.123.2**   **192.168.123.1**
-======================= =================== ===================
-
-
-.....................
-Routes
-.....................
-
-We may already prepare the routes as the interfaces and gateways are available in :menuselection:`System->Routes->Configuration`.
-
-On Site A we need to define a path to Site B and the other way around:
-
-===============================================================
-
-======================= =================== ===================
-Property                site A              site B
-======================= =================== ===================
-Network Address         **10.0.2.0/24**     **192.168.2.0/24**
-Gateway                 IPSEC10_GW          IPSEC10_GW
-======================= =================== ===================
-
-
-.....................
 Enable IPsec
 .....................
 
@@ -206,6 +166,48 @@ Save and apply
 .....................
 
 Finally save the settings and hit apply on the connections page to establish the tunnel.
+
+
+.....................
+Gateways
+.....................
+
+Next step on both ends is to define a gateway (:menuselection:`System->Gateways->Configuration`) which reaches the other end of this channel, the
+interface should be automatically created and is called :code:`ipsec10` in this example.
+
+Both ends will need a gateway pointing at each other :
+Site A will need the following gateway:
+
+===============================================================
+
+======================= =================== ===================
+Property                site A              site B
+======================= =================== ===================
+Name                    IPSEC10_GW          IPSEC10_GW
+Interface               IPSEC10             IPSEC10
+Address Family          IPv4                IPv4
+IP address              **192.168.123.2**   **192.168.123.1**
+======================= =================== ===================
+
+
+.....................
+Routes
+.....................
+
+We may already prepare the routes as the interfaces and gateways are available in :menuselection:`System->Routes->Configuration`.
+
+On Site A we need to define a path to Site B and the other way around:
+
+===============================================================
+
+======================= =================== ===================
+Property                site A              site B
+======================= =================== ===================
+Network Address         **10.0.2.0/24**     **192.168.2.0/24**
+Gateway                 IPSEC10_GW          IPSEC10_GW
+======================= =================== ===================
+
+
 
 --------------------------------
 Validate
