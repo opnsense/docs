@@ -65,6 +65,13 @@ wrong interface. When checking this option, it will stop doing so, which is prac
 (for a more detailed description, see :code:`man arp` and search :code:`log_arp_wrong_iface` and  :code:`log_arp_movements`)
 
 --------------------------
+Allow IPv6
+--------------------------
+
+By default selected, when deselected IPv6 related configuration will be ignored and a firewall rule will be generated blocking all transit IPv6 traffic
+on this machine. The floating firewall section will display this rule when "Automatically generated rules" is expanded.
+
+--------------------------
 Prevent release
 --------------------------
 

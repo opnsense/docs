@@ -27,7 +27,7 @@ bottom, so you get the correct DNS servers if you just use IPv4 ones.
 Step 2 - Allow IPv6
 -------------------
 
-Next go to :menuselection:`Firewall --> Settings --> Advanced` and verfiy that **Allow IPv6** is enabled.
+Next go to :menuselection:`Interfaces --> Settings` and verfiy that **Allow IPv6** is enabled.
 
 --------------------------------
 Step 3 - Interface Configuration

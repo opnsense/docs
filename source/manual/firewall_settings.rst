@@ -5,18 +5,6 @@
 In some circumstances people might want to change how our system handles traffic by default, in which case
 the advanced settings section is a good place to look.
 
-
-
-IPv6 Options
-------------------------------------
-
-Allow IPv6
-.....................................
-
-By default selected, when deselected a firewall rule will be generated blocking all IPv6 traffic on this machine.
-The floating firewall section will display this rule when "Automatically generated rules" is expanded.
-
-
 Network Address Translation
 ------------------------------------
 
