@@ -313,6 +313,7 @@ Reverse Proxy the OPNsense WebGUI
 ---------------------------------
 
 .. Tip:: The same approach can be used for any upstream destination using TLS and a self-signed certificate.
+.. Attention:: The OPNsense WebGUI is only bound to 127.0.0.1 when no specific interface is selected: :menuselection:`System --> Settings --> Administration` - `Listen Interfaces - All (recommended)`. Otherwise, use the IP address of the specific interface as "Upstream Domain".
 
 * | Open the OPNsense WebGUI in a browser (e.g. Chrome or Firefox). Inspect the certificate by clicking on the 🔒 in the address bar. Copy the SAN for later use. It can be a hostname, for example ``OPNsense.localdomain``.
 * | Save the certificate as ``.pem`` file. Open it up with a text editor, and copy the contents into a new entry in :menuselection:`System --> Trust --> Authorities`. Name the certificate ``opnsense-selfsigned``.
@@ -509,9 +510,40 @@ Having a large configuration can become a bit cumbersome to navigate. To help, a
 .. Tip:: In `Filter by Domain`, one or multiple `Domains` can be selected, and as filter result, only their corresponding configuration will be displayed in `Domains`, `Subdomains` and `Handlers`. This makes keeping track of large configurations a breeze.
 
 
-------------------------
-Advanced Troubleshooting
-------------------------
+------------------------------------------
+Advanced: Bind Caddy to specific Interface
+------------------------------------------
+
+.. Warning:: Binding a service to a specific interface via IP address can cause lots of issues. If the IP address is dynamic, the service can crash or refuse to start. During boot, the service can refuse to start if the interface IP addresses are assigned too late. Configuration changes on the interfaces can cause the service to crash. **Only use this with static IP addresses! There is no OPNsense community support for this configuration.**
+
+.. Note:: This configuration is only useful if there are two or more WAN interfaces, and Caddy should only respond on one of them. It can also solve port conflicts, for example if one interface should DNAT or host a different service with the default webserver ports. **In all other cases, it is always better not to do this.**
+
+* Create the following files with the following content in the OPNsense filesystem:
+
+1. ``/usr/local/etc/caddy/caddy.d/defaultbind.global``
+
+.. code::
+
+    default_bind 192.168.1.1
+
+
+2. ``/usr/local/etc/caddy/caddy.d/defaultbind.conf``
+
+
+.. code::
+
+    http:// {
+    bind 192.168.1.1
+    }
+
+* Now Caddy will only bind to ``192.168.1.1`` and it can still be configured in the GUI without restrictions.
+
+.. Tip:: Read more about the ``default_bind`` directive: https://caddyserver.com/docs/caddyfile/options#default-bind
+
+
+-------------------------
+Advanced: Troubleshooting
+-------------------------
 
 Sometimes, things do not work as expected. Caddy provides a few powerful debugging tools to analyze issues.
 
