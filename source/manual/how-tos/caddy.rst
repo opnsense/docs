@@ -103,6 +103,7 @@ Caddy: Tutorials
 
 .. Attention:: The tutorial section implies that :ref:`Prepare OPNsense for Caddy after installation <prepare-opnsense-caddy>` has been followed.
 .. Note:: Filling out `Description` fields is mandatory because they are used to display and reference items in forms and error messages.
+.. Tip:: Handlers are not limited to one per domain/subdomain. If there are multiple different URIs to handle (e.g. ``/foo/*`` and ``/bar/*``), create a handler for each of them. Just make sure each of these URIs are on the same level, creating ``/foo/*`` and ``/foo/bar/*`` will make ``/foo/*`` match everything. Additionally, when creating an empty handler for a domain/subdomain, the templating logic will always automatically place it last in the Caddyfile site block. This means, specific URIs will always match before an empty URI. Though, using just one handler with an empty URI is recommended for most usecases, since it catches all traffic directed at a domain/subdomain.
 
 
 -------------------------------
@@ -288,6 +289,8 @@ Create a Wildcard Reverse Proxy with DNS-01 Challenge
 -----------------------------------------------------
 
 .. Attention:: The certificate of a wildcard domain will only contain ``*.example.com``, not a SAN for ``example.com``. Create an additional domain for ``example.com`` with an additional handler for its upstream destination.
+
+.. Note:: Subdomains do not support setting ports, they will always track the ports of their assigned parent wildcard domain.
 
 Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> DNS Provider`
 
