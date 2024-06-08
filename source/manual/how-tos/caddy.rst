@@ -122,7 +122,7 @@ Go to :menuselection:`Services --> Caddy Web Server --> General Settings`
 
 Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Domains`
 
-* Press **+** to create a new `Domain`, this will be the frontend that receives the traffic for the chosen domain name.
+* Press **+** to create a new `Domain`, this will be the frontend that receives the traffic for the chosen domain name. The OPNsense listens for this domain on all interfaces.
 
 ============================== =====================================================================
 Options                        Values
@@ -136,7 +136,7 @@ Options                        Values
 
 Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Handler`
 
-* Press **+** to create a new `Handler`, this will route the traffic from the frontend domain to the upstream destination.
+* Press **+** to create a new `Handler`, this will route the traffic from the frontend domain to the upstream destination. The upstream is an internal service that should receive the reverse proxied traffic from the OPNsense.
 
 ============================== ======================================================================
 Options                        Values
@@ -319,6 +319,7 @@ Reverse Proxy the OPNsense WebGUI
 
 .. Tip:: The same approach can be used for any upstream destination using TLS and a self-signed certificate.
 .. Attention:: The OPNsense WebGUI is only bound to 127.0.0.1 when no specific interface is selected: :menuselection:`System --> Settings --> Administration` - `Listen Interfaces - All (recommended)`. Otherwise, use the IP address of the specific interface as "Upstream Domain".
+.. Attention:: When setting `Enable syncookies` to `always` in :menuselection:`Firewall --> Settings --> Advanced`, reverse proxying the WebGUI is currently not possible. Set it to an `adaptive` setting, or `never (default)`.
 
 * | Open the OPNsense WebGUI in a browser (e.g. Chrome or Firefox). Inspect the certificate by clicking on the 🔒 in the address bar. Copy the SAN for later use. It can be a hostname, for example ``OPNsense.localdomain``.
 * | Save the certificate as ``.pem`` file. Open it up with a text editor, and copy the contents into a new entry in :menuselection:`System --> Trust --> Authorities`. Name the certificate ``opnsense-selfsigned``.
@@ -368,7 +369,9 @@ Options                             Values
 **HTTP-01 Challenge Redirection:**  ``192.168.10.1``
 =================================== ====================
 
-* Press **Save**
+* Press **Save** and **Apply**
+
+.. Note:: The `HTTP-01 Challenge Redirection` already works now and the internal resource located at ``192.168.10.1`` will be able to issue the certificate for the domain name ``foo.example.com``. If the internal ressource should also be reverse proxied, add a handler to the domain.
 
 Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Handler`
 
