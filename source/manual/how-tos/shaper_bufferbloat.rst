@@ -61,7 +61,7 @@ Create Pipe For Download
 
         495 Mbps, reason we are setting lower BW is to overtake the Queueing before ISP.
         We usually take 85% of the Provided BW which we tune depending on the average 
-        possible throuhput that can be always reached
+        possible throughput that can be always reached
 
 .. Note::
 
@@ -98,7 +98,7 @@ Create Pipe For Upload
         30 Mbps, usually asymmetric don't have problem with upload set to advertized ISP BW.
         If we see latency or have symmetric we are setting lower BW to overtake the Queueing before ISP.
         We usually take 85% of the Provided BW which we tune depending on the average 
-        possible throuhput that can be always reached
+        possible throughput that can be always reached
 
 .. Note::
 
