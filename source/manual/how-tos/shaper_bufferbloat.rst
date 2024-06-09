@@ -190,9 +190,25 @@ Create a Rule For Upload
 ====================== =================== ===========================================================================================================
 
 
-Now press **Apply** to activate the traffic shaping rules.
+Now press |apply| to activate the traffic shaping rules.
+
+Test for Bufferbloat
+--------------------------------
+There are several sites which can test & give you a rating for bufferbloat.
+
+* https://www.waveform.com/tools/bufferbloat
+* http://www.dslreports.com/speedtest
+* https://speed.cloudflare.com/
+
+Bellow is a test run after applying above FQ_Codel configuration with Tuning.
 
 
+*Screenshot after configuring Shaper with FQ_CoDel*
+
+.. image:: images/bufferbloat_test_post_config_tuning.png
+    :width: 100%
+
+.. |apply| image:: images/applybtn.png
 
 FQ-CoDel Tuning
 ----------------------------
