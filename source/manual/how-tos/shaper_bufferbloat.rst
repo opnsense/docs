@@ -112,17 +112,17 @@ An empty **Edit queue** screen will popup.
 
 Create Queue For Download
 """"""""""""""""""""""""
-========================= ================== ===========================================================================
+========================= ================== =============================================================================================================
  **enabled**              Checked            *Check to enable the queue*
  **pipe**                 Download           *Select our Pipe*
  **weight**               100                *Weight has no use in FQ_CoDeL, it will ignore it thus set to 100*
- **mask**                 destination        *Download destination to a specific host on the LAN*
+ **mask**                 destination        *Download destination to a specific hosts on the LAN. Dynamic queue creation to share BW among Users equally*
  **Enable CoDel**         (empty)            *Don't click this option we will use FQ as selected in Pipe*
  **(FQ-)CoDel target**    (empty)            *In queue configuration needs to be empty*
  **(FQ-)CoDel interval**  (empty)            *In queue configuration needs to be empty*
  **(FQ-)CoDel ECN**       Checked            *Click this option to enable packet marking ECN for ECN enabled flows*
  **description**          Download-Queue     *Free field, enter something descriptive*
-========================= ================== ===========================================================================
+========================= ================== =============================================================================================================
 
 Step 2b - Create Upload Queue
 -----------------------------
@@ -131,17 +131,17 @@ An empty **Edit queue** screen will popup.
 
 Create Queue For Upload
 """"""""""""""""""""""""
-========================= ================== ===========================================================================
+========================= ================== =============================================================================================================
  **enabled**              Checked            *Check to enable the queue*
  **pipe**                 Upload             *Select our Pipe*
  **weight**               100                *Weight has no use in FQ_CoDeL, it will ignore it thus set to 100*
- **mask**                 source             *Upload source from a specific host on the LAN*
+ **mask**                 source             *Upload source from a specific hosts on the LAN. Dynamic queue creation to share BW among Users equally*
  **Enable CoDel**         (empty)            *Don't click this option we will use FQ as selected in Pipe*
  **(FQ-)CoDel target**    (empty)            *In queue configuration needs to be empty*
  **(FQ-)CoDel interval**  (empty)            *In queue configuration needs to be empty*
  **(FQ-)CoDel ECN**       Checked            *Click this option to enable packet marking ECN for ECN enabled flows*
  **description**          Upload-Queue       *Free field, enter something descriptive*
-========================= ================== ===========================================================================
+========================= ================== =============================================================================================================
 
 Step 3a - Create Download Rule
 ------------------------------
