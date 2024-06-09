@@ -105,7 +105,7 @@ Create Pipe For Upload
         You can use Ookla speedtest before applying any shaper and run several test to 
         create such average possible throughput
 
-Step 2b - Create Download Queue
+Step 2a - Create Download Queue
 -------------------------------
 On the **Queues** tab click the **+** button in the lower right corner.
 An empty **Edit queue** screen will popup.
