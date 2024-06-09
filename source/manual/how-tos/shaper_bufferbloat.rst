@@ -251,7 +251,7 @@ Quantum specifies number of bytes a queue can serve before being moved to the ta
 target
 """""""
 Target is a good parameter to tune for faster connections. This is basically the start time that will trigger the AQM to keep watch, and wait for Interval before taking any action.
-If you have a very fast Fiber WAN connection or a slowers Cable/DSL WAN connection is maybe worth to try to tune target. If your average RTT is 12ms in normal non latency situations, 5ms default can be to high, as there is no reason to trigger the AQM.
+If you have a very fast Fiber WAN connection or a slower Cable/DSL WAN connection is maybe worth to try to tune target. If your average RTT is 12ms in normal non latency situations, 5ms default can be too low, as there is no reason to trigger the AQM.
 
 To do this we can run excessive ping to the HOP after your OPNsense and take the **average rtt round up** as your **target**. In this case 12ms
 
