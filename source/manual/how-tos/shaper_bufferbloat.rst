@@ -12,10 +12,11 @@ One of such AQM is **FQ_CoDeL** e.g. **Fair/Flow Queueing Controlled Delay**
 Important parameters of FQ_CODEL
 --------------------------------
 ========================= =====================================================================================================================================================================================================================
- **quantum**              *Should be set to the value of Interface MTU. Number of bytes a queue can serve before	being moved to the tail of old queues list (1514 default, 1500+14B ethernet header, max 9000)*
+ **quantum**              *Should be set to the value of Interface MTU. Number of bytes a queue can serve before	being moved to the tail of old queues list (1514 default, 1500+14B hardware header, max 9000)*
  **target**               *Minimum acceptable persistent queue delay (5ms default). Does not drop packets directly after packets sojourn time becomes higher than target time but waits for interval time (100ms default) before dropping.*   
  **interval**             *Drops or Marks packets (if Codel ECN is enabled) when queue delay becomes high (default 100ms)*    
  **limit**                *Size of all queues managed by instance (default 10240, max 20480)*
+ **flows**                *Sets the number of queues into which the incoming packets are classified (default 1024, max 65536)*
  **(FQ-)CoDel ECN**       *Enables (disabled by default) packet marking (instead of dropping) for ECN-enabled TCP flows when queue delay becomes high*           
 ========================= =====================================================================================================================================================================================================================
 
@@ -65,7 +66,7 @@ Create Pipe For Download
 
 .. Note::
 
-        You can use Ookla speedtest before applying any shaper and run several test to 
+        You can use Ookla speedtest before applying any shaper and run several tests to 
         create such average possible throughput
 
 Step 1b - Create Upload Pipe
@@ -102,7 +103,7 @@ Create Pipe For Upload
 
 .. Note::
 
-        You can use Ookla speedtest before applying any shaper and run several test to 
+        You can use Ookla speedtest before applying any shaper and run several tests to 
         create such average possible throughput
 
 Step 2a - Create Download Queue
@@ -222,9 +223,13 @@ FQ-CoDel specifically CoDel is designed to be *no knobs* algorithm, by default t
 +================+==========+=================+
 |     quantum    |            1514            |
 +----------------+----------+-----------------+
-|     target     |              5             |
+|     target     |            5               |
++----------------+----------+-----------------+
+|     interval   |            100             |
 +----------------+----------+-----------------+
 |     limit      |            10240           |
++----------------+----------+-----------------+
+|     flows      |            1024            |
 +----------------+----------+-----------------+
 |     ECN        |            OFF             |
 +----------------+----------+-----------------+
@@ -232,6 +237,7 @@ FQ-CoDel specifically CoDel is designed to be *no knobs* algorithm, by default t
 .. Note::
 
         We tune these parameters in Pipe.
+
 
 quantum
 """""""
@@ -248,12 +254,13 @@ Quantum specifies number of bytes a queue can serve before being moved to the ta
         This will give smaller packets precedence over larger packets.
       
       
-target
-"""""""
-Target is a good parameter to tune for faster connections. This is basically the start time that will trigger the AQM to keep watch, and wait for Interval before taking any action.
-If you have a very fast Fiber WAN connection or a slower Cable/DSL WAN connection is maybe worth to try to tune target. If your average RTT is 12ms in normal non latency situations, 5ms default can be too low, as there is no reason to trigger the AQM.
+target & interval
+""""""""""""""""""
+Target is a good parameter for tune to prevent CoDel being too aggressive. Target should be tuned to be at least the transmission time of a single MTU-sized packet at the WAN egress. This is basically the start time that will trigger the AQM to keep watch, and wait for Interval before taking any action.
 
-To do this we can run excessive ping to the HOP after your OPNsense and take the **average rtt round up** as your **target**. In this case 12ms
+If you have a very fast Fiber WAN connection or a slower Cable/DSL WAN connection is maybe worth to try to tune Target. If your average RTT is 12ms in normal non latency situations, 5ms default can be too low, as there is no reason to trigger the AQM.
+
+To do this we can run excessive ping to the HOP after your OPNsense and take the **average rtt round up as your Target**. In this case 12ms
 
 .. code-block::
 
@@ -275,13 +282,18 @@ To do this we can run excessive ping to the HOP after your OPNsense and take the
 
 .. Note::
 
-        Target should be set to 5-10% of Interval.
-        Interval should be set to 90-95% of Target.
-        If you tune Target and its within 5-10% of Interval there is no need to change Interval.
-      
+        By default Target is set around 5-10% of Interval
+
+.. Note::
+
+        Interval default 100ms works usually well. It is the worst case RTT scenario through the bottleneck.
+        If you want to tune Interval it needs to be set as the worst case RTT scenario through the bottleneck.
+        If Interval is smaller than the real non-bottleneck RTT you may see more drops/markings which can impact throughput
+
+
 limit
 """""""
-Default limit size of 10240 is to much. The creators recommended value 1000 for sub 10Gbit/s connections.
+Default limit size of 10240 packets is to much. The creators recommended value 1000 for sub 10Gbit/s connections.
 
 The over-large packet limit leads to bad results during slow start on some benchmarks. Reducing it too low could impact new flow start.
 
@@ -293,6 +305,18 @@ However there is a problem with FQ_CoDel implementation in FreeBSD (as well Open
 
         There is already a BUG opened for this and an email chain from one of the CoDeL creators
 
+
+flows
+"""""""
+The "flows" parameter sets the number of queues into which the incoming packets are classified. Due to the stochastic nature of hashing, multiple flows may end up being hashed into the same slot.
+
+This parameter can be set only at initialisation time in the current implementation (needs reboot of device), since memory has to be allocated for the hash table.
+
+.. Warning::
+
+        Setting too high number can cause the device to be stuck. Be careful with this one.
+
+
 ECN
 """""""
 Current best practice is to turn off ECN on uplinks running at less than 4Mbit (if you want good VOIP performance; a single packet at 1Mbps takes 13ms, and packet drops get you this latency back).
@@ -302,6 +326,7 @@ ECN IS useful on downlinks on a home router, where the terminating hop is only o
 External references
 ............................................................
 
+* https://www.rfc-editor.org/rfc/rfc8290.html
 * https://man.freebsd.org/cgi/man.cgi?query=ipfw&sektion=8&format=html
 * https://man.freebsd.org/cgi/man.cgi?query=ipfw&apropos=0&sektion=0&manpath=FreeBSD+5.2-RELEASE+and+Ports&format=html
 * https://www.bufferbloat.net/projects/codel/wiki/Best_practices_for_benchmarking_Codel_and_FQ_Codel/
