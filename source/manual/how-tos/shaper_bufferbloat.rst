@@ -2,7 +2,7 @@
 Fighting Bufferbloat with FQ_CoDeL
 ==================================================
 
-Bufferbloat in simple terms of words is a exponential increase of latency caused by network devices due to excessive **buffering** of traffic. The more traffic is buffered the longer it takes to be processed which caused unwanted latency. This is mostly seen by the end user as lags in games, video & call stuttering.
+Bufferbloat in simple terms of words is an exponential increase of latency caused by network devices due to excessive **buffering** of traffic. The more traffic is buffered the longer it takes to be processed which caused unwanted latency. This is mostly seen by the end user as lags in games, video & call stuttering.
 
 In order to combat Bufferbloat we can take advantages of AQM/SQM algorithms which can significaly improve exprerience on end-user side.
 
@@ -15,7 +15,7 @@ Important parameters of FQ_CODEL
  **quantum**              *Should be set to the value of Interface MTU. Number of bytes a queue can serve before	being moved to the tail of old queues list (1514 default, 1500+14B hardware header, max 9000)*
  **target**               *Minimum acceptable persistent queue delay (5ms default). Does not drop packets directly after packets sojourn time becomes higher than target time but waits for interval time (100ms default) before dropping.*   
  **interval**             *Drops or Marks packets (if Codel ECN is enabled) when queue delay becomes high (default 100ms)*    
- **limit**                *Size of all queues managed by instance (default 10240, max 20480)*
+ **limit**                *Size of all queues managed by instance (default 10240, max 20480).It is the hard limit on the real queue size in packets*
  **flows**                *Sets the number of queues into which the incoming packets are classified (default 1024, max 65536)*
  **(FQ-)CoDel ECN**       *Enables (disabled by default) packet marking (instead of dropping) for ECN-enabled TCP flows when queue delay becomes high*           
 ========================= =====================================================================================================================================================================================================================
@@ -195,7 +195,7 @@ Now press |apply| to activate the traffic shaping rules.
 
 Test for Bufferbloat
 --------------------------------
-There are several sites which can test & give you a rating for bufferbloat.
+There are several sites which can test & give you a rating for bufferbloat. You should run a test before and after implementing FQ_CoDeL.
 
 * https://www.waveform.com/tools/bufferbloat
 * http://www.dslreports.com/speedtest
@@ -293,17 +293,19 @@ To do this we can run excessive ping to the HOP after your OPNsense and take the
 
 limit
 """""""
-Default limit size of 10240 packets is to much. The creators recommended value 1000 for sub 10Gbit/s connections.
+Default limit size of 10240 packets is to much. The creators recommended value 1000 for sub 10Gbit/s connections. The default limit will never reached for sub 10Gbit/s WAN connections. Before that could happen FQ_CoDeL would already take action. So it's healthy to reduce limit.
 
 The over-large packet limit leads to bad results during slow start on some benchmarks. Reducing it too low could impact new flow start.
 
-However there is a problem with FQ_CoDel implementation in FreeBSD (as well OpenBSD), that causes CPU hogging and excessive logging when set to 1000. Which causes a backpush and additional unwanted latency.
+However there is a problem with FQ_CoDel implementation in FreeBSD (as well OpenBSD), that causes CPU hogging and excessive logging, this is more visible when set to 1000. Which causes a backpush and additional unwanted latency.
 
 **For now its best to have limit at default.**
 
 .. Note::
 
-        There is already a BUG opened for this and an email chain from one of the CoDeL creators
+        There is already a BUG opened for this and an email chain from one of the CoDeL creators. 
+        This problem is overall affecting the performance, its not specific only to limit parameter, 
+        and more so the more TCP flows are present
 
 
 flows
@@ -321,7 +323,12 @@ ECN
 """""""
 Current best practice is to turn off ECN on uplinks running at less than 4Mbit (if you want good VOIP performance; a single packet at 1Mbps takes 13ms, and packet drops get you this latency back).
 
-ECN IS useful on downlinks on a home router, where the terminating hop is only one or two hops away, and connected to a system that handles ECN correctly
+ECN IS useful on downlinks on a home router, where the terminating hop is only one or two hops away, and connected to a system that handles ECN correctly.
+
+
+.. Note::
+
+        If you are experiencing slow starts disable ECN
         
 External references
 ............................................................
