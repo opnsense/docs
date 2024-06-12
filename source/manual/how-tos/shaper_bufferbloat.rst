@@ -300,8 +300,8 @@ To do this we can run excessive ping, best during idle time of the network, to t
     1480 bytes from 10.205.5.1: icmp_seq=1 ttl=255 time=10.4 ms
 
     --- 10.205.5.1 ping statistics ---
-    100 packets transmitted, 100 packets received, 0.0% packet loss
-    round-trip min/avg/max/stddev = 7.778/9.217/18.816/1.877 ms
+    1000 packets transmitted, 1000 packets received, 0.0% packet loss
+    round-trip min/avg/max/stddev = 7.800/11.429/45.992/4.796 ms
 
 .. Note::
 
