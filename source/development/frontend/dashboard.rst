@@ -59,11 +59,15 @@ Functions
 
 The `BaseWidget <https://github.com/opnsense/core/blob/master/src/opnsense/www/js/widgets/BaseWidget.js>`__ shows the skeleton
 of the widget Javascript module. Widgets extend this class to provide defaults to the framework. To make life a little
-easier for common patterns, other base widgets may also be exposed. Currently this is only the
-`BaseTableWidget <https://github.com/opnsense/core/blob/master/src/opnsense/www/js/widgets/BaseTableWidget.js>`__
-which exposes a dynamic table that can be configured in multiple orientations and only needs a data feed.
+easier for common patterns, other base widgets may also be exposed. Currently these are:
 
-The following functions are available to be overridden by the widget:
+- `BaseTableWidget <https://github.com/opnsense/core/blob/master/src/opnsense/www/js/widgets/BaseTableWidget.js>`__:
+  Exposes a dynamic table that can be configured in multiple orientations and only needs a data feed.
+
+- `BaseGaugeWidget <https://github.com/opnsense/core/blob/master/src/opnsense/www/js/widgets/BaseGaugeWidget.js>`__:
+  Exposes a Gauge widget that allows presenting simple current/total values with multiple hooks to customize the widget.
+
+The following functions are available to be overridden by the widget when extended from the BaseWidget:
 
 *Constructor*
 =====================================================================================================================
@@ -201,8 +205,163 @@ Executed when a widget is removed from the grid. Make sure to clean up any resou
 not always necessary to override this function, but it's possible you're using a third party library that requires
 action to be taken when the widget is removed. An example is the cleanup of a rendered chart.
 
+.. attention::
+
+    If you're using the BaseWidget EventSource mechanism, make sure to call :code:`super.onWidgetClose()` to cleanup
+    the persistent connection to the server.
+
+*onVisibilityChanged*
+=====================================================================================================================
+
+.. code-block:: javascript
+
+    onVisibilityChanged(visible) {}
+
+Executed when the visibility of the page has changed (tab or instance switch). You're very likely not going to need
+this function, but if you do, make sure to call :code:`super.onVisibilityChanged(visible)`.
+
+*openEventSource*
+=====================================================================================================================
+
+.. code-block:: javascript
+
+    openEventSource(url, onMesage);
+
+When your widget requires a persistent connection to stream data, use the :code:`super.openEventSource()` function
+with the API endpoint and a callback function. The :code:`onMessage` callback function takes in a single :code:`event`
+parameter, of which the :code:`data` property contains the event data.
+
+*closeEventSource*
+=====================================================================================================================
+
+.. code-block:: javascript
+
+    closeEventSource();
+
+Closes the current active :code:`EventSource`. This will be called automatically if the widget closes and you don't
+have the :code:`onWidgetClose` function overridden. If you do, make sure to call :code:`super.onWidgetClose()`.
+
+
+---------------
+BaseTableWidget
+---------------
+
+The BaseTableWidget exposes a set of functions to easily create a responsive table that is capable of some basic
+CRUD functionality. To make use of this, simply extend from the BaseTableWidget, which automatically exposes the
+BaseWidget functions as well. E.g.:
+
+.. code-block:: javascript
+
+    import BaseTableWidget from "./BaseTableWidget.js";
+
+    export default class YourWidget extends BaseTableWidget {}
+
+*createTable*
+=====================================================================================================================
+
+.. code-block:: javascript
+
+    super.createTable(id, options);
+
+Creates and returns a jQuery object with the id attribute set to the id parameter of this function. The :code:`options`
+parameters is an object with the following structure:
+
+.. code-block:: javascript
+
+    let options = {
+        headerPosition: 'top'|'left'|'none',
+    }
+
+If the :code:`headerPosition` is :code:`top`, some extra options are defined:
+
+.. code-block:: javascript
+
+    let options = {
+        headerPosition: 'top',
+        rotation: <number>,
+        headers: [],
+        sortIndex: <number>,
+        sortOrder: 'asc'|'desc'
+    }
+
+- :code:`rotation` will limit the amount of table entries to this value, and 'scroll' new data into view.
+- :code:`headers` defines a static array of strings that contain the table headers. The position in the array also implicitly
+  defines the index of the column.
+- :code:`sortIndex` specifies the index of the headers array to sort on
+- :code:`sortOrder` if the sortIndex is specified, the sort order will be either ascending or descending.
+
+:code:`headerPosition` :code:`left` is a key-value structure while :code:`headerPosition` :code:`none` allows for
+arbitrary rows of data without state.
+
+*updateTable*
+=====================================================================================================================
+
+.. code-block:: javascript
+
+    super.updateTable(id, data = [], rowIdentifier = null);
+
+Inserts one or more rows into the table with id parameter :code:`id`. If a rowIdentifier is specified, only a single
+row of the table is upserted.
+
+The data layout is as follows for :code:`headerPosition` :code:`top` and :code:`none`:
+
+.. code-block:: javascript
+
+
+    [
+        ['x', 'y', 'z'],
+        ['x', 'y', 'z']
+    ]
+
+The data layout for :code:`headerPosition` :code:`left` also allows nested columns:
+
+.. code-block:: javascript
+
+
+    [
+        ['x', 'x1'],
+        ['y', 'y1'],
+        ['z', ['z1', 'z2']]
+    ]
+
+---------------
+BaseGaugeWidget
+---------------
+
+:code:`BaseGuageWidget` defines a simple responsive gauge chart. An example implementation can be found in the
+`Memory Usage Widget <https://github.com/opnsense/core/blob/master/src/opnsense/www/js/widgets/Memory.js>`__
+
+*createGaugeChart*
+=====================================================================================================================
+
+.. code-block:: javascript
+
+    super.createGaugeChart(options);
+
+
+
+*updateChart*
+=====================================================================================================================
+
+.. code-block:: javascript
+
+    super.updateChart(data);
+
 -------
 Styling
 -------
 
 Any styling can be added to the `Dashboard CSS file <https://github.com/opnsense/core/blob/master/src/opnsense/www/css/dashboard.css>`__
+or a themed version of this file.
+
+Since a lot of the charts have programmatic approaches to colors, the special
+
+.. code-block:: css
+
+    :root {
+        --chart-js-background-color: #f7e2d6;
+        --chart-js-border-color: #d94f00;
+        --chart-js-font-color: #d94f00;
+    }
+
+CSS selector is defined so you can override these colors for custom themes.
