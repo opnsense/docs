@@ -285,16 +285,15 @@ Quantum specifies number of bytes a queue can serve before being moved to the ta
 
 .. Note::
 
-        There is however one exception for sub 100Mbit/s connections, Quantum should be set to 300. 
-        This gives smaller packets precedence over larger packets.
+        At lower rates, below 100Mbit, setting the quantum to 300 ensures that more smaller packets get through faster than big ones. 
+        It doesn't matter much at higher rates. The quantum should be set to the MTU or 300 if you have low bandwidth and the cpu power. 
+        Setting the quantum lower causes more loops touching all the packets so it eats slightly more cpu
       
       
 target & interval
 ^^^^^^^^^^^^^^^^^^^
-
-Target is a good parameter for tune to prevent CoDel being too aggressive. Target should be tuned to be at least the transmission time of a single MTU-sized packet at the WAN egress. This is basically the start time that will trigger the AQM to keep watch, and wait for Interval before taking any action.
-
-If you have a very fast Fiber WAN connection or a slower Cable/DSL WAN connection is maybe worth to try to tune Target. If your average RTT is 12ms in normal non latency situations, 5ms default can be too low, as there is no reason to trigger the AQM.
+Target is the acceptable minimum standing/persistent queue delay for each FQ-CoDel queue. This minimum delay is identified by tracking the local minimum queue delay that packets experience.
+Target should be tuned to be at least the transmission time of a single MTU-sized packet at the WAN egress link speed.
 
 To do this we can run excessive ping to the HOP after your OPNsense and take the **average rtt round up as your Target**. In this case 12ms
 
@@ -318,18 +317,19 @@ To do this we can run excessive ping to the HOP after your OPNsense and take the
 
 .. Note::
 
-        By default Target is set around 5-10% of Interval
+        Target is a good parameter for tune to prevent CoDel being too aggressive at low BW.
+        Otherwise Target should be around 5-10% of Interval
+
+Interval is used to ensure that the measured minimum delay does not become too stale. It's value is choose to give endpoints time to rach to a drop without being so long that response times suffer.
 
 .. Note::
 
-        Interval default 100ms works usually well. It is the worst case RTT scenario through the bottleneck.
-        If you want to tune Interval it needs to be set as the worst case RTT scenario through the bottleneck.
-        If Interval is smaller than the real non-bottleneck RTT you may see more drops/markings which can impact throughput
+        Interval default 100ms works usually well (10ms-1s, excels at range 10ms-300ms).
+        If you want to tune Interval it should to be set around the worst case RTT scenario through the bottleneck
 
 
 limit
 ^^^^^^^^^^^^^^^^^^^
-
 Default limit size of 10240 packets is to much. The creators recommended value 1000 for sub 10Gbit/s connections. The default limit will never reached for sub 10Gbit/s WAN connections. Before that could happen FQ_CoDel would already take action. So it's healthy to reduce limit.
 
 The over-large packet limit leads to bad results during slow start on some benchmarks. Reducing it too low could impact new flow start.
@@ -347,7 +347,6 @@ However there is a problem with FQ_CoDel implementation in FreeBSD (as well Open
 
 flows
 ^^^^^^^^^^^^^^^^^^^
-
 The "flows" parameter sets the number of queues into which the incoming packets are classified. Due to the stochastic nature of hashing, multiple flows may end up being hashed into the same slot.
 
 This parameter can be set only at initialisation time in the current implementation (needs reboot of device), since memory has to be allocated for the hash table.
@@ -359,7 +358,6 @@ This parameter can be set only at initialisation time in the current implementat
 
 ECN
 ^^^^^^^^^^^^^^^^^^^
-
 Current best practice is to turn off ECN on uplinks running at less than 4Mbit (if you want good VOIP performance; a single packet at 1Mbps takes 13ms, and packet drops get you this latency back).
 
 ECN IS useful on downlinks on a home router, where the terminating hop is only one or two hops away, and connected to a system that handles ECN correctly.
