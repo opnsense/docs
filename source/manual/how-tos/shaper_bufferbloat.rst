@@ -72,7 +72,7 @@ In the configuration steps below, assume these advertized ISP speeds:
 |      Mbit/s    |   530    |        30       |
 +----------------+----------+-----------------+
 
-To begin, go to :menuselection: `Firewall --> Shaper --> Pipes`. Select the *advanced mode*
+To begin, go to :menuselection:`Firewall --> Shaper --> Pipes`. Select the *advanced mode*
 
 After configuring the Pipes and Queues (below), be sure to read the
 `Tuning FQ_CoDel`_ section below that describes the brief 
@@ -91,17 +91,16 @@ Setting                   Default       Description
  **enabled**              Checked       *Check to enable the pipe*
  **bandwidth**            495           *Set initially to 85% of ISP advertized BW, tune later - numeric*
  **bandwidth Metric**     Mbit/s        *Metric associated with the bandwidth*
- **queue**                2             *Queue size, in slots or KBytes (default 50),
-                                        too large queue size can introduce queuing delay*
- **mask**                 (empty)       *Leave empty*
- **scheduler type**       FQ_CoDel      *Set to use the FQ_CoDel scheduler*
+ **queue**                (empty)       *Leave empty: queues are configured separetely*
+ **mask**                 (none)        *Leave empty*
+ **scheduler type**       FQ_CoDel      *Enables FQ_CoDel in scheduler*
  **Enable CoDel**         (empty)       *Leave empty: use FQ as selected above*
  **(FQ-)CoDel target**    (empty)       *Leave as default (default 5ms); tune later*
  **(FQ-)CoDel interval**  (empty)       *Leave as default: tune later*
  **(FQ-)CoDel ECN**       Checked       *Check to enable packet marking ECN for ECN enabled flows*
  **FQ-CoDel quantum**     (empty)       *Set to your WAN MTU. For Ethernet let it default*
  **FQ-CoDel limit**       (empty)       *Leave as default; tune later*
- **FQ-CoDel flows**       (empty)       *Leave as default (default 1024).*
+ **FQ-CoDel flows**       (empty)       *Leave as default (default 1024)*
  **description**          Download      *Free field, enter something descriptive*
 ========================= ============= ===========================================================================================================
 
@@ -125,13 +124,17 @@ Create Queue For Download
  **enabled**              Checked            *Check to enable the queue*
  **pipe**                 Download           *Select our Pipe*
  **weight**               100                *FQ_CoDel ignores the weight: set to 100*
- **mask**                 destination        *Download destination to a specific hosts on the LAN. Dynamic queue creation to share BW among Users equally*
+ **mask**                 (none)             *Leave empty: FQ will handle fairness*
  **Enable CoDel**         (empty)            *Leave empty: use FQ as selected in Pipe*
  **(FQ-)CoDel target**    (empty)            *Leave empty for a queue*
  **(FQ-)CoDel interval**  (empty)            *Leave empty for a queue*
- **(FQ-)CoDel ECN**       Checked            *Check to enable packet marking ECN for ECN enabled flows*
+ **(FQ-)CoDel ECN**       (empty)            *Leave empty for a queue*
  **description**          Download-Queue     *Free field, enter something descriptive*
 ========================= ================== =============================================================================================================
+
+.. Note::
+
+        target, interval, ECN actually reffer to CoDel and not FQ_Codel in the queue
 
 Step 2b - Create Upload Queue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,7 +142,7 @@ On the **Queues** tab click the **+** button in the lower right corner.
 An empty **Edit queue** screen pops up.
 
 Follow the same process as for the Download queue, 
-selecting the Upload pipe,
+selecting the **Upload pipe**,
 and entering "Upload-Queue" for the **description**
 
 Step 3a - Create Download Rule
@@ -153,7 +156,6 @@ Create a Rule For Download
  **enabled**             Checked            *Check to enable the rule*
  **sequence**            1                  *Auto generated number, overwrite only when needed*
  **interface**           WAN                *Select the interface connected to the internet*
- **interface2**          NONE               *Matches packets traveling to/from interface (1) to/from interface (2). Can be combined with direction.*
  **proto**               ip                 *Select the protocol, IP in our example*
  **source**              any                *The source address to shape, leave on any*
  **src-port**            any                *The source port to shape, leave on any*
@@ -181,6 +183,8 @@ Step 4 - Finalizing the configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now press |apply| to activate the traffic shaping rules.
+
+.. |apply| image:: images/applybtn.png
 
 -----------------------
 
@@ -243,7 +247,7 @@ as possible without increasing latency, you're done.
 Detailed FQ-CoDel Tuning
 ----------------------------
 
-*Note:* FQ_CoDel is designed to be a "no-knobs" algorithm. 
+FQ_CoDel is designed to be a "no-knobs" algorithm. 
 After you enter the Download and Upload bandwidth settings,
 the defaults for the other parameters work very well out of the box
 for virtually all situations.
@@ -296,21 +300,21 @@ To do this we can run excessive ping to the HOP after your OPNsense and take the
 
 .. code-block::
 
-    Example from a linux machine
+    Example from the CLI of OPNsense
 
-    traceroute 1.1.1.1 -I -l -4 -n
-    traceroute to 1.1.1.1 (1.1.1.1), 30 hops max, 60 byte packets
+    traceroute 1.1.1.1
+    traceroute to 1.1.1.1 (1.1.1.1), 64 hops max, 40 byte packets
     1  192.168.0.1  0.463 ms  0.453 ms  0.480 ms     <<<< LAN Interface of OPN
     2  10.205.5.1  10.879 ms  11.010 ms  11.079 ms   <<<< ISP directly connected Device to OPN WAN
 
-    ping 10.205.5.1 -4 -c 1000 -s 1472 -M do
+    ping -s 1472 -c 1000 -D 10.205.5.1
     PING 10.205.5.1 (10.205.5.1) 1472(1500) bytes of data.
-    1480 bytes from 10.205.5.1: icmp_seq=2 ttl=254 time=13.1 ms
-    1480 bytes from 10.205.5.1: icmp_seq=1 ttl=254 time=10.4 ms
+    1480 bytes from 10.205.5.1: icmp_seq=0 ttl=255 time=13.1 ms
+    1480 bytes from 10.205.5.1: icmp_seq=1 ttl=255 time=10.4 ms
 
     --- 10.205.5.1 ping statistics ---
-    1000 packets transmitted, 1000 received, 0% packet loss, time 991280ms
-    rtt min/avg/max/mdev = 8.267/11.251/28.513/3.505 ms
+    1000 packets transmitted, 1000 packets received, 0.0% packet loss
+    round-trip min/avg/max/stddev = 7.800/11.429/45.992/4.796 ms
 
 .. Note::
 
@@ -366,99 +370,15 @@ ECN IS useful on downlinks on a home router, where the terminating hop is only o
         If you are experiencing slow starts disable ECN
         
 External references
-............................................................
+-------------------
 
 * https://www.rfc-editor.org/rfc/rfc8290.html
-* https://man.freebsd.org/cgi/man.cgi?query=ipfw&sektion=8&format=html
-* https://man.freebsd.org/cgi/man.cgi?query=ipfw&apropos=0&sektion=0&manpath=FreeBSD+5.2-RELEASE+and+Ports&format=html
+* https://www.rfc-editor.org/rfc/rfc8289#section-4.2
+* https://man.freebsd.org/cgi/man.cgi?query=ipfw&apropos=0&sektion=8&manpath=FreeBSD+14.1-RELEASE&arch=default&format=html
 * https://www.bufferbloat.net/projects/codel/wiki/Best_practices_for_benchmarking_Codel_and_FQ_Codel/
 * https://forum.opnsense.org/index.php?topic=4949.msg20862#msg20862
 * https://forum.opnsense.org/index.php?topic=39046.msg191251#msg191251
+* https://www.man7.org/linux/man-pages/man8/tc-fq_codel.8.html
 * https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=276890
 * https://marc.info/?t=170776797300003&r=1&w=2
 
----------------------
-
-================
-Deleted text
-================
-
-**Original Table - I expect to cut this out, but I left it in
-to make sure I haven't left out critical information**
-
-========================= =====================================================================================================================================================================================================================
- **quantum**              *Maximum number of bytes to dequeue for transmission at one time. Should be set to the value of Interface MTU. Number of bytes a queue can serve before being moved to the tail of old queues list (Default 1514 bytes, 1500+14B hardware header, max 9000)*
- **target**               *Minimum acceptable persistent queue delay. FQ_CoDel doesn't drop packets directly after a packet's sojourn time becomes higher than target time: it waits for interval time before dropping. (Default 5ms)*
- **interval**             *When queue delay becomes higher than the interval, drop or mark packets to slow that flow  (Default 100ms)*
- **limit**                *Size of all queues managed by instance. It is the hard limit on the real queue size in packets (Default 10240, max 20480).*
- **flows**                *Sets the number of queues into which the incoming packets are classified (Default 1024, max 65536)*
- **CoDel ECN**            *Enables packet marking for ECN-enabled TCP flows when queue delay becomes high, as an alternative to dropping. (Disabled by default)*           
-========================= =====================================================================================================================================================================================================================
-
-Create Pipe For Upload
-""""""""""""""""""""""
-========================= ================= ===============================================================================================================================================================
- **enabled**              Checked           *Check to enable the pipe*
- **bandwidth**            30                *Numeric value of the bandwidth target is 85% of ISP advertized BW, which needs to be tuned per use-case*
- **bandwidth Metric**     Mbit/s            *Metric to use with the numeric value*
- **queue**                (empty)           *Queue size, in slots or KBytes (default 50), too large queue size can introduce queuing delay. In case of latency on Upload or symmetric connections set to 2*
- **mask**                 (empty)           *Leave empty*
- **scheduler type**       FQ_CoDel          *This will be the AQM we will use*
- **Enable CoDel**         (empty)           *Don't click this option we will use FQ as selected above*
- **(FQ-)CoDel target**    (empty)           *Can be tuned (default 5ms)*
- **(FQ-)CoDel interval**  (empty)           *Can be tuned but usually the default value is enough*
- **(FQ-)CoDel ECN**       Checked           *Click this option to enable packet marking ECN for ECN enabled flows*
- **FQ-CoDel quantum**     (empty)           *Refers to MTU, should be set no more and no less than is your WAN MTU. For Ethernet let it default*
- **FQ-CoDel limit**       (empty)           *Can be tuned*
- **FQ-CoDel flows**       (empty)           *Can be tuned (default 1024). Usually left on default*
- **description**          Upload            *Free field, enter something descriptive*
-========================= ================= ===============================================================================================================================================================
-
-.. Note::
-
-        Use the same prodedure for upload: Set upload BW to 85% of the Provider's value
-        which we tune by increasing until latency increases, then backing off.
-        
-        *Is this next sentence useful?* 30 Mbps, usually asymmetric don't have problem with upload set to advertized ISP BW.
-        If we see latency or have symmetric we are setting lower BW to overtake the Queueing before ISP.
-
-Create Queue For Upload
-""""""""""""""""""""""""
-========================= ================== =============================================================================================================
- **enabled**              Checked            *Check to enable the queue*
- **pipe**                 Upload             *Select our Pipe*
- **weight**               100                *Weight has no use in FQ_CoDel, it will ignore it thus set to 100*
- **mask**                 source             *Upload source from a specific hosts on the LAN. Dynamic queue creation to share BW among Users equally*
- **Enable CoDel**         (empty)            *Don't click this option we will use FQ as selected in Pipe*
- **(FQ-)CoDel target**    (empty)            *In queue configuration needs to be empty*
- **(FQ-)CoDel interval**  (empty)            *In queue configuration needs to be empty*
- **(FQ-)CoDel ECN**       Checked            *Click this option to enable packet marking ECN for ECN enabled flows*
- **description**          Upload-Queue       *Free field, enter something descriptive*
-========================= ================== =============================================================================================================
-
-Create a Rule For Upload
-""""""""""""""""""""""""
-====================== =================== ===========================================================================================================
- **enabled**             Checked            *Check to enable the rule*
- **sequence**            2                  *Auto generated number, overwrite only when needed*
- **interface**           WAN                *Select the interface connected to the internet*
- **interface2**          NONE               *Matches packets traveling to/from interface (1) to/from interface (2). Can be combined with direction.*
- **proto**               ip                 *Select the protocol, IP in our example*
- **source**              any                *The source address to shape, leave on any*
- **src-port**            any                *The source port to shape, leave on any*
- **destination**         any                *The destination IP to shape, leave on any*
- **dst-port**            any                *The destination port to shape, leave on any*
- **direction**           out                *Matches incoming or outgoing packets or both (default). We want to shape Upload e.g egress on WAN** 
- **target**             Upload-Queue        *Select the Upload queue*
- **description**        Upload-Rule         *Enter a descriptive name*
-====================== =================== ===========================================================================================================
-
-Below is a test run after applying above FQ_CoDel configuration with Tuning.
-
-
-*Screenshot after configuring Shaper with FQ_CoDel*
-
-.. image:: images/waveform_bufferbloat_test_post_config_tuning.png
-    :width: 100%
-
-.. |apply| image:: images/applybtn.png
