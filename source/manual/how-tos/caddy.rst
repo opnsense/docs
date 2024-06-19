@@ -79,6 +79,8 @@ Option                      Values
 
 Go to :menuselection:`Firewall --> Rules --> LAN` and create the same rules for the `LAN` interface. Now external and internal clients can connect to Caddy, and `Let's Encrypt` or `ZeroSSL` certificates will be issued automatically.
 
+.. Note:: Caddy upgrades all connections automatically from HTTP to HTTPS. When cookies do not have have the ``secure`` flag set by the application serving them, they can still be transmitted unencrypted before the connection is upgraded. If these cookies contain very sensitive information, it might be a good choice to close port 80.
+
 
 ---
 FAQ
@@ -103,6 +105,7 @@ Caddy: Tutorials
 
 .. Attention:: The tutorial section implies that :ref:`Prepare OPNsense for Caddy after installation <prepare-opnsense-caddy>` has been followed.
 .. Note:: Filling out `Description` fields is mandatory because they are used to display and reference items in forms and error messages.
+.. Tip:: Handlers are not limited to one per domain/subdomain. If there are multiple different URIs to handle (e.g. ``/foo/*`` and ``/bar/*``), create a handler for each of them. Just make sure each of these URIs are on the same level, creating ``/foo/*`` and ``/foo/bar/*`` will make ``/foo/*`` match everything. Additionally, when creating an empty handler for a domain/subdomain, the templating logic will always automatically place it last in the Caddyfile site block. This means, specific URIs will always match before an empty URI. Though, using just one handler with an empty URI is recommended for most usecases, since it catches all traffic directed at a domain/subdomain.
 
 
 -------------------------------
@@ -119,7 +122,7 @@ Go to :menuselection:`Services --> Caddy Web Server --> General Settings`
 
 Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Domains`
 
-* Press **+** to create a new `Domain`, this will be the frontend that receives the traffic for the chosen domain name.
+* Press **+** to create a new `Domain`, this will be the frontend that receives the traffic for the chosen domain name. The OPNsense listens for this domain on all interfaces.
 
 ============================== =====================================================================
 Options                        Values
@@ -133,7 +136,7 @@ Options                        Values
 
 Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Handler`
 
-* Press **+** to create a new `Handler`, this will route the traffic from the frontend domain to the upstream destination.
+* Press **+** to create a new `Handler`, this will route the traffic from the frontend domain to the upstream destination. The upstream is an internal service that should receive the reverse proxied traffic from the OPNsense.
 
 ============================== ======================================================================
 Options                        Values
@@ -289,6 +292,8 @@ Create a Wildcard Reverse Proxy with DNS-01 Challenge
 
 .. Attention:: The certificate of a wildcard domain will only contain ``*.example.com``, not a SAN for ``example.com``. Create an additional domain for ``example.com`` with an additional handler for its upstream destination.
 
+.. Note:: Subdomains do not support setting ports, they will always track the ports of their assigned parent wildcard domain.
+
 Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> DNS Provider`
 
 * Select one of the supported `DNS Providers` from the list
@@ -313,6 +318,8 @@ Reverse Proxy the OPNsense WebGUI
 ---------------------------------
 
 .. Tip:: The same approach can be used for any upstream destination using TLS and a self-signed certificate.
+.. Attention:: The OPNsense WebGUI is only bound to 127.0.0.1 when no specific interface is selected: :menuselection:`System --> Settings --> Administration` - `Listen Interfaces - All (recommended)`. Otherwise, use the IP address of the specific interface as "Upstream Domain".
+.. Attention:: When setting `Enable syncookies` to `always` in :menuselection:`Firewall --> Settings --> Advanced`, reverse proxying the WebGUI is currently not possible. Set it to an `adaptive` setting, or `never (default)`.
 
 * | Open the OPNsense WebGUI in a browser (e.g. Chrome or Firefox). Inspect the certificate by clicking on the 🔒 in the address bar. Copy the SAN for later use. It can be a hostname, for example ``OPNsense.localdomain``.
 * | Save the certificate as ``.pem`` file. Open it up with a text editor, and copy the contents into a new entry in :menuselection:`System --> Trust --> Authorities`. Name the certificate ``opnsense-selfsigned``.
@@ -362,7 +369,9 @@ Options                             Values
 **HTTP-01 Challenge Redirection:**  ``192.168.10.1``
 =================================== ====================
 
-* Press **Save**
+* Press **Save** and **Apply**
+
+.. Note:: The `HTTP-01 Challenge Redirection` already works now and the internal resource located at ``192.168.10.1`` will be able to issue the certificate for the domain name ``foo.example.com``. If the internal ressource should also be reverse proxied, add a handler to the domain.
 
 Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Handler`
 
@@ -509,9 +518,40 @@ Having a large configuration can become a bit cumbersome to navigate. To help, a
 .. Tip:: In `Filter by Domain`, one or multiple `Domains` can be selected, and as filter result, only their corresponding configuration will be displayed in `Domains`, `Subdomains` and `Handlers`. This makes keeping track of large configurations a breeze.
 
 
-------------------------
-Advanced Troubleshooting
-------------------------
+------------------------------------------
+Advanced: Bind Caddy to specific Interface
+------------------------------------------
+
+.. Warning:: Binding a service to a specific interface via IP address can cause lots of issues. If the IP address is dynamic, the service can crash or refuse to start. During boot, the service can refuse to start if the interface IP addresses are assigned too late. Configuration changes on the interfaces can cause the service to crash. **Only use this with static IP addresses! There is no OPNsense community support for this configuration.**
+
+.. Note:: This configuration is only useful if there are two or more WAN interfaces, and Caddy should only respond on one of them. It can also solve port conflicts, for example if one interface should DNAT or host a different service with the default webserver ports. **In all other cases, it is always better not to do this.**
+
+* Create the following files with the following content in the OPNsense filesystem:
+
+1. ``/usr/local/etc/caddy/caddy.d/defaultbind.global``
+
+.. code::
+
+    default_bind 192.168.1.1
+
+
+2. ``/usr/local/etc/caddy/caddy.d/defaultbind.conf``
+
+
+.. code::
+
+    http:// {
+    bind 192.168.1.1
+    }
+
+* Now Caddy will only bind to ``192.168.1.1`` and it can still be configured in the GUI without restrictions.
+
+.. Tip:: Read more about the ``default_bind`` directive: https://caddyserver.com/docs/caddyfile/options#default-bind
+
+
+-------------------------
+Advanced: Troubleshooting
+-------------------------
 
 Sometimes, things do not work as expected. Caddy provides a few powerful debugging tools to analyze issues.
 
