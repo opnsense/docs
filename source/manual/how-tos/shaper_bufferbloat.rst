@@ -91,7 +91,7 @@ Setting                   Default       Description
  **enabled**              Checked       *Check to enable the pipe*
  **bandwidth**            495           *Set initially to 85% of ISP advertized BW, tune later - numeric*
  **bandwidth Metric**     Mbit/s        *Metric associated with the bandwidth*
- **queue**                (empty)       *Leave empty: queues are configured separetely*
+ **queue**                (empty)       *Leave empty: queues are configured separately*
  **mask**                 (none)        *Leave empty*
  **scheduler type**       FQ_CoDel      *Enables FQ_CoDel in scheduler*
  **Enable CoDel**         (empty)       *Leave empty: use FQ as selected above*
@@ -134,7 +134,7 @@ Create Queue For Download
 
 .. Note::
 
-        target, interval, ECN actually reffer to CoDel and not FQ_Codel in the queue
+        target, interval, ECN actually refer to CoDel and not FQ_CoDel in the queue
 
 Step 2b - Create Upload Queue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -229,8 +229,8 @@ Write those values down.
 
 While you are configuring FQ_CoDel, enter an initial value for the
 "bandwidth" that is 85% of the advertized rate from the ISP.
-(That is, if the download service is 100mbps, set the speed to 85mbps;
-for 40mpbs upload, set it to 40 x 85%, or 34mbps.)
+(That is, if the download service is 100 Mbit/s, set the speed to 85 Mbit/s;
+for 40 Mbit/s upload, set it to 40 x 85%, or 34 Mbit/s.)
 
 The remainder of the process is iterative, but brief:
 
@@ -276,7 +276,7 @@ Read on if you want to go further.
 
 quantum
 ^^^^^^^^^^^^^^^^^^^
-Quantum is one of these parameters that were constantly discussed what should be the proper value. Within the internet there is a lot of discussion that it should be set to 300 per 100Mbit/s of BW.
+Quantum is one of these parameters that were constantly discussed what should be the proper value. Within the internet there is a lot of discussion that it should be set to 300 per 100 Mbit/s of BW.
 **This however is wrong.**
 
 Quantum specifies number of bytes a queue can serve before being moved to the tail of old. As we are doing Fair Queueing we want to aim to serve all queues equally.
@@ -285,7 +285,7 @@ Quantum specifies number of bytes a queue can serve before being moved to the ta
 
 .. Note::
 
-        At lower rates, below 100Mbit, setting the quantum to 300 ensures that more smaller packets get through faster than big ones. 
+        At lower rates, below 100 Mbit/s, setting the quantum to 300 ensures that more smaller packets get through faster than big ones. 
         It doesn't matter much at higher rates. The quantum should be set to the MTU or 300 if you have low bandwidth and the cpu power. 
         Setting the quantum lower causes more loops touching all the packets so it eats slightly more cpu
       
@@ -320,7 +320,7 @@ To do this we can run excessive ping to the HOP after your OPNsense and take the
         Target is a good parameter for tune to prevent CoDel being too aggressive at low BW.
         Otherwise Target should be around 5-10% of Interval
 
-Interval is used to ensure that the measured minimum delay does not become too stale. It's value is choose to give endpoints time to rach to a drop without being so long that response times suffer.
+Interval is used to ensure that the measured minimum delay does not become too stale. It's value is chosen to give endpoints time to react to a drop without being so long that response times suffer.
 
 .. Note::
 
@@ -330,26 +330,26 @@ Interval is used to ensure that the measured minimum delay does not become too s
 
 limit
 ^^^^^^^^^^^^^^^^^^^
-Default limit size of 10240 packets is to much. The creators recommended value 1000 for sub 10Gbit/s connections. The default limit will never reached for sub 10Gbit/s WAN connections. Before that could happen FQ_CoDel would already take action. So it's healthy to reduce limit.
+Default limit size of 10240 packets is to much. The creators recommended value 1000 for sub 10 Gbit/s connections. The default limit will never reached for sub 10 Gbit/s WAN connections. Before that could happen FQ_CoDel would already take action. So it's healthy to reduce limit.
 
 The over-large packet limit leads to bad results during slow start on some benchmarks. Reducing it too low could impact new flow start.
 
-However there is a problem with FQ_CoDel implementation in FreeBSD (as well OpenBSD), that causes CPU hogging and excessive logging, this is more visible when set to 1000. Which causes a backpush and additional unwanted latency.
+However there is a problem with FQ_CoDel implementation in FreeBSD (as well OpenBSD), that causes CPU hogging and excessive logging, this is more visible when set to 1000. Which causes a back pressure and additional unwanted latency.
 
 **For now its best to have limit at default.**
 
 .. Note::
 
-        There is already a BUG opened for this and an email chain from one of the CoDeL creators. 
+        There is already a BUG opened for this and an email chain from one of the CoDel creators. 
         This problem is overall affecting the performance, its not specific only to limit parameter, 
-        and more so the more TCP flows are present
+        and more so the more flows are present
 
 
 flows
 ^^^^^^^^^^^^^^^^^^^
 The "flows" parameter sets the number of queues into which the incoming packets are classified. Due to the stochastic nature of hashing, multiple flows may end up being hashed into the same slot.
 
-This parameter can be set only at initialisation time in the current implementation (needs reboot of device), since memory has to be allocated for the hash table.
+This parameter can be set only at initialization time in the current implementation (needs reboot of device), since memory has to be allocated for the hash table.
 
 .. Warning::
 
@@ -358,7 +358,7 @@ This parameter can be set only at initialisation time in the current implementat
 
 ECN
 ^^^^^^^^^^^^^^^^^^^
-Current best practice is to turn off ECN on uplinks running at less than 4Mbit (if you want good VOIP performance; a single packet at 1Mbps takes 13ms, and packet drops get you this latency back).
+Current best practice is to turn off ECN on uplinks running at less than 4 Mbit/s (if you want good VOIP performance; a single packet at 1 Mbit/s takes 13ms, and packet drops get you this latency back).
 
 ECN IS useful on downlinks on a home router, where the terminating hop is only one or two hops away, and connected to a system that handles ECN correctly.
 
@@ -379,4 +379,3 @@ External references
 * https://www.man7.org/linux/man-pages/man8/tc-fq_codel.8.html
 * https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=276890
 * https://marc.info/?t=170776797300003&r=1&w=2
-
