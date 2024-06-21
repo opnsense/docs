@@ -18,6 +18,102 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+24.4.1 (June 20, 2024)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 24.1.8 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: fix maximum log file size being ignored when there is only one file
+* system: make log rotate action available to Cron
+* system: remove get_current_theme() and improve static page templating
+* system: move radvd and rtsold to system log where they belong
+* system: deny access to .core files from web GUI and disable core dumps by default
+* system: move net.inet.icmp.drop_redirect sysctl to automatic mode
+* system: add Google Drive configuration as an XMLRPC sync target
+* system: do not create an interface route without an address
+* firewall: use the new $.replaceInputWithSelector() for source/destination networks in MVC filter pages
+* firewall: fix empty rule label rendered as "null" on sessions page
+* interfaces: give DAD another second of delay to finish for the IPv6 renew
+* interfaces: reword the gateway selector default and help text to describe its function more accurately
+* interfaces: detect and ignore "detached" state for IPv6
+* interfaces: remove unused imports from sockstat list
+* interfaces: in SLAAC tracking prevent accepting our own radvd configuration
+* firmware: change default fetch of changelog to 30 seconds
+* firmware: dump TLS information for firmware server(s) in use
+* ipsec: fix faulty "-" usage in URIs
+* kea-dhcp: simplified the controller code
+* kea-dhcp: generate JSON payload from model
+* kea-dhcp: fix field separator for subnet domain search (contributed by KitKat31337)
+* isc-dhcp: make private consumers actually private where it matters
+* isc-dhcp: take into account that multiple ia-pd can be delegated
+* openvpn: fix "attempt to read property..." in status page
+* openvpn: safeguard config access in updown_event.py
+* wireguard: pass endpoint to validator to avoid invalid QR code errors on mobile app
+* wireguard: add MTU when set on the instance
+* wireguard: move validation to correct spot when no instance address and peer address was provided
+* wireguard: also validate hostnames correctly in peer generator endpoint
+* unbound: change blocklist processing in _blocklist_reader()
+* unbound: allow RFC 2181 compatible names in query forwarding
+* backend: allow to query multiple sysctl queries at once
+* backend: resolve deprecation warnings for sre_constants (contributed by MaxXor)
+* mvc: pass isFieldChanged() to children in ContainerField
+* mvc: replace \Phalcon\Filter\Validation\Exception with \OPNsense\Base\ValidationException wrapper
+* mvc: extend model implementation to ease legacy migrations
+* mvc: change exception handling in runMigrations() to avoid mismatches in attributes being silently ignored
+* mvc: refactor grid search to fetch descriptive values from the model instead of trying to reconstruct them
+* mvc: replace array_map+strval for loop with cast to preserve execution time in BaseListField
+* mvc: silence spurious validation message when explicitly asked to ignore them
+* ui: fix bootgrid parsing of timestamp
+* ui: improve tokenizer paste behaviour
+* ui: prevent vertical modal overflows and instead present a scrollbar
+* ui: add $.replaceInputWithSelector() action
+* ui: handle static page CSRF without Phalcon
+* ui: prevent word break for top level menu items
+* plugins: os-acme-client 4.3 `[1] <https://github.com/opnsense/plugins/blob/stable/24.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-caddy 1.5.6 `[2] <https://github.com/opnsense/plugins/blob/stable/24.1/www/caddy/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.8 `[3] <https://github.com/opnsense/plugins/blob/stable/24.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.23 `[4] <https://github.com/opnsense/plugins/blob/stable/24.1/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.40 `[5] <https://github.com/opnsense/plugins/blob/stable/24.1/net/frr/pkg-descr>`__ 
+* plugins: os-relayd 2.9 moves validation to model where it belongs
+* plugins: os-shadowsocks 1.1 adds transport mode option (contributed by xabbok255)
+* plugins: os-squid workaround for broken OpenSSL legacy provider handling
+* plugins: os-telegraf 1.12.11 `[6] <https://github.com/opnsense/plugins/blob/stable/24.1/net-mgmt/telegraf/pkg-descr>`__ 
+* src: pfsync: fix use of invalidated stack variable
+* src: pfsync: cope with multiple pending plus messages
+* src: ipfw: skip to the start of the loop when following a keep-state rule
+* src: bridge: use IF_MINMTU
+* src: bridge: change MTU for new members
+* src: ethernet: support ARP for 802 networks
+* src: ethernet: fix logging of frame length
+* src: debugnet: fix logging of frame length
+* src: wg: use ENETUNREACH when transmitting to a non-existent peer
+* src: fib_algo: lower level of algorithm switching messages to LOG_INFO
+* src: libpfctl: fix incorrect pcounters array size
+* src: pf: always mark states as unlinked before detaching them
+* src: vxlan: add checking for loops and nesting of tunnels
+* src: igc: increase default per-queue interrupt rate to 20000
+* ports: hyperscan 5.4.2 `[7] <https://github.com/intel/hyperscan/releases/tag/v5.4.2>`__ 
+* ports: libpfctl 0.11
+* ports: libucl 0.9.2
+* ports: libxml 2.11.8 `[8] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: lighttpd 1.4.76 `[9] <https://www.lighttpd.net/2024/4/12/1.4.76/>`__ 
+* ports: ntp 4.2.8p18 `[10] <https://www.ntp.org/support/securitynotice/4_2_8-series-changelog/#428p18>`__ 
+* ports: pecl-mcrypt 1.0.7
+* ports: phalcon 5.7.0 `[11] <https://github.com/phalcon/cphalcon/releases/tag/v5.7.0>`__ 
+* ports: php 8.2.19 `[12] <https://www.php.net/ChangeLog-8.php#8.2.19>`__ 
+* ports: py-duckdb 0.10.3 `[13] <https://github.com/duckdb/duckdb/releases/tag/v0.10.3>`__ 
+* ports: python 3.11.9 `[14] <https://docs.python.org/release/3.11.9/whatsnew/changelog.html>`__ 
+* ports: strongswan 5.9.14 `[15] <https://github.com/strongswan/strongswan/releases/tag/5.9.14>`__ 
+* ports: suricata 7.0.5 `[16] <https://suricata.io/2024/04/23/suricata-7-0-5-and-6-0-19-released/>`__ 
+* ports: syslog-ng 4.7.1 `[17] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.7.1>`__ 
+* ports: unbound 1.20.0 `[18] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-20-0>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.4 (April 30, 2024)
 --------------------------------------------------------------------------
 

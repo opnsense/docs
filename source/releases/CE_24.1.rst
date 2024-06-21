@@ -28,6 +28,60 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.1.9 (June 18, 2024)
+--------------------------------------------------------------------------
+
+
+This is the last bit of preparation for the upcoming 24.7 series reimplementing
+one-to-one NAT using MVC/API and a number of plumbing changes.  IPv6 has also
+been improved with the dhcp6c client having received a number of new fixes
+and features.
+
+Here are the full patch notes:
+
+* system: do not create an interface route without an address
+* system: add pluginctl -x/-X modes for digesting XMLRPC options
+* system: replace rand() with random_int() in remote backup script
+* firewall: migrate one-to-one NAT to MVC/API
+* interfaces: make SLAAC flush a feature of ifctl for incoming reuse
+* interfaces: in SLAAC tracking prevent accepting our own radvd configuration
+* interfaces: move SLAAC tunables to system requirements
+* interfaces: disable IPv6 interface modes when IPv6 is disabled globally
+* interfaces: avoid pluginctl giving out IPv4 info for non-interfaces
+* dhcrelay: add logging into its own space
+* firmware: change default fetch of changelog to 30 seconds
+* firmware: dump TLS information for firmware server(s) in use
+* isc-dhcp: allow root domain input as "." (contributed by Skyler Mantysaari)
+* kea-dhcp: support static DNS mappings (contributed by Markus Reiter)
+* mvc: refactored and improved checkAndThrowSafeDelete() as checkAndThrowValueInUse()
+* ui: prevent word break for top level menu items
+* plugins: os-caddy 1.5.7 `[1] <https://github.com/opnsense/plugins/blob/stable/24.1/www/caddy/pkg-descr>`__ 
+* curl 8.8.0 `[2] <https://curl.se/changes.html#8_8_0>`__ 
+* dhcp6c v20240607 additions for WAN tracking, interface ID specification, etc.
+* nss 3.100 `[3] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_100.html>`__ 
+* openldap 2.6.8 `[4] <https://www.openldap.org/software/release/changes.html>`__ 
+* openssl 3.0.14 `[5] <https://www.openssl.org/news/cl30.txt>`__ 
+* php 8.2.20 `[6] <https://www.php.net/ChangeLog-8.php#8.2.20>`__ 
+* py-duckdb 1.0.0 `[7] <https://github.com/duckdb/duckdb/releases/tag/v1.0.0>`__ 
+* py-netaddr 1.3.0 `[8] <https://netaddr.readthedocs.io/en/latest/changes.html#release-1-3-0>`__ 
+* sqlite 3.46.0 `[9] <https://sqlite.org/releaselog/3_46_0.html>`__ 
+
+A hotfix release was issued as 24.1.9_1:
+
+* firewall: "natreflection" rule attribute missed in MVC/API migration
+
+A hotfix release was issued as 24.1.9_3:
+
+* firewall: typo in "destination" migration for one-to-one NAT
+* firewall: one-to-one NAT default reflection setting was ignored
+
+A hotfix release was issued as 24.1.9_4:
+
+* system: proper HA sync for new one-to-one NAT section
+
+
+
+--------------------------------------------------------------------------
 24.1.8 (May 29, 2024)
 --------------------------------------------------------------------------
 
@@ -50,7 +104,7 @@ Here are the full patch notes:
 * firewall: use the new $.replaceInputWithSelector() for source/destination networks in MVC filter pages
 * firewall: fix empty rule label rendered as "null" on sessions page
 * ipsec: fix faulty "-" usage in URIs
-* isc-dhcp: take into account that multple ia-pd can be delegated
+* isc-dhcp: take into account that multiple ia-pd can be delegated
 * kea-dhcp: simplified the controller code
 * unbound: change blocklist processing in _blocklist_reader()
 * unbound: allow RFC 2181 compatible names in query forwarding

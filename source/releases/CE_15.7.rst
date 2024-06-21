@@ -37,7 +37,7 @@ tools.  Please see the full patch notes for details and references:
 * base: inconsistency between locale and rune locale states `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:09.xlocale.asc>`__ 
 * notable ports updates: phalcon 2.0.3 `[5] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.3>`__ , curl 7.43.0_2 `[6] <https://curl.haxx.se/changes.html>`__ ,
   openssh 6.8p1_8, python 2.7.10 `[7] <https://hg.python.org/cpython/raw-file/15c95b7d81dc/Misc/NEWS>`__ , perl 5.20.2_5 `[8] <https://perldoc.perl.org/5.20.2/perldelta>`__ , ntp 4.2.8p3 `[9] <http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ ,
-  libxml 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap24-server 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
+  libxml 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
 * opnsense-update: will no longer try to reinstall the istalled version
   after a fresh installation
 * bsdinstaller: bring back cpdup to error out on low memory installation
@@ -715,7 +715,7 @@ Here is the full list of changes:
 * src: local privilege escalation in IRET handler `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:21.amd64.asc>`__ 
 * src: disable ixgbe(4) flow-director support `[2] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:14.ixgbe.asc>`__ 
 * src: insufficient check of unsupported pkg(7) signature methods `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:15.pkg.asc>`__ 
-* ports: libressl 2.2.3 `[4] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.3-relnotes.txt>`__ , bind 9.10.2P4 `[5] <https://kb.isc.org/article/AA-01301/81/BIND-9.10.2-P4-Release-Notes.html>`__ , openldap24-client 2.4.42 `[6] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: libressl 2.2.3 `[4] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.3-relnotes.txt>`__ , bind 9.10.2P4 `[5] <https://kb.isc.org/article/AA-01301/81/BIND-9.10.2-P4-Release-Notes.html>`__ , openldap 2.4.42 `[6] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: radvd 1.15 `[7] <http://www.litech.org/radvd/CHANGES-1.txt>`__ , lighttpd 1.4.37 `[8] <http://www.lighttpd.net/2015/8/30/1.4.37/>`__ , squid 3.5.8 `[9] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
 * ports: php 5.6.13 `[10] <https://php.net/ChangeLog-5.php#5.6.13>`__ , php-suhosin 0.9.38 `[11] <https://raw.githubusercontent.com/stefanesser/suhosin/master/Changelog>`__ 
 * dhcp: use reverse mask instead of reverse address in config
@@ -1138,7 +1138,7 @@ tools.  Please see the full patch notes for details and references:
 * base: inconsistency between locale and rune locale states `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:09.xlocale.asc>`__ 
 * notable ports updates: phalcon 2.0.3 `[5] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.3>`__ , curl 7.43.0_2 `[6] <https://curl.haxx.se/changes.html>`__ ,
   openssh 6.8p1_8, python 2.7.10 `[7] <https://hg.python.org/cpython/raw-file/15c95b7d81dc/Misc/NEWS>`__ , perl 5.20.2_5 `[8] <https://perldoc.perl.org/5.20.2/perldelta>`__ , ntp 4.2.8p3 `[9] <http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ ,
-  libxml 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap24-server 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
+  libxml 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
 * opnsense-update: will no longer try to reinstall the istalled version
   after a fresh installation
 * bsdinstaller: bring back cpdup to error out on low memory installation

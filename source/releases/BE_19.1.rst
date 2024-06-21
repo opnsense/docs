@@ -735,7 +735,7 @@ Here are the full changes against version 19.1-RC2:
 * src: import tzdata 2018h, 2018i `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-19:04.tzdata.asc>`__ 
 * src: avoid unsynchronized updates to kn_status `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-19:05.kqueue.asc>`__ 
 * ports: ca_root_nss 3.42
-* ports: dhcp6c 20190128 prevent rawops double-free (contributed by Team Rebellion)
+* ports: dhcp6c v20190128 prevent rawops double-free (contributed by Team Rebellion)
 * ports: sudo patch to fix listpw=never `[7] <https://bugzilla.sudo.ws/show_bug.cgi?id=869>`__ 
 
 Migration notes and minor incompatibilities to look out for:
