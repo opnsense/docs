@@ -107,3 +107,4 @@ Configuration / How-tos
    how-tos/shaper_limit_per_user
    how-tos/shaper_prioritize_using_queues
    how-tos/shaper_guestnet
+   how-tos/shaper_bufferbloat
