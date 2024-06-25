@@ -170,12 +170,14 @@ Results
 
 Below you will find the versions that have been tested or are currently in test.
 
+
 +----------+-----------------------+------------------------------------------------------------------------------------------------------+
 | Version  | status                | Download                                                                                             |
 +==========+=======================+======================================================================================================+
 | BE 24.04 | In test               |                                                                                                      |
 +----------+-----------------------+------------------------------------------------------------------------------------------------------+
-| BE 23.10 | Certification pending | report available after CCN approval                                                                  |
+| BE 23.10 | LINCE Compliant /     | :download:`BE23.10-STIC_OPNSENSE_CQ-ETR-v1.0.pdf <pdf/BE23.10-STIC_OPNSENSE_CQ-ETR-v1.0.pdf>`        |
+|          | Certification pending | 3cd1135bee4c17299d4740c10ed9ef965b77be6e3899cc1c7587b9578930ea51                                     |
 +----------+-----------------------+------------------------------------------------------------------------------------------------------+
 | BE 23.04 | LINCE Compliant       | :download:`BR23.04-STIC_OPNSENSE_CQ-ETR-v3.1.pdf <pdf/BE23.04-STIC_OPNSENSE_CQ-ETR-v3.1.pdf>`        |
 |          |                       | 9cce20526a25de2f03b29dcb80df8277eac4eb02066e504396c07e0caffd104e                                     |
