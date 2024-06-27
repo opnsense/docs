@@ -275,6 +275,16 @@ ETPro Telemetry
 Proofpoint offers a free alternative for the well known
 :doc:`etpro_telemetry` ruleset.
 
+ETPro (commercial)
+++++++++++++++++++++++++++++++
+
+When in possession of a Proofpoint `ET Pro <https://www.proofpoint.com/us/threat-insight/et-pro-ruleset>`__ oink code, you can
+install the :code:`os-intrusion-detection-content-et-pro` plugin via :menuselection:`System --> Firmware --> Plugins`.
+
+As soon as the plugin is installed, you will find an option :code:`etpro.oinkcode` under settings in :menuselection:`Services --> Intrusion Detection --> Administration / Download`
+where you can enter this code.
+
+
 Abuse.ch
 ........
 
