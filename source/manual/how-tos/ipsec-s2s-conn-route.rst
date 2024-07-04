@@ -102,6 +102,7 @@ Property                site A              site B
 ======================= =================== ===================
 Local addresses         **10.10.1.1**       **10.10.1.2**
 Remote addresses        **10.10.1.2**       **10.10.1.1**
+Unique (advanced)       **Replace**         **Replace**
 ======================= =================== ===================
 
 Press <save> to go to the next step.
@@ -154,6 +155,7 @@ Reqid                  10
 Policies               **[uncheck]**
 Local                  0.0.0.0/0
 Remote                 0.0.0.0/0
+Start action           Trap
 ====================== ========================================
 
 .. Warning::

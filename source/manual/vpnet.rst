@@ -250,10 +250,16 @@ The advantage of this type of setup is one can use standard or advanced routing 
 
 .. Warning::
 
-    In order to reliably setup a VTI tunnel, both ends should use static ip addresses. Although in the legacy configuration it
-    was possible to resolve hostnames, this will never lead to a stable configuration as the :code:`if_ipsec(4)` device
-    matches both source and destination `[#] <https://github.com/freebsd/freebsd-src/blob/c8ee75f2315e8267ad814dc5b4645ef205f0e0e1/sys/net/if_ipsec.c#L479>`__
-    before accepting the traffic and has no knowledge about any external changes.
+    The most reliable VTI tunnel setups use static addresses on both ends of the tunnel as the :code:`if_ipsec(4)` device
+    matches both source and destination `[#] <https://github.com/freebsd/freebsd-src/blob/c8ee75f2315e8267ad814dc5b4645ef205f0e0e1/sys/net/if_ipsec.c#L479>`__.
+    In recent versions of our product it is possible to auto-detect and reconfigure the tunnel on connect by
+    keeping both local and remote addresses of the VTI empty in  :menuselection:`VPN --> IPsec --> Virtual Tunnel Interfaces`.
+
+.. Tip::
+
+  Since VTI tunnels are bound to requestid's it is important CHILD_SA's are instantiated not more than once.
+  To prevent duplicate children, configure `Unique` as Replace on the instance (advanced mode) and use a "trap" policy
+  for the start action.
 
 
 .................................
