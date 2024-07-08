@@ -123,3 +123,35 @@ IPv6 machine, use your favorite tool to determine you have an IPv6 address. If
 you're using SLAAC, it may take up to 30 seconds or more to get an IPv6 address.
 If you see that your interface has an IPv6 address, you can try going to an
 IPv6 only test site, such as http://6.ifconfig.pro/
+
+-----------------------------------
+Step 7 - Configure Endpoint Updates
+-----------------------------------
+
+If your IPv4 address is dynamic, it is important to keep your tunnel endpoint
+up to date to maintain IPv6 connectivity through the tunnel. We will configure
+automatic updates using ddclient.
+
+First, install the `os-ddclient` plug-in under :menuselection:`System --> Firmware --> Plugins`.
+Once installed, refresh the UI and go to :menuselection:`Services --> Dynamic DNS --> Settings`.
+Add a new account, the fill in the following information, pulling from your Tunnelbroker's tunnel
+settings where needed.
+
+===================== ===================================
+ **Service**           he-net-tunnel
+ **Username**          *Tunnelbroker account username*
+ **Password**          *Update Tunnel Key*
+ **Hostname(s)**       *Tunnel ID*
+===================== ===================================
+
+.. image:: images/tunnelbroker_tunneldetails_id.png
+   :width: 100%
+   
+.. image:: images/tunnelbroker_tunneldetails_key.png
+   :width: 100%
+
+For **Check ip method**, select any method that will return an *IPv4* address (e.g., ipify-ipv4,
+Interface [IPv4], or ipv4only.me). If using Interface [IPv4], also select the appropriate WAN
+interface to monitor.
+
+
