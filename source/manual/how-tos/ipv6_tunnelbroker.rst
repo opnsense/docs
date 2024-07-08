@@ -132,7 +132,7 @@ If your IPv4 address is dynamic, it is important to keep your tunnel endpoint
 up to date to maintain IPv6 connectivity through the tunnel. We will configure
 automatic updates using ddclient.
 
-First, install the `os-ddclient` plug-in under :menuselection:`System --> Firmware --> Plugins`.
+First, install the **os-ddclient** plug-in under :menuselection:`System --> Firmware --> Plugins`.
 Once installed, refresh the UI and go to :menuselection:`Services --> Dynamic DNS --> Settings`.
 Add a new account, the fill in the following information, pulling from your Tunnelbroker's tunnel
 settings where needed.
@@ -144,6 +144,9 @@ settings where needed.
  **Hostname(s)**       *Tunnel ID*
 ===================== ===================================
 
+.. image:: images/tunnelbroker_configuration_ddclient.png
+   :width: 100%
+
 .. image:: images/tunnelbroker_tunneldetails_id.png
    :width: 100%
    
@@ -151,7 +154,8 @@ settings where needed.
    :width: 100%
 
 For **Check ip method**, select any method that will return an *IPv4* address (e.g., ipify-ipv4,
-Interface [IPv4], or ipv4only.me). If using Interface [IPv4], also select the appropriate WAN
+Interface [IPv4], or ipv4only.me). If using "Interface [IPv4]", also select the appropriate WAN
 interface to monitor.
 
-
+Add a **Description** for your own use and leave all other options unchanged. Enable and save this
+account configuration, then enable and start the Dynamic DNS service.
