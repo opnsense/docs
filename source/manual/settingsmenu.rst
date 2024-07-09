@@ -319,9 +319,7 @@ As the name implies, this section contains the settings that do not fit anywhere
 Setting                           Explanation
 ================================= ======================================================================================================================================================================================================
 **Cryptography settings**
-Diffie-Hellman parameters         The server and client needs to use the same parameters in order to set up a connection. How parameters are updated can be tweaked. Please leave on default unless you know why to change it.
 Hardware acceleration             Select your method of hardware acceleration, if present. Check the full help for hardware-specific advice.
-Use /dev/crypto                   Old hardware crypto drivers expose the /dev/crypto interface. This is not used by newer hardware or software any more.
 **Thermal Sensors**
 Hardware                          Select between No/ACPI thermal sensor driver and processor-specific drivers.
 **Periodic Backups**
