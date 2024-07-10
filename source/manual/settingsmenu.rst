@@ -81,6 +81,7 @@ Alternate Hostnames                            Alternate, valid hostnames (to av
                                                referrer/DNS rebinding protection).
 HTTP Compression                               Reduces size of transfer, at the cost of slightly higher CPU usage.
 Access log                                     Log all access to the Web GUI for debugging/analysis.
+Server Log                                     Display all web GUI errors in the main system log.
 Listen interfaces                              Can be used to limit interfaces on which the Web GUI can be accessed.
                                                This allows freeing the interface for other services, such as HAProxy.
 HTTP_REFERER enforcement check                 The origins of requests are checked in order to provide some
