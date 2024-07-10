@@ -15,7 +15,7 @@ The Business Edition offers additional safeguards where functional changes are b
 more conservative manner and feedback has been collected from development and community.
 
 Offering specific business-oriented features and third party security verification.
-Currently, the only open-source LINCE compliant firewall.
+Currently, the only open source LINCE compliant firewall.
 
 * Mission critical
 * LINCE compliant (security verification by trained third party independent professionals)
