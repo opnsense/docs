@@ -9,7 +9,7 @@ Business Edition
 
 
 
-A mission critical version of the well known OPNsense firewall.
+A mission critical version of the well-known OPNsense firewall.
 
 The Business Edition offers additional safeguards where functional changes are being included in a
 more conservative manner and feedback has been collected from development and community.
