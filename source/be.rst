@@ -21,7 +21,7 @@ Currently, the only open-source LINCE compliant firewall.
 * LINCE compliant (security verification by trained third party independent professionals)
 * Commercial firmware repository
 * Free GeoIP database
-* Official OPNsense Open Virtualization Image
+* Official OPNsense Open Virtualisation Image
 * Central Management, including easy one click remote host access, provisioning and monitoring.
 * Web Application Firewall
 * Free E-Book (English & German)
