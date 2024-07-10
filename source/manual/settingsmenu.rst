@@ -68,8 +68,9 @@ HTTP Strict Transport Security                 Enforces loading the web GUI over
                                                trust an invalid certificate for the web GUI.
 TCP port                                       Can be useful if there are other services that are reachable via port
                                                80/443 of the external IP, for example.
-Disable web GUI redirect rule                  If you change the port, a redirect rule from port 80/443 will be
-                                               created. Check this to disable creating this rule.
+HTTP Redirect                                  If you change the port, a redirect rule from port 80/443 will be
+                                               created. Check this option to disable the creation this automatic redirect rule.
+Login Messages                                 If checked, disable the successful login messages in the web GUI.
 Session Timeout                                Time in minutes to expire idle management sessions.
 DNS Rebind Check                               OPNsense contains protection against
                                                `DNS rebinding <https://en.wikipedia.org/wiki/DNS_rebinding>`__ by
@@ -80,7 +81,6 @@ Alternate Hostnames                            Alternate, valid hostnames (to av
                                                referrer/DNS rebinding protection).
 HTTP Compression                               Reduces size of transfer, at the cost of slightly higher CPU usage.
 Access log                                     Log all access to the Web GUI for debugging/analysis.
-Server Log                                     Display all web GUI errors in the main system log.
 Listen interfaces                              Can be used to limit interfaces on which the Web GUI can be accessed.
                                                This allows freeing the interface for other services, such as HAProxy.
 HTTP_REFERER enforcement check                 The origins of requests are checked in order to provide some
@@ -270,7 +270,7 @@ going to :menuselection:`System --> Settings --> General`. The following setting
 |                                 | use 'local' as a domain name. It will cause local hosts running mDNS (avahi,       |
 |                                 | bonjour, etc.) to be unable to resolve local hosts not running mDNS.               |
 +---------------------------------+------------------------------------------------------------------------------------+
-| Time zone                       |                                                                                    |
+| Time zone                       | Set the time zone closest to you.                                                  |
 +---------------------------------+------------------------------------------------------------------------------------+
 | Language                        | Default language. Can be overridden by users.                                      |
 +---------------------------------+------------------------------------------------------------------------------------+
@@ -278,8 +278,8 @@ going to :menuselection:`System --> Settings --> General`. The following setting
 +---------------------------------+------------------------------------------------------------------------------------+
 | **Networking**                                                                                                       |
 +---------------------------------+------------------------------------------------------------------------------------+
-| Prefer to use IPv4 even         |                                                                                    |
-| if IPv6 is available            |                                                                                    |
+| Prefer to use IPv4 even         | By default if a hostname resolves IPv6 and IPv4 addresses, the IPv6 will be used.  |
+| if IPv6 is available            | If checked, then IPv4 addresss will be used instead of IPv6.                       |
 +---------------------------------+------------------------------------------------------------------------------------+
 | DNS servers                     | A list of DNS servers, optionally with a gateway. These DNS servers are also used  |
 |                                 | for the DHCP service, DNS services and for PPTP VPN clients. When using multiple   |
@@ -329,9 +329,9 @@ Periodic NetFlow Backup           Periodically backup Netflow state.
 Periodic Captive Portal Backup    Periodically backup Captive Portal state.
 **Power Savings**
 Use PowerD                        PowerD allows tweaking power conservation features. The modes are maximum (high performance), minimum (maximum power saving), adaptive (balanced), hiadaptive (balanced, but with higher performance).
-On AC Power Mode
-On Battery Power Mode
-On Normal Power Mode
+On AC Power Mode                  Set power mode when on AC (on grid). Default option is: hiadaptive.
+On Battery Power Mode             Set power mode when on battery. Default option is: hiadaptive.
+On Normal Power Mode              Set power mode the power utility can not determine the power state. Default option is: hiadaptive.
 **Disk / Memory Settings**
 Swap file                         Create a 2 GB swap file. This can increase performance, at the cost of increased wear on storage, especially flash.
 /var RAM disk                     This can be useful to avoid wearing out flash storage. **Everything in /var, including logs will be lost upon reboot.**
