@@ -28,6 +28,43 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.1.10 (July 11, 2024)
+--------------------------------------------------------------------------
+
+
+Today a number of security advisories in third party software are being
+addressed.  Also, a bad dhcp6c patch has been reverted which requires
+a manual reboot to take full effect.
+
+Here are the full patch notes:
+
+* interfaces: improve DHCPv6 requirement rules on WAN interface
+* interfaces: support reading more attributes in ifconfig output parser
+* interfaces: correct logic of resolve flag in ARP table (contributed by Kevin Pelzel)
+* reporting: add NetFlow IPv6 support for destinations
+* kea-dhcp: add description field to subnets
+* kea-dhcp: add next-server option to subnets (contributed by Harm Kroon)
+* wireguard: fix IP protocol detection for manual gateway
+* ui: remove aria-hidden from dialogs (contributed by Jason Fayre)
+* ui: properly break out selectpicker options in modals
+* plugins: os-bind 1.32 `[1] <https://github.com/opnsense/plugins/blob/stable/24.1/dns/bind/pkg-descr>`__ 
+* plugins: os-caddy 1.6.0 `[2] <https://github.com/opnsense/plugins/blob/stable/24.1/www/caddy/pkg-descr>`__ 
+* plugins: os-ddclient 1.22 `[3] <https://github.com/opnsense/plugins/blob/stable/24.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-nginx 1.33 `[4] <https://github.com/opnsense/plugins/blob/stable/24.1/www/nginx/pkg-descr>`__ 
+* plugins: os-theme-cicada 1.36 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.46 (contributed by Team Rebellion)
+* plugins: os-zabbix-agent 1.14 `[5] <https://github.com/opnsense/plugins/blob/stable/24.1/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.11 `[6] <https://github.com/opnsense/plugins/blob/stable/24.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* ports: dhcp6c 20240710 reverts faulty Debian patch
+* ports: krb5 1.21.3 `[7] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
+* ports: nss 3.101 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_101.html>`__ 
+* ports: openssh 9.8p1 `[9] <https://www.openssh.com/txt/release-9.8>`__ 
+* ports: openvpn 2.6.11 `[10] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.11>`__ 
+* ports: suricata 7.0.6 `[11] <https://suricata.io/2024/06/27/suricata-7-0-6-and-6-0-20-released/>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.1.9 (June 18, 2024)
 --------------------------------------------------------------------------
 
