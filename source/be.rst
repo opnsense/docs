@@ -9,7 +9,7 @@ Business Edition
 
 
 
-A mission critical version of the well known OPNsense firewall
+A mission critical version of the well-known OPNsense firewall.
 
 The Business Edition offers additional safeguards where functional changes are being included in a
 more conservative manner and feedback has been collected from development and community.
@@ -24,9 +24,9 @@ Currently, the only open source LINCE compliant firewall.
 * Official OPNsense Open Virtualisation Image
 * Central Management, including easy one click remote host access, provisioning and monitoring.
 * Web Application Firewall
-* Free E-Book ( English & German )
+* Free E-Book (English & German)
 
-more information:
+More information:
 
 .. toctree::
    :maxdepth: 2
