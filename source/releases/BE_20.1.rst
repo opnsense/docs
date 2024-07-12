@@ -160,7 +160,7 @@ Here are the full patch notes:
 * src: update to tzdata 2020a `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:08.tzdata.asc>`__ 
 * ports: ca_root_nss 3.52
 * ports: curl 7.70.0 `[6] <https://curl.se/changes.html#7_70_0>`__ 
-* ports: dhcp6c v20200512
+* ports: dhcp6c 20200512
 * ports: hyperscan 5.2.1 `[7] <https://github.com/intel/hyperscan/releases/tag/v5.2.1>`__ 
 * ports: openldap 2.4.50 `[8] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: pcre2 10.35 `[9] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.35>`__ 

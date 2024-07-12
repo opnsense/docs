@@ -848,7 +848,7 @@ Here are the full changes against version 18.7-RC2:
 * plugins: os-theme-rebellion 1.3 (contributed by Team Rebellion)
 * plugins: os-relayd 2.2 (contributed by Frank Brendel)
 * plugins: os-siproxd 1.3 (contributed by Michael Muenz)
-* ports: dhcp6c v20180720 with fix for raw support (contributed by Team Rebellion)
+* ports: dhcp6c 20180720 with fix for raw support (contributed by Team Rebellion)
 * ports: php 7.1.20 `[2] <https://php.net/ChangeLog-7.php#7.1.20>`__ 
 
 Migration notes and minor incomatibilities to look out for:

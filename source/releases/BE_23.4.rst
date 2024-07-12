@@ -240,7 +240,7 @@ Here are the full patch notes:
 * src: pf: remove pd_refs from pfsync
 * src: pf: deal with KPI change bug on stable/13 by redirecting otherwise crashing traffic through ip6_output()
 * ports: curl 8.1.1 `[10] <https://curl.se/changes.html#8_1_1>`__ 
-* ports: dhcp6c v20230530
+* ports: dhcp6c 20230530
 * ports: ifinfo now also prints interface index (contributed by Nicolas Thumann)
 * ports: libxml 2.10.4 `[11] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: lighttpd 1.4.71 `[12] <https://www.lighttpd.net/2023/5/27/1.4.71/>`__ 

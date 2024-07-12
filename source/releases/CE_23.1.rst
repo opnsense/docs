@@ -167,7 +167,7 @@ Here are the full patch notes:
 * backend: improved nested command support, reorganise action types, use ActionFactory to offer the requested type
 * backend: add "getUtcTime" template helper function
 * ports: curl 8.1.1 `[1] <https://curl.se/changes.html#8_1_1>`__ 
-* ports: dhcp6c v20230530
+* ports: dhcp6c 20230530
 * ports: lighttpd 1.4.71 `[2] <https://www.lighttpd.net/2023/5/27/1.4.71/>`__ 
 * ports: openssh 9.3p1 `[3] <https://www.openssh.com/txt/release-9.3>`__ 
 * ports: sqlite 3.42.0 `[4] <https://sqlite.org/releaselog/3_42_0.html>`__ 
@@ -229,7 +229,7 @@ Here are the full patch notes:
 * src: pf: remove pd_refs from pfsync
 * src: pf: deal with KPI change bug on stable/13 by redirecting otherwise crashing traffic through ip6_output()
 * ports: curl 8.1.0 `[3] <https://curl.se/changes.html#8_1_0>`__ 
-* ports: dhcp6c v20230523
+* ports: dhcp6c 20230523
 * ports: lighttpd 1.4.70 `[4] <https://www.lighttpd.net/2023/5/10/1.4.70/>`__ 
 * ports: nss 3.89.1 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_89_1.html>`__ 
 * ports: openvpn 2.6.4 `[6] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.4>`__ 

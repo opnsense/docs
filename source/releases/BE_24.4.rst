@@ -111,6 +111,16 @@ Here are the full patch notes:
 * ports: syslog-ng 4.7.1 `[17] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.7.1>`__ 
 * ports: unbound 1.20.0 `[18] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-20-0>`__ 
 
+A hotfix release was issued as 24.4.1_2:
+
+* wireguard: fix IP protocol detection for manual gateway
+* ui: properly break out selectpicker options in modals
+* ports: krb5 1.21.3 `[19] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
+* ports: nss 3.101 `[20] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_101.html>`__ 
+* ports: openssh 9.8p1 `[21] <https://www.openssh.com/txt/release-9.8>`__ 
+* ports: openvpn 2.6.11 `[22] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.11>`__ 
+* ports: suricata 7.0.6 `[23] <https://suricata.io/2024/06/27/suricata-7-0-6-and-6-0-20-released/>`__ 
+
 
 
 --------------------------------------------------------------------------

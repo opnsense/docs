@@ -270,7 +270,7 @@ Without further ado, here are the full patch notes:
 * src: move invoking of callout_stop(&lle->lle_timer) into llentry_free()
 * src: ensure that IP addresses match in ICMP error packets in pf(4)
 * src: add bsdinstall utility for upcoming 19.7 installer replacement
-* ports: dhcp6c v20190419 fixes raw options segfaults (contributed by Franck78)
+* ports: dhcp6c 20190419 fixes raw options segfaults (contributed by Franck78)
 * ports: hostapd / wpa_supplicant 2.8 `[3] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
 * ports: perl 5.28.2 `[4] <https://perldoc.perl.org/5.28.2/perldelta>`__ 
 * ports: py-yaml 5.1 `[5] <https://github.com/yaml/pyyaml/blob/master/CHANGES>`__ 
@@ -735,7 +735,7 @@ Here are the full changes against version 19.1-RC2:
 * src: import tzdata 2018h, 2018i `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-19:04.tzdata.asc>`__ 
 * src: avoid unsynchronized updates to kn_status `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-19:05.kqueue.asc>`__ 
 * ports: ca_root_nss 3.42
-* ports: dhcp6c v20190128 prevent rawops double-free (contributed by Team Rebellion)
+* ports: dhcp6c 20190128 prevent rawops double-free (contributed by Team Rebellion)
 * ports: sudo patch to fix listpw=never `[7] <https://bugzilla.sudo.ws/show_bug.cgi?id=869>`__ 
 
 Migration notes and minor incompatibilities to look out for:
