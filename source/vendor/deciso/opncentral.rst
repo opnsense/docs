@@ -79,7 +79,11 @@ The second tab in the screen contains the setting page which configures defaults
 Interfaces                         Select the interfaces of the central node that would be used when merging settings on the remote firewall, only applicable on part of the
                                    configuration sections (such as the firewall). See the provisioning section for more details.
 Enable backups                     Enable centralized backups.
-#Backups to preserve               Number of backups to preserve per remote host on this machine
+Backups:
+- Sequential count                 Number of sequential backups to preserve from remote host (per host), copy of local history to a maximum of X per host.
+- Interval type                    When an interval is provided, this option determines the period for the interval.
+                                   e.g. when weekly is specified, each last record of the week is preserved to a maximum of the number of intervals
+- Interval count                   Non sequential number of backups to keep, last backup of specified interval type is preserved for the number of items specified here.
 ================================= ===============================================================================================================================================
 
 
