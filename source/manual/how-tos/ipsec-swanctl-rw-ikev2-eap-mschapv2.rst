@@ -27,7 +27,8 @@ The example users are ``John`` and ``Laura``. The example FQDN is ``vpn1.example
     Any IPv6 functionality is optional. If you don't want to use IPv4+IPv6 dual stack, just skip all IPv6 addresses/networks and focus on IPv4.
 
 .. Note::
-    It is currently not possible to use IPv6 as outer tunnel transport address. IPsec requires UDP encapsulation of ESP packets for most mobile clients. UDP encapsulation and decapsulation for IPv6 is currently unsupported by the FreeBSD 13.2 Kernel.
+    - IPv6 transport with UDP encapsulation of ESP packets is supported by OPNsense 24.7 with the FreeBSD 14 kernel.
+    - When using OPNsense 24.1 or below it is currently not possible to use IPv6 as outer tunnel transport address. IPsec requires UDP encapsulation of ESP packets for most mobile clients. UDP encapsulation and decapsulation for IPv6 is unsupported by the FreeBSD 13 Kernel.
 
 .. Warning::
     - Don't copy security relevant configuration parameters like passwords into your configuration. Create your own! 
