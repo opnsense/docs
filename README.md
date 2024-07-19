@@ -71,5 +71,5 @@ pip[3] install sphinx-autobuild
 ```
 
 ```
-sphinx-autobuild source html
+sphinx-autobuild source build/html
 ```
