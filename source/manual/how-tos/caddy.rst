@@ -22,7 +22,7 @@ Main features of this plugin:
 * Wildcard Domain and Subdomain support
 * Access Lists to restrict access based on static networks
 * Basic Auth to restrict access by username and password
-* Forward Auth support in handlers
+* Forward Auth with Authelia
 * Syslog-ng integration and HTTP Access Log
 * NTLM Transport
 * Header manipulation
@@ -93,7 +93,6 @@ FAQ
 * | `Let's Encrypt` or `ZeroSSL` can not be explicitely chosen. Caddy automatically issues one of these options, determined by speed and availability. These certificates can be found in ``/var/db/caddy/data/caddy/certificates``.
 * | When an `Upstream Destination` only supports TLS connections, yet does not offer a valid certificate, enable ``TLS Insecure Skip Verify`` in a `Handler` to mitigate connection problems.
 * | Caddy upgrades all connections automatically from HTTP to HTTPS. When cookies do not have have the ``secure`` flag set by the application serving them, they can still be transmitted unencrypted before the connection is upgraded. If these cookies contain very sensitive information, it might be a good choice to close port 80.
-* | Handlers are not limited to one per domain/subdomain. If there are multiple different URIs to handle (e.g. ``/foo/*`` and ``/bar/*``), create a handler for each of them. Just make sure each of these URIs are on the same level, creating ``/foo/*`` and ``/foo/bar/*`` will make ``/foo/*`` match everything. Additionally, when creating an empty handler for a domain/subdomain, the templating logic will always automatically place it last in the Caddyfile site block. This means, specific URIs will always match before an empty URI. Though, using just one handler with an empty URI is recommended for most usecases, since it catches all traffic directed at a domain/subdomain.
 * | There is no TCP/UDP stream and WAF (Web Application Firewall) support in this plugin. For a business grade Reverse Proxy with WAF functionality, use ``os-OPNWAF``. For TCP/UDP streaming, use either ``os-nginx`` or ``os-haproxy``. As an alternative to a WAF, it is simple to integrate Caddy with CrowdSec. Check the tutorial section for guidance.
 
 
@@ -101,10 +100,14 @@ FAQ
 Caddy: Tutorials
 ================
 
+
+----------------------
+Standard Configuration
+----------------------
+
 .. Attention:: The tutorial section implies that :ref:`Prepare OPNsense for Caddy after installation <prepare-opnsense-caddy>` has been followed.
 
 
--------------------------------
 Creating a Simple Reverse Proxy
 -------------------------------
 
@@ -156,7 +159,6 @@ After just a few seconds the automatic certificate will be installed, check the 
 .. _accesslist-opnsense-caddy:
 
 
--------------------------------
 Restrict Access to Internal IPs
 -------------------------------
 
@@ -190,18 +192,20 @@ Options                        Values
 
 Now, all connections without a private IPv4 address will be served an empty page. To outright refuse the connection, the option ``Abort Connections`` in :menuselection:`Services --> Caddy Web Server --> General Settings` should be additionally enabled. Some applications might demand a HTTP Error code instead of having their connection aborted, an example could be monitoring systems. For these a custom ``HTTP Response Code`` can be enabled.
 
+.. Note:: The same logic can be used with the Basic Auth option. Create one or multiple users and append them to a domain or subdomain. Access Lists will match before Basic Auth, so both options can synergize.
 
------------
+
 Dynamic DNS
 -----------
 
-All currently supported Dynamic DNS Providers and requests for additions can be found at https://github.com/opnsense/plugins/issues/3872
+Supported Dynamic DNS Providers and requests for additions can be found `here <https://github.com/opnsense/plugins/issues/3872>`_.
 
-.. Note:: Read the full help text for guidance. It could also be necessary to check the selected provider module at https://github.com/caddy-dns for further instructions. These modules are community maintained. When a module introduces issues that are not fixed it will be removed from this plugin.
+.. Note:: Read the full help text for guidance. It could also be necessary to check the selected provider module at `Caddy DNS <https://github.com/caddy-dns>`_
+ for further instructions. These modules are community maintained. When a module introduces issues that are not fixed it will be removed from this plugin.
 
 
-Use Dynamic DNS with Reverse Proxy
-----------------------------------
+Dynamic DNS with Reverse Proxy
+++++++++++++++++++++++++++++++
 
 Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> DNS Provider`
 
@@ -240,8 +244,8 @@ Options                        Values
 Check the Logfile for the DynDNS updates. Set it to `Informational` and `Search` for the chosen domain.
 
 
-Use Dynamic DNS in Client Mode only
------------------------------------
+Dynamic DNS in dedicated Client Mode
+++++++++++++++++++++++++++++++++++++
 
 Sometimes, only the Dynamic DNS functionality is needed. There can be cases where a DNS Provider is fully supported in `os-caddy`, yet not in other DynDNS plugins of the OPNsense. With the right configuration, this plugin can be used as DynDNS Client without using port 80 and 443, which stay free to use for other services.
 
@@ -278,9 +282,8 @@ Options                        Values
 * | Press **Save** and **Apply**
 
 
------------------------------------------------------
-Create a Wildcard Reverse Proxy with DNS-01 Challenge
------------------------------------------------------
+Wildcard Domain with Subdomains
+-------------------------------
 
 .. Tip:: If in doubt, do not use subdomains. If there should be ``foo.example.com``, ``bar.example.com`` and ``example.com``, just create them as three base domains. This way, there is the most flexibility, and the most features are supported.
 
@@ -304,7 +307,6 @@ Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Handle
 .. _webgui-opnsense-caddy:
 
 
----------------------------------
 Reverse Proxy the OPNsense WebGUI
 ---------------------------------
 
@@ -341,7 +343,6 @@ Open ``https://opn.example.com`` and it should serve the reverse proxied OPNsens
 .. Attention:: Create an :ref:`Access List <accesslist-opnsense-caddy>` to restrict access to the WebGUI.
 
 
--------------------------------
 Redirect ACME HTTP-01 Challenge
 -------------------------------
 
@@ -364,7 +365,7 @@ Options                             Values
 
 * Press **Save** and **Apply**
 
-.. Note:: The `HTTP-01 Challenge Redirection` already works now and the internal resource located at ``192.168.10.1`` will be able to issue the certificate for the domain ``foo.example.com``. If the internal ressource should also be reverse proxied, add a handler to the domain.
+The `HTTP-01 Challenge Redirection` is active and the internal resource located at ``192.168.10.1`` will be able to issue the certificate for the domain ``foo.example.com``. If the internal ressource should also be reverse proxied, add a handler to the domain.
 
 Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Handler`
 
@@ -385,7 +386,29 @@ Options                             Values
 With this configuration, Caddy will eventually choose the TLS-ALPN-01 challenge for its own ``foo.example.com`` domain, and reverse proxy the HTTP-01 challenge to ``192.168.10.1``, where the upstream destination can listen on port 80 for ``foo.example.com`` and solve its own challenge for a certificate. With TLS enabled in the `Handler`, an encrypted connection is automatically possible. The automatic HTTP to HTTPS redirection is also taken care of.
 
 
-----------------------------------------
+Filter by Domain
+----------------
+
+Having a large configuration can become a bit cumbersome to navigate. To help, a new filter functionality has been added to the top right corner of the `Domains` and `Handlers` tab, called `Filter by Domain`.
+
+In `Filter by Domain`, one or multiple `Domains` can be selected, and as filter result, only their corresponding configuration will be displayed in `Domains`, `Subdomains` and `Handlers`. This makes keeping track of large configurations a breeze.
+
+
+----------------------
+Advanced Configuration
+----------------------
+
+
+Multiple handlers for one domain
+---------------------------------------
+
+Handlers are not limited to one per domain/subdomain. If there are multiple different URIs to handle (e.g. ``/foo/*`` and ``/bar/*``), create a handler for each of them. Just make sure each of these URIs are on the same level, creating ``/foo/*`` and ``/foo/bar/*`` will make ``/foo/*`` match everything.
+
+Additionally, when creating an empty handler for a domain/subdomain, the templating logic will always automatically place it last in the Caddyfile site block. This means, specific URIs will always match before an empty URI. Though, using just one handler with an empty URI is recommended for most usecases, since it catches all traffic directed at a domain/subdomain.
+
+In the advanced options of handlers, the handling logic can be selected, e.g. `handle path` to strip the URI.
+
+
 Reverse Proxy to a Webserver with Vhosts
 ----------------------------------------
 
@@ -434,9 +457,8 @@ Options                             Values
 * Press **Save** and **Apply**
 
 
--------------------------------
-Integrating Caddy with CrowdSec
--------------------------------
+CrowdSec Integration
+--------------------
 
 CrowdSec is a powerful alternative to a WAF. It uses logs to dynamically ban IP addresses of known bad actors. The Caddy plugin is prepared to emit the json logs for this integration.
 
@@ -474,9 +496,8 @@ Next, connect to the OPNsense via SSH or console, go into the shell with Option 
 * Go into the OPNsense WebGUI and restart CrowdSec.
 
 
-----------------------------------
-Caddy and High Availability Setups
-----------------------------------
+High Availability Setups
+------------------------
 
 There are a few possible configurations to run Caddy successfully in a High Availability Setup with two OPNsense firewalls.
 
@@ -502,18 +523,58 @@ Now both Caddy instances will be able to issue ACME certificates at the same tim
 .. Tip:: Check the Logfile on both Caddy instances for successful challenges. Look for ``certificate obtained successfully`` informational messages.
 
 
--------------------------------------
-Keeping Track of Large Configurations
--------------------------------------
+Forward Auth
+------------
 
-Having a large configuration can become a bit cumbersome to navigate. To help, a new filter functionality has been added to the top right corner of the `Domains` and `Handlers` tab, called `Filter by Domain`.
+Delegating authentication to Authelia, before serving an app via reverse proxy, is a very advanced usecase. `The Forward Auth Documentation <https://caddyserver.com/docs/caddyfile/directives/forward_auth#authelia>`_ should be used for inspiration.
 
-In `Filter by Domain`, one or multiple `Domains` can be selected, and as filter result, only their corresponding configuration will be displayed in `Domains`, `Subdomains` and `Handlers`. This makes keeping track of large configurations a breeze.
+To attach the Forward Auth directive to a handler, the Auth Provider has to be filled out in the General Settings. Afterwards, the Forward Auth checkbox in a Handler can be selected. This will prepend the `forward_auth` directive in front of the `reverse_proxy` directive in the scope of that Handler. Headers are set automatically.
+
+An example Caddyfile would look like this:
+
+.. code::
+
+    app1.example.com {
+        handle {
+            forward_auth authelia:9091 {
+                uri /api/verify?rd=https://auth.example.com
+                copy_headers Remote-User Remote-Groups Remote-Name Remote-Email
+            }
+            reverse_proxy 192.168.1.10:8080 {
+            }
+        }
+    }
+
+Requests from clients to `app1.example.com` will be sent to Authelia via the `forward_auth` directive. Then, after the authentication has been completed, the `reverse_proxy` directive sends the traffic to the Upstream.
 
 
-------------------------------------------
-Advanced: Bind Caddy to specific Interface
-------------------------------------------
+Run Caddy as Unprivileged User
+------------------------------
+
+In this plugin, Caddy runs as root. This is required when well-known ports are used. Since the default ports are 80 and 443, Caddy will be started as superuser.
+
+For higher security demands, there is the option to run Caddy as `www` user and group. This comes with the restriction of only being able to use upper ports.
+
+Make sure all of the domains have empty ports, or ports above the well-known port range before continuing. There is a validation that will prevent configuring well-known ports when `Disable Superuser` is active.
+
+Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> General`
+
+* | Enable the `advanced mode`
+* | Add custom upper `HTTP Port`, e.g. 8080
+* | Add custom upper `HTTPS Port`, e.g. 8443
+* | Enable the checkbox `Disable Superuser`
+* | Disable the checkbox `Enabled` to disable Caddy
+* | Press **Apply**
+* | Enable the checkbox `Enabled` to enable Caddy
+* | Press **Apply**
+
+From now on, Caddy will run as `www` user and group. This can be verified by checking the user of the Caddy process.
+
+.. Note:: With this configuration, port forwarding rules should be used to forward port 80 and 443 to the new alternative HTTP and HTTPS Ports.
+
+
+Bind Caddy to specific Interfaces
+---------------------------------
 
 .. Warning:: Binding a service to a specific interface via IP address can cause lots of issues. If the IP address is dynamic, the service can crash or refuse to start. During boot, the service can refuse to start if the interface IP addresses are assigned too late. Configuration changes on the interfaces can cause the service to crash. **Only use this with static IP addresses! There is no OPNsense community support for this configuration.**
 
@@ -539,16 +600,26 @@ This configuration is only useful if there are two or more WAN interfaces, and C
 
 Now Caddy will only bind to ``203.0.113.1`` and ``192.168.1.1``. It can still be configured in the GUI without restrictions.
 
-Read more about the ``default_bind`` directive: https://caddyserver.com/docs/caddyfile/options#default-bind
+Read more about the ``default_bind`` directive: `Default Bind <https://caddyserver.com/docs/caddyfile/options#default-bind>`_
 
 
--------------------------
-Advanced: Troubleshooting
--------------------------
+Custom Configuration Files
+--------------------------
+
+* | The Caddyfile has an additional import from the path ``/usr/local/etc/caddy/caddy.d/``. Place custom configuration files inside that adhere to the Caddyfile syntax.
+* | ``*.global`` files will be imported into the global block of the Caddyfile.
+* | ``*.conf`` files will be imported at the end of the Caddyfile. Don't forget to test the custom configuration with ``caddy validate --config /usr/local/etc/caddy/Caddyfile``.
+
+.. Note:: With these imports, the full potential of Caddy can be unlocked. The GUI options will remain focused on the reverse proxy. There is no OPNsense community support for configurations that have not been created with the offered GUI. For customized configurations, the Caddy community is the right place to ask.
+
+
+---------------
+Troubleshooting
+---------------
 
 Sometimes, things do not work as expected. Caddy provides a few powerful debugging tools to analyze issues.
 
-This section explains how to obtain the required files to get help from https://caddy.community.
+This section explains how to obtain the required files to get help from `Caddy Community <https://caddy.community>`_.
 
 1. Change the global Log Level to `DEBUG`. This will log `everything` the ``reverse_proxy`` directive handles.
 
@@ -571,9 +642,7 @@ Go to :menuselection:`Services --> Caddy Web Server --> Diagnostics --> Caddyfil
 * | Press the `Download` button to get this current Caddyfile.
 * | If there are custom imports in ``/usr/local/etc/caddy/caddy.d/``, download the JSON configuration.
 
-.. Note:: Rarely, a performance profile might be requested. For this, a special admin endpoint can be activated.
-
-.. Attention:: This admin endpoint is deactivated by default. To enable it and access it on the OPNsense, follow these additional steps. Do not forget to deactivate it after use. Anybody with network access to the admin endpoint can use REST API to change the running configuration of Caddy, without authentication.
+.. Attention:: Rarely, a performance profile might be requested. For this, a special admin endpoint can be activated. This admin endpoint is deactivated by default. To enable it and access it on the OPNsense, follow these additional steps. Do not forget to deactivate it after use. Anybody with network access to the admin endpoint can use REST API to change the running configuration of Caddy, without authentication.
 
 * | SSH into the OPNsense shell
 * | Stop Caddy with ``configctl caddy stop``
@@ -584,16 +653,4 @@ Go to :menuselection:`Services --> Caddy Web Server --> Diagnostics --> Caddyfil
 * | Use sockstat to see if the admin endpoint has been created. ``sockstat -l | grep -i caddy`` - it should show the endpoint ``*:2019``.
 * | Create a firewall rule on ``LAN`` that allows ``TCP`` to destination ``This Firewall`` and destination port ``2019``.
 * | Open the admin endpoint: ``http://YOUR_LAN_IP:2019/debug/pprof/``
-
-.. Note:: Follow the instructions on https://caddyserver.com/docs/profiling how to debug and profile Caddy.
-
-
---------------------------------
-Using Custom Configuration Files
---------------------------------
-
-* | The Caddyfile has an additional import from the path ``/usr/local/etc/caddy/caddy.d/``. Place custom configuration files inside that adhere to the Caddyfile syntax.
-* | ``*.global`` files will be imported into the global block of the Caddyfile.
-* | ``*.conf`` files will be imported at the end of the Caddyfile. Don't forget to test the custom configuration with ``caddy validate --config /usr/local/etc/caddy/Caddyfile``.
-
-.. Note:: With these imports, the full potential of Caddy can be unlocked. The GUI options will remain focused on the reverse proxy. There is no OPNsense community support for configurations that have not been created with the offered GUI. For customized configurations, the Caddy community is the right place to ask.
+* | Follow the instructions on `Profiling Caddy <https://caddyserver.com/docs/profiling>`_.
