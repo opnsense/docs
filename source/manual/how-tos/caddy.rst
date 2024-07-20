@@ -443,6 +443,36 @@ When using a mix of wildcard domains and subdomains, a handler set only on the w
 
 Different handling logics can be selected, e.g. `handle path` to strip the URI or `handle` to preserve the URI.
 
+An example Caddyfile would look like this:
+
+.. code-block::
+
+    # Reverse Proxy Domain: "531e7877-0b58-4f93-a9f0-54beee58bdea"
+    autodiscover.example.com {
+            handle /ecp/* {
+                    reverse_proxy blackhole {
+                    }
+            }
+
+            handle /autodiscover/* {
+                    reverse_proxy 172.16.99.10 {
+                    }
+            }
+
+            handle {
+                    reverse_proxy 192.168.1.33 {
+                    }
+            }
+    }
+    # Reverse Proxy Domain: "58760ae1-2409-4a6b-a6c4-d58b15706b55"
+    mail.example.com {
+            handle {
+                    reverse_proxy 192.168.1.33 {
+                    }
+            }
+    }
+
+
 
 Reverse Proxy to a Webserver with Vhosts
 ----------------------------------------
