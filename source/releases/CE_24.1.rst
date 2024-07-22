@@ -36,6 +36,10 @@ Today a number of security advisories in third party software are being
 addressed.  Also, a bad dhcp6c patch has been reverted which requires
 a manual reboot to take full effect.
 
+CAUTION: The OpenSSH update prevents SSH sessions from being established.
+You need to restart OpenSSH from the GUI or run the console command
+"pluginctl -s openssh restart" or reboot the system in order to unbreak it.
+
 Here are the full patch notes:
 
 * interfaces: improve DHCPv6 requirement rules on WAN interface
@@ -65,6 +69,14 @@ Here are the full patch notes:
 A hotfix release was issued as 24.1.10_1:
 
 * interfaces: allow DHCPv6 server answer from a GUA
+
+A hotfix release was issued as 24.1.10_2:
+
+* interfaces: allow DHCPv6 multicast as well
+
+A hotfix release was issued as 24.1.10_3:
+
+* firewall: fix regression in GeoIP aliases selector
 
 
 

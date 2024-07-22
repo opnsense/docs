@@ -121,6 +121,10 @@ A hotfix release was issued as 24.4.1_2:
 * ports: openvpn 2.6.11 `[22] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.11>`__ 
 * ports: suricata 7.0.6 `[23] <https://suricata.io/2024/06/27/suricata-7-0-6-and-6-0-20-released/>`__ 
 
+A hotfix release was issued as 24.4.1_3:
+
+* firewall: fix regression in GeoIP aliases selector
+
 
 
 --------------------------------------------------------------------------
