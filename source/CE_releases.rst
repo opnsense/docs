@@ -8,8 +8,8 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *287* releases leading to the latest version *24.7.r2*
-named "Savvy Shark".
+As of January 2015 there have been *288* releases leading to the latest version *24.7*
+named "Thriving Tiger".
 
 
 
@@ -20,6 +20,7 @@ The list below contains all releases, ordered by version number categorized by m
    :titlesonly:
    :glob:
 
+   releases/CE_24.7
    releases/CE_24.1
    releases/CE_23.7
    releases/CE_23.1

@@ -1,0 +1,358 @@
+===========================================================================================
+24.7  "Thriving Tiger" Series
+===========================================================================================
+
+
+
+For more than 9 and a half years now, OPNsense is driving innovation
+through modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+24.7, nicknamed "Thriving Tiger", features a new dashboard, system trust
+MVC/API support, GRE and GIF MVC/API support, NAT 1-to-1 MVC/API support,
+WireGuard QR code generator, dynamic IPsec VTI tunnel support, experimental
+OpenVPN DCO support, FreeBSD 14.1, Python 3.11 plus much more.
+
+The upgrade path from 24.1.x will follow tomorrow.  Do not be hasty.
+The major operating system upgrade has not happened in while and should
+be taken with the appropriate amount of care.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/24.7/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/24.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/24.7/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/24.7/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/24.7/
+* Full mirror list: https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+24.7 (July 24, 2024)
+--------------------------------------------------------------------------
+
+
+For more than 9 and a half years now, OPNsense is driving innovation
+through modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+24.7, nicknamed "Thriving Tiger", features a new dashboard, system trust
+MVC/API support, GRE and GIF MVC/API support, NAT 1-to-1 MVC/API support,
+WireGuard QR code generator, dynamic IPsec VTI tunnel support, experimental
+OpenVPN DCO support, FreeBSD 14.1, Python 3.11 plus much more.
+
+The upgrade path from 24.1.x will follow tomorrow.  Do not be hasty.
+The major operating system upgrade has not happened in while and should
+be taken with the appropriate amount of care.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/24.7/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/24.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/24.7/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/24.7/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/24.7/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full changes against version 24.1.10:
+
+* system: remove "load_balancer" configuration remnants from core
+* system: replace usage of mt_rand() with random_int()
+* system: rewrote Trust configuration using MVC/API
+* system: add XMLRPC option for OpenDNS
+* system: rewrote the high availability settings page using MVC/API
+* system: remove obsolete SSH DSA key handling
+* system: replaced the dashboard with a modern alternative with streaming widgets
+* system: harden a number of PHP settings according to best practices
+* system: support streaming of log files for the new dashboard widget
+* system: assorted dashboard widget tweaks
+* system: sidebar optimisation and fixes (contributed by Team Rebellion)
+* system: set short Cache-Control lifetime for widgets
+* interfaces: rewrote GRE configuration using MVC/API
+* interfaces: rewrote GIF configuration using MVC/API
+* interfaces: temporary flush SLAAC addresses in DHCPv6 WAN mode to avoid using them primarily
+* interfaces: add peer/peer6 options to CARP VIPs
+* interfaces: allow to assign a prefix ID to WAN interface in DHCPv6 as well
+* interfaces: allow to set manual interface ID in DHCPv6 and tracking modes
+* firewall: performance improvements in alias handling
+* firewall: refactor pftop output, move search to controller layer and implement cache for sessions page
+* firewall: support streaming of filter logs for the new dashboard widget
+* captive portal: add "Allow inbound" option to select interfaces which may enter the zone
+* captive portal: remove defunct transparent proxy settings
+* captive portal: clean up the codebase
+* ipsec: prevent gateway when remote gateway family does not match selected protocol in legacy tunnel configuration
+* isc-dhcp: do not reload DNS services when editing static mappings to match behaviour with Kea
+* monit: expose HTTPD username and password settings to GUI
+* openvpn: optionally support DCO devices for instances
+* openvpn: remove duplicate and irrelevant data for the client session in question
+* openvpn: add "remote_cert_tls" option to instances
+* backend: add "cache_ttl" parameter to allow for generic caching of actions
+* backend: run default action "configd actions" when none was specified
+* backend: extended support for streaming actions
+* installer: update the ZFS install script to the latest FreeBSD 14.1 code
+* installer: prefer ZFS over UFS in main menu selection
+* ui: assorted improvements for screen readers (contributed by Jason Fayre)
+* ui: add "select all" to standard form selectors and remove dialog on "clear all" for tokenizers
+* ui: lock save button while in progress to prevent duplicate input on Bootgrid
+* ui: backport accessibility fix in Bootstrap
+* mvc: replaced most of the Phalcon MVC use with a native band compatible implementation
+* mvc: improve searchRecordsetBase() filtering capabilities
+* mvc: improve container field cloning
+* mvc: remove obsolete getParams() usage in ApiControllerBase
+* mvc: hook default index action in API handler
+* plugins: os-acme-client 4.4 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-caddy 1.6.1 `[3] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* plugins: os-dec-hw 1.1 replaces the dashboard widget
+* plugins: os-etpro-telemetry 1.7 replaces dashboard widget
+* plugins: os-freeradius 1.29.4 `[4] <https://github.com/opnsense/plugins/blob/stable/24.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-nginx 1.34 `[5] <https://github.com/opnsense/plugins/blob/stable/24.7/www/nginx/pkg-descr>`__ 
+* plugins: os-theme-cicada 1.37 fixes dropdown element style (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.47 fixes dropdown element style (contributed by Team Rebellion)
+* src: FreeBSD 14.1-RELEASE `[6] <https://www.freebsd.org/releases/14.1R/relnotes/>`__ 
+* src: assorted backports from FreeBSD stable/14 branch
+* ports: hostapd 2.11 `[7] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
+* ports: libpfctl 0.12
+* ports: phalcon 5.8.0 `[8] <https://github.com/phalcon/cphalcon/releases/tag/v5.8.0>`__ 
+* ports: openvpn 2.6.12 `[9] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.12>`__ 
+* ports: wpa_supplicant 2.11 `[10] <https://w1.fi/cgit/hostap/plain/wpa_supplicant/ChangeLog>`__ 
+
+Migration notes, known issues and limitations:
+
+* The dashboard has been replaced. Widgets from the old format are no longer supported and need to be rewritten by the respective authors.
+* ISC DHCP will no longer reload DNS services on static mapping edits. This is for feature parity with Kea DHCP and avoiding cross-service complications. If you expect your static mappings to show up in a DNS service please restart it manually.
+
+The public key for the 24.7 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAunCgLymz7ichjk+uZ4pR
+    # XwFX8FxG0KFBf4f6kCfQ+wNF9KTFBELzGg2tXPUmrJD/DzcMqQExP3WyTg0Z96ZW
+    # HofN2AbOCG84PpNlsKXpaUtm9Ow8kiYh7tn26eX7FaOEPtpJkMiwUymbCJJaPE0O
+    # smQbWGnJTvF8LTmuviPoiMrPv1cJ0kEyJvjDD0yMw1HrIgwPOazGmTQiuM3LoLOK
+    # F0KWf2p40c77QDOuGC7AIobQgDkZTabfU7PQUn6gDiKARYCst7y2xX3OQ7foXCJW
+    # nDDypfbfHixv77mVAeIED0h9ZsQaIHskL2dqqRbFHiY+OHjQTCAJP1Ptm/HGSCdj
+    # GOjpuD4WXvxru8AgcOCh6GpqO4IbByIHXu+67Ur3UBlxsp4x44lxBWXQzeemVhaS
+    # ZAmkJNemw51oRDTxYtpR7TF3OlgLAQBOB/0tqHmkbSBouQ6PK7HYzNglu9LStxo1
+    # uxgMss5q8GoZCkWKvRDz87YceeC75l0aWOVnkOMmC5Lf+fFMJp6TF7BzCi3ZC7CD
+    # DQchBlE2F98D3E7KiI4vGrLUj3qKwfwV41JSQ8OtwOV+KFGOmyHeNassTQHm1Mdn
+    # reTzHeusqUdAL7+pXH1XNwoFSZo7A6RoZzTzb0p7WYbKU9SV39DPytsYES7FsyY8
+    # l7+AsM+sBOY1ngeB/twBzyUCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-24.7-dvd-amd64.iso.bz2) = 4452df716417cac324bb06322fc4428870ac2a64fd6ae47675a421e8db0a18b5
+    # SHA256 (OPNsense-24.7-nano-amd64.img.bz2) = a44711b6c088d6d12434afef9a3ccadc4ef1b56e44babd13e4b199589170c51a
+    # SHA256 (OPNsense-24.7-serial-amd64.img.bz2) = a94207c3515389c3fab5c6d72eeda4951526f9f50f06794ad9a4c1478bc8e8d0
+    # SHA256 (OPNsense-24.7-vga-amd64.img.bz2) = 11031aecabce97f6d5502f943d347704b5a888ec213d7f9229200877d72f297c
+
+
+--------------------------------------------------------------------------
+24.7.r2 (July 19, 2024)
+--------------------------------------------------------------------------
+
+
+For more than 9 and a half years now, OPNsense is driving innovation
+through modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+We thank all of you for helping test, shape and contribute to the project!
+We know it would not be the same without you.  <3
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/24.7/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/24.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/24.7/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/24.7/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/24.7/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full changes against version 24.7-RC1:
+
+* system: assorted dashboard widget tweaks
+* system: sidebar optimisation and fixes (contributed by Team Rebellion)
+* installer: update the ZFS install script to the latest FreeBSD 14.1 code
+* mvc: remove obsolete getParams() usage in ApiControllerBase
+* mvc: hook default index action in API handler
+* src: assorted backports from FreeBSD stable/14 branch
+* plugins: os-caddy 1.6.1 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* plugins: os-dec-hw 1.1 replaces the dashboard widget
+* plugins: os-nginx 1.34 `[3] <https://github.com/opnsense/plugins/blob/stable/24.7/www/nginx/pkg-descr>`__ 
+* plugins: os-theme-cicada 1.37 fixes dropdown element style (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.47 fixes dropdown element style (contributed by Team Rebellion)
+
+Migration notes, known issues and limitations:
+
+* The dashboard has been replaced. Widgets from the old format are no longer supported and need to be rewritten by the respective authors.
+* ISC DHCP will no longer reload DNS services on static mapping edits. This is for feature parity with Kea DHCP and avoiding cross-service complications. If you expect your static mappings to show up in a DNS service please restart it manually.
+
+The public key for the 24.7 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAunCgLymz7ichjk+uZ4pR
+    # XwFX8FxG0KFBf4f6kCfQ+wNF9KTFBELzGg2tXPUmrJD/DzcMqQExP3WyTg0Z96ZW
+    # HofN2AbOCG84PpNlsKXpaUtm9Ow8kiYh7tn26eX7FaOEPtpJkMiwUymbCJJaPE0O
+    # smQbWGnJTvF8LTmuviPoiMrPv1cJ0kEyJvjDD0yMw1HrIgwPOazGmTQiuM3LoLOK
+    # F0KWf2p40c77QDOuGC7AIobQgDkZTabfU7PQUn6gDiKARYCst7y2xX3OQ7foXCJW
+    # nDDypfbfHixv77mVAeIED0h9ZsQaIHskL2dqqRbFHiY+OHjQTCAJP1Ptm/HGSCdj
+    # GOjpuD4WXvxru8AgcOCh6GpqO4IbByIHXu+67Ur3UBlxsp4x44lxBWXQzeemVhaS
+    # ZAmkJNemw51oRDTxYtpR7TF3OlgLAQBOB/0tqHmkbSBouQ6PK7HYzNglu9LStxo1
+    # uxgMss5q8GoZCkWKvRDz87YceeC75l0aWOVnkOMmC5Lf+fFMJp6TF7BzCi3ZC7CD
+    # DQchBlE2F98D3E7KiI4vGrLUj3qKwfwV41JSQ8OtwOV+KFGOmyHeNassTQHm1Mdn
+    # reTzHeusqUdAL7+pXH1XNwoFSZo7A6RoZzTzb0p7WYbKU9SV39DPytsYES7FsyY8
+    # l7+AsM+sBOY1ngeB/twBzyUCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+Please let us know about your experience!
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-24.7.r2-dvd-amd64.iso.bz2) = 43617bcb97b40a4c681c9468e0f7837aef9e7ff3849377649ab350287ad4639b
+    # SHA256 (OPNsense-24.7.r2-nano-amd64.img.bz2) = 8fad59de6fdb07b9df2edb637a9d5f18a892d462d76118da6270dede90180a35
+    # SHA256 (OPNsense-24.7.r2-serial-amd64.img.bz2) = 5c4d9b6f7ef4baf555c43d949f5946b59856fea45303a4b32890c102909d9f75
+    # SHA256 (OPNsense-24.7.r2-vga-amd64.img.bz2) = 46f78b3fa40a429f52adbe1caf923cb8f4856e01ff61888b3db2658b43fe3f56
+
+--------------------------------------------------------------------------
+24.7.r1 (July 16, 2024)
+--------------------------------------------------------------------------
+
+
+If you have not heard: 24.7-RC1 is an online update. You can update
+from the 24.7-BETA and switch to the community release type for the
+stable track which leads into 24.7.x.  The development version of the
+upcoming 24.1.11 release will also be able to update to the RC. An RC2
+will follow up with the relevant images and additional information at
+the end of the week.
+
+Here are the full changes against version 24.1.10:
+
+* system: remove "load_balancer" configuration remnants from core
+* system: replace usage of mt_rand() with random_int()
+* system: rewrote Trust configuration using MVC/API
+* system: add XMLRPC option for OpenDNS
+* system: rewrote the high availability settings page using MVC/API
+* system: remove obsolete SSH DSA key handling
+* system: replaced the dashboard with a modern alternative with streaming widgets
+* system: harden a number of PHP settings according to best practices
+* system: support streaming of log files for the new dashboard widget
+* interfaces: rewrote GRE configuration using MVC/API
+* interfaces: rewrote GIF configuration using MVC/API
+* interfaces: temporary flush SLAAC addresses in DHCPv6 WAN mode to avoid using them primarily
+* interfaces: add peer/peer6 options to CARP VIPs
+* interfaces: allow to assign a prefix ID to WAN interface in DHCPv6 as well
+* interfaces: allow to set manual interface ID in DHCPv6 and tracking modes
+* firewall: performance improvements in alias handling
+* firewall: refactor pftop output, move search to controller layer and implement cache for sessions page
+* firewall: support streaming of filter logs for the new dashboard widget
+* captive portal: add "Allow inbound" option to select interfaces which may enter the zone
+* captive portal: remove defunct transparent proxy settings
+* captive portal: clean up the codebase
+* ipsec: prevent gateway when remote gateway family does not match selected protocol in legacy tunnel configuration
+* isc-dhcp: do not reload DNS services when editing static mappings to match behaviour with Kea
+* monit: expose HTTPD username and password settings to GUI
+* openvpn: optionally support DCO devices for instances
+* openvpn: remove duplicate and irrelevant data for the client session in question
+* openvpn: add "remote_cert_tls" option to instances
+* backend: add "cache_ttl" parameter to allow for generic caching of actions
+* backend: run default action "configd actions" when none was specified
+* backend: extended support for streaming actions
+* ui: assorted improvements for screen readers (contributed by Jason Fayre)
+* ui: add "select all" to standard form selectors and remove dialog on "clear all" for tokenizers
+* ui: lock save button while in progress to prevent duplicate input on Bootgrid
+* ui: backport accessibility fix in Bootstrap
+* mvc: replaced most of the Phalcon MVC use with a native band compatible implementation
+* mvc: improve searchRecordsetBase() filtering capabilities
+* mvc: improve container field cloning
+* plugins: os-acme-client 4.4 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-etpro-telemetry 1.7 replaces dashboard widget
+* src: FreeBSD 14.1-RELEASE `[2] <https://www.freebsd.org/releases/14.1R/relnotes/>`__ 
+* ports: phalcon 5.8.0 `[3] <https://github.com/phalcon/cphalcon/releases/tag/v5.8.0>`__ 
+
+Migration notes, known issues and limitations:
+
+* The dashboard has been replaced. Widgets from the old format are no longer supported and need to be rewritten by the respective authors.
+* ISC DHCP will no longer reload DNS services on static mapping edits. This is for feature parity with Kea DHCP and avoiding cross-service complications. If you expect your static mappings to show up in a DNS service please restart it manually.
+
+
+
+--------------------------------------------------------------------------
+24.7.b (June 13, 2024)
+--------------------------------------------------------------------------
+
+
+Since OPNsense 24.7 will be based on a newer FreeBSD major version
+it is crucial for us to release these BETA images based on the latest
+development state. This is not meant for production use but all plugins
+are provided and future updates of installations based on these images
+will be possible.
+
+https://pkg.opnsense.org/releases/24.7/
+
+There is a bit more work to be done yet most of the milestones have
+already been reached. If you have a test deployment or would like to
+check out some of the new features these images are for you. Together
+we can make OPNsense better than it ever was.
+
+The final release date for 24.7 is July 24.  A release candidate will
+follow in early July.
+
+Highlights over the current 24.1 series include:
+
+* Dashboard replacement with streaming widgets
+* System: High Availability: Settings page has been converted to MVC
+* System: Trust section has been converted to MVC/API
+* Interfaces: GIF section has been converted to MVC/API
+* Interfaces: GRE section has been converted to MVC/API
+* Firewall: NAT 1-to-1 has been converted to MVC/API
+* Added experimental OpenVPN DCO device type support
+* Added unicast CARP support to Virtual IPs
+* DHCPv6 on WAN can now assign a prefix subnet to itself and support static interface identifiers
+* Built-in cache capability for backend commands
+* Captive portal backend refactor and new "Allow inbound interfaces" option
+* Large portions of Phalcon MVC have been replaced by native PHP implementation
+* FreeBSD 14.1
+
+The public key for the 24.7 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAunCgLymz7ichjk+uZ4pR
+    # XwFX8FxG0KFBf4f6kCfQ+wNF9KTFBELzGg2tXPUmrJD/DzcMqQExP3WyTg0Z96ZW
+    # HofN2AbOCG84PpNlsKXpaUtm9Ow8kiYh7tn26eX7FaOEPtpJkMiwUymbCJJaPE0O
+    # smQbWGnJTvF8LTmuviPoiMrPv1cJ0kEyJvjDD0yMw1HrIgwPOazGmTQiuM3LoLOK
+    # F0KWf2p40c77QDOuGC7AIobQgDkZTabfU7PQUn6gDiKARYCst7y2xX3OQ7foXCJW
+    # nDDypfbfHixv77mVAeIED0h9ZsQaIHskL2dqqRbFHiY+OHjQTCAJP1Ptm/HGSCdj
+    # GOjpuD4WXvxru8AgcOCh6GpqO4IbByIHXu+67Ur3UBlxsp4x44lxBWXQzeemVhaS
+    # ZAmkJNemw51oRDTxYtpR7TF3OlgLAQBOB/0tqHmkbSBouQ6PK7HYzNglu9LStxo1
+    # uxgMss5q8GoZCkWKvRDz87YceeC75l0aWOVnkOMmC5Lf+fFMJp6TF7BzCi3ZC7CD
+    # DQchBlE2F98D3E7KiI4vGrLUj3qKwfwV41JSQ8OtwOV+KFGOmyHeNassTQHm1Mdn
+    # reTzHeusqUdAL7+pXH1XNwoFSZo7A6RoZzTzb0p7WYbKU9SV39DPytsYES7FsyY8
+    # l7+AsM+sBOY1ngeB/twBzyUCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+Please let us know about your experience!
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-devel-24.7.b-dvd-amd64.iso.bz2) = af740f12d4363d13e96ad95ac06dd1d659009c345af3e8ff6d544a66200ba93f
+    # SHA256 (OPNsense-devel-24.7.b-nano-amd64.img.bz2) = 394e150c3cb22b7f2d2b131fc2bcb545355e6a129b7d9afe2ced9c4364bfa862
+    # SHA256 (OPNsense-devel-24.7.b-serial-amd64.img.bz2) = a8770d247400859e66151aae177171f141ea7064de98728edfc22a77d8d5f447
+    # SHA256 (OPNsense-devel-24.7.b-vga-amd64.img.bz2) = 046bba7c48312578f819535a0f29210e24f9bcb1e8153256fb15a35a62f3d443
