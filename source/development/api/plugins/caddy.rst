@@ -1,6 +1,18 @@
 Caddy
 ~~~~~
 
+.. csv-table:: Resources (DiagnosticsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","caddy","diagnostics","caddyfile",""
+    "``GET``","caddy","diagnostics","certificate",""
+    "``GET``","caddy","diagnostics","config",""
+    "``GET``","caddy","diagnostics","get",""
+    "``POST``","caddy","diagnostics","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `Caddy.xml <https://github.com/opnsense/plugins/blob/master/www/caddy/src/opnsense/mvc/app/models/OPNsense/Caddy/Caddy.xml>`__"
+
 .. csv-table:: Service (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -28,17 +40,18 @@ Caddy
     "``POST``","caddy","reverse_proxy","delSubdomain","$uuid"
     "``GET``","caddy","reverse_proxy","get",""
     "``GET``","caddy","reverse_proxy","getAccessList","$uuid=null"
+    "``GET``","caddy","reverse_proxy","getAllReverseDomains",""
     "``GET``","caddy","reverse_proxy","getBasicAuth","$uuid=null"
     "``GET``","caddy","reverse_proxy","getHandle","$uuid=null"
     "``GET``","caddy","reverse_proxy","getHeader","$uuid=null"
     "``GET``","caddy","reverse_proxy","getReverseProxy","$uuid=null"
     "``GET``","caddy","reverse_proxy","getSubdomain","$uuid=null"
-    "``*``","caddy","reverse_proxy","searchAccessList","$add_empty='0'"
-    "``*``","caddy","reverse_proxy","searchBasicAuth","$add_empty='0'"
-    "``*``","caddy","reverse_proxy","searchHandle","$add_empty='0'"
-    "``*``","caddy","reverse_proxy","searchHeader","$add_empty='0'"
-    "``*``","caddy","reverse_proxy","searchReverseProxy","$add_empty='0'"
-    "``*``","caddy","reverse_proxy","searchSubdomain","$add_empty='0'"
+    "``*``","caddy","reverse_proxy","searchAccessList",""
+    "``*``","caddy","reverse_proxy","searchBasicAuth",""
+    "``GET``","caddy","reverse_proxy","searchHandle",""
+    "``*``","caddy","reverse_proxy","searchHeader",""
+    "``GET``","caddy","reverse_proxy","searchReverseProxy",""
+    "``GET``","caddy","reverse_proxy","searchSubdomain",""
     "``POST``","caddy","reverse_proxy","set",""
     "``POST``","caddy","reverse_proxy","setAccessList","$uuid"
     "``POST``","caddy","reverse_proxy","setBasicAuth","$uuid"

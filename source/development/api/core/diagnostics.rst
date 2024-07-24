@@ -7,6 +7,13 @@ Diagnostics
 
     "``GET``","diagnostics","activity","getActivity",""
 
+.. csv-table:: Resources (CpuUsageController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","diagnostics","cpu_usage","getCPUType",""
+    "``GET``","diagnostics","cpu_usage","stream",""
+
 .. csv-table:: Resources (DnsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -34,10 +41,12 @@ Diagnostics
     "``GET``","diagnostics","firewall","listRuleIds",""
     "``GET``","diagnostics","firewall","log",""
     "``GET``","diagnostics","firewall","logFilters",""
+    "``GET``","diagnostics","firewall","pfStates",""
     "``GET``","diagnostics","firewall","pfStatistics","$section=null"
     "``POST``","diagnostics","firewall","queryPfTop",""
     "``POST``","diagnostics","firewall","queryStates",""
     "``GET``","diagnostics","firewall","stats",""
+    "``GET``","diagnostics","firewall","streamLog",""
 
 .. csv-table:: Resources (InterfaceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -142,6 +151,13 @@ Diagnostics
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","diagnostics","system","memory",""
+    "``GET``","diagnostics","system","systemDisk",""
+    "``GET``","diagnostics","system","systemInformation",""
+    "``GET``","diagnostics","system","systemMbuf",""
+    "``GET``","diagnostics","system","systemResources",""
+    "``GET``","diagnostics","system","systemSwap",""
+    "``GET``","diagnostics","system","systemTemperature",""
+    "``GET``","diagnostics","system","systemTime",""
 
 .. csv-table:: Resources (SystemhealthController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -167,3 +183,4 @@ Diagnostics
 
     "``GET``","diagnostics","traffic","Interface",""
     "``GET``","diagnostics","traffic","Top","$interfaces"
+    "``GET``","diagnostics","traffic","stream","$poll_interval=1"

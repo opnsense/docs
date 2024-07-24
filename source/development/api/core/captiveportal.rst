@@ -24,8 +24,9 @@ Captiveportal
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","captiveportal","session","connect","$zoneid=0"
-    "``POST``","captiveportal","session","disconnect","$zoneid=0"
+    "``POST``","captiveportal","session","disconnect","$zoneid=''"
     "``GET``","captiveportal","session","list","$zoneid=0"
+    "``GET``","captiveportal","session","search",""
     "``GET``","captiveportal","session","zones",""
 
 .. csv-table:: Resources (SettingsController.php)

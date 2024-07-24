@@ -1,6 +1,38 @@
 Interfaces
 ~~~~~~~~~~
 
+.. csv-table:: Resources (GifSettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","interfaces","gif_settings","addItem",""
+    "``POST``","interfaces","gif_settings","delItem","$uuid"
+    "``GET``","interfaces","gif_settings","get",""
+    "``GET``","interfaces","gif_settings","getIfOptions",""
+    "``GET``","interfaces","gif_settings","getItem","$uuid=null"
+    "``POST``","interfaces","gif_settings","reconfigure",""
+    "``*``","interfaces","gif_settings","searchItem",""
+    "``POST``","interfaces","gif_settings","set",""
+    "``POST``","interfaces","gif_settings","setItem","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Gif.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Gif.xml>`__"
+
+.. csv-table:: Resources (GreSettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","interfaces","gre_settings","addItem",""
+    "``POST``","interfaces","gre_settings","delItem","$uuid"
+    "``GET``","interfaces","gre_settings","get",""
+    "``GET``","interfaces","gre_settings","getIfOptions",""
+    "``GET``","interfaces","gre_settings","getItem","$uuid=null"
+    "``POST``","interfaces","gre_settings","reconfigure",""
+    "``*``","interfaces","gre_settings","searchItem",""
+    "``POST``","interfaces","gre_settings","set",""
+    "``POST``","interfaces","gre_settings","setItem","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Gre.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Gre.xml>`__"
+
 .. csv-table:: Resources (LaggSettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

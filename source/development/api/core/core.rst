@@ -12,6 +12,25 @@ Core
     "``GET``","core","backup","providers",""
     "``GET``","core","backup","revertBackup","$backup"
 
+.. csv-table:: Resources (DashboardController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","core","dashboard","getDashboard",""
+    "``GET``","core","dashboard","productInfoFeed",""
+    "``POST``","core","dashboard","restoreDefaults",""
+    "``POST``","core","dashboard","saveWidgets",""
+
+.. csv-table:: Service (HasyncController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","core","hasync","get",""
+    "``POST``","core","hasync","reconfigure",""
+    "``POST``","core","hasync","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `Hasync.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Core/Hasync.xml>`__"
+
 .. csv-table:: Resources (MenuController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

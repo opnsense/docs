@@ -125,6 +125,17 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``POST``","firewall","npt","setRule","$uuid"
     "``POST``","firewall","npt","toggleRule","$uuid,$enabled=null"
 
+.. csv-table:: Resources (OneToOneController.php)  -- extends : FilterBaseController 
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","firewall","one_to_one","addRule",""
+    "``POST``","firewall","one_to_one","delRule","$uuid"
+    "``GET``","firewall","one_to_one","getRule","$uuid=null"
+    "``*``","firewall","one_to_one","searchRule",""
+    "``POST``","firewall","one_to_one","setRule","$uuid"
+    "``POST``","firewall","one_to_one","toggleRule","$uuid,$enabled=null"
+
 .. csv-table:: Resources (SourceNatController.php)  -- extends : FilterBaseController 
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
