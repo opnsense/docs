@@ -78,6 +78,14 @@ A hotfix release was issued as 24.1.10_3:
 
 * firewall: fix regression in GeoIP aliases selector
 
+A hotfix release was issued as 24.1.10_8:
+
+* firewall: fix one-to-one NAT migration with external address without a subnet set
+* firmware: add fingerprint and upgrade hint for 24.7
+* firmware: prefer ZFS over UFS in upgrade message
+* firmware: remove unneeded Unbound DNS database upgrade script
+* firmware: remove stale Squid plugin upgrade script
+
 
 
 --------------------------------------------------------------------------
