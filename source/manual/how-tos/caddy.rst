@@ -675,7 +675,9 @@ Custom Configuration Files
 
 * | The Caddyfile has an additional import from the path ``/usr/local/etc/caddy/caddy.d/``. Place custom configuration files inside that adhere to the Caddyfile syntax.
 * | ``*.global`` files will be imported into the global block of the Caddyfile.
-* | ``*.conf`` files will be imported at the end of the Caddyfile. Don't forget to test the custom configuration with ``caddy validate --config /usr/local/etc/caddy/Caddyfile``.
+* | ``*.conf`` files will be imported at the end of the Caddyfile.
+* | ``*.layer4`` files will be imported into the Layer4 directive of the Caddyfile.
+* | Don't forget to test the custom configuration with ``caddy validate --config /usr/local/etc/caddy/Caddyfile``.
 
 With these imports, the full potential of Caddy can be unlocked. The GUI options will remain focused on the reverse proxy. **There is no OPNsense community support for configurations that have not been created with the offered GUI**. For customized configurations, the Caddy community is the right place to ask.
 
@@ -763,6 +765,7 @@ With the `Matcher` `not SNI`, the `Client Hello` of the TLS traffic is analyzed.
 All other `TCP/UDP` traffic will be streamed to the chosen socket (Upstream Domain and Upstream Port). Since we chose multiple upstreams and a health check, two servers can load balance all requests. The load balancing is just an example, and not necessary for the `not SNI` matcher to work.
 
 .. Tip:: If there are domains inside `*.example.com` that should be routed to a different upstream, just create an additional `SNI Matcher` for them. It will automatically match before the `not SNI Matcher` - compare to the `Layer4 Routing Precedence`.
+.. Tip:: Caddy supports the HA Proxy Protocol. If the Protocol Header should be added to the upstream, set the `Proxy Protocol` version to ``v1`` or ``v2``.
 
 
 ======================
@@ -779,8 +782,8 @@ Help, Nothing Works!
 
 **This is what should happen if Caddy works correctly:**
 
-#. | A `User` opens a `Web Browser` and types the following into the address bar: `https://example.com`
-#. | The operating system of the `Web Browser` sends a request to the system `DNS Server`, and asks where to find `example.com`. The `DNS Server` will try to find the requested `A- and/or AAAA-Record` for that domain, and will answer with e.g. `203.0.113.1`.
+#. | A `Web Browser` is opened and an `URL` is put into the address bar: `https://example.com`
+#. | The underlying `Operating System` of the `Web Browser` sends a request to its default `DNS Server`, and asks where to find `example.com`. The `DNS Server` will try to find the requested `A- and/or AAAA-Record` for that domain, and will answer with e.g. `203.0.113.1`.
 #. | The `Web Browser` now sends a `HTTPS request` to `203.0.113.1`. This request contains a `Client Hello` in the TLS handshake, that contains `example.com`.
 #. | This `HTTPS request` hits port `443` of the OPNsense's `WAN` or `LAN` interface, determined by the location of the `Web Browser` (LAN or WAN).
 #. | There is a Firewall rule that allows destination port `443` to access `This Firewall`. The request will then be received by Caddy, because it listens on `This Firewall` on port `443`.
@@ -798,7 +801,7 @@ Help, Nothing Works!
 * Do `A- and/or AAAA-Record` for all `Domains` and `Subdomains` exist?
 * In case of activated `Dynamic DNS`, check that the correct `A- and/or AAAA-Records` have been set automatically with the DNS Provider.
 * Do they point to one of the external IPv4 or IPv6 addresses of the OPNsense Firewall? Check that with commands like ``nslookup example.com``.
-* Do the OPNsense `Firewall Rules` allow connections to destination ports `80` and `443` to access the destination `This Firewall`?
+* Do the OPNsense `Firewall Rules` allow connections from `any` source to destination ports `80` and `443` to the destination `This Firewall`?
 * Is the Caddy service running?
 
 **2. Check if the Domain is set up correctly:**
