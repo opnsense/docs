@@ -136,7 +136,7 @@ Options                        Values
 
 * | Press **Save**
 * | Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> HTTP Handlers`
-* | Press **Step 2: Add HTTP Handler**. This will create a handler that routes the traffic from the frontend domain to the an internal service.
+* | Press **Step 2: Add HTTP Handler**. This will create a `HTTP Handler` that routes the traffic from the frontend domain to the an internal service.
 
 ============================== ======================================================================
 Options                        Values
@@ -262,7 +262,7 @@ Options                        Values
 **Dynamic DNS:**               ``X``
 ============================== ========================
 
-Go to `Services - Caddy Web Server - Reverse Proxy – HTTP Handlers`
+Go to :menuselection:`Services - Caddy Web Server - Reverse Proxy – HTTP Handlers`
 
 * Press **+** to create a new `HTTP Handler`
 
@@ -318,7 +318,7 @@ Options                        Values
 Wildcard Domain with Subdomains
 -------------------------------
 
-.. Tip:: If in doubt, do not use subdomains. If there should be ``foo.example.com``, ``bar.example.com`` and ``example.com``, just create them as three base domains. This way, there is the most flexibility, and the most features are supported.
+.. Attention:: If in doubt, do not use subdomains. If there should be ``foo.example.com``, ``bar.example.com`` and ``example.com``, just create them as three base domains. This way, there is the most flexibility, and the most features are supported.
 
 Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> DNS Provider`
 
@@ -335,7 +335,7 @@ Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> HTTP H
 
 * Create a `HTTP Handler` with ``*.example.com`` as domain and ``foo.example.com`` as subdomain. Most of the same configuration as with base domains are possible.
 
-.. Note:: The certificate of a wildcard domain will only contain ``*.example.com``, not a SAN for ``example.com``. Create an additional domain for ``example.com`` with an additional handler for its upstream destination. Subdomains do not support setting ports, they will always track the ports of their assigned parent wildcard domain.
+.. Note:: The certificate of a wildcard domain will only contain ``*.example.com``, not a SAN for ``example.com``. If there is a service that should match ``example.com`` exactly, create an additional domain for ``example.com`` with an additional `HTTP Handler` for its upstream destination. Subdomains do not support setting ports, they will always track the ports of their assigned parent wildcard domain.
 
 .. _webgui-opnsense-caddy:
 
@@ -767,6 +767,65 @@ All other `TCP/UDP` traffic will be streamed to the chosen socket (Upstream Doma
 ======================
 Caddy: Troubleshooting
 ======================
+
+
+--------------------
+Help, Nothing Works!
+--------------------
+
+.. Tip:: Most of the time, the infrastructure is not set up correctly, or wrong options for the `HTTP Handler` have been set.
+
+**This is what should happen if Caddy works correctly:**
+
+#. | A client opens a browser and inputs the following into the address bar: `https://example.com`
+#. | The operating system of the client sends a request to its DNS server, and asks for `example.com`.
+#. | The DNS server will answer with the `A- and/or AAAA-Record` for that domain, e.g. `203.0.113.1`.
+#. | The client's browser sends a `HTTPS request` to `203.0.113.1`.
+#. | This HTTPS request hits port `443` of the OPNsense's `WAN` or `LAN` interface. That is determined by if the client is internal in the LAN (intranet), or external in the WAN (internet).
+#. | There is a Firewall rule that allows port `443` to be accepted to `This Firewall`. The request will then be received by Caddy, because it listens on `This Firewall` on port `443`.
+#. | In Caddy, there is a domain for `example.com` set up. It has a valid Let's Encrypt or ZeroSSL certificate. The client shows this valid certificate next to `https://example.com` in the address bar.
+#. | Caddy takes the `HTTPS` request and terminates the TLS connection. That means, it will convert the `HTTPS` into `HTTP`, so it can be processed by the `HTTP Handler`.
+#. | Caddy checks if there is a matching `HTTP Handler` set up. It will be used to `reverse proxy` the `HTTP request` to an internal service.
+#. | Inside the `HTTP Handler`, the domain `example.com` and an `upstream domain` e.g. `192.168.1.10` and an `upstream port` e.g. `8080` point the request to the internal service.
+#. | Caddy then sends the `HTTP request` directly to the internal service.
+#. | The `HTTP response` from the internal service is received by Caddy, returned to the domain, wrapped back into `HTTPS`, and sent back to the client's browser that initially started the request.
+#. | The website of the internal service shows up in the client's browser, secured by `HTTPS`.
+
+.. Attention:: If that does not work, it means that one or multiple steps in that chain of events fail. Please check the following steps for initial troubleshooting.
+
+**1. Check the infrastructure:**
+
+* Do `A- and/or AAAA-Record` for all domains and subdomains exist?
+* In case of activated `Dynamic DNS`, check that the correct `A- and/or AAAA-Records` have been set automatically with the DNS Provider.
+* Do they point to one of the IP addresses of the OPNsense Firewall? Check that with commands like ``nslookup example.com``.
+* Does the OPNsense Firewall allow connections on port `80` and `443`?
+* Is the Caddy service running?
+
+**2. Check if the Domain is set up correctly:**
+
+* Disable `Abort` in `General Settings`.
+* Open the domain in a browser, it should show an empty webpage. Inspect the certificate by clicking on the 🔒 in the address bar. It should be a `Let's Encrypt`, `ZeroSSL` or `custom certificate` (if chosen).
+* Activate the `HTTP Access Log` in a domain, and check the `Log File` if there are log entries for the domain when a browser tries to connect to it.
+* If nothing shows up, go back to Step 1 and check the infrastructure.
+
+**3. Check the internal service (e.g. a Nextcloud):**
+
+* Does the service accept `HTTP` or `HTTPS` connections? It is recommended to connect via `HTTP`, since it removes complexity.
+* Open the internal service via IP address and port in a browser, e.g. ``http://192.168.10:8080``. Validate that it shows the website on either `HTTP` or `HTTPS` ports.
+* If the browser can not connect, it might be a good idea to get the internal service working properly before continuing.
+
+**4. Check the setup of the HTTP Handler:**
+
+* Is the correct `Domain` chosen?
+* Are `Upstream Domain` and `Upstream Port` correct? Do they point to the internal service, e.g `192.168.10:8080`.
+* If the internal service only accepts HTTPS connections, is either `TLS insecure skip verify` checked, or is trust established by a `TLS Trust Pool`?
+
+.. Attention:: If the configuration is still not working, it is time to continue with logs and Caddyfile syntax checks.
+
+
+-----------------------------
+Further Troubleshooting Steps
+-----------------------------
 
 Sometimes, things do not work as expected. Caddy provides a few powerful debugging tools to analyze issues.
 
