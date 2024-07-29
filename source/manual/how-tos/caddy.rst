@@ -686,7 +686,7 @@ With these imports, the full potential of Caddy can be unlocked. The GUI options
 Caddy: Layer4 Routes
 ====================
 
-.. Attention:: Requires ``os-caddy-1.6.2`` or later. This is new feature of Caddy and in active developement. Consider this a feature preview. Even though it seems to work as expected, do not use this in production. The scope of features inside this plugin are very contained - so when something changes upstream, it can hopefully be downstreamed without huge effort or rewriting the whole logic.
+.. Attention:: Requires ``os-caddy-1.6.2`` or later. This is a new feature of Caddy and in active developement. Consider this a feature preview. Even though it works as expected, do not use this in production. The scope of Layer4 features inside this plugin are very contained - so when something changes upstream, it can be hopefully downstreamed without rewriting the whole logic.
 
 
 -------------
@@ -699,19 +699,28 @@ Enable Layer4
 
 .. Note:: Layer4 Routing can be disabled completely at any time by disabling the `(Feature Preview) Enable Layer4` checkbox.
 .. Tip::
-    **Layer4 Routing Precedence** (automatic, order of listed items does not matter)
+    **Layer4 Routing Precedence** (automatic, order of listed items in bootgrid does not matter)
 
-    1. `SNI`
-    2. `not SNI`
-    3. `HTTP Handlers` (hidden default Route)
+    #. `Host`
+    #. `SNI`
+    #. `not SNI`
+    #. `HTTP Handlers` (hidden default route)
 
 --------
 Matchers
 --------
 
-A matcher checks the first bytes of a TCP/UDP paket and decides which protocol it could be. Right now, only SNI matchers are supported. They check the contents of the `Client Hello` at the start of a TLS handshake. Since most traffic is TLS, there is a lot of flexibility without making configuration too complicated.
+A matcher checks the first bytes of a TCP/UDP paket and decides which protocol it could be. Right now, only SNI and Host matchers are supported. They either check the contents of the `Client Hello` at the start of a TLS handshake, or the `Host Header` in case of HTTP traffic. Since most traffic is TLS and HTTP, there is a lot of flexibility without making configuration too complicated.
 
-The domains do not have to exist in the tabs `Domains` or `Subdomains`. Layer4 Routes match before `Domains`. That is why already existing `Domains` can not be selected in a matcher. They have to be manually filled in. Multiple `Domains` and even wildcards be matched in the same Layer4 Route.
+`Layer4 Routes` match before domains in the `Domains Tab`. That is why already existing domains can not be selected in a matcher. They have to be manually filled in. Multiple domains and even wildcards can be matched in the same `Layer4 Route`.
+
+
+Host
+----
+
+Same logic as the `SNI` matcher, but can be used to route `HTTP` traffic, since the `Host Header` is evaluated.
+
+.. Note:: `Host` and `SNI` matchers can be used at the same time for the same domains, to route HTTP and TLS traffic to different sockets.
 
 
 SNI
@@ -738,6 +747,8 @@ Caddy listens on the default HTTP and HTTPS ports. All traffic it receives on th
 With the `Matcher SNI`, the `Client Hello` of the TLS traffic is analyzed. When the `Client Hello` includes `app1.example.com`, the traffic will be matched by the new `Layer4 Route`. The raw `TCP/UDP` traffic will be streamed to the chosen socket - which consists of `Upstream Domain` and `Upstream Port`.
 
 Any other traffic that is not matched by any `Layer4 Route` will be routed to the `HTTP Handlers`, where the configured `Domains` and `Subdomains` can receive and reverse proxy it.
+
+.. Note:: When `Auto HTTPS` is enabled, all clients will be permanently redirected to HTTPS automatically. If that should not happen, set it to `Disable Redirects`.
 
 
 not SNI
