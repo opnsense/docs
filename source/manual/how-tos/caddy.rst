@@ -674,9 +674,9 @@ Custom Configuration Files
 --------------------------
 
 * | The Caddyfile has an additional import from the path ``/usr/local/etc/caddy/caddy.d/``. Place custom configuration files inside that adhere to the Caddyfile syntax.
-* | ``*.global`` files will be imported into the global block of the Caddyfile.
-* | ``*.conf`` files will be imported at the end of the Caddyfile.
-* | ``*.layer4`` files will be imported into the Layer4 directive of the Caddyfile.
+* | ``*.global`` files will be imported into the ``global block``.
+* | ``*.conf`` files will be imported into the ``site block``.
+* | ``*.layer4`` files will be imported into the ``layer4 directive``.
 * | Don't forget to test the custom configuration with ``caddy validate --config /usr/local/etc/caddy/Caddyfile``.
 
 With these imports, the full potential of Caddy can be unlocked. The GUI options will remain focused on the reverse proxy. **There is no OPNsense community support for configurations that have not been created with the offered GUI**. For customized configurations, the Caddy community is the right place to ask.
@@ -701,30 +701,54 @@ Enable Layer4
 .. Tip::
     **Layer4 Routing Precedence** (automatic, order of listed items in bootgrid does not matter)
 
-    #. `Host`
-    #. `SNI`
-    #. `not SNI`
+    #. `SSH`
+    #. `HTTP (Host Header)`
+    #. `TLS (SNI)`
+    #. `TLS (inverted SNI)`
     #. `HTTP Handlers` (hidden default route)
 
 --------
 Matchers
 --------
 
-A matcher checks the first bytes of a TCP/UDP paket and decides which protocol it could be. Right now, only SNI and Host matchers are supported. They either check the contents of the `Client Hello` at the start of a TLS handshake, or the `Host Header` in case of HTTP traffic. Since most traffic is TLS and HTTP, there is a lot of flexibility without making configuration too complicated.
+A matcher checks the first bytes of a TCP/UDP paket and decides which protocol it could be. Right now, SNI and Host matchers are supported. They either check the contents of the `Client Hello` at the start of a TLS handshake, or the `Host Header` in case of HTTP traffic. Since most traffic is TLS and HTTP, there is a lot of flexibility without making configuration too complicated. There are also protocol matchers like `SSH` that can match and route raw traffic without making decisions based on SNI or Host, since the SSH protocol does not send that information.
 
 `Layer4 Routes` match before domains in the `Domains Tab`. That is why already existing domains can not be selected in a matcher. They have to be manually filled in. Multiple domains and even wildcards can be matched in the same `Layer4 Route`.
 
 
-Host
-----
+HTTP (Host Header)
+------------------
 
 Same logic as the `SNI` matcher, but can be used to route `HTTP` traffic, since the `Host Header` is evaluated.
 
 .. Note:: `Host` and `SNI` matchers can be used at the same time for the same domains, to route HTTP and TLS traffic to different sockets.
+.. Attention:: When Browsers find an available HTTPS socket for the same domain name, they might force a redirect to the secure channel. Verify with curl that the HTTP route indeed works as intended.
 
 
-SNI
+SSH
 ---
+
+This is a raw protocol matcher. It will match **all** SSH traffic that the default ports of Caddy receive, and proxy it to the selected upstream. **Only one of these routes will match. Host Headers or SNI can not be evaluated.**
+
+* Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Layer4 Routes`
+* Press **+** to create a new `Layer4 Route`
+
+=================================== ============================
+Options                             Values
+=================================== ============================
+**Domain:**                         ``*``
+**Matcher:**                        ``SSH``
+**Upstream Domain:**                ``192.168.1.1``
+**Upstream Port:**                  ``22``
+=================================== ============================
+
+* Press **Save** and **Apply**
+
+Now an SSH client can open up a proxied connection like ``ssh app1.example.com -p 443`` and the SSH traffic will go over the same port as other HTTP/HTTPS traffic. Caddy becomes a protocol multiplexer.
+
+
+TLS (SNI)
+---------
 
 As example, there is an application with the hostname `app1.example.com` which should **not** be handled by the default `HTTP Handlers`. The TLS `TCP/UDP` traffic of this application should be routed directly to the upstream destination without TLS termination. At the same time, all other traffic should be routed to the default `HTTP Handlers`.
 
@@ -744,15 +768,15 @@ Options                             Values
 
 Caddy listens on the default HTTP and HTTPS ports. All traffic it receives on these or any other listening ports, gets passed to the `listener_wrapper`. Inside this wrapper, the traffic can be inspected on Layer4, and routing decisions can be made.
 
-With the `Matcher SNI`, the `Client Hello` of the TLS traffic is analyzed. When the `Client Hello` includes `app1.example.com`, the traffic will be matched by the new `Layer4 Route`. The raw `TCP/UDP` traffic will be streamed to the chosen socket - which consists of `Upstream Domain` and `Upstream Port`.
+With the matcher `TLS (SNI)`, the `Client Hello` of the TLS traffic is analyzed. When the `Client Hello` includes `app1.example.com`, the traffic will be matched by the new `Layer4 Route`. The raw `TCP/UDP` traffic will be streamed to the chosen socket - which consists of `Upstream Domain` and `Upstream Port`.
 
 Any other traffic that is not matched by any `Layer4 Route` will be routed to the `HTTP Handlers`, where the configured `Domains` and `Subdomains` can receive and reverse proxy it.
 
 .. Note:: When `Auto HTTPS` is enabled, all clients will be permanently redirected to HTTPS automatically. If that should not happen, set it to `Disable Redirects`.
 
 
-not SNI
--------
+TLS (inverted SNI)
+------------------
 
 This matcher is very powerful. It can route all unmatched domains, for example to a hosting panel where the domains are not under administrative control and can change at any time. Any matched domains will be routed to the `HTTP Handlers`.
 
@@ -771,11 +795,11 @@ Options                             Values
 
 * Press **Save** and **Apply**
 
-With the `Matcher` `not SNI`, the `Client Hello` of the TLS traffic is analyzed. When the `Client Hello` includes either of `*.example.com` or `*.opnsense.com`, the traffic will be sent to the default `HTTP Handlers`, where the configured `Domains` and `Subdomains` can receive and reverse proxy it.
+With the Matcher `TLS (inverted SNI)`, the `Client Hello` of the TLS traffic is analyzed. When the `Client Hello` includes either of `*.example.com` or `*.opnsense.com`, the traffic will be sent to the default `HTTP Handlers`, where the configured `Domains` and `Subdomains` can receive and reverse proxy it.
 
-All other `TCP/UDP` traffic will be streamed to the chosen socket (Upstream Domain and Upstream Port). Since we chose multiple upstreams and a health check, two servers can load balance all requests. The load balancing is just an example, and not necessary for the `not SNI` matcher to work.
+All other `TCP/UDP` traffic will be streamed to the chosen socket of `Upstream Domain` and `Upstream Port`. Since we chose multiple upstreams and a health check, two servers can load balance all requests. The load balancing is just an example, and not necessary for this matcher to work.
 
-.. Tip:: If there are domains inside `*.example.com` that should be routed to a different upstream, just create an additional `SNI Matcher` for them. It will automatically match before the `not SNI Matcher` - compare to the `Layer4 Routing Precedence`.
+.. Tip:: If there are domains inside `*.example.com` that should be routed to a different upstream, just create an additional `TLS (SNI)` matcher for them. It will automatically match before the `TLS (inverted SNI)` - compare to the `Layer4 Routing Precedence`.
 .. Tip:: Caddy supports the HA Proxy Protocol. If the Protocol Header should be added to the upstream, set the `Proxy Protocol` version to ``v1`` or ``v2``.
 
 
