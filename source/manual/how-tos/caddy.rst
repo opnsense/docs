@@ -701,7 +701,7 @@ Enable Layer4
 .. Tip::
     **Layer4 Routing Precedence** (automatic, order of listed items in bootgrid does not matter)
 
-    #. `SSH`
+    #. `SSH (and other protocols that can only match all traffic)`
     #. `HTTP (Host Header)`
     #. `TLS (SNI)`
     #. `TLS (inverted SNI)`
@@ -716,19 +716,10 @@ A matcher checks the first bytes of a TCP/UDP paket and decides which protocol i
 `Layer4 Routes` match before domains in the `Domains Tab`. That is why already existing domains can not be selected in a matcher. They have to be manually filled in. Multiple domains and even wildcards can be matched in the same `Layer4 Route`.
 
 
-HTTP (Host Header)
-------------------
+SSH, RDP, and other protocols
+-----------------------------
 
-Same logic as the `SNI` matcher, but can be used to route `HTTP` traffic, since the `Host Header` is evaluated.
-
-.. Note:: `Host` and `SNI` matchers can be used at the same time for the same domains, to route HTTP and TLS traffic to different sockets.
-.. Attention:: When Browsers find an available HTTPS socket for the same domain name, they might force a redirect to the secure channel. Verify with curl that the HTTP route indeed works as intended.
-
-
-SSH
----
-
-This is a raw protocol matcher. It will match **all** SSH traffic that the default ports of Caddy receive, and proxy it to the selected upstream. **Only one of these routes will match. Host Headers or SNI can not be evaluated.**
+This is a raw protocol matcher. It will match **all** traffic that looks like the chosen protocol on the default ports of Caddy, and proxy it to the selected upstream. **Only one of these routes per protocol will match. Host Headers or SNI can not be evaluated.**
 
 * Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Layer4 Routes`
 * Press **+** to create a new `Layer4 Route`
@@ -745,6 +736,17 @@ Options                             Values
 * Press **Save** and **Apply**
 
 Now an SSH client can open up a proxied connection like ``ssh app1.example.com -p 443`` and the SSH traffic will go over the same port as other HTTP/HTTPS traffic. Caddy becomes a protocol multiplexer.
+
+.. Tip:: If another route is added, e.g. with the RDP matcher, then SSH and RDP will be on the same port but will be proxied to different upstreams.
+
+
+HTTP (Host Header)
+------------------
+
+Same logic as the `SNI` matcher, but can be used to route `HTTP` traffic, since the `Host Header` is evaluated.
+
+.. Note:: `Host` and `SNI` matchers can be used at the same time for the same domains, to route HTTP and TLS traffic to different sockets.
+.. Attention:: When Browsers find an available HTTPS socket for the same domain name, they might force a redirect to the secure channel. Verify with curl that the HTTP route indeed works as intended.
 
 
 TLS (SNI)
@@ -814,6 +816,7 @@ Help, Nothing Works!
 
 .. Note:: Even though Caddy itself is quite easy to configure in the plugin, setting the infrastructure up for it to work correctly imposes the real challenge. If you feel stumped, the best approach is getting knowledge about what `should` happen. This section tries to explain that, and give examples how to resolve issues.
 .. Tip:: Most errors happen because the infrastructure is not set up correctly, or wrong options for the `HTTP Handler` have been set.
+.. Attention:: Do not use the Layer4 module without knowing the implications of it. It is for very advanced usecases. Better deactivate it if things do not work as expected.
 
 **This is what should happen if Caddy works correctly:**
 
