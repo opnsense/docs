@@ -28,6 +28,7 @@ Main features of this plugin:
 * Header manipulation
 * Simple load balancing with passive health check
 * Widgets for OPNsense Dashboard (24.7 and later)
+* Layer4 SNI based routing of TCP/UDP
 
 
 All available options and helptexts can be found on `Github <https://github.com/opnsense/plugins/tree/master/www/caddy/src/opnsense/mvc/app/controllers/OPNsense/Caddy/forms>`_
@@ -90,18 +91,19 @@ FAQ
 
 * | A `DNS Provider` is not required to get automatic certificates.
 * | `Port Forwards`, `NAT Reflection`, `Split Horizon DNS` or `DNS Overrides in Unbound` are not required. Only create Firewall rules that allow traffic to the default ports of Caddy.
-* | Firewall rules to allow Caddy to reach upstream destinations are not required. OPNsense has a default rule that allows all traffic originating from it to be allowed.
-* | ACME Clients on reverse proxied upstream destinations will not be able to issue certificates. Caddy intercepts ``/.well-known/acme-challenge``. This can be solved by using the `HTTP-01 Challenge Redirection` option in the advanced mode of domains. Please check the tutorial section for an example.
+* | Even though internal clients will use the external IP address to access the reverse proxied services, the traffic will not pass over the internet. It will stay inside the OPNsense. Only in rare cases where there is multi WAN, the traffic can be routed from one WAN interface to the other over the internet, due to `reply-to` settings.
+* | Firewall rules to allow Caddy to reach internal services are not required. OPNsense has a default rule that allows all traffic originating from itself to be allowed.
+* | ACME clients on reverse proxied upstream destinations will not be able to issue certificates. Caddy intercepts ``/.well-known/acme-challenge``. This can be solved by using the `HTTP-01 Challenge Redirection` option in the advanced mode of domains. Please check the tutorial section for an example.
 * | When using Caddy with IPv6, the best choice is to have a GUA (Global Unicast Address) on the WAN interface, since otherwise the TLS-ALPN-01 challenge might fail.
 * | `Let's Encrypt` or `ZeroSSL` can not be explicitely chosen. Caddy automatically issues one of these options, determined by speed and availability. These certificates can be found in ``/var/db/caddy/data/caddy/certificates``.
 * | When an `Upstream Destination` only supports TLS connections, yet does not offer a valid certificate, enable ``TLS Insecure Skip Verify`` in a `Handler` to mitigate connection problems.
 * | Caddy upgrades all connections automatically from HTTP to HTTPS. When cookies do not have have the ``secure`` flag set by the application serving them, they can still be transmitted unencrypted before the connection is upgraded. If these cookies contain very sensitive information, it might be a good choice to close port 80.
-* | There is no TCP/UDP stream and WAF (Web Application Firewall) support in this plugin. For a business grade Reverse Proxy with WAF functionality, use ``os-OPNWAF``. For TCP/UDP streaming, use either ``os-nginx`` or ``os-haproxy``. As an alternative to a WAF, it is simple to integrate Caddy with CrowdSec. Check the tutorial section for guidance.
+* | There is optional Layer4 TCP/UDP routing support. In the scope of this plugin, only traffic that looks like TLS and has SNI can be routed. The `HTTP App` and `Layer4 App` can work together at the same time.
+* | There is no WAF (Web Application Firewall) support in this plugin. For a business grade Reverse Proxy with WAF functionality, use ``os-OPNWAF``. As an alternative to a WAF, it is simple to integrate Caddy with CrowdSec. Check the tutorial section for guidance.
 
-
-================
-Caddy: Tutorials
-================
+====================
+Caddy: HTTP Handlers
+====================
 
 
 ----------------------
@@ -134,7 +136,8 @@ Options                        Values
 ============================== =====================================================================
 
 * | Press **Save**
-* | Press **Step 2: Add Upstream**. This will create a handler that routes the traffic from the frontend domain to the an internal service.
+* | Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> HTTP Handlers`
+* | Press **Step 2: Add HTTP Handler**. This will create a `HTTP Handler` that routes the traffic from the frontend domain to the an internal service.
 
 ============================== ======================================================================
 Options                        Values
@@ -162,7 +165,7 @@ Restrict Access to Internal IPs
 
 Since the reverse proxy will accept all connections, restricting access with a firewall rule would impact all domains. `Access Lists` can restrict access per domain. In this example, they are used to restrict access to only internal IPv4 networks, refusing connections from the internet.
 
-Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Access --> Access Lists`
+Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> HTTP Access --> Access Lists`
 
 * Press **+** to create a new `Access List`
 
@@ -198,7 +201,7 @@ Restrict Access with Basic Auth
 
 Since the reverse proxy will accept all connections, restricting access with a firewall rule would impact all domains. `Basic Auth` will restrict access to one or multiple users.
 
-Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Access --> Basic Auth`
+Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> HTTP Access --> Basic Auth`
 
 * Press **+** to create a new `User`
 
@@ -260,9 +263,9 @@ Options                        Values
 **Dynamic DNS:**               ``X``
 ============================== ========================
 
-Go to `Services - Caddy Web Server - Reverse Proxy – Handlers`
+Go to :menuselection:`Services - Caddy Web Server - Reverse Proxy – HTTP Handlers`
 
-* Press **+** to create a new `Handler`
+* Press **+** to create a new `HTTP Handler`
 
 ============================== ========================
 Options                        Values
@@ -316,7 +319,7 @@ Options                        Values
 Wildcard Domain with Subdomains
 -------------------------------
 
-.. Tip:: If in doubt, do not use subdomains. If there should be ``foo.example.com``, ``bar.example.com`` and ``example.com``, just create them as three base domains. This way, there is the most flexibility, and the most features are supported.
+.. Attention:: If in doubt, do not use subdomains. If there should be ``foo.example.com``, ``bar.example.com`` and ``example.com``, just create them as three base domains. This way, there is the most flexibility, and the most features are supported.
 
 Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> DNS Provider`
 
@@ -329,11 +332,11 @@ Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Domain
 * | Press **Apply** to enable :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Subdomains`. This tab only shows when a wildcard domain has been configured.
 * | Create all subdomains in relation to the ``*.example.com`` domain, for example ``foo.example.com`` and ``bar.example.com``.
 
-Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Handlers`
+Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> HTTP Handlers`
 
-* Create a `Handler` with ``*.example.com`` as domain and ``foo.example.com`` as subdomain. Most of the same configuration as with base domains are possible.
+* Create a `HTTP Handler` with ``*.example.com`` as domain and ``foo.example.com`` as subdomain. Most of the same configuration as with base domains are possible.
 
-.. Note:: The certificate of a wildcard domain will only contain ``*.example.com``, not a SAN for ``example.com``. Create an additional domain for ``example.com`` with an additional handler for its upstream destination. Subdomains do not support setting ports, they will always track the ports of their assigned parent wildcard domain.
+.. Note:: The certificate of a wildcard domain will only contain ``*.example.com``, not a SAN for ``example.com``. If there is a service that should match ``example.com`` exactly, create an additional domain for ``example.com`` with an additional `HTTP Handler` for its upstream destination. Subdomains do not support setting ports, they will always track the ports of their assigned parent wildcard domain.
 
 .. _webgui-opnsense-caddy:
 
@@ -349,7 +352,7 @@ Reverse Proxy the OPNsense WebGUI
 * | Open the OPNsense WebGUI in a browser (e.g. Chrome or Firefox). Inspect the certificate by clicking on the 🔒 in the address bar. Copy the SAN for later use. It can be a hostname, for example ``OPNsense.localdomain``.
 * | Save the certificate as ``.pem`` file. Open it up with a text editor, and copy the contents into a new entry in :menuselection:`System --> Trust --> Authorities`. Name the certificate ``opnsense-selfsigned``.
 * | Add a new `Domain`, for example ``opn.example.com``.
-* | Add a new `Handler` with the following options:
+* | Add a new `HTTP Handler` with the following options:
 
 =================================== ============================
 Options                             Values
@@ -398,9 +401,9 @@ Options                             Values
 
 The `HTTP-01 Challenge Redirection` is active and the internal resource located at ``192.168.10.1`` will be able to issue the certificate for the domain ``foo.example.com``. If the internal ressource should also be reverse proxied, add a handler to the domain.
 
-Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Handler`
+Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> HTTP Handler`
 
-* Press **+** to create a new `Handler`
+* Press **+** to create a new `HTTP Handler`
 
 =================================== ============================
 Options                             Values
@@ -420,7 +423,7 @@ With this configuration, Caddy will choose the TLS-ALPN-01 challenge to get its 
 Filter by Domain
 ----------------
 
-Having a large configuration can become a bit cumbersome to navigate. To help, a new filter functionality has been added to the top right corner of the `Domains` and `Handlers` tab, called `Filter by Domain`.
+Having a large configuration can become a bit cumbersome to navigate. To help, a new filter functionality has been added to the top right corner of the `Domains`, `Subdomains` and `HTTP Handlers` tab, called `Filter by Domain`.
 
 In `Filter by Domain`, one or multiple `Domains` can be selected, and as filter result, only their corresponding configuration will be displayed in `Domains`, `Subdomains` and `Handlers`. This makes keeping track of large configurations a breeze.
 
@@ -493,9 +496,9 @@ Options                             Values
 
 * Press **Save**
 
-Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Headers`
+Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> HTTP Headers`
 
-* Press **+** to create a new `Header`
+* Press **+** to create a new `HTTP Header`
 
 =================================== ============================
 Options                             Values
@@ -507,9 +510,9 @@ Options                             Values
 
 * Press **Save**
 
-Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Handler`
+Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> HTTP Handler`
 
-* Press **+** to create a new `Handler`
+* Press **+** to create a new `HTTP Handler`
 
 =================================== ========================================
 Options                             Values
@@ -634,7 +637,7 @@ Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> Gen
 
 From now on, Caddy will run as `www` user and group. This can be verified by checking the user of the Caddy process.
 
-.. Note:: With this configuration, `Port Forward` (DNAT with PAT) should be used to forward port 80 and 443 to the new alternative HTTP and HTTPS Ports. For IPv6 additional steps could be required.
+.. Note:: With this configuration, `Port Forward` (DNAT with PAT - Destination Network Address Translation with Port Address Translation) should be used to forward port 80 and 443 to the new alternative HTTP and HTTPS Ports. For IPv6 additional steps could be required.
 
 
 Bind Caddy to Interfaces
@@ -671,19 +674,204 @@ Custom Configuration Files
 --------------------------
 
 * | The Caddyfile has an additional import from the path ``/usr/local/etc/caddy/caddy.d/``. Place custom configuration files inside that adhere to the Caddyfile syntax.
-* | ``*.global`` files will be imported into the global block of the Caddyfile.
-* | ``*.conf`` files will be imported at the end of the Caddyfile. Don't forget to test the custom configuration with ``caddy validate --config /usr/local/etc/caddy/Caddyfile``.
+* | ``*.global`` files will be imported into the ``global block``.
+* | ``*.conf`` files will be imported into the ``site block``.
+* | ``*.layer4`` files will be imported into the ``layer4 directive``.
+* | Don't forget to test the custom configuration with ``caddy validate --config /usr/local/etc/caddy/Caddyfile``.
 
 With these imports, the full potential of Caddy can be unlocked. The GUI options will remain focused on the reverse proxy. **There is no OPNsense community support for configurations that have not been created with the offered GUI**. For customized configurations, the Caddy community is the right place to ask.
 
 
----------------
-Troubleshooting
----------------
+====================
+Caddy: Layer4 Routes
+====================
+
+.. Attention:: Requires ``os-caddy-1.6.2`` or later. This is a new feature of Caddy and in active developement. Consider this a feature preview. Even though it works as expected, do not use this in production. The scope of Layer4 features inside this plugin are very contained - so when something changes upstream, it can be hopefully downstreamed without rewriting the whole logic.
+
+
+-------------
+Enable Layer4
+-------------
+
+* | Go to :menuselection:`Services --> Caddy Web Server --> General Settings` and enable the `advanced mode`
+* | Enable the checkbox `(Feature Preview) Enable Layer4`
+* | Press **Apply**, then go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Layer4 Routes`
+
+.. Note:: Layer4 Routing can be disabled completely at any time by disabling the `(Feature Preview) Enable Layer4` checkbox.
+.. Tip::
+    **Layer4 Routing Precedence** (automatic, order of listed items in bootgrid does not matter)
+
+    #. `SSH (and other protocols that can only match all traffic)`
+    #. `HTTP (Host Header)`
+    #. `TLS (SNI)`
+    #. `TLS (inverted SNI)`
+    #. `HTTP Handlers` (hidden default route)
+
+--------
+Matchers
+--------
+
+A matcher checks the first bytes of a TCP/UDP paket and decides which protocol it could be. Right now, SNI and Host matchers are supported. They either check the contents of the `Client Hello` at the start of a TLS handshake, or the `Host Header` in case of HTTP traffic. Since most traffic is TLS and HTTP, there is a lot of flexibility without making configuration too complicated. There are also protocol matchers like `SSH` that can match and route raw traffic without making decisions based on SNI or Host, since the SSH protocol does not send that information.
+
+`Layer4 Routes` match before domains in the `Domains Tab`. That is why already existing domains can not be selected in a matcher. They have to be manually filled in. Multiple domains and even wildcards can be matched in the same `Layer4 Route`.
+
+
+SSH, RDP, and other protocols
+-----------------------------
+
+This is a raw protocol matcher. It will match **all** traffic that looks like the chosen protocol on the default ports of Caddy, and proxy it to the selected upstream. **Only one of these routes per protocol will match. Host Headers or SNI can not be evaluated.**
+
+* Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Layer4 Routes`
+* Press **+** to create a new `Layer4 Route`
+
+=================================== ============================
+Options                             Values
+=================================== ============================
+**Domain:**                         ``*``
+**Matcher:**                        ``SSH``
+**Upstream Domain:**                ``192.168.1.1``
+**Upstream Port:**                  ``22``
+=================================== ============================
+
+* Press **Save** and **Apply**
+
+Now an SSH client can open up a proxied connection like ``ssh app1.example.com -p 443`` and the SSH traffic will go over the same port as other HTTP/HTTPS traffic. Caddy becomes a protocol multiplexer.
+
+.. Tip:: If another route is added, e.g. with the RDP matcher, then SSH and RDP will be on the same port but will be proxied to different upstreams.
+
+
+HTTP (Host Header)
+------------------
+
+Same logic as the `SNI` matcher, but can be used to route `HTTP` traffic, since the `Host Header` is evaluated.
+
+.. Note:: `Host` and `SNI` matchers can be used at the same time for the same domains, to route HTTP and TLS traffic to different sockets.
+.. Attention:: When Browsers find an available HTTPS socket for the same domain name, they might force a redirect to the secure channel. Verify with curl that the HTTP route indeed works as intended.
+
+
+TLS (SNI)
+---------
+
+As example, there is an application with the hostname `app1.example.com` which should **not** be handled by the default `HTTP Handlers`. The TLS `TCP/UDP` traffic of this application should be routed directly to the upstream destination without TLS termination. At the same time, all other traffic should be routed to the default `HTTP Handlers`.
+
+* Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Layer4 Routes`
+* Press **+** to create a new `Layer4 Route`
+
+=================================== ============================
+Options                             Values
+=================================== ============================
+**Domain:**                         ``app1.example.com``
+**Matcher:**                        ``SNI``
+**Upstream Domain:**                ``192.168.1.1``
+**Upstream Port:**                  ``8443``
+=================================== ============================
+
+* Press **Save** and **Apply**
+
+Caddy listens on the default HTTP and HTTPS ports. All traffic it receives on these or any other listening ports, gets passed to the `listener_wrapper`. Inside this wrapper, the traffic can be inspected on Layer4, and routing decisions can be made.
+
+With the matcher `TLS (SNI)`, the `Client Hello` of the TLS traffic is analyzed. When the `Client Hello` includes `app1.example.com`, the traffic will be matched by the new `Layer4 Route`. The raw `TCP/UDP` traffic will be streamed to the chosen socket - which consists of `Upstream Domain` and `Upstream Port`.
+
+Any other traffic that is not matched by any `Layer4 Route` will be routed to the `HTTP Handlers`, where the configured `Domains` and `Subdomains` can receive and reverse proxy it.
+
+.. Note:: When `Auto HTTPS` is enabled, all clients will be permanently redirected to HTTPS automatically. If that should not happen, set it to `Disable Redirects`.
+
+
+TLS (inverted SNI)
+------------------
+
+This matcher is very powerful. It can route all unmatched domains, for example to a hosting panel where the domains are not under administrative control and can change at any time. Any matched domains will be routed to the `HTTP Handlers`.
+
+* Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Layer4 Routes`
+* Press **+** to create a new `Layer4 Route`
+
+=================================== ====================================
+Options                             Values
+=================================== ====================================
+**Domain:**                         ``*.example.com`` ``*.opnsense.com``
+**Matcher:**                        ``not SNI``
+**Upstream Domain:**                ``192.168.1.1`` ``192.168.1.2``
+**Upstream Port:**                  ``443``
+**Fail Duration:**                  ``10``
+=================================== ====================================
+
+* Press **Save** and **Apply**
+
+With the Matcher `TLS (inverted SNI)`, the `Client Hello` of the TLS traffic is analyzed. When the `Client Hello` includes either of `*.example.com` or `*.opnsense.com`, the traffic will be sent to the default `HTTP Handlers`, where the configured `Domains` and `Subdomains` can receive and reverse proxy it.
+
+All other `TCP/UDP` traffic will be streamed to the chosen socket of `Upstream Domain` and `Upstream Port`. Since we chose multiple upstreams and a health check, two servers can load balance all requests. The load balancing is just an example, and not necessary for this matcher to work.
+
+.. Tip:: If there are domains inside `*.example.com` that should be routed to a different upstream, just create an additional `TLS (SNI)` matcher for them. It will automatically match before the `TLS (inverted SNI)` - compare to the `Layer4 Routing Precedence`.
+.. Tip:: Caddy supports the HA Proxy Protocol. If the Protocol Header should be added to the upstream, set the `Proxy Protocol` version to ``v1`` or ``v2``.
+
+
+======================
+Caddy: Troubleshooting
+======================
+
+
+--------------------
+Help, Nothing Works!
+--------------------
+
+.. Note:: Even though Caddy itself is quite easy to configure in the plugin, setting the infrastructure up for it to work correctly imposes the real challenge. If you feel stumped, the best approach is getting knowledge about what `should` happen. This section tries to explain that, and give examples how to resolve issues.
+.. Tip:: Most errors happen because the infrastructure is not set up correctly, or wrong options for the `HTTP Handler` have been set.
+.. Attention:: Do not use the Layer4 module without knowing the implications of it. It is for very advanced usecases. Better deactivate it if things do not work as expected.
+
+**This is what should happen if Caddy works correctly:**
+
+#. | A `Web Browser` is opened and an `URL` is put into the address bar: `https://example.com`
+#. | The underlying `Operating System` of the `Web Browser` sends a request to its default `DNS Server`, and asks where to find `example.com`. The `DNS Server` will try to find the requested `A- and/or AAAA-Record` for that domain, and will answer with e.g. `203.0.113.1`.
+#. | The `Web Browser` now sends a `HTTPS request` to `203.0.113.1`. This request contains a `Client Hello` in the TLS handshake, that contains `example.com`.
+#. | This `HTTPS request` hits port `443` of the OPNsense's `WAN` or `LAN` interface, determined by the location of the `Web Browser` (LAN or WAN).
+#. | There is a Firewall rule that allows destination port `443` to access `This Firewall`. The request will then be received by Caddy, because it listens on `This Firewall` on port `443`.
+#. | In Caddy, there is a domain for `example.com` set up. It has a valid Let's Encrypt or ZeroSSL certificate. Since the `Client Hello` contains `example.com`, Caddy will match it with the domain, and the `Web Browser` shows a certificate next to `https://example.com` in the address bar.
+#. | Caddy takes the `HTTPS` request and terminates the `TLS` connection. That means, it will convert the `HTTPS` into `HTTP`, so it can be processed by the `HTTP Handler`.
+#. | Caddy checks if there is a matching `HTTP Handler` set up. It will be used to `reverse proxy` the `HTTP request` to an internal service.
+#. | Inside the `HTTP Handler`, the domain `example.com` and an `Upstream Domain` e.g. `192.168.1.10` and `Upstream Port` e.g. `8080` point the request to the internal service. Caddy then sends the `HTTP request` directly to the internal service.
+#. | The `HTTP response` from the internal service is received by Caddy, wrapped back into `TLS`, and sent back to the `Web Browser` as `HTTPS response`.
+#. | The website of the internal service shows up in the `Web Browser`, secured by `HTTPS`.
+
+.. Attention:: If that does not work, it means that one or multiple steps in that chain of events fail. Please check the following steps for initial troubleshooting.
+
+**1. Check the Infrastructure:**
+
+* Do `A- and/or AAAA-Record` for all `Domains` and `Subdomains` exist?
+* In case of activated `Dynamic DNS`, check that the correct `A- and/or AAAA-Records` have been set automatically with the DNS Provider.
+* Do they point to one of the external IPv4 or IPv6 addresses of the OPNsense Firewall? Check that with commands like ``nslookup example.com``.
+* Do the OPNsense `Firewall Rules` allow connections from `any` source to destination ports `80` and `443` to the destination `This Firewall`?
+* Is the Caddy service running?
+
+**2. Check if the Domain is set up correctly:**
+
+* Disable `Abort` in `General Settings` to test if the `Domain` works correctly.
+* Open the `Domain` in a `Web Browser`. Inspect the certificate by clicking on the 🔒 in the address bar. It should be a `Let's Encrypt`, `ZeroSSL` or `custom certificate` (if chosen).
+* Activate the `HTTP Access Log` in a `Domain`, and check the `Log File`. Are there any log entries that show connections?
+* If nothing shows up, go back to Step 1 and check the infrastructure.
+
+**3. Check the functionality of the internal service (e.g. a Nextcloud):**
+
+* Does the service accept `HTTP` or `HTTPS` connections? It is recommended to connect via `HTTP`, since it removes complexity.
+* Open the internal service via IP address and port in a `Web Browser`, e.g. ``http://192.168.10:8080``. Validate that it shows the website on either `HTTP` or `HTTPS` ports.
+* Does the internal service actually use the `HTTP` or `HTTPS` protocol? Other protocols will not work, e.g. `SSH`.
+* If the `Web Browser` can not connect, it might be a good idea to get the internal service working properly before continuing.
+
+**4. Check the setup of the HTTP Handler:**
+
+* Is the correct `Domain` chosen?
+* Are `Upstream Domain` and `Upstream Port` correct? Do they point to the internal service, e.g `192.168.10:8080`?
+* If the internal service only accepts HTTPS connections, is either `TLS insecure skip verify` checked, or is trust established by a `TLS Trust Pool`?
+
+.. Attention:: If the configuration is still not working, it is time to continue with logs and Caddyfile syntax checks.
+
+
+---------------------------------
+Get Help from the Caddy Community
+---------------------------------
 
 Sometimes, things do not work as expected. Caddy provides a few powerful debugging tools to analyze issues.
 
-This section explains how to obtain the required files to get help from `Caddy Community <https://caddy.community>`_.
+This section explains how to obtain the required files to get help from the `Caddy Community <https://caddy.community>`_.
 
 1. Change the global Log Level to `DEBUG`. This will log `everything` the ``reverse_proxy`` directive handles.
 
