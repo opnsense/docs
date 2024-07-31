@@ -115,7 +115,7 @@ To use this action, you need to add some configuration in the manager, starting 
     </command>
   </ossec_config>
 
-After which you can use it in active-response rules, like this:
+After which you can use it in active-response rules, like this (adjust agent id):
 
 .. code-block:: xml
   :linenos:
@@ -127,7 +127,7 @@ After which you can use it in active-response rules, like this:
       <command>opnsense-fw</command>
       <location>defined-agent</location>
       <agent_id>001</agent_id>
-      <rules_id>100201</rules_id>
+      <rules_id>87702</rules_id>
       <timeout>180</timeout>
     </active-response>
   </ossec_config>
