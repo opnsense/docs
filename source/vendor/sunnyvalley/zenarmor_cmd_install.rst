@@ -44,7 +44,7 @@ Once you are successfully logged into OPNsense either by local system access or 
 
 .. code-block:: bash
 
-    # curl https://updates.sunnyvalley.io/getzenarmor | sh
+    # curl https://updates.zenarmor.com/getzenarmor | sh
 
 .. image:: images/zenarmor-cli-install-.png
     :width: 100%
