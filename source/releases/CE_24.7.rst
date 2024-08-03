@@ -122,6 +122,23 @@ Here are the full changes against version 24.1.10:
 * ports: openvpn 2.6.12 `[9] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.12>`__ 
 * ports: wpa_supplicant 2.11 `[10] <https://w1.fi/cgit/hostap/plain/wpa_supplicant/ChangeLog>`__ 
 
+A hotfix release was issued as 24.7_5:
+
+* system: fix disk widget byte unit "B" parsing crashing the whole widget
+* interfaces: improve apply of the new peer/peer6 options to avoid unneeded reset
+* firewall: fix one-to-one NAT migration with external address without a subnet set
+* openvpn: disable DCO permanently in legacy client/server configuration
+* mvc: fix API regression due to getParams() removal
+* plugins: os-udpbroadcastrelay API error fixes (contributed by Team Rebellion)
+
+A hotfix release was issued as 24.7_9:
+
+* system: increase widget timeout to 5 seconds
+* system: cores and threads flipped in system widget
+* system: increase the PHP children count of the web GUI
+* mvc: make Response->setContentType() second argument optional
+* plugins: os-theme-rebellion 1.9 fixes compatibility issues with new dashboard (contributed by Team Rebellion)
+
 Migration notes, known issues and limitations:
 
 * The dashboard has been replaced. Widgets from the old format are no longer supported and need to be rewritten by the respective authors.
