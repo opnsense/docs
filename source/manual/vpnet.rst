@@ -202,6 +202,16 @@ When a peer is assumed dead, an action may be specified, such as closing the CHI
   DPD is disabled by default, when using connections, make sure to specify a :code:`DPD delay (s)` > 0 to enable the feature.
   Actions may be specified on its children.
 
+When using IKEv1 a :code:`dpdtimeout` can be specified to control when a peer is considered to be inaccesible.
+This setting has no effect on how IKEv2 handles retransmissions, in which case the general settings will be used as specified in the following `document <https://docs.strongswan.org/docs/5.9/config/retransmission.html>`__.
+
+.. Warning::
+
+  By default for IKEv2 the timeout on connections triggering a dpd action takes at least a couple of minutes, when quicker interaction
+  is needed the :code:`charon` retransmit timings should be changed which applies to all tunnels. These settings can
+  be changed via the Advanced settings or when not yet supported on your version, a custom strongswan configuration.
+
+
 
 .................................
 Implementation schemes
