@@ -703,6 +703,36 @@ as additional security measure. The "*Allowed IPs*" define the networks that are
     When NAT and firewall traversal persistence is required, the :code:` Keepalive interval` can be used to exchange packets every defined
     interval ensuring states will not expire.
 
+
+.................................
+Peer generator
+.................................
+
+When creating login credentials for multiple clients, a more practical method is also available to generate these.
+The peer generator offers you a simple selection for the instance you wish to generate credentials for and stores relevant fields
+like endpoint location for future use.
+It also helps to assign IP addresses to clients based on the network defined in the instance.
+
+.. Warning::
+
+  Since IP addresses are only stored when the user saves the profile (and calculated upfront), it's not possible to create users for the same
+  instance concurrently.
+
+Each newly created client will receive a keypair, for which the public key will be stored on the firewall in the peers section.
+
+.. Note::
+
+    The private key will not be stored on the firewall as this only belongs to the device your installing the profile on.
+    Regenerating a config file, automatically means you will need to import it again in the client as well to avoid trust
+    being broken.
+
+After providing the relevant information for the client to login, you can copy the qrcode or the text in the :code:`Config`
+text box to configure the client.
+
+Don't forget to press the "Store and generate next" button to actually store the public information in the firewall so the client
+is able to login.
+
+
 .................................
 High availability (using CARP)
 .................................
