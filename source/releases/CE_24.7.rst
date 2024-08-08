@@ -31,6 +31,87 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.7.1 (August 08, 2024)
+--------------------------------------------------------------------------
+
+
+This release includes a batch of dashboard changes due to the reliable
+feedback we have received from you all so far.  There will be more dashboard
+changes in the future mostly relating to UX and sane default behaviour
+so just know we are aware.
+
+A few smaller regressions due to the Phalcon module replacement efforts
+have been fixed as well.  IPv6 behaviour has been adjusted for SLAAC and
+the web GUI.
+
+Last but not least we found and fixed a number of issues with FreeBSD 14.1
+and are including its security advisories from yesterday while at it.
+
+MVC/API conversions are already being carried out in the development version
+and it seems that PPP-related connectivity will get a bigger makeover too.
+The roadmap for 25.1 will be discussed and likely published later this month.
+
+Here are the full patch notes:
+
+* system: guard destroy on traffic widget
+* system: adjust address display in interfaces widget
+* system: fix display of multiple sources in thermal sensor widget
+* system: add load average back to system info widget
+* system: remove dots from traffic widget graphs
+* system: add publication date to announcement widget
+* system: fix monit widget status code handling
+* system: allow and persist vertical resize in widgets
+* system: improve formatting of byte values in widgets
+* system: update OpenVPN widget server status color
+* system: add aggregated traffic information about connected children in IPsec widget
+* system: remove animated transition from row hover for table widgets
+* system: improve the styling of the widget lock button
+* system: apply locked state to newly added widgets as well
+* system: account for removal of rows in non-rotated widget tables with top headers
+* system: use "importmap" to force cache safe imports of base classes for widgets
+* system: allow custom fonts in the widgets with gauges (contributed by Jaka Prasnika)
+* system: add monitor IP to gateway API result (contributed by Herman Bonnes)
+* system: better define "in use" flag and safety guards in certificates section
+* system: export p12 resulted in mangled binary blob in certificates section
+* system: when using debug kernels prevent them from triggering unrelated panics on assertions
+* system: switch Twitter to Reddit URL in message of the day
+* system: fix API exception on empty CA selection
+* system: skip tentative IPv6 addresses for binding in the web GUI (contributed by tionu)
+* interfaces: avoid deprecating SLAAC address for now
+* firewall: show inspect button on "xs" size screen
+* firewall: fix parsing port alias names in /etc/services
+* captive portal: fix client disconnect (contributed by Vivek Panchal)
+* firmware: revoke old fingerprints
+* ipsec: add aggregated traffic totals to phase 1 view
+* kea-dhcp: ignore invalid hostnames in static mappings to prevent DNS services crashes
+* openvpn: use new trust model to link users by common_name in exporter
+* openvpn: DCO mode only supports UDP on FreeBSD
+* openvpn: add "float" option to instances (contributed by Christian Kohlstedde)
+* backend: patch -6 address support into pluginctl
+* mvc: fix API endpoint sending data without giving the Response object the chance to flush its headers
+* plugins: os-acme-client 4.5 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-apcupsd 1.2 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/sysutils/apcuspd/pkg-descr>`__ 
+* plugins: os-caddy 1.6.2 `[3] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* plugins: os-ddclient 1.23 `[4] <https://github.com/opnsense/plugins/blob/stable/24.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-theme-rebellion 1.9.1 fixes more compatibility issues with new dashboard (contributed by Team Rebellion)
+* src: pf incorrectly matches different ICMPv6 states in the state table `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:05.pf.asc>`__ 
+* src: ktrace(2) fails to detach when executing a setuid binary `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:06.ktrace.asc>`__ 
+* src: NFS client accepts file names containing path separators `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:07.nfsclient.asc>`__ 
+* src: xen/netfront: Decouple XENNET tags from mbuf lifetimes
+* src: dummynet: fix fq_pie traffic stall
+* src: mcast: fix leaked igmp packets on multicast cleanup
+* src: wg: change dhost to something other than a broadcast address (contributed by Sunny Valley Networks)
+* ports: curl 8.9.1 `[8] <https://curl.se/changes.html#8_9_1>`__ 
+* ports: dhcrelay 0.6 `[9] <https://github.com/opnsense/dhcrelay/issues/2>`__ 
+* ports: kea 2.6.1 `[10] <https://downloads.isc.org/isc/kea/2.6.1/Kea-2.6.1-ReleaseNotes.txt>`__ 
+* ports: nss 3.102 `[11] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_102.html>`__ 
+* ports: php 8.2.22 `[12] <https://www.php.net/ChangeLog-8.php#8.2.22>`__ 
+* ports: rrdtool 1.9.0 `[13] <https://github.com/oetiker/rrdtool-1.x/releases/tag/v1.9.0>`__ 
+* ports: syslog-ng 4.8.0 `[14] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.8.0>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.7 (July 25, 2024)
 --------------------------------------------------------------------------
 

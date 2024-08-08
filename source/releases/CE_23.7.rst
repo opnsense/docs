@@ -564,7 +564,7 @@ Here are the full patch notes:
 * mvc: add isLinkLocal()
 * plugins: os-upnp replaces calls to obsolete get_interface_ip()
 * plugins: os-rfc2136 replaces calls to obsolete get_interface_ip[v6]()
-* plugins: os-sunnyvalley 1.3 changes repository URL (contributed by Sunnyvalley)
+* plugins: os-sunnyvalley 1.3 changes repository URL (contributed by Sunny Valley Networks)
 * plugins: os-tinc adds missing subnet-down script (contributed by andrewhotlab)
 * ports: curl 8.3.0 `[1] <https://curl.se/changes.html#8_3_0>`__ 
 * ports: nss 3.93 `[2] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_93.html>`__ 

@@ -447,7 +447,7 @@ Here are the full patch notes:
 * ports: php 8.0.24 `[40] <https://www.php.net/ChangeLog-8.php#8.0.24>`__ 
 * ports: phpseclib 3.0.16 `[41] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.16>`__ 
 * ports: python 3.9.15 `[42] <https://docs.python.org/release/3.9.15/whatsnew/changelog.html>`__ 
-* ports: rrdtool 1.8.0 `[43] <https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES>`__ 
+* ports: rrdtool 1.8.0 `[43] <https://github.com/oetiker/rrdtool-1.x/releases/tag/v1.8.0>`__ 
 * ports: sqlite 3.39.3 `[44] <https://sqlite.org/releaselog/3_39_3.html>`__ 
 * ports: squid 5.7 `[45] <http://www.squid-cache.org/Versions/v5/squid-5.7-RELEASENOTES.html>`__ 
 * ports: strongswan 5.9.8 `[46] <https://github.com/strongswan/strongswan/releases/tag/5.9.8>`__ 

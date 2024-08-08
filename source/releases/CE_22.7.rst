@@ -617,7 +617,7 @@ Here are the full patch notes:
 * plugins: os-nginx 1.29 `[6] <https://github.com/opnsense/plugins/blob/stable/22.7/www/nginx/pkg-descr>`__ 
 * ports: libxml 2.9.14 `[7] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nss 3.81 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_81.html>`__ 
-* ports: rrdtool 1.8.0 `[9] <https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES>`__ 
+* ports: rrdtool 1.8.0 `[9] <https://github.com/oetiker/rrdtool-1.x/releases/tag/v1.8.0>`__ 
 * ports: unbound 1.16.2 `[10] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-2>`__ 
 
 
