@@ -481,10 +481,10 @@ It's always good to check if an address is included in the Alias via :menuselect
 Spamhaus
 ---------------------------------
 
-The Spamhaus Don't Route Or Peer Lists DROP (Don't Route Or Peer) and EDROP are advisory "drop all traffic" lists,
+The Spamhaus Don't Route Or Peer Lists DROP (Don't Route Or Peer) and DROPv6 are advisory "drop all traffic" lists,
 consisting of netblocks that are "hijacked" or leased by professional spam or
 cyber-crime operations (used for dissemination of malware, trojan downloaders,
-botnet controllers). The DROP and EDROP lists are a tiny subset of the SBL,
+botnet controllers). The DROP and DROPv6 lists are a tiny subset of the SBL,
 designed for use by firewalls and routing equipment to filter out the malicious
 traffic from these netblocks.
 
@@ -492,7 +492,7 @@ traffic from these netblocks.
 
 Downloads
  * `DROP list <https://www.spamhaus.org/drop/drop.txt>`__
- * `EDROP list <https://www.spamhaus.org/drop/edrop.txt>`__
+ * `DROPv6 list <https://www.spamhaus.org/drop/dropv6.txt>`__
 
-To setup the DROP and EDROP lists in combination with the firewall rules, read:
-:doc:`how-tos/edrop`
+To setup the DROP and DROPv6 lists in combination with the firewall rules, read:
+:doc:`how-tos/drop`
