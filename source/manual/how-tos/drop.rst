@@ -1,11 +1,11 @@
 ==========================
-Configure Spamhaus (E)DROP
+Configure Spamhaus DROP
 ==========================
 The Spamhaus Don't Route Or Peer Lists
-  DROP (Don't Route Or Peer) and EDROP are advisory "drop all traffic" lists,
+  DROP (Don't Route Or Peer) and DROPv6 are advisory "drop all traffic" lists,
   consisting of netblocks that are "hijacked" or leased by professional spam or
   cyber-crime operations (used for dissemination of malware, trojan downloaders,
-  botnet controllers). The DROP and EDROP lists are a tiny subset of the SBL,
+  botnet controllers). The DROP and DROPv6 lists are a tiny subset of the SBL,
   designed for use by firewalls and routing equipment to filter out the malicious
   traffic from these netblocks.
 
@@ -15,12 +15,8 @@ For this How-To we will use the Alias feature and a firewall block rule.
 The lists for this example are located here:
 
  * `DROP list <https://www.spamhaus.org/drop/drop.txt>`__
- * `EDROP list <https://www.spamhaus.org/drop/edrop.txt>`__
  * `DROPv6 list <https://www.spamhaus.org/drop/dropv6.txt>`__
 
-This guide only shows DROP and EDROP.
-You can repeat it for the DROPv6 list by following the same steps and replacing
-IPv4 with IPv6 where appropriate.
 
 -------------------------------------
 Step 1 - Create an Alias for Spamhaus
@@ -45,26 +41,26 @@ Set the refresh frequency to 1 for each day.
 Press **Save** and then **Add a new alias**.
 
 +-----------------+-----------------------------------------+-------------------------------------+
-| **Name**        | spamhaus_edrop                          |  *Name of our alias*                |
+| **Name**        | spamhaus_dropv6                          |  *Name of our alias*                |
 +-----------------+-----------------------------------------+-------------------------------------+
-| **Description** | Spamhaus EDROP                          | *Freely chosen description*         |
+| **Description** | Spamhaus DROPv6                          | *Freely chosen description*         |
 +-----------------+-----------------------------------------+-------------------------------------+
 | **Type**        | URL Table (IPs)                         | *URL type*                          |
 +-----------------+-----------------------------------------+-------------------------------------+
-| **Content**     | https://www.spamhaus.org/drop/edrop.txt | *Extended Don't Route Or Peer List* |
+| **Content**     | https://www.spamhaus.org/drop/dropv6.txt | *Don't Route Or Peer List v6* |
 +-----------------+-----------------------------------------+-------------------------------------+
 
 Set the refresh frequency to 1 for each day.
 
 Press **Save** and then **Apply changes**.
 
-.. image:: images/spamhaus_drop_edrop.png
+.. image:: images/spamhaus_drop_dropv6.png
     :width: 100%
 
 ---------------------------------------
 Step 2 - Firewall Rules Inbound Traffic
 ---------------------------------------
-We will block incoming connections and outgoing connections for the drop and edrop lists.
+We will block incoming connections and outgoing connections for the drop and dropv6 lists.
 To do so we will start with inbound traffic on the WAN interface.
 Go to :menuselection:`Firewall --> Rules` Select the **WAN** tab and press the **+** icon in the
 lower right corner.
@@ -81,15 +77,15 @@ Enter the following configuration and leave all other parameters on default valu
  **Description**     Block DROP     *Freely chosen description*
 =================== ============== =============================================
 
-**Save** and repeat this action for the EDROP list:
+**Save** and repeat this action for the DROPv6 list:
 
 =================== =============== =============================================
  **Action**          Block           *Choose block to drop the incoming traffic*
  **Interface**       WAN             *Should be the default value*
  **TCP/IP Version**  IPv4            *For our example we use IPv4*
- **Source**          spamhaus_edrop  *Our alias for the DROP list*
+ **Source**          spamhaus_dropv6  *Our alias for the DROP list*
  **Category**        Spamhaus        *Freely chosen Category*
- **Description**     Block EDROP     *Freely chosen description*
+ **Description**     Block DROPv6     *Freely chosen description*
 =================== =============== =============================================
 
 .. image:: images/spamhaus_wan_rules.png
@@ -115,15 +111,15 @@ lower right corner.
  **Description**     Block DROP     *Freely chosen description*
 =================== ============== =============================================
 
-**Save** and add the EDROP list:
+**Save** and add the DROPv6 list:
 
 =================== =============== =============================================
  **Action**          Block           *Choose block to drop the incoming traffic*
  **Interface**       LAN             *Should be the default value*
- **TCP/IP Version**  IPv4            *For our example we use IPv4*
- **Destination**     spamhaus_edrop  *Our alias for the DROP list*
+ **TCP/IP Version**  IPv6            *For our example we use IPv6*
+ **Destination**     spamhaus_dropv6  *Our alias for the DROPv6 list*
  **Category**        Spamhaus        *Freely chosen Category*
- **Description**     Block EDROP     *Freely chosen description*
+ **Description**     Block DROPv6     *Freely chosen description*
 =================== =============== =============================================
 
 **Save** and **Apply changes**
@@ -136,7 +132,7 @@ lower right corner.
 ---------------
 Check pf Tables
 ---------------
-To list the IP addresses that are currently in the DROP and EDROP lists go to
+To list the IP addresses that are currently in the DROP and DROPv6 lists go to
 :menuselection:`Firewall --> Diagnostics --> Aliases` and select the list you want to see:
 
 .. image:: images/spamhaus_pftable.png
