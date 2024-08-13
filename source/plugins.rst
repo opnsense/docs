@@ -72,6 +72,7 @@ Other
    :maxdepth: 2
    :titlesonly:
 
+   manual/cpu-microcode
    manual/proxy
    manual/how-tos/freeradius
    manual/how-tos/accounting
