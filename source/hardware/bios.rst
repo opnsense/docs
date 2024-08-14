@@ -126,3 +126,11 @@ If you do want to enable it when supported,  enter the setup utility and search 
     AMD CBS -> Zen Common Options  -> Core/Thread Enablement  -> SMTEN
 
 Select :code:`Auto` here to enable the feature.
+
+
+**Microcode updates**
+=====================================================================================================================
+
+Microcode patches are distributed in our EFI firmware updates. If a Microcode update is required to address specific
+issues which are deemed important enough by AMD/Intel, you can install the microcode update yourself in a timely
+manner by using the :doc:`/manual/cpu-microcode` plugin.

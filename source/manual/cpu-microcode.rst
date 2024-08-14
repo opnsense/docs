@@ -13,6 +13,11 @@ to fix issues found after product release.
 This document describes the two plugins available in OPNsense and how to verify the microcode version being used
 on the system at hand.
 
+.. note::
+
+    Microcode patches are shipped in our package repository. If there is a new patch level available, it will
+    automatically be applied on a system update while the plugin is installed.
+
 --------------------------------------
 Installation
 --------------------------------------
