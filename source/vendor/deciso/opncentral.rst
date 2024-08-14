@@ -1,23 +1,26 @@
-===================
+==================
 Central Management
-===================
+==================
 
 As part of the OPNsense Business Edition, Deciso offers a plugin to keep all your firewalls up to date and have
 an easy entry point to manage them.
 
 
 .. contents:: Index
+    :depth: 3
 
 
 Installation
----------------------------
+------------
 
 After acquiring a license, you can switch to the commercial software repository containing OPNcentral. In order to
 install, just go to :menuselection:`System->Firmware->Plugins` and search for :code:`os-OPNcentral`.
 
+.. _register_new_hosts:
+
 
 Register new hosts
-----------------------------
+------------------
 
 Before adding a host, you need to generate an API key and secret from the machine you will grant accesss to.
 API keys are managed in the user manager (system_usermanager.php), go to the user manager page and select a user.
@@ -55,7 +58,7 @@ the url from the machine and the API key and secret generated above.
 
 
 Central WebGui certificate management
-......................................
+.....................................
 
 The host configuration offers an option to link a central certificate to the managed host, in which case
 the certificate will be distributed to the host (if :code:`WebGui` is being provisioned).
@@ -67,9 +70,11 @@ Using this feature, you're able to centrally manage certificates (manually or us
     Add :code:`OPNcentral - provision / reconfigure remote hosts` in :menuselection:`System --> Settings --> Cron`
     with a daily schedule to automatically provision all attached firewalls on a daily basis.
 
+.. Attention:: Do not synchronize ``Certificates`` and ``WebGUI`` at the same time. :ref:`Provisioning classes WebGUI<provisioning_classes_webgui>`
+
 
 Alter generic host settings
-..................................
+...........................
 
 The second tab in the screen contains the setting page which configures defaults for all hosts where applicable.
 
@@ -84,7 +89,7 @@ Enable backups                     Enable centralized backups.
 
 
 Centralized backups
-----------------------------
+-------------------
 
 When "Enable backups" is checked in the generic host settings tab OPNcentral will perform a nighly backup of all configured
 hosts. The host overview (:menuselection:`Management --> Host --> Configuration`) shows the number of backups
@@ -105,7 +110,7 @@ with their related size and last modification date for each host.
 
 
 Multi tenancy using host groups
-----------------------------------
+-------------------------------
 
 Hosts can be organised in groups using the :menuselection:`Management --> Host --> Groups` menu option.
 By default hosts are accessible by all users having access to the specified OPNcentral menu options.
@@ -135,7 +140,7 @@ You can change that behaviour by linking a host into one or more groups, where y
 
 
 Connect to managed machine
-----------------------------------
+--------------------------
 
 On various management pages there are direct links available to login to the firewall in question.
 Usually connected nodes are shown with a link which opens in a new tab when clicking.
@@ -165,7 +170,7 @@ user:
 
 
 Machine firmware status / upgrade
-----------------------------------------------------
+---------------------------------
 
 All connected and enabled machines can be contacted using the  :menuselection:`Management --> Status --> Firmware` page, when visiting the
 page all connected machines will automatically be contacted to report their status and installed version.
@@ -188,7 +193,7 @@ status page later (or press refresh) to show the new status.
 
 
 Machine service status and control
-----------------------------------------------------
+----------------------------------
 
 The service status and control page provides an overview on all managed OPNsense firewalls connected to OPNcentral and
 offers the ability to restart services when needed.
@@ -216,7 +221,7 @@ services with the button below the table.
 
 
 Machine resource status
-----------------------------------------------------
+-----------------------
 
 In order to gain insights into the managed machines there is a resource page available which queries all connected
 firewalls and reports aggregated status about them.
@@ -262,7 +267,7 @@ From left to right the following information is available:
 
 
 Provisioning / sharing settings
-----------------------------------------------------
+-------------------------------
 
 The provisioning tool offers the ability to configure some settings in a more centralised manner. Inspired by the functionality that
 is offered for high-availability setups, you can distribute global settings among all connected firewalls for various configuration options.
@@ -309,7 +314,7 @@ You can either selectlively reconfigure specific hosts with the checkbox or reco
 
 
 Provisioning classes
-----------------------------------------------------
+--------------------
 
 By default merging configuration items from the central firewall overwrites the settings on the target machine, but in some
 cases we need a more practical approach to deal with local modifications.
@@ -318,7 +323,7 @@ In this chapter we are going to describe how classes with special implemenations
 how to utilise this behaviour to ease management.
 
 Users & Groups
-....................................................
+..............
 
 When users and groups are synchronized, the existing api key+secret is merged into the user with the same name to prevent access
 issues after reconfigure. To avoid issues, make sure there's a unique username with proper credentials before using
@@ -331,7 +336,7 @@ the synchronization.
     sue the same key+secret on all connected firewalls.
 
 Aliases (Firewall)
-....................................................
+..................
 
 Since various firewall sections depend on aliases, OPNcentral checks if aliases are used before removing local aliases
 from the remote firewall.
@@ -359,7 +364,7 @@ automatically merge central changes after a reconfigure action from the dashboar
     As long as :code:`local_alias_2` is used, both :code:`local_alias_1` and :code:`local_alias_2` will be preserved after provisioning.
 
 Firewall rules
-....................................................
+..............
 
 Merging the firewall rules will keep the interfaces unaltered which don't exists on the central node as these are being provided to
 the target firewall. In case you want to exclude some interfaces (for all remote firewalls), you can easily override the
@@ -398,7 +403,7 @@ central rules being matched first or last depending on the type of "interface" t
 
 
 NAT (Firewall)
-....................................................
+..............
 
 
 Merging the nat rules will keep the interfaces unaltered which don't exists on the central node as these are being provided to
@@ -420,18 +425,111 @@ known interfaces in :menuselection:`Management -> Host configuration` on the Gen
 
 
 Firewall categories
-....................................................
+...................
 
 Merging categories will preserve the ones that are currently used on the remote firewall.
 
+.. _provisioning_classes_webgui:
+
 
 WebGui (Administration)
-....................................................
+.......................
 
 To prevent breakage after synchronisation, the certificate used by the webgui will be preserved after synchronisation
 (or the one provided in the host configuration will be shipped).
 
-.. Note:
+.. Attention::
 
     Currently it's not possible to merge certificates and webgui admin settings, as the certificate store will potentially
     be overwritten in that case.
+
+
+Configuration Tutorials
+-----------------------
+
+In this section we will show example configurations of some of the features that OPNcentral Central Management offers.
+
+
+Automatic WebGUI Login
+......................
+
+For the automatic login feature to work, the following infrastructure is required:
+
+* | One OPNsense with Business Edition and OPNcentral installed, which will be used as the `Central Host` for configuration. Using this OPNsense for no other tasks than configuration and administration is recommended.
+* | One or several other OPNsense with Business Edition and OPNcentral installed, which will be managed by the Central Host.
+* | Either your own PKI (Public Key Infrastructure) or using the OPNsense provided one in :menuselection:`System --> Settings --> Trust`
+* | A DNS infrastructure or public DNS provider, that manages the FQDNs (Full Qualified Domain Names) of each OPNsense
+
+We assume that we have this example infrastructure:
+
+===============================  =================  =================================
+FQDN                             IP Address         Task
+===============================  =================  =================================
+``central-host.opnsense.local``  203.0.113.1        `Central Host` for administration
+``node-a1.opnsense.local``       198.51.100.1       `Firewall Node` site A
+``node-b1.opnsense.local``       192.0.2.1          `Firewall Node` site B
+===============================  =================  =================================
+
+
+1. Add `Firewall Nodes` to the `Central Host`
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+* | Go to :menuselection:`Management --> Host --> Configuration`.
+* | Follow the steps described here :ref:`Register new hosts <register_new_hosts>`.
+* | If there are connection problems, check if the `Central Host` can resolve the FQDNs of the `Firewall Nodes`. They have to be added via their FQDN and *not* via IP address. Otherwise the SAN of the certificates will not match the FQDN.
+
+.. Tip:: When using a custom WebGUI port, specify the socket like this: ``https://node-a1.opnsense.local:8443``
+.. Note:: Only add the `Firewall Nodes` to the `Central Host`. Do not add the `Central Host` to itself to prevent configuration loops.
+
+
+2. Create a `PKI` on the `Central Host`
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+* | Go to :menuselection:`System --> Trust --> Authorities` and press *+* to `Create an internal Certificate Authority`.
+* | Leave all the populated fields on their default values.
+* | As State, City, Organization and Email Address, add your own.
+* | As Descriptive name and Common Name, use ``opncentral-ca``.
+* | Press *Save*.
+
+.. Note:: Export the CA certificate, and import it into the `Trusted Root Certificate Store` of each client that should use the automatic WebGUI login. It will only work if the Browser trusts the connection.
+
+
+3. Create `Server Certificates` for all Hosts
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+* | Go to :menuselection:`System --> Trust --> Certificates` and press *+* to `Create an internal Certificate`.
+* | Leave all the populated fields on their default values.
+* | As `Type` choose `Server Certificate`.
+* | As `Common Name` and `Alternative Names Type DNS` (SAN) choose the FQDNs of the Firewall; e.g., ``central-host.opnsense.local``
+* | Press *Save* and repeat this until there are certificates for the `Central Host` and the `Firewall Nodes`.
+
+
+4. Change WebGUI certificate of `Central Host`
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+* | Go to :menuselection:`System --> Settings --> Administration`.
+* | Make sure the `Protocol` is `HTTPS` and choose the certificate with the FQDN of the `Central Host`; e.g., ``central-host.opnsense.local``
+* | Press *Save* and press the link that appears, which will redirect the session to a new browser tab.
+
+.. Note:: The browser should automatically trust the connection to the `Central Host` now. If not, make sure the ``opncentral-ca`` certificate has been imported as described in Step 2. It is mandatory that the browser trust is established before continuing.
+
+
+5. Provision Certificates and WebGUI to `Firewall Nodes`
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+* | Go to :menuselection:`Management --> Host --> Configuration`.
+* | Select a `Firewall Node`, e.g., ``node-a1.opnsense.local`` and edit it.
+* | Make sure that `Validate SSL` is not selected right now.
+* | Select the correct certificate in `Push WebUI certificate`, in this case ``node-a1.opnsense.local``
+* | In `Provision classes`, select ``Web GUI``. Please be careful *not* to select ``Certificates``, only ``Web GUI`` is needed as `Provision classes`.
+* | Press *Save* and repeat the same for all other `Firewall Nodes`.
+* | Go to :menuselection:`Management --> Provisioning` and select all Hosts, then press `Reconfigure`.
+* | After the provisioning has succeeded, go back to :menuselection:`Management --> Host --> Configuration` and enable `Validate SSL` for all `Firewall Nodes`.
+
+
+6. Test the Automatic Login
+<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+* | Go to :menuselection:`Management --> Provisioning` and click on any of the Host links. An additional browser tab will open with the selected `Firewall Node` and the session is automatically logged in.
+
+.. Tip:: This feature is especially useful for Network Administrators that centrally manage a large amount of OPNsense Firewalls.
