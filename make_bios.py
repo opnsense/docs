@@ -86,20 +86,29 @@ def calculate_sha256(file_path):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--platform', help='BIOS platform [A10|A20|A30]')
-    parser.add_argument('--source', help='BIOS ROM image name in source/hardware/files')
+    parser.add_argument('--version', help='BIOS version (for example: 13a)')
+    parser.add_argument('--source', help='BIOS ROM image file (.fd)')
 
     args = parser.parse_args()
     if not args.platform or args.platform not in ['A10', 'A20', 'A30']:
-        print('invalid platform')
+        print('invalid platform, expected A10, A20 or A30')
         exit(1)
 
-    if not args.source.endswith('.FD'):
-        print('invalid source file, must be a .FD file')
+    if not args.version:
+        print('No version specified')
+        exit(1)
+
+    if not args.source.lower().endswith('.fd'):
+        print('invalid source file')
+        exit(1)
+
+    if not os.path.isfile(args.source):
+        print('source file not found')
         exit(1)
 
     static = 'source/hardware/files/BIOS_update_sources.zip'
-    source = f'source/hardware/files/{args.source}'
-    output = f'source/hardware/files/{args.platform}_bios'
+    source = args.source
+    output = f'source/hardware/files/{args.platform}_v{args.version}_bios'
 
     merge_files(static, source, output)
     print(calculate_sha256(f'{output}.tar.gz'), f'{output}.tar.gz')
