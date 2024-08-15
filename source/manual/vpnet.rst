@@ -208,7 +208,7 @@ This setting has no effect on how IKEv2 handles retransmissions, in which case t
 
   By default for IKEv2 the timeout on connections triggering a dpd action takes at least a couple of minutes, when quicker interaction
   is needed the :code:`charon` retransmit timings should be changed which applies to all tunnels. These settings can
-  be changed via the Advanced settings and thus applies to all, or when not yet supported on your version, a custom strongswan configuration.
+  be changed via the Advanced settings, or when not yet supported on your version, a custom strongswan configuration.
 
 
 
