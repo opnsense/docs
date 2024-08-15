@@ -456,8 +456,8 @@ Automatic WebGUI Login
 For the automatic login feature to work, the following infrastructure is required:
 
 * | One OPNsense with Business Edition and OPNcentral installed, which will be used as the `Central Host` for configuration. Using this OPNsense for no other tasks than configuration and administration is recommended.
-* | One or several other OPNsense with Business Edition and OPNcentral installed, which will be managed by the Central Host.
-* | Either your own PKI (Public Key Infrastructure) or using the OPNsense provided one in :menuselection:`System --> Settings --> Trust`
+* | One or several other OPNsense with Business Edition and OPNcentral installed, which will be managed by the `Central Host`.
+* | Either your own PKI (Public Key Infrastructure) or using the OPNsense provided one in :menuselection:`System --> Trust`
 * | A DNS infrastructure or public DNS provider, that manages the FQDNs (Full Qualified Domain Names) of each OPNsense
 
 We assume that we have this example infrastructure:
