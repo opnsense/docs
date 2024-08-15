@@ -192,8 +192,7 @@ be allowed explicitly, the :menuselection:`Firewall --> Rules --> IPsec` menu it
 Dead Peer Detection (DPD)
 .................................
 
-Dead Peer Detection (DPD) is a method of detecting a dead IKE peer by sending periodic R-U-THERE messages to the remote expecting R-U-THERE-ACK
-messages in return as specified by `RFC 3706 <https://www.ietf.org/rfc/rfc3706.txt>`__.
+Dead Peer Detection (DPD) is a method of detecting a dead IKE peer as specified by `RFC 3706 <https://www.ietf.org/rfc/rfc3706.txt>`__.
 
 When a peer is assumed dead, an action may be specified, such as closing the CHILD_SA or re-negotiate the CHILD_SA under a fresh IKE_SA.
 
@@ -209,7 +208,7 @@ This setting has no effect on how IKEv2 handles retransmissions, in which case t
 
   By default for IKEv2 the timeout on connections triggering a dpd action takes at least a couple of minutes, when quicker interaction
   is needed the :code:`charon` retransmit timings should be changed which applies to all tunnels. These settings can
-  be changed via the Advanced settings or when not yet supported on your version, a custom strongswan configuration.
+  be changed via the Advanced settings and thus applies to all, or when not yet supported on your version, a custom strongswan configuration.
 
 
 
@@ -349,6 +348,24 @@ The following client setup examples are available in our documentation:
 
  Using Network Address Translation in policy based tunnels is different, due to the fact that the installed IPsec policy
  should accept the traffic in order to encapsulate it. The `IPSec BINAT` document will explain how to apply translations.
+
+.................................
+CARP considerations
+.................................
+
+When using IPsec in a high availability setup, it is important to understand the implications of the setup. Without assuming
+what the remote gateway looks like (which may be a single device or a high availability setup as well), the following
+considerations should be taken into account:
+
+- For IKEv2, MOBIKE should be disabled. Due to the nature of CARP, a virtual IP in backup state will "disappear", which will trigger
+  MOBIKE to try to re-establish the connection from a different available IP, thus overriding your "Local address" configuration.
+  In a lot of cases this will be the primary IP of the WAN interface.
+- In all cases (initiator, responder or both) the "Local Address" must be set to a CARP virtual IP.
+- DPD must at least be configured on the peer to detect a non-responsive peer and reauthenticate the connection. DPD is usually the
+  limiting factor in failover response time and is therefore the primary functionality to adjust to allow for faster failover.
+  See the DPD section for more information and constraints.
+- IPsec connections never failover seamlessly between primary and backup and always need a fresh IKE_SA. If quicker failover is
+  required, dynamic routing with route-based tunnels is likely a better solution.
 
 .................................
 Tuning considerations
