@@ -41,13 +41,13 @@ Set the refresh frequency to 1 for each day.
 Press **Save** and then **Add a new alias**.
 
 +-----------------+-----------------------------------------+-------------------------------------+
-| **Name**        | spamhaus_dropv6                          |  *Name of our alias*                |
+| **Name**        | spamhaus_dropv6                          |  *Name of our alias*               |
 +-----------------+-----------------------------------------+-------------------------------------+
-| **Description** | Spamhaus DROPv6                          | *Freely chosen description*         |
+| **Description** | Spamhaus DROPv6                          | *Freely chosen description*        |
 +-----------------+-----------------------------------------+-------------------------------------+
 | **Type**        | URL Table (IPs)                         | *URL type*                          |
 +-----------------+-----------------------------------------+-------------------------------------+
-| **Content**     | https://www.spamhaus.org/drop/dropv6.txt | *Don't Route Or Peer List v6* |
+| **Content**     | https://www.spamhaus.org/drop/dropv6.txt | *Don't Route Or Peer List v6*      |
 +-----------------+-----------------------------------------+-------------------------------------+
 
 Set the refresh frequency to 1 for each day.
@@ -79,14 +79,14 @@ Enter the following configuration and leave all other parameters on default valu
 
 **Save** and repeat this action for the DROPv6 list:
 
-=================== =============== =============================================
- **Action**          Block           *Choose block to drop the incoming traffic*
- **Interface**       WAN             *Should be the default value*
- **TCP/IP Version**  IPv4            *For our example we use IPv4*
+=================== ================ =============================================
+ **Action**          Block            *Choose block to drop the incoming traffic*
+ **Interface**       WAN              *Should be the default value*
+ **TCP/IP Version**  IPv4             *For our example we use IPv4*
  **Source**          spamhaus_dropv6  *Our alias for the DROP list*
- **Category**        Spamhaus        *Freely chosen Category*
+ **Category**        Spamhaus         *Freely chosen Category*
  **Description**     Block DROPv6     *Freely chosen description*
-=================== =============== =============================================
+=================== ================ =============================================
 
 .. image:: images/spamhaus_wan_rules.png
     :width: 100%
@@ -113,14 +113,14 @@ lower right corner.
 
 **Save** and add the DROPv6 list:
 
-=================== =============== =============================================
- **Action**          Block           *Choose block to drop the incoming traffic*
- **Interface**       LAN             *Should be the default value*
- **TCP/IP Version**  IPv6            *For our example we use IPv6*
+=================== ================ =============================================
+ **Action**          Block            *Choose block to drop the incoming traffic*
+ **Interface**       LAN              *Should be the default value*
+ **TCP/IP Version**  IPv6             *For our example we use IPv6*
  **Destination**     spamhaus_dropv6  *Our alias for the DROPv6 list*
- **Category**        Spamhaus        *Freely chosen Category*
+ **Category**        Spamhaus         *Freely chosen Category*
  **Description**     Block DROPv6     *Freely chosen description*
-=================== =============== =============================================
+=================== ================ =============================================
 
 **Save** and **Apply changes**
 
