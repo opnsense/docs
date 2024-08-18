@@ -82,7 +82,7 @@ Enter the following configuration and leave all other parameters on default valu
 =================== ================ =============================================
  **Action**          Block            *Choose block to drop the incoming traffic*
  **Interface**       WAN              *Should be the default value*
- **TCP/IP Version**  IPv4             *For our example we use IPv4*
+ **TCP/IP Version**  IPv6             *For our example we use IPv6*
  **Source**          spamhaus_dropv6  *Our alias for the DROP list*
  **Category**        Spamhaus         *Freely chosen Category*
  **Description**     Block DROPv6     *Freely chosen description*
