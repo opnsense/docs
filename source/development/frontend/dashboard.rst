@@ -31,27 +31,8 @@ Example
 Before going into any details, it is often most useful to present an example that includes most of the core logic:
 the `interfaces overview <https://github.com/opnsense/core/blob/master/src/opnsense/www/js/widgets/Interfaces.js>`__ widget.
 
----
-ACL
----
 
-Every widget must expose the endpoints it's using to the framework, so the controller can determine whether
-this widget is accessible for the current logged in user. To do this, any :code:`<widget>.js` file must start
-with the following line(s):
-
-.. code-block:: javascript
-
-    // endpoint:/api/endpoint/used/by/widget
-
-For example:
-
-.. code-block:: javascript
-
-    // endpoint:/api/interfaces/overview/*
-
-Multiple lines can be used if the widget uses multiple endpoints. If any of these endpoints are inaccessible,
-the widget will not be loaded. Note that the same rules as for any other
-`ACL <../../development/examples/helloworld.html#plugin-to-access-control-acl>`__ applies here.
+.. _functions:
 
 ---------
 Functions
@@ -80,10 +61,11 @@ To provide sensible defaults to the framework, a derived javascript class should
 Afterwards, the defaults can be overridden. The properties are:
 
 - :code:`this.title`. Sets the title of the widget in the header.
-- :code:`this.tickTimeout`. Sets the interval (in ms) in which the :code:`onWidgetTick()` function is called. The default is 5000
+- :code:`this.tickTimeout`. Sets the interval (in seconds) in which the :code:`onWidgetTick()` function is called. The default is 10 seconds.
 
 If the widget has been persisted (the user pressed 'save'), the loaded widget configuration is passed in the constructor. Any
-custom data necessary for the widget to properly reload itself can be found in the :code:`this.config` property, if any.
+custom data necessary for the widget to properly reload itself can be fetched using the :code:`await this.getWidgetConfig()` function.
+See the :ref:`Configurable widgets <configurable_widget>` section.
 
 *getGridOptions*
 =====================================================================================================================
@@ -124,6 +106,20 @@ This function must return a jQuery object that contains the static markup that's
 of the widget. This function will usually just return the container (with styling attached) where dynamic content
 will be loaded using `onMarkupRendered()`
 
+*ajaxCall*
+=====================================================================================================================
+
+.. code-block:: javascript
+
+    ajaxCall(url, data, method='GET') {}
+
+This function is a wrapper around the jQuery AJAX function. It is used to make API calls to the backend. The function
+is internally bound to a retry mechanism, so if the API call fails, it will be retried after a short interval. By default
+the call will fail after three attempts, after which the widget will show a generic error message.
+
+Certain calls require a POST HTTP verb to be used to be able to send data to the backend. In this case, the :code:`method` parameter
+can be changed to :code:`POST` and the :code:`data` parameter can be filled with the data to be sent.
+
 *onMarkupRendered*
 =====================================================================================================================
 
@@ -138,7 +134,7 @@ within this function must be awaited. For example:
 .. code-block:: javascript
 
     async onMarkupRendered() {
-        await ajaxGet('/api/interfaces/overview/interfacesInfo', {}, (data, status) => {
+        await this.ajaxCall('/api/interfaces/overview/interfacesInfo', {}, (data, status) => {
             // do something with the data
         });
     }
@@ -191,7 +187,7 @@ If you return true from this function, the grid will be forcefully updated to ad
 
     onWidgetTick() {}
 
-This function is called every :code:`this.tickTimeout` milliseconds. While the dashboard is open, this function
+This function is called every :code:`this.tickTimeout` seconds. While the dashboard is open, this function
 is used to update the data presented on the dashboard.
 
 *onWidgetClose*
@@ -230,6 +226,8 @@ this function, but if you do, make sure to call :code:`super.onVisibilityChanged
 When your widget requires a persistent connection to stream data, use the :code:`super.openEventSource()` function
 with the API endpoint and a callback function. The :code:`onMessage` callback function takes in a single :code:`event`
 parameter, of which the :code:`data` property contains the event data.
+
+This function is bound to the same retry mechanism as the :code:`ajaxCall()` function.
 
 *closeEventSource*
 =====================================================================================================================
@@ -365,3 +363,84 @@ Since a lot of the charts have programmatic approaches to colors, the special
     }
 
 CSS selector is defined so you can override these colors for custom themes.
+
+.. _configurable_widget:
+
+--------------------
+Configurable widgets
+--------------------
+
+To make widgets configurable, make sure you pass in the :code:`config` object in the constructor and, call :code:`super(config)` as
+described in the :ref:`Functions - constructor <functions>` section. Also set :code:`this.configurable = true` in the constructor as well.
+
+The `CPU graph widget <https://github.com/opnsense/core/blob/master/src/opnsense/www/js/widgets/Cpu.js>`__ is an example of a configurable widget.
+
+Two functions must be overridden to make a widget configurable:
+
+*getWidgetOptions*
+=====================================================================================================================
+
+.. code-block:: javascript
+
+    async getWidgetOptions();
+
+Function must return an object with the following structure:
+
+.. code-block:: javascript
+
+    {
+        option_name: {
+            title: <translated string>,
+            type: 'select_multiple',
+            options: [
+                {
+                    value: 'value',
+                    label: <translated string>
+                },
+                {
+                    value: 'value',
+                    label: <translated string>
+                }
+            ],
+            default: ['value', 'value']
+        }
+    }
+
+This function is asynchronous as it may require an API call to fetch the available options.
+
+*onWidgetOptionsChanged*
+=====================================================================================================================
+
+.. code-block:: javascript
+
+    async onWidgetOptionsChanged(options);
+
+Callback function that is called when the user changes the options of the widget. The options parameter is an object
+with the same structure as the object returned by :code:`getWidgetOptions()`, but mapped to selected values.
+
+*getWidgetConfig*
+=====================================================================================================================
+
+.. code-block:: javascript
+
+    async getWidgetConfig();
+
+
+Gets the current persisted widget configuration. This function implicitly calls the :code:`getWidgetOptions()` function
+to account for the option defaults.
+
+--------------------
+ACL and translations
+--------------------
+
+Every widget must expose the endpoints it's using to the framework, so the controller can determine whether
+this widget is accessible for the current logged in user. To do this, you must create a section in the
+:code:`src/opnsense/www/js/widgets/Metadata/<Core|Plugin-specific>.xml` file.
+The `Core XML file <https://github.com/opnsense/core/blob/master/src/opnsense/www/js/widgets/Metadata/Core.xml>`__ shows
+how widget metadata is structured.
+
+If any of the defined endpoints is inaccesible, the widget will not be available for the user. Note that the same rules 
+as for any other `ACL <../../development/examples/helloworld.html#plugin-to-access-control-acl>`__ applies here.
+
+Translations are provided in the same XML file, you can access these values by using the :code:`this.translations.<key>` variables
+in the widget class, The value of `key` is defined by the opening/closing XML tags.
