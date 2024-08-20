@@ -505,7 +505,7 @@ For saving the data back, we need a similar kind of call, let’s name it
                 if (!array_key_exists("validations", $result)) {
                     $result["validations"] = array();
                 }
-                $result["validations"]["general.".$msg->getField()] = $msg->getMessage();
+                $result["validations"]["helloworld.".$msg->getField()] = $msg->getMessage();
             }
      
             // serialize model to config and save
