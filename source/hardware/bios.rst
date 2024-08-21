@@ -43,6 +43,33 @@ DEC700 and DEC2700 series
 | CVE Update.                                                                                                                                             |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+--------------------------------
+DEC600 and DEC2600 2.5GbE series
+--------------------------------
+
+.. Warning::
+
+    This firmware is exclusive to the DEC600 and DEC2600 2.5 Gigabit series of the A8 version 2 boards. Do not install this firmware
+    on older DEC600/DEC2600 devices that only support 1 Gigabit Ethernet.
+
+.. Attention::
+
+    The DEC600 and DEC2600 series (2.5GbE) use an image file that must be written to a USB drive as described in the
+    `OPNsense installation instructions <../manual/install.html#installation-media>`__. Replace the OPNsense image in the instructions with the BIOS
+    image and write it to the USB drive. After preparing the USB drive, you can ignore steps 1 to 3 and start from step 4
+    of the installation instructions below.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+|**03-2024** Version 2                                                                                                                                    |
++-------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| Download                                                                |SHA256 Checksum                                                                |
++=========================================================================+===============================================================================+
+|:download:`Image <files/Coreboot_Deciso_A8V2.img.bz2>`                   |1f05ed6423dc45bf5c479a86e813ec2a87d73e77544eedd49f2343c5942d2218               |
++-------------------------------------------------------------------------+-------------------------------------------------------------------------------+
+| CPU Frequency corrections and minor bugfixes                                                                                                            |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+
 **Installation instructions**
 =====================================================================================================================
 
