@@ -40,4 +40,4 @@ Setup guides
    :titlesonly:
 
    manual/how-tos/fwcategory
-   manual/how-tos/edrop
+   manual/how-tos/drop
