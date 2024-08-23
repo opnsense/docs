@@ -31,6 +31,78 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.7.2 (August 21, 2024)
+--------------------------------------------------------------------------
+
+
+Today a follow-up for the FreeBSD security advisory for pf/ICMP
+ships that addresses the undesired traceroute behaviour.  A few
+dashboard improvements are included as well as better IPv6 recovery
+for dhcp6c and assorted stability fixes.
+
+As a special note we now have native CPU microcode update plugins
+for either AMD or Intel to install from the GUI.  Apart from a reboot
+these plugins require no further user interaction and will keep the
+applicable microcode at the latest known version as shipped in the
+packages repository.
+
+We are currently working on making PPP capable of running in
+IPv6-only deployments; additionally ZFS snapshots (a.k.a boot environments)
+are coming to the next stable release and can already be previewed in
+the bundled development version.
+
+Last but not least, an "importmap" free dashboard version is also
+ready for testing in the development release.  We hereby ask for
+feedback so that it can be included in a subsequent stable release.
+
+Here are the full patch notes:
+
+* system: CRL import ignored text input and triggered unrelated validations
+* system: improve the locking during web GUI restart
+* system: improve WireGuard and IPsec widgets
+* system: add CPU widget graph selection
+* system: reformat traffic graphs to bps
+* system: add gateway widget item selection
+* system: add table view to interface statistics widget on expansion
+* system: improve widget error recovery
+* system: fix wrong variable assignment in system log search backend
+* system: add missing delAction() for proper CRL removal
+* interfaces: require PPP interface to be in up state (contributed by Nicolai Scheer)
+* interfaces: lock down PPP modes when editing interfaces
+* interfaces: backport required interface_ppps_capable()
+* interfaces: retire interfaces_bring_up()
+* reporting: start using cron for RRD collection
+* firmware: remove inactive mirrors from the list
+* firmware: introduce sanity checks prior to upgrades
+* firmware: cleanup package manager temporary files prior to upgrades
+* kea-dhcp: fix privileges for page ACL
+* ipsec: advanced settings MVC/API conversion
+* ipsec: add retransmission settings in charon section in advanced settings
+* openvpn: unhide server fields for DCO instances
+* mvc: remove setJsonContent() and make sure Response->send() handles array types properly
+* mvc: FileObject write() should sync by default
+* rc: export default ZPOOL_IMPORT_PATH
+* ui: sidebar submenu expand fix (contributed by Team Rebellion)
+* plugins: os-caddy 1.6.3 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* plugins: os-cpu-microcode-amd 1.0
+* plugins: os-cpu-microcode-intel 1.0
+* plugins: os-freeradius 1.9.25 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-intrusion-detection-content-snort-vrt 1.2 switch to newer ruleset snapshot (contributed by Jim McKibben)
+* plugins: os-theme-tukan 1.28 (contributed by Dr. Uwe Meyer-Gruhl)
+* src: axgbe: implement ifdi_i2c_req for diagnostics information
+* src: if_clone: allow maxunit to be zero
+* src: if_pflog: limit the maximum unit via the new KPI
+* src: pf: invert direction for inner icmp state lookups
+* src: pf: fix icmp-in-icmp state lookup
+* src: pf: vnet-ify pf_hashsize, pf_hashmask, pf_srchashsize and V_pf_srchashmask
+* ports: dhcp6c 20240820 fixes two renewal edge cases
+* ports: nss 3.103 `[3] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_103.html>`__ 
+* ports: phpseclib 3.0.41 `[4] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.41>`__ 
+* ports: unbound 1.21.0 `[5] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-21-0>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.7.1 (August 08, 2024)
 --------------------------------------------------------------------------
 
