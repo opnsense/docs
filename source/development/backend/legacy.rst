@@ -68,17 +68,19 @@ Configure
 The configure plugin can be used to catch certain events, such as :code:`bootup`, :code:`newwanip` and others.
 
 A small sample of a registration is shown below, which registers the functions :code:`myplugin_configure()` on bootup
-and :code:`myplugin_configure()_vpn` on vpn state change where the latter is accepting two (2) parameters at most.
-
+and :code:`myplugin_configure()_vpn` on vpn state change where the latter is accepting two (:2) parameters at most.
+Note that the default number of arguments passed to the listeners is one (:1) which is the :code:`$verbose`  parameter
+steering whether the function is allowed to print progress or not.  The maximum number of arguments passed depends
+on the particular event provider.  For more details see below.
 
 ::
 
     function myplugin_configure()
     {
-        return array(
-            'bootup' => array('myplugin_configure')
-            'vpn' => array('myplugin_configure_vpn:2')
-        );
+        return [
+            'bootup' => ['myplugin_configure'],
+            'vpn' => ['myplugin_configure_vpn:2'],
+        ];
     }
 
 
@@ -98,8 +100,15 @@ early                        Early in bootup process, before normal services are
                              (things like ssh and the webconfigurator use this spot)
 bootup                       Bootup, normal legacy service configuration, when not using the :code:`rc(8)` system
                              (for example: unbound, ntpd)
-newwanip                     Triggered after configuration of a new interface address, expects a maximum of two positional
-                             parameters (:code:`$verbose` and :code:`$interface`).
+newwanip (deprecated)        Triggered after configuration of a dynamic interface address, expects a maximum of two positional
+                             parameters (:code:`$verbose` and :code:`$interface`). This event is deprecated and scheduled for
+                             removal.
+newwanip_map                 Triggered after configuration of a dynamic interface address, expects a maximum of three positional
+                             parameters (:code:`$verbose` and :code:`$interfaces` and :code:`$family`). :code:`$interfaces`
+                             is a CSV list of all relevant interfaces that require reloading.  $:code:`family` i the address
+                             family type that triggered the event, either :code:`inet` for IPv4 or :code:`inet6` for IPv6.
+vpn                          Triggered in multiple places that require a reload of the VPN based subsystems, expects a maximum
+                             of two positional parameters (:code:`$verbose` and :code:`$interface`).
 ===========================  =================================================================================
 
 

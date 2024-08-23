@@ -39,7 +39,8 @@ Now the system is booted and events may take place, some of the common integrati
 
 *   :doc:`syshook/carp </development/backend/autorun>`, when a high-availability node changes roles from/to master or backup, these scripts
     are being executed. This offers the ability to prevent client services from connecting when in the wrong mode.
-*   :doc:`plugins/configure/newwanip </development/backend/legacy>` will be triggered after an interface retrieves a new address.
+*   :doc:`plugins/configure/newwanip </development/backend/legacy>` will be triggered after an interface retrieves a dynamic address.
+*   :doc:`plugins/configure/newwanip_map </development/backend/legacy>` will be triggered after an interface retrieves a dynamic address.
 *   :doc:`plugins/interface </development/backend/legacy>`  handles dynamic registration of new (virtual) interfaces.
 *   :doc:`plugins/syslog </development/backend/legacy>` registers syslog facilities
 *   :doc:`plugins/xmlrpc </development/backend/legacy>` registers configuration synchronisation points.
