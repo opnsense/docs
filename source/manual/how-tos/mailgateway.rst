@@ -97,7 +97,7 @@ If your system settings differ from your system settings, you may override them 
 For example overriding the hostname makes sense because you may want to use the hostname
 which has been configured as the MX host in the DNS.
 
-You shhould keep the checkboxes at the bottom enabled as they enable restrictions, which provide an additional layer of security.
+You should keep the checkboxes at the bottom enabled as they enable restrictions, which provide an additional layer of security.
 
 Save the changes and switch to `Antispam` tab.
 
