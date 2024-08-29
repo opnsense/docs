@@ -8,7 +8,7 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *290* releases leading to the latest version *24.7.2*
+As of January 2015 there have been *291* releases leading to the latest version *24.7.3*
 named "Thriving Tiger".
 
 

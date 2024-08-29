@@ -31,6 +31,62 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.7.3 (August 29, 2024)
+--------------------------------------------------------------------------
+
+
+Today we are switching pf stateful tracking of ICMPv6 neighbour discoveries
+off in order to fix the previous instability with the FreeBSD security
+advisory first shipped in 24.7.1.  We do this in order to provide the same
+reliable IPv6 functionality that was on all previous versions prior to
+24.7.1 at the cost of resurfacing CVE-2024-6640 until a better solution
+has been devised.  A link to the long and difficult upstream bug report is
+included below.
+
+But that is not all.  The GUI gains snapshot support on ZFS installations by
+implementing what is called "boot environments" which allows one to move
+seamlessly from one snapshot to another via reboot.  This functionality can
+also be accessed from the boot loader menu option "8" for a quick recovery
+ensuring that at least one other snapshot was created to boot into.  A very
+special thank you to Sheridan Computers for contributing this feature.
+
+Here are the full patch notes:
+
+* system: add snapshots (boot environments) support via MVC/API (contributed by Sheridan Computers)
+* system: remove obsolete dashboard sync
+* system: compact services widget on dashboard
+* system: convert lock mode to edit mode on dashboard
+* system: link certificates by subject on import
+* system: unify how log search clauses work and add a search time constraint
+* system: move to static imports for widget base classes on dashboard
+* system: fix ACL check on dashboard restore and add safety check for save action
+* system: change dashboard modify buttons to a bootstrap group (contributed by Jaka Prašnikar)
+* interfaces: add "newwanip_map" event and deprecate old "newwanip" one
+* interfaces: keep 24.7 backwards compatibility by allowing 6RD and 6to4 on PPP
+* interfaces: add logging to PPP link scripts to check for overlap
+* interfaces: return correct uppercase interface name in getArp()
+* interfaces: fix issue with PPP port not being posted
+* dhcrelay: start on "newwanip_map" event as well
+* intrusion detection: update the default suricata.yaml (contributed by Jim McKibben)
+* ipsec: move two logging settings to correct location misplaced in previous version
+* ipsec: fix migration and regression during handling of "disablevpnrules" setting
+* wireguard: support CARP VHID reuse on different interfaces
+* mvc: when a hint is provided, also show them for selectpickers
+* rc: fix banner HTTPS fingerprint
+* plugins: os-ddclient 1.24 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-theme-advanced 1.0 based on AdvancedTomato (contributed by Jaka Prašnikar)
+* plugins: os-theme-cicada 1.38 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.48 (contributed by Team Rebellion)
+* plugins: os-upnp 1.6 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/net/upnp/pkg-descr>`__ 
+* plugins: os-wol 2.5 adds widget for new dashboard (contributed by Michał Brzeziński)
+* src: pf: fully annotated patch of disabling ND state tracking and issues for ICMPv6 `[3] <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=280701>`__ 
+* src: u3g: add SIERRA AC340U
+* ports: dhcrelay 1.0 switches to official release numbering, but otherwise equal to 0.6
+* ports: sqlite 3.46.1 `[4] <https://sqlite.org/releaselog/3_46_1.html>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.7.2 (August 21, 2024)
 --------------------------------------------------------------------------
 
@@ -295,7 +351,7 @@ A hotfix release was issued as 24.7_9:
 Migration notes, known issues and limitations:
 
 * The dashboard has been replaced. Widgets from the old format are no longer supported and need to be rewritten by the respective authors.
-* ISC DHCP will no longer reload DNS services on static mapping edits. This is for feature parity with Kea DHCP and avoiding cross-service complications. If you expect your static mappings to show up in a DNS service please restart it manually.
+* ISC DHCP will no longer reload DNS services on static mapping edits. This is for feature parity with Kea DHCP and avoiding cross-service complications. If you expect your static mappings to show up in a particular DNS service please restart this service manually.
 
 The public key for the 24.7 series is:
 
@@ -366,7 +422,7 @@ Here are the full changes against version 24.7-RC1:
 Migration notes, known issues and limitations:
 
 * The dashboard has been replaced. Widgets from the old format are no longer supported and need to be rewritten by the respective authors.
-* ISC DHCP will no longer reload DNS services on static mapping edits. This is for feature parity with Kea DHCP and avoiding cross-service complications. If you expect your static mappings to show up in a DNS service please restart it manually.
+* ISC DHCP will no longer reload DNS services on static mapping edits. This is for feature parity with Kea DHCP and avoiding cross-service complications. If you expect your static mappings to show up in a particular DNS service please restart this service manually.
 
 The public key for the 24.7 series is:
 
@@ -457,7 +513,7 @@ Here are the full changes against version 24.1.10:
 Migration notes, known issues and limitations:
 
 * The dashboard has been replaced. Widgets from the old format are no longer supported and need to be rewritten by the respective authors.
-* ISC DHCP will no longer reload DNS services on static mapping edits. This is for feature parity with Kea DHCP and avoiding cross-service complications. If you expect your static mappings to show up in a DNS service please restart it manually.
+* ISC DHCP will no longer reload DNS services on static mapping edits. This is for feature parity with Kea DHCP and avoiding cross-service complications. If you expect your static mappings to show up in a particular DNS service please restart this service manually.
 
 
 
