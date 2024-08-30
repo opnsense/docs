@@ -84,6 +84,10 @@ Here are the full patch notes:
 * ports: dhcrelay 1.0 switches to official release numbering, but otherwise equal to 0.6
 * ports: sqlite 3.46.1 `[4] <https://sqlite.org/releaselog/3_46_1.html>`__ 
 
+A hotfix release was issued as 24.7.3_1:
+
+* intrusion detection: fix indent in suricata.yaml
+
 
 
 --------------------------------------------------------------------------
