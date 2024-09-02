@@ -224,9 +224,8 @@ Setup pfSync and HA sync (xmlrpc)
 First we should configure pfSync to synchronize the connection state tables and
 HA sync (xmlrpc) on the master firewall. Go to
 :menuselection:`System --> High Availability --> Settings` and enable pfSync by
-activating the `Synchronize States` checkbox, selecting PFSYNC for the
-`Synchronize Interface` and enter the peer IP (10.0.0.2) in the field
-`Synchronize Peer IP`.
+selecting PFSYNC from the `Synchronize all states via` dropdown and enter the
+peer IP (10.0.0.2) in the field `Synchronize Peer IP`.
 
 To synchronize the configuration settings from the master to the backup
 firewall, we setup the XMLRPC sync. In the `Synchronize Config to IP` field
