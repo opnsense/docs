@@ -493,14 +493,6 @@ Which will output a json structure in your browser like:
     The outer container is named "helloworld" and contains all fields defined in the model.
 
 
-
-to add a method to the
-SettingsController to fetch the data from our configuration (or provide
-the defaults if there is no content).
-
-We start by adding the model to our SettingsController, by adding this
-in the “use” section:
-
 .. Note::
 
       :code:`ApiMutableModelControllerBase` contains more shared functionality for grid like operations as well, most of
