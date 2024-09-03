@@ -164,7 +164,7 @@ modules/application.
 .. Note::
 
     When stored data has derivatives, the model is usually the place to build these. Good examples are
-    a flag to figure out if a service is enabled in cases where it depends on structures inside the date.
+    a flag to figure out if a service is enabled in cases where it depends on structures inside the data.
     (such as a list of interfaces which can all be enabled and/or disabled)
 
 Which is the model XML template, our skeleton starts with something like
@@ -465,8 +465,6 @@ it should return the data.  For this we add two lines to the controller created 
 
 The :code:`$internalModelClass` creates the model for you, so you don't have to create one manually (and define get and
 set actions), :code:`$internalModelName` names the response container.
-
-You can test the result by going to:
 
 You can test the result (while logged in as root), by going to this address:
 
