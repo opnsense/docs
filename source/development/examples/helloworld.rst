@@ -96,7 +96,6 @@ Here is the directory structure and the files which will get created:
       |       |       ├── Api/
       |       |       |   ├── ServiceController.php
       |       |       |   ├── SettingsController.php
-      |       |       |   └── SimplifiedSettingsController.php
       |       |       └── forms/
       |       |           └── general.xml
       |       ├── models/
