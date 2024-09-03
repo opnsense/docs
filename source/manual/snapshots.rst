@@ -15,7 +15,7 @@ These *Snapshots* leverage ZFS features, making them space-efficient and easy to
 
 The *Snapshots* are differential. A new *Snapshot* is always the latest current running state. This means, there are no incremental *Snapshot* chains, as seen in other implementations such as Hypervisors.
 
-.. Note:: Each Snapshot can be created and deleted as its own self contained entity with no other dependencies. For practical reasons, it is recommended to keep no more than two *Snapshots*. Snapshots can use a considerable amount of space if they are not cleaned up after use.
+.. Note:: Each *Snapshot* can be created and deleted as its own self contained entity with no other dependencies. The size of each *Snapshot* will grow over time as the distance in bytes between the current *active Snapshot* and all stored *non-active Snapshots* grow.
 
 .. _snapshot-recommended-workflow:
 
@@ -24,19 +24,18 @@ The *Snapshots* are differential. A new *Snapshot* is always the latest current 
 Recommended Workflow
 --------------------
 
-#. Create a new Snapshot
-#. Activate the new Snapshot
+#. Create a new Snapshot with the name ``known-good``
 #. Do administrative changes (e.g. firmware upgrade)
 #. Reboot and test the changes:
 
 * OPNsense works as expected: 
-    * Remove the old *default* Snapshot
-    * Rename the current active Snapshot to *default*
+    * Remove the **known-good** *Snapshot* and keep using the **default** *Snapshot*
 * OPNsense has issues: 
-    * Select the old *default* Snapshot in the Boot Menu
-    * After booting, delete the known faulty Snapshot
+    * Activate the **known-good** *Snapshot*  either in the WebGUI or the Boot Menu
+    * After rebooting, remove the bad **default** *Snapshot*
+    * Rename the **known-good** *Snapshot* back to **default**
 
-.. Tip:: This workflow ensures that the *default Snapshot* is always the *last known good state*.
+.. Tip:: *Snapshots* can also be used to safeguard against regressions introduced in configuration changes. Creating a new snapshot and activating it immediately, will make the system roll back automatically to the *last known good configuration* on reboot or power cycle.
 
 
 --------
@@ -66,28 +65,33 @@ Creating a Snapshot
 *******************
 
 * | Go to :menuselection:`System --> Snapshots`
-* | Select **+** to create a new *Snapshot*, use the default name
-* | Activate the new *Snapshot* by clicking **✓** next to it
-* | The OPNsense will write all future changes to the new Snapshot, marked as **Active R**
+* | Select **+** to create a new *Snapshot*, use ``known-good`` as name
 
-
-At this point, upgrade the OPNsense to a new version. These changes will all happen in the new Snapshot, leaving the *default* Snapshot as *last known good state*.
+At this point, upgrade the OPNsense to a new version. These changes will all happen in the current active **default** Snapshot, leaving the **known-good** Snapshot as *last known good configuration*.
 
 
 ******************
 Booting a Snapshot
 ******************
 
-If the upgrade introduced some issues, the *default Snapshot* can be booted from the *OPNsense Boot Menu*.
+If the upgrade introduced some issues, the **known-good** *Snapshot* can be activated from the WebGUI.
 
-.. Note:: If the Hardware Appliance does not have *VGA*, using *Serial* is the best choice to expose the *Boot Menu*.
+* If the WebGUI is available:
 
-* | Boot the OPNsense, at the start of the boot sequence the *Boot Menu* will show up
-* | Press the *Space Bar* to pause it
-* | Press ``8`` to choose ``8. Boot Environments`` which displays the current *Snapshots*
-* | Press ``2`` to select a different *active Snapshot*, it should now display ``zfs:zroot/ROOT/default``
-* | Press ``1`` to go back to the *main menu*
-* | Press ``ENTER`` to select ``1. Boot Multi user [ENTER]``
+    * | Go to :menuselection:`System --> Snapshots`
+    * | Select **✓** to activate the **known-good** *Snapshot*
+    * | Reboot the OPNsense to roll back to the **known-good** *Snapshot*
+
+.. Note:: In some cases, if the OPNsense does not boot to the WebGUI due to a software error, the *Boot Menu* can be used to roll back. If a *Hardware Appliance* does not have VGA, using the serial console is the best alternative.
+
+* If the WebGUI is unavailable:
+
+    * | Boot the OPNsense, at the start of the boot sequence the *Boot Menu* will show up
+    * | Press the *Space Bar* to pause it
+    * | Press ``8`` to choose ``8. Boot Environments`` which displays the current *Snapshots*
+    * | Press ``2`` to select a different *active Snapshot*, it should now display ``zfs:zroot/ROOT/known-good``
+    * | Press ``1`` to go back to the *main menu*
+    * | Press ``ENTER`` to select ``1. Boot Multi user [ENTER]``
 
 .. Tip:: If there are more Snapshots, press ``2`` repeatedly to cycle through them.
 
@@ -96,12 +100,23 @@ If the upgrade introduced some issues, the *default Snapshot* can be booted from
 Deleting a Snapshot
 *******************
 
-Now that the OPNsense has booted to its *last known good state* with the *default Snapshot*, it is time to clean up the *faulty Snapshot*.
+Now that the OPNsense has booted either the **known-good** *Snapshot* or the **default** *Snapshot*, it is time to clean up to ensure a clear current system state.
 
-* | Go to :menuselection:`System --> Snapshots`
-* | Check that the *default Snapshot* is *Active N*
-* | Press **✓** next to the *default Snapshot* so it is marked as *Active NR*
-* | Press **🗑** next to the Snapshot that is currently *Active -*
-* | At this point, the OPNsense is correctly configured back to the old *default* Snapshot state, marked as **Active NR**
+* If the upgrade succeeded and **default** has been booted:
 
-.. Note:: :ref:`Creating a Snapshot <snapshot-creating>` can be repeated to retry the major upgrade. For other scenarios, refer to the :ref:`Recommended Workflow <snapshot-recommended-workflow>` for a quick overview.
+    * | Go to :menuselection:`System --> Snapshots`
+    * | Check that the **default** *Snapshot* is *Active NR*
+    * | Press **🗑** to delete the **known-good** *Snapshot*
+
+* If the upgrade failed and **known-good** has been booted:
+
+    * | Go to :menuselection:`System --> Snapshots`
+    * | Check that the **known-good** *Snapshot* is *Active NR*
+    * | Press **🗑** to delete the **default** *Snapshot*
+    * | Press **✎** to rename the **known-good** *Snapshot* to **default**
+
+At this point, the OPNsense is correctly configured at the *last known good configuration* state.
+
+.. Tip:: Snapshots can be kept for a while after an upgrade, to have the option to roll back after a few days of testing in production. Please note that all configuration changes in that time will be lost when rolling back, so creating a configuration backup and importing it into the old system state can become a necessity.
+
+.. Note:: :ref:`Creating a Snapshot <snapshot-creating>` can be repeated to retry the major upgrade. Refer to the :ref:`Recommended Workflow <snapshot-recommended-workflow>` for a quick overview.
