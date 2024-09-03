@@ -31,7 +31,7 @@ Recommended Workflow
 * OPNsense works as expected: 
     * Remove the **known-good** *Snapshot* and keep using the **default** *Snapshot*
 * OPNsense has issues: 
-    * Activate the **known-good** *Snapshot*  either in the WebGUI or the Boot Menu
+    * Activate the **known-good** *Snapshot* either in the WebGUI or the Boot Menu
     * After rebooting, remove the bad **default** *Snapshot*
     * Rename the **known-good** *Snapshot* back to **default**
 
