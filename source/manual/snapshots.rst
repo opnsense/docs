@@ -4,9 +4,11 @@ Snapshots
 
 .. contents:: Index
 
+
 --------------
 Quick Overview
 --------------
+
 *Snapshots* capture the base system at a given moment. They're useful for administration, as they introduce a fallback boot option when more risky operations like major upgrades or experimental configurations fail. If something goes wrong, it is quite simple to roll back to the previous working state.
 
 These *Snapshots* leverage ZFS features, making them space-efficient and easy to manage. During the boot process, the latest and previous saved *Snapshots* can be chosen with *Option 8*, effectively switching between different system states.
