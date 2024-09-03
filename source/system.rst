@@ -25,7 +25,7 @@ activities.
    manual/hacarp
    manual/routes
    manual/settingsmenu
-   manual/boot_environment.rst
+   manual/snapshots.rst
    manual/certificates
    manual/logging_system
    manual/diagnostics_system
