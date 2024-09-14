@@ -156,7 +156,7 @@ Here are the full patch notes:
 * ports: libxml 2.11.8 `[8] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: lighttpd 1.4.76 `[9] <https://www.lighttpd.net/2024/4/12/1.4.76/>`__ 
 * ports: ntp 4.2.8p18 `[10] <https://www.ntp.org/support/securitynotice/4_2_8-series-changelog/#428p18>`__ 
-* ports: openssl 3.0.14 `[11] <https://www.openssl.org/news/cl30.txt>`__ 
+* ports: openssl 3.0.14 `[11] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: pecl-mcrypt 1.0.7
 * ports: phalcon 5.7.0 `[12] <https://github.com/phalcon/cphalcon/releases/tag/v5.7.0>`__ 
 * ports: php 8.2.19 `[13] <https://www.php.net/ChangeLog-8.php#8.2.19>`__ 
@@ -410,7 +410,7 @@ Here are the full patch notes:
 * ports: nss 3.99 `[22] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_99.html>`__ 
 * ports: openldap 2.6.7 `[23] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: openssh-portable 9.7p1 `[24] <https://www.openssh.com/txt/release-9.7>`__ 
-* ports: openssl 3.0.13 `[25] <https://www.openssl.org/news/cl30.txt>`__ 
+* ports: openssl 3.0.13 `[25] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openssl fix for CVE-2024-2511 `[26] <https://github.com/freebsd/freebsd-ports/commit/3d9fc064b7>`__ 
 * ports: openvpn 2.6.10 `[27] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.10>`__ 
 * ports: pcre2 10.43 `[28] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.43>`__ 

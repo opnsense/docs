@@ -123,7 +123,7 @@ Here are the full patch notes:
 * ports: krb5 1.20 `[8] <https://web.mit.edu/kerberos/krb5-1.20/>`__ 
 * ports: lighttpd 1.4.65 `[9] <https://www.lighttpd.net/2022/6/7/1.4.65/>`__ 
 * ports: nss 3.79 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_79.html>`__ 
-* ports: openssl 1.1.1q `[11] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1q `[11] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.5.7 `[12] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.7>`__ 
 * ports: php 7.4.30 `[13] <https://www.php.net/ChangeLog-7.php#7.4.30>`__ 
 * ports: py-certifi 2022.5.18.1
@@ -493,7 +493,7 @@ Here are the full patch notes:
 * ports: monit 5.30.0 `[28] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.76 `[29] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_76.html>`__ 
 * ports: openssh 8.9p1 `[30] <https://www.openssh.com/txt/release-8.9>`__ 
-* ports: openssl 1.1.1n `[31] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1n `[31] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.5.6 `[32] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.6>`__ 
 * ports: pcre / pcre2 enable JIT support
 * ports: pecl-psr 1.2.0 `[33] <https://pecl.php.net/package-changelog.php?package=psr&release=1.2.0>`__ 
@@ -510,7 +510,7 @@ A hotfix release was issued as 22.4_2:
 * interfaces: include VIPS for primary IPv4 detection
 * mvc: prevent silent crashes in legacy XML attribute emulation
 * ports: curl 7.83.0 `[41] <https://curl.se/changes.html#7_83_0>`__ 
-* ports: openssl 1.1.1o `[42] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1o `[42] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 
 Known issues and limitations:
 

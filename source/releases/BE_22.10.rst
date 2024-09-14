@@ -36,7 +36,7 @@ Here are the full patch notes:
 * src: fix sdhci broken write-protect settings `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:02.sdhci.asc>`__ 
 * src: import tzdata 2022g `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:01.tzdata.asc>`__ 
 * src: x86: ignore stepping for APL30 errata
-* ports: openssl 1.1.1t `[6] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1t `[6] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 
 A hotfix release was issued as 22.10.2_1:
 
@@ -158,7 +158,7 @@ Here are the full patch notes:
 * ports: krb5 1.20.1 `[16] <https://web.mit.edu/kerberos/krb5-1.20/>`__ 
 * ports: libxml 2.10.3 `[17] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nss 3.87 `[18] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_87.html>`__ 
-* ports: openssl 1.1.1s `[19] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1s `[19] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.5.8 `[20] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.8>`__ 
 * ports: pcre 10.42 `[21] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.42>`__ 
 * ports: phalcon 5.1.4 `[22] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.4>`__ 

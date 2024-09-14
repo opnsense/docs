@@ -74,7 +74,7 @@ Here are the full patch notes:
 * plugins: os-telegraf 1.12.5 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/net-mgmt/telegraf/pkg-descr>`__ 
 * ports: curl 7.84.0 `[4] <https://curl.se/changes.html#7_84_0>`__ 
 * ports: nss 3.80 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_80.html>`__ 
-* ports: openssl 1.1.1q `[6] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1q `[6] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: phalcon 5.0.0RC2 `[7] <https://github.com/phalcon/cphalcon/releases/tag/v5.0.0RC2>`__ 
 * ports: py-vici 5.9.3
 * ports: python 3.9.13 `[8] <https://docs.python.org/release/3.9.13/whatsnew/changelog.html>`__ 
@@ -239,7 +239,7 @@ Here are the full patch notes:
 * plugins: os-zabbix-proxy 1.8 `[6] <https://github.com/opnsense/plugins/blob/stable/22.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
 * ports: curl 7.83.0 `[7] <https://curl.se/changes.html#7_83_0>`__ 
 * ports: nss 3.78 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_78.html>`__ 
-* ports: openssl 1.1.1o `[9] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1o `[9] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: pcre2 10.40 `[10] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.40>`__ 
 * ports: php 7.4.29 `[11] <https://www.php.net/ChangeLog-7.php#7.4.29>`__ 
 * ports: pkg 1.17.5 `[12] <https://github.com/freebsd/freebsd-ports/commit/18793d10585f>`__ 
@@ -371,7 +371,7 @@ Here are the full patch notes:
 * src: debugnet: remove spurious message on boot
 * ports: ca_root_nss fix for faulty upstream file linking
 * ports: libressl 3.3.6 `[4] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.6-relnotes.txt>`__ 
-* ports: openssl 1.1.1n `[5] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1n `[5] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.5.6 `[6] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.6>`__ 
 
 A hotfix release was issued as 22.1.4_1:
@@ -770,7 +770,7 @@ Here are the full patch notes against version 21.7.7:
 * ports: hostapd 2.10 `[15] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
 * ports: lighttpd 1.4.63 `[16] <https://www.lighttpd.net/2021/12/4/1.4.63/>`__ 
 * ports: nss 3.74 `[17] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_74.html>`__ 
-* ports: openssl 1.1.1m `[18] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1m `[18] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.5.5 `[19] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.5>`__ 
 * ports: pecl-psr 1.2.0 `[20] <https://pecl.php.net/package-changelog.php?package=psr&release=1.2.0>`__ 
 * ports: phalcon 4.1.3 `[21] <https://github.com/phalcon/cphalcon/releases/tag/v4.1.3>`__ 
@@ -1007,7 +1007,7 @@ Here are the full patch notes against 21.7.7:
 * ports: flock 2.37.2
 * ports: lighttpd 1.4.63 `[13] <https://www.lighttpd.net/2021/12/4/1.4.63/>`__ 
 * ports: nss 3.73.1 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_73_1.html>`__ 
-* ports: openssl 1.1.1m `[15] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1m `[15] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.5.5 `[16] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.5>`__ 
 * ports: phalcon 4.1.3 `[17] <https://github.com/phalcon/cphalcon/releases/tag/v4.1.3>`__ 
 * ports: php 7.4.27 `[18] <https://www.php.net/ChangeLog-7.php#7.4.27>`__ 

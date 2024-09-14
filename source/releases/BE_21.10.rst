@@ -55,7 +55,7 @@ Here are the full patch notes:
 * ports: hostapd 2.10 `[12] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
 * ports: lighttpd 1.4.63 `[13] <https://www.lighttpd.net/2021/12/4/1.4.63/>`__ 
 * ports: nss 3.74 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_74.html>`__ 
-* ports: openssl 1.1.1m `[15] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1m `[15] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.5.5 `[16] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.5>`__ 
 * ports: php 7.4.27 `[17] <https://www.php.net/ChangeLog-7.php#7.4.27>`__ 
 * ports: sqlite 3.37.2 `[18] <https://sqlite.org/releaselog/3_37_2.html>`__ 

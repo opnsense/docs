@@ -568,7 +568,7 @@ Here are the full patch notes:
 * plugins: os-tinc adds missing subnet-down script (contributed by andrewhotlab)
 * ports: curl 8.3.0 `[1] <https://curl.se/changes.html#8_3_0>`__ 
 * ports: nss 3.93 `[2] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_93.html>`__ 
-* ports: openssl 1.1.1w `[3] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1w `[3] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: phalcon 5.3.1 `[4] <https://github.com/phalcon/cphalcon/releases/tag/v5.3.1>`__ 
 * ports: phpseclib 3.0.23 `[5] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.23>`__ 
 * ports: sqlite 3.43.1 `[6] <https://sqlite.org/releaselog/3_43_1.html>`__ 
@@ -789,7 +789,7 @@ Here are the full patch notes:
 * ports: curl 8.2.1 `[5] <https://curl.se/changes.html#8_2_1>`__ 
 * ports: dnspython 2.4.1
 * ports: nss 3.92 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_92.html>`__ 
-* ports: openssl 1.1.1v `[7] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1v `[7] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: perl 5.34.1 `[8] <https://perldoc.perl.org/5.34.1/perldelta>`__ 
 * ports: strongswan 5.9.11 `[9] <https://github.com/strongswan/strongswan/releases/tag/5.9.11>`__ 
 * ports: syslog-ng 4.3.1 `[10] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.3.1>`__ 

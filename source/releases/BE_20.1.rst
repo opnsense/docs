@@ -302,7 +302,7 @@ Here are the full patch notes:
 * ports: curl 7.69.1 `[15] <https://curl.se/changes.html#7_69_1>`__ 
 * ports: krb5 1.18 `[16] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
 * ports: openssh 8.2p1 `[17] <https://www.openssh.com/txt/release-8.2>`__ 
-* ports: openssl 1.1.1f `[18] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1f `[18] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: perl 5.30.2 `[19] <https://perldoc.perl.org/5.30.2/perldelta>`__ 
 * ports: php 7.2.29 `[20] <https://www.php.net/ChangeLog-7.php#7.2.29>`__ 
 * ports: python 3.7.7 `[21] <https://docs.python.org/release/3.7.7/whatsnew/changelog.html>`__ 
@@ -580,7 +580,7 @@ Here are the full patch notes against 19.7.9_1:
 * plugins: os-zabbix-agent 1.7 `[3] <https://github.com/opnsense/plugins/pull/1578>`__  `[4] <https://github.com/opnsense/plugins/pull/1618>`__ 
 * ports: ca_root_nss 3.49.1
 * ports: curl 7.68.0 `[5] <https://curl.se/changes.html#7_68_0>`__ 
-* ports: openssl 1.1.1d `[6] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1d `[6] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 
 Known issues and limitations:
 

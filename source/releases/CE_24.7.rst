@@ -31,6 +31,83 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.7.4 (September 12, 2024)
+--------------------------------------------------------------------------
+
+
+Since we are currently having a vivid discussion about what constitutes
+a downstream or upstream issue in the FreeBSD scope we will revert the
+FreeBSD-SA-24:05.pf advisory until further notice.  As confirmed by many
+users this brings ICMPv6 and therefore IPv6 back to an uneventful stable
+state.  We will be trying to work with FreeBSD on the issue as it seems
+unavoidable that we meet it again when working on FreeBSD 14.2 inclusion.
+
+In other IPv6 news we found a strange regression in dhcp6c introduced in
+24.7.2 and reverted the offending commits for now.  What this tells us,
+though, is that we did uncover an inherent issue with the timeout value
+generation that may be present since two decades in the code at least.
+
+Apart from smaller fixes for the dashboard, trust pages, this update
+also ships the first backwards-compatible PPP rework patch.  The ultimate
+goal here is to offer IPv6-only connectivity which requires untangling
+old code to be IP family agnostic.  Should you note any change in behaviour
+please do not hesitate to contact us.
+
+BTW, the roadmap for 25.1 has been decided and will be published soon.
+
+Here are the full patch notes:
+
+* system: recover stuck monitors and offer a cron job
+* system: use built-in controller logic for JSON decoding on dashboard
+* system: map derivative field cert_type to expose purpose to the UI
+* system: handle stale "pfsyncinterfaces" and improve workflow
+* system: tweak the boot detection for code minimalism
+* system: do not save x/y widget coordinates on smaller screens
+* system: fix CARP widget on invalid CARP configuration
+* system: fix storing private key when creating a CSR
+* reporting: remove nonexistent 3G statistics
+* interfaces: force regeneration of link-local on spoofed MAC
+* interfaces: add proper validation for 6RD and 6to4
+* interfaces: add new "vpn_map" event to deprecate "vpn"
+* interfaces: unify PPP linkup/linkdown scripting
+* interfaces: replace "newwanip" from interface apply with "early"
+* interfaces: move IPv6 over IPv4 connectivity to a separate script
+* interfaces: port VXLAN to newwanip_map event
+* firewall: replace filter_(un)lock() with a FileObject lock
+* isc-dhcp: allow to disable a DHCPv6 server with faulty settings
+* firmware: remove auto-retry from fetch invokes
+* firmware: allow auto-configure patching via full URL
+* firmware: automatically handle most plugin conflicts
+* openssh: convert to newwanip_map and rework the code
+* openvpn: add username field to the status page
+* openvpn: add close-on-exec flag to service lock file
+* unbound: add discard-timeout (contributed by Nigel Jones)
+* wireguard: fix widget display with public key reuse
+* wireguard: add close-on-exec flag to service lock file
+* ui: allow style tag on headers
+* plugins: os-helloworld 1.4
+* plugins: os-caddy 1.7.0 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* src: revert FreeBSD-SA-24:05.pf until further notice to restore proper IPv6 behaviour `[2] <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=280701>`__ 
+* src: agp: Set the driver-specific field correctly
+* src: cron(8) / periodic(8) session login `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-24:15.calendar.asc>`__ 
+* src: multiple vulnerabilities in libnv `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:09.libnv.asc>`__ 
+* src: bhyve(8) privileged guest escape via TPM device passthrough `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:10.bhyve.asc>`__ 
+* src: multiple issues in ctl(4) CAM target layer `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:11.ctl.asc>`__ 
+* src: bhyve(8) privileged guest escape via USB controller `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:12.bhyve.asc>`__ 
+* src: possible DoS in X.509 name checks in OpenSSL `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:13.openssl.asc>`__ 
+* src: umtx kernel panic or use-after-free `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:14.umtx.asc>`__ 
+* src: revert "ixl: fix multicast filters handling" `[10] <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=281125>`__ 
+* ports: dhcp6c 20240907 for now reverts instability regression in random number handling
+* ports: openssl 3.0.15 `[11] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+* ports: php 8.2.23 `[12] <https://www.php.net/ChangeLog-8.php#8.2.23>`__ 
+
+A hotfix release was issued as 24.7.4_1:
+
+* interfaces: fix PPP regression of empty gateway default
+
+
+
+--------------------------------------------------------------------------
 24.7.3 (August 29, 2024)
 --------------------------------------------------------------------------
 
