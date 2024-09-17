@@ -76,7 +76,7 @@ After installation, the module itself should be enabled by default.
 In order to use the integrated ACME client (for Let's Encrypt), the ACME enable checkbox needs to be set, the certificate agreement needs to be accepted
 (next checkbox) and contact email needs to be specified.
 
-Optionally a permanent redirect from HTTP to HTTPS can be enabled for all virtual servers (available as of 24.4.3).
+Optionally a permanent redirect from HTTP to HTTPS can be enabled for all virtual servers.
 The HTTP port can be customized if necessary by enabling the advanced mode.
 Do not forget to create an additional firewall rule to allow access to the HTTP Port. When it is non standard, a port forward is necessary
 (e.g., listen on 8080, forward 80 to 8080).
@@ -101,7 +101,7 @@ which defines the virtual servers.
 Option                           Description
 ================================ ========================================================================================
 Enabled                          Enable this virtual server.
-LogLevel                         (advanced mode) Log verbosity level (available as of 24.4.2)
+LogLevel                         (advanced mode) Log verbosity level
 ServerName                       Fully qualified hostname for this server.
 Port                             Port number this vhost will listen on, can easily be combined with firewall nat rules
                                  to map traffic to non standard ports when origination from remote destinations.
@@ -132,7 +132,7 @@ TLS Security profile             TLS security profile as documented by
                                  `Mozilla <https://wiki.mozilla.org/Security/Server_Side_TLS>`__
 Disable Security Rules by ID     Select one or multiple Web Protection rules to disable via their IDs. This can help to
                                  selectively disable rules that cause false positives, without disabling the
-                                 Web Protection completely. (available as of 24.4.3)
+                                 Web Protection completely.
 Web Protection                   When Web Protection is enabled for the host you may disable it for specific
                                  destinations here, or set it to detection only for logging purposes.
 ================================ ========================================================================================
@@ -143,9 +143,8 @@ be 443 or the traffic should be forwarded from port 443 to the port defined here
 
 .. Note::
 
-    Port numbers don't have to be unique when more virtual servers are defined as the hostname correctly identifies the
-    location. Yet, there can't be duplicate hostnames, these have to be unique.
-
+    Port numbers can be reused. Multiple virtual servers can share the same port.
+    Hostnames must be unique. They are used to identify the virtual server via SNI (Server Name Indication).
 
 .. Warning::
 
@@ -166,7 +165,7 @@ the Virtual servers.
 There are two different modes for locations:
 
 #. | ProxyPass, which Reverse Proxies the HTTP traffic
-#. | Redirect, which creates a HTTP redirect (available as of 24.10)
+#. | Redirect, which creates a HTTP redirect
 
 
 ProxyPass
@@ -180,26 +179,25 @@ VirtualServer                    The server this location belongs to
 Path                             Path of the HTTP request to match (e.g. :code:`/` for all paths). You can also create
                                  multiple location entries, each with their own specific path (e.g. :code:`/docs`).
                                  They will be processed in the order of their creation.
-Type                             Controls if its a ProxyPass or Redirect (available as of 24.10)
+Type                             Controls if its a ProxyPass or Redirect
 Remote destinations              Locations to forward requests to, when more than one is provided, requests will be
                                  loadbalanced in a round robin fashion. Supports :code:`http`, :code:`https`, :code:`ws`
                                  and :code:`wss` destinations.
                                  When your webapp uses websockets and https requests, use :code:`wss://`
-                                 (available as of 22.10.1)
 Access control                   List of networks allowed to access this path (empty means any)
 Description                      User friendly description for this location
 **Proxy Options**
 TLS header passthrough           Select which headers to passthrough to the client, all headers will be prefixed with
                                  X- to distinct them more easily from the applications perspective. The original headers
                                  use underscores (_) these will be replaced for minus (-) signs to prevent applications
-                                 dropping them. (available as of 24.4.2)
+                                 dropping them.
 Preserve Host                    When enabled, this option will pass the Host: line from the incoming request to the
                                  proxied host, instead of the hostname specified in the location. This option should
                                  normally be turned Off. It is mostly useful in special configurations like proxied mass
                                  name-based virtual hosting, where the original Host header needs to be evaluated by the
-                                 backend server. (available as of 24.4.2)
+                                 backend server.
 Connection timeout               Connect timeout in seconds. The number of seconds the server waits for the creation
-                                 of a connection to the backend to complete. (available as of 24.4.2)
+                                 of a connection to the backend to complete.
 ================================ ========================================================================================
 
 
@@ -227,7 +225,7 @@ VirtualServer                    The server this location belongs to
 Path                             Path of the HTTP request to match (e.g. :code:`/` for all paths). You can also create
                                  multiple location entries, each with their own specific path (e.g. :code:`/docs`).
                                  They will be processed in the order of their creation.
-Type                             Controls if its a ProxyPass or Redirect (available as of 24.10)
+Type                             Controls if its a ProxyPass or Redirect
 HTTP redirection message         Choose the HTTP redirection message. The default is 307, but others like 301 and 308 are
                                  also available.
 Remote destinations              Locations to redirect requests to, only one is allowed per location per redirect
@@ -262,7 +260,7 @@ This should show a page similar to the one below:
     :width: 50%
 
 
-When deploying web protection for virtual servers, it is a good idea to start with the `Detection Only` setting that can be set per virtual server.
+When deploying web protection for virtual servers, start with the `Detection Only` setting that can be set per virtual server.
 This way, you can evaluate the `Web Security` log file, and look for rules that match.
 
 This will reveal if the web application might be outdated and needs patching, because several web protection rules match
@@ -275,6 +273,7 @@ After this configuration, set the Web Protection to `On (default)` to enable it.
 If there are still errors, repeat the above steps.
 
 .. Attention::
+
     Do not exclude too many rules. These matches could be a potential misconfiguration of the web application behind the WAF. Only exclude rules
     that totally break the functionality of the web application.
 
@@ -286,11 +285,11 @@ These servers have specific requirements to work through a WAF. They need an ext
 
 A popular example for a WebDAV Server is Nextcloud or Owncloud.
 
-Go to the `Web Protection` Settings, and set the `Allowed HTTP Verbs` (available as of 24.4.3) to:
+Go to the `Web Protection` Settings, and set the `Allowed HTTP Verbs` to:
 
 `COPY, DELETE, GET, HEAD, LOCK, MKCOL, MOVE, OPTIONS, POST, PROPFIND, PROPPATCH, PUT, TRACE, UNLOCK`.
 
-To allow large file uploads, set `Request Body Limit Action` (available as of 24.10) to `Process Partial`.
+To allow large file uploads, set `Request Body Limit Action` to `Process Partial`.
 If you want to process as much content of the file as possible, enable the
 `advanced mode` and set custom values for the `Request Body` and `Response Body` limits.
 
