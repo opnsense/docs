@@ -290,7 +290,7 @@ Go to the `Web Protection` Settings, and set the `Allowed HTTP Verbs` (available
 
 `COPY, DELETE, GET, HEAD, LOCK, MKCOL, MOVE, OPTIONS, POST, PROPFIND, PROPPATCH, PUT, TRACE, UNLOCK`.
 
-To allow large file uploads, set `Request Body Limit Action` (available as of 24.4.3) to `Process Partial`.
+To allow large file uploads, set `Request Body Limit Action` (available as of 24.10) to `Process Partial`.
 If you want to process as much content of the file as possible, enable the
 `advanced mode` and set custom values for the `Request Body` and `Response Body` limits.
 
