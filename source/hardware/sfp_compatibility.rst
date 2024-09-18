@@ -205,4 +205,5 @@ Uptimed   UP-SFP28-SR-CI                 25G
 Vendor    Type                           Speed   Notes
 ========= ============================== ======= =========================
 FlexOptix P.C3025G.H Passive             25G
+FS        SFP-H25G-CU1M                  25G     With Intel compatibility
 ========= ============================== ======= =========================
