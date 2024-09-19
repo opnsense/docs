@@ -1,5 +1,5 @@
-**Orange France IPTV setup**
-============================
+Orange France IPTV setup
+========================
 
 **Original Author:** Kev Willers
 

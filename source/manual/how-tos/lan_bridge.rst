@@ -1,5 +1,5 @@
-**How to set up a LAN Bridge**
-==============================
+LAN Bridge
+==========
 
 **Original Author:** Martin Wasley
 

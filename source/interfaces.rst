@@ -12,7 +12,7 @@ All traffic flowing through your appliance is using (virtual) interfaces, this i
 ----------------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :titlesonly:
 
    manual/interfaces
@@ -26,22 +26,50 @@ All traffic flowing through your appliance is using (virtual) interfaces, this i
    manual/diagnostics_interfaces
    manual/logging_interfaces
 
----------------
-Setup guides
----------------
+
+Setup Guides
+============
+
+IPv6 Guides
+-----------
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :titlesonly:
 
-   manual/how-tos/cellular
    manual/how-tos/IPv6_ZenUK
    manual/how-tos/ipv6_dsl
    manual/how-tos/ipv6_fb
    manual/how-tos/ipv6_tunnelbroker
+
+Network Bridges
+---------------
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
+
    manual/how-tos/lan_bridge
+   manual/how-tos/vxlan_bridge
    manual/how-tos/transparent_bridge
+
+Wireless and Cellular
+---------------------
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
+
    manual/how-tos/interface_wireless_internal
+   manual/how-tos/cellular
+
+ISP Configuration
+-----------------
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
+
    manual/how-tos/dt_ger_iptv
    manual/how-tos/orange_fr_fttp
    manual/how-tos/orange_fr_tvf

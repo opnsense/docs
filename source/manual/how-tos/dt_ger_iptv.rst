@@ -1,5 +1,5 @@
-**Deutsche Telekom Germany IPTV (Magenta TV) setup**
-========================================================
+Deutsche Telekom Germany IPTV (Magenta TV) setup
+================================================
 
 **Original Author:** Jascha Kirchhoff
 
