@@ -477,6 +477,16 @@ An example Caddyfile would look like this:
             }
     }
 
+.. Tip::
+
+    If you need the same domain listening on more than just one port, add it multiple times with different ports. The domains will automatically share the same certificate.
+
+    - `*.example.com:443`
+    - `*.example.com:8443`
+    - `*.example.com:11111`
+
+    All subdomains will also share these ports of their wildcard domain implicitely, they do not need to be duplicated in the `Subdomain` tab. Just the `HTTP Handler` has to match the correct `Domain:Port` and `Subdomain` combination.
+
 
 Reverse Proxy a Webserver with Vhosts
 -------------------------------------
