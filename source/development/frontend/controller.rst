@@ -217,7 +217,7 @@ In order to export or import csv structured data, some helpers are available to 
 The :code:`ApiControllerBase` adds a simple recordset export method (:code:`exportCsv()`)
 and :code:`ApiMutableModelControllerBase` contains a method to import data (:code:`importCsv()`).
 
-When data is being exported from a model using an :code:`ArrayField` type, the :code`asRecordSet()` method can be used
+When data is being exported from a model using an :code:`ArrayField` type, the :code:`asRecordSet()` method can be used
 to extract the data easily.
 
 The smallest functional example to download a file from a controller implemented with :code:`ApiMutableModelControllerBase`
