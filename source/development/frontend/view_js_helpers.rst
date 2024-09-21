@@ -194,7 +194,7 @@ Informational dialog with a single close button, using the following parameters:
 *   message: :code:`string` dialog message
 *   close:  :code:`string` close button text
 *   callback: :code:`function()` to be called after close
-*   type: :code:`string` dialog type. one of : danger, default, info, primary, success, warning
+*   type: :code:`string` dialog type. one of: danger, default, info, primary, success, warning
 *   cssClass: :code:`string`  css class to use
 
 
@@ -208,7 +208,7 @@ Ok/Cancel dialog type using the following parameters:
 *   accept:  :code:`string` accept button text
 *   decline:  :code:`string` decline button text
 *   callback: :code:`function()` to be called after close
-*   type: :code:`string` dialog type. one of : danger, default, info, primary, success, warning
+*   type: :code:`string` dialog type. one of: danger, default, info, primary, success, warning
 
 
 
@@ -226,10 +226,10 @@ will call the selected endpoint and show a progress animation (spinner) to the u
 
 The following parameters can be supplied as data attributes on the target object:
 
-* endpoint : endpoint to call (e.g. :code:`/api/my/action`)
-* label : button label text
-* service-widget : the service widget to refresh after execution, see :code:`updateServiceControlUI()`
-* error-title : error dialog title
+* endpoint: endpoint to call (e.g. :code:`/api/my/action`)
+* label: button label text
+* service-widget: the service widget to refresh after execution, see :code:`updateServiceControlUI()`
+* error-title: error dialog title
 
 The method itself can be feed with callbacks to call before (:code:`onPreAction()`) and after (:code:`onAction()`) execution.
 
