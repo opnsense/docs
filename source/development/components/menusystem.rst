@@ -62,5 +62,5 @@ attributes to the menu objects created there are setters in
 OPNsense\\Base\\Menu\\MenuItem, in this version the next attributes are supported:
 
 -  order, sort order in our menu
--  VisibleName, name to use ( if not set the tagname / id will be used)
+-  VisibleName, name to use (if not set the tagname / id will be used)
 -  cssClass, style attributes for the frontend system.

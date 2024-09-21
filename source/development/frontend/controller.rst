@@ -64,7 +64,7 @@ When designers need forms for users to input data, they can use the :code:`getFo
 to feed a simple xml file as definition for the template engine to use. The example section contains a step by step
 guide how to use these.
 
-The getForm() method itself merily passes the structure to thew view, which can use this information to render
+The :code:`getForm()` method itself merely passes the structure to the view, which can use this information to render
 forms on page load (statically).
 In our standard layout `partials <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/views/layout_partials/form_input_tr.volt>`__ we offer some different record types which we will detail below:
 
@@ -132,7 +132,7 @@ A simple index controller to echo a request back looks like this:
                 $message = " " ;
             }
      
-            return array("message" => $message);
+            return ["message" => $message];
         }
     }
 
@@ -217,7 +217,7 @@ In order to export or import csv structured data, some helpers are available to 
 The :code:`ApiControllerBase` adds a simple recordset export method (:code:`exportCsv()`)
 and :code:`ApiMutableModelControllerBase` contains a method to import data (:code:`importCsv()`).
 
-When data is being exported from a model using an :code:`ArrayField` type, the :code`asRecordSet()` method can be used
+When data is being exported from a model using an :code:`ArrayField` type, the :code:`asRecordSet()` method can be used
 to extract the data easily.
 
 The smallest functional example to download a file from a controller implemented with :code:`ApiMutableModelControllerBase`

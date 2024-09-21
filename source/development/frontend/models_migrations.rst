@@ -20,7 +20,7 @@ This will take care of basic changes, such as adding new fields and applying def
 
 .. Note::
 
-  The current version will always be saved as an attirbute on the model xml (e.g. :code:`<Alias version="1.0.0">`)
+  The current version will always be saved as an attribute on the model xml (e.g. :code:`<Alias version="1.0.0">`)
 
 
 .............................

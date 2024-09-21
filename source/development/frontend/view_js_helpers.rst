@@ -162,7 +162,7 @@ unparsable data would look like :code:`{"myform": {"myintval": "1x"}}`, in which
 updateServiceControlUI
 ----------------------------
 
-The code:`updateServiceControlUI(serviceName)` function hooks the service control on top of the standard template, where you can find
+The :code:`updateServiceControlUI(serviceName)` function hooks the service control on top of the standard template, where you can find
 the [re]start, stop and status of the service.
 
 It assumes the following endpoints exists for the module:
@@ -194,7 +194,7 @@ Informational dialog with a single close button, using the following parameters:
 *   message: :code:`string` dialog message
 *   close:  :code:`string` close button text
 *   callback: :code:`function()` to be called after close
-*   type: :code:`string` dialog type. one of : danger, default, info, primary, success, warning
+*   type: :code:`string` dialog type. one of: danger, default, info, primary, success, warning
 *   cssClass: :code:`string`  css class to use
 
 
@@ -208,7 +208,7 @@ Ok/Cancel dialog type using the following parameters:
 *   accept:  :code:`string` accept button text
 *   decline:  :code:`string` decline button text
 *   callback: :code:`function()` to be called after close
-*   type: :code:`string` dialog type. one of : danger, default, info, primary, success, warning
+*   type: :code:`string` dialog type. one of: danger, default, info, primary, success, warning
 
 
 
@@ -226,10 +226,10 @@ will call the selected endpoint and show a progress animation (spinner) to the u
 
 The following parameters can be supplied as data attributes on the target object:
 
-* endpoint : endpoint to call (e.g. :code:`/api/my/action`)
-* label : button label text
-* service-widget : the service widget to refresh after execution, see :code:`updateServiceControlUI()`
-* error-title : error dialog title
+* endpoint: endpoint to call (e.g. :code:`/api/my/action`)
+* label: button label text
+* service-widget: the service widget to refresh after execution, see :code:`updateServiceControlUI()`
+* error-title: error dialog title
 
 The method itself can be feed with callbacks to call before (:code:`onPreAction()`) and after (:code:`onAction()`) execution.
 
@@ -293,10 +293,10 @@ can be used to feed actions, such as **set** (set new values, return validation 
 or **toggle** if the record should be enabled or disabled.  :code:`info` endpoints are not used very often (and can safely be omitted), these are mainly intended as simple trigger to display an info dialog.
 
 
-A full example of a basic grid is available in our  :doc:`../examples/using_grids` example
+A full example of a basic grid is available in our  :doc:`../examples/using_grids` example.
 
 In some cases the developer wants to signal the user about the fact that changes need to be applied in order to be active, for this scenario one can use the :code:`data-editAlert`
-property of the table, which offers the ability to show an alert after changes. Below example would be shown when the table tag contains :code:`data-editAlert="exampleChangeMessage"`
+property of the table, which offers the ability to show an alert after changes. Below example would be shown when the table tag contains :code:`data-editAlert="exampleChangeMessage"`:
 
 .. code-block:: html
 
@@ -308,7 +308,7 @@ property of the table, which offers the ability to show an alert after changes. 
 .. Tip::
 
     You can access the general settings of the jquery-bootgrid plugin using the :code:`options` property, which can be convenient when you would like to change
-    requests or responses as being exchanged with the server. The available options are described `here <http://www.jquery-bootgrid.com/Documentation#table>`__
+    requests or responses as being exchanged with the server. The available options are described `here <http://www.jquery-bootgrid.com/Documentation#table>`__.
 
 
 ----------------------------
@@ -336,7 +336,7 @@ To define a button sending data to `/api/path/to/import_controller`, the followi
 
 Initializing this button could be done using:
 
-.. code-block:: php
+.. code-block:: html
 
     $("#upload").SimpleFileUploadDlg();
 
@@ -353,7 +353,7 @@ We added a couple of settings to the list, which help to extend our plugin a bit
 
 *   useRequestHandlerOnGet
 
-    *   Boolean value which enables the use of the request handler when a :code:`get` request is executed ot fetch data for the dialog. This can be used to add parameters to the request.
+    *   Boolean value which enables the use of the request handler when a :code:`get` request is executed to fetch data for the dialog. This can be used to add parameters to the request.
 
 *   onBeforeRenderDialog
 
