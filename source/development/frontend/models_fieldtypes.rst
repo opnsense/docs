@@ -540,7 +540,7 @@ Check if the input contains a valid port number or (optionally) predefined servi
    "BlankDesc", ":code:`text`", "Set a label for the empty option"
    "Multiple", "Y,N", "Allow to select multiple options, when set the type is treated as a list"
    "EnableWellKnown", "Y,N", "Allow the usage of well known names such as 'http' and 'ssh'"
-   "EnableRanges", "Y,N", "Allow the usa of ranges, such as :code:`80:100`"
+   "EnableRanges", "Y,N", "Allow the usage of ranges, such as :code:`80:100`"
 
 
 ProtocolField
