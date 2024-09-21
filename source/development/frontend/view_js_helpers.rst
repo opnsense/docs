@@ -293,10 +293,10 @@ can be used to feed actions, such as **set** (set new values, return validation 
 or **toggle** if the record should be enabled or disabled.  :code:`info` endpoints are not used very often (and can safely be omitted), these are mainly intended as simple trigger to display an info dialog.
 
 
-A full example of a basic grid is available in our  :doc:`../examples/using_grids` example
+A full example of a basic grid is available in our  :doc:`../examples/using_grids` example.
 
 In some cases the developer wants to signal the user about the fact that changes need to be applied in order to be active, for this scenario one can use the :code:`data-editAlert`
-property of the table, which offers the ability to show an alert after changes. Below example would be shown when the table tag contains :code:`data-editAlert="exampleChangeMessage"`
+property of the table, which offers the ability to show an alert after changes. Below example would be shown when the table tag contains :code:`data-editAlert="exampleChangeMessage"`:
 
 .. code-block:: html
 
@@ -308,7 +308,7 @@ property of the table, which offers the ability to show an alert after changes. 
 .. Tip::
 
     You can access the general settings of the jquery-bootgrid plugin using the :code:`options` property, which can be convenient when you would like to change
-    requests or responses as being exchanged with the server. The available options are described `here <http://www.jquery-bootgrid.com/Documentation#table>`__
+    requests or responses as being exchanged with the server. The available options are described `here <http://www.jquery-bootgrid.com/Documentation#table>`__.
 
 
 ----------------------------
