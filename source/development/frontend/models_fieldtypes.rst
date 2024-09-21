@@ -240,7 +240,7 @@ Check if hostnames are valid, includes the following options:
 IntegerField
 ------------------------------------
 
-Validate if the input contains an integere value, optionally constrained by minimum and maximum values.
+Validate if the input contains an integer value, optionally constrained by minimum and maximum values.
 
 .. csv-table:: EmailField
    :header: "Parameter", "Options", "Purpose"
