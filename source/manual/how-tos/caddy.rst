@@ -354,6 +354,16 @@ Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> HTTP H
 
 .. Note:: The certificate of a wildcard domain will only contain ``*.example.com``, not a SAN for ``example.com``. If there is a service that should match ``example.com`` exactly, create an additional domain for ``example.com`` with an additional `HTTP Handler` for its upstream destination. Subdomains do not support setting ports, they will always track the ports of their assigned parent wildcard domain.
 
+.. Tip::
+
+    If a domain should listen on more than one port, add it multiple times. The domains will automatically share the same wildcard certificate.
+
+    - `*.example.com:443`
+    - `*.example.com:8443`
+
+    Afterwards inherit the port from the domain by choosing it in the `Subdomains` tab. The same subdomain can be created multiple times under different wildcard domains if it should be available on multiple ports. To tell multiple same subdomains apart, give them a description with their port. Each of these subdomains need their own `HTTP Handlers`.
+
+
 .. _webgui-opnsense-caddy:
 
 
@@ -476,16 +486,6 @@ An example Caddyfile would look like this:
                     }
             }
     }
-
-.. Tip::
-
-    If you need the same domain listening on more than just one port, add it multiple times with different ports. The domains will automatically share the same certificate.
-
-    - `*.example.com:443`
-    - `*.example.com:8443`
-    - `*.example.com:11111`
-
-    All subdomains will also share these ports of their wildcard domain implicitely, they do not need to be duplicated in the `Subdomain` tab. Just the `HTTP Handler` has to match the correct `Domain:Port` and `Subdomain` combination.
 
 
 Reverse Proxy a Webserver with Vhosts
