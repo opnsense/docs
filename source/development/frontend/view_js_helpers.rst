@@ -162,7 +162,7 @@ unparsable data would look like :code:`{"myform": {"myintval": "1x"}}`, in which
 updateServiceControlUI
 ----------------------------
 
-The code:`updateServiceControlUI(serviceName)` function hooks the service control on top of the standard template, where you can find
+The :code:`updateServiceControlUI(serviceName)` function hooks the service control on top of the standard template, where you can find
 the [re]start, stop and status of the service.
 
 It assumes the following endpoints exists for the module:
