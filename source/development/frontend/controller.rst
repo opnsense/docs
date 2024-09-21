@@ -94,7 +94,6 @@ readonly      if true, input fields will be readonly
 ==================  ===========================================================================================
 Name                Description
 ==================  ===========================================================================================
-header              Header row
 text                Single line of text
 password            Password field for sensitive input. The contents will not be displayed.
 textbox             Multiline text box
