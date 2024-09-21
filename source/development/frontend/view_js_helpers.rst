@@ -353,7 +353,7 @@ We added a couple of settings to the list, which help to extend our plugin a bit
 
 *   useRequestHandlerOnGet
 
-    *   Boolean value which enables the use of the request handler when a :code:`get` request is executed ot fetch data for the dialog. This can be used to add parameters to the request.
+    *   Boolean value which enables the use of the request handler when a :code:`get` request is executed to fetch data for the dialog. This can be used to add parameters to the request.
 
 *   onBeforeRenderDialog
 
