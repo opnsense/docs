@@ -336,7 +336,7 @@ To define a button sending data to `/api/path/to/import_controller`, the followi
 
 Initializing this button could be done using:
 
-.. code-block:: php
+.. code-block:: html
 
     $("#upload").SimpleFileUploadDlg();
 
