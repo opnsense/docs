@@ -526,7 +526,7 @@ generates :code:`<optgroup>`  clauses in our model. As of 24.1 they can be defin
 PortField
 ------------------------------------
 
-Check if the input contains a valid portnumber or (optionally) predefined service name. Can be a range when
+Check if the input contains a valid port number or (optionally) predefined service name. Can be a range when
 :code:`EnableRanges` is set to :code:`Y`.
 
 
