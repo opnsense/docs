@@ -132,7 +132,7 @@ A simple index controller to echo a request back looks like this:
                 $message = " " ;
             }
      
-            return array("message" => $message);
+            return ["message" => $message];
         }
     }
 
