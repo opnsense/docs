@@ -64,7 +64,7 @@ When designers need forms for users to input data, they can use the :code:`getFo
 to feed a simple xml file as definition for the template engine to use. The example section contains a step by step
 guide how to use these.
 
-The :code:`getForm()` method itself merrily passes the structure to the view, which can use this information to render
+The :code:`getForm()` method itself merely passes the structure to the view, which can use this information to render
 forms on page load (statically).
 In our standard layout `partials <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/views/layout_partials/form_input_tr.volt>`__ we offer some different record types which we will detail below:
 
