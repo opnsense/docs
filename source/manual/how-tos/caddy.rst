@@ -227,7 +227,7 @@ Options                        Values
 
 Now, all anonymous connections have to authenticate with Basic Auth before accessing the reverse proxied service.
 
-.. Note:: Using Crowdsec is recommended. It will log authentication errors, and will ban these IP addresses. This prevents password bruteforcing.
+.. Note:: Using CrowdSec is recommended. It will log authentication errors, and will ban these IP addresses. This prevents password bruteforcing.
 
 .. _dynamicdns-opnsense-caddy:
 
@@ -555,7 +555,7 @@ Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> Log
 * Enable `Log HTTP Access in JSON Format`
 * Press **Save**
 
-Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy –-> Domains`
+Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Domains`
 
 * Open each `Domain` that should be monitored by CrowdSec and open `Access`
 * Enable `HTTP Access Log`
