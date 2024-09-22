@@ -190,7 +190,7 @@ Options                        Values
 
 * Press **Save** and **Apply**
 
-Now, all connections without a private IPv4 address will be served an empty page. To outright refuse the connection, the option ``Abort Connections`` in :menuselection:`Services --> Caddy Web Server --> General Settings` should be additionally enabled. Some applications might demand a HTTP Error code instead of having their connection aborted, an example could be monitoring systems. For these a custom ``HTTP Response Code`` can be enabled.
+Now, all connections without a private IPv4 address will be blocked. Some applications might demand a HTTP Error code instead of having their connection blocked, an example are monitoring systems. For these a custom ``HTTP Response Code`` can be set in the advanced mode.
 
 .. Note:: Access Lists will match before Basic Auth, so both options can synergize.
 
@@ -853,7 +853,6 @@ Help, Nothing Works!
 
 **2. Check if the Domain is set up correctly:**
 
-* Disable `Abort` in `General Settings` to test if the `Domain` works correctly.
 * Open the `Domain` in a `Web Browser`. Inspect the certificate by clicking on the 🔒 in the address bar. It should be a `Let's Encrypt`, `ZeroSSL` or `custom certificate` (if chosen).
 * Activate the `HTTP Access Log` in a `Domain`, and check the `Log File`. Are there any log entries that show connections?
 * If nothing shows up, go back to Step 1 and check the infrastructure.
