@@ -192,7 +192,7 @@ Options                        Values
 
 Now, all connections without a private IPv4 address will be blocked. Some applications might demand a HTTP Error code instead of having their connection blocked, an example are monitoring systems. For these a custom ``HTTP Response Code`` can be set in the advanced mode.
 
-.. Note:: Access Lists will match before Basic Auth, so both options can synergize.
+.. Note:: Access Lists can be set on `Domains`, `Subdomains` and `HTTP Handlers`.
 
 
 Restrict Access with Basic Auth
@@ -445,47 +445,56 @@ Advanced Configuration
 ----------------------
 
 
-Multiple Handlers for a Domain
-------------------------------
+Multiple HTTP Handlers for the same Domain
+------------------------------------------
 
-Handlers are not limited to one per domain/subdomain. If there are multiple different URIs to handle (e.g. ``/foo/*`` and ``/bar/*``), create a handler for each of them. Just make sure each of these URIs are on the same level, creating ``/foo/*`` and ``/foo/bar/*`` will make ``/foo/*`` match everything.
+`HTTP Handlers` are not limited to one per domain or subdomain. If there are multiple different paths to handle (e.g. ``/foo/*`` and ``/bar/*``), create a `HTTP Handler` for each of them.
 
-Doing this can route traffic to different upstreams based on URIs. It could also be used to send certain URIs into a blackhole by setting an upstream that does not exist (e.g. to block `/ecp/*`).
+When creating a `HTTP Handler` with an empty path, the templating logic will automatically place it last in the Caddyfile site block. This means, specific paths will always match before an empty path, regardless of their position in the configuration. This could be used to block specific paths with an `Access List`, route some paths to different upstreams, and then set an empty handle for all unmatched paths.
 
-Additionally, when creating an empty handler for a domain/subdomain, the templating logic will automatically place it last in the Caddyfile site block. This means, specific URIs will always match before an empty URI. An example would be to block specific URIs, route others specifically, and then set a catch all `empty` handle last for all unmatched traffic.
+Different handling logics can be selected. E.g., `handle_path` to strip the path from all requests, or `handle` to preserve the path from all requests.
 
-When using a mix of wildcard domains and subdomains, a handler set only on the wildcard domain will match after all subdomains. That way, all unmatched subdomains can be sent to a custom upstream.
+When using a mix of wildcard domains and subdomains, a `HTTP Handler` set exclusively on the wildcard domain will match after all subdomains. That way, all unmatched subdomains can be sent to a custom upstream.
 
-Different handling logics can be selected, e.g. `handle path` to strip the URI or `handle` to preserve the URI.
+Multiple domains with the same hostname and different ports can be created at the same time. E.g., ``opn.example.com:443`` and ``opn.example.com:8443``. Now the frontend can listen on multiple ports for the same domain. These domains will share the same certificate automatically if ACME manages them. Each of these sockets need their own `HTTP Handler` to proxy traffic.
 
-An example Caddyfile would look like this:
+An example Caddyfile could look like this:
 
 .. code-block::
 
     # Reverse Proxy Domain: "531e7877-0b58-4f93-a9f0-54beee58bdea"
-    autodiscover.example.com {
-            handle /ecp/* {
-                    reverse_proxy blackhole {
+    opn.example.com:443 {
+            handle /private/* {
+                    @d72c1182-6f05-4c25-8d9f-6a226a9039ea {
+                            not client_ip 192.168.0.0/16 172.16.0.0/12 10.0.0.0/8
+                    }
+                    handle @d72c1182-6f05-4c25-8d9f-6a226a9039ea {
+                            abort
+                    }
+
+                    reverse_proxy 172.16.99.10:8443 {
                     }
             }
 
-            handle /autodiscover/* {
-                    reverse_proxy 172.16.99.10 {
+            handle /different_upstream/* {
+                    reverse_proxy 192.168.1.33 {
                     }
             }
 
             handle {
-                    reverse_proxy 192.168.1.33 {
+                    reverse_proxy 172.16.99.10:8443 {
                     }
             }
     }
     # Reverse Proxy Domain: "58760ae1-2409-4a6b-a6c4-d58b15706b55"
-    mail.example.com {
-            handle {
-                    reverse_proxy 192.168.1.33 {
+    opn.example.com:8443 {
+            handle_path /strip_this {
+                    reverse_proxy 10.10.10.10:8443 {
                     }
             }
     }
+
+.. Tip:: `Access Lists` can match directly on `HTTP Handlers` for more complex access control scenarios.
 
 
 Reverse Proxy a Webserver with Vhosts
@@ -610,7 +619,7 @@ To attach the Forward Auth directive to a handler, the Auth Provider has to be f
 
 Using Access Lists and Basic Auth in the Domain this Handler matches on is not recommended.
 
-An example Caddyfile would look like this:
+An example Caddyfile could look like this:
 
 .. code::
 
