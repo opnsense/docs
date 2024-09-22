@@ -100,15 +100,13 @@ early                        Early in bootup process, before normal services are
                              (things like ssh and the webconfigurator use this spot)
 bootup                       Bootup, normal legacy service configuration, when not using the :code:`rc(8)` system
                              (for example: unbound, ntpd)
-newwanip (deprecated)        Triggered after configuration of a dynamic interface address, expects a maximum of two positional
-                             parameters (:code:`$verbose` and :code:`$interface`). This event is deprecated and scheduled for
-                             removal.
-newwanip_map                 Triggered after configuration of a dynamic interface address, expects a maximum of three positional
+newwanip                     Triggered after configuration of a dynamic interface address, expects a maximum of three positional
                              parameters (:code:`$verbose` and :code:`$interfaces` and :code:`$family`). :code:`$interfaces`
-                             is a CSV list of all relevant interfaces that require reloading.  $:code:`family` i the address
-                             family type that triggered the event, either :code:`inet` for IPv4 or :code:`inet6` for IPv6.
+                             is an array all relevant interfaces that require reloading or null for all.  $:code:`family` is the
+                             address family type that triggered the event, either :code:`inet` for IPv4 or :code:`inet6` for IPv6.
 vpn                          Triggered in multiple places that require a reload of the VPN based subsystems, expects a maximum
-                             of two positional parameters (:code:`$verbose` and :code:`$interface`).
+                             of two parameters (:code:`$verbose` and :code:`$interfaces`). :code:`$interfaces` is an array of
+                             all relevant interfaces that require reloading or null for all.
 ===========================  =================================================================================
 
 
