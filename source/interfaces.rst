@@ -9,7 +9,7 @@ Interfaces
 
 All traffic flowing through your appliance is using (virtual) interfaces, this is where you manage most settings.
 
-----------------
+------------------------
 
 .. toctree::
    :maxdepth: 1
@@ -28,10 +28,10 @@ All traffic flowing through your appliance is using (virtual) interfaces, this i
 
 
 Setup Guides
-============
+========================
 
 IPv6 Guides
------------
+------------------------
 
 .. toctree::
    :maxdepth: 1
@@ -43,7 +43,7 @@ IPv6 Guides
    manual/how-tos/ipv6_tunnelbroker
 
 Network Bridges
----------------
+------------------------
 
 .. toctree::
    :maxdepth: 1
@@ -54,7 +54,7 @@ Network Bridges
    manual/how-tos/transparent_bridge
 
 Wireless and Cellular
----------------------
+------------------------
 
 .. toctree::
    :maxdepth: 1
@@ -64,7 +64,7 @@ Wireless and Cellular
    manual/how-tos/cellular
 
 ISP Configuration
------------------
+------------------------
 
 .. toctree::
    :maxdepth: 1
