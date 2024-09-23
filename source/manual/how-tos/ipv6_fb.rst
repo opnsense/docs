@@ -1,6 +1,7 @@
-======================================
-Configure IPv6 behind an AVM Fritz!Box
-======================================
+==============================
+IPv6 behind an AVM Fritz!Box
+==============================
+
 **Original Author:** Thomas Klein
 
 ------------
