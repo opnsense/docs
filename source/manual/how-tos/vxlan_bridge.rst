@@ -1,14 +1,13 @@
-============
+============================
 VXLAN Bridge
-============
+============================
 
 .. contents:: Index
 
 
--------
+----------------------------
 Summary
--------
-
+----------------------------
 
 This guide covers the configuration of a VXLAN tunnel between two OPNsense firewalls connected via VPN. This enables Layer 2 communication over Layer 3 networks and can introduce various challenges. Layer 2 tunneling should only be used when necessary, as routing is usually the best option for Layer 3 networks.
 
@@ -18,6 +17,8 @@ Here are some general use cases:
 - Provide external IP addresses to a different site without routing
 - Connect devices that communicate via broadcasts
 - Share Layer 2 protocols such as STP and DHCP
+- Transmit routing protocols like OSPF
+
 
 .. Attention:: 
 
@@ -29,9 +30,9 @@ Here are some general use cases:
 See the section on `VXLAN </manual/other-interfaces.html#vxlan>`_ for more details.
 
 
---------------
+----------------------------
 Setup Overview
---------------
+----------------------------
 
 In this setup example, there are two OPNsense firewalls - Site A and Site B - that should communicate over the internet via Layer2.
 
@@ -48,13 +49,13 @@ LAN              IPv4 None         IPv4 None
 ===============  ================  ================
 
 
---------------
+----------------------------
 Configuration
---------------
+----------------------------
 
 
 1. Loopback Interface Setup
----------------------------
+----------------------------
    
 - | Go to :menuselection:`Interfaces --> Other Types --> Loopback` and add ``lo1`` on both `Sites`
 - | Go to :menuselection:`Interfaces --> Assignments` and assign ``lo1``
@@ -67,7 +68,7 @@ Configuration
 
 
 2. VPN Setup
-------------
+----------------------------
 
 The ``lo1`` interfaces on both firewalls must be connected via VPN. In this example, the VPN will use the endpoint IPs `203.0.113.1/32 (Site A)` and `198.51.100.2/32 (Site B)`. This can be achieved with:
 
@@ -93,7 +94,7 @@ The tunnel should now route traffic between the two loopback interfaces:
 
 
 3. VXLAN Interface
-------------------
+----------------------------
 
 - | Go to :menuselection:`Interfaces --> Other Types --> VXLAN` and create ``vxlan1`` interfaces:
        
@@ -102,7 +103,7 @@ The tunnel should now route traffic between the two loopback interfaces:
 ===============  ================  ================
 VNI              1                 1
 Source address   172.16.88.1/32    172.16.88.2/32
-Remote address   172.16.88.2/32.   172.16.88.1/32
+Remote address   172.16.88.2/32    172.16.88.1/32
 Multicast group  `leave empty`     `leave empty`
 Device           None              None
 ===============  ================  ================
@@ -113,7 +114,7 @@ Device           None              None
 
 
 4. Bridging VXLAN and LAN
--------------------------
+----------------------------
 
 .. Attention:: Connecting Layer2 broadcast domains can cause service interruptions.
 
@@ -144,7 +145,7 @@ Link-local address  `Check if using IPv6`  `Check if using IPv6`
 
 
 5. Testing & Finalizing
------------------------
+----------------------------
 
 .. Tip:: For this step, using `Packet Capture </manual/diagnostics_interfaces.html#packet-capture>`_ is recommended.
 

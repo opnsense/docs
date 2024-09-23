@@ -242,3 +242,6 @@ source in the encapsulating IPv4/IPv6 header.
   network MTU be configured to use jumbo frames to accommodate the encapsulated frame size.
   Alternatively, the MTU size on the vxlan interface might be reduced to allow the encapsulated frame to fit in
   the current MTU of the physical network.
+
+
+Read `VXLAN Bridge </manual/how-tos/vxlan_bridge.html>`_ for an example configuration with a common setup.
