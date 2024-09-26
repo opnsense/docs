@@ -18,6 +18,27 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+24.4.3 (September 17, 2024)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 24.4.2 business version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: add snapshots (boot environments) support via MVC/API (contributed by Sheridan Computers)
+* system: recover stuck monitors and offer a cron job
+* isc-dhcp: allow to disable a DHCPv6 server with faulty settings
+* openvpn: add close-on-exec flag to service lock file
+* openvpn: add username field to the status page
+* wireguard: add close-on-exec flag to service lock file
+* mvc: improve container field cloning
+* ui: allow style tag on headers
+* ports: openssl 3.0.15 `[1] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.4.2 (August 16, 2024)
 --------------------------------------------------------------------------
 

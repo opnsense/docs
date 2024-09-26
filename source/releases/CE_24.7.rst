@@ -31,6 +31,81 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.7.5 (September 26, 2024)
+--------------------------------------------------------------------------
+
+
+This release removes significant processing overhead from larger setups
+due to being able to coalesce parallel configuration requests for the same
+component instead of iterating over the list of selected interfaces one
+by one.  A number of third party software updates and FreeBSD security
+advisories are included as well.
+
+This update also disables NUMA by default which can bring a boost in
+network throughput on affected systems.  And of course we are still
+working on dashboard improvements so now the treasured picture widget
+is back with a better integration approach.
+
+Also take note that the NTP default changes to "restrict noquery" so that
+the system cannot externally be queried for revealing system internals
+anymore unless explicitly allowed.
+
+The technical stuff out of the way we would simply like to add that we
+had a great time at EuroBSDCon in Dublin over the weekend.  Lots of good
+and productive conversations.  Looking forward to more of those!  :)
+
+Here are the full patch notes:
+
+* system: update default dashboard layout and include the services widget
+* system: render header for failed active widgets to allow identification and removal
+* system: add ability for widget referral links
+* system: cleaned up ACL definitions and use thereof
+* system: add a picture widget
+* system: default to vm.numa.disabled=1
+* system: handle log lines with no timestamp (contributed by Iain MacDonnell)
+* system: use interface maps in system_routing_configure() and dpinger_configure_do()
+* system: when only selecting TLS1.3 ciphers make sure to only allow 1.3 as well in web GUI
+* system: move web GUI restart to newwanip_map / plugins_argument_map() use
+* interfaces: move compatible event listeners to newwanip_map
+* interfaces: decouple PPP configure/reset from IPv4/IPv6 modes
+* interfaces: move legacy RFC2136 invoke to plugin hook
+* interfaces: add "spoofmac" device option and enforce it
+* interfaces: prevent CARP VIP removal when VHID group is in use by IP aliases
+* interfaces: routing configuration on changed interfaces only during apply
+* firmware: opnsense-update: support unescaped mirror input (contributed by Michael Gmelin)
+* firmware: opnsense-verify: show repository priority while listing active repositories
+* ipsec: convert to vpn_map event invoke and plugins_argument_map() use
+* monit: fix undefined function error in CARP script
+* network time: enable "restrict noquery" by default (contributed by doktornotor)
+* openssh: port to plugins_argument_map()
+* openvpn: validate "Auth Token Lifetime" to require a non-zero renegotiate time in instances
+* openvpn: convert to vpn_map event invoke and plugins_argument_map() use
+* wireguard: convert to vpn_map event invoke
+* ui: refine cookie policies and make them explicit
+* plugins: add plugins_argument_map() helper
+* plugins: os-caddy 1.7.1 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* src: bhyve: improve input validation in pci_xhci `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:15.bhyve.asc>`__ 
+* src: libnv: correct the calculation of the size of the structure `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:16.libnv.asc>`__ 
+* src: ifnet: Remove if_getamcount()
+* src: ifnet: Add handling for toggling IFF_ALLMULTI in ifhwioctl()
+* src: ifconfig: Add an allmulti verb
+* src: date: include old and new time in audit log
+* src: bpf: Add IfAPI analogue for bpf_peers_present()
+* src: pf: use AF_INET6 when comparing IPv6 addresses
+* src: if_ovpn: ensure it is safe to modify the mbuf
+* src: if_ovpn: declare our dependency on the crypto module
+* ports: curl 8.10.0 `[4] <https://curl.se/changes.html#8_10_0>`__ 
+* ports: dhcp6c 20240919 reintroduced fixed arc4random() usage
+* ports: expat 2.6.3 `[5] <https://github.com/libexpat/libexpat/blob/R_2_6_3/expat/Changes>`__ 
+* ports: libpfctl 0.13
+* ports: libxml 2.11.9 `[6] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: nss 3.104 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_104.html>`__ 
+* ports: python 3.11.10 `[8] <https://docs.python.org/release/3.11.10/whatsnew/changelog.html>`__ 
+* ports: sudo 1.9.16 `[9] <https://www.sudo.ws/stable.html#1.9.16>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.7.4 (September 12, 2024)
 --------------------------------------------------------------------------
 
