@@ -3,7 +3,7 @@ Overview
 ========================
 
 The life of a service starts during the boot process, but with different hooks available, sometimes it is challenging
-to find the correct one. This paragraph aims to explain the various integration spots availabe, which are
+to find the correct one. This paragraph aims to explain the various integration spots available, which are
 being explained in more detail in the rest of the chapter.
 
 
