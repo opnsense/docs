@@ -162,7 +162,7 @@ Now put it all together in OPNsense.
 
     ===============================  ===================================================================================
     Enable                           checked
-    Email Address                    enter the Unique ID number of the service account you created
+    Unique ID                        enter the Unique ID number of the service account you created
     P12 key                          click the **Choose file** button and select the P12 key you saved earlier to upload it
     Folder ID                        paste the Google Drive folder ID that you copied earlier
     Prefix hostname to backupfile    checked or unchecked as desired (useful if you have multiple OPNsenses)
