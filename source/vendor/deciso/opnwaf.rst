@@ -166,6 +166,7 @@ There are two different modes for locations:
 
 #. | ProxyPass, which Reverse Proxies the HTTP traffic
 #. | Redirect, which creates a HTTP redirect
+#. | Exchange Server, a template for Microsoft Exchange Server® with Outlook Anywhere® passthrough
 
 
 ProxyPass
@@ -179,7 +180,7 @@ VirtualServer                    The server this location belongs to
 Path                             Path of the HTTP request to match (e.g. :code:`/` for all paths). You can also create
                                  multiple location entries, each with their own specific path (e.g. :code:`/docs`).
                                  They will be processed in the order of their creation.
-Type                             Controls if its a ProxyPass or Redirect
+Type                             ProxyPass
 Remote destinations              Locations to forward requests to, when more than one is provided, requests will be
                                  loadbalanced in a round robin fashion. Supports :code:`http`, :code:`https`, :code:`ws`
                                  and :code:`wss` destinations.
@@ -225,7 +226,7 @@ VirtualServer                    The server this location belongs to
 Path                             Path of the HTTP request to match (e.g. :code:`/` for all paths). You can also create
                                  multiple location entries, each with their own specific path (e.g. :code:`/docs`).
                                  They will be processed in the order of their creation.
-Type                             Controls if its a ProxyPass or Redirect
+Type                             Redirect
 HTTP redirection message         Choose the HTTP redirection message. The default is 307, but others like 301 and 308 are
                                  also available.
 Remote destinations              Locations to redirect requests to, only one is allowed per location per redirect
@@ -243,6 +244,65 @@ only HTTPS is matched.
     the same :code:`/` location, nor a more specific :code:`/docs` location. The redirect will match first, since it will catch and
     redirect all traffic of the virtual server location. What is possible though, is that there is a :code:`/docs` location that
     redirects, and an additional :code:`/html` location that proxies traffic, in the scope of the same virtual server.
+
+
+Exchange Server
+^^^^^^^^^^^^^^^^^^^^^^
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Enabled                          Enable this location
+VirtualServer                    The server this location belongs to
+Type                             Exchange Server
+Remote destinations              Locations to redirect requests to, only one is allowed per location per redirect
+Restrict Exchange Paths          Restrict Exchange Server specific paths to networks provided in the Access control field.
+                                 If paths are selected, exactly these paths will have the Access control attached.
+                                 Access to path / is filtered per default with a redirect to /owa.
+                                 All non-selected paths will be allowed from all networks.
+Access control                   Constrain access to networks provided in this list, when not provided no
+                                 constraints apply. When type is Exchange Server, it will restrict access to
+                                 paths selected in Restrict Exchange Paths.
+Description                      User friendly description for this location
+================================ ========================================================================================
+
+To successfully reverse proxy an Exchange Server, a few conditions must be met:
+
+The Exchange Server should be 2013, 2016 or 2019 and fully patched.
+
+The communication between Apache and the Exchange Server must happen via HTTPS. The Exchange Server must have its internal and external
+URLs set correctly, preferably to the same hostnames that will be set as virtual servers.
+
+Common hostnames would be ``mail.example.com`` for:
+
+- OwaVirtualDirectory ``/owa``
+- EcpVirtualDirectory ``/ecp``
+- WebServicesVirtualDirectory ``/EWS/Exchange.asmx``
+- ActiveSyncVirtualDirectory ``/Microsoft-Server-ActiveSync``
+- OabVirtualDirectory ``/OAB``
+- MapiVirtualDirectory ``/mapi``
+- OutlookAnywhere (make sure 'ExternalClientAuthenticationMethod' is set to 'Negotiate')
+
+and ``autodiscover.example.com`` for
+
+- ClientAccessService ``/Autodiscover/Autodiscover.xml``
+
+
+These hostnames must be included into the SAN of a self-signed or externally signed (public trusted) certificate that is
+installed on the Exchange Server.
+When using a self-signed certificate, it must be imported into :menuselection:`System->Trust->Authorities`.
+Without trust established between the OPNsense and the Exchange Server, the connection will fail.
+
+Create two virtual servers with the FQDNs of the Exchange Server, one for ``autodiscover.example.com`` and one for
+``mail.example.com``. "Enable ACME" or use your own certificate, set "Header Security" to "Off / compatibility mode",
+set "Web Protection" to "Detection Only". Adjust these later once the Exchange Server works correctly through the reverse proxy.
+
+Attach a Location to each of these virtual servers with the internal IP address of the Exchange Server:
+e.g., ``https://192.168.10.10``. When the virtual servers have the same hostnames as the Exchange Server,
+trust is automatically established due to host header passthrough.
+
+The location will create all virtual directories automatically, and activate Outlook Anywhere® passthrough with the included mod_proxy_msrpc module.
+With "Restrict Exchange Paths" and "Access control", access can be restricted. This is recommended for the ``/ecp`` path.
 
 
 Test web protection
