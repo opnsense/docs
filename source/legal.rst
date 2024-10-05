@@ -3,7 +3,7 @@ Legal notices
 =============
 
 
-.. image:: ./images/opnsense_logo-zilver_grijs.png
+.. image:: ./images/opnsense_logo_horizontaal.png
     :width: 300px
 
 The OPNsense project wants to be a project that is friendly for users,

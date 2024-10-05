@@ -1,6 +1,6 @@
 .. OPNsense documentation master file
 
-.. image:: ./images/opnsense_logo-zilver_grijs.png
+.. image:: ./images/docs-deciso-header.jpg
 
 -----------------
 
