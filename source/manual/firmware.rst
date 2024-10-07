@@ -73,7 +73,7 @@ Usually the default options are good enough here, but if you want to choose a mi
     For more information we refer to :doc:`the envronment section in our development docs </development/backend/configd>`.
 
 
-Activate the Business Edition
+Apply the Business Edition
 ...........................................
 
 When you have purchased a license for the Business Edition or received it pre-installed on an appliance, you will
