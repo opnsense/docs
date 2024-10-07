@@ -111,6 +111,11 @@ Description                      User friendly description for this vhost (optio
 Enable ACME                      Enable the ACME protocol to automatically provision certificates using Let's Encrypt,
                                  when set will ignore the selected certificate (and enable SSL on this virtual server).
 Certificate                      When using a certificate available in the system trust store, select it here.
+SSL Proxy check peer             This directive configures host name checking for server certificates when mod_ssl is
+                                 acting as an SSL client. The check will succeed if the host name from the request URI
+                                 matches one of the CN attribute(s) of the certificate's subject, or matches the
+                                 subjectAltName extension. If the check fails, the SSL request is aborted and a 502
+                                 status code (Bad Gateway) is returned.
 **Access**
 CA for client auth               Require a client certificate signed by the provided authority before allowing
                                  a connection.
@@ -119,11 +124,6 @@ CRL for client auth              Attach the (first) found certificate revocation
 Verify depth for client auth     The depth actually is the maximum number of intermediate certificate
                                  issuers, i.e. the number of CA certificates which are max allowed to be followed while
                                  verifying the client certificate.
-SSL Proxy check peer             This directive configures host name checking for server certificates when mod_ssl is
-                                 acting as an SSL client. The check will succeed if the host name from the request URI
-                                 matches one of the CN attribute(s) of the certificate's subject, or matches the
-                                 subjectAltName extension. If the check fails, the SSL request is aborted and a 502
-                                 status code (Bad Gateway) is returned.
 **Security**
 Header Security                  Header security, by default several privacy and security related headers are set,
                                  in some cases (old applications for example) you might want to disable
@@ -159,10 +159,10 @@ Configure locations
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 The virtual server itself doesn't provide much content to the user other than offering a page telling access is prohibited,
-so the next step is to map directories to external locations. These can be defined in the "Locations" Grid underneath
-the Virtual servers.
+so the next step is to map directories to external locations. These can be defined in the `Locations` grid underneath
+the `Virtual servers`.
 
-There are two different modes for locations:
+There are different types of locations:
 
 #. | ProxyPass, which Reverse Proxies the HTTP traffic
 #. | Redirect, which creates a HTTP redirect
@@ -192,6 +192,9 @@ TLS header passthrough           Select which headers to passthrough to the clie
                                  X- to distinct them more easily from the applications perspective. The original headers
                                  use underscores (_) these will be replaced for minus (-) signs to prevent applications
                                  dropping them.
+Unset Request Headers            Select which request headers to unset before they get passed from the client to the
+                                 server. Unsetting some of these headers can increase security,
+                                 e.g., unsetting `Accept-Encoding` can help preventing BREACH attacks.
 Preserve Host                    When enabled, this option will pass the Host: line from the incoming request to the
                                  proxied host, instead of the hostname specified in the location. This option should
                                  normally be turned Off. It is mostly useful in special configurations like proxied mass
@@ -235,7 +238,7 @@ Description                      User friendly description for this location
 ================================ ========================================================================================
 
 
-When setting up a redirect, it will also match HTTPS if `Redirect HTTP to HTTPS` in General Settings has been enabled. If not,
+When setting up a redirect, it will also match HTTP if `Redirect HTTP to HTTPS` in General Settings has been enabled. If not,
 only HTTPS is matched.
 
 .. Note::
@@ -258,7 +261,7 @@ Type                             Exchange Server
 Remote destinations              Locations to redirect requests to, only one is allowed per location per redirect
 Restrict Exchange Paths          Restrict Exchange Server specific paths to networks provided in the Access control field.
                                  If paths are selected, exactly these paths will have the Access control attached.
-                                 Access to path / is filtered per default with a redirect to /owa.
+                                 Access to path `/` is filtered per default with a redirect to `/owa`.
                                  All non-selected paths will be allowed from all networks.
 Access control                   Constrain access to networks provided in this list, when not provided no
                                  constraints apply. When type is Exchange Server, it will restrict access to
@@ -266,43 +269,90 @@ Access control                   Constrain access to networks provided in this l
 Description                      User friendly description for this location
 ================================ ========================================================================================
 
+
+Prerequisites
+"""""""""""""""""""
+
 To successfully reverse proxy an Exchange Server, a few conditions must be met:
 
-The Exchange Server should be 2013, 2016 or 2019 and fully patched.
+- The Exchange Server should be 2013, 2016 or 2019 and fully patched.
+- The communication between Apache and the Exchange Server must happen via HTTPS.
+- The Exchange Server must have its internal and external URLs set correctly, preferably to the same hostnames that will be set as virtual servers.
 
-The communication between Apache and the Exchange Server must happen via HTTPS. The Exchange Server must have its internal and external
-URLs set correctly, preferably to the same hostnames that will be set as virtual servers.
+Common hostname/path combinations are:
 
-Common hostnames would be ``mail.example.com`` for:
+================================ ========================================================================================
+VirtualDirectory                 Internal and external URL of Exchange Server
+================================ ========================================================================================
+OwaVirtualDirectory              ``mail.example.com/owa``
+EcpVirtualDirectory              ``mail.example.com/ecp``
+WebServicesVirtualDirectory      ``mail.example.com/EWS/Exchange.asmx``
+ActiveSyncVirtualDirectory       ``mail.example.com/Microsoft-Server-ActiveSync``
+OabVirtualDirectory              ``mail.example.com/OAB``
+MapiVirtualDirectory             ``mail.example.com/mapi``
+OutlookAnywhere                  ``mail.example.com/rpc`` - `ExternalClientAuthenticationMethod` set to `Negotiate`
+ClientAccessService              ``autodiscover.example.com/Autodiscover/Autodiscover.xml``
+================================ ========================================================================================
 
-- OwaVirtualDirectory ``/owa``
-- EcpVirtualDirectory ``/ecp``
-- WebServicesVirtualDirectory ``/EWS/Exchange.asmx``
-- ActiveSyncVirtualDirectory ``/Microsoft-Server-ActiveSync``
-- OabVirtualDirectory ``/OAB``
-- MapiVirtualDirectory ``/mapi``
-- OutlookAnywhere (make sure 'ExternalClientAuthenticationMethod' is set to 'Negotiate')
-
-and ``autodiscover.example.com`` for
-
-- ClientAccessService ``/Autodiscover/Autodiscover.xml``
-
-
-These hostnames must be included into the SAN of a self-signed or externally signed (public trusted) certificate that is
-installed on the Exchange Server.
 When using a self-signed certificate, it must be imported into :menuselection:`System->Trust->Authorities`.
-Without trust established between the OPNsense and the Exchange Server, the connection will fail.
+The certificate must include ``mail.example.com`` and ``autodiscover.example.com`` in its SAN.
+Without trust established between the OPNsense and the Exchange Server, the connection will fail since only encrypted
+connections are allowed to an Exchange Server.
 
-Create two virtual servers with the FQDNs of the Exchange Server, one for ``autodiscover.example.com`` and one for
-``mail.example.com``. "Enable ACME" or use your own certificate, set "Header Security" to "Off / compatibility mode",
-set "Web Protection" to "Detection Only". Adjust these later once the Exchange Server works correctly through the reverse proxy.
 
-Attach a Location to each of these virtual servers with the internal IP address of the Exchange Server:
-e.g., ``https://192.168.10.10``. When the virtual servers have the same hostnames as the Exchange Server,
-trust is automatically established due to host header passthrough.
+Setup
+"""""""""""""""""""
 
-The location will create all virtual directories automatically, and activate Outlook Anywhere® passthrough with the included mod_proxy_msrpc module.
-With "Restrict Exchange Paths" and "Access control", access can be restricted. This is recommended for the ``/ecp`` path.
+Create two virtual servers with the hostnames of the Exchange Server, e.g., ``autodiscover.example.com`` and
+``mail.example.com``. Select `Enable ACME` or use your own certificate, set `Header Security` to ``Off / compatibility mode``,
+set `Web Protection` to ``Detection Only``. Adjust these later once the Exchange Server works correctly through the reverse proxy.
+
+Create a `Location` with the `Type` ``Exchange Server`` for each of these virtual servers. As `Remote destinations` use the internal IP address
+of the Exchange Server, e.g., ``https://192.168.10.10``. If the virtual servers use the same hostnames as the Exchange Server,
+trust is automatically established with host header passthrough.
+
+These new `Locations` will create all virtual directories the Exchange Server requires automatically,
+and activate Outlook Anywhere® passthrough.
+With the options `Restrict Exchange Paths` and `Access control`, access to specific paths can be restricted. This is recommended for the ``/ecp`` path.
+
+The finished configuration should look like this:
+
+**Virtual Server**
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Enabled                          ``X``
+ServerName                       ``mail.example.com`` (create another virtual server for ``autodiscover.example.com``)
+**Trust**
+Enable ACME                      ``X``
+SSL Proxy check peer             ``X``
+**Security**
+Header Security                  Off / compatibility mode
+TLS Security profile             Intermediate
+Web Protection                   Detection Only
+================================ ========================================================================================
+
+**Location**
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Enabled                          ``X``
+VirtualServer                    ``mail.example.com`` (create another location for ``autodiscover.example.com``)
+Type                             Exchange Server
+Remote destinations              ``https://192.168.10.10``
+Restrict Exchange Paths          ``/ecp``
+Access control                   ``192.168.0.0/16 172.16.0.0/12 10.0.0.0/8``
+================================ ========================================================================================
+
+
+.. Note::
+
+    In case an internal hostname is used in `Remote destinations`,
+    ensure this name is in the SAN and common name of the self-signed certificate of the Exchange Server.
+    This hostname must be resolvable from the OPNsense. Do not use the same hostname for `Virtual servers`
+    and `Remote destinations` to avoid creating a reverse proxy loop.
 
 
 Test web protection
