@@ -190,6 +190,9 @@ none                                This protocol is intended to do nothing: It 
                                     disabling the lagg interface itself.
 ==================================  ==================================================================================================
 
+
+Read `LAGG Setup </manual/how-tos/vlan_and_lagg.html>`_ for an example configuration.
+
 --------------
 Loopback
 --------------
@@ -223,6 +226,9 @@ Description                         User friendly description for this interface
 
     `802.1ad <https://en.wikipedia.org/wiki/IEEE_802.1ad>`__ , also known as QinQ, is supported via the VLAN configuration
     in which case you would stack a :code:`vlan` on top of a :code:`vlan`, the device name should start with qinq in that case.
+
+
+Read `VLAN Setup </manual/how-tos/vlan_and_lagg.html>`_ for an example configuration.
 
 ------
 VXLAN
