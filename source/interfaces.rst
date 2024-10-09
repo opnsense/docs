@@ -30,6 +30,31 @@ All traffic flowing through your appliance is using (virtual) interfaces, this i
 Setup Guides
 ========================
 
+
+Interfaces
+------------------------
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
+
+   manual/how-tos/vlan_and_lagg
+   manual/how-tos/lan_bridge
+   manual/how-tos/vxlan_bridge
+   manual/how-tos/transparent_bridge
+
+
+Wireless and Cellular
+------------------------
+
+.. toctree::
+   :maxdepth: 1
+   :titlesonly:
+
+   manual/how-tos/interface_wireless_internal
+   manual/how-tos/cellular
+
+
 IPv6 Guides
 ------------------------
 
@@ -42,26 +67,6 @@ IPv6 Guides
    manual/how-tos/ipv6_fb
    manual/how-tos/ipv6_tunnelbroker
 
-Network Bridges
-------------------------
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
-   manual/how-tos/lan_bridge
-   manual/how-tos/vxlan_bridge
-   manual/how-tos/transparent_bridge
-
-Wireless and Cellular
-------------------------
-
-.. toctree::
-   :maxdepth: 1
-   :titlesonly:
-
-   manual/how-tos/interface_wireless_internal
-   manual/how-tos/cellular
 
 ISP Configuration
 ------------------------
