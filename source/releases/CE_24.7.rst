@@ -31,6 +31,80 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.7.6 (October 09, 2024)
+--------------------------------------------------------------------------
+
+
+A few security and reliability issues this week.  Most notably Suricata
+and Unbound.  The dashboard rework seems to be concluded now as the
+ACL behaviour was aligned and should match the user expectation on
+the "Lobby" section privileges.  Note not all widgets have separate
+ACLs as it aims to provide a minimal safe selection of system widgets
+associated with the access to the dashboard page in general.
+
+We will, however, continue to improve the dashboard further while we
+also tackle other interesting areas for 25.1.  That being said have
+a look at the new roadmap `[1] <https://opnsense.org/about/road-map/>`__  we published recently.
+
+You may notice the increased activity on the trust store side due to
+our LINCE certification efforts.  Valuable feedback and code changes
+have come from this process that will also find their way into other
+related projects in the near future.
+
+Here are the full patch notes:
+
+* system: do not render non-reachable dashboard widget links
+* system: handle picture deletion via hidden input on general settings page
+* system: straighten out API ACL entries for several components
+* system: remove unreachable "page-getstats" ACL entry
+* system: adjust "page-system-login-logout" ACL entry to be used as a minimal dashboard privilege
+* system: deprecate the "page-dashboard-all" ACL entry as it will be removed in 25.1
+* system: add descriptions on CA and certificate downloads file names
+* system: show user icon when certificate is not otherwise used (in case CN matches any of our registered users)
+* system: add proper validation when certificates are being imported via CSR
+* system: add missing CRL changed event when CRLs are saved in the GUI
+* system: add a trust settings page and move existing trust settings there as well
+* system: optionally fetch and store CRLs attached to trusted authorities
+* system: improve and extend certctl.py script doing the trust store rehashing
+* system: enforce CRL behaviour for existing revocations in the trust store when doing remove syslog sending over TLS
+* interfaces: simplify and clarify pfsync reconfiguration hooks
+* interfaces: non-functional refactors in PPP configuration
+* interfaces: send IPv6 solicit immediately on WAN interfaces
+* firewall: add gateway groups to the list of gateways in automation rules
+* src: pf: revert part of 39282ef3 to properly log the drop due to state limits
+* src: pflog: pass the action to pflog directly
+* src: various check removals for malloc(M_WAITOK) driver calls
+* src: libpfctl: ensure we return useful error codes
+* src: x86/ucode: add support for early loading of CPU ucode on AMD
+* src: libfetch: improve optional CRL verification
+* src: fetch: fix "--crl" option not working
+* dhcrelay: refactor for plugins_argument_map() use
+* firmware: opnsense-verify now lists repository priorities
+* ipsec: add "make_before_break" option to settings
+* firmware: opnsense-verify now also lists repository priorities
+* kea-dhcp: add configurable "max-unacked-clients" parameter and change its default to 2
+* kea-dhcp: add missing constraint on IP address for reservations
+* openvpn: register OpenVPN group immediately when setting up instances
+* openvpn: push "data-ciphers-fallback" in client export when configured to align with legacy setup
+* unbound: port to newwanip_map / plugins_interface_map()
+* ui: remove bold text from tab headers for consistency
+* plugins: os-acme-client 4.6 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-caddy 1.7.2 `[3] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* plugins: os-frr 1.41 `[4] <https://github.com/opnsense/plugins/blob/stable/24.7/net/frr/pkg-descr>`__ 
+* plugins: os-smart 2.3 adds new dashboard widget (contributed by Francisco Dimattia)
+* ports: curl 8.10.1 `[5] <https://curl.se/changes.html#8_10_1>`__ 
+* ports: crowdsec fix for stuck service handling `[6] <https://discourse.crowdsec.net/t/bug-opnsense-24-7-5-crowdsec-1-6-3/2057>`__ 
+* ports: dhcp6c 20241008 properly handle NoAddrAvail status code
+* ports: monit 5.34.1 `[7] <https://mmonit.com/monit/changes/>`__ 
+* ports: php 8.2.24 `[8] <https://www.php.net/ChangeLog-8.php#8.2.24>`__ 
+* ports: dnspython 2.7.0
+* ports: py-duckdb 1.1.1 `[9] <https://github.com/duckdb/duckdb/releases/tag/v1.1.1>`__ 
+* ports: suricata 7.0.7 `[10] <https://suricata.io/2024/10/01/suricata-7-0-7-released/>`__ 
+* ports: unbound 1.21.1 `[11] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-21-1>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.7.5 (September 26, 2024)
 --------------------------------------------------------------------------
 
@@ -102,6 +176,11 @@ Here are the full patch notes:
 * ports: nss 3.104 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_104.html>`__ 
 * ports: python 3.11.10 `[8] <https://docs.python.org/release/3.11.10/whatsnew/changelog.html>`__ 
 * ports: sudo 1.9.16 `[9] <https://www.sudo.ws/stable.html#1.9.16>`__ 
+
+A hotfix release was issued as 24.7.5_3:
+
+* system: due to observed timing issues avoid the use of closelog()
+* openvpn: fix "auth-gen-token" being supplied in server mode
 
 
 
