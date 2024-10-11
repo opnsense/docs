@@ -72,12 +72,12 @@ The `Port Mode` describes the configuration of the `Managed Switch` ports.
 ===============  ================  ================  ======================================
 VLAN Tagged      VLAN Untagged     Port Mode         Device
 ===============  ================  ================  ======================================
-1,20,33          None              Trunk             Switch <-> OPNsense
-None             1                 Access            Switch <-> PC01
-None             1                 Access            Switch <-> PC02
+5,20,33          None              Trunk             Switch <-> OPNsense
+None             5                 Access            Switch <-> PC01
+None             5                 Access            Switch <-> PC02
 None             20                Access            Switch <-> WebServer01
-33               1                 Trunk             Switch <-> AccessPoint01
-33               1                 Trunk             Switch <-> AccessPoint02
+33               5                 Trunk             Switch <-> AccessPoint01
+33               5                 Trunk             Switch <-> AccessPoint02
 ===============  ================  ================  ======================================
 
 .. Tip::
@@ -137,7 +137,7 @@ Verify the status of the LAGG interface as up before continuing.
 
 See the section on `VLAN </manual/other-interfaces.html#vlan>`_ for more details.
 
-In our example setup we require tagged VLAN 1 (LAN), 20 (DMZ) and 33 (GUEST), and no untagged VLAN.
+In our example setup we require tagged VLAN 5 (LAN), 20 (DMZ) and 33 (GUEST), and no untagged VLAN.
 If you skipped Step 1, create the VLAN directly on a physical interface like ``igc0``.
 
 - | Go to :menuselection:`Interfaces --> Other Types --> VLAN` and add new entries:
@@ -145,10 +145,10 @@ If you skipped Step 1, create the VLAN directly on a physical interface like ``i
 =============================  ===============  ===============  ===============
 **Option**                     **LAN**          **DMZ**          **GUEST**
 =============================  ===============  ===============  ===============
-Device                         ``vlan0.1``      ``vlan0.20``     ``vlan0.33``
+Device                         ``vlan0.5``      ``vlan0.20``     ``vlan0.33``
 Parent                         ``lagg0``        ``lagg0``        ``lagg0``
-VLAN tag                       ``1``            ``20``           ``33``
-Description                    ``vlan0.1``      ``vlan0.20``     ``vlan0.33``
+VLAN tag                       ``5``            ``20``           ``33``
+Description                    ``vlan0.5``      ``vlan0.20``     ``vlan0.33``
 =============================  ===============  ===============  ===============
 
 
@@ -160,7 +160,7 @@ Description                    ``vlan0.1``      ``vlan0.20``     ``vlan0.33``
 .. Tip::
 
     A good choice is using descriptive names for interfaces with a template like ``interface_vlan_description``.
-    In our example this results in ``lagg0_vlan1_LAN``, ``lagg0_vlan20_DMZ`` and ``lagg0_vlan33_GUEST``.
+    In our example this results in ``lagg0_vlan5_LAN``, ``lagg0_vlan20_DMZ`` and ``lagg0_vlan33_GUEST``.
     This improves administration, especially in large setups with multiple interfaces being parents to different VLAN.
 
 
@@ -187,10 +187,10 @@ To create connectivity between assigned VLAN interfaces via `Inter-VLAN-Routing`
 It is good practice to embedd the VLAN IDs into the layer 3 networks, if possible.
 
 =============================  ==============================  ==============================  ==============================
-**Description**                **lagg0_vlan1_LAN**             **lagg0_vlan20_DMZ**            **lagg0_vlan33_GUEST**
+**Description**                **lagg0_vlan5_LAN**             **lagg0_vlan20_DMZ**            **lagg0_vlan33_GUEST**
 =============================  ==============================  ==============================  ==============================
 IPv4 Configuration Type        ``Static IPv4``                 ``Static IPv4``                 ``Static IPv4``
-IPv4 address                   ``192.168.1.1/24``              ``192.168.20.1/24``              ``192.168.33.1/24``
+IPv4 address                   ``192.168.5.1/24``              ``192.168.20.1/24``              ``192.168.33.1/24``
 =============================  ==============================  ==============================  ==============================
 
 .. Attention::
@@ -205,7 +205,7 @@ even though they are connected to the same switch.
 
 The OPNsense is responsible to route packets between VLANs.
 
-It is the default gateway in VLAN 1, 20 and 33.
+It is the default gateway in VLAN 5, 20 and 33.
 It will receive packets with destination IP addresses to the other locally connected networks, and route according to its routing table.
 Access can be controlled with `Firewall Rules`, essentially creating different security zones.
 
