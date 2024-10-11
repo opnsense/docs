@@ -294,7 +294,7 @@ OutlookAnywhere                  ``mail.example.com/rpc`` - `ExternalClientAuthe
 ClientAccessService              ``autodiscover.example.com/Autodiscover/Autodiscover.xml``
 ================================ ========================================================================================
 
-When using a self-signed certificate, it must be imported into :menuselection:`System->Trust->Authorities`.
+When using a self-signed certificate, the authority for the certificate must be imported into :menuselection:`System->Trust->Authorities`.
 The certificate must include ``mail.example.com`` and ``autodiscover.example.com`` in its SAN.
 Without trust established between the OPNsense and the Exchange Server, the connection will fail since only encrypted
 connections are allowed to an Exchange Server.
