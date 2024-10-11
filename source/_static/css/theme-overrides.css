@@ -58,7 +58,7 @@ footer a:hover, footer a:visited:hover {color:#373736}
 .wy-nav-top a:hover, .wy-nav-top a:visited:hover {color: #C03E14;}
 .wy-side-nav-search a.icon.icon-home {    font-size: 0;    color: transparent;}
 .wy-side-nav-search {padding:1em;border-right:1px solid}
-.wy-side-nav-search>div.version, .wy-side-nav-search .wy-dropdown>a, .wy-side-nav-search>a {    color: #B0B0B1;}
+.wy-side-nav-search>div.version, .wy-side-nav-search .wy-dropdown>a, .wy-side-nav-search>a {    color: #9b9b9b;}
 .wy-side-nav-search>a:hover,  .wy-side-nav-search>a:visited:hover {color:#373736}
 .wy-side-nav-search .wy-dropdown>a.icon img.logo, .wy-side-nav-search>a.icon img.logo {
     margin-top: 0px;
