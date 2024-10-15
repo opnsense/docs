@@ -2,7 +2,9 @@
 Dynamic DNS
 ====================================================
 
-Use the Dynamic DNS service to update DNS records when your appliance's IP addresses change, to ensure your services stay reachable.
+In order to update DNS records when the firewall's IP address changes, use a dynamic DNS service provider.
+
+Our `os-ddclient` plugin offers support for various dynamic DNS services using either the `ddclient <https://ddclient.net/>`_ software or our native backend.
 
 Prerequisites
 ---------------------------
@@ -61,7 +63,7 @@ Force SSL               Enable connecting to IP checking and updating services o
 
 .. Note::
 
-      To update a fully-qualified domain name's :code:`A` (IPv4) and :code:`AAAA` (IPv6) records, you must:
+      To update a fully-qualified domain name's :code:`A` (IPv4) record and :code:`AAAA` (IPv6) record, you must:
       * Add one account for IPv4 with the "Check ip method" set to an IPv4 service
       * Add one account for IPv6 with the "Check ip method" set to an IPv6 service
       * On the *General Settings* tab, enable "Allow IPv6"
