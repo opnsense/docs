@@ -71,17 +71,8 @@ Here are the full patch notes:
 * interfaces: non-functional refactors in PPP configuration
 * interfaces: send IPv6 solicit immediately on WAN interfaces
 * firewall: add gateway groups to the list of gateways in automation rules
-* src: pf: revert part of 39282ef3 to properly log the drop due to state limits
-* src: pflog: pass the action to pflog directly
-* src: various check removals for malloc(M_WAITOK) driver calls
-* src: libpfctl: ensure we return useful error codes
-* src: x86/ucode: add support for early loading of CPU ucode on AMD
-* src: libfetch: improve optional CRL verification
-* src: fetch: fix "--crl" option not working
 * dhcrelay: refactor for plugins_argument_map() use
-* firmware: opnsense-verify now lists repository priorities
 * ipsec: add "make_before_break" option to settings
-* firmware: opnsense-verify now also lists repository priorities
 * kea-dhcp: add configurable "max-unacked-clients" parameter and change its default to 2
 * kea-dhcp: add missing constraint on IP address for reservations
 * openvpn: register OpenVPN group immediately when setting up instances
@@ -92,6 +83,13 @@ Here are the full patch notes:
 * plugins: os-caddy 1.7.2 `[3] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
 * plugins: os-frr 1.41 `[4] <https://github.com/opnsense/plugins/blob/stable/24.7/net/frr/pkg-descr>`__ 
 * plugins: os-smart 2.3 adds new dashboard widget (contributed by Francisco Dimattia)
+* src: pf: revert part of 39282ef3 to properly log the drop due to state limits
+* src: pflog: pass the action to pflog directly
+* src: various check removals for malloc(M_WAITOK) driver calls
+* src: libpfctl: ensure we return useful error codes
+* src: x86/ucode: add support for early loading of CPU ucode on AMD
+* src: libfetch: improve optional CRL verification
+* src: fetch: fix "--crl" option not working
 * ports: curl 8.10.1 `[5] <https://curl.se/changes.html#8_10_1>`__ 
 * ports: crowdsec fix for stuck service handling `[6] <https://discourse.crowdsec.net/t/bug-opnsense-24-7-5-crowdsec-1-6-3/2057>`__ 
 * ports: dhcp6c 20241008 properly handle NoAddrAvail status code
@@ -453,7 +451,7 @@ Here are the full patch notes:
 * backend: patch -6 address support into pluginctl
 * mvc: fix API endpoint sending data without giving the Response object the chance to flush its headers
 * plugins: os-acme-client 4.5 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/security/acme-client/pkg-descr>`__ 
-* plugins: os-apcupsd 1.2 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/sysutils/apcuspd/pkg-descr>`__ 
+* plugins: os-apcupsd 1.2 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/sysutils/apcupsd/pkg-descr>`__ 
 * plugins: os-caddy 1.6.2 `[3] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
 * plugins: os-ddclient 1.23 `[4] <https://github.com/opnsense/plugins/blob/stable/24.7/dns/ddclient/pkg-descr>`__ 
 * plugins: os-theme-rebellion 1.9.1 fixes more compatibility issues with new dashboard (contributed by Team Rebellion)

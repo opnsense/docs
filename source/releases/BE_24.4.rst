@@ -36,6 +36,10 @@ Here are the full patch notes:
 * ui: allow style tag on headers
 * ports: openssl 3.0.15 `[1] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 
+A hotfix release was issued as 24.4.3_1:
+
+* firmware: add fingerprint, migration notes and upgrade hint for 24.10
+
 
 
 --------------------------------------------------------------------------

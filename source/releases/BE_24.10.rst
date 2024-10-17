@@ -1,0 +1,376 @@
+===========================================================================================
+24.10  Series
+===========================================================================================
+
+
+The OPNsense business edition transitions to this 24.10 release including
+ZFS snapshot support via GUI/API, rewritten dashboard, system trust MVC/API
+support, GRE and GIF MVC/API support, NAT 1-to-1 MVC/API support, WireGuard
+QR code generator, dynamic IPsec VTI tunnel support, experimental OpenVPN
+DCO support, FreeBSD 14.1, Python 3.11 plus much more.
+
+Please make sure to read the migration notes before upgrading.
+
+Download link is as follows.  An installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for
+the images can be found below as well.
+
+https://downloads.opnsense.com/
+
+
+--------------------------------------------------------------------------
+24.10 (October 17, 2024)
+--------------------------------------------------------------------------
+
+The OPNsense business edition transitions to this 24.10 release including
+ZFS snapshot support via GUI/API, rewritten dashboard, system trust MVC/API
+support, GRE and GIF MVC/API support, NAT 1-to-1 MVC/API support, WireGuard
+QR code generator, dynamic IPsec VTI tunnel support, experimental OpenVPN
+DCO support, FreeBSD 14.1, Python 3.11 plus much more.
+
+Please make sure to read the migration notes before upgrading.
+
+Download link is as follows.  An installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for
+the images can be found below as well.
+
+https://downloads.opnsense.com/
+
+This business release is based on the OPNsense 24.7.6 community version
+with additional reliability improvements.
+
+Here are the full changes against version 24.4.3:
+
+* system: remove "load_balancer" configuration remnants from core
+* system: replace usage of mt_rand() with random_int()
+* system: rewrote Trust configuration using MVC/API
+* system: add XMLRPC option for OpenDNS
+* system: rewrote the high availability settings page using MVC/API
+* system: remove obsolete SSH DSA key handling
+* system: replaced the dashboard with a modern alternative with streaming widgets
+* system: harden a number of PHP settings according to best practices
+* system: support streaming of log files for the new dashboard widget
+* system: assorted dashboard widget tweaks
+* system: sidebar optimisation and fixes (contributed by Team Rebellion)
+* system: set short Cache-Control lifetime for widgets
+* system: fix disk widget byte unit "B" parsing crashing the whole widget
+* system: increase widget timeout to 5 seconds
+* system: cores and threads flipped in system widget
+* system: increase the PHP children count of the web GUI
+* system: guard destroy on traffic widget
+* system: adjust address display in interfaces widget
+* system: fix display of multiple sources in thermal sensor widget
+* system: add load average back to system info widget
+* system: remove dots from traffic widget graphs
+* system: add publication date to announcement widget
+* system: fix monit widget status code handling
+* system: allow and persist vertical resize in widgets
+* system: improve formatting of byte values in widgets
+* system: update OpenVPN widget server status color
+* system: add aggregated traffic information about connected children in IPsec widget
+* system: remove animated transition from row hover for table widgets
+* system: improve the styling of the widget lock button
+* system: apply locked state to newly added widgets as well
+* system: account for removal of rows in non-rotated widget tables with top headers
+* system: use "importmap" to force cache safe imports of base classes for widgets
+* system: allow custom fonts in the widgets with gauges (contributed by Jaka Prasnika)
+* system: add monitor IP to gateway API result (contributed by Herman Bonnes)
+* system: better define "in use" flag and safety guards in certificates section
+* system: export p12 resulted in mangled binary blob in certificates section
+* system: when using debug kernels prevent them from triggering unrelated panics on assertions
+* system: switch Twitter to Reddit URL in message of the day
+* system: fix API exception on empty CA selection
+* system: CRL import ignored text input and triggered unrelated validations
+* system: improve the locking during web GUI restart
+* system: improve WireGuard and IPsec widgets
+* system: add CPU widget graph selection
+* system: reformat traffic graphs to bps
+* system: add gateway widget item selection
+* system: add table view to interface statistics widget on expansion
+* system: improve widget error recovery
+* system: fix wrong variable assignment in system log search backend
+* system: add missing delAction() for proper CRL removal
+* system: remove obsolete dashboard sync
+* system: compact services widget on dashboard
+* system: convert lock mode to edit mode on dashboard
+* system: link certificates by subject on import
+* system: unify how log search clauses work and add a search time constraint
+* system: move to static imports for widget base classes on dashboard
+* system: fix ACL check on dashboard restore and add safety check for save action
+* system: change dashboard modify buttons to a bootstrap group (contributed by Jaka Prašnikar)
+* system: use built-in controller logic for JSON decoding on dashboard
+* system: map derivative field cert_type to expose purpose to the UI
+* system: handle stale "pfsyncinterfaces" and improve workflow
+* system: tweak the boot detection for code minimalism
+* system: do not save x/y widget coordinates on smaller screens
+* system: fix CARP widget on invalid CARP configuration
+* system: fix storing private key when creating a CSR
+* system: update default dashboard layout and include the services widget
+* system: render header for failed active widgets to allow identification and removal
+* system: add ability for widget referral links
+* system: cleaned up ACL definitions and use thereof
+* system: add a picture widget
+* system: default to vm.numa.disabled=1
+* system: handle log lines with no timestamp (contributed by Iain MacDonnell)
+* system: use interface maps in system_routing_configure() and dpinger_configure_do()
+* system: when only selecting TLS1.3 ciphers make sure to only allow 1.3 as well in web GUI
+* system: move web GUI restart to newwanip_map / plugins_argument_map() use
+* system: due to observed timing issues avoid the use of closelog()
+* system: do not render non-reachable dashboard widget links
+* system: handle picture deletion via hidden input on general settings page
+* system: straighten out API ACL entries for several components
+* system: remove unreachable "page-getstats" ACL entry
+* system: adjust "page-system-login-logout" ACL entry to be used as a minimal dashboard privilege
+* system: deprecate the "page-dashboard-all" ACL entry as it will be removed in 25.1
+* system: add descriptions on CA and certificate downloads file names
+* system: show user icon when certificate is not otherwise used (in case CN matches any of our registered users)
+* system: add proper validation when certificates are being imported via CSR
+* system: add missing CRL changed event when CRLs are saved in the GUI
+* system: add a trust settings page and move existing trust settings there as well
+* system: optionally fetch and store CRLs attached to trusted authorities
+* system: improve and extend certctl.py script doing the trust store rehashing
+* system: enforce CRL behaviour for existing revocations in the trust store when doing remove syslog sending over TLS
+* system: untrusted directory changed in FreeBSD 14
+* system: add OpenSSH "RekeyLimit" with a limited set of choices
+* system: improve context of changed/modified message in certctl.py
+* reporting: start using cron for RRD collection
+* reporting: remove nonexistent 3G statistics
+* interfaces: rewrote GRE configuration using MVC/API
+* interfaces: rewrote GIF configuration using MVC/API
+* interfaces: temporary flush SLAAC addresses in DHCPv6 WAN mode to avoid using them primarily
+* interfaces: add peer/peer6 options to CARP VIPs
+* interfaces: allow to assign a prefix ID to WAN interface in DHCPv6 as well
+* interfaces: allow to set manual interface ID in DHCPv6 and tracking modes
+* interfaces: improve apply of the new peer/peer6 options to avoid unneeded reset
+* interfaces: avoid deprecating SLAAC address for now
+* interfaces: require PPP interface to be in up state (contributed by Nicolai Scheer)
+* interfaces: lock down PPP modes when editing interfaces
+* interfaces: backport required interface_ppps_capable()
+* interfaces: retire interfaces_bring_up()
+* interfaces: add "newwanip_map" event and deprecate old "newwanip" one
+* interfaces: keep 24.7 backwards compatibility by allowing 6RD and 6to4 on PPP
+* interfaces: add logging to PPP link scripts to check for overlap
+* interfaces: return correct uppercase interface name in getArp()
+* interfaces: fix issue with PPP port not being posted
+* interfaces: force regeneration of link-local on spoofed MAC
+* interfaces: add proper validation for 6RD and 6to4
+* interfaces: add new "vpn_map" event to deprecate "vpn"
+* interfaces: unify PPP linkup/linkdown scripting
+* interfaces: replace "newwanip" from interface apply with "early"
+* interfaces: move IPv6 over IPv4 connectivity to a separate script
+* interfaces: port VXLAN to newwanip_map event
+* interfaces: fix PPP regression of empty gateway default
+* interfaces: move compatible event listeners to newwanip_map
+* interfaces: decouple PPP configure/reset from IPv4/IPv6 modes
+* interfaces: move legacy RFC2136 invoke to plugin hook
+* interfaces: add "spoofmac" device option and enforce it
+* interfaces: prevent CARP VIP removal when VHID group is in use by IP aliases
+* interfaces: routing configuration on changed interfaces only during apply
+* interfaces: simplify and clarify pfsync reconfiguration hooks
+* interfaces: non-functional refactors in PPP configuration
+* interfaces: send IPv6 solicit immediately on WAN interfaces
+* firewall: performance improvements in alias handling
+* firewall: refactor pftop output, move search to controller layer and implement cache for sessions page
+* firewall: support streaming of filter logs for the new dashboard widget
+* firewall: fix one-to-one NAT migration with external address without a subnet set
+* firewall: fix parsing port alias names in /etc/services
+* firewall: replace filter_(un)lock() with a FileObject lock
+* firewall: add gateway groups to the list of gateways in automation rules
+* captive portal: add "Allow inbound" option to select interfaces which may enter the zone
+* captive portal: remove defunct transparent proxy settings
+* captive portal: clean up the codebase
+* captive portal: fix client disconnect (contributed by Vivek Panchal)
+* dhcrelay: start on "newwanip_map" event as well
+* dhcrelay: refactor for plugins_argument_map() use
+* firmware: revoke old fingerprints
+* firmware: remove inactive mirrors from the list
+* firmware: introduce sanity checks prior to upgrades
+* firmware: cleanup package manager temporary files prior to upgrades
+* firmware: remove auto-retry from fetch invokes
+* firmware: allow auto-configure patching via full URL
+* firmware: automatically handle most plugin conflicts
+* firmware: opnsense-update: support unescaped mirror input (contributed by Michael Gmelin)
+* firmware: opnsense-verify: show repository priority while listing active repositories
+* firmware: CRL checking for business update mirror
+* intrusion detection: update the default suricata.yaml (contributed by Jim McKibben)
+* intrusion detection: fix indent in suricata.yaml
+* ipsec: prevent gateway when remote gateway family does not match selected protocol in legacy tunnel configuration
+* ipsec: add aggregated traffic totals to phase 1 view
+* ipsec: advanced settings MVC/API conversion
+* ipsec: add retransmission settings in charon section in advanced settings
+* ipsec: move two logging settings to correct location misplaced in previous version
+* ipsec: fix migration and regression during handling of "disablevpnrules" setting
+* ipsec: convert to vpn_map event invoke and plugins_argument_map() use
+* ipsec: add "make_before_break" option to settings
+* ipsec: fix advanced option "max_ikev1_exchanges"
+* isc-dhcp: do not reload DNS services when editing static mappings to match behaviour with Kea
+* kea-dhcp: ignore invalid hostnames in static mappings to prevent DNS services crashes
+* kea-dhcp: add configurable "max-unacked-clients" parameter and change its default to 2
+* kea-dhcp: add missing constraint on IP address for reservations
+* monit: expose HTTPD username and password settings to GUI
+* monit: fix undefined function error in CARP script
+* network time: enable "restrict noquery" by default (contributed by doktornotor)
+* openssh: convert to newwanip_map and rework the code
+* openssh: port to plugins_argument_map()
+* openvpn: optionally support DCO devices for instances
+* openvpn: remove duplicate and irrelevant data for the client session in question
+* openvpn: add "remote_cert_tls" option to instances
+* openvpn: disable DCO permanently in legacy client/server configuration
+* openvpn: use new trust model to link users by common_name in exporter
+* openvpn: DCO mode only supports UDP on FreeBSD
+* openvpn: unhide server fields for DCO instances
+* openvpn: validate "Auth Token Lifetime" to require a non-zero renegotiate time in instances
+* openvpn: convert to vpn_map event invoke and plugins_argument_map() use
+* openvpn: fix "auth-gen-token" being supplied in server mode
+* openvpn: register OpenVPN group immediately when setting up instances
+* openvpn: push "data-ciphers-fallback" in client export when configured to align with legacy setup
+* unbound: add discard-timeout (contributed by Nigel Jones)
+* unbound: port to newwanip_map / plugins_interface_map()
+* wireguard: support CARP VHID reuse on different interfaces
+* wireguard: fix widget display with public key reuse
+* wireguard: convert to vpn_map event invoke
+* backend: add "cache_ttl" parameter to allow for generic caching of actions
+* backend: run default action "configd actions" when none was specified
+* backend: extended support for streaming actions
+* backend: patch -6 address support into pluginctl
+* backend: cache file cleanup when TTL is reached
+* installer: update the ZFS install script to the latest FreeBSD 14.1 code
+* installer: prefer ZFS over UFS in main menu selection
+* mvc: replaced most of the Phalcon MVC use with a native band compatible implementation
+* mvc: improve searchRecordsetBase() filtering capabilities
+* mvc: remove obsolete getParams() usage in ApiControllerBase
+* mvc: hook default index action in API handler
+* mvc: fix API regression due to getParams() removal
+* mvc: make Response->setContentType() second argument optional
+* mvc: fix API endpoint sending data without giving the Response object the chance to flush its headers
+* mvc: remove setJsonContent() and make sure Response->send() handles array types properly
+* mvc: FileObject write() should sync by default
+* mvc: when a hint is provided, also show them for selectpickers
+* rc: export default ZPOOL_IMPORT_PATH
+* rc: fix banner HTTPS fingerprint
+* ui: assorted improvements for screen readers (contributed by Jason Fayre)
+* ui: add "select all" to standard form selectors and remove dialog on "clear all" for tokenizers
+* ui: lock save button while in progress to prevent duplicate input on Bootgrid
+* ui: backport accessibility fix in Bootstrap
+* ui: sidebar submenu expand fix (contributed by Team Rebellion)
+* ui: refine cookie policies and make them explicit
+* ui: remove bold text from tab headers for consistency
+* plugins: add plugins_argument_map() helper
+* plugins: os-OPNWAF 1.6 with multiple new features (see info in firmware plugins tab for details)
+* plugins: os-acme-client 4.6 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-apcupsd 1.2 `[3] <https://github.com/opnsense/plugins/blob/stable/24.7/sysutils/apcupsd/pkg-descr>`__ 
+* plugins: os-caddy 1.7.2 `[4] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* plugins: os-cpu-microcode-amd 1.0
+* plugins: os-cpu-microcode-intel 1.0
+* plugins: os-ddclient 1.24 `[5] <https://github.com/opnsense/plugins/blob/stable/24.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-dec-hw 1.1 replaces the dashboard widget
+* plugins: os-etpro-telemetry 1.7 replaces dashboard widget
+* plugins: os-freeradius 1.9.25 `[6] <https://github.com/opnsense/plugins/blob/stable/24.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.41 `[7] <https://github.com/opnsense/plugins/blob/stable/24.7/net/frr/pkg-descr>`__ 
+* plugins: os-helloworld 1.4
+* plugins: os-intrusion-detection-content-snort-vrt 1.2 switch to newer ruleset snapshot (contributed by Jim McKibben)
+* plugins: os-nginx 1.34 `[8] <https://github.com/opnsense/plugins/blob/stable/24.7/www/nginx/pkg-descr>`__ 
+* plugins: os-smart 2.3 adds new dashboard widget (contributed by Francisco Dimattia)
+* plugins: os-theme-advanced 1.0 based on AdvancedTomato (contributed by Jaka Prašnikar)
+* plugins: os-theme-cicada 1.38 (contributed by Team Rebellion)
+* plugins: os-theme-rebellion 1.9.1 fixes more compatibility issues with new dashboard (contributed by Team Rebellion)
+* plugins: os-theme-tukan 1.28 (contributed by Dr. Uwe Meyer-Gruhl)
+* plugins: os-theme-vicuna 1.48 (contributed by Team Rebellion)
+* plugins: os-udpbroadcastrelay API error fixes (contributed by Team Rebellion)
+* plugins: os-upnp 1.6 `[9] <https://github.com/opnsense/plugins/blob/stable/24.7/net/upnp/pkg-descr>`__ 
+* plugins: os-wol 2.5 adds widget for new dashboard (contributed by Michał Brzeziński)
+* src: FreeBSD 14.1-RELEASE `[10] <https://www.freebsd.org/releases/14.1R/relnotes/>`__ 
+* src: assorted backports from FreeBSD stable/14 branch
+* src: ktrace(2) fails to detach when executing a setuid binary `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:06.ktrace.asc>`__ 
+* src: NFS client accepts file names containing path separators `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:07.nfsclient.asc>`__ 
+* src: xen/netfront: Decouple XENNET tags from mbuf lifetimes
+* src: dummynet: fix fq_pie traffic stall
+* src: mcast: fix leaked igmp packets on multicast cleanup
+* src: wg: change dhost to something other than a broadcast address (contributed by Sunny Valley Networks)
+* src: axgbe: implement ifdi_i2c_req for diagnostics information
+* src: if_clone: allow maxunit to be zero
+* src: if_pflog: limit the maximum unit via the new KPI
+* src: pf: vnet-ify pf_hashsize, pf_hashmask, pf_srchashsize and V_pf_srchashmask
+* src: u3g: add SIERRA AC340U
+* src: agp: Set the driver-specific field correctly
+* src: cron(8) / periodic(8) session login `[13] <https://www.freebsd.org/security/advisories/FreeBSD-EN-24:15.calendar.asc>`__ 
+* src: multiple vulnerabilities in libnv `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:09.libnv.asc>`__ 
+* src: bhyve(8) privileged guest escape via TPM device passthrough `[15] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:10.bhyve.asc>`__ 
+* src: multiple issues in ctl(4) CAM target layer `[16] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:11.ctl.asc>`__ 
+* src: bhyve(8) privileged guest escape via USB controller `[17] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:12.bhyve.asc>`__ 
+* src: possible DoS in X.509 name checks in OpenSSL `[18] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:13.openssl.asc>`__ 
+* src: umtx kernel panic or use-after-free `[19] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:14.umtx.asc>`__ 
+* src: revert "ixl: fix multicast filters handling" `[20] <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=281125>`__ 
+* src: bhyve: improve input validation in pci_xhci `[21] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:15.bhyve.asc>`__ 
+* src: libnv: correct the calculation of the size of the structure `[22] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:16.libnv.asc>`__ 
+* src: ifnet: Remove if_getamcount()
+* src: ifnet: Add handling for toggling IFF_ALLMULTI in ifhwioctl()
+* src: ifconfig: Add an allmulti verb
+* src: date: include old and new time in audit log
+* src: bpf: Add IfAPI analogue for bpf_peers_present()
+* src: pf: use AF_INET6 when comparing IPv6 addresses
+* src: if_ovpn: ensure it is safe to modify the mbuf
+* src: if_ovpn: declare our dependency on the crypto module
+* src: pf: revert part of 39282ef3 to properly log the drop due to state limits
+* src: pflog: pass the action to pflog directly
+* src: various check removals for malloc(M_WAITOK) driver calls
+* src: libpfctl: ensure we return useful error codes
+* src: x86/ucode: add support for early loading of CPU ucode on AMD
+* src: libfetch: improve optional CRL verification
+* src: fetch: fix "--crl" option not working
+* ports: curl 8.10.1 `[23] <https://curl.se/changes.html#8_10_1>`__ 
+* ports: dhcp6c 20241008
+* ports: dhcrelay 1.0 `[24] <https://github.com/opnsense/dhcrelay/issues/2>`__ 
+* ports: dnspython 2.7.0
+* ports: expat 2.6.3 `[25] <https://github.com/libexpat/libexpat/blob/R_2_6_3/expat/Changes>`__ 
+* ports: hostapd 2.11 `[26] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
+* ports: kea 2.6.1 `[27] <https://downloads.isc.org/isc/kea/2.6.1/Kea-2.6.1-ReleaseNotes.txt>`__ 
+* ports: libpfctl 0.13
+* ports: libxml 2.11.9 `[28] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: monit 5.34.1 `[29] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.104 `[30] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_104.html>`__ 
+* ports: openvpn 2.6.12 `[31] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.12>`__ 
+* ports: phalcon 5.8.0 `[32] <https://github.com/phalcon/cphalcon/releases/tag/v5.8.0>`__ 
+* ports: php 8.2.24 `[33] <https://www.php.net/ChangeLog-8.php#8.2.24>`__ 
+* ports: phpseclib 3.0.41 `[34] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.41>`__ 
+* ports: pkg fix for for embedded libfetch when doing CRL verification
+* ports: py-duckdb 1.1.1 `[35] <https://github.com/duckdb/duckdb/releases/tag/v1.1.1>`__ 
+* ports: python 3.11.10 `[36] <https://docs.python.org/release/3.11.10/whatsnew/changelog.html>`__ 
+* ports: rrdtool 1.9.0 `[37] <https://github.com/oetiker/rrdtool-1.x/releases/tag/v1.9.0>`__ 
+* ports: sqlite 3.46.1 `[38] <https://sqlite.org/releaselog/3_46_1.html>`__ 
+* ports: sudo 1.9.16 `[39] <https://www.sudo.ws/stable.html#1.9.16>`__ 
+* ports: suricata 7.0.7 `[40] <https://suricata.io/2024/10/01/suricata-7-0-7-released/>`__ 
+* ports: syslog-ng 4.8.0 `[41] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.8.0>`__ 
+* ports: unbound 1.21.1 `[42] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-21-1>`__ 
+* ports: wpa_supplicant 2.11 `[43] <https://w1.fi/cgit/hostap/plain/wpa_supplicant/ChangeLog>`__ 
+
+Migration notes, known issues and limitations:
+
+* The dashboard has been replaced. Widgets from the old format are no longer supported and need to be rewritten by the respective authors.
+* ISC DHCP will no longer reload DNS services on static mapping edits. This is for feature parity with Kea DHCP and avoiding cross-service complications. If you expect your static mappings to show up in a particular DNS service please restart this service manually.
+
+The public key for the 24.10 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAunCgLymz7ichjk+uZ4pR
+    # XwFX8FxG0KFBf4f6kCfQ+wNF9KTFBELzGg2tXPUmrJD/DzcMqQExP3WyTg0Z96ZW
+    # HofN2AbOCG84PpNlsKXpaUtm9Ow8kiYh7tn26eX7FaOEPtpJkMiwUymbCJJaPE0O
+    # smQbWGnJTvF8LTmuviPoiMrPv1cJ0kEyJvjDD0yMw1HrIgwPOazGmTQiuM3LoLOK
+    # F0KWf2p40c77QDOuGC7AIobQgDkZTabfU7PQUn6gDiKARYCst7y2xX3OQ7foXCJW
+    # nDDypfbfHixv77mVAeIED0h9ZsQaIHskL2dqqRbFHiY+OHjQTCAJP1Ptm/HGSCdj
+    # GOjpuD4WXvxru8AgcOCh6GpqO4IbByIHXu+67Ur3UBlxsp4x44lxBWXQzeemVhaS
+    # ZAmkJNemw51oRDTxYtpR7TF3OlgLAQBOB/0tqHmkbSBouQ6PK7HYzNglu9LStxo1
+    # uxgMss5q8GoZCkWKvRDz87YceeC75l0aWOVnkOMmC5Lf+fFMJp6TF7BzCi3ZC7CD
+    # DQchBlE2F98D3E7KiI4vGrLUj3qKwfwV41JSQ8OtwOV+KFGOmyHeNassTQHm1Mdn
+    # reTzHeusqUdAL7+pXH1XNwoFSZo7A6RoZzTzb0p7WYbKU9SV39DPytsYES7FsyY8
+    # l7+AsM+sBOY1ngeB/twBzyUCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-business-24.10-dvd-amd64.iso.bz2) = 0316ee09336945462b26bc40f8ac65ca7cf4cf0ca1a3f584170a4d1a06e3e82f
+    # SHA256 (OPNsense-business-24.10-nano-amd64.img.bz2) = 16a06aa22fe3913b2f1e707b726a32d92d805e160bd7f42f42af8f7845684af6
+    # SHA256 (OPNsense-business-24.10-serial-amd64.img.bz2) = 19f57cc5f0d4190f6c0cf2ff1d3ed5e170929352ab58db92f2b1714be485b4b6
+    # SHA256 (OPNsense-business-24.10-vga-amd64.img.bz2) = 8afb164cbd9c4b7f8032377bdfd0161c40b9fea74f40e40a156aff594f1a6897

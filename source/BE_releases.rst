@@ -21,6 +21,7 @@ The list below contains all releases, ordered by version number categorized by m
    :titlesonly:
    :glob:
 
+   releases/BE_24.10
    releases/BE_24.4
    releases/BE_23.10
    releases/BE_23.4
