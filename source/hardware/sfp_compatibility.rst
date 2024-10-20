@@ -109,6 +109,7 @@ FlexOptix P.1396.10 SMF 1310nm Duplex-LC 10G     Tested module rated for 10km,
                                                  other distances are assumed to function properly
 FlexOptix P.B1696.10.DA + P.B1696.10.AD  10G     Simplex-LC. Two complementary modules are needed.
 FS        XGS-ONU-25-20NI                10G     XGSPON
+Zaram     ZXOS11NPI                      10G     XGSPON
 ========= ============================== ======= =========================
 
 --------------------------------------
