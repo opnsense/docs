@@ -202,7 +202,7 @@ none                                This protocol is intended to do nothing: It 
 **LACP timeout**
 
 LACP timeout has two modes; Slow/normal and Fast. It handles how fast the re-convergence occurs in case of link failure.
-This specifies how often are the heartbeats sent between the two LAGG connected devices
+This specifies how often the heartbeats are sent between the two LAGG connected devices.
 
 ==================================  =================================  =================================================================
 LACP mode                           Heartbeat/Timeout interval         Enable
