@@ -88,7 +88,7 @@ None             20                Access            Switch <-> WebServer01
 
 .. Tip::
 
-    If we on the switch specify a VLAN in the Access Port mode, the switch itself will on Ingress of this port assign any unTAGGed frame to the specific
+    The `Access Port` of a `Managed Switch` will tag ingress frames with its configured VLAN, and strip egress frames of VLAN tags.
     VLAN. And on Egress of this port remove the VLAN TAG.
 
 .. Tip::
