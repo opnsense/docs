@@ -92,7 +92,7 @@ None             20                Access            Switch <-> WebServer01
 
 .. Tip::
 
-    It is good practice to allow/configure on switch and its ports only those VLANs that are needed and used for that specific Port or LAGG. 
+    It is good practice to configure the ports of a `Managed Switch` only with VLANs that are needed for that specific port or LAGG. 
     This is called manual VLAN Pruning.
 
 ----------------------------
