@@ -32,7 +32,7 @@ Traffic that should cross VLAN boundaries must be routed and controlled via fire
 .. Note::
 
     Not all switches support VLANs. `Unmanaged Switches` only provide basic functionality.
-    `Managed Switches` will support features like LACP and VLAN needed for this setup.
+    `Managed Switches` will support features like Link Aggregation (with LACP mode) and VLAN needed for this setup.
 
 
 .. Attention::
@@ -46,10 +46,10 @@ Traffic that should cross VLAN boundaries must be routed and controlled via fire
 .. Attention::
 
     Do not use a bridge interface to connect multiple ports to the same switch as this will create a network loop.
-    Use a Layer 2 Link Aggregation protocol like LACP instead.
+    Use a Layer 2 Link Aggregation protocol (LAGG) with LACP instead.
 
 
-This guide will explain the best practice approach. Since switches from different vendors offer divergant configuration paths,
+This guide will explain the best practice approach. Since switches from different vendors offer divergent configuration paths,
 only a guideline can be provided.
 
 
@@ -61,9 +61,9 @@ In our basic setup, we have a `Managed Switch` and an `OPNsense Appliance`.
 
 We need isolate:
 
-    - a LAN network with `PCs`,
-    - a DMZ network with `Web Servers`,
-    - a GUEST network with clients connecting to a `Guest Wifi`
+    - a LAN network with `PCs`, we assigned VLAN 5
+    - a DMZ network with `Web Servers`, we assigned VLAN 20
+    - a GUEST network with clients connecting to a `Guest Wifi`, we assigned VLAN 33
 
 The OPNsense and the Switch are either connected with a single network cable,
 or with multiple network cables via `Link Aggregation`.
@@ -86,6 +86,14 @@ None             20                Access            Switch <-> WebServer01
     The trunk from `Managed Switch` to `Access Point` has to be configured in a mixed mode with an untagged (default) VLAN and a tagged VLAN.
     This is in contrast to the trunk that is connected to the OPNsense, which has no untagged (default) VLAN.
 
+.. Tip::
+
+    The `Access Port` of a `Managed Switch` will tag ingress frames with its configured VLAN, and strip egress frames of VLAN tags.
+
+.. Tip::
+
+    It is good practice to configure the ports of a `Managed Switch` only with VLANs that are needed for that specific port or LAGG. 
+    This is called manual VLAN Pruning.
 
 ----------------------------
 Configuration
@@ -106,8 +114,8 @@ See the section on `LAGG </manual/other-interfaces.html#lagg>`_ for more details
     
 .. Attention::
 
-    The member interfaces of a LAGG must be unassigned before creation. Check in :menuselection:`Interfaces --> Assignements` and delete
-    the assignement if necessary.
+    The member interfaces of a LAGG must be unassigned before creation. Check in :menuselection:`Interfaces --> Assignments` and delete
+    the assignment if necessary.
 
 
 - | Go to :menuselection:`Interfaces --> Other Types --> LAGG` and add a new entry:
@@ -116,8 +124,8 @@ See the section on `LAGG </manual/other-interfaces.html#lagg>`_ for more details
 **Option**                     **Value**
 =============================  ================================================================
 Parent                         Choose one or more interfaces, e.g., ``igc0`` and ``igc1``
-Proto                          lacp
-Fast timeout                   Enable if switch supports it (recommended)
+Proto                          lacp (if your managed switch supports it)
+Fast timeout                   Keep on default, disabled
 Hash Layers                    Set to same as switch, if unknown leave empty
 Description                    ``lagg0``
 =============================  ================================================================
@@ -126,10 +134,6 @@ Afterwards, create the same LAGG interface on the `Managed Switch` and assign on
 Connect the `OPNsense Appliance` and the `Managed Switch` via one or multiple network cables to establish the link layer.
 Verify the status of the LAGG interface as up before continuing.
 
-.. Note::
-
-    If multiple switches are in a `Stack` configuration, using aggregation protocols like `MLAG (Multi-chassis Link Aggregation)`
-    can be required on the switch side.    
 
 
 2. Add VLAN Interfaces
@@ -152,7 +156,7 @@ Description                    ``vlan0.5``      ``vlan0.20``     ``vlan0.33``
 =============================  ===============  ===============  ===============
 
 
-- | Go to :menuselection:`Interfaces --> Assignements` and assign the new VLAN interfaces. The parent interface should stay unassigned.
+- | Go to :menuselection:`Interfaces --> Assignments` and assign the new VLAN interfaces. The parent interface should stay unassigned.
     In rare cases, the parent interface can be assigned without a network configuration, to allow manual link speed overrides.
 - | On the `Managed Switch`, create the same tagged VLANs on the LAGG or physical interface. Make sure there is no `Native-VLAN-ID` or `default VLAN`
     on the trunk port that connects to the OPNsense.
@@ -184,7 +188,7 @@ Description                    ``vlan0.5``      ``vlan0.20``     ``vlan0.33``
     
 
 To create connectivity between assigned VLAN interfaces via `Inter-VLAN-Routing`, configure a network on them.
-It is good practice to embedd the VLAN IDs into the layer 3 networks, if possible.
+It is good practice to embed the VLAN IDs into the layer 3 networks, if possible.
 
 =============================  ==============================  ==============================  ==============================
 **Description**                **lagg0_vlan5_LAN**             **lagg0_vlan20_DMZ**            **lagg0_vlan33_GUEST**
