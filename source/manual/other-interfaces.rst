@@ -211,7 +211,7 @@ Slow/Normal                         30s                                Fast time
 Fast                                1s                                 Fast timeout turned on
 ==================================  =================================  =================================================================
 
-The Slow/normal is in most cases default.
+The Slow/normal timeout should be the default in most cases.
 In most scenarios keeping the LACP timeout on Slow/normal is preferable, due to vague vendor implementation of the LACP fast timeout it can cause connectivity disruption.
 LACP timeout needs to be set on both devices connecting the LAGG at the same value, if not, heartbeats can be missed which will cause connectivity disruption. 
 
