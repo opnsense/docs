@@ -213,7 +213,7 @@ Fast                                1s                                 Fast time
 
 The Slow/normal timeout should be the default in most cases.
 Due to possible vendor implementation issues, keeping the LACP timeout on Slow/normal is preferable. Fast timeout can cause connectivity disruption in some cases.
-LACP timeout needs to be set on both devices connecting the LAGG at the same value, if not, heartbeats can be missed which will cause connectivity disruption. 
+LACP timeout requires the same value on both devices connected via LAGG. If not, heartbeats can be missed which will cause connectivity disruption.
 
 Read `LAGG Setup </manual/how-tos/vlan_and_lagg.html>`_ for an example configuration.
 
