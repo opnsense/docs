@@ -135,25 +135,6 @@ Afterwards, create the same LAGG interface on the `Managed Switch` and assign on
 Connect the `OPNsense Appliance` and the `Managed Switch` via one or multiple network cables to establish the link layer.
 Verify the status of the LAGG interface as up before continuing.
 
-.. Note::
-
-    LAGG Proto, should be set to what ever your switch supports. Its best practice to use LACP if possible, as LACP actively probes 
-    the UPLINK and provides re-convergence in case one of the ports in the LAGG bundle goes down.
-    LAGG Proto needs to be set on both devices connecting the LAGG at the same value.   
-
-.. Attention::
-
-    Fast timeout, LACP timeout has two modes; Slow/normal and Fast. It handles how fast the re-convergence occurs in case of link failure. 
-    This specifies how often are the heartbeats sent between the two LAGG connected devices.
-    The Slow/normal (most cases default), will sent heartbeats each 30s. The Fast, will sent heartbeats each 1s.
-    In most scenarios keeping the LACP timeout on Slow/normal is preferable, due to vague vendor implementation of the LACP fast timeout it can cause connectivity disruption.
-    LACP timeout needs to be set on both devices connecting the LAGG at the same value, if not, heartbeats can be missed which will cause connectivity disruption.
-
-.. Note::
-
-    Hash Layers, specifies how the device will loadbalance the traffic across physical links in the LAGG bundle.
-    This is done per the 5-tuple if the LACP device implementation allows it. 
-    Hash Layers, do not need to be the same between two connecting devices, it can be considered as a best practice but its not a rule of must be.   
 
 
 2. Add VLAN Interfaces
@@ -236,4 +217,3 @@ Access can be controlled with `Firewall Rules`, essentially creating different s
 .. Note::
 
      Only routed traffic can be filtered by a central firewall. Devices in the same VLAN communicate directly by using ARP or NDP to discover their neighbors.
-     Such devices will not hit the Firewall/Router and you will not see any traffic on the dedicated GW device.
