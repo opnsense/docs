@@ -197,7 +197,7 @@ none                                This protocol is intended to do nothing: It 
 .. Attention::
 
     The LAGG protocol should match with the one your switch supports. It is best practice to use LACP if possible.
-    LAGG Proto needs to be set on both devices connecting the LAGG at the same value.  
+    Devices connected via LAGG require the same protocol.  
 
 **LACP timeout**
 
