@@ -115,18 +115,10 @@ You have to select the host in the top list and it will the show you the assigne
 **Domain override settings**
 =====================================================================================================================
 
-Domain overrides can be used to forward queries for specific domains (and subsequent subdomains) to local or remote DNS servers.
-
 .. Important::
 
     Domain overrides has been superseded by :ref:`forwarding`. Query forwarding also allows you to forward every single
     request.
-
-====================================  ===============================================================================
-Domain                                Domain to override
-IP address                            IP address of the authoritative DNS server for this domain
-Description                           User readable description, only for informational purposes
-====================================  ===============================================================================
 
 
 -------------------------
