@@ -32,7 +32,7 @@ that it owns or licenses any of the mentioned, nor does it grant them.
 
 #### Prepare build
 
-On FreeBSD 14 the following packages are required:
+On FreeBSD the following packages are required:
 
 ```
 pkg install python py311-pip jpeg-turbo gmake
