@@ -31,6 +31,60 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.7.7 (October 23, 2024)
+--------------------------------------------------------------------------
+
+
+A small update to keep things moving forward while things are quietening
+down a little bit.  Still working on improving the trust store integration
+and already tackling new MVC/API conversions on the development end.
+
+Here are the full patch notes:
+
+* system: add OpenSSH "RekeyLimit" with a limited set of choices
+* system: fix certificate condition in setCRL() (contributed by richierg)
+* system: untrusted directory changed in FreeBSD 14
+* system: remove obsolete banners from static pages
+* system: address CRL/cert subject hash mismatch during trust store rehash
+* reporting: refactor existing RRD backend code
+* firewall: throttle live logging on dashboard widget
+* interfaces: fix VXLAN interface being busy when vxlanlocal or vxlanremote is changed
+* interfaces: 6RD/6to4 route creation should be limited to IPv6
+* firmware: remove escaped slashes workaround on mirror/flavour write
+* firmware: CRL checking for business update mirror
+* firmware: introduce config.sh and use it in launcher.sh and connection.sh
+* firmware: restart cron on updates
+* intrusion detection: reorganise settings page with headers
+* intrusion detection: support configuration of eve-log for HTTP and TLS (contributed by Toby Chen)
+* ipsec: fix advanced option "max_ikev1_exchanges"
+* backend: cache file cleanup when TTL is reached
+* backend: correct template helper exists() return type (contributed by kumy)
+* mvc: fix config.xml file open mode in overwrite()
+* mvc: add missing request->hasQuery()
+* mvc: add missing request->getScheme()
+* mvc: add missing request->getURI()
+* mvc: extend sanity checks in isIPInCIDR()
+* ui: fix tree view style targeting elements outside this view
+* plugins: enforce defaults on devices
+* plugins: os-caddy 1.7.3 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* plugins: os-ddclient 1.25 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.26 `[3] <https://github.com/opnsense/plugins/blob/stable/24.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.42 `[4] <https://github.com/opnsense/plugins/blob/stable/24.7/net/frr/pkg-descr>`__ 
+* plugins: os-lldpd 1.2 `[5] <https://github.com/opnsense/plugins/blob/stable/24.7/net-mgmt/lldpd/pkg-descr>`__ 
+* plugins: os-net-snmp 1.6 `[6] <https://github.com/opnsense/plugins/blob/stable/24.7/net-mgmt/net-snmp/pkg-descr>`__ 
+* plugins: os-upnp 1.7 `[7] <https://github.com/opnsense/plugins/blob/stable/24.7/net/upnp/pkg-descr>`__ 
+* plugins: os-wazuh-agent 1.1 `[8] <https://github.com/opnsense/plugins/blob/stable/24.7/security/wazuh-agent/pkg-descr>`__ 
+* ports: monit 5.34.2 `[9] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.105 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_105.html>`__ 
+* ports: openssh 9.9.p1 `[11] <https://www.openssh.com/txt/release-9.9>`__ 
+* ports: pkg fix for for embedded libfetch when doing CRL verification
+* ports: py-duckdb 1.1.2 `[12] <https://github.com/duckdb/duckdb/releases/tag/v1.1.2>`__ 
+* ports: syslog-ng 4.8.1 `[13] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.8.1>`__ 
+* ports: unbound 1.22.0 `[14] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-22-0>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.7.6 (October 09, 2024)
 --------------------------------------------------------------------------
 

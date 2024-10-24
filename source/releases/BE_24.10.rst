@@ -342,6 +342,19 @@ Here are the full changes against version 24.4.3:
 * ports: unbound 1.21.1 `[42] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-21-1>`__ 
 * ports: wpa_supplicant 2.11 `[43] <https://w1.fi/cgit/hostap/plain/wpa_supplicant/ChangeLog>`__ 
 
+A hotfix release was issued as 24.10_1:
+
+* firmware: fix timeout in update CRL fetcher
+
+A hotfix release was issued as 24.10_7:
+
+* system: fix certificate condition in setCRL() (contributed by richierg)
+* firewall: throttle live logging on dashboard widget
+* mvc: fix config.xml file open mode in overwrite()
+* mvc: add missing request->hasQuery()
+* mvc: add missing request->getScheme()
+* mvc: add missing request->getURI()
+
 Migration notes, known issues and limitations:
 
 * The dashboard has been replaced. Widgets from the old format are no longer supported and need to be rewritten by the respective authors.
