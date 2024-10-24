@@ -15,7 +15,7 @@ directly via GitHub.  Any help is always very welcome!
 
 OPNsense documentation is available under the 2-Clause BSD license:
 
-http://opensource.org/licenses/BSD-2-Clause
+https://opensource.org/licenses/BSD-2-Clause
 
 Every contribution made to the project must be licensed under the
 same conditions in order to keep OPNsense truly free and accessible
@@ -35,13 +35,13 @@ that it owns or licenses any of the mentioned, nor does it grant them.
 On FreeBSD the following packages are required:
 
 ```
-pkg install py39-pip jpeg-turbo gmake
+pkg install python py311-pip jpeg-turbo gmake
 ```
 
 Install Sphinx, our default theme and contrib packages:
 
 ```
-pip[3] install -r requirements.txt --upgrade
+pip install -r requirements.txt --upgrade
 ```
 
 ### Update API endpoints
@@ -57,17 +57,17 @@ executed using:
 #### Generate HTML documents
 
 ```
-make html
+gmake html
 ```
 
-(```make clean``` to flush)
+(```gmake clean``` to flush)
 
 #### Live preview of HTML documents
 
 Use `sphinx-autobuild` to track `source` for changes and get a live preview served via ``http://localhost:8000``.
 
 ```
-pip[3] install sphinx-autobuild
+pip install sphinx-autobuild
 ```
 
 ```
