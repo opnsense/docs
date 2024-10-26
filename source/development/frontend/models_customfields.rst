@@ -13,7 +13,7 @@ Build the field type
     <?php
     namespace myVendorName\myModule;
     use OPNsense\Base\FieldTypes\BaseField;
-    use Phalcon\Validation\Validator\Regex;
+    use OPNsense\Base\Validators\Regex;
      
     class SimpleCustomField extends BaseField
     {

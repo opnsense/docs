@@ -13,11 +13,9 @@ classes to ensure basic functionality such as authorisation and CSRF
 protection.
 
 Controllers are placed in the directory /usr/local/opnsense/mvc/app/controllers/<Vendor\_name>/<Module\_name>/
-and should use the standard Phalcon naming conventions, suffix Controller.php on
+and should use the folloging naming conventions, suffix Controller.php on
 every class file and suffix Action on all action methods.
 
-For a detailed description of how Controllers work in Phalcon, please
-look at the Phalcon documentation at http://docs.phalconphp.com/en/latest/reference/controllers.html
 
 ----------------------
 View based controllers

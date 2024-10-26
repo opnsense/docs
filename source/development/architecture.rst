@@ -56,11 +56,12 @@ The daemon listens on a unix domain socket and is capable of executing
 actions defined in it’s own configuration directory
 (“/usr/local/opnsense/service/conf/actions\_\*.conf”).
 
-Currently there are two types of services implemented in the daemon:
+Currently there are four types of services implemented in the daemon:
 
--  script : execute external (rc) scripts
--  inline : perform inline actions which are part of configd, currently
-   only template generation.
+-  script : execute external (rc) scripts, report back success or failure
+-  script_output: execute external scripts, report back their contents, usually in json format
+-  stream_output: open streams to backend components
+-  inline : perform inline actions which are part of configd, most notable template generation and maintanance.
 
 |
 | Template generation is handled by Jinja2 (http://jinja.pocoo.org/),
@@ -76,21 +77,18 @@ Frontend Architecture
 Routing
 -------
 
-The OPNsense framework uses components from Phalcon where possible; the
-first layer initializes Phalcon’s routing, which handles requests and
+The OPNsense framework uses standard components where possible; the
+first layer initializes routing, which handles requests and
 delivers them to the controller based on its url. User content is
-generated using Volt templates, which are picked by the controller.
-Because Phalcon’s default Models function with (relational) databases
-and we are using XML data, our model implementation is custom. But
-wherever possible we use components from Phalcon (for example,
-validation is handled using Phalcon’s classes). For a detailed
-description on the routing principles used in OPNsense, visit Frontend
+generated using Volt templates (using Phalcon), which are picked by the controller.
+
+For a detailed description on the routing principles used in OPNsense, visit Frontend
 :doc:`/development/frontend/routing`.
 
 Controllers and views
 ---------------------
 
-Not all parts of the framework are already implemented, but by deriving
+Not all parts of the framework are implemented, but by deriving
 all controllers from the base in the OPNsense project it’s easy to
 extend and adapt to future needs. Documentation on how to implement
 controllers, with the use of views, can be found at :doc:`/development/frontend/controller`.
