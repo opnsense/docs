@@ -88,24 +88,30 @@ In order to setup a tunnel on both ends, we need to configure certificates to wa
 
    * Select `Create an internal Certificate Authority`
    * Choose cryptographic settings and a lifetime (you may want to increase the default as after this time you do need to redistribute certificates to both server and client).
-   * Add descriptive information for this CA (`Descriptive name`, `City`, `Email`, ..`)
+   * Add descriptive information for this CA (`Descriptive name`, `City`, `Email`, ..)
    * Set the `Common Name` to something descriptive for this certificate, like "Office-ovpn"
 
 
-*  Next generate a **Certficate** for the server using :menuselection:`System --> Trust --> Certificates`
+* Next generate a **Certficate** for the server using :menuselection:`System --> Trust --> Certificates`
 
-   * Select  `Create an internal Certificate`
+   * Select `Create an internal Certificate`
    * Choose the just created authority in `Certificate authority`
    * Add descriptive information for this CA (`Descriptive name`, whereabouts are copied from the CA)
    * Set Type to `Server`
-   * Choose cryptographic settings, lifetime determines the validaty of the server certificate (you do need to track this yourself), it's allow to choose a longer period here
+   * Choose the CA's `Lifetime (days)` after which the CA will expire, and you will need to generate a new one
    * Set the `Common Name` to the fqdn of this machine.
 
-* For the client pc we will create a user and a certificate, from the :menuselection:`System --> Access --> Users` menu.
 
-   * Hit the [+] sign to create a new user, for this test we will call it :code:`test1`
-   * Check the "Certificate -> Click to create a user certificate" option and hit "save"
-   * Next step in the certificate window, select "`Create an internal Certificate`" and "save"
+* Next create a **user** and a **user certificate** from the :menuselection:`System --> Access --> Users` menu.
+
+   * For `Username` we will call it :code:`test1`
+   * Next to `Certificate` enable the option `Click to create a user certificate`
+   * Click `Save` to save the user
+   * In the `Edit certificate` form:
+   * For `Method` select `Create an internal Certificate`
+   * For `Description` enter the user's username :code:`test1`
+   * For `Issuer` select the just created certificate authority
+   * Click `Save`
 
 
 .. Note::
