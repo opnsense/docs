@@ -49,6 +49,7 @@ extensions = [
     'sphinxcontrib.nwdiag',
     'sphinxcontrib.seqdiag',
     'sphinxcontrib.actdiag',
+    'sphinx_tabs.tabs',
 
 ]
 
