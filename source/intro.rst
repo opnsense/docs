@@ -30,7 +30,7 @@ Mission Statement
   “Open (source) makes sense.”
 
 
-.. image:: ./images/OPNsense-Deciso-Screenshot.jpg
+.. image:: ./images/OPNsense-Deciso-Screenshot.png
 
 
 -----------------

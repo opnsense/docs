@@ -12,6 +12,7 @@ Before we can take a look at the GUI options we need to login.
 The default user is root and the password is opnsense.
 
 .. image:: images/login.png
+   :width: 50%
 
 
 ----------------------------
