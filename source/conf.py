@@ -44,6 +44,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # ones.
 extensions = [
     'sphinx_sitemap',
+    'sphinx_tabs.tabs',
     'sphinx.ext.todo',
     'sphinxcontrib.blockdiag',
     'sphinxcontrib.nwdiag',
