@@ -196,6 +196,12 @@ For more detailed information, check out the `FRR documentation <https://docs.fr
       =================================== =======================================================================================================================
 
 
+.. Attention::
+
+   Any route received with dynamic routing protocols will only be installed if no similiar local route already exists. E.g., if a neighbor advertises
+   a default gateway route, but a directly attached default gateway route already exists, the local route will be preferred and the advertised route will be discarted.
+
+
 .. _rip-section:
 
 RIP (Routing Information Protocol) - `legacy`
@@ -228,6 +234,12 @@ To prevent routing loops, RIP employs techniques like split horizon, route poiso
 While easy to configure, RIP has slow convergence and limited scalability, making it less popular in modern networks compared to more efficient protocols like OSPF.
 It should be considered a legacy protocol.
 
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   how-tos/dynamic_routing_rip.rst
+
 
 .. _ospf-section:
 .. _ospfv3-section:
@@ -245,7 +257,7 @@ OSPF/OSPFv3 (Open Shortest Path First)
        ===================================== =======================================================================================================================
        Options                               Description
        ===================================== =======================================================================================================================
-       **Enable**                            This will activate the OSPF service if routing protocols are enabled in "General".
+       **Enable**                            This will activate the OSPF service.
        **CARP demote**                       Register CARP status monitor. When no neighbors are found, consider this node less attractive. Requires syslog enabled
                                              with "Debugging" logging. Incompatible with "Enable CARP Failover".
        **Router ID**                         (OSPF) If you have a CARP setup, you may want to configure a router id in case of a conflict.
@@ -343,6 +355,12 @@ Open Shortest Path First (OSPF) is a widely used link-state routing protocol des
 Operating as an interior gateway protocol (IGP), OSPF builds a network topology map by gathering link-state information from routers,
 allowing it to create an optimal routing table for IP packet delivery. OSPFv2 (RFC 2328) supports IPv4, while v3 (RFC 5340) extends support to IPv6.
 
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   how-tos/dynamic_routing_ospf.rst
+
 
 .. _bgp-section:
 
@@ -358,7 +376,7 @@ BGP (Border Gateway Protocol)
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enable**                          This will activate the BGP service if routing protocols are enabled in "General".
+       **Enable**                          This will activate the BGP service.
        **BGP AS Number**                   Your AS Number here.
        **BGP AD Distance**                 Adjust BGP administrative distance, typically set to 20. Useful if you want to prefer OSPF-learned routes.
        **Router ID**                       Optional fixed router ID for BGP.
@@ -462,8 +480,7 @@ BGP (Border Gateway Protocol)
        Options                             Description
        =================================== =======================================================================================================================
        **Enabled**                         Enable/Disable
-       **Description**                     Optional description for the Community-List. If there should be multiple entries for the same community list,
-                                           give them all the same name.
+       **Description**                     Optional description for the Community-List.
        **Number**                          Community-List number (1-99 for standard, 100-500 for expanded).
        **Sequence Number**                 ACL sequence number (10-99).
        **Action**                          Set permit to match or deny to negate the rule.
@@ -526,6 +543,12 @@ BGP has two main types: iBGP, used for routing within a single AS (using private
 different AS across the Internet (using public AS numbers 1 to 64511). BGP’s flexibility and scalability make it essential
 for global Internet routing and large network infrastructures.
 
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   how-tos/dynamic_routing_bgp.rst
+
 
 ------------------------------------------------
 Supplemental Protocols
@@ -554,15 +577,28 @@ BFD (Bidirectional Forward Detection)
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enabled**                         
+       **Enabled**                         Enable/Disable
        **Description**                     Set an optional description for this neighbor.
        **Peer-IP**                         Specify the IP of your neighbor.
        **Multihop**                        Enables multi-hop mode, allowing BFD to expect packets with TTL less than 254 and listen on the multihop port (4784).
                                            Note: Echo mode is not supported in multi-hop (see RFC 5883, section 3).
        =================================== =======================================================================================================================
 
+       .. Note::
 
-Bidirectional Forwarding Detection (BFD) is a lightweight protocol used to detect faults between routers or switches by sending periodic Hello packets (asynchronous mode). BFD quickly identifies failing links, making it a useful companion to routing protocols like OSPF and BGP for faster convergence.
+          A **BFD Neighbor** refers to a neighboring device configured to use BFD with BGP, OSPF or other protocols.
+          BFD neighbors exchange small, frequent packets to rapidly detect link failures, reducing convergence time in routing;
+          usually a whole lot faster than typical keepalive or hello mechanisms.
+
+
+Bidirectional Forwarding Detection (BFD) is a lightweight protocol used to detect faults between routers or switches by sending periodic
+Hello packets (asynchronous mode). BFD quickly identifies failing links, making it a useful companion to routing protocols like OSPF and BGP for faster convergence.
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   how-tos/dynamic_routing_bfd.rst
 
 
 .. _static-section:
@@ -579,7 +615,7 @@ STATIC (Static Routes Daemon)
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enable**                          This will activate the staticd service if routing protocol support is enabled in "General".
+       **Enable**                          This will activate the staticd service
        =================================== =======================================================================================================================
 
     .. tab:: Static Routes
@@ -587,7 +623,7 @@ STATIC (Static Routes Daemon)
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enabled**                         
+       **Enabled**                         Enable/Disable
        **Network**                         Defines the target for the static route, in CIDR notation.
        **Gateway (optional)**              Optional gateway IP address for this route.
        **Interface**                       Select the interface where this setting applies.
@@ -597,15 +633,8 @@ STATIC (Static Routes Daemon)
 STATIC is a daemon that handles the installation and deletion of static routes. These routes can be used supplemental to dynamic routes. It is beneficial for
 fine grained control over routes in more complex network environments, if redistributing directly attached routes is not an option.
 
-
-------
-How To
-------
-
 .. toctree::
    :maxdepth: 2
    :titlesonly:
 
-   how-tos/dynamicrouting_howto
-   how-tos/dynamicrouting_ospf
-   how-tos/dynamicrouting_rip
+   how-tos/dynamic_routing_static.rst
