@@ -143,9 +143,7 @@ Dynamic Routing Protocols
 ------------------------------------------------
 
 ..
-    TODO: Turn these into separate documents later.
-
-The frr plugin has currently the following menu items:
+    TODO: Add Tutorials for each section in separate document pages.
 
 * :ref:`General <general-section>`
 * :ref:`RIP <rip-section>`
@@ -250,48 +248,62 @@ OSPF (Open Shortest Path First)
        **Reference Cost**                    Adjust the reference cost in Mbps for path calculation, useful when bundling interfaces for higher bandwidth.
        **Passive Interfaces**                Select the interfaces where no OSPF packets should be sent.
        **Route Redistribution**              Select other routing sources to redistribute to other nodes.
-       **Redistribution Map**                Route Map to set for Redistribution.
-       **Log Adjacency Changes**
+       **Redistribution Map**                Route Map to set for Redistribution, can be used to send a specific network as advertisement when it is defined in a
+                                             `Prefix List` attached to a `Route Map`.
+       **Log Adjacency Changes**             If it should be logged when the topology of the area changes.
        **Advertise Default Gateway**         This will send the information that we have a default gateway.
        **Always Advertise Default Gateway**  Always sends default gateway information, regardless of availability.
        **Advertise Default Gateway Metric**  Allows manipulation of the metric when advertising the default gateway.
        ===================================== =======================================================================================================================
-
-    .. tab:: Interfaces
-
-       =================================== =======================================================================================================================
-       Options                             Description
-       =================================== =======================================================================================================================
-       **Enabled**                         
-       **Interface**                       Select an interface where these settings apply.
-       **Authentication Type**             
-       **Authentication Key**              
-       **Authentication Key ID**           
-       **Area**                            Area in wildcard mask style, like 0.0.0.0. Only use once in Interface or Network tab.
-       **Cost**                            
-       **Cost (when demoted)**             
-       **Depend on (carp)**                Select the CARP VHID to depend on. Sets the interface cost to demoted cost if not in master state.
-       **Hello Interval**                  
-       **Dead Interval**                   
-       **Retransmission Interval**         
-       **Retransmission Delay**            
-       **Priority**                        
-       **BFD**                             Enable BFD support for this interface. BFD peers must be configured separately.
-       **Network Type**                    
-       =================================== =======================================================================================================================
 
     .. tab:: Networks
 
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enabled**                         
-       **Network Address**                 
-       **Network Mask**                    
-       **Area**                            Area in wildcard mask style, like 0.0.0.0. Only use once in Interface or Network tab.
-       **Area Range**                      Summarize a network for this area, like 192.168.0.0/23.
-       **Prefix-List In**                  Prefix-List for inbound direction.
-       **Prefix-List Out**                 Prefix-List for outbound direction.
+       **Enabled**                         Enable / Disable
+       **Network Address**                 Specifies the network address (e.g., `192.168.1.0`) to include in OSPF.
+                                           Only routes within this network will be advertised.
+       **Network Mask**                    Defines the network mask (e.g., `24`) for the specified network.
+       **Area**                            Assigns the network to an OSPF area using an identifier like `0.0.0.0` (Backbone Area). The Backbone Area connects
+                                           other areas, supporting inter-area communication, while additional areas (e.g., `0.0.0.1`, `0.0.0.255`) segment
+                                           the network logically to limit routing updates.
+       **Area Range**                      Summarizes multiple networks in the specified area, consolidating multiple networks into a single summarized route
+                                           like `192.168.0.0/23`.
+       **Prefix-List In**                  Filters inbound route advertisements using a prefix list.
+       **Prefix-List Out**                 Filters outbound route advertisements using a prefix list.
+       =================================== =======================================================================================================================
+
+       .. Note:: `Networks` and `Interfaces` can not have the same `Area`, only one of them can be defined in the `Backbone Area`.
+
+    .. tab:: Interfaces
+
+       =================================== =======================================================================================================================
+       Options                             Description
+       =================================== =======================================================================================================================
+       **Enabled**                         Enable / Disable
+       **Interface**                       Select an interface where these settings apply.
+       **Authentication Type**             Defines security method for OSPF exchanges (None, plain, or MD5) to prevent unauthorized updates.
+       **Authentication Key**              Specifies a password or key used for plain or MD5 authentication.
+       **Authentication Key ID**           Numeric identifier for MD5 authentication, ensuring correct key selection.
+       **Area**                            Assigns the network to an OSPF area using an identifier like `0.0.0.0` (Backbone Area). The Backbone Area connects
+                                           other areas, supporting inter-area communication, while additional areas (e.g., `0.0.0.1`, `0.0.0.255`) segment
+                                           the network logically to limit routing updates.
+       **Cost**                            Sets the OSPF metric for path selection; lower costs are preferred paths within the area.
+       **Cost (when demoted)**             Specifies metric cost when interface is in backup mode via CARP, deprioritizing paths dynamically.
+       **Depend on (carp)**                Links the interface cost to a CARP VHID, adjusting costs based on primary or backup status.
+       **Hello Interval**                  Sets frequency (in seconds) of Hello packets to maintain OSPF neighbor relationships.
+       **Dead Interval**                   Defines the timeout period for OSPF neighbors; after this period, the neighbor is marked as down.
+       **Retransmission Interval**         Time (seconds) to wait before resending Link-State Advertisements (LSAs) if acknowledgment is delayed.
+       **Retransmission Delay**            Configures the hold time before LSAs are resent, accommodating slow or high-latency links.
+       **Priority**                        Determines the likelihood of becoming a Designated Router; higher values increase priority.
+       **BFD**                             Activates Bidirectional Forwarding Detection for rapid link failure detection; peer configuration required.
+       **Network Type**                    Defines the OSPF network type, impacting adjacency and LSA flooding methods.
+
+                                           - **Broadcast Multi-Access**: Assumes networks supporting multiple routers with broadcast capability (e.g., Ethernet).
+                                           - **Non-Broadcast Multi-Access (NBMA)**: For networks without broadcast support (e.g., Frame Relay); requires manual neighbor setup.
+                                           - **Point-to-Multipoint**: Connects multiple routers over a single interface, treating each as a point-to-point link.
+                                           - **Point-to-Point**: Directly connects two routers, simplifying adjacency and LSA transmission.
        =================================== =======================================================================================================================
 
     .. tab:: Prefix Lists
@@ -300,7 +312,7 @@ OSPF (Open Shortest Path First)
        Options                             Description
        =================================== =======================================================================================================================
        **Enabled**                         Enable / Disable
-       **Name**                            The name of your Prefix-List. Choose one relevant to the desired outcome.
+       **Name**                            The name of your Prefix-List. If there should be multiple entries for the same prefix list, give them all the same name.
        **Number**                          The ACL sequence number (10-99).
        **Action**                          Set permit for match or deny to negate the rule.
        **Network**                         The network pattern you want to match. (Not validated, so be careful!)
@@ -311,7 +323,7 @@ OSPF (Open Shortest Path First)
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enabled**                         
+       **Enabled**                         Enable / Disable
        **Name**                            Route-map name for matching and setting patterns, enabled via redistribution.
        **Action**                          Set permit for match or deny to negate the rule.
        **ID**                              Route-map ID between 10 and 99. Entries added in order of insertion.
