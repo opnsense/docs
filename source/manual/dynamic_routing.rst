@@ -295,7 +295,12 @@ OSPF/OSPFv3 (Open Shortest Path First)
        **Prefix-List Out**                 Filters outbound route advertisements using a prefix list.
        =================================== =======================================================================================================================
 
-       .. Note:: `Networks` and `Interfaces` cannot have the same `Area`, only one of them can be defined in the `Backbone Area`.
+       .. Note::
+
+          Using a **Network** configuration with `0.0.0.0` as the Backbone Area is beneficial in larger networks, where defining broad network ranges streamlines OSPF
+          configuration. This approach avoids the need to configure OSPF individually on each interface by including all subnets within the specified range.
+          The Backbone Area serves as the primary route aggregation point, allowing inter-area communication which is essential in hierarchical OSPF networks.
+          `Networks` and `Interfaces` cannot have the same `Area`, only one of them can be defined in the `Backbone Area`.
 
     .. tab:: Interfaces
 
@@ -328,6 +333,12 @@ OSPF/OSPFv3 (Open Shortest Path First)
                                            - **Point-to-Point**: Directly connects two routers, simplifying adjacency and LSA transmission.
        =================================== =======================================================================================================================
 
+       .. Note::
+
+          **Interfaces** in OSPF are for defining how each interface participates in OSPF routing. Key settings include **Area**, **Hello Interval** and **Dead Interval**
+          for neighbor relationships and **Cost** for path preference. `Networks` and `Interfaces` cannot have the same `Area`,
+          only one of them can be defined in the `Backbone Area`. For simpler networks, using `Interfaces` is recommended.
+
     .. tab:: Prefix Lists
 
        =================================== =======================================================================================================================
@@ -337,8 +348,13 @@ OSPF/OSPFv3 (Open Shortest Path First)
        **Name**                            The name of your Prefix-List. If there should be multiple entries for the same prefix list, give them all the same name.
        **Number**                          The ACL sequence number (10-99).
        **Action**                          Set permit for match or deny to negate the rule.
-       **Network**                         The network pattern you want to match. (Not validated, so be careful!)
+       **Network**                         The network pattern you want to match.
        =================================== =======================================================================================================================
+
+       .. Note::
+
+          **Prefix Lists** in OSPF serve as a filter to control the distribution of specific IP ranges within the network. Though not as common as in BGP,
+          prefix filtering can prevent or allow propagation of defined network routes.
 
     .. tab:: Route Maps
 
@@ -352,6 +368,11 @@ OSPF/OSPFv3 (Open Shortest Path First)
        **Prefix List**                     Allows for matching based on prefix lists, multiple selections enabled.
        **Set**                             Free text for setting options, e.g., "local-preference 300" or "community 1:1".
        =================================== =======================================================================================================================
+
+       .. Note::
+
+          **Route Maps** act like conditional filters, allowing you to set and modify OSPF route attributes based on match criteria.
+          They can combine prefix lists for detailed route manipulation.
 
 
 Open Shortest Path First (OSPF) is a widely used link-state routing protocol designed for IP networks within a single autonomous system (AS).
@@ -467,7 +488,7 @@ BGP (Border Gateway Protocol)
        **Action**                          Set permit to match or deny to negate the rule.
        **Network**                         Specifies a network pattern to match, with optional `ge` (greater than or equal) and `le` (less than or equal)
                                            attributes to control the prefix length range. For example, a pattern like `192.168.0.0/16 ge 24 le 28` matches any
-                                           route within the `192.168.0.0/16` block with prefix lengths from `/24` to `/28`. (Note: not validated)
+                                           route within the `192.168.0.0/16` block with prefix lengths from `/24` to `/28`.
        =================================== =======================================================================================================================
 
        .. Note::
@@ -486,7 +507,7 @@ BGP (Border Gateway Protocol)
        **Number**                          Community-List number (1-99 for standard, 100-500 for expanded).
        **Sequence Number**                 ACL sequence number (10-99).
        **Action**                          Set permit to match or deny to negate the rule.
-       **Community**                       Community pattern to match, with optional regex. (Not validated)
+       **Community**                       Community pattern to match, with optional regex.
        =================================== =======================================================================================================================
 
        .. Note::
