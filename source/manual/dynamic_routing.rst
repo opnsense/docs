@@ -228,11 +228,13 @@ It should be considered a legacy protocol.
 
 
 .. _ospf-section:
+.. _ospfv3-section:
 
-OSPF (Open Shortest Path First)
+OSPF/OSPFv3 (Open Shortest Path First)
 ................................................
 
 :menuselection:`Routing --> OSPF`
+:menuselection:`Routing --> OSPFv3`
 
 .. tabs::
 
@@ -244,8 +246,9 @@ OSPF (Open Shortest Path First)
        **Enable**                            This will activate the OSPF service if routing protocols are enabled in "General".
        **CARP demote**                       Register CARP status monitor. When no neighbors are found, consider this node less attractive. Requires syslog enabled
                                              with "Debugging" logging. Incompatible with "Enable CARP Failover".
-       **Router ID**                         If you have a CARP setup, you may want to configure a router id in case of a conflict.
-       **Reference Cost**                    Adjust the reference cost in Mbps for path calculation, useful when bundling interfaces for higher bandwidth.
+       **Router ID**                         (OSPF) If you have a CARP setup, you may want to configure a router id in case of a conflict.
+                                             (OSPFv3) Router ID as an IPv4 Address to uniquely identify the router.
+       **Reference Cost**                    (OSPF only) Adjust the reference cost in Mbps for path calculation, useful when bundling interfaces for higher bandwidth.
        **Passive Interfaces**                Select the interfaces where no OSPF packets should be sent.
        **Route Redistribution**              Select other routing sources to redistribute to other nodes.
        **Redistribution Map**                Route Map to set for Redistribution, can be used to send a specific network as advertisement when it is defined in a
@@ -262,19 +265,20 @@ OSPF (Open Shortest Path First)
        Options                             Description
        =================================== =======================================================================================================================
        **Enabled**                         Enable / Disable
-       **Network Address**                 Specifies the network address (e.g., `192.168.1.0`) to include in OSPF.
-                                           Only routes within this network will be advertised.
-       **Network Mask**                    Defines the network mask (e.g., `24`) for the specified network.
+       **Network Address**                 (OSPF) Specifies the network address (e.g., `192.168.1.0`) to include in OSPF.
+                                           (OSPFv3) Specifies the IPv6 network address (e.g., `fe80::1234`) to include in OSPFv3.
+       **Network Mask**                    (OSPF) Defines the network mask (e.g., `24`) for the specified network.
+                                           (OSPFv3) Defines the network prefix length (e.g., `64`) for the specified IPv6 address range.
        **Area**                            Assigns the network to an OSPF area using an identifier like `0.0.0.0` (Backbone Area). The Backbone Area connects
                                            other areas, supporting inter-area communication, while additional areas (e.g., `0.0.0.1`, `0.0.0.255`) segment
                                            the network logically to limit routing updates.
        **Area Range**                      Summarizes multiple networks in the specified area, consolidating multiple networks into a single summarized route
-                                           like `192.168.0.0/23`.
+                                           (OSPF) `192.168.0.0/23`, (OSPFv3) `fe80:1234::/64`.
        **Prefix-List In**                  Filters inbound route advertisements using a prefix list.
        **Prefix-List Out**                 Filters outbound route advertisements using a prefix list.
        =================================== =======================================================================================================================
 
-       .. Note:: `Networks` and `Interfaces` can not have the same `Area`, only one of them can be defined in the `Backbone Area`.
+       .. Note:: `Networks` and `Interfaces` cannot have the same `Area`, only one of them can be defined in the `Backbone Area`.
 
     .. tab:: Interfaces
 
@@ -283,12 +287,13 @@ OSPF (Open Shortest Path First)
        =================================== =======================================================================================================================
        **Enabled**                         Enable / Disable
        **Interface**                       Select an interface where these settings apply.
-       **Authentication Type**             Defines security method for OSPF exchanges (None, plain, or MD5) to prevent unauthorized updates.
-       **Authentication Key**              Specifies a password or key used for plain or MD5 authentication.
-       **Authentication Key ID**           Numeric identifier for MD5 authentication, ensuring correct key selection.
+       **Authentication Type**             (OSPF only) Defines security method for OSPF exchanges (None, plain, or MD5) to prevent unauthorized updates.
+       **Authentication Key**              (OSPF only) Specifies a password or key used for plain or MD5 authentication.
+       **Authentication Key ID**           (OSPF only) Numeric identifier for MD5 authentication, ensuring correct key selection.
        **Area**                            Assigns the network to an OSPF area using an identifier like `0.0.0.0` (Backbone Area). The Backbone Area connects
                                            other areas, supporting inter-area communication, while additional areas (e.g., `0.0.0.1`, `0.0.0.255`) segment
                                            the network logically to limit routing updates.
+       **Passive Interface**               (OSPFv3 only) Disables OSPF Hello packets on the interface, preventing neighbor relationships (used for security or optimization).
        **Cost**                            Sets the OSPF metric for path selection; lower costs are preferred paths within the area.
        **Cost (when demoted)**             Specifies metric cost when interface is in backup mode via CARP, deprioritizing paths dynamically.
        **Depend on (carp)**                Links the interface cost to a CARP VHID, adjusting costs based on primary or backup status.
@@ -332,93 +337,9 @@ OSPF (Open Shortest Path First)
        =================================== =======================================================================================================================
 
 
-Open Shortest Path First (OSPF) is a widely used link-state routing protocol designed for IP networks within a single autonomous system (AS). Operating as an interior gateway protocol (IGP), OSPF builds a network topology map by gathering link-state information from routers, allowing it to create an optimal routing table for IP packet delivery. OSPFv2 (RFC 2328) supports IPv4, while v3 (RFC 5340) extends support to IPv6.
-
-
-.. _ospfv3-section:
-
-OSPFv3 (for IPv6)
-................................................
-
-:menuselection:`Routing --> OSPFv3`
-
-.. tabs::
-
-    .. tab:: General
-
-       ===================================== =======================================================================================================================
-       Options                               Description
-       ===================================== =======================================================================================================================
-       **Enable**                            This will activate the OSPFv3 service if routing protocols are enabled in "General".
-       **CARP demote**                       Register CARP status monitor. When no neighbors are found, consider this node less attractive. Requires syslog enabled
-                                             with "Debugging" logging. Incompatible with "Enable CARP Failover".
-       **Route Redistribution**              Select other routing sources to redistribute to other nodes.
-       **Redistribution Map**                Route Map to set for Redistribution.
-       **Router ID**                         Router ID as IPv4 Address.
-       **Advertise Default Gateway**         This will send the information that we have a default gateway.
-       **Always Advertise Default Gateway**  Always sends default gateway information, regardless of availability.
-       **Advertise Default Gateway Metric**  Allows manipulation of the metric when advertising the default gateway.
-       ===================================== =======================================================================================================================
-
-    .. tab:: Interfaces
-
-       =================================== =======================================================================================================================
-       Options                             Description
-       =================================== =======================================================================================================================
-       **Enabled**                         
-       **Interface**                       Select an interface where these settings apply.
-       **Area**                            Area in wildcard mask style, like 0.0.0.0.
-       **Passive Interface**               
-       **Cost**                            
-       **Cost (when demoted)**             
-       **Depend on (CARP)**                The CARP VHID to depend on. Sets the interface cost to demoted cost if not in master state.
-       **Hello Interval**                  
-       **Dead Interval**                   
-       **Retransmission Interval**         
-       **Retransmission Delay**            
-       **Priority**                        
-       **BFD**                             Enable BFD support for this interface. BFD peers must be configured separately.
-       **Network Type**                    
-       =================================== =======================================================================================================================
-
-    .. tab:: Networks
-
-       =================================== =======================================================================================================================
-       Options                             Description
-       =================================== =======================================================================================================================
-       **Enabled**                         
-       **Network Address**                 
-       **Network Mask**                    
-       **Area**                            Area in wildcard mask style, like 0.0.0.0. Only use once in Interface or Network tab.
-       **Area Range**                      Summarize a network for this area, like fe80:1234::0/64.
-       **Prefix-List In**                  Prefix-List for inbound direction.
-       **Prefix-List Out**                 Prefix-List for outbound direction.
-       =================================== =======================================================================================================================
-
-    .. tab:: Prefix Lists
-
-       =================================== =======================================================================================================================
-       Options                             Description
-       =================================== =======================================================================================================================
-       **Enabled**                         Enable / Disable
-       **Name**                            The name of your Prefix-List. Choose one relevant to the desired outcome.
-       **Number**                          The ACL sequence number (10-99).
-       **Action**                          Set permit for match or deny to negate the rule.
-       **Network**                         The network pattern you want to match. (Not validated, so be careful!)
-       =================================== =======================================================================================================================
-
-    .. tab:: Route Maps
-
-       =================================== =======================================================================================================================
-       Options                             Description
-       =================================== =======================================================================================================================
-       **Enabled**                         
-       **Name**                            Route-map name for matching and setting patterns, enabled via redistribution.
-       **Action**                          Set permit for match or deny to negate the rule.
-       **ID**                              Route-map ID between 10 and 99. Entries added in order of insertion.
-       **Prefix List**                     Allows for matching based on prefix lists, multiple selections enabled.
-       **Set**                             Free text for setting options, e.g., "local-preference 300" or "community 1:1".
-       =================================== =======================================================================================================================
+Open Shortest Path First (OSPF) is a widely used link-state routing protocol designed for IP networks within a single autonomous system (AS).
+Operating as an interior gateway protocol (IGP), OSPF builds a network topology map by gathering link-state information from routers,
+allowing it to create an optimal routing table for IP packet delivery. OSPFv2 (RFC 2328) supports IPv4, while v3 (RFC 5340) extends support to IPv6.
 
 
 .. _bgp-section:
