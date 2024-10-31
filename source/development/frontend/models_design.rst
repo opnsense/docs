@@ -196,3 +196,47 @@ In the "cert" example our mountpoint would like like : :code:`<mount>/cert+</mou
 
    As legacy wrappers can not be versioned, migrations do not apply. In the long run
    it's always better to use full models, but these constructions offer an option for a "softer landing".
+
+
+When target fields contain structures, it is possible to apply an inline conversion using custom (app specific) field
+types. This pattern is likely best explained with an example.
+
+Below an example implementation which unpacks multiple :code:`<priv>` tags per user object and converts them to a comma
+separated lists.
+
+The first block :code:`actionPostLoadingEvent()` just collects the available options, which is part of the :code:`BaseListField`
+type. The :code:`setValue()` is where the magic happens, when the input is of type :code:`SimpleXMLElement`, we know
+this is being set by the loader, if in that case the underlaying config contains multiple values, we merge them into
+a single list.
+
+.. code-block:: php
+
+   class PrivField extends BaseListField
+   {
+      protected $internalIsContainer = false;
+      private static $priv_list = null;
+
+      protected function actionPostLoadingEvent()
+      {
+         if (self::$priv_list === null) {
+               self::$priv_list = [];
+               foreach ((new \OPNsense\Core\ACL())->getPrivList() as $aclKey => $priv) {
+                  self::$priv_list[$aclKey] = $priv['name'];
+               }
+
+         }
+         $this->internalOptionList = self::$priv_list;
+      }
+
+      /**
+      * {@inheritdoc}
+      */
+      public function setValue($value)
+      {
+         if (is_a($value, 'SimpleXMLElement') && $value->count() > 1) {
+               return parent::setValue(implode(',', (array)$value));
+         } else {
+               return parent::setValue($value);
+         }
+      }
+   }
