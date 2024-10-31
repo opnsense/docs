@@ -2,6 +2,10 @@
 Dynamic Routing (FRR)
 ======================
 
+.. contents::
+   :local:
+   :depth: 2
+
 Dynamic Routing (using routing protocols) is supported via an external plugin.
 Routing protocols support your network equipment in finding the best available path for your packets.
 We use Free Range Routing (`FRR <https://frrouting.org/>`__) to implement the various available protocols for
@@ -236,7 +240,6 @@ It should be considered a legacy protocol.
 
 .. toctree::
    :maxdepth: 2
-   :titlesonly:
 
    how-tos/dynamic_routing_rip.rst
 
@@ -357,7 +360,6 @@ allowing it to create an optimal routing table for IP packet delivery. OSPFv2 (R
 
 .. toctree::
    :maxdepth: 2
-   :titlesonly:
 
    how-tos/dynamic_routing_ospf.rst
 
@@ -545,7 +547,6 @@ for global Internet routing and large network infrastructures.
 
 .. toctree::
    :maxdepth: 2
-   :titlesonly:
 
    how-tos/dynamic_routing_bgp.rst
 
@@ -596,7 +597,6 @@ Hello packets (asynchronous mode). BFD quickly identifies failing links, making 
 
 .. toctree::
    :maxdepth: 2
-   :titlesonly:
 
    how-tos/dynamic_routing_bfd.rst
 
@@ -635,6 +635,5 @@ fine grained control over routes in more complex network environments, if redist
 
 .. toctree::
    :maxdepth: 2
-   :titlesonly:
 
    how-tos/dynamic_routing_static.rst
