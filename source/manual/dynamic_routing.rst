@@ -145,6 +145,8 @@ Dynamic Routing Protocols
 ..
     TODO: Add Tutorials for each section in separate document pages.
 
+For more detailed information, check out the `FRR documentation <https://docs.frrouting.org/en/latest/protocols.html>`_.
+
 * :ref:`General <general-section>`
 * :ref:`RIP <rip-section>`
 * :ref:`OSPF <ospf-section>`
@@ -356,7 +358,7 @@ BGP (Border Gateway Protocol)
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enable**                          This will activate the BGP service.
+       **Enable**                          This will activate the BGP service if routing protocols are enabled in "General".
        **BGP AS Number**                   Your AS Number here.
        **BGP AD Distance**                 Adjust BGP administrative distance, typically set to 20. Useful if you want to prefer OSPF-learned routes.
        **Router ID**                       Optional fixed router ID for BGP.
@@ -372,110 +374,157 @@ BGP (Border Gateway Protocol)
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enabled**                         
+       **Enabled**                         Enable/Disable
        **Description**                     Optional description for the neighbor.
        **Peer-IP**                         Specify the IP address of the BGP neighbor.
-       **Remote AS**                       AS number of the neighbor.
-       **BGP MD5 Password**                Password for BGP authentication.
-       **Weight**                          Default weight value for the neighbor’s routes.
-       **Local Initiater IP**              Local IP for connecting to the neighbor, required for BGP authentication.
-       **Update-Source Interface**         Physical IPv4 interface facing the peer.
-       **IPv6 link-local interface**       Interface for IPv6 link-local neighbors.
-       **Next-Hop-Self**                   
-       **Next-Hop-Self All**               Adds "all" parameter after next-hop-self command.
-       **Multi-Hop**                       Allows sessions with eBGP neighbors multiple hops away.
-       **Multi-Protocol**                  Indicates multiprotocol capability (RFC 2283).
-       **Route Reflector Client**          
-       **Soft reconfiguration inbound**    Allows changing policies without clearing the BGP session.
-       **BFD**                             Enable BFD support for the neighbor.
-       **Keepalive**                       Keepalive timer for neighbor connection (default 60 seconds).
-       **Hold Down Time**                  Time before considering a neighbor as dead (default 180 seconds).
-       **Connect Timer**                   Time to reconnect to a neighbor.
-       **Send Defaultroute**               Enable sending of default routes to the neighbor.
-       **Enable AS-Override**              Overrides the originating AS with the local AS number, for eBGP peers only.
-       **Disable Connected Check**         Allows direct eBGP peers to connect using loopback addresses.
-       **Attribute Unchanged**             Specifies attributes to keep unchanged when advertising to a peer.
-       **Prefix-List In**                  Prefix-List for inbound direction.
-       **Prefix-List Out**                 Prefix-List for outbound direction.
-       **Route-Map In**                    Route-Map for inbound direction.
-       **Route-Map Out**                   Route-Map for outbound direction.
-       **Peer Group**                      Assigns this neighbor to a peer group.
+       **Remote AS**                       AS (Autonomous System) number of the neighbor, required for establishing a BGP session.
+       **BGP MD5 Password**                Password used for MD5 authentication of BGP connections to enhance security.
+       **Weight**                          Default weight for routes from this neighbor; higher weight increases path preference within the same AS.
+       **Local Initiater IP**              Specify the local IP address used to establish connections with the neighbor.
+       **Update-Source Interface**         Interface where BGP sessions are sourced from, typically required when using loopback addresses.
+       **IPv6 link-local interface**       Interface for IPv6 link-local neighbors, used primarily for link-local IPv6 addressing.
+       **Next-Hop-Self**                   Sets the local router as the next hop for routes advertised to the neighbor, commonly used in Route Reflector setups.
+       **Next-Hop-Self All**               Extends `Next-Hop-Self` by applying the setting to all addresses, including multiple address families.
+       **Multi-Hop**                       Enables connections to eBGP neighbors across multiple hops; often required for peering over loopback addresses.
+       **Multi-Protocol**                  Enables multiprotocol BGP for support of additional address families like IPv6.
+       **Route Reflector Client**          Marks the neighbor as a client for a route reflector; used to reduce the number of full BGP mesh connections.
+       **Soft reconfiguration inbound**    Allows policy changes without resetting the session by storing inbound updates.
+       **BFD**                             Enable Bidirectional Forwarding Detection (BFD) for rapid link failure detection with the neighbor.
+       **Keepalive**                       Sets the interval (default 60 seconds) between keepalive messages to check the neighbor's availability.
+       **Hold Down Time**                  Time (default 180 seconds) before declaring a neighbor down if no keepalive messages are received.
+       **Connect Timer**                   Interval to attempt reconnecting with a neighbor after a disconnect.
+       **Send Defaultroute**               Sends a default route to the neighbor, useful in small AS environments where a full routing table isn’t necessary.
+       **Enable AS-Override**              Allows replacement of the neighbor's AS with the local AS, common in BGP confederations.
+       **Disable Connected Check**         Allows eBGP connections over loopback addresses by bypassing checks for direct connections.
+       **Attribute Unchanged**             Keeps specified attributes (like `MED`, `AS-Path`, etc.) unchanged in updates to the neighbor.
+       **Prefix-List In**                  Prefix list to filter inbound prefixes from this neighbor.
+       **Prefix-List Out**                 Prefix list to filter outbound prefixes sent to this neighbor.
+       **Route-Map In**                    Route-map to apply to routes received from this neighbor.
+       **Route-Map Out**                   Route-map to apply to routes advertised to this neighbor.
+       **Peer Group**                      Groups neighbors with similar configurations to simplify management.
        =================================== =======================================================================================================================
+
+       .. Note::
+
+          **Neighbors** in BGP are external or internal peers with whom the router establishes BGP sessions. Neighbors exchange route information,
+          and each neighbor can be configured individually or as part of a Peer Group.
+
+       .. Note::
+
+          A **Route Reflector** (RR) minimizes the need for a full mesh of BGP connections in the same AS by reflecting routes from its clients to other clients.
+          In typical iBGP setups, all routers must directly peer with each other to avoid routing loops, but route reflectors allow clients to peer only with the RR.
+          Clusters of RRs and clients prevent loops, and redundancy can be achieved with multiple RRs.
+          This setup is crucial for scalability in large networks. For a small network, do not enable any of the RR specific options.
 
     .. tab:: AS-Path Lists
 
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enabled**                         Enable/Disable the AS-Path list.
+       **Enabled**                         Enable/Disable
        **Description**                     Optional description for the AS-Path list.
        **Number**                          ACL rule number (0-4294967294). No sequence numbers; removing the ACL is required to insert between entries.
        **Action**                          Set permit to match or deny to negate the rule.
        **AS**                              AS pattern to match, with regex allowed (e.g., ".$" or "_1$").
        =================================== =======================================================================================================================
 
+       .. Note::
+
+          An **AS-Path List** is used to filter routes based on their AS-Path attributes. By matching specific AS paths, you can control the acceptance or rejection
+          of routes from particular AS sequences. This is useful for policy enforcement in multi-AS environments but not needed for small networks.
+
     .. tab:: Prefix Lists
 
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enabled**                         Enable/Disable the Prefix-List.
+       **Enabled**                         Enable/Disable
        **Description**                     Optional description for the Prefix-List.
-       **Name**                            Name of the Prefix-List, descriptive of its purpose.
+       **Name**                            Name of the Prefix-List, descriptive of its purpose. If there should be multiple entries for the same prefix list,
+                                           give them all the same name.
        **IP Version**                      IP version to use.
        **Number**                          ACL sequence number (1-4294967294).
        **Action**                          Set permit to match or deny to negate the rule.
-       **Network**                         Network pattern to match, with optional "ge" or "le" additions. (Not validated)
+       **Network**                         Specifies a network pattern to match, with optional `ge` (greater than or equal) and `le` (less than or equal)
+                                           attributes to control the prefix length range. For example, a pattern like `192.168.0.0/16 ge 24 le 28` matches any
+                                           route within the `192.168.0.0/16` block with prefix lengths from `/24` to `/28`. (Note: not validated)
        =================================== =======================================================================================================================
+
+       .. Note::
+
+          **Prefix Lists** are used to filter prefixes in BGP. They match prefixes and control the import/export of specific IP ranges, allowing for
+          fine-grained network control. It is very important to filter routes, especially when peering between eBGP and iBGP. Leaking routes of RFC1918 addresses
+          to eBGP peers or announcing wrong prefixes is bad practice and could result in peering bans from external providers.
 
     .. tab:: Community Lists
 
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enabled**                         Enable/Disable the Community-List.
-       **Description**                     Optional description for the Community-List.
+       **Enabled**                         Enable/Disable
+       **Description**                     Optional description for the Community-List. If there should be multiple entries for the same community list,
+                                           give them all the same name.
        **Number**                          Community-List number (1-99 for standard, 100-500 for expanded).
        **Sequence Number**                 ACL sequence number (10-99).
        **Action**                          Set permit to match or deny to negate the rule.
        **Community**                       Community pattern to match, with optional regex. (Not validated)
        =================================== =======================================================================================================================
 
+       .. Note::
+
+          **Community Lists** allow tagging and filtering routes based on community attributes. By assigning community tags, you can apply policies that
+          influence route preference. Useful for large networks; not so much in small networks.
+
     .. tab:: Route Maps
 
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enabled**                         Enable/Disable the route-map.
+       **Enabled**                         Enable/Disable
        **Description**                     Optional description for the route-map.
        **Name**                            Name of the route-map, used in neighbor configuration.
        **Action**                          Set permit to match or deny to negate the rule.
        **ID**                              Route-map ID (1-65535). Sorting is managed automatically.
-       **AS-Path List**                    Select the AS-Path List.
-       **Prefix List**                     Select the Prefix List.
-       **Community List**                  Select the Community List.
+       **AS-Path List**                    Select the AS-Path List. If multiples with the same name exist, selecting one is enough.
+       **Prefix List**                     Select the Prefix List. If multiples with the same name exist, selecting one is enough.
+       **Community List**                  Select the Community List. If multiples with the same name exist, selecting one is enough.
        **Set**                             Free text field for setting attributes, e.g., "local-preference 300" or "community 1:1".
        =================================== =======================================================================================================================
+
+       .. Note::
+
+          **Route Maps** act like conditional filters, allowing you to set and modify BGP route attributes based on match criteria.
+          They can combine prefix lists, community lists, and AS-paths for detailed route manipulation.
 
     .. tab:: Peer Groups
 
        =================================== =======================================================================================================================
        Options                             Description
        =================================== =======================================================================================================================
-       **Enabled**                         
+       **Enabled**                         Enable/Disable
        **Name**                            Name of the peer group.
        **Remote AS**                       Remote AS for the peer group.
        **Update-Source Interface**         Physical IPv4 interface facing the peer.
-       **Next-Hop-Self**                   
+       **Next-Hop-Self**                   Sets the local router as the next hop for routes advertised to the neighbor, commonly used in Route Reflector setups.
        **Send Defaultroute**               Enable sending of default routes to the peer group.
-       **Prefix-List In**                  Prefix-List for inbound direction.
-       **Prefix-List Out**                 Prefix-List for outbound direction.
-       **Route-Map In**                    Route-Map for inbound direction.
-       **Route-Map Out**                   Route-Map for outbound direction.
+       **Prefix-List In**                  Prefix list to filter inbound prefixes from this neighbor.
+       **Prefix-List Out**                 Prefix list to filter outbound prefixes sent to this neighbor.
+       **Route-Map In**                    Route-map to apply to routes received from this neighbor.
+       **Route-Map Out**                   Route-map to apply to routes advertised to this neighbor.
        =================================== =======================================================================================================================
 
+       .. Note::
 
-Border Gateway Protocol (BGP) is an exterior gateway protocol used to exchange routing information between autonomous systems (AS) on the Internet. As a path-vector protocol, BGP makes routing decisions based on defined paths, network policies, or administrator-configured rules. BGP has two main types: iBGP, used for routing within a single AS (using private AS numbers from 64512 to 65534), and eBGP, which operates between different AS across the Internet (using public AS numbers 1 to 64511). BGP’s flexibility and scalability make it essential for global Internet routing and large network infrastructures.
+          A **Peer Group** in BGP simplifies configurations by grouping neighbors with similar settings. Instead of configuring each neighbor individually,
+          you can apply a common configuration to all members of a peer group. This approach reduces management complexity and ensures uniform settings across peers.
+          Peer Groups are especially useful in larger networks where multiple BGP peers require identical policy; not so much in small networks.
+
+
+Border Gateway Protocol (BGP) is an exterior gateway protocol used to exchange routing information between autonomous systems (AS) on the Internet.
+As a path-vector protocol, BGP makes routing decisions based on defined paths, network policies, or administrator-configured rules.
+BGP has two main types: iBGP, used for routing within a single AS (using private AS numbers from 64512 to 65534), and eBGP, which operates between
+different AS across the Internet (using public AS numbers 1 to 64511). BGP’s flexibility and scalability make it essential
+for global Internet routing and large network infrastructures.
 
 
 ------------------------------------------------
