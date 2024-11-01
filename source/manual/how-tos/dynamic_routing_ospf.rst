@@ -309,7 +309,7 @@ Network Diagram
                             |                                             |
                    Device A: 192.168.1.201                     Device B: 192.168.200.201
 
-Setup OPNsense A
+Setup OPNsense A/B
 ------------------------------------------
 
 Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_ with a few differences:
@@ -318,12 +318,12 @@ Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_o
 
    .. group-tab:: Step 1
 
-      IPsec VTI tunnels have to be established for ``ipsec1`` and ``ipsec2``. Use the following guide to set them up: `IPsec - Route based (VTI) PSK setup </manual/how-tos/ipsec-s2s-conn-route.html>`_. Do not set up Gateways or Routes, since we will use dynamic routing.
+      IPsec VTI tunnels have to be established for ``ipsec1`` and ``ipsec2``. Use the following guide to set them up: `IPsec - Route based (VTI) PSK setup </manual/how-tos/ipsec-s2s-conn-route.html>`_. Do not set up gateways or routes, since we will use dynamic routing.
 
    .. group-tab:: Step 2
 
       The Firewall rules have to be set up depending on `system tunables </manual/vpnet.html#route-based-vti>`_. It can be either
-      the ``ipsec1`` and ``ipsec2`` interfaces, or the ``IPsec`` interface group.
+      for the ``ipsec1`` and ``ipsec2`` interfaces, or the ``IPsec`` interface group.
 
    .. group-tab:: Step 3
 
@@ -331,68 +331,11 @@ Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_o
 
    .. group-tab:: Step 4
 
-      - :menuselection:`Routing --> OSPF --> Interfaces`
-
-      ==============================================  ====================================================================
-      **Enable**                                      ``X``
-      **Interface**                                   ``ipsec1``
-      **Area**                                        ``0.0.0.0``
-      **Cost**                                        ``10``
-      ==============================================  ====================================================================
-
-      ==============================================  ====================================================================
-      **Enable**                                      ``X``
-      **Interface**                                   ``ipsec2``
-      **Area**                                        ``0.0.0.0``
-      **Cost**                                        ``20``
-      ==============================================  ====================================================================
-
-      - Press ``Save`` to enable the new configuration
+      Add ``ipsec1`` with cost 10 and ``ipsec2`` with cost 20.
 
       .. Note::
 
          The lower cost of ``ipsec1`` will make this interface prefered as route as long as it is available.
-
-   .. group-tab:: Step 5
-
-      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_
-
-Setup OPNsense B
-------------------------------------------
-
-.. tabs::
-
-   .. group-tab:: Step 1
-
-      IPsec VTI tunnels have to be established for ``ipsec1`` and ``ipsec2``.
-
-   .. group-tab:: Step 2
-
-      The Firewall rules have to be set up.
-
-   .. group-tab:: Step 3
-
-      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_
-
-   .. group-tab:: Step 4
-
-      - :menuselection:`Routing --> OSPF --> Interfaces`
-
-      ==============================================  ====================================================================
-      **Enable**                                      ``X``
-      **Interface**                                   ``ipsec1``
-      **Area**                                        ``0.0.0.0``
-      **Cost**                                        ``10``
-      ==============================================  ====================================================================
-
-      ==============================================  ====================================================================
-      **Enable**                                      ``X``
-      **Interface**                                   ``ipsec2``
-      **Area**                                        ``0.0.0.0``
-      **Cost**                                        ``20``
-      ==============================================  ====================================================================
-
-      - Press ``Save`` to enable the new configuration
 
    .. group-tab:: Step 5
 
