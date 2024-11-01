@@ -284,9 +284,10 @@ Verify the setup
 IPsec VTI Failover with OSPF
 ------------------------------------
 
-This guide will enhance what has been introduced in the prior section, introducing two WAN connections and
-two VPN tunnels for seamless failover in case a connection goes down. OPNsense A has one WAN connection
-and will initiate two IPsec VTI tunnels to OPNsense B which has two WAN connections. Both sides
+This guide will enhance what has been introduced in the previous section, introducing two WAN connections and
+two VPN tunnels for seamless failover in case a connection goes down.
+
+OPNsense A has one WAN connection and will initiate two IPsec VTI tunnels to OPNsense B which has two WAN connections. Both sides
 should have static public IP addresses for the most stable setup.
 
 Network Diagram
@@ -296,9 +297,9 @@ Network Diagram
 
                                              Peering Networks
                                             ipsec1: 10.0.0.0/30
-                     +-----------------+ 10.1.1.1        10.1.1.2 +-----------------+ WAN A: 198.51.100.5/32
+                     +-----------------+ 10.1.1.1        10.1.1.2 +-----------------+ WAN A: 198.51.100.2
     WAN A: 192.0.2.1 |                 |--------------------------|                 |-----------------------
-    -----------------|   OPNsense A    |    ipsec2: 10.0.0.4/30   |   OPNsense B    | WAN B: 203.0.113.5/32
+    -----------------|   OPNsense A    |    ipsec2: 10.0.0.4/30   |   OPNsense B    | WAN B: 203.0.113.2
                      |                 |--------------------------|                 |-----------------------
                      +-----------------+ 10.1.1.5        10.1.1.6 +-----------------+
                             | 192.168.1.1                   192.168.200.1 |
@@ -308,3 +309,114 @@ Network Diagram
                             |                                             |
                    Device A: 192.168.1.201                     Device B: 192.168.200.201
 
+Setup OPNsense A
+------------------------------------------
+
+Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_ with a few differences:
+
+.. tabs::
+
+   .. group-tab:: Step 1
+
+      IPsec VTI tunnels have to be established for ``ipsec1`` and ``ipsec2``. Use the following guide to set them up: `IPsec - Route based (VTI) PSK setup </manual/how-tos/ipsec-s2s-conn-route.html>`_. Do not set up Gateways or Routes, since we will use dynamic routing.
+
+   .. group-tab:: Step 2
+
+      The Firewall rules have to be set up depending on `system tunables </manual/vpnet.html#route-based-vti>`_. It can be either
+      the ``ipsec1`` and ``ipsec2`` interfaces, or the ``IPsec`` interface group.
+
+   .. group-tab:: Step 3
+
+      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_
+
+   .. group-tab:: Step 4
+
+      - :menuselection:`Routing --> OSPF --> Interfaces`
+
+      ==============================================  ====================================================================
+      **Enable**                                      ``X``
+      **Interface**                                   ``ipsec1``
+      **Area**                                        ``0.0.0.0``
+      **Cost**                                        ``10``
+      ==============================================  ====================================================================
+
+      ==============================================  ====================================================================
+      **Enable**                                      ``X``
+      **Interface**                                   ``ipsec2``
+      **Area**                                        ``0.0.0.0``
+      **Cost**                                        ``20``
+      ==============================================  ====================================================================
+
+      - Press ``Save`` to enable the new configuration
+
+      .. Note::
+
+         The lower cost of ``ipsec1`` will make this interface prefered as route as long as it is available.
+
+   .. group-tab:: Step 5
+
+      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_
+
+Setup OPNsense B
+------------------------------------------
+
+.. tabs::
+
+   .. group-tab:: Step 1
+
+      IPsec VTI tunnels have to be established for ``ipsec1`` and ``ipsec2``.
+
+   .. group-tab:: Step 2
+
+      The Firewall rules have to be set up.
+
+   .. group-tab:: Step 3
+
+      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_
+
+   .. group-tab:: Step 4
+
+      - :menuselection:`Routing --> OSPF --> Interfaces`
+
+      ==============================================  ====================================================================
+      **Enable**                                      ``X``
+      **Interface**                                   ``ipsec1``
+      **Area**                                        ``0.0.0.0``
+      **Cost**                                        ``10``
+      ==============================================  ====================================================================
+
+      ==============================================  ====================================================================
+      **Enable**                                      ``X``
+      **Interface**                                   ``ipsec2``
+      **Area**                                        ``0.0.0.0``
+      **Cost**                                        ``20``
+      ==============================================  ====================================================================
+
+      - Press ``Save`` to enable the new configuration
+
+   .. group-tab:: Step 5
+
+      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_
+
+
+Verify the setup
+------------------------------------------
+
+In addition to the setup verification steps of the previous setup guide:
+
+- Disconnect ipsec1:
+    - The traffic between 192.168.1.0/24 and 192.168.200.0/24 should automatically route over ipsec2
+- Reconnect ipsec1:
+    - The traffic should route back over ipsec1
+
+.. Note::
+
+    This failover can take as long as the `Dead Interval` of OSPF needs to mark the route as down.
+    Follow the steps in `Dynamic Routing - BFD </manual/dynamic_routing.html#bfd-section>`_ to speed up convergence time.
+
+.. Note::
+
+    IPsec VTI interfaces natively support the multicasts of routing protocols like OSPF or BGP. If you want to do the same setup with policy based
+    IPsec tunnels, these tunnels should connect loopback interfaces. On these loopback interfaces, GRE tunnels can be established. The peering
+    should then be configured with the GRE tunnel interfaces. This setup introduces more complexity and processing overhead; the VTI setup
+    should be prefered.
