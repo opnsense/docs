@@ -31,12 +31,14 @@ Network Diagram
             +-----------------+     Peering Network      +-----------------+
       WAN A |                 |       10.1.1.0/30        |                 | WAN B
   ----------|   OPNsense A    |--------------------------|   OPNsense B    |----------
-            |                 | 10.1.1.1        10.1.1.2 |                 |
+       DHCP |                 | 10.1.1.1        10.1.1.2 |                 | DHCP
             +-----------------+                          +-----------------+
                    | 192.168.1.1                   192.168.200.1 |
                    |                                             |
+            LAN A: 192.168.1.0/24                       LAN B: 192.168.200.0/24
                    |                                             |
-            LAN A: 192.168.1.0/24                        LAN B: 192.168.200.0/24
+                   |                                             |
+            Device A: 192.168.1.201                     Device B: 192.168.200.201
 
 
 Setup OPNsense A
@@ -67,7 +69,7 @@ Setup OPNsense A
 
       **Create Firewall rules on Peering Interface**
 
-      - Navigate to :menuselection:`Firewall --> Rules --> Peering (igc2)`
+      - :menuselection:`Firewall --> Rules --> Peering (igc2)`
 
       ==============================================  ====================================================================
       **Action**                                      Pass
@@ -86,14 +88,14 @@ Setup OPNsense A
 
          Rules allowing traffic from `LAN OPNsense A` to `LAN OPNsense B` must be created in their respective LAN rulesets.
          Since traffic from LAN A to LAN B will use the peering connection, additional rules must be created in the Peering ruleset.
-         Create rules to allow traffic entering `Peering OPNsense A` from `LAN OPNsense B`, and the other way around.
+         Create rules to allow traffic entering `Peering OPNsense A` from `LAN OPNsense B`, and vice versa.
 
 
    .. group-tab:: Step 3
 
       **Configure General Settings**
 
-      - Navigate to :menuselection:`Routing --> General`
+      - :menuselection:`Routing --> General`
       - Select **Enable**
       - Deselect **Firewall rules** since we created a custom rule for RIPv2
       - Press `Save`
@@ -102,7 +104,7 @@ Setup OPNsense A
 
       **Configure RIP Settings**
 
-      - Navigate to :menuselection:`Routing --> RIP`
+      - :menuselection:`Routing --> RIP`
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
@@ -140,7 +142,7 @@ Setup OPNsense B
 
       **Create Firewall rules on Peering Interface**
 
-      - Navigate to :menuselection:`Firewall --> Rules --> Peering (igc2)`
+      - :menuselection:`Firewall --> Rules --> Peering (igc2)`
 
       ==============================================  ====================================================================
       **Action**                                      Pass
@@ -159,7 +161,7 @@ Setup OPNsense B
 
       **Configure General Settings**
 
-      - Navigate to :menuselection:`Routing --> General`
+      - :menuselection:`Routing --> General`
       - Select **Enable**
       - Deselect **Firewall rules** since we created a custom rule for RIPv2
       - Press `Save`
@@ -168,7 +170,7 @@ Setup OPNsense B
 
       **Configure RIP Settings**
 
-      - Navigate to :menuselection:`Routing --> RIP`
+      - :menuselection:`Routing --> RIP`
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
@@ -185,7 +187,7 @@ Setup OPNsense B
 Verify the setup
 ------------------------------------------
 
-- | Navigate to :menuselection:`Routing --> Diagnostics --> General`
+- | :menuselection:`Routing --> Diagnostics --> General`
 - `IPv4 Routes Tab`:
     - Verify if the routes to LAN OPNsense A and LAN OPNsense B exist
     - OPNsense A must have a route to 192.168.200.0/24 installed
@@ -193,5 +195,5 @@ Verify the setup
 
 - Test connectivity with ICMP:
     - Ping from 192.168.1.1 (OPNsense A) to 192.168.200.1 (OPNsense B) and in reverse
-    - Ping from 192.168.1.201 (Device LAN A) to 192.168.200.201 (Device LAN B) and in reverse
+    - Ping from 192.168.1.201 (Device LAN A) to 192.168.200.201 (Device LAN B) and vice versa
     - If the ping does not work, look at the installed routes and verify the Firewall rules
