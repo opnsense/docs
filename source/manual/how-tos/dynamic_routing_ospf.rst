@@ -281,7 +281,7 @@ Verify the setup
 
 
 ------------------------------------
-IPsec VTI Failover with OSPF
+IPsec Failover with VTI and OSPF
 ------------------------------------
 
 This guide will enhance what has been introduced in the previous section, introducing two WAN connections and
@@ -295,21 +295,21 @@ Network Diagram
 
 ::
 
-                                             Peering Networks
-                                            ipsec1: 10.0.0.0/30
-                     +-----------------+ 10.1.1.1        10.1.1.2 +-----------------+ WAN A: 198.51.100.2
-    WAN A: 192.0.2.1 |                 |--------------------------|                 |-----------------------
-    -----------------|   OPNsense A    |    ipsec2: 10.0.0.4/30   |   OPNsense B    | WAN B: 203.0.113.2
-                     |                 |--------------------------|                 |-----------------------
-                     +-----------------+ 10.1.1.5        10.1.1.6 +-----------------+
-                            | 192.168.1.1                   192.168.200.1 |
-                            |                                             |
-                   LAN A: 192.168.1.0/24                       LAN B: 192.168.200.0/24
-                            |                                             |
-                            |                                             |
-                   Device A: 192.168.1.201                     Device B: 192.168.200.201
+                                          Peering Networks
+                                         ipsec1: 10.0.0.0/30
+                  +-----------------+ 10.1.1.1        10.1.1.2 +-----------------+ WAN A: Static
+    WAN A: Static |                 |--------------------------|                 |---------------
+    --------------|   OPNsense A    |    ipsec2: 10.0.0.4/30   |   OPNsense B    | WAN B: Static
+                  |                 |--------------------------|                 |---------------
+                  +-----------------+ 10.1.1.5        10.1.1.6 +-----------------+
+             192.168.1.1 |                                             | 192.168.200.1
+                         |                                             |
+                  LAN A: 192.168.1.0/24                       LAN B: 192.168.200.0/24
+                         |                                             |
+                         |                                             |
+                  Device A: 192.168.1.201                     Device B: 192.168.200.201
 
-Setup OPNsense A/B
+Setup OPNsense A and B
 ------------------------------------------
 
 Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_ with a few differences:
@@ -318,11 +318,17 @@ Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_o
 
    .. group-tab:: Step 1
 
-      IPsec VTI tunnels have to be established for ``ipsec1`` and ``ipsec2``. Use the following guide to set them up: `IPsec - Route based (VTI) PSK setup </manual/how-tos/ipsec-s2s-conn-route.html>`_. Do not set up gateways or routes, since we will use dynamic routing.
+      - :menuselection:`VPN --> IPsec --> Connections`: IPsec VTI tunnels must be established for ``ipsec1`` and ``ipsec2``.
+      - Use the following guide to set them up: `IPsec - Route based (VTI) PSK setup </manual/how-tos/ipsec-s2s-conn-route.html>`_.
+
+      .. Note::
+
+         Do not set up gateways or routes for the VTI interfaces, since we will use dynamic routing. If there are local routes the dynamic
+         routes will not be installed.
 
    .. group-tab:: Step 2
 
-      The Firewall rules have to be set up depending on `system tunables </manual/vpnet.html#route-based-vti>`_. It can be either
+      The Firewall rules must be set up depending on `system tunables </manual/vpnet.html#route-based-vti>`_. It can be either
       for the ``ipsec1`` and ``ipsec2`` interfaces, or the ``IPsec`` interface group.
 
    .. group-tab:: Step 3
@@ -360,6 +366,81 @@ In addition to the setup verification steps of the previous setup guide:
 .. Note::
 
     IPsec VTI interfaces natively support the multicasts of routing protocols like OSPF or BGP. If you want to do the same setup with policy based
-    IPsec tunnels, these tunnels should connect loopback interfaces. On these loopback interfaces, GRE tunnels can be established. The peering
-    should then be configured with the GRE tunnel interfaces. This setup introduces more complexity and processing overhead; the VTI setup
-    should be prefered.
+    IPsec tunnels, follow the next guide.
+
+------------------------------------------------------
+IPsec Failover with Policy Based Tunnels, GRE and OSPF
+------------------------------------------------------
+
+This guide will use policy based IPsec tunnels for dynamic routing instead of VTI.
+These do not natively support multicasts from routing protocols such as OSPF. To mitigate this, GRE over IPsec will be used as peering
+connection.
+
+GRE over IPsec introduces another layer of complexity, each tunnel creates header overhead that reduces the possible MTU. ICMP should be allowed for clients
+to automatically discover the correct packet size through the tunnel via `Path MTU Discovery`. Otherwise, MTU and MSS must be adjusted manually.
+
+OPNsense A has one WAN connection and will initiate two IPsec policy based tunnels to OPNsense B which has two WAN connections. Both sides
+should have static public IP addresses for the most stable setup. Dynamic IPs for one endpoint can also be a valid choice.
+
+Network Diagram
+------------------------------------------
+
+::
+
+                                        Peering Networks
+                                       gre1: 10.0.0.0/30
+                +-----------------+ 10.1.1.1        10.1.1.2 +-----------------+ WAN A: Static
+    WAN A: DHCP | lo1:10.2.2.1/32 |--------------------------|lo1:10.2.2.2/32  |--------------
+    ------------|   OPNsense A    |    gre2: 10.0.0.4/30     |   OPNsense B    | WAN B: Static
+                | lo2:10.2.2.5/32 |--------------------------|lo2:10.2.2.6/32  |--------------
+                +-----------------+ 10.1.1.5        10.1.1.6 +-----------------+
+            192.168.1.1 |                                             | 192.168.200.1
+                        |                                             |
+                LAN A: 192.168.1.0/24                       LAN B: 192.168.200.0/24
+                        |                                             |
+                        |                                             |
+                Device A: 192.168.1.201                     Device B: 192.168.200.201
+
+Setup OPNsense A and B
+------------------------------------------
+
+Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_ with a few differences:
+
+.. tabs::
+
+   .. group-tab:: Step 1
+
+      #. :menuselection:`Interfaces --> Other Types --> Loopback`: Create two loopback interfaces on each firewall, use the network diagram for reference.
+      #. :menuselection:`VPN --> IPsec --> Connections`: Create two policy based IPsec tunnels that each connect a pair of loopback interfaces as children, e.g., ``10.2.2.1/32`` with ``10.2.2.2/32``.
+      #. :menuselection:`Interfaces --> Other Types --> GRE`: Create two GRE tunnels on each firewall that each use a loopback interface of the other side as `Remote address`. The tunnel local and remote address can be referenced from the network diagram.
+
+      .. Note::
+
+         The GRE tunnels will be the peering networks, all traffic from LAN A to LAN B and vice versa will flow through there. GRE should not be used without IPsec in public networks since its payload is not encrypted.
+
+   .. group-tab:: Step 2
+
+      #. :menuselection:`Firewall --> Rules --> IPsec`: Create Firewall rules to allow GRE to establish over the policy based IPsec tunnel.
+      #. :menuselection:`Firewall --> Rules --> gre1/gre2`: Create Firewall rules to allow OSPF multicasts and the peering traffic of LAN A and LAN B through the GRE tunnels.
+
+   .. group-tab:: Step 3
+
+      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_
+
+   .. group-tab:: Step 4
+
+      Add ``gre1`` with cost 10 and ``gre2`` with cost 20.
+
+      .. Note::
+
+         The lower cost of ``gre1`` will make this interface prefered as route as long as it is available.
+
+   .. group-tab:: Step 5
+
+      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_
+
+
+Verify the setup
+------------------------------------------
+
+For setup verification follow the same steps as in the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#verify-the-setup>`_
