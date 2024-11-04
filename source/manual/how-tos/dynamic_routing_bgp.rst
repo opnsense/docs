@@ -9,7 +9,7 @@ Dynamic Routing - BGP Tutorials
 For more details go to: `Dynamic Routing - BGP </manual/dynamic_routing.html#bgp-section>`_
 
 ---------------------------------------------------
-Setup iBGP between Routers
+Peering with Routers in internal AS (iBGP)
 ---------------------------------------------------
 
 This guide provides a step-by-step setup for iBGP between two OPNsenses. Each router has a WAN connection,
@@ -234,6 +234,7 @@ Setup OPNsense B
       ==============================================  ====================================================================
       **Enable**                                      ``X``
       **BGP AS Number*                                ``65011`` (or any other private AS number)
+      **Network**                                     leave empty (we use Route Redistribution)
       **Route Redistribution**                        ``Connected routes (directly attached subnet or host)``
       ==============================================  ====================================================================
 
@@ -295,9 +296,9 @@ Verify the setup
     - If the ping does not work, look at the installed routes and verify the Firewall rules
 
 
-------------------------------------------
-ISP peering with eBGP for Internet Access
-------------------------------------------
+-------------------------------------------
+Peering with ISP for Internet Access (eBGP)
+-------------------------------------------
 
 This guide will focus on the most simple eBGP peering scenario. An ISP provides internet access through their autonomous system (AS) by peering with your router as neighbor.
 They are your only upstream provider and will push a default route; you will not receive an internet routing table. The ISP will announce the IP address space for you, since it is provider dependant.
@@ -310,7 +311,7 @@ temporarly disabled by the ISP.
 
    More complex setups like announcing provider independant address spaces or using the OPNsense as ISP router are out of scope for this setup guide. These setups
    must be created and maintained by BGP experts. Since BGP has no built-in automatic safety mechanisms, an invalid configuraton can disrupt global internet
-   routing (e.g., announcing the wrong networks or subnet masks). This can get you sanctioned by RIPE and other RIRs.
+   routing (e.g., announcing the wrong networks or subnet masks).
 
 Network Diagram
 ------------------------------------------
@@ -338,18 +339,146 @@ Setup OPNsense A
 
    .. tab:: Step 1
 
+      **Configure Network Interfaces**
+
+      =============================  ================================
+      **Interface**                  **Configuration**
+      =============================  ================================
+      **LAN**                        ``igc0`` - IP: `192.168.1.1/24`
+      **WAN**                        ``igc1`` - IP: `203.0.113.1/30`
+      =============================  ================================
+
+      #. Configure the **LAN** Interface with IP `192.168.1.1/24` on `igc0`.
+      #. Assign the **WAN** Interface on `igc1` with IP `203.0.113.1/30` for the peering network between OPNsense A and the ISP Router.
 
    .. tab:: Step 2
 
+      **Create Firewall rules on Peering Interface**
+
+      - :menuselection:`Firewall --> Rules --> Peering (igc1)`
+
+      ==============================================  ====================================================================
+      **Action**                                      Pass
+      **Interface**                                   WAN (igc1)
+      **Direction**                                   In
+      **TCP/IP Version**                              IPv4
+      **Protocol**                                    TCP
+      **Source**                                      WAN network
+      **Source Port**                                 Any
+      **Destination**                                 WAN network
+      **Destination Port**                            179 (BGP)
+      **Description**                                 Allow inbound BGP traffic from ISP Router
+      ==============================================  ====================================================================
 
    .. tab:: Step 3
 
+      **Configure General Settings**
+
+      - :menuselection:`Routing --> General`
+      - Select **Enable**
+      - Deselect **Firewall rules** since we created a custom rule for BGP
+      - Press `Save`
 
    .. tab:: Step 4
 
+      **Configure General BGP Settings**
+
+      - :menuselection:`Routing --> BGP --> General`
+
+      ==============================================  =======================================================================
+      **Enable**                                      ``X``
+      **BGP AS Number**                               ``65011`` (or any other private AS number)
+      **Network**                                     leave empty (we do not want to advertise any networks)
+      **Route Redistribution**                        ``None`` (we do not want to advertise any networks)
+      ==============================================  =======================================================================
+
+      - :menuselection:`Routing --> BGP --> Neighbors`
+
+      ==============================================  ====================================================================
+      **Enable**                                      ``X``
+      **Peer IP**                                     ``203.0.113.2`` (Peering IP ISP Router)
+      **Remote AS**                                   ``64496``
+      **Update-Source Interface**                     ``igc1`` (Peering interface OPNsense A)
+      ==============================================  ====================================================================
 
    .. tab:: Step 5
+
+      **Filter redistributed Routes with a Prefix List**
+
+      - :menuselection:`Routing --> BGP --> Prefix Lists`
+
+      ==============================================  ====================================================================
+      **Name**                                        ``Filter_Prefix_RFC1918``
+      **IP Version**                                  ``IPv4``
+      **Number**                                      ``1``
+      **Action**                                      ``Deny``
+      **Network**                                     ``192.168.0.0/16``
+      ==============================================  ====================================================================
+
+      ==============================================  ====================================================================
+      **Name**                                        ``Filter_Prefix_RFC1918``
+      **IP Version**                                  ``IPv4``
+      **Number**                                      ``2``
+      **Action**                                      ``Deny``
+      **Network**                                     ``172.16.0.0/12``
+      ==============================================  ====================================================================
+
+      ==============================================  ====================================================================
+      **Name**                                        ``Filter_Prefix_RFC1918``
+      **IP Version**                                  ``IPv4``
+      **Number**                                      ``3``
+      **Action**                                      ``Deny``
+      **Network**                                     ``10.0.0.0/8``
+      ==============================================  ====================================================================
+
+      ==============================================  ====================================================================
+      **Name**                                        ``Filter_Prefix_RFC1918``
+      **IP Version**                                  ``IPv4``
+      **Number**                                      ``4``
+      **Action**                                      ``Permit``
+      **Network**                                     ``0.0.0.0/0``
+      ==============================================  ====================================================================
+
+      ==============================================  ====================================================================
+      **Name**                                        ``Filter_Prefix_Default``
+      **IP Version**                                  ``IPv4``
+      **Number**                                      ``5``
+      **Action**                                      ``Deny``
+      **Network**                                     ``0.0.0.0/0``
+      ==============================================  ====================================================================
+
+      - :menuselection:`Routing --> BGP --> Route Maps`
+
+      ==============================================  ====================================================================
+      **Name**                                        ``Filter_Map_RFC1918``
+      **Action**                                      ``Permit``
+      **ID**                                          ``1``
+      **Prefix List**                                 ``Filter_Prefix_RFC1918``
+      ==============================================  ====================================================================
+
+      ==============================================  ====================================================================
+      **Name**                                        ``Filter_Map_Default``
+      **Action**                                      ``Deny``
+      **ID**                                          ``2``
+      **Prefix List**                                 ``Filter_Prefix_Default``
+      ==============================================  ====================================================================
+
+      - :menuselection:`Routing --> BGP --> Neighbor`
+
+      ==============================================  ====================================================================
+      **Route-Map In**                                ``Filter_Map_RFC1918``
+      **Route-Map Out**                               ``Filter_Map_Default``
+      ==============================================  ====================================================================
+
+      - Press ``Save`` to enable the new configuration
+
+      .. Note::
+
+         `Route-Map In` will deny all RFC1918 routes that the ISP could accidentally advertise to us. Only 0.0.0.0/0 is allowed as advertisement from the ISP.
+         `Route-Map Out` will prevent any false advertisements from us to the ISP.
 
 
 Verify the setup
 ------------------------------------------
+
+TODO
