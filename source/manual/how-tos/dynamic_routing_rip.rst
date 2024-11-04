@@ -19,7 +19,7 @@ should be automatically shared between the two routers.
 .. Note::
 
    Peering network means that the OPNsenses are directly attached to each other via these interfaces. This can be done either
-   by connecting a network cable directly between these ports, or ensure they are connected to the same switch in the same Layer 2
+   by connecting a network cable directly between these ports, or ensuring they are connected to the same switch in the same Layer 2
    Broadcast Domain.
 
 

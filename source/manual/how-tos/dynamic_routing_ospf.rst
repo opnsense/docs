@@ -8,6 +8,11 @@ Dynamic Routing - OSPF Tutorials
 
 For more details go to: `Dynamic Routing - OSPF </manual/dynamic_routing.html#ospf-section>`_
 
+.. Note::
+
+   OSPFv2 supports IPv4. For IPv6 use OSPFv3 instead.
+
+
 ------------------------------------------
 Setup OSPF between Routers
 ------------------------------------------
@@ -19,7 +24,7 @@ should be automatically shared between the two routers.
 .. Note::
 
    Peering network means that the OPNsenses are directly attached to each other via these interfaces. This can be done either
-   by connecting a network cable directly between these ports, or ensure they are connected to the same switch in the same Layer 2
+   by connecting a network cable directly between these ports, or ensuring they are connected to the same switch in the same Layer 2
    Broadcast Domain.
 
 
@@ -390,9 +395,9 @@ Network Diagram
                                         Peering Networks
                                        gre1: 10.0.0.0/30
                 +-----------------+ 10.1.1.1        10.1.1.2 +-----------------+ WAN A: Static
-    WAN A: DHCP | lo1:10.2.2.1/32 |--------------------------|lo1:10.2.2.2/32  |--------------
+    WAN A: DHCP | lo1:10.2.2.1/32 |--------------------------| lo1:10.2.2.2/32 |--------------
     ------------|   OPNsense A    |    gre2: 10.0.0.4/30     |   OPNsense B    | WAN B: Static
-                | lo2:10.2.2.5/32 |--------------------------|lo2:10.2.2.6/32  |--------------
+                | lo2:10.2.2.5/32 |--------------------------| lo2:10.2.2.6/32 |--------------
                 +-----------------+ 10.1.1.5        10.1.1.6 +-----------------+
             192.168.1.1 |                                             | 192.168.200.1
                         |                                             |
