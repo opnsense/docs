@@ -291,7 +291,7 @@ Verify the setup
     - OPNsense B must have a route to 192.168.1.0/24 installed
 
 - Test connectivity with ICMP:
-    - Ping from 192.168.1.1 (OPNsense A) to 192.168.200.1 (OPNsense B) and in reverse
+    - Ping from 192.168.1.1 (OPNsense A) to 192.168.200.1 (OPNsense B) and vice versa
     - Ping from 192.168.1.201 (Device LAN A) to 192.168.200.201 (Device LAN B) and vice versa
     - If the ping does not work, look at the installed routes and verify the Firewall rules
 
@@ -481,4 +481,12 @@ Setup OPNsense A
 Verify the setup
 ------------------------------------------
 
-TODO
+- | :menuselection:`Routing --> Diagnostics --> General`
+- `IPv4 Routes Tab`:
+    - Verify if the routes to LAN OPNsense A exist
+    - OPNsense A must have a route to 0.0.0.0/0 via 203.0.113.2 installed
+
+- Test connectivity with ICMP:
+    - Ping from 203.0.113.1 (OPNsense A) to 203.0.113.2 (ISP)
+    - Ping from 203.0.113.1 to a destination on the internet
+    - If the ping does not work, look at the installed routes and verify the Firewall rules

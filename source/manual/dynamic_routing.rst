@@ -653,8 +653,3 @@ STATIC (Static Routes Daemon)
 
 STATIC is a daemon that handles the installation and deletion of static routes. These routes can be used supplemental to dynamic routes. It is beneficial for
 fine grained control over routes in more complex network environments, if redistributing directly attached routes is not an option.
-
-.. toctree::
-   :maxdepth: 2
-
-   how-tos/dynamic_routing_static.rst
