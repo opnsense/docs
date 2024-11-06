@@ -90,8 +90,8 @@ their default values and save.
 .. Note::
    This rule is required for proper handling of fragmented packets.
 
-Go to :menuselection:`Firewall --> NAT --> Outbound`, add a new rule, set `Source address` to `Single host or network`, enter your Tayga
-`IPv4 Pool`, leave all other settings to their default values and save.
+Go to :menuselection:`Firewall --> NAT --> Outbound`, add a new rule, set the `Interface` to `WAN`, set `Source address` to `Single host or
+network`, enter your Tayga `IPv4 Pool`, leave all other settings to their default values and save.
 
 Apply the firewall changes. NAT64 should now be fully operational.
 
