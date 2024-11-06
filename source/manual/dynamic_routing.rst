@@ -203,7 +203,7 @@ For more detailed information, check out the `FRR documentation <https://docs.fr
 .. Attention::
 
    Any route received with dynamic routing protocols will only be installed if no similiar local route already exists. E.g., if a neighbor advertises
-   a default gateway route, but a directly attached default gateway route already exists, the local route will be preferred and the advertised route will be discarted.
+   a default gateway route, but a directly attached default gateway route already exists, the local route will be preferred and the advertised route will be discarded.
 
 
 .. _rip-section:
@@ -421,7 +421,7 @@ BGP (Border Gateway Protocol)
        **Remote AS**                       AS (Autonomous System) number of the neighbor, required for establishing a BGP session.
        **BGP MD5 Password**                Password used for MD5 authentication of BGP connections to enhance security.
        **Weight**                          Default weight for routes from this neighbor; higher weight increases path preference within the same AS.
-       **Local Initiater IP**              Specify the local IP address used to establish connections with the neighbor.
+       **Local Initiater IP**              Specify the local IP address used to establish connections with the neighbor. Only relevant for MD5 authentication.
        **Update-Source Interface**         Interface where BGP sessions are sourced from, typically required when using loopback addresses.
        **IPv6 link-local interface**       Interface for IPv6 link-local neighbors, used primarily for link-local IPv6 addressing.
        **Next-Hop-Self**                   Sets the local router as the next hop for routes advertised to the neighbor, commonly used in Route Reflector setups.
@@ -434,7 +434,7 @@ BGP (Border Gateway Protocol)
        **Keepalive**                       Sets the interval (default 60 seconds) between keepalive messages to check the neighbor's availability.
        **Hold Down Time**                  Time (default 180 seconds) before declaring a neighbor down if no keepalive messages are received.
        **Connect Timer**                   Interval to attempt reconnecting with a neighbor after a disconnect.
-       **Send Defaultroute**               Sends a default route to the neighbor, useful in small AS environments where a full routing table isn’t necessary.
+       **Send Defaultroute**               Sends a default route to the neighbor, useful in small AS environments where a full routing table is not necessary.
        **Enable AS-Override**              Allows replacement of the neighbor's AS with the local AS, common in BGP confederations.
        **Disable Connected Check**         Allows eBGP connections over loopback addresses by bypassing checks for direct connections.
        **Attribute Unchanged**             Keeps specified attributes (like `MED`, `AS-Path`, etc.) unchanged in updates to the neighbor.
