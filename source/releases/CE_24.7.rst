@@ -31,6 +31,57 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.7.8 (November 06, 2024)
+--------------------------------------------------------------------------
+
+
+Minor update with FreeBSD security advisories and a number of stable
+branch patches for various Intel drivers.  Two problems with the RRD
+rework are herby fixed as well.
+
+Here are the full patch notes:
+
+* system: add missing MinProtocol in OpenSSL config template from trust settings
+* system: add SignatureAlgorithms option and fix minor form glitch in trust settings
+* system: bring CRLs into bundles as well
+* system: sync certctl to FreeBSD 14.1 base code et al
+* reporting: isset() vs. empty() on RRD enable
+* reporting: fix regression in RRD temperature readings
+* interfaces: parse part of SFP module information in legacy_interfaces_details()
+* firewall: add a note about stateless TCP during syncookie use
+* firewall: enhance validation that group name can not start or end with a digit
+* firmware: improve health script and use config.sh
+* firmware: rework CRL check in config.sh
+* firmware: use the trust store for CRL verification
+* lang: update available translations
+* ipsec: add swanctl.conf download button to settings page
+* ipsec: add description field to pre-shared-keys
+* isc-dhcp: safeguard output type for json_decode() in leases page
+* unbound: allow RFC 2181 compatible names in overrides
+* mvc: fix UpdateOnlyTextField incompatibility with DependConstraint (contributed by kumy)
+* plugins: os-bind 1.33 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/dns/bind/pkg-descr>`__ 
+* plugins: os-caddy 1.7.4 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* plugins: os-etpro-telemetry lowers log level of collection invoke (contributed by doktornotor)
+* plugins: os-iperf fixes JS TypeError when parsing result (contributed by Leo Huang)
+* plugins: os-tinc removes "pipes" Python module dependency (contributed by andrewhotlab)
+* src: multiple issues in the bhyve hypervisor `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-24:17.pam_xdg.asc>`__ 
+* src: unbounded allocation in ctl(4) CAM Target Layer `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:17.bhyve.asc>`__ 
+* src: XDG runtime directory file descriptor leak at login `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:18.ctl.asc>`__ 
+* src: assorted FreeBSD stable patches for Intel ixgbe, igb, igc and e1000 drivers
+* src: cxgb: register ifmedia callbacks before ether_ifattach
+* src: enc: use new KPI to create enc interface
+* src: ifconfig: fix wrong indentation for the status of pfsync
+* src: iflib: simplify iflib_legacy_setup
+* src: iflib: use if_alloc_dev() to allocate the ifnet
+* src: netmap: make memory pools NUMA-aware
+* src: vlan: handle VID conflicts
+* ports: libpfctl 0.14
+* ports: nss 3.106 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_106.html>`__ 
+* ports: php 8.2.25 `[7] <https://www.php.net/ChangeLog-8.php#8.2.25>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.7.7 (October 23, 2024)
 --------------------------------------------------------------------------
 
