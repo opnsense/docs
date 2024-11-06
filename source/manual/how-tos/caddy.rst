@@ -681,13 +681,16 @@ A Layer 7 matcher checks the first bytes of a TCP/UDP packet and decides which p
 There are additional matchers for all kinds of protocols, including:
 
 * DNS
-* HTTP (with and without Host Header evaluation)
+* HTTP (with optional Host Header evaluation)
+* OpenVPN (with optional TLS static key evaluation)
 * Postgres
 * Proxy Protocol
+* QUIC (with optional Client Hello evaluation)
 * RDP
 * SOCKSv4/v5
 * SSH
-* TLS (with and without Client Hello evaluation)
+* TLS (with optional Client Hello evaluation)
+* Winbox
 * Wireguard
 * XMPP
 
