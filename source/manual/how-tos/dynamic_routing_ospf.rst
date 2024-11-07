@@ -17,13 +17,13 @@ For more details go to: `Dynamic Routing - OSPF </manual/dynamic_routing.html#os
 Setup OSPF between Routers
 ------------------------------------------
 
-This guide provides a step-by-step setup for OSPF between two OPNsenses. Each router has a WAN connection,
+This guide provides a step-by-step setup for OSPF between two routers. Each router has a WAN connection,
 a unique LAN network, and a shared internal peering network. The routes of the unique LAN networks and any new networks
 should be automatically shared between the two routers.
 
 .. Note::
 
-   Peering network means that the OPNsenses are directly attached to each other via these interfaces. This can be done either
+   Peering network means that the routers are directly attached to each other via these interfaces. This can be done either
    by connecting a network cable directly between these ports, or ensuring they are connected to the same switch in the same Layer 2
    Broadcast Domain.
 
@@ -35,7 +35,7 @@ Network Diagram
 
             +-----------------+     Peering Network      +-----------------+
       WAN A |                 |       10.1.1.0/30        |                 | WAN B
-  ----------|   OPNsense A    |--------------------------|   OPNsense B    |----------
+  ----------|    Router A     |--------------------------|    Router B     |----------
        DHCP |                 | 10.1.1.1        10.1.1.2 |                 | DHCP
             +-----------------+                          +-----------------+
                    | 192.168.1.1                   192.168.200.1 |
@@ -46,7 +46,7 @@ Network Diagram
             Device A: 192.168.1.201                     Device B: 192.168.200.201
 
 
-Setup OPNsense A
+Setup Router A
 ------------------------------------------
 
 .. tabs::
@@ -64,7 +64,7 @@ Setup OPNsense A
       =============================  ================================
 
       #. Configure the **LAN** Interface with IP `192.168.1.1/24` on `igc0`.
-      #. Assign the **Peering** Interface on `igc2` with IP `10.1.1.1/30` for the peering network between OPNsense A and OPNsense B.
+      #. Assign the **Peering** Interface on `igc2` with IP `10.1.1.1/30` for the peering network between Router A and Router B.
 
       .. Note::
 
@@ -91,9 +91,9 @@ Setup OPNsense A
 
       .. Note::
 
-         Rules allowing traffic from `LAN OPNsense A` to `LAN OPNsense B` must be created in their respective LAN rulesets.
+         Rules allowing traffic from `LAN Router A` to `LAN Router B` must be created in their respective LAN rulesets.
          Since traffic from LAN A to LAN B will use the peering connection, additional rules must be created in the Peering ruleset.
-         Create rules to allow traffic entering `Peering OPNsense A` from `LAN OPNsense B`, and vice versa.
+         Create rules to allow traffic entering `Peering Router A` from `LAN Router B`, and vice versa.
 
 
    .. group-tab:: Step 3
@@ -104,6 +104,12 @@ Setup OPNsense A
       - Select **Enable**
       - Deselect **Firewall rules** since we created a custom rule for OSPF
       - Press `Save`
+
+      .. Note::
+
+         Deactivating the automatic firewall rules is optional. If multiple dynamic routing protocols are used concurrently,
+         the automatic rules will ease configuration.
+
 
    .. group-tab:: Step 4
 
@@ -169,7 +175,7 @@ Setup OPNsense A
          Any other networks that will exist as connected routes will not be advertised to other routers in the 0.0.0.0 Backbone Area.
 
 
-Setup OPNsense B
+Setup Router B
 ------------------------------------------
 
 .. tabs::
@@ -187,7 +193,7 @@ Setup OPNsense B
       =============================  ================================
 
       #. Configure the **LAN Interface** with IP `192.168.200.1/24` on `igc0`.
-      #. Assign the **Peering Interface** on `igc2` with IP `10.1.1.2/30` for the peering network between OPNsense A and OPNsense B.
+      #. Assign the **Peering Interface** on `igc2` with IP `10.1.1.2/30` for the peering network between Router A and Router B.
 
    .. group-tab:: Step 2
 
@@ -275,12 +281,12 @@ Verify the setup
 
 - | :menuselection:`Routing --> Diagnostics --> General`
 - `IPv4 Routes Tab`:
-    - Verify if the routes to LAN OPNsense A and LAN OPNsense B exist
-    - OPNsense A must have a route to 192.168.200.0/24 installed
-    - OPNsense B must have a route to 192.168.1.0/24 installed
+    - Verify if the routes to LAN Router A and LAN Router B exist
+    - Router A must have a route to 192.168.200.0/24 installed
+    - Router B must have a route to 192.168.1.0/24 installed
 
 - Test connectivity with ICMP:
-    - Ping from 192.168.1.1 (OPNsense A) to 192.168.200.1 (OPNsense B) and in reverse
+    - Ping from 192.168.1.1 (Router A) to 192.168.200.1 (Router B) and in reverse
     - Ping from 192.168.1.201 (Device LAN A) to 192.168.200.201 (Device LAN B) and vice versa
     - If the ping does not work, look at the installed routes and verify the Firewall rules
 
@@ -292,7 +298,7 @@ IPsec Failover with VTI and OSPF
 This guide will enhance what has been introduced in the previous section, introducing two WAN connections and
 two VPN tunnels for seamless failover in case a connection goes down.
 
-OPNsense A has one WAN connection and will initiate two IPsec VTI tunnels to OPNsense B which has two WAN connections. Both sides
+Router A has one WAN connection and will initiate two IPsec VTI tunnels to Router B which has two WAN connections. Both sides
 should have static public IP addresses for the most stable setup.
 
 Network Diagram
@@ -304,7 +310,7 @@ Network Diagram
                                          ipsec1: 10.0.0.0/30
                   +-----------------+ 10.1.1.1        10.1.1.2 +-----------------+ WAN A: Static
     WAN A: Static |                 |--------------------------|                 |---------------
-    --------------|   OPNsense A    |    ipsec2: 10.0.0.4/30   |   OPNsense B    | WAN B: Static
+    --------------|    Router A     |    ipsec2: 10.0.0.4/30   |    Router B     | WAN B: Static
                   |                 |--------------------------|                 |---------------
                   +-----------------+ 10.1.1.5        10.1.1.6 +-----------------+
              192.168.1.1 |                                             | 192.168.200.1
@@ -314,7 +320,7 @@ Network Diagram
                          |                                             |
                   Device A: 192.168.1.201                     Device B: 192.168.200.201
 
-Setup OPNsense A and B
+Setup Router A and B
 ------------------------------------------
 
 Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_ with a few differences:
@@ -384,7 +390,7 @@ connection.
 GRE over IPsec introduces another layer of complexity, each tunnel creates header overhead that reduces the possible MTU. ICMP should be allowed for clients
 to automatically discover the correct packet size through the tunnel via `Path MTU Discovery`. Otherwise, MTU and MSS must be adjusted manually.
 
-OPNsense A has one WAN connection and will initiate two IPsec policy based tunnels to OPNsense B which has two WAN connections. Both sides
+Router A has one WAN connection and will initiate two IPsec policy based tunnels to Router B which has two WAN connections. Both sides
 should have static public IP addresses for the most stable setup. Dynamic IPs for one endpoint can also be a valid choice.
 
 Network Diagram
@@ -396,7 +402,7 @@ Network Diagram
                                        gre1: 10.0.0.0/30
                 +-----------------+ 10.1.1.1        10.1.1.2 +-----------------+ WAN A: Static
     WAN A: DHCP | lo1:10.2.2.1/32 |--------------------------| lo1:10.2.2.2/32 |--------------
-    ------------|   OPNsense A    |    gre2: 10.0.0.4/30     |   OPNsense B    | WAN B: Static
+    ------------|    Router A     |    gre2: 10.0.0.4/30     |    Router B     | WAN B: Static
                 | lo2:10.2.2.5/32 |--------------------------| lo2:10.2.2.6/32 |--------------
                 +-----------------+ 10.1.1.5        10.1.1.6 +-----------------+
             192.168.1.1 |                                             | 192.168.200.1
@@ -406,7 +412,7 @@ Network Diagram
                         |                                             |
                 Device A: 192.168.1.201                     Device B: 192.168.200.201
 
-Setup OPNsense A and B
+Setup Router A and B
 ------------------------------------------
 
 Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_ with a few differences:

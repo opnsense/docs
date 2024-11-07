@@ -60,7 +60,7 @@ Setting up BFD is additional to the `OSPF Tutorial </manual/how-tos/dynamic_rout
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
-      **Description**                                 ``OPNsense B``
+      **Description**                                 ``Router B``
       **Peer-IP**                                     ``10.1.1.2``
       **Multihop**                                    Do not enable, it is needed for more complex setups only.
       ==============================================  ====================================================================
@@ -76,7 +76,7 @@ Setting up BFD is additional to the `OSPF Tutorial </manual/how-tos/dynamic_rout
 
       - :menuselection:`Routing --> BGP --> Neighbor`
 
-      Open the existing neighbor `OPNsense B` and enable BFD.
+      Open the existing neighbor `Router B` and enable BFD.
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
@@ -94,7 +94,7 @@ Setting up BFD is additional to the `OSPF Tutorial </manual/how-tos/dynamic_rout
 
       - :menuselection:`Routing --> OSPF --> Interface`
 
-      Open the existing peering interface to `OPNsense B` and enable BFD.
+      Open the existing peering interface to `Router B` and enable BFD.
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
@@ -106,7 +106,7 @@ Setting up BFD is additional to the `OSPF Tutorial </manual/how-tos/dynamic_rout
       - Press ``Save`` to enable the new configuration
 
 
-Setup OPNsense B
+Setup Router B
 ------------------------------------------
 
 .. tabs::
@@ -144,7 +144,7 @@ Setup OPNsense B
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
-      **Description**                                 ``OPNsense A``
+      **Description**                                 ``Router A``
       **Peer-IP**                                     ``10.1.1.1``
       **Multihop**                                    Do not enable, it is needed for more complex setups only.
       ==============================================  ====================================================================
@@ -155,7 +155,7 @@ Setup OPNsense B
 
       - :menuselection:`Routing --> BGP --> Neighbor`
 
-      Open the existing neighbor `OPNsense A` and enable BFD.
+      Open the existing neighbor `Router A` and enable BFD.
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
@@ -173,7 +173,7 @@ Setup OPNsense B
 
       - :menuselection:`Routing --> OSPF --> Interface`
 
-      Open the existing peering interface to `OPNsense A` and enable BFD.
+      Open the existing peering interface to `Router A` and enable BFD.
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``

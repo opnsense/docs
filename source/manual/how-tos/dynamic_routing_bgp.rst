@@ -12,7 +12,7 @@ For more details go to: `Dynamic Routing - BGP </manual/dynamic_routing.html#bgp
 Peering with Routers in internal AS (iBGP)
 ---------------------------------------------------
 
-This guide provides a step-by-step setup for iBGP between two OPNsenses. Each router has a WAN connection,
+This guide provides a step-by-step setup for iBGP between two routers. Each router has a WAN connection,
 a unique LAN network, and a shared internal peering network. The routes of the unique LAN networks and any new networks
 should be automatically shared between the two routers.
 
@@ -21,7 +21,7 @@ automatically enables iBGP. Each iBGP neighbor in your internal AS can share the
 
 .. Note::
 
-   Peering network means that the OPNsenses are directly attached to each other via these interfaces. This can be done either
+   Peering network means that the routers are directly attached to each other via these interfaces. This can be done either
    by connecting a network cable directly between these ports, or ensuring they are connected to the same switch in the same Layer 2
    Broadcast Domain.
 
@@ -33,7 +33,7 @@ Network Diagram
 
             +-----------------+     Peering Network      +-----------------+
       WAN A |                 |       10.1.1.0/30        |                 | WAN B
-  ----------|   OPNsense A    |--------------------------|   OPNsense B    |----------
+  ----------|    Router A     |--------------------------|    Router B     |----------
        DHCP |                 | 10.1.1.1        10.1.1.2 |                 | DHCP
             +-----------------+                          +-----------------+
                    | 192.168.1.1                   192.168.200.1 |
@@ -44,7 +44,7 @@ Network Diagram
             Device A: 192.168.1.201                     Device B: 192.168.200.201
 
 
-Setup OPNsense A
+Setup Router A
 ------------------------------------------
 
 .. tabs::
@@ -62,7 +62,7 @@ Setup OPNsense A
       =============================  ================================
 
       #. Configure the **LAN** Interface with IP `192.168.1.1/24` on `igc0`.
-      #. Assign the **Peering** Interface on `igc2` with IP `10.1.1.1/30` for the peering network between OPNsense A and OPNsense B.
+      #. Assign the **Peering** Interface on `igc2` with IP `10.1.1.1/30` for the peering network between Router A and Router B.
 
       .. Note::
 
@@ -89,9 +89,9 @@ Setup OPNsense A
 
       .. Note::
 
-         Rules allowing traffic from `LAN OPNsense A` to `LAN OPNsense B` must be created in their respective LAN rulesets.
+         Rules allowing traffic from `LAN Router A` to `LAN Router B` must be created in their respective LAN rulesets.
          Since traffic from LAN A to LAN B will use the peering connection, additional rules must be created in the Peering ruleset.
-         Create rules to allow traffic entering `Peering OPNsense A` from `LAN OPNsense B`, and vice versa.
+         Create rules to allow traffic entering `Peering Router A` from `LAN Router B`, and vice versa.
 
 
    .. group-tab:: Step 3
@@ -102,6 +102,12 @@ Setup OPNsense A
       - Select **Enable**
       - Deselect **Firewall rules** since we created a custom rule for BGP
       - Press `Save`
+
+      .. Note::
+
+         Deactivating the automatic firewall rules is optional. If multiple dynamic routing protocols are used concurrently,
+         the automatic rules will ease configuration.
+
 
    .. group-tab:: Step 4
 
@@ -119,9 +125,9 @@ Setup OPNsense A
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
-      **Peer IP**                                     ``10.1.1.2`` (Peering IP OPNsense B)
+      **Peer IP**                                     ``10.1.1.2`` (Peering IP Router B)
       **Remote AS**                                   ``65011``
-      **Update-Source Interface**                     ``igc2`` (Peering interface OPNsense A)
+      **Update-Source Interface**                     ``igc2`` (Peering interface Router A)
       ==============================================  ====================================================================
 
       - Press ``Save`` to enable the new configuration
@@ -170,7 +176,7 @@ Setup OPNsense A
          Any other networks that will exist as connected routes will not be advertised to BGP neighbors.
 
 
-Setup OPNsense B
+Setup Router B
 ------------------------------------------
 
 .. tabs::
@@ -188,7 +194,7 @@ Setup OPNsense B
       =============================  ================================
 
       #. Configure the **LAN Interface** with IP `192.168.200.1/24` on `igc0`.
-      #. Assign the **Peering Interface** on `igc2` with IP `10.1.1.2/30` for the peering network between OPNsense A and OPNsense B.
+      #. Assign the **Peering Interface** on `igc2` with IP `10.1.1.2/30` for the peering network between Router A and Router B.
 
    .. group-tab:: Step 2
 
@@ -211,9 +217,9 @@ Setup OPNsense B
 
       .. Note::
 
-         Rules allowing traffic from `LAN OPNsense A` to `LAN OPNsense B` must be created in their respective LAN rulesets.
+         Rules allowing traffic from `LAN Router A` to `LAN Router B` must be created in their respective LAN rulesets.
          Since traffic from LAN A to LAN B will use the peering connection, additional rules must be created in the Peering ruleset.
-         Create rules to allow traffic entering `Peering OPNsense A` from `LAN OPNsense B`, and vice versa.
+         Create rules to allow traffic entering `Peering Router A` from `LAN Router B`, and vice versa.
 
 
    .. group-tab:: Step 3
@@ -242,9 +248,9 @@ Setup OPNsense B
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
-      **Peer IP**                                     ``10.1.1.1`` (Peering IP OPNsense A)
+      **Peer IP**                                     ``10.1.1.1`` (Peering IP Router A)
       **Remote AS**                                   ``65011``
-      **Update-Source Interface**                     ``igc2`` (Peering interface OPNsense B)
+      **Update-Source Interface**                     ``igc2`` (Peering interface Router B)
       ==============================================  ====================================================================
 
       - Press ``Save`` to enable the new configuration
@@ -286,12 +292,12 @@ Verify the setup
 
 - | :menuselection:`Routing --> Diagnostics --> General`
 - `IPv4 Routes Tab`:
-    - Verify if the routes to LAN OPNsense A and LAN OPNsense B exist
-    - OPNsense A must have a route to 192.168.200.0/24 installed
-    - OPNsense B must have a route to 192.168.1.0/24 installed
+    - Verify if the routes to LAN Router A and LAN Router B exist
+    - Router A must have a route to 192.168.200.0/24 installed
+    - Router B must have a route to 192.168.1.0/24 installed
 
 - Test connectivity with ICMP:
-    - Ping from 192.168.1.1 (OPNsense A) to 192.168.200.1 (OPNsense B) and vice versa
+    - Ping from 192.168.1.1 (Router A) to 192.168.200.1 (Router B) and vice versa
     - Ping from 192.168.1.201 (Device LAN A) to 192.168.200.201 (Device LAN B) and vice versa
     - If the ping does not work, look at the installed routes and verify the Firewall rules
 
@@ -301,7 +307,7 @@ Peering with ISP for Internet Access (eBGP)
 -------------------------------------------
 
 This guide will focus on the most simple eBGP peering scenario. An ISP provides internet access through their autonomous system (AS) by peering with your router as neighbor.
-They are your only upstream provider and will push a default route; you will not receive an internet routing table. The ISP will announce the IP address space for you, since it is provider dependant.
+They are your only upstream provider and will push a default route; you will not receive an internet routing table. The ISP will announce the IP address space for you, since it is provider dependent.
 
 Your main task is configuring your neighbor correctly, employing a prefix list so that none of your local RFC1918 routes leak to the provider, and the provider can only
 announce the default route to you. If unsure, ask your provider what they expect from you as neighbor. Be mindful of a correct configuration, since an invalid one could get your neighbor
@@ -309,7 +315,7 @@ temporarly disabled by the ISP.
 
 .. Attention::
 
-   More complex setups like announcing provider independant address spaces or using the OPNsense as ISP router are out of scope for this setup guide. These setups
+   More complex setups like announcing provider independant address spaces or using the Router as ISP router are out of scope for this setup guide. These setups
    must be created and maintained by BGP experts. Since BGP has no built-in automatic safety mechanisms, an invalid configuraton can disrupt global internet
    routing (e.g., announcing the wrong networks or subnet masks).
 
@@ -320,7 +326,7 @@ Network Diagram
 
         +-----------------+     Peering Network      +-----------------+
         |                 |      203.0.113.0/30      |                 |
-        |   OPNsense A    |--------------------------|    ISP Router   |
+        |    Router A     |--------------------------|    ISP Router   |
         |     AS65011     | WAN A                ISP |     AS64496     |
         |                 | 203.0.113.1  203.0.113.2 |                 |
         +-----------------+                          +-----------------+
@@ -332,7 +338,7 @@ Network Diagram
         Device A: 192.168.1.201                                 |
 
 
-Setup OPNsense A
+Setup Router A
 ------------------------------------------
 
 .. tabs::
@@ -349,7 +355,7 @@ Setup OPNsense A
       =============================  ================================
 
       #. Configure the **LAN** Interface with IP `192.168.1.1/24` on `igc0`.
-      #. Assign the **WAN** Interface on `igc1` with IP `203.0.113.1/30` for the peering network between OPNsense A and the ISP Router.
+      #. Assign the **WAN** Interface on `igc1` with IP `203.0.113.1/30` for the peering network between Router A and the ISP Router.
 
    .. tab:: Step 2
 
@@ -379,6 +385,12 @@ Setup OPNsense A
       - Deselect **Firewall rules** since we created a custom rule for BGP
       - Press `Save`
 
+      .. Note::
+
+         Deactivating the automatic firewall rules is optional. If multiple dynamic routing protocols are used concurrently,
+         the automatic rules will ease configuration.
+
+
    .. tab:: Step 4
 
       **Configure General BGP Settings**
@@ -398,7 +410,7 @@ Setup OPNsense A
       **Enable**                                      ``X``
       **Peer IP**                                     ``203.0.113.2`` (Peering IP ISP Router)
       **Remote AS**                                   ``64496``
-      **Update-Source Interface**                     ``igc1`` (Peering interface OPNsense A)
+      **Update-Source Interface**                     ``igc1`` (Peering interface Router A)
       ==============================================  ====================================================================
 
    .. tab:: Step 5
@@ -483,10 +495,9 @@ Verify the setup
 
 - | :menuselection:`Routing --> Diagnostics --> General`
 - `IPv4 Routes Tab`:
-    - Verify if the routes to LAN OPNsense A exist
-    - OPNsense A must have a route to 0.0.0.0/0 via 203.0.113.2 installed
+    - Router A must have a route to 0.0.0.0/0 via 203.0.113.2 installed
 
 - Test connectivity with ICMP:
-    - Ping from 203.0.113.1 (OPNsense A) to 203.0.113.2 (ISP)
+    - Ping from 203.0.113.1 (Router A) to 203.0.113.2 (ISP)
     - Ping from 203.0.113.1 to a destination on the internet
     - If the ping does not work, look at the installed routes and verify the Firewall rules
