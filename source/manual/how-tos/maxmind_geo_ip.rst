@@ -22,7 +22,7 @@ You do not need to download the config at this point.
 Create Link
 #############
 
-Now we need to create the link we'll need in OPNsense, all you need to do now is to replace the 'My License key' part of the link below with your license key.
+Now, we need to create the link we'll need in OPNsense; all you need to do now is replace the 'AccountID' and 'LicenseKey' parts of the link below with your account ID and license key, respectively.
 
 https://AccountID:LicenseKey@download.maxmind.com/geoip/databases/GeoLite2-Country-CSV/download?suffix=zip
 
