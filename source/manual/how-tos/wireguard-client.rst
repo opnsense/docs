@@ -59,11 +59,11 @@ Step 2 - Configure the client peer
      **Allowed IPs**        *Unique tunnel IP address (IPv4 and/or IPv6) of client - it should be a /32 or /128 (as applicable) within the subnet configured on the WireGuard Instance. For example, 10.10.10.2/32*
     ====================== ====================================================================================================
 
-- **Save** the Peer configuration, and then click **Save** again
+- **Save** the Peer configuration, and then click **Apply**
 - Now go back to :menuselection:`VPN --> WireGuard --> Instances`
 - Open the Instance configuration that was created in Step 1 (eg :code:`HomeWireGuard`)
 - In the Peers dropdown, select the newly created Peer (eg :code:`Phone`)
-- **Save** the Instance configuration again, and then click **Save** once more
+- **Save** the Instance configuration again, and then click **Apply**
 - Repeat this Step 2 for as many clients as you wish to configure
 
 ----------------------------------
