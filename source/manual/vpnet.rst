@@ -746,7 +746,7 @@ Each newly created client will receive a keypair, for which the public key will 
 After providing the relevant information for the client to login, you can copy the qrcode or the text in the :code:`Config`
 text box to configure the client.
 
-Don't forget to press the "Store and generate next" button to actually store the public information in the firewall so the client
+Don't forget to press the "Store and generate next" button to actually store the public information in the firewall and click "Apply" on the "Peers" page so the client
 is able to login.
 
 
