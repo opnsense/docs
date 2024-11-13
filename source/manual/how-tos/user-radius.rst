@@ -17,10 +17,7 @@ Fill in the form:
 **Authentication Timeout**      5              *Timeout for Radius to respond on requests*
 **Synchronize groups**                         *Enable to read groups from RADIUS server - requires the
                                                CLASS attribute to return the designated (single!) group**
-**Limit groups**                               *Limit user authentication to members of these groups
-                                               (user has to pre-exist in OPNsense for this to work,
-                                               as the code is executed before the Automatic user
-                                               creation feature below.)*
+**Limit groups**                               *Select list of groups that may be considered during sync*
 **Automatic user creation**                    *This offers the ability to automatically create the
                                                user when it doesn't exist - requires "Synchronize groups"
                                                to be enabled and actually return a group for a user.*
