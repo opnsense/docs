@@ -29,8 +29,9 @@ Fill in the form:
    feature shares the same code of the LDAP server feature **Synchronize groups** the string defined as
    CLASS value must be prefixed with *CN=* (e.g. *CLASS="CN=MyVPN-Group"*)!
 
-   Additionally the group separator must be a line break (*\n*). As most RADIUS servers will not support
-   special characters in the string value, the return value is therefore limited to a single group.
+   Additionally the group separator must be a line break (*\n*). Some RADIUS servers (e.g. MS NPS) will not
+   support special characters in the string value, the return value is therefore limited to a single line 
+   (which in turn translates into a single group).
 
 Use the tester under :menuselection:`System --> Access --> Tester` to test the Radius server.
 
