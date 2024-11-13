@@ -16,7 +16,7 @@ Fill in the form:
 **Authentication port value**   1812           *Port number, 1812 is default; for accounting it's 1813*
 **Authentication Timeout**      5              *Timeout for Radius to respond on requests*
 **Synchronize groups**                         *Enable to read groups from RADIUS server - requires the
-                                               CLASS attribute to return the designated (single!) group**
+                                               CLASS attribute to return the designated (single*) group*
 **Limit groups**                               *Select list of groups that may be considered during sync*
 **Automatic user creation**                    *This offers the ability to automatically create the
                                                user when it doesn't exist - requires "Synchronize groups"
@@ -29,7 +29,7 @@ Fill in the form:
    feature shares the same code of the LDAP server feature **Synchronize groups** the string defined as
    CLASS value must be prefixed with *CN=* (e.g. *CLASS="CN=MyVPN-Group"*)!
 
-   Additionally the group separator must be a line break (*\n*). Some RADIUS servers (e.g. MS NPS) will not
+   *Additionally the group separator must be a line break (*\n*). Some RADIUS servers (e.g. MS NPS) will not
    support special characters in the string value, the return value is therefore limited to a single line 
    (which in turn translates into a single group).
 
