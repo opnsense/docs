@@ -15,12 +15,23 @@ Fill in the form:
 **Services offered**            Authentication *Select Authentication,for Captive portal + accounting*
 **Authentication port value**   1812           *Port number, 1812 is default; for accounting it's 1813*
 **Authentication Timeout**      5              *Timeout for Radius to respond on requests*
-**Synchronize groups**                         *Enable to Synchronize groups, requires the option above*
-**Limit groups**                               *Select list of groups that may be considered during sync**
-**Automatic user creation**                    *When groups are automatically synchronized,
-                                               this offers the ability to automatically create the
-                                               user when it doesn't exist.*
+**Synchronize groups**                         *Enable to read group(s) from RADIUS server - requires the
+                                               CLASS attribute to return the designated group**
+**Limit groups**                               *Select list of groups that may be considered during sync*
+**Automatic user creation**                    *This offers the ability to automatically create the
+                                               user when it doesn't exist - requires "Synchronize groups"
+                                               to be enabled and actually return a group for a user.*
 ============================== =============== =========================================================
+
+.. Note::
+   *RADIUS does not support a *memberOf* group concept by design. OPNsense uses the returned CLASS attribute
+   instead to find a string containing the user's group membership. Since the **Synchronize groups**
+   feature shares the same code of the LDAP server feature **Synchronize groups** the string defined as
+   CLASS value must be prefixed with *CN=* (e.g. *CLASS="CN=MyVPN-Group"*)!
+
+   Additionally the group separator must be a line break (*\n*). Some RADIUS servers (e.g. MS NPS) will not
+   support special characters in the string value, the return value is therefore limited to a single line 
+   (which in turn translates into a single group).
 
 Use the tester under :menuselection:`System --> Access --> Tester` to test the Radius server.
 
