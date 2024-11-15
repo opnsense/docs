@@ -158,7 +158,7 @@ Here is an overview of the available GUI options:
        **Issuer**                            The CA that signs and issues the certificate.
        **Lifetime (days)**                   The validity period of the certificate, specified in days.
        **General**                           General information fields for the certificate's Distinguished Name (DN).
-       **Country Code**                      The two-letter ISO code representing the country (e.g., 'DE' for Germany).
+       **Country Code**                      The two-letter ISO code representing the country.
        **State or Province**                 The full name of the state or province.
        **City**                              The locality or city name.
        **Organization**                      The legal name of the organization.
@@ -230,25 +230,177 @@ Here is an overview of the available GUI options:
        ===================================== =======================================================================================================================
 
 
-Creating the Root CA
-------------------------------
-
-Todo
-
-
-Issuing the Intermediate CA
-------------------------------
-
-Todo
-
-
-Issuing a Leaf Certificate
---------------------------------
-
-Todo
-
-
-Exporting the Certificate Chain
+Step 1: Creating the Root CA
 -----------------------------------------
 
-Todo
+Go to :menuselection:`System --> Trust --> Authorities`
+
+Press **+** to create a new authority, it will become your root certificate authority.
+
+===================================== =======================================================================================================================
+**Options**                           **Description**
+===================================== =======================================================================================================================
+**Method**                            ``Create an internal Certificate Authority``
+**Description**                       ``Root CA`` (or a custom description)
+**Key**
+**Key Type**                          ``RSA-2048`` (or higher)
+**Digest Algorithm**                  ``SHA256`` (or higher)
+**Issuer**                            ``self-signed`` (root CA is always self-signed)
+**Lifetime (days)**                   ``3650`` (after this expires the root CA, all its issued intermediate CA their issued leaf certificates must be recreated)
+**General**
+**Country Code**                      ``Netherlands`` (your country)
+**State or Province**                 ``Zuid-Holland`` (your state or empty)
+**City**                              ``Middelharnis`` (your city or empty)
+**Organization**                      ``Deciso B.V.`` (your organization name or empty)
+**Organizational Unit**               ``IT`` (your organizational unit or leave empty)
+**Email Address**                     ``info@example.com`` (your email address, it is best practice to use a real existing one)
+**Common Name**                       ``root-ca`` (or a custom name)
+**OCSP URI**                          `leave empty`
+===================================== =======================================================================================================================
+
+Press **Save** and the root CA has been created. The private and public key are saved on the OPNsense.
+
+
+Step 2: Issuing the Intermediate CA
+-----------------------------------------
+
+Go to :menuselection:`System --> Trust --> Authorities`
+
+Press **+** to create a new authority, it will become your intermediate certificate authority.
+
+===================================== =======================================================================================================================
+**Options**                           **Description**
+===================================== =======================================================================================================================
+**Method**                            ``Create an internal Certificate Authority``
+**Description**                       ``Intermediate CA`` (or a custom description)
+**Key**
+**Key Type**                          ``RSA-2048`` (or higher)
+**Digest Algorithm**                  ``SHA256`` (or higher)
+**Issuer**                            ``Root CA`` (The intermediate CA is always signed by the Root CA)
+**Lifetime (days)**                   ``1095`` (after this expires the intermediate CA and all its issued leaf certificates must be recreated)
+**General**
+**Country Code**                      ``Netherlands`` (your country)
+**State or Province**                 ``Zuid-Holland`` (your state or empty)
+**City**                              ``Middelharnis`` (your city or empty)
+**Organization**                      ``Deciso B.V.`` (your organization name or empty)
+**Organizational Unit**               ``IT`` (your organizational unit or leave empty)
+**Email Address**                     ``info@example.com`` (your email address, it is best practice to use a real existing one)
+**Common Name**                       ``intermediate-ca`` (or a custom name)
+**OCSP URI**                          `leave empty`
+===================================== =======================================================================================================================
+
+Press **Save** and the intermediate CA has been created. The private and public key are saved on the OPNsense.
+
+
+Step 3: Issuing a Leaf Certificate
+-----------------------------------------
+
+Go to :menuselection:`System --> Trust --> Certificates`
+
+Press **+** to create a new authority, it will become your leaf certificate (end-entity certificate).
+It can be used on a server, user, or both; depending on the type.
+
+===================================== =======================================================================================================================
+**Options**                           **Description**
+===================================== =======================================================================================================================
+**Method**                            ``Create an internal Certificate``
+**Description**                       ``leaf-certificate.example.com`` (or a custom description, like user or server name)
+**Key**
+**Type**                              ``Server Certificate`` (or client certificate for a user)
+**Private Key Location**              ``Save on this firewall``
+**Key Type**                          ``RSA-2048`` (or higher)
+**Digest Algorithm**                  ``SHA256`` (or higher)
+**Issuer**                            ``Intermediate CA``
+**Lifetime (days)**                   ``365`` (after this expires the leaf certificate must be recreated)
+**General**
+**Country Code**                      ``Netherlands`` (your country)
+**State or Province**                 ``Zuid-Holland`` (your state or empty)
+**City**                              ``Middelharnis`` (your city or empty)
+**Organization**                      ``Deciso B.V.`` (your organization name or empty)
+**Organizational Unit**               ``IT`` (your organizational unit or leave empty)
+**Email Address**                     ``info@example.com`` (your email address, it is best practice to use a real existing one)
+**Common Name**                       ``leaf-certificate.example.com`` (or a custom name)
+**OCSP URI**                          `leave empty`
+**Alternative Names**
+**DNS Domain Names**                  ``leaf-certificate.example.com`` (or a custom name)
+===================================== =======================================================================================================================
+
+Press **Save** and the leaf certificate has been created. The private and public key are saved on the OPNsense.
+
+.. Note::
+
+   The private key does not have to be stored. For higher security, only download it by setting the Private Key Location to the alternative option.
+   This way, the private key can be installed on the required server without a copy in the OPNsense trust store.
+   To issue leaf certificates, only the Intermediate CAs need their private keys stored in the trust store.
+
+The next step will be exporting the certificate chain, and using the leaf certificate on an external webserver.
+
+
+Step 4: Exporting the Certificate Chain
+-----------------------------------------
+
+Now that we have the whole certificate chain, we create a certificate bundle for a generic linux apache web server.
+
+For that, we need two files:
+
+- A certificate bundle populated in the correct order in PEM format:
+
+    #. Root CA
+    #. Intermediate CA
+    #. Leaf Certificate
+
+- The private key of the leaf certificate
+
+#. Export Root CA public key:
+
+    - Go to :menuselection:`System --> Trust --> Authorities`
+    - Press the download button in the `Commands` column of the ``Root CA`` row
+    - Choose `File type: Certificate` and press `Download`
+
+#. Export Intermediate CA public key:
+
+    - Go to :menuselection:`System --> Trust --> Authorities`
+    - Press the download button in the `Commands` column of the ``Intermediate CA`` row
+    - Choose `File type: Certificate` and press `Download`
+
+#. Export Leaf Certificate public key:
+
+    - Go to :menuselection:`System --> Trust --> Certificates`
+    - Press the download button in the `Commands` column of the ``Leaf Certificate`` row
+    - Choose `File type: Certificate` and press `Download`
+
+#. Export Leaf Certificate private key:
+
+    - Go to :menuselection:`System --> Trust --> Certificates`
+    - Press the download button in the `Commands` column of the ``Leaf Certificate`` row
+    - Choose `File type: Private Key` and press `Download`
+
+Open a text editor and create a file with all 3 public keys:
+
+``certificate-bundle.pem``
+
+.. code-block::
+
+    -----BEGIN CERTIFICATE-----
+    Root CA public key data
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    Intermediate CA public key data
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    Leaf Certificate public key data
+    -----END CERTIFICATE-----
+
+The key of the certificate bundle is only the leaf certificate's private key. Private keys of root and intermediate CAs are **not** required.
+
+``certificate-bundle.key``
+
+.. code-block::
+
+    -----BEGIN PRIVATE KEY-----
+    Leaf Certificate private key data
+    -----END PRIVATE KEY-----
+
+Implement these into your webserver, and the website will be secured with this certificate bundle.
+For automatic trust, you must install the intermediate and/or root CA certificate public keys into any client that connects to the webserver.
+Since the webserver offers a full certificate chain to the connecting client, manual trust can be established if a user decides to install the public key themselves.
