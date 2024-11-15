@@ -2,7 +2,9 @@
 IPsec - Roadwarriors IKEv2 EAP-MSCHAPv2
 =======================================
 
-.. contents:: Index
+.. contents::
+   :local:
+   :depth: 2
 
 The following roadwarrior configuration is universally usable for many different clients and easy to setup.
 
@@ -62,48 +64,14 @@ Prerequisites
 System: Trust: Authorities
 --------------------------
 
-Create a certificate authority which will be used to create server certificates for your IPsec VPN. The lifetime of the CA is 10 years, if it expires you have to deploy new CA certificates to all clients.
+Create a certificate chain using the following tutorial:
 
-    ==============================================  ====================================================================================================
-    **Descriptive name:**                           IPsec CA
-    **Method:**                                     Create an internal Certificate Authority
-    **Key Type:**                                   RSA
-    **Key length (bits):**                          2048
-    **Digest Algorithm:**                           SHA256
-    **Lifetime (days):**                            3650
-    **Country Code:**                               Enter your Country Code
-    **State or Province:**                          Enter Your State
-    **City:**                                       Enter your City
-    **Organization:**                               Enter your Organization
-    **Email Address:**                              Enter your Email address
-    **Common Name:**                                IPsec CA
-    ==============================================  ====================================================================================================
+`Setup Self-Signed Certificate Chains </manual/how-tos/self-signed-chain.html>`_
 
-Download this CA certificate and save it for later, it's needed for client setup.
-    
+- `Root CA`: ``IPsec CA``
+- `Leaf Certificate`: ``vpn1.example.com``
 
-System: Trust: Certificates
----------------------------
-
-Create a server certificate for your IPsec VPN. The lifetime of the certificate is 1 year, if it expires you have to renew the certificate on the OPNsense or your clients can't connect anymore.
-
-    ==============================================  ====================================================================================================
-    **Method:**                                     Create an internal Certificate
-    **Descriptive name:**                           vpn1.example.com
-    **Certificate authority:**                      IPsec CA
-    **Type:**                                       Server Certificate
-    **Key Type:**                                   RSA
-    **Key length (bits):**                          2048
-    **Digest Algorithm:**                           SHA256
-    **Lifetime (days):**                            365
-    **Country Code:**                               Enter your Country Code
-    **State or Province:**                          Enter Your State
-    **City:**                                       Enter your City
-    **Organization:**                               Enter your Organization
-    **Email Address:**                              Enter your Email address
-    **Common Name:**                                vpn1.example.com
-    **Alternative Names:**                          **Type DNS:** vpn1.example.com
-    ==============================================  ====================================================================================================
+The root CA issues the leaf certificate directly; we do not need an intermediate CA.
 
 
 External DNS Records

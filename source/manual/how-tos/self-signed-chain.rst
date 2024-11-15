@@ -333,6 +333,12 @@ Press **Save** and the leaf certificate has been created. The private and public
    This way, the private key can be installed on the required server without a copy in the OPNsense trust store.
    To issue leaf certificates, only the Intermediate CAs need their private keys stored in the trust store.
 
+.. Tip::
+
+   Additional leaf certificates can be issued with the same intermediate CA. Each level in the chain is a one-to-many relationship. One root CA can issue many
+   intermediate CAs, one intermediate CA can issue many leaf certificates.
+
+
 The next step will be exporting the certificate chain, and using the leaf certificate on an external webserver.
 
 
