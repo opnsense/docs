@@ -123,54 +123,16 @@ Click **Save** to add the new server.
 
 Add Certificate Authority
 -------------------------
-The VPN server needs a certificate authority to sign client or server certificates.
 
-To setup a new certificate authority go to :menuselection:`System --> Trust --> Authorities` and click
-**Add** in the top right corner of the form.
+Create a certificate chain using the following tutorial:
 
-For our example we will use the following setting:
+`Setup Self-Signed Certificate Chains </manual/how-tos/self-signed-chain.html>`_
 
-========================= ================================================
- **Descriptive name**       *SSL VPN CA*
- **Method**                 *Create an internal  Certificate Authority*
- **Key length (bits)**      *4096*
- **Digest Algorithm**       *SHA512*
- **Lifetime (days)**        *365*
- **Country Code**           *NL*
- **State or Province**      *ZH*
- **City**                   *Middelharnis*
- **Organization**           *OPNsense*
- **Email Address**          *spam@opnsense.org*
- **Common Name**            *internal-sslvpn-ca*
-========================= ================================================
+- `Root CA`: ``SSL VPN CA``
+- `Leaf Certificate`: ``SSLVPN Server Certificate``
 
-Click **Save** to add the new Certificate Authority.
+The root CA issues the leaf certificate directly; we do not need an intermediate CA.
 
-Create a Server Certificate
-----------------------------
-After creating the Authority we will also need a certificate.
-To create a new certificate, go to :menuselection:`System --> Trust --> Certificates` and click
-**Add** in the upper right corner of the form.
-
-Fill in the form with (leave the rest default):
-
-=========================== ================================================
- **Method**                 *Create an internal Certificate*
- **Descriptive name**       *SSLVPN Server Certificate*
- **Certificate authority**  *SSL VPN CA*
- **Type**                   *Server Certificate*
- **Key length (bits)**      *4096*
- **Digest Algorithm**       *SHA512*
- **Lifetime (days)**        *365*
- **Country Code**           *NL*
- **State or Province**      *ZH*
- **City**                   *Middelharnis*
- **Organization**           *OPNsense*
- **Email Address**          *spam@opnsense.org*
- **Common Name**            *SSLVPN Server Certificate*
-=========================== ================================================
-
-Click **Save** to create the certificate.
 
 Adding a User
 -------------

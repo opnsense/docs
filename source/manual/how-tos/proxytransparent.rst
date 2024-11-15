@@ -61,32 +61,9 @@ The defaults should be alright, just press **Save** and **Apply Changes**.
 Step 4 - CA for Transparent SSL
 --------------------------------------
 Before we can setup transparent SSL/HTTPS proxy we need to create a Certificate
-Authority. Go to :menuselection:`System --> Trust --> Authorities` or use the search box to get there
-fast.
+Authority.
 
-.. image:: images/search_ca.png
-    :width: 100%
-
-Click on **add or import ca** in the upper right corner of the screen to create
-a new CA.
-
-For our example we use the following data:
-
-======================== ===========================================
- **Descriptive name**     OPNsense-SSL
- **Method**               Create an internal Certificate Authority
- **Key length (bits)**    2048
- **Digest Algorithm**     SHA256
- **Lifetime (days)**      356
- **Country Code**         NL (Netherlands)
- **State or Province**    Zuid Holland
- **City**                 Middelharnis
- **Organization**         OPNsense
- **Email Address**        spam@opnsense.org
- **Common Name**          opnsense-ssl-ca
-======================== ===========================================
-
-**Save**
+For more information read `Setup Self-Signed Certificate Chains </manual/how-tos/self-signed-chain.html>`_
 
 Step 5 - Transparent SSL
 -------------------------------------
