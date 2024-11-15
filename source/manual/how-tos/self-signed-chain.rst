@@ -246,7 +246,7 @@ Press **+** to create a new authority, it will become your root certificate auth
 **Key Type**                          ``RSA-2048`` (or higher)
 **Digest Algorithm**                  ``SHA256`` (or higher)
 **Issuer**                            ``self-signed`` (root CA is always self-signed)
-**Lifetime (days)**                   ``3650`` (after this expires the root CA, all its issued intermediate CA their issued leaf certificates must be recreated)
+**Lifetime (days)**                   ``3650`` (after this expires the root CA, all its issued intermediate CAs and their issued leaf certificates must be recreated)
 **General**
 **Country Code**                      ``Netherlands`` (your country)
 **State or Province**                 ``Zuid-Holland`` (your state or empty)
