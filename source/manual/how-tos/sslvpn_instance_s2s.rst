@@ -86,7 +86,7 @@ The root CA issues the leaf certificates directly; we do not need an intermediat
 
 .. Note::
 
-      It's a best practice to offer each user it's own certificate using the same common name as the username, although
+      It is best practice to offer each user their own certificate using the same common name as the username, although
       it is also possible for clients to share a certificate. When adding a certificate from the user manager the CN is automatically
       set to its name. In this example we will only authenticate using the certificate, no additional user or password will be required.
 

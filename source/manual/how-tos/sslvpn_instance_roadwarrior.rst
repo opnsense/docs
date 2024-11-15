@@ -82,7 +82,7 @@ Trust
 .....................
 
 In order to setup a tunnel on both ends, we need to configure certificates to warrant trust between both machines.
-We need a root CA that issues two leaf certificates, one this server and one for a user.
+We need a root CA that issues two leaf certificates, one for this server and one for a user.
 
 Create a certificate chain using the following tutorial:
 
