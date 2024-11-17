@@ -192,7 +192,7 @@ used source is MaxMind, for which we have a how-to available : :doc:`how-tos/max
 
 .. Note::
 
-    When using the Business Edition, you can leave the :code:`Url`` field empty so the firewall will download the database provided
+    When using the Business Edition, you can leave the :code:`Url` field empty so the firewall will download the database provided
     by us.
 
 
