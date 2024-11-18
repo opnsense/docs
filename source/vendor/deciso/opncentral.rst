@@ -489,6 +489,8 @@ FQDN                             IP Address         Task
 2. Create a `PKI` on the `Central Host`
 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+For more information read `Setup Self-Signed Certificate Chains </manual/how-tos/self-signed-chain.html>`_
+
 * | Go to :menuselection:`System --> Trust --> Authorities` and press *+* to `Create an internal Certificate Authority`.
 * | Leave all the populated fields on their default values.
 * | As State, City, Organization and Email Address, add your own.

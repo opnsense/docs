@@ -15,16 +15,7 @@ Step 1 - Create Certificates
 For Mutual RSA + MSCHAPv2 with IKEv2 you need to create a Root CA and a server certificate
 for your Firewall.
 
-Go to :menuselection:`System --> Trust --> Authorities` and click **Add**. Give it a **Descriptive Name** and as **Method**
-choose **Create internal Certificate Authority**. Increase the **Lifetime** and fill in the fields
-matching your local values. Now go to :menuselection:`System --> Trust --> Certificates` and create a new certificate for
-the Firewall itself. Important is to change the **Type** to server. The Common Name can be the hostname
-of the Firewall and set as **Alternative Name** the FQDN your Firewall how it is known to the WAN side.
-This is most important as your VPN will drop when the FQDN does not match the ones of the certificate.
-
-If you already have a CA roll out a server certificate and import
-the CA itself via :menuselection:`System --> Trust --> Authorities` and the certificate with the key in
-:menuselection:`System --> Trust --> Certificates`.
+For more information read `Setup Self-Signed Certificate Chains </manual/how-tos/self-signed-chain.html>`_
 
 -----------------------
 Step 2 - Mobile Clients

@@ -52,6 +52,8 @@ Just go to :menuselection:`System -> Trust -> Certificates` and create an intern
 The common name identifies both ends of the tunnel, you can choose a fully qualified domain name here for the server and
 a username for the client  (for example).
 
+For more information read `Setup Self-Signed Certificate Chains </manual/how-tos/self-signed-chain.html>`_
+
 
 .. Note::
 

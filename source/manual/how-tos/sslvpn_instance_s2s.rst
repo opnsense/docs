@@ -71,40 +71,23 @@ Preparations
 Trust
 .....................
 
-
 In order to setup a tunnel on both ends, we need to configure certificates to warrant trust between both machines.
-We have chosen to setup the server on "Site B", so we start with Trust configuration there.
+We need a root CA that issues two leaf certificates, one for each site.
 
-* First we need an **Authority** which we are going to create in :menuselection:`System --> Trust --> Authorities`
+Create a certificate chain using the following tutorial:
 
-   * Select `Create an internal Certificate Authority`
-   * Choose cryptographic settings and a lifetime (you may want to increase the default as after this time you do need to redistribute certificates to both server and client).
-   * Add descriptive information for this CA (`Descriptive name`, `City`, `Email`, ..`)
-   * Set the `Common Name` to something descriptive for this certificate, like "Office-ovpn"
+`Setup Self-Signed Certificate Chains </manual/how-tos/self-signed-chain.html>`_
 
+- `Root CA`: ``SSL VPN CA``
+- `Leaf Certificate - Type Server - Site B`: Set the `Common Name` to the FQDN of this machine.
+- `Leaf Certificate - Type Client - Site A`: Set the `Common Name` to the username.
 
-*  Next generate a **Certficate** for the server using :menuselection:`System --> Trust --> Certificates`
-
-   * Select  `Create an internal Certificate`
-   * Choose the just created authority in `Certificate authority`
-   * Add descriptive information for this CA (`Descriptive name`, whereabouts are copied from the CA)
-   * Set Type to `Server`
-   * Choose cryptographic settings, lifetime determines the validaty of the server certificate (you do need to track this yourself), it's allowed to choose a longer period here
-   * Set the `Common Name` to the fqdn of this machine.
-
-* As the client (Site A) will also need a **Certificate**, we need to create a certificate, also using :menuselection:`System --> Trust --> Certificates`
-
-   * Select  `Create an internal Certificate`
-   * Choose the just created authority in `Certificate authority`
-   * Add descriptive information for this CA (`Descriptive name`, whereabouts are copied from the CA)
-   * Set Type to `Client`
-   * Choose cryptographic settings, lifetime determines the validaty of the server certificate (you do need to track this yourself), it's allow to choose a longer period here
-   * Set the `Common Name` to username the other end will use for identification. For this example we use :code:`test-client`
+The root CA issues the leaf certificates directly; we do not need an intermediate CA.
 
 .. Note::
 
-      It's a best practice to offer each user it's own certificate using the same common name as the username, although
-      it is also possible to clients to share a certificate. When adding a certificate from the user manager the CN is automatically
+      It is best practice to offer each user their own certificate using the same common name as the username, although
+      it is also possible for clients to share a certificate. When adding a certificate from the user manager the CN is automatically
       set to its name. In this example we will only authenticate using the certificate, no additional user or password will be required.
 
 
