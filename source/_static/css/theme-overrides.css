@@ -31,8 +31,9 @@ body, p {
 .rst-content .toctree-wrapper>p.caption, h1, h2, h3, h4, h5, h6, legend {    font-family: "fieldwork";font-weight:700}
 
 a {    color: #C03E14;}
-a:hover, a:visited  { color: #373736;}
-a:visited:hover {color: #C03E14;}
+a:hover  { color: #373736;}
+a:visited { color: #C03E14;}
+a:hover {color: #C03E14; text-decoration: underline;}
 
 
 /*Breadcrumb*/
