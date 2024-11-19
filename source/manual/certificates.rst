@@ -36,6 +36,31 @@ certficate signed by an external CA.
 
 
 ---------------------
+Settings
+---------------------
+
+In :menuselection:`System --> Trust --> Settings` you can find some advanced options to manage how the system handles trust.
+For compliance reasons, it is possible to implement certain constraints when a default OpenSSL context is requested.
+
+===================================== =======================================================================================================================
+ **Options**                           **Description**
+===================================== =======================================================================================================================
+Store intermediate                    Allow local defined intermediate certificate authorities to be used in the local trust store.
+                                      We advise to only store root certificates to prevent cross signed ones causing breakage when included
+                                      but expired later in the chain.
+Store CRL's                           Store all configured CRL's in the default trust store. If the client or service support CRL's,
+                                      deploying to the default location eases maintenance.
+Auto fetch CRL's                      Schedule an hourly job to download CRLs using the defined Distributionpoints in the CAs deployed in our trust store.
+Enable legacy                         Enable Legacy Providers. (Enables ciphers which will be removed in future versions of OpenSSL)
+Configuration constraints             When enabled, you can set some default ciphers and protocols, be careful with these options
+                                      as these settings will be used by wuite some applications of the firewall (and might break them).
+===================================== =======================================================================================================================
+
+.. Note::
+    Applications are not forced to use a standard context, depending the application, custom constraints may
+    or may not have any effect.
+
+---------------------
 Revoke certificates
 ---------------------
 
@@ -169,6 +194,52 @@ And an unknown certificate
     Response verify OK
     9999: unknown
         This Update: Jan  6 13:36:51 2024 GMT
+
+
+-------------------------
+Internal organisation
+-------------------------
+
+In this paragraph we would like to explain the organisation of the internal trust store.
+The certificates and revocation lists that exist are staged into system directories and deployed for usage by
+a tool called :code:`certctl.py` on our end.
+
+The source for certificates and revocation lists is collected in the following directories, either shipped with the base system
+and/or managed from OPNsense:
+
+===================================== =======================================================================================================================
+**Path**                              **Topic**
+===================================== =======================================================================================================================
+/usr/share/certs/trusted              Default system certificates, shipped with the base system
+/usr/local/share/certs                Application specific certificates and revocation lists
+/usr/share/certs/untrusted            Certificates that are not to be trusted anymore
+===================================== =======================================================================================================================
+
+:code:`certctl.py` collects all certificates from the set defined above and creates links to them in the target directories specified
+below.
+
+===================================== =======================================================================================================================
+**Path**                              **Topic**
+===================================== =======================================================================================================================
+/etc/ssl/certs                        Directory with links (and files) to certificates named by their hash.
+                                      (for example :code:`ef954a4e.0` or :code:`ef954a4e.r0` for a CRL)
+                                      Primary location for the base system.
+/etc/ssl/untrusted                    Same as above, but untrusted (ignored)
+/usr/local/openssl/certs              Same as :code:`/etc/ssl/certs`, default location for applications build from the "ports" tree
+/usr/local/etc/ssl/cert.pem           Combined bundle file for applications that require a single file.
+===================================== =======================================================================================================================
+
+Each target link (or file) contains a single certificate or revocation list, which OpenSSL can easily locate using the
+certificate subject.
+
+.. Note::
+    If either :code:`/etc/ssl/cert.pem`  and/or :code:`/usr/local/etc/ssl/cert.pem` exists, they will have preference above
+    the hashed links insode the target directories. Staring with OPNsense version 25.1, these files will be removed
+    when they exist.
+
+
+Default settings for OpenSSL are saved into :code:`/usr/local/etc/ssl/opnsense.cnf` (ports) and :code:`/etc/ssl/openssl.cnf`
+(base), both are managed by OPNsense.
 
 
 -------------------------
