@@ -197,6 +197,11 @@ Ping an IPv6 only destination on the internet. The ping should work. If you disa
 
 This happens because without ndproxy, the Neighbor Discovery Protocol (NDP) messages are not relayed between the WAN and LAN interfaces of the CPE router.
 
+.. Attention::
+
+   Since there is no DAD (Duplicate Address Detection) Proxy between WAN and LAN, if the same IPv6 GUAs are used in both segments, there can be address conflicts.
+   This can also happen with auto generated IPv6 addresses, so make sure you limit their use in the WAN segment to only necessary ones.
+
 
 Packet Flow Explained
 --------------------------------------------------
