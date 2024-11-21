@@ -74,8 +74,8 @@ Network Diagram
                 |                                                     |
         Prefix Delegation: /56                                        |
                 |                                                     |
-          fe80::1/64                                             fe80::1/64
-          2001:db8::/56                                          2001:db8::3/64
+          fe80::1/64                                            fe80::1/64
+          2001:db8::/56                                         2001:db8::3/64
                 |                                                     |
                 |                                                     |
             INTERNET                                     IPv6 Client: 2001:db8::200/64
@@ -201,23 +201,21 @@ This happens because without ndproxy, the Neighbor Discovery Protocol (NDP) mess
 Packet Flow Explained
 --------------------------------------------------
 
-1. **Packet Initiation by the LAN Client**
+1. **LAN Client**
 
    The IPv6 client on the LAN (e.g., with address ``2001:db8::200/64``) initiates a ping to an IPv6-only destination on the internet. The client sends the ICMPv6 Echo Request to its default gateway, which is the CPE router's LAN interface (``fe80::1``).
 
-2. **Forwarding by the CPE Router**
+2. **CPE Router**
 
    The CPE router receives the packet on its LAN interface and forwards it out through its WAN interface (``2001:db8::2/128`` or ``fe80::2/64``) towards the PE router. Since the packet is destined for an external network, the CPE router uses its routing table to send the packet upstream.
 
-3. **PE Router Processing and Return Path**
+3. **PE Router**
 
    The PE router forwards the packet to the intended internet destination. The external host responds with an ICMPv6 Echo Reply, which is routed back to the PE router.
 
-4. **Neighbor Solicitation by the PE Router**
-
    To deliver the Echo Reply to the LAN client (``2001:db8::200``), the PE router needs to resolve the client's IPv6 address to a link-layer (MAC) address. The PE router sends a NDP **Neighbor Solicitation** message for ``2001:db8::200`` out of its interface connected to the CPE router (the WAN interface of the CPE router).
 
-5. **Role of ndproxy**
+4. **Role of ndproxy**
 
     - The **ndproxy** service on the CPE router listens for NDP messages on both WAN and LAN interfaces.
     - When the Neighbor Solicitation arrives at the CPE router's WAN interface, **ndproxy** intercepts it and proxies it to the LAN interface.
