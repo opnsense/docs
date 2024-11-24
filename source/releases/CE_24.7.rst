@@ -31,6 +31,51 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.7.9 (November 20, 2024)
+--------------------------------------------------------------------------
+
+
+This is a minor update that further tweaks the trust store integration
+and firmware updates tying into it although in practice it does not
+change the current behaviour from a user perspective.  If something is
+not behaving as usual afterwards please let us know.
+
+A new plugin has been added to finally allow proxying ND messages for
+those people stuck on a single /64 prefix delegation.  Otherwise it
+has been pretty quiet as you can see.  But we will be back soon.  ;)
+
+Here are the full patch notes:
+
+* system: revert CRLs in bundles as the default bundles will be removed in 25.1
+* system: migrate authoritative bundle location to /usr/local/etc/ssl/cert.pem
+* system: flush the global OpenSSL configuration to /etc/ssl/openssl.cnf as well
+* system: ignore gateway monitor status on boot when setting up routes
+* system: fix IP address validation not being displayed in the gateway form
+* system: add a "time-loop" around authentication for failed attempts
+* reporting: ISO dates and logical ranges in health graphs (contributed by Roy Orbitson)
+* interfaces: kill defunct route-to states with the stale gateway IP
+* firewall: make loopback traffic stateful again to fix its use with syncookie option
+* firewall: add 'Action' property to list of retrieved rules
+* firewall: use UUIDs as rule labels to ease tracking
+* firmware: refactor for generic config.sh use and related code audit
+* firmware: move the bogons update script to the firmware scripts, improve logging messages and use config.sh
+* firmware: opnsense-version: restored pre-2019 default output format (contributed by TotalGriffLock)
+* openvpn: add Require Client Provisioning option for instances
+* backend: add 'configd environment' debug action
+* mvc: always do stop/start on forced restart
+* mvc: remove obsolete sessionClose() use in Base, Firmware, Unbound and WireGuard controllers
+* plugins: os-debug 1.6
+* plugins: os-ndproxy 1.0 adds an IPv6 Neighbour Discovery proxy
+* plugins: os-wazuh-agent 1.2 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/security/wazuh-agent/pkg-descr>`__ 
+* ports: py-duckdb 1.1.3 `[2] <https://github.com/duckdb/duckdb/releases/tag/v1.1.3>`__ 
+
+A hotfix release was issued as 24.7.9_1:
+
+* system: reverted "time-loop" patch as it makes Local+TOTP authentication fail
+
+
+
+--------------------------------------------------------------------------
 24.7.8 (November 06, 2024)
 --------------------------------------------------------------------------
 

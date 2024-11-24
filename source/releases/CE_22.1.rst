@@ -429,7 +429,7 @@ Here are the full patch notes:
 
 
 This release adds GUI support for Intel QuickAssist Technology (QAT) and
-SYN cookies as per virtue of the FreeBSD 13 operating system.  The work
+syncookies as per virtue of the FreeBSD 13 operating system.  The work
 to modernise the interfaces subsystem and improve the new ddclient dynamic
 DNS plugin are also progressing.
 
@@ -471,7 +471,7 @@ Here are the full patch notes:
 * interfaces: remove unused opportunistic interface address functions
 * firewall: exclude localhost stateless traffic from default logging (contributed by kulikov-a)
 * firewall: using port type aliases the "enable" flag was ignored when not enabled
-* firewall: add support for SYN cookies
+* firewall: add support for syncookies
 * firmware: opnsense-code: support "-z" snapshot mode
 * firmware: opnsense-revert: support "-z" snapshot mode
 * firmware: opnsense-update: support version print for sets

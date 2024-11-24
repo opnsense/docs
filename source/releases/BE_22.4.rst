@@ -350,7 +350,7 @@ Here are the full patch notes:
 * firewall: default pass all loopback without state tracking
 * firewall: exclude localhost stateless traffic from default logging (contributed by kulikov-a)
 * firewall: using port type aliases the "enable" flag was ignored when not enabled
-* firewall: add support for SYN cookies
+* firewall: add support for syncookies
 * firewall: allow per-rule adaptive timeouts (contributed by kulikov-a)
 * firewall: constrain default CARP allow rules to those defined in RFC 5798
 * firewall: make sure that rule use of gateways (route-to) and reply-to are mutually exclusive

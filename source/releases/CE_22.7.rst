@@ -12,7 +12,7 @@ licensing.
 
 22.7, nicknamed "Powerful Panther", features the upgrade to FreeBSD 13.1,
 PHP 8.0, Phalcon 5, stacked VLAN and Intel QuickAssist (QAT) support,
-DDoS protection using SYN cookies, MVC/API pages for IPsec status and
+DDoS protection using syncookies, MVC/API pages for IPsec status and
 Unbound overrides, new APCUPSD and CrowdSec plugins plus much more.
 
 LibreSSL flavour is scheduled for removal at the end of this series
@@ -635,7 +635,7 @@ licensing.
 
 22.7, nicknamed "Powerful Panther", features the upgrade to FreeBSD 13.1,
 PHP 8.0, Phalcon 5, stacked VLAN and Intel QuickAssist (QAT) support,
-DDoS protection using SYN cookies, MVC/API pages for IPsec status and
+DDoS protection using syncookies, MVC/API pages for IPsec status and
 Unbound overrides, new APCUPSD and CrowdSec plugins plus much more.
 
 LibreSSL flavour is scheduled for removal at the end of this series
