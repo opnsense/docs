@@ -3,10 +3,10 @@
 {{ title }}
 {{ title_underline }}
 
-The firewall API plugin (**os-firewall**) offers a way for machine to machine interaction between custom applications and OPNsense, it can
-easily be installed like any other plugin via :menuselection:`System --> Firmware --> Plugins`.
+The firewall API offers a way for machine to machine interaction between custom applications and OPNsense, it
+is part of the core system.
 
-Although the plugin does contains a basic user interface (in :menuselection:`Firewall --> Automation`), it's mirely intended
+Although the module does contains a basic user interface (in :menuselection:`Firewall --> Automation`), it's mirely intended
 as a reference and testbed. There's no relation to any of the rules being managed via the core system.
 
 .. Tip::

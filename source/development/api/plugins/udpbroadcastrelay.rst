@@ -5,14 +5,14 @@ Udpbroadcastrelay
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","udpbroadcastrelay","service","config",""
+    "``GET``","udpbroadcastrelay","service","config",""
     "``GET``","udpbroadcastrelay","service","get",""
-    "``POST``","udpbroadcastrelay","service","reload",""
-    "``POST``","udpbroadcastrelay","service","restart","$uuid"
+    "``GET``","udpbroadcastrelay","service","reload",""
+    "``GET``","udpbroadcastrelay","service","restart","$uuid"
     "``POST``","udpbroadcastrelay","service","set",""
-    "``POST``","udpbroadcastrelay","service","start","$uuid"
-    "``POST``","udpbroadcastrelay","service","status","$uuid"
-    "``POST``","udpbroadcastrelay","service","stop","$uuid"
+    "``GET``","udpbroadcastrelay","service","start","$uuid"
+    "``GET``","udpbroadcastrelay","service","status","$uuid"
+    "``GET``","udpbroadcastrelay","service","stop","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `UDPBroadcastRelay.xml <https://github.com/opnsense/plugins/blob/master/net/udpbroadcastrelay/src/opnsense/mvc/app/models/OPNsense/UDPBroadcastRelay/UDPBroadcastRelay.xml>`__"
 

@@ -7,6 +7,6 @@ Smart
 
     "``POST``","smart","service","abort",""
     "``POST``","smart","service","info",""
-    "``POST``","smart","service","list",""
+    "``POST``","smart","service","list","$details=null"
     "``POST``","smart","service","logs",""
     "``POST``","smart","service","test",""

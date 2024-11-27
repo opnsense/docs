@@ -63,7 +63,7 @@ Diagnostics
     "``GET``","diagnostics","interface","getMemoryStatistics",""
     "``GET``","diagnostics","interface","getNdp",""
     "``GET``","diagnostics","interface","getNetisrStatistics",""
-    "``GET``","diagnostics","interface","getPfSyncNodes",""
+    "``GET``","diagnostics","interface","getPfsyncNodes",""
     "``GET``","diagnostics","interface","getProtocolStatistics",""
     "``GET``","diagnostics","interface","getRoutes",""
     "``GET``","diagnostics","interface","getSocketStatistics",""
