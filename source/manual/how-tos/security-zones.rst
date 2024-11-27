@@ -46,8 +46,8 @@ A packet arriving on `eth0`, `eth1`, or `eth2` is tagged as **Trust**. If it nee
 
 .. Note::
 
-   - Intrazone rules handle similar trust levels collectively, e.g., `from TRUST to TRUST net`
-   - Interzone rules define boundaries between areas with different trust levels, e.g., `from TRUST to UNTRUST net`
+   - Intrazone rules handle similar trust levels collectively, e.g., `from Trust to Trust`
+   - Interzone rules define boundaries between areas with different trust levels, e.g., `from Trust to Untrust`
 
 
 ----------------------------
@@ -144,12 +144,12 @@ planned unified ruleset.
 
 - | Go to :menuselection:`Firewall --> Aliases` and add a new alias that contains all interface groups:
 
-       ======================  ========================================================================
-       **Name**                ALL_ZONES
-       **Type**                Network group
-       **Members**             __TRUST_network, __UNTRUST_network, __WIFI_network
-       **Description**         All security zones
-       ======================  ========================================================================
+======================  ========================================================================
+**Name**                ALL_ZONES
+**Type**                Network group
+**Members**             __TRUST_network, __UNTRUST_network, __WIFI_network
+**Description**         All security zones
+======================  ========================================================================
 
 
 After applying the configuration, the interfaces will be grouped together in :menuselection:`Firewall --> Rules` and :menuselection:`Interfaces`.
