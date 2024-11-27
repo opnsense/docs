@@ -238,7 +238,7 @@ certificate subject.
     when they exist.
 
 
-Default settings for OpenSSL are saved into :code:`/usr/local/etc/ssl/opnsense.cnf` (ports) and :code:`/etc/ssl/openssl.cnf`
+Default settings for OpenSSL are saved into :code:`/usr/local/openssl/openssl.cnf` (ports) and :code:`/etc/ssl/openssl.cnf`
 (base), both are managed by OPNsense.
 
 
