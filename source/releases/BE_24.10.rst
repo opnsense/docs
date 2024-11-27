@@ -18,6 +18,100 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+24.10.1 (November 27, 2024)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 24.7.9 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: remove obsolete banners from static pages
+* system: address CRL/cert subject hash mismatch during trust store rehash
+* system: add missing MinProtocol in OpenSSL config template from trust settings
+* system: add SignatureAlgorithms option and fix minor form glitch in trust settings
+* system: sync certctl to FreeBSD 14.1 base code et al
+* system: migrate authoritative bundle location to /usr/local/etc/ssl/cert.pem
+* system: flush the global OpenSSL configuration to /etc/ssl/openssl.cnf as well
+* system: ignore gateway monitor status on boot when setting up routes
+* system: fix IP address validation not being displayed in the gateway form
+* reporting: refactor existing RRD backend code
+* reporting: isset() vs. empty() on RRD enable
+* reporting: fix regression in RRD temperature readings
+* reporting: ISO dates and logical ranges in health graphs (contributed by Roy Orbitson)
+* interfaces: fix VXLAN interface being busy when vxlanlocal or vxlanremote is changed
+* interfaces: 6RD/6to4 route creation should be limited to IPv6
+* interfaces: parse part of SFP module information in legacy_interfaces_details()
+* interfaces: kill defunct route-to states with the stale gateway IP
+* firewall: add a note about stateless TCP during syncookie use
+* firewall: enhance validation that group name can not start or end with a digit
+* firewall: make loopback traffic stateful again to fix its use with syncookie option
+* firewall: add 'Action' property to list of retrieved rules
+* firewall: use UUIDs as rule labels to ease tracking
+* firmware: remove escaped slashes workaround on mirror/flavour write
+* firmware: introduce config.sh and use it in launcher.sh and connection.sh
+* firmware: restart cron on updates
+* firmware: improve health script and use config.sh
+* firmware: rework CRL check in config.sh
+* firmware: use the trust store for CRL verification
+* firmware: refactor for generic config.sh use and related code audit
+* firmware: move the bogons update script to the firmware scripts, improve logging messages and use config.sh
+* firmware: opnsense-version: restored pre-2019 default output format (contributed by TotalGriffLock)
+* firmware: use REQUEST to print a TLS/CRL usage hint
+* firmware: force CRL check on development deployment
+* intrusion detection: reorganise settings page with headers
+* intrusion detection: support configuration of eve-log for HTTP and TLS (contributed by Toby Chen)
+* ipsec: add swanctl.conf download button to settings page
+* ipsec: add description field to pre-shared-keys
+* isc-dhcp: safeguard output type for json_decode() in leases page
+* openvpn: add Require Client Provisioning option for instances
+* unbound: allow RFC 2181 compatible names in overrides
+* backend: correct template helper exists() return type (contributed by kumy)
+* backend: add 'configd environment' debug action
+* lang: update available translations
+* mvc: extend sanity checks in isIPInCIDR()
+* mvc: fix UpdateOnlyTextField incompatibility with DependConstraint (contributed by kumy)
+* mvc: always do stop/start on forced restart
+* mvc: remove obsolete sessionClose() use in Base, Firmware, Unbound and WireGuard controllers
+* ui: fix tree view style targeting elements outside this view
+* plugins: enforce defaults on devices
+* plugins: os-bind 1.33 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/dns/bind/pkg-descr>`__ 
+* plugins: os-caddy 1.7.4 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* plugins: os-ddclient 1.25 `[3] <https://github.com/opnsense/plugins/blob/stable/24.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-debug 1.6
+* plugins: os-etpro-telemetry lowers log level of collection invoke (contributed by doktornotor)
+* plugins: os-freeradius 1.9.26 `[4] <https://github.com/opnsense/plugins/blob/stable/24.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.42 `[5] <https://github.com/opnsense/plugins/blob/stable/24.7/net/frr/pkg-descr>`__ 
+* plugins: os-iperf fixes JS TypeError when parsing result (contributed by Leo Huang)
+* plugins: os-lldpd 1.2 `[6] <https://github.com/opnsense/plugins/blob/stable/24.7/net-mgmt/lldpd/pkg-descr>`__ 
+* plugins: os-ndproxy 1.0 adds an IPv6 Neighbour Discovery proxy
+* plugins: os-net-snmp 1.6 `[7] <https://github.com/opnsense/plugins/blob/stable/24.7/net-mgmt/net-snmp/pkg-descr>`__ 
+* plugins: os-tinc removes "pipes" Python module dependency (contributed by andrewhotlab)
+* plugins: os-upnp 1.7 `[8] <https://github.com/opnsense/plugins/blob/stable/24.7/net/upnp/pkg-descr>`__ 
+* plugins: os-wazuh-agent 1.2 `[9] <https://github.com/opnsense/plugins/blob/stable/24.7/security/wazuh-agent/pkg-descr>`__ 
+* src: multiple issues in the bhyve hypervisor `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:17.bhyve.asc>`__ 
+* src: unbounded allocation in ctl(4) CAM Target Layer `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:18.ctl.asc>`__ 
+* src: XDG runtime directory file descriptor leak at login `[12] <https://www.freebsd.org/security/advisories/FreeBSD-EN-24:17.pam_xdg.asc>`__ 
+* src: assorted FreeBSD stable patches for Intel ixgbe, igb, igc and e1000 drivers
+* src: cxgb: register ifmedia callbacks before ether_ifattach
+* src: enc: use new KPI to create enc interface
+* src: ifconfig: fix wrong indentation for the status of pfsync
+* src: iflib: simplify iflib_legacy_setup
+* src: iflib: use if_alloc_dev() to allocate the ifnet
+* src: netmap: make memory pools NUMA-aware
+* src: vlan: handle VID conflicts
+* ports: libpfctl 0.14
+* ports: monit 5.34.2 `[13] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.106 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_105.html>`__ 
+* ports: openssh 9.9.p1 `[15] <https://www.openssh.com/txt/release-9.9>`__ 
+* ports: php 8.2.25 `[16] <https://www.php.net/ChangeLog-8.php#8.2.25>`__ 
+* ports: py-duckdb 1.1.3 `[17] <https://github.com/duckdb/duckdb/releases/tag/v1.1.3>`__ 
+* ports: syslog-ng 4.8.1 `[18] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.8.1>`__ 
+* ports: unbound 1.22.0 `[19] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-22-0>`__ 
+
+
+
+--------------------------------------------------------------------------
 24.10 (October 17, 2024)
 --------------------------------------------------------------------------
 

@@ -109,9 +109,9 @@ Here are the full patch notes:
 * plugins: os-etpro-telemetry lowers log level of collection invoke (contributed by doktornotor)
 * plugins: os-iperf fixes JS TypeError when parsing result (contributed by Leo Huang)
 * plugins: os-tinc removes "pipes" Python module dependency (contributed by andrewhotlab)
-* src: multiple issues in the bhyve hypervisor `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-24:17.pam_xdg.asc>`__ 
-* src: unbounded allocation in ctl(4) CAM Target Layer `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:17.bhyve.asc>`__ 
-* src: XDG runtime directory file descriptor leak at login `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:18.ctl.asc>`__ 
+* src: multiple issues in the bhyve hypervisor `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:17.bhyve.asc>`__ 
+* src: unbounded allocation in ctl(4) CAM Target Layer `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-24:18.ctl.asc>`__ 
+* src: XDG runtime directory file descriptor leak at login `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-24:17.pam_xdg.asc>`__ 
 * src: assorted FreeBSD stable patches for Intel ixgbe, igb, igc and e1000 drivers
 * src: cxgb: register ifmedia callbacks before ether_ifattach
 * src: enc: use new KPI to create enc interface
