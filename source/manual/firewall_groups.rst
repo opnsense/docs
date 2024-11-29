@@ -19,8 +19,6 @@ the interface tabs itself. More details about processing order can be found  :re
 Settings
 --------------------
 
-Groups are simple to setup and do not require a lot of settings.
-
 =====================================================================================================================
 
 ====================================  ===============================================================================
