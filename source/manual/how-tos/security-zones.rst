@@ -15,7 +15,7 @@ Use security zones to group network interfaces and establish a consistent, top-l
 Introduction
 ----------------------------
 
-Firewalls manage traffic between network segments. Utilizing **zones** simplifies configurations by grouping interfaces with similar security trust levels. This approach is especially beneficial when managing numerous interfaces that require a consistent and unified ruleset.
+Firewalls manage traffic between network segments. Utilizing **zones** simplifies configurations by grouping interfaces with similar security trust levels. This approach is beneficial when managing numerous interfaces that require a consistent and unified ruleset.
 
 Zones allow administrators to define policies based on trust levels rather than individual interfaces. Common examples include:
 
