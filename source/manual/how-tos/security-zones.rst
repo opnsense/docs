@@ -38,11 +38,11 @@ When a packet arrives at a firewall interface, it is assigned to a zone based on
 ======================  ================
 Zone (Interface Group)  Interfaces
 ======================  ================
-**Trust**               eth0, eth1, eth2
-**Untrust**             eth3, eth4
+**Trust**               igc0, igc1, igc2
+**Untrust**             igc3, igc4
 ======================  ================
 
-A packet arriving on `eth0`, `eth1`, or `eth2` is tagged as **Trust**. If it needs to traverse to `eth3` or `eth4`, tagged as **Untrust**, the firewall applies the relevant policies.
+A packet arriving on `igc0`, `igc1`, or `igc2` is tagged as **Trust**. If it needs to traverse to `igc3` or `igc4`, tagged as **Untrust**, the firewall applies the relevant policies.
 
 .. Note::
 
@@ -59,12 +59,12 @@ For example, allowing all networks in **Trust** to access HTTPS services in **Un
 
 Without Zones (6 Rules):
 
-- Allow HTTPS from `eth0` to `eth3`
-- Allow HTTPS from `eth0` to `eth4`
-- Allow HTTPS from `eth1` to `eth3`
-- Allow HTTPS from `eth1` to `eth4`
-- Allow HTTPS from `eth2` to `eth3`
-- Allow HTTPS from `eth2` to `eth4`
+- Allow HTTPS from `igc0` to `igc3`
+- Allow HTTPS from `igc0` to `igc4`
+- Allow HTTPS from `igc1` to `igc3`
+- Allow HTTPS from `igc1` to `igc4`
+- Allow HTTPS from `igc2` to `igc3`
+- Allow HTTPS from `igc2` to `igc4`
 
 With Zones (1 Rule):
 
@@ -87,13 +87,20 @@ will be created in :menuselection:`Firewall --> Rules --> Floating` to match fir
 
 Our goal are the following zones and policies:
 
-======================  ====================================
-**Name**                TRUST
-**Members**             vlan0.10, vlan0.11, ..., vlan0.19
-**(no) GUI groups**     unchecked
-**Sequence**            0
-**Description**         All trusted networks
-======================  ====================================
+======================  ====================================  ========================================================================
+Zone                    Interface                             Description
+======================  ====================================  ========================================================================
+**TRUST**               `igc0_vlan1` to `igc0_vlan9`
+**UNTRUST**             `igc0_vlan10` to `igc0_vlan19`
+**WIFI**.               `igc0_vlan20` to `igc0_vlan29`
+======================  ====================================  ========================================================================
+
+.. Note::
+
+   When interfaces are assigned to devices, their default technical identifier is ``optX``. For clarity, the description of each interface
+   was changed to reflect their interface+vlan name. E.g., if the interface identifier is opt19, and the device is vlan0.19 and the parent
+   is igc0, the description is igc0_vlan19.
+
 
 Interzone Policy:
 
@@ -170,7 +177,7 @@ planned unified ruleset.
        **Name**                ZONES_TRUST_UNTRUST
        **Type**                Network group
        **Members**             __TRUST_network, __UNTRUST_network
-       **Description**         All security zones
+       **Description**         Zones Trust, Untrust
        ======================  ========================================================================
 
     .. tab:: Alias 2
@@ -179,7 +186,7 @@ planned unified ruleset.
        **Name**                ZONES_TRUST_WIFI
        **Type**                Network group
        **Members**             __TRUST_network, __WIFI_network
-       **Description**         All security zones
+       **Description**         Zones Trust, Wifi
        ======================  ========================================================================
 
     .. tab:: Alias 3
@@ -188,6 +195,15 @@ planned unified ruleset.
        **Name**                ZONES_UNTRUST_WIFI
        **Type**                Network group
        **Members**             __UNTRUST_network, __WIFI_network
+       **Description**         Zones Untrust, Wifi
+       ======================  ========================================================================
+
+    .. tab:: Alias 4
+
+       ======================  ========================================================================
+       **Name**                ZONES_ALL
+       **Type**                Network group
+       **Members**             __TRUST_network, __UNTRUST_network, __WIFI_network
        **Description**         All security zones
        ======================  ========================================================================
 
