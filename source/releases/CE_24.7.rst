@@ -31,6 +31,81 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.7.10 (December 03, 2024)
+--------------------------------------------------------------------------
+
+
+This ships a number of base system changes, kernel fixes and driver
+updates.  The time-loop authentication change is back with the fixed
+TOTP case and the Unbound domain overrides are now found in query
+forwarding since this offers the same functionality anyway.
+
+With the year almost over we are shifting focus to finishing the items
+on the roadmap and it is nice to note that the MVC/API conversions are
+already over 75% complete.  That means it will not take another decade
+to migrate the other 25%.  ;)
+
+Here are the full patch notes:
+
+* system: readd a "time-loop" around authentication for failed attempts
+* system: remove the SSL bundles in default locations
+* system: prevent JS crashing out when dashboard widget title is not set
+* system: use system instead of sample defaults when reverting tunables
+* system: report actual LAN address being used after factory reset
+* interfaces: use Autoconf class to avoid raw ifctl file access
+* interfaces: remove ancient MAC address trickery to unbreak hostapd
+* interfaces: add missing neighbor and DNS lookup page ACL entries
+* interfaces: PPP device page ACL missed getserviceproviders.php
+* firmware: force CRL check on development deployment
+* firmware: use REQUEST to print a TLS/CRL usage hint
+* firmware: improved output helpers and associated cleanup in audit scripts
+* firmware: opnsense-update: add support for regression tests set
+* intrusion detection: limit stats.log logging (contributed by doktornotor)
+* kea-dhcp: add dhcp-socket-type option (contributed by Till Niederauer)
+* kea-dhcp: add MAC formatter to leases page (contributed by cpalv)
+* openvpn: support case-insensitive strict user CN matching for instances
+* unbound: move domain overrides to query forwarding
+* mvc: let JsonKeyValueStoreField cache configd call for the duration of the session
+* mvc: another batch of sessionClose() cleanups in controllers
+* mvc: cleanup in ApiMutableServiceControllerBase
+* mvc: fix hint display for "0"
+* ui: restore right tab border in standard theme
+* plugins: os-caddy 1.7.5 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* plugins: os-debug 1.7 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/devel/debug/pkg-descr>`__ 
+* src: atf/kyua: ship regression tests runtime support
+* src: if_bridge: mask MEXTPG if some members do not support it
+* src: if_tuntap: enable MEXTPG support
+* src: ice: update to 1.43.2-k et al
+* src: ipsec: fix IPv6 over IPv4 tunneling
+* src: ixgbe: add support for 1Gbit (active) DAC links
+* src: ixgbe: sysctl for TCP flag handling during TSO
+* src: jail: expose children.max and children.cur via sysctl
+* src: libfetch: add the error number to verify callback failure case
+* src: netlink: assorted stable backports
+* src: pf: prevent SCTP-based NULL dereference in pfi_kkif_match()
+* src: pf: let rdr rules modify the src port if doing so would avoid a conflict
+* src: pf: make pf_get_translation() more expressive
+* src: pf: let pf_state_insert() handle redirect state conflicts
+* src: pf: fix wrong pflog action in NAT rule
+* src: pf: fix potential state key leak
+* src: rc: ignore INSYDE BIOS placeholder UUID for /etc/hostid
+* src: route: fix failure to add an interface prefix route when route with the same prefix is already presented in the routing table
+* src: route: route: avoid overlapping strcpy
+* src: sfxge: defer ether_ifattach to when ifmedia_init is done
+* ports: curl 8.11.0 `[3] <https://curl.se/changes.html#8_11_0>`__ 
+* ports: expat 2.6.4 `[4] <https://github.com/libexpat/libexpat/blob/R_2_6_4/expat/Changes>`__ 
+* ports: nss 3.107 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_107.html>`__ 
+* ports: openldap 2.6.9 `[6] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: php 8.2.26 `[7] <https://www.php.net/ChangeLog-8.php#8.2.26>`__ 
+* ports: sudo 1.9.16p2 `[8] <https://www.sudo.ws/stable.html#1.9.16p2>`__ 
+
+A hotfix release was issued as 24.7.10_1:
+
+* unbound: use tls-cert-bundle to point to remaining valid bundle
+
+
+
+--------------------------------------------------------------------------
 24.7.9 (November 20, 2024)
 --------------------------------------------------------------------------
 
