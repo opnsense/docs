@@ -40,6 +40,14 @@ updates.  The time-loop authentication change is back with the fixed
 TOTP case and the Unbound domain overrides are now found in query
 forwarding since this offers the same functionality anyway.
 
+Please note we had to hotfix the kernel which will not reinstall
+automatically if you caught the bad version.  If you experience
+panics on 24.7.10 relating to pf(4) please reinstall from the GUI
+(which includes an automatic reboot) or run "opnsense-update -fk"
+from the shell followed by a manual reboot.  The correct kernel
+identifies itself as "stable/24.7-n267981-8375762712f" using
+"uname -v".
+
 With the year almost over we are shifting focus to finishing the items
 on the roadmap and it is nice to note that the MVC/API conversions are
 already over 75% complete.  That means it will not take another decade
@@ -102,6 +110,12 @@ Here are the full patch notes:
 A hotfix release was issued as 24.7.10_1:
 
 * unbound: use tls-cert-bundle to point to remaining valid bundle
+
+A hotfix release was issued as 24.7.10_2:
+
+* system: fix TOTP regression when used with LDAP
+* src: reverted "pf: fix potential state key leak" due to reported panics
+* src: netlink: allow force remove on pinned delete from route binary
 
 
 
