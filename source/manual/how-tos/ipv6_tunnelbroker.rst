@@ -41,7 +41,7 @@ Step 1 - Add GIF tunnel
 -----------------------
 
 To configure OPNsense start with adding a new gif interface.
-Go to :menuselection:`Interfaces --> Other Types --> GIF` and click on **Add** in the upper tight corner
+Go to :menuselection:`Interfaces --> Devices --> GIF` and click on **Add** in the upper tight corner
 of the form.
 
 Use the following settings and copy in the IPv4&6 addresses from your TunnelBroker's UI.

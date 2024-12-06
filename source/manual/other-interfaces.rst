@@ -1,9 +1,9 @@
 ================
-Other Types
+Devices
 ================
 
 Besides wired, wireless and VPN interfaces, there are also some other, virtual interfaces, as well as some
-miscellaneous interface-related. These options can be found under :menuselection:`Interfaces --> Other types`.
+miscellaneous interface-related. These options can be found under :menuselection:`Interfaces --> Devices`.
 This document briefly explains these options.
 
 ------
@@ -89,7 +89,7 @@ IPv6 tunnel of Hurricane Electric (he.net).
     In :doc:`/manual/how-tos/ipv6_tunnelbroker` you can find information on how to setup a tunnel using Hurricane Electric
 
 
-As with all tunnel types, the most important settings relate to how both ends connect and which addressing will be used to
+As with all tunnel devices, the most important settings relate to how both ends connect and which addressing will be used to
 route traffic over the tunnel. The rest of the settings usually are best left to their defaults.
 
 ==================================  ==================================================================================================
@@ -221,8 +221,8 @@ Read `LAGG Setup </manual/how-tos/vlan_and_lagg.html>`_ for an example configura
 Loopback
 --------------
 
-Loopbacks are logical virtual interfaces which emulate real interfaces and can be used for different setup scenario's,
-which require always-on interfaces. Below you will find some scenario's for which these types of interfaces are used.
+Loopbacks are logical virtual interfaces which emulate real interfaces and can be used for different setup scenarios,
+which require always-on interfaces. Below you will find some scenario's for which these devices are used.
 
 *   Administrative access to services on your machine, which can bind to an address configured on top of the loopback.
 *   Using loopback addresses as router IDs for OSPF or BGP, which helps to identify your nodes and eases administration
@@ -234,7 +234,7 @@ VLAN
 VLANs (Virtual LANs) can be used to segment a single physical network into multiple virtual networks. This can be
 done for QoS purposes, among other things. For this reason, most ISP-issued IPTV devices utilize VLANs.
 
-The following settings are available for these interface types:
+The following settings are available for these devices:
 
 ==================================  =======================================================================================================
 Name                                Description

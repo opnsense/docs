@@ -16,12 +16,12 @@ All traffic flowing through your appliance is using (virtual) interfaces, this i
    :titlesonly:
 
    manual/interfaces
+   manual/other-interfaces
    manual/interfaces_overview
    manual/interfaces_settings
    manual/neighbors
    manual/firewall_vip
    manual/wireless
-   manual/other-interfaces
    manual/ipv6
    manual/diagnostics_interfaces
    manual/logging_interfaces
