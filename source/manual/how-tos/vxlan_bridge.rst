@@ -57,7 +57,7 @@ Configuration
 1. Loopback Interface Setup
 ----------------------------
    
-- | Go to :menuselection:`Interfaces --> Other Types --> Loopback` and add ``lo1`` on both `Sites`
+- | Go to :menuselection:`Interfaces --> Devices --> Loopback` and add ``lo1`` on both `Sites`
 - | Go to :menuselection:`Interfaces --> Assignments` and assign ``lo1``
 - | Enable ``lo1`` and set a static IPv4 configuration:
        
@@ -96,7 +96,7 @@ The tunnel should now route traffic between the two loopback interfaces:
 3. VXLAN Interface
 ----------------------------
 
-- | Go to :menuselection:`Interfaces --> Other Types --> VXLAN` and create ``vxlan1`` interfaces:
+- | Go to :menuselection:`Interfaces --> Devices --> VXLAN` and create ``vxlan1`` interfaces:
        
 ===============  ================  ================
 **Option**       **Site A**        **Site B**
@@ -120,7 +120,7 @@ Device           None              None
 
 
 - | Remove the IP configuration from ``LAN``, it will be moved to ``bridge0``
-- | Go to :menuselection:`Interfaces --> Other Types --> Bridge` and create ``bridge0`` interfaces:
+- | Go to :menuselection:`Interfaces --> Devices --> Bridge` and create ``bridge0`` interfaces:
 
 ==================  =====================  =====================
 **Option**          **Site A**             **Site B**
