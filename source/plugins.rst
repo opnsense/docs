@@ -13,6 +13,17 @@ the OPNsense team, a lot are supported by the community.
 This section houses the documentation available for some of these plugins, not all come with documentation, some might
 not even need it given the complexity of the functionality.
 
+--------------------
+Routing
+--------------------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   manual/dynamic_routing
+   manual/how-tos/tayga
+   manual/ndproxy
 
 --------------------
 DNS
@@ -28,8 +39,9 @@ DNS
    manual/how-tos/multicast-dns
 
 --------------------
-VPN & Connectivity
+VPN
 --------------------
+
 .. toctree::
    :maxdepth: 2
    :titlesonly:
@@ -37,9 +49,6 @@ VPN & Connectivity
    manual/how-tos/openconnect
    manual/how-tos/stunnel
    manual/how-tos/zerotier
-   manual/dynamic_routing
-   manual/how-tos/tor
-   manual/how-tos/tayga
 
 ----------------
 Web
@@ -80,6 +89,7 @@ Other
    manual/git-backup
    manual/relayd
    manual/wazuh-agent
+   manual/how-tos/tor
 
 ----------------
 Reporting
