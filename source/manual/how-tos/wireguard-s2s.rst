@@ -126,7 +126,7 @@ Press **Save** and **Apply**.
     If one of your sites has a dynamic WAN IP address, you can leave the *Endpoint Address* on the site with the static IP address empty. The site with the dynamic IP will then be the initiator, and the site with the static IP will be the responder. Adjust the Firewall rule accordingly to allow any Source IP to connect to the static site.
 
 .. Note::
-    If you use hostnames in the *Endpoint Address*, Wireguard will only resolve them once when you start the tunnel. If both sites have dynamic *Endpoint Addresses* set, the tunnel will stop working when they both use DynDNS hostnames, and one (or both) sites receive a new WAN IP lease from the ISP. You can mitigate this by under :menuselection:`System --> Settings --> Cron` and creating a new job that runs regularly with the command ``Renew DNS for WireGuard on stale connections``.
+    If you use hostnames in the *Endpoint Address*, Wireguard will only resolve them once when you start the tunnel. If both sites have dynamic *Endpoint Addresses* set, the tunnel will stop working when they both use DynDNS hostnames, and one (or both) sites receive a new WAN IP lease from the ISP. You can mitigate this with :menuselection:`System --> Settings --> Cron` and creating a new job that runs regularly with the command ``Renew DNS for WireGuard on stale connections``.
 
 .. Note::
     If a site is behind NAT, a keepalive has to be set on the site behind the NAT. The keepalive should be 25 seconds as stated in the official wireguard docs. It keeps the UDP session open when no traffic flows, preventing the wireguard tunnel from becoming stale because the outbound port changes.
