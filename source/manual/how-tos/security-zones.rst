@@ -85,7 +85,7 @@ Setup Overview
 In our example setup, we will create a unified ruleset, leveraging interface groups as security trust zones. This unified ruleset
 will be created in :menuselection:`Firewall --> Rules --> Floating` to match first.
 
-Our goal are the following zones:
+Our goals are the following zones:
 
 ======================  ====================================  ========================================================================
 Zone                    Interface                             Description
