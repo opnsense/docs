@@ -85,40 +85,21 @@ Setup Overview
 In our example setup, we will create a unified ruleset, leveraging interface groups as security trust zones. This unified ruleset
 will be created in :menuselection:`Firewall --> Rules --> Floating` to match first.
 
-Our goal are the following zones and policies:
+Our goal are the following zones:
 
 ======================  ====================================  ========================================================================
 Zone                    Interface                             Description
 ======================  ====================================  ========================================================================
-**TRUST**               `igc0_vlan1` to `igc0_vlan9`
-**UNTRUST**             `igc0_vlan10` to `igc0_vlan19`
-**WIFI**.               `igc0_vlan20` to `igc0_vlan29`
+**TRUST**               `igc0_vlan1` to `igc0_vlan9`          Trusted internal networks like LAN
+**UNTRUST**             `igc0_vlan10` to `igc0_vlan19`        Untrusted external networks like VPN, WAN, GUEST
+**WIFI**                `igc0_vlan20` to `igc0_vlan29`        Wireless networks with limited trust like WIFI
 ======================  ====================================  ========================================================================
 
 .. Note::
 
-   When interfaces are assigned to devices, their default technical identifier is ``optX``. For clarity, the description of each interface
-   was changed to reflect their interface+vlan name. E.g., if the interface identifier is opt19, and the device is vlan0.19 and the parent
-   is igc0, the description is igc0_vlan19.
-
-
-Interzone Policy:
-
-- Allow `Trust`, `Untrust` and `Wifi` to use ICMP between their zones
-- Allow `Trust` to access all other zones; excluding its own zone
-- Allow `Wifi` to access `Untrust`
-- Allow `Untrust` to access HTTPS in `Trust`
-
-Intrazone Policy:
-
-- Allow `Trust` to access `Trust`
-- Allow `Wifi` to access SSH in `Wifi`
-
-We have multiple VLANs that will be unified into security trust zones:
-
-- `vlan0.10` to `vlan0.19` contain trusted internal networks
-- `vlan0.20` to `vlan0.29` contain untrusted external networks
-- `vlan0.30` to `vlan0.39` contain wireless networks
+   When interfaces are assigned to devices, their default technical identifier is `optX`. For clarity, the description of each interface
+   was changed to reflect their `interface+vlan` name. E.g., if the interface identifier is `opt19`, and the device is `vlan0.19` with parent
+   `igc0`, the description is `igc0_vlan19`.
 
 
 Setup Interface Groups
@@ -138,7 +119,7 @@ planned unified ruleset.
        **Members**             vlan0.10, vlan0.11, ..., vlan0.19
        **(no) GUI groups**     unchecked
        **Sequence**            0
-       **Description**         All trusted networks
+       **Description**         Zone for all trusted networks
        ======================  ====================================
 
     .. tab:: Untrust
@@ -148,7 +129,7 @@ planned unified ruleset.
        **Members**             vlan0.20, vlan0.21, ..., vlan0.29
        **(no) GUI groups**     unchecked  
        **Sequence**            1
-       **Description**         All untrusted networks
+       **Description**         Zone for all untrusted networks
        ======================  ====================================
 
     .. tab:: Wifi
@@ -158,218 +139,156 @@ planned unified ruleset.
        **Members**             vlan0.30, vlan0.31, ..., vlan0.39
        **(no) GUI groups**     unchecked
        **Sequence**            2
-       **Description**         All wireless networks
+       **Description**         Zone for all wireless networks
        ======================  ====================================
+
 
 .. Tip::
 
-   Do not create too many zones, they should be defined as broadly as possible.
-   The more zones you maintain, the more aliases you need for all combinations.
+   Do not create too many zones, they should be defined as broadly as possible as they are the highest level of hierarchy.
 
 
-- | Go to :menuselection:`Firewall --> Aliases` and add a new alias that contains all interface groups:
-
-.. tabs::
-
-    .. tab:: Alias 1
-
-       ======================  ========================================================================
-       **Name**                ZONES_TRUST_UNTRUST
-       **Type**                Network group
-       **Members**             __TRUST_network, __UNTRUST_network
-       **Description**         Zones Trust, Untrust
-       ======================  ========================================================================
-
-    .. tab:: Alias 2
-
-       ======================  ========================================================================
-       **Name**                ZONES_TRUST_WIFI
-       **Type**                Network group
-       **Members**             __TRUST_network, __WIFI_network
-       **Description**         Zones Trust, Wifi
-       ======================  ========================================================================
-
-    .. tab:: Alias 3
-
-       ======================  ========================================================================
-       **Name**                ZONES_UNTRUST_WIFI
-       **Type**                Network group
-       **Members**             __UNTRUST_network, __WIFI_network
-       **Description**         Zones Untrust, Wifi
-       ======================  ========================================================================
-
-    .. tab:: Alias 4
-
-       ======================  ========================================================================
-       **Name**                ZONES_ALL
-       **Type**                Network group
-       **Members**             __TRUST_network, __UNTRUST_network, __WIFI_network
-       **Description**         All security zones
-       ======================  ========================================================================
-
-
-After applying the configuration, the interfaces will be grouped together in :menuselection:`Firewall --> Rules` and :menuselection:`Interfaces`.
-When configuring the zone based ruleset, keep the firewall rule precedence in mind. Since we require a unified ruleset for zones,
-most of our rules will be created in :menuselection:`Firewall --> Rules --> Floating` so they match first before all other rulesets.
+The interfaces will be grouped together in :menuselection:`Firewall --> Rules` and :menuselection:`Interfaces`.
+When configuring the zone based ruleset, keep the firewall rule precedence in mind.
 
 
 Verify Aliases
 ----------------------------
 
-After creating the interface groups, we can check if the aliases contain the expected content.
+After creating the interface groups, we can check if the automatic aliases contain the expected content.
 
 - | Go to :menuselection:`Firewall --> Diagnostics --> Aliases`
 
 In the dropdown, choose `TRUST net`, `UNTRUST net` and `WIFI net`. Their corresponding IP networks will be displayed as they are automatically
-gathered from the interface IP addresses of the vlans.
+gathered from the configured interface IP addresses.
 
-When using this alias, all of these networks are automatically part of the firewall rule.
+When using these aliases, all of these networks are automatically part of the firewall rule.
 
 
-Interzone Policies (from Zone to Zone)
+Interzone Policies (from zone to zone)
 --------------------------------------
 
 The first step in our unified ruleset is creating a baseline that will always match on top-level. Afterwards, we can create more selective allow rules in
-the individual interface groups.
+the individual interface groups. The following policies give a short overview about zone based rules and their results.
 
-.. Attention::
+Go to :menuselection:`Firewall --> Rules --> Floating`
 
-   Be careful when crafting this ruleset so you do not accidentally mix interzone and intrazone rules unintentionally.
+.. Tip::
 
+   With the multiselect feature in source and destination you can select multiple aliases per rule. Each alias represents the interface group created before.
+   Each interface group represent a zone.
+
+
+.. tabs::
+
+    .. tab:: Rule 1
+
+       - Allow `Trust` to access the other zones; excluding its own zone
+
+       ==============================================  ===================================================================================
+       **Action**                                      Pass
+       **Quick**                                       ``X``
+       **Interface**                                   any
+       **Direction**                                   in
+       **TCP/IP Version**                              IPv4
+       **Protocol**                                    any
+       **Source**                                      ``TRUST net``
+       **Source port**                                 any
+       **Destination**                                 ``UNTRUST net, WIFI net``
+       **Destination port**                            any
+       **Description**                                 Allow any from TRUST to UNTRUST, WIFI
+       ==============================================  ===================================================================================
+
+       .. Note::
+
+          This single rule will create a `Cartesian product` and result in two firewall rules in pf(4). It is a clean interzone rule, allowing
+          `Trust` to `Untrust` and `Wifi`, but not the other way around.
+
+
+    .. tab:: Rule 2
+
+       - Allow `Trust`, `Untrust` and `Wifi` to use ICMP between and inside all networks in their zones
+
+       ==============================================  ===================================================================================
+       **Action**                                      Pass
+       **Quick**                                       ``X``
+       **Interface**                                   any
+       **Direction**                                   in
+       **TCP/IP Version**                              IPv4
+       **Protocol**                                    ICMP
+       **Source**                                      ``TRUST net, UNTRUST net, WIFI net``
+       **Source port**                                 any
+       **Destination**                                 ``TRUST net, UNTRUST net, WIFI net``
+       **Destination port**                            any
+       **Description**                                 Allow ICMP between TRUST, UNTRUST, WIFI
+       ==============================================  ===================================================================================
+
+       .. Note::
+
+          This single rule will create a `Cartesian product` and result in six firewall rules in pf(4). Be mindful using inversions in rules
+          or inverted aliases, since they can be generated in an order that creates an unexpected result.
+
+       .. Attention::
+
+          This rule will also allow ICMP between all networks inside a zone, that means it is a mixed interzone and intrazone rule.
+          Use these sparingly for broad diagnostic or administrative rules, as they overrule more selective policies that come later in
+          the same ruleset.
+
+
+    .. tab:: Rule 3
+
+       - Allow `Wifi` to access `Untrust`
+
+       ==============================================  ===================================================================================
+       **Action**                                      Pass
+       **Quick**                                       ``X``
+       **Interface**                                   any
+       **Direction**                                   in
+       **TCP/IP Version**                              IPv4
+       **Protocol**                                    any
+       **Source**                                      ``WIFI net``
+       **Source port**                                 any
+       **Destination**                                 ``UNTRUST net``
+       **Destination port**                            any
+       **Description**                                 Allow ICMP from WIFI to UNTRUST
+       ==============================================  ===================================================================================
+
+
+    .. tab:: Rule 4
+
+       - Allow `Untrust` to access HTTPS in `Trust`
+
+       ==============================================  ===================================================================================
+       **Action**                                      Pass
+       **Quick**                                       ``X``
+       **Interface**                                   any
+       **Direction**                                   in
+       **TCP/IP Version**                              IPv4
+       **Protocol**                                    ``TCP/UDP``
+       **Source**                                      ``UNTRUST net``
+       **Source port**                                 any
+       **Destination**                                 ``TRUST net``
+       **Destination port**                            ``HTTPS``
+       **Description**                                 Allow HTTPS from UNTRUST to TRUST
+       ==============================================  ===================================================================================
+
+
+Intrazone Policies (in same zone)
+------------------------------------
+
+The next step is to create a selective ruleset that only concerns traffic inside a single zone.
+These can be either created in Floating, or in the interface group rulesets. Please keep in mind that
+matching floating rules will overrule interface group rules.
+
+In our example we will use Floating since we want a unified ruleset in one location.
 
 Go to :menuselection:`Firewall --> Rules --> Floating`
 
 .. tabs::
 
-    .. tab:: Rule 1
-
-       Allow `Trust`, `Untrust` and `Wifi` to use ICMP between their zones.
-
-       ==============================================  ===================================================================================
-       **Action**                                      Pass
-       **Quick**                                       ``X``
-       **Interface**                                   ``TRUST``
-       **Direction**                                   in
-       **TCP/IP Version**                              IPv4
-       **Protocol**                                    ICMP
-       **Source**                                      any
-       **Source port**                                 any
-       **Destination**                                 ``ZONES_UNTRUST_WIFI``
-       **Destination port**                            any
-       **Description**                                 Allow ICMP between Trust and Untrust, Wifi
-       ==============================================  ===================================================================================
-
-    .. tab:: Rule 2
-
-       Allow `Trust`, `Untrust` and `Wifi` to use ICMP between their zones.
-
-       ==============================================  ===================================================================================
-       **Action**                                      Pass
-       **Quick**                                       ``X``
-       **Interface**                                   ``UNTRUST``
-       **Direction**                                   in
-       **TCP/IP Version**                              IPv4
-       **Protocol**                                    ICMP
-       **Source**                                      any
-       **Source port**                                 any
-       **Destination**                                 ``ZONES_TRUST_WIFI``
-       **Destination port**                            any
-       **Description**                                 Allow ICMP between Untrust and Trust, Wifi
-       ==============================================  ===================================================================================
-
-    .. tab:: Rule 3
-
-       Allow `Trust`, `Untrust` and `Wifi` to use ICMP between their zones.
-
-       ==============================================  ===================================================================================
-       **Action**                                      Pass
-       **Quick**                                       ``X``
-       **Interface**                                   ``WIFI``
-       **Direction**                                   in
-       **TCP/IP Version**                              IPv4
-       **Protocol**                                    ICMP
-       **Source**                                      any
-       **Source port**                                 any
-       **Destination**                                 ``ZONES_TRUST_UNTRUST``
-       **Destination port**                            any
-       **Description**                                 Allow ICMP between Wifi and Trust, Untrust
-       ==============================================  ===================================================================================
-
-    .. tab:: Rule 4
-
-       Allow `Trust` to access all other zones; excluding its own zone.
-
-       ==============================================  ===================================================================================
-       **Action**                                      Pass
-       **Quick**                                       ``X``
-       **Interface**                                   ``TRUST``
-       **Direction**                                   in
-       **TCP/IP Version**                              IPv4
-       **Protocol**                                    any
-       **Source**                                      any
-       **Source port**                                 any
-       **Destination / Invert**                        ``X``
-       **Destination**                                 ``ZONES_UNTRUST_WIFI``
-       **Destination port**                            any
-       **Description**                                 Allow Any from Trust to other zones
-       ==============================================  ===================================================================================
-
-       .. Attention::
-
-          This rule does not allow devices in TRUST to communicate with other devices in TRUST. For that, an intrazone policy will be
-          established later.
-
     .. tab:: Rule 5
 
-       Allow `Wifi` to access `Untrust`
-
-       ==============================================  ===================================================================================
-       **Action**                                      Pass
-       **Quick**                                       ``X``
-       **Interface**                                   ``WIFI``
-       **Direction**                                   in
-       **TCP/IP Version**                              IPv4
-       **Protocol**                                    any
-       **Source**                                      any
-       **Source port**                                 any
-       **Destination**                                 ``UNTRUST net``
-       **Destination port**                            any
-       **Description**                                 Allow Any from Wifi to Untrust
-       ==============================================  ===================================================================================
-
-    .. tab:: Rule 6
-
-       Allow `Untrust` to access HTTPS in `Trust`
-
-       ==============================================  ===================================================================================
-       **Action**                                      Pass
-       **Quick**                                       ``X``
-       **Interface**                                   ``UNTRUST``
-       **Direction**                                   in
-       **TCP/IP Version**                              IPv4
-       **Protocol**                                    TCP
-       **Source**                                      any
-       **Source port**                                 any
-       **Destination**                                 ``TRUST net``
-       **Destination port**                            HTTPS
-       **Description**                                 Allow HTTPS from Untrust to Trust
-       ==============================================  ===================================================================================
-
-
-Intrazone Policies (in same Zone)
-------------------------------------
-
-The next step is to create a selective ruleset that only concern traffic inside a single zone.
-These can be outside the scope of the unified ruleset by leveraging the zone rulesets themselves. Please keep in mind that
-matching floating rules will overrule selective rules.
-
-.. tabs::
-
-    .. tab:: Rule 1
-
-       Allow `Trust` to access `Trust`
-
-       - Go to :menuselection:`Firewall --> Rules --> TRUST`
+       - Allow `Trust` `vlan0.10 net` to access `Trust` `vlan0.11 net` and vice versa
 
        ==============================================  ===================================================================================
        **Action**                                      Pass
@@ -378,22 +297,22 @@ matching floating rules will overrule selective rules.
        **Direction**                                   in
        **TCP/IP Version**                              IPv4
        **Protocol**                                    any
-       **Source**                                      any
+       **Source**                                      ``vlan0.10 net, vlan0.11 net``
        **Source port**                                 any
-       **Destination**                                 ``TRUST net``
+       **Destination**                                 ``vlan0.10 net, vlan0.11 net``
        **Destination port**                            any
-       **Description**                                 Allow Any from Trust to Trust
+       **Description**                                 Allow access between `vlan0.10 net` and `vlan0.11 net` in TRUST
        ==============================================  ===================================================================================
 
        .. Note::
 
-          Since we trust all devices inside the TRUST zone unconditionally, we allow free communication.
+          If all networks in TRUST should communicate with each other unconditionally,
+          you can create a rule from `TRUST net` to `TRUST net`.
 
-    .. tab:: Rule 2
 
-       Allow `Wifi` to access SSH in `Wifi`
+    .. tab:: Rule 6
 
-       - Go to :menuselection:`Firewall --> Rules --> WIFI`
+       - Allow `Wifi` to access SSH in `Wifi`
 
        ==============================================  ===================================================================================
        **Action**                                      Pass
@@ -402,46 +321,24 @@ matching floating rules will overrule selective rules.
        **Direction**                                   in
        **TCP/IP Version**                              IPv4
        **Protocol**                                    TCP
-       **Source**                                      any
+       **Source**                                      ``WIFI net``
        **Source port**                                 any
        **Destination**                                 ``WIFI net``
        **Destination port**                            SSH
        **Description**                                 Allow SSH from WIFI to WIFI
        ==============================================  ===================================================================================
 
-Interface Policies
-------------------------------------
+       .. Note::
 
-With the zone rulesets established, even more selective rules can be created on individual interfaces inside zones. These rules can allow selective
-traffic from one interface to another interface for granular control.
+          All networks in `Wifi` can now establish SSH connections with one another. This rule will only match on routed traffic between different
+          subnets. Traffic in the same broadcast domain inside a subnet is not filtered by the firewall.
 
-If we want to allow HTTPS from a host_1 in vlan0.10 to a host_2 in vlan0.20, we create a rule like this:
-
-- Go to :menuselection:`Firewall --> Rules --> vlan0.10`
-
-==============================================  ===================================================================================
-**Action**                                      Pass
-**Quick**                                       ``X``
-**Interface**                                   ``vlan0.10``
-**Direction**                                   in
-**TCP/IP Version**                              IPv4
-**Protocol**                                    TCP
-**Source**                                      host_1
-**Source port**                                 any
-**Destination**                                 host_2
-**Destination port**                            HTTPS
-**Description**                                 Allow HTTPS from host_1 to host_2
-==============================================  ===================================================================================
-
-.. Tip::
-
-   Adding aliases for hosts is good practice.
 
 
 Adding Additional Interfaces
 ------------------------------------
 
-Now that the unified and selective rulesets are established, new interfaces can be added without the need of duplicating firewall rules.
+Now that the unified ruleset is established, new interfaces can be added without the need of duplicating firewall rules.
 
 If we need to expand the LAN network with more vlans that are on the same level of trust as the existing ones, we simply add the new interfaces
 to the `TRUST` interface group. All existing rules will automatically apply to any new member interfaces.
