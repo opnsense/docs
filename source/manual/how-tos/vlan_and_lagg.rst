@@ -211,7 +211,7 @@ The OPNsense is responsible to route packets between VLANs.
 
 It is the default gateway in VLAN 5, 20 and 33.
 It will receive packets with destination IP addresses to the other locally connected networks, and route according to its routing table.
-Access can be controlled with `Firewall Rules`, essentially creating different security zones.
+Access can be controlled with `Firewall Rules`, essentially creating different `security zones </manual/how-tos/security-zones.html>`_.
 
 .. Note::
 
