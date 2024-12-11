@@ -52,7 +52,8 @@ A full example can be found in the OPNsense\\Sample controller
 directory.
 
 More information on how to write Volt pages can be found here :
-http://docs.phalconphp.com/en/latest/reference/volt.html
+https://docs.phalcon.io/latest/volt/
+
 
 ---------------------
 User forms
