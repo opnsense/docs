@@ -118,7 +118,7 @@ See the section on `LAGG </manual/other-interfaces.html#lagg>`_ for more details
     the assignment if necessary.
 
 
-- | Go to :menuselection:`Interfaces --> Other Types --> LAGG` and add a new entry:
+- | Go to :menuselection:`Interfaces --> Devices --> LAGG` and add a new entry:
 
 =============================  ================================================================
 **Option**                     **Value**
@@ -144,7 +144,7 @@ See the section on `VLAN </manual/other-interfaces.html#vlan>`_ for more details
 In our example setup we require tagged VLAN 5 (LAN), 20 (DMZ) and 33 (GUEST), and no untagged VLAN.
 If you skipped Step 1, create the VLAN directly on a physical interface like ``igc0``.
 
-- | Go to :menuselection:`Interfaces --> Other Types --> VLAN` and add new entries:
+- | Go to :menuselection:`Interfaces --> Devices --> VLAN` and add new entries:
 
 =============================  ===============  ===============  ===============
 **Option**                     **LAN**          **DMZ**          **GUEST**

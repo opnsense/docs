@@ -42,7 +42,7 @@ that don't support binding for these services.
 
 .. Tip::
     In case (**for any service**) one would like to prevent binding on all interfaces, it is possible to add a
-    loopback interface (:menuselection:`Interfaces->Other Types->Loopback`), assign an ip address and bind to that.
+    loopback interface (:menuselection:`Interfaces --> Devices --> Loopback`), assign an ip address and bind to that.
 
     If traffic is being routed through the firewall, the "loopback ip" (some private addres, not in the loopback range)
     should be directly accessible from the network behind it. For example use an address like :code:`192.192.192.192/32`
