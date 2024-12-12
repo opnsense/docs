@@ -12,8 +12,9 @@ Supported devices
 -----------------
 
 In general, OPNsense should support all cellular modems that are supported by the
-respective FreeBSD kernel. However, not all devices behave the same way, you might
-have to tweak your card with specific AT commands, for example in the init string.
+respective FreeBSD kernel (`see latest <https://cgit.freebsd.org/src/tree/sys/dev/usb/serial/u3g.c#n197>`).
+However, not all devices behave the same way, you might have to tweak your card 
+with specific AT commands, for example in the init string.
 
 The screenshots in this guide are for a Huawei ME909u-521 miniPCIe cellular modem.
 
