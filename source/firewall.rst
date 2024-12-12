@@ -41,3 +41,4 @@ Setup guides
 
    manual/how-tos/fwcategory
    manual/how-tos/drop
+   manual/how-tos/security-zones
