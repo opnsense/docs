@@ -40,8 +40,7 @@ The alternative command below is for Mullvad's other API. DNS requests through t
 What you receive is what WireGuard calls **Allowed IP** for your WireGuard Instance. Edit your instance again and remove
 the value of **Tunnel Address** that you used when setting it up and change it to the one received from the command above.
 
-In the **Peers** tab, create a new Peer and give it a **Name**, set 0.0.0.0/0 in **Allowed IPs** and set
-the **DNS** to 193.138.218.74. This is the one MulladVPN provides for privacy.
+In the **Peers** tab, create a new Peer and give it a **Name**, set 0.0.0.0/0 in **Allowed IPs**
 
 Now go to Mullvad's server list_, set the filter to only `Wireguard` instances, and choose the one you like to use as your breakout. Write down it's
 public key and set it as **Public Key**.

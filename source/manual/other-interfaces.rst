@@ -112,7 +112,7 @@ GRE
 ---
 
 GRE (``gre(4)``, Generic Routing Encapsulation) is used to create a virtual point-to-point connection, through which
-encapsulated packages can be sent. This can be used to utilise (OSI-layer 3) protocols between devices over a connection that
+encapsulated packages can be sent. This can be used to utilize (OSI-layer 3) protocols between devices over a connection that
 does not normally support these protocols.
 
 Since the GRE protocol was designed by Cisco, it is often used as default tunnel technology when using their solutions.
@@ -156,10 +156,14 @@ Use flowid                          Use the RSS hash from the network card if av
 Hash Layers                         Set the packet layers to hash for aggregation protocols which load balance.
 Use strict                          Enable lacp strict compliance on the interface.
                                     The default depends on the system tunable in `net.link.lagg.lacp.default_strict_mode`.
-MTU                                 MTU size, when unset the smallest mtu of this laggs children will be used.
+MTU                                 MTU size, when unset the smallest mtu of the LAGG children will be used.
 ==================================  ==================================================================================================
 
+.. Note::
 
+    Hash Layers, specifies how the device will loadbalance the traffic across physical links in the LAGG bundle.
+    This is done per the 5-tuple if the LACP device implementation allows it. 
+    Hash Layers, do not need to be the same between two connecting devices, it can be considered as a best practice but its not a rule of must be.
 
 **Available protocols**
 
@@ -173,7 +177,7 @@ failover                            Sends and receives traffic only through the 
 fec                                 Supports Cisco EtherChannel. This is a static setup and does not negotiate
                                     aggregation with the peer or exchange frames to monitor the link.
 lacp                                Supports the IEEE 802.3ad Link Aggregation Control Protocol (LACP) and the Marker Protocol.
-                                    LACP will negotiate a set of aggregable links with the peer in to one or more
+                                    LACP will negotiate a set of aggregated links with the peer in to one or more
                                     Link Aggregated Groups. Each LAG is composed of ports of the same speed,
                                     set to full-duplex operation. The traffic will be balanced across the ports in the LAG
                                     with the greatest total speed, in most cases there will only be one LAG which contains all ports.
@@ -190,6 +194,29 @@ none                                This protocol is intended to do nothing: It 
                                     disabling the lagg interface itself.
 ==================================  ==================================================================================================
 
+.. Attention::
+
+    The LAGG protocol should match with the one your switch supports. It is best practice to use LACP if possible.
+    Devices connected via LAGG require the same protocol.  
+
+**LACP timeout**
+
+LACP timeout has two modes; Slow/normal and Fast. It handles how fast the re-convergence occurs in case of link failure.
+This specifies how often the heartbeats are sent between the two LAGG connected devices.
+
+==================================  =================================  =================================================================
+LACP mode                           Heartbeat/Timeout interval         Enable
+==================================  =================================  =================================================================
+Slow/Normal                         30s                                Fast timeout turned off
+Fast                                1s                                 Fast timeout turned on
+==================================  =================================  =================================================================
+
+The Slow/normal timeout should be the default in most cases.
+Due to possible vendor implementation issues, keeping the LACP timeout on Slow/normal is preferable. Fast timeout can cause connectivity disruption in some cases.
+LACP timeout requires the same value on both devices connected via LAGG. If not, heartbeats can be missed which will cause connectivity disruption.
+
+Read `LAGG Setup </manual/how-tos/vlan_and_lagg.html>`_ for an example configuration.
+
 --------------
 Loopback
 --------------
@@ -205,7 +232,7 @@ VLAN
 ----
 
 VLANs (Virtual LANs) can be used to segment a single physical network into multiple virtual networks. This can be
-done for QoS purposes, among other things. For this reason, most ISP-issued IPTV devices utilise VLANs.
+done for QoS purposes, among other things. For this reason, most ISP-issued IPTV devices utilize VLANs.
 
 The following settings are available for these interface types:
 
@@ -224,11 +251,14 @@ Description                         User friendly description for this interface
     `802.1ad <https://en.wikipedia.org/wiki/IEEE_802.1ad>`__ , also known as QinQ, is supported via the VLAN configuration
     in which case you would stack a :code:`vlan` on top of a :code:`vlan`, the device name should start with qinq in that case.
 
+
+Read `VLAN Setup </manual/how-tos/vlan_and_lagg.html>`_ for an example configuration.
+
 ------
 VXLAN
 ------
 
-Virtual eXtensible Local Area Networks (VXLANs) are used to overlay virtualized layer 2 networks over layer 3 networks
+Virtual eXtensible Local Area Networks (VXLAN) are used to overlay virtualized layer 2 networks over layer 3 networks
 as described by `rfc7348 <https://tools.ietf.org/html/rfc7348>`__.
 
 Tunnels can be setup in point to point (parameter :code:`Remote address`) or multicast (parameters :code:`Multicast group` and :code:`Device`).
@@ -242,3 +272,6 @@ source in the encapsulating IPv4/IPv6 header.
   network MTU be configured to use jumbo frames to accommodate the encapsulated frame size.
   Alternatively, the MTU size on the vxlan interface might be reduced to allow the encapsulated frame to fit in
   the current MTU of the physical network.
+
+
+Read `VXLAN Bridge </manual/how-tos/vxlan_bridge.html>`_ for an example configuration with a common setup.

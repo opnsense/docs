@@ -7,7 +7,8 @@ The documentation is work in progress and is updated frequently.
 If you would like to contribute in anyway, please take a look at our guide
 how to :doc:`contribute`.
 
-.. image:: ./images/opnsense_logo-zilver_grijs.png
+.. image:: ./images/opnsense_logo_horizontaal.png
+    :width: 80%
 
 ------------------------------------
 Welcome to OPNsense's documentation!
@@ -29,7 +30,7 @@ Mission Statement
   “Open (source) makes sense.”
 
 
-.. image:: ./images/OPNsense-Deciso-Screenshot.jpg
+.. image:: ./images/OPNsense-Deciso-Screenshot.png
 
 
 -----------------

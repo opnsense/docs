@@ -79,7 +79,7 @@ In reality we forked a system that went without code maintenance for a very long
 time and we needed to transition that into something more structured.
 
 One of the first things (on the programming part of the system) we did was build
-components around an existing framework (`Phalcon <https://phalconphp.com/>`_)
+components around an existing framework (`Phalcon <https://phalcon.io/>`_)
 to create new modules, which could use validated configuration data (from the
 config.xml), supply a RESTful API and generate HTML output using standard
 templates (Volt).

@@ -24,7 +24,7 @@ Trust
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","trust","cert","add",""
-    "``GET``","trust","cert","caInfo","$caref"
+    "``GET``","trust","cert","caInfo","$caref=null"
     "``GET``","trust","cert","caList",""
     "``POST``","trust","cert","del","$uuid"
     "``POST``","trust","cert","generateFile","$uuid=null,$type='crt'"
@@ -41,7 +41,18 @@ Trust
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
+    "``POST``","trust","crl","del","$caref"
     "``GET``","trust","crl","get","$caref"
     "``GET``","trust","crl","rawDump","$caref"
     "``GET``","trust","crl","search",""
     "``POST``","trust","crl","set","$caref"
+
+.. csv-table:: Service (SettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","trust","settings","get",""
+    "``POST``","trust","settings","reconfigure",""
+    "``POST``","trust","settings","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Trust/General.xml>`__"

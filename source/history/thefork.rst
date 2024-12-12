@@ -39,7 +39,7 @@ should be fixed before they become a real problem.
 Quality
 -------
 As for quality, all new features will be built using a solid :doc:`framework </development/architecture>` with a
-Model View Controller. For this purpose we choose `Phalcon <https://phalconphp.com/nl/>`__ as it is the fastest
+Model View Controller. For this purpose we choose `Phalcon <https://phalcon.io/>`__ as it is the fastest
 open source PHP framework available. And we will gradually migrate parts inherited
 from pfSense to the new framework to avoid a big-bang approach.
 

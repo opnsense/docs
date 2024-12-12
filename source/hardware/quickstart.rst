@@ -68,7 +68,7 @@ To gain access to the web interface (default IP: :code:`192.168.1.1`) use the fo
 Next steps
 ------------------------------------
 
-After performing basic setup, activate your OPNsense Business Edition license token and then update your system or
+After performing basic setup, apply your OPNsense Business Edition license token and then update your system or
 change to community when not planning to use the supplied license.
 (The firmware update module is located at :menuselection:`System>Firmware>Settings`)
 
@@ -85,7 +85,7 @@ change to community when not planning to use the supplied license.
 
 .. Note::
 
-    The OPNsense Business Edition license token is sent by email including instructions on how to activate.
+    The OPNsense Business Edition license token is sent by email including instructions on how to apply.
 
 .. Tip::
 

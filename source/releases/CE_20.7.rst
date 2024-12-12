@@ -273,7 +273,7 @@ Here are the full patch notes:
 * ports: curl 7.73.0 `[3] <https://curl.se/changes.html#7_73_0>`__ 
 * ports: libxml fixes for CVE-2019-20388, CVE-2020-7595 and CVE-2020-24977
 * ports: nss 3.58 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_58.html>`__ 
-* ports: openssl 1.1.1h `[5] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1h `[5] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: php 7.3.23 `[6] <https://www.php.net/ChangeLog-7.php#7.3.23>`__ 
 * ports: pkg 1.15.10
 * ports: radvd patch for dynamic interface shifting index

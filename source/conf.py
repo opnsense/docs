@@ -44,6 +44,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # ones.
 extensions = [
     'sphinx_sitemap',
+    'sphinx_tabs.tabs',
     'sphinx.ext.todo',
     'sphinxcontrib.blockdiag',
     'sphinxcontrib.nwdiag',
@@ -141,7 +142,7 @@ html_theme = "sphinx_rtd_theme"
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    'style_nav_header_background': '#d94f00',
+    'style_nav_header_background': '#fff',
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -158,7 +159,7 @@ html_theme_path = ["_themes", ]
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 #html_logo = None
-html_logo = '_static/deciso_ruit.png'
+html_logo = '_static/deciso-logo-verticaal.jpg'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -170,11 +171,7 @@ html_favicon = '_static/favicon.ico'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-html_context = {
-    'css_files': [
-        '_static/css/theme-overrides.css',  # override wide tables in RTD theme
-    ]
-}
+html_css_files = ['css/theme-overrides.css']  # override wide tables in RTD theme
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied

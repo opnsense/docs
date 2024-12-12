@@ -99,7 +99,7 @@ Here are the full patch notes:
 * ports: libxml 2.9.12 `[10] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nss 3.67 `[11] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_67.html>`__ 
 * ports: openldap 2.4.59 `[12] <https://www.openldap.org/software/release/changes.html>`__ 
-* ports: openssl 1.1.1l `[13] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1l `[13] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: pcre2 10.37 `[14] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.37>`__ 
 * ports: phalcon 4.1.2 `[15] <https://github.com/phalcon/cphalcon/releases/tag/v4.1.2>`__ 
 * ports: php 7.4.20 `[16] <https://www.php.net/ChangeLog-7.php#7.4.20>`__ 
@@ -520,7 +520,7 @@ Here are the full patch notes:
 * ports: monit 5.27.2 `[32] <https://mmonit.com/monit/changes/>`__ 
 * ports: openldap 2.4.58 `[33] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: openssh fix for double free in ssh-agent `[34] <https://ftp.openbsd.org/pub/OpenBSD/patches/6.8/common/015_sshagent.patch.sig>`__ 
-* ports: openssl 1.1.1k `[35] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1k `[35] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: perl 5.32.1 `[36] <https://perldoc.perl.org/5.32.1/perldelta>`__ 
 * ports: php 7.3.27 `[37] <https://www.php.net/ChangeLog-7.php#7.3.27>`__ 
 * ports: pkg now provides fallback for version mismatch on pkg-add

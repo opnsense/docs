@@ -545,7 +545,7 @@ Here are the full patch notes:
 * plugins: os-relayd 2.7 now supports newer upstream release of relayd
 * plugins: os-rfc2136 replaces calls to obsolete get_interface_ip[v6]()
 * plugins: os-smart reverts the use of smartctl to gather disks
-* plugins: os-sunnyvalley 1.3 changes repository URL (contributed by Sunnyvalley)
+* plugins: os-sunnyvalley 1.3 changes repository URL (contributed by Sunny Valley Networks)
 * plugins: os-telegraf 1.12.9 `[9] <https://github.com/opnsense/plugins/blob/stable/23.7/net-mgmt/telegraf/pkg-descr>`__ 
 * plugins: os-theme-rebellion 1.8.9 fixes Unbound DNS reporting page
 * plugins: os-tinc 1.7 adds support for "StrictSubnets" variable (contributed by andrewhotlab)
@@ -590,7 +590,7 @@ Here are the full patch notes:
 * ports: filterlog fix to prevent crash on default rule number -1
 * ports: nss 3.93 `[18] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_93.html>`__ 
 * ports: openldap 2.6.6 `[19] <https://www.openldap.org/software/release/changes.html>`__ 
-* ports: openssl 1.1.1w `[20] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1w `[20] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.6.6 `[21] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.6>`__ 
 * ports: perl 5.34.1 `[22] <https://perldoc.perl.org/5.34.1/perldelta>`__ 
 * ports: phalcon 5.3.1 `[23] <https://github.com/phalcon/cphalcon/releases/tag/v5.3.1>`__ 

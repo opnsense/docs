@@ -100,7 +100,7 @@ Here are the full patch notes:
 * ports: nss 3.90 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_90.html>`__ 
 * ports: ntp 4.2.8p17 `[10] <https://www.ntp.org/support/securitynotice/>`__ 
 * ports: openssh 9.3p2 `[11] <https://www.openssh.com/txt/release-9.3p2>`__ 
-* ports: openssl 1.1.1v `[12] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1v `[12] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.6.5 `[13] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.5>`__ 
 * ports: phalcon 5.2.2 `[14] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.2>`__ 
 * ports: php 8.1.20 `[15] <https://www.php.net/ChangeLog-8.php#8.1.20>`__ 

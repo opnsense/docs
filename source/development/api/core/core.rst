@@ -17,6 +17,7 @@ Core
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","core","dashboard","getDashboard",""
+    "``GET``","core","dashboard","picture",""
     "``GET``","core","dashboard","productInfoFeed",""
     "``POST``","core","dashboard","restoreDefaults",""
     "``POST``","core","dashboard","saveWidgets",""
@@ -46,6 +47,18 @@ Core
     "``GET``","core","service","search",""
     "``POST``","core","service","start","$name,$id=''"
     "``POST``","core","service","stop","$name,$id=''"
+
+.. csv-table:: Resources (SnapshotsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","core","snapshots","activate","$uuid"
+    "``POST``","core","snapshots","add",""
+    "``POST``","core","snapshots","del","$uuid"
+    "``GET``","core","snapshots","get","$uuid=null"
+    "``GET``","core","snapshots","isSupported",""
+    "``GET``","core","snapshots","search",""
+    "``POST``","core","snapshots","set","$uuid"
 
 .. csv-table:: Resources (SystemController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

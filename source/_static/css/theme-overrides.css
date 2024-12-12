@@ -1,4 +1,221 @@
 /* override table width restrictions */
+  @import url("https://use.typekit.net/asa5fpa.css");
+
+
+
+::selection {
+	background:#373736;
+	color:#FFF;
+	text-shadow:none;
+}
+::-webkit-selection {
+	background:#373736;
+	color:#FFF;
+	text-shadow:none;
+}
+::-moz-selection {
+	background:#373736;
+	color:#FFF;
+	text-shadow:none;
+}
+
+
+body, p {
+    font-size: 17px;
+    line-height: 1.5;
+    font-family: "fieldwork";
+    color: #373736;
+    font-weight: 300;
+}
+
+.rst-content .toctree-wrapper>p.caption, h1, h2, h3, h4, h5, h6, legend {    font-family: "fieldwork";font-weight:700}
+
+a {    color: #C03E14;}
+a:hover  { color: #373736;}
+a:visited { color: #C03E14;}
+a:hover {color: #C03E14; text-decoration: underline;}
+
+
+/*Breadcrumb*/
+.wy-breadcrumbs li a {padding:0 5px}
+.wy-breadcrumbs li a:first-child{padding-left:0}
+.wy-breadcrumbs li a, .wy-breadcrumbs  {    color: #B0B0B1;}
+.wy-breadcrumbs li a, .wy-breadcrumbs li {font-size:14px;line-height: 1;}
+.wy-breadcrumbs li a:hover, .wy-breadcrumbs li a:visited:hover {color: #373736;}
+.wy-breadcrumbs li a:visited {color:inherit}
+
+/*Footer*/
+footer {padding-top:25px}
+footer p { margin-bottom: 0;}
+footer, footer p, footer a {color: #B0B0B1;  font-size: 14px;}
+footer a:hover, footer a:visited:hover {color:#373736}
+
+
+/*Header/Navigatie*/
+
+
+.wy-nav-top { background: #373736;}
+.wy-nav-top a, .wy-nav-top a:visited {color:#fff;}
+.wy-nav-top a:hover, .wy-nav-top a:visited:hover {color: #C03E14;}
+.wy-side-nav-search a.icon.icon-home {    font-size: 0;    color: transparent;}
+.wy-side-nav-search {padding:1em;border-right:1px solid}
+.wy-side-nav-search>div.version, .wy-side-nav-search .wy-dropdown>a, .wy-side-nav-search>a {    color: #9b9b9b;}
+.wy-side-nav-search>a:hover,  .wy-side-nav-search>a:visited:hover {color:#373736}
+.wy-side-nav-search .wy-dropdown>a.icon img.logo, .wy-side-nav-search>a.icon img.logo {
+    margin-top: 0px;
+    margin-bottom: 15px;
+    padding: 0;max-width:130px;width:100%
+}
+.wy-side-nav-search>div.version {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 300;opacity:.7;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.wy-nav-side {background: #EFEFEF;border-right:1px solid #D8D9D9}
+.wy-menu-vertical li.current {
+    background: #f8f8f8;
+}
+.wy-menu-vertical li li.current {
+    background: #fff;
+}
+.wy-menu-vertical li.toctree-l2.current>a, .wy-menu-vertical li.toctree-l2.current li.toctree-l3>a, .wy-menu-vertical li.toctree-l3.current>a, .wy-menu-vertical li.toctree-l3.current li.toctree-l4>a {
+    background: #ffffff;
+}
+.wy-menu-vertical a {
+    line-height: 1;
+    padding: 5px 20px;
+    display: block;
+    position: relative;
+    font-size: 100%;
+    color: #373736;font-size:15px;background:none!important
+}
+.wy-menu-vertical a:hover {
+    background-color: transparent;
+    cursor: pointer;color:#C03E14!important
+}
+.wy-menu-vertical li.current a {border:none}
+.wy-menu-vertical a:visited {opacity:.75}
+.wy-menu-vertical li.toctree-l1.current>a {border:none}
+.wy-menu-vertical li.current>a, .wy-menu-vertical li.on a {background:none;color:#C03E14;  padding: 5px 20px;}
+.wy-menu-vertical li.on a span.toctree-expand, .wy-menu-vertical li.toctree-l2 span.toctree-expand, .wy-menu-vertical li.toctree-l2 a, .wy-menu-vertical li.toctree-l3 a, .wy-menu-vertical li.toctree-l4 a, .wy-menu-vertical li.toctree-l5 a, .wy-menu-vertical li.toctree-l6 a, .wy-menu-vertical li.toctree-l7 a, .wy-menu-vertical li.toctree-l8 a, .wy-menu-vertical li.toctree-l9 a, .wy-menu-vertical li.toctree-l10 a { color: #373736;}
+.wy-menu-vertical li.current>a span.toctree-expand, .wy-menu-vertical li.current>a{color:#C03E14!important}
+.wy-menu-vertical li.current>a:hover, .wy-menu-vertical li.on a:hover, .wy-menu-vertical li.current a:hover {background:transparent}
+.wy-menu-vertical li span.toctree-expand, .wy-menu-vertical li.current>a span.toctree-expand, .wy-menu-vertical li.on a span.toctree-expand {line-height:1;position:absolute;top:calc(50% - 7px);font-size:14px}
+.wy-menu-vertical li span.toctree-expand {left:20px}
+.wy-menu-vertical li li span.toctree-expand {left:36px}
+.wy-menu-vertical li li li span.toctree-expand {left:60px}
+
+.wy-menu-vertical a:active span.toctree-expand, .wy-menu-vertical a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l2 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l3 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l4 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l5 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l6 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l7 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l8 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l9 a:hover span.toctree-expand, .wy-menu-vertical li.toctree-l10 a:hover span.toctree-expand{color:#C03E14}
+
+@media screen and (max-width: 768px) {
+    .wy-nav-content-wrap .wy-nav-content {
+        padding: 1em;
+    }
+}
+
+/*BTN*/
+.btn {
+    font-size: 16px;
+    position: relative;
+    color: #FFFFFF;
+    font-weight: 300;
+    display: inline-block;
+    line-height: 1;
+    padding: 14px 25px 18px;
+    background: #C03E14;
+    border-radius: 25px;
+    text-align: center;
+    font-style: normal;
+    cursor: pointer;
+    overflow: hidden;
+    font-family: "fieldwork";
+    box-shadow: none;
+    border: none;
+}
+.btn:active {
+    box-shadow: none;
+    padding: 14px 25px 18px;
+}
+.btn-neutral:visited {color:#fff!important}
+.btn-neutral{background: #B0B0B1!important;color:#fff!important}
+.btn-neutral:hover, .btn-neutral:visited:hover { background: #C03E14!important;color:#fff!important}
+
+
+.btn span.fa.fa-arrow-circle-left, .btn span.fa.fa-arrow-circle-right {display:none}
+
+/*Body*/
+.wp-body-for-nav {background:#B0B0B1}
+.wy-nav-content-wrap {background:#fff;}
+.wy-nav-content {
+	padding: 1em 3em;background:#fff!important}
+
+hr {    border-top: 1px solid #D8D9D9;    margin: 25px 0;}
+
+.rst-content code, .rst-content tt, code {border:1px solid #B0B0B1}
+.rst-content code.literal, .rst-content tt.literal {
+    color: #C03E14;background:#f9f9f9
+}
+.rst-content code.download, .rst-content tt.download {background:none}
+
+.rst-content blockquote {margin-left:0;padding-left:28px;border-left:4px solid #C03E14}
+
+/*Search*/
+#search-results .search li a {
+    font-size: 100%;
+    margin-bottom: 0;
+    display: inline-block;
+}
+#search-results .search li:first-child {
+    border-top: 1px solid #D8D9D9;
+    padding-top: 15px;
+}
+#search-results .search li {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #D8D9D9;
+    padding-bottom: 15px;
+}
+/*input/form styling*/
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week] {
+    -webkit-appearance: none;
+    padding: 6px 15px;
+    display: inline-block;
+    border: 1px solid #D8D9D9;
+    font-size: 80%;
+    font-family: "fieldwork";
+    box-shadow: none;
+    border-radius: 0;
+    -webkit-transition: border .3s linear;
+    -moz-transition: border .3s linear;
+    transition: border .3s linear;
+    min-height: 45px;
+}
+.wy-side-nav-search input[type=text] {
+    width: 100%;
+    border-radius: 50px;
+    padding: 6px 15px;
+    border-color: #D8D9D9;
+}
+
+
+
+/*Tables*/
+html.writer-html5 .rst-content table.docutils th {
+    border: 1px solid #B0B0B1;font-weight:700
+}
+.rst-content table.docutils td, .wy-table-bordered-all td {
+    border-bottom: 1px solid #B0B0B1;
+    border-left: 1px solid #B0B0B1;
+}
+.rst-content table.docutils:not(.field-list) tr:nth-child(2n-1) td, .wy-table-backed, .wy-table-odd td, .wy-table-striped tr:nth-child(2n-1) td {
+    background-color: #f9f9f9;
+}
+.rst-content table.docutils, .wy-table-bordered-all {
+    border: 1px solid #B0B0B1;
+}
+
 @media screen and (min-width: 767px) {
 
     .wy-table-responsive table td {
@@ -14,4 +231,12 @@
 
 body {
     overflow-wrap: break-word;
+}
+
+
+@media screen and (max-width:768px){
+	body {    font-size: 15px;}
+
+	.wy-side-nav-search .wy-dropdown>a.icon img.logo, .wy-side-nav-search>a.icon img.logo {max-width:80px}
+	.wy-menu-vertical a {font-size:14px}
 }

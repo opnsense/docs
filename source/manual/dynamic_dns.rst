@@ -2,15 +2,14 @@
 Dynamic DNS
 ====================================================
 
-In order to update dns registations when the local IP address changes, a Dynamic DNS service provider can be used.
-Our `os-ddclient` plugin offers support for various services using the `ddclient <https://ddclient.net/>`__
-software.
+In order to update DNS records when the firewall's IP address changes, use a dynamic DNS service provider.
+
+Our `os-ddclient` plugin offers support for various dynamic DNS services using either the `ddclient <https://ddclient.net/>`_ software or our native backend.
 
 Prerequisites
 ---------------------------
 
-Before installing and using this plugin, make sure to register an account with one of the supported services.
-
+Before installing and using this plugin, make sure to register an account with one of the supported DNS providers.
 
 Installation
 ---------------------------
@@ -20,53 +19,54 @@ use the [+] button to install it.
 
 Next go to :menuselection:`Services --> Dynamic DNS --> Settings` to configure one or more Dynamic DNS services.
 
-
 General settings
 ---------------------------
-The general settings tab offers access to general options used by all configured dynamic dns services on this firewall.
-By default the service is enabled after installation,
+The general settings tab allows you to customize the services settings which will affect all dynamic DNS accounts.
 
 ======================= =======================================================================================================================================================================
 Option                  Description
 ======================= =======================================================================================================================================================================
-Enable                  Enable the client
-Interval                The number of seconds address changes will be queried
-Backend                 Select the backend to use, either "ddclient" or "native"
+Enable                  Enable or disable the service
+Verbose                 Enable or disable detailed log messages for the service
+Allow IPv6              Enable or disable retrieving and updating IPv6 addresses
+Interval                How often (in seconds) the service checks if the appliance's IP addresses have changed
+Backend                 The system the Select the backend to use, either "ddclient" or "native" (see below)
 ======================= =======================================================================================================================================================================
 
 .. Note::
 
-      With :code:`ddlient` developments sunsetting [`* <https://github.com/ddclient/ddclient/issues/528>`__] we decided to offer an alternative written in
+      With :code:`ddclient` developments sunsetting [`* <https://github.com/ddclient/ddclient/issues/528>`__] we decided to offer an alternative written in
       Python. Selecting the native backend replaces the employed implementation. If your service is supported, we do advice to try out the new native backend
       which also offers support for custom HTTP requests.
 
 Accounts
 ---------------------------
 
-In the primary tab you can register one or more dynamic dns providers which will be used to update dns registrations
-using an api call over http(s) to the selected service.
-
-.. Note::
-
-      The local IP address used for this firewall will be obtained by querying one of the selected providers. Since ddclient
-      currently doesn't support dual stack (IPv4+IPv6) opertion, make sure to either select an IPv4 or IPV6 address
-      provider in the settings tab.
+The accounts tab allows you to configure one or more dynamic DNS providers which the service will update using an API call over HTTP(S).
 
 ======================= =======================================================================================================================================================================
 Option                  Description
 ======================= =======================================================================================================================================================================
-Enable                  Enable this rule (allows turning entries off without removing them).
-Service                 The provider of your Dynamic DNS Service.
+Enabled                 Enable or disable the account (allows turning entries off without removing them)
+Description             A descriptive name for the account
+Service                 The provider of your Dynamic DNS Service
 resourceId              A pointer to the service to be updated, currently only relevant for Azure
-Username                Login or user name to use, could be empty for token based authentication
-Password                Password or security token to use
-Hostname                Enter the fully qualified domain names to update via the selected service. For example: *myhost.dyndns.org*
-Check ip method         Service to query the current IP address
-Check ip timeout        How long to wait before the checkip process times out
-Force SSL               Choose to use HTTP or HTTPS, but only for selected services. Most services only support HTTPS nowadays.
-Interface to monitor    Interface to collect an address from when choosing "Interface" as check ip method, or source interface used to connect to the check ip service
-Description             A description to easily identify this rule in the overview.
+Username                Login or user name to authenticate with, left empty when using token-based authentication
+Password                Password, API key or security token to authenticate with
+Zone                    Typically the second-level domain name to update. for example: *example.com*
+Hostname(s)             A list of fully-qualified domain names to update via the selected service, separated by commas. For example: *subdomain.example.com*
+Check ip method         The IP checking service to get the appliance's current IP address from
+Interface to monitor    The interface to connect to the IP checking service from, or if the "Check ip method" is set to "Interface" the interface to collect an address from
+Check ip timeout        How long to wait in seconds for the IP checking service to respond with an IP address
+Force SSL               Enable connecting to IP checking and updating services over HTTPS, though majority only support HTTPS anyway
 ======================= =======================================================================================================================================================================
+
+.. Note::
+
+      To update a fully-qualified domain name's :code:`A` (IPv4) record and :code:`AAAA` (IPv6) record, you must:
+      * Add one account for IPv4 with the "Check ip method" set to an IPv4 service
+      * Add one account for IPv6 with the "Check ip method" set to an IPv6 service
+      * On the *General Settings* tab, enable "Allow IPv6"
 
 Provider-specific configuration
 -------------------------------------
@@ -109,4 +109,19 @@ Username                customer number
 Password                APIPassword|APIKey, both fields need to be concatenated using a pipe (:code:`|`) symbol as separator.
 ======================= =======================================================================================================================================================================
 
+Mythic Beasts
+```````````````````````````
+
+Mythic Beasts is a UK based hosting provider who offers an API for DNS manipulation:
+
+*     Wiki: https://www.mythic-beasts.com/support/API/DNSv2/dynamic-DNS
+*     Technical documentation: https://www.mythic-beasts.com/support/API/DNSv2
+
+
+======================= =======================================================================================================================================================================
+Option                  Value
+======================= =======================================================================================================================================================================
+Username                Key ID
+Password                Secret
+======================= =======================================================================================================================================================================
 

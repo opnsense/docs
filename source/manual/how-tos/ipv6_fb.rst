@@ -1,6 +1,7 @@
-======================================
-Configure IPv6 behind an AVM Fritz!Box
-======================================
+==============================
+IPv6 behind an AVM Fritz!Box
+==============================
+
 **Original Author:** Thomas Klein
 
 ------------
@@ -36,7 +37,7 @@ Step 1 - prepare the Fritz!Box
 ------------------------------
 
 The AVM website has a knowledge base article about the basic settings required on each FB model to enable IPv6 on client devices.
-https://avm.de/service/wissensdatenbank/dok/FRITZ-Box-6591-cable/1239_IPv6-Subnetz-in-FRITZ-Box-einrichten/
+https://avm.de/service/wissensdatenbank/dok/FRITZ-Box-6591-Cable/1239_IPv6-Subnetz-in-FRITZ-Box-einrichten/
 The crucial setting is the checkbox **allow other routers IPv6 prefixes**. Without that the delegated internal prefixes will
 not be reachable from the Internet.
 

@@ -12,6 +12,12 @@ Since OPNsense 17.7 it has been our standard DNS service, which on a new install
 General settings
 -------------------------
 
+.. Warning::
+    Below table contains the options to manually set **listening** and **outbound** interfaces, the recommended setting for
+    both is :code:`"All"` for good reasons. Unless you absolutely know what you are doing, best keep these
+    settings default as misuse often causes startup issues.
+
+
 Below you will find the most relevant settings from the **General** menu section.
 
 =====================================================================================================================
@@ -54,6 +60,10 @@ System A/AAAA records                 If this option is set, then no A/AAAA reco
                                       restrict the amount of information exposed in replies to queries for the
                                       system host/domain name.
 TXT Comment Support                   Register descriptions as comments for dhcp static host entries.
+Outgoing Network Interfaces           Utilize different network interfaces that Unbound will use to send queries to
+                                      authoritative servers and receive their replies. By default all interfaces are
+                                      used. Note that setting explicit outgoing interfaces only works when they
+                                      are statically configured.
 Local Zone Type                       The local zone type used for the system domain.
                                       Type descriptions are available under "local-zone:" in the
                                       `unbound.conf(5) <https://nlnetlabs.nl/documentation/unbound/unbound.conf/>`__
@@ -105,18 +115,10 @@ You have to select the host in the top list and it will the show you the assigne
 **Domain override settings**
 =====================================================================================================================
 
-Domain overrides can be used to forward queries for specific domains (and subsequent subdomains) to local or remote DNS servers.
-
 .. Important::
 
     Domain overrides has been superseded by :ref:`forwarding`. Query forwarding also allows you to forward every single
     request.
-
-====================================  ===============================================================================
-Domain                                Domain to override
-IP address                            IP address of the authoritative DNS server for this domain
-Description                           User readable description, only for informational purposes
-====================================  ===============================================================================
 
 
 -------------------------
@@ -358,21 +360,21 @@ YoYo List                             https://pgl.yoyo.org/adservers/
 
 -------------------------
 Query Forwarding
-------------------------- 
+-------------------------
 
-The Query Forwarding section allows for entering arbitrary nameservers to forward queries to. It is assumed 
-that the nameservers entered here are capable of handling further recursion for any query. In this section 
-you are able to specify nameservers to forward to for specific domains queried by clients, catch all domains 
+The Query Forwarding section allows for entering arbitrary nameservers to forward queries to. It is assumed
+that the nameservers entered here are capable of handling further recursion for any query. In this section
+you are able to specify nameservers to forward to for specific domains queried by clients, catch all domains
 and specify nondefault ports.
 
 =====================================================================================================================
 
 ====================================  ===============================================================================
-Use System Nameservers                The configured system nameservers will be used to forward queries to. 
-                                      This will override any entry made in the custom forwarding grid, except for 
+Use System Nameservers                The configured system nameservers will be used to forward queries to.
+                                      This will override any entry made in the custom forwarding grid, except for
                                       entries targeting a specific domain. If there are no system nameservers, you
-                                      will be prompted to add one in `General <settingsmenu.html#general>`__. 
-                                      If you expected a DNS server from your WAN and it's not listed, make sure you 
+                                      will be prompted to add one in `General <settingsmenu.html#general>`__.
+                                      If you expected a DNS server from your WAN and it's not listed, make sure you
                                       set "Allow DNS server list to be overridden by DHCP/PPP on WAN" there as well.
 ====================================  ===============================================================================
 
@@ -390,7 +392,7 @@ Use System Nameservers                The configured system nameservers will be 
 
 ====================================  ===============================================================================
 Enabled                               Enable query forwarding for this domain.
-Domain                                Domain of the host. All queries for this domain will be forwarded to the 
+Domain                                Domain of the host. All queries for this domain will be forwarded to the
                                       nameserver specified in "Server IP". Leave empty to catch all queries and
                                       forward them to the nameserver.
 Server IP                             Address of the DNS server to be used for recursive resolution.
@@ -409,24 +411,24 @@ Port                                  Specify the port used by the DNS server. D
 DNS over TLS
 -------------------------
 
-DNS over TLS uses the same logic as Query Forwarding, except it uses TLS for transport. 
+DNS over TLS uses the same logic as Query Forwarding, except it uses TLS for transport.
 
 =====================================================================================================================
 
-.. note:: 
+.. note::
 
-    Please be aware of interactions between Query Forwarding and DNS over TLS. Since the same principle as Query 
-    Forwarding applies, a **catch-all entry** specified in both sections will be considered a duplicate zone. 
+    Please be aware of interactions between Query Forwarding and DNS over TLS. Since the same principle as Query
+    Forwarding applies, a **catch-all entry** specified in both sections will be considered a duplicate zone.
     In our case DNS over TLS will be preferred.
 
 
 ====================================  ===============================================================================
 Enabled                               Enable DNS over TLS for this domain.
-Domain                                Domain of the host. All queries for this domain will be forwarded to the 
+Domain                                Domain of the host. All queries for this domain will be forwarded to the
                                       nameserver specified in "Server IP". Leave empty to catch all queries and
                                       forward them to the nameserver.
 Server IP                             Address of the DNS server to be used for recursive resolution.
-Port                                  Specify the port used by the DNS server. Always enter port 853 here unless 
+Port                                  Specify the port used by the DNS server. Always enter port 853 here unless
                                       there is a good reason not to, such as when using an SSH tunnel.
 Verify CN                             The name to use for certificate verification, e.g. "445b9e.dns.nextdns.io".
                                       Used by Unbound to check the TLS authentication certificates.
@@ -434,12 +436,12 @@ Verify CN                             The name to use for certificate verificati
                                       will still be possible.
 ====================================  ===============================================================================
 
-.. tip:: 
+.. tip::
 
-    To ensure a validated environment, it is a good idea to block all outbound DNS traffic on port 53 using a 
-    firewall rule when using DNS over TLS. Should clients query other nameservers directly themselves, a NAT 
+    To ensure a validated environment, it is a good idea to block all outbound DNS traffic on port 53 using a
+    firewall rule when using DNS over TLS. Should clients query other nameservers directly themselves, a NAT
     redirect rule to 127.0.0.1:53 (the local Unbound service) can be used to force these requests over TLS.
-    
+
 
 **Public Resolvers**
 

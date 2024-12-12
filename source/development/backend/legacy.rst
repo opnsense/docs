@@ -68,17 +68,19 @@ Configure
 The configure plugin can be used to catch certain events, such as :code:`bootup`, :code:`newwanip` and others.
 
 A small sample of a registration is shown below, which registers the functions :code:`myplugin_configure()` on bootup
-and :code:`myplugin_configure()_vpn` on vpn state change where the latter is accepting two (2) parameters at most.
-
+and :code:`myplugin_configure_vpn()` on vpn state change where the latter is accepting two (:2) parameters at most.
+Note that the default number of arguments passed to the listeners is one (:1) which is the :code:`$verbose`  parameter
+steering whether the function is allowed to print progress or not.  The maximum number of arguments passed depends
+on the particular event provider.  For more details see below.
 
 ::
 
     function myplugin_configure()
     {
-        return array(
-            'bootup' => array('myplugin_configure')
-            'vpn' => array('myplugin_configure_vpn:2')
-        );
+        return [
+            'bootup' => ['myplugin_configure'],
+            'vpn' => ['myplugin_configure_vpn:2'],
+        ];
     }
 
 
@@ -98,8 +100,13 @@ early                        Early in bootup process, before normal services are
                              (things like ssh and the webconfigurator use this spot)
 bootup                       Bootup, normal legacy service configuration, when not using the :code:`rc(8)` system
                              (for example: unbound, ntpd)
-newwanip                     Triggered after configuration of a new interface address, expects a maximum of two positional
-                             parameters (:code:`$verbose` and :code:`$interface`).
+newwanip                     Triggered after configuration of a dynamic interface address, expects a maximum of three positional
+                             parameters (:code:`$verbose` and :code:`$interfaces` and :code:`$family`). :code:`$interfaces`
+                             is an array all relevant interfaces that require reloading or null for all.  $:code:`family` is the
+                             address family type that triggered the event, either :code:`inet` for IPv4 or :code:`inet6` for IPv6.
+vpn                          Triggered in multiple places that require a reload of the VPN based subsystems, expects a maximum
+                             of two parameters (:code:`$verbose` and :code:`$interfaces`). :code:`$interfaces` is an array of
+                             all relevant interfaces that require reloading or null for all.
 ===========================  =================================================================================
 
 
@@ -282,12 +289,14 @@ To test if a service registration functions properly, just restart the syslog fa
 
 .. Note::
 
-    In order to define local targets for Syslog-NG you can just add **local** filters which will be collected into
+    In order to define local targets for Syslog-NG you can just add **local** filters (e.g. by creating 
+    :code:`src/opnsense/service/templates/OPNsense/Syslog/local/helloworld.conf`) which will be collected into
     one large syslog configuration.
     The readme on `GitHub <https://github.com/opnsense/core/blob/master/src/opnsense/service/templates/OPNsense/Syslog/local/README>`__
     describes the process.
     When running into issues, always make sure to manually restart syslog-ng first (:code:`service syslog-ng restart`), definition errors won't
-    be written into any log.
+    be written into any log. You will also have to restart the plugin (:code:`pluginctl -s syslog-ng restart`) for the syslog-ng configuration
+    files to be regenerated.
 
 .. Note::
 

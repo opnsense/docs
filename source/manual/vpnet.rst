@@ -192,8 +192,7 @@ be allowed explicitly, the :menuselection:`Firewall --> Rules --> IPsec` menu it
 Dead Peer Detection (DPD)
 .................................
 
-Dead Peer Detection (DPD) is a method of detecting a dead IKE peer by sending periodic R-U-THERE messages to the remote expecting R-U-THERE-ACK
-messages in return as specified by `RFC 3706 <https://www.ietf.org/rfc/rfc3706.txt>`__.
+Dead Peer Detection (DPD) is a method of detecting a dead IKE peer as specified by `RFC 3706 <https://www.ietf.org/rfc/rfc3706.txt>`__.
 
 When a peer is assumed dead, an action may be specified, such as closing the CHILD_SA or re-negotiate the CHILD_SA under a fresh IKE_SA.
 
@@ -201,6 +200,16 @@ When a peer is assumed dead, an action may be specified, such as closing the CHI
 
   DPD is disabled by default, when using connections, make sure to specify a :code:`DPD delay (s)` > 0 to enable the feature.
   Actions may be specified on its children.
+
+When using IKEv1 a :code:`dpdtimeout` can be specified to control when a peer is considered to be inaccesible.
+This setting has no effect on how IKEv2 handles retransmissions, in which case the general settings will be used as specified in the following `document <https://docs.strongswan.org/docs/5.9/config/retransmission.html>`__.
+
+.. Warning::
+
+  By default for IKEv2 the timeout on connections triggering a dpd action takes at least a couple of minutes, when quicker interaction
+  is needed the :code:`charon` retransmit timings should be changed which applies to all tunnels. These settings can
+  be changed via the Advanced settings, or when not yet supported on your version, a custom strongswan configuration.
+
 
 
 .................................
@@ -339,6 +348,24 @@ The following client setup examples are available in our documentation:
 
  Using Network Address Translation in policy based tunnels is different, due to the fact that the installed IPsec policy
  should accept the traffic in order to encapsulate it. The `IPSec BINAT` document will explain how to apply translations.
+
+.................................
+CARP considerations
+.................................
+
+When using IPsec in a high availability setup, it is important to understand the implications of the setup. Without assuming
+what the remote gateway looks like (which may be a single device or a high availability setup as well), the following
+considerations should be taken into account:
+
+- For IKEv2, MOBIKE should be disabled. Due to the nature of CARP, a virtual IP in backup state will "disappear", which will trigger
+  MOBIKE to try to re-establish the connection from a different available IP, thus overriding your "Local address" configuration.
+  In a lot of cases this will be the primary IP of the WAN interface.
+- In all cases (initiator, responder or both) the "Local Address" must be set to a CARP virtual IP.
+- DPD must at least be configured on the peer to detect a non-responsive peer and reauthenticate the connection. DPD is usually the
+  limiting factor in failover response time and is therefore the primary functionality to adjust to allow for faster failover.
+  See the DPD section for more information and constraints.
+- IPsec connections never failover seamlessly between primary and backup and always need a fresh IKE_SA. If quicker failover is
+  required, dynamic routing with route-based tunnels is likely a better solution.
 
 .................................
 Tuning considerations
@@ -692,6 +719,36 @@ as additional security measure. The "*Allowed IPs*" define the networks that are
 
     When NAT and firewall traversal persistence is required, the :code:` Keepalive interval` can be used to exchange packets every defined
     interval ensuring states will not expire.
+
+
+.................................
+Peer generator
+.................................
+
+When creating login credentials for multiple clients, a more practical method is also available to generate these.
+The peer generator offers you a simple selection for the instance you wish to generate credentials for and stores relevant fields
+like endpoint location for future use.
+It also helps to assign IP addresses to clients based on the network defined in the instance.
+
+.. Warning::
+
+  Since IP addresses are only stored when the user saves the profile (and calculated upfront), it's not possible to create users for the same
+  instance concurrently.
+
+Each newly created client will receive a keypair, for which the public key will be stored on the firewall in the peers section.
+
+.. Note::
+
+    The private key will not be stored on the firewall as this only belongs to the device your installing the profile on.
+    Regenerating a config file, automatically means you will need to import it again in the client as well to avoid trust
+    being broken.
+
+After providing the relevant information for the client to login, you can copy the qrcode or the text in the :code:`Config`
+text box to configure the client.
+
+Don't forget to press the "Store and generate next" button to actually store the public information in the firewall and click "Apply" on the "Peers" page so the client
+is able to login.
+
 
 .................................
 High availability (using CARP)

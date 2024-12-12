@@ -119,7 +119,7 @@ have massive impact on it. The candidates are:
 `State transition tables <https://en.wikipedia.org/wiki/State_transition_table>`__
     it is a known fact, that each state table entry requires about 1 kB
     (kilobytes) of RAM. The average state table, filled with 1000
-    entries will occupy about ~10 MB (megabytes) of
+    entries will occupy about ~1 MB (megabytes) of
     `RAM <https://en.wikipedia.org/wiki/Random-access_memory>`__.
     OPNsense usage settings with hundred of thousands of connections
     will require memory accordingly.
@@ -168,8 +168,8 @@ the same.
 
 For further help and support, see
 
--  `FreeBSD 13.1-RELEASE Hardware Compatibility
-   List <https://www.freebsd.org/releases/13.1R/hardware/>`__
+-  `FreeBSD 14.1 Hardware Compatibility
+   List <https://www.freebsd.org/releases/14.1R/hardware/>`__
 -  `OPNsense Forum <https://forum.opnsense.org/>`__
 
 .. rubric:: List of references

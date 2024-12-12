@@ -3,7 +3,7 @@ Overview
 ========================
 
 The life of a service starts during the boot process, but with different hooks available, sometimes it is challenging
-to find the correct one. This paragraph aims to explain the various integration spots availabe, which are
+to find the correct one. This paragraph aims to explain the various integration spots available, which are
 being explained in more detail in the rest of the chapter.
 
 
@@ -39,7 +39,8 @@ Now the system is booted and events may take place, some of the common integrati
 
 *   :doc:`syshook/carp </development/backend/autorun>`, when a high-availability node changes roles from/to master or backup, these scripts
     are being executed. This offers the ability to prevent client services from connecting when in the wrong mode.
-*   :doc:`plugins/configure/newwanip </development/backend/legacy>` will be triggered after an interface retrieves a new address.
+*   :doc:`plugins/configure/newwanip </development/backend/legacy>` will be triggered after an interface retrieves a dynamic address.
+*   :doc:`plugins/configure/vpn </development/backend/legacy>` will be triggered when the VPN subsystem requires reloading.
 *   :doc:`plugins/interface </development/backend/legacy>`  handles dynamic registration of new (virtual) interfaces.
 *   :doc:`plugins/syslog </development/backend/legacy>` registers syslog facilities
 *   :doc:`plugins/xmlrpc </development/backend/legacy>` registers configuration synchronisation points.

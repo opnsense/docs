@@ -12,7 +12,7 @@ licensing.
 
 22.7, nicknamed "Powerful Panther", features the upgrade to FreeBSD 13.1,
 PHP 8.0, Phalcon 5, stacked VLAN and Intel QuickAssist (QAT) support,
-DDoS protection using SYN cookies, MVC/API pages for IPsec status and
+DDoS protection using syncookies, MVC/API pages for IPsec status and
 Unbound overrides, new APCUPSD and CrowdSec plugins plus much more.
 
 LibreSSL flavour is scheduled for removal at the end of this series
@@ -281,7 +281,7 @@ Here are the full patch notes:
 * src: u3g: add more USB IDs
 * ports: libxml 2.10.3 `[15] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nss 3.84 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_84.html>`__ 
-* ports: openssl 1.1.1s `[17] <https://www.openssl.org/news/openssl-1.1.1-notes.html>`__ 
+* ports: openssl 1.1.1s `[17] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.5.8 `[18] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.8>`__ 
 * ports: phalcon 5.1.0 `[19] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.0>`__ 
 * ports: php 8.0.25 `[20] <https://www.php.net/ChangeLog-8.php#8.0.25>`__ 
@@ -617,7 +617,7 @@ Here are the full patch notes:
 * plugins: os-nginx 1.29 `[6] <https://github.com/opnsense/plugins/blob/stable/22.7/www/nginx/pkg-descr>`__ 
 * ports: libxml 2.9.14 `[7] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nss 3.81 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_81.html>`__ 
-* ports: rrdtool 1.8.0 `[9] <https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES>`__ 
+* ports: rrdtool 1.8.0 `[9] <https://github.com/oetiker/rrdtool-1.x/releases/tag/v1.8.0>`__ 
 * ports: unbound 1.16.2 `[10] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-2>`__ 
 
 
@@ -635,7 +635,7 @@ licensing.
 
 22.7, nicknamed "Powerful Panther", features the upgrade to FreeBSD 13.1,
 PHP 8.0, Phalcon 5, stacked VLAN and Intel QuickAssist (QAT) support,
-DDoS protection using SYN cookies, MVC/API pages for IPsec status and
+DDoS protection using syncookies, MVC/API pages for IPsec status and
 Unbound overrides, new APCUPSD and CrowdSec plugins plus much more.
 
 LibreSSL flavour is scheduled for removal at the end of this series

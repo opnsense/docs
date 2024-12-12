@@ -78,18 +78,6 @@ interruption when the primary becomes unavailable.
 Virtual IPs of the type CARP (:doc:`/manual/firewall_vip`) are required for this feature.
 
 ............................
-Synchronized state tables
-............................
-
-The firewall’s state table is replicated to all failover configured firewalls.
-This means the existing connections will be maintained in case of a failure,
-which is important to prevent network disruptions.
-
-.. Note::
-    As of OPNsense version 24.7 a "Sync compatibility" selector is offered in the high availability settings page.
-    Make sure both nodes use the same version to prevent state synchronization issues.
-
-............................
 Disable preempt
 ............................
 
@@ -102,6 +90,23 @@ Disconnect dialup interfaces
 .................................
 
 When this device is configured as CARP backup it will disconnect all PPP type interfaces and try to reconnect them when becoming master again.
+
+............................
+Synchronize all states via
+............................
+
+The firewall state table can replicated to all failover configured firewalls.
+This means the existing connections will be maintained in case of a failure,
+which is important to prevent network disruptions.
+
+To enable the feature, select an interface for state table communication.
+Best choose a dedicated interface for this type of communication to prevent
+manipulation of states causing security issues or intermittent state loss
+in traffic congestion scenarios.
+
+.. Note::
+    As of OPNsense version 24.7 a "Sync compatibility" selector is offered in the high availability settings page.
+    Make sure both nodes use the same version to prevent state synchronization issues.
 
 .................................
 Configuration synchronization

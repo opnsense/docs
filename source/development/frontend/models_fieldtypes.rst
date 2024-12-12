@@ -240,7 +240,7 @@ Check if hostnames are valid, includes the following options:
 IntegerField
 ------------------------------------
 
-Validate if the input contains an integere value, optionally constrained by minimum and maximum values.
+Validate if the input contains an integer value, optionally constrained by minimum and maximum values.
 
 .. csv-table:: EmailField
    :header: "Parameter", "Options", "Purpose"
@@ -526,7 +526,7 @@ generates :code:`<optgroup>`  clauses in our model. As of 24.1 they can be defin
 PortField
 ------------------------------------
 
-Check if the input contains a valid portnumber or (optionally) predefined service name. Can be a range when
+Check if the input contains a valid port number or (optionally) predefined service name. Can be a range when
 :code:`EnableRanges` is set to :code:`Y`.
 
 
@@ -540,7 +540,7 @@ Check if the input contains a valid portnumber or (optionally) predefined servic
    "BlankDesc", ":code:`text`", "Set a label for the empty option"
    "Multiple", "Y,N", "Allow to select multiple options, when set the type is treated as a list"
    "EnableWellKnown", "Y,N", "Allow the usage of well known names such as 'http' and 'ssh'"
-   "EnableRanges", "Y,N", "Allow the usa of ranges, such as :code:`80:100`"
+   "EnableRanges", "Y,N", "Allow the usage of ranges, such as :code:`80:100`"
 
 
 ProtocolField

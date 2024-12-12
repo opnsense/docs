@@ -29,6 +29,7 @@ Ipsec
     "``POST``","ipsec","connections","setConnection","$uuid=null"
     "``POST``","ipsec","connections","setLocal","$uuid=null"
     "``POST``","ipsec","connections","setRemote","$uuid=null"
+    "``GET``","ipsec","connections","swanctl",""
     "``POST``","ipsec","connections","toggle","$enabled=null"
     "``POST``","ipsec","connections","toggleChild","$uuid,$enabled=null"
     "``POST``","ipsec","connections","toggleConnection","$uuid,$enabled=null"
@@ -137,6 +138,16 @@ Ipsec
     "``POST``","ipsec","sessions","disconnect","$id"
     "``GET``","ipsec","sessions","searchPhase1",""
     "``GET``","ipsec","sessions","searchPhase2",""
+
+.. csv-table:: Resources (SettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","ipsec","settings","get",""
+    "``GET``","ipsec","settings","get",""
+    "``POST``","ipsec","settings","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `IPsec.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IPsec/IPsec.xml>`__"
 
 .. csv-table:: Resources (SpdController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

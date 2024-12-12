@@ -81,37 +81,23 @@ Preparations
 Trust
 .....................
 
+In order to setup a tunnel on both ends, we need to configure certificates to warrant trust between both machines.
+We need a root CA that issues two leaf certificates, one for this server and one for a user.
 
-In order to setup a tunnel on both ends, we need to configure certificates to warrant trust between the client and this server.
+Create a certificate chain using the following tutorial:
 
-* First we need an **Authority** which we are going to create in :menuselection:`System --> Trust --> Authorities`
+`Setup Self-Signed Certificate Chains </manual/how-tos/self-signed-chain.html>`_
 
-   * Select `Create an internal Certificate Authority`
-   * Choose cryptographic settings and a lifetime (you may want to increase the default as after this time you do need to redistribute certificates to both server and client).
-   * Add descriptive information for this CA (`Descriptive name`, `City`, `Email`, ..`)
-   * Set the `Common Name` to something descriptive for this certificate, like "Office-ovpn"
+- `Root CA`: ``SSL VPN CA``
+- `Leaf Certificate - Type Server`: Set the `Common Name` to the FQDN of this machine.
+- `Leaf Certificate - Type Client`: Create a user with the same username as this certificates `Common Name`.
 
-
-*  Next generate a **Certficate** for the server using :menuselection:`System --> Trust --> Certificates`
-
-   * Select  `Create an internal Certificate`
-   * Choose the just created authority in `Certificate authority`
-   * Add descriptive information for this CA (`Descriptive name`, whereabouts are copied from the CA)
-   * Set Type to `Server`
-   * Choose cryptographic settings, lifetime determines the validaty of the server certificate (you do need to track this yourself), it's allow to choose a longer period here
-   * Set the `Common Name` to the fqdn of this machine.
-
-* For the client pc we will create a user and a certificate, from the :menuselection:`System --> Access --> Users` menu.
-
-   * Hit the [+] sign to create a new user, for this test we will call it :code:`test1`
-   * Check the "Certificate -> Click to create a user certificate" option and hit "save"
-   * Next step in the certificate window, select "`Create an internal Certificate`" and "save"
-
+The root CA issues the leaf certificates directly; we do not need an intermediate CA.
 
 .. Note::
 
-      It's a best practice to offer each user it's own certificate using the same common name as the username, although
-      it is also possible to clients to share a certificate. When adding a certificate from the user manager the CN is automatically
+      It is best practice to offer each user their own certificate using the same common name as the username, although
+      it is also possible for clients to share a certificate. When adding a certificate from the user manager the CN is automatically
       set to its name. In this example we will only authenticate using the certificate, no additional user or password will be required.
 
 

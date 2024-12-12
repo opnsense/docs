@@ -192,17 +192,13 @@ of restart and reload is subject to their respective services as not all softwar
 
 The most common core commands are as follows:
 
-
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Command in GUI                              | Command in shell                       | Supported parameters    | Background information                      |
 +=============================================+========================================+=========================+=============================================+
-| Update and reload firewall aliases          | configctl filter refresh_aliases       | No parameters           | Updates IP aliases for DNS entries and MAC  |
-|                                             |                                        |                         | addresses as well as URL tables.            |
+| Automatic firmware update                   | configctl firmware auto-update         | No parameters           | Perform a minor update if applicable.       |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Firmware update check                       | configctl firmware poll                | No parameters           | Refresh current update status from firmware |
-|                                             |                                        |                         | mirror for e.g. remote status check via     |
-|                                             |                                        |                         | API. Note this utilizes a skew interval of  |
-|                                             |                                        |                         | 25 minutes.                                 |
+| Download and reload external proxy ACLs     | configctl proxy fetchacls              | No parameters           | Fetch and activate the external ACL files   |
+|                                             |                                        |                         | for configured blocklists.                  |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Firmware changelog update                   | configctl firmware changelog cron      | No parameters           | Refresh current changelog status from       |
 |                                             |                                        |                         | authoritative firmware location to preview  |
@@ -211,10 +207,20 @@ The most common core commands are as follows:
 |                                             |                                        |                         | is also performed by the firmware update    |
 |                                             |                                        |                         | check.                                      |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Automatic firmware update                   | configctl firmware auto-update         | No parameters           | Perform a minor update if applicable.       |
+| Firmware update check                       | configctl firmware poll                | No parameters           | Refresh current update status from firmware |
+|                                             |                                        |                         | mirror for e.g. remote status check via     |
+|                                             |                                        |                         | API. Note this utilizes a skew interval of  |
+|                                             |                                        |                         | 25 minutes.                                 |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Update and reload intrusion detection rules | configctl ids update                   | No parameters           | Fetches remote rules and reloads the IDS    |
-|                                             |                                        |                         | instance to make use of newly fetched rules.|
+| HA update and reconfigure backup            | configctl system ha_reconfigure_backup | No parameters           | Synchronize the configuration to the backup |
+|                                             |                                        |                         | firewall and restart its services to apply  |
+|                                             |                                        |                         | the changes.                                |
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
+| Issue a reboot                              | configctl system reboot                | No parameters           | Perform a reboot at the specified time.     |
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
+| Manual gateway switch                       | configctl interface routes alarm       | No parameters           | Perform a manual gateway switch if          |
+|                                             |                                        |                         | applicable.  Malfunctioning gateway         |
+|                                             |                                        |                         | monitors will be restarted as well          |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Periodic interface reset                    | configctl interface reconfigure        | identifier: Internal    | Cycle through an interface reset that       |
 |                                             | [identifier]                           | name of the interface   | removes all connectivity and reactivates    |
@@ -222,17 +228,14 @@ The most common core commands are as follows:
 |                                             |                                        | or overview page, e.g.  |                                             |
 |                                             |                                        | "lan", "wan", "optX".   |                                             |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Download and reload external proxy ACLs     | configctl proxy fetchacls              | No parameters           | Fetch and activate the external ACL files   |
-|                                             |                                        |                         | for configured blocklists.                  |
-+---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Remote backup                               | configctl system remote backup         | No parameters           | Trigger the remote backup at the specified  |
 |                                             |                                        |                         | time as opposed to its nightly default.     |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Issue a reboot                              | configctl system reboot                | No parameters           | Perform a reboot at the specified time.     |
+| Update and reload firewall aliases          | configctl filter refresh_aliases       | No parameters           | Updates IP aliases for DNS entries and MAC  |
+|                                             |                                        |                         | addresses as well as URL tables.            |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| HA update and reconfigure backup            | configctl system ha_reconfigure_backup | No parameters           | Synchronize the configuration to the backup |
-|                                             |                                        |                         | firewall and restart its services to apply  |
-|                                             |                                        |                         | the changes.                                |
+| Update and reload intrusion detection rules | configctl ids update                   | No parameters           | Fetches remote rules and reloads the IDS    |
+|                                             |                                        |                         | instance to make use of newly fetched rules.|
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Update Unbound DNSBLs                       | configctl unbound dnsbl                | No parameters           | Update the the DNS blocklists and apply the |
 |                                             |                                        |                         | changes to Unbound.                         |
