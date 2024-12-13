@@ -59,8 +59,9 @@ select it and hit the '+' button to add an assignment, then click Save.
 
 **Step Five**
 -----------------
-Select :menuselection:`Interfaces --> Other Types --> Bridge` and add the interface created in Step Four to the bridge
-and Save, remember to check the new interface and ensure it is enabled as in Step Two.
+Select :menuselection:`Interfaces --> Other Types --> Bridge` and add the interface created in Step Four to the bridge. Also check 
+`Enable link-local address` checkbox in case you are using IPv6 and press Save.  
+Remember to check the new interface and ensure it is enabled as in Step Two.
 
 .. image:: images/lan_bridge_4.png
 	:width: 100%
