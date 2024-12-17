@@ -24,6 +24,10 @@ https://downloads.opnsense.com/
 This business release is based on the OPNsense 24.7.9 community version
 with additional reliability improvements.
 
+We subsequently republished the images as 24.10.1 due to CRL verification
+issues in the initial 24.10 version which were quickly hotfixed, but could
+not easily be fixed in the existing images.
+
 Here are the full patch notes:
 
 * system: remove obsolete banners from static pages
@@ -110,6 +114,13 @@ Here are the full patch notes:
 * ports: unbound 1.22.0 `[19] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-22-0>`__ 
 
 
+
+.. code-block::
+
+    # SHA256 (OPNsense-business-24.10.1-dvd-amd64.iso.bz2) = 9ced7c07d7d1c1a09995158f7c0184493e56c1fcae0ddefcbc7803320dd7bf4a
+    # SHA256 (OPNsense-business-24.10.1-nano-amd64.img.bz2) = 074e89625ba5e15dfa180594243d6a8390d7183e2cc50baf0989218f9f5b19f5
+    # SHA256 (OPNsense-business-24.10.1-serial-amd64.img.bz2) = 64d55fa0b71b5d13845e35ee8c234b879d7d99d1abc3291054dca6d01194613a
+    # SHA256 (OPNsense-business-24.10.1-vga-amd64.img.bz2) = 80d81ba9bc4455e5fe08b20276bd4ddc52c082ea40dd55ccfc7b3d7ba4b0fab5
 
 --------------------------------------------------------------------------
 24.10 (October 17, 2024)

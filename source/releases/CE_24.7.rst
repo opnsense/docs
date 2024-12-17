@@ -31,6 +31,54 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.7.11 (December 17, 2024)
+--------------------------------------------------------------------------
+
+
+This is a minor update all things considered, but it does bring you
+the long sought after Tailscale plugin courtesy of Sheridan Computers.
+Suricata is also updated to its latest version to fix a couple of CVEs.
+
+In other news, 25.1 will contain FreeBSD 14.2 which will be available
+for BETA preview using images later this week as well.  The 25.1-BETA
+will also include a rewritten theme (light and dark) using the new
+OPNsense logo already being used in the documentation.  It also has
+MVC/API support for the user and group management plus more you can
+always find on the roadmap `[1] <https://opnsense.org/about/road-map/>`__  in detail.
+
+Here are the full patch notes:
+
+* system: show multiple SAN entries when supplied by the certificate
+* system: traffic dashboard widget should persist interface identifiers
+* system: reset dashboard widget options to the default if none of the options match
+* system: mismatch in returned "change" attribute for route toggle
+* system: suppress XML parse errors in announcement widget when forum is unreachable
+* system: catch PHP errors for Google Drive backups
+* system: ignore plugins_interfaces() errors in write_config()
+* system: fix snapshot ACL
+* interfaces: reload GUI in the background
+* firewall: remove faulty PPP exclusion in scrubbing rule creation
+* dhcp: allow radvd to use /128 CARP VIP as source
+* firmware: add "configctl firmware changelog current" backend command
+* firmware: refactor lock/unlock scripts using new output helpers
+* firmware: opnsense-code: support for origin selection during upgrade mode
+* firmware: opnsense-patch: improve patch behaviour for non-default account/repositories combinations
+* ipsec: remove hashing algorithm from null cipher
+* unbound: make OpenSSL bundle workaround permanent
+* mvc: last batch of sessionClose() cleanups in controllers
+* mvc: call initialize() after authentication
+* mvc: normalize multiple slashes in paths
+* plugins: os-caddy 1.7.6 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* plugins: os-ddclient 1.26 `[3] <https://github.com/opnsense/plugins/blob/stable/24.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-nut 1.9 `[4] <https://github.com/opnsense/plugins/blob/stable/24.7/sysutils/nut/pkg-descr>`__ 
+* plugins: os-qemu-guest-agent 1.3 `[5] <https://github.com/opnsense/plugins/blob/stable/24.7/emulators/qemu-guest-agent/pkg-descr>`__ 
+* plugins: os-tailscale 1.0 (contributed by Sheridan Computers)
+* plugins: os-telegraf 1.12.12 `[6] <https://github.com/opnsense/plugins/blob/stable/24.7/net-mgmt/telegraf/pkg-descr>`__ 
+* ports: monit 5.34.3 `[7] <https://mmonit.com/monit/changes/>`__ 
+* ports: suricata 7.0.8 `[8] <https://suricata.io/2024/12/12/suricata-7-0-8-released/>`__ 
+
+
+--------------------------------------------------------------------------
 24.7.10 (December 03, 2024)
 --------------------------------------------------------------------------
 
