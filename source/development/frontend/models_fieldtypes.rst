@@ -413,6 +413,7 @@ To display multiple fields, the :code:`display_format` is required.
    "default", ":code:`text`", "Default value for new attributes"
    "display", ":code:`text`", "Comma separated list of fields to display"
    "display_format", ":code:`text`", ":code:`vsprintf()` format string"
+   "filters",":code:`xml`",":code:`regex` filters to apply on the dataset, name of the tag is the attribute name, content is used for the regex"
    "Required", "Y,N", "Mark field as required"
    "ValidationMessage", ":code:`text`", "Error message on validation failure"
    "BlankDesc", ":code:`text`", "Set a label for the empty option"
