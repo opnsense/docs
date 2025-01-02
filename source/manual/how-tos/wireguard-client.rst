@@ -269,7 +269,7 @@ Client configuration is largely beyond the scope of this how-to since there is s
      **[Interface]**
      **Address**            *Refers to the IP(s) specified as Allowed IPs in the Peer configuration on OPNsense. For example, 10.10.10.2/32*
      **PrivateKey**         *Refers to the private key that (along with a public key) needs to be manually or automatically generated on the client. The corresponding public key must then be copied into the Peer configuration on OPNsense for the relevant client peer - see Step 2*
-     **DNS**                *Refers to the DNS servers that the client should use for the tunnel - see note below*
+     **DNS**                *Refers to the DNS servers that the client should use for the tunnel (see note below). For example, 10.10.10.1*
 
      **[Peer]**
      **PublicKey**          *Refers to the public key that is generated on OPNsense. Copy the public key from the Instance configuration on OPNsense - see Step 1*
