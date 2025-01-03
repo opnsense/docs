@@ -50,7 +50,7 @@ Step 2 - Configure the client peer
 
 .. Tip::
 
-    Peers can be generated using the new peer generator feature under :menuselection:`VPN --> WireGuard --> Peer generator`. If using the peer generator and Unbound DNS, fill the DNS server with the tunnel address (eg* :code:`10.10.10.1` *).
+    Peers can be generated using the new peer generator feature under :menuselection:`VPN --> WireGuard --> Peer generator`. If using the peer generator and require Unbound DNS to serve names, fill the DNS server with the tunnel address (eg* :code:`10.10.10.1` *).
 
 - Go to :menuselection:`VPN --> WireGuard --> Peers`
 - Click **+** to add a new Peer
