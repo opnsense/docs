@@ -311,6 +311,12 @@ property of the table, which offers the ability to show an alert after changes. 
     requests or responses as being exchanged with the server. The available options are described `here <http://www.jquery-bootgrid.com/Documentation#table>`__.
 
 
+.. Tip::
+
+    The UIBootgrid wrapper also offers two properties in :code:`options` to ease bootgrid loading with URL parameters for search & edit functionality on page load.
+    To do this, you can set :code:`initialSearchPhrase` to a value, or use :code:`triggerEditFor`, which is expected to point to a UUID.
+    OPNsense exposes :code:`getUrlHash(<key>)` to help with this and will return a value if the URL contains i.e. :code:`#search=value` or :code:`#edit=value`.
+
 ----------------------------
 $.SimpleFileUploadDlg
 ----------------------------
