@@ -208,6 +208,7 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
     **Rekey time:**                                 2400
     **DPD delay:**                                  30
     **Pools:**                                      ``pool-roadwarrior-ipv4`` ``pool-roadwarrior-ipv6``
+    **Send certificate:**                           Always
     **Keyingtries:**                                0
     **Description:**                                roadwarrior-eap-mschapv2-p1
     ==============================================  ====================================================================================================
