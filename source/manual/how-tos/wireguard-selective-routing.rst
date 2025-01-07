@@ -256,7 +256,7 @@ Step 11 - Add a kill switch (optional)
 
 If the VPN tunnel gateway goes offline, then traffic intended for the VPN may go out the normal WAN gateway. There are a couple of ways to avoid this, one of which is outlined here:
 
-- First, go back to the firewall rule you created under Step 7
+- First, go back to the firewall rule you created under Step 8
 - Click on the **Show/Hide** button next to "Advanced Options"
 - Then, in the **Set local tag** field, add :code:`NO_WAN_EGRESS`
 - **Save** the rule, and then click **Apply changes**
