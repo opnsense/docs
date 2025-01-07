@@ -71,8 +71,6 @@ Create a certificate chain using the following tutorial:
 - `Root CA`: ``IPsec CA``
 - `Leaf Certificate`: ``vpn1.example.com``
 
-The root CA issues the leaf certificate directly; we do not need an intermediate CA.
-
 
 External DNS Records
 --------------------
@@ -81,6 +79,8 @@ Your OPNsense Firewall has the example IP Subnets ``203.0.113.0/24`` and ``2001:
 
 - Create an A-Record with your external DNS provider, for example ``vpn1.example.com in A 203.0.113.1``
 - Create an AAAA-Record, for example ``vpn1.example.com in AAAA 2001:db8:1234::1``
+
+The DNS records must be resolvable from the internet, and they should point to the public IP address of your OPNsense Firewall.
 
 
 Firewall: Aliases
@@ -179,12 +179,14 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
 
     ==============================================  ====================================================================================================
     **Local Identifier:**                           ``john@vpn1.example.com``
+    **Remote Identifier:**                          ``vpn1.example.com`` (optional, needed for native android client, if it causes issues remove it)
     **Pre-Shared Key:**                             ``48o72g3h4ro8123g8r``
     **Type:**                                       EAP
     ==============================================  ====================================================================================================
     
     ==============================================  ====================================================================================================
     **Local Identifier:**                           ``laura@vpn1.example.com``
+    **Remote Identifier:**                          ``vpn1.example.com``
     **Pre-Shared Key:**                             ``LIUAHSDq2nak!12``
     **Type:**                                       EAP
     ==============================================  ====================================================================================================
@@ -205,7 +207,7 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
     **Version:**                                    IKEv2
     **Local addresses:**                            ``vpn1.example.com``
     **UDP encapsulation:**                          X
-    **Rekey time:**                                 2400
+    **Rekey time:**                                 ``2400`` for most clients - Or ``86400`` when using Windows native VPN client
     **DPD delay:**                                  30
     **Pools:**                                      ``pool-roadwarrior-ipv4`` ``pool-roadwarrior-ipv6``
     **Send certificate:**                           Always
@@ -239,10 +241,10 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
 Press **+** to add a new Child, enable **advanced mode** with the toggle.
 
     ==============================================  ====================================================================================================
-    **Start action:**                               Trap
+    **Start action:**                               ``None``
     **ESP proposals:**                              aes256-sha256-modp2048  (Disable default!)
     **Local:**                                      ``0.0.0.0/0`` ``::/0``
-    **Rekey time (s):**                             600
+    **Rekey time (s):**                             ``600`` for most clients - Or ``0`` when using Windows native VPN client
     **Description:**                                roadwarrior-eap-mschapv2-p2
     ==============================================  ====================================================================================================
 
@@ -305,12 +307,14 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
 
     ==============================================  ====================================================================================================
     **Local Identifier:**                           ``john@vpn1.example.com``
+    **Remote Identifier:**                          ``vpn1.example.com`` (optional, needed for native android client, if it causes issues remove it)
     **Pre-Shared Key:**                             ``48o72g3h4ro8123g8r``
     **Type:**                                       EAP
     ==============================================  ====================================================================================================
     
     ==============================================  ====================================================================================================
     **Local Identifier:**                           ``laura@vpn1.example.com``
+    **Remote Identifier:**                          ``vpn1.example.com``
     **Pre-Shared Key:**                             ``LIUAHSDq2nak!12``
     **Type:**                                       EAP
     ==============================================  ====================================================================================================
@@ -335,7 +339,7 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
     **Version:**                                    IKEv2
     **Local addresses:**                            ``vpn1.example.com``
     **UDP encapsulation:**                          X
-    **Rekey time:**                                 2400
+    **Rekey time:**                                 ``2400`` for most clients - Or ``86400`` when using Windows native VPN client
     **DPD delay:**                                  30
     **Pools:**                                      ``pool-roadwarrior-john-ipv4`` ``pool-roadwarrior-john-ipv6``
     **Keyingtries:**                                0
@@ -368,10 +372,10 @@ Create EAP Pre-Shared Keys. The local identifier is the username, and the Pre-Sh
 Press **+** to add a new Child, enable **advanced mode** with the toggle.
 
     ==============================================  ====================================================================================================
-    **Start action:**                               Trap
+    **Start action:**                               ``None``
     **ESP proposals:**                              aes256-sha256-modp2048  (Disable default!)
     **Local:**                                      ``0.0.0.0/0`` ``::/0``
-    **Rekey time (s):**                             600
+    **Rekey time (s):**                             ``600`` for most clients - Or ``0`` when using Windows native VPN client
     **Description:**                                roadwarrior-john-eap-mschapv2-p2
     ==============================================  ====================================================================================================
 
@@ -392,7 +396,7 @@ Press **+** to add a new Child, enable **advanced mode** with the toggle.
     **Version:**                                    IKEv2
     **Local addresses:**                            ``vpn1.example.com``
     **UDP encapsulation:**                          X
-    **Rekey time:**                                 2400
+    **Rekey time:**                                 ``2400`` for most clients - Or ``86400`` when using Windows native VPN client
     **DPD delay:**                                  30
     **Pools:**                                      ``pool-roadwarrior-laura-ipv4`` ``pool-roadwarrior-laura-ipv6``
     **Keyingtries:**                                0
@@ -425,10 +429,10 @@ Press **+** to add a new Child, enable **advanced mode** with the toggle.
 Press **+** to add a new Child, enable **advanced mode** with the toggle.
 
     ==============================================  ====================================================================================================
-    **Start action:**                               Trap
+    **Start action:**                               ``None``
     **ESP proposals:**                              aes256-sha256-modp2048  (Disable default!)
     **Local:**                                      ``0.0.0.0/0`` ``::/0``
-    **Rekey time (s):**                             600
+    **Rekey time (s):**                             ``600`` for most clients - Or ``0`` when using Windows native VPN client
     **Description:**                                roadwarrior-laura-eap-mschapv2-p2
     ==============================================  ====================================================================================================
 
@@ -652,9 +656,22 @@ Windows 10/11 native VPN client
     
     Set-VpnConnection -Name "vpn1.example.com" -SplitTunneling $true
 
-.. Note::
-    If you use Split Tunneling, you have to set all routes manually. For users without admin rights, they have to be added to the "Network Configuration Operators" built-in group.
-    Example Route (can be batched): ``route add 192.168.1.0 mask 255.255.255.0 172.16.203.254``
+
+If you use Split Tunneling, you must set routes manually. You can use the Powershell command ``Add-VpnConnectionRoute`` to add routes:
+
+.. code-block::
+
+    # Add IPv4 route
+    Add-VpnConnectionRoute -ConnectionName 'vpn1.example.com' -DestinationPrefix '192.168.1.0/24' -PassThru
+
+    # Add IPv6 route
+    Add-VpnConnectionRoute -ConnectionName 'vpn1.example.com' -DestinationPrefix 'fe0d:abcd:1234:cafe::/64' -PassThru
+
+    # Get corresponding route with VPN connection
+    (Get-VpnConnection -ConnectionName 'vpn1.example.com').routes
+
+    # Remove associate route
+    Remove-VpnConnectionRoute -ConnectionName 'vpn1.example.com' -DestinationPrefix '192.168.1.0/24' -PassThru
 
 - Import the CA certificate into the Windows certificate store, please note that you have to be admin for this action:
 
@@ -727,6 +744,23 @@ Android StrongSwan VPN client
     - IPsec/ESP Algorithms: aes256-sha256-modp2048
 
 - You can start the new profile and it should connect. If not, check the Logfile for the error message.
+
+Android native VPN client
+-----------------------------
+
+- Import the self-signed CA certificate into the Android certificate store.
+- Create a new VPN network.
+
+    - Name: ``vpn1.example.com``
+    - Type: ``IKEv2/IPSec MSCHAPv2```
+    - Server address: ``vpn1.example.com``
+    - IPSec identifier: leave empty
+    - IPSec CA certificate: ``CN=IPsec CA ...``
+    - IPSec server certificate: ``Received from server``
+    - Username: ``john@vpn1.example.com``
+    - Password: ``48o72g3h4ro8123g8r``
+
+.. Note:: On the IPsec server, the local EAP identifier must be the username, and the remote EAP identifier must be the server address. Otherwise the authentication round will fail.
 
 Windows/macOS NCP Secure Entry client
 -------------------------------------
