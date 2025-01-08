@@ -122,7 +122,7 @@ Step 6 - Create a gateway
 
     Specifying the endpoint VPN tunnel IP is preferable. As an alternative, you could include an external IP such as 1.1.1.1 or 8.8.8.8, but be aware that this IP will *only* be accessible through the VPN tunnel (OPNsense creates a static route for it), and therefore will not be accessible from local hosts that are not using the tunnel. Use the Disable Host Route check box if you wish to use an external IP AND it still be accessible by everything. 
 
-    Some VPN providers will include the VPN tunnel IP of the endpoint in the configuration data they provide. For others (such as Mullvad), you can get the IP by running a traceroute from a host that is using the tunnel - the first hop after OPNsense is the VPN provider's tunnel IP
+    Some VPN providers will include the VPN tunnel IP of the endpoint in the configuration data they provide. For others (such as Mullvad), you can get the IP by running a traceroute from a host that is using the tunnel - the first hop after OPNsense is the VPN provider's tunnel IP. Please note that this IP must be pingable. If the IP does not respond to ping (as is the case for Mullvad), use a different IP in the traceroute chain or disable the gateway monitoring altogether by checking the box **Disable Gateway Monitoring**.
 
 - **Save** the gateway configuration and then click **Apply changes**
 
@@ -310,6 +310,14 @@ Note, however, that there are a couple of differences:
 
   - When adding the IPv6 address to Tunnel Address in the WireGuard Instance configuration, specify a /127 mask, rather than a /128
   - Then, when creating an IPv6 Gateway for the tunnel, specify the IP address to be another IPv6 address that is within the /127 subnet of the Tunnel Address
+
+IPv6 addresses are a little more picky than IPv4 addresses when it comes to the gateway IP address. Since you selected a /127 mask, this means exactly two IP addresses fit in that mask. However, this does not always mean that the IPv6 address that was supplied to you from your VPN provider is always the first address in the /127 subnet. It could also be the second address in the mask. In either case, you need to specify the IP provided by your VPN provider with a mask of /127 as the Tunnel Address in the WireGuard configuration, and the other IP in the /127 mask will be your IPv6 Gateway address. Use a command-line tool like ipcalc to determine which one is which.
+
+For example, let's assume your VPN provider has instructed you to use the IP address fc00:bbbb:bbbb:bb01::4:fd3a/128 for your WireGuard tunnel. If you use ipcalc and change the mask to /127, you will find that the subnet fc00:bbbb:bbbb:bb01::4:fd3a/127 contains the following two addresses: fc00:bbbb:bbbb:bb01::4:fd3a and fc00:bbbb:bbbb:bb01::4:fd3b. Since you must use the address fc00:bbbb:bbbb:bb01::4:fd3a as the local address for your tunnel (as specified by your provider), configure fc00:bbbb:bbbb:bb01::4:fd3a/127 (with the /127 mask) as the local address in your WireGuard configuration page, and configure fc00:bbbb:bbbb:bb01::4:fd3b (without the /127 mask) as the IP address in your Gateway configuration page.
+
+In another case, if your VPN provider instructed you to use the IP address fc00:bbbb:bbbb:bb01::5:5277/128 for your WireGuard tunnel, ipcalc will tell you that the subnet fc00:bbbb:bbbb:bb01::5:5277/127 contains the following two addresses: fc00:bbbb:bbbb:bb01::5:5276 and fc00:bbbb:bbbb:bb01::5:5277. In this case, the higher address in the /127 subnet is your local IP, and you must use that one or the connection will not work. In this specific case, use fc00:bbbb:bbbb:bb01::5:5277/127 as the local IP address in your WireGuard VPN configuration page, and use fc00:bbbb:bbbb:bb01::5:5276 as the Gateway IP addresses.
+
+For IPv4 the gateway address can always be one number below of the IP address provider by your VPN provider, but for IPv6 you must use the other address in the /127 subnet. Depending on the address you received from your VPN provider, this can be one address below or one address above your VPN IP address.
 
 .. _dns-leaks:
 
