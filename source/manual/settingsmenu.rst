@@ -135,15 +135,15 @@ when network connectivity is not possible.
 
 
 ============================================== ========================================================================
-Use the virtual terminal driver (vt)           When unchecked, OPNsense will use the older sc driver.                |
-Primary Console                                The primary console will show boot script output. All consoles display|
-                                               OS boot messages, console messages, and the console menu.             |
-Secondary Console                              See above.                                                            |
-Serial Speed                                   Allows adjusting the baud rate. 115200 is the most common.            |
-Use USB-based serial ports                     Listen on ``/dev/ttyU0``, ``/dev/ttyU1``, … instead of ``/dev/ttyu0``.|
-Password protect the console menu              Can be unchecked to allow physical console access without password.   |
-                                               This can avoid lock-out, but at the cost of attackers being able to   |
-                                               do anything if they gain physical access to your system.              |
+Use the virtual terminal driver (vt)           When unchecked, OPNsense will use the older sc driver.
+Primary Console                                The primary console will show boot script output. All consoles display 
+                                               OS boot messages, console messages, and the console menu.
+Secondary Console                              See above.
+Serial Speed                                   Allows adjusting the baud rate. 115200 is the most common.
+Use USB-based serial ports                     Listen on ``/dev/ttyU0``, ``/dev/ttyU1``, … instead of ``/dev/ttyu0``.
+Password protect the console menu              Can be unchecked to allow physical console access without password. 
+                                               This can avoid lock-out, but at the cost of attackers being able to 
+                                               do anything if they gain physical access to your system.
 ============================================== ========================================================================
 
 
@@ -155,16 +155,16 @@ The authentication section of the Administrationm settings offers general securi
 firewall.
 
 ============================================== ========================================================================
-Server                                         Select one or more authentication servers to validate user            |
-                                               credentials against. Multiple servers can make sense with remote      |
-                                               authentication methods to provide a fallback during connectivity      |
-                                               issues. When nothing is specified the default of "Local Database"     |
-                                               is used.                                                              |
-Disable integrated authentication              When set, console login, SSH, and other system services can only use  |
-                                               standard UNIX account authentication.                                 |
-Sudo                                           Permit sudo usage for administrators with shell access.               |
-User OTP seed                                  Select groups which are allowed to generate their own OTP seed on the |
-                                               password page.                                                        |
+Server                                         Select one or more authentication servers to validate user 
+                                               credentials against. Multiple servers can make sense with remote 
+                                               authentication methods to provide a fallback during connectivity 
+                                               issues. When nothing is specified the default of "Local Database" 
+                                               is used.
+Disable integrated authentication              When set, console login, SSH, and other system services can only use 
+                                               standard UNIX account authentication.
+Sudo                                           Permit sudo usage for administrators with shell access.
+User OTP seed                                  Select groups which are allowed to generate their own OTP seed on the
+                                               password page.
 ============================================== ========================================================================
 
 
