@@ -85,7 +85,7 @@ Server Log                                     Display all web GUI errors in the
 Listen interfaces                              Can be used to limit interfaces on which the Web GUI can be accessed.
                                                This allows freeing the interface for other services, such as HAProxy.
 HTTP_REFERER enforcement check                 The origins of requests are checked in order to provide some
-                                               protection against CSRF. You can turn this off of it interferes with
+                                               protection against CSRF. You can turn this off if it interferes with
                                                external scripts that interact with the Web GUI.
 ============================================== ========================================================================
 
