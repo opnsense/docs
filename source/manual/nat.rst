@@ -91,6 +91,49 @@ Filter rule association   Associate this with a regular firewall rule.
    For example, a transparent proxy that handles HTTP traffic needs a rule that forwards traffic from TCP port 80,
    IPv4 to 127.0.0.1:3128 (in the default configuration).
 
+
+Filter rule association
+-----------------------
+
+This option controls the creation of linked filter rules in :menuselection:`Firewall --> Rules`.
+
+.. tabs::
+
+    .. tab:: Pass
+
+       An linked filter rule will be automatically added and updated. This rule cannot be seen or edited in
+       :menuselection:`Firewall --> Rules`.
+
+       .. Tip::
+
+          This option is recommended for simple setups.
+
+    .. tab:: None
+
+       Choose this if you want to create your own :menuselection:`Firewall --> Rules` manually. No linked filter rule is created.
+
+    .. tab:: Add associated filter rule
+
+       Adds a linked :menuselection:`Firewall --> Rules` rule that is automatically updated when the NAT rule is updated.
+       The created filter rule cannot be manually edited. Ensure setting a `Description` in the NAT rule, the filter rule will share it.
+       This option is the same as `Pass`, but makes the filter rule visible in :menuselection:`Firewall --> Rules`.
+
+       .. Note::
+
+          If multiple `Interfaces` are selected in the :menuselection:`Firewall --> NAT --> Port Forward` rule, the filter rule will
+          appear in :menuselection:`Firewall --> Rules --> Floating`.
+
+    .. tab:: Add unassociated filter rule
+
+       Adds a filter rule **once** that is **not** linked to the NAT rule. The created filter rule can be edited manually, it will never
+       be updated when changing the NAT rule. Ensure setting a `Description` in the NAT rule, the filter rule will set it once.
+
+       .. Note::
+
+          This option is recommended for more comple setups, like Port Forward rules on VPN interfaces.
+          The rule can be edited and features like `reply-to` disabled.
+
+
 ----------
 One-to-one
 ----------
