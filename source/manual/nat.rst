@@ -101,7 +101,7 @@ This option controls the creation of linked filter rules in :menuselection:`Fire
 
     .. tab:: Pass
 
-       An linked filter rule will be automatically added and updated. This rule cannot be seen or edited in
+       A linked filter rule will be automatically added and updated. This rule cannot be seen or edited in
        :menuselection:`Firewall --> Rules`.
 
        .. Tip::
@@ -114,7 +114,7 @@ This option controls the creation of linked filter rules in :menuselection:`Fire
 
     .. tab:: Add associated filter rule
 
-       Adds a linked :menuselection:`Firewall --> Rules` rule that is automatically updated when the NAT rule is updated.
+       Adds a linked filter rule in :menuselection:`Firewall --> Rules` that is automatically updated when the NAT rule is updated.
        The created filter rule cannot be manually edited. Ensure setting a `Description` in the NAT rule, the filter rule will share it.
        This option is the same as `Pass`, but makes the filter rule visible in :menuselection:`Firewall --> Rules`.
 
@@ -125,13 +125,13 @@ This option controls the creation of linked filter rules in :menuselection:`Fire
 
     .. tab:: Add unassociated filter rule
 
-       Adds a filter rule **once** that is **not** linked to the NAT rule. The created filter rule can be edited manually, it will never
+       Adds a filter rule **once** that is **not** linked to this NAT rule. The created filter rule can be edited manually, it will never
        be updated when changing the NAT rule. Ensure setting a `Description` in the NAT rule, the filter rule will set it once.
 
        .. Note::
 
           This option is recommended for more comple setups, like Port Forward rules on VPN interfaces.
-          The rule can be edited and features like `reply-to` disabled.
+          The filter rule can be edited and features like `reply-to` disabled.
 
 
 ----------
