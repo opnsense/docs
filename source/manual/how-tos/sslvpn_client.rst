@@ -120,6 +120,13 @@ When using other tokens you may need to change the **Token length**.
 
 Click **Save** to add the new server.
 
+.. Note::
+
+   To prompt separately for TOTP, add ``static-challenge "Enter OTP token:" 1`` to `Custom config` in
+   :menuselection:`VPN --> OpenVPN --> Client Export`. Since this is a client side option, it will not be automatically pushed. Clients must import
+   or configure it.
+   Read more about this challenge type here: `"--static-challenge args" <https://openvpn.net/community-resources/reference-manual-for-openvpn-2-6/>`_
+
 
 Add Certificate Authority
 -------------------------
@@ -287,7 +294,7 @@ attached users.
 macOS & Windows
 -----------------
 For macOS & Windows users we recommend using Viscosity from Sparklabs (https://www.sparklabs.com/viscosity/).
-Viscosity is very easy to setup and use and works well on both platforms.
+Viscosity is very easy to setup and works well on both platforms.
 
 Go to :menuselection:`VPN --> OpenVPN --> Client Export` and select the newly created VPN server from
 the list. Leave everything default and Download the **Viscosity** type from the
@@ -296,6 +303,10 @@ list of export options under **Export type**.
 Now on your Mac or Windows PC unpack the bundle and import the Viscosity.visc file.
 Double clicking it should be enough to get it imported. When asked for an application
 to open the file with search and select Viscosity.
+
+.. Note::
+
+   If users should be prompted separately for TOTP, add the following option: `"static-challenge-password" <https://www.sparklabs.com/support/kb/article/advanced-configuration-commands/#static-challenge-password>`_
 
 Some sample screenshots (macOS):
 
