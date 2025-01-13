@@ -120,6 +120,17 @@ Host key algorithms                            Specifies the host key algorithms
 Public key signature algorithms                The signature algorithms that are used for public key authentication
 ============================================== ========================================================================
 
+.................................
+Secure Shell - Advanced Settings
+.................................
+
+To configure options that are not available in the gui one can add custom configuration files on the firewall itself.
+Files can be added in :code:`/usr/local/etc/ssh/sshd_config.d/`. The extension of the file does not matter - all are included.
+When more files are placed inside the directory, they will be included in alphabetical order.
+
+.. Warning::
+    It is the sole responsibility of the administrator which places a file in the extension directory to ensure that the configuration is
+    valid. No configuration checks will be performed and any errors may prevent you being able to login to the firewall remotely!
 
 
 ...............................
