@@ -124,7 +124,7 @@ Public key signature algorithms                The signature algorithms that are
 Secure Shell - Advanced Settings
 .................................
 
-To configure options that are not available in the gui one can add custom configuration files on the firewall itself.
+To configure options that are not available in the GUI one can add custom configuration files on the firewall itself.
 Files can be added in :code:`/usr/local/etc/ssh/sshd_config.d/` using the :code:`.conf` file extension.
 When more files are placed inside the directory, they will be included in alphabetical order.
 
