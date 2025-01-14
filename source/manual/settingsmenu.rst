@@ -125,7 +125,7 @@ Secure Shell - Advanced Settings
 .................................
 
 To configure options that are not available in the gui one can add custom configuration files on the firewall itself.
-Files can be added in :code:`/usr/local/etc/ssh/sshd_config.d/`. The extension of the file does not matter - all are included.
+Files can be added in :code:`/usr/local/etc/ssh/sshd_config.d/` using the :code:`.conf` file extension.
 When more files are placed inside the directory, they will be included in alphabetical order.
 
 .. Warning::
