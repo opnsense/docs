@@ -129,7 +129,7 @@ Files can be added in :code:`/usr/local/etc/ssh/sshd_config.d/`. The extension o
 When more files are placed inside the directory, they will be included in alphabetical order.
 
 .. Warning::
-    It is the sole responsibility of the administrator which places a file in the extension directory to ensure that the configuration is
+    It is the responsibility of the administrator to ensure that the configuration is
     valid. No configuration checks will be performed and any errors may prevent you being able to login to the firewall remotely!
 
 
