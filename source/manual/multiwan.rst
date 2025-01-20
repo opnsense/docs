@@ -31,7 +31,7 @@ The technology used to offer multiwan is called "policy based routing" or "sourc
 Terminology
 ------------------------
 
-When configuring gatew groups, there is a limited number of options and terms being used. Besides the name
+When configuring gateway groups, there is a limited number of options and terms being used. Besides the name
 of the group, one can find the following terms on the page:
 
 =====================================================================================================================
