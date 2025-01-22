@@ -334,13 +334,8 @@ OISD - Domain Blocklist NSFW*         https://nsfw.oisd.nl/domainswild
 Blocklist.site                        https://github.com/blocklistproject/Lists
 EasyList                              https://v.firebog.net/hosts/Easylist.txt
 Easyprivacy                           https://v.firebog.net/hosts/Easyprivacy.txt
-NoCoin List                           https://github.com/hoshsadiq/adblock-nocoin-list/
-PornTop1M List                        https://github.com/chadmayfield/my-pihole-blocklists
-Simple Ad List                        https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
-Simple Tracker List                   https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
-StevenBlack/hosts                     https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
-WindowsSpyBlocker                     https://github.com/crazy-max/WindowsSpyBlocker
 YoYo List                             https://pgl.yoyo.org/adservers/
+hagezi - [multiple lists]             https://github.com/hagezi/dns-blocklists
 ====================================  ===============================================================================
 
 .. Note::
