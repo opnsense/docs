@@ -34,6 +34,7 @@ Trust
     "``*``","trust","cert","search",""
     "``POST``","trust","cert","set","$uuid=null"
     "``POST``","trust","cert","set",""
+    "``GET``","trust","cert","userList",""
 
     "``<<uses>>``", "", "", "", "*model* `Cert.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Trust/Cert.xml>`__"
 
