@@ -85,12 +85,14 @@ Quagga
     "``GET``","quagga","diagnostics","searchOspfv3database",""
     "``GET``","quagga","diagnostics","searchOspfv3route","$format=""json"""
 
-.. csv-table:: Resources (GeneralController.php)
+.. csv-table:: Service (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","quagga","general","get",""
     "``POST``","quagga","general","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net/frr/src/opnsense/mvc/app/models/OPNsense/Quagga/General.xml>`__"
 
 .. csv-table:: Resources (Ospf6settingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -176,6 +178,8 @@ Quagga
     "``POST``","quagga","service","start",""
     "``GET``","quagga","service","status",""
     "``POST``","quagga","service","stop",""
+
+    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net/frr/src/opnsense/mvc/app/models/OPNsense/Quagga/General.xml>`__"
 
 .. csv-table:: Resources (StaticController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
