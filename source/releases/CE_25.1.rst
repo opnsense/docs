@@ -1,0 +1,386 @@
+===========================================================================================
+25.1  "Ultimate Unicorn" Series
+===========================================================================================
+
+
+
+For an entire decade now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+25.1, nicknamed "Ultimate Unicorn", features numerous MVC/API conversions,
+improved security zones support and documentation, ZFS snapshot support,
+a new UI look with a light and dark theme, PHP 8.3, FreeBSD 14.2 plus much
+more.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/25.1/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/25.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/25.1/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/25.1/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/25.1/
+* Full mirror list: https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+25.1 (January 29, 2025)
+--------------------------------------------------------------------------
+
+
+For an entire decade now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+25.1, nicknamed "Ultimate Unicorn", features numerous MVC/API conversions,
+improved security zones support and documentation, ZFS snapshot support,
+a new UI look with a light and dark theme, PHP 8.3, FreeBSD 14.2 plus much
+more.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/25.1/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/25.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/25.1/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/25.1/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/25.1/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes against version 24.7.12:
+
+* system: migrate user, group and privilege management to MVC/API
+* system: remove the "disable integrated authentication" feature
+* system: add "Default groups" option to add standard groups when a LDAP/RADIUS user logs in
+* system: remove the old manual LDAP importer
+* system: migrate HA status page to MVC/API
+* system: allow custom additions to sshd_config (contributed by Neil Greatorex)
+* system: increase max-request-field-size for web GUI
+* system: set tunable default for checksum offloading of the vtnet(4) driver to disabled (contributed by Patrick M. Hausen)
+* system: add support for RFC 5549 routes and refactor static route creation code
+* system: improve notification support to also allow persistent notifications and static banners
+* system: add notifications for low disk space and OpenSSH file override use
+* system: migrate tunables page to MVC/API
+* system: switch to temperature sensor caching
+* system: add certificate widget to track expiration dates and allow quick renewal
+* system: remove deprecated "page-getserviceprovider", "page-dashboard-all" and "page-system-groupmanager-addprivs" privileges
+* system: replace file_get_contents() with curl implementation in XMLRPC sync and add verifypeer option
+* system: add item edit links to several dashboard widgets
+* system: prioritize index page and prevent redirection to a /api page on login
+* system: mute disk space status in case of live install media
+* system: optimize system status collection
+* interfaces: adhere to DAD during VIP recreation in rc.newwanipv6
+* interfaces: remove non-functional features from bridges
+* interfaces: remove PPP edit in interfaces settings
+* interfaces: batched device type creation under "devices" submenu
+* interfaces: move PPP and wireless logs to system log
+* interfaces: remove "Use IPv4 connectivity" setting as it will be set by default
+* firewall: use "skip lo0" instead of policing lo0 explicitly following OpenBSD best practice
+* firewall: remove duplicate table definition and make sure bogonsv6 table always exists
+* firewall: cleanup of CARP and IPv6 rules behaviour
+* firewall: filter feature parity in automation rules
+* firewall: offer multi-select on source and destination addresses
+* firewall: add experimental inline shaper support to filter rules
+* firewall: add missing columns on one-to-one NAT page
+* firewall: fix unassociated rule creation
+* firewall: fix anti-lockout and "allow access to DHCP failover" automatic rules
+* firewall: add optional authorization for URL type aliases
+* firewall: add "URL Table in JSON format (IPs)" alias type
+* dnsmasq: update ICANN Trust Anchor (contributed by Loganaden Velvindron)
+* firmware: fix "r" abbreviation vs. version_compare();
+* installer: fixed missing prompt and help text in ZFS disk selection
+* installer: warn on low RAM for ZFS as well
+* installer: added a power off option
+* intrusion detection: policy content dropdown missing data-container
+* intrusion detection: cleanse metadata for brackets
+* ipsec: add log search button in sessions
+* ipsec: add banner message when using custom configuration files
+* kea-dhcp: add "match-client-id" in subnet definitions
+* lang: update available translations
+* monit: wrap exec in double quotes to allow arguments (contributed by Nikita Uvarov)
+* monit: flag file overwrites when they exist
+* network time: take IPv6 addresses into account
+* network time: remove support for explicit VIP selection
+* openvpn: add validation pertaining to auth-gen-token and reneg-sec combinations
+* unbound: cleanup available blocklists and add hagezi blocklists
+* unbound: fix root.hits permission on copy
+* unbound: flag file overwrites when they exist
+* backend: -m option is unused so remove its complication
+* mvc: implement reusable grid template using form definitions
+* mvc: add Default() method to reset a model to its factory defaults
+* mvc: fix LegacyMapper when the mount point is not the XML root
+* mvc: move explicit cast in BaseModel when calling field->setValue()
+* mvc: fields should implement getCurrentValue() rather than __toString()
+* mvc: fix value lookup in LinkAddressField
+* mvc: memory preservation fix in BaseListField
+* mvc: support lazy loading on alias models and use it in NetworkAliasField
+* mvc: fix NetworkValidator for IPv4-mapped addresses with netmask (contributed by John Fieber)
+* ui: upgrade Font Awesome icons to version 6
+* ui: push search/edit logic towards bootgrid implementation
+* ui: improved links with automatic edit and/or search
+* ui: rewritten default theme for a light look and new logo
+* ui: added default theme variant with a dark look
+* plugins: turning binary data into JSON may fail globally
+* plugins: os-acme-client 4.8 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-caddy 1.8.1 `[3] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* plugins: os-cpu-microcode 1.1 removes unneeded late loading code
+* plugins: os-haproxy 4.5 `[4] <https://github.com/opnsense/plugins/blob/stable/25.1/net/haproxy/pkg-descr>`__ 
+* pluginsL os-tailscale 1.2 `[5] <https://github.com/opnsense/plugins/blob/stable/25.1/security/tailscale/pkg-descr>`__ 
+* src: FreeBSD 14.2-RELEASE `[6] <https://www.freebsd.org/releases/14.2R/relnotes/>`__ 
+* src: p9fs: add an implementation of the 9P filesystem
+* ports: lighttpd 1.4.77 `[7] <https://www.lighttpd.net/2025/1/10/1.4.77/>`__ 
+* ports: openvpn 2.6.13 `[8] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.13>`__ 
+* ports: php 8.3.15 `[9] <https://www.php.net/ChangeLog-8.php#8.3.15>`__ 
+* ports: radvd 2.20 `[10] <https://radvd.litech.org/>`__ 
+
+Migration notes, known issues and limitations:
+
+* The access management was rewritten in MVC and contains behavioural changes including not rendering UNIX accounts for non-shell users. The integrated authentication via PAM has been the default for a long time so the option to disable it has been removed. The manual LDAP importer is no longer available since LDAP/RADIUS authenticators support on-demand creation and default group setup option. The "page-system-groupmanager-addprivs" privilege was removed since the page does not exist anymore. A multi-purpose privilege editor has been added under the existing "page-system-usermanager-addprivs" instead.
+* PPP devices can no longer be configured on the interface settings page. To edit the device settings use the native PPP device edit page instead.
+* FreeBSD 14.2 comes with the stock pf(4) behaviour regarding ICMPv6 neighbour discovery state tracking which was avoided so far in 24.7.x.
+* Let's Encrypt ends support for the OCSP Must Staple extension on 30.01.2025. Issuance requests will fail if this option is still enabled past this date.
+
+The public key for the 25.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsnbyFjWXvUcUC4BqnQ9w
+    # uH3yiaG7AY8UzwepXf2TqqOYt5Y0USbse3OBjxYnRs0iW5EHtdKSRcmelup374Hp
+    # XDDeQ/mjmhhnvXryfQL57gyVpYeL5gRVhf/2DwEZELLCFUFhMNh52QPaJ5zTvdws
+    # m1Q+OwI1WfTDR7ytm+0Too2tVerG3mM3XataZ+XOKwHp2xP0Mr8E4F+PZdR4hWbb
+    # yC2elIzICXDWWpcEEg4JT48TIYZJPGnE2IJAzWRntrqVU2eLcEn5MffwTawXNoCZ
+    # mvLYqguYskmeR/dAL7ZmZcPeMeibXMtld8xIZp49g7DPq7PqxCY1wxcgeuZPFOHv
+    # kbYzL3BHbyni3K/qdLXKzy8oZeUUvlbUgaj8Xx14DSiNzJDknNf0Xg/eby7MkzgP
+    # eUXgtB0MRQMih85BfaiH5r+uQMgPKnjutVWR8qUWglxDKIc4s69b8PXylfu2FwiP
+    # iKMBdO8xnVvNFKOkuaUtI31cqxauw2hBAlILFvltM+adUz2rfB3Ch0bjfjDE5Hxq
+    # En4fEUVHgQCu+Ojyyy3/8RwUpsRZq05fObypyeL3E/MvlwpaOVjwvw2ozVPGi2zi
+    # xmXemn5CbgjD3vPR9XERXrFkHTwPnIiqz53znqn34P+NGEgD1veMhZPE6OGZRu/h
+    # IfceSaxJ/An5SUh0zr7YgOsCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-25.1-dvd-amd64.iso.bz2) = 68efe0e5c20bd5fbe42918f000685ec10a1756126e37ca28f187b2ad7e5889ca
+    # SHA256 (OPNsense-25.1-nano-amd64.img.bz2) = a51e4499df6394042ad804daa8e376c291e8475860343a0a44d93d8c8cf4636e
+    # SHA256 (OPNsense-25.1-serial-amd64.img.bz2) = 57c05e935790f9b2b800a19374948284889988741cfbaf6fae7600f7a4451022
+    # SHA256 (OPNsense-25.1-vga-amd64.img.bz2) = 89fcf5bdb1d2ea2ea6ba4cdc1268ea0a1e22b944330d7bee0711c8630cc905af
+
+
+--------------------------------------------------------------------------
+25.1.r2 (January 24, 2025)
+--------------------------------------------------------------------------
+
+
+Just a small update to ship the latest changes and fixes.  The anti-lockout
+not working was finally addressed.  Thanks for all the valuable feedback on
+the forum!
+
+Here are the full patch notes against version 25.1-RC1:
+
+* system: prioritize index page and prevent redirection to a /api page on login
+* system: mute disk space status in case of live install media
+* system: optimize system status collection
+* firewall: add experimental inline shaper support to filter rules
+* firewall: add missing columns on one-to-one NAT page
+* firewall: fix unassociated rule creation
+* firewall: fix anti-lockout and "allow access to DHCP failover" automatic rules
+* firewall: add optional authorization for URL type aliases
+* installer: fixed missing prompt and help text in ZFS disk selection
+* installer: warn on low RAM for ZFS as well
+* installer: added a power off option
+* intrusion detection: policy content dropdown missing data-container
+* intrusion detection: cleanse metadata for brackets
+* ipsec: add banner message when using custom configuration files
+* monit: flag file overwrites when they exist
+* openvpn: add validation pertaining to auth-gen-token and reneg-sec combinations
+* unbound: cleanup available blocklists and add hagezi blocklists
+* unbound: flag file overwrites when they exist
+* mvc: fix NetworkValidator for IPv4-mapped addresses with netmask (contributed by John Fieber)
+* plugins: turning binary data into JSON may fail globally
+* plugins: os-caddy 1.8.1 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+
+
+
+--------------------------------------------------------------------------
+25.1.r1 (January 22, 2025)
+--------------------------------------------------------------------------
+
+
+The 25.1 series is nigh!  This offers images based on an RC1 state with
+stable packages and online upgrades for the development version of 24.7.
+We will likely release a small RC2 online update in the near future.
+The final release date for 25.1 is January 29.
+
+https://pkg.opnsense.org/releases/25.1/
+
+Here are the full patch notes against version 24.7.12:
+
+* system: migrate user, group and privilege management to MVC/API
+* system: remove the "disable integrated authentication" feature
+* system: add "Default groups" option to add standard groups when a LDAP/RADIUS user logs in
+* system: remove the old manual LDAP importer
+* system: migrate HA status page to MVC/API
+* system: allow custom additions to sshd_config (contributed by Neil Greatorex)
+* system: increase max-request-field-size for web GUI
+* system: set tunable default for checksum offloading of the vtnet(4) driver to disabled (contributed by Patrick M. Hausen)
+* system: add support for RFC 5549 routes and refactor static route creation code
+* system: improve notification support to also allow persistent notifications and static banners
+* system: add notifications for low disk space and OpenSSH file override use
+* system: migrate tunables page to MVC/API
+* system: switch to temperature sensor caching
+* system: add certificate widget to track expiration dates and allow quick renewal
+* system: remove deprecated "page-getserviceprovider", "page-dashboard-all" and "page-system-groupmanager-addprivs" privileges
+* system: replace file_get_contents() with curl implementation in XMLRPC sync and add verifypeer option
+* system: add item edit links to several dashboard widgets
+* interfaces: adhere to DAD during VIP recreation in rc.newwanipv6
+* interfaces: remove non-functional features from bridges
+* interfaces: remove PPP edit in interfaces settings
+* interfaces: batched device type creation under "devices" submenu
+* interfaces: move PPP and wireless logs to system log
+* interfaces: remove "Use IPv4 connectivity" setting as it will be set by default
+* firewall: use "skip lo0" instead of policing lo0 explicitly following OpenBSD best practice
+* firewall: remove duplicate table definition and make sure bogonsv6 table always exists
+* firewall: cleanup of CARP and IPv6 rules behaviour
+* firewall: filter feature parity in automation rules
+* firewall: experimental dummynet support in rules
+* firewall: offer multi-select on source and destination addresses
+* dnsmasq: update ICANN Trust Anchor (contributed by Loganaden Velvindron)
+* ipsec: add log search button in sessions
+* kea-dhcp: add "match-client-id" in subnet definitions
+* lang: update available translations
+* monit: wrap exec in double quotes to allow arguments (contributed by Nikita Uvarov)
+* network time: take IPv6 addresses into account
+* network time: remove support for explicit VIP selection
+* unbound: fix root.hits permission on copy
+* backend: -m option is unused so remove its complication
+* mvc: implement reusable grid template using form definitions
+* mvc: add Default() method to reset a model to its factory defaults
+* mvc: fix LegacyMapper when the mount point is not the XML root
+* mvc: move explicit cast in BaseModel when calling field->setValue()
+* mvc: fields should implement getCurrentValue() rather than __toString()
+* mvc: fix value lookup in LinkAddressField
+* mvc: memory preservation fix in BaseListField
+* mvc: support lazy loading on alias models and use it in NetworkAliasField
+* ui: upgrade Font Awesome icons to version 6
+* ui: push search/edit logic towards bootgrid implementation
+* ui: improved links with automatic edit and/or search
+* ui: rewritten default theme for a light look and new logo
+* ui: added default theme variant with a dark look
+* plugins: os-acme-client 4.8 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-cpu-microcode 1.1 removes unneeded late loading code
+* plugins: os-haproxy 4.5 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/net/haproxy/pkg-descr>`__ 
+* src: FreeBSD 14.2-RELEASE `[3] <https://www.freebsd.org/releases/14.2R/relnotes/>`__ 
+* src: p9fs: add an implementation of the 9P filesystem
+* ports: lighttpd 1.4.77 `[4] <https://www.lighttpd.net/2025/1/10/1.4.77/>`__ 
+* ports: openvpn 2.6.13 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.13>`__ 
+* ports: php 8.3.15 `[6] <https://www.php.net/ChangeLog-8.php#8.3.15>`__ 
+* ports: radvd 2.20 `[7] <https://radvd.litech.org/>`__ 
+
+Migration notes, known issues and limitations:
+
+* The access management was rewritten in MVC and contains behavioural changes including not rendering UNIX accounts for non-shell users. The integrated authentication via PAM has been the default for a long time so the option to disable it has been removed. The manual LDAP importer is no longer available since LDAP/RADIUS authenticators support on-demand creation and default group setup option. The "page-system-groupmanager-addprivs" privilege was removed since the page does not exist anymore. A multi-purpose privilege editor has been added under the existing "page-system-usermanager-addprivs" instead.
+* PPP devices can no longer be configured on the interface settings page. To edit the device settings use the native PPP device edit page instead.
+* FreeBSD 14.2 comes with the stock pf(4) behaviour regarding ICMPv6 neighbour discovery state tracking which was avoided so far in 24.7.x.
+* Let's Encrypt ends support for the OCSP Must Staple extension on 30.01.2025. Issuance requests will fail if this option is still enabled past this date.
+
+The public key for the 25.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsnbyFjWXvUcUC4BqnQ9w
+    # uH3yiaG7AY8UzwepXf2TqqOYt5Y0USbse3OBjxYnRs0iW5EHtdKSRcmelup374Hp
+    # XDDeQ/mjmhhnvXryfQL57gyVpYeL5gRVhf/2DwEZELLCFUFhMNh52QPaJ5zTvdws
+    # m1Q+OwI1WfTDR7ytm+0Too2tVerG3mM3XataZ+XOKwHp2xP0Mr8E4F+PZdR4hWbb
+    # yC2elIzICXDWWpcEEg4JT48TIYZJPGnE2IJAzWRntrqVU2eLcEn5MffwTawXNoCZ
+    # mvLYqguYskmeR/dAL7ZmZcPeMeibXMtld8xIZp49g7DPq7PqxCY1wxcgeuZPFOHv
+    # kbYzL3BHbyni3K/qdLXKzy8oZeUUvlbUgaj8Xx14DSiNzJDknNf0Xg/eby7MkzgP
+    # eUXgtB0MRQMih85BfaiH5r+uQMgPKnjutVWR8qUWglxDKIc4s69b8PXylfu2FwiP
+    # iKMBdO8xnVvNFKOkuaUtI31cqxauw2hBAlILFvltM+adUz2rfB3Ch0bjfjDE5Hxq
+    # En4fEUVHgQCu+Ojyyy3/8RwUpsRZq05fObypyeL3E/MvlwpaOVjwvw2ozVPGi2zi
+    # xmXemn5CbgjD3vPR9XERXrFkHTwPnIiqz53znqn34P+NGEgD1veMhZPE6OGZRu/h
+    # IfceSaxJ/An5SUh0zr7YgOsCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+Please let us know about your experience!
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-25.1.r1-dvd-amd64.iso.bz2) = dbd65194b02dfda2abe0542c8660c5a8d5311719448fbacf8e7e08b260c90e15
+    # SHA256 (OPNsense-25.1.r1-nano-amd64.img.bz2) = 1600a1b26114aec1e99653efed1dddf1869bddfa422d8e85ad34a1acf2e3e4fc
+    # SHA256 (OPNsense-25.1.r1-serial-amd64.img.bz2) = ff709c926bd097bb52726944cde2c3363386d5062765bd4a75cce9009353f853
+    # SHA256 (OPNsense-25.1.r1-vga-amd64.img.bz2) = 9cdb74c9f43f9ee6eb66fbe3ad8b4050938273e053872e063b1bc73cedcd6410
+
+
+--------------------------------------------------------------------------
+25.1.b (December 19, 2024)
+--------------------------------------------------------------------------
+
+
+The 25.1 series will include FreeBSD 14.2 so we are putting this BETA
+version out based on the latest development state.  This is not meant
+for production use but all plugins are provided and future updates of
+installations based on these images will be possible.
+
+https://pkg.opnsense.org/releases/25.1/
+
+There is a bit more work to be done yet most of the milestones have
+already been reached.  If you have a test deployment or would like to
+check out some of the new features these images are for you.  Together
+we can make OPNsense better than it ever was.
+
+The final release date for 25.1 is January 29.  A release candidate
+will follow in early January.
+
+Highlights over version 24.7 include:
+
+* system: restructure PPP to accomodate IPv6-only deployments
+* system: implement persistent notifications banner
+* system: dashboard widget for certificate expiry and renew
+* system: high availablilty status MVC/API conversion
+* system: users and groups MVC/API conversion
+* system: advanced trust settings page
+* system: ZFS snapshot GUI
+* reporting: RRD health graph refactoring
+* firewall: improved security zones support and documentation
+* ipsec: advanced settings MVC/API conversion
+* unbound: merge domain overrides into query forwarding
+* ui: theme update with new styling and add official dark theme
+* src: FreeBSD 14.2
+
+The public key for the 25.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAsnbyFjWXvUcUC4BqnQ9w
+    # uH3yiaG7AY8UzwepXf2TqqOYt5Y0USbse3OBjxYnRs0iW5EHtdKSRcmelup374Hp
+    # XDDeQ/mjmhhnvXryfQL57gyVpYeL5gRVhf/2DwEZELLCFUFhMNh52QPaJ5zTvdws
+    # m1Q+OwI1WfTDR7ytm+0Too2tVerG3mM3XataZ+XOKwHp2xP0Mr8E4F+PZdR4hWbb
+    # yC2elIzICXDWWpcEEg4JT48TIYZJPGnE2IJAzWRntrqVU2eLcEn5MffwTawXNoCZ
+    # mvLYqguYskmeR/dAL7ZmZcPeMeibXMtld8xIZp49g7DPq7PqxCY1wxcgeuZPFOHv
+    # kbYzL3BHbyni3K/qdLXKzy8oZeUUvlbUgaj8Xx14DSiNzJDknNf0Xg/eby7MkzgP
+    # eUXgtB0MRQMih85BfaiH5r+uQMgPKnjutVWR8qUWglxDKIc4s69b8PXylfu2FwiP
+    # iKMBdO8xnVvNFKOkuaUtI31cqxauw2hBAlILFvltM+adUz2rfB3Ch0bjfjDE5Hxq
+    # En4fEUVHgQCu+Ojyyy3/8RwUpsRZq05fObypyeL3E/MvlwpaOVjwvw2ozVPGi2zi
+    # xmXemn5CbgjD3vPR9XERXrFkHTwPnIiqz53znqn34P+NGEgD1veMhZPE6OGZRu/h
+    # IfceSaxJ/An5SUh0zr7YgOsCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+Please let us know about your experience!
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-devel-25.1.b-dvd-amd64.iso.bz2) = 7a9a5eacc65f7128273558c7e5f4cf63e555004d4d938fb827280cf691fc1cfd
+    # SHA256 (OPNsense-devel-25.1.b-nano-amd64.img.bz2) = 83b3a9b599477773b8f4877bf8c4a38436895477fef91a0dbfabdbfdbb7be2c3
+    # SHA256 (OPNsense-devel-25.1.b-serial-amd64.img.bz2) = 57d087cf66d168338de4a611871c31813b3e42bb71d7b71be75aa20521c6d8a1
+    # SHA256 (OPNsense-devel-25.1.b-vga-amd64.img.bz2) = 5bc51cc93bc64cc15d6fa68611d3cee4cf45b70b85e713cbdd3c0c8d2ebd4137

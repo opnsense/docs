@@ -90,7 +90,7 @@ Here are the full patch notes:
 * ports: nss 3.60.1
 * ports: php 7.3.26 `[6] <https://www.php.net/ChangeLog-7.php#7.3.26>`__ 
 * ports: pkg fix for shell keyword by opening root file descriptor
-* ports: radvd 2.19 `[7] <https://radvd.litech.org/CHANGES.txt>`__ 
+* ports: radvd 2.19 `[7] <https://radvd.litech.org/>`__ 
 * ports: sudo 1.9.5p1 `[8] <https://www.sudo.ws/stable.html#1.9.5p1>`__ 
 
 A hotfix release was issued as 20.7.8_4:

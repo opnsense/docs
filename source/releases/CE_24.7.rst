@@ -31,6 +31,63 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+24.7.12 (January 15, 2025)
+--------------------------------------------------------------------------
+
+
+One last stable update before the switch to the 25.1 series.
+Security-wise it has bee rather quiet over the past few weeks.
+A new kernel is included with a number of smaller reliability
+fixes and amendments.
+
+The 25.1-RC1 images follow next week based on a full build
+using FreeBSD 14.2.  Thanks all for testing the beta version so
+far!  The release date for the final 25.1 version is January 29.
+
+Here are the full patch notes:
+
+* system: re-enable support for subjectAltName when creating CSRs
+* system: remove spurious backup() during config revert
+* reporting: add daemon -f parameter to close file descriptors for NetFlow local capture (contributed by Ben Smithurst)
+* firmware: use output_cmd/output_txt helpers in remaining scripts
+* ipsec: fix mobile clients reload missing system.inc
+* isc-dhcp: IPv6 prefixes script can fail to restart (contributed by Ben Smithurst)
+* kea-dhcp: align hostname validation with manual host entries
+* mvc: add serialNumber and issuer in Store::parseX509()
+* mvc: restore support for JSON input data without configd callout in JsonKeyValueStoreField
+* ui: add classes to system history diff content so themes can override the defaults
+* ui: load CSV as text to prevent encoding issues in SimpleFileUploadDlg()
+* plugins: os-acme-client 4.7 `[1] <https://github.com/opnsense/plugins/blob/stable/24.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-caddy 1.8.0 `[2] <https://github.com/opnsense/plugins/blob/stable/24.7/www/caddy/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.27 `[3] <https://github.com/opnsense/plugins/blob/stable/24.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-haproxy 4.4 `[4] <https://github.com/opnsense/plugins/blob/stable/24.7/net/haproxy/pkg-descr>`__ 
+* plugins: os-mdns-repeater 1.2 `[5] <https://github.com/opnsense/plugins/blob/stable/24.7/net/mdns-repeater/pkg-descr>`__ 
+* plugins: os-squid 1.1 `[6] <https://github.com/opnsense/plugins/blob/stable/24.7/www/squid/pkg-descr>`__ 
+* plugins: os-tailscale 1.1 `[7] <https://github.com/opnsense/plugins/blob/stable/24.7/security/tailscale/pkg-descr>`__ 
+* plugins: os-theme-rebellion 1.9.2 (contributed by Team Rebellion)
+* src: if_ovpn: improve reconnect handling
+* src: iflib: set the NUMA domain in receive packet headers
+* src: ip: defer checks for an unspecified dstaddr until after pfil hooks
+* src: ice_ddp: update to 1.3.41.0
+* ports: curl 8.11.1 `[8] <https://curl.se/changes.html#8_11_1>`__ 
+* ports: libpfctl 0.15
+* ports: php 8.2.27 `[9] <https://www.php.net/ChangeLog-8.php#8.2.27>`__ 
+* ports: python 3.11.11 `[10] <https://docs.python.org/release/3.11.11/whatsnew/changelog.html>`__ 
+
+A hotfix release was issued as 24.7.12_2:
+
+* plugins: turning binary data into JSON may fail globally
+* unbound: fixup permission on copy
+* ports: openvpn 2.6.13 `[11] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.13>`__ 
+
+A hotfix release was issued as 24.7.12_4:
+
+* firmware: add fingerprint and upgrade hint for 25.1
+* firmware: disable duckdb migration for stable transition again
+
+
+
+--------------------------------------------------------------------------
 24.7.11 (December 17, 2024)
 --------------------------------------------------------------------------
 
@@ -76,6 +133,12 @@ Here are the full patch notes:
 * plugins: os-telegraf 1.12.12 `[6] <https://github.com/opnsense/plugins/blob/stable/24.7/net-mgmt/telegraf/pkg-descr>`__ 
 * ports: monit 5.34.3 `[7] <https://mmonit.com/monit/changes/>`__ 
 * ports: suricata 7.0.8 `[8] <https://suricata.io/2024/12/12/suricata-7-0-8-released/>`__ 
+
+A hotfix release was issued as 24.7.11_2:
+
+* firmware: fix the return value handling in the firmware option of the console menu
+* mvc: fix a regression in "normalize multiple slashes in paths"
+
 
 
 --------------------------------------------------------------------------
@@ -1044,15 +1107,15 @@ Migration notes, known issues and limitations:
 
 Since OPNsense 24.7 will be based on a newer FreeBSD major version
 it is crucial for us to release these BETA images based on the latest
-development state. This is not meant for production use but all plugins
+development state.  This is not meant for production use but all plugins
 are provided and future updates of installations based on these images
 will be possible.
 
 https://pkg.opnsense.org/releases/24.7/
 
 There is a bit more work to be done yet most of the milestones have
-already been reached. If you have a test deployment or would like to
-check out some of the new features these images are for you. Together
+already been reached.  If you have a test deployment or would like to
+check out some of the new features these images are for you.  Together
 we can make OPNsense better than it ever was.
 
 The final release date for 24.7 is July 24.  A release candidate will

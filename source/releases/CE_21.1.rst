@@ -862,7 +862,7 @@ Here are the full patch notes against 20.7.7_1:
 * ports: libressl 3.2.3 `[5] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.2-relnotes.txt>`__  `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.3-relnotes.txt>`__ 
 * ports: nss 3.60.1
 * ports: pkg fix for shell keyword by opening root file descriptor
-* ports: radvd 2.19 `[7] <https://radvd.litech.org/CHANGES.txt>`__ 
+* ports: radvd 2.19 `[7] <https://radvd.litech.org/>`__ 
 * ports: sudo 1.9.4p2 `[8] <https://www.sudo.ws/stable.html#1.9.4p2>`__ 
 
 Known issues and limitations:
