@@ -69,6 +69,12 @@ For short ranges (up to 10M), often a popular choice due to low cost and low lat
 
     10 Mbit/s is currently not supported by Axgbe.
 
+
+.. Note::
+
+    When using SFP+Modules, do not mix 2.5/5Gbps and 10Gbps link-speed as the hardware does not support mixing these due to different frequencies.
+
+
 --------------------------------------
 1G Single-mode optical fiber
 --------------------------------------
