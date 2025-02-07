@@ -40,10 +40,6 @@ interface shown below.
 As stated before, Zen provide a /48 prefix, so select the prefix size
 accordingly. 
 
-The only other requirement in this section is to select ‘Use IPv4
-connectivity’, this is because the IPv6 traffic is routed over the PPPoE
-link.
-
 Click ‘Save’ and then ‘Apply’.
 
 **LAN Interface**
@@ -97,10 +93,6 @@ interface shown below.
 
 As stated before, Zen provide a /48 prefix, so select the prefix size
 accordingly. 
-
-The only other requirement in this section is to select ‘Use IPv4
-connectivity’, this is because the IPv6 traffic is routed over the PPPoE
-link.
 
 Click ‘Save’ and then ‘Apply’.
 
