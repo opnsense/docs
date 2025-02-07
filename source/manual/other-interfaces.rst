@@ -30,18 +30,8 @@ STP interfaces                      The interfaces tith [R]STP enabled, from the
 Valid time (maxage)                 Set the time that a Spanning Tree Protocol configuration is valid. The default is 20 seconds.
 Forward time (fwddelay)             Set the time that must pass before an interface begins forwarding packets when
                                     Spanning Tree is enabled. The default is 15 seconds.
-Hello time (hellotime)              Set the time between broadcasting of Spanning Tree Protocol configuration messages.
-                                    The hello time may only be changed when operating in legacy STP mode. The default is 2 seconds.
-Priority                            Set the bridge priority for Spanning Tree.
-                                    The default is 32768. The minimum is 0 and the maximum is 61440.
 Hold count (holdcnt)                Set the transmit hold count for Spanning Tree. This is the number of packets transmitted
                                     before being rate limited. The default is 6. The minimum is 1 and the maximum is 10.
-[interface] Priority (ifpriority)   Set the Spanning Tree priority of interface to value. The default is 128.
-                                    The minimum is 0 and the maximum is 240. Increments of 16.
-[interface] Path cost (ifpathcost)  Set the Spanning Tree path cost of interface to value.
-                                    The default is calculated from the link speed.
-                                    To change a previously selected path cost back to automatic, set the cost to 0.
-                                    The minimum is 1 and the maximum is 200000000.
 ==================================  ==================================================================================================
 
 Other advanced options available in the bottom section of the screen and include the following settings:
