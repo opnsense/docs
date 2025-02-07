@@ -66,30 +66,6 @@ For IPv4:
  Reject Leases From              Can be used to ignore DHCP leases from ISP-issued modems, for example.
  Hostname                        This value is sent as the DHCP client identifier and hostname when requesting a DHCP lease. Some ISPs may require this (for client identification).
  Override MTU                    An ISP may incorrectly set an MTU value which can cause intermittent network disruption. By default this value will be ignored. Unsetting this option will allow to apply the MTU supplied by the ISP instead.
- **PPP configuration**
- Service Provider                By selecting a country, provider and plan here, OPNsense can fill in the other fields for you. If your provider or plan not in the list, you have to set them manually.
- Username
- Password
- Phone number
- Access Point Name (APN)
- Modem port
- Advanced PPP                    Will take you to the Point-to-Point device settings.
- **PPPoE configuration**
- Username
- Password
- Service name                    Leave blank unless specified by provider.
- Host-Uniq                       See above.
- Dial-on-demand                  Only connect when traffic is sent over the interface
- Idle timeout (seconds)
- Advanced and MLPPP              Will take you to the Point-to-Point device settings.
- **PPTP/L2TP configuration**
- Username
- Password
- Local IP address
- Remote IP address
- Dial-on-demand                  Only connect when traffic is sent over the interface
- Idle timeout (seconds)
- Advanced                        Will take you to the Point-to-Point device settings.
 =============================== ===============================================================================================================================================================================================================
 
 For IPv6:
