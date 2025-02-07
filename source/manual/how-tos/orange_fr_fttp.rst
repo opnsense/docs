@@ -14,7 +14,7 @@ The guide deals with just the internet connection. Setting up of TV or Phone is 
 **Getting ready to make the connection**
 ----------------------------------------
 
-Orange requires that the WAN is configured over VLAN 832. So the first step is to set up the VLAN on the intended WAN nic as shown below :menuselection:`Interfaces --> Other Types --> VLAN`
+Orange requires that the WAN is configured over VLAN 832. So the first step is to set up the VLAN on the intended WAN nic as shown below :menuselection:`Interfaces --> Devices --> VLAN`
 
 .. image:: images/OF_image0.png
 	:width: 100%

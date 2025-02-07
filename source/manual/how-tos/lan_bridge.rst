@@ -21,7 +21,7 @@ It's a good idea to add the extra NIC interfaces ( OPTx ) during installation.
 
 **Step Two**
 -----------------
-Create the bridge itself. Select :menuselection:`Interfaces --> Other Types --> Bridge` and ADD a new bridge. Select
+Create the bridge itself. Select :menuselection:`Interfaces --> Devices --> Bridge` and ADD a new bridge. Select
 from the member interfaces the unused interfaces you wish to add to the bridge, OPT2,OPT3 etc.
     
 .. image:: images/lan_bridge_1.png
@@ -59,8 +59,8 @@ select it and hit the '+' button to add an assignment, then click Save.
 
 **Step Five**
 -----------------
-Select :menuselection:`Interfaces --> Other Types --> Bridge` and add the interface created in Step Four to the bridge. Also check 
-`Enable link-local address` checkbox in case you are using IPv6 and press Save.  
+Select :menuselection:`Interfaces --> Devices --> Bridge` and add the interface created in Step Four to the bridge.
+Also check `Enable link-local address` checkbox in case you are using IPv6 and press Save.
 Remember to check the new interface and ensure it is enabled as in Step Two.
 
 .. image:: images/lan_bridge_4.png
