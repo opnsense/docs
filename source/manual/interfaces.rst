@@ -100,21 +100,17 @@ For IPv6:
  **Static IPv6 configuration**
  IPv6 address
  IPv6 gateway rules                When a gateway is set here, packets entering the interface will also sent out on the same interface when replied.
- Use IPv4 connectivity             Set the IPv6 address on the IPv4 PPP connectivity link.
  **DHCPv6 client configuration**
  Configuration Mode                Setting this to “Advanced” will make the settings below “Use VLAN priority” visible.
  Request only an IPv6 prefix       Only request an IPv6 prefix; do not request an IPv6 address.
  Prefix delegation size            The delegated prefix length provided by the DHCPv6 server. Normally specified by the ISP.
  Send IPv6 prefix hint             Send an IPv6 prefix hint to indicate the desired prefix size for delegation
- Use IPv4 connectivity             Set the IPv6 address on the IPv4 PPP connectivity link.
  Use VLAN priority                 Certain ISPs may require that DHCPv6 requests are sent with a specific VLAN priority.
  Interface Statement               Click the “i” to see what the four subfields do.
  Identity Association
  Prefix Interface
  Authentication
  Keyinfo
- **SLAAC configuration**
- Use IPv4 connectivity             Set the IPv6 address on the IPv4 PPP connectivity link.
  **6RD Rapid Deployment**
  6RD prefix                        The 6RD IPv6 prefix assigned by your ISP. e.g. '2001:db8::/32'
  6RD Border Relay                  The 6RD IPv4 gateway address assigned by your ISP

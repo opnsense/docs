@@ -38,7 +38,6 @@ In :menuselection:`Interfaces --> [WAN]` and set **IPv6 Configuration Type** to 
 
 - Request only an IPv6 prefix
 - Send IPv6 prefix hint
-- Use IPv4 connectivity
 
 Set the prefix size to the one your provider delegates, mostly /56 or 64, sometimes /48.
 
