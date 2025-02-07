@@ -421,9 +421,9 @@ Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_o
 
    .. group-tab:: Step 1
 
-      #. :menuselection:`Interfaces --> Other Types --> Loopback`: Create two loopback interfaces on each firewall, use the network diagram for reference.
+      #. :menuselection:`Interfaces --> Devices --> Loopback`: Create two loopback interfaces on each firewall, use the network diagram for reference.
       #. :menuselection:`VPN --> IPsec --> Connections`: Create two policy based IPsec tunnels that each connect a pair of loopback interfaces as children, e.g., ``10.2.2.1/32`` with ``10.2.2.2/32``.
-      #. :menuselection:`Interfaces --> Other Types --> GRE`: Create two GRE tunnels on each firewall that each use a loopback interface of the other side as `Remote address`. The tunnel local and remote address can be referenced from the network diagram.
+      #. :menuselection:`Interfaces --> Devices --> GRE`: Create two GRE tunnels on each firewall that each use a loopback interface of the other side as `Remote address`. The tunnel local and remote address can be referenced from the network diagram.
 
       .. Note::
 

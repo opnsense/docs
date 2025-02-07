@@ -82,7 +82,7 @@ And disable filtering on member interfaces by changing
 --------------------
 
 Create a bridge of LAN and WAN, go to
-:menuselection:`Interfaces --> Other Types --> Bridge`. Add Select LAN and WAN.
+:menuselection:`Interfaces --> Devices --> Bridge`. Add Select LAN and WAN.
 
 |Filtering Bridge Step 3a.png|
 
