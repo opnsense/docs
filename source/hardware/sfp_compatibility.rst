@@ -50,9 +50,14 @@ needed to use SMF is often more expensive in comparison to MMF.
 Multi-mode fiber is the alternative for SMF (up to 550M for 10Gb/s), often used for backbone applications in
 buildings and usually connected with OM3 Duplex-LC patch cords.
 
-- Direct-Attach (DAC)
+- Direct-Attach Copper (DAC)
 
 For short ranges (up to 10M), often a popular choice due to low cost and low latency.
+
+- Active Optical Cable (AOC)
+
+An alternative to DAC with lower latency, longer reach, electromagnetic interference (EMI) immunity and smaller,
+more manageable cable. An economical option compared to using MMF patch cable and network interface modules.
 
 .. attention::
 
@@ -178,6 +183,17 @@ Netgear    AXC761                         10G
 Startech   DACSFP10G1M                    10G
 Ubiquiti   UniFi 1m DAC                   10G
 ========== ============================== ============= =========================
+
+--------------------------------------
+10G Active Optical Cable
+--------------------------------------
+
+============= ============================== ============= =========================
+Vendor        Type                           Speed         Notes
+============= ============================== ============= =========================
+Cisco-Finisar SFP-10G-AOC3M                  10G
+============= ============================== ============= =========================
+
 
 **ICE**
 =====================================================================================================================
