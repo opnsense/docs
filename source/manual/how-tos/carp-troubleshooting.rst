@@ -39,7 +39,7 @@ Split-brain
 -----------
 
 In certain rare occasions, both the master and backup node may show a "master" state assumed in the virtual IP status overview for one or more VIPs.
-In general, there may be two reasons this is happening:
+In general, there may be multiple reasons this is happening:
 
 - The advertisement packets contain a hash that does not match up with what the other node expects. This is caused by misconfigured virtual IPs.
   See `CARP Virtual IP type <../firewall_vip.html#carp>`__ for more information. This situation is logged to the system log if the verbosity has been increased.
@@ -57,6 +57,9 @@ To troubleshoot this, you can inspect the CARP traffic on the backup node using 
 In the default case of multicast, one should be able to see the source IP address of the master node in the advertisement packets. If instead the backup
 source IP address is shown, it indicates the CARP traffic is not reaching the backup node. One can rule out multicast issues by switching to
 unicast in the Virtual IP settings.
+
+- Preemption is disabled in :menuselection:`System --> High Availability --> Settings`. Unless you know what you are doing,
+  preemption should always be enabled unless you're running a routing-only platform.
 
 ----------------
 Interface errors
