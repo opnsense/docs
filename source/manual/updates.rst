@@ -61,7 +61,7 @@ in our experience most common:
 The heath audit can also help with uncovering installation and disk / file system issues.
 Additionally, major ugpgrades may not pass certain sanity checks that need to be corrected first which may include the command line:
 
-* "Could not determine core package name." can indicate that the local package manager databse was lost. See `opnsense-bootstrap` command to fix.
+* "Could not determine core package name." can indicate that the local package manager database was lost. See `opnsense-bootstrap` command to fix.
 * "No package manager is installed to perform upgrades." can indicate a broken installation. Try to reinstall the "pkg" package via `System --> Firmware --> Packages`.
 * "The Package manager is incompatible and needs a reinstall." can indicate misuse of the FreeBSD repository. Try to reinstall the "pkg" package via `System --> Firmware --> Packages`.
 * "Core package not known to package database." can mean that the mirror settings are wrong, the main mirror no longer holds any packages or that the mirror is unreachable for other reasons.
