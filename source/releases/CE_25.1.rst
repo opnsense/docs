@@ -27,6 +27,63 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.1.1 (February 12, 2025)
+--------------------------------------------------------------------------
+
+
+Here we are with further refinements to 25.1 and it is looking
+pretty well so far.  Included are the recent FreeBSD security
+advisories and the OpenSSL 3.0.16 which came out just yesterday.
+
+The roadmap for 25.7 is being worked on at the moment and should
+be ready for publication next week / release.
+
+Here are the full patch notes:
+
+* system: exclude pchtherm thresholds temperature thresholds
+* system: regression in groupAllowed() as values are now comma-separated
+* system: update button wording on new HA status page
+* reporting: fix missing typecast in epoch range for DNS statistics
+* interfaces: fix undefined array key warnings in DHCP client setup (contributed by Ben Smithurst)
+* interfaces: remove "hellotime" configuration leftover of recent bridge cleanup
+* firmware: opnsense-update: fix failure to clean up the working directory
+* firmware: opnsense-update: support -B and -K with -c option check
+* firmware: opnsense-update: let -u skip already installed packages set
+* firmware: kernel may not be pending so be sure to check on upgrade attempt
+* firmware: add an upgrade test for wrong pkg repository
+* firmware: revoke 24.7 fingerprint
+* captive portal: fix missing class import
+* captive portal: partially revert new lighttpd TLS defaults
+* ipsec: fix glob pattern for advanced configuration banner
+* monit: revert "wrap exec in double quotes to allow arguments"
+* ui: reverted style changes only relevant for the development version
+* ui: header image scaling fixes in default light theme
+* ui: remove right border from "aside" element in default dark theme
+* plugins: os-caddy 1.8.2 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.9 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-ddclient 1.27 `[3] <https://github.com/opnsense/plugins/blob/stable/25.1/dns/ddclient/pkg-descr>`__ 
+* src: pf: send ICMP destination unreachable fragmentation needed when appropriate
+* src: pfil: set PFIL_FWD for IPv4 forwarding
+* src: if_vxlan: use static initializers
+* src: if_vxlan: prefer SYSCTL_INT over TUNABLE_INT
+* src: if_vxlan: Invoke vxlan_stop event handler only when the interface is configured
+* src: pf: force logging if pf_create_state() fails
+* src: tarfs: fix the size of struct tarfs_fid and add a static assert
+* src: ext2fs: fix the size of struct ufid and add a static assert
+* src: cd9660: make sure that struct ifid fits in generic filehandle structure
+* src: tzdata: import tzdata 2025a
+* src: audit: fix short-circuiting in syscallenter()
+* src: ktrace: fix uninitialized memory disclosure]
+* src: netinet: enter epoch in garp_rexmit()
+* ports: curl 8.12.0 `[4] <https://curl.se/changes.html#8_12_0>`__ 
+* ports: monit 5.34.4 `[5] <https://mmonit.com/monit/changes/>`__ 
+* ports: openssl 3.0.16 `[6] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+* ports: pcre2 10.45 `[7] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.45>`__ 
+* ports: php 8.3.16 `[8] <https://www.php.net/ChangeLog-8.php#8.3.16>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.1 (January 29, 2025)
 --------------------------------------------------------------------------
 
