@@ -147,7 +147,7 @@ the one of you cellular connection.
 Step 4 - Troubleshooting
 ------------------------
 In case it still does not work, first look at the log of the cellular device's PPP connection, to do so go to:
-:menuselection:`Interfaces --> Point-to-Point --> Log File`. If you are
+:menuselection:`System --> Log Files --> General`. If you are
 lucky you can see what went wrong directly in the log. Unfortunately, the PPP log is
 not very informative so it might not help at all.
 
