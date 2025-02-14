@@ -34,6 +34,8 @@ They can contain any executable file (e.g. shell scripts) in the following subdi
 
 - early
     - start script before system network startup
+- import
+    - run very early to allow overriding the opnsense-import functionality either by providing a /conf/config.xml beforehand or modifying the default import afterwards
 - monitor (deprecated)
     - scripts handling gateway monitoring alerts, no longer in use by core but provided for compatibility
 - start
