@@ -108,15 +108,6 @@ Does not add a real address to an interface, instead it will use `choparp <https
 arp requests on the network. This can sometimes be practical in situations where clients should be let to believe an address is local.
 
 
-..................
-Other
-..................
-
-The **other** type won't respond to ICMP ping messages or reply to ARP requests, it merely is a definition of an
-address (or range) which can be used in NAT rules. This is convenient when the firewall has a public IP block routed
-to its WAN IP address, IP Alias, or a CARP VIP.
-
-
 --------------------
 Settings
 --------------------
@@ -130,7 +121,7 @@ everyone of them.
 Mode                                  The type of address, as defined in :ref:`Types <Firewall_VIP_Types>`.
 Interface                             The interface this address belongs to.
 Type                                  Either Network or Single address, only has affect when creating NAT rules,
-                                      where **Proxy ARP** and **Other** combined with **Expansion** will generate
+                                      where **Proxy ARP** combined with **Expansion** will generate
                                       separate addresses for all items in the netmask.
 Address                               The address and netmask to assign, when assigning multiple addresses in the
                                       same network, the masks usually should match.
