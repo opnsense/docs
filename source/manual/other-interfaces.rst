@@ -366,7 +366,7 @@ The following `Link Types` are available for these interfaces:
 
    .. tab:: L2TP (Layer 2 Tunneling Protocol)
 
-      An extension of PPTP that does not provide encryption on its own but is often paired with IPsec
+      An extension of PPTP that does not provide encryption on its own but was often paired with IPsec
       for secure tunneling. Used for VPN connections and remote access setups.
 
       .. Note:: Check the PPTP and PPP tab for all options.
