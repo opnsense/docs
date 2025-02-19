@@ -84,7 +84,6 @@ The ``lo1`` interfaces on both firewalls must be connected via VPN. In this exam
 
 Create Firewall rules that allow `VXLAN` (UDP/4789) and `ICMP` traffic for:
 
-    - :menuselection:`Firewall --> Rules --> Loopback`
     - :menuselection:`Firewall --> Rules --> IPsec` (or Wireguard)
 
 The tunnel should now route traffic between the two loopback interfaces:
@@ -142,6 +141,8 @@ Link-local address  `Check if using IPv6`  `Check if using IPv6`
 - | If experiencing packet fragmentation issues, set the MTU to 1380 and MSS to 1320 on the ``bridge0`` interfaces. This ensures packets are appropriately sized for the combined overhead from VXLAN and the VPN tunnel. This should not be needed if PMTU (Path MTU Discovery) works correctly. It is essential that ICMP is allowed.
 
 .. Note:: Only the main `Site` should be the DHCP server on ``bridge0``. If you want to use different DHCP servers per `Site`, use external ones and block the DHCP packets on your managed switch before they enter the OPNsense ``LAN`` interface. Ensure that no IP address conflicts emerge with seperate pools in the same IP address space.
+
+.. Tip:: To prevent traffic of being initially Source NATed and sent out of the default gateway when the VXLAN tunnel is not yet up, an outbound no-nat rule on the WAN interface can be implemented matching internal IP networks that are sent via VXLAN.
 
 
 5. Testing & Finalizing
