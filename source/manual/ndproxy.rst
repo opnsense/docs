@@ -47,7 +47,7 @@ Simple Setup for Home Users
 
 .. Note::
 
-   Follow if you are a home user with a single /64 delegated prefix from your ISP.
+   Follow if you are a home user with a single /64 delegated prefix, or if your router is in a SLAAC only network, e.g. mobile network via modem.
 
 
 Go to :menuselection:`Interfaces --> WAN`
@@ -77,7 +77,7 @@ Save and apply the new interface settings, then go to :menuselection:`Services -
 **Uplink Interface**                            ``WAN``
                                                 (Interface must be in promiscuous mode)
 **Downlink MAC Address**                        ``aa:bb:cc:dd:ee:ff``
-                                                (MAC address of the LAN interface)
+                                                (MAC address of the WAN interface)
 **Uplink IPv6 Addresses**                       ``fe80::200:ff:fe00:0``
                                                 (Link-local address of the ISP router)
 **Exception IPv6 Addresses**                    `leave empty`
@@ -86,7 +86,7 @@ Save and apply the new interface settings, then go to :menuselection:`Services -
 .. Note::
 
    The MAC address can be found in :menuselection:`Interfaces --> Overview`. Click the details button of
-   the LAN interface.
+   the WAN interface.
 
 .. Note::
 
@@ -228,7 +228,7 @@ Go to :menuselection:`Services --> Ndproxy`
 **Uplink Interface**                            ``WAN``
                                                 (Interface must be in promiscuous mode)
 **Downlink MAC Address**                        ``aa:bb:cc:dd:ee:ff``
-                                                (MAC address of the CPE router's LAN interface)
+                                                (MAC address of the CPE router's WAN interface)
 **Uplink IPv6 Addresses**                       ``fe80::1``
                                                 (Link-local address of the PE router's WAN interface)
 **Exception IPv6 Addresses**                    `leave empty`
@@ -272,7 +272,7 @@ Packet Flow Explained
 
 4. **Role of ndproxy**
 
-    - The **ndproxy** service on the CPE router listens for NDP messages on both WAN and LAN interfaces.
+    - The **ndproxy** service on the CPE router listens for NDP messages on the WAN interface.
     - When the Neighbor Solicitation arrives at the CPE router's WAN interface, **ndproxy** intercepts it and proxies it to the LAN interface.
     - The LAN client receives the Neighbor Solicitation and responds with a Neighbor Advertisement, providing its MAC address.
     - **ndproxy** proxies this Neighbor Advertisement back to the WAN interface, sending it to the PE router's CUSTOMER interface.
