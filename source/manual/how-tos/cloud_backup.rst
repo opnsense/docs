@@ -59,6 +59,11 @@ You may consider specifying additional Cronjobs when more frequent remote backup
 Setup Google API usage
 ----------------------
 
+.. Warning::
+
+    Please note that Google changed how service accounts work, as a result, this functionality will be deprecated (`* <https://github.com/opnsense/core/issues/8343>`__)
+
+
 The instructions below apply to a standard Google account. Some of the settings appear slightly differently for Google Workspace (formerly G Suite) accounts.
 
 A standard Google account can be created `here <https://accounts.google.com/signup?hl=en>`__.
