@@ -372,4 +372,6 @@ The following `Link Types` are available for these interfaces:
       .. Note:: Check the PPTP and PPP tab for all options.
 
 
+.. Note:: The ``ppp`` log files can be found in :menuselection:`System --> Log Files --> General`.
+
 Read `PPPoE ISP Setup </manual/how-tos/pppoe_isp_setup.html>`_ for an example configuration of PPPoE with VLAN Tag for an ISP connection.
