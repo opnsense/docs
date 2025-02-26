@@ -117,7 +117,7 @@ Setup Router A
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
-      **BGP AS Number*                                ``65011`` (or any other private AS number)
+      **BGP AS Number**                               ``65011`` (or any other private AS number)
       **Route Redistribution**                        ``Connected routes (directly attached subnet or host)``
       ==============================================  ====================================================================
 
@@ -239,7 +239,7 @@ Setup Router B
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
-      **BGP AS Number*                                ``65011`` (or any other private AS number)
+      **BGP AS Number**                               ``65011`` (or any other private AS number)
       **Network**                                     leave empty (we use Route Redistribution)
       **Route Redistribution**                        ``Connected routes (directly attached subnet or host)``
       ==============================================  ====================================================================
