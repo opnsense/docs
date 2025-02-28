@@ -27,6 +27,84 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.1.2 (February 28, 2025)
+--------------------------------------------------------------------------
+
+
+This was supposed to hit earlier this week, but some weeks are like this
+one now where QA takes more time than usual.  Of note is the move of Dnsmasq
+to MVC and the ChartJS update to version 4 which is bundled with nice updates
+for widgets and the system health graphs.
+
+The roadmap for 25.7 was also published `[1] <https://opnsense.org/about/road-map/>`__ .  The IPsec and OpenVPN legacy
+parts will move to the plugins so that the functionality can live there
+in community support tier.  Since Kea remains a bit of an odd choice we will
+be offering DHCP support via Dnsmasq as a new standard feature which also
+offers seamless DHCP lease registration some people keep looking for.
+
+Here are the full patch notes:
+
+* system: adjust gateway widget to use the intended caching mechanism
+* system: thermal sensors widget can now select individual sensors to display plus UX changes
+* system: handle dev.pchtherm temperatures in the thermal dashboard widget (contributed by Joe Roback)
+* system: use new apply button partial in tunables page
+* system: move high availability option "disable preempt" to advanced mode
+* system: straighten out syslog-ng rc.d scripting
+* reporting: switch health graphs to ChartJS
+* interfaces: add "nosync" option to VIPs and fix sync conditional
+* interfaces: exclude automatic radvd like we do for manual
+* firewall: properly unpack multiple source/destination items in the rules page
+* firewall: hide internal aliases to align with previous legacy_list_aliases() function
+* firewall: add missing "persist" on bogonsv6
+* captive portal: urlencode() selector items in voucher group list
+* dhcrelay: integrate layout_partials bootgrid/apply
+* dnsmasq: migrate existing frontend to MVC/API
+* ipsec: add deprecation notices for legacy components (will move to plugins)
+* kea-dhcp: add "v6-only-preferred" option (contributed by darses)
+* openvpn: add deprecation notices for legacy components (will move to plugins)
+* openvpn: support "password first" for static-challenges
+* unbound: add support for forward-first when configuring forwarders (contributed by Nigel Jones)
+* wireguard: change tracking of peer status, improve widget and diagnostic
+* backend: add an "import" rc.syshook facility
+* backend: change the "monitor" rc.syshook facility and de-deprecate its use
+* backend: remove unused functions and move once-used functions to their call script
+* mvc: wrap locks around updates and perform some minor cleanups in ApiMutableModelControllerBase
+* mvc: move "lazy loading" option to base model implementation and force usage on run_migrations.php
+* mvc: safeguard checkToken() to prevent fetching an non existing POST item
+* ui: upgrade ChartJS to v4
+* ui: change backdrop background color to black in dark theme
+* ui: create a unified layout partial for the apply button
+* plugins: adjust all themes for ChartJS 4 use
+* plugins: treat empty string like null on argument map
+* plugins: os-acme-client 4.9 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/security/acme-client/pkg-descr>`__ 
+* src: ipfw: make 'ipfw show' output compatible with 'ipfw add' command
+* src: pf: stop using net_epoch to synchronize access to eth rules
+* src: e1000: fix vlan PCP/DEI on lem(4)
+* src: igc: remove unused register IGC_RXD_SPC_VLAN_MASK
+* src: ifnet: detach BPF descriptors on interface vmove event
+* src: libkern: add ilog2 macro et al
+* src: ipfw: add missing initializer for 'limit' table value
+* src: pf: add extra SCTP multihoming probe points
+* src: pf: verify SCTP v_tag before updating connection state
+* src: pf: verify that ABORT chunks are not mixed with DATA chunks
+* src: pf: allow ICMP messages related to an SCTP state to pass
+* src: pf: add 'allow-related' to always allow SCTP multihome extra connections
+* src: bpf: fix potential race conditions
+* src: net: if_media for 100BASE-BX
+* src: rtw89: update Realtek rtw88/rtw89 driver et al
+* src: net80211: 11ac: add options to manage VHT STBC
+* src: ifconfig: make -vht work
+* src: iwlwifi: update Intel iwlwifi/mvm driver et al
+* src: ixgbe: Add ixgbe_dev_from_hw() back
+* ports: ca_root_nss / nss 3.108 `[3] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_108.html>`__ 
+* ports: curl 8.12.1 `[4] <https://curl.se/changes.html#8_12_1>`__ 
+* ports: openssh-portable 9.9p2 `[5] <https://www.openssh.com/txt/release-9.9p2>`__ 
+* ports: php83 8.3.17 `[6] <https://www.php.net/ChangeLog-8.php#8.3.17>`__ 
+* ports: py-duckdb 1.2.0 `[7] <https://github.com/duckdb/duckdb/releases/tag/v1.2.0>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.1.1 (February 12, 2025)
 --------------------------------------------------------------------------
 
