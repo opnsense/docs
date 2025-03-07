@@ -265,3 +265,113 @@ source in the encapsulating IPv4/IPv6 header.
 
 
 Read `VXLAN Bridge </manual/how-tos/vxlan_bridge.html>`_ for an example configuration with a common setup.
+
+----------------
+Point-to-Point
+----------------
+
+Point-to-Point (PP) interfaces provide direct connectivity between two endpoints without any intermediary devices. These interfaces are commonly used for WAN connections,
+tunneling, or direct link setups where `broadcast` and `multiple access` are not needed.
+
+The following `Link Types` are available for these interfaces:
+
+.. tabs::
+
+   .. tab:: PPP (Point-to-Point Protocol)
+
+      A widely used protocol for establishing direct connections over serial links, often utilized for
+      dial-up and DSL connections. Supports authentication (PAP/CHAP), compression, and error detection.
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Link interfaces**                       Select one interface for normal PPP and least two interfaces for Multilink (MLPPP) connections.
+      **Description**                           You may enter a description here for your reference. Description will appear in the "Interfaces Assign" select lists
+      **Service Provider**                      Select the country, Provider and Plan for the PPP connection.
+      **Username**                              Enter your username for CHAP authentication.
+      **Password**                              Enter your password for CHAP authentication.
+      **Phone Number**                          Typically ``*99#`` for GSM networks and ``#777`` for CDMA networks
+      **Access Point Name (APN)**               Enter the APN for your service provider. E.g., ``internet.t-d1.de`` for T-Mobile.
+      ========================================= ====================================================================================
+
+      ========================================= ====================================================================================
+      **Advanced Option**                       **Description**
+      ========================================= ====================================================================================
+      **APN number (optional)**                 Defaults to 1 if you set APN above. Ignored if you set no APN above.
+      **SIM PIN**                               Enter the SIM PIN if your service provider requires it. Leave blank if not required.
+      **SIM PIN wait**                          Time to wait for SIM to discover network after PIN is sent to SIM (seconds).
+      **Init String**                           Enter the modem initialization string here. Do not include the "AT" string at the beginning of the command.
+                                                Many modern USB 3G modems don't need an initialization string.
+      **Connection Timeout**                    Enter timeout in seconds for connection to be established (sec.) Default is 45 sec.
+      **Uptime Logging**                        This option causes cumulative uptime to be recorded and displayed on the Status Interfaces page.
+      **Dial On Demand**                        This option causes the interface to operate in dial-on-demand mode.
+                                                Do not enable if you want your link to be always up. The interface is configured, but the actual
+                                                connection of the link is delayed until qualifying outgoing traffic is detected.
+      **Idle Timeout**                          (seconds) Default is 0, which disables the timeout feature. If no incoming or outgoing packets are transmitted
+                                                for the entered number of seconds the connection is brought down.
+                                                When the idle timeout occurs, if the dial-on-demand option is enabled, mpd goes back into dial-on-demand mode.
+                                                Otherwise, the interface is brought down and all associated routes removed.
+      **Compression**                           This option enables Van Jacobson TCP header compression, which saves several bytes per TCP data packet.
+                                                You almost always want this option. This compression ineffective for TCP connections with enabled modern extensions
+                                                like time stamping or SACK, which modify TCP options between sequential packets.
+      **TCPmssFix**                             This option causes mpd to adjust incoming and outgoing TCP SYN segments so that the requested maximum segment
+                                                size is not greater than the amount allowed by the interface MTU. This is necessary in many setups to avoid problems
+                                                caused by routers that drop ICMP Datagram Too Big messages. Without these messages, the originating machine sends data,
+                                                it passes the rogue router then hits a machine that has an MTU that is not big enough for the data.
+                                                Because the IP Don't Fragment option is set, this machine sends an ICMP Datagram Too Big message back to the originator
+                                                and drops the packet. The rogue router drops the ICMP message and the originator never gets to discover that
+                                                it must reduce the fragment size or drop the IP Don't Fragment option from its outgoing data.
+      **ShortSeq**                              This option is only meaningful if multi-link PPP is negotiated. It proscribes shorter multi-link fragment headers,
+                                                saving two bytes on every frame. It is not necessary to disable this for connections that are not multi-link.
+      **ACFComp**                               Address and control field compression. This option only applies to asynchronous link types. It saves two bytes per frame.
+      **ProtoComp**                             Protocol field compression. This option saves one byte per frame for most frames.
+      ========================================= ====================================================================================
+
+
+   .. tab:: PPPoE (Point-to-Point Protocol over Ethernet)
+
+      Encapsulates PPP frames within Ethernet frames, enabling authentication and connection management
+      over broadband connections like DSL. Typically used with ISPs for user authentication.
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Link interfaces**                       Select one parent interface for PPP encapsulation.
+      **Description**                           You may enter a description here for your reference. Description will appear in the "Interfaces Assign" select lists
+      **Username**                              Enter your username for CHAP authentication.
+      **Password**                              Enter your password for CHAP authentication.
+      **Service name**                          This field can usually be left empty unless specified by the provider.
+      **Host-Uniq**                             This field can usually be left empty unless specified by the provider.
+      ========================================= ====================================================================================
+
+      .. Note:: Check the PPP tab for all advanced options.
+
+
+   .. tab:: PPTP (Point-to-Point Tunneling Protocol)
+
+      A VPN protocol that uses PPP to encapsulate network packets and secure data transmission.
+      While widely supported, PPTP is considered insecure due to weak encryption mechanisms.
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Link interfaces**                       Select one parent interface for PPP encapsulation.
+      **Description**                           You may enter a description here for your reference. Description will appear in the "Interfaces Assign" select lists
+      **Username**                              Enter your username for CHAP authentication.
+      **Password**                              Enter your password for CHAP authentication.
+      ========================================= ====================================================================================
+
+      .. Note:: Check the PPP tab for all advanced options.
+
+
+   .. tab:: L2TP (Layer 2 Tunneling Protocol)
+
+      An extension of PPTP that does not provide encryption on its own but was often paired with IPsec
+      for secure tunneling. Used for VPN connections and remote access setups.
+
+      .. Note:: Check the PPTP and PPP tab for all options.
+
+
+.. Note:: The ``ppp`` log files can be found in :menuselection:`System --> Log Files --> General`.
+
+Read `PPPoE ISP Setup </manual/how-tos/pppoe_isp_setup.html>`_ for an example configuration of PPPoE with VLAN Tag for an ISP connection.
