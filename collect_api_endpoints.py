@@ -39,16 +39,11 @@ def source_url(repo, src_filename):
     else:
         return "https://github.com/opnsense/core/blob/master/%s" % "/".join(parts[parts.index('src'):])
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument('source', help='source directory')
-    parser.add_argument('--repo', help='target repository', default="core")
-    parser.add_argument('--debug', help='enable debug mode', default=False, action='store_true')
-    cmd_args = parser.parse_args()
 
+def collect_api_modules(source: str, debug: bool = False) -> dict[str, list[dict]]:
     # collect all endpoints
     all_modules = dict()
-    for root, dirs, files in os.walk(cmd_args.source):
+    for root, dirs, files in os.walk(source):
         for fname in sorted(files):
             filename = os.path.join(root, fname)
             skip = False
@@ -58,16 +53,19 @@ if __name__ == '__main__':
                     break
             if not skip and filename.lower().endswith('controller.php') and filename.find('mvc/app/controllers') > -1 \
                     and root.endswith('Api'):
-                payload = ApiParser(filename, cmd_args.debug).parse_api_php()
+                payload = ApiParser(filename, debug).parse_api_php()
                 if len(payload) > 0:
                     if payload['module'] not in all_modules:
                         all_modules[payload['module']] = list()
                     all_modules[payload['module']].append(payload)
+    return all_modules
 
+
+def render(all_modules: dict[str, list[dict]], repo: str):
     # writeout .rst files
     for module_name in all_modules:
         target_filename = "%s/source/development/api/%s/%s.rst" % (
-            os.path.dirname(__file__), cmd_args.repo, module_name
+            os.path.dirname(__file__), repo, module_name
         )
         print("update %s" % target_filename)
         template_data = {
@@ -103,3 +101,14 @@ if __name__ == '__main__':
                 template_filename = "collect_api_endpoints.in"
             template = Template(open(template_filename, "r").read())
             f_out.write(template.render(template_data))
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('source', help='source directory')
+    parser.add_argument('--repo', help='target repository', default="core")
+    parser.add_argument('--debug', help='enable debug mode', default=False, action='store_true')
+    cmd_args = parser.parse_args()
+
+    modules = collect_api_modules(cmd_args.source, cmd_args.debug)
+    render(modules, cmd_args.repo)
