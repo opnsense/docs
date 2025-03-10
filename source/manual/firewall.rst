@@ -54,6 +54,42 @@ a connection is saved into a local dictionary which will be resolved when the ne
 The consequence of this is that when a state exists, the firewall doesn't need to process all its rules again to determine
 the action to apply, which has huge performance advantages.
 
+Another advantage of stateful packet filtering is that you only need to allow traffic in one direction to automatically
+allow related packets for the same flow back in. Below diagram shows a tcp connection from a client to a server for https
+traffic, when not using stateful rules, both the client should be permitted to send traffic to the server at port 443
+as the server back to the client (usually a port >=1024).
+
+.. _Firewall_States:
+
+.. blockdiag::
+   :desctable:
+
+   blockdiag {
+        group {
+            color = "#eee";
+            label = "Client [tcp:1024]";
+            client_req [label="request"];
+            client_res [label=""];
+        }
+
+        group {
+            color = "#eee";
+            label = "Firewall";
+            firewall_req [label=""];
+            firewall_res [label=""];
+        }
+
+        group {
+            color = "#eee";
+            label = "Server [tcp:443]";
+            server_req [label=""];
+            server_res [label="reply"];
+        }
+        client_req -> firewall_req -> server_req [color=green];
+        client_res <- firewall_res <- server_res [color=red];
+    }
+
+
 The use of states can also improve security particularly in case of tcp type traffic, since packet sequence numbers and timestamps are also checked in order
 to pass traffic, it's much harder to spoof traffic.
 
