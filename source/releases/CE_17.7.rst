@@ -210,7 +210,7 @@ Here are the full patch notes:
 * ports: lighttpd 1.4.48 `[5] <https://www.lighttpd.net/2017/11/11/1.4.48/>`__ 
 * ports: php 7.1.12 `[6] <https://php.net/ChangeLog-7.php#7.1.12>`__ 
 * ports: pkg 1.10.3 `[7] <https://github.com/freebsd/freebsd-ports/commit/c6da09c68>`__ 
-* ports: py-Jinja2 2.10 `[8] <http://jinja.pocoo.org/docs/2.10/changelog/#version-2-10>`__ 
+* ports: py-jinja 2.10 `[8] <https://jinja.palletsprojects.com/en/stable/changes/#version-2-10>`__ 
 * ports: syslogd 11.1
 
 A hotfix release was issued as 17.7.9_8:

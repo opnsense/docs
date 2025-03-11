@@ -307,7 +307,7 @@ Here are the full patch notes:
 * interfaces: align GIF configuration with base system options
 * interfaces: fix default handling for VIP nobind option
 * interfaces: allow VIP nobind feature on CARP addresses
-* interfaces: stop mpd5 daemon before starting
+* interfaces: stop MPD process before starting
 * interfaces: always show interface in GIF and GRE overview even on VIP use
 * interfaces: fix GIF and GRE VIP use loading order in IP alias cases
 * interfaces: remove device creation side effect from bridge, LAGG, GIF, GRE and VLAN GUI pages

@@ -1049,36 +1049,27 @@ At this point, using any of the two methods, you should be on OPNsense
 15.1.7-78bdb9aef FreeBSD 10.1-RELEASE-p6.
 
 This is the official change log:
+
 * Fix integer overflow in IGMP protocol `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:04.igmp.asc>`__ 
 * Fix vt(4) crash with improper ioctl parameters `[2] <https://security.freebsd.org/advisories/FreeBSD-EN-15:01.vt.asc>`__ 
 * Updated base system OpenSSL to 1.0.1l `[3] <https://security.freebsd.org/advisories/FreeBSD-EN-15:02.openssl.asc>`__ 
 * Fix freebsd-update libraries update ordering issue `[4] <https://security.freebsd.org/advisories/FreeBSD-EN-15:03.freebsd-update.asc>`__ 
-* Disabled OpenSSH's High Performance SSH/SCP and None-Cipher extensions to
-  follow up on several security-related discussions.
-* Switched from a heavy Bind installation to a lightweight one to reduce
-  attack surface.
-* Removed and replaced the legacy :code:`check_reload_status` daemon with a
-  Python-based rewrite.
+* Disabled OpenSSH's High Performance SSH/SCP and None-Cipher extensions to follow up on several security-related discussions.
+* Switched from a heavy Bind installation to a lightweight one to reduce attack surface.
+* Removed and replaced the legacy :code:`check_reload_status` daemon with a Python-based rewrite.
 * Fixed the auto-login console lockout regression introduced in 15.1.6.1.
-* Fixed a problem associated with OpenVPN not being able to read passwords
-  from files.
-* Notable ports upgrades: bind-tools 9.10.2, strongswan 5.2.2_1, curl 7.41
-  plus our LibreSSL fixes for mpd4/mpd5/libpdel.
+* Fixed a problem associated with OpenVPN not being able to read passwords from files.
+* Notable ports upgrades: bind-tools 9.10.2, strongswan 5.2.2_1, curl 7.41 plus our LibreSSL fixes for mpd/libpdel.
 * Removed PHP-FPM remnants from IPv6 and OpenVPN scripts.
-* Fixed several OpenSSL invokes to use the latest port version as opposed
-  to the base version.
+* Fixed several OpenSSL invokes to use the latest port version as opposed to the base version.
 * Improved memory/disc/swap usage on the dashboard.
 * Properly set DNS Resolver Advanced defaults.
 * Fixed append of custom Unbound scrips.
-* Modified the root menu shell to pass through to a real shell when arguments
-  are given.
+* Modified the root menu shell to pass through to a real shell when arguments are given.
 * Zapped the spurious "Array" prefix in user-defined aliases.
 * Moved the bogons files fetch location to a local mirror.
-* The core.git development boot hook has been improved to properly include
-  /usr/local/etc/rc changes.
-* All of our packages are now annotated as coming from our mirror as well as
-  additional safeguards potentially allowing you to use additional FreeBSD
-  packages on top of OPNsense.
+* The core.git development boot hook has been improved to properly include /usr/local/etc/rc changes.
+* All of our packages are now annotated as coming from our mirror as well as additional safeguards potentially allowing you to use additional FreeBSD packages on top of OPNsense.
 
 
 --------------------------------------------------------------------------

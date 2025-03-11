@@ -337,12 +337,12 @@ Here are the full patch notes:
 * src: aesni: avoid a potential out-of-bounds load in aes_encrypt_icm()
 * ports: curl 7.79.1 `[6] <https://curl.se/changes.html#7_79_1>`__ 
 * ports: dnspython 2.1.0 `[7] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
-* ports: jinja 3.0.1 `[8] <https://jinja.palletsprojects.com/en/3.0.x/changes/#version-3-0-1>`__ 
-* ports: libressl 3.3.5 `[9] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.5-relnotes.txt>`__ 
-* ports: lighttpd 1.4.60 `[10] <https://www.lighttpd.net/2021/10/3/1.4.60/>`__ 
-* ports: nss 3.71 `[11] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_71.html>`__ 
-* ports: openvpn 2.5.4 `[12] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.4>`__ 
-* ports: php 7.4.24 `[13] <https://www.php.net/ChangeLog-7.php#7.4.24>`__ 
+* ports: libressl 3.3.5 `[8] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.5-relnotes.txt>`__ 
+* ports: lighttpd 1.4.60 `[9] <https://www.lighttpd.net/2021/10/3/1.4.60/>`__ 
+* ports: nss 3.71 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_71.html>`__ 
+* ports: openvpn 2.5.4 `[11] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.4>`__ 
+* ports: php 7.4.24 `[12] <https://www.php.net/ChangeLog-7.php#7.4.24>`__ 
+* ports: py-jinja 3.0.1 `[13] <https://jinja.palletsprojects.com/en/stable/changes/#version-3-0-1>`__ 
 * ports: strongswan 5.9.4 `[14] <https://github.com/strongswan/strongswan/releases/tag/5.9.4>`__ 
 * ports: sudo 1.9.8p2 `[15] <https://www.sudo.ws/stable.html#1.9.8p2>`__ 
 
@@ -479,7 +479,7 @@ Here are the full patch notes:
 * ports: libressl 3.3.4 `[8] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.4-relnotes.txt>`__ 
 * ports: nss 3.69 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_69.html>`__ 
 * ports: monit 5.29.0 `[10] <https://mmonit.com/monit/changes/>`__ 
-* ports: mpd5 adds L2TP interoperability fix from upstream
+* ports: mpd adds L2TP interoperability fix from upstream
 * ports: openssl 1.1.1l `[11] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: php 7.4.23 `[12] <https://www.php.net/ChangeLog-7.php#7.4.23>`__ 
 * ports: strongswan 5.9.3 `[13] <https://github.com/strongswan/strongswan/releases/tag/5.9.3>`__ 

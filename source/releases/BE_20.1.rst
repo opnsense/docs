@@ -487,7 +487,7 @@ And here are the full patch notes against version 20.1-RC1:
 Known issues and limitations:
 
 * HardenedBSD 12.1 has been postponed to the next major release
-* Legacy MPD5 plugins os-l2tp, os-pppoe and os-pptp have been deprecated and will no longer receive updates
+* Legacy MPD plugins os-l2tp, os-pppoe and os-pptp have been deprecated and will no longer receive updates
 * To prevent stale configuration files for remote syslog we advise to setup the new targets first `[9] <https://docs.opnsense.org/manual/settingsmenu.html#logging-targets>`__  and disable the old ones under System: Settings: Logging
 * i386 has not been deprecated for the time being ;)
 
@@ -587,7 +587,7 @@ Known issues and limitations:
 * HardenedBSD 12.1 has been postponed to the next major release
 * Nano growfs does not work on this release candidate, but a fix for 20.1 already exists
 * Installer still advertises 19.7, but a fix for 20.1 already exists
-* Legacy MPD5 plugins os-l2tp, os-pppoe and os-pptp have been deprecated and will no longer receive updates
+* Legacy MPD plugins os-l2tp, os-pppoe and os-pptp have been deprecated and will no longer receive updates
 * i386 has not been deprecated for the time being ;)
 
 The public key for the 20.1 series is:

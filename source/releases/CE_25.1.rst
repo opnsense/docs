@@ -27,6 +27,58 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.1.3 (March 11, 2025)
+--------------------------------------------------------------------------
+
+
+* system: implement user CSV export/import functionality (sponsored by: m.a.x. it)
+* system: switch boot logo and MOTD to the new-style logo (contributed by Gavin Chappell)
+* system: migrate 'default' tunable value to empty one and improve UX
+* system: bring back user/group audit messages lost in MVC conversion
+* system: replace legacy service widget hook with a proper configd call
+* interface: use shared base_bootgrid_table and base_apply_button where possible
+* interfaces: remove obsolete code in get_real_interfaces() to match getRealInterface()
+* interfaces: improve validation for CARP/proxy ARP VIP
+* interfaces: remove defunct "other" VIP type
+* interfaces: skip "nosync" processing on VIPs
+* firewall: support partial alias exports
+* kea-dhcp: use shared base_bootgrid_table and base_apply_button
+* network time: move XMLRPC definition to correct file
+* openvpn: add DCO validation for fragment size
+* unbound: use shared base_bootgrid_table and base_apply_button
+* unbound: fix model migration pertaining to "dots" model changes
+* wireguard: use shared base_bootgrid_table and base_apply_button
+* backend: allow pluginctl to filter on -x/-X option
+* mvc: decode HTML tags in menu items
+* mvc: fix unit tests for model relation fields
+* plugins: os-caddy 1.8.3 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* plugins: os-dmidecode 1.2 adds new dashboard widget (contributed by Neil Merchant)
+* plugins: os-frr 1.43 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/net/frr/pkg-descr>`__ 
+* plugins: os-intrusion-detection-content-pt-open 1.0 (contributed by kulikov-a)
+* plugins: os-sftp-backup 1.0 allows configuration backups over SFTP
+* plugins: os-zabbix-agent 1.15 `[3] <https://github.com/opnsense/plugins/blob/stable/25.1/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.12 `[4] <https://github.com/opnsense/plugins/blob/stable/25.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* src: carp: fix checking IPv4 multicast address
+* src: icmp: use per rate limit randomized jitter
+* src: ixgbe: Fix a logic error in ixgbe_read_mailbox_vf()
+* src: netinet6: do not forward to the unspecified address
+* src: netinet: do not forward or ICMP response to INADDR_ANY
+* src: netinet: ipsec and ktls cannot coexists
+* src: pf: align sanity checks for pfrw_free
+* src: pf: allow all forms of neighbor advertisements in either direction
+* src: pf: cleanup leftover PF_ICMP_MULTI_\* code that is not needed anymore
+* src: pf: do not keep state when dropping overlapping IPv6 fragments
+* src: pf: drop IPv6 packets built from overlapping fragments in pf reassembly
+* src: pf: fix fragment hole count
+* src: sysctl: enable vnet sysctl variables to be loader tunable
+* ports: mpd default logging level increased to LOG_NOTICE
+* ports: nss 3.109 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_109.html>`__ 
+* ports: pftop 0.12
+* ports: py-jinja 3.1.6 `[6] <https://jinja.palletsprojects.com/en/stable/changes/#version-3-1-6>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.1.2 (February 28, 2025)
 --------------------------------------------------------------------------
 

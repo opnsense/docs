@@ -479,7 +479,7 @@ Here are the full patch notes against version 20.7-RC1:
 
 Known issues and limitations:
 
-* legacy MPD5 plugins os-l2tp, os-pppoe and os-pptp are no longer available
+* legacy MPD plugins os-l2tp, os-pppoe and os-pptp are no longer available
 * i386 architecture builds are no longer available
 
 The public key for the 20.7 series is:
@@ -594,7 +594,7 @@ Here are the full patch notes against 20.1.8_1:
 
 Known issues and limitations:
 
-* Legacy MPD5 plugins os-l2tp, os-pppoe and os-pptp will no longer be available
+* Legacy MPD plugins os-l2tp, os-pppoe and os-pptp will no longer be available
 * i386 architecture builds will no longer be available
 * Installer still advertises 20.1
 

@@ -501,7 +501,7 @@ Here are the full patch notes:
 * plugins: os-tukan 1.4 (contributed by Team Rebellion)
 * plugins: os-vnstat 1.0 (contributed by Michael Muenz)
 * plugins: os-zerotier fixes status table (contributed by Christoph Engelbert)
-* ports: mpd5 upstream MTU fix `[2] <https://github.com/freebsd/freebsd-ports/commit/7d765cc2f>`__ 
+* ports: mpd upstream MTU fix `[2] <https://github.com/freebsd/freebsd-ports/commit/7d765cc2f>`__ 
 * ports: PHP 7.1.23 `[3] <https://php.net/ChangeLog-7.php#7.1.23>`__ 
 
 A hotfix release was issued as 18.7.5_1:
@@ -751,7 +751,7 @@ Here are the full patch notes:
 * src: resource exhaustion in TCP reassembly `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-18:08.tcp.asc>`__ 
 * ports: curl 7.61.0 `[2] <https://curl.haxx.se/changes.html>`__ 
 * ports: hyperscan 4.7.0 `[3] <https://github.com/intel/hyperscan/releases/tag/v4.7.0>`__ 
-* ports: mpd5 upstream fixes `[4] <https://github.com/freebsd/freebsd-ports/commit/67bbe6317>`__  `[5] <https://github.com/freebsd/freebsd-ports/commit/052b84f3ec>`__ 
+* ports: mpd upstream fixes `[4] <https://github.com/freebsd/freebsd-ports/commit/67bbe6317>`__  `[5] <https://github.com/freebsd/freebsd-ports/commit/052b84f3ec>`__ 
 * ports: py-cryptography 2.3 `[6] <https://cryptography.io/en/latest/changelog/#v2-3>`__ 
 * ports: py-idna 2.7 `[7] <https://github.com/kjd/idna/releases/tag/v2.7>`__ 
 
