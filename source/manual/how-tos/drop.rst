@@ -54,8 +54,6 @@ Set the refresh frequency to 1 for each day.
 
 Press **Save** and then **Apply changes**.
 
-.. image:: images/spamhaus_drop_dropv6.png
-    :width: 100%
 
 ---------------------------------------
 Step 2 - Firewall Rules Inbound Traffic
@@ -88,8 +86,6 @@ Enter the following configuration and leave all other parameters on default valu
  **Description**     Block DROPv6     *Freely chosen description*
 =================== ================ =============================================
 
-.. image:: images/spamhaus_wan_rules.png
-    :width: 100%
 
 
 **Save**
@@ -124,8 +120,6 @@ lower right corner.
 
 **Save** and **Apply changes**
 
-.. image:: images/spamhaus_lan.png
-    :width: 100%
 
 **DONE**
 
@@ -133,7 +127,5 @@ lower right corner.
 Check pf Tables
 ---------------
 To list the IP addresses that are currently in the DROP and DROPv6 lists go to
-:menuselection:`Firewall --> Diagnostics --> Aliases` and select the list you want to see:
+:menuselection:`Firewall --> Diagnostics --> Aliases` and select the list you want to see.
 
-.. image:: images/spamhaus_pftable.png
-    :width: 100%
