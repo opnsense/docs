@@ -143,6 +143,16 @@ Here are the full patch notes:
 * ports: sudo 1.9.16p2 `[21] <https://www.sudo.ws/stable.html#1.9.16p2>`__ 
 * ports: suricata 7.0.8 `[22] <https://suricata.io/2024/12/12/suricata-7-0-8-released/>`__ 
 
+A hotfix release was issued as 24.10.2_6:
+
+* interfaces: exclude automatic radvd like we do for manual
+* firewall: fix unassociated rule creation
+* intrusion detection: cleanse metadata for brackets
+* openvpn: support "password first" for static-challenges
+* unbound: fix model migration pertaining to "dots" model changes
+* plugins: treat empty string like null on argument map
+* ports: openssh 9.9p2 `[23] <https://www.openssh.com/txt/release-9.9p2>`__ 
+* ports: py-jinja 3.1.6 `[24] <https://jinja.palletsprojects.com/en/stable/changes/#version-3-1-6>`__ 
 
 
 
