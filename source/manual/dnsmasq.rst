@@ -1,101 +1,121 @@
-==============
-Dnsmasq DNS
-==============
+==================
+Dnsmasq DNS & DHCP
+==================
 
-Dnsmasq is a lightweight, easy to configure, DNS forwarder, which can be used to answer to dns queries
-from your network.
+`DNSmasq` is a lightweight and easy to configure DNS forwarder and DHCP server.
 
-Similar functionality is also provided by "Unbound DNS", our standard enabled forward/resolver service.
+It is considered the replacement for `ISC-DHCP` in small and medium sized setups,
+and synergizes well with `Unbound DNS`, our standard enabled forward/resolver service.
 
-In some cases people prefer to use dnsmasq or combine it with our default enabled resolver (Unbound).
+---------------------------------
+Considerations before deployment
+---------------------------------
+
+DNS Service
+-----------------------------
+
+Combining `DNSmasq` with `Unbound` can enable synergies, such as DHCP leases that have their hostnames registered in `DNSmasq` to be queried by `Unbound`.
+
+Since `DNSmasq` does not restart on configuration changes and does not need custom scripts to register DNS, it is very resilient and easy to manage.
 
 .. Note::
 
-    Since OPNsense 17.7 Unbound has been our standard DNS service, the main reason for Dnsmasq being shipped
-    in our product is for compatibility. Although there are some use-cases that require Dnsmasq specifically,
-    most users better opt for Unbound.
+    `Unbound` is a recursive resolver, `DNSmasq` a non-resursive forwarding DNS server. This means `DNSmasq` always
+    needs a recursive DNS resolver it can forward its queries to. This can be `Unbound`, or another DNS Service on the internet.
 
+
+In the configuration examples further below, we will always combine `Unbound` with `DNSmasq`.
+
+DHCP Service
+-----------------------------
+
+`DNSmasq` is the perfect DHCP server for small and medium sized setups. The configuration is straight forward, and since it can register the DNS names of leases,
+it can replicate the simplicity known from consumer routers.
+
+If HA for DHCP is a requirement, split pools can be configured for two `DNSmasq` instances. With a dhcp reply delay, the secondary instance will only answer when
+the first instance is unresponsive.
+
+For larger enterprise setups, `KEA DHCP` can be a viable alternative. It supports lease synchronisation via REST API, which means both DHCP servers keep track
+of all existing leases and do not need split pools. It is also far more scalable if there are thousands of leases.
+
+The tradeoff using `KEA DHCP` is a more complicated setup, especially when custom DHCP options are needed. DNS registration is also not possible.
+
+With this in mind, pick the right choice for your setup. When in doubt, using `DNSmasq` can be the best choice.
 
 -------------------------
 General settings
 -------------------------
 
 Most settings are pretty straightforward here when the service is enabled, it should just start forwarding dns requests
-when received from the network.
-
-===========================================================================================================================
-
-========================================  =================================================================================
-Enable                                    Enable our DNS Forwarder
-Listen Port                               The port used for responding to DNS queries, when empty the standard (53) will
-                                          be used.
-Network Interfaces                        The interfaces to listen on, when using dynamic interfaces it's not recommended
-                                          to bind to addresses from these interfaces. [All] is the standard, in which
-                                          case you can limit access using the firewall.
-Bind Mode / strict binding                When network interfaces are provided, only bind to the interfaces containing
-                                          the IP addresses selected above, rather than binding to all interfaces and
-                                          discarding queries to other addresses.
-                                          This option does not work with IPv6. If set, Dnsmasq will not
-                                          bind to IPv6 addresses.
-DNSSEC                                    Validate DNS replies and cache DNSSEC data.
-Register ISC DHCP4 Leases                 Register dhcp leases in Dnsmasq, so that their hostnames can be resolved.
-                                          (IPv4 only)
-DHCP Domain Override                      When set use the domain name specified here instead of the system domain
-                                          for registering addresses.
-Register ISC DHCP Static Mappings         Register static dhcp addresses as well.
-Query DNS servers sequentially            If this option is set, Dnsmasq will query the DNS servers sequentially in the
-                                          order specified (System: General Setup: DNS Servers),
-                                          rather than all at once in parallel.
-Require domain                            If this option is set, Dnsmasq will not forward A or AAAA queries for
-                                          plain names, without dots or domain parts, to upstream name servers.
-                                          If the name is not known from /etc/hosts or DHCP then a "not found" answer
-                                          is returned.
-Do not forward private reverse lookups    If this option is set, Dnsmasq will not forward reverse DNS lookups (PTR)
-                                          for private addresses (RFC 1918) to upstream name servers.
-                                          Any entries in the Domain Overrides section forwarding
-                                          private "n.n.n.in-addr.arpa" names to a specific server are still forwarded.
-                                          If the IP to name is not known from /etc/hosts, DHCP or a specific
-                                          domain override then a "not found" answer is immediately returned.
-Log Queries                               Send the results of dns queries to the log.
-========================================  =================================================================================
+when received from the network. DHCP requires at least one dhcp-range and matching dhcp-options.
 
 
-
-
--------------------------
-Host overrides
+DNS Settings
 -------------------------
 
-Here you define static hostnames, which allow you to reply a specific address when being asked, per entry the following options
-are available.
+.. tabs::
 
-============================================================================================================================
+   .. tab:: General
 
-========================================  ==================================================================================
-Host                                      The hostname to register
-Domain                                    The domain name to use
-IP address                                IP address of the host, can be an IPv4 (A record) or an IPv6 address (AAAA record)
-Description                               Descriptive text for this host
-Aliases                                   Register alternative host + domain names for the same IP address
-========================================  ==================================================================================
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+
+      ========================================= ====================================================================================
+
+   .. tab:: Hosts
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+
+      ========================================= ====================================================================================
+
+   .. tab:: Domains
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+
+      ========================================= ====================================================================================
 
 
+DHCP Settings
 -------------------------
-Domain Overrides
--------------------------
 
-If a specific domain should be answered by a different DNS server, you can configure it here.
+.. tabs::
 
-============================================================================================================================
+   .. tab:: DHCP ranges
 
-========================================  ==================================================================================
-Domain                                    The domain name to use
-IP address                                IP address of the authoritative DNS server for this domain
-Port                                      Port number of the target dns server, leave blank for default (53)
-Source IP                                 Source IP address for queries to the DNS server for the override domain.
-                                          Leave blank unless your DNS server is accessed through a VPN tunnel.
-Description                               Descriptive text for this entry
-========================================  ==================================================================================
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+
+      ========================================= ====================================================================================
+
+   .. tab:: DHCP options
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+
+      ========================================= ====================================================================================
+
+   .. tab:: DHCP tags
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+
+      ========================================= ====================================================================================
+
+   .. tab:: DHCP options / match
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+
+      ========================================= ====================================================================================
 
 
 -------------------------
@@ -112,3 +132,37 @@ When more files are placed inside the directory, all will be included in alphabe
 
 .. Note::
     This method replaces the ``Custom options`` settings in the Dnsmasq configuration, which was removed in version 21.1.
+
+
+The DHCP service in `Unbound` uses tags to determine which DHCP ranges and DHCP options to send.
+
+Each interface sets a tag automatically when a DHCP broadcast is received. Choosing an interface in a DHCP range and DHCP option matches this tag.
+
+
+---------------------------------
+Configuration examples
+---------------------------------
+
+
+Combining `DNSmasq DNS` and `Unbound DNS``
+------------------------------------------
+
+
+
+Register hostnames of DHCP leases
+------------------------------------------
+
+
+
+Understanding DHCP tags
+------------------------------------------
+
+
+
+DHCP for simple networks
+------------------------------------------
+
+
+
+DHCP for small and medium sized HA setups
+------------------------------------------
