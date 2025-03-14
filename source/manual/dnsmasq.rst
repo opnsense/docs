@@ -7,6 +7,8 @@ Dnsmasq DNS & DHCP
 It is considered the replacement for `ISC-DHCP` in small and medium sized setups,
 and synergizes well with `Unbound DNS`, our standard enabled forward/resolver service.
 
+Our system setup wizard configures `Unbound DNS` for DNS and `DNSmasq` for DHCP.
+
 ---------------------------------
 Considerations before deployment
 ---------------------------------
@@ -270,38 +272,237 @@ When more files are placed inside the directory, all will be included in alphabe
     It is the sole responsibility of the administrator which places a file in the extension directory to ensure that the configuration is
     valid.
 
-.. Note::
-    This method replaces the ``Custom options`` settings in the Dnsmasq configuration, which was removed in version 21.1.
-
-
-The DHCP service in `Unbound` uses tags to determine which DHCP ranges and DHCP options to send.
-
-Each interface sets a tag automatically when a DHCP broadcast is received. Choosing an interface in a DHCP range and DHCP option matches this tag.
-
 
 ---------------------------------
 Configuration examples
 ---------------------------------
 
+.. Tip::
 
-Combining `DNSmasq DNS` and `Unbound DNS``
+    Using DNSmasq for DHCP and DNS for internal device hostnames
+    is the recommended default configuration for most setups.
+
+DNS and DHCP for simple networks
 ------------------------------------------
 
+DNSmasq can be used as a DNS forwarder. Though in our recommended setup, we will not use it as our default DNS server.
+
+We will use Unbound as primary DNS server for our clients, and only forward some internal zones to DNSmasq which manages the hostnames of
+DHCP registered leases.
+
+This requires DNSmasq to run with a non-standard port other than 53.
+
+- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> General` and set:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Enable**                          ``X``
+**Listen Port**                     ``53053``
+==================================  =======================================================================================================
+
+- Press **Apply**
+
+Afterwards we can configure Unbound to forward the zones to DNSmasq.
+
+- Go to :menuselection:`Services --> Unbound DNS --> General` and set:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Enable**                          ``X``
+**Listen Port**                     ``53``
+==================================  =======================================================================================================
+
+- Press **Apply**
+
+- Go to :menuselection:`Services --> Unbound DNS --> Query Forwarding` and create an entry for each DHCP range you plan to configure.
+
+In our example, we use 3 DHCP ranges, so we will configure ``lan.internal`` and ``guest.internal``.
+
+.. tabs::
+
+    .. tab:: lan.internal
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Domain**                          ``lan.internal``
+        **Server IP**                       ``127.0.0.1``
+        **Server Port**                     ``53053``
+        ==================================  =======================================================================================================
+
+        - Press **Save** and add next
+
+    .. tab:: guest.internal
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Domain**                          ``guest.internal``
+        **Server IP**                       ``127.0.0.1``
+        **Server Port**                     ``53053``
+        ==================================  =======================================================================================================
+
+        - Press **Save** and **Apply**
+
+.. Note::
+
+    ``.internal`` is the IANA and ICANN approved TLD (Top Level Domain) for internal use. If you instead own a TLD, e.g., ``example.com``, you could create a zone
+    thats not used on the internet, e.g., ``lan.internal.example.com``.
+
+.. Attention::
+
+    Using a FQDN (Full Qualified Domain Name) is required for this setup to work. You cannot use short names since they cannot be matched by query forwarding.
+    If you instead want to resolve short names directly, using DNSmasq as primary DNS server for clients is the only choice.
+    Though this comes with more restrictions, since the same short name cannot exist in two DHCP ranges at the same time.
+    Using FQDNs is superior and prevents these issues.
 
 
-Register hostnames of DHCP leases
+Now that we have the DNS infrastructure set up, we can configure the DHCP ranges and DHCP options.
+
+- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> General` and set:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Interface**                       ``LAN, GUEST`` (The network interfaces which will serve DHCP, this registers firewall rules)
+**DHCP fqdn**                       ``X``
+**DHCP default domain**             ``internal`` (or leave empty to use this system's domain)
+**DHCP register firewall rules**    ``X``
+==================================  =======================================================================================================
+
+- Press **Apply**
+
+.. Note::
+
+    Ignore the ISC / KEA DHCP (legacy) options as our setup does not require them. We use the DNSmasq built in DHCP/DNS register functionality
+    with Unbound DNS query forwarding.
+
+As next step we define the DHCP ranges for our interfaces.
+
+- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP ranges` and set:
+
+.. tabs::
+
+    .. tab:: LAN
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Interface**                       ``LAN``
+        **Start address**                   ``192.168.1.100``
+        **End address**                     ``192.168.1.199``
+        **Domain**                          ``lan.internal``
+        ==================================  =======================================================================================================
+
+        - Press **Save** and add next
+
+        .. Note::
+
+            If a host receives a DHCP lease from this range, and it advertises a hostname, it will be registered under the chosen domain name.
+            E.g., a host named ``nas01`` will become ``nas01.lan.internal``. This is the FQDN a client can query to receive the current
+            IP address.
+
+    .. tab:: GUEST
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Interface**                       ``GUEST``
+        **Start address**                   ``192.168.10.100``
+        **End address**                     ``192.168.10.199``
+        **Domain**                          ``guest.internal``
+        ==================================  =======================================================================================================
+
+        - Press **Save** and **Apply**
+
+The final step is to set DHCP options for the ranges, at least router[3] and dns-server[6] should be announced.
+
+- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP options` and set:
+
+.. tabs::
+
+    .. tab:: LAN
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Option**                          router[3]
+        **Interface**                       ``LAN``
+        **Value**                           ``192.168.1.1`` (the interface IP address of LAN, or a virtual IP of LAN)
+        ==================================  =======================================================================================================
+
+        - Press **Save** and add next
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Option**                          dns-server[6]
+        **Interface**                       ``LAN``
+        **Value**                           ``192.168.1.1`` (Unbound listens the interface IP address of LAN, or a virtual IP of LAN)
+        ==================================  =======================================================================================================
+
+        - Press **Save** and add next
+
+        .. Note::
+
+            Instead of setting the interface IP address as value, the special address 0.0.0.0 can be used to implicitely set it as `the server DNSmasq
+            is running on`. Though in some scenarios that is not possible, e.g., when using a virtual IP addresses. So for consistency, this guide suggests
+            setting each IP address explicitely to avoid confusion.
+
+    .. tab:: Guest
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Option**                          router[3]
+        **Interface**                       ``GUEST``
+        **Value**                           ``192.168.10.1`` (the interface IP address of GUEST, or a virtual IP of GUEST)
+        ==================================  =======================================================================================================
+
+        - Press **Save** and add next
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Option**                          dns-server[6]
+        **Interface**                       ``GUEST``
+        **Value**                           ``192.168.10.1`` (Unbound listens the interface IP address of GUEST, or a virtual IP of GUEST)
+        ==================================  =======================================================================================================
+
+        - Press **Save** and **Apply**
+
+
+.. Attention::
+
+    If DNSmasq does not start, check that ISC-DHCP and KEA DHCP are not active since they will block the bindable ports this DHCP server requires.
+
+
+Verifying the setup
 ------------------------------------------
 
+Now that the setup is complete, the following will happen in regards of DHCP and DNS.
 
+1.  A new device (e.g. a smartphone) joins the LAN network and sends a DHCP Discover broadcast.
+2.  DNSmasq receives this broadcast on port 67 and responds with a DHCP offer, containing an available IP address and DHCP options for router[3] and dns-server[6].
+3.  The device sends a DHCP request to request the available IP address, and possibly send its own hostname.
+4.  DNSmasq acknowledges the request.
 
-Understanding DHCP tags
-------------------------------------------
+Our smartphone now has the following IP configuration:
 
+- IP address: ``192.168.1.100``
+- Default Gateway: ``192.168.1.1``
+- DNS Server: ``192.168.1.1``
 
+At the same time, DNSmasq registers the DNS hostname of the smartphone (if it exists). Since we configured the FQDN option and domain in the DHCP range, the name of the
+smartphone will be: ``smartphone.lan.internal``.
 
-DHCP for simple networks
-------------------------------------------
+When a client queries `Unbound` for exactly ``smartphone.lan.internal``, the configured query forwarding sends the request to the DNS server responsible for ``lan.internal``
+which is our configured `DNSmasq` listening on ``127.0.0.1:53053``. ``DNSmasq`` responds to this query and will resolve the current A-Record of ``smartphone.lan.internal`` to
+``192.168.1.100``, sending this information to `Unbound` which in return sends the response back to the client that initially queried.
 
+As you can see, this is a highly integrated and simple setup which leverages just the available DHCP and DNS standards with no trickery involved.
 
 
 DHCP for small and medium sized HA setups
