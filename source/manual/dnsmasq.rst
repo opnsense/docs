@@ -2,6 +2,9 @@
 Dnsmasq DNS & DHCP
 ==================
 
+.. contents:: Index
+
+
 `DNSmasq` is a lightweight and easy to configure DNS forwarder and DHCP server.
 
 It is considered the replacement for `ISC-DHCP` in small and medium sized setups,
@@ -507,3 +510,116 @@ As you can see, this is a highly integrated and simple setup which leverages jus
 
 DHCP for small and medium sized HA setups
 ------------------------------------------
+
+In addition to the setup described above, DNSmasq can be a viable option in a HA setup in small and medium sized network environments.
+
+In contrast to KEA DHCP, it does not offer lease synchronization. Each DNSmasq instance is a separate entity.
+
+The main tricks to make this work are the following options:
+
+- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> General`:
+
+Set this on the current master:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**DHCP reply delay**                Do not set a value here, we want the master to respond first.
+**Disable HA sync**                 ``X``
+==================================  =======================================================================================================
+
+Set this on the current backup:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**DHCP reply delay**                ``10`` (10 seconds is a good starting point)
+**Disable HA sync**                 ``X``
+==================================  =======================================================================================================
+
+.. Note::
+
+    This means, each DHCP Discover will be answered by the master. If the master does not respond for 10 seconds, the backup server will respond.
+    It's important to choose a high enough delay time, otherwise the behavior can be unpredictable in busy networks. The disabled HA sync ensures
+    that the DHCP general settings are not synced between master and backup.
+
+- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP ranges`:
+
+With LAN as example, set this on the current master:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Interface**                       ``LAN``
+**Start address**                   ``192.168.1.100``
+**End address**                     ``192.168.1.199``
+**Disable HA sync**                 ``X``
+==================================  =======================================================================================================
+
+Set this on the current backup:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Interface**                       ``LAN``
+**Start address**                   ``192.168.1.200``
+**End address**                     ``192.168.1.220``
+**Disable HA sync**                 ``X``
+==================================  =======================================================================================================
+
+.. Note::
+
+    Now both master and backup have their own pool in the LAN network. The pool on master is larger, since it will respond to most DHCP discovers.
+    If the master does not respond, the backup server will serve an IP address from its available pool. Since the pools do not overlap, there cannot
+    be an IP address conflict between clients. The disabled HA sync ensures that these pools are not synchronized.
+
+.. Tip::
+
+    Reservations for single hosts created in :menuselection:`Services --> DNSmasq DNS & DHCP --> Host Override` can still be synchronized. They count as their
+    own single IP address pools outside of the defined DHCP ranges. This means both servers will serve the same IP address to a host when queried. There cannot
+    be an IP address conflict in this case. Set the MAC address of the host in the Hardware address field.
+
+With this setup, a simple and efficient HA setup with automatic DNS registration is possible. Yet for larger scalable setups with big IP address ranges in many VLANs,
+KEA DHCP might be the better choice due to its robust HA synchronization options.
+
+
+Understanding DHCP tags
+------------------------------------------
+
+When a DHCP Discover enters a network interface, DNSmasq will automatically set a tag with the interface name.
+
+There are two kinds of operations, `set` a tag and `match` a tag.
+
+You can manually configure additional tags in :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP tags`.
+
+- Setting these tags can be done in multiple spots, e.g., DHCP ranges, DHCP options / match, and Host Overrides.
+- Matching one or multiple tags is mostly relevant in DHCP options.
+
+As example, you want to configure some clients to get a static route via DHCP option in your network.
+
+Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP tags`
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Name**                            ``staticrouteclients``
+==================================  =======================================================================================================
+
+Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP options / match`
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Option**                          ``classless-static-route[121]``
+**Tag [set]**                       ``staticrouteclients``
+**Value**                           Your static route
+==================================  =======================================================================================================
+
+Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP ranges`
+
+Choose all DHCP ranges where you want to advertise this option and select the ``staticrouteclients`` tag in it.
+
+.. Note::
+
+    This is an advanced setup. The recommendation for most setups is to use the default interface tags. You might have more duplicate DHCP options set up,
+    yet the configuration will be more explicit.
