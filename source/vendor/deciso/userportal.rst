@@ -21,7 +21,7 @@ The portal replaces the simple user password menu, which can be found at :menuse
 offers additional functionality for self-service support.
 
 Depending on the configuration users are able to change their password and language here, download and re-generate one time
-password tokens and access OpenVPN profiles for the instances they have access too.
+password tokens and access OpenVPN profiles for the instances they have access to.
 
 
 .. Note::
