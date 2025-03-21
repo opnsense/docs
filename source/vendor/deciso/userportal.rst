@@ -32,7 +32,7 @@ password tokens and access OpenVPN profiles for the instances they have access t
 Administration
 ---------------------------
 
-Under :menuselection:`System: Settings: Portal Admin` you will find the administration part of the portal, this
+Under :menuselection:`System --> Settings --> Portal Admin` you will find the administration part of the portal, this
 includes generic account settings and OpenVPN instance access.
 
 
