@@ -74,5 +74,5 @@ Description                      Description shown to the user for this instance
 .. Tip::
 
     If a user should be allowed to download multiple file formats for the same service, you can duplicate
-    the entry.
+    the entry. Simply use different descriptions per entry.
 
