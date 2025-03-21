@@ -17,7 +17,7 @@ General
 .. image:: images/user_portal.png
     :width: 50%
 
-The portal replaces the simple user password menu, which can be found at :menuselection:`Lobby: Password` and
+The portal replaces the simple user password menu, which can be found at :menuselection:`Lobby --> Password` and
 offers additional functionality for self-service support.
 
 Depending configuration users are able to change their password and language here, download and re-generate one time
