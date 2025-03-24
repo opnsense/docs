@@ -5,7 +5,7 @@ Dnsmasq DNS & DHCP
 .. contents:: Index
 
 
-`DNSmasq` is a lightweight and easy to configure DNS forwarder and DHCP server.
+`DNSmasq` is a lightweight and easy to configure DNS forwarder and DHCPv4/DHCPv6 server.
 
 It is considered the replacement for `ISC-DHCP` in small and medium sized setups,
 and synergizes well with `Unbound DNS`, our standard enabled forward/resolver service.
@@ -38,7 +38,8 @@ DHCP Service
 it can replicate the simplicity known from consumer routers.
 
 If HA for DHCP is a requirement, split pools can be configured for two `DNSmasq` instances. With a dhcp reply delay, the secondary instance will only answer when
-the first instance is unresponsive.
+the first instance is unresponsive. DHCPv6 and Router Advertisements are also an option for small HA setups that do not have fast failover requirements,
+as IPv6 failover can take up to 30 seconds with available configuration options.
 
 For larger enterprise setups, `KEA DHCP` can be a viable alternative. It supports lease synchronisation via REST API, which means both DHCP servers keep track
 of all existing leases and do not need split pools. It is also far more scalable if there are thousands of leases.
@@ -50,7 +51,7 @@ With this in mind, pick the right choice for your setup. When in doubt, using `D
 .. Attention::
 
     There is DHCPv6 and Router Advertisement support. Keep in mind that just as with DHCPv4/DHCPv6 servers, there should not be multiple Router Advertisement servers
-    running on the same system. Right now, radvd is the default RA daemon. If you are unsure, do not enable Router Advertisements in DNSmasq.
+    running on the same system. Right now, :menuselection:`Services --> Router Advertisements` is the default RA daemon. If you are unsure, do not enable them in DNSmasq.
 
 -------------------------
 General Settings
@@ -319,12 +320,8 @@ When more files are placed inside the directory, all will be included in alphabe
 Configuration examples
 ---------------------------------
 
-.. Tip::
 
-    Using DNSmasq for DHCP and DNS for internal device hostnames
-    is the recommended default configuration for most setups.
-
-DNS and DHCP for simple networks
+DNS and DHCPv4 for small networks
 ------------------------------------------
 
 DNSmasq can be used as a DNS forwarder. Though in our recommended setup, we will not use it as our default DNS server.
@@ -360,7 +357,7 @@ Option                              Value
 
 - Go to :menuselection:`Services --> Unbound DNS --> Query Forwarding` and create an entry for each DHCP range you plan to configure.
 
-In our example, we use 3 DHCP ranges, so we will configure ``lan.internal`` and ``guest.internal``.
+In our example, we use 2 DHCP ranges, so we will configure ``lan.internal`` and ``guest.internal``.
 
 .. tabs::
 
@@ -547,7 +544,68 @@ which is our configured `DNSmasq` listening on ``127.0.0.1:53053``. ``DNSmasq`` 
 As you can see, this is a highly integrated and simple setup which leverages just the available DHCP and DNS standards with no trickery involved.
 
 
-DHCP for small and medium sized HA setups
+DHCPv6 with Router Advertisements for small networks
+------------------------------------------------------
+
+DHCPv6 can run at the same time as DHCPv4. Essentially, create another range for DHCPv6 for the same interface as the DHCPv6 variant.
+
+.. Attention::
+
+    DHCPv6 does not have a router option like DHCPv4. To push the default gateway to clients you must use Router Advertisements.
+    This can be done with DNSmasq, but also by a different service like :menuselection:`Services --> Router Advertisements`.
+
+In this example, we add a DHCPv6 range and Router Advertisements to our LAN interface. The following configuration sets stateless
+DHCPv6 and SLAAC. This means clients will use a SLAAC address but query additional DHCPv6 options, e.g. DNS Server.
+
+- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP ranges` and set:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Interface**                       ``LAN``
+**Start address**                   ``::``
+**Constructor**                     ``LAN``
+**RA Mode**                         ``ra-stateless``
+==================================  =======================================================================================================
+
+.. Tip::
+
+    Set ``ra-names`` in addition to ``ra-stateless`` if DNS names should be registered automatically for SLAAC addresses. Please note that this
+    does not work for clients using the IPv6 privacy extensions.
+
+.. Note::
+
+    If do not want to use Router Advertisements, leave the RA Mode on default, and do not enable the Router Advertisement global setting. Ensure
+    that the RA service you use allows for an assisted setup with SLAAC and DHCPv6.
+
+- Press **Save** and go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP options`
+
+We now add an additional DHCPv6 option for the DNS Server.
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Option**                          ``None``
+**Option6**                         ``dns-server [23]``
+**Interface**                       ``LAN``
+**Value**                           ``[::]``
+==================================  =======================================================================================================
+
+.. Note::
+
+    When entering DHCPv6 options, enclosing them in brackets ``[]`` is mandatory. ``[::]`` is a special address and will return the GUA of
+    this server DNSmasq is running on.
+
+Press **Save**
+
+As final step, go to :menuselection:`Services --> DNSmasq DNS & DHCP --> General`
+
+Enable the checkbox ``Router Advertisements`` if you want to use them.
+
+Press **Apply** to activate the new configuration.
+
+
+DHCPv4 for small HA setups
 ------------------------------------------
 
 In addition to the setup described above, DNSmasq can be a viable option in a HA setup in small and medium sized network environments.
@@ -620,6 +678,69 @@ Option                              Value
 
 With this setup, a simple and efficient HA setup with automatic DNS registration is possible. Yet for larger scalable setups with big IP address ranges in many VLANs,
 KEA DHCP might be the better choice due to its robust HA synchronization options.
+
+
+DHCPv6 for small HA setups
+------------------------------------------
+
+Just as with DHCPv4, the same type of configuration can be done for DHCPv6 with a few minor adjustements.
+
+Since IPv6 uses DAD (Duplicate Address Detection), you do not need to create separate pools. SLAAC and DAD will take care of avoiding duplicates.
+
+Special care must be taken for the Router Advertisements. Since both master and backup will send them at the same time, the current default gateway
+must be determined by priority and router lifetime.
+
+- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP ranges`:
+
+Set this on the current master:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Interface**                       ``LAN``
+**Start address**                   ``::``
+**Constructor**                     ``LAN``
+**RA Mode**                         ``ra-stateless``
+**RA Priority**                     ``High``
+**RA Interval**                     ``10``
+**RA Router Lifetime**              ``30``
+**Disable HA sync**                 ``X``
+==================================  =======================================================================================================
+
+Set this on the current backup:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Interface**                       ``LAN``
+**Start address**                   ``::``
+**Constructor**                     ``LAN``
+**RA Mode**                         ``ra-stateless``
+**RA Priority**                     ``Normal``
+**RA Interval**                     ``10``
+**RA Router Lifetime**              ``30``
+**Disable HA sync**                 ``X``
+==================================  =======================================================================================================
+
+As final step, go to :menuselection:`Services --> DNSmasq DNS & DHCP --> General`
+
+Enable the checkbox ``Router Advertisements`` on both master and backup and apply the configuration.
+
+Both master and backup will now advertise their link local addresses as default gateway. As long as clients receive the RA priority ``high`` packets,
+they prefer the master as the current IPv6 default gateway. When the master goes offline, the RA interval is sent every 10 seconds, yet after 30 seconds
+the RA router lifetime will be reached and the master will be deprecated from the clients routing table. The backup will now be installed as new
+IPv6 default route.
+
+As soon as the master comes back online, the higher RA priority will make clients shift back.
+
+.. Note::
+
+    This whole process is not seamless, it takes some time. At least as long as the dysfunct IPv6 route is not deprecated by the clients,
+    IPv6 will still be routed to the non existing link local address of the offline master.
+
+.. Attention::
+
+    Do not set the RA Interval and RA Router Lifetime too low, as clients could potentially loose their default routes in busy networks otherwise.
 
 
 Understanding DHCP tags
