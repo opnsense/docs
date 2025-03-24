@@ -47,6 +47,11 @@ The tradeoff using `KEA DHCP` is a more complicated setup, especially when custo
 
 With this in mind, pick the right choice for your setup. When in doubt, using `DNSmasq` can be the best choice.
 
+.. Attention::
+
+    There is DHCPv6 and Router Advertisement support. Keep in mind that just as with DHCPv4/DHCPv6 servers, there should not be multiple Router Advertisement servers
+    running on the same system. Right now, radvd is the default RA daemon. If you are unsure, do not enable Router Advertisements in DNSmasq.
+
 -------------------------
 General Settings
 -------------------------
@@ -116,6 +121,16 @@ when received from the network. DHCP requires at least one dhcp-range and matchi
                                                   section forwarding private "n.n.n.in-addr.arpa" names to a specific server are still
                                                   forwarded. If the IP to name is not known from /etc/hosts, DHCP or a specific domain
                                                   override then a "not found" answer is immediately returned.
+        **Add MAC**                               Add the MAC address of the requestor to DNS queries which are forwarded upstream.
+                                                  The MAC address will only be added if the upstream DNS Server is in the same subnet
+                                                  as the requestor. Since this is not standardized, it should be considered experiemental.
+                                                  This is useful for selective DNS filtering on the upstream DNS server.
+        **Add subnet**                            Add the real client IPv4 and IPv6 addresses (add-subnet=32,128) to DNS queries which are
+                                                  forwarded upstream. Be careful setting this option as it can undermine privacy. This is
+                                                  useful for selective DNS filtering on the upstream DNS server.
+        **Strip subnet**                          Strip the subnet received by a downstream DNS server. If add_subnet is used and the
+                                                  downstream DNS server already added a subnet, DNSMasq will not replace it without
+                                                  setting strip_subnet.
         ========================================= ====================================================================================
 
     .. tab:: DHCP
@@ -142,6 +157,13 @@ when received from the network. DHCP requires at least one dhcp-range and matchi
         **DHCP register firewall rules**          Automatically register firewall rules to allow DHCP traffic for all explicitly selected
                                                   interfaces, can be disabled for more fine-grained control if needed. Changes are only
                                                   effective after a firewall service restart (see system diagnostics).
+        **Router Advertisements**                 Setting this will enable Router Advertisements for all configured DHCPv6 ranges with
+                                                  the managed address bits set, and the use SLAAC bit reset. To change this default, select
+                                                  a combination of the possible options in the individual DHCPv6 ranges.
+                                                  Keep in mind that this is a global option; if there are configured DHCPv6 ranges,
+                                                  RAs will be sent unconditionally and cannot be deactivated selectively.
+                                                  Setting Router Advertisement modes in DHCPv6 ranges will have no effect without
+                                                  this global option enabled.
         **Disable HA sync**                       Ignore the DHCP general settings from being updated using HA sync.
         ========================================= ====================================================================================
 
@@ -210,10 +232,26 @@ DHCP Settings
         ========================================= ====================================================================================
         **Interface**                             Interface to serve this range.
         **Tag [set]**                             Optional tag to set for requests matching this range which can be used to selectively match DHCP options.
-        **Start address**                         Start of the range, e.g. 192.168.1.100, 2000::1 or when constructor is used a partial like ::1.
+        **Start address**                         Start of the range, e.g. 192.168.1.100 for DHCPv4, 2000::1 for DHCPv6 or when a constructor
+                                                  is using a suffix like ::1. To reveal IPv6 related options, enter a IPv6 address.
+                                                  When using router advertisements, it is possible to use a constructor with :: as the start
+                                                  address and no end address.
         **End address**                           End of the range.
         **Constructor**                           Interface to use to calculate the proper range, when selected, a range may be specified as partial (e.g. ::1, ::400).
-        **Prefix length (IPv6)**                  Prefix length offered to the client.
+        **Prefix length (IPv6)**                  Prefix length offered to the client. Custom values in this field will be ignored if
+                                                  Router Advertisements are enabled, as SLAAC will only work with a prefix length of 64.
+        **RA Mode**                               Control how IPv6 clients receive their addresses. Enabling Router Advertisements in general settings
+                                                  will enable it for all configured DHCPv6 ranges with the managed address bits set, and the use SLAAC
+                                                  bit reset. To change this default, select a combination of the possible options here.
+                                                  "slaac", "ra-stateless" and "ra-names" can be freely combined, all other options
+                                                  shall remain single selections.
+        **RA Priority**                           Priority of the RA announcements.
+        **RA MTU**                                Optional MTU to send to clients via Router Advertisements. If unsure leave empty.
+        **RA Interval**                           Time (seconds) between Router Advertisements.
+        **RA Router Lifetime**                    The lifetime of the route may be changed or set to zero, which allows a router to advertise prefixes
+                                                  but not a route via itself. When using HA, setting a short timespan here is adviced for faster IPv6
+                                                  failover. A good combination could be 10 seconds RA interval and 30 seconds RA router lifetime.
+                                                  Going lower than that can pose issues in busy networks.
         **Mode**                                  Mode flags to set for this range, 'static' means no addresses will be automatically assigned.
         **Lease time**                            Defines how long the addresses (leases) given out by the server are valid (in seconds).
         **Domain**                                Offer the specified domain to machines in this range.
@@ -226,11 +264,11 @@ DHCP Settings
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Option**                                Option to offer to the client.
+        **Option**                                DHCPv4 option to offer to the client.
+        **Option6**                               DHCPv6 option to offer to the client.
         **Interface**                             This adds a single interface as a tag so this DHCP option can match the interface of a DHCP range.
         **Tag**                                   If the optional tags are given, then this option is only sent when all the tags are matched.
                                                   Can be optionally combined with an interface tag.
-        **Value**                                 Value (or values) to send to the client.
                                                   The special address 0.0.0.0 is taken to mean "the address of the machine running dnsmasq".
         **Force**                                 Always send the option, even when the client does not ask for it in the parameter request list.
         **Description**                           You may enter a description here for your reference (not parsed).
@@ -256,10 +294,11 @@ DHCP Settings
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Option**                                 Option to offer to the client.
-        **Tag [set]**                              Tag to set for requests matching this range which can be used to selectively match DHCP options.
-        **Value**                                  Value to match, leave empty to match on the option only.
-        **Description**                            You may enter a description here for your reference (not parsed).
+        **Option**                                DHCPv4 option to offer to the client.
+        **Option6**                               DHCPv6 option to offer to the client.
+        **Tag [set]**                             Tag to set for requests matching this range which can be used to selectively match DHCP options.
+        **Value**                                 Value to match, leave empty to match on the option only.
+        **Description**                           You may enter a description here for your reference (not parsed).
         ========================================= ====================================================================================
 
 
@@ -588,6 +627,8 @@ Understanding DHCP tags
 
 When a DHCP Discover enters a network interface, DNSmasq will automatically set a tag with the interface name.
 
+Additionally, tags can be set on DHCP requests by clients when they send the options they need.
+
 There are two kinds of operations, `set` a tag and `match` a tag.
 
 You can manually configure additional tags in :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP tags`.
@@ -595,14 +636,14 @@ You can manually configure additional tags in :menuselection:`Services --> DNSma
 - Setting these tags can be done in multiple spots, e.g., DHCP ranges, DHCP options / match, and Host Overrides.
 - Matching one or multiple tags is mostly relevant in DHCP options.
 
-As example, you want to configure some clients to get a static route via DHCP option in your network.
+As example, you could configure VoIP phones to receive a TFTP server option when they have a specific vendor id.
 
 Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP tags`
 
 ==================================  =======================================================================================================
 Option                              Value
 ==================================  =======================================================================================================
-**Name**                            ``staticrouteclients``
+**Name**                            ``voip``
 ==================================  =======================================================================================================
 
 Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP options / match`
@@ -610,16 +651,23 @@ Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP options / match`
 ==================================  =======================================================================================================
 Option                              Value
 ==================================  =======================================================================================================
-**Option**                          ``classless-static-route[121]``
-**Tag [set]**                       ``staticrouteclients``
-**Value**                           Your static route
+**Option**                          ``vendor-class[60]``
+**Tag [set]**                       ``voip``
+**Value**                           The vendor ID string (e.g., ``SIPPhone``)
 ==================================  =======================================================================================================
 
-Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP ranges`
+Now a tag will be set if a DHCP request is sent by a VoIP phone that includes the vendor class option. If the vendor ID string matches,
+DNSmasq will look up any configuration that will match this tag. As next step we assign a TFTP server to this tag.
 
-Choose all DHCP ranges where you want to advertise this option and select the ``staticrouteclients`` tag in it.
+Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP options`
 
-.. Note::
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Option**                          ``tftp-server-address[150]``
+**Tag [set]**                       ``voip``
+**Value**                           IP address of your TFTP server
+==================================  =======================================================================================================
 
-    This is an advanced setup. The recommendation for most setups is to use the default interface tags. You might have more duplicate DHCP options set up,
-    yet the configuration will be more explicit.
+This ensures that only clients identifying as VoIP phones receive the appropriate TFTP server information via option 150. You can add
+additional options under the same tag if they should be offered to the VOIP phones.
