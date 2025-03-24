@@ -64,13 +64,11 @@ routing.
     Always make sure to choose a sensible log level (default is Notifications) and check the log in
     :menuselection:`Routing --> Diagnostics -> Log`
 
-
 .. Note::
 
-    Since OPNsense does not support a form of configuration reloading at the moment, there might be a temporary loss
-    of service when saving settings. Normally this is only a small glitch, but in high traffic areas it might be
+    The plugins supports seamless reloads since version `os-frr-1.4.3`. When using older versions, there is no configuration reloading.
+    This means there might be a temporary loss of service when saving settings. Normally this is only a small glitch, but in high traffic areas it might be
     something to take under consideration when performing maintenance.
-
 
 ------------------------------------------------
 Dynamic routing and high availability
@@ -267,13 +265,13 @@ OSPF/OSPFv3 (Open Shortest Path First)
                                              (OSPFv3) Router ID as an IPv4 Address to uniquely identify the router.
        **Reference Cost**                    (OSPF only) Adjust the reference cost in Mbps for path calculation, useful when bundling interfaces for higher bandwidth.
        **Passive Interfaces**                Select the interfaces where no OSPF packets should be sent.
-       **Route Redistribution**              Select other routing sources to redistribute to other nodes.
        **Redistribution Map**                Route Map to set for Redistribution, can be used to send a specific network as advertisement when it is defined in a
                                              `Prefix List` attached to a `Route Map`.
        **Log Adjacency Changes**             If it should be logged when the topology of the area changes.
        **Advertise Default Gateway**         This will send the information that we have a default gateway.
        **Always Advertise Default Gateway**  Always sends default gateway information, regardless of availability.
        **Advertise Default Gateway Metric**  Allows manipulation of the metric when advertising the default gateway.
+       **Route Redistribution**              Select other routing sources to redistribute to other nodes. Can be combined with a Route Map per redistribution.
        ===================================== =======================================================================================================================
 
     .. tab:: Networks
@@ -407,7 +405,7 @@ BGP (Border Gateway Protocol)
        **Network**                         Defines connected networks to be advertised over BGP. Disable Network Import-Check to announce all networks.
        **Network Import-Check**            By default, only networks present in the routing table are advertised. Disable to announce all configured networks.
        **Log Neighbor Changes**            Enable extended logging of BGP neighbor changes.
-       **Route Redistribution**            Select routing sources to redistribute to other nodes.
+       **Route Redistribution**            Select other routing sources to redistribute to other nodes. Can be combined with a Route Map per redistribution.
        =================================== =======================================================================================================================
 
     .. tab:: Neighbors
@@ -418,6 +416,8 @@ BGP (Border Gateway Protocol)
        **Enabled**                         Enable/Disable
        **Description**                     Optional description for the neighbor.
        **Peer-IP**                         Specify the IP address of the BGP neighbor.
+       **Remote AS mode**                  "Use Remote AS Number" will use the number specified in the "Remote AS" field, while "External" or "Internal" will
+                                           ignore it in favor of the alternative "remote-as internal" and "remote-as external" settings.
        **Remote AS**                       AS (Autonomous System) number of the neighbor, required for establishing a BGP session.
        **BGP MD5 Password**                Password used for MD5 authentication of BGP connections to enhance security.
        **Weight**                          Default weight for routes from this neighbor; higher weight increases path preference within the same AS.
@@ -436,6 +436,7 @@ BGP (Border Gateway Protocol)
        **Connect Timer**                   Interval to attempt reconnecting with a neighbor after a disconnect.
        **Send Defaultroute**               Sends a default route to the neighbor, useful in small AS environments where a full routing table is not necessary.
        **Enable AS-Override**              Allows replacement of the neighbor's AS with the local AS, common in BGP confederations.
+       **Allow AS In**                     Accept incoming routes with AS path containing AS number with the same value as the current system AS.
        **Disable Connected Check**         Allows eBGP connections over loopback addresses by bypassing checks for direct connections.
        **Attribute Unchanged**             Keeps specified attributes (like `MED`, `AS-Path`, etc.) unchanged in updates to the neighbor.
        **Prefix-List In**                  Prefix list to filter inbound prefixes from this neighbor.
@@ -543,6 +544,8 @@ BGP (Border Gateway Protocol)
        =================================== =======================================================================================================================
        **Enabled**                         Enable/Disable
        **Name**                            Name of the peer group.
+       **Remote AS mode**                  "Use Remote AS Number" will use the number specified in the "Remote AS" field, while "External" or "Internal" will
+                                           ignore it in favor of the alternative "remote-as internal" and "remote-as external" settings.
        **Remote AS**                       Remote AS for the peer group.
        **Update-Source Interface**         Physical IPv4 interface facing the peer.
        **Next-Hop-Self**                   Sets the local router as the next hop for routes advertised to the neighbor, commonly used in Route Reflector setups.
