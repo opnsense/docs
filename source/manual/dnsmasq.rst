@@ -390,13 +390,6 @@ In our example, we use 2 DHCP ranges, so we will configure ``lan.internal`` and 
     ``.internal`` is the IANA and ICANN approved TLD (Top Level Domain) for internal use. If you instead own a TLD, e.g., ``example.com``, you could create a zone
     thats not used on the internet, e.g., ``lan.internal.example.com``.
 
-.. Attention::
-
-    Using a FQDN (Full Qualified Domain Name) is required for this setup to work. You cannot use short names since they cannot be matched by query forwarding.
-    If you instead want to resolve short names directly, using DNSmasq as primary DNS server for clients is the only choice.
-    Though this comes with more restrictions, since the same short name cannot exist in two DHCP ranges at the same time.
-    Using FQDNs is superior and prevents these issues.
-
 
 Now that we have the DNS infrastructure set up, we can configure the DHCP ranges and DHCP options.
 
@@ -490,6 +483,22 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
             is running on`. Though in some scenarios that is not possible, e.g., when using a virtual IP addresses. So for consistency, this guide suggests
             setting each IP address explicitely to avoid confusion.
 
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Option**                          domain-search [119]
+        **Interface**                       ``LAN``
+        **Value**                           ``lan.internal``
+        ==================================  =======================================================================================================
+
+        .. Tip::
+
+            Using a FQDN (Full Qualified Domain Name) is required for this setup to work (e.g., ``smartphone.lan.internal``)
+            If you want to resolve short names inside a DHCP range (e.g., ``smartphone`` without ``.lan.internal``), add the
+            ``domain-search [119]`` DHCP option to all ranges.
+
+        - Press **Save** and add next
+
     .. tab:: Guest
 
         ==================================  =======================================================================================================
@@ -510,12 +519,23 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
         **Value**                           ``192.168.10.1`` (Unbound listens the interface IP address of GUEST, or a virtual IP of GUEST)
         ==================================  =======================================================================================================
 
+        - Press **Save** and add next
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Option**                          domain-search [119]
+        **Interface**                       ``GUEST``
+        **Value**                           ``guest.internal``
+        ==================================  =======================================================================================================
+
         - Press **Save** and **Apply**
 
 
 .. Attention::
 
     If DNSmasq does not start, check that ISC-DHCP and KEA DHCP are not active since they will block the bindable ports this DHCP server requires.
+    It is also a good idea to check :menuselection:`Services --> DNSmasq DNS & DHCP --> Log` for the error message.
 
 
 Verifying the setup
@@ -731,16 +751,17 @@ they prefer the master as the current IPv6 default gateway. When the master goes
 the RA router lifetime will be reached and the master will be deprecated from the clients routing table. The backup will now be installed as new
 IPv6 default route.
 
-As soon as the master comes back online, the higher RA priority will make clients shift back.
+As soon as the master comes back online, the higher RA priority will make clients shift back eventually.
 
 .. Note::
 
     This whole process is not seamless, it takes some time. At least as long as the dysfunct IPv6 route is not deprecated by the clients,
-    IPv6 will still be routed to the non existing link local address of the offline master.
+    IPv6 will still be routed to the non-existing link local address of the offline master.
 
 .. Attention::
 
-    Do not set the RA Interval and RA Router Lifetime too low, as clients could potentially loose their default routes in busy networks otherwise.
+    Do not set the RA Interval and RA Router Lifetime too low, as clients could potentially loose their default routes in busy networks.
+    The bare minimum for RA Router Lifetime should be (RA Interval*3).
 
 
 Understanding DHCP tags
