@@ -166,10 +166,17 @@ Go to :menuselection:`System --> Access --> User` and add the following user:
 
 - Press **Save**
 
-.. Tip::
+.. Note::
 
     Creating a user certificate is not necessary, the user portal will automagically create one for the user when they download
     an OpenVPN configuration. Same goes for the OTP token which the user can create themselves.
+
+.. Tip::
+
+    When using an LDAP authentication server, creating users manually is not needed. Go to :menuselection:`System --> Access --> Servers`
+    and enable `Automatic user creation`. For `Default groups`, choose ``user_default_priv``. Add the groups
+    ``user_otp_priv`` and ``user_ovpn_priv`` to users on the LDAP server. Please note that all groups must be created manually and share
+    the same name between :menuselection:`System --> Access --> Groups` and the LDAP server.
 
 3. Configure Authentication Servers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
