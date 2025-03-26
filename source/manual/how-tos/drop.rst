@@ -14,8 +14,8 @@ The Spamhaus Don't Route Or Peer Lists
 For this How-To we will use the Alias feature and a firewall block rule.
 The lists for this example are located here:
 
- * `DROP list <https://www.spamhaus.org/drop/drop.txt>`__
- * `DROPv6 list <https://www.spamhaus.org/drop/dropv6.txt>`__
+ * `DROP list <https://www.spamhaus.org/drop/drop_v4.json>`__
+ * `DROPv6 list <https://www.spamhaus.org/drop/drop_v6.json>`__
 
 
 -------------------------------------
@@ -26,29 +26,33 @@ top right corner of the form.
 
 Enter the following data:
 
-+-----------------+-----------------------------------------+-----------------------------+
-| **Name**        | spamhaus_drop                           | *Name of our alias*         |
-+-----------------+-----------------------------------------+-----------------------------+
-| **Description** | Spamhaus DROP                           | *Freely chosen description* |
-+-----------------+-----------------------------------------+-----------------------------+
-| **Type**        | URL Table (IPs)                         | *URL type*                  |
-+-----------------+-----------------------------------------+-----------------------------+
-| **Content**     | https://www.spamhaus.org/drop/drop.txt  | *Don't Route Or Peer List*  |
-+-----------------+-----------------------------------------+-----------------------------+
++---------------------+--------------------------------------------+-----------------------------+
+| **Name**            | spamhaus_drop                              | *Name of our alias*         |
++---------------------+--------------------------------------------+-----------------------------+
+| **Description**     | Spamhaus DROP                              | *Freely chosen description* |
++---------------------+--------------------------------------------+-----------------------------+
+| **Type**            | URL Table in JSON format (IPs)             | *URL type*                  |
++---------------------+--------------------------------------------+-----------------------------+
+| **Content**         | https://www.spamhaus.org/drop/drop_v4.json | *Don't Route Or Peer List*  |
++---------------------+--------------------------------------------+-----------------------------+
+| **Path expression** | cidr                                       | *JSON field to be used*     |
++---------------------+--------------------------------------------+-----------------------------+
 
 Set the refresh frequency to 1 for each day.
 
 Press **Save** and then **Add a new alias**.
 
-+-----------------+-----------------------------------------+-------------------------------------+
-| **Name**        | spamhaus_dropv6                          |  *Name of our alias*               |
-+-----------------+-----------------------------------------+-------------------------------------+
-| **Description** | Spamhaus DROPv6                          | *Freely chosen description*        |
-+-----------------+-----------------------------------------+-------------------------------------+
-| **Type**        | URL Table (IPs)                         | *URL type*                          |
-+-----------------+-----------------------------------------+-------------------------------------+
-| **Content**     | https://www.spamhaus.org/drop/dropv6.txt | *Don't Route Or Peer List v6*      |
-+-----------------+-----------------------------------------+-------------------------------------+
++---------------------+--------------------------------------------+-------------------------------+
+| **Name**            | spamhaus_dropv6                            |  *Name of our alias*          |
++---------------------+--------------------------------------------+-------------------------------+
+| **Description**     | Spamhaus DROPv6                            | *Freely chosen description*   |
++---------------------+--------------------------------------------+-------------------------------+
+| **Type**            | URL Table in JSON format (IPs)             | *URL type*                    |
++---------------------+--------------------------------------------+-------------------------------+
+| **Content**         | https://www.spamhaus.org/drop/drop_v6.json | *Don't Route Or Peer List v6* |
++---------------------+--------------------------------------------+-------------------------------+
+| **Path expression** | cidr                                       | *JSON field to be used*       |
++---------------------+--------------------------------------------+-------------------------------+
 
 Set the refresh frequency to 1 for each day.
 
