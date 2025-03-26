@@ -84,6 +84,10 @@ Here are the full patch notes:
 * ports: py-jq 1.8.0 `[10] <https://github.com/mwilliamson/jq.py/blob/master/CHANGELOG.rst>`__ 
 * ports: suricata 7.0.10 `[11] <https://suricata.io/2025/03/25/suricata-7-0-10-released/>`__ 
 
+A hotfix release was issued as 25.1.4_1:
+
+* backend: restore missing Python module
+
 
 
 --------------------------------------------------------------------------
