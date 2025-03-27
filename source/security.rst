@@ -131,7 +131,7 @@ Framework / Type of testing (LINCE)
 
 In our quest for a framework to use, we found the LINCE methodology.
 
-LINCE is a lightweight methodology for evaluating and certifying ICT products, created by Spain's National Cryptologic Center (`CCN <https://www.ccn.cni.es/index.php/en/menu-ccn-en>`__),
+LINCE is a lightweight methodology for evaluating and certifying ICT products, created by Spain's National Cryptologic Center (`CCN <https://cpstic.ccn.cni.es/en/>`__),
 based on Common Criteria principles and oriented to vulnerability analysis and penetration tests.
 
 LINCE strengths over other methodologies mainly consist of reduced effort and duration.
@@ -180,8 +180,8 @@ Below you will find the versions that have been tested or are currently in test.
 | BE 24.04 | LINCE Compliant       | :download:`BE24.04-STIC_OPNSENSE_CQ-ETR-v1.0.pdf <pdf/BE24.04-STIC_OPNSENSE_CQ-ETR-v1.0.pdf>`        |
 |          |                       | dd3a6aed7147ebfa64d4242a45001431e4de52d4faada6d5cdbbe0146bdd8790                                     |
 +----------+-----------------------+------------------------------------------------------------------------------------------------------+
-| BE 23.10 | LINCE Compliant /     | :download:`BE23.10-STIC_OPNSENSE_CQ-ETR-v1.0.pdf <pdf/BE23.10-STIC_OPNSENSE_CQ-ETR-v1.0.pdf>`        |
-|          | Certification pending | 3cd1135bee4c17299d4740c10ed9ef965b77be6e3899cc1c7587b9578930ea51                                     |
+| BE 23.10 | LINCE Certified       | :download:`BE23.10-STIC_OPNSENSE_CQ-ETR-v1.0.pdf <pdf/BE23.10-STIC_OPNSENSE_CQ-ETR-v1.0.pdf>`        |
+|          |                       | 3cd1135bee4c17299d4740c10ed9ef965b77be6e3899cc1c7587b9578930ea51                                     |
 +----------+-----------------------+------------------------------------------------------------------------------------------------------+
 | BE 23.04 | LINCE Compliant       | :download:`BR23.04-STIC_OPNSENSE_CQ-ETR-v3.1.pdf <pdf/BE23.04-STIC_OPNSENSE_CQ-ETR-v3.1.pdf>`        |
 |          |                       | 9cce20526a25de2f03b29dcb80df8277eac4eb02066e504396c07e0caffd104e                                     |
@@ -203,4 +203,4 @@ External references
   -  `Evaluation methodology <https://www.jtsec.es/files/CCN-LINCE-002_v0.1_final_EN.pdf>`__
 
 * https://www.ccn.cni.es/index.php/en/menu-ccn-en
-* https://oc.ccn.cni.es/en/certified-products/certified-products
+* https://cpstic.ccn.cni.es/en/
