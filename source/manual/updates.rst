@@ -17,7 +17,8 @@ By navigating to :menuselection:`System --> Firmware --> Settings`, you can infl
 
 .. Tip::
     The settings page is also the place where you can run audits which help debugging common connectivitty issues,
-    just press the "Run an audit" and choose "Connectivity" from the list.
+    just press the "Run an audit" and choose "Connectivity" from the list if you encounter issues with the remote
+    server.
 
 -------------
 Minor updates
@@ -47,9 +48,15 @@ OPNsense will download all release files for an offline upgrade (kernel, package
 After a reboot, it will install all updates and when it is done, it will reboot again, then you should be on the
 desired release.
 
------------------------
-Troubleshooting updates
------------------------
+---------------
+Firmware audits
+---------------
+
+Audits provided are troubleshooting tools for a variety of purposes explained below.
+The forum is a good place to post your update and upgrade issues if you get stuck despite the best effort.
+
+The cleanup audit triggers an immediate removal of all tempporary update files. Sometimes these files are not
+cleaned up correctly and can cause issues with the next round of package updates.
 
 The connectivity audit offers a direction where to look for issues during updates and the following causes are
 in our experience most common:
@@ -66,4 +73,9 @@ Additionally, major ugpgrades may not pass certain sanity checks that need to be
 * "The Package manager is incompatible and needs a reinstall." can indicate misuse of the FreeBSD repository. Try to reinstall the "pkg" package via `System --> Firmware --> Packages`.
 * "Core package not known to package database." can mean that the mirror settings are wrong, the main mirror no longer holds any packages or that the mirror is unreachable for other reasons.
 
-The forum is a good place to post your update and upgrade issues if you get stuck despite the best effort.
+The security audit checks each installed package's version against a database of known vulnerabilities. Vulnerabilities
+are reported for triage and inspection, not for reporting them to OPNsense. The appearance of vulnerabilities in an install
+indicate that the next update will likely address them.
+
+After having performed a major upgrade, the upgrade audit shows the package upgrade log for further inspection.
+This can be helpful to identify package conflicts that led to partial or full upgrade failures.
