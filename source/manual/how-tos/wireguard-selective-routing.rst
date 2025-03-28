@@ -50,9 +50,9 @@ Step 2 - Configure the WireGuard Instance
     ===================== ===============================================================================================
      **Enabled**           *Checked*
      **Name**              *Call it whatever you want (eg* :code:`VPNProviderName` *)*
-     **Public Key**        *This will initially be blank; it will be populated once the configuration is saved*
-     **Private Key**       *This will initially be blank; it will be populated once the configuration is saved*
-     **Listen Port**       *51820 or a higher numbered unique port*
+     **Public Key**        *This will initially be blank; it will be populated once the configuration is saved* (see Notes)
+     **Private Key**       *This will initially be blank; it will be populated once the configuration is saved* (see Notes)
+     **Listen Port**       *51820 or a higher numbered unique port* (see Notes)
      **DNS Server**        *Leave this blank, otherwise WireGuard will overwrite OPNsense's DNS configuration*
      **Tunnel Address**    *Insert the WireGuard Instance VPN tunnel IP provided by your VPN provider, in CIDR format, eg 10.24.24.10/32*
      **Peers**             *In the dropdown, select the Peer you configured above*
@@ -63,6 +63,9 @@ Step 2 - Configure the WireGuard Instance
 .. Note::
 
     The IP you choose for the Gateway is essentially arbitrary; pretty much any unique IP will do. The suggestion here is for convenience and to avoid conflicts
+.. Note::
+
+    Some VPN providers (torguard) include a private key, and listen port in the "interface" section of the config you generate from them. For cases like this ensure you use the provided private key and listen port. Public key can still be left blank! If a port is provided it still must be unique. 
 
 - **Save** the Instance configuration, and then click **Save** again
 
