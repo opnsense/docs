@@ -339,8 +339,8 @@ Configuration examples
 ---------------------------------
 
 
-DNS and DHCPv4 for small networks
-------------------------------------------
+DHCPv4 with DNS registration
+--------------------------------------------------
 
 Dnsmasq can be used as a DNS forwarder. Though in our recommended setup, we will not use it as our default DNS server.
 
@@ -555,10 +555,6 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
     If Dnsmasq does not start, check that ISC-DHCP and KEA DHCP are not active since they will block the bindable ports this DHCP server requires.
     It is also a good idea to check :menuselection:`Services --> Dnsmasq DNS & DHCP --> Log` for the error message.
 
-
-Verifying the setup
-------------------------------------------
-
 Now that the setup is complete, the following will happen in regards of DHCP and DNS.
 
 1.  A new device (e.g. a smartphone) joins the LAN network and sends a DHCP Discover broadcast.
@@ -582,7 +578,7 @@ which is our configured `Dnsmasq` listening on ``127.0.0.1:53053``. ``Dnsmasq`` 
 As you can see, this is a highly integrated and simple setup which leverages just the available DHCP and DNS standards with no trickery involved.
 
 
-DHCPv6 with Router Advertisements for small networks
+DHCPv6 and Router Advertisements
 ------------------------------------------------------
 
 DHCPv6 can run at the same time as DHCPv4. Essentially, create another range for DHCPv6 for the same interface as the DHCPv6 variant.
@@ -605,6 +601,11 @@ Option                              Value
 **Constructor**                     ``LAN``
 **RA Mode**                         ``ra-stateless``
 ==================================  =======================================================================================================
+
+.. Attention::
+
+    With ``ra-stateless``, clients will only generate a SLAAC address. If clients should additionally receive a DHCPv6 address, set ``slaac``
+    instead.
 
 .. Tip::
 
@@ -641,6 +642,135 @@ As final step, go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> General
 Enable the checkbox ``Router Advertisements`` if you want to use them.
 
 Press **Apply** to activate the new configuration.
+
+
+DHCP reservations
+------------------------------------------
+
+A DHCP reservation will always assign the same IPv4 and IPv6 addresses to a client.
+
+For an IPv4 reservation, a DHCPv4 range should exist. If this DHCPv4 range should only serve reservations, set it to static.
+
+For an IPv6 reservation, a DHCPv6 range must be configured which sets ``slaac`` as Router Advertisement option.
+This sets the `A bit` so that clients can generate a SLAAC address and receive an additional DHCPv6 lease.
+If a different Router Advertisement daemon is used, ensure it runs in `Assisted` mode.
+
+.. Note::
+
+    As all clients configure a tag with the receiving interface name automatically,
+    DHCP options that are tagged with an interface will automatically match the reservations.
+
+Here are a few examples for DHCP reservations. This assumes we already created ranges for ``LAN`` and ``GUEST`` as outlined in the previous sections.
+
+Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> Hosts`
+
+.. tabs::
+
+    .. tab:: IPv4
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Host**                            ``smartphone``
+        **IP addresses**                    ``192.168.1.150`` ``192.168.10.150``
+        **Hardware addresses**              ``aa:bb:cc:dd:ee:ff``
+        ==================================  =======================================================================================================
+
+        - Press **Save** and **Apply**
+
+        .. Tip::
+
+            Setting IP addresses for different DHCP ranges will ensure that when the client traverses between e.g., ``LAN`` and ``GUEST`` that it receives a static IP address in
+            both ranges automatically.
+
+    .. tab:: IPv6
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Host**                            ``smartphone``
+        **IP addresses**                    ``::1234``
+        **Client identifier**               ``00:03:00:01:aa:bb:cc:dd:ee:ff``
+        ==================================  =======================================================================================================
+
+        - Press **Save** and **Apply**
+
+        .. Attention::
+
+            A Hardware address will not work for IPv6 reservations. It must be the device unique identifier (DUID). This example uses the common
+            DUID-LL type.
+
+        .. Tip::
+
+            Setting a partial IPv6 address will ensure it uses the same constructor as the configured DHCPv6 ranges.
+
+    .. tab:: IPv4 + IPv6 (dual stack)
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Host**                            ``smartphone``
+        **IP addresses**                    ``192.168.1.150`` ``192.168.10.150`` ``::1234``
+        **Client identifier**               ``00:03:00:01:aa:bb:cc:dd:ee:ff``
+        **Hardware addresses**              ``aa:bb:cc:dd:ee:ff``
+        ==================================  =======================================================================================================
+
+        - Press **Save** and **Apply**
+
+        .. Tip::
+
+            This combines both IPv4 and IPv6 reservations in the same configuration item.
+
+
+DHCP tags
+------------------------------------------
+
+When a DHCP Discover enters a network interface, Dnsmasq will automatically set a tag with the interface name.
+
+Additionally, tags can be set on DHCP requests by clients when they send the options they need.
+
+There are two kinds of operations, `set` a tag and `match` a tag.
+
+You can manually configure additional tags in :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP tags`.
+
+- Setting these tags can be done in multiple spots, e.g., DHCP ranges, DHCP options / match, and Host Overrides.
+- Matching one or multiple tags is mostly relevant in DHCP options.
+
+As example, you could configure VoIP phones to receive a TFTP server option when they have a specific vendor id.
+
+Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP tags`
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Name**                            ``voip``
+==================================  =======================================================================================================
+
+Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options / match`
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Option**                          ``vendor-class[60]``
+**Tag [set]**                       ``voip``
+**Value**                           The vendor ID string (e.g., ``SIPPhone``)
+==================================  =======================================================================================================
+
+Now a tag will be set if a DHCP request is sent by a VoIP phone that includes the vendor class option. If the vendor ID string matches,
+Dnsmasq will look up any configuration that will match this tag. As next step we assign a TFTP server to this tag.
+
+Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options`
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Option**                          ``tftp-server-address[150]``
+**Tag [set]**                       ``voip``
+**Value**                           IP address of your TFTP server
+==================================  =======================================================================================================
+
+This ensures that only clients identifying as VoIP phones receive the appropriate TFTP server information via option 150. You can add
+additional options under the same tag if they should be offered to the VOIP phones.
 
 
 DHCPv4 for small HA setups
@@ -718,8 +848,8 @@ With this setup, a simple and efficient HA setup with automatic DNS registration
 KEA DHCP might be the better choice due to its robust HA synchronization options.
 
 
-DHCPv6 for small HA setups
-------------------------------------------
+DHCPv6 and Router Advertisements for small HA setups
+-----------------------------------------------------
 
 Just as with DHCPv4, the same type of configuration can be done for DHCPv6 with a few minor adjustements.
 
@@ -781,53 +911,3 @@ As soon as the master comes back online, the higher RA priority will make client
     Do not set the RA Interval and RA Router Lifetime too low, as clients could potentially loose their default routes in busy networks.
     The bare minimum for RA Router Lifetime should be (RA Interval*3).
 
-
-Understanding DHCP tags
-------------------------------------------
-
-When a DHCP Discover enters a network interface, Dnsmasq will automatically set a tag with the interface name.
-
-Additionally, tags can be set on DHCP requests by clients when they send the options they need.
-
-There are two kinds of operations, `set` a tag and `match` a tag.
-
-You can manually configure additional tags in :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP tags`.
-
-- Setting these tags can be done in multiple spots, e.g., DHCP ranges, DHCP options / match, and Host Overrides.
-- Matching one or multiple tags is mostly relevant in DHCP options.
-
-As example, you could configure VoIP phones to receive a TFTP server option when they have a specific vendor id.
-
-Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP tags`
-
-==================================  =======================================================================================================
-Option                              Value
-==================================  =======================================================================================================
-**Name**                            ``voip``
-==================================  =======================================================================================================
-
-Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options / match`
-
-==================================  =======================================================================================================
-Option                              Value
-==================================  =======================================================================================================
-**Option**                          ``vendor-class[60]``
-**Tag [set]**                       ``voip``
-**Value**                           The vendor ID string (e.g., ``SIPPhone``)
-==================================  =======================================================================================================
-
-Now a tag will be set if a DHCP request is sent by a VoIP phone that includes the vendor class option. If the vendor ID string matches,
-Dnsmasq will look up any configuration that will match this tag. As next step we assign a TFTP server to this tag.
-
-Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options`
-
-==================================  =======================================================================================================
-Option                              Value
-==================================  =======================================================================================================
-**Option**                          ``tftp-server-address[150]``
-**Tag [set]**                       ``voip``
-**Value**                           IP address of your TFTP server
-==================================  =======================================================================================================
-
-This ensures that only clients identifying as VoIP phones receive the appropriate TFTP server information via option 150. You can add
-additional options under the same tag if they should be offered to the VOIP phones.
