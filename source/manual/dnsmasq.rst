@@ -19,7 +19,7 @@ Considerations before deployment
 DNS Service
 -----------------------------
 
-Combining `Dnsmasq` with `Unbound` can enable synergies, such as DHCP leases that have their hostnames registered in `Dnsmasq` to be queried by `Unbound`.
+`Dnsmasq` can be combined with `Unbound` to act as a "connector", in which case  DHCP leases which have their hostnames registered in `Dnsmasq` may be queried directly by `Unbound`.
 
 Since `Dnsmasq` does not restart on configuration changes and does not need custom scripts to register DNS, it is very resilient and easy to manage.
 
