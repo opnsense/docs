@@ -7,7 +7,7 @@ Dnsmasq DNS & DHCP
 
 `Dnsmasq` is a lightweight and easy to configure DNS forwarder and DHCPv4/DHCPv6 server.
 
-It is considered the replacement for `ISC-DHCP` in small and medium sized setups,
+It is considered the replacement for `ISC-DHCP` in small and medium sized setups
 and synergizes well with `Unbound DNS`, our standard enabled forward/resolver service.
 
 Our system setup wizard configures `Unbound DNS` for DNS and `Dnsmasq` for DHCP.
