@@ -317,35 +317,71 @@ With the options `Restrict Exchange Paths` and `Access control`, access to speci
 
 The finished configuration should look like this:
 
-**Virtual Server**
+**Virtual Servers**
 
-================================ ========================================================================================
-Option                           Description
-================================ ========================================================================================
-Enabled                          ``X``
-ServerName                       ``mail.example.com`` (create another virtual server for ``autodiscover.example.com``)
-**Trust**
-Enable ACME                      ``X``
-SSL Proxy check peer             ``X``
-**Security**
-Header Security                  Off / compatibility mode
-TLS Security profile             Intermediate
-Web Protection                   Detection Only
-================================ ========================================================================================
+.. tabs::
 
-**Location**
+    .. tab:: mail.example.com
 
-================================ ========================================================================================
-Option                           Description
-================================ ========================================================================================
-Enabled                          ``X``
-VirtualServer                    ``mail.example.com`` (create another location for ``autodiscover.example.com``)
-Type                             Exchange Server
-Remote destinations              ``https://192.168.10.10``
-Restrict Exchange Paths          ``/ecp``
-Access control                   ``192.168.0.0/16 172.16.0.0/12 10.0.0.0/8``
-================================ ========================================================================================
+        **Virtual Server**
 
+        ================================ ========================================================================================
+        Option                           Description
+        ================================ ========================================================================================
+        Enabled                          ``X``
+        ServerName                       ``mail.example.com``
+        **Trust**
+        Enable ACME                      ``X``
+        SSL Proxy check peer             ``X``
+        **Security**
+        Header Security                  Off / compatibility mode
+        TLS Security profile             Intermediate
+        Web Protection                   Detection Only
+        ================================ ========================================================================================
+
+        **Location**
+
+        ================================ ========================================================================================
+        Option                           Description
+        ================================ ========================================================================================
+        Enabled                          ``X``
+        VirtualServer                    ``mail.example.com``
+        Type                             Exchange Server
+        Remote destinations              ``https://192.168.10.10``
+        Restrict Exchange Paths          ``/ecp``
+        Access control                   ``192.168.0.0/16 172.16.0.0/12 10.0.0.0/8``
+        ================================ ========================================================================================
+
+    .. tab:: autodiscover.example.com
+
+        **Virtual Server**
+
+        ================================ ========================================================================================
+        Option                           Description
+        ================================ ========================================================================================
+        Enabled                          ``X``
+        ServerName                       ``autodiscover.example.com``
+        **Trust**
+        Enable ACME                      ``X``
+        SSL Proxy check peer             ``X``
+        **Security**
+        Header Security                  Off / compatibility mode
+        TLS Security profile             Intermediate
+        Web Protection                   Detection Only
+        ================================ ========================================================================================
+
+        **Location**
+
+        ================================ ========================================================================================
+        Option                           Description
+        ================================ ========================================================================================
+        Enabled                          ``X``
+        VirtualServer                    ``autodiscover.example.com``
+        Type                             Exchange Server
+        Remote destinations              ``https://192.168.10.10``
+        Restrict Exchange Paths          ``/ecp``
+        Access control                   ``192.168.0.0/16 172.16.0.0/12 10.0.0.0/8``
+        ================================ ========================================================================================
 
 .. Note::
 
