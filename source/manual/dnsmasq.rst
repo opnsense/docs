@@ -46,7 +46,7 @@ of all existing leases and do not need split pools. It is also far more scalable
 
 The tradeoff using `KEA DHCP` is a more complicated setup, especially when custom DHCP options are needed. DNS registration is also not possible.
 
-With this in mind, pick the right choice for your setup. When in doubt, using `Dnsmasq` can be the best choice.
+With this in mind, pick the right choice for your setup. When in doubt, our advise is to use `Dnsmasq` .
 
 .. Attention::
 
