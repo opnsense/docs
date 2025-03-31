@@ -155,26 +155,28 @@ For the first step we enter:
 
 ================== ==============================================
  **Username**       *Donald*
- **Password** (2x)  *S3cr3tP@ssw0rd*
- **Full name**      *Donald Duck*
- **Certificate**    *Check “Click to create a user certificate”*
+ **Password**       *Choose a strong password*
+ **Full name**      *Donald*
  **OTP seed**       *Check “Generate new secret”*
 ================== ==============================================
 
- Click **Save** and you will be redirected to create the User Certificate.
- Fill in the Certificate form with the following for our example (leave anything
- not listed on its presented defaults):
+ After pressing **Save**, click on the button ``Search certificates by username``
+ in the same row as the created user to be redirected to the certificate page. Press
+ *+* to create a new certificate with the common name of this user.
+ Fill in the certificate form with the following (leave anything
+ not listed on default):
 
 =========================== ========================================
  **Method**                  *Create an internal Certificate*
- **Descriptive Name**        *Leave default (Donald)*
- **Certificate authority**   *SSL VPN CA*
+ **Descriptive Name**        *Donald*
  **Type**                    *Client Certificate*
- **Key length**              *4096*
+ **Key type**                *RSA-4096*
  **Digest Algorithm**        *SHA512*
+ **Issuer**                  *SSL VPN CA*
+ **Common Name**             *Donald*
 =========================== ========================================
 
-Click **Save** and you will be redirected to the User page.
+Click **Save** and go back to the user page.
 Now we will activate your newly created seed with your Google Authenticator
 compatible app. To do so click in the **Click to unhide** button in the
 **OTP QR code** row and you will get a QR code to scan with your smartphone.
@@ -183,7 +185,7 @@ See also: :doc:`/manual/how-tos/two_factor`
 
 .. Note::
 
-    Always make sure to use the same **Certificate authority** as the certificate authority created earlier, as
+    Always make sure to use the same **Issuer** as the certificate authority created earlier, as
     this links the clients / users to the correct openvpn server.
 
 -----------------------------
