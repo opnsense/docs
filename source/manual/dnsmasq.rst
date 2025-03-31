@@ -5,12 +5,12 @@ Dnsmasq DNS & DHCP
 .. contents:: Index
 
 
-`DNSmasq` is a lightweight and easy to configure DNS forwarder and DHCPv4/DHCPv6 server.
+`Dnsmasq` is a lightweight and easy to configure DNS forwarder and DHCPv4/DHCPv6 server.
 
 It is considered the replacement for `ISC-DHCP` in small and medium sized setups,
 and synergizes well with `Unbound DNS`, our standard enabled forward/resolver service.
 
-Our system setup wizard configures `Unbound DNS` for DNS and `DNSmasq` for DHCP.
+Our system setup wizard configures `Unbound DNS` for DNS and `Dnsmasq` for DHCP.
 
 ---------------------------------
 Considerations before deployment
@@ -19,25 +19,25 @@ Considerations before deployment
 DNS Service
 -----------------------------
 
-Combining `DNSmasq` with `Unbound` can enable synergies, such as DHCP leases that have their hostnames registered in `DNSmasq` to be queried by `Unbound`.
+Combining `Dnsmasq` with `Unbound` can enable synergies, such as DHCP leases that have their hostnames registered in `Dnsmasq` to be queried by `Unbound`.
 
-Since `DNSmasq` does not restart on configuration changes and does not need custom scripts to register DNS, it is very resilient and easy to manage.
+Since `Dnsmasq` does not restart on configuration changes and does not need custom scripts to register DNS, it is very resilient and easy to manage.
 
 .. Note::
 
-    `Unbound` is a recursive resolver, `DNSmasq` a non-resursive forwarding DNS server. This means `DNSmasq` always
+    `Unbound` is a recursive resolver, `Dnsmasq` a non-resursive forwarding DNS server. This means `Dnsmasq` always
     needs a recursive DNS resolver it can forward its queries to. This can be `Unbound`, or another DNS Service on the internet.
 
 
-In the configuration examples further below, we will always combine `Unbound` with `DNSmasq`.
+In the configuration examples further below, we will always combine `Unbound` with `Dnsmasq`.
 
 DHCP Service
 -----------------------------
 
-`DNSmasq` is the perfect DHCP server for small and medium sized setups. The configuration is straight forward, and since it can register the DNS names of leases,
+`Dnsmasq` is the perfect DHCP server for small and medium sized setups. The configuration is straight forward, and since it can register the DNS names of leases,
 it can replicate the simplicity known from consumer routers.
 
-If HA for DHCP is a requirement, split pools can be configured for two `DNSmasq` instances. With a dhcp reply delay, the secondary instance will only answer when
+If HA for DHCP is a requirement, split pools can be configured for two `Dnsmasq` instances. With a dhcp reply delay, the secondary instance will only answer when
 the first instance is unresponsive. DHCPv6 and Router Advertisements are also an option for small HA setups that do not have fast failover requirements,
 as IPv6 failover can take up to 30 seconds with available configuration options.
 
@@ -46,12 +46,12 @@ of all existing leases and do not need split pools. It is also far more scalable
 
 The tradeoff using `KEA DHCP` is a more complicated setup, especially when custom DHCP options are needed. DNS registration is also not possible.
 
-With this in mind, pick the right choice for your setup. When in doubt, using `DNSmasq` can be the best choice.
+With this in mind, pick the right choice for your setup. When in doubt, using `Dnsmasq` can be the best choice.
 
 .. Attention::
 
     There is DHCPv6 and Router Advertisement support. Keep in mind that just as with DHCPv4/DHCPv6 servers, there should not be multiple Router Advertisement servers
-    running on the same system. Right now, :menuselection:`Services --> Router Advertisements` is the default RA daemon. If you are unsure, do not enable them in DNSmasq.
+    running on the same system. Right now, :menuselection:`Services --> Router Advertisements` is the default RA daemon. If you are unsure, do not enable them in Dnsmasq.
 
 -------------------------
 General Settings
@@ -191,22 +191,35 @@ DNS Settings
 
 .. tabs::
 
-    .. tab:: Hosts
+    .. tab:: Hosts (Host Overrides)
 
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
         **Host**                                  Name of the host, without the domain part. Use "*" to create a wildcard entry.
         **Domain**                                Domain of the host, e.g. example.com
-        **IP address**                            IP address of the host, e.g. 192.168.100.100 or fd00:abcd::1
+        **IP addresses**                          IP addresses of the host, e.g. 192.168.100.100 or fd00:abcd::1. Can be multiple IPv4
+                                                  and IPv6 addresses for dual stack configurations. Setting multiple addresses will automatically
+                                                  assign the best match based on the subnet of the interface receiving the DHCP Discover.
         **Aliases**                               List of aliases (FQDN)
-        **Hardware address**                      When offered and the client requests an address via DHCP, assign the address provided here.
+        **Client identifier**                     Match the identifier of the client, e.g., DUID for DHCPv6.
+                                                  Setting the special character "*" will ignore the client identifier for DHCPv4 leases if a client offers both as choice.
+        **Hardware addresses**                    Match the hardware address of the client. Can be multiple addresses, e.g., if the client has
+                                                  multiple network cards. Though keep in mind that Dnsmasq cannot assume which address is the correct
+                                                  one when multiple send DHCP Discover at the same time.
+        **Lease time**                            Defines how long the addresses (leases) given out by the server are valid (in seconds)
         **Tag [set]**                             Optional tag to set for requests matching this range which can be used to selectively match DHCP options.
+        **Ignore**                                Ignore any DHCP packets of this host. Useful if it should get served by a different DHCP server.
         **Description**                           You may enter a description here for your reference (not parsed).
         **Comments**                              You may enter a description here for your reference (not parsed).
         ========================================= ====================================================================================
 
-    .. tab:: Domains
+        .. Note::
+
+            When a domain and IP addresses are set, a host override will be created. If a client identifier or hardware addresses are set,
+            an additional static DHCP reservation will be created.
+
+    .. tab:: Domains (Domain Overrides)
 
         ========================================= ====================================================================================
         **Option**                                **Description**
@@ -218,6 +231,11 @@ DNS Settings
         **Source IP**                             Source IP address for queries to the DNS server for the override domain. Best to leave empty.
         **Description**                           You may enter a description here for your reference (not parsed).
         ========================================= ====================================================================================
+
+        .. Note::
+
+            Selecting `Query DNS servers sequentially` in :menuselection:`Services --> Dnsmasq DNS & DHCP --> General` will enforce a strict-order.
+            For the processing order to work, overrides must be configured exactly the same, e.g., matching same domain and port. IP address can be different.
 
 
 -------------------------
@@ -324,14 +342,14 @@ Configuration examples
 DNS and DHCPv4 for small networks
 ------------------------------------------
 
-DNSmasq can be used as a DNS forwarder. Though in our recommended setup, we will not use it as our default DNS server.
+Dnsmasq can be used as a DNS forwarder. Though in our recommended setup, we will not use it as our default DNS server.
 
-We will use Unbound as primary DNS server for our clients, and only forward some internal zones to DNSmasq which manages the hostnames of
+We will use Unbound as primary DNS server for our clients, and only forward some internal zones to Dnsmasq which manages the hostnames of
 DHCP registered leases.
 
-This requires DNSmasq to run with a non-standard port other than 53.
+This requires Dnsmasq to run with a non-standard port other than 53.
 
-- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> General` and set:
+- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> General` and set:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -342,7 +360,7 @@ Option                              Value
 
 - Press **Apply**
 
-Afterwards we can configure Unbound to forward the zones to DNSmasq.
+Afterwards we can configure Unbound to forward the zones to Dnsmasq.
 
 - Go to :menuselection:`Services --> Unbound DNS --> General` and set:
 
@@ -393,7 +411,7 @@ In our example, we use 2 DHCP ranges, so we will configure ``lan.internal`` and 
 
 Now that we have the DNS infrastructure set up, we can configure the DHCP ranges and DHCP options.
 
-- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> General` and set:
+- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> General` and set:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -408,12 +426,12 @@ Option                              Value
 
 .. Note::
 
-    Ignore the ISC / KEA DHCP (legacy) options as our setup does not require them. We use the DNSmasq built in DHCP/DNS register functionality
+    Ignore the ISC / KEA DHCP (legacy) options as our setup does not require them. We use the Dnsmasq built in DHCP/DNS register functionality
     with Unbound DNS query forwarding.
 
 As next step we define the DHCP ranges for our interfaces.
 
-- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP ranges` and set:
+- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP ranges` and set:
 
 .. tabs::
 
@@ -451,7 +469,7 @@ As next step we define the DHCP ranges for our interfaces.
 
 The final step is to set DHCP options for the ranges, at least router[3] and dns-server[6] should be announced.
 
-- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP options` and set:
+- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options` and set:
 
 .. tabs::
 
@@ -479,7 +497,7 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
 
         .. Note::
 
-            Instead of setting the interface IP address as value, the special address 0.0.0.0 can be used to implicitely set it as `the server DNSmasq
+            Instead of setting the interface IP address as value, the special address 0.0.0.0 can be used to implicitely set it as `the server Dnsmasq
             is running on`. Though in some scenarios that is not possible, e.g., when using a virtual IP addresses. So for consistency, this guide suggests
             setting each IP address explicitely to avoid confusion.
 
@@ -534,8 +552,8 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
 
 .. Attention::
 
-    If DNSmasq does not start, check that ISC-DHCP and KEA DHCP are not active since they will block the bindable ports this DHCP server requires.
-    It is also a good idea to check :menuselection:`Services --> DNSmasq DNS & DHCP --> Log` for the error message.
+    If Dnsmasq does not start, check that ISC-DHCP and KEA DHCP are not active since they will block the bindable ports this DHCP server requires.
+    It is also a good idea to check :menuselection:`Services --> Dnsmasq DNS & DHCP --> Log` for the error message.
 
 
 Verifying the setup
@@ -544,9 +562,9 @@ Verifying the setup
 Now that the setup is complete, the following will happen in regards of DHCP and DNS.
 
 1.  A new device (e.g. a smartphone) joins the LAN network and sends a DHCP Discover broadcast.
-2.  DNSmasq receives this broadcast on port 67 and responds with a DHCP offer, containing an available IP address and DHCP options for router[3] and dns-server[6].
+2.  Dnsmasq receives this broadcast on port 67 and responds with a DHCP offer, containing an available IP address and DHCP options for router[3] and dns-server[6].
 3.  The device sends a DHCP request to request the available IP address, and possibly send its own hostname.
-4.  DNSmasq acknowledges the request.
+4.  Dnsmasq acknowledges the request.
 
 Our smartphone now has the following IP configuration:
 
@@ -554,11 +572,11 @@ Our smartphone now has the following IP configuration:
 - Default Gateway: ``192.168.1.1``
 - DNS Server: ``192.168.1.1``
 
-At the same time, DNSmasq registers the DNS hostname of the smartphone (if it exists). Since we configured the FQDN option and domain in the DHCP range, the name of the
+At the same time, Dnsmasq registers the DNS hostname of the smartphone (if it exists). Since we configured the FQDN option and domain in the DHCP range, the name of the
 smartphone will be: ``smartphone.lan.internal``.
 
 When a client queries `Unbound` for exactly ``smartphone.lan.internal``, the configured query forwarding sends the request to the DNS server responsible for ``lan.internal``
-which is our configured `DNSmasq` listening on ``127.0.0.1:53053``. ``DNSmasq`` responds to this query and will resolve the current A-Record of ``smartphone.lan.internal`` to
+which is our configured `Dnsmasq` listening on ``127.0.0.1:53053``. ``Dnsmasq`` responds to this query and will resolve the current A-Record of ``smartphone.lan.internal`` to
 ``192.168.1.100``, sending this information to `Unbound` which in return sends the response back to the client that initially queried.
 
 As you can see, this is a highly integrated and simple setup which leverages just the available DHCP and DNS standards with no trickery involved.
@@ -572,12 +590,12 @@ DHCPv6 can run at the same time as DHCPv4. Essentially, create another range for
 .. Attention::
 
     DHCPv6 does not have a router option like DHCPv4. To push the default gateway to clients you must use Router Advertisements.
-    This can be done with DNSmasq, but also by a different service like :menuselection:`Services --> Router Advertisements`.
+    This can be done with Dnsmasq, but also by a different service like :menuselection:`Services --> Router Advertisements`.
 
 In this example, we add a DHCPv6 range and Router Advertisements to our LAN interface. The following configuration sets stateless
 DHCPv6 and SLAAC. This means clients will use a SLAAC address but query additional DHCPv6 options, e.g. DNS Server.
 
-- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP ranges` and set:
+- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP ranges` and set:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -598,7 +616,7 @@ Option                              Value
     If do not want to use Router Advertisements, leave the RA Mode on default, and do not enable the Router Advertisement global setting. Ensure
     that the RA service you use allows for an assisted setup with SLAAC and DHCPv6.
 
-- Press **Save** and go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP options`
+- Press **Save** and go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options`
 
 We now add an additional DHCPv6 option for the DNS Server.
 
@@ -614,11 +632,11 @@ Option                              Value
 .. Note::
 
     When entering DHCPv6 options, enclosing them in brackets ``[]`` is mandatory. ``[::]`` is a special address and will return the GUA of
-    this server DNSmasq is running on.
+    this server Dnsmasq is running on.
 
 Press **Save**
 
-As final step, go to :menuselection:`Services --> DNSmasq DNS & DHCP --> General`
+As final step, go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> General`
 
 Enable the checkbox ``Router Advertisements`` if you want to use them.
 
@@ -628,13 +646,13 @@ Press **Apply** to activate the new configuration.
 DHCPv4 for small HA setups
 ------------------------------------------
 
-In addition to the setup described above, DNSmasq can be a viable option in a HA setup in small and medium sized network environments.
+In addition to the setup described above, Dnsmasq can be a viable option in a HA setup in small and medium sized network environments.
 
-In contrast to KEA DHCP, it does not offer lease synchronization. Each DNSmasq instance is a separate entity.
+In contrast to KEA DHCP, it does not offer lease synchronization. Each Dnsmasq instance is a separate entity.
 
 The main tricks to make this work are the following options:
 
-- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> General`:
+- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> General`:
 
 Set this on the current master:
 
@@ -660,7 +678,7 @@ Option                              Value
     It's important to choose a high enough delay time, otherwise the behavior can be unpredictable in busy networks. The disabled HA sync ensures
     that the DHCP general settings are not synced between master and backup.
 
-- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP ranges`:
+- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP ranges`:
 
 With LAN as example, set this on the current master:
 
@@ -692,7 +710,7 @@ Option                              Value
 
 .. Tip::
 
-    Reservations for single hosts created in :menuselection:`Services --> DNSmasq DNS & DHCP --> Host Override` can still be synchronized. They count as their
+    Reservations for single hosts created in :menuselection:`Services --> Dnsmasq DNS & DHCP --> Host Override` can still be synchronized. They count as their
     own single IP address pools outside of the defined DHCP ranges. This means both servers will serve the same IP address to a host when queried. There cannot
     be an IP address conflict in this case. Set the MAC address of the host in the Hardware address field.
 
@@ -710,7 +728,7 @@ Since IPv6 uses DAD (Duplicate Address Detection), you do not need to create sep
 Special care must be taken for the Router Advertisements. Since both master and backup will send them at the same time, the current default gateway
 must be determined by priority and router lifetime.
 
-- Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP ranges`:
+- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP ranges`:
 
 Set this on the current master:
 
@@ -742,7 +760,7 @@ Option                              Value
 **Disable HA sync**                 ``X``
 ==================================  =======================================================================================================
 
-As final step, go to :menuselection:`Services --> DNSmasq DNS & DHCP --> General`
+As final step, go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> General`
 
 Enable the checkbox ``Router Advertisements`` on both master and backup and apply the configuration.
 
@@ -767,20 +785,20 @@ As soon as the master comes back online, the higher RA priority will make client
 Understanding DHCP tags
 ------------------------------------------
 
-When a DHCP Discover enters a network interface, DNSmasq will automatically set a tag with the interface name.
+When a DHCP Discover enters a network interface, Dnsmasq will automatically set a tag with the interface name.
 
 Additionally, tags can be set on DHCP requests by clients when they send the options they need.
 
 There are two kinds of operations, `set` a tag and `match` a tag.
 
-You can manually configure additional tags in :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP tags`.
+You can manually configure additional tags in :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP tags`.
 
 - Setting these tags can be done in multiple spots, e.g., DHCP ranges, DHCP options / match, and Host Overrides.
 - Matching one or multiple tags is mostly relevant in DHCP options.
 
 As example, you could configure VoIP phones to receive a TFTP server option when they have a specific vendor id.
 
-Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP tags`
+Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP tags`
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -788,7 +806,7 @@ Option                              Value
 **Name**                            ``voip``
 ==================================  =======================================================================================================
 
-Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP options / match`
+Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options / match`
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -799,9 +817,9 @@ Option                              Value
 ==================================  =======================================================================================================
 
 Now a tag will be set if a DHCP request is sent by a VoIP phone that includes the vendor class option. If the vendor ID string matches,
-DNSmasq will look up any configuration that will match this tag. As next step we assign a TFTP server to this tag.
+Dnsmasq will look up any configuration that will match this tag. As next step we assign a TFTP server to this tag.
 
-Go to :menuselection:`Services --> DNSmasq DNS & DHCP --> DHCP options`
+Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options`
 
 ==================================  =======================================================================================================
 Option                              Value
