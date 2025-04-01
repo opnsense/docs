@@ -6,30 +6,59 @@ DHCP is used to automatically provide clients with an IP address (instead of cli
 DHCP is available for both IPv4 and IPv6 clients, referred to as DHCPv4 and DHCPv6, respectively.
 
 ---------------------------
-Context and future
+Available Options
 ---------------------------
 
+There are different DHCP servers to choose from:
 
-By default OPNsense implements the widely used `ISC DHCP <https://www.isc.org/dhcp/>`__ server, but as this product has
-reached its `end of life <https://www.isc.org/blogs/isc-dhcp-eol/>`__ we choose to add an alternative (`KEA <https://www.isc.org/kea/>`__) as of version 24.1
-as a first step in deprecating this piece of software.
+    - `Dnsmasq <https://thekelleys.org.uk/dnsmasq/doc.html>`__ (since version 25.7)
+    - `KEA <https://www.isc.org/kea/>`__ (since version 24.1)
+    - `ISC <https://www.isc.org/dhcp/>`__ (EOL)
 
-Since the code in our system is rather old (originates from M0n0wall) and the data behind it is not structured in a way that
-would be easily migratable to something more modern, we choose to add KEA as a second option and will not try to build a drop-in replacement.
-Long term ISC will be removed from OPNsense, but no official date has been set yet.
+Additionally, there is a dedicated DHCP relay:
 
-If you want to tryout KEA in OPNsense, just disable the legacy dhcp server on the specific interface and
-go to the KEA DHCP menu available under :menuselection:`Services --> Kea DHCP`.
+    - `Dhcrelay <https://man.freebsd.org/cgi/man.cgi?query=dhcrelay>`__ (since version 24.7)
+
+.. Note::
+
+    Dnsmasq is the new default DHCP server in version 25.7 and supersedes ISC. It is recommended for small and medium sized setups up to
+    a thousand clients. Read more about the deployment differences between KEA and Dnsmasq here: `Dnsmasq </manual/dnsmasq.html#dhcp-service>`__
+
+.. Note::
+
+    KEA is the correct choice for large HA (High Availability) setups with more than a thousand clients in many different DHCP ranges.
+    Dnsmasq can be used for smaller HA setups as alternative, though it does not offer lease synchronization like KEA.
 
 ...............................
 Reservations
 ...............................
 
-Both ISC DHCP and KEA DHCP offer the possibility to reserve an IP address for a specific client. This is useful when a client
-needs to have the same IP address every time it connects to the network. Both services also offer the ability to define reservations
+ISC, KEA and Dnsmasq offer the possibility to reserve an IP address for a specific client. This is useful when a client
+needs to have the same IP address every time it connects to the network. All services also offer the ability to define reservations
 inside and outside of the assigned pool of dynamic IP addresses. However, you should only define reservations outside of the pool.
 Unless you can guarantee that this client is online at all times when the reservation is in the dynamic range, the DHCP server is
 free to offer this IP address to a different client when the first client goes offline.
+
+.. Note::
+
+    In Dnsmasq static DHCPv4 pools can be configured for reservations.
+
+--------------------
+Dnsmasq DNS & DHCP
+--------------------
+
+Dnsmasq is a lightweight DNS, router advertisement and DHCP server.
+It is intended to provide coupled DNS and DHCP service to a LAN.
+Dnsmasq accepts DNS queries and either answers them from a small, local, cache or forwards them to a real, recursive, DNS server.
+
+The dnsmasq DHCP server supports static address assignments and multiple networks.
+It automatically sends a sensible default set of DHCP options, and can be configured to send any desired set of DHCP options, including vendor-encapsulated options.
+
+The dnsmasq DHCPv6 server provides the same set of features as the DHCPv4 server, and in addition, it includes router advertisements and a
+neat feature which allows naming for clients which use DHCPv4 and stateless autoconfiguration only for IPv6 configuration.
+There is support for doing address allocation (both DHCPv6 and RA) from subnets which are dynamically delegated via DHCPv6 prefix delegation.
+
+See manual: :doc:`Dnsmasq </manual/dnsmasq>`
 
 -----------------
 ISC DHCP
