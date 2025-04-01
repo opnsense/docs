@@ -6,32 +6,24 @@ DHCP is used to automatically provide clients with an IP address (instead of cli
 DHCP is available for both IPv4 and IPv6 clients, referred to as DHCPv4 and DHCPv6, respectively.
 
 ---------------------------
-Context and future
+Available Options
 ---------------------------
 
-
-By default OPNsense implements the widely used `ISC DHCP <https://www.isc.org/dhcp/>`__ server, but this product has
-reached its `end of life <https://www.isc.org/blogs/isc-dhcp-eol/>`__.
-
-Since the code in our system is rather old (originates from M0n0wall) and the data behind it is not structured in a way that
-would be easily migratable to something more modern, we choose to add KEA and Dnsmasq as alternatives and will not try to build a drop-in replacement.
-Long term ISC will be turned into an optional plugin and removed from the core distribution.
-
-We chose to add these alternatives:
+There are different DHCP servers to choose from:
 
     - `Dnsmasq <https://thekelleys.org.uk/dnsmasq/doc.html>`__ (since version 25.7)
     - `KEA <https://www.isc.org/kea/>`__ (since version 24.1)
-
-If you want to try the alternative DHCP servers, just disable the legacy one on the specific interfaces and
-go to either:
-
-    - :menuselection:`Services --> Dnsmasq DNS & DHCP`
-    - :menuselection:`Services --> Kea DHCP`
+    - `ISC <https://www.isc.org/dhcp/>`__ (EOL)
 
 .. Note::
 
-    Dnsmasq is the new default DHCP server in version 25.7, using it is recommended for small and medium sized setups.
+    Dnsmasq is the new default DHCP server in version 25.7 and supersedes ISC. It is recommended for small and medium sized setups.
     Read more about the deployment differences between KEA and Dnsmasq here: `Dnsmasq </manual/dnsmasq.html#dhcp-service>`__
+
+.. Note::
+
+    KEA is the correct choice for large HA (High Availability) setups with thousands of clients in many different DHCP ranges.
+    Dnsmasq can be used for smaller HA setups as alternative, though it does not offer lease synchronization like KEA.
 
 ...............................
 Reservations
