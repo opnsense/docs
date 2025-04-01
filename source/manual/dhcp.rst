@@ -15,14 +15,18 @@ There are different DHCP servers to choose from:
     - `KEA <https://www.isc.org/kea/>`__ (since version 24.1)
     - `ISC <https://www.isc.org/dhcp/>`__ (EOL)
 
+Additionally, there is a dedicated DHCP relay:
+
+    - `Dhcrelay <https://man.freebsd.org/cgi/man.cgi?query=dhcrelay>`__ (since version 24.7)
+
 .. Note::
 
-    Dnsmasq is the new default DHCP server in version 25.7 and supersedes ISC. It is recommended for small and medium sized setups.
-    Read more about the deployment differences between KEA and Dnsmasq here: `Dnsmasq </manual/dnsmasq.html#dhcp-service>`__
+    Dnsmasq is the new default DHCP server in version 25.7 and supersedes ISC. It is recommended for small and medium sized setups up to
+    a thousand clients. Read more about the deployment differences between KEA and Dnsmasq here: `Dnsmasq </manual/dnsmasq.html#dhcp-service>`__
 
 .. Note::
 
-    KEA is the correct choice for large HA (High Availability) setups with thousands of clients in many different DHCP ranges.
+    KEA is the correct choice for large HA (High Availability) setups with more than a thousand clients in many different DHCP ranges.
     Dnsmasq can be used for smaller HA setups as alternative, though it does not offer lease synchronization like KEA.
 
 ...............................
