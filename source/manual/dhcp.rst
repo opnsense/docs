@@ -249,7 +249,9 @@ This is the DHCPv4 service available in KEA, which offers the following tab shee
 
 ====================================  ==================================================================================================================
 **Settings**
-General\\Enabled                      Enable DHCPv4 service
+Service\\Enabled                      Enable DHCPv4 service
+Service\\Manual config                Configure kea dhcp 4 manually, requires supplying your own :code:`/usr/local/etc/kea/kea-dhcp4.conf` file
+                                      (advanced users only)
 General\\Interfaces                   Interfaces to listen on for dhcp[v4] requests
 General\\Valid lifetime               Defines how long the addresses (leases) given out by the server are valid (in seconds)
 High Availability\\Enabled            Enable high availability setup, requires an active control agent.
