@@ -283,12 +283,16 @@ DHCP Settings
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
+        **Type**                                  "Set" option to send it to a client in a DHCP offer or
+                                                  "Match" option to dynamically tag clients that send it in the initial DHCP request.
         **Option**                                DHCPv4 option to offer to the client.
         **Option6**                               DHCPv6 option to offer to the client.
         **Interface**                             This adds a single interface as a tag so this DHCP option can match the interface of a DHCP range.
         **Tag**                                   If the optional tags are given, then this option is only sent when all the tags are matched.
                                                   Can be optionally combined with an interface tag.
-                                                  The special address 0.0.0.0 is taken to mean "the address of the machine running dnsmasq".
+                                                  The special address 0.0.0.0 or [::] is taken to mean "the address of the machine running dnsmasq".
+                                                  When using "Match", leave empty to match on the option only.
+        **Tag [set]**                             Tag to set for requests matching this range which can be used to selectively match dhcp options.
         **Force**                                 Always send the option, even when the client does not ask for it in the parameter request list.
         **Description**                           You may enter a description here for your reference (not parsed).
         ========================================= ====================================================================================
@@ -306,19 +310,6 @@ DHCP Settings
 
             Interfaces set tags automatically, you do not need to set tags for them. Just select the interface in a DHCP range or DHCP option
             for the match to happen.
-
-
-    .. tab:: DHCP options / match
-
-        ========================================= ====================================================================================
-        **Option**                                **Description**
-        ========================================= ====================================================================================
-        **Option**                                DHCPv4 option to offer to the client.
-        **Option6**                               DHCPv6 option to offer to the client.
-        **Tag [set]**                             Tag to set for requests matching this range which can be used to selectively match DHCP options.
-        **Value**                                 Value to match, leave empty to match on the option only.
-        **Description**                           You may enter a description here for your reference (not parsed).
-        ========================================= ====================================================================================
 
 
 -------------------------
@@ -478,6 +469,7 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
+        **Type**                            Set
         **Option**                          router[3]
         **Interface**                       ``LAN``
         **Value**                           ``192.168.1.1`` (the interface IP address of LAN, or a virtual IP of LAN)
@@ -488,6 +480,7 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
+        **Type**                            Set
         **Option**                          dns-server[6]
         **Interface**                       ``LAN``
         **Value**                           ``192.168.1.1`` (Unbound listens the interface IP address of LAN, or a virtual IP of LAN)
@@ -504,6 +497,7 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
+        **Type**                            Set
         **Option**                          domain-search [119]
         **Interface**                       ``LAN``
         **Value**                           ``lan.internal``
@@ -522,6 +516,7 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
+        **Type**                            Set
         **Option**                          router[3]
         **Interface**                       ``GUEST``
         **Value**                           ``192.168.10.1`` (the interface IP address of GUEST, or a virtual IP of GUEST)
@@ -532,6 +527,7 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
+        **Type**                            Set
         **Option**                          dns-server[6]
         **Interface**                       ``GUEST``
         **Value**                           ``192.168.10.1`` (Unbound listens the interface IP address of GUEST, or a virtual IP of GUEST)
@@ -542,6 +538,7 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
+        **Type**                            Set
         **Option**                          domain-search [119]
         **Interface**                       ``GUEST``
         **Value**                           ``guest.internal``
@@ -624,6 +621,7 @@ We now add an additional DHCPv6 option for the DNS Server.
 ==================================  =======================================================================================================
 Option                              Value
 ==================================  =======================================================================================================
+**Type**                            Set
 **Option**                          ``None``
 **Option6**                         ``dns-server [23]``
 **Interface**                       ``LAN``
@@ -746,11 +744,12 @@ Option                              Value
 **Name**                            ``voip``
 ==================================  =======================================================================================================
 
-Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options / match`
+Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options`
 
 ==================================  =======================================================================================================
 Option                              Value
 ==================================  =======================================================================================================
+**Type**                            Match
 **Option**                          ``vendor-class[60]``
 **Tag [set]**                       ``voip``
 **Value**                           The vendor ID string (e.g., ``SIPPhone``)
@@ -764,6 +763,7 @@ Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options`
 ==================================  =======================================================================================================
 Option                              Value
 ==================================  =======================================================================================================
+**Type**                            Match
 **Option**                          ``tftp-server-address[150]``
 **Tag [set]**                       ``voip``
 **Value**                           IP address of your TFTP server
@@ -910,4 +910,3 @@ As soon as the master comes back online, the higher RA priority will make client
 
     Do not set the RA Interval and RA Router Lifetime too low, as clients could potentially loose their default routes in busy networks.
     The bare minimum for RA Router Lifetime should be (RA Interval*3).
-
