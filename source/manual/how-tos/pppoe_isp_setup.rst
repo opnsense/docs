@@ -54,7 +54,11 @@ Option                              Value
 
 - Press **Save** and **Apply**
 
-.. Tip:: If you do not plan to use this interface at all, you can also unassign it. PPPoE does not require this interface to be assigned.
+.. Attention::
+
+    The parent interface should stay assigned in :menuselection:`Interfaces --> Assignments` to correctly spoof the mac address
+    on the VLAN device created in the next step. This is necessary to ensure traffic destined to the VLAN device will get
+    discarded on the parent interface and only processed by the VLAN device.
 
 
 2. VLAN Device
