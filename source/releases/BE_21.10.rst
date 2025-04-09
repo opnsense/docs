@@ -321,7 +321,7 @@ Here are the full patch notes:
 * firmware: opnsense-update -c option now honours the -f option
 * firmware: opnsense-update improvements for mirror manipulation options
 * firmware: replace php version_compare() call with pkg-version shell command
-* firmware: revoke 21.1 fingerprint
+* firmware: revoke 21.4 fingerprint
 * firmware: static template for firmware upgrade message
 * firmware: sync plugins in console update
 * ipsec: add auto type for identities

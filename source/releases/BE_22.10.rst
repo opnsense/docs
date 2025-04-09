@@ -343,7 +343,7 @@ Here are the full patch notes:
 * firmware: opnsense-patch: only remove ".sh" suffix for installer and update repos
 * firmware: opnsense-update: only set packages marker after successful upgrade
 * firmware: opnsense-bootstrap: set correct packages marker
-* firmware: revoke 22.1 fingerprint
+* firmware: revoke 22.4 fingerprint
 * firmware: major upgrade "pkgs" set was still unknown to plugin sync
 * firmware: opnsense-update: return subscription key via -K if it exists
 * firmware: display license validity when applicable in business edition

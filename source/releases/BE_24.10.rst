@@ -154,6 +154,11 @@ A hotfix release was issued as 24.10.2_6:
 * ports: openssh 9.9p2 `[23] <https://www.openssh.com/txt/release-9.9p2>`__ 
 * ports: py-jinja 3.1.6 `[24] <https://jinja.palletsprojects.com/en/stable/changes/#version-3-1-6>`__ 
 
+A hotfix release was issued as 24.10.2_8:
+
+* system: compatibility shims for upcoming user model changes
+* firmware: add fingerprint, migration notes and upgrade hint for 25.4
+
 
 
 --------------------------------------------------------------------------
@@ -424,7 +429,7 @@ Here are the full changes against version 24.4.3:
 * captive portal: fix client disconnect (contributed by Vivek Panchal)
 * dhcrelay: start on "newwanip_map" event as well
 * dhcrelay: refactor for plugins_argument_map() use
-* firmware: revoke old fingerprints
+* firmware: revoke 24.4 fingerprint
 * firmware: remove inactive mirrors from the list
 * firmware: introduce sanity checks prior to upgrades
 * firmware: cleanup package manager temporary files prior to upgrades

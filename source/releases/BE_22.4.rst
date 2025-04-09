@@ -388,7 +388,7 @@ Here are the full patch notes:
 * firmware: patch version / date header in consistently for backend scripts
 * firmware: removed obsolete business repository fingerprints and added 22.4 fingerprint
 * firmware: return product info for status endpoint even when no firmware check was done
-* firmware: revoke the 21.10 fingerprint
+* firmware: revoke 21.10 fingerprint
 * firmware: separate the "needs_reboot" and "upgrade_needs_reboot" check flags
 * firmware: use opnsense-update for version info in update checks
 * firmware: use isolated directory for database update check

@@ -612,7 +612,7 @@ Here are the full patch notes:
 * firmware: added German-based mirror (contributed by Alexander Lauster)
 * system: load modules before setting tunables to support settings for modules
 * system: fix boot issue that prevented SSH from starting up in some instances
-* interface: do not show wireless parents on the assignment page as it cannot be assigned
+* interfaces: do not show wireless parents on the assignment page as it cannot be assigned
 * ipsec: individual collapse/expand for status page
 * dhcp: allow backwards-compatibility with imported configs
 * captive portal: fix missing busyTimeout on voucher database access
