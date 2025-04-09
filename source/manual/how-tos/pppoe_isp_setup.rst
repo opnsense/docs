@@ -54,11 +54,12 @@ Option                              Value
 
 - Press **Save** and **Apply**
 
-.. Attention::
+.. Tip::
 
-    The parent interface should stay assigned in :menuselection:`Interfaces --> Assignments` to correctly spoof the mac address
-    on the VLAN device created in the next step. This is necessary to ensure traffic destined to the VLAN device will get
-    discarded on the parent interface and only processed by the VLAN device.
+    The parent interface does not need to stay assigned in most cases. It is only needed to create the VLAN device in the next step.
+    There are edge cases where the parent interface needs to stay assigned and enabled, such as manually spoofing the MAC address
+    to comply with ISP requirements. This can happen if you replace a Customer Premises Router (CPE) with your own router and PPPoE
+    authentication must use the MAC address of the CPE.
 
 
 2. VLAN Device
