@@ -78,6 +78,9 @@ Action properties
 | type                  | script|script_output   |  type of call:                                         |
 |                       |                        |    - script (only return exit status)                  |
 |                       |                        |    - script_output (return result)                     |
+|                       |                        |    - stream_output (return result in streaming mode)   |
++-----------------------+------------------------+--------------------------------------------------------+
+| errors                | text [no]              | :code:`errors:no` ignores the scripts exit code        |
 +-----------------------+------------------------+--------------------------------------------------------+
 | message               | text                   | Message to send to syslog (you can use %s parameters)  |
 +-----------------------+------------------------+--------------------------------------------------------+
