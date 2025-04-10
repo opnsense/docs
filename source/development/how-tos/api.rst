@@ -2,6 +2,8 @@
 Use the API
 ===========
 
+.. contents:: Index
+
 --------
 Overview
 --------
@@ -96,7 +98,7 @@ response.
 
 
 ----------
-Using curl
+Using cURL
 ----------
 
 Simple testing with curl is also possible, the sample below uses the
@@ -117,3 +119,85 @@ And schedule the actual update of all packages using:
 
 .. |Usermanager add api key.png| image:: images/Usermanager_add_api_key.png
    :width: 700px
+
+--------------------------------------------------
+Using browser console to inspect API
+--------------------------------------------------
+
+All API endpoints are used by the WebGUI to interact between view and controller. There are only very few endpoints that are not
+directly used in the WebGUI. This makes inspecting the API requests and responses in a browser console the best way
+to inspect the correct usage of the API.
+
+All API requests can be easily reproduced using command-line tools like cURL.
+
+Below is a simple guide using Google Chrome and Firefox:
+
+1. Open an UI Component
+--------------------------------------------------
+
+In our example, we want to inspect how to create a new group in :menuselection:`System --> Access --> Groups`.
+
+First we browse to the UI page that offers the option to add a new group. Afterwards we press the **+** button
+to open the form dialog for input. We will input the following data:
+
+==================================  ===========================================================================
+Option                              Value
+==================================  ===========================================================================
+**Group name**                      HelloWorld
+**Description**                     HelloWorld
+**Privileges**                      Lobby: Dashboard
+**Members**                         root
+==================================  ===========================================================================
+
+Before pressing **Save**, we will open the browser developer tools to inspect what happens when we do.
+
+2. Open Browser Developer Tools
+--------------------------------------------------
+
+Google Chrome or Firefox:
+
+Press F12 or Ctrl+Shift+I (Windows/Linux) or Cmd+Option+I (macOS).
+
+Navigate to the **Network** tab.
+
+Now press the **Save** button in the open form dialog. This will trigger the serialization of the data via
+API endpoint. You will see the ``add/`` in the network tab.
+
+3. Inspect the API Call
+--------------------------------------------------
+
+Click on the relevant request (e.g., /api/auth/group/add/).
+
+Inspect the following details:
+
+- Headers: Method (POST, GET), URL, headers (like content-type, accept, authorization, and cookie).
+- Payload: Inspect the request payload in the Payload tab.
+- Response: View the response data under the Response tab.
+
+In our case it will look like this:
+
+- Request URL: ``https://192.168.1.1/api/auth/group/add/``
+- Request Method: ``POST``
+- Request Payload: ``group: {name: "HelloWorld", description: "HelloWorld", priv: "page-system-login-logout", member: "0"}``
+- Response: ``{"result":"saved","uuid":"569118e0-006b-4a2d-8eb6-332d29300a2a"}``
+
+With this information, you know exactly how to use the group API to add a new group.
+
+4. Replicate the API Call with cURL
+--------------------------------------------------
+
+In Chrome and Firefox, you can easily generate a cURL command out of the previous API call.
+
+Right-click the request entry (e.g., ``add/``), select Copy → Copy as cURL.
+
+This provides a complete cURL command that can be completed with an API token for authorization.
+
+.. code-block:: sh
+
+    curl -X POST 'https://172.16.0.254:4444/api/auth/group/add/' \
+    -H 'accept: application/json, text/javascript, */*; q=0.01' \
+    -H 'content-type: application/json' \
+    --data-raw '{"group":{"name":"HelloWorld","description":"HelloWorld","priv":"page-system-login-logout","member":"0"}}' \
+    --insecure
+
+This approach allows you to test or automate API interactions outside of the GUI for debugging, automation and scripting.
