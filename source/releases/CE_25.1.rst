@@ -27,6 +27,86 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.1.5 (April 10, 2025)
+--------------------------------------------------------------------------
+
+
+This release improves overall RADIUS support, moves the captive portal
+from IPFW to PF, creates visibility of external certificate sources in
+the system and offers a glimpse into the filter automation GUI revamp
+which could one day replace the remaining static firewall rules edit pages.
+
+Speaking of static pages: MVC/API conversions are almost 80% complete now
+and we would really like to continue that trend.  Also brace for impact
+as we crash-land Dnsmasq DHCP support in a stable release within the next
+90 days!
+
+Here are the full patch notes:
+
+* system: extend XMLRPC "nosync" support to keep backup items for new cases
+* system: improved RADIUS RFC alignment and use Message Authenticator by default
+* system: prevent recursion loop when CAs are cross-referencing each other
+* system: fix URL hash in certificate link so redirection shows the correct menu path
+* system: fix off by one error due to line ending at the end of a log file
+* system: offer config directory to store locations for external certificates and support it in the certificates widget
+* system: allow multiple manual DNS search domains
+* system: fix gateway watcher backoff
+* system: minor code cleanups in auth.inc
+* reporting: move NetFlow backend single_pass to command line parameters for easier debugging
+* reporting: use client time in traffic dashboard widget
+* firewall: automation filter UI revamp
+* firewall: fix presentation when alias name overlaps group name
+* firewall: fix regression in alias table in JSON format
+* firewall: move pipe and queue configuration to "dnctl" service
+* firewall: replace update_params for argparse in filter log reader
+* captive portal: migrate backend from IPFW to PF
+* firmware: ignore dashboard check for updates link automation if user clicks check for updates too
+* firmware: fix reboot flag handling due to changed BooleanField default in 25.1.4
+* firmware: add cleanup audit script
+* ipsec: move mobile clients charon attributes to "Advanced settings"
+* ipsec: pre-shared key permission fix
+* kea-dhcp: add missing ACL privileges
+* kea-dhcp: allow manual configuration for advanced scenarios
+* openvpn: add "Enable static challenge (OTP)" option in client export
+* openvpn: display virtual IPv6 addresses for clients in dashboard widget (contributed by cs-1 and lucaspalomodevelop)
+* router advertisements: fix list of source addresses on overlapping link-locals (contributed by Robin Müller)
+* unbound: drop "exclude" phrase from plugin log entry
+* unbound: add optional TTL field
+* mvc: prefer ui/user_portal above system_usermanager_passwordmg.php in ACLs
+* mvc: implement "ignore" field type in forms
+* ui: include "all" instead of only "solid" and "brands" Font Awesome styles
+* ui: ensure fields stay aligned relatively to another when headers are used in forms
+* ui: add fetch_options() which can build grouped selectpickers
+* ui: improve and extend Bootgrid behaviour
+* plugins: os-caddy 1.8.5 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* plugins: os-sftp-backup 1.1 adds hostname prefix and filedrop-only support (contributed by beposec)
+* src: ifconfig: fix reporting optics on most 100g interfaces
+* src: igc: fix attach for I226-K and LMVP devices
+* src: inpcb: assorted changes for upcoming FIB support
+* src: ipfw: fix dump_soptcodes() handler
+* src: ixgbe: add support for 1000BASE-BX SFP modules
+* src: ixgbe: fix mailbox ack handling
+* src: netinet6: add the missing lock acquire to nd6_get_llentry
+* src: netinet: fix getcred sysctl handlers to do nothing if no input is given
+* src: netinet: if mb_unmapped_to_ext() failed, return directly
+* src: netlink: fix getting route scope of interface IPv4 addresses
+* src: ovpn: fix use-after-free of mbuf
+* src: pf: improve pf_state_key_attach() error handling
+* src: pf: only force state failure logging if logging was requested
+* src: pfkey2: use correct value for a key length
+* src: routing: do not allow PINNED routes to be overriden
+* src: sctp: fix double unlock in case adding a remote address fails
+* src: tcp: clear sendfile logging struct
+* src: udp: do not recursively enter net epoch
+* src: wg: remove overly-restrictive address family check
+* ports: lighttpd 1.4.79 `[2] <https://www.lighttpd.net/2025/4/4/1.4.79/>`__ 
+* ports: openvpn 2.6.14 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.14>`__ 
+* ports: phalcon 5.9.2 `[4] <https://github.com/phalcon/cphalcon/releases/tag/v5.9.2>`__ 
+* ports: py-duckdb 1.2.2 `[5] <https://github.com/duckdb/duckdb/releases/tag/v1.2.2>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.1.4 (March 26, 2025)
 --------------------------------------------------------------------------
 
