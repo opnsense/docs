@@ -106,9 +106,6 @@ When creating a zone, a couple of options are available which we will try to exp
 Enabled                               Enable the zone, which will install a network trap on the interfaces specified
 Zone number                           Read-only sequence of the configured zone
 Interfaces                            Interfaces which should be guarded by this captive portal
-Allow inbound                         Select interfaces from which to allow inbound (stateful) traffic.
-                                      This can be convenient if the zone in question contains machines/servers which should be
-                                      accessible from other networks attached to this firewall.
 Authenticate using                    Select an authenticator specified in :menuselection:`System --> Access --> Servers`
 Always send accounting requests       [RADIUS only] This will make the captive portal always send accounting requests,
                                       rather than just when there is a need for accounting (e.g. when there is a daily session limit).
