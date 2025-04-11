@@ -56,6 +56,12 @@ Inspect button
 The inspect button will reveal all system defined firewall rules and show rule statistics. It can be enabled at any time
 to get a complete view of the current active ruleset.
 
+Available rule parameters
+-------------------------------
+
+.. include:: /manual/forms/Firewall/dialogfilterrule.rst
+
+
 Processing Order
 -------------------------------
 
