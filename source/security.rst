@@ -56,8 +56,8 @@ Upstream vulnerabilities
 ------------------------------------------------------------
 
 Since OPNsense is a collection of opensource software, when finding an issue, it is always a good idea to
-inspect where is should be fixed first. In case you don't know or aren't sure, you can still ask on our end, just
-know that we don't have the manpower to act as an intermediate between various projects.
+inspect where it should be fixed first. In case you don't know or aren't sure, you can still ask on our end, just
+know that we don't have the manpower to act as an intermediary between various projects.
 
 
 ------------------------------------------------------------
@@ -168,13 +168,13 @@ including full testing by jtsec and made plans for the future.
 Results
 ............................................................
 
-Below you will find the versions that have been tested or are currently in test.
+Below you will find the versions that have been tested or are currently in testing.
 
 
 +----------+-----------------------+------------------------------------------------------------------------------------------------------+
-| Version  | status                | Download                                                                                             |
+| Version  | Status                | Download                                                                                             |
 +==========+=======================+======================================================================================================+
-| BE 25.04 | In test               |                                                                                                      |
+| BE 25.04 | In testing            |                                                                                                      |
 +----------+-----------------------+------------------------------------------------------------------------------------------------------+
 | BE 24.10 | LINCE Certified       | :download:`BE24.10-STIC_OPNSENSE_HIGH-ETR-v1.0.pdf <pdf/BE24.10-STIC_OPNSENSE_HIGH-ETR-v1.0.pdf>`    |
 |          |                       | dfb3a7eceeace2302c8b7328602b959a9c3107c14395a591ddc08a704a8f0fdc                                     |
