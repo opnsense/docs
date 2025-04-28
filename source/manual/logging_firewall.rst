@@ -49,3 +49,14 @@ Detailed information for a specific rule can be provided using the info button a
     Since log lines are stored on the system without an exact match to the rule in question, we do need to translate the sequence
     in the file back to the rule definition stored in the system. Due to this fact, the information is less accurate
     historically if the firewall was reconfigured. (labels may be incorrect when looking at older data)
+
+
+Overview
+--------------------
+
+The logging overview page shows the distribution of the firewall log lines over a set of different properties, but is limited
+in the amount of rules it will evaluate (5000).
+
+Although it may help to spot some clear patterns from the top of your log stash, the number of relevant use-cases
+is likely limited.
+

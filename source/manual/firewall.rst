@@ -103,8 +103,14 @@ to pass traffic, it's much harder to spoof traffic.
     this can be configured in :menuselection:`Firewall --> Settings --> Firewall Maximum States`.
     (The help text shows the default number of states on your platform)
 
-States can also be quite convenient to find the active top users on your firewall at any time, as of 21.7 we added
+States can also be quite convenient to find the active top users on your firewall at any time, we added
 an easy to use "session" browser for this purpose. You can find it under :menuselection:`Firewall --> Diagnostics --> Sessions`.
+
+.. Tip::
+
+    States also play an important rule into protecting services against (distributed) denial of service attacks (DDOS).
+    Relevant topics available in our documentation are "syncproxy" states, connection limits and `syncookies <firewall_settings.html#enable-syncookies>`__
+
 
 ....................
 Action
@@ -269,6 +275,33 @@ Log                                   Create a log entry when this rule applies,
       <i class="fa fa-eye"></i>
     With the use of the eye button in the right top corner of the screen you can find statistics about the rule in
     question (number of evaluations, number of active states and traffic counters).
+
+
+..........................
+Traffic shaping (Qos)
+..........................
+
+When a firewall rule needs to be constraint in terms of the number of packets it may process over time,
+it's possible to combine the rule with the traffic shaper.
+
+The process of shaping is explained in the :doc:`/manual/shaping` section of our documentation. Below you will find the
+relevant properties for the firewall rule.
+
+
+=====================================================================================================================
+
+====================================  ===============================================================================
+Traffic shaping/rule direction        Force packets being matched by this rule into the configured queue or pipe
+Traffic shaping/reverse direction     Force packets being matched in the opposite direction
+                                      into the configured queue or pipe
+====================================  ===============================================================================
+
+
+.. Tip::
+
+    Filter rules are more flexible than the ones specified in the shaper section itself as these can be combined with
+    aliases as well. Although this feature is quite new, it's certainly worth looking at when in need of a traffic shaper.
+
 
 
 .....................
@@ -436,7 +469,7 @@ One of the most common mistakes is traffic doesn't match the rule and/or the ord
 for whatever reason.
 
 With the use of the "inspect" button, one can easily see if a rule is being evaluated and traffic did pass using
-this rule. As of 21.7 it's also possible to jump directly into the attached states to see if your host is in the list
+this rule. It's also possible to jump directly into the attached states to see if your host is in the list
 as expected.
 
 Another valuable tool is the live log viewer, in order to use it, make sure to provide your rule with an easy to
