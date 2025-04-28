@@ -109,7 +109,7 @@ an easy to use "session" browser for this purpose. You can find it under :menuse
 .. Tip::
 
     States also play an important rule into protecting services against (distributed) denial of service attacks (DDOS).
-    Relevant topics available in our documentation are "syncproxy" states, connection limits and `syncookies <firewall_settings.html#enable-syncookies>`__
+    Relevant topics available in our documentation are "synproxy" states, connection limits and `syncookies <firewall_settings.html#enable-syncookies>`__
 
 
 ....................
@@ -278,10 +278,10 @@ Log                                   Create a log entry when this rule applies,
 
 
 ..........................
-Traffic shaping (Qos)
+Traffic shaping (QoS)
 ..........................
 
-When a firewall rule needs to be constraint in terms of the number of packets it may process over time,
+When a firewall rule needs to be constrained in terms of the number of packets it may process over time,
 it's possible to combine the rule with the traffic shaper.
 
 The process of shaping is explained in the :doc:`/manual/shaping` section of our documentation. Below you will find the
