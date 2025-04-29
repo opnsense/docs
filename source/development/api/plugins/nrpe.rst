@@ -5,14 +5,14 @@ Nrpe
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","nrpe","command","addCommand",""
-    "``POST``","nrpe","command","delCommand","$uuid"
+    "``POST``","nrpe","command","add_command",""
+    "``POST``","nrpe","command","del_command","$uuid"
     "``GET``","nrpe","command","get",""
-    "``GET``","nrpe","command","getCommand","$uuid=null"
-    "``*``","nrpe","command","searchCommand",""
+    "``GET``","nrpe","command","get_command","$uuid=null"
+    "``*``","nrpe","command","search_command",""
     "``POST``","nrpe","command","set",""
-    "``POST``","nrpe","command","setCommand","$uuid"
-    "``POST``","nrpe","command","toggleCommand","$uuid"
+    "``POST``","nrpe","command","set_command","$uuid"
+    "``POST``","nrpe","command","toggle_command","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Command.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/nrpe/src/opnsense/mvc/app/models/OPNsense/Nrpe/Command.xml>`__"
 

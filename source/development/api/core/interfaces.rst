@@ -5,15 +5,15 @@ Interfaces
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","interfaces","gif_settings","addItem",""
-    "``POST``","interfaces","gif_settings","delItem","$uuid"
+    "``POST``","interfaces","gif_settings","add_item",""
+    "``POST``","interfaces","gif_settings","del_item","$uuid"
     "``GET``","interfaces","gif_settings","get",""
-    "``GET``","interfaces","gif_settings","getIfOptions",""
-    "``GET``","interfaces","gif_settings","getItem","$uuid=null"
+    "``GET``","interfaces","gif_settings","get_if_options",""
+    "``GET``","interfaces","gif_settings","get_item","$uuid=null"
     "``POST``","interfaces","gif_settings","reconfigure",""
-    "``*``","interfaces","gif_settings","searchItem",""
+    "``*``","interfaces","gif_settings","search_item",""
     "``POST``","interfaces","gif_settings","set",""
-    "``POST``","interfaces","gif_settings","setItem","$uuid"
+    "``POST``","interfaces","gif_settings","set_item","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Gif.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Gif.xml>`__"
 
@@ -21,15 +21,15 @@ Interfaces
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","interfaces","gre_settings","addItem",""
-    "``POST``","interfaces","gre_settings","delItem","$uuid"
+    "``POST``","interfaces","gre_settings","add_item",""
+    "``POST``","interfaces","gre_settings","del_item","$uuid"
     "``GET``","interfaces","gre_settings","get",""
-    "``GET``","interfaces","gre_settings","getIfOptions",""
-    "``GET``","interfaces","gre_settings","getItem","$uuid=null"
+    "``GET``","interfaces","gre_settings","get_if_options",""
+    "``GET``","interfaces","gre_settings","get_item","$uuid=null"
     "``POST``","interfaces","gre_settings","reconfigure",""
-    "``*``","interfaces","gre_settings","searchItem",""
+    "``*``","interfaces","gre_settings","search_item",""
     "``POST``","interfaces","gre_settings","set",""
-    "``POST``","interfaces","gre_settings","setItem","$uuid"
+    "``POST``","interfaces","gre_settings","set_item","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Gre.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Gre.xml>`__"
 
@@ -37,14 +37,14 @@ Interfaces
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","interfaces","lagg_settings","addItem",""
-    "``POST``","interfaces","lagg_settings","delItem","$uuid"
+    "``POST``","interfaces","lagg_settings","add_item",""
+    "``POST``","interfaces","lagg_settings","del_item","$uuid"
     "``GET``","interfaces","lagg_settings","get",""
-    "``GET``","interfaces","lagg_settings","getItem","$uuid=null"
+    "``GET``","interfaces","lagg_settings","get_item","$uuid=null"
     "``POST``","interfaces","lagg_settings","reconfigure",""
-    "``*``","interfaces","lagg_settings","searchItem",""
+    "``*``","interfaces","lagg_settings","search_item",""
     "``POST``","interfaces","lagg_settings","set",""
-    "``POST``","interfaces","lagg_settings","setItem","$uuid"
+    "``POST``","interfaces","lagg_settings","set_item","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Lagg.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Lagg.xml>`__"
 
@@ -52,14 +52,14 @@ Interfaces
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","interfaces","loopback_settings","addItem",""
-    "``POST``","interfaces","loopback_settings","delItem","$uuid"
+    "``POST``","interfaces","loopback_settings","add_item",""
+    "``POST``","interfaces","loopback_settings","del_item","$uuid"
     "``GET``","interfaces","loopback_settings","get",""
-    "``GET``","interfaces","loopback_settings","getItem","$uuid=null"
+    "``GET``","interfaces","loopback_settings","get_item","$uuid=null"
     "``POST``","interfaces","loopback_settings","reconfigure",""
-    "``*``","interfaces","loopback_settings","searchItem",""
+    "``*``","interfaces","loopback_settings","search_item",""
     "``POST``","interfaces","loopback_settings","set",""
-    "``POST``","interfaces","loopback_settings","setItem","$uuid"
+    "``POST``","interfaces","loopback_settings","set_item","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Loopback.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Loopback.xml>`__"
 
@@ -67,14 +67,14 @@ Interfaces
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","interfaces","neighbor_settings","addItem",""
-    "``POST``","interfaces","neighbor_settings","delItem","$uuid"
+    "``POST``","interfaces","neighbor_settings","add_item",""
+    "``POST``","interfaces","neighbor_settings","del_item","$uuid"
     "``GET``","interfaces","neighbor_settings","get",""
-    "``GET``","interfaces","neighbor_settings","getItem","$uuid=null"
+    "``GET``","interfaces","neighbor_settings","get_item","$uuid=null"
     "``POST``","interfaces","neighbor_settings","reconfigure",""
-    "``*``","interfaces","neighbor_settings","searchItem",""
+    "``*``","interfaces","neighbor_settings","search_item",""
     "``POST``","interfaces","neighbor_settings","set",""
-    "``POST``","interfaces","neighbor_settings","setItem","$uuid"
+    "``POST``","interfaces","neighbor_settings","set_item","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Neighbor.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Neighbor.xml>`__"
 
@@ -83,23 +83,23 @@ Interfaces
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","interfaces","overview","export",""
-    "``GET``","interfaces","overview","getInterface","$if=null"
-    "``GET``","interfaces","overview","interfacesInfo","$details=false"
-    "``GET``","interfaces","overview","reloadInterface","$identifier=null"
+    "``GET``","interfaces","overview","get_interface","$if=null"
+    "``GET``","interfaces","overview","interfaces_info","$details=false"
+    "``GET``","interfaces","overview","reload_interface","$identifier=null"
 
 .. csv-table:: Resources (VipSettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","interfaces","vip_settings","addItem",""
-    "``POST``","interfaces","vip_settings","delItem","$uuid"
+    "``POST``","interfaces","vip_settings","add_item",""
+    "``POST``","interfaces","vip_settings","del_item","$uuid"
     "``GET``","interfaces","vip_settings","get",""
-    "``GET``","interfaces","vip_settings","getItem","$uuid=null"
-    "``GET``","interfaces","vip_settings","getUnusedVhid",""
+    "``GET``","interfaces","vip_settings","get_item","$uuid=null"
+    "``GET``","interfaces","vip_settings","get_unused_vhid",""
     "``POST``","interfaces","vip_settings","reconfigure",""
-    "``*``","interfaces","vip_settings","searchItem",""
+    "``*``","interfaces","vip_settings","search_item",""
     "``POST``","interfaces","vip_settings","set",""
-    "``POST``","interfaces","vip_settings","setItem","$uuid"
+    "``POST``","interfaces","vip_settings","set_item","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Vip.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Vip.xml>`__"
 
@@ -107,14 +107,14 @@ Interfaces
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","interfaces","vlan_settings","addItem",""
-    "``POST``","interfaces","vlan_settings","delItem","$uuid"
+    "``POST``","interfaces","vlan_settings","add_item",""
+    "``POST``","interfaces","vlan_settings","del_item","$uuid"
     "``GET``","interfaces","vlan_settings","get",""
-    "``GET``","interfaces","vlan_settings","getItem","$uuid=null"
+    "``GET``","interfaces","vlan_settings","get_item","$uuid=null"
     "``POST``","interfaces","vlan_settings","reconfigure",""
-    "``*``","interfaces","vlan_settings","searchItem",""
+    "``*``","interfaces","vlan_settings","search_item",""
     "``POST``","interfaces","vlan_settings","set",""
-    "``POST``","interfaces","vlan_settings","setItem","$uuid"
+    "``POST``","interfaces","vlan_settings","set_item","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Vlan.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Vlan.xml>`__"
 
@@ -122,13 +122,13 @@ Interfaces
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","interfaces","vxlan_settings","addItem",""
-    "``POST``","interfaces","vxlan_settings","delItem","$uuid"
+    "``POST``","interfaces","vxlan_settings","add_item",""
+    "``POST``","interfaces","vxlan_settings","del_item","$uuid"
     "``GET``","interfaces","vxlan_settings","get",""
-    "``GET``","interfaces","vxlan_settings","getItem","$uuid=null"
+    "``GET``","interfaces","vxlan_settings","get_item","$uuid=null"
     "``POST``","interfaces","vxlan_settings","reconfigure",""
-    "``*``","interfaces","vxlan_settings","searchItem",""
+    "``*``","interfaces","vxlan_settings","search_item",""
     "``POST``","interfaces","vxlan_settings","set",""
-    "``POST``","interfaces","vxlan_settings","setItem","$uuid"
+    "``POST``","interfaces","vxlan_settings","set_item","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `VxLan.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/VxLan.xml>`__"

@@ -27,10 +27,10 @@ Acmeclient
     "``GET``","acmeclient","actions","get",""
     "``*``","acmeclient","actions","search",""
     "``POST``","acmeclient","actions","set",""
-    "``GET``","acmeclient","actions","sftpGetIdentity",""
-    "``GET``","acmeclient","actions","sftpTestConnection",""
-    "``GET``","acmeclient","actions","sshGetIdentity",""
-    "``GET``","acmeclient","actions","sshTestConnection",""
+    "``GET``","acmeclient","actions","sftp_get_identity",""
+    "``GET``","acmeclient","actions","sftp_test_connection",""
+    "``GET``","acmeclient","actions","ssh_get_identity",""
+    "``GET``","acmeclient","actions","ssh_test_connection",""
     "``POST``","acmeclient","actions","toggle","$uuid,$enabled=null"
     "``POST``","acmeclient","actions","update","$uuid"
 
@@ -73,11 +73,11 @@ Acmeclient
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","acmeclient","settings","fetchCronIntegration",""
-    "``POST``","acmeclient","settings","fetchHAProxyIntegration",""
+    "``POST``","acmeclient","settings","fetch_cron_integration",""
+    "``POST``","acmeclient","settings","fetch_h_a_proxy_integration",""
     "``GET``","acmeclient","settings","get",""
-    "``GET``","acmeclient","settings","getBindPluginStatus",""
-    "``GET``","acmeclient","settings","getGcloudPluginStatus",""
+    "``GET``","acmeclient","settings","get_bind_plugin_status",""
+    "``GET``","acmeclient","settings","get_gcloud_plugin_status",""
     "``POST``","acmeclient","settings","set",""
 
     "``<<uses>>``", "", "", "", "*model* `AcmeClient.xml <https://github.com/opnsense/plugins/blob/master/security/acme-client/src/opnsense/mvc/app/models/OPNsense/AcmeClient/AcmeClient.xml>`__"

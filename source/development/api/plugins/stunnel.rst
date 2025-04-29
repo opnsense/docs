@@ -17,14 +17,14 @@ Stunnel
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","stunnel","services","addItem",""
-    "``POST``","stunnel","services","delItem","$uuid"
+    "``POST``","stunnel","services","add_item",""
+    "``POST``","stunnel","services","del_item","$uuid"
     "``GET``","stunnel","services","get",""
     "``GET``","stunnel","services","get",""
-    "``GET``","stunnel","services","getItem","$uuid=null"
-    "``*``","stunnel","services","searchItem",""
+    "``GET``","stunnel","services","get_item","$uuid=null"
+    "``*``","stunnel","services","search_item",""
     "``POST``","stunnel","services","set",""
-    "``POST``","stunnel","services","setItem","$uuid"
-    "``POST``","stunnel","services","toggleItem","$uuid,$enabled=null"
+    "``POST``","stunnel","services","set_item","$uuid"
+    "``POST``","stunnel","services","toggle_item","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `Stunnel.xml <https://github.com/opnsense/plugins/blob/master/security/stunnel/src/opnsense/mvc/app/models/OPNsense/Stunnel/Stunnel.xml>`__"

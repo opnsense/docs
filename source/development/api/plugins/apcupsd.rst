@@ -5,7 +5,7 @@ Apcupsd
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","apcupsd","service","getUpsStatus",""
+    "``GET``","apcupsd","service","get_ups_status",""
     "``POST``","apcupsd","service","reconfigure",""
     "``POST``","apcupsd","service","restart",""
     "``POST``","apcupsd","service","start",""

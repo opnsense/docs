@@ -20,24 +20,24 @@ as a reference and testbed. There's no relation to any of the rules being manage
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","firewall","alias","addItem",""
-    "``POST``","firewall","alias","delItem","$uuid"
+    "``POST``","firewall","alias","add_item",""
+    "``POST``","firewall","alias","del_item","$uuid"
     "``GET``","firewall","alias","export",""
     "``GET``","firewall","alias","get",""
-    "``GET``","firewall","alias","getAliasUUID","$name"
-    "``GET``","firewall","alias","getGeoIP",""
-    "``GET``","firewall","alias","getItem","$uuid=null"
-    "``GET``","firewall","alias","getTableSize",""
+    "``GET``","firewall","alias","get_alias_u_u_i_d","$name"
+    "``GET``","firewall","alias","get_geo_i_p",""
+    "``GET``","firewall","alias","get_item","$uuid=null"
+    "``GET``","firewall","alias","get_table_size",""
     "``POST``","firewall","alias","import",""
-    "``GET``","firewall","alias","listCategories",""
-    "``GET``","firewall","alias","listCountries",""
-    "``GET``","firewall","alias","listNetworkAliases",""
-    "``GET``","firewall","alias","listUserGroups",""
+    "``GET``","firewall","alias","list_categories",""
+    "``GET``","firewall","alias","list_countries",""
+    "``GET``","firewall","alias","list_network_aliases",""
+    "``GET``","firewall","alias","list_user_groups",""
     "``POST``","firewall","alias","reconfigure",""
-    "``*``","firewall","alias","searchItem",""
+    "``*``","firewall","alias","search_item",""
     "``POST``","firewall","alias","set",""
-    "``POST``","firewall","alias","setItem","$uuid"
-    "``POST``","firewall","alias","toggleItem","$uuid,$enabled=null"
+    "``POST``","firewall","alias","set_item","$uuid"
+    "``POST``","firewall","alias","toggle_item","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `Alias.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Alias.xml>`__"
 
@@ -48,22 +48,22 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``POST``","firewall","alias_util","add","$alias"
     "``GET``","firewall","alias_util","aliases",""
     "``POST``","firewall","alias_util","delete","$alias"
-    "``POST``","firewall","alias_util","findReferences",""
+    "``POST``","firewall","alias_util","find_references",""
     "``POST``","firewall","alias_util","flush","$alias"
     "``GET``","firewall","alias_util","list","$alias"
-    "``GET``","firewall","alias_util","updateBogons",""
+    "``GET``","firewall","alias_util","update_bogons",""
 
 .. csv-table:: Resources (CategoryController.php)  -- extends : ApiMutableModelControllerBase 
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","firewall","category","addItem",""
-    "``POST``","firewall","category","delItem","$uuid"
+    "``POST``","firewall","category","add_item",""
+    "``POST``","firewall","category","del_item","$uuid"
     "``GET``","firewall","category","get",""
-    "``GET``","firewall","category","getItem","$uuid=null"
-    "``*``","firewall","category","searchItem","$add_empty='0'"
+    "``GET``","firewall","category","get_item","$uuid=null"
+    "``*``","firewall","category","search_item","$add_empty='0'"
     "``POST``","firewall","category","set",""
-    "``POST``","firewall","category","setItem","$uuid"
+    "``POST``","firewall","category","set_item","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Category.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Category.xml>`__"
 
@@ -72,10 +72,10 @@ as a reference and testbed. There's no relation to any of the rules being manage
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","firewall","filter_base","apply","$rollback_revision=null"
-    "``POST``","firewall","filter_base","cancelRollback","$rollback_revision"
+    "``POST``","firewall","filter_base","cancel_rollback","$rollback_revision"
     "``GET``","firewall","filter_base","get",""
-    "``GET``","firewall","filter_base","listCategories",""
-    "``GET``","firewall","filter_base","listNetworkSelectOptions",""
+    "``GET``","firewall","filter_base","list_categories",""
+    "``GET``","firewall","filter_base","list_network_select_options",""
     "``POST``","firewall","filter_base","revert","$revision"
     "``POST``","firewall","filter_base","savepoint",""
     "``POST``","firewall","filter_base","set",""
@@ -86,31 +86,31 @@ as a reference and testbed. There's no relation to any of the rules being manage
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","firewall","filter","addRule",""
-    "``POST``","firewall","filter","delRule","$uuid"
-    "``GET``","firewall","filter","getRule","$uuid=null"
-    "``*``","firewall","filter","searchRule",""
-    "``POST``","firewall","filter","setRule","$uuid"
-    "``POST``","firewall","filter","toggleRule","$uuid,$enabled=null"
+    "``POST``","firewall","filter","add_rule",""
+    "``POST``","firewall","filter","del_rule","$uuid"
+    "``GET``","firewall","filter","get_rule","$uuid=null"
+    "``*``","firewall","filter","search_rule",""
+    "``POST``","firewall","filter","set_rule","$uuid"
+    "``POST``","firewall","filter","toggle_rule","$uuid,$enabled=null"
 
 .. csv-table:: Resources (FilterUtilController.php)  -- extends : ApiControllerBase 
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","firewall","filter_util","ruleStats",""
+    "``GET``","firewall","filter_util","rule_stats",""
 
 .. csv-table:: Resources (GroupController.php)  -- extends : ApiMutableModelControllerBase 
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","firewall","group","addItem",""
-    "``POST``","firewall","group","delItem","$uuid"
+    "``POST``","firewall","group","add_item",""
+    "``POST``","firewall","group","del_item","$uuid"
     "``GET``","firewall","group","get",""
-    "``GET``","firewall","group","getItem","$uuid=null"
+    "``GET``","firewall","group","get_item","$uuid=null"
     "``POST``","firewall","group","reconfigure",""
-    "``*``","firewall","group","searchItem",""
+    "``*``","firewall","group","search_item",""
     "``POST``","firewall","group","set",""
-    "``POST``","firewall","group","setItem","$uuid"
+    "``POST``","firewall","group","set_item","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Group.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Group.xml>`__"
 
@@ -118,34 +118,34 @@ as a reference and testbed. There's no relation to any of the rules being manage
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","firewall","npt","addRule",""
-    "``POST``","firewall","npt","delRule","$uuid"
-    "``GET``","firewall","npt","getRule","$uuid=null"
-    "``*``","firewall","npt","searchRule",""
-    "``POST``","firewall","npt","setRule","$uuid"
-    "``POST``","firewall","npt","toggleRule","$uuid,$enabled=null"
+    "``POST``","firewall","npt","add_rule",""
+    "``POST``","firewall","npt","del_rule","$uuid"
+    "``GET``","firewall","npt","get_rule","$uuid=null"
+    "``*``","firewall","npt","search_rule",""
+    "``POST``","firewall","npt","set_rule","$uuid"
+    "``POST``","firewall","npt","toggle_rule","$uuid,$enabled=null"
 
 .. csv-table:: Resources (OneToOneController.php)  -- extends : FilterBaseController 
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","firewall","one_to_one","addRule",""
-    "``POST``","firewall","one_to_one","delRule","$uuid"
-    "``GET``","firewall","one_to_one","getRule","$uuid=null"
-    "``*``","firewall","one_to_one","searchRule",""
-    "``POST``","firewall","one_to_one","setRule","$uuid"
-    "``POST``","firewall","one_to_one","toggleRule","$uuid,$enabled=null"
+    "``POST``","firewall","one_to_one","add_rule",""
+    "``POST``","firewall","one_to_one","del_rule","$uuid"
+    "``GET``","firewall","one_to_one","get_rule","$uuid=null"
+    "``*``","firewall","one_to_one","search_rule",""
+    "``POST``","firewall","one_to_one","set_rule","$uuid"
+    "``POST``","firewall","one_to_one","toggle_rule","$uuid,$enabled=null"
 
 .. csv-table:: Resources (SourceNatController.php)  -- extends : FilterBaseController 
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","firewall","source_nat","addRule",""
-    "``POST``","firewall","source_nat","delRule","$uuid"
-    "``GET``","firewall","source_nat","getRule","$uuid=null"
-    "``*``","firewall","source_nat","searchRule",""
-    "``POST``","firewall","source_nat","setRule","$uuid"
-    "``POST``","firewall","source_nat","toggleRule","$uuid,$enabled=null"
+    "``POST``","firewall","source_nat","add_rule",""
+    "``POST``","firewall","source_nat","del_rule","$uuid"
+    "``GET``","firewall","source_nat","get_rule","$uuid=null"
+    "``*``","firewall","source_nat","search_rule",""
+    "``POST``","firewall","source_nat","set_rule","$uuid"
+    "``POST``","firewall","source_nat","toggle_rule","$uuid,$enabled=null"
 
 
 

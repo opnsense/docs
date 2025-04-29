@@ -26,13 +26,13 @@ Netsnmp
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","netsnmp","user","addUser",""
-    "``POST``","netsnmp","user","delUser","$uuid"
+    "``POST``","netsnmp","user","add_user",""
+    "``POST``","netsnmp","user","del_user","$uuid"
     "``GET``","netsnmp","user","get",""
-    "``GET``","netsnmp","user","getUser","$uuid=null"
-    "``*``","netsnmp","user","searchUser",""
+    "``GET``","netsnmp","user","get_user","$uuid=null"
+    "``*``","netsnmp","user","search_user",""
     "``POST``","netsnmp","user","set",""
-    "``POST``","netsnmp","user","setUser","$uuid"
-    "``POST``","netsnmp","user","toggleUser","$uuid"
+    "``POST``","netsnmp","user","set_user","$uuid"
+    "``POST``","netsnmp","user","toggle_user","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `User.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/net-snmp/src/opnsense/mvc/app/models/OPNsense/Netsnmp/User.xml>`__"

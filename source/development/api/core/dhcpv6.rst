@@ -5,9 +5,9 @@ Dhcpv6
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","dhcpv6","leases","delLease","$ip"
-    "``GET``","dhcpv6","leases","searchLease",""
-    "``GET``","dhcpv6","leases","searchPrefix",""
+    "``POST``","dhcpv6","leases","del_lease","$ip"
+    "``GET``","dhcpv6","leases","search_lease",""
+    "``GET``","dhcpv6","leases","search_prefix",""
 
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

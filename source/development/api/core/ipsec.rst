@@ -5,36 +5,36 @@ Ipsec
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","ipsec","connections","addChild",""
-    "``POST``","ipsec","connections","addConnection",""
-    "``POST``","ipsec","connections","addLocal",""
-    "``POST``","ipsec","connections","addRemote",""
-    "``GET``","ipsec","connections","connectionExists","$uuid"
-    "``POST``","ipsec","connections","delChild","$uuid"
-    "``POST``","ipsec","connections","delConnection","$uuid"
-    "``POST``","ipsec","connections","delLocal","$uuid"
-    "``POST``","ipsec","connections","delRemote","$uuid"
+    "``POST``","ipsec","connections","add_child",""
+    "``POST``","ipsec","connections","add_connection",""
+    "``POST``","ipsec","connections","add_local",""
+    "``POST``","ipsec","connections","add_remote",""
+    "``GET``","ipsec","connections","connection_exists","$uuid"
+    "``POST``","ipsec","connections","del_child","$uuid"
+    "``POST``","ipsec","connections","del_connection","$uuid"
+    "``POST``","ipsec","connections","del_local","$uuid"
+    "``POST``","ipsec","connections","del_remote","$uuid"
     "``GET``","ipsec","connections","get",""
-    "``GET``","ipsec","connections","getChild","$uuid=null"
-    "``GET``","ipsec","connections","getConnection","$uuid=null"
-    "``GET``","ipsec","connections","getLocal","$uuid=null"
-    "``GET``","ipsec","connections","getRemote","$uuid=null"
-    "``GET``","ipsec","connections","isEnabled",""
-    "``*``","ipsec","connections","searchChild",""
-    "``*``","ipsec","connections","searchConnection",""
-    "``*``","ipsec","connections","searchLocal",""
-    "``*``","ipsec","connections","searchRemote",""
+    "``GET``","ipsec","connections","get_child","$uuid=null"
+    "``GET``","ipsec","connections","get_connection","$uuid=null"
+    "``GET``","ipsec","connections","get_local","$uuid=null"
+    "``GET``","ipsec","connections","get_remote","$uuid=null"
+    "``GET``","ipsec","connections","is_enabled",""
+    "``*``","ipsec","connections","search_child",""
+    "``*``","ipsec","connections","search_connection",""
+    "``*``","ipsec","connections","search_local",""
+    "``*``","ipsec","connections","search_remote",""
     "``POST``","ipsec","connections","set",""
-    "``POST``","ipsec","connections","setChild","$uuid=null"
-    "``POST``","ipsec","connections","setConnection","$uuid=null"
-    "``POST``","ipsec","connections","setLocal","$uuid=null"
-    "``POST``","ipsec","connections","setRemote","$uuid=null"
+    "``POST``","ipsec","connections","set_child","$uuid=null"
+    "``POST``","ipsec","connections","set_connection","$uuid=null"
+    "``POST``","ipsec","connections","set_local","$uuid=null"
+    "``POST``","ipsec","connections","set_remote","$uuid=null"
     "``GET``","ipsec","connections","swanctl",""
     "``POST``","ipsec","connections","toggle","$enabled=null"
-    "``POST``","ipsec","connections","toggleChild","$uuid,$enabled=null"
-    "``POST``","ipsec","connections","toggleConnection","$uuid,$enabled=null"
-    "``POST``","ipsec","connections","toggleLocal","$uuid,$enabled=null"
-    "``POST``","ipsec","connections","toggleRemote","$uuid,$enabled=null"
+    "``POST``","ipsec","connections","toggle_child","$uuid,$enabled=null"
+    "``POST``","ipsec","connections","toggle_connection","$uuid,$enabled=null"
+    "``POST``","ipsec","connections","toggle_local","$uuid,$enabled=null"
+    "``POST``","ipsec","connections","toggle_remote","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `Swanctl.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IPsec/Swanctl.xml>`__"
 
@@ -42,14 +42,14 @@ Ipsec
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","ipsec","key_pairs","addItem",""
-    "``POST``","ipsec","key_pairs","delItem","$uuid"
-    "``GET``","ipsec","key_pairs","genKeyPair","$type,$size=null"
+    "``POST``","ipsec","key_pairs","add_item",""
+    "``POST``","ipsec","key_pairs","del_item","$uuid"
+    "``GET``","ipsec","key_pairs","gen_key_pair","$type,$size=null"
     "``GET``","ipsec","key_pairs","get",""
-    "``GET``","ipsec","key_pairs","getItem","$uuid=null"
-    "``*``","ipsec","key_pairs","searchItem",""
+    "``GET``","ipsec","key_pairs","get_item","$uuid=null"
+    "``*``","ipsec","key_pairs","search_item",""
     "``POST``","ipsec","key_pairs","set",""
-    "``POST``","ipsec","key_pairs","setItem","$uuid=null"
+    "``POST``","ipsec","key_pairs","set_item","$uuid=null"
 
     "``<<uses>>``", "", "", "", "*model* `IPsec.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IPsec/IPsec.xml>`__"
 
@@ -64,7 +64,7 @@ Ipsec
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","ipsec","legacy_subsystem","applyConfig",""
+    "``POST``","ipsec","legacy_subsystem","apply_config",""
     "``GET``","ipsec","legacy_subsystem","status",""
 
 .. csv-table:: Resources (ManualSpdController.php)
@@ -101,13 +101,13 @@ Ipsec
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","ipsec","pre_shared_keys","addItem",""
-    "``POST``","ipsec","pre_shared_keys","delItem","$uuid"
+    "``POST``","ipsec","pre_shared_keys","add_item",""
+    "``POST``","ipsec","pre_shared_keys","del_item","$uuid"
     "``GET``","ipsec","pre_shared_keys","get",""
-    "``GET``","ipsec","pre_shared_keys","getItem","$uuid=null"
-    "``*``","ipsec","pre_shared_keys","searchItem",""
+    "``GET``","ipsec","pre_shared_keys","get_item","$uuid=null"
+    "``*``","ipsec","pre_shared_keys","search_item",""
     "``POST``","ipsec","pre_shared_keys","set",""
-    "``POST``","ipsec","pre_shared_keys","setItem","$uuid=null"
+    "``POST``","ipsec","pre_shared_keys","set_item","$uuid=null"
 
     "``<<uses>>``", "", "", "", "*model* `IPsec.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IPsec/IPsec.xml>`__"
 
@@ -136,8 +136,8 @@ Ipsec
 
     "``POST``","ipsec","sessions","connect","$id"
     "``POST``","ipsec","sessions","disconnect","$id"
-    "``GET``","ipsec","sessions","searchPhase1",""
-    "``GET``","ipsec","sessions","searchPhase2",""
+    "``GET``","ipsec","sessions","search_phase1",""
+    "``GET``","ipsec","sessions","search_phase2",""
 
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -160,13 +160,13 @@ Ipsec
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","ipsec","tunnel","delPhase1","$ikeid"
-    "``POST``","ipsec","tunnel","delPhase2","$seqid"
-    "``GET``","ipsec","tunnel","searchPhase1",""
-    "``GET``","ipsec","tunnel","searchPhase2",""
+    "``POST``","ipsec","tunnel","del_phase1","$ikeid"
+    "``POST``","ipsec","tunnel","del_phase2","$seqid"
+    "``GET``","ipsec","tunnel","search_phase1",""
+    "``GET``","ipsec","tunnel","search_phase2",""
     "``POST``","ipsec","tunnel","toggle","$enabled=null"
-    "``POST``","ipsec","tunnel","togglePhase1","$ikeid,$enabled=null"
-    "``POST``","ipsec","tunnel","togglePhase2","$seqid,$enabled=null"
+    "``POST``","ipsec","tunnel","toggle_phase1","$ikeid,$enabled=null"
+    "``POST``","ipsec","tunnel","toggle_phase2","$seqid,$enabled=null"
 
 .. csv-table:: Resources (VtiController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

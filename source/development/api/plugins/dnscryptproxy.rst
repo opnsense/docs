@@ -5,14 +5,14 @@ Dnscryptproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","dnscryptproxy","cloak","addCloak",""
-    "``POST``","dnscryptproxy","cloak","delCloak","$uuid"
+    "``POST``","dnscryptproxy","cloak","add_cloak",""
+    "``POST``","dnscryptproxy","cloak","del_cloak","$uuid"
     "``GET``","dnscryptproxy","cloak","get",""
-    "``GET``","dnscryptproxy","cloak","getCloak","$uuid=null"
-    "``*``","dnscryptproxy","cloak","searchCloak",""
+    "``GET``","dnscryptproxy","cloak","get_cloak","$uuid=null"
+    "``*``","dnscryptproxy","cloak","search_cloak",""
     "``POST``","dnscryptproxy","cloak","set",""
-    "``POST``","dnscryptproxy","cloak","setCloak","$uuid"
-    "``POST``","dnscryptproxy","cloak","toggleCloak","$uuid"
+    "``POST``","dnscryptproxy","cloak","set_cloak","$uuid"
+    "``POST``","dnscryptproxy","cloak","toggle_cloak","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Cloak.xml <https://github.com/opnsense/plugins/blob/master/dns/dnscrypt-proxy/src/opnsense/mvc/app/models/OPNsense/Dnscryptproxy/Cloak.xml>`__"
 
@@ -29,14 +29,14 @@ Dnscryptproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","dnscryptproxy","forward","addForward",""
-    "``POST``","dnscryptproxy","forward","delForward","$uuid"
+    "``POST``","dnscryptproxy","forward","add_forward",""
+    "``POST``","dnscryptproxy","forward","del_forward","$uuid"
     "``GET``","dnscryptproxy","forward","get",""
-    "``GET``","dnscryptproxy","forward","getForward","$uuid=null"
-    "``*``","dnscryptproxy","forward","searchForward",""
+    "``GET``","dnscryptproxy","forward","get_forward","$uuid=null"
+    "``*``","dnscryptproxy","forward","search_forward",""
     "``POST``","dnscryptproxy","forward","set",""
-    "``POST``","dnscryptproxy","forward","setForward","$uuid"
-    "``POST``","dnscryptproxy","forward","toggleForward","$uuid"
+    "``POST``","dnscryptproxy","forward","set_forward","$uuid"
+    "``POST``","dnscryptproxy","forward","toggle_forward","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Forward.xml <https://github.com/opnsense/plugins/blob/master/dns/dnscrypt-proxy/src/opnsense/mvc/app/models/OPNsense/Dnscryptproxy/Forward.xml>`__"
 
@@ -53,14 +53,14 @@ Dnscryptproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","dnscryptproxy","server","addServer",""
-    "``POST``","dnscryptproxy","server","delServer","$uuid"
+    "``POST``","dnscryptproxy","server","add_server",""
+    "``POST``","dnscryptproxy","server","del_server","$uuid"
     "``GET``","dnscryptproxy","server","get",""
-    "``GET``","dnscryptproxy","server","getServer","$uuid=null"
-    "``*``","dnscryptproxy","server","searchServer",""
+    "``GET``","dnscryptproxy","server","get_server","$uuid=null"
+    "``*``","dnscryptproxy","server","search_server",""
     "``POST``","dnscryptproxy","server","set",""
-    "``POST``","dnscryptproxy","server","setServer","$uuid"
-    "``POST``","dnscryptproxy","server","toggleServer","$uuid"
+    "``POST``","dnscryptproxy","server","set_server","$uuid"
+    "``POST``","dnscryptproxy","server","toggle_server","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Server.xml <https://github.com/opnsense/plugins/blob/master/dns/dnscrypt-proxy/src/opnsense/mvc/app/models/OPNsense/Dnscryptproxy/Server.xml>`__"
 
@@ -81,13 +81,13 @@ Dnscryptproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","dnscryptproxy","whitelist","addWhitelist",""
-    "``POST``","dnscryptproxy","whitelist","delWhitelist","$uuid"
+    "``POST``","dnscryptproxy","whitelist","add_whitelist",""
+    "``POST``","dnscryptproxy","whitelist","del_whitelist","$uuid"
     "``GET``","dnscryptproxy","whitelist","get",""
-    "``GET``","dnscryptproxy","whitelist","getWhitelist","$uuid=null"
-    "``*``","dnscryptproxy","whitelist","searchWhitelist",""
+    "``GET``","dnscryptproxy","whitelist","get_whitelist","$uuid=null"
+    "``*``","dnscryptproxy","whitelist","search_whitelist",""
     "``POST``","dnscryptproxy","whitelist","set",""
-    "``POST``","dnscryptproxy","whitelist","setWhitelist","$uuid"
-    "``POST``","dnscryptproxy","whitelist","toggleWhitelist","$uuid"
+    "``POST``","dnscryptproxy","whitelist","set_whitelist","$uuid"
+    "``POST``","dnscryptproxy","whitelist","toggle_whitelist","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Whitelist.xml <https://github.com/opnsense/plugins/blob/master/dns/dnscrypt-proxy/src/opnsense/mvc/app/models/OPNsense/Dnscryptproxy/Whitelist.xml>`__"

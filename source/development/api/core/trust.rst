@@ -6,13 +6,13 @@ Trust
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","trust","ca","add",""
-    "``GET``","trust","ca","caInfo","$caref"
-    "``GET``","trust","ca","caList",""
+    "``GET``","trust","ca","ca_info","$caref"
+    "``GET``","trust","ca","ca_list",""
     "``POST``","trust","ca","del","$uuid"
-    "``POST``","trust","ca","generateFile","$uuid=null,$type='crt'"
+    "``POST``","trust","ca","generate_file","$uuid=null,$type='crt'"
     "``GET``","trust","ca","get","$uuid=null"
     "``GET``","trust","ca","get",""
-    "``GET``","trust","ca","rawDump","$uuid"
+    "``GET``","trust","ca","raw_dump","$uuid"
     "``*``","trust","ca","search",""
     "``POST``","trust","ca","set","$uuid=null"
     "``POST``","trust","ca","set",""
@@ -24,17 +24,17 @@ Trust
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","trust","cert","add",""
-    "``GET``","trust","cert","caInfo","$caref=null"
-    "``GET``","trust","cert","caList",""
+    "``GET``","trust","cert","ca_info","$caref=null"
+    "``GET``","trust","cert","ca_list",""
     "``POST``","trust","cert","del","$uuid"
-    "``POST``","trust","cert","generateFile","$uuid=null,$type='crt'"
+    "``POST``","trust","cert","generate_file","$uuid=null,$type='crt'"
     "``GET``","trust","cert","get","$uuid=null"
     "``GET``","trust","cert","get",""
-    "``GET``","trust","cert","rawDump","$uuid"
+    "``GET``","trust","cert","raw_dump","$uuid"
     "``*``","trust","cert","search",""
     "``POST``","trust","cert","set","$uuid=null"
     "``POST``","trust","cert","set",""
-    "``GET``","trust","cert","userList",""
+    "``GET``","trust","cert","user_list",""
 
     "``<<uses>>``", "", "", "", "*model* `Cert.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Trust/Cert.xml>`__"
 
@@ -44,7 +44,7 @@ Trust
 
     "``POST``","trust","crl","del","$caref"
     "``GET``","trust","crl","get","$caref"
-    "``GET``","trust","crl","rawDump","$caref"
+    "``GET``","trust","crl","raw_dump","$caref"
     "``GET``","trust","crl","search",""
     "``POST``","trust","crl","set","$caref"
 

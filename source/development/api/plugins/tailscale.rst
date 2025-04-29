@@ -26,14 +26,14 @@ Tailscale
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","tailscale","settings","addSubnet",""
-    "``POST``","tailscale","settings","delSubnet","$uuid"
+    "``POST``","tailscale","settings","add_subnet",""
+    "``POST``","tailscale","settings","del_subnet","$uuid"
     "``GET``","tailscale","settings","get",""
-    "``GET``","tailscale","settings","getSubnet","$uuid=null"
+    "``GET``","tailscale","settings","get_subnet","$uuid=null"
     "``GET``","tailscale","settings","reload",""
-    "``*``","tailscale","settings","searchSubnet",""
+    "``*``","tailscale","settings","search_subnet",""
     "``POST``","tailscale","settings","set",""
-    "``POST``","tailscale","settings","setSubnet","$uuid"
+    "``POST``","tailscale","settings","set_subnet","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Settings.xml <https://github.com/opnsense/plugins/blob/master/security/tailscale/src/opnsense/mvc/app/models/OPNsense/Tailscale/Settings.xml>`__"
 

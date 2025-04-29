@@ -5,14 +5,14 @@ Radsecproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","radsecproxy","clients","addItem",""
-    "``POST``","radsecproxy","clients","delItem","$uuid"
+    "``POST``","radsecproxy","clients","add_item",""
+    "``POST``","radsecproxy","clients","del_item","$uuid"
     "``GET``","radsecproxy","clients","get",""
-    "``GET``","radsecproxy","clients","getItem","$uuid=null"
-    "``*``","radsecproxy","clients","searchItem",""
+    "``GET``","radsecproxy","clients","get_item","$uuid=null"
+    "``*``","radsecproxy","clients","search_item",""
     "``POST``","radsecproxy","clients","set",""
-    "``POST``","radsecproxy","clients","setItem","$uuid"
-    "``POST``","radsecproxy","clients","toggleItem","$uuid,$enabled=null"
+    "``POST``","radsecproxy","clients","set_item","$uuid"
+    "``POST``","radsecproxy","clients","toggle_item","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `RadSecProxy.xml <https://github.com/opnsense/plugins/blob/master/net/radsecproxy/src/opnsense/mvc/app/models/OPNsense/RadSecProxy/RadSecProxy.xml>`__"
 
@@ -29,14 +29,14 @@ Radsecproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","radsecproxy","realms","addItem",""
-    "``POST``","radsecproxy","realms","delItem","$uuid"
+    "``POST``","radsecproxy","realms","add_item",""
+    "``POST``","radsecproxy","realms","del_item","$uuid"
     "``GET``","radsecproxy","realms","get",""
-    "``GET``","radsecproxy","realms","getItem","$uuid=null"
-    "``*``","radsecproxy","realms","searchItem",""
+    "``GET``","radsecproxy","realms","get_item","$uuid=null"
+    "``*``","radsecproxy","realms","search_item",""
     "``POST``","radsecproxy","realms","set",""
-    "``POST``","radsecproxy","realms","setItem","$uuid"
-    "``POST``","radsecproxy","realms","toggleItem","$uuid,$enabled=null"
+    "``POST``","radsecproxy","realms","set_item","$uuid"
+    "``POST``","radsecproxy","realms","toggle_item","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `RadSecProxy.xml <https://github.com/opnsense/plugins/blob/master/net/radsecproxy/src/opnsense/mvc/app/models/OPNsense/RadSecProxy/RadSecProxy.xml>`__"
 
@@ -44,14 +44,14 @@ Radsecproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","radsecproxy","rewrites","addItem",""
-    "``POST``","radsecproxy","rewrites","delItem","$uuid"
+    "``POST``","radsecproxy","rewrites","add_item",""
+    "``POST``","radsecproxy","rewrites","del_item","$uuid"
     "``GET``","radsecproxy","rewrites","get",""
-    "``GET``","radsecproxy","rewrites","getItem","$uuid=null"
-    "``*``","radsecproxy","rewrites","searchItem",""
+    "``GET``","radsecproxy","rewrites","get_item","$uuid=null"
+    "``*``","radsecproxy","rewrites","search_item",""
     "``POST``","radsecproxy","rewrites","set",""
-    "``POST``","radsecproxy","rewrites","setItem","$uuid"
-    "``POST``","radsecproxy","rewrites","toggleItem","$uuid,$enabled=null"
+    "``POST``","radsecproxy","rewrites","set_item","$uuid"
+    "``POST``","radsecproxy","rewrites","toggle_item","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `RadSecProxy.xml <https://github.com/opnsense/plugins/blob/master/net/radsecproxy/src/opnsense/mvc/app/models/OPNsense/RadSecProxy/RadSecProxy.xml>`__"
 
@@ -59,14 +59,14 @@ Radsecproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","radsecproxy","servers","addItem",""
-    "``POST``","radsecproxy","servers","delItem","$uuid"
+    "``POST``","radsecproxy","servers","add_item",""
+    "``POST``","radsecproxy","servers","del_item","$uuid"
     "``GET``","radsecproxy","servers","get",""
-    "``GET``","radsecproxy","servers","getItem","$uuid=null"
-    "``*``","radsecproxy","servers","searchItem",""
+    "``GET``","radsecproxy","servers","get_item","$uuid=null"
+    "``*``","radsecproxy","servers","search_item",""
     "``POST``","radsecproxy","servers","set",""
-    "``POST``","radsecproxy","servers","setItem","$uuid"
-    "``POST``","radsecproxy","servers","toggleItem","$uuid,$enabled=null"
+    "``POST``","radsecproxy","servers","set_item","$uuid"
+    "``POST``","radsecproxy","servers","toggle_item","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `RadSecProxy.xml <https://github.com/opnsense/plugins/blob/master/net/radsecproxy/src/opnsense/mvc/app/models/OPNsense/RadSecProxy/RadSecProxy.xml>`__"
 
@@ -86,13 +86,13 @@ Radsecproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","radsecproxy","tls","addItem",""
-    "``POST``","radsecproxy","tls","delItem","$uuid"
+    "``POST``","radsecproxy","tls","add_item",""
+    "``POST``","radsecproxy","tls","del_item","$uuid"
     "``GET``","radsecproxy","tls","get",""
-    "``GET``","radsecproxy","tls","getItem","$uuid=null"
-    "``*``","radsecproxy","tls","searchItem",""
+    "``GET``","radsecproxy","tls","get_item","$uuid=null"
+    "``*``","radsecproxy","tls","search_item",""
     "``POST``","radsecproxy","tls","set",""
-    "``POST``","radsecproxy","tls","setItem","$uuid"
-    "``POST``","radsecproxy","tls","toggleItem","$uuid,$enabled=null"
+    "``POST``","radsecproxy","tls","set_item","$uuid"
+    "``POST``","radsecproxy","tls","toggle_item","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `RadSecProxy.xml <https://github.com/opnsense/plugins/blob/master/net/radsecproxy/src/opnsense/mvc/app/models/OPNsense/RadSecProxy/RadSecProxy.xml>`__"

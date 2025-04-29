@@ -76,7 +76,7 @@ Tor
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","tor","service","circuits",""
-    "``GET``","tor","service","getHiddenServices",""
+    "``GET``","tor","service","get_hidden_services",""
     "``POST``","tor","service","reconfigure",""
     "``POST``","tor","service","restart",""
     "``POST``","tor","service","start",""

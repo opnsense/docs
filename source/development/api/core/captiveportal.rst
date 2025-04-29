@@ -13,11 +13,11 @@ Captiveportal
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","captiveportal","service","delTemplate","$uuid"
-    "``GET``","captiveportal","service","getTemplate","$fileid=null"
+    "``POST``","captiveportal","service","del_template","$uuid"
+    "``GET``","captiveportal","service","get_template","$fileid=null"
     "``POST``","captiveportal","service","reconfigure",""
-    "``POST``","captiveportal","service","saveTemplate",""
-    "``GET``","captiveportal","service","searchTemplates",""
+    "``POST``","captiveportal","service","save_template",""
+    "``GET``","captiveportal","service","search_templates",""
 
 .. csv-table:: Resources (SessionController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -33,14 +33,14 @@ Captiveportal
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","captiveportal","settings","addZone",""
-    "``POST``","captiveportal","settings","delZone","$uuid"
+    "``POST``","captiveportal","settings","add_zone",""
+    "``POST``","captiveportal","settings","del_zone","$uuid"
     "``GET``","captiveportal","settings","get",""
-    "``GET``","captiveportal","settings","getZone","$uuid=null"
-    "``*``","captiveportal","settings","searchZones",""
+    "``GET``","captiveportal","settings","get_zone","$uuid=null"
+    "``*``","captiveportal","settings","search_zones",""
     "``POST``","captiveportal","settings","set",""
-    "``POST``","captiveportal","settings","setZone","$uuid"
-    "``POST``","captiveportal","settings","toggleZone","$uuid,$enabled=null"
+    "``POST``","captiveportal","settings","set_zone","$uuid"
+    "``POST``","captiveportal","settings","toggle_zone","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `CaptivePortal.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/CaptivePortal/CaptivePortal.xml>`__"
 
@@ -48,10 +48,10 @@ Captiveportal
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","captiveportal","voucher","dropExpiredVouchers","$provider,$group"
-    "``POST``","captiveportal","voucher","dropVoucherGroup","$provider,$group"
-    "``POST``","captiveportal","voucher","expireVoucher","$provider"
-    "``POST``","captiveportal","voucher","generateVouchers","$provider"
-    "``GET``","captiveportal","voucher","listProviders",""
-    "``GET``","captiveportal","voucher","listVoucherGroups","$provider"
-    "``GET``","captiveportal","voucher","listVouchers","$provider,$group"
+    "``POST``","captiveportal","voucher","drop_expired_vouchers","$provider,$group"
+    "``POST``","captiveportal","voucher","drop_voucher_group","$provider,$group"
+    "``POST``","captiveportal","voucher","expire_voucher","$provider"
+    "``POST``","captiveportal","voucher","generate_vouchers","$provider"
+    "``GET``","captiveportal","voucher","list_providers",""
+    "``GET``","captiveportal","voucher","list_voucher_groups","$provider"
+    "``GET``","captiveportal","voucher","list_vouchers","$provider,$group"

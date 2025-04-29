@@ -7,7 +7,7 @@ Proxysso
 
     "``POST``","proxysso","service","createkeytab",""
     "``GET``","proxysso","service","deletekeytab",""
-    "``GET``","proxysso","service","getCheckList",""
+    "``GET``","proxysso","service","get_check_list",""
     "``GET``","proxysso","service","showkeytab",""
     "``POST``","proxysso","service","testkerblogin",""
 

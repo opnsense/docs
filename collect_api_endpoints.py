@@ -96,6 +96,7 @@ def parse_api_php(src_filename):
             end_marker = -1
         code_block = data[begin_marker+len(function[0]):end_marker]
         if function[2].endswith('Action'):
+            cmd = "".join("_" + c.lower() if c.isupper() else c for c in function[2][:-6])
             this_commands.append(function[2][:-6])
             record = {
                 'method': 'GET',
@@ -103,7 +104,7 @@ def parse_api_php(src_filename):
                 'controller': controller,
                 'is_abstract': is_abstract,
                 'base_class': base_class,
-                'command': function[2][:-6],
+                'command': cmd,
                 'parameters': function[3].replace(' ', '').replace('"', '""'),
                 'filename': base_filename,
                 'model_filename': model_filename

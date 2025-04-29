@@ -20,11 +20,11 @@ Udpbroadcastrelay
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","udpbroadcastrelay","settings","addRelay",""
-    "``POST``","udpbroadcastrelay","settings","delRelay","$uuid"
+    "``POST``","udpbroadcastrelay","settings","add_relay",""
+    "``POST``","udpbroadcastrelay","settings","del_relay","$uuid"
     "``GET``","udpbroadcastrelay","settings","get",""
-    "``GET``","udpbroadcastrelay","settings","getRelay","$uuid=null"
-    "``GET``","udpbroadcastrelay","settings","searchRelay",""
+    "``GET``","udpbroadcastrelay","settings","get_relay","$uuid=null"
+    "``GET``","udpbroadcastrelay","settings","search_relay",""
     "``POST``","udpbroadcastrelay","settings","set",""
-    "``POST``","udpbroadcastrelay","settings","setRelay","$uuid"
-    "``POST``","udpbroadcastrelay","settings","toggleRelay","$uuid"
+    "``POST``","udpbroadcastrelay","settings","set_relay","$uuid"
+    "``POST``","udpbroadcastrelay","settings","toggle_relay","$uuid"
