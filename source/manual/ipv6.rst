@@ -83,8 +83,11 @@ calculates an address to use based on its mac address and network received from 
     including optional features to prevent address duplication (`DAD <https://datatracker.ietf.org/doc/html/rfc4429>`__)
 
 
-On OPNsense a service called :code:`rtsold` is used to send out these solicitations and handle the responses it
-receives (from the advertisements).
+On OPNsense a service called :code:`rtsold` is used to send out these solicitations and can take some actions on the responses it
+receives (from the advertisements). Although without explicitly asking for advertisements, you will likely still receive them,
+but have little control over them. The kernel handles these advertisements when :code:`accept_rtadv` is enabled on the interface
+anyway.
+
 
 Router Advertisement [RA]
 -------------------------------
