@@ -60,7 +60,7 @@ FQ_CoDel uses the following parameters in its algorithm.
                         It is the hard limit on the real queue size in packets
                         (Default: 10240, max 20480).*
  **flows**              *Sets the number of queues into which the incoming packets are classified
-                        (Default: 1024, max 65536)*
+                        (Default: 1024, max 65535)*
  **CoDel ECN**          *Enable packet marking for ECN-enabled TCP flows when queue delay becomes high.
                         (Default: Disabled)*           
 ======================= ====================================================================
