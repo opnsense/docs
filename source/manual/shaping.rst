@@ -108,3 +108,4 @@ Configuration / How-tos
    how-tos/shaper_prioritize_using_queues
    how-tos/shaper_guestnet
    how-tos/shaper_bufferbloat
+   how-tos/shaper_control_plane
