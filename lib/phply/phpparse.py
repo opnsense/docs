@@ -35,7 +35,7 @@ precedence = (
     ('nonassoc', 'IS_EQUAL', 'IS_NOT_EQUAL', 'IS_IDENTICAL', 'IS_NOT_IDENTICAL'),
     ('nonassoc', 'IS_SMALLER', 'IS_SMALLER_OR_EQUAL', 'IS_GREATER', 'IS_GREATER_OR_EQUAL'),
     ('left', 'SL', 'SR'),
-    ('left', 'PLUS', 'MINUS', 'CONCAT'),
+    ('left', 'PLUS', 'MINUS', 'CONCAT', 'NULL_COALESC'),
     ('left', 'MUL', 'DIV', 'MOD'),
     ('right', 'BOOLEAN_NOT'),
     ('nonassoc', 'INSTANCEOF'),
@@ -701,8 +701,10 @@ def p_method_body(p):
 
 def p_non_empty_member_modifiers(p):
     '''non_empty_member_modifiers : non_empty_member_modifiers member_modifier
+                                  | non_empty_member_modifiers ARRAY
+                                  | non_empty_member_modifiers INT
                                   | member_modifier'''
-    if len(p) == 3:
+    if len(p) >= 3:
         p[0] = p[1] + [p[2]]
     else:
         p[0] = [p[1]]
@@ -1163,6 +1165,8 @@ def p_expr_binary_op(p):
             | expr XOR expr
             | expr CONCAT expr
             | expr PLUS expr
+            | expr NULL_COALESC expr
+            | expr SPACESHIP expr
             | expr MINUS expr
             | expr MUL expr
             | expr DIV expr

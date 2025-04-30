@@ -34,7 +34,7 @@ reserved = (
     'REQUIRE_ONCE', 'RETURN', 'STATIC', 'SWITCH', 'UNSET', 'USE', 'VAR',
     'WHILE', 'FINAL', 'INTERFACE', 'IMPLEMENTS', 'PUBLIC', 'PRIVATE',
     'PROTECTED', 'ABSTRACT', 'CLONE', 'TRY', 'CATCH', 'THROW', 'NAMESPACE',
-    'FINALLY', 'TRAIT', 'YIELD',
+    'FINALLY', 'TRAIT', 'YIELD', 'INT'
 )
 
 # Not used by parser
@@ -54,7 +54,7 @@ tokens = reserved + unparsed + (
     'PLUS', 'MINUS', 'MUL', 'DIV', 'MOD', 'AND', 'OR', 'NOT', 'XOR', 'SL',
     'SR', 'BOOLEAN_AND', 'BOOLEAN_OR', 'BOOLEAN_NOT', 'IS_SMALLER',
     'IS_GREATER', 'IS_SMALLER_OR_EQUAL', 'IS_GREATER_OR_EQUAL', 'IS_EQUAL',
-    'IS_NOT_EQUAL', 'IS_IDENTICAL', 'IS_NOT_IDENTICAL',
+    'IS_NOT_EQUAL', 'IS_IDENTICAL', 'IS_NOT_IDENTICAL', 'NULL_COALESC', 'SPACESHIP',
 
     # Assignment operators
     'EQUALS', 'MUL_EQUAL', 'DIV_EQUAL', 'MOD_EQUAL', 'PLUS_EQUAL',
@@ -126,6 +126,8 @@ t_php_IS_EQUAL            = r'=='
 t_php_IS_NOT_EQUAL        = r'(!=(?!=))|(<>)'
 t_php_IS_IDENTICAL        = r'==='
 t_php_IS_NOT_IDENTICAL    = r'!=='
+t_php_NULL_COALESC        = r'\?\?'
+t_php_SPACESHIP           = r'\<\=\>'
 
 # Assignment operators
 t_php_EQUALS               = r'='
