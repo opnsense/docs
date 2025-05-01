@@ -39,7 +39,7 @@ There are 3 Planes:
 Necessity of Control Plane Shaping
 ----------------------------------
 
-Control plane is a necessary component for the network operation.
+The control plane is a necessary component for proper network operation.
 A congested state of the network, if control plane is not taken care of, will result in network disruptions. 
 In order to guarantee operation and non-disruption in such events, we can take advantage of QoS in our case Shaping.
 
