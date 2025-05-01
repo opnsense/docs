@@ -5,7 +5,7 @@ Control Plane Shaping
 Planes of Operation is a concept to describe and divide the functionality 
 of a network device.
 
-In essence the concept creates logical layers into which are categorized packets 
+In essence, the concept creates logical layers in which packets are categorized
 per their use and type.
 
 There are 3 Planes:
