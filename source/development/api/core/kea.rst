@@ -6,7 +6,6 @@ Kea
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","kea","ctrl_agent","get",""
-    "``GET``","kea","ctrl_agent","get",""
     "``POST``","kea","ctrl_agent","set",""
 
     "``<<uses>>``", "", "", "", "*model* `KeaCtrlAgent.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Kea/KeaCtrlAgent.xml>`__"
@@ -23,13 +22,12 @@ Kea
     "``POST``","kea","dhcpv4","del_subnet","$uuid"
     "``GET``","kea","dhcpv4","download_reservations",""
     "``GET``","kea","dhcpv4","get",""
-    "``GET``","kea","dhcpv4","get",""
     "``GET``","kea","dhcpv4","get_peer","$uuid=null"
     "``GET``","kea","dhcpv4","get_reservation","$uuid=null"
     "``GET``","kea","dhcpv4","get_subnet","$uuid=null"
-    "``*``","kea","dhcpv4","search_peer",""
-    "``*``","kea","dhcpv4","search_reservation",""
-    "``*``","kea","dhcpv4","search_subnet",""
+    "``POST,GET``","kea","dhcpv4","search_peer",""
+    "``POST,GET``","kea","dhcpv4","search_reservation",""
+    "``POST,GET``","kea","dhcpv4","search_subnet",""
     "``POST``","kea","dhcpv4","set",""
     "``POST``","kea","dhcpv4","set_peer","$uuid"
     "``POST``","kea","dhcpv4","set_reservation","$uuid"
@@ -53,5 +51,3 @@ Kea
     "``POST``","kea","service","start",""
     "``GET``","kea","service","status",""
     "``POST``","kea","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `KeaDhcpv4.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Kea/KeaDhcpv4.xml>`__"

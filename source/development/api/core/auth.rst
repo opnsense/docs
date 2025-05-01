@@ -8,14 +8,12 @@ Auth
     "``POST``","auth","group","add",""
     "``POST``","auth","group","del","$uuid"
     "``GET``","auth","group","get","$uuid=null"
-    "``GET``","auth","group","get",""
-    "``*``","auth","group","search",""
+    "``POST,GET``","auth","group","search",""
     "``POST``","auth","group","set","$uuid=null"
-    "``POST``","auth","group","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Group.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Auth/Group.xml>`__"
 
-.. csv-table:: Service (PrivController.php)
+.. csv-table:: Resources (PrivController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -35,12 +33,12 @@ Auth
     "``POST``","auth","user","add_api_key","$username"
     "``POST``","auth","user","del","$uuid"
     "``POST``","auth","user","del_api_key","$id"
+    "``GET``","auth","user","download",""
     "``GET``","auth","user","get","$uuid=null"
-    "``GET``","auth","user","get",""
     "``GET``","auth","user","new_otp_seed",""
-    "``*``","auth","user","search",""
+    "``POST,GET``","auth","user","search",""
     "``GET``","auth","user","search_api_key",""
     "``POST``","auth","user","set","$uuid=null"
-    "``POST``","auth","user","set",""
+    "``POST``","auth","user","upload",""
 
     "``<<uses>>``", "", "", "", "*model* `User.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Auth/User.xml>`__"

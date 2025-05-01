@@ -6,10 +6,9 @@ Ids
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","ids","service","drop_alert_log",""
-    "``GET``","ids","service","get_alert_info","$alertId,$fileid="""""
+    "``GET``","ids","service","get_alert_info","$alertId,$fileid=''"
     "``GET``","ids","service","get_alert_logs",""
     "``POST``","ids","service","query_alerts",""
-    "``POST``","ids","service","reconfigure",""
     "``POST``","ids","service","reconfigure",""
     "``POST``","ids","service","reload_rules",""
     "``POST``","ids","service","restart",""
@@ -17,8 +16,6 @@ Ids
     "``GET``","ids","service","status",""
     "``POST``","ids","service","stop",""
     "``POST``","ids","service","update_rules","$wait=null"
-
-    "``<<uses>>``", "", "", "", "*model* `IDS.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IDS/IDS.xml>`__"
 
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -41,9 +38,9 @@ Ids
     "``GET``","ids","settings","list_rule_metadata",""
     "``GET``","ids","settings","list_rulesets",""
     "``POST``","ids","settings","search_installed_rules",""
-    "``*``","ids","settings","search_policy",""
-    "``*``","ids","settings","search_policy_rule",""
-    "``*``","ids","settings","search_user_rule",""
+    "``POST,GET``","ids","settings","search_policy",""
+    "``POST,GET``","ids","settings","search_policy_rule",""
+    "``POST,GET``","ids","settings","search_user_rule",""
     "``POST``","ids","settings","set",""
     "``POST``","ids","settings","set_policy","$uuid"
     "``POST``","ids","settings","set_policy_rule","$uuid"

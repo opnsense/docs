@@ -20,10 +20,10 @@ Ipsec
     "``GET``","ipsec","connections","get_local","$uuid=null"
     "``GET``","ipsec","connections","get_remote","$uuid=null"
     "``GET``","ipsec","connections","is_enabled",""
-    "``*``","ipsec","connections","search_child",""
-    "``*``","ipsec","connections","search_connection",""
-    "``*``","ipsec","connections","search_local",""
-    "``*``","ipsec","connections","search_remote",""
+    "``POST,GET``","ipsec","connections","search_child",""
+    "``POST,GET``","ipsec","connections","search_connection",""
+    "``POST,GET``","ipsec","connections","search_local",""
+    "``POST,GET``","ipsec","connections","search_remote",""
     "``POST``","ipsec","connections","set",""
     "``POST``","ipsec","connections","set_child","$uuid=null"
     "``POST``","ipsec","connections","set_connection","$uuid=null"
@@ -47,7 +47,7 @@ Ipsec
     "``GET``","ipsec","key_pairs","gen_key_pair","$type,$size=null"
     "``GET``","ipsec","key_pairs","get",""
     "``GET``","ipsec","key_pairs","get_item","$uuid=null"
-    "``*``","ipsec","key_pairs","search_item",""
+    "``POST,GET``","ipsec","key_pairs","search_item",""
     "``POST``","ipsec","key_pairs","set",""
     "``POST``","ipsec","key_pairs","set_item","$uuid=null"
 
@@ -74,10 +74,8 @@ Ipsec
     "``POST``","ipsec","manual_spd","add",""
     "``POST``","ipsec","manual_spd","del","$uuid"
     "``GET``","ipsec","manual_spd","get","$uuid=null"
-    "``GET``","ipsec","manual_spd","get",""
-    "``*``","ipsec","manual_spd","search",""
+    "``POST,GET``","ipsec","manual_spd","search",""
     "``POST``","ipsec","manual_spd","set","$uuid=null"
-    "``POST``","ipsec","manual_spd","set",""
     "``POST``","ipsec","manual_spd","toggle","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `Swanctl.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IPsec/Swanctl.xml>`__"
@@ -89,10 +87,8 @@ Ipsec
     "``POST``","ipsec","pools","add",""
     "``POST``","ipsec","pools","del","$uuid"
     "``GET``","ipsec","pools","get","$uuid=null"
-    "``GET``","ipsec","pools","get",""
-    "``*``","ipsec","pools","search",""
+    "``POST,GET``","ipsec","pools","search",""
     "``POST``","ipsec","pools","set","$uuid=null"
-    "``POST``","ipsec","pools","set",""
     "``POST``","ipsec","pools","toggle","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `Swanctl.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IPsec/Swanctl.xml>`__"
@@ -105,7 +101,7 @@ Ipsec
     "``POST``","ipsec","pre_shared_keys","del_item","$uuid"
     "``GET``","ipsec","pre_shared_keys","get",""
     "``GET``","ipsec","pre_shared_keys","get_item","$uuid=null"
-    "``*``","ipsec","pre_shared_keys","search_item",""
+    "``POST,GET``","ipsec","pre_shared_keys","search_item",""
     "``POST``","ipsec","pre_shared_keys","set",""
     "``POST``","ipsec","pre_shared_keys","set_item","$uuid=null"
 
@@ -128,8 +124,6 @@ Ipsec
     "``GET``","ipsec","service","status",""
     "``POST``","ipsec","service","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `IPsec.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IPsec/IPsec.xml>`__"
-
 .. csv-table:: Resources (SessionsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -143,7 +137,6 @@ Ipsec
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","ipsec","settings","get",""
     "``GET``","ipsec","settings","get",""
     "``POST``","ipsec","settings","set",""
 
@@ -175,10 +168,8 @@ Ipsec
     "``POST``","ipsec","vti","add",""
     "``POST``","ipsec","vti","del","$uuid"
     "``GET``","ipsec","vti","get","$uuid=null"
-    "``GET``","ipsec","vti","get",""
-    "``*``","ipsec","vti","search",""
+    "``POST,GET``","ipsec","vti","search",""
     "``POST``","ipsec","vti","set","$uuid=null"
-    "``POST``","ipsec","vti","set",""
     "``POST``","ipsec","vti","toggle","$uuid,$enabled=null"
 
     "``<<uses>>``", "", "", "", "*model* `Swanctl.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/IPsec/Swanctl.xml>`__"

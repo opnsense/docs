@@ -22,7 +22,7 @@ Core
     "``POST``","core","dashboard","restore_defaults",""
     "``POST``","core","dashboard","save_widgets",""
 
-.. csv-table:: Service (HasyncController.php)
+.. csv-table:: Resources (HasyncController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -91,7 +91,7 @@ Core
     "``GET``","core","tunables","get_item","$uuid=null"
     "``POST``","core","tunables","reconfigure",""
     "``POST``","core","tunables","reset",""
-    "``*``","core","tunables","search_item",""
+    "``POST,GET``","core","tunables","search_item",""
     "``POST``","core","tunables","set",""
     "``POST``","core","tunables","set_item","$uuid"
 

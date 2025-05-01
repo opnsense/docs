@@ -7,13 +7,10 @@ Monit
 
     "``POST``","monit","service","check",""
     "``POST``","monit","service","reconfigure",""
-    "``POST``","monit","service","reconfigure",""
     "``POST``","monit","service","restart",""
     "``POST``","monit","service","start",""
     "``GET``","monit","service","status",""
     "``POST``","monit","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `Monit.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Monit/Monit.xml>`__"
 
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -31,9 +28,9 @@ Monit
     "``GET``","monit","settings","get_general",""
     "``GET``","monit","settings","get_service","$uuid=null"
     "``GET``","monit","settings","get_test","$uuid=null"
-    "``*``","monit","settings","search_alert",""
-    "``*``","monit","settings","search_service",""
-    "``*``","monit","settings","search_test",""
+    "``POST,GET``","monit","settings","search_alert",""
+    "``POST,GET``","monit","settings","search_service",""
+    "``POST,GET``","monit","settings","search_test",""
     "``POST``","monit","settings","set",""
     "``POST``","monit","settings","set_alert","$uuid"
     "``POST``","monit","settings","set_service","$uuid"
@@ -47,4 +44,4 @@ Monit
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","monit","status","get","$format='xml'"
+    "``GET``","monit","status","get","$format=xml"

@@ -15,7 +15,7 @@ Cron
     "``POST``","cron","settings","del_job","$uuid"
     "``GET``","cron","settings","get",""
     "``GET``","cron","settings","get_job","$uuid=null"
-    "``*``","cron","settings","search_jobs",""
+    "``POST,GET``","cron","settings","search_jobs",""
     "``POST``","cron","settings","set",""
     "``POST``","cron","settings","set_job","$uuid"
     "``POST``","cron","settings","toggle_job","$uuid,$enabled=null"

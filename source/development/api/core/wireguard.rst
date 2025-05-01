@@ -14,14 +14,14 @@ Wireguard
     "``GET``","wireguard","client","get_server_info","$uuid=null"
     "``GET``","wireguard","client","list_servers",""
     "``GET``","wireguard","client","psk",""
-    "``*``","wireguard","client","search_client",""
+    "``POST,GET``","wireguard","client","search_client",""
     "``POST``","wireguard","client","set",""
     "``POST``","wireguard","client","set_client","$uuid"
     "``POST``","wireguard","client","toggle_client","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Client.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Wireguard/Client.xml>`__"
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -39,7 +39,7 @@ Wireguard
     "``GET``","wireguard","server","get",""
     "``GET``","wireguard","server","get_server","$uuid=null"
     "``GET``","wireguard","server","key_pair",""
-    "``*``","wireguard","server","search_server",""
+    "``POST,GET``","wireguard","server","search_server",""
     "``POST``","wireguard","server","set",""
     "``POST``","wireguard","server","set_server","$uuid=null"
     "``POST``","wireguard","server","toggle_server","$uuid"
@@ -51,11 +51,8 @@ Wireguard
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","wireguard","service","reconfigure",""
-    "``POST``","wireguard","service","reconfigure",""
     "``POST``","wireguard","service","restart",""
     "``GET``","wireguard","service","show",""
     "``POST``","wireguard","service","start",""
     "``GET``","wireguard","service","status",""
     "``POST``","wireguard","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Wireguard/General.xml>`__"
