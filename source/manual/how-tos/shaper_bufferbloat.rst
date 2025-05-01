@@ -38,7 +38,7 @@ FQ_CoDel begins to mark or drop some of those packets to cause the sender to slo
 For more details, see RFC 8290 https://datatracker.ietf.org/doc/html/rfc8290. 
 
 .. Attention::
-    If you are running IPv6 or any dynamic routing protocol, consider creating a Control plane specific class how-tos/shaper_control_plane.
+    If you are running IPv6 or any dynamic routing protocol, consider creating a Control plane specific class :doc:`how-tos/shaper_control_plane`.
 
 
 Parameters of FQ_CoDel
