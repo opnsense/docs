@@ -12,7 +12,7 @@ There are 3 Planes:
 
 1. **The control plane**
   
-   Affect the operationability of the network.
+   Affects the operability of the network.
   
    The control plane is the brain of the router. It consists of dynamic IP routing protocols (that is OSPF, IS-IS, BGP, and so on), 
    the RIB, routing updates, in addition to other protocols such as PIM, IGMP, ICMP, ARP, BFD, LACP, and so on. 
