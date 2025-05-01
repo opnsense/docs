@@ -16,7 +16,7 @@ There are 3 Planes:
   
    The control plane is the brain of the router. It consists of dynamic IP routing protocols (that is OSPF, IS-IS, BGP, and so on), 
    the RIB, routing updates, in addition to other protocols such as PIM, IGMP, ICMP, ARP, BFD, LACP, and so on. 
-   In short, the control plane is responsible for maintaining sessions and exchanging protocol information with other router or network devices.
+   In short, the control plane is responsible for maintaining the network topology and exchanging protocol information with other routers or network devices.
 
 2. **The management plane**
      
