@@ -158,7 +158,7 @@ Create Control-plane-IPv6-Queue For Download
 
 .. Note::
 
-        Using WFQ or QFQ and weights, we can tell how much BW will get each control plane for each protocol gain.
+        Using WFQ or QFQ and weights, we can tell how much BW each protocol control plane will get.
 
 Step 2b - Create Upload Queue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
