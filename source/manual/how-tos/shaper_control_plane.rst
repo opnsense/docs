@@ -52,7 +52,7 @@ In order to guarantee operation and avoid disruption in such events, we can take
 Configuring Control plane for OPNsense
 --------------------------------------
 
-Configuration will take in account existence of already configured shaper as per how-tos/shaper_bufferbloat
+The configuration will take into account the existence of an already configured shaper as per :doc:`how-tos/shaper_bufferbloat`
 
 In the configuration steps below, assume these tuned speeds:
 
