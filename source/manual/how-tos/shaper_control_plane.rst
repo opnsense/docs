@@ -74,7 +74,7 @@ Bandwidth allocation requirements for Control plane:
 The 1% is the default lowest value. Its subjected to be increased if needed.
 
 .. Attention::
-    BW given to a different Pipe needs to be subtracted from already existing one.
+    BW given to a different Pipe needs to be subtracted from already existing ones.
 
 
 
