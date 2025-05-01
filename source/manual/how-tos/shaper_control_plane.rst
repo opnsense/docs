@@ -20,7 +20,7 @@ There are 3 Planes:
 
 2. **The management plane**
      
-   Affect the manageability of the network.
+   Affects the manageability of the network.
      
    The management plane is used to manage a device through its connection to the network. 
    Examples of protocols processed in the management plane include Simple Network Management Protocol (SNMP), 
