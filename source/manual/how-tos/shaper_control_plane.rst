@@ -68,10 +68,11 @@ Bandwidth allocation requirements for Control plane:
 +----------------+----------+-----------------+
 |    1% of BW    | Download |      Upload     |
 +================+==========+=================+
-|      Mbit/s    |    5     |       0.5       |
+|      Mbit/s    |    5     |         1       |
 +----------------+----------+-----------------+
 
-The 1% is the default lowest value. Its subjected to be increased if needed.
+The 1% is the default lowest value, at minimum the BW should be set to 1Mbit/s. 
+Its subjected to be increased if needed.
 
 .. Attention::
     BW given to a different Pipe needs to be subtracted from already existing ones.
