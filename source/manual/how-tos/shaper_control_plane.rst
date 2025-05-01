@@ -43,7 +43,7 @@ The control plane is a necessary component for proper network operation.
 A congested state of the network, if the control plane is not properly managed, will result in network disruptions. 
 In order to guarantee operation and avoid disruption in such events, we can take advantage of Traffic Shaping
 
-**Its necessary to understand Control plane as such, needs to be always taken care of, always in its own dedicated way.**
+**With Shaping, we can reserve dedicated bandwidth for the control plane**
 
 .. Attention::
     The control plane should not share a class (Pipe or Queue) with any other traffic type.
