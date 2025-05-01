@@ -1,5 +1,9 @@
 import os
 import re
+from lib.phply.phpast import Class,  MethodCall, Constant, UnaryOp
+from lib.phply.phplex import lexer
+from lib.phply.phpparse import make_parser
+
 
 DEFAULT_BASE_METHODS = {
     "ApiMutableModelControllerBase": [{
@@ -36,106 +40,124 @@ DEFAULT_BASE_METHODS = {
 
 
 class ApiParser:
-    def __init__(self, filename):
+    def __init__(self, filename, debug=False):
+        self._debug = debug
         self._filename = filename
         self.base_filename = os.path.basename(filename)
         self.controller = re.sub('(?<!^)(?=[A-Z])', '_', self.base_filename.split('Controller.php')[0]).lower()
         self.module_name = filename.replace('\\', '/').split('/')[-3].lower()
+
+        self.model_filename = None
+        self.is_abstract = False
+        self.base_class = None
+        self.api_commands = {}
         self._data = open(filename).read()
 
-    def _get_model_filename(self):
-        m = re.findall(r"\sprotected\sstatic\s\$internalModelClass\s=\s['|\"]([\w|\\]*)['|\"];", self._data)
-        if len(m) == 0:
-            m = re.findall(r"\sprotected\sstatic\s\$internalServiceClass\s=\s['|\"]([\w|\\]*)['|\"];", self._data)
-
-        if len(m) > 0:
+    def _parse_class_variables(self, node):
+        if node.nodes[-1].name == '$internalModelClass':
+            class_name = node.nodes[-1].initial
             app_location = "/".join(self._filename.split('/')[:-5])
-            model_xml = "%s/models/%s.xml" % (app_location, m[0].replace("\\", "/"))
+            model_xml = "%s/models/%s.xml" % (app_location, class_name.replace("\\", "/"))
             if os.path.isfile(model_xml):
-                return  model_xml.replace('//', '/')
+                self.model_filename = model_xml.replace('//', '/')
 
-    def _parse_action_content(self, code_block):
-        record = {}
-        boilerplates = {
-            'get': {'pattern': '$this->getBase', 'method': 'GET'},
-            'del': {'pattern': '$this->delBase', 'method': 'POST'},
-            'add': {'pattern': '$this->addBase', 'method': 'POST'},
-            'set': {'pattern': '$this->setBase', 'method': 'POST'},
-            'toggle': {'pattern': '$this->toggleBase', 'method': 'POST'},
-            'search': {'pattern': '$this->searchBase', 'method': 'GET,POST'},
-        }
-        for action, boilerplate in boilerplates.items():
-            pos = code_block.find(boilerplate['pattern'])
-            if pos > -1:
-                record['method'] = boilerplate['method']
+    def _extract_ops(self, root):
+        """ Rercursively dive into offered root node, used to extracts details from within methods
+        """
+        for node in root:
+            for value in node.__dict__.values():
+                if isinstance(value, list):
+                    yield from self._extract_ops(value)
+                elif hasattr(value, '__dict__'):
+                    yield from self._extract_ops([value])
+                else:
+                    yield node
 
-        if 'method' not in record:
-            methods = []
-            if code_block.find('request->isPost(') > -1:
-                methods.append('POST')
-            if code_block.find('request->isGet(') > -1:
-                methods.append('GET')
-            if len(methods) > 1:
-                record['method'] = ','.join(methods)
+    def _parse_method(self, node):
+        """ Extract action methods to api endpoints
+        """
+        if node.name.endswith('Action'):
+            cmd = "".join("_" + c.lower() if c.isupper() else c for c in node.name[:-6])
+            record = {'command': cmd}
+            params = []
+            for p in node.params:
+                default = default = p.default
+                if isinstance(p.default, UnaryOp):
+                    default = '%s%s' % (p.default.op, p.default.expr)
+                elif isinstance(p.default, Constant):
+                    default = p.default.name
+                elif p.default == '':
+                    default = "''"
+                params.append('%s=%s' % (p.name, default) if default is not None else p.name)
 
-        return record
+            record['parameters'] = ','.join(params)
 
+            self.api_commands[cmd] = record
+            detected_methods = set()
+            for item in self._extract_ops(node.nodes):
+                if isinstance(item, MethodCall):
+                    if item.name == 'isPost':
+                        detected_methods.add('POST')
+                    elif item.name == 'isGet':
+                        detected_methods.add('GET')
+                    elif item.name in ('delBase', 'addBase', 'setBase', 'toggleBase', 'setAction'):
+                        detected_methods.add('POST')
+                    elif item.name == 'searchBase':
+                        detected_methods.add('POST')
+                        detected_methods.add('GET')
+
+            default_method = 'POST' if cmd == 'set' else 'GET'
+            record['method'] = ','.join(detected_methods) if detected_methods else default_method
+
+    def _p_error(self, p):
+        """ error handler, ignore unexpected tokens
+        """
+        if p:
+            if self._debug:
+                print("ignoring token %s at line %s" % (p.value, p.lexer.lineno))
+            self.parser.errok()
 
     def parse_api_php(self):
-        data = self._data
-        m = re.findall(r"\n([\w]*).*class.*Controller.*extends\s([\w|\\]*)", data)
-        base_class = m[0][1].split('\\')[-1] if len(m) > 0 else None
-        is_abstract = len(m) > 0 and m[0][0] == 'abstract'
+        """ collect api endpoints
+        """
+        self.api_commands = {}
+        self.parser = make_parser()
+        self.parser.errorfunc = self._p_error
 
-        model_filename = self._get_model_filename()
+        for root in self.parser.parse(self._data, lexer=lexer.clone(), tracking=True):
+            if type(root) is Class:
+                self.is_abstract = root.type == 'abstract'
+                self.base_class = root.extends
+                for node in root.nodes:
+                    tmp = "".join("_" + c.lower() if c.isupper() else c for c in type(node).__name__)
+                    node_method =  '_parse%s' % tmp
+                    if hasattr(self, node_method):
+                        getattr(self, node_method)(node)
 
-        function_callouts = re.findall(r"(\n\s+(private|public|protected)\s+function\s+(\w+)\((.*)\))", data)
-        result = list()
-        this_commands = []
-        for idx, function in enumerate(function_callouts):
-            begin_marker = data.find(function_callouts[idx][0])
-            if idx+1 < len(function_callouts):
-                end_marker = data.find(function_callouts[idx+1][0])
-            else:
-                end_marker = -1
-            code_block = data[begin_marker+len(function[0]):end_marker]
-            if function[2].endswith('Action'):
-                cmd = "".join("_" + c.lower() if c.isupper() else c for c in function[2][:-6])
-                this_commands.append(cmd)
-                record = {
-                    'method': 'GET',
-                    'module': self.module_name,
-                    'controller': self.controller,
-                    'is_abstract': is_abstract,
-                    'base_class': base_class,
-                    'command': cmd,
-                    'parameters': function[3].replace(' ', '').replace('"', '""'),
-                    'filename': self.base_filename,
-                    'model_filename': model_filename
-                }
-                if is_abstract:
-                    record['type'] = 'Abstract [non-callable]'
-                elif self.controller.find('service') > -1:
-                    record['type'] = 'Service'
-                else:
-                    record['type'] = 'Resources'
-                record.update(self._parse_action_content(code_block))
-                # find most likely method (default => GET)
-                result.append(record)
-        if base_class in DEFAULT_BASE_METHODS:
-            for item in DEFAULT_BASE_METHODS[base_class]:
-                if item not in this_commands:
-                    result.append({
-                        'type': 'Service',
+        # stick base class defaults to the list when not yet defined
+        if self.base_class in DEFAULT_BASE_METHODS:
+            for item in DEFAULT_BASE_METHODS[self.base_class]:
+                if item['command'] not in self.api_commands:
+                    self.api_commands[item['command']] = {
                         'method': item['method'],
-                        'module': self.module_name,
-                        'controller': self.controller,
-                        'is_abstract': False,
-                        'base_class': base_class,
                         'command': item['command'],
-                        'parameters': item['parameters'],
-                        'filename': self.base_filename,
-                        'model_filename': model_filename
-                    })
+                        'parameters': item['parameters']
+                    }
 
-        return sorted(result, key=lambda i: i['command'])
+        if self.is_abstract:
+            controller_type = 'Abstract [non-callable]'
+        elif self.controller.find('service') > -1:
+            controller_type = 'Service'
+        else:
+            controller_type = 'Resources'
+
+        return {
+            'actions': sorted(self.api_commands.values(), key=lambda i: i['command']),
+            'type': controller_type,
+            'module': self.module_name,
+            'controller': self.controller,
+            'is_abstract': self.is_abstract,
+            'base_class': self.base_class,
+            'filename': self.base_filename,
+            'model_filename': self.model_filename
+        }

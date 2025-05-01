@@ -20,7 +20,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 {%     for endpoint in controller.endpoints %}
-    "``{{endpoint.method}}``","{{endpoint.module}}","{{endpoint.controller}}","{{endpoint.command}}","{{endpoint.parameters}}"
+    "``{{endpoint.method}}``","{{controller.module}}","{{controller.controller}}","{{endpoint.command}}","{{endpoint.parameters}}"
 {%-    endfor %}
 {%-    if controller.uses %}
 {%         for use in controller.uses %}

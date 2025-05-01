@@ -43,6 +43,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('source', help='source directory')
     parser.add_argument('--repo', help='target repository', default="core")
+    parser.add_argument('--debug', help='enable debug mode', default=False, action='store_true')
     cmd_args = parser.parse_args()
 
     # collect all endpoints
@@ -57,11 +58,11 @@ if __name__ == '__main__':
                     break
             if not skip and filename.lower().endswith('controller.php') and filename.find('mvc/app/controllers') > -1 \
                     and root.endswith('Api'):
-                payload = ApiParser(filename).parse_api_php()
+                payload = ApiParser(filename, cmd_args.debug).parse_api_php()
                 if len(payload) > 0:
-                    if payload[0]['module'] not in all_modules:
-                        all_modules[payload[0]['module']] = list()
-                    all_modules[payload[0]['module']].append(payload)
+                    if payload['module'] not in all_modules:
+                        all_modules[payload['module']] = list()
+                    all_modules[payload['module']].append(payload)
 
     # writeout .rst files
     for module_name in all_modules:
@@ -76,20 +77,22 @@ if __name__ == '__main__':
         }
         for controller in all_modules[module_name]:
             payload = {
-                'type': controller[0]['type'],
-                'filename': controller[0]['filename'],
-                'is_abstract': controller[0]['is_abstract'],
-                'base_class': controller[0]['base_class'],
+                'type': controller['type'],
+                'module': controller['module'],
+                'controller': controller['controller'],
+                'filename': controller['filename'],
+                'is_abstract': controller['is_abstract'],
+                'base_class': controller['base_class'],
                 'endpoints': [],
                 'uses': []
             }
-            for endpoint in controller:
+            for endpoint in controller['actions']:
                 payload['endpoints'].append(endpoint)
-            if controller[0]['model_filename']:
+            if controller['model_filename']:
                 payload['uses'].append({
                     'type': 'model',
-                    'link': source_url(cmd_args.repo, controller[0]['model_filename']),
-                    'name': os.path.basename(controller[0]['model_filename'])
+                    'link': source_url(cmd_args.repo, controller['model_filename']),
+                    'name': os.path.basename(controller['model_filename'])
                 })
             template_data['controllers'].append(payload)
 

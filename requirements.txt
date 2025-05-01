@@ -12,3 +12,4 @@ sphinxcontrib-seqdiag
 sphinxcontrib-actdiag
 blockdiagcontrib-cisco
 Pillow
+ply
