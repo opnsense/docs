@@ -46,7 +46,7 @@ In order to guarantee operation and non-disruption in such events, we can take a
 **Its necessary to understand Control plane as such, needs to be always taken care of, always in its own dedicated way.**
 
 .. Attention::
-    Control plane should not share a class (Pipe nor Queue) with any other traffic type.
+    The control plane should not share a class (Pipe or Queue) with any other traffic type.
 
 
 Configuring Control plane for OPNsense
