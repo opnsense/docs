@@ -41,7 +41,7 @@ Necessity of Control Plane Shaping
 
 The control plane is a necessary component for proper network operation.
 A congested state of the network, if the control plane is not properly managed, will result in network disruptions. 
-In order to guarantee operation and non-disruption in such events, we can take advantage of QoS in our case Shaping.
+In order to guarantee operation and avoid disruption in such events, we can take advantage of Traffic Shaping
 
 **Its necessary to understand Control plane as such, needs to be always taken care of, always in its own dedicated way.**
 
