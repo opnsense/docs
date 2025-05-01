@@ -100,14 +100,19 @@ class ApiParser:
                         detected_methods.add('POST')
                     elif item.name == 'isGet':
                         detected_methods.add('GET')
-                    elif item.name in ('delBase', 'addBase', 'setBase', 'toggleBase', 'setAction'):
+                    elif item.name in ('addBase', 'setBase'):
+                        record['model_path'] = item.params[1].node
                         detected_methods.add('POST')
-                    elif item.name == 'searchBase':
+                    elif item.name in ('delBase', 'toggleBase', 'searchBase'):
+                        record['model_path'] = item.params[0].node
                         detected_methods.add('POST')
-                        detected_methods.add('GET')
+                        if item.name == 'searchBase':
+                            detected_methods.add('GET')
+                    elif item.name in ('setAction'):
+                        detected_methods.add('POST')
 
             default_method = 'POST' if cmd == 'set' else 'GET'
-            record['method'] = ','.join(detected_methods) if detected_methods else default_method
+            record['method'] = ','.join(sorted(detected_methods)) if detected_methods else default_method
 
     def _p_error(self, p):
         """ error handler, ignore unexpected tokens
