@@ -8,7 +8,7 @@ Auth
     "``POST``","auth","group","add",""
     "``POST``","auth","group","del","$uuid"
     "``GET``","auth","group","get","$uuid=null"
-    "``POST,GET``","auth","group","search",""
+    "``GET,POST``","auth","group","search",""
     "``POST``","auth","group","set","$uuid=null"
 
     "``<<uses>>``", "", "", "", "*model* `Group.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Auth/Group.xml>`__"
@@ -36,7 +36,7 @@ Auth
     "``GET``","auth","user","download",""
     "``GET``","auth","user","get","$uuid=null"
     "``GET``","auth","user","new_otp_seed",""
-    "``POST,GET``","auth","user","search",""
+    "``GET,POST``","auth","user","search",""
     "``GET``","auth","user","search_api_key",""
     "``POST``","auth","user","set","$uuid=null"
     "``POST``","auth","user","upload",""

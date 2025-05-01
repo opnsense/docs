@@ -11,7 +11,7 @@ Interfaces
     "``GET``","interfaces","gif_settings","get_if_options",""
     "``GET``","interfaces","gif_settings","get_item","$uuid=null"
     "``POST``","interfaces","gif_settings","reconfigure",""
-    "``POST,GET``","interfaces","gif_settings","search_item",""
+    "``GET,POST``","interfaces","gif_settings","search_item",""
     "``POST``","interfaces","gif_settings","set",""
     "``POST``","interfaces","gif_settings","set_item","$uuid"
 
@@ -27,7 +27,7 @@ Interfaces
     "``GET``","interfaces","gre_settings","get_if_options",""
     "``GET``","interfaces","gre_settings","get_item","$uuid=null"
     "``POST``","interfaces","gre_settings","reconfigure",""
-    "``POST,GET``","interfaces","gre_settings","search_item",""
+    "``GET,POST``","interfaces","gre_settings","search_item",""
     "``POST``","interfaces","gre_settings","set",""
     "``POST``","interfaces","gre_settings","set_item","$uuid"
 
@@ -42,7 +42,7 @@ Interfaces
     "``GET``","interfaces","lagg_settings","get",""
     "``GET``","interfaces","lagg_settings","get_item","$uuid=null"
     "``POST``","interfaces","lagg_settings","reconfigure",""
-    "``POST,GET``","interfaces","lagg_settings","search_item",""
+    "``GET,POST``","interfaces","lagg_settings","search_item",""
     "``POST``","interfaces","lagg_settings","set",""
     "``POST``","interfaces","lagg_settings","set_item","$uuid"
 
@@ -57,7 +57,7 @@ Interfaces
     "``GET``","interfaces","loopback_settings","get",""
     "``GET``","interfaces","loopback_settings","get_item","$uuid=null"
     "``POST``","interfaces","loopback_settings","reconfigure",""
-    "``POST,GET``","interfaces","loopback_settings","search_item",""
+    "``GET,POST``","interfaces","loopback_settings","search_item",""
     "``POST``","interfaces","loopback_settings","set",""
     "``POST``","interfaces","loopback_settings","set_item","$uuid"
 
@@ -72,7 +72,7 @@ Interfaces
     "``GET``","interfaces","neighbor_settings","get",""
     "``GET``","interfaces","neighbor_settings","get_item","$uuid=null"
     "``POST``","interfaces","neighbor_settings","reconfigure",""
-    "``POST,GET``","interfaces","neighbor_settings","search_item",""
+    "``GET,POST``","interfaces","neighbor_settings","search_item",""
     "``POST``","interfaces","neighbor_settings","set",""
     "``POST``","interfaces","neighbor_settings","set_item","$uuid"
 
@@ -97,7 +97,7 @@ Interfaces
     "``GET``","interfaces","vip_settings","get_item","$uuid=null"
     "``GET``","interfaces","vip_settings","get_unused_vhid",""
     "``POST``","interfaces","vip_settings","reconfigure",""
-    "``POST,GET``","interfaces","vip_settings","search_item",""
+    "``GET,POST``","interfaces","vip_settings","search_item",""
     "``POST``","interfaces","vip_settings","set",""
     "``POST``","interfaces","vip_settings","set_item","$uuid"
 
@@ -112,7 +112,7 @@ Interfaces
     "``GET``","interfaces","vlan_settings","get",""
     "``GET``","interfaces","vlan_settings","get_item","$uuid=null"
     "``POST``","interfaces","vlan_settings","reconfigure",""
-    "``POST,GET``","interfaces","vlan_settings","search_item",""
+    "``GET,POST``","interfaces","vlan_settings","search_item",""
     "``POST``","interfaces","vlan_settings","set",""
     "``POST``","interfaces","vlan_settings","set_item","$uuid"
 
@@ -127,7 +127,7 @@ Interfaces
     "``GET``","interfaces","vxlan_settings","get",""
     "``GET``","interfaces","vxlan_settings","get_item","$uuid=null"
     "``POST``","interfaces","vxlan_settings","reconfigure",""
-    "``POST,GET``","interfaces","vxlan_settings","search_item",""
+    "``GET,POST``","interfaces","vxlan_settings","search_item",""
     "``POST``","interfaces","vxlan_settings","set",""
     "``POST``","interfaces","vxlan_settings","set_item","$uuid"
 

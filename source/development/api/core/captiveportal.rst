@@ -8,7 +8,7 @@ Captiveportal
     "``GET``","captiveportal","access","api",""
     "``GET``","captiveportal","access","logoff","$zoneid=0"
     "``POST``","captiveportal","access","logon","$zoneid=0"
-    "``POST,GET``","captiveportal","access","status","$zoneid=0"
+    "``GET,POST``","captiveportal","access","status","$zoneid=0"
 
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -38,7 +38,7 @@ Captiveportal
     "``POST``","captiveportal","settings","del_zone","$uuid"
     "``GET``","captiveportal","settings","get",""
     "``GET``","captiveportal","settings","get_zone","$uuid=null"
-    "``POST,GET``","captiveportal","settings","search_zones",""
+    "``GET,POST``","captiveportal","settings","search_zones",""
     "``POST``","captiveportal","settings","set",""
     "``POST``","captiveportal","settings","set_zone","$uuid"
     "``POST``","captiveportal","settings","toggle_zone","$uuid,$enabled=null"

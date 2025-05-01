@@ -19,7 +19,7 @@ Stunnel
     "``POST``","stunnel","services","del_item","$uuid"
     "``GET``","stunnel","services","get",""
     "``GET``","stunnel","services","get_item","$uuid=null"
-    "``POST,GET``","stunnel","services","search_item",""
+    "``GET,POST``","stunnel","services","search_item",""
     "``POST``","stunnel","services","set",""
     "``POST``","stunnel","services","set_item","$uuid"
     "``POST``","stunnel","services","toggle_item","$uuid,$enabled=null"

@@ -83,7 +83,7 @@ Diagnostics
     "``POST``","diagnostics","lvtemplate","del_item","$uuid"
     "``GET``","diagnostics","lvtemplate","get",""
     "``GET``","diagnostics","lvtemplate","get_item","$uuid=null"
-    "``POST,GET``","diagnostics","lvtemplate","search_item",""
+    "``GET,POST``","diagnostics","lvtemplate","search_item",""
     "``POST``","diagnostics","lvtemplate","set",""
     "``POST``","diagnostics","lvtemplate","set_item","$uuid"
 

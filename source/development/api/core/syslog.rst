@@ -21,7 +21,7 @@ Syslog
     "``POST``","syslog","settings","del_destination","$uuid"
     "``GET``","syslog","settings","get",""
     "``GET``","syslog","settings","get_destination","$uuid=null"
-    "``POST,GET``","syslog","settings","search_destinations",""
+    "``GET,POST``","syslog","settings","search_destinations",""
     "``POST``","syslog","settings","set",""
     "``POST``","syslog","settings","set_destination","$uuid"
     "``POST``","syslog","settings","toggle_destination","$uuid,$enabled=null"

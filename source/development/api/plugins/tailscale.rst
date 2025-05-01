@@ -29,7 +29,7 @@ Tailscale
     "``GET``","tailscale","settings","get",""
     "``GET``","tailscale","settings","get_subnet","$uuid=null"
     "``GET``","tailscale","settings","reload",""
-    "``POST,GET``","tailscale","settings","search_subnet",""
+    "``GET,POST``","tailscale","settings","search_subnet",""
     "``POST``","tailscale","settings","set",""
     "``POST``","tailscale","settings","set_subnet","$uuid"
 

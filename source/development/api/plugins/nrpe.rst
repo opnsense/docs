@@ -9,7 +9,7 @@ Nrpe
     "``POST``","nrpe","command","del_command","$uuid"
     "``GET``","nrpe","command","get",""
     "``GET``","nrpe","command","get_command","$uuid=null"
-    "``POST,GET``","nrpe","command","search_command",""
+    "``GET,POST``","nrpe","command","search_command",""
     "``POST``","nrpe","command","set",""
     "``POST``","nrpe","command","set_command","$uuid"
     "``POST``","nrpe","command","toggle_command","$uuid"

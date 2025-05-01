@@ -9,7 +9,7 @@ Dyndns
     "``POST``","dyndns","accounts","del_item","$uuid"
     "``GET``","dyndns","accounts","get",""
     "``GET``","dyndns","accounts","get_item","$uuid=null"
-    "``POST,GET``","dyndns","accounts","search_item",""
+    "``GET,POST``","dyndns","accounts","search_item",""
     "``POST``","dyndns","accounts","set",""
     "``POST``","dyndns","accounts","set_item","$uuid"
     "``POST``","dyndns","accounts","toggle_item","$uuid,$enabled=null"

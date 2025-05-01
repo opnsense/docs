@@ -91,7 +91,7 @@ Core
     "``GET``","core","tunables","get_item","$uuid=null"
     "``POST``","core","tunables","reconfigure",""
     "``POST``","core","tunables","reset",""
-    "``POST,GET``","core","tunables","search_item",""
+    "``GET,POST``","core","tunables","search_item",""
     "``POST``","core","tunables","set",""
     "``POST``","core","tunables","set_item","$uuid"
 

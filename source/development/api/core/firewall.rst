@@ -22,7 +22,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
 
     "``POST``","firewall","alias","add_item",""
     "``POST``","firewall","alias","del_item","$uuid"
-    "``POST,GET``","firewall","alias","export",""
+    "``GET,POST``","firewall","alias","export",""
     "``GET``","firewall","alias","get",""
     "``GET``","firewall","alias","get_alias_u_u_i_d","$name"
     "``GET``","firewall","alias","get_geo_i_p",""
@@ -34,7 +34,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``GET``","firewall","alias","list_network_aliases",""
     "``GET``","firewall","alias","list_user_groups",""
     "``POST``","firewall","alias","reconfigure",""
-    "``POST,GET``","firewall","alias","search_item",""
+    "``GET,POST``","firewall","alias","search_item",""
     "``POST``","firewall","alias","set",""
     "``POST``","firewall","alias","set_item","$uuid"
     "``POST``","firewall","alias","toggle_item","$uuid,$enabled=null"
@@ -61,7 +61,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``POST``","firewall","category","del_item","$uuid"
     "``GET``","firewall","category","get",""
     "``GET``","firewall","category","get_item","$uuid=null"
-    "``POST,GET``","firewall","category","search_item","$add_empty=0"
+    "``GET,POST``","firewall","category","search_item","$add_empty=0"
     "``POST``","firewall","category","set",""
     "``POST``","firewall","category","set_item","$uuid"
 
@@ -91,7 +91,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``GET``","firewall","filter","get_interface_list",""
     "``GET``","firewall","filter","get_rule","$uuid=null"
     "``POST``","firewall","filter","move_rule_before","$selected_uuid,$target_uuid"
-    "``POST,GET``","firewall","filter","search_rule",""
+    "``GET,POST``","firewall","filter","search_rule",""
     "``POST``","firewall","filter","set_rule","$uuid"
     "``POST``","firewall","filter","toggle_rule","$uuid,$enabled=null"
 
@@ -110,7 +110,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``GET``","firewall","group","get",""
     "``GET``","firewall","group","get_item","$uuid=null"
     "``POST``","firewall","group","reconfigure",""
-    "``POST,GET``","firewall","group","search_item",""
+    "``GET,POST``","firewall","group","search_item",""
     "``POST``","firewall","group","set",""
     "``POST``","firewall","group","set_item","$uuid"
 
@@ -123,7 +123,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``POST``","firewall","npt","add_rule",""
     "``POST``","firewall","npt","del_rule","$uuid"
     "``GET``","firewall","npt","get_rule","$uuid=null"
-    "``POST,GET``","firewall","npt","search_rule",""
+    "``GET,POST``","firewall","npt","search_rule",""
     "``POST``","firewall","npt","set_rule","$uuid"
     "``POST``","firewall","npt","toggle_rule","$uuid,$enabled=null"
 
@@ -134,7 +134,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``POST``","firewall","one_to_one","add_rule",""
     "``POST``","firewall","one_to_one","del_rule","$uuid"
     "``GET``","firewall","one_to_one","get_rule","$uuid=null"
-    "``POST,GET``","firewall","one_to_one","search_rule",""
+    "``GET,POST``","firewall","one_to_one","search_rule",""
     "``POST``","firewall","one_to_one","set_rule","$uuid"
     "``POST``","firewall","one_to_one","toggle_rule","$uuid,$enabled=null"
 
@@ -145,7 +145,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``POST``","firewall","source_nat","add_rule",""
     "``POST``","firewall","source_nat","del_rule","$uuid"
     "``GET``","firewall","source_nat","get_rule","$uuid=null"
-    "``POST,GET``","firewall","source_nat","search_rule",""
+    "``GET,POST``","firewall","source_nat","search_rule",""
     "``POST``","firewall","source_nat","set_rule","$uuid"
     "``POST``","firewall","source_nat","toggle_rule","$uuid,$enabled=null"
 

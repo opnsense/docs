@@ -30,7 +30,7 @@ Clamav
     "``POST``","clamav","url","del_url","$uuid"
     "``GET``","clamav","url","get",""
     "``GET``","clamav","url","get_url","$uuid=null"
-    "``POST,GET``","clamav","url","search_url",""
+    "``GET,POST``","clamav","url","search_url",""
     "``POST``","clamav","url","set",""
     "``POST``","clamav","url","set_url","$uuid"
     "``POST``","clamav","url","toggle_url","$uuid"

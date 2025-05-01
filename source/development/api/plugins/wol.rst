@@ -10,7 +10,7 @@ Wol
     "``GET``","wol","wol","get",""
     "``GET``","wol","wol","get_host","$uuid=null"
     "``GET``","wol","wol","getwake",""
-    "``POST,GET``","wol","wol","search_host",""
+    "``GET,POST``","wol","wol","search_host",""
     "``POST``","wol","wol","set",""
     "``POST``","wol","wol","set_host","$uuid"
     "``POST``","wol","wol","wakeall",""

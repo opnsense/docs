@@ -28,7 +28,7 @@ Netsnmp
     "``POST``","netsnmp","user","del_user","$uuid"
     "``GET``","netsnmp","user","get",""
     "``GET``","netsnmp","user","get_user","$uuid=null"
-    "``POST,GET``","netsnmp","user","search_user",""
+    "``GET,POST``","netsnmp","user","search_user",""
     "``POST``","netsnmp","user","set",""
     "``POST``","netsnmp","user","set_user","$uuid"
     "``POST``","netsnmp","user","toggle_user","$uuid"

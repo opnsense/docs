@@ -11,7 +11,7 @@ Trust
     "``POST``","trust","ca","generate_file","$uuid=null,$type=crt"
     "``GET``","trust","ca","get",""
     "``GET``","trust","ca","raw_dump","$uuid"
-    "``POST,GET``","trust","ca","search",""
+    "``GET,POST``","trust","ca","search",""
     "``POST``","trust","ca","set","$uuid=null"
 
     "``<<uses>>``", "", "", "", "*model* `Ca.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Trust/Ca.xml>`__"
@@ -27,7 +27,7 @@ Trust
     "``POST``","trust","cert","generate_file","$uuid=null,$type=crt"
     "``GET``","trust","cert","get","$uuid=null"
     "``GET``","trust","cert","raw_dump","$uuid"
-    "``POST,GET``","trust","cert","search",""
+    "``GET,POST``","trust","cert","search",""
     "``POST``","trust","cert","set","$uuid=null"
     "``GET``","trust","cert","user_list",""
 

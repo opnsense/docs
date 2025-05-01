@@ -9,7 +9,7 @@ Gridexample
     "``POST``","gridexample","settings","del_item","$uuid"
     "``GET``","gridexample","settings","get",""
     "``GET``","gridexample","settings","get_item","$uuid=null"
-    "``POST,GET``","gridexample","settings","search_item",""
+    "``GET,POST``","gridexample","settings","search_item",""
     "``POST``","gridexample","settings","set",""
     "``POST``","gridexample","settings","set_item","$uuid"
     "``POST``","gridexample","settings","toggle_item","$uuid,$enabled=null"
