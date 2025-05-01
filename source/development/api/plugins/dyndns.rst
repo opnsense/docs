@@ -9,7 +9,7 @@ Dyndns
     "``POST``","dyndns","accounts","del_item","$uuid"
     "``GET``","dyndns","accounts","get",""
     "``GET``","dyndns","accounts","get_item","$uuid=null"
-    "``*``","dyndns","accounts","search_item",""
+    "``POST,GET``","dyndns","accounts","search_item",""
     "``POST``","dyndns","accounts","set",""
     "``POST``","dyndns","accounts","set_item","$uuid"
     "``POST``","dyndns","accounts","toggle_item","$uuid,$enabled=null"
@@ -26,13 +26,10 @@ Dyndns
     "``GET``","dyndns","service","status",""
     "``POST``","dyndns","service","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `DynDNS.xml <https://github.com/opnsense/plugins/blob/master/dns/ddclient/src/opnsense/mvc/app/models/OPNsense/DynDNS/DynDNS.xml>`__"
-
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","dyndns","settings","get",""
     "``GET``","dyndns","settings","get",""
     "``POST``","dyndns","settings","set",""
 

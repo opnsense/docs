@@ -11,9 +11,7 @@ Rspamd
     "``GET``","rspamd","service","status",""
     "``POST``","rspamd","service","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `RSpamd.xml <https://github.com/opnsense/plugins/blob/master/mail/rspamd/src/opnsense/mvc/app/models/OPNsense/Rspamd/RSpamd.xml>`__"
-
-.. csv-table:: Service (SettingsController.php)
+.. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 

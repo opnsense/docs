@@ -1,7 +1,7 @@
 Shadowsocks
 ~~~~~~~~~~~
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -10,7 +10,7 @@ Shadowsocks
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net/shadowsocks/src/opnsense/mvc/app/models/OPNsense/Shadowsocks/General.xml>`__"
 
-.. csv-table:: Service (LocalController.php)
+.. csv-table:: Resources (LocalController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -29,8 +29,6 @@ Shadowsocks
     "``GET``","shadowsocks","localservice","status",""
     "``POST``","shadowsocks","localservice","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `Local.xml <https://github.com/opnsense/plugins/blob/master/net/shadowsocks/src/opnsense/mvc/app/models/OPNsense/Shadowsocks/Local.xml>`__"
-
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -40,5 +38,3 @@ Shadowsocks
     "``POST``","shadowsocks","service","start",""
     "``GET``","shadowsocks","service","status",""
     "``POST``","shadowsocks","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net/shadowsocks/src/opnsense/mvc/app/models/OPNsense/Shadowsocks/General.xml>`__"

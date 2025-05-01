@@ -9,14 +9,14 @@ Nrpe
     "``POST``","nrpe","command","del_command","$uuid"
     "``GET``","nrpe","command","get",""
     "``GET``","nrpe","command","get_command","$uuid=null"
-    "``*``","nrpe","command","search_command",""
+    "``POST,GET``","nrpe","command","search_command",""
     "``POST``","nrpe","command","set",""
     "``POST``","nrpe","command","set_command","$uuid"
     "``POST``","nrpe","command","toggle_command","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Command.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/nrpe/src/opnsense/mvc/app/models/OPNsense/Nrpe/Command.xml>`__"
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -34,5 +34,3 @@ Nrpe
     "``POST``","nrpe","service","start",""
     "``GET``","nrpe","service","status",""
     "``POST``","nrpe","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/nrpe/src/opnsense/mvc/app/models/OPNsense/Nrpe/General.xml>`__"

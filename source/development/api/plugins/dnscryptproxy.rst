@@ -9,14 +9,14 @@ Dnscryptproxy
     "``POST``","dnscryptproxy","cloak","del_cloak","$uuid"
     "``GET``","dnscryptproxy","cloak","get",""
     "``GET``","dnscryptproxy","cloak","get_cloak","$uuid=null"
-    "``*``","dnscryptproxy","cloak","search_cloak",""
+    "``POST,GET``","dnscryptproxy","cloak","search_cloak",""
     "``POST``","dnscryptproxy","cloak","set",""
     "``POST``","dnscryptproxy","cloak","set_cloak","$uuid"
     "``POST``","dnscryptproxy","cloak","toggle_cloak","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Cloak.xml <https://github.com/opnsense/plugins/blob/master/dns/dnscrypt-proxy/src/opnsense/mvc/app/models/OPNsense/Dnscryptproxy/Cloak.xml>`__"
 
-.. csv-table:: Service (DnsblController.php)
+.. csv-table:: Resources (DnsblController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -33,14 +33,14 @@ Dnscryptproxy
     "``POST``","dnscryptproxy","forward","del_forward","$uuid"
     "``GET``","dnscryptproxy","forward","get",""
     "``GET``","dnscryptproxy","forward","get_forward","$uuid=null"
-    "``*``","dnscryptproxy","forward","search_forward",""
+    "``POST,GET``","dnscryptproxy","forward","search_forward",""
     "``POST``","dnscryptproxy","forward","set",""
     "``POST``","dnscryptproxy","forward","set_forward","$uuid"
     "``POST``","dnscryptproxy","forward","toggle_forward","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Forward.xml <https://github.com/opnsense/plugins/blob/master/dns/dnscrypt-proxy/src/opnsense/mvc/app/models/OPNsense/Dnscryptproxy/Forward.xml>`__"
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -57,7 +57,7 @@ Dnscryptproxy
     "``POST``","dnscryptproxy","server","del_server","$uuid"
     "``GET``","dnscryptproxy","server","get",""
     "``GET``","dnscryptproxy","server","get_server","$uuid=null"
-    "``*``","dnscryptproxy","server","search_server",""
+    "``POST,GET``","dnscryptproxy","server","search_server",""
     "``POST``","dnscryptproxy","server","set",""
     "``POST``","dnscryptproxy","server","set_server","$uuid"
     "``POST``","dnscryptproxy","server","toggle_server","$uuid"
@@ -75,8 +75,6 @@ Dnscryptproxy
     "``GET``","dnscryptproxy","service","status",""
     "``POST``","dnscryptproxy","service","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/dns/dnscrypt-proxy/src/opnsense/mvc/app/models/OPNsense/Dnscryptproxy/General.xml>`__"
-
 .. csv-table:: Resources (WhitelistController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -85,7 +83,7 @@ Dnscryptproxy
     "``POST``","dnscryptproxy","whitelist","del_whitelist","$uuid"
     "``GET``","dnscryptproxy","whitelist","get",""
     "``GET``","dnscryptproxy","whitelist","get_whitelist","$uuid=null"
-    "``*``","dnscryptproxy","whitelist","search_whitelist",""
+    "``POST,GET``","dnscryptproxy","whitelist","search_whitelist",""
     "``POST``","dnscryptproxy","whitelist","set",""
     "``POST``","dnscryptproxy","whitelist","set_whitelist","$uuid"
     "``POST``","dnscryptproxy","whitelist","toggle_whitelist","$uuid"

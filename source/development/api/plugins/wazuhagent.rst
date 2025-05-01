@@ -11,9 +11,7 @@ Wazuhagent
     "``GET``","wazuhagent","service","status",""
     "``POST``","wazuhagent","service","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `WazuhAgent.xml <https://github.com/opnsense/plugins/blob/master/security/wazuh-agent/src/opnsense/mvc/app/models/OPNsense/WazuhAgent/WazuhAgent.xml>`__"
-
-.. csv-table:: Service (SettingsController.php)
+.. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 

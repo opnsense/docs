@@ -12,7 +12,7 @@ Caddy
 
     "``<<uses>>``", "", "", "", "*model* `Caddy.xml <https://github.com/opnsense/plugins/blob/master/www/caddy/src/opnsense/mvc/app/models/OPNsense/Caddy/Caddy.xml>`__"
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -51,14 +51,14 @@ Caddy
     "``GET``","caddy","reverse_proxy","get_layer4_openvpn","$uuid=null"
     "``GET``","caddy","reverse_proxy","get_reverse_proxy","$uuid=null"
     "``GET``","caddy","reverse_proxy","get_subdomain","$uuid=null"
-    "``*``","caddy","reverse_proxy","search_access_list",""
-    "``*``","caddy","reverse_proxy","search_basic_auth",""
-    "``*``","caddy","reverse_proxy","search_handle",""
-    "``*``","caddy","reverse_proxy","search_header",""
-    "``*``","caddy","reverse_proxy","search_layer4",""
-    "``*``","caddy","reverse_proxy","search_layer4_openvpn",""
-    "``*``","caddy","reverse_proxy","search_reverse_proxy",""
-    "``*``","caddy","reverse_proxy","search_subdomain",""
+    "``POST,GET``","caddy","reverse_proxy","search_access_list",""
+    "``POST,GET``","caddy","reverse_proxy","search_basic_auth",""
+    "``POST,GET``","caddy","reverse_proxy","search_handle",""
+    "``POST,GET``","caddy","reverse_proxy","search_header",""
+    "``POST,GET``","caddy","reverse_proxy","search_layer4",""
+    "``POST,GET``","caddy","reverse_proxy","search_layer4_openvpn",""
+    "``POST,GET``","caddy","reverse_proxy","search_reverse_proxy",""
+    "``POST,GET``","caddy","reverse_proxy","search_subdomain",""
     "``POST``","caddy","reverse_proxy","set",""
     "``POST``","caddy","reverse_proxy","set_access_list","$uuid"
     "``POST``","caddy","reverse_proxy","set_basic_auth","$uuid"
@@ -86,5 +86,3 @@ Caddy
     "``GET``","caddy","service","status",""
     "``POST``","caddy","service","stop",""
     "``GET``","caddy","service","validate",""
-
-    "``<<uses>>``", "", "", "", "*model* `Caddy.xml <https://github.com/opnsense/plugins/blob/master/www/caddy/src/opnsense/mvc/app/models/OPNsense/Caddy/Caddy.xml>`__"

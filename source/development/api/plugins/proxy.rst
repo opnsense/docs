@@ -11,13 +11,9 @@ Proxy
     "``POST``","proxy","service","refresh_template",""
     "``POST``","proxy","service","reset",""
     "``GET``","proxy","service","restart",""
-    "``POST``","proxy","service","restart",""
     "``GET``","proxy","service","start",""
-    "``POST``","proxy","service","start",""
     "``GET``","proxy","service","status",""
     "``POST``","proxy","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/plugins/blob/master/www/squid/src/opnsense/mvc/app/models/OPNsense/Proxy/Proxy.xml>`__"
 
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -37,9 +33,9 @@ Proxy
     "``GET``","proxy","settings","get_p_a_c_proxy","$uuid=null"
     "``GET``","proxy","settings","get_p_a_c_rule","$uuid=null"
     "``GET``","proxy","settings","get_remote_blacklist","$uuid=null"
-    "``*``","proxy","settings","search_p_a_c_match",""
-    "``*``","proxy","settings","search_p_a_c_proxy",""
-    "``*``","proxy","settings","search_p_a_c_rule",""
+    "``POST,GET``","proxy","settings","search_p_a_c_match",""
+    "``POST,GET``","proxy","settings","search_p_a_c_proxy",""
+    "``POST,GET``","proxy","settings","search_p_a_c_rule",""
     "``GET``","proxy","settings","search_remote_blacklists",""
     "``POST``","proxy","settings","set",""
     "``POST``","proxy","settings","set_p_a_c_match","$uuid"
@@ -56,9 +52,7 @@ Proxy
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","proxy","template","get",""
-    "``GET``","proxy","template","get",""
     "``POST``","proxy","template","reset",""
-    "``POST``","proxy","template","set",""
     "``POST``","proxy","template","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/plugins/blob/master/www/squid/src/opnsense/mvc/app/models/OPNsense/Proxy/Proxy.xml>`__"
@@ -75,8 +69,8 @@ Proxy
     "``GET``","proxy","acl","get",""
     "``GET``","proxy","acl","get_custom_policy","$uuid=null"
     "``GET``","proxy","acl","get_policy","$uuid=null"
-    "``*``","proxy","acl","search_custom_policy",""
-    "``*``","proxy","acl","search_policy",""
+    "``POST,GET``","proxy","acl","search_custom_policy",""
+    "``POST,GET``","proxy","acl","search_policy",""
     "``POST``","proxy","acl","set",""
     "``POST``","proxy","acl","set_custom_policy","$uuid"
     "``POST``","proxy","acl","set_policy","$uuid"

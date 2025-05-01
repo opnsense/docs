@@ -1,7 +1,7 @@
 Openconnect
 ~~~~~~~~~~~
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -19,5 +19,3 @@ Openconnect
     "``POST``","openconnect","service","start",""
     "``GET``","openconnect","service","status",""
     "``POST``","openconnect","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/security/openconnect/src/opnsense/mvc/app/models/OPNsense/Openconnect/General.xml>`__"

@@ -1,7 +1,7 @@
 Chrony
 ~~~~~~
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -23,5 +23,3 @@ Chrony
     "``POST``","chrony","service","start",""
     "``GET``","chrony","service","status",""
     "``POST``","chrony","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net/chrony/src/opnsense/mvc/app/models/OPNsense/Chrony/General.xml>`__"

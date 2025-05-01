@@ -11,8 +11,6 @@ Zabbixagent
     "``GET``","zabbixagent","service","status",""
     "``POST``","zabbixagent","service","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `ZabbixAgent.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/zabbix-agent/src/opnsense/mvc/app/models/OPNsense/ZabbixAgent/ZabbixAgent.xml>`__"
-
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -24,8 +22,8 @@ Zabbixagent
     "``GET``","zabbixagent","settings","get",""
     "``GET``","zabbixagent","settings","get_alias","$uuid=null"
     "``GET``","zabbixagent","settings","get_userparameter","$uuid=null"
-    "``*``","zabbixagent","settings","search_aliases",""
-    "``*``","zabbixagent","settings","search_userparameters",""
+    "``POST,GET``","zabbixagent","settings","search_aliases",""
+    "``POST,GET``","zabbixagent","settings","search_userparameters",""
     "``POST``","zabbixagent","settings","set",""
     "``POST``","zabbixagent","settings","set_alias","$uuid"
     "``POST``","zabbixagent","settings","set_userparameter","$uuid"

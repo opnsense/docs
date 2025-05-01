@@ -11,9 +11,7 @@ Mdnsrepeater
     "``GET``","mdnsrepeater","service","status",""
     "``POST``","mdnsrepeater","service","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `MDNSRepeater.xml <https://github.com/opnsense/plugins/blob/master/net/mdns-repeater/src/opnsense/mvc/app/models/OPNsense/MDNSRepeater/MDNSRepeater.xml>`__"
-
-.. csv-table:: Service (SettingsController.php)
+.. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 

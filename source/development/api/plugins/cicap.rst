@@ -1,7 +1,7 @@
 Cicap
 ~~~~~
 
-.. csv-table:: Service (AntivirusController.php)
+.. csv-table:: Resources (AntivirusController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -10,7 +10,7 @@ Cicap
 
     "``<<uses>>``", "", "", "", "*model* `Antivirus.xml <https://github.com/opnsense/plugins/blob/master/www/c-icap/src/opnsense/mvc/app/models/OPNsense/CICAP/Antivirus.xml>`__"
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -29,5 +29,3 @@ Cicap
     "``POST``","cicap","service","start",""
     "``GET``","cicap","service","status",""
     "``POST``","cicap","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/www/c-icap/src/opnsense/mvc/app/models/OPNsense/CICAP/General.xml>`__"

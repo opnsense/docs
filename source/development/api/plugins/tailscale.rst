@@ -1,7 +1,7 @@
 Tailscale
 ~~~~~~~~~
 
-.. csv-table:: Service (AuthenticationController.php)
+.. csv-table:: Resources (AuthenticationController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -20,8 +20,6 @@ Tailscale
     "``GET``","tailscale","service","status",""
     "``POST``","tailscale","service","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `Settings.xml <https://github.com/opnsense/plugins/blob/master/security/tailscale/src/opnsense/mvc/app/models/OPNsense/Tailscale/Settings.xml>`__"
-
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -31,13 +29,13 @@ Tailscale
     "``GET``","tailscale","settings","get",""
     "``GET``","tailscale","settings","get_subnet","$uuid=null"
     "``GET``","tailscale","settings","reload",""
-    "``*``","tailscale","settings","search_subnet",""
+    "``POST,GET``","tailscale","settings","search_subnet",""
     "``POST``","tailscale","settings","set",""
     "``POST``","tailscale","settings","set_subnet","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Settings.xml <https://github.com/opnsense/plugins/blob/master/security/tailscale/src/opnsense/mvc/app/models/OPNsense/Tailscale/Settings.xml>`__"
 
-.. csv-table:: Service (StatusController.php)
+.. csv-table:: Resources (StatusController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 

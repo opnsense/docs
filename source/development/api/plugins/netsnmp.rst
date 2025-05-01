@@ -1,7 +1,7 @@
 Netsnmp
 ~~~~~~~
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -20,8 +20,6 @@ Netsnmp
     "``GET``","netsnmp","service","status",""
     "``POST``","netsnmp","service","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/net-snmp/src/opnsense/mvc/app/models/OPNsense/Netsnmp/General.xml>`__"
-
 .. csv-table:: Resources (UserController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -30,7 +28,7 @@ Netsnmp
     "``POST``","netsnmp","user","del_user","$uuid"
     "``GET``","netsnmp","user","get",""
     "``GET``","netsnmp","user","get_user","$uuid=null"
-    "``*``","netsnmp","user","search_user",""
+    "``POST,GET``","netsnmp","user","search_user",""
     "``POST``","netsnmp","user","set",""
     "``POST``","netsnmp","user","set_user","$uuid"
     "``POST``","netsnmp","user","toggle_user","$uuid"

@@ -9,14 +9,14 @@ Postfix
     "``POST``","postfix","address","del_address","$uuid"
     "``GET``","postfix","address","get",""
     "``GET``","postfix","address","get_address","$uuid=null"
-    "``*``","postfix","address","search_address",""
+    "``POST,GET``","postfix","address","search_address",""
     "``POST``","postfix","address","set",""
     "``POST``","postfix","address","set_address","$uuid"
     "``POST``","postfix","address","toggle_address","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Address.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/Address.xml>`__"
 
-.. csv-table:: Service (AntispamController.php)
+.. csv-table:: Resources (AntispamController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -33,14 +33,14 @@ Postfix
     "``POST``","postfix","domain","del_domain","$uuid"
     "``GET``","postfix","domain","get",""
     "``GET``","postfix","domain","get_domain","$uuid=null"
-    "``*``","postfix","domain","search_domain",""
+    "``POST,GET``","postfix","domain","search_domain",""
     "``POST``","postfix","domain","set",""
     "``POST``","postfix","domain","set_domain","$uuid"
     "``POST``","postfix","domain","toggle_domain","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Domain.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/Domain.xml>`__"
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -57,7 +57,7 @@ Postfix
     "``POST``","postfix","headerchecks","del_headercheck","$uuid"
     "``GET``","postfix","headerchecks","get",""
     "``GET``","postfix","headerchecks","get_headercheck","$uuid=null"
-    "``*``","postfix","headerchecks","search_headerchecks",""
+    "``POST,GET``","postfix","headerchecks","search_headerchecks",""
     "``POST``","postfix","headerchecks","set",""
     "``POST``","postfix","headerchecks","set_headercheck","$uuid"
     "``POST``","postfix","headerchecks","toggle_headercheck","$uuid"
@@ -72,7 +72,7 @@ Postfix
     "``POST``","postfix","recipient","del_recipient","$uuid"
     "``GET``","postfix","recipient","get",""
     "``GET``","postfix","recipient","get_recipient","$uuid=null"
-    "``*``","postfix","recipient","search_recipient",""
+    "``POST,GET``","postfix","recipient","search_recipient",""
     "``POST``","postfix","recipient","set",""
     "``POST``","postfix","recipient","set_recipient","$uuid"
     "``POST``","postfix","recipient","toggle_recipient","$uuid"
@@ -87,7 +87,7 @@ Postfix
     "``POST``","postfix","recipientbcc","del_recipientbcc","$uuid"
     "``GET``","postfix","recipientbcc","get",""
     "``GET``","postfix","recipientbcc","get_recipientbcc","$uuid=null"
-    "``*``","postfix","recipientbcc","search_recipientbcc",""
+    "``POST,GET``","postfix","recipientbcc","search_recipientbcc",""
     "``POST``","postfix","recipientbcc","set",""
     "``POST``","postfix","recipientbcc","set_recipientbcc","$uuid"
     "``POST``","postfix","recipientbcc","toggle_recipientbcc","$uuid"
@@ -102,7 +102,7 @@ Postfix
     "``POST``","postfix","sender","del_sender","$uuid"
     "``GET``","postfix","sender","get",""
     "``GET``","postfix","sender","get_sender","$uuid=null"
-    "``*``","postfix","sender","search_sender",""
+    "``POST,GET``","postfix","sender","search_sender",""
     "``POST``","postfix","sender","set",""
     "``POST``","postfix","sender","set_sender","$uuid"
     "``POST``","postfix","sender","toggle_sender","$uuid"
@@ -117,7 +117,7 @@ Postfix
     "``POST``","postfix","senderbcc","del_senderbcc","$uuid"
     "``GET``","postfix","senderbcc","get",""
     "``GET``","postfix","senderbcc","get_senderbcc","$uuid=null"
-    "``*``","postfix","senderbcc","search_senderbcc",""
+    "``POST,GET``","postfix","senderbcc","search_senderbcc",""
     "``POST``","postfix","senderbcc","set",""
     "``POST``","postfix","senderbcc","set_senderbcc","$uuid"
     "``POST``","postfix","senderbcc","toggle_senderbcc","$uuid"
@@ -132,7 +132,7 @@ Postfix
     "``POST``","postfix","sendercanonical","del_sendercanonical","$uuid"
     "``GET``","postfix","sendercanonical","get",""
     "``GET``","postfix","sendercanonical","get_sendercanonical","$uuid=null"
-    "``*``","postfix","sendercanonical","search_sendercanonical",""
+    "``POST,GET``","postfix","sendercanonical","search_sendercanonical",""
     "``POST``","postfix","sendercanonical","set",""
     "``POST``","postfix","sendercanonical","set_sendercanonical","$uuid"
     "``POST``","postfix","sendercanonical","toggle_sendercanonical","$uuid"
@@ -145,10 +145,7 @@ Postfix
 
     "``GET``","postfix","service","checkrspamd",""
     "``POST``","postfix","service","reconfigure",""
-    "``POST``","postfix","service","reconfigure",""
     "``POST``","postfix","service","restart",""
     "``POST``","postfix","service","start",""
     "``GET``","postfix","service","status",""
     "``POST``","postfix","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/mail/postfix/src/opnsense/mvc/app/models/OPNsense/Postfix/General.xml>`__"

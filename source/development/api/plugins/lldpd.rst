@@ -1,7 +1,7 @@
 Lldpd
 ~~~~~
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -20,5 +20,3 @@ Lldpd
     "``POST``","lldpd","service","start",""
     "``GET``","lldpd","service","status",""
     "``POST``","lldpd","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/lldpd/src/opnsense/mvc/app/models/OPNsense/Lldpd/General.xml>`__"

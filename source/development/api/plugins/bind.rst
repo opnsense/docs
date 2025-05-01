@@ -9,14 +9,14 @@ Bind
     "``POST``","bind","acl","del_acl","$uuid"
     "``GET``","bind","acl","get",""
     "``GET``","bind","acl","get_acl","$uuid=null"
-    "``*``","bind","acl","search_acl",""
+    "``POST,GET``","bind","acl","search_acl",""
     "``POST``","bind","acl","set",""
     "``POST``","bind","acl","set_acl","$uuid"
     "``POST``","bind","acl","toggle_acl","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Acl.xml <https://github.com/opnsense/plugins/blob/master/dns/bind/src/opnsense/mvc/app/models/OPNsense/Bind/Acl.xml>`__"
 
-.. csv-table:: Service (DnsblController.php)
+.. csv-table:: Resources (DnsblController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -35,8 +35,8 @@ Bind
     "``GET``","bind","domain","get",""
     "``GET``","bind","domain","get_domain","$uuid=null"
     "``GET``","bind","domain","search_master_domain",""
-    "``*``","bind","domain","search_primary_domain",""
-    "``*``","bind","domain","search_secondary_domain",""
+    "``POST,GET``","bind","domain","search_primary_domain",""
+    "``POST,GET``","bind","domain","search_secondary_domain",""
     "``GET``","bind","domain","search_slave_domain",""
     "``POST``","bind","domain","set",""
     "``POST``","bind","domain","set_domain","$uuid=null"
@@ -44,7 +44,7 @@ Bind
 
     "``<<uses>>``", "", "", "", "*model* `Domain.xml <https://github.com/opnsense/plugins/blob/master/dns/bind/src/opnsense/mvc/app/models/OPNsense/Bind/Domain.xml>`__"
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -63,7 +63,7 @@ Bind
     "``POST``","bind","record","del_record","$uuid"
     "``GET``","bind","record","get",""
     "``GET``","bind","record","get_record","$uuid=null"
-    "``*``","bind","record","search_record",""
+    "``POST,GET``","bind","record","search_record",""
     "``POST``","bind","record","set",""
     "``POST``","bind","record","set_record","$uuid=null"
     "``POST``","bind","record","toggle_record","$uuid"
@@ -80,5 +80,3 @@ Bind
     "``POST``","bind","service","start",""
     "``GET``","bind","service","status",""
     "``POST``","bind","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/dns/bind/src/opnsense/mvc/app/models/OPNsense/Bind/General.xml>`__"
