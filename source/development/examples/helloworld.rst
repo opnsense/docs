@@ -854,9 +854,13 @@ adding this content into the Menu.xml:
         </User>
     </menu>
 
+The menu system is subject to caching, so you may not see your changes
+in the UI yet. Delete the ``/tmp/opnsense_menu_cache.xml`` file, if it
+exists. Now, when you refresh your page, you should notice the menu
+system automatically picks up the new information.
 
-When you refresh your page now, you should notice the menu system
-automatically picks up this new information.
+The cache filename is defined in ``MenuSystem.php``. As of v25.1, it is
+``/tmp/opnsense_menu_cache.xml``.
 
 |menu registration|
 
