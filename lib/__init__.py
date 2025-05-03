@@ -40,7 +40,7 @@ DEFAULT_BASE_METHODS = {
 
 
 class ApiParser:
-    def __init__(self, filename, debug=False):
+    def __init__(self,filename: str,debug: bool=False):
         self._debug = debug
         self._filename = filename
         self.base_filename = os.path.basename(filename)

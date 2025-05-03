@@ -27,9 +27,7 @@
 import os
 import argparse
 from jinja2 import Template
-from lib import ApiParser
-
-EXCLUDE_CONTROLLERS = ['Core/Api/FirmwareController.php']
+from lib.utils import collect_api_modules
 
 
 def source_url(repo, src_filename):
@@ -46,25 +44,9 @@ if __name__ == '__main__':
     parser.add_argument('--debug', help='enable debug mode', default=False, action='store_true')
     cmd_args = parser.parse_args()
 
-    # collect all endpoints
-    all_modules = dict()
-    for root, dirs, files in os.walk(cmd_args.source):
-        for fname in sorted(files):
-            filename = os.path.join(root, fname)
-            skip = False
-            for to_exclude in EXCLUDE_CONTROLLERS:
-                if filename.endswith(to_exclude):
-                    skip = True
-                    break
-            if not skip and filename.lower().endswith('controller.php') and filename.find('mvc/app/controllers') > -1 \
-                    and root.endswith('Api'):
-                payload = ApiParser(filename, cmd_args.debug).parse_api_php()
-                if len(payload) > 0:
-                    if payload['module'] not in all_modules:
-                        all_modules[payload['module']] = list()
-                    all_modules[payload['module']].append(payload)
 
     # writeout .rst files
+    all_modules = collect_api_modules(cmd_args.source, cmd_args.debug)
     for module_name in all_modules:
         target_filename = "%s/source/development/api/%s/%s.rst" % (
             os.path.dirname(__file__), cmd_args.repo, module_name
