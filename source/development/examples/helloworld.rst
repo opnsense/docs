@@ -892,6 +892,15 @@ This creates an ACL key named “page-user-helloworld” which authorizes
 access to both the ui and API urls of this application. You can now
 grant access to this module from the system user manager.
 
+The ACL system is subject to caching, so you may not see your changes
+in the user manager page yet. Delete the
+``/tmp/opnsense_acl_cache.json`` file, if it exists. Now, when you
+refresh the user manager page, you should see that the new ACL is
+available to be assigned.
+
+The cache filename is defined in ``ACL.php``. As of v25.1, it is
+``/tmp/opnsense_acl_cache.json``.
+
 
 ----------------------------
 Create an installable plugin
