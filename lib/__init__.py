@@ -1,8 +1,29 @@
 import os
 import re
-from lib.phply.phpast import Class,  MethodCall, Constant, UnaryOp
+from typing import List, Literal, NotRequired, TypedDict
+from lib.phply.phpast import Class, MethodCall, Constant, UnaryOp
 from lib.phply.phplex import lexer
 from lib.phply.phpparse import make_parser
+
+
+HttpMethod = Literal["GET", "POST", "GET,POST"]
+ControllerType = Literal["Abstract [non-callable]", "Service", "Resources"]
+
+class ApiAction(TypedDict):
+    command: str
+    parameters: str
+    method: HttpMethod
+    model_path: NotRequired[str]
+
+class ApiController(TypedDict):
+    actions: List[ApiAction]
+    type: ControllerType
+    module: str
+    controller: str
+    is_abstract: bool
+    base_class: str | None
+    filename: str
+    model_filename: str | None
 
 
 DEFAULT_BASE_METHODS = {
@@ -122,7 +143,7 @@ class ApiParser:
                 print("ignoring token %s at line %s" % (p.value, p.lexer.lineno))
             self.parser.errok()
 
-    def parse_api_php(self):
+    def parse_api_php(self) -> ApiController:
         """ collect api endpoints
         """
         self.api_commands = {}
