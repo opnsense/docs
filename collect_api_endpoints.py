@@ -59,22 +59,22 @@ if __name__ == '__main__':
         }
         for controller in all_modules[module_name]:
             payload = {
-                'type': controller['type'],
-                'module': controller['module'],
-                'controller': controller['controller'],
-                'filename': controller['filename'],
-                'is_abstract': controller['is_abstract'],
-                'base_class': controller['base_class'],
+                'type': controller.type,
+                'module': controller.module,
+                'controller': controller.controller,
+                'filename': controller.filename,
+                'is_abstract': controller.is_abstract,
+                'base_class': controller.base_class,
                 'endpoints': [],
                 'uses': []
             }
-            for endpoint in controller['actions']:
-                payload['endpoints'].append(endpoint)
-            if controller['model_filename']:
+            for endpoint in controller.actions:
+                payload['endpoints'].append(endpoint.model_dump())
+            if controller.model_filename:
                 payload['uses'].append({
                     'type': 'model',
-                    'link': source_url(cmd_args.repo, controller['model_filename']),
-                    'name': os.path.basename(controller['model_filename'])
+                    'link': source_url(cmd_args.repo, controller.model_filename),
+                    'name': os.path.basename(controller.model_filename)
                 })
             template_data['controllers'].append(payload)
 
