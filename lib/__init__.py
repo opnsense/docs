@@ -1,41 +1,63 @@
 import os
 import re
-from lib.phply.phpast import Class,  MethodCall, Constant, UnaryOp
+from typing import Literal
+from pydantic import BaseModel
+from lib.phply.phpast import Class, MethodCall, Constant, UnaryOp
 from lib.phply.phplex import lexer
 from lib.phply.phpparse import make_parser
 
 
+HttpMethod = Literal["GET", "POST", "GET,POST"]
+ControllerType = Literal["Abstract [non-callable]", "Service", "Resources"]
+
+class Action(BaseModel):
+    command: str
+    parameters: str
+    method: HttpMethod
+    model_path: str | None = None
+
+class Controller(BaseModel):
+    actions: list[Action]
+    type: ControllerType
+    module: str
+    controller: str
+    is_abstract: bool
+    base_class: str | None
+    filename: str
+    model_filename: str | None
+
+
 DEFAULT_BASE_METHODS = {
-    "ApiMutableModelControllerBase": [{
-        "command": "set",
-        "parameters": "",
-        "method": "POST"
-    }, {
-        "command": "get",
-        "parameters": "",
-        "method": "GET"
-    }],
-    "ApiMutableServiceControllerBase": [{
-        "command": "status",
-        "parameters": "",
-        "method": "GET"
-    }, {
-        "command": "start",
-        "parameters": "",
-        "method": "POST"
-    }, {
-        "command": "stop",
-        "parameters": "",
-        "method": "POST"
-    }, {
-        "command": "restart",
-        "parameters": "",
-        "method": "POST"
-    }, {
-        "command": "reconfigure",
-        "parameters": "",
-        "method": "POST"
-    }]
+    "ApiMutableModelControllerBase": [Action(
+        command="set",
+        parameters="",
+        method="POST",
+    ), Action(
+        command="get",
+        parameters="",
+        method="GET",
+    )],
+    "ApiMutableServiceControllerBase": [Action(
+        command="status",
+        parameters="",
+        method="GET",
+    ), Action(
+        command="start",
+        parameters="",
+        method="POST",
+    ), Action(
+        command="stop",
+        parameters="",
+        method="POST",
+    ), Action(
+        command="restart",
+        parameters="",
+        method="POST",
+    ), Action(
+        command="reconfigure",
+        parameters="",
+        method="POST",
+    )]
 }
 
 
@@ -47,10 +69,10 @@ class ApiParser:
         self.controller = re.sub('(?<!^)(?=[A-Z])', '_', self.base_filename.split('Controller.php')[0]).lower()
         self.module_name = filename.replace('\\', '/').split('/')[-3].lower()
 
-        self.model_filename = None
+        self.model_filename: str | None = None
         self.is_abstract = False
-        self.base_class = None
-        self.api_commands = {}
+        self.base_class: str | None = None
+        self.api_commands: dict[str, Action] = {}
         self._data = open(filename).read()
 
     def _parse_class_variables(self, node):
@@ -78,7 +100,6 @@ class ApiParser:
         """
         if node.name.endswith('Action'):
             cmd = "".join("_" + c.lower() if c.isupper() else c for c in node.name[:-6])
-            record = {'command': cmd}
             params = []
             for p in node.params:
                 default = default = p.default
@@ -90,10 +111,8 @@ class ApiParser:
                     default = "''"
                 params.append('%s=%s' % (p.name, default) if default is not None else p.name)
 
-            record['parameters'] = ','.join(params)
-
-            self.api_commands[cmd] = record
-            detected_methods = set()
+            model_path = None
+            detected_methods: set[HttpMethod] = set()
             for item in self._extract_ops(node.nodes):
                 if isinstance(item, MethodCall):
                     if item.name == 'isPost':
@@ -101,10 +120,12 @@ class ApiParser:
                     elif item.name == 'isGet':
                         detected_methods.add('GET')
                     elif item.name in ('addBase', 'setBase'):
-                        record['model_path'] = item.params[1].node
+                        # print(item.params[1].node)
+                        model_path = item.params[1].node
                         detected_methods.add('POST')
                     elif item.name in ('delBase', 'toggleBase', 'searchBase'):
-                        record['model_path'] = item.params[0].node
+                        # print(item.params[0].node)
+                        model_path = item.params[0].node
                         detected_methods.add('POST')
                         if item.name == 'searchBase':
                             detected_methods.add('GET')
@@ -112,7 +133,14 @@ class ApiParser:
                         detected_methods.add('POST')
 
             default_method = 'POST' if cmd == 'set' else 'GET'
-            record['method'] = ','.join(sorted(detected_methods)) if detected_methods else default_method
+            method = 'GET,POST' if len(detected_methods) > 1 else detected_methods.pop() if detected_methods else default_method
+
+            self.api_commands[cmd] = Action(
+                command=cmd,
+                parameters=','.join(params),
+                method=method,
+                model_path=model_path,
+            )
 
     def _p_error(self, p):
         """ error handler, ignore unexpected tokens
@@ -122,7 +150,7 @@ class ApiParser:
                 print("ignoring token %s at line %s" % (p.value, p.lexer.lineno))
             self.parser.errok()
 
-    def parse_api_php(self):
+    def parse_api_php(self) -> Controller:
         """ collect api endpoints
         """
         self.api_commands = {}
@@ -142,12 +170,8 @@ class ApiParser:
         # stick base class defaults to the list when not yet defined
         if self.base_class in DEFAULT_BASE_METHODS:
             for item in DEFAULT_BASE_METHODS[self.base_class]:
-                if item['command'] not in self.api_commands:
-                    self.api_commands[item['command']] = {
-                        'method': item['method'],
-                        'command': item['command'],
-                        'parameters': item['parameters']
-                    }
+                if item.command not in self.api_commands:
+                    self.api_commands[item.command] = item
 
         if self.is_abstract:
             controller_type = 'Abstract [non-callable]'
@@ -156,13 +180,13 @@ class ApiParser:
         else:
             controller_type = 'Resources'
 
-        return {
-            'actions': sorted(self.api_commands.values(), key=lambda i: i['command']),
-            'type': controller_type,
-            'module': self.module_name,
-            'controller': self.controller,
-            'is_abstract': self.is_abstract,
-            'base_class': self.base_class,
-            'filename': self.base_filename,
-            'model_filename': self.model_filename
-        }
+        return Controller(
+            actions=sorted(self.api_commands.values(), key=lambda i: i.command),
+            type=controller_type,
+            module=self.module_name,
+            controller=self.controller,
+            is_abstract=self.is_abstract,
+            base_class=self.base_class,
+            filename=self.base_filename,
+            model_filename=self.model_filename,
+        )
