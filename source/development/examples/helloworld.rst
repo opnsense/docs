@@ -859,9 +859,6 @@ in the UI yet. Delete the ``/tmp/opnsense_menu_cache.xml`` file, if it
 exists. Now, when you refresh your page, you should notice the menu
 system automatically picks up the new information.
 
-The cache filename is defined in ``MenuSystem.php``. As of v25.1, it is
-``/tmp/opnsense_menu_cache.xml``.
-
 |menu registration|
 
 ------------------------------
@@ -897,10 +894,6 @@ in the user manager page yet. Delete the
 ``/tmp/opnsense_acl_cache.json`` file, if it exists. Now, when you
 refresh the user manager page, you should see that the new ACL is
 available to be assigned.
-
-The cache filename is defined in ``ACL.php``. As of v25.1, it is
-``/tmp/opnsense_acl_cache.json``.
-
 
 ----------------------------
 Create an installable plugin
