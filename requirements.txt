@@ -13,3 +13,4 @@ sphinxcontrib-actdiag
 blockdiagcontrib-cisco
 Pillow
 ply
+pydantic>=2.0.0
