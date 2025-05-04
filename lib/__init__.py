@@ -7,13 +7,13 @@ from lib.phply.phplex import lexer
 from lib.phply.phpparse import make_parser
 
 
-HttpMethod = Literal["GET", "POST", "GET,POST"]
+HttpMethod = Literal["GET", "POST"]
 ControllerType = Literal["Abstract [non-callable]", "Service", "Resources"]
 
 class Action(BaseModel):
     command: str
     parameters: str
-    method: HttpMethod
+    methods: list[HttpMethod]
     model_path: str | None = None
 
 class Controller(BaseModel):
@@ -31,32 +31,32 @@ DEFAULT_BASE_METHODS = {
     "ApiMutableModelControllerBase": [Action(
         command="set",
         parameters="",
-        method="POST",
+        methods=["POST"],
     ), Action(
         command="get",
         parameters="",
-        method="GET",
+        methods=["GET"],
     )],
     "ApiMutableServiceControllerBase": [Action(
         command="status",
         parameters="",
-        method="GET",
+        methods=["GET"],
     ), Action(
         command="start",
         parameters="",
-        method="POST",
+        methods=["POST"],
     ), Action(
         command="stop",
         parameters="",
-        method="POST",
+        methods=["POST"],
     ), Action(
         command="restart",
         parameters="",
-        method="POST",
+        methods=["POST"],
     ), Action(
         command="reconfigure",
         parameters="",
-        method="POST",
+        methods=["POST"],
     )]
 }
 
@@ -133,12 +133,10 @@ class ApiParser:
                         detected_methods.add('POST')
 
             default_method = 'POST' if cmd == 'set' else 'GET'
-            method = 'GET,POST' if len(detected_methods) > 1 else detected_methods.pop() if detected_methods else default_method
-
             self.api_commands[cmd] = Action(
                 command=cmd,
                 parameters=','.join(params),
-                method=method,
+                methods=sorted(detected_methods) if detected_methods else [default_method],
                 model_path=model_path,
             )
 
