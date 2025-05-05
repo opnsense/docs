@@ -52,15 +52,12 @@ rights, called privileges.
 
 .. Note::
 
-    In most cases, the only reason for a user to exist on the firewall, is so their access
-    can be restricted for various services using group management.
-
-    For example, if a user is not restricted by a group, you would only need to provide a
-    valid certificate for this user to grant OpenVPN access in its most basic form.
-
-    This concept is also relevant when considering external authentication services
-    such as LDAP or RADIUS. Without group restrictions, no user synchronization from
-    LDAP or RADIUS to OPNsense is necessary to facilitate authentication.
+    It's not always required to have users in your local database, when the remote server
+    should merely answer the question if a user offers a valid user/password combination,
+    most services can just push this question to the authenticating server. Constraints
+    in some cases can be part of the authenticator as well. When the user should login
+    to the firewall (for example to change settings or download a profile), a local user
+    is always required as it serves as a linking pin to the ACL system.
 
 
 Authentication services
