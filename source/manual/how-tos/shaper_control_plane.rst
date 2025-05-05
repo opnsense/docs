@@ -41,7 +41,7 @@ Necessity of Control Plane Shaping
 
 The control plane is a necessary component for proper network operation.
 A congested state of the network, if the control plane is not properly managed, will result in network disruptions. 
-In order to guarantee operation and avoid disruption in such events, we can take advantage of Traffic Shaping
+In order to guarantee operation and avoid disruption in such events, we can take advantage of Traffic Shaping.
 
 **With Shaping, we can reserve dedicated bandwidth for the control plane**
 
@@ -135,8 +135,8 @@ On the **Pipes** tab click the **+** button in the lower right corner.
 An empty **Edit Pipe** screen pops up.
 
 Follow the same process as for the Download pipe, 
-entering the 1% of tuned bandwidth value
-and entering "Control-plane-Pipe-Upload" for the **description**
+entering the 1% of tuned bandwidth value,
+and entering "Control-plane-Pipe-Upload" for the **description**.
 
 Step 2a - Create Download Queue
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -158,7 +158,6 @@ Create Control-plane-IPv6-Queue For Download
 ========================= ================================= ==============================================================================
 
 .. Note::
-
         Using WFQ or QFQ and weights, we can tell how much BW each protocol control plane will get.
 
 Step 2b - Create Upload Queue
@@ -167,8 +166,8 @@ On the **Queues** tab click the **+** button in the lower right corner.
 An empty **Edit queue** screen pops up.
 
 Follow the same process as for the Download queue, 
-selecting the **"Control-plane-Pipe-Upload**,
-and entering "Control-plane-IPv6-Queue-Upload" for the **description**
+selecting the **"Control-plane-Pipe-Upload"**,
+and entering "Control-plane-IPv6-Queue-Upload" for the **description**.
 
 Step 3a - Create Download Rule
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
