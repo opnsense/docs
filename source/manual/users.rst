@@ -50,6 +50,16 @@ for a specific user group. A user should be an individual, a group needs to be
 specific in such a way that anyone of that group can be granted the same access
 rights, called privileges.
 
+.. Note::
+
+    It's not always required to have users in your local database, when the remote server
+    should merely answer the question if a user offers a valid user/password combination,
+    most services can just push this question to the authenticating server. Constraints
+    in some cases can be part of the authenticator as well. When the user should login
+    to the firewall (for example to change settings or download a profile), a local user
+    is always required as it serves as a linking pin to the ACL system.
+
+
 Authentication services
 ----------------------------------
 
