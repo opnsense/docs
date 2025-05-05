@@ -5,7 +5,7 @@ Configure CARP
 
 .. contents::
    :local:
-   :depth: 3
+   :depth: 4
 
 --------
 Overview
@@ -465,6 +465,7 @@ and experiences collected over time. Please take these into careful consideratio
 
 These limitations can arise from vendor-specific implementations, network infrastructure design oversights, or configuration errors.
 
+
 Switch Infrastructure
 ---------------------------------------------
 
@@ -487,6 +488,40 @@ For most environments, multicast remains the recommended default due to its gene
     Without explicit support for Layer 2 HA mechanisms, failover may be delayed, unreliable, or entirely unsupported.
 
 
+Configuration Specific
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This section covers issues that can be solved by tweaking the running configuration of switches.
+
+
+IGMP Snooping
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This feature allows switches to manage multicast traffic more efficiently by tracking IGMP group memberships.
+However, if no IGMP querier is present, or if snooping is misconfigured, multicast CARP (Protocol 112) traffic may be blocked or unpredictably flooded.
+
+
+MAC and Port Security Features
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Features like port security, sticky MAC, or MAC learning limits can interfere with virtual MACs used by CARP.
+Such restrictions may prevent proper MAC failover, leading to connection drops or unreachable nodes.
+
+
+MAC Flapping Detection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Switches that monitor for rapid MAC address changes may misinterpret CARP activity as a loop or attack.
+This can lead to port shutdowns or error-disable states during failover events.
+
+
+Storm Control / Rate Limiting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Limits on broadcast or multicast traffic can interfere with CARP advertisements, causing delayed failover or state flapping.
+Ensure CARP traffic is not unintentionally dropped or throttled by storm control policies on switch ports.
+
+
 Vendor Specific
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -506,6 +541,7 @@ Instead, they are treated as "always-unknown" to facilitate fast failover. This 
 - Intermittent or unstable client connectivity
 
 This is not a bug in CARP or OPNsense, but an intentional switch behavior. For reliable CARP operation, both firewalls must be connected to a shared control plane, such as a stacked switch (StackWise Virtual) or a single switch.
+
 
 Other Vendors (MLAG / VC / Stacked Fabric)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
