@@ -25,6 +25,7 @@ class Controller(BaseModel):
     base_class: str | None
     filename: str
     model_filename: str | None
+    model_container: str | None
 
 
 DEFAULT_BASE_METHODS = {
@@ -70,6 +71,7 @@ class ApiParser:
         self.module_name = filename.replace('\\', '/').split('/')[-3].lower()
 
         self.model_filename: str | None = None
+        self.model_container: str | None = None
         self.is_abstract = False
         self.base_class: str | None = None
         self.api_commands: dict[str, Action] = {}
@@ -82,6 +84,8 @@ class ApiParser:
             model_xml = "%s/models/%s.xml" % (app_location, class_name.replace("\\", "/"))
             if os.path.isfile(model_xml):
                 self.model_filename = model_xml.replace('//', '/')
+        elif node.nodes[-1].name ==  '$internalModelName':
+            self.model_container = node.nodes[-1].initial
 
     def _extract_ops(self, root):
         """ Rercursively dive into offered root node, used to extracts details from within methods
@@ -187,4 +191,5 @@ class ApiParser:
             base_class=self.base_class,
             filename=self.base_filename,
             model_filename=self.model_filename,
+            model_container=self.model_container,
         )
