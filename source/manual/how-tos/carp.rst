@@ -533,14 +533,20 @@ Cisco Catalyst (IOS XE 17.x and newer)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 On Cisco Catalyst switches running IOS XE 17.x or later, the virtual MAC addresses used by CARP (``00:00:5e:00:01:xx``) are **not dynamically learned** into the CAM (Content Addressable Memory) MAC table.
-Instead, they are treated as "always-unknown" to facilitate fast failover. This behavior leads to:
+Instead, they are treated as "always-unknown" to facilitate fast failover. This is true for multiple single switches that are not stacked, e.g., a common spanning tree setup.
+
+This behavior leads to:
 
 - Continuous Layer 2 flooding of CARP-related traffic
 - Duplicate ARP or ICMP replies (visible as `DUP!` messages)
 - Degraded performance during DNS or TCP handshakes
 - Intermittent or unstable client connectivity
 
-This is not a bug in CARP or OPNsense, but an intentional switch behavior. For reliable CARP operation, both firewalls must be connected to a shared control plane, such as a stacked switch (StackWise Virtual) or a single switch.
+This is not a bug in CARP or OPNsense, but an intentional switch behavior.
+
+.. Note::
+
+    For reliable CARP operation, both firewalls must be connected to a shared control plane, such as a stacked switch (StackWise Virtual) or a single switch.
 
 
 Other Vendors (MLAG / VC / Stacked Fabric)
