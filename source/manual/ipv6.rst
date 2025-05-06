@@ -143,11 +143,11 @@ than the minimal :code:`/64` (e.g. :code:`/48`).
 Our DHCP client is also responsible for configuring an address to the lan type interface based on the delegated prefix
 received. This part of the configuration is specified on the lan interface as "tracking".
 
-.. Tip::
+.. Note::
 
-    When your provider or cloud hosting does not offer a PD, the  alternative option is to use a Neighbour Discovery Proxy
-    which passes the ND messages from your LAN to your provider. Although this has limitations, it's sometimes the only
-    option available. More information about this option can be found in the :doc:`ndproxy <ndproxy>` documentation.
+    When your provider or cloud hosting does not offer a PD, routing is not reliably possible. In some cases
+    network address translation may be an option. The is an experimental `rfc <https://datatracker.ietf.org/doc/html/rfc4389>`__
+    to proxy neighbor discovery packets, but no implementation exists yet.
 
 .. Note::
     There is some overlap in what DHCPv6 offers and router advertisements bring to the table, but in most auto-configured
