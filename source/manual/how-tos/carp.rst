@@ -532,7 +532,7 @@ Below are important considerations based on observed vendor-specific behaviors.
 Cisco Catalyst (IOS XE 17.x and newer)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-On Cisco Catalyst switches running IOS XE 17.x or later, the virtual MAC addresses used by CARP (``00:00:5e:00:01:xx``) are **not dynamically learned** into the CAM (Content Addressable Memory) MAC table.
+On Cisco Catalyst switches running IOS XE 17.x or later, the virtual MAC addresses used by CARP (``00:00:5e:00:01:xx``) are **not dynamically learned** into the CAM (Content Addressable Memory) table.
 Instead, they are treated as "always-unknown" to facilitate fast failover. This is true for multiple single switches that are not stacked, e.g., a common spanning tree setup.
 
 This behavior leads to:
