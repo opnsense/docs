@@ -1,8 +1,14 @@
 =============================
 Multi WAN
 =============================
+
 Multi WAN scenarios are commonly used for failover or load balancing, but combinations
 are also possible with OPNsense.
+
+.. contents::
+   :local:
+   :depth: 2
+
 
 .. blockdiag::
    :desctable:
@@ -232,3 +238,23 @@ Combining Balancing & Failover
 To combine Load Balancing with Failover you will have 2 or more WAN connections
 for Balancing purposes and 1 or more for Failover. OPNsense offers 5 tiers
 (Failover groups) each tier can hold multiple ISPs/WAN gateways.
+
+----------------------------
+Failover and Failback States
+----------------------------
+
+In some Multiwan setups it might be necessary to control firewall states more aggressively. The most common example
+is the combination of a main ISP with a failover metered ISP (mobile network with data consumption limits).
+
+In case of a main ISP failure, all states should failover quickly to the metered ISP. When
+the main ISP reconnects, all states should just as quickly fail back. This prevents sticky states on the metered ISP
+to continue data consumption which could be expensive depending on the contract.
+
+This setup is configured globally via :menuselection:`System --> Gateways --> Configuration`, there cannot be a distinction
+for different gateway groups.
+
+For a minimal working failover configuration, you need two gateways with different priorities.
+
+Go to :menuselection:`System --> Gateways --> Configuration` and configure the following:
+
+XXX: Fill out tutorial here.
