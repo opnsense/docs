@@ -70,11 +70,6 @@ Diagnostics
     "``GET``","diagnostics","interface","search_arp",""
     "``GET``","diagnostics","interface","search_ndp",""
 
-.. csv-table:: Resources (LogController.php)
-   :header: "Method", "Module", "Controller", "Command", "Parameters"
-   :widths: 4, 15, 15, 30, 40
-
-
 .. csv-table:: Resources (LvtemplateController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

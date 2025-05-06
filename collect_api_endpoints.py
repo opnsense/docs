@@ -58,6 +58,8 @@ if __name__ == '__main__':
             'controllers': []
         }
         for controller in all_modules[module_name]:
+            if len(controller.actions) == 0:
+                continue
             payload = {
                 'type': controller.type,
                 'module': controller.module,
