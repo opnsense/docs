@@ -542,7 +542,7 @@ This behavior leads to:
 - Degraded performance during DNS or TCP handshakes
 - Intermittent or unstable client connectivity
 
-This is not a bug in CARP or OPNsense, but an intentional switch behavior.
+This is not a bug in CARP or OPNsense, but intentional switch behavior.
 
 .. Note::
 
