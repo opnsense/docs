@@ -47,7 +47,6 @@ Important configuration details
     The listening interface (WAN) must be set to promiscuous mode.
     If it is a VLAN, it must be set on the parent interface.
     The router must join multicast groups to respond to solicitations for hosts in the LAN.
-    Essentially it would also be enough to allow ``ALLMULTI`` on the WAN interface, but there is no GUI configuration option for that.
 
 .. Attention::
 
