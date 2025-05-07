@@ -172,6 +172,7 @@ First we configure the wan interface via :menuselection:`Interfaces --> WAN`
 
 ==============================================  ====================================================================
 **IPv6 Configuration Type**                     ``SLAAC``
+**Promiscuous mode**                            ``X``
 ==============================================  ====================================================================
 
 
@@ -194,14 +195,15 @@ settings below:
 ==============================================  ====================================================================
 
 
-In :menuselection:`Services --> Ndproxy` we will enable the ndproxy service, for this we need the MAC address of our LAN interface
-and the default gateway received via WAN (Search for :code:`default` in :menuselection:`System --> Routes --> Status`).
+In :menuselection:`Services --> Ndproxy` we will enable the ndproxy service, for this we need the MAC address of our WAN interface
+and the default gateway received via WAN (Search for :code:`default` in :menuselection:`System --> Routes --> Status`), which is usually
+quite static information.
 
 
 ==============================================  ====================================================================
-**Enable**                                      ``V``
+**Enable**                                      ``X``
 **Uplink Interface**                            ``WAN``
-**Downlink MAC Address**                        ``1a:11:22:33:44:55``         (lan MAC)
+**Downlink MAC Address**                        ``1a:11:22:33:44:55``         (WAN MAC)
 **Uplink IPv6 Addresses**                       ``fe80::fc00:ff:1111:2222``   (default route)
 ==============================================  ====================================================================
 
