@@ -243,7 +243,7 @@ for Balancing purposes and 1 or more for Failover. OPNsense offers 5 tiers
 Failover and Failback States
 ----------------------------
 
-In some Multiwan setups it might be necessary to control firewall states more aggressively. The most common example
+In some multi-WAN setups it may be necessary to directly influence firewall states. The most common example
 is the combination of a main ISP with a failover metered ISP (mobile network with data consumption limits).
 
 In case of a main ISP failure, all states should failover quickly to the metered ISP. When
