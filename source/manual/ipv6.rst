@@ -146,7 +146,8 @@ received. This part of the configuration is specified on the lan interface as "t
 .. Note::
 
     When your provider or cloud hosting does not offer a PD, routing is not reliably possible. In some cases
-    network address translation may be an option. The is an experimental `rfc <https://datatracker.ietf.org/doc/html/rfc4389>`__
+    network address translation may be an option (example in  :doc:`ndproxy <ndproxy>`).
+    There is an experimental `rfc <https://datatracker.ietf.org/doc/html/rfc4389>`__
     to proxy neighbor discovery packets, but no implementation exists yet.
 
 .. Note::
