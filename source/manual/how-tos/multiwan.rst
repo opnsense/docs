@@ -1,8 +1,14 @@
 =============================
 Multi WAN
 =============================
+
 Multi WAN scenarios are commonly used for failover or load balancing, but combinations
 are also possible with OPNsense.
+
+.. contents::
+   :local:
+   :depth: 2
+
 
 .. blockdiag::
    :desctable:
@@ -232,3 +238,84 @@ Combining Balancing & Failover
 To combine Load Balancing with Failover you will have 2 or more WAN connections
 for Balancing purposes and 1 or more for Failover. OPNsense offers 5 tiers
 (Failover groups) each tier can hold multiple ISPs/WAN gateways.
+
+----------------------------
+Failover and Failback States
+----------------------------
+
+In some multi-WAN setups it may be necessary to directly influence firewall states. The most common example
+is the combination of a main ISP with a failover metered ISP (mobile network with data consumption limits).
+
+In case of a main ISP failure, all states should failover quickly to the metered ISP. When
+the main ISP reconnects, all states should just as quickly fail back. This prevents sticky states on the metered ISP
+to continue data consumption which could be expensive depending on the contract.
+
+This setup is configured globally via :menuselection:`System --> Gateways --> Configuration`, there cannot be a distinction
+for different gateway groups.
+
+Configuration
+----------------------------
+
+For a minimal working failover configuration, we need two gateways with different priorities.
+
+Go to :menuselection:`System --> Gateways --> Configuration`
+
+.. Note::
+
+    We assume both the main and metered gateways already exist due to DHCP configuration.
+
+.. tabs::
+
+   .. tab:: Main ISP Gateway (e.g., DSL/Cable/Fibre)
+
+      ============================================  =======================================================================
+      **Name**                                      ``WAN_DHCP``
+      **Upstream Gateway**                          ``X``
+      **Failover States**                           ``X``
+      **Priority**                                  ``253``
+      ============================================  =======================================================================
+
+      .. Note::
+
+          The **Priority** must be a lower number than the metered ISP gateway. This will mark this gateway as preferred.
+          Checking **Failover States** will kill all firewall states if a failover happens. This means you must enable
+          gateway monitoring, otherwise there cannot be a failover.
+
+   .. tab:: Metered ISP Gateway (e.g. LTE/5G)
+
+      ============================================  =======================================================================
+      **Name**                                      ``LTE_DHCP``
+      **Upstream Gateway**                          ``X``
+      **Failback States**                           ``X``
+      **Priority**                                  ``254``
+      ============================================  =======================================================================
+
+      .. Note::
+
+          The **Priority** must be a higher number than the main ISP gateway.
+          Checking **Failback States** will kill all firewall states if our main gateway comes back online.
+
+
+Go to :menuselection:`System --> Settings --> General` and enable the following:
+
+============================================  =======================================================================
+**Gateway switching**                         ``X``
+============================================  =======================================================================
+
+This will allow the default gateway of this firewall to change when a failover happens. It is necessary for the failover and failback
+of states to trigger correctly.
+
+Verification
+----------------------------
+
+To verify if the failover and failback kill firewall states as expected, the simplest test is unplugging the main ISP and wait
+for the gateway monitor to trigger the failover to the metered ISP.
+
+Any client with a session to the internet will be forced to re-establish it. A good test would be a SSH or RDP session.
+
+Afterwards, reconnect the main ISP and wait for the failback to happen. The same scenario with the sessions being forced to re-establish
+should repeat.
+
+If there are issues, verify default gateway switching, gateway priorities, and if the correct failover and failback states options have been set.
+
+For further diagnostics, use :menuselection:`Firewall --> Diagnostics --> States`.
