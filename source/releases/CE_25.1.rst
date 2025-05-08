@@ -27,6 +27,92 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.1.6 (May 08, 2025)
+--------------------------------------------------------------------------
+
+
+After some back and forth today we are rolling back a console default
+change done in FreeBSD 14.2 that we do not think is necessary at this
+particular point in time.  The bridge configuration code was also
+refactored to introduce it to MVC/API in an upcoming stable release.
+
+A few more problems with the new captive portal backend have also been
+addressed in order to make it match the behaviour of the previous one.
+It is now possible to disable the automatic rules to further refine
+the desired captive portal behaviour.
+
+Last but not least: Kea DHCPv6 is here.  And with it full DHCP and router
+advertisement support in Dnsmasq to bridge the gap for ISC users who do not
+need or want Kea.  We are going to make Dnsmasq DHCP the default in new
+installations starting with 25.7, too.  ISC DHCP will still be around as
+a core component in 25.7 but likely moves to plugins for 26.1 next year.
+
+Here are the full patch notes:
+
+* system: kill gateways states for failback scenario when a higher priority gateway goes back online
+* system: update to latest tzdata content for time zones and ISO 3166 definitions
+* system: clean up a number of unused functions
+* system: refactor a VIP access in auth.inc
+* system: add field "boottime" to api/system/systemTime (contributed by eopo)
+* reporting: replace insights totals chart with ChartJS variant
+* reporting: minor style fixes and cleanups in health graphs
+* interfaces: refactor bridge configuration backend
+* interfaces: refactor wireless device assignment
+* interfaces: allow literal comma by escape sequence in DHCP advanced option modifiers
+* interfaces: fix refresh button in ARP page
+* interfaces: fix "(de)select all" button in packet capture
+* interfaces: rename ip_in_subnet() to reflect it is only for IPv4
+* interfaces: remove unused get_vip_descr()
+* firewall: prevent source/destination inversion when multiple nets are selected
+* firewall: support comma separated alias targets in refactor() call
+* firewall: added multi-select for ICMP type
+* firewall: update user agent in alias URL fetch
+* captive portal: fix display issue for pass rule when client not in zone
+* captive portal: allow disabling automatic firewall rules
+* captive portal: exclude portal table in destination
+* dnsmasq: add full DHCP/RA support
+* intrusion detection: fix a log reader regression in the alert view
+* ipsec: copy "Split DNS name" to undocumented "25" option
+* ipsec: fix more ACLs related to individual IPsec page use
+* ipsec: add DH Group 2 for basic Azure VPN gateway compatibility
+* ipsec: fix trimming NULL values
+* isc-dhcp: use "lease_type" to key lease map in addition to "iaid_duid" (contributed by Alex Goodkind)
+* isc-dhcp: fix invalid FQDN generation from DHCPv4 static map domains (contributed by Steven Zimmermann)
+* kea-dhcp: add DHCPv6 support
+* openvpn: simplify the VIP handling in legacy pages
+* backend: support "errors:no" clause on actions
+* mvc: allow referencing disabled interfaces in LinkAddressField
+* mvc: fix scoping issue in CertificatesField
+* plugins: os-ndproxy 1.1 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/net/ndproxy/pkg-descr>`__ 
+* plugnis: os-squid 1.2 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/www/squid/pkg-descr>`__ 
+* plugins: os-theme-rebellion 1.9.3 (contributed by Team Rebellion)
+* plugins: os-turnserver 1.0 (contributed by Frank Wall)
+* src: caroot: update the root bundle
+* src: openssl: import OpenSSL 3.0.16
+* src: daemon: stop rebuilding the kqueue every restart of the child
+* src: contrib/expat: update libexpat from 2.6.0 to 2.7.1
+* src: contrib/tzdata: import tzdata 2025b
+* src: pfctl: fix faulty rule anchor counter print
+* src: pfctl: fix recursive printing of NAT rules
+* src: pf: Use a macro to get the hash row in pf_find_state_byid()
+* src: netinet6: work around synchronization issue in dying netgraph device
+* src: wg: Improve wg_peer_alloc() to simplify the calling
+* src: bnxt_en: Retrieve maximum of 128 APP TLVs
+* src: Revert "amd64 GENERIC: Switch uart hints from isa to acpi"
+* ports: curl 8.13.0 `[3] <https://curl.se/changes.html#8_13_0>`__ 
+* ports: expat 2.7.1 `[4] <https://github.com/libexpat/libexpat/blob/R_2_7_1/expat/Changes>`__ 
+* ports: kea 2.6.2 `[5] <https://downloads.isc.org/isc/kea/2.6.2/Kea-2.6.2-ReleaseNotes.txt>`__ 
+* ports: monit 5.35.1 `[6] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.110 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_110.html>`__ 
+* ports: openssh 10.0p1 `[8] <https://www.openssh.com/txt/release-10.0>`__ 
+* ports: php 8.3.20 `[9] <https://www.php.net/ChangeLog-8.php#8.3.20>`__ 
+* ports: phalcon 5.9.3 `[10] <https://github.com/phalcon/cphalcon/releases/tag/v5.9.3>`__ 
+* ports: python 3.11.12 `[11] <https://docs.python.org/release/3.11.12/whatsnew/changelog.html>`__ 
+* ports: unbound 1.23.0 `[12] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-23-0>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.1.5 (April 10, 2025)
 --------------------------------------------------------------------------
 
@@ -103,6 +189,20 @@ Here are the full patch notes:
 * ports: openvpn 2.6.14 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.14>`__ 
 * ports: phalcon 5.9.2 `[4] <https://github.com/phalcon/cphalcon/releases/tag/v5.9.2>`__ 
 * ports: py-duckdb 1.2.2 `[5] <https://github.com/duckdb/duckdb/releases/tag/v1.2.2>`__ 
+
+A hotfix release was issued as 25.1.5_1:
+
+* ipsec: fix auth server parsing regression
+
+A hotfix release was issued as 25.1.5_4:
+
+* captive portal: fix regression when NAT reflection is enabled
+* captive portal: fix command line argument parsing in backend
+* captive portal: remove obsolete interfaces_inbound option that works by default now
+
+A hotfix release was issued as 25.1.5_5:
+
+* captive portal: missing fix for command line argument parsing in backend
 
 
 
