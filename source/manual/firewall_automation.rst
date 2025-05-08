@@ -12,7 +12,7 @@ Partial API access is described in more detail in the :doc:`firewall <../develop
 Overview
 --------------------
 
-The automation filter use the MVC framework. This means, the component only has knowledge of rules created within it.
+The automation filter pages use the MVC framework. This means, the component only has knowledge of rules created within it.
 Any firewall filter and NAT rules created via legacy pages will not be editable via this API endpoint.
 
 The UI component can be found in :menuselection:`Firewall --> Automation` and has been redesigned in version 25.1.5.
