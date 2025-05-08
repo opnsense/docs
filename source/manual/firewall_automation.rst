@@ -15,7 +15,7 @@ Overview
 The automation filter pages use the MVC framework. This means, the component only has knowledge of rules created within it.
 Any firewall filter and NAT rules created via legacy pages will not be editable via this API endpoint.
 
-The UI component can be found in :menuselection:`Firewall --> Automation` and has been redesigned in version 25.1.5.
+The UI component can be found in :menuselection:`Firewall --> Automation`.
 This shows a preview of the direction where the legacy firewall pages will be eventually superseded by the automation component.
 
 -------------------------------
