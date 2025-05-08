@@ -97,18 +97,21 @@ Knowing we can’t change the world in a single day and having a lot of legacy t
 drag around with us, our strategy consists of three parts:
 
 **1)** Cleanup and maintenance
+
 Restructure old (legacy) code, basically all code in the src/www, src/etc/inc to
 make it better readable, easier to use and remove unused / unnecessary parts. By
 doing so we want to extend the lifetime of the old code a bit and make the
 transition in new code easier eventually.
 
 **2)** Detach
+
 Move system configuration calls to configd where possible, which gives the
 administrator the advantage of running those commands from the command line and
 helps removing the need for root user access in the future. The ipsec VICI
 implementation is one example of this stage.
 
 **3)** Moving on
+
 (re)build new parts, using our new modules, which provide a layered development
 system to automatically support API calls from other systems and XML based model
 templates to describe configuration data.
