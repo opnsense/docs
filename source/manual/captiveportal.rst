@@ -319,23 +319,6 @@ In order to allow the client to resolve at least the OPNsense hostname, DNS must
 We define (self) as the destination since the default DNS service, Unbound, may return multiple
 IP addresses identifying the firewall.
 
-.. Allow access to the captive portal
-.. ----------------------------------
-
-.. This rule is intended to allow clients direct access to the zone webserver, where no redirection
-.. can take place.
-
-.. ============================ =====================
-..  **Type**                     Firewall rule
-..  **Action**                   Pass
-..  **Interface**                <Zone interface>
-..  **Protocol**                 TCP
-..  **Direction**                In
-..  **Source**                   any
-..  **Destination**              (self)
-..  **Destination port range**   8000-10000
-.. ============================ =====================
-
 
 Default block rule for non-authenticated users
 ----------------------------------------------
