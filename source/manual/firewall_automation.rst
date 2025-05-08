@@ -6,7 +6,7 @@ Automation
 
 The automation component offers API access to firewall and source nat rules.
 
-Partial API access is described in more detail in the :doc:`firewall <../development/api/core/firewall>` api reference manual.
+Partial API access is described in more detail in the :doc:`firewall <../development/api/core/firewall>` API reference manual.
 
 --------------------
 Overview
