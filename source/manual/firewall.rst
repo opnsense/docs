@@ -253,9 +253,13 @@ TCP/IP Version                        Does this rule apply on IPv4, IPv6 or both
 Protocol                              Protocol to use, most common are TCP and UDP
 Source                                Source network or address, when combining IPv4 and IPv6 in one rule, you can use
                                       aliases which contain both address families.
+                                      You can select multiple sources per rule.
 Source / Invert                       Invert source selection (for example not 192.168.0.0/24)
+                                      You can only invert single sources.
 Destination                           Destination network or address, like source you can use aliases here as well.
-Destination / Invert                  When the filter should be inverted, you can mark this checkbox
+                                      You can select multiple destinations per rule.
+Destination / Invert                  When the filter should be inverted, you can mark this checkbox.
+                                      You can only invert single destinations.
 Destination port range                For TCP and/or UDP you can select a service by name (http, https)
                                       or number (range), you can also use aliases here to simplify management.
 Log                                   Create a log entry when this rule applies, you can use
@@ -276,6 +280,10 @@ Log                                   Create a log entry when this rule applies,
     With the use of the eye button in the right top corner of the screen you can find statistics about the rule in
     question (number of evaluations, number of active states and traffic counters).
 
+.. Tip::
+
+    You can select multiple sources or destinations per rule, yet keep in mind that a nested alias might be the better choice.
+    This feature is most useful if you plan to create `security zones </manual/how-tos/security-zones.html>`_.
 
 ..........................
 Traffic shaping (QoS)
