@@ -6,23 +6,23 @@ Core
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","core","backup","backups","$host"
-    "``GET``","core","backup","deleteBackup","$backup"
+    "``GET``","core","backup","delete_backup","$backup"
     "``GET``","core","backup","diff","$host,$backup1,$backup2"
     "``GET``","core","backup","download","$host,$backup=null"
     "``GET``","core","backup","providers",""
-    "``GET``","core","backup","revertBackup","$backup"
+    "``GET``","core","backup","revert_backup","$backup"
 
 .. csv-table:: Resources (DashboardController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","core","dashboard","getDashboard",""
+    "``GET``","core","dashboard","get_dashboard",""
     "``GET``","core","dashboard","picture",""
-    "``GET``","core","dashboard","productInfoFeed",""
-    "``POST``","core","dashboard","restoreDefaults",""
-    "``POST``","core","dashboard","saveWidgets",""
+    "``GET``","core","dashboard","product_info_feed",""
+    "``POST``","core","dashboard","restore_defaults",""
+    "``POST``","core","dashboard","save_widgets",""
 
-.. csv-table:: Service (HasyncController.php)
+.. csv-table:: Resources (HasyncController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -36,9 +36,9 @@ Core
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","core","hasync_status","remoteService","$action,$service,$service_id"
+    "``GET``","core","hasync_status","remote_service","$action,$service,$service_id"
     "``POST``","core","hasync_status","restart","$service=null,$service_id=null"
-    "``POST``","core","hasync_status","restartAll","$service=null,$service_id=null"
+    "``POST``","core","hasync_status","restart_all","$service=null,$service_id=null"
     "``GET``","core","hasync_status","services",""
     "``POST``","core","hasync_status","start","$service=null,$service_id=null"
     "``POST``","core","hasync_status","stop","$service=null,$service_id=null"
@@ -68,7 +68,7 @@ Core
     "``POST``","core","snapshots","add",""
     "``POST``","core","snapshots","del","$uuid"
     "``GET``","core","snapshots","get","$uuid=null"
-    "``GET``","core","snapshots","isSupported",""
+    "``GET``","core","snapshots","is_supported",""
     "``GET``","core","snapshots","search",""
     "``POST``","core","snapshots","set","$uuid"
 
@@ -76,7 +76,7 @@ Core
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","core","system","dismissStatus",""
+    "``POST``","core","system","dismiss_status",""
     "``POST``","core","system","halt",""
     "``POST``","core","system","reboot",""
     "``GET``","core","system","status",""
@@ -85,14 +85,14 @@ Core
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","core","tunables","addItem",""
-    "``POST``","core","tunables","delItem","$uuid"
+    "``POST``","core","tunables","add_item",""
+    "``POST``","core","tunables","del_item","$uuid"
     "``GET``","core","tunables","get",""
-    "``GET``","core","tunables","getItem","$uuid=null"
+    "``GET``","core","tunables","get_item","$uuid=null"
     "``POST``","core","tunables","reconfigure",""
     "``POST``","core","tunables","reset",""
-    "``*``","core","tunables","searchItem",""
+    "``GET,POST``","core","tunables","search_item",""
     "``POST``","core","tunables","set",""
-    "``POST``","core","tunables","setItem","$uuid"
+    "``POST``","core","tunables","set_item","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Tunables.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Core/Tunables.xml>`__"

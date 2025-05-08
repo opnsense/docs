@@ -46,8 +46,9 @@ have various components that depend on each other, it's most safe to restore a c
    :maxdepth: 2
    :titlesonly:
 
-   how-tos/cloud_backup
+   sftp-backup
    git-backup
+   how-tos/cloud_backup
 
 
 --------------------------------

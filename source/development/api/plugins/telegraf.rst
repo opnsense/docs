@@ -19,14 +19,14 @@ Telegraf
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","telegraf","key","addKey",""
-    "``POST``","telegraf","key","delKey","$uuid"
+    "``POST``","telegraf","key","add_key",""
+    "``POST``","telegraf","key","del_key","$uuid"
     "``GET``","telegraf","key","get",""
-    "``GET``","telegraf","key","getKey","$uuid=null"
-    "``*``","telegraf","key","searchKey",""
+    "``GET``","telegraf","key","get_key","$uuid=null"
+    "``GET,POST``","telegraf","key","search_key",""
     "``POST``","telegraf","key","set",""
-    "``POST``","telegraf","key","setKey","$uuid"
-    "``POST``","telegraf","key","toggleKey","$uuid"
+    "``POST``","telegraf","key","set_key","$uuid"
+    "``POST``","telegraf","key","toggle_key","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Key.xml <https://github.com/opnsense/plugins/blob/master/net-mgmt/telegraf/src/opnsense/mvc/app/models/OPNsense/Telegraf/Key.xml>`__"
 

@@ -34,8 +34,10 @@ They can contain any executable file (e.g. shell scripts) in the following subdi
 
 - early
     - start script before system network startup
-- monitor (deprecated)
-    - scripts handling gateway monitoring alerts, no longer in use by core but provided for compatibility
+- import
+    - run very early to allow overriding the opnsense-import functionality either by providing a /conf/config.xml beforehand or modifying the default import afterwards
+- monitor
+    - scripts run during monitoring alerts triggered by state transitions.  First argument is a comma-separated list of names of the affected gateways.
 - start
     - start script after system network startup
 - stop

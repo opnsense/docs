@@ -16,9 +16,9 @@ Ftpproxy
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","ftpproxy","settings","addProxy",""
-    "``POST``","ftpproxy","settings","delProxy","$uuid"
-    "``GET``","ftpproxy","settings","getProxy","$uuid=null"
-    "``GET``","ftpproxy","settings","searchProxy",""
-    "``POST``","ftpproxy","settings","setProxy","$uuid"
-    "``POST``","ftpproxy","settings","toggleProxy","$uuid"
+    "``POST``","ftpproxy","settings","add_proxy",""
+    "``POST``","ftpproxy","settings","del_proxy","$uuid"
+    "``GET``","ftpproxy","settings","get_proxy","$uuid=null"
+    "``GET``","ftpproxy","settings","search_proxy",""
+    "``POST``","ftpproxy","settings","set_proxy","$uuid"
+    "``POST``","ftpproxy","settings","toggle_proxy","$uuid"

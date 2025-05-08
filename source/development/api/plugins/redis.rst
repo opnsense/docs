@@ -12,9 +12,7 @@ Redis
     "``GET``","redis","service","status",""
     "``POST``","redis","service","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `Redis.xml <https://github.com/opnsense/plugins/blob/master/databases/redis/src/opnsense/mvc/app/models/OPNsense/Redis/Redis.xml>`__"
-
-.. csv-table:: Service (SettingsController.php)
+.. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 

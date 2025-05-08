@@ -1,7 +1,7 @@
 Clamav
 ~~~~~~
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -22,19 +22,17 @@ Clamav
     "``POST``","clamav","service","stop",""
     "``GET``","clamav","service","version",""
 
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/security/clamav/src/opnsense/mvc/app/models/OPNsense/ClamAV/General.xml>`__"
-
 .. csv-table:: Resources (UrlController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","clamav","url","addUrl",""
-    "``POST``","clamav","url","delUrl","$uuid"
+    "``POST``","clamav","url","add_url",""
+    "``POST``","clamav","url","del_url","$uuid"
     "``GET``","clamav","url","get",""
-    "``GET``","clamav","url","getUrl","$uuid=null"
-    "``*``","clamav","url","searchUrl",""
+    "``GET``","clamav","url","get_url","$uuid=null"
+    "``GET,POST``","clamav","url","search_url",""
     "``POST``","clamav","url","set",""
-    "``POST``","clamav","url","setUrl","$uuid"
-    "``POST``","clamav","url","toggleUrl","$uuid"
+    "``POST``","clamav","url","set_url","$uuid"
+    "``POST``","clamav","url","toggle_url","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Url.xml <https://github.com/opnsense/plugins/blob/master/security/clamav/src/opnsense/mvc/app/models/OPNsense/ClamAV/Url.xml>`__"

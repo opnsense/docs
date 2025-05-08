@@ -6,7 +6,7 @@ Dynamic Routing - OSPF Tutorials
    :local:
    :depth: 2
 
-For more details go to: `Dynamic Routing - OSPF </manual/dynamic_routing.html#ospf-section>`_
+For more details go to: `Dynamic Routing - OSPF </manual/dynamic_routing.html#ospf-section>`__
 
 .. Note::
 
@@ -323,14 +323,14 @@ Network Diagram
 Setup Router A and B
 ------------------------------------------
 
-Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_ with a few differences:
+Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`__ with a few differences:
 
 .. tabs::
 
    .. group-tab:: Step 1
 
       - :menuselection:`VPN --> IPsec --> Connections`: IPsec VTI tunnels must be established for ``ipsec1`` and ``ipsec2``.
-      - Use the following guide to set them up: `IPsec - Route based (VTI) PSK setup </manual/how-tos/ipsec-s2s-conn-route.html>`_.
+      - Use the following guide to set them up: `IPsec - Route based (VTI) PSK setup </manual/how-tos/ipsec-s2s-conn-route.html>`__.
 
       .. Note::
 
@@ -339,12 +339,12 @@ Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_o
 
    .. group-tab:: Step 2
 
-      The Firewall rules must be set up depending on `system tunables </manual/vpnet.html#route-based-vti>`_. It can be either
+      The Firewall rules must be set up depending on `system tunables </manual/vpnet.html#route-based-vti>`__. It can be either
       for the ``ipsec1`` and ``ipsec2`` interfaces, or the ``IPsec`` interface group.
 
    .. group-tab:: Step 3
 
-      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_
+      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`__
 
    .. group-tab:: Step 4
 
@@ -356,7 +356,7 @@ Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_o
 
    .. group-tab:: Step 5
 
-      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_
+      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`__
 
 
 Verify the setup
@@ -372,7 +372,7 @@ In addition to the setup verification steps of the previous setup guide:
 .. Note::
 
     This failover can take as long as the `Dead Interval` of OSPF needs to mark the route as down.
-    Follow the steps in `Dynamic Routing - BFD </manual/dynamic_routing.html#bfd-section>`_ to speed up convergence time.
+    Follow the steps in `Dynamic Routing - BFD </manual/dynamic_routing.html#bfd-section>`__ to speed up convergence time.
 
 .. Note::
 
@@ -415,7 +415,7 @@ Network Diagram
 Setup Router A and B
 ------------------------------------------
 
-Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_ with a few differences:
+Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`__ with a few differences:
 
 .. tabs::
 
@@ -436,7 +436,7 @@ Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_o
 
    .. group-tab:: Step 3
 
-      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_
+      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`__
 
    .. group-tab:: Step 4
 
@@ -448,10 +448,10 @@ Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_o
 
    .. group-tab:: Step 5
 
-      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`_
+      Same as `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#setup-ospf-between-routers>`__
 
 
 Verify the setup
 ------------------------------------------
 
-For setup verification follow the same steps as in the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#verify-the-setup>`_
+For setup verification follow the same steps as in the `previous setup guide </manual/how-tos/dynamic_routing_ospf.html#verify-the-setup>`__

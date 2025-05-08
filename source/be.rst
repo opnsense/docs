@@ -35,6 +35,7 @@ More information:
    vendor/deciso/opncentral
    vendor/deciso/opnwaf
    vendor/deciso/extended_dnsbl
+   vendor/deciso/userportal
 
 
 

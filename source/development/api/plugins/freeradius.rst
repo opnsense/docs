@@ -5,14 +5,14 @@ Freeradius
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","freeradius","avpair","addAvpair",""
-    "``POST``","freeradius","avpair","delAvpair","$uuid"
+    "``POST``","freeradius","avpair","add_avpair",""
+    "``POST``","freeradius","avpair","del_avpair","$uuid"
     "``GET``","freeradius","avpair","get",""
-    "``GET``","freeradius","avpair","getAvpair","$uuid=null"
-    "``*``","freeradius","avpair","searchAvpair",""
+    "``GET``","freeradius","avpair","get_avpair","$uuid=null"
+    "``GET,POST``","freeradius","avpair","search_avpair",""
     "``POST``","freeradius","avpair","set",""
-    "``POST``","freeradius","avpair","setAvpair","$uuid"
-    "``POST``","freeradius","avpair","toggleAvpair","$uuid"
+    "``POST``","freeradius","avpair","set_avpair","$uuid"
+    "``POST``","freeradius","avpair","toggle_avpair","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Avpair.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Avpair.xml>`__"
 
@@ -20,16 +20,14 @@ Freeradius
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","freeradius","client","addClient",""
-    "``POST``","freeradius","client","delClient","$uuid"
+    "``POST``","freeradius","client","add_client",""
+    "``POST``","freeradius","client","del_client","$uuid"
     "``GET``","freeradius","client","get",""
-    "``GET``","freeradius","client","get",""
-    "``GET``","freeradius","client","getClient","$uuid=null"
-    "``GET``","freeradius","client","searchClient",""
+    "``GET``","freeradius","client","get_client","$uuid=null"
+    "``GET``","freeradius","client","search_client",""
     "``POST``","freeradius","client","set",""
-    "``POST``","freeradius","client","set",""
-    "``POST``","freeradius","client","setClient","$uuid"
-    "``GET``","freeradius","client","toggleClient","$uuid"
+    "``POST``","freeradius","client","set_client","$uuid"
+    "``GET``","freeradius","client","toggle_client","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Client.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Client.xml>`__"
 
@@ -37,14 +35,14 @@ Freeradius
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","freeradius","dhcp","addDhcp",""
-    "``POST``","freeradius","dhcp","delDhcp","$uuid"
+    "``POST``","freeradius","dhcp","add_dhcp",""
+    "``POST``","freeradius","dhcp","del_dhcp","$uuid"
     "``GET``","freeradius","dhcp","get",""
-    "``GET``","freeradius","dhcp","getDhcp","$uuid=null"
-    "``*``","freeradius","dhcp","searchDhcp",""
+    "``GET``","freeradius","dhcp","get_dhcp","$uuid=null"
+    "``GET,POST``","freeradius","dhcp","search_dhcp",""
     "``POST``","freeradius","dhcp","set",""
-    "``POST``","freeradius","dhcp","setDhcp","$uuid"
-    "``POST``","freeradius","dhcp","toggleDhcp","$uuid"
+    "``POST``","freeradius","dhcp","set_dhcp","$uuid"
+    "``POST``","freeradius","dhcp","toggle_dhcp","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Dhcp.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Dhcp.xml>`__"
 
@@ -62,7 +60,7 @@ Freeradius
     "``GET``","freeradius","general","get",""
     "``POST``","freeradius","general","set",""
 
-.. csv-table:: Service (LdapController.php)
+.. csv-table:: Resources (LdapController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -75,14 +73,14 @@ Freeradius
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","freeradius","lease","addLease",""
-    "``POST``","freeradius","lease","delLease","$uuid"
+    "``POST``","freeradius","lease","add_lease",""
+    "``POST``","freeradius","lease","del_lease","$uuid"
     "``GET``","freeradius","lease","get",""
-    "``GET``","freeradius","lease","getLease","$uuid=null"
-    "``*``","freeradius","lease","searchLease",""
+    "``GET``","freeradius","lease","get_lease","$uuid=null"
+    "``GET,POST``","freeradius","lease","search_lease",""
     "``POST``","freeradius","lease","set",""
-    "``POST``","freeradius","lease","setLease","$uuid"
-    "``POST``","freeradius","lease","toggleLease","$uuid"
+    "``POST``","freeradius","lease","set_lease","$uuid"
+    "``POST``","freeradius","lease","toggle_lease","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Lease.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Lease.xml>`__"
 
@@ -90,28 +88,26 @@ Freeradius
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","freeradius","proxy","addHomeserver",""
-    "``POST``","freeradius","proxy","addHomeserverpool",""
-    "``POST``","freeradius","proxy","addRealm",""
-    "``POST``","freeradius","proxy","delHomeserver","$uuid"
-    "``POST``","freeradius","proxy","delHomeserverpool","$uuid"
-    "``POST``","freeradius","proxy","delRealm","$uuid"
+    "``POST``","freeradius","proxy","add_homeserver",""
+    "``POST``","freeradius","proxy","add_homeserverpool",""
+    "``POST``","freeradius","proxy","add_realm",""
+    "``POST``","freeradius","proxy","del_homeserver","$uuid"
+    "``POST``","freeradius","proxy","del_homeserverpool","$uuid"
+    "``POST``","freeradius","proxy","del_realm","$uuid"
     "``GET``","freeradius","proxy","get",""
-    "``GET``","freeradius","proxy","get",""
-    "``GET``","freeradius","proxy","getHomeserver","$uuid=null"
-    "``GET``","freeradius","proxy","getHomeserverpool","$uuid=null"
-    "``GET``","freeradius","proxy","getRealm","$uuid=null"
-    "``GET``","freeradius","proxy","searchHomeserver",""
-    "``GET``","freeradius","proxy","searchHomeserverpool",""
-    "``GET``","freeradius","proxy","searchRealm",""
+    "``GET``","freeradius","proxy","get_homeserver","$uuid=null"
+    "``GET``","freeradius","proxy","get_homeserverpool","$uuid=null"
+    "``GET``","freeradius","proxy","get_realm","$uuid=null"
+    "``GET``","freeradius","proxy","search_homeserver",""
+    "``GET``","freeradius","proxy","search_homeserverpool",""
+    "``GET``","freeradius","proxy","search_realm",""
     "``POST``","freeradius","proxy","set",""
-    "``POST``","freeradius","proxy","set",""
-    "``POST``","freeradius","proxy","setHomeserver","$uuid"
-    "``POST``","freeradius","proxy","setHomeserverpool","$uuid"
-    "``POST``","freeradius","proxy","setRealm","$uuid"
-    "``GET``","freeradius","proxy","toggleHomeserver","$uuid"
-    "``GET``","freeradius","proxy","toggleHomeserverpool","$uuid"
-    "``GET``","freeradius","proxy","toggleRealm","$uuid"
+    "``POST``","freeradius","proxy","set_homeserver","$uuid"
+    "``POST``","freeradius","proxy","set_homeserverpool","$uuid"
+    "``POST``","freeradius","proxy","set_realm","$uuid"
+    "``GET``","freeradius","proxy","toggle_homeserver","$uuid"
+    "``GET``","freeradius","proxy","toggle_homeserverpool","$uuid"
+    "``GET``","freeradius","proxy","toggle_realm","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Proxy.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Proxy.xml>`__"
 
@@ -129,15 +125,13 @@ Freeradius
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","freeradius","user","addUser",""
-    "``POST``","freeradius","user","delUser","$uuid"
+    "``POST``","freeradius","user","add_user",""
+    "``POST``","freeradius","user","del_user","$uuid"
     "``GET``","freeradius","user","get",""
-    "``GET``","freeradius","user","get",""
-    "``GET``","freeradius","user","getUser","$uuid=null"
-    "``GET``","freeradius","user","searchUser",""
+    "``GET``","freeradius","user","get_user","$uuid=null"
+    "``GET``","freeradius","user","search_user",""
     "``POST``","freeradius","user","set",""
-    "``POST``","freeradius","user","set",""
-    "``POST``","freeradius","user","setUser","$uuid"
-    "``GET``","freeradius","user","toggleUser","$uuid"
+    "``POST``","freeradius","user","set_user","$uuid"
+    "``GET``","freeradius","user","toggle_user","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `User.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/User.xml>`__"

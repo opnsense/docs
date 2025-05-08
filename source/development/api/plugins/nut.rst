@@ -17,9 +17,7 @@ Nut
     "``GET``","nut","service","status",""
     "``POST``","nut","service","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `Nut.xml <https://github.com/opnsense/plugins/blob/master/sysutils/nut/src/opnsense/mvc/app/models/OPNsense/Nut/Nut.xml>`__"
-
-.. csv-table:: Service (SettingsController.php)
+.. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 

@@ -1,7 +1,7 @@
 Ndproxy
 ~~~~~~~
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -19,5 +19,3 @@ Ndproxy
     "``POST``","ndproxy","service","start",""
     "``GET``","ndproxy","service","status",""
     "``POST``","ndproxy","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `Ndproxy.xml <https://github.com/opnsense/plugins/blob/master/net/ndproxy/src/opnsense/mvc/app/models/OPNsense/Ndproxy/Ndproxy.xml>`__"

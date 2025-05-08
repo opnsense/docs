@@ -54,6 +54,42 @@ a connection is saved into a local dictionary which will be resolved when the ne
 The consequence of this is that when a state exists, the firewall doesn't need to process all its rules again to determine
 the action to apply, which has huge performance advantages.
 
+Another advantage of stateful packet filtering is that you only need to allow traffic in one direction to automatically
+allow related packets for the same flow back in. Below diagram shows a tcp connection from a client to a server for https
+traffic, when not using stateful rules, both the client should be permitted to send traffic to the server at port 443
+as the server back to the client (usually a port >=1024).
+
+.. _Firewall_States:
+
+.. blockdiag::
+   :desctable:
+
+   blockdiag {
+        group {
+            color = "#eee";
+            label = "Client [tcp:1024]";
+            client_req [label="request"];
+            client_res [label=""];
+        }
+
+        group {
+            color = "#eee";
+            label = "Firewall";
+            firewall_req [label=""];
+            firewall_res [label=""];
+        }
+
+        group {
+            color = "#eee";
+            label = "Server [tcp:443]";
+            server_req [label=""];
+            server_res [label="reply"];
+        }
+        client_req -> firewall_req -> server_req [color=green];
+        client_res <- firewall_res <- server_res [color=red];
+    }
+
+
 The use of states can also improve security particularly in case of tcp type traffic, since packet sequence numbers and timestamps are also checked in order
 to pass traffic, it's much harder to spoof traffic.
 
@@ -67,8 +103,14 @@ to pass traffic, it's much harder to spoof traffic.
     this can be configured in :menuselection:`Firewall --> Settings --> Firewall Maximum States`.
     (The help text shows the default number of states on your platform)
 
-States can also be quite convenient to find the active top users on your firewall at any time, as of 21.7 we added
+States can also be quite convenient to find the active top users on your firewall at any time, we added
 an easy to use "session" browser for this purpose. You can find it under :menuselection:`Firewall --> Diagnostics --> Sessions`.
+
+.. Tip::
+
+    States also play an important rule into protecting services against (distributed) denial of service attacks (DDOS).
+    Relevant topics available in our documentation are "synproxy" states, connection limits and `syncookies <firewall_settings.html#enable-syncookies>`__
+
 
 ....................
 Action
@@ -233,6 +275,33 @@ Log                                   Create a log entry when this rule applies,
       <i class="fa fa-eye"></i>
     With the use of the eye button in the right top corner of the screen you can find statistics about the rule in
     question (number of evaluations, number of active states and traffic counters).
+
+
+..........................
+Traffic shaping (QoS)
+..........................
+
+When a firewall rule needs to be constrained in terms of the number of packets it may process over time,
+it's possible to combine the rule with the traffic shaper.
+
+The process of shaping is explained in the :doc:`/manual/shaping` section of our documentation. Below you will find the
+relevant properties for the firewall rule.
+
+
+=====================================================================================================================
+
+====================================  ===============================================================================
+Traffic shaping/rule direction        Force packets being matched by this rule into the configured queue or pipe
+Traffic shaping/reverse direction     Force packets being matched in the opposite direction
+                                      into the configured queue or pipe
+====================================  ===============================================================================
+
+
+.. Tip::
+
+    Filter rules are more flexible than the ones specified in the shaper section itself as these can be combined with
+    aliases as well. Although this feature is quite new, it's certainly worth looking at when in need of a traffic shaper.
+
 
 
 .....................
@@ -400,7 +469,7 @@ One of the most common mistakes is traffic doesn't match the rule and/or the ord
 for whatever reason.
 
 With the use of the "inspect" button, one can easily see if a rule is being evaluated and traffic did pass using
-this rule. As of 21.7 it's also possible to jump directly into the attached states to see if your host is in the list
+this rule. It's also possible to jump directly into the attached states to see if your host is in the list
 as expected.
 
 Another valuable tool is the live log viewer, in order to use it, make sure to provide your rule with an easy to

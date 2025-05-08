@@ -1,7 +1,7 @@
 Vnstat
 ~~~~~~
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -24,5 +24,3 @@ Vnstat
     "``GET``","vnstat","service","status",""
     "``POST``","vnstat","service","stop",""
     "``GET``","vnstat","service","yearly",""
-
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net/vnstat/src/opnsense/mvc/app/models/OPNsense/Vnstat/General.xml>`__"

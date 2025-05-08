@@ -5,16 +5,14 @@ Siproxd
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","siproxd","domain","addDomain",""
-    "``POST``","siproxd","domain","delDomain","$uuid"
+    "``POST``","siproxd","domain","add_domain",""
+    "``POST``","siproxd","domain","del_domain","$uuid"
     "``GET``","siproxd","domain","get",""
-    "``GET``","siproxd","domain","get",""
-    "``GET``","siproxd","domain","getDomain","$uuid=null"
-    "``GET``","siproxd","domain","searchDomain",""
+    "``GET``","siproxd","domain","get_domain","$uuid=null"
+    "``GET``","siproxd","domain","search_domain",""
     "``POST``","siproxd","domain","set",""
-    "``POST``","siproxd","domain","set",""
-    "``POST``","siproxd","domain","setDomain","$uuid"
-    "``GET``","siproxd","domain","toggleDomain","$uuid"
+    "``POST``","siproxd","domain","set_domain","$uuid"
+    "``GET``","siproxd","domain","toggle_domain","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `Domain.xml <https://github.com/opnsense/plugins/blob/master/net/siproxd/src/opnsense/mvc/app/models/OPNsense/Siproxd/Domain.xml>`__"
 
@@ -40,15 +38,13 @@ Siproxd
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","siproxd","user","addUser",""
-    "``POST``","siproxd","user","delUser","$uuid"
+    "``POST``","siproxd","user","add_user",""
+    "``POST``","siproxd","user","del_user","$uuid"
     "``GET``","siproxd","user","get",""
-    "``GET``","siproxd","user","get",""
-    "``GET``","siproxd","user","getUser","$uuid=null"
-    "``GET``","siproxd","user","searchUser",""
+    "``GET``","siproxd","user","get_user","$uuid=null"
+    "``GET``","siproxd","user","search_user",""
     "``POST``","siproxd","user","set",""
-    "``POST``","siproxd","user","set",""
-    "``POST``","siproxd","user","setUser","$uuid"
-    "``GET``","siproxd","user","toggleUser","$uuid"
+    "``POST``","siproxd","user","set_user","$uuid"
+    "``GET``","siproxd","user","toggle_user","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `User.xml <https://github.com/opnsense/plugins/blob/master/net/siproxd/src/opnsense/mvc/app/models/OPNsense/Siproxd/User.xml>`__"

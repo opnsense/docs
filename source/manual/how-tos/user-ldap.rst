@@ -111,6 +111,12 @@ supports this. To use this feature, enable :code:`Read properties` and :code:`Sy
     Group memberships will be persisted in OPNsense
     (you can always check which rights the user had the last time he or she successfully logged in).
 
+
+.. Tip::
+
+    When users may not exist yet in the local database, you can also create them automatically after successful
+    login, use the "Automatic user creation" option to arrange this.
+
 Step 2 - Test
 --------------
 To test if the server is configured correctly, go to :menuselection:`System --> Access --> Tester`
@@ -147,44 +153,4 @@ the **Server** dropdown to your newly added LDAP server and save.
 
     To prevent being locked out, you can add "Local Database" as secondary option during your test.
 
-
-Step 4 - Import Users
----------------------
-If you would like to give LDAP/Active Directory users access to the GUI, you need
-to import the users into the local user manager. Go to :menuselection:`System --> Access --> Users`
-you will see a cloud import icon at the lower right corner of the form.
-
-.. image:: images/user_cloudimport.png
-   :width: 39px
-
-
-Click on the cloud import icon to start importing users.
-
-A new form will be show with the individual users, select the ones you like to import.
-
-.. Note::
-
-    The **Automatic user creation** option replaces manual imports in cases where account details can be
-    retrieved from the remote LDAP server. Users created with this option should be removed manually from the firewall when
-    they are removed from (one of) the LDAP server(s), which is the same as they would be maintained locally on manual imports.
-
-    As of version business edition :code:`21.10`, the system will automatically query the LDAP servers and remove non-existing users.
-    (not available in the community version of OPNsense)
-
-
-Step 4a - Update LDAP user privileges
-.........................................
-Now if you go to :menuselection:`System --> Access --> Users` you will see all users including the
-newly imported LDAP users. You can create a specific group for these users to
-easily manage the privileges or use one of your earlier created groups.
-
-When opening a LDAP user (edit) via the pencil icon right next to the name, you will
-notice the difference as the **User Distinguished name** will be shown from the
-LDAP server, just like this:
-
-.. image:: images/user_ldap_distinguishedname.png
-    :width: 100%
-
-.. TIP::
-   See :doc:`user-local` for more information on User, Groups and privileges.
 

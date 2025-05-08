@@ -9,7 +9,7 @@ Tor
     "``POST``","tor","exitacl","delacl","$uuid"
     "``GET``","tor","exitacl","get",""
     "``GET``","tor","exitacl","getacl","$uuid=null"
-    "``*``","tor","exitacl","searchacl",""
+    "``GET,POST``","tor","exitacl","searchacl",""
     "``POST``","tor","exitacl","set",""
     "``POST``","tor","exitacl","setacl","$uuid"
     "``POST``","tor","exitacl","toggleacl","$uuid"
@@ -24,8 +24,7 @@ Tor
     "``POST``","tor","general","delhidservauth","$uuid"
     "``GET``","tor","general","get",""
     "``GET``","tor","general","gethidservauth","$uuid=null"
-    "``*``","tor","general","searchhidservauth",""
-    "``POST``","tor","general","set",""
+    "``GET,POST``","tor","general","searchhidservauth",""
     "``POST``","tor","general","set",""
     "``POST``","tor","general","sethidservauth","$uuid"
     "``POST``","tor","general","togglehidservauth","$uuid"
@@ -40,7 +39,7 @@ Tor
     "``POST``","tor","hiddenservice","delservice","$uuid"
     "``GET``","tor","hiddenservice","get",""
     "``GET``","tor","hiddenservice","getservice","$uuid=null"
-    "``*``","tor","hiddenservice","searchservice",""
+    "``GET,POST``","tor","hiddenservice","searchservice",""
     "``POST``","tor","hiddenservice","set",""
     "``POST``","tor","hiddenservice","setservice","$uuid"
     "``POST``","tor","hiddenservice","toggleservice","$uuid"
@@ -55,14 +54,14 @@ Tor
     "``POST``","tor","hiddenserviceacl","delacl","$uuid"
     "``GET``","tor","hiddenserviceacl","get",""
     "``GET``","tor","hiddenserviceacl","getacl","$uuid=null"
-    "``*``","tor","hiddenserviceacl","searchacl",""
+    "``GET,POST``","tor","hiddenserviceacl","searchacl",""
     "``POST``","tor","hiddenserviceacl","set",""
     "``POST``","tor","hiddenserviceacl","setacl","$uuid"
     "``POST``","tor","hiddenserviceacl","toggleacl","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `HiddenServiceACL.xml <https://github.com/opnsense/plugins/blob/master/security/tor/src/opnsense/mvc/app/models/OPNsense/Tor/HiddenServiceACL.xml>`__"
 
-.. csv-table:: Service (RelayController.php)
+.. csv-table:: Resources (RelayController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -76,7 +75,7 @@ Tor
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","tor","service","circuits",""
-    "``GET``","tor","service","getHiddenServices",""
+    "``GET``","tor","service","get_hidden_services",""
     "``POST``","tor","service","reconfigure",""
     "``POST``","tor","service","restart",""
     "``POST``","tor","service","start",""
@@ -92,7 +91,7 @@ Tor
     "``POST``","tor","socksacl","delacl","$uuid"
     "``GET``","tor","socksacl","get",""
     "``GET``","tor","socksacl","getacl","$uuid=null"
-    "``*``","tor","socksacl","searchacl",""
+    "``GET,POST``","tor","socksacl","searchacl",""
     "``POST``","tor","socksacl","set",""
     "``POST``","tor","socksacl","setacl","$uuid"
     "``POST``","tor","socksacl","toggleacl","$uuid"

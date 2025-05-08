@@ -187,7 +187,7 @@ Here are the full patch notes:
 * firmware: update size requirements for major upgrades from command line
 * firmware: embed build metadata into package annotations for use in runtime remote queries
 * firmware: fix execution of version queries when not possible
-* firmware: revoke 22.7 fingerprint
+* firmware: revoke 22.10 fingerprint
 * firmware: show support tiers in plugin list
 * intrusion detection: minor performance improvements when parsing metadata from rules
 * ipsec: pull data for dashboard widget exclusively from backend

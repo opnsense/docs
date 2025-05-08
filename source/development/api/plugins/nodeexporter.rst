@@ -1,7 +1,7 @@
 Nodeexporter
 ~~~~~~~~~~~~
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -19,5 +19,3 @@ Nodeexporter
     "``POST``","nodeexporter","service","start",""
     "``GET``","nodeexporter","service","status",""
     "``POST``","nodeexporter","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/sysutils/node_exporter/src/opnsense/mvc/app/models/OPNsense/NodeExporter/General.xml>`__"

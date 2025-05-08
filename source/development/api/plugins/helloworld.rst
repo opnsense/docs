@@ -8,7 +8,7 @@ Helloworld
     "``POST``","helloworld","service","reload",""
     "``POST``","helloworld","service","test",""
 
-.. csv-table:: Service (SettingsController.php)
+.. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 

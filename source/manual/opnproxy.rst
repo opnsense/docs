@@ -2,9 +2,6 @@
 Advanced Proxy access management
 ======================================
 
-As part of the OPNsense Business Edition, Deciso offers a plugin to add fine grained access control to your existing
-web proxy setup.
-
 One of the features often requested is to easily (dis)allow (groups of) users access to certain domain or url parts,
 the :code:`OPNProxy` plugin addition offers this functionality at ease.
 

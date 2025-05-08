@@ -20,7 +20,7 @@ Crowdsec
     "``GET``","crowdsec","decisions","delete","$decision_id"
     "``GET``","crowdsec","decisions","get",""
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 

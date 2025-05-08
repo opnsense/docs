@@ -492,7 +492,7 @@ And this is the change log for 16.7 BETA:
   NetFlow data
 * interfaces: polling mode has been deprecated and will be phased
   out soon
-* vpn: L2TP, PPTP and PPPoE servers have been ported to use MPD5
+* vpn: L2TP, PPTP and PPPoE servers have been ported to use MPD version 5
 * vpn: legacy servers have been prepared to be moved from base
   install to plugins
 * cron: code preparations for opening up the MVC cron API
@@ -612,7 +612,7 @@ Here are the full patch notes:
 * firmware: added German-based mirror (contributed by Alexander Lauster)
 * system: load modules before setting tunables to support settings for modules
 * system: fix boot issue that prevented SSH from starting up in some instances
-* interface: do not show wireless parents on the assignment page as it cannot be assigned
+* interfaces: do not show wireless parents on the assignment page as it cannot be assigned
 * ipsec: individual collapse/expand for status page
 * dhcp: allow backwards-compatibility with imported configs
 * captive portal: fix missing busyTimeout on voucher database access

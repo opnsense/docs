@@ -27,6 +27,352 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.1.5 (April 10, 2025)
+--------------------------------------------------------------------------
+
+
+This release improves overall RADIUS support, moves the captive portal
+from IPFW to PF, creates visibility of external certificate sources in
+the system and offers a glimpse into the filter automation GUI revamp
+which could one day replace the remaining static firewall rules edit pages.
+
+Speaking of static pages: MVC/API conversions are almost 80% complete now
+and we would really like to continue that trend.  Also brace for impact
+as we crash-land Dnsmasq DHCP support in a stable release within the next
+90 days!
+
+Here are the full patch notes:
+
+* system: extend XMLRPC "nosync" support to keep backup items for new cases
+* system: improved RADIUS RFC alignment and use Message Authenticator by default
+* system: prevent recursion loop when CAs are cross-referencing each other
+* system: fix URL hash in certificate link so redirection shows the correct menu path
+* system: fix off by one error due to line ending at the end of a log file
+* system: offer config directory to store locations for external certificates and support it in the certificates widget
+* system: allow multiple manual DNS search domains
+* system: fix gateway watcher backoff
+* system: minor code cleanups in auth.inc
+* reporting: move NetFlow backend single_pass to command line parameters for easier debugging
+* reporting: use client time in traffic dashboard widget
+* firewall: automation filter UI revamp
+* firewall: fix presentation when alias name overlaps group name
+* firewall: fix regression in alias table in JSON format
+* firewall: move pipe and queue configuration to "dnctl" service
+* firewall: replace update_params for argparse in filter log reader
+* captive portal: migrate backend from IPFW to PF
+* firmware: ignore dashboard check for updates link automation if user clicks check for updates too
+* firmware: fix reboot flag handling due to changed BooleanField default in 25.1.4
+* firmware: add cleanup audit script
+* ipsec: move mobile clients charon attributes to "Advanced settings"
+* ipsec: pre-shared key permission fix
+* kea-dhcp: add missing ACL privileges
+* kea-dhcp: allow manual configuration for advanced scenarios
+* openvpn: add "Enable static challenge (OTP)" option in client export
+* openvpn: display virtual IPv6 addresses for clients in dashboard widget (contributed by cs-1 and lucaspalomodevelop)
+* router advertisements: fix list of source addresses on overlapping link-locals (contributed by Robin Müller)
+* unbound: drop "exclude" phrase from plugin log entry
+* unbound: add optional TTL field
+* mvc: prefer ui/user_portal above system_usermanager_passwordmg.php in ACLs
+* mvc: implement "ignore" field type in forms
+* ui: include "all" instead of only "solid" and "brands" Font Awesome styles
+* ui: ensure fields stay aligned relatively to another when headers are used in forms
+* ui: add fetch_options() which can build grouped selectpickers
+* ui: improve and extend Bootgrid behaviour
+* plugins: os-caddy 1.8.5 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* plugins: os-sftp-backup 1.1 adds hostname prefix and filedrop-only support (contributed by beposec)
+* src: ifconfig: fix reporting optics on most 100g interfaces
+* src: igc: fix attach for I226-K and LMVP devices
+* src: inpcb: assorted changes for upcoming FIB support
+* src: ipfw: fix dump_soptcodes() handler
+* src: ixgbe: add support for 1000BASE-BX SFP modules
+* src: ixgbe: fix mailbox ack handling
+* src: netinet6: add the missing lock acquire to nd6_get_llentry
+* src: netinet: fix getcred sysctl handlers to do nothing if no input is given
+* src: netinet: if mb_unmapped_to_ext() failed, return directly
+* src: netlink: fix getting route scope of interface IPv4 addresses
+* src: ovpn: fix use-after-free of mbuf
+* src: pf: improve pf_state_key_attach() error handling
+* src: pf: only force state failure logging if logging was requested
+* src: pfkey2: use correct value for a key length
+* src: routing: do not allow PINNED routes to be overriden
+* src: sctp: fix double unlock in case adding a remote address fails
+* src: tcp: clear sendfile logging struct
+* src: udp: do not recursively enter net epoch
+* src: wg: remove overly-restrictive address family check
+* ports: lighttpd 1.4.79 `[2] <https://www.lighttpd.net/2025/4/4/1.4.79/>`__ 
+* ports: openvpn 2.6.14 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.14>`__ 
+* ports: phalcon 5.9.2 `[4] <https://github.com/phalcon/cphalcon/releases/tag/v5.9.2>`__ 
+* ports: py-duckdb 1.2.2 `[5] <https://github.com/duckdb/duckdb/releases/tag/v1.2.2>`__ 
+
+
+
+--------------------------------------------------------------------------
+25.1.4 (March 26, 2025)
+--------------------------------------------------------------------------
+
+
+This update offers support for "jq" syntax in JSON-based URL table
+aliases, new OpenVPN instance features and the mandatory batch of
+stability improvements in numerous parts of the GUI and backend.
+
+Upcoming in 25.1.5 are better RADIUS integration and enabling message
+authentication.  We are also replacing the captive portal implementation
+by moving from ipfw(4) to pf(4).  Last but not least the firewall automation
+filter rules GUI received a generous revamp for a far better UX than before.
+You can preview these changes by switching to the development release type
+and let us know about any remaining bug that you may encounter.
+
+Here are the full patch notes:
+
+* system: add "Kill states when down" option to gatways
+* system: stop pushing "nextuid" and "nextgid" during XMLRPC
+* system: migrate tunables to implicit defaults
+* system: secure access to sysctl configuration node
+* system: fix RADIUS error check
+* system: add "pwd_changed_at" field previously missing in user model
+* system: rewire system_usermanager_passwordmg.php to /ui/user_portal for cooperation with the next business edition
+* system: default "net.inet.carp.senderr_demotion_factor" tunable to "0"
+* system: opnsense-beep: serialize access to /dev/speaker (contributed by Leonid Evdokimov)
+* reporting: minor code cleanups in insight backend
+* interfaces: move "(de)select all" button to the same row on packet capture page
+* interfaces: add ARP address family option to packet capture
+* interfaces: fix advanced mode visibility in VIPs
+* firewall: performance improvement by using pf overall table stats instead of dumping each table
+* firewall: offer better plug-ability for dynamic alias type
+* firewall: alias rename action ignored due to missing lock
+* firewall: support "jq" processing syntax for JSON-based URL table aliases
+* openvpn: use shared base_bootgrid_table and base_apply_button
+* openvpn: add support for assorted options `[1] <https://github.com/opnsense/core/pull/8396>`__  (contributed by Marius Halden)
+* openvpn: add basic HTTP client option
+* router advertisements: move plugin code to its own space
+* unbound: move whitelist (passlist) handling to Unbound plugin
+* mvc: merge NetworkValidator into NetworkField to ease extensibility and add unit test
+* mvc: send audit messages emitted in the authentication sequence to proper channel
+* mvc: BooleanField now defaults to "0" on creation
+* plugins: os-caddy 1.8.4 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* plugins: os-frr 1.44 `[3] <https://github.com/opnsense/plugins/blob/stable/25.1/net/frr/pkg-descr>`__ 
+* plugins: os-theme-cicada 1.39 (contributed by Team Rebellion)
+* plugins: os-theme-tukan 1.29 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.49 (contributed by Team Rebellion)
+* ports: dnsmasq 2.91 `[4] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: expat 2.7.0 `[5] <https://github.com/libexpat/libexpat/blob/R_2_7_0/expat/Changes>`__ 
+* ports: lighttpd 1.4.78 `[6] <https://www.lighttpd.net/2025/3/22/1.4.78/>`__ 
+* ports: pecl-radius now offers message authenticator support (scheduled to be enabled with 25.1.5)
+* ports: phalcon 5.9.0 `[7] <https://github.com/phalcon/cphalcon/releases/tag/v5.9.0>`__ 
+* ports: php 8.3.19 `[8] <https://www.php.net/ChangeLog-8.php#8.3.19>`__ 
+* ports: py-duckdb 1.2.1 `[9] <https://github.com/duckdb/duckdb/releases/tag/v1.2.1>`__ 
+* ports: py-jq 1.8.0 `[10] <https://github.com/mwilliamson/jq.py/blob/master/CHANGELOG.rst>`__ 
+* ports: suricata 7.0.10 `[11] <https://suricata.io/2025/03/25/suricata-7-0-10-released/>`__ 
+
+A hotfix release was issued as 25.1.4_1:
+
+* backend: restore missing Python module
+
+
+
+--------------------------------------------------------------------------
+25.1.3 (March 11, 2025)
+--------------------------------------------------------------------------
+
+
+This time around a patch from OpenBSD has been added that fixes the
+state tracking for ICMPv6 neighbour discovery packets through pf.  The
+user management gained a CSV import/export.  Also, the bug of the missing
+PPP logs has been fixed in the upstream MPD package.
+
+Please note that the FRR plugin now uses the new configuration file
+layout mandated by upstream and also gained reload support.
+
+Since Google Drive is being phased out by Google, a new plugin now
+covers backups via SFTP.  The old Google Drive backup functionality
+will move to plugins in 25.7 since it will only be useful for existing
+installs.
+
+Here are the full patch notes:
+
+* system: implement user CSV import/export functionality (sponsored by: m.a.x. it)
+* system: switch boot logo and MOTD to the new-style logo (contributed by Gavin Chappell)
+* system: migrate "default" tunable value to empty one and improve UX
+* system: bring back user/group audit messages lost in MVC conversion
+* system: replace legacy service widget hook with a proper configd call
+* interfaces: use shared base_bootgrid_table and base_apply_button where possible
+* interfaces: remove obsolete code in get_real_interfaces() to match getRealInterface()
+* interfaces: improve validation for CARP/proxy ARP VIP
+* interfaces: remove defunct "other" VIP type
+* interfaces: skip "nosync" processing on VIPs
+* firewall: support partial alias exports
+* kea-dhcp: use shared base_bootgrid_table and base_apply_button
+* network time: move XMLRPC definition to correct file
+* openvpn: add DCO validation for fragment size
+* unbound: use shared base_bootgrid_table and base_apply_button
+* unbound: fix model migration pertaining to "dots" model changes
+* wireguard: use shared base_bootgrid_table and base_apply_button
+* backend: allow pluginctl to filter on -x/-X option
+* mvc: decode HTML tags in menu items
+* mvc: fix unit tests for model relation fields
+* plugins: os-caddy 1.8.3 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* plugins: os-dmidecode 1.2 adds new dashboard widget (contributed by Neil Merchant)
+* plugins: os-frr 1.43 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/net/frr/pkg-descr>`__ 
+* plugins: os-intrusion-detection-content-pt-open 1.0 (contributed by kulikov-a)
+* plugins: os-sftp-backup 1.0 allows configuration backups over SFTP
+* plugins: os-zabbix-agent 1.15 `[3] <https://github.com/opnsense/plugins/blob/stable/25.1/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.12 `[4] <https://github.com/opnsense/plugins/blob/stable/25.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* src: carp: fix checking IPv4 multicast address
+* src: icmp: use per rate limit randomized jitter
+* src: ixgbe: fix a logic error in ixgbe_read_mailbox_vf()
+* src: netinet6: do not forward to the unspecified address
+* src: netinet: do not forward or ICMP response to INADDR_ANY
+* src: netinet: ipsec and ktls cannot coexists
+* src: pf: align sanity checks for pfrw_free
+* src: pf: allow all forms of neighbor advertisements in either direction
+* src: pf: cleanup leftover PF_ICMP_MULTI_\* code that is not needed anymore
+* src: pf: do not keep state when dropping overlapping IPv6 fragments
+* src: pf: drop IPv6 packets built from overlapping fragments in pf reassembly
+* src: pf: fix fragment hole count
+* src: sysctl: enable vnet sysctl variables to be loader tunable
+* ports: mpd default logging level increased to LOG_NOTICE
+* ports: nss 3.109 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_109.html>`__ 
+* ports: pftop 0.12
+* ports: py-jinja 3.1.6 `[6] <https://jinja.palletsprojects.com/en/stable/changes/#version-3-1-6>`__ 
+
+
+
+--------------------------------------------------------------------------
+25.1.2 (February 28, 2025)
+--------------------------------------------------------------------------
+
+
+This was supposed to hit earlier this week, but some weeks are like this
+one now where QA takes more time than usual.  Of note is the move of Dnsmasq
+to MVC and the ChartJS update to version 4 which is bundled with nice updates
+for widgets and the system health graphs.
+
+The roadmap for 25.7 was also published `[1] <https://opnsense.org/about/road-map/>`__ .  The IPsec and OpenVPN legacy
+parts will move to the plugins so that the functionality can live there
+in community support tier.  Since Kea remains a bit of an odd choice we will
+be offering DHCP support via Dnsmasq as a new standard feature which also
+offers seamless DHCP lease registration some people keep looking for.
+
+Here are the full patch notes:
+
+* system: adjust gateway widget to use the intended caching mechanism
+* system: thermal sensors widget can now select individual sensors to display plus UX changes
+* system: handle dev.pchtherm temperatures in the thermal dashboard widget (contributed by Joe Roback)
+* system: use new apply button partial in tunables page
+* system: move high availability option "disable preempt" to advanced mode
+* system: straighten out syslog-ng rc.d scripting
+* reporting: switch health graphs to ChartJS
+* interfaces: add "nosync" option to VIPs and fix sync conditional
+* interfaces: exclude automatic radvd like we do for manual
+* firewall: properly unpack multiple source/destination items in the rules page
+* firewall: hide internal aliases to align with previous legacy_list_aliases() function
+* firewall: add missing "persist" on bogonsv6
+* captive portal: urlencode() selector items in voucher group list
+* dhcrelay: integrate layout_partials bootgrid/apply
+* dnsmasq: migrate existing frontend to MVC/API
+* ipsec: add deprecation notices for legacy components (will move to plugins)
+* kea-dhcp: add "v6-only-preferred" option (contributed by darses)
+* openvpn: add deprecation notices for legacy components (will move to plugins)
+* openvpn: support "password first" for static-challenges
+* unbound: add support for forward-first when configuring forwarders (contributed by Nigel Jones)
+* wireguard: change tracking of peer status, improve widget and diagnostic
+* backend: add an "import" rc.syshook facility
+* backend: change the "monitor" rc.syshook facility and de-deprecate its use
+* backend: remove unused functions and move once-used functions to their call script
+* mvc: wrap locks around updates and perform some minor cleanups in ApiMutableModelControllerBase
+* mvc: move "lazy loading" option to base model implementation and force usage on run_migrations.php
+* mvc: safeguard checkToken() to prevent fetching an non existing POST item
+* ui: upgrade ChartJS to v4
+* ui: change backdrop background color to black in dark theme
+* ui: create a unified layout partial for the apply button
+* plugins: adjust all themes for ChartJS 4 use
+* plugins: treat empty string like null on argument map
+* plugins: os-acme-client 4.9 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/security/acme-client/pkg-descr>`__ 
+* src: ipfw: make 'ipfw show' output compatible with 'ipfw add' command
+* src: pf: stop using net_epoch to synchronize access to eth rules
+* src: e1000: fix vlan PCP/DEI on lem(4)
+* src: igc: remove unused register IGC_RXD_SPC_VLAN_MASK
+* src: ifnet: detach BPF descriptors on interface vmove event
+* src: libkern: add ilog2 macro et al
+* src: ipfw: add missing initializer for 'limit' table value
+* src: pf: add extra SCTP multihoming probe points
+* src: pf: verify SCTP v_tag before updating connection state
+* src: pf: verify that ABORT chunks are not mixed with DATA chunks
+* src: pf: allow ICMP messages related to an SCTP state to pass
+* src: pf: add 'allow-related' to always allow SCTP multihome extra connections
+* src: bpf: fix potential race conditions
+* src: net: if_media for 100BASE-BX
+* src: rtw89: update Realtek rtw88/rtw89 driver et al
+* src: net80211: 11ac: add options to manage VHT STBC
+* src: ifconfig: make -vht work
+* src: iwlwifi: update Intel iwlwifi/mvm driver et al
+* src: ixgbe: add ixgbe_dev_from_hw() back
+* ports: ca_root_nss / nss 3.108 `[3] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_108.html>`__ 
+* ports: curl 8.12.1 `[4] <https://curl.se/changes.html#8_12_1>`__ 
+* ports: openssh 9.9p2 `[5] <https://www.openssh.com/txt/release-9.9p2>`__ 
+* ports: php 8.3.17 `[6] <https://www.php.net/ChangeLog-8.php#8.3.17>`__ 
+* ports: py-duckdb 1.2.0 `[7] <https://github.com/duckdb/duckdb/releases/tag/v1.2.0>`__ 
+
+
+
+--------------------------------------------------------------------------
+25.1.1 (February 12, 2025)
+--------------------------------------------------------------------------
+
+
+Here we are with further refinements to 25.1 and it is looking
+pretty well so far.  Included are the recent FreeBSD security
+advisories and the OpenSSL 3.0.16 which came out just yesterday.
+
+The roadmap for 25.7 is being worked on at the moment and should
+be ready for publication next week / release.
+
+Here are the full patch notes:
+
+* system: exclude pchtherm thresholds temperature thresholds
+* system: regression in groupAllowed() as values are now comma-separated
+* system: update button wording on new HA status page
+* reporting: fix missing typecast in epoch range for DNS statistics
+* interfaces: fix undefined array key warnings in DHCP client setup (contributed by Ben Smithurst)
+* interfaces: remove "hellotime" configuration leftover of recent bridge cleanup
+* firmware: opnsense-update: fix failure to clean up the working directory
+* firmware: opnsense-update: support -B and -K with -c option check
+* firmware: opnsense-update: let -u skip already installed packages set
+* firmware: kernel may not be pending so be sure to check on upgrade attempt
+* firmware: add an upgrade test for wrong pkg repository
+* firmware: revoke 24.7 fingerprint
+* captive portal: fix missing class import
+* captive portal: partially revert new lighttpd TLS defaults
+* ipsec: fix glob pattern for advanced configuration banner
+* monit: revert "wrap exec in double quotes to allow arguments"
+* ui: reverted style changes only relevant for the development version
+* ui: header image scaling fixes in default light theme
+* ui: remove right border from "aside" element in default dark theme
+* plugins: os-caddy 1.8.2 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.9 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-ddclient 1.27 `[3] <https://github.com/opnsense/plugins/blob/stable/25.1/dns/ddclient/pkg-descr>`__ 
+* src: pf: send ICMP destination unreachable fragmentation needed when appropriate
+* src: pfil: set PFIL_FWD for IPv4 forwarding
+* src: if_vxlan: use static initializers
+* src: if_vxlan: prefer SYSCTL_INT over TUNABLE_INT
+* src: if_vxlan: invoke vxlan_stop event handler only when the interface is configured
+* src: pf: force logging if pf_create_state() fails
+* src: tarfs: fix the size of struct tarfs_fid and add a static assert
+* src: ext2fs: fix the size of struct ufid and add a static assert
+* src: cd9660: make sure that struct ifid fits in generic filehandle structure
+* src: tzdata: import tzdata 2025a
+* src: audit: fix short-circuiting in syscallenter()
+* src: ktrace: fix uninitialized memory disclosure]
+* src: netinet: enter epoch in garp_rexmit()
+* ports: curl 8.12.0 `[4] <https://curl.se/changes.html#8_12_0>`__ 
+* ports: monit 5.34.4 `[5] <https://mmonit.com/monit/changes/>`__ 
+* ports: openssl 3.0.16 `[6] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+* ports: pcre2 10.45 `[7] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.45>`__ 
+* ports: php 8.3.16 `[8] <https://www.php.net/ChangeLog-8.php#8.3.16>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.1 (January 29, 2025)
 --------------------------------------------------------------------------
 
@@ -77,7 +423,7 @@ Here are the full patch notes against version 24.7.12:
 * interfaces: adhere to DAD during VIP recreation in rc.newwanipv6
 * interfaces: remove non-functional features from bridges
 * interfaces: remove PPP edit in interfaces settings
-* interfaces: batched device type creation under "devices" submenu
+* interfaces: batched device type creation under "Devices" submenu
 * interfaces: move PPP and wireless logs to system log
 * interfaces: remove "Use IPv4 connectivity" setting as it will be set by default
 * firewall: use "skip lo0" instead of policing lo0 explicitly following OpenBSD best practice
@@ -130,7 +476,7 @@ Here are the full patch notes against version 24.7.12:
 * plugins: os-caddy 1.8.1 `[3] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
 * plugins: os-cpu-microcode 1.1 removes unneeded late loading code
 * plugins: os-haproxy 4.5 `[4] <https://github.com/opnsense/plugins/blob/stable/25.1/net/haproxy/pkg-descr>`__ 
-* pluginsL os-tailscale 1.2 `[5] <https://github.com/opnsense/plugins/blob/stable/25.1/security/tailscale/pkg-descr>`__ 
+* plugins: os-tailscale 1.2 `[5] <https://github.com/opnsense/plugins/blob/stable/25.1/security/tailscale/pkg-descr>`__ 
 * src: FreeBSD 14.2-RELEASE `[6] <https://www.freebsd.org/releases/14.2R/relnotes/>`__ 
 * src: p9fs: add an implementation of the 9P filesystem
 * ports: lighttpd 1.4.77 `[7] <https://www.lighttpd.net/2025/1/10/1.4.77/>`__ 
@@ -242,7 +588,7 @@ Here are the full patch notes against version 24.7.12:
 * interfaces: adhere to DAD during VIP recreation in rc.newwanipv6
 * interfaces: remove non-functional features from bridges
 * interfaces: remove PPP edit in interfaces settings
-* interfaces: batched device type creation under "devices" submenu
+* interfaces: batched device type creation under "Devices" submenu
 * interfaces: move PPP and wireless logs to system log
 * interfaces: remove "Use IPv4 connectivity" setting as it will be set by default
 * firewall: use "skip lo0" instead of policing lo0 explicitly following OpenBSD best practice

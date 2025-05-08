@@ -377,7 +377,7 @@ Here are the full patch notes:
 * ports: libucl 0.9.1
 * ports: lighttpd 1.4.75 `[5] <https://www.lighttpd.net/2024/3/13/1.4.75/>`__ 
 * ports: nss 3.99 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_99.html>`__ 
-* ports: openssh-portable 9.7p1 `[7] <https://www.openssh.com/txt/release-9.7>`__ 
+* ports: openssh 9.7p1 `[7] <https://www.openssh.com/txt/release-9.7>`__ 
 * ports: openvpn 2.6.10 `[8] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.10>`__ 
 * ports: php 8.2.17 `[9] <https://www.php.net/ChangeLog-8.php#8.2.17>`__ 
 * ports: py-duckdb 0.10.1 `[10] <https://github.com/duckdb/duckdb/releases/tag/v0.10.1>`__ 

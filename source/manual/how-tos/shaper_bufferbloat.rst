@@ -330,7 +330,7 @@ Interval is used to ensure that the measured minimum delay does not become too s
 
 limit
 ^^^^^^^^^^^^^^^^^^^
-Default limit size of 10240 packets is to much. The creators recommended value 1000 for sub 10 Gbit/s connections. The default limit will never reached for sub 10 Gbit/s WAN connections. Before that could happen FQ_CoDel would already take action. So it's healthy to reduce limit.
+Default limit size of 10240 packets is too much. The creators recommended value 1000 for sub 10 Gbit/s connections. The default limit will never be reached for sub 10 Gbit/s WAN connections. Before that could happen FQ_CoDel would already take action. So it is healthy to reduce the limit.
 
 The over-large packet limit leads to bad results during slow start on some benchmarks. Reducing it too low could impact new flow start.
 

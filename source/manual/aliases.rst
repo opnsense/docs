@@ -56,6 +56,10 @@ OPNsense offers the following alias types:
 | URL Tables (IPs) | A table of IP addresses that are fetched on regular  |
 |                  | intervals.                                           |
 +------------------+------------------------------------------------------+
+| URL Table in     | A table of IP addresses that are fetched on regular  |
+| JSON format      | intervals.                                           |
+| (IPs)            | (using a json structure)                             |
++------------------+------------------------------------------------------+
 | GeoIP            | Select countries or whole regions                    |
 +------------------+------------------------------------------------------+
 | Network group    | Combine different network type aliases into one      |
@@ -168,13 +172,46 @@ intervals from the :code:`arp` and :code:`ndp` tables.
 URL Tables
 ..................
 URL tables can be used to fetch a list of IP addresses from a remote server.
-There are several IP lists available for free, most notably are the "Don't Route
-Or Peer" lists from Spamhaus.
+You can specify a :code:`Refresh frequency`` to determine how often this information should be updated.
 
 .. Note::
 
     The content of the file being fetched should contain one IPv[4|6] address per line, lines that start with a :code:`whitespace`
     , colon (:code:`,`), semicolon (:code:`;`), pipe (:code:`|`) or hash (:code:`#`) will be ignored.
+
+
+....................................
+URL Table in JSON format (IPs)
+....................................
+
+URL tables can be used to fetch a list of IP addresses from a remote server and parse their contents when in
+`JSON <https://en.wikipedia.org/wiki/JSON>`__ format, similar to our standard (text based) url table.
+
+
+You can use a :code:`Path expression` to select data from the container, in some cases, when content is "flat" you just need a
+single path reference. For example the spamhause `drop <https://www.spamhaus.org/drop/drop_v4.json>`__ list contains a json
+file per row with a field :code:`cidr`.
+
+More advanced scenarios are also possible as our parser supports `jq <https://jqlang.org/>`__,
+some (simple) examples can be found below in the table below.
+
+
+======================================================================================================== ======================================================================================== ==============================================================
+Content                                                                                                  Path Expression                                                                          Topic
+======================================================================================================== ======================================================================================== ==============================================================
+https://ip-ranges.amazonaws.com/ip-ranges.json                                                           .prefixes[] | select(.region=="us-east-1") | select(.service=="EC2") | .ip_prefix        All ip addresses belonging to service EC2 in region us-east-1
+https://api.github.com/meta                                                                              .web + .api + .git | .[]                                                                 All of GitHubs web, api and git addresses
+https://endpoints.office.com/endpoints/worldwide?clientrequestid=b10c5ed1-bad1-445f-b386-b919946339a7    .[] | select(.serviceArea=="Exchange") | select(".ips")| .ips | .[]?                     Exchange networks from Microsoft
+======================================================================================================== ======================================================================================== ==============================================================
+
+
+
+.. Tip::
+
+    Use `https://play.jqlang.org/ <https://play.jqlang.org/>`__ to fiddle with the jq language before pasting content and
+    path expression in an alias.
+
+
 
 
 ..................

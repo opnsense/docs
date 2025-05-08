@@ -37,8 +37,8 @@ a fine grained control over the configuration pages that user may access.
 
 .. Note::
 
-   As local users are local (bsd) system users, their naming scheme matches FreeBSD's in terms of length (33 characters)
-   and reserved characters.
+   When creating administration users with a configured shell, their naming scheme's are more strict (max 33 characters of a limited set).
+   All other usernames are more flexible as no local shell accounts will be created.
 
 
 
@@ -50,6 +50,16 @@ for a specific user group. A user should be an individual, a group needs to be
 specific in such a way that anyone of that group can be granted the same access
 rights, called privileges.
 
+.. Note::
+
+    It's not always required to have users in your local database, when the remote server
+    should merely answer the question if a user offers a valid user/password combination,
+    most services can just push this question to the authenticating server. Constraints
+    in some cases can be part of the authenticator as well. When the user should login
+    to the firewall (for example to change settings or download a profile), a local user
+    is always required as it serves as a linking pin to the ACL system.
+
+
 Authentication services
 ----------------------------------
 
@@ -59,6 +69,12 @@ This includes both local accounts and remote authentication.
 By default, OPNsense GUI login will use local accounts. This can be changed, however,
 by going to :menuselection:`System --> Settings --> Administration`, scrolling down to the "Authentication" group,
 and changing the 'Server' option.
+
+.. Tip::
+
+   The authentication part always uses a local "anchor" (user in the local database) to account for access rights,
+   some remote servers are able to supply the required information by communicating the groups a user is member of after authentication.
+
 
 Local account configuration
 ---------------------------

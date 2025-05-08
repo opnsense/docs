@@ -1,7 +1,7 @@
 Maltrail
 ~~~~~~~~
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -10,7 +10,7 @@ Maltrail
 
     "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/security/maltrail/src/opnsense/mvc/app/models/OPNsense/Maltrail/General.xml>`__"
 
-.. csv-table:: Service (SensorController.php)
+.. csv-table:: Resources (SensorController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -19,7 +19,7 @@ Maltrail
 
     "``<<uses>>``", "", "", "", "*model* `Sensor.xml <https://github.com/opnsense/plugins/blob/master/security/maltrail/src/opnsense/mvc/app/models/OPNsense/Maltrail/Sensor.xml>`__"
 
-.. csv-table:: Service (ServerController.php)
+.. csv-table:: Resources (ServerController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -38,8 +38,6 @@ Maltrail
     "``GET``","maltrail","serverservice","status",""
     "``POST``","maltrail","serverservice","stop",""
 
-    "``<<uses>>``", "", "", "", "*model* `Server.xml <https://github.com/opnsense/plugins/blob/master/security/maltrail/src/opnsense/mvc/app/models/OPNsense/Maltrail/Server.xml>`__"
-
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -49,5 +47,3 @@ Maltrail
     "``POST``","maltrail","service","start",""
     "``GET``","maltrail","service","status",""
     "``POST``","maltrail","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `Sensor.xml <https://github.com/opnsense/plugins/blob/master/security/maltrail/src/opnsense/mvc/app/models/OPNsense/Maltrail/Sensor.xml>`__"

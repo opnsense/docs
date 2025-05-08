@@ -8,6 +8,10 @@
 ehthumbs.db
 Thumbs.db
 
+# generated code files #
+######################
+lib/phply/parsetab.py
+
 # Tools #
 #########
 update.sh

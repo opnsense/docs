@@ -434,7 +434,7 @@ Here are the full patch notes:
 * ports: lighttpd 1.4.75 `[21] <https://www.lighttpd.net/2024/3/13/1.4.75/>`__ 
 * ports: nss 3.99 `[22] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_99.html>`__ 
 * ports: openldap 2.6.7 `[23] <https://www.openldap.org/software/release/changes.html>`__ 
-* ports: openssh-portable 9.7p1 `[24] <https://www.openssh.com/txt/release-9.7>`__ 
+* ports: openssh 9.7p1 `[24] <https://www.openssh.com/txt/release-9.7>`__ 
 * ports: openssl 3.0.13 `[25] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openssl fix for CVE-2024-2511 `[26] <https://github.com/freebsd/freebsd-ports/commit/3d9fc064b7>`__ 
 * ports: openvpn 2.6.10 `[27] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.10>`__ 

@@ -1,7 +1,7 @@
 Tayga
 ~~~~~
 
-.. csv-table:: Service (GeneralController.php)
+.. csv-table:: Resources (GeneralController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
@@ -19,5 +19,3 @@ Tayga
     "``POST``","tayga","service","start",""
     "``GET``","tayga","service","status",""
     "``POST``","tayga","service","stop",""
-
-    "``<<uses>>``", "", "", "", "*model* `General.xml <https://github.com/opnsense/plugins/blob/master/net/tayga/src/opnsense/mvc/app/models/OPNsense/Tayga/General.xml>`__"

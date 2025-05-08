@@ -117,7 +117,7 @@ Setup Router A
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
-      **BGP AS Number*                                ``65011`` (or any other private AS number)
+      **BGP AS Number**                               ``65011`` (or any other private AS number)
       **Route Redistribution**                        ``Connected routes (directly attached subnet or host)``
       ==============================================  ====================================================================
 
@@ -126,6 +126,7 @@ Setup Router A
       ==============================================  ====================================================================
       **Enable**                                      ``X``
       **Peer IP**                                     ``10.1.1.2`` (Peering IP Router B)
+      **Remote AS mode**                              ``Use Remote AS Number``
       **Remote AS**                                   ``65011``
       **Update-Source Interface**                     ``igc2`` (Peering interface Router A)
       ==============================================  ====================================================================
@@ -239,7 +240,7 @@ Setup Router B
 
       ==============================================  ====================================================================
       **Enable**                                      ``X``
-      **BGP AS Number*                                ``65011`` (or any other private AS number)
+      **BGP AS Number**                               ``65011`` (or any other private AS number)
       **Network**                                     leave empty (we use Route Redistribution)
       **Route Redistribution**                        ``Connected routes (directly attached subnet or host)``
       ==============================================  ====================================================================
@@ -249,6 +250,7 @@ Setup Router B
       ==============================================  ====================================================================
       **Enable**                                      ``X``
       **Peer IP**                                     ``10.1.1.1`` (Peering IP Router A)
+      **Remote AS mode**                              ``Use Remote AS Number``
       **Remote AS**                                   ``65011``
       **Update-Source Interface**                     ``igc2`` (Peering interface Router B)
       ==============================================  ====================================================================
@@ -409,6 +411,7 @@ Setup Router A
       ==============================================  ====================================================================
       **Enable**                                      ``X``
       **Peer IP**                                     ``203.0.113.2`` (Peering IP ISP Router)
+      **Remote AS mode**                              ``Use Remote AS Number``
       **Remote AS**                                   ``64496``
       **Update-Source Interface**                     ``igc1`` (Peering interface Router A)
       ==============================================  ====================================================================

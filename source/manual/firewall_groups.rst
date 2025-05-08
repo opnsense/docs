@@ -19,7 +19,6 @@ the interface tabs itself. More details about processing order can be found  :re
 Settings
 --------------------
 
-=====================================================================================================================
 
 ====================================  ===============================================================================
 Name                                  The technical name of the group. Has some restrictions which also apply

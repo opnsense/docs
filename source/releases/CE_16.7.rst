@@ -181,7 +181,7 @@ Here is the full list of changes:
 * openvpn: add reneg-sec option to client exports
 * dnsmasq: fix 16.7.10 regression in host file handling
 * web proxy: make backend config plugin-friendly
-* plugins: fix a potential error in MPD5 plugins (contributed by Evgeny Bevz)
+* plugins: fix a potential error in MPD plugins (contributed by Evgeny Bevz)
 * src: fix possible login(1) argument injection in telnetd(8) `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:36.telnetd.asc>`__ 
 * src: fix link_ntoa(3) buffer overflow in libc `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:37.libc.asc>`__ 
 * src: fix possible escape from bhyve(8) virtual machine `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:38.bhyve.asc>`__ 
@@ -925,7 +925,7 @@ Here is our list of major features that were worked on since 16.1:
 * Russian translations 100% completed
 * NetFlow export to multiple remote destinations
 * NetFlow local reporting frontend
-* PPTP, L2TP and PPPoE Servers ported to MPD5
+* PPTP, L2TP and PPPoE Servers ported to MPD version 5
 * HAProxy plugin
 * Traffic shaping with CoDel / FQ-CoDel
 * Firewall alias geolocation support
