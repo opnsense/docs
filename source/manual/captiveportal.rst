@@ -100,11 +100,15 @@ OPNsense implements the Captive Portal by redirecting all WWW traffic
 to a local web server before authentication, hinting to the device that it is behind a portal.
 However, `RFC 8910 <https://www.rfc-editor.org/rfc/rfc8910>`__
 introduces a new standardized method for networks to inform clients about the presence
-of a portal using DHCP or RA. Furthermore, `RFC 8909 <https://www.rfc-editor.org/rfc/rfc8909>`__
+of a portal using DHCP. Furthermore, `RFC 8908 <https://www.rfc-editor.org/rfc/rfc8908>`__
 describes an API standard implemented by the webserver pointed to by DHCP, where the client can
 fetch the current portal status. This API is supported by OPNsense in a backwards compatible
 manner for older clients requiring redirection. Apple has published a
 `document <https://developer.apple.com/news/?id=q78sq5rv>`__ going into more details.
+
+.. Note::
+
+    Like the Captive Portal implementation, this Captive Portal API is only supported on IPv4.
 
 Modern clients (especially iOS) moving towards this standardized API may experience redirection
 issues when connecting to a network only supporting forced redirection, which is often
@@ -115,14 +119,14 @@ To configure this, a few steps are required:
 - You must install a valid, publically trusted certificate on the Captive Portal zone.
   For example, you can use ACME client to automate this process. Doing so is best
   practice regardless of redirection method.
-- The DHCP server running in your Captive Portal zone must present option 114, of which
+- The DHCPv4 server running in your Captive Portal zone must present option 114, of which
   the value must be set to the OPNsense webserver running the portal:
   :code:`https://<opnsense-hostname>/api/captiveportal/access/api`.
   Alternatively, a client can also be pointed to the redirected webserver directly:
   :code:`https://<opnsense-hostname>:<8000 + captive portal zone id>/api/captiveportal/access/api`.
   For example, :code:`https://opnsense.localdomain:8001/api/captiveportal/access/api` for zone 1.
 
-  To set this DHCP/RA option, refer to the documentation for the respective DHCP server.
+  To set this DHCP option, refer to the documentation for the respective DHCP server.
 
 On this endpoint, OPNsense returns the following information:
 
@@ -130,6 +134,9 @@ On this endpoint, OPNsense returns the following information:
 - The URL of the portal.
 - If the client is authenticated and a hard timeout is set, how many seconds are remaining
   for this session.
+
+If a device in the captive portal zone supports this API, they will automatically use
+the DHCP option to determine that they are in a captive state.
 
 Administration
 .........................
@@ -240,6 +247,7 @@ The following are the only functional/behavioral changes:
   be configured on said interface.
 - Unless you are overriding the (newly) automatically generated firewall rules, you don't need an explicit
   pass rule for DNS (port 53) on the firewall, nor an allow rule for the captive portal zones (ports 8000-10000) anymore.
+  These are now installed by default.
 
 .. _rules:
 
@@ -287,12 +295,6 @@ and ports 8000 + <zone id> for HTTPS.
  **Filter Rule Association**  Pass
 ============================ ===============================
 
-.. Attention::
-
-    To allow "direct" access to the portal zone, meaning a direct connection with the
-    portal zone port (e.g 8000) in the URL, the above rule must be duplicated for this
-    specific port.
-
 The destination is the inverted zone alias, so that traffic from unauthenticated clients going to
 authenticated or explicitly allowed clients/servers (allowed addresses in the zone administration)
 is not redirected. This is useful if unauthenticated clients should be able to access servers
@@ -312,13 +314,39 @@ In order to allow the client to resolve at least the OPNsense hostname, DNS must
  **Protocol**                 TCP/UDP
  **Direction**                In
  **Source**                   <Zone net>
- **Destination**              (self)
+ **Destination**              This Firewall
  **Destination port range**   DNS/DNS
 ============================ =====================
 
-We define (self) as the destination since the default DNS service, Unbound, may return multiple
+We define "This Firewall" as the destination since the default DNS service, Unbound, may return multiple
 IP addresses identifying the firewall.
 
+Allow direct access to Captive Portal
+-------------------------------------
+A client may access the captive portal webserver directly, e.g. using port 8000 in the URL.
+To allow this, separate pass rules must be defined:
+
+============================ =====================
+ **Type**                     Firewall rule
+ **Action**                   Pass
+ **Interface**                <Zone interface>
+ **Protocol**                 TCP
+ **Direction**                In
+ **Source**                   <Zone net>
+ **Destination**              This Firewall
+ **Destination port range**   8000 + zone id
+============================ =====================
+
+============================ =====================
+ **Type**                     Firewall rule
+ **Action**                   Pass
+ **Interface**                <Zone interface>
+ **Protocol**                 TCP
+ **Direction**                In
+ **Source**                   <Zone net>
+ **Destination**              This Firewall
+ **Destination port range**   9000 + zone id
+============================ =====================
 
 Default block rule for non-authenticated users
 ----------------------------------------------
