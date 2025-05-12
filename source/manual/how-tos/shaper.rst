@@ -8,7 +8,7 @@ For this how-to we will look into these scenarios:
    :maxdepth: 2
    :titlesonly:
 
-   shaper_dedicated_bw 
+   shaper_dedicated_bw
    shaper_share_evenly
    shaper_limit_per_user
    shaper_prioritize_using_queues
