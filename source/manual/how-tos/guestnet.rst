@@ -40,9 +40,8 @@ the proxy. This tutorial will explain how to combine both features.
 -------------
 Prerequisites
 -------------
-We will start configuration with a fresh OPNsense install, updated to the latest
-patch level (16.1.5_1 in our example). You will need a system with a minimum of
-3 ports (LAN/WAN/GUESTNET) for this tutorial.
+We will start configuration with a fresh OPNsense installation.
+You will need a system with a minimum of 3 ports (LAN/WAN/GUESTNET) for this tutorial.
 
 ------------
 Good to know
@@ -98,44 +97,16 @@ Click **Save**.
 ---------------------------
 Step 3 - Add Firewall Rules
 ---------------------------
+
+.. Note::
+    Rules to allow DNS and access to the captive portal zone webserver are installed automatically.
+    If you are overriding this behavior, install the rules as listed in
+    `Captive Portal firewall rules <../captiveportal.html#captive-portal-firewall-rules>`__
+    before any other rules.
+
 Go to :menuselection:`Firewall --> Rules` to add a new rule.
 
 Now add the following rules (in order of prevalence):
-
-Allow DNS
----------
-Allow the guests access to the DNS forwarder.
-Rule content (leave all other options default):
-
-============================ ===================== =====================================
- **Action**                   Pass                  *Allow this traffic*
- **Interface**                GUESTNET              *The GuestNet Interface*
- **Protocol**                 TCP/UDP
- **Source**                   GUESTNET net
- **Destination**              GUESTNET address
- **Destination port range**   DNS/DNS               *from DNS to DNS*
- **Category**                 GuestNet Basic Rules  *Category used for grouping rules*
- **Description**              Allow DNS
-============================ ===================== =====================================
-
-Click **Save**.
-
-
-Allow Captive Portal Login
---------------------------
-
-============================ ============================ =====================================
- **Action**                   Pass                         *Allow this traffic*
- **Interface**                GUESTNET                     *The GuestNet Interface*
- **Protocol**                 TCP
- **Source**                   GUESTNET net
- **Destination**              GUESTNET address
- **Destination port range**   8000/10000                   *(other) used for the cp zones*
- **Category**                 GuestNet Basic Rules         *Category used for grouping rules*
- **Description**              Allow Captive Portal Login
-============================ ============================ =====================================
-
-Click **Save**.
 
 
 Block Local Networks
@@ -158,7 +129,7 @@ Click **Save**.
  **Interface**                GUESTNET                     *The GuestNet Interface*
  **Protocol**                 any
  **Source**                   GUESTNET net
- **Destination**              GUESTNET address
+ **Destination**              This Firewall
  **Category**                 GuestNet Basic Rules         *Category used for grouping rules*
  **Description**              Block Firewall Access
 ============================ ============================ =====================================
@@ -186,12 +157,6 @@ Allow Guest Networks
 ============================ ===================== =====================================
 
 Click **Save** and then **Apply changes**
-
-Your rules should look similar to the screenshot below:
-
-.. image:: images/guestnet_fwrules.png
-    :width: 100%
-
 
 ------------------------------
 Step 4 - Create Captive Portal
