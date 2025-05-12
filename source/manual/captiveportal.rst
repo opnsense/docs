@@ -236,7 +236,7 @@ This has multiple benefits:
 The following are the only functional/behavioral changes:
 
 - If you have forwarding rules defined on your captive portal zone that redirect a client for services other than HTTP/HTTPS, the
-  "Filter Rule Association" option on this rule must be set to "Pass" so that this traffic is allowed after redirection, otherwise,
+  "Filter Rule Association" option on this rule must be set to "Pass" so that this traffic is allowed after redirection; otherwise,
   this traffic will hit the default captive portal block rule. An example of such a scenario would be client DNS
   traffic redirected to a DNS service running on localhost.
 - The "Allow Inbound" option has been dropped. This option only affected IPFW rules and controlled
