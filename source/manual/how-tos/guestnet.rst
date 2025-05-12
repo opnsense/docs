@@ -129,7 +129,7 @@ Click **Save**.
  **Interface**                GUESTNET                     *The GuestNet Interface*
  **Protocol**                 any
  **Source**                   GUESTNET net
- **Destination**              This firewall
+ **Destination**              This Firewall
  **Category**                 GuestNet Basic Rules         *Category used for grouping rules*
  **Description**              Block Firewall Access
 ============================ ============================ =====================================
