@@ -9,7 +9,7 @@ Our core backend service (configd) is implemented using `Python <https://en.wiki
 - Service interaction (using configd actions)
 - Generation of configuration data (using templates)
 
-Because some of the codebase still integrates with our legacy codebase, we provide additional plugin options for the following components:
+Because we need integration between (legacy) components, we provide additional plugin options for the following components:
 
 - Services (the services status)
 - Syslog (define syslog targets)
@@ -18,6 +18,8 @@ Because some of the codebase still integrates with our legacy codebase, we provi
 
 
 Services which need to be executed at system startup can use rc(8) or our syshook system.
+Our :doc:`overview <backend/overview>` document contains a practical write up to explain the various phases of
+operation and hooks available in them.
 
 .. toctree::
    :maxdepth: 2

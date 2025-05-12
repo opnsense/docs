@@ -32,7 +32,7 @@ in sequence:
 
 
 ....................................
-Normal operation
+Running stage
 ....................................
 
 Now the system is booted and events may take place, some of the common integration points with their purpose are listed below:

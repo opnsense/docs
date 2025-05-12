@@ -22,7 +22,7 @@ This article describes how this will be achieved.
 High-level architecture
 -----------------------
 
-|OPNsense Components.png|
+|OPNsense Components.svg|
 
 As the above model shows there are two main areas in our stack, the
 frontend implemented with PHP/Phalcon and the backend using a custom
@@ -42,37 +42,13 @@ Manipulation of the core configuration file is handled at the frontend
 model; the backend service is merely a consumer of the information
 provided.
 
---------------------
-Backend Architecture
---------------------
 
-|OPNsense backend.png|
-
-Configd, is responsible
-for the core system interaction like starting and stopping of daemons
-and generating configuration files for used services and applications.
-
-The daemon listens on a unix domain socket and is capable of executing
-actions defined in it’s own configuration directory
-(“/usr/local/opnsense/service/conf/actions\_\*.conf”).
-
-Currently there are four types of services implemented in the daemon:
-
--  script : execute external (rc) scripts, report back success or failure
--  script_output: execute external scripts, report back their contents, usually in json format
--  stream_output: open streams to backend components
--  inline : perform inline actions which are part of configd, most notable template generation and maintanance.
-
-|
-| Template generation is handled by Jinja2 (http://jinja.pocoo.org/),
-  more information on how to create application templates can be found
-  at :doc:`/development/backend/templates`.
 
 ---------------------
 Frontend Architecture
 ---------------------
 
-|OPNsense frontend.png|
+|OPNsense frontend.svg|
 
 Routing
 -------
@@ -123,12 +99,71 @@ control and the repositories are split into 4 parts:
    | For detailed information about the development workflow see:
    | :doc:`OPNsense development workflow </development/workflow>`
 
-.. |OPNsense Components.png| image:: images/OPNsense_Components.png
+
+--------------------
+Backend Architecture
+--------------------
+
+
+Middleware
+--------------------------------------
+
+|OPNsense backend.svg|
+
+Configd, is responsible
+for the core system interaction like starting and stopping of daemons
+and generating configuration files for used services and applications.
+
+The daemon listens on a unix domain socket and is capable of executing
+actions defined in it’s own configuration directory
+(“/usr/local/opnsense/service/conf/actions\_\*.conf”).
+
+Currently there are four types of services implemented in the daemon:
+
+-  script : execute external (rc) scripts, report back success or failure
+-  script_output: execute external scripts, report back their contents, usually in json format
+-  stream_output: open streams to backend components
+-  inline : perform inline actions which are part of configd, most notable template generation and maintanance.
+
+|
+| Template generation is handled by Jinja2 (http://jinja.pocoo.org/),
+  more information on how to create application templates can be found
+  at :doc:`/development/backend/templates`.
+
+
+
+Operating stages
+--------------------------------------
+
+|OPNsense_operating_events.svg|
+
+As all earlier layers describe how user input can be persisted and service information can be exchanged, we still
+have a gap in our functionality when looking at the life of a firewall.
+Until this point we have means to manually manage services and devices, including ways to collect information on demand,
+but still in a rather isolated way (events triggered via the api layer).
+
+This is where :doc:`syshooks <backend/autorun>` and :doc:`plugins <backend/legacy>` come into play,
+these offer mechanisms to ensure different types of services can cooperate with the shared functionality available.
+
+Between starting and stopping our firewall, we can identify three stages.
+After power-on, we are booting, when this initial stage has been reached we end up with a running firewall with
+all configured services available. During time, various events can happen, for example, someone pulling an network cable
+and pushing it back in, this is the running stage.
+Eventually, if someone decides to power-down or reboot the machine, we are entering shutdown stage, letting services know
+we are ending operation.
+
+Further details of each stage can be found in the :doc:`overview <backend/overview>` document.
+
+To avoid endless dependency loops, services should prevent hooking on events that are not strictly required for operating.
+For example, forcing a restart of a component when a network interface has changed is usually a sign of not
+following best practices for designing network services.
+
+
+.. |OPNsense Components.svg| image:: images/OPNsense_Components.svg
    :width: 600px
-   :height: 548px
-.. |OPNsense backend.png| image:: images/OPNsense_backend.png
+.. |OPNsense backend.svg| image:: images/OPNsense_backend.svg
+   :width: 500px
+.. |OPNsense frontend.svg| image:: images/OPNsense_frontend.svg
    :width: 600px
-   :height: 575px
-.. |OPNsense frontend.png| image:: images/OPNsense_frontend.png
-   :width: 600px
-   :height: 461px
+.. |OPNsense_operating_events.svg| image:: images/OPNsense_operating_events.svg
+   :width: 700px
