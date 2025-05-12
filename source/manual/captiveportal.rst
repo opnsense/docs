@@ -226,7 +226,7 @@ outbound traffic. This process has been simplified by moving the redirection and
 
 This has multiple benefits:
 
-- The generated rules are now visible in the GUI of OPNsense and are logged by default, easing troubleshooting.
+- The generated rules are now visible in the WebGUI and are logged by default, easing troubleshooting.
 - The list of clients that have been authenticated is now an alias and is visible, as well as usable in rules.
   The alias is called :code:`__captiveportal_zone_<zoneid>`.
 - Unless custom shaper rules are used, IPFW does not need to be loaded anymore, significantly
