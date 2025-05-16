@@ -9,19 +9,16 @@ Caddy: Reverse Proxy
 Features
 --------
 
-Caddy - The Ultimate Server - makes your sites more secure, more reliable, and more scalable than any other solution.
+Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
+
 By default, Caddy automatically obtains and renews TLS certificates (Let's Encrypt and ZeroSSL) for all your sites.
-It's the most advanced HTTPS server in the world.
 
 * Reverse Proxy HTTP, HTTPS and WebSockets
 * Route UDP/TCP traffic with the included Layer4 module: https://github.com/mholt/caddy-l4
 * Dynamic DNS module included: https://github.com/mholt/caddy-dynamicdns
-* Large selection of DNS Providers available: https://github.com/caddy-dns
+* Cloudflare DNS Provider included: https://github.com/caddy-dns/cloudflare
 
 WWW: https://caddyserver.com/
-
-All available options and help-texts can be found on `Github <https://github.com/opnsense/plugins/tree/master/www/caddy/src/opnsense/mvc/app/controllers/OPNsense/Caddy/forms>`_
-
 
 ------------
 Installation
@@ -86,7 +83,7 @@ Standard Configuration
 Creating a Simple Reverse Proxy
 -------------------------------
 
-.. Attention:: The domain has to be externally resolvable. Create an A-Record with an external DNS Provider that points your domain to the external IP address of your OPNsense.
+.. Attention:: The domain has to be externally resolvable. Create an A-Record on a public DNS server that points your domain to the external IP address of your OPNsense.
 
 Go to :menuselection:`Services --> Caddy Web Server --> General Settings`
 
@@ -213,49 +210,16 @@ Now, all anonymous connections have to authenticate with Basic Auth before acces
 Dynamic DNS
 -----------
 
-.. Attention::
-
-    DNS modules are community maintained: `Caddy DNS <https://github.com/caddy-dns>`_
-
-    There are built-in and optional providers. Built in providers will work out of the box (e.g. Cloudflare).
-    Optional providers must be manually installed via CLI.
-    If the caddy binary changes version, any optional package must reinstalled.
-
-    Add optional providers: `caddy add-package <https://caddyserver.com/docs/command-line#caddy-add-package>`_
-
-
 Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> DNS Provider`
 
-* Select one of the supported `DNS Providers` from the list
-* Input the `DNS API Key`, and any number of the additional required fields in `Additional Fields`.
-
-Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> Dynamic DNS`
-
+* Select `Cloudflare` from the list
+* Input the `API Key`
 * Choose if `DynDns IP Version` should include IPv4 and/or IPv6.
 * Press **Save**
 
 Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Domains`
 
-* Press **+** to create a new `Domain`. ``mydomain.duckdns.org`` is an example if `duckdns` is used as DNS Provider.
-
-============================== ========================
-Options                        Values
-============================== ========================
-**Domain:**                    ``mydomain.duckdns.org``
-**Dynamic DNS:**               ``X``
-============================== ========================
-
-Go to :menuselection:`Services - Caddy Web Server - Reverse Proxy – Handlers`
-
-* Press **+** to create a new `Handler`
-
-============================== ========================
-Options                        Values
-============================== ========================
-**Domain:**                    ``mydomain.duckdns.org``
-**Upstream Domain:**           ``192.168.1.1``
-============================== ========================
-
+* Edit a domain or subdomain and enable the `Dynamic DNS` checkbox.
 * Press **Save** and **Apply**
 
 Check the Logfile for the DynDNS updates. Set it to `Informational` and search for the chosen domain.
@@ -278,18 +242,19 @@ Check the Logfile for the DynDNS updates. Set it to `Informational` and search f
 Wildcard Domain with Subdomains
 -------------------------------
 
-.. Tip:: For `DNS Providers` like `Cloudflare`, this is the recommended setup.
+.. Tip:: For `Cloudflare`, this is the recommended setup.
 
 .. Note:: If you use :ref:`Dynamic DNS <dynamicdns-opnsense-caddy>`, subdomains are needed due to the way the API updates the DNS Records in hosted zones.
 
 Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> DNS Provider`
 
-* Select one of the supported `DNS Providers` from the list
-* Input the `DNS API Key`, and any number of the additional required fields in `Additional Fields`. Read the full help for details.
+* Select `Cloudflare` from the list
+* Input the `API Key`
+* Set `Resolvers` to ``1.1.1.1``
 
 Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Domains`
 
-* | Create ``*.example.com`` as domain and activate the `DNS-01 Challenge` checkbox. Alternatively, use a certificate imported or generated in :menuselection:`System --> Trust --> Certificates`. It has to be a wildcard certificate.
+* | Create ``*.example.com`` as domain and activate the `DNS-01 Challenge` checkbox. Alternatively, use a certificate imported or generated in :menuselection:`System --> Trust --> Certificates`. It has to be a wildcard certificate. You could generate one with the os-acme-client plugin.
 * | Create all subdomains in relation to the ``*.example.com`` domain, for example ``foo.example.com`` and ``bar.example.com``.
 * | Check `Dynamic DNS` for the new subdomains, if needed.
 
@@ -298,6 +263,8 @@ Go to :menuselection:`Services --> Caddy Web Server --> Reverse Proxy --> Handle
 * Create a `Handler` with ``*.example.com`` as domain and ``foo.example.com`` as subdomain. Most of the same configuration as with base domains are possible. The subdomain dropdown only shows when a wildcard domain has been configured.
 
 .. Note:: The certificate of a wildcard domain will only contain ``*.example.com``, not a SAN for ``example.com``. If there is a service that should match ``example.com`` exactly, create an additional domain for ``example.com`` with an additional `Handler` for its upstream destination. Subdomains do not support setting ports, they will always track the ports of their assigned parent wildcard domain.
+
+.. Tip:: For `Cloudflare`, set `Trusted Proxies` to the Cloudflare IP ranges and `Client IP Headers` to ``Cf-Connecting-Ip``.
 
 
 .. _webgui-opnsense-caddy:
@@ -345,7 +312,7 @@ Redirect ACME HTTP-01 Challenge
 
 Sometimes an application behind Caddy uses its own ACME Client to get certificates, most likely with the HTTP-01 challenge. This plugin has a built in mechanism to redirect this challenge type easily to a destination behind it.
 
-Make sure the chosen domain is externally resolvable. Create an A-Record with an external DNS Provider that points to the external IP Address of the OPNsense. In case of IPv6 availability, it is mandatory to create an AAAA-Record too, otherwise the TLS-ALPN-01 challenge might fail.
+Make sure the chosen domain is externally resolvable. Create an A-Record on a public DNS server that points to the external IP Address of the OPNsense. In case of IPv6 availability, it is mandatory to create an AAAA-Record too, otherwise the TLS-ALPN-01 challenge might fail.
 
 The configured `Domain` must use an ``empty port`` or ``443`` in the GUI, otherwise it can not use the TLS-ALPN-01 challenge for itself. The upstream destination must listen on Port ``80`` and serve ``/.well-known/acme-challenge/``, for the same `Domain` that is configured in Caddy.
 
@@ -882,7 +849,8 @@ Caddy: Troubleshooting
 FAQ
 ---
 
-* | A `DNS Provider` is not required to get automatic certificates.
+* | `Cloudflare` is not required to get automatic certificates.
+* | You can use the os-acme-client plugin to generate wildcard certificates. Set up an automation in the ACME client that reloads Caddy (do not restart it).
 * | `Port Forwards`, `NAT Reflection`, `Split Horizon DNS` or `DNS Overrides in Unbound` are not required. Only create Firewall rules that allow traffic to the default ports of Caddy.
 * | Even though internal clients will use the external IP address to access the reverse proxied services, the traffic will not pass over the internet. It will stay inside the OPNsense. Only in rare cases where there is multi WAN, the traffic can be routed from one WAN interface to the other over the internet, due to `reply-to` settings.
 * | Firewall rules to allow Caddy to reach internal services are not required. OPNsense has a default rule that allows all traffic originating from itself to be allowed.
@@ -922,7 +890,7 @@ Help, Nothing Works!
 **1. Check the Infrastructure:**
 
 * Do `A- and/or AAAA-Record` for all `Domains` and `Subdomains` exist?
-* In case of activated :ref:`Dynamic DNS <dynamicdns-opnsense-caddy>`, check that the correct `A- and/or AAAA-Records` have been set automatically with the DNS Provider.
+* In case of activated :ref:`Dynamic DNS <dynamicdns-opnsense-caddy>`, check that the correct `A- and/or AAAA-Records` have been set automatically with Cloudflare.
 * Do they point to one of the external IPv4 or IPv6 addresses of the OPNsense Firewall? Check that with commands like ``nslookup example.com``
 * Do the OPNsense `Firewall Rules` allow connections from `any` source to destination ports `80` and `443` to the destination `This Firewall`?
 * Is the Caddy service running?
