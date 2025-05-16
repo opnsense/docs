@@ -425,7 +425,7 @@ In our example, we configure query forwarding for 2 networks:
     thats not used on the internet, e.g., ``lan.internal.example.com``.
 
 
-Now that we have the DNS infrastructure set up, we can configure the DHCP ranges and DHCP options.
+Now that we have the DNS infrastructure set up, we can configure the DHCP ranges.
 
 - Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> General` and set:
 
@@ -478,51 +478,17 @@ As next step we define the DHCP ranges for our interfaces.
 
         - Press **Save** and **Apply**
 
-The final step is to set DHCP options for the ranges; ``router[3]`` and ``dns-server[6]`` will be announced automatically just by creating the range.
-We just add a ``domain-search[119]`` option for short name lookups.
+.. Tip::
 
-- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options` and set:
+    **There is no need to create DHCP options manually for simple setups**.
 
-.. tabs::
+    Creating a DHCP range will set these DHCP options automatically with defaults:
 
-    .. tab:: LAN
+    - ``router[3]`` -> IPv4 address of the receiving interface
+    - ``dns-server[6]`` -> IPv4 address of the receiving interface
+    - ``domain-search[119]`` -> Domain set in DHCP range
 
-        .. Note::
-
-            Dnsmasq in its default configuration sets the ``router[3]`` and ``dns-server[6]`` options automatically to ``This Firewall``.
-            There is only a need to specify these options if a different IP address should be advertised, e.g., in high availability setups with CARP.
-
-
-        ==================================  =======================================================================================================
-        Option                              Value
-        ==================================  =======================================================================================================
-        **Type**                            Set
-        **Option**                          domain-search [119]
-        **Interface**                       ``LAN``
-        **Value**                           ``lan.internal``
-        ==================================  =======================================================================================================
-
-        - Press **Save** and **Apply**
-
-        .. Tip::
-
-            Using an FQDN (Full Qualified Domain Name) is required for this setup to work (e.g., ``smartphone.lan.internal``).
-            If you want to resolve short names inside a DHCP range (e.g., ``smartphone`` without ``.lan.internal``), add the
-            ``domain-search [119]`` DHCP option to all ranges.
-
-    .. tab:: Guest
-
-        ==================================  =======================================================================================================
-        Option                              Value
-        ==================================  =======================================================================================================
-        **Type**                            Set
-        **Option**                          domain-search [119]
-        **Interface**                       ``GUEST``
-        **Value**                           ``guest.internal``
-        ==================================  =======================================================================================================
-
-        - Press **Save** and **Apply**
-
+    There is only a need to specify these options if a different IP address should be advertised, e.g., in high availability setups with CARP.
 
 .. Attention::
 
