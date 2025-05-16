@@ -274,6 +274,20 @@ OSPF/OSPFv3 (Open Shortest Path First)
        **Route Redistribution**              Select other routing sources to redistribute to other nodes. Can be combined with a Route Map per redistribution.
        ===================================== =======================================================================================================================
 
+    .. tab:: Neighbors (OSPF only)
+
+       =================================== =======================================================================================================================
+       Options                               Description
+       =================================== =======================================================================================================================
+       **Enable**                            (OSPF only) Enable / Disable
+       **Description**                       (OSPF only) Optional description for the neighbor.
+       **Peer-IP**                           (OSPF only) Specify the IP address of the OSPF neighbor.
+       **Poll-Interval**                     (OSPF only) The poll-interval specifies the rate for sending hello packets to neighbors that are not active.
+                                             When the configured neighbor is discovered, hello packets will be sent at the rate of the hello-interval. 
+                                             The default poll-interval is 60 seconds.
+       **Priority**                          (OSPF only) The priority is used to for the Designated Router (DR) election on non-broadcast multi-access networks.
+       =================================== =======================================================================================================================
+
     .. tab:: Networks
 
        =================================== =======================================================================================================================
