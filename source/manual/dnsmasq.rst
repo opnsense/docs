@@ -362,11 +362,13 @@ Option                              Value
 **Listen Port**                     ``53``
 ==================================  =======================================================================================================
 
-- Press **Apply**
+- | Press **Apply**
+- | Go to :menuselection:`Services --> Unbound DNS --> Query Forwarding` and create an entry for each DHCP range you plan to configure.
 
-- Go to :menuselection:`Services --> Unbound DNS --> Query Forwarding` and create an entry for each DHCP range you plan to configure.
+In our example, we configure query forwarding for 2 networks:
 
-In our example, we use 2 DHCP ranges, so we will configure ``lan.internal`` and ``guest.internal``.
+    - ``lan.internal`` - ``192.168.1.0/24``
+    - ``guest.internal`` - ``192.168.10.0/24``
 
 .. tabs::
 
@@ -382,12 +384,35 @@ In our example, we use 2 DHCP ranges, so we will configure ``lan.internal`` and 
 
         - Press **Save** and add next
 
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Domain**                          ``1.168.192.in-addr.arpa``
+        **Server IP**                       ``127.0.0.1``
+        **Server Port**                     ``53053``
+        ==================================  =======================================================================================================
+
+        - Press **Save** and **Apply**
+
+        .. Note:: The first entry is for the forward lookup (A-Record), the second for the reverse lookup (PTR-Record).
+
+
     .. tab:: guest.internal
 
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
         **Domain**                          ``guest.internal``
+        **Server IP**                       ``127.0.0.1``
+        **Server Port**                     ``53053``
+        ==================================  =======================================================================================================
+
+        - Press **Save** and add next
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Domain**                          ``10.168.192.in-addr.arpa``
         **Server IP**                       ``127.0.0.1``
         **Server Port**                     ``53053``
         ==================================  =======================================================================================================
@@ -415,10 +440,6 @@ Option                              Value
 
 - Press **Apply**
 
-.. Note::
-
-    Ignore the ISC / KEA DHCP (legacy) options as our setup does not require them. We use the Dnsmasq built in DHCP/DNS register functionality
-    with Unbound DNS query forwarding.
 
 As next step we define the DHCP ranges for our interfaces.
 
@@ -437,13 +458,12 @@ As next step we define the DHCP ranges for our interfaces.
         **Domain**                          ``lan.internal``
         ==================================  =======================================================================================================
 
-        - Press **Save** and add next
+        - Press **Save** and **Apply**
 
         .. Note::
 
             If a host receives a DHCP lease from this range, and it advertises a hostname, it will be registered under the chosen domain name.
-            E.g., a host named ``nas01`` will become ``nas01.lan.internal``. This is the FQDN a client can query to receive the current
-            IP address.
+            E.g., a host named ``nas01`` will become ``nas01.lan.internal``. A client can query this FQDN to receive the current IP address.
 
     .. tab:: GUEST
 
@@ -458,7 +478,8 @@ As next step we define the DHCP ranges for our interfaces.
 
         - Press **Save** and **Apply**
 
-The final step is to set DHCP options for the ranges, at least router[3] and dns-server[6] should be announced.
+The final step is to set DHCP options for the ranges; ``router[3]`` and ``dns-server[6]`` will be announced automatically just by creating the range.
+We just add a ``domain-search[119]`` option for short name lookups.
 
 - Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options` and set:
 
@@ -466,33 +487,11 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
 
     .. tab:: LAN
 
-        ==================================  =======================================================================================================
-        Option                              Value
-        ==================================  =======================================================================================================
-        **Type**                            Set
-        **Option**                          router[3]
-        **Interface**                       ``LAN``
-        **Value**                           ``192.168.1.1`` (the interface IP address of LAN, or a virtual IP of LAN)
-        ==================================  =======================================================================================================
-
-        - Press **Save** and add next
-
-        ==================================  =======================================================================================================
-        Option                              Value
-        ==================================  =======================================================================================================
-        **Type**                            Set
-        **Option**                          dns-server[6]
-        **Interface**                       ``LAN``
-        **Value**                           ``192.168.1.1`` (Unbound listens the interface IP address of LAN, or a virtual IP of LAN)
-        ==================================  =======================================================================================================
-
-        - Press **Save** and add next
-
         .. Note::
 
-            Instead of setting the interface IP address as value, the special address 0.0.0.0 can be used to implicitely set it as `the server Dnsmasq
-            is running on`. Though in some scenarios that is not possible, e.g., when using a virtual IP addresses. So for consistency, this guide suggests
-            setting each IP address explicitely to avoid confusion.
+            Dnsmasq in its default configuration sets the ``router[3]`` and ``dns-server[6]`` options automatically to ``This Firewall``.
+            There is only a need to specify these options if a different IP address should be advertised, e.g., in high availability setups with CARP.
+
 
         ==================================  =======================================================================================================
         Option                              Value
@@ -503,37 +502,15 @@ The final step is to set DHCP options for the ranges, at least router[3] and dns
         **Value**                           ``lan.internal``
         ==================================  =======================================================================================================
 
+        - Press **Save** and **Apply**
+
         .. Tip::
 
-            Using a FQDN (Full Qualified Domain Name) is required for this setup to work (e.g., ``smartphone.lan.internal``)
+            Using an FQDN (Full Qualified Domain Name) is required for this setup to work (e.g., ``smartphone.lan.internal``).
             If you want to resolve short names inside a DHCP range (e.g., ``smartphone`` without ``.lan.internal``), add the
             ``domain-search [119]`` DHCP option to all ranges.
 
-        - Press **Save** and add next
-
     .. tab:: Guest
-
-        ==================================  =======================================================================================================
-        Option                              Value
-        ==================================  =======================================================================================================
-        **Type**                            Set
-        **Option**                          router[3]
-        **Interface**                       ``GUEST``
-        **Value**                           ``192.168.10.1`` (the interface IP address of GUEST, or a virtual IP of GUEST)
-        ==================================  =======================================================================================================
-
-        - Press **Save** and add next
-
-        ==================================  =======================================================================================================
-        Option                              Value
-        ==================================  =======================================================================================================
-        **Type**                            Set
-        **Option**                          dns-server[6]
-        **Interface**                       ``GUEST``
-        **Value**                           ``192.168.10.1`` (Unbound listens the interface IP address of GUEST, or a virtual IP of GUEST)
-        ==================================  =======================================================================================================
-
-        - Press **Save** and add next
 
         ==================================  =======================================================================================================
         Option                              Value
@@ -578,7 +555,7 @@ As you can see, this is a highly integrated and simple setup which leverages jus
 DHCPv6 and Router Advertisements
 ------------------------------------------------------
 
-DHCPv6 can run at the same time as DHCPv4. Essentially, create another range for DHCPv6 for the same interface as the DHCPv6 variant.
+DHCPv6 can run at the same time as DHCPv4, just specify another range.
 
 .. Attention::
 
