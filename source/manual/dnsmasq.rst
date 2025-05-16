@@ -278,6 +278,17 @@ DHCP Settings
         **Description**                           You may enter a description here for your reference (not parsed).
         ========================================= ====================================================================================
 
+        .. Note::
+
+            Most common `RA Mode` options:
+
+                - ``ra-only``: Advertise IPv6 default route
+                - ``ra-names``: Advertise IPv6 default route, derive hostname from IPv4 lease and register it if possible. Can be combined with ra-stateless and slaac.
+                - ``ra-stateless``: (O + A bits) Advertise IPv6 default route, use SLAAC for IPv6 address, use stateless DHCPv6 for additional options
+                - ``slaac``: (A bit) Advertise IPv6 default route, use SLAAC for IPv6 address, use DHCPv6 for additional IPv6 address and options
+
+            For the less common options refer to the official dnsmasq man page.
+
     .. tab:: DHCP options
 
         ========================================= ====================================================================================
@@ -293,10 +304,12 @@ DHCP Settings
                                                   The special address 0.0.0.0 or [::] is taken to mean "the address of the machine running dnsmasq".
                                                   When using "Match", leave empty to match on the option only.
         **Tag [set]**                             Tag to set for requests matching this range which can be used to selectively match dhcp options.
+        **Value**                                 Value (or values) to send to the client. The special address 0.0.0.0 or [::] is taken to mean "the address of the machine running dnsmasq".
+                                                  When using "Match", leave empty to match on the option only.
+                                                  Send multiple values as a comma-separated list. E.g., ``192.168.1.1,192.168.1.2``.
         **Force**                                 Always send the option, even when the client does not ask for it in the parameter request list.
         **Description**                           You may enter a description here for your reference (not parsed).
         ========================================= ====================================================================================
-
 
     .. tab:: DHCP tags
 
