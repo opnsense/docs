@@ -284,7 +284,7 @@ DHCP Settings
 
                 - ``ra-only``: Advertise IPv6 default route
                 - ``ra-names``: Advertise IPv6 default route, derive hostname from IPv4 lease and register it if possible. Can be combined with ra-stateless and slaac.
-                - ``ra-stateless``: (O + A bits) Adverise IPv6 default route, use SLAAC for IPv6 address, use stateless DHCPv6 for additional options
+                - ``ra-stateless``: (O + A bits) Advertise IPv6 default route, use SLAAC for IPv6 address, use stateless DHCPv6 for additional options
                 - ``slaac``: (A bit) Adverise IPv6 default route, use SLAAC for IPv6 address, use DHCPv6 for additional IPv6 address and options
 
             For the less common options refer to the official dnsmasq man page.
