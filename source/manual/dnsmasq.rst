@@ -60,6 +60,12 @@ General Settings
 Most settings are pretty straightforward here when the service is enabled, it should just start forwarding dns requests
 when received from the network. DHCP requires at least one dhcp-range and matching dhcp-options.
 
+.. Tip::
+
+    - To disable the DNS feature, set the `Listen Port` to ``0``.
+    - To disable the DHCP feature, select interfaces in `Interface [no dhcp]`.
+
+
 .. tabs::
 
     .. tab:: General
@@ -90,9 +96,9 @@ when received from the network. DHCP requires at least one dhcp-range and matchi
         **Listen Port**                           The port used for responding to DNS queries. It should normally be left blank unless
                                                   another service needs to bind to TCP/UDP port 53. Setting this to zero (0) completely
                                                   disables DNS function.
-        **DNSSEC**
+        **DNSSEC**                                Enable DNSSEC.
         **No Hosts Lookup**                       Do not read hostnames in /etc/hosts.
-        **Log the results of DNS queries**
+        **Log the results of DNS queries**        Log all DNS queries.
         **Maximum concurrent queries**            Set the maximum number of concurrent DNS queries. On configurations with tight
                                                   resources, this value may need to be reduced.
         **Cache size**                            Set the size of the cache. Setting the cache size to zero disables caching. Please
@@ -116,8 +122,7 @@ when received from the network. DHCP requires at least one dhcp-range and matchi
         **Require domain**                        If this option is set, we will not forward A or AAAA queries for plain names, without
                                                   dots or domain parts, to upstream name servers. If the name is not known from /etc/hosts
                                                   or DHCP then a "not found" answer is returned.
-        **Do not forward private reverse**        If this option is set, we will not forward reverse DNS lookups (PTR) for private
-        **lookups**
+        **Do not forward private reverse lookup** If this option is set, we will not forward reverse DNS lookups (PTR) for private
                                                   addresses (RFC 1918) to upstream name servers. Any entries in the Domain Overrides
                                                   section forwarding private "n.n.n.in-addr.arpa" names to a specific server are still
                                                   forwarded. If the IP to name is not known from /etc/hosts, DHCP or a specific domain
@@ -207,7 +212,8 @@ DNS Settings
         **Hardware addresses**                    Match the hardware address of the client. Can be multiple addresses, e.g., if the client has
                                                   multiple network cards. Though keep in mind that Dnsmasq cannot assume which address is the correct
                                                   one when multiple send DHCP Discover at the same time.
-        **Lease time**                            Defines how long the addresses (leases) given out by the server are valid (in seconds)
+        **Lease time**                            Defines how long the addresses (leases) given out by the server are valid (in seconds).
+                                                  Set ``0`` for infinite.
         **Tag [set]**                             Optional tag to set for requests matching this range which can be used to selectively match DHCP options.
         **Ignore**                                Ignore any DHCP packets of this host. Useful if it should get served by a different DHCP server.
         **Description**                           You may enter a description here for your reference (not parsed).
@@ -273,6 +279,7 @@ DHCP Settings
                                                   Going lower than that can pose issues in busy networks.
         **Mode**                                  Mode flags to set for this range, 'static' means no addresses will be automatically assigned.
         **Lease time**                            Defines how long the addresses (leases) given out by the server are valid (in seconds).
+                                                  Set ``0`` for infinite; be careful as this might deplete the pool.
         **Domain**                                Offer the specified domain to machines in this range.
         **Disable HA sync**                       Ignore this range from being transferred or updated by HA sync.
         **Description**                           You may enter a description here for your reference (not parsed).
@@ -308,6 +315,19 @@ DHCP Settings
                                                   When using "Match", leave empty to match on the option only.
                                                   Send multiple values as a comma-separated list. E.g., ``192.168.1.1,192.168.1.2``.
         **Force**                                 Always send the option, even when the client does not ask for it in the parameter request list.
+        **Description**                           You may enter a description here for your reference (not parsed).
+        ========================================= ====================================================================================
+
+    .. tab:: DHCP boot
+
+        ========================================= ====================================================================================
+        **Option**                                **Description**
+        ========================================= ====================================================================================
+        **Interface**                             This adds a single interface as tag so this DHCP boot option can match the interface of a DHCP range.
+        **Tag**                                   Only offer this boot image to the clients matched by the given tag. Can be optionally combined with an interface tag.
+        **Filename**                              The boot image file name.
+        **Servername**                            The name of the server which serves the boot image.
+        **Server address**                        The address of the server which serves the boot image.
         **Description**                           You may enter a description here for your reference (not parsed).
         ========================================= ====================================================================================
 
@@ -727,6 +747,97 @@ Option                              Value
 
 This ensures that only clients identifying as VoIP phones receive the appropriate TFTP server information via option 150. You can add
 additional options under the same tag if they should be offered to the VOIP phones.
+
+DHCP boot
+------------------------------------------
+
+In a network, we have different clients that should receive different boot images depending on if they require a BIOS or EFI boot.
+
+By using DHCP tags, we can configure this behavior by matching DHCP options and combining them with a DHCP boot directive.
+
+Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP tags` and create two tags:
+
+.. tabs::
+
+    .. tab:: BIOS Tag
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Name**                            ``IsBIOS``
+        ==================================  =======================================================================================================
+
+    .. tab:: EFI Tag
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Name**                            ``IsEFI``
+        ==================================  =======================================================================================================
+
+Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options`
+
+We will match the DHCP option ``client-arch[93]`` which has multiple possibilities when it comes to the client architecture.
+Value ``0`` matches `x86 BIOS` and value ``7`` matches `EFI BC (EFI x64)`. Choose the correct values to match your specific clients.
+
+.. tabs::
+
+    .. tab:: BIOS Match Tag
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Type**                            Match
+        **Option**                          ``client-arch[93]``
+        **Tag [set]**                       ``IsBIOS``
+        **Value**                           0
+        ==================================  =======================================================================================================
+
+    .. tab:: EFI Match Tag
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Type**                            Match
+        **Option**                          ``client-arch[93]``
+        **Tag [set]**                       ``IsEFI``
+        **Value**                           7
+        ==================================  =======================================================================================================
+
+Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options --> DHCP boot`
+
+Create two boot entries that serve the correct image to matching clients. We assume the requests are on LAN, though it can be left empty
+if these boot images should be served on any interfaces. Adjust IP addresses and filenames to fit your environment.
+
+.. tabs::
+
+    .. tab:: BIOS Boot
+
+        ========================================= ====================================================================================
+        **Option**                                **Description**
+        ========================================= ====================================================================================
+        **Interface**                             ``LAN``
+        **Tag**                                   ``IsBIOS``
+        **Filename**                              ``undionly.kpxe``
+        **Servername**                            ``192.168.99.10``
+        **Server address**                        ``192.168.99.10``
+        ========================================= ====================================================================================
+
+.. tabs::
+
+    .. tab:: EFI Boot
+
+        ========================================= ====================================================================================
+        **Option**                                **Description**
+        ========================================= ====================================================================================
+        **Interface**                             ``LAN``
+        **Tag**                                   ``IsEFI``
+        **Filename**                              ``snponly.efi``
+        **Servername**                            ``192.168.99.10``
+        **Server address**                        ``192.168.99.10``
+        ========================================= ====================================================================================
+
+**Apply** the new configuration, and check the PXE boot server if clients request the correct boot image files.
 
 
 DHCPv4 for small HA setups
