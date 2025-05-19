@@ -275,7 +275,7 @@ and ports 8000 + <zone id> for HTTPS.
  **Destination**              __captiveportal_zone_<zone id>
  **Destination port range**   80
  **Redirect Target IP**       127.0.0.1
- **Redirect Target Port**     8000 + <zone id>
+ **Redirect Target Port**     9000 + <zone id>
  **NAT Reflection**           Disable
  **Filter Rule Association**  Pass
 ============================ ===============================
@@ -290,7 +290,7 @@ and ports 8000 + <zone id> for HTTPS.
  **Destination**              __captiveportal_zone_<zone id>
  **Destination port range**   443
  **Redirect Target IP**       127.0.0.1
- **Redirect Target Port**     9000 + <zone id>
+ **Redirect Target Port**     8000 + <zone id>
  **NAT Reflection**           Disable
  **Filter Rule Association**  Pass
 ============================ ===============================
