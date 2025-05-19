@@ -27,6 +27,69 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.1.7 (May 19, 2025)
+--------------------------------------------------------------------------
+
+
+Dnsmasq DHCP is here and now it is going to be even better with multiple
+fixes thanks to the swift feedback we received.  We are aware of the
+complex topic of DHCP in the recent years so keep in mind we added Dnsmasq
+to fill a specific need for smaller installations that other services cannot
+offer.  There are still areas where Kea shines so having both options is
+the best way forward.
+
+Here are the full patch notes:
+
+* system: safeguard local_group_set() since users may not exist for valid reasons
+* interfaces: emulate device name return in ifconfig edge case for legacy_interface_create()
+* interfaces: cleanup spurious functions regarding VIP access
+* interfaces: interfaces: improve private and bogon network filters (contributed by Maurice Walker)
+* interfaces: consider tracked interfaces linked devices on reload
+* firewall: add ability to specify IPv6 pipe and queue masking using the src-ip6/dst-ipv6 specifiers (contributed by Daniel Tang)
+* firewall: use shared base_bootgrid_table and base_apply_button in shaper
+* captive portal: restore the logging of drop reasons
+* captive portal: fix last_accessed being cached from previous entries if N/A
+* captive portal: mark alias as type external for use in rules
+* dnsmasq: offer all DHCP options via IANA specification
+* dnsmasq: allow "static" setting on IPv6 ranges
+* dnsmasq: do not create entries in dnsmasq-hosts file for dhcp-host entries
+* dnsmasq: prefix length is required when a lease-time is set due to the parsing order
+* dnsmasq: split up "hwaddr" and "iaid" for DHCPv6 leases and expose them in the leases overview
+* dnsmasq: add missing dhcp-boot to template
+* dnsmasq: add interface tag to dhcp-boot options
+* dnsmasq: reverse rebind check
+* dnsmasq: remove superfluous escape in conf-dir directive
+* dnsmasq: allow lease time 0 to set "infinite"
+* dnsmasq: add protocol selectpicker to leases view
+* dnsmasq: domain to host migration for hosts
+* dnsmasq: allow multiple tags per dhcp-boot
+* kea-dhcp: fix parsing both address families in static mappings
+* kea-dhcp: translate reservation MAC address when dash is used
+* kea-dhcp: add advanced options (pd-)allocator in DHCPv6
+* ipsec: attr 28673 previously rendered as 1 instead of strongswan default "yes"/"no" for a boolean
+* openvpn: add port-share as advanced feature
+* openvpn: add (push) block-ipv6 option
+* backend: use the new errors:no instead of "exit 0" in actions
+* mvc: add contribDir to app config (contributed by Freddie Sackur)
+* mvc: show versions on migration failure for clarity
+* mvc: saveguard JsonKeyValueStoreField->setSourceField()
+* mvc: add static $internalStaticChildren in classes extending ArrayField
+* plugins: os-beats 1.0 (contributed by Maxime Thiebaut)
+* plugins: os-c-icap 1.8 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/c-icap/pkg-descr>`__ 
+* plugins: os-caddy 2.0.0 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* plugins: os-postfix 1.24 `[3] <https://github.com/opnsense/plugins/blob/stable/25.1/mail/postfix/pkg-descr>`__ 
+* plugins: os-radsecproxy 1.1 `[4] <https://github.com/opnsense/plugins/blob/stable/25.1/net/radsecproxy/pkg-descr>`__ 
+* ports: dhcp6c 20250513 fixes spawning multiple instances
+* ports: monit 5.35.2 `[5] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.111 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_111.html>`__ 
+* ports: perl 5.40.2 `[7] <https://perldoc.perl.org/5.40.2/perldelta>`__ 
+* ports: pftop 0.13
+* ports: php 8.3.21 `[8] <https://www.php.net/ChangeLog-8.php#8.3.21>`__ 
+* ports: syslog-ng 4.8.2 `[9] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.8.2>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.1.6 (May 08, 2025)
 --------------------------------------------------------------------------
 
@@ -110,6 +173,15 @@ Here are the full patch notes:
 * ports: python 3.11.12 `[11] <https://docs.python.org/release/3.11.12/whatsnew/changelog.html>`__ 
 * ports: unbound 1.23.0 `[12] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-23-0>`__ 
 
+A hotfix release was issued as 25.1.6_2:
+
+* kea-dhcp: split into multiple id-based services
+* kea-dhcp: fix menu for overlapping leases links
+
+A hotfix release was issued as 25.1.6_4:
+
+* dnsmasq: proper handling of the "add_subnet" and "strip_subnet" options
+* intrusion detection: fix alert info button
 
 
 --------------------------------------------------------------------------
