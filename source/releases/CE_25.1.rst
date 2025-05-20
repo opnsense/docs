@@ -87,6 +87,10 @@ Here are the full patch notes:
 * ports: php 8.3.21 `[8] <https://www.php.net/ChangeLog-8.php#8.3.21>`__ 
 * ports: syslog-ng 4.8.2 `[9] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.8.2>`__ 
 
+A hotfix release was issued as 25.1.7_2:
+
+* dnsmasq: create static host entries for all except partial IPv6 addresses
+* kea-dhcp: correct static mapping returns for IPv6 addresses
 
 
 --------------------------------------------------------------------------
