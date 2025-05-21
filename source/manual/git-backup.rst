@@ -80,7 +80,7 @@ URL                                   Target location, which defined transport p
 Branch                                The branch to push your commits to on the configured url
 SSH private key                       When using ssh, make sure to add a private key here
 User Name                             Username, when using gitlab and ssh, the default is :code:`git` here
-                                      (most of these providers use a single user and identify the user by it's key)
+                                      (most of these providers use a single user and identify the user by its key)
 password                              When using https authentication, choose a password here.
 ====================================  ===============================================================================
 
