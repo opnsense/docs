@@ -13,8 +13,19 @@ classes to ensure basic functionality such as authorisation and CSRF
 protection.
 
 Controllers are placed in the directory /usr/local/opnsense/mvc/app/controllers/<Vendor\_name>/<Module\_name>/
-and should use the folloging naming conventions, suffix Controller.php on
+and should use the following naming conventions, suffix Controller.php on
 every class file and suffix Action on all action methods.
+
+----------------------
+Class structure
+----------------------
+
+Most components inherit from a set of standard controllers, which are specified in the diagram below including their primary
+usage scope (/ui or /api)
+
+
+.. image:: ../images/Controller_class_hierarchy.svg
+    :width: 100%
 
 
 ----------------------
