@@ -561,7 +561,7 @@ which is our configured `Dnsmasq` listening on ``127.0.0.1:53053``. ``Dnsmasq`` 
 .. Tip::
 
     You can usually resolve a hostname in your network by querying for e.g. ``smartphone``. This works because client systems
-    recognize that a FQDN isn't used, and will therefore suffix the request with their domain name received from Dnsmasq, transforming
+    recognize that a FQDN is not used, and will therefore suffix the request with their domain name received from Dnsmasq, transforming
     the query to ``smartphone.lan.internal.``.
 
 As you can see, this is a highly integrated and simple setup which leverages just the available DHCP and DNS standards with no trickery involved.
