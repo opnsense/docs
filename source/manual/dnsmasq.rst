@@ -554,7 +554,7 @@ Our smartphone now has the following IP configuration:
 At the same time, Dnsmasq registers the DNS hostname of the smartphone (if it exists). Since we configured the FQDN option and domain in the DHCP range, the name of the
 smartphone will be: ``smartphone.lan.internal.``.
 
-When a client queries `Unbound` for exactly ``smartphone.lan.internal.``, the configured query forwarding sends the request to the DNS server responsible for ``lan.internal``
+When a client queries `Unbound` for exactly ``smartphone.lan.internal.``, the configured query forwarding sends the request to the DNS server responsible for ``lan.internal.``
 which is our configured `Dnsmasq` listening on ``127.0.0.1:53053``. ``Dnsmasq`` responds to this query and will resolve the current A record of ``smartphone.lan.internal.`` to
 ``192.168.1.100``, sending this information to `Unbound` which in return sends the response back to the client that initially queried.
 
