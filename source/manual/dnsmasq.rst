@@ -511,17 +511,29 @@ As next step we define the DHCP ranges for our interfaces.
 
         - Press **Save** and **Apply**
 
+
 .. Tip::
 
-    **There is no need to create DHCP options manually for simple setups**.
+    Creating a DHCP range will automatically send out common DHCP options to requesting clients, without explicitely configuring them.
 
-    Creating a DHCP range will set these DHCP options automatically with defaults:
+This is an incomplete overview which highlights some default DHCP options:
 
-    - ``router[3]`` -> IPv4 address of the receiving interface
-    - ``dns-server[6]`` -> IPv4 address of the receiving interface
-    - ``domain-search[119]`` -> Domain set in DHCP range
+==================================================  ======================================================  ===================================================
+DHCP Option                                         Default                                                 Description
+==================================================  ======================================================  ===================================================
+router[3]                                           IPv4 address of the interface that received the         The default gateway the client should use.
+                                                    DHCP Request.                                           In this case the OPNsense.
+dns-server[6]                                       IPv4 address of the interface that received the         The DNS server the client should use.
+                                                    DHCP Request.                                           In this case Unbound on the OPNsense.
+domain-name[15]                                     Domain set in a DHCP Range, or the default              The domain name the client should use,
+                                                    system domain if none could be matched.                 to construct short names to FQDNs in DNS lookups
+client fqdn[81]                                     A combination of client hostname and domain, the        The full qualified domain name the client should
+                                                    result of the DDNS registration.                        use.
+==================================================  ======================================================  ===================================================
 
-    There is only a need to specify these options if a different IP address should be advertised, e.g., in high availability setups with CARP.
+.. Note::
+
+    Only some usecases require setting these options manually, e.g., the IPv4 address of the router and dns-server in high availability setups with CARP.
 
 .. Attention::
 
