@@ -458,18 +458,28 @@ In our example, we configure query forwarding for 2 networks:
     thats not used on the internet, e.g., ``lan.internal.example.com``.
 
 
-Now that we have the DNS infrastructure set up, we can configure the DHCP ranges.
+Now that we have the DNS infrastructure set up, we can configure DHCP.
 
 - Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> General` and set:
 
-==================================  =======================================================================================================
-Option                              Value
-==================================  =======================================================================================================
-**Interface**                       ``LAN, GUEST`` (The network interfaces which will serve DHCP, this registers firewall rules)
-**DHCP fqdn**                       ``X``
-**DHCP default domain**             ``internal`` (or leave empty to use this system's domain)
-**DHCP register firewall rules**    ``X``
-==================================  =======================================================================================================
+================================================ =======================================================================================================
+Option                                           Value
+================================================ =======================================================================================================
+**Interface**                                    ``LAN, GUEST`` (The network interfaces which will serve DHCP, this registers firewall rules)
+**Do not forward to system defined DNS servers** ``X`` (Unless Domains are specified in Dnsmasq: Domains, this will disable forwarding behavior)
+**DHCP fqdn**                                    ``X``
+**DHCP default domain**                          ``internal`` (or leave empty to use this system's domain)
+**DHCP register firewall rules**                 ``X``
+================================================ =======================================================================================================
+
+.. Note::
+
+    **DHCP fqdn** will do two things:
+
+    - Make sure all devices are registered in DNS with the configured domain name appended, e.g. ``smartphone.lan.internal``.
+      This ensures that ``smartphone`` can exist in both ``lan.internal`` and ``guest.internal``.
+    - Register the DHCP domain name as local, which will make Dnsmasq authoritative for this domain, ensuring ``NXDOMAIN`` is returned
+      for devices querying unknown hostnames within this local domain.
 
 - Press **Apply**
 
@@ -542,11 +552,17 @@ Our smartphone now has the following IP configuration:
 - DNS Server: ``192.168.1.1``
 
 At the same time, Dnsmasq registers the DNS hostname of the smartphone (if it exists). Since we configured the FQDN option and domain in the DHCP range, the name of the
-smartphone will be: ``smartphone.lan.internal``.
+smartphone will be: ``smartphone.lan.internal.``.
 
-When a client queries `Unbound` for exactly ``smartphone.lan.internal``, the configured query forwarding sends the request to the DNS server responsible for ``lan.internal``
-which is our configured `Dnsmasq` listening on ``127.0.0.1:53053``. ``Dnsmasq`` responds to this query and will resolve the current A-Record of ``smartphone.lan.internal`` to
+When a client queries `Unbound` for exactly ``smartphone.lan.internal.``, the configured query forwarding sends the request to the DNS server responsible for ``lan.internal``
+which is our configured `Dnsmasq` listening on ``127.0.0.1:53053``. ``Dnsmasq`` responds to this query and will resolve the current A record of ``smartphone.lan.internal.`` to
 ``192.168.1.100``, sending this information to `Unbound` which in return sends the response back to the client that initially queried.
+
+.. Tip::
+
+    You can usually resolve a hostname in your network by querying for e.g. ``smartphone``. This works because client systems
+    recognize that a FQDN isn't used, and will therefore suffix the request with their domain name received from Dnsmasq, transforming
+    the query to ``smartphone.lan.internal.``.
 
 As you can see, this is a highly integrated and simple setup which leverages just the available DHCP and DNS standards with no trickery involved.
 
