@@ -657,6 +657,12 @@ For an IPv6 reservation, a DHCPv6 range must be configured which sets ``slaac`` 
 This sets the `A bit` so that clients can generate a SLAAC address and receive an additional DHCPv6 lease.
 If a different Router Advertisement daemon is used, ensure it runs in `Assisted` mode.
 
+.. Tip::
+
+    You do not need a separate static DHCP range to use ``dhcp-host`` reservations.
+    A single dynamic range is enough — ``dhcp-host`` entries can also assign IPs outside that range.
+    The static range is only required if you want a reservation-only network.
+
 .. Note::
 
     As all clients configure a tag with the receiving interface name automatically,
@@ -674,16 +680,11 @@ Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> Hosts`
         Option                              Value
         ==================================  =======================================================================================================
         **Host**                            ``smartphone``
-        **IP addresses**                    ``192.168.1.150`` ``192.168.10.150``
+        **IP addresses**                    ``192.168.1.150``
         **Hardware addresses**              ``aa:bb:cc:dd:ee:ff``
         ==================================  =======================================================================================================
 
         - Press **Save** and **Apply**
-
-        .. Tip::
-
-            Setting IP addresses for different DHCP ranges will ensure that when the client traverses between e.g., ``LAN`` and ``GUEST`` that it receives a static IP address in
-            both ranges automatically.
 
     .. tab:: IPv6
 
@@ -712,7 +713,7 @@ Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> Hosts`
         Option                              Value
         ==================================  =======================================================================================================
         **Host**                            ``smartphone``
-        **IP addresses**                    ``192.168.1.150`` ``192.168.10.150`` ``::1234``
+        **IP addresses**                    ``192.168.1.150`` ``::1234``
         **Client identifier**               ``00:03:00:01:aa:bb:cc:dd:ee:ff``
         **Hardware addresses**              ``aa:bb:cc:dd:ee:ff``
         ==================================  =======================================================================================================
