@@ -122,6 +122,11 @@ when received from the network. DHCP requires at least one dhcp-range and matchi
         **Require domain**                        If this option is set, we will not forward A or AAAA queries for plain names, without
                                                   dots or domain parts, to upstream name servers. If the name is not known from /etc/hosts
                                                   or DHCP then a "not found" answer is returned.
+        **Do not forward to system defined DNS**  If this option is set, DNS forwarding to system nameservers (defined in System:
+                                                  General Setup: DNS Servers) will be disabled. Upstream servers defined in
+                                                  Services: Dnsmasq DNS & DHCP: Domains will still be used. This option is recommended
+                                                  when Unbound forwards local domain queries to Dnsmasq, so that all queries terminate
+                                                  without further lookups if they are unknown.
         **Do not forward private reverse lookup** If this option is set, we will not forward reverse DNS lookups (PTR) for private
                                                   addresses (RFC 1918) to upstream name servers. Any entries in the Domain Overrides
                                                   section forwarding private "n.n.n.in-addr.arpa" names to a specific server are still
@@ -631,6 +636,11 @@ Option                              Value
 **Interface**                       ``LAN``
 **Value**                           ``[::]``
 ==================================  =======================================================================================================
+
+.. Tip::
+
+    To use the same ``dns-server [23]`` option on all interfaces, set the interface to any. You do not need to create them for each
+    interface individually. The correct IPv6 DNS server will be automatically calculated via ``[::]`` anyway.
 
 .. Note::
 
