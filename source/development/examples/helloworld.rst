@@ -973,7 +973,7 @@ prefixed with os-, our new package file will be called:
 -  frontend template language reference (Volt) :
    https://docs.phalcon.io/latest/volt/
 -  configuration template language reference (mostly the same as Volt) :
-   http://jinja.pocoo.org/docs/dev/
+   https://jinja.palletsprojects.com/en/stable/
 -  OPNsense architecture :doc:`Architecture <../architecture>`
 -  OPNsense creating models
    `Develop:Frontend/Creating\_models </index.php/Develop:Frontend/Creating_models>`__

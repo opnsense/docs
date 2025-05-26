@@ -126,7 +126,7 @@ Currently there are four types of services implemented in the daemon:
 -  inline : perform inline actions which are part of configd, most notable template generation and maintanance.
 
 |
-| Template generation is handled by Jinja2 (http://jinja.pocoo.org/),
+| Template generation is handled by Jinja2 (https://jinja.palletsprojects.com/en/stable/),
   more information on how to create application templates can be found
   at :doc:`/development/backend/templates`.
 
