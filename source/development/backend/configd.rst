@@ -82,6 +82,9 @@ Action properties
 +-----------------------+------------------------+--------------------------------------------------------+
 | errors                | text [no]              | :code:`errors:no` ignores the scripts exit code        |
 +-----------------------+------------------------+--------------------------------------------------------+
+| allowed_groups	| text			 | list of groups allowed to execute                      |
+|                       |                        | this action (e.g. wheel)                               |
++-----------------------+------------------------+--------------------------------------------------------+
 | message               | text                   | Message to send to syslog (you can use %s parameters)  |
 +-----------------------+------------------------+--------------------------------------------------------+
 | description           | text                   | User-friendly description, also allows GUI usage       |
