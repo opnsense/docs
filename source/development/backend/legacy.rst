@@ -255,7 +255,7 @@ Example:
 
 ::
 
-    function my myplugin_devices()
+    function myplugin_devices()
     {
         $devices = [];
 
