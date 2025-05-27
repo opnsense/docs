@@ -47,6 +47,25 @@ To register services, the :code:`<plugin>_services()` function should return a s
         return $services;
     }
 
+
+
+===========================  =================================================================================
+**option**                   **Description**
+===========================  =================================================================================
+name                         Service identifier
+id                           Optional identifier to suffix the service, only used in specific cases where
+                             one "service" can actually be a list of them (e.g. :code:`openvpn`)
+description                  User friendly description
+pidfile                      Validate running based on specified pid file (instead of "name")
+nocheck                      [boolean] ignore pid or process name and always report running
+{type}                       Type could be one of :code:`configd`, :code:`php`, :code:`mwexec`
+{type}.start                 Action to call when starting the service
+{type}.stop                  Action to call when stopping the service
+{type}.restart               Action to call when restarting the service
+===========================  =================================================================================
+
+
+
 To list all available services from the command line, you can use pluginctl (bundled with our core system).
 
 ::
@@ -94,7 +113,7 @@ To list all available hooks, you can use :code:`pluginctl` without parameters:
 Below you will find an incomplete list of the most common used events that are handled at the moment:
 
 ===========================  =================================================================================
-Event                        When
+**Event**                    **When**
 ===========================  =================================================================================
 early                        Early in bootup process, before normal services are started
                              (things like ssh and the webconfigurator use this spot)
@@ -158,7 +177,7 @@ To register new (virtual) interfaces, create a function called :code:`<plugin>_i
 Every item should contain the following properties:
 
 +-----------------------+------------------------+--------------------------------------------------------+
-| Property              | Syntax                 | Description                                            |
+| **Property**          | **Syntax**             | **Description**                                        |
 +=======================+========================+========================================================+
 | enable                | boolean                | interface enabled, if so it will be saved in the config|
 +-----------------------+------------------------+--------------------------------------------------------+
@@ -210,7 +229,7 @@ amongst others. Available settings are described below:
 
 
 +-----------------------+------------------------+--------------------------------------------------------------+
-| Property              | Syntax                 | Description                                                  |
+| **Property**          | **Syntax**             | **Description**                                              |
 +=======================+========================+==============================================================+
 | function              | text                   | Calls function of that name with device name as argument     |
 +-----------------------+------------------------+--------------------------------------------------------------+
@@ -289,7 +308,7 @@ To test if a service registration functions properly, just restart the syslog fa
 
 .. Note::
 
-    In order to define local targets for Syslog-NG you can just add **local** filters (e.g. by creating 
+    In order to define local targets for Syslog-NG you can just add **local** filters (e.g. by creating
     :code:`src/opnsense/service/templates/OPNsense/Syslog/local/helloworld.conf`) which will be collected into
     one large syslog configuration.
     The readme on `GitHub <https://github.com/opnsense/core/blob/master/src/opnsense/service/templates/OPNsense/Syslog/local/README>`__
