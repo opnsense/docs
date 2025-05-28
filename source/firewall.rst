@@ -23,6 +23,7 @@ These are all combined in the firewall section.
    manual/nat
    manual/nptv6
    manual/firewall
+   manual/firewall_automation
    manual/shaping
    manual/firewall_settings
    manual/firewall_scrub
