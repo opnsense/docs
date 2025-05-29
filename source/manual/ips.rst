@@ -87,7 +87,7 @@ IPS mode                              When enabled, the system can drop suspicio
                                       work, your network card needs to support netmap.
                                       The action for a rule needs to be "drop" in order to discard the packet,
                                       this can be configured per rule or ruleset (using an input filter)
-Promiscuous mode                      Listen to traffic in promiscuous mode. (all packets in stead of only the
+Promiscuous mode                      Listen to traffic in promiscuous mode. (all packets instead of only the
                                       ones addressed to this network interface)
 Enable syslog alerts                  Send alerts to syslog, using fast log format
 Enable eve syslog output              Send alerts in EVE_ format to syslog, using log level info.
@@ -97,8 +97,8 @@ Enable eve syslog output              Send alerts in EVE_ format to syslog, usin
 Pattern matcher                       Controls the pattern matcher algorithm.
                                       Aho–Corasick is the default. On supported platforms, Hyperscan is the best option.
                                       On commodity hardware if Hyperscan is not available the suggested setting is "Aho–Corasick Ken                                           Steele variant" as it performs better than "Aho–Corasick".
-Interfaces                            Interfaces to protect. When in IPS mode, this need to be real interfaces
-                                      supporting netmap. (when using VLAN's, enable IPS on the parent)
+Interfaces                            Interfaces to protect. When in IPS mode, this needs to be real interfaces
+                                      supporting netmap. (when using VLANs, enable IPS on the parent)
 Rotate log                            Log rotating frequency, also used for the internal event logging
                                       (see Alert tab)
 Save logs                             Number of logs to keep
