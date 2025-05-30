@@ -208,6 +208,8 @@ DNS Settings
         ========================================= ====================================================================================
         **Host**                                  Name of the host, without the domain part. Use "*" to create a wildcard entry.
         **Domain**                                Domain of the host, e.g. example.com
+        **Local**                                 Set the above domain as local. This will configure this DNS server as authoritative;
+                                                  it will not forward queries to any upstream servers for this domain.
         **IP addresses**                          IP addresses of the host, e.g. 192.168.100.100 or fd00:abcd::1. Can be multiple IPv4
                                                   and IPv6 addresses for dual stack configurations. Setting multiple addresses will automatically
                                                   assign the best match based on the subnet of the interface receiving the DHCP Discover.
@@ -290,16 +292,31 @@ DHCP Settings
         **Description**                           You may enter a description here for your reference (not parsed).
         ========================================= ====================================================================================
 
-        .. Note::
 
-            Most common `RA Mode` options:
+    .. tab:: RA Modes
 
-                - ``ra-only``: Advertise IPv6 default route
-                - ``ra-names``: Advertise IPv6 default route, derive hostname from IPv4 lease and register it if possible. Can be combined with ra-stateless and slaac.
-                - ``ra-stateless``: (O + A bits) Advertise IPv6 default route, use SLAAC for IPv6 address, use stateless DHCPv6 for additional options
-                - ``slaac``: (A bit) Advertise IPv6 default route, use SLAAC for IPv6 address, use DHCPv6 for additional IPv6 address and options
+        ================  ==========  ==========  ==========  ====================  ================  ==========
+        **Modes**         **M-Bit**   **O-Bit**   **A-Bit**   **Default Route**     **DHCPv6**        **SLAAC**
+        ================  ==========  ==========  ==========  ====================  ================  ==========
+        **default**       1           0           0           advertised            stateful          no
+        **ra-only**       0           0           0           advertised            no                no
+        **slaac**         1           0           1           advertised            stateful          yes
+        **ra-stateless**  0           1           1           advertised            stateless         yes
+        ================  ==========  ==========  ==========  ====================  ================  ==========
 
-            For the less common options refer to the official dnsmasq man page.
+        This is what the RA Flags (Bits) mean:
+
+        - ``M`` - Managed address configuration:
+            The client should use stateful DHCPv6 to obtain an IPv6 address.
+        - ``O`` - Other configuration:
+            The client should use stateless DHCPv6 to obtain additional information (e.g., DNS server).
+        - ``A`` - Autonomous address-configuration:
+            The client can use SLAAC to self-assign an IPv6 address based on the advertised prefix.
+
+        .. Tip::
+
+            For other RA modes not listed here, visit the `dnsmasq man page <https://thekelleys.org.uk/dnsmasq/docs/dnsmasq-man.html>`_.
+
 
     .. tab:: DHCP options
 
