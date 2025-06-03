@@ -43,6 +43,9 @@ the following options are available:
                              you can select this option which allows dynamic gateways to be created without direct target addresses. Some tunnel types support this.
 =========================== ============================================================================================================================================================
 
+.. Note::
+
+    `ax` interfaces, controlled by the `axgbe` driver, only support an MTU of up to 4082.
 
 .. Note::
 
