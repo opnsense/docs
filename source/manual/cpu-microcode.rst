@@ -6,9 +6,9 @@ CPU Microcode updates [AMD/Intel]
 Introduction
 --------------------------------------
 
-Processor manufactures like AMD and Intel often release microcode updates to increase stabilty and security of their products.
-Microcode updates can close the gap in between BIOS/EFI updates, which are generally less frequently available,
-to fix issues found after product release.
+Processor manufacturers like AMD and Intel often release microcode updates to increase the stabilty and security of their products.
+Microcode updates can close the gap between BIOS/UEFI updates, which are generally less frequently available,
+to fix issues found after the product's release.
 
 This document describes the two plugins available in OPNsense and how to verify the microcode version being used
 on the system at hand.
@@ -32,7 +32,7 @@ Reboot the machine to apply the new microcode.
 [Expert] Check microcode version
 --------------------------------------
 
-After installing the machine, the microcode update is applied. You can validate the microcode version via the console by using the
+After installing the plugin on the machine, the microcode update is applied. You can validate the microcode version via the console by using the
 following command:
 
 ::
@@ -47,5 +47,5 @@ Which should output something like:
     Microcode patch level: 0x800126f
 
 
-Usually manufactures publish a list of patch levels, for example AMD's patches can be found in the linux `source <https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/amd-ucode/README>`__ tree.
+Usually manufacturers publish a list of patch levels, for example AMD's patches can be found in the linux `source <https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/amd-ucode/README>`__ tree.
 
