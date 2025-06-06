@@ -21,7 +21,7 @@ Alias                                 Flexible type of network or address defini
 Single host or network                Standard host or network in `CIDR notation <https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing>`__
 any                                   All IPv4 and/or IPv6 addresses (in the world)
 This Firewall                         All IPv4 and/or IPv6 addresses assigned to this firewall
-[Interface] Network                   All networks assigned to the physical interface, this will also include networks of assigned virtual addresses
+[Interface] Network                   All networks assigned to the device, this will also include networks of assigned virtual addresses
                                       ([Interface] is explained in the :doc:`interfaces </manual/interfaces>` topic). Normally used to allow traffic
                                       from or to clients connected to a specific interface.
 [Interface] Address                   All addresses configured on an interface, this includes all virtual (alias) addresses as well.
