@@ -49,7 +49,7 @@ Register ISC DHCP4 Leases             **IPv4 only** If this option is set, then 
                                       This can also be inspected using the `Leases <dhcp.html#diagnostics>`__ page.
 DHCP Domain Override                  When the above registrations shouldn't use the same domain name as configured
                                       on this firewall, you can specify a different one here.
-Register ISC DHCP Static Mappings     Register static dhcpd entries so clients can resolve them. Supported on IPv4 and
+Register DHCP Static Mappings         Register static dhcpd entries so clients can resolve them. Supported on IPv4 and
                                       IPv6.
 No IPv6 Link-local aaddresses         Do not register link local addresses for IPv6. This will prevent the return of
                                       unreachable addresses when more than one listen interface is configured.
