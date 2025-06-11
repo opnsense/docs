@@ -125,7 +125,7 @@ For example, to add a proxy server (for the firmware updater), use settings like
     [environment]
     HTTP_PROXY=http://proxy-adddress:8080
     HTTPS_PROXY=http://proxy-adddress:8080
-    noproxy=192.168.1.2
+    NO_PROXY=192.168.1.2
 
 
 
@@ -141,6 +141,6 @@ For example, to add a proxy server (for the firmware updater), use settings like
 
 .. Note::
 
-   The :code:`noproxy` setting may be used to exclude hosts from using a proxy, which is usually practical for xmlrpc sync
+   The :code:`NO_PROXY` setting may be used to exclude hosts from using a proxy, which is usually practical for xmlrpc sync
 
 
