@@ -17,6 +17,143 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+25.4.1 (May 22, 2025)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 25.1.6 community version
+with additional reliability improvements, but without Dnsmasq DHCP support
+and the recent captive portal backend switch.
+
+Here are the full patch notes:
+
+* system: extend XMLRPC "nosync" support to keep backup items for new cases
+* system: use RADIUS Message Authenticator by default
+* system: prevent recursion loop when CAs are cross-referencing each other
+* system: fix off by one error due to line ending at the end of a log file
+* system: offer config directory to store locations for external certificates and support it in the certificates widget
+* system: allow multiple manual DNS search domains
+* system: fix gateway watcher backoff
+* system: minor code cleanups in auth.inc
+* system: kill gateways states for failback scenario when a higher priority gateway goes back online
+* system: update to latest tzdata content for time zones and ISO 3166 definitions
+* system: clean up a number of unused functions
+* system: refactor a VIP access in auth.inc
+* system: add field "boottime" to api/system/systemTime (contributed by eopo)
+* reporting: move NetFlow backend single_pass to command line parameters for easier debugging
+* reporting: use client time in traffic dashboard widget
+* reporting: replace insights totals chart with ChartJS variant
+* reporting: minor style fixes and cleanups in health graphs
+* interfaces: refactor bridge configuration backend
+* interfaces: refactor wireless device assignment
+* interfaces: allow literal comma by escape sequence in DHCP advanced option modifiers
+* interfaces: fix refresh button in ARP page
+* interfaces: fix "(de)select all" button in packet capture
+* interfaces: rename ip_in_subnet() to reflect it is only for IPv4
+* interfaces: remove unused get_vip_descr()
+* dnsmasq: domain to host migration for hosts
+* firewall: automation filter UI revamp
+* firewall: fix regression in alias table in JSON format
+* firewall: replace update_params for argparse in filter log reader
+* firewall: prevent source/destination inversion when multiple nets are selected
+* firewall: support comma separated alias targets in refactor() call
+* firewall: added multi-select for ICMP type
+* firewall: update user agent in alias URL fetch
+* firmware: ignore dashboard check for updates link automation if user clicks check for updates too
+* firmware: fix reboot flag handling due to changed BooleanField default in 25.1.4
+* firmware: add cleanup audit script
+* intrusion detection: fix a log reader regression in the alert view
+* intrusion detection: fix alert info button
+* ipsec: move mobile clients charon attributes to "Advanced settings"
+* ipsec: fix auth server parsing regression
+* ipsec: copy "Split DNS name" to undocumented "25" option
+* ipsec: fix more ACLs related to individual IPsec page use
+* ipsec: add DH Group 2 for basic Azure VPN gateway compatibility
+* ipsec: fix trimming NULL values
+* ipsec: attr 28673 previously rendered as 1 instead of strongswan default "yes"/"no" for a boolean
+* isc-dhcp: use "lease_type" to key lease map in addition to "iaid_duid" (contributed by Alex Goodkind)
+* isc-dhcp: fix invalid FQDN generation from DHCPv4 static map domains (contributed by Steven Zimmermann)
+* kea-dhcp: allow manual configuration for advanced scenarios
+* kea-dhcp: add DHCPv6 support
+* kea-dhcp: split into multiple id-based services
+* kea-dhcp: fix menu for overlapping leases links
+* kea-dhcp: correct static mapping returns for IPv6 addresses
+* kea-dhcp: translate reservation MAC address when dash is used
+* openvpn: display virtual IPv6 addresses for clients in dashboard widget (contributed by cs-1 and lucaspalomodevelop)
+* openvpn: simplify the VIP handling in legacy pages
+* router advertisements: fix list of source addresses on overlapping link-locals (contributed by Robin Müller)
+* unbound: add optional TTL field
+* backend: support "errors:no" clause on actions
+* mvc: prefer ui/user_portal above system_usermanager_passwordmg.php in ACLs
+* mvc: implement "ignore" field type in forms
+* mvc: allow referencing disabled interfaces in LinkAddressField
+* mvc: fix scoping issue in CertificatesField
+* mvc: BooleanField now defaults to "0" on creation
+* mvc: add static $internalStaticChildren in classes extending ArrayField
+* mvc: safeguard JsonKeyValueStoreField->setSourceField()
+* ui: include "all" instead of only "solid" and "brands" Font Awesome styles
+* ui: ensure fields stay aligned relatively to another when headers are used in forms
+* ui: add fetch_options() which can build grouped selectpickers
+* ui: improve and extend Bootgrid behaviour
+* plugins: os-caddy 1.8.5 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* plugins: os-ndproxy 1.1 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/net/ndproxy/pkg-descr>`__ 
+* plugins: os-sftp-backup 1.1 adds hostname prefix and filedrop-only support (contributed by beposec)
+* plugins: os-theme-rebellion 1.9.3 (contributed by Team Rebellion)
+* plugins: os-turnserver 1.0 (contributed by Frank Wall)
+* plugnis: os-squid 1.2 `[3] <https://github.com/opnsense/plugins/blob/stable/25.1/www/squid/pkg-descr>`__ 
+* src: ifconfig: fix reporting optics on most 100g interfaces
+* src: igc: fix attach for I226-K and LMVP devices
+* src: inpcb: assorted changes for upcoming FIB support
+* src: ipfw: fix dump_soptcodes() handler
+* src: ixgbe: add support for 1000BASE-BX SFP modules
+* src: ixgbe: fix mailbox ack handling
+* src: netinet6: add the missing lock acquire to nd6_get_llentry
+* src: netinet: fix getcred sysctl handlers to do nothing if no input is given
+* src: netinet: if mb_unmapped_to_ext() failed, return directly
+* src: netlink: fix getting route scope of interface IPv4 addresses
+* src: ovpn: fix use-after-free of mbuf
+* src: pf: improve pf_state_key_attach() error handling
+* src: pfkey2: use correct value for a key length
+* src: routing: do not allow PINNED routes to be overriden
+* src: sctp: fix double unlock in case adding a remote address fails
+* src: tcp: clear sendfile logging struct
+* src: udp: do not recursively enter net epoch
+* src: wg: remove overly-restrictive address family check
+* src: caroot: update the root bundle
+* src: openssl: import OpenSSL 3.0.16
+* src: daemon: stop rebuilding the kqueue every restart of the child
+* src: contrib/expat: update libexpat from 2.6.0 to 2.7.1
+* src: contrib/tzdata: import tzdata 2025b
+* src: pfctl: fix faulty rule anchor counter print
+* src: pfctl: fix recursive printing of NAT rules
+* src: pf: Use a macro to get the hash row in pf_find_state_byid()
+* src: netinet6: work around synchronization issue in dying netgraph device
+* src: wg: Improve wg_peer_alloc() to simplify the calling
+* src: bnxt_en: Retrieve maximum of 128 APP TLVs
+* src: Revert "amd64 GENERIC: Switch uart hints from isa to acpi"
+* ports: curl 8.13.0 `[4] <https://curl.se/changes.html#8_13_0>`__ 
+* ports: expat 2.7.1 `[5] <https://github.com/libexpat/libexpat/blob/R_2_7_1/expat/Changes>`__ 
+* ports: kea 2.6.2 `[6] <https://downloads.isc.org/isc/kea/2.6.2/Kea-2.6.2-ReleaseNotes.txt>`__ 
+* ports: lighttpd 1.4.79 `[7] <https://www.lighttpd.net/2025/4/4/1.4.79/>`__ 
+* ports: monit 5.35.2 `[8] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.110 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_110.html>`__ 
+* ports: openssh 10.0p1 `[10] <https://www.openssh.com/txt/release-10.0>`__ 
+* ports: phalcon 5.9.3 `[11] <https://github.com/phalcon/cphalcon/releases/tag/v5.9.3>`__ 
+* ports: php 8.3.20 `[12] <https://www.php.net/ChangeLog-8.php#8.3.20>`__ 
+* ports: py-duckdb 1.2.2 `[13] <https://github.com/duckdb/duckdb/releases/tag/v1.2.2>`__ 
+* ports: python 3.11.12 `[14] <https://docs.python.org/release/3.11.12/whatsnew/changelog.html>`__ 
+* ports: syslog-ng 4.8.2 `[15] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.8.2>`__ 
+* ports: unbound 1.23.0 `[16] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-23-0>`__ 
+
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-business-25.4.1-dvd-amd64.iso.bz2) = 12aa36a2ce6743217e9714ac1ba16de6bc81ef2f8a4f3c7635215268a0944b18
+    # SHA256 (OPNsense-business-25.4.1-nano-amd64.img.bz2) = 12361c910da612fe37cdec2814ff6d8363d9bee6171fe50de8cd58adb6a0e22d
+    # SHA256 (OPNsense-business-25.4.1-serial-amd64.img.bz2) = 41283f6cf854608b56cb08f7960c5e0291c9ef1a32e6f0736f59f287cf2e9ba2
+    # SHA256 (OPNsense-business-25.4.1-vga-amd64.img.bz2) = f20dd969784088eb1578df9c8dc5eb0a90502405027ab95b2b66277960803225
+
+--------------------------------------------------------------------------
 25.4 (April 09, 2025)
 --------------------------------------------------------------------------
 

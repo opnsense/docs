@@ -27,6 +27,97 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.1.8 (June 12, 2025)
+--------------------------------------------------------------------------
+
+
+This update addresses a few security issues in third party software,
+but take note that libxml2 is currently stuck in an old release in
+FreeBSD ports that was decided not to be fixed there for the time being.
+
+Dnsmasq receives more improvements as you all explore the limits of the
+current implementation and what the software can still offer beyond that.
+Thank you for all the good feedback on this front!
+
+The FreeBSD kernel was updated with a number of upstream stable commits
+while we get closer to evaulating the jump to a newer FreeBSD release for
+25.7.
+
+Lastly, we are preparing for a historic moment: offering privilege separation
+for the GUI meaning the web server can stop running as a root user.  This
+may still be optional in the next major version, but it makes fixing the
+remaining incompatibilities much easier.
+
+Here are the full patch notes:
+
+* system: fix regression in setGroupMembership()
+* system: add "Source Networks" option to groups to restrict connectivity to web GUI
+* system: remove defunct "sshlogingroup" OpenSSH option because non-admins are no longer permitted shell access
+* system: reduce font size in thermal sensors widget tooltip (contributed by indeed-a-genius)
+* system: allow access to cached watcher gateway status
+* system: implement "force_down" failover support
+* system: implement base_bootgrid_table in user, group and priv templates
+* system: balance fastcgi servers a bit better
+* system: check private key matches provided certificate data
+* system: introduce a "wwwonly" user and group and related privilege separation preparations
+* interfaces: convert bridge configuration to MVC/API
+* interfaces: remove unused is_interface_assigned()
+* firewall: use CIDR notation for specifying masks to dnctl (contributed by Daniel Tang)
+* firewall: improve dummynet_stats.py parsing of mask descriptor lines (contributed by Daniel Tang)
+* firewall: exclude interfaces with local links only when generating force gateway rules
+* firewall: fix missing lock while refactoring config for group changes
+* firewall: properly synchronize load order for shaper when reloading configuration
+* firewall: add toggle log command in automation
+* firewall: since bogons source writes a comment first prefix our exclusions too
+* firewall: tighten address / range validation for aliases
+* firewall: align alias tokenizer options with the ones in our base template
+* captive portal: align accounting session timeout with API
+* captive portal: balance fastcgi servers a bit better
+* captive portal: do not share a fastcgi socket with web GUI
+* dnsmasq: add missing constraint and fix template for boot options
+* dnsmasq: reload filter on service reload
+* dnsmasq: add command in leases view to create DHCP reservations
+* dnsmasq: hide static mode in DHCP range in advanced mode
+* dnsmasq: set default to empty lease time for DHCP hosts to allow for defaults
+* dnsmasq: add "no-resolv" option to prevent use of system defined DNS servers
+* dnsmasq: validate IP address usage for DHCP registrations
+* dnsmasq: add validation preventing end address to be empty for IPV4 non-static ranges
+* dnsmasq: when "dhcp-fqdn" is active, set all DHCP domains as local
+* dnsmasq: add checkbox to hosts that can set domains as local
+* dnsmasq: allow either empty IP or empty hostname for DHCP hosts
+* dnsmasq: fix wildcard host handling
+* dnsmasq: add overlay to conditionally remove values based on DHCP option type
+* ipsec: add "cacert" option in remote auth section and allow spaces and wildcards in id fields
+* ipsec: be more verbose when modifying SPDs
+* isc-dhcp: show tracking interfaces when enabled and offer an explicit disable
+* kea-dhcp: add static_routes validation (contributed by Dr. Uwe Meyer-Gruhl)
+* openvpn: remove deprecated use of is_interface_assigned() in legacy client/server
+* unbound: remove "inplace" in chained assignment (contributed by dstapa)
+* mvc: deny whitespaces, asterisks and slashes in HostnameField
+* mvc: support array response type in session->get()
+* plugins: os-caddy 2.0.1 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.10 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-sunnyvalley 1.5 switches mirror domain
+* src: pf: explicitly NULL state key pointers
+* src: pf: fix panic in pf_return()
+* src: pf: do not use state keys after pf_state_insert()
+* src: netlink, socket, sctp, tcp, udp: assorted upstream stable changes
+* src: in6_control_ioctl: correctly report errors from SIOCAIFADDR_IN6
+* src: axgbe: add support for Yellow Carp Ethernet device
+* src: dhclient: keep two clocks
+* src: rtw88, rtw89: merge Realtek driver based on Linux v6.14
+* src: iwlwififw: remove Intel iwlwifi firmware from src.git
+* ports: curl 8.14.0 `[3] <https://curl.se/changes.html#8_14_0>`__ 
+* ports: kea 2.6.3 `[4] <https://downloads.isc.org/isc/kea/2.6.3/Kea-2.6.3-ReleaseNotes.txt>`__ 
+* ports: python fix for CVE-2025-4516 `[5] <https://github.com/python/cpython/pull/134341>`__ 
+
+A hotfix release was issued as 25.1.8_1:
+
+* kea-dhcp: fix fatal socket path refusal in new Kea release
+
+
+
+--------------------------------------------------------------------------
 25.1.7 (May 19, 2025)
 --------------------------------------------------------------------------
 
@@ -72,7 +163,7 @@ Here are the full patch notes:
 * backend: use the new errors:no instead of "exit 0" in actions
 * mvc: add contribDir to app config (contributed by Freddie Sackur)
 * mvc: show versions on migration failure for clarity
-* mvc: saveguard JsonKeyValueStoreField->setSourceField()
+* mvc: safeguard JsonKeyValueStoreField->setSourceField()
 * mvc: add static $internalStaticChildren in classes extending ArrayField
 * plugins: os-beats 1.0 (contributed by Maxime Thiebaut)
 * plugins: os-c-icap 1.8 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/c-icap/pkg-descr>`__ 
@@ -91,6 +182,11 @@ A hotfix release was issued as 25.1.7_2:
 
 * dnsmasq: create static host entries for all except partial IPv6 addresses
 * kea-dhcp: correct static mapping returns for IPv6 addresses
+
+A hotfix release was issued as 25.1.7_4:
+
+* dnsmasq: fix physical interface in dhcp-boot
+* ipsec: fix ipsec column identifier
 
 
 --------------------------------------------------------------------------
