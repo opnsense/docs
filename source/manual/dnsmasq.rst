@@ -686,9 +686,17 @@ If a different Router Advertisement daemon is used, ensure it runs in `Assisted`
 
 .. Tip::
 
-    You do not need a separate static DHCP range to use ``dhcp-host`` reservations.
-    A single dynamic range is enough — ``dhcp-host`` entries can also assign IPs outside that range.
-    The static range is only required if you want a reservation-only network.
+    Reservations will reserve the IP address inside a range, meaning the reserved IP will not be offered to dynamic clients.
+
+    A dynamic range like ``192.168.1.100-192.168.1.199`` and a reservation like ``192.168.1.101`` are valid and there will be no collisions.
+
+    The reservation can also be outside the dynamic range, but it is not recommended for simple setups as the dynamic dns registration
+    with dhcp-fqdn will not work correctly.
+
+.. Attention::
+
+    Setting the range mode to static is not required for reservations. It is only valid for specific usecases where a range should not serve any dynamic clients.
+    As a static range cannot set a domain for dhcp-fqdn, it is a less optimal choice.
 
 .. Note::
 
@@ -712,6 +720,14 @@ Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> Hosts`
         ==================================  =======================================================================================================
 
         - Press **Save** and **Apply**
+
+        .. Attention::
+
+            Setting a domain in the reservation has no effect on the dynamic dns registration; it will only create a static host override.
+
+            Dnsmasq will always combine the host with a domain configured in a matching dhcp range.
+
+            This is especially important for partial IPv6 reservations, as they cannot be resolved before the dynamic dns registration has finished.
 
     .. tab:: IPv6
 
