@@ -130,6 +130,7 @@ Zaram     ZXOS11NPI                      10G     XGSPON
 ============= ============================== ======= =========================
 Vendor        Type                           Speed   Notes
 ============= ============================== ======= =========================
+FlexOptix     P.8596.02 MMF 850-nm           10G
 Cisco-Finisar SFP-10G-SR                     10G
 FS            SFP-10GSR-85                   10G
 FS            SFP-10/25GR-85                 10G
