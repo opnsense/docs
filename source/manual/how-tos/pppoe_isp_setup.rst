@@ -89,7 +89,7 @@ Option                              Value
 
 Now, we create the Point-to-Point device that we attach to the prior created VLAN device.
 
-Go to :menuselection:`Interfaces --> Devices --> PPPoE` and create a new PPPoE device with the following settings:
+Go to :menuselection:`Interfaces --> Devices --> Point-to-Point` and create a new PPPoE device with the following settings:
 
 ==================================  =======================================================================================================
 Option                              Value
