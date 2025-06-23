@@ -138,6 +138,7 @@ IBM-Finisar   FTLX8571D3BCL-IC               10G
 Intel         AFBR-709DMZ-IN2                10G
 Mellanox      MFM1T01A-SR                    10G
 Ubiquiti      UF-MM-10G                      10G
+Ubiquiti      UACC-OM-MM-10G-D               10G
 Uptimed       UP-TR-SR-CI 10G                10G
 ============= ============================== ======= =========================
 
@@ -167,6 +168,9 @@ Uptimed    UP-TR-10G-RJ45-CI              1/2.5/5/10G   Will always link at 10G 
                                                         maximum speed is determined by link partner
 FlexOptix  T.C96.02.KMF                   1/2.5/5/10G   Will always link at 10G on axgbe,
                                                         maximum speed is determined by link partner
+Ubiquiti   UACC-CM-RJ45-MG                2.5/5/10G     Will always link at 10G on axgbe,
+                                                        maximum speed is determined by link partner.
+                                                        Module not compatible with 1G.
 ========== ============================== ============= =========================
 
 --------------------------------------
@@ -183,6 +187,7 @@ MikroTik   XS+DA0001                      10G           Rated for 1/10/25G, only
 Netgear    AXC761                         10G
 Startech   DACSFP10G1M                    10G
 Ubiquiti   UniFi 1m DAC                   10G
+Ubiquiti   UACC-DAC-SFP10                 10G
 ========== ============================== ============= =========================
 
 --------------------------------------
