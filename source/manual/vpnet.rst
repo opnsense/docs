@@ -615,7 +615,7 @@ and it's quite simple to export settings for clients.
 General context
 .................................
 
-The OpenVPN module incorporates different functions to setup secured networks for roadwarriors and side to side connections.
+The OpenVPN module incorporates different functions to setup secured networks for roadwarriors and site to site connections.
 Since the start of our project we organized the openvpn menu section into servers and clients, which actually is a role
 for the same OpenVPN process. As our legacy system has some disadvantages which are difficult to fix in a migration, we have chosen
 to add a new component named :code:`Instances` in version 23.7 which offers access to OpenVPN's configuration in a similar way as
