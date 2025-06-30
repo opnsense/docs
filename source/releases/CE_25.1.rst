@@ -27,6 +27,47 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.1.9 (June 18, 2025)
+--------------------------------------------------------------------------
+
+
+This smallish update brings in more preparation for future features
+and reworks and fixes a couple of bugs reported over the last weeks.
+
+The patch size for 25.1.x will likely not increase in future updates
+as 25.7 is near: July 23.  Save the date!
+
+Here are the full patch notes:
+
+* system: add minimalistic interface to support SSO authentication
+* system: refactor a couple of existing empty() tests to isEmpty()
+* system: refactor cache flush into system_cache_flush()
+* system: add backend call for returning timezones
+* system: fix "weight" default fallback causing non-string return in gateway status
+* interfaces: refactor newwanip IPv4/v6 scripts to reduce differences between them
+* interfaces: do not call a description a "dmesg"
+* interfaces: relax regex for dmesg probing to seamlessly support dmesg timestamps
+* firewall: improve address family validation for rule source and destination
+* firewall: fix faulty ICMP type evaluation on NAT rules
+* dnsmasq: allow AliasesField values to be cleared
+* dnsmasq: allow host wildcards in domain overrides again
+* ipsec: add aes256-sha1 ESP proposal
+* ui: backwards-compatible merge of Tabulator grid replacement changes
+* plugins: os-haproxy 4.6 `[1] <https://github.com/opnsense/plugins/blob/stable/net/haproxy/pkg-descr>`__ 
+* ports: curl 8.14.1 `[2] <https://curl.se/changes.html#8_14_1>`__ 
+* ports: nss 3.112 `[3] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_112.html>`__ 
+* ports: openldap 2.6.10 `[4] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: php 8.3.22 `[5] <https://www.php.net/ChangeLog-8.php#8.3.22>`__ 
+* ports: python 3.11.13 `[6] <https://docs.python.org/release/3.11.13/whatsnew/changelog.html>`__ 
+
+A hotfix release was issued as 25.1.9_2:
+
+* system: fix route status removal buttons
+* openvpn: fix server deletion in legacy page
+
+
+
+--------------------------------------------------------------------------
 25.1.8 (June 12, 2025)
 --------------------------------------------------------------------------
 

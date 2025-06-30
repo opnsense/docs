@@ -8,7 +8,7 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *312* releases leading to the latest version *25.1.8*
+As of January 2015 there have been *313* releases leading to the latest version *25.1.9*
 named "Ultimate Unicorn".
 
 
