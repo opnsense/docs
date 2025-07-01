@@ -577,6 +577,7 @@ BGP (Border Gateway Protocol)
           from multiple peers without configuring each of them as neighbor individually. This approach reduces management complexity and ensures uniform settings across peers.
           Peer Groups are especially useful in larger networks where multiple BGP peers require identical policy; not so much in small networks.
 
+
 Border Gateway Protocol (BGP) is an exterior gateway protocol used to exchange routing information between autonomous systems (AS) on the Internet.
 As a path-vector protocol, BGP makes routing decisions based on defined paths, network policies, or administrator-configured rules.
 BGP has two main types: iBGP, used for routing within a single AS (using private AS numbers from 64512 to 65534), and eBGP, which operates between
