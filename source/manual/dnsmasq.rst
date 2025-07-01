@@ -287,6 +287,8 @@ DHCP Settings
         **Mode**                                  Mode flags to set for this range, 'static' means no addresses will be automatically assigned.
         **Lease time**                            Defines how long the addresses (leases) given out by the server are valid (in seconds).
                                                   Set ``0`` for infinite; be careful as this might deplete the pool.
+        **Domain Type**                           Choose if the domain will only match clients in this range, or all clients in any subnets on the selected interface.
+                                                  If you create both IPv4 and IPv6 ranges, setting this to "Interface" on both ranges is recommended.
         **Domain**                                Offer the specified domain to machines in this range.
         **Disable HA sync**                       Ignore this range from being transferred or updated by HA sync.
         **Description**                           You may enter a description here for your reference (not parsed).
@@ -451,6 +453,8 @@ In our example, we configure query forwarding for 2 networks:
 
         .. Note:: The first entry is for the forward lookup (A-Record), the second for the reverse lookup (PTR-Record).
 
+        .. Tip:: If all PTR records for 192.168.0.0/16 should be handled by Dnsmasq, creating a single entry with ``168.192.in-addr.arpa`` is enough.
+
 
     .. tab:: guest.internal
 
@@ -529,6 +533,12 @@ As next step we define the DHCP ranges for our interfaces.
 
             If a host receives a DHCP lease from this range, and it advertises a hostname, it will be registered under the chosen domain name.
             E.g., a host named ``nas01`` will become ``nas01.lan.internal``. A client can query this FQDN to receive the current IP address.
+
+        .. Attention::
+
+            If you plan to use partial IPv6 addresses in ranges with a constructor, unhide the advanced options and set **Domain Type** to ``Interface``.
+            This will register any subnets on the chosen interface to the selected domain. This is the only way dynamic DNS registration succeeds
+            when the IPv6 prefix is dynamic.
 
     .. tab:: GUEST
 
@@ -635,6 +645,12 @@ Option                              Value
     Set ``ra-names`` in addition to ``ra-stateless`` if DNS names should be registered automatically for SLAAC addresses. Please note that this
     does not work for clients using the IPv6 privacy extensions.
 
+.. Attention::
+
+    If you plan to use partial IPv6 addresses in ranges with a constructor, unhide the advanced options and set **Domain Type** to ``Interface``.
+    This will register any subnets on the chosen interface to the selected domain. This is the only way dynamic DNS registration succeeds
+    when the IPv6 prefix is dynamic.
+
 .. Note::
 
     If do not want to use Router Advertisements, leave the RA Mode on default, and do not enable the Router Advertisement global setting. Ensure
@@ -695,8 +711,8 @@ If a different Router Advertisement daemon is used, ensure it runs in `Assisted`
 
 .. Attention::
 
-    Setting the range mode to static is not required for reservations. It is only valid for specific usecases where a range should not serve any dynamic clients.
-    As a static range cannot set a domain for dhcp-fqdn, it is a less optimal choice.
+    Setting the range mode to static is not required for reservations. It is for specific usecases where a range should not serve any
+    unknown dynamic clients.
 
 .. Note::
 
