@@ -561,21 +561,21 @@ BGP (Border Gateway Protocol)
        **Remote AS mode**                  "Use Remote AS Number" will use the number specified in the "Remote AS" field, while "External" or "Internal" will
                                            ignore it in favor of the alternative "remote-as internal" and "remote-as external" settings.
        **Remote AS**                       Remote AS for the peer group.
+       **Listen Ranges**                   Enter one or multiple IP networks in CIDR notation. Accept connections from any peers in the specified prefix.
        **Update-Source Interface**         Physical IPv4 interface facing the peer.
-       **Next-Hop-Self**                   Sets the local router as the next hop for routes advertised to the neighbor, commonly used in Route Reflector setups.
+       **Next-Hop-Self**                   Sets the local router as the next hop for routes advertised to the peer group, commonly used in Route Reflector setups.
        **Send Defaultroute**               Enable sending of default routes to the peer group.
-       **Prefix-List In**                  Prefix list to filter inbound prefixes from this neighbor.
-       **Prefix-List Out**                 Prefix list to filter outbound prefixes sent to this neighbor.
-       **Route-Map In**                    Route-map to apply to routes received from this neighbor.
-       **Route-Map Out**                   Route-map to apply to routes advertised to this neighbor.
+       **Prefix-List In**                  Prefix list to filter inbound prefixes from this peer group.
+       **Prefix-List Out**                 Prefix list to filter outbound prefixes sent to this peer group.
+       **Route-Map In**                    Route-map to apply to routes received from this peer group.
+       **Route-Map Out**                   Route-map to apply to routes advertised to this peer group.
        =================================== =======================================================================================================================
 
        .. Note::
 
-          A **Peer Group** in BGP simplifies configurations by grouping neighbors with similar settings. Instead of configuring each neighbor individually,
-          you can apply a common configuration to all members of a peer group. This approach reduces management complexity and ensures uniform settings across peers.
+          A **Peer Group** in BGP simplifies configurations by grouping neighbors with similar settings. Another possibility is defining **Listen Ranges** to accept connections
+          from multiple peers without configuring each of them as neighbor individually. This approach reduces management complexity and ensures uniform settings across peers.
           Peer Groups are especially useful in larger networks where multiple BGP peers require identical policy; not so much in small networks.
-
 
 Border Gateway Protocol (BGP) is an exterior gateway protocol used to exchange routing information between autonomous systems (AS) on the Internet.
 As a path-vector protocol, BGP makes routing decisions based on defined paths, network policies, or administrator-configured rules.
