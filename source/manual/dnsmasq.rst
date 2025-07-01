@@ -536,7 +536,7 @@ As next step we define the DHCP ranges for our interfaces.
 
         .. Attention::
 
-            If you plan to use partial IPv6 addresses in ranges with a constructor, unhide the advanced options and set **Domain Type** to ``Interface``.
+            If you plan to use partial IPv6 addresses in ranges with a constructor, enable the advanced mode and set **Domain Type** to ``Interface``.
             This will register any subnets on the chosen interface to the selected domain. This is the only way dynamic DNS registration succeeds
             when the IPv6 prefix is dynamic.
 
@@ -647,7 +647,7 @@ Option                              Value
 
 .. Attention::
 
-    If you plan to use partial IPv6 addresses in ranges with a constructor, unhide the advanced options and set **Domain Type** to ``Interface``.
+    If you plan to use partial IPv6 addresses in ranges with a constructor, enable the advanced mode and set **Domain Type** to ``Interface``.
     This will register any subnets on the chosen interface to the selected domain. This is the only way dynamic DNS registration succeeds
     when the IPv6 prefix is dynamic.
 
