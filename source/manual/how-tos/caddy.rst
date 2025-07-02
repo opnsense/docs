@@ -103,7 +103,7 @@ Options                        Values
 **Protocol:**                  ``https://``
 **Domain:**                    ``foo.example.com``
 **Port:**                      `Leave empty`
-**Certificate:**               ``ACME (HTTP-01, TLS-ALPN-01)``
+**Certificate:**               ``Auto HTTPS``
 ============================== =====================================================================
 
 * | Press **Save**
