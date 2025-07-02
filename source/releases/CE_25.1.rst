@@ -27,6 +27,42 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.1.10 (July 01, 2025)
+--------------------------------------------------------------------------
+
+
+We are getting close to 25.7.  In fact, the release date is July 23.
+As such minimal changes are going into this stable release for the
+usual reasons.
+
+Expecting a quick release candidate in two weeks while we piece together
+the individual changes that will make the next release series a distinct
+step forward: privilege separation capability, latest and greatest FreeBSD
+related updates, easier than ever MVC programming experience, a new UI
+grid framework named Tabulator etc.
+
+Here are the full patch notes:
+
+* system: reduce future maintenance load in privilege separation efforts
+* interfaces: remove unused "friendly" value from get_interface_list()
+* interfaces: fix escaping in refactored bridge code
+* interfaces: fix bridge SPAN support
+* interfaces: add update mode to ifctl
+* firewall: fix issue with event binding in rule automation page
+* dnsmasq: implement domain type to select between adding domain to range or interface
+* dnsmasq: dhcp-host are allowed to have duplicate partial IPv6 addresses
+* unbound: improve the chroot mounting code to avoid excessive (un)mount calls
+* lang: update language translations to their latest state
+* mvc: eventually phase out getCurrentValue() in favour of getValue()
+* plugins: os-caddy 2.0.2
+* ports: libxml2 fixes for recent CVEs
+* ports: nss 3.113
+* ports: phpseclib 3.0.46
+* ports: py-duckdb 1.3.1
+* ports: sudo 1.9.17
+
+
+--------------------------------------------------------------------------
 25.1.9 (June 18, 2025)
 --------------------------------------------------------------------------
 
