@@ -1115,7 +1115,6 @@ After creating the alias, go to :menuselection:`Services --> Dnsmasq DNS & DHCP 
 Option                              Value
 ==================================  =======================================================================================================
 **Domain**                          ``example.com``  (This also includes all subdomains under example.com)
-**Firewall Alias**                  ``External (advanced)``
 **IP Address**                      (This can be empty, but if you query forward this domain from Unbound, set a public resolver here)
 **Firewall Alias**                  ``dnsmasq_example_com``
 ==================================  =======================================================================================================
