@@ -1077,7 +1077,7 @@ Dnsmasq has a powerful feature, it can add resolved IP addresses to firewall ali
 
 This is quite useful in restricted networks or to gather statistics.
 
-E.g., you provide a guest network, but users should only access ``example.com``. With a normal firewall alias, this might be challenging,
+As example, you provide a guest network, but users should only access ``example.com``. With a normal firewall alias, this might be challenging,
 as the domain might use multiple subdomains that serve additional content. It could also use a CDN to load balance content across different servers with dynamically
 changing IP addresses per client.
 
