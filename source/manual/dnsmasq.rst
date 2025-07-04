@@ -1128,8 +1128,8 @@ changing IP addresses per client.
 
 With a Dnsmasq managed alias, this becomes rather simple as it will automatically add new IPv4 and IPv6 addresses as soon as they are requested by clients.
 
-A requirement to use this feature is that Dnsmasq is your main DNS server for all clients, and access to any other DNS server is blocked. A different approach is to
-do query forwarding from Unbound to Dnsmasq for the domains that should be added to its managed firewall alias, with the caveat that Dnsmasq then needs to use
+A requirement to use this feature is that Dnsmasq is your primary DNS resolver for all clients, and access to any other DNS servers are blocked. A different approach is to
+do query forwarding from Unbound to Dnsmasq for the domains that should be added to its managed firewall aliases, with the caveat that Dnsmasq then must use
 an external resolver to prevent a query loop.
 
 .. Note::
@@ -1143,7 +1143,7 @@ an external resolver to prevent a query loop.
     Try to be selective with the domain you add to the alias. Adding a TLD (Top Level Domain) like ``com`` could inflate the alias to the point it could become unusable.
     A good rule of thumb is one alias per service domain, they can later be nested under a parent alias.
 
-In the following example, Dnsmasq is our primary DNS resolver, and it forwards queries to 127.0.0.1:53053 on which Unbound listens.
+In the following example, Dnsmasq is our primary DNS resolver, and it forwards queries to ``127.0.0.1:53053`` on which Unbound listens.
 
 - Go to :menuselection:`Firewall --> Aliases`:
 
@@ -1171,4 +1171,4 @@ As final step, create a firewall rule with the ``dnsmasq_example_com`` alias as 
 .. Tip::
 
     Verify the contents of the alias in :menuselection:`Firewall --> Diagnostics --> Aliases`:
-    It should populate with IP addresses as soon as clients resolve ``example.com`` via Dnsmasq's DNS service.
+    It should populate with IP addresses as soon as clients resolve ``example.com`` via Dnsmasq.
