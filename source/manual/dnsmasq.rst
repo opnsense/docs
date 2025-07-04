@@ -1128,7 +1128,7 @@ changing IP addresses per client.
 
 With a Dnsmasq managed alias, this becomes rather simple as it will automatically add new IPv4 and IPv6 addresses as soon as they are requested by clients.
 
-A requirement to use this feature is that Dnsmasq is your primary DNS resolver for all clients, and access to any other DNS servers are blocked. A different approach is to
+A requirement to use this feature is that Dnsmasq is your primary DNS server for all clients, and access to any other DNS servers is blocked. A different approach is to
 do query forwarding from Unbound to Dnsmasq for the domains that should be added to its managed firewall aliases, with the caveat that Dnsmasq then must use
 an external resolver to prevent a query loop.
 
