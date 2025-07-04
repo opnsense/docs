@@ -1070,6 +1070,51 @@ As soon as the master comes back online, the higher RA priority will make client
     The bare minimum for RA Router Lifetime should be (RA Interval*3).
 
 
+Dnsmasq as primary DNS resolver
+--------------------------------------------------
+
+This is a small complementory section how to configure Dnsmasq as the primary DNS resolver for your network combined with Unbound as recurser.
+
+It is useful if you rely on features like dynamic IPv6 networks with PTR records registered via DHCP, or the Firewall Alias (IPset) feature.
+
+The drawbacks are Unbound Statistics or Blocklist features based on client IP, as the client will always be 127.0.0.1.
+
+The benefits are a less complicated configuration and less adjustments in Unbound if new networks get introduced.
+
+- Go to :menuselection:`Services --> Unbound DNS --> General` and set:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Enable**                          ``X``
+**Listen Port**                     ``53053``
+==================================  =======================================================================================================
+
+- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> General` and set:
+
+================================================ =======================================================================================================
+Option                                           Value
+================================================ =======================================================================================================
+**Enable**                                       ``X``
+**Listen Port**                                  ``53``
+**Do not forward to system defined DNS servers** ``X``  (This will force Dnsmasq to only use forwarding specified in the domains tab)
+**Do not forward private reverse lookups**       ``X``
+================================================ =======================================================================================================
+
+- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> Domains` and set:
+
+================================================ =======================================================================================================
+Option                                           Value
+================================================ =======================================================================================================
+**Sequence**                                     ``1``
+**Domain**                                       ``*``  (This will match all domains)
+**IP address**                                   ``127.0.0.1``  (Unbound listens on this IP address and port)
+**Port**                                         ``53053``
+================================================ =======================================================================================================
+
+Apply the configuration and test DNS resolution with a client.
+
+
 Firewall Alias (IPset)
 --------------------------------------------------
 
@@ -1084,7 +1129,8 @@ changing IP addresses per client.
 With a Dnsmasq managed alias, this becomes rather simple as it will automatically add new IPv4 and IPv6 addresses as soon as they are requested by clients.
 
 A requirement to use this feature is that Dnsmasq is your main DNS server for all clients, and access to any other DNS server is blocked. A different approach is to
-do query forwarding from Unbound to Dnsmasq for the domains that should be added to its managed firewall alias.
+do query forwarding from Unbound to Dnsmasq for the domains that should be added to its managed firewall alias, with the caveat that Dnsmasq then needs to use
+an external resolver to prevent a query loop.
 
 .. Note::
 
@@ -1097,7 +1143,7 @@ do query forwarding from Unbound to Dnsmasq for the domains that should be added
     Try to be selective with the domain you add to the alias. Adding a TLD (Top Level Domain) like ``com`` could inflate the alias to the point it could become unusable.
     A good rule of thumb is one alias per service domain, they can later be nested under a parent alias.
 
-In the following example, Dnsmasq is our primary DNS resolver:
+In the following example, Dnsmasq is our primary DNS resolver, and it forwards queries to 127.0.0.1:53053 on which Unbound listens.
 
 - Go to :menuselection:`Firewall --> Aliases`:
 
@@ -1106,7 +1152,7 @@ Option                              Value
 ==================================  =======================================================================================================
 **Name**                            ``dnsmasq_example_com``
 **Type**                            ``External (advanced)``
-**Expire**                          PLACEHOLDER
+**Expire**                          ``86400``  (Gradually prunes unused IP addresses from the alias)
 ==================================  =======================================================================================================
 
 After creating the alias, go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> Domains`:
@@ -1115,7 +1161,8 @@ After creating the alias, go to :menuselection:`Services --> Dnsmasq DNS & DHCP 
 Option                              Value
 ==================================  =======================================================================================================
 **Domain**                          ``example.com``  (This also includes all subdomains under example.com)
-**IP Address**                      (This can be empty, but if you query forward this domain from Unbound, set a public resolver here)
+**IP Address**                      ``127.0.0.1``  (Or an external resolver like 1.1.1.1 if query forwarding for this domain from Unbound is configured)
+**Port**                            ``53053``  (Leave empty if the resolver listens on port 53)
 **Firewall Alias**                  ``dnsmasq_example_com``
 ==================================  =======================================================================================================
 
