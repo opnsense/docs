@@ -174,7 +174,7 @@ Below you will find the versions that have been tested or are currently in testi
 +----------+-----------------------+------------------------------------------------------------------------------------------------------------+
 | Version  | Status                | Download                                                                                                   |
 +==========+=======================+============================================================================================================+
-| BE 25.04 | LINCE Compliant       | :download:`BE25.4-STIC_OPNSENSE_IAD-2504-ETR-v1.0.pdf <pdf/BE25.4-STIC_OPNSENSE_IAD-2504-ETR-v1.0.pdf>`    |
+| BE 25.04 | LINCE Certified       | :download:`BE25.4-STIC_OPNSENSE_IAD-2504-ETR-v1.0.pdf <pdf/BE25.4-STIC_OPNSENSE_IAD-2504-ETR-v1.0.pdf>`    |
 |          |                       | 591a63be0f6f4e8d15c1b6fe2ea48af3e5dd1234f7b9013ffec6cd7b89d3d95f                                           |
 +----------+-----------------------+------------------------------------------------------------------------------------------------------------+
 | BE 24.10 | LINCE Certified       | :download:`BE24.10-STIC_OPNSENSE_HIGH-ETR-v1.0.pdf <pdf/BE24.10-STIC_OPNSENSE_HIGH-ETR-v1.0.pdf>`          |
