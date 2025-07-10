@@ -210,7 +210,7 @@ using the same values except:
 Step 4 - Finalizing the configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Now press |apply| to activate the traffic shaping rules.
+Now press **Apply** to activate the traffic shaping rules.
 
 .. |apply| image:: images/applybtn.png
 
