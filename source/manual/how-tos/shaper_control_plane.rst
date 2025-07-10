@@ -29,7 +29,7 @@ There are 3 Planes:
 
 3. **The data plane**
      
-   Affect the applications of the user.
+   Affects the applications of the user.
      
    The data plane is the forwarding plane, which is responsible for the switching of packets through the router. 
    
