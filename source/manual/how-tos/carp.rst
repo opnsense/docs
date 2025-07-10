@@ -570,10 +570,12 @@ unicast in the Virtual IP settings.
 Interface errors
 ----------------
 
-Sometimes CARP will failover for seemingly unknown reasons. This is because CARP relies on multiple layers for reliable delivery of packets, any failure will often manifest as an interface error.
-Interface errors can happen for various reasons, but are often associated with either protocol failures or NIC/driver failures. If CARP cannot send out
-an advertisement packet on a particular interface due to an interface error, the CARP system will demote itself, hoping the backup node will take over.
-On the OPNsense side, this is indicated in the Virtual IP Status page by a message showing "CARP has detected a problem ...".
+Starting from OPNsense Community Edition 25.1.4 or Business Edition 25.4, the system default to failover if interface errors occur
+has been disabled. If you're on an older version or if you have this configured explicitly through the tunables (:code:`net.inet.carp.senderr_demotion_factor=240`),
+CARP may demote a machine if the system detects interface errors.
+
+In this scenario, if CARP cannot send out an advertisement packet on a particular interface due to an interface error, the CARP system will demote itself,
+hoping the backup node will take over. On the OPNsense side, this is indicated in the Virtual IP Status page by a message showing "CARP has detected a problem ...".
 
 If this happens, an event is logged in the general system log and show the reason for the failure, for instance, `send error 55`. If the backup firewall
 takes over, the master node will cease sending its advertisement packets, thereby also eliminating its ability to see whether communication has
