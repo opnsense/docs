@@ -115,6 +115,13 @@ Configuration synchronization
 OPNsense includes configuration synchronization capabilities. Configuration
 changes made on the primary system are synchronized on demand to the secondary firewall.
 
+A backup node should never contain settings for Configuration synchronization in :menuselection:`System --> High Availability --> Settings`. If this is the case
+an adminstrator can accidentally synchronize the backup with the master, causing all kinds of configuration errors.
+
+.. Tip::
+
+    Configure the master node in a different theme (e.g. dark theme) to differentiate the two machines.
+
 ............................
 Configure HA CARP
 ............................
