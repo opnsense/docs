@@ -213,7 +213,10 @@ DNS Settings
         **IP addresses**                          IP addresses of the host, e.g. 192.168.100.100 or fd00:abcd::1. Can be multiple IPv4
                                                   and IPv6 addresses for dual stack configurations. Setting multiple addresses will automatically
                                                   assign the best match based on the subnet of the interface receiving the DHCP Discover.
-        **Aliases**                               List of aliases (FQDN)
+        **Aliase Records**                        Adds additional static A, AAAA and PTR records for the given alternative names (FQDN).
+                                                  Please note that these records are only created if IP addresses are configured in this host entry.
+        **CNAME Records**                         Adds additional CNAME records for the given alternative names (FQDN). Useful if this host entry has
+                                                  dynamic IPv4 and partial IPv6 addresses, as the CNAME record will point to the name instead of static IP addresses.
         **Client identifier**                     Match the identifier of the client, e.g., DUID for DHCPv6.
                                                   Setting the special character "*" will ignore the client identifier for DHCPv4 leases if a client offers both as choice.
         **Hardware addresses**                    Match the hardware address of the client. Can be multiple addresses, e.g., if the client has
@@ -274,6 +277,8 @@ DHCP Settings
                                                   When using router advertisements, it is possible to use a constructor with :: as the start
                                                   address and no end address.
         **End address**                           End of the range.
+        **Subnet Mask**                           Leave empty to auto-calculate the subnet mask from the interface or the network class of the start address.
+                                                  If a DHCP relay forwards IPv4 DHCP Discovers to Dnsmasq, setting a subnet mask is required in most cases.
         **Constructor**                           Interface to use to calculate the proper range, when selected, a range may be specified as partial (e.g. ::1, ::400).
         **Prefix length (IPv6)**                  Prefix length offered to the client. Custom values in this field will be ignored if
                                                   Router Advertisements are enabled, as SLAAC will only work with a prefix length of 64.
