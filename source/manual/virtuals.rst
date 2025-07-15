@@ -140,7 +140,7 @@ This issue can be caused by a defective drive. Changing the drive mode to IDE ha
 been reported to help for certain ESXi versions.
 
 
-NAT issues on XenServer/XCP-NG
+NAT / performance issues on XenServer/XCP-NG
 -----------------------------------------
 This issue has been reported to be solved by disabling TX checksum offloading on Vifs (only there, not also in OPNsense DomU) - for details see this `documentation <https://docs.xcp-ng.org/guides/pfsense/#3-disable-tx-checksum-offload>`__.
 
