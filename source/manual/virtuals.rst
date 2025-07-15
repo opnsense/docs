@@ -37,7 +37,7 @@ To install the VMware tools just goto :menuselection:`System --> Firmware --> Pl
 
 Xen
 --------------------
-To install the Xen tools just goto :menuselection:`System --> Firmware --> Plugins` and install
+To install the Xen tools just go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
 **os-xen** by clicking on the **+** sign next to it.
 
 .. image:: images/os-xen.png
@@ -53,6 +53,9 @@ or tools are needed.
 
 KVM
 ------
+To install the QEMU quest agent just go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
+**os-qemu-guest-agent** by clicking on the **+** sign next to it.
+
 **i440FX chipset**
 OPNsense on KVM works with virtio disks and network devices (confirmed on QEMU 5.0).
 
@@ -65,6 +68,9 @@ Note that this was a relatively recent addition to FreeBSD, so it may not be as 
 Others
 --------------------
 OPNsense can be installed on all virtual machines that support FreeBSD (such as Bhyve, VirtualBox).
+
+Note: to install the VirtualBox guest additions just go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
+**os-virtualbox** by clicking on the **+** sign next to it.
 
 
 Hosted
@@ -134,10 +140,9 @@ This issue can be caused by a defective drive. Changing the drive mode to IDE ha
 been reported to help for certain ESXi versions.
 
 
-NAT issues on XenServer
+NAT issues on XenServer/XCP-NG
 -----------------------------------------
-This issue has been reported to be solved by disabling checksum offloading on both
-OPNsense domU and Vifs.
+This issue has been reported to be solved by disabling TX checksum offloading on Vifs (only there, not also in OPNsense DomU) - for details see this `documentation <https://docs.xcp-ng.org/guides/pfsense/#3-disable-tx-checksum-offload>`__.
 
 
 Traffic Shaper does not work on VMware
