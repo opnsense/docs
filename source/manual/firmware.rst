@@ -19,9 +19,9 @@ Plugins
 --------------------------------
 
 Plugins are additional software packages that are available for OPNsense, usually they come with their own
-frontend components to setup the software underneath.
+frontend components to setup the software underneath.  Shown by default are support tier 1 and 2 plugins.
 
-Here you can find community plugins, such as  **bind**, **c-icap**, **freeradius** and others.
+Here you can also find community plugins from lower tiers, such as  **bind**, **c-icap**, **freeradius** and others.
 These are not listed by default.  To view them use the **Show community plugins** checkbox.
 
 When on the development version, a **-devel** version is also available available, which may contain features still under development
