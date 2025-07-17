@@ -11,7 +11,7 @@ Updates
 
 
 How to install updates and information about our versioning can be found in the Installation and setup section, which
-can be found in the  :doc:`/manual/updates` document
+can be found in the  :doc:`/manual/updates` document.
 
 
 --------------------------------
@@ -20,9 +20,14 @@ Plugins
 
 Plugins are additional software packages that are available for OPNsense, usually they come with their own
 frontend components to setup the software underneath.
-Here you can find community support plugins, such as  **bind**, **c-icap**, **freeradius** and others. Usually there is also
-a **-devel** version available, which contains features still under development (master branch on GitHub versus release).
 
+Here you can find community plugins, such as  **bind**, **c-icap**, **freeradius** and others.
+These are not listed by default.  To view them use the **Show community plugins** checkbox.
+
+When on the development version, a **-devel** version is also available available, which may contain features still under development
+or ready for wider testing before their eventual release (master branch on GitHub versus release).
+
+Our plugin support tiers are explained in detail in the :doc:`/support` document.
 
 .. Note::
 
