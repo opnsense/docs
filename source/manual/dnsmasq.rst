@@ -166,8 +166,7 @@ when received from the network. DHCP requires at least one dhcp-range and matchi
                                                   seconds. This can be practical for split DHCP solutions, to make sure the secondary
                                                   server answers slower than the primary.
         **DHCP register firewall rules**          Automatically register firewall rules to allow DHCP traffic for all explicitly selected
-                                                  interfaces, can be disabled for more fine-grained control if needed. Changes are only
-                                                  effective after a firewall service restart (see system diagnostics).
+                                                  interfaces, can be disabled for more fine-grained control if needed.
         **Router Advertisements**                 Setting this will enable Router Advertisements for all configured DHCPv6 ranges with
                                                   the managed address bits set, and the use SLAAC bit reset. To change this default, select
                                                   a combination of the possible options in the individual DHCPv6 ranges.
