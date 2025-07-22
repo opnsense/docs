@@ -60,6 +60,12 @@ There is support for doing address allocation (both DHCPv6 and RA) from subnets 
 
 See manual: :doc:`Dnsmasq </manual/dnsmasq>`
 
+--------------------
+KEA DHCP
+--------------------
+
+See manual: :doc:`KEA </manual/kea>`
+
 -----------------
 ISC DHCP
 -----------------
