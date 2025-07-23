@@ -44,6 +44,16 @@ Core
     "``POST``","core","hasync_status","stop","$service=null,$service_id=null"
     "``GET``","core","hasync_status","version",""
 
+.. csv-table:: Resources (InitialSetupController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","core","initial_setup","configure",""
+    "``GET``","core","initial_setup","get",""
+    "``POST``","core","initial_setup","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `InitialSetup.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Core/InitialSetup.xml>`__"
+
 .. csv-table:: Resources (MenuController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

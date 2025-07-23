@@ -5,11 +5,12 @@ Trust
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
+    "``POST``","trust","ca","add",""
     "``GET``","trust","ca","ca_info","$caref"
     "``GET``","trust","ca","ca_list",""
     "``POST``","trust","ca","del","$uuid"
     "``POST``","trust","ca","generate_file","$uuid=null,$type=crt"
-    "``GET``","trust","ca","get",""
+    "``GET``","trust","ca","get","$uuid=null"
     "``GET``","trust","ca","raw_dump","$uuid"
     "``GET,POST``","trust","ca","search",""
     "``POST``","trust","ca","set","$uuid=null"

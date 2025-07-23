@@ -1,14 +1,19 @@
 Captiveportal
 ~~~~~~~~~~~~~
 
+.. csv-table:: Abstract [non-callable] (AbstractAccessController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","captiveportal","abstract_access","api",""
+    "``GET,POST``","captiveportal","abstract_access","status","$zoneid=0"
+
 .. csv-table:: Resources (AccessController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","captiveportal","access","api",""
     "``GET``","captiveportal","access","logoff","$zoneid=0"
     "``POST``","captiveportal","access","logon","$zoneid=0"
-    "``GET,POST``","captiveportal","access","status","$zoneid=0"
 
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

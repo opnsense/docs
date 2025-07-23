@@ -36,11 +36,42 @@ Kea
 
     "``<<uses>>``", "", "", "", "*model* `KeaDhcpv4.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Kea/KeaDhcpv4.xml>`__"
 
-.. csv-table:: Resources (Leases4Controller.php)
+.. csv-table:: Resources (Dhcpv6Controller.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","kea","leases4","search",""
+    "``POST``","kea","dhcpv6","add_pd_pool",""
+    "``POST``","kea","dhcpv6","add_peer",""
+    "``POST``","kea","dhcpv6","add_reservation",""
+    "``POST``","kea","dhcpv6","add_subnet",""
+    "``POST``","kea","dhcpv6","del_pd_pool","$uuid"
+    "``POST``","kea","dhcpv6","del_peer","$uuid"
+    "``POST``","kea","dhcpv6","del_reservation","$uuid"
+    "``POST``","kea","dhcpv6","del_subnet","$uuid"
+    "``GET``","kea","dhcpv6","download_reservations",""
+    "``GET``","kea","dhcpv6","get",""
+    "``GET``","kea","dhcpv6","get_pd_pool","$uuid=null"
+    "``GET``","kea","dhcpv6","get_peer","$uuid=null"
+    "``GET``","kea","dhcpv6","get_reservation","$uuid=null"
+    "``GET``","kea","dhcpv6","get_subnet","$uuid=null"
+    "``GET,POST``","kea","dhcpv6","search_pd_pool",""
+    "``GET,POST``","kea","dhcpv6","search_peer",""
+    "``GET,POST``","kea","dhcpv6","search_reservation",""
+    "``GET,POST``","kea","dhcpv6","search_subnet",""
+    "``POST``","kea","dhcpv6","set",""
+    "``POST``","kea","dhcpv6","set_pd_pool","$uuid"
+    "``POST``","kea","dhcpv6","set_peer","$uuid"
+    "``POST``","kea","dhcpv6","set_reservation","$uuid"
+    "``POST``","kea","dhcpv6","set_subnet","$uuid"
+    "``POST``","kea","dhcpv6","upload_reservations",""
+
+    "``<<uses>>``", "", "", "", "*model* `KeaDhcpv6.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Kea/KeaDhcpv6.xml>`__"
+
+.. csv-table:: Abstract [non-callable] (LeasesController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","kea","leases","search",""
 
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
