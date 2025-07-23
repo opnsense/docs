@@ -29,11 +29,13 @@ Bind
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
+    "``POST``","bind","domain","add_forward_domain","$uuid=null"
     "``POST``","bind","domain","add_primary_domain","$uuid=null"
     "``POST``","bind","domain","add_secondary_domain","$uuid=null"
     "``POST``","bind","domain","del_domain","$uuid"
     "``GET``","bind","domain","get",""
     "``GET``","bind","domain","get_domain","$uuid=null"
+    "``GET,POST``","bind","domain","search_forward_domain",""
     "``GET``","bind","domain","search_master_domain",""
     "``GET,POST``","bind","domain","search_primary_domain",""
     "``GET,POST``","bind","domain","search_secondary_domain",""

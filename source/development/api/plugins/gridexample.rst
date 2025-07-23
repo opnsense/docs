@@ -1,6 +1,12 @@
 Gridexample
 ~~~~~~~~~~~
 
+.. csv-table:: Service (ServiceController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","gridexample","service","reconfigure",""
+
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
