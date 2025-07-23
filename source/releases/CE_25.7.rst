@@ -1,0 +1,318 @@
+===========================================================================================
+25.7  "Visionary Viper" Series
+===========================================================================================
+
+
+
+For over a decade now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+25.7, nicknamed "Visionary Viper", features reusable and thoroughly
+revamped frontend code, an SFTP backup plugin, experimental privilege
+separation for the GUI, JSON container support for aliases, a new and
+improved firewall automation GUI, performance enhancements especially
+for numerous aliases being used at once, Dnsmasq DHCP support, Kea DHCPv6
+support, Greek as a new language, FreeBSD 14.3 plus much more.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/25.7/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/25.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/25.7/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/25.7/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/25.7/
+* Full mirror list: https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+25.7 (July 23, 2025)
+--------------------------------------------------------------------------
+
+
+For over a decade now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates as well as clear and stable 2-Clause BSD
+licensing.
+
+25.7, nicknamed "Visionary Viper", features reusable and thoroughly
+revamped frontend code, an SFTP backup plugin, experimental privilege
+separation for the GUI, JSON container support for aliases, a new and
+improved firewall automation GUI, performance enhancements especially
+for numerous aliases being used at once, Dnsmasq DHCP support, Kea DHCPv6
+support, Greek as a new language, FreeBSD 14.3 plus much more.
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/25.7/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/25.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/25.7/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/25.7/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/25.7/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes:
+
+* system: the setup wizard was rewritten using MVC/API
+* system: change default DHCP use from ISC to Dnsmasq for factory reset and console port and address assignments
+* system: numerous permission, ownership and directory alignments for web GUI privilege separation
+* system: allow experimental feature to run web GUI privilege separated as "wwwonly" user
+* system: add a banner when trying to revert the privilege separated GUI back to root at run time
+* system: consistently use empty() checks on "blockbogons", "blockpriv", "dnsallowoverride" and "dnsallowoverride_exclude"
+* system: change default system domain to "internal" (contributed by Self-Hosting-Group)
+* system: add missing "kernel" application for remote logging
+* system: remove the "optional" notion of tunables known to the system
+* system: enable kernel timestamps by default
+* system: allow CSR to be downloaded from System/Trust/Certificates (contributed by Gavin Chappell)
+* reporting: removed the unused second argument in getSystemHealthAction()
+* reporting: renamed getRRDlistAction() to getRrdListAction()
+* interfaces: fix media settings write issue since 24.7 as it would not apply when "autoselect" result already matched
+* interfaces: removed defunct SLAAC tracking functionality (SLAAC on WAN still works fine)
+* interfaces: no longer fix improper WLAN clone naming at run time as it should be ensured by code for a long time now
+* interfaces: remove the functions get_configured_carp_interface_list() and get_configured_ip_aliases_list()
+* interfaces: add VIP grid formatter to hide row field content based on the set mode
+* interfaces: drop redundant updates in rtsold_resolvconf.sh (contributed by Andrew Baumann)
+* firewall: add expire option to external aliases to automatically cleanup tables via cron
+* firewall: removed the expiretable binary use in favour of the builtin pfctl
+* firewall: speed up alias functionality by using the new model caching
+* firewall: consolidated ipfw/dnctl scripting and fix edge case reloads
+* firewall: code cleanup and performance improvements for alias diagnostics page
+* firewall: fix AttributeError: DNAME object has no attribute address on DNS fetch for aliases
+* firewall: assorted UI updates for automation pages
+* captive portal: make room for additional authentication profiles
+* captive portal: API dispatcher is now privilege separated via "wwwonly" user and group
+* dnsmasq: add optional subnet mask to "dhcp-range" to satisfy DHCP relay requirements
+* dnsmasq: sync CSV export with ISC and Kea structure
+* dnsmasq: add CNAME configuration option to host overrides
+* dnsmasq: add ipset support
+* firmware: opnsense-version: build time package variable replacements can now be read at run time
+* firmware: hide community plugins by default and add a checkbox to unhide them on the same page
+* firmware: introduce a new support tier 4 for development and otherwise unknown plugins
+* firmware: disable the FreeBSD-kmods repository by default
+* firmware: sunset mirror dns-root.de (many thanks to Alexander Lauster for maintaining it for almost a decade!)
+* intrusion detection: add an override banner for custom.yaml use
+* intrusion detection: add JA4 support (contributed by Maxime Thiebaut)
+* isc-dhcp: show tracking IPv6 interfaces when automatically enabled and offer an explicit disable
+* isc-dhcp: hide IPv4 menu items when Dnsmasq DHCP is enabled to improve out of the box experience
+* isc-dhcp: add static mapping CSV export
+* kea-dhcp: add DNS field to Kea DHCP4 reservations (contributed by Gtt1229)
+* lang: add Greek as a new language (contributed by sopex)
+* lang: make more strings translate-able (contributed by Tobias Degen)
+* openvpn: the server wizard functionality has been permanently removed as it required the old wizard implementation
+* openvpn: "keepalive_timeout" must be at least twice the interval value validation
+* wireguard: add diagnostics and log file ACL
+* backend: trigger boot template reload without using configd
+* mvc: introduce generic model caching to improve operational performance
+* mvc: field types quality of life improvements with new getValues() and isEqual() functions
+* mvc: filed types deprecated getCurrentValue() in favour of getValue() and removed isEmptyString()
+* mvc: new BaseSetField() as a parent class for several other field types and numerous new and improved unit tests
+* mvc: support chown/chgrp in File and FileObject classes
+* mvc: use getNodeContent() to gather grid data
+* mvc: allow PortOptional=Y for IPPortField
+* mvc: remove SelectOptions support for CSVListField
+* ui: switch from Bootgrid to Tabulator for MVC grid rendering
+* ui: numerous switches to shared base_bootgrid_table and base_apply_button use
+* ui: flatten nested containers for grid inclusion
+* ui: use snake_case for all API URLs and adjust ACLs accordingly
+* ui: add standard HTML color input support
+* ui: move tooltip load event to single-fire mode
+* ui: add checkmark to SimpleActionButton as additional indicator
+* ui: improve menu icons/text spacing (contributed by sopex)
+* plugins: replace variables in package scripts by default
+* plugins: os-acme-client 4.10 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-bind 1.34 `[3] <https://github.com/opnsense/plugins/blob/stable/25.7/dns/bind/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.11 `[4] <https://github.com/opnsense/plugins/blob/stable/25.7/security/crowdsec/pkg-descr>`__ 
+* plugins: os-frr 1.45 `[5] <https://github.com/opnsense/plugins/blob/stable/25.7/net/frr/pkg-descr>`__ 
+* plugins: os-gdrive-backup 1.0 for Google Drive backup support
+* plugins: os-grid_example 1.1 updates best practice on grid development
+* plugins: os-openvpn-legacy 1.0 for legacy OpenVPN components support
+* plugins: os-puppet-agent 1.2 `[6] <https://github.com/opnsense/plugins/blob/stable/25.7/sysutils/puppet-agent/pkg-descr>`__ 
+* plugins: os-strongswan-legacy 1.0 for legacy IPsec components support
+* src: FreeBSD 14.3-RELEASE-p1 plus assorted stable/14 networking commits `[7] <https://www.freebsd.org/releases/14.3R/relnotes/>`__ 
+
+Migration notes, known issues and limitations:
+
+* Deprecated Google Drive backups due to upstream policy changes and moved to plugins for existing users.
+* API URLs registered in the default ACLs have been switched from "camleCase" to "snake_case".
+* API grid return values now offer "%field" for a value description when available.  "field" will now always be the literal value from the configuration. The API previously returned a display value for some field types, but not all.
+* Reverted tunables "hw.ibrs_disable" and "vm.pmap.pti" to FreeBSD defaults.  If you want these set differently, then add them with an explicit value.
+* While the mirror dns-root.de has been removed it will not be stripped from a running configuration and may keep working for a while longer.  To ensure updates, however, please choose a different mirror at your own convenience.
+* Moved OpenVPN legacy to plugins as a first step to deprecation.
+* Moved IPsec legacy to plugins as a first step to deprecation.
+
+The public key for the 25.7 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAn9lXekbm5KcktbiWpmQf
+    # drRC8LmAOTV9Cbdd3em6iDFFcw8vmRS7Rbo2/exxYiPCqEPxxPtUsW+g/a6fqPJp
+    # pof5D1EHWqzPfkjRQV6ipQjm+ocJGkfbeHsp5I77L+w7om5TbPYBkOjg+iMd442d
+    # VYxgqXmMZy+6v78ofVM+wyba0GkRymFt0qf5k5uk3Auztcfanc2Ymsc+PDdjGHQd
+    # c9H8T0T6To8Z0xrbEXzY00IqSRkLto9Cl+xEmEAz/AiEu2WtEadOqSpDy9dsJfQg
+    # HpBQVlGQdphj5zmkqG6JSL1Uw+02OeIXOfFWRtqgW7vMyU0IbER3hLpvh6BlsqNJ
+    # LCPfD7F/dzDPU5LniDRRb4MrTlVpJk2h8pk7GbmJCqAyWJJZ6n3a+InPtUfl9gP5
+    # T0d15N7myh8RLssP+TIy8hiBHtc/yK89dUahGei1xDuh0HdytRLLLWVXqgWwgXhd
+    # 9it8l8AJ/D2BtuyExpJOWx3sYvmhJiPN8phCaR2G2E+QRA2X5nHGyUw5jYpKI8Om
+    # Q2khz1PBYcA/T5lKhM3HRFCu2HZsPKT5CEevZfUuPDXIqwx+LMFs6qqbzbGrdn1F
+    # H6ZSlG0BWuokeyjhN2mB0Fr6kdLobmfVgZHUS7KOwcI9BdftSDbEk8kMxrQlwugh
+    # 4I1hTrAycMERbjeUKg1plx8CAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-25.7-dvd-amd64.iso.bz2) = fa4b30df3f5fd7a2b1a1b2bdfaecfe02337ee42f77e2d0ae8a60753ea7eb153e
+    # SHA256 (OPNsense-25.7-nano-amd64.img.bz2) = f58f57da42a2a6d445b6e04780572d6e2d6d9ceaff8a9e5f7bbefd0fedeaa3c0
+    # SHA256 (OPNsense-25.7-serial-amd64.img.bz2) = 889d81fa738d472b996008c35718278e2076d19b7bbc108f2dc04353e01766fd
+    # SHA256 (OPNsense-25.7-vga-amd64.img.bz2) = 705e112e3c0566e6e568605173a8353a51d48074d48facf5c5831d2a0f7fb175
+
+
+--------------------------------------------------------------------------
+25.7.r2 (July 17, 2025)
+--------------------------------------------------------------------------
+
+
+This is the second release candidate for your consideration.  A kernel update
+was included to keep up with FreeBSD stable/14.  A few nice things have
+been added to Dnsmasq as well.  This is an online update only.
+
+Here are the development highlights since version 25.1 came out:
+
+* Replace the setup wizard with a modern MVC/API variant
+* Switch to reusable frontend code
+* ChartJS 4 update and related functionality migrations
+* User manager CSV export and import option
+* New plugin for SFTP configuration backups
+* Move frontend grid from Bootgrid to Tabulator
+* Optional privilege separation for the web GUI (running as non-root)
+* User/group manager adds optional source network constraint
+* JSON container support for aliases
+* Firewall automation GUI revamp
+* Performance improvements when using large amounts of aliases
+* Dnsmasq DHCP support for small and medium sized setups
+* Support advanced (manual) configurations in Kea
+* Add IPv6 support (including prefix delegation) to Kea
+* Bridges MVC migration
+* Migrate IPsec mobile page to MVC
+* Greek as a new language
+* FreeBSD 14.3
+
+And these are the full patch notes against 25.7-RC1:
+
+* system: fix passing "arguments" as parameters for cron jobs
+* firewall: code cleanup and performance improvements for alias diagnostics page
+* dnsmasq: add CNAME configuration option to host overrides
+* dnsmasq: add optional subnet mask to "dhcp-range" to satisfy DHCP relay requirements
+* dnsmasq: fix empty DHCP option value spawning stray comma
+* lang: make more strings translate-able (contributed by Tobias Degen)
+* lang: further updates
+* isc-dhcp: add static mapping CSV export
+* backend: trigger boot template reload without using configd
+* mvc: use getNodeContent to gather grid data
+* ui: adjusted grid command column sizes appropriately where needed
+* ui: exclude container fields from search functionality for now
+* src: bnxt: fix BASE-T, 40G AOC, 1G-CX, autoneg and unknown media lists
+* src: net80211: in ieee80211_sta_join() only do_ht if HT is avail
+* src: linuxkpi: assorted changes from stable/14
+* src: iwlwifi: compile in ACPI support
+* src: rtw89: enable ACPI support on FreeBSD
+* src: ifconfig: optimise non-listing case with netlink
+* src: pf: fix ICMP ECHO handling of ID conflicts
+
+Migration notes, known issues and limitations:
+
+* Deprecated Google Drive backups due to upstream policy changes and moved to plugins for existing users.
+* API URLs registered in the default ACLs have been switched from "camleCase" to "snake_case".
+* API grid return values now offer "%field" for a value description when available. "field" will now always be the literal value from the configuration. The API previously returned a display value for some field types, but not all.
+* Reverted tunables "hw.ibrs_disable" and "vm.pmap.pti" to FreeBSD defaults.
+* The new wizard still has bugs relating to disabling LAN configuration.
+* Moved OpenVPN legacy to plugins as a first step to deprecation.
+* Moved IPsec legacy to plugins as a first step to deprecation.
+
+
+Stay safe,
+Your OPNsense team
+
+--------------------------------------------------------------------------
+25.7.r1 (July 14, 2025)
+--------------------------------------------------------------------------
+
+
+After a small struggle to finish the release candidate last week, it is
+here now with FreeBSD 14.3 and lots of other highlights.  We will promise
+to deliver full release notes once 25.7 is released, but for now we need
+to get this going.
+
+Keep in mind this is mostly an image-based pre-production test release.
+Upgrades from the 25.1.11 development version will be available as soon as
+that is out later this week.  An online-only RC2 will probably follow as
+well.  The final release date for 25.7 is July 23.
+
+https://pkg.opnsense.org/releases/25.7/
+
+Here are the development highlights since version 25.1 came out:
+
+* Replace the setup wizard with a modern MVC/API variant
+* Switch to reusable frontend code
+* ChartJS 4 update and related functionality migrations
+* User manager CSV export and import option
+* New plugin for SFTP configuration backups
+* Move frontend grid from Bootgrid to Tabulator
+* Optional privilege separation for the web GUI (running as non-root)
+* User/group manager adds optional source network constraint
+* JSON container support for aliases
+* Firewall automation GUI revamp
+* Performance improvements when using large amounts of aliases
+* Dnsmasq DHCP support for small and medium sized setups
+* Support advanced (manual) configurations in Kea
+* Add IPv6 support (including prefix delegation) to Kea
+* Bridges MVC migration
+* Migrate IPsec mobile page to MVC
+* Greek as a new language
+* FreeBSD 14.3
+
+A more detailed change log will follow!
+
+Migration notes, known issues and limitations:
+
+* Deprecated Google Drive backups due to upstream policy changes and moved to plugins for existing users.
+* API URLs registered in the default ACLs have been switched from "camleCase" to "snake_case".
+* Reverted tunables "hw.ibrs_disable" and "vm.pmap.pti" to FreeBSD defaults.
+* The new wizard still has bugs relating to disabling LAN configuration.
+* Moved OpenVPN legacy to plugins as a first step to deprecation.
+* Moved IPsec legacy to plugins as a first step to deprecation.
+
+The public key for the 25.7 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAn9lXekbm5KcktbiWpmQf
+    # drRC8LmAOTV9Cbdd3em6iDFFcw8vmRS7Rbo2/exxYiPCqEPxxPtUsW+g/a6fqPJp
+    # pof5D1EHWqzPfkjRQV6ipQjm+ocJGkfbeHsp5I77L+w7om5TbPYBkOjg+iMd442d
+    # VYxgqXmMZy+6v78ofVM+wyba0GkRymFt0qf5k5uk3Auztcfanc2Ymsc+PDdjGHQd
+    # c9H8T0T6To8Z0xrbEXzY00IqSRkLto9Cl+xEmEAz/AiEu2WtEadOqSpDy9dsJfQg
+    # HpBQVlGQdphj5zmkqG6JSL1Uw+02OeIXOfFWRtqgW7vMyU0IbER3hLpvh6BlsqNJ
+    # LCPfD7F/dzDPU5LniDRRb4MrTlVpJk2h8pk7GbmJCqAyWJJZ6n3a+InPtUfl9gP5
+    # T0d15N7myh8RLssP+TIy8hiBHtc/yK89dUahGei1xDuh0HdytRLLLWVXqgWwgXhd
+    # 9it8l8AJ/D2BtuyExpJOWx3sYvmhJiPN8phCaR2G2E+QRA2X5nHGyUw5jYpKI8Om
+    # Q2khz1PBYcA/T5lKhM3HRFCu2HZsPKT5CEevZfUuPDXIqwx+LMFs6qqbzbGrdn1F
+    # H6ZSlG0BWuokeyjhN2mB0Fr6kdLobmfVgZHUS7KOwcI9BdftSDbEk8kMxrQlwugh
+    # 4I1hTrAycMERbjeUKg1plx8CAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+Please let us know about your experience!
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-25.7.r1-dvd-amd64.iso.bz2) = 1e8e874942f6b7293f345e854afcae62baa0b699b09c0dd49d1942f34eadfbfe
+    # SHA256 (OPNsense-25.7.r1-nano-amd64.img.bz2) = f93eacc72c7f75ccfdd2189e4d414fff523f2204c5e11f6ad9c57c55a6c60568
+    # SHA256 (OPNsense-25.7.r1-serial-amd64.img.bz2) = 89602b42f7631dff10cef4303753f9377c0995a0ac3966ef8564fe0414ac6cff
+    # SHA256 (OPNsense-25.7.r1-vga-amd64.img.bz2) = 77e2aeb3acacd7d9d252e30d09463c793ae641cf2938ddd90819529043b5e3e8

@@ -8,8 +8,8 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *314* releases leading to the latest version *25.1.10*
-named "Ultimate Unicorn".
+As of January 2015 there have been *319* releases leading to the latest version *25.7*
+named "Visionary Viper".
 
 
 
@@ -20,6 +20,7 @@ The list below contains all releases, ordered by version number categorized by m
    :titlesonly:
    :glob:
 
+   releases/CE_25.7
    releases/CE_25.1
    releases/CE_24.7
    releases/CE_24.1
