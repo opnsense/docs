@@ -29,6 +29,44 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.7.1 (July 31, 2025)
+--------------------------------------------------------------------------
+
+
+This update mainly addresses a number of cosmetic UI concerns in core and
+plugins.  25.7 has been a very good release and we would like to thank
+everyone for trying it quickly and thoroughly.  You people are awesome!  <3
+
+Here are the full patch notes:
+
+* system: add banner to HA sync and firmware page when proxy environment override is used
+* reporting: fixed internal parameter names in insight graphs
+* interfaces: attempt to work around mangled MPD label
+* firewall: a few minor improvements in automation GUI
+* firmware: opnsense-version: support more elaborate -R replacement
+* intrusion detection: fix interface name conversion
+* intrusion detection: fix ja4 option templating
+* openvpn: let server/server_ipv6 require a netmask
+* radvd: refine checks that ignored 6rd and 6to4
+* unbound: fix error in edge case of initial model migration
+* mvc: migrated use of setInternalIsVirtual() to volatile field types
+* mvc: fix getDescription() in NetworkAliasField
+* ui: bootgrid: clean up leftover compatibility bits
+* ui: bootgrid: add missing sortable option
+* ui: bootgrid: provide more styling possibilities from formatters
+* plugins: os-c-icap 1.9 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/www/c-icap/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.16 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-theme-cicada 1.40 (contributed by Team Rebellion)
+* plugins: os-theme-tukan 1.30 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.50 (contributed by Team Rebellion)
+* ports: curl 8.15.0 `[3] <https://curl.se/changes.html#8_15_0>`__ 
+* ports: nss 3.114 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_114.html>`__ 
+* ports: py-duckdb 1.3.2 `[5] <https://github.com/duckdb/duckdb/releases/tag/v1.3.2>`__ 
+* ports: sudo 1.9.17p2 `[6] <https://www.sudo.ws/stable.html#1.9.17p2>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.7 (July 23, 2025)
 --------------------------------------------------------------------------
 
@@ -138,7 +176,7 @@ Here are the full patch notes:
 Migration notes, known issues and limitations:
 
 * Deprecated Google Drive backups due to upstream policy changes and moved to plugins for existing users.
-* API URLs registered in the default ACLs have been switched from "camleCase" to "snake_case".
+* API URLs registered in the default ACLs have been switched from "camelCase" to "snake_case".
 * API grid return values now offer "%field" for a value description when available.  "field" will now always be the literal value from the configuration. The API previously returned a display value for some field types, but not all.
 * Reverted tunables "hw.ibrs_disable" and "vm.pmap.pti" to FreeBSD defaults.  If you want these set differently, then add them with an explicit value.
 * While the mirror dns-root.de has been removed it will not be stripped from a running configuration and may keep working for a while longer.  To ensure updates, however, please choose a different mirror at your own convenience.
@@ -228,7 +266,7 @@ And these are the full patch notes against 25.7-RC1:
 Migration notes, known issues and limitations:
 
 * Deprecated Google Drive backups due to upstream policy changes and moved to plugins for existing users.
-* API URLs registered in the default ACLs have been switched from "camleCase" to "snake_case".
+* API URLs registered in the default ACLs have been switched from "camelCase" to "snake_case".
 * API grid return values now offer "%field" for a value description when available. "field" will now always be the literal value from the configuration. The API previously returned a display value for some field types, but not all.
 * Reverted tunables "hw.ibrs_disable" and "vm.pmap.pti" to FreeBSD defaults.
 * The new wizard still has bugs relating to disabling LAN configuration.
@@ -282,7 +320,7 @@ A more detailed change log will follow!
 Migration notes, known issues and limitations:
 
 * Deprecated Google Drive backups due to upstream policy changes and moved to plugins for existing users.
-* API URLs registered in the default ACLs have been switched from "camleCase" to "snake_case".
+* API URLs registered in the default ACLs have been switched from "camelCase" to "snake_case".
 * Reverted tunables "hw.ibrs_disable" and "vm.pmap.pti" to FreeBSD defaults.
 * The new wizard still has bugs relating to disabling LAN configuration.
 * Moved OpenVPN legacy to plugins as a first step to deprecation.

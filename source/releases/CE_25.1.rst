@@ -717,18 +717,18 @@ Here are the full patch notes:
 * plugins: adjust all themes for ChartJS 4 use
 * plugins: treat empty string like null on argument map
 * plugins: os-acme-client 4.9 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/security/acme-client/pkg-descr>`__ 
-* src: ipfw: make 'ipfw show' output compatible with 'ipfw add' command
+* src: ipfw: make "ipfw show" output compatible with "ipfw add" command
 * src: pf: stop using net_epoch to synchronize access to eth rules
 * src: e1000: fix vlan PCP/DEI on lem(4)
 * src: igc: remove unused register IGC_RXD_SPC_VLAN_MASK
 * src: ifnet: detach BPF descriptors on interface vmove event
 * src: libkern: add ilog2 macro et al
-* src: ipfw: add missing initializer for 'limit' table value
+* src: ipfw: add missing initializer for "limit" table value
 * src: pf: add extra SCTP multihoming probe points
 * src: pf: verify SCTP v_tag before updating connection state
 * src: pf: verify that ABORT chunks are not mixed with DATA chunks
 * src: pf: allow ICMP messages related to an SCTP state to pass
-* src: pf: add 'allow-related' to always allow SCTP multihome extra connections
+* src: pf: add "allow-related" to always allow SCTP multihome extra connections
 * src: bpf: fix potential race conditions
 * src: net: if_media for 100BASE-BX
 * src: rtw89: update Realtek rtw88/rtw89 driver et al
