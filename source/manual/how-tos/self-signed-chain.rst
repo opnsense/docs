@@ -303,7 +303,7 @@ It can be used on a server, user, or both; depending on the type.
 ===================================== =======================================================================================================================
 **Options**                           **Description**
 ===================================== =======================================================================================================================
-**Method**                            ``Create an internal Certificate``
+**Method**                            ``Create an internal Certificate Authority``
 **Description**                       ``leaf-certificate.example.com`` (or a custom description, like user or server name)
 **Key**
 **Type**                              ``Server Certificate`` (or client certificate for a user)
