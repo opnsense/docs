@@ -194,7 +194,7 @@ Here are the full patch notes:
 * firewall: add a note about stateless TCP during syncookie use
 * firewall: enhance validation that group name can not start or end with a digit
 * firewall: make loopback traffic stateful again to fix its use with syncookie option
-* firewall: add 'Action' property to list of retrieved rules
+* firewall: add "Action" property to list of retrieved rules
 * firewall: use UUIDs as rule labels to ease tracking
 * firmware: remove escaped slashes workaround on mirror/flavour write
 * firmware: introduce config.sh and use it in launcher.sh and connection.sh
@@ -215,7 +215,7 @@ Here are the full patch notes:
 * openvpn: add Require Client Provisioning option for instances
 * unbound: allow RFC 2181 compatible names in overrides
 * backend: correct template helper exists() return type (contributed by kumy)
-* backend: add 'configd environment' debug action
+* backend: add "configd environment" debug action
 * lang: update available translations
 * mvc: extend sanity checks in isIPInCIDR()
 * mvc: fix UpdateOnlyTextField incompatibility with DependConstraint (contributed by kumy)

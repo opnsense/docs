@@ -407,7 +407,7 @@ Here are the full patch notes:
 * interfaces: drop obsolete PPP default route handling
 * interfaces: change GRE/GIF to split reload per address family on dynamic connectivity
 * interfaces: prevent reading stale configuration data in interfaces_has_prefix_only()
-* interfaces: for consistency bootstrap the implicit 'none' value of the IP address modes
+* interfaces: for consistency bootstrap the implicit "none" value of the IP address modes
 * interfaces: prevent extended array data from being passed in interface_bring_down()
 * interfaces: fix warning due to use of an unassigned variable
 * firewall: rewrote group handling using MVC/API
@@ -584,7 +584,7 @@ Here are the full patch notes:
 * src: pcib: allocate the memory BAR with the MSI-X table `[16] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:10.pci.asc>`__ 
 * src: pf: handle multiple IPv6 fragment headers
 * src: rss: set pin_default_swi to 0 by default
-* src: rtsol: introduce an 'always' script
+* src: rtsol: introduce an "always" script
 * ports: curl 8.3.0 `[17] <https://curl.se/changes.html#8_3_0>`__ 
 * ports: dnspython 2.4.2
 * ports: filterlog fix to prevent crash on default rule number -1
