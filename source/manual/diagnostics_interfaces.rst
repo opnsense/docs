@@ -114,7 +114,7 @@ It has some options you can choose from, which are detailed below.
 
 =========================== ==================================================================================================================
 Interface                   List of interfaces to start a capture on. A tcpdump process is started on each selected interface
-Promiscuous                 When set, the system will capture all traffic present on the interface in stead
+Promiscuous                 When set, the system will capture all traffic present on the interface instead
                             of the traffic heading to the firewall.
 Address Family              Capture IPv4, IPv6 or both
 Invert Protocol             Select all but the protocol selected below

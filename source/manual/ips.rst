@@ -133,7 +133,7 @@ Some less frequently used options are hidden under the "advanced" toggle.
 Home networks                         Define custom home networks, when different than an RFC1918 network.
                                       In some cases, people tend to enable IDPS on a wan interface behind NAT
                                       (Network Address Translation), in which case Suricata would only see
-                                      translated addresses in stead of internal ones. Using this option, you can
+                                      translated addresses instead of internal ones. Using this option, you can
                                       define which addresses Suricata should consider local.
 default packet size                   With this option, you can set the size of the packets on your network.
                                       It is possible that bigger packets have to be processed sometimes.
