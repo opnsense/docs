@@ -1,6 +1,21 @@
 Interfaces
 ~~~~~~~~~~
 
+.. csv-table:: Resources (BridgeSettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","interfaces","bridge_settings","add_item",""
+    "``POST``","interfaces","bridge_settings","del_item","$uuid"
+    "``GET``","interfaces","bridge_settings","get",""
+    "``GET``","interfaces","bridge_settings","get_item","$uuid=null"
+    "``POST``","interfaces","bridge_settings","reconfigure",""
+    "``GET,POST``","interfaces","bridge_settings","search_item",""
+    "``POST``","interfaces","bridge_settings","set",""
+    "``POST``","interfaces","bridge_settings","set_item","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Bridge.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Bridge.xml>`__"
+
 .. csv-table:: Resources (GifSettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

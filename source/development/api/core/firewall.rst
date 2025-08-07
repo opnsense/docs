@@ -94,6 +94,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``GET,POST``","firewall","filter","search_rule",""
     "``POST``","firewall","filter","set_rule","$uuid"
     "``POST``","firewall","filter","toggle_rule","$uuid,$enabled=null"
+    "``POST``","firewall","filter","toggle_rule_log","$uuid,$log"
 
 .. csv-table:: Resources (FilterUtilController.php)  -- extends : ApiControllerBase 
    :header: "Method", "Module", "Controller", "Command", "Parameters"

@@ -11,7 +11,7 @@ Updates
 
 
 How to install updates and information about our versioning can be found in the Installation and setup section, which
-can be found in the  :doc:`/manual/updates` document
+can be found in the  :doc:`/manual/updates` document.
 
 
 --------------------------------
@@ -19,10 +19,15 @@ Plugins
 --------------------------------
 
 Plugins are additional software packages that are available for OPNsense, usually they come with their own
-frontend components to setup the software underneath.
-Here you can find community support plugins, such as  **bind**, **c-icap**, **freeradius** and others. Usually there is also
-a **-devel** version available, which contains features still under development (master branch on GitHub versus release).
+frontend components to setup the software underneath.  Shown by default are support tier 1 and 2 plugins.
 
+Here you can also find community plugins from lower tiers, such as  **bind**, **c-icap**, **freeradius** and others.
+These are not listed by default.  To view them use the **Show community plugins** checkbox.
+
+When on the development version, a **-devel** version is also available available, which may contain features still under development
+or ready for wider testing before their eventual release (master branch on GitHub versus release).
+
+Our plugin support tiers are explained in detail in the :doc:`/support` document.
 
 .. Note::
 
@@ -51,6 +56,37 @@ Changelog
 
 If you would like to read about the changes in (past) releases, you can do so in the **Changelog** tab.
 
+--------------------------------
+Status (firmware audits)
+--------------------------------
+
+Audits provided are troubleshooting tools for a variety of purposes explained below.
+The forum is a good place to post your update and upgrade issues if you get stuck despite the best effort.
+
+The cleanup audit triggers an immediate removal of all tempporary update files. Sometimes these files are not
+cleaned up correctly and can cause issues with the next round of package updates.
+
+The connectivity audit offers a direction where to look for issues during updates and the following causes are
+in our experience most common:
+
+* Misconfigured DNS settings, check :menuselection:`System --> Settings --> General` for configured servers the firewall is allowed to use
+* Misconfigured IPv6, in which case "Prefer IPv4 over IPv6" in :menuselection:`System --> Settings --> General` might help to prevent the system from using IPv6 in these cases
+* In HA (carp) setups, using the wrong extrenal IPaddress, usually caused by a misconfigued outbound nat rule, easy to check by disabling manual outbound nat rules in :menuselection:`Firewall --> NAT --> Outbound`.
+
+The heath audit can also help with uncovering installation and disk / file system issues.
+Additionally, major ugpgrades may not pass certain sanity checks that need to be corrected first which may include the command line:
+
+* "Could not determine core package name." can indicate that the local package manager database was lost. See `opnsense-bootstrap` command to fix.
+* "No package manager is installed to perform upgrades." can indicate a broken installation. Try to reinstall the "pkg" package via `System --> Firmware --> Packages`.
+* "The Package manager is incompatible and needs a reinstall." can indicate misuse of the FreeBSD repository. Try to reinstall the "pkg" package via `System --> Firmware --> Packages`.
+* "Core package not known to package database." can mean that the mirror settings are wrong, the main mirror no longer holds any packages or that the mirror is unreachable for other reasons.
+
+The security audit checks each installed package's version against a database of known vulnerabilities. Vulnerabilities
+are reported for triage and inspection, not for reporting them to OPNsense. The appearance of vulnerabilities in an install
+indicate that the next update will likely address them.
+
+After having performed a major upgrade, the upgrade audit shows the package upgrade log for further inspection.
+This can be helpful to identify package conflicts that led to partial or full upgrade failures.
 
 --------------------------------
 Settings

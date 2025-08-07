@@ -166,8 +166,7 @@ when received from the network. DHCP requires at least one dhcp-range and matchi
                                                   seconds. This can be practical for split DHCP solutions, to make sure the secondary
                                                   server answers slower than the primary.
         **DHCP register firewall rules**          Automatically register firewall rules to allow DHCP traffic for all explicitly selected
-                                                  interfaces, can be disabled for more fine-grained control if needed. Changes are only
-                                                  effective after a firewall service restart (see system diagnostics).
+                                                  interfaces, can be disabled for more fine-grained control if needed.
         **Router Advertisements**                 Setting this will enable Router Advertisements for all configured DHCPv6 ranges with
                                                   the managed address bits set, and the use SLAAC bit reset. To change this default, select
                                                   a combination of the possible options in the individual DHCPv6 ranges.
@@ -213,7 +212,10 @@ DNS Settings
         **IP addresses**                          IP addresses of the host, e.g. 192.168.100.100 or fd00:abcd::1. Can be multiple IPv4
                                                   and IPv6 addresses for dual stack configurations. Setting multiple addresses will automatically
                                                   assign the best match based on the subnet of the interface receiving the DHCP Discover.
-        **Aliases**                               List of aliases (FQDN)
+        **Aliase Records**                        Adds additional static A, AAAA and PTR records for the given alternative names (FQDN).
+                                                  Please note that these records are only created if IP addresses are configured in this host entry.
+        **CNAME Records**                         Adds additional CNAME records for the given alternative names (FQDN). Useful if this host entry has
+                                                  dynamic IPv4 and partial IPv6 addresses, as the CNAME record will point to the name instead of static IP addresses.
         **Client identifier**                     Match the identifier of the client, e.g., DUID for DHCPv6.
                                                   Setting the special character "*" will ignore the client identifier for DHCPv4 leases if a client offers both as choice.
         **Hardware addresses**                    Match the hardware address of the client. Can be multiple addresses, e.g., if the client has
@@ -242,6 +244,11 @@ DNS Settings
         **IP address**                            IP address of the authoritative DNS server for this domain, leave empty to prevent lookups for this domain.
         **Port**                                  Specify a non-standard port number here, leave blank for default.
         **Source IP**                             Source IP address for queries to the DNS server for the override domain. Best to leave empty.
+        **Firewall Alias**                        Choose an "external (advanced)" type alias from "Firewall - Aliases". Whenever a client successfully resolves
+                                                  the domain, the resolved IP addresses will be automatically added to the chosen alias. Adding a domain will
+                                                  also add all IP addresses of resolved subdomains. Please note that DNS record TTL is not evaluated;
+                                                  once an IP address is added, it will stay permanently, or until manually flushed in "Firewall - Diagnostics - Aliases",
+                                                  or until removed automatically when setting an expiration on the alias.
         **Description**                           You may enter a description here for your reference (not parsed).
         ========================================= ====================================================================================
 
@@ -269,6 +276,8 @@ DHCP Settings
                                                   When using router advertisements, it is possible to use a constructor with :: as the start
                                                   address and no end address.
         **End address**                           End of the range.
+        **Subnet Mask**                           Leave empty to auto-calculate the subnet mask from the interface or the network class of the start address.
+                                                  If a DHCP relay forwards IPv4 DHCP Discovers to Dnsmasq, setting a subnet mask is required in most cases.
         **Constructor**                           Interface to use to calculate the proper range, when selected, a range may be specified as partial (e.g. ::1, ::400).
         **Prefix length (IPv6)**                  Prefix length offered to the client. Custom values in this field will be ignored if
                                                   Router Advertisements are enabled, as SLAAC will only work with a prefix length of 64.
@@ -287,6 +296,8 @@ DHCP Settings
         **Mode**                                  Mode flags to set for this range, 'static' means no addresses will be automatically assigned.
         **Lease time**                            Defines how long the addresses (leases) given out by the server are valid (in seconds).
                                                   Set ``0`` for infinite; be careful as this might deplete the pool.
+        **Domain Type**                           Choose if the domain will only match clients in this range, or all clients in any subnets on the selected interface.
+                                                  If you create both IPv4 and IPv6 ranges, setting this to "Interface" on both ranges is recommended.
         **Domain**                                Offer the specified domain to machines in this range.
         **Disable HA sync**                       Ignore this range from being transferred or updated by HA sync.
         **Description**                           You may enter a description here for your reference (not parsed).
@@ -451,6 +462,8 @@ In our example, we configure query forwarding for 2 networks:
 
         .. Note:: The first entry is for the forward lookup (A-Record), the second for the reverse lookup (PTR-Record).
 
+        .. Tip:: If all PTR records for 192.168.0.0/16 should be handled by Dnsmasq, creating a single entry with ``168.192.in-addr.arpa`` is enough.
+
 
     .. tab:: guest.internal
 
@@ -529,6 +542,12 @@ As next step we define the DHCP ranges for our interfaces.
 
             If a host receives a DHCP lease from this range, and it advertises a hostname, it will be registered under the chosen domain name.
             E.g., a host named ``nas01`` will become ``nas01.lan.internal``. A client can query this FQDN to receive the current IP address.
+
+        .. Attention::
+
+            If you plan to use partial IPv6 addresses in ranges with a constructor, enable the advanced mode and set **Domain Type** to ``Interface``.
+            This will register any subnets on the chosen interface to the selected domain. This is the only way dynamic DNS registration succeeds
+            when the IPv6 prefix is dynamic.
 
     .. tab:: GUEST
 
@@ -635,6 +654,12 @@ Option                              Value
     Set ``ra-names`` in addition to ``ra-stateless`` if DNS names should be registered automatically for SLAAC addresses. Please note that this
     does not work for clients using the IPv6 privacy extensions.
 
+.. Attention::
+
+    If you plan to use partial IPv6 addresses in ranges with a constructor, enable the advanced mode and set **Domain Type** to ``Interface``.
+    This will register any subnets on the chosen interface to the selected domain. This is the only way dynamic DNS registration succeeds
+    when the IPv6 prefix is dynamic.
+
 .. Note::
 
     If do not want to use Router Advertisements, leave the RA Mode on default, and do not enable the Router Advertisement global setting. Ensure
@@ -686,9 +711,17 @@ If a different Router Advertisement daemon is used, ensure it runs in `Assisted`
 
 .. Tip::
 
-    You do not need a separate static DHCP range to use ``dhcp-host`` reservations.
-    A single dynamic range is enough — ``dhcp-host`` entries can also assign IPs outside that range.
-    The static range is only required if you want a reservation-only network.
+    Reservations will reserve the IP address inside a range, meaning the reserved IP will not be offered to dynamic clients.
+
+    A dynamic range like ``192.168.1.100-192.168.1.199`` and a reservation like ``192.168.1.101`` are valid and there will be no collisions.
+
+    The reservation can also be outside the dynamic range, but it is not recommended for simple setups as the dynamic dns registration
+    with dhcp-fqdn will not work correctly.
+
+.. Attention::
+
+    Setting the range mode to static is not required for reservations. It is for specific usecases where a range should not serve any
+    unknown dynamic clients.
 
 .. Note::
 
@@ -712,6 +745,14 @@ Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> Hosts`
         ==================================  =======================================================================================================
 
         - Press **Save** and **Apply**
+
+        .. Attention::
+
+            Setting a domain in the reservation has no effect on the dynamic dns registration; it will only create a static host override.
+
+            Dnsmasq will always combine the host with a domain configured in a matching dhcp range.
+
+            This is especially important for partial IPv6 reservations, as they cannot be resolved before the dynamic dns registration has finished.
 
     .. tab:: IPv6
 
@@ -879,8 +920,6 @@ if these boot images should be served on any interfaces. Adjust IP addresses and
         **Server address**                        ``192.168.99.10``
         ========================================= ====================================================================================
 
-.. tabs::
-
     .. tab:: EFI Boot
 
         ========================================= ====================================================================================
@@ -1033,3 +1072,107 @@ As soon as the master comes back online, the higher RA priority will make client
 
     Do not set the RA Interval and RA Router Lifetime too low, as clients could potentially loose their default routes in busy networks.
     The bare minimum for RA Router Lifetime should be (RA Interval*3).
+
+
+Dnsmasq as primary DNS resolver
+--------------------------------------------------
+
+This is a small complementory section how to configure Dnsmasq as the primary DNS resolver for your network combined with Unbound as recurser.
+
+It is useful if you rely on features like dynamic IPv6 networks with PTR records registered via DHCP, or the Firewall Alias (IPset) feature.
+
+The drawbacks are Unbound Statistics or Blocklist features based on client IP, as the client will always be 127.0.0.1.
+
+The benefits are a less complicated configuration and less adjustments in Unbound if new networks get introduced.
+
+- Go to :menuselection:`Services --> Unbound DNS --> General` and set:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Enable**                          ``X``
+**Listen Port**                     ``53053``
+==================================  =======================================================================================================
+
+- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> General` and set:
+
+================================================ =======================================================================================================
+Option                                           Value
+================================================ =======================================================================================================
+**Enable**                                       ``X``
+**Listen Port**                                  ``53``
+**Do not forward to system defined DNS servers** ``X``  (This will force Dnsmasq to only use forwarding specified in the domains tab)
+**Do not forward private reverse lookups**       ``X``
+================================================ =======================================================================================================
+
+- Go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> Domains` and set:
+
+================================================ =======================================================================================================
+Option                                           Value
+================================================ =======================================================================================================
+**Sequence**                                     ``1``
+**Domain**                                       ``*``  (This will match all domains)
+**IP address**                                   ``127.0.0.1``  (Unbound listens on this IP address and port)
+**Port**                                         ``53053``
+================================================ =======================================================================================================
+
+Apply the configuration and test DNS resolution with a client.
+
+
+Firewall Alias (IPset)
+--------------------------------------------------
+
+Dnsmasq has a powerful feature, it can add resolved IP addresses to firewall aliases.
+
+This is quite useful in restricted networks or to gather statistics.
+
+As example, you provide a guest network, but users should only access ``example.com``. With a normal firewall alias, this might be challenging,
+as the domain might use multiple subdomains that serve additional content. It could also use a CDN to load balance content across different servers with dynamically
+changing IP addresses per client.
+
+With a Dnsmasq managed alias, this becomes rather simple as it will automatically add new IPv4 and IPv6 addresses as soon as they are requested by clients.
+
+A requirement to use this feature is that Dnsmasq is your primary DNS server for all clients, and access to any other DNS servers is blocked. A different approach is to
+do query forwarding from Unbound to Dnsmasq for the domains that should be added to its managed firewall aliases, with the caveat that Dnsmasq then must use
+an external resolver to prevent a query loop.
+
+.. Note::
+
+    This feature is more useful for allowlists, rather than blocklists. As IPv4 and IPv6 addresses are added to the managed firewall alias, using it as blocklist could
+    unintentionally kill access to shared hosting services. Also, if a browser is configured to use DoH (DNS over HTTPS) on port 443, a blocklist could be circumvented as Dnsmasq
+    would not respond to DNS requests - the alias would not be populated.
+
+.. Attention::
+
+    Try to be selective with the domain you add to the alias. Adding a TLD (Top Level Domain) like ``com`` could inflate the alias to the point it could become unusable.
+    A good rule of thumb is one alias per service domain, they can later be nested under a parent alias.
+
+In the following example, Dnsmasq is our primary DNS resolver, and it forwards queries to ``127.0.0.1:53053`` on which Unbound listens.
+
+- Go to :menuselection:`Firewall --> Aliases`:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Name**                            ``dnsmasq_example_com``
+**Type**                            ``External (advanced)``
+**Expire**                          ``86400``  (Gradually prunes unused IP addresses from the alias)
+==================================  =======================================================================================================
+
+After creating the alias, go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> Domains`:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Domain**                          ``example.com``  (This also includes all subdomains under example.com)
+**IP Address**                      ``127.0.0.1``  (Or an external resolver like 1.1.1.1 if query forwarding for this domain from Unbound is configured)
+**Port**                            ``53053``  (Leave empty if the resolver listens on port 53)
+**Firewall Alias**                  ``dnsmasq_example_com``
+==================================  =======================================================================================================
+
+As final step, create a firewall rule with the ``dnsmasq_example_com`` alias as destination.
+
+.. Tip::
+
+    Verify the contents of the alias in :menuselection:`Firewall --> Diagnostics --> Aliases`:
+    It should populate with IP addresses as soon as clients resolve ``example.com`` via Dnsmasq.

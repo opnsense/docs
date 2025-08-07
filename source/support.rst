@@ -61,6 +61,10 @@ Community (Tier 3)
 - If the feature get lots of traction, and/or if the team just considers it very useful, it may get 'promoted' to being officially supported (Tier 2)
 - The feature will be removed if the submitter stops maintaining it and no-one steps up to take over
 
+Development or unknown (Tier 4)
+===========================================
+
+* As an extension of tier 3, this tier is reserved for development version of plugins, when the plugin failed to set a tier or any other custom third party repository
 
 
 Community
@@ -110,13 +114,16 @@ as described at the support levels section.
    "net/frr", "FRRouting (FRR) is an IP routing protocol suite for Linux and Unix platforms which includes protocol daemons for BGP, IS-IS, LDP, OSPF, PIM, and RIP."
    "net/relayd", "relayd is a daemon to relay and dynamically redirect incoming connections to a target host.  Its purposes is to run as a load-balancer.  The daemon is able to monitor groups of hosts for availability, which is determined by checking for a specific service common to a host group.  When availability is confirmed, Layer 3 and/or layer 7 forwarding services are set up by relayd."
    "security/etpro-telemetry", "Todays cybersecurity engineers need timely and accurate data about eminent threats and how they spread around the globe. With this data cybersecurity researchers and analysts can improve the detection of malicious network traffic. The times when we could rely on just firewall rules for our protection are long gone. Additional layers of security are desperately needed to guard against these attacks."
+   "security/openvpn-legacy", "This plugin adds the legacy OpenVPN server/client configuration pages."
+   "security/strongswan-legacy", "This plugin adds the legacy IPsec tunnel and mobile configuration pages."
    "security/stunnel", "Stunnel is a proxy designed to add TLS encryption functionality to existing clients and servers without any changes in the programs' code."
-   "security/tinc", "tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet."
+   "sysutils/cpu-microcode", "Updating your microcode can help to mitigate certain potential security vulnerabilities in CPUs as well as address certain functional issues that could, for example, result in unpredictable system behavior such as hangs, crashes, unexpected reboots, data errors, etc."
    "sysutils/dec-hw", "This package allows fetching the current power status for Deciso appliances with dual power supplies via an API call and includes a simple dashboard widget."
+   "sysutils/gdrive-backup", "This plugin adds a backup option using Google Drive."
    "sysutils/git-backup", "This package adds a backup option using git version control."
+   "sysutils/sftp-backup", "This plugin adds a backup option using SFTP (secure copy)."
    "sysutils/vmware", "The Open Virtual Machine Tools (open-vm-tools) are the open source implementation of VMware Tools. They are a set of guest operating system virtualization components that enhance performance and user experience of virtual machines. As virtualization technology rapidly becomes mainstream, each virtualization solution provider implements their own set of tools and utilities to supplement the guest virtual machine. However, most of the implementations are proprietary and are tied to a specific virtualization platform."
-   "www/OPNProxy", "OPNsense proxy additions to support more fine grained access management"
-   "www/squid", "Squid is a fully-featured HTTP, HTTPS, FTP, etc. proxy offering rich access control, authorization and logging environment to develop web proxy and content serving applications."
+   "vendor/sunnyvalley", "This plugin adds a proprietary repository to install Zenarmor (previously Sensei), a plugin for OPNsense, complementing the firewall with state of the art next generation firewall features."
 
 .. csv-table:: Tier 3
   :header: "Name", "Description"
@@ -133,12 +140,13 @@ as described at the support levels section.
    "ftp/tftp", "tftp-hpa is portable, BSD derived tftp server.  It supports advanced options such as blksize, blksize2, tsize, timeout, and utimeout. It also supported rulebased security options."
    "mail/postfix", "Postfix attempts to be fast, easy to administer, and secure. The outside has a definite Sendmail-ish flavor, but the inside is completely different."
    "mail/rspamd", "Rspamd is fast, modular and lightweight spam filter. It is designed to work with big amount of mail and can be easily extended with own filters written in lua."
+   "misc/theme-advanced", "Advanced - Modern theme based on AdvancedTomato project by the original author"
    "misc/theme-cicada", "The cicada theme - grey/orange - Designed and created by remic-webdesign@chello.at"
    "misc/theme-rebellion", "A suitably dark theme."
    "misc/theme-tukan", "The tukan theme - blue/white - Designed and created by remic-webdesign@chello.at"
    "misc/theme-vicuna", "The vicuna theme - dark anthrazit - Designed and created by rene@team-rebellion.net"
    "net-mgmt/collectd", "collectd is a daemon which collects system and application performance metrics periodically and provides mechanisms to store the values in a variety of ways, for example in RRD files."
-   "net-mgmt/lldpd", "LLDP is an industry standard protocol designed to supplant proprietary Link-Layer protocols such as EDP or CDP. The goal of LLDP is to provide an inter-vendor compatible mechanism to deliver Link-Layer notifications to adjacent network devices."
+   "net-mgmt/lldpd", "LLDP is an industry standard protocol designed to supplant proprietary Link-Layer protocols such as EDP or CDP.  The goal of LLDP is to provide an inter-vendor compatible mechanism to deliver Link-Layer notifications to adjacent network devices."
    "net-mgmt/net-snmp", "Simple Network Management Protocol (SNMP) is a widely used protocol for monitoring the health and welfare of network equipment (eg. routers), computer equipment and even devices like UPSs. Net-SNMP is a suite of applications used to implement SNMP v1, SNMP v2c and SNMP v3 using both IPv4 and IPv6."
    "net-mgmt/netdata", "Netdata is distributed, real-time, performance and health monitoring for systems and applications. It is a highly optimized monitoring agent you install on all your systems and containers."
    "net-mgmt/nrpe", "nrpe is used to execute Nagios plugins on remote hosts and report the results to the main Nagios server. From the Nagios homepage:"
@@ -152,6 +160,7 @@ as described at the support levels section.
    "net/haproxy", "HAProxy is a free, very fast and reliable solution offering high availability, load balancing, and proxying for TCP and HTTP-based applications. It is particularly suited for web sites crawling under very high loads while needing persistence or Layer7 processing."
    "net/igmp-proxy", "Igmpproxy is a simple multicast routing daemon based on mrouted. It uses IGMP forwarding to dynamically route multicast traffic."
    "net/mdns-repeater", "mdns-repeater is a Multicast DNS repeater. Multicast DNS uses the 224.0.0.251 address, which is 'administratively scoped' and does not leave the subnet."
+   "net/ndproxy", "Ndproxy is a kernel module that implements IPv6 Neighbor Discovery proxying over Ethernet-like access networks."
    "net/ntopng", "ntopng is the next generation version of the original ntop, a network traffic probe that monitors network usage. ntopng is based on libpcap and it has been written in a portable way in order to virtually run on every Unix platform, MacOSX and on Windows as well."
    "net/radsecproxy", "A generic RADIUS proxy that in addition to usual RADIUS UDP transport, also supports TLS (RadSec), as well as RADIUS over TCP and DTLS. The aim is for the proxy to have sufficient features to be flexible, while at the same time to be small, efficient and easy to configure."
    "net/realtek-re", "This is the official driver from Realtek and can be loaded instead of the FreeBSD driver built into the GENERIC kernel if you experience issues with it (eg. watchdog timeouts), or your card is not supported."
@@ -159,6 +168,7 @@ as described at the support levels section.
    "net/siproxd", "Siproxd is a proxy/masquerading daemon for the SIP protocol. It handles registrations of SIP clients on a private IP network and performs rewriting of the SIP message bodies to make SIP connections work via an masquerading firewall (NAT). It allows SIP software clients (like kphone, linphone) or SIP hardware clients (Voice over IP phones which are SIP-compatible, such as those from Cisco, Grandstream or Snom) to work behind an IP masquerading firewall or NAT router."
    "net/sslh", "Manage SSLH, the SSL/SHH multiplexer via the OPNsense web UI."
    "net/tayga", "TAYGA is an out-of-kernel stateless NAT64 implementation that uses the TUN driver to exchange IPv4 and IPv6 packets with the kernel. It is intended to provide production-quality NAT64 service for networks where dedicated NAT64 hardware would be overkill."
+   "net/turnserver", "Coturn is a free open source implementation of TURN and STUN Server. The TURN Server is a VoIP media traffic NAT traversal server and gateway."
    "net/udpbroadcastrelay", "udpbroadcastrelay is a UDP multicast relayer. Its intended use is to rebroadbcast udp packets on a specific port across interfaces, be those interfaces physical or VLAN."
    "net/upnp", "MiniUPnPd is a lightweight implementation of a UPnP IGD & PCP/NAT-PMP daemon. This is supposed to be run on your gateway machine to allow client systems to map ports and punch holes in the firewall."
    "net/vnstat", "vnStat is a console-based network traffic monitor for Linux and BSD that keeps a log of network traffic for the selected interface(s). It uses the network interface statistics provided by the kernel as information source. This means that vnStat won't actually be sniffing any traffic and also ensures light use of system resources."
@@ -169,14 +179,19 @@ as described at the support levels section.
    "security/crowdsec", "Crowdsec is an open-source, lightweight software, detecting peers with aggressive behaviors to prevent them from accessing your systems. Its user friendly design and assistance offers a low technical barrier of entry and nevertheless a high security gain."
    "security/intrusion-detection-content-et-open", "IDS Proofpoint ET open full ruleset to complement ET Pro Telemetry edition. This plugin will trigger duplicate rules warnings in Suricata logs when selecting the same categories for both ET open and ET Telemetry."
    "security/intrusion-detection-content-et-pro", "Proofpoint ET Pro is a timely and accurate rule set for detecting and blocking advanced threats using your existing network security appliances, such as next generation firewalls (NGFW) and network intrusion detection / prevention systems (IDS/IPS)"
+   "security/intrusion-detection-content-pt-open", "IDS PT ESC open ruleset designed to detect a variety of network threats, including those communicated under TLS."
    "security/intrusion-detection-content-snort-vrt", "The Snort Subscriber Rule Set refer to rules that have been developed, tested and approved by the Talos Security Intelligence and Research Team (Talos). The Snort Subscriber Ruleset released after March 7th, 2005 are governed by the Snort Subscriber Rule Set License Agreement."
    "security/maltrail", "Maltrail is a malicious traffic detection system, utilizing publicly available (black)lists containing malicious and/or generally suspicious trails, along with static trails compiled from various AV reports and custom user defined lists, where trail can be anything from domain name, URL, IP address or HTTP User-Agent header value. Also, it uses advanced heuristic mechanisms that can help in discovery of unknown threats."
+   "security/netbird", "NetBird is an open-source WireGuard-based overlay network combined with Zero Trust Network Access, providing secure and reliable connectivity to internal resources."
    "security/openconnect", "OpenConnect is an SSL VPN client initially created to support Cisco's AnyConnect SSL VPN. It has since been ported to support the Juniper SSL VPN which is now known as Pulse Connect Secure."
    "security/softether", "SoftEther VPN ('SoftEther' means 'Software Ethernet') is one of the world's most powerful and easy-to-use multi-protocol VPN software. It runs on Windows, Linux, Mac, FreeBSD and Solaris."
+   "security/tailscale", "Tailscale is a mesh VPN alternative, based on WireGuard, that connects your computers, databases, and services together securely without any proxies."
+   "security/tinc", "tinc is a Virtual Private Network (VPN) daemon that uses tunnelling and encryption to create a secure private network between hosts on the Internet."
    "security/tor", "Tor is a connection-based low-latency anonymous communication system which addresses many flaws in the original onion routing design."
    "security/wazuh-agent", "Wazuh is a free and open source platform used for threat prevention, detection, and response. It is capable of protecting workloads across on-premises, virtualized, containerized, and cloud-based environments."
    "sysutils/apcupsd", "Apcupsd, short for APC UPS daemon, can be used for controlling all APC UPS models. It can monitor and log the current power and battery status, perform automatic shutdown, and can run in network mode in order to power down other hosts on a LAN."
    "sysutils/apuled", "LED control for PC Engines APU platform OPNsense plugin Cloudfence 2019 - JCC"
+   "sysutils/beats", "Beats is the platform for building lightweight, open source data shippers for many types of operational data you want to enrich with Logstash, search and analyze in Elasticsearch."
    "sysutils/dmidecode", "Dmidecode reports information about your system's hardware as described in your system BIOS according to the SMBIOS/DMI standard. This information typically includes system manufacturer, model name, serial number, BIOS version, asset tag as well as a lot of other details of varying level of interest and reliability depending on the manufacturer. This will often include usage status for the CPU sockets, expansion slots (e.g. AGP, PCI, ISA) and memory module slots, and the list of I/O ports (e.g. serial, parallel, USB)."
    "sysutils/hw-probe", "Send anonymized hardware diagnostics to https://bsd-hardware.info"
    "sysutils/lcdproc-sdeclcd", "LCDproc setup for SDEC LCD devices found in Watchguard FireBox firewall appliances."
@@ -189,9 +204,10 @@ as described at the support levels section.
    "sysutils/smart", "The smartmontools package contains two utility programs (smartctl and smartd) to control and monitor storage systems using the Self-Monitoring, Analysis and Reporting Technology System (S.M.A.R.T.) built into most modern ATA and SCSI hard disks.  It is derived from the smartsuite package, and includes support for ATA/ATAPI/SATA disks and SCSI disks and tape devices."
    "sysutils/virtualbox", "These additions are for installation inside a FreeBSD guest."
    "sysutils/xen", "FreeBSD VM tools for Citrix XenServer and XCP"
-   "vendor/sunnyvalley", "This plugin adds a proprietary repository to install Zenarmor (previously Sensei), a plugin for OPNsense, complementing the firewall with state of the art next generation firewall features."
    "www/c-icap", "c-icap is an implementation of an ICAP server. It can be used with HTTP proxies that support the ICAP protocol to implement content adaptation and filtering services."
    "www/cache", "Add and enable caching for the web GUI to accelerate requests."
-   "www/caddy", "Caddy - The Ultimate Server - makes your sites more secure, more reliable, and more scalable than any other solution. By default, Caddy automatically obtains and renews TLS certificates for all your sites. It's the most advanced HTTPS server in the world."
+   "www/caddy", "Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS"
    "www/nginx", "NGINX is a high performance edge web server with the lowest memory footprint and the key features to build modern and efficient web infrastructure."
+   "www/OPNProxy", "OPNsense proxy additions to support more fine grained access management"
+   "www/squid", "Squid is a fully-featured HTTP, HTTPS, FTP, etc. proxy offering rich access control, authorization and logging environment to develop web proxy and content serving applications."
    "www/web-proxy-sso", "Allow to use the web proxy with Single Sign-On against an Active Directory instead of using a bundled authentication."

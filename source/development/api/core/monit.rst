@@ -22,7 +22,6 @@ Monit
     "``POST``","monit","settings","del_alert","$uuid"
     "``POST``","monit","settings","del_service","$uuid"
     "``POST``","monit","settings","del_test","$uuid"
-    "``GET``","monit","settings","dirty",""
     "``GET``","monit","settings","get",""
     "``GET``","monit","settings","get_alert","$uuid=null"
     "``GET``","monit","settings","get_general",""

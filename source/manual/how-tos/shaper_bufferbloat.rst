@@ -37,6 +37,10 @@ FQ_CoDel begins to mark or drop some of those packets to cause the sender to slo
 
 For more details, see RFC 8290 https://datatracker.ietf.org/doc/html/rfc8290. 
 
+.. Attention::
+    If you are running IPv6 or any dynamic routing protocol, consider creating a Control plane specific class :doc:`/manual/how-tos/shaper_control_plane`.
+
+
 Parameters of FQ_CoDel
 ----------------------
 
@@ -56,7 +60,7 @@ FQ_CoDel uses the following parameters in its algorithm.
                         It is the hard limit on the real queue size in packets
                         (Default: 10240, max 20480).*
  **flows**              *Sets the number of queues into which the incoming packets are classified
-                        (Default: 1024, max 65536)*
+                        (Default: 1024, max 65535)*
  **CoDel ECN**          *Enable packet marking for ECN-enabled TCP flows when queue delay becomes high.
                         (Default: Disabled)*           
 ======================= ====================================================================

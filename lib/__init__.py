@@ -141,7 +141,7 @@ class ApiParser:
                 command=cmd,
                 parameters=','.join(params),
                 methods=sorted(detected_methods) if detected_methods else [default_method],
-                model_path=model_path,
+                model_path=str(model_path),
             )
 
     def _p_error(self, p):

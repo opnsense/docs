@@ -164,8 +164,8 @@ Diagnostics
 
     "``GET``","diagnostics","systemhealth","export_as_c_s_v","$rrd='',$detail=-1"
     "``GET``","diagnostics","systemhealth","get_interfaces",""
-    "``GET``","diagnostics","systemhealth","get_r_r_dlist",""
-    "``GET``","diagnostics","systemhealth","get_system_health","$rrd='',$unused=0,$detail=-1"
+    "``GET``","diagnostics","systemhealth","get_rrd_list",""
+    "``GET``","diagnostics","systemhealth","get_system_health","$rrd='',$detail=-1"
 
 .. csv-table:: Resources (TracerouteController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

@@ -27,6 +27,254 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.1.12 (July 22, 2025)
+--------------------------------------------------------------------------
+
+
+This EoL release after an EoL release is unexpected, but certainly not
+unnecessary.  A bug in the shared library naming in Sqlite was briefly
+introduced in FreeBSD ports going into 25.1.11 which is also a likely
+cause for reported update issues with missing packages after reboot.
+This was only uncovered yesterday during upgrade testing for 25.7.
+
+To ensure proper upgrades it was decided to roll a full stable release
+with added benefits like security fixes for Unbound, LibXML and a "modern
+browser" fix for the firewall rules page which could not be saved under
+particular circumstances.
+
+25.7 itself is still scheduled for tomorrow pending green light during
+testing its rebuild.  The firmware components have already been wired to
+detect the upgrade once it becomes visible on the mirror.  There will
+likely be no further hotfix this time to pick up the release.  Just check
+again for updates some hours after the 25.7 release announcement to allow
+for mirrors to synchronize.
+
+Here are the full patch notes:
+
+* firmware: add fingerprint and upgrade hint for 25.7
+* firmware: upgrade scripts for automatic GDrive, IPsec and OpenVPN legacy plugin installation
+* ui: replace self-closing select element (contributed by Gavin Chappell)
+* ports: libxml 2.14.5 `[1] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: sqlite SONAME fix and associated rebuilds `[2] <https://cgit.freebsd.org/ports/commit/?id=25ef3857b8>`__ 
+* ports: unbound 1.23.1 `[3] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-23-1>`__ 
+
+
+
+--------------------------------------------------------------------------
+25.1.11 (July 16, 2025)
+--------------------------------------------------------------------------
+
+
+This maintenance release will also be the EoL version for the 25.1 series.
+It ships the latest FreeBSD SA/EN patches plus other third party security
+updates and a few minor fixes.
+
+We did see issues with the "e2fsprogs-libuuid" dependency lately obsoleted
+by FreeBSD ports and while packages such as "netdata" may refuse updating
+in the first update it should eventually reinstall correctly using the new
+"libuuid" package.  If you see related issues make sure you are not using
+multi-repo setups that still provide the obsoleted dependency.
+
+That being said, 25.7-RC1 is already out, but RC2 likely follows tomorrow.
+We are still set for a final release date of July 23.  See you on the other
+side!
+
+Here are the full patch notes:
+
+* system: fix passing "arguments" as parameters for cron jobs
+* dnsmasq: fix DomainIPField to allow IP address to be emptied
+* dnsmasq: register DHCPv6 firewall rules as well
+* dnsmasq: fix empty DHCP option value spawning stray comma
+* firmware: remove unbound/duckdb migration script
+* lang: further updates
+* openvpn: validate group membership after authentication
+* unbound: ignore TXT records for wildcard host entries
+* plugins: os-stunnel 1.0.6 adds LDAP and NNTP to supported STARTTLS protocols (contributed by Patrick M. Hausen)
+* plugins: os-zabbix-agent 1.16 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.13 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* src: ifconfig: optimise non-listing case with netlink
+* src: xz: fix use-after-free in multi-threaded xz decoder `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-25:06.xz.asc>`__ 
+* src: ena: fix misconfiguration when requesting regular LLQ `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-25:11.ena.asc>`__ 
+* src: zfs: fix corruption in ZFS replication streams from encrypted datasets `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-25:10.zfs.asc>`__ 
+* src: libc: allow __cxa_atexit handlers to be added during __cxa_finalize `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-25:09.libc.asc>`__ 
+* ports: libxml 2.14.4 `[7] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: nss 3.113.1 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_113_1.html>`__ 
+* ports: openssl 3.0.17 `[9] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+* ports: php 8.3.23 `[10] <https://www.php.net/ChangeLog-8.php#8.3.23>`__ 
+* ports: sqlite 3.50.2 `[11] <https://sqlite.org/releaselog/3_50_2.html>`__ 
+* ports: sudo 1.9.17p1 `[12] <https://www.sudo.ws/stable.html#1.9.17p1>`__ 
+* ports: suricata 7.0.11 `[13] <https://suricata.io/2025/07/08/suricata-7-0-11-released/>`__ 
+
+
+--------------------------------------------------------------------------
+25.1.10 (July 01, 2025)
+--------------------------------------------------------------------------
+
+
+We are getting close to 25.7.  In fact, the release date is July 23.
+As such minimal changes are going into this stable release for the
+usual reasons.
+
+Expecting a quick release candidate in two weeks while we piece together
+the individual changes that will make the next release series a distinct
+step forward: privilege separation capability, latest and greatest FreeBSD
+related updates, easier than ever MVC programming experience, a new UI
+grid framework named Tabulator etc.
+
+Here are the full patch notes:
+
+* system: reduce future maintenance load in privilege separation efforts
+* interfaces: remove unused "friendly" value from get_interface_list()
+* interfaces: fix escaping in refactored bridge code
+* interfaces: fix bridge SPAN support
+* interfaces: add update mode to ifctl
+* firewall: fix issue with event binding in rule automation page
+* dnsmasq: implement domain type to select between adding domain to range or interface
+* dnsmasq: dhcp-host are allowed to have duplicate partial IPv6 addresses
+* unbound: improve the chroot mounting code to avoid excessive (un)mount calls
+* lang: update language translations to their latest state
+* mvc: eventually phase out getCurrentValue() in favour of getValue()
+* plugins: os-caddy 2.0.2 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* ports: libxml2 fixes for recent CVEs
+* ports: nss 3.113 `[2] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_113.html>`__ 
+* ports: phpseclib 3.0.46
+* ports: py-duckdb 1.3.1 `[3] <https://github.com/duckdb/duckdb/releases/tag/v1.3.1>`__ 
+* ports: sudo 1.9.17 `[4] <https://www.sudo.ws/stable.html#1.9.17>`__ 
+
+
+--------------------------------------------------------------------------
+25.1.9 (June 18, 2025)
+--------------------------------------------------------------------------
+
+
+This smallish update brings in more preparation for future features
+and reworks and fixes a couple of bugs reported over the last weeks.
+
+The patch size for 25.1.x will likely not increase in future updates
+as 25.7 is near: July 23.  Save the date!
+
+Here are the full patch notes:
+
+* system: add minimalistic interface to support SSO authentication
+* system: refactor a couple of existing empty() tests to isEmpty()
+* system: refactor cache flush into system_cache_flush()
+* system: add backend call for returning timezones
+* system: fix "weight" default fallback causing non-string return in gateway status
+* interfaces: refactor newwanip IPv4/v6 scripts to reduce differences between them
+* interfaces: do not call a description a "dmesg"
+* interfaces: relax regex for dmesg probing to seamlessly support dmesg timestamps
+* firewall: improve address family validation for rule source and destination
+* firewall: fix faulty ICMP type evaluation on NAT rules
+* dnsmasq: allow AliasesField values to be cleared
+* dnsmasq: allow host wildcards in domain overrides again
+* ipsec: add aes256-sha1 ESP proposal
+* ui: backwards-compatible merge of Tabulator grid replacement changes
+* plugins: os-haproxy 4.6 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/net/haproxy/pkg-descr>`__ 
+* ports: curl 8.14.1 `[2] <https://curl.se/changes.html#8_14_1>`__ 
+* ports: nss 3.112 `[3] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_112.html>`__ 
+* ports: openldap 2.6.10 `[4] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: php 8.3.22 `[5] <https://www.php.net/ChangeLog-8.php#8.3.22>`__ 
+* ports: python 3.11.13 `[6] <https://docs.python.org/release/3.11.13/whatsnew/changelog.html>`__ 
+
+A hotfix release was issued as 25.1.9_2:
+
+* system: fix route status removal buttons
+* openvpn: fix server deletion in legacy page
+
+
+
+--------------------------------------------------------------------------
+25.1.8 (June 12, 2025)
+--------------------------------------------------------------------------
+
+
+This update addresses a few security issues in third party software,
+but take note that libxml2 is currently stuck in an old release in
+FreeBSD ports that was decided not to be fixed there for the time being.
+
+Dnsmasq receives more improvements as you all explore the limits of the
+current implementation and what the software can still offer beyond that.
+Thank you for all the good feedback on this front!
+
+The FreeBSD kernel was updated with a number of upstream stable commits
+while we get closer to evaulating the jump to a newer FreeBSD release for
+25.7.
+
+Lastly, we are preparing for a historic moment: offering privilege separation
+for the GUI meaning the web server can stop running as a root user.  This
+may still be optional in the next major version, but it makes fixing the
+remaining incompatibilities much easier.
+
+Here are the full patch notes:
+
+* system: fix regression in setGroupMembership()
+* system: add "Source Networks" option to groups to restrict connectivity to web GUI
+* system: remove defunct "sshlogingroup" OpenSSH option because non-admins are no longer permitted shell access
+* system: reduce font size in thermal sensors widget tooltip (contributed by indeed-a-genius)
+* system: allow access to cached watcher gateway status
+* system: implement "force_down" failover support
+* system: implement base_bootgrid_table in user, group and priv templates
+* system: balance fastcgi servers a bit better
+* system: check private key matches provided certificate data
+* system: introduce a "wwwonly" user and group and related privilege separation preparations
+* interfaces: convert bridge configuration to MVC/API
+* interfaces: remove unused is_interface_assigned()
+* firewall: use CIDR notation for specifying masks to dnctl (contributed by Daniel Tang)
+* firewall: improve dummynet_stats.py parsing of mask descriptor lines (contributed by Daniel Tang)
+* firewall: exclude interfaces with local links only when generating force gateway rules
+* firewall: fix missing lock while refactoring config for group changes
+* firewall: properly synchronize load order for shaper when reloading configuration
+* firewall: add toggle log command in automation
+* firewall: since bogons source writes a comment first prefix our exclusions too
+* firewall: tighten address / range validation for aliases
+* firewall: align alias tokenizer options with the ones in our base template
+* captive portal: align accounting session timeout with API
+* captive portal: balance fastcgi servers a bit better
+* captive portal: do not share a fastcgi socket with web GUI
+* dnsmasq: add missing constraint and fix template for boot options
+* dnsmasq: reload filter on service reload
+* dnsmasq: add command in leases view to create DHCP reservations
+* dnsmasq: hide static mode in DHCP range in advanced mode
+* dnsmasq: set default to empty lease time for DHCP hosts to allow for defaults
+* dnsmasq: add "no-resolv" option to prevent use of system defined DNS servers
+* dnsmasq: validate IP address usage for DHCP registrations
+* dnsmasq: add validation preventing end address to be empty for IPV4 non-static ranges
+* dnsmasq: when "dhcp-fqdn" is active, set all DHCP domains as local
+* dnsmasq: add checkbox to hosts that can set domains as local
+* dnsmasq: allow either empty IP or empty hostname for DHCP hosts
+* dnsmasq: fix wildcard host handling
+* dnsmasq: add overlay to conditionally remove values based on DHCP option type
+* ipsec: add "cacert" option in remote auth section and allow spaces and wildcards in id fields
+* ipsec: be more verbose when modifying SPDs
+* isc-dhcp: show tracking interfaces when enabled and offer an explicit disable
+* kea-dhcp: add static_routes validation (contributed by Dr. Uwe Meyer-Gruhl)
+* openvpn: remove deprecated use of is_interface_assigned() in legacy client/server
+* unbound: remove "inplace" in chained assignment (contributed by dstapa)
+* mvc: deny whitespaces, asterisks and slashes in HostnameField
+* mvc: support array response type in session->get()
+* plugins: os-caddy 2.0.1 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/caddy/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.10 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/security/crowdsec/pkg-descr>`__ 
+* plugins: os-sunnyvalley 1.5 switches mirror domain
+* src: pf: explicitly NULL state key pointers
+* src: pf: fix panic in pf_return()
+* src: pf: do not use state keys after pf_state_insert()
+* src: netlink, socket, sctp, tcp, udp: assorted upstream stable changes
+* src: in6_control_ioctl: correctly report errors from SIOCAIFADDR_IN6
+* src: axgbe: add support for Yellow Carp Ethernet device
+* src: dhclient: keep two clocks
+* src: rtw88, rtw89: merge Realtek driver based on Linux v6.14
+* src: iwlwififw: remove Intel iwlwifi firmware from src.git
+* ports: curl 8.14.0 `[3] <https://curl.se/changes.html#8_14_0>`__ 
+* ports: kea 2.6.3 `[4] <https://downloads.isc.org/isc/kea/2.6.3/Kea-2.6.3-ReleaseNotes.txt>`__ 
+* ports: python fix for CVE-2025-4516 `[5] <https://github.com/python/cpython/pull/134341>`__ 
+
+A hotfix release was issued as 25.1.8_1:
+
+* kea-dhcp: fix fatal socket path refusal in new Kea release
+
+
+
+--------------------------------------------------------------------------
 25.1.7 (May 19, 2025)
 --------------------------------------------------------------------------
 
@@ -72,7 +320,7 @@ Here are the full patch notes:
 * backend: use the new errors:no instead of "exit 0" in actions
 * mvc: add contribDir to app config (contributed by Freddie Sackur)
 * mvc: show versions on migration failure for clarity
-* mvc: saveguard JsonKeyValueStoreField->setSourceField()
+* mvc: safeguard JsonKeyValueStoreField->setSourceField()
 * mvc: add static $internalStaticChildren in classes extending ArrayField
 * plugins: os-beats 1.0 (contributed by Maxime Thiebaut)
 * plugins: os-c-icap 1.8 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/www/c-icap/pkg-descr>`__ 
@@ -91,6 +339,11 @@ A hotfix release was issued as 25.1.7_2:
 
 * dnsmasq: create static host entries for all except partial IPv6 addresses
 * kea-dhcp: correct static mapping returns for IPv6 addresses
+
+A hotfix release was issued as 25.1.7_4:
+
+* dnsmasq: fix physical interface in dhcp-boot
+* ipsec: fix ipsec column identifier
 
 
 --------------------------------------------------------------------------
@@ -464,18 +717,18 @@ Here are the full patch notes:
 * plugins: adjust all themes for ChartJS 4 use
 * plugins: treat empty string like null on argument map
 * plugins: os-acme-client 4.9 `[2] <https://github.com/opnsense/plugins/blob/stable/25.1/security/acme-client/pkg-descr>`__ 
-* src: ipfw: make 'ipfw show' output compatible with 'ipfw add' command
+* src: ipfw: make "ipfw show" output compatible with "ipfw add" command
 * src: pf: stop using net_epoch to synchronize access to eth rules
 * src: e1000: fix vlan PCP/DEI on lem(4)
 * src: igc: remove unused register IGC_RXD_SPC_VLAN_MASK
 * src: ifnet: detach BPF descriptors on interface vmove event
 * src: libkern: add ilog2 macro et al
-* src: ipfw: add missing initializer for 'limit' table value
+* src: ipfw: add missing initializer for "limit" table value
 * src: pf: add extra SCTP multihoming probe points
 * src: pf: verify SCTP v_tag before updating connection state
 * src: pf: verify that ABORT chunks are not mixed with DATA chunks
 * src: pf: allow ICMP messages related to an SCTP state to pass
-* src: pf: add 'allow-related' to always allow SCTP multihome extra connections
+* src: pf: add "allow-related" to always allow SCTP multihome extra connections
 * src: bpf: fix potential race conditions
 * src: net: if_media for 100BASE-BX
 * src: rtw89: update Realtek rtw88/rtw89 driver et al

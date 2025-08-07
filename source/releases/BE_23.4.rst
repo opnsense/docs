@@ -477,13 +477,13 @@ Here are the full patch notes:
 * src: pfctl: rule.label is a two-dimensional array
 * src: pf: fix syncookies in conjunction with tcp fast port reuse
 * src: pf: fix panic on deferred packets
-* src: ipfw: add missing 'va' code point name
+* src: ipfw: add missing "va" code point name
 * src: netmap: try to count packet drops in emulated mode
 * src: netmap: fix a queue length check in the generic port rx path
 * src: netmap: tell the compiler to avoid reloading ring indices
 * src: pfsync: support deferring IPv6 packets
 * src: pfsync: add missing bucket lock
-* src: pfsync: ensure 'error' is always initialised
+* src: pfsync: ensure "error" is always initialised
 * src: pfsync: fix pfsync_undefer_state() locking
 * src: pfsync: add missing unlock in pfsync_defer_tmo()
 * src: epair: merged assorted fixes

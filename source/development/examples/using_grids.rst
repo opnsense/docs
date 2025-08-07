@@ -46,7 +46,7 @@ file containing the actual model definition.
 
 
 .. code-block:: xml
-    :emphasize-lines: 8, 9, 13
+    :emphasize-lines: 8, 9, 13, 16
     :linenos:
     :caption: /usr/local/opnsense/mvc/app/models/OPNsense/GridExample/GridExample.xml
 
@@ -65,6 +65,7 @@ file containing the actual model definition.
                     <email type="EmailField">
                         <Required>Y</Required>
                     </email>
+                    <description type="DescriptionField"/>
                 </address>
             </addresses>
         </items>
@@ -107,7 +108,7 @@ Our example below uses the base methods to link all operations we need and link 
 
         public function searchItemAction()
         {
-            return $this->searchBase("addresses.address", array('enabled', 'email'), "email");
+            return $this->searchBase("addresses.address", null, "email");
         }
 
         public function setItemAction($uuid)
@@ -150,6 +151,7 @@ For example, a getItem (/api/gridexample/settings/getItem/my-uuid-id) would retu
       "address": {
         "enabled": "1",
         "email": "test@example.com"
+        "description": "Test Address"
       }
     }
 
@@ -162,95 +164,47 @@ To edit the data we define which fields should be presented to the user and how 
 Below a simple layout, the id fields reference the actual data points to map (:code:`address.enabled` for example), which is exactly
 what the api endpoint returns.
 
+For the grid creation, the same form will also create columns for each field id. The grid column formatting can be controlled via
+the ``grid_view`` tag. Inside this tag, we can define ``width``, ``type``, ``formatter``, ``sequence``, ``visible``, ``ignore`` and
+other tags.
+
 .. code-block:: xml
     :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/GridExample/forms/dialogAddress.xml
 
     <form>
         <field>
             <id>address.enabled</id>
-            <label>enabled</label>
+            <label>Enabled</label>
             <type>checkbox</type>
             <help>Enable this address</help>
+            <grid_view>
+                <width>6em</width>
+                <type>boolean</type>
+                <formatter>rowtoggle</formatter>
+            </grid_view>
         </field>
         <field>
             <id>address.email</id>
             <label>Email</label>
             <type>text</type>
+            <help>Enter the email address</help>
+        </field>
+        <field>
+            <id>address.description</id>
+            <label>Description</label>
+            <type>text</type>
+            <help>Enter an optional description</help>
+            <grid_view>
+                <visible>false</visible>
+            </grid_view>
         </field>
     </form>
-
-
-------------------------------------
-Constructing the volt template
-------------------------------------
-
-We ship a javascript wrapper to implement a slightly modified version of `jquery-bootgrid <http://www.jquery-bootgrid.com/>`__, to
-use this in our template (view) we define three different blocks.
-
-First of all we bind a table by id (grid-addresses) using :code:`UIBootgrid()`, then we define the table which will be
-changed into a dynamic searchable grid and finally we link our dialog content using a volt :code:`partial()`.
-
-The basic "UIBootgrid" bind connects all actions which we have defined in our API controller earlier, there are more options
-available, but these are not needed for this use-case.
-
-When defining the table, we need to add all fields that should be displayed and the order in which they should appear. If
-fields should not be visible by default, simply use :code:`data-visible="false"` on the :code:`<th>` tag.
-
-Our edit dialog is being written in advance so the javascript code can open the statically defined form when needed,
-the last highlighted block takes care of this. The partial uses three argument, the variable connected via the
-controller containing all form entries, the name (id) of the form, which is referenced in the table (data-editDialog) and
-the caption of the dialog.
-
-
-.. code-block:: html
-    :caption: /usr/local/opnsense/mvc/app/views/OPNsense/GridExample/index.volt
-    :linenos:
-    :emphasize-lines: 3, 14, 37
-
-    <script>
-        $( document ).ready(function() {
-            $("#grid-addresses").UIBootgrid(
-                {   search:'/api/gridexample/settings/searchItem/',
-                    get:'/api/gridexample/settings/getItem/',
-                    set:'/api/gridexample/settings/setItem/',
-                    add:'/api/gridexample/settings/addItem/',
-                    del:'/api/gridexample/settings/delItem/',
-                    toggle:'/api/gridexample/settings/toggleItem/'
-                }
-            );
-        });
-    </script>
-    <table id="grid-addresses" class="table table-condensed table-hover table-striped" data-editDialog="DialogAddress">
-        <thead>
-            <tr>
-                <th data-column-id="uuid" data-type="string" data-identifier="true"  data-visible="false">{{ lang._('ID') }}</th>
-                <th data-column-id="enabled" data-width="6em" data-type="string" data-formatter="rowtoggle">{{ lang._('Enabled') }}</th>
-                <th data-column-id="email" data-type="string">{{ lang._('Email') }}</th>
-                <th data-column-id="commands" data-width="7em" data-formatter="commands" data-sortable="false">{{ lang._('Commands') }}</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td></td>
-                <td>
-                    <button data-action="add" type="button" class="btn btn-xs btn-default"><span class="fa fa-plus"></span></button>
-                    <button data-action="deleteSelected" type="button" class="btn btn-xs btn-default"><span class="fa fa-trash-o"></span></button>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
-
-
-    {{ partial("layout_partials/base_dialog",['fields':formDialogAddress,'id':'DialogAddress','label':lang._('Edit address')])}}
-
 
 ---------------------------------------
 UI controller
 ---------------------------------------
 
-The user interface controller sets the template (view) to use and collects the dialog form properties from the xml file
+The user interface controller sets the template (view) to use and collects the dialog form and grid properties from the xml file
 defined earlier.
 
 .. code-block:: php
@@ -265,6 +219,84 @@ defined earlier.
         {
             $this->view->pick('OPNsense/GridExample/index');
             $this->view->formDialogAddress = $this->getForm("dialogAddress");
+            $this->view->formGridAddress = $this->getFormGrid("dialogAddress");
+        }
+    }
+
+
+------------------------------------
+Constructing the volt template
+------------------------------------
+
+We ship a javascript wrapper to implement a slightly modified version of `jquery-bootgrid <http://www.jquery-bootgrid.com/>`__, to
+use this in our template (view) we define three different blocks.
+
+First of all we bind a table by id ``{{formGridAddress['table_id']}}`` using :code:`UIBootgrid()`. Then we define the table which will be
+changed into a dynamic searchable grid and we link our dialog content. Both grid (base_bootgrid_table) and dialog (base_dialog)
+use a volt :code:`partial()`.
+
+The basic "UIBootgrid" bind connects all actions which we have defined in our API controller earlier, there are more options
+available, but these are not needed for this use-case.
+
+Our edit dialog is being written in advance so the javascript code can open the statically defined form when needed,
+the last highlighted block takes care of this. The partial uses three argument, the variable connected via the
+controller containing all form entries, the name (id) of the form ``'id':formGridAddress['edit_dialog_id']``, which is referenced in
+the table ``{{formGridAddress['table_id']}}``, and finally the caption of the dialog.
+
+To apply changes, there is a (base_apply_button) volt :code:`partial()` which calls a reconfigure API endpoint.
+The event listener is attached to SimpleActionButton(), a shared javascript function for most reconfiguration use cases.
+
+Whenever a change in the grid is performed, the (base_apply_button) will automatically show a data change dialog.
+
+.. code-block:: html
+    :caption: /usr/local/opnsense/mvc/app/views/OPNsense/GridExample/index.volt
+    :linenos:
+    :emphasize-lines: 3, 19, 22
+
+    <script>
+        $(document).ready(function() {
+            $("#{{formGridAddress['table_id']}}").UIBootgrid(
+                {   search:'/api/gridexample/settings/search_item/',
+                    get:'/api/gridexample/settings/get_item/',
+                    set:'/api/gridexample/settings/set_item/',
+                    add:'/api/gridexample/settings/add_item/',
+                    del:'/api/gridexample/settings/del_item/',
+                    toggle:'/api/gridexample/settings/toggle_item/'
+                }
+            );
+
+            $("#reconfigureAct").SimpleActionButton();
+        });
+
+    </script>
+
+    <div class="content-box">
+        {{ partial('layout_partials/base_bootgrid_table', formGridAddress) }}
+    </div>
+    {{ partial('layout_partials/base_apply_button', {'data_endpoint': '/api/gridexample/service/reconfigure'}) }}
+    {{ partial("layout_partials/base_dialog",['fields':formDialogAddress,'id':formGridAddress['edit_dialog_id'],'label':lang._('Edit address')])}}
+
+---------------------------------------
+Service controller
+---------------------------------------
+
+The service controller in this example is a stub and generates a generic status response when calling ``/api/gridexample/service/reconfigure`` via
+the SimpleActionButton().
+
+.. code-block:: php
+    :linenos:
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/GridExample/Api/ServiceController.php
+
+    namespace OPNsense\GridExample\Api;
+
+    use OPNsense\Base\ApiControllerBase;
+
+    class ServiceController extends ApiControllerBase
+    {
+        public function reconfigureAction()
+        {
+            sleep(1);
+            return ["status" => "ok"];
         }
     }
 
