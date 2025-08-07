@@ -223,14 +223,14 @@ Option                              Value
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
-        **Service**
+        **//Service**
         **Enabled**                         ``X``
 
-        **General settings**
+        **//General settings**
         **Interfaces**                      ``LAN``
         **Firewall rules**                  ``X``
 
-        **High Availability**
+        **//High Availability**
         **Enabled**                         ``X``
         **This server name**                (It is highly recommended to use the offered default value)
         ==================================  =======================================================================================================
@@ -245,7 +245,7 @@ Option                              Value
         **Subnet**                          ``192.168.1.0/24``
         **Pools**                           ``192.168.1.100 - 192.168.1.199``
 
-        **DHCP option data**
+        **//DHCP option data**
         **Auto collect option data**        (This must be unchecked for HA)
         **Routers (gateway)**               ``192.168.1.1`` (use the LAN CARP IP address)
         **DNS servers**                     ``192.168.1.1`` (use the LAN CARP IP address)
