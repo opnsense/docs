@@ -173,8 +173,7 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         **Name**                                  Peer name, there should be one entry matching this machines "This server name"
         **Role**                                  This peers role
-        **Url**                           	      This specifies the URL of our server instance, which should use a different port than
-                                                  the control agent. For example http://my-host:8001/
+        **Url**                           	      This specifies the URL of our server instance, which should use a different port than the control agent. For example http://my-host:8001/
         ========================================= ====================================================================================
 
         .. Note:: Define HA peers for this cluster. All nodes should contain the exact same definitions (usually two hosts, a :code:`primary` and a :code:`standby` host)
@@ -188,7 +187,7 @@ Configuration examples
 DHCPv4 for medium/large HA setups
 ------------------------------------------
 
-KEA DHCPs main strength is its ability to synchronize leases between multiple servers,
+KEA DHCPs main strength is the ability to synchronize leases between multiple servers,
 which makes it ideal for medium to large HA setups (more than 1000 unique clients) where you cannot use Dnsmasq DHCP.
 
 As example we configure a network with two KEA DHCP instances on a master and backup OPNsense.
@@ -214,7 +213,7 @@ Option                              Value
 **Bind port**                       ``8000``
 ==================================  =======================================================================================================
 
-- **Apply** then go to :menuselection:`Services --> KEA DHCP --> KEA DHCPv4` and follow through these tabs:
+- Press **Apply** then go to :menuselection:`Services --> KEA DHCP --> KEA DHCPv4` and follow through these tabs:
 
 .. tabs::
 
@@ -235,7 +234,7 @@ Option                              Value
         **This server name**                (It is highly recommended to use the offered default value)
         ==================================  =======================================================================================================
 
-        **Apply** and go to **Subnets**
+        - Press **Apply** and go to **Subnets**
 
     .. tab:: Subnets
 
@@ -251,7 +250,7 @@ Option                              Value
         **DNS servers**                     ``192.168.1.1`` (use the LAN CARP IP address)
         ==================================  =======================================================================================================
 
-        **Save** and go to **HA Peers**
+        - Press **Save** and go to **HA Peers**
 
     .. tab:: HA Peers
 
@@ -277,13 +276,13 @@ Option                              Value
                                             the port must be different than the control agent)
         ==================================  =======================================================================================================
 
-        **Save** and **Apply**
+        - Press **Save** and **Apply**
 
 Now the initial configuration is finished, and we synchronize it with the backup server. Both servers will always share the exact same configuration.
 
-Go to :menuselection:`System: --> High Availability --> Settings` and ensure that KEA is selected in `Services to synchronize`.
+Go to :menuselection:`System: --> High Availability --> Settings` and ensure that KEA is selected in **Services to synchronize**.
 
-Then go to :menuselection:`System: --> High Availability --> Status` and press `Synchronize and reconfigure all`.
+Then go to :menuselection:`System: --> High Availability --> Status` and press **Synchronize and reconfigure all**.
 
 Immediately afterwards, KEA will be active on both master and backup, and a bidirectional lease synchronization will be configured.
 

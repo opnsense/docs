@@ -6,33 +6,46 @@ Services
     :width: 600px
     :align: center
 
+----------------
 
 Your security appliance comes with quite some services to ease network operation, these can be found in the services menu.
 
 ----------------
+
+**DHCP**
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   manual/dhcp
+   manual/dhcrelay
+   manual/dnsmasq
+   manual/isc
+   manual/kea
+   manual/radvd
+
+----------------
+
+**DNS**
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   manual/dnsmasq
+   manual/opendns
+   manual/unbound
+
+----------------
+
+**Security and other services**
 
 .. toctree::
    :maxdepth: 2
    :titlesonly:
 
    manual/captiveportal
-   manual/dhcp
-   manual/dnsmasq
    manual/ips
-   manual/monit
-   manual/ntpd
-   manual/opendns
-   manual/unbound
-   manual/radvd
    manual/logging_services
-
-
----------------
-Setup guides
----------------
-
-.. toctree::
-   :maxdepth: 2
-   :titlesonly:
-
-   manual/how-tos/guestnet
+   manual/monit

@@ -34,7 +34,7 @@ In the configuration examples further below, we will always combine `Unbound` wi
 DHCP Service
 -----------------------------
 
-`Dnsmasq` is the perfect DHCP server for small and medium sized setups. The configuration is straight forward, and since it can register the DNS names of leases,
+`Dnsmasq` is the perfect DHCP server for small and medium sized setups (less than 1000 unique clients). The configuration is straight forward, and since it can register the DNS names of leases,
 it can replicate the simplicity known from consumer routers.
 
 If HA for DHCP is a requirement, split pools can be configured for two `Dnsmasq` instances. With a dhcp reply delay, the secondary instance will only answer when
