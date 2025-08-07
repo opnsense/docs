@@ -188,12 +188,19 @@ Configuration examples
 DHCPv4 for medium/large HA setups
 ------------------------------------------
 
-KEA DHCPs main strength is its ability to synchronize leases between multiple servers, which makes it ideal for medium to large HA setups where you
-cannot use Dnsmasq DHCP.
+KEA DHCPs main strength is its ability to synchronize leases between multiple servers,
+which makes it ideal for medium to large HA setups (more than 1000 unique clients) where you cannot use Dnsmasq DHCP.
 
 As example we configure a network with two KEA DHCP instances on a master and backup OPNsense.
 
-.. Note::
+To configure KEA with a minimal HA setup for LAN using the :code:`192.168.1.0/24` network follow these steps:
+
+LAN Network:
+    - CARP IPv4 address: ``192.168.1.1/24``
+    - Master IPv4 address: ``192.168.1.2/24``
+    - Backup IPv4 address: ``192.168.1.3/24``
+
+.. Attention::
 
     All configuration must be done on the master, and afterwards synchronized to the backup via :menuselection:`System: --> High Availability --> Status`
 
@@ -207,27 +214,82 @@ Option                              Value
 **Bind port**                       ``8000``
 ==================================  =======================================================================================================
 
-- **Apply** then go to :menuselection:`Services --> KEA DHCP --> KEA DHCPv4`:
+- **Apply** then go to :menuselection:`Services --> KEA DHCP --> KEA DHCPv4` and follow through these tabs:
 
-.. Tip::
-  When using a CARP / HA setup, you usually should specify gateways and dns entries manually. Make sure to disable "Auto collect option data"
-  in that case.
+.. tabs::
 
-To configure a server with a minimal setup on LAN (like offered on a default OPNsense using ISC-DHCP) using the :code:`192.168.1.0/24` network
-offering addresses in the range :code:`192.168.1.100 - 192.168.1.199`. Follow the following steps:
+    .. tab:: Settings
 
-1.  Enable the service (General\\Enabled)
-2.  Choose LAN as listen interface (General\\Interfaces)
-3.  Add a new subnet containing the following settings
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Service**
+        **Enabled**                         ``X``
 
-  - Subnet : :code:`192.168.1.0/24`
-  - Pools : :code:`192.168.1.100 - 192.168.1.199`
-  - Auto collect option data: :code:`[x]`
+        **General settings**
+        **Interfaces**                      ``LAN``
+        **Firewall rules**                  ``X``
 
-4. Click on the **Apply** button.
+        **High Availability**
+        **Enabled**                         ``X``
+        **This server name**                (It is highly recommended to use the offered default value)
+        ==================================  =======================================================================================================
 
-...............................
+        **Apply** and go to **Subnets**
+
+    .. tab:: Subnets
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Subnet**                          ``192.168.1.0/24``
+        **Pools**                           ``192.168.1.100 - 192.168.1.199``
+
+        **DHCP option data**
+        **Auto collect option data**        (This must be unchecked for HA)
+        **Routers (gateway)**               ``192.168.1.1`` (use the LAN CARP IP address)
+        **DNS servers**                     ``192.168.1.1`` (use the LAN CARP IP address)
+        ==================================  =======================================================================================================
+
+        **Save** and go to **HA Peers**
+
+    .. tab:: HA Peers
+
+        - First entry:
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Name**                            (Use the name that is displayed in the settings Tab for "This server name" on the master)
+        **Role**                            ``primary``
+        **URL**                             ``http://192.168.1.2:8001/`` (Use the LAN interface IP of the master,
+                                            the port must be different than the control agent)
+        ==================================  =======================================================================================================
+
+        - Second entry:
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Name**                            (Use the name that is displayed in the settings Tab for "This server name" on the backup)
+        **Role**                            ``standby``
+        **URL**                             ``http://192.168.1.3:8001/`` (Use the LAN interface IP of the backup,
+                                            the port must be different than the control agent)
+        ==================================  =======================================================================================================
+
+        **Save** and **Apply**
+
+Now the initial configuration is finished, and we synchronize it with the backup server. Both servers will always share the exact same configuration.
+
+Go to :menuselection:`System: --> High Availability --> Settings` and ensure that KEA is selected in `Services to synchronize`.
+
+Then go to :menuselection:`System: --> High Availability --> Status` and press `Synchronize and reconfigure all`.
+
+Immediately afterwards, KEA will be active on both master and backup, and a bidirectional lease synchronization will be configured.
+
+
+-------------------------
 Leases DHCPv4/v6
-...............................
+-------------------------
 
 This page offers an overview of the (non static) leases being offered by KEA DHCPv4/v6.
