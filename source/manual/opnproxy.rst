@@ -76,7 +76,7 @@ It is possible to use the proxy in transparant mode, but there are some constrai
 This paragraph tries to explain them one by one.
 
 * Using "Log SNI information only" is not supported in a useful way. As the browser is not aware of the proxy, it will request
-  access to an ip address in stead of a hostname. With full intercept mode, this is not really an issue as the next request will
+  access to an ip address instead of a hostname. With full intercept mode, this is not really an issue as the next request will
   be the actual question and does contain the hostname, but without interception, you can only filter on ip address which is often not very useful.
 * The client has to trust the CA which the proxy uses to automatically create certificates, which means all TLS requests will be signed by the firewall instead of the
   actual trustee.
