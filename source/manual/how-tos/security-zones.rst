@@ -201,7 +201,7 @@ Go to :menuselection:`Firewall --> Rules --> Floating`
 
        .. Note::
 
-          This single GUI rule will create a `Cartesian product` and result in six firewall rules in pf(4). Be mindful using inversions in rules
+          This single GUI rule will create a `Cartesian product` and result in nine firewall rules in pf(4). Be mindful using inversions in rules
           or inverted aliases, since they can be generated in an order that creates an unexpected result.
 
        .. Attention::
