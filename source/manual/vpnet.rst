@@ -396,16 +396,32 @@ bound to the tunnel interface.
 
 The advantage of this type of setup is one can use standard or advanced routing technologies to forward traffic around tunnels.
 
-.. Note::
+.. Important::
 
-    In order to filter traffic on the :code:`if_ipsec(4)` device some tunables need to be set. Both :code:`net.inet.ipsec.filtertunnel`
-    and :code:`net.inet6.ipsec6.filtertunnel` need to be set to :code:`1` and :code:`net.enc.in.ipsec_filter_mask` and :code:`net.enc.out.ipsec_filter_mask`
-    need to be set to :code:`0` in order to allow rules on the device. The downside is that policy based tunnels (:code:`enc0`) can not be filtered
-    anymore as this changes the behaviour from filtering on the :code:`enc0` device to the :code:`if_ipsec(4)` devices.
+    Contrary to other physical or virtual interfaces, there are some important caveats to take into consideration when deciding to
+    set up your network with VTI tunnels:
 
-.. Warning::
+    - By default, OPNsense can only filter on the :code:`IPsec` group (:code:`enc0`).
+    - VTI interfaces show up as regular interfaces in the GUI, but firewall rules specified on these interfaces will not apply by default.
+      Instead, they must be specified on the :code:`IPsec` group (:code:`enc0`).
+      The OS makes a hard distinction between filtering on the :code:`IPsec` group and VTI interfaces. To flip this behavior, the following tunables
+      must be specified:
 
-    Currently it does not seem to be possible to add NAT rules for :code:`if_ipsec(4)` devices.
+      - :code:`net.inet.ipsec.filtertunnel`, value :code:`1`.
+      - :code:`net.inet6.ipsec6.filtertunnel`, value :code:`1`.
+      - :code:`net.enc.in.ipsec_filter_mask`, value :code:`0`.
+      - :code:`net.enc.out.ipsec_filter_mask`, value :code:`0`.
+
+      The downside is that policy-based tunnels (:code:`enc0`) cannot be filtered anymore.
+
+    - If you require a combination of Policy-based and VTI-based tunnels in your setup, the recommended filtering approach
+      is to specify all firewall rules on the automatically available :code:`IPsec` group (:code:`enc0`).
+      Since all IPsec traffic passes through :code:`enc0`, both policy-based and VTI-based traffic can be filtered here.
+    - NAT rules can be specified on VTI interfaces in pure VTI-based setups without issue. However, if you require NAT
+      on the VTI-based traffic, but you are filtering on the :code:`IPsec` group, you must enable the
+      :code:`Skip firewall rules` option in the Virtual Tunnel Interface configuration, so no (automatic) rules
+      interfere with the traffic.
+
 
 .. Warning::
 
