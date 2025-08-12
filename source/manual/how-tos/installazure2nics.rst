@@ -1,6 +1,6 @@
-==================================
+==================================================================
 OPNsense Azure Virtual Appliance Setup - 2 Network Interface Cards
-==================================
+==================================================================
 After deploying the OPNsense Azure market image, the Virtual Machine will have a single
 network interface card which OPNsense configures as a LAN interface. To
 support use cases that involve routing outbound traffic through the firewall, you will need 
@@ -18,9 +18,9 @@ Suggested reading on the Azure Platform includes but is not limited to:
     Azure Bastion can provide RDP to a VM or SSH access through Azure network routes, 
     which can be helpful while making changes that can affect external connectivity.
 
--------------------------
-Azure Setup : Network Interface Cards 
--------------------------
+-------------------------------------
+Azure Setup : Network Interface Cards
+-------------------------------------
 Create and attach a second network interface card to the virtual machine (requires VM shutdown.) 
 Set the networkinterface card to separate, dedicated WAN subnet in your Azure Virtual Network.
 
@@ -40,9 +40,9 @@ Boot the firewall VM again after completing these steps.
     Now is a good time to also set the IP configurations on both network interface cards to
     static as they default to dynamic.
 
--------------------------
+----------------------------------------
 OPNsense Setup : Interface Configuration
--------------------------
+----------------------------------------
 Next, update the OPNsense configuration to set the newly added network
 interface card as the WAN interface.
 
@@ -55,9 +55,9 @@ rule to provide access inbound to management ports if accessing externally.
 
     Be aware of the risk of exposing management ports externally. Narrow allowance scope if possible.
 
--------------------------
+--------------------------------------
 OPNsense Setup : Gateway Configuration
--------------------------
+--------------------------------------
 
 .. Danger::
 
@@ -72,16 +72,16 @@ the priority of this gateway lower than the existing LAN gateway as this will be
 default outbound route. At this point if connecting externally, routing asymmetry will break
 any external connectivity to the LAN interface.
 
--------------------------
+----------------------
 Azure Setup: Public IP
--------------------------
+----------------------
 You will need to assign a public IP to the network interface card for your WAN interface. Disassociating
 the public IP from the LAN NIC and associating to the WAN NIC is convenient because the public IP
 will no longer be useful on the LAN NIC and it can otherwise be removed.
 
--------------------------
+------------------------------------
 Azure Setup: Network Security Groups
--------------------------
+------------------------------------
 
 It is also necessary that the WAN NIC has a Network Security Group attached to it. This is necessary to
 satisfy the requirements of the Standard SKU Public IP, which will otherwise deny traffic without an NSG
@@ -95,9 +95,9 @@ Furthermore, the NSG attached to the LAN NIC can be detached to avoid complicati
 
 After doing this, you should be able to reconnect to the OPNsense for external management.
 
--------------------------
+-----------------------------
 OPNsense Setup : Outbound NAT
--------------------------
+-----------------------------
 You will need to configure outbound NAT manually for the WAN interface. See the OPNsense NAT
 documentation section if necessary.
  
