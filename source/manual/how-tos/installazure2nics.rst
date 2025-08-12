@@ -75,7 +75,7 @@ any external connectivity to the LAN interface.
 -------------------------
 Azure Setup: Public IP
 -------------------------
-You will need to assign a public IP to network interface card for your WAN interface. Disassociating
+You will need to assign a public IP to the network interface card for your WAN interface. Disassociating
 the public IP from the LAN NIC and associating to the WAN NIC is convenient because the public IP
 will no longer be useful on the LAN NIC and it can otherwise be removed.
 
