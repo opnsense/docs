@@ -18,7 +18,7 @@ Traffic shaping within OPNsense is very flexible and is organized around pipes,
 queues and corresponding rules. The pipes define the allowed bandwidth, the queues
 can be used to set a weight within the pipe and finally the rules are used to apply
 the shaping to a certain package flow. The shaping rules are handled independently
-from the firewall rules and other settings.
+from the firewall rules and other settings, unless a pipe or queue is assigned in a firewall rule directly.
 
 OPNsense traffic shaping is a reliable solution to limit bandwidth or prioritize
 traffic and can be combined with other functions such as captive portal or high
@@ -72,6 +72,15 @@ flow can use, whereas queues can be used to determine how different flow
 share the available bandwidth.
 
 The shaping rules can be defined in the rules section of the traffic shaper.
+
+.. Tip::
+
+    Dummynet recommends the tunable :code:`kern.hz` to be configured with a minimal value of :code:`1000`, when using
+    the shaper on a virtual machine, the default for this setting is usually lower. A higher value increases responsiveness
+    of the shaper.
+
+    You can add this value in :menuselection:`System --> Settings --> Tunables`
+
 
 
 -----------------------
