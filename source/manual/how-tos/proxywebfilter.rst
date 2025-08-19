@@ -8,13 +8,6 @@ For this this How-to we will utilize the `UT1 "web categorization list" <https:/
 Université Toulouse managed by Fabrice Prigent. This list is supplied for free
 under the `Creative Commons license <http://creativecommons.org/licenses/by-sa/4.0/>`__.
 
-Other popular lists that are expected to work well with OPNsense are:
-
-* URLBlacklist.com <http://urlblacklist.com/>
-    Commercial paid service
-* Squidblacklist.org <http://www.squidblacklist.org/>
-    Commercial paid service
-
 For this tutorial we will assume:
 
 * Proxy has its default settings / is not configured
