@@ -110,7 +110,7 @@ Here is the directory structure and the files which will get created:
       |           └── OPNsense/HelloWorld/
       |               └── index.volt
       ├── scripts/
-      |   └── OPNsense/HelloWorld/
+      |   └── helloworld/
       |       └── testConnection.py
       └── service/
           ├── templates/
@@ -715,7 +715,7 @@ And add a command to the template like this:
 ::
 
     [test]
-    command:/usr/local/opnsense/scripts/OPNsense/HelloWorld/testConnection.py
+    command:/usr/local/opnsense/scripts/helloworld/testConnection.py
     parameters:
     type:script_output
     message:hello world module test
@@ -946,7 +946,7 @@ directory, which results in the following file listing:
     src/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.xml
     src/opnsense/mvc/app/models/OPNsense/HelloWorld/Menu/Menu.xml
     src/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
-    src/opnsense/scripts/OPNsense/HelloWorld/testConnection.py
+    src/opnsense/scripts/helloworld/testConnection.py
     src/opnsense/service/templates/OPNsense/HelloWorld/+TARGETS
     src/opnsense/service/templates/OPNsense/HelloWorld/helloworld.conf
     src/opnsense/service/conf/actions.d/actions_helloworld.conf
