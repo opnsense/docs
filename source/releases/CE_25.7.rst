@@ -29,6 +29,83 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.7.2 (August 21, 2025)
+--------------------------------------------------------------------------
+
+
+This stable update has the look and feel of a typical update across all
+corners of the project: FreeBSD advisories and errata, fixes and quality
+of life improvements in core, several plugin and third party software
+updates.
+
+We are also compiling the roadmap for 26.1 at the moment.  Stay tuned.
+
+Here are the full patch notes:
+
+* system: increase log file download timeout to prevent exit before data has returned
+* system: HTML decode entities when generating new QR code for user
+* system: add missing timestamp formatter in snapshots
+* system: prevent the root user from changing its name
+* interfaces: capture netmap ring when listening on interfaces in netmap mode
+* firewall: skip reply-to for inversion rules
+* firewall: remove unused "set loginterface" clause
+* firewall: additional statistics for alias grid
+* firewall: fix shaper reset button
+* captive portal: preparations for SSO identification support
+* dnsmasq: swap hosts and domains tab for consistency reasons
+* dnsmasq: allow disabling local for DHCP domains
+* firmware: abort on what appear to be partial updates due to obscure file errors
+* firmware: store update and upgrade logs in edge cases
+* firmware: opnsense-version: support file based -R option
+* firmware: opnsense-update: support -g for update log view
+* firmware: remove tier 2 workaround for Zenarmor plugins
+* firmware: add date to modal header
+* kea-dhcp: ignore encoding errors in lease parser
+* intrusion detection: fix and simplify grid search in download tab
+* ipsec: passthrough networks setting missed "allow new" flag
+* ipsec: add firewall rules skip option for VTIs
+* ipsec: deprecate legacy stroke and implement swanctl for overview
+* isc-dhcp: allow static mapping export for disabled entries
+* openvpn: add nopool directive
+* unbound: configurable top domain list length in reporting view (contributed by sopex)
+* unbound: remove unknown model reference and protect/simplify remaining one
+* wireguard: move backend scripts to proper location
+* backend: added IPv6 bracket helper for templates (contributed by BPplays)
+* lang: updates for Chinese, Czech, German and Greek
+* mvc: improve resilience of VPNIdField and LinkAddressField
+* mvc: repair side affect of getDescription() change causing performance regressions
+* mvc: modify existing and add missing descriptions in models
+* mvc: set default validation message for CertificateField
+* rc: make changes to php,var,tmp bootstrap
+* ui: fix language selection for low vertical resolution screens (contributed by sopex)
+* ui: hide header of the picture widget on the dashboard (contributed by sopex)
+* plugins: os-clamav 1.8.1 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/security/clamav/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.12 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/security/crowdsec/pkg-descr>`__ 
+* plugins: os-frr 1.46 `[3] <https://github.com/opnsense/plugins/blob/stable/25.7/net/frr/pkg-descr>`__ 
+* plugins: os-shadowsocks 1.2 switches to shadowsocks-rust
+* plugins: os-smart 2.4 adds extended info option (contributed by poisonbl)
+* plugins: os-telegraf 1.12.13 `[4] <https://github.com/opnsense/plugins/blob/stable/25.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-theme-advanced updates logos (contributed by Raushan Patel)
+* src: route: fix "route -n monitor" when its output is redirected `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-25:14.route.asc>`__ 
+* src: add a new sysctl in order to differentiate UEFI architectures `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-25:12.efi.asc>`__ 
+* src: libarchive: merge version 3.8.1 `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-25:07.libarchive.asc>`__ 
+* src: lagg: fix if_hw_tsomax_update() not being called
+* src: wg: add support for removing allowed-ip entries and assorted cleanups
+* src: ovpn: support multihomed server configurations and assorted cleanups
+* src: netlink: fully clear parser state between messages
+* src: udp: fix a inpcb refcount leak in the tunnel receive path
+* src: p9fs: assorted fixes
+* ports: ca_root_nss / nss 3.115 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_115.html>`__ 
+* ports: krb5 1.22 `[9] <https://web.mit.edu/kerberos/krb5-1.22/>`__ 
+* ports: libpfctl 0.16
+* ports: lighttpd 1.4.81 `[10] <https://www.lighttpd.net/2025/8/17/1.4.81/>`__ 
+* ports: perl 5.40.3 `[11] <https://perldoc.perl.org/5.40.3/perldelta>`__ 
+* ports: php 8.3.24 `[12] <https://www.php.net/ChangeLog-8.php#8.3.24>`__ 
+* ports: py-jq 1.10.0 `[13] <https://github.com/mwilliamson/jq.py/blob/master/CHANGELOG.rst>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.7.1 (July 31, 2025)
 --------------------------------------------------------------------------
 
