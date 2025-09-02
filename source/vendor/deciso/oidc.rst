@@ -225,16 +225,16 @@ The `captive portal documentation <../captiveportal.html#captive-portal-firewall
 OPNWAF (Web application firewall / reverse proxy)
 .......................................................
 
-
 The reverse proxy defines one endpoint specifically to be used by oidc when an "OIDC Provider" is selected in the virtual server configuration:
 
 ========================================================== =====================================================================================================
 uri                                                        Purpose
 ========================================================== =====================================================================================================
 /oidc/callback                                             predefined vanity url that can not be used in the application as location.
+                                                           It can be optionally changed via the `OIDC Redirect URI`` setting in a virtual server.
 ========================================================== =====================================================================================================
 
-
+For more information refer to the setup examples in the :doc:`OPNWAF manual </vendor/deciso/opnwaf>`.
 
 Useful links
 ------------------------------------------------------
