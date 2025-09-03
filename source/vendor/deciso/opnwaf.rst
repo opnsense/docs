@@ -106,6 +106,7 @@ ServerName                       Fully qualified hostname for this server.
 Port                             Port number this vhost will listen on, can easily be combined with firewall nat rules
                                  to map traffic to non standard ports when origination from remote destinations.
                                  (e.g., listen on 8443, forward 443 to 8443).
+Error Document                   Choose error documents to use for common issues, like page not found.
 Description                      User friendly description for this vhost (optional).
 **Trust**
 Enable ACME                      Enable the ACME protocol to automatically provision certificates using Let's Encrypt,
@@ -199,6 +200,7 @@ Remote destinations              Locations to forward requests to, when more tha
                                  and :code:`wss` destinations.
                                  When your webapp uses websockets and https requests, use :code:`wss://`
 Access control                   List of networks allowed to access this path (empty means any)
+Overlay error pages              Overlay common error pages with the ones specified in the virtual server.
 Description                      User friendly description for this location
 **Proxy Options**
 OIDC Auth Required               Require OpenID Connect authentication for this location if a provider has been selected
@@ -589,3 +591,50 @@ After applying, the location will need authentication (user must log in) and aut
 
     Authorizing unique users can be done with the ``preferred_username`` claim, which is the name a user authenticates with.
     Some identity providers can send groups (non-standard) in their OIDC scope which simplifies authorization when you have a large amount of users.
+
+
+Error Documents
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, generic Apache documents will be served for HTTP response status codes. The most common client error responses can be styled
+OPNsense themed, or be branded with your own style.
+
+To download the default error document templates, go to :menuselection:`Firewall --> Web Application --> Error Documents`.
+
+Select the `Download` command in the ``Default`` row. Afterwards you can unzip the archive, and change the individual error documents.
+
+When you are done, select **+** to open the upload dialogue:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Name                             Name for this template, e.g. ``MyErrorDocuments``
+Uri                              Uri used to serve error pages, when unspecified, /__waf_errors__/ will be used. Best to
+                                 use the offered default.
+Content                          Select the zip archive with the altered error documents.
+================================ ========================================================================================
+
+After saving, the error documents can be added in :menuselection:`Firewall --> Web Application --> Gateways --> Virtual Servers`:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Error Document                   ``MyErrorDocuments`` will use your new template.
+                                 ``Default`` will use the OPNsense styled template.
+                                 ``None`` will use the unaltered default Apache documents.
+================================ ========================================================================================
+
+To optionally overlay any error with only the template provided ones, you can set the following in a location:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Overlay error pages              Overlay common error pages with the ones specified in the virtual server. This means
+                                 that all HTTP response status codes received from the ``Remote destinations`` will be stripped,
+                                 and only matching HTTP resonse codes in the current selected error document template will be served.
+================================ ========================================================================================
+
+.. Tip::
+
+    When using OpenID Connect, it is a good idea to either use the ``Default`` or custom error documents, to ensure the ``Unauthorized``
+    error pages have a more cohesive and user friendly style.
