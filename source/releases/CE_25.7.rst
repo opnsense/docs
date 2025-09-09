@@ -29,6 +29,86 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.7.3 (September 09, 2025)
+--------------------------------------------------------------------------
+
+
+The Tabulator introduction into MVC grid views was a major success with
+virtually no complaints.  Did you notice?  Maybe you will now that more
+features have been unlocked: Dnsmasq grids group by interfaces, firewall
+automation rules now can show folders using categories and row count default
+and selections have been increased.  A few performance and UX tweaks were
+carried out as well while at it.
+
+StrongSwan moves to version 6.0.1 now after elaborate testing.  The
+"make_before_break" value was flipped from off to on in their version
+jump, but the settings will still default to off for everyone unless
+already otherwise configured.
+
+Here are the full patch notes:
+
+* system: properly check request type on HA status page in restartAllAction() (reported by Stanislav Fort of Aisle Research)
+* system: prevent misconfigurations with the automatic user creation option
+* system: add pluginctl hook for cache_flush
+* system: rewrite wwwonly bootstrap procedure
+* system: allow authentication events from wwwonly user
+* interfaces: moved get_real_interface() to util.inc
+* firewall: add "quick" mode in alias update to skip table size comparison during schedules
+* firewall: adjust firewall_rule_lookup to open correct interface and rule from firewall live log
+* firewall: add port alias selection to source_port and destination_port
+* firewall: implement alias description tooltip and other UX tweaks
+* firewall: add optional Tabulator tree view to show categories as rule folders in automation
+* firewall: put sequence and sort_order in advanced mode of automation rules
+* firewall: front-end table rendering performance improvement for alias diagnostics
+* firewall: also set groups for special IPv6 interfaces
+* firewall: ignore empty lines for pf table counting
+* firewall: support tags in source NAT automation rules
+* firewall: allow alias nesting for URL tables
+* captive portal: move backend scripts directory
+* captive portal: various style cleanups
+* captive portal: restyle default login template
+* dnsmasq: add Tabulator "groupBy" functionality to group by interfaces
+* dnsmasq: add leases widget that shows latest leases
+* firmware: add US east coast mirror for business edition
+* firmware: opnsense-patch: fix cache flush using new hook
+* firmware: add vuxml.freebsd.org to CRL handling hostnames
+* intrusion detection: fix downloads tab not loading with Tabulator
+* ipsec: add default value to "make_before_break" that retains disabled default
+* monit: move backend scripts directory
+* mvc: BaseModel: minor non-functional cleanups
+* mvc: ModelRelationField: keep array structure in memory to avoid reinitiating object construction
+* mvc: tweaked model definitions, especially descriptions and validation message style
+* mvc: slightly adjust two getOption() calls in constraints
+* mvc: BaseListField: always map values in getDescription()
+* mvc: BaseListField: account for option container and passthrough value
+* mvc: remove getCurrentValue() compatibility wrapper
+* mvc: Backend: always return strings in configdRun() and configdpRun()
+* mvc: improve replaceInputWithSelector() to support an empty placeholder
+* mvc: stream output not properly cleansed when used in widget (reported by Stanislav Fort of Aisle Research)
+* ui: bootgrid: add tabulatorOptions to translateCompatOptions()
+* ui: bootgrid: raise rowCount default to 50 and adjust selections accordingly for most pages
+* ui: bootgrid: simplify custom grid command additions
+* plugins: os-caddy 2.0.3 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/www/caddy/pkg-descr>`__ 
+* plugins: os-frr 1.47 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/net/frr/pkg-descr>`__ 
+* plugins: os-netbird 1.0 (contributed by Gauss23 and Bethuel Mmbaga)
+* plugins: os-nginx 1.35 `[3] <https://github.com/opnsense/plugins/blob/stable/25.7/www/nginx/pkg-descr>`__ 
+* plugins: os-squid 1.3 `[4] <https://github.com/opnsense/plugins/blob/stable/25.7/www/squid/pkg-descr>`__ 
+* src: libfetch: ignore leaf certificates missing CRL which in practice is not offered by most authorities
+* src: assorted network stack fixes via stable/14
+* src: if_ovpn: support IPv6 link-local addresses
+* src: if_ovpn: support floating clients
+* src: if_ovpn: fill out sin_len/sin6_len
+* src: if_ovpn: destroy cloned interfaces via a prison removal callback
+* src: ifconfig: support VLAN ID in static/deladdr
+* ports: krb5 1.22.1 `[5] <https://web.mit.edu/kerberos/krb5-1.22/>`__ 
+* ports: nss 3.115.1 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_115_1.html>`__ 
+* ports: perl 5.42.0 `[7] <https://perldoc.perl.org/5.42.0/perldelta>`__ 
+* ports: php 8.3.25 `[8] <https://www.php.net/ChangeLog-8.php#8.3.25>`__ 
+* ports: strongswan 6.0.1 `[9] <https://github.com/strongswan/strongswan/releases/tag/6.0.0>`__  `[10] <https://github.com/strongswan/strongswan/releases/tag/6.0.1>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.7.2 (August 21, 2025)
 --------------------------------------------------------------------------
 

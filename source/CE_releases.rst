@@ -8,7 +8,7 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *321* releases leading to the latest version *25.7.2*
+As of January 2015 there have been *322* releases leading to the latest version *25.7.3*
 named "Visionary Viper".
 
 
