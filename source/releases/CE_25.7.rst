@@ -106,6 +106,22 @@ Here are the full patch notes:
 * ports: php 8.3.25 `[8] <https://www.php.net/ChangeLog-8.php#8.3.25>`__ 
 * ports: strongswan 6.0.1 `[9] <https://github.com/strongswan/strongswan/releases/tag/6.0.0>`__  `[10] <https://github.com/strongswan/strongswan/releases/tag/6.0.1>`__ 
 
+A hotfix release was issued as 25.7.3_3:
+
+* system: fix two regressions due to stream output path safety addition
+* firewall: fix interface_net aliases not being populated
+* intrusion detection: revert "fix downloads tab not loading with Tabulator"
+
+A hotfix release was issued as 25.7.3_4:
+
+* mvc: setDefault() not fired as setValue() was set with an empty string
+
+A hotfix release was issued as 25.7.3_7:
+
+* firewall: fix return value when failing to resolve host entries for aliases and no previous content is known
+* ipsec: fix bulk operations in SPD page
+* mvc: allow empty responses to fix a regression due to stream output safety path addition
+
 
 
 --------------------------------------------------------------------------
