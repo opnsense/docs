@@ -228,7 +228,7 @@ The most common core commands are as follows:
 |                                             |                                        |                         | firewall and restart its services to apply  |
 |                                             |                                        |                         | the changes.                                |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Issue a reboot                              | configctl system reboot                | No parameters           | Perform a reboot at the specified time.     |
+| Halt and power off the system               | configctl system halt                  | No parameters           | Perform a power off at the specified time.  |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Manual gateway switch                       | configctl interface routes alarm       | No parameters           | Perform a manual gateway switch if          |
 |                                             |                                        |                         | applicable.  Malfunctioning gateway         |
@@ -239,6 +239,8 @@ The most common core commands are as follows:
 |                                             |                                        | as shown in assignments | it cleanly.                                 |
 |                                             |                                        | or overview page, e.g.  |                                             |
 |                                             |                                        | "lan", "wan", "optX".   |                                             |
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
+| Reboot the system                           | configctl system reboot                | No parameters           | Perform a reboot at the specified time.     |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Remote backup                               | configctl system remote backup         | No parameters           | Trigger the remote backup at the specified  |
 |                                             |                                        |                         | time as opposed to its nightly default.     |
