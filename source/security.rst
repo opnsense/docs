@@ -41,7 +41,7 @@ If all goes well, a report like the one below will be shown:
 .. Note::
 
     We do not offer community support on assessing if incidents on older versions do warrant an immediate upgrade on your
-    end as this often depends on features used and settings configured. Our advise always will be to upgrade into the
+    end as this often depends on features used and settings configured. Our advice always will be to upgrade into the
     latest community or business version.
 
 
@@ -64,7 +64,9 @@ know that we don't have the manpower to act as an intermediary between various p
 Reporting an incident
 ------------------------------------------------------------
 
-Security incidents on our product can be reported to our security team available at **security** @ **opnsense.org**.
+Security incidents on our product can be reported using our `GitHub repository <https://github.com/opnsense/core/security>`__.
+You may also create a new issue and select "Report a security vulnerability", which will redirect you to the same page.
+Alternatively, you can report security issues to our security team available at **security** @ **opnsense.org**.
 
 All reports should contain at least the following information:
 
