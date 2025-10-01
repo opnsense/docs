@@ -780,7 +780,7 @@ Here are the full patch notes:
 * system: apply locked state to newly added widgets as well
 * system: account for removal of rows in non-rotated widget tables with top headers
 * system: use "importmap" to force cache safe imports of base classes for widgets
-* system: allow custom fonts in the widgets with gauges (contributed by Jaka Prasnika)
+* system: allow custom fonts in the widgets with gauges (contributed by Jaka Prašnikar)
 * system: add monitor IP to gateway API result (contributed by Herman Bonnes)
 * system: better define "in use" flag and safety guards in certificates section
 * system: export p12 resulted in mangled binary blob in certificates section

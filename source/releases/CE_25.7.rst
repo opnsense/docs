@@ -29,6 +29,58 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.7.4 (September 30, 2025)
+--------------------------------------------------------------------------
+
+
+Updates are slower than usual at the moment, but it is also relatively
+calm out there security-wise.  While this finally ships Kea version 3
+we are still working on the package manager version 2 and Suricata 8
+with good results.  Stay tuned!
+
+Here are the full patch notes:
+
+* system: fix reconfigure control on HA status page for small viewports
+* system: add pluginctl -m and -v options for model migrations and validations calls
+* system: add "power off" backend action to GUI cron options
+* interfaces: replace MAC vendor database from py-netaddr with a simple local implementation
+* interfaces: refactor getting both devices from interface in settings page
+* interfaces: get both devices of interface in one call
+* interfaces: fix flags display in interface overview detail
+* firewall: treat "skip" protocol as a string to avoid syntax error
+* firewall: improve alias parsing performance in diagnostics page
+* intrusion detection: make grids virtual to fix performance issues
+* kea-dhcp: honour IPv4 client specific reservation domain name option (contributed by NOYB)
+* lang: new Ukrainian language and assorted updates
+* monit: fix migration weirdness with run/post use
+* unbound: add support for TXT records in host overrides
+* backend: add "!" operator to execute and flush cache when it exists
+* mvc: remove empty string fallbacks for backend invokes that are no longer needed
+* mvc: more style changes on existing core models
+* mvc: disable Dnsmasq/Unbound template generation
+* mvc: remove getDescription() overlay in ModelRelationField
+* ui: legacy_html_escape_form_data() was not escaping keys only data elements (reported by Alex Williams from Pellera Technologies)
+* ui: do not add an empty option into an empty option group
+* ui: add datetime-local to field types
+* plugins: os-caddy 2.0.4 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/www/caddy/pkg-descr>`__ 
+* plugins: os-netbird 1.1 fixes service startup and switches to syslog (contributed by Bethuel Mmbaga)
+* plugins: os-theme-advanced 1.1 fixes styling issues on 25.7 (contributed by Jaka Prašnikar)
+* plugins: os-zabbix-agent 1.17 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.14 `[3] <https://github.com/opnsense/plugins/blob/stable/25.7/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* ports: dnspython 2.8.0 `[4] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
+* ports: kea 3.0.1 `[5] <https://downloads.isc.org/isc/kea/3.0.1/Kea-3.0.1-ReleaseNotes.txt>`__ 
+* ports: libpfctl 0.17
+* ports: lighttpd 1.4.82 `[6] <https://www.lighttpd.net/2025/9/12/1.4.82/>`__ 
+* ports: nss 3.116 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_116.html>`__ 
+* ports: openvpn 2.6.15 `[8] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.15>`__ 
+* ports: php 8.3.26 `[9] <https://www.php.net/ChangeLog-8.php#8.3.26>`__ 
+* ports: py-requests 2.32.5
+* ports: suricata 7.0.12 `[10] <https://suricata.io/2025/09/16/suricata-8-0-1-and-7-0-12-released/>`__ 
+* ports: unbound 1.24.0 `[11] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-24-0>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.7.3 (September 09, 2025)
 --------------------------------------------------------------------------
 
