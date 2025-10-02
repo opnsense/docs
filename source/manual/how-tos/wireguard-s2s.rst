@@ -8,15 +8,15 @@ Introduction
 
 WireGuard is a simple and fast modern VPN protocol. It aims to be less complicated than IPSec, working more like ssh with private and public keys.
 It has fewer lines of code and is more easily audited than other VPN protocols. Initially released for the Linux kernel, it is now cross-platform and widely deployable.
-
-.. Attention::
-    Wireguard is useful for simple routed site to site tunnels and roadwarrior setups. To this date, it doesn't play too nicely with high availability setups. That's because the peer may keep polling a stale interface and misinterpret the other instance as being the one that is down and keep sending traffic there. Also, because Wireguard is bound to all interfaces (and not explicitely the CARP VIP), both High Availability firewalls will send handshakes and fight against each other for the remote Wireguard peer. This behavior was mitigated in 23.7.6 with Wireguard CARP vhid tracking that disables the Wireguard Instance with CARP VIPs in Backup state. In case of critical workloads and high availability, IPsec could still be the better choice.
     
 .. Note::
     The following example covers an IPv4 Site to Site Wireguard Tunnel between two OPNsense Firewalls with public IPv4 addresses on their WAN interfaces. You will connect *Site A LAN Net* ``172.16.0.0/24`` to *Site B LAN Net* ``192.168.0.0/24`` using the *Wireguard Transfer Net* ``10.2.2.0/24``. *Site A Public IP* is ``203.0.113.1`` and *Site B Public IP* is ``203.0.113.2``.
     
 .. Tip::
     You can also easily expand this Site to Site tunnel with IPv6 Global Unicast addresses (GUA) or Unique Local Addresses (ULA) to create a Dual Stack tunnel. Just add these IPv6 Networks (usually with /64 Prefix) to the *allowed IPs* and create Firewall rules to allow the traffic.
+
+.. Attention::
+    When using Wireguard in a HA setup, use the "Depend on (CARP)" setting in each instance.
 
 ---------------------
 Step 1 - Installation
