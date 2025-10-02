@@ -301,7 +301,7 @@ on the concept.
     to an existing VHID on a single machine will invalidate the VHID hash for both sides, both machines will
     react by switching to the master state, triggering a split-brain scenario. To avoid this, CARP must
     explicitly be disabled on one of the machines before adding the new IP Alias.
-    For an exact procedure, refer to `the example <carp.html#example-adding-a-virtual-ip-to-a-carp-ha-cluster>`__
+    For an exact procedure, refer to `the example <carp.html#example-adding-a-virtual-ip-to-an-active-vhid-group>`__
 
 
 Example: Updating a CARP HA Cluster
