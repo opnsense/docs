@@ -240,3 +240,27 @@ a single list.
          }
       }
    }
+
+
+------------------------------------
+Cached data
+------------------------------------
+
+In some cases access to model data requires too much handling for the time the user is willing to wait, in these
+cases it is possible to serve cached data to the user of the model.
+
+For this purpose, each model node in the config contains a :code:`persisted_at` field with the most recent update time,
+in which case a static function :code:`getCachedData()` can be used to fetch the data.
+This quickly checks if an object was changed (via an xpath expression) returning the data of the model in an array structure.
+
+
+.. Note::
+   Although the cache will contain programmaticly generated rows using :code:`getStaticChildren()` in :code:`ArrayField`,
+   it can't automatically figure out if this content has changed.
+
+   In cases you need to ensure these records are updated as well, you do need to call :code:`flushCacheData()` on the
+   static model. (e.g. :code:`\OPNsense\Firewall\Alias::flushCacheData()`)
+
+
+
+
