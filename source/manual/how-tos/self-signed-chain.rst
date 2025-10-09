@@ -295,7 +295,7 @@ Press **Save** and the intermediate CA has been created. The private and public 
 Step 3: Issuing a Leaf Certificate
 -----------------------------------------
 
-Go to :menuselection:`System --> Trust --> Authority`
+Go to :menuselection:`System --> Trust --> Certificates`
 
 Press **+** to create a new authority, it will become your leaf certificate (end-entity certificate).
 It can be used on a server, user, or both; depending on the type.
@@ -303,7 +303,7 @@ It can be used on a server, user, or both; depending on the type.
 ===================================== =======================================================================================================================
 **Options**                           **Description**
 ===================================== =======================================================================================================================
-**Method**                            ``Create an internal Certificate Authority``
+**Method**                            ``Create an internal Certificate``
 **Description**                       ``leaf-certificate.example.com`` (or a custom description, like user or server name)
 **Key**
 **Type**                              ``Server Certificate`` (or client certificate for a user)
