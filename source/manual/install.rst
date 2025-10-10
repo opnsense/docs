@@ -422,6 +422,11 @@ images. This can be useful for creating live backups for later recovery.
    The installer can also be started from an inside host using ssh.  Default ip
    address is ``192.168.1.1``
 
+.. Attention::
+   When installing an appliance with SD or MMC flash card storage, ensure you select the UFS filesystem
+   and choose ``mmcsd0`` in the Disk Selection. Do not choose ``da0`` as that is the USB drive.
+   As example, this is applicable to the DEC677 Desktop Security Appliance.
+
 The installation process involves the following steps:
 
 #. Keymap selection - The default configuration should be fine for most Occasions.
@@ -429,7 +434,7 @@ The installation process involves the following steps:
    as it is the most reliable option, but it does require enough capacity (a couple of gigabytes at least).
 #. Partitioning (ZFS) - Choose a device type. The default option (stripe) is usually acceptable
    when using a single disk.
-#. Disk Selection (ZFS) - Select the Storage device e.g. ``da0`` or ``nvd0``
+#. Disk Selection (ZFS) - Select the Storage device.
 #. Last Chance! - Select Yes to continue with partitioning and to format the disk. However, doing
    so will **destroy** the contents of the disk.
 #. Continue with recommended swap (UFS) - Yes is usually fine here unless the install target
