@@ -92,7 +92,7 @@ Diagnostics
     "``GET``","diagnostics","netflow","getconfig",""
     "``GET``","diagnostics","netflow","is_enabled",""
     "``POST``","diagnostics","netflow","reconfigure",""
-    "``GET``","diagnostics","netflow","setconfig",""
+    "``POST``","diagnostics","netflow","setconfig",""
     "``GET``","diagnostics","netflow","status",""
 
 .. csv-table:: Resources (NetworkinsightController.php)
