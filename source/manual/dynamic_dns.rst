@@ -36,7 +36,7 @@ Backend                 The system the Select the backend to use, either "ddclie
 .. Note::
 
       With :code:`ddclient` developments sunsetting [`* <https://github.com/ddclient/ddclient/issues/528>`__] we decided to offer an alternative written in
-      Python. Selecting the native backend replaces the employed implementation. If your service is supported, we do advice to try out the new native backend
+      Python. Selecting the native backend replaces the employed implementation. If your service is supported, we do advise to try out the new native backend
       which also offers support for custom HTTP requests.
 
 Accounts
