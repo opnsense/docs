@@ -29,6 +29,52 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.7.5 (October 08, 2025)
+--------------------------------------------------------------------------
+
+
+This updates provides for a new GeoIP database source by IPinfo, stability
+fixes for several network drivers and the recent OpenSSL security update
+amongst others.
+
+Here are the full patch notes:
+
+* system: add the pfsync "defer" option to high availability
+* system: return both interfaces in a single call for get_nameservers()
+* system: safeguard legacy local_sync_accounts() against malformed user entries
+* firewall: support IPinfo format for GeoIP `[1] <https://docs.opnsense.org/manual/how-tos/ipinfo_geo_ip.html>`__ 
+* firewall: adapt default table size calculation
+* firewall: fix flags not showing on GeoIP selection
+* captive portal: case insensitive MAC parsing
+* captive portal: remove stale dir-listing.activate from web server
+* dnsmasq: refine the selection of automatic DHCP rules for eligible interfaces
+* firmware: switch business mirror layout
+* ipsec: dots are not allowed in pool names
+* kea-dhcp: expose lease expiration settings to the GUI (contributed by Konstantinos Spartalis)
+* kea-dhcp: support DHCP option 121 (classless static routes)
+* mvc: protect JSON response against UFT-8 encoding failures
+* mvc: HTML-decode select element values
+* plugins: os-etpro-telemetry 1.8 now shows more status responses in widget
+* plugins: os-shadowsocks 1.3 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/net/shadowsocks/pkg-descr>`__ 
+* src: bnxt: fix the request length in bnxt_hwrm_func_backing_store_cfg()
+* src: iflib: set the get counter routine prior to attaching the interface
+* src: ifnet: defer detaching address family dependent data
+* src: ixgbe: fix incomplete speed coverage in link status logging
+* src: ixl: fix queue MSI and legacy IRQ rearming
+* src: openssl: fix multiple vulnerabilities `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-25:08.openssl.asc>`__ 
+* src: re: add PNP info for module
+* src: re: make sure re_rxeof() is called in net epoch context
+* src: vfs: fix copy_file_range() failing to set output parameters `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-25:16.vfs.asc>`__ 
+* ports: curl 8.16.0 `[5] <https://curl.se/changes.html#8_16_0>`__ 
+* ports: expat 2.7.3 `[6] <https://github.com/libexpat/libexpat/blob/R_2_7_3/expat/Changes>`__ 
+* ports: nss 3.117 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_117.html>`__ 
+* ports: openssl 3.0.18 `[8] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+* ports: pcre2 10.46 `[9] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.46>`__ 
+* ports: phpseclib 3.0.47 `[10] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.47>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.7.4 (September 30, 2025)
 --------------------------------------------------------------------------
 

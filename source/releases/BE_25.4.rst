@@ -48,6 +48,13 @@ Here are the full patch notes:
 * src: libarchive: update to 3.8.1 to fix integer overflow leading to double free `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-25:07.libarchive.asc>`__ 
 * src: route: fix "route -n monitor" when its output is redirected `[2] <https://www.freebsd.org/security/advisories/FreeBSD-EN-25:14.route.asc>`__ 
 
+A hotfix release was issued as 25.4.3_4:
+
+* system: properly check request type on HA status page in restartAllAction() (reported by Stanislav Fort of Aisle Research)
+* firmware: add fingerprint, migration notes and upgrade hint for 25.10
+* mvc: stream output not properly cleansed when used in widget (reported by Stanislav Fort of Aisle Research)
+* ui: legacy_html_escape_form_data() was not escaping keys only data elements `[3] <https://www.cve.org/cverecord?id=CVE-2025-34182>`__  (reported by Alex Williams from Pellera Technologies)
+
 
 
 --------------------------------------------------------------------------
@@ -83,7 +90,6 @@ Here are the full patch notes:
 * system: add missing "kernel" application for remote logging
 * interfaces: emulate device name return in ifconfig edge case for legacy_interface_create()
 * interfaces: cleanup spurious functions regarding VIP access
-* interfaces: interfaces: improve private and bogon network filters (contributed by Maurice Walker)
 * interfaces: consider tracked interfaces linked devices on reload
 * interfaces: convert bridge configuration to MVC/API
 * interfaces: remove unused is_interface_assigned()
@@ -101,7 +107,6 @@ Here are the full patch notes:
 * firewall: fix missing lock while refactoring config for group changes
 * firewall: properly synchronize load order for shaper when reloading configuration
 * firewall: add toggle log command in automation
-* firewall: since bogons source writes a comment first prefix our exclusions too
 * firewall: tighten address / range validation for aliases
 * firewall: align alias tokenizer options with the ones in our base template
 * firewall: improve address family validation for rule source and destination

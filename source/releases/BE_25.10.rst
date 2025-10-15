@@ -1,0 +1,351 @@
+===========================================================================================
+25.10  Series
+===========================================================================================
+
+
+The OPNsense business edition transitions to this 25.10 release including
+revamped frontend grid UI, experimental privilege separation for the GUI,
+a new and improved firewall automation GUI, performance enhancements especially
+for numerous aliases being used at once, OpenID Connect integration, captive
+portal backend rewrite, Greek as a new language, FreeBSD 14.3 plus much more.
+
+Please make sure to read the migration notes before upgrading.
+
+Download link is as follows.  An installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for
+the images can be found below as well.
+
+https://downloads.opnsense.com/
+
+
+--------------------------------------------------------------------------
+25.10 (October 15, 2025)
+--------------------------------------------------------------------------
+
+The OPNsense business edition transitions to this 25.10 release including
+revamped frontend grid UI, experimental privilege separation for the GUI,
+a new and improved firewall automation GUI, performance enhancements especially
+for numerous aliases being used at once, OpenID Connect integration, captive
+portal backend rewrite, Greek as a new language, FreeBSD 14.3 plus much more.
+
+Please make sure to read the migration notes before upgrading.
+
+Download link is as follows.  An installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for
+the images can be found below as well.
+
+https://downloads.opnsense.com/
+
+This business release is based on the OPNsense 25.7.5 community version
+with additional reliability improvements.
+
+Here are the full patch notes against version 25.4.3:
+
+* system: the setup wizard was rewritten using MVC/API
+* system: change default DHCP use from ISC to Dnsmasq for factory reset and console port and address assignments
+* system: numerous permission, ownership and directory alignments for web GUI privilege separation
+* system: allow experimental feature to run web GUI privilege separated as "wwwonly" user
+* system: add a banner when trying to revert the privilege separated GUI back to root at run time
+* system: consistently use empty() checks on "blockbogons", "blockpriv", "dnsallowoverride" and "dnsallowoverride_exclude"
+* system: change default system domain to "internal" (contributed by Self-Hosting-Group)
+* system: remove the "optional" notion of tunables known to the system
+* system: enable kernel timestamps by default
+* system: allow CSR to be downloaded from System/Trust/Certificates (contributed by Gavin Chappell)
+* system: HTML decode entities when generating new QR code for user
+* system: add missing timestamp formatter in snapshots
+* system: prevent misconfigurations with the automatic user creation option
+* system: add pluginctl hook for cache_flush
+* system: rewrite wwwonly bootstrap procedure
+* system: allow authentication events from wwwonly user
+* system: fix two regressions due to stream output path safety addition
+* system: fix reconfigure control on HA status page for small viewports
+* system: add pluginctl -m and -v options for model migrations and validations calls
+* system: add "power off" backend action to GUI cron options
+* system: add the pfsync "defer" option to high availability
+* system: return both interfaces in a single call for get_nameservers()
+* system: safeguard legacy local_sync_accounts() against malformed user entries
+* system: change atrun interval to every minute
+* reporting: removed the unused second argument in getSystemHealthAction()
+* reporting: renamed getRRDlistAction() to getRrdListAction()
+* reporting: fixed internal parameter names in insight graphs
+* interfaces: fix media settings write issue since 24.7 as it would not apply when "autoselect" result already matched
+* interfaces: removed defunct SLAAC tracking functionality (SLAAC on WAN still works fine)
+* interfaces: no longer fix improper WLAN clone naming at run time as it should be ensured by code for a long time now
+* interfaces: remove the functions get_configured_carp_interface_list() and get_configured_ip_aliases_list()
+* interfaces: add VIP grid formatter to hide row field content based on the set mode
+* interfaces: drop redundant updates in rtsold_resolvconf.sh (contributed by Andrew Baumann)
+* interfaces: moved get_real_interface() to util.inc
+* interfaces: replace MAC vendor database from py-netaddr with a simple local implementation
+* interfaces: refactor getting both devices from interface in settings page
+* interfaces: get both devices of interface in one call
+* interfaces: fix flags display in interface overview detail
+* firewall: add expire option to external aliases to automatically cleanup tables via cron
+* firewall: removed the expiretable binary use in favour of the builtin pfctl
+* firewall: speed up alias functionality by using the new model caching
+* firewall: consolidated ipfw/dnctl scripting and fix edge case reloads
+* firewall: code cleanup and performance improvements for alias diagnostics page
+* firewall: assorted UI updates for automation pages
+* firewall: a few minor improvements in automation GUI
+* firewall: remove unused "set loginterface" clause
+* firewall: additional statistics for alias grid
+* firewall: fix shaper reset button
+* firewall: add "quick" mode in alias update to skip table size comparison during schedules
+* firewall: adjust firewall_rule_lookup to open correct interface and rule from firewall live log
+* firewall: add port alias selection to source_port and destination_port
+* firewall: implement alias description tooltip and other UX tweaks
+* firewall: add optional Tabulator tree view to show categories as rule folders in automation
+* firewall: put sequence and sort_order in advanced mode of automation rules
+* firewall: front-end table rendering performance improvement for alias diagnostics
+* firewall: also set groups for special IPv6 interfaces
+* firewall: ignore empty lines for pf table counting
+* firewall: support tags in source NAT automation rules
+* firewall: allow alias nesting for URL tables
+* firewall: fix interface_net aliases not being populated
+* firewall: fix return value when failing to resolve host entries for aliases and no previous content is known
+* firewall: treat "skip" protocol as a string to avoid syntax error
+* firewall: improve alias parsing performance in diagnostics page
+* firewall: support IPinfo format for GeoIP `[2] <https://docs.opnsense.org/manual/how-tos/ipinfo_geo_ip.html>`__ 
+* firewall: adapt default table size calculation
+* captive portal: migrate backend from IPFW to PF
+* captive portal: fix regression when NAT reflection is enabled
+* captive portal: fix command line argument parsing in backend
+* captive portal: remove obsolete interfaces_inbound option that works by default now
+* captive portal: missing fix for command line argument parsing in backend
+* captive portal: fix display issue for pass rule when client not in zone
+* captive portal: allow disabling automatic firewall rules
+* captive portal: exclude portal table in destination
+* captive portal: restore the logging of drop reasons
+* captive portal: fix last_accessed being cached from previous entries if N/A
+* captive portal: mark alias as type external for use in rules
+* captive portal: align accounting session timeout with API
+* captive portal: balance fastcgi servers a bit better
+* captive portal: do not share a fastcgi socket with web GUIo firewall: fix flags not showing on GeoIP selection
+* captive portal: make room for additional authentication profiles
+* captive portal: API dispatcher is now privilege separated via "wwwonly" user and group
+* captive portal: preparations for SSO identification support
+* captive portal: move backend scripts directory
+* captive portal: various style cleanups
+* captive portal: restyle default login template
+* captive portal: case insensitive MAC parsing
+* captive portal: remove stale dir-listing.activate from web server
+* captive portal: support OpenID Connect authentication through custom template
+* dnsmasq: add optional subnet mask to "dhcp-range" to satisfy DHCP relay requirements
+* dnsmasq: sync CSV export with ISC and Kea structure
+* dnsmasq: add CNAME configuration option to host overrides
+* dnsmasq: add ipset support
+* dnsmasq: swap hosts and domains tab for consistency reasons
+* dnsmasq: allow disabling local for DHCP domains
+* dnsmasq: add Tabulator "groupBy" functionality to group by interfaces
+* dnsmasq: add leases widget that shows latest leases
+* dnsmasq: refine the selection of automatic DHCP rules for eligible interfaces
+* firmware: opnsense-version: build time package variable replacements can now be read at run time
+* firmware: hide community plugins by default and add a checkbox to unhide them on the same page
+* firmware: introduce a new support tier 4 for development and otherwise unknown plugins
+* firmware: disable the FreeBSD-kmods repository by default
+* firmware: sunset mirror dns-root.de (many thanks to Alexander Lauster for maintaining it for almost a decade!)
+* firmware: opnsense-version: support more elaborate -R replacement
+* firmware: store update and upgrade logs in edge cases
+* firmware: opnsense-version: support file based -R option
+* firmware: opnsense-update: support -g for update log view
+* firmware: remove tier 2 workaround for Zenarmor plugins
+* firmware: add date to modal header
+* firmware: opnsense-patch: fix cache flush using new hook
+* firmware: add vuxml.freebsd.org to CRL handling hostnames
+* firmware: switch business mirror layout
+* intrusion detection: add JA4 support (contributed by Maxime Thiebaut)
+* intrusion detection: fix interface name conversion
+* intrusion detection: fix ja4 option templating
+* intrusion detection: fix and simplify grid search in download tab
+* intrusion detection: fix downloads tab not loading with Tabulator
+* intrusion detection: revert "fix downloads tab not loading with Tabulator"
+* intrusion detection: make grids virtual to fix performance issues
+* ipsec: fix regression in configuration write with introduced volatile fields
+* ipsec: add firewall rules skip option for VTIs
+* ipsec: deprecate legacy stroke and implement swanctl for overview
+* ipsec: add default value to "make_before_break" that retains disabled default
+* ipsec: fix bulk operations in SPD page
+* ipsec: dots are not allowed in pool names
+* ipsec: allow underscores in PSK identifiers
+* isc-dhcp: show tracking IPv6 interfaces when automatically enabled and offer an explicit disable
+* isc-dhcp: hide IPv4 menu items when Dnsmasq DHCP is enabled to improve out of the box experience
+* isc-dhcp: add static mapping CSV export
+* isc-dhcp: allow static mapping export for disabled entries
+* kea-dhcp: honour IPv4 client specific reservation domain name option (contributed by NOYB)
+* kea-dhcp: expose lease expiration settings to the GUI (contributed by Konstantinos Spartalis)
+* kea-dhcp: support DHCP option 121 (classless static routes)
+* lang: add Greek as a new language (contributed by sopex)
+* lang: make more strings translate-able (contributed by Tobias Degen)
+* lang: updates for Chinese, Czech, German and Greek
+* lang: new Ukrainian language and assorted updates
+* monit: move backend scripts directory
+* monit: fix migration weirdness with run/post use
+* openvpn: the server wizard functionality has been permanently removed as it required the old wizard implementation
+* radvd: refine checks that ignored 6rd and 6to4
+* wireguard: move backend scripts to proper location
+* unbound: fix error in edge case of initial model migration
+* unbound: configurable top domain list length in reporting view (contributed by sopex)
+* unbound: remove unknown model reference and protect/simplify remaining one
+* unbound: add support for TXT records in host overrides
+* backend: trigger boot template reload without using configd
+* backend: added IPv6 bracket helper for templates (contributed by BPplays)
+* backend: add "!" operator to execute and flush cache when it exists
+* mvc: introduce generic model caching to improve operational performance
+* mvc: field types quality of life improvements with new getValues() and isEqual() functions
+* mvc: filed types deprecated getCurrentValue() in favour of getValue() and removed isEmptyString()
+* mvc: new BaseSetField() as a parent class for several other field types and numerous new and improved unit tests
+* mvc: support chown/chgrp in File and FileObject classes
+* mvc: use getNodeContent() to gather grid data
+* mvc: allow PortOptional=Y for IPPortField
+* mvc: remove SelectOptions support for CSVListField
+* mvc: migrated use of setInternalIsVirtual() to volatile field types
+* mvc: fix getDescription() in NetworkAliasField
+* mvc: improve resilience of VPNIdField and LinkAddressField
+* mvc: repair side affect of getDescription() change causing performance regressions
+* mvc: modify existing and add missing descriptions in models
+* mvc: set default validation message for CertificateField
+* mvc: BaseModel: minor non-functional cleanups
+* mvc: ModelRelationField: keep array structure in memory to avoid reinitiating object construction
+* mvc: tweaked model definitions, especially descriptions and validation message style
+* mvc: slightly adjust two getOption() calls in constraints
+* mvc: BaseListField: always map values in getDescription()
+* mvc: BaseListField: account for option container and passthrough value
+* mvc: remove getCurrentValue() compatibility wrapper
+* mvc: Backend: always return strings in configdRun() and configdpRun()
+* mvc: improve replaceInputWithSelector() to support an empty placeholder
+* mvc: setDefault() not fired as setValue() was set with an empty string
+* mvc: allow empty responses to fix a regression due to stream output safety path addition
+* mvc: remove empty string fallbacks for backend invokes that are no longer needed
+* mvc: more style changes on existing core models
+* mvc: disable Dnsmasq/Unbound template generation
+* mvc: remove getDescription() overlay in ModelRelationField
+* mvc: protect JSON response against UFT-8 encoding failures
+* mvc: HTML-decode select element values
+* rc: make changes to php,var,tmp bootstrap
+* ui: switch from Bootgrid to Tabulator for MVC grid rendering
+* ui: numerous switches to shared base_bootgrid_table and base_apply_button use
+* ui: flatten nested containers for grid inclusion
+* ui: use snake_case for all API URLs and adjust ACLs accordingly
+* ui: move tooltip load event to single-fire mode
+* ui: add checkmark to SimpleActionButton as additional indicator
+* ui: improve menu icons/text spacing (contributed by sopex)
+* ui: bootgrid: clean up leftover compatibility bits
+* ui: bootgrid: add missing sortable option
+* ui: bootgrid: provide more styling possibilities from formatters
+* ui: fix language selection for low vertical resolution screens (contributed by sopex)
+* ui: hide header of the picture widget on the dashboard (contributed by sopex)
+* ui: bootgrid: add tabulatorOptions to translateCompatOptions()
+* ui: bootgrid: raise rowCount default to 50 and adjust selections accordingly for most pages
+* ui: bootgrid: simplify custom grid command additions
+* ui: do not add an empty option into an empty option group
+* ui: add datetime-local to field types
+* plugins: replace variables in package scripts by default
+* plugins: os-OPNBEcore 1.6 with OpenID Connect and scheduled jobs support
+* plugins: os-OPNWAF 2.0 with OpenID Connect support, customizable error documents and updated rule set
+* plugins: os-acme-client 4.10 `[3] <https://github.com/opnsense/plugins/blob/stable/25.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-bind 1.34 `[4] <https://github.com/opnsense/plugins/blob/stable/25.7/dns/bind/pkg-descr>`__ 
+* plugins: os-c-icap 1.9 `[5] <https://github.com/opnsense/plugins/blob/stable/25.7/www/c-icap/pkg-descr>`__ 
+* plugins: os-caddy 2.0.4 `[6] <https://github.com/opnsense/plugins/blob/stable/25.7/www/caddy/pkg-descr>`__ 
+* plugins: os-clamav 1.8.1 `[7] <https://github.com/opnsense/plugins/blob/stable/25.7/security/clamav/pkg-descr>`__ 
+* plugins: os-crowdsec 1.0.12 `[8] <https://github.com/opnsense/plugins/blob/stable/25.7/security/crowdsec/pkg-descr>`__ 
+* plugins: os-dnscrypt-proxy 1.16 `[9] <https://github.com/opnsense/plugins/blob/stable/25.7/dns/dnscrypt-proxy/pkg-descr>`__ 
+* plugins: os-etpro-telemetry 1.8 now shows more status responses in widget
+* plugins: os-frr 1.47 `[10] <https://github.com/opnsense/plugins/blob/stable/25.7/net/frr/pkg-descr>`__ 
+* plugins: os-gdrive-backup 1.0 for Google Drive backup support
+* plugins: os-grid_example 1.1 updates best practice on grid development
+* plugins: os-netbird 1.0 (contributed by Gauss23 and Bethuel Mmbaga)
+* plugins: os-netbird 1.1 fixes service startup and switches to syslog (contributed by Bethuel Mmbaga)
+* plugins: os-nginx 1.35 `[11] <https://github.com/opnsense/plugins/blob/stable/25.7/www/nginx/pkg-descr>`__ 
+* plugins: os-openvpn-legacy 1.0 for legacy OpenVPN components support
+* plugins: os-puppet-agent 1.2 `[12] <https://github.com/opnsense/plugins/blob/stable/25.7/sysutils/puppet-agent/pkg-descr>`__ 
+* plugins: os-shadowsocks 1.3 `[13] <https://github.com/opnsense/plugins/blob/stable/25.7/net/shadowsocks/pkg-descr>`__ 
+* plugins: os-smart 2.4 adds extended info option (contributed by poisonbl)
+* plugins: os-squid 1.3 `[14] <https://github.com/opnsense/plugins/blob/stable/25.7/www/squid/pkg-descr>`__ 
+* plugins: os-strongswan-legacy 1.0 for legacy IPsec components support
+* plugins: os-telegraf 1.12.13 `[15] <https://github.com/opnsense/plugins/blob/stable/25.7/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-theme-advanced 1.1 (contributed by Jaka Prašnikar and Raushan Patel)
+* plugins: os-theme-cicada 1.40 (contributed by Team Rebellion)
+* plugins: os-theme-tukan 1.30 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.50 (contributed by Team Rebellion)
+* plugins: os-zabbix-agent 1.17 `[16] <https://github.com/opnsense/plugins/blob/stable/25.7/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.14 `[17] <https://github.com/opnsense/plugins/blob/stable/25.7/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* src: FreeBSD 14.3-RELEASE-p4 plus assorted stable/14 networking commits `[18] <https://www.freebsd.org/releases/14.3R/relnotes/>`__ 
+* src: add a new sysctl in order to differentiate UEFI architectures `[19] <https://www.freebsd.org/security/advisories/FreeBSD-EN-25:12.efi.asc>`__ 
+* src: libarchive: merge version 3.8.1 `[20] <https://www.freebsd.org/security/advisories/FreeBSD-SA-25:07.libarchive.asc>`__ 
+* src: lagg: fix if_hw_tsomax_update() not being called
+* src: wg: add support for removing allowed-ip entries and assorted cleanups
+* src: ovpn: support multihomed server configurations and assorted cleanups
+* src: netlink: fully clear parser state between messages
+* src: udp: fix a inpcb refcount leak in the tunnel receive path
+* src: p9fs: assorted fixes
+* src: assorted network stack fixes via stable/14
+* src: if_ovpn: support IPv6 link-local addresses
+* src: if_ovpn: support floating clients
+* src: if_ovpn: fill out sin_len/sin6_len
+* src: if_ovpn: destroy cloned interfaces via a prison removal callback
+* src: ifconfig: support VLAN ID in static/deladdr
+* src: bnxt: fix the request length in bnxt_hwrm_func_backing_store_cfg()
+* src: iflib: set the get counter routine prior to attaching the interface
+* src: ifnet: defer detaching address family dependent data
+* src: ixgbe: fix incomplete speed coverage in link status logging
+* src: ixl: fix queue MSI and legacy IRQ rearming
+* src: openssl: fix multiple vulnerabilities `[21] <https://www.freebsd.org/security/advisories/FreeBSD-SA-25:08.openssl.asc>`__ 
+* src: re: add PNP info for module
+* src: re: make sure re_rxeof() is called in net epoch context
+* src: vfs: fix copy_file_range() failing to set output parameters `[22] <https://www.freebsd.org/security/advisories/FreeBSD-EN-25:16.vfs.asc>`__ 
+* ports: curl 8.16.0 `[23] <https://curl.se/changes.html#8_16_0>`__ 
+* ports: dnspython 2.8.0 `[24] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
+* ports: expat 2.7.3 `[25] <https://github.com/libexpat/libexpat/blob/R_2_7_3/expat/Changes>`__ 
+* ports: kea 3.0.1 `[26] <https://downloads.isc.org/isc/kea/3.0.1/Kea-3.0.1-ReleaseNotes.txt>`__ 
+* ports: krb5 1.22.1 `[27] <https://web.mit.edu/kerberos/krb5-1.22/>`__ 
+* ports: libpfctl 0.17
+* ports: lighttpd 1.4.82 `[28] <https://www.lighttpd.net/2025/9/12/1.4.82/>`__ 
+* ports: nss 3.117 `[29] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_117.html>`__ 
+* ports: openssl 3.0.18 `[30] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+* ports: openvpn 2.6.15 `[31] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.15>`__ 
+* ports: pcre2 10.46 `[32] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.46>`__ 
+* ports: perl 5.42.0 `[33] <https://perldoc.perl.org/5.42.0/perldelta>`__ 
+* ports: php 8.3.26 `[34] <https://www.php.net/ChangeLog-8.php#8.3.26>`__ 
+* ports: phpseclib 3.0.47 `[35] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.47>`__ 
+* ports: py-duckdb 1.3.2 `[36] <https://github.com/duckdb/duckdb/releases/tag/v1.3.2>`__ 
+* ports: py-jq 1.10.0 `[37] <https://github.com/mwilliamson/jq.py/blob/master/CHANGELOG.rst>`__ 
+* ports: py-requests 2.32.5
+* ports: strongswan 6.0.1 `[38] <https://github.com/strongswan/strongswan/releases/tag/6.0.0>`__  `[39] <https://github.com/strongswan/strongswan/releases/tag/6.0.1>`__ 
+* ports: sudo 1.9.17p2 `[40] <https://www.sudo.ws/stable.html#1.9.17p2>`__ 
+* ports: suricata 7.0.12 `[41] <https://suricata.io/2025/09/16/suricata-8-0-1-and-7-0-12-released/>`__ 
+* ports: unbound 1.24.0 `[42] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-24-0>`__ 
+
+Migration notes, known issues and limitations:
+
+* The captive portal implementation moves from IPFW to PF.  Check the technical details first, especially regarding the new ruleset behaviours. `[43] <https://docs.opnsense.org/manual/captiveportal.html#migration-notes-technical-details.html>`__ 
+* Deprecated Google Drive backups due to upstream policy changes and moved to plugins for existing users.
+* API URLs registered in the default ACLs have been switched from "camelCase" to "snake_case".
+* API grid return values now offer "%field" for a value description when available.  "field" will now always be the literal value from the configuration.  The API previously returned a display value for some field types, but not all.
+* Reverted tunables "hw.ibrs_disable" and "vm.pmap.pti" to FreeBSD defaults when no explicit values have been set in tunables.
+* Moved OpenVPN legacy to plugins as a first step to deprecation.
+* Moved IPsec legacy to plugins as a first step to deprecation.
+
+The public key for the 25.10 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAn9lXekbm5KcktbiWpmQf
+    # drRC8LmAOTV9Cbdd3em6iDFFcw8vmRS7Rbo2/exxYiPCqEPxxPtUsW+g/a6fqPJp
+    # pof5D1EHWqzPfkjRQV6ipQjm+ocJGkfbeHsp5I77L+w7om5TbPYBkOjg+iMd442d
+    # VYxgqXmMZy+6v78ofVM+wyba0GkRymFt0qf5k5uk3Auztcfanc2Ymsc+PDdjGHQd
+    # c9H8T0T6To8Z0xrbEXzY00IqSRkLto9Cl+xEmEAz/AiEu2WtEadOqSpDy9dsJfQg
+    # HpBQVlGQdphj5zmkqG6JSL1Uw+02OeIXOfFWRtqgW7vMyU0IbER3hLpvh6BlsqNJ
+    # LCPfD7F/dzDPU5LniDRRb4MrTlVpJk2h8pk7GbmJCqAyWJJZ6n3a+InPtUfl9gP5
+    # T0d15N7myh8RLssP+TIy8hiBHtc/yK89dUahGei1xDuh0HdytRLLLWVXqgWwgXhd
+    # 9it8l8AJ/D2BtuyExpJOWx3sYvmhJiPN8phCaR2G2E+QRA2X5nHGyUw5jYpKI8Om
+    # Q2khz1PBYcA/T5lKhM3HRFCu2HZsPKT5CEevZfUuPDXIqwx+LMFs6qqbzbGrdn1F
+    # H6ZSlG0BWuokeyjhN2mB0Fr6kdLobmfVgZHUS7KOwcI9BdftSDbEk8kMxrQlwugh
+    # 4I1hTrAycMERbjeUKg1plx8CAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-business-25.10-dvd-amd64.iso.bz2) = 6c45cd311960d42aa87933d2134c19825565d1ab74caa4129d08a938dbf621e8
+    # SHA256 (OPNsense-business-25.10-nano-amd64.img.bz2) = 2a706e56c45a1ecc8d4f14f85d3e07f1f3be85ac2d79459f62e9fed860edae19
+    # SHA256 (OPNsense-business-25.10-serial-amd64.img.bz2) = 8e8460dc8751cb0c7ab863d44ceb59a59a3eadbb9622ac707e43aeda002a3d7e
+    # SHA256 (OPNsense-business-25.10-vga-amd64.img.bz2) = fefac8e50c30c463072fbda508c675d176a0f0a7d910eacede3112e7a76dc365
+
