@@ -240,8 +240,8 @@ Although you're not obligated to use one of the defined services, the following 
 
 .. Tip::
 
-    When using the Business Edition, you can leave the :code:`Url` field empty so the firewall will download the database provided
-    by us.
+    When using the Business Edition, you can leave the :code:`Url` field empty so the firewall will download the IPinfo database provided
+    from our mirrors automatically.
 
 
 Below you will find a detailed specification our software can detect and process automatically.
