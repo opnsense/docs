@@ -422,6 +422,11 @@ images. This can be useful for creating live backups for later recovery.
    The installer can also be started from an inside host using ssh.  Default ip
    address is ``192.168.1.1``
 
+.. Attention::
+   When installing an appliance with SD or MMC flash card storage, ensure you select the UFS filesystem
+   and choose ``mmcsd0`` in the Disk Selection. Do not choose ``da0`` as that is the USB drive.
+   As example, this is applicable to the DEC677 Desktop Security Appliance.
+
 The installation process involves the following steps:
 
 #. Keymap selection - The default configuration should be fine for most Occasions.
