@@ -561,6 +561,21 @@ List field type to validate if the provided value is a valid protocol name as de
    "Multiple", "Y,N", "Allow to select multiple options"
 
 
+RegexField
+------------------------------------
+
+Validate if the input contains a valid regular expression pattern.
+
+.. csv-table:: RegexField
+   :header: "Parameter", "Options", "Purpose"
+   :widths: 30, 20, 40
+
+   "default", ":code:`text`", "Default value for new attributes"
+   "Required", "Y,N", "Mark field as required"
+   "ValidationMessage", ":code:`text`", "Error message on validation failure"
+   "RequireDelimiters", "Y,N", "Require PHP-style delimiters (e.g., :code:`/pattern/`)"
+
+
 TextField
 ------------------------------------
 
