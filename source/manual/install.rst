@@ -434,7 +434,7 @@ The installation process involves the following steps:
    as it is the most reliable option, but it does require enough capacity (a couple of gigabytes at least).
 #. Partitioning (ZFS) - Choose a device type. The default option (stripe) is usually acceptable
    when using a single disk.
-#. Disk Selection (ZFS) - Select the Storage device.
+#. Disk Selection (ZFS) - Select the Storage device e.g. ``da0`` or ``nvd0``
 #. Last Chance! - Select Yes to continue with partitioning and to format the disk. However, doing
    so will **destroy** the contents of the disk.
 #. Continue with recommended swap (UFS) - Yes is usually fine here unless the install target
