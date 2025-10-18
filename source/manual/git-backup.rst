@@ -83,6 +83,8 @@ SSH private key                       When using ssh, make sure to add a private
 User Name                             Username, when using gitlab and ssh, the default is :code:`git` here
                                       (most of these providers use a single user and identify the user by its key)
 password                              When using https authentication, choose a password here.
+Force Push                            Enable force push to overwrite the remote repository with the local state.
+                                      See "Conflict resolution" below for details.
 ====================================  ===============================================================================
 
 Make sure to push to an empty (as in, new and never used) upstream repository, when pressing "Setup/Test Git" the initial
@@ -142,6 +144,30 @@ The repository is available on the OPNsense machine in the following directory :
 
     Conflict resolution can complicate the solution a lot (merging, fast-forward, ....), for this reason we will not
     accept feature requests trying to push to existing (used) repositories.
+
+
+Using Force Push
+^^^^^^^^^^^^^^^^^
+
+When the local and remote repositories diverge (for example after restoring a configuration via the GUI),
+synchronization will fail with a **git out of sync** error. The Force Push option can be used to resolve
+this by overwriting the remote with the local repository state.
+
+.. Warning::
+
+    Force pushing permanently overwrites the remote repository history with your local state.
+    Any commits that exist remotely but not locally will be lost.
+
+To resolve a divergence:
+
+1. Navigate to :menuselection:`System --> Configuration --> Backups --> Git`
+2. Enable the **Force Push** option
+3. Click **Setup/Test Git** to push the current state
+4. (Optional) Disable **Force Push** and click **Setup/Test Git** again to verify normal operation
+
+The Force Push option can also be left enabled permanently to ensure the remote always mirrors the local state.
+
+For manual conflict resolution, access the repository in :code:`/conf/backup/git` and use standard git commands.
 
 
 --------------------------
