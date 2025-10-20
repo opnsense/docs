@@ -537,9 +537,20 @@ considerations should be taken into account:
 Tuning considerations
 .................................
 
-Depending on the workload (many different IPsec flows or a single flow), it might help to enable multithreaded crypto mode
-on :code:`ipsec`, in which case cryptographic packets are dispatched to multiple processors (especially when only a single
-tunnel is being used).
+In normal routing/firewalling scenarios, most significant performance gains in terms of throughput are achieved by distributing flows
+across multiple CPU cores. In any physical or virtual setup flow distribution is often determined by hardware RSS on a NIC,
+or virtual queues emulating this behavior, such flows are processed by default on the CPU it came in on (direct dispatch via netisr),
+making sure that traffic is processed in parallel. The distribution mechanism (before any OS processing) making this possible often hashes
+the IP/TCP/UDP 5-tuple to determine on which CPU a flow should be handled. Proper distribution therefore requires proper uniqueness
+of packet headers.
+
+When any tunneling takes place, as is the case for IPsec with ESP flows, many different traffic flows may be
+encapsulated inside a single IP header, reducing uniqueness of traffic and therefore the ability to distribute work. Unless
+NICs or virtualized queues can distribute work on ESP packets, which is rarely the case, OPNsense firewalls can often only
+receive such tunneled flows on a single CPU, because the outer IP header is often the same.
+
+If you have a simple, single-tunnel, single-flow setup (two flows for in-out), you may benefit from using async crypto to dispatch cryptographic work
+to multiple processors. However, there is no guarantee this will speed up work as it is dependent on multiple factors.
 
 In order to do so, add or change the following tunable in :menuselection:`System --> Settings --> Tunables`:
 
@@ -547,16 +558,26 @@ In order to do so, add or change the following tunable in :menuselection:`System
 
     :code:`net.inet.ipsec.async_crypto` = **1**
 
-To distribute load better over available cores in the system, it may help to enable :doc:`receive side scaling </troubleshooting/performance>`.
-In which case the following tunables need to be changed:
+
+
+As soon as an IPsec packet is received, decryption must happen first before anything meaningful can be done with it. This process
+can be parallelized with the command above, but because there is an explicit order to IPsec packets, these have to be re-injected in the same order, defeating
+the purpose of parallelization. The FreeBSD kernel queues decapsulated IPsec packets at all times, in contrast to regular ethernet frame handling.
+This also means that IPsec flows must adhere to the default single thread limitation after decryption. To fan out the traffic after
+decryption, you can increase the amount of threads bound to netisr:
 
 .. Note::
-
-    * :code:`net.isr.bindthreads` = **1**
     * :code:`net.isr.maxthreads` = **-1**   <-- equal the number of cores in the machine
-    * :code:`net.inet.rss.enabled` = **1**
-    * :code:`net.inet.rss.bits` = **X** <-- see :doc:`rss </troubleshooting/performance>` document.
 
+
+You can also be more specific and set only N amount cores to be used for ipsec traffic processing.
+
+In very busy environments, this change is very likely to have the most amount of impact.
+
+Lastly, but less practical, you can scale up IPsec by ensuring distribution earlier on in the chain by spreading out more flows across
+multiple IKE SAs (different source/destination selectors). In this scenario you must ensure multiple ESP flows coming from different
+source IP addresses when configuring site-to-site tunnels. You must combine this with the :code:`net.isr.maxthreads` setting to keep
+the traffic distributed while it is routed through the system.
 
 .................................
 Miscellaneous variables
