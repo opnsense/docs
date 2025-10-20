@@ -91,6 +91,7 @@ Other
    manual/relayd
    manual/wazuh-agent
    manual/how-tos/tor
+   manual/qfeeds
 
 ----------------
 Reporting
