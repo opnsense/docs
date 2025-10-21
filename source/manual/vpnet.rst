@@ -539,7 +539,7 @@ Tuning considerations
 
 In normal routing/firewalling scenarios, most significant performance gains in terms of throughput are achieved by distributing flows
 across multiple CPU cores. In any physical or virtual setup flow distribution is often determined by hardware RSS on a NIC,
-or virtual queues emulating this behavior, such flows are processed by default on the CPU it came in on (direct dispatch via netisr),
+or virtual queues emulating this behavior, such flows are processed by default on the receiving CPU (direct dispatch via netisr),
 making sure that traffic is processed in parallel. The distribution mechanism (before any OS processing) making this possible often hashes
 the IP/TCP/UDP 5-tuple to determine on which CPU a flow should be handled. Proper distribution therefore requires proper uniqueness
 of packet headers.
