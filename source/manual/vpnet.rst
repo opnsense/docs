@@ -572,7 +572,7 @@ decryption, you can increase the amount of threads bound to netisr:
 
 You can also be more specific and set only N amount cores to be used for ipsec traffic processing.
 
-In very busy environments, this change is very likely to have the most amount of impact.
+In very busy environments, this change likely has the most impact.
 
 Lastly, but less practical, you can scale up IPsec by ensuring distribution earlier on in the chain by spreading out more flows across
 multiple IKE SAs (different source/destination selectors). In this scenario you must ensure multiple ESP flows coming from different
