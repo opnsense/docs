@@ -561,10 +561,10 @@ In order to do so, add or change the following tunable in :menuselection:`System
 
 
 As soon as an IPsec packet is received, decryption must be handled first before anything meaningful can be done with the actual data. This process
-can be parallelized with the command above, but because IPsec packets need to be processed in an explicit order, these have to be re-injected in the same one, defeating
-the purpose of parallelization. The FreeBSD kernel queues decapsulated IPsec packets at all times, in contrast to regular ethernet frame handling.
-This also means that IPsec flows must adhere to the default single thread limitation after decryption. To fan out the traffic after
-decryption, you can increase the amount of threads bound to netisr:
+can be parallelized with the command above, but because IPsec packets need to be processed in an explicit order, these have to be re-injected in the same one,
+often making performance gains negligible - especially when the machine is busy. The FreeBSD kernel queues decapsulated IPsec packets at all times,
+in contrast to regular ethernet frame handling. This also means that IPsec flows must adhere to the default single thread limitation after decryption.
+To fan out the traffic after decryption, you can increase the amount of threads bound to netisr:
 
 .. Note::
     * :code:`net.isr.maxthreads` = **-1**   <-- equal the number of cores in the machine
