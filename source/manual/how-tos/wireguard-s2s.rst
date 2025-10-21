@@ -74,7 +74,7 @@ Go to tab **Peers** and press **+** to create a new peer.
 
 Enable the *advanced mode* toggle.
 
-    ====================== ====================================================================================================
+    ======================= ====================================================================================================
      **Enabled**            *Checked*
      **Name**               *wgopn-site-b*
      **Public Key**         *Insert the public key of the instance from wgopn-site-b*
@@ -82,7 +82,8 @@ Enable the *advanced mode* toggle.
      **Allowed IPs**        *10.2.2.2/32 192.168.0.0/24*
      **Endpoint Address**   *203.0.113.2*
      **Endpoint Port**      *51820*
-    ====================== ==================================================================================================== 
+     **Keepalive interval** *25*
+    ======================= ====================================================================================================
 
 Press **Save** and **Apply**.
 
@@ -90,9 +91,13 @@ Go to tab **Instances** and edit *wgopn-site-a*.
 
     ====================== ====================================================================================================
      **Peers**              *wgopn-site-b*
-    ====================== ==================================================================================================== 
+    ====================== ====================================================================================================
 
 Press **Save** and **Apply**.
+
+.. Attention::
+    When setting up a Site-to-Site VPN with two OPNsense firewalls, you have to configure **Keepalive interval** for at least one peer.
+    Otherwise no firewall will initiate the connection and the Site-to-Site VPN will never come up.
 
 ------------------------------------------------------
 Step 3b - Setup WireGuard Peer on OPNsense Site B
