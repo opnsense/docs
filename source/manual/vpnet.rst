@@ -560,7 +560,7 @@ In order to do so, add or change the following tunable in :menuselection:`System
 
 
 
-As soon as an IPsec packet is received, decryption must happen first before anything meaningful can be done with it. This process
+As soon as an IPsec packet is received, decryption must be handled first before anything meaningful can be done with the actual data. This process
 can be parallelized with the command above, but because there is an explicit order to IPsec packets, these have to be re-injected in the same order, defeating
 the purpose of parallelization. The FreeBSD kernel queues decapsulated IPsec packets at all times, in contrast to regular ethernet frame handling.
 This also means that IPsec flows must adhere to the default single thread limitation after decryption. To fan out the traffic after
