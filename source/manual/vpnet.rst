@@ -538,8 +538,8 @@ Tuning considerations
 .................................
 
 In normal routing/firewalling scenarios, most significant performance gains in terms of throughput are achieved by distributing flows
-across multiple CPU cores. In any physical or virtual setup flow distribution is often determined by hardware RSS on a NIC,
-or virtual queues emulating this behavior, such flows are processed by default on the receiving CPU (direct dispatch via netisr),
+across multiple CPU cores. In any physical or virtual setup, flow distribution is often determined by hardware RSS on a NIC,
+or virtual queues emulating this behavior. Such flows are processed by default on the receiving CPU (direct dispatch via netisr),
 making sure that traffic is processed in parallel. The distribution mechanism (before any OS processing) making this possible often hashes
 the IP/TCP/UDP 5-tuple to determine on which CPU a flow should be handled. Proper distribution therefore requires proper uniqueness
 of packet headers.
@@ -563,8 +563,8 @@ In order to do so, add or change the following tunable in :menuselection:`System
 As soon as an IPsec packet is received, decryption must be handled first before anything meaningful can be done with the actual data. This process
 can be parallelized with the command above, but because IPsec packets need to be processed in an explicit order, these have to be re-injected in the same one,
 often making performance gains negligible - especially when the machine is busy. The FreeBSD kernel queues decapsulated IPsec packets at all times,
-in contrast to regular ethernet frame handling. This also means that IPsec flows must adhere to the default single thread limitation after decryption.
-To fan out the traffic after decryption, you can increase the amount of threads bound to netisr:
+in contrast to regular ethernet frame handling (see technical note below). This also means that IPsec flows must adhere to the default single thread
+limitation after decryption. To fan out the traffic to multiple CPUs after decryption, you can increase the amount of threads bound to netisr:
 
 .. Note::
     * :code:`net.isr.maxthreads` = **-1**   <-- equal the number of cores in the machine
@@ -578,6 +578,29 @@ Lastly, but less practical, you can scale up IPsec by ensuring distribution earl
 multiple IKE SAs (different source/destination selectors). In this scenario you must ensure multiple ESP flows coming from different
 source IP addresses when configuring site-to-site tunnels. You must combine this with the :code:`net.isr.maxthreads` setting to keep
 the traffic distributed while it is routed through the system.
+
+.. admonition:: Technical background
+
+    `Netisr <https://man.freebsd.org/cgi/man.cgi?format=html&query=netisr(9)>`__ can be thought of as the conceptual equivalent
+    of Receive Packet Steering (RPS). How packets are distributed throughout the system is dependent on the packet protocol.
+
+    Netisr allows for two basic modes of operation: direct dispatch or deferred (queued) dispatch. Netisr is always single-threaded by
+    default in deferred dispatch mode to make sure the system adheres to the strong ordering requirements in protocols.
+
+    In direct dispatch mode, the network driver handling the packet receive buffer moves the packets up the stack. If the packet is
+    to be routed out via a different interface, this entire process is handled in the same thread (including decryption for IPsec,
+    unless async crypto is set), which doesn't exit until the packet is routed out. During this time, the receive buffer may fill with
+    new packets. In this mode, the single-threaded limitation doesn't apply as the execution context remains on the receiving thread, of
+    which there are often multiple via the data channels provided by the NICs/drivers.
+
+    In deferred dispatch mode, the first protocol allowing deferred processing will queue the packet, at which point the driver input
+    routine will exit immediately, so it can process new packets faster. This decoupling allows netisr to control which flows are
+    executed on which threads (and by extension, CPU).
+
+    When it comes to IPsec, packets are always queued via netisr after decryption. Because netisr is single-threaded in this mode,
+    it's always queued to the same separate thread. The :code:`maxthreads` option overcomes this limitation. Furthermore, the SPI value
+    is used to calculate which thread the flow ends up on. This is true for both VTI- and policy-based configurations.
+
 
 .................................
 Miscellaneous variables
