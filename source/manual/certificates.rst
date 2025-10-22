@@ -34,6 +34,12 @@ certficate signed by an external CA.
     errors) if an incorrect certificate type is used. For example, you can use either a server certificate or a
     combined client/server certificate to secure the connection to the web interface, but not a CA or client certificate.
 
+.. warning::
+    "Store intermediate" (:menuselection:`System --> Trust --> Settings`) is disabled by default on our setups,
+    which means none of the intermediates is being deployed in our trust store.
+    When inserting a new certificate manually which needs an intermediate to validate, you do have to include
+    the intermediates to prevent validation issues in the gui.
+
 
 ---------------------
 Settings
@@ -46,7 +52,7 @@ For compliance reasons, it is possible to implement certain constraints when a d
  **Options**                           **Description**
 ===================================== =======================================================================================================================
 Store intermediate                    Allow local defined intermediate certificate authorities to be used in the local trust store.
-                                      We advise to only store root certificates to prevent cross signed ones causing breakage when included
+                                      Be careful with deploying intermediate certificats as cross signed ones may causing breakage when included
                                       but expired later in the chain.
 Store CRL's                           Store all configured CRL's in the default trust store. If the client or service support CRL's,
                                       deploying to the default location eases maintenance.
@@ -59,6 +65,7 @@ Configuration constraints             When enabled, you can set some default cip
 .. Note::
     Applications are not forced to use a standard context, depending the application, custom constraints may
     or may not have any effect.
+
 
 ---------------------
 Revoke certificates

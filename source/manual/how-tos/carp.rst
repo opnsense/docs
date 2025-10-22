@@ -301,7 +301,7 @@ on the concept.
     to an existing VHID on a single machine will invalidate the VHID hash for both sides, both machines will
     react by switching to the master state, triggering a split-brain scenario. To avoid this, CARP must
     explicitly be disabled on one of the machines before adding the new IP Alias.
-    For an exact procedure, refer to `the example <carp.html#example-adding-a-virtual-ip-to-a-carp-ha-cluster>`__
+    For an exact procedure, refer to `the example <carp.html#example-adding-a-virtual-ip-to-an-active-vhid-group>`__
 
 
 Example: Updating a CARP HA Cluster
@@ -639,8 +639,8 @@ For most environments, multicast remains the recommended default due to its gene
     Without explicit support for Layer 2 HA mechanisms, failover may be delayed, unreliable, or entirely unsupported.
 
 
-Configuration Specific
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Switch Configuration
+---------------------------------------------
 
 This section covers issues that can be solved by tweaking the running configuration of switches.
 
@@ -672,38 +672,12 @@ Storm Control / Rate Limiting
 Limits on broadcast or multicast traffic can interfere with CARP advertisements, causing delayed failover or state flapping.
 Ensure CARP traffic is not unintentionally dropped or throttled by storm control policies on switch ports.
 
-
-Vendor Specific
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Some enterprise-grade switching platforms introduce behavior that may interfere with CARP operation, especially around MAC address handling and failover scenarios.
-Below are important considerations based on observed vendor-specific behaviors.
-
-
-Cisco Catalyst (IOS XE 17.x and newer)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-On Cisco Catalyst switches running IOS XE 17.x or later, the virtual MAC addresses used by CARP (``00:00:5e:00:01:xx``) are **not dynamically learned** into the CAM (Content Addressable Memory) table.
-Instead, they are treated as "always-unknown" to facilitate fast failover. This is true for multiple single switches that are not stacked, e.g., a common spanning tree setup.
-
-This behavior leads to:
-
-- Continuous Layer 2 flooding of CARP-related traffic
-- Duplicate ARP or ICMP replies (visible as `DUP!` messages)
-- Degraded performance during DNS or TCP handshakes
-- Intermittent or unstable client connectivity
-
-This is not a bug in CARP or OPNsense, but intentional switch behavior.
-
-.. Note::
-
-    For reliable CARP operation, both firewalls must be connected to a shared control plane, such as a stacked switch (StackWise Virtual) or a single switch.
-
-
-Other Vendors (MLAG / VC / Stacked Fabric)
+Stacking
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Other enterprise switch vendors — such as Juniper (Virtual Chassis), Arista (MLAG), and Extreme Networks (XOS MLAG) — also require that both cluster members be connected within the same switching fabric or Layer 2 control plane.
+Enterprise switch vendors — such as Juniper (Virtual Chassis), Arista (MLAG), Cisco (StackWise Virtual) and Extreme Networks (XOS MLAG) — can require that both cluster members are connected within the same switching fabric or Layer 2 control plane.
+
+Otherwise, the CAM table of connected switches might not be updated with the correct CARP MAC addresses (``00:00:5e:00:01:xx``).
 
 In these setups, CARP will operate correctly only if:
 

@@ -217,51 +217,84 @@ https://endpoints.office.com/endpoints/worldwide?clientrequestid=b10c5ed1-bad1-4
 ..................
 GeoIP
 ..................
-With GeoIP alias you can select one or more countries or whole continents to block
+With GeoIP aliases you can select one or more countries or whole continents to block
 or allow. Use the *toggle all* checkbox to select all countries within the given
 region.
 
-  .. image:: images/firewall_geoip_alias.png
-      :width: 100%
 
-To use GeoIP, you need to configure a source in the :menuselection:`Firewall --> Aliases -> GeoIP settings` tab, the most commonly
-used source is MaxMind, for which we have a how-to available : :doc:`how-tos/maxmind_geo_ip`
+To use GeoIP, when not using our business edition, you need to configure a source in the :menuselection:`Firewall --> Aliases -> GeoIP settings` tab,
+our software supports formats offered by IPinfo and MaxMind.
 
 .. Note::
+    In our experience IPinfo offers a much bigger and more detailed dataset, do make sure you increase
+    :menuselection:`Firewall --> Settings --> Advanced : Firewall Maximum Table Entries` to a higher number
+    when using different countries from the list. As of this writing, the total size of the list is ~7 million entries.
 
-    When using the Business Edition, you can leave the :code:`Url` field empty so the firewall will download the database provided
-    by us.
+
+Although you're not obligated to use one of the defined services, the following documents explain how to use the option of your choice:
+
+    *   :doc:`how-tos/ipinfo_geo_ip`
+    *   :doc:`how-tos/maxmind_geo_ip`
 
 
-The configured url should point to a zip file containing the following csv files:
-
-.. list-table:: Title
-   :widths: 50 25 25 25
-   :header-rows: 1
-
-   * - Filename
-     - Purpose
-     - Format
-     - Example
-   * - %prefix%-locations-en.csv
-     - maps geo locations to iso countries
-     - geoname_id,,,,country_iso_code
-     - 1,,,,NL
-   * - %prefix%-IPv4.csv
-     - IPv4 networks
-     - network,geoname_id
-     - 2.21.241.0/28,1
-   * - %prefix%-IPv6.csv
-     - IPv6 networks
-     - network,geoname_id
-     - 2001:470:1f15:210::/64,1
-
-The :code:`%prefix%` can be used to identify the product and/or vendor, in MaxMind's case these files are named
-:code:`GeoLite2-Country-Locations-en.csv`, :code:`GeoLite2-Country-Blocks-IPv4.csv`, :code:`GeoLite2-Country-Blocks-IPv6.csv` for example.
 
 .. Tip::
 
-    Geo ip lists can be rather large, especially when using IPv6. When creating rules, always try to minimize the number of
+    When using the Business Edition, you can leave the :code:`Url` field empty so the firewall will download the IPinfo database provided
+    from our mirrors automatically.
+
+
+Below you will find a detailed specification our software can detect and process automatically.
+
+.. tabs::
+
+    .. tab:: gzip format (IPinfo)
+
+        This format is a simple comma separated file containing the following elements in this order:
+
+        * network
+        * country
+        * country_code
+        * continent
+        * continent_code
+        * asn
+        * as_name
+        * as_domain
+
+        Our software only uses :code:`network` and :code:`country_code`, these should be mentioned in the header
+        of the csv. The file itself should be compressed using :code:`gzip`
+
+    .. tab:: zip format (MaxMind)
+
+        This format requires a [zip] file containg the the following csv files:
+
+        .. list-table:: Title
+           :widths: 50 25 25 25
+           :header-rows: 1
+
+           * - Filename
+             - Purpose
+             - Format
+             - Example
+           * - %prefix%-locations-en.csv
+             - maps geo locations to iso countries
+             - geoname_id,,,,country_iso_code
+             - 1,,,,NL
+           * - %prefix%-IPv4.csv
+             - IPv4 networks
+             - network,geoname_id
+             - 2.21.241.0/28,1
+           * - %prefix%-IPv6.csv
+             - IPv6 networks
+             - network,geoname_id
+             - 2001:470:1f15:210::/64,1
+
+        The :code:`%prefix%` can be used to identify the product and/or vendor, in MaxMind's case these files are named
+        :code:`GeoLite2-Country-Locations-en.csv`, :code:`GeoLite2-Country-Blocks-IPv4.csv`, :code:`GeoLite2-Country-Blocks-IPv6.csv` for example.
+
+.. Tip::
+
+    Geo IP lists can be rather large, especially when using IPv6. When creating rules, always try to minimize the number of
     addresses needed in your selection. A selection of all countries in the world not being the Netherlands can usually be
     rewritten as only addresses from the Netherlands for example.
 

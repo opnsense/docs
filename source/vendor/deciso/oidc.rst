@@ -234,7 +234,6 @@ uri                                                        Purpose
                                                            It can be optionally changed via the ``OIDC Redirect URI`` setting in a virtual server.
 ========================================================== =====================================================================================================
 
-For more information refer to the setup examples in the :doc:`OPNWAF manual </vendor/deciso/opnwaf>`.
 
 Useful links
 ------------------------------------------------------

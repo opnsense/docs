@@ -101,3 +101,25 @@ Using the :code:`aliases()` static method service classes can support multiple P
     Not every service uses PAM already, in that case it is defined as a script handling the authentication.
 
 The interface :code:`IService` is quite easy to read and should be self explanatory.
+
+
+------------------------------
+Single sign-on flow
+------------------------------
+
+When implementing single sign on based authenticators, the sequence of events is different than the usual
+"offer user and password, validate access". Since the credentials aren't known by the firewall, the authentication
+should be handled by the component that handles the single sign-on, this is usually a web based auth sequence.
+
+For this reason we extended the :code:`AuthenticationFactory` with a method called :code:`listSSOproviders()`,
+which returns the SSO authenticators available in :code:`/usr/local/opnsense/mvc/app/library/OPNsense/Auth/SSOProviders`
+for a requested service.
+
+Each provider should implement :code:`OPNsense\Auth\SSOProviders\ISSOContainer`, which returns the service a
+provider belongs too. One provider can yield multiple service endpoints.
+The class :code:`Provider` should be used to yield providers in :code:`listProviders()`.
+This is merely a wrapper pointing to the service(s).
+
+Services need to implement their own logic for handling the login sequence and, when applicable, creating sessions
+on successful logins.
+

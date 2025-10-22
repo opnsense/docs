@@ -91,10 +91,6 @@ It is lightweight and suitable for setups where centralized DHCP servers serve m
 Reservations
 -----------------
 
-...............................
-Reservations
-...............................
-
 ISC, KEA and Dnsmasq offer the possibility to reserve an IP address for a specific client. This is useful when a client
 needs to have the same IP address every time it connects to the network. All services also offer the ability to define reservations
 inside and outside of the assigned pool of dynamic IP addresses.

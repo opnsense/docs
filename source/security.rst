@@ -41,7 +41,7 @@ If all goes well, a report like the one below will be shown:
 .. Note::
 
     We do not offer community support on assessing if incidents on older versions do warrant an immediate upgrade on your
-    end as this often depends on features used and settings configured. Our advise always will be to upgrade into the
+    end as this often depends on features used and settings configured. Our advice always will be to upgrade into the
     latest community or business version.
 
 
@@ -64,7 +64,9 @@ know that we don't have the manpower to act as an intermediary between various p
 Reporting an incident
 ------------------------------------------------------------
 
-Security incidents on our product can be reported to our security team available at **security** @ **opnsense.org**.
+Security incidents on our product can be reported using our `GitHub repository <https://github.com/opnsense/core/security>`__.
+You may also create a new issue and select "Report a security vulnerability", which will redirect you to the same page.
+Alternatively, you can report security issues to our security team available at **security** @ **opnsense.org**.
 
 All reports should contain at least the following information:
 
@@ -174,6 +176,9 @@ Below you will find the versions that have been tested or are currently in testi
 +----------+-----------------------+------------------------------------------------------------------------------------------------------------+
 | Version  | Status                | Download                                                                                                   |
 +==========+=======================+============================================================================================================+
+| BE 25.10 | In test               |                                                                                                            |
+|          |                       |                                                                                                            |
++----------+-----------------------+------------------------------------------------------------------------------------------------------------+
 | BE 25.04 | LINCE Certified       | :download:`BE25.4-STIC_OPNSENSE_IAD-2504-ETR-v1.0.pdf <pdf/BE25.4-STIC_OPNSENSE_IAD-2504-ETR-v1.0.pdf>`    |
 |          |                       | 591a63be0f6f4e8d15c1b6fe2ea48af3e5dd1234f7b9013ffec6cd7b89d3d95f                                           |
 +----------+-----------------------+------------------------------------------------------------------------------------------------------------+

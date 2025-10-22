@@ -291,7 +291,7 @@ Here are the full patch notes:
 * system: safeguard local_group_set() since users may not exist for valid reasons
 * interfaces: emulate device name return in ifconfig edge case for legacy_interface_create()
 * interfaces: cleanup spurious functions regarding VIP access
-* interfaces: interfaces: improve private and bogon network filters (contributed by Maurice Walker)
+* interfaces: improve private and bogon network filters (contributed by Maurice Walker)
 * interfaces: consider tracked interfaces linked devices on reload
 * firewall: add ability to specify IPv6 pipe and queue masking using the src-ip6/dst-ipv6 specifiers (contributed by Daniel Tang)
 * firewall: use shared base_bootgrid_table and base_apply_button in shaper

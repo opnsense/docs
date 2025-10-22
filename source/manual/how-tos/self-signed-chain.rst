@@ -297,7 +297,7 @@ Step 3: Issuing a Leaf Certificate
 
 Go to :menuselection:`System --> Trust --> Certificates`
 
-Press **+** to create a new authority, it will become your leaf certificate (end-entity certificate).
+Press **+** to create a new certificate, it will become your leaf certificate (end-entity certificate).
 It can be used on a server, user, or both; depending on the type.
 
 ===================================== =======================================================================================================================

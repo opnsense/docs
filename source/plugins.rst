@@ -86,10 +86,12 @@ Other
    manual/how-tos/freeradius
    manual/how-tos/accounting
    manual/how-tos/mailgateway
+   manual/how-tos/netbird
    manual/git-backup
    manual/relayd
    manual/wazuh-agent
    manual/how-tos/tor
+   manual/qfeeds
 
 ----------------
 Reporting

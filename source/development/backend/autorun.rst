@@ -76,8 +76,8 @@ Example (from a configured squid proxy server using */etc/rc.conf.d/squid*):
 
 ::
 
-    squid_enable=YES
-    squid_opnsense_bootup_run="/usr/local/opnsense/scripts/proxy/setup.sh"
+    squid_setup="/usr/local/opnsense/scripts/proxy/setup.sh"
+    squid_enable="YES"
 
 
 The configd template system can be used to generate the necessary configuration file(s).

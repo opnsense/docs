@@ -57,6 +57,8 @@ Web GUI
 ...............................
 
 ============================================== ========================================================================
+**Option**                                     **Description**
+============================================== ========================================================================
 Protocol                                       It is strongly recommended to leave this on “HTTPS”
 SSL Certificate                                By default, a self-signed certificate is used. Certificates can be
                                                added via :menuselection:`System --> Trust --> Certificates`.
@@ -90,6 +92,20 @@ HTTP_REFERER enforcement check                 The origins of requests are check
 ============================================== ========================================================================
 
 ...............................
+Deployment settings
+...............................
+
+============================================== ========================================================================
+**Option**                                     **Description**
+============================================== ========================================================================
+Deployment type                                Influences error feedback to the user
+Strict security                                Prevent the webgui from running as root, some legacy components may
+                                               not be compatible with this feature. Disabling the feature again
+                                               requires console access.
+============================================== ========================================================================
+
+
+...............................
 Secure Shell
 ...............................
 
@@ -99,6 +115,8 @@ serial or SSH). The latter will only work if the user shell is not set to ``/sbi
 In order to access OPNsense via SSH, SSH access will need to be configured via :menuselection:`System --> Settings --> Administration`.
 Under the "Secure Shell" heading, the following options are available:
 
+============================================== ========================================================================
+**Option**                                     **Description**
 ============================================== ========================================================================
 Secure Shell Server                            Enable a secure shell service
 Login Group                                    Select the allowed groups for remote login. The "wheel" group is
@@ -147,14 +165,16 @@ when network connectivity is not possible.
 
 
 ============================================== ========================================================================
+**Option**                                     **Description**
+============================================== ========================================================================
 Use the virtual terminal driver (vt)           When unchecked, OPNsense will use the older sc driver.
-Primary Console                                The primary console will show boot script output. All consoles display 
+Primary Console                                The primary console will show boot script output. All consoles display
                                                OS boot messages, console messages, and the console menu.
 Secondary Console                              See above.
 Serial Speed                                   Allows adjusting the baud rate. 115200 is the most common.
 Use USB-based serial ports                     Listen on ``/dev/ttyU0``, ``/dev/ttyU1``, … instead of ``/dev/ttyu0``.
-Password protect the console menu              Can be unchecked to allow physical console access without password. 
-                                               This can avoid lock-out, but at the cost of attackers being able to 
+Password protect the console menu              Can be unchecked to allow physical console access without password.
+                                               This can avoid lock-out, but at the cost of attackers being able to
                                                do anything if they gain physical access to your system.
 ============================================== ========================================================================
 
@@ -167,12 +187,14 @@ The authentication section of the Administrationm settings offers general securi
 firewall.
 
 ============================================== ========================================================================
-Server                                         Select one or more authentication servers to validate user 
-                                               credentials against. Multiple servers can make sense with remote 
-                                               authentication methods to provide a fallback during connectivity 
-                                               issues. When nothing is specified the default of "Local Database" 
+**Option**                                     **Description**
+============================================== ========================================================================
+Server                                         Select one or more authentication servers to validate user
+                                               credentials against. Multiple servers can make sense with remote
+                                               authentication methods to provide a fallback during connectivity
+                                               issues. When nothing is specified the default of "Local Database"
                                                is used.
-Disable integrated authentication              When set, console login, SSH, and other system services can only use 
+Disable integrated authentication              When set, console login, SSH, and other system services can only use
                                                standard UNIX account authentication.
 Sudo                                           Permit sudo usage for administrators with shell access.
 User OTP seed                                  Select groups which are allowed to generate their own OTP seed on the
@@ -228,7 +250,7 @@ The most common core commands are as follows:
 |                                             |                                        |                         | firewall and restart its services to apply  |
 |                                             |                                        |                         | the changes.                                |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Issue a reboot                              | configctl system reboot                | No parameters           | Perform a reboot at the specified time.     |
+| Halt and power off the system               | configctl system halt                  | No parameters           | Perform a power off at the specified time.  |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Manual gateway switch                       | configctl interface routes alarm       | No parameters           | Perform a manual gateway switch if          |
 |                                             |                                        |                         | applicable.  Malfunctioning gateway         |
@@ -239,6 +261,8 @@ The most common core commands are as follows:
 |                                             |                                        | as shown in assignments | it cleanly.                                 |
 |                                             |                                        | or overview page, e.g.  |                                             |
 |                                             |                                        | "lan", "wan", "optX".   |                                             |
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
+| Reboot the system                           | configctl system reboot                | No parameters           | Perform a reboot at the specified time.     |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Remote backup                               | configctl system remote backup         | No parameters           | Trigger the remote backup at the specified  |
 |                                             |                                        |                         | time as opposed to its nightly default.     |
@@ -276,7 +300,7 @@ The general settings mainly concern network-related settings like the hostname. 
 going to :menuselection:`System --> Settings --> General`. The following settings are available:
 
 +---------------------------------+------------------------------------------------------------------------------------+
-| Setting                         | Explanation                                                                        |
+| **Option**                      | **Description**                                                                    |
 +=================================+====================================================================================+
 | **System**                                                                                                           |
 +---------------------------------+------------------------------------------------------------------------------------+
@@ -332,7 +356,7 @@ Miscellaneous
 As the name implies, this section contains the settings that do not fit anywhere else.
 
 ================================= ======================================================================================================================================================================================================
-Setting                           Explanation
+**Option**                        **Description**
 ================================= ======================================================================================================================================================================================================
 **Cryptography settings**
 Hardware acceleration             Select your method of hardware acceleration, if present. Check the full help for hardware-specific advice.
@@ -373,7 +397,7 @@ They mostly log to /var/log/ in text format, so you can view or follow them with
 An overview of the local settings:
 
 ============================================ ====================================================================================================================
-Setting                                      Explanation
+**Option**                                   **Description**
 ============================================ ====================================================================================================================
 Enable local logging                         Disable to avoid wearing out flash memory when applicable and set up remote logging instead.
 Maximum preserved files                      Configures the number of days to keep logs or the number of files if "maximum file size" option is used.
@@ -391,7 +415,7 @@ Remote log settings can be found at :menuselection:`System --> Settings --> Logg
 *Add* a new *Destination* to set up a remote target destination.
 
 ============== ================================================================================
-Setting                 Explanation
+**Option**     **Description**
 ============== ================================================================================
 Enabled        Master on/off switch.
 Transport      Protocol to use for syslog.

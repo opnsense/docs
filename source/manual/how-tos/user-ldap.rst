@@ -47,7 +47,7 @@ Enter the following information:
  **Search scope**                 Entire Subtree           *Select Entire Subtree to retrieve all*
  **Base DN:**                     DC=opnsense,DC=local     *Enter the Base DN*
  **Authentication containers**	  *Select*                 *Click & Select the containers from the list*
- **Extended Query**               &(objectClass=Person)    *Extend query, e.g. limit results to Persons*
+ **Extended Query**               objectClass=Person       *Extend query, e.g. limit results to Persons*
  **Initial Template**             MicrosoftAD              *Select your LDAP Server Type*
  **User naming attribute**        samAccountName           *Auto filled in based upon Initial Template*
  **Read properties**                                       *Fetch account details after successful login*
@@ -77,7 +77,7 @@ Enter the following information:
    The **Extended Query** can be used to select users who are member of a specific
    group (only relevant for external services, when not using the local user database).
    One can use something like this:
-   **&(memberOf=CN=myGroup,CN=Users,DC=opnsense,DC=local)** to select only members
+   **memberOf=CN=myGroup,CN=Users,DC=opnsense,DC=local** to select only members
    of the group *"myGroup"*. To add a user to a specific group under Windows just
    edit the groups properties and select **Add...** to add the user under the tab
    **Members**.

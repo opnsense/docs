@@ -26,6 +26,7 @@ External services currently supported are:
 
 * LDAP (OpenLDAP, MS Active Directory, Novell eDirectory)
 * Radius
+* OpenID connect (BE only)
 
 Authorization
 -------------
@@ -58,6 +59,61 @@ rights, called privileges.
     in some cases can be part of the authenticator as well. When the user should login
     to the firewall (for example to change settings or download a profile), a local user
     is always required as it serves as a linking pin to the ACL system.
+
+
+.. tabs::
+
+    .. tab:: Settings (Users)
+
+         ========================================= ====================================================================================
+         **Option**                                **Description**
+         ========================================= ====================================================================================
+         Defined By                                Informational, defines source
+         uid                                       Internal number
+         Disabled                                  Option to disable to user for authentication
+         Username                                  This users name
+         Password                                  Configure a password for local login
+         Scrambled Password                        Generate a random password for this login to avoid login
+         Full name                                 Informational, users full name
+         E-mail                                    Informational, email adres this user has
+         Comments                                  Informational, custom notes
+         Preferred landing page                    Preferred landing page after login or authentication failure
+         Language                                  Language to use in the GUI
+         Login shell                               (admin users only) shell to use
+         Expiration date                           Account valid until
+         Group membership                          Groups this user is a member of
+         Privileges                                Privileges to assign to this user, we prefer to use groups instead
+         OTP seed                                  One time password token
+         Authorized Keys                           SSH Authorized Keys for this user (when a shell is configured)
+         ========================================= ====================================================================================
+
+    .. tab:: Settings (Groups)
+
+         ========================================= ====================================================================================
+         **Option**                                **Description**
+         ========================================= ====================================================================================
+         Defined By                                Informational, defines source
+         gid                                       Internal number
+         Group name                                Name for this group
+         Description                               Informational, description
+         Privileges                                Defines the roles for users in this group
+         Members                                   Members of this group (can also be selected from the user)
+         Source Networks                           Optional constrain this group to specific networks, when not connected via one
+                                                   defined here, the groups privileges do not apply.
+         ========================================= ====================================================================================
+
+    .. tab:: Settings (Privileges)
+
+         ========================================= ====================================================================================
+         **Option**                                **Description**
+         ========================================= ====================================================================================
+         Id                                        Internal identifier
+         Users                                     Users having this privilege directly assigned
+         Groups                                    Groups having this privilege directly assigned
+         Match (grid only)                         Shows GUI paths this privilege allows
+         ========================================= ====================================================================================
+
+
 
 
 Authentication services

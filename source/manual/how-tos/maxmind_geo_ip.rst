@@ -35,4 +35,4 @@ OPNsense
 
 In OPNsense, goto Firewall:Aliases and select the GeoIP settings tab. Enter the URL you have created into the URL box and click Apply.
 
-Once you have set up the Maxmind credentials if you have not created a GeoIP alias you will need to do so. Instructions on how to create the alias(es) can be found in the Firewall->Aliases section of this wiki.
+Once you have set up the Maxmind credentials if you have not created a GeoIP alias you will need to do so. Instructions on how to create the alias(es) can be found in the Firewall->Aliases section of our documentation.
