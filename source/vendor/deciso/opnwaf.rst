@@ -128,8 +128,6 @@ Verify depth for client auth     The depth actually is the maximum number of int
 **OpenID Connect**
 OIDC Provider                    Select an OpenID Connect Provider for authentication created in "System - Access - OpenID Connect".
                                  Afterwards, select the claim in the individual locations of this virtual server.
-OIDC Scope                       OpenID Connect Clients use scope values, to specify what access privileges are being requested for Access Tokens.
-                                 Use the provided default if you are unsure.
 OIDC Redirect URI                The redirect_uri for this OpenID Connect client; this is a vanity URL that must ONLY point to a path on
                                  your server protected by this module but it must NOT point to any actual content that needs to be served.
                                  Leave empty to use the provided default.
@@ -529,7 +527,6 @@ Option                           Description
 ================================ ========================================================================================
 **OpenID Connect**
 OIDC Provider                    Choose the identity provider created in :menuselection:`System --> Access --> OpenID Connect`
-OIDC Scope                       Leave default if there are no specific requirements
 OIDC Redirect URI                Leave default, this will create a URI that must be set with your identity provider.
                                  If the virtual server is `example.com` it will become ``https://example.com/oidc/callback``
                                  if not specified otherwise. This location will be automatically removed from proxying.
