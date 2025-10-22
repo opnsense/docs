@@ -137,7 +137,7 @@ From WAN:
 Parameter                            Value                                          Short description
 ==================================== ============================================== ===================================================
 Action                               :code:`Block`                                  Drop packets silently
-Interface                            :code:`LAN`                                    Traffic on the LAN interface
+Interface                            :code:`WAN`                                    Traffic on the LAN interface
 TCP/IP Version                       :code:`IPV4/IPV6`                              Both protocols are supported
 Direction                            :code:`in`                                     By default we filter on inbound traffic
 Source                               :code:`__qfeeds_malware_ip`                    The QFeeds offered malware locations
