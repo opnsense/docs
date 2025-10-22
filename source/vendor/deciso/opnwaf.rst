@@ -93,7 +93,7 @@ Configure virtual servers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 With the general settings in place, we can start adding virtual servers to offload traffic to machines in our network.
-First go to :menuselection:`Firewall --> Web Application --> Gateways` and click on the [+] in the top section of the screen,
+First go to :menuselection:`Firewall --> Web Application --> Gateways --> Virtual Servers` and click on the [+] in the top section of the screen,
 which defines the virtual servers.
 
 
@@ -106,6 +106,7 @@ ServerName                       Fully qualified hostname for this server.
 Port                             Port number this vhost will listen on, can easily be combined with firewall nat rules
                                  to map traffic to non standard ports when origination from remote destinations.
                                  (e.g., listen on 8443, forward 443 to 8443).
+Error Document                   Choose error documents to use for common issues, like page not found.
 Description                      User friendly description for this vhost (optional).
 **Trust**
 Enable ACME                      Enable the ACME protocol to automatically provision certificates using Let's Encrypt,
@@ -116,7 +117,7 @@ SSL Proxy check peer             This directive configures host name checking fo
                                  matches one of the CN attribute(s) of the certificate's subject, or matches the
                                  subjectAltName extension. If the check fails, the SSL request is aborted and a 502
                                  status code (Bad Gateway) is returned.
-**Access**
+**Client Auth**
 CA for client auth               Require a client certificate signed by the provided authority before allowing
                                  a connection.
 CRL for client auth              Attach the (first) found certificate revocation list for the selected CA to
@@ -124,6 +125,17 @@ CRL for client auth              Attach the (first) found certificate revocation
 Verify depth for client auth     The depth actually is the maximum number of intermediate certificate
                                  issuers, i.e. the number of CA certificates which are max allowed to be followed while
                                  verifying the client certificate.
+**OpenID Connect**
+OIDC Provider                    Select an OpenID Connect Provider for authentication created in "System - Access - OpenID Connect".
+                                 Afterwards, select the claim in the individual locations of this virtual server.
+OIDC Redirect URI                The redirect_uri for this OpenID Connect client; this is a vanity URL that must ONLY point to a path on
+                                 your server protected by this module but it must NOT point to any actual content that needs to be served.
+                                 Leave empty to use the provided default.
+OIDC HTTP Timeout Short          Timeout in seconds for short duration HTTP calls. This defines the maximum duration that a request may take to
+                                 complete and is used for Client Registration and OP Discovery requests.
+OIDC HTTP Timeout Long           Timeout in seconds for long duration HTTP calls. This defines the maximum duration that a request make take to
+                                 complete and is used for most requests to remote endpoints.
+OIDC Pass Claims As              Select how claims should be passed from the virtual server to the location. The default sends them as headers.
 **Security**
 Header Security                  Header security, by default several privacy and security related headers are set,
                                  in some cases (old applications for example) you might want to disable
@@ -186,7 +198,13 @@ Remote destinations              Locations to forward requests to, when more tha
                                  and :code:`wss` destinations.
                                  When your webapp uses websockets and https requests, use :code:`wss://`
 Access control                   List of networks allowed to access this path (empty means any)
+Overlay error pages              Overlay common error pages with the ones specified in the virtual server.
 Description                      User friendly description for this location
+**Proxy Options**
+OIDC Auth Required               Require OpenID Connect authentication for this location if a provider has been selected
+                                 in the virtual server.
+OIDC Claims                      Select claims that must match for authorization. Multiple claims will be evaluated via OR operator.
+                                 The default "valid-user" will allow access for any authenticated user in your OIDC scope.
 **Proxy Options**
 TLS header passthrough           Select which headers to passthrough to the client, all headers will be prefixed with
                                  X- to distinct them more easily from the applications perspective. The original headers
@@ -459,7 +477,7 @@ Rejecting can improve security, yet will make large files fail completely if the
 Protect a local server with certificates
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the above virtual host configuration there are a couple of parameters related to client authentication. The
+In the above virtual host configuration are a couple of parameters related to client authentication. The
 advantage of using these is that you can prevent unauthorized access to services using certificates signed by a (local)
 certificate authority.
 
@@ -490,3 +508,130 @@ Followed by a location, which maybe as simple as binding path :code:`/` to a loc
 
 After this step, clients should not be able to access the virtual host, next you can create a certificate for the client and import
 it in the trust store. Usually browsers automatically pick these up when allowed by the client.
+
+
+Protect a location with OpenID Connect
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the above virtual host and location configuration are a couple of parameters related to OpenID Connect. The
+advantage of using these is that you can prevent unauthenticated and unauthorized access to services using an identity provider.
+
+First, add an identity provider for service OPNWAF in :menuselection:`System --> Access --> OpenID Connect`.
+
+For more information refer to the :doc:`OpenID Connect manual </vendor/deciso/oidc>`.
+
+Next, add it to a virtual server in :menuselection:`Firewall --> Web Application --> Gateways --> Virtual Servers`:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+**OpenID Connect**
+OIDC Provider                    Choose the identity provider created in :menuselection:`System --> Access --> OpenID Connect`
+OIDC Redirect URI                Leave default, this will create a URI that must be set with your identity provider.
+                                 If the virtual server is `example.com` it will become ``https://example.com/oidc/callback``
+                                 if not specified otherwise. This location will be automatically removed from proxying.
+                                 If you cannot use the default, choose an URI that does not collide with any path of your
+                                 backend application.
+================================ ========================================================================================
+
+As final step, ensure the following is set in each `ProxyPass` location of this virtual server:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+**OpenID Connect**
+OIDC Auth Required               Select to enforce OIDC authentication with the below claim.
+OIDC Claims                      Leave on default to allow any authenticated user in the OIDC scope access to the location.
+================================ ========================================================================================
+
+After applying, the location will need authentication (user must log in).
+
+
+OpenID Connect claims
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A claim is a piece of information that can be used to identify a user.
+This means you can create a stricter policy which user has access to the location, not only enforcing authentication
+but also authorization.
+
+As example, we only want to grant access to a location for all users with the first name ``John``.
+
+First, we add a claim in :menuselection:`Firewall --> Web Application --> Gateways --> OIDC Claims`:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+**OpenID Connect**
+Claim type                       Most claim types are standardized via the OIDC spec.
+                                 Some provider specific options are also offered (group).
+                                 For our example case we choose ``name``.
+Claim value                      ``John``
+================================ ========================================================================================
+
+Next, we add the claim to an OpenID Connect enabled location in :menuselection:`Firewall --> Web Application --> Gateways --> Virtual Servers`:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+**OpenID Connect**
+OIDC Auth Required               Select to enforce OIDC authentication with the below claim.
+OIDC Claims                      ``name John``
+================================ ========================================================================================
+
+After applying, the location will need authentication (user must log in) and authorization (user must be John).
+
+.. Note::
+
+    Multiple claims can be selected, they will be combined via ``or`` operator.
+
+.. Tip::
+
+    Authorizing unique users can be done with the ``preferred_username`` claim, which is the name a user authenticates with.
+    Some identity providers can send groups (non-standard) in their OIDC scope which simplifies authorization when you have a large amount of users.
+
+
+Error Documents
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, generic Apache documents will be served for HTTP response status codes. The most common client error responses can be styled
+OPNsense themed, or be branded with your own style.
+
+To download the default error document templates, go to :menuselection:`Firewall --> Web Application --> Error Documents`.
+
+Select the `Download` command in the ``Default`` row. Afterwards you can unzip the archive, and change the individual error documents.
+
+When you are done, select **+** to open the upload dialogue:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Name                             Name for this template, e.g. ``MyErrorDocuments``
+Uri                              Uri used to serve error pages, when unspecified, /__waf_errors__/ will be used. Best to
+                                 use the offered default.
+Content                          Select the zip archive with the altered error documents.
+================================ ========================================================================================
+
+After saving, the error documents can be added in :menuselection:`Firewall --> Web Application --> Gateways --> Virtual Servers`:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Error Document                   ``MyErrorDocuments`` will use your new template.
+                                 ``Default`` will use the OPNsense styled template.
+                                 ``None`` will use the unaltered default Apache documents.
+================================ ========================================================================================
+
+To optionally overlay any error with only the template provided ones, you can set the following in a location:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Overlay error pages              Overlay common error pages with the ones specified in the virtual server. This means
+                                 that all HTTP response status codes received from the ``Remote destinations`` will be stripped,
+                                 and only matching HTTP resonse codes in the current selected error document template will be served.
+================================ ========================================================================================
+
+.. Tip::
+
+    When using OpenID Connect, it is a good idea to either use the ``Default`` or custom error documents, to ensure the ``Unauthorized``
+    error pages have a more cohesive and user friendly style.

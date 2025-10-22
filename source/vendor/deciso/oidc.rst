@@ -76,6 +76,7 @@ available options and their purpose. The service type determines which ones are 
         Client ID                                The client identifier of the RP (requesting party) at the OP (OpenID provider).
         Client Secret                            The client secret of the RP (requesting party) at the OP (OpenID provider).
         Authentication method                    Authentication method to use, eiher POST, BASIC or use what's offered by the provider.
+        Additional scopes                        Select additional scopes to request, by default only oidc is requested.
         ======================================== =====================================================================================================
 
     .. tab:: Local database
@@ -225,15 +226,14 @@ The `captive portal documentation <../captiveportal.html#captive-portal-firewall
 OPNWAF (Web application firewall / reverse proxy)
 .......................................................
 
-
 The reverse proxy defines one endpoint specifically to be used by oidc when an "OIDC Provider" is selected in the virtual server configuration:
 
 ========================================================== =====================================================================================================
 uri                                                        Purpose
 ========================================================== =====================================================================================================
 /oidc/callback                                             predefined vanity url that can not be used in the application as location.
+                                                           It can be optionally changed via the ``OIDC Redirect URI`` setting in a virtual server.
 ========================================================== =====================================================================================================
-
 
 
 Useful links
