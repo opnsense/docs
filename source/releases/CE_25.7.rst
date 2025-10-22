@@ -29,6 +29,67 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.7.6 (October 22, 2025)
+--------------------------------------------------------------------------
+
+
+The usual lot of additions and reliability fixes is being rounded off with
+Suricata version 8 and a new package manager version 2 almost two years in the
+making -- at least for our project.
+
+Please be aware that during the update check the new package manager will be
+installed, but will fail to report the update status like it always had before
+and so you will end up with an error that will require checking for updates
+again.  The fix is in this update, but impossible to install without upgrading
+the package manager first.  We hope this will only be a minor inconvenience
+during the process.
+
+Syslog-ng is also being updated and includes a fix that previously prevented
+2.9.x from shipping since it would hang the boot during daemonize.  Many
+thanks to the authors for quickly picking this up and providing a fixed version!
+
+Here are the full patch notes:
+
+* system: safeguard config history delete and revert by requiring POST
+* system: change atrun interval to every minute
+* system: use new file_safe() in two instances
+* system: improve the HA VIP sync code
+* interfaces: fix permission of packet capture file in strict security mode
+* firewall: refactor live log using a ring buffer
+* firewall: add toggles to disable selected automatic rules
+* firewall: enable "safe delete" for categories
+* firewall: improved stats rendering on automation rules
+* firewall: allow searching aliases in automation rules inspect mode by IP address
+* dnsmasq: strict hostname and domain validation plus improved ipset validations
+* firmware: package manager upgrade changes for pkg 2.x
+* intrusion detection: remove obsolete "ac-bs" pattern matcher algorithm
+* ipsec: allow underscores in PSK identifiers
+* openvpn: add support for pushing excluded routes via net_gateway (contributed by Patrice Damezin)
+* openvpn: allow multiple domains settings for client connection (contributed by Krisztian Ivancso)
+* unbound: use file_safe() for root hint creation
+* unbound: deprecate unmaintained AdAway blocklist (contributed by Maurice Walker)
+* wireguard: add debug option to instances
+* backend: add file_safe() helper for atomic file creation
+* mvc: add RegexField to properly validate PCRE2 syntax
+* mvc: support arrays in search clauses
+* rc: make sure /var/lib/php/tmp can be accessed by "other" users
+* rc: do not clear /tmp on a diskless install
+* ui: assorted adjustments for dark theme
+* ui: always show bootgrid reset button
+* plugins: os-ddclient 1.28 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-git-backup 1.1 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/sysutils/git-backup/pkg-descr>`__ 
+* plugins: q-feeds-connector 1.2 `[3] <https://docs.opnsense.org/manual/qfeeds.html>`__  `[4] <https://github.com/opnsense/plugins/blob/stable/25.7/security/q-feeds-connector/pkg-descr>`__ 
+* plugins: os-squid 1.4 works around CVE-2025-62168 (contributed by m.a.x. it)
+* plugins: os-zabbix-proxy 1.15 `[5] <https://github.com/opnsense/plugins/blob/stable/25.7/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* ports: openssh 10.2p1 `[6] <https://www.openssh.com/txt/release-10.2>`__ 
+* ports: pkg 2.3.1
+* ports: python 3.11.14 `[7] <https://docs.python.org/release/3.11.14/whatsnew/changelog.html>`__ 
+* ports: suricata 8.0.1 `[8] <https://suricata.io/2025/07/08/suricata-8-0-0-released/>`__  `[9] <https://suricata.io/2025/09/16/suricata-8-0-1-and-7-0-12-released/>`__ 
+* ports: syslog-ng 4.10.2 `[10] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.10.2>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.7.5 (October 08, 2025)
 --------------------------------------------------------------------------
 

@@ -372,7 +372,7 @@ Here are the full patch notes:
 * plugins: os-wazuh-agent 1.1 `[8] <https://github.com/opnsense/plugins/blob/stable/24.7/security/wazuh-agent/pkg-descr>`__ 
 * ports: monit 5.34.2 `[9] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.105 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_105.html>`__ 
-* ports: openssh 9.9.p1 `[11] <https://www.openssh.com/txt/release-9.9>`__ 
+* ports: openssh 9.9p1 `[11] <https://www.openssh.com/txt/release-9.9>`__ 
 * ports: pkg fix for for embedded libfetch when doing CRL verification
 * ports: py-duckdb 1.1.2 `[12] <https://github.com/duckdb/duckdb/releases/tag/v1.1.2>`__ 
 * ports: syslog-ng 4.8.1 `[13] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.8.1>`__ 

@@ -140,7 +140,6 @@ Here are the full patch notes against version 25.4.3:
 * firmware: hide community plugins by default and add a checkbox to unhide them on the same page
 * firmware: introduce a new support tier 4 for development and otherwise unknown plugins
 * firmware: disable the FreeBSD-kmods repository by default
-* firmware: sunset mirror dns-root.de (many thanks to Alexander Lauster for maintaining it for almost a decade!)
 * firmware: opnsense-version: support more elaborate -R replacement
 * firmware: store update and upgrade logs in edge cases
 * firmware: opnsense-version: support file based -R option
