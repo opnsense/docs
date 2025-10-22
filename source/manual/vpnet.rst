@@ -582,7 +582,7 @@ the traffic distributed while it is routed through the system.
 .. admonition:: Technical background
 
     `Netisr <https://man.freebsd.org/cgi/man.cgi?format=html&query=netisr(9)>`__ can be thought of as the conceptual equivalent
-    of Receive Packet Steering (RPS). How packets are distributed throughout the system is dependent on the packet protocol.
+    of Receive Packet Steering (RPS) in Linux. How packets are distributed throughout the system is dependent on the packet protocol.
 
     Netisr allows for two basic modes of operation: direct dispatch or deferred (queued) dispatch. Netisr is always single-threaded by
     default in deferred dispatch mode to make sure the system adheres to the strong ordering requirements in protocols.
