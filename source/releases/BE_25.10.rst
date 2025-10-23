@@ -311,9 +311,18 @@ Here are the full patch notes against version 25.4.3:
 * ports: suricata 7.0.12 `[41] <https://suricata.io/2025/09/16/suricata-8-0-1-and-7-0-12-released/>`__ 
 * ports: unbound 1.24.0 `[42] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-24-0>`__ 
 
+A hotfix release was issued as 25.10_2:
+
+* system: safeguard config history delete and revert by requiring HTTP POST method
+* rc: make sure /var/lib/php/tmp can be accessed by "other" users
+* plugins: os-OPNBEcore 1.7
+* plugins: os-OPNcentral 1.12
+* plugins: os-q-feeds-connector 1.2 `[43] <https://docs.opnsense.org/manual/qfeeds.html>`__  `[44] <https://github.com/opnsense/plugins/blob/stable/25.7/security/q-feeds-connector/pkg-descr>`__ 
+* plugins: os-squid 1.4 works around CVE-2025-62168 (contributed by m.a.x. it)
+
 Migration notes, known issues and limitations:
 
-* The captive portal implementation moves from IPFW to PF.  Check the technical details first, especially regarding the new ruleset behaviours. `[43] <https://docs.opnsense.org/manual/captiveportal.html#migration-notes-technical-details.html>`__ 
+* The captive portal implementation moves from IPFW to PF.  Check the technical details first, especially regarding the new ruleset behaviours. `[45] <https://docs.opnsense.org/manual/captiveportal.html#migration-notes-technical-details.html>`__ 
 * Deprecated Google Drive backups due to upstream policy changes and moved to plugins for existing users.
 * API URLs registered in the default ACLs have been switched from "camelCase" to "snake_case".
 * API grid return values now offer "%field" for a value description when available.  "field" will now always be the literal value from the configuration.  The API previously returned a display value for some field types, but not all.

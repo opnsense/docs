@@ -50,7 +50,7 @@ thanks to the authors for quickly picking this up and providing a fixed version!
 
 Here are the full patch notes:
 
-* system: safeguard config history delete and revert by requiring POST
+* system: safeguard config history delete and revert by requiring HTTP POST method
 * system: change atrun interval to every minute
 * system: use new file_safe() in two instances
 * system: improve the HA VIP sync code
