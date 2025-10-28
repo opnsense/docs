@@ -21,7 +21,7 @@ They define the type of client deployment used in your network.
 =====================================================================================================================
 
 ====================================  ===============================================================================
-Router Only                           Only advertise this router, clients are using static IPv6 addressses
+Router Only                           Only advertise this router, clients are using static IPv6 addresses
 Unmanaged                             Clients will use Stateless Address Autoconfiguration (SLAAC), without
                                       other (non-address) information being provided.
 Managed                               Stateful configuration, address configuration provided by DHCPv6
