@@ -287,6 +287,67 @@ Then go to :menuselection:`System: --> High Availability --> Status` and press *
 Immediately afterwards, KEA will be active on both master and backup, and a bidirectional lease synchronization will be configured.
 
 
+Prefix Delegation (IA_PD)
+------------------------------------------
+
+Kea supports prefix delegation with static prefixes.
+
+.. Attention::
+
+    Dynamic prefixes common with most residential ISPs are not supported.
+
+
+As an example setup, we will use unique local addresses (ULA) to lease an IA_NA address (/128 IPv6 address) and a IA_PD prefix (/56 IPv6 prefix) to a requesting client.
+
+Prefix: ``fd80::/48``
+
+- Go to :menuselection:`Services --> KEA DHCP --> KEA DHCPv6` and follow through these tabs:
+
+.. tabs::
+
+    .. tab:: Settings
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **//Service**
+        **Enabled**                         ``X``
+
+        **//General settings**
+        **Interfaces**                      ``LAN``
+        **Firewall rules**                  ``X``
+        ==================================  =======================================================================================================
+
+    .. tab:: Subnets
+
+        For the IA_NA address pool, we take the first /52 prefix (``fd80::/52``) of the available /48 prefix (``fd80::/48``)
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Subnet**                          ``fd80::/48``
+        **Pools**                           ``fd80::100 - fd80::199`` (/52 will be auto calculated via the pool)
+        ==================================  =======================================================================================================
+
+    .. tab:: PD Pools
+
+        For the IA_PD pool, we take the second /52 prefix (``fd80:0:0:1000::/52``), and lease up to 16 prefixes (``fd80:0:0:1000::/56 - fd80:0:0:10F0::/56``) to clients.
+
+        ==================================  =======================================================================================================
+        Option                              Value
+        ==================================  =======================================================================================================
+        **Subnet**                          ``fd80::/48``
+        **Prefix**                          ``fd80:0:0:1000::``
+        **Prefix length**                   ``52``
+        **Delegated length**                ``56``
+        ==================================  =======================================================================================================
+
+After applying the configuration, clients will receive a IA_NA address (e.g. ``fd80::100/128``, ``fd80::101/128``) and a IA_PD prefix (e.g. ``fd80:0:0:1000::/56``, ``fd80:0:0:1010::/56``).
+
+Whenever a IA_PD lease is acknowledged, a route targeting the link local address (LLA) of the requesting DHCPv6 client will be automatically installed.
+
+Since lease files are synchronized in high availability mode, the routes will also be installed and cleaned up on both peers.
+
 -------------------------
 Leases DHCPv4/v6
 -------------------------
