@@ -87,6 +87,10 @@ For IPv6:
  Prefix Interface
  Authentication
  Keyinfo
+ **Link-local**                    Generate an automatic link-local address (LLA) based on the MAC address of the interface.
+                                   Received router advertisements (RA) will not be processed.
+ **SLAAC**                         Same as link-local mode, but received router advertisements (RA) will be processed,
+                                   which means there will be one or more automatically generated IPv6 addresses based on the MAC address of the interface.
  **6RD Rapid Deployment**
  6RD prefix                        The 6RD IPv6 prefix assigned by your ISP. e.g. '2001:db8::/32'
  6RD Border Relay                  The 6RD IPv4 gateway address assigned by your ISP
