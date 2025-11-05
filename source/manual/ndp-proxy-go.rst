@@ -1,5 +1,5 @@
 ==================================================
-ndp-proxy-go (IPv6 Neighbour Discovery Proxy)
+ndp-proxy-go (IPv6 Neighbor Discovery Proxy)
 ==================================================
 
 .. contents::
@@ -12,7 +12,7 @@ This manual provides a quick overview of ndp-proxy-go and how to configure it fo
 Introduction
 ==================================================
 
-ndp-proxy-go is a userspace IPv6 Neighbour Discovery Proxy.
+ndp-proxy-go is a userspace IPv6 Neighbor Discovery Proxy.
 
 It can proxy SLAAC on-link prefixes to several downstream interfaces by proxying neighbor discovery protocol (NDP), router advertisements (RA) 
 and duplicate address detection (DAD). For each discovered client it installs host routes automatically.
@@ -99,4 +99,3 @@ Verify the setup by pinging an IPv6 location on the internet.
 
     If you receive a DNS server from your ISP, but want the OPNsense to be the sole DNS server, use a Port Forward to force traffic destined to port 53 to the
     the local running Unbound server instead.
-
