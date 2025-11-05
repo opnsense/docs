@@ -176,12 +176,14 @@ the `Virtual servers`.
 
 There are different types of locations:
 
-#. | ProxyPass, which Reverse Proxies the HTTP traffic
+#. | Proxy Pass, which Reverse Proxies the HTTP traffic
+#. | Proxy Pass Match, which Reverse Proxies the HTTP traffic but has regex support
 #. | Redirect, which creates a HTTP redirect
+#. | Redirect Match, which creates a HTTP redirect but has regex support
 #. | Exchange Server, a template for Microsoft Exchange Server® with Outlook Anywhere® passthrough
 
 
-ProxyPass
+Proxy Pass
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 ================================ ========================================================================================
@@ -189,7 +191,7 @@ Option                           Description
 ================================ ========================================================================================
 Enabled                          Enable this location
 VirtualServer                    The server this location belongs to
-Path                             Path of the HTTP request to match (e.g. :code:`/` for all paths). You can also create
+Local path                       Local path of the HTTP request to match (e.g. :code:`/` for all paths). You can also create
                                  multiple location entries, each with their own specific path (e.g. :code:`/docs`).
                                  They will be processed in the order of their creation.
 Type                             ProxyPass
@@ -236,6 +238,41 @@ destinations this path should map to (for example you could point to a public se
     Constraining access to allow only specific networks or hosts can be arranged using the :code:`Access control` input.
 
 
+Proxy Pass Match
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Proxy Pass Match type is the advanced alternative to Proxy Pass.
+
+Choosing it will turn the Local path field into Location Match, and the new Remote path field into Proxy Pass Match.
+
+These types allow you to match requests based on a regular expression pattern instead of just a literal path.
+
+The match is entered into Local path and the substitution groups can be set in Remote path.
+
+Here is an example how this can look like:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Local path                       ``^/manual/(.*)$``
+Remote path                      ``/$1``
+================================ ========================================================================================
+
+.. Tip::
+
+    - ``^``: Match start of the URL path
+    - ``/manual/``:	Match the literal string /manual/
+    - ``(.*)``: Capture any characters (zero or more) after /manual/ — this is group 1
+    - ``$``: Match end of the string
+    - ``$1``: Reference the captured group from the local path. In this example it strips /manual/ from the URL path internally.
+
+.. Attention::
+
+    This is an advanced feature for edge cases like stripping paths from requests to form a new base path, or anchoring a path precisely.
+    It can also be used to prevent trailing slashes being attached which break some URL parameter schemes.
+    In most cases using the plain Proxy Pass will give you the desired result automatically.
+
+
 Redirect
 ^^^^^^^^^^^
 
@@ -244,7 +281,7 @@ Option                           Description
 ================================ ========================================================================================
 Enabled                          Enable this location
 VirtualServer                    The server this location belongs to
-Path                             Path of the HTTP request to match (e.g. :code:`/` for all paths). You can also create
+Local path                       Local path of the HTTP request to match (e.g. :code:`/` for all paths). You can also create
                                  multiple location entries, each with their own specific path (e.g. :code:`/docs`).
                                  They will be processed in the order of their creation.
 Type                             Redirect
@@ -265,6 +302,45 @@ only HTTPS is matched.
     the same :code:`/` location, nor a more specific :code:`/docs` location. The redirect will match first, since it will catch and
     redirect all traffic of the virtual server location. What is possible though, is that there is a :code:`/docs` location that
     redirects, and an additional :code:`/html` location that proxies traffic, in the scope of the same virtual server.
+
+
+Redirect Match
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Redirect Match type is the advanced alternative to Redirect.
+
+Choosing it will turn the Local path field into Location Match, and the Remote destinations field into Redirect Match.
+
+These types allow you to match requests based on a regular expression pattern instead of just a literal path.
+
+The match is entered into Local path and the substitution group can be set in Remote destinations.
+
+Here is an example how this can look like:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Local path                       ``^/manual/(.*)$``
+Remote destinations              ``https://example.com/$1``
+================================ ========================================================================================
+
+.. Tip::
+
+    - ``^``: Match start of the URL path
+    - ``/manual/``:	Match the literal string /manual/
+    - ``(.*)``: Capture any characters (zero or more) after /manual/ — this is group 1
+    - ``$``: Match end of the string
+    - ``$1``: Reference the captured group from the local path. In this example it strips /manual/ from the URL path internally.
+
+.. Tip::
+
+    When using the normal Redirect, a common trap is redirects that are infinite due to the apache trailing slash issue.
+    This can be solved via Redirection Match by setting Local path as ``^/?$`` which force a match from the start of the
+    first found slash.
+
+.. Attention::
+
+    In most cases using the plain Redirect will give you the desired result automatically.
 
 
 Exchange Server
