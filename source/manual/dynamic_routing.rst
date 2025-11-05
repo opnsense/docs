@@ -418,6 +418,9 @@ BGP (Border Gateway Protocol)
        **Graceful Restart**                Enable BGP graceful restart as per RFC 4724, allowing packet forwarding during protocol restoration.
        **Network**                         Defines connected networks to be advertised over BGP. Disable Network Import-Check to announce all networks.
        **Network Import-Check**            By default, only networks present in the routing table are advertised. Disable to announce all configured networks.
+       **Bestpath**                        Route selection modifiers that influence the best path.
+       **Enforce First AS**                Deny an update received from an external BGP (eBGP) peer that does not list its autonomous system number at
+                                           the beginning of the AS_PATH in the incoming update.
        **Log Neighbor Changes**            Enable extended logging of BGP neighbor changes.
        **Route Redistribution**            Select other routing sources to redistribute to other nodes. Can be combined with a Route Map per redistribution.
        =================================== =======================================================================================================================
@@ -622,6 +625,10 @@ BFD (Bidirectional Forward Detection)
        **Peer-IP**                         Specify the IP of your neighbor.
        **Multihop**                        Enables multi-hop mode, allowing BFD to expect packets with TTL less than 254 and listen on the multihop port (4784).
                                            Note: Echo mode is not supported in multi-hop (see RFC 5883, section 3).
+       **Detect multiplier**               Configures the detection multiplier to determine packet loss. The remote transmission interval will be multiplied by
+                                           this value to determine the connection loss detection timer. The default value is 3.
+       **Receive interval**                Configures the minimum interval that this system is capable of receiving control packets. Defaults to 300 ms.
+       **Transmit interval**               The minimum transmission interval (less jitter) that this system wants to use to send BFD control packets. Defaults to 300ms.   
        =================================== =======================================================================================================================
 
        .. Note::
