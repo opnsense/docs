@@ -241,13 +241,13 @@ destinations this path should map to (for example you could point to a public se
 Proxy Pass Match
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Proxy Pass Match type is the advanced alternative to Proxy Pass.
+The `Proxy Pass Match` type is the advanced alternative to `Proxy Pass`.
 
-Choosing it will turn the Local path field into Location Match, and the new Remote path field into Proxy Pass Match.
+Choosing it will turn the `Local path` field into `Location Match`, and the new `Remote path` field into `Proxy Pass Match`.
 
 These types allow you to match requests based on a regular expression pattern instead of just a literal path.
 
-The match is entered into Local path and the substitution groups can be set in Remote path.
+The match is entered into `Local path` and the substitution groups can be set in `Remote path`.
 
 Here is an example how this can look like:
 
@@ -307,13 +307,13 @@ only HTTPS is matched.
 Redirect Match
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Redirect Match type is the advanced alternative to Redirect.
+The `Redirect Match` type is the advanced alternative to `Redirect`.
 
-Choosing it will turn the Local path field into Location Match, and the Remote destinations field into Redirect Match.
+Choosing it will turn the `Local path` field into `Location Match`, and the `Remote destinations` field into `Redirect Match`.
 
 These types allow you to match requests based on a regular expression pattern instead of just a literal path.
 
-The match is entered into Local path and the substitution group can be set in Remote destinations.
+The match is entered into `Local path` and the substitution group can be set in `Remote destinations`.
 
 Here is an example how this can look like:
 
@@ -334,8 +334,8 @@ Remote destinations              ``https://example.com/$1``
 
 .. Tip::
 
-    When using the normal Redirect, a common trap is redirects that are infinite due to the apache trailing slash issue.
-    This can be solved via Redirection Match by setting Local path as ``^/?$`` which force a match from the start of the
+    When using the normal `Redirect`, a common trap is redirects that are infinite due to the apache trailing slash issue.
+    This can be solved via `Redirect Match` by setting `Local path` as ``^/?$`` which force a match from the start of the
     first found slash.
 
 .. Attention::
