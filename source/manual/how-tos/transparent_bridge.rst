@@ -115,7 +115,7 @@ Here we change that the firewall rules should match on the bridge, instead of th
 
 - Go to :menuselection:`Interfaces --> Devices --> Bridge`:
 
-   - Add a new bridge and select WAN and LAN as `Member interfaces`.
+   - Add a new bridge and select WAN and LAN as `Member interfaces`
 
 .. Attention::
 
@@ -129,7 +129,7 @@ Here we change that the firewall rules should match on the bridge, instead of th
 - Go to :menuselection:`Interfaces --> Bridge`:
 
    - Enable the bridge interface in the interface settings
-   - Set `IPv4 Configuration Type` and `IPv6 Configuration Type` on ``None``.
+   - Set `IPv4 Configuration Type` and `IPv6 Configuration Type` on ``None``
 
 
 4. Add Firewall rules
