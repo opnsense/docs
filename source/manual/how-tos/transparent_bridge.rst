@@ -50,10 +50,6 @@ Our example appliance has 3 available network ports:
 - igc1: WAN (Bridge)
 - igc2: Management
 
-
-Network Diagram
-------------------------------------------
-
 ::
 
             +-----------------+                 +-----------------+
