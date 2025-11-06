@@ -75,19 +75,17 @@ Network Diagram
 1. Assign management interface
 ---------------------------------------
 
-We need an interface to manage the firewall and to enable access to the internet so it can pull firmware updates.
+The management interface will be used to access the firewall WebGUI and to enable access
+to the internet for firmware updates.
 
-Go to :menuselection:`Interfaces --> Assignements`, and `Assign a new interface`.
+- Go to :menuselection:`Interfaces --> Assignements` and `Assign a new interface`.
+  Select one of the free available ports (e.g. igc2) and assign it, set the description to `Management`.
 
-Select one of the free available ports (e.g. igc2) and assign it, set the description to `Management`.
+- Afterwards go to :menuselection:`Interfaces --> Management` and set `IPv4 Configuration Type` to `DHCP` or `Static IPv4` dependant on your usecase.
 
-Afterwards go to `Interfaces --> Management` and set `IPv4 Configuration Type` to `DHCP` or `Static IPv4` dependant on your usecase.
+Next we add a firewall rule to allow access to the WebGUI on this management interface:
 
-Since this interface will be used for management and internet connection, `DHCP` would be the simplest.
-
-Next we add a firewall rule to allow access to the OPNsense on this management interface.
-
-Go to :menuselection:`Firewall --> Rules --> Management` and add a new rule that allows HTTPS access to destination ``This Firewall``.
+- Go to :menuselection:`Firewall --> Rules --> Management` and add a new rule that allows `HTTPS` access to destination `This Firewall`.
 
 After applying all of these settings, connect to your appliance over the management port for the next steps.
 
@@ -97,48 +95,55 @@ After applying all of these settings, connect to your appliance over the managem
 
 Here we change that the firewall rules should match on the bridge, instead of the bridge members.
 
-Go to :menuselection:`System --> Settings --> System Tuneables` and change:
+- Go to :menuselection:`System --> Settings --> System Tuneables` and set:
 
-**net.link.bridge.pfil_bridge** to 1
-**net.link.bridge.pfil_member** to 0
+   - ``net.link.bridge.pfil_bridge`` - ``1``
+   - ``net.link.bridge.pfil_member`` - ``0``
 
 
 3. Create the bridge
 --------------------
 
-Go to :menuselection:`Interfaces --> WAN` and :menuselection:`Interfaces --> LAN`
+- Go to :menuselection:`Interfaces --> WAN` and :menuselection:`Interfaces --> LAN`:
 
-Ensure both `IPv4 Configuration Type` and `IPv6 Configuration Type` are ``None``,
-and **Block private networks**, **Block bogon networks** are disabled.
+   - Set `IPv4 Configuration Type` and `IPv6 Configuration Type` to ``None``
+   - Disable `Block private networks` and `Block bogon networks`
 
 .. Attention::
 
    Disable any DHCP servers that are bound to the LAN interface.
 
-Go to :menuselection:`Interfaces --> Devices --> Bridge`.
+- Go to :menuselection:`Interfaces --> Devices --> Bridge`:
 
-Add a new bridge and select WAN and LAN as `Member interfaces`.
+   - Add a new bridge and select WAN and LAN as `Member interfaces`.
 
 .. Attention::
 
    Do not select `Enable link-local address`, in this configuration the bridge interface
    should stay unnumbered (no IP addresses or any vlans assigned to it or its member interfaces)
 
-Go to :menuselection:`Interfaces --> Assignements` and assign the new bridge. Enable the bridge
-interface, but leave both `IPv4 Configuration Type` and `IPv6 Configuration Type` on ``None``.
+- Go to :menuselection:`Interfaces --> Assignements`:
+
+   - Assign the new bridge interface, set the description to `Bridge`
+
+- Go to :menuselection:`Interfaces --> Bridge`:
+
+   - Enable the bridge interface in the interface settings
+   - Set `IPv4 Configuration Type` and `IPv6 Configuration Type` on ``None``.
 
 
 4. Add Firewall rules
 ----------------------------
 
-Add firewall rules on the new bridge interface to allow all traffic.
+- Go to :menuselection:`Firewall --> Rules --> Bridge`:
 
-Go to :menuselection:`Firewall --> Rules --> Bridge` and add new rules that allow any traffic.
+   - Add firewall rules on the bridge interface to allow all traffic (direction in and out)
 
-You can create more restrictive rules if required. If only IDS/IPS should be used,
-rules that allow any traffic are sufficient.
+.. Tip::
 
-Since the bridge is fully transparent and unnumbered, no client can communicate with the firewall directly via IP.
+   You can create more restrictive rules if required. If only IDS/IPS should be used,
+   rules that allow any traffic are sufficient. Since the bridge is fully transparent and unnumbered,
+   no client can communicate with the firewall directly.
 
 
 5. Enable IDS/IPS
@@ -168,7 +173,7 @@ Afterwards download and activate the rules that you need and apply the configura
 6. Connect interfaces to existing infrastructure
 --------------------------------------------------------
 
-Now you can patch the bridge member interfaces to their respective switch or router.
+Now you can connect the bridge member interfaces to their respective switch or router.
 
 WAN should be connected to a trunk port on the WAN facing side, and LAN to a trunk port on the internal protected side.
 
