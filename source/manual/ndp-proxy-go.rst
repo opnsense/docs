@@ -109,7 +109,7 @@ With the debug logging you can find out the details of the proxies behavior.
 You can see logs of received and sent RA, NDP (NS, NA) and DPD messages. If something does not work as expected,
 reading the log file is the first step to troubleshoot.
 
-Go to :menuselection:`Services --> NDP Proxy`
+Go to :menuselection:`Services --> NDP Proxy --> Settings`
 
 ==============================================  ====================================================================
 **Debug log**                                   ``X``
