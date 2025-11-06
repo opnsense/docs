@@ -1,206 +1,152 @@
-
 ============================
 Transparent Filtering Bridge
 ============================
 
--------
-Warning
--------
-The Transparent Filtering Bridge is not compatible with Traffic Shaping.
-Do not enable the traffic shaper when using the filtering bridge.
+.. contents:: Index
 
---------
-Abstract
---------
 
-A transparent firewall can be used to filter traffic without creating
-different subnets. This application is called filtering bridge as it
-acts as a bridge connection two interfaces and applies filtering rules
-on top of this.
+Introduction
+============================
+
+A transparent firewall can be used to filter traffic without creating different subnets.
+
+The firewall bridges the same layer 2 broadcast domain across two or more ports.
+
+If a VLAN trunk is connected, any VLAN tagged frames will also be bridged transparently.
+
+This can be used to filter via firewall rules and use IDS/IPS to inspect all packets
+via a netmap driver.
 
 For more information on Filtering Bridged on FreeBSD, see
 `filtering-bridges <https://www.freebsd.org/doc/en/articles/filtering-bridges/article.html>`__
 
-------------
+.. Attention::
+
+   The `Transparent Filtering Bridge` is not compatible with `Traffic Shaping`,
+   do not enable it.
+
+.. Attention::
+
+   When vlan tagged frames should be passed through, do not create any vlans on the member ports of the bridge.
+   Otherwise, vlan tagged frames would be filtered and the bridge would not be transparent anymore.
+
+
 Requirements
-------------
+----------------------------
 
--  For this howto we need a basic installation of OPNsense with factory
-   defaults as a starting point.
--  And an appliance with 2 physical interfaces.
+For best compatibility and performance, a bare metal appliance with at least 3 physical ports should be used.
+A virtualized appliance could also work, but there could be layer 2 issues with bridging or vlans, and degraded bridging performance.
 
---------------
-Considerations
---------------
+.. Attention::
 
-To create this howto version OPNsense 15.7.11 has been used. Some screenshots
-maybe outdated, but setting should apply up to at least 17.1.6. If you use a
-different version some options can be different.
-
-.. Note::
-
-    The Menu System of the User Interface has been updated with sub items.
-    Where tabs are shown in screenshots, these are now likely visible as submenu.
-
-------------------------------
-Configuration in 10 easy steps
-------------------------------
-
-.. contents::
-  :local:
-
-.. Warning::
-
-  During the configuration you will be asked to "Apply" your changes several times,
-  however this may affect the current connection. So **don't** apply anything until
-  completely finished! You need to Save your changes for each step.
+   If a vlan trunk is used, you should always use a bare metal appliance, and preferably Intel network cards.
+   The native netmap driver used for IDS/IPS in combination with VLANs does not always work correctly with other vendors or
+   virtualized NICs. Please also ensure that only tagged frames are sent over this trunk.
 
 
-1. Disable Outbound NAT rule generation
+Configuration
+============================
+
+Our example appliance has 3 available network ports
+
+- igc0 - LAN (Bridge)
+- igc1 - WAN (Bridge)
+- igc2 - Management
+
+
+1. Assign a management interface (igc2)
 ---------------------------------------
 
-To disable outbound NAT, go to
-:menuselection:`Firewall --> NAT --> Outbound` and select “Disable Outbound NAT rule generation”.
+We need an interface to manage the firewall and to enable access to the internet so it can pull firmware updates.
 
-|Filtering Bridge Step 1.png|
+Go to :menuselection:`Interfaces --> Assignements`, and `Assign a new interface`.
+
+Select one of the free available ports (e.g. igc2) and assign it, set the description to `Management`.
+
+Afterwards go to `Interfaces --> Management` and set `IPv4 Configuration Type` to `DHCP` or `Static IPv4` dependant on your usecase.
+
+Since this interface will be used for management and internet connection, `DHCP` would be the simplest.
+
+Next we add a firewall rule to allow access to the OPNsense on this management interface.
+
+Go to :menuselection:`Firewall --> Rules --> Management` and add a new rule that allows access to destination ``This Firewall``
+on the WebGUI port you chose, most likely ``443``.
+
+After applying all of these settings, connect to your appliance over the management port for the next steps.
+
 
 2. Change system tuneables
 --------------------------
 
-Enable filtering bridge by changing **net.link.bridge.pfil\_bridge**
-from default to 1 in :menuselection:`System --> Settings --> System Tuneables`.
+Here we change that the firewall rules should match on the bridge, instead of the bridge members.
 
-|Filtering Bridge Step 2.png|
+Go to :menuselection:`System --> Settings --> System Tuneables` and change:
 
-And disable filtering on member interfaces by changing
-**net.link.bridge.pfil\_member** from default to 0 in
-:menuselection:`System --> Settings --> System Tuneables`.
+**net.link.bridge.pfil_bridge** to 1
+**net.link.bridge.pfil_member** to 0
 
-|Filtering Bridge Step2a.png|
 
 3. Create the bridge
 --------------------
 
-Create a bridge of LAN and WAN, go to
-:menuselection:`Interfaces --> Devices --> Bridge`. Add Select LAN and WAN.
+Go to :menuselection:`Interfaces --> WAN` and :menuselection:`Interfaces --> LAN`
 
-|Filtering Bridge Step 3a.png|
+Ensure both `IPv4 Configuration Type` and `IPv6 Configuration Type` are ``None``,
+and **Block private networks**, **Block bogon networks** are disabled.
 
-|Filtering Bridge Step 3b.png|
+.. Attention::
 
-4. Assign a management IP/Interface
------------------------------------
+   Disable any DHCP servers that are bound to the LAN interface.
 
-To be able to configure and manage the filtering bridge (OPNsense)
-afterwards, we will need to assign a new interface to the bridge and
-setup an IP address.
+Go to :menuselection:`Interfaces --> Devices --> Bridge`.
 
-Go to :menuselection:`Interfaces --> Assign --> Available network port`, select
-the bridge from the list and hit **+**.
+Add a new bridge and select WAN and LAN as `Member interfaces`, Description `Bridge`
 
-|Filtering Bridge Step 4.png|
+.. Attention::
 
-Now Add an IP address to the interface that you would like to use to
-manage the bridge. Go to :menuselection:`Interfaces --> [OPT1]`, enable the interface
-and fill-in the ip/netmask.
+   Do not select `Enable link-local address`, in this configuration the bridge interface
+   should stay unnumbered (no IP addresses or any vlans assigned to it or its member interfaces)
 
-5. Disable Block private networks & bogon
------------------------------------------
 
-For the WAN interface we nee to disable blocking of private networks & bogus IPs.
+4. Add Firewall rules
+----------------------------
 
-Go to :menuselection:`Interfaces --> [WAN]` and unselect **Block private networks**
-and **Block bogon networks**.
+Add firewall rules on the new bridge interface to allow all traffic.
 
-|Filtering Bridge Step 5.png|
+Go to :menuselection:`Firewall --> Rules --> Bridge` and add new rules that allows any traffic.
 
-6. Disable the DHCP server on LAN
----------------------------------
+After installing the bridge, you can create more restrictive rules if required. If only IDS/IPS should be used,
+any allow rules are sufficient. Since the bridge is fully transparent and unnumbered, no client can communicate
+with the firewall directly via IP.
 
-To disable the DHCP server on LAN go to :menuselection:`Services --> DHCPv4 --> [LAN]` and
-unselect enable.
 
-|Filtering Bridge Step 6.png|
+5. Enable IDS/IPS (optional)
+----------------------------
 
-7. Add Allow rules
--------------------
-After configuring the bridge the rules on member interfaces (WAN/LAN) will be
-ignored. So you can skip this step.
+To inspect all bridge traffic, we can enable the `Intrusion Detection` service.
 
-Add the allow rules for all traffic on each of the three interfaces (WAN/LAN/OPT1).
+Go to :menuselection:`Services --> Intrusion Detection --> Administration --> General Settings`
 
-This step is to ensure we have a full transparent bridge without any filtering
-taking place. You can setup the correct rules when you have confirmed the bridge
-to work properly.
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Enabled                          ``X``
+IPS mode                         ``X``
+Promiscuous mode                 ``X`` (if vlan tagged frames are received on bridge members)
+Interfaces                       ``WAN`` (Do not choose the bridge interface, since the netmap driver cannot process vlans on it)
+================================ ========================================================================================
 
-Go to :menuselection:`Firewall --> Rules` and add a rule per interface to allow all traffic
-of any type.
+Afterwards download and activate the rules that you need and apply the configuration.
 
-|Filtering Bridge Step 7.png|
 
-8. Disable Default Anti Lockout Rule
-------------------------------------
-After configuring the bridge the rules on member interfaces (WAN/LAN) will be
-ignored. So you can skip this step.
+6. Connect interfaces to existing infrastructure
+--------------------------------------------------------
 
-As we now have setup allow rules for each interface we can safely remove
-the Anti Lockout rule on LAN
+Now you can patch the bridge member interfaces WAN and LAN to their respective switch or router.
 
-Go to :menuselection:`Firewall --> Settings --> Admin Access`: Anti-lockout and select
-this option to disable
+WAN should be connected to a switch or router on the WAN facing side, and LAN on the internal side.
 
-9. Set LAN and WAN interface type to 'none'
--------------------------------------------
+When installing the bridge, ensure that there is no better network path around it, both sides should be isolated and only connected via
+the bridge.
 
-Now remove the IP subnets in use for LAN and WAN by changing the
-interface type to none. Go to :menuselection:`Interfaces --> [LAN]` and :menuselection:`Interfaces --> [WAN]`
-to do so.
-
-|Filtering Bridge Step 9.png|
-
-10. Now apply the changes
--------------------------
-
-If you followed each step, then you can now apply the changes. The
-Firewall is now converted to a filtering bridge.
-
-.. rubric:: Done.. ready to set your own filtering rules
-   :name: done..-ready-to-set-your-own-filtering-rules
-
-Now you can create the correct firewall/filter rules and apply them. To
-acces the firewall you need to use the IP adress you configured for the
-OPT1 Interface.
-
-.. WARNING::
-
-    Rules need to be configured on the bridge. Rules on member interfaces will
-    be ignored!
-
-.. TIP::
-
-  Don't forget to make sure your PC/Laptop is configured with an IP adress that
-  falls within the IP range of the OPT1 subnet!
-
-.. |Filtering Bridge Step 1.png| image:: images/Filtering_Bridge_Step_1.png
-   :width: 700px
-.. |Filtering Bridge Step 2.png| image:: images/Filtering_Bridge_Step_2.png
-   :class: thumbimage
-   :width: 700px
-.. |Filtering Bridge Step2a.png| image:: images/Filtering_Bridge_Step_2a.png
-   :class: thumbimage
-   :width: 700px
-.. |Filtering Bridge Step 3a.png| image:: images/Filtering_Bridge_Step_3a.png
-   :width: 700px
-.. |Filtering Bridge Step 3b.png| image:: images/Filtering_Bridge_Step_3b.png
-   :width: 700px
-.. |Filtering Bridge Step 4.png| image:: images/Filtering_Bridge_Step_4.png
-   :width: 700px
-.. |Filtering Bridge Step 5.png| image:: images/Filtering_Bridge_Step_5.png
-   :width: 700px
-.. |Filtering Bridge Step 6.png| image:: images/Filtering_Bridge_Step_6.png
-   :width: 619px
-.. |Filtering Bridge Step 7.png| image:: images/Filtering_Bridge_Step_7.png
-   :width: 700px
-   :height: 69px
-.. |Filtering Bridge Step 9.png| image:: images/Filtering_Bridge_Step_9.png
-   :width: 700px
+Via the already connected Management port, the firewall will be able to connect to the internet to fetch the latest updates.
