@@ -9,12 +9,10 @@ Introduction
 ============================
 
 A transparent firewall can be used to filter traffic without creating different subnets.
-
 The firewall bridges the same layer 2 broadcast domain across two or more ports.
+If a VLAN trunk is connected, any VLAN tagged frames will be bridged transparently.
 
-If a VLAN trunk is connected, any VLAN tagged frames will also be bridged transparently.
-
-This can be used to filter via firewall rules and use IDS/IPS to inspect all packets
+This setup can be used to filter via firewall rules and use IDS/IPS to inspect all packets
 via a netmap driver.
 
 For more information on Filtering Bridged on FreeBSD, see
@@ -22,8 +20,7 @@ For more information on Filtering Bridged on FreeBSD, see
 
 .. Attention::
 
-   The `Transparent Filtering Bridge` is not compatible with `Traffic Shaping`,
-   do not enable it.
+   The bridge is not compatible with `Traffic Shaping`.
 
 .. Attention::
 
@@ -35,7 +32,7 @@ Requirements
 ----------------------------
 
 For best compatibility and performance, a bare metal appliance with at least 3 physical ports should be used.
-A virtualized appliance could also work, but there could be layer 2 issues with bridging or vlans, and degraded bridging performance.
+A virtualized appliance could also work, but there could be elusive layer 2 issues with bridging or vlans.
 
 .. Attention::
 
@@ -47,14 +44,35 @@ A virtualized appliance could also work, but there could be layer 2 issues with 
 Configuration
 ============================
 
-Our example appliance has 3 available network ports
+Our example appliance has 3 available network ports:
 
-- igc0 - LAN (Bridge)
-- igc1 - WAN (Bridge)
-- igc2 - Management
+- igc0: LAN (Bridge)
+- igc1: WAN (Bridge)
+- igc2: Management
 
 
-1. Assign a management interface (igc2)
+Network Diagram
+------------------------------------------
+
+::
+
+            +-----------------+                 +-----------------+
+   Internet |                 |      WAN (igc1) |     (Bridge)    | LAN (igc0)
+   -------->|    ISP Router   |---------------->|     OPNsense    |----------> Switch
+            |                 |      trunk port |  Firewall, IPS  | trunk port
+            +-----------------+                 +-----------------+
+                                                         | Management (igc2)
+                                                         |-------------------> Switch
+                                                           access port
+
+
+.. Tip::
+
+   The management interface can either be directly connected to the ISP router on a separate port,
+   or to an internal switch on a VLAN that will circle back through the bridge.
+
+
+1. Assign management interface
 ---------------------------------------
 
 We need an interface to manage the firewall and to enable access to the internet so it can pull firmware updates.
@@ -69,8 +87,7 @@ Since this interface will be used for management and internet connection, `DHCP`
 
 Next we add a firewall rule to allow access to the OPNsense on this management interface.
 
-Go to :menuselection:`Firewall --> Rules --> Management` and add a new rule that allows access to destination ``This Firewall``
-on the WebGUI port you chose, most likely ``443``.
+Go to :menuselection:`Firewall --> Rules --> Management` and add a new rule that allows HTTPS access to destination ``This Firewall``.
 
 After applying all of these settings, connect to your appliance over the management port for the next steps.
 
@@ -100,12 +117,15 @@ and **Block private networks**, **Block bogon networks** are disabled.
 
 Go to :menuselection:`Interfaces --> Devices --> Bridge`.
 
-Add a new bridge and select WAN and LAN as `Member interfaces`, Description `Bridge`
+Add a new bridge and select WAN and LAN as `Member interfaces`.
 
 .. Attention::
 
    Do not select `Enable link-local address`, in this configuration the bridge interface
    should stay unnumbered (no IP addresses or any vlans assigned to it or its member interfaces)
+
+Go to :menuselection:`Interfaces --> Assignements` and assign the new bridge. Enable the bridge
+interface, but leave both `IPv4 Configuration Type` and `IPv6 Configuration Type` on ``None``.
 
 
 4. Add Firewall rules
@@ -113,14 +133,15 @@ Add a new bridge and select WAN and LAN as `Member interfaces`, Description `Bri
 
 Add firewall rules on the new bridge interface to allow all traffic.
 
-Go to :menuselection:`Firewall --> Rules --> Bridge` and add new rules that allows any traffic.
+Go to :menuselection:`Firewall --> Rules --> Bridge` and add new rules that allow any traffic.
 
-After installing the bridge, you can create more restrictive rules if required. If only IDS/IPS should be used,
-any allow rules are sufficient. Since the bridge is fully transparent and unnumbered, no client can communicate
-with the firewall directly via IP.
+You can create more restrictive rules if required. If only IDS/IPS should be used,
+rules that allow any traffic are sufficient.
+
+Since the bridge is fully transparent and unnumbered, no client can communicate with the firewall directly via IP.
 
 
-5. Enable IDS/IPS (optional)
+5. Enable IDS/IPS
 ----------------------------
 
 To inspect all bridge traffic, we can enable the `Intrusion Detection` service.
@@ -133,20 +154,22 @@ Option                           Description
 Enabled                          ``X``
 IPS mode                         ``X``
 Promiscuous mode                 ``X`` (if vlan tagged frames are received on bridge members)
-Interfaces                       ``WAN`` (Do not choose the bridge interface, since the netmap driver cannot process vlans on it)
+Interfaces                       ``WAN``
 ================================ ========================================================================================
 
 Afterwards download and activate the rules that you need and apply the configuration.
+
+.. Attention::
+
+   Do not choose the bridge interface, always choose the WAN interface. The emulated netmap driver cannot process vlans on the bridge,
+   it must attach in native mode to the physical interface.
 
 
 6. Connect interfaces to existing infrastructure
 --------------------------------------------------------
 
-Now you can patch the bridge member interfaces WAN and LAN to their respective switch or router.
+Now you can patch the bridge member interfaces to their respective switch or router.
 
-WAN should be connected to a switch or router on the WAN facing side, and LAN on the internal side.
+WAN should be connected to a trunk port on the WAN facing side, and LAN to a trunk port on the internal protected side.
 
-When installing the bridge, ensure that there is no better network path around it, both sides should be isolated and only connected via
-the bridge.
-
-Via the already connected Management port, the firewall will be able to connect to the internet to fetch the latest updates.
+The firewall will be able to connect to the internet to fetch the latest updates via the management port.
