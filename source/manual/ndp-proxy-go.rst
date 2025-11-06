@@ -1,5 +1,5 @@
 ==================================================
-ndp-proxy-go (IPv6 Neighbor Discovery Proxy)
+ndp-proxy-go (Neighbor Discovery Proxy)
 ==================================================
 
 .. contents::
@@ -41,7 +41,6 @@ Important configuration details
     and a default route to the ISP. Router advertisements must be sent from the ISP to the WAN.
 
 - **LAN (downstreams)**:
-    The downstream LAN interface(s) must be configured in link-local mode, or via static IPv6 address with an unique local address (ULA).
     The requirement is that the interface must have an link-local address (LLA).
 
 
@@ -72,7 +71,7 @@ Go to :menuselection:`Interfaces --> LAN` and choose either a link-local or a st
 **IPv6 Configuration Type**                     ``link-local``
 **or**
 **IPv6 Configuration Type**                     ``Static IPv6``
-**IPv6 address**                                ``fd80::1:1/64``
+**IPv6 address**                                ``fe80::/64``
 ==============================================  ====================================================================
 
 Save and apply the new interface settings.
