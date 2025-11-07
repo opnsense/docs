@@ -87,6 +87,11 @@ A hotfix release was issued as 25.7.7_2:
 * system: fix a HA sync regression introduced in 25.7.6 that prevented a sync from succeeding in an edge case
 * interfaces: fix overview details button not working
 
+A hotfix release was issued as 25.7.7_4:
+
+* ui: bootgrid: prevent full table redraw without onDataProcessed trigger
+* ui: bootgrid: add missing datakeys to two pages
+
 
 
 --------------------------------------------------------------------------
