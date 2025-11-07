@@ -29,6 +29,67 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.7.7 (November 06, 2025)
+--------------------------------------------------------------------------
+
+
+This update ships a number of third party security updates, firewall live
+log improvements based on user feedback from 25.7.6, plus minor fixes and
+improvements like usual.
+
+One focus at the moment is to get rid of the unsafe shell use in the backend
+which has been the source of multiple security issues in the project history.
+A few other things are coming to 25.7.x soon: a neighbor watch daemon, a new
+NDP proxy plugin and a community theme.  Stay tuned.  :)
+
+Here are the full patch notes:
+
+* system: simplify RRD backup code and remove exec() usage (reported by Alex Williams from Pellera Technologies working with Trend Zero Day Initiative)
+* system: move valid_from search criteria to log_matcher for faster end of search
+* system: use file_safe() in gateway monitor watcher
+* system: refactor factory reset page to MVC and add a reset per component operating on models
+* interfaces: ifctl: always allow reads to internal state files
+* firewall: automation: fix alias IP address search
+* firewall: automation: allow interface parameter to contain a list of interfaces for API users
+* firewall: aliases: replace invalid unicode chars (contributed by Marius Halden)
+* firewall: live log: only execute redraw on visibility state transition
+* firewall: live log: optimize viewbuffer rendering
+* firewall: live log: prevent re-resolving in-flight requests and move host lookup to current filtered view
+* firewall: live log: fix data ordering and add table/history limit options
+* firewall: live log: use "badge" class like before
+* firewall: states: fix delete_selected firewall states (contributed by Alexander Sulfrian)
+* dnsmasq: add optgroup support to DHCP option fields and expose all DHCPv4 options
+* ipsec: sessions: add datakey property for row mapping
+* ipsec: status: search phase 2 triggered twice on click and cleanup tooltip event as well
+* openvpn: use file_safe() to write CRL files
+* mvc: OptionField: properly translate optgroup
+* mvc: JsonKeyValueStoreField: fix race condition when using SourceField in the model
+* mvc: persist models description in root attribute of its respective configuration
+* rc: secure an exec() in the recovery script
+* ui: improve grid responsiveness via minWidth()
+* ui: remove this.dataIdentifier as datakey defines the key to be used when asking 'row-id' or getSelectedRows
+* ui: SimpleActionButton: add support for icons in action buttons
+* ui: recompile default themes using dart sass (1.93.2) which changes color rendering
+* ui: keyboard shortcuts for "a"dvanced and "h"elp in MVC pages (contributed by Konstantinos Spartalis)
+* ui: bail out on dynamic grid resize if data is loading
+* plugins: os-frr 1.48 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/net/frr/pkg-descr>`__ 
+* plugins: os-tayga 1.3 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/net/tayga/pkg-descr>`__ 
+* ports: kea 3.0.2 `[3] <https://downloads.isc.org/isc/kea/3.0.2/Kea-3.0.2-ReleaseNotes.txt>`__ 
+* ports: libxml 2.14.6 `[4] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: php 8.3.27 `[5] <https://www.php.net/ChangeLog-8.php#8.3.27>`__ 
+* ports: sqlite 3.50.4 `[5] <https://www.php.net/ChangeLog-8.php#8.3.27>`__ 
+* ports: strongswan 6.0.3 `[7] <https://github.com/strongswan/strongswan/releases/tag/6.0.3>`__ 
+* ports: suricata 8.0.2 `[8] <https://suricata.io/2025/11/06/suricata-8-0-2-and-7-0-13-released/>`__ 
+* ports: unbound 1.24.1 `[9] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-24-1>`__ 
+
+A hotfix release was issued as 25.7.7_2:
+
+* system: fix a HA sync regression introduced in 25.7.6 that prevented a sync from succeeding in an edge case
+* interfaces: fix overview details button not working
+
+
+
+--------------------------------------------------------------------------
 25.7.6 (October 22, 2025)
 --------------------------------------------------------------------------
 
