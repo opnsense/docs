@@ -53,10 +53,11 @@ Service                 The provider of your Dynamic DNS Service
 resourceId              A pointer to the service to be updated, currently only relevant for Azure
 Username                Login or user name to authenticate with, left empty when using token-based authentication
 Password                Password, API key or security token to authenticate with
-Zone                    Typically the second-level domain name to update. for example: *example.com*
+Zone                    Typically the second-level domain name to update. For example: *example.com*
 Hostname(s)             A list of fully-qualified domain names to update via the selected service, separated by commas. For example: *subdomain.example.com*
 Check ip method         The IP checking service to get the appliance's current IP address from
 Interface to monitor    The interface to connect to the IP checking service from, or if the "Check ip method" is set to "Interface" the interface to collect an address from
+Dynamic ipv6 host       Optionally overwrite the interface identifier of the ipv6 address with the given value. For example: *::aabb:33ff:fe44:ccdd*
 Check ip timeout        How long to wait in seconds for the IP checking service to respond with an IP address
 Force SSL               Enable connecting to IP checking and updating services over HTTPS, though majority only support HTTPS anyway
 ======================= =======================================================================================================================================================================
