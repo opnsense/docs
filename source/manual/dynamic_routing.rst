@@ -288,6 +288,18 @@ OSPF/OSPFv3 (Open Shortest Path First)
        **Priority**                          (OSPF only) The priority is used to for the Designated Router (DR) election on non-broadcast multi-access networks.
        =================================== =======================================================================================================================
 
+   .. tab:: Areas (OSPF only)
+
+       =================================== =======================================================================================================================
+       Options                             Description
+       =================================== =======================================================================================================================
+       **Enabled**                         (OSPF only) Enable / Disable
+       **Area ID**                         (OSPF only) Enter area ID in dotted (e.g. 0.0.0.1) format. You only need to define areas that are not normal.
+                                           All areas defined in the network or interface tab will automatically be normal, unless explicitely overwritten
+                                           here with a different area type.
+       **Area Type**                       (OSPF only) Select area behavior (e.g. stub no-summary)
+       =================================== =======================================================================================================================
+
     .. tab:: Networks
 
        =================================== =======================================================================================================================
