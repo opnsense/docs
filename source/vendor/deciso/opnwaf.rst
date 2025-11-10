@@ -212,9 +212,7 @@ TLS header passthrough           Select which headers to passthrough to the clie
                                  X- to distinct them more easily from the applications perspective. The original headers
                                  use underscores (_) these will be replaced for minus (-) signs to prevent applications
                                  dropping them.
-Unset Request Headers            Select which request headers to unset before they get passed from the client to the
-                                 server. Unsetting some of these headers can increase security,
-                                 e.g., unsetting `Accept-Encoding` can help preventing BREACH attacks.
+Request Headers                  Select how headers should be processed in the request from this location to the destination
 Preserve Host                    When enabled, this option will pass the Host: line from the incoming request to the
                                  proxied host, instead of the hostname specified in the location. This option should
                                  normally be turned Off. It is mostly useful in special configurations like proxied mass
@@ -548,6 +546,20 @@ Rejecting can improve security, yet will make large files fail completely if the
 
     If many different file extensions are hosted on the WebDAV server, some of these will be blocked by default rules. In that case,
     disable the rule: :code:`920440 (URL file extension is restricted by policy)`
+
+
+Request Headers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Go to :menuselection:`Firewall --> Web Application --> Gateways --> Request Headers` to manipulate request headers sent from a location to the destination.
+
+First create a new header, it can later be selected in a location:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+
+================================ ========================================================================================
 
 
 Protect a local server with certificates
