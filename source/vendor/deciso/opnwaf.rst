@@ -551,15 +551,30 @@ Rejecting can improve security, yet will make large files fail completely if the
 Request Headers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Go to :menuselection:`Firewall --> Web Application --> Gateways --> Request Headers` to manipulate request headers sent from a location to the destination.
+In some cases it is a requirement to manipulate request headers. 
+The `Request Header Directive` can add, merge, change or remove HTTP request headers.
 
-First create a new header, it can later be selected in a location:
+In our example, we unset the ``Accept-Encoding`` header to potentially prevent BREACH attacks.
+
+Go to :menuselection:`Firewall --> Web Application --> Gateways --> Request Headers` and create a new header:
 
 ================================ ========================================================================================
 Option                           Description
 ================================ ========================================================================================
-
+Type                             ``Unset``
+Header                           ``Accept-Encoding``
+Value                            (leave this empty)
 ================================ ========================================================================================
+
+Afterwards, go to an existing location in :menuselection:`Firewall --> Web Application --> Gateways --> Virtual Servers`
+and select it in `(Proxy Options) Request Headers`.
+
+After applying the configuration, the header will be unset from all requests of this location to the `Remote destinations`.
+
+.. Tip::
+
+    More information about the available request header types can be found here:
+    https://httpd.apache.org/docs/current/mod/mod_headers.html#requestheader
 
 
 Protect a local server with certificates
