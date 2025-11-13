@@ -220,6 +220,9 @@ Preserve Host                    When enabled, this option will pass the Host: l
                                  backend server.
 Connection timeout               Connect timeout in seconds. The number of seconds the server waits for the creation
                                  of a connection to the backend to complete.
+timeout                          Socket timeout in seconds. The number of seconds the server waits for data sent by / to the backend.
+Response field size              Adjust the size of the proxy response field buffer. The buffer size should be at least the
+                                 size of the largest expected header size from a proxied response.
 ================================ ========================================================================================
 
 
