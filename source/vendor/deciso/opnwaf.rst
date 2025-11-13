@@ -212,9 +212,7 @@ TLS header passthrough           Select which headers to passthrough to the clie
                                  X- to distinct them more easily from the applications perspective. The original headers
                                  use underscores (_) these will be replaced for minus (-) signs to prevent applications
                                  dropping them.
-Unset Request Headers            Select which request headers to unset before they get passed from the client to the
-                                 server. Unsetting some of these headers can increase security,
-                                 e.g., unsetting `Accept-Encoding` can help preventing BREACH attacks.
+Request Headers                  Select how headers should be processed in the request from this location to the destination
 Preserve Host                    When enabled, this option will pass the Host: line from the incoming request to the
                                  proxied host, instead of the hostname specified in the location. This option should
                                  normally be turned Off. It is mostly useful in special configurations like proxied mass
@@ -222,6 +220,9 @@ Preserve Host                    When enabled, this option will pass the Host: l
                                  backend server.
 Connection timeout               Connect timeout in seconds. The number of seconds the server waits for the creation
                                  of a connection to the backend to complete.
+timeout                          Socket timeout in seconds. The number of seconds the server waits for data sent by / to the backend.
+Response field size              Adjust the size of the proxy response field buffer. The buffer size should be at least the
+                                 size of the largest expected header size from a proxied response.
 ================================ ========================================================================================
 
 
@@ -548,6 +549,35 @@ Rejecting can improve security, yet will make large files fail completely if the
 
     If many different file extensions are hosted on the WebDAV server, some of these will be blocked by default rules. In that case,
     disable the rule: :code:`920440 (URL file extension is restricted by policy)`
+
+
+Request Headers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In some cases it is a requirement to manipulate request headers. 
+The `Request Header Directive` can add, merge, change or remove HTTP request headers.
+
+In our example, we unset the ``Accept-Encoding`` header to potentially prevent BREACH attacks.
+
+Go to :menuselection:`Firewall --> Web Application --> Gateways --> Request Headers` and create a new header:
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Type                             ``Unset``
+Header                           ``Accept-Encoding``
+Value                            (leave this empty)
+================================ ========================================================================================
+
+Afterwards, go to an existing location in :menuselection:`Firewall --> Web Application --> Gateways --> Virtual Servers`
+and select it in `(Proxy Options) Request Headers`.
+
+After applying the configuration, the header will be unset from all requests of this location to the `Remote destinations`.
+
+.. Tip::
+
+    More information about the available request header types can be found here:
+    https://httpd.apache.org/docs/current/mod/mod_headers.html#requestheader
 
 
 Protect a local server with certificates
