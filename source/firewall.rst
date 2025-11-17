@@ -28,7 +28,6 @@ These are all combined in the firewall section.
    manual/firewall_settings
    manual/firewall_scrub
    manual/how-tos/carp
-   manual/how-tos/carp-troubleshooting
    manual/logging_firewall
    manual/diagnostics_firewall
 
