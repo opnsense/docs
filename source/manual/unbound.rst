@@ -60,6 +60,7 @@ System A/AAAA records                 If this option is set, then no A/AAAA reco
                                       restrict the amount of information exposed in replies to queries for the
                                       system host/domain name.
 TXT Comment Support                   Register descriptions as comments for dhcp static host entries.
+Force SafeSearch                      Force the usage of SafeSearch on Google, DuckDuckGo, Bing, Qwant, PixaBay and YouTube.
 Outgoing Network Interfaces           Utilize different network interfaces that Unbound will use to send queries to
                                       authoritative servers and receive their replies. By default all interfaces are
                                       used. Note that setting explicit outgoing interfaces only works when they
@@ -282,26 +283,32 @@ Refuse Non-local                      Allow only authoritative local-data querie
 Blocklists
 -------------------------
 
-Enable integrated dns blacklisting using one of the predefined sources or custom locations.
+Enable integrated dns blocklisting using one of the predefined sources or custom locations.
 
 =====================================================================================================================
 
 ====================================  ===============================================================================
-Enable                                Enable blacklists
-Enable SafeSearch                     Force the usage of SafeSearch on Google, DuckDuckGo, Bing, Qwant, PixaBay and YouTube.
+Enable                                Enable blocklists
 Type of DNSBL                         Predefined external sources
-URLs of Blacklists                    Additional http[s] location to download blacklists from, only plain text
+URLs of Blocklists                    Additional http[s] location to download blocklists from, only plain text
                                       files containing a list of fqdn's (e.g. :code:`my.evil.domain.com`) OR wildcard domains
                                       (e.g. :code:`*.my.evil.domain.com`) are supported.
-Whitelist Domains                     When a blacklist item contains a pattern defined in this list it will
+Allowlist Domains                     When a blocklist item contains a pattern defined in this list it will
                                       be ommitted from the results.  e.g. :code:`.*\.nl` would exclude all .nl domains.
-                                      Blocked domains explicitly whitelisted using the :doc:`/manual/reporting_unbound_dns`
+                                      Blocked domains explicitly allowlisted using the :doc:`/manual/reporting_unbound_dns`
                                       page will show up in this list.
 Blocklist Domains                     List of domains to explicitly block. Regular expressions are not supported.
                                       Passed domains explicitly blocked using the :doc:`/manual/reporting_unbound_dns`
                                       page will show up in this list.
 Wildcard Domains                      List of wildcard domains to blocklist. All subdomains of the given domain will
                                       be blocked. Blocking first-level domains (e.g. 'com') is not supported.
+Source Net(s)                         Source networks to apply policy on. Examples are 192.168.1.0/24 or 192.168.1.1.
+                                      Leave empty to apply on everything. All specified networks should use the same
+                                      protocol family and have equal sizes to avoid priority issues.
+Cache TTL                             TTL for the blocklists cache. Remote blocklists don't usually update more often
+                                      than once a day. Therefore, when blocklists are downloaded, they are cached
+                                      locally to prevent unnecessary fetches over the internet. You can change this
+                                      behavior here if you know the remote files rotate faster than this.
 Destination Address                   Specify an IP address to return when DNS records are blocked. Can be used to
                                       redirect such domains to a separate webserver informing the user that the
                                       content has been blocked. The default is 0.0.0.0. Any value in this field
@@ -317,12 +324,27 @@ Return NXDOMAIN                       Instead of returning the "Destination Addr
     process the blocklists as soon as they're downloaded. There may be up to a minute of delay before Unbound
     has loaded everything. During this time Unbound will still be just as responsive.
 
-When any of the DNSBL types are used, the content will be fetched directly from its original source, to
-get a better understanding of the source of the lists we compiled the list below containing references to
-the list maintainers.
+*Blocklist Tester*
+=====================================================================================================================
+
+The blocklists feature contains a tester that allows you to check whether a given domain matches a policy
+you have defined in the *Blocklists* tab. This tester is fully local, therefore this tester is not capable
+of matching domains that resolve into CNAMEs that may or may not be in the blocklists you have defined. In this scenario
+you can use :menuselection:`Interfaces -> Diagnostics -> DNS lookup`, or use the following command from the
+command line:
+
+    .. code-block:: sh
+
+        drill -b <source ip> <domain> <record type>
+
+In the above example the source IP address must exist on the firewall.
 
 *Predefined sources*
 =====================================================================================================================
+
+When any of the DNSBL types are used, the content will be fetched directly from its original source, to
+get a better understanding of the source of the lists we compiled the list below containing references to
+the list maintainers.
 
 ====================================  ===============================================================================
 Abuse.ch - ThreatFox IOC database     https://threatfox.abuse.ch/
