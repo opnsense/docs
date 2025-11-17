@@ -49,3 +49,4 @@ Your security appliance comes with quite some services to ease network operation
    manual/ips
    manual/logging_services
    manual/monit
+   manual/ntpd
