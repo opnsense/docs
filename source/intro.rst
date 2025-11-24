@@ -42,7 +42,7 @@ to find what you are looking for. Maybe even more important is what this documen
 
 If you are looking for deeper insights about networking and best practices in designing them, this might not be the best
 place to look. Most of our documents and how-to's focus on how to use functionality included in our software and/or one
-of its plugins. Quite some books are written about networking, there are (online) courses available and wikipedia
+of its plugins. Quite some books are written about networking, there are (online) courses available and Wikipedia
 contains a lot of relevant articles as well. Some interesting reads include the fundamentals about the
 `OSI model <https://en.wikipedia.org/wiki/OSI_model>`__, `IP addressing <https://en.wikipedia.org/wiki/IP_address>`__,
 `routing <https://en.wikipedia.org/wiki/IP_routing>`__ and `network address translation <https://en.wikipedia.org/wiki/Network_address_translation>`__.
