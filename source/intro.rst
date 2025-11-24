@@ -4,7 +4,7 @@ Introduction
 
 Welcome to the OPNsense documentation & wiki project!
 The documentation is work in progress and is updated frequently.
-If you would like to contribute in anyway, please take a look at our guide
+If you would like to contribute in any way, please take a look at our guide
 how to :doc:`contribute`.
 
 .. image:: ./images/opnsense_logo_horizontaal.png
@@ -42,7 +42,7 @@ to find what you're looking for. Maybe even more important is what this document
 
 If you're looking for deeper insights about networking and best practices in designing them, this might not be the best
 place to look. Most of our documents and how-to's focus on how to use functionality included in our software and/or one
-of it's plugins. Quite some books are written about networking, there are (online) courses available and wikipedia
+of its plugins. Quite some books are written about networking, there are (online) courses available and wikipedia
 contains a lot of relevant articles as well. Some interesting reads include the fundamentals about the
 `OSI model <https://en.wikipedia.org/wiki/OSI_model>`__, `IP addressing <https://en.wikipedia.org/wiki/IP_address>`__,
 `routing <https://en.wikipedia.org/wiki/IP_routing>`__ and `network address translation <https://en.wikipedia.org/wiki/Network_address_translation>`__.
@@ -52,7 +52,7 @@ knowledge on (basic) networking.
 
 Like many products and projects, ours grows over time, functionality extends and changes, which sometimes makes it difficult
 to find what you need for the version you're using. Although we try to keep our documentation up to date, sometimes text
-doesn't reflect reality anymore. If that's the case and you think you found an omission, don't hestitate to open
+doesn't reflect reality anymore. If that's the case and you think you found an omission, don't hesitate to open
 a report using one of our templates on `GitHub <https://github.com/opnsense/docs/issues/new/choose>`__ or a pull request
 of course if you're able to.
 
@@ -65,14 +65,14 @@ for an upgrade, this is a useful resource to collect the details.
 
 Installation and setup is all about getting you started using one of the target options available.
 
-The next sections should be quite familiair when working with OPNsense, as they reflect the options in the
+The next sections should be quite familiar when working with OPNsense, as they reflect the options in the
 menu of the product. In case you're not yet used to OPNsense, you can always use the search input in the left corner of
 the screen to find your topic.
 
 Both community and third-party plugins have their own area available, although they eventually register into the
 same menu structure, it's good to know about possible differences between add-ons and standard functionality.
 The level of support may differ between core functionality, as also explained in the "Support options" section,
-feature requests and bugs maybe treated different as well (a lot of questions for a plugin which is being developed
+feature requests and bugs may be treated different as well (a lot of questions for a plugin which is being developed
 by a single person, maybe less active than a group of people improving a plugin together for example).
 
 When it comes to building software on top of OPNsense or extending existing functionality, the development
