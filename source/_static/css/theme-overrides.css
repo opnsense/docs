@@ -54,8 +54,8 @@ footer a:hover, footer a:visited:hover {color:#373736}
 /*Header/Navigatie*/
 
 
-.wy-nav-top { background: #373736;}
-.wy-nav-top a, .wy-nav-top a:visited {color:#fff;}
+.wy-nav-top { color: #373736;}
+.wy-nav-top a, .wy-nav-top a:visited {color:#373736;}
 .wy-nav-top a:hover, .wy-nav-top a:visited:hover {color: #C03E14;}
 .wy-side-nav-search a.icon.icon-home {    font-size: 0;    color: transparent;}
 .wy-side-nav-search {padding:1em;border-right:1px solid}
