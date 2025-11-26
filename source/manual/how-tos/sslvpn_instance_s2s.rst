@@ -54,7 +54,7 @@ to peer both firewalls. We will create a tunnel network  :code:`10.1.8.0/24` bet
       }
       network B {
           address = "192.168.8.0/24"
-          fwb [shape = "cisco.firewall", address="192.168.8.1/24"];
+          fwb [shape = "cisco.firewall", address="192.168.8.2/24"];
           pclanb [label="PC Site B\n192.168.8.20",shape="cisco.pc"];
       }
 
