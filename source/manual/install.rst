@@ -352,7 +352,7 @@ For systems that have OPNsense installed and the configuration intact, here is t
    device name is correct and try again.  Otherwise, there may be possible disk corruption and
    restoring from backup.
 
-At this point, the system will boot up with a fully functional firewall in Live environment using existing configuration
+At this point, the system will boot up with a fully functional firewall in live environment using existing configuration
 but will not overwrite the previous installation. Use this feature for safely previewing or testing upgrades.
 
 For new installations or migrations, follow this process:
