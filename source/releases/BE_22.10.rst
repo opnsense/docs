@@ -160,7 +160,7 @@ Here are the full patch notes:
 * ports: nss 3.87 `[18] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_87.html>`__ 
 * ports: openssl 1.1.1s `[19] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.5.8 `[20] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.8>`__ 
-* ports: pcre 10.42 `[21] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.42>`__ 
+* ports: pcre2 10.42 `[21] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.42>`__ 
 * ports: phalcon 5.1.4 `[22] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.4>`__ 
 * ports: php 8.0.27 `[23] <https://www.php.net/ChangeLog-8.php#8.0.27>`__ 
 * ports: phpseclib 3.0.18 `[24] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.18>`__ 

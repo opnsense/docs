@@ -851,7 +851,7 @@ Here are the full patch notes:
 * plugins: os-haproxy 4.0 `[1] <https://github.com/opnsense/plugins/blob/stable/23.1/net/haproxy/pkg-descr>`__ 
 * ports: curl 7.87.0 `[2] <https://curl.se/changes.html#7_87_0>`__ 
 * ports: nss 3.87 `[3] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_87.html>`__ 
-* ports: pcre 10.42 `[4] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.42>`__ 
+* ports: pcre2 10.42 `[4] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.42>`__ 
 * ports: phalcon 5.1.4 `[5] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.4>`__ 
 * ports: php 8.1.14 `[6] <https://www.php.net/ChangeLog-8.php#8.1.14>`__ 
 * ports: strongswan 5.9.9 `[7] <https://github.com/strongswan/strongswan/releases/tag/5.9.9>`__ 

@@ -29,6 +29,130 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.7.8 (November 26, 2025)
+--------------------------------------------------------------------------
+
+
+So we are making way for safer command execution since a comment was
+added to the certification of the business version about a possible
+injection into interfaces_pfsync_configure() -- note that it was a comment
+and not a security issue since the exploit requires to edit the config.xml
+and/or do a configuration import.
+
+The issue in interfaces_pfsync_configure() has now been fixed, but as
+mentioned the idea was to get rid of these problems once and for all so
+the Shell class was rewritten and every call was audited.  You will see
+more movement on our way to 26.1 in this area as we do not want to push
+all changes into the 25.7 series immediately so that they can be properly
+verified first.  Suffice to say most of the code we worked on over the
+years was already much safer due to the introduction of exec_safe() very
+early in the project history.
+
+The Unbound blocklists feature formerly known as a business feature is
+now a community feature!  Since this required merging both the existing
+community one with the business one you need to make sure to reapply the
+blocklist settings after the reboot since it will not generate a new and
+actually incompatible format.  Make sure to check your automatically
+migrated settings while at it.
+
+What does all of this mean?  It means security matters.  It also means
+that community matters.  We will continue to improve the community version
+because it is the base for the business version and that is exactly how
+it should be so that everybody can benefit from these changes!
+
+Note this release includes a new kernel with a lot of improvements in the
+vtnet(4) driver department.  It is stable code according to release
+engineering procedures of FreeBSD but if you are seeing specific issues let
+us know.
+
+Here are the full patch notes:
+
+* system: defaults: properly delete empty model containers in the configuration
+* system: switch int/bool to string in gateway properties
+* system: ignore TypeErrors when parsing log lines in the backend
+* system: replace various raw exec(), system(), passthru() and shell_exec() calls with safer variants
+* system: add host route deletion support to system_host_route()
+* system: move the general page host route removal to system_host_route()
+* system: add CA chain to PKCS12 export
+* interfaces: support link-local IPv6 mode
+* interfaces: also stop PPPoE connections when CARP is temporarily disabled (contributed by René Mayrhofer)
+* interfaces: fix packet capture and ping buttons not working since 25.7.7
+* interfaces: limit execution of sysctl scope in PPP device edit code
+* interfaces: safer interfaces_pfsync_configure() handling
+* firewall: live log: make this grid static and slightly adjust info column width
+* firewall: live log: backwards compatibility for old 'interface_name' field type
+* firewall: live view: fix wrong variable scope
+* firewall: automation: split search logic and normalize legacy output
+* firewall: aliases: add a few GeoIP related logging messages
+* firewall: mute pfctl-based table entry expire to avoid cron noise due to stderr use
+* firewall: aliases: missing placeholder for username in basic auth type selection
+* firewall: support "0" as valid rule ID in rule lookup redirect
+* firewall: automation: add per-rule state timeouts for "udp.first", "udp.multiple" and "udp.single"
+* captive portal: fix selectpicker #voucher-groups not being re-rendered after change event
+* captive portal: move grid init to tab show event
+* dnsmasq: switch to file_safe() use in backend
+* dnsmasq: minor safe execution changes in backend
+* kea-dhcp: automatic route support for PD leases
+* kea-dhcp: case insensitive MAC address comparison
+* isc-dhcp: adjust backend for safe execution
+* ipsec: disable model caching on SPD page
+* ipsec: add AES256GCM16 to the child ESP proposals list
+* ipsec: hide phase 2 output based on phase 1 status instead of the row count for phase 2
+* ipsec: add "reqid_base" setting to advanced settings
+* openssh: minor safe execution change in backend
+* openvpn: swap description and mode in "tls_key" and require a description for static keys
+* openvpn: one safe execution change
+* openvpn: add fast-io option (contributed by mdten)
+* radvd: safe execution changes
+* unbound: improve CNAME handling of whitelisted domains
+* unbound: safe command execution changes
+* unbound: merge extended blocklists into community version
+* unbound: duplicate pointer records due to not casting the field types
+* wireguard: fix wrong maximum value for "PersistentKeepalive"
+* backend: rename "realif" variables to "device" in a number of spots
+* backend: avoid the use of get_real_interface() when it does not matter and remove dead code associated with that
+* backend: exend shell_safe() to emulate exec() $output argument magic
+* backend: reimplement existing command execution functions with Shell class implementation
+* backend: replace mwexecf_bg() with mwexecfb() for clarity
+* mvc: move translation to menu system and add "FixedName" property
+* mvc: extend ModelRelationField so it can optionally disable caching
+* mvc: rewrite the old Shell class according to our current standards for safe command execution (exec_safe() wrapper)
+* mvc: make "data_change_message_content" configurable
+* shell: assorted cleanups in console menu related scripts
+* ui: fix tokenizer event trigger loop
+* plugins: os-freeradius 1.9.28 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.49 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/net/frr/pkg-descr>`__ 
+* plugins: os-ndp-proxy-go 1.0 is a hot-off-the-press userspace IPv6 Neighbor Discovery Proxy `[3] <https://docs.opnsense.org/manual/ndp-proxy-go.html>`__ 
+* plugins: os-q-feeds-connector 1.3 `[4] <https://github.com/opnsense/plugins/blob/stable/25.7/security/q-feeds-connector/pkg-descr>`__ 
+* plugins: os-theme-flexcolor 1.0 is a new 3-in one theme `[5] <https://github.com/opnsense/plugins/blob/stable/25.7/misc/theme-flexcolor/pkg-descr>`__  (contributed by Schnuffel2008)
+* src: vtnet: assorted stable branch improvements
+* src: ifconfig: assorted stable branch improvements
+* src: SO_REUSEPORT_LB breaks connect(2) for UDP sockets `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-25:09.netinet.asc>`__ 
+* src: sctp, tcp, udp: improve deferred computation of checksums
+* src: dhclient: improve UDP checksum handling
+* src: ipfw: check for errors from sooptcopyin() and sooptcopyout()
+* src: ipfw: pmod: avoid further rule processing after tcp-mod failures
+* src: dummynet: move excessive logging messages under debug output
+* src: net: validate interface group names in ioctl handlers
+* src: pf: improve DIOCRCLRTABLES validation
+* src: pf: improve add state validation
+* src: pf: SCTP abort messages fully close the connection
+* src: if_vxlan: fix byteorder of source port
+* src: ixl: fix multicast promiscuous mode state tracking and filter management
+* src: ix/ixv: add support for new Intel Ethernet E610 family devices
+* src: ice: add PCI IDs for E835 devices
+* src: ice: add support for E835-XXV-4 adapter
+* src: igb: fix out-of-bounds register access on VFs
+* src: netlink: in snl_init_writer() do not overwrite error in case of failure
+* ports: curl 8.17.0 `[7] <https://curl.se/changes.html#8_17_0>`__ 
+* ports: nss 3.118.1 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_118_1.html>`__ 
+* ports: openvpn 2.6.16 `[9] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.16>`__ 
+* ports: pcre2 10.47 `[10] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.47>`__ 
+* ports: php 8.3.28 `[11] <https://www.php.net/ChangeLog-8.php#8.3.28>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.7.7 (November 06, 2025)
 --------------------------------------------------------------------------
 
@@ -44,7 +168,7 @@ NDP proxy plugin and a community theme.  Stay tuned.  :)
 
 Here are the full patch notes:
 
-* system: simplify RRD backup code and remove exec() usage (reported by Alex Williams from Pellera Technologies working with Trend Zero Day Initiative)
+* system: simplify RRD backup code and remove exec() usage `[1] <https://www.cve.org/cverecord?id=CVE-2025-13698>`__  (reported by Alex Williams from Pellera Technologies working with Trend Zero Day Initiative)
 * system: move valid_from search criteria to log_matcher for faster end of search
 * system: use file_safe() in gateway monitor watcher
 * system: refactor factory reset page to MVC and add a reset per component operating on models
@@ -67,20 +191,20 @@ Here are the full patch notes:
 * mvc: persist models description in root attribute of its respective configuration
 * rc: secure an exec() in the recovery script
 * ui: improve grid responsiveness via minWidth()
-* ui: remove this.dataIdentifier as datakey defines the key to be used when asking 'row-id' or getSelectedRows
+* ui: remove this.dataIdentifier as datakey defines the key to be used when asking "row-id" or getSelectedRows
 * ui: SimpleActionButton: add support for icons in action buttons
 * ui: recompile default themes using dart sass (1.93.2) which changes color rendering
 * ui: keyboard shortcuts for "a"dvanced and "h"elp in MVC pages (contributed by Konstantinos Spartalis)
 * ui: bail out on dynamic grid resize if data is loading
-* plugins: os-frr 1.48 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/net/frr/pkg-descr>`__ 
-* plugins: os-tayga 1.3 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/net/tayga/pkg-descr>`__ 
-* ports: kea 3.0.2 `[3] <https://downloads.isc.org/isc/kea/3.0.2/Kea-3.0.2-ReleaseNotes.txt>`__ 
-* ports: libxml 2.14.6 `[4] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
-* ports: php 8.3.27 `[5] <https://www.php.net/ChangeLog-8.php#8.3.27>`__ 
-* ports: sqlite 3.50.4 `[5] <https://www.php.net/ChangeLog-8.php#8.3.27>`__ 
-* ports: strongswan 6.0.3 `[7] <https://github.com/strongswan/strongswan/releases/tag/6.0.3>`__ 
-* ports: suricata 8.0.2 `[8] <https://suricata.io/2025/11/06/suricata-8-0-2-and-7-0-13-released/>`__ 
-* ports: unbound 1.24.1 `[9] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-24-1>`__ 
+* plugins: os-frr 1.48 `[1] <https://www.cve.org/cverecord?id=CVE-2025-13698>`__ 
+* plugins: os-tayga 1.3 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/net/frr/pkg-descr>`__ 
+* ports: kea 3.0.2 `[3] <https://github.com/opnsense/plugins/blob/stable/25.7/net/tayga/pkg-descr>`__ 
+* ports: libxml 2.14.6 `[4] <https://downloads.isc.org/isc/kea/3.0.2/Kea-3.0.2-ReleaseNotes.txt>`__ 
+* ports: php 8.3.27 `[5] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: sqlite 3.50.4 `[5] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: strongswan 6.0.3 `[7] <https://sqlite.org/releaselog/3_50_4.html>`__ 
+* ports: suricata 8.0.2 `[8] <https://github.com/strongswan/strongswan/releases/tag/6.0.3>`__ 
+* ports: unbound 1.24.1 `[9] <https://suricata.io/2025/11/06/suricata-8-0-2-and-7-0-13-released/>`__ 
 
 A hotfix release was issued as 25.7.7_2:
 
