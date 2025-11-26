@@ -6,7 +6,7 @@ Virtual & Cloud based Installation
 Local/Server
 ------------
 Installing OPNsense on a virtual machine can be done by using the DVD ISO image.
-Full instructions are available in chapter :doc:`install` .
+Full instructions are available in chapter :doc:`install`.
 
 General tips
 ------------
@@ -75,7 +75,7 @@ Note: to install the VirtualBox guest additions just go to :menuselection:`Syste
 
 Hosted
 --------------------
-For hosted installations where you can't install using the DVD ISO an alternative
+For hosted installations where you can't install using the DVD ISO, an alternative
 approach is available in the form of **opnsense-bootstrap**.
 
 opnsense-bootstrap
@@ -91,8 +91,8 @@ package fingerprints.
 What it will also do is turn a supported stock FreeBSD release into an OPNsense
 installation.  Both UFS and ZFS installations are supported.
 
-opnsense bootstrap is available for our
-`github source repository <https://github.com/opnsense/update/tree/master/bootstrap>`__
+opnsense-bootstrap is available for our
+`GitHub source repository <https://github.com/opnsense/update/tree/master/bootstrap>`__
 
 
 
@@ -102,8 +102,8 @@ Amazon AWS EC2 Cloud
 .. image:: how-tos/images/amazon-web-services.png
     :height: 80px
 
-Installing OPNsense into the Amazon cloud can be a daunting task as no console is
-offered. Luckily an easy to install AMI is also available in the aws marketplace.
+Installing OPNsense in Amazon Web Services can be a daunting task as no console is
+offered. Luckily, an easy-to-install AMI is also available in the AWS marketplace.
 
 See also our how-to for :doc:`how-tos/installaws`.
 
