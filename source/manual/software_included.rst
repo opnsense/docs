@@ -12,7 +12,7 @@ install them when not installed by default.
 The operating system
 ....................................
 
-The basic ( `FreeBSD <https://www.freebsd.org/>`__) system contains a kernel and a base package, which provide the
+The basic (`FreeBSD <https://www.freebsd.org/>`__) system contains a kernel and a base package, which provide the
 bare essentials for the system to be able to boot and do its work.
 
 Both components are updated using :code:`opnsense-update`, which is explained in more detail
@@ -25,7 +25,7 @@ Plugins
 Plugins are packages offered by OPNsense®, which can be installed directly via the user interface and often come
 with setup options accessible for the end-user.
 
-Since OPNsense® is a community driven project, the amount of (community/commercial) support available on these plugins
+Since OPNsense® is a community-driven project, the amount of (community/commercial) support available on these plugins
 can be different.
 
 .. Note::
@@ -49,7 +49,7 @@ To find a full list of all software available, you can use the following command
     pkg rquery '%n (%v)'
 
 
-If, for example you would like to install the gnu `nano <https://www.nano-editor.org/>`__ editor, you can do so using the following command:
+For example, if you would like to install the gnu `nano <https://www.nano-editor.org/>`__ editor, you can do so using the following command:
 
 .. code-block:: sh
 
@@ -72,7 +72,7 @@ If, for example you would like to install the gnu `nano <https://www.nano-editor
 The ports tree
 ....................................
 
-In case you are using software, which is not supplied by us, you can always build these packages yourself.
+In case you are using software which is not supplied by us, you can always build these packages yourself.
 It's best to use our build system to facilitate this, you can do so using the following commands
 
 .. code-block:: sh
