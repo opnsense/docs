@@ -99,7 +99,7 @@ Depending on your hardware and use case, different installation options are avai
 .. Warning::
    Flash memory cards will only tolerate a limited number of writes and re-writes. For
    the Nano image, **/var/log** and **/tmp** are memory disks by
-   default to prolong the lifetimes of CF/SD cards and perhaps also SSD in special cases.
+   default to prolong the lifetimes of CF/SD cards and SSDs in special cases.
 
    To enable non-embedded versions: Go to :menuselection:`System --> Settings --> Miscellaneous --> Disk / Memory Settings`,
    change the setting, then reboot. Consider enabling an external syslog server as well.
@@ -370,7 +370,7 @@ For new installations or migrations, follow this process:
 
    #. If Importer is successful, the boot process will continue into the Live environment using
       the configuration stored on the USB drive.
-   #. If unsuccessful, the importer will error and return to to the device selection prompt. In this
+   #. If unsuccessful, the importer will error and return to the device selection prompt. In this
       case, repeat steps 1-3 again.
 
 Live Environment
