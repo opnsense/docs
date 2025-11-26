@@ -4,7 +4,7 @@ Initial Installation & Configuration
 
 .. Note::
    Just looking for how to invoke the installer? When the live environment has been
-   started, just log in with user **installer** and password **opnsense**.
+   started, log in with user **installer** and password **opnsense**.
 
 .. contents:: Index
 
@@ -57,7 +57,7 @@ The main differences between embedded and full images are:
 +-----------------------+-----------------------+
 
 
-The Embedded image stores logging and cache data in memory only, while full versions
+The embedded image stores logging and cache data in memory only, while full versions
 will keep the data stored on the local drive. A full version can mimic the
 behavior of an embedded version by enabling RAM disks, which is especially
 useful for SD memory card installations.
@@ -99,7 +99,7 @@ Depending on your hardware and use case, different installation options are avai
 .. Warning::
    Flash memory cards will only tolerate a limited number of writes and re-writes. For
    the Nano image, **/var/log** and **/tmp** are memory disks by
-   default to prolong CF (flash) card lifetimes.
+   default to prolong the lifetimes of CF/SD cards and perhaps also SSD in special cases.
 
    To enable non-embedded versions: Go to :menuselection:`System --> Settings --> Miscellaneous --> Disk / Memory Settings`,
    change the setting, then reboot. Consider enabling an external syslog server as well.
@@ -344,10 +344,10 @@ For systems that have OPNsense installed and the configuration intact, here is t
 #. Boot the system with installation media
 #. Press any key when you see **“Press any key to start the configuration importer”**.
 
-   #. If you see OPNsense logo, you have passed the Importer and will need to reboot.
+   #. If you see the login prompt, you have passed the importer and will need to reboot.
 
 #. Type the device name of the existing drive that contains the configuration and press enter.
-#. If Importer is successful, the boot process will continue into the Live environment using the stored configuration on disk.
+#. If Importer is successful, the boot process will continue into the live environment using the stored configuration on disk.
 #. If Importer was unsuccessful, we will be returned to the device selection prompt.  Confirm the
    device name is correct and try again.  Otherwise, there may be possible disk corruption and
    restoring from backup.
@@ -355,7 +355,7 @@ For systems that have OPNsense installed and the configuration intact, here is t
 At this point, the system will boot up with a fully functional firewall in Live environment using existing configuration
 but will not overwrite the previous installation. Use this feature for safely previewing or testing upgrades.
 
-For new installations/migrations, follow this process:
+For new installations or migrations, follow this process:
 
 #. We must have a 2nd USB drive formatted with FAT or FAT32 File system.
 
@@ -370,8 +370,8 @@ For new installations/migrations, follow this process:
 
    #. If Importer is successful, the boot process will continue into the Live environment using
       the configuration stored on the USB drive.
-   #. If unsuccessful, importer will error and return us to the device selection prompt. We suggest
-      repeating steps 1-3 again.
+   #. If unsuccessful, the importer will error and return to to the device selection prompt. In this
+      case, repeat steps 1-3 again.
 
 Live Environment
 ----------------
