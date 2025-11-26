@@ -3,8 +3,8 @@ Initial Installation & Configuration
 =====================================
 
 .. Note::
-   Just looking on how to invoke the installer? When the live environment has been
-   started just login with user **installer** and password **opnsense**.
+   Just looking for how to invoke the installer? When the live environment has been
+   started, log in with user **installer** and password **opnsense**.
 
 .. contents:: Index
 
@@ -57,9 +57,9 @@ The main differences between embedded and full images are:
 +-----------------------+-----------------------+
 
 
-Embedded image store logging and cache data in memory only, while full versions
+The embedded image stores logging and cache data in memory only, while full versions
 will keep the data stored on the local drive. A full version can mimic the
-behavior of an embedded version by enabling RAM disks, this is especially
+behavior of an embedded version by enabling RAM disks, which is especially
 useful for SD memory card installations.
 
 .. Warning::
@@ -98,8 +98,8 @@ Depending on your hardware and use case, different installation options are avai
 
 .. Warning::
    Flash memory cards will only tolerate a limited number of writes and re-writes. For
-   Nano image memory disks for **/var/log** and **/tmp** are applied by
-   default to prolong CF (flash) card lifetimes.
+   the Nano image, **/var/log** and **/tmp** are memory disks by
+   default to prolong the lifetimes of CF/SD cards and SSDs in special cases.
 
    To enable non-embedded versions: Go to :menuselection:`System --> Settings --> Miscellaneous --> Disk / Memory Settings`,
    change the setting, then reboot. Consider enabling an external syslog server as well.
@@ -173,13 +173,13 @@ from one of our `mirrors <https://opnsense.org/download>`__.
 OpenSSL is used for image file verification.  4 files are needed for verification process:
 
 * The SHA-256 checksum file (<filename>.sha256)
-* The bzip compressed image file (<filename>.<image>.bz2)
+* The bzip-compressed image file (<filename>.<image>.bz2)
 * The signature file for the uncompressed image file (<filename>.<image>.sig)
-* The openssl public key (<filename>.pub)
+* The OpenSSL public key (<filename>.pub)
 
 Use one of the OPNsense mirrors to download these files:
 
-1. Go to the bottom of OPNSense `download <https://opnsense.org/download>`__ page.
+1. Go to the bottom of OPNsense `download <https://opnsense.org/download>`__ page.
 2. Click one of the available mirrors closest to your location.
 3. Download one of each file mentioned above for your Image type.
 
@@ -212,7 +212,7 @@ the following commands (substituting the filenames in brackets for the files you
 Match the checksum command output with the checksum values in the file ``OPNsense-<version>-OpenSSL-checksums-amd64.sha256``.
 If the checksums don't match, redownload your image file.
 
-If checksums match continue with the verification commands.
+If the checksums match, continue with the verification commands.
 
 ::
 
@@ -227,7 +227,7 @@ If checksums match continue with the verification commands.
 
 
 If the output of the second command is “**Verified OK**”, your image file was verified
-successfully, and its safe to install from it. Any other outputs, and you may need
+successfully, and it is safe to install from it. Any other outputs, and you may need
 to check your commands for errors, or the image file may have been compromised.
 
 
@@ -235,7 +235,7 @@ to check your commands for errors, or the image file may have been compromised.
 Installation Media
 -------------------
 
-Now that you have downloaded and verified the installation image from above.  You must unpack the
+Now that you have downloaded and verified the installation image from above, you must unpack the
 image file before you can write the image to disk.
 For Unix-like OSes use the following command:
 
@@ -253,7 +253,7 @@ Image. If your target platform has a serial console interface choose the
 need to know more about using the serial console interface, consult the :doc:`serial access how-to<how-tos/serial_access>`.
 
 Write the image to a USB flash drive (>=1 GB) or hard disk, using either dd for Unix-like
-OSes and for Windows use physdiskwrite, `Etcher <https://www.balena.io/etcher#download-etcher>`_,
+OSes or, for Windows, physdiskwrite, `Etcher <https://www.balena.io/etcher#download-etcher>`_,
 or `Rufus <https://rufus.ie/>`_.
 
 
@@ -303,14 +303,14 @@ System Boot Preparation
 
 After preparing the installation media, we need to make sure we can access the console
 (either via keyboard and [virtual]monitor or :doc:`serial connectivity<how-tos/serial_access>`).  Next we need to know
-how to access the boot menu or the system bios (UEFI) to boot from the installation media.  Most times will be a function
+how to access the boot menu or the system BIOS (UEFI) to boot from the installation media.  In most cases, it will be a function
 (F#), Del, or ESC key that needs to pressed immediately after powering on (or rebooting) the system.  Usually within the
 first 2 to 3 seconds from powering up.
 
 
 .. Tip::
 
-    OPNsense devices from the `OPNsense shop <https://shop.opnsense.com/>`__ use :code:`<ESC>` to enter the bios and boot selection
+    OPNsense devices from the `OPNsense shop <https://shop.opnsense.com/>`__ use :code:`<ESC>` to enter the BIOS and boot selection
     options.
 
 .. Note::
@@ -339,23 +339,23 @@ or migrating configurations to new hardware installations.  Using Importer is sl
 different between previous installs with existing configurations on disk vs new
 installations/migrations.
 
-For systems that have OPNsense installed, and the configuration intact.  Here is the process:
+For systems that have OPNsense installed and the configuration intact, here is the process:
 
 #. Boot the system with installation media
 #. Press any key when you see **“Press any key to start the configuration importer”**.
 
-   #. If you see OPNsense logo you have past the Importer and will need to reboot.
+   #. If you see the login prompt, you have passed the importer and will need to reboot.
 
 #. Type the device name of the existing drive that contains the configuration and press enter.
-#. If Importer is successful, the boot process will continue into the Live environment using the stored configuration on disk.
-#. If Importer was unsuccessful, we will returned to the device selection prompt.  Confirm the
-   device name is correct and try again.  Otherwise, there maybe possible disk corruption and
+#. If Importer is successful, the boot process will continue into the live environment using the stored configuration on disk.
+#. If Importer was unsuccessful, we will be returned to the device selection prompt.  Confirm the
+   device name is correct and try again.  Otherwise, there may be possible disk corruption and
    restoring from backup.
 
-At this point the system will boot up with a fully functional firewall in Live enironment using existing configuration
+At this point, the system will boot up with a fully functional firewall in live environment using existing configuration
 but will not overwrite the previous installation. Use this feature for safely previewing or testing upgrades.
 
-For New installations/migrations follow this process:
+For new installations or migrations, follow this process:
 
 #. We must have a 2nd USB drive formatted with FAT or FAT32 File system.
 
@@ -365,13 +365,13 @@ For New installations/migrations follow this process:
 #. Place an *unencrypted* <downloaded backup>.xml into /conf and rename the file to **config.xml** (:code:`/conf/config.xml`)
 #. Put both the Installation media and the 2nd USB drive into the system and power up / reboot.
 #. Boot the system from the OPNsense Installation media via Boot Menu or BIOS (UEFI).
-#. Press aany key when you see: **“Press any key to start the configuration importer”**
+#. Press any key when you see: **“Press any key to start the configuration importer”**
 #. Type the device name of the 2nd USB Drive, e.g. `da0` or `nvd0` , and press Enter.
 
    #. If Importer is successful, the boot process will continue into the Live environment using
       the configuration stored on the USB drive.
-   #. If unsuccessful, importer will error and return us to the device selection prompt. Suggest
-      repeating steps 1-3 again.
+   #. If unsuccessful, the importer will error and return to the device selection prompt. In this
+      case, repeat steps 1-3 again.
 
 Live Environment
 ----------------
@@ -394,7 +394,7 @@ Using SSH we can access the firewall at IP **192.168.1.1** .  Both the **root** 
 users are available with the password specified above.
 
 .. Note::
-   That the installation media is read-only, which means your current live configuration will
+   The installation media is read-only, which means your current live configuration will
    be lost after reboot.
 
 Continue to `OPNsense Installer`_ to install OPNsense to the local storage device.
@@ -402,34 +402,34 @@ Continue to `OPNsense Installer`_ to install OPNsense to the local storage devic
 OPNsense Installer
 ---------------------
 .. Note::
-   To invoke the installer login with user **installer** and password
+   To invoke the installer, log in with user **installer** and password
    **opnsense**
 
 After successfully booting up with the OPNsense Full Image (DVD, VGA, Serial),
 the firewall will be at the Live Environment's login: prompt.  To start the
 installation process, login with the user ``installer`` and password ``opnsense``.
 If Importer was used to import an existing configuration, the installer and root
-user password would be the root password from the imported configuration.
+user password will be the root password from the imported configuration.
 
 If the installer user does not work, log in as user root and select: ``8) Shell``
 from the menu and type ``opnsense-installer``.  The ``opnsense-importer`` can also
-be run this way should you require to rerun the import.
+be run this way should you need to rerun the import.
 
 The installer can always be run to clone an existing system, even for Nano
 images. This can be useful for creating live backups for later recovery.
 
 .. Tip::
-   The installer can also be started from an inside host using ssh.  Default ip
+   The installer can also be started from an internal host using SSH.  The default IP
    address is ``192.168.1.1``
 
 .. Attention::
    When installing an appliance with SD or MMC flash card storage, ensure you select the UFS filesystem
    and choose ``mmcsd0`` in the Disk Selection. Do not choose ``da0`` as that is the USB drive.
-   As example, this is applicable to the DEC677 Desktop Security Appliance.
+   As an example, this is applicable to the DEC677 Desktop Security Appliance.
 
 The installation process involves the following steps:
 
-#. Keymap selection - The default configuration should be fine for most Occasions.
+#. Keymap selection - The default configuration should be fine for most occasions.
 #. Install (UFS|ZFS) - Choose UFS or ZFS filesystem. ZFS is in most cases the best option
    as it is the most reliable option, but it does require enough capacity (a couple of gigabytes at least).
 #. Partitioning (ZFS) - Choose a device type. The default option (stripe) is usually acceptable
@@ -453,7 +453,7 @@ Nano Image
 
 To use the nano image follow this process:
 
-#. Create the system disk with using the nano image.  See `Installation Media`_
+#. Create the system disk by using the Nano image.  See `Installation Media`_
    how to write the nano image to disk.
 #. Install the system disk drive into the system.
 #. Configure the system (BIOS) to boot from this disk.
@@ -466,8 +466,8 @@ mounting these partitions in system memory and reporting features are disabled b
 ---------------------
 Initial Configuration
 ---------------------
-After installation the system will prompt you for the interface
-assignment, if you ignore this then default settings are applied.
+After installation, the system will prompt you for the interface
+assignment. If you ignore this, then the default settings will be applied.
 Installation ends with the login prompt.
 
 By default you have to log in to enter the console.
@@ -492,7 +492,7 @@ By default you have to log in to enter the console.
     and password "opnsense".
 
 VLANs and assigning interfaces
-    If choose to do manual interface assignment or when no config file can be
+    If you choose to do manual interface assignment or when no config file can be
     found then you are asked to assign Interfaces and VLANs. VLANs are optional.
     If you do not need VLANs then choose **no**. You can always configure
     VLANs at a later time.
@@ -500,7 +500,7 @@ VLANs and assigning interfaces
 LAN, WAN and optional interfaces
     The first interface is the LAN interface. Type the appropriate
     interface name, for example "em0". The second interface is the WAN
-    interface. Type the appropriate interface name, eg. "em1" . Possible
+    interface. Type the appropriate interface name, e.g. "em1" . Possible
     additional interfaces can be assigned as OPT interfaces. If you
     assigned all your interfaces you can press [ENTER] and confirm the
     settings. OPNsense will configure your system and present the login

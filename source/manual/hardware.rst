@@ -10,8 +10,8 @@ OPNsense.
 pre-installed can be purchased directly from various (online) stores.
 
 .. TIP::
-  The OPNsense development team encourage everyone looking for a turn-key solution
-  to buy from `Deciso <https://www.deciso.com>`__ or one of the other partners listed at our partner page.
+  The OPNsense development team encourages everyone looking for a turn-key solution
+  to buy from `Deciso <https://www.deciso.com>`__ or one of the other partners listed on our partner page.
   **Listed partners make significant contributions back to the project.**
 
 --------------------------------
@@ -23,8 +23,8 @@ Full installs on `SD memory cards <https://en.wikipedia.org/wiki/Secure_Digital>
 `solid-state disks (SSD) <https://en.wikipedia.org/wiki/Solid-state_drive>`__ or `hard disk drives
 (HDD) <https://en.wikipedia.org/wiki/Hard_disk_drive>`__ are intended for OPNsense.
 
-While the range of supported devices are from embedded systems to rack
-mounted servers, the hardware must be capable of running 64-bit `operating
+While supported devices range from embedded systems to rack-mounted servers,
+the hardware must be capable of running 64-bit `operating
 systems <https://en.wikipedia.org/wiki/operating_system>`__.
 
 ---------------------
@@ -39,16 +39,16 @@ recommended specifications.
    :name: minimum
 
 The minimum specification to run all OPNsense standard features that do
-not need disk writes, means you can run all standard features, except
+not need disk writes means you can run all standard features, except
 for the ones that require disk writes, e.g. a caching proxy (cache) or intrusion detection
 and prevention (alert database).
 
 +------------------+--------------------------------------------------------------------------+
-| Processor        | 1 GHz dual core cpu                                                      |
+| Processor        | 1 GHz dual-core CPU                                                      |
 +------------------+--------------------------------------------------------------------------+
 | RAM              | 2 GB                                                                     |
 +------------------+--------------------------------------------------------------------------+
-| Install method   | Serial console or video (vga)                                            |
+| Install method   | Serial console or video (VGA)                                            |
 +------------------+--------------------------------------------------------------------------+
 | Install target   | SD or CF card with a minimum of 4 GB, use nano images for installation.  |
 +------------------+--------------------------------------------------------------------------+
@@ -58,16 +58,16 @@ Table:  *Minimum hardware requirements*
 .. rubric:: Reasonable
    :name: reasonable
 
-The reasonable specification to run all OPNsense standard features,
+The reasonable specification to run all OPNsense standard features
 means every feature is functional, but perhaps not with a lot of users
 or high loads.
 
 +------------------+--------------------------------------------------------------------------+
-| Processor        | 1 GHz dual core cpu                                                      |
+| Processor        | 1 GHz dual-core CPU                                                      |
 +------------------+--------------------------------------------------------------------------+
 | RAM              | 4 GB                                                                     |
 +------------------+--------------------------------------------------------------------------+
-| Install method   | Serial console or video (vga)                                            |
+| Install method   | Serial console or video (VGA)                                            |
 +------------------+--------------------------------------------------------------------------+
 | Install target   | 40 GB SSD, a minimum of 2 GB memory is needed for the installer to run.  |
 +------------------+--------------------------------------------------------------------------+
@@ -77,15 +77,15 @@ Table:  *Reasonable hardware requirements*
 .. rubric:: Recommended
    :name: recommended
 
-The recommended specification to run all OPNsense standard features,
+The recommended specification to run all OPNsense standard features
 means every feature is functional and fits most use cases.
 
 +------------------+---------------------------------+
-| Processor        | 1.5 GHz multi core cpu          |
+| Processor        | 1.5 GHz multi-core CPU          |
 +------------------+---------------------------------+
 | RAM              | 8 GB                            |
 +------------------+---------------------------------+
-| Install method   | Serial console or video (vga)   |
+| Install method   | Serial console or video (VGA)   |
 +------------------+---------------------------------+
 | Install target   | 120 GB SSD                      |
 +------------------+---------------------------------+
@@ -95,33 +95,31 @@ Table:  *Recommended hardware requirements*
 .. rubric:: Hardware guide
    :name: hardware-guide
 
-The hardware required for your local OPNsense, will be determined by the
-intended minimum `throughput <#throughput>`__ and the
-feature set.
+The hardware required for your local OPNsense will be determined by the
+intended minimum `throughput <#throughput>`__ and feature set.
 
 ---------------------
 Impact of Feature set
 ---------------------
 
 While most features do not affect hardware dimensioning, a few features
-have massive impact on it. The candidates are:
+have a massive impact on it. These include:
 
 `Squid <https://en.wikipedia.org/wiki/Squid_(software)>`__ 
-    a caching web proxy which can be used for web-content control,
-    respectively. These packages rely strongly on CPU load and
-    disk-cache writes.
+    A caching web proxy which can be used for web-content control.
+    These packages rely strongly on CPU load and disk-cache writes.
 
 `Captive portal <https://en.wikipedia.org/wiki/Captive_portal>`__
-    settings with hundreds of simultaneously served captive portal users
+    Settings with hundreds of simultaneously served captive portal users
     will require more CPU power in all the hardware specifications
     displayed below.
 
 `State transition tables <https://en.wikipedia.org/wiki/State_transition_table>`__
-    it is a known fact, that each state table entry requires about 1 kB
+    It is a known fact that each state table entry requires about 1 kB
     (kilobytes) of RAM. The average state table, filled with 1000
-    entries will occupy about ~1 MB (megabytes) of
+    entries, will occupy about 1 MB (megabytes) of
     `RAM <https://en.wikipedia.org/wiki/Random-access_memory>`__.
-    OPNsense usage settings with hundred of thousands of connections
+    OPNsense usage settings with hundreds of thousands of connections
     will require memory accordingly.
 
 |
@@ -130,7 +128,7 @@ have massive impact on it. The candidates are:
 Throughput
 ----------
 
-The main hardware-factors of the OPNsense setup involved are CPU, RAM,
+The main hardware factors of the OPNsense setup involved are CPU, RAM,
 mass storage (disc), the number and quality of network interfaces.
 
 +-------------------+-----------------------+-------------+------------------------+
