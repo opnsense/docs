@@ -453,7 +453,7 @@ Nano Image
 
 To use the nano image follow this process:
 
-#. Create the system disk by using the nano image.  See `Installation Media`_
+#. Create the system disk by using the Nano image.  See `Installation Media`_
    how to write the nano image to disk.
 #. Install the system disk drive into the system.
 #. Configure the system (BIOS) to boot from this disk.
