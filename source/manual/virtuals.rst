@@ -75,7 +75,7 @@ Note: to install the VirtualBox guest additions just go to :menuselection:`Syste
 
 Hosted
 --------------------
-For hosted installations where you can't install using the DVD ISO, an alternative
+For hosted installations where you cannot install using the DVD ISO, an alternative
 approach is available in the form of **opnsense-bootstrap**.
 
 opnsense-bootstrap
