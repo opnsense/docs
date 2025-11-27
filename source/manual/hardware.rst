@@ -39,7 +39,7 @@ recommended specifications.
    :name: minimum
 
 The minimum specification to run all OPNsense standard features that do
-not need disk writes means you can run all standard features, except
+not need disk writes. Means that you can run all standard features, except
 for the ones that require disk writes, e.g. a caching proxy (cache) or intrusion detection
 and prevention (alert database).
 
@@ -58,8 +58,8 @@ Table:  *Minimum hardware requirements*
 .. rubric:: Reasonable
    :name: reasonable
 
-The reasonable specification to run all OPNsense standard features
-means every feature is functional, but perhaps not with a lot of users
+The reasonable specification to run all OPNsense standard features.
+Means that every feature is functional, but perhaps not with a lot of users
 or high loads.
 
 +------------------+--------------------------------------------------------------------------+
@@ -77,8 +77,8 @@ Table:  *Reasonable hardware requirements*
 .. rubric:: Recommended
    :name: recommended
 
-The recommended specification to run all OPNsense standard features
-means every feature is functional and fits most use cases.
+The recommended specification to run all OPNsense standard features.
+Means that every feature is functional and fits most use cases.
 
 +------------------+---------------------------------+
 | Processor        | 1.5 GHz multi-core CPU          |
