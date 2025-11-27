@@ -43,11 +43,19 @@ Important configuration details
 - **LAN (downstreams)**:
     The requirement is that the interface must have an link-local address (LLA).
 
+- **Ethernet (multi-access network)**:
+    The upstream and downstream interfaces must be ethernet devices (e.g. igc0, vlan0.1). Point-to-point (like PPPoE)
+    or virtual tunnel interfaces are not supported.
 
 .. Tip::
 
    You can proxy the upstream prefix to any amount of downstream interfaces. Since this proxy includes DAD messages, IP address
    conflicts are unlikely to cause issues even in larger proxied networks or when using this with cloud providers.
+
+.. Tip::
+
+   If you receive a single /64 prefix via DHCPv6-PD on a PPPoE link, it must be terminated on a router **before** the proxy.
+   This could be another OPNsense, or a device like a Fritzbox.
 
 
 Example setup
