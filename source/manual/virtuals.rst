@@ -1,20 +1,20 @@
 ==================================
-Virtual & Cloud based Installation
+Virtual & Cloud-Based Installation
 ==================================
 
 ------------
 Local/Server
 ------------
 Installing OPNsense on a virtual machine can be done by using the DVD ISO image.
-Full instructions are available in chapter :doc:`install`.
+Full instructions are available in the chapter :doc:`install`.
 
 General tips
 ------------
-For optimum performance and compatibility, these guides are given:
+For optimum performance and compatibility, consider the following guidelines:
 
 * Minimum required RAM is 1 GB
 * Minimum recommended virtual disk size of 8 GB
-* Disable all off-loading settings in :menuselection:`Interfaces --> Settings`
+* Disable all hardware off-loading settings in :menuselection:`Interfaces --> Settings`
 
 .. image:: images/disableoffloading.png
 
@@ -22,54 +22,54 @@ For optimum performance and compatibility, these guides are given:
 VMware ESXi
 --------------------
 
-VMware offers full instructions for installing FreeBSD, these can be found
+VMware offers full instructions for installing FreeBSD, which can be found
 `here <https://partnerweb.vmware.com/GOSIG/FreeBSD_14x.html>`__.
 
-To install the VMware tools just goto :menuselection:`System --> Firmware --> Plugins` and install
+To install VMware Tools, go to :menuselection:`System --> Firmware --> Plugins` and install
 **os-vmware** by clicking on the **+** sign next to it.
 
 .. image:: images/os-vmware.png
 
 .. Note::
 
-   While other network setups may work fine, the VMXNET 3 is the recommended one according to VMware's Compatibility Guide.
+   While other network setups may work fine, it is recommended to use VMXNET3 according to VMware's Compatibility Guide.
 
 
 Xen
 --------------------
-To install the Xen tools just go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
+To install Xen tools, go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
 **os-xen** by clicking on the **+** sign next to it.
 
 .. image:: images/os-xen.png
 
 
-HyperV
+Hyper-V
 --------------------
-HyperV Generation 1 and 2 are supported out of the box, no additional drivers
-or tools are needed.
+Both Hyper-V Generation 1 and 2 virtual machines are supported out of the box with no additional drivers
+or tools needed.
 
-* Secure Boot setting must be un-ticked in the Hardware > Security section for the VM.
+* Secure Boot must be disabled in the Hardware > Security section of the VM.
 
 
 KVM
 ------
-To install the QEMU quest agent just go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
+To install the QEMU guest agent, go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
 **os-qemu-guest-agent** by clicking on the **+** sign next to it.
 
 **i440FX chipset**
-OPNsense on KVM works with virtio disks and network devices (confirmed on QEMU 5.0).
+OPNsense on KVM works with VirtIO disks and network devices (confirmed on QEMU 5.0).
 
 **Q35 chipset**
 As of 22.1.x, OPNsense is based on FreeBSD 13.0, which includes support for the virtualized Q35 chipset and newer
-generation of KVM virtio devices.
-Note that this was a relatively recent addition to FreeBSD, so it may not be as well tested as the i440 support.
+generation of KVM VirtIO devices.
+Note that this was a relatively recent addition to FreeBSD, so it may not be as well tested as the i440FX support.
 
 
 Others
 --------------------
 OPNsense can be installed on all virtual machines that support FreeBSD (such as Bhyve, VirtualBox).
 
-Note: to install the VirtualBox guest additions just go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
+Note: to install VirtualBox Guest Additions, go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
 **os-virtualbox** by clicking on the **+** sign next to it.
 
 
@@ -82,16 +82,16 @@ opnsense-bootstrap
 ------------------
 opnsense-bootstrap(8) is a tool that can completely reinstall a running system
 in place for a thorough factory reset or to restore consistency of all the OPNsense
-files. It can also wipe the configuration directory, but won't do that by default.
+files. It can also wipe the configuration directory, but it does not do so by default.
 
-It will automatically pick up the latest available version and build a chain of
+The tool will automatically pick up the latest available version and build a chain of
 trust by using current package fingerprints -> CA root certificates -> HTTPS -> OPNsense
 package fingerprints.
 
-What it will also do is turn a supported stock FreeBSD release into an OPNsense
+It can also convert a supported stock FreeBSD release into an OPNsense
 installation.  Both UFS and ZFS installations are supported.
 
-opnsense-bootstrap is available for our
+opnsense-bootstrap is available at our
 `GitHub source repository <https://github.com/opnsense/update/tree/master/bootstrap>`__
 
 
@@ -103,9 +103,9 @@ Amazon AWS EC2 Cloud
     :height: 80px
 
 Installing OPNsense in Amazon Web Services can be a daunting task as no console is
-offered. Luckily, an easy-to-install AMI is also available in the AWS marketplace.
+offered. Luckily, an easy-to-install AMI is available in the AWS Marketplace.
 
-See also our how-to for :doc:`how-tos/installaws`.
+See our how-to for :doc:`how-tos/installaws`.
 
 
 --------------------
@@ -114,9 +114,9 @@ Microsoft Azure
 .. image:: how-tos/images/Azure.png
     :height: 80px
 
-OPNsense is also available in the Microsoft Azure Marketplace as an easy installable virtual appliance.
+OPNsense is available in the Microsoft Azure Marketplace as an easily installable virtual appliance.
 
-See also our how-to for :doc:`how-tos/installazure`.
+See our how-to for :doc:`how-tos/installazure`.
 
 -------------
 Common Issues
@@ -124,13 +124,13 @@ Common Issues
 Some common issues have been reported for different virtual environments.
 You can find known solutions to these problems below.
 
-If your problem is not listed always try the General tips mentioned in the
+If your problem is not listed, always try the General tips mentioned in the
 article first.
 
 
 File copy failed during installation
 -----------------------------------------
-This issue is most likely caused by low memory setting. Make sure your virtual
+This issue is most likely caused by a low memory setting. Make sure your virtual
 OPNsense installation has a minimum of 1 GB of RAM.
 
 
@@ -147,4 +147,4 @@ This issue has been reported to be solved by disabling TX checksum offloading on
 
 Traffic Shaper does not work on VMware
 -----------------------------------------
-If you are using vmxnet3 drivers try to switch to E1000.
+If you are using the VMXNET3 driver, try switching to E1000 instead.
