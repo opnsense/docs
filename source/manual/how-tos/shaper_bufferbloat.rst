@@ -337,16 +337,16 @@ limit
 Default limit size of 10240 packets is too much. The creators recommended value 1000 for sub 10 Gbit/s connections. The default limit will never be reached for sub 10 Gbit/s WAN connections. Before that could happen FQ_CoDel would already take action. So it is healthy to reduce the limit.
 
 The over-large packet limit leads to bad results during slow start on some benchmarks. Reducing it too low could impact new flow start.
+   
+.. Note::
 
-However there is a problem with FQ_CoDel implementation in FreeBSD (as well OpenBSD), that causes CPU hogging and excessive logging, this is more visible when set to 1000. Which causes a back pressure and additional unwanted latency.
-
-**For now its best to have limit at default.**
+        For FreeBSD there is a `BUG <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=276890>`_ opened for CPU hogging due to excessive logging caused when the limit queue is exceeded.
+        Additionaly one of the creators of CoDel raised a `discussion <https://marc.info/?t=170776797300003&r=1&w=2>`_ to improve the implementation of FQ_CoDel on FreeBSD.
 
 .. Note::
 
-        There is already a BUG opened for this and an email chain from one of the CoDel creators. 
-        This problem is overall affecting the performance, its not specific only to limit parameter, 
-        and more so the more flows are present
+       The CPU hogging due to excessive logging was `fixed <https://github.com/opnsense/src/commit/8684f75c425>`_ for OPNsense by the devs on release 25.7.8
+       Its now safe and beneficial to use the limit parameter and lower it from the default value.
 
 
 flows
