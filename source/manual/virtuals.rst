@@ -6,7 +6,7 @@ Virtual & Cloud-Based Installation
 Local/Server
 ------------
 Installing OPNsense on a virtual machine can be done by using the DVD ISO image.
-Full instructions are available in the chapter :doc:`install`.
+Full instructions are available in chapter :doc:`install`.
 
 General tips
 ------------
