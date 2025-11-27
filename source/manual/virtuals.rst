@@ -53,7 +53,7 @@ or tools needed.
 
 KVM
 ------
-To install the QEMU guest agent, go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
+To install the QEMU Guest Agent, go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
 **os-qemu-guest-agent** by clicking on the **+** sign next to it.
 
 **i440FX chipset**
