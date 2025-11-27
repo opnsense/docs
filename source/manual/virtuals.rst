@@ -56,13 +56,8 @@ KVM
 To install QEMU Guest Agent, go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
 **os-qemu-guest-agent** by clicking on the **+** sign next to it.
 
-**i440FX chipset**
-OPNsense on KVM works with VirtIO disks and network devices (confirmed on QEMU 5.0).
-
-**Q35 chipset**
-As of 22.1.x, OPNsense is based on FreeBSD 13.0, which includes support for the virtualized Q35 chipset and newer
-generation of KVM VirtIO devices.
-Note that this was a relatively recent addition to FreeBSD, so it may not be as well tested as the i440FX support.
+**KVM chipsets**
+OPNsense (based on FreeBSD) supports running under both the legacy i440FX machine type and the newer Q35 chipset.
 
 
 Others
