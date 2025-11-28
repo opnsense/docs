@@ -48,7 +48,9 @@ Hyper-V
 Both Hyper-V Generation 1 and 2 virtual machines are supported out of the box with no additional drivers
 or tools needed.
 
-* Secure Boot must be disabled in the Hardware > Security section of the VM.
+.. Note::
+
+   Secure Boot must be disabled in the Hardware > Security section of the VM.
 
 
 KVM
@@ -62,7 +64,7 @@ OPNsense (based on FreeBSD) supports running under both the legacy i440FX machin
 
 Others
 --------------------
-OPNsense can be installed on all virtual machines that support FreeBSD (such as Bhyve, VirtualBox).
+OPNsense can be installed on all virtual machines that support FreeBSD (such as Bhyve or VirtualBox).
 
 Note: to install VirtualBox Guest Additions, go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
 **os-virtualbox** by clicking on the **+** sign next to it.
