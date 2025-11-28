@@ -119,7 +119,7 @@ Common Issues
 Some common issues have been reported for different virtual environments.
 You can find known solutions to these problems below.
 
-If your problem is not listed, always try the General tips mentioned in the
+If your problem is not listed, always try the General tips mentioned in this
 article first.
 
 
