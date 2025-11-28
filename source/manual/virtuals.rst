@@ -79,13 +79,13 @@ opnsense-bootstrap
 ------------------
 opnsense-bootstrap(8) is a tool that can completely reinstall a running system
 in place for a thorough factory reset or to restore consistency of all the OPNsense
-files. It can also wipe the configuration directory, but it does not do so by default.
+files. It can also wipe the configuration directory, but won't do that by default.
 
-The tool will automatically pick up the latest available version and build a chain of
+It will automatically pick up the latest available version and build a chain of
 trust by using current package fingerprints -> CA root certificates -> HTTPS -> OPNsense
 package fingerprints.
 
-It can also convert a supported stock FreeBSD release into an OPNsense
+What it will also do is turn a supported stock FreeBSD release into an OPNsense
 installation.  Both UFS and ZFS installations are supported.
 
 opnsense-bootstrap is available at our
