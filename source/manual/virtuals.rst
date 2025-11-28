@@ -64,7 +64,7 @@ OPNsense (based on FreeBSD) supports running under both the legacy i440FX machin
 
 Others
 --------------------
-OPNsense can be installed on all virtual machines that support FreeBSD (such as Bhyve or VirtualBox).
+OPNsense can be installed on all hypervisors that support FreeBSD (such as Bhyve or VirtualBox).
 
 Note: to install VirtualBox Guest Additions, go to :menuselection:`System --> Firmware --> Plugins` (tick **Show (Tier 3) community plugins**) and install
 **os-virtualbox** by clicking on the **+** sign next to it.
