@@ -12,7 +12,7 @@ General tips
 ------------
 For optimum performance and compatibility, consider the following guidelines:
 
-* Minimum required RAM is 1 GB
+* Minimum required RAM is 3 GB
 * Minimum recommended virtual disk size of 8 GB
 * Disable all hardware off-loading settings in :menuselection:`Interfaces --> Settings`
 
