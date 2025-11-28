@@ -128,7 +128,7 @@ article first.
 File copy failed during installation
 -----------------------------------------
 This issue is most likely caused by a low memory setting. Make sure your virtual
-OPNsense installation has a minimum of 1 GB of RAM.
+OPNsense installation has a minimum of 3 GB of RAM.
 
 
 Disk Errors on VMware
