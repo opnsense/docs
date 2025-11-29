@@ -63,7 +63,7 @@ keep in mind that we do not have the manpower needed to act as an intermediary b
 Reporting an incident
 ------------------------------------------------------------
 
-Security vulnerabilities in OPNsense can be reported via the `GitHub repository <https://github.com/opnsense/core/security>`__.
+Security vulnerabilities in OPNsense can be reported on the `GitHub repository <https://github.com/opnsense/core/security>`__.
 You may also create a new issue and select "Report a security vulnerability", which will redirect you to the same page.
 Alternatively, you can report security issues to our security team via **security** @ **opnsense.org**.
 
