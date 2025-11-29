@@ -10,7 +10,7 @@ Full instructions are available in chapter :doc:`install`.
 
 General tips
 ------------
-For optimum performance and compatibility, consider the following guidelines:
+For optimal performance and compatibility, consider the following guidelines:
 
 * Minimum required RAM is 3 GB
 * Minimum recommended virtual disk size of 8 GB
