@@ -83,7 +83,7 @@ As a general policy, we favor the full disclosure of vulnerability information a
 safe analysis and correction, as well as appropriate testing of the correction.
 
 In order to coordinate with other affected parties, we may share parts of the information provided to us with them as well,
-or ask the reporter to do so.
+or we may ask the submitter to do so.
 
 When the submitter is interested in a coordinated disclosure process, this should be indicated in any submission to avoid
 misunderstandings later on.
