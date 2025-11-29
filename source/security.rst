@@ -136,7 +136,7 @@ LINCE is a lightweight methodology for evaluating and certifying ICT products, c
 based on Common Criteria principles and oriented around vulnerability analysis and penetration tests.
 
 LINCE's strengths over other methodologies mainly lie in its reduced effort and shorter duration.
-However, the way in which it is applied also makes it possible for us to pay more attention to the critical areas of our product,
+However, the way in which it is applied also makes it possible for us to pay more attention to the more critical areas of our product,
 giving more weight to concrete and practical tests that address real threats than to dense documentation or exhaustive functionality tests.
 
 As most frameworks are not intended to be repeated very regularly, together with `jtsec <https://www.jtsec.es/>`__, we came up with an approach which
