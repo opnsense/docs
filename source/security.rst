@@ -6,28 +6,27 @@ Security
 
 
 ------------------------------------------------------------
-Intro
+Introduction
 ------------------------------------------------------------
 
-As your trusted opensource security product, we do care a lot about security and with our regular release schedule we
-try to stay ahead of possible incidents. Even though we are cautious and stay informed, sometimes issues
-do occur, in which case it's good to know what to do.
+As your trusted open-source security platform, we care a lot about security, and with our regular release schedule, we
+try to stay ahead of any potential vulnerabilities. Even though we are cautious and try to stay informed, problems can and
+do occur, in which case it is good to know what to do.
 
 
 ------------------------------------------------------------
 Staying ahead
 ------------------------------------------------------------
 
-Even though we always encourage people to update regularly, sometimes it's not possible to do so for various reasons.
+Although we always encourage people to update regularly, we understand that sometimes it is not feasible to do so for
+one reason or another.
 
-Luckily OPNsense comes with an integrated security check for known vulnerabilities, which can be found in our firmware
-module. In which case you do have the opportunity to validate for yourself what the risk is to keep using the
-current version for a bit longer.
+Luckily, OPNsense comes with an integrated security audit for known vulnerabilities, which can be found in the firmware
+section. This allows you to assess for yourself what the risk is when deciding to keep running the
+current version instead of updating.
 
-You can reach it via :menuselection:`System -> Firmware` in the status pane, the button "Run an Audit"
-will bring you right into the security report.
-
-If all goes well, a report like the one below will be shown:
+You can reach this tool by going to :menuselection:`System -> Firmware -> Status`. Here, by clicking the button "Run an Audit"
+then "Security", it will scan the system and generate a security report like the one below (if successful):
 
 .. code-block::
 
@@ -40,54 +39,54 @@ If all goes well, a report like the one below will be shown:
 
 .. Note::
 
-    We do not offer community support on assessing if incidents on older versions do warrant an immediate upgrade on your
-    end as this often depends on features used and settings configured. Our advice always will be to upgrade into the
+    We do not offer community support for assessing whether incidents on older versions warrant an immediate upgrade
+    as this often depends on the features used and settings configured. Our advice will always be to upgrade to the
     latest community or business version.
 
 
 .. Warning::
 
-    Please don't report issues to us reported by the security health check, they are already known and highly likely
-    a fix is pending for the next release.
+    Please do not report issues to us reported by the security audit as they are already known and likely
+    to have a fix pending for the next release.
 
 
 ------------------------------------------------------------
 Upstream vulnerabilities
 ------------------------------------------------------------
 
-Since OPNsense is a collection of opensource software, when finding an issue, it is always a good idea to
-inspect where it should be fixed first. In case you don't know or aren't sure, you can still ask on our end, just
-know that we don't have the manpower to act as an intermediary between various projects.
+Since OPNsense is a collection of open-source software, when discovering an issue, it is always a good idea to
+find where it should be fixed first. In case you are not sure, you can still ask on our end, just
+keep in mind that we do not have the manpower needed to act as an intermediary between various projects.
 
 
 ------------------------------------------------------------
 Reporting an incident
 ------------------------------------------------------------
 
-Security incidents on our product can be reported using our `GitHub repository <https://github.com/opnsense/core/security>`__.
+Security vulnerabilities in OPNsense can be reported via the `GitHub repository <https://github.com/opnsense/core/security>`__.
 You may also create a new issue and select "Report a security vulnerability", which will redirect you to the same page.
-Alternatively, you can report security issues to our security team available at **security** @ **opnsense.org**.
+Alternatively, you can report security issues to our security team via **security** @ **opnsense.org**.
 
 All reports should contain at least the following information:
 
 * A clear description of the vulnerability at hand
-* Which version(s) of our product seem to be affected
-* Any known workaround
-* When possible, some example code
+* Which version(s) of OPNsense seem to be affected
+* Any known workarounds or temporary fixes
+* If possible, a code snippet (affected by or containing the vulnerability)
 
 
 ------------------------------------------------------------
-Information handling policies
+Information handling policy
 ------------------------------------------------------------
 
-As a general policy we do favor full disclosure of vulnerability information after a reasonable amount of time to permit
-safe analysis and correction as well as appropriate testing for the correction at hand.
+As a general policy, we favor the full disclosure of vulnerability information after a reasonable amount of time to permit
+safe analysis and correction, as well as appropriate testing of the correction.
 
-In order to coordinate with other affected parties, we might share parts of the information provided to us to them as well
+In order to coordinate with other affected parties, we may share parts of the information provided to us with them as well,
 or ask the reporter to do so.
 
 When the submitter is interested in a coordinated disclosure process, this should be indicated in any submission to avoid
-discussions later on.
+misunderstandings later on.
 
 
 ------------------------------------------------------------
@@ -97,35 +96,35 @@ Third party security verification
 Intro
 ............................................................
 
-Within the OPNsense team and community we spend a lot of time safeguarding our software and keeping up with the latest threats,
-like checking used software against CVE's on every release, implementing best practices in our development methods and
+Within the OPNsense team and community, we spend a lot of time safeguarding our software and keeping up with the latest threats,
+like checking used software against CVEs on every release, implementing best practices in our development methods and
 offering clear and transparent release engineering.
 
-To even improve this further, we decided to bring a third party on board and mold a process around our security verification
+To improve this even further, we decided to bring a third party on board and mold a process around our security verification
 by trained security professionals.
 
 
 Business Edition
 ............................................................
 
-As our business edition is aimed at professional users, it does make sense to offer additional safeguards, like even more extensive testing on
-this product. Looking at the lifecycle of our software, this is also the most mature stage of what we do have to offer:
+As the Business Edition is built around professional use, it makes sense to offer additional safeguards like even more extensive testing on
+Business Edition releases. Looking at the lifecycle of OPNsense, this is also the most mature stage of what we have to offer:
 
 * Development version
 
-  -  Available at every release, offers a glimpse of what to expect in the near future
+  -  Available at every release, it offers a glimpse of what to expect in the near future
 
 * Community version
 
-  - When changes survive the development version, these are included in the community version, these are internally tested and
-    feedback has been offered by community members.
+  - When changes pass through the development version, they are included in the community version, where they are
+    internally tested and feedback has been provided by community members.
 
 * Business Edition
 
-  - Functional changes are being included in a more conservative manner, more feedback has been collected from development
-    and community, leading to a mission critical version of your well known OPNsense firewall.
+  - Functional changes are included in a more conservative manner, with additional feedback collected from development
+    and the community, resulting in a mission-critical version of the OPNsense firewall.
 
-As security testing is quite time-consuming, we aim to offer a full qualification cycle at every major release.
+As security testing is quite time-consuming, we aim to offer a full qualification cycle for every major release.
 
 
 Framework / Type of testing (LINCE)
@@ -134,38 +133,38 @@ Framework / Type of testing (LINCE)
 In our quest for a framework to use, we found the LINCE methodology.
 
 LINCE is a lightweight methodology for evaluating and certifying ICT products, created by Spain's National Cryptologic Center (`CCN <https://cpstic.ccn.cni.es/en/>`__),
-based on Common Criteria principles and oriented to vulnerability analysis and penetration tests.
+based on Common Criteria principles and oriented around vulnerability analysis and penetration tests.
 
-LINCE strengths over other methodologies mainly consist of reduced effort and duration.
-However, the way in which it is applied also makes it possible to pay more attention to the critical points of each product,
-giving more weight to concrete and practical tests that combat real threats than to dense documentation or exhaustive functionality tests.
+LINCE's strengths over other methodologies mainly lie in its reduced effort and shorter duration.
+However, the way in which it is applied also makes it possible for us to pay more attention to the critical areas of our product,
+giving more weight to concrete and practical tests that address real threats than to dense documentation or exhaustive functionality tests.
 
-As most frameworks are not intended to be repeated very regularly, together with `jtsec <https://www.jtsec.es/>`__ we came up with an approach which
+As most frameworks are not intended to be repeated very regularly, together with `jtsec <https://www.jtsec.es/>`__, we came up with an approach which
 makes it possible to pass the test twice a year, which is needed to align with our Business Edition releases.
 
-During every cycle, there's always a chance that (small) issues appear which should be fixed, in close accordance with jtsec, the OPNSense
+During every cycle, there is always a chance that minor issues appear which should be fixed, and in close accordance with jtsec, the OPNsense
 team prepares fixes for the findings and makes sure that these are included in a future (minor) release.
 
 
 Steps in the process
 ............................................................
-To better understand where a version of OPNsense is at in terms of verification, we distinct the following stages in the process, which
+To better understand where a version of OPNsense is at in terms of verification, we distinguish the following stages in the process, which
 we will also note on the version at hand.
 
-1.  In test - Software delivered to jtsec, in process (interaction between OPNsense and jtsec).
+1.  In testing - Software delivered to jtsec, in process (interaction between OPNsense and jtsec).
 2.  Tested - Software verified / tested, documentation not yet published.
-3.  LINCE Compliant - Test complete including summarised report (by jtsec)
+3.  LINCE Compliant - Test complete including a summarised report (by jtsec).
 4.  Certification pending - Offered for formal certification. (as of 2023)
-5.  LINCE Certified - Certified by CCN (as of 2023)
+5.  LINCE Certified - Certified by CCN. (as of 2023)
 
-The certification steps are planned to be executed once a year starting in 2023, this process is quite time consuming, but
+These certification steps are planned to be executed once a year starting in 2023. This process is quite time consuming, but
 adds another independent party to the mix.
 
 Timeline
 ............................................................
-The first fully certified product has been a community version (21.7.1), which offered us insights into the process and
-helped us improve the process which we would like to use for the business edition. We started this cycle with version 22.4
-including full testing by jtsec and made plans for the future.
+The first fully certified product is a community version (21.7.1), which offered us insights into the process and
+helped us improve the process for what we would like to use with the Business Edition. We started this cycle with version 22.4
+including full testing by jtsec with plans made for the future.
 
 Results
 ............................................................
