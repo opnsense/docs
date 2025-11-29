@@ -72,7 +72,7 @@ All reports should contain at least the following information:
 * A clear description of the vulnerability at hand
 * Which version(s) of OPNsense seem to be affected
 * Any known workarounds or temporary fixes
-* If possible, a code snippet (affected by or containing the vulnerability)
+* If possible, code snippet(s) (affected by or containing the vulnerability)
 
 
 ------------------------------------------------------------
