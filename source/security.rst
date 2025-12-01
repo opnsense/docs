@@ -112,7 +112,7 @@ Business Edition releases. Looking at the lifecycle of OPNsense, this is also th
 
 * Development version
 
-  -  Available at every release, it offers a glimpse of what to expect in the near future
+  -  Available at every release, it offers a glimpse of what to expect in the near future.
 
 * Community version
 
