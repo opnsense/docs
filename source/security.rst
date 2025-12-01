@@ -55,7 +55,7 @@ Upstream vulnerabilities
 ------------------------------------------------------------
 
 Since OPNsense is a collection of open-source software, when discovering an issue, it is always a good idea to
-find where it should be fixed first. In case you are not sure, you can still ask on our end, just
+find where it should be fixed first. You may still ask if you are unsure, just
 keep in mind that we do not have the manpower needed to act as an intermediary between various projects.
 
 
