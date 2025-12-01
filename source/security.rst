@@ -21,11 +21,11 @@ Staying ahead
 Although we always encourage people to update regularly, we understand that sometimes it is not feasible to do so for
 one reason or another.
 
-Fortunately, OPNsense comes with an integrated security audit for known vulnerabilities, which can be found in the firmware
+Fortunately, OPNsense comes with an integrated security audit for known vulnerabilities, available in the Firmware
 section. This allows you to assess for yourself what the risk is when deciding to keep running the
 current version instead of updating.
 
-You can reach this tool by going to :menuselection:`System -> Firmware -> Status`. Here, by clicking the button "Run an Audit"
+You can find this tool by going to :menuselection:`System -> Firmware -> Status`. Here, by clicking the button "Run an Audit"
 then "Security", it will scan the system and generate a security report like the one below if successful:
 
 .. code-block::
