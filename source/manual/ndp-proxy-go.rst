@@ -37,11 +37,11 @@ Ethernet links
 --------------------------------------------------
 
 - **WAN (upstream)**:
-    The upstream WAN interface must be configured to allow SLAAC, so it can configure an IPv6 address
-    and a default route to the ISP. Router advertisements must be sent from the ISP to the WAN.
+    The upstream WAN ethernet interface must be configured to allow SLAAC, so it can configure an IPv6 address
+    and a default route to the ISP. Periodic router advertisements must be sent from the ISP to the WAN.
 
 - **LAN (downstreams)**:
-    The requirement is that the interface must have an link-local address (LLA).
+    The downstream interface must be ethernet and configure a link-local address (LLA).
 
 .. Tip::
 
@@ -55,6 +55,13 @@ Ethernet links
 
 Point-to-point links (PPPoE)
 --------------------------------------------------
+
+- **WAN (upstream)**:
+    The upstream WAN PPPoE interface must be configured to allow SLAAC, so it can configure an IPv6 address
+    and a default route to the ISP. Periodic router advertisements must be sent from the ISP to the WAN.
+
+- **LAN (downstreams)**:
+    The downstream interface must be ethernet and configure a link-local address (LLA).
 
 The proxy includes experimental support for point-to-point upstream interfaces such as PPPoE.
 Unlike Ethernet links, a PPPoE uplink does not perform Neighbor Discovery (ND) for downstream GUAs.
