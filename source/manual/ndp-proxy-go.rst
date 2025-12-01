@@ -6,8 +6,6 @@ ndp-proxy-go (Neighbor Discovery Proxy)
    :local:
    :depth: 2
 
-This manual provides a quick overview of ndp-proxy-go and how to configure it for general use.
-
 
 Introduction
 ==================================================
@@ -37,40 +35,39 @@ Ethernet links
 --------------------------------------------------
 
 - **WAN (upstream)**:
-    The upstream WAN ethernet interface must be configured to allow SLAAC, so it can configure an IPv6 address
+    The upstream ethernet interface must be configured to allow SLAAC, so it can configure an IPv6 address
     and a default route to the ISP. Periodic router advertisements must be sent from the ISP to the WAN.
 
 - **LAN (downstreams)**:
-    The downstream interface must be ethernet and configure a link-local address (LLA).
+    The downstream interfaces must be ethernet and configure a link-local address (LLA).
+
+Using ethernet interfaces is the recommended setup for best performance, rapid host discovery and self-healing of IPv6 after firewall reboots.
+Since the ISP router will perform Neighbor Discovery (ND) for every unknown client GUA,
+the proxy can instantly relearn clients when they send any traffic to the internet.
 
 .. Tip::
 
    You can proxy the upstream prefix to any amount of downstream interfaces. Since this proxy includes DAD messages, IP address
    conflicts are unlikely to cause issues even in larger proxied networks or when using this with cloud providers.
 
-.. Tip::
 
-   Using only ethernet interfaces is the recommended setup for best performance, rapid host discovery and self healing of IPv6 after firewall reboots.
-
-
-Point-to-point links (PPPoE)
+Point-to-point links
 --------------------------------------------------
 
 - **WAN (upstream)**:
-    The upstream WAN PPPoE interface must be configured to allow SLAAC, so it can configure an IPv6 address
+    The upstream point-to-point interface must be configured to allow SLAAC, so it can configure an IPv6 address
     and a default route to the ISP. Periodic router advertisements must be sent from the ISP to the WAN.
 
 - **LAN (downstreams)**:
     The downstream interface must be ethernet and configure a link-local address (LLA).
 
 The proxy includes experimental support for point-to-point upstream interfaces such as PPPoE.
-Unlike Ethernet links, a PPPoE uplink does not perform Neighbor Discovery (ND) for downstream GUAs.
+Unlike Ethernet links, a point-to-point link does not perform Neighbor Discovery (ND) for downstream GUAs.
 This has some important implications:
 
 - Only Router Solicitations (RS) are forwarded upstream.
 - NS/NA forwarding is intentionally disabled on point-to-point links.
 - The `cache-ttl` must be increased, since there are less NA containing a GUA to learn from, otherwise routes might get removed prematurely.
-- Ethernet downstream interfaces are still required. Point-to-point interfaces cannot be used as downstream ports.
 
 .. Attention::
 
@@ -81,7 +78,8 @@ This has some important implications:
 .. Attention::
    
    After a firewall reboot, IPv6 connectivity may be delayed until downstream clients perform SLAAC and DAD again.
-   This is expected behavior on PPPoE, as the upstream (ISP) router never probes GUAs.
+   This is expected behavior on PPPoE, as the upstream (ISP) router never probes GUAs via Neighbor Discovery (ND) like on ethernet links.
+
 
 Example setup
 ==================================================
@@ -98,13 +96,10 @@ Go to :menuselection:`Interfaces --> WAN`
 
 Save the settings.
 
-Go to :menuselection:`Interfaces --> LAN` and choose either a link-local or a static IPv6 configuration.
+Go to :menuselection:`Interfaces --> LAN` and choose either a link-local IPv6 configuration.
 
 ==============================================  ====================================================================
 **IPv6 Configuration Type**                     ``link-local``
-**or**
-**IPv6 Configuration Type**                     ``Static IPv6``
-**IPv6 address**                                ``fe80::/64``
 ==============================================  ====================================================================
 
 Save and apply the new interface settings.
@@ -113,10 +108,11 @@ Go to :menuselection:`Services --> NDP Proxy --> Settings`
 
 ==============================================  ====================================================================
 **Enable**                                      ``X``
-**Uplink Interface**                            ``WAN``
-**Downlink Interfaces**                         ``LAN``
+**Upstream interface**                          ``WAN``
+**Downstream interfaces**                       ``LAN``
 **Proxy router advertisements**                 ``X``
 **Install host routes**                         ``X``
+**Neighbor cache lifetime**                     Increase if you use a point-to-point upstream, e.g. to ``60`` minutes.
 ==============================================  ====================================================================
 
 After applying the configuration, all devices in your LAN network will autogenerate a GUA with SLAAC and receive
@@ -130,7 +126,9 @@ Verify the setup by pinging an IPv6 location on the internet.
 .. Tip::
 
     If you receive a DNS server from your ISP, but want the router to be the sole DNS server, use a Port Forward to force traffic destined to port 53 to
-    the local running Unbound server instead.
+    the local running Unbound server instead. You cannot use ``::1`` as redirect target IP though.
+    Use a dynamic IPv6 alias on any IPv6-enabled interface with the EUI-64 of that interface.
+    The WAN interface will have such a GUA address on which Unbound will listen per default.
 
 
 Logging
@@ -172,3 +170,9 @@ The proxy must install host routes to target the individual downstream clients:
       - There is already a different route that would overlap with the one the proxy tries to install.
         To fix this ensure the prefix does not have static routes you manually configured, or turn off
         the automatic hoste route installation if you want to handle all routes manually.
+
+.. Attention::
+
+   The proxy does not clean up installed host routes when it is stopped. This is intentional to minimize downtime of IPv6 clients between service restarts.
+   It does automatically prune routes while it runs when the ``cache-ttl`` of a discovered neighbor expires.
+
