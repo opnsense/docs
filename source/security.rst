@@ -164,7 +164,7 @@ Timeline
 ............................................................
 The first fully certified product is a community version (21.7.1), which offered us insights into the process and
 helped us improve the process for what we would like to use with the Business Edition. We started this cycle with version 22.4
-including full testing by jtsec with plans made for the future.
+including full testing by jtsec.
 
 Results
 ............................................................
