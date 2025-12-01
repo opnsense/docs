@@ -157,7 +157,7 @@ we will also note on the version at hand.
 4.  Certification pending - Offered for formal certification.
 5.  LINCE Certified - Certified by CCN.
 
-These certification steps are executed once a year. This process is relatively time consuming, but it
+These certification steps are executed twice a year, once for each Business Edition release. This process is relatively time consuming, but it
 adds another independent layer of assurance.
 
 Timeline
