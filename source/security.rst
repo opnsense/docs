@@ -26,7 +26,7 @@ section. This allows you to assess for yourself what the risk is when deciding t
 current version instead of updating.
 
 You can reach this tool by going to :menuselection:`System -> Firmware -> Status`. Here, by clicking the button "Run an Audit"
-then "Security", it will scan the system and generate a security report like the one below (if successful):
+then "Security", it will scan the system and generate a security report like the one below if successful:
 
 .. code-block::
 
