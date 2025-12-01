@@ -70,7 +70,7 @@ Alternatively, you can report security issues to our security team via **securit
 All reports should contain at least the following information:
 
 * A clear description of the vulnerability at hand
-* Which version(s) of OPNsense seem to be affected
+* Which versions of OPNsense appear to be affected
 * Any known workarounds or temporary fixes
 * If possible, code snippet(s) (affected by or containing the vulnerability)
 
