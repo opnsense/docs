@@ -11,7 +11,7 @@ Introduction
 
 As a trusted open-source security platform, we care a lot about security and, with our regular release schedule, we
 try to stay ahead of any potential vulnerabilities. Even though we are cautious and try to stay informed, problems can and
-do occur, so it is good to know what to do.
+do occur, in which case it is good to know what to do.
 
 
 ------------------------------------------------------------
