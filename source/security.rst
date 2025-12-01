@@ -154,11 +154,11 @@ we will also note on the version at hand.
 1.  In testing - Software delivered to jtsec, in process (interaction between OPNsense and jtsec).
 2.  Tested - Software verified / tested, documentation not yet published.
 3.  LINCE Compliant - Test complete including a summarised report (by jtsec).
-4.  Certification pending - Offered for formal certification. (as of 2023)
-5.  LINCE Certified - Certified by CCN. (as of 2023)
+4.  Certification pending - Offered for formal certification.
+5.  LINCE Certified - Certified by CCN.
 
-These certification steps are planned to be executed once a year starting in 2023. This process is quite time consuming, but
-adds another independent party to the mix.
+These certification steps are executed once a year. This process is relatively time consuming, but it
+adds another independent layer of assurance.
 
 Timeline
 ............................................................
