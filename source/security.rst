@@ -21,7 +21,7 @@ Staying ahead
 Although we always encourage people to update regularly, we understand that sometimes it is not feasible to do so for
 one reason or another.
 
-Luckily, OPNsense comes with an integrated security audit for known vulnerabilities, which can be found in the firmware
+Fortunately, OPNsense comes with an integrated security audit for known vulnerabilities, which can be found in the firmware
 section. This allows you to assess for yourself what the risk is when deciding to keep running the
 current version instead of updating.
 
