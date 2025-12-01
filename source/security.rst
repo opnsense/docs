@@ -116,7 +116,7 @@ Business Edition releases. Looking at the lifecycle of OPNsense, this is also th
 
 * Community version
 
-  - When changes pass through the development version, they are included in the community version, where they are
+  - When changes have passed through the development version, they are included in the community version, where they are
     internally tested and feedback provided by community members.
 
 * Business Edition
