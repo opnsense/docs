@@ -39,7 +39,7 @@ then "Security", it will scan the system and generate a security report like the
 
 .. Note::
 
-    We do not offer community support for assessing whether incidents on older versions warrant an immediate upgrade
+    We do not offer community support for assessing whether vulnerabilities on older versions warrant an immediate upgrade
     as this often depends on the features used and settings configured. Our advice will always be to upgrade to the
     latest community or business version.
 
