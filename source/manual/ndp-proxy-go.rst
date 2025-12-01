@@ -39,23 +39,35 @@ Important configuration details
 - **WAN (upstream)**:
     The upstream WAN interface must be configured to allow SLAAC, so it can configure an IPv6 address
     and a default route to the ISP. Router advertisements must be sent from the ISP to the WAN.
+    If this interface is point-to-point (like PPPoE), read about the implications below.
 
 - **LAN (downstreams)**:
     The requirement is that the interface must have an link-local address (LLA).
-
-- **Ethernet (multi-access network)**:
-    The upstream and downstream interfaces must be ethernet devices (e.g. igc0, vlan0.1). Point-to-point (like PPPoE)
-    or virtual tunnel interfaces are not supported.
 
 .. Tip::
 
    You can proxy the upstream prefix to any amount of downstream interfaces. Since this proxy includes DAD messages, IP address
    conflicts are unlikely to cause issues even in larger proxied networks or when using this with cloud providers.
 
-.. Tip::
+
+Point-to-point links (PPPoE)
+--------------------------------------------------
+
+The proxy includes experimental support for point-to-point upstream interfaces such as PPPoE.
+Unlike Ethernet links, a PPPoE uplink does not perform Neighbor Discovery (ND) for downstream GUAs.
+This has some important implications:
+
+- Only Router Solicitations (RS) are forwarded upstream.
+- NS/NA forwarding is intentionally disabled on point-to-point links.
+- The `cache-ttl` must be increased, since there are less NA containing a GUA to learn from, otherwise routes might get removed prematurely.
+- Ethernet downstream interfaces are still required. Point-to-point interfaces cannot be used as downstream ports.
+- After a host restart, IPv6 connectivity may be delayed until downstream clients perform SLAAC and DAD again. This is expected behavior on PPPoE, as the upstream (ISP) router never probes GUAs.
+
+.. Attention::
 
    If you receive a single /64 prefix via DHCPv6-PD on a PPPoE link, it must be terminated on a router **before** the proxy.
-   This could be another OPNsense, or a device like a Fritzbox.
+   This could be another OPNsense, or a device like a Fritzbox. The proxy does not listen and learn a prefix from DHCPv6.
+   To use PPPoE as upstream, IPv6 configuration must be set to SLAAC.
 
 
 Example setup
