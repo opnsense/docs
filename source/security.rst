@@ -41,7 +41,7 @@ then "Security", it will scan the system and generate a security report like the
 
     We do not offer community support for assessing whether vulnerabilities on older versions warrant an immediate upgrade
     as this often depends on the features used and settings configured. Our advice will always be to upgrade to the
-    latest community or business version.
+    latest community or Business Edition version.
 
 
 .. Warning::
@@ -55,7 +55,7 @@ Upstream vulnerabilities
 ------------------------------------------------------------
 
 Since OPNsense is a collection of open-source software, when discovering an issue, it is always a good idea to
-find where it should be fixed first. You may still ask if you are unsure, just
+find where it should be fixed first. You may still ask us if you are unsure, just
 keep in mind that we do not have the manpower needed to act as an intermediary between various projects.
 
 
