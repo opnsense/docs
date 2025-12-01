@@ -33,13 +33,12 @@ Installation
 Install ``os-ndp-proxy-go`` from :menuselection:`System --> Firmware --> Plugins`.
 
 
-Important configuration details
+Ethernet links
 --------------------------------------------------
 
 - **WAN (upstream)**:
     The upstream WAN interface must be configured to allow SLAAC, so it can configure an IPv6 address
     and a default route to the ISP. Router advertisements must be sent from the ISP to the WAN.
-    If this interface is point-to-point (like PPPoE), read about the implications below.
 
 - **LAN (downstreams)**:
     The requirement is that the interface must have an link-local address (LLA).
@@ -48,6 +47,10 @@ Important configuration details
 
    You can proxy the upstream prefix to any amount of downstream interfaces. Since this proxy includes DAD messages, IP address
    conflicts are unlikely to cause issues even in larger proxied networks or when using this with cloud providers.
+
+.. Tip::
+
+   Using only ethernet interfaces is the recommended setup for best performance, rapid host discovery and self healing of IPv6 after firewall reboots.
 
 
 Point-to-point links (PPPoE)
@@ -61,7 +64,6 @@ This has some important implications:
 - NS/NA forwarding is intentionally disabled on point-to-point links.
 - The `cache-ttl` must be increased, since there are less NA containing a GUA to learn from, otherwise routes might get removed prematurely.
 - Ethernet downstream interfaces are still required. Point-to-point interfaces cannot be used as downstream ports.
-- After a host restart, IPv6 connectivity may be delayed until downstream clients perform SLAAC and DAD again. This is expected behavior on PPPoE, as the upstream (ISP) router never probes GUAs.
 
 .. Attention::
 
@@ -69,6 +71,10 @@ This has some important implications:
    This could be another OPNsense, or a device like a Fritzbox. The proxy does not listen and learn a prefix from DHCPv6.
    To use PPPoE as upstream, IPv6 configuration must be set to SLAAC.
 
+.. Attention::
+   
+   After a firewall reboot, IPv6 connectivity may be delayed until downstream clients perform SLAAC and DAD again.
+   This is expected behavior on PPPoE, as the upstream (ISP) router never probes GUAs.
 
 Example setup
 ==================================================
