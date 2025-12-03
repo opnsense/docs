@@ -285,6 +285,12 @@ Blocklists
 
 Enable integrated dns blocklisting using one of the predefined sources or custom locations.
 
+Multiple policies can be defined, each separated by one or more source nets. This means you can use blocklists
+or specific (wildcard) domains on specific networks, allowing more fine-grained control over your setup.
+The algorithm selects the most specific subnet when domains overlap across subnet sizes. You can use
+the tester as described below to find such overlaps, however, as a best practice it's advisable to keep source
+nets separate.
+
 =====================================================================================================================
 
 ====================================  ===============================================================================
