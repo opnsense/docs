@@ -29,6 +29,71 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.7.9 (December 04, 2025)
+--------------------------------------------------------------------------
+
+
+A bug snug into the last release that did not properly disable the
+caching of DNS entries when using multiple blocklists with different
+network restrictions.  We have used the opportunity to polish the
+notification code and apply behaviour during the migration of the
+old blocklist to the new format.
+
+The saga around safe command execution continues in this release
+as well.  Otherwise it is a rather quiet release and 2025 is almost
+over.  Happy holidays!
+
+Here are the full patch notes:
+
+* system: gateway monitor Shell class use et al
+* system: no longer back up DUID but add compatibility glue to opnsense-importer
+* system: replace exec() in config encrypt/decrypt
+* system: replace history diff exec() with shell_safe()
+* system: safe execution tweaks in rc.routing_configure
+* system: fix log keyword search regression introduced in 25.7.7
+* reporting: unbound: fix quick allow/blocklist actions by applying them to all blocklists
+* firewall: run filterlog directly after rules apply and remove promiscous mode
+* firewall: allow setting a custom authentication HTTP header for alias URL fetch (contributed by nox-404)
+* firewall: for better IPv6 PMTU let "timex" and "paramprob" ICMP types through
+* firewall: do not allow nesting in GeoIP aliases
+* firewall: live log: restructure DOM layout to reduce wasted header space
+* firewall: live log: revert static property, persistence is disabled for this grid
+* firewall: safe execution changes in rules reloading code
+* firewall: safe execution changes in rc.filter_synchronize
+* dnsmasq: minor tweaks in lease commands
+* firmware: Shell class replacements in scripting
+* kea-dhcp: add lease commands, tabulator GroupBy, URL hashes
+* kea-dhcp: add DNR option (contributed by schreibubi)
+* network time: status: refactor to MVC/API
+* ipsec: connections: prevent model caching when referring items within the same model
+* ipsec: sessions: fix missing commands translation
+* isc-dhcp: move syslog definitions to plugin file
+* unbound: prevent caching of blocklist entries on overlapping subnet policies
+* unbound: notify user if a blocklist reset is required
+* unbound: reconfigure if marker file present
+* unbound: missing lock in del_host_override action
+* backend: minor shell execution changes and readability
+* backend: use mwexecf(m) where possible
+* backend: extend mwexecfb() with PID and log file support
+* mvc: fix default sort order being ignored in fetchBindRequest()
+* shell: rewite timeout() using safe execution functions
+* ui: refresh notification status after default apply button is done
+* ui: remove obsolete jQuery bootgrid files
+* plugins: os-acme-client 4.11 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-ndp-proxy-go 1.1 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/net/ndp-proxy-go/pkg-descr>`__ 
+* plugins: os-tailscale 1.3 `[3] <https://github.com/opnsense/plugins/blob/stable/25.7/security/tailscale/pkg-descr>`__ 
+* plugins: os-turnserver 1.1 `[4] <https://github.com/opnsense/plugins/blob/stable/25.7/net/turnserver/pkg-descr>`__ 
+* plugins: os-upnp 1.8 features assorted improvements to plugin and daemon (contributed by Self-Hosting-Group)
+* plugins: os-web-proxy-sso has been marked for removal in 26.1
+* plugins: os-zabbix-agent 1.18 `[5] <https://github.com/opnsense/plugins/blob/stable/25.7/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.16 `[6] <https://github.com/opnsense/plugins/blob/stable/25.7/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* ports: filterlog no longer uses unneeded promiscuous mode
+* ports: openvpn 2.6.17 `[7] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.17>`__ 
+* ports: unbound 1.24.2 `[8] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-24-2>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.7.8 (November 26, 2025)
 --------------------------------------------------------------------------
 
