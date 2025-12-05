@@ -198,11 +198,8 @@ Option                              Value
 
 - Press **Apply**
 
-.. Note::
-
-    Now your IPv6 firewalling is tight, but also self-healing when client IPv6 addresses change (e.g. via privacy extensions) or the on-link prefix changes.
+Now your IPv6 firewalling is tight. It is self-healing when client addresses change due to IPv6 privacy extensions or when the on-link prefix changes.
    
-
 .. Tip::
    
     If additional networks are proxied, just add more aliases (e.g., ``ndp_proxy_vlan1``) and create the same rule on that interface.
