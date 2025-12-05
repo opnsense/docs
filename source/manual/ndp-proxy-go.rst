@@ -130,6 +130,86 @@ Verify the setup by pinging an IPv6 location on the internet.
     Use a dynamic IPv6 alias on any IPv6-enabled interface with the EUI-64 of that interface.
     The WAN interface will have such a GUA address on which Unbound will listen per default.
 
+Firewall Rules
+==================================================
+
+The proxy supports populating firewall aliases with IPv6 addresses of learned clients. This can be used to only permit access to the internet,
+while blocking requests to other networks that also receive IPv6 addresses from the same on-link prefix.
+
+Since only learned clients are added, the alias will always have an up to date state that reflects the proxied interface.
+
+.. Note::
+
+   The proxy only learns IPv6 addresses that are inside the WAN on-link prefix and only of clients it manages.
+   These aliases are not for general use, but only for combination with the proxy to ease creating the correct firewall rules.
+
+
+- Go to :menuselection:`Firewall --> Aliases` and create these aliases:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Name**                            ``ndp_proxy_all`` (Will contain all learned IPv6 addresses)
+**Type**                            ``External (advanced)``
+==================================  =======================================================================================================
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Name**                            ``ndp_proxy_lan`` (Will contain only LAN IPv6 addresses)
+**Type**                            ``External (advanced)``
+==================================  =======================================================================================================
+
+- Press **Apply**
+
+- Go to :menuselection:`Services --> NDP Proxy --> Settings --> Aliases` and map these two aliases so the proxy can populate them:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Interface**                       ``any``
+**Name**                            ``ndp_proxy_global``
+==================================  =======================================================================================================
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Interface**                       ``LAN``
+**Name**                            ``ndp_proxy_lan``
+==================================  =======================================================================================================
+
+- Press **Apply**
+
+- Go to :menuselection:`Firewall --> Rules --> LAN` and create a rule that allows Internet access, but denies communication with other segments in the same IPv6 prefix:
+
+==============================================  ====================================================================================================
+**Action**                                      Pass
+**Interface**                                   LAN
+**Direction**                                   In
+**TCP/IP Version**                              IPv6
+**Protocol**                                    Any
+**Source**                                      ``ndp_proxy_lan``
+**Source port**                                 Any
+**Invert Destination**                          ``X``
+**Destination**                                 ``ndp_proxy_global``
+**Destination port**                            Any
+**Description**                                 Allow IPv6 internet access for all LAN clients known by NDP Proxy
+==============================================  ====================================================================================================
+
+- Press **Apply**
+
+Now your IPv6 firewalling is tight. It is self-healing when client addresses change due to IPv6 privacy extensions or when the on-link prefix changes.
+   
+.. Tip::
+   
+    If additional networks are proxied, just add more aliases (e.g., ``ndp_proxy_vlan1``) and create the same rule on that interface.
+
+
+.. Tip::
+
+    If you need client specific aliases, take a look at the ``Mac address`` alias type in :menuselection:`Firewall --> Aliases`,
+    which can dynamically track IPv4 and IPv6 addresses of a single client.
+
 
 Logging
 ==================================================
