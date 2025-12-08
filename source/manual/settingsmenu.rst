@@ -19,7 +19,7 @@ Listen interfaces
 
 .. Warning::
     Before considering the use of manual selected interfaces, make sure to read this chapter so you are aware
-    of the pitfalls upfront. Misconfigurations likely lead to a non accesible web interface and/or missing ssh access.
+    of the pitfalls upfront. Misconfigurations likely lead to a non-accessible web interface and/or missing ssh access.
 
 
 Both the WebUI and the Secure Shell server support the option to only listen on specific interfaces, the use of this option
@@ -44,11 +44,11 @@ that don't support binding for these services.
     In case (**for any service**) one would like to prevent binding on all interfaces, it is possible to add a
     loopback interface (:menuselection:`Interfaces --> Devices --> Loopback`), assign an ip address and bind to that.
 
-    If traffic is being routed through the firewall, the "loopback ip" (some private addres, not in the loopback range)
-    should be directly accessible from the network behind it. For example use an address like :code:`192.192.192.192/32`
+    When traffic is routed through the firewall, the "loopback ip" (some private address, not in the loopback range)
+    should be directly accessible from the network behind it. For example use an address like :code:`192.168.130.1/32`
     to access the web interface while your own network is using :code:`192.168.1.0/24`.
 
-    Technologies like Network Address Translation can also be combined if the other end is not aware of the route to
+    Technologies like Network Address Translation (NAT) can also be combined if the other end is not aware of the route to
     this single address.
 
 
