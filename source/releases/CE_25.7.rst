@@ -33,7 +33,7 @@ can be found below as well.
 --------------------------------------------------------------------------
 
 
-A bug snug into the last release that did not properly disable the
+A bug snuck into the last release that did not properly disable the
 caching of DNS entries when using multiple blocklists with different
 network restrictions.  We have used the opportunity to polish the
 notification code and apply behaviour during the migration of the
@@ -145,8 +145,8 @@ Here are the full patch notes:
 * interfaces: limit execution of sysctl scope in PPP device edit code
 * interfaces: safer interfaces_pfsync_configure() handling
 * firewall: live log: make this grid static and slightly adjust info column width
-* firewall: live log: backwards compatibility for old 'interface_name' field type
-* firewall: live view: fix wrong variable scope
+* firewall: live log: backwards compatibility for old "interface_name" field type
+* firewall: live log: fix wrong variable scope
 * firewall: automation: split search logic and normalize legacy output
 * firewall: aliases: add a few GeoIP related logging messages
 * firewall: mute pfctl-based table entry expire to avoid cron noise due to stderr use
@@ -333,7 +333,7 @@ Here are the full patch notes:
 * ui: always show bootgrid reset button
 * plugins: os-ddclient 1.28 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/dns/ddclient/pkg-descr>`__ 
 * plugins: os-git-backup 1.1 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/sysutils/git-backup/pkg-descr>`__ 
-* plugins: q-feeds-connector 1.2 `[3] <https://docs.opnsense.org/manual/qfeeds.html>`__  `[4] <https://github.com/opnsense/plugins/blob/stable/25.7/security/q-feeds-connector/pkg-descr>`__ 
+* plugins: os-q-feeds-connector 1.2 `[3] <https://docs.opnsense.org/manual/qfeeds.html>`__  `[4] <https://github.com/opnsense/plugins/blob/stable/25.7/security/q-feeds-connector/pkg-descr>`__ 
 * plugins: os-squid 1.4 works around CVE-2025-62168 (contributed by m.a.x. it)
 * plugins: os-zabbix-proxy 1.15 `[5] <https://github.com/opnsense/plugins/blob/stable/25.7/net-mgmt/zabbix-proxy/pkg-descr>`__ 
 * ports: openssh 10.2p1 `[6] <https://www.openssh.com/txt/release-10.2>`__ 

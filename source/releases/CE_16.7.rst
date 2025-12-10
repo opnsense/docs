@@ -438,7 +438,7 @@ Here are the full patch notes:
 
 * system: add language selection to initial wizard
 * system: allow disabling the root user
-* firmware: new mirror in Serbia (contributed by FourDots `[1] <https://fourdots.com/>`__ )
+* firmware: new mirror in Serbia `[1] <https://fourdots.com/>`__  (contributed by FourDots)
 * firmware: assorted changes for upcoming major upgrade
 * interfaces: wait for DHCP6 client to properly exit
 * firewall: allow route-to to loopback gateways

@@ -431,7 +431,7 @@ Here is the full list of changes:
 * src: fix multiple vulnerabilities in bzip2 `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:18.bzip2.asc>`__ 
 * src: fix ICMPv6 / MLDv2 out-of-bounds memory access `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:19.mldv2.asc>`__ 
 * src: fix insufficient message length validation in bsnmp library `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:20.bsnmp.asc>`__ 
-* src: fix insufficient validation of guest-supplied data (e1000 device) `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:21.bhyve.asc>`__ 
+* src: fix insufficient validation of guest-supplied data on the e1000 device `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:21.bhyve.asc>`__ 
 * src: fix IPv6 remote denial of service `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:22.mbuf.asc>`__ 
 * src: fix kernel memory disclosure from /dev/midistat `[13] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:23.midi.asc>`__ 
 * src: fix reference count overflow in mqueuefs 32-bit compat `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:24.mqueuefs.asc>`__ 
@@ -704,7 +704,7 @@ Here are the full changes against version 19.1.10:
 
 * system: new remote syslog setup via Syslog-ng
 * system: gateway handling rewrite
-* system: default gateway switching priority control (sponsored by m.a.x. it `[2] <https://www.max-it.de/>`__ )
+* system: default gateway switching priority control `[2] <https://www.max-it.de/>`__  (sponsored by m.a.x. it)
 * system: dpinger ported to plugin framework
 * system: bring back PHP warning log level
 * system: use authentication factory for user import

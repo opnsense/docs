@@ -499,18 +499,13 @@ Here is the full list of changes:
 * system: fix scrambled password option on user add
 * system: add captive portal session backup
 * system: fix CRL certificate count display
-* firmware: add mirror via Universidad Pontificia Bolivariana
-  (Medellin, CO) `[1] <https://www.upb.edu.co/>`__ 
-* firmware: add mirror via DMC Networks (Lincoln NE, US) `[2] <http://dmcnet.net/>`__ 
-* firewall: add modulate state as an option for state
-  tracking (contributed by Ian Matyssik)
-* firewall: add ruleset optimization option for better
-  performance (contributed by Ian Matyssik)
+* firmware: add mirror via Universidad Pontificia Bolivariana `[1] <https://www.upb.edu.co/>`__  (Medellin, CO)
+* firmware: add mirror via DMC Networks `[2] <http://dmcnet.net/>`__  (Lincoln NE, US)
+* firewall: add modulate state as an option for state tracking (contributed by Ian Matyssik)
+* firewall: add ruleset optimization option for better performance (contributed by Ian Matyssik)
 * firewall: improved the log widget (contributed by Fabian Franz)
-* firewall: port forwarding enhancements for tag, pool options
-  and target subnet
-* firewall: allow virtual interfaces as interface group members and
-  move to firewall section
+* firewall: port forwarding enhancements for tag, pool options and target subnet
+* firewall: allow virtual interfaces as interface group members and move to firewall section
 * firewall: allow port alias nesting
 * captive portal: improved ARP parsing
 * dyndns: support Google Domains (contributed by Alasley)
@@ -519,18 +514,13 @@ Here is the full list of changes:
 * openvpn: validate IPv4 CIDR more strictly to prevent startup error
 * openvpn: do not offer external CA for selection
 * rfc 2136: allow selection of record type (contributed by Elias Werberich)
-* unbound: option to not register IPv6 link-local addresses (contributed
-  by Ian Matyssik)
-* unbound: do not explicitly register loopback when selected as
-  listening interface
+* unbound: option to not register IPv6 link-local addresses (contributed by Ian Matyssik)
+* unbound: do not explicitly register loopback when selected as listening interface
 * unbound: add serve-expired option
-* web proxy: update for non-transparent SSL bumping (contributed
-  by Mikhail Morev)
-* web proxy: add notice to inform the user about the need to
-  download new list
+* web proxy: update for non-transparent SSL bumping (contributed by Mikhail Morev)
+* web proxy: add notice to inform the user about the need to download new list
 * lang: Chinese updated to 100% completed (contributed by Tianmo)
-* lang: Portuguese (Portugal) updated to 100% completed (contributed
-  by Carlos Meireles)
+* lang: Portuguese (Portugal) updated to 100% completed (contributed by Carlos Meireles)
 * lang: updates for German, French and Dutch
 * mvc: add boolean type to tables (contributed by Frank Brendel)
 * mvc: handle backend execution error more gracefully
@@ -539,7 +529,7 @@ Here is the full list of changes:
 * mvc: allow dynamic hiding of sections in forms via model
 * plugins: register group interface type for PPTP, L2TP and PPPoE
 * plugins: add lifetime expiry for Universal Plug and Play rules
-* plugins: Let's Encrypt version 1.2 (contributed by Frank Wall) `[3] <https://github.com/opnsense/plugins/pull/76>`__ 
+* plugins: Let's Encrypt version 1.2 `[3] <https://github.com/opnsense/plugins/pull/76>`__  (contributed by Frank Wall)
 * installer: do not configure console when /dev/ttyv0 is unavailable
 * installer: console settings now support vt(4) instead of syscons(4)
 * src: fix system hang when booting when PCI-express HotPlug is enabled `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-17:01.pcie.asc>`__ 

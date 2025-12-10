@@ -139,7 +139,7 @@ Here are the full patch notes:
 * system: reworked log page layout and dependencies
 * firmware: detach / reattach support for upgrade page
 * firmware: mirror and flavour selection moved to respective page
-* interfaces: improvements for 4G devices (sponsored by OSNet.eu `[1] <https://www.osnet.eu/>`__ )
+* interfaces: improvements for 4G devices `[1] <https://www.osnet.eu/>`__  (sponsored by OSNet)
 * interfaces: debug mode and logging for rtsold in DHCPv6 mode
 * dhcp: separate pages for router advertisements and service control
 * dhcp: IPv6 server as a stand-alone process for service control
@@ -597,7 +597,10 @@ Here are the full patch notes:
 * src: tzdata updated to 2016c `[1] <http://mm.icann.org/pipermail/tz-announce/2016-March/000037.html>`__ 
 * src: prevent kernel panic on ipfw/dummynet module unload
 * src: let ng_ether_attach() only attach to supported types to avoid kernel panics
-* ports: curl 7.48.0 `[2] <https://curl.haxx.se/changes.html>`__ , strongswan 5.4.0 `[3] <https://wiki.strongswan.org/projects/strongswan/wiki/Changelog54>`__ , pcre 8.38 (patched CVE-2016-1283) `[4] <https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-1283>`__ , php 5.6.20 `[5] <https://php.net/ChangeLog-5.php#5.6.20>`__ 
+* ports: curl 7.48.0 `[2] <https://curl.haxx.se/changes.html>`__ 
+* ports: strongswan 5.4.0 `[3] <https://wiki.strongswan.org/projects/strongswan/wiki/Changelog54>`__ 
+* ports: pcre 8.38 patches CVE-2016-1283 `[4] <https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-1283>`__ 
+* ports: php 5.6.20 `[5] <https://php.net/ChangeLog-5.php#5.6.20>`__ 
 * languages: added Russian to the release, now 60% complete (contributed by Smart-Soft)
 * languages: updated Japanese, now 70% complete (contributed by Chie Taguchi)
 * languages: updated German, now 81% complete
@@ -980,14 +983,14 @@ the deprecation of the high-severity SSL_OP_SINGLE_DH_USE option of its
 sibling.
 
 In other news, we are shipping a few minor fixes along with all-new
-SSL-centric rulesets for the intrusion prevention courtesy of abuse.ch `[3] <https://www.abuse.ch/>`__ .
+SSL-centric rulesets for the intrusion prevention courtesy of abuse.ch.
 Protect your assets, they are worth it!
 
 Without fuzz, here are the full patch notes:
 
-* ports: libressl 2.2.6 `[1] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.6-relnotes.txt>`__ , openssl 1.0.2f `[2] <https://www.openssl.org/news/secadv/20160128.txt>`__ 
-* intrusion prevention: add SSL fingerprint blacklist and other abuse lists
-  (courtesy of abuse.ch `[3] <https://www.abuse.ch/>`__ )
+* ports: libressl 2.2.6 `[1] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.6-relnotes.txt>`__ 
+* ports: openssl 1.0.2f `[2] <https://www.openssl.org/news/secadv/20160128.txt>`__ 
+* intrusion prevention: add SSL fingerprint blacklist and other abuse lists `[3] <https://www.abuse.ch/>`__  (courtesy of abuse.ch)
 * captive portal: limit the max vouchers per call
 * captive portal: change voucher download filename to match group name
 * captive portal: strip bad characters from group name
@@ -1000,11 +1003,9 @@ Without fuzz, here are the full patch notes:
 * squid: fix authentication script permission regression
 * dashboard: remove non-authoriative hardware crypto probing
 * system: do not accept an authentication server with an empty name
-* system: added hint that device polling setting needs reboot
-  (contributed by Olivier Paroz)
+* system: added hint that device polling setting needs reboot (contributed by Olivier Paroz)
 * system: assorted translation fixes (contributed by Fabian Franz)
-* logging: unhide IGMP packets from firewall log view
-  (contributed by Isaac Levy)
+* logging: unhide IGMP packets from firewall log view (contributed by Isaac Levy)
 
 
 

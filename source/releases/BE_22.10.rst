@@ -307,7 +307,7 @@ Here are the full patch notes:
 * firewall: performance improvement for reading live log
 * firewall: add general firewall log for alias and filter system log messages
 * firewall: do not emit link-local address on IPv6 network outbound NAT
-* firewall: add BGP ASN type to aliases `[3] <https://docs.opnsense.org/manual/aliases.html#bgp-asn>`__ 
+* firewall: add BGP ASN type to aliases `[3] <https://docs.opnsense.org/manual/aliases.html>`__ 
 * firewall: implement a router file read fallback for new ifctl :slaac suffix
 * firewall: stick-address only in effect with pool option and multiple routers
 * firewall: remove dead pptpd server code

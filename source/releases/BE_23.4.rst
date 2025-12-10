@@ -170,7 +170,7 @@ Here are the full patch notes:
 * interfaces: ifctl: avoid null route on fragile /64 prefix delegation
 * interfaces: ifctl: do not flush name server routes
 * interfaces: deal with RENEW and REBIND only reporting partial PDINFO
-* firewall: allow to create aliases for logged-in OpenVPN users `[1] <https://docs.opnsense.org/manual/aliases.html#openvpn-group>`__ 
+* firewall: allow to create aliases for logged-in OpenVPN users `[1] <https://docs.opnsense.org/manual/aliases.html>`__ 
 * firewall: leave out fractional seconds from timestamps in aliases
 * firewall: add missing scrub rules in dependency check for alias use
 * firewall: usability improvements and cleanups in scheduler pages (contributed by kuya1284)

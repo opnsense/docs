@@ -67,7 +67,7 @@ Here are the full patch notes:
 A hotfix release was issued as 21.10.3_1:
 
 * firmware: enable upgrade path to 22.4
-* plugins: os-OPNcentral 1.4 adds improved provisioning to allow unique local content `[23] <https://docs.opnsense.org/vendor/deciso/opncentral.html#provisioning-classes>`__ 
+* plugins: os-OPNcentral 1.4 adds improved provisioning to allow unique local content `[23] <https://docs.opnsense.org/vendor/deciso/opncentral.html>`__ 
 * plugins: os-OPNBEcore 1.0.1 supplemental update for os-OPNcentral
 * ports: cyrus-sasl 2.1.28
 

@@ -378,7 +378,7 @@ Here are the full patch notes:
 * ports: pkg 1.6.2 `[7] <https://github.com/freebsd/freebsd-ports/commit/0466b08981bf9c714>`__ 
 * ports: opnsense-bootstrap, the infamous installer that works on stock FreeBSD `[8] <https://github.com/opnsense/update/commit/e3f63ecdb1149a8cc30e3>`__ 
 * intrusion detection: ignore json parse errors in eve log file
-* intrusion prevention (development): added Suricata 2.1beta4 in inline mode `[9] <https://forum.opnsense.org/index.php?topic=1740>`__ 
+* intrusion prevention/development: added Suricata 2.1beta4 in inline mode `[9] <https://forum.opnsense.org/index.php?topic=1740>`__ 
 * interfaces: reverted cache removal due to multiple speed regressions reports
 * backend: send timeouts with proper description to syslog
 * openvpn: fix auth server selection for translations
@@ -411,19 +411,15 @@ Here are the full patch notes:
 * aliases: make url tables useable
 * interfaces: fix faulty GUI caching issues `[3] <https://github.com/opnsense/core/issues/451>`__ 
 * ipsec: obey force nat traversal
-* ipsec: switch status page and widget from deprecated SMP to VICI interface
-  for reliable output
+* ipsec: switch status page and widget from deprecated SMP to VICI interface for reliable output
 * ipsec: fixed remote network input validation
 * status: show more raw ipfw info in the commands section
 * config: don't use notices in early/low level code
-* languages: a large number of old and new strings is now being properly
-  translated (with contributions from Franz Fabian and Frederic Lietart)
-* languages: translation strings no longer use obfuscated argument reordering
-  by default
-* languages: updated German and French to a newer version from
-  translate.opnsense.org
-* captive portal (development): added a new voucher implementation
-* api (development): added API key authentication mechanism `[4] <https://wiki.opnsense.org/index.php/Howto_use_the_API>`__ 
+* languages: a large number of old and new strings is now being properly translated (with contributions from Franz Fabian and Frederic Lietart)
+* languages: translation strings no longer use obfuscated argument reordering by default
+* languages: updated German and French to a newer version from translate.opnsense.org
+* captive portal/development: added a new voucher implementation
+* api/development: added API key authentication mechanism `[4] <https://wiki.opnsense.org/index.php/Howto_use_the_API>`__ 
 
 
 
@@ -792,7 +788,7 @@ ship fixes a lot quicker.
 
 Here are the full patch notes:
 
-* src: Multiple integer overflows in expat (libbsdxml) XML parser `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:20.expat.asc>`__ 
+* src: Multiple integer overflows in expat XML parser `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:20.expat.asc>`__ 
 * src: bumped tzdata to 2015f `[2] <http://mm.icann.org/pipermail/tz-announce/2015-August/000033.html>`__ 
 * ports: curl 7.44.0 `[3] <https://curl.haxx.se/changes.html>`__ , ca_root_nss 3.20, openssh 7.1p1_1 `[4] <http://www.openssh.com/txt/release-7.1>`__ , sqlite 3.8.11.1 `[5] <https://sqlite.org/releaselog/3_8_11_1.html>`__ , phalcon 2.0.7 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.7>`__ , pcre 8.37_4 `[7] <https://svnweb.freebsd.org/ports/head/devel/pcre/Makefile?revision=395178&view=markup>`__ 
 * crash reporter: create custom reports on demand

@@ -683,7 +683,7 @@ Here are the full patch notes:
 * plugins: os-postfix 1.5 allow empty destination in transport (contributed by Michael Muenz)
 * plugins: os-telegraf 1.5.1 adds ElasticSearch output and disk ignore fix (contributed by Michael Muenz)
 * plugins: os-theme-rebellion 1.4 style fixes
-* src: L1 terminal fault (L1TF) kernel information disclosure `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-18:09.l1tf.asc>`__ 
+* src: L1 terminal fault kernel information disclosure `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-18:09.l1tf.asc>`__ 
 * src: resource exhaustion in IP fragment reassembly `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-18:10.ip.asc>`__ 
 * ports: ntp 4.2.8p12 `[4] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
 * ports: openssl 1.0.2p `[5] <https://www.openssl.org/news/cl102.txt>`__ 

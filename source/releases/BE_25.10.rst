@@ -18,6 +18,189 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+25.10.1 (December 10, 2025)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 25.7.8 community version
+with additional reliability improvements, but without revamped Unbound
+blocklists for the time being.
+
+Please be aware that during the update check the new package manager will be
+installed, but will fail to report the update status like it always had before
+and so you will end up with an error that will require checking for updates
+again.  The fix is in this update, but impossible to install without upgrading
+the package manager first.  We hope this will only be a minor inconvenience
+during the process.
+
+Also, Python has reported security issues of which a DoS in http.client could
+potentially affect existing installations given that an HTTP server sends
+a malicious response which "can consume a large amount of memory and CPU time
+and cause swapping".  Python has not released an update for version 3.11 at
+this point in time.
+
+Here are the full patch notes:
+
+* system: use new file_safe() in two instances
+* system: improve the HA VIP sync code
+* system: simplify RRD backup code and remove exec() usage `[1] <https://www.cve.org/cverecord?id=CVE-2025-13698>`__  (reported by Alex Williams from Pellera Technologies working with Trend Zero Day Initiative)
+* system: move valid_from search criteria to log_matcher for faster end of search
+* system: use file_safe() in gateway monitor watcher
+* system: refactor factory reset page to MVC and add a reset per component operating on models
+* system: fix a HA sync regression introduced in 25.7.6 that prevented a sync from succeeding in an edge case
+* system: defaults: properly delete empty model containers in the configuration
+* system: switch int/bool to string in gateway properties
+* system: ignore TypeErrors when parsing log lines in the backend
+* system: replace various raw exec(), system(), passthru() and shell_exec() calls with safer variants
+* system: add host route deletion support to system_host_route()
+* system: move the general page host route removal to system_host_route()
+* system: add CA chain to PKCS12 export
+* system: fix hidden syslog HA XMLRPC sync option
+* interfaces: fix permission of packet capture file in strict security mode
+* interfaces: ifctl: always allow reads to internal state files
+* interfaces: fix overview details button not working
+* interfaces: support link-local IPv6 mode
+* interfaces: also stop PPPoE connections when CARP is temporarily disabled (contributed by René Mayrhofer)
+* interfaces: fix packet capture and ping buttons not working since 25.7.7
+* interfaces: limit execution of sysctl scope in PPP device edit code
+* interfaces: safer interfaces_pfsync_configure() handling
+* firewall: refactor live log using a ring buffer
+* firewall: add toggles to disable selected automatic rules
+* firewall: enable "safe delete" for categories
+* firewall: improved stats rendering on automation rules
+* firewall: allow searching aliases in automation rules inspect mode by IP address
+* firewall: automation: fix alias IP address search
+* firewall: automation: allow interface parameter to contain a list of interfaces for API users
+* firewall: aliases: replace invalid unicode chars (contributed by Marius Halden)
+* firewall: live log: only execute redraw on visibility state transition
+* firewall: live log: optimize viewbuffer rendering
+* firewall: live log: prevent re-resolving in-flight requests and move host lookup to current filtered view
+* firewall: live log: fix data ordering and add table/history limit options
+* firewall: live log: use "badge" class like before
+* firewall: live log: make this grid static and slightly adjust info column width
+* firewall: live log: backwards compatibility for old "interface_name" field type
+* firewall: live log: fix wrong variable scope
+* firewall: live log: restructure DOM layout to reduce wasted header space
+* firewall: live log: revert static property, persistence is disabled for this grid
+* firewall: states: fix delete_selected firewall states (contributed by Alexander Sulfrian)
+* firewall: do not allow nesting in GeoIP aliases
+* firewall: automation: split search logic and normalize legacy output
+* firewall: aliases: add a few GeoIP related logging messages
+* firewall: mute pfctl-based table entry expire to avoid cron noise due to stderr use
+* firewall: aliases: missing placeholder for username in basic auth type selection
+* firewall: support "0" as valid rule ID in rule lookup redirect
+* firewall: automation: add per-rule state timeouts for "udp.first", "udp.multiple" and "udp.single"
+* captive portal: fix selectpicker #voucher-groups not being re-rendered after change event
+* captive portal: move grid init to tab show event
+* dnsmasq: strict hostname and domain validation plus improved ipset validations
+* dnsmasq: add optgroup support to DHCP option fields and expose all DHCPv4 options
+* dnsmasq: switch to file_safe() use in backend
+* dnsmasq: minor safe execution changes in backend
+* firmware: package manager upgrade changes for pkg 2.x
+* intrusion detection: remove obsolete "ac-bs" pattern matcher algorithm
+* ipsec: sessions: add datakey property for row mapping
+* ipsec: status: search phase 2 triggered twice on click and cleanup tooltip event as well
+* ipsec: disable model caching on SPD page
+* ipsec: add AES256GCM16 to the child ESP proposals list
+* ipsec: hide phase 2 output based on phase 1 status instead of the row count for phase 2
+* ipsec: add "reqid_base" setting to advanced settings
+* ipsec: sessions: fix missing commands translation
+* ipsec: connections: prevent model caching when referring items within the same model
+* isc-dhcp: adjust backend for safe execution
+* kea-dhcp: automatic route support for PD leases
+* kea-dhcp: case insensitive MAC address comparison
+* openssh: minor safe execution change in backend
+* openvpn: add support for pushing excluded routes via net_gateway (contributed by Patrice Damezin)
+* openvpn: allow multiple domains settings for client connection (contributed by Krisztian Ivancso)
+* openvpn: use file_safe() to write CRL files
+* openvpn: swap description and mode in "tls_key" and require a description for static keys
+* openvpn: one safe execution change
+* openvpn: add fast-io option (contributed by mdten)
+* radvd: safe execution changes
+* unbound: use file_safe() for root hint creation
+* unbound: deprecate unmaintained AdAway blocklist (contributed by Maurice Walker)
+* unbound: duplicate pointer records due to not casting the field types
+* unbound: missing lock in del_host_override action
+* wireguard: add debug option to instances
+* wireguard: fix wrong maximum value for "PersistentKeepalive"
+* backend: add file_safe() helper for atomic file creation
+* backend: rename "realif" variables to "device" in a number of spots
+* backend: avoid the use of get_real_interface() when it does not matter and remove dead code associated with that
+* backend: exend shell_safe() to emulate exec() $output argument magic
+* backend: reimplement existing command execution functions with Shell class implementation
+* backend: replace mwexecf_bg() with mwexecfb() for clarity
+* mvc: add RegexField to properly validate PCRE2 syntax
+* mvc: support arrays in search clauses
+* mvc: OptionField: properly translate optgroup
+* mvc: JsonKeyValueStoreField: fix race condition when using SourceField in the model
+* mvc: persist models description in root attribute of its respective configuration
+* mvc: move translation to menu system and add "FixedName" property
+* mvc: extend ModelRelationField so it can optionally disable caching
+* mvc: rewrite the old Shell class according to our current standards for safe command execution (exec_safe() wrapper)
+* mvc: fix default sort order being ignored in fetchBindRequest()
+* mvc: make "data_change_message_content" configurable
+* rc: do not clear /tmp on a diskless install
+* rc: secure an exec() in the recovery script
+* shell: assorted cleanups in console menu related scripts
+* ui: assorted adjustments for dark theme
+* ui: always show bootgrid reset button
+* ui: improve grid responsiveness via minWidth()
+* ui: remove this.dataIdentifier as datakey defines the key to be used when asking "row-id" or getSelectedRows
+* ui: SimpleActionButton: add support for icons in action buttons
+* ui: recompile default themes using dart sass (1.93.2) which changes color rendering
+* ui: keyboard shortcuts for "a"dvanced and "h"elp in MVC pages (contributed by Konstantinos Spartalis)
+* ui: bail out on dynamic grid resize if data is loading
+* ui: bootgrid: prevent full table redraw without onDataProcessed trigger
+* ui: bootgrid: add missing datakeys to two pages
+* ui: fix tokenizer event trigger loop
+* plugins: os-OPNWAF 2.1
+* plugins: os-ddclient 1.28 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-freeradius 1.9.28 `[3] <https://github.com/opnsense/plugins/blob/stable/25.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 1.49 `[4] <https://github.com/opnsense/plugins/blob/stable/25.7/net/frr/pkg-descr>`__ 
+* plugins: os-git-backup 1.1 `[5] <https://github.com/opnsense/plugins/blob/stable/25.7/sysutils/git-backup/pkg-descr>`__ 
+* plugins: os-ndp-proxy-go 1.0 is a hot-off-the-press userspace IPv6 Neighbor Discovery Proxy `[6] <https://github.com/opnsense/plugins/blob/stable/25.7/net/ndp-proxy-go/pkg-descr>`__ 
+* plugins: os-q-feeds-connector 1.3 `[7] <https://github.com/opnsense/plugins/blob/stable/25.7/security/q-feeds-connector/pkg-descr>`__ 
+* plugins: os-tailscale 1.3 `[8] <https://github.com/opnsense/plugins/blob/stable/25.7/security/tailscale/pkg-descr>`__ 
+* plugins: os-tayga 1.3 `[9] <https://github.com/opnsense/plugins/blob/stable/25.7/net/tayga/pkg-descr>`__ 
+* plugins: os-theme-flexcolor 1.0 is a new 3-in one theme `[10] <https://github.com/opnsense/plugins/blob/stable/25.7/misc/theme-flexcolor/pkg-descr>`__  (contributed by Schnuffel2008)
+* plugins: os-zabbix-proxy 1.15 `[11] <https://github.com/opnsense/plugins/blob/stable/25.7/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* src: dhclient: improve UDP checksum handling
+* src: dummynet: move excessive logging messages under debug output
+* src: ice: add PCI IDs for E835 devices
+* src: ice: add support for E835-XXV-4 adapter
+* src: if_vxlan: fix byteorder of source port
+* src: ifconfig: assorted stable branch improvements
+* src: igb: fix out-of-bounds register access on VFs
+* src: ipfw: check for errors from sooptcopyin() and sooptcopyout()
+* src: ipfw: pmod: avoid further rule processing after tcp-mod failures
+* src: ix/ixv: add support for new Intel Ethernet E610 family devices
+* src: ixl: fix multicast promiscuous mode state tracking and filter management
+* src: net: validate interface group names in ioctl handlers
+* src: netlink: in snl_init_writer() do not overwrite error in case of failure
+* src: pf: improve add state validation
+* src: pf: improve DIOCRCLRTABLES validation
+* src: pf: SCTP abort messages fully close the connection
+* src: sctp, tcp, udp: improve deferred computation of checksums
+* src: SO_REUSEPORT_LB breaks connect(2) for UDP sockets `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-25:09.netinet.asc>`__ 
+* src: vtnet: assorted stable branch improvements
+* ports: curl 8.17.0 `[13] <https://curl.se/changes.html#8_17_0>`__ 
+* ports: kea 3.0.2 `[14] <https://downloads.isc.org/isc/kea/3.0.2/Kea-3.0.2-ReleaseNotes.txt>`__ 
+* ports: libxml 2.14.6 `[15] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: nss 3.118.1 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_118_1.html>`__ 
+* ports: openssh 10.2p1 `[17] <https://www.openssh.com/txt/release-10.2>`__ 
+* ports: openvpn 2.6.17 `[18] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.17>`__ 
+* ports: pcre2 10.47 `[19] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.47>`__ 
+* ports: php 8.3.28 `[20] <https://www.php.net/ChangeLog-8.php#8.3.28>`__ 
+* ports: pkg 2.3.1
+* ports: python 3.11.14 `[21] <https://docs.python.org/release/3.11.14/whatsnew/changelog.html>`__ 
+* ports: sqlite 3.50.4 `[22] <https://sqlite.org/releaselog/3_50_4.html>`__ 
+* ports: strongswan 6.0.3 `[23] <https://github.com/strongswan/strongswan/releases/tag/6.0.3>`__ 
+* ports: suricata 8.0.2 `[24] <https://suricata.io/2025/11/06/suricata-8-0-2-and-7-0-13-released/>`__ 
+* ports: syslog-ng 4.10.2 `[25] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.10.2>`__ 
+* ports: unbound 1.24.2 `[26] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-24-2>`__ 
+
+
+
+--------------------------------------------------------------------------
 25.10 (October 15, 2025)
 --------------------------------------------------------------------------
 
@@ -322,7 +505,7 @@ A hotfix release was issued as 25.10_2:
 
 Migration notes, known issues and limitations:
 
-* The captive portal implementation moves from IPFW to PF.  Check the technical details first, especially regarding the new ruleset behaviours. `[45] <https://docs.opnsense.org/manual/captiveportal.html#migration-notes-technical-details.html>`__ 
+* The captive portal implementation moves from IPFW to PF.  Check the technical details first, especially regarding the new ruleset behaviours. `[45] <https://docs.opnsense.org/manual/captiveportal.html>`__ 
 * Deprecated Google Drive backups due to upstream policy changes and moved to plugins for existing users.
 * API URLs registered in the default ACLs have been switched from "camelCase" to "snake_case".
 * API grid return values now offer "%field" for a value description when available.  "field" will now always be the literal value from the configuration.  The API previously returned a display value for some field types, but not all.

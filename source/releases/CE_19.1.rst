@@ -104,7 +104,7 @@ Here are the full patch notes:
 * ipsec: remove remnants of gateway group interface selection
 * ipsec: use indirect plugin calls in interface code
 * openvpn: add live-search to longer lists in server page
-* openvpn: support --cryptoapicert export (sponsored by m.a.x. it `[1] <https://www.max-it.de/>`__ )
+* openvpn: support --cryptoapicert export `[1] <https://www.max-it.de/>`__  (sponsored by m.a.x. it)
 * opnevpn: correctly check for translation in get_carp_interface_status()
 * openvpn: use waitforpid() to properly wait for instanes to come up
 * openvpn: translate GUI error values when returning them
@@ -176,7 +176,7 @@ Here are the full patch notes:
 * plugins: os-theme-tukan 1.17 (contributed by Team Rebellion)
 * src: timezone database information update `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-19:08.tzdata.asc>`__ 
 * src: install(1) broken with partially matching relative paths `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-19:09.xinstall.asc>`__ 
-* src: microarchitectural Data Sampling (MDS) mitigation `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:07.mds.asc>`__ 
+* src: microarchitectural Data Sampling mitigation `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:07.mds.asc>`__ 
 * ports: ca_root_nss 3.44
 * ports: php 7.2.18 `[6] <https://www.php.net/ChangeLog-7.php#7.2.18>`__ 
 * ports: sqlite 3.28.0 `[7] <https://sqlite.org/releaselog/3_28_0.html>`__ 
