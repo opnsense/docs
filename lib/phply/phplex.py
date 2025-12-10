@@ -152,10 +152,11 @@ t_php_DOUBLE_ARROW         = r'=>'
 t_php_DOUBLE_COLON         = r'::'
 
 def t_php_OBJECT_OPERATOR(t):
-    r'->'
+    r'\?->|->'
     if re.match(r'[A-Za-z_]', peek(t.lexer)):
         t.lexer.push_state('property')
     return t
+
 
 # Delimeters
 t_php_LPAREN               = r'\('

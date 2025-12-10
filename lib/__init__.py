@@ -158,8 +158,7 @@ class ApiParser:
         self.api_commands = {}
         self.parser = make_parser()
         self.parser.errorfunc = self._p_error
-
-        for root in self.parser.parse(self._data, lexer=lexer.clone(), tracking=True):
+        for root in self.parser.parse(self._data, lexer=lexer.clone(), tracking=True, debug=self._debug):
             if type(root) is Class:
                 self.is_abstract = root.type == 'abstract'
                 self.base_class = root.extends
