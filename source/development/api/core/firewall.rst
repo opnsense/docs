@@ -76,6 +76,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``GET``","firewall","filter_base","get",""
     "``GET``","firewall","filter_base","list_categories",""
     "``GET``","firewall","filter_base","list_network_select_options",""
+    "``GET``","firewall","filter_base","list_port_select_options",""
     "``POST``","firewall","filter_base","revert","$revision"
     "``POST``","firewall","filter_base","savepoint",""
     "``POST``","firewall","filter_base","set",""
@@ -88,6 +89,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
 
     "``POST``","firewall","filter","add_rule",""
     "``POST``","firewall","filter","del_rule","$uuid"
+    "``POST``","firewall","filter","flush_inspect_cache",""
     "``GET``","firewall","filter","get_interface_list",""
     "``GET``","firewall","filter","get_rule","$uuid=null"
     "``POST``","firewall","filter","move_rule_before","$selected_uuid,$target_uuid"

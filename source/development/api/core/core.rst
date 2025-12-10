@@ -6,11 +6,11 @@ Core
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","core","backup","backups","$host"
-    "``GET``","core","backup","delete_backup","$backup"
+    "``POST``","core","backup","delete_backup","$backup"
     "``GET``","core","backup","diff","$host,$backup1,$backup2"
     "``GET``","core","backup","download","$host,$backup=null"
     "``GET``","core","backup","providers",""
-    "``GET``","core","backup","revert_backup","$backup"
+    "``POST``","core","backup","revert_backup","$backup"
 
 .. csv-table:: Resources (DashboardController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -21,6 +21,15 @@ Core
     "``GET``","core","dashboard","product_info_feed",""
     "``POST``","core","dashboard","restore_defaults",""
     "``POST``","core","dashboard","save_widgets",""
+
+.. csv-table:: Resources (DefaultsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","core","defaults","factory_defaults",""
+    "``GET``","core","defaults","get",""
+    "``GET``","core","defaults","get_installed_sections",""
+    "``POST``","core","defaults","reset",""
 
 .. csv-table:: Resources (HasyncController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
