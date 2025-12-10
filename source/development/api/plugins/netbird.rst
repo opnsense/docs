@@ -1,31 +1,26 @@
 Netbird
 ~~~~~~~
 
-.. csv-table:: Resources (InitialController.php)
+.. csv-table:: Resources (AuthenticationController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","netbird","initial","get",""
-    "``POST``","netbird","initial","set",""
+    "``GET``","netbird","authentication","down",""
+    "``GET``","netbird","authentication","get",""
+    "``POST``","netbird","authentication","set",""
+    "``GET``","netbird","authentication","up",""
 
-    "``<<uses>>``", "", "", "", "*model* `Initial.xml <https://github.com/opnsense/plugins/blob/master/security/netbird/src/opnsense/mvc/app/models/OPNsense/Netbird/Initial.xml>`__"
+    "``<<uses>>``", "", "", "", "*model* `Authentication.xml <https://github.com/opnsense/plugins/blob/master/security/netbird/src/opnsense/mvc/app/models/OPNsense/Netbird/Authentication.xml>`__"
 
 .. csv-table:: Service (ServiceController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","netbird","service","con_status",""
-    "``GET``","netbird","service","initial_up",""
     "``POST``","netbird","service","reconfigure",""
-    "``POST``","netbird","service","reload",""
     "``POST``","netbird","service","restart",""
-    "``GET``","netbird","service","search",""
-    "``GET``","netbird","service","set_down",""
-    "``GET``","netbird","service","set_up",""
     "``POST``","netbird","service","start",""
     "``GET``","netbird","service","status",""
     "``POST``","netbird","service","stop",""
-    "``GET``","netbird","service","up_down_status",""
 
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -33,5 +28,16 @@ Netbird
 
     "``GET``","netbird","settings","get",""
     "``POST``","netbird","settings","set",""
+    "``GET``","netbird","settings","sync",""
 
-    "``<<uses>>``", "", "", "", "*model* `Netbird.xml <https://github.com/opnsense/plugins/blob/master/security/netbird/src/opnsense/mvc/app/models/OPNsense/Netbird/Netbird.xml>`__"
+    "``<<uses>>``", "", "", "", "*model* `Settings.xml <https://github.com/opnsense/plugins/blob/master/security/netbird/src/opnsense/mvc/app/models/OPNsense/Netbird/Settings.xml>`__"
+
+.. csv-table:: Resources (StatusController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","netbird","status","get",""
+    "``POST``","netbird","status","set",""
+    "``GET``","netbird","status","status",""
+
+    "``<<uses>>``", "", "", "", "*model* `Status.xml <https://github.com/opnsense/plugins/blob/master/security/netbird/src/opnsense/mvc/app/models/OPNsense/Netbird/Status.xml>`__"

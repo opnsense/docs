@@ -69,6 +69,21 @@ Freeradius
 
     "``<<uses>>``", "", "", "", "*model* `Ldap.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Ldap.xml>`__"
 
+.. csv-table:: Resources (LdapgroupController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","freeradius","ldapgroup","add_ldapgroup",""
+    "``POST``","freeradius","ldapgroup","del_ldapgroup","$uuid"
+    "``GET``","freeradius","ldapgroup","get",""
+    "``GET``","freeradius","ldapgroup","get_ldapgroup","$uuid=null"
+    "``GET``","freeradius","ldapgroup","search_ldapgroup",""
+    "``POST``","freeradius","ldapgroup","set",""
+    "``POST``","freeradius","ldapgroup","set_ldapgroup","$uuid"
+    "``GET``","freeradius","ldapgroup","toggle_ldapgroup","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Ldapgroup.xml <https://github.com/opnsense/plugins/blob/master/net/freeradius/src/opnsense/mvc/app/models/OPNsense/Freeradius/Ldapgroup.xml>`__"
+
 .. csv-table:: Resources (LeaseController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

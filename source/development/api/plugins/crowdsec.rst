@@ -75,8 +75,11 @@ Crowdsec
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","crowdsec","service","reload",""
+    "``GET``","crowdsec","service","reconfigure",""
+    "``POST``","crowdsec","service","restart",""
+    "``POST``","crowdsec","service","start",""
     "``GET``","crowdsec","service","status",""
+    "``POST``","crowdsec","service","stop",""
 
 .. csv-table:: Resources (VersionController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
