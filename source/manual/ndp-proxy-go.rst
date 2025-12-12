@@ -76,7 +76,7 @@ Settings
                                                   When the neighbor cache lifetime expires, the IPv6 address will be removed from the alias.
         ========================================= ====================================================================================
 
-Link types
+Link Types
 ==================================================
 
 The proxy supports different link types on the upstream interface with some important differences.
