@@ -206,7 +206,7 @@ Here are the full patch notes:
 * ports: krb5 1.20.1 `[3] <https://web.mit.edu/kerberos/krb5-1.20/>`__ 
 * ports: nss 3.85 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_85.html>`__ 
 * ports: phalcon 5.1.1 `[5] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.1>`__ 
-* ports: sudo 1.9.12p1 `[6] <https://www.sudo.ws/stable.html#1.9.12p1>`__ 
+* ports: sudo 1.9.12p1 `[6] <https://www.sudo.ws/releases/stable/#1.9.12p1>`__ 
 
 
 
@@ -286,7 +286,7 @@ Here are the full patch notes:
 * ports: phalcon 5.1.0 `[19] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.0>`__ 
 * ports: php 8.0.25 `[20] <https://www.php.net/ChangeLog-8.php#8.0.25>`__ 
 * ports: python 3.9.15 `[21] <https://docs.python.org/release/3.9.15/whatsnew/changelog.html>`__ 
-* ports: sudo 1.9.12 `[22] <https://www.sudo.ws/stable.html#1.9.12>`__ 
+* ports: sudo 1.9.12 `[22] <https://www.sudo.ws/releases/stable/#1.9.12>`__ 
 * ports: unbound 1.17.0 `[23] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-17-0>`__ 
 
 A hotfix release was issued as 22.7.7_1:

@@ -122,8 +122,8 @@ Here are the full patch notes:
 * plugins: os-telegraf 1.11.0 `[4] <https://github.com/opnsense/plugins/blob/stable/21.1/net-mgmt/telegraf/pkg-descr>`__ 
 * plugins: os-tor Phalcon 4 fix
 * plugins: os-zabbix5-proxy is now a plugin variant
-* src: libcasper: fix descriptors numbers `[5] <https://www.freebsd.org/security/advisories/EN-21:19.libcasper.asc>`__ 
-* src: linux: prevent integer overflow in futex_requeue `[6] <https://www.freebsd.org/security/advisories/EN-21:22.linux_futex.asc>`__ 
+* src: libcasper: fix descriptors numbers `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:19.libcasper.asc>`__ 
+* src: linux: prevent integer overflow in futex_requeue `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:22.linux_futex.asc>`__ 
 * ports: clog 1.0.2 fixes garbage header write on init
 * ports: libxml 2.9.12 `[7] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nettle 3.7.3
@@ -131,7 +131,7 @@ Here are the full patch notes:
 * ports: openvpn 2.5.3 `[9] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.3>`__ 
 * ports: php 7.4.20 `[10] <https://www.php.net/ChangeLog-7.php#7.4.20>`__ 
 * ports: phpseclib 2.0.32 `[11] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.32>`__ 
-* ports: sudo 1.9.7p1 `[12] <https://www.sudo.ws/stable.html#1.9.7p1>`__ 
+* ports: sudo 1.9.7p1 `[12] <https://www.sudo.ws/releases/stable/#1.9.7p1>`__ 
 * ports: suricata 5.0.7 `[13] <https://redmine.openinfosecfoundation.org/versions/166>`__ 
 
 A hotfix release was issued as 21.1.8_1:
@@ -273,7 +273,7 @@ Here are the full patch notes:
 * ports: openvpn 2.4.11 `[15] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24#OpenVPN2.4.11>`__ 
 * ports: php 7.3.28 `[16] <https://www.php.net/ChangeLog-7.php#7.3.28>`__ 
 * ports: sqlite 3.35.5 `[17] <https://sqlite.org/releaselog/3_35_5.html>`__ 
-* ports: sudo 1.9.7 `[18] <https://www.sudo.ws/stable.html#1.9.7>`__ 
+* ports: sudo 1.9.7 `[18] <https://www.sudo.ws/releases/stable/#1.9.7>`__ 
 * ports: syslog-ng 3.32.1 `[19] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.32.1>`__ 
 
 
@@ -425,7 +425,7 @@ Here are the full patch notes:
 * ports: openldap 2.4.58 `[9] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: openssh fix for double free in ssh-agent `[10] <https://ftp.openbsd.org/pub/OpenBSD/patches/6.8/common/015_sshagent.patch.sig>`__ 
 * ports: openssl 1.1.1k `[11] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
-* ports: sudo 1.9.6p1 `[12] <https://www.sudo.ws/stable.html#1.9.6p1>`__ 
+* ports: sudo 1.9.6p1 `[12] <https://www.sudo.ws/releases/stable/#1.9.6p1>`__ 
 * ports: suricata 5.0.6 `[13] <https://suricata-ids.org/2021/03/02/suricata-6-0-2-and-5-0-6-released/>`__ 
 * ports: syslog-ng 3.31.2 `[14] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.31.2>`__ 
 * ports: wpa_supplicant p2p vulnerability `[15] <https://w1.fi/security/2021-1/wpa_supplicant-p2p-provision-discovery-processing-vulnerability.txt>`__ 
@@ -606,7 +606,7 @@ Here are the full patch notes:
 * src: Xen guest-triggered out of memory `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:02.xenoom.asc>`__ 
 * src: update timezone database information `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:01.tzdata.asc>`__ 
 * ports: dnsmasq 2.84 `[5] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
-* ports: lighttpd 1.4.59 `[6] <http://www.lighttpd.net/2021/2/2/1.4.59/>`__ 
+* ports: lighttpd 1.4.59 `[6] <https://www.lighttpd.net/2021/2/2/1.4.59/>`__ 
 * ports: krb5 1.19 `[7] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
 * ports: monit 5.27.2 `[8] <https://mmonit.com/monit/changes/>`__ 
 * ports: perl 5.32.1 `[9] <https://perldoc.perl.org/5.32.1/perldelta>`__ 
@@ -734,7 +734,7 @@ Here are the full patch notes against 20.7.8:
 * ports: nss 3.61 `[11] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_61.html>`__ 
 * ports: openldap 2.4.57 `[12] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: py-netaddr 0.8.0 `[13] <https://netaddr.readthedocs.io/en/latest/changes.html#release-0-8-0>`__ 
-* ports: sudo 1.9.5p2 `[14] <https://www.sudo.ws/stable.html#1.9.5p2>`__ 
+* ports: sudo 1.9.5p2 `[14] <https://www.sudo.ws/releases/stable/#1.9.5p2>`__ 
 
 The public key for the 21.1 series is:
 
@@ -863,7 +863,7 @@ Here are the full patch notes against 20.7.7_1:
 * ports: nss 3.60.1
 * ports: pkg fix for shell keyword by opening root file descriptor
 * ports: radvd 2.19 `[7] <https://radvd.litech.org/>`__ 
-* ports: sudo 1.9.4p2 `[8] <https://www.sudo.ws/stable.html#1.9.4p2>`__ 
+* ports: sudo 1.9.4p2 `[8] <https://www.sudo.ws/releases/stable/#1.9.4p2>`__ 
 
 Known issues and limitations:
 

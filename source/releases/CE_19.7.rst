@@ -111,7 +111,7 @@ Here are the full patch notes:
 * ports: phpseclib 2.0.23 `[11] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.23>`__ 
 * ports: python 3.7.6 `[12] <https://docs.python.org/release/3.7.6/whatsnew/changelog.html>`__ 
 * ports: strongswan 5.8.2 `[13] <https://wiki.strongswan.org/versions/75>`__ 
-* ports: sudo 1.8.30 `[14] <https://www.sudo.ws/stable.html#1.8.30>`__ 
+* ports: sudo 1.8.30 `[14] <https://www.sudo.ws/releases/legacy/#1.8.30>`__ 
 * ports: unbound 1.9.6 `[15] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 
 A hotfix release was issued as 19.7.9_1:
@@ -266,7 +266,7 @@ Here are the full patch notes:
 * ports: ca_root_nss 3.47
 * ports: php 7.2.24 `[4] <https://www.php.net/ChangeLog-7.php#7.2.24>`__ 
 * ports: python 3.7.5 `[5] <https://docs.python.org/release/3.7.5/whatsnew/changelog.html>`__ 
-* ports: sudo 1.8.29 `[6] <https://www.sudo.ws/legacy.html#1.8.29>`__ 
+* ports: sudo 1.8.29 `[6] <https://www.sudo.ws/releases/legacy/#1.8.29>`__ 
 
 
 
@@ -441,7 +441,7 @@ Here is the full list of changes:
 * ports: perl 5.30.0 `[18] <https://perldoc.perl.org/5.30.0/perldelta>`__ 
 * ports: php 7.2.21 `[19] <https://www.php.net/ChangeLog-7.php#7.2.21>`__ 
 * ports: py-openssl 19.0.0 `[20] <https://www.pyopenssl.org/en/stable/changelog.html>`__ 
-* ports: syslog-ng 3.22.1 `[21] <https://github.com/balabit/syslog-ng/releases/tag/syslog-ng-3.22.1>`__ 
+* ports: syslog-ng 3.22.1 `[21] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.22.1>`__ 
 * ports: wpa_supplicant 2.9 `[22] <https://w1.fi/cgit/hostap/plain/wpa_supplicant/ChangeLog>`__ 
 
 
@@ -764,7 +764,7 @@ Here are the full changes against version 19.1.10:
 * src: netmap VirtIO, VLAN child and vmxnet support
 * src: fix races in tun(4)/tap(4) drivers
 * ports: squid 4.7 `[4] <http://squid.mirror.colo-serv.net/archive/4/squid-4.0.7-RELEASENOTES.html>`__ 
-* ports: syslog-ng 3.21.1 `[5] <https://github.com/balabit/syslog-ng/releases/tag/syslog-ng-3.21.1>`__ 
+* ports: syslog-ng 3.21.1 `[5] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.21.1>`__ 
 
 Known issues and limitations:
 

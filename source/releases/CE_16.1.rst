@@ -86,33 +86,26 @@ one of our awesome forum members helped to debug.
 
 Here are the full patch notes:
 
-* ports: suricata 3.0.2 `[1] <https://suricata-ids.org/2016/06/20/suricata-3-0-2-released/>`__ , squid 3.5.20 `[1] <https://suricata-ids.org/2016/06/20/suricata-3-0-2-released/>`__ , expat 2.2.0 `[3] <http://expat.sourceforge.net/>`__ ,
-  haproxy 1.6.7 `[4] <http://www.haproxy.org/download/1.6/src/CHANGELOG>`__ , bind 9.10.4-P2 `[5] <https://kb.isc.org/article/AA-01396/81/BIND-9.10.4-P2-Release-Notes.html>`__ 
-* firewall: hide previously selected nested aliases from the
-  autocompletion on alias edit
+* ports: suricata 3.0.2 `[1] <https://suricata-ids.org/2016/06/20/suricata-3-0-2-released/>`__ , squid 3.5.20 `[1] <https://suricata-ids.org/2016/06/20/suricata-3-0-2-released/>`__ , expat 2.2.0 `[3] <http://expat.sourceforge.net/>`__ , haproxy 1.6.7 `[4] <http://www.haproxy.org/download/1.6/src/CHANGELOG>`__ , bind 9.10.4-P2 `[5] <https://kb.isc.org/article/AA-01396/81/BIND-9.10.4-P2-Release-Notes.html>`__ 
+* firewall: hide previously selected nested aliases from the autocompletion on alias edit
 * firewall: fix log view to properly render all of its html
 * firewall: fix link to IPv6 disable setting on rules screen
 * firewall: remove CARP restriction of matching interface subnet
 * interfaces: fix IPv6 subnet bits count on interface status
 * interfaces: traffic graphs now show more device types
 * gateways: prevent spurious dynamic default gateways from showing up
-* gateways: change the creation order of dynamic gateways to allow
-  overriding their settings correctly
+* gateways: change the creation order of dynamic gateways to allow overriding their settings correctly
 * firmware: refine ignore of temporary error 500 in GUI during upgrades
-* firmware: default config has been adapted to set up new style
-  dashboard entries during e.g. factory reset
+* firmware: default config has been adapted to set up new style dashboard entries during e.g. factory reset
 * firmware: validate source and destination entries in NPT
 * firmware: audited mirror list and disabled non-working entries
-* services: do not show disabled DHCPv6 server when prefix delegation
-  is not used
-* services: do not run boot-up routines for proxy server and intrusion
-  detection when disabled
+* services: do not show disabled DHCPv6 server when prefix delegation is not used
+* services: do not run boot-up routines for proxy server and intrusion detection when disabled
 * services: fix router advertisements subnet bits save
 * intrusion detection: improved alert browsing with action filter
 * proxy server: ACL setup can now include manual pre and post hooks
 * wizard: fixed alignment of page titles and contents
-* captive portal: ignore incomplete MAC entries to avoid premature
-  logout of active user
+* captive portal: ignore incomplete MAC entries to avoid premature logout of active user
 * openvpn: fix display of selected CRL in server settings
 
 
@@ -131,8 +124,7 @@ Here are the full patch notes:
 
 * system: properly run fsck on boot if needed
 * system: new Cron page and API now available for general use
-* system: QR codes are now generated locally in the browser
-  (contributed by Fabian Franz)
+* system: QR codes are now generated locally in the browser (contributed by Fabian Franz)
 * system: harden serial config write against power failures
 * system: allow serial config to attach to all available ttys
 * system: added missing ACL entry for LDAP user import page
@@ -144,9 +136,7 @@ Here are the full patch notes:
 * dhcp: separate pages for router advertisements and service control
 * dhcp: IPv6 server as a stand-alone process for service control
 * dhcp: fixed and improved writing of dynamic DNS configuration
-* ports: python 2.7.11_3 `[2] <http://bugs.python.org/issue26171>`__ , unbound 1.5.9 `[3] <https://nlnetlabs.nl/projects/unbound/download/>`__ , curl 7.49.1 `[4] <https://curl.haxx.se/changes.html>`__ ,
-  openssl 1.0.2_14 `[5] <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2177>`__ , sudo 1.8.17p1 `[6] <https://www.sudo.ws/sudo/changes.html>`__ , php 5.6.23 `[7] <https://php.net/ChangeLog-5.php#5.6.23>`__ ,
-  pcre 8.39 `[8] <http://www.pcre.org/original/changelog.txt>`__ , haproxy 1.6.6 `[9] <http://www.haproxy.org/download/1.6/src/CHANGELOG>`__ 
+* ports: python 2.7.11_3 `[2] <http://bugs.python.org/issue26171>`__ , unbound 1.5.9 `[3] <https://nlnetlabs.nl/projects/unbound/download/>`__ , curl 7.49.1 `[4] <https://curl.haxx.se/changes.html>`__ , openssl 1.0.2_14 `[5] <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2177>`__ , sudo 1.8.17p1 `[6] <https://www.sudo.ws/releases/legacy/#1.8.17p1>`__ , php 5.6.23 `[7] <https://www.php.net/ChangeLog-5.php#5.6.23>`__ , pcre 8.39 `[8] <http://www.pcre.org/original/changelog.txt>`__ , haproxy 1.6.6 `[9] <http://www.haproxy.org/download/1.6/src/CHANGELOG>`__ 
 * src: tzdata updated to 2016e `[10] <http://mm.icann.org/pipermail/tz-announce/2016-June/000039.html>`__ 
 * src: fix pf fragement timeout `[11] <https://lists.freebsd.org/pipermail/freebsd-pf/2016-May/008044.html>`__ 
 
@@ -167,7 +157,7 @@ including the addition of HardenedBSD's ASLR.  More on this next week.
 
 Here is the change log for 16.1.17:
 
-* ports: isc-dhcp-server 4.3.4 `[1] <https://kb.isc.org/article/AA-01364/82/DHCP-4.3.4-Release-Notes.html>`__ , syslogd 10.3, libressl 2.3.6 `[2] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.3.6-relnotes.txt>`__ , openssl 1.0.2_13 `[3] <https://github.com/freebsd/freebsd-ports/commit/5ae24c9c91bd>`__ 
+* ports: isc-dhcp-server 4.3.4 `[1] <https://kb.isc.org/article/AA-01364/82/DHCP-4.3.4-Release-Notes.html>`__ , syslogd 10.3, libressl 2.3.6 `[2] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.3.6-relnotes.txt>`__ , openssl 1.0.2_13 `[3] <https://github.com/freebsd/freebsd-ports/commit/5ae24c9c91bd>`__ 
 * system: fix OTP QR code link to amend the first request
 * system: allow to override TRIM apply at boot time via /etc/fstab `[4] <https://forum.opnsense.org/index.php?topic=3044>`__ 
 * dashboard: fix OpenVPN test data display
@@ -218,11 +208,10 @@ Here are the patch notes for 16.1.16:
 * src: kernel stack disclosure in Linux compatibility layer `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:20.linux.asc>`__ 
 * src: kernel stack disclosure in 4.3BSD compatibility layer `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:21.43bsd.asc>`__ 
 * src: directory traversal in cpio `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:22.libarchive.asc>`__ 
-* ports: libressl 2.3.5 `[5] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.3.5-relnotes.txt>`__ , phalcon 2.0.13 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.13>`__ , dnsmasq 2.76 `[7] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: libressl 2.3.5 `[5] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.3.5-relnotes.txt>`__ , phalcon 2.0.13 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.13>`__ , dnsmasq 2.76 `[7] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: apinger 0.7 `[8] <https://github.com/opnsense/apinger/blob/master/NEWS>`__ , curl 7.49 `[9] <https://curl.haxx.se/changes.html>`__ , bind 9.10.4-p1 `[10] <https://kb.isc.org/article/AA-01383/81/BIND-9.10.4-P1-Release-Notes.html>`__ 
-* ports: php 5.6.22 `[11] <https://php.net/ChangeLog-5.php#5.6.22>`__ , sqlite 3.13.0 `[12] <https://sqlite.org/releaselog/3_13_0.html>`__ , ntp 4.2.8p8 `[13] <https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ 
-* dashboard: movable widgets, multi-column support and improved
-  look and feel
+* ports: php 5.6.22 `[11] <https://www.php.net/ChangeLog-5.php#5.6.22>`__ , sqlite 3.13.0 `[12] <https://sqlite.org/releaselog/3_13_0.html>`__ , ntp 4.2.8p8 `[13] <https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ 
+* dashboard: movable widgets, multi-column support and improved look and feel
 * system: improved CSRF handling
 * system: allow far gateway support for non-subnet gateways
 * system: fix null routes add / delete
@@ -252,18 +241,12 @@ And here is the change log for 16.7 BETA:
 * firmware: dump / restore package database on shutdown / boot
 * firewall: removed proxy NAT reflection mode
 * firewall: properly start/stop proxy APR daemons
-* firewall: implement flexible scrub / normalisation config pages to
-  zap hidden scrubbing code
-* firewall: removed "match" action from floating rules, no FreeBSD
-  support
-* firewall: removed negate rules that would magically prevent load-
-  balancing VPN links
-* system: migrated new cron handling to do privilege separation where
-  possible
-* system: better branding support for boot loader on package install /
-  remove
-* system: remove single forward GUI item for RFC 2893, can be set in
-  NAT just as well
+* firewall: implement flexible scrub / normalisation config pages to zap hidden scrubbing code
+* firewall: removed "match" action from floating rules, no FreeBSD support
+* firewall: removed negate rules that would magically prevent load- balancing VPN links
+* system: migrated new cron handling to do privilege separation where possible
+* system: better branding support for boot loader on package install / remove
+* system: remove single forward GUI item for RFC 2893, can be set in NAT just as well
 * router advertisements: allow to set mode and min / max intervals
 
 
@@ -300,10 +283,8 @@ Here are the full patch notes for 16.1.15:
 * interfaces: unhook all but the last custom PHP module functions
 * interfaces: moved settings page and rearranged settings accordingly
 * dhcp: do not override RA settings after save
-* dns: resolver outgoing interface section moved to advanced as it
-  will break setups with dynamic interfaces selected there
-* load balancer: sticky mode from firewall / system split off as
-  separate setting
+* dns: resolver outgoing interface section moved to advanced as it will break setups with dynamic interfaces selected there
+* load balancer: sticky mode from firewall / system split off as separate setting
 * snmp: do not allow unicode in system location
 * intrusion detection: remove deprecated rbn-malvertisers.rules set
 * intrusion detection: add promiscuous mode / physical interface selection
@@ -405,28 +386,21 @@ release is currently scheduled for 16.1.14.
 
 Here is the full change log for 16.1.13:
 
-* ports: ntp 4.2.8p7 `[1] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ , bind 9.10.4 `[2] <https://ftp.isc.org/isc/bind/9.10.4/RELEASE-NOTES-bind-9.10.4.html>`__ , php 5.6.21 `[3] <https://php.net/ChangeLog-5.php#5.6.21>`__ ,
-  libressl 2.2.7 `[4] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.7-relnotes.txt>`__ , openssl 1.0.2h `[5] <https://mta.openssl.org/pipermail/openssl-announce/2016-May/000072.html>`__ 
+* ports: ntp 4.2.8p7 `[1] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ , bind 9.10.4 `[2] <https://ftp.isc.org/isc/bind/9.10.4/RELEASE-NOTES-bind-9.10.4.html>`__ , php 5.6.21 `[3] <https://www.php.net/ChangeLog-5.php#5.6.21>`__ , libressl 2.2.7 `[4] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.7-relnotes.txt>`__ , openssl 1.0.2h `[5] <https://mta.openssl.org/pipermail/openssl-announce/2016-May/000072.html>`__ 
 * languages: newly packaged translations with latest updates
-* gateways: apinger monitoring quality is no longer affected by
-  NTP operation
-* backend: lowered configd connection timeout for better response
-  time when unavailable
+* gateways: apinger monitoring quality is no longer affected by NTP operation
+* backend: lowered configd connection timeout for better response time when unavailable
 * backend: plugged numerous minor crash reports caused by configd
 * backup: reworked backup strategies for RRD and DHCP leases
 * interfaces: allow bridges with at least one member
 * rc: defer recover for packages to avoid database duplication
 * intrusion detection: added an eicar test ruleset
 * intrusion detection: fixed sort order of rulesets
-* captive portal: properly catch exception for accounting
-  background job
+* captive portal: properly catch exception for accounting background job
 * firewall: annotate deprecated ICMP types in rule filter selection
-* firewall: direction arrows in rule overview now have different
-  colours for easier distinction
-* gui: correct HTML escaping in MVC between client-side JavaScript
-  and server-side API
-* gui: various improvements in MVC components required for upcoming
-  HAProxy plugin
+* firewall: direction arrows in rule overview now have different colours for easier distinction
+* gui: correct HTML escaping in MVC between client-side JavaScript and server-side API
+* gui: various improvements in MVC components required for upcoming HAProxy plugin
 * gui: enable tooltips in MVC base template
 * gui: set HTTP-only cookie
 
@@ -486,15 +460,11 @@ Here is the full change log for 16.1.12:
 
 And this is the change log for 16.7 BETA:
 
-* netflow: finished exporter capable of sending NetFlow to multiple
-  remote destinations
-* netflow: finished local reporting frontend on top of collected
-  NetFlow data
-* interfaces: polling mode has been deprecated and will be phased
-  out soon
+* netflow: finished exporter capable of sending NetFlow to multiple remote destinations
+* netflow: finished local reporting frontend on top of collected NetFlow data
+* interfaces: polling mode has been deprecated and will be phased out soon
 * vpn: L2TP, PPTP and PPPoE servers have been ported to use MPD version 5
-* vpn: legacy servers have been prepared to be moved from base
-  install to plugins
+* vpn: legacy servers have been prepared to be moved from base install to plugins
 * cron: code preparations for opening up the MVC cron API
 * tests: added a unit test framework and several tests
 * backup: reworked the RRD and DHCP leases backup strategies
@@ -600,7 +570,7 @@ Here are the full patch notes:
 * ports: curl 7.48.0 `[2] <https://curl.haxx.se/changes.html>`__ 
 * ports: strongswan 5.4.0 `[3] <https://wiki.strongswan.org/projects/strongswan/wiki/Changelog54>`__ 
 * ports: pcre 8.38 patches CVE-2016-1283 `[4] <https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2016-1283>`__ 
-* ports: php 5.6.20 `[5] <https://php.net/ChangeLog-5.php#5.6.20>`__ 
+* ports: php 5.6.20 `[5] <https://www.php.net/ChangeLog-5.php#5.6.20>`__ 
 * languages: added Russian to the release, now 60% complete (contributed by Smart-Soft)
 * languages: updated Japanese, now 70% complete (contributed by Chie Taguchi)
 * languages: updated German, now 81% complete
@@ -664,7 +634,7 @@ Here are the full patch notes:
 * src: fix incorrect argument validation in sysarch `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:15.sysarch.asc>`__ 
 * src: fix pfi_table_update: cannot set new addresses
 * src: added APU2 temperature sensor support
-* ports: unbound 1.5.8 `[3] <https://nlnetlabs.nl/projects/unbound/download/>`__ , sudo 1.8.16 `[4] <https://www.sudo.ws/stable.html#1.8.16>`__ , pcre 8.38 `[5] <http://vcs.pcre.org/pcre/code/trunk/ChangeLog?view=markup>`__ 
+* ports: unbound 1.5.8 `[3] <https://nlnetlabs.nl/projects/unbound/download/>`__ , sudo 1.8.16 `[4] <https://www.sudo.ws/releases/legacy/#1.8.16>`__ , pcre 8.38 `[5] <http://vcs.pcre.org/pcre/code/trunk/ChangeLog?view=markup>`__ 
 * proxy: better matching for overlapping URLs
 * universal plug and play: refactored pages for improved look and feel
 * vpn: refactored L2TP and PPTP pages for improved look and feel
@@ -730,7 +700,7 @@ for our brave testers.  More explanations will follow soon.
 
 Here are the full patch notes:
 
-* ports: pecl-radius 1.3.0 `[1] <https://pecl.php.net/package-changelog.php?package=radius>`__ , bind 9.10.3-P4 `[2] <https://kb.isc.org/article/AA-01363/81/BIND-9.10.3-P4-Release-Notes.html>`__ , bsnmp-ucd 0.4.2 `[3] <https://github.com/trociny/bsnmp-ucd/blob/master/CHANGELOG>`__ , openssh 7.2p2 `[4] <http://www.openssh.com/txt/release-7.2p2>`__ , sqlite 3.11.1 `[5] <https://sqlite.org/releaselog/3_11_1.html>`__ 
+* ports: pecl-radius 1.3.0 `[1] <https://pecl.php.net/package-changelog.php?package=radius>`__ , bind 9.10.3-P4 `[2] <https://kb.isc.org/article/AA-01363/81/BIND-9.10.3-P4-Release-Notes.html>`__ , bsnmp-ucd 0.4.2 `[3] <https://github.com/trociny/bsnmp-ucd/blob/master/CHANGELOG>`__ , openssh 7.2p2 `[4] <https://www.openssh.com/txt/release-7.2p2>`__ , sqlite 3.11.1 `[5] <https://sqlite.org/releaselog/3_11_1.html>`__ 
 * captive portal: add session timeout to status info
 * firewall: fix non-report of errors when filter reload errors could not be parsed
 * pppoe server: make service control buttons work with multiple instances
@@ -776,7 +746,7 @@ Here are the full patch notes:
 
 * src: Fix multiple vulnerabilities of OpenSSL `[1] <https://github.com/freebsd/freebsd/commit/7d8d4cb5>`__ 
 * src: update tzdata to 2016a `[2] <http://mm.icann.org/pipermail/tz-announce/2016-January/000035.html>`__ 
-* ports: openssh 7.2p1 `[3] <http://www.openssh.com/txt/release-7.2>`__ , isc-dhcp-43 4.3.3P1_1 `[4] <https://www.isc.org/blogs/isc-dhcp-4-3-0-is-live/>`__ , php 5.6.19 `[5] <https://php.net/ChangeLog-5.php#5.6.19>`__ , curl 7.41.1 `[6] <https://curl.haxx.se/changes.html>`__ 
+* ports: openssh 7.2p1 `[3] <https://www.openssh.com/txt/release-7.2>`__ , isc-dhcp-43 4.3.3P1_1 `[4] <https://www.isc.org/blogs/isc-dhcp-4-3-0-is-live/>`__ , php 5.6.19 `[5] <https://www.php.net/ChangeLog-5.php#5.6.19>`__ , curl 7.41.1 `[6] <https://curl.haxx.se/changes.html>`__ 
 * firmware: mirror selection has been widened to include kernel/base upgrades
 * firmware: bootstrap utility can now directly install e.g. the development version
 * dhcp: all GUI pages have been reworked for a polished look and feel
@@ -827,17 +797,14 @@ https://opnsense.org/about/road-map/
 
 And now, here are the full patch notes:
 
-* ports: squid 3.5.15 `[1] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ , unbound 1.5.7 hotfix `[2] <https://www.nlnetlabs.nl/bugs-script/show_bug.cgi?id=729>`__ , pkg 1.6.4 hotfix `[3] <https://github.com/freebsd/pkg/issues/1394>`__ ,
-  openssl 1.0.2g `[4] <https://www.openssl.org/news/secadv/20160301.txt>`__ 
+* ports: squid 3.5.15 `[1] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ , unbound 1.5.7 hotfix `[2] <https://www.nlnetlabs.nl/bugs-script/show_bug.cgi?id=729>`__ , pkg 1.6.4 hotfix `[3] <https://github.com/freebsd/pkg/issues/1394>`__ , openssl 1.0.2g `[4] <https://www.openssl.org/news/secadv/20160301.txt>`__ 
 * services: infrastructure rework for plugin additions
 * openvpn: added copy/move to client-specific overrides
 * openvpn: allow binding client-specific overrides to specific server(s)
 * openvpn: service on/off toggle via overview pages
 * openvpn: fix problem with service status display
-* openvpn: when services are disabled, make sure a reconfigure will always
-  stop the associated process
-* vpn: transform PPTP, L2TP and PPPoE servers to plugin addition to be
-  removed from base install for 16.7
+* openvpn: when services are disabled, make sure a reconfigure will always stop the associated process
+* vpn: transform PPTP, L2TP and PPPoE servers to plugin addition to be removed from base install for 16.7
 * vpn: add proper service probing for PPTP, L2TP and PPPoE servers
 * interfaces: added RFC 4638 support (MTU > 1492 in PPPoE)
 * ntp: disable when no servers are set
@@ -866,8 +833,7 @@ Here are the full patch notes:
 * captive portal: fix database timeout lock message
 * interfaces: fix expand/collapse on status page for Edge
 * proxy: add maximum_object_size setting for squid
-* load balancer: improve filter reload to prevent traffic
-  lockout (contributed by Frank Wall)
+* load balancer: improve filter reload to prevent traffic lockout (contributed by Frank Wall)
 * layout: fix searchable dropdown truncation with IE
 * firewall: fix action buttons on alias edit
 * menu: updated help menu entries
@@ -896,8 +862,7 @@ Enough with the announcing already, here are the full patch notes:
 * src: hyperv/kvp: wake up the daemon if it is sleeping due to poll() `[1] <https://github.com/opnsense/core/issues/748>`__ 
 * src: Use correct src/dst ports when removing states in pf `[2] <https://github.com/opnsense/src/pull/9>`__ 
 * src: finish the boot loader branding by adding a shiny logo
-* ports: unbound 1.5.7 `[3] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-5-7>`__ , openldap 2.4.44 `[4] <https://www.openldap.org/software/release/changes.html>`__ , ca_root_nss 3.22,
-  php 5.7.18 `[5] <https://www.php.net/ChangeLog-5.php#5.6.18>`__ , phalcon 2.0.10 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.10>`__ , pkg 1.6.4 `[7] <https://github.com/freebsd/freebsd-ports/commit/364bf01c846>`__  `[8] <https://github.com/freebsd/freebsd-ports/commit/69fe3e55ff5>`__ 
+* ports: unbound 1.5.7 `[3] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-5-7>`__ , openldap 2.4.44 `[4] <https://www.openldap.org/software/release/changes.html>`__ , ca_root_nss 3.22, php 5.7.18 `[5] <https://www.php.net/ChangeLog-5.php#5.6.18>`__ , phalcon 2.0.10 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.10>`__ , pkg 1.6.4 `[7] <https://github.com/freebsd/freebsd-ports/commit/364bf01c846>`__  `[8] <https://github.com/freebsd/freebsd-ports/commit/69fe3e55ff5>`__ 
 * interfaces: collapsible overview for each interface
 * shaper: fix issue with model when not able to save an old config
 * health: added pages to ACL for configurable user access
@@ -905,14 +870,12 @@ Enough with the announcing already, here are the full patch notes:
 * firmware: add UK-based mirror (contributed by Will Jones)
 * access: force a visible and non-critical page on non-access redirect
 * access: make sure "/" is handled like "/index.php"
-* configuration: add a number of previously missing config sections for
-  selection on restore/backup
+* configuration: add a number of previously missing config sections for selection on restore/backup
 * firewall: bring back alias nesting
 * dhcp: add missing DNS resolver awareness
 * dhcp: fix multiple minor crash reports
 * radvd: add missing DNS resolver awareness
-* captive portal: ensure MAC address is saved in lowercase and improve
-  validation
+* captive portal: ensure MAC address is saved in lowercase and improve validation
 * captive portal: fix unicode issue in template generation
 * captive portal: correct syslog redirection regression
 * crash reporter: limit log size upload to 1MB
@@ -958,17 +921,14 @@ Here are the full patch notes:
 * firewall: make category filter multi-select for maximum convenience
 * firewall: do not hide gateways from the gateway selection
 * firewall: added null routes to the gateway selection
-* firewall: rather than hiding associated nat rules, remove their edit
-  and clone buttons so they can still be deleted manually
+* firewall: rather than hiding associated nat rules, remove their edit and clone buttons so they can still be deleted manually
 * dns resolver: fix $numprocs setting in config according to manual
 * dns resolver: do not render illegal output for empty IPv6 addresses
-* dhcp: applying static mappings with DNS resolver enabled no longer
-  seems stuck in apply step
+* dhcp: applying static mappings with DNS resolver enabled no longer seems stuck in apply step
 * search: resize box on focus and also propagate proxy server tabs
 * system: fix inversion bug of the default pass logging setting
 * captive portal: properly log messages to associated log file
-* intrusion detection: can now add user rules based on SSL fingerprints
-  and IP geolocation
+* intrusion detection: can now add user rules based on SSL fingerprints and IP geolocation
 
 
 
@@ -988,7 +948,7 @@ Protect your assets, they are worth it!
 
 Without fuzz, here are the full patch notes:
 
-* ports: libressl 2.2.6 `[1] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.6-relnotes.txt>`__ 
+* ports: libressl 2.2.6 `[1] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.6-relnotes.txt>`__ 
 * ports: openssl 1.0.2f `[2] <https://www.openssl.org/news/secadv/20160128.txt>`__ 
 * intrusion prevention: add SSL fingerprint blacklist and other abuse lists `[3] <https://www.abuse.ch/>`__  (courtesy of abuse.ch)
 * captive portal: limit the max vouchers per call
@@ -1058,57 +1018,42 @@ https://opnsense.org/download/
 
 Finally, here are the full patch notes:
 
-* src: FreeBSD 10.2-RELEASE-p11 `[4] <https://www.freebsd.org/releases/10.2R/announce.html>`__ 
+* src: FreeBSD 10.2-RELEASE-p11 `[4] <https://www.freebsd.org/releases/10.2R/relnotes/>`__ 
 * bootstrap: can now update from any available FreeBSD 10 release
-* ports: libarchive 3.1.2_6 `[5] <https://vuxml.freebsd.org/freebsd/7c63775e-be31-11e5-b5fe-002590263bf5.html>`__ , Suricata 3.0 `[6] <http://suricata-ids.org/2016/01/27/suricata-3-0-available/>`__ , squid 3.5.13 `[7] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ ,
-  bind 9.10.3P3 `[8] <https://kb.isc.org/article/AA-01346/81/BIND-9.10.3-P3-Release-Notes.html>`__ , sqlite 3.10.2 `[9] <https://sqlite.org/releaselog/3_10_2.html>`__ , ntp 4.2.8p6 `[10] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
-* firewall: lock source / destination port settings when neither
-  TCP nor UDP is selected
-* firewall: simplify the outbound page to hide unwanted items and
-  zap complicated explanations (contributed by Manuel Faux)
+* ports: libarchive 3.1.2_6 `[5] <https://vuxml.freebsd.org/freebsd/7c63775e-be31-11e5-b5fe-002590263bf5.html>`__ , Suricata 3.0 `[6] <http://suricata-ids.org/2016/01/27/suricata-3-0-available/>`__ , squid 3.5.13 `[7] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ , bind 9.10.3P3 `[8] <https://kb.isc.org/article/AA-01346/81/BIND-9.10.3-P3-Release-Notes.html>`__ , sqlite 3.10.2 `[9] <https://sqlite.org/releaselog/3_10_2.html>`__ , ntp 4.2.8p6 `[10] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
+* firewall: lock source / destination port settings when neither TCP nor UDP is selected
+* firewall: simplify the outbound page to hide unwanted items and zap complicated explanations (contributed by Manuel Faux)
 * firewall: do not leak floating rules into other interface tabs
 * firewall: add clear button to all log file types
 * firewall: hide NAT rules from normal rules screen
 * firewall: removed the unsupported dscp rule option
-* firewall: display alias descriptions as tooltips (contributed by
-  Manuel Faux)
+* firewall: display alias descriptions as tooltips (contributed by Manuel Faux)
 * universal plug and play: switch to secure mode as the new default
 * unbound: add MX entries to host overrides (contributed by Manuel Faux)
-* gateways: always safe the monitor IP regardless of monitoring being
-  on or off
+* gateways: always safe the monitor IP regardless of monitoring being on or off
 * gateways: properly add and remove routes for monitors on toggle
 * backend: fix harmless error message caused by a sample template
-* high availability: allow specification of a different port for
-  synchronisation
+* high availability: allow specification of a different port for synchronisation
 * high availability: special characters are now being properly preserved
-* high availability: added new captive portal and traffic shaper as
-  sync options
+* high availability: added new captive portal and traffic shaper as sync options
 * high availability: reworked and pruned the client synchronisation
-* firmware: optional php extensions now peacefully coexist with
-  preinstalled extensions
+* firmware: optional php extensions now peacefully coexist with preinstalled extensions
 * firmware: update plugin list on refresh to reveal available plugin list
-* intrusion detection: adds intrusion prevention mode for netmap(4)
-  devices (must disable Hardware CRC manually)
+* intrusion detection: adds intrusion prevention mode for netmap(4) devices (must disable Hardware CRC manually)
 * captive portal: completely rewritten on top of our new components
-* proxy: hook up remote ACL settings to translation engine (contributed
-  by Fabian Franz)
+* proxy: hook up remote ACL settings to translation engine (contributed by Fabian Franz)
 * proxy: add support for compressed ACLs (.gz, .tar.gz, .tgz, .zip)
 * proxy: fix toggle for storage log
 * ipsec: improve display of tunnel overview
-* openvpn: provide full ca chain on client export (contributed by
-  Manuel Faux)
+* openvpn: provide full ca chain on client export (contributed by Manuel Faux)
 * openvpn: fix engine detection for LibreSSL
-* layout: all tooltips and icons of action buttons have been updated
-  for proper look and feel (contributed by Manuel Faux)
+* layout: all tooltips and icons of action buttons have been updated for proper look and feel (contributed by Manuel Faux)
 * layout: added the infamous quick navigation feature
-* layout: consolidated the display of the upper right corner
-  as "user@host.domain"
+* layout: consolidated the display of the upper right corner as "user@host.domain"
 * interfaces: reworked all the pages for proper look and feel
-* interfaces: ARP and NDP tables have been rewritten and now properly
-  show vendor info
+* interfaces: ARP and NDP tables have been rewritten and now properly show vendor info
 * login: improved look and feel
-* dashboard: rss widget has been reworked and its library has been
-  updated to a new version
+* dashboard: rss widget has been reworked and its library has been updated to a new version
 * config: recover last backup automatically on broken xml
 * menu: properly aligned submenu icons
 * system: removed XDebug package from the default installation

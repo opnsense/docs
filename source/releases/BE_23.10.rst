@@ -145,7 +145,7 @@ Here are the full patch notes:
 * ports: phpseclib 3.0.34 `[13] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.34>`__ 
 * ports: py-netaddr 0.10.1 `[14] <https://netaddr.readthedocs.io/en/latest/changes.html#release-0-10-1>`__ 
 * ports: squid 6.6 `[15] <http://www.squid-cache.org/Versions/v6/squid-6.6-RELEASENOTES.html>`__ 
-* ports: sudo 1.9.15p5 `[16] <https://www.sudo.ws/stable.html#1.9.15p5>`__ 
+* ports: sudo 1.9.15p5 `[16] <https://www.sudo.ws/releases/stable/#1.9.15p5>`__ 
 
 
 
@@ -312,7 +312,7 @@ Here are the full patch notes:
 * ports: sqlite 3.44.0 `[22] <https://sqlite.org/releaselog/3_44_0.html>`__ 
 * ports: squid 6.5 `[23] <http://www.squid-cache.org/Versions/v6/squid-6.5-RELEASENOTES.html>`__ 
 * ports: strongswan 5.9.13 `[24] <https://github.com/strongswan/strongswan/releases/tag/5.9.13>`__ 
-* ports: sudo 1.9.15p2 `[25] <https://www.sudo.ws/stable.html#1.9.15p2>`__ 
+* ports: sudo 1.9.15p2 `[25] <https://www.sudo.ws/releases/stable/#1.9.15p2>`__ 
 * ports: suricata 6.0.15 `[26] <https://suricata.io/2023/10/19/suricata-6-0-15-released/>`__ 
 * ports: unbound 1.19.0 `[27] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-19-0>`__ 
 
@@ -600,7 +600,7 @@ Here are the full patch notes:
 * ports: py-vici 5.9.11
 * ports: sqlite 3.43.1 `[26] <https://sqlite.org/releaselog/3_43_1.html>`__ 
 * ports: strongswan 5.9.11 `[27] <https://github.com/strongswan/strongswan/releases/tag/5.9.11>`__ 
-* ports: sudo 1.9.14p3 `[28] <https://www.sudo.ws/stable.html#1.9.14p3>`__ 
+* ports: sudo 1.9.14p3 `[28] <https://www.sudo.ws/releases/stable/#1.9.14p3>`__ 
 * ports: suricata 6.0.14 with Netmmap V14 API support `[29] <https://suricata.io/2023/09/14/suricata-6-0-14-released/>`__ 
 * ports: syslog-ng 4.4.0 `[30] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.4.0>`__ 
 * ports: unbound 1.18.0 `[31] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-18-0>`__ 

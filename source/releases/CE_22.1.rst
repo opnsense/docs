@@ -78,7 +78,7 @@ Here are the full patch notes:
 * ports: phalcon 5.0.0RC2 `[7] <https://github.com/phalcon/cphalcon/releases/tag/v5.0.0RC2>`__ 
 * ports: py-vici 5.9.3
 * ports: python 3.9.13 `[8] <https://docs.python.org/release/3.9.13/whatsnew/changelog.html>`__ 
-* ports: sudo 1.9.11p3 `[9] <https://www.sudo.ws/stable.html#1.9.11p3>`__ 
+* ports: sudo 1.9.11p3 `[9] <https://www.sudo.ws/releases/stable/#1.9.11p3>`__ 
 * ports: syslog-ng 3.37.1 `[10] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.37.1>`__ 
 
 A hotfix release was issued as 22.1.10_4:
@@ -139,7 +139,7 @@ Here are the full patch notes:
 * ports: php 7.4.30 `[9] <https://www.php.net/ChangeLog-7.php#7.4.30>`__ 
 * ports: py-certifi 2022.5.18.1
 * ports: sqlite 3.38.5 `[10] <https://sqlite.org/releaselog/3_38_5.html>`__ 
-* ports: sudo 1.9.11p2 `[11] <https://www.sudo.ws/stable.html#1.9.11p2>`__ 
+* ports: sudo 1.9.11p2 `[11] <https://www.sudo.ws/releases/stable/#1.9.11p2>`__ 
 * ports: unbound 1.16.0 `[12] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-0>`__ 
 
 A hotfix release was issued as 22.1.9_1:
@@ -418,7 +418,7 @@ Here are the full patch notes:
 * ports: krb5 1.19.3 `[5] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
 * ports: nss 3.76 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_76.html>`__ 
 * ports: openssh 8.9p1 `[7] <https://www.openssh.com/txt/release-8.9>`__ 
-* ports: sudo 1.9.10 `[8] <https://www.sudo.ws/stable.html#1.9.10>`__ 
+* ports: sudo 1.9.10 `[8] <https://www.sudo.ws/releases/stable/#1.9.10>`__ 
 * ports: syslog-ng 3.36.1 `[9] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.36.1>`__ 
 
 
@@ -580,7 +580,7 @@ Here are the full patch notes:
 * ports: pcre / pcre2 enable JIT support
 * ports: phpseclib 2.0.36 `[13] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.36>`__ 
 * ports: strongswan 5.9.5 `[14] <https://github.com/strongswan/strongswan/releases/tag/5.9.5>`__ 
-* ports: sudo 1.9.9 `[15] <https://www.sudo.ws/stable.html#1.9.9>`__ 
+* ports: sudo 1.9.9 `[15] <https://www.sudo.ws/releases/stable/#1.9.9>`__ 
 
 A hotfix release was issued as 22.1.1_1:
 
@@ -775,7 +775,7 @@ Here are the full patch notes against version 21.7.7:
 * ports: pecl-psr 1.2.0 `[20] <https://pecl.php.net/package-changelog.php?package=psr&release=1.2.0>`__ 
 * ports: phalcon 4.1.3 `[21] <https://github.com/phalcon/cphalcon/releases/tag/v4.1.3>`__ 
 * ports: php 7.4.27 `[22] <https://www.php.net/ChangeLog-7.php#7.4.27>`__ 
-* ports: pkg fixes validation failures on HTTPS fetch in static binary `[23] <https://cgit.freebsd.org/ports/commit/?id=08342c9812d>`__ 
+* ports: pkg fixes validation failures on HTTPS fetch in static binary `[23] <https://github.com/freebsd/freebsd-ports/commit/08342c9812d>`__ 
 * ports: sqlite 3.37.2 `[24] <https://sqlite.org/releaselog/3_37_2.html>`__ 
 * ports: syslog-ng 3.35.1 `[25] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.35.1>`__ 
 * ports: unbound 1.14.0 `[26] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-14-0>`__ 
@@ -877,7 +877,7 @@ Here are the full patch notes:
 * ports: hostapd 2.10 `[3] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
 * ports: nss 3.74 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_74.html>`__ 
 * ports: pecl-psr 1.2.0 `[5] <https://pecl.php.net/package-changelog.php?package=psr&release=1.2.0>`__ 
-* ports: pkg fixes validation failures on HTTPS fetch in static binary `[6] <https://cgit.freebsd.org/ports/commit/?id=08342c9812d>`__ 
+* ports: pkg fixes validation failures on HTTPS fetch in static binary `[6] <https://github.com/freebsd/freebsd-ports/commit/08342c9812d>`__ 
 * ports: sqlite 3.37.2 `[7] <https://sqlite.org/releaselog/3_37_2.html>`__ 
 * ports: syslog-ng 3.35.1 `[8] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.35.1>`__ 
 * ports: wpa_supplicant 2.10 `[9] <https://w1.fi/cgit/hostap/plain/wpa_supplicant/ChangeLog>`__ 

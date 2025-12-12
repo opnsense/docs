@@ -192,7 +192,7 @@ Here are the full patch notes:
 * ports: py-duckdb 1.3.1 `[21] <https://github.com/duckdb/duckdb/releases/tag/v1.3.1>`__ 
 * ports: python 3.11.13 `[22] <https://docs.python.org/release/3.11.13/whatsnew/changelog.html>`__ 
 * ports: sqlite 3.50.2 `[23] <https://sqlite.org/releaselog/3_50_2.html>`__ 
-* ports: sudo 1.9.17p1 `[24] <https://www.sudo.ws/stable.html#1.9.17p1>`__ 
+* ports: sudo 1.9.17p1 `[24] <https://www.sudo.ws/releases/stable/#1.9.17p1>`__ 
 * ports: suricata 7.0.11 `[25] <https://suricata.io/2025/07/08/suricata-7-0-11-released/>`__ 
 * ports: unbound 1.23.1 `[26] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-23-1>`__ 
 

@@ -344,7 +344,7 @@ Here are the full patch notes:
 * ports: php 7.4.24 `[12] <https://www.php.net/ChangeLog-7.php#7.4.24>`__ 
 * ports: py-jinja 3.0.1 `[13] <https://jinja.palletsprojects.com/en/stable/changes/#version-3-0-1>`__ 
 * ports: strongswan 5.9.4 `[14] <https://github.com/strongswan/strongswan/releases/tag/5.9.4>`__ 
-* ports: sudo 1.9.8p2 `[15] <https://www.sudo.ws/stable.html#1.9.8p2>`__ 
+* ports: sudo 1.9.8p2 `[15] <https://www.sudo.ws/releases/stable/#1.9.8p2>`__ 
 
 
 
@@ -391,7 +391,7 @@ Here are the full patch notes:
 * ports: nss 3.70 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_70.html>`__ 
 * ports: pcre 8.45 `[9] <https://www.pcre.org/original/changelog.txt>`__ 
 * ports: python 3.8.12 `[10] <https://docs.python.org/release/3.8.12/whatsnew/changelog.html>`__ 
-* ports: sudo 1.9.8p1 `[11] <https://www.sudo.ws/stable.html#1.9.8p1>`__ 
+* ports: sudo 1.9.8p1 `[11] <https://www.sudo.ws/releases/stable/#1.9.8p1>`__ 
 * ports: suricata 6.0.3 `[12] <https://suricata.io/2021/06/30/new-suricata-6-0-3-and-5-0-7-releases/>`__ 
 * ports: syslog-ng 3.34.1 `[13] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.34.1>`__ 
 
@@ -483,7 +483,7 @@ Here are the full patch notes:
 * ports: openssl 1.1.1l `[11] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: php 7.4.23 `[12] <https://www.php.net/ChangeLog-7.php#7.4.23>`__ 
 * ports: strongswan 5.9.3 `[13] <https://github.com/strongswan/strongswan/releases/tag/5.9.3>`__ 
-* ports: sudo 1.9.7p2 `[14] <https://www.sudo.ws/stable.html#1.9.7p2>`__ 
+* ports: sudo 1.9.7p2 `[14] <https://www.sudo.ws/releases/stable/#1.9.7p2>`__ 
 * ports: unbound 1.13.2 `[15] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-13-2>`__ 
 
 A hotfix release was issued as 21.7.2_1:
@@ -684,8 +684,8 @@ Here are the full patch notes:
 * src: FreeBSD updates for Intel e1000, ixgbe and ixl drivers
 * src: compatibility shim for upcoming rtsold "-M" command line option
 * src: separately log NAT and firewall rules in pf(4)
-* src: libcasper: fix descriptors numbers `[12] <https://www.freebsd.org/security/advisories/EN-21:19.libcasper.asc>`__ 
-* src: linux: prevent integer overflow in futex_requeue `[13] <https://www.freebsd.org/security/advisories/EN-21:22.linux_futex.asc>`__ 
+* src: libcasper: fix descriptors numbers `[12] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:19.libcasper.asc>`__ 
+* src: linux: prevent integer overflow in futex_requeue `[13] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:22.linux_futex.asc>`__ 
 * src: axgbe: make sure driver works on V1000 platform and remove unnecessary reset
 * ports: drop hardening options to ease migration to FreeBSD ports tree
 * ports: clog 1.0.2 fixes garbage header write on init
@@ -698,7 +698,7 @@ Here are the full patch notes:
 * ports: php 7.4.21 `[18] <https://www.php.net/ChangeLog-7.php#7.4.21>`__ 
 * ports: phpseclib 2.0.32 `[19] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.32>`__ 
 * ports: python 3.8.10 `[20] <https://docs.python.org/release/3.8.10/whatsnew/changelog.html>`__ 
-* ports: sudo 1.9.7p1 `[21] <https://www.sudo.ws/stable.html#1.9.7p1>`__ 
+* ports: sudo 1.9.7p1 `[21] <https://www.sudo.ws/releases/stable/#1.9.7p1>`__ 
 * ports: suricata 5.0.7 `[22] <https://redmine.openinfosecfoundation.org/versions/166>`__ 
 * ports: syslog-ng 3.33.2 `[23] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.33.2>`__ 
 
@@ -778,8 +778,8 @@ Here are the full patch notes:
 * plugins: os-tor Phalcon 4 fix
 * plugins: os-zabbix-agent 1.9 `[4] <https://github.com/opnsense/plugins/blob/stable/21.7/net-mgmt/zabbix-agent/pkg-descr>`__ 
 * src: separately log NAT and firewall rules in pf(4)
-* src: libcasper: fix descriptors numbers `[5] <https://www.freebsd.org/security/advisories/EN-21:19.libcasper.asc>`__ 
-* src: linux: prevent integer overflow in futex_requeue `[6] <https://www.freebsd.org/security/advisories/EN-21:22.linux_futex.asc>`__ 
+* src: libcasper: fix descriptors numbers `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:19.libcasper.asc>`__ 
+* src: linux: prevent integer overflow in futex_requeue `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:22.linux_futex.asc>`__ 
 * ports: clog 1.0.2 fixes garbage header write on init
 * ports: php 7.4.21 `[7] <https://www.php.net/ChangeLog-7.php#7.4.21>`__ 
 * ports: suricata 5.0.7 `[8] <https://redmine.openinfosecfoundation.org/versions/166>`__ 
@@ -890,7 +890,7 @@ Here are the full patch notes against 21.1.7:
 * ports: php 7.4.20 `[9] <https://www.php.net/ChangeLog-7.php#7.4.20>`__ 
 * ports: phpseclib 2.0.32 `[10] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.32>`__ 
 * ports: python 3.8.10 `[11] <https://docs.python.org/release/3.8.10/whatsnew/changelog.html>`__ 
-* ports: sudo 1.9.7p1 `[12] <https://www.sudo.ws/stable.html#1.9.7p1>`__ 
+* ports: sudo 1.9.7p1 `[12] <https://www.sudo.ws/releases/stable/#1.9.7p1>`__ 
 
 Known issues and limitations:
 

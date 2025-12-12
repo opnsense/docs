@@ -54,7 +54,7 @@ Here are the full patch notes:
 * ports: nss 3.80 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_80.html>`__ 
 * ports: py-vici 5.9.3
 * ports: python 3.9.13 `[5] <https://docs.python.org/release/3.9.13/whatsnew/changelog.html>`__ 
-* ports: sudo 1.9.11p3 `[6] <https://www.sudo.ws/stable.html#1.9.11p3>`__ 
+* ports: sudo 1.9.11p3 `[6] <https://www.sudo.ws/releases/stable/#1.9.11p3>`__ 
 * ports: syslog-ng 3.37.1 `[7] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.37.1>`__ 
 * ports: unbound 1.16.2 `[8] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-2>`__ 
 
@@ -129,7 +129,7 @@ Here are the full patch notes:
 * ports: py-certifi 2022.5.18.1
 * ports: sqlite 3.38.5 `[14] <https://sqlite.org/releaselog/3_38_5.html>`__ 
 * ports: strongswan 5.9.6 `[15] <https://github.com/strongswan/strongswan/releases/tag/5.9.6>`__ 
-* ports: sudo 1.9.11p2 `[16] <https://www.sudo.ws/stable.html#1.9.11p2>`__ 
+* ports: sudo 1.9.11p2 `[16] <https://www.sudo.ws/releases/stable/#1.9.11p2>`__ 
 * ports: unbound 1.16.0 `[17] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-0>`__ 
 
 
@@ -500,8 +500,8 @@ Here are the full patch notes:
 * ports: phalcon 4.1.3 `[34] <https://github.com/phalcon/cphalcon/releases/tag/v4.1.3>`__ 
 * ports: php 7.4.28 `[35] <https://www.php.net/ChangeLog-7.php#7.4.28>`__ 
 * ports: phpseclib 2.0.36 `[36] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.36>`__ 
-* ports: pkg fixes validation failures on HTTPS fetch in static binary `[37] <https://cgit.freebsd.org/ports/commit/?id=08342c9812d>`__ 
-* ports: sudo 1.9.10 `[38] <https://www.sudo.ws/stable.html#1.9.10>`__ 
+* ports: pkg fixes validation failures on HTTPS fetch in static binary `[37] <https://github.com/freebsd/freebsd-ports/commit/08342c9812d>`__ 
+* ports: sudo 1.9.10 `[38] <https://www.sudo.ws/releases/stable/#1.9.10>`__ 
 * ports: syslog-ng 3.36.1 `[39] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.36.1>`__ 
 * ports: unbound 1.15.0 `[40] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-15-0>`__ 
 

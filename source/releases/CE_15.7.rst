@@ -27,23 +27,17 @@ well as new local and remote blacklists options for the proxy server (squid).
 Security-wise, it has been rather quiet with only a few CVEs in third-party
 tools.  Please see the full patch notes for details and references:
 
-* kernel: borrowed a dummynet / ipnat patch from m0n0wall to enable symmetric
-  traffic shaping when NAT is involved
+* kernel: borrowed a dummynet / ipnat patch from m0n0wall to enable symmetric traffic shaping when NAT is involved
 * kernel: fix recurse lock panic for tmpfs in conjunction with unionfs
 * kernel: applied two stable patches that prevent squid from crashing `[1] <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=195802>`__ 
 * kernel: retired ALTQ support
 * base: sendmail TLS/DH Interoperability Improvement `[2] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:08.sendmail.asc>`__ 
 * base: improved iconv(3) UTF-7 support `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:10.iconv.asc>`__ 
 * base: inconsistency between locale and rune locale states `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:09.xlocale.asc>`__ 
-* notable ports updates: phalcon 2.0.3 `[5] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.3>`__ , curl 7.43.0_2 `[6] <https://curl.haxx.se/changes.html>`__ ,
-  openssh 6.8p1_8, python 2.7.10 `[7] <https://hg.python.org/cpython/raw-file/15c95b7d81dc/Misc/NEWS>`__ , perl 5.20.2_5 `[8] <https://perldoc.perl.org/5.20.2/perldelta>`__ , ntp 4.2.8p3 `[9] <http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ ,
-  libxml 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
-* opnsense-update: will no longer try to reinstall the istalled version
-  after a fresh installation
-* bsdinstaller: bring back cpdup to error out on low memory installation
-  (you need 1 GB of RAM, or work around installation using the nano image)
-* traffic shaper: removed legacy queues support in favour of the new traffic
-  shaper functionality
+* notable ports updates: phalcon 2.0.3 `[5] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.3>`__ , curl 7.43.0_2 `[6] <https://curl.haxx.se/changes.html>`__ , openssh 6.8p1_8, python 2.7.10 `[7] <https://hg.python.org/cpython/raw-file/15c95b7d81dc/Misc/NEWS>`__ , perl 5.20.2_5 `[8] <https://perldoc.perl.org/5.20.2/perldelta>`__ , ntp 4.2.8p3 `[9] <http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ , libxml 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
+* opnsense-update: will no longer try to reinstall the istalled version after a fresh installation
+* bsdinstaller: bring back cpdup to error out on low memory installation (you need 1 GB of RAM, or work around installation using the nano image)
+* traffic shaper: removed legacy queues support in favour of the new traffic shaper functionality
 * traffic shaper: allow direct enable/disable toggle
 * proxy: fix the initial daemon start on bootup
 * proxy: added LAN as the default interface configuration
@@ -51,31 +45,21 @@ tools.  Please see the full patch notes for details and references:
 * intrusion detection: initial release of our IDS GUI based on suricata
 * gateways: monitoring mode gained IPv6 support
 * captive portal: fix idle timeout bug
-* captive portal: do not delete the wrong zone when having multiple
-  configurations
+* captive portal: do not delete the wrong zone when having multiple configurations
 * captive portal: removed include files from exposed web directory
-* backend: always regenerate users and groups to avoid corruption after an
-  unclean shutdown
+* backend: always regenerate users and groups to avoid corruption after an unclean shutdown
 * backend: wait for configd socket to come up to address a startup race issue
 * backend: clean up configd socket on exit
-* backend: fixed regression that prevented user scripts from being started
-  via /etc/rc.conf
-* gateways: only show apinger in services when monitoring is enabled for
-  a gateway
-* languages: brought Simplified Chinese to 49% completed, German to
-  30% completed
-* universal plug and play: make page invoke static to remove exploitability
-  of the legacy packages framework
-* crash reporter: finally enabled the send button and provides human-readable
-  feedback whether the submission was complete
+* backend: fixed regression that prevented user scripts from being started via /etc/rc.conf
+* gateways: only show apinger in services when monitoring is enabled for a gateway
+* languages: brought Simplified Chinese to 49% completed, German to 30% completed
+* universal plug and play: make page invoke static to remove exploitability of the legacy packages framework
+* crash reporter: finally enabled the send button and provides human-readable feedback whether the submission was complete
 * console: added non-interactive interface assignment for headless deployments
-* ssh: disable password authentication on factory reset to align with the
-  standard configuration
+* ssh: disable password authentication on factory reset to align with the standard configuration
 * diagnostics: avoid duplicated calls of gethostbyaddr() in NDP table view
-* users: prompt for old password on password change to prevent account
-  hijacking
-* users: stripped the impossible scponly user privileges since said utility
-  has never been part of our ecosystem
+* users: prompt for old password on password change to prevent account hijacking
+* users: stripped the impossible scponly user privileges since said utility has never been part of our ecosystem
 
 Images can be found on any of our mirrors, but they may take a
 few hours to sync.  The checksums are attached at the end of
@@ -110,7 +94,7 @@ Here are the full patch notes:
 * src: OpenSSH client information leak `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:07.openssh.asc>`__ 
 * src: Invalid TCP checksums with pf(4) `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-16:02.pf.asc>`__ 
 * src: YP/NIS client library critical bug `[9] <https://www.freebsd.org/security/advisories/FreeBSD-EN-16:03.yplib.asc>`__ 
-* ports: sqlite 3.10.0 `[10] <https://sqlite.org/releaselog/3_10_0.html>`__ , easy-rsa 3.0.1 `[11] <https://github.com/OpenVPN/easy-rsa/releases>`__ , openssh 7.1p2 `[12] <http://www.openssh.com/txt/release-7.1p2>`__ 
+* ports: sqlite 3.10.0 `[10] <https://sqlite.org/releaselog/3_10_0.html>`__ , easy-rsa 3.0.1 `[11] <https://github.com/OpenVPN/easy-rsa/releases>`__ , openssh 7.1p2 `[12] <https://www.openssh.com/txt/release-7.1p2>`__ 
 * traffic graphs: fix truncation of IP address to 14 characters
 * firmware: EOL announcement for 15.7 added, ready for upgrading to 16.1 on January 28
 * firmware: added mirror provided by RageNetwork (Munich, DE)
@@ -140,74 +124,54 @@ Here are the full patch notes:
 
 * ports: suricata 2.0.11 `[2] <http://suricata-ids.org/2015/12/21/suricata-2-0-11-available/>`__ , dhcp6 20080615_5 `[3] <https://github.com/freebsd/freebsd-ports/commit/7f6883d1dd>`__ , lighttpd 1.4.39 `[4] <https://www.lighttpd.net/2016/1/2/1.4.39/>`__ 
 * ports: syslogd 10.2, mpd 5.8 `[5] <http://mpd.sourceforge.net/doc5/mpd4.html#4>`__ , ca_root_nss 3.21, dnsmasq 2.75_1 `[6] <https://reviews.freebsd.org/D4813>`__ 
-* ports: ntp 4.2.8p5 `[7] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ , php 5.6.17 `[8] <https://php.net/ChangeLog-5.php#5.6.17>`__ , python 2.7.11_1 `[9] <https://bugs.python.org/issue20397>`__ 
+* ports: ntp 4.2.8p5 `[7] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ , php 5.6.17 `[8] <https://www.php.net/ChangeLog-5.php#5.6.17>`__ , python 2.7.11_1 `[9] <https://bugs.python.org/issue20397>`__ 
 * ports: miniupnpd 1.9.20151212, openvpn 2.3.10 `[10] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23#OpenVPN2.3.10>`__ 
 * opnsense-update: add opnsense-verify and opnsense-sign
-* opnsense-update: improve verification of signatures of kernel
-  and base upgrades
+* opnsense-update: improve verification of signatures of kernel and base upgrades
 * menu: bring back dashboard entry due to popular demand
 * menu: fix interface listing error when its description is empty
 * menu: moved license file to lobby section for visibility
-* menu: order VPN services for icon adjustment (contributed by
-  Fabian Franz)
-* menu: renamed "config manager" to "configuration" and "certificate
-  manager" to "trust"
-* language: multiple translation improvements (contributed by
-  Fabian Franz and Andreas Martin)
-* language: fix behaviour of numerous apply buttons when using a
-  non-English translation
-* dashboard: don't display widget headers when the actual widgets are
-  no longer installed
+* menu: order VPN services for icon adjustment (contributed by Fabian Franz)
+* menu: renamed "config manager" to "configuration" and "certificate manager" to "trust"
+* language: multiple translation improvements (contributed by Fabian Franz and Andreas Martin)
+* language: fix behaviour of numerous apply buttons when using a non-English translation
+* dashboard: don't display widget headers when the actual widgets are no longer installed
 * backend: fix issue when configd target pattern cannot be found
 * carp: fix support for OpenVPN clients
-* system: remove the old FTP proxy implementation (use proxy server
-  service instead)
+* system: remove the old FTP proxy implementation (use proxy server service instead)
 * system: pin down listbox size to unhide the search field
-* health: tidy up the layout by removing visual blockers and general
-  bumpiness
+* health: tidy up the layout by removing visual blockers and general bumpiness
 * access: fix setting of default values for new users
 * access: fix padding on user listing page
-* access: adjusted file type of API credentials to fix Chrome's
-  download blues (contributed by Fabian Franz)
+* access: adjusted file type of API credentials to fix Chrome's download blues (contributed by Fabian Franz)
 * configuration: fix replay of configuration backups
 * interfaces: fix redirect after applying an interface's configuration
-* trust: properly set certificate digest algorithm in form after
-  creation error
+* trust: properly set certificate digest algorithm in form after creation error
 * gateways: bring back display of descriptions (contributed by Frank Wall)
-* load balancer: bring back display of descriptions (contributed by
-  Frank Wall)
+* load balancer: bring back display of descriptions (contributed by Frank Wall)
 * ipsec: fix RSA authentication method check
 * ipsec: finally brought back lease display in widgets and status page
 * proxy: add configurable cache_mem setting
-* unbound: honour the "register DHCP leases in DNS" option (contributed
-  by Manuel Faux)
+* unbound: honour the "register DHCP leases in DNS" option (contributed by Manuel Faux)
 * unbound: reorder advanced features inclusion
-* dynamic dns: allow custom entries to set hostname to be used in e.g.
-  OpenVPN exports
+* dynamic dns: allow custom entries to set hostname to be used in e.g. OpenVPN exports
 * dynamic dns: updated cloudflare service binding
 * firewall: fix saving of zero values on virtual IP page
-* firewall: fix label for option source/invert in rules edit page
-  (contributed by Frank Wall)
-* firewall: show warning banner on related pages when firewall is
-  globally disabled (contributed by Manuel Faux)
+* firewall: fix label for option source/invert in rules edit page (contributed by Frank Wall)
+* firewall: show warning banner on related pages when firewall is globally disabled (contributed by Manuel Faux)
 * firewall: add interface groups to firewall rules and port forwarding
-* firewall: add matching behaviour indicator for floating rules
-  (contributed by Fabian Franz)
+* firewall: add matching behaviour indicator for floating rules (contributed by Fabian Franz)
 * firewall: make quick matching behaviour the default for floating rules
-* firewall: fix spurious error when migrating alias from one interface
-  to the next
+* firewall: fix spurious error when migrating alias from one interface to the next
 * firewall: sort alias listing for better overview
 * firewall: fix header alignment for schedule repeat section
 * firmware: added display of major announcements on the firmware page
 * firmware: added reinstall / (un)lock buttons for installed packages
 * firmware: added plugin listing to page with install / remove buttons
 * firmware: restructured the backend and improved its resilience
-* firmware: show the download size of the pending update in the update
-  check response
-* firmware: added update verification signature for the upcoming 16.1
-  release series
-* captive portal (devel): fix text of two help messages (contributed by
-  Fabian Franz)
+* firmware: show the download size of the pending update in the update check response
+* firmware: added update verification signature for the upcoming 16.1 release series
+* captive portal (devel): fix text of two help messages (contributed by Fabian Franz)
 
 
 
@@ -269,34 +233,25 @@ Now it's as fast as ever and glitch-free.
 
 Here are the full patch notes:
 
-* dhcp: show lease description in status pages if available (contributed
-  by Frank Wall)
-* firewall: improve and align display of RFC 1918 and IANA rules (contributed
-  by Manuel Faux)
-* firewall: fix hover cursor on the filter log page (contributed by
-  Manuel Faux)
-* firewall: show implicit IPv6 block rule if enabled in system settings
-  (contributed by Manuel Faux)
+* dhcp: show lease description in status pages if available (contributed by Frank Wall)
+* firewall: improve and align display of RFC 1918 and IANA rules (contributed by Manuel Faux)
+* firewall: fix hover cursor on the filter log page (contributed by Manuel Faux)
+* firewall: show implicit IPv6 block rule if enabled in system settings (contributed by Manuel Faux)
 * firewall: extend pfInfo to show active rules (contributed by Manuel Faux)
-* unbound: fix JS to enable/disable interface selector (contributed by
-  Manuel Faux)
-* unbound: fix starting of unbound via service status page (contributed by
-  Manuel Faux)
-* proxy server: allow authentication against all available authentication
-  servers
+* unbound: fix JS to enable/disable interface selector (contributed by Manuel Faux)
+* unbound: fix starting of unbound via service status page (contributed by Manuel Faux)
+* proxy server: allow authentication against all available authentication servers
 * universal plug and play: fix read/write on the settings page
-* interfaces: break device configuration pages out of interface assignment
-  section
-* backend: optimise filter reload to not collect overall interface information
-  more than once
+* interfaces: break device configuration pages out of interface assignment section
+* backend: optimise filter reload to not collect overall interface information more than once
 * backend: reapply the cache removal in light of the filter reload fixing
 * backend: trigger config daemon templates on bootup
 * backend: throw error when attempting to trigger a nonexistent template
 * ports: curl 7.46 `[1] <https://curl.haxx.se/mail/lib-2015-12/0001.html>`__ 
 * ports: openssl 1.0.2e `[2] <http://openssl.org/news/secadv/20151203.txt>`__ 
-* ports: libressl 2.2.5 `[3] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.5-relnotes.txt>`__ 
+* ports: libressl 2.2.5 `[3] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.5-relnotes.txt>`__ 
 * ports: squid 3.5.12 `[4] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
-* ports: lighttpd 1.4.38 `[5] <http://www.lighttpd.net/2015/12/5/1.4.38/>`__ 
+* ports: lighttpd 1.4.38 `[5] <https://www.lighttpd.net/2015/12/5/1.4.38/>`__ 
 
 
 
@@ -322,7 +277,7 @@ them are available.
 Here are the full patch notes:
 
 * ports: phalcon 2.0.9 `[1] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.9>`__ 
-* ports: php 5.6.16 `[2] <https://php.net/ChangeLog-5.php#5.6.16>`__ 
+* ports: php 5.6.16 `[2] <https://www.php.net/ChangeLog-5.php#5.6.16>`__ 
 * ports: suricata 2.0.10 `[3] <http://suricata-ids.org/2015/11/25/suricata-2-0-10-available/>`__ 
 * ports: openldap 2.4.43 `[4] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: strongswan 5.3.5 `[5] <https://www.strongswan.org/blog/2015/11/26/strongswan-5.3.5-released.html>`__ 
@@ -407,7 +362,7 @@ more roadmap items already finished for 16.1.
 
 Here are the full patch notes:
 
-* ports: sudo 1.8.15 `[1] <https://www.sudo.ws/legacy.html#1.8.15>`__ , sqlite 3.9.2 `[2] <https://sqlite.org/releaselog/3_9_2.html>`__ 
+* ports: sudo 1.8.15 `[1] <https://www.sudo.ws/releases/legacy/#1.8.15>`__ , sqlite 3.9.2 `[2] <https://sqlite.org/releaselog/3_9_2.html>`__ 
 * aliases: make url tables useable
 * interfaces: fix faulty GUI caching issues `[3] <https://github.com/opnsense/core/issues/451>`__ 
 * ipsec: obey force nat traversal
@@ -454,8 +409,7 @@ release.
 
 Here are the full patch notes:
 
-* plugins: updated the VMware plugin to support early boot for persistent
-  vmx(4) device access
+* plugins: updated the VMware plugin to support early boot for persistent vmx(4) device access
 * plugins: added the Xen plugin for automatic guest support
 * openvpn: fix server not saving interface without IP
 * crash reporter: remember email for continuous feedback
@@ -475,21 +429,18 @@ Here are the full patch notes:
 * aliases: fix missing url table items
 * aliases: hide minus when not applicable
 * ntp: don't trigger set_gps_default on page load
-* captive portal (development): clean rewrite of RADIUS
-  authentication/accounting
+* captive portal (development): clean rewrite of RADIUS authentication/accounting
 * captive portal (development): added a session overview feature to the new
-* captive portal (development): fixed template download file name in Google
-  Chrome
+* captive portal (development): fixed template download file name in Google Chrome
 * src: Implement pubkey support for pkg(7) bootstrap `[1] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:18.pkg.asc>`__ 
 * src: rpcbind remote denial of service `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:24.rpcbind.asc>`__ 
-* src: Applications exiting due to segmentation violation on a correct
-  memory address `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:20.vm.asc>`__ 
+* src: Applications exiting due to segmentation violation on a correct memory address `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:20.vm.asc>`__ 
 * src: tzdata updated to 2015g `[4] <http://mm.icann.org/pipermail/tz-announce/2015-October/000034.html>`__ 
 * ports: ntp 4.2.8p4 `[5] <https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-dev>`__ 
 * ports: pkg 1.6.1 `[6] <https://github.com/freebsd/freebsd-ports/commit/233063d86be930>`__  `[7] <https://github.com/freebsd/freebsd-ports/commit/4cee57325035cc6>`__ 
 * ports: sqlite 3.9.1 `[8] <https://sqlite.org/releaselog/3_9_1.html>`__ 
 * ports: suricata 2.0.9 `[9] <http://suricata-ids.org/2015/09/25/suricata-2-0-9-available/>`__ 
-* ports: php 5.6.15 `[10] <https://php.net/ChangeLog-5.php#5.6.15>`__ 
+* ports: php 5.6.15 `[10] <https://www.php.net/ChangeLog-5.php#5.6.15>`__ 
 
 
 
@@ -544,15 +495,11 @@ Here are the full patch notes:
 * dns resolver: fix apply glitch that would blank the settings temporarily
 * log files: search is now case-insensitive
 * firmware: improved reboot detection feedback
-* crash reporter: improved wording as reports without contact info may be
-  hard to fix
+* crash reporter: improved wording as reports without contact info may be hard to fix
 * virtual ip: fix possible apply glitch with new VIP
 * synchronisation: do not error on target down, log it instead
 * languages: French is at 35% and German is at 65% complete now
-* development: the captive portal has been replaced with a newly implemented
-  variant based on our MVC standards -- if you still want to use the old one
-  please use the release package instead (although any feedback for the new
-  captive portal is greatly appreciated)
+* development: the captive portal has been replaced with a newly implemented variant based on our MVC standards -- if you still want to use the old one please use the release package instead (although any feedback for the new captive portal is greatly appreciated)
 
 
 
@@ -678,8 +625,7 @@ and menu rework while at it.  Exciting stuff coming soon.  :)
 
 Here are the full patch notes:
 
-* diagnostics: added real backend code leading to upcoming privilege
-  separation for pfInfo, pfTop, States and Tables pages
+* diagnostics: added real backend code leading to upcoming privilege separation for pfInfo, pfTop, States and Tables pages
 * dynamic dns: introduce constant naming away from "DynDNS" or "DDNS"
 * gui: fix numerous typos spotted by our relentless translators
 * gui: fixed validation errors in new components
@@ -711,9 +657,9 @@ Here is the full list of changes:
 * src: local privilege escalation in IRET handler `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:21.amd64.asc>`__ 
 * src: disable ixgbe(4) flow-director support `[2] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:14.ixgbe.asc>`__ 
 * src: insufficient check of unsupported pkg(7) signature methods `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:15.pkg.asc>`__ 
-* ports: libressl 2.2.3 `[4] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.3-relnotes.txt>`__ , bind 9.10.2P4 `[5] <https://kb.isc.org/article/AA-01301/81/BIND-9.10.2-P4-Release-Notes.html>`__ , openldap 2.4.42 `[6] <https://www.openldap.org/software/release/changes.html>`__ 
-* ports: radvd 1.15 `[7] <http://www.litech.org/radvd/CHANGES-1.txt>`__ , lighttpd 1.4.37 `[8] <http://www.lighttpd.net/2015/8/30/1.4.37/>`__ , squid 3.5.8 `[9] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
-* ports: php 5.6.13 `[10] <https://php.net/ChangeLog-5.php#5.6.13>`__ , php-suhosin 0.9.38 `[11] <https://raw.githubusercontent.com/stefanesser/suhosin/master/Changelog>`__ 
+* ports: libressl 2.2.3 `[4] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.3-relnotes.txt>`__ , bind 9.10.2P4 `[5] <https://kb.isc.org/article/AA-01301/81/BIND-9.10.2-P4-Release-Notes.html>`__ , openldap 2.4.42 `[6] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: radvd 1.15 `[7] <http://www.litech.org/radvd/CHANGES-1.txt>`__ , lighttpd 1.4.37 `[8] <https://www.lighttpd.net/2015/8/30/1.4.37/>`__ , squid 3.5.8 `[9] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
+* ports: php 5.6.13 `[10] <https://www.php.net/ChangeLog-5.php#5.6.13>`__ , php-suhosin 0.9.38 `[11] <https://raw.githubusercontent.com/stefanesser/suhosin/master/Changelog>`__ 
 * dhcp: use reverse mask instead of reverse address in config
 * dns resolver: honour log verbosity toggle
 * ssh: remove ssh1 key from generating, it is no longer supported in openssh
@@ -744,12 +690,9 @@ before we push out new images, we've wrapped up 15.7.11 just now.
 
 Here are the full patch notes:
 
-* dns resolver: switch unbound to use libevent to address "too many fds"
-  log message
-* firmware: os-update package was renamed to opnsense-update so "os-" can
-  be our plugin prefix
-* firewall: fix alias page not being available due to a dirty config.xml
-  sample entry
+* dns resolver: switch unbound to use libevent to address "too many fds" log message
+* firmware: os-update package was renamed to opnsense-update so "os-" can be our plugin prefix
+* firewall: fix alias page not being available due to a dirty config.xml sample entry
 * ipsec: fix pages throwing warnings due to a dirty config.xml sample entry
 * ipsec: fix hash algorithm and protocol settings behaviour
 * openvpn: honour TLS authentication disable
@@ -790,7 +733,7 @@ Here are the full patch notes:
 
 * src: Multiple integer overflows in expat XML parser `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:20.expat.asc>`__ 
 * src: bumped tzdata to 2015f `[2] <http://mm.icann.org/pipermail/tz-announce/2015-August/000033.html>`__ 
-* ports: curl 7.44.0 `[3] <https://curl.haxx.se/changes.html>`__ , ca_root_nss 3.20, openssh 7.1p1_1 `[4] <http://www.openssh.com/txt/release-7.1>`__ , sqlite 3.8.11.1 `[5] <https://sqlite.org/releaselog/3_8_11_1.html>`__ , phalcon 2.0.7 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.7>`__ , pcre 8.37_4 `[7] <https://svnweb.freebsd.org/ports/head/devel/pcre/Makefile?revision=395178&view=markup>`__ 
+* ports: curl 7.44.0 `[3] <https://curl.haxx.se/changes.html>`__ , ca_root_nss 3.20, openssh 7.1p1_1 `[4] <https://www.openssh.com/txt/release-7.1>`__ , sqlite 3.8.11.1 `[5] <https://sqlite.org/releaselog/3_8_11_1.html>`__ , phalcon 2.0.7 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.7>`__ , pcre 8.37_4 `[7] <https://svnweb.freebsd.org/ports/head/devel/pcre/Makefile?revision=395178&view=markup>`__ 
 * crash reporter: create custom reports on demand
 * certificates: ca generation issues with recent LibreSSL
 * dns resolver: switched to ports-based Unbound (1.5.4) as per FreeBSD handbook
@@ -825,14 +768,10 @@ fix for recent LibreSSL flavours not wanting to generate certificates.
 
 These are the full patch notes:
 
-* firmware: functional rework of update fetch and install, show reboot
-  needed in alert box
-* interfaces: fixed spurious truncated interface names from showing up
-  in the assignments
-* intrusion detection: improved rule select/deselect behaviour and alert
-  querying
-* firewall/rules: fix missing apply button when another language is
-  being used
+* firmware: functional rework of update fetch and install, show reboot needed in alert box
+* interfaces: fixed spurious truncated interface names from showing up in the assignments
+* intrusion detection: improved rule select/deselect behaviour and alert querying
+* firewall/rules: fix missing apply button when another language is being used
 * crash reporter: multiple fixes, layout and submission improvements
 * firewall/logs: can now filter using IP version
 * firewall/nat: add anti-lockout rule for redirection
@@ -867,10 +806,9 @@ Here are the full patch notes:
 * src: shell injection vulnerability in patch `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:18.bsdpatch.asc>`__ 
 * src: routed remote denial of service vulnerability `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:19.routed.asc>`__ 
 * ports: dnsmasq 2.75 `[3] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ , squid 3.5.7 `[4] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ , openvpn 2.3.8 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23#OpenVPN2.3.8>`__ 
-* ports: libressl 2.2.2 `[6] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.2-relnotes.txt>`__ , lighttpd 1.4.36 `[7] <http://www.lighttpd.net/2015/7/26/1.4.36/>`__ , php 5.6.12 `[8] <https://php.net/ChangeLog-5.php#5.6.12>`__ 
+* ports: libressl 2.2.2 `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.2-relnotes.txt>`__ , lighttpd 1.4.36 `[7] <https://www.lighttpd.net/2015/7/26/1.4.36/>`__ , php 5.6.12 `[8] <https://www.php.net/ChangeLog-5.php#5.6.12>`__ 
 * ports: pcre 8.37_3 `[9] <https://github.com/freebsd/freebsd-ports/commit/1b0e3ce910b727>`__ , pkg 1.5.6 `[10] <https://github.com/freebsd/freebsd-ports/commit/1a100a88a92d4>`__ , expat 2.1.0_3 `[11] <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1283>`__ 
-* dns resolver: improve bootstrapping of root directory to ensure
-  service startup
+* dns resolver: improve bootstrapping of root directory to ensure service startup
 * firmware: fix handling of sample mirror file
 * firmware: added a mirror for China
 * firewall: always provide a sample bogons file for IPv6
@@ -896,16 +834,12 @@ Furthermore, we are not aware of any security issues in third party software.
 
 Here are the full patch notes:
 
-* interfaces: VLAN on top of LAGG now correctly overrides flags on the actual
-  parent interfaces
-* system: added firmware crypto flavour and mirror selection to general
-  settings
-* logs: add missing prototype.js to fix pie charts display (contributed by
-  Chong Cheung)
+* interfaces: VLAN on top of LAGG now correctly overrides flags on the actual parent interfaces
+* system: added firmware crypto flavour and mirror selection to general settings
+* logs: add missing prototype.js to fix pie charts display (contributed by Chong Cheung)
 * languages: updated German (42% complete) and Japanese (80% complete)
 * crash reporter: fixed assorted minor coding errors/warnings
-* system: improved LDAP bindings and user import (including fixes by
-  Christian Schonberg)
+* system: improved LDAP bindings and user import (including fixes by Christian Schonberg)
 * proxy: added option to ignore subnets from getting into the access log
 * proxy: fixed automatic startup on /var MFS
 * intrusion detection: fixed automatic startup on /var MFS
@@ -932,7 +866,7 @@ The update requires a reboot.  Here are the full patch notes:
 * src: shell injection vulnerability in patch(1) `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:14.bsdpatch.asc>`__ 
 * src: resource exhaustion in TCP reassembly `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:15.tcp.asc>`__ 
 * src: OpenSSH multiple vulnerabilities `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:16.openssh.asc>`__ 
-* ports: phalcon 2.0.6 `[4] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.6>`__ , openssh 6.9p1 `[5] <http://www.openssh.com/txt/release-6.9>`__ , bind 9.10.2P3 `[6] <https://kb.isc.org/article/AA-01280/81/BIND-9.10.2-P3-Release-Notes.html>`__ , dnsmasq 2.74 `[7] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: phalcon 2.0.6 `[4] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.6>`__ , openssh 6.9p1 `[5] <https://www.openssh.com/txt/release-6.9>`__ , bind 9.10.2P3 `[6] <https://kb.isc.org/article/AA-01280/81/BIND-9.10.2-P3-Release-Notes.html>`__ , dnsmasq 2.74 `[7] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * opnsense-update: can now replace mirror locations
 * crash reporter: fixed numerous remotely-submitted warnings and bugs
 * universal plug and play: fixed concurrent enable for UPnP and NAT-PMP (contributed by Chong Cheung)
@@ -979,7 +913,7 @@ to make sure your infrastructure keeps running as smoothly as possible.
 
 Here are the the full patch notes:
 
-* updated sudo 1.8.14p3 `[1] <http://www.sudo.ws/stable.html#1.8.14p3>`__ , pcre 8.37_2 `[2] <https://bugs.exim.org/show_bug.cgi?id=1651>`__ , and FreeBSD 10.1-RELEASE-p15 `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:13.tcp.asc>`__ 
+* updated sudo 1.8.14p3 `[1] <https://www.sudo.ws/releases/legacy/#1.8.14p3>`__ , pcre 8.37_2 `[2] <https://bugs.exim.org/show_bug.cgi?id=1651>`__ , and FreeBSD 10.1-RELEASE-p15 `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:13.tcp.asc>`__ 
 * firmware: fix upgrade when using opnsense-devel package
 * proxy: fix config write for multiple interfaces
 * crash reporter: raise PHP log level to warnings after an extensive cleanup
@@ -1005,10 +939,10 @@ https://opnsense.org/about/road-map/
 
 The full list of changes are as follows:
 
-* ports: php 5.6.11 `[1] <https://php.net/ChangeLog-5.php#5.6.11>`__ 
+* ports: php 5.6.11 `[1] <https://www.php.net/ChangeLog-5.php#5.6.11>`__ 
 * ports: pkg 1.5.5 `[2] <https://github.com/freebsd/freebsd-ports/commit/1eb51efa2>`__ 
 * ports: ca_root_nss 3.19.2
-* ports: phalcon 2.0.5 `[3] <https://blog.phalconphp.com/post/phalcon-2-0-5-released>`__ 
+* ports: phalcon 2.0.5 `[3] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.5>`__ 
 * ports: isc-dhcp42-server 4.2.8_1 `[4] <https://github.com/freebsd/freebsd-ports/commit/3de9ed7a87>`__ 
 * backup: fix infinite reboot loop on interface mismatch
 * firmware: show locally installed packages
@@ -1037,22 +971,16 @@ take a responsible course of action.
 
 Here are the full patch notes:
 
-* notable ports updates: phalcon 2.0.4 `[1] <https://blog.phalconphp.com/post/phalcon-2-0-4-released>`__ , libressl 2.2.1 `[2] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.1-relnotes.txt>`__ ,
-  openssl 1.0.2d `[3] <https://www.openssl.org/news/secadv_20150709.txt>`__ 
-* opnsense-update: can now switch from/to LibreSSL/OpenSSL on the fly
-  (needs root shell for now)
-* ssh: work around a shutdown bug that prevents other users from logging
-  in (requires a reboot if used)
+* notable ports updates: phalcon 2.0.4 `[1] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.4>`__ , libressl 2.2.1 `[2] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.1-relnotes.txt>`__ , openssl 1.0.2d `[3] <https://www.openssl.org/news/secadv_20150709.txt>`__ 
+* opnsense-update: can now switch from/to LibreSSL/OpenSSL on the fly (needs root shell for now)
+* ssh: work around a shutdown bug that prevents other users from logging in (requires a reboot if used)
 * console: allow the root menu to run one-shot shell commands too
 * console: clean up the version advertisement in the banner
 * dashboard: colour hostap wifi as green when up
 * backup: do not redirect on interface mismatch, reboot right away instead
-* system: migrated /var and /tmp memory disks to tmpfs (requires a reboot
-  if used)
-* proxy: fix the startup when used on a /var memory disk (requires a manual
-  start after boot)
-* intrusion detection: fix the startup when used on a /var memory disk
-  (requires a manual start after boot)
+* system: migrated /var and /tmp memory disks to tmpfs (requires a reboot if used)
+* proxy: fix the startup when used on a /var memory disk (requires a manual start after boot)
+* intrusion detection: fix the startup when used on a /var memory disk (requires a manual start after boot)
 * intrusion detection: enable the uricontent keyword for the ET ruleset
 
 
@@ -1124,23 +1052,17 @@ well as new local and remote blacklists options for the proxy server (squid).
 Security-wise, it has been rather quiet with only a few CVEs in third-party
 tools.  Please see the full patch notes for details and references:
 
-* kernel: borrowed a dummynet / ipnat patch from m0n0wall to enable symmetric
-  traffic shaping when NAT is involved
+* kernel: borrowed a dummynet / ipnat patch from m0n0wall to enable symmetric traffic shaping when NAT is involved
 * kernel: fix recurse lock panic for tmpfs in conjunction with unionfs
 * kernel: applied two stable patches that prevent squid from crashing `[1] <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=195802>`__ 
 * kernel: retired ALTQ support
 * base: sendmail TLS/DH Interoperability Improvement `[2] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:08.sendmail.asc>`__ 
 * base: improved iconv(3) UTF-7 support `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:10.iconv.asc>`__ 
 * base: inconsistency between locale and rune locale states `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:09.xlocale.asc>`__ 
-* notable ports updates: phalcon 2.0.3 `[5] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.3>`__ , curl 7.43.0_2 `[6] <https://curl.haxx.se/changes.html>`__ ,
-  openssh 6.8p1_8, python 2.7.10 `[7] <https://hg.python.org/cpython/raw-file/15c95b7d81dc/Misc/NEWS>`__ , perl 5.20.2_5 `[8] <https://perldoc.perl.org/5.20.2/perldelta>`__ , ntp 4.2.8p3 `[9] <http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ ,
-  libxml 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
-* opnsense-update: will no longer try to reinstall the istalled version
-  after a fresh installation
-* bsdinstaller: bring back cpdup to error out on low memory installation
-  (you need 1 GB of RAM, or work around installation using the nano image)
-* traffic shaper: removed legacy queues support in favour of the new traffic
-  shaper functionality
+* notable ports updates: phalcon 2.0.3 `[5] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.3>`__ , curl 7.43.0_2 `[6] <https://curl.haxx.se/changes.html>`__ , openssh 6.8p1_8, python 2.7.10 `[7] <https://hg.python.org/cpython/raw-file/15c95b7d81dc/Misc/NEWS>`__ , perl 5.20.2_5 `[8] <https://perldoc.perl.org/5.20.2/perldelta>`__ , ntp 4.2.8p3 `[9] <http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ , libxml 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
+* opnsense-update: will no longer try to reinstall the istalled version after a fresh installation
+* bsdinstaller: bring back cpdup to error out on low memory installation (you need 1 GB of RAM, or work around installation using the nano image)
+* traffic shaper: removed legacy queues support in favour of the new traffic shaper functionality
 * traffic shaper: allow direct enable/disable toggle
 * proxy: fix the initial daemon start on bootup
 * proxy: added LAN as the default interface configuration
@@ -1148,31 +1070,21 @@ tools.  Please see the full patch notes for details and references:
 * intrusion detection: initial release of our IDS GUI based on suricata
 * gateways: monitoring mode gained IPv6 support
 * captive portal: fix idle timeout bug
-* captive portal: do not delete the wrong zone when having multiple
-  configurations
+* captive portal: do not delete the wrong zone when having multiple configurations
 * captive portal: removed include files from exposed web directory
-* backend: always regenerate users and groups to avoid corruption after an
-  unclean shutdown
+* backend: always regenerate users and groups to avoid corruption after an unclean shutdown
 * backend: wait for configd socket to come up to address a startup race issue
 * backend: clean up configd socket on exit
-* backend: fixed regression that prevented user scripts from being started
-  via /etc/rc.conf
-* gateways: only show apinger in services when monitoring is enabled for
-  a gateway
-* languages: brought Simplified Chinese to 49% completed, German to
-  30% completed
-* universal plug and play: make page invoke static to remove exploitability
-  of the legacy packages framework
-* crash reporter: finally enabled the send button and provides human-readable
-  feedback whether the submission was complete
+* backend: fixed regression that prevented user scripts from being started via /etc/rc.conf
+* gateways: only show apinger in services when monitoring is enabled for a gateway
+* languages: brought Simplified Chinese to 49% completed, German to 30% completed
+* universal plug and play: make page invoke static to remove exploitability of the legacy packages framework
+* crash reporter: finally enabled the send button and provides human-readable feedback whether the submission was complete
 * console: added non-interactive interface assignment for headless deployments
-* ssh: disable password authentication on factory reset to align with the
-  standard configuration
+* ssh: disable password authentication on factory reset to align with the standard configuration
 * diagnostics: avoid duplicated calls of gethostbyaddr() in NDP table view
-* users: prompt for old password on password change to prevent account
-  hijacking
-* users: stripped the impossible scponly user privileges since said utility
-  has never been part of our ecosystem
+* users: prompt for old password on password change to prevent account hijacking
+* users: stripped the impossible scponly user privileges since said utility has never been part of our ecosystem
 
 Images can be found on any of our mirrors, but they may take a
 few hours to sync.  The checksums are attached at the end of

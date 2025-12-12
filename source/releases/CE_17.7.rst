@@ -81,7 +81,7 @@ Here are the full patch notes:
 * plugins: tor 1.4 adds contact info (contributed by Fabian Franz)
 * plugins: web-proxy-useracl 1.0 (contributed by Smart-Soft)
 * ports: libressl 2.6.4 `[2] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.6.4-relnotes.txt>`__ 
-* ports: php 7.1.13 `[3] <https://php.net/ChangeLog-7.php#7.1.13>`__ 
+* ports: php 7.1.13 `[3] <https://www.php.net/ChangeLog-7.php#7.1.13>`__ 
 
 A hotfix release was issued as 17.7.12_1:
 
@@ -152,7 +152,7 @@ Here are the full patch notes:
 * plugins: os-freeradius 1.4.0 adds log viewer and fixes users write (contributed by Michael Muenz)
 * plugins: os-quagga 1.4.3 adds OSPF firewall rule and spinners for save (contributed by Fabian Franz)
 * src: OpenSSL multiple vulnerabilities `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-17:11.openssl.asc>`__  `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-17:12.openssl.asc>`__ 
-* ports: hyperscan 4.6.0 `[3] <https://github.com/intel/hyperscan/blob/master/CHANGELOG.md#460-2017-09-22>`__ 
+* ports: hyperscan 4.6.0 `[3] <https://github.com/intel/hyperscan/releases/tag/v4.6.0>`__ 
 * ports: openssl 1.0.2n `[4] <https://www.openssl.org/news/secadv/20171207.txt>`__ 
 * ports: suricata 4.0.3 `[5] <https://suricata-ids.org/2017/12/06/suricata-4-0-3-available/>`__ 
 
@@ -208,7 +208,7 @@ Here are the full patch notes:
 * ports: ca_root_nss 3.34.1
 * ports: curl 7.57.0 `[4] <https://curl.haxx.se/changes.html>`__ 
 * ports: lighttpd 1.4.48 `[5] <https://www.lighttpd.net/2017/11/11/1.4.48/>`__ 
-* ports: php 7.1.12 `[6] <https://php.net/ChangeLog-7.php#7.1.12>`__ 
+* ports: php 7.1.12 `[6] <https://www.php.net/ChangeLog-7.php#7.1.12>`__ 
 * ports: pkg 1.10.3 `[7] <https://github.com/freebsd/freebsd-ports/commit/c6da09c68>`__ 
 * ports: py-jinja 2.10 `[8] <https://jinja.palletsprojects.com/en/stable/changes/#version-2-10>`__ 
 * ports: syslogd 11.1
@@ -280,7 +280,7 @@ And here are the full patch notes:
 * src: unclog reply-to to avoid default route in shared forwarding
 * src: update timezone database information
 * ports: phalcon 3.2.4 `[3] <https://github.com/phalcon/cphalcon/releases/tag/v3.2.4>`__ 
-* ports: php 7.0.25 `[4] <https://php.net/ChangeLog-7.php#7.0.25>`__ 
+* ports: php 7.0.25 `[4] <https://www.php.net/ChangeLog-7.php#7.0.25>`__ 
 * ports: sqlite 3.21.0 `[5] <https://sqlite.org/releaselog/3_21_0.html>`__ 
 * ports: openssl 1.0.2m `[6] <https://www.openssl.org/news/secadv/20171102.txt>`__ 
 * ports: ca_root_nss 3.34
@@ -412,7 +412,7 @@ Here are the full patch notes:
 * ports: kerberos 1.15.2 `[2] <https://web.mit.edu/kerberos/krb5-1.15/>`__ 
 * ports: openvpn 2.4.4 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
 * ports: perl 5.24.3 `[4] <https://perldoc.perl.org/5.24.3/perldelta>`__ 
-* ports: php 7.0.24 `[5] <https://php.net/ChangeLog-7.php#7.0.24>`__ 
+* ports: php 7.0.24 `[5] <https://www.php.net/ChangeLog-7.php#7.0.24>`__ 
 * ports: python 2.7.14 `[6] <https://raw.githubusercontent.com/python/cpython/84471935e/Misc/NEWS>`__ 
 
 We also are happy to announce the immediate availability of the renewed
@@ -540,7 +540,7 @@ And here are the full patch notes:
 * plugins: os-zerotier 1.2.0 allows local.conf settings (contributed by David Harrigan)
 * ports: libnghttp2 1.26 `[2] <https://github.com/nghttp2/nghttp2/releases/tag/v1.26.0>`__ 
 * ports: unbound 1.6.6 `[3] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
-* ports: hyperscan 4.5.2 `[4] <https://github.com/01org/hyperscan/releases>`__ 
+* ports: hyperscan 4.5.2 `[4] <https://github.com/intel/hyperscan/releases/tag/v4.5.2>`__ 
 * ports: py-openssl 17.3.0 `[5] <https://pyopenssl.org/en/stable/changelog.html#id1>`__ 
 * ports: py-cryptography 2.03 `[6] <https://cryptography.io/en/latest/changelog/#v2-0-3>`__ 
 
@@ -563,7 +563,7 @@ Here are the full patch notes:
 * web proxy: adjust default URLs for ICAP (contributed by Fabian Franz)
 * plugins: os-dyndns 1.3 fixes Namecheap updates
 * plugins: os-quagga 1.4.1 adds logging (contributed by Fabian Franz)
-* ports: sudo 1.8.21p2 `[1] <https://www.sudo.ws/stable.html#1.8.21p2>`__ 
+* ports: sudo 1.8.21p2 `[1] <https://www.sudo.ws/releases/legacy/#1.8.21p2>`__ 
 
 
 
@@ -607,8 +607,8 @@ Here are the full patch notes:
 * plugins: os-mdns-repeater `[4] <https://docs.opnsense.org/manual/how-tos/multicast-dns.html>`__  1.0 (contributed by Fabian Franz)
 * plugins: os-zerotier 1.1.0 (contributed by David Harrigan)
 * ports: mpd 5.8_2 `[5] <https://github.com/freebsd/freebsd-ports/commit/4156f1e3d>`__  `[6] <https://github.com/freebsd/freebsd-ports/commit/003e792d>`__ 
-* ports: php 7.0.23 `[7] <https://php.net/ChangeLog-7.php#7.0.23>`__ 
-* ports: sudo 1.8.21p1 `[8] <https://www.sudo.ws/stable.html#1.8.21p1>`__ 
+* ports: php 7.0.23 `[7] <https://www.php.net/ChangeLog-7.php#7.0.23>`__ 
+* ports: sudo 1.8.21p1 `[8] <https://www.sudo.ws/releases/legacy/#1.8.21p1>`__ 
 
 
 
@@ -691,7 +691,7 @@ Here are the full patch notes of the initial 17.7.1:
 * ports: isc-dhcp 4.3.6 `[4] <https://kb.isc.org/article/AA-01518/0/DHCP-4.3.6-Release-Notes.html>`__ 
 * ports: libressl 2.5.5 `[5] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.5.5-relnotes.txt>`__ 
 * ports: phalcon 3.2.2 `[6] <https://github.com/phalcon/cphalcon/releases/tag/v3.2.2>`__ 
-* ports: php 7.0.22 `[7] <https://php.net/ChangeLog-7.php#7.0.22>`__ 
+* ports: php 7.0.22 `[7] <https://www.php.net/ChangeLog-7.php#7.0.22>`__ 
 * ports: sqlite 3.20.1 `[8] <https://sqlite.org/releaselog/3_20_1.html>`__ 
 * ports: strongswan 5.6.0 `[9] <https://wiki.strongswan.org/versions/66>`__ 
 * ports: suricata 4.0.0 `[10] <https://suricata-ids.org/2017/07/27/suricata-4-0-released/>`__ 
@@ -864,7 +864,7 @@ Here is the full list of changes against version 17.7-RC1:
 * plugins: enable stable plugins for 17.7
 * plugins: os-dyndns 1.1 fixes menu entry visibility
 * plugins: os-quagga 1.3.2 (contributed by Fabian Franz and Michael Muenz)
-* ports: php 7.0.21 `[1] <https://php.net/ChangeLog-7.php#7.0.21>`__ 
+* ports: php 7.0.21 `[1] <https://www.php.net/ChangeLog-7.php#7.0.21>`__ 
 * ports: perl 5.24.2 `[2] <https://perldoc.perl.org/5.24.2/perldelta>`__ 
 * ports: suricata 3.2.3 `[3] <https://suricata-ids.org/2017/07/13/suricata-3-2-3-available/>`__ 
 * ports: unbound 1.6.4 `[4] <https://nlnetlabs.nl/projects/unbound/download/>`__ 

@@ -245,7 +245,7 @@ Here are the full patch notes:
 * ports: phpseclib 2.0.34 `[25] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.34>`__ 
 * ports: py-jinja 3.0.1 `[26] <https://jinja.palletsprojects.com/en/stable/changes/#version-3-0-1>`__ 
 * ports: strongswan 5.9.4 `[27] <https://github.com/strongswan/strongswan/releases/tag/5.9.4>`__ 
-* ports: sudo 1.9.8p2 `[28] <https://www.sudo.ws/stable.html#1.9.8p2>`__ 
+* ports: sudo 1.9.8p2 `[28] <https://www.sudo.ws/releases/stable/#1.9.8p2>`__ 
 
 
 
@@ -410,7 +410,7 @@ Here are the full patch notes:
 * ports: phpseclib 2.0.32 `[26] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.32>`__ 
 * ports: python 3.8.12 `[27] <https://docs.python.org/release/3.8.12/whatsnew/changelog.html>`__ 
 * ports: strongswan 5.9.3 `[28] <https://github.com/strongswan/strongswan/releases/tag/5.9.3>`__ 
-* ports: sudo 1.9.8p1 `[29] <https://www.sudo.ws/stable.html#1.9.8p1>`__ 
+* ports: sudo 1.9.8p1 `[29] <https://www.sudo.ws/releases/stable/#1.9.8p1>`__ 
 * ports: suricata 6.0.3 `[30] <https://suricata.io/2021/06/30/new-suricata-6-0-3-and-5-0-7-releases/>`__ 
 * ports: syslog-ng 3.34.1 `[31] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.34.1>`__ 
 * ports: unbound 1.13.2 `[32] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-13-2>`__ 

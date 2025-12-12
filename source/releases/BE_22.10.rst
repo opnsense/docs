@@ -451,7 +451,7 @@ Here are the full patch notes:
 * ports: sqlite 3.39.3 `[44] <https://sqlite.org/releaselog/3_39_3.html>`__ 
 * ports: squid 5.7 `[45] <http://www.squid-cache.org/Versions/v5/squid-5.7-RELEASENOTES.html>`__ 
 * ports: strongswan 5.9.8 `[46] <https://github.com/strongswan/strongswan/releases/tag/5.9.8>`__ 
-* ports: sudo 1.9.12p1 `[47] <https://www.sudo.ws/stable.html#1.9.12p1>`__ 
+* ports: sudo 1.9.12p1 `[47] <https://www.sudo.ws/releases/stable/#1.9.12p1>`__ 
 * ports: suricata 6.0.8 `[48] <https://suricata.io/2022/09/27/suricata-6-0-7-released/>`__ 
 * ports: syslog-ng 3.38.1 `[49] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.38.1>`__ 
 * ports: unbound 1.16.3 `[50] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-3>`__ 

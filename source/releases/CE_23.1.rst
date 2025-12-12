@@ -491,7 +491,7 @@ Here are the full patch notes:
 * ipsec: add a routing hook and execute it for all VTI devices during reconfiguration
 * ports: phpseclib 3.0.19 `[1] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.19>`__ 
 * ports: sqlite backs out disabling DQS option which broke software on multiple ends
-* ports: sudo 1.9.13p3 `[2] <https://www.sudo.ws/stable.html#1.9.13p3>`__ 
+* ports: sudo 1.9.13p3 `[2] <https://www.sudo.ws/releases/stable/#1.9.13p3>`__ 
 
 A hotfix release was issued as 23.1.3_4:
 
@@ -570,7 +570,7 @@ Here are the full patch notes:
 * ports: phalcon 5.2.1 `[11] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.1>`__ 
 * ports: sqlite 3.41.0 `[12] <https://sqlite.org/releaselog/3_41_0.html>`__ 
 * ports: strongswan 5.9.10 `[13] <https://github.com/strongswan/strongswan/releases/tag/5.9.10>`__ 
-* ports: sudo 1.9.13p2 `[14] <https://www.sudo.ws/stable.html#1.9.13p2>`__ 
+* ports: sudo 1.9.13p2 `[14] <https://www.sudo.ws/releases/stable/#1.9.13p2>`__ 
 
 
 
@@ -779,7 +779,7 @@ Here are the full patch notes against 22.7.11:
 * plugins: os-wireguard switches to kernel module with a separate os-wireguard-go variant available for installation to keep the old behaviour
 * src: assorted FreeBSD 13 stable fixes for e.g. bpf, bridge, bsdinstall ifconfig, iflib, ipfw, ipsec, lagg, netmap, pf, route and vlan components
 * ports: php 8.1.14 `[11] <https://www.php.net/ChangeLog-8.php#8.1.14>`__ 
-* ports: sudo 1.9.12p2 `[12] <https://www.sudo.ws/stable.html#1.9.12p2>`__ 
+* ports: sudo 1.9.12p2 `[12] <https://www.sudo.ws/releases/stable/#1.9.12p2>`__ 
 
 A hotfix release was issued as 23.1_6:
 

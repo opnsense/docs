@@ -43,9 +43,7 @@ These are the most prominent changes since version 18.1:
 * language updates for Czech, French, German, Portuguese (Brazil)
 * UI header security and SSL cipher hardening
 * extensive UI cleanups and menu consolidation
-* new and rewritten plugins: os-cache, os-lcdproc-sdeclcd, os-net-snmp,
-  os-nut, os-openconnect, os-relayd 2.0, os-shadowsocks, os-theme-cicada,
-  os-theme-rebellion, os-theme-tukan, os-wol 2.0
+* new and rewritten plugins: os-cache, os-lcdproc-sdeclcd, os-net-snmp, os-nut, os-openconnect, os-relayd 2.0, os-shadowsocks, os-theme-cicada, os-theme-rebellion, os-theme-tukan, os-wol 2.0
 
 We thank all of you for helping test, shape and contribute to the project!
 We know it would not be the same without you.
@@ -242,7 +240,7 @@ Here are the full patch notes:
 * ports: lighttpd 1.4.52 `[7] <https://www.lighttpd.net/2018/11/28/1.4.52/>`__ 
 * ports: sqlite 3.26.0 `[8] <https://sqlite.org/releaselog/3_26_0.html>`__ 
 * ports: perl 5.26.3 `[9] <https://perldoc.perl.org/5.26.3/perldelta>`__ 
-* ports: php 7.1.25 `[10] <https://php.net/ChangeLog-7.php#7.1.25>`__ 
+* ports: php 7.1.25 `[10] <https://www.php.net/ChangeLog-7.php#7.1.25>`__ 
 * ports: hostapd / wpa_supplicant 2.7 `[11] <http://lists.infradead.org/pipermail/hostap/2018-December/039069.html>`__ 
 * ports: unbound 1.8.2 `[12] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 
@@ -311,9 +309,9 @@ Here are the full patch notes:
 * ports: lighttpd 1.4.51 `[6] <https://www.lighttpd.net/2018/10/14/1.4.51/>`__ 
 * ports: openssh 7.9p1 `[7] <https://www.openssh.com/txt/release-7.9>`__ 
 * ports: openssl 1.0.2q `[8] <https://www.openssl.org/news/cl102.txt>`__ 
-* ports: php 7.1.24 `[9] <https://php.net/ChangeLog-7.php#7.1.24>`__ 
+* ports: php 7.1.24 `[9] <https://www.php.net/ChangeLog-7.php#7.1.24>`__ 
 * ports: pkg minor upstream fixes
-* ports: sudo 1.8.26 `[10] <https://www.sudo.ws/stable.html#1.8.26>`__ 
+* ports: sudo 1.8.26 `[10] <https://www.sudo.ws/releases/legacy/#1.8.26>`__ 
 
 
 
@@ -502,7 +500,7 @@ Here are the full patch notes:
 * plugins: os-vnstat 1.0 (contributed by Michael Muenz)
 * plugins: os-zerotier fixes status table (contributed by Christoph Engelbert)
 * ports: mpd upstream MTU fix `[2] <https://github.com/freebsd/freebsd-ports/commit/7d765cc2f>`__ 
-* ports: PHP 7.1.23 `[3] <https://php.net/ChangeLog-7.php#7.1.23>`__ 
+* ports: PHP 7.1.23 `[3] <https://www.php.net/ChangeLog-7.php#7.1.23>`__ 
 
 A hotfix release was issued as 18.7.5_1:
 
@@ -554,7 +552,7 @@ Here are the full patch notes:
 * src: fix out-of-bounds read vulnerability in libarchive
 * src: update re(4) driver to upstream version 1.95
 * ports: libressl 2.7.4 `[1] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.7.4-relnotes.txt>`__ 
-* ports: php 7.1.22 `[2] <https://php.net/ChangeLog-7.php#7.1.22>`__ 
+* ports: php 7.1.22 `[2] <https://www.php.net/ChangeLog-7.php#7.1.22>`__ 
 * ports: sqlite 3.25.1 `[3] <https://sqlite.org/releaselog/3_25_1.html>`__ 
 * ports: squid 3.5.28 `[4] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5.28-RELEASENOTES.html>`__ 
 
@@ -624,7 +622,7 @@ Here are the full patch notes:
 * src: fix improper ELF header parsing `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-18:12.elf.asc>`__ 
 * ports: curl 7.61.1 `[3] <https://curl.haxx.se/changes.html>`__ 
 * ports: lighttpd 1.4.50 `[4] <https://www.lighttpd.net/2018/8/13/1.4.50/>`__ 
-* ports: sudo 1.8.25p1 `[5] <https://www.sudo.ws/stable.html#1.8.25p1>`__ 
+* ports: sudo 1.8.25p1 `[5] <https://www.sudo.ws/releases/legacy/#1.8.25p1>`__ 
 
 
 
@@ -688,8 +686,8 @@ Here are the full patch notes:
 * ports: ntp 4.2.8p12 `[4] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
 * ports: openssl 1.0.2p `[5] <https://www.openssl.org/news/cl102.txt>`__ 
 * ports: phalcon 3.4.1 `[6] <https://github.com/phalcon/cphalcon/releases/tag/v3.4.1>`__ 
-* ports: php 7.1.21 `[7] <https://php.net/ChangeLog-7.php#7.1.21>`__ 
-* ports: sudo 1.8.24 `[8] <https://www.sudo.ws/stable.html>`__ 
+* ports: php 7.1.21 `[7] <https://www.php.net/ChangeLog-7.php#7.1.21>`__ 
+* ports: sudo 1.8.24 `[8] <https://www.sudo.ws/releases/legacy/#1.8.24>`__ 
 * ports: wpa_supplicant security updates `[9] <https://w1.fi/security/2018-1/>`__ 
 
 
@@ -807,9 +805,7 @@ These are the most prominent changes since version 18.1:
 * language updates for Czech, French, German, Portuguese (Brazil)
 * UI header security and SSL cipher hardening
 * extensive UI cleanups and menu consolidation
-* new and rewritten plugins: os-cache, os-lcdproc-sdeclcd, os-net-snmp,
-  os-nut, os-openconnect, os-relayd 2.0, os-shadowsocks, os-theme-cicada,
-  os-theme-rebellion, os-theme-tukan, os-wol 2.0
+* new and rewritten plugins: os-cache, os-lcdproc-sdeclcd, os-net-snmp, os-nut, os-openconnect, os-relayd 2.0, os-shadowsocks, os-theme-cicada, os-theme-rebellion, os-theme-tukan, os-wol 2.0
 
 We thank all of you for helping test, shape and contribute to the project!
 We know it would not be the same without you.
@@ -849,39 +845,17 @@ Here are the full changes against version 18.7-RC2:
 * plugins: os-relayd 2.2 (contributed by Frank Brendel)
 * plugins: os-siproxd 1.3 (contributed by Michael Muenz)
 * ports: dhcp6c 20180720 with fix for raw support (contributed by Team Rebellion)
-* ports: php 7.1.20 `[2] <https://php.net/ChangeLog-7.php#7.1.20>`__ 
+* ports: php 7.1.20 `[2] <https://www.php.net/ChangeLog-7.php#7.1.20>`__ 
 
 Migration notes and minor incomatibilities to look out for:
 
-* SSH access is now bound to the "wheel" group which is automatically
-  added to "admins" group, which "root" is a member of.  "root" is the
-  only user that has a default shell, namely opnsense-shell, which is the
-  root console menu.
-* SSH access can be set for an arbitrary group as well under System:
-  Administration for non-members of "admins" group.  However, in both
-  cases only SCP works due to a request in the forum to be more proactive
-  regarding yielding of shell access rights.  If you want a user to gain
-  true SSH access you need to change their shell from "nologin" to an
-  installed shell in their respective settings.
-* Web GUI HTTPS ciphers have been hardened.  To gain access please use a
-  recent browser.
-* The authentication fallback for the GUI/system has been removed in
-  favour of selecting multiple authentication servers at once.  Reassign
-  your fallback as a primary authentication method or now use more than
-  two methods.
-* It has been found that although WAN interfaces require gateways to
-  function, they do not necessarily have to be assigned in single-WAN
-  scenarios to avoid interfering with WAN reply behaviour.  The "none"
-  selection was therefore changed to "auto-detect" to reflect this and
-  now is the recommended setting unless multi-WAN is used.
-* In preparation for the firewall alias API the per-item descriptions have
-  been removed along with support for the deprecated types urltable_ports
-  and url_ports.
-* OpenVPN /31 tunnel network calculation changed to use the first and last
-  address as network address and broadcast address do not exist.  If you
-  are affected, adjust your clients or export their configuration again
-  which includes the configuration fix.  Additionally, /32 tunnel networks
-  are now prohibited.
+* SSH access is now bound to the "wheel" group which is automatically added to "admins" group, which "root" is a member of.  "root" is the only user that has a default shell, namely opnsense-shell, which is the root console menu.
+* SSH access can be set for an arbitrary group as well under System: Administration for non-members of "admins" group.  However, in both cases only SCP works due to a request in the forum to be more proactive regarding yielding of shell access rights.  If you want a user to gain true SSH access you need to change their shell from "nologin" to an installed shell in their respective settings.
+* Web GUI HTTPS ciphers have been hardened.  To gain access please use a recent browser.
+* The authentication fallback for the GUI/system has been removed in favour of selecting multiple authentication servers at once.  Reassign your fallback as a primary authentication method or now use more than two methods.
+* It has been found that although WAN interfaces require gateways to function, they do not necessarily have to be assigned in single-WAN scenarios to avoid interfering with WAN reply behaviour.  The "none" selection was therefore changed to "auto-detect" to reflect this and now is the recommended setting unless multi-WAN is used.
+* In preparation for the firewall alias API the per-item descriptions have been removed along with support for the deprecated types urltable_ports and url_ports.
+* OpenVPN /31 tunnel network calculation changed to use the first and last address as network address and broadcast address do not exist.  If you are affected, adjust your clients or export their configuration again which includes the configuration fix.  Additionally, /32 tunnel networks are now prohibited.
 
 All images are provided with SHA-256 signatures, which can be verified
 against the distributed public key:

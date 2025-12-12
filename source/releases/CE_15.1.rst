@@ -63,22 +63,16 @@ Here is the full list of changes:
 * src: update base system file(1) to 5.22 `[2] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:07.zfs.asc>`__ 
 * src: improve reliability of ZFS `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:06.file.asc>`__ 
 * src: updated to tzdata2015e `[4] <http://mm.icann.org/pipermail/tz-announce/2015-June/000032.html>`__ 
-* ports: openssl 1.0.2c `[5] <https://www.openssl.org/news/openssl-1.0.2-notes.html>`__ , libressl 2.2.0 `[6] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.0-relnotes.txt>`__ , php 5.6.10 `[7] <https://php.net/ChangeLog-5.php#5.6.10>`__ ,
-  dnsmasq 2.73 `[8] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ , smartmontools 6.4 `[9] <https://www.smartmontools.org/browser/tags/RELEASE_6_4/smartmontools/NEWS>`__ 
+* ports: openssl 1.0.2c `[5] <https://www.openssl.org/news/openssl-1.0.2-notes.html>`__ , libressl 2.2.0 `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.0-relnotes.txt>`__ , php 5.6.10 `[7] <https://www.php.net/ChangeLog-5.php#5.6.10>`__ , dnsmasq 2.73 `[8] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ , smartmontools 6.4 `[9] <https://www.smartmontools.org/browser/tags/RELEASE_6_4/smartmontools/NEWS>`__ 
 * syslogd: disable unmaintained and unused ZMQ patches
-* opnsense-update: gained independent awareness of kernel and
-  base system version
+* opnsense-update: gained independent awareness of kernel and base system version
 * opnsense-update: improved the manual page to include all recent changes
-* firmware: bring back /etc/shells support to avoid the unknown shell
-  warning on bootup
-* firmware: always schedule next poll while upgrade is running to
-  accommodate for web server restart delay
+* firmware: bring back /etc/shells support to avoid the unknown shell warning on bootup
+* firmware: always schedule next poll while upgrade is running to accommodate for web server restart delay
 * logs: fix DHCP reverse ordering and update layout
 * wizard: remove false statement about using "dhcp" for LAN setup
 * menu: order interfaces by name
-* captive portal: fix database creation query by avoiding SQL injection
-  syntax that broke due to a recent upstream hardening of the database
-  adapter underneath
+* captive portal: fix database creation query by avoiding SQL injection syntax that broke due to a recent upstream hardening of the database adapter underneath
 
 The images can be obtained via any of our mirrors, given a bit of delay
 for them to pull in the latest images:
@@ -130,31 +124,21 @@ refresh the page and look for new updates.
 
 Here is the full list of changes:
 
-* notable ports updates: pcre 8.37_1 `[1] <https://github.com/freebsd/freebsd-ports/commit/030adcf1d>`__ , phalcon 2.0.2 `[2] <https://github.com/phalcon/cphalcon/releases>`__ ,
-  strongswan 5.3.2 `[3] <https://wiki.strongswan.org/projects/strongswan/wiki/Changelog53>`__ , sqlite 3.8.10.2 `[4] <https://sqlite.org/releaselog/3_8_10_2.html>`__ 
-* more notable ports: openvpn 2.3.7 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23#OpenVPN2.3.7>`__ , openssl 1.0.2b `[6] <http://marc.info/?l=openbsd-announce&m=143404058913441>`__ ,
-  libressl 2.1.7 `[7] <https://github.com/freebsd/freebsd-ports/commit/40365ab880101ee>`__ , pkg 1.5.4 `[8] <https://www.openssl.org/news/secadv_20150611.txt>`__ 
+* notable ports updates: pcre 8.37_1 `[1] <https://github.com/freebsd/freebsd-ports/commit/030adcf1d>`__ , phalcon 2.0.2 `[2] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.2>`__ , strongswan 5.3.2 `[3] <https://wiki.strongswan.org/projects/strongswan/wiki/Changelog53>`__ , sqlite 3.8.10.2 `[4] <https://sqlite.org/releaselog/3_8_10_2.html>`__ 
+* more notable ports: openvpn 2.3.7 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23#OpenVPN2.3.7>`__ , openssl 1.0.2b `[6] <http://marc.info/?l=openbsd-announce&m=143404058913441>`__ , libressl 2.1.7 `[7] <https://github.com/freebsd/freebsd-ports/commit/40365ab880101ee>`__ , pkg 1.5.4 `[8] <https://www.openssl.org/news/secadv_20150611.txt>`__ 
 * opnsense-update: has gained the ability to do package updates as well
-* core: removed unused ssh_tunnel_shell and 3gstats utilities, added sudo
-  to the default utilities
+* core: removed unused ssh_tunnel_shell and 3gstats utilities, added sudo to the default utilities
 * captiveportal/traffic shaper: better fix for localhost skip
-* traffic shaper: added ICMP, IGMP, ESP, AH and GRE protocols to
-  selectable protocols
-* core: fixed a bug that prevented our API from working properly with
-  Phalcon 2.0.1 and above
-* backend: added configctl command utility launcher and improved its
-  logging capabilities
-* backend: worked around a performance degradation bug in Python 2.7
-  on FreeBSD
-* gateways: monitoring via :code:`apinger` is now turned off by default for
-  all new gateways created (opt-out flipped to opt-in for privacy reasons)
+* traffic shaper: added ICMP, IGMP, ESP, AH and GRE protocols to selectable protocols
+* core: fixed a bug that prevented our API from working properly with Phalcon 2.0.1 and above
+* backend: added configctl command utility launcher and improved its logging capabilities
+* backend: worked around a performance degradation bug in Python 2.7 on FreeBSD
+* gateways: monitoring via :code:`apinger` is now turned off by default for all new gateways created (opt-out flipped to opt-in for privacy reasons)
 * firmware: refactored firmware code to use opnsense-update's new capabilities
 * firmware: fix parsing of packages to be upgraded in fringe cases
 * firmware: fix overzealous caching of available package upgrades
-* users: user with group admins now have :code:`wheel` group associated with them,
-  allowing them to use :code:`su` or :code:`sudo` (if configured)
-* users: do not copy root's hidden files while creating a new user
-  home directory
+* users: user with group admins now have :code:`wheel` group associated with them, allowing them to use :code:`su` or :code:`sudo` (if configured)
+* users: do not copy root's hidden files while creating a new user home directory
 
 
 
@@ -197,14 +181,10 @@ are the full patch notes:
 
 * notable ports upgrades: pcre 8.37, pkg 1.5.3, ca_root_nss 3.19.1
 * aliases: fix javascript error that prevented aliases from woking
-* traffic shaper: rewrote the feature using standard components on top
-  of the new MVC framework/API (see Firewall: Traffic Shaper)
-* system: enabled first few hundred translations of Simplified Chinese
-  to help the community to progress and review said translation
-  (see System: Settings: General)
+* traffic shaper: rewrote the feature using standard components on top of the new MVC framework/API (see Firewall: Traffic Shaper)
+* system: enabled first few hundred translations of Simplified Chinese to help the community to progress and review said translation (see System: Settings: General)
 * vpn: all GUI files underwent a thorough coding style refresh
-* firmware: prevent spurious "Module already loaded" errors while
-  upgrading PHP packages
+* firmware: prevent spurious "Module already loaded" errors while upgrading PHP packages
 
 The packages for OpenSSL and LibreSSL are up and can be applied via the
 GUI or console firmware upgrade.
@@ -303,7 +283,7 @@ Here is the full list of changes for 15.1.11:
 * src: fix panic in pf(4) in conjunction with ALTQ `[3] <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=200222>`__ 
 * src: updated to FreeBSD 10.0-RELEASE-p10 `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:04.freebsd-update.asc>`__  `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:05.ufs.asc>`__ 
 * src: reverted two more custom patches to align with FreeBSD
-* ports: updated to ca_root_nss 3.19, sqlite 3.8.10.1, php 5.6.9 `[6] <https://php.net/ChangeLog-5.php#5.6.9>`__ , openssh 6.8p1_7 `[7] <http://www.openwall.com/lists/oss-security/2015/05/16/3>`__ 
+* ports: updated to ca_root_nss 3.19, sqlite 3.8.10.1, php 5.6.9 `[6] <https://www.php.net/ChangeLog-5.php#5.6.9>`__ , openssh 6.8p1_7 `[7] <http://www.openwall.com/lists/oss-security/2015/05/16/3>`__ 
 * opnsense-update: exclude /etc/tty from the upgrade
 * bsdinstaller: reworked the internals to align to modern port standards
 * captive portal: switched rules generation to new template engine
@@ -355,34 +335,25 @@ upgrade.  ;)
 
 Here is the full list of changes:
 
-* proxy: basic proxy features on top of our new and shiny MVC framework
-  under "Services: Proxy Server"
-* proxy: smart tokens for item lists (copy/paste CSV list into them and
-  watch the magic happen)
+* proxy: basic proxy features on top of our new and shiny MVC framework under "Services: Proxy Server"
+* proxy: smart tokens for item lists (copy/paste CSV list into them and watch the magic happen)
 * proxy: help on/off per item or full page
 * proxy: hide advanced options and include sane defaults
 * proxy: FTP proxy included with same ACL controls as HTTP
 * proxy: simple authentication using built-in user database
-* openvpn: added Tunnelblick's version of the OpenVPN XOR feature for
-  protocol obfuscation `[3] <https://code.google.com/p/tunnelblick/wiki/cOpenvpn_xorpatch>`__ 
+* openvpn: added Tunnelblick's version of the OpenVPN XOR feature for protocol obfuscation `[3] <https://code.google.com/p/tunnelblick/wiki/cOpenvpn_xorpatch>`__ 
 * core: fixed config.xml section import regression
 * core: stripped numerous dynamic strings from gettext() invokes
-* ports: added FreeBSD's 10.1 ifinfo tool to probe for interface statistics
-  to replace legacy PHP module code
-* ports: bsdinstaller 2.3 no longer uses cpdup utility, plus log collection
-  and SONAME fixes
+* ports: added FreeBSD's 10.1 ifinfo tool to probe for interface statistics to replace legacy PHP module code
+* ports: bsdinstaller 2.3 no longer uses cpdup utility, plus log collection and SONAME fixes
 * ports: updated to pkg 1.5.2, phalcon 2.0.0, dnsmasq 2.72_1 `[4] <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-3294>`__ 
 * ports: Perl is now installed by default (5.18)
-* development: OpenSSL and LibreSSL branches have been merged for a simpler
-  build experience and smaller release times
-* development: the package sets are now always kept as a single archive that
-  can be reused and recompiled (even selectively)
+* development: OpenSSL and LibreSSL branches have been merged for a simpler build experience and smaller release times
+* development: the package sets are now always kept as a single archive that can be reused and recompiled (even selectively)
 * development: stable translation template file is available now `[5] <https://raw.githubusercontent.com/opnsense/core/master/src/share/locale/en_US/LC_MESSAGES/OPNsense.pot>`__ 
 * development: kickstarted Japanese and Chinese translations
-* development: language translation files are now automatically compiled
-  into the core package
-* development: added a persistent build config file for setting the version,
-  crypto flavour and release version tag (if applicable)
+* development: language translation files are now automatically compiled into the core package
+* development: added a persistent build config file for setting the version, crypto flavour and release version tag (if applicable)
 
 The update is available via the firmware upgrade feature only.
 
@@ -396,8 +367,7 @@ The update is available via the firmware upgrade feature only.
 Here comes a quick hotfix for a pressing VLAN regression we've been hearing
 about today plus 3 more minor additions.  These are the patch notes:
 
-* interfaces: fix interface rename regression that prevented VLANs from
-  being set up
+* interfaces: fix interface rename regression that prevented VLANs from being set up
 * firmware: clean up downloaded packages after installation
 * logging: prevent spurious pgrep-related messages from being logged
 * config: fix Google Drive backup accounting off-by-two
@@ -458,44 +428,30 @@ up the full upgrade cycle, drop to the root shell and type:
 
 .. code-block::
 
-    # opnsense-update && reboot
+    # # opnsense-update && reboot
 
 But then again, simply use the root shell menu option "12".  It works
 seamlessly via SSH, too.
 
 The full change log of 15.1.10 is as follows:
 
-* kernel: cleaned up the custom legacy patches to move the underlying
-  FreeBSD back to more standard behaviour
-* kernel: removed dysfunctional dummynet patches and traffic shaper / limiter
-  GUI feature (ETA for a replacement is 15.7)
-* kernel: stripped FAIRQ and CODELQ disciplines as they are no longer
-  supported by FreeBSD
-* kernel: isolated MPD (Multi-link PPP daemon) alteration patches
-  (will be dropped in a future release)
+* kernel: cleaned up the custom legacy patches to move the underlying FreeBSD back to more standard behaviour
+* kernel: removed dysfunctional dummynet patches and traffic shaper / limiter GUI feature (ETA for a replacement is 15.7)
+* kernel: stripped FAIRQ and CODELQ disciplines as they are no longer supported by FreeBSD
+* kernel: isolated MPD (Multi-link PPP daemon) alteration patches (will be dropped in a future release)
 * kernel: fixed IPSec dropping connections in some scenarios
-* images: a new NanoBSD-based image has been added to the release
-  bundle (directly written to SD or HD)
+* images: a new NanoBSD-based image has been added to the release bundle (directly written to SD or HD)
 * notable ports updates: curl 7.42.1, ca_root_nss 3.18.1
-* installer: omit swap and add noatime to root partition in quick/easy
-  install when available space is under 30GB, fixed faulty exit on
-  importer cancel
+* installer: omit swap and add noatime to root partition in quick/easy install when available space is under 30GB, fixed faulty exit on importer cancel
 * development: the ports tree is now kept fully in sync with FreeBSD
-* development: improved the ports build script in terms of error reporting
-  and rebuilding speed
-* development: simplified file system path handling in most files to make
-  the code easier to maintain
+* development: improved the ports build script in terms of error reporting and rebuilding speed
+* development: simplified file system path handling in most files to make the code easier to maintain
 * development: fixed a bug that prevented extracting our packages on ZFS
-* core: replaced most of the legacy PHP module usage with more portable
-  (and maintainable) scripting code
-* dashboard: fixed the main link to always land on the dashboard to not
-  confuse a restricted ACL setup
-* traffic shaper: layer 7 filter removed as the project has been abandoned
-  (ETA for a replacement is 16.1)
-* system/settings: added an FTP proxy feature for clients trying to do
-  active transfers
-* menu: replaced the old one with the new MVC equivalent plus assorted
-  improvements
+* core: replaced most of the legacy PHP module usage with more portable (and maintainable) scripting code
+* dashboard: fixed the main link to always land on the dashboard to not confuse a restricted ACL setup
+* traffic shaper: layer 7 filter removed as the project has been abandoned (ETA for a replacement is 16.1)
+* system/settings: added an FTP proxy feature for clients trying to do active transfers
+* menu: replaced the old one with the new MVC equivalent plus assorted improvements
 * ACL: replaced the old one with the new MVC equivalent
 * login: polished the login screen behaviour
 * backend: don't try to send a signal to non-existing process
@@ -559,19 +515,16 @@ Here is the full change log of 15.1.9.2:
 * user manager: fixed empty password error when creating a new user
 * high availability: don't trigger sync when not configured
 * interfaces: added the hn(4) interfaces as ALTQ capable
-* configuration: do not overwrite the default configuration on firmware
-  updates
+* configuration: do not overwrite the default configuration on firmware updates
 * ipsec: fixed road warrior authentication
 * openvpn: fixed client edit link
 * ports: sqlite 3.8.9 `[1] <https://sqlite.org/releaselog/3_8_9.html>`__ 
 * ports: strongswan fix for xauth (road warrior-related)
-* ports: PHP 5.6.8 `[2] <https://php.net/ChangeLog-5.php#5.6.8>`__ 
+* ports: PHP 5.6.8 `[2] <https://www.php.net/ChangeLog-5.php#5.6.8>`__ 
 * ports: pkg 1.5.1 `[3] <https://lists.freebsd.org/pipermail/freebsd-stable/2015-April/082234.html>`__ 
-* development: kickstarted language support via English
-  translation (.pot file)
+* development: kickstarted language support via English translation (.pot file)
 * development: further progress on the proxy feature/MVC framework
-* development: improved the live mount to propagate the mounted version
-  into the dashboard
+* development: improved the live mount to propagate the mounted version into the dashboard
 
 The update is not available via install media, but you can just as well
 download 15.1.9 from a mirror and upgrade with a few simple clicks:
@@ -599,19 +552,16 @@ recommended to trigger the automatic enable of soft updates and TRIM
 
 Here is the full change log of 15.1.9.1:
 
-* firmware: show a warning on pending system updates that need to be executed
-  from the console
+* firmware: show a warning on pending system updates that need to be executed from the console
 * system: "General Setup" and "Advanced" items have been merged into "Settings"
-* system: "Certificate Manager" is now known as "Certificates", default tab
-  changed as well
+* system: "Certificate Manager" is now known as "Certificates", default tab changed as well
 * services: introduce OpenDNS-based DNS filtering
 * services: fixed start button layout when service is offline
 * ports: fixed StrongSwan SMP socket bind on FreeBSD
 * ipsec: brought back tunnel status reporting
 * ipsec: fixed "Do not install LAN SPD" setting
 * user manager: fixed group permission and privilege read bugs
-* wake on lan: fixed "Cannot create references to/from string offsets nor
-  overloaded objects" error
+* wake on lan: fixed "Cannot create references to/from string offsets nor overloaded objects" error
 * openvpn: fixed server restart regression
 * core: automatically enable TRIM on boot if available
 
@@ -662,7 +612,7 @@ Here is the change log for 15.1.9:
 
 * tools: install media live images now use the more flexible tmpfs(5)
 * tools: cxgbe(4) is now compiled into the kernel
-* ports: strongswan 5.3.0 `[1] <https://www.strongswan.org/blog/2015/03/30/strongswan-5.3.0-released.html>`__ , openssh 6.8p1 `[2] <http://www.openssh.com/txt/release-6.8>`__ , ntp 4.2.8p2 `[3] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
+* ports: strongswan 5.3.0 `[1] <https://www.strongswan.org/blog/2015/03/30/strongswan-5.3.0-released.html>`__ , openssh 6.8p1 `[2] <https://www.openssh.com/txt/release-6.8>`__ , ntp 4.2.8p2 `[3] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
 * src: reverted inconsistent carp(4) and pfsync(4) patches to retain standard FreeBSD behaviour
 * src: fix multiple vulnerabilities of ntp `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:07.ntp.asc>`__ 
 * src: fix denial of service with IPv6 router advertisements `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:09.ipv6.asc>`__ 
@@ -723,31 +673,20 @@ Here is the full list of changes:
 
 * core: removed numerous unused function from the code base
 * core: fixed numerous :code:`Illegal string offset` warnings
-* core: fixed numerous `Cannot create references to/from string offsets
-  nor overloaded objects' errors related to 15.1.8's config system switch
-* captive portal: properly redirect to original page after entering a
-  valid voucher
-* xmlrcp: replaced the whole legacy implementation due to issues with the
-  latest PHP version to unbreak the feature
-* core: fixed an ancient background execution bug that prevented the spawned
-  process from fully detaching from its parent
-* firmware: completely detached the firmware upgrade from the GUI to make
-  it more reliable and hide empty update tables
-* dashboard: polish the version information print and also show
-  OpenSSL/LibreSSL version for better awareness
+* core: fixed numerous :code:`Cannot create references to/from string offsets nor overloaded objects` errors related to 15.1.8's config system switch
+* captive portal: properly redirect to original page after entering a valid voucher
+* xmlrcp: replaced the whole legacy implementation due to issues with the latest PHP version to unbreak the feature
+* core: fixed an ancient background execution bug that prevented the spawned process from fully detaching from its parent
+* firmware: completely detached the firmware upgrade from the GUI to make it more reliable and hide empty update tables
+* dashboard: polish the version information print and also show OpenSSL/LibreSSL version for better awareness
 * xmlrpc: removed dangerous PHP and shell execution hooks
-* core: removed the backwards compatibility code for base OpenSSL as we
-  don't want to use it anymore
+* core: removed the backwards compatibility code for base OpenSSL as we don't want to use it anymore
 * core: fixed unstable GUI and console factory reset
-* system settings: finally flipped the SSH key only checkbox to properly
-  align with the underlying settings name of :code:`PasswordAuthentication`
-* core: removed usage of numerous legacy PHP plugins in favour of more
-  portable approaches
+* system settings: finally flipped the SSH key only checkbox to properly align with the underlying settings name of :code:`PasswordAuthentication`
+* core: removed usage of numerous legacy PHP plugins in favour of more portable approaches
 * logs: captive portal logs now have the proper layout
-* logs: fixed firewall log parsing to unhide log entries for IP protocols
-  that were not TCP/UDP/ICMP
-* crash reporter: revamp the crash report layout and add appropriate feedback
-  messages (note that the send button isn't enabled but we'll get there)
+* logs: fixed firewall log parsing to unhide log entries for IP protocols that were not TCP/UDP/ICMP
+* crash reporter: revamp the crash report layout and add appropriate feedback messages (note that the send button isn't enabled but we'll get there)
 * interfaces: fixed WAN PPPOE edit
 * configd: do not emit an error on shutdown
 * configd: gained a background execution feature
@@ -777,21 +716,21 @@ also pulling in PHP 5.6.7, which isn't currently available in FreeBSD ports.
 
 Here is the full change log:
 
-* ports: PHP was updated to 5.6.7 addressing CVE-2015-0231,
-  CVE-2015-2305, etc. `[1] <https://php.net/ChangeLog-5.php#5.6.7>`__ 
+* ports: PHP was updated to 5.6.7 addressing CVE-2015-0231, CVE-2015-2305, etc. `[1] <https://www.php.net/ChangeLog-5.php#5.6.7>`__ 
 * captive portal: service now restarts correctly when triggered from the GUI
 * ipsec: multiple config system replacement regression fixes
 * dhcp: fixed the flushing of v6 settings while applying them
 * user manager: fixed a bug that would remove groups
 * firewall rules: prevent delete rule from deleting all rules
 * core: ignore empty tags in configs generated by frontend code
-* The update is available for both of the crypto flavours OpenSSL and
-  LibreSSL through the System/Firmware section of the GUI.  If you are
-  upgrading from pre-15.1.7.1 don't forget to run "opnsense-update && reboot"
-  on a root shell to bring in the latest base fixes afterwards as well.
-  Installations of 15.1.7.1 and higher can use the console firmware upgrade
-  option 12 to run an adaptive update cycle (depending on how much needs to
-  be updated the system may reboot).
+
+The update is available for both of the crypto flavours OpenSSL and
+LibreSSL through the System/Firmware section of the GUI.  If you are
+upgrading from pre-15.1.7.1 don't forget to run "opnsense-update && reboot"
+on a root shell to bring in the latest base fixes afterwards as well.
+Installations of 15.1.7.1 and higher can use the console firmware upgrade
+option 12 to run an adaptive update cycle (depending on how much needs to
+be updated the system may reboot).
 
 As always, please back up your config and let us know if you run into any
 trouble.  :)
@@ -835,21 +774,16 @@ Here is the full list of changes:
 * src: add missing max-packets parsing for pf(4)
 * src: OPNsense branding for boot loader
 * bsdinstaller: speed up SD card writes using async mode and assorted cleanups
-* opnsense-update: don't trigger a spurious update after a fresh install when
-  invoked for the first time
-* notable port updates: isc-dhcp42 4.2.8, libressl 2.1.6 (hopefully builds
-  will be available on Friday), openssl 1.0.1m, ca_root_nss 3.18
+* opnsense-update: don't trigger a spurious update after a fresh install when invoked for the first time
+* notable port updates: isc-dhcp42 4.2.8, libressl 2.1.6 (hopefully builds will be available on Friday), openssl 1.0.1m, ca_root_nss 3.18
 * core: removed obsolete conf_mount_ro() and conf_mount_rw() usage
-* core: removed platform awareness with a more appropriate probe for install
-  media
+* core: removed platform awareness with a more appropriate probe for install media
 * core: removed all remnants of the old firmware update code
-* core: completely rewrote the config.xml handling to unify old and new GUI
-  components
+* core: completely rewrote the config.xml handling to unify old and new GUI components
 * core: added support for config backup to Google Drive `[3] <https://wiki.opnsense.org/index.php/Manual:Backup_to_Google_Drive>`__ 
 * core: fixed a few config handling issues with the new system via 15.1.8.1
 * core: fixed missing aliases in new config system via 15.1.8.2
-* core: removed php-fpm remnants that would e.g. prevent automatic IP
-  assignment in DHCP mode via 15.1.8.2
+* core: removed php-fpm remnants that would e.g. prevent automatic IP assignment in DHCP mode via 15.1.8.2
 * packages: removed the legacy package system
 * upnp: transformed the preinstalled package into a standard feature
 * openvpn: added the client export package as a standard feature
@@ -913,25 +847,17 @@ headless/remote workflow.
 Here is the full list of changes:
 
 * bsdinstaller: fixed the package database wipe on custom install
-* bsdinstaller: install progress bar is now more responsive with regard to
-  individual directories in /usr
-* firmware: removed obsoleted upgrade code and tools following our
-  pkgng/opnsense-update approach
+* bsdinstaller: install progress bar is now more responsive with regard to individual directories in /usr
+* firmware: removed obsoleted upgrade code and tools following our pkgng/opnsense-update approach
 * miniupnpd: now properly links to the OpenSSL/LibreSSL port
 * ipmitool: now properly links to the OpenSSL/LibreSSL port
-* core: extensive cleanups for PHP shebang usage, wiped numerous unused
-  scripts and unreachable web pages, removed PBI remnants, removed 'tmp_path'
-  softcoding to improve readability and git-grep(1) experience, removed stale
-  debug statement that were only marginally useful while bumping the
-  statements to default that indicate real errors
+* core: extensive cleanups for PHP shebang usage, wiped numerous unused scripts and unreachable web pages, removed PBI remnants, removed 'tmp_path' softcoding to improve readability and git-grep(1) experience, removed stale debug statement that were only marginally useful while bumping the statements to default that indicate real errors
 * console: fixed halt script permissions and switched to synchronous mode
 * sysctl: added net.inet6.ip6.rfc6204w3 to improve the DHCPv6 experience
-* nat: remove target IP hardcoding in automatic rules (props to pfSense for
-  pointing that out to us)
+* nat: remove target IP hardcoding in automatic rules (props to pfSense for pointing that out to us)
 * rc: fixed missing package database when using the MFS option for /var
 * configd: added a standard rc.d script for easy daemon control
-* mvc: a lot of new code to support general infrastructure for upcoming
-  porting of features, e.g. proxy feature
+* mvc: a lot of new code to support general infrastructure for upcoming porting of features, e.g. proxy feature
 * help: adjusted links in the help menu to use HTTPS and improved targeting
 
 If you are new to OPNsense, the 15.1.7 images can be found here and are easily
@@ -959,41 +885,28 @@ likely be available tomorrow.
 
 Here are the full patch notes:
 
-* bsdinstaller: work towards embedded installations, e.g. Quick/Easy disk
-  selection
-* opnsense-update: added command line switches and a manual page for
-  usability's sake
+* bsdinstaller: work towards embedded installations, e.g. Quick/Easy disk selection
+* opnsense-update: added command line switches and a manual page for usability's sake
 * opnsense-update: will now remember that the base system is up to date
 * ports: updated to LibreSSL 2.1.4 (for our experimental LibreSSL flavour only)
-* directory layout: collapsed the /conf -> /cf/conf magic into a simple /conf
-  directory (needs a reboot to take effect)
+* directory layout: collapsed the /conf -> /cf/conf magic into a simple /conf directory (needs a reboot to take effect)
 * certificates: consistently lowered the default lifetime to 1 year
-* captive portal: fixed an issue that prevented traffic forwarding in some
-  cases
+* captive portal: fixed an issue that prevented traffic forwarding in some cases
 * nat: do not resolve aliases on display to stay consistent with rules page
-* console menu: rebuilt the firmware upgrade option 12 to work on top of our
-  new pkgng/opnsense-update system
-* crash reporter: can now be found under Diagnostics and was extended to show
-  all parsing errors.  The send button is currently disabled but feel free to
-  copy+paste the messages to push them through the usual channels.
-* rc: fixed numerous parse errors in files previously missed by the regression
-  test
-* rc: DHCP lease and RRD graph persistency after reboot, halt and config
-  import (reinstall)
+* console menu: rebuilt the firmware upgrade option 12 to work on top of our new pkgng/opnsense-update system
+* crash reporter: can now be found under Diagnostics and was extended to show all parsing errors.  The send button is currently disabled but feel free to copy+paste the messages to push them through the usual channels.
+* rc: fixed numerous parse errors in files previously missed by the regression test
+* rc: DHCP lease and RRD graph persistency after reboot, halt and config import (reinstall)
 * upnp: the shortcuts menu has been reintroduced
 * login: redirect after login now brings up the previously selected page
-* dynamic dns: fixed validation for custom entries that do not require a
-  hostname
+* dynamic dns: fixed validation for custom entries that do not require a hostname
 * dynamic dns: added support for Duck DNS
 * firewall log widget: fixed multiple bugs and updated style
 * pptp: brought back missing PHP includes
-* core: removed thousands of lines of unused code, style consolidation and
-  path unwinding
+* core: removed thousands of lines of unused code, style consolidation and path unwinding
 * core: multiple image to glyphicon conversions
-* development: moved pkgng config files out of the src/ directory to avoid
-  tainting the system on core.git live mount
-* development: steady progress on the first MVC framework implementation of
-  the upcoming proxy support
+* development: moved pkgng config files out of the src/ directory to avoid tainting the system on core.git live mount
+* development: steady progress on the first MVC framework implementation of the upcoming proxy support
 
 If you are new to the show, you want to grab the latest image from Sourceforge
 and apply this update afterwards using the firmware update in the GUI:
@@ -1043,7 +956,7 @@ drop to a root shell and issue the following commands.
 
 .. code-block::
 
-    # opnsense-update && reboot
+    # # opnsense-update && reboot
 
 At this point, using any of the two methods, you should be on OPNsense
 15.1.7-78bdb9aef FreeBSD 10.1-RELEASE-p6.
@@ -1051,9 +964,9 @@ At this point, using any of the two methods, you should be on OPNsense
 This is the official change log:
 
 * Fix integer overflow in IGMP protocol `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:04.igmp.asc>`__ 
-* Fix vt(4) crash with improper ioctl parameters `[2] <https://security.freebsd.org/advisories/FreeBSD-EN-15:01.vt.asc>`__ 
-* Updated base system OpenSSL to 1.0.1l `[3] <https://security.freebsd.org/advisories/FreeBSD-EN-15:02.openssl.asc>`__ 
-* Fix freebsd-update libraries update ordering issue `[4] <https://security.freebsd.org/advisories/FreeBSD-EN-15:03.freebsd-update.asc>`__ 
+* Fix vt(4) crash with improper ioctl parameters `[2] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:01.vt.asc>`__ 
+* Updated base system OpenSSL to 1.0.1l `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:02.openssl.asc>`__ 
+* Fix freebsd-update libraries update ordering issue `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:03.freebsd-update.asc>`__ 
 * Disabled OpenSSH's High Performance SSH/SCP and None-Cipher extensions to follow up on several security-related discussions.
 * Switched from a heavy Bind installation to a lightweight one to reduce attack surface.
 * Removed and replaced the legacy :code:`check_reload_status` daemon with a Python-based rewrite.
@@ -1105,13 +1018,9 @@ https://sourceforge.net/projects/opnsense/files/15.1.6.1/
 
 Explaining the naming scheme:
 
-* cdrom: ISO installer image with live system capabilities running in
-  VGA-only mode
-* vga: USB installer image with live system capabilities running in
-  VGA-only mode
-* serial: USB installer image with live system capabilities running in
-  serial console (115200) mode with secondary VGA support (no kernel
-  messages there though)
+* cdrom: ISO installer image with live system capabilities running in VGA-only mode
+* vga: USB installer image with live system capabilities running in VGA-only mode
+* serial: USB installer image with live system capabilities running in serial console (115200) mode with secondary VGA support (no kernel messages there though)
 
 Explaining (experimental) base upgrades:
 
@@ -1124,8 +1033,7 @@ To upgrade the base system, as root type
 
 .. code-block::
 
-    # opnsense-update
-    # reboot
+    # # opnsense-update && reboot
 
 The immediate reboot is mandatory, but you are in charge.  Again, this is
 still experimental, so please report any bugs or strange behaviour running
@@ -1140,8 +1048,7 @@ Change Log 15.1.6:
 * Two additional kernel security fixes (thanks to Oliver Pinter/HardenedBSD)
 * New naming scheme for installer images: cdrom, serial, vga
 * New opnsense-update tool for base system upgrades
-* Notable port updates: pkg 1.4.12, bind 9.9.6-P2 `[2] <https://kb.isc.org/article/AA-01235>`__  (CVE-2015-1349),
-  php 5.6.6 `[3] <https://php.net/ChangeLog-5.php#5.6.6>`__  (CVE-2015-0273), syslogd 10.1
+* Notable port updates: pkg 1.4.12, bind 9.9.6-P2 `[2] <https://kb.isc.org/article/AA-01235>`__  (CVE-2015-1349), php 5.6.6 `[3] <https://www.php.net/ChangeLog-5.php#5.6.6>`__  (CVE-2015-0273), syslogd 10.1
 * Fixed wizard default settings and reload/redirect
 * DNS forwarder now properly reloads on host overrides updates
 * IPFW ruleset reload fix after start/restart of captive portal
@@ -1154,8 +1061,7 @@ Change Log 15.1.6:
 
 Change Log 15.1.6.1:
 
-* Don't clobber user and group settings when running opnsense-update.
-  Caused e.g. dhcpd to refuse operation.
+* Don't clobber user and group settings when running opnsense-update.  Caused e.g. dhcpd to refuse operation.
 * Fix a regression that would prevent e.g. sshd from starting.
 * Install opnsense-update by default.
 
@@ -1181,14 +1087,11 @@ request for comments).  Here is the full list of changes:
 * Removed a spurious user-agent check to restore mobile device support.
 * Fixed pop-up window handling for LDAP configuration.
 * Fixed several minor GUI bugs in firewall rules and system pages.
-* Grab the correct OpenSSL from the system for encrypting/decrypting the
-  configuration files.
+* Grab the correct OpenSSL from the system for encrypting/decrypting the configuration files.
 * Message of the day now shows the correct system version.
 * Fixed sorting and button for deleting selected rules in NAT pages.
-* Notable ports updates: pkg 1.4.10, gettext 0.19.4, libzmq 4.0.5,
-  ntp 4.2.8p1, ca_root_nss 3.17.4, libsodium 1.0.2
-* Groundwork on the MVC-based GUI replacement including examples.  This does
-  not affect the current GUI.
+* Notable ports updates: pkg 1.4.10, gettext 0.19.4, libzmq 4.0.5, ntp 4.2.8p1, ca_root_nss 3.17.4, libsodium 1.0.2
+* Groundwork on the MVC-based GUI replacement including examples.  This does not affect the current GUI.
 
 All upgrade methods are viable.  The images can be found here:
 
@@ -1236,7 +1139,7 @@ tasks in the future.
 --------------------------------------------------------------------------
 
 
-This week we took PHP's stable update `[1] <https://php.net/ChangeLog-5.php#5.6.5>`__  as a subtle hint to release another
+This week we took PHP's stable update `[1] <https://www.php.net/ChangeLog-5.php#5.6.5>`__  as a subtle hint to release another
 stable cut.  Here are the most prominent changes:
 
 * notable package upgrades: php 5.6.5 and friends, pkg 1.4.7
@@ -1301,12 +1204,9 @@ patch release.  Here is the full changelog:
 
 * i386 images added
 * added architecture awareness to the build system
-* ports updated: pkg 1.4.4, strongswan 5.2.2, libssh2 1.4.3_5,2,
-  libffi 3.2.1, libevent2 2.0.22, freetype2 2.5.5, curl 7.40.0,
-  bind99 9.9.6P1_3
+* ports updated: pkg 1.4.4, strongswan 5.2.2, libssh2 1.4.3_5,2, libffi 3.2.1, libevent2 2.0.22, freetype2 2.5.5, curl 7.40.0, bind99 9.9.6P1_3
 * Added template engine for new features
-* Several bug fixes and enhancements `[2] <https://github.com/opnsense/core/issues>`__  (#6, #7, #8, #9, #17, #19, #20, #21,
-  #22, #23)
+* Several bug fixes and enhancements `[2] <https://github.com/opnsense/core/issues>`__  (#6, #7, #8, #9, #17, #19, #20, #21, #22, #23)
 
 Download `[1] <http://opnsense.org/download/>`__  and use it now!
 

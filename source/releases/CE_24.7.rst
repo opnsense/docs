@@ -216,7 +216,7 @@ Here are the full patch notes:
 * ports: nss 3.107 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_107.html>`__ 
 * ports: openldap 2.6.9 `[6] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: php 8.2.26 `[7] <https://www.php.net/ChangeLog-8.php#8.2.26>`__ 
-* ports: sudo 1.9.16p2 `[8] <https://www.sudo.ws/stable.html#1.9.16p2>`__ 
+* ports: sudo 1.9.16p2 `[8] <https://www.sudo.ws/releases/stable/#1.9.16p2>`__ 
 
 A hotfix release was issued as 24.7.10_1:
 
@@ -523,7 +523,7 @@ Here are the full patch notes:
 * ports: libxml 2.11.9 `[6] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nss 3.104 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_104.html>`__ 
 * ports: python 3.11.10 `[8] <https://docs.python.org/release/3.11.10/whatsnew/changelog.html>`__ 
-* ports: sudo 1.9.16 `[9] <https://www.sudo.ws/stable.html#1.9.16>`__ 
+* ports: sudo 1.9.16 `[9] <https://www.sudo.ws/releases/stable/#1.9.16>`__ 
 
 A hotfix release was issued as 24.7.5_3:
 

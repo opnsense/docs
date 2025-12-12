@@ -307,7 +307,7 @@ Here are the full patch notes:
 * plugins: numerous PHP 7.2 warning fixes
 * plugins: os-freeradius 1.9.2 fixes LDAP group filter and EAP certificates write (contributed by Alexander Harm)
 * plugins: os-nginx 1.11 `[1] <https://github.com/opnsense/plugins/blob/master/www/nginx/pkg-descr>`__ 
-* ports: php 7.2.17 `[2] <https://php.net/ChangeLog-7.php#7.2.17>`__ 
+* ports: php 7.2.17 `[2] <https://www.php.net/ChangeLog-7.php#7.2.17>`__ 
 * ports: py-certifi 2019.3.9 `[3] <https://pypi.org/project/certifi/2019.3.9/>`__ 
 
 
@@ -428,7 +428,7 @@ Here are the full patch notes:
 * src: revert upstream commit "protect the kernel text, data, and BSS" to fix certain UEFI boots
 * ports: monit 5.25.3 `[2] <https://mmonit.com/monit/changes/>`__ 
 * ports: ntp 4.2.8p13 `[3] <http://support.ntp.org/bin/view/Main/NtpBug3565>`__ 
-* ports: php 7.1.27 `[4] <https://php.net/ChangeLog-7.php#7.1.27>`__ 
+* ports: php 7.1.27 `[4] <https://www.php.net/ChangeLog-7.php#7.1.27>`__ 
 * ports: suricata 4.1.3 `[5] <https://suricata-ids.org/2019/03/07/suricata-4-1-3-released/>`__ 
 
 The full list of changes of the OPNsense 19.1 series can be reviewed using
@@ -923,7 +923,7 @@ Here are the full changes against version 18.7.10:
 * plugins: os-theme-cicada 1.13
 * plugins: os-theme-tukan 1.12
 * plugins: os-wol 2.1 fixes widget link (contributed by Fabian Franz)
-* src: HardenedBSD 11.2-RELEASE-p7 `[5] <https://hardenedbsd.org/content/easy-feature-comparison>`__  `[6] <https://www.freebsd.org/releases/11.2R/relnotes.html>`__  `[7] <https://www.freebsd.org/releases/11.2R/errata.html>`__ 
+* src: HardenedBSD 11.2-RELEASE-p7 `[5] <https://hardenedbsd.org/content/easy-feature-comparison>`__  `[6] <https://www.freebsd.org/releases/11.2R/relnotes/>`__ 
 * src: fix missing transmit visibility for BPF-based listeners in native netmap mode
 * src: limit the maximum number of fragments per packet in pf
 * src: replace rwlock on PF_RULES_LOCK with rmlock in pf
@@ -931,20 +931,20 @@ Here are the full changes against version 18.7.10:
 * src: fix state sync during initial bulk update in pfsync
 * src: unbreak dhclient(8) option 26 processing
 * src: import APU 1-3 LED kernel module
-* ports: krb5 1.17 `[8] <https://web.mit.edu/kerberos/krb5-1.17/>`__ 
-* ports: php 7.1.26 `[9] <https://php.net/ChangeLog-7.php#7.1.26>`__ 
-* ports: sudo 1.8.27 `[10] <https://www.sudo.ws/stable.html#1.8.27>`__ 
-* ports: perl 5.28.1 `[11] <https://perldoc.perl.org/5.28.1/perldelta>`__ 
+* ports: krb5 1.17 `[7] <https://web.mit.edu/kerberos/krb5-1.17/>`__ 
+* ports: php 7.1.26 `[8] <https://www.php.net/ChangeLog-7.php#7.1.26>`__ 
+* ports: sudo 1.8.27 `[9] <https://www.sudo.ws/releases/legacy/#1.8.27>`__ 
+* ports: perl 5.28.1 `[10] <https://perldoc.perl.org/5.28.1/perldelta>`__ 
 * ports: suricata netmap forward-compatibility patch (contributed by Sunny Valley Networks)
 
 Known issues and limitations:
 
 * Gateway health graphs may need a manual reset due to the Apinger to Dpinger migration.
 * Intrusion detection GeoIP rules are automatically deactivated and need to be manually migrated to firewall alias GeoIP.
-* Monit general settings do not save.  A patch exists `[12] <https://github.com/opnsense/core/commit/a2899594>`__  to remedy this problem: opnsense-patch a2899594
+* Monit general settings do not save.  A patch exists `[12] <https://docs.opnsense.org/manual/dynamic_routing.html>`__  to remedy this problem: opnsense-patch a2899594
 * Issue with IDS migration code creating a spurious crash report.  Patch already done for the final 19.1.
 * Quagga plugin has been superseded by FRR plugin.  A binary quagga package has been conserved for the time being.
-* Please read the FRR documentation with regard to the required system tunables `[13] <https://docs.opnsense.org/manual/dynamic_routing.html>`__ .
+* Please read the FRR documentation with regard to the required system tunables[13].
 * SNMP plugin has been superseded by Net-SNMP plugin.
 * ZFS guided installation pending.
 

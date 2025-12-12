@@ -505,7 +505,7 @@ Here are the full patch notes:
 * ports: sqlite 3.41.0 `[28] <https://sqlite.org/releaselog/3_41_0.html>`__ 
 * ports: squid 5.8 `[29] <http://www.squid-cache.org/Versions/v5/squid-5.8-RELEASENOTES.html>`__ 
 * ports: strongswan 5.9.10 `[30] <https://github.com/strongswan/strongswan/releases/tag/5.9.10>`__ 
-* ports: sudo 1.9.13p3 `[31] <https://www.sudo.ws/stable.html#1.9.13p3>`__ 
+* ports: sudo 1.9.13p3 `[31] <https://www.sudo.ws/releases/stable/#1.9.13p3>`__ 
 
 Migration notes, known issues and limitations:
 

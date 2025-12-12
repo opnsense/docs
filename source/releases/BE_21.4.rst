@@ -103,7 +103,7 @@ Here are the full patch notes:
 * ports: pcre2 10.37 `[14] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.37>`__ 
 * ports: phalcon 4.1.2 `[15] <https://github.com/phalcon/cphalcon/releases/tag/v4.1.2>`__ 
 * ports: php 7.4.20 `[16] <https://www.php.net/ChangeLog-7.php#7.4.20>`__ 
-* ports: sudo 1.9.7p1 `[17] <https://www.sudo.ws/stable.html#1.9.7p1>`__ 
+* ports: sudo 1.9.7p1 `[17] <https://www.sudo.ws/releases/stable/#1.9.7p1>`__ 
 * ports: suricata 5.0.7 `[18] <https://redmine.openinfosecfoundation.org/versions/166>`__ 
 
 A hotfix release was issued as 21.4.3_8:
@@ -196,8 +196,8 @@ Here are the full patch notes:
 * src: SMAP bypass `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:11.smap.asc>`__ 
 * src: missing message validation in libradius `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:12.libradius.asc>`__  `[12] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:17.libradius.asc>`__ 
 * src: pms data corruption `[13] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:14.pms.asc>`__ 
-* src: libcasper: fix descriptors numbers `[14] <https://www.freebsd.org/security/advisories/EN-21:19.libcasper.asc>`__ 
-* src: linux: prevent integer overflow in futex_requeue `[15] <https://www.freebsd.org/security/advisories/EN-21:22.linux_futex.asc>`__ 
+* src: libcasper: fix descriptors numbers `[14] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:19.libcasper.asc>`__ 
+* src: linux: prevent integer overflow in futex_requeue `[15] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:22.linux_futex.asc>`__ 
 * ports: filterlog 0.4 adds label support to output if applicable
 * ports: libxml fix for CVE-2021-3541
 * ports: nss 3.65 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_65.html>`__ 
@@ -206,7 +206,7 @@ Here are the full patch notes:
 * ports: py-yaml 5.4.1
 * ports: sqlite 3.35.5 `[19] <https://sqlite.org/releaselog/3_35_5.html>`__ 
 * ports: squid 4.15 `[20] <http://www.squid-cache.org/Versions/v4/squid-4.15-RELEASENOTES.html>`__ 
-* ports: sudo 1.9.7 `[21] <https://www.sudo.ws/stable.html#1.9.7>`__ 
+* ports: sudo 1.9.7 `[21] <https://www.sudo.ws/releases/stable/#1.9.7>`__ 
 * ports: syslog-ng 3.32.1 `[22] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.32.1>`__ 
 
 
@@ -516,7 +516,7 @@ Here are the full patch notes:
 * ports: igmpproxy 0.3 `[28] <https://github.com/pali/igmpproxy/releases/tag/0.3>`__ 
 * ports: krb5 1.19.1 `[29] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
 * ports: libressl 3.2.5 `[30] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.5-relnotes.txt>`__ 
-* ports: lighttpd 1.4.59 `[31] <http://www.lighttpd.net/2021/2/2/1.4.59/>`__ 
+* ports: lighttpd 1.4.59 `[31] <https://www.lighttpd.net/2021/2/2/1.4.59/>`__ 
 * ports: monit 5.27.2 `[32] <https://mmonit.com/monit/changes/>`__ 
 * ports: openldap 2.4.58 `[33] <https://www.openldap.org/software/release/changes.html>`__ 
 * ports: openssh fix for double free in ssh-agent `[34] <https://ftp.openbsd.org/pub/OpenBSD/patches/6.8/common/015_sshagent.patch.sig>`__ 
@@ -528,7 +528,7 @@ Here are the full patch notes:
 * ports: python 3.7.10 `[39] <https://docs.python.org/release/3.7.10/whatsnew/changelog.html>`__ 
 * ports: sqlite 3.34.1 `[40] <https://sqlite.org/releaselog/3_34_1.html>`__ 
 * ports: squid 4.14 `[41] <http://www.squid-cache.org/Versions/v4/squid-4.14-RELEASENOTES.html>`__ 
-* ports: sudo 1.9.6p1 `[42] <https://www.sudo.ws/stable.html#1.9.6p1>`__ 
+* ports: sudo 1.9.6p1 `[42] <https://www.sudo.ws/releases/stable/#1.9.6p1>`__ 
 * ports: suricata 5.0.6 `[43] <https://suricata-ids.org/2021/03/02/suricata-6-0-2-and-5-0-6-released/>`__ 
 * ports: syslog-ng 3.31.2 `[44] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.31.2>`__ 
 * ports: unbound 1.13.1 `[45] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-13-1>`__ 

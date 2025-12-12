@@ -91,12 +91,12 @@ Here are the full patch notes:
 * ports: php 7.3.26 `[6] <https://www.php.net/ChangeLog-7.php#7.3.26>`__ 
 * ports: pkg fix for shell keyword by opening root file descriptor
 * ports: radvd 2.19 `[7] <https://radvd.litech.org/>`__ 
-* ports: sudo 1.9.5p1 `[8] <https://www.sudo.ws/stable.html#1.9.5p1>`__ 
+* ports: sudo 1.9.5p1 `[8] <https://www.sudo.ws/releases/stable/#1.9.5p1>`__ 
 
 A hotfix release was issued as 20.7.8_4:
 
 * firmware: enable upgrade path to 21.1
-* ports: sudo 1.9.5p2 `[9] <https://www.sudo.ws/stable.html#1.9.5p2>`__ 
+* ports: sudo 1.9.5p2 `[9] <https://www.sudo.ws/releases/stable/#1.9.5p2>`__ 
 
 
 
@@ -125,7 +125,7 @@ Here are the full patch notes:
 * ports: nss 3.60 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_60.html>`__ 
 * ports: openssl 1.1.1i `[9] <https://www.openssl.org/news/secadv/20201208.txt>`__ 
 * ports: pcre2 10.36 `[10] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.36>`__ 
-* ports: sudo 1.9.4 `[11] <https://www.sudo.ws/stable.html#1.9.4>`__ 
+* ports: sudo 1.9.4 `[11] <https://www.sudo.ws/releases/stable/#1.9.4>`__ 
 * ports: sqlite 3.34.0 `[12] <https://sqlite.org/releaselog/3_34_0.html>`__ 
 * ports: unbound 1.13.0 `[13] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-13-0>`__ 
 
@@ -277,7 +277,7 @@ Here are the full patch notes:
 * ports: php 7.3.23 `[6] <https://www.php.net/ChangeLog-7.php#7.3.23>`__ 
 * ports: pkg 1.15.10
 * ports: radvd patch for dynamic interface shifting index
-* ports: sudo 1.9.3p1 `[7] <https://www.sudo.ws/stable.html#1.9.3p1>`__ 
+* ports: sudo 1.9.3p1 `[7] <https://www.sudo.ws/releases/stable/#1.9.3p1>`__ 
 * ports: suricata 5.0.4 `[8] <https://suricata-ids.org/2020/10/08/suricata-4-1-9-and-5-0-4-released/>`__ 
 * ports: syslog-ng 3.29.1 `[9] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.29.1>`__ 
 * ports: unbound 1.12.0 `[10] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-12-0>`__ 
@@ -475,7 +475,7 @@ Here are the full patch notes against version 20.7-RC1:
 * ports: dnsmasq 2.82 `[4] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: monit 5.27.0 `[5] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.55 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_55.html>`__ 
-* ports: sudo 1.9.2 `[7] <https://www.sudo.ws/stable.html#1.9.2>`__ 
+* ports: sudo 1.9.2 `[7] <https://www.sudo.ws/releases/stable/#1.9.2>`__ 
 
 Known issues and limitations:
 

@@ -50,8 +50,7 @@ Here are the full patch notes:
 
 * firmware: added major GUI upgrade code for upcoming 17.7 release
 * firmware: added major GUI cron upgrade parameter "ALLOW_RISKY_MAJOR_UPGRADE"
-* interfaces: dhcp6c can now properly reload without leaking its
-  listening socket to e.g. OpenVPN
+* interfaces: dhcp6c can now properly reload without leaking its listening socket to e.g. OpenVPN
 * rc: allow to optionally prevent launch of configd via rc.conf variable
 * openvpn: normalise line endings of used certificates
 * openvpn: fix config handling in GUI pages for PHP 7.1
@@ -85,7 +84,7 @@ Here are the full patch notes:
 * layout: update to Font-Awesome 4.7
 * mvc: add setMultiple() to OptionField
 * ports: phalcon 3.2.1 `[1] <https://github.com/phalcon/cphalcon/releases/tag/v3.2.1>`__ 
-* ports: php 7.0.21 `[2] <https://php.net/ChangeLog-7.php#7.0.21>`__ 
+* ports: php 7.0.21 `[2] <https://www.php.net/ChangeLog-7.php#7.0.21>`__ 
 * ports: php70-openssl CRL hotfix
 * ports: bind 9.11.1-P3 `[3] <https://kb.isc.org/article/AA-01457/0/BIND-9.11.0-P3-Release-Notes.html>`__ 
 * ports: unbound 1.6.4 `[4] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
@@ -137,10 +136,10 @@ Here are the full patch notes:
 * src: HardenedBSD Stack Clash mitigations `[1] <https://hardenedbsd.org/article/shawn-webb/2017-06-25/stack-clash-mitigations>`__ 
 * ports: sqlite 3.19.3 `[2] <https://sqlite.org/releaselog/3_19_3.html>`__ 
 * ports: openvpn 2.4.3 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
-* ports: sudo 1.8.20p2 `[4] <https://www.sudo.ws/legacy.html#1.8.20p2>`__ 
+* ports: sudo 1.8.20p2 `[4] <https://www.sudo.ws/releases/legacy/#1.8.20p2>`__ 
 * ports: dnsmasq 2.77 `[5] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: openldap 2.4.45 `[6] <https://www.openldap.org/software/release/changes.html>`__ 
-* ports: php 7.0.20 `[7] <https://php.net/ChangeLog-7.php#7.0.20>`__ 
+* ports: php 7.0.20 `[7] <https://www.php.net/ChangeLog-7.php#7.0.20>`__ 
 * ports: suricata 3.2.2 `[8] <https://suricata-ids.org/2017/06/07/suricata-3-2-2-available/>`__ 
 * ports: squid 3.5.26 `[9] <http://lists.squid-cache.org/pipermail/squid-announce/2017-June/000076.html>`__ 
 * ports: ca_root_nss 3.31
@@ -187,19 +186,16 @@ Here are the full patch notes:
 * intrusion detection: add advanced feature default-packet-size
 * firmware: new mirror for Dept. of CSE, Yuan Ze University, Taiwan `[1] <https://www.cse.yzu.edu.tw>`__ 
 * rc: advertise live mode just above the login prompt
-* rc: improve the set IP menu option with far gateway selection,
-  DHCP, DNS, track6, etc.
+* rc: improve the set IP menu option with far gateway selection, DHCP, DNS, track6, etc.
 * mvc: send forms as type-safe JSON data
 * mvc: correct multi-value sort in template helper
 * mvc: fix validation issue when storing a value for the first time
 * lang: minor updates for Chinese (contributed by Tianmo)
 * lang: Japanese 100% completed (contributed by Chie and Takeshi Taguchi)
-* plugins: quagga 1.2 with initial BGP support (contributed by
-  Fabian Franz and Michael Muenz)
+* plugins: quagga 1.2 with initial BGP support (contributed by Fabian Franz and Michael Muenz)
 * plugins: zabbix-agent 1.0 (contributed by Frank Wall)
 * plugins: haproxy 1.15 (contributed by Fabian Franz and Frank Wall)
-* ports: enabled SafeStack for applicable amd64 packages, ported
-  over by HardenedBSD
+* ports: enabled SafeStack for applicable amd64 packages, ported over by HardenedBSD
 * ports: openssl 1.0.2l `[2] <https://www.openssl.org/news/cl102.txt>`__ 
 
 
@@ -250,9 +246,9 @@ Here are the full patch notes:
 * src: Xen migration enhancements `[1] <https://www.freebsd.org/security/advisories/FreeBSD-EN-17:05.xen.asc>`__ 
 * src: allow TOS value zero and add extended DSCP support
 * ports: openvpn 2.3.15 `[2] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23>`__ 
-* ports: php 7.0.19 `[3] <https://php.net/ChangeLog-7.php#7.0.19>`__ 
+* ports: php 7.0.19 `[3] <https://www.php.net/ChangeLog-7.php#7.0.19>`__ 
 * ports: squid 3.5.25 `[4] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5.25-RELEASENOTES.html>`__ 
-* ports: sudo 1.8.20 `[5] <https://www.sudo.ws/stable.html>`__ 
+* ports: sudo 1.8.20 `[5] <https://www.sudo.ws/releases/legacy/#1.8.20>`__ 
 
 
 
@@ -301,7 +297,7 @@ Here are the full patch notes:
 * plugins: relayd 1.1 adds session timeout configuration (contributed by Frank Brendel)
 * plugins: snmp 1.1 renames internal service reload endpoint
 * ports: ca_root_nss 3.30.2
-* ports: phalcon 3.1.2 `[1] <https://github.com/phalcon/cphalcon/releases>`__ 
+* ports: phalcon 3.1.2 `[1] <https://github.com/phalcon/cphalcon/releases/tag/v3.1.2>`__ 
 * ports: unbound 1.6.2 `[2] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 
 
@@ -332,8 +328,7 @@ Here are the full patch notes:
 * firewall: new "select all" feature in firewall rules listings
 * firewall: add priority setting to advanced rules (contributed by djGrrr)
 * firewall: cleanup of gateway handling
-* firewall: cleanup of rule generation and fix for missing rules for
-  group interface network (contributed by Ian Matyssik)
+* firewall: cleanup of rule generation and fix for missing rules for group interface network (contributed by Ian Matyssik)
 * firewall: improve alias validation messages
 * dhcp: add route features to router advertisements
 * dhcp: add missing server pool loop counter
@@ -356,18 +351,17 @@ Here are the full patch notes:
 * plugins: acme-client 1.7 (contributed by Frank Wall)
 * plugins: haproxy 1.14 (contributed by Frank Wall)
 * plugins: monit 1.0 (contributed by Frank Brendel)
-* plugins: quagga 1.0.0 with OSPF and RIP support (contributed
-  by Fabian Franz)
+* plugins: quagga 1.0.0 with OSPF and RIP support (contributed by Fabian Franz)
 * ports: pkg 1.10.1 `[1] <https://github.com/freebsd/freebsd-ports/commit/cf239d3ab>`__  `[2] <https://github.com/freebsd/freebsd-ports/commit/6e290017>`__ 
 * ports: sqlite 3.18.0 `[3] <https://sqlite.org/releaselog/3_18_0.html>`__ 
 * ports: curl 7.54 `[4] <https://curl.haxx.se/changes.html>`__ 
 * ports: openssh 7.5p1 `[5] <https://www.openssh.com/txt/release-7.5>`__ 
-* ports: hyperscan 4.4.1 `[6] <https://github.com/01org/hyperscan/releases/tag/v4.4.1>`__ 
+* ports: hyperscan 4.4.1 `[6] <https://github.com/intel/hyperscan/releases/tag/v4.4.1>`__ 
 * ports: dhcp6 20080615.2 `[7] <https://github.com/freebsd/freebsd-ports/commit/3a3ac4aa>`__ 
 * ports: ca_root_nss 3.30.1
 * ports: bind 9.11.1 `[8] <https://kb.isc.org/article/AA-01491/81/BIND-9.11.1-Release-Notes.html>`__ 
 * ports: strongswan 5.5.2 `[9] <https://wiki.strongswan.org/versions/64>`__ 
-* ports: php 7.0.18 `[10] <https://php.net/ChangeLog-7.php#7.0.18>`__ 
+* ports: php 7.0.18 `[10] <https://www.php.net/ChangeLog-7.php#7.0.18>`__ 
 
 
 
@@ -395,14 +389,13 @@ of the core package from the shell with the following command:
 
 .. code-block::
 
-    # opnsense-revert opnsense
+    # # opnsense-revert opnsense
 
 Here are the full patch notes:
 
 * system: early installer switched for simpler config importer
 * system: no longer set shell privileges on password reset
-* system: avoid misinterpreting obsoleted options use_mfs_tmp_size
-  and use_mfs_var_size
+* system: avoid misinterpreting obsoleted options use_mfs_tmp_size and use_mfs_var_size
 * system: do not prompt for password on user edit
 * system: modernise console/tty settings
 * interfaces: always wait for dhclient exit
@@ -420,15 +413,14 @@ Here are the full patch notes:
 * web proxy: harden SSL ciphers (contributed by Fabian Franz)
 * mvc: fix multiple scoping issues in base volt templates
 * lang: updates for Chinese, Czech, French, German, Portuguese
-* plugins: Let's Encrypt 1.4 `[1] <https://github.com/opnsense/plugins/pull/91>`__  `[2] <https://github.com/opnsense/plugins/pull/103>`__  (contributed by Felix Kling
-  and Frank Wall)
+* plugins: Let's Encrypt 1.4 `[1] <https://github.com/opnsense/plugins/pull/91>`__  `[2] <https://github.com/opnsense/plugins/pull/103>`__  (contributed by Felix Kling and Frank Wall)
 * plugins: HAproxy 1.13 `[3] <https://github.com/opnsense/plugins/pull/94>`__  (contributed by Frank Wall)
 * src: tzdata version 2017b `[4] <http://mm.icann.org/pipermail/tz-announce/2017-March/000046.html>`__ 
 * src: HardenedBSD SafeStack for base applications `[5] <https://hardenedbsd.org/article/shawn-webb/2016-11-27/introducing-safestack>`__ 
 * src: fix IPsec skip parameter handling in IPv4
 * src: discard 3072 bytes in arc4_stir() (contributed by Codarren Velvindron)
 * ports: ca_root_nss 3.30
-* ports: php 7.0.17 `[6] <https://php.net/ChangeLog-7.php#7.0.17>`__ 
+* ports: php 7.0.17 `[6] <https://www.php.net/ChangeLog-7.php#7.0.17>`__ 
 * ports: libarchive 3.3.1
 * ports: ntp 4.2.8p10 `[7] <https://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ 
 
@@ -539,7 +531,7 @@ Here is the full list of changes:
 * src: fix multiple vulnerabilities of OpenSSL `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-17:02.openssl.asc>`__ 
 * src: properly build i386 with netmap(4) device to fix IPS mode
 * src: tzdata updated to version 2017a `[9] <http://mm.icann.org/pipermail/tz-announce/2017-February/000045.html>`__ 
-* ports: php 7.0.16 `[10] <https://php.net/ChangeLog-7.php#7.0.16>`__ 
+* ports: php 7.0.16 `[10] <https://www.php.net/ChangeLog-7.php#7.0.16>`__ 
 * ports: phalcon 3.0.4 `[11] <https://github.com/phalcon/cphalcon/releases/tag/v3.0.4>`__ 
 * ports: ca_root_nss 3.29.3
 * ports: sqlite 3.17.0 `[12] <https://sqlite.org/releaselog/3_17_0.html>`__ 
@@ -579,25 +571,19 @@ Here are the full patch notes:
 * firmware: plugin detection via configd
 * wizard: rework modelling and UX
 * interfaces: fix wlan probe to not yield an empty interface
-* interfaces: fix bug in subnet matching on tun interfaces
-  on FreeBSD 11.0 (contributed by djGrrr)
-* interfaces: add VLAN Priority (PCP) setting to VLAN config
-  (contributed by djGrrr)
-* firewall: shared forwarding is off by default, added advanced
-  config option
+* interfaces: fix bug in subnet matching on tun interfaces on FreeBSD 11.0 (contributed by djGrrr)
+* interfaces: add VLAN Priority (PCP) setting to VLAN config (contributed by djGrrr)
+* firewall: shared forwarding is off by default, added advanced config option
 * captive portal: redirect using HTTP code 302
 * captive portal: add group enforcement
 * captive portal: fix transparent web proxy mode on FreeBSD 11.0
-* dhcp: do not link to WOL page if plugin is not installed
-  (contributed by Frank Wall)
+* dhcp: do not link to WOL page if plugin is not installed (contributed by Frank Wall)
 * ipsec: add mobike switch, change leftsendcert to always, etc.
 * unbound: provide link local interface selection
 * lang: Chinese to 65% completed (contributed by Tianmo)
 * lang: Czech to 86% completed (contributed by Pavel Borecki)
-* lang: Portuguese (Brazil) to 100% completed (contributed
-  by Thiago Basilio)
-* lang: Portuguese (Portugal) to 69% completed (contributed by
-  Carlos Meireles)
+* lang: Portuguese (Brazil) to 100% completed (contributed by Thiago Basilio)
+* lang: Portuguese (Portugal) to 69% completed (contributed by Carlos Meireles)
 * lang: minor updates to French and German
 * src: net.pf.share_forward now off by default
 * src: HardenedBSD procfs hardening
@@ -613,7 +599,7 @@ Here are the full patch notes:
 * ports: unbound 1.6.0 `[2] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
 * ports: tinc 1.0.31 `[3] <https://www.tinc-vpn.org/news/>`__ 
 * ports: suricata 3.2.1 `[4] <https://suricata-ids.org/2017/02/15/suricata-3-2-1-available/>`__ 
-* ports: hyperscan 4.4.0 `[5] <https://github.com/01org/hyperscan/releases/tag/v4.4.0>`__ 
+* ports: hyperscan 4.4.0 `[5] <https://github.com/intel/hyperscan/releases/tag/v4.4.0>`__ 
 * ports: ca_root_nss 3.29
 
 
@@ -637,23 +623,18 @@ the following command to use the old behaviour and report back to us:
 
 Here are the full patch notes:
 
-* system: LDAP picker CSRF error solved by introducing session-based
-  security tokens
+* system: LDAP picker CSRF error solved by introducing session-based security tokens
 * system: fixed CRL generation inside PHP OpenSSL module
 * system: fix a typo with Portuguese (Portugal) in language selector
 * system: do not interpret passed values in wizard
 * system: fix forum link in message of the day
 * firewall: direction "any" was not respected in floating rules
-* firewall: fix double encoding of NO NAT for NAT addresses (contributed
-  by djGrrr)
-* firewall: improve validation between IPv4 and IPv6 to prevent faulty
-  rule generation
-* firmware: opnsense-update utility now unlocks packages before performing
-  major upgrades
+* firewall: fix double encoding of NO NAT for NAT addresses (contributed by djGrrr)
+* firewall: improve validation between IPv4 and IPv6 to prevent faulty rule generation
+* firmware: opnsense-update utility now unlocks packages before performing major upgrades
 * firmware: opnsense-revert utility now retains the automatic flag
 * firmware: revoked the 16.7 update fingerprints
-* dhcp: change relay text to make it clear multiple servers are
-  supported (contributed by GurliGebis)
+* dhcp: change relay text to make it clear multiple servers are supported (contributed by GurliGebis)
 * ipsec: add EAP-RADIUS support (contributed by GurliGebis)
 * ipsec: set filtertunnel sysctl values to fix TCP teardown
 * ipsec: fix hidden interface rules tab
@@ -661,11 +642,9 @@ Here are the full patch notes:
 * openvpn: fixed CRL generation inside PHP OpenSSL module
 * openvpn: do not escape advanced options on export
 * openvpn: fix hidden interface rules tab
-* mvc: multiple tab usage CSRF errors solved by introducing session-based
-  security tokens
+* mvc: multiple tab usage CSRF errors solved by introducing session-based security tokens
 * mvc: fix HTTP status codes on CSRF errors
-* mvc: soft-fail on missing classes in ModelRelationField (contributed
-  by Frank Wall)
+* mvc: soft-fail on missing classes in ModelRelationField (contributed by Frank Wall)
 * plugins: os-acme-client 1.1 `[1] <https://github.com/opnsense/plugins/pull/71>`__  (contributed by Frank Wall)
 * plugins: os-haproxy 1.12 `[2] <https://github.com/opnsense/plugins/pull/72>`__  (contributed by Frank Wall)
 * src: pf(4) shared forwarding fix during NAT
@@ -677,6 +656,7 @@ Here are the full patch notes:
 * ports: libressl 2.4.5 `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.4.5-relnotes.txt>`__ 
 * ports: libevent 2.1.8 `[7] <https://raw.githubusercontent.com/libevent/libevent/release-2.1.8-stable/ChangeLog>`__ 
 * ports: squid 3.5.24 `[8] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5.24-RELEASENOTES.html>`__ 
+
 
 
 --------------------------------------------------------------------------
@@ -716,8 +696,7 @@ https://opnsense.org/download/ (full mirror list)
 Here is the list of major features that have been worked on since 16.7 was
 released 6 months ago:
 
-* cooperative firewall forwarding to allow traffic shaper/captive portal
-  with multi-WAN
+* cooperative firewall forwarding to allow traffic shaper/captive portal with multi-WAN
 * install media now boots up with SSH for headless remote installation
 * HardenedBSD ASLR and PIE compilation for most binaries
 * HardenedBSD SEGVGUARD to prevent ASLR brute force attacks
@@ -745,51 +724,27 @@ Minor changes made since 16.7.14/17.1.r1:
 
 * system: always restore native /var layout on boot
 * system: make vt/sc configurable
-* web proxy: improve validation for SSL bump URL input
-  (contributed by Fabian Franz)
-* web proxy: add plugin-capable pre/post authentication directories
-  (contributed by Evgeny Bevz)
-* mvc: use empty string instead of "##Unlinked" in missing elements
-  (contributed by Frank Wall)
+* web proxy: improve validation for SSL bump URL input (contributed by Fabian Franz)
+* web proxy: add plugin-capable pre/post authentication directories (contributed by Evgeny Bevz)
+* mvc: use empty string instead of "##Unlinked" in missing elements (contributed by Frank Wall)
 * www: replace CSRF implementation of static PHP pages
 * src: convert result of hash_packet6() into host byte order
 * src: correctly initialise subrulenr in pflog
 * ports: openssl 1.0.2k `[2] <https://www.openssl.org/news/secadv/20170126.txt>`__ 
-* ports: php 7.0.15 `[3] <https://php.net/ChangeLog-7.php#7.0.15>`__ 
+* ports: php 7.0.15 `[3] <https://www.php.net/ChangeLog-7.php#7.0.15>`__ 
 
 Additionally, these migration caveats should be heeded before upgrading:
 
-* The integrated authentication framework is now used as a system-wide
-  default including login(1), su(1) and sudo(8).  This means that e.g. when
-  2FA is enabled for the GUI it will be used for low-level password prompts
-  as well and plain passwords are disabled by default.  If this behaviour is
-  undesired, set the "Disable integrated authentication" option under System:
-  Settings: Administration.
-* Disabled Gateway entries are now always honoured instead of being set up
-  as a default gateway.
-* The console settings received a non-backwards compatible change.  If the
-  VGA console is not working, simply reconfigure it from System: Settings:
-  Administration as it was likely set to "Serial" due to a wrong GUI default.
-* FreeBSD 11.0 switched to the vt(4) console driver, but we are keeping sc(4)
-  as the default.  You can change this after installation by enabling the
-  virtual terminal driver under System: Settings: Administration.
-* EFI boots may not yield a console anymore, the setting for VGA is wrong
-  now and should be switched to "EFI" under System: Settings: Administration.
-* The access privileges for "Lobby: Login / Logout / Dashboard" and
-  "Diagnostics: Backup / Restore" have been remapped internally and
-  need to be reapplied when they have been assigned explicitly.
-* The inherited 6rd kernel patches are not included in standard FreeBSD 11.0.
-  The state of 6rd is possibly broken.  We ask for volunteers to pick up the
-  work if 6rd is still a requirement, as we do not have access to such setups.
-* Fundamental WiFi stack changes in FreeBSD 11.0 could still affect overall
-  operability.  Please let us know about these right away.
-* The following services moved to individual plugins and need to be reinstalled
-  in order to be used: SNMP, Load Balancer, Wake on LAN, Universal Plug and
-  Play, IGMP Proxy.  Their respective configurations will be preserved by the
-  system even if these plugins are not installed.
-* The Intel e1000 driver plugin has been removed due to an incompatibility
-  with FreeBSD 11.0.  All previously known bugs of the FreeBSD 11.0 e1000
-  driver have been fixed in OPNsense 17.1 and reported to FreeBSD.
+* The integrated authentication framework is now used as a system-wide default including login(1), su(1) and sudo(8).  This means that e.g. when 2FA is enabled for the GUI it will be used for low-level password prompts as well and plain passwords are disabled by default.  If this behaviour is undesired, set the "Disable integrated authentication" option under System: Settings: Administration.
+* Disabled Gateway entries are now always honoured instead of being set up as a default gateway.
+* The console settings received a non-backwards compatible change.  If the VGA console is not working, simply reconfigure it from System: Settings: Administration as it was likely set to "Serial" due to a wrong GUI default.
+* FreeBSD 11.0 switched to the vt(4) console driver, but we are keeping sc(4) as the default.  You can change this after installation by enabling the virtual terminal driver under System: Settings: Administration.
+* EFI boots may not yield a console anymore, the setting for VGA is wrong now and should be switched to "EFI" under System: Settings: Administration.
+* The access privileges for "Lobby: Login / Logout / Dashboard" and "Diagnostics: Backup / Restore" have been remapped internally and need to be reapplied when they have been assigned explicitly.
+* The inherited 6rd kernel patches are not included in standard FreeBSD 11.0.  The state of 6rd is possibly broken.  We ask for volunteers to pick up the work if 6rd is still a requirement, as we do not have access to such setups.
+* Fundamental WiFi stack changes in FreeBSD 11.0 could still affect overall operability.  Please let us know about these right away.
+* The following services moved to individual plugins and need to be reinstalled in order to be used: SNMP, Load Balancer, Wake on LAN, Universal Plug and Play, IGMP Proxy.  Their respective configurations will be preserved by the system even if these plugins are not installed.
+* The Intel e1000 driver plugin has been removed due to an incompatibility with FreeBSD 11.0.  All previously known bugs of the FreeBSD 11.0 e1000 driver have been fixed in OPNsense 17.1 and reported to FreeBSD.
 
 We would love to hear your feedback!  As we want OPNsense the best it can
 be for you, please do not hesitate to contact us through any of the known
@@ -878,8 +833,7 @@ Here is the full list of changes since 17.1-BETA:
 * web proxy: allow to disable caching by zeroing cache_mem
 * plugins: the os-intel-em driver has been removed
 * plugins: configuration additions for os-tinc
-* plugins: exported several base features to plugins (os-snmp,
-  os-igmp-proxy, os-wol, os-upnp, os-relayd)
+* plugins: exported several base features to plugins (os-snmp, os-igmp-proxy, os-wol, os-upnp, os-relayd)
 * lang: added Portuguese/Portugal (contributed by Carlos Meireles)
 * lang: added Portuguese/Brazil (contributed by Thiago Basilio)
 * src: wireless firmware now only available via kernel modules
@@ -895,19 +849,12 @@ Here is the full list of changes since 17.1-BETA:
 
 Known issues in this version:
 
-* The inherited 6rd kernel patches are not included in standard
-  FreeBSD 11.0.  The impact on 6rd setups is currently unknown.
-* Fundamental WiFi stack changes in FreeBDS 11.0 could still
-  affect operability.
+* The inherited 6rd kernel patches are not included in standard FreeBSD 11.0.  The impact on 6rd setups is currently unknown.
+* Fundamental WiFi stack changes in FreeBDS 11.0 could still affect operability.
 * Insight and Health statistics import from the early installer may not work.
-* Due to a Python 2.7.13 incompatibility the NetFlow connector
-  may not work.  A workaround is to revert to the Python 2.7.12
-  release.  See the forum for details `[1] <https://forum.opnsense.org/index.php?topic=4235.0>`__ .
+* Due to a Python 2.7.13 incompatibility the NetFlow connector may not work.  A workaround is to revert to the Python 2.7.12 release.  See the forum for details `[1] <https://forum.opnsense.org/index.php?topic=4235.0>`__ .
 * The LibreSSL version will not be available until the final release.
-* The console settings received a non-backwards compatible change.
-  If the VGA console is not working, simply reconfigure it from
-  System: Settings: Administration as it was likely set to Serial
-  due to a wrong GUI default.
+* The console settings received a non-backwards compatible change.  If the VGA console is not working, simply reconfigure it from System: Settings: Administration as it was likely set to Serial due to a wrong GUI default.
 
 Any help in making 17.1 the best it could possibly be for its final
 release January 31 is highly appreciated.  Please do not hesitate to
@@ -991,12 +938,9 @@ Here is a list of hand-picked major features that were worked on since 16.7:
 
 Known issues in this version:
 
-* The inherited 6rd kernel patches are not included in standard
-  FreeBSD 11.0.  The impact on 6rd setups is currently unknown.
-* The installer character set is not entirely correct due to the
-  default console switch to vt(4).
-* Fundamental WiFi stack changes in FreeBDS 11.0 may still affect
-  overall operability.
+* The inherited 6rd kernel patches are not included in standard FreeBSD 11.0.  The impact on 6rd setups is currently unknown.
+* The installer character set is not entirely correct due to the default console switch to vt(4).
+* Fundamental WiFi stack changes in FreeBDS 11.0 may still affect overall operability.
 * Insight and Health statistics import from the early installer do not work.
 * The LibreSSL version will not be available until the final release.
 

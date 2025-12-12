@@ -16,8 +16,7 @@ major release include:
 * HTTPS and ICAP support in the proxy server
 * FreeBSD 10.3 with full integration of HardenedBSD ASLR
 * UEFI boot and installation modes
-* Substantial updates to our language packs: Japanese,
-  Russian, German, French, Chinese
+* Substantial updates to our language packs: Japanese, Russian, German, French, Chinese
 
 We thank all contributors, testers and users for their relentless support
 and invaluable feedback.  The release candidate phase has been the most
@@ -57,9 +56,9 @@ Until then, here are the full patch notes:
 * ports: perl 5.24.1 `[3] <https://perldoc.perl.org/5.24.1/perldelta>`__ 
 * ports: sqlite 3.16.2 `[4] <https://sqlite.org/releaselog/3_16_2.html>`__ 
 * ports: openssh 7.4p1 `[5] <https://www.openssh.com/txt/release-7.4>`__ 
-* ports: sudo 1.8.19p2 `[6] <https://www.sudo.ws/stable.html#1.8.19p2>`__ 
+* ports: sudo 1.8.19p2 `[6] <https://www.sudo.ws/releases/legacy/#1.8.19p2>`__ 
 * ports: lighttpd 1.4.45 `[7] <https://www.lighttpd.net/2017/1/14/1.4.45/>`__ 
-* ports: php 5.6.30 `[8] <https://php.net/ChangeLog-5.php#5.6.30>`__ 
+* ports: php 5.6.30 `[8] <https://www.php.net/ChangeLog-5.php#5.6.30>`__ 
 
 
 --------------------------------------------------------------------------
@@ -77,22 +76,16 @@ EOL release for the 16.7 series.
 
 Here are the full patch notes:
 
-* system: extended sudo option to allow an additional
-  no-password mode
-* firmware: the package manager will now always delete modified
-  package files
-* firmware: allow major upgrades into other flavours from the
-  command line
+* system: extended sudo option to allow an additional no-password mode
+* firmware: the package manager will now always delete modified package files
+* firmware: allow major upgrades into other flavours from the command line
 * firmware: do not overwrite /etc/rc.shutdown on base updates
-* firewall: add a note that ports only apply to TCP and/or
-  UDP (contributed by Andrew Berry)
+* firewall: add a note that ports only apply to TCP and/or UDP (contributed by Andrew Berry)
 * dns resolver: correctly handle empty DHCP lease sections
-* dhcp: use regular expressions to optimize static lease
-  reading (contributed by Senol Korkmaz)
+* dhcp: use regular expressions to optimize static lease reading (contributed by Senol Korkmaz)
 * web proxy: fix subnet computation
 * netflow: fix missing check for egress_only
-* plugins: HAProxy 1.10 with HA sync, custom TCP checks,
-  bugfixes (contributed by Frank Wall)
+* plugins: HAProxy 1.10 with HA sync, custom TCP checks, bugfixes (contributed by Frank Wall)
 * ports: curl 7.52.1 `[1] <https://curl.haxx.se/changes.html>`__ 
 * ports: ca_root_nss 3.28
 * ports: squid 3.5.23 `[2] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
@@ -137,7 +130,7 @@ Here are the full patch notes:
 * plugins: compatibility fix for os-pptp, os-pppoe and os-l2tp
 * ports: openvpn `[1] <https://github.com/opnsense/core/issues/1314>`__  (reverted topology subnet fix)
 * ports: pkg (license viewer upstream fix)
-* ports: sudo 1.8.19p1 `[2] <https://www.sudo.ws/legacy.html#1.8.18p1>`__ 
+* ports: sudo 1.8.19p1 `[2] <https://www.sudo.ws/releases/legacy/#1.8.18p1>`__ 
 * ports: php 5.6.29 `[3] <https://www.php.net/ChangeLog-5.php#5.6.29>`__ 
 
 
@@ -164,8 +157,7 @@ Here is the full list of changes:
 * system: improved password hashing `[1] <https://www.osnet.eu/en/content/tutoriels/passwords-opnsense>`__  (contributed by OSNet)
 * system: make sure vital kernel modules are always loaded
 * system: added mute console support and improved tty reconfiguration
-* system: revived "normal" power state config option for powerd
-  (contributed by Tikimotel)
+* system: revived "normal" power state config option for powerd (contributed by Tikimotel)
 * system: removed description support for ACL entries
 * system: brought back LDAP scope and authentication containers support
 * system: separate class for ui/api routing
@@ -218,8 +210,7 @@ Here are the full patch notes:
 * system: revamped message of the day on console login
 * system: validate passed arguments instead of $_POST or $_REQUEST
 * system: merged VPN servers into get_possible_listen_ips()
-* system: repair French translation for user manager
-  (contributed by Valentin Deville)
+* system: repair French translation for user manager (contributed by Valentin Deville)
 * dashboard: do not arbitrarily split descriptions in services
 * firewall: added maximum fragments setting
 * dhcp: interface column for leases
@@ -233,8 +224,7 @@ Here are the full patch notes:
 * radvd: do not inject local DNS server when there is no IP
 * radvd: match service running metric with how it works
 * captive portal: validate input of voucher validity and quantity
-* captive portal: add error message on failed validation
-  (contributed by Fabian Franz)
+* captive portal: add error message on failed validation (contributed by Fabian Franz)
 * netflow: added service control
 * ntp: use plugin framework
 * intrusion detection: rotate eve-log every 500 MB
@@ -282,8 +272,7 @@ Here are the full patch notes:
 * igmp proxy: prepared move to plugins
 * load balancer: prepared move to plugins
 * upnp: straightened out reload behaviour
-* plugins: HAproxy "default certificate" parameter and advanced
-  options (contributed by Frank Wall)
+* plugins: HAproxy "default certificate" parameter and advanced options (contributed by Frank Wall)
 * plugins: fix a warning in L2TP, PPTP and PPPoE server configure
 * mvc: allow menu to recognise "#" in URLs by ignoring it
 * mvc: fix a spurious API error on unused view render
@@ -327,8 +316,7 @@ Here are the full patch notes:
 * system: "work in progress" indicator for service controls
 * system: always restart apinger to fix configuration apply
 * system: use Etc/UTC when timezone was removed from tzdata
-* system: fix infinite console menu loop on tty close
-  (contributed by Stephane Lesimple)
+* system: fix infinite console menu loop on tty close (contributed by Stephane Lesimple)
 * system: SSH launcher rework
 * firmware: only do console update reboot when update went ok
 * firmware: improved usefulness of several GUI status messages
@@ -348,8 +336,7 @@ Here are the full patch notes:
 * openvpn: missing p2p shared key settings for local subnets
 * universal plug and play: prepare for move into plugins
 * mvc: implemented model constraints and migrations
-* mvc: improved error reporting of API failures (contributed by
-  Per von Zweigbergk)
+* mvc: improved error reporting of API failures (contributed by Per von Zweigbergk)
 * mvc: add spinner for row toggle (contributed by Frank Brendel)
 * mvc: pluggable authentication framework
 * mvc: added update-only field type
@@ -362,8 +349,8 @@ Here are the full patch notes:
 * ports: lighttd 1.4.43 `[9] <https://www.lighttpd.net/2016/10/31/1.4.43/>`__ 
 * ports: openvpn 2.3.13 `[10] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23#OpenVPN2.3.13>`__ 
 * ports: pecl-radius 1.4.0b1 `[11] <https://pecl.php.net/package-changelog.php?package=radius&release=1.4.0b1>`__ 
-* ports: php 5.6.28 `[12] <https://php.net/ChangeLog-5.php#5.6.28>`__ 
-* ports: sudo 1.8.18p1 `[13] <https://www.sudo.ws/stable.html#1.8.18p1>`__ 
+* ports: php 5.6.28 `[12] <https://www.php.net/ChangeLog-5.php#5.6.28>`__ 
+* ports: sudo 1.8.18p1 `[13] <https://www.sudo.ws/releases/legacy/#1.8.18p1>`__ 
 * ports: suricata 3.1.3 `[14] <https://suricata-ids.org/2016/11/01/suricata-3-1-3-released/>`__ 
 
 
@@ -391,8 +378,7 @@ Here are the full patch notes:
 * captive portal: add expire voucher option
 * intrusion detection: added support for compressed rule files
 * web proxy: basic auth support for remote ACLs
-* web proxy: fix ICAP config write for MIME-types (contributed by
-  Fabian Franz)
+* web proxy: fix ICAP config write for MIME-types (contributed by Fabian Franz)
 * ipsec: fix spacing and type for shared secrets on Windows 7+
 * ipsec: restart must only restart, not completely reconfigure
 * ipsec: correctly set 28673 option to "yes"
@@ -407,7 +393,7 @@ Here are the full patch notes:
 * lang: updates for German and French
 * ports: libressl 2.4.3 `[1] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.4.3-relnotes.txt>`__ 
 * ports: isc-dhcp 4.3.5 `[2] <https://kb.isc.org/article/AA-01430/82/DHCP-4.3.5-Release-Notes.html>`__ 
-* ports: php 5.6.27 `[3] <https://php.net/ChangeLog-5.php#5.6.27>`__ 
+* ports: php 5.6.27 `[3] <https://www.php.net/ChangeLog-5.php#5.6.27>`__ 
 * ports: lighttpd 1.4.42 `[4] <https://www.lighttpd.net/2016/10/16/1.4.42/>`__ 
 * src: base system now uses position independent executables
 * src: tzdata updated to version 2016h `[5] <http://mm.icann.org/pipermail/tz-announce/2016-October/000042.html>`__ 
@@ -501,7 +487,7 @@ Here are the full patch notes:
 * system: do not explicitly call plugins_interfaces() anymore
 * services: DNS resolver translation fixes (contributed by Fabian Franz)
 * services: fix a race in the DynDNS widget display
-* ports: curl 7.50.3 `[1] <https://curl.haxx.se/mail/lib-2016-09/0040.html>`__ , sudo 1.8.18 `[2] <https://www.sudo.ws/stable.html#1.8.18>`__ , php 5.6.26 `[3] <https://php.net/ChangeLog-5.php#5.6.26>`__ , openssl 1.0.2j `[4] <https://www.openssl.org/news/secadv/20160922.txt>`__  `[5] <https://www.openssl.org/news/secadv/20160926.txt>`__ 
+* ports: curl 7.50.3 `[1] <https://curl.haxx.se/mail/lib-2016-09/0040.html>`__ , sudo 1.8.18 `[2] <https://www.sudo.ws/releases/legacy/#1.8.18>`__ , php 5.6.26 `[3] <https://www.php.net/ChangeLog-5.php#5.6.26>`__ , openssl 1.0.2j `[4] <https://www.openssl.org/news/secadv/20160922.txt>`__  `[5] <https://www.openssl.org/news/secadv/20160926.txt>`__ 
 * src: Multiple OpenSSL vulnerabilities `[5] <https://www.openssl.org/news/secadv/20160926.txt>`__ 
 * src: updated tzdata to 2016f `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:26.openssl.asc>`__ 
 
@@ -537,16 +523,14 @@ The full list of changes is a follows:
 * system: reworked config import / export for consistency
 * system: reboot after config import is now selectable
 * system: fix improper escape of HTML entities in log file filter
-* system: handle legal boolean return result from searchUsers()
-  (contributed by Evgeny Bevz)
+* system: handle legal boolean return result from searchUsers() (contributed by Evgeny Bevz)
 * system: add dynamic DNS update to cron
 * system: fix race in php.ini setup
 * system: always keep repository configurations on core package deinstall
 * system: properly trigger filter reload on HA peer
 * system: add ordering to rc.syshook scripting facility
 * system: add missing parameter for LDAPS authentication server
-* firewall: change CARP to operate using BSD standards to fix several
-  edge cases and reported issues
+* firewall: change CARP to operate using BSD standards to fix several edge cases and reported issues
 * firewall: fix validation of redirection in NAT
 * firewall: redirect target IP selection can now use aliases
 * firewall: simplify empty rules message in interface rules tabs
@@ -557,14 +541,11 @@ The full list of changes is a follows:
 * services: improve cleanup of multiple captive portal zones
 * services: fix writing empty DNS resolver ACL
 * reporting: automatic database repair added
-* lang: translation improvements (contributed by Simon Brunet,
-  Antonio Prado and Fabian Franz)
+* lang: translation improvements (contributed by Simon Brunet, Antonio Prado and Fabian Franz)
 * lang: updates for French, German, Italian and Spanish
-* plugins: add stock Intel e1000 driver version 7.6.2 a "os-intel-em"
-  (requires a reboot)
+* plugins: add stock Intel e1000 driver version 7.6.2 a "os-intel-em" (requires a reboot)
 * plugins: lower early start priorities of VMware and Xen plugins
-* ports: haproxy 1.6.9 `[1] <http://www.haproxy.org/download/1.6/src/CHANGELOG>`__ , hyperscan 4.3.1 `[2] <https://github.com/01org/hyperscan/blob/master/CHANGELOG.md>`__ , suricata 3.1.2 `[3] <https://suricata-ids.org/2016/09/07/suricata-3-1-2-released/>`__ ,
-  phalcon 3.0.1 `[4] <https://github.com/phalcon/cphalcon/releases>`__ , samplicator 1.3.8rc1
+* ports: haproxy 1.6.9 `[1] <http://www.haproxy.org/download/1.6/src/CHANGELOG>`__ , hyperscan 4.3.1 `[2] <https://github.com/intel/hyperscan/releases/tag/v4.3.1>`__ , suricata 3.1.2 `[3] <https://suricata-ids.org/2016/09/07/suricata-3-1-2-released/>`__ , phalcon 3.0.1 `[4] <https://github.com/phalcon/cphalcon/releases/tag/v3.0.1>`__ , samplicator 1.3.8rc1
 
 
 
@@ -610,7 +591,7 @@ Here are the full patch notes:
 * lang: minor updates for Russian (contributed by Smart-Soft)
 * lang: minor updates for German and French
 * ports: haproxy 1.6.8 `[1] <http://www.haproxy.org/download/1.6/src/CHANGELOG>`__ 
-* ports: php 5.6.25 `[2] <https://php.net/ChangeLog-5.php#5.6.25>`__ 
+* ports: php 5.6.25 `[2] <https://www.php.net/ChangeLog-5.php#5.6.25>`__ 
 * ports: sqlite 3.14.1 `[3] <https://sqlite.org/releaselog/3_14_1.html>`__ 
 * ports: openvpn 2.3.12 `[4] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23#OpenVPN2.3.12>`__ 
 * ports: libxml 2.9.4 `[5] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
@@ -649,29 +630,24 @@ Here are the full patch notes:
 * src: better handle the GPADL setup failure in Hyper-V `[7] <https://www.freebsd.org/security/advisories/FreeBSD-EN-16:15.vmbus.asc>`__ 
 * src: fix SCSI INQUIRY checks and error handling `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-16:16.hv_storvsc.asc>`__ 
 * ports: lighttpd 1.4.41 `[9] <https://www.lighttpd.net/download/>`__ , strongswan 5.5.0 `[10] <https://wiki.strongswan.org/projects/strongswan/wiki/Changelog55>`__ , curl 7.50.1 `[11] <https://curl.haxx.se/changes.html#7_50_1>`__ 
-* ports: ca_root_nss 3.26, openssh 7.3p1 `[12] <http://www.openssh.com/txt/release-7.3>`__ 
+* ports: ca_root_nss 3.26, openssh 7.3p1 `[12] <https://www.openssh.com/txt/release-7.3>`__ 
 * ports: enabled LDAP SASL bindings
-* system: remove source maps to prevent further Chrome breakage
-  during API calls
+* system: remove source maps to prevent further Chrome breakage during API calls
 * system: switch to individual registration of PHP extensions
 * system: added UO field to CSR
-* interfaces: properly remove PPPoE server from list of firewall
-  interfaces when deactivated
+* interfaces: properly remove PPPoE server from list of firewall interfaces when deactivated
 * interfaces: extended logging for 4G modems
 * interfaces: correct download of large packet captures
 * interfaces: add lacp_fast_timeout flag support for LAGG
-* interfaces: fix clearing the DHCP config file when override
-  file is gone
-* interfaces: improve dmesg probe on interface listing (contributed by
-  Per von Zweigbergk)
+* interfaces: fix clearing the DHCP config file when override file is gone
+* interfaces: improve dmesg probe on interface listing (contributed by Per von Zweigbergk)
 * firewall: double-check file availability after alias URL download
 * services: corrected DNS forwarder settings save in mobile layout
 * dashboard: fix gateway widget status text update
 * plugins: corrected firewall interface usage for multi-point VPNs
 * vpn: removed the stale OpenVPN windows installer binaries
 * vpn: default to IPsec main mode
-* lang: assorted translation fixes (contributed by Fabian Franz and
-  Antonio Prado)
+* lang: assorted translation fixes (contributed by Fabian Franz and Antonio Prado)
 * lang: translation updates for Chinese, French, German and Japanese
 
 
@@ -715,7 +691,7 @@ Here are the full patch notes:
 * src: revert extended descriptor format for em(4) `[2] <https://github.com/opnsense/src/commit/b0f7ff3>`__ 
 * src: lower spurious log notice to debug in rtsold
 * plugins: os-haproxy 1.4 (contributed by Frank Wall)
-* ports: libressl 2.3.7 `[3] <http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.3.7-relnotes.txt>`__ 
+* ports: libressl 2.3.7 `[3] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.3.7-relnotes.txt>`__ 
 
 
 
@@ -736,8 +712,7 @@ major release include:
 * HTTPS and ICAP support in the proxy server
 * FreeBSD 10.3 with full integration of HardenedBSD ASLR
 * UEFI boot and installation modes
-* Substantial updates to our language packs: Japanese,
-  Russian, German, French, Chinese
+* Substantial updates to our language packs: Japanese, Russian, German, French, Chinese
 
 We thank all contributors, testers and users for their relentless support
 and invaluable feedback.  The release candidate phase has been the most
@@ -763,7 +738,7 @@ Lastly, here are the full changes since 16.7-RC2:
 
 * installer: fix UI glitch with overlong disk name selections
 * installer: warn on low RAM as install phase can fail
-* ports: suricata 3.1.1 `[1] <https://suricata-ids.org/2016/07/13/suricata-3-1-1-released/>`__ , php 5.6.24 `[2] <https://php.net/ChangeLog-5.php#5.6.24>`__ 
+* ports: suricata 3.1.1 `[1] <https://suricata-ids.org/2016/07/13/suricata-3-1-1-released/>`__ , php 5.6.24 `[2] <https://www.php.net/ChangeLog-5.php#5.6.24>`__ 
 * system: Etc/UTC is now the default time zone
 * system: prevent user from deleting itself
 * interfaces: register groups in the system immediately
@@ -830,21 +805,17 @@ Here is the list of all changes since 16.7-RC1:
 * vga: UEFI boot support on amd64
 * cdrom: UEFI boot support on amd64
 * nano: firmware is now always fetched to persistent storage
-* ports: python 2.7.12 `[1] <https://hg.python.org/cpython/raw-file/v2.7.12/Misc/NEWS>`__ , squid 3.5.20 `[2] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ , pkg 1.8.7 `[3] <https://github.com/freebsd/freebsd-ports/commit/06593f2394>`__ ,
-  hyperscan 4.2.0 `[4] <https://01.org/hyperscan>`__ 
+* ports: python 2.7.12 `[1] <https://hg.python.org/cpython/raw-file/v2.7.12/Misc/NEWS>`__ , squid 3.5.20 `[2] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ , pkg 1.8.7 `[3] <https://github.com/freebsd/freebsd-ports/commit/06593f2394>`__ , hyperscan 4.2.0 `[4] <https://github.com/intel/hyperscan/releases/tag/v4.2.0>`__ 
 * installer: allow installation on /dev/raid devices
 * installer: added a welcome message
 * installer: added GPT/UEFI mode on amd64
 * lang: only allow to select stable languages
-* lang: first update for 16.7 with full Japanese translation
-  (contributed by Chie Taguchi)
+* lang: first update for 16.7 with full Japanese translation (contributed by Chie Taguchi)
 * lang: numerous cleanups in translations (contributed by Fabian Franz)
-* interfaces: correctly restart all running DNS services on interface
-  reload
+* interfaces: correctly restart all running DNS services on interface reload
 * interfaces: properly configure OpenVPN interfaces on bootup
 * interfaces: fix iteration over empty interface array
-* interfaces: do not show dhcpd6 service when prefix delegation is
-  not enabled
+* interfaces: do not show dhcpd6 service when prefix delegation is not enabled
 * openvpn: repaired status page to show service status
 * openvpn: refactored scripting in export page
 * firmware: enable trim even for GPT/UFS labeled root file systems
@@ -939,8 +910,7 @@ Here is our list of major features that were worked on since 16.1:
 * Firmware page resume support and cron-based "nightly" updates
 * opnsense-patch, the tremendously nifty patching tool
 * Traffic graphs frontend has been replaced by a modern alternative
-* PPTP, L2TP and PPPoE Servers are now individual plugins no longer found
-  in the default installation
+* PPTP, L2TP and PPPoE Servers are now individual plugins no longer found in the default installation
 * Pluggable interface infrastructure
 * New firewall GUI page for custom scrubbing rules (normalisation)
 * Removal of proxy-based NAT reflection

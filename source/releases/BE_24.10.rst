@@ -140,7 +140,7 @@ Here are the full patch notes:
 * ports: openvpn 2.6.13 `[18] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.13>`__ 
 * ports: php 8.2.27 `[19] <https://www.php.net/ChangeLog-8.php#8.2.27>`__ 
 * ports: python 3.11.11 `[20] <https://docs.python.org/release/3.11.11/whatsnew/changelog.html>`__ 
-* ports: sudo 1.9.16p2 `[21] <https://www.sudo.ws/stable.html#1.9.16p2>`__ 
+* ports: sudo 1.9.16p2 `[21] <https://www.sudo.ws/releases/stable/#1.9.16p2>`__ 
 * ports: suricata 7.0.8 `[22] <https://suricata.io/2024/12/12/suricata-7-0-8-released/>`__ 
 
 A hotfix release was issued as 24.10.2_6:
@@ -585,7 +585,7 @@ Here are the full changes against version 24.4.3:
 * ports: python 3.11.10 `[36] <https://docs.python.org/release/3.11.10/whatsnew/changelog.html>`__ 
 * ports: rrdtool 1.9.0 `[37] <https://github.com/oetiker/rrdtool-1.x/releases/tag/v1.9.0>`__ 
 * ports: sqlite 3.46.1 `[38] <https://sqlite.org/releaselog/3_46_1.html>`__ 
-* ports: sudo 1.9.16 `[39] <https://www.sudo.ws/stable.html#1.9.16>`__ 
+* ports: sudo 1.9.16 `[39] <https://www.sudo.ws/releases/stable/#1.9.16>`__ 
 * ports: suricata 7.0.7 `[40] <https://suricata.io/2024/10/01/suricata-7-0-7-released/>`__ 
 * ports: syslog-ng 4.8.0 `[41] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.8.0>`__ 
 * ports: unbound 1.21.1 `[42] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-21-1>`__ 
