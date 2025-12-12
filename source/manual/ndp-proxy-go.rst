@@ -26,13 +26,13 @@ More technical details: `ndp-proxy-go <https://github.com/Monviech/ndp-proxy-go/
 
 
 Installation
---------------------------------------------------
+==================================================
 
 Install ``os-ndp-proxy-go`` from :menuselection:`System --> Firmware --> Plugins`.
 
 
 Settings
--------------------------
+==================================================
 
 .. tabs::
 
@@ -76,8 +76,13 @@ Settings
                                                   When the neighbor cache lifetime expires, the IPv6 address will be removed from the alias.
         ========================================= ====================================================================================
 
+Link types
+==================================================
 
-Ethernet links
+The proxy supports different link types on the upstream interface with some important differences.
+
+
+Ethernet Links
 --------------------------------------------------
 
 - **WAN (upstream)**:
@@ -97,7 +102,7 @@ the proxy can instantly relearn clients when they send any traffic to the intern
    conflicts are unlikely to cause issues even in larger proxied networks or when using this with cloud providers.
 
 
-Point-to-point links
+Point-to-point Links
 --------------------------------------------------
 
 - **WAN (upstream)**:
@@ -128,12 +133,14 @@ This has some important implications:
    The behavior can be mitigated by using the `Neighbor cache file` option.
 
 
-Example setup
+Example Setup
 ==================================================
 
 Follow if you are a user with a router in a SLAAC only network (e.g. home, cloud VPS, mobile LTE/5G networks)
 In such a setup, your router will not receive a prefix delegation via DHCPv6-PD, but only set an on-link /64 prefix.
 
+Recommended Settings
+--------------------------------------------------
 
 Go to :menuselection:`Interfaces --> WAN`
 
@@ -159,7 +166,8 @@ Go to :menuselection:`Services --> NDP Proxy --> Settings`
 **Downstream interfaces**                       ``LAN``
 **Proxy router advertisements**                 ``X``
 **Install host routes**                         ``X``
-**Neighbor cache lifetime**                     Increase if you use a point-to-point upstream, e.g. to ``60`` minutes.
+**Neighbor cache lifetime**                     Increase when using a point-to-point upstream, e.g. to a few hours.
+**Neighbor cache file**                         ``X``
 ==============================================  ====================================================================
 
 After applying the configuration, all devices in your LAN network will autogenerate a GUA with SLAAC and receive
@@ -173,12 +181,11 @@ Verify the setup by pinging an IPv6 location on the internet.
 .. Tip::
 
     If you receive a DNS server from your ISP, but want the router to be the sole DNS server, use a Port Forward to force traffic destined to port 53 to
-    the local running Unbound server instead. You cannot use ``::1`` as redirect target IP though.
-    Use a dynamic IPv6 alias on any IPv6-enabled interface with the EUI-64 of that interface.
-    The WAN interface will have such a GUA address on which Unbound will listen per default.
+    the local running Unbound server instead. Please note that ``::1`` is not a valid redirect target, use a dynamic IPv6 alias instead.
+
 
 Firewall Rules
-==================================================
+--------------------------------------------------
 
 The proxy supports populating firewall aliases with IPv6 addresses of learned clients. This can be used to only permit access to the internet,
 while blocking requests to other networks that also receive IPv6 addresses from the same on-link prefix.
