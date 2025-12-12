@@ -166,8 +166,8 @@ Go to :menuselection:`Services --> NDP Proxy --> Settings`
 **Downstream interfaces**                       ``LAN``
 **Proxy router advertisements**                 ``X``
 **Install host routes**                         ``X``
-**Neighbor cache lifetime**                     Increase when using a point-to-point upstream, e.g. to a few hours.
-**Neighbor cache file**                         Enable when using a point-to-point upstream
+**Neighbor cache lifetime**                     Increase to a few hours when using a point-to-point upstream.
+**Neighbor cache file**                         Enable when using a point-to-point upstream.
 ==============================================  ====================================================================
 
 After applying the configuration, all devices in your LAN network will autogenerate a GUA with SLAAC and receive
