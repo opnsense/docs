@@ -31,7 +31,7 @@ Installation
 Install ``os-ndp-proxy-go`` from :menuselection:`System --> Firmware --> Plugins`.
 
 
-Settings
+Proxy Settings
 ==================================================
 
 .. tabs::
@@ -139,7 +139,7 @@ Example Setup
 Follow if you are a user with a router in a SLAAC only network (e.g. home, cloud VPS, mobile LTE/5G networks)
 In such a setup, your router will not receive a prefix delegation via DHCPv6-PD, but only set an on-link /64 prefix.
 
-Recommended Settings
+Settings
 --------------------------------------------------
 
 Go to :menuselection:`Interfaces --> WAN`
