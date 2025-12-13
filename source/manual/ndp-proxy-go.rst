@@ -26,12 +26,63 @@ More technical details: `ndp-proxy-go <https://github.com/Monviech/ndp-proxy-go/
 
 
 Installation
---------------------------------------------------
+==================================================
 
 Install ``os-ndp-proxy-go`` from :menuselection:`System --> Firmware --> Plugins`.
 
 
-Ethernet links
+Proxy Settings
+==================================================
+
+.. tabs::
+
+    .. tab:: General
+
+        ========================================= ====================================================================================
+        **Option**                                **Description**
+        ========================================= ====================================================================================
+        **Enable**                                Enable or disable this service.
+        **Upstream interface**                    Choose the upstream interface which receives the external IPv6 prefix from the ISP.
+                                                  Usually, this is the WAN interface. Ethernet interfaces are fully supported,
+                                                  point-to-point (PPPoE) devices are experimental.
+        **Downstream interfaces**                 Choose one or multiple downstream interfaces which should proxy the upstream IPv6 prefix.
+                                                  Only ethernet interfaces are supported.
+        **Proxy router advertisements**           Proxy upstream RAs to downstream interfaces. Disable this if you use your own RA daemon.
+        **Install host routes**                   Automatically create host routes for discovered clients. Disabling this means you must
+                                                  manually handle all routing decisions.
+        **Neighbor cache lifetime**               Neighbor cache lifetime in minutes. This controls when stale clients, host routes and
+                                                  firewall aliases are cleaned up. When using a point-to-point interface as upstream,
+                                                  increasing this lifetime is necessary to not prematurely clean up routes.
+        **Maximum learned neighbors**             Maximum learned neighbors, increase for large networks.
+        **Neighbor cache file**                   Persist cache to file on service stop and load it on service start. Only neighbors
+                                                  with a valid cache lifetime are loaded. This helps on system reboots to minimize
+                                                  downtime of individual clients.
+        **Max route operations**                  Max route operations per second, increase for large networks.
+        **Packet capture timeout**                Controls CPU usage vs. NDP responsiveness. Lower values (e.g., 25 ms) minimize
+                                                  latency during cache refresh at the cost of more CPU. Higher values (100–250 ms)
+                                                  reduce CPU use but may introduce small latency spikes.
+        **Debug log**                             Enable debug logging.
+        ========================================= ====================================================================================
+
+    .. tab:: Aliases
+
+        ========================================= ====================================================================================
+        **Option**                                **Description**
+        ========================================= ====================================================================================
+        **Interface**                             Add IPv6 addresses to the firewall alias that belongs to this proxied interface.
+                                                  When choosing any, all IPv6 addresses will be added.
+        **Firewall alias**                        Choose an "external (advanced)" type alias from "Firewall - Aliases". Whenever a client
+                                                  is discovered, the IPv6 address will be automatically added to the chosen alias.
+                                                  When the neighbor cache lifetime expires, the IPv6 address will be removed from the alias.
+        ========================================= ====================================================================================
+
+Link Types
+==================================================
+
+The proxy supports different link types on the upstream interface with some important differences.
+
+
+Ethernet Links
 --------------------------------------------------
 
 - **WAN (upstream)**:
@@ -51,7 +102,7 @@ the proxy can instantly relearn clients when they send any traffic to the intern
    conflicts are unlikely to cause issues even in larger proxied networks or when using this with cloud providers.
 
 
-Point-to-point links
+Point-to-point Links
 --------------------------------------------------
 
 - **WAN (upstream)**:
@@ -79,14 +130,17 @@ This has some important implications:
    
    After a firewall reboot, IPv6 connectivity may be delayed until downstream clients perform SLAAC and DAD again.
    This is expected behavior on PPPoE, as the upstream (ISP) router never probes GUAs via Neighbor Discovery (ND) like on ethernet links.
+   The behavior can be mitigated by using the `Neighbor cache file` option.
 
 
-Example setup
+Example Setup
 ==================================================
 
 Follow if you are a user with a router in a SLAAC only network (e.g. home, cloud VPS, mobile LTE/5G networks)
 In such a setup, your router will not receive a prefix delegation via DHCPv6-PD, but only set an on-link /64 prefix.
 
+Settings
+--------------------------------------------------
 
 Go to :menuselection:`Interfaces --> WAN`
 
@@ -112,7 +166,8 @@ Go to :menuselection:`Services --> NDP Proxy --> Settings`
 **Downstream interfaces**                       ``LAN``
 **Proxy router advertisements**                 ``X``
 **Install host routes**                         ``X``
-**Neighbor cache lifetime**                     Increase if you use a point-to-point upstream, e.g. to ``60`` minutes.
+**Neighbor cache lifetime**                     Increase to a few hours when using a point-to-point upstream.
+**Neighbor cache file**                         Enable when using a point-to-point upstream.
 ==============================================  ====================================================================
 
 After applying the configuration, all devices in your LAN network will autogenerate a GUA with SLAAC and receive
@@ -126,12 +181,11 @@ Verify the setup by pinging an IPv6 location on the internet.
 .. Tip::
 
     If you receive a DNS server from your ISP, but want the router to be the sole DNS server, use a Port Forward to force traffic destined to port 53 to
-    the local running Unbound server instead. You cannot use ``::1`` as redirect target IP though.
-    Use a dynamic IPv6 alias on any IPv6-enabled interface with the EUI-64 of that interface.
-    The WAN interface will have such a GUA address on which Unbound will listen per default.
+    the local running Unbound server instead. Please note that ``::1`` is not a valid redirect target, use a dynamic IPv6 alias instead.
+
 
 Firewall Rules
-==================================================
+--------------------------------------------------
 
 The proxy supports populating firewall aliases with IPv6 addresses of learned clients. This can be used to only permit access to the internet,
 while blocking requests to other networks that also receive IPv6 addresses from the same on-link prefix.
