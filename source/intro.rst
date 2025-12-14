@@ -3,9 +3,9 @@ Introduction
 ============
 
 Welcome to the OPNsense documentation & wiki project!
-The documentation is work in progress and is updated frequently.
+The documentation is a work in progress and is updated frequently.
 If you would like to contribute in any way, please take a look at our guide
-how to :doc:`contribute`.
+on how to :doc:`contribute`.
 
 .. image:: ./images/opnsense_logo_horizontaal.png
     :width: 80%
@@ -42,19 +42,19 @@ to find what you are looking for. Maybe even more important is what this documen
 
 If you are looking for deeper insights about networking and best practices in designing them, this might not be the best
 place to look. Most of our documents and how-to's focus on how to use functionality included in our software and/or one
-of its plugins. Quite some books are written about networking, there are (online) courses available and Wikipedia
+of its plugins. Quite a lot of books are written about networking, there are (online) courses available and Wikipedia
 contains a lot of relevant articles as well. Some interesting reads include the fundamentals about the
 `OSI model <https://en.wikipedia.org/wiki/OSI_model>`__, `IP addressing <https://en.wikipedia.org/wiki/IP_address>`__,
 `routing <https://en.wikipedia.org/wiki/IP_routing>`__ and `network address translation <https://en.wikipedia.org/wiki/Network_address_translation>`__.
-Likely these resources are more suitable for learning about general network concepts.
+These resources are likely more suitable for learning about general network concepts.
 Although we do try to include some context in our documents, there are often assumptions made about the readers
 knowledge on (basic) networking.
 
 Like many products and projects, ours grows over time, functionality extends and changes, which sometimes makes it difficult
-to find what you need for the version you are using. Although we try to keep our documentation up to date, sometimes text
-does not reflect reality anymore. If that is the case and you think you found an omission, do not hesitate to open
+to find what you need for the version you are using. Although we try to keep our documentation up to date, sometimes its contents
+do not reflect reality anymore. If that is the case and you think you found an omission, do not hesitate to open
 a report using one of our templates on `GitHub <https://github.com/opnsense/docs/issues/new/choose>`__ or a pull request
-of course if you are able to.
+if you are able to.
 
 Always assume the text is intended for the latest version of our product, in time we might
 add a version selector in the documentation, but given OPNsense is a security product, we advise to keep it up to date
@@ -66,7 +66,7 @@ for an upgrade, this is a useful resource to collect the details.
 Installation and setup is all about getting you started using one of the target options available.
 
 The next sections should be quite familiar when working with OPNsense, as they reflect the options in the
-menu of the product. In case you are not yet used to OPNsense, you can always use the search input in the left corner of
+product's menu. If you are not yet used to OPNsense, you can always use the search input in the top-left corner of
 the screen to find your topic.
 
 Both community and third-party plugins have their own area available, although they eventually register into the
