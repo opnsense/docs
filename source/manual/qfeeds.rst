@@ -161,7 +161,7 @@ DNS/Domain blocking using Unbound
 
 
 In :menuselection:`Security --> Q-Feeds Connect` make sure to enable **"Register domain feeds"** and hit Apply.
-Before you can use the block list, also make sure Unbound Blocklists are enabled in :menuselection:`Services --> Unbound DNS --> Blocklist`.
+For older versions (<25.7.9) also make sure Unbound Blocklists are enabled in :menuselection:`Services --> Unbound DNS --> Blocklist`.
 
-When both are enabled, you can use :menuselection:`Reporting --> Unbound DNS` to gain insights into the requested domains.
+You can use :menuselection:`Reporting --> Unbound DNS` to gain insights into the requested domains.
 
