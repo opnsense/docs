@@ -301,7 +301,7 @@ Here are the full patch notes:
 * firewall: keep permissions to standard for filter.lock file
 * firewall: replace searchNoCategoryItemAction() with new searchBase() extension
 * firewall: add gateway to the states diagnostics output
-* firewall: fix visible rows quantity off-by-one (contributed by NYOB)
+* firewall: fix visible rows quantity off-by-one (contributed by NOYB)
 * intrusion detection: query all fields for searchBase() actions
 * dhcrelay: functional MVC/API replacement using the OpenBSD dhcrelay(6) fork
 * isc-dhcp: fix log file location

@@ -172,7 +172,7 @@ Here are the full patch notes:
 * unbound: domain override IP may contain port information
 * unbound: fix ACL for overrides
 * unbound: fix handling of wildcard aliases (contributed by devin122)
-* unbound: fix overrides case sort order (contributed by NYOB)
+* unbound: fix overrides case sort order (contributed by NOYB)
 * unbound: properly support "_msdcs" domain override prefix
 * unbound: restore duplicate domain behaviour in overrides
 * unbound: show combined hostname.domain description in new alias popup

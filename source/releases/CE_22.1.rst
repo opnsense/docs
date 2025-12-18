@@ -278,7 +278,7 @@ Here are the full patch notes:
 * unbound: show combined hostname.domain description in new alias popup
 * unbound: properly support "_msdcs" domain override prefix
 * unbound: add missing alias description
-* unbound: fix overrides case sort order (contributed by NYOB)
+* unbound: fix overrides case sort order (contributed by NOYB)
 * unbound: fix ACL for overrides
 * unbound: fix handling of wildcard aliases (contributed by devin122)
 * mvc: add generic searchRecordsetBase() to match existing searchBase()

@@ -270,7 +270,7 @@ Here are the full patch notes:
 * firewall: keep permissions to standard for filter.lock file
 * firewall: replace searchNoCategoryItemAction() with new searchBase() extension
 * firewall: add gateway to the states diagnostics output
-* firewall: fix visible rows quantity off-by-one (contributed by NYOB)
+* firewall: fix visible rows quantity off-by-one (contributed by NOYB)
 * dhcp: add Kea DHCPv4 server option with HA capabilities as an alternative to the end of life ISC DHCP
 * dhcp: omit faulty comma in Kea config when control agent is disabled
 * dhcp: add opt-out automatic firewall rules for Kea server access
