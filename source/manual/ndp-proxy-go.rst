@@ -53,11 +53,14 @@ Proxy Settings
         **Neighbor cache lifetime**               Neighbor cache lifetime in minutes. This controls when stale clients, host routes and
                                                   firewall aliases are cleaned up. When using a point-to-point interface as upstream,
                                                   increasing this lifetime is necessary to not prematurely clean up routes.
-        **Maximum learned neighbors**             Maximum learned neighbors, increase for large networks.
+        **Max learned neighbors**                 Maximum learned neighbors, increase for large networks.
         **Neighbor cache file**                   Persist cache to file on service stop and load it on service start. Only neighbors
                                                   with a valid cache lifetime are loaded. This helps on system reboots to minimize
                                                   downtime of individual clients.
-        **Max route operations**                  Max route operations per second, increase for large networks.
+        **Max route operations**                  Maximum route operations per second. Limits how fast routes are applied;
+                                                  excess operations are queued, not dropped.
+        **Max alias operations**                  Maximum firewall alias operations per second. Limits how fast aliases are populated;
+                                                  excess operations are queued, not dropped.
         **Packet capture timeout**                Controls CPU usage vs. NDP responsiveness. Lower values (e.g., 25 ms) minimize
                                                   latency during cache refresh at the cost of more CPU. Higher values (100–250 ms)
                                                   reduce CPU use but may introduce small latency spikes.
