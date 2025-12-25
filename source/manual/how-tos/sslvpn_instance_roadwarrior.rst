@@ -148,7 +148,7 @@ Redirect gateway        Leave empty :sup:`4`
 .. admonition:: Note  :sup:`3`
 
    Selecting the "Strict User/CN Matching" option warrants only matching user/certificate can login, when sharing a single
-   vertificate between clients this option needs to be deselected.
+   certificate between clients this option needs to be deselected.
 
 .. admonition:: Note  :sup:`4`
 
