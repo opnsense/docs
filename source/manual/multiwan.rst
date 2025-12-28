@@ -24,7 +24,7 @@ The technology used to offer multiwan is called "policy based routing" or "sourc
 .. Note::
    Currently it's not possible to use gateways without an address (Interface option "Dynamic gateway policy") inside a group.
    This is due to the fact that the firewall requires an address of the right family (IPv4 / IPv6) to be present on the
-   interface, which can not be guranteed based on its configuration at the moment.
+   interface, which can not be guaranteed based on its configuration at the moment.
 
 
 ------------------------
