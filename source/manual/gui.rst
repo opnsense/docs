@@ -57,7 +57,7 @@ In the following sample you see a screenshot of the Category **System**, with:
 
 Quick Navigation
 ----------------
-A faster way to navigate trough the GUI is by using the quick navigation/search box
+A faster way to navigate through the GUI is by using the quick navigation/search box
 on the upper right corner of the screen. Either click on it or hit tab to select it.
 
 The search field is a type-ahead field, meaning that it will guess what you are
