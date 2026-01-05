@@ -328,7 +328,7 @@ that have been created in the `Firewall Rules` step:
 
 - Press **Save** and **Apply**
 
-Ensure that Unbound listens on all network interfaces, or the loopback interface will not be included and IPv6 DNS will not work.
+Ensure that Unbound listens on port 53 and on all network interfaces, or the loopback interface will not be included and IPv6 DNS will not work.
 
 
 High Availability
