@@ -248,6 +248,7 @@ Option                              Value
 **Invert Destination**                          ``X``
 **Destination**                                 ``ndp_proxy_global``
 **Destination port**                            Any
+**Filter rule association**                     Pass
 **Description**                                 Allow IPv6 internet access for all LAN clients known by NDP Proxy
 ==============================================  ====================================================================================================
 
