@@ -42,6 +42,9 @@ Proxy Settings
         **Option**                                **Description**
         ========================================= ====================================================================================
         **Enable**                                Enable or disable this service.
+        **Enable CARP failover**                  If any CARP VHID on this node is in MASTER state the service will be started, otherwise
+                                                  stopped. As NDP is stateless, a short interruption of IPv6 connectivity must be expected
+                                                  during CARP transitions.
         **Upstream interface**                    Choose the upstream interface which receives the external IPv6 prefix from the ISP.
                                                   Usually, this is the WAN interface. Ethernet interfaces are fully supported,
                                                   point-to-point (PPPoE) devices are experimental.
@@ -181,11 +184,6 @@ Verify the setup by pinging an IPv6 location on the internet.
 
     Since in the default setup, the router advertisements of the ISP are used, please stop any other router advertisement daemons on the LAN interface.
 
-.. Tip::
-
-    If you receive a DNS server from your ISP, but want the router to be the sole DNS server, use a Port Forward to force traffic destined to port 53 to
-    the local running Unbound server instead. Please note that ``::1`` is not a valid redirect target, use a dynamic IPv6 alias instead.
-
 
 Firewall Rules
 --------------------------------------------------
@@ -225,14 +223,14 @@ Option                              Value
 Option                              Value
 ==================================  =======================================================================================================
 **Interface**                       ``any``
-**Name**                            ``ndp_proxy_global``
+**Firewall alias**                  ``ndp_proxy_global``
 ==================================  =======================================================================================================
 
 ==================================  =======================================================================================================
 Option                              Value
 ==================================  =======================================================================================================
 **Interface**                       ``LAN``
-**Name**                            ``ndp_proxy_lan``
+**Firewall alias**                  ``ndp_proxy_lan``
 ==================================  =======================================================================================================
 
 - Press **Apply**
@@ -264,8 +262,91 @@ Now your IPv6 firewalling is tight. It is self-healing when client addresses cha
 
 .. Tip::
 
-    If you need client specific aliases, take a look at the ``Mac address`` alias type in :menuselection:`Firewall --> Aliases`,
+    If you need client specific aliases, take a look at the ``MAC address`` alias type in :menuselection:`Firewall --> Aliases`,
     which can dynamically track IPv4 and IPv6 addresses of a single client.
+
+
+NAT Rules (Redirect DNS)
+--------------------------------------------------
+
+NAT rules are only required if you want to redirect DNS requests to the local running Unbound server.
+Most ISPs will include DNS servers as RDNSS options in the RAs, which could circumvent the local DNS server.
+
+Since IPv6 requires a routable address as target, we will configure a loopback interface.
+
+Go to :menuselection:`Interfaces --> Devices --> Loopback` and create a new loopback interface:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Device ID**                       ``1`` (automatic, if number is different just change description accordingly)
+**Description**                     ``lo1``
+==================================  =======================================================================================================
+
+- Press **Apply**
+
+Go to :menuselection:`Interfaces --> Assignments` and assign the new loopback interface:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Device**                          ``lo1``
+**Description**                     ``lo1_DNS``
+==================================  =======================================================================================================
+
+- Press **Add**
+
+Go to :menuselection:`Interfaces --> lo1_DNS` and assign IP addresses to the loopback interface:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Enable**                          ``X``
+**Description**                     ``lo1_DNS``
+**IPv6 Configuration Type**         ``Static``
+**IPv6 address**                    ``fd01::1/128``
+==================================  =======================================================================================================
+
+- Press **Save**
+
+Go to :menuselection:`Firewall --> NAT --> Port Forward` and create a NAT rule that redirects IPv6 DNS. We will use the same firewall aliases
+that have been created in the `Firewall Rules` step:
+
+==============================================  ====================================================================================================
+**Interface**                                   LAN
+**TCP/IP Version**                              IPv6
+**Protocol**                                    TCP/UDP
+**Source**                                      ``ndp_proxy_lan``
+**Source Port**                                 any
+**Invert Destination**                          ``X``
+**Destination**                                 ``ndp_proxy_global``
+**Destination port**                            DNS
+**Redirect target IP**                          ``fd01::1``
+**Redirect target port**                        DNS
+**Description**                                 Redirect LAN IPv6 DNS requests to Unbound
+==============================================  ====================================================================================================
+
+- Press **Save** and **Apply**
+
+Ensure that Unbound listens on all network interfaces, or the loopback interface will not be included and IPv6 DNS will not work.
+
+
+High Availability
+--------------------------------------------------
+
+To use the proxy in HA, enable the advanced mode in :menuselection:`Services --> NDP Proxy --> Settings` and toggle `Enable CARP failover`.
+
+Ensure that you use `Proxy router advertisements` to proxy the RAs of the ISP. Deactivate any other RA daemon on the selected downstream interfaces.
+
+Since NDP is based on a single router identity, there will be a short interruption during failover when the ISP router relearns the MAC address.
+
+Please note that you do not need any virtual IPv6 addresses on any of the upstream and downstream interfaces, the proxy will only use the real
+interface link-local and MAC addresses.
+
+.. Tip::
+
+   If you use NAT to rewrite the DNS server, create the same loopback interface as outlined in the `NAT Rules (Redirect DNS)` section on both Master
+   and Backup with the same IPv6 address. That way you can use the same IPv6 address as target in the NAT rule without a virtual IP address.
 
 
 Logging
