@@ -169,7 +169,7 @@ Go to :menuselection:`Firewall --> Settings --> Advanced`
 Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
     Create the NAT rule as in :ref:`Method 1 - Destination NAT (Port Forward) <nat-method1-portforward>` but change the following things:
 
-    * Make sure that your *Destination NAT (Port Forward)ing* rule specifies only ``WAN`` as interface.
+    * Make sure that your *Destination NAT (Port Forwarding)* rule specifies only ``WAN`` as interface.
 
 .. _nat-method2-floating:
 
