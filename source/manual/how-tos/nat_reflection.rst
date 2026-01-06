@@ -29,10 +29,10 @@ Because there are not enough available IPv4 addresses, a workaround called *NAT*
         * `Firewall --> NAT --> Outbound` using the option *Translation / target* in a rule
     DNAT - Destination Network Address Translation
         *  Changes the destination IP of a packet
-        * `Firewall --> NAT --> Port Forward` using the option *Redirect target IP* in a rule
+        * `Firewall --> NAT --> Destination NAT (Port Forward)` using the option *Redirect target IP* in a rule
     PAT - Port Address Translation
         *  Changes the destination port of a packet
-        * `Firewall --> NAT --> Port Forward` using the option *Redirect target port* in a rule
+        * `Firewall --> NAT --> Destination NAT (Port Forward)` using the option *Redirect target port* in a rule
 
 If you create a DNAT rule, you enable all clients in the WAN access to an internal IPv4 address. The OPNsense acts like a translator, translating IPv4 addresses between client and server. The OPNsense writes all translations into a file called the NAT table. It knows exactly how traffic should flow back and forth with the translations in place.
 
@@ -83,12 +83,12 @@ Method 1 - Creating manual Port-Forward NAT (DNAT), manual Outbound NAT (SNAT), 
 ------------------------------------------------------------------------------------------------------------
 
 Go to :menuselection:`Firewall --> Settings --> Advanced`
-    Disable *Reflection for port forwards*, *Reflection for 1:1* and *Automatic outbound NAT for Reflection*
+    Disable *Reflection for Destination NAT (Port Forward)s*, *Reflection for 1:1* and *Automatic outbound NAT for Reflection*
 
 .. _nat-method1-portforward:
 
-Go to :menuselection:`Firewall --> NAT --> Port Forward`
-    Select **+** to create a new Port Forward rule.
+Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
+    Select **+** to create a new Destination NAT (Port Forward) rule.
 
     =========================  ================================
     Interface:                  Select ``WAN``, ``DMZ`` and ``LAN`` - Select all interfaces in which clients are that should access the webserver. This will create a linked Firewall rule in :menuselection:`Firewall --> Rules --> Floating` which allows the traffic.
@@ -162,14 +162,14 @@ Method 2 - Creating Automatic Port-Forward NAT (DNAT), Manual Outbound NAT (SNAT
 ------------------------------------------------------------------------------------------------------------
 
 Go to :menuselection:`Firewall --> Settings --> Advanced`
-    Enable *Reflection for port forwards* to create automatic rules for all entries :menuselection:`Firewall --> NAT --> Port Forward` that have ``WAN`` as interface.
+    Enable *Reflection for Destination NAT (Port Forward)s* to create automatic rules for all entries :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` that have ``WAN`` as interface.
 
 .. _nat-method2-portforward:
 
-Go to :menuselection:`Firewall --> NAT --> Port Forward`
-    Create the NAT rule as in :ref:`Method 1 - Port Forward <nat-method1-portforward>` but change the following things:
+Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
+    Create the NAT rule as in :ref:`Method 1 - Destination NAT (Port Forward) <nat-method1-portforward>` but change the following things:
 
-    * Make sure that your *Port Forwarding* rule specifies only ``WAN`` as interface.
+    * Make sure that your *Destination NAT (Port Forward)ing* rule specifies only ``WAN`` as interface.
 
 .. _nat-method2-floating:
 
@@ -193,11 +193,11 @@ Method 3 - Creating Automatic Port-Forward NAT (DNAT), Automatic Outbound NAT (S
 ---------------------------------------------------------------------------------------------------------------
 
 Go to :menuselection:`Firewall --> Settings --> Advanced`
-    Enable *Reflection for port forwards* to create automatic rules for all :menuselection: `Firewall --> NAT --> Port Forward` that have ``WAN`` as interface.
+    Enable *Reflection for Destination NAT (Port Forward)s* to create automatic rules for all :menuselection: `Firewall --> NAT --> Destination NAT (Port Forward)` that have ``WAN`` as interface.
     Enable *Automatic outbound NAT for Reflection* to create automatic SNAT rules.
 
-Go to :menuselection:`Firewall --> NAT --> Port Forward`
-    Create the NAT rule as in :ref:`Method 2 - Port Forward <nat-method2-portforward>`
+Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
+    Create the NAT rule as in :ref:`Method 2 - Destination NAT (Port Forward) <nat-method2-portforward>`
 
 Go to :menuselection:`Firewall --> Rules --> Floating`
     Create the floating firewall rule as :ref:`Method 2 - Floating <nat-method2-floating>`
@@ -208,9 +208,9 @@ One-to-One NAT Reflection
 
 When :menuselection:`Firewall --> Settings --> Advanced` *Reflection for 1:1* is activated, automatic Reflection NAT rules for all One-to-One NAT rules are generated.
 
-If you want to create manual Reflection and Hairpin NAT rules, leave *Reflection for 1:1* disabled and follow the steps in :ref:`Method 1 <nat-method1>`. The only change is not adding the WAN interface to the Port Forward rules you create. The resulting Port Forward and Outbound NAT rules are **in addition** to the existing One-to-One NAT rules.
+If you want to create manual Reflection and Hairpin NAT rules, leave *Reflection for 1:1* disabled and follow the steps in :ref:`Method 1 <nat-method1>`. The only change is not adding the WAN interface to the Destination NAT (Port Forward) rules you create. The resulting Destination NAT (Port Forward) and Outbound NAT rules are **in addition** to the existing One-to-One NAT rules.
 
-If your Port Forward rule has 1 interface selected (e.g. LAN), the resulting *Filter rule association: Add associated filter rule* will appear in :menuselection:`Firewall --> Rules --> LAN`. If you have more than 1 interface selected, it will appear in `Firewall --> Rules --> Floating`.
+If your Destination NAT (Port Forward) rule has 1 interface selected (e.g. LAN), the resulting *Filter rule association: Add associated filter rule* will appear in :menuselection:`Firewall --> Rules --> LAN`. If you have more than 1 interface selected, it will appear in `Firewall --> Rules --> Floating`.
 
 .. _troubleshooting-nat-rules:
 
@@ -222,7 +222,7 @@ Troubleshooting NAT Rules
     * Open SSH shell:
     * Display all loaded and active NAT rules:
     * ``pfctl -s nat``
-    * "rdr" means :menuselection:`Firewall --> NAT --> Port Forward` rules.
+    * "rdr" means :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` rules.
     * "nat" means :menuselection:`Firewall --> NAT --> Outbound` rules.
     * You can also check the rules in the GUI in :menuselection:`Firewall --> Diagnostics --> Statistics`
 

@@ -43,19 +43,17 @@ the internal IP, in order to avoid taking a detour and applying rules meant for 
 The default, Round Robin, will simply distribute packets to one server after the other. If you only have one external
 IP, this option has no effect.
 
----------------
-Port forwarding
----------------
+------------------------------
+Destination NAT (Port Forward)
+------------------------------
 
 When multiple clients share an external IP address, any connection not initiated by one of the clients will not
 succeed since the firewall will not know where to send the traffic. This can be addressed by creating port
 forwarding rules. For example, for a web server behind the firewall to be accessible, ports 80 and 443 need to
 be redirected to it.
 
-Port forwarding is also referred to as “Destination NAT” or “DNAT”.
-
-In OPNsense, port forwarding can be set up by navigating to :menuselection:`Firewall --> NAT --> Port Forward`. Here, you will see
-an overview of port forwarding rules. New rules can be added by clicking **Add** in the upper right corner.
+In OPNsense, Destination NAT (Port Forward) can be set up by navigating to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`. Here, you will see
+an overview of Destination NAT (Port Forward) rules. New rules can be added by clicking **Add** in the upper right corner.
 
 When adding a rule, the following fields are available:
 
@@ -120,7 +118,7 @@ This option controls the creation of linked filter rules in :menuselection:`Fire
 
        .. Note::
 
-          If multiple `Interfaces` are selected in the :menuselection:`Firewall --> NAT --> Port Forward` rule, the filter rule will
+          If multiple `Interfaces` are selected in the :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` rule, the filter rule will
           appear in :menuselection:`Firewall --> Rules --> Floating`.
 
     .. tab:: Add unassociated filter rule
@@ -130,7 +128,7 @@ This option controls the creation of linked filter rules in :menuselection:`Fire
 
        .. Note::
 
-          This option is recommended for more comple setups, like Port Forward rules on VPN interfaces.
+          This option is recommended for more comple setups, like Destination NAT (Port Forward) rules on VPN interfaces.
           The filter rule can be edited and features like `reply-to` disabled.
 
 

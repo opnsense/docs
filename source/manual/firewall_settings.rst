@@ -22,18 +22,18 @@ Network Address Translation
     
 .. Note::
     * Examine the automatic Reflection rules either in the shell with ``pfctl -s nat`` or in the GUI at :menuselection:`Firewall --> Diagnostics --> Statistics --> rules`.
-    * :code:`rdr` means redirection. Redirection rules are :menuselection:`Firewall --> NAT --> Port Forward` rules, also known as *Destination NAT*. *Destination NAT* changes the destination IP of a packet.
+    * :code:`rdr` means redirection. Redirection rules are :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` rules, also known as *Destination NAT*. *Destination NAT* changes the destination IP of a packet.
     * :code:`nat` rules are :menuselection:`Firewall --> NAT --> Outbound` rules, also known as *Source NAT*. *Source NAT* changes the source IP of a packet.
     * *Reflection NAT* is just :code:`rdr`. *Hairpin NAT* is a combination of :code:`rdr` and :code:`nat`.
 
 
-Reflection for port forwards
+Reflection for Destination NAT (Port Forward)s
 .....................................
 
-Disabled by default, when enabled the system will generate :code:`rdr` rules to reflect port forwards on internal interfaces automatically (interfaces without a gateway set).
+Disabled by default, when enabled the system will generate :code:`rdr` rules to reflect Destination NAT (Port Forward)s on internal interfaces automatically (interfaces without a gateway set).
 
 
-If you create a :menuselection:`Firewall --> NAT --> Port Forward` rule with the interface as :code:`wan`, the automatic :code:`rdr` rules will be created for any of your other connected interfaces (e.g. :code:`lan`, :code:`opt1`, :code:`lo0`). 
+If you create a :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` rule with the interface as :code:`wan`, the automatic :code:`rdr` rules will be created for any of your other connected interfaces (e.g. :code:`lan`, :code:`opt1`, :code:`lo0`).
 
 
 Reflection for 1:1

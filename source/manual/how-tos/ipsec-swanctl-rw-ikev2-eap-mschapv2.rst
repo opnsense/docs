@@ -717,7 +717,7 @@ Firewall rules, Outbound NAT and DNS
 Now that you have configured split or full tunnel mode, you need rules to allow the traffic into your LAN and to the WAN (Internet). For IPv4 connection to the WAN (Internet) you need an Outbound NAT rule for IP-Masquerading. If you want the OPNsense to handle DNS, you can to configure Unbound so your roadwarriors use it as DNS server to prevent DNS leaks.
 
 .. Tip::
-    If you have internal IPv4 services (like a mailserver) that have external IPs in their DNS A-Records, you should configure Reflection NAT. There is a tutorial in the How-To section of Network Address Translation. If you follow it, add the ``ipsec`` interface in the Port Forward rules you create.
+    If you have internal IPv4 services (like a mailserver) that have external IPs in their DNS A-Records, you should configure Reflection NAT. There is a tutorial in the How-To section of Network Address Translation. If you follow it, add the ``ipsec`` interface in the Destination NAT (Port Forward) rules you create.
 
 Firewall: Aliases
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

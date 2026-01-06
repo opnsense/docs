@@ -266,7 +266,7 @@ All traffic going to port 80 or 443 is redirected to localhost, ports 9000 + <zo
 and ports 8000 + <zone id> for HTTPS.
 
 ============================ ===============================
- **Type**                     Port forward
+ **Type**                     Destination NAT (Port Forward)
  **Interface**                <Zone interface>
  **Protocol**                 TCP
  **Source Invert**            Yes
@@ -281,7 +281,7 @@ and ports 8000 + <zone id> for HTTPS.
 ============================ ===============================
 
 ============================ ===============================
- **Type**                     Port forward
+ **Type**                     Destination NAT (Port Forward)
  **Interface**                <Zone interface>
  **Protocol**                 TCP
  **Source Invert**            Yes

@@ -74,7 +74,7 @@ Transparent Forward Proxy
 
 :Transparent Port:
     This port is the target for your NAT rule.
-    Please create a rule for this port in the "Port Forward" section of the firewall.
+    Please create a rule for this port in the "Destination NAT (Port Forward)" section of the firewall.
 :Transparent DNS Port:
     If you are using Tor transparently, you can resolve .onion addresses
     to IPs of the given pool for example. This also allows to keep DNS secret.
@@ -157,7 +157,7 @@ For any port you want to forward, you have to click `+` and fill out the form:
 .. image:: images/tor_hidden_services_route_edit.png
 
 :Hidden Service:
-    The service on which the port forward applies.
+    The service on which the Destination NAT (Port Forward) applies.
     The entries in this list are the services created in the previous step.
 :Port:
     The virtual Port in the Tor network.
