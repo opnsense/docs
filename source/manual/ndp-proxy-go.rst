@@ -248,7 +248,6 @@ Option                              Value
 **Invert Destination**                          ``X``
 **Destination**                                 ``ndp_proxy_global``
 **Destination port**                            Any
-**Filter rule association**                     Pass
 **Description**                                 Allow IPv6 internet access for all LAN clients known by NDP Proxy
 ==============================================  ====================================================================================================
 
@@ -324,12 +323,19 @@ that have been created in the `Firewall Rules` step:
 **Destination port**                            DNS
 **Redirect target IP**                          ``fd01::1``
 **Redirect target port**                        DNS
+**Filter rule association**                     Pass
 **Description**                                 Redirect LAN IPv6 DNS requests to Unbound
 ==============================================  ====================================================================================================
 
 - Press **Save** and **Apply**
 
 Ensure that Unbound listens on port 53 and on all network interfaces, or the loopback interface will not be included and IPv6 DNS will not work.
+
+
+.. Tip::
+   
+    If additional networks are proxied, just add more aliases (e.g., ``ndp_proxy_vlan1``) and create the same NAT rule on that interface.
+    Alternatively, `any` could be used as source and destination, though this will match any traffic so be careful.
 
 
 High Availability
@@ -355,7 +361,7 @@ Logging
 
 With the debug logging you can find out the details of the proxies behavior.
 
-You can see logs of received and sent RA, NDP (NS, NA) and DPD messages. If something does not work as expected,
+You can see logs of received and sent RA, NDP (NS, NA) and DAD messages. If something does not work as expected,
 reading the log file is the first step to troubleshoot.
 
 Go to :menuselection:`Services --> NDP Proxy --> Settings`
