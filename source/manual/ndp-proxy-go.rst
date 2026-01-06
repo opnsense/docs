@@ -257,13 +257,13 @@ Now your IPv6 firewalling is tight. It is self-healing when client addresses cha
    
 .. Tip::
    
-    If additional networks are proxied, just add more aliases (e.g., ``ndp_proxy_vlan1``) and create the same rule on that interface.
+   If additional networks are proxied, just add more aliases (e.g., ``ndp_proxy_vlan1``) and create the same rule on that interface.
 
 
 .. Tip::
 
-    If you need client specific aliases, take a look at the ``MAC address`` alias type in :menuselection:`Firewall --> Aliases`,
-    which can dynamically track IPv4 and IPv6 addresses of a single client.
+   If you need client specific aliases, take a look at the ``MAC address`` alias type in :menuselection:`Firewall --> Aliases`,
+   which can dynamically track IPv4 and IPv6 addresses of a single client.
 
 
 NAT Rules (Redirect DNS)
@@ -329,13 +329,15 @@ that have been created in the `Firewall Rules` step:
 
 - Press **Save** and **Apply**
 
-Ensure that Unbound listens on port 53 and on all network interfaces, or the loopback device will not be included and IPv6 DNS will not work.
+.. Attention::
+
+   Ensure that Unbound listens on port 53 and on all network interfaces, or the loopback device will not be included and IPv6 DNS will not work.
 
 
 .. Tip::
    
-    If additional networks are proxied, just add more aliases (e.g., ``ndp_proxy_vlan1``) and create the same NAT rule on that interface.
-    Alternatively, `any` could be used as source and destination, though this will match any traffic so be careful.
+   If additional networks are proxied, just add more aliases (e.g., ``ndp_proxy_vlan1``) and create the same NAT rule on that interface.
+   Alternatively, `any` could be used as source and destination, though this will match any traffic so be careful.
 
 
 High Availability
@@ -345,15 +347,21 @@ To use the proxy in HA, enable the advanced mode in :menuselection:`Services -->
 
 Ensure that you use `Proxy router advertisements` to proxy the RAs of the ISP. Deactivate any other RA daemon on the selected downstream interfaces.
 
-Since NDP is based on a single router identity, there will be a short interruption during failover when the ISP router relearns the MAC address.
+Since Neighbor Discovery relies on a single link-layer router identity, a brief interruption may occur during failover while both the
+upstream ISP router and downstream clients relearn the router’s MAC address.
 
-Please note that you do not need any virtual IPv6 addresses on any of the upstream and downstream interfaces, the proxy will only use the real
+Do not configure any virtual IPv6 addresses on any of the upstream and downstream interfaces, the proxy will only use the real
 interface link-local and MAC addresses.
 
 .. Tip::
 
    If you use NAT to rewrite the DNS server, create the same loopback device as outlined in the `NAT Rules (Redirect DNS)` section on both Master
-   and Backup with the same IPv6 address. That way you can use the same IPv6 address as target in the NAT rule without a virtual IP address.
+   and Backup with the same IPv6 address. That way, you can use the same IPv6 address as target in the NAT rule without a virtual IP address.
+
+
+.. Attention::
+
+   Do not forget to add NDP Proxy to `Services` in :menuselection:`System --> High Availability --> Settings` and synchronize.
 
 
 Logging
