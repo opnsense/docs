@@ -162,7 +162,7 @@ Method 2 - Creating Automatic Port-Forward NAT (DNAT), Manual Outbound NAT (SNAT
 ------------------------------------------------------------------------------------------------------------
 
 Go to :menuselection:`Firewall --> Settings --> Advanced`
-    Enable *Reflection for Destination NAT (Port Forward)s* to create automatic rules for all entries :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` that have ``WAN`` as interface.
+    Enable *Reflection for Destination NAT (Port Forwards)* to create automatic rules for all entries :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` that have ``WAN`` as interface.
 
 .. _nat-method2-portforward:
 
