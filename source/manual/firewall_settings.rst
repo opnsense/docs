@@ -30,7 +30,7 @@ Network Address Translation
 Reflection for Destination NAT (Port Forwards)
 .....................................
 
-Disabled by default, when enabled the system will generate :code:`rdr` rules to reflect Destination NAT (Port Forward)s on internal interfaces automatically (interfaces without a gateway set).
+Disabled by default, when enabled the system will generate :code:`rdr` rules to reflect Destination NAT (Port Forwards) on internal interfaces automatically (interfaces without a gateway set).
 
 
 If you create a :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` rule with the interface as :code:`wan`, the automatic :code:`rdr` rules will be created for any of your other connected interfaces (e.g. :code:`lan`, :code:`opt1`, :code:`lo0`).
