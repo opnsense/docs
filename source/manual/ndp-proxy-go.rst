@@ -272,9 +272,9 @@ NAT Rules (Redirect DNS)
 NAT rules are only required if you want to redirect DNS requests to the local running Unbound server.
 Most ISPs will include DNS servers as RDNSS options in the RAs, which could circumvent the local DNS server.
 
-Since IPv6 requires a routable address as target, we will configure a loopback interface.
+Since IPv6 requires a routable address as target, we will configure a loopback device.
 
-Go to :menuselection:`Interfaces --> Devices --> Loopback` and create a new loopback interface:
+Go to :menuselection:`Interfaces --> Devices --> Loopback` and create a new loopback device:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -285,7 +285,7 @@ Option                              Value
 
 - Press **Apply**
 
-Go to :menuselection:`Interfaces --> Assignments` and assign the new loopback interface:
+Go to :menuselection:`Interfaces --> Assignments` and assign the new loopback device:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -296,7 +296,7 @@ Option                              Value
 
 - Press **Add**
 
-Go to :menuselection:`Interfaces --> lo1_DNS` and assign IP addresses to the loopback interface:
+Go to :menuselection:`Interfaces --> lo1_DNS` and assign IP addresses to the loopback device:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -329,7 +329,7 @@ that have been created in the `Firewall Rules` step:
 
 - Press **Save** and **Apply**
 
-Ensure that Unbound listens on port 53 and on all network interfaces, or the loopback interface will not be included and IPv6 DNS will not work.
+Ensure that Unbound listens on port 53 and on all network interfaces, or the loopback device will not be included and IPv6 DNS will not work.
 
 
 .. Tip::
@@ -352,7 +352,7 @@ interface link-local and MAC addresses.
 
 .. Tip::
 
-   If you use NAT to rewrite the DNS server, create the same loopback interface as outlined in the `NAT Rules (Redirect DNS)` section on both Master
+   If you use NAT to rewrite the DNS server, create the same loopback device as outlined in the `NAT Rules (Redirect DNS)` section on both Master
    and Backup with the same IPv6 address. That way you can use the same IPv6 address as target in the NAT rule without a virtual IP address.
 
 
