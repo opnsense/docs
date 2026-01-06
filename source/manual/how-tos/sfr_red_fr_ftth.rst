@@ -281,7 +281,7 @@ Create the configuration for outbound domain:
 **Configuring NAT to redirect SFR/RED BOX calls to NGINX**
 ----------------------------------------------------------
 
-To allow correct Destination NAT (Port Forward)ing, we will configure OPNSense to affect a **static** IP to the SFR/RED Box and we will create an alias for it.
+To allow correct Destination NAT (Port Forwarding), we will configure OPNSense to affect a **static** IP to the SFR/RED Box and we will create an alias for it.
 
 Services / DHCPv4 / [LAN]
 +++++++++++++++++++++++++
