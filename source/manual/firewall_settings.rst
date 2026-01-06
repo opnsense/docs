@@ -27,7 +27,7 @@ Network Address Translation
     * *Reflection NAT* is just :code:`rdr`. *Hairpin NAT* is a combination of :code:`rdr` and :code:`nat`.
 
 
-Reflection for Destination NAT (Port Forward)s
+Reflection for Destination NAT (Port Forwards)
 .....................................
 
 Disabled by default, when enabled the system will generate :code:`rdr` rules to reflect Destination NAT (Port Forward)s on internal interfaces automatically (interfaces without a gateway set).
