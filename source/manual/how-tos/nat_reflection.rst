@@ -83,7 +83,7 @@ Method 1 - Creating manual Port-Forward NAT (DNAT), manual Outbound NAT (SNAT), 
 ------------------------------------------------------------------------------------------------------------
 
 Go to :menuselection:`Firewall --> Settings --> Advanced`
-    Disable *Reflection for Destination NAT (Port Forward)s*, *Reflection for 1:1* and *Automatic outbound NAT for Reflection*
+    Disable *Reflection for Destination NAT (Port Forwards)*, *Reflection for 1:1* and *Automatic outbound NAT for Reflection*
 
 .. _nat-method1-portforward:
 
