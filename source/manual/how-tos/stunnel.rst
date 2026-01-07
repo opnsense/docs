@@ -71,7 +71,7 @@ To add a new tunnel, go to :menuselection:`VPN -> Stunnel -> Configuration` and 
 
 :Listen address:
 
-    The address to listen on, we generally advice to use a loopback interface here and forward traffic to it using a :doc:`port forward <../nat>`.
+    The address to listen on, we generally advice to use a loopback interface here and forward traffic to it using a :doc:`Destination NAT (Port Forward) <../nat>`.
     Leave this default (127.0.0.1) for our example.
 
 .. Note::
@@ -119,7 +119,7 @@ To add a new tunnel, go to :menuselection:`VPN -> Stunnel -> Configuration` and 
 
 .. Tip::
 
-    To forward traffic to the loopback address from your :code:`wan` interface, go to :menuselection:`Firewall -> NAT -> Port Forward`
+    To forward traffic to the loopback address from your :code:`wan` interface, go to :menuselection:`Firewall -> NAT -> Destination NAT (Port Forward)`
     and add a new rule with the following settings: Interface :code:`WAN`, Protocol :code:`TCP`, Destination :code:`WAN address`,
     Destination port range :code:`31280`, Redirect target IP :code:`127.0.0.1` and Redirect target port :code:`31280`
 

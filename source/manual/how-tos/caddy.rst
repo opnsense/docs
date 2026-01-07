@@ -561,7 +561,7 @@ Go to :menuselection:`Services --> Caddy Web Server --> General Settings --> Adv
 
 From now on, Caddy will run as `www` user and group. This can be verified by checking the user of the Caddy process.
 
-.. Note:: With this configuration, `Port Forward` should be used to forward port 80 and 443 to the new alternative HTTP and HTTPS Ports. For IPv6 additional steps could be required.
+.. Note:: With this configuration, `Destination NAT (Port Forward)` should be used to forward port 80 and 443 to the new alternative HTTP and HTTPS Ports. For IPv6 additional steps could be required.
 
 
 Bind Caddy to Interfaces
@@ -851,7 +851,7 @@ FAQ
 
 * | `Cloudflare` is not required to get automatic certificates.
 * | You can use the os-acme-client plugin to generate wildcard certificates. Set up an automation in the ACME client that reloads Caddy (do not restart it).
-* | `Port Forwards`, `NAT Reflection`, `Split Horizon DNS` or `DNS Overrides in Unbound` are not required. Only create Firewall rules that allow traffic to the default ports of Caddy.
+* | `Destination NAT (Port Forward)`, `NAT Reflection`, `Split Horizon DNS` or `DNS Overrides in Unbound` are not required. Only create Firewall rules that allow traffic to the default ports of Caddy.
 * | Even though internal clients will use the external IP address to access the reverse proxied services, the traffic will not pass over the internet. It will stay inside the OPNsense. Only in rare cases where there is multi WAN, the traffic can be routed from one WAN interface to the other over the internet, due to `reply-to` settings.
 * | Firewall rules to allow Caddy to reach internal services are not required. OPNsense has a default rule that allows all traffic originating from itself to be allowed.
 * | ACME clients on reverse proxied upstream destinations will not be able to issue certificates. Caddy intercepts ``/.well-known/acme-challenge``. This can be solved by using the `HTTP-01 Challenge Redirection` option in the advanced mode of domains. Please check the tutorial section for an example.

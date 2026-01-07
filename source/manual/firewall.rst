@@ -165,7 +165,7 @@ Our default deny rule uses this property for example (if no rule applies, drop t
 .. Warning::
 
     **NAT rules are always processed before filter rules!**
-    So for example, if you define a `NAT : port forwarding rules <nat.html#port-forwarding>`__  *without a associated rule*, i.e. **Filter rule association** set to **Pass**, this has the consequence, that no other rules will apply!
+    So for example, if you define a `NAT : Destination NAT (Port Forwarding) rules <nat.html#port-forwarding>`__  *without a associated rule*, i.e. **Filter rule association** set to **Pass**, this has the consequence, that no other rules will apply!
 
 .. Tip::
 

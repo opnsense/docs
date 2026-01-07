@@ -309,7 +309,7 @@ Option                              Value
 
 - Press **Save**
 
-Go to :menuselection:`Firewall --> NAT --> Port Forward` and create a NAT rule that redirects IPv6 DNS. We will use the same firewall aliases
+Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` and create a NAT rule that redirects IPv6 DNS. We will use the same firewall aliases
 that have been created in the `Firewall Rules` step:
 
 ==============================================  ====================================================================================================

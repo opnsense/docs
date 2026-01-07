@@ -281,7 +281,7 @@ Create the configuration for outbound domain:
 **Configuring NAT to redirect SFR/RED BOX calls to NGINX**
 ----------------------------------------------------------
 
-To allow correct port forwarding, we will configure OPNSense to affect a **static** IP to the SFR/RED Box and we will create an alias for it.
+To allow correct Destination NAT (Port Forwarding), we will configure OPNSense to affect a **static** IP to the SFR/RED Box and we will create an alias for it.
 
 Services / DHCPv4 / [LAN]
 +++++++++++++++++++++++++
@@ -293,10 +293,10 @@ Click on `[+]` to add a static mapping:
 .. image:: images/SFRRED_services_dhcp_lan.png
 	:width: 100%
 
-Firewall / NAT / Port Forward
+Firewall / NAT / Destination NAT (Port Forward)
 +++++++++++++++++++++++++++++
 
-Select :menuselection:`Firewall --> NAT --> Port Forward`
+Select :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
 
 Add a new forwarding rule:
 

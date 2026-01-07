@@ -132,7 +132,7 @@ Remote Network          10.0.8.0/24 :sup:`2`
 
 .. admonition:: Note  :sup:`1`
 
-   Leave empty to bind to all addresses assigned to this machine or use a loopback address combined with a port forward when
+   Leave empty to bind to all addresses assigned to this machine or use a loopback address combined with a Destination NAT (Port Forward) when
    the external address is not static.
 
 .. admonition:: Note :sup:`2`
