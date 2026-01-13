@@ -211,7 +211,6 @@ gateway hop which your ISP should provide to you as well.
 
     You can use this mode for WAN and LAN connections.
 
-
 DHCPv6
 -------------------------------
 
@@ -226,6 +225,7 @@ Setting "Request only an IPv6 prefix" may be required in case the ISP refuses to
 .. Note::
 
     You can use this mode for WAN connections only.
+
 
 SLAAC
 -------------------------------
