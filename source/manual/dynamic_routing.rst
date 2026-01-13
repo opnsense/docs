@@ -468,6 +468,7 @@ BGP (Border Gateway Protocol)
        **Allow AS In**                     Accept incoming routes with AS path containing AS number with the same value as the current system AS.
        **Disable Connected Check**         Allows eBGP connections over loopback addresses by bypassing checks for direct connections.
        **Attribute Unchanged**             Keeps specified attributes (like `MED`, `AS-Path`, etc.) unchanged in updates to the neighbor.
+       **Enable BGP-Capabilities**         Allows this neighbor to negotiate BGP Capabilities including link-local, extended nexthop, dynamic, and FQDN.
        **Prefix-List In**                  Prefix list to filter inbound prefixes from this neighbor.
        **Prefix-List Out**                 Prefix list to filter outbound prefixes sent to this neighbor.
        **Route-Map In**                    Route-map to apply to routes received from this neighbor.
