@@ -96,12 +96,19 @@ For IPv6:
  6RD Border Relay                  The 6RD IPv4 gateway address assigned by your ISP
  6RD IPv4 Prefix length            The 6RD IPv4 prefix length. Normally specified by the ISP. A value of 0 means we embed the entire IPv4 address in the 6RD prefix.
  6RD IPv4 Prefix address           The 6RD IPv4 prefix address. Optionally overrides the automatic detection.
- **Track IPv6 interface**
+ **Identity Association**
+ IPv6 Interface                    This selects the dynamic IPv6 WAN interface to track for configuration.
+ IPv6 Prefix ID                    The delegated IPv6 prefix ID. This determines the configurable /64 network ID based on the dynamic IPv6 connection.
+ **Track Interface (legacy)**
  IPv6 Interface                    This selects the dynamic IPv6 WAN interface to track for configuration.
  IPv6 Prefix ID                    The delegated IPv6 prefix ID. This determines the configurable /64 network ID based on the dynamic IPv6 connection.
  Manual Configuration              If this option is set, you will be able to manually set the DHCPv6 and Router Advertisements service for this interface. Use with care.
 ================================= ===============================================================================================================================================
 
+.. Note::
+
+    *Identity Association* is almost the same as *Track Interface (legacy)*, yet without automatic DHCPv6 and Router Advertisement configuration. It is mainly used
+    for Dnsmasq's RA and DHCPv6 configuration, which is the default as of version 26.1.
 
 -----------------------------
 Mobile Networking

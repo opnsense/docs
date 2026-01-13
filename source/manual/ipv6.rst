@@ -211,6 +211,7 @@ gateway hop which your ISP should provide to you as well.
 
     You can use this mode for WAN and LAN connections.
 
+
 DHCPv6
 -------------------------------
 
@@ -225,7 +226,6 @@ Setting "Request only an IPv6 prefix" may be required in case the ISP refuses to
 .. Note::
 
     You can use this mode for WAN connections only.
-
 
 SLAAC
 -------------------------------
@@ -259,7 +259,22 @@ but is currently not being parsed and presented to the user.
 
     You can use this mode for WAN connections only.
 
-Track Interface
+Identity Association
+-------------------------------
+
+This mode uses a WAN DHCPv6 interface to assign a single (/64) network to your LAN interfaces.
+
+It is almost the same as Track Interface (legacy), with the important distinction that it does not autoconfigure any services
+like :code:`radvd` or :code:`dnsmasq`.
+
+Configuration of DHCPv6 and Router Advertisements must be done manually via the preferred available services.
+
+.. Note::
+
+    You can use this mode for LAN connections only.
+
+
+Track Interface (legacy)
 -------------------------------
 
 This mode uses a WAN DHCPv6 interface to assign a single (/64) network to your LAN interfaces.
@@ -285,6 +300,26 @@ and addresses using any of the available dhcpv6 servers.
 .. Note::
 
     You can use this mode for LAN connections only.
+
+
+Link Local
+-------------------------------
+
+This mode generates an automatic link-local address on the selected interfaces and does not process router advertisements,
+which means SLAAC is not generated and routes are not installed automatically.
+
+The usecases for this mode are more advanced, examples are:
+
+-  Distribute a larger prefix that is received via a static or dynamic route (BGP). These routes most likely target
+   the link-local address of the WAN interface. To delegate a prefix to customers, set the LAN interface to link-local and use KEA for DHCPv6-PD.
+   KEA will set a route to the next hop link-local address automatically.
+
+-  NDP proxying, as link-local prevents the same on-link prefix to appear on multiple links which would cause routing issues.
+   Such a scenario requires an additional NDP proxy plugin.
+
+.. Note::
+
+    You can use this mode for WAN and LAN connections.
 
 
 Basic setup and troubleshooting
