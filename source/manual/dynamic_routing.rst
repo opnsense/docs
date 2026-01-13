@@ -465,6 +465,10 @@ BGP (Border Gateway Protocol)
        **Connect Timer**                   Interval to attempt reconnecting with a neighbor after a disconnect.
        **Send Defaultroute**               Sends a default route to the neighbor, useful in small AS environments where a full routing table is not necessary.
        **Enable AS-Override**              Allows replacement of the neighbor's AS with the local AS, common in BGP confederations.
+       **Remove Private AS**               Configure how ASNs are propagated in outbound updates. Depending on selection, they can be removed or replaced.
+                                           Remove Private AS: Remove Private ASNs in outbound updates. Remove All AS: Remove all ASNs in outbound updates.
+                                           Replace Private AS: Replace private ASNs with our ASN in outbound updates.
+                                           Replace All AS: Replace all ASNs with our ASN in outbound updates.
        **Allow AS In**                     Accept incoming routes with AS path containing AS number with the same value as the current system AS.
        **Disable Connected Check**         Allows eBGP connections over loopback addresses by bypassing checks for direct connections.
        **Attribute Unchanged**             Keeps specified attributes (like `MED`, `AS-Path`, etc.) unchanged in updates to the neighbor.
