@@ -24,21 +24,38 @@ The service can be configured in :menuselection:`Services --> Router Advertiseme
 
 .. tabs::
 
-    .. tab:: General
+    .. tab:: General Settings
 
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Enabled**                               Enable or disable this entry.
-        **Interface**                             Choose the interface that should send Router Advertisements. The prefix will be automatically
-                                                  constructed from available IPv6 addresses of this interface.
-        **Constructor**                           Construct a prefix out of IPv6 addresses of an additional interface (e.g. the WAN interface).
-                                                  In most cases an NDP proxy is required if the same prefix is shared by multiple interfaces.
+        **Enabled**                               Enable or disable this entry. If "Track Interface (legacy)" is used, an existing
+                                                  disabled entry will also deactivate advertisements on that interface. Alternatively,
+                                                  switch to "Identity Association" for full manual configuration if needed.
+        **Interface**                             Choose the interface that should send Router Advertisements. A prefix will be constructed
+                                                  from the primary IP of that interface, which is assigned by "Identity Association" or
+                                                  "Track interface (legacy)" IPv6 modes of said interface. If additional virtual IP addresses exist on
+                                                  this interface, their prefixes will also be advertised.
         **Mode**                                  Select which flags to set in Router Advertisements sent from this interface.
         **Minimum interval**                      The minimum time allowed between sending unsolicited multicast router advertisements
                                                   from the interface, in seconds.
         **Maximum interval**                      The maximum time allowed between sending unsolicited multicast router advertisements
                                                   from the interface, in seconds.
+        **Recursive DNS Servers (RDNSS)**         The default is to use this interface IP address with an enabled DNS service or the
+                                                  configured global DNS servers. You may specify up to three explict servers here instead.
+        **DNS Search List (DNSSL)**               The default is to use the domain name of this system as the DNSSL option.
+                                                  You may specify explicit domains here instead.
+        **Routes**                                Routes are specified in CIDR format. The prefix of a route definition should be network prefix;
+                                                  it can be used to advertise more specific routes to the hosts.
+        ========================================= ====================================================================================
+
+    .. tab:: Advanced Settings
+
+        ========================================= ====================================================================================
+        **Option**                                **Description**
+        ========================================= ====================================================================================
+        **Constructor**                           Alternatively a WAN interface prefix can be used in the constructor.
+                                                  In most cases an NDP proxy is required if the same prefix is shared by multiple interfaces.
         **Preference**                            Select the Priority for the Router Advertisement (RA) Daemon.
         **Deprecate Prefix**                      Deprecate advertised prefixes on shutdown by announcing a zero preferred lifetime.
         **Default Lifetime**                      Lifetime in seconds this router is considered a valid default router.
@@ -49,32 +66,9 @@ The service can be configured in :menuselection:`Services --> Router Advertiseme
         **NAT64 prefix**                          The NAT64 prefix included in the router advertisements.
                                                   The "well-known prefix" reserved for this service is 64:ff9b::/96.
         **Link MTU**                              Advertise a specific MTU to clients. Must be equal or greater than 1280 and valid for the link.
-        ========================================= ====================================================================================
-
-    .. tab:: DNS Settings
-
-        ========================================= ====================================================================================
-        **Option**                                **Description**
-        ========================================= ====================================================================================
         **Enable DNS**                            Control the sending of the embedded DNS configuration (RFC 8106).
-        **Recursive DNS Servers (RDNSS)**         The default is to use this interface IP address with an enabled DNS service or the
-                                                  configured global DNS servers. You may specify up to three explict servers here instead.
         **Recursive DNS Servers Lifetime**        Lifetime in seconds for advertised recursive DNS servers.
-        **DNS Search List (DNSSL)**               The default is to use the domain name of this system as the DNSSL option.
-                                                  You may specify explicit domains here instead.
         **DNS Search List Lifetime**              Lifetime in seconds for advertised DNS search domains.
-        ========================================= ====================================================================================
-
-        For supported clients, DNS settings can also be propagated by radvd as detailed in `RFC 8106 <https://tools.ietf.org/html/rfc8106>`__
-
-
-    .. tab:: Routes
-
-        ========================================= ====================================================================================
-        **Option**                                **Description**
-        ========================================= ====================================================================================
-        **Routes**                                Routes are specified in CIDR format. The prefix of a route definition should be network prefix;
-                                                  it can be used to advertise more specific routes to the hosts.
         **Route Lifetime**         	              Lifetime in seconds for advertised routes.
                                                   configured global DNS servers. You may specify up to three explict servers here instead.
         **Remove Route**                          Withdraw advertised routes on shutdown by sending a zero lifetime.
