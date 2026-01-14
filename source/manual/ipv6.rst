@@ -264,7 +264,7 @@ Identity Association
 
 This mode uses a WAN DHCPv6 interface to assign a single (/64) network to your LAN interfaces.
 
-It is almost the same as Track Interface (legacy), with the important distinction that it does not autoconfigure any services
+It is similar to Track Interface (legacy), with the important distinction that it does not auto-configure any IPv6 services
 like :code:`radvd` or :code:`dnsmasq`.
 
 Configuration of DHCPv6 and Router Advertisements must be done manually via the preferred available services.
