@@ -31,9 +31,9 @@ The service can be configured in :menuselection:`Services --> Router Advertiseme
         ========================================= ====================================================================================
         **Enabled**                               Enable or disable this entry. If "Track Interface (legacy)" is used, an existing
                                                   disabled entry will also deactivate advertisements on that interface. Alternatively,
-                                                  switch to "Identity Association" for full manual configuration if needed.
+                                                  switch to "Identity association" for full manual configuration if needed.
         **Interface**                             Choose the interface that should send Router Advertisements. A prefix will be constructed
-                                                  from the primary IP of that interface, which is assigned by "Identity Association" or
+                                                  from the primary IP of that interface, which is assigned by "Identity association" or
                                                   "Track interface (legacy)" IPv6 modes of said interface. If additional virtual IP addresses exist on
                                                   this interface, their prefixes will also be advertised.
         **Mode**                                  Select which flags to set in Router Advertisements sent from this interface.
@@ -118,4 +118,40 @@ A detailed overview of the :code:`radvd` settings determined by the mode can be 
 Configuration examples
 --------------------------------
 
-# TODO
+
+Advertise a prefix on LAN
+--------------------------------------------------
+
+The most common configuration would be DHCPv6 on the WAN interface and receiving a routed prefix via DHCPv6-PD.
+When setting the LAN IPv6 configuration to either of "Track Interface (legacy)" or "Identity association" with a unique prefix ID,
+router advertisements can send that prefix and a default route to clients.
+
+Go to :menuselection:`Services --> Router Advertisements` and add a new entry:
+
+========================================= ====================================================================================
+**Option**                                **Description**
+========================================= ====================================================================================
+**Enabled**                               X
+**Interface**                             LAN
+========================================= ====================================================================================
+
+Press **Save** and **Apply**
+
+Per default, RDNSS and DNSSL options will be sent to clients, containing the IPv6 address of the LAN interface, and the default system domain.
+
+
+Advertise multiple prefixes on LAN
+--------------------------------------------------
+
+If an ULA (Unique Local Address) prefix should be sent in addition to a GUA (Global Unicast Address) prefix, create a virtual IPv6 address
+in :menuselection:`Interfaces --> Virtual IPs`. Configure it on the LAN interface, make sure the prefix length is /64.
+
+Afterwards, applying the configuration in :menuselection:`Services --> Router Advertisements` will configure the additional prefix.
+
+
+High availability
+--------------------------------------------------
+
+For high availability with IPv6, static prefixes are a requirement for seamless failover.
+
+You can follow this setup example: :doc:`Configure CARP </manual/how-tos/carp.rst>`
