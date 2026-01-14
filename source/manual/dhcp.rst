@@ -11,7 +11,7 @@ Available Options
 
 There are different DHCP servers/relays to choose from:
 
-    - :ref:`Dnsmasq <dnsmasq-dhcp>`
+    - :ref:`Dnsmasq <dnsmasq-dhcp>` (default)
     - :ref:`KEA <kea-dhcp>`
     - :ref:`Dhcrelay <dhcrelay>`
     - :ref:`ISC <isc-dhcp>` (EOL)
@@ -35,7 +35,10 @@ The dnsmasq DHCPv6 server provides the same set of features as the DHCPv4 server
 neat feature which allows naming for clients which use DHCPv4 and stateless autoconfiguration only for IPv6 configuration.
 There is support for doing address allocation (both DHCPv6 and RA) from subnets which are dynamically delegated via DHCPv6 prefix delegation.
 
-.. Tip:: `Dnsmasq` is the perfect DNS & DHCP server for small and medium sized setups (less than 1000 unique clients)
+.. Tip::
+
+    `Dnsmasq` is the perfect DNS & DHCP server for small and medium sized setups (less than 1000 unique clients).
+    It is the default for DHCPv4, DHCPv6 and Router Advertisements out of the box.
 
 .. _kea-dhcp:
 
