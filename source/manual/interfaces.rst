@@ -107,7 +107,7 @@ For IPv6:
 
 .. Note::
 
-    *Identity Association* is almost the same as *Track Interface (legacy)*, yet without automatic DHCPv6 and Router Advertisement configuration. It is mainly used
+    *Identity Association* offers similar functionality like *Track Interface (legacy)*, but without automatic ISC-DHCPv6 and Radvd configuration. It is intended
     for pure RA and DHCPv6 configuration using Dnsmasq or Kea/Radvd.
 
 -----------------------------
