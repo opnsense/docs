@@ -14,7 +14,7 @@ It also defines "Neighbor Discovery Optimization for IPv6 over Low-Power Wireles
 
 .. Attention::
 
-      :menuselection:`Services --> Dnsmasq DNS & DHCP` is the default RA daemon in new installations, deactivate it if you want to use radvd.
+      Dnsmasq is the default RA daemon in new installations, deactivate its *Router Advertisement* setting if you want to use radvd.
 
 -------------------------
 General Settings
@@ -54,8 +54,11 @@ The service can be configured in :menuselection:`Services --> Router Advertiseme
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Constructor**                           Alternatively a WAN interface prefix can be used in the constructor.
-                                                  In most cases an NDP proxy is required if the same prefix is shared by multiple interfaces.
+        **Constructor**                           Per default, the primary prefix of the given *Interface* in
+                                                  *General Settings* is used. When setting a constructor,
+                                                  the primary prefix of a WAN interface can be used instead.
+                                                  An :doc:`NDP proxy </manual/ndp-proxy-go>` is required if the same WAN prefix is
+                                                  shared by multiple LAN interfaces.
         **Preference**                            Select the Priority for the Router Advertisement (RA) Daemon.
         **Deprecate Prefix**                      Deprecate advertised prefixes on shutdown by announcing a zero preferred lifetime.
         **Shutdown Advertisement**                Upon shutdown, send a final advertisement with zero router lifetime.
@@ -71,7 +74,6 @@ The service can be configured in :menuselection:`Services --> Router Advertiseme
         **Recursive DNS Servers Lifetime**        Lifetime in seconds for advertised recursive DNS servers.
         **DNS Search List Lifetime**              Lifetime in seconds for advertised DNS search domains.
         **Route Lifetime**         	              Lifetime in seconds for advertised routes.
-                                                  configured global DNS servers. You may specify up to three explict servers here instead.
         **Remove Route**                          Withdraw advertised routes on shutdown by sending a zero lifetime.
         ========================================= ====================================================================================
 
@@ -155,4 +157,4 @@ High availability
 
 For high availability with IPv6, static prefixes are a requirement for seamless failover.
 
-You can follow this setup example: :doc:`Configure CARP </manual/how-tos/carp.rst>`
+You can follow this setup example: :doc:`Configure CARP </manual/how-tos/carp>`
