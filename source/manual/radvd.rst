@@ -58,6 +58,7 @@ The service can be configured in :menuselection:`Services --> Router Advertiseme
                                                   In most cases an NDP proxy is required if the same prefix is shared by multiple interfaces.
         **Preference**                            Select the Priority for the Router Advertisement (RA) Daemon.
         **Deprecate Prefix**                      Deprecate advertised prefixes on shutdown by announcing a zero preferred lifetime.
+        **Shutdown Advertisement**                Upon shutdown, send a final advertisement with zero router lifetime.
         **Default Lifetime**                      Lifetime in seconds this router is considered a valid default router.
         **Preferred Lifetime**                    Lifetime in seconds addresses remain preferred for new connections.
         **Valid Lifetime**                        Lifetime in seconds addresses remain valid before becoming unusable.
