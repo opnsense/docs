@@ -16,6 +16,11 @@ There are different DHCP servers/relays to choose from:
     - :ref:`Dhcrelay <dhcrelay>`
     - :ref:`ISC <isc-dhcp>` (EOL)
 
+For DHCPv6 these services can offer Router Advertisements:
+
+    - :doc:`radvd </manual/radvd>`
+    - :ref:`Dnsmasq <dnsmasq-dhcp>`
+
 .. _dnsmasq-dhcp:
 
 
