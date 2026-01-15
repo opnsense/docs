@@ -14,7 +14,8 @@ It also defines "Neighbor Discovery Optimization for IPv6 over Low-Power Wireles
 
 .. Attention::
 
-      Dnsmasq is the default RA daemon in new installations, deactivate its *Router Advertisement* setting if you want to use radvd.
+      :doc:`Dnsmasq </manual/dnsmasq>` is the default RA daemon in new installations, deactivate its *Router Advertisement*
+      setting if you want to use radvd.
 
 -------------------------
 General Settings
@@ -77,6 +78,8 @@ The service can be configured in :menuselection:`Services --> Router Advertiseme
         **Remove Route**                          Withdraw advertised routes on shutdown by sending a zero lifetime.
         ========================================= ====================================================================================
 
+
+.. _radvd-mode:
 
 --------------------------------
 Router Advertisements (Mode)
@@ -150,6 +153,26 @@ If an ULA (Unique Local Address) prefix should be sent in addition to a GUA (Glo
 in :menuselection:`Interfaces --> Virtual IPs`. Configure it on the LAN interface, make sure the prefix length is /64.
 
 Afterwards, applying the configuration in :menuselection:`Services --> Router Advertisements` will configure the additional prefix.
+
+
+DHCPv6
+--------------------------------------------------
+
+Router Advertisements are sufficient for clients to auto-generate a SLAAC address, receive a default gateway and a DNS server.
+These are the basic requirement for IPv6 connectivity.
+
+There can be advanced requirements like hostname registration, static reservations and DHCPv6 options.
+
+For these cases, there are two DHCPv6 servers available: :doc:`KEA </manual/kea>` and :doc:`Dnsmasq </manual/dnsmasq>`.
+As Dnsmasq is best used with its own router advertisement functionality, KEA is the most logical choice to pair with radvd.
+This is especially true for HA setups, as KEA can synchronize IPv6 leases.
+
+.. Attention::
+
+    A combination of KEA and radvd requires a static WAN prefix, as KEA cannot track prefixes dynamically.
+
+
+To advertise a DHCPv6 server to clients, configure the available :ref:`modes <radvd-mode>` to your requirements.
 
 
 High availability
