@@ -10,7 +10,7 @@ Dnsmasq DNS & DHCP
 It is considered the replacement for `ISC-DHCP` in small and medium sized setups
 and synergizes well with `Unbound DNS`, our standard enabled forward/resolver service.
 
-Our system setup wizard configures `Unbound DNS` for DNS and `Dnsmasq` for DHCP.
+Our system setup wizard configures `Unbound DNS` for DNS and `Dnsmasq` for DHCPv4, DHCPv6 and Router Advertisements.
 
 ---------------------------------
 Considerations before deployment
@@ -46,7 +46,7 @@ of all existing leases and do not need split pools. It is also far more scalable
 
 The tradeoff using `KEA DHCP` is a more complicated setup, especially when custom DHCP options are needed. DNS registration is also not possible.
 
-With this in mind, pick the right choice for your setup. When in doubt, our advise is to use `Dnsmasq` .
+With this in mind, pick the right choice for your setup. When in doubt, our advise is to use `Dnsmasq`.
 
 .. Attention::
 
@@ -175,6 +175,8 @@ when received from the network. DHCP requires at least one dhcp-range and matchi
                                                   Setting Router Advertisement modes in DHCPv6 ranges will have no effect without
                                                   this global option enabled.
         **Disable HA sync**                       Ignore the DHCP general settings from being updated using HA sync.
+        **Log DHCP options and tags**             Extra logging for DHCP, log all the options sent to DHCP clients and the tags used to determine them.
+        **Quiet log messages**                    Suppress logging of the routine operation of DHCP, RA and TFTP. Errors and problems will still be logged.
         ========================================= ====================================================================================
 
     .. tab:: ISC / KEA DHCP (legacy)
@@ -623,7 +625,7 @@ As you can see, this is a highly integrated and simple setup which leverages jus
 DHCPv6 and Router Advertisements
 ------------------------------------------------------
 
-DHCPv6 can run at the same time as DHCPv4, just specify another range.
+DHCPv6 and Router Advertisements can run at the same time as DHCPv4, just specify another range.
 
 .. Attention::
 
@@ -639,63 +641,30 @@ DHCPv6 and SLAAC. This means clients will use a SLAAC address but query addition
 Option                              Value
 ==================================  =======================================================================================================
 **Interface**                       ``LAN``
-**Start address**                   ``::``
+**Start address**                   ``::1000``
+**End address**                     ``::2000``
 **Constructor**                     ``LAN``
-**RA Mode**                         ``ra-stateless``
+**RA Mode**                         ``slaac``
 ==================================  =======================================================================================================
+
+With the mode set to ``slaac``, clients will generate a SLAAC address and an additional DHCPv6 address (stateful DHCPv6).
+If clients should only generate a SLAAC address, set the mode to ``ra-stateless`` (stateless DHCPv6).
+
 
 .. Attention::
 
-    With ``ra-stateless``, clients will only generate a SLAAC address. If clients should additionally receive a DHCPv6 address, set ``slaac``
-    instead.
+    If you use a constructor and a custom domain for the range, enable the advanced mode and set **Domain Type** to ``Interface``.
+    This will register any subnets on the chosen interface to the selected domain. Otherwise all names fall back to the default system domain.
 
-.. Tip::
 
-    Set ``ra-names`` in addition to ``ra-stateless`` if DNS names should be registered automatically for SLAAC addresses. Please note that this
-    does not work for clients using the IPv6 privacy extensions.
-
-.. Attention::
-
-    If you plan to use partial IPv6 addresses in ranges with a constructor, enable the advanced mode and set **Domain Type** to ``Interface``.
-    This will register any subnets on the chosen interface to the selected domain. This is the only way dynamic DNS registration succeeds
-    when the IPv6 prefix is dynamic.
-
-.. Note::
-
-    If do not want to use Router Advertisements, leave the RA Mode on default, and do not enable the Router Advertisement global setting. Ensure
-    that the RA service you use allows for an assisted setup with SLAAC and DHCPv6.
-
-- Press **Save** and go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options`
-
-We now add an additional DHCPv6 option for the DNS Server.
-
-==================================  =======================================================================================================
-Option                              Value
-==================================  =======================================================================================================
-**Type**                            Set
-**Option**                          ``None``
-**Option6**                         ``dns-server [23]``
-**Interface**                       ``LAN``
-**Value**                           ``[::]``
-==================================  =======================================================================================================
-
-.. Tip::
-
-    To use the same ``dns-server [23]`` option on all interfaces, set the interface to any. You do not need to create them for each
-    interface individually. The correct IPv6 DNS server will be automatically calculated via ``[::]`` anyway.
-
-.. Note::
-
-    When entering DHCPv6 options, enclosing them in brackets ``[]`` is mandatory. ``[::]`` is a special address and will return the GUA of
-    this server Dnsmasq is running on.
-
-Press **Save**
-
-As final step, go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> General`
-
-Enable the checkbox ``Router Advertisements`` if you want to use them.
+As final step, go to :menuselection:`Services --> Dnsmasq DNS & DHCP --> General` and enable ``Router Advertisements``.
 
 Press **Apply** to activate the new configuration.
+
+.. Tip::
+
+    The DNS server will be sent automatically via RDNSS and DHCPv6 option. The IP address will be this firewall.
+    If you want to change this behavior, create your own DHCPv6 options in :menuselection:`Services --> Dnsmasq DNS & DHCP --> DHCP options`
 
 
 DHCP reservations
