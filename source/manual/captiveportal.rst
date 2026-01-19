@@ -303,6 +303,21 @@ in the same zone.
 The Filter Rule Association is set to "Pass" so clients who are redirected are automatically
 allowed to access the zone webserver as well, preventing the need for an explicit allow rule.
 
+.. Attention::
+
+    If you use :doc:`OIDC </vendor/deciso/oidc>` for authentication, the HTTPS requests would also be redirected before authentication is possible.
+    To solve this, create an additional "No RDR (NOT)" rule **before** the other NAT rules with the identity provider IP addresses as destination.
+
+============================ ===============================
+ **Type**                     Destination NAT (Port Forward)
+ **No RDR (NOT)**             Yes
+ **Interface**                <Zone interface>
+ **Protocol**                 TCP
+ **Source**                   any
+ **Destination**              identity_provider_ip_addresses
+ **Destination port range**   443
+============================ ===============================
+
 Allow DNS
 ---------
 In order to allow the client to resolve at least the OPNsense hostname, DNS must be allowed.
