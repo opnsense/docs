@@ -222,11 +222,6 @@ The `captive portal documentation </manual/captiveportal.html#captive-portal-fir
     domains in an allow list. The included Dnsmasq service can be of great help there as explained
     in the `IPset </manual/dnsmasq.html#firewall-alias-ipset>`__ feature documentation.
 
-.. Tip::
-    When creating the captive portal destination NAT (port forward) rules, they will redirect all HTTP and HTTPS requests to localhost before an authentication
-    is possible. Creating an additional "No RDR (NOT)" rule before the captive portal rules with the OIDC provider's IPs as destination could be
-    required.
-
 OPNWAF (Web application firewall / reverse proxy)
 .......................................................
 
