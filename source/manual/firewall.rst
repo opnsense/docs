@@ -2,41 +2,27 @@
 Rules
 ===========================
 
-OPNsense contains a stateful packet filter, which can be used to restrict or allow traffic from and/or to specific networks
-as well as influence how traffic should be forwarded (see also policy based routing in ":doc:`/manual/how-tos/multiwan`").
-
-The rules section shows all policies that apply on your network, grouped by interface.
+.. contents:: Index
 
 
 --------------------
 Overview
 --------------------
 
-Our overview shows all the rules that apply to the selected interface (group) or floating section.
-For every rule some details are provided and when applicable you can perform actions, such as move, edit, copy, delete.
+OPNsense contains a stateful packet filter, which can be used to restrict or allow traffic from and/or to specific networks
+as well as influence how traffic should be forwarded (see also policy based routing in ":doc:`/manual/how-tos/multiwan`").
 
+The rules section shows all policies that apply on your network, grouped by interface.
 
-.. image:: images/Firewall_overview.png
-    :width: 600px
-    :align: center
+There are two implementations to choose from:
 
-Below you will find some highlights about this screen.
+- **Rules [new]**: a modern MVC implementation with API support and improved rule management
+- **Rules**: a static PHP page with no API support
 
-1.  Interface name
-      The name of the interface is part of the normal menu breadcrumb
-2.  Category
-      If categories are used in the rules, you can select which one you will show here.
-3.  Toggle inspection
-      You can toggle between inspection and rule view here, when in inspection mode, statistics of the rule are shown.
-      (such as packet counters, number of active states, ...)
-4.  Show / hide automatic rules
-      Some rules are automatically generated, you can toggle here to show the details. If a magnifying glass
-      is shown you can also browse to its origin (The setting controlling this rule).
-5.  Automatic rules
-      The contents of the automatic rules
-6.  User rules
-      All user defined rules
+.. Tip::
 
+    **Rules [new]** will replace **Rules** over time, you can already migrate your existing rules
+    with a helper in :menuselection:`Firewall --> Rules --> Migration`.
 
 
 --------------------
@@ -45,9 +31,9 @@ The basics
 
 Before creating rules, it's good to know about some basics which apply to all rules.
 
-....................
+
 States
-....................
+--------------------
 
 By default rules are set to stateful (you can change this, but it has consequences), which means that the state of
 a connection is saved into a local dictionary which will be resolved when the next packet comes in.
@@ -112,9 +98,8 @@ an easy to use "session" browser for this purpose. You can find it under :menuse
     Relevant topics available in our documentation are "synproxy" states, connection limits and `syncookies <firewall_settings.html#enable-syncookies>`__
 
 
-....................
 Action
-....................
+--------------------
 
 .. _Firewall_Rule_Action:
 
@@ -127,9 +112,9 @@ Rules can be set to three different action types:
 For internal networks it can be practical to use reject, so the client does not have to wait for a time-out when access is not allowed.
 When receiving packets from untrusted networks, you usually don't want to communicate back if traffic is not allowed.
 
-....................
+
 Processing order
-....................
+--------------------
 
 .. _Firewall_Rule_Processing_Order:
 
@@ -171,9 +156,9 @@ Our default deny rule uses this property for example (if no rule applies, drop t
 
     The interface should show all rules that are used, when in doubt, you can always inspect the raw output of the ruleset in :code:`/tmp/rules.debug`
 
-....................
+
 Rule sequence
-....................
+--------------------
 
 .. _Firewall_Rule_Sequence:
 
@@ -183,9 +168,9 @@ The sequence in which the rules are displayed and processed can be customized pe
 * Use the arrow button in the action menu on the right side of a rule in order to move selected rules before the rule where the action button is pressed.
 * Or you can use the arrow button on the top in the heading row to move the selected rules to the end.
 
-......................
+
 Direction
-......................
+--------------------
 
 .. _Firewall_Rule_Direction:
 
@@ -214,15 +199,99 @@ you would usually set a policy on the WAN interface allowing port :code:`443` to
 
 
 --------------------
-Settings
+Implementations
 --------------------
+
+
+Rules [new]
+--------------------
+
+Our overview shows all the rules that apply to the selected interface, group or floating section.
+For every rule, some details are provided and when applicable you can perform actions such as move, edit, copy, delete.
+
+API access is described in more detail in the :doc:`firewall <../development/api/core/firewall>` API reference manual.
+
+.. image:: images/firewall_rules_1.png
+    :width: 600px
+    :align: center
+
+
+Interface filter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Choose an interface to filter the current view. Floating, group and single interfaces can be selected.
+
+If you choose the "LAN" interface, you will be presented with all floating, group and single interface
+rules that influence packet decisions of the LAN interface.
+
+If you create a new rule while having an interface selected, it will be automatically added to dialog.
+
+Categories filter
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Choose one or multiple categories to filter the current view. This combines with the selection of the interface filter.
+
+Categories can be created in :menuselection:`Firewall --> Categories` and can enable grouping different logic constructs.
+
+If you create a category for mailservers and tag rules with it, you can simply filter for this tag and only see your mailservers.
+As with the interface filter, selecting one or multiple tags will add them automatically to a new rule.
+
+Tree button
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Group all firewall rules in a tree, based on their category. The groups act like folders, but always honor the sort order and sequence.
+The group folders are not saved inside the configuration, they are an alternative view based on categories.
+
+Whenever a rule in sequence changes category, a new folder copying the category of the first rule will be created.
+To move similiar rules into the same folder, change their sequence and category. But keep in mind that the sequence of rules
+will always be the same as without the tree view.
+
+Inspect button
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The inspect button will reveal all system defined (automatic) firewall rules and show rule statistics. It can be enabled at any time
+to get a complete view of the current active ruleset.
+
+While in inspect mode the search can find IP addresses inside aliases.
+
+Rule statistics are cached. To pull the latest statistics, press the refresh button in the statistics column.
+
+
+Rules
+--------------------
+
+Our overview shows all the rules that apply to the selected interface (group) or floating section.
+For every rule some details are provided and when applicable you can perform actions, such as move, edit, copy, delete.
+
+
+.. image:: images/Firewall_overview.png
+    :width: 600px
+    :align: center
+
+Below you will find some highlights about this screen.
+
+1.  Interface name
+      The name of the interface is part of the normal menu breadcrumb
+2.  Category
+      If categories are used in the rules, you can select which one you will show here.
+3.  Toggle inspection
+      You can toggle between inspection and rule view here, when in inspection mode, statistics of the rule are shown.
+      (such as packet counters, number of active states, ...)
+4.  Show / hide automatic rules
+      Some rules are automatically generated, you can toggle here to show the details. If a magnifying glass
+      is shown you can also browse to its origin (The setting controlling this rule).
+5.  Automatic rules
+      The contents of the automatic rules
+6.  User rules
+      All user defined rules
+
+
+Settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Traffic that is flowing through your firewall can be allowed or denied using rules, which define policies.
 This section of the documentation describe the different settings, grouped by usage.
 
-.......................
-Descriptive settings
-.......................
 
 Some settings help to identify rules, without influencing traffic flow.
 
@@ -234,9 +303,9 @@ Description                           Descriptive text
 ====================================  ===============================================================================
 
 
-.................
+
 Basic settings
-.................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Below are the settings most commonly used:
 
@@ -285,9 +354,9 @@ Log                                   Create a log entry when this rule applies,
     You can select multiple sources or destinations per rule, yet keep in mind that a nested alias might be the better choice.
     This feature is most useful if you plan to create `security zones </manual/how-tos/security-zones.html>`_.
 
-..........................
+
 Traffic shaping (QoS)
-..........................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When a firewall rule needs to be constrained in terms of the number of packets it may process over time,
 it's possible to combine the rule with the traffic shaper.
@@ -312,9 +381,9 @@ Traffic shaping/reverse direction     Force packets being matched in the opposit
 
 
 
-.....................
+
 Less commonly used
-.....................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Some settings are usually best left default, but can also be set in the normal rule configuration.
 
@@ -331,9 +400,9 @@ Direction                             Direction of the traffic,
                                       see also :ref:`Direction <Firewall_Rule_Direction>`.
 ====================================  ===============================================================================
 
-...................
+
 High Availability
-...................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following options are specifically used for HA setups.
 
@@ -347,17 +416,17 @@ State Type / NO pfsync                Prevent states created by this rule to be 
 
 
 
-....................
+
 Schedule
-....................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Rules can also be scheduled to be active at specific days or time ranges, you can create schedules in
 :menuselection:`Firewall --> Advanced --> Schedules` and select one in the rule.
 
 
-......................
+
 Policy based routing
-......................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This feature can be used to forward traffic to another gateway based on more fine grained filters than static routes
 could (`OSI layer 4 verses OSI layer 3 <https://en.wikipedia.org/wiki/OSI_model>`__) and can be used to build multi-wan scenario's using gateway groups.
@@ -392,9 +461,9 @@ reply-to                              By default traffic is always send to the c
     choose a host to monitor and try to exchange some packets. When selecting all interfaces, it's easy to see
     where traffic headed.
 
-....................
+
 Connection limits
-....................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 The advanced options contains some settings to limit the use of a rule or specify specific timeouts for
@@ -419,9 +488,9 @@ State timeout                         State Timeout in seconds (applies to TCP o
 ====================================  ===============================================================================
 
 
-....................
+
 Advanced
-....................
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Some less common used options are defined below.
 
@@ -498,9 +567,3 @@ Last but not least, remember rules are matched in order and the default (inbound
 is specified, since we match traffic on :code:`inbound`, make sure to add rules where traffic originates from
 (e.g. :code:`lan` for traffic leaving your network, the return should normally be allowed by state).
 
---------------------
-API access
---------------------
-
-
-Partial API access is described in more detail in the :doc:`firewall <../development/api/core/firewall>` api reference manual.
