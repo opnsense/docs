@@ -637,7 +637,7 @@ Here are the full patch notes:
 * plugins: os-qemu-guest-agent 1.2 `[3] <https://github.com/opnsense/plugins/blob/stable/23.1/emulators/qemu-guest-agent/pkg-descr>`__ 
 * plugins: os-tayga fixes MVC interface registration
 * plugins: os-wireguard fixes MVC interface registration
-* src: geli: split the initialization of HMAC `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:01.geli.asc>`__ 
+* src: geli: split the initalization of HMAC `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:01.geli.asc>`__ 
 * src: fix ena driver crash after reset in 7th gen AWS instance types `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:03.ena.asc>`__ 
 * src: fix sdhci broken write-protect settings `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:02.sdhci.asc>`__ 
 * src: import tzdata 2022g `[7] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:01.tzdata.asc>`__ 

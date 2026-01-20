@@ -129,7 +129,7 @@ Here are the full patch notes:
 * system: safe execution tweaks in rc.routing_configure
 * system: fix log keyword search regression introduced in 25.7.7
 * reporting: unbound: fix quick allow/blocklist actions by applying them to all blocklists
-* firewall: run filterlog directly after rules apply and remove promiscuous mode
+* firewall: run filterlog directly after rules apply and remove promiscous mode
 * firewall: allow setting a custom authentication HTTP header for alias URL fetch (contributed by nox-404)
 * firewall: for better IPv6 PMTU let "timex" and "paramprob" ICMP types through
 * firewall: do not allow nesting in GeoIP aliases
@@ -153,7 +153,7 @@ Here are the full patch notes:
 * backend: use mwexecf(m) where possible
 * backend: extend mwexecfb() with PID and log file support
 * mvc: fix default sort order being ignored in fetchBindRequest()
-* shell: rewrite timeout() using safe execution functions
+* shell: rewite timeout() using safe execution functions
 * ui: refresh notification status after default apply button is done
 * ui: remove obsolete jQuery bootgrid files
 * plugins: os-acme-client 4.11 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/security/acme-client/pkg-descr>`__ 

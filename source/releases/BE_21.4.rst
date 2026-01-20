@@ -91,7 +91,7 @@ Here are the full patch notes:
 * plugins: os-zabbix4-proxy is now a plugin variant
 * plugins: os-zabbix5-proxy is now a plugin variant
 * src: axgbe: make sure driver works on V1000 platform and remove unnecessary reset
-* src: axgbe: remove unnecessary packet length check
+* src: axgbe: remove unneccesary packet length check
 * ports: clog 1.0.2 fixes garbage header write on init
 * ports: curl 7.78.0 `[8] <https://curl.se/changes.html#7_78_0>`__ 
 * ports: filterlog adds CARP IPv6 support and moves label to previously reserved spot

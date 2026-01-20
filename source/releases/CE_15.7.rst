@@ -35,7 +35,7 @@ tools.  Please see the full patch notes for details and references:
 * base: improved iconv(3) UTF-7 support `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:10.iconv.asc>`__ 
 * base: inconsistency between locale and rune locale states `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:09.xlocale.asc>`__ 
 * notable ports updates: phalcon 2.0.3 `[5] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.3>`__ , curl 7.43.0_2 `[6] <https://curl.haxx.se/changes.html>`__ , openssh 6.8p1_8, python 2.7.10 `[7] <https://hg.python.org/cpython/raw-file/15c95b7d81dc/Misc/NEWS>`__ , perl 5.20.2_5 `[8] <https://perldoc.perl.org/5.20.2/perldelta>`__ , ntp 4.2.8p3 `[9] <http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ , libxml 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
-* opnsense-update: will no longer try to reinstall the installed version after a fresh installation
+* opnsense-update: will no longer try to reinstall the istalled version after a fresh installation
 * bsdinstaller: bring back cpdup to error out on low memory installation (you need 1 GB of RAM, or work around installation using the nano image)
 * traffic shaper: removed legacy queues support in favour of the new traffic shaper functionality
 * traffic shaper: allow direct enable/disable toggle
@@ -363,7 +363,7 @@ more roadmap items already finished for 16.1.
 Here are the full patch notes:
 
 * ports: sudo 1.8.15 `[1] <https://www.sudo.ws/releases/legacy/#1.8.15>`__ , sqlite 3.9.2 `[2] <https://sqlite.org/releaselog/3_9_2.html>`__ 
-* aliases: make url tables usable
+* aliases: make url tables useable
 * interfaces: fix faulty GUI caching issues `[3] <https://github.com/opnsense/core/issues/451>`__ 
 * ipsec: obey force nat traversal
 * ipsec: switch status page and widget from deprecated SMP to VICI interface for reliable output
@@ -1060,7 +1060,7 @@ tools.  Please see the full patch notes for details and references:
 * base: improved iconv(3) UTF-7 support `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:10.iconv.asc>`__ 
 * base: inconsistency between locale and rune locale states `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-15:09.xlocale.asc>`__ 
 * notable ports updates: phalcon 2.0.3 `[5] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.3>`__ , curl 7.43.0_2 `[6] <https://curl.haxx.se/changes.html>`__ , openssh 6.8p1_8, python 2.7.10 `[7] <https://hg.python.org/cpython/raw-file/15c95b7d81dc/Misc/NEWS>`__ , perl 5.20.2_5 `[8] <https://perldoc.perl.org/5.20.2/perldelta>`__ , ntp 4.2.8p3 `[9] <http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ChangeLog-stable>`__ , libxml 2.9.2_3 `[10] <https://bugzilla.redhat.com/show_bug.cgi?id=CVE-2015-1819>`__ , openldap 2.4.41 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
-* opnsense-update: will no longer try to reinstall the installed version after a fresh installation
+* opnsense-update: will no longer try to reinstall the istalled version after a fresh installation
 * bsdinstaller: bring back cpdup to error out on low memory installation (you need 1 GB of RAM, or work around installation using the nano image)
 * traffic shaper: removed legacy queues support in favour of the new traffic shaper functionality
 * traffic shaper: allow direct enable/disable toggle

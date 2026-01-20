@@ -609,7 +609,7 @@ A hotfix release was issued as 23.10_2:
 
 * system: detect a on/off password shift when syncing user accounts
 * firewall: when migrating aliases make sure that nesting does not fail
-* plugins: os-OPNWAF now requires a description for virtual servers
+* plugins: os-OPNWAF now requires a descrption for virtual servers
 * plugins: os-radsecproxy fixes for stale rc script / pidfile issues
 
 Migration notes, known issues and limitations:

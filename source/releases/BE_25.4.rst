@@ -295,7 +295,7 @@ Here are the full patch notes:
 * src: ovpn: fix use-after-free of mbuf
 * src: pf: improve pf_state_key_attach() error handling
 * src: pfkey2: use correct value for a key length
-* src: routing: do not allow PINNED routes to be overridden
+* src: routing: do not allow PINNED routes to be overriden
 * src: sctp: fix double unlock in case adding a remote address fails
 * src: tcp: clear sendfile logging struct
 * src: udp: do not recursively enter net epoch

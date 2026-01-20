@@ -138,7 +138,7 @@ Here are the full patch notes:
 * dhcp: fixed and improved writing of dynamic DNS configuration
 * ports: python 2.7.11_3 `[2] <http://bugs.python.org/issue26171>`__ , unbound 1.5.9 `[3] <https://nlnetlabs.nl/projects/unbound/download/>`__ , curl 7.49.1 `[4] <https://curl.haxx.se/changes.html>`__ , openssl 1.0.2_14 `[5] <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-2177>`__ , sudo 1.8.17p1 `[6] <https://www.sudo.ws/releases/legacy/#1.8.17p1>`__ , php 5.6.23 `[7] <https://www.php.net/ChangeLog-5.php#5.6.23>`__ , pcre 8.39 `[8] <http://www.pcre.org/original/changelog.txt>`__ , haproxy 1.6.6 `[9] <http://www.haproxy.org/download/1.6/src/CHANGELOG>`__ 
 * src: tzdata updated to 2016e `[10] <http://mm.icann.org/pipermail/tz-announce/2016-June/000039.html>`__ 
-* src: fix pf fragment timeout `[11] <https://lists.freebsd.org/pipermail/freebsd-pf/2016-May/008044.html>`__ 
+* src: fix pf fragement timeout `[11] <https://lists.freebsd.org/pipermail/freebsd-pf/2016-May/008044.html>`__ 
 
 
 
