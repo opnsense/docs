@@ -185,6 +185,10 @@ The sequence in which the rules are displayed and processed can be customized pe
 * Use the arrow button in the action menu on the right side of a rule in order to move selected rules before the rule where the action button is pressed.
 * Or you can use the arrow button on the top in the heading row to move the selected rules to the end.
 
+.. Tip::
+
+    In :menuselection:`Firewall --> Rules [new]`, you can reveal a sequence number by toggling the advanced mode. This number influences the processing order
+    of rules in the same priority group (displayed as *Sort order*). When using the arrow buttons to move rules, the sequence number is changed.
 
 Direction
 --------------------
