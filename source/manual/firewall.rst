@@ -156,6 +156,23 @@ Our default deny rule uses this property for example (if no rule applies, drop t
 
     The interface should show all rules that are used, when in doubt, you can always inspect the raw output of the ruleset in :code:`/tmp/rules.debug`
 
+Since :menuselection:`Firewall --> Rules [new]` and :menuselection:`Firewall --> Rules` implementations exist side by side,
+there are some additional considerations regarding the processing order of rules.
+
+If a :menuselection:`Firewall --> Rules [new]` filter rule has:
+
+    - a single interface defined, it is an **Interface Rule**
+    - a group interface defined, it is a **Group Rule**
+    - any number of interfaces or one inverted interface defined, it is a **Floating Rule**
+
+Processing order:
+
+    1. System defined rules at the beginning of the ruleset
+    2. :menuselection:`Firewall --> Rules [new]` and :menuselection:`Firewall --> Rules` floating rules
+    3. :menuselection:`Firewall --> Rules [new]` and :menuselection:`Firewall --> Rules` group rules
+    4. :menuselection:`Firewall --> Rules [new]` single interface rules
+    5. :menuselection:`Firewall --> Rules` single interface rules
+    6. System defined rules at the end of the ruleset
 
 Rule sequence
 --------------------
@@ -255,6 +272,11 @@ to get a complete view of the current active ruleset.
 While in inspect mode the search can find IP addresses inside aliases.
 
 Rule statistics are cached. To pull the latest statistics, press the refresh button in the statistics column.
+
+Settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. include:: /manual/forms/Firewall/dialogfilterrule.rst
 
 
 Rules
