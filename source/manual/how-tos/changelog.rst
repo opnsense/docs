@@ -33,4 +33,4 @@ The plugins changelogs can be found in the plugins section after clicking the in
 
 .. image:: images/changelog_plugins_info_nginx.png
 
-After the description of the software behind the plugin or the plugin itsef, the changelog follows.
+After the description of the software behind the plugin or the plugin itself, the changelog follows.

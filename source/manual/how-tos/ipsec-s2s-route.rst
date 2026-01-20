@@ -28,7 +28,7 @@ or software-defined networks.
 Before you start
 ----------------
 Before starting with the configuration of an IPsec tunnel you need to have a
-working OPNsense installation wit a unique LAN IP subnet for each side of your
+working OPNsense installation with a unique LAN IP subnet for each side of your
 connection (your local network needs a different one than the remote network).
 
 ------------
@@ -225,7 +225,7 @@ Phase 1 proposal (Algorithms)
 -----------------------------
 ========================== =============== ===========================================
  **Encryption algorithm**   AES             *For our sample we will use AES/256 bits*
- **Hash algoritm**          SHA512          *Use a strong hash like SHA512*
+ **Hash algorithm**          SHA512          *Use a strong hash like SHA512*
  **DH key group**           14 (2048 bit)   *2048 bit should be sufficient*
  **Lifetime**               28800 sec       *Lifetime before renegotiation*
 ========================== =============== ===========================================
@@ -277,7 +277,7 @@ Phase 2 proposal (SA/Key Exchange)
 ========================== ================ =======================================
 **Protocol**                 ESP             *Choose ESP for encryption*
 **Encryption algorithms**    AES / 256       *For the sample we use AES 256*
-**Hash algortihms**          SHA512          *Choose a strong hash like SHA512*
+**Hash algorithms**          SHA512          *Choose a strong hash like SHA512*
 **PFS Key group**            14 (2048 bit)   *Not required but enhanced security*
 **Lifetime**                 3600 sec
 ========================== ================ =======================================
@@ -343,7 +343,7 @@ Phase 1 proposal (Algorithms)
 -----------------------------
 ========================== =============== ===========================================
  **Encryption algorithm**   AES             *For our sample we will use AES/256 bits*
- **Hash algoritm**          SHA512          *Use a strong hash like SHA512*
+ **Hash algorithm**          SHA512          *Use a strong hash like SHA512*
  **DH key group**           14 (2048 bit)   *2048 bit should be sufficient*
  **Lifetime**               28800 sec       *Lifetime before renegotiation*
 ========================== =============== ===========================================
@@ -391,7 +391,7 @@ Phase 2 proposal (SA/Key Exchange)
 =========================== =============== =======================================
 **Protocol**                 ESP             *Choose ESP for encryption*
 **Encryption algorithms**    AES / 256       *For the sample we use AES 256*
-**Hash algortihms**          SHA512          *Choose a strong hash like SHA512*
+**Hash algorithms**          SHA512          *Choose a strong hash like SHA512*
 **PFS Key group**            14 (2048 bit)   *Not required but enhanced security*
 **Lifetime**                 3600 sec
 =========================== =============== =======================================

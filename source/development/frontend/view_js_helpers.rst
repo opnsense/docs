@@ -182,7 +182,7 @@ Dialog wrappers
 ----------------------------
 
 We are using `BootstrapDialog <https://nakupanda.github.io/bootstrap3-dialog/>`__ to display standard dialogs, to limit
-the boilerplates needed to show these dialog we added the following wrapper funcitons:
+the boilerplates needed to show these dialog we added the following wrapper functions:
 
 
 stdDialogInform(title, message, close, callback, type, cssClass)
@@ -265,7 +265,7 @@ To utilize the callbacks, one could use:
 $.UIBootgrid
 ----------------------------
 
-The UIBootgrid jQuery extension is a wrappper around a slightly modified `jquery-bootgrid <http://www.jquery-bootgrid.com/>`__
+The UIBootgrid jQuery extension is a wrapper around a slightly modified `jquery-bootgrid <http://www.jquery-bootgrid.com/>`__
 component, the pattern we implement with our wrapper is inspired by `this <http://www.jquery-bootgrid.com/Examples#command-buttons>`__ example.
 
 

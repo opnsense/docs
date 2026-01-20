@@ -317,8 +317,8 @@ temporarly disabled by the ISP.
 
 .. Attention::
 
-   More complex setups like announcing provider independant address spaces or using the Router as ISP router are out of scope for this setup guide. These setups
-   must be created and maintained by BGP experts. Since BGP has no built-in automatic safety mechanisms, an invalid configuraton can disrupt global internet
+   More complex setups like announcing provider independent address spaces or using the Router as ISP router are out of scope for this setup guide. These setups
+   must be created and maintained by BGP experts. Since BGP has no built-in automatic safety mechanisms, an invalid configuration can disrupt global internet
    routing (e.g., announcing the wrong networks or subnet masks).
 
 Network Diagram

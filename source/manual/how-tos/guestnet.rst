@@ -86,7 +86,7 @@ Fill in the following to setup the DHCP server for our guest net (leave everythi
 
 
 ================ ==================================== =======================================
- **Enable**       Checked                               *Enable the DCHP server on GUESTNET*
+ **Enable**       Checked                               *Enable the DHCP server on GUESTNET*
  **Range**        192.168.200.100 to 192.168.200.200    *Serve IPs from this range*
  **DNS servers**  192.168.200.1                         *Supply a DNS with the lease*
  **Gateway**      192.168.200.1                         *Supply a gateway with the lease*
@@ -254,7 +254,7 @@ And change to:
               <img class="brand-logo" src="images/company-logo.png">
           </a>
           <h1>Welcome to My Company Guest Network.</h1>
-          <h2>Feel free to use the guest network for profesional usage</h2>
+          <h2>Feel free to use the guest network for professional usage</h2>
           <h3>See our website for more details: <a href="https://www.opnsense.org">My Company</a></h3>
         </div>
     </header>

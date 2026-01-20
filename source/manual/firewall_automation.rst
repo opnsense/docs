@@ -73,7 +73,7 @@ Available rule parameters
 Sort Order and Sequence
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-While rules in :menuselection:`Firewall --> Rules` are processed implicitely by the order they appear in the configuration file,
+While rules in :menuselection:`Firewall --> Rules` are processed implicitly by the order they appear in the configuration file,
 :menuselection:`Firewall --> Automation` filter rules implement a more explicit **Sort order**.
 
 A **Sort order** will have this structure: ``200000.0000250``:

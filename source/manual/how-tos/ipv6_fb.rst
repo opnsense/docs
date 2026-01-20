@@ -138,7 +138,7 @@ By default outgoing traffic should already be possible but traffic from the Inte
 There are different philosophies on how to manage firewall rules. Just use a similar strategy as with your IPv4 setup so rule management
 is consistent.
 
-Keep in mind that the `DMZ` / `LAN` / `WLAN` prefix is dynamic. The build-in macros like `DMZ net` will work for the whole network. 
+Keep in mind that the `DMZ` / `LAN` / `WLAN` prefix is dynamic. The built-in macros like `DMZ net` will work for the whole network. 
 But if you need a rule for a single server your should setup an alias pointing to your (fixed) DHCP IP and use this instead.
 
 ---------------

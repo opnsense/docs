@@ -20,7 +20,7 @@ the latest threat information.
 Two types of lists are supported by this plugin, IPs using firewall aliases and domains using an integration with our
 unbound blocklists.
 
-This document exaplains how to install and use Q-Feeds on your OPNsense firewall.
+This document explains how to install and use Q-Feeds on your OPNsense firewall.
 
 --------------------------------------
 External resources
@@ -101,7 +101,7 @@ Below you will find their purpose.
         ========================================= ====================================================================================
         **Field**                                 **Description**
         ========================================= ====================================================================================
-        Timestamp                                 Time the event occured
+        Timestamp                                 Time the event occurred
         Interface                                 Which interface it was logged on
         Direction                                 Did this concern in(bound) or out(bound) traffic
         Source                                    Source IP address

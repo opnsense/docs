@@ -31,7 +31,7 @@ Here are the full patch notes:
 * unbound: missing global so that cache is never flushed when requested
 * mvc: cleanse $record input in searchRecordsetBase() before usage
 * src: fix multiple OpenSSL vulnerabilities `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:03.openssl.asc>`__ 
-* src: geli: split the initalization of HMAC `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:01.geli.asc>`__ 
+* src: geli: split the initialization of HMAC `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-23:01.geli.asc>`__ 
 * src: fix ena driver crash after reset in 7th gen AWS instance types `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:03.ena.asc>`__ 
 * src: fix sdhci broken write-protect settings `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:02.sdhci.asc>`__ 
 * src: import tzdata 2022g `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-23:01.tzdata.asc>`__ 
@@ -92,7 +92,7 @@ Here are the full patch notes:
 * firewall: remove extended VIP expansion from NAT rules
 * firewall: fix live view hostname lookup may result in HTTP 431 error
 * firewall: add category selection to aliases
-* firewall: sates page performance improvements and better address parsing in search
+* firewall: states page performance improvements and better address parsing in search
 * firewall: reuse "hostid" on filter reload events
 * firewall: show automated "port 0" rule as actual port "0" on PHP 8
 * reporting: fix incompatible regex syntax in FreeBSD 13.1 for firewall state health statistics
@@ -226,7 +226,7 @@ Here are the full patch notes:
 * system: extend nameservers script return for debugging purposes, i.e. "configctl system list nameservers debug"
 * system: lighttpd obsoletion of server listing directive, disabled by default
 * system: decode stored CRL data before display (contributed by kulikov-a)
-* system: work around phpseclib 3 flagging RSA-PSS as an invalid key alogrithm
+* system: work around phpseclib 3 flagging RSA-PSS as an invalid key algorithm
 * system: check for existing X509 class before doing CRL update
 * system: enforce RFC 8446 by requiring TLS_AES_128_GCM_SHA256 for TLS 1.3
 * system: consider CRL end dates after 2050 as "lifetime" in GeneralizedTime format

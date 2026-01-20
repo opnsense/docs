@@ -105,7 +105,7 @@ configuration via WPAD / PAC.
 .. Warning::
     WPAD via DNS requires the web interface to run on the default HTTP port
     (TCP/80) which is also a security risk (MITM attacks). In such cases you
-    should proxy the connection or avoid configuring the applicance from an
+    should proxy the connection or avoid configuring the appliance from an
     untrusted network.
 
 -----------------------

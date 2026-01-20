@@ -200,7 +200,7 @@ The rule should contain the following:
 +-------------------------+------------------------------------+
 | Interface               | WAN                                |
 +-------------------------+------------------------------------+
-| Source addresss         | LAN net (192.168.1.0/24)           |
+| Source address         | LAN net (192.168.1.0/24)           |
 +-------------------------+------------------------------------+
 | Translation / target    | 172.18.0.100 (CARP virtual IP)     |
 +-------------------------+------------------------------------+
@@ -277,7 +277,7 @@ and open a ssh connection to a host behind both firewalls. Now when
 connected you should be able to look at the state table on both OPNsense
 firewalls (:menuselection:`Firewall --> Diagnostics --> States Dump`) and they should both display the same
 connection. Next try to pull the network plug from the master firewall
-and it should move over to the backup without loosing (or freezing) the
+and it should move over to the backup without losing (or freezing) the
 ssh connection.
 
 
@@ -440,19 +440,19 @@ characteristics:
     * Don't use Global Unicast Addresses, many devices ignore them as IPv6 Gateway.
 
 
-Setup Router Advertisments
+Setup Router Advertisements
 --------------------------
 
 .. rubric:: WAN
     :name: wan-radvd
 
-* Go to :menuselection:`Services --> Router Advertisments` and select the WAN interface.
+* Go to :menuselection:`Services --> Router Advertisements` and select the WAN interface.
 * Make sure *Router Advertisements* is set to *Disabled*
 
 .. rubric:: LAN
     :name: lan-radvd
 
-* Go to :menuselection:`Services --> Router Advertisments` and select the LAN interface.
+* Go to :menuselection:`Services --> Router Advertisements` and select the LAN interface.
 * Change the *Source Address* from *automatic* to *VIP LAN IPv6 (fe80::/64)*.
 
 
@@ -589,7 +589,7 @@ To reset the current carp demotion you can use either:
 
         :menuselection:`Interfaces --> Virtual IPs --> Status`
 
-        Press `Enter Persistent CARP Maintainance Mode` twice to enter and exit it, this will reset the current demotion to 0.
+        Press `Enter Persistent CARP Maintenance Mode` twice to enter and exit it, this will reset the current demotion to 0.
 
     .. group-tab:: Shell (advanced)
 

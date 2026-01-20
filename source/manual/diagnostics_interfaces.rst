@@ -182,7 +182,7 @@ Description                 Description to be displayed in "jobs" tab
 
 .. Tip::
 
-      When the default ping is not able to reach the target, but one with a preset source address is, one usally
+      When the default ping is not able to reach the target, but one with a preset source address is, one usually
       needs to add a static route to force traffic using the correct source address. This is for example common
       for IPsec policy based tunnels which install a kernel trap on the specified source network.
 

@@ -977,7 +977,7 @@ This is the official change log:
 * Fixed several OpenSSL invokes to use the latest port version as opposed to the base version.
 * Improved memory/disc/swap usage on the dashboard.
 * Properly set DNS Resolver Advanced defaults.
-* Fixed append of custom Unbound scrips.
+* Fixed append of custom Unbound scripts.
 * Modified the root menu shell to pass through to a real shell when arguments are given.
 * Zapped the spurious "Array" prefix in user-defined aliases.
 * Moved the bogons files fetch location to a local mirror.

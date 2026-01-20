@@ -51,13 +51,13 @@ Tor Service Settings
     Please note that this is not compatible with other features like "Hidden Services".
 :Fascist Firewall Ports:
     These are the unfiltered ports of the firewall. The defaults of 80 and 443 are
-    choosen, because they are commonly open.
+    chosen, because they are commonly open.
 
 Forward Proxy
 -------------
 
 .. Note::
-    The SOCKS proxy is only useable from localhost (127.0.0.1 and ::1)
+    The SOCKS proxy is only usable from localhost (127.0.0.1 and ::1)
     unless an ACL is added in the "SOCKS Proxy ACL" section.
 
 :Listen Interfaces:
@@ -178,7 +178,7 @@ in the Tor network it gets on port 80 to 127.0.0.1:8080
 
 
 In addition to regular onion services, the services can be protected even more
-by requireing the client to know a secret cookie.
+by requiring the client to know a secret cookie.
 
 This setting needs to be configured on both ends. On the server hosting the
 onion service, you need to configure it on the configuration tab for the onion
@@ -251,15 +251,15 @@ Relays And Bridges
 :Nickname:
     A nickname can be used to identify your network but it must only
     consist of alphanumeric characters.
-:Bandwith Rate:
-    You can limit the bandwith Tor will use. By default, Tor will use the
-    maximum amount of bandwith available.
+:Bandwidth Rate:
+    You can limit the bandwidth Tor will use. By default, Tor will use the
+    maximum amount of bandwidth available.
     The value must be at least 72 kilobits per second.
-:Bandwith Burst:
-    See Bandwith Rate.
+:Bandwidth Burst:
+    See Bandwidth Rate.
 :Directory Port:
-    If you have a lot of bandwith, you can also configure a directory port.
-    You should not enable this port if your bandwith is small.
+    If you have a lot of bandwidth, you can also configure a directory port.
+    You should not enable this port if your bandwidth is small.
 :Reject Private IPs:
     **IMPORTANT** DO NOT DISABLE UNLESS YOU KNOW WHAT YOU ARE DOING.
     This option blocks access to RFC1918 addresses regardless of the
@@ -305,4 +305,4 @@ Click on `+` to add a new ACL.
 :Action:
     If you select "Reject", no exit node traffic will be sent to this host
     and it will not be forwarded. If you choose "Accept", your host may
-    be choosen as an exit node in a circuit.
+    be chosen as an exit node in a circuit.

@@ -51,7 +51,7 @@ following values:
 ================ ======================================================================
 Enable           checked
 URL              Base URL of your Nextcloud installation like https://cloud.example.com
-User             your choosen username
+User             your chosen username
 Password         paste your app password from step 2
 Backup Directory a name consisting of alphanumeric characters (keep default)
 ================ ======================================================================

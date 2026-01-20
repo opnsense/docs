@@ -102,7 +102,7 @@ Phase 1 proposal (Algorithms)
 -----------------------------
 ========================== =============== ===========================================
  **Encryption algorithm**   AES 256         *refer to Azure docs for details*
- **Hash algoritm**          SHA256
+ **Hash algorithm**          SHA256
  **DH key group**           2 (1024 bit)
  **Lifetime**               28800 sec       *Lifetime before renegotiation*
 ========================== =============== ===========================================
@@ -158,7 +158,7 @@ Phase 2 proposal (SA/Key Exchange)
 ========================== =========== ===================================
 **Protocol**                ESP         *Choose ESP for encryption*
 **Encryption algorithms**   AES / 256   *refer to Azure docs for details*
-**Hash algortihms**         SHA256
+**Hash algorithms**         SHA256
 **PFS Key group**           off         *Not supported*
 **Lifetime**                27000 sec
 ========================== =========== ===================================

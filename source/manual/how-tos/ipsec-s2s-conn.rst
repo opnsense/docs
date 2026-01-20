@@ -54,7 +54,7 @@ Key pairs
 ..................................
 
 Go to the :menuselection:`VPN->IPsec->Key Pairs` option in the menu and create a new key on both hosts, then copy the public part
-from Site A to Site B and vise versa. Keys may easily be generated with the gear button in the Key type field.
+from Site A to Site B and vice versa. Keys may easily be generated with the gear button in the Key type field.
 
 
 --------------------------------
@@ -120,7 +120,7 @@ Public Keys             **hostB-key**       **hostA-key**
 
 .. Note::
 
-    On host A the private key for Host A should be known and only the public key of Host B, Host B is exactly the oposite.
+    On host A the private key for Host A should be known and only the public key of Host B, Host B is exactly the opposite.
 
 
 .....................

@@ -197,7 +197,7 @@ current implementation and what the software can still offer beyond that.
 Thank you for all the good feedback on this front!
 
 The FreeBSD kernel was updated with a number of upstream stable commits
-while we get closer to evaulating the jump to a newer FreeBSD release for
+while we get closer to evaluating the jump to a newer FreeBSD release for
 25.7.
 
 Lastly, we are preparing for a historic moment: offering privilege separation
@@ -509,7 +509,7 @@ Here are the full patch notes:
 * src: pf: improve pf_state_key_attach() error handling
 * src: pf: only force state failure logging if logging was requested
 * src: pfkey2: use correct value for a key length
-* src: routing: do not allow PINNED routes to be overriden
+* src: routing: do not allow PINNED routes to be overridden
 * src: sctp: fix double unlock in case adding a remote address fails
 * src: tcp: clear sendfile logging struct
 * src: udp: do not recursively enter net epoch
@@ -1117,7 +1117,7 @@ will follow in early January.
 
 Highlights over version 24.7 include:
 
-* system: restructure PPP to accomodate IPv6-only deployments
+* system: restructure PPP to accommodate IPv6-only deployments
 * system: implement persistent notifications banner
 * system: dashboard widget for certificate expiry and renew
 * system: high availablilty status MVC/API conversion

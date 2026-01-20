@@ -45,7 +45,7 @@ Well known Test tools are:
 
 
 When it is downloaded, you usually have to unpack it into a fitting directory.``
-When it is unpacked, you need to run it. In case of ZAP, doubleclick the
+When it is unpacked, you need to run it. In case of ZAP, double-click the
 ``zap.sh`` or ``zap.bat`` depending on your operating system.
 
 Next regenerate and export the certificate under
@@ -128,5 +128,5 @@ Content Security Policy   Controls resources and JS functions
 
 .. [1] If you switch the certificate without announcing its public key first
     via this header in a rollover time span, you will lock this clients out
-    because they expect being targetted by a MITM attack and refuse the connection
+    because they expect being targeted by a MITM attack and refuse the connection
     and it is hard to reset this pin in the browser.

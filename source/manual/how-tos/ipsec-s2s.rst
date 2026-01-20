@@ -221,7 +221,7 @@ Phase 1 proposal (Algorithms)
 -----------------------------
 ========================== =============== ===========================================
  **Encryption algorithm**   AES             *For our sample we will Use AES/256 bits*
- **Hash algoritm**          SHA512          *Use a strong hash like SHA512*
+ **Hash algorithm**          SHA512          *Use a strong hash like SHA512*
  **DH key group**           14 (2048 bit)   *2048 bit should be sufficient*
  **Lifetime**               28800 sec       *lifetime before renegotiation*
 ========================== =============== ===========================================
@@ -279,7 +279,7 @@ Phase 2 proposal (SA/Key Exchange)
 =========================== =============== =======================================
 **Protocol**                 ESP             *Choose ESP for encryption*
 **Encryption algorithms**    AES / 256       *For the sample we use AES 256*
-**Hash algortihms**          SHA512          *Choose a strong hash like SHA512*
+**Hash algorithms**          SHA512          *Choose a strong hash like SHA512*
 **PFS Key group**            14 (2048 bit)   *Not required but enhanced security*
 **Lifetime**                 3600 sec
 =========================== =============== =======================================
@@ -345,7 +345,7 @@ Phase 1 proposal (Algorithms)
 -----------------------------
 ========================== =============== ===========================================
  **Encryption algorithm**   AES             *For our sample we will Use AES/256 bits*
- **Hash algoritm**          SHA512          *Use a strong hash like SHA512*
+ **Hash algorithm**          SHA512          *Use a strong hash like SHA512*
  **DH key group**           14 (2048 bit)   *2048 bit should be sufficient*
  **Lifetime**               28800 sec       *lifetime before renegotiation*
 ========================== =============== ===========================================
@@ -404,7 +404,7 @@ Phase 2 proposal (SA/Key Exchange)
 =========================== =============== =======================================
 **Protocol**                 ESP             *Choose ESP for encryption*
 **Encryption algorithms**    AES / 256       *For the sample we use AES 256*
-**Hash algortihms**          SHA512          *Choose a strong hash like SHA512*
+**Hash algorithms**          SHA512          *Choose a strong hash like SHA512*
 **PFS Key group**            14 (2048 bit)   *Not required but enhanced security*
 **Lifetime**                 3600 sec
 =========================== =============== =======================================

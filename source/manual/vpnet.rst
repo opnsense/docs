@@ -76,7 +76,7 @@ The following functions are available in the menu (as of OPNsense 23.1):
 
 * Status Overview
 
-  * Shows tunnel statusses
+  * Shows tunnel statuses
 
 * Lease Status
 
@@ -109,14 +109,14 @@ For a full list of changes, the upstream migration `documentation <https://wiki.
 is an interesting read as well.
 
 
-* Phase 1 - The general connection settings, like local/remote addressess and general protocol settings. Choices in authentication to use
+* Phase 1 - The general connection settings, like local/remote addresses and general protocol settings. Choices in authentication to use
   are also part of this, they may involve multiple rounds.
 * Phase 2 - Nowadays Strongswan calls these **children**, as these define the :code:`CHILD_SA` subsections in play. This is where you can define
   the networks on both ends. When multiple segments are being added into the same child, these are being treated as one policy
-  where all of them are able to communicate to eachother.
+  where all of them are able to communicate to each other.
 * Phase 1 / Tunnel Isolation - This option made sure every network defined in phase 2 would be treated as a child of it's own (e.g. two phase 2's would turn into two children)
 * Phase 2 / Manual SPD entries - Manual SPD entries, this has been replaced with it's own menu option (Security Policy Database)
-  offering more flexibilty and visibilty.
+  offering more flexibility and visibility.
 
 .. Note::
 
@@ -351,7 +351,7 @@ When a peer is assumed dead, an action may be specified, such as closing the CHI
   DPD is disabled by default, when using connections, make sure to specify a :code:`DPD delay (s)` > 0 to enable the feature.
   Actions may be specified on its children.
 
-When using IKEv1 a :code:`dpdtimeout` can be specified to control when a peer is considered to be inaccesible.
+When using IKEv1 a :code:`dpdtimeout` can be specified to control when a peer is considered to be inaccessible.
 This setting has no effect on how IKEv2 handles retransmissions, in which case the general settings will be used as specified in the following `document <https://docs.strongswan.org/docs/5.9/config/retransmission.html>`__.
 
 .. Warning::
@@ -452,7 +452,7 @@ module one may configure different pools per connection.
 
     If you are configuring Radius authentication using the new Connections module, make sure to select the relevant Radius servers
     in :menuselection:`VPN -> IPsec -> Mobile Clients` under Radius (eap-radius). This pool of servers will be shared across
-    all connections. This option will not be visibile if you have legacy Radius authentication methods configured.
+    all connections. This option will not be visible if you have legacy Radius authentication methods configured.
 
 The examples section contains various options available in OPNsense. When using the new "connections" option available
 as of OPNsense 23.1, different `examples from Strongswan <https://docs.strongswan.org/docs/5.9/interop/windowsClients.html>`__
@@ -646,7 +646,7 @@ do support standard includes.
 While the :code:`swanctl.conf` and the legacy :code:`ipsec.conf` configuration files are well suited to define IPsec-related configuration parameters,
 it is not useful for other strongSwan applications to read options from these files.
 To configure these other components, it is possible to manually append options to our default template, in which case files
-may be placed in the directory :code:`/usr/local/etc/strongswan.opnsense.d/` using the file extention :code:`.conf`
+may be placed in the directory :code:`/usr/local/etc/strongswan.opnsense.d/` using the file extension :code:`.conf`
 
 IPsec configurations are managed in `swantcl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__ format (as of 23.1), merging your own additions is possible by
 placing files with a :code:`.conf` extension in the directory :code:`/usr/local/etc/swanctl/conf.d/`.
@@ -692,7 +692,7 @@ enough time to migrate older setups.
 
   OpenVPN on OPNsense can also be used to create a tunnel between two locations, similar to what IPsec offers. Generally
   the performance of IPsec is higher which usually makes this a less common choice.
-  Mobile usage is really where OpenVPN excells, with various (multifactor) authentication options and
+  Mobile usage is really where OpenVPN excels, with various (multifactor) authentication options and
   a high flexibility in available network options.
 
 
@@ -720,7 +720,7 @@ The following functions are available in the menu (as of OPNsense 23.7):
 
 * Connection Status
 
-  * Show tunnel statusses
+  * Show tunnel statuses
 
 * Log File
 
@@ -731,7 +731,7 @@ The following functions are available in the menu (as of OPNsense 23.7):
 Public Key Infrastructure  (X.509)
 ....................................
 
-OpenVPN is most commonly used in combination with a public key infrastructure, where we use a certificate autority which
+OpenVPN is most commonly used in combination with a public key infrastructure, where we use a certificate authority which
 signs certificates for both server and clients (Also know as TLS Mode).
 More information about this topic is available in our  :doc:`Trust section <certificates>`.
 
@@ -853,7 +853,7 @@ A selection of the most relevant settings can be found in the table below.
 .. Tip::
 
       When using topology "subnet" the netmask usually equals the one defined in the instance itself as the gateway
-      being pushed to the client is the first adress in the network and otherwise unreachable.
+      being pushed to the client is the first address in the network and otherwise unreachable.
 
 **Troubleshooting common issues**
 
@@ -965,7 +965,7 @@ High availability (using CARP)
 .................................
 
 When using wireguard on active/passive high availability clusters, only one instance at a time is allowed to communicate to the
-other party. In OPNsense this can be reached by selecting a :code:`vhid` to track as instance dependancy {Depend on (CARP)}.
+other party. In OPNsense this can be reached by selecting a :code:`vhid` to track as instance dependency {Depend on (CARP)}.
 
 If an instance depends on a CARP vhid, it will query the current status and determine if the interface should be usable (when MASTER), the
 interface status (up/down) will be toggled accordingly.
@@ -979,7 +979,7 @@ interface status (up/down) will be toggled accordingly.
 
 .. Tip::
 
-  Because the carp dependancy is managed per instance, you are able to keep tunnels available selectively, for example to manage the machines
+  Because the carp dependency is managed per instance, you are able to keep tunnels available selectively, for example to manage the machines
   remotely.
 
 
@@ -993,7 +993,7 @@ up or down, depending on the carp status described in the previous chapter.
 
 .. Tip::
 
-  Althought wireguard itself offers very limit logging, our setup process will make a note of errors and signal about certain events.
+  Although wireguard itself offers very limit logging, our setup process will make a note of errors and signal about certain events.
   When having issues configuring an instance or peer, always make sure to check the logs in  :menuselection:`VPN --> WireGuard --> Log File` first.
 
 

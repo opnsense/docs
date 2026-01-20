@@ -43,7 +43,7 @@ The service can be configured in :menuselection:`Services --> Router Advertiseme
         **Maximum interval**                      The maximum time allowed between sending unsolicited multicast router advertisements
                                                   from the interface, in seconds.
         **Recursive DNS Servers (RDNSS)**         The default is to use this interface IP address with an enabled DNS service or the
-                                                  configured global DNS servers. You may specify up to three explict servers here instead.
+                                                  configured global DNS servers. You may specify up to three explicit servers here instead.
         **DNS Search List (DNSSL)**               The default is to use the domain name of this system as the DNSSL option.
                                                   You may specify explicit domains here instead.
         **Routes**                                Routes are specified in CIDR format. The prefix of a route definition should be network prefix;

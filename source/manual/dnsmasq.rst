@@ -134,7 +134,7 @@ when received from the network. DHCP requires at least one dhcp-range and matchi
                                                   override then a "not found" answer is immediately returned.
         **Add MAC**                               Add the MAC address of the requestor to DNS queries which are forwarded upstream.
                                                   The MAC address will only be added if the upstream DNS Server is in the same subnet
-                                                  as the requestor. Since this is not standardized, it should be considered experiemental.
+                                                  as the requestor. Since this is not standardized, it should be considered experimental.
                                                   This is useful for selective DNS filtering on the upstream DNS server.
         **Add subnet**                            Add the real client IPv4 and IPv6 addresses (add-subnet=32,128) to DNS queries which are
                                                   forwarded upstream. Be careful setting this option as it can undermine privacy. This is
@@ -292,7 +292,7 @@ DHCP Settings
         **RA MTU**                                Optional MTU to send to clients via Router Advertisements. If unsure leave empty.
         **RA Interval**                           Time (seconds) between Router Advertisements.
         **RA Router Lifetime**                    The lifetime of the route may be changed or set to zero, which allows a router to advertise prefixes
-                                                  but not a route via itself. When using HA, setting a short timespan here is adviced for faster IPv6
+                                                  but not a route via itself. When using HA, setting a short timespan here is advised for faster IPv6
                                                   failover. A good combination could be 10 seconds RA interval and 30 seconds RA router lifetime.
                                                   Going lower than that can pose issues in busy networks.
         **Mode**                                  Mode flags to set for this range, 'static' means no addresses will be automatically assigned.
@@ -492,7 +492,7 @@ In our example, we configure query forwarding for 2 networks:
 .. Note::
 
     ``.internal`` is the IANA and ICANN approved TLD (Top Level Domain) for internal use. If you instead own a TLD, e.g., ``example.com``, you could create a zone
-    thats not used on the internet, e.g., ``lan.internal.example.com``.
+    that's not used on the internet, e.g., ``lan.internal.example.com``.
 
 
 Now that we have the DNS infrastructure set up, we can configure DHCP.
@@ -567,7 +567,7 @@ As next step we define the DHCP ranges for our interfaces.
 
 .. Tip::
 
-    Creating a DHCP range will automatically send out common DHCP options to requesting clients, without explicitely configuring them.
+    Creating a DHCP range will automatically send out common DHCP options to requesting clients, without explicitly configuring them.
 
 This is an incomplete overview which highlights some default DHCP options:
 
@@ -982,7 +982,7 @@ KEA DHCP might be the better choice due to its robust HA synchronization options
 DHCPv6 and Router Advertisements for small HA setups
 -----------------------------------------------------
 
-Just as with DHCPv4, the same type of configuration can be done for DHCPv6 with a few minor adjustements.
+Just as with DHCPv4, the same type of configuration can be done for DHCPv6 with a few minor adjustments.
 
 Since IPv6 uses DAD (Duplicate Address Detection), you do not need to create separate pools. SLAAC and DAD will take care of avoiding duplicates.
 

@@ -44,7 +44,7 @@ Since almost 99% of our endpoints are actually being used by the gui, it's not v
 parameters, you just need a browser and open an inspect pane. Calls being executed from the gui can easily be found
 by filtering the requests starting with :code:`/api/`.
 
-For exampe, when looking at the search grid in :menuselection:`System --> Diagnostics --> Services`, pressing the reload
+For example, when looking at the search grid in :menuselection:`System --> Diagnostics --> Services`, pressing the reload
 button will execute a :code:`POST` to :code:`https://my.firewall/api/core/service/search` containing the following raw
 json data:
 

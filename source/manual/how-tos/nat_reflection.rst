@@ -154,7 +154,7 @@ Repeat :ref:`Method 1 <nat-method1>` until all additional servers are reachable.
 If you encounter any issues, check :ref:`Troubleshooting NAT Rules <troubleshooting-nat-rules>` for a few tips.
 
 .. Warning::
-    The following methods are not adviced, but are still explained in order to prevent misconfigurations. There is more information in :doc:`/manual/firewall_settings`.
+    The following methods are not advised, but are still explained in order to prevent misconfigurations. There is more information in :doc:`/manual/firewall_settings`.
 
 .. _nat-method2:
 

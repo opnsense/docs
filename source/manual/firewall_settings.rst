@@ -86,7 +86,7 @@ Shared forwarding
 .....................................
 
 Using policy routing in the packet filter rules causes packets to skip processing for the traffic shaper and captive portal tasks.
-Using this option enables the sharing of such forwarding decisions between all components to accomodate complex setups.
+Using this option enables the sharing of such forwarding decisions between all components to accommodate complex setups.
 
 
 Disable force gateway
@@ -121,7 +121,7 @@ Miscellaneous
 Firewall Optimization
 .....................................
 
-Firewall state table optimization to use, influences the number of active states in the system, only to be changed in specfic implementation scenarios.
+Firewall state table optimization to use, influences the number of active states in the system, only to be changed in specific implementation scenarios.
 
 * [normal] (default)As the name says, it is the normal optimization algorithm
 * [high-latency] Used for high latency links, such as satellite links. Expires idle connections later than default
@@ -192,7 +192,7 @@ When using bridging, you must disable this behavior if the WAN gateway IP is dif
     to every "wan" type rule. When allowing traffic originating from the same network as the interface is attached to, it will
     still reply the packet to the configured gateway.
 
-    To prevent this behvior, you can either disable :code:`reply-to` here and configure the desired behaviour on a per-rule basis or
+    To prevent this behavior, you can either disable :code:`reply-to` here and configure the desired behaviour on a per-rule basis or
     add a rule for local traffic above the one for outbound traffic disabling :code:`reply-to` (in rule advanced).
 
 Disable anti-lockout
