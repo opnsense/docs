@@ -227,6 +227,12 @@ Implementations
 Rules [new]
 --------------------
 
+*Rules [new]* started out as *Firewall Automation* with a limited GUI to offer API support, since the static php implementation of *Rules* lacked automation requirements.
+Over time, more features have been added, and the GUI has been completely reworked. Long requested features like advanced search functionality, category folders
+improved performance and better visibility are the result.
+
+You can find it in :menuselection:`Firewall --> Rules [new]` or :menuselection:`Firewall --> Automation --> Filter`.
+
 User Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -250,6 +256,7 @@ rules that influence packet decisions of the LAN interface.
 
 If you create a new rule while having an interface selected, it will be automatically added to dialog.
 
+
 Categories filter
 ...............................
 
@@ -259,6 +266,7 @@ Categories can be created in :menuselection:`Firewall --> Categories` and can en
 
 If you create a category for mailservers and tag rules with it, you can simply filter for this tag and only see your mailservers.
 As with the interface filter, selecting one or multiple tags will add them automatically to a new rule.
+
 
 Tree button
 ...............................
@@ -270,6 +278,7 @@ Whenever a rule in sequence changes category, a new folder copying the category 
 To move similiar rules into the same folder, change their sequence and category. But keep in mind that the sequence of rules
 will always be the same as without the tree view.
 
+
 Inspect button
 ...............................
 
@@ -279,6 +288,7 @@ to get a complete view of the current active ruleset.
 While in inspect mode the search can find IP addresses inside aliases.
 
 Rule statistics are cached. To pull the latest statistics, press the refresh button in the statistics column.
+
 
 Settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -408,9 +418,9 @@ Settings
         **Option**                   **Description**
         ============================ ====================================================================================================
         **Match priority**           Only match packets which have the given queueing priority assigned.
-        **Set priority**             Packets matching this rule will be assigned a specific queueing priority. If the             packet
-                                     is transmitted on a vlan(4) interface, the queueing priority             will be written as the
-                                     priority code point in the 802.1Q VLAN             header
+        **Set priority**             Packets matching this rule will be assigned a specific queueing priority. If the packet
+                                     is transmitted on a vlan(4) interface, the queueing priority will be written as the
+                                     priority code point in the 802.1Q VLAN header
         **Set priority [low-delay]** Used in combination with set priority, packets which have a TOS of lowdelay and TCP ACKs with no
                                      data payload will be assigned this priority when offered.
         **Match TOS / DSCP**         Only match packets which have the given TOS/DSCP marker.
@@ -421,12 +431,12 @@ Settings
         =================== ====================================================================================================
         **Option**          **Description**
         =================== ====================================================================================================
-        **Set local tag**   Packets matching this rule will be tagged with the specified string.             The tag acts as an
-                            internal marker that can be used to identify these packets later on.             This can be used,
-                            for example, to provide trust between interfaces and to determine if packets have             been
-                            processed by translation rules.  Tags are "sticky", meaning that the packet will be tagged even
-                            if the rule is not the last matching rule.  Further matching rules can replace the tag with a
-                            new one but will not remove a previously applied tag.  A packet is only ever assigned one tag at a
+        **Set local tag**   Packets matching this rule will be tagged with the specified string. The tag acts as an
+                            internal marker that can be used to identify these packets later on. This can be used,
+                            for example, to provide trust between interfaces and to determine if packets have been
+                            processed by translation rules. Tags are "sticky", meaning that the packet will be tagged even
+                            if the rule is not the last matching rule. Further matching rules can replace the tag with a
+                            new one but will not remove a previously applied tag. A packet is only ever assigned one tag at a
                             time.
         **Match local tag** Used to specify that packets must already be tagged with the given tag in order to match the rule.
         =================== ====================================================================================================
@@ -434,6 +444,10 @@ Settings
 
 Rules
 --------------------
+
+*Rules* is the implementation that has been around since day one. Since it consists of static php pages, there is no API support,
+Over time, it will be replaced by *Rules [new]* and a Migration assistant can be found in :menuselection:`Firewall --> Rules --> Migration`.
+
 
 User Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
