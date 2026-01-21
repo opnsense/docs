@@ -251,7 +251,7 @@ Step 5a - Create normalization rules
 - **Save** the rule
 
 .. Tip::
-    - The header size for IPv4 is usually 20 bytes, and for TCP 20 bytes. In total that's 40 bytes for IPv4 TCP.
+    - The header size for IPv4 is usually 20 bytes, and for TCP 20 bytes. In total that is 40 bytes for IPv4 TCP.
     - IPv6 has a larger header size with 40 bytes. That encreases the total to 60 bytes for IPv6 TCP.
 
 .. Note::
