@@ -7,7 +7,7 @@ Serial Console connectivity
 The following device families offer a mini-usb connection which can be used for serial communication:
 
 ========= ============ =============================
-Series     Formfactor   Range
+Series    Formfactor   Range
 ========= ============ =============================
 DEC6XX    Desktop      Entry level
 DEC7XX    Desktop      Midrange
