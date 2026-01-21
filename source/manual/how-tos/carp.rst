@@ -441,7 +441,7 @@ characteristics:
 
 
 Setup Router Advertisements
---------------------------
+---------------------------
 
 .. rubric:: WAN
     :name: wan-radvd
