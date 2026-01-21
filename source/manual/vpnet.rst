@@ -76,7 +76,7 @@ The following functions are available in the menu (as of OPNsense 23.1):
 
 * Status Overview
 
-  * Shows tunnel statuses
+  * Shows tunnel status
 
 * Lease Status
 
