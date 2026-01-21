@@ -343,7 +343,7 @@ Phase 1 proposal (Algorithms)
 -----------------------------
 ========================== =============== ===========================================
  **Encryption algorithm**   AES             *For our sample we will use AES/256 bits*
- **Hash algorithm**          SHA512          *Use a strong hash like SHA512*
+ **Hash algorithm**         SHA512          *Use a strong hash like SHA512*
  **DH key group**           14 (2048 bit)   *2048 bit should be sufficient*
  **Lifetime**               28800 sec       *Lifetime before renegotiation*
 ========================== =============== ===========================================
