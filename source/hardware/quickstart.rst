@@ -14,7 +14,7 @@ the following series:
 
 
 ========= ============ ============================= ==================
-Series     Formfactor   Range                         Network driver(s)
+Series    Formfactor   Range                         Network driver(s)
 ========= ============ ============================= ==================
 DEC6XX    Desktop      Entry level                   igb
 DEC7XX    Desktop      Midrange                      igb, ax
