@@ -492,7 +492,7 @@ In our example, we configure query forwarding for 2 networks:
 .. Note::
 
     ``.internal`` is the IANA and ICANN approved TLD (Top Level Domain) for internal use. If you instead own a TLD, e.g., ``example.com``, you could create a zone
-    that's not used on the internet, e.g., ``lan.internal.example.com``.
+    that is not used on the internet, e.g., ``lan.internal.example.com``.
 
 
 Now that we have the DNS infrastructure set up, we can configure DHCP.
