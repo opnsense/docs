@@ -128,7 +128,7 @@ To add a new tunnel, go to :menuselection:`VPN -> Stunnel -> Configuration` and 
 
     For additional security you can enable :code:`chroot` mode in :menuselection:`VPN -> Stunnel -> General`, there is
     however a downside in using this feature. If for some reason the system logging facility (syslog) is restarted, stunnel
-    will loose connection to that facility, causing a lack of visibilty afterwards.
+    will loose connection to that facility, causing a lack of visibility afterwards.
 
 
 Configure the client

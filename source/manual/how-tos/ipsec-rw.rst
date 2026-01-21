@@ -105,7 +105,7 @@ In the next table you can see the existing VPN authentication mechanisms and whi
 operating systems support it, with links to their configurations.
 For Linux testing was done with Ubuntu 18.4 Desktop and *network-manager-strongswan* and
 *libcharon-extra-plugins* installed.
-As Andoid does not support IKEv2 yet we added notes for combinations with strongSwan
+As Android does not support IKEv2 yet we added notes for combinations with strongSwan
 app installed to have a broader compatibility for all systems.
 Mutual RSA and PSK without XAuth requires L2TP, since this legacy technology is
 very error prone we will not cover it here.

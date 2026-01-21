@@ -266,7 +266,7 @@ Below you will find a detailed specification our software can detect and process
 
     .. tab:: zip format (MaxMind)
 
-        This format requires a [zip] file containg the the following csv files:
+        This format requires a [zip] file containing the the following csv files:
 
         .. list-table:: Title
            :widths: 50 25 25 25
@@ -324,7 +324,7 @@ containing an address of a client such as a server on the LAN would no longer be
 For example, you obtain a prefix 2001:db8:2222:2800::/56.  You have a /56 prefix and if the tracking id was set to 0 for your
 LAN, you would have an address range on your LAN of 2001:db8:2222:2800:: to 2001:db8:2222:2800:FFFF:FFFF:FFFF:FFFF.
 
-You want to run a server on your LAN that is accessable from the WAN so you give it a static address of
+You want to run a server on your LAN that is accessible from the WAN so you give it a static address of
 2001:db8:2222:2800:1000:1000::1 and create a rule allowing traffic to access the server.
 
 When your prefix changes, that static address is no longer valid, so you must use the Dynamic IPv6 Host to create an alias
@@ -337,7 +337,7 @@ Create a new IPv6 Dynamic Host alias and enter only the suffix of the address, i
 bits of the address, you would enter ::1000:1000:0000:1, note the '::' at the start of the address, you MUST always start
 the address with a '::'. You do not need to enter a size after the address i.e. /128 as that is automatically assumed.
 
-Select the interface you wish to use for the source of the uppper 64 bits, in this case we will select the LAN interface.
+Select the interface you wish to use for the source of the upper 64 bits, in this case we will select the LAN interface.
 
 When the prefix changes, the alias address will then be updated in the firewall rules, let's say your prefix changes to
 2001:db8:2222:3200::/56 the rule updates and the entry for your server in the firewall would update automatically to be
@@ -380,7 +380,7 @@ BGP ASN
 ..................
 
 With this alias type you are able to select networks by their responsible parties.
-Using BGP parties announce the addresses they are responsible for to eachother.
+Using BGP parties announce the addresses they are responsible for to each other.
 For example Cloudflare uses AS number :code:`13335`, Microsoft is known to use :code:`8075`.
 
 More background and how addresses are assigned is explained on `wikipedia <https://en.wikipedia.org/wiki/Autonomous_system_(Internet)>`__

@@ -87,7 +87,7 @@ Now switch to :menuselection:`PAC --> Proxies` and add new proxy servers.
 Name        Enter a name which will be shown at the rules view for selection
 Description You can add an optional description for this proxy
 Proxy Type  Enter a Proxy type or DIRECT if no proxy should be used
-URL         Enter the Proxy URL unless DIRECT has been choosen
+URL         Enter the Proxy URL unless DIRECT has been chosen
 =========== ================================================================
 
 In this case it is assumed that only a single LAN and a DMZ exists and that
@@ -108,7 +108,7 @@ Proxy Type  Direct Connection
 URL         empty
 =========== =================
 
-For outgoing connectins we need the proxy:
+For outgoing connections we need the proxy:
 
 .. image:: images/pac_proxy_lan.png
 

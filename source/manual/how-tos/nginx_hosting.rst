@@ -13,7 +13,7 @@ Prepare
 =======
 
 First of all, a directory has to be created. For example `/srv/web_application1`. Please note that this directory must be
-accessable by nginx and PHP (both running as `www`).
+accessible by nginx and PHP (both running as `www`).
 
 For example, you can chmod it (+rx for directories, +r for files for this user) or `chown` it.
 
@@ -30,7 +30,7 @@ For example, you can chmod it (+rx for directories, +r for files for this user) 
     #
     # as you can see, everyone can read (r) and switch into the directory (x))
     #
-    # do this if the directory is not readable or excutable:
+    # do this if the directory is not readable or executable:
     chmod +rx web_application1
     
 .. Warning::
@@ -80,7 +80,7 @@ For a location, the following directives are important:
 Directive                       Description                                                           
 =============================== ======================================================================
 Match Type and URL Pattern      How to match the location and the pattern                             
-File System Root                Directory of web applicaton
+File System Root                Directory of web application
 Upstream Servers                Send it to a remote interpreter instead of using the local one        
 Pass Request To PHP Interpreter Check if you want to enable PHP (runs locally as user www) or remotely
 Router Script                   Sends all request to a specific script (entry point of application)   
@@ -90,7 +90,7 @@ Router Script                   Sends all request to a specific script (entry po
 =============================== ============================
 Directive                       Value
 =============================== ============================
-Match Type and URL Pattern      ~* .*.php or simmilar
+Match Type and URL Pattern      ~* .*.php or similar
 File System Root                /srv/web_application1
 Upstream Servers                empty
 Pass Request To PHP Interpreter checked
@@ -105,7 +105,7 @@ Configure HTTP Server
 
 Configuring the HTTP server is simple. You need a hostname (for example website.test), a port (8080/TCP is the
 HTTP alternative port, so it is good for testing. For production sites you should stick with the defaults).
-Please select the prevously created location to serve web content. Please also configure a root here,
+Please select the previously created location to serve web content. Please also configure a root here,
 because all requests, which do not match, will be handled by the server default. The default server will
 just serve the static file.
 

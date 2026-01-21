@@ -36,7 +36,7 @@ like putty.
 Step 3 : boot single
 -----------------------------
 
-Swith the power and wait for the OPNsense splash screen to appear, the choose "Boot [S]single User" which should be option 2 in the list.
+Switch the power and wait for the OPNsense splash screen to appear, the choose "Boot [S]single User" which should be option 2 in the list.
 (press 2)
 
 -----------------------------

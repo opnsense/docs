@@ -143,7 +143,7 @@ In memory models
 
 In same cases it might be practical to use all of the standard model tools, but prevent data from being persisted.
 For this purpose the memory model may be used. Examples of such applications are diagnostic tools, which do require
-user input, but is only relevant for that perticular call.
+user input, but is only relevant for that particular call.
 
 To use these models, use the following mountpoint: :code:`<mount>:memory:</mount>`
 
@@ -155,7 +155,7 @@ one (being a fully validated model) is hard to overcome.
 It's not always clear which type of data is being used, and when moving data inside a new model and changing it's access
 path, a proper validation is mandatory.
 
-When data lives inside it's own easy to distinct "container", a standard model may be overlayed. An example of such a
+When data lives inside it's own easy to distinct "container", a standard model may be overlaid. An example of such a
 case is the static route component. Which underneath looks like this (without payload):
 
 
@@ -206,7 +206,7 @@ separated lists.
 
 The first block :code:`actionPostLoadingEvent()` just collects the available options, which is part of the :code:`BaseListField`
 type. The :code:`setValue()` is where the magic happens, when the input is of type :code:`SimpleXMLElement`, we know
-this is being set by the loader, if in that case the underlaying config contains multiple values, we merge them into
+this is being set by the loader, if in that case the underlying config contains multiple values, we merge them into
 a single list.
 
 .. code-block:: php

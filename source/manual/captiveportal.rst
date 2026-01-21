@@ -116,7 +116,7 @@ solved by utilizing this new standard instead.
 
 To configure this, a few steps are required:
 
-- You must install a valid, publically trusted certificate on the Captive Portal zone.
+- You must install a valid, publicly trusted certificate on the Captive Portal zone.
   For example, you can use ACME client to automate this process. Doing so is best
   practice regardless of redirection method.
 - The DHCPv4 server running in your Captive Portal zone must present option 114, of which

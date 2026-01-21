@@ -21,7 +21,7 @@ Installation
 ------------
 
 First of all, go to :menuselection:`System --> Firmware --> Plugins` and install **os-bind**.
-You will finde the plugin at :menuselection:`Services --> BIND`.
+You will find the plugin at :menuselection:`Services --> BIND`.
 
 ----------------
 General Settings
@@ -70,7 +70,7 @@ DNSBL
 
 The Blacklists are downloaded and updated with every **Save** within BIND configuration.
 For production use you can go to :menuselection:`System --> Settings --> Cron` and add a cronjob. On the
-dropdown list you'll find the corret task under **Command**. Set the refresh interval
+dropdown list you'll find the correct task under **Command**. Set the refresh interval
 as you wish and save. This will trigger an update of the selected lists and reload
 BIND.
 

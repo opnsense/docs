@@ -59,7 +59,7 @@ Configuration Options
 :Idle Timeout:
     The connection will be dropped if it is inactive for this amount of time.
     If the other socket endpoint is a machine, this value can be low but if you
-    plan to use it for develpoment reasons, you may set it to a higher value.
+    plan to use it for development reasons, you may set it to a higher value.
 :Max directory recursion:
     Limit the depth of the directory tree.
     In the worst case there is a loop which causes the scanner to run endlessly and
@@ -71,13 +71,13 @@ Configuration Options
     If this is checked, clamav will follow symlinks to regular files.
     This may expose information about the filesystem, the user should not have access to.
 :Disable cache:
-    If you check this, the results are not cached. This is only useful in develpoment
+    If you check this, the results are not cached. This is only useful in development
     environments as it slows down the response time.
 :Scan portable executable:
     Check this box, if you want to scan PE files.
     If you are using PE-files (\*.exe, \*.dll etc.) files in your network,
     checking this box is recommended.
-:Scan executeable and linking format:
+:Scan executable and linking format:
     Check this box, if you want to scan ELF-files.
     ELF is for example used on Linux based operating systems and on \*BSD.
 :Detect broken executables:

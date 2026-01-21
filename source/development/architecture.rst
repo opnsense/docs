@@ -123,7 +123,7 @@ Currently there are four types of services implemented in the daemon:
 -  script : execute external (rc) scripts, report back success or failure
 -  script_output: execute external scripts, report back their contents, usually in json format
 -  stream_output: open streams to backend components
--  inline : perform inline actions which are part of configd, most notable template generation and maintanance.
+-  inline : perform inline actions which are part of configd, most notable template generation and maintenance.
 
 |
 | Template generation is handled by Jinja2 (https://jinja.palletsprojects.com/en/stable/),

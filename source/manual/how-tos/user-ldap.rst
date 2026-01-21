@@ -42,7 +42,7 @@ Enter the following information:
  **Bind credentials**
   User DN:                        cn=testusr,CN=Users,     *Enter your credentials*
                                   DC=opnsense,DC=local
-  Password:                       secret                   *alway use a strong password*
+  Password:                       secret                   *always use a strong password*
 
  **Search scope**                 Entire Subtree           *Select Entire Subtree to retrieve all*
  **Base DN:**                     DC=opnsense,DC=local     *Enter the Base DN*

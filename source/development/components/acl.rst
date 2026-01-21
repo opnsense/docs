@@ -22,7 +22,7 @@ The following steps determine if a page can be accessed by a user:
 
 Access controls for most legacy components are stored in models/OPNsense/Core/ACL/ACL.xml, most new components add their own
 ACL's in the model belonging to the component. All stored :code:`ACL.xml` files combined determine the full set of options available
-in the user/group manager. There is no expicit requirement which model services which ACL.
+in the user/group manager. There is no explicit requirement which model services which ACL.
 
 .. Note::
 

@@ -22,7 +22,7 @@ install, just go to :menuselection:`System->Firmware->Plugins` and search for :c
 Register new hosts
 ------------------
 
-Before adding a host, you need to generate an API key and secret from the machine you will grant accesss to.
+Before adding a host, you need to generate an API key and secret from the machine you will grant access to.
 API keys are managed in the user manager (system_usermanager.php), go to the user manager page and select a user.
 Somewhere down the page you will find the API section for this user.
 
@@ -290,7 +290,7 @@ inspect status and push options to the attached firewalls.
 .. Warning::
 
     Be **very** careful pushing settings to your connected firewall which may disconnect your session, such as firewall and routing related
-    options. The central management host can't predict if settings you plan to make lead to an inaccesible firewall.
+    options. The central management host can't predict if settings you plan to make lead to an inaccessible firewall.
 
 .. Tip::
 
@@ -323,7 +323,7 @@ Provisioning classes
 By default merging configuration items from the central firewall overwrites the settings on the target machine, but in some
 cases we need a more practical approach to deal with local modifications.
 
-In this chapter we are going to describe how classes with special implemenations are being treated on synchronisation and
+In this chapter we are going to describe how classes with special implementations are being treated on synchronisation and
 how to utilise this behaviour to ease management.
 
 Users & Groups

@@ -71,7 +71,7 @@ in our experience most common:
 
 * Misconfigured DNS settings, check :menuselection:`System --> Settings --> General` for configured servers the firewall is allowed to use
 * Misconfigured IPv6, in which case "Prefer IPv4 over IPv6" in :menuselection:`System --> Settings --> General` might help to prevent the system from using IPv6 in these cases
-* In HA (carp) setups, using the wrong extrenal IPaddress, usually caused by a misconfigued outbound nat rule, easy to check by disabling manual outbound nat rules in :menuselection:`Firewall --> NAT --> Outbound`.
+* In HA (carp) setups, using the wrong external IPaddress, usually caused by a misconfigued outbound nat rule, easy to check by disabling manual outbound nat rules in :menuselection:`Firewall --> NAT --> Outbound`.
 
 The heath audit can also help with uncovering installation and disk / file system issues.
 Additionally, major ugpgrades may not pass certain sanity checks that need to be corrected first which may include the command line:

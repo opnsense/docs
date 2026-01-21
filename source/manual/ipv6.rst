@@ -94,7 +94,7 @@ Router Advertisement [RA]
 
 The opposite of the solicitation is the advertisement, which we will also use on our end to inform our clients.
 A router advertisement contains vital information for the client to exist within the network.
-Usually a link-local (:code:`FE80::/8`) address is used as source adddress in the message, which will then be used as (default) gateway by the client.
+Usually a link-local (:code:`FE80::/8`) address is used as source address in the message, which will then be used as (default) gateway by the client.
 
 Certain flags and options are offered to the client, the most prominent flags are the following ones (`rfc4861 <https://www.rfc-editor.org/rfc/rfc4861>`__):
 

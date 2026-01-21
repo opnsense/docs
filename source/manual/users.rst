@@ -75,7 +75,7 @@ rights, called privileges.
          Password                                  Configure a password for local login
          Scrambled Password                        Generate a random password for this login to avoid login
          Full name                                 Informational, users full name
-         E-mail                                    Informational, email adres this user has
+         E-mail                                    Informational, email address this user has
          Comments                                  Informational, custom notes
          Preferred landing page                    Preferred landing page after login or authentication failure
          Language                                  Language to use in the GUI

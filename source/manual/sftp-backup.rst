@@ -77,7 +77,7 @@ password combination or ssh using public key infrastructure.
 Enable                                Enable backup to the upstream target
 URL                                   Target location, which defines protocol, user and path. This may look like:
                                       `sftp://opnsense@192.168.1.10//home/opnsense/config_backups`
-SSH private key                       Upload the `my_new_key` file created during preperation.
+SSH private key                       Upload the `my_new_key` file created during preparation.
 Backup Count                          Number of backups to keep
 Encrypt Password                      Password used to encrypt the backup (optional)
 ====================================  ===============================================================================

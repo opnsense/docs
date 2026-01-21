@@ -40,7 +40,7 @@ We installed the Engine for Web Proxy purpose and enabled ICAP with its default 
 
 Step 4 - Connect the Engine
 ---------------------------
-Now connect the server that the engine is installed on to OPNsense trough either
+Now connect the server that the engine is installed on to OPNsense through either
 a switch or a direct cable connection. Preferable use a separate network for this
 traffic to make sure the unencrypted ICAP traffic can't be tapped.
 

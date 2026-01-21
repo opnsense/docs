@@ -9,7 +9,7 @@ In order to use this feature, one has to install the git-backup plugin first (in
 
 .. Warning:
 
-    Since backups using git are stored unecrypted and contain sensitive data, we generally advise not to use public cloud
+    Since backups using git are stored unencrypted and contain sensitive data, we generally advise not to use public cloud
     providers to store this data. Only use this option if you can guarantee the security of your git backup server.
 
 --------------------------
@@ -190,7 +190,7 @@ Cleanup
 --------------------------
 
 The repository is saved locally on the firewall in :code:`/conf/backup/git`, if for some reason one would like to remove the
-collected history and start over from scratch, one can safetly remove this directory.
+collected history and start over from scratch, one can safely remove this directory.
 
 Login using a (ssh) console and remove the git directory in that case (:code:`rm -rf /conf/backup/git`)
 

@@ -6,7 +6,7 @@ CPU Microcode updates [AMD/Intel]
 Introduction
 --------------------------------------
 
-Processor manufacturers like AMD and Intel often release microcode updates to increase the stabilty and security of their products.
+Processor manufacturers like AMD and Intel often release microcode updates to increase the stability and security of their products.
 Microcode updates can close the gap between BIOS/UEFI updates, which are generally less frequently available,
 to fix issues found after the product's release.
 

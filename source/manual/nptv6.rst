@@ -15,5 +15,5 @@ corner. A quick overview of the fields:
  Internal IPv6 Prefix          The internal IPv6 prefix used in the LAN(s). This will replace the prefix of the destination address in inbound packets. The prefix size specified here will also be applied to the external prefix.
  External IPv6 Prefix          The external IPv6 prefix. This will replace the prefix of the source address in outbound packets.
  Category                      The category this rule belongs to, can be used as a filter in the overview.
- Description                   A description to easily indentify the purpose of this rule in the overview.
+ Description                   A description to easily identify the purpose of this rule in the overview.
 ============================= =======================================================================================================================================================================

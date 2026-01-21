@@ -61,7 +61,7 @@ opened the state view, you will see a button that allows you to kill all states 
 
 .. Note::
 
-    The state table tries to connect states to rules, but since these are refered to by rule number (sequence) in :code:`pf(4)`
+    The state table tries to connect states to rules, but since these are referred to by rule number (sequence) in :code:`pf(4)`
     these aren't always accurate after changes to the rules.
 
 The following fields are available in the grid:

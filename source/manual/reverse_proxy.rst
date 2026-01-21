@@ -82,8 +82,8 @@ are written in this language or in a C/C++ extension:
 ============================================= ================================================
 **Technology**                                **Used for**
 ============================================= ================================================
-Passenger                                      Application Server for differnet Languages
-nginx Unit_                                    Application Server for differnet Languages
+Passenger                                      Application Server for different Languages
+nginx Unit_                                    Application Server for different Languages
 Undertow_ (Raw, JBoss, WildFly)                Java application server
 Apache Tomcat                                  Java application server
 unit_, puma_, unicorn_                         Many Rack_ based frameworks (RoR_, Sinatrarb_, …)
