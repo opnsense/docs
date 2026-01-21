@@ -720,7 +720,7 @@ The following functions are available in the menu (as of OPNsense 23.7):
 
 * Connection Status
 
-  * Show tunnel statuses
+  * Show tunnel status
 
 * Log File
 
