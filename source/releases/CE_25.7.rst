@@ -179,7 +179,7 @@ Here are the full patch notes:
 * dhcrelay: use the new mwexecf() $format support
 * firmware: opnsense-update: remove architecture pinning for -X option
 * captive portal: re-introduce ipfw for accounting purposes only
-* dnsmasq: add DHCP logging flags toinfluence log verbosity
+* dnsmasq: add DHCP logging flags to influence log verbosity
 * intrusion detection: refactor query scripts and deprecate params.py
 * intrusion detection: increase maintainability of suricata.yaml file
 * intrusion detection: add support for /usr/local/etc/suricata/conf.d directory
