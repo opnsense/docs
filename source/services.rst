@@ -33,7 +33,6 @@ Your security appliance comes with quite some services to ease network operation
    :maxdepth: 2
    :titlesonly:
 
-   manual/dnsmasq
    manual/opendns
    manual/unbound
 
