@@ -21,7 +21,7 @@ now supports UEFI as well.
 
 For those wondering, the WireGuard plugin has been available since 2019 and
 receives continuous improvements by its maintainer and various users alike.
-And that is unlikey to change in the future.  ;)
+And that is unlikely to change in the future.  ;)
 
 As we continue to deprecate custom configuration inputs for a number of
 reasons, Dnsmasq has been switched to a pluggable file-based approach `[1] <https://docs.opnsense.org/manual/dnsmasq.html>`__ 
@@ -439,7 +439,7 @@ Here are the full patch notes:
 Today we move ahead with the firmware UI and API rework as we are happy
 with the new user experience.  You will also notice the new plugin conflict
 dialog which will report that plugins have been installed previously but
-not registered in the configuration.  This can be easily amended by reseting
+not registered in the configuration.  This can be easily amended by resetting
 the local conflicts, which essentially accepts the current plugin
 configuration as the new default.  This necessary change introduces API
 incompatibilities with existing external tools.
@@ -636,7 +636,7 @@ now supports UEFI as well.
 
 For those wondering, the WireGuard plugin has been available since 2019 and
 receives continuous improvements by its maintainer and various users alike.
-And that is unlikey to change in the future.  ;)
+And that is unlikely to change in the future.  ;)
 
 As we continue to deprecate custom configuration inputs for a number of
 reasons, Dnsmasq has been switched to a pluggable file-based approach `[1] <https://docs.opnsense.org/manual/dnsmasq.html>`__ 

@@ -888,7 +888,7 @@ Here is our list of major features that were worked on since 16.1:
 * Added RFC 4638 support (MTU > 1492 in PPPoE)
 * NTP can now be disabled if required
 * New category-based remote ACL support in proxy server
-* ICAP configuration aded to proxy server
+* ICAP configuration added to proxy server
 * Pluggable service infrastructure
 * Pluggable syslog infrastructure
 * Finished a full sweep of visible GUI pages for improved look and feel

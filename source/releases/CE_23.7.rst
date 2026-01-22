@@ -83,7 +83,7 @@ A hotfix release was issued as 23.7.12_5:
 
 
 The final test phase for 24.1 is starting just as 23.7 strechtes towards
-its inevitable end of life.  At the moment it is unlcear if this release
+its inevitable end of life.  At the moment it is unclear if this release
 will be the last one or not so we shall refrain from stating something that
 may not be true in the coming weeks.  ;)
 

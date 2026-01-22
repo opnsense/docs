@@ -106,7 +106,7 @@ Here are the full patch notes:
 * openvpn: add live-search to longer lists in server page
 * openvpn: support --cryptoapicert export `[1] <https://www.max-it.de/>`__  (sponsored by m.a.x. it)
 * opnevpn: correctly check for translation in get_carp_interface_status()
-* openvpn: use waitforpid() to properly wait for instanes to come up
+* openvpn: use waitforpid() to properly wait for instances to come up
 * openvpn: translate GUI error values when returning them
 * openvpn: revamp status page
 * unbound: leases watcher file rotation issue
