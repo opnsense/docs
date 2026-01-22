@@ -319,7 +319,7 @@ going to :menuselection:`System --> Settings --> General`. The following setting
 | **Networking**                                                                                                       |
 +---------------------------------+------------------------------------------------------------------------------------+
 | Prefer to use IPv4 even         | By default if a hostname resolves IPv6 and IPv4 addresses, the IPv6 will be used.  |
-| if IPv6 is available            | If checked, then IPv4 addresses will be used instead of IPv6.                       |
+| if IPv6 is available            | If checked, then IPv4 addresses will be used instead of IPv6.                      |
 +---------------------------------+------------------------------------------------------------------------------------+
 | DNS servers                     | A list of DNS servers, optionally with a gateway. These DNS servers are also used  |
 |                                 | for the DHCP service, DNS services and for PPTP VPN clients. When using multiple   |

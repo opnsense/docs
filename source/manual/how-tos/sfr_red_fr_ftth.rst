@@ -294,7 +294,7 @@ Click on `[+]` to add a static mapping:
 	:width: 100%
 
 Firewall / NAT / Destination NAT (Port Forward)
-+++++++++++++++++++++++++++++
++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Select :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
 

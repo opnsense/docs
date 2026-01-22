@@ -12,7 +12,7 @@ Bridge
 
 Bridging allows to create a connection between separate networks, allow traffic on network A destined for network B
 (where both networks are connected to your OPNsense device) to reach it via this bridge. Note that this does not
-include DHCP services—this needs to set using :ref:`DHCP relaying <dhcp-relaying>`.
+include DHCP services—this needs to set using :ref:`DHCP relaying <dhcrelay>`.
 
 A bridge works like a (layer-2) switch, forwarding traffic from one interface to another.
 Multicast and broadcast packets are always forwarded to all interfaces that are part of the bridge.
