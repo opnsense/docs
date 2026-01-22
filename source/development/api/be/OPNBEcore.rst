@@ -17,7 +17,7 @@ OPNBECore
 Sync API explained
 -----------------------
 
-The :code:`sync` API is being used to process central actions in parallell from the OPNcentral dashboard.
+The :code:`sync` API is being used to process central actions in parallel from the OPNcentral dashboard.
 As explained in the documentation for OPNcentral, provisioning is able to detect change on the sections it may
 distribute. In order to do this the :code:`listClasses` API action plays a large role here.
 

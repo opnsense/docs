@@ -507,7 +507,7 @@ This way, you can evaluate the `Web Security` log file, and look for rules that 
 This will reveal if the web application might be outdated and needs patching, because several web protection rules match
 and would block connections.
 
-If they are false positives, the rule IDs can be set as excemptions with the option `Disable Security Rules by ID`. Search the rules
+If they are false positives, the rule IDs can be set as exemptions with the option `Disable Security Rules by ID`. Search the rules
 in the dropdown, and select multiple ones you want to exclude.
 
 After this configuration, set the Web Protection to `On (default)` to enable it. The web application should now be configured for production.
@@ -541,7 +541,7 @@ Rejecting can improve security, yet will make large files fail completely if the
 .. Note::
 
     Increasing the `Body` limits will increase the log file sizes, and will eventually use the disk of the OPNsense to write files upon inspection.
-    For this, the `Request Body in Memory Limit` can be increased to 1GB to focus on RAM usage. If you want to use the least ressources, logging and disk I/O,
+    For this, the `Request Body in Memory Limit` can be increased to 1GB to focus on RAM usage. If you want to use the least resources, logging and disk I/O,
     leave all settings on default, and set `Request Body Limit Action` to `Process Partial`.
 
 
@@ -734,7 +734,7 @@ Option                           Description
 ================================ ========================================================================================
 Overlay error pages              Overlay common error pages with the ones specified in the virtual server. This means
                                  that all HTTP response status codes received from the ``Remote destinations`` will be stripped,
-                                 and only matching HTTP resonse codes in the current selected error document template will be served.
+                                 and only matching HTTP response codes in the current selected error document template will be served.
 ================================ ========================================================================================
 
 .. Tip::

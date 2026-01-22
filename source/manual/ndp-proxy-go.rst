@@ -340,18 +340,41 @@ that have been created in the `Firewall Rules` step:
    Alternatively, `any` could be used as source and destination, though this will match any traffic so be careful.
 
 
+Router Advertisements
+--------------------------------------------------
+
+Per default, the proxy forwards Router Solicitations from downstream to upstream, and Router Advertisements from upstream to downstream.
+The only alterations are the sending MAC address, and the Source Link Layer (SLLA) option.
+
+In most setups, the default is the best choice. In more complex environments, having full control over the RAs could be a
+requirement. The NDP proxy can be combined with :doc:`radvd </manual/radvd>` to fulfill that requirement.
+
+Go to :menuselection:`Services --> NDP Proxy --> Settings` and disable `Proxy router advertisements`.
+
+Next go to :menuselection:`Services --> Router Advertisements` and create a new entry:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Enabled**                         ``X``
+**Interface**                       ``LAN``
+**Constructor**                     ``WAN``
+==================================  =======================================================================================================
+
+Now the LAN interface will send RAs advertising the prefix constructed from the WAN SLAAC address.
+You can set custom RDNSS and DNSSL options, or set a different mode to additionally use a DHCPv6 server.
+
+
 High Availability
 --------------------------------------------------
 
 To use the proxy in HA, enable the advanced mode in :menuselection:`Services --> NDP Proxy --> Settings` and toggle `Enable CARP failover`.
 
-Ensure that you use `Proxy router advertisements` to proxy the RAs of the ISP. Deactivate any other RA daemon on the selected downstream interfaces.
+The simplest is using `Proxy router advertisements` to proxy the RAs of the ISP.
+When using :doc:`radvd </manual/radvd>` instead, advertise a CARP link-local address as source.
 
 Since Neighbor Discovery relies on a single link-layer router identity, a brief interruption may occur during failover while both the
-upstream ISP router and downstream clients relearn the router’s MAC address.
-
-Do not configure any virtual IPv6 addresses on any of the upstream and downstream interfaces, the proxy will only use the real
-interface link-local and MAC addresses.
+upstream ISP router and downstream clients relearn the router's MAC address.
 
 .. Tip::
 

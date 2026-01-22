@@ -31,7 +31,7 @@ Choose an instance type
 Step 3 - Configure Instance Details
 ------------------------------------
 
-Here you can configure your network details, by default a network is assigned which is accesible from an external IPv4
+Here you can configure your network details, by default a network is assigned which is accessible from an external IPv4
 address.
 
 At the bottom of the page you can also supply "User data" in the "Advanced Details" section, you can use this to
@@ -39,7 +39,7 @@ set an initial password for the `ec2-user`.
 
 .. Note::
 
-    When a password is omited, one will be automatically generated for you and displayed on the console (get system log).
+    When a password is omitted, one will be automatically generated for you and displayed on the console (get system log).
 
 
 .. Note:

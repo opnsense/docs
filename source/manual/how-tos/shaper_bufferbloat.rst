@@ -68,7 +68,7 @@ FQ_CoDel uses the following parameters in its algorithm.
 Configuring FQ_CoDel for OPNsense
 ---------------------------------
 
-In the configuration steps below, assume these advertized ISP speeds:
+In the configuration steps below, assume these advertised ISP speeds:
 
 +----------------+----------+-----------------+
 |                | Download |      Upload     |
@@ -93,7 +93,7 @@ Create Pipe For Download
 Setting                   Default       Description
 ========================= ============= ===========================================================================================================
  **enabled**              Checked       *Check to enable the pipe*
- **bandwidth**            495           *Set initially to 85% of ISP advertized BW, tune later - numeric*
+ **bandwidth**            495           *Set initially to 85% of ISP advertised BW, tune later - numeric*
  **bandwidth Metric**     Mbit/s        *Metric associated with the bandwidth*
  **queue**                (empty)       *Leave empty: queues are configured separately*
  **mask**                 (none)        *Leave empty*
@@ -232,7 +232,7 @@ Run several tests to get average data rates and latency.
 Write those values down.
 
 While you are configuring FQ_CoDel, enter an initial value for the
-"bandwidth" that is 85% of the advertized rate from the ISP.
+"bandwidth" that is 85% of the advertised rate from the ISP.
 (That is, if the download service is 100 Mbit/s, set the speed to 85 Mbit/s;
 for 40 Mbit/s upload, set it to 40 x 85%, or 34 Mbit/s.)
 
@@ -341,7 +341,7 @@ The over-large packet limit leads to bad results during slow start on some bench
 .. Note::
 
         For FreeBSD there is a `BUG <https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=276890>`_ opened for CPU hogging due to excessive logging caused when the limit queue is exceeded.
-        Additionaly one of the creators of CoDel raised a `discussion <https://marc.info/?t=170776797300003&r=1&w=2>`_ to improve the implementation of FQ_CoDel on FreeBSD.
+        Additionally one of the creators of CoDel raised a `discussion <https://marc.info/?t=170776797300003&r=1&w=2>`_ to improve the implementation of FQ_CoDel on FreeBSD.
 
 .. Note::
 

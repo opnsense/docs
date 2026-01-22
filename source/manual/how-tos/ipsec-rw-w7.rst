@@ -35,7 +35,7 @@ Step 2 - Add VPN Connection
 Add a new VPN connection via **Network and Sharing Center** and choose as **Internet Address**
 the correct FQDN. This is imporatant when using certificates since the FQDN of your connection
 and the one in the certificate has to match!
-Then set a **Username** and **Password** and leave **Domain** emtpy.
+Then set a **Username** and **Password** and leave **Domain** empty.
 
 -------------------
 Step 3 - Finetuning
@@ -47,7 +47,7 @@ of your newly created adapter. Check that the FQDN is correct:
 .. image:: images/ipsec-rw-w7-1.png
    :width: 60%
 
-On tab **Networking** in IPv4 configuration under **Advanced** is the option **Use defaut gateway on remote network**.
+On tab **Networking** in IPv4 configuration under **Advanced** is the option **Use default gateway on remote network**.
 If this option is enabled, all traffic will be sent through the VPN (if IPsec SA matches). When unchecked, you have
 to set specific routes sent via VPN. 
 

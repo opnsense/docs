@@ -300,7 +300,7 @@ URLs of Blocklists                    Additional http[s] location to download bl
                                       files containing a list of fqdn's (e.g. :code:`my.evil.domain.com`) OR wildcard domains
                                       (e.g. :code:`*.my.evil.domain.com`) are supported.
 Allowlist Domains                     When a blocklist item contains a pattern defined in this list it will
-                                      be ommitted from the results.  e.g. :code:`.*\.nl` would exclude all .nl domains.
+                                      be omitted from the results.  e.g. :code:`.*\.nl` would exclude all .nl domains.
                                       Blocked domains explicitly allowlisted using the :doc:`/manual/reporting_unbound_dns`
                                       page will show up in this list.
 Blocklist Domains                     List of domains to explicitly block. Regular expressions are not supported.

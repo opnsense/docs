@@ -26,7 +26,7 @@ The following types of certificate can be generated in OPNsense:
 * Certificate Authority
 
 In addition to this, OPNsense can generate a Certificate Signing Request (CSR). This can be used if you want to create a
-certficate signed by an external CA.
+certificate signed by an external CA.
 
 .. warning::
 
@@ -52,7 +52,7 @@ For compliance reasons, it is possible to implement certain constraints when a d
  **Options**                           **Description**
 ===================================== =======================================================================================================================
 Store intermediate                    Allow local defined intermediate certificate authorities to be used in the local trust store.
-                                      Be careful with deploying intermediate certificats as cross signed ones may causing breakage when included
+                                      Be careful with deploying intermediate certificates as cross signed ones may causing breakage when included
                                       but expired later in the chain.
 Store CRL's                           Store all configured CRL's in the default trust store. If the client or service support CRL's,
                                       deploying to the default location eases maintenance.
@@ -80,7 +80,7 @@ Some services in OPNsense can use these to validate if a certificate is still va
 be expired.
 
 Defining a CRL in OPNsense is not very complicated, just go to :menuselection:`System --> Trust --> Revocation`
-and click on the [+] sign for your (local) certficate authority to create a new CRL. When a CRL exists, you may
+and click on the [+] sign for your (local) certificate authority to create a new CRL. When a CRL exists, you may
 edit it and add or remove certificates in it (using the pencil icon).
 
 .. Note::
@@ -137,7 +137,7 @@ certificates "online" and offers a whitelising instead of a blacklisting method.
 Certificates are checked against an online known set of certificates after which the server responds with
 'good', 'revoked', or 'unknown'. Only good responses are considered valid.
 
-In order to explain the client verifying a certificate where to check it's validity, the :code:`AuthorityInfoAccess` extenstion
+In order to explain the client verifying a certificate where to check it's validity, the :code:`AuthorityInfoAccess` extension
 should be provided in the certificate authority (The parameter :code:`OCSP uri` adds this to the certificate in OPNsense).
 
 .. Tip::

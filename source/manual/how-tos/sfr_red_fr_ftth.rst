@@ -237,7 +237,7 @@ Add parameters to let SFR/RED Box discover the SIP proxy:
 	:width: 100%
 
 .. Warning::
-    It appears OPNSense will drop support of functionnality of **advanced** parameters so I don't know if it will be possible in future releases
+    It appears OPNSense will drop support of functionality of **advanced** parameters so I don't know if it will be possible in future releases
     to define the DNS stuff using:
 
     * local-data: "_sip._udp.firewall.localdomain.intra. 180 IN SRV 10 60 5060  firewall.localdomain.intra."

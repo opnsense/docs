@@ -90,7 +90,7 @@ Here are the full patch notes:
 * system: show and search ACL endpoints in privilege selector
 * system: replace a number of log_error() calls with log_msg() equivalent
 * system: improve SSH lockout behaviour
-* firewall: sates page performance improvements and better address parsing in search
+* firewall: states page performance improvements and better address parsing in search
 * firewall: reuse "hostid" on filter reload events
 * ipsec: allow to search all phase 2 entries via API call
 * openvpn: remove unused "pool_enable" attribute
@@ -528,7 +528,7 @@ Here are the full patch notes:
 
 A hotfix release was issued as 22.7.3_2:
 
-* system: work around phpseclib 3 flagging RSA-PSS as an invalid key alogrithm
+* system: work around phpseclib 3 flagging RSA-PSS as an invalid key algorithm
 * system: check for existing X509 class before doing CRL update
 
 

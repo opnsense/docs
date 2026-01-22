@@ -43,7 +43,7 @@ Gateway Priority                      If a gateway is configured for a group, th
                                       considered.
 Trigger Level                         When a gateway inside the tier is considered offline, either when its
                                       fully down, has loss or increased latency.
-Pool Options                          Usually left to default, but can influence stickyness for sources on
+Pool Options                          Usually left to default, but can influence stickiness for sources on
                                       a per group basis.
 ====================================  ===============================================================================
 

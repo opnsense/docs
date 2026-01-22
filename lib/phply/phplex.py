@@ -158,7 +158,7 @@ def t_php_OBJECT_OPERATOR(t):
     return t
 
 
-# Delimeters
+# Delimiters
 t_php_LPAREN               = r'\('
 t_php_RPAREN               = r'\)'
 t_php_DOLLAR               = r'\$'

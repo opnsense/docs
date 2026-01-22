@@ -352,7 +352,7 @@ Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_o
 
       .. Note::
 
-         The lower cost of ``ipsec1`` will make this interface prefered as route as long as it is available.
+         The lower cost of ``ipsec1`` will make this interface preferred as route as long as it is available.
 
    .. group-tab:: Step 5
 
@@ -444,7 +444,7 @@ Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_o
 
       .. Note::
 
-         The lower cost of ``gre1`` will make this interface prefered as route as long as it is available.
+         The lower cost of ``gre1`` will make this interface preferred as route as long as it is available.
 
    .. group-tab:: Step 5
 

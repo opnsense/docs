@@ -69,7 +69,7 @@ When OPNcentral is installed on the firewall and backups are being performed, th
 top of the page to select which host should be inspected.
 
 Each backup preserved on this machine will be presented as an item in the dropdown, when selecting an item, the previous backup
-(when availabe) will be selected automatically as comparison target. The final pane on the screen contains the changes
+(when available) will be selected automatically as comparison target. The final pane on the screen contains the changes
 between both selected versions in `unified diff <https://en.wikipedia.org/wiki/Diff#Unified_format>`__ format.
 
 The following buttons are available in the "backups (compare)" pane:

@@ -157,7 +157,7 @@ Let it run for a while, and exit using :code:`CTRL-C`
 You will see all `stack frames <https://en.wikipedia.org/wiki/Call_stack>`__ associated with
 :code:`uiomove()` that have taken place, aggregated to only unique frames. The number below the individual 
 frame represents the amount of times that particular frame was executed. Although this is nice,
-it isn't particulary visually pleasing or helpful in spotting potential bottlenecks.
+it isn't particularly visually pleasing or helpful in spotting potential bottlenecks.
 
 A senior performance analyst at Netflix, named Brendan Gregg, developed the 
 `FlameGraph <https://github.com/brendangregg/FlameGraph>`__ for use with DTrace (and other profiling tools).

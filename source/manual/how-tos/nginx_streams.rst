@@ -74,7 +74,7 @@ If you route directly with upstream property, the upstream TLS settings
 are used, to choose if the backend connection should be TLS encrypted (again).
 
 If you want to use an SNI Upstream Map, switch the entry in "Route With"
-and choose a mapping in the coresponding entry.
+and choose a mapping in the corresponding entry.
 
 .. _standard: https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
 

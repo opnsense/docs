@@ -29,7 +29,7 @@ Your ISP provides you the following information to connect via PPPoE:
 
 For this example setup, we assume the default WAN interface is ``igc1``.
 Though this default interface can have different names depending on
-your environment, e.g., ``igb1``, ``hn1``, ``vtnet1`` or similiar.
+your environment, e.g., ``igb1``, ``hn1``, ``vtnet1`` or similar.
 
 ----------------------------
 Configuration

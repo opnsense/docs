@@ -212,16 +212,15 @@ in the templates tab.
     In case multiple options need to be available, a custom template need to be created offering the user a choice between options when
     no session exists yet. (e.g. :code:` window.location` can't be used to forward to the provider)
 
-Since users need to be able to access the oidc provider (which is usally not in the same network),
+Since users need to be able to access the oidc provider (which is usually not in the same network),
 the ip address (or group of addresses) should be excluded from entering the portal.
 In most cases these aren't just static addresses, in which case you need to use custom firewall rules to allow traffic to the provider (such as Microsoft Entra ID).
-The `captive portal documentation <../captiveportal.html#captive-portal-firewall-rules>`__  explains how to define custom rules for these case.
+The `captive portal documentation </manual/captiveportal.html#captive-portal-firewall-rules>`__  explains how to define custom rules for these case.
 
 .. Tip::
     When your provider is hosted in a rather dynamic environment (such as Microsoft Entra ID), you probably want to put the associated
     domains in an allow list. The included Dnsmasq service can be of great help there as explained
-    in the `IPset <../dnsmasq.html#firewall-alias-ipset>`__ feature documentation.
-
+    in the `IPset </manual/dnsmasq.html#firewall-alias-ipset>`__ feature documentation.
 
 OPNWAF (Web application firewall / reverse proxy)
 .......................................................

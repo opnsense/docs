@@ -439,7 +439,7 @@ this widget is accessible for the current logged in user. To do this, you must c
 The `Core XML file <https://github.com/opnsense/core/blob/master/src/opnsense/www/js/widgets/Metadata/Core.xml>`__ shows
 how widget metadata is structured.
 
-If any of the defined endpoints is inaccesible, the widget will not be available for the user. Note that the same rules 
+If any of the defined endpoints is inaccessible, the widget will not be available for the user. Note that the same rules 
 as for any other `ACL <../../development/examples/helloworld.html#plugin-to-access-control-acl>`__ applies here.
 
 Translations are provided in the same XML file, you can access these values by using the :code:`this.translations.<key>` variables

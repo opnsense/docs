@@ -18,7 +18,7 @@ Authentication in OPNsense consists of three basic concepts, which are available
 
 * Connections
 
-  - A connection uses an authenticator and defines the properties needed, for example our Radius server available at our domain using specfic settings.
+  - A connection uses an authenticator and defines the properties needed, for example our Radius server available at our domain using specific settings.
 
 * Services
 

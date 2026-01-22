@@ -340,7 +340,7 @@ Here are the full patch notes:
 * web proxy: add extended file logging option
 * openssh: migrated to plugin framework code
 * openvpn: correctly export renegotiate time of zero
-* openvpn: reenable the XOR patch support
+* openvpn: re-enable the XOR patch support
 * dynamic dns: multiple fixes and migrated to plugin framework code
 * rfc2136: multiple fixes and migrated to plugin framework code
 * rfc2136: separated code from dynamic DNS
@@ -561,7 +561,7 @@ for Chinese.  Xie xie!
 
 Furthermore, the shared forwarding between both packet filters introduced
 in OPNsense 17.1 has now been disabled by default and can be manually
-reenabled from the GUI on Firewall: Settings: Advanced.
+re-enabled from the GUI on Firewall: Settings: Advanced.
 
 Here are the full patch notes:
 

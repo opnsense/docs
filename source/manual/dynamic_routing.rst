@@ -16,7 +16,7 @@ These routing protocols are used to:
 * Improve fault tolerance (if a connection breaks, a new route will be found if possible)
 * Simplify administration (you have to add fewer routes manually)
 
-It is not adviseable to use dynamic routing in the following scenarios:
+It is not advisable to use dynamic routing in the following scenarios:
 
 * When your network is small (it would be simpler to use static routes)
 * If you are working in a highly isolated environment, where you have to be in control of every route in your network
@@ -55,7 +55,7 @@ General setup
 
 To use one or more of the protocols included, the plugin must be enabled in
 :menuselection:`Routing --> General`. Without any other service enabled this makes sure the zebra service is being
-configured, which is the coordinating master service which handles generic features such as logging and acccess to kernel
+configured, which is the coordinating master service which handles generic features such as logging and access to kernel
 routing.
 
 .. Tip::
@@ -200,7 +200,7 @@ For more detailed information, check out the `FRR documentation <https://docs.fr
 
 .. Attention::
 
-   Any route received with dynamic routing protocols will only be installed if no similiar local route already exists. E.g., if a neighbor advertises
+   Any route received with dynamic routing protocols will only be installed if no similar local route already exists. E.g., if a neighbor advertises
    a default gateway route, but a directly attached default gateway route already exists, the local route will be preferred and the advertised route will be discarded.
 
 
@@ -295,7 +295,7 @@ OSPF/OSPFv3 (Open Shortest Path First)
        =================================== =======================================================================================================================
        **Enabled**                         (OSPF only) Enable / Disable
        **Area ID**                         (OSPF only) Enter area ID in dotted (e.g. 0.0.0.1) format. You only need to define areas that are not normal.
-                                           All areas defined in the network or interface tab will automatically be normal, unless explicitely overwritten
+                                           All areas defined in the network or interface tab will automatically be normal, unless explicitly overwritten
                                            here with a different area type.
        **Area Type**                       (OSPF only) Select area behavior (e.g. stub no-summary)
        =================================== =======================================================================================================================

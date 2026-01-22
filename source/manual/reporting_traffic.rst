@@ -17,7 +17,7 @@ The top area of the screen shows an overview of all network adapters for both in
 select the desired polling resolution with the dropdown left of the interface selection dropdown.
 
 The graph below shows the top consumers over the same timespan, when you point to a dot it will show you the measured
-bandwith for the selected host (the color matches the interface).
+bandwidth for the selected host (the color matches the interface).
 
 
 Top talkers

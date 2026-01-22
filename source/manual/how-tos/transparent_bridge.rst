@@ -74,10 +74,10 @@ Our example appliance has 3 available network ports:
 The management interface will be used to access the firewall WebGUI and to enable access
 to the internet for firmware updates.
 
-- Go to :menuselection:`Interfaces --> Assignements` and `Assign a new interface`.
+- Go to :menuselection:`Interfaces --> Assignments` and `Assign a new interface`.
   Select one of the free available ports (e.g. igc2) and assign it, set the description to `Management`.
 
-- Afterwards go to :menuselection:`Interfaces --> Management` and set `IPv4 Configuration Type` to `DHCP` or `Static IPv4` dependant on your usecase.
+- Afterwards go to :menuselection:`Interfaces --> Management` and set `IPv4 Configuration Type` to `DHCP` or `Static IPv4` dependent on your usecase.
 
 Next we add a firewall rule to allow access to the WebGUI on this management interface:
 
@@ -118,7 +118,7 @@ Here we change that the firewall rules should match on the bridge, instead of th
    Do not select `Enable link-local address`, in this configuration the bridge interface
    should stay unnumbered (no IP addresses or any vlans assigned to it or its member interfaces)
 
-- Go to :menuselection:`Interfaces --> Assignements`:
+- Go to :menuselection:`Interfaces --> Assignments`:
 
    - Assign the new bridge interface, set the description to `Bridge`
 

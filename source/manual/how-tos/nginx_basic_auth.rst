@@ -11,7 +11,7 @@ nginx: Basic Authentication & Authorization
     
     Please also note that basic authentication transfers the credentials in plain text
     to the server. It is recommended that you only use it via HTTPS because otherwise
-    every attacker with a network sniffer such as Wireshark_ (and mabe some additional
+    every attacker with a network sniffer such as Wireshark_ (and maybe some additional
     man in the middle tools like ettercap_ or fake_router6_) will be able to intercept
     your connection to the server and read your password.
 

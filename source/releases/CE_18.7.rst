@@ -29,7 +29,7 @@ These are the most prominent changes since version 18.1:
 * Monit core integration to eventually replace the legacy notifications
 * OpenSSH access via group and shell selection instead of privilege
 * pluggable backup framework with new Nextcloud option
-* sytem tunables are now also used as loader tunables
+* system tunables are now also used as loader tunables
 * unrestricted VLAN usage for e.g. Xen
 * QinQ interface removal
 * firmware GUI speedup, improved error parsing and console reboot hint
@@ -791,7 +791,7 @@ These are the most prominent changes since version 18.1:
 * Monit core integration to eventually replace the legacy notifications
 * OpenSSH access via group and shell selection instead of privilege
 * pluggable backup framework with new Nextcloud option
-* sytem tunables are now also used as loader tunables
+* system tunables are now also used as loader tunables
 * unrestricted VLAN usage for e.g. Xen
 * QinQ interface removal
 * firmware GUI speedup, improved error parsing and console reboot hint

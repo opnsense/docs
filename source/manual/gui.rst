@@ -77,7 +77,7 @@ wrong. You can click on it to review any of the pending messages, if any:
 
 The colors indicate the severity of the issue. They are:
 
-* Red. Indicates that an error has occured during system operation. Click it to go to the
+* Red. Indicates that an error has occurred during system operation. Click it to go to the
   relevant page. In most cases this will be the crash reporter, which you can use
   to send us information about the crash.
 
@@ -218,6 +218,6 @@ selected data.
 
     Although the page numbers and last page button (:code:`»`) are always visible, they can only be used when the size
     of the dataset is known upfront. In case of large datasets, such as intrusion alerts and log views the number of records
-    is not known upfront, since there's no relation between the size of the underlaying data and the number of records.
+    is not known upfront, since there's no relation between the size of the underlying data and the number of records.
 
     The record count in these cases is more or less a guestimate based on the number of records already shown.

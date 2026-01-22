@@ -65,7 +65,7 @@ Member of                        Select which group a user should be a member of
 Server instance                  The instance we grant access to
 Certificate lifetime (days)      Lifetime of a certificate, after expiry the user can not login anymore
 Certificate Key type             Type of certificate to include in the profile
-Certificate Digest Algorithm     Digest algoritm used to generate the certificate
+Certificate Digest Algorithm     Digest algorithm used to generate the certificate
 Export template                  Type of file the user will download
 Hostname                         The hostname or ip address used to contact this firewall
 Description                      Description shown to the user for this instance download
@@ -304,7 +304,7 @@ your users will use for accessing the user portal. Do not forget to create a fir
 
 .. Attention::
 
-    It is not adviced to allow access to the WebGUI from public networks without restriction.
+    It is not advised to allow access to the WebGUI from public networks without restriction.
 
 If you are corrently logged into the WebGUI admin, open a different browser or an incognito tab. Open the same URL you would use to log in
 as administrator, but instead log in with the user you created earlier (john).

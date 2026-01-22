@@ -239,7 +239,7 @@ amongst others. Available settings are described below:
 +-----------------------+------------------------+--------------------------------------------------------------+
 | pattern               | text                   | Regex to identify device names in bulk                       |
 +-----------------------+------------------------+--------------------------------------------------------------+
-| type                  | text                   | Unqiue type setting required for assignments page            |
+| type                  | text                   | Unique type setting required for assignments page            |
 +-----------------------+------------------------+--------------------------------------------------------------+
 | names                 | array [ see below ]    | List of devices with individual names as associative keys    |
 +-----------------------+------------------------+--------------------------------------------------------------+

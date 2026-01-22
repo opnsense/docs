@@ -29,6 +29,119 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+25.7.11 (January 15, 2026)
+--------------------------------------------------------------------------
+
+
+25.7.11 comes at a strange point in time but we will try to offer a bit of
+familiarity and common sense as we probably all need more of this.  <3
+
+This release brings the new host discovery service which resolves and remembers
+MAC addresses for IPv4 and IPv6 hosts in your connected networks and provides
+this data for the firewall MAC aliases and captive portal clients.  It is now
+enabled by default, but you can choose to opt out by disabling the automatic
+discovery option.
+
+Note to people who were already on 25.7.11 and 27.7.11_1: a modified hostwatch
+version was published disabling two excessive log messages.  Applying the
+hotfix 25.7.11_2 will not restart hostwatch.  Please do so under Interfaces:
+Neighbors: Automatic Discovery by either using "apply" or the restart button
+in the service widget.  Other reported issues will be addressed shortly.
+
+A lot of work went into IPv6 improvements over the holidays as is tradition
+with the help of users debugging their networks during that time.  A number
+of kernel fixes have been supplied and dhcp6c will also receive a larger update
+in 26.1 soon.
+
+The changes are otherwise clustered around preparation for the major upgrade
+which brings an number of fundamental changes with the ongoing removal of
+ISC-DHCP from core.  A plugin is already available through the development
+version and should auto-install.  If not make sure you install it before
+attempting a reboot there.  For the stable version everything is as it was.
+
+That being said, 26.1-RC1 will be out early next week and RC2 likely follows
+quickly.  We are still set for a final release date of January 28.  See you on
+the other side!
+
+Here are the full patch notes:
+
+* system: add tooltip explaining active status in snapshots
+* system: add "lazy loading" model support on Trust\Cert
+* system: properly fill DNS SAN from existing certificates (contributed by Klaas Demter)
+* system: rename sudoers file to make it more sortable (contributed by David Jack Wange Olrik)
+* system: numerous safe execution changes
+* system: sort to retain order in syslog-ng source definitions
+* interfaces: fix comparison in PPP check code during assignment
+* interfaces: prefer longer lifetimes if multiple exist
+* interfaces: defer manual rtsold script execution
+* interfaces: use mwexecfb() in two instances
+* interfaces: move configure_interface_hardware() to main file
+* interfaces: migrate "sharednet" setting to its respective sysctls
+* interfaces: add and enable new host discovery feature for neighbours via hostwatch
+* firewall: automation: only show ICMP type when protocol is ICMP
+* firewall: automation: add multi-select ICMP6 options
+* firewall: use new host discovery in MAC type aliases
+* firewall: simplify port alias check
+* captive portal: assign empty array when "interface list arp json" returns invalid JSON
+* captive portal: use new host discovery service by default
+* dhcrelay: reload table to update relay status
+* intrusion detection: datakey hint was missing for rules edit
+* intrusion detection: replace "all" alert selection with explicit maximum choices
+* ipsec: most safe execution transformations done
+* isc-dhcp: interalize interfaces_staticarp_configure()
+* isc-dhcp: safeguard access to DHCPv6 "enable" property
+* kea: refactor daemon(8) call to mwexecfb()
+* network time: fix GPS coordinate display in status page (contributed by brotherla)
+* openvpn: add simple search functionality for accounts table in client export
+* openvpn: skip dynamic content when loading the model in client export
+* openvpn: convert two more exec() calls
+* openvpn: fix archive client export
+* unbound: remove delete selected button for single select overrides grid
+* unbound: add per-policy quick actions in reporting overview
+* unbound: add overrides reference counter for aliases
+* unbound: info section was larger than table width
+* backend: exec() removal in get_sysctl()/set_sysctl()
+* backend: exec() removal in auth scripts
+* mvc: reduce some call overheaad in BaseField/IntegerField
+* mvc: introduce defaultConfig property for AppConfig
+* mvc: uppercase all form labels
+* mvc: use asInt() in GidField and UidField
+* mvc: BaseField: add isSet()
+* tests: revamped config and base model tests
+* ui: bootgrid: allow conditional command rendering through a filter function
+* plugins: os-frr 1.50 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/net/frr/pkg-descr>`__ 
+* plugins: os-ndp-proxy-go 1.3 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/net/ndp-proxy-go/pkg-descr>`__ 
+* plugins: os-telegraf 1.12.14 `[3] <https://github.com/opnsense/plugins/blob/stable/25.7/net-mgmt/telegraf/pkg-descr>`__ 
+* src: in6: modify address prefix lifetimes when updating address lifetimes
+* src: ipv6: fix off-by-one in pltime and vltime expiration checks
+* src: ipv6: do not complain when deleting an address with prefix length of 128
+* src: ifconfig: fix the -L flag when using netlink
+* src: netlink: do not directly access ifnet members
+* src: netlink: do not overwrite existing data in a linear buffer in snl_writer
+* src: netmap: Let memory allocator parameters be settable via loader.conf
+* src: pfsync: avoid zeroing the state export union
+* src: divert: fix removal of divert sockets from a group
+* src: divert: use a jenkins hash to select the target socket
+* src: divert: define semantics for SO_REUSEPORT_LB on divert sockets
+* src: divert: use CK_SLISTs for the divcb hash table
+* src: pf: rationalize the ip_divert_ptr test
+* src: pf: fix handling of IPv6 divert packets
+* src: rtsold: check RA lifetime before triggering the one-shot always script
+* ports: hostwatch 1.0.4
+* ports: suricata 8.0.3 `[4] <https://suricata.io/2026/01/13/suricata-8-0-3-and-7-0-14-released/>`__ 
+
+A hotfix release was issued as 25.7.11_1:
+
+* system: fix vsprintf() error on stray % invoke
+
+A hotfix release was issued as 25.7.11_2:
+
+* system: fix edge case in tunable reset with one single tunable in the default config
+* ports: hostwatch 1.0.5 disables two excessive log messages
+
+
+
+--------------------------------------------------------------------------
 25.7.10 (December 18, 2025)
 --------------------------------------------------------------------------
 
@@ -129,7 +242,7 @@ Here are the full patch notes:
 * system: safe execution tweaks in rc.routing_configure
 * system: fix log keyword search regression introduced in 25.7.7
 * reporting: unbound: fix quick allow/blocklist actions by applying them to all blocklists
-* firewall: run filterlog directly after rules apply and remove promiscous mode
+* firewall: run filterlog directly after rules apply and remove promiscuous mode
 * firewall: allow setting a custom authentication HTTP header for alias URL fetch (contributed by nox-404)
 * firewall: for better IPv6 PMTU let "timex" and "paramprob" ICMP types through
 * firewall: do not allow nesting in GeoIP aliases
@@ -153,7 +266,7 @@ Here are the full patch notes:
 * backend: use mwexecf(m) where possible
 * backend: extend mwexecfb() with PID and log file support
 * mvc: fix default sort order being ignored in fetchBindRequest()
-* shell: rewite timeout() using safe execution functions
+* shell: rewrite timeout() using safe execution functions
 * ui: refresh notification status after default apply button is done
 * ui: remove obsolete jQuery bootgrid files
 * plugins: os-acme-client 4.11 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/security/acme-client/pkg-descr>`__ 

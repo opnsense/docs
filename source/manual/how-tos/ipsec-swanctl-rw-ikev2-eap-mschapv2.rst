@@ -749,7 +749,7 @@ Create the following aliases:
     ==============================================  ====================================================================================================
 
 
-Additionally, if you created seperate IP pools for individual roadwarriors (Method 2), create the following aliases so you are able to create individual firewall rules per roadwarrior:
+Additionally, if you created separate IP pools for individual roadwarriors (Method 2), create the following aliases so you are able to create individual firewall rules per roadwarrior:
 
     ==============================================  ====================================================================================================
     **Name:**                                       ``host_pool_roadwarrior_john``
@@ -877,7 +877,7 @@ Services: Unbound DNS
     If you do not serve internal DNS records (Split DNS) or do not use an Active Directory you can skip the DNS configuration.
 
 
-For full control over DNS, you should either use Unbound on the OPNsense or the DNS servers in your own network. If you provide your roadwarriors with external DNS servers (like ``8.8.8.8``), they cannot resolve your internal ressources and will send those requests to external DNS servers, thus exposing your internal DNS records. (DNS Leak)
+For full control over DNS, you should either use Unbound on the OPNsense or the DNS servers in your own network. If you provide your roadwarriors with external DNS servers (like ``8.8.8.8``), they cannot resolve your internal resources and will send those requests to external DNS servers, thus exposing your internal DNS records. (DNS Leak)
 
 .. Attention::
     If you created a full tunnel for IPv4 only (``0.0.0.0/0`` without ``::/0``), and your roadwarriors are in IPv4+IPv6 dual stack networks, their devices will prefer the link local IPv6 DNS servers provided by SLAAC or DHCPv6 over your IPv4 VPN DNS server.

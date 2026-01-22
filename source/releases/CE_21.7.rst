@@ -397,7 +397,7 @@ Here are the full patch notes:
 
 A hotfix release was issued as 21.7.3_1:
 
-* openvpn: properly save new tls-crypt configuation
+* openvpn: properly save new tls-crypt configuration
 
 A hotfix release was issued as 21.7.3_3:
 
@@ -466,7 +466,7 @@ Here are the full patch notes:
 * plugins: os-acme-client 3.0 `[1] <https://github.com/opnsense/plugins/blob/stable/21.7/security/acme-client/pkg-descr>`__ 
 * plugins: os-haproxy 3.5 `[2] <https://github.com/opnsense/plugins/blob/stable/21.7/net/haproxy/pkg-descr>`__ 
 * src: runtime RSS code preparations and assorted related upstream patches
-* src: axgbe: remove unneccesary packet length check
+* src: axgbe: remove unnecessary packet length check
 * src: iflib: fix partial length accounting error in netmap mode
 * src: lib: add libnetmap and related patches
 * src: dhclient: skip_to_semi() consumes semicolon already

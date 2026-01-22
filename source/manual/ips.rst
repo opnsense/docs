@@ -168,7 +168,7 @@ Policies
 The **policy** menu item contains a grid where you can define policies to apply
 to installed rules. Here you can add, update or remove policies as well as
 disabling them. Policies help control which rules you want to use in which
-manner and are the prefered method to change behaviour. Although you can still
+manner and are the preferred method to change behaviour. Although you can still
 update separate rules in the rules tab, adding a lot of custom overwrites there
 is more sensitive to change and has the risk of slowing down the
 user-interface.
@@ -178,7 +178,7 @@ such as the description and if the rule is enabled as well as a priority.
 Overlapping policies are taken care of in sequence, the first match with the
 lowest priority number is the one to use.
 
-Secondly there are the matching criterias, these contain the **rulesets** a
+Secondly there are the matching criteria, these contain the **rulesets** a
 policy applies on as well as the action configured on a rule (disabled by
 default, alert or drop), finally there is the **rules** section containing the
 metadata collected from the installed rules, these contain options as affected

@@ -5,7 +5,7 @@ Relayd
 The relayd plugin offers a load balancer which is capable of handling OSI layer 3 or 7 forwarding services to
 various backend servers while validating their availability.
 
-One of the main advantages over other forwarding services available for OPNsense is that relayd offers a transparant
+One of the main advantages over other forwarding services available for OPNsense is that relayd offers a transparent
 forwarding mode in layer 3 (redirection), which is lightweight and forwards the unmodified session to the target host.
 
 
@@ -46,9 +46,9 @@ Virtual Server
 .......................................
 
 A virtual server is where it all comes together, this type of object defines where to accept traffic from (bind address and port)
-and how to handle traffic when being recieved.
+and how to handle traffic when being received.
 
-The server type is one of the most important settings and defines if this virtual host is acting either as a redirection (using the firewall/transparant)
+The server type is one of the most important settings and defines if this virtual host is acting either as a redirection (using the firewall/transparent)
 or a relay (layer 7 mode).
 
 It is possible to choose two different tables to forward to here, in standard (non advanced mode) only the primary table is visible
@@ -153,4 +153,4 @@ In order to set up the example scenario, configure the following settings:
     * Scheduler: Round Robin
     * Table Check: ICMP
 
-Make sure to enable relayd on the generic settings tab, save settings and the new vritual host should be active.
+Make sure to enable relayd on the generic settings tab, save settings and the new virtual host should be active.

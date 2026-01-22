@@ -97,7 +97,7 @@ changing these settings.
 
 The rules are not shown by default, you can use the "Show rules" checkbox to enabled those,
 this option can help you identifying misconfigurations more easily,
-since the underlaying technology (:code:`ipfw`) keeps track of data on a per rule basis.
+since the underlying technology (:code:`ipfw`) keeps track of data on a per rule basis.
 
 .. Tip::
 

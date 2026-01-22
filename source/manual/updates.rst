@@ -12,7 +12,7 @@ Update settings
 
 By navigating to :menuselection:`System --> Firmware --> Settings`, you can influence the firmware update settings:
 
-* **Fimware Mirror:** this influences where OPNsense tries to get its updates from. If you have trouble updating or searching for updates, or if your current mirror is running slowly, you can change it here.
+* **Firmware Mirror:** this influences where OPNsense tries to get its updates from. If you have trouble updating or searching for updates, or if your current mirror is running slowly, you can change it here.
 * **Release Type:** this switches between the regular fortnightly schedule of tested releases (Production) or the newest, not fully tested code (Development). **Please leave this setting on "Production", unless you fully understand the implications of switching.**
 
 .. Tip::

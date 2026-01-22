@@ -80,7 +80,7 @@ The full configuration looks like this:
     section to generate the public key. Both are needed for successful configuration.
 
 .. Warning::
-    **Do not re-use the private keys in these examples**
+    **Do not reuse the private keys in these examples**
 
 ---------------------------------------------
 Step 2 - Generate public key from private key
@@ -148,7 +148,7 @@ Step 4 - Configure the peer
 - **Save** the Peer configuration, and then click **Apply**
 
 .. Note::
-    The UI for configuring the Instances and Peers changed with OPNsense verion 23.7.9 so some of the fields may be in different
+    The UI for configuring the Instances and Peers changed with OPNsense version 23.7.9 so some of the fields may be in different
     places.
 
 --------------------------

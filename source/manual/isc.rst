@@ -58,7 +58,7 @@ to look at. Like in the IPv4 scenario, you can provide a range here, offer setti
 create static assignments based on the clients unique DHCP identifier (`DUID <https://en.wikipedia.org/wiki/DHCPv6>`__).
 
 Always make sure  :doc:`Router advertisements </manual/radvd>` are properly configured before debugging DHCPv6 issues, these two
-daemons depend on eachother.
+daemons depend on each other.
 
 If a Prefix Delegation Range is specified, downstream routers may request prefixes (IA_PD). Routing a delegated prefix to a downstream
 router requires OPNsense to be aware of the router's IPv6 WAN address. This can be achieved in two ways:

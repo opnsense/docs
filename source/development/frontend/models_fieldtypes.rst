@@ -65,7 +65,7 @@ Select and validate authentication providers, maintained in :menuselection:`Syst
    "ValidationMessage", ":code:`text`", "Error message on validation failure"
    "BlankDesc", ":code:`text`", "Set a label for the empty option"
    "Multiple", "Y,N", "Allow to select multiple options"
-   "Filters", "Y,N", "A structure of regex filters per atribute to exclude certain options from the list"
+   "Filters", "Y,N", "A structure of regex filters per attribute to exclude certain options from the list"
 
 AutoNumberField
 ------------------------------------
@@ -167,7 +167,7 @@ only shows actions which have a description.
    "ValidationMessage", ":code:`text`", "Error message on validation failure"
    "BlankDesc", ":code:`text`", "Set a label for the empty option"
    "Multiple", "Y,N", "Allow to select multiple options"
-   "Filters", "Y,N", "A structure of regex filters per atribute to exclude certain options from the list"
+   "Filters", "Y,N", "A structure of regex filters per attribute to exclude certain options from the list"
 
 
 
@@ -185,7 +185,7 @@ Select and validate countries in the world.
    "ValidationMessage", ":code:`text`", "Error message on validation failure"
    "BlankDesc", ":code:`text`", "Set a label for the empty option"
    "Multiple", "Y,N", "Allow to select multiple options"
-   "AddInverted", "Y,N", "Add 'inverted'/excluded countries to the list, copies contry codes prefixes an :code:`!` (e.g. :code:`!NL`)"
+   "AddInverted", "Y,N", "Add 'inverted'/excluded countries to the list, copies country codes prefixes an :code:`!` (e.g. :code:`!NL`)"
 
 
 DescriptionField
@@ -269,7 +269,7 @@ should be. It defaults to :code:`lan`
    "ValidationMessage", ":code:`text`", "Error message on validation failure"
    "BlankDesc", ":code:`text`", "Set a label for the empty option"
    "Multiple", "Y,N", "Allow to select multiple options"
-   "Filters", "Y,N", "A structure of regex filters per atribute to exclude certain options from the list"
+   "Filters", "Y,N", "A structure of regex filters per attribute to exclude certain options from the list"
    "AddParentDevices", "Y,N", "Add parent devices in the list when not assigned"
    "AllowDynamic", "Y,N,S", "Allow dynamic (hotplug) interfaces, when set to :code:`S` hotplug interfaces without a static address are ignored"
 
@@ -307,7 +307,7 @@ enforce either ipv4 or ipv6 addresses.
 JsonKeyValueStoreField
 ------------------------------------
 
-A construct to validate against a json dataset retreived via configd, such as
+A construct to validate against a json dataset retrieved via configd, such as
 
 .. code-block:: xml
 

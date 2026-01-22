@@ -16,7 +16,7 @@ To explain what the different options mean when being presented, we will summari
 ========================================================================================================================================================
 
 ====================================  ==================================================================================================================
-Alias                                 Flexible type of network or address definition for easy reuse, expained in
+Alias                                 Flexible type of network or address definition for easy reuse, explained in
                                       :doc:`aliases </manual/aliases>`
 Single host or network                Standard host or network in `CIDR notation <https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing>`__
 any                                   All IPv4 and/or IPv6 addresses (in the world)

@@ -31,7 +31,7 @@ Installation
 Installation of this plugin is rather easy, go to :menuselection:`System --> Firmware --> Plugins` and search for **os-OPNProxy**,
 use the [+] button to install it.
 
-Next go to :menuselection:`Services --> Web Proxy --> Access control` to start configuring polcies.
+Next go to :menuselection:`Services --> Web Proxy --> Access control` to start configuring policies.
 
 .. Note::
 
@@ -69,10 +69,10 @@ to import/add the users in OPNsense in order to user their authorisation setting
     (it's not possible to block no bump sites in full inspection mode)
 
 
-Transparant proxies
+Transparent proxies
 ---------------------------
 
-It is possible to use the proxy in transparant mode, but there are some constraints and ceveats to take into account when doing so.
+It is possible to use the proxy in transparent mode, but there are some constraints and ceveats to take into account when doing so.
 This paragraph tries to explain them one by one.
 
 * Using "Log SNI information only" is not supported in a useful way. As the browser is not aware of the proxy, it will request
@@ -117,7 +117,7 @@ Policy types
 Part of OPNproxy is a standard list of categorized locations, which can be easily added to a policy, these type of policies
 are the default ones. You will find categories here like :code:`adult`, :code:`advertisements`, :code:`malware` and many others.
 
-In some cases however our defaults are not enough, for this reason we also offer the posibility to push your own list of
+In some cases however our defaults are not enough, for this reason we also offer the possibility to push your own list of
 domains and locations into a custom policy.
 
 Every policy contains what to match (either a standard category or a list of domains and paths), what to do (allow or deny)

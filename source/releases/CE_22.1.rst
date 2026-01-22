@@ -49,7 +49,7 @@ it from the development version or reinstall from the provided images.
 
 A hotfix will be issued on the 28th to enable the upgrade path, but depending
 on testing and mirror availability this might be up to 24 hours after the
-intial image release of 22.7.
+initial image release of 22.7.
 
 Here are the full patch notes:
 
@@ -156,7 +156,7 @@ A hotfix release was issued as 22.1.9_1:
 
 
 Small reliability update which also includes a rework for firewall alias
-handling and preformance.
+handling and performance.
 
 Later today we will also publish a call for testing for the upcoming 22.7
 operating system base using FreeBSD 13.1.  It is going to be compatible
@@ -292,7 +292,7 @@ Here are the full patch notes:
 
 
 Due to popular demand the user experience for the revamped VLAN handling
-was improved in several areas.  Also incuded are a larger Unbound MVC
+was improved in several areas.  Also included are a larger Unbound MVC
 rework and DNS system route apply changes from one single spot.  Last but
 not least the zlib vulnerability was fixed in FreeBSD amongst others.
 
@@ -1020,7 +1020,7 @@ Known issues and limitations:
 * MAC spoofing now only pertains to the configured interface and not the VLAN siblings or parent interface.  This can introduces unwanted configuration due to previous side effects in the code.  Make sure to assign and set the spoofed MAC for all interfaces that require a spoofed MAC.
 * Media settings are no longer shown for non-parent interfaces and need to be set individually to take effect.  This can introduce unwanted configuration due to previous side effects in the code.  If the parent interface was not previously assigned please assign it to reapply the required media settings.
 * Router advertisement static mode option is still subject to change in this release candidate series.
-* IPsec hash and cipher removals in FreeBSD 13 can affect existing setups as insecure cryptographic options have been removed upstream.  For more information see the FreeBSD commit in question `[21] <https://github.com/opnsense/src/commit/16aabb761c0a>`__ .  We will be adding an explict configuration check to 21.7 before its end of life.
+* IPsec hash and cipher removals in FreeBSD 13 can affect existing setups as insecure cryptographic options have been removed upstream.  For more information see the FreeBSD commit in question `[21] <https://github.com/opnsense/src/commit/16aabb761c0a>`__ .  We will be adding an explicit configuration check to 21.7 before its end of life.
 * Circular logging support has been removed.  No user interaction is required.
 * The migration notes are subject to change and will be extended as needed in the upcoming weeks.
 
