@@ -22,7 +22,7 @@ There are two implementations to choose from:
 .. Tip::
 
     **Rules [new]** will replace **Rules** over time, you can already migrate your existing rules
-    with a helper in :menuselection:`Firewall --> Rules --> Migration`.
+    with a helper in :menuselection:`Firewall --> Rules --> Migration assistant`.
 
 
 --------------------
@@ -352,6 +352,7 @@ Settings
                                the states will be removed and the rule will be skipped. This means, if there is still a matching rule
                                after the scheduled rule that allows the traffic, it will be used instead. Keep this in mind when
                                using scheduled rules, and carefully build the ruleset around them, e.g., with additional block rules.
+        **Divert-to**          Send packets matching this rule to the service specified, when the service is not running, packets will be dropped.
         ====================== ====================================================================================================
 
     .. tab:: Stateful firewall
@@ -441,12 +442,30 @@ Settings
         **Match local tag** Used to specify that packets must already be tagged with the given tag in order to match the rule.
         =================== ====================================================================================================
 
+Divert-to
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With divert we can integrate additional policy constructs into firewall rules.
+A rule with "divert-to" can send all packets to a divert socket, on which a service like :doc:`/manual/ips` can listen.
+
+This can provide more fine grained control than intercepting all traffic for inspection. It can improve performance because large flows that do not necessarily
+need inspection can be excluded.
+
+As an example, go to :menuselection:`Services --> Intrusion Detection --> Administration` and set the "Capture mode" to "Divert (IPS)".
+
+Afterwards, create a firewall rule that matches the traffic that should be inspected and set the "Divert-to" settings in that rule. Matching packets will be
+diverted to the socket the intrusion detection listens on. After making a decision, the packet will then be forwarded or dropped.
+
+.. Attention::
+
+    Keep in mind that when the service that listens on the divert socket is stopped, the firewall rule will drop all matching packets.
+
 
 Rules
 --------------------
 
 *Rules* is the implementation that has been around since day one. Since it consists of static php pages, there is no API support,
-Over time, it will be replaced by *Rules [new]* and a Migration assistant can be found in :menuselection:`Firewall --> Rules --> Migration`.
+Over time, it will be replaced by *Rules [new]* and a Migration assistant can be found in :menuselection:`Firewall --> Rules --> Migration assistant`.
 
 
 User Interface
