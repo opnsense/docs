@@ -252,12 +252,87 @@ When adding a rule, the following fields are available:
 =====================  ==========================================================================================================
 
 
---------------------
-API access
---------------------
+------------------------------
+Source NAT
+------------------------------
 
+When a client on an internal network makes an outbound request, the gateway will have to change the source IP to
+the external IP of the gateway, since the outside server will not be able to send an answer back otherwise.
 
-Partial API access, is available and described in more detail in the :doc:`firewall <../development/api/core/firewall>` api reference manual.
+.. Attention::
+
+   This is the MVC implementation of :menuselection:`Firewall --> NAT --> Outbound`, some features are not yet available.
+   Created rules are not visible between components. The automatic Outbound NAT rule generation mode cannot be changed here.
+
+When adding a rule, the following fields are available:
+
+.. tabs::
+
+   .. tab:: Organization
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Enable**                                Enable this rule
+      **Sequence**                              Rules are evaluated in sequence order.
+      **Categories**                            Assign categories for rule organization.
+      **Description**                           Enter a description to identify this rule.
+      ========================================= ====================================================================================
+
+   .. tab:: Interface
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Interface**                             Choose the interface(s) on which the traffic originates.
+      **Version**                               Select IPv4, IPv6 or both.
+      **Protocol**                              Assign categories for rule organization.
+      **Description**                           Select the protocol this rule should match.
+      ========================================= ====================================================================================
+
+   .. tab:: Source
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Invert Source**                         Match everything except the specified source.
+      **Source Address**                        Specify the source network or alias to match.
+      **Source Port**                           Source port or port range.
+      ========================================= ====================================================================================
+
+   .. tab:: Destination
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Invert Destination**                    Match everything except the specified destination.
+      **Destination Address**                   Destination address or alias to match.
+      **Destination Port**                      Destination port or port range.
+      ========================================= ====================================================================================
+
+   .. tab:: Translation
+
+      .. Tip:: This translates the original source (e.g., an internal host) to a new source (e.g., the external IP address of the firewall).
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Translate Source IP**                   Packets matching this rule will be mapped to the IP address given here.
+      **Translate Source Port**                 Source port number or well-known name.
+      ========================================= ====================================================================================
+
+   .. tab:: Options
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Do not NAT**                            Enabling this option will disable NAT for traffic matching this rule and stop
+                                                processing Outbound NAT rules.
+      **Log**                                   Log packets that are handled by this rule.
+      **Match local tag**                       Used to specify that packets must already be tagged with the given tag in order
+                                                to match the rule.
+      ========================================= ====================================================================================
+
 
 -------
 How-tos
