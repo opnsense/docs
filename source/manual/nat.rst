@@ -2,6 +2,9 @@
 Network Address Translation
 ===========================
 
+.. contents:: Index
+
+
 Network Address Translation (abbreviated to NAT) is a way to separate external and internal networks (WANs and LANs),
 and to share an external IP between clients on the internal network. NAT can be used on IPv4 and IPv6. For IPv6,
 :doc:`Network Prefix Translation <nptv6>` is also available.
@@ -47,89 +50,130 @@ IP, this option has no effect.
 Destination NAT (Port Forward)
 ------------------------------
 
-When multiple clients share an external IP address, any connection not initiated by one of the clients will not
-succeed since the firewall will not know where to send the traffic. This can be addressed by creating port
+When multiple internal clients share one external IP address, any inbound connection targeting the external IP address
+will not succeed, since the firewall will not know where to send the traffic. This can be addressed by creating port
 forwarding rules. For example, for a web server behind the firewall to be accessible, ports 80 and 443 need to
 be redirected to it.
 
-In OPNsense, Destination NAT (Port Forward) can be set up by navigating to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`. Here, you will see
-an overview of Destination NAT (Port Forward) rules. New rules can be added by clicking **Add** in the upper right corner.
+Destination NAT (Port Forward) can be set up by navigating to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`.
+Here, you will see an overview of Destination NAT (Port Forward) rules.
 
 When adding a rule, the following fields are available:
 
-========================= =========================================================================================================
-Disabled                  Disable this rule without removing it.
-No RDR (NOT)              Do not create a redirect rule. Leave this disabled unless you know what you are doing.
-Interface                 Which interface this rule should apply to. Most of the time, this will be WAN.
-TCP/IP version            IPv4, IPv6 or both.
-Protocol                  In typical scenarios, this will be TCP.
-Source                    Where the traffic comes from. Click “Advanced” to see the other source settings.
-Source / Invert           Invert match in “Source” field.
-Source port range         When applicable, the source port we should match on.
-                          This is usually random and almost never equal to the destination port range (and should usually be 'any').
-Destination / Invert      Invert match in “Destination” field.
-Destination               Where the traffic is headed.
-Destination port range    Service port(s) the traffic is using
-Redirect target IP        Where to redirect the traffic to.
-Redirect target port      Which port to use (when using tcp and/or udp)
-Pool Options              See “Some terms explained”. The default is to use Round robin.
-Description               A description to easily find the rule in the overview.
-Set local tag             Set a tag that other NAT rules and filters can check for.
-Match local tag           Check for a tag set by another rule.
-No XMLRPC sync            Prevent this rule from being synced to a backup host. (Checking this on the backup host has no effect.)
-NAT reflection            See “Some terms explained”. Leave this on the default unless you have a good reason not to.
-Filter rule association   Associate this with a regular firewall rule.
-========================= =========================================================================================================
+.. tabs::
 
-.. Note:
+   .. tab:: Organization
 
-   In OPNsense, this feature is also used to implement transparent proxies. A connection needs to be forwarded to a
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Disabled**                              Disable this rule so it will not be used.
+      **Sequence**                              Rules are evaluated in sequence order.
+      **Categories**                            Assign categories for rule organization.
+      **Description**                           Enter a description to identify this rule.
+      ========================================= ====================================================================================
+
+   .. tab:: Interface
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Interface**                             Choose the interface(s) on which the traffic originates.
+      **Version**                               Select IPv4, IPv6 or both.
+      **Protocol**                              Assign categories for rule organization.
+      **Description**                           Select the protocol this rule should match.
+      ========================================= ====================================================================================
+
+   .. tab:: Source
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Invert Source**                         Match everything except the specified source.
+      **Source Address**                        Specify the source network or alias to match.
+      **Source Port**                           Source port or port range.
+      ========================================= ====================================================================================
+
+   .. tab:: Destination
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Invert Destination**                    Match everything except the specified destination.
+      **Destination Address**                   Destination address or alias to match.
+      **Destination Port**                      Destination port or port range.
+      ========================================= ====================================================================================
+
+   .. tab:: Translation
+
+      .. Tip:: This translates the original destination (e.g., the external IP address of the firewall) to a new target (e.g., an internal host).
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Redirect Target IP**                    The internal IP address to forward traffic to.
+      **Redirect Target Port**                  The port on the internal host to forward traffic to.
+      **Pool Options**                          Choose how traffic is distributed when multiple target IPs are used.
+      ========================================= ====================================================================================
+
+   .. tab:: Options
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **No XMLRPC Sync**                        Exclude this rule from synchronizing to HA peers.
+      **NAT Reflection**                        Control NAT reflection for this rule.
+      **Set Tag**                               Assign a tag to packets matching this rule.
+      **Match Tag**                             Only match packets that have this tag.
+      **Firewall rule**                         By default, firewall rules need to be created manually, which is also the advised
+                                                option. Alternatively you can use Pass, which passes traffic on the nat rule
+                                                (not visible in the rules tab) or generate interface rules which can be overruled
+                                                via rules with a higher priority. Please keep in mind the destination for the rule
+                                                should match the target defined in this NAT rule.
+      ========================================= ====================================================================================
+
+
+.. Note::
+
+   This feature is also used to implement transparent proxies. A connection can to be forwarded to a
    daemon (listening on localhost), which then tries to get the original destination IP from the `/dev/pf` device.
 
    For example, a transparent proxy that handles HTTP traffic needs a rule that forwards traffic from TCP port 80,
    IPv4 to 127.0.0.1:3128 (in the default configuration).
 
+.. Attention::
+
+   You cannot NAT to [::1] (the IPv6 localhost) or any other link-local addresses. IPv6 requires routable addresses
+   for NAT, at least an ULA (Unique Local Address) is required as target.
 
 Filter rule association
 -----------------------
 
-This option controls the creation of linked filter rules in :menuselection:`Firewall --> Rules`.
+This option controls the creation of linked filter rules in :menuselection:`Firewall --> Rules [new]`.
 
 .. tabs::
 
-    .. tab:: Pass
+   .. tab:: Manual
 
-       A linked filter rule will be automatically added and updated. This rule cannot be seen or edited in
-       :menuselection:`Firewall --> Rules`.
+      Choose this if you want to create your own :menuselection:`Firewall --> Rules [new]` manually. No linked filter rule is created.
 
-       .. Tip::
+      .. Note::
 
-          This option is recommended for simple setups.
+         This option is recommended for more comple setups, like Destination NAT (Port Forward) rules on VPN interfaces.
+         The filter rule can be edited and features like `reply-to` disabled.
 
-    .. tab:: None
+   .. tab:: Pass
 
-       Choose this if you want to create your own :menuselection:`Firewall --> Rules` manually. No linked filter rule is created.
+      A filter rule will be automatically added and updated. This rule cannot be seen or edited in :menuselection:`Firewall --> Rules [new]`.
 
-    .. tab:: Add associated filter rule
+      .. Note::
 
-       Adds a linked filter rule in :menuselection:`Firewall --> Rules` that is automatically updated when the NAT rule is updated.
-       The created filter rule cannot be manually edited. Ensure setting a `Description` in the NAT rule, the filter rule will share it.
-       This option is the same as `Pass`, but makes the filter rule visible in :menuselection:`Firewall --> Rules`.
+         Recommended choice for most setups.
 
-       .. Note::
+   .. tab:: Register rule
 
-          If multiple `Interfaces` are selected in the :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` rule, the filter rule will
-          appear in :menuselection:`Firewall --> Rules --> Floating`.
-
-    .. tab:: Add unassociated filter rule
-
-       Adds a filter rule **once** that is **not** linked to this NAT rule. The created filter rule can be edited manually, it will never
-       be updated when changing the NAT rule. Ensure setting a `Description` in the NAT rule, the filter rule will set it once.
-
-       .. Note::
-
-          This option is recommended for more comple setups, like Destination NAT (Port Forward) rules on VPN interfaces.
-          The filter rule can be edited and features like `reply-to` disabled.
+      Adds a linked filter rule in :menuselection:`Firewall --> Rules [new]` that is automatically updated when the NAT rule is updated.
+      The created filter rule cannot be manually edited.
 
 
 ----------
