@@ -29,7 +29,7 @@ Give it a useful name and choose the previously created server.
 
 .. image:: images/nginx_edit_location_dialog2.png
 
-Locations are are used to map URLs to upstreams, directories, settings and so on.
+Locations are used to map URLs to upstreams, directories, settings and so on.
 In our case we want to proxy the request to the previously created upstream.
 If we want to match everything, we use "/" without a special matcher.
 Now save the location.

@@ -94,7 +94,7 @@ opening tools also have a tab for networking.
 The network tab works like the main view of the proxy.
 You can see which headers are sent and which ones are received.
 The advantage here is that you get some errors on the console tab (for example
-if the CSP has an error). The disadvantage of the console is, that is is not so
+if the CSP has an error). The disadvantage of the console is, that it is not so
 easy to intercept and modify data.
 
 
