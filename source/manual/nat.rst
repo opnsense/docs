@@ -6,8 +6,7 @@ Network Address Translation
 
 
 Network Address Translation (abbreviated to NAT) is a way to separate external and internal networks (WANs and LANs),
-and to share an external IP between clients on the internal network. NAT can be used on IPv4 and IPv6. For IPv6,
-:doc:`Network Prefix Translation <nptv6>` is also available.
+and to share an external IP between clients on the internal network. NAT can be used on IPv4 and IPv6.
 
 Most of the options below use three different addresses: the source, destination and redirect address. These
 addresses are used for the following:
@@ -372,6 +371,62 @@ When adding a rule, the following fields are available:
       **Log**                                   Log packets that are handled by this rule.
       **Match local tag**                       Used to specify that packets must already be tagged with the given tag in order
                                                 to match the rule.
+      ========================================= ====================================================================================
+
+
+------------------------------
+NPTv6
+------------------------------
+
+Network Prefix Translation, shortened to NPTv6, is used to translate IPv6 addresses. A common usage for this
+is to translate global ("WAN") IPs to local ones. In this regard, it is similar to NAT, although NPTv6 can only be
+used to map addresses one-to-one, unlike NAT which typically translates one external IP to several internal ones.
+
+NPTv6 routes are listed at :menuselection:`Firewall --> NAT --> NPTv6`.
+
+When adding a rule, the following fields are available:
+
+.. tabs::
+
+   .. tab:: Organization
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Enable**                                Enable this rule
+      **Sequence**                              Rules are evaluated in sequence order.
+      **Categories**                            Assign categories for rule organization.
+      **Description**                           Enter a description to identify this rule.
+      ========================================= ====================================================================================
+
+   .. tab:: Interface
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Interface**                             Choose which interface this rule applies to.
+      ========================================= ====================================================================================
+
+   .. tab:: Mapping
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Internal IPv6 Prefix**                  Enter the internal IPv6 prefix (source) for this network prefix translation.
+      **External IPv6 Prefix**                  Enter the external IPv6 prefix (target) for this network prefix translation.
+                                                Leave empty to auto-detect the prefix address using the specified tracking interface
+                                                instead. The prefix size specified for the internal prefix will also be applied to
+                                                the external prefix.
+      **Track interface**                       Use prefix defined on the selected interface instead of the interface this rule
+                                                applies to when target prefix is not provided.
+      ========================================= ====================================================================================
+
+   .. tab:: Options
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Log**                                   Log packets that are handled by this rule.
       ========================================= ====================================================================================
 
 
