@@ -180,26 +180,67 @@ This option controls the creation of linked filter rules in :menuselection:`Fire
 One-to-one
 ----------
 
-One-to-one NAT will, as the name implies, translate two IPs one-to-one, rather than one-to-many as is most common.
+One-to-one NAT will translate two IPs one-to-one, rather than one-to-many as is most common in other NAT types.
 In this respect, it is similar to what NPT does for IPv6.
 
-In OPNsense, one-to-one NAT can be set up by navigating to :menuselection:`Firewall --> NAT --> One-to-one`. Here, you will see an
-overview of one-to-one rules. New rules can be added by clicking **Add** in the upper right corner.
+One-to-one NAT can be set up by navigating to :menuselection:`Firewall --> NAT --> One-to-one`.
 
 When adding a rule, the following fields are available:
 
-====================== ===================================================================================================================
-Disabled               Disable this rule without removing it.
-Interface              Which interface this rule should apply to. Most of the time, this will be WAN.
-Type                   BINAT (default) or NAT. See “Some terms explained”.
-External network       Starting address of external network, which should be used to translate addresses to/from.
-Source / invert        Invert match in “Source” field.
-Source                 The internal network for this mapping, usually some `RFC 1918 <https://nl.wikipedia.org/wiki/RFC_1918>`_ range
-Destination / invert   Invert match in “Destination” field.
-Destination            The destination network packages should match, when used to map external networks, this is usually :code:`any`
-Description            A description to easily find the rule in the overview.
-NAT reflection         See “Some terms explained”. Leave this on the default unless you have a good reason not to.
-====================== ===================================================================================================================
+.. tabs::
+
+   .. tab:: Organization
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Enable**                                Enable this rule
+      **Sequence**                              Rules are evaluated in sequence order.
+      **Categories**                            Assign categories for rule organization.
+      **Description**                           Enter a description to identify this rule.
+      ========================================= ====================================================================================
+
+   .. tab:: Interface
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Interface**                             Choose the interface(s) on which the traffic originates.
+      ========================================= ====================================================================================
+
+   .. tab:: Mapping
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Type**                                  Select BINAT (default) or NAT here, when nets are equally sized binat is usually the
+                                                best option.Using NAT we can also map unequal sized networks. A BINAT rule specifies
+                                                a bidirectional mapping between an external and internal network and can be used from
+                                                both ends, nat only applies in one direction.
+      **External network**                      Enter the external subnet's starting address for the 1:1 mapping or network.
+                                                This is the address or network the traffic will translate to/from.
+      **Invert Source**                         Use this option to invert the sense of the match.
+      **Source**                                Enter the internal subnet for the 1:1 mapping.
+      ========================================= ====================================================================================
+
+   .. tab:: Destination
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Invert Destination**                    Match everything except the specified destination.
+      **Destination Address**                   Destination address or alias to match. The 1-1 mapping will only be used for
+                                                connections to or from the specified destination. Hint: this is usually 'any'.
+      ========================================= ====================================================================================
+
+   .. tab:: Options
+
+      ========================================= ====================================================================================
+      **Option**                                **Description**
+      ========================================= ====================================================================================
+      **Log**                                   Log packets that are handled by this rule.
+      **NAT reflection**                        Choose the automatic NAT reflection mode.
+      ========================================= ====================================================================================
 
 
 --------
