@@ -21,7 +21,6 @@ These are all combined in the firewall section.
    manual/firewall_categories
    manual/firewall_groups
    manual/nat
-   manual/nptv6
    manual/firewall
    manual/shaping
    manual/firewall_settings
