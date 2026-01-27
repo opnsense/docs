@@ -2,6 +2,9 @@
 Intrusion Prevention System
 ===========================
 
+.. contents:: Index
+
+
 The Intrusion Prevention System (IPS) system of OPNsense is based on Suricata_
 and utilizes Netmap_ to enhance performance and minimize CPU utilization. This
 deep packet inspection system is very powerful and can be used to detect and
@@ -83,10 +86,13 @@ and running.
 
 ====================================  ===============================================================================
 Enabled                               Enable Suricata
-IPS mode                              When enabled, the system can drop suspicious packets. In order for this to
-                                      work, your network card needs to support netmap.
+Capture mode                          Choose between "PCAP live move (IDS)" for alerts only,
+                                      "Netmap (IPS)" for alerts and discards via netmap driver,
+                                      or "Divert (IPS)" to redirect packets via firewall rules.
                                       The action for a rule needs to be "drop" in order to discard the packet,
                                       this can be configured per rule or ruleset (using an input filter)
+Listeners                             When "Divert (IPS)" mode is used, specify the number of listeners to initiate,
+                                      usually this equals the number of CPUs in your system.
 Promiscuous mode                      Listen to traffic in promiscuous mode. (all packets instead of only the
                                       ones addressed to this network interface)
 Enable syslog alerts                  Send alerts to syslog, using fast log format
@@ -104,6 +110,10 @@ Rotate log                            Log rotating frequency, also used for the 
 Save logs                             Number of logs to keep
 ====================================  ===============================================================================
 
+.. Note::
+
+    To use the "Divert (IPS)" mode, you must use :menuselection:`Firewall --> Rules [new]` and create firewall rules
+    that contain the "Divert-to" setting. Check the :doc:`/manual/firewall` manual for more information.
 
 .. Tip::
 
