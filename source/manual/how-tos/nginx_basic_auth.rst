@@ -82,6 +82,6 @@ Advanced Authentication
 
 The entry advanced authentication is used to call an external authentication
 provider. In the case of OPNsense, this is currently a special script,
-which authenticates agains the local database. If you want to use it,
+which authenticates against the local database. If you want to use it,
 do not enter a realm nor select a user list.
 Please note that this feature may change in the future.

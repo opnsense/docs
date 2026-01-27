@@ -150,6 +150,6 @@ connecting via SSH to OPNsense on the CLI.
 
 In the directory `/tmp/` you will find several IPv6 related intermediate files. The most helpful here was `/tmp/<interfacename>_prefixv6`.
 In this file you will find the prefix delegated to you by your upstream router. If you are behind an FB and this file does not exist chances
-are you forgot to seth the **Request only an IPv6 prefix** setting on the WAN interface.
+are you forgot to set the **Request only an IPv6 prefix** setting on the WAN interface.
 
 Another helpful command is `radvdump`. This tool dumps the output of the router advertisements in a nicely formatted way.

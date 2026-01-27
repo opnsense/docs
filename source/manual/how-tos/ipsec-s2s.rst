@@ -485,7 +485,7 @@ Phase 1 won't come up
 That is a difficult one. First check you firewall rules to see if you allow the
 right ports and protocols (ESP, UDP 500 & UDP 4500) for the WAN interface.
 
-Check your ipsec log to see if that reviels a possible cause.
+Check your ipsec log to see if that reveals a possible cause.
 
 Common issues are unequal settings. Both ends must use the
 same PSK and encryption standard.

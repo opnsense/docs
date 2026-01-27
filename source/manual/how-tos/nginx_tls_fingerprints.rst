@@ -48,7 +48,7 @@ One contains ciphers, hashes etc., browsers should not support anymore (for
 example NULL, MD5, ...) so this is probably intercepted (it actually is OWASP 
 ZAP_ 2.7.0) in this screenshot, which is intercepting a connection from
 Firefox 63.
-In this case there is onle one big segment left, which is very likely the real
+In this case there is only one big segment left, which is very likely the real
 browser fingerprint (or another proxy).
 
 In the following example, take a look at the pie chart

@@ -313,7 +313,7 @@ They are your only upstream provider and will push a default route; you will not
 
 Your main task is configuring your neighbor correctly, employing a prefix list so that none of your local RFC1918 routes leak to the provider, and the provider can only
 announce the default route to you. If unsure, ask your provider what they expect from you as neighbor. Be mindful of a correct configuration, since an invalid one could get your neighbor
-temporarly disabled by the ISP.
+temporarily disabled by the ISP.
 
 .. Attention::
 

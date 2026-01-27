@@ -4,7 +4,7 @@ IPsec VTI - Route based setup
 
 Most Site-to-Site VPNs are policy-based, which means you define a local and a remote
 network (or group of networks). Only traffic matching the defined policy is pushed into the
-VPN tunnel. As the demands for more complex and fault tolerant VPN scenarios growed over the
+VPN tunnel. As the demands for more complex and fault tolerant VPN scenarios have grown over the
 years, most major router vendors implemented a kind of VPN, the route-based IPSec.
 
 The difference is that local and remote network is just 0.0.0.0/0, so anything can travel

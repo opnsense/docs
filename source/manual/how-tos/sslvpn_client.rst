@@ -103,7 +103,7 @@ and click **Add** in the top right corner of the form.
 
 .. TIP::
 
-  You can also use the quick-search to jump right into the the Access Server
+  You can also use the quick-search to jump right into the Access Server
   configuration. Try it by typing *Ac...* and see for yourself:
 
   .. image:: images/qs-access_server.png

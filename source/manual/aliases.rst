@@ -266,7 +266,7 @@ Below you will find a detailed specification our software can detect and process
 
     .. tab:: zip format (MaxMind)
 
-        This format requires a [zip] file containing the the following csv files:
+        This format requires a [zip] file containing the following csv files:
 
         .. list-table:: Title
            :widths: 50 25 25 25

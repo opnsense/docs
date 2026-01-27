@@ -32,7 +32,7 @@ authentication, which is more secure but comes with more (connect) overhead (htt
     }
 
 The above diagram shows the basic functionality as provided by this plugin, the client part (not delivered by this plugin) connects to
-to the server at a predefined port and starts forwarding local received packets to the other end of the tunnel.
+the server at a predefined port and starts forwarding local received packets to the other end of the tunnel.
 
 Securing http proxy traffic is one of the more common use-cases of stunnel.
 

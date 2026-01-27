@@ -40,12 +40,12 @@ Tor Service Settings
     This Port requires a password, which will not be disclosed to the GUI but
     can be queried via the API. This setting is available for you to handle
     Port conflicts, so you can change this port.
-:Create a logfile, Send log messges to syslog:
+:Create a logfile, Send log messages to syslog:
     Enable this checkbox if you want some logging. Please note that a detailed
     log may lead to privacy issues.
 :Logfile, Syslog level:
     If the corresponding checkbox is enabled, this will be the minimum severity
-    for sending or writing log messges.
+    for sending or writing log messages.
 :Fascist Mode:
     If internet access is filtered, you can try this option.
     Please note that this is not compatible with other features like "Hidden Services".
@@ -107,7 +107,7 @@ fill out the form:
 
 :Enable:
     The entry will be added to the configuration file.
-    If this checkbox is unckecked, the entry is ignored.
+    If this checkbox is unchecked, the entry is ignored.
 :Protocol:
     Select the protocol in use for this ACL.
     You can choose between IPv4 and IPv6.

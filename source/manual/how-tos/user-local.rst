@@ -56,7 +56,7 @@ the bottom right corner of the form.
 
 
 
-Creating and maintainging API keys
+Creating and maintaining API keys
 ..........................................
 
 .. raw:: html

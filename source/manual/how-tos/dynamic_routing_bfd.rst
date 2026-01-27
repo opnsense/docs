@@ -190,6 +190,6 @@ Verify the setup
 
 Go to :menuselection:`Routing --> Diagnostics --> BFD` and look at the Summary tab to view the status of the BFD neighbors.
 
-The real benefit of BFD can only be seen if there are multiple routes with different cost. When the BFD packets are interrupted, the route will quickly be discarted and the next best route will be installed and chosen. This will happen in just a ping or even faster.
+The real benefit of BFD can only be seen if there are multiple routes with different cost. When the BFD packets are interrupted, the route will quickly be discarded and the next best route will be installed and chosen. This will happen in just a ping or even faster.
 
 An example for a setup that will benefit from BFD is `IPsec Failover with VTI and OSPF </manual/how-tos/dynamic_routing_ospf.html#ipsec-failover-with-vti-and-ospf>`_

@@ -48,7 +48,7 @@ select options DHCP and DHCPv6 in general configuration
 * dhcp-class-identifier "sagem"
 * user-class "+FSVDSL_livebox.Internet.softathome.Livebox6"
 * option-90 00:00:00:00:00:00:00:00:00:00:00:66:74:69:2f:65:77:74:FF:AB:XX:XX
-  (hex conversion of the the userid supplied by Orange which looks like fti/xxxxxxx)
+  (hex conversion of the userid supplied by Orange which looks like fti/xxxxxxx)
 * dhcp-client-identifier 01:XX:XX:XX:XX:XX:XX
   (you MUST use the same MAC address for the XX:XX as the one use for the DUID above)
 
@@ -101,7 +101,7 @@ then add the following options in the 'Send Options' field
 * raw-option 15 00:2b:46:53:56:44:53:4c:5f:6c:69:76:65:62:6f:78:2e:49:6e:74:65:72:6e:65:74:2e:73:6f:66:74:61:74:68:6f:6d:65:2e:4c:69:76:65:62:6f:78:36
 * raw-option 16 00:00:04:0e:00:05:73:61:67:65:6d
 * raw-option 11 00:00:00:00:00:00:00:00:00:00:00:66:74:69:2f:65:77:74:FF:AB:XX:XX
-  (hex conversion of the the userid supplied by Orange which looks like fti/xxxxxxx)
+  (hex conversion of the userid supplied by Orange which looks like fti/xxxxxxx)
 
 .. Note::
     Use the exact same chain for IPv6 raw-option 11 and IPv4 option-90

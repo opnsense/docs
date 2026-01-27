@@ -98,7 +98,7 @@ Enter the following configuration and leave all other parameters on default valu
 Step 3 - Firewall Rules Outbound Traffic
 ----------------------------------------
 
-Now do the same for outbound traffic traffic on the LAN interface.
+Now do the same for outbound traffic on the LAN interface.
 Go to :menuselection:`Firewall --> Rules` Select the **LAN** tab and press the **+** icon in the
 lower right corner.
 

@@ -105,7 +105,7 @@ Enable the *advanced mode* toggle.
     ====================== ====================================================================================================
      **Enabled**            *Checked*
      **Name**               *wgopn-site-a*
-     **Public Key**         *Insert the public key of the instance instance from wgopn-site-a*
+     **Public Key**         *Insert the public key of the instance from wgopn-site-a*
      **Shared Secret**      *Leave empty*
      **Allowed IPs**        *10.2.2.1/32 172.16.0.0/24*
      **Endpoint Address**   *203.0.113.1*

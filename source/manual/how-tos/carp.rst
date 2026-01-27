@@ -177,7 +177,7 @@ And another using the following:
 +-------------------------+------------------------------------+
 
 .. Note::
-    Always create Carp VIPs with the same subnet mask as it's parent interface. If the parent interface
+    Always create Carp VIPs with the same subnet mask as its parent interface. If the parent interface
     is ``/24``, your Carp VIP should also be ``/24``. Even though some sources claim that ``/32`` will work,
     services like DHCP Failover will fail with ``peer holds all free leases``.
 
