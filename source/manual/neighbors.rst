@@ -9,25 +9,27 @@ Neighbors
 Overview
 --------------------
 
-Neighbors are devices with an IP address that are connected to the same layer 2 brodcast domain.
+Neighbors are devices with an ethernet address that are connected to the same OSI layer 2 broadcast domain.
 
-Every host in the same layer 2 brodacast domain will have a neighbor tables, yet they are never synchronized between devices. Every device learns
-from the traffic it receives, and will not know about other hosts in the network before asking other hosts via a protocol like ARP or NDP.
+Devices maintain their own local neighbor table, independent of other devices in the same broadcast domain.
 
-A central device like a firewall will automatically learn most devices, since it is in a central position as the gateway.
+Whenever a device sends a packet to an IP address, it first tries to resolve if the target can be found in the same
+broadcast domain. If the destination is not on-link, the packet will be sent to the default gateway.
+
+A central device like a firewall will automatically learn most neighbors since it will be the default gateway.
 
 
 --------------------
 Automatic Discovery
 --------------------
 
-The automatic discovery offers a way to discover all devices on the network via their ARP and NDP messages.
-When the daemon is activated, it builds a database of known devices, and logs when IP address to MAC mappings change.
+The host discovery service offers a way to discover most neighbors on the network via their ARP and NDP messages.
+When the daemon is activated, it builds a database of known neighbors and logs when IP address to MAC mappings change.
 
-This can be useful to see how volatile a network is, and if unknown new devices appear.
+This can be useful to see how volatile a network is and if unknown new devices appear.
 
 Running the daemon improves some services that currently directly consume the ARP and NDP tables. The database has a persistent state,
-can be queried faster, and for IPv6 will have a full picture of RFC 4941 addresses.
+can be queried faster, and for IPv6 will have a better picture of RFC 4941 addresses.
 
 
 Settings
@@ -47,7 +49,7 @@ Settings can be found in :menuselection:`Interfaces --> Neighbors --> Automatic 
 
 .. Attention::
 
-    The service will only listen on ethernet interfaces. Tunnel, loopback and similiar interfaces are skipped since there is no ARP/NDP traffic.
+    The service will only listen on ethernet interfaces. Tunnel, loopback and similar interfaces are skipped since there is no ARP/NDP traffic.
 
 .. Tip::
 
@@ -58,7 +60,7 @@ Settings can be found in :menuselection:`Interfaces --> Neighbors --> Automatic 
 Discovered Hosts
 --------------------
 
-If the automatic discovery service is enabled, you can see the contents of the database in this table. Otherwise, it will show the current contents of the
+If the host discovery service is enabled, you can see the contents of the database in this table. Otherwise, it will show the current contents of the
 kernel ARP and NDP tables.
 
 An interesting metric can be the "Last Seen" column, which shows devices that have recently joined or not seen for a while.
@@ -82,7 +84,7 @@ This section allows the definition of static IPv4/IPv6 to MAC address mappings o
 
 IPv4 entries will be saved into the :code:`ARP` table, IPv6 into the :code:`NDP` table.
 
-These tables provide which hardware address is associated with which IP addresses. This can be practical when ARP/NDP
+These tables define which hardware address is associated with which IP address. This can be practical when ARP/NDP
 messages are not being received or we want to force the IP/MAC combination for specific clients.
 
 When opening the page it will show a grid containing all static entries defined:
