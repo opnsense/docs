@@ -158,15 +158,19 @@ class ApiParser:
         self.api_commands = {}
         self.parser = make_parser()
         self.parser.errorfunc = self._p_error
-        for root in self.parser.parse(self._data, lexer=lexer.clone(), tracking=True, debug=self._debug):
-            if type(root) is Class:
-                self.is_abstract = root.type == 'abstract'
-                self.base_class = root.extends
-                for node in root.nodes:
-                    tmp = "".join("_" + c.lower() if c.isupper() else c for c in type(node).__name__)
-                    node_method =  '_parse%s' % tmp
-                    if hasattr(self, node_method):
-                        getattr(self, node_method)(node)
+        try:
+            for root in self.parser.parse(self._data, lexer=lexer.clone(), tracking=True, debug=self._debug):
+                if type(root) is Class:
+                    self.is_abstract = root.type == 'abstract'
+                    self.base_class = root.extends
+                    for node in root.nodes:
+                        tmp = "".join("_" + c.lower() if c.isupper() else c for c in type(node).__name__)
+                        node_method =  '_parse%s' % tmp
+                        if hasattr(self, node_method):
+                            getattr(self, node_method)(node)
+        except TypeError as e:
+            print("error in filename %s" % self._filename)
+            raise e
 
         # stick base class defaults to the list when not yet defined
         if self.base_class in DEFAULT_BASE_METHODS:

@@ -1,14 +1,17 @@
 import os
+import re
 from . import ApiParser, Controller
 
 EXCLUDE_CONTROLLERS = ['Core/Api/FirmwareController.php']
 
-def collect_api_modules(source: str, debug: bool = False) -> dict[str, list[Controller]]:
+def collect_api_modules(source: str, debug: bool = False, filerexpr: str = '') -> dict[str, list[Controller]]:
     # collect all endpoints
     all_modules = dict()
     for root, dirs, files in os.walk(source):
         for fname in sorted(files):
             filename = os.path.join(root, fname)
+            if filerexpr and re.match(filerexpr, filename) is None:
+                continue
             skip = False
             for to_exclude in EXCLUDE_CONTROLLERS:
                 if filename.endswith(to_exclude):
