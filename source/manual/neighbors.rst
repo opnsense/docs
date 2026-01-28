@@ -71,7 +71,7 @@ Discovery Log
 
 In the discovery log, you can find entries for new stations (hosts) and movements.
 
-These logs have a simple structure, and could be consumed by an external syslog server for further processing (e.g., alerts for new stations.)
+These logs have a simple structure, and could be consumed by an external syslog server for further processing (e.g., alerts for new stations).
 
 If the log is busy with a lot of movements that look like flapping, something could be wrong in your network. Most common would be MAC address duplication,
 or multiple hosts fighting for the same IP address.
