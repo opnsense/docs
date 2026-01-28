@@ -93,9 +93,9 @@ When opening the page it will show a grid containing all static entries defined:
 ==============================================================================================================================================
 
 =========================== ==================================================================================================================
-Ether Address               Hardware MAC address of the client (format xx:xx:xx:xx:xx:xx)
-IP address                  IP address to assign to the provided MAC address, which will either end up in the ARP (IPv4) or NDP (IPv6) table
-Description                 Description for internal use
+**Ether Address**           Hardware MAC address of the client (format xx:xx:xx:xx:xx:xx)
+**IP address**              IP address to assign to the provided MAC address, which will either end up in the ARP (IPv4) or NDP (IPv6) table
+**Description**             Description for internal use
 =========================== ==================================================================================================================
 
 .. Attention::
