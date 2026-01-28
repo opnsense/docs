@@ -13,10 +13,10 @@ Neighbors are hosts with a hardware address that are connected to the same OSI l
 
 Hosts maintain their own local neighbor table, independent of other hosts in the same broadcast domain.
 
-Whenever a device sends a packet to an IP address, it first tries to resolve if the target can be found in the same
+Whenever a host sends a packet to an IP address, it first tries to resolve if the target can be found in the same
 broadcast domain. If the destination is not on-link, the packet will be sent to the default gateway.
 
-A central device like a firewall will automatically learn most neighbors since it will be the default gateway.
+A central host like a firewall will automatically learn most neighbors since it will be the default gateway.
 
 
 --------------------
