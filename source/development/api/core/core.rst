@@ -57,6 +57,7 @@ Core
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
+    "``POST``","core","initial_setup","abort",""
     "``GET``","core","initial_setup","configure",""
     "``GET``","core","initial_setup","get",""
     "``POST``","core","initial_setup","set",""

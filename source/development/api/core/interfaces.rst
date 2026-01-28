@@ -102,6 +102,16 @@ Interfaces
     "``GET``","interfaces","overview","interfaces_info","$details=false"
     "``GET``","interfaces","overview","reload_interface","$identifier=null"
 
+.. csv-table:: Resources (SettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``GET``","interfaces","settings","get",""
+    "``POST``","interfaces","settings","reconfigure",""
+    "``POST``","interfaces","settings","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `Settings.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Settings.xml>`__"
+
 .. csv-table:: Resources (VipSettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40

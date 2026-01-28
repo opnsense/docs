@@ -19,6 +19,8 @@ Trafficshaper
     "``POST``","trafficshaper","settings","del_pipe","$uuid"
     "``POST``","trafficshaper","settings","del_queue","$uuid"
     "``POST``","trafficshaper","settings","del_rule","$uuid"
+    "``GET``","trafficshaper","settings","download_pipes",""
+    "``GET``","trafficshaper","settings","download_queues",""
     "``GET``","trafficshaper","settings","get",""
     "``GET``","trafficshaper","settings","get_pipe","$uuid=null"
     "``GET``","trafficshaper","settings","get_queue","$uuid=null"
@@ -33,5 +35,7 @@ Trafficshaper
     "``POST``","trafficshaper","settings","toggle_pipe","$uuid,$enabled=null"
     "``POST``","trafficshaper","settings","toggle_queue","$uuid,$enabled=null"
     "``POST``","trafficshaper","settings","toggle_rule","$uuid,$enabled=null"
+    "``POST``","trafficshaper","settings","upload_pipes",""
+    "``POST``","trafficshaper","settings","upload_queues",""
 
     "``<<uses>>``", "", "", "", "*model* `TrafficShaper.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/TrafficShaper/TrafficShaper.xml>`__"
