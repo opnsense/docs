@@ -2,27 +2,102 @@
 Neighbors
 ===========================
 
-The neighbors section (available as of 24.1) allows the definition of static IPv4 and IPv6 addresses
-on your network.
+.. contents:: Index
 
-For IPv4 entries will be saved into the :code:`ARP` table, IPv6 uses :code:`NDP` to register machines mac addresses
-to IP addresses.
 
-These tables determine to which (physcal) machine an IP address is connected, which can be practical when arp
-messages are not being received or we want to force the ip/mac combination for specific clients.
+--------------------
+Overview
+--------------------
 
-When opening the page it will show a grid containing all static entries defined, these may also originate from
-other components (such as dhcp), in which case you cannot edit them. Entries defined here do contain the following
-options:
+Neighbors are devices with an IP address that are connected to the same layer 2 brodcast domain.
+
+Every host in the same layer 2 brodacast domain will have a neighbor tables, yet they are never synchronized between devices. Every device learns
+from the traffic it receives, and will not know about other hosts in the network before asking other hosts via a protocol like ARP or NDP.
+
+A central device like a firewall will automatically learn most devices, since it is in a central position as the gateway.
+
+
+--------------------
+Automatic Discovery
+--------------------
+
+The automatic discovery offers a way to discover all devices on the network via their ARP and NDP messages.
+When the daemon is activated, it builds a database of known devices, and logs when IP address to MAC mappings change.
+
+This can be useful to see how volatile a network is, and if unknown new devices appear.
+
+Running the daemon improves some services that currently directly consume the ARP and NDP tables. The database has a persistent state,
+can be queried faster, and for IPv6 will have a full picture of RFC 4941 addresses.
+
+
+Settings
+--------------------
+
+Settings can be found in :menuselection:`Interfaces --> Neighbors --> Automatic Discovery`
 
 ==============================================================================================================================================
 
 =========================== ==================================================================================================================
-Ether Address               Hardware MAC address of the cllient (format xx:xx:xx:xx:xx:xx)
-IP address                  IP address to assign to the provided MAC address, which will either end up in the arp (IPv4) or ndp (IPv6) table
+**Enable**                  Enable the "hostwatch" service to discover network hosts.
+**Interfaces**              Limit host discovery to the interfaces selected here.
+**Promiscuous mode**        Listening for network packets not targeted directly at us.
+**Verbose logging**         Verbosity mode, send more detailed information to the log.
+**Ignore networks**         Ignore the selected networks.
+=========================== ==================================================================================================================
+
+.. Attention::
+
+    The service will only listen on ethernet interfaces. Tunnel, loopback and similiar interfaces are skipped since there is no ARP/NDP traffic.
+
+.. Tip::
+
+    Promiscuous mode is rarely needed. The firewall is in a central position and routes traffic between networks. The setting makes sense in a network
+    where it would only be an observer.
+
+
+Discovered Hosts
+--------------------
+
+If the automatic discovery service is enabled, you can see the contents of the database in this table. Otherwise, it will show the current contents of the
+kernel ARP and NDP tables.
+
+An interesting metric can be the "Last Seen" column, which shows devices that have recently joined or not seen for a while.
+
+
+Discovery Log
+--------------------
+
+In the discovery log, you can find entries for new stations (devices) and movements of devices.
+
+These logs have a simple structure, and could be consumed by an external syslog server for further processing (e.g., alerts for new stations.)
+
+If the log is busy with a lot of movements that look like flapping, something could be wrong in your network. Most common would be MAC address duplication,
+or multiple devices fighting for the same IP address.
+
+
+--------------------
+Static Assignments
+--------------------
+This section allows the definition of static IPv4/IPv6 to MAC address mappings on your network.
+
+IPv4 entries will be saved into the :code:`ARP` table, IPv6 into the :code:`NDP` table.
+
+These tables provide which hardware address is associated with which IP addresses. This can be practical when ARP/NDP
+messages are not being received or we want to force the IP/MAC combination for specific clients.
+
+When opening the page it will show a grid containing all static entries defined:
+
+==============================================================================================================================================
+
+=========================== ==================================================================================================================
+Ether Address               Hardware MAC address of the client (format xx:xx:xx:xx:xx:xx)
+IP address                  IP address to assign to the provided MAC address, which will either end up in the ARP (IPv4) or NDP (IPv6) table
 Description                 Description for internal use
 =========================== ==================================================================================================================
 
+.. Attention::
+
+    Some entries can be from other sources like DHCP and cannot be edited.
 
 .. Tip::
 
