@@ -1,0 +1,310 @@
+===========================================================================================
+26.1  "Witty Woodpecker" Series
+===========================================================================================
+
+
+
+For over 11 years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates, modern IPv6 support, as well as clear
+and stable 2-Clause BSD licensing.
+
+26.1, nicknamed "Witty Woodpecker", features almost a full firewall
+MVC/API experience as automation rules have been promoted to the new
+rules GUI, Suricata version 8 with inline inspection mode using "divert",
+assorted IPv6 reliability and feature improvements, router advertisements
+MVC/API, full code shell command escaping revamp, default IPv6
+mode now using Dnsmsaq for client connectivity, Unbound blocklist source
+selection, an automatic host discovery service, plus much more.
+
+The upgrade path for 25.7 will likely be unlocked on January 29, which
+is probably tomorrow if anyone is asking why it is not there yet.
+We want to ensure the upgrade goes as smoothly as possible so please
+be patient!  :)
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/26.1/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/26.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/26.1/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/26.1/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/26.1/
+* Full mirror list: https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+26.1 (January 28, 2026)
+--------------------------------------------------------------------------
+
+
+For over 11 years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates, modern IPv6 support, as well as clear
+and stable 2-Clause BSD licensing.
+
+26.1, nicknamed "Witty Woodpecker", features almost a full firewall
+MVC/API experience as automation rules have been promoted to the new
+rules GUI, Suricata version 8 with inline inspection mode using "divert",
+assorted IPv6 reliability and feature improvements, router advertisements
+MVC/API, full code shell command escaping revamp, default IPv6
+mode now using Dnsmsaq for client connectivity, Unbound blocklist source
+selection, an automatic host discovery service, plus much more.
+
+The upgrade path for 25.7 will likely be unlocked on January 29, which
+is probably tomorrow if anyone is asking why it is not there yet.
+We want to ensure the upgrade goes as smoothly as possible so please
+be patient!  :)
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/26.1/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/26.1/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/26.1/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/26.1/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/26.1/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes:
+
+* system: factory reset and console tools now default to using Dnsmasq for DHCP
+* system: wizard now offers an abort button and deployment type selections
+* system: wizard can disable WAN or LAN interface now
+* system: provide resolv.conf overrides via /etc/resolv.conf.local
+* system: add XMLRPC option for hostwatch
+* firewall: improve GeoIP alias expiry condition
+* firewall: escape selector in rule_protocol
+* firewall: "Port forward" was migrated to "Destination NAT" MVC/API
+* firewall: unified look and feel of MVC/API pages formerly known as "automation"
+* firewall: improved support of gateway groups in policy-based routing
+* firewall: plugin support for "ether" rules has been removed
+* firewall: add import/export to shaper queues and pipes
+* firewall: "divert-to" support in new rules GUI
+* firewall: added a rule migration page (use with care)
+* firewall: make previously associated DNAT rules editable
+* interfaces: a new IPv6 mode called "Identity association" was added
+* interfaces: settings page was migrated to MVC/API
+* interfaces: handle hostwatch user/group via package
+* interfaces: force-reload IPv6 connectivity when PDINFO changes during renew
+* interfaces: dhcp6c rapid-commit, request-dns and config write refactoring
+* interfaces: generalise the rtsold_script code
+* interfaces: use descriptive interface names in automatic discovery table
+* interfaces: harden settings page with file_safe() and allowed_classes=false
+* dhcrelay: relax the check for present addresses and CARP-related cleanups
+* dnsmasq: add automatic RDNSS option when none is configured
+* dnsmasq: fix log conditions
+* firmware: opnsense-code: run configure script on upgrade if needed
+* intrusion detection: add a "divert" intrusion prevention mode
+* ipsec: expose ChaCha20-Poly1305 AEAD proposals in IKEv2 (contributed by Kota Shiratsuka)
+* kea: add libdhcp_host_cmds.so to expose internal API commands for reservations
+* kea: exit prefix watcher script if no lease file exists
+* kea: allow "hw-address" for reservations
+* kea: add pool in subnet validation
+* kea: minor code cleanups in model code
+* openvpn: account for CARP status in start and restart cases as well
+* openvpn: removed the stale TheGreenBow client export
+* radvd: migrated to MVC/API
+* radvd: remove faulty empty address exception
+* radvd: remove configuration file if disabled
+* radvd: implement RemoveAdvOnExit override
+* radvd: add Base6Interface constructor
+* radvd: support nat64prefix
+* console: opnsense-log now supports "backend" and "php" aliases
+* backend: safe execution changes in the whole code base
+* backend: removed short-lived mwexecf_bg() function
+* lang: various translation updates
+* mvc: add ChangeCase support to ProtocolField for DNAT special case
+* mvc: improve importCsv() to support either comma or semicolon
+* mvc: removed long obsolete sessionClose() from ControllerRoot
+* mvc: BaseModel: isEmptyAndRequired() has been removed
+* mvc: removed unusued RegexField
+* rc: replace camcontrol with diskinfo for TRIM check (contributed by Maurice Walker)
+* ui: allow HTML tags in menu items and title
+* ui: improve user readability in SimpleFileUploadDlg()
+* plugins: os-acme-client 4.12 `[2] <https://github.com/opnsense/plugins/blob/stable/26.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-ddclient 1.29 `[3] <https://github.com/opnsense/plugins/blob/stable/26.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-freeradius 1.10 `[4] <https://github.com/opnsense/plugins/blob/stable/26.1/net/freeradius/pkg-descr>`__ 
+* plugins: os-isc-dhcp 1.0 `[5] <https://github.com/opnsense/plugins/blob/stable/26.1/net/isc-dhcp/pkg-descr>`__ 
+* plugins: os-nextcloud-backup 1.1 `[6] <https://github.com/opnsense/plugins/blob/stable/26.1/sysutils/nextcloud-backup/pkg-descr>`__ 
+* plugins: os-nginx 1.36 `[7] <https://github.com/opnsense/plugins/blob/stable/26.1/www/nginx/pkg-descr>`__ 
+* plugins: os-postfix 1.24.1 `[8] <https://github.com/opnsense/plugins/blob/stable/26.1/mail/postfix/pkg-descr>`__ 
+* plugins: os-q-feeds-connector 1.4 `[9] <https://github.com/opnsense/plugins/blob/stable/26.1/security/q-feeds-connector/pkg-descr>`__ 
+* plugins: os-wazuh-agent 1.3 `[10] <https://github.com/opnsense/plugins/blob/stable/26.1/security/wazuh-agent/pkg-descr>`__ 
+* src: assorted patches from stable/14 for LinuxKPI, QAT, and network stack
+* src: e1000: revert "try auto-negotiation for fixed 100 or 10 configuration"
+* src: if_ovpn: use epoch to free peers
+* src: carp6: revise the generation of ND6 NA
+* ports: dhcp6c v20260122
+* ports: hostwatch 1.0.9
+
+Migration notes, known issues and limitations:
+
+* ISC-DHCP moves to a plugin. It will be automatically installed during upgrades. It is not installed on new installations because it is not being used, but you can still install and keep using it.
+* To accommodate the change away from ISC-DCHP defaults the "Track interface" IPv6 mode now has a sibling called "Identity Association" which does the same except it is not automatically starting ISC-DHCPv6 and Radvd router advertisements to allow better interoperability with Kea and Dnsmasq setups.
+* Dnsmasq is now the default for DHCPv4 and DHCPv6 as well as RA out of the box.  One thing that the upstream software cannot cover is prefix delegation so that is no longer offered by default.  Use another DHCPv6 server in this case.
+* Due to command line execution safety concerns the historic functions mwexec_bg() and mwexec() will be removed in 26.1.x.  Make sure your custom code is not using them and use mwexecf(), mwexecfb() and mwexecfm() instead.
+* The function sessionClose() has also been removed from the MVC code and is no longer needed.  Make sure to remove it from your custom code.
+* The custom.yaml support has been removed from intrusion detection.  Please migrate to the newer /usr/local/etc/suricata/conf.d override directory.
+* The new host discovery service "hostwatch" is enabled by default (since 25.7.11).  You can always turn it off under Interfaces: Neighbors: Automatic Discovery if you so choose.
+* The firewall migration page is not something you need to jump into right away.  Please make yourself familiar with the new rules GUI first and check the documentation for incompatibilities.  Single interface from the floating interface will not be considered "floating" in priorities.
+* Firewall: NAT: Port Forwarding is now called "Destination NAT".  Firewall rule associations are no longer supported, but the old associated firewall rules remain in place with their last known configuration and can now be edited to suit future needs.
+* Firewall: NAT: Source NAT is from the set of pages formerly known as automation, but One to One NAT is still the main page for these types of rules.
+
+The public key for the 26.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEArTnFQp0jjj5bkLNx9G1j
+    # q26WmN/EtAaJUt+2MY8W8h7L3kokRMlTgEvCYJOkUjbJYbjuG0Cut3JExNYa1vdD
+    # 1SLIlJShyI8OsjbAS/flZdJB9c0Vxz2CwpoX9Efmp5TaB3GWqhHS0OVLx4MSI3HJ
+    # qP/aQLjZMuCQHX8beUQB77YWcT6sPC5UMYeNEW1uHR7Oki/TpOXWnzNStEQXRL6/
+    # MiuYJovedlNXeNUeebJyG0TyLJ/3uGMYhHKYK+OJkB03P3iLGGVE/WWNugsqX6bY
+    # tTU9PquHo5zDApndp8iG49Fs/DC0r7V1P85ETPtW2SuZQ7YeDuz3VKvuMxAqyQoC
+    # 1FLOsIuEfudDmRuMuTsRgB6jaGACEWUTuRyiFG4+kVDi1/qOWpYatP8C8B7Lx9UU
+    # CTZhCl+Se4woWGtp5KOtYe+pvJ4oz40SL4drUQFEP3ZOsK/HzyLjPFRgxfANNUPG
+    # ONayKHJXVVFPg2ATk9jeNPsLmXlcDmi/rihyN4RM2w0/bi8BWSc+dMGZ5ZhNJdsF
+    # wHBIscgpiAhs+HS8Usxy3idv/JkY0h9tZ2QnljhUUwhYV+DT9yZf5ABU0B68VjJ4
+    # /GloUc3bS7HBeSTAauYMOQvgkY1vcySGWTXvsGOw/Crpk4DYx5KpGNYHmENRey2c
+    # AQdi+Fvi3fFkV1BoxGo78NcCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-26.1-dvd-amd64.iso.bz2) = 856c00a4ddf62f40cdc0871cd9fb6bbd455fb4dcca9337713b95ff42a41c88b2
+    # SHA256 (OPNsense-26.1-nano-amd64.img.bz2) = 5731a3f21c5dbe221acf5b4777ed686f705f27e7560ffb05d29a68ea4e7c7e50
+    # SHA256 (OPNsense-26.1-serial-amd64.img.bz2) = aaca6d4c44371673c555be354317533cf91ced86fc86c026716325c29c451d79
+    # SHA256 (OPNsense-26.1-vga-amd64.img.bz2) = 3901b83750dd19ca26632b61bf5fe7ac86b8cfa0bfb3e633928c37416a14e5f9
+
+
+--------------------------------------------------------------------------
+26.1.r2 (January 26, 2026)
+--------------------------------------------------------------------------
+
+
+The second release candidate for 26.1 brings fixes for issues found by
+our awesome community.  As an online-only update you need 26.1-RC1 to
+install it.
+
+The long-awaited dhcp6c refresh has been included as well as the latest
+version for hostwatch addressing the community concerns collected from
+25.7.11.
+
+Here are the changes against version 26.1-RC1:
+
+* system: add XMLRPC option for hostwatch
+* interfaces: show ISC-DHCPv6 menu in "idassoc6" mode
+* interfaces: fix validation issue in "idassoc6" mode
+* interfaces: handle hostwatch user/group via package
+* interfaces: avoid forced reloads when PDINFO is not set
+* firewall: fix 3 issues and improve instructions in rule migration page
+* firewall: improve GeoIP alias expiry condition
+* firewall: escape selector in rule_protocol
+* kea: add libdhcp_host_cmds.so to expose internal API commands for reservations
+* kea: allow "hw-address" for reservations
+* kea: add pool in subnet validation
+* openvpn: account for CARP status in start and restart cases as well
+* radvd: remove faulty empty address exception
+* lang: various translation updates
+* mvc: add ChangeCase support to ProtocolField for DNAT special case
+* ports: dhcp6c v20260122
+* ports: hostwatch 1.0.9
+
+A hotfix release was issued as 26.1.r2_2:
+
+* interfaces: if no idassoc6/track6 LAN is used also emit a PD request like before
+* firewall: make previously associated DNAT rules editable
+
+Migration notes, known issues and limitations:
+
+* ISC-DHCP moves to a plugin. It will be automatically installed during upgrades. It is not installed on new installations because it is not being used, but you can still install and keep using it.
+* To accommodate the change away from ISC-DCHP defaults the "Track interface" IPv6 mode now has a sibling called "Identity Association" which does the same except it is not automatically starting ISC-DHCPv6 and Radvd router advertisements to allow better interoperability with Kea and Dnsmasq setups.
+* Due to command line execution safety concerns the historic functions mwexec_bg() and mwexec() will be removed in 26.1.x.  Make sure your custom code is not using them and use mwexecf(), mwexecfb() and mwexecfm() instead.
+* The function sessionClose() has also been removed from the MVC code and is no longer needed.  Make sure to remove it from your custom code.
+* The custom.yaml support has been removed from intrusion detection.  Please migrate to the newer /usr/local/etc/suricata/conf.d override directory.
+* The new host discovery service "hostwatch" is enabled by default (since 25.7.11).  You can always turn it off under Interfaces: Neighbors: Automatic Discovery if you so choose.
+* The firewall migration page is not something you need to jump into right away.  Please make yourself familiar with the new rules GUI first and check the documentation for incompatibilities.
+* Firewall: NAT: Port Forwarding is now called "Destination NAT".  Firewall rule associations are no longer supported, but the old associated firewall rules remain in place with their last known configuration and can now be edited to suit future needs.
+
+Please let us know about your experience!
+
+
+Stay safe,
+Your OPNsense team
+
+--------------------------------------------------------------------------
+26.1.r1 (January 22, 2026)
+--------------------------------------------------------------------------
+
+
+Here we are now with the first release candidate to kickstart the 26.1
+series.  While this marks the end of an era as ISC-DHCP functionality
+moves to a plugin it is only the beginning of structural improvements
+and further innovation of topics that are important to our users: firewall
+GUI and API, IPv6, intrusion detection using Suricata and overall security.
+
+Keep in mind this is mostly an image-based pre-production test release.
+Upgrades from the 25.7.11 development version will be available at some
+point, but it is not clear when. An online-only RC2 will probably follow
+as well.  The final release date for 26.1 is January 28.
+
+https://pkg.opnsense.org/releases/26.1/
+
+Here are the development highlights since version 25.7 came out:
+
+* Introduce a new consistent rules GUI using MVC/API (formerly known as "Automation")
+* Suricata version 8 and new inline inspection mode using "divert"
+* NAT port forwarding migrated to "Destination NAT" as MVC/API
+* Various IPv6 stability improvements and additional features
+* Setup wizard improvements including use case selection
+* Services: Router Advertisements migrated to MVC/API
+* Shell command escaping improvements and audit
+* Interfaces: Settings migrated to MVC/API
+* Default IPv6 setup now relies on Dnsmasq
+* Factory reset for individual components
+* The firewall live log was rewritten
+* Unbound blocklist source selection
+* Automatic host discovery service
+
+A more detailed change log will follow!
+
+Migration notes, known issues and limitations:
+
+* ISC-DHCP moves to a plugin. It will be automatically installed during upgrades. It is not installed on new installations because it is not being used, but you can still install and keep using it.
+* To accommodate the change away from ISC-DCHP defaults the "Track interface" IPv6 mode now has a sibling called "Identity Association" which does the same except it is not automatically starting ISC-DHCPv6 and Radvd router advertisements to allow better interoperability with Kea and Dnsmasq setups.
+* Due to command line execution safety concerns the historic functions mwexec_bg() and mwexec() will be removed in 26.1.x.  Make sure your custom code is not using them and use mwexecf(), mwexecfb() and mwexecfm() instead.
+* The function sessionClose() has also been removed from the MVC code and is no longer needed.  Make sure to remove it from your custom code.
+* The custom.yaml support has been removed from intrusion detection.  Please migrate to the newer /usr/local/etc/suricata/conf.d override directory.
+
+The public key for the 26.1 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEArTnFQp0jjj5bkLNx9G1j
+    # q26WmN/EtAaJUt+2MY8W8h7L3kokRMlTgEvCYJOkUjbJYbjuG0Cut3JExNYa1vdD
+    # 1SLIlJShyI8OsjbAS/flZdJB9c0Vxz2CwpoX9Efmp5TaB3GWqhHS0OVLx4MSI3HJ
+    # qP/aQLjZMuCQHX8beUQB77YWcT6sPC5UMYeNEW1uHR7Oki/TpOXWnzNStEQXRL6/
+    # MiuYJovedlNXeNUeebJyG0TyLJ/3uGMYhHKYK+OJkB03P3iLGGVE/WWNugsqX6bY
+    # tTU9PquHo5zDApndp8iG49Fs/DC0r7V1P85ETPtW2SuZQ7YeDuz3VKvuMxAqyQoC
+    # 1FLOsIuEfudDmRuMuTsRgB6jaGACEWUTuRyiFG4+kVDi1/qOWpYatP8C8B7Lx9UU
+    # CTZhCl+Se4woWGtp5KOtYe+pvJ4oz40SL4drUQFEP3ZOsK/HzyLjPFRgxfANNUPG
+    # ONayKHJXVVFPg2ATk9jeNPsLmXlcDmi/rihyN4RM2w0/bi8BWSc+dMGZ5ZhNJdsF
+    # wHBIscgpiAhs+HS8Usxy3idv/JkY0h9tZ2QnljhUUwhYV+DT9yZf5ABU0B68VjJ4
+    # /GloUc3bS7HBeSTAauYMOQvgkY1vcySGWTXvsGOw/Crpk4DYx5KpGNYHmENRey2c
+    # AQdi+Fvi3fFkV1BoxGo78NcCAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+Please let us know about your experience!
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-26.1.r1-dvd-amd64.iso.bz2) = b0f1f48cd9104e96c37ab11c4381e3401d7d892c97ff8ec7aec1fcec44f16feb
+    # SHA256 (OPNsense-26.1.r1-nano-amd64.img.bz2) = e9c6d72908bc60fc4172ee9c6cd92e7b34bc0e234cc5ad17b3d9f951824cc22a
+    # SHA256 (OPNsense-26.1.r1-serial-amd64.img.bz2) = e03638f1d6fdbc300155fedf5d350603cb1479bf0f8ffe62c439ef0993b5aeb9
+    # SHA256 (OPNsense-26.1.r1-vga-amd64.img.bz2) = f78a0bb9f771fe8846c32ab501875d3970e569b0c4163eff08cfc3bedc1ad747
