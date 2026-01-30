@@ -135,7 +135,7 @@ There are some rules to take into account when creating custom themed error page
   Not only is this faster to handle than separate image files it also prevents rendering issues in case images can't be accessed.
 * only existing error pages will be processed, if filenames won't match, the files won't be written to disk. you can use the download button
   to inspect what's being deployed (it will return a combined set of custom and standard files)
-* it's best not to include files that are not altered, this saves room in the configurartion and prevents defauls from being overwritten.
+* it's best not to include files that are not altered, this saves room in the configurartion and prevents defaults from being overwritten.
 
 .. Tip::
 

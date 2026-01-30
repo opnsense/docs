@@ -223,7 +223,7 @@ Enable syncookies
 This option is quite similar to the `syncookies <https://www.freebsd.org/cgi/man.cgi?syncookies>`__ kernel setting,
 preventing memory allocation for local services before a proper handshake is made.
 
-In this case pf will be protected agains state table exhaustion.
+In this case pf will be protected against state table exhaustion.
 
 The following modes are available:
 

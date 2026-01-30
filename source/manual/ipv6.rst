@@ -57,7 +57,7 @@ Most concepts explained in this paragraph are part of the `Neighbor Discovery Pr
 Finding your neighbors [NS,NA]
 -------------------------------
 
-For a machine to know it's neighbors, it will use the neighbor discovery protocol (NDP), a bit similar to ARP on IPv4 networks,
+For a machine to know its neighbors, it will use the neighbor discovery protocol (NDP), a bit similar to ARP on IPv4 networks,
 but using Neighbor Solicitation (:code:`ICMPv6 type 135`) and Neighbor Advertisement :code:`ICMPv6 type 136`) messages.
 
 In order to verify if a neighbor is known, you can use the NDP table in :menuselection:`Interfaces --> Diagnostics --> NDP Table`.
