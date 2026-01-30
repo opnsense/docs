@@ -181,14 +181,37 @@ Rule sequence
 
 The sequence in which the rules are displayed and processed can be customized per section:
 
-* Select one or more rules using the checkbox on the left side of the rule.
+* Select a rule with the checkbox on the left side of the rule.
 * Use the arrow button in the action menu on the right side of a rule in order to move selected rules before the rule where the action button is pressed.
-* Or you can use the arrow button on the top in the heading row to move the selected rules to the end.
+
+While rules in :menuselection:`Firewall --> Rules` are processed implicitly by the order they appear in the configuration file,
+:menuselection:`Firewall --> Rules [new]` implement a more explicit **Sort order**.
+
+A **Sort order** will have this structure: ``200000.0000250``:
+
+    - ``200000`` The **Priority group**, defines the hierarchy the rule belongs to. It can be influenced by the interface in a rule.
+    - ``.0000250`` The **Sequence**, it defines the exact spot of the rule in context of the interface hierarchy. It can be influenced with the `Sequence` field inside a rule, or with the `Move rule before this rule` button.
+
+As example, we create a few different rules:
+
+    - ``200000.0000100`` (Floating rule)
+    - ``200000.0000200`` (Floating rule)
+    - ``300000.0000050`` (Group rule)
+    - ``300000.0000060`` (Group rule)
+    - ``400000.0002000`` (Interface rule)
+    - ``400000.0003100`` (Interface rule)
+
+When applying the filter, the rules will be processed in this **Sort order**. A lower sequence number inside the priority group means the priority is higher.
+
+.. Note::
+
+    The `Sequence` does not have to be unique, multiple rules can share the same number.
+    Though what this means is that the filter is not populated as strictly in order as if all rules have a unique sequence.
 
 .. Tip::
 
-    In :menuselection:`Firewall --> Rules [new]`, you can reveal a sequence number by toggling the advanced mode. This number influences the processing order
-    of rules in the same priority group (displayed as *Sort order*). When using the arrow buttons to move rules, the sequence number is changed.
+    When adding a new rule, the `Sequence` will be automatically populated with a unique number. You can either change this number manually
+    to adjust the exact position of the rule, or use the `Move rule before this rule` button.
 
 Direction
 --------------------
