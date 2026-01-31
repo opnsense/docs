@@ -123,7 +123,7 @@ this product. Looking at the lifecycle of our software, this is also the most ma
 * Business Edition
 
   - Functional changes are being included in a more conservative manner, more feedback has been collected from development
-    and community, leading to a mission-critical version of the well known OPNsense firewall.
+    and community, leading to a mission-critical version of the well-known OPNsense firewall.
 
 As security testing is quite time-consuming, we aim to offer a full qualification cycle for every major release.
 
