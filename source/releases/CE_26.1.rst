@@ -35,6 +35,85 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.1.1 (February 04, 2026)
+--------------------------------------------------------------------------
+
+
+This ships OpenSSL and Python security updates as well as address a number
+of shortcomings of the initial 26.1 and community-infused improvements of
+the new rules GUI which we would not have dreamed of to get this quickly.
+
+We are very happy with the current state of the new rules GUI and all the
+discussions we have had on how it can be further improved.  It is just the
+beginning.  A roadmap for 26.7 will be in the works later this month.
+
+Looking back 11 years it appears that the best hopes we had for the project
+back then have all come true.  It took lot longer than expected but we
+got there together with you, our beloved community.  It will only take
+a bit more work now to achieve MVC/API support for all core components and
+remove root access from the web GUI.  And we hope that you will be up for
+it in the coming years as well.
+
+Images will likely be reissued based on this release, but it is not an
+immediate priority.  Upgrade paths from 25.7 will also be updated in the
+near future to ensure the best possible upgrade experience.
+
+Here are the full patch notes:
+
+* interfaces: fix WLAN creation when $mode is empty
+* interfaces: fix interface settings save with disabled ISC DHCPv6 server
+* interfaces: add optional interval input to ping
+* firewall: fix rule anchor rendering for plugins
+* firewall: prevent autocomplete in alias auth password
+* firewall: validate UUID on rules migration import
+* firewall: fix overload table setting being written as UUID into pf.conf in new rules GUI
+* firewall: local-port field in destination NAT does not support range and well-known name
+* firewall: change toggle_log icon to help visibility in new rules GUI
+* firewall: add missing schedules support for new rules GUI
+* firewall: make statistics column responsive for new rules GUI
+* firewall: add link to states and put it first in list in new rules GUI
+* firewall: add "any" interface filter option and make it the default
+* reporting: render RRD integer as string in command invoke
+* dnsmasq: compare leases case insensitive
+* firmware: opnsense-code: allow -r to specify the release branch for core/plugins
+* firmware: opnsense-patch: when patching make no backups
+* firmware: opnsense-update: batch use of -g and -G options
+* kea: add several missing validations
+* kea: use hostwatch as source for prefix watcher
+* openssh: style update for config generation
+* radvd: correctly verify constructor interface if used
+* lang: added Persian as a new language and a few updates/fixes in existing translations
+* installer: ufs: flush the disk to avoid spurious partitioning errors
+* mvc: support verbose logging in run_migrations.php
+* mvc: shield exec_safe() against fatal type errors
+* mvc: mark exported CSV as content safe to disable escaping
+* mvc: ArrayField: support throwing exceptions in importRecordSet()
+* mvc: fix class names of ManualSpdController and VxlanController
+* mvc: BaseModel: create missing nodes in legacy mapper
+* ui: bootgrid: allow multi word tooltips (contributed by Matthias Kaduk)
+* ui: bootgrid: introduce toggle-selected command
+* ui: bootgrid: searchable column selectors
+* ui: move refresh of selectpicker types into setFormData() and improve type detection
+* plugins: os-acme-client 4.13 `[1] <https://github.com/opnsense/plugins/blob/stable/26.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-ddclient 1.30 `[2] <https://github.com/opnsense/plugins/blob/stable/26.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-freeradius 1.10.1 `[3] <https://github.com/opnsense/plugins/blob/stable/26.1/net/freeradius/pkg-descr>`__ 
+* plugins: os-tayga 1.4 `[4] <https://github.com/opnsense/plugins/blob/stable/26.1/net/tayga/pkg-descr>`__ 
+* plugins: os-tinc 1.8 adds disable subnet routes option (contributed by Thojo0)
+* src: fix multiple vulnerabilities in OpenSSL `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:01.openssl.asc>`__ 
+* src: jail escape by a privileged user via nullfs `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:02.jail.asc>`__ 
+* src: arm64 SVE signal context misalignment `[7] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:02.arm64.asc>`__ 
+* src: page fault handler fails to zero memory `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:03.vm.asc>`__ 
+* ports: dnsmasq 2.92 `[9] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: libxml 2.15.1 `[10] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: openssl 3.0.19 `[11] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+* ports: phalcon 5.10.0 `[12] <https://github.com/phalcon/cphalcon/releases/tag/v5.10.0>`__ 
+* ports: php 8.3.30 `[13] <https://www.php.net/ChangeLog-8.php#8.3.30>`__ 
+* ports: phpseclib 3.0.49 `[14] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.49>`__ 
+* ports: python security fixes `[15] <https://www.cve.org/cverecord?id=CVE-2025-12084>`__  `[16] <https://www.cve.org/cverecord?id=CVE-2025-13836>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.1 (January 28, 2026)
 --------------------------------------------------------------------------
 
@@ -140,6 +219,14 @@ Here are the full patch notes:
 * ports: dhcp6c v20260122
 * ports: hostwatch 1.0.9
 
+A hotfix release was issued as 26.1_4:
+
+* interfaces: host discovery: make sure the full dump includes NDP output on fallback
+* interfaces: fix migration for IPv6 no-release option
+* firewall: FilterBaseController requires Base\UserException
+* firewall: fix typo with sprintf() with DNAT rule
+* ports: hostwatch 1.0.11
+
 Migration notes, known issues and limitations:
 
 * ISC-DHCP moves to a plugin. It will be automatically installed during upgrades. It is not installed on new installations because it is not being used, but you can still install and keep using it.
@@ -151,7 +238,7 @@ Migration notes, known issues and limitations:
 * The new host discovery service "hostwatch" is enabled by default (since 25.7.11).  You can always turn it off under Interfaces: Neighbors: Automatic Discovery if you so choose.
 * The firewall migration page is not something you need to jump into right away.  Please make yourself familiar with the new rules GUI first and check the documentation for incompatibilities.  Single interface from the floating interface will not be considered "floating" in priorities.
 * Firewall: NAT: Port Forwarding is now called "Destination NAT".  Firewall rule associations are no longer supported, but the old associated firewall rules remain in place with their last known configuration and can now be edited to suit future needs.
-* Firewall: NAT: Source NAT is from the set of pages formerly known as automation, but One to One NAT is still the main page for these types of rules.
+* Firewall: NAT: Source NAT is from the set of pages formerly known as automation, but Outbound NAT is still the main page for these types of rules.
 
 The public key for the 26.1 series is:
 
