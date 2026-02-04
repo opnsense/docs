@@ -531,8 +531,8 @@ This section of the documentation describe the different settings, grouped by us
 
         Some settings help to identify rules, without influencing traffic flow.
 
-        =====================================================================================================================
-
+        ====================================  ===============================================================================
+        **Option**                            **Description**
         ====================================  ===============================================================================
         Category                              The category this rule belongs to, can be used as a filter in the overview
         Description                           Descriptive text
@@ -544,8 +544,8 @@ This section of the documentation describe the different settings, grouped by us
 
         Below are the settings most commonly used:
 
-        =====================================================================================================================
-
+        ====================================  ===============================================================================
+        **Option**                            **Description**
         ====================================  ===============================================================================
         Action                                The :ref:`action <Firewall_Rule_Action>` to perform.
         Disabled                              Disable a rule without removing it, can be practical for testing purposes and
@@ -576,8 +576,6 @@ This section of the documentation describe the different settings, grouped by us
 
             The use of descriptive names help identify traffic in the live log view easily.
 
-        .. Tip::
-
         .. raw:: html
 
             <i class="fa fa-eye"></i>
@@ -589,6 +587,7 @@ This section of the documentation describe the different settings, grouped by us
             You can select multiple sources or destinations per rule, yet keep in mind that a nested alias might be the better choice.
             This feature is most useful if you plan to create `security zones </manual/how-tos/security-zones.html>`_.
 
+
     .. tab:: Traffic shaping (QoS)
 
         When a firewall rule needs to be constrained in terms of the number of packets it may process over time,
@@ -598,8 +597,8 @@ This section of the documentation describe the different settings, grouped by us
         relevant properties for the firewall rule.
 
 
-        =====================================================================================================================
-
+        ====================================  ===============================================================================
+        **Option**                            **Description**
         ====================================  ===============================================================================
         Traffic shaping/rule direction        Force packets being matched by this rule into the configured queue or pipe
         Traffic shaping/reverse direction     Force packets being matched in the opposite direction
@@ -617,8 +616,8 @@ This section of the documentation describe the different settings, grouped by us
 
         Some settings are usually best left default, but can also be set in the normal rule configuration.
 
-        =====================================================================================================================
-
+        ====================================  ===============================================================================
+        **Option**                            **Description**
         ====================================  ===============================================================================
         Source port range                     In case of TCP and/or UDP, you can also filter on the source port (range) that is
                                               used by the client. Since in most cases you can't influence the source port,
@@ -635,8 +634,8 @@ This section of the documentation describe the different settings, grouped by us
 
         The following options are specifically used for HA setups.
 
-        =====================================================================================================================
-
+        ====================================  ===============================================================================
+        **Option**                            **Description**
         ====================================  ===============================================================================
         No XMLRPC Sync                        Disable configuration sync for this rule, when **Firewall Rules** sync is
                                               enabled in :menuselection:`System --> High Availability --> Settings`
@@ -657,8 +656,8 @@ This section of the documentation describe the different settings, grouped by us
 
         More information about Multi-Wan can be found in the ":doc:`/manual/how-tos/multiwan`" chapter.
 
-        =====================================================================================================================
-
+        ====================================  ===============================================================================
+        **Option**                            **Description**
         ====================================  ===============================================================================
         Gateway                               When a gateway is specified, packets will use policy based routing using
                                               the specified gateway or gateway group. Usually this option is set on the
@@ -691,8 +690,8 @@ This section of the documentation describe the different settings, grouped by us
         The advanced options contains some settings to limit the use of a rule or specify specific timeouts for
         the it. Most generic (default) settings for these options can be found under :menuselection:`Firewall --> Settings --> Advanced`
 
-        =====================================================================================================================
-
+        ====================================  ===============================================================================
+        **Option**                            **Description**
         ====================================  ===============================================================================
         Max states                            Limits the number of concurrent states the rule may create.
                                               When this limit is reached, further packets that would create state will
@@ -715,8 +714,8 @@ This section of the documentation describe the different settings, grouped by us
 
         Some less common used options are defined below.
 
-        =====================================================================================================================
-
+        ====================================  ===============================================================================
+        **Option**                            **Description**
         ====================================  ===============================================================================
         Source OS                             Operating systems can be fingerprinted based on some tcp fields from
                                               the originating connection. These fingerprints can be used as well
