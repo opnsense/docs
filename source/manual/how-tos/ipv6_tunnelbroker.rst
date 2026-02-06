@@ -122,7 +122,7 @@ You should now be set up for IPv6. To test your configuration, bring online an
 IPv6 machine, use your favorite tool to determine you have an IPv6 address. If
 you're using SLAAC, it may take up to 30 seconds or more to get an IPv6 address.
 If you see that your interface has an IPv6 address, you can try going to an
-IPv6 only test site, such as http://6.ifconfig.pro/
+IPv6 only test site, such as https://www.doesnotwork.eu/
 
 -----------------------------------
 Step 7 - Configure Endpoint Updates
