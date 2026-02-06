@@ -74,7 +74,7 @@ Save. Tayga should now be running.
 ---------------------
 Adding firewall rules
 ---------------------
-Tayga uses a tunnel interface for packet exchange with the system. Rules are required to prevent the firewall from blocking these packets.
+Tayga uses a tunnel interface for packet exchange with the system. A firewall rule is required to prevent it from blocking these packets.
 Additionally, an outbound NAT rule is required for IPv4 Internet access.
 
 Go to :menuselection:`Firewall --> Rules --> Tayga`, add a new rule, set the `TCP/IP Version` to `IPv4+IPv6`, leave all other settings to
@@ -83,12 +83,6 @@ their default values and save.
 .. Note::
    If you just enabled Tayga and can't find :menuselection:`Firewall --> Rules --> Tayga`, go to :menuselection:`Interfaces --> Assignments`,
    click `Save` and reload the page.
-
-Go to :menuselection:`Firewall --> Settings --> Normalization`, add a new rule, set the `Interface` to `Tayga`, leave all other settings to
-their default values and save.
-
-.. Note::
-   This rule is required for proper handling of fragmented packets.
 
 Go to :menuselection:`Firewall --> NAT --> Outbound`, add a new rule, set the `Interface` to `WAN`, set `Source address` to `Single host or
 network`, enter your Tayga `IPv4 Pool`, leave all other settings to their default values and save.
