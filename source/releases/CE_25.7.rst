@@ -90,7 +90,7 @@ Here are the full patch notes:
 * ipsec: most safe execution transformations done
 * isc-dhcp: interalize interfaces_staticarp_configure()
 * isc-dhcp: safeguard access to DHCPv6 "enable" property
-* kea: refactor daemon(8) call to mwexecfb()
+* kea-dhcp: refactor daemon(8) call to mwexecfb()
 * network time: fix GPS coordinate display in status page (contributed by brotherla)
 * openvpn: add simple search functionality for accounts table in client export
 * openvpn: skip dynamic content when loading the model in client export
@@ -115,10 +115,9 @@ Here are the full patch notes:
 * src: in6: modify address prefix lifetimes when updating address lifetimes
 * src: ipv6: fix off-by-one in pltime and vltime expiration checks
 * src: ipv6: do not complain when deleting an address with prefix length of 128
-* src: ifconfig: fix the -L flag when using netlink
 * src: netlink: do not directly access ifnet members
 * src: netlink: do not overwrite existing data in a linear buffer in snl_writer
-* src: netmap: Let memory allocator parameters be settable via loader.conf
+* src: netmap: let memory allocator parameters be settable via loader.conf
 * src: pfsync: avoid zeroing the state export union
 * src: divert: fix removal of divert sockets from a group
 * src: divert: use a jenkins hash to select the target socket
