@@ -214,7 +214,7 @@ Here are the full patch notes:
 * ports: curl 8.11.0 `[3] <https://curl.se/changes.html#8_11_0>`__ 
 * ports: expat 2.6.4 `[4] <https://github.com/libexpat/libexpat/blob/R_2_6_4/expat/Changes>`__ 
 * ports: nss 3.107 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_107.html>`__ 
-* ports: openldap 2.6.9 `[6] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.6.9 `[6] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: php 8.2.26 `[7] <https://www.php.net/ChangeLog-8.php#8.2.26>`__ 
 * ports: sudo 1.9.16p2 `[8] <https://www.sudo.ws/releases/stable/#1.9.16p2>`__ 
 

@@ -172,7 +172,7 @@ Here are the full patch notes:
 * plugins: os-haproxy 4.6 `[1] <https://github.com/opnsense/plugins/blob/stable/25.1/net/haproxy/pkg-descr>`__ 
 * ports: curl 8.14.1 `[2] <https://curl.se/changes.html#8_14_1>`__ 
 * ports: nss 3.112 `[3] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_112.html>`__ 
-* ports: openldap 2.6.10 `[4] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.6.10 `[4] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: php 8.3.22 `[5] <https://www.php.net/ChangeLog-8.php#8.3.22>`__ 
 * ports: python 3.11.13 `[6] <https://docs.python.org/release/3.11.13/whatsnew/changelog.html>`__ 
 

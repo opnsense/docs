@@ -494,7 +494,7 @@ Here are the full patch notes:
 * ports: lighttpd 1.4.69 `[20] <https://www.lighttpd.net/2023/2/10/1.4.69/>`__ 
 * ports: monit 5.33.0 `[21] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.89 `[22] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_89.html>`__ 
-* ports: openldap 2.6.4 `[23] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.6.4 `[23] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openssh 9.2p1 `[24] <https://www.openssh.com/txt/release-9.2>`__ 
 * ports: openssl fix for CVE-2023-0464
 * ports: phalcon 5.2.1 `[25] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.1>`__ 

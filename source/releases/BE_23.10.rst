@@ -589,7 +589,7 @@ Here are the full patch notes:
 * ports: dnspython 2.4.2
 * ports: filterlog fix to prevent crash on default rule number -1
 * ports: nss 3.93 `[18] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_93.html>`__ 
-* ports: openldap 2.6.6 `[19] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.6.6 `[19] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openssl 1.1.1w `[20] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.6.6 `[21] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.6>`__ 
 * ports: perl 5.34.1 `[22] <https://perldoc.perl.org/5.34.1/perldelta>`__ 

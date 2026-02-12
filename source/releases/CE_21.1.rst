@@ -192,7 +192,7 @@ Here are the full patch notes:
 * ports: curl 7.77.0 `[7] <https://curl.se/changes.html#7_77_0>`__ 
 * ports: isc-dhcp 4.4.2-P1 `[8] <https://downloads.isc.org/isc/dhcp/4.4.2-P1/dhcp-4.4.2-P1-RELNOTES>`__ 
 * ports: nss 3.66 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_66.html>`__ 
-* ports: openldap 2.4.59 `[10] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.4.59 `[10] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: pcre2 10.37 `[11] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.37>`__ 
 * ports: phalcon 4.1.2 `[12] <https://github.com/phalcon/cphalcon/releases/tag/v4.1.2>`__ 
 * ports: py-certifi 2021.5.30
@@ -422,7 +422,7 @@ Here are the full patch notes:
 * src: fix multiple OpenSSL vulnerabilities `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-21:07.openssl.asc>`__ 
 * ports: ca_root_nss / nss 3.63 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_63.html>`__ 
 * ports: libressl 3.2.5 `[8] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.5-relnotes.txt>`__ 
-* ports: openldap 2.4.58 `[9] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.4.58 `[9] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openssh fix for double free in ssh-agent `[10] <https://ftp.openbsd.org/pub/OpenBSD/patches/6.8/common/015_sshagent.patch.sig>`__ 
 * ports: openssl 1.1.1k `[11] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: sudo 1.9.6p1 `[12] <https://www.sudo.ws/releases/stable/#1.9.6p1>`__ 
@@ -732,7 +732,7 @@ Here are the full patch notes against 20.7.8:
 * ports: dnsmasq 2.83 `[9] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: igmpproxy 0.3 `[10] <https://github.com/pali/igmpproxy/releases/tag/0.3>`__ 
 * ports: nss 3.61 `[11] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_61.html>`__ 
-* ports: openldap 2.4.57 `[12] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.4.57 `[12] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: py-netaddr 0.8.0 `[13] <https://netaddr.readthedocs.io/en/latest/changes.html#release-0-8-0>`__ 
 * ports: sudo 1.9.5p2 `[14] <https://www.sudo.ws/releases/stable/#1.9.5p2>`__ 
 

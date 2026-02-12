@@ -136,7 +136,7 @@ Here are the full patch notes:
 * ports: libpfctl 0.15
 * ports: monit 5.34.3 `[15] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.107 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_107.html>`__ 
-* ports: openldap 2.6.9 `[17] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.6.9 `[17] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openvpn 2.6.13 `[18] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.13>`__ 
 * ports: php 8.2.27 `[19] <https://www.php.net/ChangeLog-8.php#8.2.27>`__ 
 * ports: python 3.11.11 `[20] <https://docs.python.org/release/3.11.11/whatsnew/changelog.html>`__ 

@@ -138,7 +138,7 @@ Here are the full patch notes:
 * ports: openvpn 2.4.3 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
 * ports: sudo 1.8.20p2 `[4] <https://www.sudo.ws/releases/legacy/#1.8.20p2>`__ 
 * ports: dnsmasq 2.77 `[5] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
-* ports: openldap 2.4.45 `[6] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.4.45 `[6] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: php 7.0.20 `[7] <https://www.php.net/ChangeLog-7.php#7.0.20>`__ 
 * ports: suricata 3.2.2 `[8] <https://suricata-ids.org/2017/06/07/suricata-3-2-2-available/>`__ 
 * ports: squid 3.5.26 `[9] <http://lists.squid-cache.org/pipermail/squid-announce/2017-June/000076.html>`__ 

@@ -35,6 +35,56 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.1.2 (February 12, 2026)
+--------------------------------------------------------------------------
+
+
+This is a smallish update with a number of fixes and another round of Python
+CVEs addressed.  New images based on this stable version are planned for next
+week.
+
+At the moment work focuses on the IPv6 support for the captive portal which
+should not be too far away now.  The 26.7 roadmap will also be published at
+the end of this month.
+
+Here are the full patch notes:
+
+* system: remove "upstream" from gateway grid as priority already reflects the proper data
+* system: adjust gateway group priority (tier) wording
+* interfaces: fix wlanmode argument usage
+* firewall: fix target mapping inconsistency leading to references not being processed in destination NAT
+* firewall: use local-port as target when specified in destination NAT
+* firewall: fix missing reply-to when not specifically set in new rules
+* firewall: live view: fix parsing of combined filters stored as converted strings
+* firewall: fix group rename in source_net, destination_net and SNAT/DNAT target fields
+* firewall: add tcpflags_any in new rules GUI for parity with legacy rules
+* firewall: exclude loopback from interface selectpicker in new rules GUI
+* firewall: well known ports added to filter rule selection
+* firewall: undefined is also "\*" in new rules grid
+* firewall: add download button for validation errors in rule import
+* firewall: allow TTL usage on host entries
+* firmware: avoid update-hook background cleanups
+* firmware: revoke 25.7 fingerprint
+* kea: fix subnets GUI missing root node
+* radvd: change tabs to spaces in radvd.conf for better maintenance
+* unbound: safeguard the blocklist tester against empty configuration testing
+* mvc: add $separator as parameter for CSV export and switch the default to a semicolon
+* mvc: InterfaceField: minor adjustments and add resetStaticOptionList()
+* mvc: catch empty data in CSV import
+* tests: Shell: add testing framework
+* plugins: os-haproxy 5.0 `[1] <https://github.com/opnsense/plugins/blob/stable/26.1/net/haproxy/pkg-descr>`__ 
+* ports: expat 2.7.4 `[2] <https://github.com/libexpat/libexpat/blob/R_2_7_4/expat/Changes>`__ 
+* ports: hostwatch 1.0.12 now rate-limits database writes for recently seen hosts
+* ports: ldns 1.9.0 `[3] <https://raw.githubusercontent.com/NLnetLabs/ldns/1.9.0/Changelog>`__ 
+* ports: nss 3.120 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_120.html>`__ 
+* ports: openldap 2.6.12 `[5] <https://www.openldap.org/software/release/changes_lts.html>`__ 
+* ports: openvpn 2.6.19 `[6] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.19>`__ 
+* ports: py-duckdb 1.4.4 `[7] <https://github.com/duckdb/duckdb/releases/tag/v1.4.4>`__ 
+* ports: python additional security fixes `[8] <https://www.cve.org/cverecord?id=CVE-2026-1299>`__  `[9] <https://www.cve.org/cverecord?id=CVE-2026-0865>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.1.1 (February 04, 2026)
 --------------------------------------------------------------------------
 

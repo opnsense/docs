@@ -183,7 +183,7 @@ Here are the full patch notes:
 * ports: kea 2.6.3 `[14] <https://downloads.isc.org/isc/kea/2.6.3/Kea-2.6.3-ReleaseNotes.txt>`__ 
 * ports: libxml 2.14.5 `[15] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: nss 3.113.1 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_113_1.html>`__ 
-* ports: openldap 2.6.10 `[17] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.6.10 `[17] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openssl 3.0.17 `[18] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: perl 5.40.2 `[19] <https://perldoc.perl.org/5.40.2/perldelta>`__ 
 * ports: pftop 0.13

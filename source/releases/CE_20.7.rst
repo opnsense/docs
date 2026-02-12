@@ -181,7 +181,7 @@ Here are the full patch notes:
 * src: update timezone database information `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:20.tzdata.asc>`__ 
 * ports: krb5 1.18.3 `[9] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
 * ports: nss 3.59 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_59.html>`__ 
-* ports: openldap 2.4.56 `[11] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.4.56 `[11] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openssh 8.4p1 `[12] <https://www.openssh.com/txt/release-8.4>`__ 
 * ports: php 7.3.25 `[13] <https://www.php.net/ChangeLog-7.php#7.3.25>`__ 
 * ports: strongswan 5.9.1 `[14] <https://wiki.strongswan.org/versions/79>`__ 
@@ -387,7 +387,7 @@ Here are the full patch notes:
 * ports: ca_root_nss/nss 3.56 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_56.html>`__ 
 * ports: curl 7.72.0 `[5] <https://curl.se/changes.html#7_72_0>`__ 
 * ports: libressl 3.1.4 `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.1.4-relnotes.txt>`__ 
-* ports: openldap 2.4.51 `[7] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.4.51 `[7] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: php 7.3.21 `[8] <https://www.php.net/ChangeLog-7.php#7.3.21>`__ 
 * ports: python 3.7.9 `[9] <https://docs.python.org/release/3.7.9/whatsnew/changelog.html>`__ 
 * ports: sqlite 3.33.0 `[10] <https://sqlite.org/releaselog/3_33_0.html>`__ 

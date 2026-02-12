@@ -162,7 +162,7 @@ Here are the full patch notes:
 * ports: curl 7.70.0 `[6] <https://curl.se/changes.html#7_70_0>`__ 
 * ports: dhcp6c 20200512
 * ports: hyperscan 5.2.1 `[7] <https://github.com/intel/hyperscan/releases/tag/v5.2.1>`__ 
-* ports: openldap 2.4.50 `[8] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.4.50 `[8] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: pcre2 10.35 `[9] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.35>`__ 
 * ports: php 7.3.18 `[10] <https://www.php.net/ChangeLog-7.php#7.3.18>`__ 
 
@@ -417,7 +417,7 @@ Here are the full patch notes:
 * plugins: os-nginx 1.18 `[3] <https://github.com/opnsense/plugins/blob/master/www/nginx/pkg-descr>`__ 
 * plugins: os-theme-vicuna 1.0 (contributed by Team Rebellion)
 * ports: lighttpd 1.4.55 `[4] <https://www.lighttpd.net/2020/1/31/1.4.55/>`__ 
-* ports: openldap 2.4.49 `[5] <https://www.openldap.org/software/release/changes.html>`__ 
+* ports: openldap 2.4.49 `[5] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: pkg libfetch security fix `[6] <https://github.com/freebsd/freebsd-ports/commit/eec0b5c>`__ 
 * ports: sudo 1.8.31 `[7] <https://www.sudo.ws/releases/legacy/#1.8.31>`__ 
 

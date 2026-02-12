@@ -862,7 +862,7 @@ Enough with the announcing already, here are the full patch notes:
 * src: hyperv/kvp: wake up the daemon if it is sleeping due to poll() `[1] <https://github.com/opnsense/core/issues/748>`__ 
 * src: Use correct src/dst ports when removing states in pf `[2] <https://github.com/opnsense/src/pull/9>`__ 
 * src: finish the boot loader branding by adding a shiny logo
-* ports: unbound 1.5.7 `[3] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-5-7>`__ , openldap 2.4.44 `[4] <https://www.openldap.org/software/release/changes.html>`__ , ca_root_nss 3.22, php 5.7.18 `[5] <https://www.php.net/ChangeLog-5.php#5.6.18>`__ , phalcon 2.0.10 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.10>`__ , pkg 1.6.4 `[7] <https://github.com/freebsd/freebsd-ports/commit/364bf01c846>`__  `[8] <https://github.com/freebsd/freebsd-ports/commit/69fe3e55ff5>`__ 
+* ports: unbound 1.5.7 `[3] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-5-7>`__ , openldap 2.4.44 `[4] <https://www.openldap.org/software/release/changes_lts.html>`__ , ca_root_nss 3.22, php 5.7.18 `[5] <https://www.php.net/ChangeLog-5.php#5.6.18>`__ , phalcon 2.0.10 `[6] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.10>`__ , pkg 1.6.4 `[7] <https://github.com/freebsd/freebsd-ports/commit/364bf01c846>`__  `[8] <https://github.com/freebsd/freebsd-ports/commit/69fe3e55ff5>`__ 
 * interfaces: collapsible overview for each interface
 * shaper: fix issue with model when not able to save an old config
 * health: added pages to ACL for configurable user access
