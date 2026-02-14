@@ -134,7 +134,7 @@ Conflict resolution
 
 From the user interface no conflict resolution is offered, you need to configure an upstream repository and stick
 to it for the lifetime of the firewall. When for some reason a backup needs to be restored and one would like to
-stick to the same git repository, manual conflict resolution might be an option. Support on these scenario's is
+stick to the same git repository, manual conflict resolution might be an option. Support on these scenarios is
 not offered.
 
 The repository is available on the OPNsense machine in the following directory :code:`/conf/backup/git`.
