@@ -17,8 +17,8 @@ NGFWs. By integrating Q-Feeds into your OPNsense firewall, you can improve your 
 new and emerging threats. This means your firewall can automatically block harmful traffic and stay updated with
 the latest threat information.
 
-Two types of lists are supported by this plugin, IPs using firewall aliases and domains using an integration with our
-unbound blocklists.
+Two types of lists are supported by this plugin, IPs using firewall aliases and domains using an integration with
+Unbound blocklists or DNSCrypt-Proxy.
 
 This document explains how to install and use Q-Feeds on your OPNsense firewall.
 
@@ -78,6 +78,11 @@ Below you will find their purpose.
         **API key**                               The API key needed to access Q-Feeds.
         **Register domain feeds**                 Use domain feeds in Unbound DNS blocklist,
                                                   requires blocklists to be enabled in order to have effect
+        **//Unbound blocklist settings**
+        **Allowlist Domains**                     Domains to allow (regex supported), only applies to blocklist matches
+        **Source Net(s)**                         Source networks to apply policy on, leave empty for all
+        **Destination Address**                   IP for blocklist entries (default 0.0.0.0)
+        **Return NXDOMAIN**                       Use NXDOMAIN response instead of destination address
         ========================================= ====================================================================================
 
     .. tab:: Feeds
@@ -88,7 +93,7 @@ Below you will find their purpose.
         **Field**                                 **Description**
         ========================================= ====================================================================================
         Description                               Name of the list
-        Type                                      IP (firewall rules), domain (DNS, Unbound)
+        Type                                      IP (firewall rules), domain (DNS, Unbound or DNSCrypt-Proxy)
         Updated at                                Last updated at (iso date)
         Next update                               Scheduled to be updated again at (iso date)
         Licensed                                  Valid license on this list installed
@@ -163,5 +168,19 @@ DNS/Domain blocking using Unbound
 In :menuselection:`Security --> Q-Feeds Connect` make sure to enable **"Register domain feeds"** and hit Apply.
 For older versions (<25.7.9) also make sure Unbound Blocklists are enabled in :menuselection:`Services --> Unbound DNS --> Blocklist`.
 
+Additional Unbound blocklist options: **Allowlist Domains** lets you whitelist domains that would otherwise be blocked
+(regex supported). **Source Net(s)** restricts the policy to specific client networks, e.g. 192.168.1.0/24; leave empty
+for all clients. **Destination Address** sets the IP returned for blocked domains (default 0.0.0.0). **Return NXDOMAIN**
+returns a non-existent domain response instead of redirecting, which hides blocklist behavior from clients.
+
 You can use :menuselection:`Reporting --> Unbound DNS` to gain insights into the requested domains.
+
+--------------------------------------
+DNS/Domain blocking using DNSCrypt-Proxy
+--------------------------------------
+
+When the DNSCrypt-Proxy plugin is installed, domain feeds can be used for DNS blocking. Enable **"Register domain feeds"**
+in :menuselection:`Security --> Q-Feeds Connect`, then select the Q-Feeds blocklist within the DNSCrypt-Proxy plugin
+settings to activate it.
+
 
