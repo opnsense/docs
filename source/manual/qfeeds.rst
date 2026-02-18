@@ -76,7 +76,7 @@ Below you will find their purpose.
         ========================================= ====================================================================================
         **//General Settings**
         **API key**                               The API key needed to access Q-Feeds.
-        **Register domain feeds**                 Use domain feeds in Unbound DNS blocklist,
+        **Register domain feeds**                 Use domain feeds in Unbound DNS and DNScrypt-proxy blocklists,
                                                   requires blocklists to be enabled in order to have effect
         **//Unbound blocklist settings**
         **Allowlist Domains**                     Domains to allow (regex supported), only applies to blocklist matches
