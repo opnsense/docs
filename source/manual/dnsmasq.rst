@@ -311,18 +311,18 @@ DHCP Settings
         ================  ==========  ==========  ==========  ====================  ================  ==========
         **Modes**         **M-Bit**   **O-Bit**   **A-Bit**   **Default Route**     **DHCPv6**        **SLAAC**
         ================  ==========  ==========  ==========  ====================  ================  ==========
-        **default**       1           0           0           advertised            stateful          no
+        **default**       1           1           0           advertised            stateful          no
         **ra-only**       0           0           0           advertised            no                no
-        **slaac**         1           0           1           advertised            stateful          yes
+        **slaac**         1           0           1           advertised            both              yes
         **ra-stateless**  0           1           1           advertised            stateless         yes
         ================  ==========  ==========  ==========  ====================  ================  ==========
 
         This is what the RA Flags (Bits) mean:
 
         - ``M`` - Managed address configuration:
-            The client should use stateful DHCPv6 to obtain an IPv6 address.
+            The client should use stateful DHCPv6 to obtain an IPv6 address (and implicitly ``O`` information).
         - ``O`` - Other configuration:
-            The client should use stateless DHCPv6 to obtain additional information (e.g., DNS server).
+            The client should use DHCPv6 to obtain other information (e.g., DNS server, Domain).
         - ``A`` - Autonomous address-configuration:
             The client can use SLAAC to self-assign an IPv6 address based on the advertised prefix.
 
