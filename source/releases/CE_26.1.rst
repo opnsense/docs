@@ -82,6 +82,21 @@ Here are the full patch notes:
 * ports: py-duckdb 1.4.4 `[7] <https://github.com/duckdb/duckdb/releases/tag/v1.4.4>`__ 
 * ports: python additional security fixes `[8] <https://www.cve.org/cverecord?id=CVE-2026-1299>`__  `[9] <https://www.cve.org/cverecord?id=CVE-2026-0865>`__ 
 
+A hotfix release was issued as 26.1.2_5:
+
+* firewall: add missing implementation for "disablereplyto" in new rules
+* firewall: fix encoding issue in dashboard widget
+* captive portal: fix hard-timeout calculation
+* kea: add required scope to prefix watcher link local address route
+* backend: allow non-intrusive config_read_array() and fix a gateway group delete issue with it
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-26.1.2-dvd-amd64.iso.bz2) = 8b81427b049ca291bed982a85c6eb821e9887f70b79c1d8183c24721e037f938
+    # SHA256 (OPNsense-26.1.2-nano-amd64.img.bz2) = 24ae4c3f178bcc53475ab0b2ec50a7b06e9541f5080c156e5aa967c12a8d343e
+    # SHA256 (OPNsense-26.1.2-serial-amd64.img.bz2) = 519b19cbb433a736d51c1f18d614c4e84ad5a71773d2eb3ea9aa7beb5ee01015
+    # SHA256 (OPNsense-26.1.2-vga-amd64.img.bz2) = 8259592094d48d06190f0e3d23471a0cc2304e7d076c6ba4437a5c3b2b1ad020
 
 
 --------------------------------------------------------------------------
