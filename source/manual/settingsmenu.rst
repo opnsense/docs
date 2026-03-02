@@ -316,6 +316,9 @@ going to :menuselection:`System --> Settings --> General`. The following setting
 +---------------------------------+------------------------------------------------------------------------------------+
 | Theme                           | More themes can be installed via plug-ins.                                         |
 +---------------------------------+------------------------------------------------------------------------------------+
+| Picture                         | Upload a picture for display in the Picture widget on the dashboard. The maximum   |
+|                                 | file size is 10MB. Pictures are scaled automatically to the widget size.           |
++---------------------------------+------------------------------------------------------------------------------------+
 | **Networking**                                                                                                       |
 +---------------------------------+------------------------------------------------------------------------------------+
 | Prefer to use IPv4 even         | By default if a hostname resolves IPv6 and IPv4 addresses, the IPv6 will be used.  |
