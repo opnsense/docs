@@ -35,6 +35,116 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.1.3 (March 04, 2026)
+--------------------------------------------------------------------------
+
+
+This update finally brings in Python 3.13 after the struggle we had with
+3.11 and missing security patches.  A number of things were fixed for the
+new rules GUI as well as assorted minor things in all areas of the code
+base.  Two FreeBSD security advisories are also included and a reboot is
+needed to finish this update.
+
+Of note are the recent modifications of the firmware scripting as they
+follow a fix in 26.1.2 that seems to have resolved the partial upgrade
+failures people have been reporting over the last 2 years.  It turned out
+that the issue was a cleanup routine in the core package that removed
+temporary files in the background while the package manager was still
+attempting to install more packages.
+
+Here are the full patch notes:
+
+* system: add note field to store comments for each snapshot
+* system: add configurable "memberOf" attribute to LDAP connector
+* system: do not scrub unrelated IPv6 DHCP ranges from Dnsmasq LAN config during wizard
+* system: adapt DHCP address shell setup for new config access functions
+* system: adapt web GUI certificate renew for new config access function
+* system: adapt initial port configuration DHCP setting for new config access functions
+* system: avoid using "(system)" user revision annotation to match legacy and MVC code
+* system: fix log files 'go to page' edge case and row count persistence/max
+* system: ignore future backups when they exist to ensure new backups are saved
+* system: ensure proper types are emitted in searchGatewayAction() when configd action fails
+* system: use safe iteration for cert/ca in system_trust_configure()
+* system: fixed broken link in modal header when using HA and saving administration settings
+* system: create a backup on factory reset
+* system: unify pwd_changed_at usage
+* reporting: restore canvas state in health graph to fix Firefox display bug
+* interfaces: generalise the dhcp6c_script using the new IFNAME variable
+* interfaces: fix enter key in assignment description and general cleanup
+* interfaces: protect device reads against forcing empty arrays into $config
+* firewall: check for schedules in use in new rules
+* firewall: add import/export function and missing lock on set action
+* firewall: better focus selected alias updates to in crease performance when either --aliases or --types is used
+* firewall: implement missing ICMP types in new rules GUI (contributed by Bjoern Jakobsen)
+* firewall: adjust for parseReplace() for icmp-type "skip"
+* firewall: fix NAT rule enabled checks display (contributed by Aaron Rogers)
+* firewall: prevent separator char from being used in category names
+* firewall: fix running into error using well known protocols with "-" in them
+* firewall: add validation to prevent using both gateway and reply-to in the same rule in new GUI
+* firewall: add a command button to open the live log with pre-filled rule ID in new GUI
+* firewall: move download and upload commands out of partial into global commands in new GUI
+* firewall: reduce complexity in URL hash handling and when using firewall_rule_lookup.php in new GUI
+* firewall: fix default ipprotocol mismatch so that when not specified both are indicated
+* firewall: update destination NAT ACL to match our menu entry
+* firewall: fix issues with searching in the states page
+* firewall: allow well known ports in local-port destination NAT
+* firewall: adjust row selection behaviour for internal rules in MVC pages
+* firewall: offer aliases the same was as the field type expects them
+* dnsmasq: add IP address validations for some of the DHCPv4 and DHCPv6 options (contributed by Greelan)
+* firmware: fix automatic advanced toggle in settings
+* firmware: shorten the reboot message to fit the spinner on the same line
+* firmware: tweaks for update/upgrade cleanup behaviours between core and opnsense-update
+* firmware: add support for aux repository handling in opnsense-update
+* installer: ufs: ignore errors when flushing the full disk
+* intrusion detection: upgrade ET Open ruleset to version 8.0 (contributed by 0nnyx)
+* openvpn: add options for legacy ciphers (contributed by Bjoern Jakobsen)
+* radvd: use safe config array iteration over virtual IPs
+* unbound: persist overrides PTR configuration and allow the user to deselect it
+* backend: removed mwexec() and mwexec_bg() functions following their deprecation
+* backend: add config_push_array() and config_merge_array() helpers
+* backend: remove constant configd cleanups as they may influence requests from other threads executing different commands
+* mvc: restructure menu items and system using findNodeByPath()/getItem() additions
+* mvc: BaseListField: generic implementation of static options
+* mvc: PortField: make "well-known" port numbers known by allowing them to be mapped to their respective numbers
+* mvc: collect UUID field so it can be searched, but only if the searchPhrase contains a valid UUID
+* tests: merge stable filter tests to double check upcoming changes
+* ui: batch bootgrid enable/disable-selected toggle by default
+* ui: swap order of custom bootgrid commands placement making sure they participate in command binding
+* plugins: os-acme-client 4.14 `[1] <https://github.com/opnsense/plugins/blob/stable/26.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-caddy 2.1.0 `[2] <https://github.com/opnsense/plugins/blob/stable/26.1/www/caddy/pkg-descr>`__ 
+* plugins: os-haproxy 5.1 `[3] <https://github.com/opnsense/plugins/blob/stable/26.1/net/haproxy/pkg-descr>`__ 
+* plugins: os-netbird 1.2
+* plugins: os-nextcloud-backup 1.2 `[4] <https://github.com/opnsense/plugins/blob/stable/26.1/sysutils/nextcloud-backup/pkg-descr>`__ 
+* plugins: os-q-feeds-connector 1.5 `[5] <https://github.com/opnsense/plugins/blob/stable/26.1/security/q-feeds-connector/pkg-descr>`__ 
+* plugins: os-tailscale 1.4 `[6] <https://github.com/opnsense/plugins/blob/stable/26.1/security/tailscale/pkg-descr>`__ 
+* plugins: os-theme-cicada 1.41 (contributed by Team Rebellion)
+* plugins: os-theme-flexcolor 1.1 (contributed by Schnuffel2008)
+* plugins: os-theme-tukan 1.31 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.51 (contributed by Team Rebellion)
+* plugins: os-upnp 1.9 `[7] <https://github.com/opnsense/plugins/blob/stable/26.1/net/upnp/pkg-descr>`__ 
+* src: igmp: do not upgrade IGMP version beyond net.inet.igmp.default_version
+* src: igmp: apply net.inet.igmp.default_version to existing interfaces
+* src: ice: handle allmulti flag in ice_if_promisc_set function
+* src: icmp6: clear csum_flags on mbuf reuse
+* src: file: qualify pointers to capsicum rights as const
+* src: file: add a fd flag with O_RESOLVE_BENEATH semantics
+* src: file: Fix the !CAPABILITIES build
+* src: unix: Set O_RESOLVE_BENEATH on fds transferred between jails `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:04.jail.asc>`__ 
+* src: rtsock: Fix stack overflow `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:05.route.asc>`__ 
+* src: divert: Use a better source identifier for netisr_queue_src() calls
+* src: if_ovpn: add interface counters
+* src: e1000: fix setting the promiscuous mode
+* src: pfctl: allow new page character (^L) in pf.conf
+* src: sctp: support bridge interfaces
+* src: ifconfig: assorted stable fixes
+* src: ip_mroute: assorted stable fixes
+* src: vtnet: assorted stable fixes
+* ports: libucl 0.9.4
+* ports: nss 3.121 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_121.html>`__ 
+* ports: python 3.13.12 `[11] <https://docs.python.org/release/3.13.12/whatsnew/changelog.html>`__ 
+
+
+--------------------------------------------------------------------------
 26.1.2 (February 12, 2026)
 --------------------------------------------------------------------------
 
