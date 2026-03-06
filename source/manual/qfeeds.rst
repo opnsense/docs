@@ -175,9 +175,9 @@ returns a non-existent domain response instead of redirecting, which hides block
 
 You can use :menuselection:`Reporting --> Unbound DNS` to gain insights into the requested domains.
 
---------------------------------------
+---------------------------------------------
 DNS/Domain blocking using DNSCrypt-Proxy
---------------------------------------
+---------------------------------------------
 
 When the DNSCrypt-Proxy plugin is installed, domain feeds can be used for DNS blocking. Enable **"Register domain feeds"**
 in :menuselection:`Security --> Q-Feeds Connect`, then select the Q-Feeds blocklist within the DNSCrypt-Proxy plugin
