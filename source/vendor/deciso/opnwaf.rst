@@ -269,7 +269,7 @@ Local path                       Local path of the HTTP request to match (e.g. :
 Type                             ProxyPass
 Remote destinations              Locations to forward requests to, when more than one is provided, requests will be
                                  loadbalanced in a round robin fashion. Supports :code:`http`, :code:`https`, :code:`ws`
-                                 and :code:`wss` destinations.
+                                 :code:`wss`, :code:`h2` and :code:`h2c` destinations.
                                  When your webapp uses websockets and https requests, use :code:`wss://`
 Access control                   List of networks allowed to access this path (empty means any)
 Overlay error pages              Overlay common error pages with the ones specified in the virtual server.
