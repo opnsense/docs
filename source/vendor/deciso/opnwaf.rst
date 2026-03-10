@@ -88,7 +88,7 @@ Do not forget to create an additional firewall rule to allow access to the HTTP 
 Web protection is not enabled by default, but you can enable it in the `Web protection` tab. This is also the place
 to configure the module and settings which apply for all virtual hosts.
 
-To optionally configure a default catch-all virtual server, select a certificate for `Strict SNI Check` in `Firewall --> Web Application --> Settings`.
+To optionally configure a default catch-all virtual server, select a certificate for `Strict SNI Check` in :menuselection:`Firewall --> Web Application --> Settings`.
 The certificate can be self-signed and match the CN of the the default server name. Any invalid SNI will now be served an error document.
 If a wildcard A-Record is defined for a base domain (e.g., ``*.example.com in A 203.0.113.1``), each subdomain would be answered
 by the first configured virtual server otherwise, even if the SNI does not match it.
