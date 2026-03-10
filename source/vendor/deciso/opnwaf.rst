@@ -90,8 +90,8 @@ to configure the module and settings which apply for all virtual hosts.
 
 To optionally configure a default catch-all virtual server, select a certificate for `Strict SNI Check` in `Firewall --> Web Application --> Settings`.
 The certificate can be self-signed and match the CN of the the default server name. Any invalid SNI will now be served an error document.
-When not configured, your first configured virtual server will answer all requests for host headers that cannot be matched by other
-configured virtual servers.
+If a wildcard A-Record is defined for a base domain (e.g., ``*.example.com in A 203.0.113.1``), each subdomain would be answered
+by the first configured virtual server otherwise, even if the SNI does not match it.
 
 
 General Settings
