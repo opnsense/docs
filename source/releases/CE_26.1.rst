@@ -35,6 +35,63 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.1.4 (March 11, 2026)
+--------------------------------------------------------------------------
+
+
+This is basically a maintenance release in assorted areas, but also includes
+a CVE for the GUI for missing POST checks in the API.  We thank everyone
+for reporting issues and testing the fixes with us to allow for easy and fast
+releases such as this one.
+
+The roadmap is almost ready to be published.  Expect it later this week.
+
+Here are the full patch notes:
+
+* system: store dashboard layout types based on column breakpoints
+* system: do not show snapshot notes in the grid
+* system: use safe config iteration in admin settings page
+* reporting: use safe config iteration in RRD code
+* interfaces: remove unused ip_in_interface_alias_subnet()
+* interfaces: use safe config iteration in PPP edit page
+* firewall: fix access to deleted filter node in advanced settings
+* firewall: merge MVC NAT page templates into a single one
+* firewall: when repopulating the interface selectpicker, always restore current selection in new rules GUI
+* firewall: remove hardcoded colors where possible in new rules GUI
+* firewall: fix category colors in new rules GUI
+* firewall: merge read of groups and interfaces in new rules GUI
+* firewall: make MVC protocol selection match the old rules pages
+* firewall: add model validations for common errors in destination NAT
+* firewall: live view: allow regex use in "contains" cases
+* firewall: live view: fix SyntaxWarning in log reader backend
+* firewall: use safe iteration in old rule page for schedule lookup
+* firewall: use safe config iteration in outbound NAT page
+* firmware: add aux repository support
+* ipsec: use safe config iteration for VIP lookup
+* kea: guard prefix watcher when no link-local address exists for a route that should be installed
+* monit: use safe config iteration in gateway alert script
+* openvpn: debounce learn-address calls to limit the number of alias updates to a minimum
+* openvpn: add validation for selecting username as CN without setting any authentication
+* unbound: split logic in update_blocklist() and simplify getPoliciesAction()
+* unbound: move policy fetch to the controller and clean up accordingly
+* backend: remove unused examples throwing errors now
+* backend: fix configd using a new temporary file for cached items
+* mvc: ConfigMaintenance: when constructing class names use a safer way to strip .php extension
+* mvc: fix CSRF vulnerability in multiple API endpoints by enforcing POST-only requests `[1] <https://www.cve.org/cverecord?id=CVE-2026-30868>`__  (contributed by Oliver Jueguen)
+* mvc: move CertificateField, InterfaceField and ProtocolField to newer static option API
+* shell: improve config restore UX using diff and additional meta data display
+* ui: remove two unused static PHP array definitions
+* ui: Bootgrid: split row selection behavior into rowSelection boolean
+* ui: Bootgrid: force a lightweight redraw when columns are programmatically changed
+* ui: Bootgrid: fix curRowCount type conversion issue when stored in localStorage
+* lang: various language updates
+* ports: libxml 2.15.2 `[2] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: strongswan 6.0.4 `[3] <https://github.com/strongswan/strongswan/releases/tag/6.0.4>`__ 
+* ports: syslog-ng 4.11.0 `[4] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.11.0>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.1.3 (March 04, 2026)
 --------------------------------------------------------------------------
 
