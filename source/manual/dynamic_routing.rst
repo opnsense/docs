@@ -448,6 +448,8 @@ BGP (Border Gateway Protocol)
        **Remote AS mode**                  "Use Remote AS Number" will use the number specified in the "Remote AS" field, while "External" or "Internal" will
                                            ignore it in favor of the alternative "remote-as internal" and "remote-as external" settings.
        **Remote AS**                       AS (Autonomous System) number of the neighbor, required for establishing a BGP session.
+       **Local AS**                        Optional local AS number (1-4294967295) presented only to this neighbor (per-neighbor `local-as`).
+                                           Useful for migration/interoperability scenarios requiring a different local AS than the global BGP AS.
        **BGP MD5 Password**                Password used for MD5 authentication of BGP connections to enhance security.
        **Weight**                          Default weight for routes from this neighbor; higher weight increases path preference within the same AS.
        **Local Initiater IP**              Specify the local IP address used to establish connections with the neighbor. Only relevant for MD5 authentication.
