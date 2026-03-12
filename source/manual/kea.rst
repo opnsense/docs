@@ -34,6 +34,23 @@ Bind port                             Choose an unused port for communication he
   in which case it starts a separate listener for the HA communication.
 
 -------------------------
+DDNS Agent
+-------------------------
+
+The Kea DHCP DDNS (D2) server is a middleware between the DHCP servers, and authoritative DNS servers.
+Enabling it is a requirement if dynamic DNS updates (RFC2136) should be sent when clients are assigned an IP address in configured subnets.
+
+========================================================================================================================================================
+
+====================================  ==================================================================================================================
+Enabled                               Enable DDNS server. To send updates to an authoritative nameserver, configure Dynamic DNS
+                                      inside the DHCPv4 and DHCPv6 subnets.
+Bind address                          Address on which the DHCP DDNS server interface should be available; usually this is localhost (127.0.0.1).
+Bind port                             Portnumber to use for the DHCP DDNS server interface; default is 53001.
+====================================  ==================================================================================================================
+
+
+-------------------------
 Kea DHCPv4/v6
 -------------------------
 
@@ -46,22 +63,22 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **//Service**
-        **Enabled**                               Enable DHCPv4/v6 server.
-        **Manual config**                         Disable configuration file generation and manage the file
+        **Service**
+        Enabled                                   Enable DHCPv4/v6 server.
+        Manual config                             Disable configuration file generation and manage the file
                                                   (/usr/local/etc/kea/kea-dhcp4.conf) or
                                                   (/usr/local/etc/kea/kea-dhcp6.conf) manually.
-        **//General settings**
-        **Interfaces**                            Select interfaces to listen on.
-        **Valid lifetime**                        Defines how long the addresses (leases) given out by the server are valid (in seconds)
-        **Firewall rules**                        Automatically add a basic set of firewall rules to allow dhcp traffic, more fine grained
+        **General settings**
+        Interfaces                                Select interfaces to listen on.
+        Valid lifetime                            Defines how long the addresses (leases) given out by the server are valid (in seconds)
+        Firewall rules                            Automatically add a basic set of firewall rules to allow dhcp traffic, more fine grained
                                                   controls can be offered manually when disabling this option.
-        **Socket type** (DHCPv4 only)             Socket type used for DHCP communication.
-        **//High Availability**
-        **Enabled**                               Enable High availability hook, requires the Control Agent to be enabled as well.
-        **This server name**                      The name of this server, should match with one of the entries in the HA peers.
+        Socket type** (DHCPv4 only)               Socket type used for DHCP communication.
+        **High Availability**
+        Enabled                                   Enable High availability hook, requires the Control Agent to be enabled as well.
+        This server name                          The name of this server, should match with one of the entries in the HA peers.
                                                   Leave empty to use this machines hostname
-        **Max Unacked clients**                   This specifies the number of clients which send messages to the partner but appear to
+        Max Unacked clients                       This specifies the number of clients which send messages to the partner but appear to
                                                   not receive any response. A higher value needs a busier environment in order to consider
                                                   a member down, when set to 0, any network disruption will cause a failover to happen.
         ========================================= ====================================================================================
@@ -73,25 +90,31 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Subnet**                                Subnet to use, should be large enough to hold the specified pools and reservations
-        **Description**                           You may enter a description here for your reference (not parsed).
-        **Pools**                         	      List of pools, one per line in range or subnet format (e.g. 192.168.0.100 - 192.168.0.200 , 192.0.2.64/26)
-        **Match client-id**                       By default, KEA uses client-identifiers instead of MAC addresses to locate clients,
+        Subnet                                    Subnet to use, should be large enough to hold the specified pools and reservations
+        Description                               You may enter a description here for your reference (not parsed).
+        Pools                           	      List of pools, one per line in range or subnet format (e.g. 192.168.0.100 - 192.168.0.200 , 192.0.2.64/26)
+        Match client-id                           By default, KEA uses client-identifiers instead of MAC addresses to locate clients,
                                                   disabling this option changes back to matching on MAC address which is used by most dhcp implementations.
-        **//DHCP option data**
-        **Auto collect option data**              Automatically update option data for relevant attributes as routers,
+        **DHCP option data**
+        Auto collect option data                  Automatically update option data for relevant attributes as routers,
                                                   dns servers and ntp servers when applying settings from the gui.
-        **Routers (gateway)**                     Default gateways to offer to the clients
-        **Static routes**                         Static routes that the client should install in its routing cache, defined as dest-ip1,router-ip1,dest-ip2,router-ip2
-        **DNS servers**                           DNS servers to offer to the clients
-        **Domain name**                           The domain name to offer to the client, set to this firewall's domain name when left empty
-        **Domain search**                         The domain search list to offer to the client
-        **NTP servers**                           Specifies a list of IP addresses indicating NTP (RFC 5905) servers available to the client.
-        **Time servers**                          Specifies a list of RFC 868 time servers available to the client.
-        **Next server**                           Next server IP address
-        **TFTP server**                           TFTP server address or FQDN
-        **TFTP bootfile name**                    Boot filename to request
-        **IPv6-only Preferred (Option 108)**      The number of seconds for which the client should disable DHCPv4. The minimum value is 300 seconds.
+        Routers (gateway)                         Default gateways to offer to the clients
+        Static routes                             Static routes that the client should install in its routing cache, defined as dest-ip1,router-ip1,dest-ip2,router-ip2
+        DNS servers                               DNS servers to offer to the clients
+        Domain name                               The domain name to offer to the client, set to this firewall's domain name when left empty
+        Domain search                             The domain search list to offer to the client
+        NTP servers                               Specifies a list of IP addresses indicating NTP (RFC 5905) servers available to the client.
+        Time servers                              Specifies a list of RFC 868 time servers available to the client.
+        Next server                               Next server IP address
+        TFTP server                               TFTP server address or FQDN
+        TFTP bootfile name                        Boot filename to request
+        IPv6-only Preferred (Option 108)          The number of seconds for which the client should disable DHCPv4. The minimum value is 300 seconds.
+        **Dynamic DNS**
+        DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. home.arpa)
+        DNS server                                Authoritative DNS server receiving dynamic updates.
+        TSIG key name                             TSIG key name used for secure DNS updates.
+        TSIG key secret                           Base64 encoded TSIG key secret.
+        TSIG key algorithm                        Algorithm used for TSIG authentication with the DNS server (e.g. hmac-sha256)
         ========================================= ====================================================================================
 
         **DHCPv6**
@@ -99,15 +122,21 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Subnet**                                Subnet to use, should be large enough to hold the specified pools and reservations
-        **Interface**                             Select which interface this subnet belongs to
-        **Allocator**                             Select allocator method to use when offering leases to clients.
-        **PD Allocator**                          Select allocator method to use when offering prefix delegations to clients
-        **Description**                           You may enter a description here for your reference (not parsed).
-        **Pools**                         	      List of pools, one per line in range or subnet format (e.g. 2001:db8:1::-2001:db8:1::100, 2001:db8:1::/80
-        **//DHCP option data**
-        **DNS servers**                           DNS servers to offer to the clients
-        **Domain search**                         The domain search list to offer to the client
+        Subnet                                    Subnet to use, should be large enough to hold the specified pools and reservations
+        Interface                                 Select which interface this subnet belongs to
+        Allocator                                 Select allocator method to use when offering leases to clients.
+        PD Allocator                              Select allocator method to use when offering prefix delegations to clients
+        Description                               You may enter a description here for your reference (not parsed).
+        Pools                        	          List of pools, one per line in range or subnet format (e.g. 2001:db8:1::-2001:db8:1::100, 2001:db8:1::/80)
+        **DHCP option data**
+        DNS servers                               DNS servers to offer to the clients
+        Domain search                             The domain search list to offer to the client
+        **Dynamic DNS**
+        DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. home.arpa)
+        DNS server                                Authoritative DNS server receiving dynamic updates.
+        TSIG key name                             TSIG key name used for secure DNS updates.
+        TSIG key secret                           Base64 encoded TSIG key secret.
+        TSIG key algorithm                        Algorithm used for TSIG authentication with the DNS server (e.g. hmac-sha256)
         ========================================= ====================================================================================
 
     .. tab:: PD Pools (DHCPv6)
@@ -115,16 +144,12 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Subnet**                                Subnet this reservation belongs to
-        **Prefix**
-        **Prefix length**
-        **Delegated length**
-        **Description**                           You may enter a description here for your reference (not parsed).
+        Subnet                                    Subnet to use, should be large enough to hold the specified prefix.
+        Prefix                                    The prefix that will be used as prefix delegation pool.
+        Prefix length                             The length of the prefix for the prefix delegation pool.
+        Delegated length                          The length of each delegated prefix offered via the prefix delegation pool.
+        Description                               You may enter a description here for your reference (not parsed).
         ========================================= ====================================================================================
-
-        .. Attention::
-
-            Currently the delegated prefix will not create an automatic static route in the system routing table.
 
     .. tab:: Reservations (DHCPv4/v6)
 
@@ -133,24 +158,24 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Subnet**                                Subnet this reservation belongs to
-        **IP address**                            IP address to offer to the client
-        **MAC address**                           MAC/Ether address of the client in question
-        **Hostname**                              Offer a hostname to the client
-        **Description**                           You may enter a description here for your reference (not parsed).
-        **//DHCP option data**
-        **Auto collect option data**              Automatically update option data for relevant attributes as routers,
+        Subnet                                    Subnet this reservation belongs to
+        IP address                                IP address to offer to the client
+        MAC address                               MAC/Ether address of the client in question
+        Hostname                                  Offer a hostname to the client
+        Description                               You may enter a description here for your reference (not parsed).
+        **DHCP option data**
+        Auto collect option data                  Automatically update option data for relevant attributes as routers,
                                                   dns servers and ntp servers when applying settings from the gui.
-        **Routers (gateway)**                     Default gateways to offer to the clients
-        **Static routes**                         Static routes that the client should install in its routing cache, defined as dest-ip1,router-ip1,dest-ip2,router-ip2
-        **DNS servers**                           DNS servers to offer to the clients
-        **Domain name**                           The domain name to offer to the client, set to this firewall's domain name when left empty
-        **Domain search**                         The domain search list to offer to the client
-        **NTP servers**                           Specifies a list of IP addresses indicating NTP (RFC 5905) servers available to the client.
-        **Time servers**                          Specifies a list of RFC 868 time servers available to the client.
-        **Next server**                           Next server IP address
-        **TFTP server**                           TFTP server address or FQDN
-        **TFTP bootfile name**                    Boot filename to request
+        Routers (gateway)                         Default gateways to offer to the clients
+        Static routes                             Static routes that the client should install in its routing cache, defined as dest-ip1,router-ip1,dest-ip2,router-ip2
+        DNS servers                               DNS servers to offer to the clients
+        Domain name                               The domain name to offer to the client, set to this firewall's domain name when left empty
+        Domain search                             The domain search list to offer to the client
+        NTP servers                               Specifies a list of IP addresses indicating NTP (RFC 5905) servers available to the client.
+        Time servers                              Specifies a list of RFC 868 time servers available to the client.
+        Next server                               Next server IP address
+        TFTP server                               TFTP server address or FQDN
+        TFTP bootfile name                        Boot filename to request
         ========================================= ====================================================================================
 
         **DHCPv6**
@@ -158,12 +183,12 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Subnet**                                Subnet this reservation belongs to
-        **IP address**                            IP address to offer to the client
-        **DUID**                           	      DUID of the client in question
-        **Hostname**                              Offer a hostname to the client
-        **Domain search**                         The domain search list to offer to the client
-        **Description**                           You may enter a description here for your reference (not parsed).
+        Subnet                                    Subnet this reservation belongs to
+        IP address                                IP address to offer to the client
+        DUID                          	          DUID of the client in question
+        Hostname                                  Offer a hostname to the client
+        Domain search                             The domain search list to offer to the client
+        Description                               You may enter a description here for your reference (not parsed).
         ========================================= ====================================================================================
 
     .. tab:: HA Peers (DHCPv4/DHCPv6)
@@ -171,9 +196,9 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Name**                                  Peer name, there should be one entry matching this machines "This server name"
-        **Role**                                  This peers role
-        **Url**                           	      This specifies the URL of our server instance, which should use a different port than the control agent. For example http://my-host:8001/
+        Name                                      Peer name, there should be one entry matching this machines "This server name"
+        Role                                      This peers role
+        Url                           	          This specifies the URL of our server instance, which should use a different port than the control agent. For example http://my-host:8001/
         ========================================= ====================================================================================
 
         .. Note:: Define HA peers for this cluster. All nodes should contain the exact same definitions (usually two hosts, a :code:`primary` and a :code:`standby` host)
@@ -208,9 +233,9 @@ LAN Network:
 ==================================  =======================================================================================================
 Option                              Value
 ==================================  =======================================================================================================
-**Enabled**                         ``X``
-**Bind address**                    ``127.0.0.1``
-**Bind port**                       ``8000``
+Enabled                             ``X``
+Bind address                        ``127.0.0.1``
+Bind port                           ``8000``
 ==================================  =======================================================================================================
 
 - Press **Apply** then go to :menuselection:`Services --> KEA DHCP --> KEA DHCPv4` and follow through these tabs:
@@ -222,16 +247,16 @@ Option                              Value
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
-        **//Service**
-        **Enabled**                         ``X``
+        **Service**
+        Enabled                             ``X``
 
-        **//General settings**
-        **Interfaces**                      ``LAN``
-        **Firewall rules**                  ``X``
+        **General settings**
+        Interfaces                          ``LAN``
+        Firewall rules**                    ``X``
 
-        **//High Availability**
-        **Enabled**                         ``X``
-        **This server name**                (It is highly recommended to use the offered default value)
+        **High Availability**
+        Enabled                             ``X``
+        This server name                    (It is highly recommended to use the offered default value)
         ==================================  =======================================================================================================
 
         - Press **Apply** and go to **Subnets**
@@ -241,13 +266,13 @@ Option                              Value
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
-        **Subnet**                          ``192.168.1.0/24``
-        **Pools**                           ``192.168.1.100 - 192.168.1.199``
+        Subnet                              ``192.168.1.0/24``
+        Pools                               ``192.168.1.100 - 192.168.1.199``
 
-        **//DHCP option data**
-        **Auto collect option data**        (This must be unchecked for HA)
-        **Routers (gateway)**               ``192.168.1.1`` (use the LAN CARP IP address)
-        **DNS servers**                     ``192.168.1.1`` (use the LAN CARP IP address)
+        **DHCP option data**
+        Auto collect option data            (This must be unchecked for HA)
+        Routers (gateway)                   ``192.168.1.1`` (use the LAN CARP IP address)
+        DNS servers                         ``192.168.1.1`` (use the LAN CARP IP address)
         ==================================  =======================================================================================================
 
         - Press **Save** and go to **HA Peers**
@@ -259,9 +284,9 @@ Option                              Value
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
-        **Name**                            (Use the name that is displayed in the settings Tab for "This server name" on the master)
-        **Role**                            ``primary``
-        **URL**                             ``http://192.168.1.2:8001/`` (Use the LAN interface IP of the master,
+        Name                                (Use the name that is displayed in the settings Tab for "This server name" on the master)
+        Role                                ``primary``
+        URL                                 ``http://192.168.1.2:8001/`` (Use the LAN interface IP of the master,
                                             the port must be different than the control agent)
         ==================================  =======================================================================================================
 
@@ -270,9 +295,9 @@ Option                              Value
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
-        **Name**                            (Use the name that is displayed in the settings Tab for "This server name" on the backup)
-        **Role**                            ``standby``
-        **URL**                             ``http://192.168.1.3:8001/`` (Use the LAN interface IP of the backup,
+        Name                                (Use the name that is displayed in the settings Tab for "This server name" on the backup)
+        Role                                ``standby``
+        URL                                 ``http://192.168.1.3:8001/`` (Use the LAN interface IP of the backup,
                                             the port must be different than the control agent)
         ==================================  =======================================================================================================
 
@@ -286,6 +311,75 @@ Then go to :menuselection:`System: --> High Availability --> Status` and press *
 
 Immediately afterwards, KEA will be active on both master and backup, and a bidirectional lease synchronization will be configured.
 
+
+Dynamic DNS (RFC2136)
+-------------------------
+
+KEA allows registering client FQDNs via dynamic DNS (RFC2136) to an authoritative DNS server.
+
+Such an authoritative DNS server will be ISC BIND or an alternative like PowerDNS. Recursive DNS servers like Dnsmasq or Unbound are not able to fulfill this role.
+
+When clients register their IP address, the DHCP server usually provides a `Domain Option` (DHCP option 15). This allows the client to construct an FQDN out of their configured
+hostname, and this domain. The DHCP server will receive this as `Client FQDN Option` (DHCP option 81), registering the hostname in the best matching configured forward zone.
+
+.. Attention::
+
+    The client is responsible to send the Dynamic DNS update request via DHCP option 81. Only with this payload, the hostname will be registered in a forward zone.
+
+
+As an example setup, we have configured a zone like this in ISC BIND.
+The example taken from the `KEA DDNS <https://kea.readthedocs.io/en/latest/arm/ddns.html>`_ documentation:
+
+.. code::
+
+    :
+    key "key.four.example.com." {
+        algorithm hmac-sha224;
+        secret "bZEG7Ow8OgAUPfLWV3aAUQ==";
+    };
+    :
+
+
+To configure the forward zone for a DHCPv4 range, go to :menuselection:`Services --> KEA DHCP --> KEA DHCPv4` and select a subnet:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+Subnet                              ``192.168.1.0/24``
+Pools                               ``192.168.1.100 - 192.168.1.199``
+
+**DHCP option data**
+Auto collect option data            (This must be unchecked)
+Routers (gateway)                   ``192.168.1.1``
+DNS servers                         ``192.168.1.1``
+Domain name                         ``four.example.com``
+
+**Dynamic DNS**
+DNS forward zone                    ``four.example.com.``
+DNS server                          ``203.0.113.1``
+TSIG key name                       ``key.four.example.com.``
+TSIG key secret                     ``bZEG7Ow8OgAUPfLWV3aAUQ==``
+TSIG key algorithm                  ``hmac-sha224``
+==================================  =======================================================================================================
+
+Next, enable the KEA DDNS Agent. Go to :menuselection:`Services --> KEA DHCP --> DDNS Agent`:
+
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+Enabled                             ``X``
+Bind address                        ``127.0.0.1``
+Bind port                           ``53001``
+==================================  =======================================================================================================
+
+After applying the configuration, the DHCP servers construct DDNS update requests, known as NameChangeRequests (NCRs), based on DHCP lease change events and then post them to the DDNS Agent.
+The DDNS Agent attempts to match each request to the appropriate DNS server and carries out the necessary conversation with those servers to update the DNS data.
+
+.. Note::
+
+    The `TSIG key name` must be unique per `DNS forward zone`. If you configure multiple subnets with an identical `DNS forward zone`,
+    but different `TSIG key names` and `TSIG key secrets`, only the first one will be taken into account.
+    Best practice would be creating one unique `DNS forward zone` per subnet, each with a unique `TSIG key name`.
 
 Prefix Delegation (IA_PD)
 ------------------------------------------
@@ -310,12 +404,12 @@ Prefix: ``fd80::/48``
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
-        **//Service**
-        **Enabled**                         ``X``
+        **Service**
+        Enabled                             ``X``
 
-        **//General settings**
-        **Interfaces**                      ``LAN``
-        **Firewall rules**                  ``X``
+        **General settings**
+        Interfaces                          ``LAN``
+        Firewall rules                      ``X``
         ==================================  =======================================================================================================
 
     .. tab:: Subnets
@@ -325,8 +419,8 @@ Prefix: ``fd80::/48``
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
-        **Subnet**                          ``fd80::/48``
-        **Pools**                           ``fd80::100 - fd80::199`` (/52 will be auto calculated via the pool)
+        Subnet                              ``fd80::/48``
+        Pools                               ``fd80::100 - fd80::199`` (/52 will be auto calculated via the pool)
         ==================================  =======================================================================================================
 
     .. tab:: PD Pools
@@ -336,10 +430,10 @@ Prefix: ``fd80::/48``
         ==================================  =======================================================================================================
         Option                              Value
         ==================================  =======================================================================================================
-        **Subnet**                          ``fd80::/48``
-        **Prefix**                          ``fd80:0:0:1000::``
-        **Prefix length**                   ``52``
-        **Delegated length**                ``56``
+        Subnet                              ``fd80::/48``
+        Prefix                              ``fd80:0:0:1000::``
+        Prefix length                       ``52``
+        Delegated length                    ``56``
         ==================================  =======================================================================================================
 
 After applying the configuration, clients will receive a IA_NA address (e.g. ``fd80::100/128``, ``fd80::101/128``) and a IA_PD prefix (e.g. ``fd80:0:0:1000::/56``, ``fd80:0:0:1010::/56``).
@@ -353,3 +447,5 @@ Leases DHCPv4/v6
 -------------------------
 
 This page offers an overview of the (non static) leases being offered by KEA DHCPv4/v6.
+
+.. Tip:: There are action buttons to quickly register and find reservations.
