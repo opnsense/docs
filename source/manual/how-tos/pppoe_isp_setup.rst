@@ -114,7 +114,7 @@ Option                              Value
 
 Press **Add** to apply the changes.
 
-Go to :menuselection:`Interfaces --> Assignments` and assign the PPPoE device:
+Go to :menuselection:`Interfaces --> igc1_vlan7_PPPoE` and enable the PPPoE device:
 
 ==================================  =======================================================================================================
 Option                              Value
