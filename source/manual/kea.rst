@@ -19,13 +19,13 @@ Control Agent
 The Kea Control Agent (CA) is a daemon which exposes a RESTful control interface for managing Kea servers.
 When building a high available dhcp setup, the control agent is a requirement for these kind of setups.
 
-========================================================================================================================================================
-
-====================================  ==================================================================================================================
-Enabled                               Enable control agent
-Bind address                          Address on which the RESTful interface should be available, usually this is localhost (127.0.0.1)
-Bind port                             Choose an unused port for communication here.
-====================================  ==================================================================================================================
+==================================== ==================================================================================================================
+**Option**                           **Description**
+==================================== ==================================================================================================================
+Enabled                              Enable control agent
+Bind address                         Address on which the RESTful interface should be available, usually this is localhost (127.0.0.1)
+Bind port                            Choose an unused port for communication here.
+==================================== ==================================================================================================================
 
 .. Note::
 
@@ -40,14 +40,14 @@ DDNS Agent
 The Kea DHCP DDNS (D2) server is a middleware between the DHCP servers, and authoritative DNS servers.
 Enabling it is a requirement if dynamic DNS updates (RFC2136) should be sent when clients are assigned an IP address in configured subnets.
 
-========================================================================================================================================================
-
-====================================  ==================================================================================================================
-Enabled                               Enable DDNS server. To send updates to an authoritative nameserver, configure Dynamic DNS
-                                      inside the DHCPv4 and DHCPv6 subnets.
-Bind address                          Address on which the DHCP DDNS server interface should be available; usually this is localhost (127.0.0.1).
-Bind port                             Portnumber to use for the DHCP DDNS server interface; default is 53001.
-====================================  ==================================================================================================================
+==================================== ==================================================================================================================
+**Option**                            **Description**
+==================================== ==================================================================================================================
+Enabled                              Enable DDNS server. To send updates to an authoritative nameserver, configure Dynamic DNS
+                                     inside the DHCPv4 and DHCPv6 subnets.
+Bind address                         Address on which the DHCP DDNS server interface should be available; usually this is localhost (127.0.0.1).
+Bind port                            Portnumber to use for the DHCP DDNS server interface; default is 53001.
+==================================== ==================================================================================================================
 
 
 -------------------------
@@ -109,6 +109,7 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         TFTP server                               TFTP server address or FQDN
         TFTP bootfile name                        Boot filename to request
         IPv6-only Preferred (Option 108)          The number of seconds for which the client should disable DHCPv4. The minimum value is 300 seconds.
+        Options                                   Select custom DHCPv4 options that were created in the options tab.
         **Dynamic DNS**
         DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. home.arpa)
         DNS server                                Authoritative DNS server receiving dynamic updates.
@@ -131,6 +132,7 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         **DHCP option data**
         DNS servers                               DNS servers to offer to the clients
         Domain search                             The domain search list to offer to the client
+        Options                                   Select custom DHCPv6 options that were created in the options tab.
         **Dynamic DNS**
         DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. home.arpa)
         DNS server                                Authoritative DNS server receiving dynamic updates.
@@ -176,6 +178,7 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         Next server                               Next server IP address
         TFTP server                               TFTP server address or FQDN
         TFTP bootfile name                        Boot filename to request
+        Options                                   Select custom DHCPv4 options that were created in the options tab.
         ========================================= ====================================================================================
 
         **DHCPv6**
@@ -188,8 +191,30 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         DUID                          	          DUID of the client in question
         Hostname                                  Offer a hostname to the client
         Domain search                             The domain search list to offer to the client
+        Options                                   Select custom DHCPv6 options that were created in the options tab.
         Description                               You may enter a description here for your reference (not parsed).
         ========================================= ====================================================================================
+
+    .. tab:: Options (DHCPv4/v6)
+
+        ========================================= ====================================================================================
+        **Option**                                **Description**
+        ========================================= ====================================================================================
+        Description                               You must enter a description here. It is used to reference this option inside reservations and subnets.
+        **Match DHCP option**
+        Match Code                                The server will only send the option defined in "Set DHCP option" if a client first
+                                                  sends the option defined in "Match DHCP option". Leave empty to always send the option.
+        Match Encoding                            Encoding used to evaluate the match condition. "Hex" supports all encapsulated and structured
+                                                  options generically via payload in hexadecimal byte pairs.
+        Match Data                                Data to match against the selected DHCP option.
+        **Set DHCP option**
+        Set Code                                  DHCP option to offer to the client.
+        Set Encoding                              Choose the encoding type. "Hex" supports all encapsulated and structured options
+                                                  generically via payload in hexadecimal byte pairs.
+        Set Data                                  Payload to send to a client.
+        Force                                     Always send the option, also when the client does not ask for it in the parameter request list.
+        ========================================= ====================================================================================
+
 
     .. tab:: HA Peers (DHCPv4/DHCPv6)
 
@@ -312,6 +337,94 @@ Then go to :menuselection:`System: --> High Availability --> Status` and press *
 Immediately afterwards, KEA will be active on both master and backup, and a bidirectional lease synchronization will be configured.
 
 
+DHCP Options
+-------------------------
+
+Each subnet and reservation has an DHCP option data list available. If `Auto collect option data` is enabled, some DHCP options like router, DNS server and system domain
+are added automatically. Additional fields can be filled out with other common options.
+
+In cases where more advanced DHCP options need to be sent, you can use the **Options** tab found in :menuselection:`Services --> KEA DHCP --> KEA DHCPv4` and
+:menuselection:`Services --> KEA DHCP --> KEA DHCPv6`.
+
+When adding a new option, you can enter matching and setting parameters:
+
+    - When matching a DHCP option, a client class with a test is created. The set option will only be sent to clients that pass the test.
+    - When setting a DHCP option, the payload will be sent unconditionally if no match exists in the same input mask.
+
+To send a created option, attach it to a reservation or subnet in their respective tabs with the available **Options** dropdown menu.
+
+Combining both set and match enables you to create multiple options with the same code, but different payloads.
+A common example is matching based on client architecture and sending a specific boot file as payload:
+
+- Go to :menuselection:`Services --> KEA DHCP --> KEA DHCPv4` and follow through these tabs:
+
+.. tabs::
+
+    .. tab:: Option
+
+        Create an option for BIOS boot:
+
+        ========================================= ====================================================================================
+        **Option**                                **Description**
+        ========================================= ====================================================================================
+        Description                               ``option-bios-bootfile``
+        **Match DHCP option**
+        Match Code                                ``client-system [93]``
+        Match Encoding                            ``uint16``
+        Match Data                                ``0``
+        **Set DHCP option**
+        Set Code                                  ``bootfile-name [67]``
+        Set Encoding                              ``string``
+        Set Data                                  ``undionly.kpxe``
+        ========================================= ====================================================================================
+
+        Create an option for EFI boot:
+
+        ========================================= ====================================================================================
+        **Option**                                **Description**
+        ========================================= ====================================================================================
+        Description                               ``option-efi-bootfile``
+        **Match DHCP option**
+        Match Code                                ``client-system [93]``
+        Match Encoding                            ``uint16``
+        Match Data                                ``7``
+        **Set DHCP option**
+        Set Code                                  ``bootfile-name [67]``
+        Set Encoding                              ``string``
+        Set Data                                  ``snponly.efi``
+        ========================================= ====================================================================================
+
+        - Press **Save** and go to **Subnets**
+
+    .. tab:: Subnets
+
+        Select an available subnet, and add the **Options** you created:
+
+        ==================================  =======================================================================================================
+        **Option**                          **Value**
+        ==================================  =======================================================================================================
+        Options                             ``option-bios-bootfile``, ``option-efi-bootfile``
+        ==================================  =======================================================================================================
+
+        - Press **Save** and **Apply**
+
+
+With this configuration, any client that sends ``client-system [93]`` containing the value ``0`` will be provided with ``bootfile-name [67]`` and ``undionly.kpxe``.
+The same logic applies to the efi bootfile.
+
+
+.. Note::
+
+    Matching is optional, leave it empty to send the option out to any client in the subnet it is attached to.
+
+
+.. Tip::
+
+    Any option can be sent as user defined hex. This helps for structured and encapsulated options that may have multiple types or are binary blobs.
+    A common example is ``vendor specific [43]``, which is used for vendor specific information.
+    Just as with the bootfiles example, if you match client specific option codes, you can send out different vendor specific option codes in the same subnet.
+
+
 Dynamic DNS (RFC2136)
 -------------------------
 
@@ -381,6 +494,7 @@ The DDNS Agent attempts to match each request to the appropriate DNS server and 
     but different `TSIG key names` and `TSIG key secrets`, only the first one will be taken into account.
     Best practice would be creating one unique `DNS forward zone` per subnet, each with a unique `TSIG key name`.
 
+
 Prefix Delegation (IA_PD)
 ------------------------------------------
 
@@ -441,6 +555,7 @@ After applying the configuration, clients will receive a IA_NA address (e.g. ``f
 Whenever a IA_PD lease is acknowledged, a route targeting the link local address (LLA) of the requesting DHCPv6 client will be automatically installed.
 
 Since lease files are synchronized in high availability mode, the routes will also be installed and cleaned up on both peers.
+
 
 -------------------------
 Leases DHCPv4/v6
