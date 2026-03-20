@@ -28,11 +28,6 @@ Tick `Enable` and configure all prefixes and addresses:
    The IPv6 prefix which Tayga uses to translate IPv4 addresses. You can use the default well-known prefix 64:ff9b::/96 or an unused /96 from
    your site's GUA prefix.
 
-   .. Warning::
-      When using the well-known prefix 64:ff9b::/96, Tayga will prohibit IPv6 hosts from contacting IPv4 hosts that have private (RFC1918)
-      addresses. This is not relevant when using NAT64 for accessing IPv4 services on the Internet. However, if access to local services with
-      private IPv4 addresses is required, a GUA /96 prefix must be used.
-
    .. Note::
       While technically possible, using a ULA prefix for NAT64 is not recommended. This can cause issues with certain hosts, especially those
       which support 464XLAT.
@@ -48,14 +43,9 @@ Tayga is a hop in the path, so it needs its own IP addresses for ICMP:
    Should be located in the `IPv4 Pool` subnet.
 
 :IPv6 Address:
-   Will show up in traceroutes from the IPv6 side to the IPv4 side. Can be left empty if the `IPv6 Prefix` is a GUA or the `IPv4 Address` is
-   a non-RFC1918 address. Tayga will then auto-generate its IPv6 address by mapping the `IPv4 Address` into the `IPv6 Prefix`.
-   For example, if the `IPv6 Prefix` 2001:db8:64:64::/96 and `IPv4 Address` 192.168.255.1 are being used, Tayga's IPv6 address will be
-   2001:db8:64:64::192.168.255.1 (2001:db8:64:64::c0a8:ff01).
-
-   .. Warning::
-      Tayga can't auto-generate its `IPv6 Address` if the default well-known `IPv6 Prefix` 64:ff9b::/96 and a private (RFC1918) `IPv4 Address`
-      are being used. In this case, you have to manually specify an unused address from your site's GUA or ULA prefix.
+   Will show up in traceroutes from the IPv6 side to the IPv4 side. If left empty, Tayga will auto-generate its IPv6 address by mapping the
+   `IPv4 Address` into the `IPv6 Prefix`. For example, if the default `IPv6 Prefix` 64:ff9b::/96 and `IPv4 Address` 192.168.255.1 are being
+   used, Tayga's default IPv6 address will be 64:ff9b::192.168.255.1 (64:ff9b::c0a8:ff01).
 
 Tayga behaves like an external device connected to OPNsense via a point-to-point interface. This interface requires IP addresses for ICMP:
 
@@ -64,7 +54,7 @@ Tayga behaves like an external device connected to OPNsense via a point-to-point
    used by another interface or VIP.
 
 :IPv6 NAT64 Interface Address:
-   Must not be located in the `IPv6 Prefix` subnet and must not be used by another interface or VIP.
+   Must not be located in the `IPv6 Prefix` subnet and must not be used by another interface or VIP. Can be a ULA.
 
    .. Warning::
       The default value must not be used since 2001:db8::/32 is a documentation-only prefix.
@@ -99,6 +89,9 @@ you also have to enter your /96 prefix there.
 .. Note::
    You may also use any other DNS64 capable DNS server. If you use the default 64:ff9b::/96 prefix, using a service like `Google's Public
    DNS64 <https://developers.google.com/speed/public-dns/docs/dns64>` is possible, too.
+
+You may also want to advertise the NAT64 prefix in Router Advertisements. This can be configured in :menuselection:`Services --> Router Advertisements`
+by enabling the advanced mode and entering the NAT64 prefix there.
 
 -------
 Testing
