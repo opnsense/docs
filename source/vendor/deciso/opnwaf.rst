@@ -88,6 +88,78 @@ Do not forget to create an additional firewall rule to allow access to the HTTP 
 Web protection is not enabled by default, but you can enable it in the `Web protection` tab. This is also the place
 to configure the module and settings which apply for all virtual hosts.
 
+To optionally configure a default catch-all virtual server, select a certificate for `Strict SNI Check` in :menuselection:`Firewall --> Web Application --> Settings`.
+The certificate can be self-signed and match the CN of the the default server name. Any invalid SNI will now be served an error document.
+If a wildcard A-Record is defined for a base domain (e.g., ``*.example.com in A 203.0.113.1``), each subdomain would be answered
+by the first configured virtual server otherwise, even if the SNI does not match it.
+
+
+General Settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+**General Settings**
+Enabled                          Enable the gateway webserver.
+**ACME Settings**
+Enable ACME                      Enable the ACME protocol to automatically provision certificates using Let's Encrypt.
+                                 This will need the virtual server to be accessible on the standard HTTPS port (443
+ACME Certificate Agreement       When you use mod_md to obtain a certificate, you become a customer of the CA (e.g. Let's Encrypt).
+                                 That means you need to read and agree to their Terms of Service, so that you understand what
+                                 they offer and what they might exclude or require from you. mod_md cannot, by itself, agree to such a thing.
+ACME Contact Email               The ACME protocol requires you to give a contact url when you sign up.
+                                 Currently, Let's Encrypt wants an email address (and it will use it to inform you
+                                 about renewals or changed terms of service).
+**Server Settings**
+HTTP Version                     Select the maximum allowed HTTP version this server can use for any connection.
+                                 If you want to proxy to a location via HTTP/2, use h2:// or h2c:// inside a virtual server.
+Redirect HTTP to HTTPS           Enables a permanent redirect (301 Moved Permanently) from HTTP to HTTPS. This will bind the default
+                                 HTTP port additionally for all virtual hosts. Make sure this port is not bound to a different service,
+                                 like the default WebGUI redirect rule.
+HTTP Port                        When enabling the HTTP to HTTPS redirect, this port will be bound for HTTP (default 80).
+Multi Processing Modules         Select the processing module the server should use. The default mpm_event is the most scalable module.
+                                 For older software and state sensitive protocols, mpm_prefork can be chosen.
+Strict SNI Check                 Respond with an error when a client requests an SNI that does not exist as configured virtual server.
+                                 This requires a certificate for a default catch-all virtual server; once added the strict SNI check is active.
+                                 The certificate can be a self-signed one, it is only used as a placeholder for the TLS engine.
+Server Name                      The default name of this server. It is also used for the default catch-all virtual server if "Strict SNI Check" is enabled.
+Error Document                   Choose error documents to use for common issues, like page not found.
+                                 This will be added to the default catch-all virtual server if "Strict SNI Check" is enabled.
+================================ ========================================================================================
+
+Web Protection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is recommended to enable the web protection, but not change the default values of individual options without reason.
+The defaults are tuned for high security while also maintaining good performance and compatibility.
+
+================================ ========================================================================================
+Option                           Description
+================================ ========================================================================================
+Enable                           Enable content protection to prevent against different types of (injection) attacks
+Paranoia Level                   A paranoia level of 1 is default. In this level, most core rules are enabled.
+                                 PL1 is advised for beginners, installations covering many different sites and applications,
+                                 and for setups with standard security requirements. A higher level will increase sensitivity
+                                 at the cost of more false positives.
+Allowed HTTP Verbs               Leave empty to use the default HTTP Verbs. Choosing one or more items here will overwrite
+                                 the default globally. If there are WebDAV servers, adjusting these Verbs
+                                 can be mandatory with methods like PROPPATCH or PROPFIND.
+Request Body Limit Action        What to do if the request body size is above the configured limit. The default is Reject.
+                                 Keep in mind that this setting will automatically be set to ProcessPartial when using DetectionOnly mode.
+Request Body Limit               Maximum request body size in bytes we will accept for buffering. If you support file uploads
+                                 then the value given has to be as large as the largest file you are willing to accept. The hard limit is 1GB.
+Request Body No Files Limit      Maximum request body size in bytes we will accept for buffering with files excluded.
+                                 You want to keep this value as low as practical. The hard limit is 1GB.
+Request Body In Memory Limit     Store the request body data in memory. When the multipartparser reaches this limit, it will start
+                                 using your hard disk for storage. That is slow, but unavoidable. The hard limit is 1GB.
+Response Body Limit Action       What happens when we encounter a response body larger than the configured limit? By default, we process what
+                                 we have and let the rest through with the Process Partial option. That is somewhat less secure,
+                                 but does not break any legitimate pages.
+Response Body Limit              Maximum response body size (in bytes) we will accept for buffering. The hard limit is 1GB.
+Regex Match Limit                Maximum regex matching length in security rules. If set too high, could cause performance issues or DoS.
+Regex Match Limit Recursion      Maximum regex recursion matching length in security rules. If set too high, could cause performance issues or DoS.
+================================ ========================================================================================
 
 Configure virtual servers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -180,7 +252,7 @@ There are different types of locations:
 #. | Proxy Pass Match, which Reverse Proxies the HTTP traffic but has regex support
 #. | Redirect, which creates a HTTP redirect
 #. | Redirect Match, which creates a HTTP redirect but has regex support
-#. | Exchange Server, a template for Microsoft Exchange Server® with Outlook Anywhere® passthrough
+#. | Exchange Server, a template for Microsoft Exchange servers
 
 
 Proxy Pass
@@ -197,7 +269,7 @@ Local path                       Local path of the HTTP request to match (e.g. :
 Type                             ProxyPass
 Remote destinations              Locations to forward requests to, when more than one is provided, requests will be
                                  loadbalanced in a round robin fashion. Supports :code:`http`, :code:`https`, :code:`ws`
-                                 and :code:`wss` destinations.
+                                 :code:`wss`, :code:`h2` and :code:`h2c` destinations.
                                  When your webapp uses websockets and https requests, use :code:`wss://`
 Access control                   List of networks allowed to access this path (empty means any)
 Overlay error pages              Overlay common error pages with the ones specified in the virtual server.
@@ -370,7 +442,6 @@ Prerequisites
 
 To successfully reverse proxy an Exchange Server, a few conditions must be met:
 
-- The Exchange Server should be 2013, 2016 or 2019 and fully patched.
 - The communication between Apache and the Exchange Server must happen via HTTPS.
 - The Exchange Server must have its internal and external URLs set correctly, preferably to the same hostnames that will be set as virtual servers.
 
@@ -394,6 +465,17 @@ The certificate must include ``mail.example.com`` and ``autodiscover.example.com
 Without trust established between the OPNsense and the Exchange Server, the connection will fail since only encrypted
 connections are allowed to an Exchange Server.
 
+.. Attention::
+
+    Exchange Servers use a feature called "Extended Protection" which requires the same certificate to be used by the
+    web application firewall and the Exchange Server itself.
+
+.. Attention::
+
+    Outlook passthrough via either RCP/HTTP or MAPI/HTTP is getting more challenging due to the deprecation of the NTML protocol.
+    If authentication popups happen, it can help to set the "Multi Processing Modules" to "mpm-prefork". Mitigating all authentication
+    issues might not be possible anymore, since the required NTLM replacement protocol OAuth is only available for Exchange Online.
+
 
 Setup
 """""""""""""""""""
@@ -406,8 +488,7 @@ Create a `Location` with the `Type` ``Exchange Server`` for each of these virtua
 of the Exchange Server, e.g., ``https://192.168.10.10``. If the virtual servers use the same hostnames as the Exchange Server,
 trust is automatically established with host header passthrough.
 
-These new `Locations` will create all virtual directories the Exchange Server requires automatically,
-and activate Outlook Anywhere® passthrough.
+These new `Locations` will create all virtual directories the Exchange Server requires automatically.
 With the options `Restrict Exchange Paths` and `Access control`, access to specific paths can be restricted. This is recommended for the ``/ecp`` path.
 
 The finished configuration should look like this:
@@ -741,3 +822,32 @@ Overlay error pages              Overlay common error pages with the ones specif
 
     When using OpenID Connect, it is a good idea to either use the ``Default`` or custom error documents, to ensure the ``Unauthorized``
     error pages have a more cohesive and user friendly style.
+
+
+Server Status
+---------------------------
+
+The server exposes metrics that can be revealed in :menuselection:`Firewall --> Web Application --> Status`.
+
+You can find tabs with general information, workers, current requests and ACME certificates.
+
+If the server behaves unexpected, checking the current requests and server load can reveal potential issues:
+
+- **Detect backend connectivity issues**
+
+  Requests that remain open for unusually long periods or repeatedly fail may indicate that an upstream service is slow or unreachable.
+  Inspecting the active request list can help determine whether the issue originates from the reverse proxy or the backend application.
+
+- **Validate configuration changes in real time**
+
+  After modifying the configuration, the status page can be used to verify that requests are handled as expected.
+  Observing request paths and worker activity allows administrators to confirm that traffic reaches the intended backend services.
+
+- **Find malicious clients**
+
+  Malicious clients could DoS the hosted websites if the CPU load is very high and the number of concurrent requests is unexpected.
+
+.. Tip::
+
+    Server statistics are API enabled, meaning you could export them to an external monitoring system.
+    Since they are not stored on disk, persistence requires external polling.
