@@ -92,7 +92,7 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         Subnet                                    Subnet to use, should be large enough to hold the specified pools and reservations
         Description                               You may enter a description here for your reference (not parsed).
-        Pools                           	      List of pools, one per line in range or subnet format (e.g. 192.168.0.100 - 192.168.0.200 , 192.0.2.64/26)
+        Pools                           	      List of pools, one per line in range or subnet format (e.g. 192.168.0.100 - 192.168.0.200 , 192.0.2.64/26). Leave this blank if you do not want to offer dynamic leases (i.e: "Deny unknown clients")
         Match client-id                           By default, KEA uses client-identifiers instead of MAC addresses to locate clients,
                                                   disabling this option changes back to matching on MAC address which is used by most dhcp implementations.
         **DHCP option data**
@@ -128,7 +128,7 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         Allocator                                 Select allocator method to use when offering leases to clients.
         PD Allocator                              Select allocator method to use when offering prefix delegations to clients
         Description                               You may enter a description here for your reference (not parsed).
-        Pools                        	          List of pools, one per line in range or subnet format (e.g. 2001:db8:1::-2001:db8:1::100, 2001:db8:1::/80)
+        Pools                        	          List of pools, one per line in range or subnet format (e.g. 2001:db8:1::-2001:db8:1::100, 2001:db8:1::/80). Leave this blank if you do not want to offer dynamic leases (i.e: "Deny unknown clients")
         **DHCP option data**
         DNS servers                               DNS servers to offer to the clients
         Domain search                             The domain search list to offer to the client
