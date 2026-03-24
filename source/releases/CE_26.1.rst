@@ -35,6 +35,69 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.1.5 (March 24, 2026)
+--------------------------------------------------------------------------
+
+
+This updates ships a few third party updates, assorted core fixes and
+improvements of which Kea DDNS and options support may be the most
+sought-after.
+
+The captive portal IPv6 changes are ready for wider testing on the
+development version and over there the grids will now auto-resize as
+the limits of the Tabulator UI are pushed farther and further.  ;)
+
+Here are the full patch notes:
+
+* system: cleanup and simplify certificate deployment and remove legacy config import
+* system: validate monitor uniqueness based on the host route presence
+* system: simplify user/group sync scripts using config_read_array()
+* interfaces: clean up overview UI code and fix CARP badge alignment
+* interfaces: fix static neighbor apply button (contributed by Konstantinos Spartalis)
+* interfaces: simplify CARP scripts using config_read_array()
+* interfaces: automatic dhclient recovery
+* interfaces: settings page use cases for config_read_array()
+* firewall: fix regression in alias summary not shown in new rules GUI
+* firewall: invalidate database when last updated time is in the future
+* firewall: add missing "static port" option in source NAT
+* firewall: add semantic groups coloring option in dashboard widget (contributed by Gunnar Lieb)
+* firewall: one-to-one NAT rendered rule missed "log" statement
+* firewall: add missing alias rename rule targets
+* firewall: add alias GeoIP database update button and move bogons one to the same tab
+* firewall: fix port handling in registered NAT rule
+* firewall: fix MVC code vs. legacy rules display issues
+* firewall: outbound NAT page use case for config_read_array()
+* captive portal: cleanup and simplify certificate deployment and remove legacy config import
+* captive portal: enforce POST-only on logoffAction() (contributed by Oliver Jueguen)
+* dnsmasq: add "no-ping" option (contributed by Konstantinos Spartalis)
+* dnsmasq: remove a too-strict validation for suffix IPv6 addresses without constructor use
+* dnsmasq: ensure the lease view handles client-id correctly
+* ipsec: fix delete selected for SPD and SAD
+* kea: add DDNS and DHCP option support
+* network time: add pool property for time servers (contributed by Konstantinos Spartalis)
+* network time: remove stale symlink when PPS is disabled
+* unbound: only emit warning when "addptr" was requested
+* unbound: use expand formatter for blocklist URLs and DNSBL types
+* unbound: include blocklist length in state change logic
+* backend: more fixes for re-bound SyntaxWarning throws in Python 3.13
+* backend: use config_read_array() non-insert mode mode iteration of virtual IPs
+* mvc: BaseListField: merge remaining use of shared implementation of static options
+* mvc: File: add file_update_contents() helper
+* mvc: Shell: rewrite exec_safe() to avoid vsprintf() complications
+* rc: speed up maintenance file deletes
+* ui: bootgrid: require selection to be enabled for delete-selected
+* ui: bootgrid: introduce 'expand' formatter to cap lists of data
+* plugins: os-frr 1.51 `[1] <https://github.com/opnsense/plugins/blob/stable/26.1/net/frr/pkg-descr>`__ 
+* plugins: os-tayga 1.5 `[2] <https://github.com/opnsense/plugins/blob/stable/26.1/net/tayga/pkg-descr>`__ 
+* ports: openldap 2.6.13 `[3] <https://www.openldap.org/software/release/changes_lts.html>`__ 
+* ports: perl 5.42.1 `[4] <https://perldoc.perl.org/5.42.1/perldelta>`__ 
+* ports: phpseclib 3.0.50 `[5] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.50>`__ 
+* ports: py-duckdb 1.5.0 `[6] <https://github.com/duckdb/duckdb/releases/tag/v1.5.0>`__ 
+* ports: suricata 8.0.4 `[7] <https://suricata.io/2026/03/17/suricata-8-0-4-and-7-0-15-released/>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.1.4 (March 11, 2026)
 --------------------------------------------------------------------------
 

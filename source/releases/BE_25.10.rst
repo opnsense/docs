@@ -170,6 +170,11 @@ A hotfix release was issued as 25.10.2_3:
 * src: unix: Set O_RESOLVE_BENEATH on fds transferred between jails `[22] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:04.jail.asc>`__ 
 * src: rtsock: Fix stack overflow `[23] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:05.route.asc>`__ 
 
+A hotfix release was issued as 25.10.2_4:
+
+* unbound: fix blocklist add in reporting page following POST-only fix
+
+
 
 --------------------------------------------------------------------------
 25.10.1 (December 10, 2025)
