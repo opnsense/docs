@@ -498,6 +498,10 @@ The DDNS Agent attempts to match each request to the appropriate DNS server and 
     but different `TSIG key names` and `TSIG key secrets`, only the first one will be taken into account.
     Best practice would be creating one unique `DNS forward zone` per subnet, each with a unique `TSIG key name`.
 
+.. Attention::
+
+    Only subnets that have a DNS server configured will send DDNS updates.
+
 
 Prefix Delegation (IA_PD)
 ------------------------------------------
