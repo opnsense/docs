@@ -111,7 +111,8 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         IPv6-only Preferred (Option 108)          The number of seconds for which the client should disable DHCPv4. The minimum value is 300 seconds.
         Options                                   Select custom DHCPv4 options that were created in the options tab.
         **Dynamic DNS**
-        DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. home.arpa)
+        DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. "home.arpa.").
+        DNS qualifying suffix                     If a DHCP client only sends a hostname in option 81, append this suffix to create an FQDN (e.g. "home.arpa.").
         DNS server                                Authoritative DNS server receiving dynamic updates.
         TSIG key name                             TSIG key name used for secure DNS updates.
         TSIG key secret                           Base64 encoded TSIG key secret.
@@ -134,7 +135,8 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         Domain search                             The domain search list to offer to the client
         Options                                   Select custom DHCPv6 options that were created in the options tab.
         **Dynamic DNS**
-        DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. home.arpa)
+        DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. "home.arpa.").
+        DNS qualifying suffix                     If a DHCP client only sends a hostname in option 81, append this suffix to create an FQDN (e.g. "home.arpa.").
         DNS server                                Authoritative DNS server receiving dynamic updates.
         TSIG key name                             TSIG key name used for secure DNS updates.
         TSIG key secret                           Base64 encoded TSIG key secret.
@@ -432,12 +434,13 @@ KEA allows registering client FQDNs via dynamic DNS (RFC2136) to an authoritativ
 
 Such an authoritative DNS server will be ISC BIND or an alternative like PowerDNS. Recursive DNS servers like Dnsmasq or Unbound are not able to fulfill this role.
 
-When clients register their IP address, the DHCP server usually provides a `Domain Option` (DHCP option 15). This allows the client to construct an FQDN out of their configured
-hostname, and this domain. The DHCP server will receive this as `Client FQDN Option` (DHCP option 81), registering the hostname in the best matching configured forward zone.
+When clients register their IP address, the DHCP server will receive this as `Client FQDN` (DHCP option 81) that either contains a client hostname or an FQDN.
+In cases where clients only send a hostname, using the DNS qualifying suffix will construct an FQDN and force an update anyway.
 
 .. Attention::
 
     The client is responsible to send the Dynamic DNS update request via DHCP option 81. Only with this payload, the hostname will be registered in a forward zone.
+    Clients that do not send any hostname cannot be registered, the administrator must ensure all of their devices have unique hostnames configured.
 
 
 As an example setup, we have configured a zone like this in ISC BIND.
@@ -469,6 +472,7 @@ Domain name                         ``four.example.com``
 
 **Dynamic DNS**
 DNS forward zone                    ``four.example.com.``
+DNS qualifying suffix               ``four.example.com.``  (optional, use if your clients do not send an FQDN via DHCP option 81)
 DNS server                          ``203.0.113.1``
 TSIG key name                       ``key.four.example.com.``
 TSIG key secret                     ``bZEG7Ow8OgAUPfLWV3aAUQ==``
