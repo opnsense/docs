@@ -646,6 +646,8 @@ BFD (Bidirectional Forward Detection)
        **Peer-IP**                         Specify the IP of your neighbor.
        **Multihop**                        Enables multi-hop mode, allowing BFD to expect packets with TTL less than 254 and listen on the multihop port (4784).
                                            Note: Echo mode is not supported in multi-hop (see RFC 5883, section 3).
+       **Local Address**                   Specifies the local IP address to bind the peer listener to and to use for sending packets. This option is mandatory for IPv6.
+       **Interface**                       Selects which interface to use for this BFD peer.
        **Detect multiplier**               Configures the detection multiplier to determine packet loss. The remote transmission interval will be multiplied by
                                            this value to determine the connection loss detection timer. The default value is 3.
        **Receive interval**                Configures the minimum interval that this system is capable of receiving control packets. Defaults to 300 ms.
