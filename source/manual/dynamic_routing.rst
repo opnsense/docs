@@ -434,6 +434,8 @@ BGP (Border Gateway Protocol)
        **Enforce First AS**                Deny an update received from an external BGP (eBGP) peer that does not list its autonomous system number at
                                            the beginning of the AS_PATH in the incoming update.
        **Log Neighbor Changes**            Enable extended logging of BGP neighbor changes.
+       **Maximum Paths**                   Maximum number of equal-cost paths for EBGP multipath (ECMP). Leave empty to use FRR default (1).
+       **Maximum Paths (IBGP)**            Maximum number of equal-cost paths for IBGP multipath (ECMP). Leave empty to use FRR default (1).
        **Route Redistribution**            Select other routing sources to redistribute to other nodes. Can be combined with a Route Map per redistribution.
        =================================== =======================================================================================================================
 
