@@ -18,3 +18,4 @@ This chapter contains topics around `official <https://shop.opnsense.com/>`__ OP
     hardware/serial_connectivity
     hardware/bios
     hardware/sfp_compatibility
+    hardware/support
