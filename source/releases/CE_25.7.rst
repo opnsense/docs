@@ -785,7 +785,7 @@ Here are the full patch notes:
 * ipsec: deprecate legacy stroke and implement swanctl for overview
 * isc-dhcp: allow static mapping export for disabled entries
 * openvpn: add nopool directive
-* unbound: configurable top domain list length in reporting view (contributed by sopex)
+* unbound: configurable top domain list length in reporting view (contributed by Konstantinos Spartalis)
 * unbound: remove unknown model reference and protect/simplify remaining one
 * wireguard: move backend scripts to proper location
 * backend: added IPv6 bracket helper for templates (contributed by BPplays)
@@ -795,8 +795,8 @@ Here are the full patch notes:
 * mvc: modify existing and add missing descriptions in models
 * mvc: set default validation message for CertificateField
 * rc: make changes to php,var,tmp bootstrap
-* ui: fix language selection for low vertical resolution screens (contributed by sopex)
-* ui: hide header of the picture widget on the dashboard (contributed by sopex)
+* ui: fix language selection for low vertical resolution screens (contributed by Konstantinos Spartalis)
+* ui: hide header of the picture widget on the dashboard (contributed by Konstantinos Spartalis)
 * plugins: os-clamav 1.8.1 `[1] <https://github.com/opnsense/plugins/blob/stable/25.7/security/clamav/pkg-descr>`__ 
 * plugins: os-crowdsec 1.0.12 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/security/crowdsec/pkg-descr>`__ 
 * plugins: os-frr 1.46 `[3] <https://github.com/opnsense/plugins/blob/stable/25.7/net/frr/pkg-descr>`__ 
@@ -938,7 +938,7 @@ Here are the full patch notes:
 * isc-dhcp: hide IPv4 menu items when Dnsmasq DHCP is enabled to improve out of the box experience
 * isc-dhcp: add static mapping CSV export
 * kea-dhcp: add DNS field to Kea DHCP4 reservations (contributed by Gtt1229)
-* lang: add Greek as a new language (contributed by sopex)
+* lang: add Greek as a new language (contributed by Konstantinos Spartalis)
 * lang: make more strings translate-able (contributed by Tobias Degen)
 * openvpn: the server wizard functionality has been permanently removed as it required the old wizard implementation
 * openvpn: "keepalive_timeout" must be at least twice the interval value validation
@@ -959,7 +959,7 @@ Here are the full patch notes:
 * ui: add standard HTML color input support
 * ui: move tooltip load event to single-fire mode
 * ui: add checkmark to SimpleActionButton as additional indicator
-* ui: improve menu icons/text spacing (contributed by sopex)
+* ui: improve menu icons/text spacing (contributed by Konstantinos Spartalis)
 * plugins: replace variables in package scripts by default
 * plugins: os-acme-client 4.10 `[2] <https://github.com/opnsense/plugins/blob/stable/25.7/security/acme-client/pkg-descr>`__ 
 * plugins: os-bind 1.34 `[3] <https://github.com/opnsense/plugins/blob/stable/25.7/dns/bind/pkg-descr>`__ 

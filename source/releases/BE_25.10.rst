@@ -174,6 +174,20 @@ A hotfix release was issued as 25.10.2_4:
 
 * unbound: fix blocklist add in reporting page following POST-only fix
 
+A hotfix release was issued as 25.10.2_8:
+
+* interfaces: fix static neighbor apply button (contributed by Konstantinos Spartalis)
+* firewall: one-to-one NAT rendered rule missed "log" statement
+* ipsec: fix delete selected for SPD and SAD
+* mvc: ConfigMaintenance: when constructing class names use a safer way to strip .php extension
+* src: remote code execution via RPCSEC_GSS packet validation `[24] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:08.rpcsec_gss.asc>`__ 
+* src: tcp: remotely exploitable DoS vector `[25] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:06.tcp.asc>`__ 
+
+A hotfix release was issued as 25.10.2_10:
+
+* system: escape LDAP username during search `[26] <https://www.cve.org/cverecord?id=CVE-2026-34578>`__  (reported by Matt Andreko)
+* unbound: limit duckdb to a single thread in write mode to reduce logger memory usage
+
 
 
 --------------------------------------------------------------------------
@@ -531,7 +545,7 @@ Here are the full patch notes against version 25.4.3:
 * kea-dhcp: honour IPv4 client specific reservation domain name option (contributed by NOYB)
 * kea-dhcp: expose lease expiration settings to the GUI (contributed by Konstantinos Spartalis)
 * kea-dhcp: support DHCP option 121 (classless static routes)
-* lang: add Greek as a new language (contributed by sopex)
+* lang: add Greek as a new language (contributed by Konstantinos Spartalis)
 * lang: make more strings translate-able (contributed by Tobias Degen)
 * lang: updates for Chinese, Czech, German and Greek
 * lang: new Ukrainian language and assorted updates
@@ -541,7 +555,7 @@ Here are the full patch notes against version 25.4.3:
 * radvd: refine checks that ignored 6rd and 6to4
 * wireguard: move backend scripts to proper location
 * unbound: fix error in edge case of initial model migration
-* unbound: configurable top domain list length in reporting view (contributed by sopex)
+* unbound: configurable top domain list length in reporting view (contributed by Konstantinos Spartalis)
 * unbound: remove unknown model reference and protect/simplify remaining one
 * unbound: add support for TXT records in host overrides
 * backend: trigger boot template reload without using configd
@@ -585,12 +599,12 @@ Here are the full patch notes against version 25.4.3:
 * ui: use snake_case for all API URLs and adjust ACLs accordingly
 * ui: move tooltip load event to single-fire mode
 * ui: add checkmark to SimpleActionButton as additional indicator
-* ui: improve menu icons/text spacing (contributed by sopex)
+* ui: improve menu icons/text spacing (contributed by Konstantinos Spartalis)
 * ui: bootgrid: clean up leftover compatibility bits
 * ui: bootgrid: add missing sortable option
 * ui: bootgrid: provide more styling possibilities from formatters
-* ui: fix language selection for low vertical resolution screens (contributed by sopex)
-* ui: hide header of the picture widget on the dashboard (contributed by sopex)
+* ui: fix language selection for low vertical resolution screens (contributed by Konstantinos Spartalis)
+* ui: hide header of the picture widget on the dashboard (contributed by Konstantinos Spartalis)
 * ui: bootgrid: add tabulatorOptions to translateCompatOptions()
 * ui: bootgrid: raise rowCount default to 50 and adjust selections accordingly for most pages
 * ui: bootgrid: simplify custom grid command additions

@@ -35,6 +35,72 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.1.6 (April 09, 2026)
+--------------------------------------------------------------------------
+
+
+Yes, we are obviously still alive!  This update addresses a number of security
+issues -- first and foremost an injection into LDAP authentication that can
+bypass group restrictions during login.  Also included are Curl and OpenSSL
+third party updates as well as FreeBSD security advisories.
+
+Further UX tweaks reached the new firewall rules GUI, the MVC grid system and
+surprising movement in the Kea corner.  But maybe most importantly: the captive
+portal finally gained native IPv6 support.  Let us know what you think about
+it!
+
+Here are the full patch notes:
+
+* system: escape LDAP username during search `[1] <https://www.cve.org/cverecord?id=CVE-2026-34578>`__  (reported by Matt Andreko)
+* system: dashboard gauge improvements (contributed by Konstantinos Spartalis)
+* system: compress height of the log viewer grid
+* firewall: fix wrong "pass" on DNAT rule when using register rule
+* interfaces: configurable cleanups for automatic neighbor discovery via hostwatch
+* interfaces: refactor PPP CARP hook
+* firewall: adjust sort order in networks and aliases in new rules GUI
+* firewall: change sorting to interface/group name and stop caring about counted rules in new rules GUI
+* firewall: change category sorting using names instead of counted rules in new rules GUI
+* firewall: remove tokenizer from categories and use selectpicker instead in new rules GUI
+* dnsmasq: prevent "\*" from being collected as "client_id"
+* firmware: repeat the update after pkg reinstall
+* kea: add DDNS subnet-specific qualifying suffix and prevent updates if no server is set
+* kea: add sockets max-retries and retry-wait-time options
+* kea: add delete lease command and use socket for up-to-date lease collection
+* kea: move pool-in-subnet validation logic mostly to KeaPoolsField
+* kea: remove KeaCtrlAgent dependency on HA configuration
+* kea: use SetConstraint for match_data to allow 0 as valid value
+* ipsec: add 4 insecure proposals for compatibility (contributed by Bjoern Jakobsen)
+* captive portal: add IPv6 support (partially contributed by Alex Goodkind)
+* radvd: when adding a manual instance for an automatic "track6" interface do not ignore its settings
+* unbound: limit duckdb to a single thread in write mode to reduce logger memory usage
+* unbound: add harden below NXDOMAIN option (contributed by Konstantinos Spartalis)
+* unbound: consolidate override aliases into tree view
+* mvc: BaseListField: replace empty() check with isSet() for proper selection of value "0"
+* mvc: HostnameField: show string that failed validation by default
+* mvc: BaseField: add setValues() for generic use
+* mvc: add SetConstraint for problematic "0" value constraining
+* mvc: ApiMutableModelControllerBase: remove unused error returning in setActionHook()
+* ui: set visibility hidden for base_bootgrid_table
+* ui: upgrade Tabulator to version 6.4.0
+* ui: automatic grid height calculation
+* ui: bootgrid: maintain scrolling position for both datatree and command actions
+* plugins: os-acme-client 4.15 `[2] <https://github.com/opnsense/plugins/blob/stable/26.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-turnserver 1.2 `[3] <https://github.com/opnsense/plugins/blob/stable/26.1/net/turnserver/pkg-descr>`__ 
+* src: remote code execution via RPCSEC_GSS packet validation `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:08.rpcsec_gss.asc>`__ 
+* src: tcp: remotely exploitable DoS vector `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:06.tcp.asc>`__ 
+* src: pf: silently ignores certain rules `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:09.pf.asc>`__ 
+* src: vnet: ensure the space allocated by vnet_data_alloc() is sufficent aligned
+* src: ifnet: Fix decreasing the vnet interface count
+* src: e1000: Increase FC pause/refresh time on PCH2 and newer
+* src: net80211: fix VHT160/80P80/80 chanwidth selection in the "40-" case
+* ports: curl 8.19.0 `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:08.rpcsec_gss.asc>`__ 
+* ports: hostwatch 1.0.13
+* ports: openssl 3.0.20 `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:06.tcp.asc>`__ 
+* ports: perl 5.42.2 `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:09.pf.asc>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.1.5 (March 24, 2026)
 --------------------------------------------------------------------------
 
