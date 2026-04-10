@@ -152,7 +152,7 @@ MTU                                 MTU size, when unset the smallest mtu of the
 .. Note::
 
     Hash Layers, specifies how the device will loadbalance the traffic across physical links in the LAGG bundle.
-    This is done per the 5-tuple if the LACP device implementation allows it. 
+    This is done per the 5-tuple if the LACP device implementation allows it.
     Hash Layers, do not need to be the same between two connecting devices, it can be considered as a best practice but its not a rule of must be.
 
 **Available protocols**
@@ -187,7 +187,7 @@ none                                This protocol is intended to do nothing: It 
 .. Attention::
 
     The LAGG protocol should match with the one your switch supports. It is best practice to use LACP if possible.
-    Devices connected via LAGG require the same protocol.  
+    Devices connected via LAGG require the same protocol.
 
 **LACP timeout**
 
@@ -375,3 +375,13 @@ The following `Link Types` are available for these interfaces:
 .. Note:: The ``ppp`` log files can be found in :menuselection:`System --> Log Files --> General`.
 
 Read `PPPoE ISP Setup </manual/how-tos/pppoe_isp_setup.html>`_ for an example configuration of PPPoE with VLAN Tag for an ISP connection.
+
+.. Tip::
+
+    When using :code:`PPPoE`, a lot of providers these days support `RFC 4638 <https://datatracker.ietf.org/doc/html/rfc4638>`__, in which
+    case the internet provider expects the MTU value for the PPP connection itself to be 1500 bytes, which usually means the parent interface should
+    add the 8 byte tunnel overhead. To use this, your device does need to support "jumbo-frames" to some extend in order to communicate with the next peer.
+
+    To use a 1500 byte MTU on :code:`PPPoE` in OPNsense, set the interface (usually :menuselection:`Interfaces --> [WAN]`) to an MTU value of :code:`1508`,
+    in which case the tunnel itself will use the full 1500 bytes.
+
