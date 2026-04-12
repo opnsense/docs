@@ -231,7 +231,7 @@ RIP (Routing Information Protocol) - `legacy`
 
 
 The Routing Information Protocol (RIP) is a basic distance-vector routing protocol that determines the best path to a network destination based on hop count.
-With a maximum limit of 15 hops, RIP is suitable only for smaller networks. 
+With a maximum limit of 15 hops, RIP is suitable only for smaller networks.
 To prevent routing loops, RIP employs techniques like split horizon, route poisoning, and holddown timers.
 While easy to configure, RIP has slow convergence and limited scalability, making it less popular in modern networks compared to more efficient protocols like OSPF.
 It should be considered a legacy protocol.
@@ -283,7 +283,7 @@ OSPF/OSPFv3 (Open Shortest Path First)
        **Description**                       (OSPF only) Optional description for the neighbor.
        **Peer-IP**                           (OSPF only) Specify the IP address of the OSPF neighbor.
        **Poll-Interval**                     (OSPF only) The poll-interval specifies the rate for sending hello packets to neighbors that are not active.
-                                             When the configured neighbor is discovered, hello packets will be sent at the rate of the hello-interval. 
+                                             When the configured neighbor is discovered, hello packets will be sent at the rate of the hello-interval.
                                              The default poll-interval is 60 seconds.
        **Priority**                          (OSPF only) The priority is used to for the Designated Router (DR) election on non-broadcast multi-access networks.
        =================================== =======================================================================================================================
@@ -651,7 +651,7 @@ BFD (Bidirectional Forward Detection)
        **Detect multiplier**               Configures the detection multiplier to determine packet loss. The remote transmission interval will be multiplied by
                                            this value to determine the connection loss detection timer. The default value is 3.
        **Receive interval**                Configures the minimum interval that this system is capable of receiving control packets. Defaults to 300 ms.
-       **Transmit interval**               The minimum transmission interval (less jitter) that this system wants to use to send BFD control packets. Defaults to 300ms.   
+       **Transmit interval**               The minimum transmission interval (less jitter) that this system wants to use to send BFD control packets. Defaults to 300ms.
        =================================== =======================================================================================================================
 
        .. Note::
@@ -696,6 +696,7 @@ STATIC (Static Routes Daemon)
        **Network**                         Defines the target for the static route, in CIDR notation.
        **Gateway (optional)**              Optional gateway IP address for this route.
        **Interface**                       Select the interface where this setting applies.
+       **BFD**                             Mark the route as dependent on the BFD neighbor session with the next hop.
        =================================== =======================================================================================================================
 
 
