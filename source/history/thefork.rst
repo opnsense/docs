@@ -27,7 +27,7 @@ Technical
 We had technical reasons to fork.
 As much as we love the functionality/feature set of pfSense, we do not enjoy the
 :doc:`code quality </development/guidelines/basics>` and dispersed development method. We like structure, achievable
-goals set forth in a `roadmap <https://opnsense.org/about/road-map/>`__ with
+goals set forth in a `roadmap <https://opnsense.org/roadmap/>`__ with
 regular releases and a decent :doc:`framework </development/architecture>`.
 
 Security
@@ -78,7 +78,7 @@ project is there for all to use and work with.
 First Release
 -------------
 
-Much work had already been done before the `first official release <https://opnsense.org/opnsense-version-15-1-released/>`__:
+Much work had already been done before the `first official release <https://web.archive.org/web/20150503182123/https://opnsense.org/opnsense-version-15-1-released/>`__:
 
 * The build-tools had been completely rewritten from the ground up
   with clear and easy to read build scripts that are portable and small,
@@ -109,12 +109,12 @@ Moving forward the focus will remain on code quality and security.
 
    A lot of work has been done to improve the code quality and with weekly
    updates we have proven to be able to act quickly on known security threats.
-   For current status of the project and future development see our `roadmap <https://opnsense.org/about/road-map/>`__.
+   For current status of the project and future development see our `roadmap <https://opnsense.org/roadmap/>`__.
 
 
 Deciso's involvement
 --------------------
-That being said it is important to know that `Deciso <https://www.deciso.com/about-deciso/>`__ has been a long time sponsor
+That being said it is important to know that `Deciso <https://www.deciso.com/>`__ has been a long time sponsor
 of pfSense and invested a lot of time and money into the project. Deciso helped
 to make it a success in Europe. Until Netgate bought the company there was room
 for many others like us, but that has changed unfortunately.
