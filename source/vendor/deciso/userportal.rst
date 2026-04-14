@@ -68,6 +68,8 @@ Certificate Key type             Type of certificate to include in the profile
 Certificate Digest Algorithm     Digest algorithm used to generate the certificate
 Export template                  Type of file the user will download
 Hostname                         The hostname or ip address used to contact this firewall
+Enable static challenge (OTP)    Ask the user for its one time password token separately (instead of as part the password).
+Custom config                    Custom configuration, which will be returned in the output file without modifications.
 Description                      Description shown to the user for this instance download
 ================================ ========================================================================================
 
