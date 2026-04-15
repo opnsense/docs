@@ -375,8 +375,8 @@ Here are the full patch notes:
 * unbound: minor changes while scanning ACL subnets
 * web proxy: work around to skip passing additional auth properties
 * backend: allow pluginctl to return config.xml values
-* console: improve type checks in set address function
 * rc: join CARP early startup scripts
+* shell: improve type checks in set address function
 * plugins: os-dnscrypt-proxy fix for setup.sh on reboot
 * plugins: os-dyndns 1.20 fixes verify restrictions, GratisDNS and missing break for Linode (contributed by NOYB, Johan Pramming, Andrew Gunnerson)
 * plugins: os-maltrail 1.4 `[1] <https://github.com/opnsense/plugins/blob/master/security/maltrail/pkg-descr>`__ 

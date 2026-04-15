@@ -469,6 +469,7 @@ Here are the full patch notes:
 * interfaces: simplify device destroy code
 * interfaces: no longer use legacy_get_interface_addresses() in MAC address read
 * interfaces: remove unused opportunistic interface address functions
+* dhcp: avoid use of find_interface_network() et al
 * firewall: exclude localhost stateless traffic from default logging (contributed by kulikov-a)
 * firewall: using port type aliases the "enable" flag was ignored when not enabled
 * firewall: add support for syncookies
@@ -479,14 +480,13 @@ Here are the full patch notes:
 * ipsec: pass protocol when resolving via ipsec_resolve() (contributed by FloMeyer)
 * ipsec: fix mobile property passing when creating a new phase 2 entry
 * ipsec: rename "My Certificate Authority" to "Remote Certificate Authority" to avoid ambiguity
+* ipsec: avoid use of find_interface_network() et al
 * openvpn: avoid use of find_interface_network() et al
 * openvpn: stop removing name server-related files never written
 * openvpn: improve gateway detection in topology mode
-* ipsec: avoid use of find_interface_network() et al
-* dhcp: avoid use of find_interface_network() et al
-* console: move console mute calls into port setting function
-* ui: sidebar 2nd submenu view fix (contributed by Team Rebellion)
 * mvc: refactor and extend HostnameField to add options to validate partial hostnames and root zones
+* shell: move console mute calls into port setting function
+* ui: sidebar 2nd submenu view fix (contributed by Team Rebellion)
 * plugins: os-bind 1.22 `[1] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/bind/pkg-descr>`__ 
 * plugins: os-ddclient 1.2 `[2] <https://github.com/opnsense/plugins/blob/stable/22.1/dns/ddclient/pkg-descr>`__ 
 * plugins: os-freeradius 1.9.19 `[3] <https://github.com/opnsense/plugins/blob/stable/22.1/net/freeradius/pkg-descr>`__ 

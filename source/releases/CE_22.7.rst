@@ -253,8 +253,8 @@ Here are the full patch notes:
 * mvc: prevent UserExceptions to end up in the crash reporter
 * mvc: translate a base field error
 * backend: wait 1 second for configd socket to become available
-* console: store UUID for VLAN device
 * rc: remove obsolete NAME_var_script and NAME_var_mfs support
+* shell: store UUID for VLAN device
 * plugins: migrate all plugins to NAME_setup script use
 * plugins: $verbose argument in plugins_run() is spurious
 * plugins: os-acme-client 3.14 `[1] <https://github.com/opnsense/plugins/blob/stable/22.7/security/acme-client/pkg-descr>`__ 

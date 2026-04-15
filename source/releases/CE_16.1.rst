@@ -957,7 +957,7 @@ Without fuzz, here are the full patch notes:
 * captive portal: fix multiple voucher generation
 * firewall: add rule categorisation tag field
 * search: tweak padding to align with right visual boarder
-* console: fix halt script to show product name again
+* shell: fix halt script to show product name again
 * firmware: revoked the old 15.7 update fingerprint
 * interfaces: fix VLAN edit page to show the correct page name
 * squid: fix authentication script permission regression

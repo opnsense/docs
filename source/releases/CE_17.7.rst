@@ -928,7 +928,6 @@ version 17.1.9:
 * system: bring back crash reports for all types of kernel crashes
 * system: LDAP server StartTLS connection mode (contributed by Eugen Mayer)
 * system: prevent anonymous binds to AD by rejecting empty passwords
-* console: rewrote the backup restore to fix a possible licensing issue
 * interfaces: instead of renaming new interfaces create them with the target name
 * interfaces: the IP renewal was redesigned to prevent spurious reloads
 * firewall: gateway code refactored
@@ -937,6 +936,7 @@ version 17.1.9:
 * rfc 2136: removed from core, installable as plugin
 * ipsec: removed stale BINAT configuration items
 * proxy: hardened the SSL configuration (contributed by Fabian Franz)
+* shell: rewrote the backup restore to fix a possible licensing issue
 * src: netgraph/pppoe: user-supplied Host-Uniq tag and PADM messages
 
 The list of currently known issues with 17.7-RC1:

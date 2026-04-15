@@ -652,11 +652,11 @@ Here are the full patch notes:
 * unbound: switch model to integrate full DNS over TLS support
 * unbound: add qname-minimisation-strict option
 * unbound: renamed "blacklist" to "blocklist" for clarity
-* console: throw error when opnsense-importer encounters an encrypted config.xml
 * mvc: allow to unset attribute via setAttributeValue()
 * mvc: catch all errors including syntax and class not found errors
 * mvc: reduce differentials in config.xml when saving models
 * rc: opnsense-beep melody database directory
+* shell: throw error when opnsense-importer encounters an encrypted config.xml
 * shell: fix IPv4 /31 assignment
 * ui: improved JS hook_ipv4v6() to jump to /64 on IPv6 and back to /32 on IPv4
 * ui: inject default tooltips into bootgrid formatters
@@ -860,8 +860,8 @@ Here are the full patch notes against 21.1.7:
 * openvpn: offer the ability to export a user without a certificate
 * openvpn: increase consistency between export types
 * unbound: fix domain overrides for private address reverse lookup zones (contributed by Maurice Walker)
-* console: throw error when opnsense-importer encounters an encrypted config.xml
 * mvc: reduce differentials in config.xml when saving models
+* shell: throw error when opnsense-importer encounters an encrypted config.xml
 * ui: work on unification of add buttons by minifying them and adding primary color markup
 * ui: prevent translation line breaks from breaking JS
 * ui: switch firewall category icon for clarity

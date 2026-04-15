@@ -286,7 +286,7 @@ https://downloads.opnsense.com/
 This business release is based on the OPNsense 24.7.6 community version
 with additional reliability improvements.
 
-Here are the full changes against version 24.4.3:
+Here are the full patch notes:
 
 * system: remove "load_balancer" configuration remnants from core
 * system: replace usage of mt_rand() with random_int()

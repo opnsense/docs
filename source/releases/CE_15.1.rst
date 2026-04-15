@@ -852,7 +852,7 @@ Here is the full list of changes:
 * miniupnpd: now properly links to the OpenSSL/LibreSSL port
 * ipmitool: now properly links to the OpenSSL/LibreSSL port
 * core: extensive cleanups for PHP shebang usage, wiped numerous unused scripts and unreachable web pages, removed PBI remnants, removed 'tmp_path' softcoding to improve readability and git-grep(1) experience, removed stale debug statement that were only marginally useful while bumping the statements to default that indicate real errors
-* console: fixed halt script permissions and switched to synchronous mode
+* shell: fixed halt script permissions and switched to synchronous mode
 * sysctl: added net.inet6.ip6.rfc6204w3 to improve the DHCPv6 experience
 * nat: remove target IP hardcoding in automatic rules (props to pfSense for pointing that out to us)
 * rc: fixed missing package database when using the MFS option for /var

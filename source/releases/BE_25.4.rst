@@ -354,7 +354,7 @@ https://downloads.opnsense.com/
 This business release is based on the OPNsense 25.1.4 community version
 with additional reliability improvements.
 
-Here are the full patch notes against version 24.10.2:
+Here are the full patch notes:
 
 * system: migrate user, group and privilege management to MVC/API
 * system: remove the "disable integrated authentication" feature

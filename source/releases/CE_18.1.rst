@@ -201,13 +201,13 @@ Here are the full patch notes:
 * firewall: move color settings from schedules to theme (contributed by Fabian Franz)
 * intrusion detection: correct typo in CSS
 * openvpn: raise default DH parameter to 2048 bit
-* console: pass output of stop scripts to user during halt/reboot
-* console: clarify that installer is for installing when SSH is off also
 * rc: change NetFlow backup to only stop/start when needed
 * rc: backup and restore via XML files again
 * rc: slightly refactor halt/reboot/shutdown
 * rc: break out config stop script
 * rc: simplify configctl plumbing
+* shell: pass output of stop scripts to user during halt/reboot
+* shell: clarify that installer is for installing when SSH is off also
 * ui: add country flags for upcoming changes in GeoIP handling
 * ui: trigger onChange event to support custom hooks in form post
 * ui: change multi-select default from tokenizer to selectpicker
@@ -281,15 +281,15 @@ Here is the full list of changes:
 * ipsec: set ignore_acquire_ts to allow ASA compatibility
 * ipsec: add ike_name to syslog output
 * openvpn: improve validation between TCP, TCP4, TCP6, UDP, UDP4 and UDP6
-* console: manual pages for opnsense-importer and opnsense-installer
-* console: let opnsense-installer set up an early runtime environment
-* console: show firmware reboot hint prior to update when applicable
-* console: longer timeout for opnsense-importer invoke on first boot
-* console: proper return values for opnsense-importer in edge cases
 * mvc: support multiple directories for detached UI development
 * mvc: add AddressFamily option to NetworkField
 * mvc: non-functional menu node name tweaks
 * rc: action changes for "||" avoidance
+* shell: manual pages for opnsense-importer and opnsense-installer
+* shell: let opnsense-installer set up an early runtime environment
+* shell: show firmware reboot hint prior to update when applicable
+* shell: longer timeout for opnsense-importer invoke on first boot
+* shell: proper return values for opnsense-importer in edge cases
 * ui: fix tokenizer selection when values and labels do not match
 * ui: serve 404 when page was not found
 * ui: add and use SVG logo support
@@ -447,8 +447,6 @@ Here are the full patch notes:
 * web proxy: use error_directory translation as set by system language (contributed by Smart-Soft)
 * web proxy: add support for SNMP (contributed by Smart-Soft)
 * web proxy: rewrite the IDN support to only affect the template write
-* console: make tracking the default for LAN IPv6 during interface reconfiguration
-* console: reset VLANs as stated during port reconfiguration
 * mvc: track attached models of model relation fields
 * mvc: remove obsoleted "page-" prefix check for ACL
 * mvc: unit tests for DependConstraint
@@ -457,6 +455,8 @@ Here are the full patch notes:
 * rc: always reload VPN after filter to allow for better default gateway switching
 * rc: reconfigure IPv4 and IPv6 only once after boot
 * rc: do not run plugin reconfigure if a system configuration is not present
+* shell: make tracking the default for LAN IPv6 during interface reconfiguration
+* shell: reset VLANs as stated during port reconfiguration
 * ui: merge system activity and services diagnostics menu
 * ui: move defaults page from firmware to configuration section
 * ui: fix issue with typeahead selection in tokenizer
@@ -788,11 +788,11 @@ Here are the full patch notes:
 * firewall: fix outbound NAT for OpenVPN interfaces
 * interfaces: multiple overview page improvements (contributed by NOYB)
 * firmware: revoke 17.7 update fingerprint
-* console: check for root invoke in importer, installer and console menu
 * intrusion detection: always show schedule tab
 * intrusion detection: log first drop of a flow
 * intrusion detection: add a log file viewer
 * unbound: add num-queries-per-thread option values for 4096 and 8192
+* shell: check for root invoke in importer, installer and console menu
 * ui: remove chrome=1 from X-UA-Compatible meta element (contributed by NOYB)
 * ui: HTML compliance for attribute "type" on script element (contributed by NOYB)
 * ui: HTML compliance for "navigation" "role" on nav element (contributed by NOYB)
@@ -809,8 +809,8 @@ Here are the full patch notes:
 
 A hotfix release was issued as 18.1.2_2:
 
-* console: do not yet check for root in console menu as it clashes with rc.d
 * mvc: fix a typo in the new CRUD getBase() call, currently unused
+* shell: do not yet check for root in console menu as it clashes with rc.d
 
 
 --------------------------------------------------------------------------

@@ -93,10 +93,10 @@ Here are the full patch notes:
 * src: ifnet: Fix decreasing the vnet interface count
 * src: e1000: Increase FC pause/refresh time on PCH2 and newer
 * src: net80211: fix VHT160/80P80/80 chanwidth selection in the "40-" case
-* ports: curl 8.19.0 `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:08.rpcsec_gss.asc>`__ 
+* ports: curl 8.19.0 `[7] <https://curl.se/changes.html#8_19_0>`__ 
 * ports: hostwatch 1.0.13
-* ports: openssl 3.0.20 `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:06.tcp.asc>`__ 
-* ports: perl 5.42.2 `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:09.pf.asc>`__ 
+* ports: openssl 3.0.20 `[8] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+* ports: perl 5.42.2 `[9] <https://perldoc.perl.org/5.42.2/perldelta>`__ 
 
 
 
@@ -552,7 +552,6 @@ Here are the full patch notes:
 * radvd: implement RemoveAdvOnExit override
 * radvd: add Base6Interface constructor
 * radvd: support nat64prefix
-* console: opnsense-log now supports "backend" and "php" aliases
 * backend: safe execution changes in the whole code base
 * backend: removed short-lived mwexecf_bg() function
 * lang: various translation updates
@@ -562,6 +561,7 @@ Here are the full patch notes:
 * mvc: BaseModel: isEmptyAndRequired() has been removed
 * mvc: removed unusued RegexField
 * rc: replace camcontrol with diskinfo for TRIM check (contributed by Maurice Walker)
+* shell: opnsense-log now supports "backend" and "php" aliases
 * ui: allow HTML tags in menu items and title
 * ui: improve user readability in SimpleFileUploadDlg()
 * plugins: os-acme-client 4.12 `[2] <https://github.com/opnsense/plugins/blob/stable/26.1/security/acme-client/pkg-descr>`__ 

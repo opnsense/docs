@@ -430,7 +430,6 @@ Here are the full patch notes:
 * web proxy: fix a typo in extended logging parser (contributed by kulikov-a)
 * backend: consolidate configctl utility into one location and add manual page
 * backend: unify use of configctl utility
-* console: move console mute calls into port setting function
 * images: removed deprecated os-dyndns plugin from default installation
 * mvc: add BlankDesc to ModelRelationField (contributed by agh1467)
 * mvc: add hint support for text fields (contributed by agh1467)
@@ -439,6 +438,7 @@ Here are the full patch notes:
 * mvc: overload __isset() magic method
 * mvc: properly root the model mount point to avoid unrelated XML node name overlap
 * mvc: refactor and extend HostnameField to add options to validate partial hostnames and root zones
+* shell: move console mute calls into port setting function
 * ui: add support for terabytes, and petabytes to format_bytes() (contributed by agh1467)
 * ui: move storing jQuery Bootgrid settings in browser from core to bootgrid (contributed by Manuel Faux)
 * ui: sidebar 2nd submenu view fix (contributed by Team Rebellion)

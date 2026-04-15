@@ -371,7 +371,6 @@ Here are the full patch notes:
 * unbound: support setting type value for DNS over TLS/Query Forwarding API (contributed by kulikov-a)
 * unbound: convert advanced settings to MVC/API
 * web proxy: update pattern to zst for the Arch packages (contributed by gacekjk)
-* console: store UUID for VLAN device
 * lang: bring back Italian and update all languages to latest available translations
 * lang: fix reported issues with Italian and French translations
 * lang: fix syntax errors in French translation (contributed by kulikov-a)
@@ -383,6 +382,7 @@ Here are the full patch notes:
 * mvc: remove "clear all", "copy" and "paste" options when only a single entry is allowed
 * mvc: fix typo in searchRecordsetBase()
 * mvc: prevent UserExceptions to end up in the crash reporter
+* shell: store UUID for VLAN device
 * ui: removed Internet Explorer support
 * ui: boostrap-select ignored header height
 * ui: merge option objects instead of replacing them in bootgrid (contributed by agh1467)

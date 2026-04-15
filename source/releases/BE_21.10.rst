@@ -352,7 +352,6 @@ Here are the full patch notes:
 * unbound: renamed "blacklist" to "blocklist" for clarity
 * unbound: support insecure-domain directive
 * unbound: switch model to integrate full DNS over TLS support
-* console: throw error when opnsense-importer encounters an encrypted config.xml
 * mvc: allow to unset attribute via setAttributeValue()
 * mvc: reduce differentials in config.xml when saving models
 * rc: opnsense-beep melody database directory

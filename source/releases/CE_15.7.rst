@@ -55,7 +55,7 @@ tools.  Please see the full patch notes for details and references:
 * languages: brought Simplified Chinese to 49% completed, German to 30% completed
 * universal plug and play: make page invoke static to remove exploitability of the legacy packages framework
 * crash reporter: finally enabled the send button and provides human-readable feedback whether the submission was complete
-* console: added non-interactive interface assignment for headless deployments
+* shell: added non-interactive interface assignment for headless deployments
 * ssh: disable password authentication on factory reset to align with the standard configuration
 * diagnostics: avoid duplicated calls of gethostbyaddr() in NDP table view
 * users: prompt for old password on password change to prevent account hijacking
@@ -741,7 +741,7 @@ Here are the full patch notes:
 * menu: added hot-plugging support for upcoming plugins
 * acl: added hot-plugging support for upcoming plugins
 * ipsec: fix faulty behaviour on configuration changes
-* console: switched halt and reboot numbering
+* shell: switched halt and reboot numbering
 * languages: bring German to 51% completed
 * graphs: remove obsolete CPU graph pages
 
@@ -971,17 +971,19 @@ take a responsible course of action.
 
 Here are the full patch notes:
 
-* notable ports updates: phalcon 2.0.4 `[1] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.4>`__ , libressl 2.2.1 `[2] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.1-relnotes.txt>`__ , openssl 1.0.2d `[3] <https://www.openssl.org/news/secadv_20150709.txt>`__ 
 * opnsense-update: can now switch from/to LibreSSL/OpenSSL on the fly (needs root shell for now)
 * ssh: work around a shutdown bug that prevents other users from logging in (requires a reboot if used)
-* console: allow the root menu to run one-shot shell commands too
-* console: clean up the version advertisement in the banner
+* shell: allow the root menu to run one-shot shell commands too
+* shell: clean up the version advertisement in the banner
 * dashboard: colour hostap wifi as green when up
 * backup: do not redirect on interface mismatch, reboot right away instead
 * system: migrated /var and /tmp memory disks to tmpfs (requires a reboot if used)
 * proxy: fix the startup when used on a /var memory disk (requires a manual start after boot)
 * intrusion detection: fix the startup when used on a /var memory disk (requires a manual start after boot)
 * intrusion detection: enable the uricontent keyword for the ET ruleset
+* ports: libressl 2.2.1 `[1] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.1-relnotes.txt>`__ 
+* ports: openssl 1.0.2d `[2] <https://www.openssl.org/news/secadv_20150709.txt>`__ 
+* ports: phalcon 2.0.4 `[3] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.4>`__ 
 
 
 
@@ -1080,7 +1082,7 @@ tools.  Please see the full patch notes for details and references:
 * languages: brought Simplified Chinese to 49% completed, German to 30% completed
 * universal plug and play: make page invoke static to remove exploitability of the legacy packages framework
 * crash reporter: finally enabled the send button and provides human-readable feedback whether the submission was complete
-* console: added non-interactive interface assignment for headless deployments
+* shell: added non-interactive interface assignment for headless deployments
 * ssh: disable password authentication on factory reset to align with the standard configuration
 * diagnostics: avoid duplicated calls of gethostbyaddr() in NDP table view
 * users: prompt for old password on password change to prevent account hijacking

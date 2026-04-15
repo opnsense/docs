@@ -188,6 +188,14 @@ A hotfix release was issued as 25.10.2_10:
 * system: escape LDAP username during search `[26] <https://www.cve.org/cverecord?id=CVE-2026-34578>`__  (reported by Matt Andreko)
 * unbound: limit duckdb to a single thread in write mode to reduce logger memory usage
 
+A hotfix release was issued as 25.10.2_11:
+
+* system: move ldap_escape() to caller for now to avoid side effects
+
+A hotfix release was issued as 25.10.2_12:
+
+* firmware: add upgrade hint and fingerprint for 26.4 plus isc-dhcp plugin migration
+
 
 
 --------------------------------------------------------------------------
@@ -412,7 +420,7 @@ https://downloads.opnsense.com/
 This business release is based on the OPNsense 25.7.5 community version
 with additional reliability improvements.
 
-Here are the full patch notes against version 25.4.3:
+Here are the full patch notes:
 
 * system: the setup wizard was rewritten using MVC/API
 * system: change default DHCP use from ISC to Dnsmasq for factory reset and console port and address assignments
@@ -479,6 +487,7 @@ Here are the full patch notes against version 25.4.3:
 * firewall: improve alias parsing performance in diagnostics page
 * firewall: support IPinfo format for GeoIP `[2] <https://docs.opnsense.org/manual/how-tos/ipinfo_geo_ip.html>`__ 
 * firewall: adapt default table size calculation
+* firewall: fix flags not showing on GeoIP selection
 * captive portal: migrate backend from IPFW to PF
 * captive portal: fix regression when NAT reflection is enabled
 * captive portal: fix command line argument parsing in backend
@@ -491,8 +500,6 @@ Here are the full patch notes against version 25.4.3:
 * captive portal: fix last_accessed being cached from previous entries if N/A
 * captive portal: mark alias as type external for use in rules
 * captive portal: align accounting session timeout with API
-* captive portal: balance fastcgi servers a bit better
-* captive portal: do not share a fastcgi socket with web GUIo firewall: fix flags not showing on GeoIP selection
 * captive portal: make room for additional authentication profiles
 * captive portal: API dispatcher is now privilege separated via "wwwonly" user and group
 * captive portal: preparations for SSO identification support
