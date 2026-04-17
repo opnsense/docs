@@ -267,6 +267,8 @@ The most common core commands are as follows:
 | Remote backup                               | configctl system remote backup         | No parameters           | Trigger the remote backup at the specified  |
 |                                             |                                        |                         | time as opposed to its nightly default.     |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
+| Restart OpenVPN instance                    | configctl openvpn restart              | instance UUID           | Restart the given OpenVPN instance.         |
++---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Update and reload firewall aliases          | configctl filter refresh_aliases       | No parameters           | Updates IP aliases for DNS entries and MAC  |
 |                                             |                                        |                         | addresses as well as URL tables.            |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
