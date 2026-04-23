@@ -45,6 +45,7 @@ Enabling it is a requirement if dynamic DNS updates (RFC2136) should be sent whe
 ==================================== ==================================================================================================================
 Enabled                              Enable DDNS server. To send updates to an authoritative nameserver, configure Dynamic DNS
                                      inside the DHCPv4 and DHCPv6 subnets.
+Manual config                        Disable configuration file generation and manage the file (/usr/local/etc/kea/kea-dhcp-ddns.conf) manually.
 Bind address                         Address on which the DHCP DDNS server interface should be available; usually this is localhost (127.0.0.1).
 Bind port                            Portnumber to use for the DHCP DDNS server interface; default is 53001.
 ==================================== ==================================================================================================================
