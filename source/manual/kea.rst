@@ -45,6 +45,7 @@ Enabling it is a requirement if dynamic DNS updates (RFC2136) should be sent whe
 ==================================== ==================================================================================================================
 Enabled                              Enable DDNS server. To send updates to an authoritative nameserver, configure Dynamic DNS
                                      inside the DHCPv4 and DHCPv6 subnets.
+Manual config                        Disable configuration file generation and manage the file (/usr/local/etc/kea/kea-dhcp-ddns.conf) manually.
 Bind address                         Address on which the DHCP DDNS server interface should be available; usually this is localhost (127.0.0.1).
 Bind port                            Portnumber to use for the DHCP DDNS server interface; default is 53001.
 ==================================== ==================================================================================================================
@@ -112,11 +113,19 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         Options                                   Select custom DHCPv4 options that were created in the options tab.
         **Dynamic DNS**
         DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. "home.arpa.").
+        DNS reverse zone                          Full reverse DNS zone receiving PTR updates (e.g. "200.10.10.in-addr.arpa.").
         DNS qualifying suffix                     If a DHCP client only sends a hostname in option 81, append this suffix to create an FQDN (e.g. "home.arpa.").
-        DNS server                                Authoritative DNS server receiving dynamic updates.
+        DNS server address                        Authoritative DNS server receiving dynamic updates.
+        DNS server port                           Port of the authoritative DNS server receiving dynamic updates. Leave empty to use default (53).
         TSIG key name                             TSIG key name used for secure DNS updates.
         TSIG key secret                           Base64 encoded TSIG key secret.
         TSIG key algorithm                        Algorithm used for TSIG authentication with the DNS server (e.g. hmac-sha256)
+        Override no update                        Ignores the client's wishes for no DDNS updates to be performed.
+        Override client update                    Ignores the client's delegation requests. Causes Kea to perform Dynamic DNS updates
+                                                  even though the client indicated its intention to perform the updates itself.
+        Update on renew                           Instructs the server to always update the DNS information when a lease is renewed, even if its DNS information has not changed.
+                                                  This allows Kea to self-heal if it was previously unable to add DNS entries or they were somehow lost by the DNS server.
+                                                  May impact performance, especially for servers with numerous clients that renew often.
         ========================================= ====================================================================================
 
         **DHCPv6**
@@ -136,11 +145,19 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         Options                                   Select custom DHCPv6 options that were created in the options tab.
         **Dynamic DNS**
         DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. "home.arpa.").
+        DNS reverse zone                          Full reverse DNS zone receiving PTR updates (e.g. "200.10.10.in-addr.arpa.").
         DNS qualifying suffix                     If a DHCP client only sends a hostname in option 81, append this suffix to create an FQDN (e.g. "home.arpa.").
-        DNS server                                Authoritative DNS server receiving dynamic updates.
+        DNS server address                        Authoritative DNS server receiving dynamic updates.
+        DNS server port                           Port of the authoritative DNS server receiving dynamic updates. Leave empty to use default (53).
         TSIG key name                             TSIG key name used for secure DNS updates.
         TSIG key secret                           Base64 encoded TSIG key secret.
         TSIG key algorithm                        Algorithm used for TSIG authentication with the DNS server (e.g. hmac-sha256)
+        Override no update                        Ignores the client's wishes for no DDNS updates to be performed.
+        Override client update                    Ignores the client's delegation requests. Causes Kea to perform Dynamic DNS updates
+                                                  even though the client indicated its intention to perform the updates itself.
+        Update on renew                           Instructs the server to always update the DNS information when a lease is renewed, even if its DNS information has not changed.
+                                                  This allows Kea to self-heal if it was previously unable to add DNS entries or they were somehow lost by the DNS server.
+                                                  May impact performance, especially for servers with numerous clients that renew often.
         ========================================= ====================================================================================
 
     .. tab:: PD Pools (DHCPv6)
@@ -501,6 +518,12 @@ The DDNS Agent attempts to match each request to the appropriate DNS server and 
 .. Attention::
 
     Only subnets that have a DNS server configured will send DDNS updates.
+
+
+For reverse zone updates enable the advanced mode inside a subnet. Add your `DNS reverse zone` to the existing forward configuration. Please note that reverse zone updates will be sent to the
+same DNS server as the forward zone updates.
+
+Some clients might send client specific flags to avoid reverse zone updates. You can override that behavior with `Override no update` and `Override client update`.
 
 
 Prefix Delegation (IA_PD)
