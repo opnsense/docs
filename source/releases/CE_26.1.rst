@@ -98,6 +98,20 @@ Here are the full patch notes:
 * ports: openssl 3.0.20 `[8] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: perl 5.42.2 `[9] <https://perldoc.perl.org/5.42.2/perldelta>`__ 
 
+A hotfix release was issued as 26.1.6_2:
+
+* system: use Framed-IPv6-Address in case of an IPv6 address in RADIUS accounting
+* captive portal: fix allowed addresses missing from session IPs in roaming case
+* images: refreshed images using this version in order to fix UFS installer issues
+* ports: python 3.13.13 `[10] <https://docs.python.org/release/3.13.13/whatsnew/changelog.html>`__ 
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-26.1.6-dvd-amd64.iso.bz2) = 6ba3633d9c0f96d82c792015a45f4b8aac45ea8fa2bdba3c5e534d0c90a4f08c
+    # SHA256 (OPNsense-26.1.6-nano-amd64.img.bz2) = 3c16267c791abfc3e41d5249fcb0c245c03cb91e2f1aa4d53017f0f3454d03a1
+    # SHA256 (OPNsense-26.1.6-serial-amd64.img.bz2) = 60e698b7f935b647b72a424c78acaa1772a050bb4bd593ca001ea9a1634d5643
+    # SHA256 (OPNsense-26.1.6-vga-amd64.img.bz2) = cf8deca3033b66138930d417c879cb93b7930d1ca8dabd7e1aea914f9a551f4a
 
 
 --------------------------------------------------------------------------

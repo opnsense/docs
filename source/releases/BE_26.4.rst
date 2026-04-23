@@ -357,10 +357,8 @@ Here are the full patch notes:
 
 Migration notes, known issues and limitations:
 
-* ISC-DHCP moves to a plugin. It will be automatically installed during upgrades. It is not installed on new installations because it is not being used, but you can still install a
-nd keep using it.
-* To accommodate the change away from ISC-DCHP defaults the "Track interface" IP
-v6 mode now has a sibling called "Identity Association" which does the same except it is not automatically starting ISC-DHCPv6 and Radvd router advertisements to allow better interoperability with Kea and Dnsmasq setups.
+* ISC-DHCP moves to a plugin. It will be automatically installed during upgrades. It is not installed on new installations because it is not being used, but you can still install and keep using it.
+* To accommodate the change away from ISC-DCHP defaults the "Track interface" IPv6 mode now has a sibling called "Identity Association" which does the same except it is not automatically starting ISC-DHCPv6 and Radvd router advertisements to allow better interoperability with Kea and Dnsmasq setups.
 * Dnsmasq is now the default for DHCPv4 and DHCPv6 as well as RA out of the box.  One thing that the upstream software cannot cover is prefix delegation so that is no longer offered by default.  Use another DHCPv6 server in this case.
 * Due to command line execution safety concerns the historic functions mwexec_bg() and mwexec() were removed.  Make sure your custom code is not using them and use mwexecf(), mwexecfb() and mwexecfm() instead.
 * The function sessionClose() has also been removed from the MVC code and is no longer needed.  Make sure to remove it from your custom code.
@@ -369,6 +367,7 @@ v6 mode now has a sibling called "Identity Association" which does the same exce
 * The firewall migration page is not something you need to jump into right away.  Please make yourself familiar with the new rules GUI first and check the documentation for incompatibilities.  Single interface from the floating interface will not be considered "floating" in priorities.
 * Firewall: NAT: Port Forwarding is now called "Destination NAT".  Firewall rule associations are no longer supported, but the old associated firewall rules remain in place with their last known configuration and can now be edited to suit future needs.
 * Firewall: NAT: Source NAT is from the set of pages formerly known as automation, but Outbound NAT is still the main page for these types of rules.
+* Unbound blocklists are now the same between business and community version.  This requires a manual reapply of the blocklists in order to use the new shared format.
 
 The public key for the 26.4 series is:
 
