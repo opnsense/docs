@@ -119,10 +119,6 @@ Under the "Secure Shell" heading, the following options are available:
 **Option**                                     **Description**
 ============================================== ========================================================================
 Secure Shell Server                            Enable a secure shell service
-Login Group                                    Select the allowed groups for remote login. The "wheel" group is
-                                               always set for recovery purposes and an additional local group can be
-                                               selected at will. Do not yield remote access to non-administrators
-                                               as every user can access system files using SSH or SFTP.
 Permit Root Login                              Root login is generally discouraged. It is advised to log in via
                                                another user and switch to root afterwards.
 Permit password login                          When disabled, authorized keys need to be configured for each User
