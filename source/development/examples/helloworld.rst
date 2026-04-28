@@ -484,6 +484,7 @@ Which will output a json structure in your browser like:
             "SMTPHost": "",
             "FromEmail": "sample@example.com",
             "ToEmail": "",
+            "%ToEmail": "Enter recipient here",
             "Description": ""
             }
         }
@@ -492,14 +493,15 @@ Which will output a json structure in your browser like:
 .. Note::
     The outer container is named "helloworld" and contains all fields defined in the model.
 
+.. Note::
+    :code:`ApiMutableModelControllerBase` contains more shared functionality for grid like operations as well, most of
+    our api controllers use this as a base. When interested in the internals of the get action itself, search
+    for :code:`getAction` in :code:`ApiMutableModelControllerBase.php`.
 
 .. Note::
-
-      :code:`ApiMutableModelControllerBase` contains more shared functionality for grid like operations as well, most of
-      our api controllers use this as a base. When interested in the internals of the get action itself, search
-      for :code:`getAction` in :code:`ApiMutableModelControllerBase.php`.
-
-
+    :code:`%ToEmail` is similar to :code:`<hint>Enter recipient here</hint>` except that it can be used to generate
+    a dynamic hint during data fetch. Fields with a :code:`%` prefix cannot be stored and are not relevant to the
+    model data, but do refer to the respective field type without the prefix.
 
 Support jQuery API calls
 ------------------------
