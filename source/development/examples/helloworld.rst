@@ -555,12 +555,13 @@ ValidationMessage tag. For example:
 
     <ToEmail type="EmailField">
         <Required>Y</Required>
-        <ValidationMessage>please specify a valid email address</ValidationMessage>
+        <ValidationMessage>Please specify a valid email address.</ValidationMessage>
     </ToEmail>
 
-Changes the “email address invalid” into “please specify a valid email
-address” when no (valid) email address is provided.
-
+Changes the “Email address is invalid.” into “Please specify a valid email
+address.” when an invalid email address is provided.  Since this field is
+required the validation message for an empty field will always be
+“A value is required.” instead.
 
 Add actions
 -----------
