@@ -65,6 +65,15 @@ file containing the actual model definition.
                     <email type="EmailField">
                         <Required>Y</Required>
                     </email>
+                    <schedule type="OptionField">
+                        <Default>wly</Default>
+                        <Required>Y</Required>
+                        <OptionValues>
+                            <dly>Daily</dly>
+                            <wly>Weekly</wly>
+                            <mly>Monthly</mly>
+                        </OptionValues>
+                    </schedule>
                     <description type="DescriptionField"/>
                 </address>
             </addresses>
@@ -176,7 +185,7 @@ other tags.
             <id>address.enabled</id>
             <label>Enabled</label>
             <type>checkbox</type>
-            <help>Enable this address</help>
+            <help>Enable this address.</help>
             <grid_view>
                 <width>6em</width>
                 <type>boolean</type>
@@ -187,13 +196,19 @@ other tags.
             <id>address.email</id>
             <label>Email</label>
             <type>text</type>
-            <help>Enter the email address</help>
+            <help>Enter the email address.</help>
+        </field>
+        <field>
+            <id>address.schedule</id>
+            <label>Schedule</label>
+            <type>dropdown</type>
+            <help>Select your preferred schedule.</help>
         </field>
         <field>
             <id>address.description</id>
             <label>Description</label>
             <type>text</type>
-            <help>Enter an optional description</help>
+            <help>Enter an optional description.</help>
             <grid_view>
                 <visible>false</visible>
             </grid_view>
