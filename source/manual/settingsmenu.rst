@@ -216,7 +216,7 @@ share the same syntax:
 - Ranges can be specified using a dash: ``4-9``
 
 Available cron jobs are registered in the backend to prevent command injection and privilege escalation. These can be found under
-`Command` and may allow an additional `Parameter`. Restart and reload actions are self-explanatory. They take no parameters and
+`Command` and may use optional `Parameters`. Restart and reload actions are self-explanatory. They tend to take no parameters and
 will restart (usually slower stop and start of a process) or reload (usually a faster SIGHUP) the respective service. The availability
 of restart and reload is subject to their respective services as not all software will support a reload for implementational reasons.
 
@@ -225,30 +225,30 @@ The most common core commands are as follows:
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | Command in GUI                              | Command in shell                       | Supported parameters    | Background information                      |
 +=============================================+========================================+=========================+=============================================+
-| Automatic firmware update                   | configctl firmware auto-update         | No parameters           | Perform a minor update if applicable.       |
+| Automatic firmware update                   | configctl firmware auto-update         | N/A                     | Perform a minor update if applicable.       |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Download and reload external proxy ACLs     | configctl proxy fetchacls              | No parameters           | Fetch and activate the external ACL files   |
+| Download and reload external proxy ACLs     | configctl proxy fetchacls              | N/A                     | Fetch and activate the external ACL files   |
 |                                             |                                        |                         | for configured blocklists.                  |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Firmware changelog update                   | configctl firmware changelog cron      | No parameters           | Refresh current changelog status from       |
+| Firmware changelog update                   | configctl firmware changelog cron      | N/A                     | Refresh current changelog status from       |
 |                                             |                                        |                         | authoritative firmware location to preview  |
 |                                             |                                        |                         | changelogs for new versions. Note this      |
 |                                             |                                        |                         | utilizes a skew interval of 25 minutes and  |
 |                                             |                                        |                         | is also performed by the firmware update    |
 |                                             |                                        |                         | check.                                      |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Firmware update check                       | configctl firmware poll                | No parameters           | Refresh current update status from firmware |
+| Firmware update check                       | configctl firmware poll                | N/A                     | Refresh current update status from firmware |
 |                                             |                                        |                         | mirror for e.g. remote status check via     |
 |                                             |                                        |                         | API. Note this utilizes a skew interval of  |
 |                                             |                                        |                         | 25 minutes.                                 |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| HA update and reconfigure backup            | configctl system ha_reconfigure_backup | No parameters           | Synchronize the configuration to the backup |
+| HA update and reconfigure backup            | configctl system ha_reconfigure_backup | N/A                     | Synchronize the configuration to the backup |
 |                                             |                                        |                         | firewall and restart its services to apply  |
 |                                             |                                        |                         | the changes.                                |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Halt and power off the system               | configctl system halt                  | No parameters           | Perform a power off at the specified time.  |
+| Halt and power off the system               | configctl system halt                  | N/A                     | Perform a power off at the specified time.  |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Manual gateway switch                       | configctl interface routes alarm       | No parameters           | Perform a manual gateway switch if          |
+| Manual gateway switch                       | configctl interface routes alarm       | N/A                     | Perform a manual gateway switch if          |
 |                                             |                                        |                         | applicable.  Malfunctioning gateway         |
 |                                             |                                        |                         | monitors will be restarted as well          |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
@@ -258,20 +258,20 @@ The most common core commands are as follows:
 |                                             |                                        | or overview page, e.g.  |                                             |
 |                                             |                                        | "lan", "wan", "optX".   |                                             |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Reboot the system                           | configctl system reboot                | No parameters           | Perform a reboot at the specified time.     |
+| Reboot the system                           | configctl system reboot                | N/A                     | Perform a reboot at the specified time.     |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Remote backup                               | configctl system remote backup         | No parameters           | Trigger the remote backup at the specified  |
+| Remote backup                               | configctl system remote backup         | N/A                     | Trigger the remote backup at the specified  |
 |                                             |                                        |                         | time as opposed to its nightly default.     |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Restart OpenVPN instance                    | configctl openvpn restart              | Instance UUID           | Restart the given OpenVPN instance.         |
+| Restart OpenVPN instance                    | configctl openvpn restart              | instance: UUID          | Restart the given OpenVPN instance.         |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Update and reload firewall aliases          | configctl filter refresh_aliases       | No parameters           | Updates IP aliases for DNS entries and MAC  |
+| Update and reload firewall aliases          | configctl filter refresh_aliases       | N/A                     | Updates IP aliases for DNS entries and MAC  |
 |                                             |                                        |                         | addresses as well as URL tables.            |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Update and reload intrusion detection rules | configctl ids update                   | No parameters           | Fetches remote rules and reloads the IDS    |
+| Update and reload intrusion detection rules | configctl ids update                   | N/A                     | Fetches remote rules and reloads the IDS    |
 |                                             |                                        |                         | instance to make use of newly fetched rules.|
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Update Unbound DNSBLs                       | configctl unbound dnsbl                | No parameters           | Update the the DNS blocklists and apply the |
+| Update Unbound DNSBLs                       | configctl unbound dnsbl                | N/A                     | Update the the DNS blocklists and apply the |
 |                                             |                                        |                         | changes to Unbound.                         |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | ZFS pool trim                               | configctl zfs trim [pool]              | pool: ZFS pool name to  | Initiates an immediate on-demand TRIM       |
