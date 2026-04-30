@@ -75,6 +75,12 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         Firewall rules                            Automatically add a basic set of firewall rules to allow dhcp traffic, more fine grained
                                                   controls can be offered manually when disabling this option.
         Socket type** (DHCPv4 only)               Socket type used for DHCP communication.
+        MAC sources (DHCPv6 only)                 The DHCPv6 protocol does not provide any completely reliable way to retrieve hardware addresses of clients.
+                                                  To mitigate that issue, a number of mechanisms are available. Each of these mechanisms works in certain cases,
+                                                  but may not in others. Whether the mechanism works in a particular deployment is somewhat dependent on the
+                                                  network topology and the technologies used. Please note that this influences PD route installation, since
+                                                  the source MAC address of the client is required to target the link-local route. It also influences MAC
+                                                  based reservations.
         **High Availability**
         Enabled                                   Enable High availability hook, requires the Control Agent to be enabled as well.
         This server name                          The name of this server, should match with one of the entries in the HA peers.
@@ -586,6 +592,12 @@ After applying the configuration, clients will receive a IA_NA address (e.g. ``f
 Whenever a IA_PD lease is acknowledged, a route targeting the link local address (LLA) of the requesting DHCPv6 client will be automatically installed.
 
 Since lease files are synchronized in high availability mode, the routes will also be installed and cleaned up on both peers.
+
+.. Note::
+
+    If the MAC address for a client route installation is not found, take a look at the "MAC sources" option in the general DHCPv6 settings. It influences how client
+    MAC addresses are constructed per default. The current default ``ipv6-link-local`` will construct the MAC out of an EUI-64 link-local address.
+    This should work for most clients, yet if they use random link-local addresses, ``duid`` would be the next best option.
 
 
 -------------------------
