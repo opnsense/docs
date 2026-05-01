@@ -78,7 +78,7 @@ A hotfix release was issued as 24.7.12_2:
 
 * plugins: turning binary data into JSON may fail globally
 * unbound: fixup permission on copy
-* ports: openvpn 2.6.13 `[11] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.13>`__ 
+* ports: openvpn 2.6.13 `[11] <https://github.com/OpenVPN/openvpn/blob/v2.6.13/Changes.rst>`__ 
 
 A hotfix release was issued as 24.7.12_4:
 
@@ -911,7 +911,7 @@ Here are the full changes against version 24.1.10:
 * ports: hostapd 2.11 `[7] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
 * ports: libpfctl 0.12
 * ports: phalcon 5.8.0 `[8] <https://github.com/phalcon/cphalcon/releases/tag/v5.8.0>`__ 
-* ports: openvpn 2.6.12 `[9] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.12>`__ 
+* ports: openvpn 2.6.12 `[9] <https://github.com/OpenVPN/openvpn/blob/v2.6.12/Changes.rst>`__ 
 * ports: wpa_supplicant 2.11 `[10] <https://w1.fi/cgit/hostap/plain/wpa_supplicant/ChangeLog>`__ 
 
 A hotfix release was issued as 24.7_5:

@@ -199,7 +199,7 @@ A hotfix release was issued as 24.4.1_2:
 * ports: krb5 1.21.3 `[20] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
 * ports: nss 3.101 `[21] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_101.html>`__ 
 * ports: openssh 9.8p1 `[22] <https://www.openssh.com/txt/release-9.8>`__ 
-* ports: openvpn 2.6.11 `[23] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.11>`__ 
+* ports: openvpn 2.6.11 `[23] <https://github.com/OpenVPN/openvpn/blob/v2.6.11/Changes.rst>`__ 
 * ports: suricata 7.0.6 `[24] <https://suricata.io/2024/06/27/suricata-7-0-6-and-6-0-20-released/>`__ 
 
 A hotfix release was issued as 24.4.1_3:
@@ -437,7 +437,7 @@ Here are the full patch notes:
 * ports: openssh 9.7p1 `[24] <https://www.openssh.com/txt/release-9.7>`__ 
 * ports: openssl 3.0.13 `[25] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openssl fix for CVE-2024-2511 `[26] <https://github.com/freebsd/freebsd-ports/commit/3d9fc064b7>`__ 
-* ports: openvpn 2.6.10 `[27] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.10>`__ 
+* ports: openvpn 2.6.10 `[27] <https://github.com/OpenVPN/openvpn/blob/v2.6.10/Changes.rst>`__ 
 * ports: pcre2 10.43 `[28] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.43>`__ 
 * ports: phalcon 5.6.2 `[29] <https://github.com/phalcon/cphalcon/releases/tag/v5.6.2>`__ 
 * ports: php 8.2.18 `[30] <https://www.php.net/ChangeLog-8.php#8.2.18>`__ 

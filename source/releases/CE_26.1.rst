@@ -35,6 +35,93 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.1.7 (April 30, 2026)
+--------------------------------------------------------------------------
+
+
+This includes all very recent FreeBSD SA/EN patches, a number of system
+improvements (how are you doing, Kea!) and third party updates for OpenVPN
+and StrongSwan.
+
+It also includes one high and one medium advisory for our code.  GitHub
+has not issued a CVE for this yet, unfortunately, but this announcement
+will be updated as soon as that happens.  See below for details.
+
+Here are the full patch notes:
+
+* system: protect popen() with exec_safe() `[1] <https://github.com/opnsense/core/security/advisories/GHSA-xxp9-93cr-x54p>`__ 
+* system: lockout bypass fix `[2] <https://github.com/opnsense/core/security/advisories/GHSA-h3vx-4q27-rc42>`__  (contributed by Konstantinos Spartalis)
+* system: refactor dashboard to use User model instead of direct config access
+* system: throw UserException when dashboard size limit was reached on save
+* system: add notes dashboard widget (contributed by Konstantinos Spartalis)
+* system: allow gateway load balance weights from 1 to 10 for more flexibility (contributed by Matthew Hall)
+* system: fix traffic dashboard widget initialization race condition (contributed by Greelan)
+* system: avoid side effect rendering sysctl item in config.xml during console assignment
+* system: improve cron command and parameter escaping
+* system: add "nosync" option to gateway configuration
+* system: support RADIUS NAS-IP-Address attribute for authentication
+* system: add compatibility layer to future route disable/enable migration
+* system: only split first colon when reading sysctls
+* system: revisit snapshot name validation (partially contributed by Konstantinos Spartalis)
+* interfaces: refactor bridge reconfigure script
+* firewall: live view: decode HTML where necessary to aid filtering
+* firewall: fix typo in alias update error log and make parser a bit more resilient
+* firmware: opnsense-update: handle FreeBSD.conf disable internally
+* kea: fix "Delegated length must be longer than or equal to prefix length" validation
+* kea: add ddns-override-no-update, ddns-override-client-update and ddns-update-on-renew per subnet
+* kea: DDNS DNS server port can now be specified
+* kea: add explicit reverse DDNS zones support (contributed by XtraLarge)
+* kea: add DDNS manual config override
+* kea: remove depend constraint of ddns_reverse_zone
+* radvd: allow user controlled hop limit (contributed by BPplays)
+* unbound: improve hostname/domain override validation
+* backend: configctl: properly quote parameters to avoid skipping empty ones (contributed by Majx)
+* lang: numerous updates and fixes in existing languages
+* mvc: introduce JSON field type and refactor dashboard to use it
+* mvc: fixed a number of class import statements
+* shell: config access refactor in password and setaddr scripts
+* ui: generalize placeholders between controllers and JS
+* ui: simplify and clean up debounce() usage
+* ui: trap generic error popup for specific API URLs such as /api/core/firmware/upgradestatus when it adds no value and known to be unstable
+* plugins: os-acme-client 4.16 `[3] <https://github.com/opnsense/plugins/blob/stable/26.1/security/acme-client/pkg-descr>`__ 
+* plugins: os-zabbix-agent 1.9 `[4] <https://github.com/opnsense/plugins/blob/stable/26.1/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.7 `[5] <https://github.com/opnsense/plugins/blob/stable/26.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* src: vm_fault: reset m_needs_zeroing properly `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:05.vm.asc>`__ 
+* src: timerfd: Fix interval callout scheduling `[7] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:06.timerfd.asc>`__ 
+* src: tty: avoid leaving dangling pointers in tty_drop_ctty() `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:10.tty.asc>`__ 
+* src: pkru: fix handling of 1GB largepage mappings `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:11.amd64.asc>`__ 
+* src: contrib/tzdata: import tzdata 2025c, 2026a and 2026b `[10] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:09.tzdata.asc>`__ 
+* src: amd64: fix INVLPGB range invalidation `[11] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:10.amd64.asc>`__ 
+* src: pf: improve SCTP validation `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:14.pf.asc>`__ 
+* src: execve: fix an operator precedence bug `[13] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:13.exec.asc>`__ 
+* src: dhclient: check for unexpected characters in some DHCP server options `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:12.dhclient.asc>`__ 
+* src: dhclient: fix reallocation of dhclient script environments `[15] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:15.dhclient.asc>`__ 
+* src: libnv: switch fd_wait() from select(2) to poll(2) `[16] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:16.libnv.asc>`__ 
+* src: libnv: fix heap overflow in nvlist_recv() `[17] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:17.libnv.asc>`__ 
+* src: libpcap: update to 1.10.6
+* src: ipfw_nptv6: fix handling the ifaddr removal event
+* src: if_tuntap: make SIOCIFDESTROY interruptible
+* src: pfctl: parser must not ignore error from pfctl_optimize_ruleset()
+* src: pf: fix duplicate rule detection for automatic tables
+* src: openssl: update from 3.0.16 to 3.0.20
+* src: routing: fix use-after-free in finalize_nhop
+* src: ixgbe: fix MRQC register value
+* src: in_mcast: Fix a lock leak in inp_set_source_filters()
+* src: linuxkpi: fix an off-by-one error in the kfifo implementation
+* src: sctp: fix so_proto when peeling off a socket
+* ports: expat 2.8.0 `[18] <https://github.com/libexpat/libexpat/blob/R_2_8_0/expat/Changes>`__ 
+* ports: openvpn 2.6.20 `[19] <https://github.com/OpenVPN/openvpn/blob/v2.6.20/Changes.rst>`__ 
+* ports: phpseclib 3.0.52 `[20] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.52>`__ 
+* ports: strongswan 6.0.6 `[21] <https://github.com/strongswan/strongswan/releases/tag/6.0.6>`__ 
+
+A hotfix release was issued as 26.1.7_1:
+
+* system: fix missing newline when generating cron jobs due to a regression
+
+
+
+
+--------------------------------------------------------------------------
 26.1.6 (April 09, 2026)
 --------------------------------------------------------------------------
 
@@ -388,7 +475,7 @@ Here are the full patch notes:
 * ports: ldns 1.9.0 `[3] <https://raw.githubusercontent.com/NLnetLabs/ldns/1.9.0/Changelog>`__ 
 * ports: nss 3.120 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_120.html>`__ 
 * ports: openldap 2.6.12 `[5] <https://www.openldap.org/software/release/changes_lts.html>`__ 
-* ports: openvpn 2.6.19 `[6] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.19>`__ 
+* ports: openvpn 2.6.19 `[6] <https://github.com/OpenVPN/openvpn/blob/v2.6.19/Changes.rst>`__ 
 * ports: py-duckdb 1.4.4 `[7] <https://github.com/duckdb/duckdb/releases/tag/v1.4.4>`__ 
 * ports: python additional security fixes `[8] <https://www.cve.org/cverecord?id=CVE-2026-1299>`__  `[9] <https://www.cve.org/cverecord?id=CVE-2026-0865>`__ 
 

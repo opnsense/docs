@@ -515,7 +515,7 @@ Here are the full patch notes:
 * src: udp: do not recursively enter net epoch
 * src: wg: remove overly-restrictive address family check
 * ports: lighttpd 1.4.79 `[2] <https://www.lighttpd.net/2025/4/4/1.4.79/>`__ 
-* ports: openvpn 2.6.14 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.14>`__ 
+* ports: openvpn 2.6.14 `[3] <https://github.com/OpenVPN/openvpn/blob/v2.6.14/Changes.rst>`__ 
 * ports: phalcon 5.9.2 `[4] <https://github.com/phalcon/cphalcon/releases/tag/v5.9.2>`__ 
 * ports: py-duckdb 1.2.2 `[5] <https://github.com/duckdb/duckdb/releases/tag/v1.2.2>`__ 
 
@@ -909,7 +909,7 @@ Here are the full patch notes against version 24.7.12:
 * src: FreeBSD 14.2-RELEASE `[6] <https://www.freebsd.org/releases/14.2R/relnotes/>`__ 
 * src: p9fs: add an implementation of the 9P filesystem
 * ports: lighttpd 1.4.77 `[7] <https://www.lighttpd.net/2025/1/10/1.4.77/>`__ 
-* ports: openvpn 2.6.13 `[8] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.13>`__ 
+* ports: openvpn 2.6.13 `[8] <https://github.com/OpenVPN/openvpn/blob/v2.6.13/Changes.rst>`__ 
 * ports: php 8.3.15 `[9] <https://www.php.net/ChangeLog-8.php#8.3.15>`__ 
 * ports: radvd 2.20 `[10] <https://radvd.litech.org/>`__ 
 
@@ -1054,7 +1054,7 @@ Here are the full patch notes against version 24.7.12:
 * src: FreeBSD 14.2-RELEASE `[3] <https://www.freebsd.org/releases/14.2R/relnotes/>`__ 
 * src: p9fs: add an implementation of the 9P filesystem
 * ports: lighttpd 1.4.77 `[4] <https://www.lighttpd.net/2025/1/10/1.4.77/>`__ 
-* ports: openvpn 2.6.13 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.13>`__ 
+* ports: openvpn 2.6.13 `[5] <https://github.com/OpenVPN/openvpn/blob/v2.6.13/Changes.rst>`__ 
 * ports: php 8.3.15 `[6] <https://www.php.net/ChangeLog-8.php#8.3.15>`__ 
 * ports: radvd 2.20 `[7] <https://radvd.litech.org/>`__ 
 

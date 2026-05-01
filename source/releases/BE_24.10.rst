@@ -137,7 +137,7 @@ Here are the full patch notes:
 * ports: monit 5.34.3 `[15] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.107 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_107.html>`__ 
 * ports: openldap 2.6.9 `[17] <https://www.openldap.org/software/release/changes_lts.html>`__ 
-* ports: openvpn 2.6.13 `[18] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.13>`__ 
+* ports: openvpn 2.6.13 `[18] <https://github.com/OpenVPN/openvpn/blob/v2.6.13/Changes.rst>`__ 
 * ports: php 8.2.27 `[19] <https://www.php.net/ChangeLog-8.php#8.2.27>`__ 
 * ports: python 3.11.11 `[20] <https://docs.python.org/release/3.11.11/whatsnew/changelog.html>`__ 
 * ports: sudo 1.9.16p2 `[21] <https://www.sudo.ws/releases/stable/#1.9.16p2>`__ 
@@ -576,7 +576,7 @@ Here are the full patch notes:
 * ports: libxml 2.11.9 `[28] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
 * ports: monit 5.34.1 `[29] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.104 `[30] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_104.html>`__ 
-* ports: openvpn 2.6.12 `[31] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.12>`__ 
+* ports: openvpn 2.6.12 `[31] <https://github.com/OpenVPN/openvpn/blob/v2.6.12/Changes.rst>`__ 
 * ports: phalcon 5.8.0 `[32] <https://github.com/phalcon/cphalcon/releases/tag/v5.8.0>`__ 
 * ports: php 8.2.24 `[33] <https://www.php.net/ChangeLog-8.php#8.2.24>`__ 
 * ports: phpseclib 3.0.41 `[34] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.41>`__ 

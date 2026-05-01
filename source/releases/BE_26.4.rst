@@ -346,7 +346,7 @@ Here are the full patch notes:
 * ports: nss 3.121 `[23] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_121.html>`__ 
 * ports: openldap 2.6.13 `[24] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openssl 3.0.20 `[25] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
-* ports: openvpn 2.6.19 `[26] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.19>`__ 
+* ports: openvpn 2.6.19 `[26] <https://github.com/OpenVPN/openvpn/blob/v2.6.19/Changes.rst>`__ 
 * ports: perl 5.42.2 `[27] <https://perldoc.perl.org/5.42.2/perldelta>`__ 
 * ports: phpseclib 3.0.50 `[28] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.50>`__ 
 * ports: py-duckdb 1.5.0 `[29] <https://github.com/duckdb/duckdb/releases/tag/v1.5.0>`__ 
@@ -354,6 +354,42 @@ Here are the full patch notes:
 * ports: strongswan 6.0.4 `[31] <https://github.com/strongswan/strongswan/releases/tag/6.0.4>`__ 
 * ports: suricata 8.0.4 `[32] <https://suricata.io/2026/03/17/suricata-8-0-4-and-7-0-15-released/>`__ 
 * ports: syslog-ng 4.11.0 `[33] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.11.0>`__ 
+
+A hotfix release was issued as 26.4_6:
+
+* system: protect popen() with exec_safe() `[34] <https://github.com/opnsense/core/security/advisories/GHSA-xxp9-93cr-x54p>`__ 
+* system: lockout bypass fix `[35] <https://github.com/opnsense/core/security/advisories/GHSA-h3vx-4q27-rc42>`__  (contributed by Konstantinos Spartalis)
+* system: allow gateway load balance weights from 1 to 10 for more flexibility (contributed by Matthew Hall)
+* system: add "nosync" option to gateway configuration
+* firewall: fix typo in alias update error log and make parser a bit more resilient
+* firmware: opnsense-update: handle FreeBSD.conf disable internally
+* plugins: os-acme-client 4.16 `[36] <https://github.com/opnsense/plugins/blob/stable/26.1/security/acme-client/pkg-descr>`__ 
+* src: vm_fault: reset m_needs_zeroing properly `[37] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:05.vm.asc>`__ 
+* src: timerfd: Fix interval callout scheduling `[38] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:06.timerfd.asc>`__ 
+* src: tty: avoid leaving dangling pointers in tty_drop_ctty() `[39] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:10.tty.asc>`__ 
+* src: pkru: fix handling of 1GB largepage mappings `[40] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:11.amd64.asc>`__ 
+* src: contrib/tzdata: import tzdata 2025c, 2026a and 2026b `[41] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:09.tzdata.asc>`__ 
+* src: amd64: fix INVLPGB range invalidation `[42] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:10.amd64.asc>`__ 
+* src: pf: improve SCTP validation `[43] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:14.pf.asc>`__ 
+* src: execve: fix an operator precedence bug `[44] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:13.exec.asc>`__ 
+* src: dhclient: check for unexpected characters in some DHCP server options `[45] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:12.dhclient.asc>`__ 
+* src: dhclient: fix reallocation of dhclient script environments `[46] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:15.dhclient.asc>`__ 
+* src: libnv: switch fd_wait() from select(2) to poll(2) `[47] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:16.libnv.asc>`__ 
+* src: libnv: fix heap overflow in nvlist_recv() `[48] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:17.libnv.asc>`__ 
+* src: libpcap: update to 1.10.6
+* src: ipfw_nptv6: fix handling the ifaddr removal event
+* src: if_tuntap: make SIOCIFDESTROY interruptible
+* src: pfctl: parser must not ignore error from pfctl_optimize_ruleset()
+* src: pf: fix duplicate rule detection for automatic tables
+* src: openssl: update from 3.0.16 to 3.0.20
+* src: routing: fix use-after-free in finalize_nhop
+* src: ixgbe: fix MRQC register value
+* src: in_mcast: Fix a lock leak in inp_set_source_filters()
+* src: linuxkpi: fix an off-by-one error in the kfifo implementation
+* src: sctp: fix so_proto when peeling off a socket
+* ports: expat 2.8.0 `[49] <https://github.com/libexpat/libexpat/blob/R_2_8_0/expat/Changes>`__ 
+* ports: openvpn 2.6.20 `[50] <https://github.com/OpenVPN/openvpn/blob/v2.6.20/Changes.rst>`__ 
+* ports: strongswan 6.0.6 `[51] <https://github.com/strongswan/strongswan/releases/tag/6.0.6>`__ 
 
 Migration notes, known issues and limitations:
 

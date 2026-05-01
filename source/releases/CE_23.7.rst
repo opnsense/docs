@@ -248,7 +248,7 @@ Here are the full patch notes:
 * plugins: os-ddclient 1.17 `[1] <https://github.com/opnsense/plugins/blob/stable/23.7/dns/ddclient/pkg-descr>`__ 
 * plugins: os-frr 1.37 `[2] <https://github.com/opnsense/plugins/blob/stable/23.7/net/frr/pkg-descr>`__ 
 * plugins: os-squid adds a meta package for web proxy core removal in 24.1
-* ports: openvpn 2.6.8 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.8>`__ 
+* ports: openvpn 2.6.8 `[3] <https://github.com/OpenVPN/openvpn/blob/v2.6.8/Changes.rst>`__ 
 * ports: sqlite 3.44.0 `[4] <https://sqlite.org/releaselog/3_44_0.html>`__ 
 * ports: sudo 1.9.15p2 `[5] <https://www.sudo.ws/releases/stable/#1.9.15p2>`__ 
 * ports: unbound 1.19.0 `[6] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-19-0>`__ 
@@ -741,7 +741,7 @@ Here are the full patch notes:
 * ports: dnspython 2.4.2
 * ports: krb5 1.21.2 `[3] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
 * ports: openldap 2.6.6 `[4] <https://www.openldap.org/software/release/changes_lts.html>`__ 
-* ports: openvpn 2.6.6 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.6>`__ 
+* ports: openvpn 2.6.6 `[5] <https://github.com/OpenVPN/openvpn/blob/v2.6.6/Changes.rst>`__ 
 * ports: php 8.2.9 `[6] <https://www.php.net/ChangeLog-8.php#8.2.9>`__ 
 * ports: phalcon 5.3.0 `[7] <https://github.com/phalcon/cphalcon/releases/tag/v5.3.0>`__ 
 * ports: phpseclib 3.0.21 `[8] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.21>`__ 

@@ -101,7 +101,7 @@ Here are the full patch notes:
 * ports: ntp 4.2.8p17 `[10] <https://www.ntp.org/support/securitynotice/>`__ 
 * ports: openssh 9.3p2 `[11] <https://www.openssh.com/txt/release-9.3p2>`__ 
 * ports: openssl 1.1.1v `[12] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
-* ports: openvpn 2.6.5 `[13] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.5>`__ 
+* ports: openvpn 2.6.5 `[13] <https://github.com/OpenVPN/openvpn/blob/v2.6.5/Changes.rst>`__ 
 * ports: phalcon 5.2.2 `[14] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.2>`__ 
 * ports: php 8.1.20 `[15] <https://www.php.net/ChangeLog-8.php#8.1.20>`__ 
 * ports: py-setuptools fix for CVE-2022-40897
@@ -246,7 +246,7 @@ Here are the full patch notes:
 * ports: lighttpd 1.4.71 `[12] <https://www.lighttpd.net/2023/5/27/1.4.71/>`__ 
 * ports: nss 3.89.1 `[13] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_89_1.html>`__ 
 * ports: openssh 9.3p1 `[14] <https://www.openssh.com/txt/release-9.3>`__ 
-* ports: openvpn 2.6.4 `[15] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.4>`__ 
+* ports: openvpn 2.6.4 `[15] <https://github.com/OpenVPN/openvpn/blob/v2.6.4/Changes.rst>`__ 
 * ports: php 8.1.19 `[16] <https://www.php.net/ChangeLog-8.php#8.1.19>`__ 
 * ports: sqlite 3.42.0 `[17] <https://sqlite.org/releaselog/3_42_0.html>`__ 
 * ports: suricata 6.0.12 `[18] <https://suricata.io/2023/05/09/suricata-6-0-12-released/>`__ 

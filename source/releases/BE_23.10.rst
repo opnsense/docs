@@ -306,7 +306,7 @@ Here are the full patch notes:
 * ports: lighttpd 1.4.73 `[17] <https://www.lighttpd.net/2023/10/30/1.4.73/>`__ 
 * ports: nss 3.94 `[18] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_94.html>`__ 
 * ports: openssl111 supersedes openssl package
-* ports: openvpn 2.6.8 `[19] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.8>`__ 
+* ports: openvpn 2.6.8 `[19] <https://github.com/OpenVPN/openvpn/blob/v2.6.8/Changes.rst>`__ 
 * ports: perl 5.36.1 `[20] <https://perldoc.perl.org/5.36.1/perldelta>`__ 
 * ports: php 8.2.12 `[21] <https://www.php.net/ChangeLog-8.php#8.2.12>`__ 
 * ports: sqlite 3.44.0 `[22] <https://sqlite.org/releaselog/3_44_0.html>`__ 
@@ -591,7 +591,7 @@ Here are the full patch notes:
 * ports: nss 3.93 `[18] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_93.html>`__ 
 * ports: openldap 2.6.6 `[19] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openssl 1.1.1w `[20] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
-* ports: openvpn 2.6.6 `[21] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn26#Changesin2.6.6>`__ 
+* ports: openvpn 2.6.6 `[21] <https://github.com/OpenVPN/openvpn/blob/v2.6.6/Changes.rst>`__ 
 * ports: perl 5.34.1 `[22] <https://perldoc.perl.org/5.34.1/perldelta>`__ 
 * ports: phalcon 5.3.1 `[23] <https://github.com/phalcon/cphalcon/releases/tag/v5.3.1>`__ 
 * ports: php 8.2.11 `[24] <https://www.php.net/ChangeLog-8.php#8.2.11>`__ 
