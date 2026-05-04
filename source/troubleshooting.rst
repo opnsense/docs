@@ -72,6 +72,7 @@ be found in the list below.
    :glob:
 
    troubleshooting/password_reset
+   troubleshooting/reset_firmware
    troubleshooting/config_reset
    troubleshooting/webgui
    troubleshooting/boot
