@@ -106,10 +106,6 @@ fetch the current portal status. This API is supported by OPNsense in a backward
 manner for older clients requiring redirection. Apple has published a
 `document <https://developer.apple.com/news/?id=q78sq5rv>`__ going into more details.
 
-.. Note::
-
-    Like the Captive Portal implementation, this Captive Portal API is only supported on IPv4.
-
 Modern clients (especially iOS) moving towards this standardized API may experience redirection
 issues when connecting to a network only supporting forced redirection, which is often
 solved by utilizing this new standard instead.
