@@ -33,7 +33,7 @@ Routing Protocols supported by the plugin include:
 
 .. Warning::
     It's strongly advised to increase the kern.ipc.maxsockbuf value via **Tunables**. Go to :menuselection:`System --> Settings --> Tunables` and check if there
-    is already a tunable for maxsockbuf and set it to 16777216 if it is lower. Otherwise add a new one with
+    is already a tunable for maxsockbuf and set it to 33554432 if it is lower. Otherwise add a new one with
     name above and the specified value.
 
 .. Warning::
