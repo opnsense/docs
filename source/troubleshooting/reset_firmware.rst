@@ -2,8 +2,8 @@
 Reset firmware configuration
 =======================================
 
-In cases where the firmware configuration is corrupt in the `config.xml` file, we can reset that section of our configuration using the following
-command:
+In cases where the firmware configuration is corrupt in the :code:`config.xml` file, we can reset that section of our configuration using the following
+command (executed on a console or via SSH):
 
 
 .. code-block:: sh
