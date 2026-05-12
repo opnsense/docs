@@ -119,19 +119,19 @@ running) whenever the WAN interface receives a new IP address, providing recover
 in the common boot-order race.
 
 For additional crash recovery — for example, if the tunnel drops for reasons
-unrelated to a WAN change — you can add a periodic restart job:
+unrelated to a WAN change — you can add a periodic recovery job:
 
 1. Navigate to :menuselection:`System --> Settings --> Cron`.
 2. Click **+** to add a new job.
-3. In the **Command** dropdown, select **Restart Cloudflare Tunnel**.
+3. In the **Command** dropdown, select **Recover Cloudflare Tunnel (start if not running)**.
 4. Set the schedule as desired (e.g. every 5 minutes: ``*/5 * * * *``).
 5. Leave the job **disabled** until you have confirmed the tunnel is stable; enable
    it only if you observe unrecovered drops.
 
 .. Note::
-    The cron restart is unconditional — it will bounce a healthy tunnel. Schedule
-    it infrequently (no more than once every 5 minutes) and only enable it if you
-    actually observe crashes that the ``newwanip`` hook does not recover.
+    The recovery job only starts cloudflared if it is enabled but not currently
+    running — it will not disrupt an active tunnel. Enable it if you observe
+    crashes that the ``newwanip`` hook does not recover.
 
 Logging
 -------
