@@ -46,7 +46,7 @@ Secure authentication via HTTPS or splash-only portal with URL redirection to a
 given page Different sources can be used to authenticate a user in a zone:
 
 * LDAP [Microsoft Active Directory]
-* Radius
+* Radius, including accounting updates
 * Local user manager
 * Vouchers / Tickets
 * No authentication (Splash Screen Only)
@@ -82,7 +82,7 @@ See also: :doc:`/manual/shaping`
 -------------
 Portal bypass
 -------------
-MAC and IP addresses can be white listed to bypass
+MAC addresses and IP addresses/network ranges can be white listed to bypass
 the portal.
 
 
@@ -92,18 +92,44 @@ Platform Integration
 Through the integrated REST API the captive portal application can be integrated
 with other services. See: :doc:`/development/how-tos/api`
 
+------------
+IPv6 support
+------------
+The OPNsense Captive Portal fully supports IPv6-only and dual-stack networks.
+To facilitate this, the [Roaming] option is available and set by default in each
+zone. The IPv6 protocol commonly uses multiple IPv6 addresses on the same network
+interface of a client. These can be Link-local addressess, GUAs, ULAs, temporary/
+privacy addresses or stable addresses.
+
+Roaming allows the portal to register any IP alias a client is using, including IPv4
+addresses. Once a client is connected, these IP addresses are collected in the
+background and are granted access.
+
+Furthermore, the following criteria must be met for IPv6 to fully function:
+
+- Hostwatch (:menuselection:`Interfaces --> Neighbours --> Automatic Discovery`) must
+  be enabled for the collection of IPv6 addresses to function.
+- You must set a [Hostname] in the zone configuration and make sure a DNS record
+  exists for this hostname pointing to the correct IPv6 address. If you're using Unbound,
+  DNS records for the configured interfaces can be synthesized with the [DNS64] option in
+  :menuselection:`Services --> Unbound DNS --> General`.
+
+.. Note::
+
+    The background process collecting these IP addresses does this in a fixed interval.
+    There may be a slight delay before all addresses are collected and granted access.
+
 ---------------------
 Modern Portal support
 ---------------------
 
-OPNsense implements the Captive Portal by redirecting all WWW traffic
+OPNsense implements the Captive Portal by redirecting all HTTP traffic
 to a local web server before authentication, hinting to the device that it is behind a portal.
 However, `RFC 8910 <https://www.rfc-editor.org/rfc/rfc8910>`__
 introduces a new standardized method for networks to inform clients about the presence
 of a portal using DHCP. Furthermore, `RFC 8908 <https://www.rfc-editor.org/rfc/rfc8908>`__
 describes an API standard implemented by the webserver pointed to by DHCP, where the client can
-fetch the current portal status. This API is supported by OPNsense in a backwards compatible
-manner for older clients requiring redirection. Apple has published a
+fetch the current portal status. Apple has published a
 `document <https://developer.apple.com/news/?id=q78sq5rv>`__ going into more details.
 
 Modern clients (especially iOS) moving towards this standardized API may experience redirection
@@ -121,18 +147,53 @@ To configure this, a few steps are required:
   Alternatively, a client can also be pointed to the redirected webserver directly:
   :code:`https://<opnsense-hostname>:<8000 + captive portal zone id>/api/captiveportal/access/api`.
   For example, :code:`https://opnsense.localdomain:8001/api/captiveportal/access/api` for zone 1.
-
+  See the attention block below for more details.
   To set this DHCP option, refer to the documentation for the respective DHCP server.
 
-On this endpoint, OPNsense returns the following information:
-
-- Whether a client is 'captive' at this point in time.
-- The URL of the portal.
-- If the client is authenticated and a hard timeout is set, how many seconds are remaining
-  for this session.
 
 If a device in the captive portal zone supports this API, they will automatically use
-the DHCP option to determine that they are in a captive state.
+the DHCP option to determine that they are in a captive state. Keep in mind that forced
+redirection is still used for maximum compatibility. If you would like to excusively
+use this API standard instead, you can override the firewall rules for each zone and
+leave out the redirection rules, see `rules`_.
+
+.. Attention::
+
+    Once a client has logged in through the portal, your firewall policies define what
+    this client can and cannot access. Unless you have configured the DHCP option to point
+    to the portal webserver directly by specifying the port, the
+    :code:`/api/captiveportal/access/api` endpoint now points to the regular OPNsense WebGUI
+    on port 443, because authenticated clients are not redirected. This also means that
+    clients cannot determine captivity state anymore.
+
+    If you would like to restrict client access to this endpoint only, you must configure
+    the proper forwarding rule as shown below. Note that this means clients cannot access the
+    OPNsense WebGUI anymore, which is often desirable.
+
+    ============================ ===============================
+    **Type**                     Destination NAT (Port Forward)
+    **Interface**                <Zone interface>
+    **Version**                  IPv4+IPv6
+    **Protocol**                 TCP
+    **Source**                   __captiveportal_zone_<zone id>
+    **Destination**              This Firewall
+    **Destination port range**   443
+    **Redirect Target IP**       127.0.0.1
+    **Redirect Target Port**     8000 + <zone id>
+    **NAT Reflection**           Disable (advanced)
+    **Firewall rule**            Pass
+    ============================ ===============================
+
+
+.. Note::
+
+    The OPNsense :code:`/api/captiveportal/access/api` endpoint returns the following information:
+
+    - Whether a client is 'captive' at this point in time.
+    - The URL of the portal.
+    - If the client is authenticated and a hard timeout is set, how many seconds are remaining
+      for this session.
+
 
 Administration
 .........................
@@ -150,6 +211,8 @@ Zone number                           Read-only sequence of the configured zone.
                                       This alias can be inspected in :menuselection:`Firewall --> Diagnostics --> Aliases`. This zone id is also
                                       used if you are configuring the firewall rules yourself.
 Interfaces                            Interfaces which should be guarded by this captive portal.
+Client Roaming                        Allow a connecting client to use multiple IPs (bound to the same MAC) over the course of its session.
+                                      This option is needed for maximum IPv6 compatibility and also affects IPv4 clients.
 Disable firewall rules                If this option is set, no automatic firewall rules for portal redirection and traffic blocking will be generated.
                                       This option allows you to override the default portal behavior for advanced use cases, such as redirections
                                       for DNS on a non-standard port. See :ref:`rules` for an overview of required firewall rules.
@@ -258,8 +321,9 @@ rules are listed here so they may be recreated for proper portal functionality.
 
 Redirect traffic to the zone webserver
 --------------------------------------
-All traffic going to port 80 or 443 is redirected to localhost, ports 9000 + <zone id> for HTTP,
-and ports 8000 + <zone id> for HTTPS.
+All HTTP traffic going to port 80 is redirected to localhost port 9000 + <zone id>.
+
+All HTTPS traffic going to the firewall on port 443 is redirected to localhost port 8000 + <zone id>.
 
 ============================ ===============================
  **Type**                     Destination NAT (Port Forward)
@@ -272,8 +336,7 @@ and ports 8000 + <zone id> for HTTPS.
  **Destination port range**   80
  **Redirect Target IP**       127.0.0.1
  **Redirect Target Port**     9000 + <zone id>
- **NAT Reflection**           Disable
- **Filter Rule Association**  Pass
+ **NAT Reflection**           Disable (advanced)
 ============================ ===============================
 
 ============================ ===============================
@@ -282,37 +345,35 @@ and ports 8000 + <zone id> for HTTPS.
  **Protocol**                 TCP
  **Source Invert**            Yes
  **Source**                   __captiveportal_zone_<zone id>
- **Destination Invert**       Yes
- **Destination**              __captiveportal_zone_<zone id>
+ **Destination**              This Firewall
  **Destination port range**   443
  **Redirect Target IP**       127.0.0.1
  **Redirect Target Port**     8000 + <zone id>
  **NAT Reflection**           Disable
- **Filter Rule Association**  Pass
 ============================ ===============================
 
-The destination is the inverted zone alias, so that traffic from unauthenticated clients going to
+For IPv6, the same rules as above must be created, but the Destination must be set
+to the "<Zone interface> address".
+
+The destination for HTTP traffic is the inverted zone alias, so that traffic from unauthenticated clients going to
 authenticated or explicitly allowed clients/servers (allowed addresses in the zone administration)
 is not redirected. This is useful if unauthenticated clients should be able to access servers
 in the same zone.
-
-The Filter Rule Association is set to "Pass" so clients who are redirected are automatically
-allowed to access the zone webserver as well, preventing the need for an explicit allow rule.
 
 .. Attention::
 
     If you use :doc:`OIDC </vendor/deciso/oidc>` for authentication, the HTTPS requests would also be redirected before authentication is possible.
     To solve this, create an additional "No RDR (NOT)" rule **before** the other NAT rules with the identity provider IP addresses as destination.
 
-============================ ===============================
- **Type**                     Destination NAT (Port Forward)
- **No RDR (NOT)**             Yes
- **Interface**                <Zone interface>
- **Protocol**                 TCP
- **Source**                   any
- **Destination**              identity_provider_ip_addresses
- **Destination port range**   443
-============================ ===============================
+    ============================ ===============================
+    **Type**                     Destination NAT (Port Forward)
+    **No RDR (NOT)**             Yes
+    **Interface**                <Zone interface>
+    **Protocol**                 TCP
+    **Source**                   any
+    **Destination**              identity_provider_ip_addresses
+    **Destination port range**   443
+    ============================ ===============================
 
 Allow DNS
 ---------
@@ -332,15 +393,16 @@ In order to allow the client to resolve at least the OPNsense hostname, DNS must
 We define "This Firewall" as the destination since the default DNS service, Unbound, may return multiple
 IP addresses identifying the firewall.
 
-Allow direct access to Captive Portal
+Allow access to Captive Portal
 -------------------------------------
-A client may access the captive portal webserver directly, e.g. using port 8000 in the URL.
-To allow this, separate pass rules must be defined:
+The redirection rules still need associated pass rules. These rules are also used for clients directly
+accessing the captive portal webserver, e.g. using port 8000 in the URL.
 
 ============================ =====================
  **Type**                     Firewall rule
  **Action**                   Pass
  **Interface**                <Zone interface>
+ **Version**                  IPv4+IPv6
  **Protocol**                 TCP
  **Direction**                In
  **Source**                   <Zone net>
@@ -352,6 +414,7 @@ To allow this, separate pass rules must be defined:
  **Type**                     Firewall rule
  **Action**                   Pass
  **Interface**                <Zone interface>
+ **Version**                  IPv4+IPv6
  **Protocol**                 TCP
  **Direction**                In
  **Source**                   <Zone net>
