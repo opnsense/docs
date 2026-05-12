@@ -75,12 +75,23 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         Firewall rules                            Automatically add a basic set of firewall rules to allow dhcp traffic, more fine grained
                                                   controls can be offered manually when disabling this option.
         Socket type** (DHCPv4 only)               Socket type used for DHCP communication.
+        Socket retries                            Sometimes interfaces can be slow to come up or be unavailable temporarily.
+                                                  This option defines how many times KEA should retry the socket binding.
+        Socket retry wait time                    Defines the wait time in milliseconds between socket retry attempts.
+        Decline Probation Period                  Defines how long an address that has been detected as duplicate via DHCPDECLINE will be prevented to be given out to other clients.
         MAC sources (DHCPv6 only)                 The DHCPv6 protocol does not provide any completely reliable way to retrieve hardware addresses of clients.
                                                   To mitigate that issue, a number of mechanisms are available. Each of these mechanisms works in certain cases,
                                                   but may not in others. Whether the mechanism works in a particular deployment is somewhat dependent on the
                                                   network topology and the technologies used. Please note that this influences PD route installation, since
                                                   the source MAC address of the client is required to target the link-local route. It also influences MAC
                                                   based reservations.
+        **Lease Expiration**
+        Affinity lifetime                         Defines in seconds for how long a returning client will be able to retrieve the same lease.
+        Reclamation delay                         The interval in seconds between the completion of the previous reclamation cycle and the start of the next one.
+        Reclamation initiation                    This parameter controls the server wait time in seconds between each lease reclamation procedure.
+        Maximum reclamation time                  Defines an upper limit in milliseconds to the length of time a lease reclamation procedure may take. Use "0" to disable the time limit.
+        Maximum reclamation leases                Defines the maximum number of reclaimed leases that can be processed at one time. Use "0" to set it to unlimited.
+        Cleanup circles                           This parameter specifies how many consecutive clean-up cycles must end with remaining leases to be processed before a warning is printed.
         **High Availability**
         Enabled                                   Enable High availability hook, requires the Control Agent to be enabled as well.
         This server name                          The name of this server, should match with one of the entries in the HA peers.
@@ -100,6 +111,7 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         Subnet                                    Subnet to use, should be large enough to hold the specified pools and reservations
         Description                               You may enter a description here for your reference (not parsed).
         Pools                                     List of pools, one per line in range or subnet format (e.g. 192.168.0.100 - 192.168.0.200 , 192.0.2.64/26). Leave this blank if you do not want to offer dynamic leases (i.e: "Deny unknown clients")
+        Valid lifetime                            Valid lifetime for this subnet scope.
         Match client-id                           By default, KEA uses client-identifiers instead of MAC addresses to locate clients,
                                                   disabling this option changes back to matching on MAC address which is used by most dhcp implementations.
         **DHCP option data**
@@ -132,6 +144,7 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         Update on renew                           Instructs the server to always update the DNS information when a lease is renewed, even if its DNS information has not changed.
                                                   This allows Kea to self-heal if it was previously unable to add DNS entries or they were somehow lost by the DNS server.
                                                   May impact performance, especially for servers with numerous clients that renew often.
+        Conflict resolution mode                  Controls how DDNS conflicts with DHCID records are handled. The default enforces client ownership via DHCID.
         ========================================= ====================================================================================
 
         **DHCPv6**
@@ -145,6 +158,7 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         PD Allocator                              Select allocator method to use when offering prefix delegations to clients
         Description                               You may enter a description here for your reference (not parsed).
         Pools                                     List of pools, one per line in range or subnet format (e.g. 2001:db8:1::-2001:db8:1::100, 2001:db8:1::/80). Leave this blank if you do not want to offer dynamic leases (i.e: "Deny unknown clients")
+        Valid lifetime                            Valid lifetime for this subnet scope.
         **DHCP option data**
         DNS servers                               DNS servers to offer to the clients
         Domain search                             The domain search list to offer to the client
@@ -187,7 +201,9 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         Subnet                                    Subnet this reservation belongs to
         IP address                                IP address to offer to the client
-        MAC address                               MAC/Ether address of the client in question
+        MAC address                               MAC address of the client in question
+        Client ID                                 ID of the client in question. Per default this is preferred over MAC addresses.
+                                                  Disable "Match client-id" in the subnet to skip the Client ID.
         Hostname                                  Offer a hostname to the client
         Description                               You may enter a description here for your reference (not parsed).
         **DHCP option data**
@@ -213,7 +229,8 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         Subnet                                    Subnet this reservation belongs to
         IP address                                IP address to offer to the client
-        DUID                          	          DUID of the client in question
+        MAC address                               MAC address of the client in question
+        DUID                                      DUID of the client in question
         Hostname                                  Offer a hostname to the client
         Domain search                             The domain search list to offer to the client
         Options                                   Select custom DHCPv6 options that were created in the options tab.
