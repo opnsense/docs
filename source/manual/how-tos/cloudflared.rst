@@ -55,6 +55,33 @@ Navigate to :menuselection:`Services --> Cloudflare Tunnel --> Settings`.
    "Protocol", "Transport protocol used to reach Cloudflare's edge. **auto** (default) lets cloudflared choose. Force **quic** or **http2** only if you have a specific network requirement."
    "Post-Quantum Encryption", "Enable post-quantum cryptographic protection for the tunnel connection. Requires QUIC protocol."
    "Disable QUIC PMTU Discovery", "Disable Path MTU Discovery for QUIC connections. May improve reliability in environments where ICMP is filtered."
+   "Log Level", "Verbosity of cloudflared logging. Defaults to **info**. Use **debug** for troubleshooting; **warn** or **error** for quieter operation."
+
+QUIC UDP buffer sizes
+---------------------
+
+When running in **auto** or **quic** protocol mode, cloudflared relies on the
+QUIC transport layer (via the ``quic-go`` library), which benefits significantly
+from larger UDP receive buffers. FreeBSD's defaults are too small for high-throughput
+QUIC and will result in a warning in the cloudflared log:
+
+.. code-block:: text
+
+    failed to increase receive buffer size (wanted: 7168 kiB, got 41 kiB).
+    See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details.
+
+To suppress this warning and allow QUIC to operate at full throughput, set the
+following tuneable values under :menuselection:`System --> Settings --> Tuneables`:
+
+.. csv-table::
+   :header: "Tuneable", "Recommended value"
+   :widths: 40, 60
+
+   "kern.ipc.maxsockbuf", "16777216"
+   "net.inet.udp.recvspace", "8388608"
+
+The settings page will display a warning if either value is below the recommended
+minimum while the protocol is set to **auto** or **quic**.
 
 Firewall considerations
 -----------------------
@@ -67,14 +94,20 @@ If you have strict outbound floating rules (GeoIP blocks, blocklists, or a defau
 deny outbound policy), add a manual rule allowing traffic from **This Firewall** to
 **any** on **TCP/UDP port 7844**.
 
-**Multi-WAN users:** cloudflared may use any available gateway by default. If you
-need its traffic to leave on a specific WAN, either:
+**Multi-WAN users:** With multiple gateways configured, cloudflared traffic
+originating from the router itself may fail to route entirely — not merely exit
+via the wrong WAN. You must add an explicit policy-route rule to direct it:
 
-* Add a manual outbound NAT or policy-route rule that pins traffic from the router
-  itself to the desired gateway, or
-* Enable :guilabel:`Disable force gateway` under
-  :menuselection:`Firewall --> Settings --> Advanced` so that locally-originated
-  traffic is not forced through the default gateway.
+1. Navigate to :menuselection:`Firewall --> Rules --> Floating`.
+2. Add a rule matching **Source: This Firewall**, **Destination: any**,
+   **Protocol: TCP/UDP**, **Destination port: 7844**.
+3. Under :guilabel:`Gateway`, select the specific WAN gateway or gateway group
+   through which the tunnel should exit.
+4. Apply the rules.
+
+Alternatively, enable :guilabel:`Disable force gateway` under
+:menuselection:`Firewall --> Settings --> Advanced` if you want locally-originated
+traffic to follow the routing table rather than be forced through a gateway.
 
 Startup and crash recovery
 --------------------------
