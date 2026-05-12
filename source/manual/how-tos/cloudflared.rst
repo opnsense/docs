@@ -83,6 +83,13 @@ following tuneable values under :menuselection:`System --> Settings --> Tuneable
 The settings page will display a warning if either value is below the recommended
 minimum while the protocol is set to **auto** or **quic**.
 
+.. Note::
+    Even with optimal buffer sizes, sporadic ``Application error 0x0 (remote)``
+    or ``failed to accept QUIC stream: timeout: no recent network activity`` entries
+    may still appear in the log. These alone do not indicate packet corruption or a
+    misconfiguration; enabling :guilabel:`Disable QUIC PMTU Discovery` may reduce
+    their frequency.
+
 Firewall considerations
 -----------------------
 
@@ -107,7 +114,9 @@ via the wrong WAN. You must add an explicit policy-route rule to direct it:
 
 Alternatively, enable :guilabel:`Disable force gateway` under
 :menuselection:`Firewall --> Settings --> Advanced` if you want locally-originated
-traffic to follow the routing table rather than be forced through a gateway.
+traffic to follow the routing table rather than be forced through a gateway, but be
+aware that this may have unintended consequences for other traffic originating
+from the firewall itself.
 
 Startup and crash recovery
 --------------------------
@@ -118,7 +127,7 @@ on a fresh boot before upstream resolvers become reachable. The plugin registers
 running) whenever the WAN interface receives a new IP address, providing recovery
 in the common boot-order race.
 
-For additional crash recovery — for example, if the tunnel drops for reasons
+For additional crash recovery — for example, if the daemon stops for reasons
 unrelated to a WAN change — you can add a periodic recovery job:
 
 1. Navigate to :menuselection:`System --> Settings --> Cron`.
@@ -138,3 +147,16 @@ Logging
 
 Navigate to :menuselection:`Services --> Cloudflare Tunnel --> Log File` to view
 the cloudflared log via the standard OPNsense log viewer.
+
+cloudflared exposes a local metrics endpoint at ``http://localhost:2000/healthcheck``
+which can be used to verify tunnel connectivity::
+
+    fetch -qo - http://localhost:2000/healthcheck
+
+.. Warning::
+    The healthcheck may report ``{"connsCount":1}`` while the tunnel is still in
+    the process of connecting — the connection count does not reliably indicate that
+    the tunnel is fully established. Confirm tunnel status in the Cloudflare Zero
+    Trust dashboard (:menuselection:`Networks --> Tunnels`) or check the log for
+    a ``Registered tunnel connection`` entry. See `cloudflared issue #1633
+    <https://github.com/cloudflare/cloudflared/issues/1633>`_ for details.
