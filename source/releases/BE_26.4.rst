@@ -391,6 +391,19 @@ A hotfix release was issued as 26.4_6:
 * ports: openvpn 2.6.20 `[50] <https://github.com/OpenVPN/openvpn/blob/v2.6.20/Changes.rst>`__ 
 * ports: strongswan 6.0.6 `[51] <https://github.com/strongswan/strongswan/releases/tag/6.0.6>`__ 
 
+A hotfix release was issued as 26.4_14:
+
+* system: properly escape username in sync_user.php command invoke `[52] <https://www.cve.org/cverecord?id=CVE-2026-44194>`__  (contributed by Konstantinos Spartalis)
+* system: fix XMLRPC sync with VIP and "nosync" option
+* interfaces: safeguard DHCPv4 settings against arbitrary command injection `[53] <https://www.cve.org/cverecord?id=CVE-2026-45158>`__  (reported by Kchigo)
+* captive portal: re-introduce hash lookup for accounting purposes
+* captive portal: reload IPFW on captive portal reconfigure too
+* dnsmasq: ignore DHCP names for "wpad" to fix CERT Vulnerability VU#598349
+* network time: fix ACL definitions (contributed by Konstantinos Spartalis)
+* openvpn: reload configuration for group sync after successful authentication
+* ports: dnsmasq 2.92rel2 `[54] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: expat 2.8.1 `[55] <https://github.com/libexpat/libexpat/blob/R_2_8_1/expat/Changes>`__ 
+
 Migration notes, known issues and limitations:
 
 * ISC-DHCP moves to a plugin. It will be automatically installed during upgrades. It is not installed on new installations because it is not being used, but you can still install and keep using it.

@@ -51,13 +51,13 @@ this change.
 Here are the full patch notes:
 
 * system: properly escape username in sync_user.php command invoke `[1] <https://www.cve.org/cverecord?id=CVE-2026-44194>`__  (contributed by Konstantinos Spartalis)
-* interfaces: safeguard DHCPv4 settings against arbitrary command injection `[2] <https://www.cve.org/cverecord?id=CVE-2026-45158>`__  (reported by Kchigo)
 * system: fix XMLRPC sync with VIP and "nosync" option
 * system: link CA references after all changes
 * system: parse certificate "key_type" and "digest"
 * system: allow flushing legacy OpenVPN legacy config
 * system: audit "staticroute" config access
 * system: use safe config iteration in core_user_changed_groups()
+* interfaces: safeguard DHCPv4 settings against arbitrary command injection `[2] <https://www.cve.org/cverecord?id=CVE-2026-45158>`__  (reported by Kchigo)
 * interfaces: add missing config locks in device controllers
 * interfaces: use safe iteration in backend code
 * interfaces: adjust and annotate interface_dhcpv6_id()
@@ -122,6 +122,14 @@ Here are the full patch notes:
 * ports: py-duckdb 1.5.2 `[17] <https://github.com/duckdb/duckdb/releases/tag/v1.5.2>`__ 
 * ports: py-requests 2.33.1
 * ports: unbound 1.25.0 `[18] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-25-0>`__ 
+
+A hotfix release was issued as 26.1.8_5:
+
+* interfaces: follow up on DHCPv4 settings sanitization
+* firewall: fix search for floating rules in new rules GUI
+* kea: use JSON_UNESCAPED_UNICODE when writing the JSON configuration
+* shell: fix syntax error in port assignment
+* ui: bootgrid: onRendered executed in wrong spot
 
 
 
