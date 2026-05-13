@@ -119,7 +119,7 @@ Here are the full patch notes:
 * mvc: ignore client-side anchors in breadcrumb generation
 * ui: do not use a CSRF input element ID
 * plugins: os-freeradius 1.4.1 fixes a warning in clients (contributed by Michael Muenz)
-* ports: libxml 2.4.7 `[1] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.4.7 `[1] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.4.7/NEWS>`__ 
 * ports: py-ipaddress 1.0.19
 
 
@@ -409,8 +409,8 @@ Here are the full patch notes:
 * plugins: os-intrusion-detection-content-et-pro 1.0
 * plugins: os-quagga 1.4.2 OSPF router ID support (contributed by Fabian Franz)
 * ports: dnsmasq 2.78 `[1] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
-* ports: kerberos 1.15.2 `[2] <https://web.mit.edu/kerberos/krb5-1.15/>`__ 
-* ports: openvpn 2.4.4 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
+* ports: krb5 1.15.2 `[2] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: openvpn 2.4.4 `[3] <https://github.com/OpenVPN/openvpn/blob/v2.4.4/Changes.rst>`__ 
 * ports: perl 5.24.3 `[4] <https://perldoc.perl.org/5.24.3/perldelta>`__ 
 * ports: php 7.0.24 `[5] <https://www.php.net/ChangeLog-7.php#7.0.24>`__ 
 * ports: python 2.7.14 `[6] <https://raw.githubusercontent.com/python/cpython/84471935e/Misc/NEWS>`__ 

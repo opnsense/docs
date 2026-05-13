@@ -35,6 +35,97 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.1.8 (May 12, 2026)
+--------------------------------------------------------------------------
+
+
+This updated fixes two recently reported vulnerabilities in the core code
+pertaining to WAN DHCPv4 configuration and user management.  It also includes
+third party updates to Dnsmasq, OpenSSH and Unbound amongst others.
+
+Captive portal IPFW accounting rules will regain a performance boost by
+bringing back hash lookups.  Since this update does not issue a reboot
+by itself either do so or restart the captive portal instances to activate
+this change.
+
+Here are the full patch notes:
+
+* system: properly escape username in sync_user.php command invoke `[1] <https://www.cve.org/cverecord?id=CVE-2026-44194>`__  (contributed by Konstantinos Spartalis)
+* interfaces: safeguard DHCPv4 settings against arbitrary command injection `[2] <https://www.cve.org/cverecord?id=CVE-2026-45158>`__  (reported by Kchigo)
+* system: fix XMLRPC sync with VIP and "nosync" option
+* system: link CA references after all changes
+* system: parse certificate "key_type" and "digest"
+* system: allow flushing legacy OpenVPN legacy config
+* system: audit "staticroute" config access
+* system: use safe config iteration in core_user_changed_groups()
+* interfaces: add missing config locks in device controllers
+* interfaces: use safe iteration in backend code
+* interfaces: adjust and annotate interface_dhcpv6_id()
+* firewall: use save method from ApiMutableModelControllerBase for log command, move rule command and savepoint action
+* firewall: safe config access in list_legacy_rules.php
+* firewall: remove duplicated CSV button hook
+* firewall: fix NPTv6 validation for empty external subnet
+* firewall: make getRealInterface() a static utility function
+* firewall: refactor searchRuleAction() to use the same filtering and sorting logic on MVC and legacy data
+* firewall: fix inverted source/destination cosmetic issue in SNAT and One-to-One NAT grids
+* captive portal: re-introduce hash lookup for accounting purposes
+* captive portal: reload IPFW on captive portal reconfigure too
+* dnsmasq: ignore DHCP names for "wpad" to fix CERT Vulnerability VU#598349
+* firmware: opnsense-bootstrap: add "-B" bare bootstrap mode
+* firmware: add repo configuration output to connectivity audit
+* kea: plug socket into dynamic PD route installation script
+* kea: add prefix to reservations to allow for static PD allocations based on DUID/MAC
+* kea: infer IPv6 lease type in delete script via lease lookup so IA_NA/IA_PD can be deleted
+* kea: DDNS add ddns-conflict-resolution-mode per subnet (contributed by chaispaquichui)
+* kea: allow customizing "mac_sources" and change default to "ipv6-link-local"
+* kea: add user-context object to config to emit description
+* kea: fix option_data_autocollect mismatch in DHCPv6 page
+* kea: enable internalModelSafeDelete due to increased model relation field usage
+* kea: build reservation status from control socket output
+* kea: add subnet vltime (partially contributed by Brandan Giles)
+* kea: add client-id to DHCPv4 reservations
+* network time: fix ACL definitions (contributed by Konstantinos Spartalis)
+* openvpn: reload configuration for group sync after successful authentication
+* openvpn: add tls-crypt-v2 support
+* openvpn: allow restart action via cron
+* radvd: allow to start a manual configuration without primary IPv6
+* unbound: minor style/refactor for safe config access
+* unbound: hide unused tree row in form output for overrides
+* unbound: restyle statistics page
+* wireguard: use getValues() consistently in control script
+* mvc: remove unused UIModelGrid imports in IDS, Monit and Syslog controllers
+* mvc: remove Util imports where not needed
+* mvc: BaseField: add count() helper
+* mvc: fix validation to use getValue instead of plain string cast
+* mvc: UIModelGrid: remove flatten() method as getFlatNodes() is almost the same
+* shell: safe iteration for VLAN/LAGG in port assignment
+* shell: use safe config iteration in live mode banner
+* ui: add static dialog header support and fix bool/string compare
+* ui: add type_formatter keyword to form rendering
+* ui: add save/cancel button support to form rendering
+* ui: remove "event" use from bootgrid showSaveAlert()
+* ui: add support for binary file uploads
+* plugins: os-ddclient 1.31 `[3] <https://github.com/opnsense/plugins/blob/stable/26.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-frr 1.52 `[4] <https://github.com/opnsense/plugins/blob/stable/26.1/net/frr/pkg-descr>`__ 
+* plugins: os-netbird 1.3 `[5] <https://github.com/opnsense/plugins/blob/stable/26.1/security/netbird/pkg-descr>`__ 
+* plugins: os-q-feeds-connector 1.6 `[6] <https://github.com/opnsense/plugins/blob/stable/26.1/security/q-feeds-connector/pkg-descr>`__ 
+* plugins: os-turnserver 1.3 `[7] <https://github.com/opnsense/plugins/blob/stable/26.1/net/turnserver/pkg-descr>`__ 
+* ports: curl 8.20.0 `[8] <https://curl.se/changes.html#8_20_0>`__ 
+* ports: dnsmasq 2.92rel2 `[9] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: expat 2.8.1 `[10] <https://github.com/libexpat/libexpat/blob/R_2_8_1/expat/Changes>`__ 
+* ports: kea 3.0.3 `[11] <https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-3.0.3>`__ 
+* ports: krb5 1.22.2 `[12] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: libxml 2.15.3 `[13] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.3/NEWS>`__ 
+* ports: nss 3.123.1 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_123_1.html>`__ 
+* ports: openssh 10.3p1 `[15] <https://www.openssh.com/txt/release-10.3>`__ 
+* ports: phalcon 5.12.1 `[16] <https://github.com/phalcon/cphalcon/releases/tag/v5.12.1>`__ 
+* ports: py-duckdb 1.5.2 `[17] <https://github.com/duckdb/duckdb/releases/tag/v1.5.2>`__ 
+* ports: py-requests 2.33.1
+* ports: unbound 1.25.0 `[18] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-25-0>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.1.7 (April 30, 2026)
 --------------------------------------------------------------------------
 
@@ -49,8 +140,8 @@ will be updated as soon as that happens.  See below for details.
 
 Here are the full patch notes:
 
-* system: protect popen() with exec_safe() `[1] <https://github.com/opnsense/core/security/advisories/GHSA-xxp9-93cr-x54p>`__ 
-* system: lockout bypass fix `[2] <https://github.com/opnsense/core/security/advisories/GHSA-h3vx-4q27-rc42>`__  (contributed by Konstantinos Spartalis)
+* system: protect popen() with exec_safe() `[1] <https://www.cve.org/cverecord?id=CVE-2026-44193>`__ 
+* system: lockout bypass fix `[2] <https://www.cve.org/cverecord?id=CVE-2026-44195>`__  (contributed by Konstantinos Spartalis)
 * system: refactor dashboard to use User model instead of direct config access
 * system: throw UserException when dashboard size limit was reached on save
 * system: add notes dashboard widget (contributed by Konstantinos Spartalis)
@@ -118,6 +209,13 @@ A hotfix release was issued as 26.1.7_1:
 
 * system: fix missing newline when generating cron jobs due to a regression
 
+A hotfix release was issued as 26.1.7_2:
+
+* system: fix missing base64_decode() in JsonField which prevented user settings from saving
+
+A hotfix release was issued as 26.1.7_3:
+
+* backend: configctl: support -f cache flush parameter to fix cache invalidation preamble "!" pass
 
 
 
@@ -315,7 +413,7 @@ Here are the full patch notes:
 * ui: Bootgrid: force a lightweight redraw when columns are programmatically changed
 * ui: Bootgrid: fix curRowCount type conversion issue when stored in localStorage
 * lang: various language updates
-* ports: libxml 2.15.2 `[2] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.15.2 `[2] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.2/NEWS>`__ 
 * ports: strongswan 6.0.4 `[3] <https://github.com/strongswan/strongswan/releases/tag/6.0.4>`__ 
 * ports: syslog-ng 4.11.0 `[4] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.11.0>`__ 
 
@@ -472,7 +570,7 @@ Here are the full patch notes:
 * plugins: os-haproxy 5.0 `[1] <https://github.com/opnsense/plugins/blob/stable/26.1/net/haproxy/pkg-descr>`__ 
 * ports: expat 2.7.4 `[2] <https://github.com/libexpat/libexpat/blob/R_2_7_4/expat/Changes>`__ 
 * ports: hostwatch 1.0.12 now rate-limits database writes for recently seen hosts
-* ports: ldns 1.9.0 `[3] <https://raw.githubusercontent.com/NLnetLabs/ldns/1.9.0/Changelog>`__ 
+* ports: ldns 1.9.0 `[3] <https://github.com/NLnetLabs/ldns/blob/1.9.0/Changelog>`__ 
 * ports: nss 3.120 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_120.html>`__ 
 * ports: openldap 2.6.12 `[5] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openvpn 2.6.19 `[6] <https://github.com/OpenVPN/openvpn/blob/v2.6.19/Changes.rst>`__ 
@@ -566,7 +664,7 @@ Here are the full patch notes:
 * src: arm64 SVE signal context misalignment `[7] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:02.arm64.asc>`__ 
 * src: page fault handler fails to zero memory `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:03.vm.asc>`__ 
 * ports: dnsmasq 2.92 `[9] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
-* ports: libxml 2.15.1 `[10] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.15.1 `[10] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.1/NEWS>`__ 
 * ports: openssl 3.0.19 `[11] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: phalcon 5.10.0 `[12] <https://github.com/phalcon/cphalcon/releases/tag/v5.10.0>`__ 
 * ports: php 8.3.30 `[13] <https://www.php.net/ChangeLog-8.php#8.3.30>`__ 

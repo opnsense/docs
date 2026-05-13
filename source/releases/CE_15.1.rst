@@ -124,8 +124,6 @@ refresh the page and look for new updates.
 
 Here is the full list of changes:
 
-* notable ports updates: pcre 8.37_1 `[1] <https://github.com/freebsd/freebsd-ports/commit/030adcf1d>`__ , phalcon 2.0.2 `[2] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.2>`__ , strongswan 5.3.2 `[3] <https://wiki.strongswan.org/projects/strongswan/wiki/Changelog53>`__ , sqlite 3.8.10.2 `[4] <https://sqlite.org/releaselog/3_8_10_2.html>`__ 
-* more notable ports: openvpn 2.3.7 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23#OpenVPN2.3.7>`__ , openssl 1.0.2b `[6] <http://marc.info/?l=openbsd-announce&m=143404058913441>`__ , libressl 2.1.7 `[7] <https://github.com/freebsd/freebsd-ports/commit/40365ab880101ee>`__ , pkg 1.5.4 `[8] <https://www.openssl.org/news/secadv_20150611.txt>`__ 
 * opnsense-update: has gained the ability to do package updates as well
 * core: removed unused ssh_tunnel_shell and 3gstats utilities, added sudo to the default utilities
 * captiveportal/traffic shaper: better fix for localhost skip
@@ -139,6 +137,14 @@ Here is the full list of changes:
 * firmware: fix overzealous caching of available package upgrades
 * users: user with group admins now have :code:`wheel` group associated with them, allowing them to use :code:`su` or :code:`sudo` (if configured)
 * users: do not copy root's hidden files while creating a new user home directory
+* ports: pcre 8.37_1 `[1] <https://github.com/freebsd/freebsd-ports/commit/030adcf1d>`__ 
+* ports: phalcon 2.0.2 `[2] <https://github.com/phalcon/cphalcon/releases/tag/phalcon-v2.0.2>`__ 
+* ports: strongswan 5.3.2 `[3] <https://wiki.strongswan.org/projects/strongswan/wiki/Changelog53>`__ 
+* ports: sqlite 3.8.10.2 `[4] <https://sqlite.org/releaselog/3_8_10_2.html>`__ 
+* ports: openvpn 2.3.7 `[5] <https://github.com/OpenVPN/openvpn/blob/v2.3.7/ChangeLog>`__ 
+* ports: openssl 1.0.2b `[6] <http://marc.info/?l=openbsd-announce&m=143404058913441>`__ 
+* ports: libressl 2.1.7 `[7] <https://github.com/freebsd/freebsd-ports/commit/40365ab880101ee>`__ 
+* ports: pkg 1.5.4 `[8] <https://www.openssl.org/news/secadv_20150611.txt>`__ 
 
 
 

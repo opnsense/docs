@@ -125,10 +125,10 @@ Here are the full patch notes:
 * src: libcasper: fix descriptors numbers `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:19.libcasper.asc>`__ 
 * src: linux: prevent integer overflow in futex_requeue `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-21:22.linux_futex.asc>`__ 
 * ports: clog 1.0.2 fixes garbage header write on init
-* ports: libxml 2.9.12 `[7] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.9.12 `[7] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.9.12/NEWS>`__ 
 * ports: nettle 3.7.3
 * ports: nss 3.67 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_67.html>`__ 
-* ports: openvpn 2.5.3 `[9] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.3>`__ 
+* ports: openvpn 2.5.3 `[9] <https://github.com/OpenVPN/openvpn/blob/v2.5.3/Changes.rst>`__ 
 * ports: php 7.4.20 `[10] <https://www.php.net/ChangeLog-7.php#7.4.20>`__ 
 * ports: phpseclib 2.0.32 `[11] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.32>`__ 
 * ports: sudo 1.9.7p1 `[12] <https://www.sudo.ws/releases/stable/#1.9.7p1>`__ 
@@ -270,7 +270,7 @@ Here are the full patch notes:
 * ports: libxml fix for CVE-2021-3541
 * ports: nss 3.65 `[13] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_65.html>`__ 
 * ports: openssh 8.6p1 `[14] <https://www.openssh.com/txt/release-8.6>`__ 
-* ports: openvpn 2.4.11 `[15] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24#OpenVPN2.4.11>`__ 
+* ports: openvpn 2.4.11 `[15] <https://github.com/OpenVPN/openvpn/blob/v2.4.11/Changes.rst>`__ 
 * ports: php 7.3.28 `[16] <https://www.php.net/ChangeLog-7.php#7.3.28>`__ 
 * ports: sqlite 3.35.5 `[17] <https://sqlite.org/releaselog/3_35_5.html>`__ 
 * ports: sudo 1.9.7 `[18] <https://www.sudo.ws/releases/stable/#1.9.7>`__ 
@@ -491,7 +491,7 @@ Here are the full patch notes:
 * src: axgbe: change default parameters to prevent manual tunable settings
 * src: arp: avoid segfaulting due to out-of-bounds memory access
 * ports: cpdup 1.22 `[8] <https://github.com/DragonFlyBSD/cpdup/releases/tag/v1.22>`__ 
-* ports: krb5 1.19.1 `[9] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
+* ports: krb5 1.19.1 `[9] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
 * ports: nss 3.62 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_62.html>`__ 
 * ports: pkg now provides fallback for version mismatch on pkg-add
 * ports: python 3.7.10 `[11] <https://docs.python.org/release/3.7.10/whatsnew/changelog.html>`__ 

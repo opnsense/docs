@@ -168,7 +168,7 @@ Here are the full patch notes:
 * plugins: os-theme-cicada 1.23 (contributed by Team Rebellion)
 * plugins: os-theme-tukan 1.22 (contributed by Team Rebellion)
 * ports: ca_root_nss 3.48
-* ports: krb5 1.17.1 `[6] <https://web.mit.edu/kerberos/krb5-1.17/>`__ 
+* ports: krb5 1.17.1 `[6] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
 * ports: php 7.2.25 `[7] <https://www.php.net/ChangeLog-7.php#7.2.25>`__ 
 * ports: suricata 4.1.6 `[8] <https://suricata-ids.org/2019/12/13/suricata-4-1-6-released/>`__ 
 * ports: unbound 1.9.5 `[9] <https://nlnetlabs.nl/projects/unbound/download/>`__ 
@@ -215,7 +215,7 @@ Here are the full patch notes:
 * src: import tzdata 2019c `[7] <https://www.freebsd.org/security/advisories/FreeBSD-EN-19:18.tzdata.asc>`__ 
 * ports: curl 7.67.0 `[8] <https://curl.haxx.se/changes.html>`__ 
 * ports: libressl 3.0.2 `[9] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.0.2-relnotes.txt>`__ 
-* ports: openvpn 2.4.8 `[10] <https://github.com/OpenVPN/openvpn/blob/release/2.4/Changes.rst#version-248>`__ 
+* ports: openvpn 2.4.8 `[10] <https://github.com/OpenVPN/openvpn/blob/v2.4.8/Changes.rst>`__ 
 * ports: perl 5.30.1 `[11] <https://perldoc.perl.org/5.30.1/perldelta>`__ 
 * ports: phalcon 3.4.5 `[12] <https://github.com/phalcon/cphalcon/releases/tag/v3.4.5>`__ 
 * ports: sqlite 3.30.1 `[13] <https://sqlite.org/releaselog/3_30_1.html>`__ 
@@ -365,7 +365,7 @@ Here are the full patch notes:
 * plugins: os-theme-cicada 1.20 (contributed by Team Rebellion)
 * plugins: os-theme-tukan 1.20 (contributed by Team Rebellion)
 * ports: ca_root_nss 3.46
-* ports: ldns 1.7.1 `[5] <https://raw.githubusercontent.com/NLnetLabs/ldns/release-1.7.1/Changelog>`__ 
+* ports: ldns 1.7.1 `[5] <https://github.com/NLnetLabs/ldns/blob/release-1.7.1/Changelog>`__ 
 * ports: pcre2 10.33 `[6] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.33>`__ 
 * ports: php 7.2.22 `[7] <https://www.php.net/ChangeLog-7.php#7.2.22>`__ 
 * ports: phpseclib 2.0.21 `[8] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.21>`__ 

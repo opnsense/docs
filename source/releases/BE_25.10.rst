@@ -152,7 +152,7 @@ Here are the full patch notes:
 * ports: dpinger 3.4 `[12] <https://github.com/dennypage/dpinger/releases/tag/v3.4>`__ 
 * ports: filterlog no longer uses unneeded promiscuous mode
 * ports: libucl 0.9.3
-* ports: libxml 2.15.1 `[13] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.15.1 `[13] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.1/NEWS>`__ 
 * ports: nss 3.119.1 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_119_1.html>`__ 
 * ports: openssl 3.0.19 `[15] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: phpseclib 3.0.48
@@ -364,8 +364,8 @@ Here are the full patch notes:
 * src: SO_REUSEPORT_LB breaks connect(2) for UDP sockets `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-25:09.netinet.asc>`__ 
 * src: vtnet: assorted stable branch improvements
 * ports: curl 8.17.0 `[13] <https://curl.se/changes.html#8_17_0>`__ 
-* ports: kea 3.0.2 `[14] <https://downloads.isc.org/isc/kea/3.0.2/Kea-3.0.2-ReleaseNotes.txt>`__ 
-* ports: libxml 2.14.6 `[15] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: kea 3.0.2 `[14] <https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-3.0.2>`__ 
+* ports: libxml 2.14.6 `[15] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.14.6/NEWS>`__ 
 * ports: nss 3.118.1 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_118_1.html>`__ 
 * ports: openssh 10.2p1 `[17] <https://www.openssh.com/txt/release-10.2>`__ 
 * ports: openvpn 2.6.17 `[18] <https://github.com/OpenVPN/openvpn/blob/v2.6.17/Changes.rst>`__ 
@@ -674,8 +674,8 @@ Here are the full patch notes:
 * ports: curl 8.16.0 `[23] <https://curl.se/changes.html#8_16_0>`__ 
 * ports: dnspython 2.8.0 `[24] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
 * ports: expat 2.7.3 `[25] <https://github.com/libexpat/libexpat/blob/R_2_7_3/expat/Changes>`__ 
-* ports: kea 3.0.1 `[26] <https://downloads.isc.org/isc/kea/3.0.1/Kea-3.0.1-ReleaseNotes.txt>`__ 
-* ports: krb5 1.22.1 `[27] <https://web.mit.edu/kerberos/krb5-1.22/>`__ 
+* ports: kea 3.0.1 `[26] <https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-3.0.1>`__ 
+* ports: krb5 1.22.1 `[27] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
 * ports: libpfctl 0.17
 * ports: lighttpd 1.4.82 `[28] <https://www.lighttpd.net/2025/9/12/1.4.82/>`__ 
 * ports: nss 3.117 `[29] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_117.html>`__ 

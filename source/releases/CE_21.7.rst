@@ -78,7 +78,7 @@ Here are the full patch notes:
 * ports: lighttpd 1.4.63 `[13] <https://www.lighttpd.net/2021/12/4/1.4.63/>`__ 
 * ports: nss 3.74 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_74.html>`__ 
 * ports: openssl 1.1.1m `[15] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
-* ports: openvpn 2.5.5 `[16] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.5>`__ 
+* ports: openvpn 2.5.5 `[16] <https://github.com/OpenVPN/openvpn/blob/v2.5.5/Changes.rst>`__ 
 * ports: php 7.4.27 `[17] <https://www.php.net/ChangeLog-7.php#7.4.27>`__ 
 * ports: sqlite 3.37.2 `[18] <https://sqlite.org/releaselog/3_37_2.html>`__ 
 * ports: syslog-ng 3.35.1 `[19] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.35.1>`__ 
@@ -340,7 +340,7 @@ Here are the full patch notes:
 * ports: libressl 3.3.5 `[8] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.5-relnotes.txt>`__ 
 * ports: lighttpd 1.4.60 `[9] <https://www.lighttpd.net/2021/10/3/1.4.60/>`__ 
 * ports: nss 3.71 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_71.html>`__ 
-* ports: openvpn 2.5.4 `[11] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.4>`__ 
+* ports: openvpn 2.5.4 `[11] <https://github.com/OpenVPN/openvpn/blob/v2.5.4/Changes.rst>`__ 
 * ports: php 7.4.24 `[12] <https://www.php.net/ChangeLog-7.php#7.4.24>`__ 
 * ports: py-jinja 3.0.1 `[13] <https://jinja.palletsprojects.com/en/stable/changes/#version-3-0-1>`__ 
 * ports: strongswan 5.9.4 `[14] <https://github.com/strongswan/strongswan/releases/tag/5.9.4>`__ 
@@ -536,7 +536,7 @@ Here are the full patch notes:
 * src: revert upstream commit "e1000: Rework em_msi_link interrupt filter"
 * ports: switched to FreeBSD ports tree
 * ports: filterlog print "0" instead of "(null)" label
-* ports: krb5 1.19.2 `[5] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
+* ports: krb5 1.19.2 `[5] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
 * ports: php 7.4.22 `[6] <https://www.php.net/ChangeLog-7.php#7.4.22>`__ 
 
 
@@ -691,10 +691,10 @@ Here are the full patch notes:
 * ports: clog 1.0.2 fixes garbage header write on init
 * ports: curl 7.78.0 `[14] <https://curl.se/changes.html#7_78_0>`__ 
 * ports: filterlog adds CARP IPv6 support and moves label to previously reserved spot
-* ports: libxml 2.9.12 `[15] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.9.12 `[15] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.9.12/NEWS>`__ 
 * ports: nettle 3.7.3
 * ports: nss 3.68 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_68.html>`__ 
-* ports: openvpn 2.5.3 `[17] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.3>`__ 
+* ports: openvpn 2.5.3 `[17] <https://github.com/OpenVPN/openvpn/blob/v2.5.3/Changes.rst>`__ 
 * ports: php 7.4.21 `[18] <https://www.php.net/ChangeLog-7.php#7.4.21>`__ 
 * ports: phpseclib 2.0.32 `[19] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.32>`__ 
 * ports: python 3.8.10 `[20] <https://docs.python.org/release/3.8.10/whatsnew/changelog.html>`__ 
@@ -883,10 +883,10 @@ Here are the full patch notes against 21.1.7:
 * src: FreeBSD updates for Intel e1000, ixgbe and ixl drivers
 * src: compatibility shim for upcoming rtsold "-M" command line option
 * ports: drop hardening options to ease migration to FreeBSD ports tree
-* ports: libxml 2.9.12 `[6] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.9.12 `[6] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.9.12/NEWS>`__ 
 * ports: nettle 3.7.3
 * ports: nss 3.67 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_67.html>`__ 
-* ports: openvpn 2.5.3 `[8] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.3>`__ 
+* ports: openvpn 2.5.3 `[8] <https://github.com/OpenVPN/openvpn/blob/v2.5.3/Changes.rst>`__ 
 * ports: php 7.4.20 `[9] <https://www.php.net/ChangeLog-7.php#7.4.20>`__ 
 * ports: phpseclib 2.0.32 `[10] <https://github.com/phpseclib/phpseclib/releases/tag/2.0.32>`__ 
 * ports: python 3.8.10 `[11] <https://docs.python.org/release/3.8.10/whatsnew/changelog.html>`__ 

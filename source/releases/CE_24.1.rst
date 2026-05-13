@@ -60,7 +60,7 @@ Here are the full patch notes:
 * plugins: os-zabbix-agent 1.14 `[5] <https://github.com/opnsense/plugins/blob/stable/24.1/net-mgmt/zabbix-agent/pkg-descr>`__ 
 * plugins: os-zabbix-proxy 1.11 `[6] <https://github.com/opnsense/plugins/blob/stable/24.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
 * ports: dhcp6c 20240710 reverts faulty Debian patch
-* ports: krb5 1.21.3 `[7] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
+* ports: krb5 1.21.3 `[7] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
 * ports: nss 3.101 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_101.html>`__ 
 * ports: openssh 9.8p1 `[9] <https://www.openssh.com/txt/release-9.8>`__ 
 * ports: openvpn 2.6.11 `[10] <https://github.com/OpenVPN/openvpn/blob/v2.6.11/Changes.rst>`__ 
@@ -190,7 +190,7 @@ Here are the full patch notes:
 * src: igc: increase default per-queue interrupt rate to 20000
 * ports: dhcrelay 0.5 fixes endless loop on packet read
 * ports: hyperscan 5.4.2 `[2] <https://github.com/intel/hyperscan/releases/tag/v5.4.2>`__ 
-* ports: libxml 2.11.8 `[3] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.11.8 `[3] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.11.8/NEWS>`__ 
 * ports: ntp 4.2.8p18 `[4] <https://www.ntp.org/support/securitynotice/4_2_8-series-changelog/#428p18>`__ 
 * ports: openssl fix for CVE-2024-4603
 * ports: phalcon 5.7.0 `[5] <https://github.com/phalcon/cphalcon/releases/tag/v5.7.0>`__ 
@@ -485,7 +485,7 @@ Here are the full patch notes:
 * ports: dnspython 2.6.1
 * ports: expat 2.6.0 `[2] <https://github.com/libexpat/libexpat/blob/R_2_6_0/expat/Changes>`__ 
 * ports: libpfctl 0.9
-* ports: libxml 2.11.7 `[3] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.11.7 `[3] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.11.7/NEWS>`__ 
 * ports: lighttpd 1.4.74 `[4] <https://www.lighttpd.net/2024/2/19/1.4.74/>`__ 
 * ports: pcre2 10.43 `[5] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.43>`__ 
 * ports: php 8.2.16 `[6] <https://www.php.net/ChangeLog-8.php#8.2.16>`__ 
@@ -707,7 +707,7 @@ Here are the full patch notes against 23.7.12:
 * src: wireguard: add experimental netmap support
 * src: sys: Use mbufq_empty instead of comparing mbufq_len against 0
 * src: e1000/igc: remove disconnected sysctl
-* ports: libxml 2.11.6 `[5] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.11.6 `[5] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.11.6/NEWS>`__ 
 * ports: openssl 3.0.12 `[6] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: php 8.2.15 `[7] <https://www.php.net/ChangeLog-8.php#8.2.15>`__ 
 * ports: py-duckdb 0.9.2
@@ -831,7 +831,7 @@ Here are the full patch notes against 23.7.12:
 * src: bsdinstall: merge assorted stable changes
 * src: tuntap: merge assorted stable changes
 * src: wireguard: add netmap support
-* ports: libxml 2.11.6 `[2] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.11.6 `[2] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.11.6/NEWS>`__ 
 * ports: openssl 3.0.12 `[3] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: py-duckdb 0.9.2
 * ports: suricata 7.0.2 `[4] <https://forum.suricata.io/t/suricata-7-0-2-released/4069>`__ 

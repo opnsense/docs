@@ -520,7 +520,7 @@ Here are the full patch notes:
 * ports: dhcp6c 20240919 reintroduced fixed arc4random() usage
 * ports: expat 2.6.3 `[5] <https://github.com/libexpat/libexpat/blob/R_2_6_3/expat/Changes>`__ 
 * ports: libpfctl 0.13
-* ports: libxml 2.11.9 `[6] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.11.9 `[6] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.11.9/NEWS>`__ 
 * ports: nss 3.104 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_104.html>`__ 
 * ports: python 3.11.10 `[8] <https://docs.python.org/release/3.11.10/whatsnew/changelog.html>`__ 
 * ports: sudo 1.9.16 `[9] <https://www.sudo.ws/releases/stable/#1.9.16>`__ 
@@ -814,7 +814,7 @@ Here are the full patch notes:
 * src: wg: change dhost to something other than a broadcast address (contributed by Sunny Valley Networks)
 * ports: curl 8.9.1 `[8] <https://curl.se/changes.html#8_9_1>`__ 
 * ports: dhcrelay 0.6 `[9] <https://github.com/opnsense/dhcrelay/issues/2>`__ 
-* ports: kea 2.6.1 `[10] <https://downloads.isc.org/isc/kea/2.6.1/Kea-2.6.1-ReleaseNotes.txt>`__ 
+* ports: kea 2.6.1 `[10] <https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-2.6.1>`__ 
 * ports: nss 3.102 `[11] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_102.html>`__ 
 * ports: php 8.2.22 `[12] <https://www.php.net/ChangeLog-8.php#8.2.22>`__ 
 * ports: rrdtool 1.9.0 `[13] <https://github.com/oetiker/rrdtool-1.x/releases/tag/v1.9.0>`__ 

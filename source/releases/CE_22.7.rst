@@ -203,7 +203,7 @@ Here are the full patch notes:
 * plugins: os-nginx 1.31 `[1] <https://github.com/opnsense/plugins/blob/stable/22.7/www/nginx/pkg-descr>`__ 
 * plugins: os-wireguard now skips invalid peers for dashboard widget (contributed by jkellerer)
 * ports: expat 2.5.0 `[2] <https://github.com/libexpat/libexpat/blob/R_2_5_0/expat/Changes>`__ 
-* ports: krb5 1.20.1 `[3] <https://web.mit.edu/kerberos/krb5-1.20/>`__ 
+* ports: krb5 1.20.1 `[3] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
 * ports: nss 3.85 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_85.html>`__ 
 * ports: phalcon 5.1.1 `[5] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.1>`__ 
 * ports: sudo 1.9.12p1 `[6] <https://www.sudo.ws/releases/stable/#1.9.12p1>`__ 
@@ -279,10 +279,10 @@ Here are the full patch notes:
 * src: ixl: fix SR-IOV panics
 * src: rc: run NAME_setup before RC_ARG_precmd
 * src: u3g: add more USB IDs
-* ports: libxml 2.10.3 `[15] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.10.3 `[15] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.10.3/NEWS>`__ 
 * ports: nss 3.84 `[16] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_84.html>`__ 
 * ports: openssl 1.1.1s `[17] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
-* ports: openvpn 2.5.8 `[18] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25#Changesin2.5.8>`__ 
+* ports: openvpn 2.5.8 `[18] <https://github.com/OpenVPN/openvpn/blob/v2.5.8/Changes.rst>`__ 
 * ports: phalcon 5.1.0 `[19] <https://github.com/phalcon/cphalcon/releases/tag/v5.1.0>`__ 
 * ports: php 8.0.25 `[20] <https://www.php.net/ChangeLog-8.php#8.0.25>`__ 
 * ports: python 3.9.15 `[21] <https://docs.python.org/release/3.9.15/whatsnew/changelog.html>`__ 
@@ -462,7 +462,7 @@ Here are the full patch notes:
 * interfaces: add support for requesting DNS info via stateless DHCPv6 (contributed by Maurice Walker)
 * dnsmasq: restart during "newwanip" event
 * ports: curl 7.85.0 `[1] <https://curl.se/changes.html#7_85_0>`__ 
-* ports: libxml 2.10.2 `[2] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.10.2 `[2] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.10.2/NEWS>`__ 
 * ports: sqlite 3.39.2 `[3] <https://sqlite.org/releaselog/3_39_2.html>`__ 
 * ports: syslog-ng 3.38.1 `[4] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-3.38.1>`__ 
 
@@ -520,9 +520,9 @@ Here are the full patch notes:
 * src: rc: improve NAME_setup integration
 * src: zlib: fix a bug when getting a gzip header extra field with inflate() `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-22:13.zlib.asc>`__ 
 * src: tzdata: import tzdata 2022b and 2022c `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-22:20.tzdata.asc>`__ 
-* ports: ldns 1.8.3 `[7] <https://raw.githubusercontent.com/NLnetLabs/ldns/1.8.3/Changelog>`__ 
+* ports: ldns 1.8.3 `[7] <https://github.com/NLnetLabs/ldns/blob/1.8.3/Changelog>`__ 
 * ports: liblz4 1.9.4
-* ports: libxml 2.10.1 `[8] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.10.1 `[8] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.10.1/NEWS>`__ 
 * ports: nss 3.82 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_82.html>`__ 
 * ports: phpseclib 3.0.14 `[10] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.14>`__ 
 
@@ -551,7 +551,7 @@ Here are the full patch notes:
 * system: "passwordarea" support for sensitive backup values
 * interfaces: fix wireless clone assignment regression in 22.7.1
 * interfaces: update ifctl utility to latest version
-* firewall: add BGP ASN type to aliases `[1] <https://docs.opnsense.org/manual/aliases.html#bgp-asn>`__ 
+* firewall: add BGP ASN type to aliases `[1] <https://docs.opnsense.org/manual/aliases.html>`__ 
 * dhcp: extend search list pull from DHCPv6 in router advertisements DNS option
 * dhcp: improve UI for disabling DNS part of router advertisements (contributed by Patrick M. Hausen)
 * dhcp: pushed wrong server to zone definition on local DNS selection
@@ -615,7 +615,7 @@ Here are the full patch notes:
 * plugins: os-munin-node 1.1 `[4] <https://github.com/opnsense/plugins/blob/stable/22.7/sysutils/munin-node/pkg-descr>`__ 
 * plugins: os-netdata 1.2 `[5] <https://github.com/opnsense/plugins/blob/stable/22.7/net-mgmt/netdata/pkg-descr>`__ 
 * plugins: os-nginx 1.29 `[6] <https://github.com/opnsense/plugins/blob/stable/22.7/www/nginx/pkg-descr>`__ 
-* ports: libxml 2.9.14 `[7] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.9.14 `[7] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.9.14/NEWS>`__ 
 * ports: nss 3.81 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_81.html>`__ 
 * ports: rrdtool 1.8.0 `[9] <https://github.com/oetiker/rrdtool-1.x/releases/tag/v1.8.0>`__ 
 * ports: unbound 1.16.2 `[10] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-16-2>`__ 

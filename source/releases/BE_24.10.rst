@@ -571,9 +571,9 @@ Here are the full patch notes:
 * ports: dnspython 2.7.0
 * ports: expat 2.6.3 `[25] <https://github.com/libexpat/libexpat/blob/R_2_6_3/expat/Changes>`__ 
 * ports: hostapd 2.11 `[26] <https://w1.fi/cgit/hostap/plain/hostapd/ChangeLog>`__ 
-* ports: kea 2.6.1 `[27] <https://downloads.isc.org/isc/kea/2.6.1/Kea-2.6.1-ReleaseNotes.txt>`__ 
+* ports: kea 2.6.1 `[27] <https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-2.6.1>`__ 
 * ports: libpfctl 0.13
-* ports: libxml 2.11.9 `[28] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.11.9 `[28] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.11.9/NEWS>`__ 
 * ports: monit 5.34.1 `[29] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.104 `[30] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_104.html>`__ 
 * ports: openvpn 2.6.12 `[31] <https://github.com/OpenVPN/openvpn/blob/v2.6.12/Changes.rst>`__ 

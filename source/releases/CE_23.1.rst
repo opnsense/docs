@@ -289,7 +289,7 @@ Here are the full patch notes:
 * plugins: os-ddclient 1.13 `[1] <https://github.com/opnsense/plugins/blob/stable/23.1/dns/ddclient/pkg-descr>`__ 
 * plugins: os-stunnel fix for missing OpenSSL CRL functions
 * plugins: os-smart fix for highlighting result (contributed by Justin Horton)
-* ports: libxml 2.10.4 `[2] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.10.4 `[2] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.10.4/NEWS>`__ 
 * ports: openvpn 2.6.3 `[3] <https://github.com/OpenVPN/openvpn/blob/v2.6.3/Changes.rst>`__ 
 * ports: sqlite 3.41.2 `[4] <https://sqlite.org/releaselog/3_41_2.html>`__ 
 * ports: suricata 6.0.11 `[5] <https://suricata.io/2023/04/13/suricata-6-0-11-released/>`__ 
@@ -342,7 +342,7 @@ Here are the full patch notes:
 * reporting: sort interfaces by description in health graphs
 * interfaces: ping diagnostic tool was rewritten using MVC/API
 * interfaces: allow to set PCP value on IPv4 DHCP traffic to address recent Orange FR changes
-* firewall: allow to create aliases for logged-in OpenVPN users `[1] <https://docs.opnsense.org/manual/aliases.html#openvpn-group>`__ 
+* firewall: allow to create aliases for logged-in OpenVPN users `[1] <https://docs.opnsense.org/manual/aliases.html>`__ 
 * firewall: leave out fractional seconds from timestamps in aliases
 * firewall: fix progress bar default value (contributed by Nicolas Thumann)
 * dhcp: fix too many addresses issue in radvd RDNSS setting

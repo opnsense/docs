@@ -178,7 +178,7 @@ Here are the full patch notes:
 * ports: hyperscan 5.4.2 `[7] <https://github.com/intel/hyperscan/releases/tag/v5.4.2>`__ 
 * ports: libpfctl 0.11
 * ports: libucl 0.9.2
-* ports: libxml 2.11.8 `[8] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.11.8 `[8] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.11.8/NEWS>`__ 
 * ports: lighttpd 1.4.76 `[9] <https://www.lighttpd.net/2024/4/12/1.4.76/>`__ 
 * ports: ntp 4.2.8p18 `[10] <https://www.ntp.org/support/securitynotice/4_2_8-series-changelog/#428p18>`__ 
 * ports: openssl 3.0.14 `[11] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
@@ -196,7 +196,7 @@ A hotfix release was issued as 24.4.1_2:
 
 * wireguard: fix IP protocol detection for manual gateway
 * ui: properly break out selectpicker options in modals
-* ports: krb5 1.21.3 `[20] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
+* ports: krb5 1.21.3 `[20] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
 * ports: nss 3.101 `[21] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_101.html>`__ 
 * ports: openssh 9.8p1 `[22] <https://www.openssh.com/txt/release-9.8>`__ 
 * ports: openvpn 2.6.11 `[23] <https://github.com/OpenVPN/openvpn/blob/v2.6.11/Changes.rst>`__ 
@@ -430,7 +430,7 @@ Here are the full patch notes:
 * ports: expat 2.6.2 `[19] <https://github.com/libexpat/libexpat/blob/R_2_6_2/expat/Changes>`__ 
 * ports: libpfctl 0.10
 * ports: libucl 0.9.1
-* ports: libxml 2.11.7 `[20] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.11.7 `[20] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.11.7/NEWS>`__ 
 * ports: lighttpd 1.4.75 `[21] <https://www.lighttpd.net/2024/3/13/1.4.75/>`__ 
 * ports: nss 3.99 `[22] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_99.html>`__ 
 * ports: openldap 2.6.7 `[23] <https://www.openldap.org/software/release/changes_lts.html>`__ 

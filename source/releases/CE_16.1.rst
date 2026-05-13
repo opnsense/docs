@@ -338,7 +338,9 @@ And now, here is the full change log for 16.1.14:
 * src: fix memory leak in ZFS `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-16:08.zfs.asc>`__ 
 * src: fix buffer overflow in keyboard driver `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:18.atkbd.asc>`__ 
 * src: fix incorrect argument handling in sendmsg `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-16:19.sendmsg.asc>`__ 
-* ports: sqlite 3.12.2 `[8] <https://sqlite.org/releaselog/3_12_2.html>`__ , openvpn 2.3.11 `[9] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23#OpenVPN2.3.11>`__ , squid 3.5.19 `[10] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
+* ports: openvpn 2.3.11 `[8] <https://github.com/OpenVPN/openvpn/blob/v2.3.11/Changes.rst>`__ 
+* ports: sqlite 3.12.2 `[9] <https://sqlite.org/releaselog/3_12_2.html>`__ 
+* ports: squid 3.5.19 `[10] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
 * plugins: HAProxy plugin version 1.0 (contributed by Frank Wall)
 * lang: Japanese 100% completed
 * lang: updates for French and German

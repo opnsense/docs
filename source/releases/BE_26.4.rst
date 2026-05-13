@@ -340,9 +340,9 @@ Here are the full patch notes:
 * ports: dhcp6c v20260122
 * ports: expat 2.7.4 `[20] <https://github.com/libexpat/libexpat/blob/R_2_7_4/expat/Changes>`__ 
 * ports: hostwatch 1.0.13
-* ports: ldns 1.9.0 `[21] <https://raw.githubusercontent.com/NLnetLabs/ldns/1.9.0/Changelog>`__ 
+* ports: ldns 1.9.0 `[21] <https://github.com/NLnetLabs/ldns/blob/1.9.0/Changelog>`__ 
 * ports: libucl 0.9.4
-* ports: libxml 2.15.2 `[22] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.15.2 `[22] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.2/NEWS>`__ 
 * ports: nss 3.121 `[23] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_121.html>`__ 
 * ports: openldap 2.6.13 `[24] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openssl 3.0.20 `[25] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
@@ -357,8 +357,8 @@ Here are the full patch notes:
 
 A hotfix release was issued as 26.4_6:
 
-* system: protect popen() with exec_safe() `[34] <https://github.com/opnsense/core/security/advisories/GHSA-xxp9-93cr-x54p>`__ 
-* system: lockout bypass fix `[35] <https://github.com/opnsense/core/security/advisories/GHSA-h3vx-4q27-rc42>`__  (contributed by Konstantinos Spartalis)
+* system: protect popen() with exec_safe() `[34] <https://www.cve.org/cverecord?id=CVE-2026-44193>`__ 
+* system: lockout bypass fix `[35] <https://www.cve.org/cverecord?id=CVE-2026-44195>`__  (contributed by Konstantinos Spartalis)
 * system: allow gateway load balance weights from 1 to 10 for more flexibility (contributed by Matthew Hall)
 * system: add "nosync" option to gateway configuration
 * firewall: fix typo in alias update error log and make parser a bit more resilient

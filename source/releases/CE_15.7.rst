@@ -122,10 +122,18 @@ and Andreas Martin!  And no, we do not make these up as we go.  ;)
 
 Here are the full patch notes:
 
-* ports: suricata 2.0.11 `[2] <http://suricata-ids.org/2015/12/21/suricata-2-0-11-available/>`__ , dhcp6 20080615_5 `[3] <https://github.com/freebsd/freebsd-ports/commit/7f6883d1dd>`__ , lighttpd 1.4.39 `[4] <https://www.lighttpd.net/2016/1/2/1.4.39/>`__ 
-* ports: syslogd 10.2, mpd 5.8 `[5] <http://mpd.sourceforge.net/doc5/mpd4.html#4>`__ , ca_root_nss 3.21, dnsmasq 2.75_1 `[6] <https://reviews.freebsd.org/D4813>`__ 
-* ports: ntp 4.2.8p5 `[7] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ , php 5.6.17 `[8] <https://www.php.net/ChangeLog-5.php#5.6.17>`__ , python 2.7.11_1 `[9] <https://bugs.python.org/issue20397>`__ 
-* ports: miniupnpd 1.9.20151212, openvpn 2.3.10 `[10] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23#OpenVPN2.3.10>`__ 
+* ports: suricata 2.0.11 `[2] <http://suricata-ids.org/2015/12/21/suricata-2-0-11-available/>`__ 
+* ports: dhcp6 20080615_5 `[3] <https://github.com/freebsd/freebsd-ports/commit/7f6883d1dd>`__ 
+* ports: lighttpd 1.4.39 `[4] <https://www.lighttpd.net/2016/1/2/1.4.39/>`__ 
+* ports: syslogd 10.2
+* ports: mpd 5.8 `[5] <http://mpd.sourceforge.net/doc5/mpd4.html#4>`__ 
+* ports: ca_root_nss 3.21
+* ports: dnsmasq 2.75_1 `[6] <https://reviews.freebsd.org/D4813>`__ 
+* ports: ntp 4.2.8p5 `[7] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
+* ports: php 5.6.17 `[8] <https://www.php.net/ChangeLog-5.php#5.6.17>`__ 
+* ports: python 2.7.11_1 `[9] <https://bugs.python.org/issue20397>`__ 
+* ports: miniupnpd 1.9.20151212
+* ports: openvpn 2.3.10 `[10] <https://github.com/OpenVPN/openvpn/blob/v2.3.10/Changes.rst>`__ 
 * opnsense-update: add opnsense-verify and opnsense-sign
 * opnsense-update: improve verification of signatures of kernel and base upgrades
 * menu: bring back dashboard entry due to popular demand
@@ -197,7 +205,6 @@ little family.
 
 Here are the full patch notes:
 
-* ports: bind 9.10.3-P2 `[1] <https://kb.isc.org/article/AA-01328/0/BIND-9.10.3-P2-Release-Notes.html>`__ , python 2.7.11 `[2] <https://hg.python.org/cpython/raw-file/53d30ab403f1/Misc/NEWS>`__ , openvpn 2.3.9 `[3] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23#OpenVPN2.3.9>`__ 
 * traffic shaper: page is now properly translated (contributed by Fabian Franz)
 * system: all remaining pages in this section have been reworked for clarity
 * logs: split up the old VPN multi-log page into their respective parts (L2TP, PPTP, PPPoE)
@@ -209,6 +216,9 @@ Here are the full patch notes:
 * firewall: fix apply button on outbound NAT page in translation mode
 * traffic shaper: add TCP ACK/non-ACK matching options
 * proxy: two fixes for non-local authentication
+* ports: bind 9.10.3-P2 `[1] <https://kb.isc.org/article/AA-01328/0/BIND-9.10.3-P2-Release-Notes.html>`__ 
+* ports: python 2.7.11 `[2] <https://hg.python.org/cpython/raw-file/53d30ab403f1/Misc/NEWS>`__ 
+* ports: openvpn 2.3.9 `[3] <https://github.com/OpenVPN/openvpn/blob/v2.3.9/Changes.rst>`__ 
 
 
 
@@ -329,7 +339,7 @@ Here are the full patch notes:
 * ports: squid 5.3.11 `[3] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
 * ports: strongswan 5.3.4 `[4] <https://www.strongswan.org/blog/2015/11/16/strongswan-5.3.4-released.html>`__ 
 * ports: choparp 20150613 `[5] <https://github.com/quinot/choparp>`__ 
-* ports: libxml 2.9.3 `[6] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.9.3 `[6] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.9.3/NEWS>`__ 
 * ports: pkg 1.6.2 `[7] <https://github.com/freebsd/freebsd-ports/commit/0466b08981bf9c714>`__ 
 * ports: opnsense-bootstrap, the infamous installer that works on stock FreeBSD `[8] <https://github.com/opnsense/update/commit/e3f63ecdb1149a8cc30e3>`__ 
 * intrusion detection: ignore json parse errors in eve log file
@@ -805,9 +815,15 @@ Here are the full patch notes:
 
 * src: shell injection vulnerability in patch `[1] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:18.bsdpatch.asc>`__ 
 * src: routed remote denial of service vulnerability `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:19.routed.asc>`__ 
-* ports: dnsmasq 2.75 `[3] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ , squid 3.5.7 `[4] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ , openvpn 2.3.8 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn23#OpenVPN2.3.8>`__ 
-* ports: libressl 2.2.2 `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.2-relnotes.txt>`__ , lighttpd 1.4.36 `[7] <https://www.lighttpd.net/2015/7/26/1.4.36/>`__ , php 5.6.12 `[8] <https://www.php.net/ChangeLog-5.php#5.6.12>`__ 
-* ports: pcre 8.37_3 `[9] <https://github.com/freebsd/freebsd-ports/commit/1b0e3ce910b727>`__ , pkg 1.5.6 `[10] <https://github.com/freebsd/freebsd-ports/commit/1a100a88a92d4>`__ , expat 2.1.0_3 `[11] <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1283>`__ 
+* ports: dnsmasq 2.75 `[3] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: squid 3.5.7 `[4] <http://ftp.meisei-u.ac.jp/mirror/squid/squid-3.5-ChangeLog.txt>`__ 
+* ports: openvpn 2.3.8 `[5] <https://github.com/OpenVPN/openvpn/blob/v2.3.8/ChangeLog>`__ 
+* ports: libressl 2.2.2 `[6] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.2.2-relnotes.txt>`__ 
+* ports: lighttpd 1.4.36 `[7] <https://www.lighttpd.net/2015/7/26/1.4.36/>`__ 
+* ports: php 5.6.12 `[8] <https://www.php.net/ChangeLog-5.php#5.6.12>`__ 
+* ports: pcre 8.37_3 `[9] <https://github.com/freebsd/freebsd-ports/commit/1b0e3ce910b727>`__ 
+* ports: pkg 1.5.6 `[10] <https://github.com/freebsd/freebsd-ports/commit/1a100a88a92d4>`__ 
+* ports: expat 2.1.0_3 `[11] <https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1283>`__ 
 * dns resolver: improve bootstrapping of root directory to ensure service startup
 * firmware: fix handling of sample mirror file
 * firmware: added a mirror for China

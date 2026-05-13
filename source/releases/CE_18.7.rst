@@ -382,7 +382,7 @@ Here are the full patch notes:
 * plugins: os-smart 1.5 standard widget coloring (contributed by Fabian Franz)
 * plugins: os-rspamd now uses scan_mime_parts (contributed by Michael Muenz)
 * ports: curl 7.62.0 `[2] <https://curl.haxx.se/changes.html>`__ 
-* ports: krb5 1.16.2 `[3] <https://web.mit.edu/kerberos/krb5-1.16/>`__ 
+* ports: krb5 1.16.2 `[3] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
 * ports: strongswan 5.7.1 `[4] <https://wiki.strongswan.org/versions/71>`__ 
 * ports: suricata 4.0.6 `[5] <https://suricata-ids.org/2018/11/06/suricata-4-0-6-available/>`__ 
 

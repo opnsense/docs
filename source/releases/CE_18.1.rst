@@ -366,7 +366,7 @@ Here are the full patch notes:
 * src: multiple small kernel memory disclosures `[2] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:05.mem.asc>`__ 
 * src: timezone database information updates `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:06.tzdata.asc>`__ 
 * ports: ca_root_nss 3.37
-* ports: krb5 1.16.1 `[4] <https://web.mit.edu/kerberos/krb5-1.16/>`__ 
+* ports: krb5 1.16.1 `[4] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
 * ports: liblz4 1.8.2 `[5] <https://github.com/lz4/lz4/releases/tag/v1.8.2>`__ 
 * ports: python 2.7.15 `[6] <https://www.python.org/downloads/release/python-2715/>`__ 
 * ports: sqlite 3.23.1 `[7] <https://sqlite.org/releaselog/3_23_1.html>`__ 
@@ -475,7 +475,7 @@ Here are the full patch notes:
 * ports: sudo upstream patch to correct a FreeBSD issue `[2] <https://bugzilla.sudo.ws/show_bug.cgi?id=831>`__ 
 * ports: openldap 2.4.46 `[3] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openssh 7.7p1 `[4] <https://www.openssh.com/txt/release-7.7>`__ 
-* ports: openvpn 2.4.6 `[5] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
+* ports: openvpn 2.4.6 `[5] <https://github.com/OpenVPN/openvpn/blob/v2.4.6/Changes.rst>`__ 
 * ports: perl 5.26.2 `[6] <https://perldoc.perl.org/5.26.2/perldelta>`__ 
 * ports: php 7.1.17 `[7] <https://www.php.net/ChangeLog-7.php#7.1.17>`__ 
 * ports: sqlite 3.23.0 `[8] <https://sqlite.org/releaselog/3_23_0.html>`__ 
@@ -680,7 +680,7 @@ Here are the full patch notes:
 * ports: curl 7.59.0 `[6] <https://curl.haxx.se/changes.html>`__ 
 * ports: igmpproxy 0.2.1 `[7] <https://github.com/pali/igmpproxy/releases/tag/0.2.1>`__ 
 * ports: lighttpd 1.4.49 `[8] <https://www.lighttpd.net/2018/3/11/1.4.49/>`__ 
-* ports: openvpn 2.4.5 `[9] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
+* ports: openvpn 2.4.5 `[9] <https://github.com/OpenVPN/openvpn/blob/v2.4.5/Changes.rst>`__ 
 * ports: phalcon 3.3.2 `[10] <https://github.com/phalcon/cphalcon/releases/tag/v3.3.2>`__ 
 * ports: php 7.1.15 `[11] <https://www.php.net/ChangeLog-7.php#7.1.15>`__ 
 * ports: strongswan 5.6.2 fix for public key authentication `[12] <https://github.com/freebsd/freebsd-ports/commit/32b1298c0>`__ 

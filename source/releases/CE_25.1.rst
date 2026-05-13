@@ -54,7 +54,7 @@ Here are the full patch notes:
 * firmware: add fingerprint and upgrade hint for 25.7
 * firmware: upgrade scripts for automatic GDrive, IPsec and OpenVPN legacy plugin installation
 * ui: replace self-closing select element (contributed by Gavin Chappell)
-* ports: libxml 2.14.5 `[1] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.14.5 `[1] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.14.5/NEWS>`__ 
 * ports: sqlite SONAME fix and associated rebuilds `[2] <https://github.com/freebsd/freebsd-ports/commit/25ef3857b8>`__ 
 * ports: unbound 1.23.1 `[3] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-23-1>`__ 
 
@@ -97,7 +97,7 @@ Here are the full patch notes:
 * src: ena: fix misconfiguration when requesting regular LLQ `[4] <https://www.freebsd.org/security/advisories/FreeBSD-EN-25:11.ena.asc>`__ 
 * src: zfs: fix corruption in ZFS replication streams from encrypted datasets `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-25:10.zfs.asc>`__ 
 * src: libc: allow __cxa_atexit handlers to be added during __cxa_finalize `[6] <https://www.freebsd.org/security/advisories/FreeBSD-EN-25:09.libc.asc>`__ 
-* ports: libxml 2.14.4 `[7] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/master/NEWS>`__ 
+* ports: libxml 2.14.4 `[7] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.14.4/NEWS>`__ 
 * ports: nss 3.113.1 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_113_1.html>`__ 
 * ports: openssl 3.0.17 `[9] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: php 8.3.23 `[10] <https://www.php.net/ChangeLog-8.php#8.3.23>`__ 
@@ -265,7 +265,7 @@ Here are the full patch notes:
 * src: rtw88, rtw89: merge Realtek driver based on Linux v6.14
 * src: iwlwififw: remove Intel iwlwifi firmware from src.git
 * ports: curl 8.14.0 `[3] <https://curl.se/changes.html#8_14_0>`__ 
-* ports: kea 2.6.3 `[4] <https://downloads.isc.org/isc/kea/2.6.3/Kea-2.6.3-ReleaseNotes.txt>`__ 
+* ports: kea 2.6.3 `[4] <https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-2.6.3>`__ 
 * ports: python fix for CVE-2025-4516 `[5] <https://github.com/python/cpython/pull/134341>`__ 
 
 A hotfix release was issued as 25.1.8_1:
@@ -421,7 +421,7 @@ Here are the full patch notes:
 * src: Revert "amd64 GENERIC: Switch uart hints from isa to acpi"
 * ports: curl 8.13.0 `[3] <https://curl.se/changes.html#8_13_0>`__ 
 * ports: expat 2.7.1 `[4] <https://github.com/libexpat/libexpat/blob/R_2_7_1/expat/Changes>`__ 
-* ports: kea 2.6.2 `[5] <https://downloads.isc.org/isc/kea/2.6.2/Kea-2.6.2-ReleaseNotes.txt>`__ 
+* ports: kea 2.6.2 `[5] <https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-2.6.2>`__ 
 * ports: monit 5.35.1 `[6] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.110 `[7] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_110.html>`__ 
 * ports: openssh 10.0p1 `[8] <https://www.openssh.com/txt/release-10.0>`__ 

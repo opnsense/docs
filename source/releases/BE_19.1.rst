@@ -623,7 +623,7 @@ Here are the full patch notes:
 * ports: cpdup 1.20
 * ports: curl 7.64.0 `[8] <https://curl.haxx.se/changes.html>`__ 
 * ports: libressl 2.8.3 `[9] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-2.8.3-relnotes.txt>`__ 
-* ports: openvpn 2.4.7 `[10] <https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn24>`__ 
+* ports: openvpn 2.4.7 `[10] <https://github.com/OpenVPN/openvpn/blob/v2.4.7/Changes.rst>`__ 
 * ports: pam_opnsense manual page addition
 * ports: sqlite 3.27.1 `[11] <https://sqlite.org/releaselog/3_27_1.html>`__ 
 * ports: squid forgery check avoidance `[12] <https://github.com/opnsense/ports/issues/66>`__ 
