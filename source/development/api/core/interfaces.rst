@@ -100,7 +100,7 @@ Interfaces
     "``GET``","interfaces","overview","export",""
     "``GET``","interfaces","overview","get_interface","$if=null"
     "``GET``","interfaces","overview","interfaces_info","$details=false"
-    "``GET``","interfaces","overview","reload_interface","$identifier=null"
+    "``POST``","interfaces","overview","reload_interface","$identifier=null"
 
 .. csv-table:: Resources (SettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
