@@ -61,7 +61,7 @@ def parse_change_log(payload, this_version, links):
     for idx, line in enumerate(lines):
         content_line = None
         # general cleanups
-        line = line.replace('*', '\*')
+        line = line.replace('*', r'\*')
         if line.find('`') > -1:
             line = re.sub(r'(`)([^`|\']*)([`|\'])', r':code:`\2`', line)
         #
@@ -116,7 +116,11 @@ def parse_change_log(payload, this_version, links):
                     match = re.match(r"s/(.+)/(.*)/(\w*)", links[tmp[0]]['regex'])
                     if match:
                         count = 0 if match.group(3).startswith('g') else 1
-                        version = re.sub(match.group(1), match.group(2), tmp[1], count=count)
+                        search = match.group(1)
+                        replace = match.group(2)
+                        if replace == "$1":
+                            replace = r"\1"
+                        version = re.sub(search, replace, tmp[1], count=count)
                 if target_uri.find('%s') > -1:
                     target_uri = target_uri % version
             result[section] = result[section].replace(token, " `%s <%s>`__ " % (token, target_uri))
