@@ -536,7 +536,7 @@ Here are the full patch notes:
 * src: revert upstream commit "e1000: Rework em_msi_link interrupt filter"
 * ports: switched to FreeBSD ports tree
 * ports: filterlog print "0" instead of "(null)" label
-* ports: krb5 1.19.2 `[5] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.19.2 `[5] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
 * ports: php 7.4.22 `[6] <https://www.php.net/ChangeLog-7.php#7.4.22>`__ 
 
 

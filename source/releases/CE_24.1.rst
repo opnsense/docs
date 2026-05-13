@@ -60,7 +60,7 @@ Here are the full patch notes:
 * plugins: os-zabbix-agent 1.14 `[5] <https://github.com/opnsense/plugins/blob/stable/24.1/net-mgmt/zabbix-agent/pkg-descr>`__ 
 * plugins: os-zabbix-proxy 1.11 `[6] <https://github.com/opnsense/plugins/blob/stable/24.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
 * ports: dhcp6c 20240710 reverts faulty Debian patch
-* ports: krb5 1.21.3 `[7] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.21.3 `[7] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
 * ports: nss 3.101 `[8] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_101.html>`__ 
 * ports: openssh 9.8p1 `[9] <https://www.openssh.com/txt/release-9.8>`__ 
 * ports: openvpn 2.6.11 `[10] <https://github.com/OpenVPN/openvpn/blob/v2.6.11/Changes.rst>`__ 

@@ -514,7 +514,7 @@ Here are the full patch notes:
 * ports: curl 7.75.0 `[26] <https://curl.se/changes.html#7_75_0>`__ 
 * ports: dnsmasq 2.84 `[27] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: igmpproxy 0.3 `[28] <https://github.com/pali/igmpproxy/releases/tag/0.3>`__ 
-* ports: krb5 1.19.1 `[29] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.19.1 `[29] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
 * ports: libressl 3.2.5 `[30] <https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.2.5-relnotes.txt>`__ 
 * ports: lighttpd 1.4.59 `[31] <https://www.lighttpd.net/2021/2/2/1.4.59/>`__ 
 * ports: monit 5.27.2 `[32] <https://mmonit.com/monit/changes/>`__ 

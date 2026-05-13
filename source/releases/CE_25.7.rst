@@ -722,7 +722,7 @@ Here are the full patch notes:
 * src: if_ovpn: fill out sin_len/sin6_len
 * src: if_ovpn: destroy cloned interfaces via a prison removal callback
 * src: ifconfig: support VLAN ID in static/deladdr
-* ports: krb5 1.22.1 `[5] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.22.1 `[5] <https://web.mit.edu/kerberos/krb5-1.22/>`__ 
 * ports: nss 3.115.1 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_115_1.html>`__ 
 * ports: perl 5.42.0 `[7] <https://perldoc.perl.org/5.42.0/perldelta>`__ 
 * ports: php 8.3.25 `[8] <https://www.php.net/ChangeLog-8.php#8.3.25>`__ 

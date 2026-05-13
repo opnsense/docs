@@ -488,7 +488,7 @@ Here are the full patch notes:
 * ports: dnspython 2.2.1 `[23] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
 * ports: dpinger 3.2 `[24] <https://github.com/dennypage/dpinger/releases/tag/v3.2>`__ 
 * ports: expat 2.4.7 `[25] <https://github.com/libexpat/libexpat/blob/R_2_4_7/expat/Changes>`__ 
-* ports: krb5 1.19.3 `[26] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.19.3 `[26] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
 * ports: lighttpd 1.4.64 `[27] <https://www.lighttpd.net/2022/1/19/1.4.64/>`__ 
 * ports: monit 5.30.0 `[28] <https://mmonit.com/monit/changes/>`__ 
 * ports: nss 3.76 `[29] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_76.html>`__ 

@@ -415,7 +415,7 @@ Here are the full patch notes:
 * ports: dnspython 2.2.1 `[2] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
 * ports: dpinger 3.2 `[3] <https://github.com/dennypage/dpinger/releases/tag/v3.2>`__ 
 * ports: expat 2.4.7 `[4] <https://github.com/libexpat/libexpat/blob/R_2_4_7/expat/Changes>`__ 
-* ports: krb5 1.19.3 `[5] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.19.3 `[5] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
 * ports: nss 3.76 `[6] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_76.html>`__ 
 * ports: openssh 8.9p1 `[7] <https://www.openssh.com/txt/release-8.9>`__ 
 * ports: sudo 1.9.10 `[8] <https://www.sudo.ws/releases/stable/#1.9.10>`__ 

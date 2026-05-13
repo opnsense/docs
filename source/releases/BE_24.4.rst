@@ -196,7 +196,7 @@ A hotfix release was issued as 24.4.1_2:
 
 * wireguard: fix IP protocol detection for manual gateway
 * ui: properly break out selectpicker options in modals
-* ports: krb5 1.21.3 `[20] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.21.3 `[20] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
 * ports: nss 3.101 `[21] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_101.html>`__ 
 * ports: openssh 9.8p1 `[22] <https://www.openssh.com/txt/release-9.8>`__ 
 * ports: openvpn 2.6.11 `[23] <https://github.com/OpenVPN/openvpn/blob/v2.6.11/Changes.rst>`__ 

@@ -739,7 +739,7 @@ Here are the full patch notes:
 * src: rss: set pin_default_swi to 0 by default
 * src: rtsol: introduce an 'always' script
 * ports: dnspython 2.4.2
-* ports: krb5 1.21.2 `[3] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.21.2 `[3] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
 * ports: openldap 2.6.6 `[4] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openvpn 2.6.6 `[5] <https://github.com/OpenVPN/openvpn/blob/v2.6.6/Changes.rst>`__ 
 * ports: php 8.2.9 `[6] <https://www.php.net/ChangeLog-8.php#8.2.9>`__ 
@@ -910,7 +910,7 @@ Here are the full patch notes against 23.1.11:
 * src: axgbe: only set CSUM_DONE when IFCAP_RXCSUM enabled
 * src: ipsec: add PMTUD support
 * src: FreeBSD 13.2-RELEASE `[8] <https://www.freebsd.org/releases/13.2R/relnotes/>`__ 
-* ports: krb5 1.21.1 `[9] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.21.1 `[9] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
 * ports: nss 3.91 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_91.html>`__ 
 * ports: phalcon 5.2.3 `[11] <https://github.com/phalcon/cphalcon/releases/tag/v5.2.3>`__ 
 * ports: php 8.2.8 `[12] <https://www.php.net/ChangeLog-8.php#8.2.8>`__ 
@@ -1093,7 +1093,7 @@ Here are the full patch notes against 23.1.11:
 * src: axgbe: only set CSUM_DONE when IFCAP_RXCSUM enabled
 * src: ipsec: add PMTUD support
 * src: FreeBSD 13.2-RELEASE `[7] <https://www.freebsd.org/releases/13.2R/relnotes/>`__ 
-* ports: krb5 1.21.1 `[8] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.21.1 `[8] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
 * ports: nss 3.91 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_91.html>`__ 
 * ports: php 8.2.8 `[10] <https://www.php.net/ChangeLog-8.php#8.2.8>`__ 
 * ports: py-duckdb 0.8.1

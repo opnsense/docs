@@ -179,7 +179,7 @@ Here are the full patch notes:
 * src: fix ICMPv6 use-after-free in error message handling `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:31.icmp6.asc>`__ 
 * src: fix multiple vulnerabilities in rtsold `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-20:32.rtsold.asc>`__ 
 * src: update timezone database information `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-20:20.tzdata.asc>`__ 
-* ports: krb5 1.18.3 `[9] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.18.3 `[9] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
 * ports: nss 3.59 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_59.html>`__ 
 * ports: openldap 2.4.56 `[11] <https://www.openldap.org/software/release/changes_lts.html>`__ 
 * ports: openssh 8.4p1 `[12] <https://www.openssh.com/txt/release-8.4>`__ 

@@ -491,7 +491,7 @@ Here are the full patch notes:
 * src: axgbe: change default parameters to prevent manual tunable settings
 * src: arp: avoid segfaulting due to out-of-bounds memory access
 * ports: cpdup 1.22 `[8] <https://github.com/DragonFlyBSD/cpdup/releases/tag/v1.22>`__ 
-* ports: krb5 1.19.1 `[9] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.19.1 `[9] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
 * ports: nss 3.62 `[10] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_62.html>`__ 
 * ports: pkg now provides fallback for version mismatch on pkg-add
 * ports: python 3.7.10 `[11] <https://docs.python.org/release/3.7.10/whatsnew/changelog.html>`__ 

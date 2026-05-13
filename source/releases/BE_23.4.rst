@@ -113,7 +113,7 @@ Here are the full patch notes:
 A hotfix release was issued as 23.4.2_1:
 
 * system: fix data cleansing issue in "column_count" and "sequence" values on dashboard
-* ports: krb5 1.21.2 `[20] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.21.2 `[20] <https://web.mit.edu/kerberos/krb5-1.21/>`__ 
 * ports: python 3.9.18 `[21] <https://docs.python.org/release/3.9.18/whatsnew/changelog.html>`__ 
 
 A hotfix release was issued as 23.4.2_4:

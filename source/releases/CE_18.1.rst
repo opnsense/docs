@@ -366,7 +366,7 @@ Here are the full patch notes:
 * src: multiple small kernel memory disclosures `[2] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:05.mem.asc>`__ 
 * src: timezone database information updates `[3] <https://www.freebsd.org/security/advisories/FreeBSD-EN-18:06.tzdata.asc>`__ 
 * ports: ca_root_nss 3.37
-* ports: krb5 1.16.1 `[4] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.16.1 `[4] <https://web.mit.edu/kerberos/krb5-1.16/>`__ 
 * ports: liblz4 1.8.2 `[5] <https://github.com/lz4/lz4/releases/tag/v1.8.2>`__ 
 * ports: python 2.7.15 `[6] <https://www.python.org/downloads/release/python-2715/>`__ 
 * ports: sqlite 3.23.1 `[7] <https://sqlite.org/releaselog/3_23_1.html>`__ 

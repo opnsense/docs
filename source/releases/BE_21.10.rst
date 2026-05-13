@@ -398,7 +398,7 @@ Here are the full patch notes:
 * ports: dnsmasq 2.86 `[19] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: filterlog 0.5 removes unused IPv6 options support
 * ports: ifinfo 13.0
-* ports: krb5 1.19.2 `[20] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.19.2 `[20] <https://web.mit.edu/kerberos/krb5-1.19/>`__ 
 * ports: monit 5.29.0 `[21] <https://mmonit.com/monit/changes/>`__ 
 * ports: mpd adds L2TP interoperability fix from upstream
 * ports: nettle 3.7.3

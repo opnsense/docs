@@ -114,7 +114,7 @@ Here are the full patch notes:
 * ports: dnsmasq 2.92rel2 `[9] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: expat 2.8.1 `[10] <https://github.com/libexpat/libexpat/blob/R_2_8_1/expat/Changes>`__ 
 * ports: kea 3.0.3 `[11] <https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-3.0.3>`__ 
-* ports: krb5 1.22.2 `[12] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.22.2 `[12] <https://web.mit.edu/kerberos/krb5-1.22/>`__ 
 * ports: libxml 2.15.3 `[13] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.3/NEWS>`__ 
 * ports: nss 3.123.1 `[14] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_123_1.html>`__ 
 * ports: openssh 10.3p1 `[15] <https://www.openssh.com/txt/release-10.3>`__ 

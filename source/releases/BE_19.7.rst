@@ -168,7 +168,7 @@ Here are the full patch notes:
 * plugins: os-theme-cicada 1.23 (contributed by Team Rebellion)
 * plugins: os-theme-tukan 1.22 (contributed by Team Rebellion)
 * ports: ca_root_nss 3.48
-* ports: krb5 1.17.1 `[6] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.17.1 `[6] <https://web.mit.edu/kerberos/krb5-1.17/>`__ 
 * ports: php 7.2.25 `[7] <https://www.php.net/ChangeLog-7.php#7.2.25>`__ 
 * ports: suricata 4.1.6 `[8] <https://suricata-ids.org/2019/12/13/suricata-4-1-6-released/>`__ 
 * ports: unbound 1.9.5 `[9] <https://nlnetlabs.nl/projects/unbound/download/>`__ 

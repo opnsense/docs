@@ -409,7 +409,7 @@ Here are the full patch notes:
 * plugins: os-intrusion-detection-content-et-pro 1.0
 * plugins: os-quagga 1.4.2 OSPF router ID support (contributed by Fabian Franz)
 * ports: dnsmasq 2.78 `[1] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
-* ports: krb5 1.15.2 `[2] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.15.2 `[2] <https://web.mit.edu/kerberos/krb5-1.15/>`__ 
 * ports: openvpn 2.4.4 `[3] <https://github.com/OpenVPN/openvpn/blob/v2.4.4/Changes.rst>`__ 
 * ports: perl 5.24.3 `[4] <https://perldoc.perl.org/5.24.3/perldelta>`__ 
 * ports: php 7.0.24 `[5] <https://www.php.net/ChangeLog-7.php#7.0.24>`__ 

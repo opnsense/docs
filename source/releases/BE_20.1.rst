@@ -111,7 +111,7 @@ Here are the full patch notes:
 * ports: ca_root_nss 3.53
 * ports: curl 7.71.0 `[9] <https://curl.se/changes.html#7_71_0>`__ 
 * ports: hostapd / wpa_supplicant UPnP SUBSCRIBE advisory `[10] <https://w1.fi/security/2020-1/upnp-subscribe-misbehavior-wps-ap.txt>`__ 
-* ports: krb5 1.18.2 `[11] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.18.2 `[11] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
 * ports: ntp 4.2.8p15 `[12] <http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities>`__ 
 * ports: pcre 8.44 `[13] <https://www.pcre.org/original/changelog.txt>`__ 
 * ports: perl 5.30.3 `[14] <https://perldoc.perl.org/5.30.3/perldelta>`__ 
@@ -241,7 +241,7 @@ Here are the full patch notes:
 * plugins: os-wol 2.3 adds case insensitive matching in widget (contributed by Gauss23)
 * ports: ca_root_nss 3.51.1
 * ports: dnsmasq 2.81 `[4] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
-* ports: krb5 1.18.1 `[5] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.18.1 `[5] <https://web.mit.edu/kerberos/krb5-1.18/>`__ 
 * ports: openvpn 2.4.9 `[6] <https://github.com/OpenVPN/openvpn/blob/v2.4.9/Changes.rst>`__ 
 * ports: php 7.2.30 `[7] <https://www.php.net/ChangeLog-7.php#7.2.30>`__ 
 * ports: py-certifi 2020.4.5.1

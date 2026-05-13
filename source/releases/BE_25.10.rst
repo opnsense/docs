@@ -675,7 +675,7 @@ Here are the full patch notes:
 * ports: dnspython 2.8.0 `[24] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
 * ports: expat 2.7.3 `[25] <https://github.com/libexpat/libexpat/blob/R_2_7_3/expat/Changes>`__ 
 * ports: kea 3.0.1 `[26] <https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-3.0.1>`__ 
-* ports: krb5 1.22.1 `[27] <https://web.mit.edu/kerberos/krb5-$1/>`__ 
+* ports: krb5 1.22.1 `[27] <https://web.mit.edu/kerberos/krb5-1.22/>`__ 
 * ports: libpfctl 0.17
 * ports: lighttpd 1.4.82 `[28] <https://www.lighttpd.net/2025/9/12/1.4.82/>`__ 
 * ports: nss 3.117 `[29] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_117.html>`__ 
