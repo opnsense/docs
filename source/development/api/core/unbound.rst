@@ -18,7 +18,7 @@ Unbound
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","unbound","overview","_rolling","$timeperiod,$clients=0"
-    "``GET``","unbound","overview","get_policies","$uuid=null"
+    "``GET``","unbound","overview","get_policies",""
     "``GET``","unbound","overview","is_block_list_enabled",""
     "``GET``","unbound","overview","is_enabled",""
     "``GET``","unbound","overview","search_queries",""
@@ -28,9 +28,9 @@ Unbound
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``GET``","unbound","service","dnsbl",""
+    "``POST``","unbound","service","dnsbl",""
     "``POST``","unbound","service","reconfigure",""
-    "``GET``","unbound","service","reconfigure_general",""
+    "``POST``","unbound","service","reconfigure_general",""
     "``POST``","unbound","service","restart",""
     "``POST``","unbound","service","start",""
     "``GET``","unbound","service","status",""

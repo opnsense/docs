@@ -38,6 +38,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``POST``","firewall","alias","set",""
     "``POST``","firewall","alias","set_item","$uuid"
     "``POST``","firewall","alias","toggle_item","$uuid,$enabled=null"
+    "``POST``","firewall","alias","update","$action=null"
 
     "``<<uses>>``", "", "", "", "*model* `Alias.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Alias.xml>`__"
 
@@ -51,7 +52,6 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``POST``","firewall","alias_util","find_references",""
     "``POST``","firewall","alias_util","flush","$alias"
     "``GET``","firewall","alias_util","list","$alias"
-    "``GET``","firewall","alias_util","update_bogons",""
 
 .. csv-table:: Resources (CategoryController.php)  -- extends : ApiMutableModelControllerBase 
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -59,11 +59,13 @@ as a reference and testbed. There's no relation to any of the rules being manage
 
     "``POST``","firewall","category","add_item",""
     "``POST``","firewall","category","del_item","$uuid"
+    "``GET``","firewall","category","download",""
     "``GET``","firewall","category","get",""
     "``GET``","firewall","category","get_item","$uuid=null"
     "``GET,POST``","firewall","category","search_item","$add_empty=0"
     "``POST``","firewall","category","set",""
     "``POST``","firewall","category","set_item","$uuid"
+    "``POST``","firewall","category","upload",""
 
     "``<<uses>>``", "", "", "", "*model* `Category.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Category.xml>`__"
 
@@ -109,7 +111,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``GET``","firewall","filter","get_interface_list",""
     "``GET``","firewall","filter","get_rule","$uuid=null"
     "``POST``","firewall","filter","move_rule_before","$selected_uuid,$target_uuid"
-    "``GET,POST``","firewall","filter","search_rule",""
+    "``GET``","firewall","filter","search_rule",""
     "``POST``","firewall","filter","set_rule","$uuid"
     "``POST``","firewall","filter","toggle_rule","$uuid,$enabled=null"
     "``GET``","firewall","filter","toggle_rule_log","$uuid,$log"

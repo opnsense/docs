@@ -6,7 +6,7 @@ Captiveportal
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","captiveportal","access","api",""
-    "``GET``","captiveportal","access","logoff","$zoneid=0"
+    "``POST``","captiveportal","access","logoff","$zoneid=0"
     "``POST``","captiveportal","access","logon","$zoneid=0"
     "``GET,POST``","captiveportal","access","status","$zoneid=0"
 
