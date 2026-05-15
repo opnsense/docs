@@ -154,6 +154,8 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         Subnet                                    Subnet to use, should be large enough to hold the specified pools and reservations
         Interface                                 Select which interface this subnet belongs to
+        Dynamic Prefix                            Use the identity association prefix allocated to this interface and generate subnet and pools automatically.
+                                                  DHCP options that are not auto collected are unaffected by prefix changes and remain static.
         Allocator                                 Select allocator method to use when offering leases to clients.
         PD Allocator                              Select allocator method to use when offering prefix delegations to clients
         Description                               You may enter a description here for your reference (not parsed).
