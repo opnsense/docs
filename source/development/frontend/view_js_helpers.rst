@@ -265,6 +265,8 @@ To utilize the callbacks, one could use:
 ``SimpleActionButton`` will also show a reminder to the user to save their settings if prompted. To do so,
 simply call :code:`$(document).trigger("settings-changed");`.
 
+.. _simplefileuploaddlg:
+
 ----------------------------
 $.SimpleFileUploadDlg
 ----------------------------

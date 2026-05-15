@@ -516,7 +516,7 @@ with a unique key and contains an object with the following schema:
        as well, but only if :code:`footer` is :code:`false`. This function has priority over :code:`method`.
 
        This function can be used to bind the rendered command DOM element to other system
-       components, such as :ref:`simpleactionbutton`.
+       components, such as :ref:`simplefileuploaddlg`.
 
 There are default commands built-in to the UIBootgrid framework that work in tandem with the
 default controller actions to facilitate basic CRUD behavior.
