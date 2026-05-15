@@ -652,9 +652,8 @@ We will use ``Identity association`` mode to carve out a prefix on LAN that is b
 
         .. Tip::
 
-            You cannot assign additional interfaces prefix IDs incrementally (e.g., 0, 1, 2...), since each would only carve out a single /64 prefix
-            for that interface. That means there would not be a large enough prefix to also host a PD pool.
-            Leave enough space on the next interface to have a PD pool available for each (e.g., 0, 20, 40...)
+            You should not assign additional interfaces prefix IDs incrementally (e.g., 0, 1, 2...), since each would only carve out a single /64 prefix
+            for that interface. Leave enough space on the next interface to have a PD pool available for each (e.g., 0, 20, 40...)
 
     .. tab:: OPT1
 
@@ -715,7 +714,7 @@ We will use ``Identity association`` mode to carve out a prefix on LAN that is b
 
         For the ``IA_PD`` pool, the automatically calculated ``IA_PD`` prefix of the subnet is used. In our example that is ``2001:db8:1234:10::/60``.
         This is the range which can be delegated to other routers. We can set the delegated length to control how many prefixes can be leased from
-        this pool. In our case we need 4 pools, so we set a delegated length of ``/62``.
+        this pool. In our case we need 4 delegated prefixes, so we set a delegated length of ``/62``.
 
         ==================================  =======================================================================================================
         **Option**                          **Value**
