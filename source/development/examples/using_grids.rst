@@ -246,7 +246,7 @@ defined earlier.
 Constructing the volt template
 ------------------------------------
 
-We ship a generic grid system as documented in :doc:`../frontend/bootgrid` . To
+We ship a generic grid system as documented in :doc:`../frontend/bootgrid`. To
 use this in our template (view), we define three different blocks.
 
 First of all we bind a table by id ``{{formGridAddress['table_id']}}`` using :code:`UIBootgrid()`. Then we define the table which will be

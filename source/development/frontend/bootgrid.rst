@@ -328,7 +328,7 @@ General settings for bootgrid behavior
        the grid will load with the search value set to this string so the controller
        can filter on it.
 
-       The standardizes method to get this value is :code:`getUrlHash('search')`.
+       The standardized method to get this value is :code:`getUrlHash('search')`.
    * - ``static``
      - ``boolean``
      - ``false``
@@ -340,14 +340,6 @@ General settings for bootgrid behavior
      - If there is an element below the grid that should be visible at all times (no page scrollbar),
        you can specify this element here so the grid height calculation takes the height of
        this element into account.
-   * - ``selection``
-     - ``boolean``
-     - ``true``
-     - Whether individual rows should be selectable through a checkbox in a left-frozen column.
-   * - ``selection``
-     - ``boolean``
-     - ``true``
-     - Whether individual rows should be selectable through a checkbox in a left-frozen column.
 
 
 .. _formatters:
