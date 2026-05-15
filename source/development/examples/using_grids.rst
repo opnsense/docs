@@ -24,6 +24,8 @@ the basics.
 Our topic of choice for this module is a basic list for email addresses, for which you should be able to add, remove and
 change items.
 
+In-depth documentation for the grid system can be found in :doc:`../frontend/bootgrid`.
+
 --------
 Model
 --------
@@ -164,6 +166,7 @@ For example, a getItem (/api/gridexample/settings/getItem/my-uuid-id) would retu
       }
     }
 
+.. _define-dialog-items:
 
 ----------------------------
 Define dialog items
@@ -243,8 +246,8 @@ defined earlier.
 Constructing the volt template
 ------------------------------------
 
-We ship a javascript wrapper to implement a slightly modified version of `jquery-bootgrid <http://www.jquery-bootgrid.com/>`__, to
-use this in our template (view) we define three different blocks.
+We ship a generic grid system as documented in :doc:`../frontend/bootgrid` . To
+use this in our template (view), we define three different blocks.
 
 First of all we bind a table by id ``{{formGridAddress['table_id']}}`` using :code:`UIBootgrid()`. Then we define the table which will be
 changed into a dynamic searchable grid and we link our dialog content. Both grid (base_bootgrid_table) and dialog (base_dialog)
