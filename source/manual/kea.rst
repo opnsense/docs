@@ -559,11 +559,17 @@ Prefix Delegation (IA_PD)
 Kea supports prefix delegation with static or dynamic prefixes.
 A prefix delegation is most commonly used for router behind router setups, yet also in client implementations that run their own VMs.
 
-Whenever a IA_PD lease is acknowledged, a route targeting the link local address (LLA) of the requesting DHCPv6 client will be automatically installed.
+
+Route Installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Whenever an ``IA_PD`` lease is acknowledged, a route targeting the link-local address of the requesting DHCPv6 client will be automatically installed.
+
+Since lease files are synchronized in high availability mode, the routes will also be installed and cleaned up on both peers.
 
 .. Note::
 
-    If the MAC address for a client route installation is not found, take a look at the "MAC sources" option in the general DHCPv6 settings. It influences how client
+    If the MAC address for a client route installation is not found, take a look at the *MAC sources* option in the general DHCPv6 settings. It influences how client
     MAC addresses are constructed per default. The current default ``ipv6-link-local`` will construct the MAC out of an EUI-64 link-local address.
     This should work for most clients, yet if they use random link-local addresses, ``duid`` would be the next best option.
 
@@ -571,7 +577,7 @@ Whenever a IA_PD lease is acknowledged, a route targeting the link local address
 Static Prefix
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As an example setup, we will use unique local addresses (ULA) to lease an IA_NA address (/128 IPv6 address) and a IA_PD prefix (/56 IPv6 prefix) to a requesting client.
+As an example setup, we will use unique local addresses (ULA) to lease an ``IA_NA`` address (/128 IPv6 address) and a ``IA_PD`` prefix (/56 IPv6 prefix) to a requesting client.
 
 Prefix: ``fd80::/48``
 
@@ -594,7 +600,7 @@ Prefix: ``fd80::/48``
 
     .. tab:: Subnets
 
-        For the IA_NA address pool, we take the first /52 prefix (``fd80::/52``) of the available /48 prefix (``fd80::/48``)
+        For the ``IA_NA`` address pool, we take the first /52 prefix (``fd80::/52``) of the available /48 prefix (``fd80::/48``)
 
         ==================================  =======================================================================================================
         **Option**                          **Value**
@@ -605,7 +611,7 @@ Prefix: ``fd80::/48``
 
     .. tab:: PD Pools
 
-        For the IA_PD pool, we take the second /52 prefix (``fd80:0:0:1000::/52``), and lease up to 16 prefixes (``fd80:0:0:1000::/56 - fd80:0:0:10F0::/56``) to clients.
+        For the ``IA_PD`` pool, we take the second /52 prefix (``fd80:0:0:1000::/52``), and lease up to 16 prefixes (``fd80:0:0:1000::/56 - fd80:0:0:10F0::/56``) to clients.
 
         ==================================  =======================================================================================================
         **Option**                          **Value**
@@ -616,21 +622,17 @@ Prefix: ``fd80::/48``
         Delegated length                    ``56``
         ==================================  =======================================================================================================
 
-After applying the configuration, clients will receive an IA_NA address (e.g., ``fd80::100/128``, ``fd80::101/128``) and a IA_PD prefix (e.g., ``fd80:0:0:1000::/56``, ``fd80:0:0:1010::/56``).
-
-Whenever a IA_PD lease is acknowledged, a route targeting the link local address (LLA) of the requesting DHCPv6 client will be automatically installed.
-
-Since lease files are synchronized in high availability mode, the routes will also be installed and cleaned up on both peers.
+After applying the configuration, clients will receive an ``IA_NA`` address (e.g., ``fd80::100/128``) and an ``IA_PD`` prefix (e.g., ``fd80:0:0:1000::/56``).
 
 
 Dynamic Prefix
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As an example setup, our provider has provided us a prefix (IA_PD) via DHCPv6 on our WAN interface.
+As an example setup, our provider has provided us a prefix via DHCPv6 on our WAN interface.
 
 Prefix: ``2001:db8:1234::/56``
 
-We will use identity association mode to carve out a prefix on LAN that is big enough to host a PD pool.
+We will use ``Identity association`` mode to carve out a prefix on LAN that is big enough to host a PD pool.
 
 - Go to :menuselection:`Interfaces` and set the following configuration:
 
@@ -641,12 +643,12 @@ We will use identity association mode to carve out a prefix on LAN that is big e
         ==================================  =======================================================================================================
         **Option**                          **Value**
         ==================================  =======================================================================================================
-        IPv6 Configuration Type             Identity association
+        IPv6 Configuration Type             ``Identity association``
         Parent interface                    ``WAN``
         Assign prefix ID                    ``0``
         ==================================  =======================================================================================================
 
-        .. Attention::
+        .. Tip::
 
             You cannot assign additional interfaces prefix IDs incrementally (e.g., 0, 1, 2...), since each would only carve out a single /64 prefix
             for that interface. That means there would not be a large enough prefix to also host a PD pool.
@@ -657,7 +659,7 @@ We will use identity association mode to carve out a prefix on LAN that is big e
         ==================================  =======================================================================================================
         **Option**                          **Value**
         ==================================  =======================================================================================================
-        IPv6 Configuration Type             Identity association
+        IPv6 Configuration Type             ``Identity association``
         Parent interface                    ``WAN``
         Assign prefix ID                    ``20``
         ==================================  =======================================================================================================
@@ -709,7 +711,7 @@ We will use identity association mode to carve out a prefix on LAN that is big e
 
     .. tab:: PD Pools
 
-        For the IA_PD pool, the automatically calculated IA_PD prefix of the subnet is taken. In our example that is ``2001:db8:1234:10::/60``.
+        For the ``IA_PD`` pool, the automatically calculated ``IA_PD`` prefix of the subnet is used. In our example that is ``2001:db8:1234:10::/60``.
         This is the range which can be delegated to other routers. We can set the delegated length to control how many prefixes can be leased from
         this pool. In our case we need 4 pools, so we set a delegated length of ``/62``.
 
@@ -725,7 +727,8 @@ We will use identity association mode to carve out a prefix on LAN that is big e
             By splitting your ISP provided prefix smartly, each of your internal networks can have dynamic prefix delegation ranges.
 
 
-After applying the configuration, clients will receive an IA_NA address (e.g., ``2001:db8:1234::100/128``, ``2001:db8:1234::101/128``) and a IA_PD prefix (e.g., ``2001:db8:1234:10::/62``, ``2001:db8:1234:14::/62``).
+After applying the configuration, clients will receive an ``IA_NA`` address (e.g., ``2001:db8:1234::100/128``) and an ``IA_PD`` prefix (e.g., ``2001:db8:1234:10::/62``).
+
 
 .. Attention::
 
