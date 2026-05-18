@@ -87,6 +87,7 @@ The top-level options are layed out as follows:
    ├── add
    ├── del
    ├── toggle
+   ├── info
    ├── options
    │   ├── ...
    │   ├── ...
@@ -113,7 +114,7 @@ General settings for bootgrid behavior
      - Default
      - Description
    * - ``datakey``
-     - ``boolean``
+     - ``string``
      - ``"uuid"``
      - Defines the property in the data that is used for indexing into the grid. Since most
        model data is uniquely identified through a UUID, this property defaults to
