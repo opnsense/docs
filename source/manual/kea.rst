@@ -642,33 +642,53 @@ We will use ``Identity association`` mode to carve out a prefix on LAN that is b
 
     .. tab:: LAN
 
+        To reserve a prefix range, the combination of the hexadecimal value `Assign prefix ID` and the decimal length value `Reserved prefix range` is used.
+        On our LAN interface, we start with an assigned prefix ID of 0, which marks the first /64 network available. We reserve a /60 prefix for
+        KEA's subnet on this interface, so we count up 16x /64 networks via the reserved prefix range.
+
+        LAN will now reserve the hexadecimal prefix IDs 0-F.
+
         ==================================  =======================================================================================================
         **Option**                          **Value**
         ==================================  =======================================================================================================
         IPv6 Configuration Type             ``Identity association``
         Parent interface                    ``WAN``
         Assign prefix ID                    ``0``
+        Reserved prefix range               ``16``
         ==================================  =======================================================================================================
 
-        .. Tip::
-
-            You should not assign additional interfaces prefix IDs incrementally (e.g., 0, 1, 2...), since each would only carve out a single /64 prefix
-            for that interface. Leave enough space on the next interface to have a PD pool available for each (e.g., 0, 20, 40...)
-
     .. tab:: OPT1
+
+        In this example we want to reserve a /61 prefix, so our decimal reserved prefix range is 8.
+        Since our LAN interface already reserves the hexadecimal prefix IDs 0-F, for OPT1 we start at the hexadecimal prefix ID 10.
+
+        OPT1 will now reserve the hexadecimal prefix IDs 10-17.
 
         ==================================  =======================================================================================================
         **Option**                          **Value**
         ==================================  =======================================================================================================
         IPv6 Configuration Type             ``Identity association``
         Parent interface                    ``WAN``
-        Assign prefix ID                    ``20``
+        Assign prefix ID                    ``10``
+        Reserved prefix range               ``8``
         ==================================  =======================================================================================================
 
-        .. Note::
+    .. tab:: OPT2
 
-            This interface is a suggestion only, to show that the spacing of the prefix ID is important.
-            This way the LAN interface will have the prefix range 0-19 available.
+        In this example we want to reserve a /62 prefix, so our decimal reserved prefix range is 4.
+        Since our LAN interface reserves the hexadecimal prefix IDs 0-F, and our OPT1 interface the hexadecimal prefix IDs 10-17,
+        for OPT1 we start at the hexadecimal prefix ID 18.
+
+        OPT2 will now reserve the hexadecimal prefix IDs 18-1B.
+
+        ==================================  =======================================================================================================
+        **Option**                          **Value**
+        ==================================  =======================================================================================================
+        IPv6 Configuration Type             ``Identity association``
+        Parent interface                    ``WAN``
+        Assign prefix ID                    ``18``
+        Reserved prefix range               ``4``
+        ==================================  =======================================================================================================
 
 
 .. Attention::
@@ -697,10 +717,10 @@ We will use ``Identity association`` mode to carve out a prefix on LAN that is b
 
     .. tab:: Subnets
 
-        The subnet pool is automatically calculated. Since our example prefix ID range is from ``0-19``, the calculated subnet size will be ``2001:db8:1234::/59``.
+        The subnet pool is automatically calculated. Since our example prefix ID range is from ``0-F``, the calculated subnet size will be ``2001:db8:1234::/60``.
         This subnet will be automatically split into two subnets:
-            * the first subnet ``2001:db8:1234::/60`` will host the ``IA_NA`` pool ``2001:db8:1234::/64``
-            * the second subnet ``2001:db8:1234:10::/60`` will host the ``IA_PD`` pool.
+            * the first subnet ``2001:db8:1234::/61`` will host the ``IA_NA`` pool ``2001:db8:1234::/64``
+            * the second subnet ``2001:db8:1234:8::/61`` will host the ``IA_PD`` pool.
 
         ==================================  =======================================================================================================
         **Option**                          **Value**
@@ -712,9 +732,9 @@ We will use ``Identity association`` mode to carve out a prefix on LAN that is b
 
     .. tab:: PD Pools
 
-        For the ``IA_PD`` pool, the automatically calculated ``IA_PD`` prefix of the subnet is used. In our example that is ``2001:db8:1234:10::/60``.
+        For the ``IA_PD`` pool, the automatically calculated ``IA_PD`` prefix of the subnet is used. In our example that is ``2001:db8:1234:8::/61``.
         This is the range which can be delegated to other routers. We can set the delegated length to control how many prefixes can be leased from
-        this pool. In our case we need 4 delegated prefixes, so we set a delegated length of ``/62``.
+        this pool. In our case we need 2 delegated prefixes, so we set a delegated length of ``/62``.
 
         ==================================  =======================================================================================================
         **Option**                          **Value**
@@ -728,7 +748,7 @@ We will use ``Identity association`` mode to carve out a prefix on LAN that is b
             By splitting your ISP provided prefix smartly, each of your internal networks can have dynamic prefix delegation ranges.
 
 
-After applying the configuration, clients will receive an ``IA_NA`` address (e.g., ``2001:db8:1234::100/128``) and an ``IA_PD`` prefix (e.g., ``2001:db8:1234:10::/62``).
+After applying the configuration, clients will receive an ``IA_NA`` address (e.g., ``2001:db8:1234::100/128``) and an ``IA_PD`` prefix (e.g., ``2001:db8:1234:8::/62``).
 
 
 .. Attention::

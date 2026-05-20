@@ -99,6 +99,8 @@ For IPv6:
  **Identity Association**
  IPv6 Interface                    This selects the dynamic IPv6 WAN interface to track for configuration.
  IPv6 Prefix ID                    The delegated IPv6 prefix ID. This determines the configurable /64 network ID based on the dynamic IPv6 connection.
+ IPv6 Reserved prefix range        The value in this field is the length of the reserved prefix range for downstream prefix delegation.
+                                   The range starts at the given prefix ID. The default is to only reserve the given prefix ID.
  **Track Interface (legacy)**
  IPv6 Interface                    This selects the dynamic IPv6 WAN interface to track for configuration.
  IPv6 Prefix ID                    The delegated IPv6 prefix ID. This determines the configurable /64 network ID based on the dynamic IPv6 connection.
