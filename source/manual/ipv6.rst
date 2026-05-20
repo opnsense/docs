@@ -146,9 +146,8 @@ received. This part of the configuration is specified on the lan interface as "t
 .. Note::
 
     When your provider or cloud hosting does not offer a PD, routing is not reliably possible. In some cases
-    network address translation may be an option (example in  :doc:`ndproxy <ndproxy>`).
-    There is an experimental `rfc <https://datatracker.ietf.org/doc/html/rfc4389>`__
-    to proxy neighbor discovery packets, but no implementation exists yet.
+    proxying neighbor discovery packets may be an option as explained in `RFC4389 <https://datatracker.ietf.org/doc/html/rfc4389>`__.
+    An implementation is available via :doc:`ndp-proxy-go <ndp-proxy-go>`.
 
 .. Note::
     There is some overlap in what DHCPv6 offers and router advertisements bring to the table, but in most auto-configured
