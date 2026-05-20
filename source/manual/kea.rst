@@ -154,18 +154,23 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         Subnet                                    Subnet to use, should be large enough to hold the specified pools and reservations
         Interface                                 Select which interface this subnet belongs to
+        Dynamic Prefix                            Use the identity association prefix allocated to this interface and generate subnet and pools automatically.
+                                                  DHCP options that are not auto collected are unaffected by prefix changes and remain static.
         Allocator                                 Select allocator method to use when offering leases to clients.
         PD Allocator                              Select allocator method to use when offering prefix delegations to clients
         Description                               You may enter a description here for your reference (not parsed).
         Pools                                     List of pools, one per line in range or subnet format (e.g. 2001:db8:1::-2001:db8:1::100, 2001:db8:1::/80). Leave this blank if you do not want to offer dynamic leases (i.e: "Deny unknown clients")
         Valid lifetime                            Valid lifetime for this subnet scope.
         **DHCP option data**
+        Auto collect option data                  Automatically update option data for relevant attributes such as dns servers when applying settings from the gui.
+                                                  When using a dynamic prefix in a subnet, this will set the correct primary IP address automatically.
         DNS servers                               DNS servers to offer to the clients
         Domain search                             The domain search list to offer to the client
         Options                                   Select custom DHCPv6 options that were created in the options tab.
         **Dynamic DNS**
         DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. "home.arpa.").
-        DNS reverse zone                          Full reverse DNS zone receiving PTR updates (e.g. "200.10.10.in-addr.arpa.").
+        DNS reverse zone                          Full reverse DNS zone receiving PTR updates (e.g. "8.b.d.0.1.0.0.2.ip6.arpa."). 
+                                                  This will not be dynamically adjusted if the subnet is configured with a dynamic prefix.
         DNS qualifying suffix                     If a DHCP client only sends a hostname in option 81, append this suffix to create an FQDN (e.g. "home.arpa.").
         DNS server address                        Authoritative DNS server receiving dynamic updates.
         DNS server port                           Port of the authoritative DNS server receiving dynamic updates. Leave empty to use default (53).
@@ -178,6 +183,7 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         Update on renew                           Instructs the server to always update the DNS information when a lease is renewed, even if its DNS information has not changed.
                                                   This allows Kea to self-heal if it was previously unable to add DNS entries or they were somehow lost by the DNS server.
                                                   May impact performance, especially for servers with numerous clients that renew often.
+        Conflict resolution mode                  Controls how DDNS conflicts with DHCID records are handled. The default enforces client ownership via DHCID.
         ========================================= ====================================================================================
 
     .. tab:: PD Pools (DHCPv6)
@@ -552,14 +558,28 @@ Some clients might send client specific flags to avoid reverse zone updates. You
 Prefix Delegation (IA_PD)
 ------------------------------------------
 
-Kea supports prefix delegation with static prefixes.
-
-.. Attention::
-
-    Dynamic prefixes common with most residential ISPs are not supported.
+Kea supports prefix delegation with static or dynamic prefixes.
+A prefix delegation is most commonly used for router behind router setups, yet also in client implementations that run their own VMs.
 
 
-As an example setup, we will use unique local addresses (ULA) to lease an IA_NA address (/128 IPv6 address) and a IA_PD prefix (/56 IPv6 prefix) to a requesting client.
+Route Installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Whenever an ``IA_PD`` lease is acknowledged, a route targeting the link-local address of the requesting DHCPv6 client will be automatically installed.
+
+Since lease files are synchronized in high availability mode, the routes will also be installed and cleaned up on both peers.
+
+.. Note::
+
+    If the MAC address for a client route installation is not found, take a look at the *MAC sources* option in the general DHCPv6 settings. It influences how client
+    MAC addresses are constructed per default. The current default ``ipv6-link-local`` will construct the MAC out of an EUI-64 link-local address.
+    This should work for most clients, yet if they use random link-local addresses, ``duid`` would be the next best option.
+
+
+Static Prefix
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As an example setup, we will use unique local addresses (ULA) to lease an ``IA_NA`` address (/128 IPv6 address) and a ``IA_PD`` prefix (/56 IPv6 prefix) to a requesting client.
 
 Prefix: ``fd80::/48``
 
@@ -582,7 +602,7 @@ Prefix: ``fd80::/48``
 
     .. tab:: Subnets
 
-        For the IA_NA address pool, we take the first /52 prefix (``fd80::/52``) of the available /48 prefix (``fd80::/48``)
+        For the ``IA_NA`` address pool, we take the first /52 prefix (``fd80::/52``) of the available /48 prefix (``fd80::/48``)
 
         ==================================  =======================================================================================================
         **Option**                          **Value**
@@ -593,7 +613,7 @@ Prefix: ``fd80::/48``
 
     .. tab:: PD Pools
 
-        For the IA_PD pool, we take the second /52 prefix (``fd80:0:0:1000::/52``), and lease up to 16 prefixes (``fd80:0:0:1000::/56 - fd80:0:0:10F0::/56``) to clients.
+        For the ``IA_PD`` pool, we take the second /52 prefix (``fd80:0:0:1000::/52``), and lease up to 16 prefixes (``fd80:0:0:1000::/56 - fd80:0:0:10F0::/56``) to clients.
 
         ==================================  =======================================================================================================
         **Option**                          **Value**
@@ -604,17 +624,138 @@ Prefix: ``fd80::/48``
         Delegated length                    ``56``
         ==================================  =======================================================================================================
 
-After applying the configuration, clients will receive a IA_NA address (e.g. ``fd80::100/128``, ``fd80::101/128``) and a IA_PD prefix (e.g. ``fd80:0:0:1000::/56``, ``fd80:0:0:1010::/56``).
+After applying the configuration, clients will receive an ``IA_NA`` address (e.g., ``fd80::100/128``) and an ``IA_PD`` prefix (e.g., ``fd80:0:0:1000::/56``).
 
-Whenever a IA_PD lease is acknowledged, a route targeting the link local address (LLA) of the requesting DHCPv6 client will be automatically installed.
 
-Since lease files are synchronized in high availability mode, the routes will also be installed and cleaned up on both peers.
+Dynamic Prefix
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. Note::
+As an example setup, our provider has provided us a prefix via DHCPv6 on our WAN interface.
 
-    If the MAC address for a client route installation is not found, take a look at the "MAC sources" option in the general DHCPv6 settings. It influences how client
-    MAC addresses are constructed per default. The current default ``ipv6-link-local`` will construct the MAC out of an EUI-64 link-local address.
-    This should work for most clients, yet if they use random link-local addresses, ``duid`` would be the next best option.
+Prefix: ``2001:db8:1234::/56``
+
+We will use ``Identity association`` mode to carve out a prefix on LAN that is big enough to host a PD pool.
+
+- Go to :menuselection:`Interfaces` and set the following configuration:
+
+.. tabs::
+
+    .. tab:: LAN
+
+        To reserve a prefix range, the combination of the hexadecimal value `Assign prefix ID` and the decimal length value `Reserved prefix range` is used.
+        On our LAN interface, we start with an assigned prefix ID of 0, which marks the first /64 network available. We reserve a /60 prefix for
+        KEA's subnet on this interface, so we count up 16x /64 networks via the reserved prefix range.
+
+        LAN will now reserve the hexadecimal prefix IDs 0-F.
+
+        ==================================  =======================================================================================================
+        **Option**                          **Value**
+        ==================================  =======================================================================================================
+        IPv6 Configuration Type             ``Identity association``
+        Parent interface                    ``WAN``
+        Assign prefix ID                    ``0``
+        Reserved prefix range               ``16``
+        ==================================  =======================================================================================================
+
+    .. tab:: OPT1
+
+        In this example we want to reserve a /61 prefix, so our decimal reserved prefix range is 8.
+        Since our LAN interface already reserves the hexadecimal prefix IDs 0-F, for OPT1 we start at the hexadecimal prefix ID 10.
+
+        OPT1 will now reserve the hexadecimal prefix IDs 10-17.
+
+        ==================================  =======================================================================================================
+        **Option**                          **Value**
+        ==================================  =======================================================================================================
+        IPv6 Configuration Type             ``Identity association``
+        Parent interface                    ``WAN``
+        Assign prefix ID                    ``10``
+        Reserved prefix range               ``8``
+        ==================================  =======================================================================================================
+
+    .. tab:: OPT2
+
+        In this example we want to reserve a /62 prefix, so our decimal reserved prefix range is 4.
+        Since our LAN interface reserves the hexadecimal prefix IDs 0-F, and our OPT1 interface the hexadecimal prefix IDs 10-17,
+        for OPT1 we start at the hexadecimal prefix ID 18.
+
+        OPT2 will now reserve the hexadecimal prefix IDs 18-1B.
+
+        ==================================  =======================================================================================================
+        **Option**                          **Value**
+        ==================================  =======================================================================================================
+        IPv6 Configuration Type             ``Identity association``
+        Parent interface                    ``WAN``
+        Assign prefix ID                    ``18``
+        Reserved prefix range               ``4``
+        ==================================  =======================================================================================================
+
+
+.. Attention::
+
+    If you change these ranges later or remove interfaces, ensure you also update the KEA configuration. If an interface is removed, also remove the dynamic subnet
+    from KEA. If prefix ID ranges are changed, ensure the delegated length in a PD pool is updated with a new value that fits into that network.
+    If not followed, KEA will emit log messages with details and may fail to start.
+
+
+- Next, go to :menuselection:`Services -> Kea DHCP -> Kea DHCPv6` and configure the dynamic PD pool for LAN:
+
+.. tabs::
+
+    .. tab:: Settings
+
+        ==================================  =======================================================================================================
+        **Option**                          **Value**
+        ==================================  =======================================================================================================
+        **Service**
+        Enabled                             ``X``
+
+        **General settings**
+        Interfaces                          ``LAN``
+        Firewall rules                      ``X``
+        ==================================  =======================================================================================================
+
+    .. tab:: Subnets
+
+        The subnet pool is automatically calculated. Since our example prefix ID range is from ``0-F``, the calculated subnet size will be ``2001:db8:1234::/60``.
+        This subnet will be automatically split into two subnets:
+            * the first subnet ``2001:db8:1234::/61`` will host the ``IA_NA`` pool ``2001:db8:1234::/64``
+            * the second subnet ``2001:db8:1234:8::/61`` will host the ``IA_PD`` pool.
+
+        ==================================  =======================================================================================================
+        **Option**                          **Value**
+        ==================================  =======================================================================================================
+        Interface                           ``LAN``
+        Dynamic Prefix                      ``X``
+        Auto collect option data            ``X`` (optional, if you also want to send a dynamic DNS server)
+        ==================================  =======================================================================================================
+
+    .. tab:: PD Pools
+
+        For the ``IA_PD`` pool, the automatically calculated ``IA_PD`` prefix of the subnet is used. In our example that is ``2001:db8:1234:8::/61``.
+        This is the range which can be delegated to other routers. We can set the delegated length to control how many prefixes can be leased from
+        this pool. In our case we need 2 delegated prefixes, so we set a delegated length of ``/62``.
+
+        ==================================  =======================================================================================================
+        **Option**                          **Value**
+        ==================================  =======================================================================================================
+        Subnet                              ``LAN``
+        Delegated length                    ``62``
+        ==================================  =======================================================================================================
+
+        .. Note::
+
+            By splitting your ISP provided prefix smartly, each of your internal networks can have dynamic prefix delegation ranges.
+
+
+After applying the configuration, clients will receive an ``IA_NA`` address (e.g., ``2001:db8:1234::100/128``) and an ``IA_PD`` prefix (e.g., ``2001:db8:1234:8::/62``).
+
+
+.. Attention::
+
+    Using HA in combination with dynamic prefix delegation is not recommended. When using a DHCPv6 provided ISP prefix, both HA peers would likely get different prefixes from the ISP,
+    which would cause problems with the HA setup since the KEA configurations would differ between peers. For an HA setup, using a static IPv6 prefix is a **requirement** to ensure a single
+    routing identity.
 
 
 -------------------------
