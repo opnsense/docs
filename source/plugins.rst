@@ -24,7 +24,6 @@ Routing
    manual/dynamic_routing
    manual/how-tos/tayga
    manual/ndp-proxy-go
-   manual/ndproxy
 
 --------------------
 DNS
