@@ -192,7 +192,6 @@ None
 
 This mode turns off IPv6 connectivity for this particular interface.
 Use this mode when the default mode (DHCPv6) does not work or causes broken connectivity with your ISP.
-It does not prohibit IPv6 globally and some services might even locally require IPv6 in order to communicate to itself (such as Squid web proxy for example).
 
 .. Note::
 
@@ -213,13 +212,13 @@ gateway hop which your ISP should provide to you as well.
 DHCPv6
 -------------------------------
 
-For dynamic address offerings (that most likely are also shifting the prefix) this mode is the most common configuration
+For dynamic address offerings (which likely are also shifting the prefix) this mode is the most common configuration
 and therefore also the default setting for a preset WAN.
-In this mode a prefix will be acquired if offered, either with or without an additional IP address for your WAN.
-Note that the interface will not assign a /64 to itself from the prefix in contrast to static IPv6. Internally,
-a single globally unique address is either acquired via DHCP or SLAAC (not to be confused with SLAAC mode) but in general
-an ISP-provided link-local address is automatically used for the connectivity to the next hop gateway.
-Setting "Request only an IPv6 prefix" may be required in case the ISP refuses to hand out an address and/or prefix.
+In this mode a prefix will be acquired if offered, either with or without an additional IP addresses for your WAN.
+Internally, a single globally unique address is acquired via DHCPv6 and/or SLAAC (not to be confused with SLAAC mode),
+but for routing an ISP-provided link-local address is automatically used as the next hop gateway.
+Setting "Request only an IPv6 prefix" may be required in case the ISP refuses to hand out a prefix.
+Note that the interface will not assign a /64 to itself from the prefix by default in contrast to static IPv6.
 
 .. Note::
 
