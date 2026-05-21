@@ -82,8 +82,7 @@ This approach also enhances configuration clarity, simplifies troubleshooting, a
 Setup Overview
 ----------------------------
 
-In our example setup, we will create a unified ruleset, leveraging interface groups as security trust zones. This unified ruleset
-will be created in :menuselection:`Firewall --> Rules --> Floating` to match first.
+In our example setup, we will create a unified ruleset, leveraging interface groups as security trust zones.
 
 Our goals are the following zones:
 
@@ -105,8 +104,7 @@ Zone                    Interface                             Description
 Setup Interface Groups
 -------------------------------------------
 
-The first step is to create interface groups that contain our vlans. This will group them together into the same security trust zones for our
-planned unified ruleset.
+The first step is to create interface groups that contain our vlans. This will group them together into the same security trust zones.
 
 - | Go to :menuselection:`Firewall --> Groups` and add new entries for the required zones:
 
@@ -168,10 +166,10 @@ When using these aliases, all of these networks are automatically part of the fi
 Create Security Zone Policies
 --------------------------------------
 
-Our unified ruleset will create a baseline that will always match on top-level. Afterwards, we can create more selective allow rules in
+Our ruleset will create a baseline that will always match on top-level. Afterwards, we can create more selective allow rules in
 the individual interface groups. The following policies give a short overview about zone based rules and their results.
 
-Go to :menuselection:`Firewall --> Rules --> Floating`
+Go to :menuselection:`Firewall --> Rules`, create these rules with `any` interface as selection.
 
 .. Tip::
 
