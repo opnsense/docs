@@ -384,26 +384,18 @@ The `Redirect Match` type is the advanced alternative to `Redirect`.
 
 Choosing it will turn the `Local path` field into `Location Match`, and the `Remote destinations` field into `Redirect Match`.
 
-These types allow you to match requests based on a regular expression pattern instead of just a literal path.
+Wrapping `Redirect` into a `Location` behaves slightly differently than doing the same with `Proxy Pass`, as regular expression groups cannot be passed into the location.
 
-The match is entered into `Local path` and the substitution group can be set in `Remote destinations`.
+The intended way is using environment variables. See `mod_alias <https://httpd.apache.org/docs/current/mod/mod_alias.html>`__ for more information.
 
 Here is an example how this can look like:
 
 ================================ ========================================================================================
 Option                           Description
 ================================ ========================================================================================
-Local path                       ``^/manual/(.*)$``
-Remote destinations              ``https://example.com/$1``
+Local path                       ``/error/(?<NUMBER>[0-9]+)``
+Remote destinations              ``http://example.com/errors/%{env:MATCH_NUMBER}.html``
 ================================ ========================================================================================
-
-.. Tip::
-
-    - ``^``: Match start of the URL path
-    - ``/manual/``:	Match the literal string /manual/
-    - ``(.*)``: Capture any characters (zero or more) after /manual/ — this is group 1
-    - ``$``: Match end of the string
-    - ``$1``: Reference the captured group from the local path. In this example it strips /manual/ from the URL path internally.
 
 .. Tip::
 
