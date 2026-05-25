@@ -148,7 +148,7 @@ In such a setup, your router will not receive a prefix delegation via DHCPv6-PD,
 Settings
 --------------------------------------------------
 
-Go to :menuselection:`Interfaces --> WAN`
+Go to :menuselection:`Interfaces --> WAN` and select SLAAC as IPv6 configuration.
 
 ==============================================  ====================================================================
 **IPv6 Configuration Type**                     ``SLAAC``
@@ -156,7 +156,7 @@ Go to :menuselection:`Interfaces --> WAN`
 
 Save the settings.
 
-Go to :menuselection:`Interfaces --> LAN` and choose either a link-local IPv6 configuration.
+Go to :menuselection:`Interfaces --> LAN` and select link-local as IPv6 configuration.
 
 ==============================================  ====================================================================
 **IPv6 Configuration Type**                     ``link-local``
