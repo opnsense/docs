@@ -182,7 +182,9 @@ Verify the setup by pinging an IPv6 location on the internet.
 
 .. Attention::
 
-    Since in the default setup, the router advertisements of the ISP are used, please stop any other router advertisement daemons on the LAN interface.
+   In the default setup, the Router Advertisements from the ISP are forwarded directly.
+   Any other Router Advertisement daemons on the LAN interface must be disabled, for example in
+   :menuselection:`Services --> Router Advertisements` and :menuselection:`Services --> Dnsmasq DNS & DHCP`.
 
 
 Firewall Rules
@@ -420,7 +422,7 @@ The proxy must install host routes to target the individual downstream clients:
 
    - route deleted: "IPv6 address"
       - A route was deleted, most likely the client was offline longer than the neighbor caching time, or it changed its IPv6 address via privacy
-        extension. On a clean shutdown, all routes of learned clients in the cache will be deleted.
+        extension.
 
    - route add err: exit status 1 (out: add host "IPv6 address": gateway eth0 fib 0: route already in table)
       - There is already a different route that would overlap with the one the proxy tries to install.
