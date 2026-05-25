@@ -180,11 +180,17 @@ After applying the configuration, all devices in your LAN network will autogener
 the router as their default gateway. Check the firewall rules on LAN if IPv6 is allowed to any destination.
 Verify the setup by pinging an IPv6 location on the internet.
 
-.. Attention::
+.. Note::
 
    In the default setup, the Router Advertisements from the ISP are forwarded directly.
    Any other Router Advertisement daemons on the LAN interface must be disabled, for example in
    :menuselection:`Services --> Router Advertisements` and :menuselection:`Services --> Dnsmasq DNS & DHCP`.
+
+
+.. Attention::
+
+   The default firewall aliases (e.g., LAN network) will not contain any proxied IPv6 addresses.
+   Either follow the `Firewall Rules` example, or set the source to any in your default IPv6 allow rule.
 
 
 Firewall Rules
@@ -198,7 +204,7 @@ Since only learned clients are added, the alias will always have an up to date s
 .. Note::
 
    The proxy only learns IPv6 addresses that are inside the WAN on-link prefix and only of clients it manages.
-   These aliases are not for general use, but only for combination with the proxy to ease creating the correct firewall rules.
+   After initial setup, it can take a few minutes until all clients have been learned.
 
 
 - Go to :menuselection:`Firewall --> Aliases` and create these aliases:
@@ -206,7 +212,7 @@ Since only learned clients are added, the alias will always have an up to date s
 ==================================  =======================================================================================================
 Option                              Value
 ==================================  =======================================================================================================
-**Name**                            ``ndp_proxy_all`` (Will contain all learned IPv6 addresses)
+**Name**                            ``ndp_proxy_global`` (Will contain all learned IPv6 addresses)
 **Type**                            ``External (advanced)``
 ==================================  =======================================================================================================
 
@@ -254,8 +260,6 @@ Option                              Value
 ==============================================  ====================================================================================================
 
 - Press **Apply**
-
-Now your IPv6 firewalling is tight. It is self-healing when client addresses change due to IPv6 privacy extensions or when the on-link prefix changes.
    
 .. Tip::
    
