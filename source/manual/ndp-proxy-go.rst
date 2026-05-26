@@ -173,7 +173,7 @@ Go to :menuselection:`Services --> NDP Proxy --> Settings`
 **Proxy router advertisements**                 ``X``
 **Install host routes**                         ``X``
 **Neighbor cache lifetime**                     Increase to a few hours when using a point-to-point upstream.
-**Neighbor cache file**                         Enable when using a point-to-point upstream.
+**Neighbor cache file**                         ``X``
 ==============================================  ====================================================================
 
 After applying the configuration, all devices in your LAN network will autogenerate a GUA with SLAAC and receive
@@ -182,7 +182,7 @@ Verify the setup by pinging an IPv6 location on the internet.
 
 .. Note::
 
-   In the default setup, the Router Advertisements from the ISP are forwarded directly.
+   In the default setup, Router Advertisements from the ISP are forwarded directly.
    Any other Router Advertisement daemons on the LAN interface must be disabled, for example in
    :menuselection:`Services --> Router Advertisements` and :menuselection:`Services --> Dnsmasq DNS & DHCP`.
 
