@@ -172,7 +172,10 @@ Go to :menuselection:`Services --> NDP Proxy --> Settings`
 **Downstream interfaces**                       ``LAN``
 **Proxy router advertisements**                 ``X``
 **Install host routes**                         ``X``
-**Neighbor cache lifetime**                     Increase to a few hours when using a point-to-point upstream.
+**Neighbor cache lifetime**                     Increase to one day or more when using a point-to-point upstream or
+                                                when having a lot of (WIFI) clients that use energy saving modes. This prevents
+                                                routes and firewall alias entries from being removed if the client is silent
+                                                for too long.
 **Neighbor cache file**                         ``X``
 ==============================================  ====================================================================
 
