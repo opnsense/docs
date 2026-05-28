@@ -70,6 +70,102 @@ operation. For example, the :code:`search` endpoint looks like this:
     these are mainly intended as simple trigger to display an info dialog.
 
 
+Column Setup
+------------
+
+The columns and the associated properties can be defined in two ways:
+
+- Through a form, if creation, deletion, updating and adding are to be supported.
+- Through a :code:`<table>` structure, only if the :code:`search` endpoint is exclusively required (static data)
+
+``form``
+--------
+
+In forms, column properties are defined in the :code:`<grid_view>` tag as explained in
+:ref:`define-dialog-items`
+
+``table``
+---------
+
+When using a table, column properties are set as :code:`data-` attributes. For example:
+
+.. code-block::
+
+    <table id="livelog-table" class="table table-condensed table-hover table-striped table-responsive">
+        <thead>
+            <tr>
+                <th data-column-id="interface" data-formatter="interface" data-sortable="false" data-width="80">{{ lang._('Interface') }}</th>
+                <th data-column-id="dir" data-type="string" data-formatter="direction" data-sortable="false" data-width="30"></th>
+                ...
+            <tr>
+        </thead>
+    </table>
+
+If constructing using a :code:`table`, the minimum setup requires a :code:`data-column-id` to be set in order
+to map the row data to the appropriate cell. Additionally, column header text (:code:`label`) is set on the element itself.
+
+.. Note::
+
+    Internally, forms are translated to table structures.
+
+
+``properties``
+--------------
+
+The following column properties are available:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 15 45
+
+   * - Property
+     - Type
+     - Default
+     - Description
+   * - ``sorter``
+     - ``string``
+     - ``null``
+     - Sorter function to use if :code:`ajax: false`.
+   * - ``formatter``
+     - ``string``
+     - ``null``
+     - Formatter function to use for this column. See :ref:`formatters`.
+   * - ``headerFormatter``
+     - ``string``
+     - ``null``
+     - Header formatter function to use for this column. See :ref:`headerFormatters`.
+   * - ``visible``
+     - ``boolean``
+     - ``true``
+     - If this column should be rendered by default. Users are always allow
+       to toggle the column visibility, unless this has been disabled through :code:`selectable`.
+   * - ``selectable``
+     - ``boolean``
+     - ``true``
+     - If the visibility of this column can be toggled on/off. Use this if you require columns to be
+       (in)visible at all times.
+   * - ``sequence``
+     - ``number``
+     - ``null``
+     - Sequence number to force columns in a certain order. Keep in mind that users can re-order
+       columns.
+   * - ``width``
+     - ``number``
+     - ``null``
+     - Default width in pixels. Users can change this by resizing the columns.
+   * - ``min-width``
+     - ``number``
+     - ``null``
+     - Minimum width in pixels. Use this to prevent users resizing lower than this given threshold.
+   * - ``max-width``
+     - ``number``
+     - ``null``
+     - Maximum width in pixels. Use this to prevent users resizing higher than this given threshold.
+   * - ``sortable``
+     - ``boolean``
+     - ``true``
+     - If this columnm header can be clicked to activate the sort.
+
 Configuration Reference
 -----------------------
 
@@ -210,7 +306,7 @@ General settings for bootgrid behavior
        filtering or pagination will happen locally, as all data is expected to be present
        in the grid. You can use the :code:`sorters` to define sorting logic yourself.
 
-       If enabled, uses the defined CRUD enpoints to fetch/filter/sort and modify
+       If enabled, uses the defined CRUD endpoints to fetch/filter/sort and modify
        the data.
    * - ``ajaxConfig``
      - ``object``
