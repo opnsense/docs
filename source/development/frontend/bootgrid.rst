@@ -164,7 +164,7 @@ The following column properties are available:
    * - ``sortable``
      - ``boolean``
      - ``true``
-     - If this columnm header can be clicked to activate the sort.
+     - If this columnm header can be clicked to sort on this column.
 
 Configuration Reference
 -----------------------
@@ -669,7 +669,7 @@ Clears any data in the grid.
 ``reload()``
 ~~~~~~~~~~~~
 
-Reload the grid. Triggers a new AJAX request. Always use this
+Reload the grid. Triggers a new AJAX request.
 
 
 ``getRowCount()``
