@@ -35,6 +35,107 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.1.9 (June 02, 2026)
+--------------------------------------------------------------------------
+
+
+As a sign of the times this update ships 3 core security fixes as well
+as OS and third party updates.  Kea dynamic prefix delegation is also
+included plus more GUI improvements.
+
+Time to 26.7 is short.  See you soon!  :)
+
+Here are the full patch notes:
+
+* system remove unused data-tooltip that is not properly escaped from certificates widget `[1] <https://www.cve.org/cverecord?id=CVE-2026-49132>`__ 
+* system: tighten landing page redirect (contributed by Konstantinos Spartalis)
+* system: fix passing null into getRealInterface()
+* system: fix regression in selective group delete introduced previously
+* system: allow unregistered plugin cron actions to be deleted
+* system: disable MAILTO for cron jobs
+* reporting: render NaN values as empty values and omit leading empty records from data set for health graphs
+* reporting: add max on Y axis for traffic graphs
+* interfaces: dhclient.conf does not cope with multi-line request/require
+* interfaces: account for multiple UUIDs in VIP deletion
+* interfaces: more safe iteration through config_read_array()
+* interfaces: fix wrong DUID-UUID format but keep accepting the wrong one
+* interfaces: fix regression in selective device delete introduced previously
+* interfaces: IAID selection and prefix range reservation for WAN DHCPv6
+* firewall: fix for missing HTML escape in description render in legacy rules GUI `[2] <https://www.cve.org/cverecord?id=CVE-2026-49131>`__ 
+* firewall: add an alias formatter to show content fields as "dynamic" when populated by other components
+* firewall: fix Tabulator regression with alias batch delete
+* firewall: use safe config iteration in interface registration
+* firewall: fix unintended change in filtering logic for new rules GUI
+* firewall: fix action, ipprotocol and protocol translations for legacy rules in new rules GUI
+* firewall: use safe iteration over rules in filter_core_rules_user()
+* firewall: add missing exclamation mark for "not" in scrub rules
+* firewall: fix interface sorting by value for live log and groups
+* captive portal: remove redirection on HTTPS and ditch non-functional pass statement
+* dnsmasq: change DHCP tag to DescriptionField
+* ipsec: move swanctl.conf download button to the tab
+* ipsec: restyle the connections page for clarity
+* kea: dynamic prefix delegation support `[3] <https://docs.opnsense.org/manual/kea.html>`__ 
+* kea: always start the prefix watcher when DHCPv6 is enabled
+* kea: cleanups for IntegerField using isSet() and no negative numbers allowed
+* kea: add decline_probation_period and set lower default to mitigate faulty client implementations to consume the whole pool
+* kea: add subnet allocator field (contributed by Marcos Della)
+* kea: add DHCPv4 compatibility options (contributed by Marcos Della)
+* kea: hook up reservation.next_server (contributed by Ian Munsie)
+* kea: fix missing visual cues for manual mode in DDNS and DHCPv4/6
+* monit: sanitize monit output before offering it
+* network time: cleanse port option before use `[4] <https://github.com/opnsense/core/security/advisories/GHSA-872g-g543-j37m>`__  (reported by Konstantinos Spartalis)
+* network time: small cleanups in ntpd_configure_gps()
+* unbound: blocklists categorization and apply button message update (contributed by Konstantinos Spartalis)
+* acl: some missing references and using camelCase pointers instead of snake_case
+* mvc: add support for pluggable dynamic menu items and move some existing parts out of the MenuSystem class
+* mvc: stricter email address validation
+* mvc: OptionsField: use key as value if no value is set
+* mvc: unify migration message returns
+* mvc: do not translate empty strings
+* ui: clean up useRequestHandlerOnGet usage
+* ui: use space in apply box for the apply reminder
+* ui: improve form validation error append
+* ui: tab exclusion for SimpleActionButton
+* ui: split form button row render as some forms only use save
+* ui: override selectpicker defaults for translations
+* ui: hide apply button for specific tabs on multiple pages (contributed by Konstantinos Spartalis)
+* ui: bootgrid: align datakey with the rest of the options, but allow top-level placement
+* ui: bootgrid: mark state variables as such
+* ui: bootgrid: safeguard replace() function
+* ui: bootgrid: remove unused getTotalRowCount() method
+* ui: bootgrid: prevent NaN pagination values for non-ajax grids when row count is set to all
+* ui: bootgrid: clean up converter compatibility code
+* ui: bootgrid: replace "append" with "replace" for ajax: false grids
+* ui: bootgrid: adjust column persistence behavior to prevent horizontal dead space
+* plugins: use safe config iteration in interface registration code
+* plugins: os-tinc fixes evaluation of hosts enabled flag (contributed by Konstantinos Spartalis)
+* src: dhclient: improve server and filename validation `[5] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:11.dhclient.asc>`__ 
+* src: setcred: fix buffer overflow `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:18.setcred.asc>`__ 
+* src: kern: make sure to drain selinfo sleepers `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:19.file.asc>`__ 
+* src: fusefs: handle buggy server LISTXATTR response `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:20.fusefs.asc>`__ 
+* src: ptrace: fix validation of PT_SC_REMOTE arguments `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:21.ptrace.asc>`__ 
+* src: libcasper: switch from select(2) to poll(2) `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:22.libcasper.asc>`__ 
+* src: cap_net: do not allow new limits to drop keys from the old ones `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:24.cap_net.asc>`__ 
+* src: ipfw: fix parsing error in nat config port_range
+* src: ipfw: fix checksum after NAT
+* src: igmp: Avoid leaving dangling pointers in the state-change queue
+* src: vxlan: Update \*m0 after a pullup
+* src: routing: use a better error number in sysctl_fibs()
+* src: routing: initialize V_rt_numfibs earlier during boot
+* src: pfsync: reject invalid SCTP states
+* src: pf: do not reject rules with colliding hashes
+* src: rtnetlink: check for allocation failure in nlattr_get_multipath()
+* src: rtnetlink: align RTA_MULTIPATH length validation in nlattr_get
+* ports: nss 3.124 `[12] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_124.html>`__ 
+* ports: openvpn 2.7.4 `[13] <https://github.com/OpenVPN/openvpn/blob/v2.7.4/Changes.rst>`__ 
+* ports: php 8.3.31 `[14] <https://www.php.net/ChangeLog-8.php#8.3.31>`__ 
+* ports: py-numpy 2.4.4
+* ports: suricata 8.0.5 `[15] <https://suricata.io/2026/05/19/suricata-8-0-5-and-7-0-16-released/>`__ 
+* ports: unbound 1.25.1 `[16] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-25-1>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.1.8 (May 12, 2026)
 --------------------------------------------------------------------------
 
