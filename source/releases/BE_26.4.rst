@@ -404,6 +404,34 @@ A hotfix release was issued as 26.4_14:
 * ports: dnsmasq 2.92rel2 `[54] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
 * ports: expat 2.8.1 `[55] <https://github.com/libexpat/libexpat/blob/R_2_8_1/expat/Changes>`__ 
 
+A hotfix release was issued as 26.4_20:
+
+* system remove unused data-tooltip that is not properly escaped from certificates widget `[56] <https://www.cve.org/cverecord?id=CVE-2026-49132>`__ 
+* interfaces: dhclient.conf does not cope with multi-line request/require
+* firewall: fix for missing HTML escape in description render in legacy rules GUI `[57] <https://www.cve.org/cverecord?id=CVE-2026-49131>`__ 
+* monit: sanitize monit output before offering it
+* network time: cleanse port option before use `[58] <https://github.com/opnsense/core/security/advisories/GHSA-872g-g543-j37m>`__  (reported by Konstantinos Spartalis)
+* mvc: do not translate empty strings
+* src: dhclient: improve server and filename validation `[59] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:11.dhclient.asc>`__ 
+* src: setcred: fix buffer overflow `[60] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:18.setcred.asc>`__ 
+* src: kern: make sure to drain selinfo sleepers `[61] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:19.file.asc>`__ 
+* src: fusefs: handle buggy server LISTXATTR response `[62] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:20.fusefs.asc>`__ 
+* src: ptrace: fix validation of PT_SC_REMOTE arguments `[63] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:21.ptrace.asc>`__ 
+* src: libcasper: switch from select(2) to poll(2) `[64] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:22.libcasper.asc>`__ 
+* src: cap_net: do not allow new limits to drop keys from the old ones `[65] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:24.cap_net.asc>`__ 
+* src: ipfw: fix parsing error in nat config port_range
+* src: ipfw: fix checksum after NAT
+* src: igmp: Avoid leaving dangling pointers in the state-change queue
+* src: vxlan: Update \*m0 after a pullup
+* src: routing: use a better error number in sysctl_fibs()
+* src: routing: initialize V_rt_numfibs earlier during boot
+* src: pfsync: reject invalid SCTP states
+* src: pf: do not reject rules with colliding hashes
+* src: rtnetlink: check for allocation failure in nlattr_get_multipath()
+* src: rtnetlink: align RTA_MULTIPATH length validation in nlattr_get
+* ports: suricata 8.0.5 `[66] <https://suricata.io/2026/05/19/suricata-8-0-5-and-7-0-16-released/>`__ 
+* ports: unbound 1.25.1 `[67] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-25-1>`__ 
+
 Migration notes, known issues and limitations:
 
 * ISC-DHCP moves to a plugin. It will be automatically installed during upgrades. It is not installed on new installations because it is not being used, but you can still install and keep using it.
