@@ -468,6 +468,9 @@ BGP (Border Gateway Protocol)
       **Soft reconfiguration inbound**    Allows policy changes without resetting the session by storing inbound updates.
       **BFD**                             Enable Bidirectional Forwarding Detection (BFD) for rapid link failure detection with the neighbor.
       **Keepalive**                       Sets the interval (default 60 seconds) between keepalive messages to check the neighbor's availability.
+      **BFD Strict Mode**                 Strict mode requires the BFD session to be established before allowing BGP to connect.
+                                          If BFD goes down, BGP immediately closes the session.
+                                          This prevents BGP sessions from remaining up when the underlying link is down. Requires BFD to be enabled.
       **Hold Down Time**                  Time (default 180 seconds) before declaring a neighbor down if no keepalive messages are received.
       **Connect Timer**                   Interval to attempt reconnecting with a neighbor after a disconnect.
       **Send Defaultroute**               Sends a default route to the neighbor, useful in small AS environments where a full routing table is not necessary.
