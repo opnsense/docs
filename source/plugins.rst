@@ -46,7 +46,6 @@ VPN
    :maxdepth: 2
    :titlesonly:
 
-   manual/how-tos/cloudflared
    manual/how-tos/openconnect
    manual/how-tos/stunnel
    manual/how-tos/zerotier
@@ -91,6 +90,7 @@ Other
    manual/git-backup
    manual/relayd
    manual/wazuh-agent
+   manual/how-tos/cloudflared
    manual/how-tos/tor
 
 ----------------

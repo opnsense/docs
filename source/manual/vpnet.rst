@@ -1034,7 +1034,6 @@ Plugin VPN options
 
 Via plugins additional VPN technologies are offered, including:
 
-* **Cloudflare Tunnel** - Expose self-hosted services through Cloudflare's edge without inbound firewall rules or a public IP address.
 * **OpenConnect** - SSL VPN client, initially build to connect to commercial vendor appliances like Cisco ASA or Juniper.
 * **Stunnel** - Provides an easy to setup universal TLS/SSL tunneling service, often used to secure unencrypted protocols.
 * **Tinc** - Automatic Full Mesh Routing
@@ -1046,7 +1045,6 @@ Via plugins additional VPN technologies are offered, including:
    :maxdepth: 2
    :titlesonly:
 
-   how-tos/cloudflared
    how-tos/openconnect
    how-tos/stunnel
    how-tos/zerotier
