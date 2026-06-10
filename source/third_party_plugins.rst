@@ -7,8 +7,8 @@ Third-party Plugins
     :align: center
 
 
-Like our community plugins in some cases software is delivered under a non-free license, the Third-party section contains
-the documentation for these packages as provided by Deciso or one of its partners.
+Like our community plugins in some cases software is delivered under a non-free license or combined with a commercial service from one of
+our partners, the Third-party section contains the documentation for these packages.
 
 For support on this software, please consult the vendor as found below.
 
@@ -24,3 +24,14 @@ Sunnyvalley
    vendor/sunnyvalley/zenarmor_hardwarerequirements
    vendor/sunnyvalley/zenarmor_install
    vendor/sunnyvalley/zenarmor_cmd_install
+
+
+----------------------------------------
+Q-Feeds Threat Intelligence
+----------------------------------------
+
+.. toctree::
+   :maxdepth: 2
+   :titlesonly:
+
+   manual/qfeeds
