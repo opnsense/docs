@@ -35,11 +35,13 @@ menu entry will appear.
 To obtain a tunnel token:
 
 1. Log in to the `Cloudflare Zero Trust dashboard <https://one.dash.cloudflare.com/>`_.
-2. Navigate to :menuselection:`Networks --> Tunnels`.
+2. Navigate to :menuselection:`Networks --> Connectors`.
 3. Click **Create a tunnel**, select **Cloudflared** as the connector type, and give
    the tunnel a name.
 4. On the next page, copy the tunnel token (the long string shown in the install
-   command). You only need the token itself — not the full command.
+   command). You only need the token itself — not the full command. The dashboard shows
+   OS-specific install commands — ignore the OS selector and copy the long token string
+   at the end of the command.
 
 Settings
 --------
@@ -51,7 +53,7 @@ Navigate to :menuselection:`Services --> Cloudflare Tunnel --> Settings`.
    :widths: 20, 80
 
    "Enable", "Start the cloudflared service at boot and keep it running."
-   "Tunnel Token", "The tunnel token from the Cloudflare Zero Trust dashboard. Stored in a root-readable file and passed to cloudflared via an environment variable (not on the command line)."
+   "Tunnel Token", "Tunnel token from the Cloudflare Zero Trust dashboard."
    "Protocol", "Transport protocol used to reach Cloudflare's edge. **auto** (default) lets cloudflared choose. Force **quic** or **http2** only if you have a specific network requirement."
    "Post-Quantum Encryption", "Enable post-quantum cryptographic protection for the tunnel connection. Requires QUIC protocol."
    "Disable QUIC PMTU Discovery", "Disable Path MTU Discovery for QUIC connections. May improve reliability in environments where ICMP is filtered."
@@ -71,7 +73,8 @@ QUIC and will result in a warning in the cloudflared log:
     See https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes for details.
 
 To suppress this warning and allow QUIC to operate at full throughput, set the
-following tuneable values under :menuselection:`System --> Settings --> Tuneables`:
+following tuneable values under :menuselection:`System --> Settings --> Tuneables`
+to these values or higher:
 
 .. csv-table::
    :header: "Tuneable", "Recommended value"
@@ -79,9 +82,6 @@ following tuneable values under :menuselection:`System --> Settings --> Tuneable
 
    "kern.ipc.maxsockbuf", "16777216"
    "net.inet.udp.recvspace", "8388608"
-
-The settings page will display a warning if either value is below the recommended
-minimum while the protocol is set to **auto** or **quic**.
 
 .. Note::
     Even with optimal buffer sizes, sporadic ``Application error 0x0 (remote)``
@@ -127,21 +127,6 @@ on a fresh boot before upstream resolvers become reachable. The plugin registers
 running) whenever the WAN interface receives a new IP address, providing recovery
 in the common boot-order race.
 
-For additional crash recovery — for example, if the daemon stops for reasons
-unrelated to a WAN change — you can add a periodic recovery job:
-
-1. Navigate to :menuselection:`System --> Settings --> Cron`.
-2. Click **+** to add a new job.
-3. In the **Command** dropdown, select **Recover Cloudflare Tunnel (start if not running)**.
-4. Set the schedule as desired (e.g. every 5 minutes: ``*/5 * * * *``).
-5. Leave the job **disabled** until you have confirmed the tunnel is stable; enable
-   it only if you observe unrecovered drops.
-
-.. Note::
-    The recovery job only starts cloudflared if it is enabled but not currently
-    running — it will not disrupt an active tunnel. Enable it if you observe
-    crashes that the ``newwanip`` hook does not recover.
-
 Logging
 -------
 
@@ -157,6 +142,6 @@ which can be used to verify tunnel connectivity::
     The healthcheck may report ``{"connsCount":1}`` while the tunnel is still in
     the process of connecting — the connection count does not reliably indicate that
     the tunnel is fully established. Confirm tunnel status in the Cloudflare Zero
-    Trust dashboard (:menuselection:`Networks --> Tunnels`) or check the log for
+    Trust dashboard (:menuselection:`Networks --> Connectors`) or check the log for
     a ``Registered tunnel connection`` entry. See `cloudflared issue #1633
     <https://github.com/cloudflare/cloudflared/issues/1633>`_ for details.
