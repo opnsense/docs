@@ -112,6 +112,11 @@ via the wrong WAN. You must add an explicit policy-route rule to direct it:
    through which the tunnel should exit.
 4. Apply the rules.
 
+.. Note::
+    If you use Cloudflare Access policies on your tunnel, add a second floating rule
+    with the same source and gateway matching **Protocol: TCP**, **Destination port: 443**,
+    to allow JWT validation against your Cloudflare Access team domain.
+
 Alternatively, enable :guilabel:`Disable force gateway` under
 :menuselection:`Firewall --> Settings --> Advanced` if you want locally-originated
 traffic to follow the routing table rather than be forced through a gateway, but be
