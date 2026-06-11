@@ -108,7 +108,7 @@ via the wrong WAN. You must add an explicit policy-route rule to direct it:
 1. Navigate to :menuselection:`Firewall --> Rules --> Floating`.
 2. Add a rule matching **Source: This Firewall**, **Destination: any**,
    **Protocol: TCP/UDP**, **Destination port: 7844**.
-3. Under :guilabel:`Gateway`, select the specific WAN gateway or gateway group
+3. Under :menuselection:`Gateway`, select the specific WAN gateway or gateway group
    through which the tunnel should exit.
 4. Apply the rules.
 
