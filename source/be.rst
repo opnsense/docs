@@ -35,7 +35,6 @@ More information:
    vendor/deciso/opncentral
    vendor/deciso/opnwaf
    vendor/deciso/oidc
-   vendor/deciso/extended_dnsbl
    vendor/deciso/userportal
    vendor/deciso/scheduled_jobs
 
