@@ -561,19 +561,42 @@ List field type to validate if the provided value is a valid protocol name as de
    "Multiple", "Y,N", "Allow to select multiple options"
 
 
+StrictTextField
+------------------------------------
+
+Validate regular text using a regex.
+
+This field disables some special characters in text by default.
+
+.. csv-table:: StrictTextField
+   :header: "Parameter", "Options", "Default", "Purpose"
+   :widths: 30, 20, 20, 40
+
+   "default", ":code:`text`", "", "Default value for new attributes"
+   "Required", "Y,N", "N", "Mark field as required"
+   "ValidationMessage", ":code:`text`", "Text does not validate.", "Error message on validation failure"
+   "AllowSpaces", "Y,N", "N", "Allow spaces or tabs"
+   "AllowNewlines", "Y,N", "N", "Allow newlines"
+   "AllowSpecial", "Y,N", "N", "Allow special control characters"
+   "Mask", ":code:`regex`", "", "Optional validation regex"
+
+
 TextField
 ------------------------------------
 
 Validate regular text using a regex.
 
 .. csv-table:: TextField
-   :header: "Parameter", "Options", "Purpose"
-   :widths: 30, 20, 40
+   :header: "Parameter", "Options", "Default", "Purpose"
+   :widths: 30, 20, 20, 40
 
-   "default", ":code:`text`", "Default value for new attributes"
-   "Required", "Y,N", "Mark field as required"
-   "ValidationMessage", ":code:`text`", "Error message on validation failure"
-   "Mask", ":code:`regex`", "Optional validation regex"
+   "default", ":code:`text`", "", "Default value for new attributes"
+   "Required", "Y,N", "N", "Mark field as required"
+   "ValidationMessage", ":code:`text`", "Text does not validate.", "Error message on validation failure"
+   "AllowSpaces", "Y,N", "Y", "Allow spaces or tabs"
+   "AllowNewlines", "Y,N", "Y", "Allow newlines"
+   "AllowSpecial", "Y,N", "Y", "Allow special control characters"
+   "Mask", ":code:`regex`", "", "Optional validation regex"
 
 
 UniqueIdField
