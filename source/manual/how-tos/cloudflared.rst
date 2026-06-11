@@ -87,7 +87,7 @@ to these values or higher:
     Even with optimal buffer sizes, sporadic ``Application error 0x0 (remote)``
     or ``failed to accept QUIC stream: timeout: no recent network activity`` entries
     may still appear in the log. These alone do not indicate packet corruption or a
-    misconfiguration; enabling :guilabel:`Disable QUIC PMTU Discovery` may reduce
+    misconfiguration; enabling :menuselection:`Disable QUIC PMTU Discovery` may reduce
     their frequency.
 
 Firewall considerations
