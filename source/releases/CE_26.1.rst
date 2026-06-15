@@ -35,6 +35,94 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.1.10 (June 15, 2026)
+--------------------------------------------------------------------------
+
+
+This update is the obvious answer to recent reports throughout the ecosystem:
+There are 3 core security issues fixed, FreeBSD security advisories, third
+party updates as well as assorted fixes plus improvements in the new rules GUI.
+
+The firmware page had a number of minor regressions that should be sorted out
+with this release.  They did not affect updates, but made the process a bit
+less smooth than usual.  Be assured that each minor update is tested quite
+extensively, but non-functional issues like these can always slip through a
+test cycle and will be found in the next one.  In the worst case that means
+two stable releases: the issues appeared with 26.1.8 but were not visible
+before 26.1.9 was being tested.
+
+Under the hood the preparation for Source NAT migration, MVC/API support
+for interface assignments and FreeBSD 15.1 support is underway.  We expect
+a 26.7-BETA in the near future once we are satisfied with the overall quality.
+
+Here are the full patch notes:
+
+* system: routing: changed "disable" option to "enable"
+* system: dashboard: explicitly compact on layout shift if there is no predefined layout
+* system: dashboard: update result on default restore
+* interfaces: parse ifconfig output despite exit error in legacy_interfaces_details()
+* interfaces: hostwatch: pin warning banner to enabled flag
+* firewall: always show automatic and legacy rules in new rules GUI
+* firewall: add banner if no rules defined in new rules GUI to match legacy GUI
+* firewall: use strnatcasecmp() for interface list in new rules GUI
+* firewall: fix typo that prevented queues to be selectable in pf-based traffic shaping
+* firewall: escape shaper targets in rule edit `[1] <https://github.com/opnsense/core/security/advisories/GHSA-m4m3-v627-wgc2>`__  (contributed by lujiefsi)
+* dnsmasq: change widget link from settings to leases page
+* firmware: stop buffering in sed to fix chunked update log output
+* firmware: retain ordering in update servers for connectivity check
+* firmware: allow "local" business mirror subscription
+* firmware: put clickable trailer for community plugins
+* firmware: fix return value masking during updates
+* firmware: opnsense-update: do not clean obsolete files on manual -r invokes
+* intrusion detection: fix drop and alert buttons on rules tab
+* ipsec: disable scroll in authentication and children grids (contributed by Konstantinos Spartalis)
+* ipsec: validate the use of refid in CA certificates `[2] <https://github.com/opnsense/core/security/advisories/GHSA-33q4-wcv7-r8fr>`__  (reported by lujiefsi)
+* kea: prevent converting the decimal prefix_id using hexdec() for dynamic PD
+* openvpn: fix client export not showing common names
+* openvpn: require an integer of at least 1 for "vpnid" field
+* mvc: add new validators to TextField: AllowSpaces, AllowNewlines, AllowSpecial and introduce new StrictTextField
+* mvc: strict alphanumeric-only regex for certificate refid `[3] <https://www.cve.org/cverecord?id=CVE-2026-53582>`__  (contributed by eev4n)
+* mvc: simplify assorted option values to reduce duplication
+* mvc: static header support for forms
+* rc: move system_powerd_configure() to bootup plugin hook
+* ui: bootgrid: allow column selection exclusions
+* ui: allow passing of data attributes for select items in setFormData()
+* ui: remove banner on inline reload if applicable
+* ui: button padding when injecting next to apply button
+* ui: fix spurious padding in apply button section (contributed by Konstantinos Spartalis)
+* plugins: os-cloudflared 1.0 (contributed by Richard Aspden)
+* plugins: os-frr 1.53 `[4] <https://github.com/opnsense/plugins/blob/stable/26.1/net/frr/pkg-descr>`__ 
+* plugins: os-rfc2136 1.10 `[5] <https://github.com/opnsense/plugins/blob/stable/26.1/dns/rfc2136/pkg-descr>`__ 
+* plugins: os-stunnel fix for missing include in script
+* plugins: os-telegraf 1.12.15 `[6] <https://github.com/opnsense/plugins/blob/stable/26.1/net-mgmt/telegraf/pkg-descr>`__ 
+* src: missing permission check in thr_kill2 `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:25.thr.asc>`__ 
+* src: arbitrary file overwrite via the KTLS receive path `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:26.ktls.asc>`__ 
+* src: multiple vulnerabilities in the sound mmap path `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:27.sound.asc>`__ 
+* src: sigqueue missing capability mode restriction `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:28.capsicum.asc>`__ 
+* src: use-after-free bug in the IPV6_MSFILTER socket option handler `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:29.ip6_multicast.asc>`__ 
+* src: flaw in Linuxulator execution of setugid binaries `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:30.linux.asc>`__ 
+* src: ASLR bypass for setuid executables via procctl `[13] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:32.elf.asc>`__ 
+* src: integer overflow in vt CONS_HISTORY ioctl `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:34.vt.asc>`__ 
+* src: openssl: fix multiple vulnerabilities `[15] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:35.openssl.asc>`__ 
+* src: ldns: fix query response validation `[16] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:36.ldns.asc>`__ 
+* src: netlink: fix lock leak in nl_find_nhop
+* src: pf: avoid taking the pf rules write lock in a couple of ioctls
+* src: ipfw: add ability to run ipfw binary with 15.0+ kernel module
+* src: ipfw: treat ipv6 address with zero mask as "any"
+* ports: dnsmasq 2.93 `[17] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: filterlog 0.8 changes rule label fetch to libpfctl
+* ports: openssl 3.0.21 `[18] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+* ports: phalcon 5.14.2 `[19] <https://github.com/phalcon/cphalcon/releases/tag/v5.14.2>`__ 
+* ports: phpseclib 3.0.55 `[20] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.55>`__ 
+* ports: py-duckdb 1.5.3 `[21] <https://github.com/duckdb/duckdb/releases/tag/v1.5.3>`__ 
+* ports: py-numpy 2.4.6
+* ports: python 3.13.14 `[22] <https://docs.python.org/release/3.13.14/whatsnew/changelog.html>`__ 
+* ports: sqlite3 3.53.1 `[23] <https://sqlite.org/releaselog/3_53_1.html>`__ 
+* ports: strongswan 6.0.7 `[24] <https://github.com/strongswan/strongswan/releases/tag/6.0.7>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.1.9 (June 02, 2026)
 --------------------------------------------------------------------------
 

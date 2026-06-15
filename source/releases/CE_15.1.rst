@@ -1096,7 +1096,7 @@ request for comments).  Here is the full list of changes:
 * Grab the correct OpenSSL from the system for encrypting/decrypting the configuration files.
 * Message of the day now shows the correct system version.
 * Fixed sorting and button for deleting selected rules in NAT pages.
-* Notable ports updates: pkg 1.4.10, gettext 0.19.4, libzmq 4.0.5, ntp 4.2.8p1, ca_root_nss 3.17.4, libsodium 1.0.2
+* Notable ports updates: pkg 1.4.10, gettext 0.19.4, libzmq 4.0.5, ntp 4.2.8p1, ca_root_nss 3.17.4
 * Groundwork on the MVC-based GUI replacement including examples.  This does not affect the current GUI.
 
 All upgrade methods are viable.  The images can be found here:
