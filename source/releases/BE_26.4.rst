@@ -21,6 +21,226 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+26.4.1 (June 16, 2026)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 26.1.9 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: refactor dashboard to use User model instead of direct config access
+* system: throw UserException when dashboard size limit was reached on save
+* system: add notes dashboard widget (contributed by Konstantinos Spartalis)
+* system: fix traffic dashboard widget initialization race condition (contributed by Greelan)
+* system: avoid side effect rendering sysctl item in config.xml during console assignment
+* system: improve cron command and parameter escaping
+* system: support RADIUS NAS-IP-Address attribute for authentication
+* system: add compatibility layer to future route disable/enable migration
+* system: only split first colon when reading sysctls
+* system: revisit snapshot name validation (partially contributed by Konstantinos Spartalis)
+* system: fix missing newline when generating cron jobs due to a regression
+* system: fix missing base64_decode() in JsonField which prevented user settings from saving
+* system: link CA references after all changes
+* system: parse certificate "key_type" and "digest"
+* system: allow flushing legacy OpenVPN legacy config
+* system: audit "staticroute" config access
+* system: use safe config iteration in core_user_changed_groups()
+* system: tighten landing page redirect (contributed by Konstantinos Spartalis)
+* system: fix passing null into getRealInterface()
+* system: fix regression in selective group delete introduced previously
+* system: allow unregistered plugin cron actions to be deleted
+* system: disable MAILTO for cron jobs
+* system: dashboard: explicitly compact on layout shift if there is no predefined layout
+* system: dashboard: update result on default restore
+* reporting: render NaN values as empty values and omit leading empty records from data set for health graphs
+* reporting: add max on Y axis for traffic graphs
+* interfaces: refactor bridge reconfigure script
+* interfaces: add missing config locks in device controllers
+* interfaces: use safe iteration in backend code
+* interfaces: adjust and annotate interface_dhcpv6_id()
+* interfaces: account for multiple UUIDs in VIP deletion
+* interfaces: more safe iteration through config_read_array()
+* interfaces: fix wrong DUID-UUID format but keep accepting the wrong one
+* interfaces: fix regression in selective device delete introduced previously
+* interfaces: IAID selection and prefix range reservation for WAN DHCPv6
+* interfaces: parse ifconfig output despite exit error in legacy_interfaces_details()
+* interfaces: hostwatch: pin warning banner to enabled flag
+* firewall: live view: decode HTML where necessary to aid filtering
+* firewall: use save method from ApiMutableModelControllerBase for log command, move rule command and savepoint action
+* firewall: safe config access in list_legacy_rules.php
+* firewall: remove duplicated CSV button hook
+* firewall: fix NPTv6 validation for empty external subnet
+* firewall: make getRealInterface() a static utility function
+* firewall: refactor searchRuleAction() to use the same filtering and sorting logic on MVC and legacy data
+* firewall: fix inverted source/destination cosmetic issue in SNAT and One-to-One NAT grids
+* firewall: fix search for floating rules in new rules GUI
+* firewall: add an alias formatter to show content fields as "dynamic" when populated by other components
+* firewall: fix Tabulator regression with alias batch delete
+* firewall: use safe config iteration in interface registration
+* firewall: fix unintended change in filtering logic for new rules GUI
+* firewall: fix action, ipprotocol and protocol translations for legacy rules in new rules GUI
+* firewall: use safe iteration over rules in filter_core_rules_user()
+* firewall: add missing exclamation mark for "not" in scrub rules
+* firewall: fix interface sorting by value for live log and groups
+* firewall: add banner if no rules defined in new rules GUI to match legacy GUI
+* firewall: use strnatcasecmp() for interface list in new rules GUI
+* firewall: fix typo that prevented queues to be selectable in pf-based traffic shaping
+* firewall: escape shaper targets in rule edit `[1] <https://github.com/opnsense/core/security/advisories/GHSA-m4m3-v627-wgc2>`__  (contributed by lujiefsi)
+* captive portal: remove redirection on HTTPS and ditch non-functional pass statement
+* dnsmasq: change DHCP tag to DescriptionField
+* dnsmasq: change widget link from settings to leases page
+* firmware: opnsense-bootstrap: add "-B" bare bootstrap mode
+* firmware: add repo configuration output to connectivity audit
+* firmware: stop buffering in sed to fix chunked update log output
+* firmware: retain ordering in update servers for connectivity check
+* firmware: allow "local" business mirror subscription
+* firmware: put clickable trailer for community plugins
+* firmware: fix return value masking during updates
+* firmware: opnsense-update: do not clean obsolete files on manual -r invokes
+* intrusion detection: fix drop and alert buttons on rules tab
+* ipsec: move swanctl.conf download button to the tab
+* ipsec: restyle the connections page for clarity
+* ipsec: disable scroll in authentication and children grids (contributed by Konstantinos Spartalis)
+* ipsec: validate the use of refid in CA certificates `[2] <https://github.com/opnsense/core/security/advisories/GHSA-33q4-wcv7-r8fr>`__  (reported by lujiefsi)
+* kea: fix "Delegated length must be longer than or equal to prefix length" validation
+* kea: add ddns-override-no-update, ddns-override-client-update and ddns-update-on-renew per subnet
+* kea: DDNS DNS server port can now be specified
+* kea: add explicit reverse DDNS zones support (contributed by XtraLarge)
+* kea: add DDNS manual config override
+* kea: remove depend constraint of ddns_reverse_zone
+* kea: plug socket into dynamic PD route installation script
+* kea: add prefix to reservations to allow for static PD allocations based on DUID/MAC
+* kea: infer IPv6 lease type in delete script via lease lookup so IA_NA/IA_PD can be deleted
+* kea: DDNS add ddns-conflict-resolution-mode per subnet (contributed by chaispaquichui)
+* kea: allow customizing "mac_sources" and change default to "ipv6-link-local"
+* kea: add user-context object to config to emit description
+* kea: fix option_data_autocollect mismatch in DHCPv6 page
+* kea: enable internalModelSafeDelete due to increased model relation field usage
+* kea: build reservation status from control socket output
+* kea: add subnet vltime (partially contributed by Brandan Giles)
+* kea: add client-id to DHCPv4 reservations
+* kea: use JSON_UNESCAPED_UNICODE when writing the JSON configuration
+* kea: dynamic prefix delegation support `[3] <https://docs.opnsense.org/manual/kea.html>`__ 
+* kea: always start the prefix watcher when DHCPv6 is enabled
+* kea: cleanups for IntegerField using isSet() and no negative numbers allowed
+* kea: add decline_probation_period and set lower default to mitigate faulty client implementations to consume the whole pool
+* kea: add subnet allocator field (contributed by Marcos Della)
+* kea: add DHCPv4 compatibility options (contributed by Marcos Della)
+* kea: hook up reservation.next_server (contributed by Ian Munsie)
+* kea: fix missing visual cues for manual mode in DDNS and DHCPv4/6
+* network time: small cleanups in ntpd_configure_gps()
+* openvpn: add tls-crypt-v2 support
+* openvpn: allow restart action via cron
+* openvpn: fix client export not showing common names
+* openvpn: require an integer of at least 1 for "vpnid" field
+* radvd: allow user controlled hop limit (contributed by BPplays)
+* radvd: allow to start a manual configuration without primary IPv6
+* unbound: improve hostname/domain override validation
+* unbound: minor style/refactor for safe config access
+* unbound: hide unused tree row in form output for overrides
+* unbound: restyle statistics page
+* unbound: blocklists categorization and apply button message update (contributed by Konstantinos Spartalis)
+* wireguard: use getValues() consistently in control script
+* acl: some missing references and using camelCase pointers instead of snake_case
+* backend: configctl: properly quote parameters to avoid skipping empty ones (contributed by Majx)
+* backend: configctl: support -f cache flush parameter to fix cache invalidation preamble "!" pass
+* lang: numerous updates and fixes in existing languages
+* mvc: introduce JSON field type and refactor dashboard to use it
+* mvc: fixed a number of class import statements
+* mvc: remove unused UIModelGrid imports in IDS, Monit and Syslog controllers
+* mvc: remove Util imports where not needed
+* mvc: BaseField: add count() helper
+* mvc: fix validation to use getValue instead of plain string cast
+* mvc: UIModelGrid: remove flatten() method as getFlatNodes() is almost the same
+* mvc: add support for pluggable dynamic menu items and move some existing parts out of the MenuSystem class
+* mvc: stricter email address validation
+* mvc: OptionsField: use key as value if no value is set
+* mvc: unify migration message returns
+* mvc: add new validators to TextField: AllowSpaces, AllowNewlines, AllowSpecial and introduce new StrictTextField
+* mvc: strict alphanumeric-only regex for certificate refid `[4] <https://www.cve.org/cverecord?id=CVE-2026-53582>`__  (contributed by eev4n)
+* mvc: simplify assorted option values to reduce duplication
+* mvc: static header support for forms
+* rc: move system_powerd_configure() to bootup plugin hook
+* shell: config access refactor in password and setaddr scripts
+* shell: safe iteration for VLAN/LAGG in port assignment
+* shell: use safe config iteration in live mode banner
+* shell: fix syntax error in port assignment
+* ui: generalize placeholders between controllers and JS
+* ui: simplify and clean up debounce() usage
+* ui: trap generic error popup for specific API URLs such as /api/core/firmware/upgradestatus when it adds no value and known to be unstable
+* ui: add static dialog header support and fix bool/string compare
+* ui: add type_formatter keyword to form rendering
+* ui: add save/cancel button support to form rendering
+* ui: remove "event" use from bootgrid showSaveAlert()
+* ui: add support for binary file uploads
+* ui: bootgrid: onRendered executed in wrong spot
+* ui: clean up useRequestHandlerOnGet usage
+* ui: use space in apply box for the apply reminder
+* ui: improve form validation error append
+* ui: tab exclusion for SimpleActionButton
+* ui: split form button row render as some forms only use save
+* ui: override selectpicker defaults for translations
+* ui: hide apply button for specific tabs on multiple pages (contributed by Konstantinos Spartalis)
+* ui: bootgrid: align datakey with the rest of the options, but allow top-level placement
+* ui: bootgrid: mark state variables as such
+* ui: bootgrid: safeguard replace() function
+* ui: bootgrid: remove unused getTotalRowCount() method
+* ui: bootgrid: prevent NaN pagination values for non-ajax grids when row count is set to all
+* ui: bootgrid: clean up converter compatibility code
+* ui: bootgrid: replace "append" with "replace" for ajax: false grids
+* ui: bootgrid: adjust column persistence behavior to prevent horizontal dead space
+* ui: bootgrid: allow column selection exclusions
+* ui: allow passing of data attributes for select items in setFormData()
+* ui: remove banner on inline reload if applicable
+* ui: button padding when injecting next to apply button
+* ui: fix spurious padding in apply button section (contributed by Konstantinos Spartalis)
+* plugins: os-cloudflared 1.0 (contributed by Richard Aspden)
+* plugins: os-ddclient 1.31 `[5] <https://github.com/opnsense/plugins/blob/stable/26.1/dns/ddclient/pkg-descr>`__ 
+* plugins: os-frr 1.53 `[6] <https://github.com/opnsense/plugins/blob/stable/26.1/net/frr/pkg-descr>`__ 
+* plugins: os-netbird 1.3 `[7] <https://github.com/opnsense/plugins/blob/stable/26.1/security/netbird/pkg-descr>`__ 
+* plugins: os-q-feeds-connector 1.6 `[8] <https://github.com/opnsense/plugins/blob/stable/26.1/security/q-feeds-connector/pkg-descr>`__ 
+* plugins: os-rfc2136 1.10 `[9] <https://github.com/opnsense/plugins/blob/stable/26.1/dns/rfc2136/pkg-descr>`__ 
+* plugins: os-stunnel fix for missing include in script
+* plugins: os-telegraf 1.12.15 `[10] <https://github.com/opnsense/plugins/blob/stable/26.1/net-mgmt/telegraf/pkg-descr>`__ 
+* plugins: os-tinc fixes evaluation of hosts enabled flag (contributed by Konstantinos Spartalis)
+* plugins: os-turnserver 1.3 `[11] <https://github.com/opnsense/plugins/blob/stable/26.1/net/turnserver/pkg-descr>`__ 
+* plugins: os-zabbix-agent 1.9 `[12] <https://github.com/opnsense/plugins/blob/stable/26.1/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.7 `[13] <https://github.com/opnsense/plugins/blob/stable/26.1/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* plugins: use safe config iteration in interface registration code
+* src: missing permission check in thr_kill2 `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:25.thr.asc>`__ 
+* src: arbitrary file overwrite via the KTLS receive path `[15] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:26.ktls.asc>`__ 
+* src: multiple vulnerabilities in the sound mmap path `[16] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:27.sound.asc>`__ 
+* src: sigqueue missing capability mode restriction `[17] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:28.capsicum.asc>`__ 
+* src: use-after-free bug in the IPV6_MSFILTER socket option handler `[18] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:29.ip6_multicast.asc>`__ 
+* src: flaw in Linuxulator execution of setugid binaries `[19] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:30.linux.asc>`__ 
+* src: ASLR bypass for setuid executables via procctl `[20] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:32.elf.asc>`__ 
+* src: integer overflow in vt CONS_HISTORY ioctl `[21] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:34.vt.asc>`__ 
+* src: openssl: fix multiple vulnerabilities `[22] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:35.openssl.asc>`__ 
+* src: ldns: fix query response validation `[23] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:36.ldns.asc>`__ 
+* src: netlink: fix lock leak in nl_find_nhop
+* src: pf: avoid taking the pf rules write lock in a couple of ioctls
+* src: ipfw: add ability to run ipfw binary with 15.0+ kernel module
+* src: ipfw: treat ipv6 address with zero mask as "any"
+* ports: curl 8.20.0 `[24] <https://curl.se/changes.html#8_20_0>`__ 
+* ports: dnsmasq 2.93 `[25] <https://www.thekelleys.org.uk/dnsmasq/CHANGELOG>`__ 
+* ports: filterlog 0.8 changes rule label fetch to libpfctl
+* ports: kea 3.0.3 `[26] <https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-3.0.3>`__ 
+* ports: krb5 1.22.2 `[27] <https://web.mit.edu/kerberos/krb5-1.22/>`__ 
+* ports: libxml 2.15.3 `[28] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.3/NEWS>`__ 
+* ports: nss 3.124 `[29] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_124.html>`__ 
+* ports: openssh 10.3p1 `[30] <https://www.openssh.com/txt/release-10.3>`__ 
+* ports: openssl 3.0.21 `[31] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+* ports: openvpn 2.7.4 `[32] <https://github.com/OpenVPN/openvpn/blob/v2.7.4/Changes.rst>`__ 
+* ports: phalcon 5.14.2 `[33] <https://github.com/phalcon/cphalcon/releases/tag/v5.14.2>`__ 
+* ports: php 8.3.31 `[34] <https://www.php.net/ChangeLog-8.php#8.3.31>`__ 
+* ports: phpseclib 3.0.55 `[35] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.55>`__ 
+* ports: py-duckdb 1.5.3 `[36] <https://github.com/duckdb/duckdb/releases/tag/v1.5.3>`__ 
+* ports: py-numpy 2.4.6
+* ports: py-requests 2.33.1
+* ports: python 3.13.14 `[37] <https://docs.python.org/release/3.13.14/whatsnew/changelog.html>`__ 
+
+--------------------------------------------------------------------------
 26.4 (April 15, 2026)
 --------------------------------------------------------------------------
 
