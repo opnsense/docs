@@ -6,19 +6,21 @@ Authoritative DNS
 
 As part of the OPNsense Business Edition, Deciso offers a plugin for advanced DNS infrastructure requirements.
 
-`Authoritative DNS` uses `PowerDNS Authoritative` to host DNS zones on OPNsense.
+`OPNDNS` uses `PowerDNS Authoritative` to host DNS zones on OPNsense.
 
 It can be used to manage internal static DNS zones, serve reverse lookup zones, and receive dynamic DNS updates
-from services such as `KEA DHCP` using RFC2136.
+from services such as :doc:`KEA DHCP </manual/kea>` using RFC2136.
 
 It can configure more record types than a DNS Recurser, e.g., MX, SRV and TXT records.
 
-In a common setup, `Unbound DNS` remains the recursive DNS resolver for clients and forwards selected internal zones
+In a common setup, :doc:`KEA DHCP </manual/unbound>` remains the recursive DNS resolver for clients and forwards selected internal zones
 to Authoritative DNS.
+
 
 ---------------------------------
 Considerations before deployment
 ---------------------------------
+
 
 DNS Service
 -----------------------------
@@ -33,13 +35,14 @@ and forward selected internal zones to Authoritative DNS running on another port
     `Unbound` is a recursive resolver, `PowerDNS Authoritative` is an authoritative DNS server.
     PowerDNS answers only for configured zones and does not resolve arbitrary internet domains.
 
+
 Static and Dynamic Zones
 -----------------------------
 
 There are two zone types:
 
 - ``Static`` zones only consist of static records that are managed via the GUI.
-- ``Allowupdate`` zones are a mix of static records and RFC2136 updates.
+- ``Dynamic`` (allowupdate) zones are a mix of static records and RFC2136 updates.
 
 Static zones are intended for manually configured records such as nameservers, infrastructure hosts, service records, and reverse lookup records.
 
@@ -60,6 +63,16 @@ The primary server can allow zone transfers to one configured peer and send noti
 
     The HA design is intentionally simple. A single peer is configured globally and used for zone transfer and notification handling.
     It is not recommended to use the Authoritative DNS server as a secondary of a public DNS server, even if that is technically possible.
+
+
+Installation
+---------------------------
+
+To install this plugin, go to :menuselection:`System --> Firmware --> Plugins` and search for **os-OPNDNS**,
+the [+] button downloads and installs the software.
+
+Next go to :menuselection:`Services --> Authoritative DNS --> Settings` to enable it.
+
 
 -------------------------
 General Settings
@@ -503,7 +516,7 @@ Bind port                           ``53001``
     Do not create manual RRsets (other than NS) in a dynamic zone unless you know exactly why they are needed.
     The zone is expected to be owned by RFC2136 update clients.
 
-For a general KEA DHCP setup, see :doc:`/manual/kea`.
+For a general KEA DHCP setup, see :doc:`KEA DHCP </manual/kea>`.
 
 
 High Availability setup

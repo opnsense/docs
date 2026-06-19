@@ -480,6 +480,11 @@ KEA allows registering client FQDNs via dynamic DNS (RFC2136) to an authoritativ
 
 Such an authoritative DNS server will be ISC BIND or an alternative like PowerDNS. Recursive DNS servers like Dnsmasq or Unbound are not able to fulfill this role.
 
+.. Tip::
+
+    The OPNsense Business Edition includes :doc:`Authoritative DNS </vendor/deciso/opndns>` with RFC2136 support.
+
+
 When clients register their IP address, the DHCP server will receive a `Client FQDN` (DHCP option 81) that either contains a client hostname or an FQDN.
 In cases where clients only send a hostname, using the DNS qualifying suffix will construct an FQDN and force an update anyway.
 
