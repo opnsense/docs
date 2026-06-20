@@ -138,6 +138,17 @@ Logging
 Navigate to :menuselection:`Services --> Cloudflare Tunnel --> Log File` to view
 the cloudflared log via the standard OPNsense log viewer.
 
+.. Note::
+    The following warning appears at every startup and can be safely ignored::
+
+        WRN ICMP proxy feature is disabled error="cannot create ICMPv4 proxy:
+        ICMP proxy is not implemented on freebsd amd64 nor ICMPv6 proxy:
+        ICMP proxy is not implemented on freebsd amd64"
+
+    cloudflared's ICMP proxy enables ping and traceroute forwarding through the
+    tunnel for WARP-based private network access. It is not implemented for
+    FreeBSD, but has no effect on standard Cloudflare Tunnel operation.
+
 cloudflared exposes a local metrics endpoint at ``http://localhost:2000/healthcheck``
 which can be used to verify tunnel connectivity::
 
