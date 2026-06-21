@@ -1,84 +1,107 @@
-==========================
+=================
 Authoritative DNS
-==========================
+=================
 
 .. contents:: Index
 
 As part of the OPNsense Business Edition, Deciso offers a plugin for advanced DNS infrastructure requirements.
 
-`OPNDNS` uses `PowerDNS Authoritative` to host DNS zones on OPNsense.
+`OPNDNS` is based on `PowerDNS Authoritative <https://doc.powerdns.com/authoritative/>`__
+and hosts DNS zones on OPNsense. It can manage static internal zones, reverse lookup zones,
+and dynamic DNS updates from services such as :doc:`KEA DHCP </manual/kea>` using RFC2136.
 
-It can be used to manage internal static DNS zones, serve reverse lookup zones, and receive dynamic DNS updates
-from services such as :doc:`KEA DHCP </manual/kea>` using RFC2136.
+It supports record types that are usually outside the scope of a recursive resolver, such as ``MX``, ``SRV`` and ``TXT``.
 
-It can configure more record types than a DNS Recurser, e.g., MX, SRV and TXT records.
-
-In a common setup, :doc:`KEA DHCP </manual/unbound>` remains the recursive DNS resolver for clients and forwards selected internal zones
-to Authoritative DNS.
+In a common setup, :doc:`Unbound DNS </manual/unbound>` remains the recursive resolver for clients and forwards
+selected internal zones to this service.
 
 
----------------------------------
+--------------------------------
 Considerations before deployment
----------------------------------
+--------------------------------
 
 
-DNS Service
------------------------------
+DNS role
+--------
 
-`PowerDNS Authoritative` is not a recursive resolver. It only answers for zones it is authoritative for.
+This service is not a recursive resolver. It only answers for zones configured locally.
 
-This means it should normally not replace `Unbound DNS` as the DNS server for clients. Instead, `Unbound DNS` should continue to listen on port ``53``
-and forward selected internal zones to Authoritative DNS running on another port, e.g. ``53053``.
+It should normally not replace :doc:`Unbound DNS </manual/unbound>` as the DNS server for clients.
+Instead, keep Unbound on port ``53`` and forward selected internal zones to this service on another port,
+for example ``53053``.
 
 .. Note::
 
-    `Unbound` is a recursive resolver, `PowerDNS Authoritative` is an authoritative DNS server.
-    PowerDNS answers only for configured zones and does not resolve arbitrary internet domains.
+    Unbound resolves arbitrary DNS names for clients.
+    This service only answers for zones it is authoritative for.
 
 
-Static and Dynamic Zones
------------------------------
+Records and RRsets
+------------------
+
+The GUI uses the term **record** for simplicity.
+
+Technically, each record entry represents an RRset. An RRset is the combination of:
+
+- one record name
+- one record type
+- one TTL
+- one or more values
+
+For example, two IPv4 addresses for the same host are stored as one ``A`` RRset with two values:
+
+.. code-block:: text
+
+    host1.internal. 300 IN A 192.168.1.10
+    host1.internal. 300 IN A 192.168.1.11
+
+In the GUI, this is entered as one record with ``host1`` as name, ``A`` as type, ``300`` as TTL,
+and both IP addresses as separate values.
+
+
+Zone types
+----------
 
 There are two zone types:
 
-- ``Static`` zones only consist of static records that are managed via the GUI.
-- ``Dynamic`` (allowupdate) zones are a mix of static records and RFC2136 updates.
+- ``static`` zones contain records managed through the GUI.
+- ``allowupdate`` zones allow RFC2136 updates.
 
-Static zones are intended for manually configured records such as nameservers, infrastructure hosts, service records, and reverse lookup records.
+Static zones are intended for manually configured records, such as nameservers, infrastructure hosts,
+service records and reverse lookup records.
 
-Dynamic zones are intended for automatic DNS updates, for example from `KEA DHCP`.
+Dynamic zones are intended for automatic updates, for example from :doc:`KEA DHCP </manual/kea>`.
+
+.. Attention::
+
+    Do not create manual records in dynamic zones unless you know exactly why they are needed.
+    These zones are expected to be owned by RFC2136 update clients.
 
 
-High Availability
------------------------------
+High availability
+-----------------
 
-PowerDNS can be configured with a global role:
+A global role controls how the service behaves:
 
 - ``Primary`` creates and manages zones and records.
-- ``Secondary`` creates secondary zones and retrieves them from the configured primary server.
+- ``Secondary`` creates secondary zones and retrieves their contents from the configured peer.
 
-The primary server can allow zone transfers to one configured peer and send notifications to it when a zone changes.
+The primary can allow one configured peer to transfer zones and can notify it when a zone changes.
 
 .. Note::
 
-    The HA design is intentionally simple. A single peer is configured globally and used for zone transfer and notification handling.
-    It is not recommended to use the Authoritative DNS server as a secondary of a public DNS server, even if that is technically possible.
+    The HA design is intentionally simple. A single peer is configured globally and used for zone transfers
+    and notifications.
+
+    Using this service as a secondary for public DNS infrastructure is not recommended, even if it is technically possible.
 
 
-Installation
----------------------------
+----------------
+General settings
+----------------
 
-To install this plugin, go to :menuselection:`System --> Firmware --> Plugins` and search for **os-OPNDNS**,
-the [+] button downloads and installs the software.
-
-Next go to :menuselection:`Services --> Authoritative DNS --> Settings` to enable it.
-
-
--------------------------
-General Settings
--------------------------
-
-Most settings are straightforward. Enable the service, choose the role, configure the listen port, and optionally configure the HA peer.
+Most settings are straightforward. Enable the service, choose the role, configure the listen port,
+and optionally configure the HA peer.
 
 .. tabs::
 
@@ -87,42 +110,55 @@ Most settings are straightforward. Enable the service, choose the role, configur
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Enable**                                Enable Authoritative DNS.
-        **Listen Port**                           The port used for responding to DNS queries.
-        **Role**                                  Choose if this firewall acts as ``Primary`` or ``Secondary``.
-        **Peer**                                  IP address and port of the peer DNS server. On a primary this is used for
-                                                  zone transfers and notify handling. On a secondary this is used as the primary server.
-        **Disable HA sync**                       Ignore the general settings from being synced between HA peers.
+        **Enable**                                Enable the service.
+        **Listen Port**                           Port used for DNS queries.
+        **Role**                                  Choose whether this firewall acts as ``Primary`` or ``Secondary``.
+        **Peer**                                  IP address and port of the peer DNS server. On a primary, this is used for
+                                                  zone transfers and notifications. On a secondary, this is the primary server.
+        **Disable HA sync**                       Prevent general settings from being synchronized between HA peers.
         ========================================= ====================================================================================
 
         .. Tip::
 
-            When Unbound listens on port ``53``, configure Authoritative DNS on a different port such as ``53053`` and forward the relevant zones from Unbound.
+            When Unbound listens on port ``53``, configure this service on a different port such as ``53053``
+            and forward the relevant zones from Unbound.
 
     .. tab:: SOA
 
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Primary nameserver**                    The primary nameserver used in the SOA record, e.g. ``ns1.internal``.
-        **Responsible Mailbox**                   The responsible mailbox encoded as DNS name, e.g. ``hostmaster.internal``.
-        **Refresh**                               Time in seconds after which a secondary should check the primary for zone updates.
-        **Retry**                                 Time in seconds after which a secondary should retry a failed refresh.
-        **Expire**                                Time in seconds after which a secondary should stop serving the zone if the primary
+        **Primary nameserver**                    Primary nameserver used in the SOA record, for example ``ns1.internal``.
+        **Responsible Mailbox**                   Responsible mailbox encoded as DNS name, for example ``hostmaster.internal``.
+        **Refresh**                               Time in seconds after which a secondary checks the primary for zone updates.
+        **Retry**                                 Time in seconds after which a secondary retries a failed refresh.
+        **Expire**                                Time in seconds after which a secondary stops serving the zone if the primary
                                                   cannot be reached.
         **Minimum TTL**                           Minimum TTL used in the SOA record.
         ========================================= ====================================================================================
 
         .. Note::
 
-            SOA records are generated automatically by PowerDNS. They do not need to be created manually as RRsets.
-            If you change settings here, you must manually delete and recreate zones to get updated SOA records.
-            They cannot be manually configured since they have a serial that is updated automatically on configuration changes.
-            That serial is the trigger if a zone should be transfered to a secondary DNS server.
+            SOA records are generated automatically. They do not need to be created manually.
 
--------------------------
-Zone Settings
--------------------------
+            If these settings are changed, existing zones must be deleted and recreated to receive updated SOA content.
+            The serial is updated automatically on configuration changes and is used by secondary servers to detect updates.
+
+    .. tab:: Log
+
+        ========================================= ====================================================================================
+        **Option**                                **Description**
+        ========================================= ====================================================================================
+        **Log Level**                             Higher values log more details. Use high values only while debugging. Values can be
+                                                  between 1 to 9.
+        **Log DNS Queries**                       Log incoming DNS queries. This can generate large amounts of log data.
+        **Log DNS Details**                       Log additional DNS packet details for debugging. This can be noisy.
+        ========================================= ====================================================================================
+
+
+-------------
+Zone settings
+-------------
 
 Zones are configured in :menuselection:`Services --> Authoritative DNS --> Zones`.
 
@@ -133,57 +169,68 @@ Zones are configured in :menuselection:`Services --> Authoritative DNS --> Zones
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
-        **Zone Name**                             Name of the zone, e.g. ``internal`` or ``1.168.192.in-addr.arpa``.
-        **Type**                                  ``static`` for zones managed by the GUI, ``allowupdate`` for zones managed through RFC2136.
-        **Allow Updates From**                    Network allowed to send RFC2136 updates for this zone. Only used when the zone type is ``allowupdate``.
-        **Default TTL**                           Default time-to-live used for records in this zone.
-        **Description**                           You may enter a description here for your reference.
+        **Zone Name**                             Name of the zone, for example ``internal`` or ``1.168.192.in-addr.arpa``.
+        **Type**                                  ``static`` for GUI-managed zones, ``allowupdate`` for RFC2136 updates.
+        **Allow Updates From**                    Network allowed to send RFC2136 updates. Only used with ``allowupdate`` zones.
+        **Default TTL**                           Default time-to-live for records in this zone.
+        **Description**                           Optional description for your reference.
         ========================================= ====================================================================================
 
         .. Attention::
 
             Zone names are stored without a trailing dot.
 
-    .. tab:: RRsets
+    .. tab:: Records
 
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
         **Zone**                                  Zone this record belongs to.
-        **Record Name**                           Record name. Use ``@`` for the zone apex or the full relative record name.
-        **Type**                                  DNS record type, e.g. ``A``, ``AAAA``, ``NS``, ``MX``, ``PTR``, ``TXT``.
+        **Record Name**                           Record name. Use ``@`` for the zone apex or a relative name.
+        **Type**                                  DNS record type, for example ``A``, ``AAAA``, ``NS``, ``MX``, ``PTR`` or ``TXT``.
         **TTL**                                   Optional record-specific TTL. If empty, the zone default is used.
-        **Values**                                One or multiple record values. Use one value per line.
-        **Description**                           You may enter a description here for your reference.
+        **Values**                                One or more record values. Use one value per line.
+        **Description**                           Optional description for your reference.
         ========================================= ====================================================================================
 
         .. Note::
 
-            Some record values must be fully qualified DNS names and should end with a trailing dot.
-            For example, NS, MX, CNAME and PTR targets should usually be entered as ``ns1.internal.`` instead of ``ns1.internal``.
-
-        .. Attention::
+            A record entry with multiple values represents one RRset.
 
             Record names are relative to their zone and must not end with a trailing dot.
 
+            Record values that reference DNS names should usually be fully qualified and end with a trailing dot.
+            For example, ``NS``, ``MX``, ``CNAME`` and ``PTR`` targets should usually be entered as
+            ``ns1.internal.`` instead of ``ns1.internal``.
 
----------------------------------
+
+----------------------
 Configuration examples
----------------------------------
+----------------------
 
-Static internal zone
---------------------------------------------------
+The following examples show a typical internal DNS setup with one forward zone and one reverse zone.
 
-In this example, Authoritative DNS hosts a static internal zone called ``internal``.
+Unbound remains the DNS resolver for clients and forwards the local zones to this service.
+
+The examples use:
+
+- Forward zone: ``internal``
+- Reverse zone for ``192.168.1.0/24``: ``1.168.192.in-addr.arpa``
+- Nameservers: ``ns1.internal.`` and ``ns2.internal.``
+- Listen port: ``53053``
+
+
+Forward zone
+--------------------
+
+This example creates a static internal zone called ``internal``.
 
 The zone contains two nameservers:
 
 - ``ns1.internal.`` with IPv4 address ``192.168.1.2``
 - ``ns2.internal.`` with IPv4 address ``192.168.1.3``
 
-Unbound remains the resolver for clients and forwards the ``internal`` zone to Authoritative DNS.
-
-- Go to :menuselection:`Services --> Authoritative DNS --> Settings --> General` and set:
+Go to :menuselection:`Services --> Authoritative DNS --> Settings --> General` and set:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -193,39 +240,35 @@ Option                              Value
 **Role**                            ``Primary``
 ==================================  =======================================================================================================
 
-- Press **Apply**
+Press **Apply**.
 
-- Go to :menuselection:`Services --> Authoritative DNS --> Settings --> SOA` and set:
+Go to :menuselection:`Services --> Authoritative DNS --> Settings --> SOA` and set:
 
 ==================================  =======================================================================================================
 Option                              Value
 ==================================  =======================================================================================================
 **Primary nameserver**              ``ns1.internal``
-**Hostmaster**                      ``hostmaster.internal``
+**Responsible Mailbox**             ``hostmaster.internal``
 **Refresh**                         ``10800``
 **Retry**                           ``3600``
 **Expire**                          ``604800``
 **Minimum TTL**                     ``3600``
 ==================================  =======================================================================================================
 
-- Press **Apply**
+Press **Apply**.
 
-Now create the static zone.
-
-- Go to :menuselection:`Services --> Authoritative DNS --> Zones` and set:
+Go to :menuselection:`Services --> Authoritative DNS --> Zones` and add:
 
 ==================================  =======================================================================================================
 Option                              Value
 ==================================  =======================================================================================================
-**Type**                            ``static``
 **Name**                            ``internal``
+**Type**                            ``static``
 ==================================  =======================================================================================================
 
-- Press **Save**
+Press **Save**.
 
-Afterwards, create the NS records.
-
-- Go to :menuselection:`Services --> Authoritative DNS --> RRsets` and add:
+Add the nameserver records for the new internal zone. If do not use HA, you can skip the second nameserver value.
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -239,7 +282,7 @@ Option                              Value
                                     ``ns2.internal.``
 ==================================  =======================================================================================================
 
-- Press **Save**
+Press **Save**.
 
 Create the A records for the nameservers.
 
@@ -257,7 +300,7 @@ Create the A records for the nameservers.
         **Values**                          ``192.168.1.2``
         ==================================  =======================================================================================================
 
-        - Press **Save**
+        Press **Save**.
 
     .. tab:: ns2.internal
 
@@ -271,13 +314,13 @@ Create the A records for the nameservers.
         **Values**                          ``192.168.1.3``
         ==================================  =======================================================================================================
 
-        - Press **Save** and **Apply**
+        Press **Save** and **Apply**.
 
-Now the zone contains authoritative answers for ``internal.`` and the two nameserver host records.
+The zone now contains answers for ``internal.`` and both nameserver host records.
 
 .. Tip::
 
-    Test the result directly against Authoritative DNS:
+    Test the result directly:
 
     .. code-block:: sh
 
@@ -285,20 +328,21 @@ Now the zone contains authoritative answers for ``internal.`` and the two namese
         dig @127.0.0.1 -p 53053 ns1.internal A
         dig @127.0.0.1 -p 53053 ns2.internal A
 
+    If you do not have ``dig`` available yet, install it via ``pkg install bind-tools``.
 
-Forward and reverse zones
---------------------------------------------------
 
-A forward zone maps names to IP addresses. A reverse zone maps IP addresses back to names.
+Reverse zone
+--------------------
 
-For example:
+A forward zone maps names to IP addresses.
+A reverse zone maps IP addresses back to names.
+
+Example:
 
 - Forward zone: ``internal``
 - Reverse zone for ``192.168.1.0/24``: ``1.168.192.in-addr.arpa``
 
-Create the reverse zone first.
-
-- Go to :menuselection:`Services --> Authoritative DNS --> Zones` and set:
+Go to :menuselection:`Services --> Authoritative DNS --> Zones` and add:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -307,9 +351,9 @@ Option                              Value
 **Type**                            ``static``
 ==================================  =======================================================================================================
 
-- Press **Save**
+Press **Save**.
 
-Create the NS record for the reverse zone.
+Here we reuse the nameservers of our static forward zone. If do not use HA, you can skip the second nameserver value.
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -323,9 +367,9 @@ Option                              Value
                                     ``ns2.internal.``
 ==================================  =======================================================================================================
 
-- Press **Save**
+Press **Save**.
 
-Create PTR records for the nameservers.
+Create the reverse records (PTR) for the nameservers.
 
 .. tabs::
 
@@ -341,9 +385,11 @@ Create PTR records for the nameservers.
         **Values**                          ``ns1.internal.``
         ==================================  =======================================================================================================
 
-        - Press **Save**
+        Press **Save**.
 
     .. tab:: ns2 reverse record
+
+        If do not use HA, you can skip this record.
 
         ==================================  =======================================================================================================
         Option                              Value
@@ -355,11 +401,11 @@ Create PTR records for the nameservers.
         **Values**                          ``ns2.internal.``
         ==================================  =======================================================================================================
 
-        - Press **Save** and **Apply**
+        Press **Save** and **Apply**.
 
 .. Tip::
 
-    Test the reverse lookup directly against Authoritative DNS:
+    Test the reverse lookup directly:
 
     .. code-block:: sh
 
@@ -368,13 +414,14 @@ Create PTR records for the nameservers.
 
 
 Forwarding from Unbound
---------------------------------------------------
+-----------------------
 
-Clients should normally query Unbound on port ``53``. Unbound can then forward only the zones hosted by Authoritative DNS.
+Clients should normally query :doc:`Unbound DNS </manual/unbound>` on port ``53``.
+Unbound can then forward only the locally hosted zones.
 
-This keeps the client setup simple and still allows PowerDNS to run as authoritative service.
+This keeps the client setup simple while separating recursive and authoritative DNS duties.
 
-- Go to :menuselection:`Services --> Unbound DNS --> General` and set:
+Go to :menuselection:`Services --> Unbound DNS --> General` and set:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -383,9 +430,9 @@ Option                              Value
 **Listen Port**                     ``53``
 ==================================  =======================================================================================================
 
-- Press **Apply**
+Press **Apply**.
 
-- Go to :menuselection:`Services --> Unbound DNS --> Query Forwarding` and create entries for the zones hosted by Authoritative DNS.
+Go to :menuselection:`Services --> Unbound DNS --> Query Forwarding` and add forwarding entries for the zones.
 
 .. tabs::
 
@@ -399,7 +446,7 @@ Option                              Value
         **Server Port**                     ``53053``
         ==================================  =======================================================================================================
 
-        - Press **Save** and add next
+        Press **Save** and add the next entry.
 
     .. tab:: Reverse zone
 
@@ -411,35 +458,36 @@ Option                              Value
         **Server Port**                     ``53053``
         ==================================  =======================================================================================================
 
-        - Press **Save** and **Apply**
+        Press **Save** and **Apply**.
 
-When a client queries Unbound for ``ns1.internal.``, Unbound forwards the request to Authoritative DNS on ``127.0.0.1:53053``.
-It answers authoritatively and Unbound returns the response to the client.
+When a client queries Unbound for ``ns1.internal.``, the request is forwarded to ``127.0.0.1:53053``.
+The local service answers for the zone and Unbound returns the response to the client.
 
 .. Note::
 
-    This forwarding only applies to the configured domains. Internet DNS resolution continues to be handled by Unbound normally.
+    Forwarding only applies to the configured domains.
+    Internet DNS resolution continues to be handled by Unbound normally.
 
 
-Dynamic DNS with KEA DHCP
---------------------------------------------------
+Dynamic DNS with KEA DHCP (RFC2136)
+-----------------------------------
 
-KEA allows registering client FQDNs via dynamic DNS (RFC2136).
+:doc:`KEA DHCP </manual/kea>` can register client FQDNs through dynamic DNS updates using RFC2136.
 
-In this example, KEA registers DHCP clients in forward and reverse zones hosted by Authoritative DNS.
+This example registers DHCP clients in forward and reverse zones.
 
 The example uses:
 
+- Parent zone: ``internal``
 - Forward zone: ``dhcp.internal``
 - Reverse zone: ``1.168.192.in-addr.arpa``
+- Nameservers: ``ns1.internal.`` and ``ns2.internal.``
 - DHCP subnet: ``192.168.1.0/24``
 - DHCP pool: ``192.168.1.100 - 192.168.1.199``
-- Authoritative DNS server: ``127.0.0.1``
-- Authoritative DNS port: ``53053``
+- DNS server: ``127.0.0.1``
+- DNS server port: ``53053``
 
-Create the forward dynamic zone.
-
-- Go to :menuselection:`Services --> Authoritative DNS --> Zones` and set:
+Go to :menuselection:`Services --> Authoritative DNS --> Zones` and add:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -449,11 +497,33 @@ Option                              Value
 **Allow Updates From**              ``127.0.0.1``
 ==================================  =======================================================================================================
 
-- Press **Save**
+Press **Save**.
 
-Create the reverse dynamic zone.
+Then add an NS record for the zone. If do not use HA, you can skip the second nameserver value.
 
-- Go to :menuselection:`Services --> Authoritative DNS --> Zones` and set:
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Zone**                            ``dhcp.internal``
+**Name**                            ``@``
+**Type**                            ``NS``
+**TTL**                             ``300``
+**Values**                          ``ns1.internal.``
+
+                                    ``ns2.internal.``
+==================================  =======================================================================================================
+
+Press **Save**.
+
+.. Note::
+
+    This example reuses the nameservers from the already configured ``internal`` zone.
+
+    The nameserver host records, such as ``ns1.internal.`` and ``ns2.internal.``, are defined in the parent zone.
+    The dynamic ``dhcp.internal`` zone only references them with its own NS record.
+
+Go to :menuselection:`Services --> Authoritative DNS --> Zones` and add a new reverse zone.
+If you already created the reverse zone earlier just change it accordingly.
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -463,11 +533,32 @@ Option                              Value
 **Allow Updates From**              ``127.0.0.1``
 ==================================  =======================================================================================================
 
-- Press **Save** and **Apply**
+Press **Save**.
 
-Configure the DHCPv4 subnet in KEA.
+Then add an NS record for the reverse zone if they do not already exist. If do not use HA, you can skip the second nameserver value.
 
-- Go to :menuselection:`Services --> KEA DHCP --> KEA DHCPv4` and select a subnet (enable advanced mode):
+==================================  =======================================================================================================
+Option                              Value
+==================================  =======================================================================================================
+**Zone**                            ``1.168.192.in-addr.arpa``
+**Name**                            ``@``
+**Type**                            ``NS``
+**TTL**                             ``300``
+**Values**                          ``ns1.internal.``
+
+                                    ``ns2.internal.``
+==================================  =======================================================================================================
+
+Press **Save** and **Apply**.
+
+.. Note::
+
+    The reverse zone also uses the same nameservers.
+
+    The PTR records themselves are created dynamically by KEA through RFC2136 updates.
+    The NS record only defines which nameservers are responsible for the reverse zone.
+
+Go to :menuselection:`Services --> KEA DHCP --> KEA DHCPv4`, select a subnet and enable advanced mode.
 
 ==================================  =======================================================================================================
 **Option**                          **Value**
@@ -476,8 +567,8 @@ Subnet                              ``192.168.1.0/24``
 Pools                               ``192.168.1.100 - 192.168.1.199``
 
 **DHCP option data**
-Auto collect option data            (This must be unchecked)
-Routers (gateway)                   ``192.168.1.1``
+Auto collect option data            Unchecked
+Routers                             ``192.168.1.1``
 DNS servers                         ``192.168.1.1``
 Domain name                         ``dhcp.internal``
 
@@ -492,9 +583,15 @@ Override client update              ``X``
 Update on renew                     ``X``
 ==================================  =======================================================================================================
 
-Next, enable the KEA DDNS Agent.
+.. Attention::
 
-- Go to :menuselection:`Services --> KEA DHCP --> DDNS Agent` and set:
+    The zones and qualifying suffix must end with a trailing dot.
+
+    If you want to update both IPv4 and IPv6 records of dual stack hosts, set conflict resolution mode to ``no-check-with-dhcid``.
+
+    If certain hosts should get registered with custom hostnames, create a host reservation for them.
+
+Go to :menuselection:`Services --> KEA DHCP --> DDNS Agent` and set:
 
 ==================================  =======================================================================================================
 **Option**                          **Value**
@@ -504,35 +601,31 @@ Bind address                        ``127.0.0.1``
 Bind port                           ``53001``
 ==================================  =======================================================================================================
 
-- Press **Apply**
+Press **Apply**.
 
 .. Note::
 
-    For this Authoritative DNS example, no TSIG key is configured. The communication is local and the `Allow Updates From` ACL prevents external
-    clients from updating the zone.
+    This example does not use a TSIG key.
+    The communication is local and ``Allow Updates From`` restricts which clients can update the zone.
 
-.. Attention::
-
-    Do not create manual RRsets (other than NS) in a dynamic zone unless you know exactly why they are needed.
-    The zone is expected to be owned by RFC2136 update clients.
-
-For a general KEA DHCP setup, see :doc:`KEA DHCP </manual/kea>`.
+For a general DHCP setup, see :doc:`KEA DHCP </manual/kea>`.
 
 
-High Availability setup
---------------------------------------------------
+High availability setup
+-----------------------
 
-In this example, two OPNsense firewalls run Authoritative DNS.
+This example uses two OPNsense firewalls:
 
 - Primary: ``192.168.1.2``
 - Secondary: ``192.168.1.3``
 
 The primary manages the zones and allows the secondary to transfer them.
 
-Master
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Go to :menuselection:`Services --> Authoritative DNS --> Settings -> General` on the master and set:
+Primary
+~~~~~~~
+
+Go to :menuselection:`Services --> Authoritative DNS --> Settings --> General` on the primary and set:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -541,18 +634,19 @@ Option                              Value
 **Listen Port**                     ``53053``
 **Role**                            ``Primary``
 **Peer**                            ``192.168.1.3:53053``
-**Disable HA sync**                 ``X`` (this prevents the general settings to be synced and overwrite the configuration of the backup)
+**Disable HA sync**                 ``X``
 ==================================  =======================================================================================================
 
-- Press **Apply**
+Press **Apply**.
 
-Create static and dynamic zones on the Master as usual, it will manage these records and increase the zone serial on each `Apply`` or when an
-RFC2136 client updates a record.
+Create static and dynamic zones on the primary as usual.
+It manages the records and increases the zone serial on each **Apply** or when an RFC2136 client updates a record.
 
-Backup
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Go to :menuselection:`Services --> Authoritative DNS --> Settings -> General` on the backup and set:
+Secondary
+~~~~~~~~~
+
+Go to :menuselection:`Services --> Authoritative DNS --> Settings --> General` on the secondary and set:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -561,107 +655,132 @@ Option                              Value
 **Listen Port**                     ``53053``
 **Role**                            ``Secondary``
 **Peer**                            ``192.168.1.2:53053``
-**Disable HA sync**                 ``X`` (this prevents the general settings to be overwritten by the master)
+**Disable HA sync**                 ``X``
 ==================================  =======================================================================================================
 
-- Press **Apply**
+Press **Apply**.
 
-For a secondary server, RRsets are not managed locally. The secondary receives zone contents from the primary through zone transfer.
+For a secondary server, records are not managed locally.
+The zone contents are received from the primary through zone transfer.
 
-The zones on the secondary will be created when the HA synchronization is triggered in :menuselection:`System --> High Availability --> Status`.
-Do not forget to add `Authoritative DNS` to `Services to synchronize (XMLRPC Sync)`.
+Add ``Authoritative DNS`` to :menuselection:`System --> High Availability --> Settings --> Services to synchronize`.
+The zones on the secondary are created when HA synchronization is triggered in
+:menuselection:`System --> High Availability --> Status`.
 
-As soon as the first HA sync is done, there will be an AXFR zone transfer. Any further changes will be notified via NOTIFY messages.
+After the first sync, the secondary performs an AXFR zone transfer.
+Further changes are announced through NOTIFY messages.
 
-It is recommended to do the zone transfers over the same link that runs the HA sync. 
-For zone transfers, TCP must be allowed between primary and secondary on the configured listen port.
+It is recommended to transfer zones over the same link used for HA sync.
+TCP must be allowed between both nodes on the configured listen port.
 
 .. Attention::
 
-    The secondary DNS server is read-only. RFC2136 updates will only happen on the primary DNS server, never on the secondary.
-    When a failover happens, the secondary DNS server will continue to serve the transfered zones and records in the state since the last transfer.
+    The secondary is read-only. Records sync automatically via standard DNS zone transfers, you do not need any cron jobs for the HA sync.
+
+    RFC2136 updates must be sent to the primary. During failover, the secondary continues to serve the latest transferred zone state.
 
 
----------------------------------
+------------
 Good to know
----------------------------------
-
-Authoritative only
------------------------------
-
-PowerDNS Authoritative does not resolve internet names.
-
-Use Unbound for normal client DNS resolution and forward only selected zones to Authoritative DNS.
+------------
 
 
 Trailing dots
------------------------------
+-------------
 
-Zone names are stored without a trailing dot, e.g. ``internal`` or ``1.168.192.in-addr.arpa``.
+Zone names are stored without a trailing dot:
 
-Record names are relative to the zone and should not end with a trailing dot.
+.. code-block:: text
 
-Record values that reference DNS names should usually be fully qualified and end with a trailing dot, e.g. ``ns1.internal.``.
+    internal
+    1.168.192.in-addr.arpa
 
-.. Note::
+Record names are relative to the zone and must not end with a trailing dot.
 
-    This distinction is important:
+Record values that reference DNS names should usually be fully qualified and end with a trailing dot:
 
-    - Record name: ``ns1``
-    - Record value: ``ns1.internal.``
+.. code-block:: text
+
+    ns1.internal.
+
+For example:
+
+- Record name: ``ns1``
+- Record value: ``ns1.internal.``
 
 
 SOA records
------------------------------
+-----------
 
-SOA records are generated automatically based on the configured SOA settings.
+An SOA record defines basic authority and timing information for a zone.
+It contains the primary nameserver, responsible mailbox, zone serial and refresh timers used by secondary servers.
 
-You cannot create SOA RRsets manually. If you want to regenerate the SOA RRsets, you must delete and recreate the zone.
+SOA records are generated automatically from the SOA settings.
+
+They cannot be created manually as records in the GUI.
+To regenerate SOA content, delete and recreate the zone.
 
 
 NS records
------------------------------
+----------
 
-NS records should be configured explicitly for every static zone.
+NS records define which nameservers are responsible for a zone.
 
-For an internal zone named ``internal``, a simple setup could use:
+Configure NS records explicitly for every zone.
+
+For a zone named ``internal``, a simple setup could use:
 
 .. code-block:: text
 
     internal. 300 IN NS ns1.internal.
     internal. 300 IN NS ns2.internal.
 
-Additional zones can use the same nameservers, as it is authoritative for all zones you create on it.
+Additional zones can use the same nameservers.
 
-Do not forget, nameservers also need A and PTR records for their own names. Usually these are called `Glue Records`.
+Nameservers should also have matching address records.
+For reverse lookups, create corresponding PTR records as well.
 
 
 Serial handling
------------------------------
+---------------
 
 When static zone content changes, the zone serial is increased so that secondary servers can detect updates.
 
-Secondary systems should not manage RRsets directly.
+Secondary systems should not manage records directly.
+
+
+DHCP search domain
+------------------
+
+Clients can resolve short hostnames when DHCP provides a search domain.
+
+For example, if :doc:`KEA DHCP </manual/kea>` sends ``dhcp.internal`` as the domain name,
+a client may resolve ``host1`` as ``host1.dhcp.internal``.
+
+.. Note::
+
+    Short name resolution depends on the client resolver behavior and the DHCP options it receives.
+
+    DNS itself still stores and answers for fully qualified names. The search domain is only applied by the client.
 
 
 Firewall rules
------------------------------
+--------------
 
-If clients or peer servers query Authoritative DNS directly, firewall rules must allow TCP and UDP traffic to the configured listen port.
+If clients or peers query the service directly, allow TCP and UDP traffic to the configured listen port.
 
 For zone transfers, TCP must be allowed between primary and secondary.
 
 .. Tip::
 
-    DNS queries commonly use UDP, but zone transfers require TCP.
+    DNS queries commonly use UDP.
+    Zone transfers require TCP.
 
 
 Testing
------------------------------
+-------
 
-Authoritative DNS can be tested directly with ``dig`` before Unbound forwarding is configured.
-
-Examples:
+Test direct queries before configuring Unbound forwarding.
 
 .. code-block:: sh
 
@@ -670,22 +789,27 @@ Examples:
     dig @127.0.0.1 -p 53053 ns1.internal A
     dig @127.0.0.1 -p 53053 -x 192.168.1.2
 
-If direct queries work but client queries fail, check the Unbound query forwarding configuration first.
+If direct queries work but client queries fail, check the Unbound forwarding configuration first.
+
+If you do not have ``dig`` available yet, install it via ``pkg install bind-tools``.
 
 
 Log and diagnostics
------------------------------
+-------------------
 
-If Authoritative DNS does not answer as expected, check:
+If queries do not return the expected result, check:
 
-- The PowerDNS service status.
-- The configured listen port.
-- Whether Unbound forwards the correct zone.
-- Whether firewall rules allow the query.
-- Whether the zone exists and contains the expected RRsets.
-- Whether record names are relative and record values use trailing dots where required.
+- service status
+- listen port
+- Unbound forwarding entries
+- firewall rules
+- zone existence
+- expected records
+- relative record names
+- trailing dots in record values where required
 
 .. Attention::
 
-    A query for ``host.internal`` only reaches Authoritative DNS when Unbound has a forwarding entry for ``internal``.
-    Without forwarding, Unbound will try to resolve the name normally and will not automatically know about the local authoritative zone.
+    A query for ``host.internal`` only reaches the local zone when Unbound has a forwarding entry for ``internal``.
+
+    Without forwarding, Unbound tries to resolve the name normally and does not automatically know about the locally hosted zone.
