@@ -26,6 +26,10 @@ DNS role
 
 This service is not a recursive resolver. It only answers for zones configured locally.
 
+It is intended primarily for internal authoritative DNS use cases, such as infrastructure zones,
+reverse lookup zones and DHCP-driven dynamic updates. It is not meant to replace a dedicated public DNS
+setup for internet-facing domains.
+
 It should normally not replace :doc:`Unbound DNS </manual/unbound>` as the DNS server for clients.
 Instead, keep Unbound on port ``53`` and forward selected internal zones to this service on another port,
 for example ``53053``.
@@ -268,7 +272,7 @@ Option                              Value
 
 Press **Save**.
 
-Add the nameserver records for the new internal zone. If do not use HA, you can skip the second nameserver value.
+Add the nameserver records for the new internal zone. If you do not use HA, you can skip the second nameserver value.
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -353,7 +357,7 @@ Option                              Value
 
 Press **Save**.
 
-Here we reuse the nameservers of our static forward zone. If do not use HA, you can skip the second nameserver value.
+Here we reuse the nameservers of our static forward zone. If you do not use HA, you can skip the second nameserver value.
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -389,7 +393,7 @@ Create the reverse records (PTR) for the nameservers.
 
     .. tab:: ns2 reverse record
 
-        If do not use HA, you can skip this record.
+        If you do not use HA, you can skip this record.
 
         ==================================  =======================================================================================================
         Option                              Value
@@ -499,7 +503,7 @@ Option                              Value
 
 Press **Save**.
 
-Then add an NS record for the zone. If do not use HA, you can skip the second nameserver value.
+Then add an NS record for the zone. If you do not use HA, you can skip the second nameserver value.
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -535,7 +539,7 @@ Option                              Value
 
 Press **Save**.
 
-Then add an NS record for the reverse zone if they do not already exist. If do not use HA, you can skip the second nameserver value.
+Then add an NS record for the reverse zone if they do not already exist. If you do not use HA, you can skip the second nameserver value.
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -557,6 +561,10 @@ Press **Save** and **Apply**.
 
     The PTR records themselves are created dynamically by KEA through RFC2136 updates.
     The NS record only defines which nameservers are responsible for the reverse zone.
+
+.. Attention::
+
+    Do not forget to add forwards from Unbound for these zones.
 
 Go to :menuselection:`Services --> KEA DHCP --> KEA DHCPv4`, select a subnet and enable advanced mode.
 
