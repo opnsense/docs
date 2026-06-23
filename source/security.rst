@@ -42,7 +42,7 @@ If all goes well, a report like the one below will be shown:
 
     We do not offer community support on assessing if incidents on older versions do warrant an immediate upgrade on your
     end as this often depends on features used and settings configured. Our advice always will be to upgrade into the
-    latest community or Business Edition version.
+    latest community or business version.
 
 
 .. Warning::
