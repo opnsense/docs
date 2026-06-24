@@ -126,3 +126,21 @@ Username                Key ID
 Password                Secret
 ======================= =======================================================================================================================================================================
 
+Hostinger DNS
+```````````````````````````
+
+Hostinger is a Lithuania hosting provider who offers an API for DNS manipulation:
+
+*     Wiki: https://www.hostinger.com/support/10840865-what-is-hostinger-api/
+*     Technical documentation: https://developers.hostinger.com/#tag/dns-zone/PUT/api/dns/v1/zones/%7Bdomain%7D
+
+
+======================= =======================================================================================================================================================================
+Option                  Value
+======================= =======================================================================================================================================================================
+Username                Leave empty
+Password                Your Hostinger API token
+Zone                    The domain name to update, for example: *example.com*
+Hostname                The record name, for example: *subdomain*
+TTL                     The time to live for the record, in seconds, for example: *300* (optinal default: 300 seconds)      
+======================= =======================================================================================================================================================================
