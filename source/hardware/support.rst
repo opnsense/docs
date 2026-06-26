@@ -67,7 +67,7 @@ In some cases, even with a zfs filesystem, it happens that the filesystem gets c
 to reinstall the device (see reinstalling).
 
 Most of our devices use NVME storage, if your device contains one and you wish to reinstall as clean as possible (which is advisable in some situations),
-boot into the installer, login using :code:`opnsense` with the password :code:`root` next choose 8 for console and execute the following command:
+boot into the installer, login using :code:`root` with the password :code:`opnsense` next choose 8 for console and execute the following command:
 
 .. code-block:: sh
 
