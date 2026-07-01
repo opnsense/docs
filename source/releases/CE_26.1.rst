@@ -35,6 +35,97 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.1.11 (July 01, 2026)
+--------------------------------------------------------------------------
+
+
+Back already with a bag of security advisories also for FreeBSD which came out
+just yesterday.  We highly appreciate the increased amount of reports we are
+getting for the core code and we are working through them, but need to improve
+our process and guidelines somewhat in order to make more sense of the result
+for all of you.  This will probably take additional effort after 26.7 is out.
+
+Note that this update brings the outbound to source NAT migration page, but it
+is only a formality as outbound NAT will stay in 26.7 although the legacy
+firewall rules page will move to a plugin during the major upgrade.  It is the
+same process that was employed with ISC-DHCP.  Due to this addition, however,
+the source NAT rules entered in the system will no longer work unless the
+mode is set to either "manual" or "hybrid".
+
+And thanks everyone for early 26.7-BETA testing!  We are content to ship
+26.7-RC1 early next week as a follow-up.  The final release of 26.7 is
+planned for July 15.
+
+Here are the full patch notes:
+
+* system: configuration line injection via multiple GUI text fields `[1] <https://www.cve.org/cverecord?id=CVE-2026-57154>`__  (reported by lujiefsi)
+* system: add missing legacy_html_escape_form_data() for $a_cert on administration settings `[2] <https://www.cve.org/cverecord?id=CVE-2026-58394>`__  (reported by Jonas Ampferl of Hacking Cult)
+* system: lockout: address newline injection and correct IP parsing `[3] <https://www.cve.org/cverecord?id=CVE-2026-57155>`__  (reported by lujiefsi)
+* system: add "local_uri" type in SanitizeFilter() and use it to avoid hardcoding
+* system: several compatible adjustments for upcoming PHP 8.5
+* system: fix ACL pattern for carp_status action (contributed by Etienne Girault)
+* system: enhance live log widget (contributed by Greelan)
+* firewall: safeguard ISO country codes in alias download `[4] <https://www.cve.org/cverecord?id=CVE-2026-58394>`__  (reported by Jonas Ampferl of Hacking Cult)
+* firewall: escape user-controlled values in tooltip attributes `[5] <https://github.com/opnsense/core/security/advisories/GHSA-2v2x-m4j7-76pv>`__  (reported by Jonas Ampferl of Hacking Cult)
+* firewall: add the same new rules GUI design to the MVC NAT pages
+* firewall: add CSV download/upload to MVC NAT pages
+* firewall: add migration for outbound NAT into source NAT page
+* firewall: destination NAT: display effective port when local-port is omitted
+* firewall: source NAT: allow empty target which means the interface address
+* firewall: source NAT: skip rendering rules when mode is not advanced/manual or hybrid
+* firewall: improve performance on MVC pages using virtualDOM
+* firewall: allow WAN as "associated interface" for NPTv6 when prefix ID is set
+* firewall: fix TypeError on alias getItem() with unknown UUID (contributed by haxorton)
+* firewall: unify group names of OpenVPN, WireGuard and IPsec encapsulation
+* firewall: show rule counts that can be exported and hide tab if no rules exist
+* firewall: improve interface filter logic to include floating rules with multiple interfaces when they overlap with at least one interface in the interface filter request
+* firewall: add validations for "No RDR" option to prevent target and local-port being set
+* firewall: skip alias on new rules GUI apply
+* interfaces: prohibit the use of advanced DHCP option settings by non-administrators
+* interfaces: properly format API times to ISO format and convert timezone for display in automatic discovery
+* captive portal: pass in ip_address as a set for accounting
+* firmware: fix small glitch that re-prompts for showing community plugins
+* kea: add widget to show DHCP leases
+* kea: simplify model option values
+* monit: use throwNotFullAdmin() to restrict monit GUI write access to full admins due to intended system wide execution rights
+* network time: fix stored XSS in GPS init string display `[6] <https://www.cve.org/cverecord?id=CVE-2026-58392>`__  (reported by Jonas Ampferl of Hacking Cult)
+* openvpn: prevent path traversal in "common_name" attribute `[7] <https://www.cve.org/cverecord?id=CVE-2026-58393>`__  (reported by lujiefsi)
+* openvpn: escape client common_name in connection-status views `[8] <https://www.cve.org/cverecord?id=CVE-2026-58390>`__  (reported by Jan Kahmen of turningpoint and lujiefsi)
+* openvpn: simplify model option values
+* mvc: checkAndThrowValueInUse validate input token which may only contain alphanum and dashes `[9] <https://www.cve.org/cverecord?id=CVE-2026-58395>`__  (reported by Jonas Ampferl of Hacking Cult)
+* mvc: guard BaseField::setNodes() against a list given for a scalar leaf (contributed by haxorton)
+* mvc: DescriptionField: disable special and newline characters
+* mvc: FileObject: fix exception bug (contributed by Greelan)
+* mvc: also do not translate empty labels in grids
+* mvc: give throwReadOnly() a sibling named throwNotFullAdmin()
+* mvc: use camelCase for carp_status action
+* ui: bootgrid: minor optimizations
+* ui: add generic escaping function htmlSafe() for JavaScript
+* plugins: os-cloudflared 1.1 `[10] <https://github.com/opnsense/plugins/blob/stable/26.1/net/cloudflared/pkg-descr>`__ 
+* plugins: os-freeradius 1.10.2 `[11] <https://github.com/opnsense/plugins/blob/stable/26.1/net/freeradius/pkg-descr>`__ 
+* plugins: os-vnstat 1.4 `[12] <https://github.com/opnsense/plugins/blob/stable/26.1/net/vnstat/pkg-descr>`__ 
+* src: vm: use-after-free in device pager page list `[13] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:37.vm.asc>`__ 
+* src: execve: local privilege escalation via execve(2) TOCTOU race `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:39.execve.asc>`__ 
+* src: openzfs: multiple vulnerabilities in OpenZFS `[15] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:40.zfs.asc>`__ 
+* src: libalias: bffer overflow in libalias RTSP handler `[16] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:41.libalias.asc>`__ 
+* src: unlinkat: unlinkat(2) ignores AT_RESOLVE_BENEATH flag `[17] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:42.unlinkat.asc>`__ 
+* src: tcp: use-after-free in TCP RACK stack option handler `[18] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:43.tcp.asc>`__ 
+* src: posixshm: multiple vulnerabilities in POSIX largepage objects `[19] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:44.posixshm.asc>`__ 
+* src: audit: incorrect audit records for ptrace(2) syscall requests `[20] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:45.audit.asc>`__ 
+* src: ktls: remote DOS via uninitialized memory access in KTLS receive `[21] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:46.ktls.asc>`__ 
+* src: linux: kernel stack disclosure in Linux compatibility layer `[22] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:47.linux.asc>`__ 
+* src: iconf: multiple vulnerabilities in iconv(3) `[23] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:49.iconv.asc>`__ 
+* ports: curl 8.21.0 `[24] <https://curl.se/changes.html#8_21_0>`__ 
+* ports: expat 2.8.2 `[25] <https://github.com/libexpat/libexpat/blob/R_2_8_2/expat/Changes>`__ 
+* ports: ldns 1.9.2 `[26] <https://github.com/NLnetLabs/ldns/blob/1.9.2/Changelog>`__ 
+* ports: lighttpd 1.4.84 `[27] <https://www.lighttpd.net/2026/06/17/1.4.84/>`__ 
+* ports: phalcon 5.16.0 `[28] <https://github.com/phalcon/cphalcon/releases/tag/v5.16.0>`__ 
+* ports: py-duckdb 1.5.4 `[29] <https://github.com/duckdb/duckdb/releases/tag/v1.5.4>`__ 
+* ports: syslog-ng 4.12.0 `[30] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.12.0>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.1.10 (June 15, 2026)
 --------------------------------------------------------------------------
 

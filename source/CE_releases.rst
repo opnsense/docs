@@ -8,7 +8,7 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *343* releases leading to the latest version *26.1.10*
+As of January 2015 there have been *344* releases leading to the latest version *26.1.11*
 named "Witty Woodpecker".
 
 
