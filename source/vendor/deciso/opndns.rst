@@ -498,10 +498,24 @@ Option                              Value
 ==================================  =======================================================================================================
 **Name**                            ``dhcp.internal``
 **Type**                            ``allowupdate``
-**Allow Updates From**              ``127.0.0.1``
+**Allow Updates From**              ``127.0.0.1`` ``192.168.1.3``
 ==================================  =======================================================================================================
 
 Press **Save**.
+
+.. Note::
+
+    The IP address ``192.168.1.3`` represents the secondary DNS server in an HA setup.
+    You can omit this address when HA is not used.
+
+    By default, PowerDNS forwards RFC2136 updates received by a secondary zone to
+    the configured primary server. Allowing the secondary DNS server here lets the
+    primary accept those forwarded updates.
+
+    This is useful when Kea is active on the backup OPNsense node. Kea sends its
+    updates to the local secondary server, which then forwards them to the primary
+    server where the update is applied.
+
 
 Then add an NS record for the zone. If you do not use HA, you can skip the second nameserver value.
 
