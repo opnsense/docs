@@ -27,7 +27,7 @@ https://downloads.opnsense.com/
 This business release is based on the OPNsense 26.1.9 community version
 with additional reliability improvements.
 
-Here are the full patch notes:
+Here are the full patch notes for the initial release:
 
 * system: refactor dashboard to use User model instead of direct config access
 * system: throw UserException when dashboard size limit was reached on save
@@ -239,6 +239,49 @@ Here are the full patch notes:
 * ports: py-numpy 2.4.6
 * ports: py-requests 2.33.1
 * ports: python 3.13.14 `[37] <https://docs.python.org/release/3.13.14/whatsnew/changelog.html>`__ 
+* ports: sqlite3 3.53.1 `[38] <https://sqlite.org/releaselog/3_53_1.html>`__ 
+* ports: strongswan 6.0.7 `[39] <https://github.com/strongswan/strongswan/releases/tag/6.0.7>`__ 
+
+Here are the full patch notes for patch release 1:
+
+* system: configuration line injection via multiple GUI text fields `[40] <https://www.cve.org/cverecord?id=CVE-2026-57154>`__  (reported by lujiefsi)
+* system: add missing legacy_html_escape_form_data() for $a_cert on administration settings `[41] <https://www.cve.org/cverecord?id=CVE-2026-58394>`__  (reported by Jonas Ampferl of Hacking Cult)
+* system: lockout: address newline injection and correct IP parsing `[42] <https://www.cve.org/cverecord?id=CVE-2026-57155>`__  (reported by lujiefsi)
+* system: hasPrivilege() not merging user privs correctly `[43] <https://github.com/opnsense/core/security/advisories/GHSA-p9pr-782r-w2xw>`__  (reported by iys8)
+* system: fix ACL pattern for carp_status action (contributed by Etienne Girault)
+* interfaces: prohibit the use of advanced DHCP option settings by non-administrators
+* firewall: safeguard ISO country codes in alias download `[44] <https://www.cve.org/cverecord?id=CVE-2026-58394>`__  (reported by Jonas Ampferl of Hacking Cult)
+* firewall: escape user-controlled values in tooltip attributes `[45] <https://github.com/opnsense/core/security/advisories/GHSA-2v2x-m4j7-76pv>`__  (reported by Jonas Ampferl of Hacking Cult)
+* firewall: unify group names of OpenVPN, WireGuard and IPsec encapsulation
+* firewall: skip alias on new rules GUI apply
+* captive portal: pass in ip_address as a set for accounting
+* firmware: fix small glitch that re-prompts for showing community plugins
+* network time: fix stored XSS in GPS init string display `[46] <https://www.cve.org/cverecord?id=CVE-2026-58392>`__  (reported by Jonas Ampferl of Hacking Cult)
+* openvpn: prevent path traversal in "common_name" attribute `[47] <https://www.cve.org/cverecord?id=CVE-2026-58393>`__  (reported by lujiefsi)
+* openvpn: escape client common_name in connection-status views `[48] <https://www.cve.org/cverecord?id=CVE-2026-58390>`__  (reported by Jan Kahmen of turningpoint and lujiefsi)
+* mvc: checkAndThrowValueInUse validate input token which may only contain alphanum and dashes `[49] <https://www.cve.org/cverecord?id=CVE-2026-58395>`__  (reported by Jonas Ampferl of Hacking Cult)
+* mvc: also do not translate empty labels in grids
+* ui: add generic escaping function htmlSafe() for JavaScript
+* src: vm: use-after-free in device pager page list `[50] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:37.vm.asc>`__ 
+* src: execve: local privilege escalation via execve(2) TOCTOU race `[51] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:39.execve.asc>`__ 
+* src: openzfs: multiple vulnerabilities in OpenZFS `[52] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:40.zfs.asc>`__ 
+* src: libalias: bffer overflow in libalias RTSP handler `[53] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:41.libalias.asc>`__ 
+* src: unlinkat: unlinkat(2) ignores AT_RESOLVE_BENEATH flag `[54] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:42.unlinkat.asc>`__ 
+* src: tcp: use-after-free in TCP RACK stack option handler `[55] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:43.tcp.asc>`__ 
+* src: posixshm: multiple vulnerabilities in POSIX largepage objects `[56] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:44.posixshm.asc>`__ 
+* src: audit: incorrect audit records for ptrace(2) syscall requests `[57] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:45.audit.asc>`__ 
+* src: ktls: remote DOS via uninitialized memory access in KTLS receive `[58] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:46.ktls.asc>`__ 
+* src: linux: kernel stack disclosure in Linux compatibility layer `[59] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:47.linux.asc>`__ 
+* src: iconf: multiple vulnerabilities in iconv(3) `[60] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:49.iconv.asc>`__ 
+* ports: expat 2.8.2 `[61] <https://github.com/libexpat/libexpat/blob/R_2_8_2/expat/Changes>`__ 
+* ports: ldns 1.9.2 `[62] <https://github.com/NLnetLabs/ldns/blob/1.9.2/Changelog>`__ 
+
+A hotfix release issued as 26.4.1p1_2:
+
+* firmware: support for patch release matching
+* openvpn: add a specific regex constraint for static keys to fix previous safeguarding
+
+
 
 --------------------------------------------------------------------------
 26.4 (April 15, 2026)

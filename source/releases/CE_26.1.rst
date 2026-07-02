@@ -123,6 +123,17 @@ Here are the full patch notes:
 * ports: py-duckdb 1.5.4 `[29] <https://github.com/duckdb/duckdb/releases/tag/v1.5.4>`__ 
 * ports: syslog-ng 4.12.0 `[30] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.12.0>`__ 
 
+A hotfix release was issued as 26.1.11_3:
+
+* system: hasPrivilege() not merging user privs correctly `[31] <https://github.com/opnsense/core/security/advisories/GHSA-p9pr-782r-w2xw>`__  (reported by iys8)
+* firewall: fix some small issues in menu registration for legacy pages
+* monit: re-allow spaces in start, stop and condition
+
+A hotfix release was issued as 26.1.11_5:
+
+* firmware: support for patch release matching
+* openvpn: add a specific regex constraint for static keys to fix previous safeguarding
+
 
 
 --------------------------------------------------------------------------
