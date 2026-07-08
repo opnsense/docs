@@ -59,6 +59,66 @@ Since OPNsense is a collection of open source software, when finding an issue, i
 inspect where it should be fixed first. In case you do not know or are not sure, you can still ask on our end, just
 know that we do not have the manpower to act as an intermediary between various projects.
 
+------------------------------------------------------------
+Deployment considerations
+------------------------------------------------------------
+
+A firewall is a security tool and should be deployed and operated accordingly.
+While OPNsense provides mechanisms to help secure a network environment,
+no firewall can compensate for weak operational practices or excessive trust relationships.
+
+Users who are granted access to the firewall typically perform administrative or operational tasks and therefore
+require an elevated level of trust.
+Administrative access should be limited to users who require it for their role, and permissions should be assigned according
+to the principle of least privilege whenever possible.
+
+.. admonition:: Trusted administrators only
+
+
+  Some access control roles provide capabilities that effectively allow complete control over the system, either directly or indirectly,
+  and should therefore only be assigned to fully trusted administrators or administrative peers.
+
+  Examples include privileges such as ``XMLRPC Library``, which can be used for remote configuration synchronisation and automation,
+  and ``System: Configuration: Backups``, which provides access to configuration exports containing sensitive information.
+  In practice, any privilege that grants access to configuration data, remote management interfaces,
+  backup material or automation mechanisms should be considered security-sensitive and assigned with care.
+
+
+.. admonition:: Fine-grained permissions and trust
+
+  Access control lists can provide fine-grained permissions for operational convenience, delegation and improved visibility.
+  Depending on the use case, these permissions may also serve as effective security boundaries.
+
+  Administrators should, however, consider the effective capabilities granted by a role rather than relying solely on the apparent scope of individual privileges.
+  Some permissions may appear limited in scope while still allowing users to influence or bypass related security controls indirectly.
+
+  For example, a user who is permitted to manage port forwarding rules may be able to create access paths to systems or services that would otherwise remain inaccessible.
+
+  Permission assignments should therefore reflect both the intended task and the level of trust placed in the user receiving them.
+
+
+.. admonition:: Legacy components
+
+  Some legacy components, identified by URIs ending in ``.php``, originate from earlier parts of the codebase and may implement
+  fewer validation and access control safeguards than newer components.
+  Access to these pages should therefore be restricted to fully trusted administrators whenever possible.
+
+
+Access to the management interface should be restricted to trusted networks and secured using strong authentication mechanisms.
+Administrative accounts should use unique passwords and additional authentication factors where supported and appropriate.
+
+To reduce the attack surface, unnecessary services, plugins and user accounts should be disabled or removed.
+Systems should be kept up to date by installing security and maintenance updates in a timely manner.
+
+Regular reviews of firewall rules, user accounts, exposed services and remote access methods help ensure that configurations
+continue to reflect operational requirements and do not unintentionally introduce security risks.
+
+Configuration backups should be created regularly and stored securely to facilitate recovery from hardware failures,
+configuration errors or security incidents.
+Logging and monitoring should be enabled to assist with troubleshooting, auditing and the detection of unexpected behaviour.
+
+Security is not a single configuration option or deployment step, but an ongoing process of review,
+maintenance and adaptation to changing requirements and threats.
 
 ------------------------------------------------------------
 Reporting an incident
