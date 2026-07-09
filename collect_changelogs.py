@@ -198,6 +198,11 @@ if __name__ == '__main__':
                         template_data['nicknames'][my_version] =  m.groupdict()['nickname']
 
             # root menu index
+            tmp = list(template_data['versions'].keys())
+            while tmp[0].find('r') > 0:
+                to_drop = tmp.pop(0)
+                del template_data['versions'][to_drop]
+
             with open("%s/source/%s_releases.rst" % (root_dir, version_prefix), 'w') as f_out:
                 template = Template(open("%s/source/releases.rst.in" % root_dir, "r").read())
                 f_out.write(template.render(template_data))
