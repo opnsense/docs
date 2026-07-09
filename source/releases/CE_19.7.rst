@@ -487,7 +487,7 @@ Here are the full patch notes:
 * src: fix reference count overflow in mqueuefs `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:15.mqueuefs.asc>`__ 
 * src: fix byhve out-of-bounds read in XHCI device `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:16.bhyve.asc>`__ 
 * src: fix file descriptor reference count leak `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-19:17.fd.asc>`__ 
-* ports: libevent 2.1.11 `[12] <https://raw.githubusercontent.com/libevent/libevent/release-2.1.11-stable/ChangeLog>`__ 
+* ports: libevent 2.1.11 `[12] <https://github.com/libevent/libevent/releases/tag/release-2.1.11-stable>`__ 
 
 
 

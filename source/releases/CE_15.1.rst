@@ -1210,7 +1210,13 @@ patch release.  Here is the full changelog:
 
 * i386 images added
 * added architecture awareness to the build system
-* ports updated: pkg 1.4.4, strongswan 5.2.2, libssh2 1.4.3_5,2, libffi 3.2.1, libevent2 2.0.22, freetype2 2.5.5, curl 7.40.0, bind99 9.9.6P1_3
+* ports: bind 9.9.6P1
+* ports: curl 7.40.0
+* ports: libevent 2.0.22
+* ports: libffi 3.2.1
+* ports: libssh2 1.4.3_5
+* ports: pkg 1.4.4
+* ports: strongswan 5.2.2
 * Added template engine for new features
 * Several bug fixes and enhancements `[2] <https://github.com/opnsense/core/issues>`__  (#6, #7, #8, #9, #17, #19, #20, #21, #22, #23)
 

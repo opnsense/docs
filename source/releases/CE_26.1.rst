@@ -134,6 +134,10 @@ A hotfix release was issued as 26.1.11_5:
 * firmware: support for patch release matching
 * openvpn: add a specific regex constraint for static keys to fix previous safeguarding
 
+A hotfix release was issued as 26.1.11_6:
+
+* openvpn: further fix validation for auth token secret and static key
+
 
 
 --------------------------------------------------------------------------
