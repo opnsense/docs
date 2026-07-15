@@ -1,0 +1,313 @@
+===========================================================================================
+26.7  "Xenial Xenops" Series
+===========================================================================================
+
+
+
+For over 11 a half years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates, modern IPv6 support, as well as clear
+and stable 2-Clause BSD licensing.
+
+26.7, nicknamed "Xenial Xenops", features interface assignments and
+gateway groups via MVC/API, firewall rules now defaulting to MVC/API,
+outbound NAT to source NAT migration assistant, captive portal IPv6
+support, Kea DDNS/custom options/dynamic prefix delegation, FreeBSD
+15.1, OpenVPN 2.7, PHP 8.5, Python 3.13, plus much more.
+
+The upgrade path for 26.1 will likely be unlocked later today.  We want
+to ensure the upgrade goes as smoothly as possible so please be patient!  :)
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/26.7/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/26.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/26.7/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/26.7/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/re7eases/26.7/
+* Full mirror list: https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+26.7 (July 15, 2026)
+--------------------------------------------------------------------------
+
+
+For over 11 a half years now, OPNsense is driving innovation through
+modularising and hardening the open source firewall, with simple
+and reliable firmware upgrades, multi-language support, fast adoption
+of upstream software updates, modern IPv6 support, as well as clear
+and stable 2-Clause BSD licensing.
+
+26.7, nicknamed "Xenial Xenops", features interface assignments and
+gateway groups via MVC/API, firewall rules now defaulting to MVC/API,
+outbound NAT to source NAT migration assistant, captive portal IPv6
+support, Kea DDNS/custom options/dynamic prefix delegation, FreeBSD
+15.1, OpenVPN 2.7, PHP 8.5, Python 3.13, plus much more.
+
+The upgrade path for 26.1 will likely be unlocked later today.  We want
+to ensure the upgrade goes as smoothly as possible so please be patient!  :)
+
+Download links, an installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for the images
+can be found below as well.
+
+* Europe: https://opnsense.c0urier.net/releases/26.7/
+* US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/26.7/
+* US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/26.7/
+* South America: http://mirror.ueb.edu.ec/opnsense/releases/26.7/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/re7eases/26.7/
+* Full mirror list: https://opnsense.org/download/
+
+Here are the full patch notes:
+
+* system: remove periodic backups settings and backend code
+* system: migrate gateway groups to MVC/API
+* system: new service widget flat tile layout (partially contributed by Konstantinos Spartalis)
+* system: make LDAP auth adhere to bad login penalty as well (contributed by Matt Andreko)
+* system: move ldap_escape() to caller for now to avoid side effects
+* system: improve the log_archive script to also work on log subdirectories
+* system: change our version of "certctl" to emit files instead of links like it is the case in FreeBSD 15.1
+* system: include interfaces widget in dashboard default
+* system: adjust dashboard widget resize logic to observe border box instead of content box
+* reporting: migrate several settings pages to MVC/API and assorted changes
+* reporting: do not show disabled interfaces in traffic graphs (contributed by Konstantinos Spartalis)
+* interfaces: migrate interface assignments to MVC/API
+* interfaces: fix faulty netmask on loopback address due to upstream change
+* firmware: remove overzealous cleansing in output_cmd to unhide individual character progress
+* firewall: move config.xml default LAN allow rules to new rules GUI
+* firewall: legacy rules pages move to plugin
+* firewall: restrict automatic DHCPv6 filter rules to plugin/track6 use
+* firewall: always set a sequence at the end of the rule set when cloning a NAT rule
+* firewall: remove unused "safepoint" actions
+* firewall: fix automatic source NAT rules not displayed for PPPoE interfaces
+* firewall: flatten automatic source NAT rules into two per WAN type interface
+* firewall: prevent deletion if a group is referenced in MVC rules
+* firewall: constraint source NAT getAction() to only general page and align setAction() accordingly
+* firewall: use proper path for one-to-one NAT rules for renaming operations
+* firewall: avoid emitting reply-to on block rules as well
+* firewall: change interface group render/apply order
+* firewall: adjust MVC alias rename according to address_to_pconfig()
+* firewall: adapt getAdvancedIds() to the sectioned form structure
+* firewall: invalidate rule stats cache for firewall utilities API endpoint
+* captive portal: move template actions out of the ServiceController into its own TemplateController
+* captive portal: adjust accounting interval to Acct-Interim-Interval
+* dnsmasq: possible use before define in lease watcher
+* intrusion detection: rename "uncategorized" rule package to "adult" (contributed by Konstantinos Spartalis)
+* monit: fix mail-format and poll-time validation
+* unbound: missing NetMaskAllowed=N on override address
+* wireguard: add allowed-ips to reresolve-dns.py in case none are set yet
+* acl: merge user management ACLs into one single privilege
+* backend: allow "strict" mode +TARGETS using the preamble "!"
+* backend: swap "strict" template logic as it was reversed
+* mvc: refactor base_dialog and parseFormNode() to simplify the template
+* mvc: remove unused argument from getFormGrid()
+* mvc: BaseField: emit descriptions in getNodes() when they are not the same as the value to match getNodeContent()
+* mvc: PortField: reject whitespaces in port ranges during validation
+* mvc: ModelRelationField: remove grouped option handling
+* mvc: add file type to forms
+* ui: add "opnsense-auto" theme which switches between "opnsense" and "opnsense-dark" depending on browser setting
+* ui: decrease flashing in opnsense-auto theme when switching (contributed by Konstantinos Spartalis)
+* ui: remove direct apply_btn_id usage in favour of base_apply_button template partial
+* ui: fix menu registration not setting "active"
+* plugins: os-firewall-legacy 1.0 contains the static PHP firewall rules pages
+* plugins: os-ndproxy has been removed, use os-ndp-proxy-go instead
+* src: FreeBSD 15.1-RELEASE-p1 plus assorted stable/15 networking commits `[2] <https://www.freebsd.org/releases/15.1R/relnotes/>`__ 
+* src: pf: do not mangle IP header before shared forwarding
+* src: pf: stop resolving hosts via DNS that use ":" modifier
+* src: pf: clear anchor after stepping into it in pf_match_translation_rule()
+* src: pf: pf_route() "dst" no longer holds the gateway in 15.x
+* ports: libevent 2.1.13 `[3] <https://github.com/libevent/libevent/releases/tag/release-2.1.13-stable>`__ 
+* ports: lighttpd 1.4.85 `[4] <https://www.lighttpd.net/2026/07/08/1.4.85/>`__ 
+* ports: openvpn 2.7.5 `[5] <https://github.com/OpenVPN/openvpn/blob/v2.7.5/Changes.rst>`__ 
+* ports: sqlite 3.53.3 `[6] <https://sqlite.org/releaselog/3_53_3.html>`__ 
+* ports: suricata 8.0.6 `[7] <https://forum.suricata.io/t/suricata-8-0-6-and-7-0-17-released/6391>`__ 
+
+Migration notes, known issues and limitations:
+
+* The privileges "page-system-groupmanager" and "page-system-usermanager-addprivs" were merged into "page-system-groupmanager" and are no longer available separately.  This was done to avoid the misconception that access to a user management page gives constrained rights to each page, but that is not the case.  User management is a process involving all 3 pages.
+* The static PHP pages for firewall rule management have been moved to the "os-firewall-legacy" plugin which can be manually installed before or after the upgrade.  All rules will continue to work regardless of the plugin being installed or not and are easily migrated using the given assistant.
+* Hyper-V guests may be producing panics on certain hosts with more than one virtual processor assigned.  Make sure to snapshot beforehand and stay on 26.1.x until the situation is clear.
+* Since this is a major OS upgrade and OpenSSL changes from 3.0 to 3.5 third party repositories may interfere with your upgrade experience.  Removing offending repositories and plugins may help; or wait for affirmation from the respective repository owners.
+
+The public key for the 26.7 series is:
+
+-----BEGIN PUBLIC KEY-----
+MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAziSNKuzrL2cwLx5LXmLn
+cWS5Lk+i9CzRMXO/4xQYBQCaSnd8GBg/HA/g4aPoTUa6ovAI0AHfW8KQJQyBkFzn
+pi6MLZJ9tEaFcn0CiV+tSTJd1RV4bB8jtpKl5oTkgFrPsyaB7iBlG5Cd49VCW19h
+DxClQ24lkWkVoYfsfCQEt4ADNGLygWCPyf4bxGD/t6/tiW9SsOs2+gfOZ9C/G2d/
+EBhJFoBEoz5lvULVxTdfY5PScYrHD/waZnk3rGc2A+9pI/SM2JAwKqsgZ6MSFbXO
+DNocSjqFUUkdqhty+Qcc0OJ+hMbKKVE+f3QJBQIwT3ayys8QK0m5CCo91/f+DjoN
+noj+t5YN9x8GREkF0wrdIi7hevkwrL2/SJQbq1bL1BLB+mMSXYR611lgT8YfYjyZ
+7tmpNVC3O5Pj7l20snm1lVUSqS0PsFBvh6HQtBRwQDGppaIIhH1Nt9yIatmSiGZt
+2YrMVNBzbQrJzSX+vWcAulkaPIt4t+XxmpO5IDNZ+4uMZ7XyJq1lAhIeyXx+Falf
+v7S+ZpJWFVNz0/N5z6lBbADD855i+gFY6B5209xGyhd6FwaPOjISgQKkgBwF1AiW
+MDuTuP9lkh/U5gGBZIFTnbdEMgOAL4P+Hsw9Nozav+3QIpiU3Pv9F29a1erCkq09
+rpQyNglY7Jqme/RipzbYia8CAwEAAQ==
+-----END PUBLIC KEY-----
+
+
+Stay safe,
+.. code-block::
+
+    # SHA256 (OPNsense-26.7-dvd-amd64.iso.bz2) = 95cafedda6d5b22ce832e249dc2309110fbee19f813ad78cf28bb3d387186bfb
+    # SHA256 (OPNsense-26.7-nano-amd64.img.bz2) = 28d5e2f37e40d87468a924e3006ef10e2ddc6de485b85333d9e3958c84d0cb9d
+    # SHA256 (OPNsense-26.7-serial-amd64.img.bz2) = 259b441646f1b0d77075a7281e368fe7f4c980360498ed6bc23740bd83c67e32
+    # SHA256 (OPNsense-26.7-vga-amd64.img.bz2) = d975ed876e0650f6a5bf30b2e97218c5eaa370bef6597b19f43e22c1b950d3fc
+
+
+--------------------------------------------------------------------------
+26.7.r2 (July 09, 2026)
+--------------------------------------------------------------------------
+
+
+Summer challenges aside: 26.7 is almost here!  It includes FreeBSD 15.1
+and a somewhat small list of other highlights.  The reason for that is
+a stringent backporting strategy that was employed in the 26.1 series.
+
+Keep in mind this is an online-based pre-production test release.
+Upgrades from the 26.1.11 development version are already available.
+The final release date for 26.7 is July 15.
+
+Here are the development highlights since version 26.1 came out:
+
+* Interfaces assignments to MVC/API
+* Gateway groups to MVC/API
+* Firewall rules MVC page is now the default
+* Source NAT is now a replacement for outbound NAT
+* Captive portal IPv6 support
+* Kea DDNS, custom options and dynamic prefix delegation support
+* OpenVPN 2.7 with TLS-Crypt v2 support
+* FreeBSD 15.1
+* Python 3.13
+* PHP 8.5
+
+And these are the changes against version 26.7-RC1:
+
+* system: include interfaces widget in dashboard default
+* firewall: constraint source NAT getAction() to only general page and align setAction() accordingly
+* firewall: use proper path for one-to-one NAT rules for renaming operations
+* firewall: avoid emitting reply-to on block rules as well
+* captive portal: adjust accounting interval to Acct-Interim-Interval
+* firmware: remove overzealous cleansing in output_cmd to unhide individual character progress
+* monit: fix mail-format and poll-time validation
+* mvc: add file type to forms
+* ports: suricata 8.0.6 `[1] <https://forum.suricata.io/t/suricata-8-0-6-and-7-0-17-released/6391>`__ 
+
+A hotfix release was issued as 26.7.r2_3:
+
+* interfaces: fix faulty netmask on loopback address due to upstream change
+* firewall: change interface group render/apply order
+* backend: swap "strict" template logic as it was reversed
+* src: pf: do not mangle IP header before shared forwarding
+* src: additional stable/15 networking patches
+
+
+
+--------------------------------------------------------------------------
+26.7.r1 (July 07, 2026)
+--------------------------------------------------------------------------
+
+
+Summer challenges aside: 26.7 is almost here!  It includes FreeBSD 15.1
+and a somewhat small list of other highlights.  The reason for that is
+a stringent backporting strategy that was employed in the 26.1 series.
+
+Keep in mind this is mostly an image-based pre-production test release.
+Upgrades from the 26.1.11 development version will be available later
+this week.  An online-only RC2 will probably follow as well.  The final
+release date for 26.7 is July 15.
+
+https://pkg.opnsense.org/releases/26.7/
+
+Here are the development highlights since version 26.1 came out:
+
+* Interfaces assignments to MVC/API
+* Gateway groups to MVC/API
+* Firewall rules MVC page is now the default
+* Source NAT is now a replacement for outbound NAT
+* Captive portal IPv6 support
+* Kea DDNS, custom options and dynamic prefix delegation support
+* OpenVPN 2.7 with TLS-Crypt v2 support
+* FreeBSD 15.1
+* Python 3.13
+* PHP 8.5
+
+And these are the changes against version 26.1.11:
+
+* system: remove periodic backups settings and backend code
+* system: migrate gateway groups to MVC/API
+* system: new service widget flat tile layout (partially contributed by Konstantinos Spartalis)
+* system: make LDAP auth adhere to bad login penalty as well (contributed by Matt Andreko)
+* system: move ldap_escape() to caller for now to avoid side effects
+* system: improve the log_archive script to also work on log subdirectories
+* system: change our version of "certctl" to emit files instead of links like it is the case in FreeBSD 15.1
+* reporting: migrate several settings pages to MVC/API and assorted changes
+* interfaces: migrate interface assignments to MVC/API
+* firewall: move config.xml default LAN allow rules to new rules GUI
+* firewall: legacy rules pages move to plugin
+* firewall: restrict automatic DHCPv6 filter rules to plugin/track6 use
+* firewall: always set a sequence at the end of the rule set when cloning a NAT rule
+* firewall: remove unused "safepoint" actions
+* firewall: fix automatic source NAT rules not displayed for PPPoE interfaces
+* firewall: flatten automatic source NAT rules into two per WAN type interface
+* firewall: prevent deletion if a group is referenced in MVC rules
+* captive portal: move template actions out of the ServiceController into its own TemplateController
+* dnsmasq: possible use before define in lease watcher
+* intrusion detection: rename "uncategorized" rule package to "adult" (contributed by Konstantinos Spartalis)
+* unbound: missing NetMaskAllowed=N on override address
+* wireguard: add allowed-ips to reresolve-dns.py in case none are set yet
+* acl: merge user management ACLs into one single privilege
+* backend: allow "strict" mode +TARGETS using the preamble "!"
+* mvc: refactor base_dialog and parseFormNode() to simplify the template
+* mvc: remove unused argument from getFormGrid()
+* mvc: BaseField: emit descriptions in getNodes() when they are not the same as the value to match getNodeContent()
+* mvc: PortField: reject whitespaces in port ranges during validation
+* mvc: ModelRelationField: remove grouped option handling
+* ui: add "opnsense-auto" theme which switches between "opnsense" and "opnsense-dark" depending on browser setting
+* ui: decrease flashing in opnsense-auto theme when switching (contributed by Konstantinos Spartalis)
+* ui: remove direct apply_btn_id usage in favour of base_apply_button template partial
+* ui: fix menu registration not setting "active"
+* plugins: os-firewall-legacy 1.0 contains the static PHP firewall rules pages
+* plugins: os-ndproxy has been removed, use os-ndp-proxy-go instead
+* src: FreeBSD 15.1-RELEASE-p1 plus assorted stable/15 networking commits `[1] <https://www.freebsd.org/releases/15.1R/relnotes/>`__ 
+* ports: libevent 2.1.13 `[2] <https://github.com/libevent/libevent/releases/tag/release-2.1.13-stable>`__ 
+* ports: openvpn 2.7.5 `[3] <https://github.com/OpenVPN/openvpn/blob/v2.7.5/Changes.rst>`__ 
+* ports: sqlite 3.53.3 `[4] <https://sqlite.org/releaselog/3_53_3.html>`__ 
+
+Migration notes, known issues and limitations:
+
+* The privileges "page-system-groupmanager" and "page-system-usermanager-addprivs" were merged into "page-system-groupmanager" and are no longer available separately.  This was done to avoid the misconception that access to a user management page gives constrained rights to each page, but that is not the case.  User management is a process involving all 3 pages.
+* The static PHP pages for firewall rule management have been moved to the "os-firewall-legacy" plugin that can be optionally installed.  Note that the upgrade will not install it as rules will continue to work and are easily migrated using the given assistant.
+
+The public key for the 26.7 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAziSNKuzrL2cwLx5LXmLn
+    # cWS5Lk+i9CzRMXO/4xQYBQCaSnd8GBg/HA/g4aPoTUa6ovAI0AHfW8KQJQyBkFzn
+    # pi6MLZJ9tEaFcn0CiV+tSTJd1RV4bB8jtpKl5oTkgFrPsyaB7iBlG5Cd49VCW19h
+    # DxClQ24lkWkVoYfsfCQEt4ADNGLygWCPyf4bxGD/t6/tiW9SsOs2+gfOZ9C/G2d/
+    # EBhJFoBEoz5lvULVxTdfY5PScYrHD/waZnk3rGc2A+9pI/SM2JAwKqsgZ6MSFbXO
+    # DNocSjqFUUkdqhty+Qcc0OJ+hMbKKVE+f3QJBQIwT3ayys8QK0m5CCo91/f+DjoN
+    # noj+t5YN9x8GREkF0wrdIi7hevkwrL2/SJQbq1bL1BLB+mMSXYR611lgT8YfYjyZ
+    # 7tmpNVC3O5Pj7l20snm1lVUSqS0PsFBvh6HQtBRwQDGppaIIhH1Nt9yIatmSiGZt
+    # 2YrMVNBzbQrJzSX+vWcAulkaPIt4t+XxmpO5IDNZ+4uMZ7XyJq1lAhIeyXx+Falf
+    # v7S+ZpJWFVNz0/N5z6lBbADD855i+gFY6B5209xGyhd6FwaPOjISgQKkgBwF1AiW
+    # MDuTuP9lkh/U5gGBZIFTnbdEMgOAL4P+Hsw9Nozav+3QIpiU3Pv9F29a1erCkq09
+    # rpQyNglY7Jqme/RipzbYia8CAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+Please let us know about your experience!
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-26.7.r1-dvd-amd64.iso.bz2) = 6b8430921316bd1d912a7bf71d02f2e354cd82b644c3fbf2646ab55382b9a758
+    # SHA256 (OPNsense-26.7.r1-nano-amd64.img.bz2) = 1b95ab4cafaa195272b2b9d7ac3f42015c277b918818f535851c8c3206c5829d
+    # SHA256 (OPNsense-26.7.r1-serial-amd64.img.bz2) = 0db5557508f088e513436f6f7ad5c37f42c6614ce50a34595523890cded7c336
+    # SHA256 (OPNsense-26.7.r1-vga-amd64.img.bz2) = 2e352fd8628e742dd0637a8f84768f607b3ad45a4491a77d9623b4976ac6931b
+

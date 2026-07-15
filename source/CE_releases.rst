@@ -8,8 +8,8 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *344* releases leading to the latest version *26.1.11*
-named "Witty Woodpecker".
+As of January 2015 there have been *347* releases leading to the latest version *26.7*
+named "Xenial Xenops".
 
 
 
@@ -20,6 +20,7 @@ The list below contains all releases, ordered by version number categorized by m
    :titlesonly:
    :glob:
 
+   releases/CE_26.7
    releases/CE_26.1
    releases/CE_25.7
    releases/CE_25.1
