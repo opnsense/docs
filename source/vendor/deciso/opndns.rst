@@ -56,8 +56,8 @@ For example, two IPv4 addresses for the same host are stored as one ``A`` RRset 
 
 .. code-block:: text
 
-    host1.internal. 300 IN A 192.168.1.10
-    host1.internal. 300 IN A 192.168.1.11
+    host1.internal 300 IN A 192.168.1.10
+    host1.internal 300 IN A 192.168.1.11
 
 In the GUI, this is entered as one record with ``host1`` as name, ``A`` as type, ``300`` as TTL,
 and both IP addresses as separate values.
@@ -180,9 +180,6 @@ Zones are configured in :menuselection:`Services --> Authoritative DNS --> Zones
         **Description**                           Optional description for your reference.
         ========================================= ====================================================================================
 
-        .. Attention::
-
-            Zone names are stored without a trailing dot.
 
     .. tab:: Records
 
@@ -190,22 +187,12 @@ Zones are configured in :menuselection:`Services --> Authoritative DNS --> Zones
         **Option**                                **Description**
         ========================================= ====================================================================================
         **Zone**                                  Zone this record belongs to.
-        **Record Name**                           Record name. Use ``@`` for the zone apex or a relative name.
+        **Record Name**                           Record name. All names must be fully qualified in the zone.
         **Type**                                  DNS record type, for example ``A``, ``AAAA``, ``NS``, ``MX``, ``PTR`` or ``TXT``.
         **TTL**                                   Optional record-specific TTL. If empty, the zone default is used.
         **Values**                                One or more record values. Use one value per line.
         **Description**                           Optional description for your reference.
         ========================================= ====================================================================================
-
-        .. Note::
-
-            A record entry with multiple values represents one RRset.
-
-            Record names are relative to their zone and must not end with a trailing dot.
-
-            Record values that reference DNS names should usually be fully qualified and end with a trailing dot.
-            For example, ``NS``, ``MX``, ``CNAME`` and ``PTR`` targets should usually be entered as
-            ``ns1.internal.`` instead of ``ns1.internal``.
 
 
 ----------------------
@@ -220,7 +207,7 @@ The examples use:
 
 - Forward zone: ``internal``
 - Reverse zone for ``192.168.1.0/24``: ``1.168.192.in-addr.arpa``
-- Nameservers: ``ns1.internal.`` and ``ns2.internal.``
+- Nameservers: ``ns1.internal`` and ``ns2.internal``
 - Listen port: ``53053``
 
 
@@ -231,8 +218,8 @@ This example creates a static internal zone called ``internal``.
 
 The zone contains two nameservers:
 
-- ``ns1.internal.`` with IPv4 address ``192.168.1.2``
-- ``ns2.internal.`` with IPv4 address ``192.168.1.3``
+- ``ns1.internal`` with IPv4 address ``192.168.1.2``
+- ``ns2.internal`` with IPv4 address ``192.168.1.3``
 
 Go to :menuselection:`Services --> Authoritative DNS --> Settings --> General` and set:
 
@@ -278,12 +265,12 @@ Add the nameserver records for the new internal zone. If you do not use HA, you 
 Option                              Value
 ==================================  =======================================================================================================
 **Zone**                            ``internal``
-**Name**                            ``@``
+**Name**                            ``internal``
 **Type**                            ``NS``
 **TTL**                             ``300``
-**Values**                          ``ns1.internal.``
+**Values**                          ``ns1.internal``
 
-                                    ``ns2.internal.``
+                                    ``ns2.internal``
 ==================================  =======================================================================================================
 
 Press **Save**.
@@ -298,7 +285,7 @@ Create the A records for the nameservers.
         Option                              Value
         ==================================  =======================================================================================================
         **Zone**                            ``internal``
-        **Name**                            ``ns1``
+        **Name**                            ``ns1.internal``
         **Type**                            ``A``
         **TTL**                             ``300``
         **Values**                          ``192.168.1.2``
@@ -312,7 +299,7 @@ Create the A records for the nameservers.
         Option                              Value
         ==================================  =======================================================================================================
         **Zone**                            ``internal``
-        **Name**                            ``ns2``
+        **Name**                            ``ns2.internal``
         **Type**                            ``A``
         **TTL**                             ``300``
         **Values**                          ``192.168.1.3``
@@ -320,7 +307,7 @@ Create the A records for the nameservers.
 
         Press **Save** and **Apply**.
 
-The zone now contains answers for ``internal.`` and both nameserver host records.
+The zone now contains answers for ``internal`` and both nameserver host records.
 
 .. Tip::
 
@@ -328,11 +315,9 @@ The zone now contains answers for ``internal.`` and both nameserver host records
 
     .. code-block:: sh
 
-        dig @127.0.0.1 -p 53053 internal NS
-        dig @127.0.0.1 -p 53053 ns1.internal A
-        dig @127.0.0.1 -p 53053 ns2.internal A
-
-    If you do not have ``dig`` available yet, install it via ``pkg install bind-tools``.
+        drill -p 53053 @127.0.0.1 internal NS
+        drill -p 53053 @127.0.0.1 ns1.internal A
+        drill -p 53053 @127.0.0.1 ns2.internal A
 
 
 Reverse zone
@@ -363,12 +348,12 @@ Here we reuse the nameservers of our static forward zone. If you do not use HA, 
 Option                              Value
 ==================================  =======================================================================================================
 **Zone**                            ``1.168.192.in-addr.arpa``
-**Name**                            ``@``
+**Name**                            ``1.168.192.in-addr.arpa``
 **Type**                            ``NS``
 **TTL**                             ``300``
-**Values**                          ``ns1.internal.``
+**Values**                          ``ns1.internal``
 
-                                    ``ns2.internal.``
+                                    ``ns2.internal``
 ==================================  =======================================================================================================
 
 Press **Save**.
@@ -383,10 +368,10 @@ Create the reverse records (PTR) for the nameservers.
         Option                              Value
         ==================================  =======================================================================================================
         **Zone**                            ``1.168.192.in-addr.arpa``
-        **Name**                            ``2``
+        **Name**                            ``2.1.168.192.in-addr.arpa``
         **Type**                            ``PTR``
         **TTL**                             ``300``
-        **Values**                          ``ns1.internal.``
+        **Values**                          ``ns1.internal``
         ==================================  =======================================================================================================
 
         Press **Save**.
@@ -399,10 +384,10 @@ Create the reverse records (PTR) for the nameservers.
         Option                              Value
         ==================================  =======================================================================================================
         **Zone**                            ``1.168.192.in-addr.arpa``
-        **Name**                            ``3``
+        **Name**                            ``3.1.168.192.in-addr.arpa``
         **Type**                            ``PTR``
         **TTL**                             ``300``
-        **Values**                          ``ns2.internal.``
+        **Values**                          ``ns2.internal``
         ==================================  =======================================================================================================
 
         Press **Save** and **Apply**.
@@ -413,8 +398,8 @@ Create the reverse records (PTR) for the nameservers.
 
     .. code-block:: sh
 
-        dig @127.0.0.1 -p 53053 -x 192.168.1.2
-        dig @127.0.0.1 -p 53053 -x 192.168.1.3
+        drill -p 53053 @127.0.0.1 -x 192.168.1.2
+        drill -p 53053 @127.0.0.1 -x 192.168.1.3
 
 
 Forwarding from Unbound
@@ -464,7 +449,7 @@ Go to :menuselection:`Services --> Unbound DNS --> Query Forwarding` and add for
 
         Press **Save** and **Apply**.
 
-When a client queries Unbound for ``ns1.internal.``, the request is forwarded to ``127.0.0.1:53053``.
+When a client queries Unbound for ``ns1.internal``, the request is forwarded to ``127.0.0.1:53053``.
 The local service answers for the zone and Unbound returns the response to the client.
 
 .. Note::
@@ -485,7 +470,7 @@ The example uses:
 - Parent zone: ``internal``
 - Forward zone: ``dhcp.internal``
 - Reverse zone: ``1.168.192.in-addr.arpa``
-- Nameservers: ``ns1.internal.`` and ``ns2.internal.``
+- Nameservers: ``ns1.internal`` and ``ns2.internal``
 - DHCP subnet: ``192.168.1.0/24``
 - DHCP pool: ``192.168.1.100 - 192.168.1.199``
 - DNS server: ``127.0.0.1``
@@ -523,12 +508,12 @@ Then add an NS record for the zone. If you do not use HA, you can skip the secon
 Option                              Value
 ==================================  =======================================================================================================
 **Zone**                            ``dhcp.internal``
-**Name**                            ``@``
+**Name**                            ``dhcp.internal``
 **Type**                            ``NS``
 **TTL**                             ``300``
-**Values**                          ``ns1.internal.``
+**Values**                          ``ns1.internal``
 
-                                    ``ns2.internal.``
+                                    ``ns2.internal``
 ==================================  =======================================================================================================
 
 Press **Save**.
@@ -548,7 +533,7 @@ Option                              Value
 ==================================  =======================================================================================================
 **Name**                            ``1.168.192.in-addr.arpa``
 **Type**                            ``allowupdate``
-**Allow Updates From**              ``127.0.0.1``
+**Allow Updates From**              ``127.0.0.1``  ``192.168.1.3``
 ==================================  =======================================================================================================
 
 Press **Save**.
@@ -559,12 +544,12 @@ Then add an NS record for the reverse zone if they do not already exist. If you 
 Option                              Value
 ==================================  =======================================================================================================
 **Zone**                            ``1.168.192.in-addr.arpa``
-**Name**                            ``@``
+**Name**                            ``1.168.192.in-addr.arpa``
 **Type**                            ``NS``
 **TTL**                             ``300``
-**Values**                          ``ns1.internal.``
+**Values**                          ``ns1.internal``
 
-                                    ``ns2.internal.``
+                                    ``ns2.internal``
 ==================================  =======================================================================================================
 
 Press **Save** and **Apply**.
@@ -607,7 +592,7 @@ Update on renew                     ``X``
 
 .. Attention::
 
-    The zones and qualifying suffix must end with a trailing dot.
+    In KEA the zones and qualifying suffix must end with a trailing dot.
 
     If you want to update both IPv4 and IPv6 records of dual stack hosts, set conflict resolution mode to ``no-check-with-dhcid``.
 
@@ -707,30 +692,6 @@ Good to know
 ------------
 
 
-Trailing dots
--------------
-
-Zone names are stored without a trailing dot:
-
-.. code-block:: text
-
-    internal
-    1.168.192.in-addr.arpa
-
-Record names are relative to the zone and must not end with a trailing dot.
-
-Record values that reference DNS names should usually be fully qualified and end with a trailing dot:
-
-.. code-block:: text
-
-    ns1.internal.
-
-For example:
-
-- Record name: ``ns1``
-- Record value: ``ns1.internal.``
-
-
 SOA records
 -----------
 
@@ -754,8 +715,8 @@ For a zone named ``internal``, a simple setup could use:
 
 .. code-block:: text
 
-    internal. 300 IN NS ns1.internal.
-    internal. 300 IN NS ns2.internal.
+    internal 300 IN NS ns1.internal
+    internal 300 IN NS ns2.internal
 
 Additional zones can use the same nameservers.
 
@@ -806,14 +767,12 @@ Test direct queries before configuring Unbound forwarding.
 
 .. code-block:: sh
 
-    dig @127.0.0.1 -p 53053 internal SOA
-    dig @127.0.0.1 -p 53053 internal NS
-    dig @127.0.0.1 -p 53053 ns1.internal A
-    dig @127.0.0.1 -p 53053 -x 192.168.1.2
+    drill -p 53053 @127.0.0.1 internal SOA
+    drill -p 53053 @127.0.0.1 internal NS
+    drill -p 53053 @127.0.0.1 ns1.internal A
+    drill -p 53053 @127.0.0.1 -x 192.168.1.2
 
 If direct queries work but client queries fail, check the Unbound forwarding configuration first.
-
-If you do not have ``dig`` available yet, install it via ``pkg install bind-tools``.
 
 
 Log and diagnostics
