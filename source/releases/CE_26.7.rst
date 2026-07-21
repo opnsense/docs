@@ -26,8 +26,43 @@ can be found below as well.
 * US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/26.7/
 * US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/26.7/
 * South America: http://mirror.ueb.edu.ec/opnsense/releases/26.7/
-* East Asia: https://mirror.ntct.edu.tw/opnsense/re7eases/26.7/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/26.7/
 * Full mirror list: https://opnsense.org/download/
+
+
+--------------------------------------------------------------------------
+26.7.1 (July 21, 2026)
+--------------------------------------------------------------------------
+
+
+This is a small stable release addressing some of the upgrade related
+issues that were reported last week as well as 4 new security advisories
+for the core code.
+
+Here are the full patch notes:
+
+* system: add correct release name to boot splash screen for 26.7
+* system: disable web GUI KTLS use for the time being
+* system: do not let the components selectpicker grow indefinitely in defaults page
+* system: DTLSv1.1 is forcefully rejected by OpenSSL 3.5, migrate to DTLSv1.2
+* system: use Bootstrap "btn" styles in services widget
+* system: use serialNumberHex for CRL so high-bit serials are not dropped (contributed by chrstnth)
+* system: lower max-request-size to roughly max post size in lighttpd configs `[1] <https://github.com/opnsense/core/security/advisories/GHSA-h4qj-j2x9-q553>`__  (reported by lujiefsi)
+* system: fixed several PHP 8.5 warnings
+* firewall: use "urgent" as empty default for firewall debug messages
+* firewall: skip message banner if searchPhrase set
+* firewall: fix PHP warning when scrub yields no interfaces
+* captive portal: automatic block rule should be evaluated after the anti-lockout rule
+* openvpn: client export can export private keys for unlisted certificate references `[2] <https://github.com/opnsense/core/security/advisories/GHSA-rw63-4hw9-p4v7>`__  (reported by iys8 and lujiefsi)
+* backend: remove cache file on execution error in script_output
+* mvc: fix tab/subtab form generation for plugins
+* mvc: fix default labels in selectpickers
+* mvc: form labels can be empty so make sure to add them to avoid warnings in forms
+* mvc: safeguard some write operations with missing throwReadOnly() actions for custom action `[3] <https://github.com/opnsense/core/security/advisories/GHSA-vw8q-pqq7-2q7v>`__  (reported by lujiefsi)
+* ui: fix multiple stored XSS `[4] <https://github.com/opnsense/core/security/advisories/GHSA-jm2f-ch62-rpxr>`__  (reported by lujiefsi)
+* plugins: os-theme-rebellion 1.9.5 (contributed by Team Rebellion)
+* ports: ca_root_nss / nss 3.125 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_125.html>`__ 
+
 
 
 --------------------------------------------------------------------------
@@ -57,7 +92,7 @@ can be found below as well.
 * US East Coast: https://mirror.wdc1.us.leaseweb.net/opnsense/releases/26.7/
 * US West Coast: https://mirror.sfo12.us.leaseweb.net/opnsense/releases/26.7/
 * South America: http://mirror.ueb.edu.ec/opnsense/releases/26.7/
-* East Asia: https://mirror.ntct.edu.tw/opnsense/re7eases/26.7/
+* East Asia: https://mirror.ntct.edu.tw/opnsense/releases/26.7/
 * Full mirror list: https://opnsense.org/download/
 
 Here are the full patch notes:
@@ -122,7 +157,7 @@ Here are the full patch notes:
 * ports: lighttpd 1.4.85 `[4] <https://www.lighttpd.net/2026/07/08/1.4.85/>`__ 
 * ports: openvpn 2.7.5 `[5] <https://github.com/OpenVPN/openvpn/blob/v2.7.5/Changes.rst>`__ 
 * ports: sqlite 3.53.3 `[6] <https://sqlite.org/releaselog/3_53_3.html>`__ 
-* ports: suricata 8.0.6 `[7] <https://forum.suricata.io/t/suricata-8-0-6-and-7-0-17-released/6391>`__ 
+* ports: suricata 8.0.6 `[7] <https://suricata.io/2026/07/09/suricata-8-0-6-and-7-0-17-released/>`__ 
 
 Migration notes, known issues and limitations:
 
@@ -130,23 +165,26 @@ Migration notes, known issues and limitations:
 * The static PHP pages for firewall rule management have been moved to the "os-firewall-legacy" plugin which can be manually installed before or after the upgrade.  All rules will continue to work regardless of the plugin being installed or not and are easily migrated using the given assistant.
 * Hyper-V guests may be producing panics on certain hosts with more than one virtual processor assigned.  Make sure to snapshot beforehand and stay on 26.1.x until the situation is clear.
 * Since this is a major OS upgrade and OpenSSL changes from 3.0 to 3.5 third party repositories may interfere with your upgrade experience.  Removing offending repositories and plugins may help; or wait for affirmation from the respective repository owners.
+* The CPU microcode early loading has been known to be flaky on some setups.  A fix is in the FreeBSD 15.1 boot loader code, but can only be reached by reinstall or manually updating the boot code of your system after the upgrade succeeded.  If you want to be on the safe side during the upgrade itself please remove the plugin before proceeding.
 
 The public key for the 26.7 series is:
 
------BEGIN PUBLIC KEY-----
-MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAziSNKuzrL2cwLx5LXmLn
-cWS5Lk+i9CzRMXO/4xQYBQCaSnd8GBg/HA/g4aPoTUa6ovAI0AHfW8KQJQyBkFzn
-pi6MLZJ9tEaFcn0CiV+tSTJd1RV4bB8jtpKl5oTkgFrPsyaB7iBlG5Cd49VCW19h
-DxClQ24lkWkVoYfsfCQEt4ADNGLygWCPyf4bxGD/t6/tiW9SsOs2+gfOZ9C/G2d/
-EBhJFoBEoz5lvULVxTdfY5PScYrHD/waZnk3rGc2A+9pI/SM2JAwKqsgZ6MSFbXO
-DNocSjqFUUkdqhty+Qcc0OJ+hMbKKVE+f3QJBQIwT3ayys8QK0m5CCo91/f+DjoN
-noj+t5YN9x8GREkF0wrdIi7hevkwrL2/SJQbq1bL1BLB+mMSXYR611lgT8YfYjyZ
-7tmpNVC3O5Pj7l20snm1lVUSqS0PsFBvh6HQtBRwQDGppaIIhH1Nt9yIatmSiGZt
-2YrMVNBzbQrJzSX+vWcAulkaPIt4t+XxmpO5IDNZ+4uMZ7XyJq1lAhIeyXx+Falf
-v7S+ZpJWFVNz0/N5z6lBbADD855i+gFY6B5209xGyhd6FwaPOjISgQKkgBwF1AiW
-MDuTuP9lkh/U5gGBZIFTnbdEMgOAL4P+Hsw9Nozav+3QIpiU3Pv9F29a1erCkq09
-rpQyNglY7Jqme/RipzbYia8CAwEAAQ==
------END PUBLIC KEY-----
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAziSNKuzrL2cwLx5LXmLn
+    # cWS5Lk+i9CzRMXO/4xQYBQCaSnd8GBg/HA/g4aPoTUa6ovAI0AHfW8KQJQyBkFzn
+    # pi6MLZJ9tEaFcn0CiV+tSTJd1RV4bB8jtpKl5oTkgFrPsyaB7iBlG5Cd49VCW19h
+    # DxClQ24lkWkVoYfsfCQEt4ADNGLygWCPyf4bxGD/t6/tiW9SsOs2+gfOZ9C/G2d/
+    # EBhJFoBEoz5lvULVxTdfY5PScYrHD/waZnk3rGc2A+9pI/SM2JAwKqsgZ6MSFbXO
+    # DNocSjqFUUkdqhty+Qcc0OJ+hMbKKVE+f3QJBQIwT3ayys8QK0m5CCo91/f+DjoN
+    # noj+t5YN9x8GREkF0wrdIi7hevkwrL2/SJQbq1bL1BLB+mMSXYR611lgT8YfYjyZ
+    # 7tmpNVC3O5Pj7l20snm1lVUSqS0PsFBvh6HQtBRwQDGppaIIhH1Nt9yIatmSiGZt
+    # 2YrMVNBzbQrJzSX+vWcAulkaPIt4t+XxmpO5IDNZ+4uMZ7XyJq1lAhIeyXx+Falf
+    # v7S+ZpJWFVNz0/N5z6lBbADD855i+gFY6B5209xGyhd6FwaPOjISgQKkgBwF1AiW
+    # MDuTuP9lkh/U5gGBZIFTnbdEMgOAL4P+Hsw9Nozav+3QIpiU3Pv9F29a1erCkq09
+    # rpQyNglY7Jqme/RipzbYia8CAwEAAQ==
+    # -----END PUBLIC KEY-----
 
 
 Stay safe,
@@ -194,7 +232,7 @@ And these are the changes against version 26.7-RC1:
 * firmware: remove overzealous cleansing in output_cmd to unhide individual character progress
 * monit: fix mail-format and poll-time validation
 * mvc: add file type to forms
-* ports: suricata 8.0.6 `[1] <https://forum.suricata.io/t/suricata-8-0-6-and-7-0-17-released/6391>`__ 
+* ports: suricata 8.0.6 `[1] <https://suricata.io/2026/07/09/suricata-8-0-6-and-7-0-17-released/>`__ 
 
 A hotfix release was issued as 26.7.r2_3:
 

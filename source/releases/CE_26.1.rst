@@ -138,6 +138,15 @@ A hotfix release was issued as 26.1.11_6:
 
 * openvpn: further fix validation for auth token secret and static key
 
+A hotfix release was issued as 26.1.11_10:
+
+* firmware: remove overzealous cleansing in output_cmd to unhide individual character progress
+* firmware: add fingerprint and upgrade hint for 26.7
+* monit: fix mail-format and poll-time validation
+* unbound: missing NetMaskAllowed=N on override address
+* ports: openvpn 2.7.5 `[32] <https://github.com/OpenVPN/openvpn/blob/v2.7.5/Changes.rst>`__ 
+* ports: suricata 8.0.6 `[33] <https://suricata.io/2026/07/09/suricata-8-0-6-and-7-0-17-released/>`__ 
+
 
 
 --------------------------------------------------------------------------
