@@ -22,17 +22,14 @@ if r.status_code == 200:
     response = json.loads(r.text)
     if len(response['rows']) > 0:
         rule_uuid = response['rows'][0]['uuid']
-        r = requests.post("%s/api/firewall/filter/savepoint" % remote_uri, auth=(api_key, api_secret), verify=False)
-        if r.status_code == 200:
-            sp_response = json.loads(r.text)
-            # disable rule
-            r = requests.post("%s/api/firewall/filter/toggleRule/%s/0" % (remote_uri, rule_uuid),
-                              auth=(api_key, api_secret), verify=False
-            )
-            # apply changes, revert to sp_response['revision'] after 60 seconds
-            r = requests.post("%s/api/firewall/filter/apply/%s" % (remote_uri, sp_response['revision']),
-                              auth=(api_key, api_secret), verify=False
-            )
-            print("revert to revision %s in 60 seconds (%s changed)" % (sp_response['revision'], rule_uuid))
+        # disable rule
+        r = requests.post("%s/api/firewall/filter/toggleRule/%s/0" % (remote_uri, rule_uuid),
+                          auth=(api_key, api_secret), verify=False
+        )
+        # apply changes so they become active
+        r = requests.post("%s/api/firewall/filter/apply" % remote_uri,
+                          auth=(api_key, api_secret), verify=False
+        )
+        print("rule %s disabled and applied" % rule_uuid)
     else:
         print("rule %s not found" % rule_description)

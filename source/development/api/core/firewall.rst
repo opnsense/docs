@@ -88,14 +88,11 @@ as a reference and testbed. There's no relation to any of the rules being manage
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","firewall","filter_base","apply","$rollback_revision=null"
-    "``POST``","firewall","filter_base","cancel_rollback","$rollback_revision"
+    "``POST``","firewall","filter_base","apply",""
     "``GET``","firewall","filter_base","get",""
     "``GET``","firewall","filter_base","list_categories",""
     "``GET``","firewall","filter_base","list_network_select_options",""
     "``GET``","firewall","filter_base","list_port_select_options",""
-    "``POST``","firewall","filter_base","revert","$revision"
-    "``POST``","firewall","filter_base","savepoint",""
     "``POST``","firewall","filter_base","set",""
 
     "``<<uses>>``", "", "", "", "*model* `Filter.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/Filter.xml>`__"
@@ -193,40 +190,28 @@ Concept
 The firewall plugin injects rules in the standard OPNsense firewall while maintaining visibility on them in the
 standard user interface.
 
-We use our standard :code:`ApiMutableModelControllerBase` to allow crud operations on rule entries and offer a set of
-specific actions to apply the new configuration.
-Since firewall rules can be quite sensitive with a higher risk of lockout, we also support a rollback mechanism here,
-which offers the ability to rollback this components changes.
+We use our standard :code:`ApiMutableModelControllerBase` to allow crud operations on rule entries and offer an
+:code:`apply` action to activate the new configuration.
 
 .. blockdiag::
     :scale: 100%
 
     diagram init {
-        savepoint [label = "savepoint()"];
         administration [label = "administration"];
-        apply [label = "apply(savepoint)"];
-        cancelRollback [label = "cancelRollback(sp)"];
-        savepoint -> administration -> apply ;
-        apply -> cancelRollback [label = ".. 60s", style = dashed];
+        apply [label = "apply()"];
+        administration -> apply ;
     }
 
 
-The diagram above contains the basic steps to change rules, apply and eventually rollback if not being able to access the machine again.
-When calling :code:`savepoint()` a new config revision will be created and the timestamp will be returned for later use.
-If the :code:`cancelRollback(savepoint)` is not called within 60 seconds, the firewall will rollback to the previous state
-identified by the savepoint timestamp (if available).
+The diagram above contains the basic steps to change rules and activate them.
+Changes made through the administrative endpoints are staged in the configuration; calling :code:`apply()` reloads
+the firewall so the new ruleset becomes active.
 
 
 .. Note::
 
     The examples in this document disable certificate validation, make sure when using this in a production environment to
     remove the :code:`verify=False` from the :code:`requests` calls
-
-.. Tip::
-
-    The number of versions kept can be configured as "backup count" in :menuselection:`System -> Configuration -> History`.
-    This affectively determines within how many configuration changes you can still rollback, if the backup is removed, a rollback
-    will keep the current state (do nothing).
 
 
 -----------------------
@@ -251,20 +236,13 @@ Inline you will find a brief description of the steps performed.
       in case defaults change over time.
 
 -----------------------
-Apply / revert example
+Apply example
 -----------------------
 
-This example will disable the rule created in the previous example and apply the changes using a savepoint, since we're not
-calling :code:`cancelRollback(savepoint)` it will revert after 60 seconds to the original state.
+This example will disable the rule created in the previous example and apply the changes so they become active.
 
 
-.. literalinclude:: firewall.savepoint.py
+.. literalinclude:: firewall.apply.py
     :language: python
     :linenos:
-    :caption: savepoint_example.py
-
-
-.. Note::
-
-    The savepoint will only revert this components changes, other changes won't be affected by this revert, for example
-    add an additional interface between savepoint and revert won't be affected.
+    :caption: apply_example.py
