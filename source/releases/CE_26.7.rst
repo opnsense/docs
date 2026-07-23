@@ -63,6 +63,11 @@ Here are the full patch notes:
 * plugins: os-theme-rebellion 1.9.5 (contributed by Team Rebellion)
 * ports: ca_root_nss / nss 3.125 `[5] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_125.html>`__ 
 
+A hotfix release was issued as 26.7.1_1:
+
+* system: fix default gateway switch alarm trigger being overwritten by gateway group check
+* ports: pecl-mcrypt 1.0.9
+
 
 
 --------------------------------------------------------------------------
