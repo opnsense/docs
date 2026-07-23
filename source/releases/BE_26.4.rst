@@ -285,6 +285,30 @@ A hotfix release issued as 26.4.1p1_3:
 
 * openvpn: further fix validation for auth token secret and static key
 
+Here are the full patch notes for patch release 2:
+
+* system: DTLSv1.1 is forcefully rejected by OpenSSL 3.5, migrate to DTLSv1.2
+* system: use serialNumberHex for CRL so high-bit serials are not dropped (contributed by chrstnth)
+* system: lower max-request-size to roughly max post size in lighttpd configs `[63] <https://github.com/opnsense/core/security/advisories/GHSA-h4qj-j2x9-q553>`__  (reported by lujiefsi)
+* system: do not let the components selectpicker grow indefinitely in defaults page
+* system: dashboard widget does not know about patch release syntax
+* system: make LDAP auth adhere to bad login penalty as well (contributed by Matt Andreko)
+* reporting: do not show disabled interfaces in traffic graphs (contributed by Konstantinos Spartalis)
+* firewall: use "urgent" as empty default for firewall debug messages
+* firewall: invalidate rule stats cache for firewall utilities API endpoint
+* captive portal: automatic block rule should be evaluated after the anti-lockout rule
+* firmware: remove overzealous cleansing in output_cmd to unhide individual character progress
+* monit: use throwNotFullAdmin() to restrict monit GUI write access to full admins due to intended system wide execution rights
+* monit: fix mail-format and poll-time validation
+* openvpn: client export can export private keys for unlisted certificate references `[64] <https://github.com/opnsense/core/security/advisories/GHSA-rw63-4hw9-p4v7>`__  (reported by iys8 and lujiefsi)
+* unbound: missing NetMaskAllowed=N on override address
+* backend: remove cache file on execution error in script_output
+* mvc: safeguard some write operations with missing throwReadOnly() actions for custom action `[65] <https://github.com/opnsense/core/security/advisories/GHSA-vw8q-pqq7-2q7v>`__  (reported by lujiefsi)
+* mvc: form labels can be empty so make sure to add them to avoid warnings in forms
+* ui: fix multiple stored XSS `[66] <https://github.com/opnsense/core/security/advisories/GHSA-jm2f-ch62-rpxr>`__  (reported by lujiefsi)
+* ports: openvpn 2.7.5 `[67] <https://github.com/OpenVPN/openvpn/blob/v2.7.5/Changes.rst>`__ 
+* ports: suricata 8.0.6 `[68] <https://suricata.io/2026/07/09/suricata-8-0-6-and-7-0-17-released/>`__ 
+
 
 
 --------------------------------------------------------------------------
