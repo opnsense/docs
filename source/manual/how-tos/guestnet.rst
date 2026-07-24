@@ -31,12 +31,6 @@ vouchers and can easily create them on the fly. With this example we will show
 you how to setup the Guest Network for this purpose and setup a reception account
 for creating new vouchers.
 
---------
-Advanced
---------
-The Captive portal can also be combined with the category based web filtering of
-the proxy. This tutorial will explain how to combine both features.
-
 -------------
 Prerequisites
 -------------
