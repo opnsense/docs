@@ -135,7 +135,7 @@ this our primary internet connection and change the WAN assignment accordingly.
 
 To do so just change the **Network port** for **WAN** to **ppp0 (/dev/cuaU0.0) - 4G Cellular Network**.
 
-No click **Save** below the form.
+Now click **Save** below the form.
 
 If everything went fine, then you are all set, and the default gateway will be
 the one of you cellular connection.
