@@ -588,13 +588,12 @@ DNS server port                     ``53053``
 Override no update                  ``X``
 Override client update              ``X``
 Update on renew                     ``X``
+Conflict resolution mode            ``no-check-with-dhcid``
 ==================================  =======================================================================================================
 
 .. Attention::
 
     In KEA the zones and qualifying suffix must end with a trailing dot.
-
-    If you want to update both IPv4 and IPv6 records of dual stack hosts, set conflict resolution mode to ``no-check-with-dhcid``.
 
     If certain hosts should get registered with custom hostnames, create a host reservation for them.
 
