@@ -10,17 +10,19 @@ ndp-proxy-go (Neighbor Discovery Proxy)
 Introduction
 ==================================================
 
-ndp-proxy-go is a userspace IPv6 Neighbor Discovery Proxy.
+ndp-proxy-go is a userspace host-learning IPv6 Neighbor Discovery Proxy.
 
 It can proxy SLAAC on-link prefixes to several downstream interfaces by proxying neighbor discovery protocol (NDP), router advertisements (RA) 
 and duplicate address detection (DAD). For each discovered client it installs host routes automatically.
 
-If your ISP provides only a single /64 prefix via RA, you can use ndp-proxy-go to provide this prefix to all devices
-on separate downstream interfaces to create Layer 3 isolation.
+If your ISP provides only a single dynamic /64 prefix via RA - or a static prefix that is not properly routed -
+you can use ndp-proxy-go to proxy and route this prefix to all devices on separate downstream interfaces to create Layer 3 isolation.
 
 The proxy handles privacy extension and changing prefixes gracefully; the setup is fully dynamic and self healing.
 
 For the ISP, it will look like the proxy itself owns all global unicast addresses (GUA) with its WAN facing MAC address.
+
+The proxy does not support NPTv6 deployments, as it will not map internal ULA to external GUA addresses.
 
 More technical details: `ndp-proxy-go <https://github.com/Monviech/ndp-proxy-go/blob/main/README.md>`_
 
@@ -53,6 +55,10 @@ Proxy Settings
         **Proxy router advertisements**           Proxy upstream RAs to downstream interfaces. Disable this if you use your own RA daemon.
         **Install host routes**                   Automatically create host routes for discovered clients. Disabling this means you must
                                                   manually handle all routing decisions.
+        **Static prefixes**                       Manually trust an IPv6 prefix for downstream learning. This is only needed in static
+                                                  IPv6 provider networks without usable RA information on the upstream interface.
+        **Static routers**                        Manually trust an upstream router link-local address. This is only needed in static
+                                                  IPv6 provider networks without usable RA information on the upstream interface.
         **Neighbor cache lifetime**               Neighbor cache lifetime in minutes. This controls when stale clients, host routes and
                                                   firewall aliases are cleaned up. When using a point-to-point interface as upstream,
                                                   increasing this lifetime is necessary to not prematurely clean up routes.
