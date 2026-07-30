@@ -114,7 +114,7 @@ Exclusion addresses starts with "!" sign (eg !192.168.0.1) and can be used to ex
 
 .. Warning::
 
-    Please note thet the **Flush** action is not persistent!
+    Please note that the **Flush** action is not persistent!
 
     **"flush"** means flush the current contents of the alias, which will be repopulated when it's not an external type,
     so flush in most cases isn't very useful.
