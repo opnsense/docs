@@ -438,6 +438,64 @@ The advantage of this type of setup is one can use standard or advanced routing 
 
 
 .................................
+Authentication
+.................................
+
+In IPsec, authentication happens during the IKE negotiation phase, before encrypted traffic is allowed through
+the tunnel. Each side proves its identity using one or more configured authentication methods, such as a
+pre-shared key, certificate/private key, EAP method, Xauth or RADIUS-backed authentication.
+
+A connection can define multiple local and remote authentication entries. This allows one connection to
+use a simple one-step authentication, such as PSK or public key, or multi-step authentication, such as
+public key plus EAP or XAuth. StrongSwan supports multiple authentication rounds for IKEv2 and XAuth-style
+authentication for IKEv1.
+
+**Local authentication** defines how this sytem authenticates itself to the peer.
+
+**Remote authentication** defines how the peer is expected to authenticate itself to this system.
+
+Each authentication entry has an ID, the ID is important because it is the identity presented or expected
+during IKE authentication. It is also used to select matching credentials, such as pre-shared keys or public keys.
+
+For example:
+
+.. code-block::
+
+    Connection: Branch-A
+
+    Local Authentication:
+        Authentication: Public Key
+        ID:             vpn.example.com
+
+    Remote Authentication:
+        Authentication: EAP-MSCHAPv2
+        ID:             branch-a-user
+
+This means the local system authenticates as :code:`vpn.example.com` using a public key, while the remote
+side is expected to authenticate as :code:`branch-a-user` using EAP-MSCHAPv2.
+
+.. Important::
+
+    IKEv1 and IKEv2 have different historical behavior when it comes to IKE identities. In practice,
+    it's generally recommended to explicitly set all ID values in the connection local/remote authentication,
+    as well as the local/remote IDs of the pre-shared keys or local IDs for key-pairs. Leaving these empty
+    will often default to the local IP on the local side and :code:`%any` for the remote side. This means
+    that if you have PSKs linked to your local IP, these are elligible to be used for other connections
+    as well.
+
+
+.. Tip::
+
+    If you have configured the correct PSK on both peers, but the tunnel is still not authenticating,
+    look for lines in the log on the **responder** side matching something like:
+
+    :code:`looking for peer configs matching 203.00.113.10[moon.strongswan.org]...198.51.100.20[carol@strongswan.org]`
+
+    The parts outside brackets are the IKE SA IPs and the bracketed parts are IKE identities.
+    This will quickly show you if one of the peers expects a differente IKE Identity.
+
+
+.................................
 Road Warriors / Mobile users
 .................................
 
