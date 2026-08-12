@@ -31,6 +31,104 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.7.2 (August 12, 2026)
+--------------------------------------------------------------------------
+
+
+This update addresses the WireGuard MAC authentication issue people have
+been talking about, 4 core security advisories and the usual volume of
+quality of life improvements and bug fixes.
+
+We are currently improving the compatibility with the legacy pages in
+full privilege separation, working on feature parity between Outbound
+NAT and Source NAT and will also provide a road map in the next weeks
+for 27.1.  Stay tuned.
+
+Here are the full patch notes:
+
+* system: use /var/lib/php/tmp in static pages for proper privilege separation
+* system: improve "user-config-readonly" in static pages where write_config() was denied
+* system: service widget changes based on further community feedback
+* system: support 7680 bit RSA type for certificates and authorities
+* system: add redirection capability to SSO provider
+* reporting: correctly map NetFlow indexes when there are gaps (contributed by Thomas Cheyney)
+* reporting: improve parsing in NetFlow for overlapping flow timestamps and use UTC for cleanups
+* reporting: make parsing iftop lines more robust for traffic graphs (contributed by Brendan Bank)
+* reporting: map ARC and laundry to cache memory stats (contributed by Konstantinos Spartalis)
+* reporting: stop NetFlow service before reloading configuration
+* interfaces: fix assignment of wireless devices
+* interfaces: strict description fields in new assignments page `[1] <https://github.com/opnsense/core/security/advisories/GHSA-9h93-hhcx-957c>`__  (reported by call-AX)
+* interfaces: fix typos in GIF reconfiguration script
+* interfaces: add "noclamp" flag for GIF
+* interfaces: add separate link types for IPv4 and IPv6 in overview
+* interfaces: return the proper UUID when assigning an interface (contributed by Kemoy Campbell)
+* interfaces: improve VIP page save when no subnet was posted
+* firewall: use htmlSafe() on action search value in live log `[1] <https://github.com/opnsense/core/security/advisories/GHSA-9h93-hhcx-957c>`__  (reported by call-AX)
+* firewall: group invalid rules to the end of the ruleset
+* firewall: enable virtualDOM and refactor commands on alias page
+* firewall: add "endpoint-independent" support for UDP translations (full cone NAT) in source NAT
+* firewall: fix missing well-known ports in local-port in destination NAT
+* firewall: add "max-pkt-rate" rate limiting option to firewall rules
+* firewall: add proper support for container items in search field selection, export and import data and implement it in destination NAT
+* firewall: scope get action to general settings in source NAT
+* kea: improve prefix watcher accuracy via both interface and MAC address key
+* kea: store subnet IDs inside the model so they cannot shift during config regeneration
+* kea: change dynamic pool range from prefix to range 1000-2000
+* kea: switch custom DHCP option config generation to libdhcp_flex_option library
+* openvpn: add some input validation for control characters in connection status `[2] <https://github.com/opnsense/core/security/advisories/GHSA-fqmm-g6xw-qhm4>`__  (reported by lujiefsi)
+* backend: sanitize template filename replacements
+* backend: further restrict actions to root and wwwonly for more sensitive actions
+* backend: ensure strict templates are not reloaded via "\*" wildcard
+* mvc: add some missing htmlSafe() calls for generated HTML `[3] <https://github.com/opnsense/core/security/advisories/GHSA-75fw-j788-j4hj>`__  (reported by lujiefsi)
+* mvc: create runInterfaceRegistation() and use it for immediate device registration
+* mvc: add some exception types and handle them in the base template
+* mvc: clean up a number of stale imports
+* mvc: translate backend system status messages
+* mvc: translate grid view labels
+* ui: add some more legacy_html_escape_form_data() safeguards `[4] <https://github.com/opnsense/core/security/advisories/GHSA-6vv6-fpw9-8r2g>`__  (reported by Arpit Jain)
+* ui: add tokenize2.css in standard theme to ensure selection in opnsense-auto theme
+* ui: prevent blinking by hiding the contents while loading for opnsense-auto theme
+* ui: fix collapsed sidebar stray line and restore rail divider in opnsense-dark theme (contributed by circa1665)
+* ui: restore stacked layout for interfaces widget on narrow (contributed by circa1665)
+* ui: fix minor JavaScript bugs in dashboard widget code (contributed by Thomas Schöpf)
+* ui: do not freeze commands column on touchscreen devices
+* ui: further fixes for base templates
+* ui: fix empty legacy firewall menu container glitch
+* plugins: os-caddy 2.2.0 `[5] <https://github.com/opnsense/plugins/blob/stable/26.7/www/caddy/pkg-descr>`__ 
+* plugins: os-frr 1.54 `[6] <https://github.com/opnsense/plugins/blob/stable/26.7/net/frr/pkg-descr>`__ 
+* plugins: os-intrusion-detection-content-at-antiphishing 1.0 `[7] <https://julioliraup.github.io/AT/>`__  (contributed by Julio Lira)
+* plugins: os-ndp-proxy-go 1.4 `[8] <https://github.com/opnsense/plugins/blob/stable/26.7/net/ndp-proxy-go/pkg-descr>`__ 
+* plugins: os-nrpe 1.2 `[9] <https://github.com/opnsense/plugins/blob/stable/26.7/net-mgmt/nrpe/pkg-descr>`__ 
+* plugins: os-theme-rebellion 1.9.6 (contributed by Team Rebellion)
+* src: pf: add missing PF_TS_CNT netlink attribute
+* src: pf: expose first rule label for states since rule number is insufficient
+* src: usb: bpfattach() before if_attach()
+* src: igc: disable PCIe ASPM to improve stability
+* src: ena: update driver version to v2.8.4
+* src: assorted minor commits from stable/15
+* src: coredump: do not assume that the number of ELF segments is consistent `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:55.elf.asc>`__ 
+* src: sysvsem: fix a TOCTOU race in semctl() `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:54.sysvsem.asc>`__ 
+* src: jail: restore ktrace privileges for jailed root `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:53.ktrace.asc>`__ 
+* src: ktimer: check for errors from realtimer_gettime() `[13] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:51.ktimer.asc>`__ 
+* src: kqueue: avoid enqueuing an already-enqueued knote `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:50.kqueue.asc>`__ 
+* src: zfs: multiple fixes `[15] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:19.zfs.asc>`__ 
+* src: tzdata: import 2026c `[16] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:18.tzdata.asc>`__ 
+* src: wg: check for crypto operation errors `[17] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:52.if_wg.asc>`__ 
+* src: revert "daemon: replace memchr with memrchr"
+* ports: dpinger 3.6
+* ports: hostapd / wpa_supplicant 2.12
+* ports: nss 3.126 `[18] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_126.html>`__ 
+* ports: openldap 2.6.14 `[19] <https://www.openldap.org/software/release/changes_lts.html>`__ 
+* ports: openssh 10.4p1 `[20] <https://www.openssh.com/txt/release-10.4>`__ 
+* ports: openvpn 2.7.6 `[21] <https://github.com/OpenVPN/openvpn/blob/v2.7.6/Changes.rst>`__ 
+* ports: phalcon 5.18.2 `[22] <https://github.com/phalcon/cphalcon/releases/tag/v5.18.2>`__ 
+* ports: py-duckdb 1.5.5 `[23] <https://github.com/duckdb/duckdb/releases/tag/v1.5.5>`__ 
+* ports: python 3.13.15 `[24] <https://docs.python.org/release/3.13.15/whatsnew/changelog.html>`__ 
+* ports: unbound 1.26.0 `[25] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-26-0>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.7.1 (July 21, 2026)
 --------------------------------------------------------------------------
 
