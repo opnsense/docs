@@ -126,6 +126,19 @@ Strict SNI Check                 Respond with an error when a client requests an
 Server Name                      The default name of this server. It is also used for the default catch-all virtual server if "Strict SNI Check" is enabled.
 Error Document                   Choose error documents to use for common issues, like page not found.
                                  This will be added to the default catch-all virtual server if "Strict SNI Check" is enabled.
+**Server Limits**
+Limit Internal Recursion         The limit prevents the server from crashing when entering an infinite loop of internal redirects or subrequests.
+                                 Such loops are usually caused by misconfigurations.
+Limit Request Body               The limit (in bytes) on the allowed size of an HTTP request message body. If the client request exceeds that limit,
+                                 the server will return an error response instead of servicing the request.
+Limit Request Fields             The limit on the number of request header fields allowed in an HTTP request.
+                                 A server needs this value to be larger than the number of fields that a normal client request might include.
+Limit Request Size               The limit (in bytes) on the allowed size of an HTTP request header field. A server needs this value to be large
+                                 enough to hold any one header field from a normal client request.
+Limit Request Line               The limit (in bytes) on the allowed size of a client's HTTP request-line. Since the request-line consists of the
+                                 HTTP method, URI, and protocol version, the LimitRequestLine directive places a restriction on the length of a
+                                 request-URI allowed for a request on the server.
+Limit XML Request Body           The limit (in bytes) on the maximum size of an XML-based request body.
 ================================ ========================================================================================
 
 Web Protection
@@ -295,6 +308,10 @@ Connection timeout               Connect timeout in seconds. The number of secon
 timeout                          Socket timeout in seconds. The number of seconds the server waits for data sent by / to the backend.
 Response field size              Adjust the size of the proxy response field buffer. The buffer size should be at least the
                                  size of the largest expected header size from a proxied response.
+nocanon                          Normally, mod_proxy will canonicalise ProxyPassed URLs. But this may be incompatible with some backends,
+                                 particularly those that make use of PATH_INFO. The optional nocanon keyword suppresses this and passes
+                                 the URL path raw to the backend. Note that this keyword may affect the security of your backend,
+                                 as it removes the normal limited protection against URL-based attacks provided by the proxy.
 ================================ ========================================================================================
 
 
