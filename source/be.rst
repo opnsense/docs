@@ -24,6 +24,7 @@ Currently, the only open source LINCE compliant firewall.
 * Official OPNsense Open Virtualisation Image
 * Central Management, including easy one click remote host access, provisioning and monitoring.
 * Web Application Firewall
+* Authoritative DNS server
 * Free E-Book (English & German)
 
 More information:
@@ -33,6 +34,7 @@ More information:
    :titlesonly:
 
    vendor/deciso/opncentral
+   vendor/deciso/opndns
    vendor/deciso/opnwaf
    vendor/deciso/oidc
    vendor/deciso/userportal
