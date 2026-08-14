@@ -21,6 +21,94 @@ https://downloads.opnsense.com/
 
 
 --------------------------------------------------------------------------
+26.4.2 (August 14, 2026)
+--------------------------------------------------------------------------
+
+This business release is based on the OPNsense 26.1.11 community version
+with additional reliability improvements.
+
+Please note that this release offers source NAT as a tentative replacement
+for outbound NAT.  Feature parity is a work in progress for the 26.10 series.
+For now, please be aware that source NAT continues to work as before,
+but the GUI will not allow you to edit the source NAT rules unless you
+choose hybrid or manual mode in the settings.  This aligns with how the
+outbound NAT page is working.  Starting with 26.10, the hybrid or manual
+mode will be required to render source NAT rules into the firewall.
+
+Here are the full patch notes for the initial release:
+
+* system: improve the log_archive script to also work on log subdirectories
+* system: routing: changed "disable" option to "enable"
+* system: add "local_uri" type in SanitizeFilter() and use it to avoid hardcoding
+* system: several compatible adjustments for upcoming PHP 8.5
+* system: enhance live log widget (contributed by Greelan)
+* system: support 7680 bit RSA type for certificates and authorities
+* reporting: improve parsing in NetFlow for overlapping flow timestamps and use UTC for cleanups
+* reporting: stop NetFlow service before reloading configuration
+* interfaces: properly format API times to ISO format and convert timezone for display in automatic discovery
+* interfaces: fix typos in GIF reconfiguration script
+* interfaces: improve VIP page save when no subnet was posted
+* firewall: use htmlSafe() on action search value in live log `[1] <https://github.com/opnsense/core/security/advisories/GHSA-9h93-hhcx-957c>`__  (reported by call-AX)
+* firewall: always show automatic and legacy rules in new rules GUI
+* firewall: add the same new rules GUI design to the MVC NAT pages
+* firewall: add CSV download/upload to MVC NAT pages
+* firewall: add migration for outbound NAT into source NAT page
+* firewall: destination NAT: display effective port when local-port is omitted
+* firewall: source NAT: allow empty target which means the interface address
+* firewall: source NAT: skip rendering rules when mode is not advanced/manual or hybrid
+* firewall: improve performance on MVC pages using virtualDOM
+* firewall: allow WAN as "associated interface" for NPTv6 when prefix ID is set
+* firewall: fix TypeError on alias getItem() with unknown UUID (contributed by haxorton)
+* firewall: show rule counts that can be exported and hide tab if no rules exist
+* firewall: improve interface filter logic to include floating rules with multiple interfaces when they overlap with at least one interface in the interface filter request
+* firewall: add validations for "No RDR" option to prevent target and local-port being set
+* firewall: fix some small issues in menu registration for legacy pages
+* firewall: constraint source NAT getAction() to only general page and align setAction() accordingly
+* firewall: scope get action to general settings in source NAT
+* kea: prevent converting the decimal prefix_id using hexdec() for dynamic PD
+* kea: add widget to show DHCP leases
+* kea: simplify model option values
+* kea: improve prefix watcher accuracy via both interface and MAC address key
+* kea: store subnet IDs inside the model so they cannot shift during config regeneration
+* kea: change dynamic pool range from prefix to range 1000-2000
+* kea: switch custom DHCP option config generation to libdhcp_flex_option library
+* openvpn: add some input validation for control characters in connection status `[2] <https://github.com/opnsense/core/security/advisories/GHSA-fqmm-g6xw-qhm4>`__  (reported by lujiefsi)
+* openvpn: simplify model option values
+* unbound: switch AAAA-only mode from respip to block_a_wdata (contributed by Maurice Walker)
+* unbound: update Hagezi blocklists to use new mirror URL
+* mvc: add some missing htmlSafe() calls for generated HTML `[3] <https://github.com/opnsense/core/security/advisories/GHSA-75fw-j788-j4hj>`__  (reported by lujiefsi)
+* mvc: guard BaseField::setNodes() against a list given for a scalar leaf (contributed by haxorton)
+* mvc: DescriptionField: disable special and newline characters
+* mvc: FileObject: fix exception bug (contributed by Greelan)
+* mvc: give throwReadOnly() a sibling named throwNotFullAdmin()
+* mvc: use camelCase for carp_status action
+* mvc: translate backend system status messages
+* mvc: translate grid view labels
+* ui: add some more legacy_html_escape_form_data() safeguards `[4] <https://github.com/opnsense/core/security/advisories/GHSA-6vv6-fpw9-8r2g>`__  (reported by Arpit Jain)
+* ui: bootgrid: minor optimizations
+* plugins: os-OPNDNS 1.0 is an authoritative nameserver with RFC2136 support using PowerDNS `[5] <https://docs.opnsense.org/vendor/deciso/opndns.html>`__ 
+* plugins: os-OPNWAF 2.3
+* plugins: os-cloudflared 1.1 `[6] <https://github.com/opnsense/plugins/blob/stable/26.1/net/cloudflared/pkg-descr>`__ 
+* plugins: os-freeradius 1.10.2 `[7] <https://github.com/opnsense/plugins/blob/stable/26.1/net/freeradius/pkg-descr>`__ 
+* plugins: os-vnstat 1.4 `[8] <https://github.com/opnsense/plugins/blob/stable/26.1/net/vnstat/pkg-descr>`__ 
+* src: igc: disable PCIe ASPM to improve stability
+* src: ena: update driver version to v2.8.3
+* src: coredump: do not assume that the number of ELF segments is consistent `[9] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:55.elf.asc>`__ 
+* src: sysvsem: fix a TOCTOU race in semctl() `[10] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:54.sysvsem.asc>`__ 
+* src: wg: check for crypto operation errors `[11] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:52.if_wg.asc>`__ 
+* src: tzdata: import 2026c `[12] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:18.tzdata.asc>`__ 
+* ports: curl 8.21.0 `[13] <https://curl.se/changes.html#8_21_0>`__ 
+* ports: lighttpd 1.4.84 `[14] <https://www.lighttpd.net/2026/06/17/1.4.84/>`__ 
+* ports: openssh 10.4p1 `[15] <https://www.openssh.com/txt/release-10.4>`__ 
+* ports: openvpn 2.7.6 `[16] <https://github.com/OpenVPN/openvpn/blob/v2.7.6/Changes.rst>`__ 
+* ports: phalcon 5.16.0 `[17] <https://github.com/phalcon/cphalcon/releases/tag/v5.16.0>`__ 
+* ports: py-duckdb 1.5.4 `[18] <https://github.com/duckdb/duckdb/releases/tag/v1.5.4>`__ 
+* ports: python 3.13.15 `[19] <https://docs.python.org/release/3.13.15/whatsnew/changelog.html>`__ 
+* ports: syslog-ng 4.12.0 `[20] <https://github.com/syslog-ng/syslog-ng/releases/tag/syslog-ng-4.12.0>`__ 
+* ports: unbound 1.26.0 `[21] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-26-0>`__ 
+
+
+--------------------------------------------------------------------------
 26.4.1 (June 16, 2026)
 --------------------------------------------------------------------------
 
@@ -272,7 +360,7 @@ Here are the full patch notes for patch release 1:
 * src: audit: incorrect audit records for ptrace(2) syscall requests `[57] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:45.audit.asc>`__ 
 * src: ktls: remote DOS via uninitialized memory access in KTLS receive `[58] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:46.ktls.asc>`__ 
 * src: linux: kernel stack disclosure in Linux compatibility layer `[59] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:47.linux.asc>`__ 
-* src: iconf: multiple vulnerabilities in iconv(3) `[60] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:49.iconv.asc>`__ 
+* src: iconv: multiple vulnerabilities in iconv(3) `[60] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:49.iconv.asc>`__ 
 * ports: expat 2.8.2 `[61] <https://github.com/libexpat/libexpat/blob/R_2_8_2/expat/Changes>`__ 
 * ports: ldns 1.9.2 `[62] <https://github.com/NLnetLabs/ldns/blob/1.9.2/Changelog>`__ 
 

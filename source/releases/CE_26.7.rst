@@ -126,6 +126,11 @@ Here are the full patch notes:
 * ports: python 3.13.15 `[24] <https://docs.python.org/release/3.13.15/whatsnew/changelog.html>`__ 
 * ports: unbound 1.26.0 `[25] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-26-0>`__ 
 
+A hotfix release was issued as 26.7.2_2:
+
+* unbound: switch AAAA-only mode from respip to block_a_wdata (contributed by Maurice Walker)
+* ui: bootgrid: classname can depend on state, accept a callback function
+
 
 
 --------------------------------------------------------------------------
