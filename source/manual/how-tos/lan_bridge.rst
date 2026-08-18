@@ -14,6 +14,10 @@ the extra load placed upon it by the bridge.
 When creating a LAN bridge it is essential that you have physical access to the device,
 you will need to swap the LAN  connection at a certain point.
 
+Various bridge configurations are supported. This how-to describes how to configure a Layer 2 bridge by combining
+the broadcast domains of three bridge member interfaces. The interfaces OPT1 (igb2), OPT2 (igb3), and OPT3 (igb1) are
+bridged to form a single logical LAN interface.
+
 **Step One**
 -----------------
 Configure OPNsense as normal, with a single LAN interface, make sure that it works correctly.
@@ -80,6 +84,20 @@ Select the tunable net.link.bridge.pfil_bridge and set the value to 1
 
 .. image:: images/lan_bridge_7.png
 	:width: 100%
+
+**Step Seven**
+-----------------    
+
+OPT1, OPT2, and OPT3 are now configured as a single broadcast domain. However, IP traffic between bridge member
+interfaces is still subject to the firewall rules and is blocked by the default **"Default deny / state violation"** rule
+unless explicitly permitted.
+
+If port isolation is not desired, add a firewall rule to allow the traffic: :menuselection:`Firewall --> Rules --> LAN`
+
+.. image:: images/lan_bridge_9.png
+	:width: 100%
+
+Repeat this step for IPv6, if required.
 
 **Final**
 -----------------    
