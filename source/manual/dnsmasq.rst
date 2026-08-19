@@ -98,6 +98,7 @@ when received from the network. DHCP requires at least one dhcp-range and matchi
                                                   disables DNS function.
         **DNSSEC**                                Enable DNSSEC.
         **No Hosts Lookup**                       Do not read hostnames in /etc/hosts.
+        **Expand hosts**                          Append the configured domain to simple hostnames read from hosts files.
         **Log the results of DNS queries**        Log all DNS queries.
         **Maximum concurrent queries**            Set the maximum number of concurrent DNS queries. On configurations with tight
                                                   resources, this value may need to be reduced.
