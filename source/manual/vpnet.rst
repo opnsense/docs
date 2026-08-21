@@ -935,29 +935,35 @@ as additional security measure. The "*Allowed IPs*" define the networks that are
 Peer generator
 .................................
 
-When creating login credentials for multiple clients, a more practical method is also available to generate these.
-The peer generator offers you a simple selection for the instance you wish to generate credentials for and stores relevant fields
-like endpoint location for future use.
-It also helps to assign IP addresses to clients based on the network defined in the instance.
+When creating login credentials for multiple clients, the peer generator offers a convenient way to create and configure them.
+
+The generator lets you select the WireGuard instance the new peer should belong to and automatically derives suitable client addresses from the networks configured on that instance.
+It also stores generator defaults on the selected instance so they can be reused for future peers.
 
 .. Warning::
 
-  Since IP addresses are only stored when the user saves the profile (and calculated upfront), it's not possible to create users for the same
-  instance concurrently.
+   Since IP addresses are calculated before the peer is stored, creating multiple peers for the same instance concurrently can result in the same address being proposed more than once.
 
-Each newly created client will receive a keypair, for which the public key will be stored on the firewall in the peers section.
+Each newly created peer receives a key pair. By default, only the public key is stored on the firewall.
 
-.. Note::
+.. Attention::
 
-    The private key will not be stored on the firewall as this only belongs to the device your installing the profile on.
-    Regenerating a config file, automatically means you will need to import it again in the client as well to avoid trust
-    being broken.
+   Storing the peer private key on the firewall is optional and disabled by default.
 
-After providing the relevant information for the client to login, you can copy the qrcode or the text in the :code:`Config`
-text box to configure the client.
+   The private key normally only belongs on the client device. Enabling private key storage makes it possible to reconstruct the generated client configuration later, but also means that the client's private key is retained in the firewall configuration.
 
-Don't forget to press the "Store and generate next" button to actually store the public information in the firewall and click "Apply" on the "Peers" page so the client
-is able to login.
+   Only enable this option when the convenience of being able to retrieve the client configuration again outweighs the additional exposure of storing the private key on the firewall.
+
+
+After providing the relevant client information, the generated configuration can be copied from the :code:`Config` field or imported using the displayed QR code.
+
+When private key storage was enabled while creating the peer, the peer can later be opened again from the :menuselection:`Peers` page using the QR code action. This opens the peer generator in reference mode and reconstructs the client configuration and QR code from the stored peer and instance information.
+
+Peers created without private key cannot have their original client configuration or QR code reconstructed later, because the required private key was never retained by the firewall.
+
+The peer generator uses values stored on the selected instance as defaults for newly generated configurations. These include the client endpoint, DNS servers and allowed IPs and can be changed in the instance configuration.
+
+Peer-specific values, such as the assigned tunnel address, preshared key and keepalive interval, remain part of the peer configuration.
 
 
 .................................
