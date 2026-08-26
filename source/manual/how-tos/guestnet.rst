@@ -31,6 +31,8 @@ hotels, RV Parks or businesses.
     for you. Consider using 802.1X network access control backed by a RADIUS/
     policy server instead.
 
+    Note that this is less relevant if you use a layer 3 network such as WireGuard.
+
 ----------
 Businesses
 ----------
