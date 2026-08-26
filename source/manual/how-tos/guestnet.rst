@@ -13,6 +13,24 @@ hotels, RV Parks or businesses.
     actual guest network switch or access point. This tutorial does not explain
     how to setup a wireless network.
 
+.. admonition:: Security considerations
+    :class: attention
+
+    The Captive portal functionality operates entirely on the information
+    available in the network. Protocols such as ARP or NDP do not provide any
+    inherent proof of ownership. Since the portal has no control over the client,
+    it is impossible to cryptographically prove a relationship between identity
+    and device. Therefore, to improve security, the layer 2 network(s) attached
+    to the portal must be properly isolated on the access point/switch level.
+
+    These features are often called "layer 2 isolation" for access points or
+    "port isolation" for switches and prevent direct client-to-client communication.
+    These features cannot prevent spoofing, but lower visibility in the network.
+
+    If stronger identity is a requirement, the Captive Portal likely isn't
+    for you. Consider using 802.1X network access control backed by a RADIUS/
+    policy server instead.
+
 ----------
 Businesses
 ----------
