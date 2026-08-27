@@ -55,10 +55,25 @@ In the following sample you see a screenshot of the Category **System**, with:
 
 .. image:: images/submenu.png
 
-Quick Navigation
-----------------
-A faster way to navigate through the GUI is by using the quick navigation/search box
-on the upper right corner of the screen. Either click on it or hit tab to select it.
+Favorites
+---------
+Frequently used menu items can be added to a Favorites menu. This applies to
+Configuration level items, or Function level items if the Configuration level does
+not exist.
+
+To add or remove a Favorites menu item, hover over the page title with your mouse
+or tap it on a touch device. A favorite (star) icon will appear. Click or tap this
+icon to toggle the menu item as a favorite.
+
+Favorites are shown in the Favorites menu item at the top of the menu area, where
+they can be selected for quick access.
+
+.. image:: images/favorites.png
+
+Search Navigation
+-----------------
+Another way to navigate through the GUI is by using the search box on the upper
+right corner of the screen. Either click on it or hit tab to select it.
 
 The search field is a type-ahead field, meaning that it will guess what you are
 looking for and fill up while typing. Hit Enter or click on an option to select
