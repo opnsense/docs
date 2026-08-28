@@ -69,6 +69,7 @@ Favorites are shown in the Favorites menu item at the top of the menu area, wher
 they can be selected for quick access.
 
 .. image:: images/favorites.png
+    :width: 500px
 
 Search Navigation
 -----------------
