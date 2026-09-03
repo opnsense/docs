@@ -39,7 +39,7 @@ the internal IP, in order to avoid taking a detour and applying rules meant for 
 .. Note::
     The NAT rules generated with enabling **NAT reflection** only include networks directly connected to your
     Firewall. This means if you have a private network separated from your LAN you need to add this with a
-    manual outbound NAT rule.
+    manual Source NAT (Outbound) rule.
 
 **Pool options**: When there are multiple IPs to choose from, this option will allow regulating which IP gets used.
 The default, Round Robin, will simply distribute packets to one server after the other. If you only have one external
@@ -242,67 +242,25 @@ When adding a rule, the following fields are available:
       ========================================= ====================================================================================
 
 
---------
-Outbound
---------
+----------------------------
+Source NAT (Outbound)
+----------------------------
 
 When a client on an internal network makes an outbound request, the gateway will have to change the source IP to
 the external IP of the gateway, since the outside server will not be able to send an answer back otherwise.
 
-Outbound NAT is also referred to as “Source NAT” or “SNAT”.
+Source NAT (Outbound), abbreviated to SNAT, can be configured under
+:menuselection:`Firewall --> NAT --> Source NAT (Outbound)`.
 
-If you only have one external IP, then you leave the Outbound NAT options on automatic. However, if you have
-multiple IP addresses, you might want to change the settings and add some custom rules.
+If you only have one external IP, the automatic mode is suitable in most cases. With multiple external addresses,
+you may want to use hybrid or manual mode and add custom rules.
 
-The main settings for outbound are as follows:
-
-======================================== =====================================================================================================
- Automatic outbound NAT rule generation   The default. Follows the behaviour described above, and is good for most scenarios.
- Manual outbound NAT rule generation      No automatic rules are generated. They can be added manually.
- Hybrid outbound NAT rule generation      Automatic rules are added, but additional manual rules can be added as well.
- Disable outbound NAT rule generation     Disables outbound NAT. This is used for :doc:`transparent bridges <how-tos/transparent_bridge>`, for example.
-======================================== =====================================================================================================
-
-New rules can be added by clicking **Add** in the upper right corner.
-
-When adding a rule, the following fields are available:
-
-=====================  ==========================================================================================================
- Disabled               Disable this rule without removing it.
- Do not NAT             Disable NAT for all traffic matching this rule. Leave this disabled unless you know what you are doing.
- Interface              Which interface this rule should apply to. Most of the time, this will be WAN.
- TCP/IP version         IPv4 or IPv6
- Protocol               In typical scenarios, this will be TCP.
- Source invert          Invert match in “Source” field.
- Source                 The source network to match
- Source port            When applicable, the source port we should match on.
-                        This is usually random and almost never equal to the destination port range (and should usually be 'any').
- Destination invert     Invert match in “Destination” field.
- Destination            Destination network to match
- Destination port       Service port the traffic is using
- Translation / target   What to translate matching packets to.
- Log                    Put packets matching this rule in the logs. Use this sparingly to avoid overflowing the logs.
- Translation / port     Which port to use on the target
- Static-port            Prevents pf(4) from modifying the source port on TCP and UDP packets.
- Pool options           See “Some terms explained”. The default is to use Round robin.
- Set local tag          Set a tag that other NAT rules and filters can check for.
- Match local tag        Check for a tag set by another rule.
- No XMLRPC sync         Prevent this rule from being synced to a backup host. (Checking this on the backup host has no effect.)
- Description            A description to easily find the rule in the overview.
-=====================  ==========================================================================================================
-
-
-------------------------------
-Source NAT
-------------------------------
-
-When a client on an internal network makes an outbound request, the gateway will have to change the source IP to
-the external IP of the gateway, since the outside server will not be able to send an answer back otherwise.
-
-.. Attention::
-
-   This is the MVC implementation of :menuselection:`Firewall --> NAT --> Outbound`, some features are not yet available.
-   Created rules are not visible between components. The automatic Outbound NAT rule generation mode cannot be changed here.
+====================================== =====================================================================================================
+ Automatic Source NAT rule generation  The default. Follows the behaviour described above, and is suitable for most scenarios.
+ Manual Source NAT rule generation     No automatic rules are generated. They can be added manually.
+ Hybrid Source NAT rule generation     Automatic rules are generated, and additional manual rules can be added.
+ Disable Source NAT rule generation    Disables Source NAT. This is used for :doc:`transparent bridges <how-tos/transparent_bridge>`, for example.
+====================================== =====================================================================================================
 
 When adding a rule, the following fields are available:
 
@@ -316,6 +274,7 @@ When adding a rule, the following fields are available:
       **Enable**                                Enable this rule
       **Sequence**                              Rules are evaluated in sequence order.
       **Categories**                            Assign categories for rule organization.
+      **No XMLRPC Sync**                        Exclude this rule from HA synchronization.
       **Description**                           Enter a description to identify this rule.
       ========================================= ====================================================================================
 
@@ -359,6 +318,10 @@ When adding a rule, the following fields are available:
       ========================================= ====================================================================================
       **Translate Source IP**                   Packets matching this rule will be mapped to the IP address given here.
       **Translate Source Port**                 Source port number or well-known name.
+      **Pool Options**                          Choose how traffic is distributed between multiple translation addresses.
+      **Source Hash Key**                       Keep source-hash mappings stable across ruleset reloads.
+      **Static-port**                           Prevent changes to the source port of TCP and UDP packets.
+      **Endpoint Independent**                  Enable endpoint-independent mapping for UDP traffic.
       ========================================= ====================================================================================
 
    .. tab:: Options
@@ -367,8 +330,9 @@ When adding a rule, the following fields are available:
       **Option**                                **Description**
       ========================================= ====================================================================================
       **Do not NAT**                            Enabling this option will disable NAT for traffic matching this rule and stop
-                                                processing Outbound NAT rules.
+                                                processing Source NAT rules.
       **Log**                                   Log packets that are handled by this rule.
+      **Set local tag**                         Assign a tag that other NAT or filter rules can match.
       **Match local tag**                       Used to specify that packets must already be tagged with the given tag in order
                                                 to match the rule.
       ========================================= ====================================================================================

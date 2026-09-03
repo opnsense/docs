@@ -113,8 +113,8 @@ Network Address Translation (NAT)
 
 If you want OPNsense to act as an **exit node** for Netbird peers:
 
-1. Go to **Firewall** → **NAT** → **Outbound**.
-2. Set the mode to **Hybrid NAT**.
+1. Go to **Firewall** → **NAT** → **Source NAT (Outbound)**.
+2. Set the mode to **Hybrid Source NAT rule generation**.
 3. Add a rule to **translate traffic from Netbird (``wt0``) to the WAN interface**.
 4. Save and apply changes.
 

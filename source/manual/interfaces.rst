@@ -59,7 +59,7 @@ For IPv4:
 =============================== ===============================================================================================================================================================================================================
  **Static IPv4 configuration**
  IPv4 address
- IPv4 gateway rules              When a gateway is set here, packets entering the interface will also sent out on the same interface when replied. In addition outbound NAT will be set up automatically when mode is set to *Automatic* or *Hybrid*.
+ IPv4 gateway rules              When a gateway is set here, packets entering the interface will also sent out on the same interface when replied. In addition Source NAT will be set up automatically when mode is set to *Automatic* or *Hybrid*.
  **DHCP client configuration**
  Configuration Mode
  Alias IPv4 address              Used as a fixed alias IPv4 address by the DHCP client.

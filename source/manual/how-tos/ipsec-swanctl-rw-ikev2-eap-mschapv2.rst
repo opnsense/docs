@@ -245,7 +245,7 @@ Press **+** to add a new Child, enable **advanced mode** with the toggle.
     With children you select the networks your roadwarrior should be able to access. In a split tunnel scenario, you would specify the example LAN nets ``192.168.1.0/24`` and  ``2001:db8:1234:1::/64`` as local traffic selectors. In a full tunnel scenario (all traffic forced through the tunnel) you would specify ``0.0.0.0/0`` and ``::/0`` as local traffic selectors. The following example child will use the full tunnel method. A full tunnel is generally more secure - especially with IPv6 involved - since no traffic can leak.
 
 
-Now you can skip to :ref:`Firewall rules, Outbound NAT and DNS <rw-swanctl-fw-nat-dns>`
+Now you can skip to :ref:`Firewall rules, Source NAT and DNS <rw-swanctl-fw-nat-dns>`
 
 .. _rw-swanctl-method2:
 
@@ -711,10 +711,10 @@ Postrequisites
 
 .. _rw-swanctl-fw-nat-dns:
 
-Firewall rules, Outbound NAT and DNS
+Firewall rules, Source NAT and DNS
 ------------------------------------
 
-Now that you have configured split or full tunnel mode, you need rules to allow the traffic into your LAN and to the WAN (Internet). For IPv4 connection to the WAN (Internet) you need an Outbound NAT rule for IP-Masquerading. If you want the OPNsense to handle DNS, you can to configure Unbound so your roadwarriors use it as DNS server to prevent DNS leaks.
+Now that you have configured split or full tunnel mode, you need rules to allow the traffic into your LAN and to the WAN (Internet). For IPv4 connection to the WAN (Internet) you need a Source NAT rule for IP-Masquerading. If you want the OPNsense to handle DNS, you can to configure Unbound so your roadwarriors use it as DNS server to prevent DNS leaks.
 
 .. Tip::
     If you have internal IPv4 services (like a mailserver) that have external IPs in their DNS A-Records, you should configure Reflection NAT. There is a tutorial in the How-To section of Network Address Translation. If you follow it, add the ``ipsec`` interface in the Destination NAT (Port Forward) rules you create.
@@ -851,10 +851,10 @@ The **last matching** rules can allow Internet access if you have configured a f
 .. Note::
     By setting **Destination / Invert** you invert the match of the alias. Do not use "Any" as Destination to the Internet, since it also includes all networks that are locally attached to your firewall.
 
-Firewall: NAT: Outbound
+Firewall: NAT: Source NAT
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For IPv4 Internet access to work, you need to set up an Outbound NAT rule for IP-Masquerading. Start by enabling at least **Hybrid outbound NAT rule generation** and **Save**. Otherwise you cannot add your new manual NAT rule.
+For IPv4 Internet access to work, you need to set up a Source NAT rule for IP-Masquerading. Start by enabling at least **Hybrid Source NAT rule generation** and **Save**. Otherwise you cannot add your new manual NAT rule.
 
     ==============================================  ====================================================================================================
     **Interface**                                   WAN

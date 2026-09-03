@@ -153,7 +153,7 @@ Redirect gateway        Leave empty :sup:`4`
 .. admonition:: Note  :sup:`4`
 
    If you want all outgoing IP traffic to be redirected over the VPN, you can set the option to :code:`default`.
-   For this to work, a manual NAT outbound rule must be created.
+   For this to work, a manual Source NAT rule must be created.
 
 Next go to :menuselection:`Firewall --> Rules --> WAN` and add a rule to allow traffic on port :code:`1194/UDP` from the other
 host. At minimum we should add a rule similar to this one:

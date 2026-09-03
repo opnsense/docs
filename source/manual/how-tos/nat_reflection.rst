@@ -26,7 +26,7 @@ Because there are not enough available IPv4 addresses, a workaround called *NAT*
 
     SNAT - Source Network Address Translation
         * Changes the source IP of a packet
-        * `Firewall --> NAT --> Outbound` using the option *Translation / target* in a rule
+        * `Firewall --> NAT --> Source NAT (Outbound)` using the option *Translate Source IP* in a rule
     DNAT - Destination Network Address Translation
         *  Changes the destination IP of a packet
         * `Firewall --> NAT --> Destination NAT (Port Forward)` using the option *Redirect target IP* in a rule
@@ -52,9 +52,9 @@ That's where Reflection NAT comes into play. It creates NAT rules which help you
 .. Attention::
     You should choose your preferred Reflection NAT method from the three possible choices presented here. They're exclusive to each other, picking one method and sticking to it will prevent mistakes.
 
-    * :ref:`Method 1 <nat-method1>` - Creating **manual** Port-Forward NAT (DNAT), **manual** Outbound NAT (SNAT), and **automatic** firewall rules
-    * :ref:`Method 2 <nat-method2>` - Creating **automatic** Port-Forward NAT (DNAT), **manual** Outbound NAT (SNAT), and **manual** firewall rules
-    * :ref:`Method 3 <nat-method3>` - Creating **automatic** Port-Forward NAT (DNAT), **automatic** Outbound NAT (SNAT), and **manual** firewall rules
+    * :ref:`Method 1 <nat-method1>` - Creating **manual** Port-Forward NAT (DNAT), **manual** Source NAT (SNAT), and **automatic** firewall rules
+    * :ref:`Method 2 <nat-method2>` - Creating **automatic** Port-Forward NAT (DNAT), **manual** Source NAT (SNAT), and **manual** firewall rules
+    * :ref:`Method 3 <nat-method3>` - Creating **automatic** Port-Forward NAT (DNAT), **automatic** Source NAT (SNAT), and **manual** firewall rules
 
 .. Note::
     * **Reflection NAT:** The client and the server are in different subnets (layer 2 broadcast domains) and the OPNsense routes traffic between them. They can't communicate directly by resolving ARP requests. You only need DNAT.
@@ -79,11 +79,11 @@ The goal is to access the Webserver ``172.16.1.1`` on port ``443`` with it's ext
 
 .. _nat-method1:
 
-Method 1 - Creating manual Port-Forward NAT (DNAT), manual Outbound NAT (SNAT), and automatic firewall rules
+Method 1 - Creating manual Port-Forward NAT (DNAT), manual Source NAT (SNAT), and automatic firewall rules
 ------------------------------------------------------------------------------------------------------------
 
 Go to :menuselection:`Firewall --> Settings --> Advanced`
-    Disable *Reflection for Destination NAT (Port Forwards)*, *Reflection for 1:1* and *Automatic outbound NAT for Reflection*
+    Disable *Reflection for Destination NAT (Port Forwards)*, *Reflection for 1:1* and *Automatic Source NAT (Outbound) for Reflection*
 
 .. _nat-method1-portforward:
 
@@ -122,11 +122,11 @@ Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
 
 .. _nat-method1-outbound:
 
-Go to :menuselection:`Firewall --> NAT --> Outbound`
-    Select *Hybrid outbound NAT rule generation* and save. That way you can have manual outbound rules in conjunction with automatic IP-Masquerading rules. You could also choose *Manual outbound NAT rule generation*. Please make sure that you create your own IP-Masquerading rules with the *manual outbound NAT* enabled.
+Go to :menuselection:`Firewall --> NAT --> Source NAT (Outbound)`
+    Select *Hybrid Source NAT rule generation* and save. That way you can have manual Source NAT rules in conjunction with automatic IP-Masquerading rules. You could also choose *Manual Source NAT rule generation*. Please make sure that you create your own IP-Masquerading rules with manual Source NAT enabled.
 
 
-    Select **+** to create a new Outbound NAT rule.
+    Select **+** to create a new Source NAT rule.
 
     =========================  ================================
     Interface:                 Select ``DMZ`` - It's the interface of the subnet the Webserver is in.
@@ -158,7 +158,7 @@ If you encounter any issues, check :ref:`Troubleshooting NAT Rules <troubleshoot
 
 .. _nat-method2:
 
-Method 2 - Creating Automatic Port-Forward NAT (DNAT), Manual Outbound NAT (SNAT), and Manual firewall rules
+Method 2 - Creating Automatic Port-Forward NAT (DNAT), Manual Source NAT (SNAT), and Manual firewall rules
 ------------------------------------------------------------------------------------------------------------
 
 Go to :menuselection:`Firewall --> Settings --> Advanced`
@@ -184,17 +184,17 @@ Go to :menuselection:`Firewall --> Rules --> Floating`
     Description:               Input ``Reflection NAT Rule Webserver 443``
     =========================  ================================
 
-Go to :menuselection:`Firewall --> NAT --> Outbound`
-    Create the NAT rule as in :ref:`Method 1 - Outbound <nat-method1-outbound>`
+Go to :menuselection:`Firewall --> NAT --> Source NAT (Outbound)`
+    Create the NAT rule as in :ref:`Method 1 - Source NAT <nat-method1-outbound>`
 
 .. _nat-method3:
 
-Method 3 - Creating Automatic Port-Forward NAT (DNAT), Automatic Outbound NAT (SNAT), and Manual firewall rules
+Method 3 - Creating Automatic Port-Forward NAT (DNAT), Automatic Source NAT (SNAT), and Manual firewall rules
 ---------------------------------------------------------------------------------------------------------------
 
 Go to :menuselection:`Firewall --> Settings --> Advanced`
     Enable *Reflection for Destination NAT (Port Forward)s* to create automatic rules for all :menuselection: `Firewall --> NAT --> Destination NAT (Port Forward)` that have ``WAN`` as interface.
-    Enable *Automatic outbound NAT for Reflection* to create automatic SNAT rules.
+    Enable *Automatic Source NAT (Outbound) for Reflection* to create automatic SNAT rules.
 
 Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
     Create the NAT rule as in :ref:`Method 2 - Destination NAT (Port Forward) <nat-method2-portforward>`
@@ -208,7 +208,7 @@ One-to-One NAT Reflection
 
 When :menuselection:`Firewall --> Settings --> Advanced` *Reflection for 1:1* is activated, automatic Reflection NAT rules for all One-to-One NAT rules are generated.
 
-If you want to create manual Reflection and Hairpin NAT rules, leave *Reflection for 1:1* disabled and follow the steps in :ref:`Method 1 <nat-method1>`. The only change is not adding the WAN interface to the Destination NAT (Port Forward) rules you create. The resulting Destination NAT (Port Forward) and Outbound NAT rules are **in addition** to the existing One-to-One NAT rules.
+If you want to create manual Reflection and Hairpin NAT rules, leave *Reflection for 1:1* disabled and follow the steps in :ref:`Method 1 <nat-method1>`. The only change is not adding the WAN interface to the Destination NAT (Port Forward) rules you create. The resulting Destination NAT (Port Forward) and Source NAT rules are **in addition** to the existing One-to-One NAT rules.
 
 If your Destination NAT (Port Forward) rule has 1 interface selected (e.g. LAN), the resulting *Filter rule association: Add associated filter rule* will appear in :menuselection:`Firewall --> Rules --> LAN`. If you have more than 1 interface selected, it will appear in `Firewall --> Rules --> Floating`.
 
@@ -223,7 +223,7 @@ Troubleshooting NAT Rules
     * Display all loaded and active NAT rules:
     * ``pfctl -s nat``
     * "rdr" means :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` rules.
-    * "nat" means :menuselection:`Firewall --> NAT --> Outbound` rules.
+    * "nat" means :menuselection:`Firewall --> NAT --> Source NAT (Outbound)` rules.
     * You can also check the rules in the GUI in :menuselection:`Firewall --> Diagnostics --> Statistics`
 
 .. Tip::

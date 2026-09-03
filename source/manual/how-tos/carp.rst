@@ -182,18 +182,18 @@ And another using the following:
     services like DHCP Failover will fail with ``peer holds all free leases``.
 
 
-Setup outbound NAT
+Setup Source NAT
 ------------------
 
 When traffic is going out of the firewall it should also use the virtual
 IP address on the WAN interface to make seamless transitions possible. The 
-default NAT configuration is for OPNsense is to use Automatic outbound NAT 
+default NAT configuration is for OPNsense is to use Automatic Source NAT
 rule generation using the WAN interface's IP address for outgoing connections. 
 This will not allow seamless transitions and needs to be changed to the WAN 
 VIP.
 
-Go to :menuselection:`Firewall --> NAT --> Outbound`. Choose manual outbound
-nat rule generation. On this page create the a rule originating from the
+Go to :menuselection:`Firewall --> NAT --> Source NAT (Outbound)`. Choose manual Source
+NAT rule generation. On this page create the a rule originating from the
 192.168.1.0/24 network to use the CARP virtual interface (172.18.0.100).
 The rule should contain the following:
 
@@ -533,11 +533,11 @@ Backup node cannot reach internet
 ---------------------------------
 
 This issue usually occurs when an administrator is trying to update the machine while in backup mode,
-and while traffic from the LAN can reach the internet, the machine itself cannot. This is usually caused by a misconfigured outbound NAT rule.
+and while traffic from the LAN can reach the internet, the machine itself cannot. This is usually caused by a misconfigured Source NAT rule.
 If the source network of the rule is set to 'any', traffic originating from the firewall itself going to the internet is also translated
 to the CARP VIP, meaning the return traffic is sent to the master firewall, which ignores the traffic as the packets are out of state.
 
-The solution is to adjust the outbound NAT rule so that it only accepts traffic from the relevant source network, which is often any RFC1918 address.
+The solution is to adjust the Source NAT rule so that it only accepts traffic from the relevant source network, which is often any RFC1918 address.
 
 
 Split-brain

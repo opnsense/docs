@@ -20,7 +20,7 @@ In most cases the default setup is ready to use, below you will find some of the
 
     NTPd syncs the local clock to remote NTP servers and listens for incoming client queries using the selected interfaces.
     The interface selection must therefore include a WAN type interface so that normal routing to the internet can take place.
-    Only selecting a LAN type interface will likely work due to outbound NAT rules, however, if CARP is configured, it is
+    Only selecting a LAN type interface will likely work due to Source NAT rules, however, if CARP is configured, it is
     possible that such NAT rules will translate to the address of the CARP VIP, causing asymmetric routing for secondary nodes.
 
     Unless you are sure that you want to use a specific interface, it is recommended to keep the default of listening

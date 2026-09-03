@@ -130,7 +130,7 @@ NOTE the Source is "*"
 .. image:: images/tv_image15.png
     :width: 100%
 
-And finally the outbound
+And finally Source NAT
 
 .. image:: images/tv_image16.png
     :width: 100%

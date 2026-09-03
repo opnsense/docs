@@ -416,7 +416,7 @@ known interfaces in :menuselection:`Management -> Host configuration` on the Gen
 
 .. Note::
 
-    All NAT type rules (:code:`Port Forward`, :code:`One-to-One`, :code:`Outbound`, :code:`NPTv6`) are treated similar.
+    All NAT type rules (:code:`Port Forward`, :code:`One-to-One`, :code:`Source NAT (Outbound)`, :code:`NPTv6`) are treated similar.
 
 .. Note::
 

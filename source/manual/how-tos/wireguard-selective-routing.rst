@@ -226,11 +226,11 @@ Services running on the router and configured to use the VPN interface must have
 - **Save** the rule, and then click **Apply Changes**
 
 -------------------------------------
-Step 10 - Create an outbound NAT rule
+Step 10 - Create a Source NAT rule
 -------------------------------------
 
-- Go to :menuselection:`Firewall --> NAT --> Outbound`
-- Select "Hybrid outbound NAT rule generation” if it is not already selected, and click **Save** and then **Apply changes**
+- Go to :menuselection:`Firewall --> NAT --> Source NAT (Outbound)`
+- Select "Hybrid Source NAT rule generation” if it is not already selected, and click **Save** and then **Apply changes**
 - Click **Add** to add a new rule
 - Configure the rule as follows (if an option is not mentioned below, leave it as the default):
 
@@ -299,7 +299,7 @@ To configure the tunnel to use IPv6, you essentially need to replicate the steps
 - if necessary, create a separate local IPs alias for IPv6, so they can be excluded from the IPv6 firewall rule destination
 - create an IPv6 firewall rule (specifying the IPv6 gateway in the rule)
 - configure an IPv6 floating rule for routing (specifying the IPv6 gateway in the rule)
-- create an IPv6 outbound NAT rule
+- create an IPv6 Source NAT rule
 - (optionally) add the kill switch tag to the IPv6 firewall rule and change the associated Floating rule to IPv4+IPv6
 
 Note, however, that there are a couple of differences:

@@ -23,7 +23,7 @@ Network Address Translation
 .. Note::
     * Examine the automatic Reflection rules either in the shell with ``pfctl -s nat`` or in the GUI at :menuselection:`Firewall --> Diagnostics --> Statistics --> rules`.
     * :code:`rdr` means redirection. Redirection rules are :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` rules, also known as *Destination NAT*. *Destination NAT* changes the destination IP of a packet.
-    * :code:`nat` rules are :menuselection:`Firewall --> NAT --> Outbound` rules, also known as *Source NAT*. *Source NAT* changes the source IP of a packet.
+    * :code:`nat` rules are :menuselection:`Firewall --> NAT --> Source NAT (Outbound)` rules. *Source NAT* changes the source IP of a packet.
     * *Reflection NAT* is just :code:`rdr`. *Hairpin NAT* is a combination of :code:`rdr` and :code:`nat`.
 
 
@@ -43,8 +43,8 @@ Disabled by default, when enabled the system will generate redirect :code:`rdr` 
 the portforward option.
 
 
-Automatic outbound NAT for Reflection
-......................................
+Automatic Source NAT (Outbound) for Reflection
+..............................................
 
 Disabled by default, when enabled the system will generate :code:`nat` rules in addition to :code:`rdr` rules, effectively turning all Reflection NAT into Hairpin NAT.
 
@@ -112,7 +112,7 @@ By default schedules clear the states of existing connections when the expiratio
 Logging
 ------------------------------------
 
-Here the logging behaviour of the default block/pass, automatic outbound NAT as well as bogon and private network blocks can be adjusted.
+Here the logging behaviour of the default block/pass, automatic Source NAT as well as bogon and private network blocks can be adjusted.
 If disabled, only log directives from your manual rules will be show in the firewall log.
 
 Miscellaneous

@@ -71,7 +71,7 @@ in our experience most common:
 
 * Misconfigured DNS settings, check :menuselection:`System --> Settings --> General` for configured servers the firewall is allowed to use
 * Misconfigured IPv6, in which case "Prefer IPv4 over IPv6" in :menuselection:`System --> Settings --> General` might help to prevent the system from using IPv6 in these cases
-* In HA (carp) setups, using the wrong external IPaddress, usually caused by a misconfigued outbound nat rule, easy to check by disabling manual outbound nat rules in :menuselection:`Firewall --> NAT --> Outbound`.
+* In HA (CARP) setups, using the wrong external IP address, usually caused by a misconfigured Source NAT rule, is easy to check by disabling manual Source NAT rules in :menuselection:`Firewall --> NAT --> Source NAT (Outbound)`.
 
 The heath audit can also help with uncovering installation and disk / file system issues.
 Additionally, major ugpgrades may not pass certain sanity checks that need to be corrected first which may include the command line:
@@ -137,4 +137,3 @@ After save, go back to the status tab and click **Check for updates**
     Upgrading to OPNsense BE is only possible when the installed community version number is lower than the
     last available business edition. E.g. you can upgrade **22.7.x** to **22.10.x**, but you can not upgrade
     **23.1** to **22.10**. You can always re-install using the installer found on the `business mirror <https://opnsense-update.deciso.com/>`__
-

@@ -55,12 +55,12 @@ NOTE the Source is "*"
 .. image:: images/dt_ger_iptv_05.png
     :width: 100%
 
-And finally the outbound NAT
+And finally Source NAT
 
 .. image:: images/dt_ger_iptv_07.png
     :width: 100%
 
-I switched to Hybrid mode but it should also work in Automatic mode, because none of the outbound rules need to be modified.
+I switched to Hybrid mode but it should also work in Automatic mode, because none of the Source NAT rules need to be modified.
 
 Make sure you have clicked Save & Apply
 

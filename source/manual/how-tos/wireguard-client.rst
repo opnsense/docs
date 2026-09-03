@@ -98,7 +98,7 @@ Step 4(a) - Assign an interface to WireGuard (recommended)
 
     First, it generates an alias for the tunnel subnet(s) that can be used in firewall rules. Otherwise you will need to define your own alias or at least manually specify the subnet(s)
 
-    Second, it automatically adds an IPv4 outbound NAT rule, which will allow the tunnel to access IPv4 IPs outside of the local network (if that is desired), without needing to manually add a rule
+    Second, it automatically adds an IPv4 Source NAT rule, which will allow the tunnel to access IPv4 IPs outside of the local network (if that is desired), without needing to manually add a rule
 
     Finally, it allows separation of the firewall rules of each WireGuard instance (each :code:`wgX` device). Otherwise they all need to be configured on the default WireGuard group that OPNsense creates. This is more an organisational aesthetic, rather than an issue of substance
 
@@ -132,15 +132,15 @@ Step 4(a) - Assign an interface to WireGuard (recommended)
 
     If Unbound DNS is configured with all interfaces registered it requires a reload of Unbound DNS to get the new Wireguard interface added. This is necessary to get DNS working through the VPN tunnel.
 
-Step 4(b) - Create an outbound NAT rule
+Step 4(b) - Create a Source NAT rule
 ---------------------------------------
 
 .. Hint::
 
     This step is only necessary (if at all) to allow client peers to access IPs outside of the local IPs/subnets behind OPNsense - see the note under Step 4. If an interface has already been assigned under Step 4(a), then it is not necessary for IPv4 traffic, and is only necessary for IPv6 traffic if the tunnel uses IPv6 ULAs (IPv6 GUAs don't need NAT). So in many use cases this step can be skipped
 
-- Go to :menuselection:`Firewall --> NAT --> Outbound`
-- Select "Hybrid outbound NAT rule generation” if it is not already selected, and click **Save** and then **Apply changes**
+- Go to :menuselection:`Firewall --> NAT --> Source NAT (Outbound)`
+- Select "Hybrid Source NAT rule generation” if it is not already selected, and click **Save** and then **Apply changes**
 - Click **Add** to add a new rule
 - Configure the rule as follows (if an option is not mentioned below, leave it as the default):
 
