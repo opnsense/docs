@@ -37,7 +37,7 @@ the following options are available:
  IPv6 Configuration type     How to obtain the IPv6 address for this connection.
  MAC Address                 Can be used to spoof the MAC address. Can usually be left blank (in which case it will use the actual MAC address of the hardware).
  MTU                         `Maximum Transfer Unit <https://en.wikipedia.org/wiki/Maximum_transmission_unit>`_.
- MSS                         `Maximum Segment Size <https://en.wikipedia.org/wiki/Maximum_segment_size>`_.
+ MSS                         `Maximum Segment Size <https://en.wikipedia.org/wiki/Maximum_segment_size>`_. When set, IPv4 and IPv6 normalization match rules are generated for this interface.
  Speed and duplex            It is recommended to leave this on the default, unless you know what you are doing and the setting you pick matches the one on the physical port.
  Dynamic gateway policy      If the destination is directly reachable via an interface requiring no intermediary system to act as a gateway,
                              you can select this option which allows dynamic gateways to be created without direct target addresses. Some tunnel types support this.

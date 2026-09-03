@@ -103,11 +103,13 @@ Action
 
 .. _Firewall_Rule_Action:
 
-Rules can be set to three different action types:
+Rules can be set to four different action types:
 
 * Pass --> allow traffic
 * Block --> deny traffic and don't let the client know it has been dropped (which is usually advisable for untrusted networks)
 * Reject --> deny traffic and let the client know about it. (only tcp and udp support rejecting packets, which in case of TCP means a :code:`RST` is returned, for UDP :code:`ICMP UNREACHABLE` is returned).
+* Match --> apply rule options without deciding whether traffic is passed or blocked. This action is available in
+  :menuselection:`Firewall --> Rules [new]` and is commonly used for :doc:`normalization <firewall_scrub>`.
 
 For internal networks it can be practical to use reject, so the client does not have to wait for a time-out when access is not allowed.
 When receiving packets from untrusted networks, you usually don't want to communicate back if traffic is not allowed.
@@ -140,6 +142,9 @@ handled on "first match" basis, which means that the first rule matching the pac
 
 When :code:`quick` is not set, last match wins. This can be useful for rules which define standard behaviour.
 Our default deny rule uses this property for example (if no rule applies, drop traffic).
+
+Match rules are usually not quick, allowing later rules to make the final pass or block decision. A quick match rule
+can still be used intentionally when no later rule options should be evaluated.
 
 
 .. Note::
@@ -353,7 +358,8 @@ Settings
         ====================== ====================================================================================================
         **Quick**              If a packet matches a rule specifying quick, then that rule is considered the last matching rule and
                                the specified action is taken. When a rule does not have quick enabled, the last matching rule wins.
-        **Action**             Choose what to do with packets that match the criteria specified below. Hint: the
+        **Action**             Choose what to do with packets that match the criteria specified below. **Match** applies
+                               rule options without making a pass or block decision. Hint: the
                                difference between block and reject is that with reject, a packet (TCP RST or ICMP port unreachable
                                for UDP) is returned to the sender, whereas with block the packet is dropped silently. In either
                                case, the original packet is discarded.
@@ -380,6 +386,20 @@ Settings
                                after the scheduled rule that allows the traffic, it will be used instead. Keep this in mind when
                                using scheduled rules, and carefully build the ruleset around them, e.g., with additional block rules.
         **Divert-to**          Send packets matching this rule to the service specified, when the service is not running, packets will be dropped.
+        ====================== ====================================================================================================
+
+    .. tab:: Normalization
+
+        Normalization options can be applied by **Match** or **Pass** rules. See :doc:`firewall_scrub` for details.
+
+        ====================== ====================================================================================================
+        **Option**             **Description**
+        ====================== ====================================================================================================
+        **Clear DF bit**       Clear the don't-fragment bit from matching IPv4 packets.
+        **Random ID**          Replace the IPv4 identification field with random values.
+        **Maximum MSS**        Reduce the maximum segment size on matching TCP SYN packets.
+        **Minimum TTL**        Enforce a minimum TTL on matching IP packets.
+        **Set TOS / DSCP**     Set the TOS or DSCP value on matching packets.
         ====================== ====================================================================================================
 
     .. tab:: Stateful firewall
