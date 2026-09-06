@@ -113,6 +113,7 @@ dropdown            Single item selection from dropdown
 select_multiple     Multiple item select from dropdown
 hidden              Hidden fields not for user interaction
 info                Static text (help icon, no input or editing)
+info_link           Static text as a link (converted to clickable links)
 ==================  ===========================================================================================
 
 
