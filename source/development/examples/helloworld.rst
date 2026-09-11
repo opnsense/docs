@@ -22,7 +22,7 @@ Goal
 
 The goal of the "Hello world" module we're creating in the example is to
 control a program on our system named "testConnection.py", which is part
-of the example package available on GitHub. It will try to send an email
+of :ref:`the example package available on GitHub <example-source>`. It will try to send an email
 using plain smtp and will respond with a json text message about the
 result of that attempt.
 
@@ -129,7 +129,9 @@ Skeleton
    :name: setup-a-skeleton-for-the-frontend-middleware
 
 First step for our project is to build a skeleton which holds the
-structure for our frontend/middleware.
+structure for our frontend/middleware. Do keep in mind to only
+build the structure, if you add empty files this will
+cause errors.
 
 Model
 -----
@@ -175,10 +177,9 @@ this:
 
     <model>
         <mount>//OPNsense/helloworld</mount>
-        <description>
-            the OPNsense "Hello World" application
-        </description>
+        <description>the OPNsense "Hello World" application</description>
         <items>
+            <!-- container -->
         </items>
     </model>
 
@@ -264,8 +265,7 @@ extend the corresponding class.
 
 For our modules we create two API controllers, one for controlling
 settings and one for performing service actions. (Named
-SettingsController.php and ServiceController.php) Both should look like
-this (replace Settings with Service for the other one):
+SettingsController.php and ServiceController.php)
 
 .. code-block:: php
     :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
@@ -278,6 +278,16 @@ this (replace Settings with Service for the other one):
     {
     }
 
+.. code-block:: php
+    :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/ServiceController.php
+
+    <?php
+    namespace OPNsense\HelloWorld\Api;
+     
+    use \OPNsense\Base\ApiMutableServiceControllerBase;
+    class ServiceController extends ApiMutableServiceControllerBase
+    {
+    }
 
 .. Note::
     For the sake of simplicity we use :code:`ApiMutableModelControllerBase` in our example, in practice this
@@ -460,11 +470,35 @@ it should return the data.  For this we add two lines to the controller created 
     {
         protected static $internalModelClass = 'OPNsense\HelloWorld\HelloWorld';
         protected static $internalModelName = 'helloworld';
+
+        public function getAction()
+        {
+            $data = parent::getAction();
+            $data[self::$internalModelName]['general']['%ToEmail'] = gettext('Enter recipient here');
+
+            return $data;
+        }
     }
+
+
+.. Note::
+    The :code:`getAction()` function can add dynamic extra information to data fetches. When we get to fetching the data 
+    this will be further explained. 
 
 
 The :code:`$internalModelClass` creates the model for you, so you don't have to create one manually (and define get and
 set actions), :code:`$internalModelName` names the response container.
+
+Similarly, we will do this for the :code:`ServiceController` as well
+
+.. code-block:: php
+   :caption: /usr/local/opnsense/mvc/app/controllers/OPNsense/HelloWorld/Api/SettingsController.php
+
+    class ServiceController extends ApiMutableServiceControllerBase
+    {
+        protected static $internalServiceClass = 'OPNsense\HelloWorld\HelloWorld';
+        protected static $internalServiceClass = 'helloworld';
+    }
 
 You can test the result (while logged in as root), by going to this address:
 
@@ -517,6 +551,7 @@ Add this to the index.volt template from the HelloWorld module:
 
 .. code-block:: html
 
+
     <script type="text/javascript">
         $( document ).ready(function() {
             mapDataToFormUI({'frm_GeneralSettings':"/api/helloworld/settings/get"}).done(function(data){
@@ -527,9 +562,6 @@ Add this to the index.volt template from the HelloWorld module:
             $("#saveAct").click(function(){
                 saveFormToEndpoint("/api/helloworld/settings/set",'frm_GeneralSettings',function(){
                     // action to run after successful save, for example reconfigure service.
-                    ajaxCall(url="/api/helloworld/service/reload", sendData={},callback=function(data,status) {
-                        // action to run after reload
-                    });
                 });
             });
         });
@@ -552,6 +584,7 @@ messages, just edit the model XML and add your message in the
 ValidationMessage tag. For example:
 
 .. code-block:: xml
+    :caption: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/HelloWorld.xml
 
     <ToEmail type="EmailField">
         <Required>Y</Required>
@@ -656,6 +689,7 @@ action, we will go back to the index.volt view and add the following
 jQuery / framework code between the braces of “saveFormToEndPoint”.
 
 .. code-block:: javascript
+    :caption: /usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
 
     ajaxCall(url="/api/helloworld/service/reload", sendData={},callback=function(data,status) {
         // action to run after reload
@@ -766,10 +800,11 @@ elements:
 | (in script section)
 
 .. code-block:: javascript
+    :caption: /usr/local/opnsense/mvc/app/views/OPNsense/HelloWorld/index.volt
 
     $("#testAct").SimpleActionButton({
         onAction: function(data) {
-            $("#responseMsg").html(data['message']);
+            $("#responseMsg").removeClass("hidden").html(data['message']);
         }
     });
 
@@ -851,10 +886,9 @@ adding this content into the Menu.xml:
     :caption: /usr/local/opnsense/mvc/app/models/OPNsense/HelloWorld/Menu/Menu.xml
 
     <menu>
-        <!-- Plugin HelloWorld menu -->
-        <User order="999">
-            <HelloWorld VisibleName="Hello World!" url="/ui/helloworld/"/>
-        </User>
+        <Lobby>
+            <HelloWorld VisibleName="Hello World!" cssClass="fa fa-comment-o fa-fw" url="/ui/helloworld"/>
+        </Lobby>
     </menu>
 
 The menu system is subject to caching, so you may not see your changes
@@ -968,7 +1002,7 @@ prefixed with os-, our new package file will be called:
 
 .. rubric:: Reference
    :name: reference
-
+.. _example-source:
 -  source of this example :
    https://github.com/opnsense/plugins/tree/master/devel/helloworld
 -  build instructions : https://github.com/opnsense/tools
