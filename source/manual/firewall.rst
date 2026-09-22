@@ -86,7 +86,7 @@ to pass traffic, it's much harder to spoof traffic.
 
 .. Note::
     In order to keep states, the system need to reserve memory. By default 10% of the system memory is reserved for states,
-    this can be configured in :menuselection:`Firewall --> Settings --> Firewall Maximum States`.
+    this can be configured with **Maximum states** in :menuselection:`Firewall --> Settings --> Filter`.
     (The help text shows the default number of states on your platform)
 
 States can also be quite convenient to find the active top users on your firewall at any time, we added
@@ -243,8 +243,8 @@ you would usually set a policy on the WAN interface allowing port :code:`443` to
 
 
 .. Note::
-    Traffic leaving the firewall is accepted by default (using a non-quick rule), when **Disable force gateway** in
-    :menuselection:`Firewall --> Settings --> Advanced` is not checked, the connected gateway would be enforced as well.
+    Traffic leaving the firewall is accepted by default (using a non-quick rule). When **Enable force gateway** in
+    :menuselection:`Firewall --> Settings --> Filter` is checked, the connected gateway is enforced as well.
 
 
 --------------------
@@ -735,7 +735,7 @@ This section of the documentation describe the different settings, grouped by us
     .. tab:: Connection limits
 
         The advanced options contains some settings to limit the use of a rule or specify specific timeouts for
-        the it. Most generic (default) settings for these options can be found under :menuselection:`Firewall --> Settings --> Advanced`
+        the connection. Global state table settings are under :menuselection:`Firewall --> Settings --> Filter`.
 
         ====================================  ===============================================================================
         **Option**                            **Description**
