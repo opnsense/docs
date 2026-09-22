@@ -38,29 +38,17 @@ will describe different usecases and provide some examples in this chapter.
 General context
 .................................
 
-The IPsec module incorporates different functions, which are grouped into various menu items. Since the start of our
-project we have been offering IPsec features based on the legacy :code:`ipsec.conf` format, which we are migrating to
-`swantcl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__ as of version 23.1. While
-migrating the existing featureset we came to the conclusion that the world has changed quite a bit and in order to
-offer better (api) access to the featureset available we decided to plan for deprecation of the legacy "Tunnel settings" as they
-have existed since we started. No timeline has been set, only a feature freeze on tunnels using the "Tunnel settings" menu item.
+The IPsec module incorporates different functions, which are grouped into various menu items. IPsec configurations
+are managed using Connections and the :code:`swanctl.conf` format.
 
 One of the main goals for the long run is to better align the gui components so they reflect the reality underneath, as we use
 `strongswan <https://www.strongswan.org/>`__, our aim is to follow their terminology more closely than we previously did.
 
-The following functions are available in the menu (as of OPNsense 23.1):
+The following functions are available in the menu:
 
 * Connections
 
-  * New configuration tool offering access to the connections and pools sections of the :code:`swanctl` configuration
-
-* Tunnel Settings
-
-  * Legacy IPsec configuration tool
-
-* Mobile Clients
-
-  * Offering access to various options of the `attr <https://docs.strongswan.org/docs/5.9/plugins/attr.html>`__ plugin and pool configurations for legacy tunnels
+  * Configuration tool offering access to the connections and pools sections of the :code:`swanctl` configuration
 
 * Pre-Shared Keys
 
@@ -70,7 +58,7 @@ The following functions are available in the menu (as of OPNsense 23.1):
 
   * For public key authentication collect public and private keys.
 
-* Advanced Settings
+* Mobile & Advanced Settings
 
   * Define passthrough networks (to exclude from kernel traps), logging options and some generic options
 
@@ -92,7 +80,7 @@ The following functions are available in the menu (as of OPNsense 23.1):
 
 * Virtual Tunnel Interfaces
 
-  * Edit or create new :code:`if_ipsec(4)` interfaces and show the ones created by legacy tunnels
+  * Edit or create new :code:`if_ipsec(4)` interfaces
 
 * Log File
 
@@ -318,9 +306,7 @@ a "kernel route" is installed as well, which traps traffic before normal routing
 Firewall rules
 .................................
 
-When using the legacy tunnels and :code:`Disable Auto-added VPN rules` is not checked in :menuselection:`VPN --> IPsec --> Advanced Settings`
-some automatic firewall rules are created for remote hosts connecting to this one.
-The new connections feature does not offer this and (WAN) rules have to be specified manually in order to connect to IPsec on this host.
+Connections do not add WAN rules automatically, so these have to be specified manually in order to connect to IPsec on this host.
 
 The relevant protocols and ports for IPsec are the following:
 
@@ -387,8 +373,8 @@ Route based (VTI)
 
 Route based, also known as VTI, tunnels are using a virtual interface known as :code:`if_ipsec(4)`, which can be found under
 :menuselection:`VPN -> IPsec -> Virtual Tunnel Interfaces`. This links two ends of the communication for routing purposes
-after which normal routing applies. The "(Install) Policies" checkmark needs to be disabled in this case for the child (phase 1 in the legacy tunnel configuration)
-definition. Usually the communication policy (phase 2 or child) is set to match all traffic (either :code:`0.0.0.0/0` for IPv4 or :code:`::/0` for IPv6).
+after which normal routing applies. The "(Install) Policies" checkmark needs to be disabled in this case for the child
+definition. Usually the communication policy is set to match all traffic (either :code:`0.0.0.0/0` for IPv4 or :code:`::/0` for IPv6).
 
 So the same example as the policy based option would need (static) routes for the destinations in question (:code:`192.168.1.0/24` needs
 a route to :code:`192.168.2.0/24` and vice versa), peering happens over a small network in another subnet (for example :code:`10.0.0.1` <-> :code:`10.0.0.2`)
@@ -444,20 +430,18 @@ Road Warriors / Mobile users
 IPsec may also be used to service remote workers connecting to OPNsense from various clients, such as Windows, MacOS, iOS and Android.
 The type of client usually determines the authentication scheme(s) being used.
 
-In case clients should be offered default settings, these can be configured from :menuselection:`VPN -> IPsec -> Mobile Clients`.
-Pool options (Virtual IPvX Address Pool) on this page will be used by the legacy tunnel configuration only, when using the new connections
-module one may configure different pools per connection.
+Address pools for mobile clients can be configured per connection on the ``Pools`` tab in
+:menuselection:`VPN -> IPsec -> Connections`.
 
 .. note::
 
-    If you are configuring Radius authentication using the new Connections module, make sure to select the relevant Radius servers
-    in :menuselection:`VPN -> IPsec -> Mobile Clients` under Radius (eap-radius). This pool of servers will be shared across
-    all connections. This option will not be visible if you have legacy Radius authentication methods configured.
+    If you are configuring Radius authentication, make sure to select the relevant Radius servers in
+    :menuselection:`VPN -> IPsec -> Mobile & Advanced Settings` under Radius (eap-radius). This pool of servers will be shared across
+    all connections.
 
-The examples section contains various options available in OPNsense. When using the new "connections" option available
-as of OPNsense 23.1, different `examples from Strongswan <https://docs.strongswan.org/docs/5.9/interop/windowsClients.html>`__
-are usually quite easy to implement as we follow the `swantcl.conf <https://docs.strongswan.org/docs/5.9/swanctl/swanctlConf.html>`__
-format quite closely in the new module.
+The examples section contains various options available in OPNsense. Different
+`examples from Strongswan <https://docs.strongswan.org/docs/5.9/interop/windowsClients.html>`__
+are usually quite easy to implement as Connections follow the :code:`swanctl.conf` format closely.
 
 .................................
 Examples
@@ -465,7 +449,7 @@ Examples
 
 This paragraph offers examples for some commonly used implementation scenarios.
 
-New > 23.1 (:menuselection:`VPN -> IPsec -> Connections`)
+Connections (:menuselection:`VPN -> IPsec -> Connections`)
 ------------------------------------------------------------------------------
 
 .. toctree::
@@ -480,34 +464,9 @@ New > 23.1 (:menuselection:`VPN -> IPsec -> Connections`)
 
 .. Tip::
 
-    The number of examples for the new module on our end is limited, but for inspiration it's often a good
+    The number of examples on our end is limited, but for inspiration it's often a good
     idea to walkthrough the examples provided by `Strongswan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__.
-    Quite some swanctl.conf examples are easy to implement in our new module as we do follow the same terminology.
-
-Legacy (:menuselection:`VPN -> IPsec -> Tunnel Settings`)
-------------------------------------------------------------------------------
-
-
-.. toctree::
-   :maxdepth: 2
-   :titlesonly:
-
-   how-tos/ipsec-s2s
-   how-tos/ipsec-s2s-binat
-   how-tos/ipsec-s2s-route
-   how-tos/ipsec-s2s-route-azure
-   how-tos/ipsec-rw
-
-
-The following client setup examples are available in our documentation:
-
-.. toctree::
-  :maxdepth: 2
-  :titlesonly:
-
-  how-tos/ipsec-rw-android
-  how-tos/ipsec-rw-linux
-  how-tos/ipsec-rw-w7
+    Quite some swanctl.conf examples are easy to implement as we do follow the same terminology.
 
 
 .. Note::
