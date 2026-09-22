@@ -243,7 +243,7 @@ you would usually set a policy on the WAN interface allowing port :code:`443` to
 
 
 .. Note::
-    Traffic leaving the firewall is accepted by default (using a non-quick rule). When **Enable force gateway** in
+    Traffic leaving the firewall is accepted by default (using a non-quick rule). Unless **Disable force gateway** in
     :menuselection:`Firewall --> Settings --> Filter` is checked, the connected gateway is enforced as well.
 
 

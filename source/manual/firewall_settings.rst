@@ -9,14 +9,6 @@ Settings overview
 
 .. tabs::
 
-    .. tab:: General
-
-        =====================================  ======================================================================
-        **Option**                             **Description**
-        =====================================  ======================================================================
-        Enable firewall                        Enable packet filtering and NAT.
-        =====================================  ======================================================================
-
     .. tab:: Filter
 
         =====================================  ======================================================================
@@ -32,17 +24,18 @@ Settings overview
         Sticky connections                     Keep connections from one source on the same gateway.
         Source tracking timeout                Set how long sticky source tracking remains after a state expires.
         Shared forwarding                      Share forwarding decisions with shaping and captive portal.
-        Enable force gateway                   Force local traffic through its interface gateway.
+        Disable force gateway                  Use the routing table for local traffic.
         **Schedules**
         Schedule States                        Keep existing states after their schedule expires.
         **Automatic rules**
-        Enable reply-to                        Add reply-to to WAN rules.
-        Enable anti-lockout                    Allow web and SSH administration on LAN.
-        Enable RFC4890 requirement rules       Create automatic IPv6 requirement rules.
-        Enable port 0 block                    Block traffic using port 0.
-        Enable sshlockout                      Block repeated failed login attempts.
-        Enable rate limit rule                 Block rate-limited sessions.
+        Disable reply-to                       Omit reply-to from WAN rules.
+        Disable anti-lockout                   Remove the automatic LAN administration rule.
+        Disable RFC4890 requirement rules      Omit automatic IPv6 requirement rules.
+        Disable port 0 block                   Omit the automatic port 0 block rule.
+        Disable sshlockout                     Omit automatic failed-login block rules.
+        Disable rate limit rule                Omit the automatic rate-limit block rule.
         **Stateful Firewall**
+        Disable firewall                       Disable packet filtering and NAT.
         Optimization                           Choose the state table optimization.
         Bind states to interface               Restrict states to the interface where they were created.
         Adaptive start                         Start scaling state timeouts at this state count.
@@ -63,20 +56,12 @@ Settings overview
         =====================================  ======================================================================
         **Option**                             **Description**
         =====================================  ======================================================================
+        **NAT reflection**
         Reflection for destination NAT         Generate redirect rules for destination NAT reflection.
         Reflection for 1:1                     Generate redirect rules for one-to-one NAT reflection.
         Automatic source NAT for Reflection    Generate source NAT rules for reflected traffic.
-        Source NAT Mode                        Choose automatic, hybrid, manual, or disabled source NAT.
-        =====================================  ======================================================================
-
-    .. tab:: Aliases
-
-        =====================================  ======================================================================
-        **Option**                             **Description**
-        =====================================  ======================================================================
-        Bogon Update Frequency                 Set how often bogon lists are updated.
-        Alias resolve interval                 Set the hostname lookup interval in seconds.
-        Alias check URL certificates           Verify HTTPS certificates when downloading URL aliases.
+        **Source NAT**
+        Mode                                   Choose automatic, hybrid, manual, or disabled source NAT.
         =====================================  ======================================================================
 
     .. tab:: Logging
@@ -90,6 +75,16 @@ Settings overview
         Bogon networks                         Log packets blocked by bogon rules.
         Private networks                       Log packets blocked by private network rules.
         Debug                                  Set packet filter debug verbosity.
+        =====================================  ======================================================================
+
+    .. tab:: Aliases
+
+        =====================================  ======================================================================
+        **Option**                             **Description**
+        =====================================  ======================================================================
+        Bogon Update Frequency                 Set how often bogon lists are updated.
+        Alias resolve interval                 Set the hostname lookup interval in seconds.
+        Alias check URL certificates           Verify HTTPS certificates when downloading URL aliases.
         =====================================  ======================================================================
 
 Network Address Translation
@@ -177,12 +172,12 @@ Using policy routing in the packet filter rules causes packets to skip processin
 Using this option enables the sharing of such forwarding decisions between all components to accommodate complex setups.
 
 
-Enable force gateway
+Disable force gateway
 .....................................
 
 By default OPNsense enforces a gateway on "Wan" type interfaces (those with a gateway attached to it), although the default usually
 is the desired behaviour, it does influence the routing decisions made by the system (local traffic bound to an address will use the associated gateway).
-Uncheck this option to disable that automatic rule.
+Check this option to disable that automatic rule.
 
 .. Note::
 
@@ -225,10 +220,10 @@ Set behaviour for keeping states, by default states are floating, but when this 
 The default option (unchecked) matches states regardless of the interface, which is in most setups the best choice.
 
 
-Enable firewall
+Disable firewall
 .....................................
 
-Enabled by default. Uncheck to disable all firewall (including NAT) features of this machine.
+Check to disable all firewall (including NAT) features of this machine.
 
 
 Firewall Adaptive Timeouts
@@ -272,11 +267,11 @@ This may be desirable in some situations where multiple subnets are connected to
     recquired on a per net basis manually.
 
 
-Enable reply-to
+Disable reply-to
 .....................................
 
 With Multi-WAN you generally want to ensure traffic leaves the same interface it arrives on, hence :code:`reply-to` is added automatically by default.
-Uncheck this option when using bridging if the WAN gateway IP differs from the gateway IP of the hosts behind the bridged interface.
+Check this option when using bridging if the WAN gateway IP differs from the gateway IP of the hosts behind the bridged interface.
 
 .. Warning::
 
@@ -284,17 +279,17 @@ Uncheck this option when using bridging if the WAN gateway IP differs from the g
     to every "wan" type rule. When allowing traffic originating from the same network as the interface is attached to, it will
     still reply the packet to the configured gateway.
 
-    To prevent this behavior, you can either uncheck **Enable reply-to** here and configure the desired behaviour on a per-rule basis or
+    To prevent this behavior, you can either check **Disable reply-to** here and configure the desired behaviour on a per-rule basis or
     add a rule for local traffic above the one for outbound traffic disabling :code:`reply-to` (in rule advanced).
 
-Enable anti-lockout
+Disable anti-lockout
 .....................................
 
-When this is checked, access to the web GUI or SSH on the LAN interface is always permitted, regardless of the user-defined firewall rule set.
-Uncheck this box to disable the automatically added rule, so access is controlled only by the user-defined firewall rules. Ensure you have a firewall rule in place that allows you in, or you will lock yourself out.
+When this is unchecked, access to the web GUI or SSH on the LAN interface is always permitted, regardless of the user-defined firewall rule set.
+Check this box to disable the automatically added rule, so access is controlled only by the user-defined firewall rules. Ensure you have a firewall rule in place that allows you in, or you will lock yourself out.
 
-The **Enable RFC4890 requirement rules**, **Enable port 0 block**, **Enable sshlockout**, and **Enable rate limit rule**
-options control the corresponding automatic IPv6, port 0, failed login, and rate limit block rules.
+The **Disable RFC4890 requirement rules**, **Disable port 0 block**, **Disable sshlockout**, and **Disable rate limit rule**
+options suppress the corresponding automatic IPv6, port 0, failed login, and rate limit block rules.
 
 Aliases Resolve Interval
 .....................................
