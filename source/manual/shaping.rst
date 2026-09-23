@@ -68,7 +68,7 @@ queue
          a flow with a higher weight is permanently backlogged.
 
 In practice, pipes can be used to set hard limits to the bandwidth that a
-flow can use, whereas queues can be used to determine how different flow
+flow can use, whereas queues can be used to determine how different flows
 share the available bandwidth.
 
 The shaping rules can be defined in the rules section of the traffic shaper.
