@@ -210,7 +210,7 @@ gateways.
 
 .. Note::
     When using multiple Gateways with the same Tier, you need to disable shared
-    forwarding in :menuselection:`Firewall --> Settings --> Advanced`.
+    forwarding in :menuselection:`Firewall --> Settings --> Filter`.
 
 Sticky Connection
 -----------------
@@ -219,7 +219,7 @@ lead to unexpected behavior. To solve this you can use the option **Sticky Conne
 this will make sure each subsequent request from the same user to the same website
 is send through the same gateway.
 
-To set this option can be set under :menuselection:`Firewall --> Settings --> Advanced`.
+Set this option under :menuselection:`Firewall --> Settings --> Filter`.
 
 Unequal Balancing (Weight)
 --------------------------
