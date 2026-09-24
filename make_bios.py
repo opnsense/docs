@@ -108,7 +108,7 @@ if __name__ == '__main__':
 
     static = 'source/hardware/files/BIOS_update_sources.zip'
     source = args.source
-    output = f'source/hardware/files/{args.platform}_v{args.version}_bios'
+    output = f'source/hardware/files/{args.platform}_{args.version}_bios'
 
     merge_files(static, source, output)
     print(calculate_sha256(f'{output}.tar.gz'), f'{output}.tar.gz')
