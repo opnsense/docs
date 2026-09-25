@@ -833,7 +833,7 @@ By default overwrites are matched by certificate common name, when :code:`Force 
 
 
 --------------------------
-Wireguard
+WireGuard
 --------------------------
 
 .................................
@@ -841,12 +841,12 @@ General context
 .................................
 
 WireGuard® is a simple yet fast and modern VPN solution, which in some cases is more convenient than IPsec or OpenVPN, certainly
-in terms of options you need to configure. In our experience IPsec is the fastest solution for site-to-site connections, but Wireguard is the simplest
+in terms of options you need to configure. In our experience IPsec is the fastest solution for site-to-site connections, but WireGuard is the simplest
 option to setup.
 
-A wireguard setup on our end exists of the following main components:
+A WireGuard setup on our end exists of the following main components:
 
-* Instances: in the wireguard configuration these are called "interfaces" and they describe how the virtual :code:`wgX` device on our end is configured in terms of addressing and cryptography.
+* Instances: in the WireGuard configuration these are called "interfaces" and they describe how the virtual :code:`wgX` device on our end is configured in terms of addressing and cryptography.
 * Peers: these are the clients that are allowed to connect to us, described by their optional remote address including the networks that are allowed to pass through the tunnel. Peers belong to one or more instances.
 
 .................................
@@ -929,7 +929,7 @@ Peer-specific values, such as the assigned tunnel address, preshared key and kee
 High availability (using CARP)
 .................................
 
-When using wireguard on active/passive high availability clusters, only one instance at a time is allowed to communicate to the
+When using WireGuard on active/passive high availability clusters, only one instance at a time is allowed to communicate to the
 other party. In OPNsense this can be reached by selecting a :code:`vhid` to track as instance dependency {Depend on (CARP)}.
 
 If an instance depends on a CARP vhid, it will query the current status and determine if the interface should be usable (when MASTER), the
@@ -958,7 +958,7 @@ up or down, depending on the carp status described in the previous chapter.
 
 .. Tip::
 
-  Although wireguard itself offers very limit logging, our setup process will make a note of errors and signal about certain events.
+  Although WireGuard itself offers very limit logging, our setup process will make a note of errors and signal about certain events.
   When having issues configuring an instance or peer, always make sure to check the logs in  :menuselection:`VPN --> WireGuard --> Log File` first.
 
 
