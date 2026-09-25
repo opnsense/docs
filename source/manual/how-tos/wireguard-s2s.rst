@@ -151,11 +151,9 @@ Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incomi
 
 Press **Save** and **Apply**.
     
-Go to :menuselection:`Firewall --> Rules [new]` and add a match rule to prevent fragmentation of traffic going through the wireguard tunnel.
+Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rule to prevent fragmentation of traffic going through the wireguard tunnel.
 
     ============================ ==================================================================================================
-     **Action**                   *Match*
-     **Quick**                    *Unchecked*
      **Interface**                *WireGuard (Group)*
      **Direction**                *Any*
      **Protocol**                 *any*
@@ -189,11 +187,9 @@ Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incomi
     
 Press **Save** and **Apply**.
 
-Go to :menuselection:`Firewall --> Rules [new]` and add a match rule to prevent fragmentation of traffic going through the wireguard tunnel.
+Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rule to prevent fragmentation of traffic going through the wireguard tunnel.
 
     ============================ ==================================================================================================
-     **Action**                   *Match*
-     **Quick**                    *Unchecked*
      **Interface**                *WireGuard (Group)*
      **Direction**                *Any*
      **Protocol**                 *any*

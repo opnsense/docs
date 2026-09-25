@@ -220,12 +220,10 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
 Step 5a - Create normalization rules
 ------------------------------------
 
-- Go to :menuselection:`Firewall --> Rules [new]` and press **+** to create **one** new match rule.
+- Go to :menuselection:`Firewall --> Settings -> Normalization` and press **+** to create **one** new normalization rule.
 
 - If you only pass IPv4 traffic through the wireguard tunnel, create the following rule:
     ============================ ==================================================================================================
-     **Action**                   *Match*
-     **Quick**                    *Unchecked*
      **Interface**                *WireGuard (Group)*
      **Direction**                *Any*
      **Protocol**                 *any*
@@ -240,8 +238,6 @@ Step 5a - Create normalization rules
 
 - If you pass IPv4+IPv6 - or only IPv6 traffic - through the wireguard tunnel, create the following rule:
     ============================ ==================================================================================================
-     **Action**                   *Match*
-     **Quick**                    *Unchecked*
      **Interface**                *WireGuard (Group)*
      **Direction**                *Any*
      **Protocol**                 *any*
