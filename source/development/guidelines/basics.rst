@@ -132,4 +132,4 @@ PSR1/2 as possible, knowing it will never be perfect.
 .. Note::
 
     When building new (MVC based) code, its not allowed to include legacy parts directly. The main reason for this is
-    preventing technical debt being stacked in new components and loosing oversight.
+    preventing technical debt being stacked in new components and losing oversight.

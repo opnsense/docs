@@ -42,7 +42,7 @@ The IPsec module incorporates different functions, which are grouped into variou
 are managed using Connections and the :code:`swanctl.conf` format.
 
 One of the main goals for the long run is to better align the gui components so they reflect the reality underneath, as we use
-`strongswan <https://www.strongswan.org/>`__, our aim is to follow their terminology more closely than we previously did.
+`strongSwan <https://www.strongswan.org/>`__, our aim is to follow their terminology more closely than we previously did.
 
 The following functions are available in the menu:
 
@@ -99,7 +99,7 @@ is an interesting read as well.
 
 * Phase 1 - The general connection settings, like local/remote addresses and general protocol settings. Choices in authentication to use
   are also part of this, they may involve multiple rounds.
-* Phase 2 - Nowadays Strongswan calls these **children**, as these define the :code:`CHILD_SA` subsections in play. This is where you can define
+* Phase 2 - Nowadays strongSwan calls these **children**, as these define the :code:`CHILD_SA` subsections in play. This is where you can define
   the networks on both ends. When multiple segments are being added into the same child, these are being treated as one policy
   where all of them are able to communicate to each other.
 * Phase 1 / Tunnel Isolation - This option made sure every network defined in phase 2 would be treated as a child of it's own (e.g. two phase 2's would turn into two children)
@@ -109,7 +109,7 @@ is an interesting read as well.
 .. Note::
 
   Using DNS for endpoints is possible, but will work a bit different than previously as in most cases the firewall tried to
-  resolve the names and didn't use the functionality provided by Strongswan. It is however currently not possible to use DNS entries
+  resolve the names and didn't use the functionality provided by strongSwan. It is however currently not possible to use DNS entries
   for VTI tunnels due to restrictions in `if_ipsec(4)` as these type of interfaces can't be changed dynamically in a reliable way.
 
 .. Note::
@@ -119,7 +119,7 @@ is an interesting read as well.
   page and wrote the same information to the secrets.
 
 
-Since OPNsense uses the new Strongswan format also for legacy tunnels, it is rather easy to convert a tunnel manually
+Since OPNsense uses the new strongSwan format also for legacy tunnels, it is rather easy to convert a tunnel manually
 when downloading the :code:`swanctf.conf` file from the machine. You can download it via :menuselection:`VPN -> IPsec -> Advanced Settings -> swanctl.conf`.
 The format is almost identical to the connections gui available in OPNsense.
 
@@ -344,7 +344,7 @@ This setting has no effect on how IKEv2 handles retransmissions, in which case t
 
   By default for IKEv2 the timeout on connections triggering a dpd action takes at least a couple of minutes, when quicker interaction
   is needed the :code:`charon` retransmit timings should be changed which applies to all tunnels. These settings can
-  be changed via the Advanced settings, or when not yet supported on your version, a custom strongswan configuration.
+  be changed via the Advanced settings, or when not yet supported on your version, a custom strongSwan configuration.
 
 
 
@@ -440,7 +440,7 @@ Address pools for mobile clients can be configured per connection on the ``Pools
     all connections.
 
 The examples section contains various options available in OPNsense. Different
-`examples from Strongswan <https://docs.strongswan.org/docs/5.9/interop/windowsClients.html>`__
+`examples from strongSwan <https://docs.strongswan.org/docs/5.9/interop/windowsClients.html>`__
 are usually quite easy to implement as Connections follow the :code:`swanctl.conf` format closely.
 
 .................................
@@ -465,7 +465,7 @@ Connections (:menuselection:`VPN -> IPsec -> Connections`)
 .. Tip::
 
     The number of examples on our end is limited, but for inspiration it's often a good
-    idea to walkthrough the examples provided by `Strongswan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__.
+    idea to walkthrough the examples provided by `strongSwan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__.
     Quite some swanctl.conf examples are easy to implement as we do follow the same terminology.
 
 
@@ -833,7 +833,7 @@ By default overwrites are matched by certificate common name, when :code:`Force 
 
 
 --------------------------
-Wireguard
+WireGuard
 --------------------------
 
 .................................
@@ -841,12 +841,12 @@ General context
 .................................
 
 WireGuard® is a simple yet fast and modern VPN solution, which in some cases is more convenient than IPsec or OpenVPN, certainly
-in terms of options you need to configure. In our experience IPsec is the fastest solution for site-to-site connections, but Wireguard is the simplest
+in terms of options you need to configure. In our experience IPsec is the fastest solution for site-to-site connections, but WireGuard is the simplest
 option to setup.
 
-A wireguard setup on our end exists of the following main components:
+A WireGuard setup on our end exists of the following main components:
 
-* Instances: in the wireguard configuration these are called "interfaces" and they describe how the virtual :code:`wgX` device on our end is configured in terms of addressing and cryptography.
+* Instances: in the WireGuard configuration these are called "interfaces" and they describe how the virtual :code:`wgX` device on our end is configured in terms of addressing and cryptography.
 * Peers: these are the clients that are allowed to connect to us, described by their optional remote address including the networks that are allowed to pass through the tunnel. Peers belong to one or more instances.
 
 .................................
@@ -929,7 +929,7 @@ Peer-specific values, such as the assigned tunnel address, preshared key and kee
 High availability (using CARP)
 .................................
 
-When using wireguard on active/passive high availability clusters, only one instance at a time is allowed to communicate to the
+When using WireGuard on active/passive high availability clusters, only one instance at a time is allowed to communicate to the
 other party. In OPNsense this can be reached by selecting a :code:`vhid` to track as instance dependency {Depend on (CARP)}.
 
 If an instance depends on a CARP vhid, it will query the current status and determine if the interface should be usable (when MASTER), the
@@ -958,7 +958,7 @@ up or down, depending on the carp status described in the previous chapter.
 
 .. Tip::
 
-  Although wireguard itself offers very limit logging, our setup process will make a note of errors and signal about certain events.
+  Although WireGuard itself offers very limit logging, our setup process will make a note of errors and signal about certain events.
   When having issues configuring an instance or peer, always make sure to check the logs in  :menuselection:`VPN --> WireGuard --> Log File` first.
 
 

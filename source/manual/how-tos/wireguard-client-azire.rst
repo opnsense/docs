@@ -20,7 +20,7 @@ To get a configuration login to your account_
 
 .. _account: https://www.azirevpn.com/cfg/wireguard
 
-Via **Options** you can select the country where you want to break out, choose a port (default ist fine),
+Via **Options** you can select the country where you want to break out, choose a port (default is fine),
 and set the protocol to tunnel (we only cover IPv4).
 
 Hit **Download** at the end of the page to get the preconfigured text file and open it in your
@@ -49,7 +49,7 @@ Step 3 - Assignments and Routing
 
 To let you internal clients go through the tunnel you have to add a NAT entry. Go to 
 :menuselection:`Firewall --> NAT --> Source NAT (Outbound)` and add a rule. Check that rule generation is set to manual
-or hybrid. Add a rule and select Wireguard as **Interface**. **Source** should be your
+or hybrid. Add a rule and select WireGuard as **Interface**. **Source** should be your
 LAN network and set **Translation / target** to **interface address**.
 
 When assigning interfaces we can also add gateways to them. This would  offer you the chance to 

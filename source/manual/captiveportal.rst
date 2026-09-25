@@ -98,7 +98,7 @@ IPv6 support
 The OPNsense Captive Portal fully supports IPv6-only and dual-stack networks.
 To facilitate this, the [Roaming] option is available and set by default in each
 zone. The IPv6 protocol commonly uses multiple IPv6 addresses on the same network
-interface of a client. These can be Link-local addressess, GUAs, ULAs, temporary/
+interface of a client. These can be Link-local addresses, GUAs, ULAs, temporary/
 privacy addresses or stable addresses.
 
 Roaming allows the portal to register any IP alias a client is using, including IPv4
@@ -153,7 +153,7 @@ To configure this, a few steps are required:
 
 If a device in the captive portal zone supports this API, they will automatically use
 the DHCP option to determine that they are in a captive state. Keep in mind that forced
-redirection is still used for maximum compatibility. If you would like to excusively
+redirection is still used for maximum compatibility. If you would like to exclusively
 use this API standard instead, you can override the firewall rules for each zone and
 leave out the redirection rules, see `rules`_.
 

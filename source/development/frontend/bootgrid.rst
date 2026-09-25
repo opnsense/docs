@@ -172,7 +172,7 @@ Configuration Reference
 The :code:`UIBootgrid` initialization object starts with the CRUD methods as stated above, but
 the whole structure contaions a lot of options to modify the behavior to fit your purpose.
 
-The top-level options are layed out as follows:
+The top-level options are laid out as follows:
 
 .. code-block:: text
 
@@ -717,7 +717,7 @@ Search for :code:`value` in the grid (triggering an AJAX request if :code:`ajax:
 ``select(ids)``
 ~~~~~~~~~~~~~~~
 
-Programatically select rows. Expects an array of :code:`datakey` strings.
+Programmatically select rows. Expects an array of :code:`datakey` strings.
 
 ``getSearchPhrase()``
 ~~~~~~~~~~~~~~~~~~~~~

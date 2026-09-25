@@ -20,7 +20,7 @@ Live view updates itself in realtime if a rule is matched that has logging enabl
 In the top left corner of the page you can build filter conditions for rules to match when inspecting traffic, while
 here you can select different fields (for example `label`, `src` address, `dst` address) and how to match them
 (contains, is, is not, does not contain) combined with a criteria (either a string or a preselected value, depending on type).
-The [+] button adds the the filter to the view.
+The [+] button adds the filter to the view.
 
 By default results should match all criteria (AND), but you can change that to an any of criteria (OR). The latter is sometimes
 practical if you want to track a small list of hosts.

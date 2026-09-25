@@ -298,7 +298,7 @@ Group all firewall rules in a tree, based on their category. The groups act like
 The group folders are not saved inside the configuration, they are an alternative view based on categories.
 
 Whenever a rule in sequence changes category, a new folder copying the category of the first rule will be created.
-To move similiar rules into the same folder, change their sequence and category. But keep in mind that the sequence of rules
+To move similar rules into the same folder, change their sequence and category. But keep in mind that the sequence of rules
 will always be the same as without the tree view.
 
 
@@ -800,7 +800,7 @@ as expected.
 Another valuable tool is the live log viewer, in order to use it, make sure to provide your rule with an easy to
 read description and enable the "log" option.
 
-If your using source routing (policy based routing), debugging can sometimes get a bit more complicated. Since the normal
+If you are using source routing (policy based routing), debugging can sometimes get a bit more complicated. Since the normal
 system routing table may not apply, it helps to know which flow the traffic actually followed. The packet capture is a useful
 tool in that case.
 

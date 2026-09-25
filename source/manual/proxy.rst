@@ -144,7 +144,7 @@ There are some rules to take into account when creating custom themed error page
 .. Tip::
 
     To convert images to inline base64 tags, there are quite some online tools available, which can easily be found using google.
-    As an example, our logo can be found in the the css file looking like :code:`background: url('data:image/svg+xml;base64,PD9...) no-repeat left;`
+    As an example, our logo can be found in the css file looking like :code:`background: url('data:image/svg+xml;base64,PD9...) no-repeat left;`
 
 -----------------------
 Configuration / How-tos

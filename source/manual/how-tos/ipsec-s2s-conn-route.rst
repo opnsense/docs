@@ -138,7 +138,7 @@ Id                      **hostB**           **hostA**
     A pre-shared key needs to be added to ":menuselection:`VPN->IPsec->Pre-Shared Keys`". Set :code:`hostA` for
     local identifier and :code:`hostB` for remote identifier.
 
-    While the remote identifier is optional, keep in mind that not specifying it will make this PSK elligible to
+    While the remote identifier is optional, keep in mind that not specifying it will make this PSK eligible to
     be used for different connections using the same local ID as well. It is generally recommended to
     be as specific as possible.
 
@@ -146,7 +146,7 @@ Id                      **hostB**           **hostA**
 .. Tip::
 
     If you have an ID specified in the Remote Authentication grid in a connection, then this connection
-    now expects the other end to identifiy itself with this ID. Make sure this reflects reality, as some
+    now expects the other end to identify itself with this ID. Make sure this reflects reality, as some
     systems do not allow you to set a specific ID and can default to their local IP address instead.
 
 .....................

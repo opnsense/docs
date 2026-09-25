@@ -50,7 +50,7 @@ for both working and non working ports and via a console collect the output of t
     ifconfig -m -v
     ifinfo
 
-In cases where the issue seems to persist when chosing another port, the easiest option to rule out hardware issues is to
+In cases where the issue seems to persist when choosing another port, the easiest option to rule out hardware issues is to
 reinstall the device and retest with our default settings.
 
 
