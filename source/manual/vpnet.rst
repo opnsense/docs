@@ -42,7 +42,7 @@ The IPsec module incorporates different functions, which are grouped into variou
 are managed using Connections and the :code:`swanctl.conf` format.
 
 One of the main goals for the long run is to better align the gui components so they reflect the reality underneath, as we use
-`strongswan <https://www.strongswan.org/>`__, our aim is to follow their terminology more closely than we previously did.
+`strongSwan <https://www.strongswan.org/>`__, our aim is to follow their terminology more closely than we previously did.
 
 The following functions are available in the menu:
 
@@ -99,7 +99,7 @@ is an interesting read as well.
 
 * Phase 1 - The general connection settings, like local/remote addresses and general protocol settings. Choices in authentication to use
   are also part of this, they may involve multiple rounds.
-* Phase 2 - Nowadays Strongswan calls these **children**, as these define the :code:`CHILD_SA` subsections in play. This is where you can define
+* Phase 2 - Nowadays strongSwan calls these **children**, as these define the :code:`CHILD_SA` subsections in play. This is where you can define
   the networks on both ends. When multiple segments are being added into the same child, these are being treated as one policy
   where all of them are able to communicate to each other.
 * Phase 1 / Tunnel Isolation - This option made sure every network defined in phase 2 would be treated as a child of it's own (e.g. two phase 2's would turn into two children)
@@ -109,7 +109,7 @@ is an interesting read as well.
 .. Note::
 
   Using DNS for endpoints is possible, but will work a bit different than previously as in most cases the firewall tried to
-  resolve the names and didn't use the functionality provided by Strongswan. It is however currently not possible to use DNS entries
+  resolve the names and didn't use the functionality provided by strongSwan. It is however currently not possible to use DNS entries
   for VTI tunnels due to restrictions in `if_ipsec(4)` as these type of interfaces can't be changed dynamically in a reliable way.
 
 .. Note::
@@ -119,7 +119,7 @@ is an interesting read as well.
   page and wrote the same information to the secrets.
 
 
-Since OPNsense uses the new Strongswan format also for legacy tunnels, it is rather easy to convert a tunnel manually
+Since OPNsense uses the new strongSwan format also for legacy tunnels, it is rather easy to convert a tunnel manually
 when downloading the :code:`swanctf.conf` file from the machine. You can download it via :menuselection:`VPN -> IPsec -> Advanced Settings -> swanctl.conf`.
 The format is almost identical to the connections gui available in OPNsense.
 
@@ -344,7 +344,7 @@ This setting has no effect on how IKEv2 handles retransmissions, in which case t
 
   By default for IKEv2 the timeout on connections triggering a dpd action takes at least a couple of minutes, when quicker interaction
   is needed the :code:`charon` retransmit timings should be changed which applies to all tunnels. These settings can
-  be changed via the Advanced settings, or when not yet supported on your version, a custom strongswan configuration.
+  be changed via the Advanced settings, or when not yet supported on your version, a custom strongSwan configuration.
 
 
 
@@ -440,7 +440,7 @@ Address pools for mobile clients can be configured per connection on the ``Pools
     all connections.
 
 The examples section contains various options available in OPNsense. Different
-`examples from Strongswan <https://docs.strongswan.org/docs/5.9/interop/windowsClients.html>`__
+`examples from strongSwan <https://docs.strongswan.org/docs/5.9/interop/windowsClients.html>`__
 are usually quite easy to implement as Connections follow the :code:`swanctl.conf` format closely.
 
 .................................
@@ -465,7 +465,7 @@ Connections (:menuselection:`VPN -> IPsec -> Connections`)
 .. Tip::
 
     The number of examples on our end is limited, but for inspiration it's often a good
-    idea to walkthrough the examples provided by `Strongswan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__.
+    idea to walkthrough the examples provided by `strongSwan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__.
     Quite some swanctl.conf examples are easy to implement as we do follow the same terminology.
 
 

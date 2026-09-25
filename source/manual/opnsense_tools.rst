@@ -52,7 +52,7 @@ For a complete list of options look at the manpage on the system.
 
 Example 1:
 ----------
-The latest update of OPNsense to version 18.1.5 did a minor jump for the IPSec package "strongswan".
+The latest update of OPNsense to version 18.1.5 did a minor jump for the IPSec package "strongSwan".
 From this moment your VPNs are unstable and only a restart helps.
 
 To check if the update of the package is the reason you can easily revert the package
@@ -60,14 +60,14 @@ to its previous state while running the latest OPNsense version itself.
 
 # opnsense-revert -r 18.1.4 strongswan
 
-With this command you can, for example, run OPNsense 18.1.5 while using the 18.1.4 version of strongswan.
+With this command you can, for example, run OPNsense 18.1.5 while using the 18.1.4 version of strongSwan.
 If you want to go back to the current release version just do
 
 # opnsense-revert strongswan
 
 Example 2:
 ----------
-The previous revert of strongswan was not the solution you expected so you try to completely revert to the previous
+The previous revert of strongSwan was not the solution you expected so you try to completely revert to the previous
 OPNsense version:
 
 # opnsense-revert -r 18.1.4 opnsense

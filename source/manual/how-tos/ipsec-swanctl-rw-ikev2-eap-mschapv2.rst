@@ -158,7 +158,7 @@ Create an IPv6 pool that all roadwarriors will share. This configuration will re
     ==============================================  ====================================================================================================
 
 .. Note::
-    The IPv6 pool is not a /64 Prefix, because it is used to define a pool of IPv6 addresses that can be used as leases. Prefix /120 means there are 256 IPv6 addresses available. The hard limit of StrongSwan pools is Prefix /97.
+    The IPv6 pool is not a /64 Prefix, because it is used to define a pool of IPv6 addresses that can be used as leases. Prefix /120 means there are 256 IPv6 addresses available. The hard limit of strongSwan pools is Prefix /97.
 
 .. Note::
     You can skip the DNS field if you do not want to push DNS Servers to your clients.
@@ -536,12 +536,12 @@ iOS native VPN client
     iOS does not allow setting a DNS Server for the VPN, and it ignores the DNS *Configuration Payload*. The only workaround would be to change the DNS Server manually in the Wi-Fi settings each time the tunnel is brought up, and change them back when it is turned off.
 
 
-Android StrongSwan VPN client
+Android strongSwan VPN client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Import the self-signed CA certificate into the Android certificate store.
-- Install the StrongSwan app from the Google Play Store
-- Open the StrongSwan app and create a new VPN profile.
+- Install the strongSwan app from the Google Play Store
+- Open the strongSwan app and create a new VPN profile.
     
     - Server: ``vpn1.example.com``
     - VPN Typ: IKEv2 EAP
@@ -898,4 +898,4 @@ If the VPN connection does not establish right away there are several steps you 
 - Use tcpdump on the OPNsense to look for incoming packets on port 500 and port 4500 when you connect your VPN client. If you cannot see any, your firewall blocks them, or the remote client cannot send them due to a remote firewall. There could also be a wrong IP Address the packets are sent to.
 - If there are packets received, but no packets sent, look into the VPN log files.
 - Check /var/logs/ipsec/latest.log or :menuselection:`VPN --> IPsec --> Log File` for the connection being processed. Most of the time you can see errors in there you can search on the internet.
-- The easiest tool to troubleshoot the connection is the Android StrongSwan Client or the Windows NCP Secure Entry Client. They have powerful inbuild logging so you can check both sides of the connection. In IPsec, you need the log of the server and the client to find the true cause of a connection error.
+- The easiest tool to troubleshoot the connection is the Android strongSwan Client or the Windows NCP Secure Entry Client. They have powerful inbuild logging so you can check both sides of the connection. In IPsec, you need the log of the server and the client to find the true cause of a connection error.
