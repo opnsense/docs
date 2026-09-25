@@ -17,7 +17,7 @@ At the top of the page you can search for aliases or preselect various types or 
 
 In order to gain some insights into the current status of the plugins, two additional (meta) fields are being displayed, being:
 
-* Loaded#
+* Loaded
 
   * Shows the amount of entries planned to install into the table, in case there's not enough memory available to load the
     item in question, one can easily find the alias causing the overflow in table entries (bar at the right top of the page)
@@ -125,7 +125,7 @@ Exclusion addresses starts with "!" sign (eg !192.168.0.1) and can be used to ex
 Networks
 ..................
 Networks are specified in Classless Inter-Domain Routing format (CIDR). Use the
-the correct CIDR mask for each entry. For instance a /32 specifies a single IPv4 host,
+correct CIDR mask for each entry. For instance a /32 specifies a single IPv4 host,
 or /128 specifies a single IPv6 host, whereas /24 specifies 255.255.255.0 and
 /64 specifies a normal IPv6 network.
 Network type Aliases can contain exclusion hosts or networks.
