@@ -800,7 +800,7 @@ as expected.
 Another valuable tool is the live log viewer, in order to use it, make sure to provide your rule with an easy to
 read description and enable the "log" option.
 
-If your using source routing (policy based routing), debugging can sometimes get a bit more complicated. Since the normal
+If you're using source routing (policy based routing), debugging can sometimes get a bit more complicated. Since the normal
 system routing table may not apply, it helps to know which flow the traffic actually followed. The packet capture is a useful
 tool in that case.
 

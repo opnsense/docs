@@ -172,7 +172,7 @@ intervals from the :code:`arp` and :code:`ndp` tables.
 URL Tables
 ..................
 URL tables can be used to fetch a list of IP addresses from a remote server.
-You can specify a :code:`Refresh frequency`` to determine how often this information should be updated.
+You can specify a :code:`Refresh frequency` to determine how often this information should be updated.
 
 .. Note::
 
@@ -383,7 +383,7 @@ With this alias type you are able to select networks by their responsible partie
 Using BGP parties announce the addresses they are responsible for to each other.
 For example Cloudflare uses AS number :code:`13335`, Microsoft is known to use :code:`8075`.
 
-More background and how addresses are assigned is explained on `wikipedia <https://en.wikipedia.org/wiki/Autonomous_system_(Internet)>`__
+More background and how addresses are assigned is explained on `wikipedia <https://en.wikipedia.org/wiki/Autonomous_system_(Internet)>`__.
 
 ..................
 External
