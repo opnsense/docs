@@ -1059,7 +1059,7 @@ Change Log 15.1.6:
 * DNS forwarder now properly reloads on host overrides updates
 * IPFW ruleset reload fix after start/restart of captive portal
 * Page contents upload and MIME type for svg images fix in captive portal
-* IPsec/Strongswan now supports IKEv1
+* IPsec/StrongSwan now supports IKEv1
 * Basic plumbing for the MVC framework has been completed
 * Fix Copy my MAC address in DHCP service editor
 * Removed IPv6 fcgi-fpm leftovers

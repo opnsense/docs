@@ -251,7 +251,7 @@ Here are the full patch notes:
 * ipsec: fix more ACLs related to individual IPsec page use
 * ipsec: add DH Group 2 for basic Azure VPN gateway compatibility
 * ipsec: fix trimming NULL values
-* ipsec: attr 28673 previously rendered as 1 instead of strongswan default "yes"/"no" for a boolean
+* ipsec: attr 28673 previously rendered as 1 instead of StrongSwan default "yes"/"no" for a boolean
 * isc-dhcp: use "lease_type" to key lease map in addition to "iaid_duid" (contributed by Alex Goodkind)
 * isc-dhcp: fix invalid FQDN generation from DHCPv4 static map domains (contributed by Steven Zimmermann)
 * kea-dhcp: allow manual configuration for advanced scenarios

@@ -197,7 +197,7 @@ List of hotfixes contained:
 
 Another week, another update.  We are addressing two regressions caught
 by our users and update the ports to their latest versions including NTP,
-Squid, and strongSwan.  As always, thank you for your support!
+Squid, and StrongSwan.  As always, thank you for your support!
 
 This update also enables console upgrades for the development version
 into the upcoming 17.1-BETA, which will be published right after we finish
@@ -610,7 +610,7 @@ share with you the following bits... so here they are.  ;)
 FreeBSD incorporated several reliability fixes for Hyper-V and we had
 to back out an ICMP stable commit that was not fully working for trace
 route output over the network.  There are several important ports
-updates, namely Lighttpd, Strongswan and OpenSSH all brought to their
+updates, namely Lighttpd, StrongSwan and OpenSSH all brought to their
 latest versions.
 
 On our side, multi-point VPN plugins have been corrected to properly

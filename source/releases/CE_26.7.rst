@@ -31,6 +31,117 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.7.4 (September 15, 2026)
+--------------------------------------------------------------------------
+
+
+Today we are rolling out the wireless device MVC/API rework and a
+final push for better source NAT replacement over outbound NAT.
+
+StrongSwan was updated to 6.1.0 and the GUI now offers a small
+recommended set of post-quantum key exchanges.
+
+You may also find the GUI tweaks for advanced option marker and
+a dialog search field helpful.
+
+There is a lot more going on as you can see from this changelog,
+but more on this and future plans later!
+
+Here are the full patch notes:
+
+* system: audit log injection via login username in auth_log() `[1] <https://github.com/opnsense/core/security/advisories/GHSA-jjm2-jg4p-3v9q>`__ 
+* system: add pfsync version 1500 to HA settings (contributed by Bjoern Jakobsen)
+* system: add hidden services so they can be operated by pluginctl -s
+* system: privlege separated reload in static PHP pages
+* system: lower priority of automatic wg/ipsec gateways
+* system: fix disk widget loading issue (contributed by Konstantinos Spartalis)
+* system: add back the service widget link
+* system: make compare operator in authTOTP() more strict
+* interfaces: migrate wireless configuration to MVC/API
+* interfaces: return an empty string which cannot be an interface in convert_real_interface_to_friendly_interface_name()
+* interfaces: ppp-ipv6.php may be executed before later stages of interface_configure()
+* interfaces: provide "uuid" in legacy_config_get_interfaces()
+* interfaces: split media and mediaopt with tabs instead of spaces
+* interfaces: a few config_read_array() replacements
+* interfaces: refactor device matching around interface_parent_devices()
+* interfaces: remove cua matching from PPP device pattern
+* firewall: source NAT: add pool options and source hash key
+* firewall: source NAT: fix port alias and well known port usage in target_port
+* firewall: make source and destination NAT automatic rules visible in GUI
+* firewall: implement JsonAuditField in all MVC components
+* firewall: update the internally reserved pf keywords for FreeBSD 15
+* firewall: add source NAT migration banner to outbound NAT
+* firewall: add private network exclusions to default IPv6 bogons (contributed by Maurice Walker)
+* dnsmasq: leases sorting fixes (contributed by Greelan)
+* firmware: opnsense-bootstrap: fix bootstrap on FreeBSD 15 with pkgbase
+* firmware: opnsense-prefetch: new tool for sets prefetching
+* firmware: opnsense-sign: shell compatibility update
+* firmware: adjust the incompatible pkg test
+* firmware: disable FreeBSD-base repository and remove old definitions
+* intrusion detection: fix displaying URL in descriptions (contributed by Konstantinos Spartalis)
+* ipsec: add some hybrid post-quantum variants as additional key exchange
+* kea: fix leases sorting (contributed by Greelan)
+* openvpn: moved legacy CARP hook to os-openvpn-legacy plugin
+* acl: fix API patters for GIF/GRE device settings
+* acl: add missing and fix some issues (contributed by Konstantinos Spartalis)
+* backend: add CLOEXEC to a few file descriptor opens to avoid lock inheritance
+* mvc: advanced marker for form/dialog fields
+* mvc: fix stale imports for Message classes
+* mvc: JsonAduditField: shared implementation for configuration revision tracking
+* rc: add watchdog to shutdown, reboot and reload_all cases
+* ui: fix widget bottom gap in standard theme files (contributed by Konstantinos Spartalis)
+* ui: sidebar fixes and rework (contributed by Team Rebellion)
+* ui: remove spurious _formDialog portion of dialog IDs
+* ui: implement dialog search field
+* ui: ensure a minimum amount of rows to render in grids
+* plugins: os-acme-client 4.17 `[2] <https://github.com/opnsense/plugins/blob/stable/26.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-theme-rebellion 1.9.8 (contributed by Team Rebellion)
+* plugins: os-turnserver 1.4 `[3] <https://github.com/opnsense/plugins/blob/stable/26.7/net/turnserver/pkg-descr>`__ 
+* src: ciss: revert patch that added max physical target
+* src: pf: do not set a null rule pointer during test
+* src: pf: fix securelevel off-by-one
+* src: pfctl: fix printing of wildcard anchors
+* src: e1000: more assorted upstream patches from stable/15
+* src: ixgbe: assorted upstream patches from stable/15
+* src: virtio_p9fs: disallow detach if a session is in progress
+* src: route/fib_algo: free leaked radix_masks in radix_lockless
+* src: netipsec: implement pr_disconnect for PF_KEY sockets
+* src: iflib: assorted upstream patches from stable/15
+* src: net: add ifmedia support for 10GBase-BX BiDi
+* src: bnxt: report initialization failures to iflib
+* src: bnxt: add led(4) identification support
+* src: ice: add led(4) identification support
+* src: ice: report initialization failures to iflib
+* src: ice: add support for E835 CNSA 2.0 adapters
+* src: ice: add two more 4-part IDs for E835 adapters
+* src: if_vxlan: fix panic by validating unused drvspec values
+* src: qat: driver updates to enhance qat infrastructure
+* src: ath10k: remove some early FreeBSD-specific debugging
+* src: ip(6)_mroute: assorted upstream patches from stable/15
+* src: in_mcast: fix uninitialized variable usage in inm_merge()
+* src: bind: lookup local address in current FIB if '\*.bind_all_fibs' is active
+* src: net: add fib-aware ifa_ifwithaddr()
+* ports: ca_root_nss / nss 3.129 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_129.html>`__ 
+* ports: curl 8.22.0 `[5] <https://curl.se/changes.html#8_22_0>`__ 
+* ports: dhcp6c fix for truncated env vars in dhcp6c-script (contributed by Michael Zimmermann)
+* ports: expat 2.8.4 `[6] <https://github.com/libexpat/libexpat/blob/R_2_8_4/expat/Changes>`__ 
+* ports: filterlog 0.9 support for pflog actions on FreeBSD 15
+* ports: libxml 2.15.4 `[7] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.4/NEWS>`__ 
+* ports: openldap 2.6.15 `[8] <https://www.openldap.org/software/release/changes_lts.html>`__ 
+* ports: pcre2 10.48 `[9] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.48>`__ 
+* ports: php 8.5.10 `[10] <https://www.php.net/ChangeLog-8.php#8.5.10>`__ 
+* ports: phpseclib 3.0.57 `[11] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.57>`__ 
+* ports: strongswan 6.1.0 `[12] <https://github.com/strongswan/strongswan/releases/tag/6.1.0>`__ 
+
+A hotfix release was issued as 26.7.4_1:
+
+* ui: only schedule grid dimension changes after data processing, window resizing and table visibility changes
+* ports: suricata 8.0.7 `[13] <https://suricata.io/2026/09/15/suricata-8-0-7-released/>`__ 
+* ports: unbound 1.26.1 `[14] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-26-1>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.7.3 (August 27, 2026)
 --------------------------------------------------------------------------
 

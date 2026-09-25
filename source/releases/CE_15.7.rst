@@ -927,7 +927,7 @@ base to eradicate code warnings and now enable them by default in the crash
 reporter.  We're half-expecting another stable update early next week just
 to make sure your infrastructure keeps running as smoothly as possible.
 
-Here are the the full patch notes:
+Here are the full patch notes:
 
 * updated sudo 1.8.14p3 `[1] <https://www.sudo.ws/releases/legacy/#1.8.14p3>`__ , pcre 8.37_2 `[2] <https://bugs.exim.org/show_bug.cgi?id=1651>`__ , and FreeBSD 10.1-RELEASE-p15 `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-15:13.tcp.asc>`__ 
 * firmware: fix upgrade when using opnsense-devel package

@@ -145,7 +145,7 @@ Here are the full patch notes:
 * captive portal: fix chroot regression since lighttpd web server update in 17.7.9
 * interfaces: provide a link-local IPv6 when asking for addresses
 * intrusion detection: sync port-groups to default template
-* ipsec: upgrade vici lib to match strongSwan package
+* ipsec: upgrade vici lib to match StrongSwan package
 * network time: fix a PHP warning during NMEA deselect
 * mvc: do not throw disabled errors in handler
 * plugins: os-dyndns 1.4_1 fixes issue with Namecheap error parsing

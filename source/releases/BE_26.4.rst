@@ -121,7 +121,7 @@ Here are the full patch notes for patch release 1:
 * src: posixshm: fix a TOCTOU race in the FIOSSHMLPGCNF handler `[24] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:63.posixshm.asc>`__ 
 * src: tty: revalidate after dropping the tty lock in ioctl handlers `[25] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:62.tty.asc>`__ 
 * src: ppp: fix multiple vulnerabilities `[26] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:60.ppp.asc>`__ 
-* src: openssl: fix multiple vulnerabilities `[27] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:61.openssl.asc>`__ 
+* src: openssl: fix more vulnerabilities `[27] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:61.openssl.asc>`__ 
 * src: dsp: fix a potential use-after-free in dsp_oss_syncstart() `[28] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:58.sound.asc>`__ 
 * src: hwpmc: fix the execve handler `[29] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:56.hwpmc.asc>`__ 
 * src: ucode: fix validation on Intel platforms `[30] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:20.microcode.asc>`__ 
@@ -129,6 +129,17 @@ Here are the full patch notes for patch release 1:
 * ports: openssl 3.0.22 `[32] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
 * ports: openvpn 2.7.7 `[33] <https://github.com/OpenVPN/openvpn/blob/v2.7.7/Changes.rst>`__ 
 
+Here are the full patch notes for patch release 2:
+
+* system: make compare operator in authTOTP() more strict
+* interfaces: ppp-ipv6.php may be executed before later stages of interface_configure()
+* ipsec: add some hybrid post-quantum variants as additional key exchange
+* acl: fix API patters for GIF/GRE device settings
+* acl: add missing and fix some issues (contributed by Konstantinos Spartalis)
+* rc: add watchdog to shutdown, reboot and reload_all cases
+* ports: strongswan 6.1.0 `[34] <https://github.com/strongswan/strongswan/releases/tag/6.1.0>`__ 
+* ports: suricata 8.0.7 `[35] <https://suricata.io/2026/09/15/suricata-8-0-7-released/>`__ 
+* ports: unbound 1.26.1 `[36] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-26-1>`__ 
 
 
 --------------------------------------------------------------------------

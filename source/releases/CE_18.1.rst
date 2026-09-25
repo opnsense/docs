@@ -693,7 +693,7 @@ Here are the full patch notes:
 
 
 This small update swiftly follows 18.1.3 with security updates for DHCP and
-strongSwan and assorted fixes including multi-WAN failover cases.
+StrongSwan and assorted fixes including multi-WAN failover cases.
 
 Here are the full patch notes:
 

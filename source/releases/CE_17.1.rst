@@ -182,7 +182,7 @@ Here are the full patch notes:
 * firewall: move CARP preempt to later boot stage
 * firewall: allow port ranges in the form of "80-100" in addition to "80:100"
 * interfaces: track6 edge case requires HUP for either reload or linkup
-* ipsec: fix widget count after strongSwan 5.5.2 update
+* ipsec: fix widget count after StrongSwan 5.5.2 update
 * intrusion detection: add advanced feature default-packet-size
 * firmware: new mirror for Dept. of CSE, Yuan Ze University, Taiwan `[1] <https://www.cse.yzu.edu.tw>`__ 
 * rc: advertise live mode just above the login prompt
