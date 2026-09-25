@@ -20,7 +20,7 @@ To get a configuration login to your account_
 
 .. _account: https://www.azirevpn.com/cfg/wireguard
 
-Via **Options** you can select the country where you want to break out, choose a port (default ist fine),
+Via **Options** you can select the country where you want to break out, choose a port (default is fine),
 and set the protocol to tunnel (we only cover IPv4).
 
 Hit **Download** at the end of the page to get the preconfigured text file and open it in your

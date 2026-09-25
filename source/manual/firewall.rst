@@ -298,7 +298,7 @@ Group all firewall rules in a tree, based on their category. The groups act like
 The group folders are not saved inside the configuration, they are an alternative view based on categories.
 
 Whenever a rule in sequence changes category, a new folder copying the category of the first rule will be created.
-To move similiar rules into the same folder, change their sequence and category. But keep in mind that the sequence of rules
+To move similar rules into the same folder, change their sequence and category. But keep in mind that the sequence of rules
 will always be the same as without the tree view.
 
 

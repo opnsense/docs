@@ -177,7 +177,7 @@ This may be desirable in some situations where multiple subnets are connected to
 .. Note::
 
     Although these rules will be visible in the "automatic" rule section of each interface, we generally advice to add the rules actually
-    recquired on a per net basis manually.
+    required on a per net basis manually.
 
 
 Disable reply-to

@@ -67,7 +67,7 @@ And start describing our (information) model, like this:
         </items>
     </model>
 
-Now let's explain what's happing here one tag at a time.
+Now let's explain what's happening here one tag at a time.
 
 #. the <model> tag is used for identification of the file. (this is a
    model file)

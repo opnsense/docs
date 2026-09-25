@@ -173,7 +173,7 @@ power to do a TLS handshake inside your own computer centre.
     You should not use this for upstream servers reachable via untrusted networks.
     Use (1) or (4) in such cases.
 
-4. TLS Passthough
+4. TLS Passthrough
 ------------------
 
 In this mode, the proxy will just pass though the connection and has no access
