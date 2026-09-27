@@ -17,18 +17,18 @@ At the top of the page you can search for aliases or preselect various types or 
 
 In order to gain some insights into the current status of the plugins, two additional (meta) fields are being displayed, being:
 
-* Loaded#
+* Loaded
 
   * Shows the amount of entries planned to install into the table, in case there's not enough memory available to load the
     item in question, one can easily find the alias causing the overflow in table entries (bar at the right top of the page)
 
 * Last updated
 
-    * Shows the last timestamp from the entries saved to disk.
+  * Shows the last timestamp from the entries saved to disk.
 
 .. Note::
 
-    The fields above are only used for aliases that contain either networks or hosts, port type aliases are part of the
+    The fields above are only used for aliases that contain either networks or hosts. Port type aliases are part of the
     rule and thus not visible in any table.
 
 
