@@ -71,7 +71,7 @@ The following fields are available in the grid:
 ========================= ================================================================================================
 State id                  Unique internal identifier describing the state and the origin (creator)
 Int                       Bound to which interface, by default this is all unless " Bind states to interface" is set
-                          in :menuselection:`Firewall->Settings->Advanced`
+                          in :menuselection:`Firewall --> Settings --> Filter`
 Dir                       Direction (in :code:`->` or out :code:`<-`)
 Proto                     Protocol in question
 Source                    Source address and port

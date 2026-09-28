@@ -8,8 +8,8 @@ GUESTNET (:doc:`captive portal </manual/captiveportal>`) and PFSYNC (:doc:`high 
 .. Note::
     For legacy compatibility WAN interfaces set to type DHCP or interfaces with a *Gateway Rules* selection
     send reply packets to the corresponding gateway directly, also when the sender is on the same interface.
-    This will break connectivity in some rare scenarios and can be disabled via
-    **Firewall->Settings->Advanced->Disable reply-to**.
+    This will break connectivity in some rare scenarios and can be disabled by checking
+    **Disable reply-to** under :menuselection:`Firewall --> Settings --> Filter`.
 
 -----------------------------
 Assignments
