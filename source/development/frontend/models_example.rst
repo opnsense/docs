@@ -26,7 +26,7 @@ Now let's test our model using a small PHP script (in /usr/local/opnsense/mvc/sc
      
     // perform validation on the data in our model
     $validationMessages = $myMdl->performValidation();
-    foreach ($validationMessages as  $message) {
+    foreach ($validationMessages as $message) {
         echo "validation failure on field ". $message->getField()."  returning message : ". $message->getMessage()."\n";
     }
      
