@@ -158,7 +158,7 @@ Create an IPv6 pool that all roadwarriors will share. This configuration will re
     ==============================================  ====================================================================================================
 
 .. Note::
-    The IPv6 pool is not a /64 Prefix, because it is used to define a pool of IPv6 addresses that can be used as leases. Prefix /120 means there are 256 IPv6 addresses available. The hard limit of strongSwan pools is Prefix /97.
+    The IPv6 pool is not a /64 Prefix, because it is used to define a pool of IPv6 addresses that can be used as leases. Prefix /120 means there are 256 IPv6 addresses available. The hard limit of StrongSwan pools is Prefix /97.
 
 .. Note::
     You can skip the DNS field if you do not want to push DNS Servers to your clients.
