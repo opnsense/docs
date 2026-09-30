@@ -540,8 +540,8 @@ Android StrongSwan VPN client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Import the self-signed CA certificate into the Android certificate store.
-- Install the strongSwan app from the Google Play Store
-- Open the strongSwan app and create a new VPN profile.
+- Install the StrongSwan app from the Google Play Store
+- Open the StrongSwan app and create a new VPN profile.
     
     - Server: ``vpn1.example.com``
     - VPN Typ: IKEv2 EAP
