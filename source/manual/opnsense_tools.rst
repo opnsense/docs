@@ -60,7 +60,7 @@ to its previous state while running the latest OPNsense version itself.
 
 # opnsense-revert -r 18.1.4 strongswan
 
-With this command you can, for example, run OPNsense 18.1.5 while using the 18.1.4 version of strongSwan.
+With this command you can, for example, run OPNsense 18.1.5 while using the 18.1.4 version of StrongSwan.
 If you want to go back to the current release version just do
 
 # opnsense-revert strongswan
