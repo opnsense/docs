@@ -67,7 +67,7 @@ If you want to go back to the current release version just do
 
 Example 2:
 ----------
-The previous revert of strongSwan was not the solution you expected so you try to completely revert to the previous
+The previous revert of StrongSwan was not the solution you expected so you try to completely revert to the previous
 OPNsense version:
 
 # opnsense-revert -r 18.1.4 opnsense
