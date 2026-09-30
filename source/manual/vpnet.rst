@@ -99,7 +99,7 @@ is an interesting read as well.
 
 * Phase 1 - The general connection settings, like local/remote addresses and general protocol settings. Choices in authentication to use
   are also part of this, they may involve multiple rounds.
-* Phase 2 - Nowadays strongSwan calls these **children**, as these define the :code:`CHILD_SA` subsections in play. This is where you can define
+* Phase 2 - Nowadays StrongSwan calls these **children**, as these define the :code:`CHILD_SA` subsections in play. This is where you can define
   the networks on both ends. When multiple segments are being added into the same child, these are being treated as one policy
   where all of them are able to communicate to each other.
 * Phase 1 / Tunnel Isolation - This option made sure every network defined in phase 2 would be treated as a child of it's own (e.g. two phase 2's would turn into two children)
