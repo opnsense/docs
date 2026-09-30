@@ -52,7 +52,7 @@ For a complete list of options look at the manpage on the system.
 
 Example 1:
 ----------
-The latest update of OPNsense to version 18.1.5 did a minor jump for the IPSec package "strongSwan".
+The latest update of OPNsense to version 18.1.5 did a minor jump for the IPSec package "strongswan".
 From this moment your VPNs are unstable and only a restart helps.
 
 To check if the update of the package is the reason you can easily revert the package
