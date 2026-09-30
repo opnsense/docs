@@ -42,7 +42,7 @@ The IPsec module incorporates different functions, which are grouped into variou
 are managed using Connections and the :code:`swanctl.conf` format.
 
 One of the main goals for the long run is to better align the gui components so they reflect the reality underneath, as we use
-`strongSwan <https://www.strongswan.org/>`__, our aim is to follow their terminology more closely than we previously did.
+`StrongSwan <https://www.strongswan.org/>`__, our aim is to follow their terminology more closely than we previously did.
 
 The following functions are available in the menu:
 
