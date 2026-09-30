@@ -308,7 +308,7 @@ your users will use for accessing the user portal. Do not forget to create a fir
 
     It is not advised to allow access to the WebGUI from public networks without restriction.
 
-If you are corrently logged into the WebGUI admin, open a different browser or an incognito tab. Open the same URL you would use to log in
+If you are currently logged into the WebGUI admin, open a different browser or an incognito tab. Open the same URL you would use to log in
 as administrator, but instead log in with the user you created earlier (john).
 
 You will now see the user portal as landing page. Here, the configurations you created in the prior steps will show their results.

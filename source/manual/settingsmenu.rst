@@ -271,7 +271,7 @@ The most common core commands are as follows:
 | Update and reload intrusion detection rules | configctl ids update                   | N/A                     | Fetches remote rules and reloads the IDS    |
 |                                             |                                        |                         | instance to make use of newly fetched rules.|
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
-| Update Unbound DNSBLs                       | configctl unbound dnsbl                | N/A                     | Update the the DNS blocklists and apply the |
+| Update Unbound DNSBLs                       | configctl unbound dnsbl                | N/A                     | Update the DNS blocklists and apply the     |
 |                                             |                                        |                         | changes to Unbound.                         |
 +---------------------------------------------+----------------------------------------+-------------------------+---------------------------------------------+
 | ZFS pool trim                               | configctl zfs trim [pool]              | pool: ZFS pool name to  | Initiates an immediate on-demand TRIM       |

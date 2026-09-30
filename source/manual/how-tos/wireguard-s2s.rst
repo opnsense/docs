@@ -10,13 +10,13 @@ WireGuard is a simple and fast modern VPN protocol. It aims to be less complicat
 It has fewer lines of code and is more easily audited than other VPN protocols. Initially released for the Linux kernel, it is now cross-platform and widely deployable.
     
 .. Note::
-    The following example covers an IPv4 Site to Site Wireguard Tunnel between two OPNsense Firewalls with public IPv4 addresses on their WAN interfaces. You will connect *Site A LAN Net* ``172.16.0.0/24`` to *Site B LAN Net* ``192.168.0.0/24`` using the *Wireguard Transfer Net* ``10.2.2.0/24``. *Site A Public IP* is ``203.0.113.1`` and *Site B Public IP* is ``203.0.113.2``.
+    The following example covers an IPv4 Site to Site WireGuard Tunnel between two OPNsense Firewalls with public IPv4 addresses on their WAN interfaces. You will connect *Site A LAN Net* ``172.16.0.0/24`` to *Site B LAN Net* ``192.168.0.0/24`` using the *WireGuard Transfer Net* ``10.2.2.0/24``. *Site A Public IP* is ``203.0.113.1`` and *Site B Public IP* is ``203.0.113.2``.
     
 .. Tip::
     You can also easily expand this Site to Site tunnel with IPv6 Global Unicast addresses (GUA) or Unique Local Addresses (ULA) to create a Dual Stack tunnel. Just add these IPv6 Networks (usually with /64 Prefix) to the *allowed IPs* and create Firewall rules to allow the traffic.
 
 .. Attention::
-    When using Wireguard in a HA setup, use the "Depend on (CARP)" setting in each instance.
+    When using WireGuard in a HA setup, use the "Depend on (CARP)" setting in each instance.
 
 ---------------------
 Step 1 - Installation
@@ -126,16 +126,16 @@ Press **Save** and **Apply**.
     If one of your sites has a dynamic WAN IP address, you can leave the *Endpoint Address* on the site with the static IP address empty. The site with the dynamic IP will then be the initiator, and the site with the static IP will be the responder. Adjust the Firewall rule accordingly to allow any Source IP to connect to the static site.
 
 .. Note::
-    If you use hostnames in the *Endpoint Address*, Wireguard will only resolve them once when you start the tunnel. If both sites have dynamic *Endpoint Addresses* set, the tunnel will stop working when they both use DynDNS hostnames, and one (or both) sites receive a new WAN IP lease from the ISP. You can mitigate this with :menuselection:`System --> Settings --> Cron` and creating a new job that runs regularly with the command ``Renew DNS for WireGuard on stale connections``.
+    If you use hostnames in the *Endpoint Address*, WireGuard will only resolve them once when you start the tunnel. If both sites have dynamic *Endpoint Addresses* set, the tunnel will stop working when they both use DynDNS hostnames, and one (or both) sites receive a new WAN IP lease from the ISP. You can mitigate this with :menuselection:`System --> Settings --> Cron` and creating a new job that runs regularly with the command ``Renew DNS for WireGuard on stale connections``.
 
 .. Note::
-    If a site is behind NAT, a keepalive has to be set on the site behind the NAT. The keepalive should be 25 seconds as stated in the official wireguard docs. It keeps the UDP session open when no traffic flows, preventing the wireguard tunnel from becoming stale because the outbound port changes.
+    If a site is behind NAT, a keepalive has to be set on the site behind the NAT. The keepalive should be 25 seconds as stated in the official WireGuard docs. It keeps the UDP session open when no traffic flows, preventing the WireGuard tunnel from becoming stale because the outbound port changes.
 
 -------------------------------
 Step 4a - Setup Firewall Site A
 -------------------------------
 
-Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incoming wireguard traffic from Site B.
+Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incoming WireGuard traffic from Site B.
 
     ====================== ====================================================================================================
      **Action**             *Pass*
@@ -146,12 +146,12 @@ Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incomi
      **Source**             *203.0.113.2*
      **Destination**        *203.0.113.1*
      **Destination port**   *51820*
-     **Description**        *Allow Wireguard from Site B to Site A*    
+     **Description**        *Allow WireGuard from Site B to Site A*    
     ====================== ==================================================================================================== 
 
 Press **Save** and **Apply**.
     
-Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rule to prevent fragmentation of traffic going through the wireguard tunnel.
+Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rule to prevent fragmentation of traffic going through the WireGuard tunnel.
 
     ============================ ==================================================================================================
      **Interface**                *WireGuard (Group)*
@@ -160,18 +160,18 @@ Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rul
      **Source**                   *any*
      **Destination**              *any*
      **Destination port**         *any*
-     **Description**              *Wireguard MSS Clamping Site A*
-     **Max mss**                  *1380 or lower, subtract at least 40 bytes from the Wireguard MTU*
+     **Description**              *WireGuard MSS Clamping Site A*
+     **Max mss**                  *1380 or lower, subtract at least 40 bytes from the WireGuard MTU*
     ============================ ==================================================================================================
 
 .. Note::
-    By creating the normalization rules, you ensure that IPv4 TCP can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work. If you want to use IPv6 TCP, lower the MSS by 60 bytes instead of 40 bytes.
+    By creating the normalization rules, you ensure that IPv4 TCP can pass through the WireGuard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work. If you want to use IPv6 TCP, lower the MSS by 60 bytes instead of 40 bytes.
 
 -------------------------------
 Step 4b - Setup Firewall Site B
 -------------------------------
 
-Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incoming wireguard traffic from Site A.
+Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incoming WireGuard traffic from Site A.
 
     ====================== ====================================================================================================
      **Action**             *Pass*
@@ -182,12 +182,12 @@ Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incomi
      **Source**             *203.0.113.1*
      **Destination**        *203.0.113.2*
      **Destination port**   *51820*
-     **Description**        *Allow Wireguard from Site A to Site B*    
+     **Description**        *Allow WireGuard from Site A to Site B*    
     ====================== ====================================================================================================
     
 Press **Save** and **Apply**.
 
-Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rule to prevent fragmentation of traffic going through the wireguard tunnel.
+Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rule to prevent fragmentation of traffic going through the WireGuard tunnel.
 
     ============================ ==================================================================================================
      **Interface**                *WireGuard (Group)*
@@ -196,12 +196,12 @@ Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rul
      **Source**                   *any*
      **Destination**              *any*
      **Destination port**         *any*
-     **Description**              *Wireguard MSS Clamping Site B*
-     **Max mss**                  *1380 or lower, subtract at least 40 bytes from the Wireguard MTU*
+     **Description**              *WireGuard MSS Clamping Site B*
+     **Max mss**                  *1380 or lower, subtract at least 40 bytes from the WireGuard MTU*
     ============================ ==================================================================================================
 
 -----------------------------------------------
-Step 4c - Enable Wireguard on Site A and Site B
+Step 4c - Enable WireGuard on Site A and Site B
 -----------------------------------------------
 
 Go to :menuselection:`VPN --> WireGuard --> Settings` on both sites and **Enable WireGuard**
@@ -231,11 +231,11 @@ Go to OPNsense Site A :menuselection:`Firewall --> Rules --> LAN A` add a new ru
 
 Press **Save** and **Apply**.
     
-Go to OPNsense Site A :menuselection:`Firewall --> Rules --> Wireguard (Group)` add a new rule.
+Go to OPNsense Site A :menuselection:`Firewall --> Rules --> WireGuard (Group)` add a new rule.
 
     ====================== ====================================================================================================
      **Action**             *Pass*
-     **Interface**          *Wireguard (Group)*
+     **Interface**          *WireGuard (Group)*
      **Direction**          *In*
      **TCP/IP Version**     *IPv4*
      **Protocol**           *Any*
@@ -265,11 +265,11 @@ Go to OPNsense Site B :menuselection:`Firewall --> Rules --> LAN A` add a new ru
 
 Press **Save** and **Apply**.    
 
-Go to OPNsense Site B :menuselection:`Firewall --> Rules --> Wireguard (Group)` add a new rule.
+Go to OPNsense Site B :menuselection:`Firewall --> Rules --> WireGuard (Group)` add a new rule.
 
     ====================== ====================================================================================================
      **Action**             *Pass*
-     **Interface**          *Wireguard (Group)*
+     **Interface**          *WireGuard (Group)*
      **Direction**          *In*
      **TCP/IP Version**     *IPv4*
      **Protocol**           *Any*
@@ -283,4 +283,4 @@ Go to OPNsense Site B :menuselection:`Firewall --> Rules --> Wireguard (Group)` 
 Press **Save** and **Apply**.
 
 .. Note::
-    Now both sites have full access to the LAN of the other Site through the Wireguard Tunnel. For additional networks just add more **Allowed IPs** to the Wireguard Endpoints and adjust the firewall rules to allow the traffic.
+    Now both sites have full access to the LAN of the other Site through the WireGuard Tunnel. For additional networks just add more **Allowed IPs** to the WireGuard Endpoints and adjust the firewall rules to allow the traffic.

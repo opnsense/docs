@@ -36,7 +36,7 @@ Setup Overview
 
 In this setup example, there are two OPNsense firewalls - Site A and Site B - that should communicate over the internet via Layer2.
 
-Since VXLAN is not encrypted, a VPN should be used to secure the connection. IPsec or Wireguard are recommended, since they can create simple point to point VPNs between loopback interfaces.
+Since VXLAN is not encrypted, a VPN should be used to secure the connection. IPsec or WireGuard are recommended, since they can create simple point to point VPNs between loopback interfaces.
 
 ===============  ================  ================
 **Interface**    **Site A**        **Site B**
@@ -84,7 +84,7 @@ The ``lo1`` interfaces on both firewalls must be connected via VPN. In this exam
 
 Create Firewall rules that allow `VXLAN` (UDP/4789) and `ICMP` traffic for:
 
-    - :menuselection:`Firewall --> Rules --> IPsec` (or Wireguard)
+    - :menuselection:`Firewall --> Rules --> IPsec` (or WireGuard)
 
 The tunnel should now route traffic between the two loopback interfaces:
 

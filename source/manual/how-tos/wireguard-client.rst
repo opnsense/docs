@@ -12,7 +12,7 @@ This how-to describes setting up a central WireGuard Instance (server) on OPNsen
 
 
 ------------------------------------------
-Step 1 - Configure the Wireguard Instance
+Step 1 - Configure the WireGuard Instance
 ------------------------------------------
 
 - Go to :menuselection:`VPN --> WireGuard --> Instances`
@@ -130,7 +130,7 @@ Step 4(a) - Assign an interface to WireGuard (recommended)
 
 .. Tip::
 
-    If Unbound DNS is configured with all interfaces registered it requires a reload of Unbound DNS to get the new Wireguard interface added. This is necessary to get DNS working through the VPN tunnel.
+    If Unbound DNS is configured with all interfaces registered it requires a reload of Unbound DNS to get the new WireGuard interface added. This is necessary to get DNS working through the VPN tunnel.
 
 Step 4(b) - Create a Source NAT rule
 ---------------------------------------
@@ -222,7 +222,7 @@ Step 5a - Create normalization rules
 
 - Go to :menuselection:`Firewall --> Settings -> Normalization` and press **+** to create **one** new normalization rule.
 
-- If you only pass IPv4 traffic through the wireguard tunnel, create the following rule:
+- If you only pass IPv4 traffic through the WireGuard tunnel, create the following rule:
     ============================ ==================================================================================================
      **Interface**                *WireGuard (Group)*
      **Direction**                *Any*
@@ -230,13 +230,13 @@ Step 5a - Create normalization rules
      **Source**                   *any*
      **Destination**              *any*
      **Destination port**         *any*
-     **Description**              *Wireguard MSS Clamping IPv4*
-     **Max mss**                  *1380 (default) or 1372 if you use PPPoE; it's 40 bytes less than your Wireguard MTU*
+     **Description**              *WireGuard MSS Clamping IPv4*
+     **Max mss**                  *1380 (default) or 1372 if you use PPPoE; it's 40 bytes less than your WireGuard MTU*
     ============================ ==================================================================================================
 
 - **Save** the rule
 
-- If you pass IPv4+IPv6 - or only IPv6 traffic - through the wireguard tunnel, create the following rule:
+- If you pass IPv4+IPv6 - or only IPv6 traffic - through the WireGuard tunnel, create the following rule:
     ============================ ==================================================================================================
      **Interface**                *WireGuard (Group)*
      **Direction**                *Any*
@@ -244,8 +244,8 @@ Step 5a - Create normalization rules
      **Source**                   *any*
      **Destination**              *any*
      **Destination port**         *any*
-     **Description**              *Wireguard MSS Clamping IPv6*
-     **Max mss**                  *1360 (default) or 1352 if you use PPPoE; it's 60 bytes less than your Wireguard MTU*
+     **Description**              *WireGuard MSS Clamping IPv6*
+     **Max mss**                  *1360 (default) or 1352 if you use PPPoE; it's 60 bytes less than your WireGuard MTU*
     ============================ ==================================================================================================
 
 - **Save** the rule
@@ -255,7 +255,7 @@ Step 5a - Create normalization rules
     - IPv6 has a larger header size with 40 bytes. That encreases the total to 60 bytes for IPv6 TCP.
 
 .. Note::
-    By creating the normalization rules, you ensure that IPv4 TCP and IPv6 TCP can pass through the Wireguard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work.
+    By creating the normalization rules, you ensure that IPv4 TCP and IPv6 TCP can pass through the WireGuard tunnel without being fragmented. Otherwise you could get working ICMP and UDP, but some encrypted TCP sessions will refuse to work.
 
 ---------------------------------------
 Step 6 - Configure the WireGuard client

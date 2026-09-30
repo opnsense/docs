@@ -126,7 +126,7 @@ DHCPv6
 
 Similar to IPv4, there's also a network configuration protocol for IPv6, but the scope of the service is different.
 In the sequence diagram above we'll see that a dhcpv6 client will be executed after the router solicitation process.
-Since dhcpv6 is not responsible for the routing part and address configuration may depend on routing advertisement reveived,
+Since dhcpv6 is not responsible for the routing part and address configuration may depend on routing advertisement received,
 it needs this information first.
 
 When debugging DHCPv6 communication, it's important to know clients listen on :code:`UDP port 546` and servers
