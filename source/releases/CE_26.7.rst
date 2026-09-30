@@ -31,6 +31,76 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.7.5 (September 30, 2026)
+--------------------------------------------------------------------------
+
+
+This update fixes a few security related things and updates to OpenSSL 3.5.9.
+We are also updating the package manager to version 2.8.4 to sync up with
+the current version being used in FreeBSD.
+
+The default password hash changes from bcrypt to argon2id.  If you wish to
+benefit from this change your hashed passwords need to be changed.  Note that
+this step is optional.  All bcrypt-hashed passwords will continue to work.
+
+The firewall outbound NAT page moves to the legacy plugin.  Note that you can
+still migrate your rules without the plugin installed via the migration
+assistant and the outbound rules will continue to work even when the legacy
+plugin is not installed.
+
+Since work on the interface settings API is progressing nicely, there is also
+work being done on the backend which is already featured in this release.
+It is now possible to debug the interface ordering sequence at boot, which
+will also help bring in more optimizations in the near future.
+
+Here are the full patch notes:
+
+* system: clear password change session flag only after password was changed `[1] <https://github.com/opnsense/core/security/advisories/GHSA-x3q7-cc7h-gj3v>`__  (reported by Wu Wenhao)
+* system: change diag.disk to return total bytes as well as formatted bytes
+* system: fix HA service restart with "id" parameter set
+* system: add webgui PAM config to test with opnsense-login
+* system: switch password hashing from bcrypt to argon2id
+* interfaces: refactor interfaces_loopback_configure() and add ::1/128 sync
+* interfaces: fix PHP warnings in interafces.php and do not write unset options
+* interfaces: fix linter complaints in WLAN model, 11a typo and wpa_pairwise labels
+* interfaces: dhclient handles keywords case-insensitive so properly match all "media" invokes (reported by Alice-Sabrina-Ivy)
+* interfaces: refactor interfaces_ppps_hardware() and avoid emitting serial device nodes
+* interfaces: allow to push $all_plugins in interface_configure()
+* interfaces: retire problematic validations in interface settings pertaining to legacy ISC-DHCP plugin
+* interfaces: stricter archive command in backend for packet capture download
+* interfaces: split out interfaces_dependencies() and make it digestible via pluginctl -Q
+* firewall: outbound NAT moves to legacy plugin
+* firewall: remove handling loopback addresses as "private"
+* firewall: fix expiry cron job default when alias TTL is smaller than 1 hour
+* firewall: use font-awesome elements for data tree controls to align with themes
+* firmware: opnsense-patch: added -R mode and updated -N mode
+* firmware: opnsense-prefetch: get remote size and print mismatches
+* firmware: opnsense-prefetch: curl use is now optional
+* firmware: add simple prompt to console changelog viewer
+* kea: add ping check settings for subnet configuration (contributed by laozhoubuluo)
+* monit: change "logfile" to "log" to fix syntax on newer daemon
+* acl: fix patterns for gateway groups (contributed by Andrew Ferk)
+* acl: merge the Dhcrelay log file pattern into the main ACL
+* bootgrid: exclude header cells from status color rendering
+* mvc: guard direct config saves against user-config-readonly (contributed by Andrew Ferk)
+* ui: remove defunct content-box-main usage
+* ui: make settings-changed trigger overridable
+* ui: fix blank bottom UI space (contributed by Konstantinos Spartalis)
+* plugins: os-ddclient 1.32 `[2] <https://github.com/opnsense/plugins/blob/stable/26.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-firewall-legacy 1.1 `[3] <https://github.com/opnsense/plugins/blob/stable/26.7/net/firewall-legacy/pkg-descr>`__ 
+* plugins: os-net-snmp 1.7 `[4] <https://github.com/opnsense/plugins/blob/stable/26.7/net-mgmt/net-snmp/pkg-descr>`__ 
+* plugins: os-puppet-agent 2.0 `[5] <https://github.com/opnsense/plugins/blob/stable/26.7/sysutils/puppet-agent/pkg-descr>`__ 
+* plugins: os-sftp-backup 1.2 verify backups after put
+* plugins: os-theme-cicada 1.42 (contributed by Greelan)
+* plugins: os-theme-tukan 1.32 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.52 (contributed by Team Rebellion)
+* ports: openssl 3.5.9 `[6] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+* ports: phalcon 5.22.0 `[7] <https://github.com/phalcon/cphalcon/releases/tag/v5.22.0>`__ 
+* ports: pkg 2.8.4
+
+
+
+--------------------------------------------------------------------------
 26.7.4 (September 15, 2026)
 --------------------------------------------------------------------------
 
