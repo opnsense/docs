@@ -536,7 +536,7 @@ iOS native VPN client
     iOS does not allow setting a DNS Server for the VPN, and it ignores the DNS *Configuration Payload*. The only workaround would be to change the DNS Server manually in the Wi-Fi settings each time the tunnel is brought up, and change them back when it is turned off.
 
 
-Android strongSwan VPN client
+Android StrongSwan VPN client
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 - Import the self-signed CA certificate into the Android certificate store.
