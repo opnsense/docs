@@ -123,6 +123,8 @@ newwanip                     Triggered after configuration of a dynamic interfac
                              parameters (:code:`$verbose` and :code:`$interfaces` and :code:`$family`). :code:`$interfaces`
                              is an array all relevant interfaces that require reloading or null for all.  $:code:`family` is the
                              address family type that triggered the event, either :code:`inet` for IPv4 or :code:`inet6` for IPv6.
+updateip                     Triggered after an out of sequence interface reload.  Similar to newwanip, but also triggering
+                             when the interface addressing is static, in which case newwanip is never observed.
 vpn                          Triggered in multiple places that require a reload of the VPN based subsystems, expects a maximum
                              of two parameters (:code:`$verbose` and :code:`$interfaces`). :code:`$interfaces` is an array of
                              all relevant interfaces that require reloading or null for all.
