@@ -45,10 +45,6 @@ Required Settings
   - Generated in the Netbird management server.
   - Used to register OPNsense as a Netbird peer.
 
-- **Optional Hostname**
-  - Defines how OPNsense appears in the Netbird management console.  
-  - Example: ``opnsense-router``.
-
 General Settings
 ----------------
 
