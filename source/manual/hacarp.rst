@@ -87,7 +87,7 @@ The preempt option makes sure that multiple carp interfaces will act as a group 
 at the same time, assuming no technical issues exist between both.
 
 .. Note::
-    Enabling this option will prevent a node from allowing any carp interface from becoming the :code:`master`, even if the node has a lower Skew - this is especially important when your      peer node enters "Persistent maintenance mode". This is due to FreeBSD's CARP Implementation.
+    Enabling this option will prevent a node from allowing any carp interface from becoming the :code:`master`, even if the node has a lower Skew - this is especially important when your      peer node enters "CARP Persistent maintenance mode". This is due to FreeBSD's CARP Implementation.
 
 .................................
 Disconnect dialup interfaces
