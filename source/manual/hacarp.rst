@@ -82,8 +82,12 @@ Disable preempt
 ............................
 
 By default this option is deselected, which is the advised scenario for most common HA setups.
-The preempt option make sure that multiple carp interfaces will act as a group (all :code:`backup` or :code:`master`)
+
+The preempt option make sures that multiple carp interfaces will act as a group (all :code:`backup` or :code:`master`)
 at the same time, assuming no technical issues exist between both.
+
+.. Note::
+    Enabling this setting will actively prevent a node from becoming the 'master' of a virtual IP, even if the node has a lower Skew - this is especially important when your peer node enters "Carp Maintenance Mode". 
 
 .................................
 Disconnect dialup interfaces
