@@ -532,7 +532,7 @@ CARP logging verbosity can be increased using either:
 VIP Interface on Backup node does not transition to :code:`master` when the "Master" node enters "CARP Persistent Maintenance Mode"
 ---------------------------------
 
-Ensure "Disable Preempt" is not checked under :menuselection:`System --> High Availability --> Settings` (:code:`Advanced Mode`).
+Ensure "Disable Preempt" is not checked under :menuselection:`System --> High Availability --> Settings` (:code:`Advanced Mode`) on the Backup node.
 
 
 Backup node cannot reach internet
