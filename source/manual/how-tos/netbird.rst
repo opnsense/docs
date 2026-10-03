@@ -70,16 +70,6 @@ General Settings
   - When enabled, this peer will **prefer** Rosenpass for connections to other Rosenpass-enabled peers but will also allow connections to peers **without** Rosenpass.  
   - When disabled, this peer will **only** connect to other peers that support Rosenpass, rejecting connections from non-Rosenpass peers.
 
-- **CARP Interface**  
-  - Defines how Netbird behaves in a high-availability (HA) setup using CARP.  
-  - **None**: If set to "None", Netbird will execute ``netbird up`` automatically and enable auto-connect.  
-  - **Specific Interface**: If an interface is selected, auto-connect is **disabled**, and Netbird must be manually started on the **MASTER** node by triggering a CARP event or executing ``netbird up`` manually.
-
-- **CARP VHID**  
-  - Sets the **Virtual Host ID (VHID)** for CARP when using Netbird in a high-availability (HA) setup.  
-  - This ID helps distinguish multiple CARP instances on the same network.  
-  - It should match the **VHID** used in the OPNsense HA configuration for proper failover behavior.
-
 After configuring the required settings, click **Save** and restart the Netbird service.
 
 Assigning the Interface
