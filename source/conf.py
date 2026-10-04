@@ -54,6 +54,7 @@ extensions = [
 ]
 
 html_baseurl = 'https://docs.opnsense.org/'
+sitemap_url_scheme = '{link}'
 
 blockdiag_fontpath = '/Library/Fonts/Arial.ttf'
 nwdiag_fontpath = '/Library/Fonts/Arial.ttf'
