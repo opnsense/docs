@@ -22,7 +22,8 @@ The proxy handles privacy extension and changing prefixes gracefully; the setup 
 
 For the ISP, it will look like the proxy itself owns all global unicast addresses (GUA) with its WAN facing MAC address.
 
-The proxy does not support NPTv6 deployments, as it will not map internal ULA to external GUA addresses.
+The optional ``Respond to prefixes`` mode answers upstream neighbor solicitations for unknown addresses in a learned or static prefix after a WAN-side DAD check.
+It is useful for NPTv6 and WAN-only deployments, but is not needed for normal proxy operation where downstream hosts are learned automatically.
 
 More technical details: `ndp-proxy-go <https://github.com/Monviech/ndp-proxy-go/blob/main/README.md>`_
 
@@ -50,13 +51,16 @@ Proxy Settings
         **Upstream interface**                    Choose the upstream interface which receives the external IPv6 prefix from the ISP.
                                                   Usually, this is the WAN interface. Ethernet interfaces are fully supported,
                                                   point-to-point (PPPoE) devices are experimental.
-        **Downstream interfaces**                 Choose one or multiple downstream interfaces which should proxy the upstream IPv6 prefix.
-                                                  Only ethernet interfaces are supported.
+        **Respond to prefixes**                   Respond to unknown upstream neighbor solicitations within learned or static prefixes.
+                                                  Useful for NPTv6 and WAN-only operation, but not required for normal proxy operation.
+                                                  This option is a no-op on point-to-point upstreams.
+        **Downstream interfaces**                 Leave empty for WAN-only operation, or choose one or more downstream interfaces which
+                                                  should proxy the upstream IPv6 prefix. Only ethernet interfaces are supported.
         **Proxy router advertisements**           Proxy upstream RAs to downstream interfaces. Disable this if you use your own RA daemon.
         **Install host routes**                   Automatically create host routes for discovered clients. Disabling this means you must
                                                   manually handle all routing decisions.
-        **Static prefixes**                       Manually trust an IPv6 prefix for downstream learning. This is only needed in static
-                                                  IPv6 provider networks without usable RA information on the upstream interface.
+        **Static prefixes**                       Manually trust an IPv6 prefix for downstream learning and prefix responding. This is only
+                                                  needed in static IPv6 provider networks without usable RA information on the upstream interface.
         **Static routers**                        Manually trust an upstream router link-local address. This is only needed in static
                                                   IPv6 provider networks without usable RA information on the upstream interface.
         **Neighbor cache lifetime**               Neighbor cache lifetime in minutes. This controls when stale clients, host routes and
@@ -445,4 +449,3 @@ The proxy must install host routes to target the individual downstream clients:
 
    The proxy does not clean up installed host routes when it is stopped. This is intentional to minimize downtime of IPv6 clients between service restarts.
    It does automatically prune routes while it runs when the ``cache-ttl`` of a discovered neighbor expires.
-
