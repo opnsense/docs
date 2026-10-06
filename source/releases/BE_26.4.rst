@@ -141,6 +141,23 @@ Here are the full patch notes for patch release 2:
 * ports: suricata 8.0.7 `[35] <https://suricata.io/2026/09/15/suricata-8-0-7-released/>`__ 
 * ports: unbound 1.26.1 `[36] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-26-1>`__ 
 
+Here are the full patch notes for patch release 3:
+
+* system: clear password change session flag only after password was changed `[37] <https://github.com/opnsense/core/security/advisories/GHSA-x3q7-cc7h-gj3v>`__  (reported by Wu Wenhao)
+* system: use correct type for IP when killing active states in "lockout_handler" (reported by Omar Habra of Apex Security Research)
+* system: fix HA service restart with "id" parameter set
+* interfaces: dhclient handles keywords case-insensitive so properly match all "media" invokes (reported by Alice-Sabrina-Ivy)
+* interfaces: stricter archive command in backend for packet capture download
+* firewall: fix expiry cron job default when alias TTL is smaller than 1 hour
+* plugins: os-OPNBEcore 1.9
+* plugins: os-OPNWAF 2.5
+* src: sysvsem: heap out-of-bounds access in semop(2) `[38] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:64.sysvsem.asc>`__ 
+* src: ktls: remote DoS via receive-side kernel TLS `[39] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:67.ktls.asc>`__ 
+* src: udp: IPv6 UDP sendto(2) bypasses jail loopback restriction `[40] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:69.udp.asc>`__ 
+* src: vfs: multiple jail filesystem root escapes `[41] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:66.jail.asc>`__ 
+* src: openssl: out-of-bounds read in OpenSSL DTLS retransmission `[42] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:68.openssl.asc>`__ 
+* ports: expat 2.8.5 `[43] <https://github.com/libexpat/libexpat/blob/R_2_8_5/expat/Changes>`__ 
+
 
 --------------------------------------------------------------------------
 26.4.1 (June 16, 2026)

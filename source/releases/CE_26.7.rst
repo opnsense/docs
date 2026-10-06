@@ -61,7 +61,7 @@ Here are the full patch notes:
 * system: add webgui PAM config to test with opnsense-login
 * system: switch password hashing from bcrypt to argon2id
 * interfaces: refactor interfaces_loopback_configure() and add ::1/128 sync
-* interfaces: fix PHP warnings in interafces.php and do not write unset options
+* interfaces: fix PHP warnings in interfaces.php and do not write unset options
 * interfaces: fix linter complaints in WLAN model, 11a typo and wpa_pairwise labels
 * interfaces: dhclient handles keywords case-insensitive so properly match all "media" invokes (reported by Alice-Sabrina-Ivy)
 * interfaces: refactor interfaces_ppps_hardware() and avoid emitting serial device nodes
