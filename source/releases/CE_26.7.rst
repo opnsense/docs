@@ -31,6 +31,93 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.7.6 (October 08, 2026)
+--------------------------------------------------------------------------
+
+
+This update finally brings interface settings to MVC/API!  It also brings
+a number of fixes and improvements from FreeBSD stable/15 including a fix
+for previous Hyper-V boot issues and hopefully also fixes ice driver DDP
+issues with newer firmware versions.
+
+For the interface settings MVC/API there a few things to keep in mind:
+
+* You can find them on the assignments page integrated into the existing grid.
+* Commonly required DHCP advanced options not in basic mode have been made available.
+* Advanced/file based modes for DHCP are gone and will reset on save.
+* Saving settings queues them for reconfiguration and storage.
+* A reboot without apply will discard the previously saved changes.
+* Apply works similar to the old interfaces.php page but uses a rewritten backend sequence.
+* The old interfaces.php page is still available retaining the old style settings.
+* The old interfaces.php page will likely move to a plugin for 27.1.
+
+We are looking for your feedback on this historic milestone!
+
+Here are the full patch notes:
+
+* system: use correct type for IP when killing active states in "lockout_handler" (reported by Omar Habra of Apex Security Research)
+* system: reject a null gateway in getGatewayAction()
+* system: add "latency_avg" as sanity check for running dpinger
+* system: missing chown in backup call for proper non-root web GUI access
+* system: do not allow system scope users to be renamed
+* reporting: unbound: add DNSSEC status column in details grid
+* interfaces: add interface configuration settings in new assignments page
+* interfaces: prevent interface_configure() from reloading non-interface hooks when in batch mode
+* interfaces: improve queue build sequence in interfaces_dependencies()
+* interfaces: remove stale VIP address after update (contributed by ExpRam)
+* interfaces: be more conservative with -no_dad
+* interfaces: add a new 'updateip' hook
+* firewall: aliases: reject reversed port ranges
+* firewall: destination NAT: fix destination for no-rdr rules (reported by fa1k3)
+* firewall: destination NAT: add safety guards for calculated port ranges
+* ipsec: add "replay_window" option to children
+* monit: log from the first line and reconfigure through the base class (contributed by IvanTheGeek)
+* openvpn: default keepalive to "10 60" in server mode and improve validation
+* bootgrid: upgrade Tabulator to version 6.5.3
+* mvc: disable Nginx reverse proxy buffering on configd streams
+* mvc: dispatch failed message during reconfiguredAction()
+* mvc: PortField: keep the first well-known service in the option list (contributed by fa1k3)
+* mvc: PortField: always return a string for normalizedPort()
+* mvc: UidField: allow an arbitrarily specified UID for system scope users upon creation
+* ui: do not add the spinner again when it fails
+* plugins: add error returns to plugins_configure()
+* plugins: os-ndp-proxy-go 1.5 `[1] <https://github.com/opnsense/plugins/blob/stable/26.7/net/ndp-proxy-go/pkg-descr>`__ 
+* src: sysvsem: heap out-of-bounds access in semop(2) `[2] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:64.sysvsem.asc>`__ 
+* src: ktls: remote DoS via receive-side kernel TLS `[3] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:67.ktls.asc>`__ 
+* src: udp: IPv6 UDP sendto(2) bypasses jail loopback restriction `[4] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:69.udp.asc>`__ 
+* src: vfs: multiple jail filesystem root escapes `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:66.jail.asc>`__ 
+* src: openssl: out-of-bounds read in OpenSSL DTLS retransmission `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:68.openssl.asc>`__ 
+* src: kqueue: memory safety bugs in kqueue copy-on-fork implementation `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:65.kqueue.asc>`__ 
+* src: syslogd: fix leaking child processes when logging to a pipe `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:23.syslogd.asc>`__ 
+* src: iflib: do not hold the ifnet lock across registration
+* src: ixgbe: correct Wake-on-LAN configuration
+* src: dummynet: do not overflow the points[ED_MAX_SAMPLES_NO] array
+* src: pf: mark non-port packets to require IP checksumming
+* src: pf: set the correct type for rule timeouts
+* src: loopback: improve checksum offloading
+* src: vlan: use the exclusive lock everywhere
+* src: routing: initialize V_rt_numfibs earlier during boot
+* src: raw ip: clear sin_port on bind(2)
+* src: nd6: fix regeneration of temp addresses in detached state
+* src: hyperv: fix single page invalidation path
+* src: route/fib_algo: fix nexthop index collision across families
+* src: ice: do not leave device non-functional if Tx scheduler config fails
+* src: netipsec: fix V_spd_size updates
+* src: bnxt: assorted updates from stable/15
+* src: ixl: assorted updates from stable/15
+* src: linxkpi: assorted updates from stable/15
+* src: net80211: assorted updates from stable/15
+* src: pci: assorted updates from stable/15
+* ports: ca_root_nss / nss 3.130 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_130.html>`__ 
+* ports: expat	2.8.5 `[10] <https://github.com/libexpat/libexpat/blob/R_2_8_5/expat/Changes>`__ 
+* ports: pcre2 10.49 `[11] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.49>`__ 
+* ports: phalcon 5.22.1 `[12] <https://github.com/phalcon/cphalcon/releases/tag/v5.22/1>`__ 
+* ports: php 8.5.11 `[13] <https://www.php.net/ChangeLog-8.php#8.5.11>`__ 
+* ports: py-duckdb 1.5.6 `[14] <https://github.com/duckdb/duckdb/releases/tag/v1.5.6>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.7.5 (September 30, 2026)
 --------------------------------------------------------------------------
 
