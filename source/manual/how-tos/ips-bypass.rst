@@ -50,9 +50,9 @@ Select **+** or **clone** to create additional new rules.
     
 .. Tip::
 
-    - If you use IPv6 - e.g. with *Track Interface* or *Static IPv6* - create an additional rule. 
+    - If you use IPv6 - e.g. with *Track Interface (legacy)* or *Static IPv6* - create an additional rule.
     - You can find your *IPv6 prefix* in :menuselection:`Interfaces --> Overview --> WAN` - e.g ``2001:db8:a:aa00::/56``.
-    - You only have to create 1 rule, because all of the *Track IPv6 Interface - IPv6 Prefix ID* networks - e.g. ``2001:db8:a:aa01::/64``, ``2001:db8:a:aa02::/64`` - are already included in the ``/56`` Prefix.
+    - You only have to create 1 rule, because all of the tracked *Assign prefix ID* networks - e.g. ``2001:db8:a:aa01::/64``, ``2001:db8:a:aa02::/64`` - are already included in the ``/56`` Prefix.
     - Please note that this only works if your Prefix is static.
 
 -------------------

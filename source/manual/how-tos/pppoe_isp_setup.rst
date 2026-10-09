@@ -43,7 +43,7 @@ The parent interface for the PPPoE connection is usually the WAN interface. This
 
 When using a VLAN, remove the IP configuration from it.
 
-- Go to :menuselection:`Interfaces --> WAN` and set:
+- Go to :menuselection:`Interfaces --> Assignments`, edit WAN and set:
 
 ==================================  =======================================================================================================
 Option                              Value
@@ -103,23 +103,14 @@ Option                              Value
 
 - Press **Save**
 
-Go to :menuselection:`Interfaces --> Assignments` and assign the PPPoE device:
+Go to :menuselection:`Interfaces --> Assignments`, click **Add** and configure the PPPoE assignment:
 
 ==================================  =======================================================================================================
 Option                              Value
 ==================================  =======================================================================================================
 **Device**                          ``pppoe0 (vlan0.1.7) - igc1_vlan7_PPPoE``
 **Description**                     ``igc1_vlan7_PPPoE``
-==================================  =======================================================================================================
-
-Press **Add** to apply the changes.
-
-Go to :menuselection:`Interfaces --> igc1_vlan7_PPPoE` and enable the PPPoE device:
-
-==================================  =======================================================================================================
-Option                              Value
-==================================  =======================================================================================================
-**Enable**                          ``X``
+**Enabled**                         ``X``
 **IPv4 Configuration Type**         ``PPPoE``
 ==================================  =======================================================================================================
 

@@ -382,6 +382,6 @@ Read `PPPoE ISP Setup </manual/how-tos/pppoe_isp_setup.html>`_ for an example co
     case the internet provider expects the MTU value for the PPP connection itself to be 1500 bytes, which usually means the parent interface should
     add the 8 byte tunnel overhead. To use this, your device does need to support "jumbo-frames" to some extend in order to communicate with the next peer.
 
-    To use a 1500 byte MTU on :code:`PPPoE` in OPNsense, set the interface (usually :menuselection:`Interfaces --> [WAN]`) to an MTU value of :code:`1508`,
+    To use a 1500 byte MTU on :code:`PPPoE` in OPNsense, edit the interface (usually WAN) under
+    :menuselection:`Interfaces --> Assignments` and set its MTU to :code:`1508`,
     in which case the tunnel itself will use the full 1500 bytes.
-

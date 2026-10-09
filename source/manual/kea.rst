@@ -641,7 +641,7 @@ Prefix: ``2001:db8:1234::/56``
 
 We will use ``Identity association`` mode to carve out a prefix on LAN that is big enough to host a PD pool.
 
-- Go to :menuselection:`Interfaces` and set the following configuration:
+- Go to :menuselection:`Interfaces --> Assignments`, edit each listed interface and set the following configuration:
 
 .. tabs::
 

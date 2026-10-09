@@ -15,9 +15,6 @@ The guide deals with internet connection and phone. Support for TV has not been 
 
 SFR/RED requires that the WAN interface assignment should look similar to this:
 
-.. image:: images/SFRRED_assignations.png
-	:width: 100%
-
 * WAN interface has MAC xx:xx:xx:xx:xx:xx which is the original WAN MAC of the BOX (spoofed),
 * LAN interface has MAC 00:11:22:33:44:55 which is the original MAC of the firewall,
 * DUID is 00:03:00:01:xx:xx:xx:xx:xx:xx it's derived from the original WAN MAC of the BOX (spoofed).
@@ -25,60 +22,63 @@ SFR/RED requires that the WAN interface assignment should look similar to this:
 **Configuring the WAN Interface**
 ---------------------------------
 
-Select :menuselection:`Interfaces --> [WAN]`
+Go to :menuselection:`Interfaces --> Assignments` and edit WAN.
 
 In order to establish the IPv4 and IPv6 connection, SFR/RED requires that the correct parameters are passed for the DHCPv4 and DHCPv6
 requests respectively.
 
 Select options:
 
-* IPv4 configuration: DHCPv4,
+* IPv4 configuration: DHCP,
 * IPv6 configuration: DHCPv6.
 
-.. image:: images/SFRRED_WAN_configuration_1.png
-	:width: 100%
-
 **On the DHCPv4 request it is a requirement to pass the following:**
-
-.. image:: images/SFRRED_WAN_configuration_2.png
-	:width: 100%
 
 .. Note::
     It is necessary to specify the following ”Send Options”:
 
-    * dhcp-class-identifier "neufbox_NB6VAC-FXC"
+    Enter one option per line::
+
+        dhcp-class-identifier "neufbox_NB6VAC-FXC"
 
 .. Note::
     It is necessary to specify the following ”Request Options”:
 
-    * subnet-mask, broadcast-address, time-offset, routers, domain-name, domain-name-servers, host-name, ntp-servers, nis-domain, root-path, merit-dump
+    Enter one option per line::
+
+        subnet-mask
+        broadcast-address
+        time-offset
+        routers
+        domain-name
+        domain-name-servers
+        host-name
+        ntp-servers
+        nis-domain
+        root-path
+        merit-dump
 
 
 **On the DHCPv6 request we need to use raw options**
 
-.. image:: images/SFRRED_WAN_configuration_3.png
-	:width: 100%
-
 .. Note::
     It is necessary to specify the following ”Send Options”:
 
-    * ia-pd 1, raw-option 16 00:00:a0:0c:00:40:6e:65:75:66:62:6f:78:5f:4e:42:36:56:41:43:2d:46:58:43
+    Enter the vendor option on one line::
+
+        raw-option 16 00:00:a0:0c:00:40:6e:65:75:66:62:6f:78:5f:4e:42:36:56:41:43:2d:46:58:43
 
 .. Note::
     It is necessary to specify the following ”Request Options”:
 
-    * domain-name-servers, domain-name
+    Enter one option per line::
+
+        domain-name-servers
+        domain-name
 
 .. Note::
-    Set Identity Association options to:
-
-    * Delegate prefix: checked,
-    * id-assoc pd ID: 1,
-    * Prefix: ::/0.
-
-    Set Prefix Interface option to:
-
-    * Prefix Interface: 8.
+    Set **Prefix delegation size** to ``56`` and **Optional prefix IAID** to ``1``. The matching prefix delegation
+    and prefix-interface statements are generated automatically.
 
 Click ”Save” and then ”Apply”.
 
@@ -86,39 +86,29 @@ Click ”Save” and then ”Apply”.
 **Configuring the LAN Interface**
 ---------------------------------
 
-Interfaces / Parameters
-+++++++++++++++++++++++
+Interfaces / Settings
+++++++++++++++++++++++
 
-Select :menuselection:`Interfaces --> Parameters` and set your DUID.
-
-.. image:: images/SFRRED_interfaces_parameters.png
-	:width: 100%
+Select :menuselection:`Interfaces --> Settings` and set your DUID.
 
 .. Note::
     The DUID is based on the SFR/RED Box MAC address : 00:03:00:01:xx:xx:xx:xx:xx:xx.
 
 Click ”Save” and then ”Apply”
 
-Interfaces / [LAN]
-++++++++++++++++++
+LAN assignment
+++++++++++++++
 
-Select :menuselection:`Interfaces --> [LAN]` and set IPv4 to “Static IPv4” and IPv6 Configuration Type to
-“Track Interface”.
-
-.. image:: images/SFRRED_LAN_configuration_1.png
-	:width: 100%
+On the Assignments page, edit LAN and set IPv4 to “Static IPv4” and IPv6 Configuration Type to
+“Track Interface (legacy)”.
 
 
-And define the IPv6 Prefix ID to ”0”
 Finally, set the following parameters as shown:
 
 * the IPv4 address to the one wanted,
-* the IPv6 interfacet to ”WAN”,
-* the IPv6 Prefix ID to ”0”.
+* the **Parent interface** to ”WAN”,
+* the **Assign prefix ID** to ``0x0``.
 
-
-.. image:: images/SFRRED_LAN_configuration_2.png
-	:width: 100%
 
 Click ”Save” and then ”Apply”
 

@@ -18,10 +18,8 @@ integration with standard tokens and Googles Authenticator.
 
    For the sample we will use a private IP for our WAN connection.
    This requires us to disable the default block rule on wan to allow private traffic.
-   To do so, go to :menuselection:`Interfaces --> [WAN]` and uncheck "Block private networks".
+   To do so, go to :menuselection:`Interfaces --> Assignments`, edit WAN and uncheck "Block private networks".
    *(Dont forget to save and apply)*
-
-   .. image:: images/block_private_networks.png
 
 
 .. contents:: Index
@@ -38,10 +36,8 @@ network).
 
    For the sample we will use a private IP for our WAN connection.
    This requires us to disable the default block rule on WAN to allow private traffic.
-   To do so, go to :menuselection:`Interfaces --> [WAN]` and uncheck "Block private networks".
+   To do so, go to :menuselection:`Interfaces --> Assignments`, edit WAN and uncheck "Block private networks".
    *(Don't forget to save and apply)*
-
-   .. image:: images/block_private_networks.png
 
 
 --------------------------------

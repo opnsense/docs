@@ -130,18 +130,12 @@ Click **Save** to apply the settings.
 ---------------------------------
 Step 3 - Assign the WAN interface
 ---------------------------------
-To assign the interface go to :menuselection:`Interfaces --> Assignments` in our case we will make
-this our primary internet connection and change the WAN assignment accordingly.
-
-To do so just change the **Network port** for **WAN** to **ppp0 (/dev/cuaU0.0) - 4G Cellular Network**.
-
-Now click **Save** below the form.
+To assign the interface, go to :menuselection:`Interfaces --> Assignments`. In our case we will make
+this our primary internet connection, so edit WAN and set **Device** to
+**ppp0 (/dev/cuaU0.0) - 4G Cellular Network**. Click **Save** and **Apply**.
 
 If everything went fine, then you are all set, and the default gateway will be
-the one of you cellular connection.
-
-.. image:: images/Interface_assignment_4g.png
-   :width: 100%
+the one of your cellular connection.
 
 ------------------------
 Step 4 - Troubleshooting
