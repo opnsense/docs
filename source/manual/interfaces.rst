@@ -5,7 +5,21 @@ Interface configuration
 All traffic in OPNsense travels via interfaces. By default, WAN and LAN are assigned, but many more are possible, like
 GUESTNET (:doc:`captive portal </manual/captiveportal>`) and PFSYNC (:doc:`high availability </manual/hacarp>`).
 
+Interface settings are now managed through an MVC/API implementation integrated into the grid under
+:menuselection:`Interfaces --> Assignments`. Commonly required advanced DHCP options that were not part of the
+legacy basic mode are available when advanced mode is enabled in the assignment dialog.
+
+The legacy advanced and file-based DHCP modes are not supported by the MVC/API implementation. Saving an
+interface in the Assignments dialog removes those settings. The legacy :file:`/interfaces.php` page remains
+available by entering its URL directly and retains the old-style settings. It is expected to move to a plugin
+for OPNsense 27.1.
+
+Saving operational settings queues them for reconfiguration and permanent storage. Select **Apply** to process
+the queue using the rewritten backend sequence, which otherwise behaves similarly to applying changes on the
+legacy page. Pending changes are held in temporary storage; rebooting without applying them discards them.
+
 .. Note::
+
     For legacy compatibility WAN interfaces set to type DHCP or interfaces with a *Gateway Rules* selection
     send reply packets to the corresponding gateway directly, also when the sender is on the same interface.
     This will break connectivity in some rare scenarios and can be disabled via
