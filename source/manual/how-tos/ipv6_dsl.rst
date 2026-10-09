@@ -27,7 +27,7 @@ bottom, so you get the correct DNS servers if you just use IPv4 ones.
 Step 2 - Allow IPv6
 -------------------
 
-Next go to :menuselection:`Interfaces --> Settings` and verify that **Turn off IPv6** is enabled.
+Next go to :menuselection:`Interfaces --> Settings` and verify that **Turn off IPv6** is disabled.
 
 --------------------------------
 Step 3 - Interface Configuration
