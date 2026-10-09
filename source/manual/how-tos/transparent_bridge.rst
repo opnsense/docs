@@ -74,10 +74,10 @@ Our example appliance has 3 available network ports:
 The management interface will be used to access the firewall WebGUI and to enable access
 to the internet for firmware updates.
 
-- Go to :menuselection:`Interfaces --> Assignments` and `Assign a new interface`.
-  Select one of the free available ports (e.g. igc2) and assign it, set the description to `Management`.
+- Go to :menuselection:`Interfaces --> Assignments` and click **Add**.
+  Select one of the available ports (e.g. igc2) as the device and set the description to `Management`.
 
-- Afterwards go to :menuselection:`Interfaces --> Management` and set `IPv4 Configuration Type` to `DHCP` or `Static IPv4` dependent on your usecase.
+- Edit the new Management row on the Assignments page and set `IPv4 Configuration Type` to `DHCP` or `Static IPv4` depending on your use case.
 
 Next we add a firewall rule to allow access to the WebGUI on this management interface:
 
@@ -100,7 +100,7 @@ Here we change that the firewall rules should match on the bridge, instead of th
 3. Create the bridge
 --------------------
 
-- Go to :menuselection:`Interfaces --> WAN` and :menuselection:`Interfaces --> LAN`:
+- Go to :menuselection:`Interfaces --> Assignments` and edit WAN and LAN in turn:
 
    - Set `IPv4 Configuration Type` and `IPv6 Configuration Type` to ``None``
    - Disable `Block private networks` and `Block bogon networks`
@@ -122,9 +122,9 @@ Here we change that the firewall rules should match on the bridge, instead of th
 
    - Assign the new bridge interface, set the description to `Bridge`
 
-- Go to :menuselection:`Interfaces --> Bridge`:
+- Edit the new Bridge row on the Assignments page:
 
-   - Enable the bridge interface in the interface settings
+   - Select **Enabled** for the bridge assignment
    - Set `IPv4 Configuration Type` and `IPv6 Configuration Type` on ``None``
 
 

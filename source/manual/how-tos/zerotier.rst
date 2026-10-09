@@ -168,18 +168,17 @@ now wish to assign the Zerotier virtual interface on OPNsense in order to
 avail of OPNsense functionality such as firewalling and routing (using OSPF
 for example).
 
-.. image:: images/zerotier-4.png
-
 To achieve this:
 
 Click on the ``Interfaces`` menu item, then click on ``Assignments``. There
 you should discover a new interface currently unassigned that begins with the
 letters ``zt``. Next, click on the ``+`` symbol to assign it. In this example
-it creates a new interface called ``OPT1``. Clicking on ``OPT1`` shows the
-``Enable`` and ``Lock`` options. Check both options.
+letters ``zt``. Next, click **Add** and select it as the **Device**. In this example
+it creates a new interface called ``OPT1`` in the configuration dialog.
+Check the ``Enabled`` and ``Lock`` options.
 
 .. WARNING::
-    It is **very** important that ``Lock`` (i.e., Prevent interface removal)
+    It is **very** important that ``Lock``
     is enabled. This is because Zerotier is a software interface and not
     guaranteed to be brought "up" whilst the system is booting. It could
     happen shortly afterwards, hence locking the interface tells OPNsense not
@@ -189,11 +188,9 @@ Once the new interface has been enabled, it is recommended to change the
 Description away from ``OPT1`` to something more descriptive for your needs.
 
 For ``IPv4 Configuration Type``, choose ``Static IPv4`` then in the
-appropriate input boxes, key in the IPv4 address that you have assigned to
-this node via the ``Zerotier`` portal. Keep the ``IPv4 Upstream Gateway`` set
+the **IPv4 address** field, enter the address and prefix that you have assigned to
+this node via the ``Zerotier`` portal. Keep ``IPv4 gateway rules`` set
 to ``None.``
-
-.. image:: images/zerotier-5.png
 
 You may choose to do the same for ``IPv6 Configuration Type``.
 

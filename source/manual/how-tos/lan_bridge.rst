@@ -31,18 +31,13 @@ Now Save the new bridge.
 
 .. Note::
     It is imperative that the member interfaces have nothing set within them for IPv4 or IPv6,
-    each member interface should be enabled and they should look like this:
+    each member interface should be enabled. Edit their rows under :menuselection:`Interfaces --> Assignments`
+    and set both configuration types to ``None``.
     
-.. image:: images/lan_bridge_2.png
-	:width: 100%
-
 **Step Three**
 -----------------
-Select :menuselection:`Interfaces --> Assignments` and for the LAN interface, select the bridge previously created
-and Save.
-
-.. image:: images/lan_bridge_3.png
-	:width: 100%
+Select :menuselection:`Interfaces --> Assignments`, edit LAN, select the bridge as its **Device**, then click
+**Save** and **Apply**.
 
 At this point you will need to swap your LAN cable from the existing LAN connection to one of
 the NICs that were added to the bridge interface, once connected then you must wait, it can take some
@@ -51,17 +46,14 @@ time for the interface to come back up, but keep refreshing the web interface un
 **Step Four**
 -----------------
 The Original LAN interface is now unassigned and will need to be re-assigned. Go to
-:menuselection:`Interfaces --> Assignments` and in the New Interface box you will see the NIC itself ( igb*, em* ),
-select it and hit the '+' button to add an assignment, then click Save.
-
-.. image:: images/lan_bridge_5.png
-	:width: 100%
+:menuselection:`Interfaces --> Assignments`, click **Add**, select the NIC itself (``igb*``, ``em*``) as the
+**Device**, enable the assignment and click **Save** and **Apply**.
 
 **Step Five**
 -----------------
 Select :menuselection:`Interfaces --> Devices --> Bridge` and add the interface created in Step Four to the bridge.
 Also check `Enable link-local address` checkbox in case you are using IPv6 and press Save.
-Remember to check the new interface and ensure it is enabled as in Step Two.
+Remember to check the new assignment and ensure **Enabled** is selected as in Step Two.
 
 .. image:: images/lan_bridge_4.png
 	:width: 100%
@@ -83,10 +75,7 @@ Select the tunable net.link.bridge.pfil_bridge and set the value to 1
 
 **Final**
 -----------------    
-Once complete, the :menuselection:`Interface --> Assignments` page should look similar to this:
-
-.. image:: images/lan_bridge_8.png
-	:width: 100%
+Once complete, verify the bridge and its member devices on the :menuselection:`Interfaces --> Assignments` page.
 
 
 Now reboot, when the system restores you should have a fully functional bridge interface.

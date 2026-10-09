@@ -67,12 +67,8 @@ with that and after finishing add/change the specifics to match the Hotel Guest 
 Step 1 - Configure Interface
 ----------------------------
 For the Guest Network we will add a new interface.
-Go to :menuselection:`Interfaces --> Assignments` And use the **+** to add a new interface.
-Press **Save**. The new interface will be called **OPT1**, click on [OPT1] in the
-left menu to change its settings.
-
-
-Select **Enable Interface** and fill in the following data for our example:
+Go to :menuselection:`Interfaces --> Assignments` and click **Add** to add a new interface.
+The new interface will be called **OPT1**. Select its device, select **Enabled** and fill in the following data:
 
 ============================== ================= ==============================================
  **Description**                GUESTNET          *A descriptive name for the interface*
@@ -80,15 +76,15 @@ Select **Enable Interface** and fill in the following data for our example:
  **Block bogon networks**       unselected
  **IPv4 Configuration Type**    Static IPv4       *Set a static IPv4 address for the example*
  **IPv6 configuration Type**    None
- **MAC address**                (Leave Blank)
+ **MAC address (spoof)**        (Leave Blank)
  **MTU**                        (Leave Blank)
  **MSS**                        (Leave Blank)
- **Speed and duplex**           Default           *You may also select the speed when known*
- **Static IPv4 address**        192.168.200.1/24  *We will use this segment for our guests*
- **IPv4 Upstream Gateway**      Default
+ **Media (speed and duplex)**   Default           *You may also select the speed when known*
+ **IPv4 address**               192.168.200.1/24  *We will use this segment for our guests*
+ **IPv4 gateway rules**         Default
 ============================== ================= ==============================================
 
-Press **Save** and then **Apply changes**.
+Press **Save** and then **Apply**.
 
 ------------------------------
 Step 2 - Configure DHCP Server

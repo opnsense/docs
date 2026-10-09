@@ -217,7 +217,7 @@ and therefore also the default setting for a preset WAN.
 In this mode a prefix will be acquired if offered, either with or without an additional IP addresses for your WAN.
 Internally, a single globally unique address is acquired via DHCPv6 and/or SLAAC (not to be confused with SLAAC mode),
 but for routing an ISP-provided link-local address is automatically used as the next hop gateway.
-Setting "Request only an IPv6 prefix" may be required in case the ISP refuses to hand out a prefix.
+Setting "Request prefix only" may be required in case the ISP refuses to hand out a prefix.
 Note that the interface will not assign a /64 to itself from the prefix by default in contrast to static IPv6.
 
 .. Note::

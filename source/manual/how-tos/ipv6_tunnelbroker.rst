@@ -64,12 +64,8 @@ Step 2 - Configure the GIF tunnel as a new interface
 ----------------------------------------------------
 
 The newly created GIF tunnel must now be assigned as a new interface.
-Go to :menuselection:`Interfaces --> Assignments`, select the GIF tunnel for **New interface**
-and click the **+** sign next to it.
-
-Then under :menuselection:`Interfaces --> [OPTX]` (or :menuselection:`Interfaces --> [TunnelBroker]` 
-depending on what you selected) check **Enable Interface** and change the
-description to e.g., TUNNELBROKER before hitting **Save**.
+Go to :menuselection:`Interfaces --> Assignments`, click **Add** and select the GIF tunnel as the **Device**.
+Check **Enabled**, change the description to e.g., TUNNELBROKER, then click **Save** and **Apply**.
 
 The newly created interface must now be set as the default IPv6 gateway
 under :menuselection:`System --> Gateways --> Configuration` by editing the new gateway entry
@@ -95,9 +91,6 @@ Now configure your LAN interface. The static IPv6 address we'll give it is a
 **/64** address from your assigned **/48**. I won't show the WLAN settings simply
 because it's the very same. You'll repeat the same process for further networks,
 but assigning the next interface a separate **/64** address.
-
-.. image:: images/tunnelbroker_configure_lan.png
-   :width: 100%
 
 -------------------------------
 Step 5 - Configure DHCPv6 SLAAC

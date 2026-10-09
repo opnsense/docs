@@ -40,8 +40,8 @@ described in `RFC 1918 <https://tools.ietf.org/html/rfc1918#section-3>`_.)
 The LAN IP of the OPNsense device that serves DHCP to the LAN should fall in the same DHCP IP range. Typically, it gets
 the address ending in .1 (so 192.168.1.1 in this example).
 
-To set the LAN IP, go to :menuselection:`Interfaces --> [LAN]`, set “IPv4 Configuration Type” to “Static”, and under
-“Static IPv4 configuration”, set “IPv4 address” to ``192.168.1.1`` and the subnet dropdown to “24”. Then click Save.
+To set the LAN IP, go to :menuselection:`Interfaces --> Assignments` and edit LAN. Set “IPv4 Configuration Type” to
+“Static IPv4” and “IPv4 address” to ``192.168.1.1/24``. Save the dialog and apply the pending changes.
 
 To set the DHCP settings, go to :menuselection:`Services --> ISC DHCPv4 --> [LAN]`. Under “Gateway”, put ``192.168.1.1``. Under range,
 put ``192.168.1.100`` as the start address and ``192.168.1.200`` as the end address. Then click Save. After saving,
