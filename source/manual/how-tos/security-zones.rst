@@ -163,8 +163,31 @@ gathered from the configured interface IP addresses.
 When using these aliases, all of these networks are automatically part of the firewall rule.
 
 
-Create Security Zone Policies
+Choose a Zone Policy Model
 --------------------------------------
+
+There are two ways to express a policy between zones. Choose one model for a
+given traffic flow; mixing them can make the state that is created by the first
+matching rule obscure which policy allowed the connection.
+
+- Network-dependent policies
+
+   Use inbound rules with the automatic ``ZONE net`` aliases as source and
+   destination. This is the model described in the next section. It is useful
+   when the policy must also distinguish networks within a zone.
+
+- Network-independent policies
+
+   Use outbound rules, with the outgoing interface group identifying the
+   destination zone and **Interface (origin)** identifying the source zone.
+   The rule does not need source or destination network aliases, so it remains
+   valid when the addressing of zone members changes.
+
+
+Network-Dependent Zone Policies
+--------------------------------------
+
+.. Note:: This is the simplest configuration choice, yet might have constraints in some deployment types.
 
 Our ruleset will create a baseline that will always match on top-level. Afterwards, we can create more selective allow rules in
 the individual interface groups. The following policies give a short overview about zone based rules and their results.
@@ -269,6 +292,82 @@ Go to :menuselection:`Firewall --> Rules`, create these rules with `any` interfa
        **Destination port**                            ``HTTPS``
        **Description**                                 Allow HTTPS from UNTRUST to TRUST
        ==============================================  ===================================================================================
+
+
+Network-Independent Zone Policies
+----------------------------------------
+
+.. Note:: This is a more advanced configuration choice. It requires careful planning and understanding of rule directions and state types.
+
+Network-independent policies match the path through the firewall instead of
+the packet addresses. Use an outbound rule on the destination zone, and select
+the source zone in **Interface (origin)**. This field matches the interface or
+group on which the packet was initially received and is available only for
+outbound rules.
+
+For example, to allow all traffic from ``TRUST`` to ``UNTRUST``, first add a
+broad inbound pass rule with **State** set to ``None`` on ``TRUST``:
+
+==============================================  =========================================
+**Action**                                      Pass
+**Quick**                                       ``X``
+**Interface**                                   TRUST
+**Direction**                                   in
+**TCP/IP Version**                              IPv4 + IPv6, or as required
+**Protocol**                                    any
+**Source**                                      any
+**Destination**                                 any
+**State**                                       None
+**Description**                                 Defer TRUST policy to outbound rules
+==============================================  =========================================
+
+This prevents inbound processing from creating state before the outbound
+policy is evaluated. Then add the outbound allow rule:
+
+==============================================  =========================================
+**Action**                                      Pass
+**Quick**                                       ``X``
+**Interface**                                   UNTRUST
+**Interface (origin)**                          TRUST
+**Direction**                                   out
+**TCP/IP Version**                              IPv4 + IPv6, or as required
+**Protocol**                                    any
+**Source**                                      any
+**Destination**                                 any
+**Description**                                 Allow TRUST to UNTRUST
+==============================================  =========================================
+
+Here, ``UNTRUST`` is the zone the packet leaves through, while ``TRUST`` is
+the zone where it entered the firewall. No ``TRUST net`` or ``UNTRUST net``
+aliases are required. If an interface is added to either group, the same rule
+continues to apply without depending on that interface's network. The outbound
+allow rule creates the state, and return traffic is allowed by that state as
+usual.
+
+After all permitted outbound rules, add a final reject rule on the destination
+zone. Select the same zone in **Interface (origin)** and enable **Invert
+interface (origin)**. In this example, the rule blocks packets leaving
+``UNTRUST`` that did not enter through ``UNTRUST``:
+
+==============================================  =========================================
+**Action**                                      Reject
+**Quick**                                       ``X``
+**Interface**                                   UNTRUST
+**Invert interface (origin)**                   ``X``
+**Interface (origin)**                          UNTRUST
+**Direction**                                   out
+**TCP/IP Version**                              IPv4 + IPv6, or as required
+**Protocol**                                    any
+**Source**                                      any
+**Destination**                                 any
+**Description**                                 Block other zones from UNTRUST
+==============================================  =========================================
+
+The explicit ``TRUST`` to ``UNTRUST`` allow rule above is evaluated first.
+This final rule catches traffic from all other zones unless it is allowed by a
+preceding outbound rule. It therefore provides a clear, optionally logged
+default boundary for the destination zone. Add a corresponding allow rule for
+every permitted source-zone and destination-zone pair.
 
 
 Adding Additional Interfaces
