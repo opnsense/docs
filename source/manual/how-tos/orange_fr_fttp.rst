@@ -53,7 +53,7 @@ select options DHCP and DHCPv6 in general configuration
   (you MUST use the same MAC address for the XX:XX as the one use for the DUID above)
 
 .. Note::
-    You can use this tool to generate the option-90 chain : https://jsfiddle.net/kgersen/3mnsc6wy/
+    You can use this tool to generate the option-90 chain : https://jsfiddle.net/kgersen/3mnsc6wy/ or this project to extract it from a Working Livebox 5 : https://github.com/Orefie/Infos-configuration-router
 
 These parameters should be passed as comma separated options in the 'Send Options' area of their WAN DHCP request
 
