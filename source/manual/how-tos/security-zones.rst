@@ -187,7 +187,10 @@ matching rule obscure which policy allowed the connection.
 Network-Dependent Zone Policies
 --------------------------------------
 
-.. Note:: This is the simplest configuration choice, yet might have constraints in some deployment types.
+.. Note::
+
+   This is the simplest configuration choice, yet might have constraints in some deployment types.
+
 
 Our ruleset will create a baseline that will always match on top-level. Afterwards, we can create more selective allow rules in
 the individual interface groups. The following policies give a short overview about zone based rules and their results.
@@ -297,7 +300,10 @@ Go to :menuselection:`Firewall --> Rules`, create these rules with `any` interfa
 Network-Independent Zone Policies
 ----------------------------------------
 
-.. Note:: This is a more advanced configuration choice. It requires careful planning and understanding of rule directions and state types.
+.. Note::
+
+   This is a more advanced configuration choice. It requires careful planning and understanding of rule directions.
+
 
 Network-independent policies match the path through the firewall instead of
 the packet addresses. Use an outbound rule on the destination zone, and select
@@ -317,12 +323,10 @@ broad inbound pass rule with **State** set to ``None`` on ``TRUST``:
 **Protocol**                                    any
 **Source**                                      any
 **Destination**                                 any
-**State**                                       None
 **Description**                                 Defer TRUST policy to outbound rules
 ==============================================  =========================================
 
-This prevents inbound processing from creating state before the outbound
-policy is evaluated. Then add the outbound allow rule:
+Then add the outbound allow rule:
 
 ==============================================  =========================================
 **Action**                                      Pass
@@ -340,9 +344,7 @@ policy is evaluated. Then add the outbound allow rule:
 Here, ``UNTRUST`` is the zone the packet leaves through, while ``TRUST`` is
 the zone where it entered the firewall. No ``TRUST net`` or ``UNTRUST net``
 aliases are required. If an interface is added to either group, the same rule
-continues to apply without depending on that interface's network. The outbound
-allow rule creates the state, and return traffic is allowed by that state as
-usual.
+continues to apply without depending on that interface's network.
 
 After all permitted outbound rules, add a final reject rule on the destination
 zone. Select the same zone in **Interface (origin)** and enable **Invert
@@ -362,12 +364,6 @@ interface (origin)**. In this example, the rule blocks packets leaving
 **Destination**                                 any
 **Description**                                 Block other zones from UNTRUST
 ==============================================  =========================================
-
-The explicit ``TRUST`` to ``UNTRUST`` allow rule above is evaluated first.
-This final rule catches traffic from all other zones unless it is allowed by a
-preceding outbound rule. It therefore provides a clear, optionally logged
-default boundary for the destination zone. Add a corresponding allow rule for
-every permitted source-zone and destination-zone pair.
 
 
 Adding Additional Interfaces
