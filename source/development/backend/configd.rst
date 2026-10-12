@@ -82,13 +82,20 @@ Action properties
 +-----------------------+------------------------+--------------------------------------------------------+
 | errors                | text [no]              | :code:`errors:no` ignores the scripts exit code        |
 +-----------------------+------------------------+--------------------------------------------------------+
-| allowed_groups	| text			 | list of groups allowed to execute                      |
+| allowed_groups.       | text	                 | list of groups allowed to execute                      |
 |                       |                        | this action (e.g. wheel)                               |
 +-----------------------+------------------------+--------------------------------------------------------+
 | message               | text                   | Message to send to syslog (you can use %s parameters)  |
 +-----------------------+------------------------+--------------------------------------------------------+
+| cache_ttl             | int                    | time in seconds  to cache the results of this call.    |
++-----------------------+------------------------+--------------------------------------------------------+
 | description           | text                   | User-friendly description, also allows GUI usage       |
 +-----------------------+------------------------+--------------------------------------------------------+
+
+.. Note::
+
+    when using :code:`cache_ttl` results can be intermediatly cleared by adding an exclamation mark (`!`) to the call.
+    (e.g. :code:`!filter rule stats` clears the stats and requests a fresh set of data)
 
 
 -----------
