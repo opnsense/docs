@@ -6,7 +6,7 @@ Auth
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","auth","group","add",""
-    "``POST``","auth","group","del","$uuid"
+    "``POST``","auth","group","del","$uuids"
     "``GET``","auth","group","get","$uuid=null"
     "``GET,POST``","auth","group","search",""
     "``POST``","auth","group","set","$uuid=null"

@@ -5,7 +5,6 @@ Monit
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","monit","service","check",""
     "``POST``","monit","service","reconfigure",""
     "``POST``","monit","service","restart",""
     "``POST``","monit","service","start",""

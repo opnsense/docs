@@ -21,6 +21,7 @@ Unbound
     "``GET``","unbound","overview","get_policies",""
     "``GET``","unbound","overview","is_block_list_enabled",""
     "``GET``","unbound","overview","is_enabled",""
+    "``POST``","unbound","overview","reset",""
     "``GET``","unbound","overview","search_queries",""
     "``GET``","unbound","overview","totals","$maximum"
 

@@ -21,7 +21,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","firewall","alias","add_item",""
-    "``POST``","firewall","alias","del_item","$uuid"
+    "``POST``","firewall","alias","del_item","$uuids"
     "``GET,POST``","firewall","alias","export",""
     "``GET``","firewall","alias","get",""
     "``GET``","firewall","alias","get_alias_u_u_i_d","$name"
@@ -75,12 +75,14 @@ as a reference and testbed. There's no relation to any of the rules being manage
 
     "``POST``","firewall","d_nat","add_rule",""
     "``POST``","firewall","d_nat","del_rule","$uuid"
+    "``GET``","firewall","d_nat","download_rules",""
     "``GET``","firewall","d_nat","get_rule","$uuid=null"
     "``GET``","firewall","d_nat","move_rule_before","$selected_uuid,$target_uuid"
-    "``GET,POST``","firewall","d_nat","search_rule",""
+    "``GET``","firewall","d_nat","search_rule",""
     "``POST``","firewall","d_nat","set_rule","$uuid"
     "``POST``","firewall","d_nat","toggle_rule","$uuid,$disabled=null"
     "``GET``","firewall","d_nat","toggle_rule_log","$uuid,$log"
+    "``GET``","firewall","d_nat","upload_rules",""
 
     "``<<uses>>``", "", "", "", "*model* `DNat.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Firewall/DNat.xml>`__"
 
@@ -112,7 +114,7 @@ as a reference and testbed. There's no relation to any of the rules being manage
     "``POST``","firewall","filter","set_rule","$uuid"
     "``POST``","firewall","filter","toggle_rule","$uuid,$enabled=null"
     "``GET``","firewall","filter","toggle_rule_log","$uuid,$log"
-    "``POST``","firewall","filter","upload_rules",""
+    "``GET``","firewall","filter","upload_rules",""
 
 .. csv-table:: Resources (FilterUtilController.php)  -- extends : ApiControllerBase 
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -139,8 +141,12 @@ as a reference and testbed. There's no relation to any of the rules being manage
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
+    "``GET``","firewall","migration","count_outbound",""
+    "``GET``","firewall","migration","count_rules",""
+    "``GET``","firewall","migration","download_outbound",""
     "``GET``","firewall","migration","download_rules",""
     "``POST``","firewall","migration","flush",""
+    "``POST``","firewall","migration","flush_outbound",""
 
 .. csv-table:: Resources (NptController.php)  -- extends : FilterBaseController 
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -148,12 +154,14 @@ as a reference and testbed. There's no relation to any of the rules being manage
 
     "``POST``","firewall","npt","add_rule",""
     "``POST``","firewall","npt","del_rule","$uuid"
+    "``GET``","firewall","npt","download_rules",""
     "``GET``","firewall","npt","get_rule","$uuid=null"
     "``GET``","firewall","npt","move_rule_before","$selected_uuid,$target_uuid"
     "``GET,POST``","firewall","npt","search_rule",""
     "``POST``","firewall","npt","set_rule","$uuid"
     "``POST``","firewall","npt","toggle_rule","$uuid,$enabled=null"
     "``GET``","firewall","npt","toggle_rule_log","$uuid,$log"
+    "``GET``","firewall","npt","upload_rules",""
 
 .. csv-table:: Resources (OneToOneController.php)  -- extends : FilterBaseController 
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -161,12 +169,14 @@ as a reference and testbed. There's no relation to any of the rules being manage
 
     "``POST``","firewall","one_to_one","add_rule",""
     "``POST``","firewall","one_to_one","del_rule","$uuid"
+    "``GET``","firewall","one_to_one","download_rules",""
     "``GET``","firewall","one_to_one","get_rule","$uuid=null"
     "``GET``","firewall","one_to_one","move_rule_before","$selected_uuid,$target_uuid"
     "``GET,POST``","firewall","one_to_one","search_rule",""
     "``POST``","firewall","one_to_one","set_rule","$uuid"
     "``POST``","firewall","one_to_one","toggle_rule","$uuid,$enabled=null"
     "``GET``","firewall","one_to_one","toggle_rule_log","$uuid,$log"
+    "``GET``","firewall","one_to_one","upload_rules",""
 
 .. csv-table:: Resources (SourceNatController.php)  -- extends : FilterBaseController 
    :header: "Method", "Module", "Controller", "Command", "Parameters"
@@ -174,12 +184,16 @@ as a reference and testbed. There's no relation to any of the rules being manage
 
     "``POST``","firewall","source_nat","add_rule",""
     "``POST``","firewall","source_nat","del_rule","$uuid"
+    "``GET``","firewall","source_nat","download_rules",""
+    "``GET``","firewall","source_nat","get",""
     "``GET``","firewall","source_nat","get_rule","$uuid=null"
     "``GET``","firewall","source_nat","move_rule_before","$selected_uuid,$target_uuid"
-    "``GET,POST``","firewall","source_nat","search_rule",""
+    "``GET``","firewall","source_nat","search_rule",""
+    "``POST``","firewall","source_nat","set",""
     "``POST``","firewall","source_nat","set_rule","$uuid"
     "``POST``","firewall","source_nat","toggle_rule","$uuid,$enabled=null"
     "``GET``","firewall","source_nat","toggle_rule_log","$uuid,$log"
+    "``GET``","firewall","source_nat","upload_rules",""
 
 
 

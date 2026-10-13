@@ -14,12 +14,8 @@ Captiveportal
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","captiveportal","service","del_template","$uuid"
-    "``GET``","captiveportal","service","get_template","$fileid=null"
     "``POST``","captiveportal","service","reconfigure",""
     "``POST``","captiveportal","service","restart",""
-    "``POST``","captiveportal","service","save_template",""
-    "``GET``","captiveportal","service","search_templates",""
     "``POST``","captiveportal","service","start",""
     "``GET``","captiveportal","service","status",""
     "``POST``","captiveportal","service","stop",""
@@ -46,6 +42,19 @@ Captiveportal
     "``POST``","captiveportal","settings","set",""
     "``POST``","captiveportal","settings","set_zone","$uuid"
     "``POST``","captiveportal","settings","toggle_zone","$uuid,$enabled=null"
+
+    "``<<uses>>``", "", "", "", "*model* `CaptivePortal.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/CaptivePortal/CaptivePortal.xml>`__"
+
+.. csv-table:: Resources (TemplateController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","captiveportal","template","del_template","$uuid"
+    "``GET``","captiveportal","template","get",""
+    "``GET``","captiveportal","template","get_template","$fileid=null"
+    "``POST``","captiveportal","template","save_template",""
+    "``GET,POST``","captiveportal","template","search_templates",""
+    "``POST``","captiveportal","template","set",""
 
     "``<<uses>>``", "", "", "", "*model* `CaptivePortal.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/CaptivePortal/CaptivePortal.xml>`__"
 

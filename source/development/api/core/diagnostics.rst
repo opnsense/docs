@@ -51,7 +51,7 @@ Diagnostics
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
-    "``POST``","diagnostics","interface","_carp_status","$status"
+    "``POST``","diagnostics","interface","carp_status","$status"
     "``POST``","diagnostics","interface","del_route",""
     "``POST``","diagnostics","interface","flush_arp",""
     "``GET``","diagnostics","interface","get_arp",""
@@ -92,6 +92,7 @@ Diagnostics
     "``GET``","diagnostics","netflow","getconfig",""
     "``GET``","diagnostics","netflow","is_enabled",""
     "``POST``","diagnostics","netflow","reconfigure",""
+    "``POST``","diagnostics","netflow","reset",""
     "``GET``","diagnostics","netflow","setconfig",""
     "``GET``","diagnostics","netflow","status",""
 
@@ -162,10 +163,16 @@ Diagnostics
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
 
+    "``POST``","diagnostics","systemhealth","del_r_r_d","$report=null"
     "``GET``","diagnostics","systemhealth","export_as_c_s_v","$rrd='',$detail=-1"
+    "``GET``","diagnostics","systemhealth","get",""
     "``GET``","diagnostics","systemhealth","get_interfaces",""
     "``GET``","diagnostics","systemhealth","get_rrd_list",""
     "``GET``","diagnostics","systemhealth","get_system_health","$rrd='',$detail=-1"
+    "``POST``","diagnostics","systemhealth","reconfigure",""
+    "``POST``","diagnostics","systemhealth","set",""
+
+    "``<<uses>>``", "", "", "", "*model* `SystemHealth.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Diagnostics/SystemHealth.xml>`__"
 
 .. csv-table:: Resources (TracerouteController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"

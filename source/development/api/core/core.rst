@@ -69,6 +69,7 @@ Core
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","core","menu","search",""
+    "``POST``","core","menu","set_favorite",""
     "``GET``","core","menu","tree",""
 
 .. csv-table:: Service (ServiceController.php)

@@ -1,6 +1,22 @@
 Interfaces
 ~~~~~~~~~~
 
+.. csv-table:: Resources (AssignmentController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","interfaces","assignment","add_item",""
+    "``POST``","interfaces","assignment","del_item","$ifnames"
+    "``GET``","interfaces","assignment","get",""
+    "``GET``","interfaces","assignment","get_item","$ifname=null"
+    "``GET``","interfaces","assignment","pending",""
+    "``POST``","interfaces","assignment","reconfigure",""
+    "``GET,POST``","interfaces","assignment","search_item",""
+    "``POST``","interfaces","assignment","set",""
+    "``POST``","interfaces","assignment","set_item","$ifname"
+
+    "``<<uses>>``", "", "", "", "*model* `NetworkInterface.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/NetworkInterface.xml>`__"
+
 .. csv-table:: Resources (BridgeSettingsController.php)
    :header: "Method", "Module", "Controller", "Command", "Parameters"
    :widths: 4, 15, 15, 30, 40
@@ -21,7 +37,7 @@ Interfaces
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","interfaces","gif_settings","add_item",""
-    "``POST``","interfaces","gif_settings","del_item","$uuid"
+    "``POST``","interfaces","gif_settings","del_item","$uuids"
     "``GET``","interfaces","gif_settings","get",""
     "``GET``","interfaces","gif_settings","get_if_options",""
     "``GET``","interfaces","gif_settings","get_item","$uuid=null"
@@ -37,7 +53,7 @@ Interfaces
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","interfaces","gre_settings","add_item",""
-    "``POST``","interfaces","gre_settings","del_item","$uuid"
+    "``POST``","interfaces","gre_settings","del_item","$uuids"
     "``GET``","interfaces","gre_settings","get",""
     "``GET``","interfaces","gre_settings","get_if_options",""
     "``GET``","interfaces","gre_settings","get_item","$uuid=null"
@@ -53,7 +69,7 @@ Interfaces
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","interfaces","lagg_settings","add_item",""
-    "``POST``","interfaces","lagg_settings","del_item","$uuid"
+    "``POST``","interfaces","lagg_settings","del_item","$uuids"
     "``GET``","interfaces","lagg_settings","get",""
     "``GET``","interfaces","lagg_settings","get_item","$uuid=null"
     "``POST``","interfaces","lagg_settings","reconfigure",""
@@ -117,7 +133,7 @@ Interfaces
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","interfaces","vip_settings","add_item",""
-    "``POST``","interfaces","vip_settings","del_item","$uuid"
+    "``POST``","interfaces","vip_settings","del_item","$uuids"
     "``GET``","interfaces","vip_settings","get",""
     "``GET``","interfaces","vip_settings","get_item","$uuid=null"
     "``GET``","interfaces","vip_settings","get_unused_vhid",""
@@ -133,7 +149,7 @@ Interfaces
    :widths: 4, 15, 15, 30, 40
 
     "``POST``","interfaces","vlan_settings","add_item",""
-    "``POST``","interfaces","vlan_settings","del_item","$uuid"
+    "``POST``","interfaces","vlan_settings","del_item","$uuids"
     "``GET``","interfaces","vlan_settings","get",""
     "``GET``","interfaces","vlan_settings","get_item","$uuid=null"
     "``POST``","interfaces","vlan_settings","reconfigure",""
@@ -157,3 +173,18 @@ Interfaces
     "``POST``","interfaces","vxlan_settings","set_item","$uuid"
 
     "``<<uses>>``", "", "", "", "*model* `VxLan.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/VxLan.xml>`__"
+
+.. csv-table:: Resources (WirelessSettingsController.php)
+   :header: "Method", "Module", "Controller", "Command", "Parameters"
+   :widths: 4, 15, 15, 30, 40
+
+    "``POST``","interfaces","wireless_settings","add_item",""
+    "``POST``","interfaces","wireless_settings","del_item","$uuids"
+    "``GET``","interfaces","wireless_settings","get",""
+    "``GET``","interfaces","wireless_settings","get_item","$uuid=null"
+    "``POST``","interfaces","wireless_settings","reconfigure",""
+    "``GET,POST``","interfaces","wireless_settings","search_item",""
+    "``POST``","interfaces","wireless_settings","set",""
+    "``POST``","interfaces","wireless_settings","set_item","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `Wlan.xml <https://github.com/opnsense/core/blob/master/src/opnsense/mvc/app/models/OPNsense/Interfaces/Wlan.xml>`__"
