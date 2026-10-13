@@ -28,3 +28,5 @@ Udpbroadcastrelay
     "``POST``","udpbroadcastrelay","settings","set",""
     "``POST``","udpbroadcastrelay","settings","set_relay","$uuid"
     "``POST``","udpbroadcastrelay","settings","toggle_relay","$uuid"
+
+    "``<<uses>>``", "", "", "", "*model* `UDPBroadcastRelay.xml <https://github.com/opnsense/plugins/blob/master/net/udpbroadcastrelay/src/opnsense/mvc/app/models/OPNsense/UDPBroadcastRelay/UDPBroadcastRelay.xml>`__"

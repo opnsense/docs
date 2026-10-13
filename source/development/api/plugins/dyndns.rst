@@ -7,6 +7,7 @@ Dyndns
 
     "``POST``","dyndns","accounts","add_item",""
     "``POST``","dyndns","accounts","del_item","$uuid"
+    "``POST``","dyndns","accounts","force_refresh","$uuids=null"
     "``GET``","dyndns","accounts","get",""
     "``GET``","dyndns","accounts","get_item","$uuid=null"
     "``GET,POST``","dyndns","accounts","search_item",""

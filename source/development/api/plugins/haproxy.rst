@@ -121,6 +121,7 @@ Haproxy
     "``POST``","haproxy","settings","set_user","$uuid"
     "``POST``","haproxy","settings","setmailer","$uuid"
     "``POST``","haproxy","settings","setresolver","$uuid"
+    "``POST``","haproxy","settings","toggle_action","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggle_backend","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggle_cpu","$uuid,$enabled=null"
     "``POST``","haproxy","settings","toggle_frontend","$uuid"

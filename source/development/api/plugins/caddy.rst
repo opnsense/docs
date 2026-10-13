@@ -85,4 +85,3 @@ Caddy
     "``POST``","caddy","service","start",""
     "``GET``","caddy","service","status",""
     "``POST``","caddy","service","stop",""
-    "``GET``","caddy","service","validate",""

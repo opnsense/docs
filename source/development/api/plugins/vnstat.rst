@@ -15,7 +15,9 @@ Vnstat
    :widths: 4, 15, 15, 30, 40
 
     "``GET``","vnstat","service","daily",""
+    "``GET``","vnstat","service","get_json_data",""
     "``GET``","vnstat","service","hourly",""
+    "``GET``","vnstat","service","interface_list",""
     "``GET``","vnstat","service","monthly",""
     "``POST``","vnstat","service","reconfigure",""
     "``GET``","vnstat","service","resetdb",""
