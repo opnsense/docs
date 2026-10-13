@@ -82,7 +82,7 @@ Setup Router A
       **Protocol**                                    TCP
       **Source**                                      Peering Network
       **Source Port**                                 Any
-      **Destination**                                 Peering Network
+      **Destination**                                 Peering IP (Router IP)
       **Destination Port**                            179 (BGP)
       **Description**                                 Allow inbound BGP traffic from peer
       ==============================================  ====================================================================
@@ -126,6 +126,7 @@ Setup Router A
       ==============================================  ====================================================================
       **Enable**                                      ``X``
       **Peer IP**                                     ``10.1.1.2`` (Peering IP Router B)
+      **Address Family**                              ``IPv4``
       **Remote AS mode**                              ``Use Remote AS Number``
       **Remote AS**                                   ``65011``
       **Update-Source Interface**                     ``igc2`` (Peering interface Router A)
@@ -211,7 +212,7 @@ Setup Router B
       **Protocol**                                    TCP
       **Source**                                      Peering Network
       **Source Port**                                 Any
-      **Destination**                                 Peering Network
+      **Destination**                                 Peering IP (Router IP)
       **Destination Port**                            179 (BGP)
       **Description**                                 Allow inbound BGP traffic from peer
       ==============================================  ====================================================================
@@ -250,6 +251,7 @@ Setup Router B
       ==============================================  ====================================================================
       **Enable**                                      ``X``
       **Peer IP**                                     ``10.1.1.1`` (Peering IP Router A)
+      **Address Family**                              ``IPv4``
       **Remote AS mode**                              ``Use Remote AS Number``
       **Remote AS**                                   ``65011``
       **Update-Source Interface**                     ``igc2`` (Peering interface Router B)
@@ -373,7 +375,7 @@ Setup Router A
       **Protocol**                                    TCP
       **Source**                                      WAN network
       **Source Port**                                 Any
-      **Destination**                                 WAN network
+      **Destination**                                 WAN address
       **Destination Port**                            179 (BGP)
       **Description**                                 Allow inbound BGP traffic from ISP Router
       ==============================================  ====================================================================
@@ -411,6 +413,7 @@ Setup Router A
       ==============================================  ====================================================================
       **Enable**                                      ``X``
       **Peer IP**                                     ``203.0.113.2`` (Peering IP ISP Router)
+      **Address Family**                              ``IPv4``
       **Remote AS mode**                              ``Use Remote AS Number``
       **Remote AS**                                   ``64496``
       **Update-Source Interface**                     ``igc1`` (Peering interface Router A)

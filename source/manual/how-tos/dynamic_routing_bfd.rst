@@ -42,8 +42,8 @@ Setting up BFD is additional to the `OSPF Tutorial </manual/how-tos/dynamic_rout
 
       .. Note::
 
-         BFD is unidirectional, both sides need rules to send and receive BFD packets. We only use single hop in our simple setup so
-         this is the only rule we need.
+         Both BFD peers send control packets, so both sides need a rule to receive them. We only use single hop in this simple setup,
+         so this is the only BFD rule we need.
 
 
    .. group-tab:: Step 2
@@ -81,6 +81,7 @@ Setting up BFD is additional to the `OSPF Tutorial </manual/how-tos/dynamic_rout
       ==============================================  ====================================================================
       **Enable**                                      ``X``
       **Peer IP**                                     ``10.1.1.2``
+      **Address Family**                              ``IPv4``
       **Remote AS**                                   ``65011``
       **Update-Source Interface**                     ``igc2``
       **BFD**                                         ``X`` (new)
@@ -160,6 +161,7 @@ Setup Router B
       ==============================================  ====================================================================
       **Enable**                                      ``X``
       **Peer IP**                                     ``10.1.1.1``
+      **Address Family**                              ``IPv4``
       **Remote AS**                                   ``65011``
       **Update-Source Interface**                     ``igc2``
       **BFD**                                         ``X`` (new)

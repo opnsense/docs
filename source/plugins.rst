@@ -22,6 +22,10 @@ Routing
    :titlesonly:
 
    manual/dynamic_routing
+   manual/how-tos/dynamic_routing_rip
+   manual/how-tos/dynamic_routing_ospf
+   manual/how-tos/dynamic_routing_bgp
+   manual/how-tos/dynamic_routing_bfd
    manual/how-tos/tayga
    manual/ndp-proxy-go
 
