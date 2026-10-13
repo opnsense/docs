@@ -158,7 +158,7 @@ In such a setup, your router will not receive a prefix delegation via DHCPv6-PD,
 Settings
 --------------------------------------------------
 
-Go to :menuselection:`Interfaces --> WAN` and select SLAAC as IPv6 configuration.
+Go to :menuselection:`Interfaces --> Assignments`, edit WAN and select SLAAC as IPv6 configuration.
 
 ==============================================  ====================================================================
 **IPv6 Configuration Type**                     ``SLAAC``
@@ -166,10 +166,10 @@ Go to :menuselection:`Interfaces --> WAN` and select SLAAC as IPv6 configuration
 
 Save the settings.
 
-Go to :menuselection:`Interfaces --> LAN` and select link-local as IPv6 configuration.
+On the same Assignments page, edit LAN and select Link-local as IPv6 configuration.
 
 ==============================================  ====================================================================
-**IPv6 Configuration Type**                     ``link-local``
+**IPv6 Configuration Type**                     ``Link-local``
 ==============================================  ====================================================================
 
 Save and apply the new interface settings.
@@ -303,29 +303,19 @@ Option                              Value
 
 - Press **Apply**
 
-Go to :menuselection:`Interfaces --> Assignments` and assign the new loopback device:
+Go to :menuselection:`Interfaces --> Assignments`, click **Add** and configure the new loopback assignment:
 
 ==================================  =======================================================================================================
 Option                              Value
 ==================================  =======================================================================================================
 **Device**                          ``lo1``
 **Description**                     ``lo1_DNS``
-==================================  =======================================================================================================
-
-- Press **Add**
-
-Go to :menuselection:`Interfaces --> lo1_DNS` and assign IP addresses to the loopback device:
-
-==================================  =======================================================================================================
-Option                              Value
-==================================  =======================================================================================================
-**Enable**                          ``X``
-**Description**                     ``lo1_DNS``
-**IPv6 Configuration Type**         ``Static``
+**Enabled**                         ``X``
+**IPv6 Configuration Type**         ``Static IPv6``
 **IPv6 address**                    ``fd01::1/128``
 ==================================  =======================================================================================================
 
-- Press **Save**
+- Press **Save** and **Apply**
 
 Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)` and create a NAT rule that redirects IPv6 DNS. We will use the same firewall aliases
 that have been created in the `Firewall Rules` step:

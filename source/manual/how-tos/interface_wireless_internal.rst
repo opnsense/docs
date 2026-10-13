@@ -51,10 +51,8 @@ The rest of the settings can be left on their defaults.
 Step 3 - Prepare WLAN
 ---------------------
 
-.. image:: images/interface_wireless_radius_1.png
-
 ======================= ========================================
-Enable                  Check
+Enabled                 Check
 Description             WLAN
 IPv4 Configuration Type Static IPv4
 ======================= ========================================
@@ -62,7 +60,7 @@ IPv4 Configuration Type Static IPv4
 
 ======================= ========================================
 IPv4 address            A network
-IPv4 Upstream Gateway   WLAN
+IPv4 gateway rules      WLAN
 ======================= ========================================
 
 

@@ -95,12 +95,10 @@ To enable firewalling, NAT, or routing, you need to assign the **wt0** interface
 2. Locate the unassigned ``wt0`` interface.
 3. Enter a name in the description field (e.g., **Netbird**).
 4. Click **Add** to assign it.
-5. Click on the **Netbird** interface to configure it.
-6. Check "Enable Interface"
-7. optionally but recommended: Check "Prevent interface removal"
-8. don't set any IP address or gateway
-9. Click **Save**
-10. Click on **Apply changes**
+5. In the assignment dialog, check **Enabled**.
+6. Optionally, but recommended, check **Lock**.
+7. Do not set any IP address or gateway.
+8. Click **Save**, then **Apply** on the Assignments page.
 
 Why Assign ``wt0``?
 -------------------

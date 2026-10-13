@@ -71,8 +71,8 @@ Go to :menuselection:`Firewall --> Rules --> Tayga`, add a new rule, set the `TC
 their default values and save.
 
 .. Note::
-   If you just enabled Tayga and can't find :menuselection:`Firewall --> Rules --> Tayga`, go to :menuselection:`Interfaces --> Assignments`,
-   click `Save` and reload the page.
+   If you just enabled Tayga and can't find :menuselection:`Firewall --> Rules --> Tayga`, reload the page. Also verify
+   that the Tayga interface is present under :menuselection:`Interfaces --> Assignments` and apply pending changes.
 
 Go to :menuselection:`Firewall --> NAT --> Source NAT (Outbound)`, add a new rule, set the `Interface` to `WAN`, set `Source address` to `Single host or
 network`, enter your Tayga `IPv4 Pool`, leave all other settings to their default values and save.

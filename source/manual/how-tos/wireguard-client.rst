@@ -103,16 +103,13 @@ Step 4(a) - Assign an interface to WireGuard (recommended)
     Finally, it allows separation of the firewall rules of each WireGuard instance (each :code:`wgX` device). Otherwise they all need to be configured on the default WireGuard group that OPNsense creates. This is more an organisational aesthetic, rather than an issue of substance
 
 - Go to :menuselection:`Interfaces --> Assignments`
-- In the dropdown next to “New interface:”, select the WireGuard device (:code:`wg1` if this is your first one)
-- Add a description (eg :code:`HomeWireGuard`)
-- Click **+** to add it, then click **Save**
-- Then select your new interface under the Interfaces menu
-- Configure it as follows (if an option is not mentioned below, leave it as the default):
+- Click **Add** and select the WireGuard device (:code:`wg1` if this is your first one)
+- Configure the new assignment as follows (if an option is not mentioned below, leave it as the default):
 
     ============================= ===================================================================
-     **Enable**                    *Checked*
+     **Enabled**                   *Checked*
      **Lock**                      *Checked*
-     **Description**               *Same as under Assignments, if this box is not already populated*
+     **Description**               :code:`HomeWireGuard`
      **IPv4 Configuration Type**   *None*
      **IPv6 Configuration Type**   *None*
     ============================= ===================================================================
@@ -121,12 +118,12 @@ Step 4(a) - Assign an interface to WireGuard (recommended)
 
     There is no need to configure IPs on the interface. The tunnel address(es) specified in the Instance configuration for your server will be automatically assigned to the interface once WireGuard is restarted
 
-- **Save** the interface configuration and then click **Apply changes**
+- Click **Save**, then **Apply** on the Assignments page
 - Restart WireGuard - you can do this by turning it off and on under :menuselection:`VPN --> WireGuard --> General` (click **Apply** after both unchecking and checking the checkbox)
 
 .. Tip::
 
-    When assigning interfaces, gateways can be added to them. This is useful if balancing traffic across multiple tunnels is required or in more complex routing scenarios. To do this, go to :menuselection:`System --> Gateways --> Configuration` and add a new gateway. Choose the relevant WireGuard interface under :menuselection:`System --> Interfaces` and check the checkbox **Dynamic gateway policy**. These scenarios are otherwise beyond the scope of this how-to.
+    When assigning interfaces, gateways can be added to them. This is useful if balancing traffic across multiple tunnels is required or in more complex routing scenarios. To do this, go to :menuselection:`System --> Gateways --> Configuration` and add a new gateway. Edit the relevant WireGuard interface under :menuselection:`Interfaces --> Assignments` and check **Dynamic gateway policy**. These scenarios are otherwise beyond the scope of this how-to.
 
 .. Tip::
 
