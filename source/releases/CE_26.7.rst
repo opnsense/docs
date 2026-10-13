@@ -31,6 +31,52 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.7.7 (October 13, 2026)
+--------------------------------------------------------------------------
+
+
+This release is mainly for the brave Hyper-V users who fought kernel panics
+since 26.7, which got fixed in 26.7.6 only to cause segmentation faults for
+others.  Thanks all for testing and correcting the problem in FreeBSD!
+
+The other reason are fixes in the new interfaces settings API so that it
+more closely matches the behaviour of the legacy page.
+
+Both the iPerf and the FRR plugin have been reworked substantially.  In case
+of FRR please read the migration notes linked below before updating.
+
+Here are the full patch notes:
+
+* interfaces: add missing validation for "configurable" and "spoofmac" in new settings API
+* interfaces: only store "dhcp6_norequest_dns" in DHCPv6 mode in new settings API
+* interfaces: only store "track6-interface" in ID association / Track interface modes in new settings API
+* interfaces: do not render "none" to configuration in new settings API
+* interfaces: move promiscuous mode to advanced in new settings API
+* interfaces: fix index into $todo for proper flag check during apply in new settings API
+* interfaces: provide better option group labels to DeviceField
+* interfaces: add proper local/remote IP support to PPPoE IPCP
+* interfaces: move legacy apply cache to /var/lib/php/tmp
+* firewall: destination NAT: fix typo in parseRdrRules() causing faulty rules not being disabled
+* firewall: aliases: validate that port aliases always have content
+* firewall: revert a clone rule change so that cloned rules to appear adjacent to the original rule again
+* mvc: UidField: add isolated updateValue() for installer user
+* ui: bootgrid: sync columnselect-input state with (un)setColumns
+* ui: sync expanded state for selected submenus
+* ui: close mobile menu when a menu entry opens another tab of the current page (contributed by Greelan)
+* plugins: os-ddclient 1.33 `[1] <https://github.com/opnsense/plugins/blob/stable/26.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-frr 2.0 `[2] <https://github.com/opnsense/plugins/blob/stable/26.7/net/frr/pkg-descr>`__ 
+* plugins: os-iperf 2.0 `[3] <https://github.com/opnsense/plugins/blob/stable/26.7/benchmarks/iperf/pkg-descr>`__ 
+* src: pf: send syncookies from the receiving thread
+* src: hyperv: fix two regressions in previous upstream patch
+* src: pcib: only apply ARI translation to the own secondary bus of a bridge
+* src: ktls CBC decrypt: avoid creating zero length iovec entries
+* src: route/fib_algo: respect immediate_sync in fd_ref_nhop
+* src: route/fib_algo: fix FIB_ALGO without ROUTE_MPATH option
+* src: sysctl: retire SYSCTL_NODE_CHILDREN()
+
+
+
+--------------------------------------------------------------------------
 26.7.6 (October 08, 2026)
 --------------------------------------------------------------------------
 
@@ -114,6 +160,12 @@ Here are the full patch notes:
 * ports: phalcon 5.22.1 `[12] <https://github.com/phalcon/cphalcon/releases/tag/v5.22/1>`__ 
 * ports: php 8.5.11 `[13] <https://www.php.net/ChangeLog-8.php#8.5.11>`__ 
 * ports: py-duckdb 1.5.6 `[14] <https://github.com/duckdb/duckdb/releases/tag/v1.5.6>`__ 
+
+A hotfix release was issued as 26.7.6_3:
+
+* interfaces: PPP type validation fixes for new assignments
+* firewall: fix off by one in addAction() in alias diagnostics
+* mvc: UidField: revert "allow an arbitrarily specified UID for system scope users upon creation"
 
 
 

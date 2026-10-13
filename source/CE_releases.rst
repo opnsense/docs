@@ -8,7 +8,7 @@ Community Edition
     :width: 600px
     :align: center
 
-As of January 2015 there have been *353* releases leading to the latest version *26.7.6*
+As of January 2015 there have been *354* releases leading to the latest version *26.7.7*
 named "Xenial Xenops".
 
 
