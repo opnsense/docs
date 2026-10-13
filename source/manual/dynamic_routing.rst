@@ -299,24 +299,20 @@ OSPF/OSPFv3 (Open Shortest Path First)
       **Prefix-List Out**                    Filters outbound route advertisements using a prefix list. Entries sharing the selected list name are applied together.
       ====================================== ============================================================================================================================
 
-   .. tab:: Networks
+   .. tab:: Networks (OSPF only)
 
       ====================================== ============================================================================================================================
       Options                                Description
       ====================================== ============================================================================================================================
       **Enabled**                            Enable / Disable
-      **Network Address**                    (OSPF) Specifies the network address (e.g., `192.168.1.0`) to include in OSPF.
-                                             (OSPFv3) Specifies the IPv6 network address (e.g., `fe80::1234`) to include in OSPFv3.
-      **Network Mask**                       (OSPF) Defines the network mask (e.g., `24`) for the specified network.
-                                             (OSPFv3) Defines the network prefix length (e.g., `64`) for the specified IPv6 address range.
+      **Network Address**                    Specifies the network address (e.g., `192.168.1.0`) to include in OSPF.
+      **Network Mask**                       Defines the network mask (e.g., `24`) for the specified network.
       **Area**                               Select the explicitly configured OSPF area to which the network belongs.
       ====================================== ============================================================================================================================
 
-      .. Note::
+      .. Attention::
 
-         Using a **Network** configuration with `0.0.0.0` as the Backbone Area is beneficial in larger networks, where defining broad network ranges streamlines OSPF
-         configuration. This approach avoids the need to configure OSPF individually on each interface by including all subnets within the specified range.
-         The Backbone Area serves as the primary route aggregation point, allowing inter-area communication which is essential in hierarchical OSPF networks.
+         Using networks is a legacy configuration. Using an interface based configuration instead is highly recommended. Please note that you cannot mix network and interface configurations.
 
    .. tab:: Interfaces
 
