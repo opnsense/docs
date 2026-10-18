@@ -49,17 +49,16 @@ in order to make your delegated internal subnets available via Internet.
 Step 2 - configure the WAN interface
 ------------------------------------
 
-On the OPNSense go to :menuselection:`Interfaces --> WAN` and set the configuration type for IPv6 to **DHCPv6**. On the bottom part of the dialog in
-**DHCPv6 Client configuration** make sure to select 
+Go to :menuselection:`Interfaces --> Assignments`, edit WAN and set the configuration type for IPv6 to **DHCPv6**. In the IPv6 address configuration fields select
 
-* checkbox: **Request only an IPv6 prefix**
-* checkbox: **Send IPv6 prefix hint**
+* checkbox: **Request prefix only**
+* checkbox: **Send prefix hint**
 * dropdown: **Prefix delegation size**. For this example setup select `60`
 
 Note the following:
 
 1. the requested prefix differs by one bit compared to what the ISP delegated the FB (60 vs. 59)
-2. the setting **Request only an IPv6 prefix** is the important part. 
+2. the setting **Request prefix only** is the important part.
    With this setting the FB acknowledges
    the OPNsense as a router and really delegates a prefix. The OPNSense will only get a link-local `0xfe80`
    address but that is fine. If this checkbox is not selected the FB considers the OPNsense as an end-user device
@@ -71,23 +70,23 @@ Step 3 - configure the internal DMZ / LAN / WLAN interfaces
 -----------------------------------------------------------
 
 Now it is time to set up the internal interfaces. The settings are more or less the same for all of them.
-Instead of **DHCPv6** select **Track Interface** and on the bottom IPv6 dialog and choose the `WAN` interface for tracking.
-This is also the place to divide the delegated prefix into distinct subnets. Just specify an individual **Interface prefix ID**
+Instead of **DHCPv6** select **Track Interface (legacy)** and choose `WAN` as the **Parent interface**.
+This is also the place to divide the delegated prefix into distinct subnets. Specify an individual **Assign prefix ID**
 for each interface. In this example the FB gave us `aaaa:bbbb:cccc:9410::/60` and we choose:
 
 =========  ===================  =======================
-Interface  Interface prefix ID  result-prefix
+Interface  Assign prefix ID     result-prefix
 =========  ===================  =======================
 `DMZ`      `0x01`               `aaaa:bbbb:cccc:9411::`
 `WLAN`     `0x02`               `aaaa:bbbb:cccc:9412::`
 `LAN`      `0x03`               `aaaa:bbbb:cccc:9413::`
 =========  ===================  =======================
 
-The **Interface prefix Id** acts as the subnet extension (for lack of better wording) on top of the prefix provided by the FB.
-In this example we have a /60 prefix so effectively there are 4 bits left for subnetting. As a result valid values for **Interface prefix Id** are between `0x00` and `0x0f`. 
+The **Assign prefix ID** acts as the subnet extension (for lack of better wording) on top of the prefix provided by the FB.
+In this example we have a /60 prefix so effectively there are 4 bits left for subnetting. As a result valid values are between `0x00` and `0x0f`.
 
 In order to being able to manually set up the router advertisements in the next step make sure to select the checkbox
-**Allow manual adjustment of DHCPv6 and Router Advertisements** for each of the internal interfaces. If the
+**Manual configuration** for each of the internal interfaces. If the
 setting is not used the system tries to set sane defaults for both Router Advertisements and DHCPv6 server.
 
 ----------------------------------------------
@@ -149,7 +148,7 @@ While discovering the specifics of IPv6 behind a FB in combination with OPNsense
 connecting via SSH to OPNsense on the CLI. 
 
 In the directory `/tmp/` you will find several IPv6 related intermediate files. The most helpful here was `/tmp/<interfacename>_prefixv6`.
-In this file you will find the prefix delegated to you by your upstream router. If you are behind an FB and this file does not exist chances
-are you forgot to set the **Request only an IPv6 prefix** setting on the WAN interface.
+In this file you will find the prefix delegated to you by your upstream router. If you are behind an FB and this file does not exist,
+you may have forgotten to set **Request prefix only** on the WAN interface.
 
 Another helpful command is `radvdump`. This tool dumps the output of the router advertisements in a nicely formatted way.

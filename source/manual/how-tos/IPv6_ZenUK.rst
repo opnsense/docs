@@ -22,20 +22,15 @@ request IPv6.
 **WAN Interface**
 -----------------
 
+Go to :menuselection:`Interfaces --> Assignments` and edit WAN.
+
 Zen use PPPoE in the initial V4 connection, so enter PPPoE as the V4
 connection type and set the username and password for the PPPoE
 connection, for IPv6 using DHCP, select DHCPv6 in the IPv6 connection as
 shown below.
 
-.. image:: images/ZenUK_image1.png
-	:width: 100%
-
-The next step is to configure the parameters required for DHCPv6, these
-are located in the DHCPv6 client configuration section of the WAN
-interface shown below.
-
-.. image:: images/ZenUK_image2.png
-	:width: 100%
+The next step is to configure the parameters required for DHCPv6 in the WAN
+interface's IPv6 address configuration fields.
 
 As stated before, Zen provide a /48 prefix, so select the prefix size
 accordingly. 
@@ -48,18 +43,11 @@ Click ‘Save’ and then ‘Apply’.
 All that is required now is to set the LAN interface to use assigned
 IPv6 prefix.
 
-Select :menuselection:`Interfaces --> [LAN]` and set the IPv6 Configuration Type to ‘Track
-Interface’
+Go to :menuselection:`Interfaces --> Assignments`, edit LAN and set the IPv6 Configuration Type to
+‘Track Interface (legacy)’.
 
-.. image:: images/ZenUK_image3.png
-	:width: 100%
-
-Finally, set the Track IPv6 Interface to WAN, unless there is a special
-requirement which this document does not cover, set the IPv6 Prefix ID
-to 0.
-
-.. image:: images/ZenUK_image4.png
-	:width: 100%
+Finally, choose WAN as the **Parent interface** and set **Assign prefix ID** to
+``0x0`` unless you have a special requirement.
 
 Click ‘Save’ and then ‘Apply’.
 
@@ -76,20 +64,15 @@ over LAN DHCP6 server, as this can be tailored to specific needs.
 **WAN Interface**
 -----------------
 
+Go to :menuselection:`Interfaces --> Assignments` and edit WAN.
+
 Zen use PPPoE in the initial V4 connection, so enter PPPoE as the V4
 connection type and set the username and password for the PPPoE
 connection, for IPv6 using DHCP, select DHCPv6 in the IPv6 connection as
 shown below.
 
-.. image:: images/ZenUK_image1.png
-	:width: 100%
-
-The next step is to configure the parameters required for DHCPv6, these
-are located in the DHCPv6 client configuration section of the WAN
-interface shown below.
-
-.. image:: images/ZenUK_image2.png
-	:width: 100%
+The next step is to configure the parameters required for DHCPv6 in the WAN
+interface's IPv6 address configuration fields.
 
 As stated before, Zen provide a /48 prefix, so select the prefix size
 accordingly. 
@@ -99,11 +82,8 @@ Click ‘Save’ and then ‘Apply’.
 **LAN Interface**
 -----------------
 
-The LAN interface is very simple to set up, all we need to do is set the
-IPv6 Configuration Type to Static, and enter our static address.
-
-.. image:: images/ZenUK_image5.png
-	:width: 100%
+The LAN interface is very simple to set up: edit LAN on the Assignments page, set
+IPv6 Configuration Type to **Static IPv6**, and enter the static address.
 
 Zen give us a /48 prefix to use on the LAN, so pick an address from that
 range. For example our prefix is:

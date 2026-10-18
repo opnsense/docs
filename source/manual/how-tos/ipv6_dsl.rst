@@ -33,17 +33,15 @@ Next go to :menuselection:`Interfaces --> Settings` and verify that **Turn off I
 Step 3 - Interface Configuration
 --------------------------------
 
-In :menuselection:`Interfaces --> [WAN]` and set **IPv6 Configuration Type** to DHCPv6 and in section
-**DHCPv6 client configuration** at the bottom tick:
+Go to :menuselection:`Interfaces --> Assignments`, edit WAN, set **IPv6 Configuration Type** to DHCPv6 and select:
 
-- Request only an IPv6 prefix
-- Send IPv6 prefix hint
+- Request prefix only
+- Send prefix hint
 
 Set the prefix size to the one your provider delegates, mostly /56 or 64, sometimes /48.
 
-Then change to :menuselection:`Interfaces --> [LAN]` and set **IPv6 Configuration Type** to **Track Interface**.
-At the bottom in section **Track IPv6 Interface** choose **IPv6 Interface** as WAN and for
-**IPv6 Prefix ID** a value of 0 is perfectly fine.
+Then edit LAN on the Assignments page and set **IPv6 Configuration Type** to **Track Interface (legacy)**.
+Choose WAN as the **Parent interface**; ``0x0`` is a valid **Assign prefix ID**.
 
 Hit Apply and disable/enable the NICs of your internal systems. Depending on the system
 and vendor, also a reboot could be required.
