@@ -24,10 +24,10 @@ web gui of this firewall (:menuselection:`System->Settings->Administration`).
 
 .. Note::
 
-    When using Let's Encrypt, The Web Application Firewall uses the `tls-alpn-01` challenge type for easy domain verification, this requires the
-    virtual server to listen on port 443. Make sure the firewall allows incoming HTTPS connections on port 443. If the client connects
-    via a custom port, you can forward these requests to port 443, and configure the virtual server to forward these requests to the
-    correct internal port.
+    By default, the Web Application Firewall uses the `tls-alpn-01` challenge type for Let's Encrypt domain verification. This requires
+    the virtual server to listen on port 443. Make sure the firewall allows incoming HTTPS connections on port 443. If the virtual server
+    uses a custom port, forward public port 443 to that port. The `http-01` challenge is also available and is used on the backup node in
+    the :ref:`OPNWAF HA configuration <opnwaf-ha>` described below.
 
 
 Installation
@@ -70,8 +70,9 @@ The web protection options offer easy access to the `OWASP ModSecurity ruleset <
 Setup
 ---------------------------
 
-Before configuring virtual servers, let's take a look at the general settings pages (:menuselection:`Firewall --> Web Application --> Settings`).
-After installation, the module itself should be enabled by default.
+Before configuring virtual servers, let's take a look at the settings pages (:menuselection:`Firewall --> Web Application --> Settings`).
+The options are divided into `General Settings`, `Server Settings`, and `Web Protection` tabs. The ACME options are located under
+`General Settings`. After installation, the module itself should be enabled by default.
 
 In order to use the integrated ACME client (for Let's Encrypt), the ACME enable checkbox needs to be set, the certificate agreement needs to be accepted
 (next checkbox) and contact email needs to be specified.
@@ -111,13 +112,21 @@ ACME Certificate Agreement       When you use mod_md to obtain a certificate, yo
 ACME Contact Email               The ACME protocol requires you to give a contact url when you sign up.
                                  Currently, Let's Encrypt wants an email address (and it will use it to inform you
                                  about renewals or changed terms of service).
+ACME Challenge Types             Select the ACME challenge types allowed on this node. The default is `tls-alpn-01`.
+                                 In an HA setup, use `tls-alpn-01` on the master and `http-01` on the backup.
+                                 This setting is not synchronized between HA nodes.
+HA Peer                          Reverse proxy ACME `http-01` challenges from the master to the backup node. Enter the backup
+                                 node's IP address and HTTP port, for example ``192.168.1.2:80`` or ``[2001:db8::2]:80``.
+                                 Leave this empty on the backup node. This setting is not synchronized between HA nodes.
 **Server Settings**
 HTTP Version                     Select the maximum allowed HTTP version this server can use for any connection.
                                  If you want to proxy to a location via HTTP/2, use h2:// or h2c:// inside a virtual server.
 Redirect HTTP to HTTPS           Enables a permanent redirect (301 Moved Permanently) from HTTP to HTTPS. This will bind the default
                                  HTTP port additionally for all virtual hosts. Make sure this port is not bound to a different service,
                                  like the default WebGUI redirect rule.
-HTTP Port                        When enabling the HTTP to HTTPS redirect, this port will be bound for HTTP (default 80).
+HTTP Port                        This port is bound when HTTP to HTTPS redirect, the local `http-01` challenge, or an HA peer is enabled.
+                                 When it differs from the default HTTP port, forward the default HTTP port to this port and use the
+                                 configured backup port in `HA Peer`.
 Multi Processing Modules         Select the processing module the server should use. The default mpm_event is the most scalable module.
                                  For older software and state sensitive protocols, mpm_prefork can be chosen.
 Strict SNI Check                 Respond with an error when a client requests an SNI that does not exist as configured virtual server.
@@ -831,6 +840,43 @@ Overlay error pages              Overlay common error pages with the ones specif
 
     When using OpenID Connect, it is a good idea to either use the ``Default`` or custom error documents, to ensure the ``Unauthorized``
     error pages have a more cohesive and user friendly style.
+
+
+.. _opnwaf-ha:
+
+High availability
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In an HA setup, both nodes obtain their own certificates. The master uses `tls-alpn-01`, while the backup uses `http-01`.
+Requests for the backup's HTTP challenge arrive at the master (usually its CARP address), which forwards the ACME challenge path to the backup while preserving
+the requested hostname. Other HTTP requests can still use the optional HTTP to HTTPS redirect independently.
+
+Configure the nodes as follows:
+
+================================ ================================ ================================================================
+Setting                          Master                           Backup
+================================ ================================ ================================================================
+Enable ACME                      Enabled                          Enabled
+ACME Challenge Types             ``tls-alpn-01``                  ``http-01``
+HA Peer                          Backup IP address and HTTP port  Empty
+HTTP Port                        Local HTTP listener port         Local HTTP listener port
+================================ ================================ ================================================================
+
+For example, when the backup listens on the default HTTP port, set `HA Peer` on the master to ``192.168.1.2:80``. For IPv6,
+include brackets around the address, for example ``[2001:db8::2]:80``. If the backup uses a different HTTP port, specify that
+port instead. Do not select `http-01` on the master while an HA peer is configured.
+
+Enable ACME on each virtual server that should obtain a certificate and make sure the same virtual servers are present on both nodes.
+The `ACME Challenge Types` and `HA Peer` settings are intentionally not synchronized, so configure them separately on each node.
+
+The network configuration must allow:
+
+* Public TCP port 443 to reach the active node's HTTPS listener for the master's `tls-alpn-01` challenge.
+* Public TCP port 80 to reach the active node's configured HTTP port for the backup's `http-01` challenge.
+* The master node to reach the backup node on the port entered in `HA Peer`.
+
+When `HTTP Port` is changed from its default, add the corresponding NAT rule from the default HTTP port to the configured port.
+Firewall rules must permit both the public challenge traffic and the connection from the master to the backup.
 
 
 Server Status
