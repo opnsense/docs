@@ -293,7 +293,8 @@ Remote destinations              Locations to forward requests to, when more tha
                                  loadbalanced in a round robin fashion. Supports :code:`http`, :code:`https`, :code:`ws`
                                  :code:`wss`, :code:`h2` and :code:`h2c` destinations.
                                  When your webapp uses websockets and https requests, use :code:`wss://`
-Access control                   List of networks allowed to access this path (empty means any)
+Access control networks          List of IP addresses and networks allowed to access this path (empty means any).
+Access control hostnames         List of hostnames allowed to access this path (empty means any).
 Overlay error pages              Overlay common error pages with the ones specified in the virtual server.
 Description                      User friendly description for this location
 **Proxy Options**
@@ -334,7 +335,7 @@ destinations this path should map to (for example you could point to a public se
 
 .. Tip::
 
-    Constraining access to allow only specific networks or hosts can be arranged using the :code:`Access control` input.
+    Access can be constrained using the :code:`Access control networks` and :code:`Access control hostnames` fields.
 
 
 Proxy Pass Match
@@ -387,7 +388,8 @@ Type                             Redirect
 HTTP redirection message         Choose the HTTP redirection message. The default is 307, but others like 301 and 308 are
                                  also available.
 Remote destinations              Locations to redirect requests to, only one is allowed per location per redirect
-Access control                   List of networks allowed to access this path (empty means any)
+Access control networks          List of IP addresses and networks allowed to access this path (empty means any).
+Access control hostnames         List of hostnames allowed to access this path (empty means any).
 Description                      User friendly description for this location
 ================================ ========================================================================================
 
@@ -444,13 +446,12 @@ Enabled                          Enable this location
 VirtualServer                    The server this location belongs to
 Type                             Exchange Server
 Remote destinations              Locations to redirect requests to, only one is allowed per location per redirect
-Restrict Exchange Paths          Restrict Exchange Server specific paths to networks provided in the Access control field.
-                                 If paths are selected, exactly these paths will have the Access control attached.
+Restrict Exchange Paths          Restrict Exchange Server specific paths to clients permitted by the access control fields.
+                                 If paths are selected, exactly these paths will have access control attached.
                                  Access to path `/` is filtered per default with a redirect to `/owa`.
                                  All non-selected paths will be allowed from all networks.
-Access control                   Constrain access to networks provided in this list, when not provided no
-                                 constraints apply. When type is Exchange Server, it will restrict access to
-                                 paths selected in Restrict Exchange Paths.
+Access control networks          List of IP addresses and networks allowed to access the selected Exchange paths (empty means any).
+Access control hostnames         List of hostnames allowed to access the selected Exchange paths (empty means any).
 Description                      User friendly description for this location
 ================================ ========================================================================================
 
@@ -507,7 +508,7 @@ of the Exchange Server, e.g., ``https://192.168.10.10``. If the virtual servers 
 trust is automatically established with host header passthrough.
 
 These new `Locations` will create all virtual directories the Exchange Server requires automatically.
-With the options `Restrict Exchange Paths` and `Access control`, access to specific paths can be restricted. This is recommended for the ``/ecp`` path.
+With `Restrict Exchange Paths` and the access control fields, access to specific paths can be restricted. This is recommended for the ``/ecp`` path.
 
 The finished configuration should look like this:
 
@@ -543,7 +544,7 @@ The finished configuration should look like this:
         Type                             Exchange Server
         Remote destinations              ``https://192.168.10.10``
         Restrict Exchange Paths          ``/ecp``
-        Access control                   ``192.168.0.0/16 172.16.0.0/12 10.0.0.0/8``
+        Access control networks          ``192.168.0.0/16 172.16.0.0/12 10.0.0.0/8``
         ================================ ========================================================================================
 
     .. tab:: autodiscover.example.com
