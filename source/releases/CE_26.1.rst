@@ -147,6 +147,10 @@ A hotfix release was issued as 26.1.11_10:
 * ports: openvpn 2.7.5 `[32] <https://github.com/OpenVPN/openvpn/blob/v2.7.5/Changes.rst>`__ 
 * ports: suricata 8.0.6 `[33] <https://suricata.io/2026/07/09/suricata-8-0-6-and-7-0-17-released/>`__ 
 
+Out of band hotfix for PHP CVE-2026-109618 and CVE-2026-109619:
+
+* ports: php 8.3.36 `[34] <https://www.php.net/ChangeLog-8.php#8.3.36>`__ 
+
 
 
 --------------------------------------------------------------------------

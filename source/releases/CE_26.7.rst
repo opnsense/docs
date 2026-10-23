@@ -74,6 +74,10 @@ Here are the full patch notes:
 * src: route/fib_algo: fix FIB_ALGO without ROUTE_MPATH option
 * src: sysctl: retire SYSCTL_NODE_CHILDREN()
 
+Out of band hotfix for PHP CVE-2026-109618 and CVE-2026-109619:
+
+* ports: php 8.5.12 `[4] <https://www.php.net/ChangeLog-8.php#8.5.12>`__ 
+
 
 
 --------------------------------------------------------------------------
