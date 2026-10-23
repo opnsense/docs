@@ -158,6 +158,13 @@ Here are the full patch notes for patch release 3:
 * src: openssl: out-of-bounds read in OpenSSL DTLS retransmission `[42] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:68.openssl.asc>`__ 
 * ports: expat 2.8.5 `[43] <https://github.com/libexpat/libexpat/blob/R_2_8_5/expat/Changes>`__ 
 
+Here are the full patch notes for patch release 4:
+
+* system: fix untrusted directory support in certctl.py
+* system: fix deprecation warnings in XMLRPC library
+* ports: php 8.3.36 `[44] <https://www.php.net/ChangeLog-8.php#8.3.36>`__ 
+
+
 
 --------------------------------------------------------------------------
 26.4.1 (June 16, 2026)
