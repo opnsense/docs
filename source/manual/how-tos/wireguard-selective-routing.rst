@@ -77,21 +77,18 @@ Step 4 - Assign an interface to WireGuard and enable it
 -------------------------------------------------------
 
 - Go to :menuselection:`Interfaces --> Assignments`
-- In the dropdown next to “New interface:”, select the WireGuard device (:code:`wg0` if this is your first one)
-- Add a description (eg :code:`WAN_VPNProviderName`)
-- Click **+** to add it, then click **Save**
-- Then select your new interface under the Interfaces menu
-- Configure it as follows (if an option is not mentioned below, leave it as the default):
+- Click **Add** and select the WireGuard device (:code:`wg0` if this is your first one)
+- Configure the new assignment as follows (if an option is not mentioned below, leave it as the default):
 
     ============================= ===================================================================
-     **Enable**                    *Checked*
+     **Enabled**                   *Checked*
      **Lock**                      *Checked if you wish to*
-     **Description**               *Same as under Assignments, if this box is not already populated*
+     **Description**               :code:`WAN_VPNProviderName`
      **IPv4 Configuration Type**   *None*
      **IPv6 Configuration Type**   *None*
     ============================= ===================================================================
 
-- **Save** the interface configuration and then click **Apply changes**
+- Click **Save**, then **Apply** on the Assignments page
 
 --------------------------
 Step 5 - Restart WireGuard

@@ -54,7 +54,7 @@ We defined WAN and WAN2, where WAN will be our primary (default) gateway.
 .. Note::
 
     Before diving into the gateway group settings, make sure to check if both interfaces are connected to a
-    gateway in :menuselection:`Interfaces -> [XX]` when using static assignments. On a default setup,
+    gateway by editing each interface under :menuselection:`Interfaces --> Assignments` when using static addresses. On a default setup,
     these settings are responsible for creating Source NAT rules when traffic leaves the interface and handle
     the return path using policy base routing rules (:code:`reply-to`, :code:`route-to`).
 
