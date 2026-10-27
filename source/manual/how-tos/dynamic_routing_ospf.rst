@@ -446,7 +446,7 @@ Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_o
    .. group-tab:: Step 2
 
       #. In :menuselection:`Firewall --> Rules`, select IPsec and create firewall rules to allow GRE to establish over the policy based IPsec tunnel.
-      #. In :menuselection:`Firewall --> Rules`, select gre1/gre2 and create Firewall Rules to allow OSPF multicasts and the peering traffic of LAN A and LAN B through the GRE tunnels.
+      #. In :menuselection:`Firewall --> Rules`, select gre1/gre2 and create firewall rules to allow OSPF multicasts and the peering traffic of LAN A and LAN B through the GRE tunnels.
 
    .. group-tab:: Step 3
 
