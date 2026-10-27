@@ -156,7 +156,7 @@ Remote Network          10.0.8.0/24  :sup:`1`
    The remote network bound to this common name, without this entry the traffic will not be routed between hosts.
 
 
-Next go to :menuselection:`Firewall --> Rules --> WAN` and add a rule to allow traffic on port :code:`1194/UDP` from the other
+Next go to :menuselection:`Firewall --> Rules`, select WAN, and add a rule to allow traffic on port :code:`1194/UDP` from the other
 host. At minimum we should add a rule similar to this one:
 
 ===============================================================
@@ -169,7 +169,7 @@ Protocol                UDP
 Destination port range	1194
 ======================= =======================================
 
-Finally we are going to allow traffic on the tunnel itself by adding a rule to :menuselection:`Firewall --> Rules --> OpenVPN`,
+Finally allow traffic on the tunnel itself by opening :menuselection:`Firewall --> Rules`, selecting OpenVPN, and adding a rule;
 for this example we keep it simple and add one to allow all, in which case we can save the defaults when adding a rule.
 
 

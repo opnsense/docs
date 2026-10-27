@@ -169,7 +169,7 @@ ProtonVPN DNS leaks
 Since ProtonVPN provides a DNS server an extra firewall rule may be required to route the DNS traffic to the
 WireGuard gateway.
 
-- Go to :menuselection:`Firewall --> Rules --> [Name of interface for network in which hosts/network resides, eg LAN for LAN hosts]`
+- Go to :menuselection:`Firewall --> Rules` and select the interface for the network in which the hosts reside (for example, LAN for LAN hosts).
 - Click **Add** to add a new rule
 - Configure the rule as follows (if an option is not mentioned below, leave it as the default):
 

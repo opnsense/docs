@@ -91,7 +91,7 @@ Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
     Select **+** to create a new Destination NAT (Port Forward) rule.
 
     =========================  ================================
-    Interface:                  Select ``WAN``, ``DMZ`` and ``LAN`` - Select all interfaces in which clients are that should access the webserver. This will create a linked Firewall rule in :menuselection:`Firewall --> Rules --> Floating` which allows the traffic.
+    Interface:                  Select ``WAN``, ``DMZ`` and ``LAN`` - Select all interfaces in which clients are that should access the webserver. This will create a linked floating firewall rule which allows the traffic.
     Protocol:                   Select ``TCP``
     Source:                     Select ``Any``
     Source port range:          Select ``Any``
@@ -99,9 +99,9 @@ Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
     Destination port range:     Input ``443`` - Or select the alias ``HTTPS``
     Redirect target IP:         Input ``172.16.1.1`` - It's the Webserver's internal IPv4 address in the DMZ.
     Redirect target port:       Input ``443`` - Or select the alias ``HTTPS``
-    Description:                Input ``Reflection NAT Rule Webserver 443`` - Add a description because the linked *Filter rule association* will use that as its name and the :menuselection:`Firewall --> Rules --> Floating` rule will have it in the description.
+    Description:                Input ``Reflection NAT Rule Webserver 443`` - Add a description because the linked firewall rule will use that as its name and the floating rule will have it in the description.
     NAT reflection:             Use system default
-    Filter rule association:    Add associated filter rule
+    Firewall Rule:               Register rule
     =========================  ================================
 
 .. Tip::
@@ -111,10 +111,10 @@ Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
     IP ``203.0.113.1`` and destination port ``443`` --> rewrite the destination IP to ``172.16.1.1`` and the destination port to ``443``.
 
 .. Note::
-    Due to "Add associated filter rule", the added linked firewall rule in :menuselection:`Firewall --> Rules --> Floating`  will allow traffic to the destination IP ``172.16.1.1`` because NAT rules match before Firewall rules. That means the firewall receives the packet and the NAT rule converts the destination from ``203.0.113.1`` to ``172.16.1.1`` first, before passing the packet to the firewall filter. You could also set "Filter rule association: Pass", but then the resulting firewall rule would be invisible.
+    Due to "Register rule", the added linked floating firewall rule will allow traffic to the destination IP ``172.16.1.1`` because NAT rules match before firewall rules. That means the firewall receives the packet and the NAT rule converts the destination from ``203.0.113.1`` to ``172.16.1.1`` first, before passing the packet to the firewall filter. You could also set "Firewall Rule: Pass", but then the resulting firewall rule would be invisible.
 
 .. Note::
-    In some setups (e.g. an external IP address is bound on an additional VPN interface) you need to set "Filter rule association: None" and create your own Firewall rules. One of those firewall rules should match only on the VPN interface, and in "advanced features" of that rule "reply-to" should be your VPN interface. The other firewall rule (without "reply-to") should match the remaining interfaces.
+    In some setups (e.g. an external IP address is bound on an additional VPN interface) you need to set "Firewall Rule: Manual" and create your own firewall rules. One of those firewall rules should match only on the VPN interface, and in "advanced features" of that rule "reply-to" should be your VPN interface. The other firewall rule (without "reply-to") should match the remaining interfaces.
 
 .. Attention::
     Now you have Reflection NAT. The traffic from the internal LAN client ``192.168.1.1`` and any WAN client reaches the Webserver.
@@ -173,7 +173,7 @@ Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
 
 .. _nat-method2-floating:
 
-Go to :menuselection:`Firewall --> Rules --> Floating`
+Go to :menuselection:`Firewall --> Rules` and select Floating.
     =========================  ================================
     Action:                    Select ``Pass``
     Interface:                 Select ``WAN``, ``DMZ`` and ``LAN`` - Select all interfaces in which clients are that should access the webserver.
@@ -199,7 +199,7 @@ Go to :menuselection:`Firewall --> Settings --> Advanced`
 Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
     Create the NAT rule as in :ref:`Method 2 - Destination NAT (Port Forward) <nat-method2-portforward>`
 
-Go to :menuselection:`Firewall --> Rules --> Floating`
+Go to :menuselection:`Firewall --> Rules` and select Floating.
     Create the floating firewall rule as :ref:`Method 2 - Floating <nat-method2-floating>`
 
 ------------------------------------
@@ -210,7 +210,7 @@ When :menuselection:`Firewall --> Settings --> Advanced` *Reflection for 1:1* is
 
 If you want to create manual Reflection and Hairpin NAT rules, leave *Reflection for 1:1* disabled and follow the steps in :ref:`Method 1 <nat-method1>`. The only change is not adding the WAN interface to the Destination NAT (Port Forward) rules you create. The resulting Destination NAT (Port Forward) and Source NAT rules are **in addition** to the existing One-to-One NAT rules.
 
-If your Destination NAT (Port Forward) rule has 1 interface selected (e.g. LAN), the resulting *Filter rule association: Add associated filter rule* will appear in :menuselection:`Firewall --> Rules --> LAN`. If you have more than 1 interface selected, it will appear in `Firewall --> Rules --> Floating`.
+If your Destination NAT (Port Forward) rule has one interface selected (for example, LAN), the resulting *Firewall Rule: Register rule* will appear in the Firewall Rules view for that interface. If you select more than one interface, it will appear in the Floating view.
 
 .. _troubleshooting-nat-rules:
 

@@ -69,7 +69,7 @@ Setup Router A
 
       **Create Firewall rules on Peering Interface**
 
-      - :menuselection:`Firewall --> Rules --> Peering (igc2)`
+      - :menuselection:`Firewall --> Rules`, with Peering (igc2) selected
 
       ==============================================  ====================================================================
       **Action**                                      Pass
@@ -148,7 +148,7 @@ Setup Router B
 
       **Create Firewall rules on Peering Interface**
 
-      - :menuselection:`Firewall --> Rules --> Peering (igc2)`
+      - :menuselection:`Firewall --> Rules`, with Peering (igc2) selected
 
       ==============================================  ====================================================================
       **Action**                                      Pass

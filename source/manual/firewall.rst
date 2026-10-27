@@ -14,15 +14,15 @@ as well as influence how traffic should be forwarded (see also policy based rout
 
 The rules section shows all policies that apply on your network, grouped by interface.
 
-There are two implementations to choose from:
+There are two firewall rule implementations:
 
-- **Rules [new]**: a modern MVC implementation with API support and improved rule management
-- **Rules**: a static PHP page with no API support
+- **Firewall Rules**: the default modern MVC implementation with API support and improved rule management.
+- **Firewall Rules [legacy]**: static PHP pages supplied by the optional ``os-firewall-legacy`` plugin.
 
 .. Tip::
 
-    **Rules [new]** will replace **Rules** over time, you can already migrate your existing rules
-    with a helper in :menuselection:`Firewall --> Rules --> Migration assistant`.
+    Existing legacy rules continue to work without the plugin and can be migrated using
+    :menuselection:`Firewall --> Migration Assistant`.
 
 
 --------------------
@@ -156,10 +156,10 @@ Our default deny rule uses this property for example (if no rule applies, drop t
 
     The interface should show all rules that are used, when in doubt, you can always inspect the raw output of the ruleset in :code:`/tmp/rules.debug`
 
-Since :menuselection:`Firewall --> Rules [new]` and :menuselection:`Firewall --> Rules` implementations exist side by side,
-there are some additional considerations regarding the processing order of rules.
+When the optional ``os-firewall-legacy`` plugin is installed, legacy rules and Firewall Rules can exist side by side.
+The following additional processing-order considerations apply.
 
-If a :menuselection:`Firewall --> Rules [new]` filter rule has:
+If a filter rule has:
 
     - a single interface defined, it is an **Interface Rule**
     - a group interface defined, it is a **Group Rule**
@@ -168,10 +168,10 @@ If a :menuselection:`Firewall --> Rules [new]` filter rule has:
 Processing order:
 
     1. System defined rules at the beginning of the ruleset
-    2. :menuselection:`Firewall --> Rules [new]` and :menuselection:`Firewall --> Rules` floating rules
-    3. :menuselection:`Firewall --> Rules [new]` and :menuselection:`Firewall --> Rules` group rules
-    4. :menuselection:`Firewall --> Rules [new]` single interface rules
-    5. :menuselection:`Firewall --> Rules` single interface rules
+    2. :menuselection:`Firewall --> Rules` and :menuselection:`Firewall --> Rules [legacy]` floating rules
+    3. :menuselection:`Firewall --> Rules` and :menuselection:`Firewall --> Rules [legacy]` group rules
+    4. :menuselection:`Firewall --> Rules` single-interface rules
+    5. :menuselection:`Firewall --> Rules [legacy]` single-interface rules
     6. System defined rules at the end of the ruleset
 
 Rule sequence
@@ -184,8 +184,8 @@ The sequence in which the rules are displayed and processed can be customized pe
 * Select a rule with the checkbox on the left side of the rule.
 * Use the arrow button in the action menu on the right side of a rule in order to move selected rules before the rule where the action button is pressed.
 
-While rules in :menuselection:`Firewall --> Rules` are processed implicitly by the order they appear in the configuration file,
-:menuselection:`Firewall --> Rules [new]` implement a more explicit **Sort order**.
+While rules in :menuselection:`Firewall --> Rules [legacy]` are processed implicitly by the order in which they
+appear in the configuration file, :menuselection:`Firewall --> Rules` uses an explicit **Sort order**.
 
 A **Sort order** will have this structure: ``200000.0000250``:
 
@@ -247,14 +247,12 @@ Implementations
 --------------------
 
 
-Rules [new]
+Firewall Rules
 --------------------
 
-*Rules [new]* started out as *Firewall Automation* with a limited GUI to offer API support, since the static php implementation of *Rules* lacked automation requirements.
-Over time, more features have been added, and the GUI has been completely reworked. Long requested features like advanced search functionality, category folders
-improved performance and better visibility are the result.
+Firewall Rules provides API support and a reworked GUI with advanced search, category folders, improved performance, and better visibility.
 
-You can find it in :menuselection:`Firewall --> Rules [new]` or :menuselection:`Firewall --> Automation --> Filter`.
+Open Firewall Rules from :menuselection:`Firewall --> Rules`.
 
 User Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -511,11 +509,12 @@ diverted to the socket the intrusion detection listens on. After making a decisi
     Keep in mind that when the service that listens on the divert socket is stopped, the firewall rule will drop all matching packets.
 
 
-Rules
+Legacy Firewall Rules
 --------------------
 
-*Rules* is the implementation that has been around since day one. Since it consists of static php pages, there is no API support,
-Over time, it will be replaced by *Rules [new]* and a Migration assistant can be found in :menuselection:`Firewall --> Rules --> Migration assistant`.
+Legacy Firewall Rules are static PHP pages supplied by the optional ``os-firewall-legacy`` plugin. They have no API support and are not installed by default. Install the plugin only when legacy rule management is required; existing legacy rules continue to work without it and can be migrated using :menuselection:`Firewall --> Migration Assistant`.
+
+When installed, the plugin adds the legacy firewall rule pages and the legacy :menuselection:`Firewall --> NAT --> Outbound` page.
 
 
 User Interface

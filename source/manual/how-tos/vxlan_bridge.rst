@@ -84,7 +84,7 @@ The ``lo1`` interfaces on both firewalls must be connected via VPN. In this exam
 
 Create Firewall rules that allow `VXLAN` (UDP/4789) and `ICMP` traffic for:
 
-    - :menuselection:`Firewall --> Rules --> IPsec` (or WireGuard)
+    - :menuselection:`Firewall --> Rules`, with IPsec (or WireGuard) selected
 
 The tunnel should now route traffic between the two loopback interfaces:
 

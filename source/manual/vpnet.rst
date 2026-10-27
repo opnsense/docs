@@ -321,7 +321,7 @@ The relevant protocols and ports for IPsec are the following:
 
 
 The default behavior of our firewall is to block inbound traffic, which also means traffic using the tunnel should
-be allowed explicitly, the :menuselection:`Firewall --> Rules --> IPsec` menu items offer access to the IPsec traffic policies.
+be allowed explicitly. In :menuselection:`Firewall --> Rules`, select the IPsec interface to manage the IPsec traffic policies.
 
 
 .................................

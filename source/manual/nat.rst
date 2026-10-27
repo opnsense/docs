@@ -145,25 +145,25 @@ When adding a rule, the following fields are available:
    You cannot NAT to [::1] (the IPv6 localhost) or any other link-local addresses. IPv6 requires routable addresses
    for NAT, at least an ULA (Unique Local Address) is required as target.
 
-Filter rule association
------------------------
+Firewall Rule
+-------------
 
-This option controls the creation of linked filter rules in :menuselection:`Firewall --> Rules [new]`.
+This option controls the creation of linked rules in :menuselection:`Firewall --> Rules`.
 
 .. tabs::
 
    .. tab:: Manual
 
-      Choose this if you want to create your own :menuselection:`Firewall --> Rules [new]` manually. No linked filter rule is created.
+      Choose this if you want to create your own firewall rule manually. No linked rule is created.
 
       .. Note::
 
          This option is recommended for more comple setups, like Destination NAT (Port Forward) rules on VPN interfaces.
-         The filter rule can be edited and features like `reply-to` disabled.
+         The firewall rule can be edited and features like `reply-to` disabled.
 
    .. tab:: Pass
 
-      A filter rule will be automatically added and updated. This rule cannot be seen or edited in :menuselection:`Firewall --> Rules [new]`.
+      A firewall rule will be automatically added and updated. This rule cannot be seen or edited in Firewall Rules.
 
       .. Note::
 
@@ -171,8 +171,8 @@ This option controls the creation of linked filter rules in :menuselection:`Fire
 
    .. tab:: Register rule
 
-      Adds a linked filter rule in :menuselection:`Firewall --> Rules [new]` that is automatically updated when the NAT rule is updated.
-      The created filter rule cannot be manually edited.
+      Adds a linked rule in Firewall Rules that is automatically updated when the NAT rule is updated.
+      The created firewall rule cannot be manually edited.
 
 
 ----------

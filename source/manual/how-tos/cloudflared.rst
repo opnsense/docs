@@ -105,7 +105,7 @@ deny outbound policy), add a manual rule allowing traffic from **This Firewall**
 originating from the router itself may fail to route entirely — not merely exit
 via the wrong WAN. You must add an explicit policy-route rule to direct it:
 
-1. Navigate to :menuselection:`Firewall --> Rules --> Floating`.
+1. Navigate to :menuselection:`Firewall --> Rules` and select Floating.
 2. Add a rule matching **Source: This Firewall**, **Destination: any**,
    **Protocol: TCP/UDP**, **Destination port: 7844**.
 3. Under :menuselection:`Gateway`, select the specific WAN gateway or gateway group

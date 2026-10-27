@@ -168,7 +168,7 @@ Step 5 - Create firewall rules
 
 This will involve two steps - first creating a firewall rule on the WAN interface to allow clients to connect to the OPNsense WireGuard server, and then creating a firewall rule to allow access by the clients to whatever IPs they are intended to have access to.
 
-- Go to :menuselection:`Firewall --> Rules --> WAN`
+- Go to :menuselection:`Firewall --> Rules` and select WAN.
 - Click **Add** to add a new rule
 - Configure the rule as follows (if an option is not mentioned below, leave it as the default):
 
@@ -188,7 +188,7 @@ This will involve two steps - first creating a firewall rule on the WAN interfac
     ============================ ==================================================================================================
 
 - **Save** the rule, and then click **Apply Changes**
-- Then go to :menuselection:`Firewall --> Rules --> [Name of interface assigned in Step 4(a)]` - see note below if you didn't assign this interface
+- Then go to :menuselection:`Firewall --> Rules` and select the interface assigned in Step 4(a) (see the note below if you did not assign an interface).
 - Click **Add** to add a new rule
 - Configure the rule as follows (if an option is not mentioned below, leave it as the default):
 
