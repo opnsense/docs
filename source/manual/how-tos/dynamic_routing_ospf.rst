@@ -74,7 +74,7 @@ Setup Router A
 
       **Create Firewall rules on Peering Interface**
 
-      - :menuselection:`Firewall --> Rules --> Peering (igc2)`
+      - :menuselection:`Firewall --> Rules`, with Peering (igc2) selected
 
       ==============================================  ====================================================================
       **Action**                                      Pass
@@ -206,7 +206,7 @@ Setup Router B
 
       **Create Firewall rules on Peering Interface**
 
-      - :menuselection:`Firewall --> Rules --> Peering (igc2)`
+      - :menuselection:`Firewall --> Rules`, with Peering (igc2) selected
 
       ==============================================  ====================================================================
       **Action**                                      Pass
@@ -445,8 +445,8 @@ Follow the steps as the `previous setup guide </manual/how-tos/dynamic_routing_o
 
    .. group-tab:: Step 2
 
-      #. :menuselection:`Firewall --> Rules --> IPsec`: Create Firewall rules to allow GRE to establish over the policy based IPsec tunnel.
-      #. :menuselection:`Firewall --> Rules --> gre1/gre2`: Create Firewall rules to allow OSPF multicasts and the peering traffic of LAN A and LAN B through the GRE tunnels.
+      #. In :menuselection:`Firewall --> Rules`, select IPsec and create firewall rules to allow GRE to establish over the policy based IPsec tunnel.
+      #. In :menuselection:`Firewall --> Rules`, select gre1/gre2 and create firewall rules to allow OSPF multicasts and the peering traffic of LAN A and LAN B through the GRE tunnels.
 
    .. group-tab:: Step 3
 

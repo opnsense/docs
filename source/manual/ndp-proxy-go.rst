@@ -255,7 +255,7 @@ Option                              Value
 
 - Press **Apply**
 
-- Go to :menuselection:`Firewall --> Rules --> LAN` and create a rule that allows Internet access, but denies communication with other segments in the same IPv6 prefix:
+- Open :menuselection:`Firewall --> Rules`, select LAN, and create a rule that allows Internet access but denies communication with other segments in the same IPv6 prefix:
 
 ==============================================  ====================================================================================================
 **Action**                                      Pass

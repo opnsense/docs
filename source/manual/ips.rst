@@ -112,7 +112,7 @@ Save logs                             Number of logs to keep
 
 .. Note::
 
-    To use the "Divert (IPS)" mode, you must use :menuselection:`Firewall --> Rules [new]` and create firewall rules
+    To use the "Divert (IPS)" mode, open :menuselection:`Firewall --> Rules` and create firewall rules
     that contain the "Divert-to" setting. Check the :doc:`/manual/firewall` manual for more information.
 
 .. Tip::

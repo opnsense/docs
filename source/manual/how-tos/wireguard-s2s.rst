@@ -135,7 +135,7 @@ Press **Save** and **Apply**.
 Step 4a - Setup Firewall Site A
 -------------------------------
 
-Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incoming WireGuard traffic from Site B.
+Go to :menuselection:`Firewall --> Rules`, select WAN, and add a rule to allow incoming WireGuard traffic from Site B.
 
     ====================== ====================================================================================================
      **Action**             *Pass*
@@ -171,7 +171,7 @@ Go to :menuselection:`Firewall --> Settings --> Normalization` and add a new rul
 Step 4b - Setup Firewall Site B
 -------------------------------
 
-Go to :menuselection:`Firewall --> Rules --> WAN` add a new rule to allow incoming WireGuard traffic from Site A.
+Go to :menuselection:`Firewall --> Rules`, select WAN, and add a rule to allow incoming WireGuard traffic from Site A.
 
     ====================== ====================================================================================================
      **Action**             *Pass*
@@ -214,7 +214,7 @@ Your tunnel is now up and running.
 Step 5 - Allow traffic between Site A LAN Net and Site B LAN Net
 ----------------------------------------------------------------
 
-Go to OPNsense Site A :menuselection:`Firewall --> Rules --> LAN A` add a new rule.
+On OPNsense Site A, open :menuselection:`Firewall --> Rules`, select LAN A, and add a new rule.
 
     ====================== ====================================================================================================
      **Action**             *Pass*
@@ -231,7 +231,7 @@ Go to OPNsense Site A :menuselection:`Firewall --> Rules --> LAN A` add a new ru
 
 Press **Save** and **Apply**.
     
-Go to OPNsense Site A :menuselection:`Firewall --> Rules --> WireGuard (Group)` add a new rule.
+On OPNsense Site A, open :menuselection:`Firewall --> Rules`, select the WireGuard group, and add a new rule.
 
     ====================== ====================================================================================================
      **Action**             *Pass*
@@ -248,7 +248,7 @@ Go to OPNsense Site A :menuselection:`Firewall --> Rules --> WireGuard (Group)` 
 
 Press **Save** and **Apply**.    Allowed IPs
 
-Go to OPNsense Site B :menuselection:`Firewall --> Rules --> LAN A` add a new rule.
+On OPNsense Site B, open :menuselection:`Firewall --> Rules`, select LAN A, and add a new rule.
 
     ====================== ====================================================================================================
      **Action**             *Pass*
@@ -265,7 +265,7 @@ Go to OPNsense Site B :menuselection:`Firewall --> Rules --> LAN A` add a new ru
 
 Press **Save** and **Apply**.    
 
-Go to OPNsense Site B :menuselection:`Firewall --> Rules --> WireGuard (Group)` add a new rule.
+On OPNsense Site B, open :menuselection:`Firewall --> Rules`, select the WireGuard group, and add a new rule.
 
     ====================== ====================================================================================================
      **Action**             *Pass*

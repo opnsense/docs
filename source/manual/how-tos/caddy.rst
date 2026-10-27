@@ -40,7 +40,7 @@ Go to :menuselection:`System --> Settings --> Administration`
 * Change the `TCP Port` to `8443` (example), do not forget to adjust the firewall rules to allow access to the WebGUI. On `LAN` there is a hidden `anti-lockout` rule that takes care of this automatically. On other interfaces, make sure to add explicit rules.
 * Enable the checkbox for `HTTP Redirect - Disable web GUI redirect rule`.
 
-Go to :menuselection:`Firewall --> Rules --> WAN`
+Go to :menuselection:`Firewall --> Rules` and select WAN.
 
 * Create Firewall rules that allow ``HTTP`` and ``HTTPS`` to destination ``This Firewall`` on ``WAN``
 
@@ -68,7 +68,7 @@ Option                      Values
 **Description**             ``Caddy Reverse Proxy HTTPS``
 =========================== ================================
 
-Go to :menuselection:`Firewall --> Rules --> LAN` and create the same rules for the `LAN` interface. Now external and internal clients can connect to Caddy, and `Let's Encrypt` or `ZeroSSL` certificates will be issued automatically. If using a VPN to connect remote clients to the OPNsense, additional firewall rules could be needed.
+In :menuselection:`Firewall --> Rules`, create the same rules with LAN selected as the interface. The WAN rules above are additionally required for external access. Now external and internal clients can connect to Caddy, and `Let's Encrypt` or `ZeroSSL` certificates will be issued automatically. If using a VPN to connect remote clients to the OPNsense, additional firewall rules could be needed.
 
 .. Note:: If you disable ``QUIC`` by removing ``HTTP/3`` in :menuselection:`Services --> Caddy Web Server --> General Settings --> Advanced Settings`, the ``Caddy Reverse Proxy HTTPS`` rule only needs ``TCP`` as protocol.
 

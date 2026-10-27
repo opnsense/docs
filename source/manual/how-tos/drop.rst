@@ -64,7 +64,7 @@ Step 2 - Firewall Rules Inbound Traffic
 ---------------------------------------
 We will block incoming connections and outgoing connections for the drop and dropv6 lists.
 To do so we will start with inbound traffic on the WAN interface.
-Go to :menuselection:`Firewall --> Rules` Select the **WAN** tab and press the **+** icon in the
+Go to :menuselection:`Firewall --> Rules`, select **WAN**, and press the **+** icon in the
 lower right corner.
 
 
@@ -99,7 +99,7 @@ Step 3 - Firewall Rules Outbound Traffic
 ----------------------------------------
 
 Now do the same for outbound traffic on the LAN interface.
-Go to :menuselection:`Firewall --> Rules` Select the **LAN** tab and press the **+** icon in the
+Go to :menuselection:`Firewall --> Rules`, select **LAN**, and press the **+** icon in the
 lower right corner.
 
 =================== ============== =============================================

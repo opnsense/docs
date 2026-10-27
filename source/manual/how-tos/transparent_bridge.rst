@@ -81,7 +81,7 @@ to the internet for firmware updates.
 
 Next we add a firewall rule to allow access to the WebGUI on this management interface:
 
-- Go to :menuselection:`Firewall --> Rules --> Management` and add a new rule that allows `HTTPS` access to destination `This Firewall`.
+- Go to :menuselection:`Firewall --> Rules`, select Management, and add a rule that allows `HTTPS` access to destination `This Firewall`.
 
 After applying all of these settings, connect to your appliance over the management port for the next steps.
 
@@ -131,7 +131,7 @@ Here we change that the firewall rules should match on the bridge, instead of th
 4. Add Firewall rules
 ----------------------------
 
-- Go to :menuselection:`Firewall --> Rules --> Bridge`:
+- Go to :menuselection:`Firewall --> Rules` and select Bridge:
 
    - Add firewall rules on the bridge interface to allow all traffic (direction in and out)
 
