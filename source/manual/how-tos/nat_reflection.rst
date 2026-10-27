@@ -101,7 +101,7 @@ Go to :menuselection:`Firewall --> NAT --> Destination NAT (Port Forward)`
     Redirect target port:       Input ``443`` - Or select the alias ``HTTPS``
     Description:                Input ``Reflection NAT Rule Webserver 443`` - Add a description because the linked firewall rule will use that as its name and the floating rule will have it in the description.
     NAT reflection:             Use system default
-    Firewall Rule:               Register rule
+    Firewall Rule:              Register rule
     =========================  ================================
 
 .. Tip::
