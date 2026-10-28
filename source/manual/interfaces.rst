@@ -129,7 +129,7 @@ For IPv6:
  6RD Border Relay                  The 6RD IPv4 gateway address assigned by your ISP
  6RD IPv4 Prefix length            The 6RD IPv4 prefix length. Normally specified by the ISP. A value of 0 means we embed the entire IPv4 address in the 6RD prefix.
  6RD IPv4 Prefix address           The 6RD IPv4 prefix address. Optionally overrides the automatic detection.
- **Identity association / Track Interface (legacy)**
+ **Identity association**          *Track Interface (legacy)*
  Parent interface                  Select the dynamic IPv6 interface whose delegated prefix should be used.
  Assign prefix ID                  The hexadecimal /64 network ID selected from the delegated prefix.
  Reserved prefix range             Length of the range reserved for downstream delegation.

@@ -510,7 +510,7 @@ diverted to the socket the intrusion detection listens on. After making a decisi
 
 
 Legacy Firewall Rules
---------------------
+--------------------------------
 
 Legacy Firewall Rules are static PHP pages supplied by the optional ``os-firewall-legacy`` plugin. They have no API support and are not installed by default. Install the plugin only when legacy rule management is required; existing legacy rules continue to work without it and can be migrated using :menuselection:`Firewall --> Migration Assistant`.
 
