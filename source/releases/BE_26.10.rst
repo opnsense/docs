@@ -1,0 +1,462 @@
+===========================================================================================
+26.10  Series
+===========================================================================================
+
+
+The OPNsense business edition transitions to this 26.10 release including
+interface management and gateway groups via MVC/API, wireless MVC/API support,
+firewall rules now defaulting to MVC/API, customizable favorites menu, full
+screen grids, the OPNDNS plugin as a authoritative nameserver with RFC2136
+support, FreeBSD 15.1, OpenSSL 3.5, PHP 8.5 plus much more.
+
+Please make sure to read the migration notes before upgrading.
+
+Download link is as follows.  An installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for
+the images can be found below as well.
+
+https://downloads.opnsense.com/
+
+
+--------------------------------------------------------------------------
+26.10 (October 28, 2026)
+--------------------------------------------------------------------------
+
+The OPNsense business edition transitions to this 26.10 release including
+interface management and gateway groups via MVC/API, wireless MVC/API support,
+firewall rules now defaulting to MVC/API, customizable favorites menu, full
+screen grids, the OPNDNS plugin as a authoritative nameserver with RFC2136
+support, FreeBSD 15.1, OpenSSL 3.5, PHP 8.5 plus much more.
+
+Please make sure to read the migration notes before upgrading.
+
+Download link is as follows.  An installation guide `[1] <https://docs.opnsense.org/manual/install.html>`__  and the checksums for
+the images can be found below as well.
+
+https://downloads.opnsense.com/
+
+This business release is based on the OPNsense 26.7.7 community version
+with additional reliability improvements.
+
+Here are the full patch notes:
+
+* system: remove periodic backups settings and backend code
+* system: migrate gateway groups to MVC/API
+* system: new service widget flat tile layout (partially contributed by Konstantinos Spartalis)
+* system: change our version of "certctl" to emit files instead of links like it is the case in FreeBSD 15.1
+* system: include interfaces widget in dashboard default
+* system: adjust dashboard widget resize logic to observe border box instead of content box
+* system: disable web GUI KTLS use for the time being
+* system: use Bootstrap "btn" styles in services widget
+* system: fixed several PHP 8.5 warnings
+* system: fix default gateway switch alarm trigger being overwritten by gateway group check
+* system: use /var/lib/php/tmp in static pages for proper privilege separation
+* system: improve "user-config-readonly" in static pages where write_config() was denied
+* system: service widget changes based on further community feedback
+* system: add redirection capability to SSO provider
+* system: truncate long names in services dashboard widget (contributed by circa1665)
+* system: handle missing objects during deletion in API (contributed by Julian Pawlowski)
+* system: multiple PHP warning fixes (contributed by Julian Pawlowski)
+* system: avoid filter_configure() calls to make existing backend call less obscure
+* system: add favorites section to menu (contributed by Greelan)
+* system: replace cron restart in static PHP pages
+* system: normalize output of get_nameservers()
+* system: flush volt template cache in shared action
+* system: add pfsync version 1500 to HA settings (contributed by Bjoern Jakobsen)
+* system: add hidden services so they can be operated by pluginctl -s
+* system: privilege separated reload in static PHP pages
+* system: lower priority of automatic wg/ipsec gateways
+* system: fix disk widget loading issue (contributed by Konstantinos Spartalis)
+* system: change diag.disk to return total bytes as well as formatted bytes
+* system: add webgui PAM config to test with opnsense-login
+* system: switch password hashing from bcrypt to argon2id
+* system: reject a null gateway in getGatewayAction()
+* system: add "latency_avg" as sanity check for running dpinger
+* system: missing chown in backup call for proper non-root web GUI access
+* system: do not allow system scope users to be renamed
+* system: fix output of pw usershow
+* system: run file and configuration selfchecks during bootup
+* system: add service broker flag for remote handling of Kea
+* system: mark "X509v3 Key Usage" critical for certificate creation
+* system: installer as a real user on demand
+* reporting: migrate several settings pages to MVC/API and assorted changes
+* reporting: correctly map NetFlow indexes when there are gaps (contributed by Thomas Cheyney)
+* reporting: make parsing iftop lines more robust for traffic graphs (contributed by Brendan Bank)
+* reporting: map ARC and laundry to cache memory stats (contributed by Konstantinos Spartalis)
+* reporting: unbound: add DNSSEC status column in details grid
+* interfaces: migrate interface assignments to MVC/API
+* interfaces: fix faulty netmask on loopback address due to upstream change
+* interfaces: fix assignment of wireless devices
+* interfaces: strict description fields in new assignments page `[2] <https://github.com/opnsense/core/security/advisories/GHSA-9h93-hhcx-957c>`__  (reported by call-AX)
+* interfaces: add "noclamp" flag for GIF
+* interfaces: add separate link types for IPv4 and IPv6 in overview
+* interfaces: return the proper UUID when assigning an interface (contributed by Kemoy Campbell)
+* interfaces: permit a VLAN device as bridge member
+* interfaces: resolve VLAN devices indirectly via interfaces_configure()
+* interfaces: handle missing GRE and GIF during deletion in API (contributed by Julian Pawlowski)
+* interfaces: multiple PHP warning fixes (contributed by Julian Pawlowski)
+* interfaces: emit discovered hosts sorted by last_seen via hostwatch
+* interfaces: add missing PPP support to interface_parent_devices()
+* interfaces: prevent inline reloads of VLANs via rc.linkup
+* interfaces: batch VIP post-reload for proxyarp/pfsync
+* interfaces: exclude VLAN devices from virtual queue
+* interfaces: migrate wireless configuration to MVC/API
+* interfaces: return an empty string which cannot be an interface in convert_real_interface_to_friendly_interface_name()
+* interfaces: provide "uuid" in legacy_config_get_interfaces()
+* interfaces: split media and mediaopt with tabs instead of spaces
+* interfaces: a few config_read_array() replacements
+* interfaces: refactor device matching around interface_parent_devices()
+* interfaces: remove cua matching from PPP device pattern
+* interfaces: refactor interfaces_loopback_configure() and add ::1/128 sync
+* interfaces: fix PHP warnings in interfaces.php and do not write unset options
+* interfaces: refactor interfaces_ppps_hardware() and avoid emitting serial device nodes
+* interfaces: allow to push $all_plugins in interface_configure()
+* interfaces: retire problematic validations in interface settings pertaining to legacy ISC-DHCP plugin
+* interfaces: split out interfaces_dependencies() and make it digestible via pluginctl -Q
+* interfaces: add interface configuration settings in new assignments page
+* interfaces: prevent interface_configure() from reloading non-interface hooks when in batch mode
+* interfaces: improve queue build sequence in interfaces_dependencies()
+* interfaces: remove stale VIP address after update (contributed by ExpRam)
+* interfaces: be more conservative with -no_dad
+* interfaces: add a new "updateip" hook
+* interfaces: PPP type validation fixes for new assignments
+* interfaces: add missing validation for "configurable" and "spoofmac" in new settings API
+* interfaces: only store "dhcp6_norequest_dns" in DHCPv6 mode in new settings API
+* interfaces: only store "track6-interface" in ID association / Track interface modes in new settings API
+* interfaces: do not render "none" to configuration in new settings API
+* interfaces: move promiscuous mode to advanced in new settings API
+* interfaces: fix index into $todo for proper flag check during apply in new settings API
+* interfaces: provide better option group labels to DeviceField
+* interfaces: add proper local/remote IP support to PPPoE IPCP
+* interfaces: move legacy apply cache to /var/lib/php/tmp
+* interfaces: blank description "None" is the default
+* interfaces: fix handling of prefix delegation size on new assignment page
+* firewall: move config.xml default LAN allow rules to new rules GUI
+* firewall: legacy rules pages move to plugin
+* firewall: restrict automatic DHCPv6 filter rules to plugin/track6 use
+* firewall: always set a sequence at the end of the rule set when cloning a NAT rule
+* firewall: remove unused "safepoint" actions
+* firewall: fix automatic source NAT rules not displayed for PPPoE interfaces
+* firewall: flatten automatic source NAT rules into two per WAN type interface
+* firewall: prevent deletion if a group is referenced in MVC rules
+* firewall: use proper path for one-to-one NAT rules for renaming operations
+* firewall: avoid emitting reply-to on block rules as well
+* firewall: change interface group render/apply order
+* firewall: adjust MVC alias rename according to address_to_pconfig()
+* firewall: adapt getAdvancedIds() to the sectioned form structure
+* firewall: skip message banner if searchPhrase set
+* firewall: fix PHP warning when scrub yields no interfaces
+* firewall: group invalid rules to the end of the ruleset
+* firewall: enable virtualDOM and refactor commands on alias page
+* firewall: add "endpoint-independent" support for UDP translations (full cone NAT) in source NAT
+* firewall: fix missing well-known ports in local-port in destination NAT
+* firewall: add "max-pkt-rate" rate limiting option to firewall rules
+* firewall: add proper support for container items in search field selection, export and import data and implement it in destination NAT
+* firewall: deprecate old rule register function names due to functional overlaps
+* firewall: add missing TLS ports to well-known ports (contributed by Self-Hosting-Group)
+* firewall: use new "rlabel" from pfctl for persistent rule identification across reloads
+* firewall: emit gateway debug message in block rules only when gateway is not empty
+* firewall: aliases: use same dynamic label as in KEA DHCPv6 for a unified look
+* firewall: aliases: fix spinner on alias dialog save button
+* firewall: destination NAT: make local-port numeric before applying range in registered firewall rule (contributed by Thomas Cheyney)
+* firewall: rules: add "received-on" interface keyword as interface origin option
+* firewall: rules: promote "statetype" from advanced to common option for "received-on" usage
+* firewall: source NAT: fix faulty import removal
+* firewall: source NAT: add pool options and source hash key
+* firewall: source NAT: fix port alias and well known port usage in target_port
+* firewall: make source and destination NAT automatic rules visible in GUI
+* firewall: implement JsonAuditField in all MVC components
+* firewall: update the internally reserved pf keywords for FreeBSD 15
+* firewall: add source NAT migration banner to outbound NAT
+* firewall: add private network exclusions to default IPv6 bogons (contributed by Maurice Walker)
+* firewall: outbound NAT moves to legacy plugin
+* firewall: remove handling loopback addresses as "private"
+* firewall: use font-awesome elements for data tree controls to align with themes
+* firewall: aliases: reject reversed port ranges
+* firewall: destination NAT: fix destination for no-rdr rules (reported by fa1k3)
+* firewall: destination NAT: add safety guards for calculated port ranges
+* firewall: fix off by one in addAction() in alias diagnostics
+* firewall: destination NAT: fix typo in parseRdrRules() causing faulty rules not being disabled
+* firewall: aliases: validate that port aliases always have content
+* firewall: revert a clone rule change so that cloned rules to appear adjacent to the original rule again
+* firmware: opnsense-update: replace known variables instead of using eval `[3] <https://github.com/opnsense/core/security/advisories/GHSA-p683-f7x2-pm4p>`__  (reported by Voidlet)
+* firmware: opnsense-code: some improvements with regard to core upgrades
+* firmware: opnsense-bootstrap: fix bootstrap on FreeBSD 15 with pkgbase
+* firmware: opnsense-prefetch: new tool for sets prefetching
+* firmware: opnsense-sign: shell compatibility update
+* firmware: adjust the incompatible pkg test
+* firmware: disable FreeBSD-base repository and remove old definitions
+* firmware: opnsense-patch: added -R mode and updated -N mode
+* firmware: opnsense-prefetch: get remote size and print mismatches
+* firmware: opnsense-prefetch: curl use is now optional
+* firmware: add simple prompt to console changelog viewer
+* firmware: tighten validation for mirror URL (reported by Abraxas Labs)
+* firmware: revoke 26.1 fingerprint
+* captive portal: move template actions out of the ServiceController into its own TemplateController
+* captive portal: adjust accounting interval to Acct-Interim-Interval
+* dhcrelay: add options for circuit_id and remote_id (contributed by Thomas Cheyney)
+* dnsmasq: possible use before define in lease watcher
+* dnsmasq: remove count badge from GroupBy with static configuration elements
+* dnsmasq: add "expand-hosts" option (contributed by Konstantinos Spartalis)
+* dnsmasq: leases sorting fixes (contributed by Greelan)
+* intrusion detection: rename "uncategorized" rule package to "adult" (contributed by Konstantinos Spartalis)
+* intrusion detection: fix displaying URL in descriptions (contributed by Konstantinos Spartalis)
+* intrusion detection: always initialize reference_html (reported by Adam Korczynski of Ada Logics using Anrophic)
+* ipsec: add "replay_window" option to children
+* kea: remove count badge from GroupBy with static configuration elements
+* kea: use DOM construction for the "dynamic" label
+* kea: fix leases sorting (contributed by Greelan)
+* kea: add ping check settings for subnet configuration (contributed by laozhoubuluo)
+* kea: add setup.sh to create /var/log/kea before use
+* monit: use LIBXML_NOCDATA on XML fetch
+* monit: change "logfile" to "log" to fix syntax on newer daemon
+* monit: log from the first line and reconfigure through the base class (contributed by IvanTheGeek)
+* network time: strict security GUI support
+* openvpn: moved legacy CARP hook to os-openvpn-legacy plugin
+* openvpn: default keepalive to "10 60" in server mode and improve validation
+* wireguard: add allowed-ips to reresolve-dns.py in case none are set yet
+* wireguard: FreeBSD 15 no longer allows addresses without netmasks
+* wireguard: cleaner QR codes (contributed by Roy Orbitson)
+* wireguard: preserve peer generator state for existing peers
+* acl: merge user management ACLs into one single privilege
+* acl: fix patterns for gateway groups (contributed by Andrew Ferk)
+* backend: allow "strict" mode +TARGETS using the preamble "!"
+* backend: sanitize template filename replacements
+* backend: further restrict actions to root and wwwonly for more sensitive actions
+* backend: ensure strict templates are not reloaded via "\*" wildcard
+* backend: add CLOEXEC to a few file descriptor opens to avoid lock inheritance
+* bootgrid: exclude header cells from status color rendering
+* bootgrid: upgrade Tabulator to version 6.5.3
+* mvc: refactor base_dialog and parseFormNode() to simplify the template
+* mvc: remove unused argument from getFormGrid()
+* mvc: BaseField: emit descriptions in getNodes() when they are not the same as the value to match getNodeContent()
+* mvc: BaseField: add getInitialValue()
+* mvc: BaseField: add getDefault() and isDefault() for future use
+* mvc: PortField: reject whitespaces in port ranges during validation
+* mvc: ModelRelationField: remove grouped option handling
+* mvc: add file type to forms
+* mvc: fix tab/subtab form generation for plugins
+* mvc: fix default labels in selectpickers
+* mvc: create runInterfaceRegistation() and use it for immediate device registration
+* mvc: add some exception types and handle them in the base template
+* mvc: clean up a number of stale imports
+* mvc: OptionField: fix simplified option group definition
+* mvc: fix typo in base_form.volt advanced/help toggle IDs
+* mvc: fix assorted stale imports in the code base
+* mvc: advanced marker for form/dialog fields
+* mvc: fix stale imports for Message classes
+* mvc: JsonAduditField: shared implementation for configuration revision tracking
+* mvc: guard direct config saves against user-config-readonly (contributed by Andrew Ferk)
+* mvc: disable Nginx reverse proxy buffering on configd streams
+* mvc: dispatch failed message during reconfiguredAction()
+* mvc: PortField: keep the first well-known service in the option list (contributed by fa1k3)
+* mvc: PortField: always return a string for normalizedPort()
+* mvc: UidField: allow an arbitrarily specified UID for system scope users upon creation
+* mvc: UidField: revert "allow an arbitrarily specified UID for system scope users upon creation"
+* mvc: UidField: add isolated updateValue() for installer user
+* ui: add "opnsense-auto" theme which switches between "opnsense" and "opnsense-dark" depending on browser setting
+* ui: decrease flashing in opnsense-auto theme when switching (contributed by Konstantinos Spartalis)
+* ui: remove direct apply_btn_id usage in favour of base_apply_button template partial
+* ui: fix menu registration not setting "active"
+* ui: add tokenize2.css in standard theme to ensure selection in opnsense-auto theme
+* ui: prevent blinking by hiding the contents while loading for opnsense-auto theme
+* ui: fix collapsed sidebar stray line and restore rail divider in opnsense-dark theme (contributed by circa1665)
+* ui: restore stacked layout for interfaces widget on narrow (contributed by circa1665)
+* ui: fix minor JavaScript bugs in dashboard widget code (contributed by Thomas Schöpf)
+* ui: do not freeze commands column on touchscreen devices
+* ui: further fixes for base templates
+* ui: fix empty legacy firewall menu container glitch
+* ui: bootgrid: classname can depend on state, accept a callback function
+* ui: tabulator: add _showMaximized() modal that can show a grid close to full screen
+* ui: add keyboard shortcut "f" to maximize a currently visible grid
+* ui: scope "all help" and "advanced mode" toggle to closest relevant form
+* ui: trigger "h" and "a" keyboard shortcuts on all relevant matches
+* ui: improve form matching for help/advanced
+* ui: fix _showMaximized() height calculation when mobile navigation triggers below 768px width
+* ui: attach selectors piped through replaceInputWithSelector to body
+* ui: fix widget bottom gap in standard theme files (contributed by Konstantinos Spartalis)
+* ui: sidebar fixes and rework (contributed by Team Rebellion)
+* ui: remove spurious _formDialog portion of dialog IDs
+* ui: implement dialog search field
+* ui: ensure a minimum amount of rows to render in grids
+* ui: only schedule grid dimension changes after data processing, window resizing and table visibility changes
+* ui: remove defunct content-box-main usage
+* ui: make settings-changed trigger overridable
+* ui: fix blank bottom UI space (contributed by Konstantinos Spartalis)
+* ui: do not add the spinner again when it fails
+* ui: bootgrid: sync columnselect-input state with (un)setColumns
+* ui: sync expanded state for selected submenus
+* ui: close mobile menu when a menu entry opens another tab of the current page (contributed by Greelan)
+* plugins: add error returns to plugins_configure()
+* plugins: OPNBEcore 1.10
+* plugins: OPNWAF 2.6
+* plugins: OPNcentral 1.13
+* plugins: os-acme-client 4.17 `[4] <https://github.com/opnsense/plugins/blob/stable/26.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-caddy 2.2.1 `[5] <https://github.com/opnsense/plugins/blob/stable/26.7/www/caddy/pkg-descr>`__ 
+* plugins: os-ddclient 1.33 `[6] <https://github.com/opnsense/plugins/blob/stable/26.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-firewall-legacy 1.1 contains the static PHP firewall rules pages `[7] <https://github.com/opnsense/plugins/blob/stable/26.7/net/firewall-legacy/pkg-descr>`__ 
+* plugins: os-frr 2.0 `[8] <https://github.com/opnsense/plugins/blob/stable/26.7/net/frr/pkg-descr>`__ 
+* plugins: os-intrusion-detection-content-at-antiphishing 1.0 `[9] <https://julioliraup.github.io/AT/>`__  (contributed by Julio Lira)
+* plugins: os-iperf 2.0 `[10] <https://github.com/opnsense/plugins/blob/stable/26.7/benchmarks/iperf/pkg-descr>`__ 
+* plugins: os-ndp-proxy-go 1.5 `[11] <https://github.com/opnsense/plugins/blob/stable/26.7/net/ndp-proxy-go/pkg-descr>`__ 
+* plugins: os-ndproxy has been removed, use os-ndp-proxy-go instead
+* plugins: os-net-snmp 1.7 `[12] <https://github.com/opnsense/plugins/blob/stable/26.7/net-mgmt/net-snmp/pkg-descr>`__ 
+* plugins: os-nrpe 1.2 `[13] <https://github.com/opnsense/plugins/blob/stable/26.7/net-mgmt/nrpe/pkg-descr>`__ 
+* plugins: os-puppet-agent 2.0 `[14] <https://github.com/opnsense/plugins/blob/stable/26.7/sysutils/puppet-agent/pkg-descr>`__ 
+* plugins: os-sftp-backup 1.2 verify backups after put
+* plugins: os-theme-cicada 1.42 (contributed by Greelan)
+* plugins: os-theme-rebellion 1.9.8 (contributed by Team Rebellion)
+* plugins: os-theme-tukan 1.32 (contributed by Team Rebellion)
+* plugins: os-theme-vicuna 1.52 (contributed by Team Rebellion)
+* plugins: os-turnserver 1.4 `[15] <https://github.com/opnsense/plugins/blob/stable/26.7/net/turnserver/pkg-descr>`__ 
+* src: FreeBSD 15.1-RELEASE-p6 plus assorted stable/15 networking commits `[16] <https://www.freebsd.org/releases/15.1R/relnotes/>`__ 
+* src: pf: do not mangle IP header before shared forwarding
+* src: pf: stop resolving hosts via DNS that use ":" modifier
+* src: pf: clear anchor after stepping into it in pf_match_translation_rule()
+* src: pf: pf_route() "dst" no longer holds the gateway in 15.x
+* src: pf: add missing PF_TS_CNT netlink attribute
+* src: pf: expose first rule label for states since rule number is insufficient
+* src: usb: bpfattach() before if_attach()
+* src: ena: update driver version to v2.8.4
+* src: assorted minor commits from stable/15
+* src: jail: restore ktrace privileges for jailed root `[17] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:53.ktrace.asc>`__ 
+* src: ktimer: check for errors from realtimer_gettime() `[18] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:51.ktimer.asc>`__ 
+* src: kqueue: avoid enqueuing an already-enqueued knote `[19] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:50.kqueue.asc>`__ 
+* src: zfs: multiple fixes `[20] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:19.zfs.asc>`__ 
+* src: revert "daemon: replace memchr with memrchr"
+* src: cred: fix group_is_primary() `[21] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:59.mac_do.asc>`__ 
+* src: unix: fix some bugs in the SOCK_STREAM receive path `[22] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:57.unix.asc>`__ 
+* src: netmap: fix driver name handling
+* src: netmap: fix a race in kqueue registration
+* src: e1000: assorted upstream patches from stable/15
+* src: iflib: support recoverable initialization failure
+* src: route: add an eventhandler for rt_numfibs changes
+* src: rawip: fix handling of checksums in rip6_input()
+* src: pf: attempt to handle overlapping group and interface names
+* src: pf: check if a group has a kif before dereferencing it
+* src: pf: fix fallout from the STATE_LOOKUP macro removal
+* src: pf: re-optimize state key handling
+* src: pf: rule label patch was merged from a wrong version
+* src: pfsync: handle large MTU pfsync interfaces
+* src: ktls: propagate EPG_FLAG_ANON to mapped mbufs
+* src: netipsec: fix sockaddr type set in ipcomp6_nonexp_encapcheck()
+* src: PF_KEY socket: limit the length of copied socket address
+* src: ure: add USB device IDs for additional RTL8152/RTL8153 adapters
+* src: ure: fix spurious link flaps from MII
+* src: ciss: revert patch that added max physical target
+* src: pf: do not set a null rule pointer during test
+* src: pf: fix securelevel off-by-one
+* src: pfctl: fix printing of wildcard anchors
+* src: e1000: more assorted upstream patches from stable/15
+* src: ixgbe: assorted upstream patches from stable/15
+* src: virtio_p9fs: disallow detach if a session is in progress
+* src: route/fib_algo: free leaked radix_masks in radix_lockless
+* src: netipsec: implement pr_disconnect for PF_KEY sockets
+* src: iflib: assorted upstream patches from stable/15
+* src: net: add ifmedia support for 10GBase-BX BiDi
+* src: bnxt: report initialization failures to iflib
+* src: bnxt: add led(4) identification support
+* src: ice: add led(4) identification support
+* src: ice: report initialization failures to iflib
+* src: ice: add support for E835 CNSA 2.0 adapters
+* src: ice: add two more 4-part IDs for E835 adapters
+* src: if_vxlan: fix panic by validating unused drvspec values
+* src: qat: driver updates to enhance qat infrastructure
+* src: ath10k: remove some early FreeBSD-specific debugging
+* src: ip(6)_mroute: assorted upstream patches from stable/15
+* src: in_mcast: fix uninitialized variable usage in inm_merge()
+* src: bind: lookup local address in current FIB if "\*.bind_all_fibs" is active
+* src: net: add fib-aware ifa_ifwithaddr()
+* src: kqueue: memory safety bugs in kqueue copy-on-fork implementation `[23] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:65.kqueue.asc>`__ 
+* src: syslogd: fix leaking child processes when logging to a pipe `[24] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:23.syslogd.asc>`__ 
+* src: iflib: do not hold the ifnet lock across registration
+* src: ixgbe: correct Wake-on-LAN configuration
+* src: dummynet: do not overflow the points[ED_MAX_SAMPLES_NO] array
+* src: pf: mark non-port packets to require IP checksumming
+* src: pf: set the correct type for rule timeouts
+* src: loopback: improve checksum offloading
+* src: vlan: use the exclusive lock everywhere
+* src: raw ip: clear sin_port on bind(2)
+* src: nd6: fix regeneration of temp addresses in detached state
+* src: hyperv: fix single page invalidation path
+* src: route/fib_algo: fix nexthop index collision across families
+* src: ice: do not leave device non-functional if Tx scheduler config fails
+* src: netipsec: fix V_spd_size updates
+* src: bnxt: assorted updates from stable/15
+* src: ixl: assorted updates from stable/15
+* src: linxkpi: assorted updates from stable/15
+* src: net80211: assorted updates from stable/15
+* src: pci: assorted updates from stable/15
+* src: pf: send syncookies from the receiving thread
+* src: hyperv: fix two regressions in previous upstream patch
+* src: pcib: only apply ARI translation to the own secondary bus of a bridge
+* src: ktls CBC decrypt: avoid creating zero length iovec entries
+* src: route/fib_algo: respect immediate_sync in fd_ref_nhop
+* src: route/fib_algo: fix FIB_ALGO without ROUTE_MPATH option
+* src: sysctl: retire SYSCTL_NODE_CHILDREN()
+* src: caroot: TLS certificate store update due to eMudhra compromise `[25] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:73.caroot.asc>`__ 
+* src: bhyve: multiple vulnerabilities in bhyve device models `[26] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:72.bhyve.asc>`__ 
+* src: sound: TOCTOU race between sound(4) buffer resizing and mmap `[27] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:71.sound.asc>`__ 
+* src: tcp: remotely triggerable buffer overflow in tcp_rack `[28] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:70.tcp.asc>`__ 
+* src: tcp: TCP timers may overflow and fire late or not at all `[29] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:27.tcp.asc>`__ 
+* src: hastd: multiple issues in hastd(8) `[30] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:26.hastd.asc>`__ 
+* src: tzdata: import tzdata 2026e `[31] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:25.tzdata.asc>`__ 
+* ports: ca_root_nss / nss 3.132 `[32] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_132.html>`__ 
+* ports: curl 8.23.0 `[33] <https://curl.se/changes.html#8_23_0>`__ 
+* ports: dhcp6c fix for truncated env vars in dhcp6c-script (contributed by Michael Zimmermann)
+* ports: dpinger 3.6
+* ports: expat 2.8.5 `[34] <https://github.com/libexpat/libexpat/blob/R_2_8_5/expat/Changes>`__ 
+* ports: filterlog 0.9 support for pflog actions on FreeBSD 15
+* ports: hostapd / wpa_supplicant 2.12
+* ports: kea 3.0.4 `[35] <https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-3.0.4>`__ 
+* ports: libevent 2.1.13 `[36] <https://github.com/libevent/libevent/releases/tag/release-2.1.13-stable>`__ 
+* ports: libxml 2.15.4 `[37] <https://gitlab.gnome.org/GNOME/libxml2/-/blob/v2.15.4/NEWS>`__ 
+* ports: lighttpd 1.4.85 `[38] <https://www.lighttpd.net/2026/07/08/1.4.85/>`__ 
+* ports: monit 6.0.0 `[39] <https://mmonit.com/monit/changes/>`__ 
+* ports: openldap 2.6.15 `[40] <https://www.openldap.org/software/release/changes_lts.html>`__ 
+* ports: openssl 3.5.9 `[41] <https://github.com/openssl/openssl/blob/openssl-3.0/CHANGES.md>`__ 
+* ports: pcre2 10.49 `[42] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.49>`__ 
+* ports: pecl-mcrypt 1.0.9
+* ports: perl 5.42.3 `[43] <https://perldoc.perl.org/5.42.3/perldelta>`__ 
+* ports: phalcon 5.22.1 `[44] <https://github.com/phalcon/cphalcon/releases/tag/v5.22.1>`__ 
+* ports: php 8.5.12 `[45] <https://www.php.net/ChangeLog-8.php#8.5.9>`__ 
+* ports: phpseclib 3.0.57 `[46] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.57>`__ 
+* ports: pkg 2.8.4
+* ports: py-duckdb 1.5.6 `[47] <https://github.com/duckdb/duckdb/releases/tag/v1.5.6>`__ 
+* ports: rrdtool 1.11.0 `[48] <https://github.com/oetiker/rrdtool-1.x/releases/tag/v1.11.0>`__ 
+* ports: sqlite 3.53.4 `[49] <https://sqlite.org/releaselog/3_53_4.html>`__ 
+* ports: unbound 1.26.2 `[50] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-26-2>`__ 
+
+Migration notes, known issues and limitations:
+
+* The privileges "page-system-groupmanager" and "page-system-usermanager-addprivs" were merged into "page-system-groupmanager" and are no longer available separately.  This was done to avoid the misconception that access to a user management page gives constrained rights to each page, but that is not the case.  User management is a process involving all 3 pages.
+* The static PHP pages for firewall rule and outbound NAT management have been moved to the "os-firewall-legacy" plugin which can be manually installed before or after the upgrade.  All rules will continue to work regardless of the plugin being installed or not and are easily migrated using the given assistant.
+* Since this is a major OS upgrade and OpenSSL changes from 3.0 to 3.5 third party repositories may interfere with your upgrade experience.  Removing offending repositories and plugins may help; or wait for affirmation from the respective repository owners.
+* The CPU microcode early loading has been known to be flaky on some setups.  A fix is in the FreeBSD 15.1 boot loader code, but can only be reached by reinstall or manually updating the boot code of your system after the upgrade succeeded.  If you want to be on the safe side during the upgrade itself please remove the plugin before proceeding.
+
+The public key for the 26.10 series is:
+
+.. code-block::
+
+    # -----BEGIN PUBLIC KEY-----
+    # MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAziSNKuzrL2cwLx5LXmLn
+    # cWS5Lk+i9CzRMXO/4xQYBQCaSnd8GBg/HA/g4aPoTUa6ovAI0AHfW8KQJQyBkFzn
+    # pi6MLZJ9tEaFcn0CiV+tSTJd1RV4bB8jtpKl5oTkgFrPsyaB7iBlG5Cd49VCW19h
+    # DxClQ24lkWkVoYfsfCQEt4ADNGLygWCPyf4bxGD/t6/tiW9SsOs2+gfOZ9C/G2d/
+    # EBhJFoBEoz5lvULVxTdfY5PScYrHD/waZnk3rGc2A+9pI/SM2JAwKqsgZ6MSFbXO
+    # DNocSjqFUUkdqhty+Qcc0OJ+hMbKKVE+f3QJBQIwT3ayys8QK0m5CCo91/f+DjoN
+    # noj+t5YN9x8GREkF0wrdIi7hevkwrL2/SJQbq1bL1BLB+mMSXYR611lgT8YfYjyZ
+    # 7tmpNVC3O5Pj7l20snm1lVUSqS0PsFBvh6HQtBRwQDGppaIIhH1Nt9yIatmSiGZt
+    # 2YrMVNBzbQrJzSX+vWcAulkaPIt4t+XxmpO5IDNZ+4uMZ7XyJq1lAhIeyXx+Falf
+    # v7S+ZpJWFVNz0/N5z6lBbADD855i+gFY6B5209xGyhd6FwaPOjISgQKkgBwF1AiW
+    # MDuTuP9lkh/U5gGBZIFTnbdEMgOAL4P+Hsw9Nozav+3QIpiU3Pv9F29a1erCkq09
+    # rpQyNglY7Jqme/RipzbYia8CAwEAAQ==
+    # -----END PUBLIC KEY-----
+
+
+.. code-block::
+
+    # SHA256 (OPNsense-business-26.10-dvd-amd64.iso.bz2) = e746a1a817480fd2c432611d399a7e3e49d6c35e70c748b4d56fb0c30ff892d9
+    # SHA256 (OPNsense-business-26.10-nano-amd64.img.bz2) = 25bd59e97da0ca5bd345ee4c162560dfe012bdf1c0e197dccdd0a59211080ebb
+    # SHA256 (OPNsense-business-26.10-serial-amd64.img.bz2) = 270c26642c5e2bc27d23fd359c68d0235fae3e7a5b5e3bdae2076bddc8d3f887
+    # SHA256 (OPNsense-business-26.10-vga-amd64.img.bz2) = 259c64cf20e3224224afe702697dfc28a8ab6ee98a0704b201c3b0b8105ac8dc
+

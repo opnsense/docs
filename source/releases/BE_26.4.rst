@@ -164,6 +164,11 @@ Here are the full patch notes for patch release 4:
 * system: fix deprecation warnings in XMLRPC library
 * ports: php 8.3.36 `[44] <https://www.php.net/ChangeLog-8.php#8.3.36>`__ 
 
+Here are the full patch notes for patch release 5:
+
+* system: fix OCSP URI on certificate generation
+* firmware: add fingerprint and upgrade hint for 26.10
+
 
 
 --------------------------------------------------------------------------

@@ -116,7 +116,7 @@ Here are the full patch notes:
 * interfaces: improve queue build sequence in interfaces_dependencies()
 * interfaces: remove stale VIP address after update (contributed by ExpRam)
 * interfaces: be more conservative with -no_dad
-* interfaces: add a new 'updateip' hook
+* interfaces: add a new "updateip" hook
 * firewall: aliases: reject reversed port ranges
 * firewall: destination NAT: fix destination for no-rdr rules (reported by fa1k3)
 * firewall: destination NAT: add safety guards for calculated port ranges
@@ -159,7 +159,7 @@ Here are the full patch notes:
 * src: net80211: assorted updates from stable/15
 * src: pci: assorted updates from stable/15
 * ports: ca_root_nss / nss 3.130 `[9] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_130.html>`__ 
-* ports: expat	2.8.5 `[10] <https://github.com/libexpat/libexpat/blob/R_2_8_5/expat/Changes>`__ 
+* ports: expat 2.8.5 `[10] <https://github.com/libexpat/libexpat/blob/R_2_8_5/expat/Changes>`__ 
 * ports: pcre2 10.49 `[11] <https://github.com/PCRE2Project/pcre2/releases/tag/pcre2-10.49>`__ 
 * ports: phalcon 5.22.1 `[12] <https://github.com/phalcon/cphalcon/releases/tag/v5.22/1>`__ 
 * ports: php 8.5.11 `[13] <https://www.php.net/ChangeLog-8.php#8.5.11>`__ 
@@ -265,7 +265,7 @@ Here are the full patch notes:
 * system: audit log injection via login username in auth_log() `[1] <https://github.com/opnsense/core/security/advisories/GHSA-jjm2-jg4p-3v9q>`__ 
 * system: add pfsync version 1500 to HA settings (contributed by Bjoern Jakobsen)
 * system: add hidden services so they can be operated by pluginctl -s
-* system: privlege separated reload in static PHP pages
+* system: privilege separated reload in static PHP pages
 * system: lower priority of automatic wg/ipsec gateways
 * system: fix disk widget loading issue (contributed by Konstantinos Spartalis)
 * system: add back the service widget link
@@ -332,7 +332,7 @@ Here are the full patch notes:
 * src: ath10k: remove some early FreeBSD-specific debugging
 * src: ip(6)_mroute: assorted upstream patches from stable/15
 * src: in_mcast: fix uninitialized variable usage in inm_merge()
-* src: bind: lookup local address in current FIB if '\*.bind_all_fibs' is active
+* src: bind: lookup local address in current FIB if "\*.bind_all_fibs" is active
 * src: net: add fib-aware ifa_ifwithaddr()
 * ports: ca_root_nss / nss 3.129 `[4] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_129.html>`__ 
 * ports: curl 8.22.0 `[5] <https://curl.se/changes.html#8_22_0>`__ 
@@ -444,7 +444,7 @@ Here are the full patch notes:
 * src: pfsync: handle large MTU pfsync interfaces
 * src: ktls: propagate EPG_FLAG_ANON to mapped mbufs
 * src: netipsec: fix sockaddr type set in ipcomp6_nonexp_encapcheck()
-* src: src: PF_KEY socket: limit the length of copied socket address
+* src: PF_KEY socket: limit the length of copied socket address
 * src: ure: add USB device IDs for additional RTL8152/RTL8153 adapters
 * src: ure: fix spurious link flaps from MII
 * ports: ca_root_nss / nss 3.127 `[13] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_127.html>`__ 
