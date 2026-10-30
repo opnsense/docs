@@ -31,6 +31,119 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.7.8 (October 30, 2026)
+--------------------------------------------------------------------------
+
+
+This update brings another batch of security fixes for core and third
+party components following one of the weirdest weeks we have ever seen.
+Please pat yourself on the back -- you made it through!
+
+Please take note that OpenSSH 10.6 rejects ML-DSA keys generated with
+10.5 so that they have to be deleted and regenerated once.  This will
+be automatic with the reboot or a service restart if the reboot does
+not happen for any reason.
+
+IKEv1 deprecation in StrongSwan is also much more visible now.  We are
+merely following the upstream lead here.  If you have not considered
+moving away from IKEv1 you should seriously consider it in the mid-term.
+
+Due to parsing and storage inconsistencies leading to configuration
+injection in the worst case we had to limit the certificate storage to
+a single certificate per entry.  This may create problems down the road
+we are willing to solve, but for the time being we have to take such
+security reports serious and not delay them.
+
+We would also like to thank everyone sending in security reports and
+assessments.  The process works best when already confirmed by a human
+and when not directly published to the Internet.  We are looking forward
+to more of them.
+
+In other news, ECMP route support has hit the development version along
+with cloneable widgets for the health graphs and a general improvement
+with the health graphs while at it.
+
+Here are the full patch notes:
+
+* system: refactor route deletion and use priv-sep in general settings page
+* system: fix deprecation warnings in XMLRPC library
+* system: no longer mark "strict security" as experimental and note that a reboot is recommended when changing the setting
+* system: write /etc/os-release (partially contributed by Alok K. Dhir)
+* system: allow a single dynamic interface gateway to work for both IPv4 and IPv6
+* system: clear snapshot note on next edit (contributed by Konstantinos Spartalis)
+* system: installer as a real user on demand
+* system: mark "X509v3 Key Usage" critical for certificate creation
+* system: fix untrusted directory support in certctl.py
+* system: add service broker flag for remote handling of Kea
+* system: fix OCSP URI on certificate generation
+* system: fix output of pw usershow
+* system: run file and configuration selfchecks during bootup
+* system: remove experimental ML-DSA OpenSSH host keys
+* system: translate $savemsg before passing it on password page
+* system: fix gettext(), sprintf() order in static pages (contributed by IvanTheGeek)
+* system: trap errors in remote_backup.php similar to how diag_backup.php handles them
+* system: add input constraints to tunable names and values
+* system: ensure that only a single certificate is accepted during save `[1] <https://github.com/opnsense/core/security/advisories/GHSA-7wvp-6m2q-953c>`__  (contributed by Mason Jones)
+* system: wrap around "time-loop" in RADIUS authenticator for consistency
+* system: append remote address to the log during authentication if known
+* system: adjust snapshot note file permissions for priv-sep
+* reporting: require positive integer values in insight queries
+* interfaces: priv-sep script for interface apply the legacy way
+* interfaces: fix handling of prefix delegation size on new assignment page
+* interfaces: blank description "None" is the default
+* interfaces: stricter input for several wireless options (reported by Abraxas Labs)
+* firewall: limit individual filters in live log search to a maximum of 255 characters
+* firewall: prefer aliases over well-known port names and additional port-related cleanups
+* firewall: support moving multiple rules in selection order
+* firewall: increment the sequence when cloning a rule
+* firewall: add batched log commands to multi enable/disable logging for rules
+* firmware: opnsense-update: replace known variables instead of using eval `[2] <https://github.com/opnsense/core/security/advisories/GHSA-p683-f7x2-pm4p>`__  (reported by Voidlet)
+* firmware: tighten validation for mirror URL (reported by Abraxas Labs)
+* intrusion detection: always initialize reference_html (reported by Adam Korczynski of Ada Logics using Anrophic)
+* intrusion detection: add abuse.ch API token input
+* intrusion detection: escape literal percent signs in rulecache.py query format
+* intrusion detection: add config locking during rule updates (contributed by Konstantinos Spartalis)
+* ipsec: move ping_hosts.sh to legacy plugin and harden (reported by Adam Korczynski of Ada Logics using Anrophic)
+* ipsec: deprecate IKEv1 visibly (contributed by Konstantinos Spartalis)
+* ipsec: add charon retry_initiate_interval to advanced settings (contributed by claudioguareschi)
+* ipsec: refactor sessions page and retain phase 1 grid selection on tunnel start/stop
+* kea: add setup.sh to create /var/log/kea before use
+* monit: fetch status through configd for strict security mode
+* monit: escape password double quotes with their hex interpretation and prevent the use of escape sequences from the input
+* unbound: CSV import for overrides and aliases
+* unbound: remove Abuse.ch - ThreatFox IOC from the list
+* backend: fix simulate_mode in configd
+* mvc: avoid empty recordset searches
+* mvc: ContainerField: exclude volatile fields in isFieldChanged()
+* mvc: ModelRelationField: safeguard mdlStructure in case setModel() was not executed
+* mvc: BaseField: add getDefault() and isDefault() for future use
+* plugins: os-caddy 2.2.2 `[3] <https://github.com/opnsense/plugins/blob/stable/26.7/www/caddy/pkg-descr>`__ 
+* plugins: os-netflector 1.0 (contributed by Sergii Bogomolov)
+* plugins: os-squid 1.5 `[4] <https://github.com/opnsense/plugins/blob/stable/26.7/www/squid/pkg-descr>`__ 
+* src: caroot: TLS certificate store update due to eMudhra compromise `[5] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:73.caroot.asc>`__ 
+* src: bhyve: multiple vulnerabilities in bhyve device models `[6] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:72.bhyve.asc>`__ 
+* src: sound: TOCTOU race between sound(4) buffer resizing and mmap `[7] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:71.sound.asc>`__ 
+* src: tcp: remotely triggerable buffer overflow in tcp_rack `[8] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:70.tcp.asc>`__ 
+* src: tcp: TCP timers may overflow and fire late or not at all `[9] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:27.tcp.asc>`__ 
+* src: hastd: multiple issues in hastd(8) `[10] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:26.hastd.asc>`__ 
+* src: tzdata: import tzdata 2026e `[11] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:25.tzdata.asc>`__ 
+* ports: brotli 1.2.1
+* ports: ca_root_nss / nss 3.132 `[12] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_3_132.html>`__ 
+* ports: curl 8.23.0 `[13] <https://curl.se/changes.html#8_23_0>`__ 
+* ports: dpinger 3.7 `[14] <https://github.com/dennypage/dpinger/releases/tag/v3.7>`__ 
+* ports: expat 2.9.0 `[15] <https://github.com/libexpat/libexpat/blob/R_2_9_0/expat/Changes>`__ 
+* ports: openldap 2.6.16 `[16] <https://www.openldap.org/software/release/changes_lts.html>`__ 
+* ports: openssh 10.6p1 `[17] <https://www.openssh.com/txt/release-10.6>`__ 
+* ports: openvpn 2.7.8 `[18] <https://github.com/OpenVPN/openvpn/blob/v2.7.8/Changes.rst>`__ 
+* ports: phalcon 5.23.0 `[19] <https://github.com/phalcon/cphalcon/releases/tag/v5.23.0>`__ 
+* ports: dnspython 2.9.0 `[20] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
+* ports: python 3.13.16 `[21] <https://docs.python.org/release/3.13.16/whatsnew/changelog.html>`__ 
+* ports: suricata 8.0.8 `[22] <https://suricata.io/2026/10/29/suricata-8-0-8-released/>`__ 
+* ports: unbound 1.26.2 `[23] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-26-2>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.7.7 (October 13, 2026)
 --------------------------------------------------------------------------
 
@@ -541,7 +654,7 @@ Here are the full patch notes:
 * ui: add tokenize2.css in standard theme to ensure selection in opnsense-auto theme
 * ui: prevent blinking by hiding the contents while loading for opnsense-auto theme
 * ui: fix collapsed sidebar stray line and restore rail divider in opnsense-dark theme (contributed by circa1665)
-* ui: restore stacked layout for interfaces widget on narrow (contributed by circa1665)
+* ui: restore stacked layout for interfaces widget when narrow (contributed by circa1665)
 * ui: fix minor JavaScript bugs in dashboard widget code (contributed by Thomas Schöpf)
 * ui: do not freeze commands column on touchscreen devices
 * ui: further fixes for base templates

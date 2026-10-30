@@ -260,7 +260,7 @@ Here are the full patch notes:
 * ui: add tokenize2.css in standard theme to ensure selection in opnsense-auto theme
 * ui: prevent blinking by hiding the contents while loading for opnsense-auto theme
 * ui: fix collapsed sidebar stray line and restore rail divider in opnsense-dark theme (contributed by circa1665)
-* ui: restore stacked layout for interfaces widget on narrow (contributed by circa1665)
+* ui: restore stacked layout for interfaces widget when narrow (contributed by circa1665)
 * ui: fix minor JavaScript bugs in dashboard widget code (contributed by Thomas Schöpf)
 * ui: do not freeze commands column on touchscreen devices
 * ui: further fixes for base templates
