@@ -6,6 +6,8 @@ Besides wired, wireless and VPN interfaces, there are also some other, virtual i
 miscellaneous interface-related. These options can be found under :menuselection:`Interfaces --> Devices`.
 This document briefly explains these options.
 
+.. _manual_interfaces_bridge:
+
 ------
 Bridge
 ------
@@ -216,6 +218,22 @@ which require always-on interfaces. Below you will find some scenario's for whic
 
 *   Administrative access to services on your machine, which can bind to an address configured on top of the loopback.
 *   Using loopback addresses as router IDs for OSPF or BGP, which helps to identify your nodes and eases administration
+
+---
+TAP
+---
+
+TAP devices are virtual Ethernet (layer 2) interfaces which allow a userspace application to send and receive
+Ethernet frames. They are commonly used to connect virtual machines running on the firewall, for example with
+bhyve or QEMU, to a local network.
+
+Create a device under :menuselection:`Interfaces --> Devices --> TAP` by adding a description and selecting
+**Apply**. The device name is assigned automatically, starting with ``tap01``. The device can then be assigned
+under :menuselection:`Interfaces --> Assignments` and configured like other interfaces.
+
+To place a virtual machine on an existing layer 2 network, assign the TAP device and add it as a member of a
+:ref:`bridge <manual_interfaces_bridge>` together with the interface for that network. Configure the virtual
+machine manager to use the generated TAP device as the virtual network interface.
 
 ----
 VLAN
