@@ -178,7 +178,7 @@ to the principle of least privilege whenever possible.
 
   In particular, these privileges should only be assigned to users trusted with full administrative control:
 
-  * ``System: Wizard`` can change the root password, including after the initial setup has been completed.
+  * ``System: Configuration: Wizard`` can change the root password, including after the initial setup has been completed.
   * ``System: Configuration: Backups`` can export sensitive configuration and restore configuration that replaces
     administrator credentials and other security settings.
   Neither privilege is suitable for a limited administrator, even if the user does not have separate user-management

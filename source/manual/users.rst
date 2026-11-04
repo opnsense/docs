@@ -54,7 +54,7 @@ rights, called privileges.
 .. Warning::
 
    A privilege name or its list of matching GUI paths does not necessarily describe everything the user can do.
-   For example, ``System: Wizard`` can change the root password after initial setup, and
+   For example, ``System: Configuration: Wizard`` can change the root password after initial setup, and
    ``System: Configuration: Backups`` can restore administrator credentials and other security settings.
    Assign these privileges only to fully trusted administrators. See :ref:`security-deployment-considerations`.
 
