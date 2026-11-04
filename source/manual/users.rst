@@ -51,6 +51,13 @@ for a specific user group. A user should be an individual, a group needs to be
 specific in such a way that anyone of that group can be granted the same access
 rights, called privileges.
 
+.. Warning::
+
+   A privilege name or its list of matching GUI paths does not necessarily describe everything the user can do.
+   For example, ``System: Wizard`` can change the root password after initial setup, and
+   ``System: Configuration: Backups`` can restore administrator credentials and other security settings.
+   Assign these privileges only to fully trusted administrators. See :ref:`security-deployment-considerations`.
+
 .. Note::
 
     It's not always required to have users in your local database, when the remote server

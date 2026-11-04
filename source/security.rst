@@ -155,6 +155,8 @@ inspect where it should be fixed first. In case you do not know or are not sure,
 know that we do not have the manpower to act as an intermediary between various projects.
 
 
+.. _security-deployment-considerations:
+
 ------------------------------------------------------------
 Deployment considerations
 ------------------------------------------------------------
@@ -174,10 +176,15 @@ to the principle of least privilege whenever possible.
   Some access control roles provide capabilities that effectively allow complete control over the system, either directly or indirectly,
   and should therefore only be assigned to fully trusted administrators or administrative peers.
 
-  Examples include privileges such as ``XMLRPC Library``, which can be used for remote configuration synchronisation and automation,
-  and ``System: Configuration: Backups``, which provides access to configuration exports containing sensitive information.
-  In practice, any privilege that grants access to configuration data, remote management interfaces,
-  backup material or automation mechanisms should be considered security-sensitive and assigned with care.
+  In particular, these privileges should only be assigned to users trusted with full administrative control:
+
+  * ``System: Wizard`` can change the root password, including after the initial setup has been completed.
+  * ``System: Configuration: Backups`` can export sensitive configuration and restore configuration that replaces
+    administrator credentials and other security settings.
+  Neither privilege is suitable for a limited administrator, even if the user does not have separate user-management
+  privileges. ``XMLRPC Library`` can be used for remote configuration synchronisation and automation.
+  Other access to configuration data, remote management interfaces, backup material or automation mechanisms should
+  also be considered security-sensitive and assigned with care.
 
 
 .. admonition:: Fine-grained permissions and trust
