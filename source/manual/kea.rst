@@ -108,6 +108,12 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         ========================================= ====================================================================================
         **Option**                                **Description**
         ========================================= ====================================================================================
+        **Shared Networks (advanced)**
+        Interface                                 Bind the subnet to an interface. Subnets on the same interface form a shared network.
+        Match Code                                DHCP option that a client must send to use this subnet.
+        Match Encoding                            Encoding used to compare the DHCP option value.
+        Match Data                                Value the selected DHCP option must contain.
+        **Subnet**
         Subnet                                    Subnet to use, should be large enough to hold the specified pools and reservations
         Description                               You may enter a description here for your reference (not parsed).
         Pools                                     List of pools, one per line in range or subnet format (e.g. 192.168.0.100 - 192.168.0.200 , 192.0.2.64/26). Leave this blank if you do not want to offer dynamic leases (i.e: "Deny unknown clients")
@@ -383,6 +389,41 @@ Go to :menuselection:`System: --> High Availability --> Settings` and ensure tha
 Then go to :menuselection:`System: --> High Availability --> Status` and press **Synchronize and reconfigure all**.
 
 Immediately afterwards, KEA will be active on both master and backup, and a bidirectional lease synchronization will be configured.
+
+
+Multiple IPv4 subnets on one interface
+---------------------------------------
+
+A shared network can assign clients on one VLAN to different IPv4 subnets based on a DHCP option. For example, managed
+devices from two entities can share an 802.1X-secured VLAN and retain common access to central resources, while entity-specific
+subnets drive local firewall policy.
+
+.. Attention::
+
+    This is a highly advanced use case that requires full control over the client DHCP options, routing, and firewall policy.
+    Since client-supplied DHCP options can be spoofed, do not use the match as the only security control.
+
+Enable advanced mode and create both subnets with the same **Interface**:
+
+==================================  ====================================  ====================================
+**Option**                          **Entity A**                          **Entity B**
+==================================  ====================================  ====================================
+Interface                           ``LAN``                               ``LAN``
+Match Code                          ``user-class [77]``                   ``user-class [77]``
+Match Encoding                      ``hex``                               ``hex``
+Match Data                          ``08656E746974792D61``                ``08656E746974792D62``
+Subnet                              ``192.168.1.0/24``                    ``192.168.2.0/24``
+Pools                               ``192.168.1.100-192.168.1.199``       ``192.168.2.100-192.168.2.199``
+Routers (gateway)                   ``192.168.1.1``                       ``192.168.2.1``
+==================================  ====================================  ====================================
+
+.. Note::
+
+    In the match data, ``08`` specifies an eight-byte string. The remaining bytes decode to ``entity-a``
+    (``656E746974792D61``) or ``entity-b`` (``656E746974792D62``).
+
+Configure the managed clients to send the matching value, then use the two source networks in firewall rules to grant the required
+local access. Clients without a matching value cannot use either subnet.
 
 
 DHCP Options
