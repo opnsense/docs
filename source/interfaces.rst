@@ -19,6 +19,7 @@ All traffic flowing through your appliance is using (virtual) interfaces, this i
    manual/other-interfaces
    manual/interfaces_overview
    manual/interfaces_settings
+   manual/hostwatch
    manual/neighbors
    manual/firewall_vip
    manual/wireless

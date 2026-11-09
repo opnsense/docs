@@ -154,8 +154,8 @@ MAC addresses
 Hardware mac addresses can be specified as a (partial) hex value, such as :code:`F4:90:EA` to match all addresses from
 Deciso or :code:`f4:90:ea:00:00:01` to match a single item (the input is case insensitive).
 
-The way these aliases function is approximately the same as hostnames in host type aliases, they are resolved on periodic
-intervals from the :code:`arp` and :code:`ndp` tables.
+The way these aliases function is approximately the same as hostnames in host type aliases: they are resolved periodically
+using :doc:`hostwatch` when enabled, or the kernel :code:`arp` and :code:`ndp` tables otherwise.
 
 
 .. Warning::

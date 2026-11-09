@@ -613,6 +613,8 @@ Route Installation
 
 Whenever an ``IA_PD`` lease is acknowledged, a route targeting the link-local address of the requesting DHCPv6 client will be automatically installed.
 
+The Kea prefix watcher uses :doc:`hostwatch` to look up the client's IPv6 link-local address, falling back to the kernel NDP table when Hostwatch is not running.
+
 Since lease files are synchronized in high availability mode, the routes will also be installed and cleaned up on both peers.
 
 .. Note::
