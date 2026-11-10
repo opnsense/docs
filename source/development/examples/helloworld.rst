@@ -22,7 +22,7 @@ Goal
 
 The goal of the "Hello world" module we're creating in the example is to
 control a program on our system named "testConnection.py", which is part
-of :ref:`the example package available on GitHub <example-source>`. It will try to send an email
+of :ref:`the example package available on GitHub <example-source_>`. It will try to send an email
 using plain smtp and will respond with a json text message about the
 result of that attempt.
 
