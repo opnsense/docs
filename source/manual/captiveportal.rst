@@ -107,7 +107,7 @@ background and are granted access.
 
 Furthermore, the following criteria must be met for IPv6 to fully function:
 
-- Hostwatch (:menuselection:`Interfaces --> Neighbours --> Automatic Discovery`) must
+- :doc:`hostwatch` (:menuselection:`Interfaces --> Hostwatch --> Settings`) must
   be enabled for the collection of IPv6 addresses to function.
 - You must set a [Hostname] in the zone configuration and make sure a DNS record
   exists for this hostname pointing to the correct IPv6 address. If you're using Unbound,
