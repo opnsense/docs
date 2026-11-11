@@ -31,6 +31,144 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.7.9 (November 11, 2026)
+--------------------------------------------------------------------------
+
+
+The 26.7 series gets another installment with a few nice feature addition
+and UX revamps.  There are 4 new security advisories on GitHub for the
+core as well as numerous fixes throughout the components as they are being
+reported.  Of special note is that this update brings a number of performance
+improvements throughout the system.
+
+We have added "authority" annotations for the privilege selection and user
+overview.  They aim to explain how much access to the system is granted to
+the user in principle: the default is "administrative" as even though single
+privilges appear to be low priviliges they are not as administrative (root)
+tasks are being carried out by the underlying daemons and software.  The
+"limited" label means the user does not have access to root processes and
+the "unrestricted" label means that the component being accesses has no
+bounds to system access which may be part of its intended feature scope
+such as XMLRPC access.  We have also marked the static PHP pages as
+"unrestricted", because in reality they have historical privilege separation
+weaknesses that the MVC do not have.  This approach will also help shape
+how we accept security advisories and set their severity.
+
+Here are the full patch notes:
+
+* system: dashboard: refactor widget system and introduce cloneable widget types
+* system: suppress local logging by default and add it as an option for remotes
+* system: add validation error for attempted user scope change
+* system: fix certificate widget off by one in remaining days calculation
+* system: use standard throwReadOnly() on notification dismiss action `[1] <https://github.com/opnsense/core/security/advisories/GHSA-2w8j-hpp2-8rfj>`__  (reported by Janik Besendorf)
+* system: implement "source networks" check in hasPrivilege() `[2] <https://github.com/opnsense/core/security/advisories/GHSA-2f7g-25f3-55v7>`__  (reported by Janik Besendorf)
+* system: add "authority" option to ACLs to explain the effective control over the system for each privilege given
+* system: add dropdown field type for backup providers (contributed by Greelan)
+* system: invalidate sysctl cache on apply
+* system: fix MAILTO cron statement
+* system: validate uploaded picture types
+* reporting: health: improve graph metadata, formatting and widget support
+* interfaces: pass interfaces correctly to IPsec, Unbound during reconfiguration
+* interfaces: read "lock" property using empty() in legacy page
+* interfaces: fix track6 assoc_pd comparison typo (contributed by Konstantinos Spartalis)
+* interfaces: use default icon color for disabled interfaces
+* Interfaces: add support for TAP devices
+* interfaces: hostwatch: split off automatic discovery entries from neighbor menu under its canonical service name
+* interfaces: hostwatch: look up hostnames via reverse DNS API
+* interfaces: revisit PPP config access
+* interfaces: move "devices" array out of $ifcfg for reset
+* interfaces: introduce interfaces_device_wait() for PPP reuse
+* interfaces: backend call for interfaces_ppps_configure()
+* interfaces: add return values to PPP configuration
+* interfaces: extend line ending validation to other PPP fields as well `[3] <https://github.com/opnsense/core/security/advisories/GHSA-f35q-c34m-pfw3>`__  (reported by dead-lamer)
+* interfaces: fix faulty handling of "dhcp6-ia-pd-len" during assignments save
+* firewall: decorate paginated rules only
+* firewall: avoid loading the rule model twice while the initial grid request is in progress
+* firewall: be more selective which searches get decorated as well
+* firewall: only getPriority() once and reuse it
+* firewall: fix query performance regression due to introduction of automatic rules display
+* firewall: fix alias cleanup for external aliases (contributed by Florian Punz)
+* firewall: fix performance regression in aliases
+* firewall: source NAT: use getWellKnown() and properly validate port ranges
+* firewall: prepare new style scrub support in rules parser
+* firewall: use row API to handle global collapse/expand state for rules
+* firewall: remove unused getAntiLockout() function
+* captive portal: further restrict roaming to IPv6 client sessions
+* captive portal: account for Idle-Timeout in Access-Accept
+* captive portal: add configurable CORS policy per zone
+* captive portal: add limit in template parsing `[4] <https://github.com/opnsense/core/security/advisories/GHSA-r23v-737v-6r5h>`__  (reported by Janik Besendorf)
+* intrusion detection: use Suricata-optimized ruleset for URLhaus (contributed by 0nnyx)
+* intrusion detection: support Suricata datasets in rule metadata
+* kea: add simple shared_networks option to subnets
+* firmware: fetch dashboard widget RSS feed from backend
+* radvd: add optional lifetime setting for PREF64 (contributed by BPplays)
+* unbound: fix locking in blocklist fetcher
+* backend: support indefinite TTL in configd
+* backend: make all long TTLs indefinite
+* backend: introduce legacy_firewall_model() and legacy_firewall_settings() helpers
+* lang: translation updates for multiple languages
+* mvc: ApiControllerBase: introduce basic locking in configd stream handle
+* mvc: OptionField: optimize option caching
+* ui: prefix edit/new/copy dialog with associated icon
+* ui: delegate bootgrid cell handlers
+* ui: add a clear button to the bootgrid search field (contributed by Alok K. Dhir)
+* plugins os-acme-client 4.18 `[5] <https://github.com/opnsense/plugins/blob/stable/26.7/security/acme-client/pkg-descr>`__ 
+* plugins: os-caddy 2.2.3 `[6] <https://github.com/opnsense/plugins/blob/stable/26.7/www/caddy/pkg-descr>`__ 
+* plugins: os-freeradius 1.10.3 `[7] <https://github.com/opnsense/plugins/blob/stable/26.7/net/freeradius/pkg-descr>`__ 
+* plugins: os-frr 2.1 `[8] <https://github.com/opnsense/plugins/blob/stable/26.7/net/frr/pkg-descr>`__ 
+* plugins: os-upnp 1.10 `[9] <https://github.com/opnsense/plugins/blob/stable/26.7/net/upnp/pkg-descr>`__ 
+* plugins: os-openvpn-legacy now denies read-only runtime changes (contributed by Janik Besendorf)
+* src: revert "ice: fix link speed after changing cable type"
+* src: aq: assorted backports from stable/15
+* src: axgbe: fix receive buffers without split-header mode
+* src: bnxt: assorted backports from stable/15
+* src: carp: fix global demotion counter to VRRP advertisements
+* src: e1000: separate DH89xxCC memory errors
+* src: ena: upgrade ena-com to freebsd v2.8.5
+* src: iflib: do not ring the transmit doorbell when nothing is pending
+* src: igmp: refresh the ip header pointer after m_pullup()
+* src: netinet6: allocate correct size for ip6_fwdtag struct (contributed by pletch)
+* src: netinet6: fix check for pktinfo outgoing ifindex in route cache
+* src: netlink: fix unsigned overflow on a truncated message
+* src: p9fs: fix p9fs_vget_common() panics
+* src: pf: allows TCP RST packets in the backwards window if ACK matches
+* src: pf: check extension and AH header length
+* src: pf: do not corrupt neighbour advertisements when translating
+* src: pf: do not hash pool address pointers into rule hashes
+* src: pf: do not leak a source hash row lock in the netlink dump
+* src: pf: do not loop on an address that is cleared twice in pfr_clr_astats()
+* src: pf: drain the overload task before VNET rules are freed
+* src: pf: first-match-wins for nat rules, even in anchors
+* src: pf: fix a crash on sendfile()
+* src: pf: free a table entry that cannot be routed
+* src: pf: free an unparsed rule with pf_krule_free() in pf_handle_addrule()
+* src: pf: free the packet rate counter of a rule
+* src: pf: leave the epoch to purge unlinked rules
+* src: pf: modify pfik_flags atomically
+* src: pf: parse the GETSTATES state ID as 64 bits
+* src: pf: register the netlink family only while the VNETs are set up
+* src: pf: set the reassembly flags under the rules lock
+* src: pf: take the rules read lock in pf_handle_getrule()
+* src: pfil: avoid potential mbuf tag leak
+* src: pfsync: use result of m_pullup()
+* src: re: harden re_watchdog() recovery and log controller state
+* src: re: re-arm the TX doorbell when re_txeof() leaves a non-empty ring
+* src: re: recover TX completions whose MSI was swallowed in re_intr_msi()
+* src: re:: quiesce RTL8168G+ and reset before freeing buffers in re_stop()
+* ports: dnspython 2.9.2 `[10] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
+* ports: expat 2.10.0 `[11] <https://github.com/libexpat/libexpat/blob/R_2_10_0/expat/Changes>`__ 
+* ports: krb5 1.22.3 `[12] <https://web.mit.edu/kerberos/krb5-1.22/>`__ 
+* ports: libucl 0.10.0
+* ports: openssh 10.6p2 `[13] <https://www.openssh.com/txt/release-10.6p2>`__ 
+* ports: openvpn 2.7.9 `[14] <https://github.com/OpenVPN/openvpn/blob/v2.7.9/Changes.rst>`__ 
+* ports: phpseclib 3.0.58 `[15] <https://github.com/phpseclib/phpseclib/releases/tag/3.0.58>`__ 
+* ports: pkg port epoch is now set to avoid catching a newer and potentially incompatible version from FreeBSD
+* ports: python 3.13.18 `[16] <https://docs.python.org/release/3.11.18/whatsnew/changelog.html>`__ 
+* ports: sqlite 3.54.1 `[17] <https://sqlite.org/releaselog/3_54_1.html>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.7.8 (October 30, 2026)
 --------------------------------------------------------------------------
 
@@ -140,6 +278,11 @@ Here are the full patch notes:
 * ports: python 3.13.16 `[21] <https://docs.python.org/release/3.13.16/whatsnew/changelog.html>`__ 
 * ports: suricata 8.0.8 `[22] <https://suricata.io/2026/10/29/suricata-8-0-8-released/>`__ 
 * ports: unbound 1.26.2 `[23] <https://nlnetlabs.nl/projects/unbound/download/#unbound-1-26-2>`__ 
+
+A hotfix release was issued as 26.7.8_2:
+
+* system: revert "allow a single dynamic interface gateway to work for both IPv4 and IPv6"
+* system: fix regression of false private key requirement for certificate/CA import
 
 
 

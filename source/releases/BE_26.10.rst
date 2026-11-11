@@ -429,7 +429,7 @@ Here are the full patch notes:
 Migration notes, known issues and limitations:
 
 * The privileges "page-system-groupmanager" and "page-system-usermanager-addprivs" were merged into "page-system-groupmanager" and are no longer available separately.  This was done to avoid the misconception that access to a user management page gives constrained rights to each page, but that is not the case.  User management is a process involving all 3 pages.
-* The static PHP pages for firewall rule and outbound NAT management have been moved to the "os-firewall-legacy" plugin which can be manually installed before or after the upgrade.  All rules will continue to work regardless of the plugin being installed or not and are easily migrated using the given assistant.
+* The static PHP pages for firewall rule and outbound NAT management have been moved to the "os-firewall-legacy" plugin which can be manually installed before or after the upgrade.  All rules will continue to work regardless of the plugin being installed or not and are easily migrated using the given assistant found in the menu under Firewall: Migration assistant.
 * Since this is a major OS upgrade and OpenSSL changes from 3.0 to 3.5 third party repositories may interfere with your upgrade experience.  Removing offending repositories and plugins may help; or wait for affirmation from the respective repository owners.
 * The CPU microcode early loading has been known to be flaky on some setups.  A fix is in the FreeBSD 15.1 boot loader code, but can only be reached by reinstall or manually updating the boot code of your system after the upgrade succeeded.  If you want to be on the safe side during the upgrade itself please remove the plugin before proceeding.
 
