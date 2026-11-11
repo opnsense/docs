@@ -1002,7 +1002,9 @@ prefixed with os-, our new package file will be called:
 
 .. rubric:: Reference
    :name: reference
+
 .. _example-source:
+
 -  source of this example :
    https://github.com/opnsense/plugins/tree/master/devel/helloworld
 -  build instructions : https://github.com/opnsense/tools
