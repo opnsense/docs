@@ -67,6 +67,14 @@ An interesting metric can be the **Last Seen** column, which shows hosts that ha
 
 The **Hostname** column tries to gather the current reverse DNS entry of each discovered host.
 
+The **Statistics** column shows the number of active firewall states and the traffic observed for each discovered IP address.
+These values come from the runtime firewall state table and are not persistent or intended as historical traffic accounting.
+
+.. Hint::
+
+    Restricted GUI users need the **Interfaces: Hostwatch** privilege to access this page. Grant
+    **Interfaces: Diagnostics: DNS Lookup** to display hostnames and **Diagnostics: Show States** to display statistics.
+
 
 --------------------
 Log File
