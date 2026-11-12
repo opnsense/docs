@@ -35,8 +35,8 @@ can be found below as well.
 --------------------------------------------------------------------------
 
 
-The 26.7 series gets another installment with a few nice feature addition
-and UX revamps.  There are 4 new security advisories on GitHub for the
+The 26.7 series gets another installment with a few nice feature additions
+and UX revamps!  There are 4 new security advisories on GitHub for the
 core as well as numerous fixes throughout the components as they are being
 reported.  Of special note is that this update brings a number of performance
 improvements throughout the system.
@@ -44,15 +44,15 @@ improvements throughout the system.
 We have added "authority" annotations for the privilege selection and user
 overview.  They aim to explain how much access to the system is granted to
 the user in principle: the default is "administrative" as even though single
-privilges appear to be low priviliges they are not as administrative (root)
+privileges appear to be low privileges they are not as administrative (root)
 tasks are being carried out by the underlying daemons and software.  The
 "limited" label means the user does not have access to root processes and
 the "unrestricted" label means that the component being accesses has no
 bounds to system access which may be part of its intended feature scope
-such as XMLRPC access.  We have also marked the static PHP pages as
+such as XMLRPC sync.  We have also marked the static PHP pages as
 "unrestricted", because in reality they have historical privilege separation
-weaknesses that the MVC do not have.  This approach will also help shape
-how we accept security advisories and set their severity.
+weaknesses that the MVC pages no longer have.  This approach will also help
+shape how we accept security advisories and set their severity.
 
 Here are the full patch notes:
 
@@ -165,6 +165,10 @@ Here are the full patch notes:
 * ports: pkg port epoch is now set to avoid catching a newer and potentially incompatible version from FreeBSD
 * ports: python 3.13.18 `[16] <https://docs.python.org/release/3.11.18/whatsnew/changelog.html>`__ 
 * ports: sqlite 3.54.1 `[17] <https://sqlite.org/releaselog/3_54_1.html>`__ 
+
+A hotfix release was issued as 26.7.9_1:
+
+* system: fix automation user scope set since validation was tightened
 
 
 
