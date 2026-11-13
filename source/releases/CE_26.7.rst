@@ -154,7 +154,7 @@ Here are the full patch notes:
 * src: re: harden re_watchdog() recovery and log controller state
 * src: re: re-arm the TX doorbell when re_txeof() leaves a non-empty ring
 * src: re: recover TX completions whose MSI was swallowed in re_intr_msi()
-* src: re:: quiesce RTL8168G+ and reset before freeing buffers in re_stop()
+* src: re: quiesce RTL8168G+ and reset before freeing buffers in re_stop()
 * ports: dnspython 2.9.2 `[10] <https://dnspython.readthedocs.io/en/stable/whatsnew.html>`__ 
 * ports: expat 2.10.0 `[11] <https://github.com/libexpat/libexpat/blob/R_2_10_0/expat/Changes>`__ 
 * ports: krb5 1.22.3 `[12] <https://web.mit.edu/kerberos/krb5-1.22/>`__ 
@@ -242,7 +242,7 @@ Here are the full patch notes:
 * firmware: opnsense-update: replace known variables instead of using eval `[2] <https://github.com/opnsense/core/security/advisories/GHSA-p683-f7x2-pm4p>`__  (reported by Voidlet)
 * firmware: tighten validation for mirror URL (reported by Abraxas Labs)
 * intrusion detection: always initialize reference_html (reported by Adam Korczynski of Ada Logics using Anrophic)
-* intrusion detection: add abuse.ch API token input
+* intrusion detection: add Abuse.ch API token input
 * intrusion detection: escape literal percent signs in rulecache.py query format
 * intrusion detection: add config locking during rule updates (contributed by Konstantinos Spartalis)
 * ipsec: move ping_hosts.sh to legacy plugin and harden (reported by Adam Korczynski of Ada Logics using Anrophic)
@@ -253,7 +253,7 @@ Here are the full patch notes:
 * monit: fetch status through configd for strict security mode
 * monit: escape password double quotes with their hex interpretation and prevent the use of escape sequences from the input
 * unbound: CSV import for overrides and aliases
-* unbound: remove Abuse.ch - ThreatFox IOC from the list
+* unbound: remove Abuse.ch ThreatFox IOC from the list
 * backend: fix simulate_mode in configd
 * mvc: avoid empty recordset searches
 * mvc: ContainerField: exclude volatile fields in isFieldChanged()

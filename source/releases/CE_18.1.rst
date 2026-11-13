@@ -431,7 +431,7 @@ Here are the full patch notes:
 * captive portal: add traffic data and IP address to RADIUS accounting messages (contributed by fvanroie)
 * captive portal: fix voucher table rendering issue seen in Firefox
 * intrusion detection: add destination IP to alert search (contributed by Jeffrey Gentes)
-* intrusion detection: add abuse.ch URLhaus rules
+* intrusion detection: add Abuse.ch URLhaus rules
 * ipsec: keep road warrior rightsubnet to default as stated by the docs
 * ipsec: add missing phase 2 DH groups
 * openvpn: switch to interface "any" for IPv6-friendly defaults
