@@ -2,7 +2,7 @@
 Network Time
 ==============
 
-OPNsense ships with a standard `NTPd <http://doc.ntp.org/current-stable/>`__ server,
+OPNsense ships with a standard `NTPd <https://www.ntp.org/current-stable/>`__ server,
 which synchronizes time with upstream servers and provides time to connected clients.
 
 A newly installed firewall comes with NTP enabled on all interfaces (firewall blocks all non LAN access in this case),
@@ -54,7 +54,7 @@ Access restrictions                   Within the access restriction row, you can
                                       rejected clients.
 Leap seconds                          You can manually supply ntpd with a leap seconds file, more detailed info
                                       on the contents of those files can be found
-                                      `here <http://support.ntp.org/bin/view/Support/ConfiguringNTP#Section_6.14.>`__
+                                      `here <https://support.ntp.org/Support/ConfiguringNTP#Section_6.14>`__
 ====================================  ===============================================================================
 
 
@@ -92,7 +92,7 @@ The status page can be used to query the health of the upstream time sources, it
 Status                                Human readable status of the upstream
 Server                                Upstream source
 Ref ID                                Source IP address or
-                                      `kiss code: <http://doc.ntp.org/4.2.6p5/decode.html#kiss>`__
+                                      `kiss code: <https://www.ntp.org/documentation/4.2.8-series/decode/#kiss-codes>`__
 Stratum                               NTP uses a hierarchical, semi-layered system of time sources
                                       (`wikipedia <https://en.wikipedia.org/wiki/Network_Time_Protocol#Clock_strata>`__)
                                       This field shows the stratum of the upstream source

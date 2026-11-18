@@ -52,7 +52,7 @@ Set **Endpoint address** with the "Domain name" value in the server list and **E
 As an example: for the "nl1-wireguard" server, the **Endpoint Address** will be :code:`nl1-wireguard.mullvad.net`.
 In the **Instances** dropdown, select the instance created previously and click **Save**.
 
-.. _list: https://www.mullvad.net/en/servers/
+.. _list: https://mullvad.net/en/servers
 
 Now we **Enable** WireGuard in the **General** tab and continue with the setup.
 

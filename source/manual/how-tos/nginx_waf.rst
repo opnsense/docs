@@ -20,15 +20,15 @@ NAXSI has two rule types:
 * Main Rules: This rules are globally valid. Usual use case: Blocking code fragments that may be used to gain access to the server without permission (for example SQL_-/XPATH_-injection for data access) or to gain control over a foreign client (for example XSS_).
 * Basic Rules: This rules are usually used in the locations to whitelist main rules by id inside a location or for additional rules.
 
-.. _SQL: https://www.owasp.org/index.php/SQL_Injection
-.. _XPATH: https://www.owasp.org/index.php/XPATH_Injection
-.. _XSS: https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)
+.. _SQL: https://community.owasp.org/attacks/SQL_Injection
+.. _XPATH: https://community.owasp.org/attacks/XPATH_Injection
+.. _XSS: https://community.owasp.org/attacks/xss/
 
 .. Note::
 
     A good place to start are the OWASP_ Cheat Sheets.
 
-.. _OWASP: https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series
+.. _OWASP: https://cheatsheetseries.owasp.org/
 
 
 In addition to the self defined rules, NAXSI contains libinjection which is available directly in the location configuration.

@@ -9,7 +9,7 @@ The Spamhaus Don't Route Or Peer Lists
   designed for use by firewalls and routing equipment to filter out the malicious
   traffic from these netblocks.
 
-  *Source :* https://www.spamhaus.org/drop/
+  *Source :* https://www.spamhaus.org/blocklists/do-not-route-or-peer/
 
 For this How-To we will use the Alias feature and a firewall block rule.
 The lists for this example are located here:

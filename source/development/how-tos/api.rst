@@ -43,7 +43,7 @@ Code sample (python)
 --------------------
 
 For the python code sample we use the nice "requests" library
-(http://docs.python-requests.org/en/latest/), which makes HTTP calls
+(https://requests.readthedocs.io/en/latest/), which makes HTTP calls
 very easy.
 
 Before you can start, make sure your OPNsense has a valid SSL

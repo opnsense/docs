@@ -2,7 +2,7 @@
 UIBootgrid
 ==============================
 
-The UIBootgrid system is a wrapper around `Tabulator <https://tabulator.info/>`__ and provides
+The UIBootgrid system is a wrapper around `Tabulator <https://www.tabulator.info/>`__ and provides
 a generic table system that is reusable on all pages requiring data listing and manipulation.
 
 
@@ -341,7 +341,7 @@ General settings for bootgrid behavior
      - ``boolean``
      - ``false``
      - Enable or disable the virtual rendering mode of the grid. See
-       `the Tabulator docs <https://tabulator.info/docs/6.4/virtual-dom>`__. In essence
+       `the Tabulator docs <https://www.tabulator.info/docs/6.x/virtual-dom/>`__. In essence
        this option makes sure that not all rows are rendered by default, but are rendered
        on the fly as they are needed when the user scrolls down/up. This makes it possible
        to render an extremely large amount of rows with very little performance impact.
@@ -488,7 +488,7 @@ This is useful if you want to bind event handlers to the rendered DOM element, o
 if the cell contains more complex objects such as graphs that are initialized asynchronously.
 
 The callback function expects a single parameter, :code:`cell`, which you can access to get the
-`cell object <https://tabulator.info/docs/6.4/components#component-cell>`__
+`cell object <https://www.tabulator.info/docs/6.x/components/#component-cell>`__
 
 .. _headerFormatters:
 
@@ -567,7 +567,7 @@ with a unique key and contains an object with the following schema:
      - ``function``
      - No
      - A function that is executed on command click. Function signature is :code:`(event, cell)`.
-       The `cell object <https://tabulator.info/docs/6.4/components#component-cell>`__ is passed in
+       The `cell object <https://www.tabulator.info/docs/6.x/components/#component-cell>`__ is passed in
        only if :code:`footer` is :code:`false`.
    * - ``title``
      - ``string | function``
@@ -626,7 +626,7 @@ example, see the
 ``tabulatorOptions``
 --------------------
 
-Any option set here will be passed directly to Tabulator. Refer to their `docs <https://tabulator.info/docs/>`__.
+Any option set here will be passed directly to Tabulator. Refer to their `docs <https://www.tabulator.info/docs/>`__.
 
 
 Methods

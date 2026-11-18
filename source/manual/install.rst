@@ -94,7 +94,7 @@ Depending on your hardware and use case, different installation options are avai
 .. Note::
    All Full Image types can run both `OPNsense Importer <https://docs.opnsense.org/manual/install.html#opnsense-importer>`__
    before booting into the Live environment and also run
-   `Installer <https://docs.opnsense.org/manual/install.html#install-to-target-system>`__ once booted into the Live environment.
+   `Installer <https://docs.opnsense.org/manual/install.html#opnsense-installer>`__ once booted into the Live environment.
 
 .. Warning::
    Flash memory cards will only tolerate a limited number of writes and re-writes. For
@@ -253,7 +253,7 @@ Image. If your target platform has a serial console interface choose the
 need to know more about using the serial console interface, consult the :doc:`serial access how-to<how-tos/serial_access>`.
 
 Write the image to a USB flash drive (>=1 GB) or hard disk, using either dd for Unix-like
-OSes or, for Windows, physdiskwrite, `Etcher <https://www.balena.io/etcher#download-etcher>`_,
+OSes or, for Windows, physdiskwrite, `Etcher <https://etcher.balena.io/#download-etcher>`_,
 or `Rufus <https://rufus.ie/>`_.
 
 

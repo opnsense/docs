@@ -3,7 +3,7 @@ IPS SSLBlacklists & Feodo Tracker
 =================================
 
 This tutorial explains how to setup the IPS system to drop SSL certificates
-listed on the `abuse.ch <https://www.abuse.ch>`__ SSL Blacklists & Feodo Tracker.
+listed on the `abuse.ch <https://abuse.ch/>`__ SSL Blacklists & Feodo Tracker.
 
 Feodo (also known as Cridex or Bugat) is a Trojan used to commit e-banking fraud
 and steal sensitive information from the victim’s computer, such as credit card

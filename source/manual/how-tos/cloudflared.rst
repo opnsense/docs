@@ -4,7 +4,7 @@ Cloudflare Tunnel
 Introduction
 ------------
 
-`Cloudflare Tunnel <https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/>`_
+`Cloudflare Tunnel <https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/>`_
 (formerly Argo Tunnel) allows you to expose self-hosted services to the internet
 without opening inbound firewall ports or holding a public IP address. This makes
 it well-suited for deployments behind CGNAT, ISPs that block inbound connections,

@@ -95,12 +95,12 @@ a Token for 30 Seconds.
 
 Please note that there are many apps to generate the token. Some well known are:
 
-==================== ======================= =====================================
+==================== ======================= ============================================
 Name                 Platform                URL
-==================== ======================= =====================================
+==================== ======================= ============================================
 FreeOTP              Android, iOS            https://freeotp.github.io/
-Google Authenticator Android, iOS            https://www.google.com/landing/2step/
-==================== ======================= =====================================
+Google Authenticator Android, iOS            https://safety.google/safety/authentication/
+==================== ======================= ============================================
 
 -----------------------
 Step 5 - Test the token

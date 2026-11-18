@@ -81,6 +81,6 @@ Modify log level for IPv6 clients. Info will give status, interface leases and a
 DHCP Unique Identifier
 --------------------------
 This option can be used to enter an explicit DUID for use by IPv6 DHCP clients, the different types are detailed in
-`section 11 of rfc8415 <https://tools.ietf.org/html/rfc8415#section-11>`__
+`section 11 of rfc8415 <https://datatracker.ietf.org/doc/html/rfc8415#section-11>`__
 
 When not set, the dhcp v6 client (:code:`dhcp6c`) will assign one automatically.

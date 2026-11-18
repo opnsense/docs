@@ -104,7 +104,7 @@ setting the VHID field to the same number as the initial CARP VIP VHID:
 Proxy ARP
 ..................
 
-Does not add a real address to an interface, instead it will use `choparp <https://www.freebsd.org/cgi/man.cgi?query=choparp>`__ to reply to
+Does not add a real address to an interface, instead it will use `choparp <https://man.freebsd.org/cgi/man.cgi?query=choparp>`__ to reply to
 arp requests on the network. This can sometimes be practical in situations where clients should be let to believe an address is local.
 
 

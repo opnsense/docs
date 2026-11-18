@@ -16,7 +16,7 @@ This setup can be used to filter via firewall rules and use IDS/IPS to inspect a
 via a netmap driver.
 
 For more information on Filtering Bridged on FreeBSD, see
-`filtering-bridges <https://www.freebsd.org/doc/en/articles/filtering-bridges/article.html>`__
+`filtering-bridges <https://docs.freebsd.org/en/articles/filtering-bridges/>`__
 
 .. Attention::
 

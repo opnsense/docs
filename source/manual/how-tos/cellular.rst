@@ -12,7 +12,7 @@ Supported devices
 -----------------
 
 In general, OPNsense should support all cellular modems that are supported by the
-respective FreeBSD kernel (`see latest <https://cgit.freebsd.org/src/tree/sys/dev/usb/serial/u3g.c#n197>`).
+respective FreeBSD kernel (`see latest <https://man.freebsd.org/cgi/man.cgi?query=u3g>`__).
 However, not all devices behave the same way, you might have to tweak your card 
 with specific AT commands, for example in the init string.
 
@@ -32,7 +32,7 @@ You should also buy an appropriate pigtail antenna cable and LTE antenna. Note
 that LTE antennas often have different connectors than Wi-Fi antennas, chose your
 equipment accordingly. Getting the right antenna has a big impact on the quality
 of your signal. For LTE, MIMO (multiple input, multiple output) antennas should
-be considered, see for example `this guide <https://www.specialistantennas.co.uk/news/lte-antenna-choices-considerations>`_.
+be considered.
 
 .. Note::
 
@@ -49,7 +49,7 @@ the Huawei modem used in this example the device is ``/dev/cuaU0.0``, other mode
 might provide the AT interface on another device.
 
 On FreeBSD, ``/dev/cuauN`` devices are call-out ports that are used for modems instead
-of terminals, see section `26.2.1 <https://www.freebsd.org/doc/handbook/serial.html>`_ in the FreeBSD manual.
+of terminals, see the `Serial Communications chapter <https://docs.freebsd.org/en/books/handbook/serialcomms/#serial>`_ in the FreeBSD manual.
 
 The best way to locate the correct port is to send AT commands to it. This can be
 tested using the utility ``cu``:
@@ -172,5 +172,5 @@ If all is filled in, then either your firewall is blocking the traffic or the
 network connection is not working well.
 
 In case you were not successful, you might have to check manually what is going
-on. Read the `Troubleshooting PPP Connections <https://www.freebsd.org/doc/handbook/ppp-troubleshoot.html>`_ section in the FreeBSD manual for more information and
+on. Read the `Troubleshooting PPP Connections <https://docs.freebsd.org/en/books/handbook/ppp-and-slip/#ppp-troubleshoot>`_ section in the FreeBSD manual for more information and
 consult the OPNsense support forum.

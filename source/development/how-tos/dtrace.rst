@@ -39,7 +39,7 @@ Further resources will be provided at the end of this document.
 .. note::
 	
 	All generic DTrace concepts, as well as default probe providers are 
-	documented `here <http://dtrace.org/guide/preface.html#preface>`__. 
+	documented `here <https://illumos.org/books/dtrace/preface.html#preface>`__. 
 	If you are interested in using DTrace to profile performance issues, we suggest reading
 	the documentation before proceeding. We will not go into too much detail here to prevent 
 	cluttering the document and keep it simple and to-the-point.
@@ -61,7 +61,7 @@ Add the following options:
 .. note::
 	
 	CTF type data is described 
-	`here <https://www.freebsd.org/cgi/man.cgi?query=ctf&sektion=5&manpath=freebsd-release-ports>`__. 
+	`here <https://man.freebsd.org/cgi/man.cgi?query=ctf&sektion=5&manpath=freebsd-release-ports>`__. 
 	The idea is to represent the types used in a C program within the executable, 
 	allowing users of DTrace to access symbols and function parameters during runtime.
 
@@ -204,13 +204,13 @@ The output image is an SVG file, enabling interaction within a browser.
 Other Resources
 ---------------
 Brendan Gregg's collection of DTrace programs:
-http://www.brendangregg.com/dtrace.html 
+https://www.brendangregg.com/dtrace.html 
 
 Using the right datatypes in DTrace to increase profiling performance:
-http://dtrace.org/blogs/brendan/2011/11/25/dtrace-variable-types/
+https://www.brendangregg.com/blog/2011-11-25/dtrace-variable-types.html
  
 FreeBSD DTrace manual page:
-https://www.freebsd.org/cgi/man.cgi?query=dtrace
+https://man.freebsd.org/cgi/man.cgi?query=dtrace
 
 FreeBSD DTrace one-liners:
 https://wiki.freebsd.org/DTrace/One-Liners

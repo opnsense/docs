@@ -63,8 +63,8 @@ like to forward only a subdirectory (like :code:`/api`) to a server in the netwo
 Web protection
 ~~~~~~~~~~~~~~~~
 
-The web protection options offer easy access to the `OWASP ModSecurity ruleset <https://owasp.org/www-project-modsecurity-core-rule-set/>`__
-, which offers a set of generic attack detection rules against a wide range attacks including the `OWASP Top Ten <https://owasp.org/www-project-top-ten/>`__.
+The web protection options offer easy access to the `OWASP ModSecurity ruleset <https://owasp.org/projects/crs>`__
+, which offers a set of generic attack detection rules against a wide range attacks including the `OWASP Top Ten <https://owasp.org/projects/top-ten>`__.
 
 
 Setup

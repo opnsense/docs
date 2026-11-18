@@ -226,7 +226,7 @@ Simple add Queues with proper weights and Rules into this specific Pipe matching
 External references
 -------------------
 
-* https://www.ciscopress.com/articles/article.asp?p=2272154&seqNum=3
+* https://datatracker.ietf.org/doc/html/rfc6192
 * https://www.computernetworkingnotes.com/ccna-study-guide/data-plane-control-plane-and-management-plane.html
 * https://forum.opnsense.org/index.php?topic=46990.0
 * https://man.freebsd.org/cgi/man.cgi?ipfw(8)

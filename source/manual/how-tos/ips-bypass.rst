@@ -65,5 +65,5 @@ the form.
 -------------------
 External Resources
 -------------------
-- https://docs.suricata.io/en/suricata-6.0.0/rules/bypass-keyword.html
-- https://docs.suricata.io/en/suricata-6.0.0/performance/ignoring-traffic.html
+- https://docs.suricata.io/en/latest/rules/bypass-keyword.html
+- https://docs.suricata.io/en/latest/performance/ignoring-traffic.html

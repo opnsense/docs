@@ -150,7 +150,7 @@ Our default deny rule uses this property for example (if no rule applies, drop t
 .. Warning::
 
     **NAT rules are always processed before filter rules!**
-    So for example, if you define a `NAT : Destination NAT (Port Forwarding) rules <nat.html#port-forwarding>`__  *without a associated rule*, i.e. **Filter rule association** set to **Pass**, this has the consequence, that no other rules will apply!
+    So for example, if you define a `NAT : Destination NAT (Port Forwarding) rules <nat.html#destination-nat-port-forward>`__  *without a associated rule*, i.e. **Filter rule association** set to **Pass**, this has the consequence, that no other rules will apply!
 
 .. Tip::
 
@@ -746,7 +746,7 @@ This section of the documentation describe the different settings, grouped by us
         Source OS                             Operating systems can be fingerprinted based on some tcp fields from
                                               the originating connection. These fingerprints can be used as well
                                               to match traffic on. (more detailed information can be found in the
-                                              `pf.os <https://www.freebsd.org/cgi/man.cgi?query=pf.os>`__ man page)
+                                              `pf.os <https://man.freebsd.org/cgi/man.cgi?query=pf.os>`__ man page)
         allow options                         By default the firewall blocks IPv4 packets with IP options or IPv6
                                               packets with routing extension headers set.
                                               If you have an application that requires such packets

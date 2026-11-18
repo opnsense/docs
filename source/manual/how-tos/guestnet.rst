@@ -265,7 +265,7 @@ And change to:
           </a>
           <h1>Welcome to My Company Guest Network.</h1>
           <h2>Feel free to use the guest network for professional usage</h2>
-          <h3>See our website for more details: <a href="https://www.opnsense.org">My Company</a></h3>
+          <h3>See our website for more details: <a href="https://opnsense.org/">My Company</a></h3>
         </div>
     </header>
 
@@ -361,7 +361,7 @@ Connect your PC or laptop to the Guest Network and start your favourite browser.
 Enter an address to browse to and you will be presented with the Login form we
 created with the template in the previous step. Click on login and start browsing.
 
-To test your traffic shaper go to a speed test site such as http://www.speedtest.net/
+To test your traffic shaper go to a speed test site such as https://www.speedtest.net/
 After testing your result should be similar to this (if your internet connection
 has sufficient bandwidth).
 

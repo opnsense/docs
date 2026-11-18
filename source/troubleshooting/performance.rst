@@ -28,7 +28,7 @@ All of this allows packets of the same origin/destination (a.k.a. flows) to be q
     implementation or is even capable of using it.
 
 
-The implementation of RSS is coupled with `PCBGROUP <https://www.freebsd.org/cgi/man.cgi?query=PCBGROUP>`__
+The implementation of RSS is coupled with `PCBGROUP <https://man.freebsd.org/cgi/man.cgi?query=PCBGROUP>`__
 – an implementation which introduces notions of CPU affinity for connections.
 While the latter will be of lesser importance for OPNsense, since it specifically applies to connections
 built up in userland using sockets (which is relevant to servers, not middleboxes),
@@ -85,7 +85,7 @@ and indirection table being set in hardware. Drivers which support RSS according
 **Kernel support**
 =====================================================================================================================
 
-Internally, FreeBSD uses `netisr <https://www.freebsd.org/cgi/man.cgi?format=html&query=netisr(9)>`__
+Internally, FreeBSD uses `netisr <https://man.freebsd.org/cgi/man.cgi?format=html&query=netisr(9)>`__
 as an abstraction layer for dispatching packets to the upper protocols.
 Within the implementation, the default setting is to restrict packet processing to one thread only.
 Since RSS now provides a way to keep flows local to a CPU, the following sysctls should be set in :menuselection:`System->Settings->Tunables`:
