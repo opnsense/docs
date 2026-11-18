@@ -43,7 +43,7 @@ NAT.
 
 Without trying to explain all the details of an IDS rule (the people at
 Suricata are way better in doing `that
-<https://suricata.readthedocs.io/en/suricata-5.0.5/rules/index.html>`__), a
+<https://docs.suricata.io/en/latest/rules/>`__), a
 small example of one of the ET-Open rules usually helps understanding the
 importance of your home network.
 
