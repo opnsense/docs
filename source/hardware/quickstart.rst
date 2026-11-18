@@ -16,13 +16,13 @@ the following series:
 ========= ============ ============================= ==================
 Series    Formfactor   Range                         Network driver(s)
 ========= ============ ============================= ==================
-DEC6XX    Desktop      Entry level                   igb
-DEC7XX    Desktop      Midrange                      igb, ax
-DEC8XX    Desktop      Enterprise                    igb, ax
-DEC26XX   Rack         Entry level                   igb
-DEC27XX   Rack         Midrange                      igb, ax
-DEC38XX   Rack         Enterprise                    igb, ax
-DEC40XX   Rack         Enterprise / Datacenter       igb, ax, [ice]
+DEC6XX    Desktop      Entry level                   igc
+DEC7XX    Desktop      Midrange                      igc, ax
+DEC8XX    Desktop      Enterprise                    igc, ax
+DEC26XX   Rack         Entry level                   igc
+DEC27XX   Rack         Midrange                      igc, ax
+DEC38XX   Rack         Enterprise                    igc, ax
+DEC40XX   Rack         Enterprise / Datacenter       igc, ax, [ice]
 ========= ============ ============================= ==================
 
 ------------------------------------
@@ -42,7 +42,7 @@ Additional ports available on the device are left unconfigured, you can  assign 
 
       Ports on the devices are all numbered, 0-**X** (e.g. 0,1,2) for all 1 gbps standard ethernet ports,
       X0-X\ **X** for SFP+ ports (e.g. X0, X1), XXV0-XXV\ **X** for SFP28 ports (e.g. XXV0, XXV1).
-      The numbering corresponds with the driver numbering, e.g. port **0** is usually :code:`igb0`, see the product
+      The numbering corresponds with the driver numbering, e.g. port **0** is usually :code:`igc0`, see the product
       range for drivers used in the different models
 
 ------------------------------------
