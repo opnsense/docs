@@ -10,7 +10,7 @@ and utilizes Netmap_ to enhance performance and minimize CPU utilization. This
 deep packet inspection system is very powerful and can be used to detect and
 mitigate security threats at wire speed.
 
-.. _Netmap: https://www.freebsd.org/cgi/man.cgi?query=netmap&sektion=4&manpath=FreeBSD+12.2-RELEASE+and+Ports
+.. _Netmap: https://man.freebsd.org/cgi/man.cgi?query=netmap&sektion=4
 .. _Suricata: https://suricata.io/
 
 IDS and IPS
@@ -73,8 +73,8 @@ drop the packet that would have also been dropped by the firewall.
     in which case emulated mode will be enforced (Configurable in :menuselection:`System --> Settings --> Tunables`). A list of natively
     `supported physical adapters`_ is available in the FreeBSD man page.
 
-.. _RFC 1918: https://tools.ietf.org/html/rfc1918
-.. _supported physical adapters: https://www.freebsd.org/cgi/man.cgi?query=netmap&sektion=4&manpath=FreeBSD+12.1-RELEASE+and+Ports#SUPPORTED_DEVICES
+.. _RFC 1918: https://datatracker.ietf.org/doc/html/rfc1918
+.. _supported physical adapters: https://man.freebsd.org/cgi/man.cgi?query=netmap&sektion=4#SUPPORTED_DEVICES
 
 General setup
 -------------
@@ -130,7 +130,7 @@ Save logs                             Number of logs to keep
     to version 20.7, "VLAN Hardware Filtering" was not disabled which may cause
     issues for some network cards.
 
-.. _EVE: https://suricata.readthedocs.io/en/suricata-5.0.5/output/eve/eve-json-output.html
+.. _EVE: https://docs.suricata.io/en/latest/output/eve/eve-json-output.html
 
 Advanced options
 ----------------
@@ -248,10 +248,10 @@ Use the info button here to collect details about the detected event or threat.
 Advanced configuration
 ------------------------
 
-OPNsense supports custom Suricata configurations in `suricata.yaml <https://suricata.readthedocs.io/en/suricata-6.0.0/configuration/suricata-yaml.html>`__
+OPNsense supports custom Suricata configurations in `suricata.yaml <https://docs.suricata.io/en/latest/configuration/suricata-yaml.html>`__
 format. In order to add custom options, create a template file named :code:`custom.yaml` in the :code:`/usr/local/opnsense/service/templates/OPNsense/IDS/` directory.
 
-Since this file is parsed by our template system, you are able to use template tags using the :doc:`Jinja2 </development/backend/templates/>` language.
+Since this file is parsed by our template system, you are able to use template tags using the :doc:`Jinja2 </development/backend/templates>` language.
 
 Available rulesets
 ------------------
@@ -288,11 +288,16 @@ Proofpoint offers a free alternative for the well known
 ETPro (commercial)
 ++++++++++++++++++++++++++++++
 
-When in possession of a Proofpoint `ET Pro <https://www.proofpoint.com/us/threat-insight/et-pro-ruleset>`__ oink code, you can
+When in possession of a Proofpoint `ET Pro <https://www.proofpoint.com/us/products/advanced-threat-protection/et-intelligence>`__ oink code, you can
 install the :code:`os-intrusion-detection-content-et-pro` plugin via :menuselection:`System --> Firmware --> Plugins`.
 
 As soon as the plugin is installed, you will find an option :code:`etpro.oinkcode` under settings in :menuselection:`Services --> Intrusion Detection --> Administration / Download`
 where you can enter this code.
+
+.. Note::
+
+    A Proofpoint ET Pro ruleset subscription can be acquired through the
+    `OPNsense shop <https://shop.opnsense.com/product/proofpoint-et-pro-ruleset-1yr-subscription/>`__.
 
 
 Abuse.ch
