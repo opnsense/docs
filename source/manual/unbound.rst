@@ -353,7 +353,6 @@ get a better understanding of the source of the lists we compiled the list below
 the list maintainers.
 
 ====================================  ===============================================================================
-Abuse.ch - ThreatFox IOC database     https://threatfox.abuse.ch/
 AdAway List                           https://adaway.org/hosts.txt
 AdGuard List                          https://v.firebog.net/hosts/AdguardDNS.txt
 OISD - Domain Blocklist Ads*          https://small.oisd.nl/domainswild
