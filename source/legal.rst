@@ -19,7 +19,7 @@ OPNsense License & Copyright
 
     .. image:: ./relations/images/osi_standard_logo.png
 
-OPNsense is licensed under an `Open Source Initiative approved license <http://opensource.org/licenses>`__.
+OPNsense is licensed under an `Open Source Initiative approved license <https://opensource.org/licenses>`__.
 
 We like the BSD license, a simple two clause license that gives freedom to the
 audience we want to serve.  It basically gives you the right to do whatever you
@@ -27,7 +27,7 @@ want to do with the code, even fork it and take it from there.
 
 OPNsense is available under the BSD 2-Clause “Simplified” license:
 
-`OPNsense® <http://opnsense.org>`__ is Copyright © 2014 – 2024 by
+`OPNsense® <https://opnsense.org/>`__ is Copyright © 2014 – 2026 by
 Deciso B.V.
 All rights reserved.
 Redistribution and use in source and binary forms, with or without
@@ -57,7 +57,7 @@ Copyright © The FreeBSD Project. All rights reserved.
 
 OPNsense is a fork of `pfSense® <https://www.pfsense.org>`__
 (Copyright © 2004-2014 Electric Sheep Fencing, LLC. All rights
-reserved.) a fork from `m0n0wall <http://m0n0.ch/wall/>`__ (Copyright
+reserved.) a fork from `m0n0wall <https://m0n0.ch/wall/>`__ (Copyright
 © 2002-2013 Manuel Kasper).
 
 ------------------

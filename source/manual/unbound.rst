@@ -45,8 +45,8 @@ Register ISC DHCP4 Leases             **IPv4 only** If this option is set, then 
                                       so that their names can be resolved.
 
                                       The source of this data is **client-hostname** in the
-                                      `dhcpd.leases <https://www.freebsd.org/cgi/man.cgi?query=dhcpd.leases>`__ file.
-                                      This can also be inspected using the `Leases <dhcp.html#diagnostics>`__ page.
+                                      `dhcpd.leases <https://man.freebsd.org/cgi/man.cgi?query=dhcpd.leases>`__ file.
+                                      This can also be inspected using the `Leases <isc.html#diagnostics>`__ page.
 DHCP Domain Override                  When the above registrations shouldn't use the same domain name as configured
                                       on this firewall, you can specify a different one here.
 Register DHCP Static Mappings         Register static dhcpd entries so clients can resolve them. Supported on IPv4 and
@@ -498,7 +498,7 @@ Verify CN                             The name to use for certificate verificati
 
 .. _Cloudflare: https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/
 .. _Google: https://developers.google.com/speed/public-dns
-.. _Quad9: https://www.quad9.net/service/service-addresses-and-features/
+.. _Quad9: https://quad9.net/service/service-addresses-and-features/
 
 -------------------------
 Statistics

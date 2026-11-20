@@ -5,8 +5,8 @@ PSR-12 Coding Style Guide
 .. Note::
 
   | The PSR1, PSR2 and PSR12 Coding Standards are provided by FIG under a MIT license.
-  | See license details: http://www.php-fig.org/bylaws/licensing-policies/
-  | The original content of this page can be found at `php-fig <http://www.php-fig.org/psr/psr-12/>`__
+  | See license details: https://www.php-fig.org/bylaws/licensing-policies/
+  | The original content of this page can be found at `php-fig <https://www.php-fig.org/psr/psr-12/>`__
 
 
 
@@ -123,7 +123,7 @@ tabs for indenting.
 2.5 Keywords and Types
 -------------------------
 
-All PHP reserved `keywords <http://php.net/manual/en/reserved.keywords.php>`__ and `types <http://php.net/manual/en/reserved.types.php>`__ MUST be in lower case.
+All PHP reserved `keywords <https://www.php.net/manual/en/reserved.keywords.php>`__ and `types <https://www.php.net/manual/en/reserved.other-reserved-words.php>`__ MUST be in lower case.
 
 Any new types and keywords added to future PHP versions MUST be in lower case.
 

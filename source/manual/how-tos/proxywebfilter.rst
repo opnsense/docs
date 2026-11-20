@@ -6,7 +6,7 @@ and one of the freely available or commercial blacklists.
 
 For this How-to we will utilize the `UT1 "web categorization list" <https://dsi.ut-capitole.fr/blacklists/index_en.php>`__ from the
 Université Toulouse managed by Fabrice Prigent. This list is supplied for free
-under the `Creative Commons license <http://creativecommons.org/licenses/by-sa/4.0/>`__.
+under the `Creative Commons license <https://creativecommons.org/licenses/by-sa/4.0/>`__.
 
 For this tutorial we will assume:
 
@@ -42,7 +42,7 @@ A screen will popup, enter the following details:
 ================= ======================= ===========================================
 
 The URL of the full compressed UT1 category based list is:
-  ftp://ftp.ut-capitole.fr/pub/reseau/cache/squidguard_contrib/blacklists.tar.gz
+  https://dsi.ut-capitole.fr/blacklists/download/blacklists.tar.gz
 
 .. Note::
     If you want to add self-hosted lists, be sure to not use the file extensions .doc, .pdf or .txt.

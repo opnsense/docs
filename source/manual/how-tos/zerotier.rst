@@ -3,7 +3,7 @@ Zerotier Configuration
 
 .. Note::
     It is strongly recommended that the reader familiarise themselves with the
-    `Zerotier Manual <https://www.zerotier.com/manual.shtml>`_, in order to further
+    `Zerotier Manual <https://docs.zerotier.com/>`_, in order to further
     understand the concepts behind this plugin.
 
 Prerequisites
@@ -63,7 +63,7 @@ applied globally to all defined networks and to the Zerotier service itself.
     As described in the Zerotier Manual, a local.conf can be created to enable
     or disable custom node-specific configuration overrides. Further details of
     permitted options can be found on the `ZeroTier Manual
-    <https://www.zerotier.com/manual.shtml>`__. Please note that the local.conf
+    <https://docs.zerotier.com/config/>`__. Please note that the local.conf
     **must** be a valid JSON document otherwise the service will fail to start.
 
 Networks
@@ -130,7 +130,7 @@ ZeroTier Overview
 The following 3 tabs reveal Global, Network and Peer information. They can
 only be viewed if the Zerotier plugin is enabled, so please ensure that the
 service is enabled first. For information on the terminology used, please
-refer to the `Zerotier Manual <https://www.zerotier.com/manual.shtml>`__.
+refer to the `Zerotier Manual <https://docs.zerotier.com/>`__.
 
 .. image:: images/zerotier-3.png
 

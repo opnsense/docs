@@ -69,7 +69,7 @@ Protocols
 Protocols are templates defining settings and rules for relays.  They allow setting generic TCP options, SSL settings,
 and rules for the selected application layer protocol.
 
-These are only selectable in advanced view mode, for documentation we refer to the `relayd.conf <https://www.freebsd.org/cgi/man.cgi?query=relayd.conf&sektion=5&apropos=0&manpath=FreeBSD+12.2-RELEASE+and+Ports#PROTOCOLS>`__ man page.
+These are only selectable in advanced view mode, for documentation we refer to the `relayd.conf <https://man.freebsd.org/cgi/man.cgi?query=relayd.conf&sektion=5#PROTOCOLS>`__ man page.
 
 --------------------------------------
 General settings

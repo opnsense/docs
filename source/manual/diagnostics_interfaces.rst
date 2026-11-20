@@ -226,7 +226,7 @@ Test if a host has a certain TCP port open and accepts connections on it.
 Trace Route
 ---------------------
 
-Use `traceroute <https://www.freebsd.org/cgi/man.cgi?query=traceroute>`__ /  `traceroute6 <https://www.freebsd.org/cgi/man.cgi?query=traceroute6>`__
+Use `traceroute <https://man.freebsd.org/cgi/man.cgi?query=traceroute>`__ /  `traceroute6 <https://man.freebsd.org/cgi/man.cgi?query=traceroute6>`__
 to measure the path traffic would follow when trying to reach a specific host.
 
 ==============================================================================================================================================

@@ -433,7 +433,7 @@ Description    Set a description for you own use.
 
     When using syslog over TLS, make sure both ends are configured properly (certificates and hostnames), certificate
     errors are quite common in these type of setups. On OPNsense the general system log usually contains more details.
-    When it comes to tracking syslog-ng messages, `this <https://support.oneidentity.com/kb/263658/common-issues-of-tls-encrypted-message-transfer>`__
+    When it comes to tracking syslog-ng messages, `this <https://syslog-ng.github.io/admin-guide/100_TLS-encrypted_message_transfer/README>`__
     is usually a good resource.
 
     A reconfigure doesn't always apply the new tls settings instantly, if that's not the case best stop and start

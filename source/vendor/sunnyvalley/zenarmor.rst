@@ -55,7 +55,7 @@ You can get detailed *How to* documents from Zenarmor's Documentation Site locat
 * `Security <https://www.zenarmor.com/docs/opnsense/policies/security-rules>`_
 * `Application Control <https://www.zenarmor.com/docs/opnsense/policies/application-control-rules>`_
 * `Web Control <https://www.zenarmor.com/docs/opnsense/policies/web-control-rules>`_
-* `Configuration <https://www.zenarmor.com/docs/opnsense/configuring/overview>`_
+* `Configuration <https://www.zenarmor.com/docs/opnsense/configuring/firewall-settings>`_
 
 ----------------------------
 Getting Support
@@ -77,7 +77,7 @@ With its in-depth coverage, `Zenarmor Documentation <https://www.zenarmor.com/do
 When you buy a Zenarmor Premium Subscription, you are entitled to Zenarmor Basic Support. Additional support plans are available on demand.
 
 * `Compare Support Plans <https://www.zenarmor.com/plans>`_
-* `Access Support Center <https://help.sunnyvalley.io/hc/en-us>`_
+* `Access Support Center <https://help.zenarmor.com/hc/en-us>`_
 
 **Support Options for Channel Partners**
 
@@ -87,7 +87,7 @@ To become a partner, you may apply for a partnership via https://www.zenarmor.co
 
 **Connect via Social Media or Websites**
 
-* **Twitter**: `@zenarmor <https://twitter.com/zenarmor>`_
+* **Twitter**: `@zenarmor <https://x.com/zenarmor>`_
 * **Youtube**: `Zenarmor Hands-on videos <https://www.youtube.com/@zenarmor>`_
 * **Company Website**: https://www.zenarmor.com
 * **Product Website**: https://www.zenarmor.com

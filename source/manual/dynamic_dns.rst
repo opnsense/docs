@@ -99,7 +99,7 @@ Netcup DNS
 
 Netcup is a German hosting provider who offers an API for DNS manipulation:
 
-*     Wiki: https://www.netcup-wiki.de/wiki/DNS_API
+*     Wiki: https://www.netcup.com/en/helpcenter/documentation/domain/dyn-dns
 *     Technical documentation: https://ccp.netcup.net/run/webservice/servers/endpoint.php
 
 
@@ -115,8 +115,8 @@ Mythic Beasts
 
 Mythic Beasts is a UK based hosting provider who offers an API for DNS manipulation:
 
-*     Wiki: https://www.mythic-beasts.com/support/API/DNSv2/dynamic-DNS
-*     Technical documentation: https://www.mythic-beasts.com/support/API/DNSv2
+*     Wiki: https://www.mythic-beasts.com/support/api/dnsv2/dynamic-dns
+*     Technical documentation: https://www.mythic-beasts.com/support/api/dnsv2
 
 
 ======================= =======================================================================================================================================================================

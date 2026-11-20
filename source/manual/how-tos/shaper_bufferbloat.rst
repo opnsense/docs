@@ -213,7 +213,7 @@ Pick one and use it for all your measurements.
 .. image:: images/cloudflare_speedtest.png
     :width: 100%
 
-**Speedtest.net** http://speedtest.net
+**Speedtest.net** https://www.speedtest.net/
 
 .. image:: images/speedtest_net.png
     :width: 100%
@@ -374,8 +374,8 @@ ECN IS useful on downlinks on a home router, where the terminating hop is only o
 External references
 -------------------
 
-* https://www.rfc-editor.org/rfc/rfc8290.html
-* https://www.rfc-editor.org/rfc/rfc8289#section-4.2
+* https://datatracker.ietf.org/doc/html/rfc8290.html
+* https://datatracker.ietf.org/doc/html/rfc8289#section-4.2
 * https://man.freebsd.org/cgi/man.cgi?query=ipfw&apropos=0&sektion=8&manpath=FreeBSD+14.1-RELEASE&arch=default&format=html
 * https://www.bufferbloat.net/projects/codel/wiki/Best_practices_for_benchmarking_Codel_and_FQ_Codel/
 * https://forum.opnsense.org/index.php?topic=4949.msg20862#msg20862

@@ -125,9 +125,9 @@ Modern Portal support
 
 OPNsense implements the Captive Portal by redirecting all HTTP traffic
 to a local web server before authentication, hinting to the device that it is behind a portal.
-However, `RFC 8910 <https://www.rfc-editor.org/rfc/rfc8910>`__
+However, `RFC 8910 <https://datatracker.ietf.org/doc/html/rfc8910>`__
 introduces a new standardized method for networks to inform clients about the presence
-of a portal using DHCP. Furthermore, `RFC 8908 <https://www.rfc-editor.org/rfc/rfc8908>`__
+of a portal using DHCP. Furthermore, `RFC 8908 <https://datatracker.ietf.org/doc/html/rfc8908>`__
 describes an API standard implemented by the webserver pointed to by DHCP, where the client can
 fetch the current portal status. Apple has published a
 `document <https://developer.apple.com/news/?id=q78sq5rv>`__ going into more details.

@@ -8,7 +8,7 @@ With the changes MaxMind have implemented it is now a requirement that anyone us
 Create An Account
 ###################
 
-Goto https://www.maxmind.com/en/geolite2/signup and create your account. Note that the email address you provide will be used to send you the link you will need to enter in OPNsense, so make sure its a real account.
+Goto https://www.maxmind.com/en/create-account and create your account. Note that the email address you provide will be used to send you the link you will need to enter in OPNsense, so make sure its a real account.
 
 ######################
 Generate License Key

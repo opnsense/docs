@@ -41,7 +41,7 @@ Below is the recommended minimum hardware requirements for Zenarmor based on the
 Ethernet Adapter
 -----------------
 
-Zenarmor uses a FreeBSD subsystem called `netmap(4) <https://www.freebsd.org/cgi/man.cgi?query=netmap&sektion=4>`_ to access raw Ethernet frames. With FreeBSD 11 (OPNsense version <= 20.1) this software can be very particular in terms of proper driver compatibility. 
+Zenarmor uses a FreeBSD subsystem called `netmap(4) <https://man.freebsd.org/cgi/man.cgi?query=netmap&sektion=4>`_ to access raw Ethernet frames. With FreeBSD 11 (OPNsense version <= 20.1) this software can be very particular in terms of proper driver compatibility. 
 
 Intel-based adapters, particularly em(4) and igb(4), are observed to perform well in terms of stability and performance. 
 

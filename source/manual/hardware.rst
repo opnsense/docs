@@ -25,7 +25,7 @@ Full installs on `SD memory cards <https://en.wikipedia.org/wiki/Secure_Digital>
 
 While supported devices range from embedded systems to rack-mounted servers,
 the hardware must be capable of running 64-bit `operating
-systems <https://en.wikipedia.org/wiki/operating_system>`__.
+systems <https://en.wikipedia.org/wiki/Operating_system>`__.
 
 ---------------------
 Hardware requirements
@@ -166,15 +166,15 @@ the same.
 
 For further help and support, see
 
--  `FreeBSD 14.1 Hardware Compatibility
-   List <https://www.freebsd.org/releases/14.1R/hardware/>`__
+-  `FreeBSD 15.1 Hardware Compatibility
+   List <https://www.freebsd.org/releases/15.1R/hardware/>`__
 -  `OPNsense Forum <https://forum.opnsense.org/>`__
 
 .. rubric:: List of references
    :name: list-of-references
 
 -  Schellevis, Jos; *Hardware requirements*; `OPNsense > Get
-   started <https://opnsense.org/users/get-started/>`__ (2015)
+   started <https://opnsense.org/get-started/>`__ (2015)
 -  McKusick, Marshall; Neville-Neil, George V; Warson, Robert NM; *The
    Design and Implementation of the FreeBSD Operating System* (2015);
    Addison-Wesley, New Jersey; ISBN 978-0321968975

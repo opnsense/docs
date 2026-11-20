@@ -1014,8 +1014,7 @@ prefixed with os-, our new package file will be called:
 -  configuration template language reference (mostly the same as Volt) :
    https://jinja.palletsprojects.com/en/stable/
 -  OPNsense architecture :doc:`Architecture <../architecture>`
--  OPNsense creating models
-   `Develop:Frontend/Creating\_models </index.php/Develop:Frontend/Creating_models>`__
+-  OPNsense creating models :doc:`Models <../frontend/models>`
 
 .. |overview| image:: images/Helloworld_overview.png
    :width: 700px

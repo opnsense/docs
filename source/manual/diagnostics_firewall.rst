@@ -25,7 +25,7 @@ It's also possible to manually adjust the contents, using **Quick add address** 
 Sessions
 -----------------------------------------
 
-Utilises `pftop <https://www.freebsd.org/cgi/man.cgi?query=pftop>`__ to offer a detailed view on the active sessions
+Utilises `pftop <https://man.freebsd.org/cgi/man.cgi?query=pftop>`__ to offer a detailed view on the active sessions
 and their traffic counters.
 
 The following fields are available in the grid:
@@ -84,7 +84,7 @@ Command                   Button to drop a specific state (State id)
 ========================= ================================================================================================
 
 
-List of available TCP states (as defined by `RFC 793 <https://www.rfc-editor.org/rfc/rfc793>`__)
+List of available TCP states (as defined by `RFC 793 <https://datatracker.ietf.org/doc/html/rfc793>`__)
 ==========================================================================================================================
 
 ========================= ================================================================================================
@@ -107,7 +107,7 @@ TIME_WAIT                 Represents waiting for enough time to pass to be sure 
 CLOSED                    Represents no connection state at all
 ==========================================================================================================================
 
-List of available UDP/Other states (man `pf.conf(5) <https://www.freebsd.org/cgi/man.cgi?pf.conf(5)>`__)
+List of available UDP/Other states (man `pf.conf(5) <https://man.freebsd.org/cgi/man.cgi?query=pf.conf&sektion=5>`__)
 ==========================================================================================================================
 
 ========================= ================================================================================================
@@ -121,5 +121,5 @@ MULTIPLE                  The state if both hosts have sent packets.
 Statistics
 -----------------------------------------
 
-Various detailed statistics gathered from `pfctl <https://www.freebsd.org/cgi/man.cgi?query=pfctl>`__,
+Various detailed statistics gathered from `pfctl <https://man.freebsd.org/cgi/man.cgi?query=pfctl>`__,
 such as packet counters per interface, memory limits, configured timeouts and detailed active rules.

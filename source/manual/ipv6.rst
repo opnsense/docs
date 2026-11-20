@@ -96,7 +96,7 @@ The opposite of the solicitation is the advertisement, which we will also use on
 A router advertisement contains vital information for the client to exist within the network.
 Usually a link-local (:code:`FE80::/10`) address is used as source address in the message, which will then be used as (default) gateway by the client.
 
-Certain flags and options are offered to the client, the most prominent flags are the following ones (`rfc4861 <https://www.rfc-editor.org/rfc/rfc4861>`__):
+Certain flags and options are offered to the client, the most prominent flags are the following ones (`rfc4861 <https://datatracker.ietf.org/doc/html/rfc4861>`__):
 
 ====  ================================= ======================================================================
 Code  Name                              Description
@@ -361,10 +361,9 @@ When using static mode or the "Manual configuration" setting in tracking you can
 Make sure to test the following on multiple different clients to see if connectivity can be established at all or not:
 
 *   https://test-ipv6.com/
-*   https://ipv6-test.com/
 
 
-These two pages can help you diagnose remaining issues as well.
+This page can help you diagnose remaining issues as well.
 Make sure to set up both DHCPv6 server and Router advertisements during testing when debugging IPv6 connectivity. If you eventually do not have any need for one or the other it's also ok to disable them. A completely static setup is also possible.
 
 
