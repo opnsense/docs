@@ -765,10 +765,10 @@ We will use ``Identity association`` mode to carve out a prefix on LAN that is b
 
     .. tab:: Subnets
 
-        The subnet pool is automatically calculated. Since our example prefix ID range is from ``0-F``, the calculated subnet size will be ``2001:db8:1234::/60``.
-        This subnet will be automatically split into two subnets:
-            * the first subnet ``2001:db8:1234::/61`` will host the ``IA_NA`` pool ``2001:db8:1234::/64``
-            * the second subnet ``2001:db8:1234:8::/61`` will host the ``IA_PD`` pool.
+        The subnet is automatically calculated. Since our example prefix ID range is from ``0-F``, the calculated subnet will be ``2001:db8:1234::/60``.
+        With the delegated length of ``/62`` configured below, this subnet is automatically divided as follows:
+            * The first block ``2001:db8:1234::/62`` is reserved for on-link use and hosts the ``IA_NA`` address pool in ``2001:db8:1234::/64``.
+            * The remaining blocks ``2001:db8:1234:8::/61`` and ``2001:db8:1234:4::/62`` host the ``IA_PD`` pools, providing three /62 delegations.
 
         ==================================  =======================================================================================================
         **Option**                          **Value**
@@ -780,9 +780,10 @@ We will use ``Identity association`` mode to carve out a prefix on LAN that is b
 
     .. tab:: PD Pools
 
-        For the ``IA_PD`` pool, the automatically calculated ``IA_PD`` prefix of the subnet is used. In our example that is ``2001:db8:1234:8::/61``.
-        This is the range which can be delegated to other routers. We can set the delegated length to control how many prefixes can be leased from
-        this pool. In our case we need 2 delegated prefixes, so we set a delegated length of ``/62``.
+        The delegated length controls the size of the prefixes leased to other routers. With a delegated length of ``/62``,
+        the first block ``2001:db8:1234::/62`` is reserved for on-link use. The remaining space is automatically represented by two generated PD pools:
+            * ``2001:db8:1234:8::/61`` provides two /62 delegations.
+            * ``2001:db8:1234:4::/62`` provides one /62 delegation.
 
         ==================================  =======================================================================================================
         **Option**                          **Value**
@@ -794,9 +795,10 @@ We will use ``Identity association`` mode to carve out a prefix on LAN that is b
         .. Note::
 
             By splitting your ISP provided prefix smartly, each of your internal networks can have dynamic prefix delegation ranges.
+            For example, an allocated /57 with a delegated length of /60 reserves the first /60 for on-link use and provides seven /60 delegations.
 
 
-After applying the configuration, clients will receive an ``IA_NA`` address (e.g., ``2001:db8:1234::100/128``) and an ``IA_PD`` prefix (e.g., ``2001:db8:1234:8::/62``).
+After applying the configuration, clients will receive an ``IA_NA`` address (e.g., ``2001:db8:1234::1000/128``) and an ``IA_PD`` prefix (e.g., ``2001:db8:1234:8::/62``).
 
 
 .. Attention::
