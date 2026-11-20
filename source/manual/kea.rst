@@ -9,8 +9,8 @@ Kea is the next generation of DHCP software, developed by Internet Systems Conso
 It is considered the replacement for `ISC-DHCP` in larger HA enabled setups
 and synergizes well with `radvd` for HA enabled router advertisements.
 
-Currently it is not possible to register hostnames dynamically between KEA and Unbound, only static reservations will be
-synchronized on an Unbound service restart.
+Dynamic lease registration from KEA into local DNS services is not supported. Static reservations can be
+registered when the DNS service is restarted; see :ref:`kea-static-dns-registration`.
 
 -------------------------
 Control Agent
@@ -139,6 +139,7 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. "home.arpa.").
         DNS reverse zone                          Full reverse DNS zone receiving PTR updates (e.g. "200.10.10.in-addr.arpa.").
         DNS qualifying suffix                     If a DHCP client only sends a hostname in option 81, append this suffix to create an FQDN (e.g. "home.arpa.").
+                                                  Also defines the domain for :ref:`kea-static-dns-registration`.
         DNS server address                        Authoritative DNS server receiving dynamic updates.
         DNS server port                           Port of the authoritative DNS server receiving dynamic updates. Leave empty to use default (53).
         TSIG key name                             TSIG key name used for secure DNS updates.
@@ -178,6 +179,7 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         DNS reverse zone                          Full reverse DNS zone receiving PTR updates (e.g. "8.b.d.0.1.0.0.2.ip6.arpa."). 
                                                   This will not be dynamically adjusted if the subnet is configured with a dynamic prefix.
         DNS qualifying suffix                     If a DHCP client only sends a hostname in option 81, append this suffix to create an FQDN (e.g. "home.arpa.").
+                                                  Also defines the domain for :ref:`kea-static-dns-registration`.
         DNS server address                        Authoritative DNS server receiving dynamic updates.
         DNS server port                           Port of the authoritative DNS server receiving dynamic updates. Leave empty to use default (53).
         TSIG key name                             TSIG key name used for secure DNS updates.
@@ -512,6 +514,32 @@ The same logic applies to the efi bootfile.
     Any option can be sent as user defined hex. This helps for structured and encapsulated options that may have multiple types or are binary blobs.
     A common example is ``vendor specific [43]``, which is used for vendor specific information.
     Just as with the bootfiles example, if you match client specific option codes, you can send out different vendor specific option codes in the same subnet.
+
+
+.. _kea-static-dns-registration:
+
+Static reservation DNS registration
+-----------------------------------
+
+To register KEA reservations in a local DNS service, enable **Register DHCP Static Mappings** in that service.
+The corresponding KEA DHCPv4 or DHCPv6 server must be enabled, and each reservation must have a valid hostname
+and an IP address.
+
+Set **DNS qualifying suffix** in the reservation's subnet to choose the registration domain. For example,
+a reservation named ``printer`` with suffix ``home.arpa`` is registered as ``printer.home.arpa``.
+If the suffix is empty, the firewall's system domain is used instead.
+
+The qualifying suffix aligns with KEA's own DDNS naming model. DHCP **Domain name** and **Domain search** options
+configure client name resolution and may differ from the registration domain. Neither subnet nor reservation
+DHCP options determine the domain used for static DNS registration.
+
+.. Note::
+
+    Static registration is skipped for any subnet with a DDNS **DNS server address** configured, even when the
+    DDNS Agent is disabled. This avoids local static records shadowing records managed on the authoritative
+    DNS server. Leave that address empty when using local static registration only; the DDNS Agent can remain disabled.
+
+Restart the local DNS service after changing reservations or their subnet's qualifying suffix.
 
 
 Dynamic DNS (RFC2136)

@@ -44,7 +44,8 @@ as IPv6 failover can take up to 30 seconds with available configuration options.
 For larger enterprise setups, `KEA DHCP` can be a viable alternative. It supports lease synchronisation via REST API, which means both DHCP servers keep track
 of all existing leases and do not need split pools. It is also far more scalable if there are thousands of leases.
 
-The tradeoff using `KEA DHCP` is a more complicated setup, especially when custom DHCP options are needed. DNS registration is also not possible.
+The tradeoff using `KEA DHCP` is a more complicated setup, especially when custom DHCP options are needed.
+Dynamic lease registration from KEA into Dnsmasq is not supported, but :ref:`kea-static-dns-registration` is available.
 
 With this in mind, pick the right choice for your setup. When in doubt, our advise is to use `Dnsmasq`.
 
@@ -191,7 +192,7 @@ when received from the network. DHCP requires at least one dhcp-range and matchi
                                                   domain is used. Note that all DHCP leases will be assigned to the same domain. If this
                                                   is undesired, static DHCP lease registration is able to provide coherent mappings.
         **Register DHCP Static Mappings**         If this option is set, then DHCP static mappings will be registered, so that their name
-                                                  can be resolved.
+                                                  can be resolved. For KEA domain selection and requirements, see :ref:`kea-static-dns-registration`.
         **Prefer DHCP**                           If this option is set, then DHCP mappings will be resolved before the manual list of
                                                   names below. This only affects the name given for a reverse lookup (PTR).
         ========================================= ====================================================================================
