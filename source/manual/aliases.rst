@@ -548,8 +548,15 @@ subnet and hosts exclusions. It is possible to create Network group (combined) A
 It's always good to check if an address is included in the Alias via :menuselection:`Firewall --> Diagnostics --> pfTable`
 
 ---------------------------------
-Spamhaus
+Freely accessible IP lists
 ---------------------------------
+
+The lists below can be downloaded without an account and used as a :code:`URL Table (IPs)` alias, for example to
+drop their addresses in an inbound firewall rule. Check the provider's terms of use before relying on a list.
+
+..................
+Spamhaus
+..................
 
 The Spamhaus Don't Route Or Peer Lists DROP (Don't Route Or Peer) and DROPv6 are advisory "drop all traffic" lists,
 consisting of netblocks that are "hijacked" or leased by professional spam or
@@ -566,3 +573,19 @@ Downloads
 
 To setup the DROP and DROPv6 lists in combination with the firewall rules, read:
 :doc:`how-tos/drop`
+
+..........................
+NetAPI honeypot attackers
+..........................
+
+NetAPI runs its own network of honeypot sensors and publishes the IPv4 addresses that attacked them during the
+last 48 hours, one address per line. The list is regenerated every hour and is free to use under the
+`CC BY 4.0 <https://creativecommons.org/licenses/by/4.0/>`__ license. Addresses of known research scanners
+(such as Shodan and Censys) are left out.
+
+*Source :* https://netapi.com/compromised-ips/
+
+Downloads
+ * `IPv4 list <https://netapi.com/api2/?method=compromised&dataset_type=ip>`__
+
+Since the list only covers the last 48 hours, a :code:`Refresh frequency` of a few hours keeps the alias current.
