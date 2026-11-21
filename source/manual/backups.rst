@@ -14,6 +14,12 @@ would like to store rrd statistics as well (in which case they will be stored in
 
 .. Warning::
 
+    Restoring a configuration can replace administrator credentials and other security settings.
+    Grant ``System: Configuration: Backups`` only to users trusted with full administrative control,
+    even if they do not have separate user-management privileges.
+
+.. Warning::
+
     The configured console settings of a machine may not be applicable to the situation of other (virtual) hardware platforms.
     To avoid losing console access to the firewall in these cases, the configuration restore will not apply the backups'
     console settings by default. To disable this behaviour, uncheck **Exclude console settings from import**.
