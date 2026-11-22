@@ -104,7 +104,7 @@ Apache HTTPd (with modules like mod_php)       Webserver with interpreter module
 .. _mod_jk: https://tomcat.apache.org/connectors-doc/webserver_howto/apache.html
 .. _Undertow: https://undertow.io/
 .. _RoR: https://rubyonrails.org/
-.. _sinatrarb: http://sinatrarb.com/
+.. _sinatrarb: https://sinatra.run/
 
 **Upstream, Backend**
 
