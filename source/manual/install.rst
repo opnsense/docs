@@ -470,6 +470,8 @@ After installation, the system will prompt you for the interface
 assignment. If you ignore this, then the default settings will be applied.
 Installation ends with the login prompt.
 
+Once interfaces are assigned, use the :doc:`/manual/wizard` to configure the firewall through the web interface.
+
 By default you have to log in to enter the console.
 
 **Welcome message**

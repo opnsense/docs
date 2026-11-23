@@ -17,6 +17,7 @@ activities.
    :maxdepth: 2
    :titlesonly:
 
+   manual/wizard
    manual/users
    manual/backups
    manual/firmware
