@@ -91,12 +91,43 @@ Description                   Optional description for this item
     manually (OpenVPN manages its own routes for example).
 
 
+................................
+Equal-Cost Multipath (ECMP)
+................................
+
+ECMP distributes traffic to the same destination network across multiple gateways with equal routing priority.
+It is supported for static routes and for dynamic routing via the FRR plugin (see :doc:`/manual/dynamic_routing`).
+
+To configure ECMP:
+
+1. Set :code:`net.route.multipath` to :code:`1` in :menuselection:`System --> Settings --> Tunables` and apply the change.
+   Alternatively, select **Enable ECMP routing** in the configuration wizard.
+2. In :menuselection:`System --> Routes --> Configuration`, add an enabled static route for each gateway,
+   using the same **Network Address** (including prefix length) and a different **Gateway** for each entry.
+   The gateways must already be configured under :menuselection:`System --> Gateways --> Configuration`.
+3. Apply the routes and check :menuselection:`System --> Routes --> Status` to verify the installed paths.
+
+For example, two routes for :code:`192.0.2.0/24` via different gateways provide two equal-cost paths to that network.
+The configuration page groups routes by destination and displays **ECMP routing disabled** when multiple routes
+share a destination while :code:`net.route.multipath` is disabled (the default).
+
+.. Warning::
+
+    ECMP static routes currently do not support path monitoring. Failures that leave a route installed must be
+    handled by clients using that route. UDP-based protocols with recovery mechanisms, such as QUIC, may recover
+    seamlessly, while TCP connections may stall until they time out or the client retries.
+    Initial connections can also be sticky: repeated attempts may select the same failed path, making a failed
+    link appear to be a permanent loss of connectivity even when another path is available.
+
+
 ----------------------
 Status
 ----------------------
 
 
 The status page shows the current active content of the routing table.
+
+ECMP routes can be expanded to show their individual next hops.
 
 ===========================================================================================================
 
