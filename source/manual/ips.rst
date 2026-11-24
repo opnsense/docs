@@ -254,6 +254,25 @@ format. In order to add custom options, create a YAML file with the :code:`.yaml
 will be referenced by an `include` directive from the generated `suricata.yaml` configuration file.
 Files in the override directory are not parsed by a templating engine.
 
+Suricata 7.0 and above supports `fully-qualified overrides <https://github.com/OISF/suricata/pull/8439>`__,
+allowing overrides of specific values without having to redefine the complete top-layer object. As
+an example, the following snippet will enable logging of ethernet headers without changing any
+other configuration:
+
+.. code-block:: yaml
+
+    %YAML 1.1
+    ---
+    outputs.0.eve-log.ethernet: yes
+
+.. Warning::
+
+    Files in the override directory are included at the top level of `suricata.yaml`. Any top-level
+    stanzas present in override files will completely override the same stanza in the generated
+    configuration. Configurations are not merged in any way. Extreme care should be taken when
+    overriding the configuration, as the running configuration may no longer match what is reflected
+    in the web GUI. A notice is added to the IDS configuration page if override files are detected.
+
 .. Note::
 
     Support for the :code:`custom.yaml` file was removed in 26.1. No automatic migration exists so any additional configuration from :code:`custom.yaml` will need to be migrated to the :code:`/usr/local/etc/suricata/conf.d/` override directory and any templating removed.
