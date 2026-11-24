@@ -31,6 +31,126 @@ can be found below as well.
 
 
 --------------------------------------------------------------------------
+26.7.10 (November 24, 2026)
+--------------------------------------------------------------------------
+
+
+In the spirit of business as usual: here is another batch of security
+advisories, bug fixes and feature improvements in internal and external
+components.
+
+Of note are reliability improvements in DHCP and PPP client handling which
+showed good results in public calls for testing on the forum.  This update
+also switches from Hyperscan use to Vectorscan, which is a drop-in change
+and has some other portability benefits as well.
+
+Monit was updated to 6.1.0 which may have more hidden incompatibilities.
+Special thanks to Konstantinos Spartalis for a timely submission on fixing
+these proactively.
+
+PHP 8.5.13 and several FreeBSD security advisories are included as well.
+
+We have been working a bit on discussing restructures for how we deal with
+hotfix and patch releases in the future.  There is a plan going forward,
+but we will field test it before saying much more.
+
+Here are the full patch notes:
+
+* system: add user API key descriptions
+* system: throw read-only for clear log action
+* system: separate dashboard widget init from slower start routine
+* system: drop gateway threshold constraints that never ran (contributed by Stephen Cox)
+* system: show the stored history range in the log viewer (contributed by Greelan)
+* system: name the setting in backup provider validation messages (contributed by Greelan)
+* system: fix Norwegian/Vietnamese not being translated
+* system: fix argument reversal in str_starts_with() in getLandingPage()
+* reporting: netflow: modify netgraph NAT accounting to prevent duplicate flow records
+* interfaces: validate PPP array fields as well `[1] <https://github.com/opnsense/core/security/advisories/GHSA-f35q-c34m-pfw3>`__  (contributed by superbot-helper)
+* interfaces: update MAC vendor mappings
+* interfaces: protect against empty PPP iteration
+* interfaces: remove newwanip even from DHCP alias handling
+* interfaces: flatten the successful TIMEOUT branch of DHCP
+* interfaces: introduce DAD sleep for 6to4 and 6RD trackers
+* interfaces: remove the PPP uptime option
+* interfaces: defer PPP to after rc.bootup completes
+* interfaces: do not throw an error on getting stats for interfaces
+* interfaces: use interfaces_merge_pending() in newwanip events when interface settings are being applied
+* firewall: aliases: add Kosovo country code "XK" and remove unused "EU" workaround
+* firewall: fix multiple issues in GIF, GRE, Bridge, LAGG and PPP (contributed by Stephen Cox)
+* firewall: fix resolving source NAT target network (contributed by Steve Kerrison)
+* firewall: replace firewall_rule_lookup.php with ruleLookupAction()
+* firewall: fix multiple issues in aliases, groups and sessions (contributed by Stephen Cox)
+* firewall: generate a fallback UUID when empty during export in migration assistant
+* firewall: do not count the template rule of an empty list for DNatSequenceField (contributed by Stephen Cox)
+* captive portal: partially revert the IPv4 roaming removal to keep dual stack working
+* captive portal: make zone ID a text field and constrain it to be unique
+* firmware: support patch syntax for initial releases
+* firmware: make subscription and flavour use more strict `[2] <https://github.com/opnsense/core/security/advisories/GHSA-89wp-xvvm-9pp4>`__  (reported by anhlvk48 from Apex Orion)
+* intrusion detection: allow % in policy descriptions (contributed by Gennaro Cimmino)
+* intrusion detection: also catch urllib3 exceptions in rule downloader
+* intrusion detection: prevent negative values in priority field
+* intrusion detection: pattern matcher "hs" is now provided by drop-in replacement Vectorscan (contributed by MajorP93)
+* ipsec: check pre-shared key uniqueness when only the remote identifier changes (contributed by Stephen Cox)
+* ipsec: better handling of "(unnamed)" connections in dashboard widget
+* kea: waste less prefix space when calculating IA_NA and IA_PD
+* kea: align domain registration of static reservations with ddns_qualifying_suffix instead of overloading DHCP options
+* lang: added Vietnamese as a new language, which was actually shipped in 26.7.9 but did not yet work
+* monit: fix faulty escape sequence in password write
+* monit: update polltime mask to include slash character (contributed by electronicm)
+* monit: allow DHCP interfaces in service settings (contributed by Konstantinos Spartalis)
+* monit: fix 6.1 incompatibilities and substitute deprecations (contributed by Konstantinos Spartalis)
+* unbound: remove support for deprecated blocklistproject entries (contributed by Konstantinos Spartalis)
+* unbound: fix a misinterpretation of IPv6 addresses in blocklist handling (contributed by Stephen Cox)
+* wireguard: add $enabled flag for support for toggleClientAction()
+* wireguard: fix restart action without instance parameter (contributed by Konstantinos Spartalis)
+* backend: restrict service stop and similar actions to "wheel,wwwonly" (contributed by Bill Flood)
+* backend: pluginctl enforce primary mode as selected by caller (reported by Dominik Münsterer)
+* shell: improve error handling of the restore backup functionality (contributed by Alok K. Dhir)
+* shell: opnsense-version: add package tree hash support
+* tests: add a test case for getNodeCotent()
+* plugins: partial rollout of restricting service stop and similar actions to "wheel,wwwonly" (contributed by Greelan)
+* plugins: os-caddy 2.2.4 `[3] <https://github.com/opnsense/plugins/blob/stable/26.7/www/caddy/pkg-descr>`__ 
+* plugins: os-ddclient 1.34 `[4] <https://github.com/opnsense/plugins/blob/stable/26.7/dns/ddclient/pkg-descr>`__ 
+* plugins: os-firewall-legacy 1.2 `[5] <https://github.com/opnsense/plugins/blob/stable/26.7/net/firewall-legacy/pkg-descr>`__ 
+* plugins: os-intrusion-detection-content-et-open 1.0.3 switch to suricata-8.0 ruleset and add new ET categories (contributed by juergen2025sys)
+* plugins: os-zabbix-agent 1.20 `[6] <https://github.com/opnsense/plugins/blob/stable/26.7/net-mgmt/zabbix-agent/pkg-descr>`__ 
+* plugins: os-zabbix-proxy 1.18 `[7] <https://github.com/opnsense/plugins/blob/stable/26.7/net-mgmt/zabbix-proxy/pkg-descr>`__ 
+* src: tzdata: import tzdata 2026f `[8] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:29.tzdata.asc>`__ 
+* src: vfs: avoid integer overflow when faulting `[9] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:30.vfs.asc>`__ 
+* src: openssl: update to 3.5.9 `[10] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:31.openssl.asc>`__ 
+* src: openzfs: data corruption involving pending block frees `[11] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:32.zfs.asc>`__ 
+* src: ktls: check the record type message holds its byte `[12] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:74.ktls.asc>`__ 
+* src: linux: kernel memory disclosure via Linuxulator extattr syscalls `[13] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:75.linux.asc>`__ 
+* src: multiple vulnerabilities in the ocs_fc driver `[14] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:76.ocs_fc.asc>`__ 
+* src: netlink: local privilege escalation via netlink heap buffer overflow `[15] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:77.netlink.asc>`__ 
+* src: gssd: do not map unrecognized Kerberos principals to UID 0 `[16] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:78.gssd.asc>`__ 
+* src: nfsd: remote code execution via stateid type confusion `[17] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:79.nfs.asc>`__ 
+* src: vfs: privilege escalation via inotify watch descriptor wraparound `[18] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:80.vfs.asc>`__ 
+* src: vfs: apsicum and O_RESOLVE_BENEATH bypass at mount roots `[19] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:81.vfs.asc>`__ 
+* src: ipsec: stream cipher counter reuse `[20] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:82.ipsec.asc>`__ 
+* src: unix: privilege escalation via shutdown race on unix sockets `[21] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:83.unix.asc>`__ 
+* src: vmm: bhyve guests can panic the host on Intel CPUs `[22] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:84.vmm.asc>`__ 
+* src: kqueue: multiple vulnerabilities in kevent `[23] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:85.kqueue.asc>`__ 
+* src: freebsd32: privilege escalation via compat32 recvmsg control messages `[24] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:86.freebsd32.asc>`__ 
+* src: socket: privilege escalation via socket unsplice timeout `[25] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:87.socket.asc>`__ 
+* src: sound: privilege escalation via sound software buffer resizing `[26] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:88.sound.asc>`__ 
+* src: bsnmp: fix multiple vulnerabilities `[27] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:89.bsnmp.asc>`__ 
+* src: vm: privilege escalation via prefaulting on largepage mappings `[28] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:90.vm.asc>`__ 
+* src: fdescfs: privilege escalation via missing access checks `[29] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:91.fdescfs.asc>`__ 
+* src: vfs: directory permission bypass via open `[30] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:92.vfs.asc>`__ 
+* src: tcp: local privilege escalation via TCP MSG_OOB handling `[31] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:93.tcp.asc>`__ 
+* src: tmpfs: failed to clear set-group-ID bit on new files `[32] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:94.tmpfs.asc>`__ 
+* ports: ca_root_nss 3.134 `[33] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_1_134.html>`__ 
+* ports: kea 3.0.5 `[34] <https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-3.0.5>`__ 
+* ports: monit 6.1.0 `[35] <https://mmonit.com/monit/changes/>`__ 
+* ports: nss 3.133 `[36] <https://firefox-source-docs.mozilla.org/security/nss/releases/nss_1_133.html>`__ 
+* ports: php 8.5.13 `[37] <https://www.php.net/ChangeLog-8.php#8.5.13>`__ 
+* ports: py-duckdb 2.0.0 `[38] <https://github.com/duckdb/duckdb/releases/tag/v2.0.0>`__ 
+* ports: vectorscan 5.4.14 `[39] <https://github.com/VectorCamp/vectorscan/releases/tag/vectorscan/5.4.14>`__ 
+
+
+
+--------------------------------------------------------------------------
 26.7.9 (November 11, 2026)
 --------------------------------------------------------------------------
 
