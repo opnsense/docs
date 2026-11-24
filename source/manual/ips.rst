@@ -248,10 +248,15 @@ Use the info button here to collect details about the detected event or threat.
 Advanced configuration
 ------------------------
 
-OPNsense supports custom Suricata configurations in `suricata.yaml <https://suricata.readthedocs.io/en/suricata-6.0.0/configuration/suricata-yaml.html>`__
-format. In order to add custom options, create a template file named :code:`custom.yaml` in the :code:`/usr/local/opnsense/service/templates/OPNsense/IDS/` directory.
+OPNsense supports custom Suricata configurations in `suricata.yaml <https://suricata.readthedocs.io/en/suricata-8.0.0/configuration/suricata-yaml.html>`__
+format. In order to add custom options, create a YAML file with the :code:`.yaml` extension in the
+:code:`/usr/local/etc/suricata/conf.d/` override directory. On a configuration reload, the file
+will be referenced by an `include` directive from the generated `suricata.yaml` configuration file.
+Files in the override directory are not parsed by a templating engine.
 
-Since this file is parsed by our template system, you are able to use template tags using the :doc:`Jinja2 </development/backend/templates/>` language.
+.. Note::
+
+    Support for the :code:`custom.yaml` file was removed in 26.1. No automatic migration exists so any additional configuration from :code:`custom.yaml` will need to be migrated to the :code:`/usr/local/etc/suricata/conf.d/` override directory and any templating removed.
 
 Available rulesets
 ------------------
