@@ -130,11 +130,14 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         Domain search                             The domain search list to offer to the client
         NTP servers                               Specifies a list of IP addresses indicating NTP (RFC 5905) servers available to the client.
         Time servers                              Specifies a list of RFC 868 time servers available to the client.
-        Next server                               Next server IP address
         TFTP server                               TFTP server address or FQDN
         TFTP bootfile name                        Boot filename to request
         IPv6-only Preferred (Option 108)          The number of seconds for which the client should disable DHCPv4. The minimum value is 300 seconds.
         Options                                   Select custom DHCPv4 options that were created in the options tab.
+        **Boot settings**
+        Next server                               Boot server IPv4 address sent in the BOOTP siaddr field.
+        Server hostname                           Boot server hostname sent in the BOOTP sname field (maximum 63 bytes).
+        Boot filename                             Boot filename sent in the BOOTP file field (maximum 127 bytes).
         **Dynamic DNS**
         DNS forward zone                          DNS zone where DHCP clients should be registered (e.g. "home.arpa.").
         DNS reverse zone                          Full reverse DNS zone receiving PTR updates (e.g. "200.10.10.in-addr.arpa.").
@@ -230,10 +233,13 @@ This is the DHCPv4/v6 service available in KEA, which offers the following tab s
         Domain search                             The domain search list to offer to the client
         NTP servers                               Specifies a list of IP addresses indicating NTP (RFC 5905) servers available to the client.
         Time servers                              Specifies a list of RFC 868 time servers available to the client.
-        Next server                               Next server IP address
         TFTP server                               TFTP server address or FQDN
         TFTP bootfile name                        Boot filename to request
         Options                                   Select custom DHCPv4 options that were created in the options tab.
+        **Boot settings**
+        Next server                               Boot server IPv4 address sent in the BOOTP siaddr field.
+        Server hostname                           Boot server hostname sent in the BOOTP sname field (maximum 63 bytes).
+        Boot filename                             Boot filename sent in the BOOTP file field (maximum 127 bytes).
         ========================================= ====================================================================================
 
         **DHCPv6**
@@ -426,6 +432,17 @@ Routers (gateway)                   ``192.168.1.1``                       ``192.
 
 Configure the managed clients to send the matching value, then use the two source networks in firewall rules to grant the required
 local access. Clients without a matching value cannot use either subnet.
+
+
+DHCP boot
+-------------------------
+
+For network boot, **Boot settings** in a DHCPv4 subnet or reservation populate the fixed BOOTP fields:
+**Next server** (``siaddr``), **Server hostname** (``sname``), and **Boot filename** (``file``).
+Reservation values override the corresponding subnet settings for that client.
+
+The **TFTP server** and **TFTP bootfile name** fields under **DHCP option data** send DHCP options 66 and 67 instead.
+These are separate from the BOOTP fields; use the settings your boot client supports.
 
 
 DHCP Options
