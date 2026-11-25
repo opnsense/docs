@@ -497,6 +497,48 @@ Here are the full patch notes for patch release 1:
 * ports: python 3.13.18 `[59] <https://docs.python.org/release/3.11.18/whatsnew/changelog.html>`__ 
 * ports: sqlite 3.54.1 `[60] <https://sqlite.org/releaselog/3_54_1.html>`__ 
 
+Here are the full patch notes for patch release 2:
+
+* system: throw read-only for clear log action
+* interfaces: validate PPP array fields as well `[61] <https://github.com/opnsense/core/security/advisories/GHSA-f35q-c34m-pfw3>`__  (contributed by superbot-helper)
+* interfaces: protect against empty PPP iteration
+* firewall: aliases: add Kosovo country code "XK" and remove unused "EU" workaround
+* firewall: generate a fallback UUID when empty during export in migration assistant
+* captive portal: partially revert the IPv4 roaming removal to keep dual stack working
+* firmware: make subscription and flavour use more strict `[62] <https://github.com/opnsense/core/security/advisories/GHSA-89wp-xvvm-9pp4>`__  (reported by anhlvk48 from Apex Orion)
+* firmware: support patch syntax for initial releases
+* ipsec: better handling of "(unnamed)" connections in dashboard widget
+* monit: fix faulty escape sequence in password write
+* backend: restrict service stop and similar actions to "wheel,wwwonly" (contributed by Bill Flood)
+* backend: pluginctl enforce primary mode as selected by caller (reported by Dominik Münsterer)
+* plugins: os-frr 2.1 `[63] <https://github.com/opnsense/plugins/blob/stable/26.7/net/frr/pkg-descr>`__ 
+* src: tzdata: import tzdata 2026f `[64] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:29.tzdata.asc>`__ 
+* src: vfs: avoid integer overflow when faulting `[65] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:30.vfs.asc>`__ 
+* src: openssl: update to 3.5.9 `[66] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:31.openssl.asc>`__ 
+* src: openzfs: data corruption involving pending block frees `[67] <https://www.freebsd.org/security/advisories/FreeBSD-EN-26:32.zfs.asc>`__ 
+* src: ktls: check the record type message holds its byte `[68] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:74.ktls.asc>`__ 
+* src: linux: kernel memory disclosure via Linuxulator extattr syscalls `[69] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:75.linux.asc>`__ 
+* src: multiple vulnerabilities in the ocs_fc driver `[70] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:76.ocs_fc.asc>`__ 
+* src: netlink: local privilege escalation via netlink heap buffer overflow `[71] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:77.netlink.asc>`__ 
+* src: gssd: do not map unrecognized Kerberos principals to UID 0 `[72] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:78.gssd.asc>`__ 
+* src: nfsd: remote code execution via stateid type confusion `[73] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:79.nfs.asc>`__ 
+* src: vfs: privilege escalation via inotify watch descriptor wraparound `[74] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:80.vfs.asc>`__ 
+* src: vfs: apsicum and O_RESOLVE_BENEATH bypass at mount roots `[75] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:81.vfs.asc>`__ 
+* src: ipsec: stream cipher counter reuse `[76] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:82.ipsec.asc>`__ 
+* src: unix: privilege escalation via shutdown race on unix sockets `[77] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:83.unix.asc>`__ 
+* src: vmm: bhyve guests can panic the host on Intel CPUs `[78] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:84.vmm.asc>`__ 
+* src: kqueue: multiple vulnerabilities in kevent `[79] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:85.kqueue.asc>`__ 
+* src: freebsd32: privilege escalation via compat32 recvmsg control messages `[80] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:86.freebsd32.asc>`__ 
+* src: socket: privilege escalation via socket unsplice timeout `[81] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:87.socket.asc>`__ 
+* src: sound: privilege escalation via sound software buffer resizing `[82] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:88.sound.asc>`__ 
+* src: bsnmp: fix multiple vulnerabilities `[83] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:89.bsnmp.asc>`__ 
+* src: vm: privilege escalation via prefaulting on largepage mappings `[84] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:90.vm.asc>`__ 
+* src: fdescfs: privilege escalation via missing access checks `[85] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:91.fdescfs.asc>`__ 
+* src: vfs: directory permission bypass via open `[86] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:92.vfs.asc>`__ 
+* src: tcp: local privilege escalation via TCP MSG_OOB handling `[87] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:93.tcp.asc>`__ 
+* src: tmpfs: failed to clear set-group-ID bit on new files `[88] <https://www.freebsd.org/security/advisories/FreeBSD-SA-26:94.tmpfs.asc>`__ 
+* ports: php 8.5.13 `[89] <https://www.php.net/ChangeLog-8.php#8.5.13>`__ 
+
 Migration notes, known issues and limitations:
 
 * The privileges "page-system-groupmanager" and "page-system-usermanager-addprivs" were merged into "page-system-groupmanager" and are no longer available separately.  This was done to avoid the misconception that access to a user management page gives constrained rights to each page, but that is not the case.  User management is a process involving all 3 pages.
