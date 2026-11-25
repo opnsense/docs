@@ -88,7 +88,7 @@ into the GridStack API. This function is called before the widget is rendered to
 
 will insert the :code:`sizeToContent: 650` key-value pair into the GridStack options, making sure that the height of the widget
 does not exceed a maximum of 650 pixels before a scrollbar is inserted. The GridStack API reference can be found
-`here <https://github.com/gridstack/gridstack.js/blob/master/doc/README.md>`__.
+`here <https://github.com/gridstack/gridstack.js/blob/master/doc/API.md>`__.
 
 This object is also persisted once the dashboard has been saved, meaning these properties are also passed in the constructor
 on a widget reload.

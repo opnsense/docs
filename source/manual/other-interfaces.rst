@@ -267,7 +267,7 @@ VXLAN
 ------
 
 Virtual eXtensible Local Area Networks (VXLAN) are used to overlay virtualized layer 2 networks over layer 3 networks
-as described by `rfc7348 <https://tools.ietf.org/html/rfc7348>`__.
+as described by `rfc7348 <https://datatracker.ietf.org/doc/html/rfc7348>`__.
 
 Tunnels can be setup in point to point (parameter :code:`Remote address`) or multicast (parameters :code:`Multicast group` and :code:`Device`).
 The `Source address` must be an existing (statically assigned) address assigned at this firewall, which will be used as

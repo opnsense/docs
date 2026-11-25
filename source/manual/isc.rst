@@ -35,7 +35,7 @@ Using DHCPv4
 A typical DHCPv4 usage scenario is using it on your LAN with an IP range of 192.168.1.x, where x can be a number from 1
 through 254. This means a subnet mask of 255.255.255.0. The range can also be written as 192.168.1.0/24. (The “1” in
 the third group can also be another number, and there are also other ranges available for private use. These are
-described in `RFC 1918 <https://tools.ietf.org/html/rfc1918#section-3>`_.)
+described in `RFC 1918 <https://datatracker.ietf.org/doc/html/rfc1918#section-3>`_.)
 
 The LAN IP of the OPNsense device that serves DHCP to the LAN should fall in the same DHCP IP range. Typically, it gets
 the address ending in .1 (so 192.168.1.1 in this example).
@@ -92,7 +92,7 @@ showing "All Interfaces".
 - All times are reported in local time as specified in `Administration <settingsmenu.html#general>`__
 - Clients are considered online if they exist the ARP table for IPv4 or NDP table for IPv6.
 - The different possible states a lease can be in is documented in the
-  `dhcpd.leases <https://www.freebsd.org/cgi/man.cgi?query=dhcpd.leases>`__ page. If failover is enabled, checking the
+  `dhcpd.leases <https://man.freebsd.org/cgi/man.cgi?query=dhcpd.leases>`__ page. If failover is enabled, checking the
   **inactive** box will reveal all IP addresses currently reserved by DHCPd with a **backup** state. These are leases that are
   available for allocation by the failover secondary. The amount shown will vary depending on the configured failover
   split value or range.

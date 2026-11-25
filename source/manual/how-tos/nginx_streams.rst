@@ -11,7 +11,7 @@ to route based on SNI_ (Server Name Indication) which is an extension in TLS.
 
 .. _TLS: https://en.wikipedia.org/wiki/Transport_Layer_Security
 .. _preread: https://nginx.org/en/docs/stream/ngx_stream_ssl_preread_module.html
-.. _SNI: https://tools.ietf.org/html/rfc6066#section-3
+.. _SNI: https://datatracker.ietf.org/doc/html/rfc6066#section-3
 
 OPNsense specific Information
 =============================
@@ -76,7 +76,7 @@ are used, to choose if the backend connection should be TLS encrypted (again).
 If you want to use an SNI Upstream Map, switch the entry in "Route With"
 and choose a mapping in the corresponding entry.
 
-.. _standard: https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
+.. _standard: https://www.iana.org/assignments/service-names-port-numbers
 
 .. Note::
     In the advanced settings, you can also force TLS based authentication

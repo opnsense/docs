@@ -152,7 +152,7 @@ be created in OPNsense via :menuselection:`System --> Trust --> Authorities`, is
 user and/or server certificates.
 
 OPNsense does not implement an OCSP responder, but to test the concept, we can use the
-`openssl-ocsp <https://www.openssl.org/docs/man3.0/man1/openssl-ocsp.html>`__ command.
+`openssl-ocsp <https://docs.openssl.org/master/man1/openssl-ocsp/>`__ command.
 
 .. Note::
 

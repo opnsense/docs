@@ -328,7 +328,7 @@ be allowed explicitly. In :menuselection:`Firewall --> Rules`, select the IPsec 
 Dead Peer Detection (DPD)
 .................................
 
-Dead Peer Detection (DPD) is a method of detecting a dead IKE peer as specified by `RFC 3706 <https://www.ietf.org/rfc/rfc3706.txt>`__.
+Dead Peer Detection (DPD) is a method of detecting a dead IKE peer as specified by `RFC 3706 <https://www.rfc-editor.org/rfc/rfc3706.txt>`__.
 
 When a peer is assumed dead, an action may be specified, such as closing the CHILD_SA or re-negotiate the CHILD_SA under a fresh IKE_SA.
 
@@ -465,7 +465,7 @@ Connections (:menuselection:`VPN -> IPsec -> Connections`)
 .. Tip::
 
     The number of examples on our end is limited, but for inspiration it's often a good
-    idea to walkthrough the examples provided by `StrongSwan <https://wiki.strongswan.org/projects/strongswan/wiki/UserDocumentation#Configuration-Examples>`__.
+    idea to walkthrough the examples provided by `StrongSwan <https://docs.strongswan.org/docs/latest/index.html#_configuration_examples>`__.
     Quite some swanctl.conf examples are easy to implement as we do follow the same terminology.
 
 
@@ -638,7 +638,7 @@ The OpenVPN module incorporates different functions to setup secured networks fo
 Since the start of our project we organized the openvpn menu section into servers and clients, which actually is a role
 for the same OpenVPN process. As our legacy system has some disadvantages which are difficult to fix in a migration, we have chosen
 to add a new component named :code:`Instances` in version 23.7 which offers access to OpenVPN's configuration in a similar way as
-the upstream `documentation <https://openvpn.net/community-resources/reference-manual-for-openvpn-2-6/>`__ describes it.
+the upstream `documentation <https://openvpn.net/community-docs/community-articles/openvpn-2-7-manual/>`__ describes it.
 This new component will eventually replace the existing client and server options in a future version of OPNsense, leaving
 enough time to migrate older setups.
 

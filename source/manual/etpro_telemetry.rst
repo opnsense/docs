@@ -160,7 +160,7 @@ When the intrusion detection system logs events, they will be (partially) sent t
 ET Pro Telemetry edition.
 
 This paragraph describes the attributes from the
-`eve.json <https://suricata.readthedocs.io/en/suricata-4.1.0/output/eve/eve-json-format.html>`__ log file
+`eve.json <https://docs.suricata.io/en/latest/output/eve/eve-json-format.html>`__ log file
 that are collected to improve threat detection and the sensor health data to evaluate if the data is usable.
 
 An example of an event is detailed below.

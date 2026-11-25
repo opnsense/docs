@@ -25,7 +25,7 @@ All issues reported will have to be triaged and prioritised.  As we
 are a small team we may not always have the time to implement and help,
 but reporting an issue may help others to fill in.
 
-The issue catetories are as follows:
+The issue categories are as follows:
 
 * support: community-based help figuring out setup issues or code problems
 * cleanup: cosmetic changes or non-operational bugs (display issues, etc.)
@@ -38,7 +38,7 @@ The issue catetories are as follows:
 Feature requests that are in line with project goals will eventually
 be added to our roadmap:
 
-https://opnsense.org/about/road-map/
+https://opnsense.org/roadmap/
 
 Feature requests beyond the scope of OPNsense may still be provided
 using the plugin framework:

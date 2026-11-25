@@ -97,7 +97,7 @@ It might be necessary for some ports to also install the source tree:
 
 .. Note::
 
-    There are a lot of resources available about building ports packages, such as `https://www.freebsd.org/ports/ <https://www.freebsd.org/ports/>`__ and
+    There are a lot of resources available about building ports packages, such as `https://ports.freebsd.org/cgi/ports.cgi <https://ports.freebsd.org/cgi/ports.cgi>`__ and
     the pointers in our documentation and tools.
     We consider building custom software a feature not usable for beginners, before creating support tickets, make sure you have
     the necessary skillsets needed to perform such tasks.

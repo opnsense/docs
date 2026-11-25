@@ -88,7 +88,7 @@ you also have to enter your /96 prefix there.
 
 .. Note::
    You may also use any other DNS64 capable DNS server. If you use the default 64:ff9b::/96 prefix, using a service like `Google's Public
-   DNS64 <https://developers.google.com/speed/public-dns/docs/dns64>` is possible, too.
+   DNS64 <https://developers.google.com/speed/public-dns/docs/dns64>`__ is possible, too.
 
 You may also want to advertise the NAT64 prefix in Router Advertisements. This can be configured in :menuselection:`Services --> Router Advertisements`
 by enabling the advanced mode and entering the NAT64 prefix there.

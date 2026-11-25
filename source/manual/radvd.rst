@@ -7,10 +7,10 @@ Router Advertisements
 
 radvd (the service responsible for this functionality) is the router advertisement daemon for IPv6.
 It listens to router solicitations and sends router advertisements as described in
-"Neighbor Discovery for IP Version 6 (IPv6)" (`RFC 4861 <https://tools.ietf.org/html/rfc4861>`__).
+"Neighbor Discovery for IP Version 6 (IPv6)" (`RFC 4861 <https://datatracker.ietf.org/doc/html/rfc4861>`__).
 With these advertisements hosts can automatically configure their addresses and some other parameters.
 It also defines "Neighbor Discovery Optimization for IPv6 over Low-Power Wireless Personal Area Networks (6LoWPANs)"
-(`RFC6775 <https://tools.ietf.org/html/rfc6775>`__).  They also can choose a default router based on these advertisements.
+(`RFC6775 <https://datatracker.ietf.org/doc/html/rfc6775>`__).  They also can choose a default router based on these advertisements.
 
 .. Attention::
 
@@ -118,7 +118,7 @@ A detailed overview of the :code:`radvd` settings determined by the mode can be 
 
 .. Note::
 
-      Technical details about the options can be found in the `man <https://www.freebsd.org/cgi/man.cgi?query=radvd.conf>`__ page of radvd
+      Technical details about the options can be found in the `man <https://man.freebsd.org/cgi/man.cgi?query=radvd.conf>`__ page of radvd
 
 --------------------------------
 Configuration examples

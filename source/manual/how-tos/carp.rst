@@ -20,7 +20,7 @@ route our traffic to the internet.
 .. image:: ./images/900px-Carp_setup_example.png
   :width: 100%
 
-When using CARP ( `FreeBSD handbook on CARP <https://www.freebsd.org/doc/handbook/carp.html>`__ ), all
+When using CARP ( `FreeBSD handbook on CARP <https://docs.freebsd.org/en/books/handbook/advanced-networking/#carp>`__ ), all
 fail-safe interfaces should have a dedicated IP address which will be
 combined with one shared virtual IP address to communicate to both
 networks. In the picture above the dashed lines are used to mark the

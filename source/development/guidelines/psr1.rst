@@ -5,8 +5,8 @@ PSR-1 Basic Coding Standard
 .. Note::
 
   | The PSR1 and PSR2 Coding Standards are provided by FIG under a MIT license.
-  | See license details: http://www.php-fig.org/bylaws/licensing-policies/
-  | The original content of this page can be found at `php-fig <http://www.php-fig.org/psr/psr-1/>`__
+  | See license details: https://www.php-fig.org/bylaws/licensing-policies/
+  | The original content of this page can be found at `php-fig <https://www.php-fig.org/psr/psr-1/>`__
 
 This section of the standard comprises what should be considered the
 standard coding elements that are required to ensure a high level of
@@ -15,7 +15,7 @@ technical interoperability between shared PHP code.
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
 document are to be interpreted as described in `RFC
-2119 <http://www.ietf.org/rfc/rfc2119.txt>`__.
+2119 <https://datatracker.ietf.org/doc/html/rfc2119>`__.
 
 -----------
 1. Overview

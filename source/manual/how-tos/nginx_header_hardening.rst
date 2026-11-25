@@ -41,7 +41,7 @@ Well known Test tools are:
 
 * OWASP ZAP (https://github.com/zaproxy/zaproxy)
 * Burp (https://portswigger.net/burp)
-* mitmproxy (https://mitmproxy.org/)
+* mitmproxy (https://www.mitmproxy.org/)
 
 
 When it is downloaded, you usually have to unpack it into a fitting directory.``
@@ -109,7 +109,7 @@ header configuration:
 If you set a setting here, it will override what the webserver sets.
 You can inject this security setting into a location or HTTP server.
 
-You can read about the headers in the `Mozilla Wiki <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers>`_ or in the RFCs.
+You can read about the headers in the `Mozilla Wiki <https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers>`_ or in the RFCs.
 
 .. Warning::
 

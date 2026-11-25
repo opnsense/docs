@@ -92,19 +92,19 @@ Apache HTTPd (with modules like mod_php)       Webserver with interpreter module
 ============================================= ================================================
 
 
-.. _Varnish: https://varnish-cache.org/
-.. _nginx: https://www.nginx.com/resources/wiki/start/topics/examples/reverseproxycachingexample/
+.. _Varnish: https://www.varnish.org/
+.. _nginx: https://docs.nginx.com/nginx/admin-guide/content-cache/content-caching/
 .. _Unit: https://unit.nginx.org/
 .. _puma: https://github.com/puma/puma
-.. _unicorn: https://bogomips.org/unicorn/
+.. _unicorn: https://yhbt.net/unicorn/
 .. _gunicorn: https://gunicorn.org/
 .. _Django: https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html
 .. _Rack: https://rack.github.io/
 .. _UWSGI: https://uwsgi-docs.readthedocs.io/en/latest/
 .. _mod_jk: https://tomcat.apache.org/connectors-doc/webserver_howto/apache.html
-.. _Undertow: http://undertow.io/
+.. _Undertow: https://undertow.io/
 .. _RoR: https://rubyonrails.org/
-.. _sinatrarb: http://sinatrarb.com/
+.. _sinatrarb: https://sinatra.run/
 
 **Upstream, Backend**
 
@@ -189,7 +189,7 @@ better than plain NAT.
     Firefox supports this via the environment SSLKEYLOGFILE_.
     This is not supported by OPNsense plugins.
 
-.. _SSLKEYLOGFILE: https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/Key_Log_Format
+.. _SSLKEYLOGFILE: https://nss-crypto.org/reference/security/nss/legacy/key_log_format/index.html
 .. _PFS: https://en.wikipedia.org/wiki/Forward_secrecy
 
 Tutorials

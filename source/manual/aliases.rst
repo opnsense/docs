@@ -514,7 +514,7 @@ two machines.
 Exclusions
 ----------
 Pf firewall tables support exceptions (or exclusion) of addresses. This feature can be used in one Alias or in combined (Network
-group type) Aliases. See (https://www.freebsd.org/doc/handbook/firewalls-pf.html 30.3.2.4).
+group type) Aliases. See (https://docs.freebsd.org/en/books/handbook/firewalls/#firewalls-pf).
 
 --------
 Nesting
@@ -565,7 +565,7 @@ botnet controllers). The DROP and DROPv6 lists are a tiny subset of the SBL,
 designed for use by firewalls and routing equipment to filter out the malicious
 traffic from these netblocks.
 
-*Source :* https://www.spamhaus.org/drop/
+*Source :* https://www.spamhaus.org/blocklists/do-not-route-or-peer/
 
 Downloads
  * `DROP list <https://www.spamhaus.org/drop/drop.txt>`__

@@ -102,7 +102,7 @@ Remote Black List / Ad Blocking
 Use simple flat files to block ads.
 For this sample we will use the ad list found here:
 
-http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml
+https://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml
 
 This list is a simple flat list that looks like this:
 

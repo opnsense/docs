@@ -5,8 +5,8 @@ PSR-2 Coding Style Guide
 .. Note::
 
   | The PSR1 and PSR2 Coding Standards are provided by FIG under a MIT license.
-  | See license details: http://www.php-fig.org/bylaws/licensing-policies/
-  | The original content of this page can be found at `php-fig <http://www.php-fig.org/psr/psr-2/>`__
+  | See license details: https://www.php-fig.org/bylaws/licensing-policies/
+  | The original content of this page can be found at `php-fig <https://www.php-fig.org/psr/psr-2/>`__
 
 This guide extends and expands on
 `PSR-1 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-1-basic-coding-standard.md>`__,
@@ -24,7 +24,7 @@ of this guide is not in the rules themselves, but in the sharing of those rules.
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
 "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
 document are to be interpreted as described in `RFC
-2119 <http://www.ietf.org/rfc/rfc2119.txt>`__.
+2119 <https://datatracker.ietf.org/doc/html/rfc2119>`__.
 
 -----------
 1. Overview
@@ -147,7 +147,7 @@ indenting.
 2.5. Keywords and True/False/Null
 ---------------------------------
 
-PHP `keywords <http://php.net/manual/en/reserved.keywords.php>`__ MUST
+PHP `keywords <https://www.php.net/manual/en/reserved.keywords.php>`__ MUST
 be in lower case.
 
 The PHP constants ``true``, ``false``, and ``null`` MUST be in lower

@@ -123,7 +123,7 @@ Click **Save** to add the new server.
    To prompt separately for TOTP, add ``static-challenge "Enter OTP token:" 1`` to `Custom config` in
    :menuselection:`VPN --> OpenVPN --> Client Export`. Since this is a client side option, it will not be automatically pushed. Clients must import
    or configure it.
-   Read more about this challenge type here: `"--static-challenge args" <https://openvpn.net/community-resources/reference-manual-for-openvpn-2-6/>`_
+   Read more about this challenge type here: `"--static-challenge args" <https://openvpn.net/community-docs/community-articles/openvpn-2-7-manual/>`_
 
 
 Add Certificate Authority
@@ -350,7 +350,7 @@ to open the file with, select OpenVPN for Android.
 
 iOS
 ---
-For iOS users we recommend using OpenVPN Connect (https://itunes.apple.com/us/app/openvpn-connect/id590379981)
+For iOS users we recommend using OpenVPN Connect (https://apps.apple.com/us/app/openvpn-connect/id590379981)
 from OpenVPN Technologies.
 
 Go to :menuselection:`VPN --> OpenVPN --> Client Export` and select the newly created VPN server from

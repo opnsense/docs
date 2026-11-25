@@ -45,7 +45,7 @@ attached - way of supporting the project. Any amount will be gratefully accepted
             <input name="rm" value="0" type="hidden">
             <input name="currency_code" value="EUR" type="hidden">
             <input name="lc" value="US" type="hidden">
-            <input src="https://www.paypal.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online." type="image">
+            <input src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online." type="image">
         </div>
     </form>
     </br>
@@ -63,7 +63,7 @@ Main benefits include:
 * Access to the core team
 
 To get enlisted as partner of the OPNsense project means a minimum annual investment
-of € 2500.Partners that made an exceptional contribution to the project are assigned
+of € 2500. Partners that made an exceptional contribution to the project are assigned
 the Platinum Partner status.
 
 ----------------
@@ -73,7 +73,7 @@ Support Contract
 with a support contract we support you and you support us as OPNsense is fully
 supported by Deciso.
 
-For support options see `OPNsense Commercial Support <https://opnsense.org/support-overview/commercial-support/>`__
+For support options see `OPNsense Commercial Support <https://shop.opnsense.com/product-categorie/support/>`__
 
 ------------------
 
@@ -137,7 +137,7 @@ by either sharing your ideas on or send in a pull request on github.
 Designing new features
 ----------------------
 If you like to help designing new features then start with reading the :doc:`Development
-manual </develop>` and checkout our `roadmap <https://opnsense.org/about/road-map/>`__ as well as our `issue tracker <https://github.com/opnsense/core/issues>`__.
+manual </develop>` and checkout our `roadmap <https://opnsense.org/roadmap/>`__ as well as our `issue tracker <https://github.com/opnsense/core/issues>`__.
 Before starting it is always a good to share your idea first with a core developer,
 to do so you can use either:
 
@@ -200,7 +200,7 @@ Social media
 ------------
 Contribute to the success of the project by letting others know how OPNsense helped
 solving your network or security challenges. Let others know about OPNsense and/or
-follow us & retweet our messages on `Twitter <https://twitter.com/opnsense>`__.
+follow us & retweet our messages on `Twitter <https://x.com/opnsense>`__.
 
 Anything you can do to spread the word about OPNsense will help to reach our goal
 to become the most widely used open source security & firewall platform.

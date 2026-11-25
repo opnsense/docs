@@ -9,9 +9,8 @@ worked with. The biggest issue is that few projects have defined
 development (as in actual coding) workflow laid out for new
 contributors, so one is just going to be stabbing in the dark for a few
 days or weeks until things start making sense. Speaking of *sense*,
-let’s explain how we’ve designed the development experience for
-`OPNsense <https://opnsense.org/developers-invitation/>`__ and how you
-can start contributing code in no time.
+let’s explain how we’ve designed the development experience for OPNsense
+and how you can start contributing code in no time.
 
 ---------
 Structure
@@ -65,7 +64,7 @@ Building
    :name: building-not-clobbering-the-build-system
 
 The tools repository is designed to run on a stock FreeBSD using `chroot
-mechanics <http://en.wikipedia.org/wiki/Chroot>`__ to keep the build
+mechanics <https://en.wikipedia.org/wiki/Chroot>`__ to keep the build
 contained and consistent. There’s nothing worse than a build system that
 modifies the build system and at some point starts to dash out working
 images–only to stop working some time in the future. No, no, no.
@@ -105,7 +104,7 @@ to your actual target device—just make sure you know the system well
 enough before you attempt this.
 
 `VirtualBox <https://www.virtualbox.org/>`__ is a solid tool for the
-job, but be sure to check out `FreeBSD’s Bhyve <http://bhyve.org/>`__ as
+job, but be sure to check out `FreeBSD’s Bhyve <https://bhyve.org/>`__ as
 well (it was added in FreeBSD 10.0). However, If you are only interested
 in GUI coding, you can skip all the build parts and directly download an
 image and spin it up. Because…
@@ -169,8 +168,8 @@ Summary
 Although this is just a peek into OPNsense development workflow it brings to
 attention a key aspect: moving barriers out of the way to enable as many people
 as possible to produce quick results. Yes,there are barriers like
-`git <http://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository>`__
-and `GitHub <https://guides.github.com/activities/contributing-to-open-source/>`__
+`git <https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository>`__
+and `GitHub <https://docs.github.com/en/get-started/exploring-projects-on-github/contributing-to-a-project>`__
 to deal with, maybe even learning FreeBSD intricacies, but once you have
 your code in the GUI and working fine, you’ll feel proud enough to
 endure the hardships of making sure your patch will have a place in our
