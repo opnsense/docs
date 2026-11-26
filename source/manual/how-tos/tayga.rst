@@ -59,7 +59,7 @@ Tayga behaves like an external device connected to OPNsense via a point-to-point
    .. Warning::
       The default value must not be used since 2001:db8::/32 is a documentation-only prefix.
 
-Save. Tayga should now be running.
+Apply. Tayga should now be running.
 
 ---------------------
 Adding firewall rules
@@ -67,15 +67,10 @@ Adding firewall rules
 Tayga uses a tunnel interface for packet exchange with the system. A firewall rule is required to prevent it from blocking these packets.
 Additionally, a Source NAT rule is required for IPv4 Internet access.
 
-Go to :menuselection:`Firewall --> Rules`, select Tayga, add a new rule, set the `TCP/IP Version` to `IPv4+IPv6`, and leave all other settings at
+Go to :menuselection:`Firewall --> Rules`, add a new rule, set `Interface (rule)` to `Tayga`, set `Version` to `any`, leave all other settings at
 their default values and save.
 
-.. Note::
-   If you just enabled Tayga and cannot select it in :menuselection:`Firewall --> Rules`, reload the page. Also verify
-   that the Tayga interface is present under :menuselection:`Interfaces --> Assignments` and apply pending changes.
-
-Go to :menuselection:`Firewall --> NAT --> Source NAT (Outbound)`, add a new rule, set the `Interface` to `WAN`, set `Source address` to `Single host or
-network`, enter your Tayga `IPv4 Pool`, leave all other settings to their default values and save.
+Go to :menuselection:`Firewall --> NAT --> Source NAT`, set `Mode` to `Hybrid` or `Manual Source NAT rule generation`, apply, add a new rule, set `Interface` to `WAN`, set `Source address` to `Single host or Network`, enter your Tayga `IPv4 Pool`, leave all other settings to their default values and save.
 
 Apply the firewall changes. NAT64 should now be fully operational.
 
@@ -87,8 +82,7 @@ In most scenarios, NAT64 also requires DNS64. If you use OPNsense's :doc:`/manua
 you also have to enter your /96 prefix there.
 
 .. Note::
-   You may also use any other DNS64 capable DNS server. If you use the default 64:ff9b::/96 prefix, using a service like `Google's Public
-   DNS64 <https://developers.google.com/speed/public-dns/docs/dns64>` is possible, too.
+   You may also use any other DNS64 capable DNS server.
 
 You may also want to advertise the NAT64 prefix in Router Advertisements. This can be configured in :menuselection:`Services --> Router Advertisements`
 by enabling the advanced mode and entering the NAT64 prefix there.
