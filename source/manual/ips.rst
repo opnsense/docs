@@ -248,10 +248,34 @@ Use the info button here to collect details about the detected event or threat.
 Advanced configuration
 ------------------------
 
-OPNsense supports custom Suricata configurations in `suricata.yaml <https://suricata.readthedocs.io/en/suricata-6.0.0/configuration/suricata-yaml.html>`__
-format. In order to add custom options, create a template file named :code:`custom.yaml` in the :code:`/usr/local/opnsense/service/templates/OPNsense/IDS/` directory.
+OPNsense supports custom Suricata configurations in `suricata.yaml <https://suricata.readthedocs.io/en/suricata-8.0.0/configuration/suricata-yaml.html>`__
+format. In order to add custom options, create a YAML file with the :code:`.yaml` extension in the
+:code:`/usr/local/etc/suricata/conf.d/` override directory. On a configuration reload, the file
+will be referenced by an `include` directive from the generated `suricata.yaml` configuration file.
+Files in the override directory are not parsed by a templating engine.
 
-Since this file is parsed by our template system, you are able to use template tags using the :doc:`Jinja2 </development/backend/templates/>` language.
+Suricata 7.0 and above supports `fully-qualified overrides <https://github.com/OISF/suricata/pull/8439>`__,
+allowing overrides of specific values without having to redefine the complete top-layer object. As
+an example, the following snippet will enable logging of ethernet headers without changing any
+other configuration:
+
+.. code-block:: yaml
+
+    %YAML 1.1
+    ---
+    outputs.0.eve-log.ethernet: yes
+
+.. Warning::
+
+    Files in the override directory are included at the top level of `suricata.yaml`. Any top-level
+    stanzas present in override files will completely override the same stanza in the generated
+    configuration. Configurations are not merged in any way. Extreme care should be taken when
+    overriding the configuration, as the running configuration may no longer match what is reflected
+    in the web GUI. A notice is added to the IDS configuration page if override files are detected.
+
+.. Note::
+
+    Support for the :code:`custom.yaml` file was removed in 26.1. No automatic migration exists so any additional configuration from :code:`custom.yaml` will need to be migrated to the :code:`/usr/local/etc/suricata/conf.d/` override directory and any templating removed.
 
 Available rulesets
 ------------------
