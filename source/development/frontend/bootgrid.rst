@@ -235,6 +235,10 @@ General settings for bootgrid behavior
      - ``object``
      - ``Internal formatters``
      - Formatters for values in cells. See :ref:`formatters`.
+   * - ``asyncDataSources``
+     - ``object``
+     - ``{}``
+     - Plugged in async data. See :ref:`asyncdatasources`.
    * - ``headerFormatters``
      - ``object``
      - ``{}``
@@ -513,6 +517,131 @@ showing the translated value of the column title.
 The function expects only a single parameter, :code:`column`, which is an object containing
 :code:`id`, :code:`visible`, :code:`title`.
 
+.. _asyncdatasources:
+
+``options.asyncDataSources``
+----------------------------
+
+``asyncDataSources`` defines auxiliary data sources keyed by source name. Each source returns
+an object whose keys match the values of the grid's :code:`datakey` property. These keys associate
+auxiliary values with their corresponding grid rows.
+
+Each source supports the following properties:
+
+.. list-table::
+   :header-rows: 1
+   :widths: 20 20 15 45
+
+   * - Property
+     - Type
+     - Default
+     - Description
+   * - ``columns``
+     - ``string[]``
+     - ``[sourceName]``
+     - Columns populated by this source. Each column must exist in the grid and
+       cannot belong to multiple sources. If omitted, the source name identifies
+       its only column.
+   * - ``active``
+     - ``boolean``
+     - ``true``
+     - Enables fetching and applying cached values. Can be changed at runtime
+       using :code:`setAsyncDataSourceEnabled(name, enabled)`.
+   * - ``url``
+     - ``string``
+     - —
+     - Endpoint used by the standard AJAX request. Required unless a custom
+       :code:`request` function is provided.
+   * - ``ajaxConfig``
+     - ``object``
+     - ``{}``
+     - Additional jQuery AJAX options, such as :code:`method` and :code:`data`.
+       Requests default to GET with a JSON response. The URL is taken from
+       :code:`url`.
+   * - ``request``
+     - ``function(rows, refresh)``
+     - —
+     - Overrides the standard AJAX request. Returns a value or promise resolving
+       to the response. Receives current-page rows and a boolean indicating an
+       explicit refresh. With :code:`loadMissing` enabled, automatic requests
+       receive only uncached rows. Batching and concurrency are controlled here.
+   * - ``responseHandler``
+     - ``function(response)``
+     - —
+     - Synchronously transforms the response into an object keyed by the grid's
+       :code:`datakey`. Applies to both standard and custom requests.
+       If omitted, the response is used directly.
+   * - ``refreshHandler``
+     - ``function()``
+     - —
+     - Runs before an explicit refresh request. May return a promise to delay
+       fetching until an operation, such as flushing a backend cache, completes.
+   * - ``loadMissing``
+     - ``boolean``
+     - ``false``
+     - Automatically fetches uncached rows as pages are loaded and merges returned
+       values into the cache. Otherwise, the source loads once and each successful
+       request replaces its entire cache. Explicit refreshes request all
+       current-page rows when enabled.
+   * - ``pending``
+     - ``any``
+     - ``undefined``
+     - Value supplied to column formatters while awaiting data. For example,
+       configure :code:`null` and have the formatter render a spinner.
+   * - ``missing``
+     - ``any``
+     - ``undefined``
+     - Fallback supplied when the source has resolved but has no cached value
+       for a row.
+
+Response format
+---------------
+
+For example, with :code:`datakey: 'ip_address'`, a single-column source
+returns values indexed by IP address:
+
+.. code-block:: javascript
+
+   {
+       "192.0.2.1": "host.example.com"
+   }
+
+For a source managing multiple columns, each returned value contains the
+corresponding column values:
+
+.. code-block:: javascript
+
+   {
+       "row-id": {
+           bytes: 1234,
+           states: 2
+       }
+   }
+
+The :code:`pending` and :code:`missing` properties follow the same convention:
+a column value for single-column sources, or an object keyed by column name
+for multiple-column sources.
+
+Caching and rendering
+---------------------
+
+* Each managed column receives a header refresh button. Clicking it refreshes
+  the entire source and invokes its :code:`refreshHandler`, if configured.
+* Sorting is disabled for managed columns.
+* Ordinary grid reloads reuse cached values. With :code:`loadMissing` enabled,
+  newly encountered keys trigger additional requests.
+* For :code:`loadMissing` sources, requested keys omitted from a successful
+  response are marked as cached when they were not already cached. For
+  single-column sources, their cached value is :code:`missing`.
+* Cached values are applied through formatters, including when virtual DOM rows
+  are rendered later.
+* A rejected request or an exception in :code:`responseHandler` preserves the
+  previous cache and clears the loading state. There is no separate error
+  callback option.
+* :code:`setAsyncDataSourceEnabled(name, enabled)` toggles a source without
+  clearing its cache.
+
+
 .. _commands:
 
 ``commands``
@@ -728,6 +857,11 @@ Get current search phrase.
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Enable or disable grid persistence (column setup in local storage). Expects a boolean.
+
+``setAsyncDataSourceEnabled(name, enabled)``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Enable or disable async data columns during runtime.
 
 
 Other components
