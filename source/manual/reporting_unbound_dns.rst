@@ -92,3 +92,31 @@ You can refresh the list by clicking the refresh button on the top right of the 
 * The blocklist used if a query was blocked.
 * Either a block or whitelist action button, which can be used in the same way as described above for the "Top domains" in the
   overview section. Please note that this column will not appear if blocklists are disabled.
+
+DNSsec status
+~~~~~~~~~~~~~
+
+The DNSsec status column reports how Unbound validated the answer it received
+for a query. These are validation results, not security alerts. A status other
+than secure does not mean that your network or your connection is compromised.
+
+- **Secure** The domain publishes DNSSEC signatures and Unbound verified them
+  all the way back to a trusted key. The answer is therefore authentic and was
+  not modified while in transit.
+- **Insecure** The domain does not use DNSSEC, which means there are no
+  signatures present for Unbound to verify. This is by far the most common 
+  situation on the internet, since only a minority of domains have ever been 
+  signed. An insecure result is neither a vulnerability nor a misconfiguration 
+  on your end, it simply reflects a choice made by whoever operates that domain.
+- **Bogus** The domain does publish signatures, but Unbound could not confirm
+  them. This usually points to a configuration problem at the domain itself or
+  at its registrar.
+- **Unchecked** This query resolved while DNSSEC was turned off and thus 
+  DNSSEC has not validated this query.
+
+.. note::
+   When DNSSEC is disabled under :menuselection:`Services ‣ Unbound DNS ‣ General`, no
+   validation takes place at all, so every query resolves without producing a
+   verdict. Enabling DNSSEC only adds verification to lookups that already
+   work. It does not encrypt your queries, and it does not change which sites
+   you are able to reach.
