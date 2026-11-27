@@ -106,8 +106,8 @@ As you can see there are multiple IP addresses for this domain.
 
 .. Tip::
 
-    To change the alias domain resolve interval, go to :menuselection:`Firewall --> Settings --> Advanced` and
-    set **Aliases Resolve Interval** to the number of seconds to refresh.
+    To change the alias domain resolve interval, go to :menuselection:`Firewall --> Settings --> Aliases` and
+    set **Alias resolve interval** to the number of seconds to refresh.
 
 Hosts type Aliases can contain exclusion hosts.
 Exclusion addresses starts with "!" sign (eg !192.168.0.1) and can be used to exclude hosts from Network Group Aliases.
@@ -226,8 +226,8 @@ To use GeoIP, when not using our business edition, you need to configure a sourc
 our software supports formats offered by IPinfo and MaxMind.
 
 .. Note::
-    In our experience IPinfo offers a much bigger and more detailed dataset, do make sure you increase
-    :menuselection:`Firewall --> Settings --> Advanced : Firewall Maximum Table Entries` to a higher number
+    In our experience IPinfo offers a much bigger and more detailed dataset. Set **Maximum table entries** under
+    :menuselection:`Firewall --> Settings --> Filter` to a higher number
     when using different countries from the list. As of this writing, the total size of the list is ~7 million entries.
 
 
@@ -301,8 +301,8 @@ Below you will find a detailed specification our software can detect and process
 
 .. Tip::
 
-    If the number of items is larger than the allocated alias size, you can assign more memory to aliases.
-    :menuselection:`Firewall --> Settings --> Advanced : Firewall Maximum Table Entries`
+    If the number of items is larger than the allocated alias size, increase **Maximum table entries** under
+    :menuselection:`Firewall --> Settings --> Filter`.
 
 
 ..................

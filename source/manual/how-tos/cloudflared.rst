@@ -117,8 +117,8 @@ via the wrong WAN. You must add an explicit policy-route rule to direct it:
     with the same source and gateway matching **Protocol: TCP**, **Destination port: 443**,
     to allow JWT validation against your Cloudflare Access team domain.
 
-Alternatively, enable :menuselection:`Disable force gateway` under
-:menuselection:`Firewall --> Settings --> Advanced` if you want locally-originated
+Alternatively, check **Disable force gateway** under
+:menuselection:`Firewall --> Settings --> Filter` if you want locally-originated
 traffic to follow the routing table rather than be forced through a gateway, but be
 aware that this may have unintended consequences for other traffic originating
 from the firewall itself.
